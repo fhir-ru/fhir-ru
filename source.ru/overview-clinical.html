@@ -23,7 +23,7 @@ code { counter-increment: listing; }
 
 <p>FHIR (Fast Health Interoperability Resources) предназначен для обмена информацией, связанной со здравоохранением. К ней относятся клинические данные, а также управление делами здравоохранения, общественное здравоохранение и научные исследования. Стандарт охватывает как человеческую, так и ветеринарную медицину, и предназначен для повсеместного использования в самых разнообразных контекстах: стационар, долгосрочная медицинская помощь, амбулаторная реабилитация инвалидов, вспомогательная немедицинская помощь и т. д.
 <!-- FHIR (Fast Health Interoperability Resources) is designed to enable the exchange of healthcare-related information.
-This includes clinical data as well as healtchare-related administration, public health and research.  It covers
+This includes clinical data as well as healthcare-related administration, public health and research.  It covers
 both human and veterinary medicine and is intended to be useable world-wide in a wide variety of contexts - in-patient,
 long-term care, community care, allied health, etc. -->
 </p>
@@ -79,7 +79,7 @@ note in their history, etc) to operations on the relevant resources. -->
 a useful part of it).  For example, a prescription resource instance
 might reference the practitioner who created the prescription, the patient the prescription is for and the medication being
 prescribed.  Each of these are maintained in their own folders in their own cabinets.  However, the FHIR interface allows
-all of these links to be resolved and the relevant pieces of paper to be assembled to prevent a complete picture to the end user. -->
+all of these links to be resolved and the relevant pieces of paper to be assembled to present a complete picture to the end user. -->
 </p>
 
 <h3>Расширяемость и профилирование<!-- Extensibility and Profiling --></h3>
@@ -196,7 +196,7 @@ you can do the following things: -->
 <li><i>транзакция</i>: Выдать серверу сразу кучу папок для обновления</li>
 <!-- <li><i>search</i>: Search through the folders for ones that meet a set of search criteria</li>
 <li><i>read</i>: Get a copy of one a specific folder in one of the cabinets</li>
-<li><i>create</i>: Add a new folder to the appropriatecabinet  (with a new number)</li>
+<li><i>create</i>: Add a new folder to the appropriate cabinet (with a new number)</li>
 <li><i>update</i>: Add a new page (version) to the contents of a specific folder</li>
 <li><i>delete</i>: Remove a folder from the cabinet (or more accurately, put a sticker on it saying "do not open")</li>
 <li><i>history</i>: Look at all the pages in a single folder (or in some cases a particular file cabinet or even the whole room - though that's more for technical purposes than clinical purposes)</li>
@@ -212,7 +212,7 @@ making the same sort of requisitions to the same file clerk. -->
 <p>
 Документы - это хорошо известный механизм обмена информацией в области здравоохранения. Они полезны, когда есть желание управлять тем, как потребитель информации будет перемещаться по ней и есть необходимость в "замороженном" представлении информации, которое может быть надежно извлечено в будущем даже спустя годы. Примеры документоподобных объектов в здравоохранении включают в себя выписные эпикризы и лабораторные отчеты.
 <!-- Documents are a familiar mechanism for sharing information in the healthcare space.  They are useful whenever
-there's a desire to guide how a consumer of information will navigate it and thre's a need to have a "frozen" view
+there's a desire to guide how a consumer of information will navigate it and there's a need to have a "frozen" view
 of information that can be reliably retrieved even years in the future.  Examples of document-like things in
 healthcare include discharge summaries and lab reports. -->
 </p>

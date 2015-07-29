@@ -19,9 +19,9 @@
 
 <p>
 В качестве примера рассмотрим разделяющие расширения (slicing extensions). Базовое расширение на каждом элементе определяется как список (0..*) расширений, и каждое расширение имеет URL, который идентифицирует его, и значение.
-Рассмотрим пример, где профиль определяет для конкретного элемента (с именем Patient) два расширения с URL-адресами http://acme.com/a и http://acme.com/b. Кроме того, этот профиль разрешает использовать другие расширения.
-<!-- As an example, consider slicing extensions. The base extension on every element is defined as a list (0..*) of extensions, and each extension has a url that identifies it, and a value. 
-Consider an example where a profile defines that for a particular element (named Patient) two extensions, with URLs http://acme.com/a and http://acme.com/b. In addition, the profile 
+Рассмотрим пример, где профиль задает, что у определенного элемента (с именем Patient) будут два расширения с URL-адресами http://acme.com/a и http://acme.com/b. Кроме того, профиль разрешает использовать и другие расширения.
+<!-- As an example, consider slicing extensions. The base extension on every element is defined as a list (0..*) of extensions, and each extension has a url that identifies it, and a value.
+Consider an example where a profile defines that for a particular element (named Patient), there are two extensions, with URLs http://acme.com/a and http://acme.com/b. In addition, the profile 
 allows other extensions to be used.  -->
 </p>
 <p>
@@ -66,7 +66,7 @@ Here's the relevant parts of the Profile on patient: -->
          &lt;/type&gt;
         &lt;/definition&gt;
       &lt;/element&gt;
-      &lt;!-- first extension --&gt;
+      &lt;!-- second extension --&gt;
       &lt;element&gt;
         &lt;path value=&quot;Patient.extension&quot;/&gt;
         &lt;definition&gt;

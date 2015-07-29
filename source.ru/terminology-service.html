@@ -14,19 +14,14 @@
 <h2>Терминологические сервисы<!-- Terminology Service --></h2>
 
 <p>
-Спецификация включает поддержку обеспечения потребительского уровня терминологического сервиса - это сервис, который позволяет медицинским приложениям использовать коды и наборы значений без необходимости становиться экспертами в тонких деталях ресурса value set и лежащих в основе кодовых систем.
-Сервер, который поддерживает полную функциональность, приведенную здесь, может быть описан как "FHIR Terminology Service" и ДОЛЖЕН соответствовать следующему заявлению о соответствии: [ссылка будет предоставлена].
-<!-- This specification includes support for the provision of a consumer level terminology service - that is, a 
-service that lets healthcare applications make use of codes and value sets without having to become 
-experts in the fine details of the value set resource, and the underlying code systems. 
-A server that supports all the functionality described here can be described as a "FHIR Terminology Service", 
-and SHALL conform to this conformance statement: [link to be provided]. -->
+Данная спецификация включает в себя поддержку предоставления терминологического сервиса - это сервис, который позволяет медицинским приложениям использовать коды и наборы значений без необходимости становиться экспертами в тонких деталях ресурса value set и лежащих в основе кодовых систем.
+Сервер, который поддерживает полную функциональность, приведенную здесь, может быть описан как "FHIR Terminology Service" и ДОЛЖЕН соответствовать <a href="conformance-terminology-server.html">этому заявлению о соответствии</a>.
+<!-- This specification includes support for the provision of a terminology service - that is, a
+service that lets healthcare applications make use of codes and value sets without having to become
+experts in the fine details of the value set resource, and the underlying code systems.
+A server that supports all the functionality described here can be described as a "FHIR Terminology Service",
+and SHALL conform to <a href="conformance-terminology-server.html">this conformance statement</a>. -->
 </p>
-
-<h3>Открытые вопросы, требующие решения</h3>
-<ul>
-  <li>улучшить определения отображения эквивалентности, а также изменить "неточную" карту на "перекрывающую"<!--  improve the definitions of mapping equivalence, and change "inexact" map to "overlap" --></li>
-</ul>
 
 <h3>Безопасность<!-- Security --></h3>
 <p>
@@ -48,19 +43,12 @@ For a value set maintenance server that allows terminologies to be edited,
 some form of <a href="security.html">authorization and/or authentication would be appropriate</a>.
 This specification does not require any particular approach to security. --> 
 </p>
-<p>
-<i>Примечание для рецензентов/реализаторов: можем ли мы? Это привело бы к увеличению функциональной совместимости, если бы мы смогли закрепить определенный подход. Если мы, скажем, для операций будем требовать SSL + сертификат сервера обязательно, использовать сертификаты клиентов при необходимости аутентификация этих клиентов и использовать Smart на FHIR для редактирования наборов значений и таблиц соответствия концептов, будут ли с этим какие-то проблемы?<!-- Note to reviewers/implementers: can we? it would increase interoperability if we could bind 
-to a particular approach. If we said, for the operations, SSL+server certs 
-mandatory, use client certificates if you want to authenticate the clients, 
-and to use Smart on FHIR for editing value sets and concept maps, is there 
-any problems with that? --></i>
-</p>
 
 
 <h3>Basic Concepts</h3>
 <p>
 Терминологический сервис FHIR - это просто набор функций, построенный на определениях, предоставленных набором ресурсов <a href="valueset.html">ValueSet</a> и <a href="conceptmap.html">ConceptMap, с обеспечивающими поддержку дополнительными внутренними справочниками.</a>
-<!-- A FHIR terminology service is a simply a set of functions built on the definitions 
+<!-- A FHIR terminology service is simply a set of functions built on the definitions
 provided by a set of <a href="valueset.html">ValueSet</a> and 
 <a href="conceptmap.html">ConceptMap</a> resources, with additional inherently known terminologies providing support. -->
 </p>
@@ -80,15 +68,20 @@ in FHIR. Implementers should be familiar with: -->
 framework</a>. Further useful information may be found in: -->
 </p>
 <ul>
- <li>Основные принципы<!-- Underlying Principles -->: <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">V3 Core Principles</a></li>
- <li>SNOMED CT <a href="http://ihtsdo.org/fileadmin/user_upload/doc/">техническая документация<!-- technical documentation --></a>. Примечание: "namespace" используется здесь иначе, чем в IHTSDO<!-- is used differentyl here from the way it is used by IHTSDO --></li>
+ <li>Основные принципы: <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">V3 Core Principles</a></li>
+ <li>SNOMED CT <a href="http://ihtsdo.org/fileadmin/user_upload/doc/">техническая документация<!-- technical documentation --></a>. Примечание: "namespace" используется здесь иначе, чем в IHTSDO (см. обсуждение <a href="terminologies.html">здесь</a>)
+<!-- 
+ <li>Underlying Principles: <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">V3 Core Principles</a></li>
+ <li>SNOMED CT <a href="http://ihtsdo.org/fileadmin/user_upload/doc/">technical documentation</a>. Note: "namespace" is used differently here from the way it is used by IHTSDO (see <a href="terminologies.html">discussion here</a>)</li>
+ -->
+</li>
 </ul>
 
 <h4>Внешние кодовые системы<!-- External Code Systems --></h4>
 <p>
-Чтобы использоваться в наборе значений, код должен быть где-то определен. Они могут быть определены в рамках <a href="valueset.html#define">inline code system definition</a> либо где-то ещё, и затем использоваться в наборе значений ссылаясь на корректное пространство имён. Документация FHIR определяет <a href="terminologies-systems.html">ряд пространств имён</a> для часто встречающихся кодовых систем и описывает, как некоторые из них работают с FHIR (например <a href="snomedct.html">SNOMED-CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorm.html">RxNorm</a>).
+Чтобы использоваться в наборе значений, коды должны быть где-то определены. Они могут быть определены в рамках <a href="valueset.html#define">inline code system definition</a> либо где-то ещё, и затем использоваться в наборе значений ссылаясь на корректное пространство имён. Документация FHIR определяет <a href="terminologies-systems.html">ряд пространств имён</a> для часто встречающихся кодовых систем и описывает, как некоторые из них работают с FHIR (например <a href="snomedct.html">SNOMED-CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorm.html">RxNorm</a>).
 Эти кодовые системы часто большие и имеют много определенных внутри свойств, являющихся частью их формальных описаний. Встроенные кодовые системы (Inline code systems) в ресурсах типа ValueSet не являются подходящим способом для определения этих кодовых систем; FHIR не предоставляет формального представления вообще. Вместо этого эти справочники предлагают свои собственные форматы распределения, и предполагается, что справочники известны терминологическому серверу и являются внешними по отношению к нему.
-<!-- In order to be used with a value set, a code must be defined somewhere. They can be defined as part of 
+<!-- In order to be used with a value set, codes must be defined somewhere. They can be defined as part of
 an <a href="valueset.html#define">inline code system definition</a>, or they can be defined elsewhere, 
 and then used in a value set by quoting the correct namespace. The FHIR specification defines a <a href="terminologies-systems.html">set of 
 namespaces</a> for commonly encountered code systems, and defines how some work with FHIR (e.g. 
@@ -115,7 +108,7 @@ using the <a href="extension-conformance-common-supported-system.html">http://hl
  "resourceType" : "Conformance",
  "extension" : [
    { 
-     "url" : "http://hl7.org/fhir/StructureDefinition/supported-system",
+     "url" : "http://hl7.org/fhir/StructureDefinition/conformance-common-supported-system",
      "valueUri" : "http://loinc.org" 
    }]  
 }
@@ -162,6 +155,21 @@ related functionality such as exploration, or structured search, but these servi
 outside the scope of the FHIR terminology service. -->
 </p>
 
+<h4>Operations across all value sets</h4>
+<p>
+For some of the operations below, it can be useful to perform them across all value sets known to the system.
+For example, $expand using a text filter, and searching all value sets at once. A special value set is 
+defined that means "all value sets known to the server":
+</p>
+<pre>
+http://hl7.org/fhir/ValueSet/@all
+</pre>
+<p>
+Technically, this value set automatically imports all the existing value sets on the server.
+Note that this URL has no fixed meaning - it's interpretation is server specific. This URL 
+can only be used as a parameter to the operations described on this page. 
+</p>
+
 <h4>Поддержка справочников<!-- Terminology Maintenance --></h4>
 <p>
 Терминологический сервис использует ресурсы value set, определенные в системе - как
@@ -178,7 +186,6 @@ change. A terminology server should validate incoming resources, and ensure inte
 of the terminology services. Typically, servers would provide a test and production 
 environment, but there is no explicit notion of this in the interface itself.  -->
 </p>
-
 
 <h3>Развёртывание набора значений<!-- Value Set Expansion --></h3>
 <p>
@@ -202,6 +209,7 @@ As a summary, the client passes the server the following information: -->
  <li>набор значений (либо по его URL в RESTful-интерфейсе, либо по его логическому идентификатору <a href="valueset-definitions.html#ValueSet.url">(ValueSet.url)</a>, либо непосредственно в виде параметра вызова) <!-- the value set (either by its URL on the RESTful interface, by it's logical identifier <a href="valueset-definitions.html#ValueSet.url">(ValueSet.url)</a>, or directly as a parameter to the call) --></li>
  <li>(Необязательно) текстовый фильтр для ограничения возвращаемых кодов (например текст, введенный пользователем). Как применить этот текстовый фильтр - остается на усмотрение сервера<!--  (Optionally) a text filter to use to restrict the codes that are returned (e.g. user input text). It is left to server discretion to choose how to apply the text filter --></li>
  <li>(Необязательно) дата, когда развёртывание должно быть выполнено (обычно это текущая дата/время, но есть обстоятельства, где это не подходит) <!-- (Optionally) a date at which the expansion should be evaluated (usually, this is the current date/time, but there are circumstances where that is not appropriate) --></li>
+ <li> (Optionally) which page to retrieve - asking the server to break the expansion into a set of chunks</li>
 </ul>
 
 <p>
@@ -220,11 +228,17 @@ to reduce the number of codes returned. -->
 </p>
 <p>
 Более подробную информацию можно получить на странице <a href="valueset-operations.html#expand">определения этой операции</a>.
-<i>Примечание для рецензентов/реализаторов: Открытый вопрос для Коннектатонов: требуется ли поддержка пагинации для перебора при развёртывании?</i>
-<!-- For further information, consult the <a href="valueset-operations.html#expand">definition of the operation</a>.
-<i>Note to reviewers/implementers: Open Issue for connectathons: is paging support required for the iterating through an expansion?</i> -->
+<!-- For further information, consult the <a href="valueset-operations.html#expand">definition of the operation</a>. -->
 </p>
-
+<p>
+The $expand operation has support for paging - for a client to retrieve a big expansion 
+in a set of partial views, in order to present the most optimal user experience. 
+The client specifies both an offset and a count - how many codes per page, and where in the sequence 
+to start. The return expansion specifies the number of concepts in the expansion, and the offset 
+at which this partial view starts. Note that all expansions SHOULD include the total code count,
+but the offset element SHALL only exist when paging is being used. Expansions that are heirarchical 
+trees of concepts are not subject to paging, and the server simply returns the entire expansion.
+</p>
 <p>
 Несколько примеров использования операции развёртывания:
 <!-- Some example uses for the expansion operation: -->
@@ -235,6 +249,7 @@ to reduce the number of codes returned. -->
  <li>извлечь список кодов для использования при создании программных инструкций программного обеспечения <!-- fetch a list of codes to use when generating software programming instructions --></li>
  <li>получить список кодов, чтобы программное обеспечение могло проверить, является ли код допустимым или нет в конкретном контексте <!-- get a list of codes so that software can check whether a code is valid or not in a particular context --></li>
 </ul>
+
 
 <div class="example">
 <p><b>Примеры<!-- Examples --></b></p>
@@ -395,12 +410,12 @@ HTTP/1.1 200 OK
 (как описано выше) и затем просмотр возвращенных кодов, чтобы увидеть, есть ли среди них этот код.
 Однако это не эффективный способ проверки, является ли код допустимым, и для некоторых наборов значений 
 (например с бесконечным числом элементов) он может не работать. Вместо этого терминологический сервер FHIR 
-предоставляет <a href="valueset-operations.html#validate">операцию "validate"</a>. Клиент передает серверу следующую информацию:
+предоставляет <a href="valueset-operations.html#validate-code">операцию "validate-code"</a>. Клиент передает серверу следующую информацию:
 <!-- One of the ways to determine whether a code is in a value set is to expand the value set 
 (as described above), and then look at the returned codes to see if the code is in the expansion. 
 However this is not an efficient way to test whether a code is valid, and for some value sets 
 (e.g. with infinite number of members), it cannot work. Instead, a FHIR terminology server 
-provides <a href="valueset-operations.html#validate">a "validate" operation</a>. The client passes the server the following information: -->
+provides <a href="valueset-operations.html#validate-code">a "validate-code" operation</a>. The client passes the server the following information: -->
 </p>
 <ul>
  <li>набор значений (либо по его URL в RESTful-интерфейсе, либо по его логическому идентификатору <a href="valueset-definitions.html#ValueSet.url">(ValueSet.url)</a>, либо непосредственно в виде параметра вызова) <!-- the value set (either by its URL on the RESTful interface, by its logical identifier <a href="valueset-definitions.html#ValueSet.url">(ValueSet.url)</a>, or directly as a parameter to the call) --></li>
@@ -437,14 +452,14 @@ value sets by providing the URI for the code system itself.
 <!-- Simple validation of a code/system against a known value set: -->
 </p>
 <pre class="http">
-GET [base]/ValueSet/23/$validate?system=http://loinc.org&amp;code=1963-8&amp;display=test
+GET [base]/ValueSet/23/$validate-code?system=http://loinc.org&amp;code=1963-8&amp;display=test
 </pre>
 <p>
 Валидирует CodeableConcept на соответствие набору значений, указанному клиентом (пример в JSON):
 <!-- Validate a CodeableConcept against a client specified value set (this example in JSON): -->
 </p>
 <pre class="http">
-POST [base]/ValueSet/$validate
+POST [base]/ValueSet/$validate-code
 [other headers]
 
 {
@@ -531,7 +546,7 @@ codes subsumed by a code.  -->
 <!-- Test whether a Snomed Concept 399211009 (History of myocardial infarction) is subsumed by 22298006 (Myocardial infarction): -->
 </p>
 <pre class="http">
-GET [base]/ValueSet/$validate?system=http://snomed.info/sct&amp;code=X&amp;uri=http://hl7.org/fhir/ValueSet/snomedct?base=Y
+GET [base]/ValueSet/$validate-code?system=http://snomed.info/sct&amp;code=399211009&amp;identifier=http://snomed.info/sct?fhir_vs%3Disa/22298006
 </pre>
 <p>
 Ответ сервера:
@@ -557,29 +572,29 @@ HTTP/1.1 200 OK
 
 <p>
 Также есть возможность валидировать ряд концептов по отношению к их 
-соответствующим наборам значений <a href="valueset-operations.html#batch">одной пакетной операцией</a>, 
+соответствующим наборам значений <a href="valueset-operations.html#batch-validate">одной пакетной операцией</a>, 
 поддержать обработку больших объемов данных и уменьшить сетевые задержки. В этом случае клиент 
 передает серверу следующую информацию:
 <!-- It's also possible to validate a set of concepts against their relevant value 
-sets in <a href="valueset-operations.html#batch">a single batch operation</a>, to support high-volume process and reduce network
+sets in <a href="valueset-operations.html#batch-validate">a single batch operation</a>, to support high-volume process and reduce network
 latency effects. In this case, the client passes the server the following information: -->
 </p>
 <ul>
  <li>серия пар параметров, где каждая пара содержит <!-- a series of pairs of parameters, where each pair contains --></li>
  <li>CodeableConcept, содержащий валидируемый концепт <!--  a CodeableConcept containing the concept to be validated --></li>
- <li>URI, ссылающийся на набор значений, по отношению к которому проверяется код <!-- a uri referring to the value set against which the code should be validated --></li>
+ <li>URI, ссылающийся на набор значений, по отношению к которому проверяется код <!-- a URI referring to the value set against which the code should be validated --></li>
  <li>(Необязательно) дата, когда развёртывание должно быть выполнено (обычно это текущая дата/время, но есть обстоятельства, где это не подходит)<!--  (Optionally) a date at which the expansion should be evaluated (usually, this is the current date/time, but there are circumstances where that is not appropriate) --></li>
 </ul>
 <p>
 Code system URIs may be used to refer to the implicit value set that includes
 all the codes in the code system  (as described for the validation operation).
 </p>
+
 <p>
 Сервер возвращает ряд параметров, по одному на каждый отправленный элемент, 
-каждый из которых имеет результат, сообщение и значение для отображения (
-такое же, как и для операции $validate).
+каждый из которых имеет результат, сообщение и значение для отображения (такое же, как и для операции $validate-code).
 <!-- The server returns a series of parameters, one for each submitted item, each of 
-which has a result, a message, and a display (same as for the $validate operation). -->
+which has a result, a message, and a display (same as for the $validate-code operation). -->
 </p>
 <p>
 Эту операцию можно использовать, например, для валидации набора кодов в 
@@ -595,7 +610,7 @@ CDA document, by converting from the CDA CD data type to CodeableConcepts. -->
 <!-- A request to validate 2 concepts from a CDA document, with OIDs for value set identifiers: -->
 </p>
 <pre class="http">
-POST [base]/ValueSet/$batch
+POST [base]/ValueSet/$batch-validate
 [other headers]
 
 {
@@ -720,7 +735,7 @@ server returns an error. Some servers may require a concept map to use for the t
 <a href="composition-status-map-v3.html">this defined concept map</a>: -->
 </p>
 <pre class="http">
-GET [base]/ConceptMap/$validate?system=http://hl7.org/fhir/composition-status
+GET [base]/ConceptMap/$translate?system=http://hl7.org/fhir/composition-status
   &amp;code=preliminary&amp;valueSet= http://hl7.org/fhir/vs/composition-status
   &amp;target=http://hl7.org/fhir/v3/vs/ActStatus
 </pre>
@@ -755,14 +770,14 @@ HTTP/1.1 200 OK
 <h3>Batch Translation</h3>
 
 <p>
-It's also possible to translate a set of concepts in <a href="conceptmap-operations.html#batch">a single batch operation</a>, to support high-volume process and reduce network
+It's also possible to translate a set of concepts in <a href="conceptmap-operations.html#batch-translate">a single batch operation</a>, to support high-volume process and reduce network
 latency effects. In this case, the client passes the server the following information:
 </p>
 <ul>
  <li> a series of parameter tuples, where each pair contains</li>
  <li> a CodeableConcept containing the concept to be translated</li>
- <li> a uri that identifies the target value set into which to translate the concept</li>
- <li> (optiona) A reference to a particular map to use for the translation </li>
+ <li> a URI that identifies the target value set into which to translate the concept</li>
+ <li> (optional) A reference to a particular map to use for the translation </li>
 </ul>
 
 <p>
@@ -776,7 +791,7 @@ which has a result, a message, and an outcome (same as for the $translate operat
 A request to translate 2 concepts from a CDA document, with OIDs for value set identifiers:
 </p>
 <pre class="http">
-POST [base]/ConceptMap/$batch
+POST [base]/ConceptMap/$batch-translate
 [other headers]
 
 {
@@ -883,18 +898,18 @@ diagnosis of gout, and who had an elevated serum creatinine.  -->
 механизмом логической обработки, который знает, как найти эти данные в данном хранилище. 
 Обычно это некоторый вид SQL-запроса, хотя есть и множество других технологий на выбор. 
 Каким бы образом это ни делалось, основная трудность такой операции заключается в интеграции терминологических 
-знаний с выполнением поиска на основе других взаимосвязей, в которых этот критерий выражен.
-<!-- In this case, both "diagnosis of gout" and "serum creatinine" involve valueset and/or subsumption queries 
+знаний с выполнением поиска, которое также охватывает и другие взаимосвязи, выраженные в критериях поиска.
+<!-- In this case, both "diagnosis of gout" and "serum creatinine" involve valueset and/or subsumption queries
 (e.g. against SNOMED CT and LOINC respectively). This search has to be executed by some 
 logical processing engine that knows how to find this data in a given persistence store. 
 Often, this is some kind of SQL query, though many other technological choices are available. 
 However this is done, the challenge with an operation like this is to integrate the 
-terminological knowledge with search execution based on the other relationships the criteria is expressed.  -->
+terminological knowledge into a search execution that also covers other relationships expressed in the search criteria.  -->
 </p>
 <p>
 Одним из подходов к этой проблеме будет использование операции развёртывания, описанной выше, таким образом, чтобы 
 система, выполняющая поиск, могла производить развёртывания и затем искать по ним. Тут имеется пара проблем: 
-<!-- On approach to this problem would be to using the expand operation above, so that the system executing 
+<!-- One approach to this problem would be to using the expand operation above, so that the system executing 
 the search could generate expansions, and then search for these expansions. This has a couple of problems: -->
 </p>
 <ul>
@@ -947,7 +962,7 @@ whether the concept is post-coordinated or not. Here's a description of how the 
    </ul>
  </li>
  <li>Клиент добавляет эти записи в свою таблицу замыканий <!-- The client makes these entries into its closure table --> </li>
- <li>для облегчения процесса инициализации сервер может вызывать операцию $closure с несколькими значениями Кодингов<!-- to facilitate the initialization process, a server can call $closure with multiple Coding values --></li>
+ <li>для облегчения процесса инициализации клиент может вызывать операцию $closure с несколькими значениями Кодингов<!-- to facilitate the initialization process, a client can call $closure with multiple Coding values --></li>
 </ol>
 <p>Операция <a href="conceptmap-operations.html#closure">$closure</a> принимает 2 параметра:
 <!-- The <a href="conceptmap-operations.html#closure">$closure operation</a> takes 2 parameters: -->
@@ -1046,6 +1061,59 @@ HTTP/1.1 200 OK
  он должен создать отношение равенства "equals" между ними
  <!-- The combination of the system and code is the key to the closure table; if the server encounters two different codes that have the same meaning (e.g. syntactical variation), it should create an "equals" relationship between them --></li>
 </ul>
+
+<p>
+The client uses the result of the closure operation to maintain a closure table. Simplistically, 
+it might look like this:
+</p>
+<table class="grid">
+ <tr>
+   <td><b>Scope</b></td>
+   <td><b>Source</b></td>
+   <td><b>Target</b></td>
+   <td><b></b></td>
+ </tr>
+ <tr>
+   <td>patient-problems</td>
+   <td>http://snomed.info/sct|22298006</td>
+   <td>http://snomed.info/sct|128599005</td>
+ </tr>
+ <tr>
+   <td>patient-problems</td>
+   <td>http://snomed.info/sct|24595009</td>
+   <td>http://snomed.info/sct|90560007</td>
+ </tr>
+ <tr>
+   <td>obs-code</td>
+   <td>http://loinc.org|14682-9</td>
+   <td>http://loinc.org|LP41281-4</td>
+ </tr>
+</table>
+
+<p>
+The client can then use a table like this as part of it's general search conditions. Using the example from above:
+"Find any observations for male patients over the age of 50 who attended a particular clinic within a particular 
+2 week period, with a diagnosis of gout, and who had an elevated serum creatinine." This query could be done, for 
+instance, with an SQL query like this:
+</p>
+<pre>
+ Select * from Observations, Patients, Encounters, Conditions, Observations as Obs2 where
+   Observations.patient = Patients.Key and Patients.Age > 50 and 
+   Observations.encounter = Encounters.Key and Encounter.clinic = [key] 
+	   and encounter.date >= [date] and encounter.date &lt;= [date] and
+	 Conditions.patient = Patients.Key and Conditions.code 
+	   in (<span style="color: DarkGreen">select Source From ClosureTable 
+		   where Scope = "patient-problems" and Target = "http://snomed.info/sct|90560007"</span>) and
+	 Obs2.patient = Patients.Key and Obs2.value > 0.19 and Obs2.code 
+	   in (<span style="color: DarkGreen">select Source From ClosureTable 
+		   where Scope = "obs-code" and Target = "http://loinc.org|LP41281-4"</span>)
+</pre>
+<p>
+Note that in real clinical systems, tables are usually far more structured than this 
+example implies, and the query is correspondingly more complex. The closure table
+would usually be normalised - this example is kept simple to demonstrate the concept. 
+</p>
+
 
 
 <h3> Functional Operations </h3>

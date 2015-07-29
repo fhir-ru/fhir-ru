@@ -8,8 +8,13 @@
 </head>
 <body>
 
-<h1>Определение ресурса: <%title%></h1>
-<!-- <p class="status">Status: <%status%></p> -->
+<h1>Ресурс <%title%> - Назначение</h1>
+<%draft-note%>
+
+<table class="cols">
+ <tr><td><%wg%></td><td><%fmm%></td><td><%complinks%></td></tr>
+</table>
+
 <p>
 <%definition%>.
 </p>
@@ -20,7 +25,7 @@
 
 <h2>Содержимое ресурса</h2>
 <a name="uml"> </a>
-<%svg%>
+<%svg C%>
 
 <p>См. также <a href="<%name%>Ex.html">Примеры</a> и <a href="<%name%>Defn.html">Определения</a>.</p>
 

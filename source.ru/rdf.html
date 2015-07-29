@@ -82,10 +82,10 @@ use RDF. -->
  <li>Supporting reasoning across the information/terminology model boundary</li> -->
 </ul>
 <p>
-RDF-определения доступны на страницах <a href="fhir.ttl">Turtle</a> и <a href="fhir.rdf.xml">RDF/XML</a>. Вы также можете скачать все определения RDF <a href="fhir.rdf.zip">здесь</a>.
-<!-- The RDF definitions are available in <a href="fhir.ttl">turtle</a> and <a href="fhir.rdf.xml">RDF/XML</a>. You can also
-download <a href="fhir.rdf.zip">all the RDF definitions</a>. -->
+RDF-определения публикуются в виде <a href="fhir.ttl.zip">turtle</a>-файлов. 
+<!-- The RDF definitions are piblished as a series of <a href="fhir.ttl.zip">turtle</a> files. -->
 </p>
+
 <h4>RDF Class Definitions</h4>
 <p>
 В основе RDF-определений лежит формальное определение ресурсов FHIR как RDF-классов. Каждый тип данных, ресурс или элемент внутри ресурса определяется как rdf:Class с набором свойств rdf:Property. Каждое свойство имеет rdfs:range, задающий домен значения для этого свойства. В большинстве случаев такое преобразование базовых определений ресурсов осуществляется прямолинейно.
@@ -223,7 +223,7 @@ Since it has a default value, it can never be omitted from an instance:
 <p>
 Some elements do not have a default value, but they do have a meaning 
 when there is no element present. As an example, 
-if <a href="patient-definition.html#Patient.animal">Patient.animal</a> is not present, 
+if <a href="patient-definitions.html#Patient.animal">Patient.animal</a> is not present, 
 the the patient is a human. In RDF (OWL particularly), reasoners cannot 
 infer meaning from missing elements, so the element must always be present,
 but may have a value of http://hl7.org/fhir/nil (in RDF, fhir:nil).

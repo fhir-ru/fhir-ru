@@ -173,42 +173,16 @@ not used, and the response is simply the resource itself. -->
 
 <a name="asynchronous"> </a>
 
-<!-- todo: add async/sync to the operation definition -->
-
 <h3>Асинхронное выполнение операций<!-- Executing an Operation Asynchronously --></h3>
 
 <p>
-Операции могут выполняться асинхронно. В этом случае запрашивающий отправляет сообщение с запросом на выполнение операции, а система-адресат впоследствии отправляет сообщение обратно с результатами выполнения этой операции.
-<!-- Operations can also be executed asynchronously. In this case, the 
-requester sends a message requesting that an operation be executed,
-and the destination system subsequently sends a message back with 
-the results of the operation.  -->
+DSTU NOTE: there is no defined correct way to execute 
+operations asynchronously. See here for ongoing 
+<a href="http://wiki.hl7.org/index.php?title=FHIR_Asynchronous_Exchange">Discussion</a>
+of the options. The <a href="messaging.html#operations">messaging page</a>
+describes a way to execute operations asynchronously using messages.
 </p>
-<p>
-Учитывая возрастающую сложность асинхронного варианта использования, возрастает и сложность реализации. Подведя итоги, асинхронные операции выполняются следующим образом:
-<!-- Given the increased complexity of the asynchronous use case, the 
-implementation has increased complexity. As a summary, asynchronous
-operations are performed like this:  -->
-</p>
-<ul>
- <li>Запрашивающий составляет сообщение (бандл с типом message)<!-- The requester contructs a message (a bundle with type = message) --></li>
- <li>Заголовок этого сообщения содержит event.system = http://blame-Lloyd.com/operations<!-- The message header has an event.system of http://blame-Lloyd.com/operations --></li>
- <li>Элемент event.code содержит URL определения операции<!-- The event.code is the URL of the operation definition --></li>
- <li>Элемент сообщения data ссылается на <a href="parameters.html">Parameters</a>-формат, передающий входные параметры для этой операции. Если параметров нет, сообщение НЕ ДОЛЖНО иметь элемент data<!-- The message data item refers to a <a href="parameters.html">Parameters</a>
-  format that carries the in parameters for the operation. If there are no parameters,
-  the message SHOULD have no data element --></li>
- <li>Отправитель принимает сообщение (см. <a href="messaging.html#asynchronous">Asynchronous messaging</a>)<!-- The sender accepts the message (see <a href="messaging.html#asynchronous">Asynchronous messaging</a>) --></li>
- <li>После того как операция была выполнена, процессор высылает обратно одно или несколько сообщений<!-- When the operation has been executed, the processor sends back one or more messages --></li>
- <li>Каждое сообщение - это бандл с типом message, который содержит заголовок сообщения, ссылающийся на id исходного сообщения<!-- Each message is a bundle of type = message that contains a message header that refers to the id of the original message --></li>
- <li>Если происходит сбой при выполнении операции, MessageHeader.response.code должен указывать на ошибку, и также ДОЛЖЕН БЫТЬ возвращен <a href="operationoutcome.html">OperationOutcome</a><!-- If the operation fails, the MessageHeader.response.code must indicate failure, and an <a href="operationoutcome.html">OperationOutcome</a> SHOULD be returned as well --></li>
- <li>Если выходной параметр только один, его имя "return" и это ресурс, тогда data в сообщении - это  возвращенный ресурс <!-- If there is only one out parameter, which is a resource, and it has the name "return", then the data of the message is the return resource --></li>
- <li>Иначе data в сообщении будет указывать на <a href="parameters.html">Parameters</a>-формат, передающий выходные параметры для этой операции. Если параметров нет, сообщение НЕ ДОЛЖНО содержать элемент data<!-- Else the message data will refer to a <a href="parameters.html">Parameters</a>
-  format that carries the out parameters for the operation. If there are no parameters,
-  the message SHOULD have no data element --></li>
-</ul>
-<p>
-Todo: дополнить деталями и примерами.<!-- fill out with details and examples. -->
-</p>
+
 </div>
 
 [%file newfooter%]

@@ -26,16 +26,20 @@
  <li>В информационных документах Интернета RFC (например MIME-тип, язык)</li>
  <li>В спецификации HL7 (кодовая система v3 или таблица v2)</li>
  <li>Во внешних справочниках или онтологиях, таких как <a href="http://loinc.org">LOINC</a> или <a href="http://www.ihtsdo.org">SNOMED CT</a></li>
- <li>В локально сохраненном словаре, таблице поиска или перечне в приложении</li>
+ <li>В локально сохраненном словаре, таблице поиска или перечне в приложении (дополнительную информацию по локально определенным наборам значений см. в <a href="profiling.html">"Profiling FHIR"</a></li>
 </ul>
 <p>
 Все эти способы определения кодов в совокупности называются "кодовыми системами". Этот список далеко не полон; есть много способов определения кодовых систем, и они отличаются друг от друга по сложности и размеру.
 </p>
 <p>
-В описании стандарта кодированные значения всегда указываются парой "система − код", где система − это URL на кодовую систему, содержащую определение кода.
+В описании стандарта кодированные значения всегда указываются парой "система − код", где система − это URL на кодовую систему, содержащую определение кода. Note that <code>system</code> values are always 
+case sensitive. Different code systems make their own rules as to whether the codes 
+they define are case sensitive or not. Note that all the codes defined by FHIR 
+itself are case sensitive and SHALL be used in the provided case (usually, but 
+not always, lowercase).
 </p>
 <p>
-Подход FHIR к использованию кодированных значений основывается на базовой структуре, введенной в разделе 5 документа <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">Основополагающие принципы HL7 v3</a>.
+Подход FHIR к использованию кодированных значений основывается на базовой структуре, введенной в разделе 5 документа <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">Основополагающие принципы HL7 v3</a>, включая разделение между кодовыми системами и наборами значений.
 </p>
 <p>
 Если в ресурсах содержатся коды, то используется один из 4 типов данных:
@@ -48,35 +52,22 @@
 </table>
 
 <p>
-Примечание: значения для <i>System</i> всегда чувствительны к регистру. Различные кодовые системы вводят свои правила касательно того, чувствительны ли к регистру коды, которые они определяют, или нет. Обратите внимание, что все коды, определяемые самим FHIR, чувствительны к регистру и ДОЛЖНЫ использоваться в том виде, в котором приводятся в спецификации (как правило, но не всегда, в нижнем регистре).
-<!-- Note:  <i>System</i> values are always case sensitive. Different code systems make their own
-rules as to whether the codes they define are case sensitive or not. Note that all the
-codes defined by FHIR itself are case sensitive and SHALL be used in the provided case
-(usually, but not always, lowercase). -->
+Note: generally the choice of data type is dictated by the resource itself.
+When choosing a data type for an <a href="extensibility.html">extension</a>,
+see the FHIR wiki for <a href="http://wiki.hl7.org/index.php?title=FHIR_Guide_to_Designing_Resources#Choice_of_coding_data_type">advice about data type choice</a>.
 </p>
 
-<a name="strings"> </a>
-<h3>Привязки для строковых значений<!-- Binding String Values --></h3>
-<p>
-В некоторых особых случаях люди обычно используют коды непосредственно для элементов, имеющих тип "string". Типичным примером являются коды штатов,
-и есть несколько мест, где URI должен браться из набора контролируемых значений. Элемент типа <a href="datatypes.html#string">string</a> или <a href="datatypes.html#uri">uri</a> также может быть привязан к набору значений. Когда строка или URI привязаны к набору значений, свойство value ДОЛЖНО содержать  код, предусмотренный в наборе значений, а значения свойств "system" и "display" игнорируются.
-<!-- In a few special cases, humans customarily use codes directly for elements that have type "string". A typical case is codes for states,
-adnd there are several places where a URIs must come from a set of controlled values. 
-An element of type <a href="datatypes.html#string">string</a> or <a href="datatypes.html#uri">uri</a> can also be bound to a value set. 
-When a string or uri is bound to a value set, the value property SHALL contain the code specified by the value set, and the system 
-and display values are ignored.  -->
-</p>
-
-<h2>Контроль за использованием кодированных значений</h2>
+<a name="valuesets"> </a>
+<h2>Coded Values, Systems, and Value Sets</h2>
 <p>
 Множество кодированных значений, которые разрешено использовать в элементах одного из этих 4 типов данных, называется <a href="valueset.html">"value set"</a> (набор значений). Везде, где используются эти типы данных, спецификация связывает соответствующий набор значений с элементом.
 </p>
 <p>
-Разница между кодовой системой и набором значений является существенным различием, которое часто упускается при реализации, так как это различие часто упускается при проектировании системы. К примеру, не редкость увидеть системную таблицу, состоящую из смешанных кодов, содержащую некоторые LOINC-коды, а также некоторые дополнительные собственные коды. Довольно часто между ними нет явного различия; тот факт, что код выглядит похожим на LOINC-код, не изменяет его происхождения.
+Разница между кодовой системой и набором значений является существенным различием, которое легко упустить при реализации, так как это различие часто упускается при проектировании системы. К примеру, не редкость увидеть таблицу приложения, состоящую из смешанных кодов, содержащую некоторые LOINC-коды, а также некоторые дополнительные собственные коды. Довольно часто между ними нет явного различия; тот факт, что код выглядит похожим на LOINC-код, не изменяет его происхождения.
 <!-- 
-The difference between a code system and a value set is an important distinction that is often
+The difference between a code system and a value set is an important distinction that is easily
 missed by implementers, since the difference is often overlooked in system
-design. For instance, it's not unusual to see a system table that is a mixed list of codes,
+design. For instance, it's not unusual to see an application table that is a mixed list of codes,
 containing some LOINC codes and also some additional in-house codes. Quite often, there is
 no explicit differentiation between them; only the fact that a code happens to look like a 
 LOINC code betrays its origin.
@@ -85,13 +76,61 @@ LOINC code betrays its origin.
 <p>
 Для обмена данными, с другой стороны, явное отслеживание источника кода является и важным, и необходимым.
 Для того чтобы сделать это, каждой кодовой системе, определяющей коды, присваивается URL, который идентифицирует её, и все коды, которые она определяет, по сути являются парами ("Code Pair":  имя с пространством имён). Так, в случае того примера со смешанным списком из предыдущего параграфа имеются две кодовые системы:  <a href="loinc.html">LOINC</a> (http://loinc.org) и локальная система (скажем, был назначен такой URL: http://example.com/codesystems/additional-test-codes).
-Системная таблица - это единый набор значений (набор кодированных пар Code Pairs), включающий в себя коды из каждого из этих двух пространств имён. Самому набору значений назначается свой собственный URL в качестве идентификатора (например "http://example.com/fhir/ValueSet/test-codes)") - он идентифицирует набор кодированных пар (Code Pairs), но никогда не используется в качестве пространства имён в самой кодированной паре или экземпляре.
+Таблица приложения - это единый набор значений (набор кодированных пар Code Pairs), включающий в себя коды из каждого из этих двух пространств имён. Самому набору значений назначается свой собственный URL в качестве идентификатора (например "http://example.com/fhir/ValueSet/test-codes)") - он идентифицирует набор кодированных пар (Code Pairs), но никогда не используется в качестве пространства имён в самой кодированной паре или экземпляре.
 В FHIR кодированные пары (Code Pairs) всегда представляются в виде пары "code" и "system", за исключением простого <a href="datatypes.html#code">типа данных "code"</a>, в котором пространство имён (например элемент/свойство system) фиксировано в схеме и не представляется явно.
 </p>
+
+<a name="system"> </a>
+<h2>Choosing a system</h2>
+
 <p>
-Это означает, что в FHIR URL в элементе "system" всегда является ссылкой на кодовую систему, а не на набор значений.
-<!-- This means that in FHIR, the URL in a system element is always a reference to a code system, not to a value set. -->
+The URL in a <code>system</code> is always a reference to a code system, 
+not to a value set. The <code>system</code> ensures that codes can be unambiguously
+traced back to their original definition, and that logical comparisons, matching and 
+inferences can be performed consistently by different systems. For this reason, choice
+of the correct URI for the system attribute is critical.
 </p>
+<p>
+The correct value to use in the <i>system</i> for a given code system can be determined 
+by working through the following list, in order:
+</p>
+<ul>
+ <li>the specification <a href="terminologies-systems.html">Code System Registry</a> 
+     - if a code system is listed here, it SHALL be used</li>
+ <li>A system URI or OID defined as the correct value to use in FHIR by the publisher of the code system</li>
+ <li>the FHIR <a href="http://registry.fhir.org/NamingSystem">community code system registry</a> 
+     - if a code system is listed here with <a href="namingsystem-definitions.html#NamingSystem.status">status = active</a>, it SHALL be used</li>
+ <li>an OID registered in the <a href="http://hl7.org/oid">HL7 OID registry</a> - if a code system is registered here, the OID SHOULD be used (using the syntax urn:oid:[oid])</li>
+</ul>
+<p>
+If a code system is resolved by this list, and there is no publisher to consult, implementers 
+will have to choose a URI to use. The priority should be to choose a unique value that won't
+accidently be used by another implementer for a different purpose - or a very similar purpose
+with a different scope. 
+</p>
+<p>
+For publishers of code systems, the following considerations should be kept in mind when 
+defining the correct URI to use:
+</p>
+<ul>
+ <li>Once defined, the URI will require agreement from all implementers to change, and some may not be able to change (stored resources). If the set of users is not closed, it will usually not be possible to change the URI</li>
+ <li>Implementers strongly prefer a human readable URI. http://acme.com/patients/mrn is a great deal easier to work with than urn:oid:1.2.3.4.5.6.7</li>
+ <li>An http: address SHOULD resolve to some useful description of the code system. Ideally, if a user makes a request of the address with the media type set to a FHIR media type, the server will respond
+   with a FHIR Value Set resource with an inline <a href="valueset-definitions.html#ValueSet.define">code system</a>, but some other human or computable definition is allowed</li>
+ <li>http addresses should be permalinks which may re-direct to the current correct content</li>
+ <li>A scope of the code system URI and the correct usage of codes and displays in it's namespace SHOULD be clearly defined. 
+   See examples for <a href="snomedct.html">SNOMED CT</a>, <a href="rxnorm.html">RxNorm</a>, <a href="loinc.html">LOINC</a>, <a href="ndc.html">NDC</a></li>
+ <li>Generally, allocation of URLs is heirarchical, and most care is required in choosing the root URL. One sub-URL policies are clearly defined, URIs can often be automatically assigned</li>
+</ul> 
+<p>
+Note: if the code system is made available packaged inside a <a href="valueset.html">ValueSet</a> resource, the 
+correct URL for the <code>system</code> value is <i>ValueSet.define.system</i>, not <i>ValueSet.uri</i>.
+</p>
+
+
+<a name="binding"> </a>
+<h2>Controlling the use of Coded Values</h2>
+
 <p>
 Когда у элемента есть привязка к набору значений, у элемента "binding" могут быть следующие свойства: 
 <!-- When an element is bound to a value set, the binding has these properties: -->
@@ -105,7 +144,7 @@ LOINC code betrays its origin.
 <p>
 В декларативных типах данных FHIR привязка всегда оформляется с помощью <a href="elementdefinition-definitions.html#ElementDefinition.binding">ElementDefinition.binding</a>.
 <!-- In the FHIR declarative datatypes, a binding is always represented using an 
-<a href="elementdefinition-definitions.html#ElementDefinition.binding">ElementDefinition,binding</a>. -->
+<a href="elementdefinition-definitions.html#ElementDefinition.binding">ElementDefinition.binding</a>. -->
 </p>
 
 <a name="references"> </a>
@@ -268,6 +307,14 @@ versions for the value set, the system using the value set should pick the lates
 of the value set and use that. -->
 </p>
 
+<a name="unbound"> </a>
+<h4>Unbound</h4>
+<p>
+Note that as a matter of ongoing development, a few elements that have coded data types are not bound to
+any value set at all. Bindings are to be provided for these elements.
+</p>
+
+
 <a name="strength"> </a>
 
 <h2>Степень привязки<!-- Binding Strengths --></h2>
@@ -279,7 +326,7 @@ followed: -->
 </p>
 <table class="grid">
  <tr><td>required</td><td>Для совместимости экземпляры этого элемента ДОЛЖНЫ включать код из заданного набора значений<!-- To be conformant, instances of this element SHALL include a code from the specified value set --></td></tr>
- <tr><td>extensible</td><td>Для совместимости экземпляры этого элемента должны включать код из указанного набора значений, если есть подходящий код в этом наборе значений для передаваемого концепта. Если набор значений не содержит подходящего для этого концепта кода (с точки зрения человека), то вместо него могут быть включены альтернативные кодинги (или типы данных, позволяющие ввод текста).<!-- To be conformant, instances of this element must include a code from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the valueset does not cover the concept (based on human review), alternate codings (or, data type allowing, text) may be included instead. --></td></tr>
+ <tr><td>extensible</td><td>Для совместимости экземпляры этого элемента должны включать код из указанного набора значений, если есть подходящий код в этом наборе значений для передаваемого концепта. Если набор значений не содержит подходящего для этого концепта кода (с точки зрения человека), то вместо него могут быть включены альтернативные кодинги (из различных кодовых систем, включая локальные) или (data type allowing) текст.<!-- To be conformant, instances of this element must include a code from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the valueset does not cover the concept (based on human review), alternate codings (from different code systems, including local ones) or (data type allowing) text) may be included instead. --></td></tr>
  <tr><td>preferred</td><td>Поощряется в экземплярах использовать указанные коды в целях совместимости, но не обязательно делать это, чтобы они считались совместимыми<!-- Instances are encouraged, to draw from the specified codes for interoperability purposes but are not required to do so to be considered conformant --></td></tr>
  <tr><td>example</td><td>Не ожидается и даже не поощряется в экземплярах использовать указанный набор значений. Такой набор значений просто показывает примеры типов концептов, предназначенных для использования <!-- Instances are not expected or even encouraged to draw from the specified value set.  The value set merely provides examples of the types of concepts intended to be included --></td></tr>
 </table>
@@ -318,7 +365,7 @@ can interpret it with confidence. Generally, this is used for elements with type
 <!-- The other place where this is used is when <a href="profiling.html">profiling resources</a>, and there is agreement within a particular context of use
 that a particular set of codes are the only ones that can be used. In these cases, the data type SHALL contain one of the 
 values in the value set. If the data type is <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, then one of 
-the <i>coding</i> valuws SHALL be from the specified value set. <i>Text</i> can be provided as well, and is always 
+the <i>coding</i> values SHALL be from the specified value set. <i>Text</i> can be provided as well, and is always 
 recommended, but is not an acceptible substitute for the required code. -->
 </p>
 <p>
@@ -348,11 +395,18 @@ can apply to the concept being communicated.  If the valueset does not cover the
 system.code may be used instead. --></i>
 </p>
 <p>
-Если тип данных <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, тогда одно из значений <i>coding</i> ДОЛЖНО быть из указанного набора значений, если код подходит, но если подходящий код отсутствует, вместо него можно указать текст.
-<!-- If the data type is <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, then one of the <i>coding</i> values SHALL
-be from the specified value set if a code applies, but if no suitable code can be found, text may provided in its place. -->
+If the data type is <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, then one of the <i>coding</i> values SHALL
+be from the specified value set if a code applies, but if no suitable code exists in the value set, alternate code(s) may 
+be provided in its place. If no codes, including local codes, are available, then just text may be used.
 </p>
 <p>
+If the data type is <a href="datatypes.html#Coding">Coding</a>, then the code/system SHALL be from the specified value set
+if a code applies, but if no suitable code exists in the value set, an alternate code may provided in its place.
+</p>
+<p>
+Identified gaps in value sets should be submitted to the organization administering the value 
+set in order to improve interoperability in the future.
+</p>
 Расширяемые привязки используются, когда имеется соглашение на уровне спецификации или профилировании о кодированных значениях, которые следует использовать, но невозможно создать ограниченный список кодов, который покроет все возможные случаи использования, в том числе те, что ещё возникают.
 <!-- Extensible bindings are used when there is consensus at the specification or profiling level about the coded values
 that should be used, but it is impossible to create a bounded list of codes that a known to cover all 
@@ -360,7 +414,7 @@ use cases, including one that are yet to arise.   -->
 </p>
 <p>
 Когда элемент привязан к расширяемому набору значений, <a href="profiling.html">производные профили</a> могут устанавливать правила использования этих кодов, но не могут определять новые или дополнительные коды для этих элементов, если только в базовом наборе значений не отсутствуют коды с подходящим значением.
-<!-- When an element is bound to an extensible value set, <a href="profiling.html">derived profiles</a> 
+<!-- When an element is extensibly bound to value set, <a href="profiling.html">derived profiles</a> 
 may state rules on which codes can be used, but cannot define new or additional codes for these elements
 unless no codes with appropriate meanings are found in the base value set. -->
 </p>
@@ -409,7 +463,8 @@ or there is no consensus over the correct codes to be used. For these bindings: 
 <!-- <ul>
  <li><b>Coding</b>: the <i>system</i>/<i>code</i> values MAY be one of the codes in the value set. </li>
  <li><b>CodeableConcept</b>: one of the <i>coding</i> elements MAY  contain a <i>system</i>/<i>code</i> that is in the value set. </li>
-</ul> -->
+-->
+</ul> 
 <p>
 Некоторое другое кодированное значение МОЖЕТ быть использовано или (для CodeableConcept) МОЖЕТ быть предусмотрен альтернативный текст.
 Наборы значений-примеры представлены для того, чтобы помочь разработчикам понять правильное использование элемента. Наборы значений на основе таких кодовых систем как SNOMED CT, которые имеют строгие условия лицензионного соглашения, будут приводиться в базовой спецификации FHIR только в привязках-примерах, хотя руководства по реализации для конкретной юрисдикции могут применять наборы значений, требующие лицензий.
@@ -425,7 +480,6 @@ jurisdictions may adopt value sets that require licenses. -->
 may bind the element to any value set they choose. -->
 </p>
 
-
 <h2>Другие примечания<!-- Other notes --></h2>
 
 <ul>
@@ -439,6 +493,16 @@ codes by their properties, along with a non-version specific reference to an
 underlying code system, in which case the list of valid concepts may change over time. -->
 </li>
 </ul>
+<a name="strings"> </a>
+<h3>Binding String Values</h3>
+<p>
+In a few special cases, humans customarily use codes directly for elements that have type "string". A typical case is codes for states,
+and there are several places where a URIs must come from a set of controlled values. 
+An element of type <a href="datatypes.html#string">string</a> or <a href="datatypes.html#uri">uri</a> can also be bound to a value set. 
+When a string or URI is bound to a value set, the value property SHALL contain the code specified by the value set, and the system 
+and display values are ignored. 
+</p>
+
 
 </div>
 
