@@ -17,7 +17,7 @@ notes:
 
 -->
             
-[%settitle Version History%]
+[%settitle История версий%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -27,66 +27,85 @@ notes:
 
 <div class="col-9">
 
-<p>See <a href="#history">below</a> for version history details.</p>
+<p>См. <a href="#history">ниже</a> подробную информацию об истории версий.</p>
 
 <a name="history"> </a>
-<h2>Version History</h2>
+<h2>История версий</h2>
 
 <p>
-This is the developmental version of FHIR. The only changes tracked here are 
+Это разрабатываемая версия FHIR. Единственные изменения, которые отслеживаются здесь, это изменения после публикации DSTU. Изменения, сделанные до этого момента, можно посмотреть в <a href="http://hl7.org/fhir/history.html">DSTU #1 Version History</a>.
+Обратите внимание, что полную историю всех изменений можно получить через <a href="http://wiki.hl7.org/index.php?title=FHIR">архивы HL7 gForge SVN</a>.
+<!-- This is the developmental version of FHIR. The only changes tracked here are 
 changes from after the publication of the DSTU. For changes from before this, 
 see the <a href="http://hl7.org/fhir/history.html">DSTU #1 Version History</a>.
 Note that a full archive history of everything is available 
-<a href="http://wiki.hl7.org/index.php?title=FHIR">through the HL7 gForge SVN archives</a>.
+<a href="http://wiki.hl7.org/index.php?title=FHIR">through the HL7 gForge SVN archives</a>. -->
 </p>
 
 <a name="rules"> </a>
-<h3>How FHIR Versioning works</h3>
-<p><i>This section is draft</i></p>
+<h3>Каким образом работает версионирование FHIR<!-- How FHIR Versioning works --></h3>
+<p><i>Данный раздел является черновиком<!-- This section is draft --></i></p>
 <p>
-The FHIR version policy is based on <a href="http://semver.org/">Semantic versioning</a>, but with 
-some differences due to fact that FHIR is a specification, not a software API.
+Политика версионирования FHIR основана на  <a href="http://semver.org/">семантическом версионировании</a>, однако имеются и некоторые различия в связи с тем, что FHIR - это спецификация, а не API программного обеспечения.
+<!-- The FHIR version policy is based on <a href="http://semver.org/">Semantic versioning</a>, but with 
+some differences due to fact that FHIR is a specification, not a software API. -->
 </p>
 <p>
-There is a single development version of FHIR. This undergoes cycles of development as 
+Существует одна разрабатываемая версия FHIR. Она проходит циклы развития,
+управляемые HL7. Каждый большой цикл развития завершается официальным голосованием, после которого публикуется новая спецификация. В терминах контроля версий, каждая опубликованная спецификация является веткой дерева разработки, которая может потом сама получить дальнейшие изменения от HL7 в рамках поддержки спецификации.
+<!-- There is a single development version of FHIR. This undergoes cycles of development as 
 managed by HL7. Each major cycle of development is concluded by a formal ballot, and then 
 a new specification is published. In version control terms, each published specification is a 
 branch off the development trunk, which may then itself undergo further change as 
-HL7 maintains the published specification. 
+HL7 maintains the published specification.  -->
 </p>
 <p>
-The following kinds of changes may be made to the specification:
+К спецификации могут быть применены следующие виды изменений:
+<!-- The following kinds of changes may be made to the specification: -->
 </p>
 <ul>
- <li>Non-substantiative changes do not cause changes in any conformant application. For example, section renumbering, 
+ <li>Несущественные изменения не вызывают изменений в совместимых приложениях. Например изменение разделов нумерации, исправление неработающих ссылок, стилей, опечаток, и разъяснения, которые не меняют смысл. Некоторые исправления могут оцениваться таким образом, чтобы не создавать каких-либо ожиданий изменений в совместимых приложениях</li>
+ <li>Существенные изменения, которые не ломают совместимые приложения. Они вносят новую функциональность - изменения в спецификации, которые создают новые возможности, но не делают существующие приложения не-совместимыми, если они не были изменены</li>
+ <li>Критические изменения, делающие ранее совместимые приложения несовместимыми</li>
+<!--  <li>Non-substantiative changes do not cause changes in any conformant application. For example, section renumbering, 
    broken links, style corrections, typos, and clarifications that do not change the meaning. Some corrections may 
    be judged not to create any expectation of change to a conformant application</li>
  <li>Substantiative changes that are not breaking. These introduce new functionality - changes to the specification that create new capabilities, but would not render existing applications non-conformant if they do not change</li>
- <li>Breaking changes would mean that previously conformant applications are not longer conformant</li>
+ <li>Breaking changes would mean that previously conformant applications are not longer conformant</li> -->
 </ul>
 <p>
-Note that the following are, by definition, considered non-breaking changes, even though some implementations (including the reference implementations) may not be able to handle these changes without error:</p>
+Обратите внимание, что следующие изменения, по определению, считается некритическими , хотя некоторые реализации (в том числе эталонные) могут быть не в состоянии обрабатывать такие изменения без ошибок:
+<!-- Note that the following are, by definition, considered non-breaking changes, even though some implementations (including the reference implementations) may not be able to handle these changes without error: --></p>
 <ul>
- <li>creation of new resources</li>
+ <li>создание новых ресурсов</li>
+ <li>добавление новых элементов к существующим ресурсам</li>
+ <li>определение новых типов данных</li>
+ <li>добавление в API новых операций</li>
+<!--  <li>creation of new resources</li>
  <li>adding new elements in an existing resource</li>
  <li>defining new datatypes</li>
- <li>Adding new API operations</li>
+ <li>Adding new API operations</li> -->
 </ul>
 <p>
-Also, the examples are never substantiative - every effort is made to ensure that they are correct, but changes to the examples in the specification are not considered substantiative.
+Кроме того, изменения примеров не считаются существенными. Делается все возможное, чтобы гарантировать их правильность, однако изменения примеров в спецификации не считаются существенными изменениями.
+<!-- Also, the examples are never substantiative - every effort is made to ensure that they are correct, but changes to the examples in the specification are not considered substantiative. -->
 </p>
 
 <p>
-Each FHIR version is identified by a string composed from 4 parts: publication.major.minor.revision. 
+Каждая версия FHIR представляет собой строку, состоящую из 4 частей: publication.major.minor.revision (издание.версия.субверсия.ревизия).
+<!-- Each FHIR version is identified by a string composed from 4 parts: publication.major.minor.revision.  -->
 </p>
 <table class="lines">
   <tr>
    <td valign="top">publication</td>
    <td>
      <ul>
-       <li>Incremented when HL7 publishes FHIR as an updated specification, e.g. a DSTU or normative version of FHIR</li>
+	        <li>Увеличивается, когда HL7 публикует обновленную спецификацию FHIR, например DSTU или нормативную версию FHIR</li>
+       <li>HL7 планирует делать это каждые 1-2 года</li>
+       <li>У первого DSTU была версия 0</li>
+<!--        <li>Incremented when HL7 publishes FHIR as an updated specification, e.g. a DSTU or normative version of FHIR</li>
        <li>HL7 plans to do this every 1 to 2 years</li>
-       <li>The first DSTU was version 0</li>
+       <li>The first DSTU was version 0</li> -->
      </ul>
    </td>
   </tr>
@@ -94,10 +113,14 @@ Each FHIR version is identified by a string composed from 4 parts: publication.m
    <td valign="top">major</td>
    <td>
      <ul>
-       <li>Increments every time a breaking change is made</li>
+	        <li>Увеличивается каждый раз, когда вносится критическое изменение</li>
+       <li>Когда происходит новая публикация, это число сбрасывается в 0 для публикации и в 1 для ветки разработки</li>
+       <li>Так как HL7 не вносит критические изменения в виде технических поправок к опубликованной спецификации, у этих версий FHIR номер версии всегда будет X.0.n.r</li>
+       <li>Поскольку разрабатываемая версия является предметом постоянного анализа, обсуждения, голосования и неоднократных изменений, в ней следует ожидать критические изменения</li>
+<!--        <li>Increments every time a breaking change is made</li>
        <li>When a new publication is made, this is reset to 0 in the publication, and 1 in the development branch</li>
        <li>Since HL7 does not make breaking changes as technical corrections to a published specification, these versions of FHIR always have a version number X.0.n.r</li>
-       <li>Because the development version is the subject of ongoing analysis, debate, ballot and repeated alterations, breaking changes are to be expected</li>
+       <li>Because the development version is the subject of ongoing analysis, debate, ballot and repeated alterations, breaking changes are to be expected</li> -->
      </ul>
    </td>
   </tr>
@@ -105,8 +128,10 @@ Each FHIR version is identified by a string composed from 4 parts: publication.m
    <td valign="top">minor</td>
    <td>
      <ul>
-       <li>Increments every time a substantive change is made</li>
-       <li>Resets to 0 any time the major version changes</li>
+	        <li>Увеличивается каждый раз, когда вносится существенное изменение</li>
+       <li>Сбрасывается в 0, когда изменяется основная версия (major)</li>
+<!--        <li>Increments every time a substantive change is made</li>
+       <li>Resets to 0 any time the major version changes</li> -->
      </ul>
    </td>
   </tr>
@@ -114,35 +139,46 @@ Each FHIR version is identified by a string composed from 4 parts: publication.m
    <td valign="top">revision</td>
    <td>
      <ul>
-       <li>Incremented any time a change is made to the specification</li>
-       <li>At present, this is the SVN version number (this allows anyone to reconstruct the source from which the version was built from)</li>
+	        <li>Увеличивается каждый раз, когда в спецификацию вносится изменение</li>
+       <li>На данный момент это номер версии SVN (это позволяет любому реконструировать источник, из которого была построена версия)</li>
+<!--        <li>Incremented any time a change is made to the specification</li>
+       <li>At present, this is the SVN version number (this allows anyone to reconstruct the source from which the version was built from)</li> -->
      </ul>
    </td>
   </tr>
 </table>
 
 <p>
-Additional notes:
+Дополнительные примечания:
+<!-- Additional notes: -->
 </p>
 <ul>
  <li>Changes to a formally published specification (except for minor publishing corrections, such as correcting broken links) are only made via announced technical corrections</li>
  <li>The reference implementations have 2 versions - the version of the specification that they implement, and their own version. Consult the reference implementation documentation for policy regarding this version number</li>
  <li>The specification published by the continuous integration service (<a href="http://hl7-fhir.github.io/">http://hl7-fhir.github.io/</a>) build may not conform to this version policy, 
    but the versions published on the HL7 web site will (see <a href="http://hl7.org/fhir/directory.html">Directory of published versions</a>)</li>
- <li>The first DSTU was published prior to these rules being agreed as v0.80-2286. This has been updated to 0.0.81.2382 as a technical correction to align with this policy on 9-May 2014</li>
+ <li>Первый DSTU был опубликован до принятия этих правил с версией v0.80-2286. Она была обновлена технически исправлением до версии 0.0.81.2382, чтобы соответствовать политике версионирования, 9 мая 2014</li>
+<!--  <li>Changes to a formally published specification (except for minor publishing corrections, such as correcting broken links) are only made via announced technical corrections</li>
+ <li>The reference implementations have 2 versions - the version of the specification that they implement, and their own version. Consult the reference implementation documentation for policy regarding this version number</li>
+ <li>The specification published by the continuous integration service (<a href="http://hl7-fhir.github.io/">http://hl7-fhir.github.io/</a>) build may not conform to this version policy, 
+   but the versions published on the HL7 web site will (see <a href="http://hl7.org/fhir/directory.html">Directory of published versions</a>)</li>
+ <li>The first DSTU was published prior to these rules being agreed as v0.80-2286. This has been updated to 0.0.81.2382 as a technical correction to align with this policy on 9-May 2014</li> -->
 </ul>
 
 <a name="history"> </a>
-<h3>Version History since DSTU #1</h3>
+<h3>История версий с момента DSTU #1<!-- Version History since DSTU #1 --></h3>
 
 <p>
-This table lists substantiative changes only.
+В данной таблице приведены только существенные изменения.
+<!-- This table lists substantiative changes only. -->
 </p>
 
 <table class="grid"> 
  <tr>
-   <td><b>Version</b></td>
-   <td><b>Changes</b></td>
+    <td><b>Версия</b></td>
+   <td><b>Изменения</b></td>
+<!--    <td><b>Version</b></td>
+   <td><b>Changes</b></td> -->
  </tr>
 <!--
 template:
