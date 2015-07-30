@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
     
-[%settitle Outstanding Issues%]
+[%settitle Нерешенные вопросы%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -15,13 +15,14 @@
 <h2>Нерешенные вопросы</h2>
 
 <p>
-Для решения ряда вопросов особенно необходимо получить опыт реализации на этапе пробного использования стандартов:
+Имеется ряд вопросов, для которых особенно необходимо получить опыт реализации на этапе пробного использования стандартов:
 <!-- There are a number of issues in which input based on implementation experience is specifically sought during the trial use phase: -->
 </p>
 <a name="todo"> </a>
 
 <ul>
- <li>Immunization : Should it be a <a href="immunization.html">separate resource</a> or a <a href="medicationadministration-immunization.html">profile on medication administration</a>?</li>
+ <li>Иммунизация: следует ли для ее сделать <a href="immunization.html">отдельным ресурсом</a> или <a href="medicationadministration-immunization.html">профилем ресурса medicationadministration</a>?</li>
+<!--  <li>Immunization : Should it be a <a href="immunization.html">separate resource</a> or a <a href="medicationadministration-immunization.html">profile on medication administration</a>?</li> -->
  <li><a href="profiling.html#dstu">Conformance (Соответствие)</a>: как используют системные профили <!--How system profiles are used --></li>
  <li><a href="managing.html#dstu">Resource Identification (Идентификация ресурсов)</a>: Управление идентификацией ресурсов в распределенных системах <!-- Managing resource identification in distributed systems--></li>
  <li><a href="search.html#dstu">Search (Поиск)</a>: Как следует стандартизировать текстовый поиск? <!-- How should text search be standardized? --></li>
@@ -30,29 +31,44 @@
  Насколько политика защиты персональных данных может быть "заложена" в стандарте, какое влияние это окажет на 
  саму спецификацию FHIR <!-- How much policy can be standardized, and how does this impact on this specification? --></li>
  <li><a href="security.html#dstu">Security (Безопасность)</a>: В каких клинических сценариях подразумевается использование цифровой подписи <!-- What use cases are there for digital signatures? --></li>
- <li><a href="clinicalimpression.html#dstu">ClinicalImpression</a>: Content and workflow questions</li>
+ <li><a href="clinicalimpression.html#dstu">ClinicalImpression</a>: вопросы по содержимому и рабочему процессу</li>
+ <li><a href="careplan.html#dstu">Care Team</a>: Care Team, а также использование как шаблон</li>
+ <li><a href="dataelement.html#dstu">Data Element</a>: вопрос о специфике</li>
+ <li><a href="riskassessment.html#dstu">Risk Assessment </a>: </li>
+ <!-- <li><a href="clinicalimpression.html#dstu">ClinicalImpression</a>: Content and workflow questions</li>
  <li><a href="careplan.html#dstu">Care Team</a>: Care Team, plus use as a template</li>
  <li><a href="dataelement.html#dstu">Data Element</a>: question about specificity</li>
- <li><a href="riskassessment.html#dstu">Risk Assessment </a>: </li>
- <li><a href="messaging.html#dstu">Messaging (Обмен сообщениями)</a>: Обмен сообщениями еще не был проверен на практике
- в ходе Коннектатонов, поэтому приветствуется любой опыт практической реализации 
+ <li><a href="riskassessment.html#dstu">Risk Assessment </a>: </li> -->
+ <li><a href="messaging.html#dstu">Messaging (Обмен сообщениями)</a>: Обмен сообщениями еще не был проверен на практике в ходе Коннектатонов, поэтому приветствуется любой опыт практической реализации 
  <!-- Messaging has not yet been well-exercised at connectathon, so feedback based on implementation is welcome --></li>
- <li><a href="bodysite.html#dstu">BodySite</a>: Does this need to be a resource, or can it just be a reusable type?</li>
+  <li><a href="bodysite.html#dstu">BodySite</a>: нужен ли здесь ресурс или достаточно повторно используемого типа?</li>
+<!--  <li><a href="bodysite.html#dstu">BodySite</a>: Does this need to be a resource, or can it just be a reusable type?</li> -->
 </ul>
 
 <p>
-More generally, there are still many outstanding questions about the Request/Fulfillment cycle (<a href="order.html">Order</a>/
+В целом имеется еще много нерешенных вопросов, касающихся цикла запрос/выполнение (<a href="order.html">Order</a>/<a href="orderresponse.html">OrderResponse</a>) и каким образом различные статусы и рабочие процессы связаны с запросами, а также как предложения последовательно соединяются с планами, с заказами, с downstream/encoded заказами и т. д. Это всё вопросы ведущегося исследования.
+<!-- More generally, there are still many outstanding questions about the Request/Fulfillment cycle (<a href="order.html">Order</a>/
 <a href="orderresponse.html">OrderResponse</a> and how various statuses and workflows associated with requests, as well as how proposals 
-cascade to plans to orders to downstream/encoded orders, etc. This is a matter of ongoing investigation.
+cascade to plans to orders to downstream/encoded orders, etc. This is a matter of ongoing investigation. -->
 </p>
 
-<h3>Deferred for a future version</h3>
+<h3>Отложено до будущей версии<!-- Deferred for a future version --></h3>
 <p>
-Some known issues are not addressed in this version of FHIR,
-and are intended to be addressed in subsequent versions:
+Некоторые известные проблемы не решены в этой версии FHIR, их решение планируется в последующих версиях:
+<!-- Some known issues are not addressed in this version of FHIR,
+and are intended to be addressed in subsequent versions: -->
 </p>
 <ul>
- <li>Adverse Event Reporting</li>
+ <li>Отчетность о неблагоприятных событиях</li>
+ <li>Ресурс сигнала тревоги для отображения происходящего с пациентом (например создание устройства)</li>
+ <li>Проблема отслеживания (трекинга)</li>
+ <li>Клинические исследования и протоколы</li>
+ <li>Совокупное представление данных, в том числе отчеты для здравоохранения</li>
+ <li>Ресурсы, имеющие отношение к оплате и, в частности, ресурс Account для отслеживания платежей</li>
+ <li>Один или несколько ресурсов для Advance Care Directive / Power of Attorney</li>
+ <li>Использование RDF</li>
+ <li>Полный серверный фреймворк запросов</li>
+<!--  <li>Adverse Event Reporting</li>
  <li>An alarm resource to represent current issues with the patient (e.g. device created)</li>
  <li>Concern Tracking</li>
  <li>Clinical Studies and Protocols</li>
@@ -61,7 +77,7 @@ and are intended to be addressed in subsequent versions:
  отслеживания платежей Payment related resources, and specifically, an Account resource for payment tracking</li>
  <li>Один или несколько ресурсов для Advance Care Directive / Power of Attorney One or more resources for Advance Care Directive / Power of Attorney</li>
  <li>Use of RDF</li>
- <li>A full server side query framework</li>
+ <li>A full server side query framework</li> -->
 </ul>
 
 </div>
