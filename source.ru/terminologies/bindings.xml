@@ -741,7 +741,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s72"><Data ss:Type="String">Language</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">A human language</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Естественный язык<!-- A human language --></Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s73"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">http://tools.ietf.org/html/bcp47</Data></Cell>
@@ -756,7 +756,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s72"><Data ss:Type="String">MimeType</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The mime type of an attachment</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">MIME-тип вложения<!-- The mime type of an attachment --></Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s73"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">http://www.rfc-editor.org/bcp/bcp13.txt</Data></Cell>
@@ -771,13 +771,13 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DataType</Data></Cell>
-    <Cell><Data ss:Type="String">The type of an element - one of the FHIR data types</Data></Cell>
+    <Cell><Data ss:Type="String">Тип элемента - один из типов данных FHIR<!-- The type of an element - one of the FHIR data types --></Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">#data-types</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">FHIRDefinedType</Data></Cell>
-    <Cell><Data ss:Type="String">Either a resource or a data type</Data></Cell>
+    <Cell><Data ss:Type="String">Либо ресурс, либо тип данных<!-- Either a resource or a data type --></Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">#defined-types</Data></Cell>
    </Row>

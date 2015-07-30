@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
       
-[%settitle Обзор FHIR  - разработчикам%]
+[%settitle Введение в FHIR для разработчиков%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -19,7 +19,7 @@ code { counter-increment: listing; }
 <div class="col-9">
 
 
-<h2>FHIR Overview - Developers</h2>
+<h2>Введение в FHIR для разработчиков</h2>
 
 <p>
 FHIR (Fast Health Interoperability Resources) предназначен для информационного обмена, который поддерживает предоставление медицинской помощи в самых разнообразных процессах. Спецификация базируется на и адаптирует стандартные отраслевые RESTful-методы для предоставления комплексной медицинской помощи в широком диапазоне команд.
@@ -49,7 +49,7 @@ variety of architectures and scenarios. -->
 различных <a href="resourcelist.html">типов ресурсов</a>.
 </p>
 
-<h3>Example Resource</h3>
+<h3>Пример ресурса</h3>
 <p>
 Это пример представления ресурса <a href="patient.html">patient</a> в виде FHIR-объекта в формате <a href="json.html">JSON</a>. Формат <a href="xml.html">XML</a> также определен в спецификации.
 </p>
@@ -119,9 +119,9 @@ variety of architectures and scenarios. -->
 <!-- Note that though this specification always shows the JSON properties in the order they are defined, many JSON libraries order properties by other criteria. -->
 </p>
 
-<h3>Interactions</h3>
+<h3>Взаимодействия</h3>
 <p>
-Для оперирования ресурсами FHIR  предоставляет <a href="http.html">REST API</a> с богатым набором простых взаимодействий:
+Для оперирования ресурсами FHIR  предоставляет <a href="http.html">REST API</a> с богатым набором простых операций:
 </p>
 <ul>
 <li><a href="http.html#create">Create</a> = POST https://example.com/path/{resourceType}</li>
@@ -216,7 +216,7 @@ FHIR-спецификация описывает и другие виды обм
   <li><b>operationOutcome</b> (строка 9) - ресурсы OperationOutcome в данном контексте не имеют id или элемента meta (они не имеют управляемого обозначения)</li>
 </ul>
 
-<h4>Error response</h4>
+<h4>Возвращение ошибки</h4>
 
 <p>
 По множеству причин серверам может потребоваться вернуть ошибку. Клиенты должны быть готовы к ответам, связанным с аутентификацией, однако ошибки, связанные с FHIR-содержимым, должны возвращаться с помощью соответствующего кода HTTP-статуса вместе с ресурсом <a href="operationoutcome.html">OperationOutcome</a> для предоставления дополнительной информации.
@@ -249,7 +249,7 @@ FHIR-спецификация описывает и другие виды обм
 </ul>
 
 
-<h3>Read Request</h3>
+<h3>Запрос на чтение</h3>
 <p>
 <a href="http.html#read">Чтение ресурса</a> выполняется отправкой HTTP GET-запросов в требуемую точку взаимодействия ресурса.
 </p>
@@ -278,7 +278,7 @@ FHIR-спецификация описывает и другие виды обм
 </ul>
 
 
-<h3>Read Response</h3>
+<h3>Ответ на запрос на чтение</h3>
 <p>
 Ответ на GET-запрос содержит сам ресурс. 
 </p>
@@ -313,7 +313,7 @@ FHIR-спецификация описывает и другие виды обм
   <li><b>lastUpdated</b> (строка 12) - если имеется, должно совпадать со значением в HTTP-заголовке</li>
 </ul>
 
-<h3>Search Request</h3>
+<h3>Запрос на поиск</h3>
 <p>
 Кроме получения одиночного известного ресурса, есть возможность находить ресурсы с помощью 
 <a href="http.html#search">поиска в точке взаимодействия ресурса</a> по <a href="search.html">набору критериев</a>, описывающих набор ресурсов, который должен быть получен, и их порядок сортировки. Общий шаблон запроса следующий:
@@ -336,7 +336,7 @@ https://example.com/base/MedicationPrescription?patient=347
 возвращает все prescriptions пациента, созданного [в примере] выше.
 </p>
 
-<h3>Search Response</h3>
+<h3>Ответ на запрос на поиск</h3>
 <p>
 Ответом на поисковый запрос будет <a href="bundle.html">bundle</a>: список соответствующих запросу ресурсов с некоторыми метаданными:
 </p>

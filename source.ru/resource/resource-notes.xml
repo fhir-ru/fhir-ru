@@ -37,32 +37,38 @@ upper and lowercase ASCII letters, numerals, "-" and ".".  -->
 </p>
 
 <a name="identifiers"> </a>
-<h4>"Business" Identifiers</h4>
+<h4>Бизнес-идентификаторы<!-- "Business" Identifiers --></h4>
 <p>
-In addition to the Resource identity element "id", many resources contain an
+Кроме элемента идентификации ресурса "id", многие ресурсы содержат элемент "identifier", который, если заполнен, содержит различного вида идентификаторы.
+<!-- In addition to the Resource identity element "id", many resources contain an
 element named "identifier", which, if populated, contains a different kind of 
-identifier.
+identifier. -->
 </p>
 <p>
-The resource identity is a direct ("literal") reference that is intended to 
+Идентификатор ресурса - это прямая (буквальная) ссылка, которая предназначена для доступа через http для возвращения ресурса. Если ресурс копируется с сервера на сервер, идентификатор ресурса будет меняться, поскольку идентификаторы ресурсу присваивают серверы.
+<!-- The resource identity is a direct ("literal") reference that is intended to 
 be accessed via http for a resource to be returned. As a resource is copied
 from server to server, the resource identity will change as the servers 
-assign identities to the resource.
+assign identities to the resource. -->
 </p>
 <p>
-However all copies of the resource refer to the same underlying concept,
+Однако все копии ресурса ссылаются на один и тот же лежащий в основе концепт, и этот концепт может также быть представлен в других форматах (по-разному, v2,
+CDA, XDS и многих других). Каждое представление имеет один и тот же идентификатор, который определяет его единообразно во всех контекстах использования. Этот идентификатор называется бизнес-идентификатором и хранится в элементе <i>identifier</i>.
+В нескольких ресурсах есть элемент <i>url</i>, который служит этой же цели, но имеет ограничение - должен быть буквальным URL.
+<!-- However all copies of the resource refer to the same underlying concept,
 and this concept may also be represented in other formats (variously, v2,
 CDA, XDS, and many more). Each representation carries the same identifier
 that identifies it consistently across all contexts of use. This is known
 as the business identifier, and is found in the <i>identifier</i> element. 
 In a few resources, there is a <i>url</i> element that serves a similar
-purpose, but is constrained to be a literal URL.
+purpose, but is constrained to be a literal URL. -->
 </p>
 <p>
-If a FHIR server is a stable server that is the canonical master source 
+Если FHIR-сервер является стабильным сервером, то есть каноническим мастер-источником определения концепта, бизнес-идентификатор всех систем может совпадать с буквальным идентификатором ресурса на мастер-сервере.
+<!-- If a FHIR server is a stable server that is the canonical master source 
 for the definition of a concept, the business identifier for all 
 systems may be the same as the literal identity of the resource on the 
-master server.
+master server. -->
 </p>
 
 
@@ -94,8 +100,9 @@ in particular implementations or contexts of use. -->
     <td>Изменяется при каждом изменении содержимого ресурса. На него можно ссылаться в <a href="references.html#Resource">ссылке на ресурс</a>. Может использоваться для гарантии, что обновления исходят из последней версии ресурса.
 	<!-- Changes each time the content of the resource changes. Can be referenced in a <a href="references.html#Resource">resource reference</a>. 
       Can be used to ensure that updates are based on the latest version of the resource.  -->
-    <br/>Версия может быть уникальной либо глобально, либо только в области действия логического идентификатора ресурса. Идентификаторы версии, как правило, являются либо последовательно увеличивающимися идентификаторами, ограниченными логическим идентификатором, либо UUID, хотя ни один из этих вариантов не является обязательным. There is no fixed order for version ids - clients cannot assume that a versionId that comes after another one either numerically or alphabetically represents a later version. 
-     The same versionId can never be used for more than one version of the same resource.
+    <br/>Версия может быть уникальной либо глобально, либо только в области действия логического идентификатора ресурса. Идентификаторы версии, как правило, являются либо последовательно увеличивающимися идентификаторами, ограниченными логическим идентификатором, либо UUID, хотя ни один из этих вариантов не является обязательным. 
+	Фиксированный порядок идентификаторов версии отсутствует - клиенты не могут предполагать, что versionId, который идет за другим versionId численно или в алфавитном порядке, представляет собой более позднюю версию.
+	Один versionId не может использоваться более чем для одной версии одного и того же ресурса.
 <br/>Обратите внимание, что серверы ДОЛЖНЫ поддерживать версии, но некоторые из них не в состоянии это делать
 	<!-- The version can be globally unique, or scoped by the Logical Id of the resource. 
      Version identifiers are generally either a serially incrementing id scoped by the logical id, or a uuid, though neither of these approaches 
@@ -117,22 +124,26 @@ in particular implementations or contexts of use. -->
   <tr>
    <td>profile (0..*)</td>
    <td><a href="datatypes.html#uri">uri</a></td>
-   <td>An assertion that the content conforms to a resource profile (a <a href="structuredefinition.html">StructureDefinition</a>). See <a href="profiling.html#resources">Extending and Restricting Resources</a> for further discussion.  
-    Can be changed as profiles and value sets change or the system rechecks conformance</td>
+   <td>Утверждение, что данное содержимое соответствует профилю ресурса (<a href="structuredefinition.html">StructureDefinition</a>). См. <a href="profiling.html#resources">Расширение и ограничение ресурсов</a> для дальнейшего обсуждения.
+   Может быть изменено при изменении профилей и наборов значений или при перепроверке системой соответствия
+	<!-- An assertion that the content conforms to a resource profile (a <a href="structuredefinition.html">StructureDefinition</a>). See <a href="profiling.html#resources">Extending and Restricting Resources</a> for further discussion.  
+    Can be changed as profiles and value sets change or the system rechecks conformance --></td>
   </tr>
 	
   <tr>
    <td>security (0..*)</td>
    <td><a href="datatypes.html#Coding">Coding</a></td>
-   <td><a href="security-labels.html">Security labels</a> applied to this resource. These tags connect resources in specific ways to 
-    the overall security policy and infrastructure. Security tags can be updated when the resource changes, or whenever the security sub-system chooses to</td>
+   <td><a href="security-labels.html">Метки уровня безопасности</a>, назначенные ресурсу. Эти теги связывают ресурсы особым образом с общей политикой и инфраструктурой безопасности. Теги безопасности могут обновляться при изменении ресурса или когда это решит подсистема безопасности
+	<!-- <a href="security-labels.html">Security labels</a> applied to this resource. These tags connect resources in specific ways to 
+    the overall security policy and infrastructure. Security tags can be updated when the resource changes, or whenever the security sub-system chooses to --></td>
   </tr>
 	
   <tr>
    <td>tag (0..*)</td>
    <td><a href="datatypes.html#Coding">Coding</a></td>
-   <td><a href="compartments.html">Tags</a> applied to this resource. Tags are used to relate resources to process and workflow. Applications are not required to consider 
-    the tags when interpreting the meaning of a resource.</td>
+   <td><a href="compartments.html">Теги</a>, присвоенные этому ресурсу. Теги используются для привязки ресурсов к рабочим процессам. Приложениям не обязательно учитывать теги при интерпретации значения ресурса.
+	<!-- <a href="compartments.html">Tags</a> applied to this resource. Tags are used to relate resources to process and workflow. Applications are not required to consider 
+    the tags when interpreting the meaning of a resource. --></td>
   </tr>
 		
 </table>
@@ -140,17 +151,21 @@ in particular implementations or contexts of use. -->
 [%edt Meta resource.html 1%]
 
 <p>
-Note that the RESTful API defines some <a href="operations.html">Operations</a> that provide
-<a href="resource-operations.html#meta">direct read and write access</a> to the <i>meta</i> element.   
+Обратите внимание, что в RESTful API определены некоторые <a href="operations.html">операции</a>, которые обеспечивают <a href="resource-operations.html#meta">прямой доступ на чтение и запись</a> к элементу <i>meta</i> 
+<!-- Note that the RESTful API defines some <a href="operations.html">Operations</a> that provide
+<a href="resource-operations.html#meta">direct read and write access</a> to the <i>meta</i> element.    -->
 </p>
 
 <a name="versions"> </a>
-<h4>Technical vs Business Versions</h4>
+<h4>Различие между технической и бизнес-версией<!-- Technical vs Business Versions --></h4>
 <p>
-All resources are conceptually versioned, and each resource sits at the head of a linear list of past versions. 
+Все ресурсы концептуально версионируются, и каждый ресурс идет во главе линейного списка прошлых версий.
+Прошлые версии заменяются текущей версией, и доступны только в целях аудита/проверки целостности.
+Примером текущей версии будет http://acme.org/fhir/ResourceType/id123, а прошлой версии - http://acme.org/fhir/ResourceType/id123/_history/v2.
+<!-- All resources are conceptually versioned, and each resource sits at the head of a linear list of past versions. 
 The past versions are superseded by the current version, and only available for audit/integrity purposes. 
 The current version is e.g. http://acme.org/fhir/ResourceType/id123, and a past version would be 
-http://acme.org/fhir/ResourceType/id123/_history/v2.
+http://acme.org/fhir/ResourceType/id123/_history/v2. -->
 </p>
 <p>
 Note that there's no requirement for servers to keep a history. The 
