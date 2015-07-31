@@ -4528,7 +4528,7 @@
     <Cell ss:StyleID="s114"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Валидация ресурса<!-- Validate a resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s128"><Data ss:Type="String">Операция валидации проверяет, допустимо ли вложенное содержимое либо в общем, либо как создание, обновление или удаление существующего ресурса.&#10;&#10;Действие сервера зависит от параметра mode:&#10;&#10;* [отсутствует]: Сервер проверяет содержимое ресурса на соответствие некоторой схеме, ограничивающим условиям и другим общим номенклатурным правилам&#10;* create: Сервер проверяет содержимое, затем проверяет, что это содержимое допустимо для создания (например, что содержимое не нарушает никакие ограничения уникальности)&#10;* update: Сервер проверяет содержимое, затем проверяет, что оно допустимо в качестве обновления заявленного конкретного ресурса (например, что оно не модифицирует неизменяемые поля, которые сервер не позволяет менять, а также проверка версионной целостности при необходимости)&#10;* delete: Сервер игнорирует содержимое и проверяет, что удаление названного ресурса разрешено (например проверка соблюдения правил ссылочной целостности)&#10;&#10;Режимы "update" и "delete" могут использоваться, только когда операция вызывается на уровне ресурса. &#10;&#10;Ответом такой операции будет OperationOutcome&#10;&#10;&#10;<!-- The validate interaction checks whether the attached content would be acceptable either generally, or as a create, or an update or delete to an existing resource.&#10;&#10;The action the server takes depends on the mode parameter:&#10;&#10;* [missing]: The server checks the content of the resource against any schema, constraint rules, and other general terminology rules&#10;* create: The server checks the content, and then checks that the content would be acceptable as a create (e.g. that the content would not validate any uniqueness constraints)&#10;* update: The server checks the content, and then checks that it would accept it as an update against the nominated specific resource (e.g. that there are no changes to immutable fields the server does not allow to change, and checking version integrity if appropriate)&#10;* delete: The server ignores the content, and checks that the nominated resource is allowed to be deleted (e.g. checking referential integrity rules)&#10;&#10;Modes update and delete can only be used when the operation is invoked at the resource level. &#10;&#10;The return from this operation is an OperationOutcome&#10;&#10;&#10; --></Data><NamedCell
+    <Cell ss:StyleID="s128"><Data ss:Type="String">Операция валидации проверяет, допустимо ли вложенное содержимое либо в общем, либо как аргумент операции создания, обновления или удаления существующего ресурса.&#10;&#10;Действие сервера зависит от параметра mode:&#10;&#10;* [отсутствует]: Сервер проверяет содержимое ресурса на соответствие некоторой схеме, ограничивающим условиям и другим общим номенклатурным правилам&#10;* create: Сервер проверяет содержимое, затем проверяет, что это содержимое допустимо для создания (например, что содержимое не нарушает никакие ограничения уникальности)&#10;* update: Сервер проверяет содержимое, затем проверяет, что оно допустимо в качестве обновления заявленного конкретного ресурса (например, что оно не модифицирует неизменяемые поля, которые сервер не позволяет менять, а также проверка версионной целостности при необходимости)&#10;* delete: Сервер игнорирует содержимое и проверяет, что удаление названного ресурса разрешено (например проверка соблюдения правил ссылочной целостности)&#10;&#10;Режимы "update" и "delete" могут использоваться, только когда операция вызывается на уровне ресурса. &#10;&#10;Ответом такой операции будет OperationOutcome&#10;&#10;&#10;<!-- The validate interaction checks whether the attached content would be acceptable either generally, or as a create, or an update or delete to an existing resource.&#10;&#10;The action the server takes depends on the mode parameter:&#10;&#10;* [missing]: The server checks the content of the resource against any schema, constraint rules, and other general terminology rules&#10;* create: The server checks the content, and then checks that the content would be acceptable as a create (e.g. that the content would not validate any uniqueness constraints)&#10;* update: The server checks the content, and then checks that it would accept it as an update against the nominated specific resource (e.g. that there are no changes to immutable fields the server does not allow to change, and checking version integrity if appropriate)&#10;* delete: The server ignores the content, and checks that the nominated resource is allowed to be deleted (e.g. checking referential integrity rules)&#10;&#10;Modes update and delete can only be used when the operation is invoked at the resource level. &#10;&#10;The return from this operation is an OperationOutcome&#10;&#10;&#10; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">Эту операцию можно использовать во время проектирования и разработки приложения для его валидации. Также она может использоваться и во время выполнения. Одним из возможных способов использования может быть такой, когда клиент запрашивает сервер, допустимо ли предлагаемое обновление, которое пользователь редактирует в диалоговом окне, и сервер показывает пользователю актуальную ошибку. Эта операция может использоваться как часть облегченного двухфазного протокола исполнения, при этом отсутствует ожидание того, что сервер будет хранить содержимое ресурса после совершения этой операции, или что сервер будет гарантировать успешное выполнение фактического создания, обновления или удаления после завершения операции валидации.<!-- This operation may be used during design and development to validate application design. It can also be used at run-time. One possible use might be that a client asks the server whether a proposed update is valid as the user is editing a dialog, and displays an updated error to the user. The operation can be used as part of a light-weight two phase commit protocol but there is no expectation that the server will hold the content of the resource after this operation is used, or that the server guarantees to succesfully perform an actual create, update or delete after the validation operation completes. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4542,7 +4542,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">The resource to validate</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">Must be present unless the mode is &quot;delete&quot;</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Должно быть указано, если режим не &quot;delete&quot; <!-- Must be present unless the mode is &quot;delete&quot; --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4566,7 +4566,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Literal or logical uri of a profile</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">If this is nominated, then the resource is validated against this specific profile. If a profile is nominated, and the server cannot validate against the nominated profile, it SHALL return an error</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Если это значение указано, тогда ресурс валидируется на соответствие этому указанному профилю. Если профиль указан, и сервер не может проверить на соответствие обозначенному профилю, он ДОЛЖЕН вернуть ошибку<!-- If this is nominated, then the resource is validated against this specific profile. If a profile is nominated, and the server cannot validate against the nominated profile, it SHALL return an error --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
@@ -4589,9 +4589,11 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">operation</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Access a list of profiles, tags, and security labels</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">This operation retrieves a summary of the profiles, tags, and security labels for the given scope. E.g. for each scope:&#10;&#10;* system-wide: a list of all profiles, tags and security labels in use by the system&#10;* resource-type level: A list of all profiles, tags, and security labels for the resource type&#10;* individual resource level: A list of all profiles, tags, and security labels for the current version of the resource.&#10;&#10;Also, as a special case, this operation (and other meta operations) can be performed on a historical version of a resource)</Data></Cell>
-    <Cell ss:StyleID="s132"><Data ss:Type="String">At the system and type levels, the $meta operation is used to get a summary of all the labels that are in use across the system. The principle use for this operation is to support search e.g. what tags can be searched for. At these levels, the meta will not contain versionId, lastUpdated etc. Systems are not obligated to implement the operation at this level (and should return a 4xx error if they don't)&#10;&#10;At the resource and historical entry level, the $meta operation returns the same meta as would be returned by accessing the resource directly. This can be used to allow a system to get access to the meta-information for the resource without accessing the resource itself, e.g. for security reasons</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Получение списка профилей, тегов и меток уровня безопасности<!-- Access a list of profiles, tags, and security labels --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Эта операция извлекает совокупность профилей, тегов и меток уровня безопасности для указанной области действия. Например для каждой области действия:&#10;&#10;* системный уровень: список всех профилей, тегов и меток уровня безопасности, используемых системой&#10;* уровень типа ресурса: список всех профилей, тегов и меток уровня безопасности для типа ресурса&#10;* уровень отдельного ресурса: список всех профилей, тегов и меток уровня безопасности для текущей версии ресурса.&#10;&#10;Также, в виде особого случая, эта операция (и другие операции над метаданными) может быть выполнена над версией из истории ресурса)
+	<!-- This operation retrieves a summary of the profiles, tags, and security labels for the given scope. E.g. for each scope:&#10;&#10;* system-wide: a list of all profiles, tags and security labels in use by the system&#10;* resource-type level: A list of all profiles, tags, and security labels for the resource type&#10;* individual resource level: A list of all profiles, tags, and security labels for the current version of the resource.&#10;&#10;Also, as a special case, this operation (and other meta operations) can be performed on a historical version of a resource) --></Data></Cell>
+    <Cell ss:StyleID="s132"><Data ss:Type="String">На уровне системы и типа операция $meta используется для получения сводки всех меток, которые используются во всей системе. Основное применение этой операции состоит в поддержке поиска, например по каким тегам можно искать. На этих уровнях метаданные не будут содержать versionId, lastUpdated и т. п. Системы не обязаны реализовывать эту операцию на этом уровне (и должны возвращать ошибку вида 4xx, если не реализовывают)&#10;&#10;На уровнях ресурса и записи в истории операция $meta возвращает те же метаданные, которые были бы возвращены при прямом доступе к ресурсу. Это можно использовать, чтобы позволить системе получить доступ к метаинформации ресурса без получения доступа к самому ресурсу, например по причинам безопасности
+	<!-- At the system and type levels, the $meta operation is used to get a summary of all the labels that are in use across the system. The principle use for this operation is to support search e.g. what tags can be searched for. At these levels, the meta will not contain versionId, lastUpdated etc. Systems are not obligated to implement the operation at this level (and should return a 4xx error if they don't)&#10;&#10;At the resource and historical entry level, the $meta operation returns the same meta as would be returned by accessing the resource directly. This can be used to allow a system to get access to the meta-information for the resource without accessing the resource itself, e.g. for security reasons --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">meta.return</Data></Cell>
@@ -4602,7 +4604,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">The meta returned by the operation</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">The meta returned by the operation</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Метаданные, возвращаемые этой операцией<!-- The meta returned by the operation --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4613,9 +4615,10 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">operation</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Add profiles, tags, and security labels to a resource</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">This operation takes a meta, and either adds the profiles, tags, and security labels found in it to the nominated resource. &#10;&#10;This operation can also be used on historical entries - to update them without creating a different historical version</Data></Cell>
-    <Cell ss:StyleID="s132"><Data ss:Type="String">This operation is special in that executing this operation does not cause a new version of the resource to be created. The meta is updated directly. This is because the content in meta does not affect the meaning of the resource, and the security labels (in particular) are used to apply access rules to existing versions of resources</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Добавление ресурсу профилей, тегов и меток уровня безопасности<!-- Add profiles, tags, and security labels to a resource --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Эта операция принимает метаданные и добавляет профили, теги и метки уровня безопасности, которые там найдет, обозначенному ресурсу. &#10;&#10;Также эту операцию можно применять к записям в истории - для их обновления без создания новой версии в истории
+	<!-- This operation takes a meta, and either adds the profiles, tags, and security labels found in it to the nominated resource. &#10;&#10;This operation can also be used on historical entries - to update them without creating a different historical version --></Data></Cell>
+    <Cell ss:StyleID="s132"><Data ss:Type="String">Эта операция отличается от других тем, что ее выполнение не влечет за собой создания новой версии ресурса. Обновляются непосредственно метаданные. Это объясняется тем, что содержимое метаданных не влияет на смысл ресурса, а метки уровня безопасности (в частности) используются для применения правил доступа к существующим версиям ресурсов<!-- This operation is special in that executing this operation does not cause a new version of the resource to be created. The meta is updated directly. This is because the content in meta does not affect the meaning of the resource, and the security labels (in particular) are used to apply access rules to existing versions of resources --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="97.5">
     <Cell ss:StyleID="s116"><Data ss:Type="String">meta-add.meta</Data></Cell>
@@ -4626,7 +4629,8 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Profiles, tags, and security labels to add</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Profiles, tags, and security labels to add to the existing resource. Note that profiles, tags, and security labels are sets, and duplicates are not created.&#10;&#10;The identity of a tag or security label is the system+code. When matching existing tags during adding, version and display are ignored. For profiles matching is based on the full URL</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Профили, теги и метки уровня безопасности для добавления к существующему ресурсу. Обратите внимание, что профили, теги и метки уровня безопасности являются множествами и дубликаты не создаются.&#10;&#10;Идентификатором тега или метки уровня безопасности является значение system+code. При поиске совпадений с существующими тегами во время добавления, значения элементов version и display игнорируются. Для профилей поиск соответствий основывается на полном URL
+	<!-- Profiles, tags, and security labels to add to the existing resource. Note that profiles, tags, and security labels are sets, and duplicates are not created.&#10;&#10;The identity of a tag or security label is the system+code. When matching existing tags during adding, version and display are ignored. For profiles matching is based on the full URL --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4638,7 +4642,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Resulting meta for the resource</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Resulting meta for the resource</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Итоговые метаданные ресурса<!-- Resulting meta for the resource --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4649,9 +4653,11 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">operation</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Delete profiles, tags, and security labels for a resource</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">This operation takes a meta, and either deletes the profiles, tags, and security labels found in it from the nominated resource. &#10;&#10;This operation can also be used on historical entries</Data></Cell>
-    <Cell ss:StyleID="s132"><Data ss:Type="String">This operation is special in that executing this operation does not cause a new version of the resource to be created. The meta is updated directly. This is because the content in meta does not affect the meaning of the resource, and the security labels (in particular) are used to apply access rules to existing versions of resources</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Удаление у ресурса профилей, тегов и меток уровня безопасности<!-- Delete profiles, tags, and security labels for a resource --></Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Эта операция принимает метаданные и удаляет профили, теги и метки уровня безопасности, найденные в них, у указанного ресурса. &#10;&#10;Эта операция также может использоваться с историческими записями
+	<!-- This operation takes a meta, and either deletes the profiles, tags, and security labels found in it from the nominated resource. &#10;&#10;This operation can also be used on historical entries --></Data></Cell>
+    <Cell ss:StyleID="s132"><Data ss:Type="String">Эта операция отличается от других тем, что ее выполнение не влечет за собой создания новой версии ресурса. Обновляются непосредственно метаданные. Это объясняется тем, что содержимое метаданных не влияет на смысл ресурса, а метки уровня безопасности (в частности) используются для применения правил доступа к существующим версиям ресурсов
+	<!-- This operation is special in that executing this operation does not cause a new version of the resource to be created. The meta is updated directly. This is because the content in meta does not affect the meaning of the resource, and the security labels (in particular) are used to apply access rules to existing versions of resources --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="97.5">
     <Cell ss:StyleID="s116"><Data ss:Type="String">meta-delete.meta</Data></Cell>
@@ -4662,7 +4668,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Profiles, tags, and security labels to delete</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Profiles, tags, and security labels to add delete from the existing resource. It is not an error if these tags, profiles, and labels do not exist.&#10;&#10;The identity of a tag or security label is the system+code. When matching existing tags during deletion, version and display are ignored. For profiles matching is based on the full URL</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Профили, теги и метки уровня безопасности для удаления из существующего ресурса. Не будет ошибкой, если эти теги, профили или метки уровня безопасности не существуют.&#10;&#10;Идентификатором тега или метки уровня безопасности является значение system+code. При поиске совпадений с существующими тегами во время удаления, значения элементов version и display игнорируются. Для профилей поиск соответствий основывается на полном URL<!-- Profiles, tags, and security labels to add delete from the existing resource. It is not an error if these tags, profiles, and labels do not exist.&#10;&#10;The identity of a tag or security label is the system+code. When matching existing tags during deletion, version and display are ignored. For profiles matching is based on the full URL --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4674,7 +4680,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Resulting meta for the resource</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Resulting meta for the resource</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Итоговые метаданные ресурса<!-- Resulting meta for the resource --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">

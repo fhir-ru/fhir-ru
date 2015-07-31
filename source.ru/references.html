@@ -27,8 +27,10 @@
 Ресурсы содержат два типа ссылок:
 </p>
 <ul>
- <li><b>Internal "contained" references</b> - references to other resources packaged inside the source resource</li>
- <li><b>External references</b> - references from resources found elsewhere</li>
+ <li><b>Внутренние "вложенные" ссылки</b> - ссылки на другие ресурсы, заключенные внутри исходного ресурса</li>
+ <li><b>Внешние ссылки</b> - ссылки из ресурсов, находящихся в другом месте</li>
+<!--  <li><b>Internal "contained" references</b> - references to other resources packaged inside the source resource</li>
+ <li><b>External references</b> - references from resources found elsewhere</li> -->
 </ul>
 <p>
 Ссылки всегда определяются и представляются в одном конкретном направлении - от одного ресурса (источника) к другому (цели). Ссылки указываются в виде URL-адресов, которые могут быть абсолютными или относительными. Алгоритм разрешения ссылок обсуждается ниже.
@@ -62,12 +64,14 @@
  </li>
  <li>Использование абсолютных URL адресов обеспечивает стабильный масштабируемый подход, подходящий для облачного/веб окружения, в то время как использование относительных/логических ссылок обеспечивает гибкий подход, подходящий для использования при торговле через границы закрытых экосистем (см. <a href="implementation.html#identity">проблемы реализации</a> для дальнейшего обсуждения)</li>
  <li>Абсолютные URL-адреса не обязательно должны указывать на  <a href="http.html">FHIR RESTful сервер</a>, хотя это и предпочтительный подход. Ведет ли ссылка на FHIR RESTful сервер или нет, она ДОЛЖНА указывать на Ресурс как определено в данной спецификации.
-	<br/>Note: This regex is true if the reference to a resource is consistent with a FHIR API:
+	<br/>Примечание: данное регулярное выражение будет выполняться, если ссылка на ресурс соответствует FHIR API: 
+	<!-- Note: This regex is true if the reference to a resource is consistent with a FHIR API: -->
    <pre>
    ((http|https)://([A-Za-z0-9\\\/\.\:\%\$])*)?([%piperesources%])\/[%id_regex%](\/_history\/[%id_regex%])?
    </pre>
    <br/>
-   However conformance with this regex is no guarantee that the end point is a FHIR server
+   Однако соответствие этому регулярному выражению не является гарантией того, что конечной точкой будет сервер FHIR
+  <!--  However conformance with this regex is no guarantee that the end point is a FHIR server -->
 	</li>
  <li>URL-адреса всегда считаются чувствительными к регистру.</li>
  <li>Элемент <i>display</i>, если заполнен, в основном не имеет идентичного содержимого в Resource.text ссылаемого ресурса. Его цель  - обозначить, на что идет ссылка, а не более полно описать это.</li>
@@ -192,14 +196,18 @@ A contained resource can only be included in another resource if something in th
 
 </div>
 
-<h4>Context Inside a Resource</h4>
+<h4>Контекст внутри ресурса<!-- Context Inside a Resource --></h4>
 <p>
-Resources that are contained inline may also "inherit" context from their parent resource. For instance, if
+Ресурсы, которые вложены непосредственно, могут также "наследовать" контекст своего родительского ресурса. К примеру, если родительский ресурс содержит "subject", и у вложенного ресурса также есть элемент "subject", но его значение не задано, обрабатывающее приложение может сделать вывод, что эти значения совпадают.
+<!-- Resources that are contained inline may also "inherit" context from their parent resource. For instance, if
 the parent resource contains a "subject", and the contained resource also has a "subject" element defined,
-but does not specify any subject, a processing application might infer that the subject is the same.
+but does not specify any subject, a processing application might infer that the subject is the same. -->
 </p>
 <p>
-However FHIR provides no mechanism for defining or constraining any conduction of "equivalent" properties 
+Однако FHIR не предоставляет никакого механизма задания или ограничения вывода "эквивалентных" свойств из родительского ресурса во вложенный - даже объявлением использования определенного профиля.
+Рекомендуется явно включать все известные свойства вложенных ресурсов, даже если это будет избыточно вместе со свойствами родительского ресурса. Например если родительский и вложенный ресурсы оба содержат элемент "subject", оба элемента должны присутствовать, даже если они ссылаются на один и тот же ресурс. Приложения, которые решат опускать избыточные элементы вложенных ресурсов, не должны ожидать от других приложений делать вывод (или корректно заключать) намеченное значение в таких случаях. Приложения не могут безопасно полагать, что опущенные элементы во вложенных ресурсах могут быть безопасно выводиться как совпадающие с родительским ресурсом. 
+Любая попытка оптимизировать содержимое ресурса "проведением" значения из родительского во вложенный ресурс должна управляться через внешнее соглашение и должна выполняться с признанием того факта, что любой получатель, не являющийся участником этого соглашения, может не выполнить правильных (или вообще каких-либо) выводов.
+<!-- However FHIR provides no mechanism for defining or constraining any conduction of "equivalent" properties 
 from a containing resource into any contained resource - not even by declaring the use of a particular profile.
 Best practice is to explicitly include all known properties on contained resources, even if redundant with 
 properties on the containing resource.  E.g. If the containing resource and contained resource both have a 
@@ -209,7 +217,7 @@ choose to omit redundant elements on contained resources should not expect other
 elements in contained resources can safely be inferred to be the same as the containing resource.  
 Any attempt to optimize resource content by 'conducting' meaning from containing to contained resources must 
 be managed through out-of-band agreement and must be done with the recognition that any receiver not party 
-to that agreement may not make correct (or any) inferences.
+to that agreement may not make correct (or any) inferences. -->
 </p>
     
 <a name="bundle-refs"> </a>

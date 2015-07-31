@@ -16,18 +16,22 @@
 <h2>FHIR Life Cycle Page</h2>
 
 <p>
-This page describes several issues around lifecycle management for 
+На этой странице приводится несколько вопросов, касающихся управления жизненным циклом ресурсов и их содержимого. В частности, данная страница описывает:
+<!-- This page describes several issues around lifecycle management for 
 the resources and the content they contain. Specifically, this page 
-describes:
+describes: -->
 </p>
 <ul>
- <li><a href="#status">Resource Status</a>: how resource status codes work</li>
+ <li><a href="#status">Статус ресурса</a>: как работают коды статусов ресурсов</li>
+ <li><a href="#current">Текущий список</a>: вопросы, связанные с извлечением "текущего списка Х" ресурсов</li>
+ <li><a href="#error">Введено по ошибке</a>: информация о том, что делать с ошибочными записями ресурсов</li>
+<!--  <li><a href="#status">Resource Status</a>: how resource status codes work</li>
  <li><a href="#current">Current List</a>: issues associated with retrieving "current X list" of resources</li>
- <li><a href="#error">Entered in Error</a>: information about how erroneous entry is handled for the resources</li>
+ <li><a href="#error">Entered in Error</a>: information about how erroneous entry is handled for the resources</li> -->
 </ul>
 
 <a name="status"> </a>
-<h3>Resource Status</h3>
+<h3>Статус ресурса<!-- Resource Status --></h3>
 <p>
 У многих ресурсов FHIR есть элемент "status", который обозначает статус жизненного цикла ресурса или клинического процесса, представляемого ресурсом. Рабочие группы могут задавать значения статуса, соответствующие отдельному ресурсу. Хотя согласованность между ресурсами и не является основной целью, пользователям и разработчикам будет полезно иметь хорошо продуманные наборы значений, которые охватывают все возможные статусы (так как наборы значений, как правило, являются обязательными и не расширяются).
 <!-- Many FHIR resources have a status element that represents the lifecycle state of the resource or the clinical process represented by the resource. Work groups can specify status values appropriate to the individual resource. Although consistency between resources is not the primary objective, it is helpful to users and developers to have well-crafted value sets that cover all possible states (since the value sets are typically required and non-extensible). --></p>
@@ -41,7 +45,7 @@ describes:
 	<li>Шаблон клинических статусов<!-- Clinical status pattern --></li>
 </ul>
 
-<h3>Clinical Workflow Process Pattern</h3>
+<h3>Шаблон статусов клинического рабочего процесса<!-- Clinical Workflow Process Pattern --></h3>
 
 <p>Описывает статусы жизненного цикла сложных мероприятий, распространенных в здравоохранении. Как правило, эти статусы следуют хронологическому шаблону и идут по порядку от начала до завершения действия. Характерный набор статусов для шаблона клинического рабочего процесса включает в себя:
 <!-- Describes the lifecycle states of complex activities common in healthcare. Typically, these states follow a chronological pattern that leads from initiation to the conclusion of the action. A characteristic set of states for the clinical workflow process pattern include: --></p>
@@ -143,41 +147,52 @@ describes:
 <hr/>
 
 <a name="current"> </a>
-<h3>Current Resource Lists</h3>
+<h3>Текущие списки ресурсов<!-- Current Resource Lists --></h3>
 
 <p>
-Many clinical systems maintain current lists of some kind of resources for a patient. Some of the commonly maintained lists include:
+Многие клинические системы поддерживают для пациента текущие списки ресурсов некоторого вида. Вот некоторые из часто встречающихся списков:
+<!-- Many clinical systems maintain current lists of some kind of resources for a patient. Some of the commonly maintained lists include: -->
 </p>
 <ul>
- <li>Current Problem List: a list of the problems that are of concern for care of the patient</li>
- <li>Current Medication List: a list of the medications that a patient is known to be on at the current time</li>
+ <li>Список текущих проблем: список проблем, которые представляют интерес при уходе за пациентом</li>
+ <li>Список текущих медикаментов: список лекарств, которые пациент, как известно, принимает в текущий момент времени</li>
+<!--  <li>Current Problem List: a list of the problems that are of concern for care of the patient</li>
+ <li>Current Medication List: a list of the medications that a patient is known to be on at the current time</li> -->
 </ul>
 <p>
-Because of the way that resources are used, there is no simple way to determine, from 
+Из-за способа, которым используются ресурсы, нет простого способа определения, из проверки ресурса, является ли он "текущим" или нет. Взять, к примеру, ресурс <a href="condition.html">Condition</a>. В обычной EHR ресурсы Condition могут публиковаться через RESTful интерфейс по следующим причинам:
+<!-- Because of the way that resources are used, there is no simple way to determine, from 
 examination of a resource, whether it is 'current' or not. Take, as an example, the 
 <a href="condition.html">Condition</a> resource. In a typical EHR, condition resources 
-might be published on the RESTful interface for the following reasons:
+might be published on the RESTful interface for the following reasons: -->
 </p>
 <ul>
  <li>to represent an item in a patient's curated problem list</li>
  <li>to represent a complaint or a diagnosis from an encounter record</li>
  <li>to represent a problem for investigation provided by a diagnostic system as part of a <a href="diagnosticorder.html">DiagnosticOrder</a>/<a href="diagnosticreport.html">DiagnosticReport</a> pair</li>
  <li>the resources were received from another system as part of a referral package, and were current for that system when they were received</li>
+<!--  <li>to represent an item in a patient's curated problem list</li>
+ <li>to represent a complaint or a diagnosis from an encounter record</li>
+ <li>to represent a problem for investigation provided by a diagnostic system as part of a <a href="diagnosticorder.html">DiagnosticOrder</a>/<a href="diagnosticreport.html">DiagnosticReport</a> pair</li>
+ <li>the resources were received from another system as part of a referral package, and were current for that system when they were received</li> -->
 </ul>
 <p>
-There is no element on the Condition resource than can convey the difference between these usages. In particular, there can be 
+В ресурсе Condition нет элемента, который мог бы передавать разницу между этими использованиями. В частности, может не быть способа различать текущие ресурсы и ресурсы, которые были текущими в прошлом, без необходимости ретроспективного изменения ресурсов, что было бы проблематично с точки зрения целостности и электронных цифровых подписей.
+<!-- There is no element on the Condition resource than can convey the difference between these usages. In particular, there can be 
 no way to differentiate between current and past current resources without having to retrospectively alter resources, which is 
-problematic with regard to intergrity and digital signatures. 
+problematic with regard to intergrity and digital signatures.  -->
 </p>
 <p>
-One consequnce of this is that searching the condition resource for a given patient will return more
+Одним из следствий этого является то, что поиск по ресурсам Condition для данного пациента будет возвращать больше, чем просто текущие проблемы пациента. Хотя это кажется несколько нелогичным для некоторых реализаторов, ограничение поиска по ресурсам Condition таким образом, чтобы получить список только текущих проблем пациента, исключает все остальные - важные - способы использования ресурса Condition.
+<!-- One consequnce of this is that searching the condition resource for a given patient will return more
 than just the patient's current problems. Though this is somewhat counter-intuitive to some implementers,
 restricting searches on Condition to only include the patient's current curated problem list excludes 
-all the other - important - uses of the Condition resource.
+all the other - important - uses of the Condition resource. -->
 </p>
 <p>
-Determining whether a Condition is an entry on a patient's current problem list is done by checking
-with the Condition resource is referenced from the correct list.
+Определение, является ли ресурс Condition записью из списка текущих проблем пациента, выполняется с помощью проверки, есть ли ссылка на этот ресурс Condition в корректном списке.
+<!-- Determining whether a Condition is an entry on a patient's current problem list is done by checking
+with the Condition resource is referenced from the correct list. -->
 </p>
 <p>
 On the RESTful API, this is done using the <a href="search.html#current">list search mechanism</a>:
