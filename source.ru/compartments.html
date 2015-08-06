@@ -12,67 +12,82 @@
 
 <div class="col-9">
 
-<h2>Compartment Based Access</h2>
+<h2>Доступ на основе логических модулей<!-- Compartment Based Access --></h2>
 
 <a name="root"> </a>
 <a name="compartments"> </a>
 <a name="compartment"> </a>
-<h3>Compartments</h3>
+<h3>Логические модули<!-- Compartments --></h3>
 <p>
-Each resource may belong to one or more logical compartments. A compartment is a logical 
-grouping of resources which share a common property. Compartments have two principal roles:
+Каждый ресурс может принадлежать одному или нескольким логическим модулям. Модуль - это логическая группировка ресурсов, имеющих общее свойство. Модули выполняют две основные роли:
+<!-- Each resource may belong to one or more logical compartments. A compartment is a logical 
+grouping of resources which share a common property. Compartments have two principal roles: -->
 </p>
 <ul>
- <li>Function as an access mechanism for finding a set of related resources quickly</li>
- <li>Provide a definitional basis for applying access control to resources quickly</li>
+ <li>Функционируют в качестве механизма доступа для быстрого поиска набора связанных ресурсов</li>
+ <li>Обеспечивают определительную основу для быстрого применения контроля доступа к ресурсам</li>
+<!--  <li>Function as an access mechanism for finding a set of related resources quickly</li>
+ <li>Provide a definitional basis for applying access control to resources quickly</li> -->
 </ul>
 <p>
-Compartment definitions describe how particular compartment instances are named and identified,
+Определения модулей описывают, каким образом определенные экземпляры модулей именуются и идентифицируются, и каким образом системы понимают, какие ресурсы входят в такой модуль. Следующие модули были определены в рамках данной спецификации:
+<!-- Compartment definitions describe how particular compartment instances are named and identified,
 and how systems know which resources are in the compartment. The following compartments are 
-defined by this specification:
+defined by this specification: -->
 </p>
 <%compartmentlist%>
 <p>
-As an example of compartment usage, to retrieve a list of a patient's conditions, use the URL:
+Как пример применения модулей, используйте следующий URL для извлечения списка проблем пациента:
+<!-- As an example of compartment usage, to retrieve a list of a patient's conditions, use the URL: -->
 </p>
 <pre>
   GET [base]/Patient/[id]/Condition
 </pre>
 <p>
-The details of this usage are <a href="http.html#vsearch">described under the search operation</a>.
+Детали такого применения описаны  в разделе <a href="http.html#vsearch">search operation</a>.
+Как операция, связанная с поиском, добавление ресурсов в модули основывается только на текущей версии любого из участвующих ресурсов. Обратите внимание, что <a href="references.html#contained">вложенные</a> ресурсы patient не могут создавать модуль пациента самостоятельно.
+<!-- The details of this usage are <a href="http.html#vsearch">described under the search operation</a>.
 As a search related operation, the assignment of resources to compartments is only based on 
 the current version of any of the resources involved. Note that <a href="references.html#contained">contained</a>
-patient resources cannot create a patient compartment of their own. 
+patient resources cannot create a patient compartment of their own.  -->
 </p>
 <p>
-Compartments may be used explicitly, like this, but can also be used implicitly. For instance,
+Модули могут применяться явным образом, как тут, а также могут использоваться неявно. К примеру, если FHIR-сервер предоставляет попациентный просмотр записи, авторизованный пользователь, ассоциируемый с использованием FHIR RESTful API, может быть ограничен в доступе к записям из экземпляра(-ов) модуля, логически связанных с их идентификатором. Вне зависимости от того, используются ли модули явно или неявно, серверам потребуется принять меры, чтобы сделать некоторые ресурсы без прямой ссылки на пациента, доступными для клиента (медикаменты, вещества и т. д.).
+<!-- Compartments may be used explicitly, like this, but can also be used implicitly. For instance,
 if a FHIR server is providing a patient view of a record, the authorized user associated
 with use of the FHIR RESTful API may be limited to accessing records from the
 compartment instance(s) logically associated with their identity. Irrespective of whether
 compartments are being used explicitly or implicitly, servers will need to make arrangements
 to make some resources with no direct link to a patient available to the client (medications, 
-substances, etc.).
+substances, etc.). -->
 </p>
 <p>
-Note that resources may cross between compartments, or interlink them. Examples of 
+Обратите внимание, что ресурсы могут пересекаться между модулями или связывать их. Примерами этого будет <a href="diagnosticreport.html">Diagnostic Report</a> определяет субъекта, но <a href="observation.html">Observation</a>, на который он ссылается, определяет другого субъекта, или ресурс <a href="list.html">List</a> ссылается на пункты, которые определяют разных субъектов. Такие поперечные связи могут возникать по многим допустимым причинам, включая:
+<!-- Note that resources may cross between compartments, or interlink them. Examples of 
 this would be where a <a href="diagnosticreport.html">Diagnostic Report</a> identifies  
 a subject, but an <a href="observation.html">Observation</a> it references identifies
 a different subject, or where a <a href="list.html">List</a> resource references
 items that identify different subjects. Such cross-linking may arise for 
-many valid reasons, including:
+many valid reasons, including: -->
 </p>
 <ul>
- <li>Cases where subject records are inter-linked - Transplants, Perinatal care, family therapy etc.</li>
- <li>Workflow management where action lists link multiple patients and/or practitioners</li>
+ <li>Случаи, когда предметы записи взаимосвязаны - трансплантаты, перинатологии, семейная терапия и т. д.</li>
+ <li>Управление рабочим процессом, где списки действий связывают несколько пациентов и/или специалистов</li>
+<!--  <li>Cases where subject records are inter-linked - Transplants, Perinatal care, family therapy etc.</li>
+ <li>Workflow management where action lists link multiple patients and/or practitioners</li> -->
 </ul>
 <p>
-Given the wide variety of use cases and contexts in which FHIR is used, compartments 
+Учитывая широкое разнообразие вариантов применения и контекстов использования FHIR, модули
+не определяют, как обрабатывать поперечные связи. Системы могут отклонить ресурсы, удалить их
+из обоих модулей, поместить их в оба модуля или действовать ещё каким-то другим образом.
+<!-- Given the wide variety of use cases and contexts in which FHIR is used, compartments 
 do not define how cross-linking is handled. Systems may reject resources, remove them 
-from both compartments, or place them in both, or act in some other fashion.
+from both compartments, or place them in both, or act in some other fashion. -->
 </p>
 <p>
-It is at the discretion of the server whether to include resources in a compartment when
-the reference to the resource that establishes the compartment is in an extension.
+Остается на усмотрение сервера, включать ли ресурсы в модуль, если ссылка на этот ресурс, который устанавливает модуль, находится в расширении.
+<!-- It is at the discretion of the server whether to include resources in a compartment when
+the reference to the resource that establishes the compartment is in an extension. -->
 </p>
 
 <hr/>

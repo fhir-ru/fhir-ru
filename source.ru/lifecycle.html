@@ -167,10 +167,10 @@ examination of a resource, whether it is 'current' or not. Take, as an example, 
 might be published on the RESTful interface for the following reasons: -->
 </p>
 <ul>
- <li>to represent an item in a patient's curated problem list</li>
- <li>to represent a complaint or a diagnosis from an encounter record</li>
- <li>to represent a problem for investigation provided by a diagnostic system as part of a <a href="diagnosticorder.html">DiagnosticOrder</a>/<a href="diagnosticreport.html">DiagnosticReport</a> pair</li>
- <li>the resources were received from another system as part of a referral package, and were current for that system when they were received</li>
+ <li>для отображения одного из пунктов списка текущих проблем пациента</li>
+ <li>для отображения жалобы или диагноза из записи о случае обслуживания</li>
+ <li>для отображения проблемы для исследования, выполненного системой диагностики в рамках пары<a href="diagnosticorder.html">DiagnosticOrder</a>/<a href="diagnosticreport.html">DiagnosticReport</a></li>
+ <li>ресурсы были получены из другой системы как часть пакета направления, и считались текущими в той системе на момент их получения [в этой системе]</li>
 <!--  <li>to represent an item in a patient's curated problem list</li>
  <li>to represent a complaint or a diagnosis from an encounter record</li>
  <li>to represent a problem for investigation provided by a diagnostic system as part of a <a href="diagnosticorder.html">DiagnosticOrder</a>/<a href="diagnosticreport.html">DiagnosticReport</a> pair</li>
@@ -195,23 +195,28 @@ all the other - important - uses of the Condition resource. -->
 with the Condition resource is referenced from the correct list. -->
 </p>
 <p>
-On the RESTful API, this is done using the <a href="search.html#current">list search mechanism</a>:
+<!-- On the RESTful API, this is done using the <a href="search.html#current">list search mechanism</a>: -->
+В RESTful API это выполняется с помощью <a href="search.html#current">механизма поиска списков</a>:
 </p>
 <pre>
  GET [base]/AllergyIntolerance?patient=42&amp;_list=$current-allergies
 </pre>
 <p>
-This is a request to fetch all the allergies in the patient 42's "Currrent Problem List".
+Это запрос для извлечения всех аллергий из Списка текущих проблем пациента 42.
+Обратите внимание, что от сервера не требуется фактически делать представление ресурса текущего списка аллергий доступным, хотя это может помочь клиентам для задач аудита/целостности. Дополнительную информацию можно найти в разделе <a href="list-operations.html#find">List Operation "Find"</a>.
+<!-- This is a request to fetch all the allergies in the patient 42's "Currrent Problem List".
 Note that the server is not required to actually make a resource representation of the current allergy list 
 available, though doing so assists clients in their audit/integrity tasks. See 
-<a href="list-operations.html#find">List Operation "Find"</a> for further information.
+<a href="list-operations.html#find">List Operation "Find"</a> for further information. -->
 </p>
 <p>
-In a document, current lists are determined by the code on a Composition section. 
+В документе текущие списки определяются кодом в разделе Composition.
+<!-- In a document, current lists are determined by the code on a Composition section.  -->
 </p>
 <a name="lists"> </a>
 <p>
-FHIR defines the following names for functional lists:
+FHIR определяет следующие имена функциональных списков:
+<!-- FHIR defines the following names for functional lists: -->
 </p>
 <table class="grid">
  <tr>
