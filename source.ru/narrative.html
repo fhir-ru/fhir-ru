@@ -25,7 +25,8 @@
 </p>
 <p>
 Описательная часть ресурса может содержать дополнительную информацию, которой нет в структурированных данных, включая отредактированное человеком содержимое. Дополнительная информация ДОЛЖНА входить в область определения ресурса, хотя для описательной части характерно включать дополнительные данные, извлеченные из других упоминаемых ресурсов, на которые имеются ссылки.
-Narrative for a resource should include summary information about referenced resources as 
+Описательная часть ресурса должна включать сводную информацию по ресурсам, на которые даются ссылки, как необходимо для потребителя этого ресурса чтобы иметь возможность понимать ключевую существенную информацию о ресурсе без извлечения дополнительных ресурсов. Например описание для ресурса MedicationPrescription может включать краткую суммарную информацию о пациенте, медицинском работнике, назначающем рецептурные препараты, и медикаменте, на которых даются ссылки. Некоторые ресурсы (например List, Composition) могут вводить дополнительные правила на содержимое, которое должно (или не должно) быть включено в описательную часть ресурса. Следует учитывать тот факт, что упомянутые ресурсы могут быть обновлены без обновления ресурсов по ссылкам; поэтому доля содержимого ссылочного ресурса, включаемого в ссылающийся ресурс, должна быть ограничена.
+<!-- Narrative for a resource should include summary information about referenced resources as 
 necessary for a consumer of the resource to be able to understand the key essential information 
 about a resource without retrieving additional resources.  For example, the narrative for a 
 MedicationPrescription might include brief summary information about the referenced patient, 
@@ -33,7 +34,7 @@ prescriber and medication.  Some resources (e.g. List, Composition) may provide 
 rules about what content must (or must not) be included in the resource narrative.  Consideration 
 should be given to the fact that referenced resources may be updated without updating 
 referencing resources, so the proportion of content of a referenced resource included 
-in a referencing resource should be limited.
+in a referencing resource should be limited. -->
 </p>
 <p>
 Ресурсы ДОЛЖНЫ всегда содержать описательную часть для поддержки использования человеком в качестве запасного варианта. Тем не менее, в строго управляемых системах торговли, где все системы разделяют общую модель данных и дополнительный текст является излишним или даже несет в себе риск клинической безопасности, описательная часть может быть опущена. Реализаторы должны тщательно взвесить это решение, перед тем как принимать его, т.к. это будет означать, что эти ресурсы смогут быть поняты только в ограниченной торговой среде. Весьма вероятно, что закрытые торговые партнерские среды откроются в течение жизненного срока ресурсов, которые они определяют. К тому же, большинство шагов рабочего процесса, включая нахождение и агрегацию ресурсов, являются намного более сложными и трудоемкими, если используемые ресурсы не имеют собственного текста.
@@ -91,12 +92,14 @@ in a referencing resource should be limited.
 
 
 <a name="id"></a>
-<h3>Image References</h3>
+<h3>Ссылки на изображения<!-- Image References --></h3>
 
 <p>
-Image source data - the src attribute - may refer to an image found in the resource 
+Исходные данные изображения - атрибут "src" - могут ссылаться на изображение, находящееся в ресурсе (как вложенный <a href="media.html">Media</a> или <a href="compartments.html#binary">Binary</a> ресурс)
+по его <i>id</i>:
+<!-- Image source data - the src attribute - may refer to an image found in the resource 
 (as a contained <a href="media.html">Media</a> or <a href="compartments.html#binary">Binary</a> resource)
-by its <i>id</i>:
+by its <i>id</i>: -->
 </p>
 <div class="example">
 <pre class="xml">
@@ -113,28 +116,35 @@ by its <i>id</i>:
 </pre>
 </div>
 <p>
-References between the narrative and the resource data (in either direction)
+Ссылки между описательной частью и данными ресурса (в любом из направлений)
+опосредованы с помощью атрибутов XML id/idref. В JSON используется свойство "id", которое эквивалентно XML-атрибуту "id".
+<!-- References between the narrative and the resource data (in either direction)
 are mediated by the XML id/idref attributes. in JSON, the property "id" is
-used which is equivalent to the XML attribute "id".
+used which is equivalent to the XML attribute "id". -->
 </p>
 <p>
-The "id" attribute SHALL have a unique value <em>within the resource</em> 
+Атрибут "id" ДОЛЖЕН иметь уникальное значение <em>в пределах ресурса</em> 
+относительно любого другого атрибута "id": уникальность и область разрешения этих id-ссылок находится внутри ресурса, который их содержит. 
+Вложенные ресурсы включены в область уникальности id ресурса, который их содержит.
+<!-- The "id" attribute SHALL have a unique value <em>within the resource</em> 
 with regard to any other id attributes: the uniqueness and resolution 
 scope of these id references is within the resource that contains them. 
 Contained resources are included in the id uniqueness scope of the 
-resource that contains them. 
+resource that contains them.  -->
 </p>
 <p>
-If multiple resources are combined into a single combined document,
+Если несколько ресурсов скомбинированы в единый комбинированный документ, например <a href="bundle.html">bundle</a>, то среди ресурсов могут появиться значения-дубликаты атрибута id. Это ДОЛЖНО управляться приложениями для чтения ресурсов.
+<!-- If multiple resources are combined into a single combined document,
 such as a <a href="bundle.html">bundle</a>, duplicate
 values of the id attribute may occur between resources. 
-This SHALL be managed by applications reading the resources. 
+This SHALL be managed by applications reading the resources. --> 
 </p>
 <p>
-Since images that are not contained in the resource cannot be guaranteed to be be available
+Поскольку изображения, которые не вложены в ресурс, нельзя гарантировать доступность при представлении ресурса пользователю, источник всех изображений, которые являются существенной частью описательной части, ДОЛЖНЫ всегда быть встроены в виде <a href="https://tools.ietf.org/html/rfc2397">data: url</a>, во вложении или вложенном ресурсе.
+<!-- Since images that are not contained in the resource cannot be guaranteed to be be available
 when the resource is presented to a user, the source for any images that are an essential 
 part of the narrative SHOULD always be embedded as a <a href="https://tools.ietf.org/html/rfc2397">data: url</a>, 
-in an attachment or a contained resource.
+in an attachment or a contained resource. -->
 </p>
 
 <a name="css"></a>
