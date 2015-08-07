@@ -2,7 +2,7 @@
 
 
       
-[%settitle Extensibility%]
+[%settitle Расширяемость%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -16,36 +16,42 @@
 <%extheader defining%>
 
 <a name="root"> </a>
-<h2>Defining Extensions</h2>
+<h2>Определение расширений<!-- Defining Extensions --></h2>
 
 <p>
-All extensions used in resources require a formal published definition which can be used
+Все расширения, используемые в ресурсах, требуют официального опубликованного определения, которое может использоваться разработчиками приложений либо самими приложениями для интеграции расширений в процесс здравоохранения, который они поддерживают.
+<!-- All extensions used in resources require a formal published definition which can be used
 by application developers, or the applications themselves, to help integrate extensions
-into the healthcare process they support. 
+into the healthcare process they support.  -->
 </p>
 <p>
-Every extension in a resource refers directly to its definition, which is made available
+Каждое расширение в ресурсе ссылается непосредственно на свое определение, которое доступно в виде <a href="structuredefinition.html">StructureDefinition</a>. Ресурс можно <a href="profiling.html">профилировать</a> для указания, где в нем используются конкретные расширения. 
+<!-- Every extension in a resource refers directly to its definition, which is made available
 as a <a href="structuredefinition.html">StructureDefinition</a>. A resource can 
-be <a href="profiling.html">profiled</a> to specify where particular extensions are used. 
+be <a href="profiling.html">profiled</a> to specify where particular extensions are used.  -->
 </p>
 <p>
-Whenever resources containing extensions are exchanged, the definitions of the extensions 
+При любом обмене ресурсами, содержащими расширения, определения этих расширений ДОЛЖНЫ быть доступны для всех сторон-участников совместного использования этих ресурсов. Каждое расширение содержит URI, который ссылается на источник определений как на профиль ресурса. Этот источник ДОЛЖЕН быть буквальной ссылкой, например как http: url, которая ведет на точку взаимодействия, которая возвращает содержимое этих определений - предпочтительно <a href="http.html">FHIR RESTful сервер</a>, поддерживающий профили ресурсов, либо логической ссылкой (например используя urn:) - к примеру, на государственный опубликованный стандарт.
+Расширения могут определяться любым проектом или юрисдикцией, вплоть до международных организаций по разработке стандартов, как сам HL7.
+<!-- Whenever resources containing extensions are exchanged, the definitions of the extensions 
 SHALL be available to all the parties that share the resources. Each extension contains a 
 URI that references the source of the definitions as a Resource Profile. The source SHOULD 
 be a literal reference, such as an http: url that refers to an end-point that responds with 
 the contents of the definitions - preferably a <a href="http.html">FHIR RESTful server</a>
 supporting the Resources Profile, or a logical reference (e.g. using a urn:) - for instance, 
 to a national published standard.
-Extensions may be defined by any project or jurisdiction, up to and including international standards organizations such as HL7 itself. 
+Extensions may be defined by any project or jurisdiction, up to and including international standards organizations such as HL7 itself. --> 
 </p>
 <p>
-Before defining a new extension, attempt to reuse existing extensions defined in one of the <a href="#registration">shared registries described below</a>.
+Перед тем, как определить новое расширение, попробуйте использовать одно из существующих расширений, определенных в одном из <a href="#registration">реестров общего пользования</a>, описанных ниже.
+<!-- Before defining a new extension, attempt to reuse existing extensions defined in one of the <a href="#registration">shared registries described below</a>. -->
 </p>
 
-<h3>Context</h3>
+<h3>Контекст<!-- Context --></h3>
 <p>
-Extensions are always defined against some particular context - the type of element 
-that they may be used to extend. The following are possible contexts for an extension:
+Расширения всегда определяются в каком-то конкретном контексте - тип элемента, который они могут расширять. Далее перечислены возможные виды контекста для расширения:
+<!-- Extensions are always defined against some particular context - the type of element 
+that they may be used to extend. The following are possible contexts for an extension: -->
 </p>
 <table class="codes">
  <tr><th>Context type</th><th>Context format</th><th>Examples</th></tr>
@@ -56,39 +62,50 @@ that they may be used to extend. The following are possible contexts for an exte
  <tr><td>A set of some combination of the above</td><td>specify multiple useContext elements - one for each context</td><td>Address; Contact</td></tr>
 </table>
 <p>
-In addition, an extension definition might apply additional constraints with
+Кроме того, определение расширения может налагать дополнительные ограничения на значения определенного элемента своей цели, что делает его использование подходящим. 
+Расширения ДОЛЖЫН использоваться только на цели, для которой они определены.
+<!-- In addition, an extension definition might apply additional constraints with
 regards to particular element values of the target that make its use appropriate.
-Extensions SHALL only be used on a target for which they are defined.
+Extensions SHALL only be used on a target for which they are defined. -->
 </p>
 
 <a name="registration"> </a>
-<h3>Publishing Extension Definitions</h3>
+<h3>Публикация определений расширений<!-- Publishing Extension Definitions --></h3>
 <p>
-As well as defining the base element structure for resources, HL7 also publishes extensions, including as <a href="extensibility-registry.html">part of this specification</a>. 
+Наряду с определением базовой структуры элементов ресурса, HL7 также публикует расширения, включая те, что <a href="extensibility-registry.html">являются частью спецификации</a>. 
+HL7 публикует такие определения данных в виде расширений, а не как часть базовой структуры ресурса, чтобы сохранить базовую структуру ресурсов простой и краткой, а также чтобы реализаторам не приходилось иметь дела с функциональностью со всего мира. Обратите внимание, что HL7 обычно не определяет расширения-модификаторы - если HL7 публикует элемент, который меняет значение других элементов, в большинстве случаев он будет частью содержимого самого ресурса, поскольку каждый должен понимать это расширение в любом случае.
+<!-- As well as defining the base element structure for resources, HL7 also publishes extensions, including as <a href="extensibility-registry.html">part of this specification</a>. 
 HL7 publishes such data definitions as extensions rather than as part of the base resource structure 
 in order to keep the base resource structure simple and concise, and to allow implementers not to 
 engage with an entire world's worth of functionality up front. Note that HL7 does not generally define 
 "modifier" extensions - if HL7 publishes an element that modifies the meaning of other elements, it 
-will mostly be part of the resource content itself, since everyone has to understand the extension anyway.
+will mostly be part of the resource content itself, since everyone has to understand the extension anyway. -->
 </p>
 <p>
-Before extensions can be used in instances, their definition SHALL be published. 
-HL7 maintains two extension registries:
+Перед тем как использовать расширение в экземплярах, НЕОБХОДИМО опубликовать его определение.
+HL7 предлагает 2 реестра расширений:
+<!-- Before extensions can be used in instances, their definition SHALL be published. 
+HL7 maintains two extension registries: -->
 </p>
 <ol>
- <li>HL7 approved extensions, approved by an appropriate part of the HL7 community following a review process, and which have formal standing</li> 
- <li>Provided as a service to the community, where anyone can register an extension</li>
+ <li>реестр расширений, одобренных HL7, утвержденных соответствующей частью HL7-сообщества после процесса проверки, которые имеют официальный статус</li> 
+ <li>реестр, предлагаемый сообществу в виде сервиса, в котором каждый может зарегистрировать расширение</li>
+<!--  <li>HL7 approved extensions, approved by an appropriate part of the HL7 community following a review process, and which have formal standing</li> 
+ <li>Provided as a service to the community, where anyone can register an extension</li> -->
 </ol>
 <p>
-Users are encouraged to register their extensions in the second registry, though this is not required. 
+Пользователям рекомендуется регистрировать свои расширения во втором реестре, хотя это и не является обязательным.
+Всё, что требуется, это чтобы расширение было опубликовано в контексте, доступном для пользователей этого расширения. Поэтому, например, если определенное расширение используется только в пределах одного учреждения, определение такого расширения может быть размещено во внутренней сети этого учреждения. Однако поскольку по своей природе ресурсы предназначены для широкого распространения, всегда лучше использовать реестры HL7 или другие общедоступные реестры расширений.
+<!-- Users are encouraged to register their extensions in the second registry, though this is not required. 
 All that is required is that the extension is published in a context that is available for users 
 of the extension. So, for example, if a particular
 extension is only used within a single institution, the definition of the extension
 can be placed on the institution's intranet. However since, by their nature, resources
-tend to travel well, it's always better to use the HL7 or other publicly accessible extension registries.
+tend to travel well, it's always better to use the HL7 or other publicly accessible extension registries. -->
 </p>
 <p>
-HL7 extension definition registries. 
+Реестры определений расширений HL7.
+<!-- HL7 extension definition registries.  -->
 </p>
 <table class="codes">
  <tr><th>Registry</th><th>Search</th><th>Submit</th></tr>
@@ -98,11 +115,12 @@ HL7 extension definition registries.
  <td><a href="http://fhir-dev.healthintersections.com.au/open/StructureDefinition/upload">http://fhir-dev.healthintersections.com.au/open/StructureDefinition/upload</a></td></tr>
 </table>
 <p>
-HL7 extension definitions may be balloted alongside resource content as part of the FHIR specification or may
+Определения расширений HL7 могут участвовать в голосовании наряду с содержимым ресурсов в рамках спецификации FHIR...
+<!-- HL7 extension definitions may be balloted alongside resource content as part of the FHIR specification or may
 be published as part of separate specifications.
 When HL7 publishes extension definitions as part of the FHIR specification, these extensions SHALL
 be used for this data whenever the data is represented in instances. Applications SHOULD use other
-HL7-defined extensions published to represent equivalent data in the interest of maximum interoperability.
+HL7-defined extensions published to represent equivalent data in the interest of maximum interoperability. -->
 </p>
 <p>
 To minimize complexity for implementers, HL7 will not elevate content defined in an HL7-approved extension to
