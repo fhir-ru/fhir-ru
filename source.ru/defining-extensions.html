@@ -115,7 +115,8 @@ tend to travel well, it's always better to use the HL7 or other publicly accessi
  <td><a href="http://fhir-dev.healthintersections.com.au/open/StructureDefinition/upload">http://fhir-dev.healthintersections.com.au/open/StructureDefinition/upload</a></td></tr>
 </table>
 <p>
-Определения расширений HL7 могут участвовать в голосовании наряду с содержимым ресурсов в рамках спецификации FHIR...
+Определения расширений HL7 могут участвовать в голосовании наряду с содержимым ресурсов как часть спецификации FHIR, либо могут публиковаться как отдельные спецификации.
+Когда HL7 публикует определения расширений в рамках спецификации FHIR, эти расширения ДОЛЖНЫ использоваться для этих данных всякий раз, когда эти данные представляются в экземплярах. Приложениям СЛЕДУЕТ использовать другие, определенные HL7 и опубликованные расширения для представления эквивалентных данных в интересах максимальной совместимости.
 <!-- HL7 extension definitions may be balloted alongside resource content as part of the FHIR specification or may
 be published as part of separate specifications.
 When HL7 publishes extension definitions as part of the FHIR specification, these extensions SHALL
@@ -123,22 +124,27 @@ be used for this data whenever the data is represented in instances. Application
 HL7-defined extensions published to represent equivalent data in the interest of maximum interoperability. -->
 </p>
 <p>
-To minimize complexity for implementers, HL7 will not elevate content defined in an HL7-approved extension to
-be content defined in a core resource in future versions of the resource once that resource is normative.
+Для минимизации сложности для разработчиков, HL7 не будет повышать содержимое, определенное в утвержденном HL7 расширении, до содержимого, определенного в основном ресурсе в будущих версиях ресурса после того, как этот ресурс принял статус нормативного.
+<!-- To minimize complexity for implementers, HL7 will not elevate content defined in an HL7-approved extension to
+be content defined in a core resource in future versions of the resource once that resource is normative. -->
 </p>
 <p>
-In some cases, an HL7 work group or other body may publish a profile whose sole
+В некоторых случаях рабочая группа HL7 или другой орган могут опубликовать профиль, единственной целью которого будет определить расширения, в которых предполагается необходимость для реализаторов в определенном контексте. Например расширения, необходимые для мэппинга конкретного набора сегментов v2 или модели v3.
+<!-- In some cases, an HL7 work group or other body may publish a profile whose sole
 purpose is to define extensions expected to be needed by implementers in a particular context.  E.g. extensions needed
-to map a particular set of v2 segments or a v3 model.
+to map a particular set of v2 segments or a v3 model. -->
 </p>
 <p>
-Implementations are encouraged to share their extensions with HL7 and register them with the HL7 extension registry. The domain committees will work
-to elevate the extensions into HL7 published extensions or, if adopted by a broad enough portion of the implementer community, the into the base resource structure itself.
+Реализаторам рекомендуется использовать их расширения совместно с HL7 и регистрировать их в реестре расширений HL7. Комитеты этой доменной области будут работать над повышением этих расширений до публикуемых HL7 расширений или, если они будут приняты достаточно широкой частью сообщества реализаторов, до самой структуры базовых ресурсов.
+<!-- Implementations are encouraged to share their extensions with HL7 and register them with the HL7 extension registry. The domain committees will work
+to elevate the extensions into HL7 published extensions or, if adopted by a broad enough portion of the implementer community, the into the base resource structure itself. -->
 </p>
 <!-- Todo: point to actual registry once it's up and running -->
-<p>To avoid interoperability issues, extensions SHALL NOT change their definition once published.  (Small clarifications to descriptions
+<p>
+Чтобы избежать проблем с совместимостью, расширения НЕ ДОЛЖНЫ изменять свои определения после публикации. (Допустимы небольшие разъяснения к описаниям, которые не влияют на совместимость). Вместо изменения существующего расширения, следует вводить новое расширение. Ревизии расширения могут расширить набор контекстов, в которых применяется это расширение, однако не могут удалять или ограничивать никакой контекст, перечисленный ранее
+<!-- To avoid interoperability issues, extensions SHALL NOT change their definition once published.  (Small clarifications to descriptions
 that do not affect interoperability are permitted.)  Rather than modifying an existing extension, a new extension should be introduced.
-Revisions to an extension may extend the set of contexts in which the extension apply but may not remove or constrain any context previously listed</p>
+Revisions to an extension may extend the set of contexts in which the extension apply but may not remove or constrain any context previously listed --></p>
 <!-- Todo: Figure out how to manage "deprecating" extensions and pointing at their new versions -->
 
 </div>
