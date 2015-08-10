@@ -12,29 +12,35 @@
 
 <h2>DSTU 2 Ballot Welcome</h2>
 <p>
-Hello and welcome to the second FHIR DSTU ballot!
+Привет и добро пожаловать на голосование по второму FHIR DSTU!
+<!-- Hello and welcome to the second FHIR DSTU ballot! -->
 </p>
 <p>
-This specification represents a series of significant changes and enhancements from the first FHIR Draft Standard for Trial Use
+Данная спецификация представляет серию существенных изменений и улучшений по сравнению с первым проектом стандарта FHIR для пробного использования от HL7, опубликованным в январе 2014 года. В спецификацию вошел ряд новых ресурсов, включая поддержку исков (claims), календарного планирования и публикации/подписки, и операций. Кроме того, в неё были включены изменения, сделанные в результате обработки более 1500 запросов на изменение, присланных реализаторами и другими рецензентами спецификации. Полный список изменений можно найти <a href="history.html">здесь</a>.
+<!-- This specification represents a series of significant changes and enhancements from the first FHIR Draft Standard for Trial Use
 specification HL7 published in January, 2014.  It includes a number of new resources including support for claims and scheduling
 as well as publish/subscribe and operations.  It also includes changes resulting from over 1500 change proposals submitted by
-implementers and other readers of the specification.  A complete list of changes can be found <a href="history.html">here</a>.
+implementers and other readers of the specification.  A complete list of changes can be found <a href="history.html">here</a>. -->
 </p>
 <p>
-While FHIR is not yet "normative", this specification is the product of many thousands of hours of development,
+Хотя FHIR пока не стал нормативным документом, данная спецификация является продуктом многих тысяч часов разработки, включая несколько циклов голосований, множества циклов контроля качества, 8 Коннектатонов и продукции числа эталонных и реализаций проверки концепции. Подмножества FHIR были реализованы или реализуются в настоящее время на всех континентах, кроме Антарктиды. Поэтому мы надеемся, что вы найдете состояние спецификации близким к реализуемому.
+<!-- While FHIR is not yet "normative", this specification is the product of many thousands of hours of development,
 including several ballot cycles, multiple QA cycles, 8 Connectathons and production of a number of reference and proof of concept 
 implementations.  Subsets of FHIR have been implemented or are currently being implemented on all continents other than Antarctica.
-Therefore we hope that you find the specification already close to an implementable state.
+Therefore we hope that you find the specification already close to an implementable state. -->
 </p>
 <p>
-The FHIR specification is presented as a series of interlinked HTML pages.  They can either be reviewed online or can be
+Спецификация FHIR представлена в виде ряда связанных ссылками HTML-страниц. Их можно просматривать либо онлайн, либо <a href="fhir-spec.zip">скачать</a> для изучения себе на устройство. (70MB в zip-архиве, 550MB в разархивированном виде).
+Вы можете просматривать интересующие вас страницы в любом порядке. Однако для обеспечения базового уровня понимания спецификации, мы рекомендуем вам пройти на страницу <a href="documentation.html">Документация</a> и прочитать по крайней мере следующие страницы:
+<!-- The FHIR specification is presented as a series of interlinked HTML pages.  They can either be reviewed online or can be
 <a href="fhir-spec.zip">downloaded</a> for exploration on your own device.  (70MB zip, 550MB unzipped).
  You can review whichever links are of interest in any 
 order you wish.  However, to ensure a base level understanding of the specification we recommend that you click on the 
-<a href="documentation.html">Documentation</a> link and read through at least the following:
+<a href="documentation.html">Documentation</a> link and read through at least the following: -->
 </p>
 <p>
-For context:
+Для контекста:
+<!-- For context: -->
 </p>
 <ul>
   <li>Overview/<a href="summary.html">1 page Summary (Glossy)</a></li>
@@ -44,14 +50,17 @@ For context:
   <li>Overview/<a href="timelines.html">FHIR Timelines</a></li>
 </ul>
 <p>
-To see scope:
+Для получения представления об области применения:
+<!-- To see scope: -->
 </p>
 <ul>
-  <li>Click on the <a href="resourcelist.html">Resources</a> link at the top to get a sense of what resources exist and maybe drill into a couple of them to see what 
-  they look like before coming back to the Documentation tab for more context</li>
+  <li>Перейдите по ссылке <a href="resourcelist.html">Resources</a> наверху, чтобы получить представление о том, какие ресурсы существуют на данный момент и угубитесь в парочку из них, чтобы увидеть, что они из себя представляют, перед тем как вернуться к странице с документацией за дополнительным контекстом</li>
+<!--   <li>Click on the <a href="resourcelist.html">Resources</a> link at the top to get a sense of what resources exist and maybe drill into a couple of them to see what 
+  they look like before coming back to the Documentation tab for more context</li> -->
 </ul>
 <p>
-To understand base approach:
+Чтобы понять базовый подход:
+<!-- To understand base approach: -->
 </p>
 <ul>
   <li>Resources/<a href="resource.html">Base Resource</a></li>
@@ -61,27 +70,36 @@ To understand base approach:
   <li>Resources/<a href="extensibility.html">Extensibility</a></li>
 </ul>
 <p>
-To understand key infrastructure:
+Чтобы понять ключевую инфраструктуру:
+<!-- To understand key infrastructure: -->
 </p>
 <ul>
   <li>Resources/<a href="datatypes.html">Data Types</a></li>
   <li>Terminologies/<a href="terminologies.html">Using Codes in Resources</a></li>
 </ul>
 <p>
-For context for this ballot:
+Для контекста для данного голосования:
+<!-- For context for this ballot: -->
 </p>
 <ul>
   <li>Administration/<a href="todo.html">Outstanding Issues</a></li>
 </ul>
 <p>
-Feel free to drill down into any other sections of interest.  If you want to ensure a complete review of the whole spec, the 
-Documentation/Administration/<a href="toc.html">Table of Contents</a> may be a useful guide.
+Смело углубляйтесь в любой интересующий вас раздел спецификации. Если вы хотите получить полный обзор всей спецификации, вам будут полезны разделы Documentation/Administration/<a href="toc.html">Table of Contents</a>.
+<!-- Feel free to drill down into any other sections of interest.  If you want to ensure a complete review of the whole spec, the 
+Documentation/Administration/<a href="toc.html">Table of Contents</a> may be a useful guide. -->
 </p>
 <p>
-A few notes to consider:
+Несколько примечаний к рассмотрению:
+<!-- A few notes to consider: -->
 </p>
 <ul>
-  <li><a name="draft"> </a>A few artifacts (generally resources) have been flagged as "draft".  This means that the work group authoring the content and/or
+  <li><a name="draft"> </a>Несколько артефактов (как правило, это ресурсы) были помечены как "draft".  Это означает, что рабочая группа, составляющая это содержимое и/или группа управления FHIR понимает, что данное содержимое не достаточно проверено или не готово к использованию. Реализаторы могут по своему выбору реализовывать такие артефакты несмотря ни на что, но им следует соблюдать осторожность и может оказаться, что потребуется большая адаптация или расширение, чем для обычного ресурса. ожидается, что ресурсы с флагом "draft" будут повышены до статуса 
+  DSTU в рамках следующего выпуска. (Также реализаторы могут сверяться с <a href="http://hl7-fhir.github.io/">Непрерывной интеграционной сборкой</a> для получения актуальных версий этих ресурсов).</li>
+  <li>Не все нерешенные вопросы будут разрешены до проведения голосования по DSTU. Какие-то из них могут быть оставлены открытыми для получения обратной связи от сообщества первопроходцев. </li>
+  <li>Данная спецификация является достаточно полной для реализации в различных сценариях здравоохранения, включая поддержку всего содержимого сводного руководства по внедрению CDA. Однако набор ресурсов не является полным. Ресурсы могут развиваться, со временем могут добавляться новые ресурсы. Дополнительное руководство по предполагаемому развитию спецификации FHIR см. в разделе <a href="timelines.html">FHIR Timelines</a>.
+</li>
+<!--   <li><a name="draft"> </a>A few artifacts (generally resources) have been flagged as "draft".  This means that the work group authoring the content and/or
   the FHIR Management Group feels that the content is not yet sufficiently robust or complete for production use.  Implementers may
   choose to implement these artifacts anyhow, but should proceed with caution and may find that more adaptation or extension will be
   required than for a typical resource.  It is expected that "draft" resources will progress to DSTU as part of the next release.
@@ -92,9 +110,9 @@ A few notes to consider:
   <li>This specification is complete enough to be implementable in a variety of healthcare scenarios, including supporting all content 
   from the Consolidated CDA implementation guide.  However, the set of resources is not complete.  Resources may evolve and new ones 
   will be introduced over time.  Refer to <a href="timelines.html">FHIR Timelines</a> for additional guidance on expectations around
-  the evolution of the FHIR specification.</li>
+  the evolution of the FHIR specification.</li> -->
 </ul>
-<h3>Balloting</h3>
+<h3>Голосование<!-- Balloting --></h3>
 <p>
 HL7 ballot rules require that participants sign up prior to opening of the ballot.  If you did not sign up in advance, please still
 submit comments using the <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemAdd&amp;tracker_id=677">Propose a Change</a>
@@ -124,16 +142,19 @@ submit a ballot spreadsheet referencing the relevant tracker items.)  It makes o
 fill in the section numbers (gray numbers to the left of each heading) and URLs.
 </p>
 <p>
-If you have questions that are interfering with the ability to review the specification or submit ballot comments, please contact one of 
+Если у вас есть вопросы, касающиеся возможности просмотра спецификации или отправки комментариев к голосованию, пожалуйста свяжитесь с одним из сопредседателей группы управления FHIR: <a href="mailto:lloyd@lmckenzie.com">Lloyd McKenzie</a> или <a href="mailto:david.hay25@gmail.com">David Hay</a>.
+<!-- If you have questions that are interfering with the ability to review the specification or submit ballot comments, please contact one of 
 the co-chairs of the FHIR Management Group: <a href="mailto:lloyd@lmckenzie.com">Lloyd McKenzie</a> or 
-<a href="mailto:david.hay25@gmail.com">David Hay</a>.
+<a href="mailto:david.hay25@gmail.com">David Hay</a>. -->
 </p>
 <p>
-Thanks for taking the time to review the FHIR specification.  We appreciate any feedback you can provide.
+Спасибо за время, потраченное на обзор спецификации FHIR. Будем признательны за ваши отзывы. 
+<!-- Thanks for taking the time to review the FHIR specification.  We appreciate any feedback you can provide. -->
 </p>
 <p/>
 <p>
-The HL7 FHIR Management Group (FMG)
+Группа управления HL7 FHIR (FMG)
+<!-- The HL7 FHIR Management Group (FMG) -->
 </p>
 
 
