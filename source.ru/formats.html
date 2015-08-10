@@ -152,20 +152,23 @@ Other representations are allowed, but are not described by this specification.
 </ul>
     
 <a name="choice"> </a>
-<h3>Choice of Data Types</h3>
+<h3>Типы данных на выбор<!-- Choice of Data Types --></h3>
 <p>
-A few elements have a choice of more than one type for their content. All such elements have a name that 
+В нескольких элементах указывается несколько типов данных для их содержимого на выбор. У всех подобных элементов имя имеет вид nnn[x]. Часть имени вида "nnn" является константой, а [x] заменяется на название типа с большой буквы, который будет фактически использоваться. В таблице приводятся все эти имена.
+<!-- A few elements have a choice of more than one type for their content. All such elements have a name that 
 takes the form nnn[x]. The "nnn" part of the name is constant, and the [x] is replaced with the title-cased 
-name of the type that is actually used. The table view shows each of these names explicitly.
+name of the type that is actually used. The table view shows each of these names explicitly. -->
 </p>
 <p>
-All elements that have a choice of data type have a maximum cardinality of 1. There can only be one 
-element for type, of one of the allowed data types. 
+У всех элементов, где имеется выбор типа данных, кардинальное множество равно 1. Может быть только один элемент одного из разрешенных типов данных.
+<!-- All elements that have a choice of data type have a maximum cardinality of 1. There can only be one 
+element for type, of one of the allowed data types.  -->
 </p>
 <p>
-Note: In object-orientated based implementations, this is naturally represented as a polymorphic property. 
+Примечание: в объектно-ориентированных реализациях этот выбор, как правило, отображается в виде полиморфного свойства. Однако это не обязательно, и корректные реализации варьируются в соответствии с конкретными особенностями языка. В XML-схеме это обозначается как xs:choice элемента.
+<!-- Note: In object-orientated based implementations, this is naturally represented as a polymorphic property. 
 However this is not necessary, and the correct implementation varies according to the particular features 
-of the language. In XML schema, these become an xs:choice of element.
+of the language. In XML schema, these become an xs:choice of element. -->
 </p>
 
 
@@ -189,7 +192,7 @@ of the language. In XML schema, these become an xs:choice of element.
 </p>
 
 <a name="wire"> </a>
-<h3>Wire Format Representations</h3>
+<h3>Форматы представления<!-- Wire Format Representations --></h3>
 
 <p>
 В спецификации определены следующие типы представления ресурсов для их обмена:

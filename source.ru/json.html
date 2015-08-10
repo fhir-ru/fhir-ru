@@ -35,10 +35,31 @@ JSON-представление для ресурса описывается с 
 }
 </pre>
 <p>
-Using this format:
+Используя этот формат:
+<!-- Using this format: -->
 </p>
 <ul>
- <li>To build a valid JSON instance of a resource, replace the contents of the property values with valid content 
+ <li>Для создания валидного JSON-экземпляра ресурса, замените содержимое значений свойств желаемым контентом, как описано в правилах типов и описании значений, которые можно найти в значении свойства каждого элемента</li>
+ <li>В данном примере:
+   <ol>
+     <li><code>property1</code> имеет примитивный тип данных; значение свойства будет таким же, как описанное для указанного типа</li>
+     <li><code>property2</code> имеет сложный тип данных; значением свойства будет объект с содержимым, соответствующим описанию к указанному типу</li>
+     <li><code>property3</code> - это объектное свойство, которое содержит дополнительные свойства (например propertyA; допустимые свойства перечислены (и также включают расширения при необходимости)</li>
+     <li><code>property4</code> - это массив, который содержит элементы, которые, в свою очередь, являются объектами. Эти элементы могут быть любого из типов, перечисленных в пунктах 1-3</li>
+     <li><code>propertyA</code> имеет привязку к набору значений - слова "Краткое описание" являются ссылкой на соответствующий набор значений. Также указывается сила привязки</li>
+     <li><code>propertyB</code> - это ссылка на конкретный тип ресурса</li>
+   </ol>
+ </li>
+ <li>Названия свойств чувствительны к регистру (хотя дубликаты, различающиеся только регистром, не используются)</li>
+ <li>Свойства можно указывать в любом порядке</li>
+ <li>XHTML указывается в виде экранированной строки</li>
+ <li>Объекты не могут быть пустыми. Если элемент присутствует в ресурсе, он ДОЛЖЕН иметь свойства, определенные для его типа, либо 1 или несколько <a href="extensibility.html">расширений</a></li>
+ <li>Значения строковых свойств не могут быть пустыми. Либо свойство отсутствует, либо присутствует и содержит как минимум 1 символ</li>
+ <li>Символ <span style="color: brown"><b>R!</b></span> означает, что элемент является обязательным - он должен присутствовать (либо в массиве должен быть как минимум один элемент)</li>
+ <li>В данном формате // используется для комментариев, но это нельзя использовать в JSON-экземплярах</li>
+ <li>Символьная кодировка всегда UTF-8</li>
+ <li>MIME-тип для этого формата - application/json+fhir.</li>
+<!--  <li>To build a valid JSON instance of a resource, replace the contents of the property values with valid content 
    as described by the type rules and content description found in the property value for each element</li>
  <li>In this example:
    <ol>
@@ -58,12 +79,13 @@ Using this format:
  <li>The <span style="color: brown"><b>R!</b></span> denotes that an element is mandatory - it must be present (or in an array, at least one item must be present)</li>
  <li>In this format, // is used for comments but these can't be in the JSON instances</li>
  <li>The character encoding is always UTF-8</li>
- <li>The MIME-type for this format is application/json+fhir.</li>
+ <li>The MIME-type for this format is application/json+fhir.</li> -->
 </ul>
 
-<h3>Comparison with XML</h3>
+<h3>Сравнение с XML<!-- Comparison with XML --></h3>
 <p>
-The JSON format is similar to the XML format:
+JSON-формат подобен XML-формату:
+<!-- The JSON format is similar to the XML format: -->
 </p>
 <ul>
  <li>Имена членов JSON-объекта соответствуют именам элементов и атрибутов в XML, включая элементы, которые могут повторяться. Имена свойств чувствительны к регистру</li>
