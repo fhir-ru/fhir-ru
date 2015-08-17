@@ -930,12 +930,12 @@
     <Cell ss:StyleID="s78"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s77"><Data ss:Type="String">Text node with attribution</Data><NamedCell
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Текстовый узел с атрибутами<!-- Text node with attribution --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">A  text note which also  contains information about who made the statement and when</Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Текстовое примечание, которое также содержит информацию о том, кем и когда было сделано это утверждение<!-- A  text note which also  contains information about who made the statement and when --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">For systems that do not have structured annotations, they can simply communicate a single annotation with no author or time. &#10;This element may need to be included in narrative because of the potential for modifying information. &#10;*Annotations SHOULD NOT* be used to communicate &quot;modifying&quot; information that could be computable. (This is a SHOULD because enforcing user behavior is nearly impossible)</Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Для систем, в которых нет структурированных аннотаций, они могут просто передавать отдельное примечание без автора и времени. &#10; Этот элемент возможно потребуется включить в описательную часть из-за потенциальной возможности модификации информации. &#10;*Аннотации НЕ ДОЛЖНЫ* использоваться для передачи &quot;модифицирующей&quot; информации, которая может быть вычислимой. (Используется слово SHOULD, поскольку принуждение пользователя к определенному поведению близко к невозможному)<!-- For systems that do not have structured annotations, they can simply communicate a single annotation with no author or time. &#10;This element may need to be included in narrative because of the potential for modifying information. &#10;*Annotations SHOULD NOT* be used to communicate &quot;modifying&quot; information that could be computable. (This is a SHOULD because enforcing user behavior is nearly impossible) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Act</Data><NamedCell
@@ -962,9 +962,9 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Individual responsible for the annotation</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Лицо, ответственное за данную аннотацию<!-- Individual responsible for the annotation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">The individual responsible for making the annotation.</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Лицо, ответственное за создание этой аннотации.<!-- The individual responsible for making the annotation. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -993,9 +993,9 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">When the annotation was made</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Когда была сделана эта аннотация<!-- When the annotation was made --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Indicates when this particular annotation was made</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Указывает, когда была сделана эта конкретная аннотация<!-- Indicates when this particular annotation was made --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1024,9 +1024,9 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">The annotation  - text content</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Аннотация - текстовое содержимое<!-- The annotation  - text content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">The text of the annotation</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Текст аннотации<!-- The text of the annotation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>

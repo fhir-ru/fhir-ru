@@ -1051,11 +1051,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Описание идентификатора<!-- Description of identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded type for the identifier that can be used to determine which identifier to use for a specific purpose</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированный тип идентификатора, который можно использовать для определения, какой идентификатор использовать в конкретных целях<!-- A coded type for the identifier that can be used to determine which identifier to use for a specific purpose --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет пользователям использовать идентификаторы, когда система идентификатора не известна Allows users to make use of identifiers when the identifier system is not known</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет пользователям использовать идентификаторы, когда система идентификатора не известна <!-- Allows users to make use of identifiers when the identifier system is not known --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Там, где система не известна, в типе нет необходимости, поскольку тип всегда является частью определения системы. Однако системам часто требуется обрабатывать идентификаторы, когда система не известна. Нет однозначной связи один к одному между типом и системой, поскольку несколько разных систем могут иметь одинаковый тип<!-- Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Role.code or implied by context</Data><NamedCell
