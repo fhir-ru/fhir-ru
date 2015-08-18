@@ -11,44 +11,63 @@
 
 <div class="col-9">
 
-<h2>Known Identifier Systems</h2>
+<h2>Известные системы идентификаторов<!-- Known Identifier Systems --></h2>
 
 <p>
-The following names (URIs) may be used in the <i>system</i> element of the <a href="datatypes.html#Identifier">Identifier</a> data type.
+Следующие имена (URI) могут использоваться в качестве значения элемента <i>system</i> типа данных <a href="datatypes.html#Identifier">Identifier</a>.
+Если URI определен здесь, он ДОЛЖЕН быть использован в предпочтении к любому другому механизму идентификации. Если система идентификаторов здесь не перечислена, корректный URI можно определить одним из следующих способов в указанном порядке:
+<!-- The following names (URIs) may be used in the <i>system</i> element of the <a href="datatypes.html#Identifier">Identifier</a> data type.
 If a URI is defined here, it SHALL be used in preference to any other identifying mechanisms. If an identifier system is not listed
-here, the correct URI may be determined by working through the following list, in order:
+here, the correct URI may be determined by working through the following list, in order: -->
 </p>
 <ul>
- <li>the HL7 OID Registry</li>
+ <li>в реестре HL7 OID</li>
+ <li>в документации, связанной с этим идентификатором</li>
+ <li>с помощью консультации с владельцем идентификатора</li>
+ <li>задать вопрос в почтовой рассылке HL7, касающейся словарей</li>
+<!--  <li>the HL7 OID Registry</li>
  <li>the documentation associated with the identifier</li>
  <li>consulting the owner of the identifier</li>
- <li>asking on the HL7 vocabulary mailing list</li>
+ <li>asking on the HL7 vocabulary mailing list</li> -->
 </ul>
 
 <p>
-<b>Important Note:</b> This list of URIs is incomplete and subject to change.
+<b>Важное примечание:</b> данный список URI является неполным и может быть изменен.  
+Некоторые значения могут быть удалены, другие, вероятно, будут добавлены в ближайшие месяцы, так как HL7 учреждает формальные процессы вокруг URI в словарях.
+<!-- <b>Important Note:</b> This list of URIs is incomplete and subject to change.
 Some values may be dropped and others will likely be added in the coming months as HL7
-institutes formal processes around URIs in vocabulary.
+institutes formal processes around URIs in vocabulary. -->
 </p>
 
 <table class="grid">
  <tr>
-   <th>identifier</th>
+    <th>Идентификатор</th>
    <th width="150">URI / OID</th>
-   <th>Comment</th>
+   <th>Комментарий</th>
+<!--    <th>identifier</th>
+   <th width="150">URI / OID</th>
+   <th>Comment</th> -->
  </tr>
 
  <tr style="border-bottom: 0px">
-   <td>URIs (<a href="http://www.w3.org">W3C</a>): when the identifier is a URI</td>
+  <td>URIs (<a href="http://www.w3.org">W3C</a>): когда идентификатором является URI</td>
+   <td>urn:ietf:rfc:3986 <a name="rn:ietf:rfc:3986"> </a></td>
+   <td>В соответствии с <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a> (с несколькими схемами, определенными в нескольких RFCs). 
+   OIDs и UUIDs представлены в своей URN-форме (<a href="http://www.ietf.org/rfc/rfc3001.txt">urn:oid:</a> and <a href="http://www.ietf.org/rfc/rfc4122.txt">urn:uuid:</a> 
+   - обычные <a href="http://tools.ietf.org/id/draft-larmouth-oid-iri-04.txt">oid:</a> и uuid: не используются). Обратите внимание, что UUIDs в IRI всегда в нижнем регистре<br/>Нет OID</td>
+  <!--  <td>URIs (<a href="http://www.w3.org">W3C</a>): when the identifier is a URI</td>
    <td>urn:ietf:rfc:3986 <a name="rn:ietf:rfc:3986"> </a></td>
    <td>As defined by <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a> (with many schemes defined in many RFCs). 
    OIDs and UUIDs are represented in their URN form (<a href="http://www.ietf.org/rfc/rfc3001.txt">urn:oid:</a> and <a href="http://www.ietf.org/rfc/rfc4122.txt">urn:uuid:</a> 
-   - plain <a href="http://tools.ietf.org/id/draft-larmouth-oid-iri-04.txt">oid:</a> and uuid: are not used). Note that UUIDs are always lowercase in a IRI<br/>No OID</td>
+   - plain <a href="http://tools.ietf.org/id/draft-larmouth-oid-iri-04.txt">oid:</a> and uuid: are not used). Note that UUIDs are always lowercase in a IRI<br/>No OID</td> -->
  </tr>
  <tr style="border-bottom: 0px">
-   <td>SSN (<a href="http://www.ssa.gov/ssnumber/">US Government</a>)</td>
+    <td>SSN (<a href="http://www.ssa.gov/ssnumber/">Правительство США</a>)</td>
    <td>http://hl7.org/fhir/sid/us-ssn <a name="ttp://hl7.org/fhir/sid/us-ssn"> </a> / 2.16.840.1.113883.4.1</td>
-   <td colspan="2">US SSNs are represented with dashes removed</td>
+   <td colspan="2">Американские SSNs представлены без разделительных дефисов</td>
+<!--    <td>SSN (<a href="http://www.ssa.gov/ssnumber/">US Government</a>)</td>
+   <td>http://hl7.org/fhir/sid/us-ssn <a name="ttp://hl7.org/fhir/sid/us-ssn"> </a> / 2.16.840.1.113883.4.1</td>
+   <td colspan="2">US SSNs are represented with dashes removed</td> -->
  </tr>
  <%identifierlist%>
 

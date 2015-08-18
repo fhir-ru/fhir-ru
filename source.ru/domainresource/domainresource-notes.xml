@@ -1,15 +1,17 @@
 ﻿<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <a name="search"> </a>
-<h2>Search Parameters</h2>
-<p>This resource doesn't define any common <a href="search.html">Search parameters</a></p>
+<h2>Параметры поиска<!-- Search Parameters --></h2>
+<p>Этот ресурс не определяет общих <a href="search.html">параметров поиска</a>
+<!-- This resource doesn't define any common <a href="search.html">Search parameters</a> --></p>
 <p>
-To search for extensions, define a search parameter for the extension. 
+Для поиска по расширениям необходимо задать параметр поиска для этого расширения. Все остальные параметры поиска являются именованными псевдонимами существующего контента в ресурсе. В некоторых случаях, но не всегда, имя поискового параметра совпадает с элементом, который он ищет, но это не является обязательным требованием. Поиск по расширениям будет аналогичным - задайте имя, которое идентифицирует значение расширения по его URL, и тогда при поиске можно будет фильтровать на основе значения расширения.
+<!-- To search for extensions, define a search parameter for the extension. 
 All other search parameters are named aliases for existing content in
 the resource. In some cases, though not all, the search parameter name
 is the same as the element that it searches, but this is not required. 
 Searching for extensions is the same - define a name that identifies 
 the value extension by its URL, and then searches can filter based on
-the value of the extension.
+the value of the extension. -->
 </p>
 </div>

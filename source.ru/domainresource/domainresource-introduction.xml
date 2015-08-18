@@ -2,29 +2,36 @@
 
 
 <div>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p>
-A domain resource is an resource that:
+Доменный ресурс - это ресурс, который:
+<!-- A domain resource is an resource that: -->
 </p>
 <ul>
- <li>has a human-readable XHTML representation of the content of the resource (see <a href="narrative.html">Human Narrative in resources</a>)</li>
+ <li>имеет человекочитаемое XHTML представление содержимого ресурса (см. <a href="narrative.html">Человекочитаемая описательная часть в ресурсах</a>)</li>
+ <li>может содержать дополнительные связанные ресурсы внутри ресурса (см. <a href="references.html#contained">Вложенные ресурсы</a>)</li>
+ <li>может иметь дополнительные расширения и modifierExtensions наряду с заданными данными (см. <a href="extensibility.html">Расширяемость</a>)</li>
+<!--  <li>has a human-readable XHTML representation of the content of the resource (see <a href="narrative.html">Human Narrative in resources</a>)</li>
  <li>can contain additional related resources inside the resource (see <a href="references.html#contained">Contained Resources</a>)</li>
- <li>can have additional extensions and modifierExtensions as well as the defined data (See <a href="extensibility.html">Extensibility</a>)</li>
+ <li>can have additional extensions and modifierExtensions as well as the defined data (See <a href="extensibility.html">Extensibility</a>)</li> -->
 </ul>
 
 <p>
-As an abstract resource, this resource never exists directly, only one of its descendent resources (<a href="resourcelist.html">list</a>).
+Этот ресурс является абстрактным, он не существует непосредственно сам по себе, а только в виде своих ресурсов-потомков (см. <a href="resourcelist.html">список ресурсов</a>).
+<!-- As an abstract resource, this resource never exists directly, only one of its descendent resources (<a href="resourcelist.html">list</a>). -->
 </p>
 
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 
 <p>
-This resource extends the base <a href="resource.html">resource</a>. All of the <a href="resourcelist.html">listed</a>
+Данный ресурс расширяет <a href="resource.html">базовый ресурс</a>. Все <a href="resourcelist.html">перечисленные</a>
+ресурсы, за исключением <a href="bundle.html">Bundle</a> и <a href="binary.html">Binary</a>, расширяют этот ресурс.
+<!-- This resource extends the base <a href="resource.html">resource</a>. All of the <a href="resourcelist.html">listed</a>
 resources except <a href="bundle.html">Bundle</a> and <a href="binary.html">Binary</a> extend
-this resource.
+this resource. -->
 </p>
 
 </div>

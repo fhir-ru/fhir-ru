@@ -972,9 +972,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A resource with narrative, extensions, and contained resources</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс с описательной частью, расширениями и вложенными ресурсами<!-- A resource with narrative, extensions, and contained resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A resource that includes narrative, extensions, and contained resources</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс, содержащий описательную часть, расширения и вложенные ресурсы<!-- A resource that includes narrative, extensions, and contained resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1006,12 +1006,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Text summary of the resource, for human interpretation</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Краткое текстовое изложение ресурса для интерпретации человеком<!-- Text summary of the resource, for human interpretation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it &quot;clinically safe&quot; for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемая описательная часть, содержащая краткое изложение ресурса, которая может использоваться для представления содержимого ресурса человеку. От описательной части не требуется кодировать все структурированные данные, но она должна содержать достаточно сведений, чтобы простое её прочтение человеком было &quot;клинически безопасным&quot;. Определения ресурсов могут описывать, какое содержимое должно быть представлено в описательной части для обеспечения клинической безопасной<!-- A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it &quot;clinically safe&quot; for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">У вложенных ресурсов нет описательной части. Ресурсы, не являющиеся вложенными, ДОЛЖНЫ содержать описательную часть<!-- Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Act.text?</Data><NamedCell
@@ -1040,12 +1040,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contained, inline Resources</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вложенные, встроенные инлайн ресурсы<!-- Contained, inline Resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Эти ресурсы не обладают независимым существованием вне ресурса, который их содержит - их нельзя идентифицировать независимо, и они не могут иметь своей собственной независимой транзакционной области действия<!-- These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Этого не следует делать, когда содержимое может быть идентифицировано должным образом, поскольку, потеряв идентификацию, будет чрезвычайно сложно (и контекстно-зависимо) снова восстановить её<!-- This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">N/A</Data><NamedCell
@@ -1074,12 +1074,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional Content defined by implementations</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительное содержимое, определенное реализаторами<!-- Additional Content defined by implementations --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может использоваться для представления дополнительной информации, не являющейся частью базового определения ресурса. Чтобы сделать использование расширений надежным и управляемым, существует строгий набор управления применительно к определению и использованию расширений. Хотя каждому реализатору разрешается определять расширения, имеется набор требований, которые должны выполняться в рамках определения расширения <!-- May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Не должно быть никаких предрассудков по использованию расширений любыми приложениями, проектами или стандартами - вне зависимости от учреждения или юрисдикции, которые используют или задают расширение. Именно использование расширений позволяет спецификации FHIR сохранять простоту для всех<!-- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">N/A</Data><NamedCell
@@ -1109,12 +1109,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Extensions that cannot be ignored</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Расширения, которые нельзя игнорировать<!-- Extensions that cannot be ignored --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может использоваться для представления дополнительной информации, не являющейся частью базового определения ресурса, которая модифицирует понимание элемента, который её содержит. Обычно элементы-модификаторы привносят отрицание или уточнение. Хотя каждому реализатору разрешается определять расширения, имеется набор требований, которые должны выполняться в рамках определения расширения. Приложениям, обрабатывающим ресурс, требуется проверять наличие расширений-модификаторов<!-- May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Не должно быть никаких предрассудков по использованию расширений любыми приложениями, проектами или стандартами - вне зависимости от учреждения или юрисдикции, которые используют или задают расширение. Именно использование расширений позволяет спецификации FHIR сохранять простоту для всех<!-- There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">N/A</Data><NamedCell
@@ -3727,7 +3727,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">DomainResource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">If the resource is contained in another resource, it SHALL NOT contain any narrative</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Если ресурс встроен в другой ресурс, он НЕ ДОЛЖЕН содержать описательной части<!-- If the resource is contained in another resource, it SHALL NOT contain any narrative --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(parent::f:contained and f:text)</Data><NamedCell
@@ -3739,7 +3739,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">No nested contained resources</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">DomainResource</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If the resource is contained in another resource, it SHALL NOT contain nested Resources</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Если ресурс встроен в другой ресурс, он НЕ ДОЛЖЕН содержать вложенные ресурсы<!-- If the resource is contained in another resource, it SHALL NOT contain nested Resources --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(parent::f:contained and f:contained)</Data></Cell>
    </Row>
@@ -3749,7 +3749,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">No contained resources that are not referenced from elsewhere</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">DomainResource</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Если ресурс встроен в другой ресурс, где-то в родительском ресурсе на него ДОЛЖНА БЫТЬ дана ссылка<!-- If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(for $id in f:contained/*/@id return $id[not(ancestor::f:contained/parent::*/descendant::f:reference/@value=concat('#', $id))]))</Data></Cell>
    </Row>
@@ -3759,7 +3759,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">No versionId and lastUpdated in contained resources</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">DomainResource</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Если ресурс встроен в другой ресурс, он НЕ ДОЛЖЕН иметь meta.versionId или meta.lastUpdated <!-- If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated --></Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:contained/f:meta/f:versionId)) and not(exists(f:contained/f:meta/f:lastUpdated))</Data></Cell>
    </Row>
