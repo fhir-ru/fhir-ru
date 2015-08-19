@@ -3437,7 +3437,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Element</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">All FHIR elements must have a @value or children</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Все FHIR-элементы должны иметь @value или потомков<!-- All FHIR elements must have a @value or children --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">@value|f:*|h:div</Data><NamedCell

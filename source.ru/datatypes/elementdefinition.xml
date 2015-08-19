@@ -4548,7 +4548,7 @@
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">ElementDefinition</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Pattern may only be specified if there is one type</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Элемент pattern может быть указан, если имеется только один тип<!-- Pattern may only be specified if there is one type --></Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:*[starts-with(local-name(.), 'pattern')])) or (count(f:type)=1 )</Data></Cell>
    </Row>
@@ -4558,7 +4558,7 @@
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">ElementDefinition</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Pattern and value are mutually exclusive</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Pattern и value являются взаимоисключающими<!-- Pattern and value are mutually exclusive --></Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:*[starts-with(local-name(.), 'pattern')])) or not(exists(f:*[starts-with(local-name(.), 'value')]))</Data></Cell>
    </Row>
@@ -4588,7 +4588,7 @@
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">ElementDefinition</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Binding can only be present for coded elements, string, and uri</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Привязка может быть только у кодированных элементов, строк и URI<!-- Binding can only be present for coded elements, string, and uri --></Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:binding)) or (count(f:type/f:code) = 0) or  f:type/f:code/@value=('code','Coding','CodeableConcept','Quantity','Extension', 'string', 'uri')</Data></Cell>
    </Row>
@@ -4608,7 +4608,7 @@
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">ElementDefinition</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Types must be unique by the combination of code and profile</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Типы должны быть уникальными за счет комбинации кода и профиля<!-- Types must be unique by the combination of code and profile --></Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(for $type in f:type return $type/preceding-sibling::f:type[f:code/@value=$type/f:code/@value and f:profile/@value = $type/f:profile/@value]))</Data></Cell>
    </Row>
@@ -4618,7 +4618,7 @@
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">ElementDefinition</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Constraints must be unique by key</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Ограничения должны быть уникальными по ключу<!-- Constraints must be unique by key --></Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">count(f:constraint) = count(distinct-values(f:constraint/f:key/@value))</Data></Cell>
    </Row>
@@ -4628,7 +4628,7 @@
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">ElementDefinition</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">default value and meaningWhenMissing are mutually exclusive</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Значение по умолчанию и meaningWhenMissing являются взаимоисключающими<!-- default value and meaningWhenMissing are mutually exclusive --></Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:*[starts-with(local-name(.), 'fixed')])) or not(exists(f:meaningWhenMissing))</Data></Cell>
    </Row>

@@ -32,11 +32,14 @@
 Все эти способы определения кодов в совокупности называются "кодовыми системами". Этот список далеко не полон; есть много способов определения кодовых систем, и они отличаются друг от друга по сложности и размеру.
 </p>
 <p>
-В описании стандарта кодированные значения всегда указываются парой "система − код", где система − это URL на кодовую систему, содержащую определение кода. Note that <code>system</code> values are always 
+В описании стандарта кодированные значения всегда указываются парой "система − код", где система − это URL на кодовую систему, содержащую определение кода. 
+Обратите внимание, что значения <code>system</code> всегда чувствительны к регистру. Различные кодовые системы вводят собственные правила, чувствительны ли к регистру коды, которые они определяют, или нет. Следует отметить, что все коды, определенные в самой спецификации FHIR, чувствительны к регистру и ДОЛЖНЫ использоваться в указанном регистре (как правило, но не всегда, нижнем).
+
+<!-- Note that <code>system</code> values are always 
 case sensitive. Different code systems make their own rules as to whether the codes 
 they define are case sensitive or not. Note that all the codes defined by FHIR 
 itself are case sensitive and SHALL be used in the provided case (usually, but 
-not always, lowercase).
+not always, lowercase). -->
 </p>
 <p>
 Подход FHIR к использованию кодированных значений основывается на базовой структуре, введенной в разделе 5 документа <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">Основополагающие принципы HL7 v3</a>, включая разделение между кодовыми системами и наборами значений.
@@ -48,17 +51,19 @@ not always, lowercase).
  <tr><td><a href="datatypes.html#code">code</a></td><td>Экземпляр объекта этого типа представляет собой только <i>код</i>. Информация о <i>системе</i> подразумевается: она содержится в определении самого элемента и не указывается в экземпляре. </td></tr>
  <tr><td><a href="datatypes.html#Coding">Coding</a></td><td>Тип данных, состоящий из двух элементов: <i>код</i> и <i>система</i>. Последний идентифицирует источник определения значения кода.</td></tr>
  <tr><td><a href="datatypes.html#CodeableConcept">CodeableConcept (Кодируемый Концепт)</a></td><td>Тип, представляющий концепт с помощью обычного текста и/или одного или нескольких <i>Codings</i></td></tr>
- <tr><td><a href="datatypes.html#Quantity">Quantity</a></td><td>Special case: has <i>system</i> and <i>code</i> elements for carrying a code for the type of unit</td></tr>
+ <tr><td><a href="datatypes.html#Quantity">Quantity</a></td><td>Особый случай: содержит элементы <i>system</i> и <i>code</i> для передачи кода единиц измерений</td></tr>
 </table>
 
 <p>
-Note: generally the choice of data type is dictated by the resource itself.
+Примечание: обычно выбор типа данных продиктован самим ресурсом. При выборе типа данных для <a href="extensibility.html">расширения</a>,
+см. в FHIR wiki <a href="http://wiki.hl7.org/index.php?title=FHIR_Guide_to_Designing_Resources#Choice_of_coding_data_type">рекомендации по выбору типа данных</a>.
+<!-- Note: generally the choice of data type is dictated by the resource itself.
 When choosing a data type for an <a href="extensibility.html">extension</a>,
-see the FHIR wiki for <a href="http://wiki.hl7.org/index.php?title=FHIR_Guide_to_Designing_Resources#Choice_of_coding_data_type">advice about data type choice</a>.
+see the FHIR wiki for <a href="http://wiki.hl7.org/index.php?title=FHIR_Guide_to_Designing_Resources#Choice_of_coding_data_type">advice about data type choice</a>. -->
 </p>
 
 <a name="valuesets"> </a>
-<h2>Coded Values, Systems, and Value Sets</h2>
+<h2>Кодированные значения, системы и набры значений<!-- Coded Values, Systems, and Value Sets --></h2>
 <p>
 Множество кодированных значений, которые разрешено использовать в элементах одного из этих 4 типов данных, называется <a href="valueset.html">"value set"</a> (набор значений). Везде, где используются эти типы данных, спецификация связывает соответствующий набор значений с элементом.
 </p>
@@ -81,36 +86,44 @@ LOINC code betrays its origin.
 </p>
 
 <a name="system"> </a>
-<h2>Choosing a system</h2>
+<h2>Выбор системы<!-- Choosing a system --></h2>
 
 <p>
-The URL in a <code>system</code> is always a reference to a code system, 
+URL в <code>system</code> всегда является ссылкой на кодовую систему, а не на набор значений. Элемент <code>system</code> гарантирует, что коды могут быть однозначно отслежены до своего исходного определения, и что логическое сравнение, поиск совпадений и заключения могут быть непротиворечиво сделаны различными системами. По этой причине очень важен выбор корректного URI для атрибута system. 
+<!-- The URL in a <code>system</code> is always a reference to a code system, 
 not to a value set. The <code>system</code> ensures that codes can be unambiguously
 traced back to their original definition, and that logical comparisons, matching and 
 inferences can be performed consistently by different systems. For this reason, choice
-of the correct URI for the system attribute is critical.
+of the correct URI for the system attribute is critical. -->
 </p>
 <p>
-The correct value to use in the <i>system</i> for a given code system can be determined 
-by working through the following list, in order:
+Корректное значение для использования в элементе  <i>system</i> для данной кодовой системы можно определить с помощью одного из действий, приведенных ниже, в указанном порядке:
+<!-- The correct value to use in the <i>system</i> for a given code system can be determined 
+by working through the following list, in order: -->
 </p>
 <ul>
- <li>the specification <a href="terminologies-systems.html">Code System Registry</a> 
+ <li>спецификация <a href="terminologies-systems.html">Code System Registry</a> - если кодовая система перечислена в ней, СЛЕДУЕТ использовать ее</li>
+ <li>URI или OID системы, определенные издателем кодовой системы как корректное значение для использования в FHIR</li>
+ <li><a href="http://registry.fhir.org/NamingSystem">реестр кодовых систем сообщества FHIR</a> - если кодовая система есть в этом списке со значением <a href="namingsystem-definitions.html#NamingSystem.status">status = active</a>, СЛЕДУЕТ использовать ее</li>
+ <li>OID, зарегистрированный в <a href="http://hl7.org/oid">реестре HL7 OID</a> - если кодовая система зарегистрирована здесь, СЛЕДУЕТ использовать этот OID (с помощью синтаксиса urn:oid:[oid])</li>
+<!--  <li>the specification <a href="terminologies-systems.html">Code System Registry</a> 
      - if a code system is listed here, it SHALL be used</li>
  <li>A system URI or OID defined as the correct value to use in FHIR by the publisher of the code system</li>
  <li>the FHIR <a href="http://registry.fhir.org/NamingSystem">community code system registry</a> 
      - if a code system is listed here with <a href="namingsystem-definitions.html#NamingSystem.status">status = active</a>, it SHALL be used</li>
- <li>an OID registered in the <a href="http://hl7.org/oid">HL7 OID registry</a> - if a code system is registered here, the OID SHOULD be used (using the syntax urn:oid:[oid])</li>
+ <li>an OID registered in the <a href="http://hl7.org/oid">HL7 OID registry</a> - if a code system is registered here, the OID SHOULD be used (using the syntax urn:oid:[oid])</li> -->
 </ul>
 <p>
-If a code system is resolved by this list, and there is no publisher to consult, implementers 
+Если название кодовой системы удалось определить по этому списку, и нет возможности проконсультироваться с ее издателем, реализаторам придется выбирать URI для использования. Приоритетом будет выбор уникального значения, которое не может быть случайно использовано другим реализатором для других целей или для той же цели, но с другой областью действия.
+<!-- If a code system is resolved by this list, and there is no publisher to consult, implementers 
 will have to choose a URI to use. The priority should be to choose a unique value that won't
 accidently be used by another implementer for a different purpose - or a very similar purpose
-with a different scope. 
+with a different scope.  -->
 </p>
 <p>
-For publishers of code systems, the following considerations should be kept in mind when 
-defining the correct URI to use:
+При определении корректного URI для использования издателям кодовых систем следует иметь в виду следующие соображения:
+<!-- For publishers of code systems, the following considerations should be kept in mind when 
+defining the correct URI to use: -->
 </p>
 <ul>
  <li>Once defined, the URI will require agreement from all implementers to change, and some may not be able to change (stored resources). If the set of users is not closed, it will usually not be possible to change the URI</li>
@@ -123,13 +136,14 @@ defining the correct URI to use:
  <li>Generally, allocation of URLs is heirarchical, and most care is required in choosing the root URL. One sub-URL policies are clearly defined, URIs can often be automatically assigned</li>
 </ul> 
 <p>
-Note: if the code system is made available packaged inside a <a href="valueset.html">ValueSet</a> resource, the 
-correct URL for the <code>system</code> value is <i>ValueSet.define.system</i>, not <i>ValueSet.uri</i>.
+Примечание: если кодовая система упакована и доступна внутри ресурса <a href="valueset.html">ValueSet</a>, корректным URL для значения <code>system</code> будет <i>ValueSet.define.system</i>, а не <i>ValueSet.uri</i>.
+<!-- Note: if the code system is made available packaged inside a <a href="valueset.html">ValueSet</a> resource, the 
+correct URL for the <code>system</code> value is <i>ValueSet.define.system</i>, not <i>ValueSet.uri</i>. -->
 </p>
 
 
 <a name="binding"> </a>
-<h2>Controlling the use of Coded Values</h2>
+<h2>Управление использованием кодированных значений<!-- Controlling the use of Coded Values --></h2>
 
 <p>
 Когда у элемента есть привязка к набору значений, у элемента "binding" могут быть следующие свойства: 
@@ -149,7 +163,7 @@ correct URL for the <code>system</code> value is <i>ValueSet.define.system</i>, 
 
 <a name="references"> </a>
 
-<h3>Value Set References</h3>
+<h3>Ссылки на наборы значений<!-- Value Set References --></h3>
 <p>
 В спецификации есть много мест, где используются ссылки на наборы значений для привязки кодированного значения к набору значений (value set):
 <!-- There are a number of places in the specification where value sets are referenced in order to bind a coded value to a value set: -->
