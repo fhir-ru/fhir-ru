@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Using UCUM with FHIR%]
+[%settitle Применение UCUM в FHIR%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,81 +13,105 @@
 
 <%txheader%>
 
-<h2>Using UCUM with FHIR</h2>
+<h2>Применение UCUM в FHIR<!-- Using UCUM with FHIR --></h2>
 
 <p>
-The <a href="http://unitsofmeasure.org">Units of Measure</a> Coding System (UCUM) is recommended 
-for use with the <a href="datatypes.html#Quantity">Quantity</a> data type. 
+Кодовая система <a href="http://unitsofmeasure.org">Единицы измерений</a> (UCUM) рекомендуется для использования в типе данных <a href="datatypes.html#Quantity">Quantity</a>. 
+<!-- The <a href="http://unitsofmeasure.org">Units of Measure</a> Coding System (UCUM) is recommended 
+for use with the <a href="datatypes.html#Quantity">Quantity</a> data type.  -->
 </p>
 
-<h3>Summary</h3>
+<h3>Сводные данные<!-- Summary --></h3>
 
 <table class="grid">
- <tr><td>Source</td><td>UCUM is made available by the <a href="https://www.regenstrief.org/">Regenstrief Institute, Inc</a> and The UCUM Organization at <a href="http://unitsofmeasure.org">http://unitsofmeasure.org</a></td></tr>
+ <tr><td>Source</td><td>UCUM создан под управлением <a href="https://www.regenstrief.org/">Regenstrief Institute, Inc</a> и The UCUM Organization по адресу <a href="http://unitsofmeasure.org">http://unitsofmeasure.org</a></td></tr>
+ <tr><td>System</td><td>UCUM-коды идентифицирует URI <a href="http://unitsofmeasure.org">http://unitsofmeasure.org</a></td></tr>
+ <tr><td>Version</td><td>Если используется версия, она должна быть стандартной версией UCUM, например 1.9. Нет необходимости указывать версию в типе данных <a href="datatypes.html#Coding">Coding</a>, только в <a href="valueset.html">наборах значений</a>, использующих коды UCUM</td></tr>
+ <tr><td>Code</td><td>Допустимые выражения с использованием чувствительных к регистру обозначений</td></tr>
+ <tr><td>Display</td><td>Элемент display не определен; для отображения используется непосредственно сам UCUM-код</td></tr>
+ <tr><td>Filter Properties</td><td>Определены два свойства фильтра, приведенные ниже</td></tr>
+<!--  <tr><td>Source</td><td>UCUM is made available by the <a href="https://www.regenstrief.org/">Regenstrief Institute, Inc</a> and The UCUM Organization at <a href="http://unitsofmeasure.org">http://unitsofmeasure.org</a></td></tr>
  <tr><td>System</td><td>The URI <a href="http://unitsofmeasure.org">http://unitsofmeasure.org</a> identifies UCUM codes</td></tr>
  <tr><td>Version</td><td>Where a version is used, it should be the standard UCUM version e.g. 1.9. There is no need to use version 
    in the <a href="datatypes.html#Coding">Coding</a> data type, only in <a href="valueset.html">Value sets</a> that use UCUM codes</td></tr>
  <tr><td>Code</td><td>Valid expressions using the case sensitive symbols</td></tr>
  <tr><td>Display</td><td>There is no defined display; the UCUM code is used directly for the display</td></tr>
- <tr><td>Filter Properties</td><td>Two filter properties are defined as described below</td></tr>
+ <tr><td>Filter Properties</td><td>Two filter properties are defined as described below</td></tr> -->
 </table>
 
-<h3>Copyright</h3>
+<h3>Авторские права<!-- Copyright --></h3>
 
 <p>
-UCUM is Copyright © 1999-2013 Regenstrief Institute, Inc. and The UCUM Organization, Indianapolis, IN. 
-All rights reserved. See <a class="wiki" href="http://unitsofmeasure.org/trac//wiki/TermsOfUse">TermsOfUse</a> for details.
+Авторские права на UCUM принадлежат © 1999-2013 Regenstrief Institute, Inc. и The UCUM Organization, Indianapolis, IN. 
+Все права защищены. Подробности см. в <a class="wiki" href="http://unitsofmeasure.org/trac//wiki/TermsOfUse">TermsOfUse</a>.
+<!-- UCUM is Copyright © 1999-2013 Regenstrief Institute, Inc. and The UCUM Organization, Indianapolis, IN. 
+All rights reserved. See <a class="wiki" href="http://unitsofmeasure.org/trac//wiki/TermsOfUse">TermsOfUse</a> for details. -->
 </p>
 
-<h3>UCUM Filter Properties</h3>
+<h3>Свойства UCUM-фильтра<!-- UCUM Filter Properties --></h3>
 
 <p>
-This section documents the property filters that can be used with the UCUM code system in value set composition statements.
+В данном разделе задокументированы фильтры по свойствам, которые можно использовать в кодовой системе UCUM в запросах на компоновку наборов значений.
+<!-- This section documents the property filters that can be used with the UCUM code system in value set composition statements. -->
 </p>
 
-<h4>Property filter</h4>
+<h4>Фильтр по свойствам<!-- Property filter --></h4>
 
 <table class="grid">
- <tr><td>Description</td><td>Restricts the expression to a describe a particular UCUM base property</td></tr>
+ <tr><td>Описание</td><td>Ограничивает выражение конкретным базовым свойством UCUM</td></tr>
+ <tr><td>Имя свойства</td><td>property</td></tr>
+ <tr><td>Допустимые операции</td><td>=</td></tr>
+ <tr><td>Допустимые значения</td><td>[строковое имя свойства]</td></tr>
+ <tr><td>Комментарии</td><td>Ограничивает выражения до некоторого выражения, которое сравнимо с базовой единицей измерения с совпадающим значением свойства. Примечание: оно не совпадает со свойством в единицах, только в базовых единицах</td></tr>
+<!--  <tr><td>Description</td><td>Restricts the expression to a describe a particular UCUM base property</td></tr>
  <tr><td>Property Name</td><td>property</td></tr>
  <tr><td>Operations Allowed</td><td>=</td></tr>
  <tr><td>Values Allowed</td><td>[string name of property]</td></tr>
- <tr><td>Comments</td><td>Restricts expressions to any expression that is comparable to a base unit with a matching property value. Note: this does not match the property on units, only base units</td></tr>
+ <tr><td>Comments</td><td>Restricts expressions to any expression that is comparable to a base unit with a matching property value. Note: this does not match the property on units, only base units</td></tr> -->
 </table>
 
-<h4>Canonical Filter</h4>
+<h4>Канонический фильтр<!-- Canonical Filter --></h4>
 
 <table class="grid">
- <tr><td>Description</td><td>Allows for any expression that is comparable to the named unit</td></tr>
+ <tr><td>Описание</td><td>Учитывает любое выражение, которое сопоставимо с названной единицей измерения</td></tr>
+ <tr><td>Имя свойства</td><td>canonical</td></tr>
+ <tr><td>Допустимые операции</td><td>= / in</td></tr>
+ <tr><td>Допустимые значения</td><td>UCUM-выражение</td></tr>
+ <tr><td>Комментарии</td><td>Учитывает любое выражение, которое сопоставимо с данной единицей(-ами) измерения</td></tr>
+<!--  <tr><td>Description</td><td>Allows for any expression that is comparable to the named unit</td></tr>
  <tr><td>Property Name</td><td>canonical</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
  <tr><td>Values Allowed</td><td>UCUM expression</td></tr>
- <tr><td>Comments</td><td>This allows any expression that is comparable to the given unit(s)</td></tr>
+ <tr><td>Comments</td><td>This allows any expression that is comparable to the given unit(s)</td></tr> -->
 </table>
 
 
-<h3>Implicit Value Sets</h3>
+<h3>Имплицитные наборы значений<!-- Implicit Value Sets --></h3>
 
 <p>
-Implicit value sets are those whose specification can be predicted based on the grammar of the 
+Имплицитные наборы значений - те, спецификация которых может быть предсказана на основе грамматики лежащей в основе кодовой системы и известной структуры URL, который ссылается на них. В UCUM определена одна группа имплицитных наборов значений: по каноническому значению (By Canonical Value).
+<!-- Implicit value sets are those whose specification can be predicted based on the grammar of the 
 underlying code system, and the known structure of the URL that refers to them. There is 
-one set of implicit value sets defined for UCUM: By Canonical Value.
+one set of implicit value sets defined for UCUM: By Canonical Value. -->
 </p>
 <p>
-If any value set resources exist with an identifier that conforms to the URL patterns specified below,
+Если какие-либо ресурсы value set созданы с идентификатором, который соответствует одному из шаблонов URL, приведенных ниже, содержимое таких ресурсов должно соответствовать приведенному шаблону. Профилям и другим ссылкам на наборы значений допускается ссылаться на эти наборы значений напрямую.
+<!-- If any value set resources exist with an identifier that conforms to the URL patterns specified below,
 the content of the resource must conform to the template provided. Profiles and other value set
-references are allowed to reference these value sets directly. 
+references are allowed to reference these value sets directly.  -->
 </p>
 
 <p>
-The value set identifier http://unitsofmeasure.org/vs is a value set that contains all LOINC codes.
+Идентификатор набора значений http://unitsofmeasure.org/vs - это набор значений, который содержит все UCUM-коды.
+<!-- The value set identifier http://unitsofmeasure.org/vs is a value set that contains all LOINC codes. -->
 </p>
 
 <h4>Multi-Axial Hierarchy Entry</h4>
 
 <p>
-A value set with an identifier of "http://unitsofmeasure.org/vs/[expression]" must 
-conform to this template, where [expression] is a valid UCUM expression:
+Набор значений с идентификатором "http://unitsofmeasure.org/vs/[expression]" должен соответствовать данному шаблону, где [expression] - это допустимое UCUM-выражение:
+<!-- A value set with an identifier of "http://unitsofmeasure.org/vs/[expression]" must 
+conform to this template, where [expression] is a valid UCUM expression: -->
 </p>
 <pre>
 &lt;ValueSet xmlns=&quot;http://hl7.org/fhir&quot;&gt;

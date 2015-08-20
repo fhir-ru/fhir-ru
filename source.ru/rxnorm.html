@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Using RxNorm with FHIR%]
+[%settitle Применение RxNorm в FHIR%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,95 +13,134 @@
 
 <%txheader%>
 
-<h2>Using RxNorm with FHIR</h2>
+<h2>Применение RxNorm в FHIR<!-- Using RxNorm with FHIR --></h2>
 
-<h3>Summary</h3>
+<h3>Сводные данные<!-- Summary --></h3>
 
 <table class="grid">
- <tr><td>Source</td><td>RxNorm is made available by the <a href="http://www.nlm.nih.gov/">US National Library of Medicine</a> at <a href="http://www.nlm.nih.gov/research/umls/rxnorm">http://www.nlm.nih.gov/research/umls/rxnorm</a></td></tr>
- <tr><td>System</td><td>The URI <a href="http://www.nlm.nih.gov/research/umls/rxnorm">http://www.nlm.nih.gov/research/umls/rxnorm</a> identifies the RxNorm code system</td></tr>
- <tr><td>Version</td><td>Where a version is used, it should be the date of release, encoded as in the download files, e.g. "07092014"</td></tr>
- <tr><td>Code</td><td>The code value for an RxNorm code is a Concept Identifier (CUI), and only CUIs for which there is an SAB=RXNORM</td></tr>
- <tr><td>Display</td><td>The correct display for CUI is the String description for it associated with the source RXNORM. Display values are not case sensitive</td></tr>
- <tr><td>Filter Properties</td><td>Several properties are defined as described below</td></tr>
+ <tr><td>Source</td><td>RxNorm создан под управлением <a href="http://www.nlm.nih.gov/">US National Library of Medicine</a> и доступен по адресу <a href="http://www.nlm.nih.gov/research/umls/rxnorm">http://www.nlm.nih.gov/research/umls/rxnorm</a></td></tr>
+<!--  <tr><td>Source</td><td>RxNorm is made available by the <a href="http://www.nlm.nih.gov/">US National Library of Medicine</a> at <a href="http://www.nlm.nih.gov/research/umls/rxnorm">http://www.nlm.nih.gov/research/umls/rxnorm</a></td></tr> -->
+ <tr><td>System</td><td>Кодовую систему RxNorm идентифицирует следующий URI: <a href="http://www.nlm.nih.gov/research/umls/rxnorm">http://www.nlm.nih.gov/research/umls/rxnorm</a></td></tr>
+<!--  <tr><td>System</td><td>The URI <a href="http://www.nlm.nih.gov/research/umls/rxnorm">http://www.nlm.nih.gov/research/umls/rxnorm</a> identifies the RxNorm code system</td></tr> -->
+ <tr><td>Version</td><td>Там, где используется версия, она должна быть датой релиза, закодированной так же, как и в скачиваемых файлах, например "07092014"</td></tr>
+<!--  <tr><td>Version</td><td>Where a version is used, it should be the date of release, encoded as in the download files, e.g. "07092014"</td></tr> -->
+ <tr><td>Code</td><td>Значением элемента code для RxNorm-кода будет Concept Identifier (CUI), и только те CUIs, для которых выполняется условие SAB=RXNORM</td></tr>
+<!--  <tr><td>Code</td><td>The code value for an RxNorm code is a Concept Identifier (CUI), and only CUIs for which there is an SAB=RXNORM</td></tr> -->
+ <tr><td>Display</td><td>Корректным значением элемента display для CUI будет его строковое описание, ассоциируемое с источником RXNORM. Значения элемента Display не чувствительны к регистру</td></tr>
+<!--  <tr><td>Display</td><td>The correct display for CUI is the String description for it associated with the source RXNORM. Display values are not case sensitive</td></tr> -->
+ <tr><td>Filter Properties</td><td>Определено несколько свойств, описанных ниже</td></tr>
+<!--  <tr><td>Filter Properties</td><td>Several properties are defined as described below</td></tr> -->
 </table>
 
-<h3>RxNorm MySQL Database</h3>
+<h3>База данных RxNorm MySQL<!-- RxNorm MySQL Database --></h3>
 <p>
-The RxNorm scripts are able to populate a MySQL database that contains the data from RxNorm. 
+Скрипты RxNorm могут заполнять базу данных MySQL, которая содержит данные из RxNorm. Здесь приводятся SQL-запросы, описывающие, как правильно реализовать функциональные возможности терминологии RxNorm в этой базе данных. Они созданы для удобства реализации и не подразумевают, что в реализациях необходимо использовать какой-то определенный подход.
+<!-- The RxNorm scripts are able to populate a MySQL database that contains the data from RxNorm. 
 This page provides SQL statements that describe how to implement the features of the RxNorm 
 terminology correctly against this database. These are provided for implementer convenience, and 
-do not imply that any particular approach be used in implementations. 
+do not imply that any particular approach be used in implementations.  -->
 </p>
 <p>
-For example, the correct display name for a CUI is 'Select STR from rxnconso where RXCUI = :code and SAB = 'RXNORM' and TTY &lt;&gt; 'SY'.
+К примеру, корректным названием для отображения CUI будет 'Select STR from rxnconso where RXCUI = :code and SAB = 'RXNORM' and TTY &lt;&gt; 'SY'.
+<!-- For example, the correct display name for a CUI is 'Select STR from rxnconso where RXCUI = :code and SAB = 'RXNORM' and TTY &lt;&gt; 'SY'. -->
 </p>
 
-<h3>Copyright/License Issues</h3>
+<h3>Вопрос авторских прав и лицензий<!-- Copyright/License Issues --></h3>
 
 <p>
-The use of RxNorm codes and display names in this specification is pursuant to HL7's status
+Использование кодов и значений для отображения RxNorm в данной спецификации согласуется со статусом HL7 как лицензиата NLM UMLS. Эта лицензия не передает право на использование RxNorm пользователям данной спецификации; реализаторы должны самостоятельно получить лицензию на право использования RxNorm.
+<!-- The use of RxNorm codes and display names in this specification is pursuant to HL7's status
 as a licensee of the NLM UMLS. This license does not convey the right to use RxNorm to 
 any users of this specification; implementers must acquire a license to use RxNorm in 
-their own right.
+their own right. -->
 </p>
 
 <p>
-The <a href="https://uts.nlm.nih.gov/license.html">license for RxNorm</a> places restrictions on
+<a href="https://uts.nlm.nih.gov/license.html">Лицензия на RxNorm</a> ставит ограничения на распространение метасправочника UMLS или его подмножеств. Мы ищем разъяснение того, что представляет собой "подмножество метасправочника", чтобы дать ясно понять, какой статус имеет набор значений RxNorm.
+<!-- The <a href="https://uts.nlm.nih.gov/license.html">license for RxNorm</a> places restrictions on
 the distribution of the UMLS Metathesaurus or subsets of it. We are seeking a clarification of 
 what constitutes a "subset of the metathesaurus" in order to make it clear what the status of 
-an RxNorm value set is.
+an RxNorm value set is. -->
 </p>
 
-<h3>RxNorm Filter Properties</h3>
+<h3>Свойства фильтра RxNorm<!-- RxNorm Filter Properties --></h3>
 
 <p>
-This section documents the property filters that can be used with the RxNorm 
-code system in value set composition statements.
+В этом разделе задокументированы свойства фильтров, которые могут использоваться в кодовой системе RxNorm при сравнении наборов значений.
+<!-- This section documents the property filters that can be used with the RxNorm 
+code system in value set composition statements. -->
 </p>
 <p>
-The base SQL statement for returning a list of CUIS that conform to these filters 
-is:
+Базовый SQL-запрос для получения списка CUIs, которые соответствуют этим фильтрам:
+<!-- The base SQL statement for returning a list of CUIS that conform to these filters 
+is: -->
 </p>
 <pre>
   Select RXCUI from rxnconso where SAB = 'RXNORM' and TTY &lt;&gt; 'SY' 
 </pre>
 
-<h4>Semantic Type</h4>
+<h4>Семантический тип<!-- Semantic Type --></h4>
 
 <table class="grid">
- <tr><td>Description</td><td>Allows to choose a set of CUIs based on their Semantic Type</td></tr>
+ <tr><td>Описание</td><td>Позволяет выбрать набор CUIs на основе их семантического типа</td></tr>
+ <tr><td>Имя свойства</td><td>STY</td></tr>
+ <tr><td>Допустимые операции</td><td>= / in</td></tr>
+ <tr><td>Допустимые значения</td><td>[column:]value</td></tr>
+ <tr><td>Комментарии</td><td>Если колонка не указана, по умолчанию колонкой будет TUI</td></tr>
+ <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from rxnsty where [:column] = :value)</pre></td></tr>
+<!--  <tr><td>Description</td><td>Allows to choose a set of CUIs based on their Semantic Type</td></tr>
  <tr><td>Property Name</td><td>STY</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
  <tr><td>Values Allowed</td><td>[column:]value</td></tr>
  <tr><td>Comments</td><td>If not column is specified, the default column is TUI</td></tr>
- <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from rxnsty where [:column] = :value)</pre></td></tr>
+ <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from rxnsty where [:column] = :value)</pre></td></tr> -->
 </table>
 
-<h4>Source</h4>
+<h4>Источник<!-- Source --></h4>
 
 <table class="grid">
- <tr><td>Description</td><td>Allows for selection of the set of concepts that have mappings to a particular rxnorm source</td></tr>
+ <tr><td>Описание</td><td>Позволяет выбирать набор концептов, имеющих мэппинг на конкретный rxnorm-источник</td></tr>
+ <tr><td>Имя свойства</td><td>SAB</td></tr>
+ <tr><td>Допустимые операции</td><td>= / in</td></tr>
+ <tr><td>Допустимые значения</td><td>Значения из RxNorm-таблицы SAB (например select RSAB from rxnsab) </td></tr>
+ <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from rxnconso where SAB = :value)</pre></td></tr>
+<!--  <tr><td>Description</td><td>Allows for selection of the set of concepts that have mappings to a particular rxnorm source</td></tr>
  <tr><td>Property Name</td><td>SAB</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
  <tr><td>Values Allowed</td><td>Values from RxNorm SAB table (e.g. select RSAB from rxnsab) </td></tr>
- <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from rxnconso where SAB = :value)</pre></td></tr>
+ <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from rxnconso where SAB = :value)</pre></td></tr> -->
 </table>
 
-<h4>Term Type</h4>
+<h4>Тип термина<!-- Term Type --></h4>
 
 <table class="grid">
- <tr><td>Description</td><td>Allows for selection of a concept based on its designated type</td></tr>
+ <tr><td>Описание</td><td>Позволяет выбирать концепт указанного типа</td></tr>
+ <tr><td>Имя свойства</td><td>TTY</td></tr>
+ <tr><td>Допустимые операции</td><td>= / in</td></tr>
+ <tr><td>Допустимые значения</td><td>TTY-значения из RxNorm-таблицы концептов (например select distinct TTY from rxnconso)</td></tr>
+ <tr><td>SQL</td><td><pre>and TTY = :value</pre></td></tr>
+<!--  <tr><td>Description</td><td>Allows for selection of a concept based on its designated type</td></tr>
  <tr><td>Property Name</td><td>TTY</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
  <tr><td>Values Allowed</td><td>TTY values from the RxNorm Concept table (e.g. select distinct TTY from rxnconso)</td></tr>
- <tr><td>SQL</td><td><pre>and TTY = :value</pre></td></tr>
+ <tr><td>SQL</td><td><pre>and TTY = :value</pre></td></tr> -->
 </table>
 
-<h4>Relationship</h4>
+<h4>Взаимосвязь<!-- Relationship --></h4>
 
 <table class="grid">
- <tr><td>Description</td><td>Allows for selection of a concept based on its relationships</td></tr>
+ <tr><td>Описание</td><td>Позволяет выбирать концепт на основе его взаимосвязей</td></tr>
+ <tr><td>Имя свойства</td><td>[REL]</td></tr>
+ <tr><td>Допустимые операции</td><td>= / in</td></tr>
+ <tr><td>Допустимые значения</td><td>CUI:[RXCUI] или AUI:[RXAUI] должен быть допустимым CUI или AUI. Обратите внимание, что CUI не требуется иметь запись SAB=RXNORM, чтобы использоваться здесь</td></tr>
+ <tr><td>Комментарии</td><td>[REL] (:rel) - это один из SY, SIB, RN, PAR, CHD, RB или RO</td></tr>
+ <tr><td>SQL</td><td>
+   для CUI:
+   <pre>and (RXCUI in (select RXCUI from rxnconso where RXCUI in (select RXCUI1 from rxnrel where REL = :rel and RXCUI2 = :value))</pre>
+   для AUI:
+   <pre>and (RXCUI in (select RXCUI from rxnconso where RXAUI in (select RXAUI1 from rxnrel where REL = :rel and RXAUI2 = :value))</pre>
+   </td></tr>
+<!--  <tr><td>Description</td><td>Allows for selection of a concept based on its relationships</td></tr>
  <tr><td>Property Name</td><td>[REL]</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
  <tr><td>Values Allowed</td><td>CUI:[RXCUI] or AUI:[RXAUI] must be a valid CUI or AUI. Note that a CUI does not need to have a SAB=RXNORM entry to be used here</td></tr>
@@ -111,13 +150,24 @@ is:
    <pre>and (RXCUI in (select RXCUI from rxnconso where RXCUI in (select RXCUI1 from rxnrel where REL = :rel and RXCUI2 = :value))</pre>
    for AUI:
    <pre>and (RXCUI in (select RXCUI from rxnconso where RXAUI in (select RXAUI1 from rxnrel where REL = :rel and RXAUI2 = :value))</pre>
-   </td></tr>
+   </td></tr> -->
 </table>
 
-<h4>Relationship Type</h4>
+<h4>Тип взаимосвязи<!-- Relationship Type --></h4>
 
 <table class="grid">
- <tr><td>Description</td><td>Allows for selection of a concept based on the type of its relationships</td></tr>
+ <tr><td>Описание</td><td>Позволяет выбирать концепт на основе типа его взаимосвязи</td></tr>
+ <tr><td>Имя свойства</td><td>[RELA]</td></tr>
+ <tr><td>Допустимые операции</td><td>= / in</td></tr>
+ <tr><td>Допустимые значения</td><td>CUI:[RXCUI] или AUI:[RXAUI] должен быть допустимым CUI или AUI. Обратите внимание, что CUI не требуется иметь запись SAB=RXNORM, чтобы использоваться здесь</td></tr>
+ <tr><td>Комментарии</td><td>[RELA] (:rela) - это один из типов взаимосвязи, приведенных ниже</td></tr>
+ <tr><td>SQL</td><td>
+   для CUI:
+   <pre>and (RXCUI in (select RXCUI from rxnconso where RXCUI in (select RXCUI1 from rxnrel where RELA = :rel and RXCUI2 = :value))</pre>
+   для AUI:
+   <pre>and (RXCUI in (select RXCUI from rxnconso where RXAUI in (select RXAUI1 from rxnrel where RELA = :rel and RXAUI2 = :value))</pre>
+   </td></tr>
+<!--  <tr><td>Description</td><td>Allows for selection of a concept based on the type of its relationships</td></tr>
  <tr><td>Property Name</td><td>[RELA]</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
  <tr><td>Values Allowed</td><td>CUI:[RXCUI] or AUI:[RXAUI] must be a valid CUI or AUI. Note that a CUI does not need to have a SAB=RXNORM entry to be used here</td></tr>
@@ -127,10 +177,10 @@ is:
    <pre>and (RXCUI in (select RXCUI from rxnconso where RXCUI in (select RXCUI1 from rxnrel where RELA = :rel and RXCUI2 = :value))</pre>
    for AUI:
    <pre>and (RXCUI in (select RXCUI from rxnconso where RXAUI in (select RXAUI1 from rxnrel where RELA = :rel and RXAUI2 = :value))</pre>
-   </td></tr>
+   </td></tr> -->
 </table>
 
-<p><b>Relationship Types</b></p>
+<p><b>Типы взаимосвязи<!-- Relationship Types --></b></p>
 <ul>
   <li>active_ingredient_of</li>
   <li>active_metabolites_of</li>
@@ -213,16 +263,18 @@ is:
 </ul>
 
 
-<h3>Implicit Value Sets</h3>
+<h3>Имплицитные наборы значений<!-- Implicit Value Sets --></h3>
 
 <p>
-Implicit value sets are those whose specification can be predicted based on the grammar of the 
+Имплицитные наборы значений - те, спецификация которых может быть предсказана на основе грамматики лежащей в основе кодовой системы и известной структуры URL, который ссылается на них. RxNorm (пока что) не содержит имплицитных наборов значений.
+<!-- Implicit value sets are those whose specification can be predicted based on the grammar of the 
 underlying code system, and the known structure of the URL that refers to them. RxNorm
-does not (yet) have any defined implicit value sets.
+does not (yet) have any defined implicit value sets. -->
 </p>
 
 <p>
-The value set identifier http://www.nlm.nih.gov/research/umls/rxnorm/vs is a value set that contains all RxNorm CUIs.
+Идентификатор набора значений http://www.nlm.nih.gov/research/umls/rxnorm/vs - это набор значений, который содержит все CUIs RxNorm.
+<!-- The value set identifier http://www.nlm.nih.gov/research/umls/rxnorm/vs is a value set that contains all RxNorm CUIs. -->
 </p>
 
 
