@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Using CVX with FHIR%]
+[%settitle Использование CVX в FHIR%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,42 +13,52 @@
 
 <%txheader%>
 
-<h2>Using CVX (Vaccine Administered) with FHIR</h2>
+<h2>Использование CVX (Vaccine Administered) в FHIR<!-- Using CVX (Vaccine Administered) with FHIR --></h2>
 
-<h3>Summary</h3>
+<h3>Сводные данные<!-- Summary --></h3>
 
 <table class="grid">
- <tr><td>Source</td><td>Available at <a href="http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx">http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx</a>. Developed by The CDC's National Center of Immunization and Respiratory Diseases (<a href="http://www.cdc.gov/ncird/">NCIRD</a>)</td></tr>
+ <tr><td>Источник</td><td>Доступно по адресу <a href="http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx">http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx</a>. Разработано государственным центром иммунизации и респираторных заболеваний CDC (<a href="http://www.cdc.gov/ncird/">NCIRD</a>)</td></tr>
+ <tr><td>System</td><td>URI для идентификации CVX-кодов - <code>http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx</code> <i>Todo: получить постоянную ссылку</i></td></tr>
+ <tr><td>Version</td><td>Если требуется указать версию, используйте дату последнего изменения кода в формате YYYYMMDD</td></tr>
+ <tr><td>Code</td><td>Используйте значение колонки "CVX Code" на веб-странице</td></tr>
+ <tr><td>Display</td><td>Используйте значение колонки "Short Description" на веб-странице</td></tr>
+ <tr><td>Filter Properties</td><td>Пока что не определены</td></tr>
+<!--  <tr><td>Source</td><td>Available at <a href="http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx">http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx</a>. Developed by The CDC's National Center of Immunization and Respiratory Diseases (<a href="http://www.cdc.gov/ncird/">NCIRD</a>)</td></tr>
  <tr><td>System</td><td>The URI to identify CVX codes is <code>http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx</code> <i>Todo: get a permalink</i></td></tr>
  <tr><td>Version</td><td>If it is desired to exchange the version, use the date of the last updated code in the format YYYYMMDD</td></tr>
  <tr><td>Code</td><td>Use the value of "CVX Code" column in the web page</td></tr>
  <tr><td>Display</td><td>Use the value of the "Short Description" column in the web page</td></tr>
- <tr><td>Filter Properties</td><td>None are described yet</td></tr>
+ <tr><td>Filter Properties</td><td>None are described yet</td></tr> -->
 </table>
 
-<h3>Version Issues</h3>
+<h3>Вопросы версионирования<!-- Version Issues --></h3>
 <p>
-If it is desired to exchange the version, use the date of the last updated code in the format YYYYMMDD.
+При необходимости указания версии используйте дату последнего изменения кода в формате YYYYMMDD.
+<!-- If it is desired to exchange the version, use the date of the last updated code in the format YYYYMMDD. -->
 </p>
 
-<h3>Copyright/License Issues</h3>
+<h3>Вопросы авторских прав/лицензий<!-- Copyright/License Issues --></h3>
 
 <p>
-CVX has no copyright acknowledgement needed, nor are there any license terms to adhere to.
+CVX не требует подтверждения авторских прав, и нет условий лицензий, которых необходимо придерживаться.
+<!-- CVX has no copyright acknowledgement needed, nor are there any license terms to adhere to. -->
 </p>
 
-<h3>CVX Filter Properties</h3>
+<h3>Свойства фильтра CVX<!-- CVX Filter Properties --></h3>
 
 
 <p>
-No need for filters identified yet.
+Нет необходимости в уже определенных фильтрах.
+<!-- No need for filters identified yet. -->
 </p>
 
 
-<h3>Implicit Value Sets</h3>
+<h3>Имплицитные наборы значений<!-- Implicit Value Sets --></h3>
 
 <p>
-No need for implicit value sets identified yet.
+Нет необходимости в уже определенных имплицитных наборах значений.
+<!-- No need for implicit value sets identified yet. -->
 </p>
 
 </div>

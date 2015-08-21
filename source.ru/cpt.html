@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Using CPT with FHIR%]
+[%settitle Использование CPT в FHIR%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,25 +13,32 @@
 
 <%txheader%>
 
-<h2>Using CPT with FHIR</h2>
+<h2>Использование CPT в FHIR<!-- Using CPT with FHIR --></h2>
 
-<h3>Summary</h3>
+<h3>Сводные данные<!-- Summary --></h3>
 
 <table class="grid">
- <tr><td>Source</td><td>CPT is made managed by the <a href="http://www.ama-assn.org/ama">American Medical Association</a></td></tr>
+ <tr><td>Источник</td><td>CPT создан под управлением <a href="http://www.ama-assn.org/ama">Американской медицинской ассоциации</a></td></tr>
+ <tr><td>System</td><td>URI для идентификации кодовой системы CPT <a href="http://www.ama-assn.org/go/cpt">http://www.ama-assn.org/go/cpt</a></td></tr>
+ <tr><td>Version</td><td>При необходимости указания версии используйте год релиза, например 2014</td></tr>
+ <tr><td>Code</td><td>"Code" в CPT-таблицах (5-символьный код)</td></tr>
+ <tr><td>Display</td><td>"Description" в CPT-таблицах</td></tr>
+ <tr><td>Filter Properties</td><td>Не определены</td></tr>
+<!--  <tr><td>Source</td><td>CPT is made managed by the <a href="http://www.ama-assn.org/ama">American Medical Association</a></td></tr>
  <tr><td>System</td><td>The URI <a href="http://www.ama-assn.org/go/cpt">http://www.ama-assn.org/go/cpt</a> identifies the CPT code system</td></tr>
  <tr><td>Version</td><td>Where a version is appropriate, use the year of release e.g. 2014</td></tr>
  <tr><td>Code</td><td>"Code" in the CPT tables (a 5 character code)</td></tr>
  <tr><td>Display</td><td>"Description" in the CPT tables</td></tr>
- <tr><td>Filter Properties</td><td>None defined</td></tr>
+ <tr><td>Filter Properties</td><td>None defined</td></tr> -->
 </table>
 
-<h3>Version Issues</h3>
+<h3>Вопросы версионирования<!-- Version Issues --></h3>
 <p>
-CPT is released each October. CPT versions are identified simply by the year of their release. 
+Релиз CPT проходит каждый октябрь. CPT-версии идентифицируются просто годом выпуска.
+<!-- CPT is released each October. CPT versions are identified simply by the year of their release.  -->
 </p>
 
-<h3>Example Usage</h3>
+<h3>Пример использования<!-- Example Usage --></h3>
 
 <pre class="xml" fragment="Coding">
   &lt;coding&gt;
@@ -42,25 +49,29 @@ CPT is released each October. CPT versions are identified simply by the year of 
   &lt;/coding&gt;
 </pre>
 
-<h3>Copyright/License Issues</h3>
+<h3>Вопросы авторских прав/лицензий<!-- Copyright/License Issues --></h3>
 
 <p>
-CPT is a registered trademark of the American Medical Association. The AMA holds the copyright for the CPT coding system.
+CPT является зарегистрированной торговой маркой Американской медицинской ассоциации (AMA). Авторское право на кодовую систему CPT принадлежит AMA.
+<!-- CPT is a registered trademark of the American Medical Association. The AMA holds the copyright for the CPT coding system. -->
 </p>
 <p>
-When Value Sets include CPT codes, the copyright element should include the text "CPT copyright 2014 American Medical Association. All rights reserved.".
+Если набор значений включает в себя CPT-коды, элемент copyright должен содержать следующий текст: "CPT copyright 2014 American Medical Association. All rights reserved.".
+<!-- When Value Sets include CPT codes, the copyright element should include the text "CPT copyright 2014 American Medical Association. All rights reserved.". -->
 </p>
 
-<h3>CPT Filter Properties</h3>
+<h3>Свойства фильтра CPT<!-- CPT Filter Properties --></h3>
 
 <p>
-No filter properties have been defined at this time.
+В настоящее время свойства фильтра не определены.
+<!-- No filter properties have been defined at this time. -->
 </p>
 
-<h3>Implicit Value Sets</h3>
+<h3>Имплицитные наборы значений<!-- Implicit Value Sets --></h3>
 
 <p>
-The value set URL http://hl7.org/fhir/ValueSet/cpt-all is a value set that includes all CPT codes.
+Набор значений по адресу http://hl7.org/fhir/ValueSet/cpt-all включает в себя все CPT-коды.
+<!-- The value set URL http://hl7.org/fhir/ValueSet/cpt-all is a value set that includes all CPT codes. -->
 </p>
 
 </div>
