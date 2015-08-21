@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Using the NCI Metathesaurus with FHIR%]
+[%settitle Применение NCI Metathesaurus в FHIR%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,93 +13,133 @@
 
 <%txheader%>
 
-<h2>Using the NCI Metathesaurus with FHIR</h2>
+<h2>Применение NCI Metathesaurus в FHIR<!-- Using the NCI Metathesaurus with FHIR --></h2>
 
-<h3>Summary</h3>
+<h3>Краткие сведения<!-- Summary --></h3>
 
 <table class="grid">
- <tr><td>Source</td><td>NCI Metathesaurus <a href="http://cbiit.nci.nih.gov">the NCI Center for Biomedical Informatics and Information Technology (CBIIT) </a></td></tr>
+ <tr><td>Source</td><td>NCI Metathesaurus создан под управлением <a href="http://cbiit.nci.nih.gov">NCI центра биомедицинской информатики и информационных технологий (CBIIT) </a></td></tr>
+ <tr><td>System</td><td>URI <a href="http://ncimeta.nci.nih.gov">http://ncimeta.nci.nih.gov</a> идентифицирует NCI Metathesaurus</td></tr>
+ <tr><td>Version</td><td>У NCI Metathesaurus отсутствует версия или версионирование</td></tr>
+ <tr><td>Code</td><td>Concept Unique Identifier (CUI) используется в качестве значения кода Metathesaurus-концепта</td></tr>
+ <tr><td>Display</td><td>При применении на английском языке для отображения необходимо использовать название (например "Aerosol Dose Form" для CUI C1112870)</td></tr>
+ <tr><td>Filter Properties</td><td>None are described yet</td></tr>
+<!--  <tr><td>Source</td><td>NCI Metathesaurus <a href="http://cbiit.nci.nih.gov">the NCI Center for Biomedical Informatics and Information Technology (CBIIT) </a></td></tr>
  <tr><td>System</td><td>The URI <a href="http://ncimeta.nci.nih.gov">http://ncimeta.nci.nih.gov</a> identifies the NCI Metathesaurus</td></tr>
  <tr><td>Version</td><td>There is no version or versioning associated with the NCI metathesaurus</td></tr>
  <tr><td>Code</td><td>The Concept Unique Identifier (CUI) is used for the code value for a Metathesaurus concept</td></tr>
  <tr><td>Display</td><td>The name should be used as the display for English usage (e.g. "Aerosol Dose Form" for CUI C1112870)</td></tr>
- <tr><td>Filter Properties</td><td>None are described yet</td></tr>
+ <tr><td>Filter Properties</td><td>None are described yet</td></tr> -->
 </table>
 
-<h3>Version Issues</h3>
+<h3>Вопросы версионирования<!-- Version Issues --></h3>
 <p>
-There are no staged releases of the NCI metathesaurus, so there is no versioning policy.
+У NCI metathesaurus отсутствуют релизы, поэтому нет и политики версионирования.
+<!-- There are no staged releases of the NCI metathesaurus, so there is no versioning policy. -->
 </p>
 
-<h3>Copyright/License Issues</h3>
+<h3>Вопросы авторских прав/лицензий<!-- Copyright/License Issues --></h3>
 
 <p>
-The NCI metathesaurus is in the public domain, so there are not copyright notices need 
+NCI metathesaurus является общественным достоянием, поэтому не требуется уведомление об авторских правах в наборах значений, которые ссылаются на концепты NCI metathesaurus, и нет требований лицензирования для использования концептов в экземплярах или системах.
+<!-- The NCI metathesaurus is in the public domain, so there are not copyright notices need 
 in value sets that refer to NCI metathesaurus concepts, and there are no licensing 
-requirements to use concepts in instances or systems.
+requirements to use concepts in instances or systems. -->
 </p>
 
-<h3>MCI Metathesaurus MySQL Database</h3>
+<h3>База данных NCI Metathesaurus MySQL<!-- MCI Metathesaurus MySQL Database --></h3>
 <p>
-Like <a href="rxnorm.html">RxNorm</a> the RRF files that are the distributed source of the NCI Metathesaurus can be used
+Как и в <a href="rxnorm.html">RxNorm</a>, RRF-файлы, входящие в исходный дистрибутив NCI Metathesaurus, можно использовать для пополнения базы данных MySQL, которая содержит данные. Здесь приводятся SQL-запросы, описывающие, как правильно реализовать функциональные возможности NCI Metathesaurus в этой базе данных. Они созданы для удобства реализаторов и не подразумевают, что в реализациях необходимо использовать какой-то определенный подход.
+ (Примечание: для обеспечения согласованности используются названия таблиц и колонок из rxnorm; кроме того, CUIs на 1 символ длиннее, поэтому скрипты необходимо обновить).
+<!-- Like <a href="rxnorm.html">RxNorm</a> the RRF files that are the distributed source of the NCI Metathesaurus can be used
 to populate a MySQL database that contains the data. This page provides SQL statements that describe how to implement 
 the features of the NCI Metathesaurus correctly against this database. These are provided for implementer convenience, and 
 do not imply that any particular approach be used in implementations. (note: for consistency, the rxnorm table and column names 
-are used; also, the CUIs are 1 character longer, so the scripts must be updated).
+are used; also, the CUIs are 1 character longer, so the scripts must be updated). -->
 </p>
 <p>
-For example, the correct display name for a CUI is 'Select STR from rxnconso where RXCUI = :code and SAB = 'RXNORM' and TTY &lt;&gt; 'SY'.
+<!-- For example, the correct display name for a CUI is 'Select STR from rxnconso where RXCUI = :code and SAB = 'RXNORM' and TTY &lt;&gt; 'SY'. -->
+К примеру, корректным названием для отображения CUI будет 'Select STR from rxnconso where RXCUI = :code and SAB = 'RXNORM' and TTY &lt;&gt; 'SY'.
 </p>
 
-<h3>NCI metathesaurus Filter Properties</h3>
+<h3>Свойства фильтра NCI metathesaurus<!-- NCI metathesaurus Filter Properties --></h3>
 
 <p>
-This section documents the property filters that can be used with the RxNorm 
-code system in value set composition statements.
+В данном разделе задокументированы фильтры по свойствам, которые можно использовать в кодовой системе RxNorm в запросах на компоновку наборов значений.
+<!-- This section documents the property filters that can be used with the RxNorm 
+code system in value set composition statements. -->
 </p>
 <p>
-The base SQL statement for returning a list of CUIS that conform to these filters 
-is:
+Базовый SQL-запрос для получения списка CUIs, которые соответствуют этим фильтрам:
+<!-- The base SQL statement for returning a list of CUIS that conform to these filters 
+is: -->
 </p>
 <pre>
   Select RXCUI from RXNCONSO where SAB = 'RXNORM' and TTY &lt;&gt; 'SY' 
 </pre>
 
-<h4>Semantic Type</h4>
+<h4>Семантический тип<!-- Semantic Type --></h4>
 
 <table class="grid">
- <tr><td>Description</td><td>Allows to choose a set of CUIs based on their Semantic Type</td></tr>
+ <tr><td>Описание</td><td>Allows to choose a set of CUIs based on their Semantic Type</td></tr>
+ <tr><td>Имя свойства</td><td>STY</td></tr>
+ <tr><td>Допустимые операции</td><td>= / in</td></tr>
+ <tr><td>Допустимые значения</td><td>[column:]value</td></tr>
+ <tr><td>Комментарии</td><td>If not column is specified, the default column is TUI</td></tr>
+ <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from RXNSTY where [:column] = :value)</pre></td></tr>
+<!--  <tr><td>Description</td><td>Allows to choose a set of CUIs based on their Semantic Type</td></tr>
  <tr><td>Property Name</td><td>STY</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
  <tr><td>Values Allowed</td><td>[column:]value</td></tr>
  <tr><td>Comments</td><td>If not column is specified, the default column is TUI</td></tr>
- <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from RXNSTY where [:column] = :value)</pre></td></tr>
+ <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from RXNSTY where [:column] = :value)</pre></td></tr> -->
 </table>
 
-<h4>Source</h4>
+<h4>Источник<!-- Source --></h4>
 
 <table class="grid">
- <tr><td>Description</td><td>Allows for selection of the set of concepts that have mappings to a particular rxnorm source</td></tr>
+ <tr><td>Описание</td><td>Позволяет выбирать набор концептов, имеющих мэппинг на конкретный rxnorm-источник</td></tr>
+ <tr><td>Имя свойства</td><td>SAB</td></tr>
+ <tr><td>Допустимые операции</td><td>= / in</td></tr>
+ <tr><td>Допустимые значения</td><td>Значения из RxNorm-таблицы SAB (например select RSAB from RXNsab)</td></tr>
+ <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from RXNconso where SAB = :value)</pre></td></tr>
+<!--  <tr><td>Description</td><td>Allows for selection of the set of concepts that have mappings to a particular rxnorm source</td></tr>
  <tr><td>Property Name</td><td>SAB</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
  <tr><td>Values Allowed</td><td>Values from the SAB table (e.g. select RSAB from RXNsab) </td></tr>
- <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from RXNconso where SAB = :value)</pre></td></tr>
+ <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from RXNconso where SAB = :value)</pre></td></tr> -->
 </table>
 
-<h4>Term Type</h4>
+<h4>Тип термина<!-- Term Type --></h4>
 
 <table class="grid">
- <tr><td>Description</td><td>Allows for selection of a concept based on its designated type</td></tr>
+ <tr><td>Описание</td><td>Позволяет выбирать концепт указанного типа</td></tr>
+ <tr><td>Имя свойства</td><td>TTY</td></tr>
+ <tr><td>Допустимые операции</td><td>= / in</td></tr>
+ <tr><td>Допустимые значения</td><td>TTY-значения из RxNorm-таблицы концептов (например select distinct TTY from rxnconso)</td></tr>
+ <tr><td>SQL</td><td><pre>and TTY = :value</pre></td></tr>
+<!--  <tr><td>Description</td><td>Allows for selection of a concept based on its designated type</td></tr>
  <tr><td>Property Name</td><td>TTY</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
  <tr><td>Values Allowed</td><td>TTY values from the RxNorm Concept table (e.g. select distinct TTY from rxnconso)</td></tr>
- <tr><td>SQL</td><td><pre>and TTY = :value</pre></td></tr>
+ <tr><td>SQL</td><td><pre>and TTY = :value</pre></td></tr> -->
 </table>
 
-<h4>Relationship</h4>
+<h4>Взаимосвязь<!-- Relationship --></h4>
 
 <table class="grid">
- <tr><td>Description</td><td>Allows for selection of a concept based on its relationships</td></tr>
+ <tr><td>Описание</td><td>Позволяет выбирать концепт на основе его взаимосвязей</td></tr>
+ <tr><td>Имя свойства</td><td>[REL]</td></tr>
+ <tr><td>Допустимые операции</td><td>= / in</td></tr>
+ <tr><td>Допустимые значения</td><td>CUI:[RXCUI] или AUI:[RXAUI]  должен быть допустимым CUI или AUI. Обратите внимание, что CUI не требуется иметь запись SAB=RXNORM, чтобы использоваться здесь</td></tr>
+ <tr><td>Комментарии</td><td>[REL] (:rel) - это один из AQ, CHD, PAR, QB, RB, RN, RO, RQ, SIB или SY</td></tr>
+ <tr><td>SQL</td><td>
+   для CUI:
+   <pre>and (RXCUI in (select RXCUI from rxnconso where RXCUI in (select RXCUI1 from rxnrel where REL = :rel and RXCUI2 = :value))</pre>
+   для AUI:
+   <pre>and (RXCUI in (select RXCUI from rxnconso where RXAUI in (select RXAUI1 from rxnrel where REL = :rel and RXAUI2 = :value))</pre>
+   </td></tr>
+<!--  <tr><td>Description</td><td>Allows for selection of a concept based on its relationships</td></tr>
  <tr><td>Property Name</td><td>[REL]</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
  <tr><td>Values Allowed</td><td>CUI:[RXCUI] or AUI:[RXAUI] must be a valid CUI or AUI. Note that a CUI does not need to have a SAB=RXNORM entry to be used here</td></tr>
@@ -109,13 +149,24 @@ is:
    <pre>and (RXCUI in (select RXCUI from rxnconso where RXCUI in (select RXCUI1 from rxnrel where REL = :rel and RXCUI2 = :value))</pre>
    for AUI:
    <pre>and (RXCUI in (select RXCUI from rxnconso where RXAUI in (select RXAUI1 from rxnrel where REL = :rel and RXAUI2 = :value))</pre>
-   </td></tr>
+   </td></tr> -->
 </table>
 
-<h4>Relationship Type</h4>
+<h4>Тип взаимосвязи<!-- Relationship Type --></h4>
 
 <table class="grid">
- <tr><td>Description</td><td>Allows for selection of a concept based on the type of its relationships</td></tr>
+ <tr><td>Описание</td><td>Позволяет выбирать концепт на основе типа его взаимосвязи</td></tr>
+ <tr><td>Имя свойства</td><td>[RELA]</td></tr>
+ <tr><td>Допустимые операции</td><td>= / in</td></tr>
+ <tr><td>Допустимые значения</td><td>CUI:[RXCUI] или AUI:[RXAUI] должен быть допустимым CUI или AUI. Обратите внимание, что CUI не требуется иметь запись SAB=RXNORM, чтобы использоваться здесь</td></tr>
+ <tr><td>Комментарии</td><td>[RELA] (:rela) - это один из типов взаимосвязи, приведенных в NCI-файле "Relationships_Help_Page.txt" - действующий список (около 1000 типов) приведен внизу этой страницы</td></tr>
+ <tr><td>SQL</td><td>
+   для CUI:
+   <pre>and (RXCUI in (select RXCUI from rxnconso where RXCUI in (select RXCUI1 from rxnrel where RELA = :rel and RXCUI2 = :value))</pre>
+   для AUI:
+   <pre>and (RXCUI in (select RXCUI from rxnconso where RXAUI in (select RXAUI1 from rxnrel where RELA = :rel and RXAUI2 = :value))</pre>
+   </td></tr>
+<!--  <tr><td>Description</td><td>Allows for selection of a concept based on the type of its relationships</td></tr>
  <tr><td>Property Name</td><td>[RELA]</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
  <tr><td>Values Allowed</td><td>CUI:[RXCUI] or AUI:[RXAUI] must be a valid CUI or AUI. Note that a CUI does not need to have a SAB=RXNORM entry to be used here</td></tr>
@@ -125,16 +176,17 @@ is:
    <pre>and (RXCUI in (select RXCUI from rxnconso where RXCUI in (select RXCUI1 from rxnrel where RELA = :rel and RXCUI2 = :value))</pre>
    for AUI:
    <pre>and (RXCUI in (select RXCUI from rxnconso where RXAUI in (select RXAUI1 from rxnrel where RELA = :rel and RXAUI2 = :value))</pre>
-   </td></tr>
+   </td></tr> -->
 </table>
 
-<h3>Implicit Value Sets</h3>
+<h3>Имплицитные наборы значений<!-- Implicit Value Sets --></h3>
 
 <p>
-This section needs investigation
+Данный раздел требует дополнительного изучения
+<!-- This section needs investigation -->
 </p>
 
-<h3>Current NCI Metathesaurus relationship types</h3>
+<h3>Типы взаимосвязи в NCI Metathesaurus<!-- Current NCI Metathesaurus relationship types --></h3>
 
 <ul>
  <li>3_UTR_of</li>

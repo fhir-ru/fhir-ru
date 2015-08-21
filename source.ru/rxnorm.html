@@ -34,7 +34,7 @@
 
 <h3>База данных RxNorm MySQL<!-- RxNorm MySQL Database --></h3>
 <p>
-Скрипты RxNorm могут заполнять базу данных MySQL, которая содержит данные из RxNorm. Здесь приводятся SQL-запросы, описывающие, как правильно реализовать функциональные возможности терминологии RxNorm в этой базе данных. Они созданы для удобства реализации и не подразумевают, что в реализациях необходимо использовать какой-то определенный подход.
+Скрипты RxNorm могут заполнять базу данных MySQL, которая содержит данные из RxNorm. Здесь приводятся SQL-запросы, описывающие, как правильно реализовать функциональные возможности терминологии RxNorm в этой базе данных. Они созданы для удобства реализаторов и не подразумевают, что в реализациях необходимо использовать какой-то определенный подход.
 <!-- The RxNorm scripts are able to populate a MySQL database that contains the data from RxNorm. 
 This page provides SQL statements that describe how to implement the features of the RxNorm 
 terminology correctly against this database. These are provided for implementer convenience, and 
@@ -82,7 +82,7 @@ is: -->
 <h4>Семантический тип<!-- Semantic Type --></h4>
 
 <table class="grid">
- <tr><td>Описание</td><td>Позволяет выбрать набор CUIs на основе их семантического типа</td></tr>
+ <tr><td>Описание</td><td>Позволяет делать выборку CUIs на основе их семантического типа</td></tr>
  <tr><td>Имя свойства</td><td>STY</td></tr>
  <tr><td>Допустимые операции</td><td>= / in</td></tr>
  <tr><td>Допустимые значения</td><td>[column:]value</td></tr>
@@ -102,7 +102,7 @@ is: -->
  <tr><td>Описание</td><td>Позволяет выбирать набор концептов, имеющих мэппинг на конкретный rxnorm-источник</td></tr>
  <tr><td>Имя свойства</td><td>SAB</td></tr>
  <tr><td>Допустимые операции</td><td>= / in</td></tr>
- <tr><td>Допустимые значения</td><td>Значения из RxNorm-таблицы SAB (например select RSAB from rxnsab) </td></tr>
+ <tr><td>Допустимые значения</td><td>Значения из RxNorm-таблицы SAB (например select RSAB from RXNsab) </td></tr>
  <tr><td>SQL</td><td><pre>and RXCUI in (select RXCUI from rxnconso where SAB = :value)</pre></td></tr>
 <!--  <tr><td>Description</td><td>Allows for selection of the set of concepts that have mappings to a particular rxnorm source</td></tr>
  <tr><td>Property Name</td><td>SAB</td></tr>

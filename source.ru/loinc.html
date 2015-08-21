@@ -141,7 +141,7 @@ code system in value set composition statements. -->
  <tr><td>Имя свойства</td><td>parent | ancestor</td></tr>
  <tr><td>Допустимые операции</td><td>= / in</td></tr>
  <tr><td>Допустимые значения</td><td>Part Code (или, для "in", несколько part codes через запятую)</td></tr>
- <tr><td>Комментарии</td><td>"parent" выбирает только непосредственных родителей. Например у кода "44022-2" есть родительский код "LP52960-9". Предок включает в себя родителей транзитивно, например "LP52960-9" в конечном счете имеет родителя "LP31755-9", поэтому код "44022-2" входит в набор кодов, для которых предком является LP31755-9</td></tr>
+ <tr><td>Комментарии</td><td>"parent" выбирает только непосредственно родительские элементы. Например у кода "44022-2" есть родитель "LP52960-9". "ancestor" включает в себя предков транзитивно, например "LP52960-9" в конечном счете имеет предка "LP31755-9", поэтому код "44022-2" входит в набор кодов, для которых предком является LP31755-9</td></tr>
 <!--  <tr><td>Description</td><td>Allows for the selection of a set of codes base on their appearance in the LOINC multi-axial hierarchy </td></tr>
  <tr><td>Property Name</td><td>parent | ancestor</td></tr>
  <tr><td>Operations Allowed</td><td>= / in</td></tr>
