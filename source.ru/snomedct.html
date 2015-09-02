@@ -22,7 +22,18 @@
     IHTSDO - это международная организация по стандартизации, членами которой является множество разных стран, каждая из которых распространяет свой собственный вариант SNOMED CT</td></tr>
 <!--  <tr><td>Source</td><td>SNOMED CT is made managed by <a href="http://www.ihtsdo.org/">IHTSDO</a>. 
     IHTSDO is an international standards organization with multiple different countries as members, each of which distribute their own variant of SNOMED CT</td></tr> -->
- <tr><td>System</td><td>The URI <a href="http://snomed.info/sct">http://snomed.info/sct</a> identifies the SNOMED CT code system</td></tr>
+	 <tr><td>System</td><td>Кодовую систему SNOMED CT идентифицирует следующий URI: <a href="http://snomed.info/sct">http://snomed.info/sct</a></td></tr>
+ <tr><td>Version</td><td>Если указывается версия, она должна быть полным URI конкретной раздачи, соответствующим <a href="http://snomed.org/uristandard.pdf">спецификации SNOMED URI</a> (см. примечание ниже)</td></tr>
+ <tr><td>Code</td><td>Для элемента <i>code</i> в пространстве имен http://snomed.info/sct допустимы следующие SNOMED CT-артефакты:
+   <a href="http://www.snomed.org/gl?t=glsct_st_ConceptId">Concept IDs</a>, 
+   <a href="http://www.snomed.org/gl?t=glsct_se_Expression">Expressions</a> (<a href="http://snomed.org/compgrammar.pdf">грамматика</a>) и
+   <a href="http://www.snomed.org/tig?t=tsg2_metadata_refset_legacy">унаследованные коды (SNOMED Legacy codes)</a>.<br/><br/>
+   Description Ids не допустимы, как и другие концепты, ассоциированные с концептами SNOMED CT с помощью инфраструктуры идентификации RF2. Выражения НЕ ДОЛЖНЫ содержать термины, а только идентификаторы концептов</td></tr>
+ <tr><td>Display</td><td>Корректным значением для отображения SNOMED CT-концепта является один из предпочтительных терминов для этого концепта. Предпочтительные термины чувствительны к регистру. Fully Specified Name не является подходящим выбором.
+ Источник предпочтительного имени идет из Language Reference Set.    
+    SNOMED CT не определяет значения для отображения для выражений; если с выражением не ассоциировано ни одно значение для отображения (display) с помощью набора значений или другого механизма, тогда можно использовать полный синтаксис выражения со встроенными предпочтительными терминами</td></tr>
+ <tr><td>Filter Properties</td><td>Определено несколько свойств, описанных ниже</td></tr>
+<!--  <tr><td>System</td><td>The URI <a href="http://snomed.info/sct">http://snomed.info/sct</a> identifies the SNOMED CT code system</td></tr>
  <tr><td>Version</td><td>Where a version is used, it should be a full URI that represents the specific distribution, following the <a href="http://snomed.org/uristandard.pdf">SNOMED URI Specification</a> (see note below)</td></tr>
  <tr><td>Code</td><td>The following SNOMED CT artifacts are valid in the <i>code</i> element for the http://snomed.info/sct namespace: 
    <a href="http://www.snomed.org/gl?t=glsct_st_ConceptId">Concept IDs</a>, 
@@ -34,34 +45,44 @@
     
     SNOMED CT does not defined displays for expressions; if no display has been associated with the expression
     through a value set or other mechanism, the full expression syntax with preferred terms embedded may be used</td></tr>
- <tr><td>Filter Properties</td><td>Several properties are defined as described below</td></tr>
+ <tr><td>Filter Properties</td><td>Several properties are defined as described below</td></tr> -->
 </table>
 
 <!-- add note about usage of SNOMED 3 legacy codes - should be replaced with SNOMED CT identifiers, may change in future versions of FHIR -->
 
 <p>
-Note: The <a href="http://snomed.org/gl.pdf">IHTSDO glossary</a> explains some of these SNOMED CT specific terms. 
+Примечание: <a href="http://snomed.org/gl.pdf">Глоссарий IHTSDO</a> дает пояснения некоторым из этих специфичных терминов SNOMED CT.
+<!-- Note: The <a href="http://snomed.org/gl.pdf">IHTSDO glossary</a> explains some of these SNOMED CT specific terms.  -->
 </p>
 
-<h3>Version Issues</h3>
+<h3>Вопросы версионирования<!-- Version Issues --></h3>
 <p>
-There is no single distribution that contains all defined SNOMED CT codes in all contexts of use; 
+Единая дистрибуция, которая содержала бы все определенные в SNOMED CT коды во всех контекстах использования, отсутствует; вместо этого каждый национальный представитель размещает комплект версии определенной дистрибуции. Кроме того, могут быть указаны и другие органы власти, занимающиеся выпуском.
+<a href="http://snomed.org/uristandard.pdf">SNOMED URI Specification</a> описывает, как можно однозначным образом ссылаться на определенную версию дистрибуции:
+<!-- There is no single distribution that contains all defined SNOMED CT codes in all contexts of use; 
 instead, each national office distributes a set of version of a particular distribution. In 
 addition, other release authorities may be designated. 
 The <a href="http://snomed.org/uristandard.pdf">SNOMED URI Specification</a> describes
-how to unambiguously reference a particular version of a distribution: 
+how to unambiguously reference a particular version of a distribution:  -->
 </p>
 <pre>
   http://snomed.info/sct/[sctid]/version/[YYYYMMDD] 
 </pre>
 <p>
-where [sctid] is the concept id of the SNOMED CT distribution (e.g. 32506021000036107 for Australia), and
+где [sctid] - это идентификатор концепта дистрибуции SNOMED CT distribution (e.g. 32506021000036107 for Australia), and
 the tail is the date of release (by custom, this is usually the last
 day of the month). Note that many implementations are in the habit of 
 simple using the date of release in the form YYYYMMDD (e.g. "20140531"), 
 and assuming that the distribution is known. However this is not always
 safe, so implementations that populate the <i>version</i> element 
 SHOULD use the full URI form. 
+<!-- where [sctid] is the concept id of the SNOMED CT distribution (e.g. 32506021000036107 for Australia), and
+the tail is the date of release (by custom, this is usually the last
+day of the month). Note that many implementations are in the habit of 
+simple using the date of release in the form YYYYMMDD (e.g. "20140531"), 
+and assuming that the distribution is known. However this is not always
+safe, so implementations that populate the <i>version</i> element 
+SHOULD use the full URI form.  -->
 </p>
 
 <h3>Copyright/License Issues</h3>

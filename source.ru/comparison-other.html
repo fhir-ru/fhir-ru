@@ -14,29 +14,34 @@
 
 [%cmpheader misc%]
 
-<h2>Other HL7 Standards</h2>
+<h2>Другие стандарты HL7<!-- Other HL7 Standards --></h2>
 <p>
-HL7 has produced a number of other standards that don't overlap with FHIR as closely as those listed above, primarily because they aren't focused solely on information exchange.  However, they deserve a brief mention:
+Организацией HL7 был создан ряд других стандартов, которые не пересекаются с FHIR настолько близко, как перечисленные выше, в основном потому что они не направлены исключительно на обмен информацией. Тем не менее, они заслуживают краткого упоминания:
+<!-- HL7 has produced a number of other standards that don't overlap with FHIR as closely as those listed above, primarily because they aren't focused solely on information exchange.  However, they deserve a brief mention: -->
 </p>
 
 <h3>EHR Functional Model (EHR-FM)</h3>
 <p>
-This specification defines a number of functional behaviors for Electronic Health Record systems.  FHIR is a healthcare information exchange standard that can be used to satisfy some of these functional behaviors.  Details on how FHIR fits into the EHR-FM can be found <a href="ehr-fm.html">here</a>
+Эта спецификация определяет функциональное поведение для систем электронных медицинских записей. FHIR является стандартом обмена медицинской информацией, который может использоваться для удовлетворения части этого функционального поведения. Подробнее о том, как FHIR вписывается в EHR-FM, <a href="ehr-fm.html">здесь</a>
+<!-- This specification defines a number of functional behaviors for Electronic Health Record systems.  FHIR is a healthcare information exchange standard that can be used to satisfy some of these functional behaviors.  Details on how FHIR fits into the EHR-FM can be found <a href="ehr-fm.html">here</a> -->
 </p>
 
 <h3>Context Management Specifications (CCOW)</h3>
 <p>
-CCOW is a standard for allowing independent systems to synchronize context on a single workstation, providing a seamless interface for the user of that workstation (e.g. ensuring consistent user authentication, display of the same patient, display of the same order, etc.)  In theory, FHIR resources could be used as an alternative CCOW implementation technology, however the business case for doing this is not clear.  CCOW profiles include V2 mappings.  These mappings can be used to help identify the equivalent FHIR data elements when establishing CCOW linkages in FHIR-based systems.
+CCOW - это стандарт, позволяющий независимым системам синхронизировать контекст на одной рабочей станции, обеспечивая бесшовный интерфейс для пользователя этой рабочей станции (например обеспечение непротиворечивой аутентификации пользователей, отображение того же самого пациента, отображение того же самого заказа и т. п.). Теоретически, FHIR-ресурсы можно было бы использовать в качестве альтернативной технологии реализации CCOW, однако для этого не очевиден бизнес-кейс. Профили CCOW включают в себя мэппинги на V2. Эти мэппинги могут использоваться для определения эквивалентных элементов данных FHIR при установлении связей CCOW в системах на основе FHIR.
+<!-- CCOW is a standard for allowing independent systems to synchronize context on a single workstation, providing a seamless interface for the user of that workstation (e.g. ensuring consistent user authentication, display of the same patient, display of the same order, etc.)  In theory, FHIR resources could be used as an alternative CCOW implementation technology, however the business case for doing this is not clear.  CCOW profiles include V2 mappings.  These mappings can be used to help identify the equivalent FHIR data elements when establishing CCOW linkages in FHIR-based systems. -->
 </p>
 
 <h3>Arden Syntax</h3>
 <p>
-Arden Syntax is a language for defining decision support rules.  These rules make reference to data elements that are used as part of the decision making process.  However, the specification does not define how these data elements are identified.  FHIR element and extension identifiers would provide one mechanism for identifying the relevant data elements.
+Арден синтаксис (Arden Syntax) - это язык для определения правил поддержки принятия решений. Эти правила дают ссылку на элементы данных, которые используются в рамках процесса принятия решений. Однако эта спецификация не задает, как эти элементы данных идентифицируются. Идентификаторы элементов и расширений FHIR обеспечат единый механизм определения релевантных элементов данных.
+<!-- Arden Syntax is a language for defining decision support rules.  These rules make reference to data elements that are used as part of the decision making process.  However, the specification does not define how these data elements are identified.  FHIR element and extension identifiers would provide one mechanism for identifying the relevant data elements. -->
 </p>
 
 <h3>Virtual Medical Record</h3>
 <p>
-The Virtual Medical Record is a draft specification under development by HL7 that also serves the decision support space.  It defines a logical medical record that decision support rules can be constructed against.  At present, this model is a custom model created specifically for VMR.  However, the Decision Support work group is evaluating the possibility of using FHIR as a structure for future versions of the specification.
+Виртуальная медицинская запись - это проект спецификации, разрабатываемый HL7, который также обслуживает область поддержки принятия решений. Он определяет логическую медицинскую запись, относительно которой могут быть построены правила поддержки принятия решений. В настоящее время эта модель является пользовательской моделью, созданной специально для VMR. Тем не менее, рабочая группа поддержки принятия решений оценивает возможность использования FHIR в качестве структуры будущих версий этой спецификации.
+<!-- The Virtual Medical Record is a draft specification under development by HL7 that also serves the decision support space.  It defines a logical medical record that decision support rules can be constructed against.  At present, this model is a custom model created specifically for VMR.  However, the Decision Support work group is evaluating the possibility of using FHIR as a structure for future versions of the specification. -->
 </p>
 
 </div>

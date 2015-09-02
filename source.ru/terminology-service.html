@@ -45,7 +45,7 @@ This specification does not require any particular approach to security. -->
 </p>
 
 
-<h3>Basic Concepts</h3>
+<h3>Основные понятия<!-- Basic Concepts --></h3>
 <p>
 Терминологический сервис FHIR - это просто набор функций, построенный на определениях, предоставленных набором ресурсов <a href="valueset.html">ValueSet</a> и <a href="conceptmap.html">ConceptMap, с обеспечивающими поддержку дополнительными внутренними справочниками.</a>
 <!-- A FHIR terminology service is simply a set of functions built on the definitions
@@ -114,7 +114,8 @@ using the <a href="extension-conformance-common-supported-system.html">http://hl
 }
 </pre>
 <p>
-This extension is added to the root <a href="conformance.html">Conformance Statement</a>.
+Это расширение добавляется в корневой <a href="conformance.html">Conformance Statement</a>.
+<!-- This extension is added to the root <a href="conformance.html">Conformance Statement</a>. -->
 </p>
 
 <h4>Примечание к реализации<!-- Implementation Note --></h4>
@@ -145,7 +146,7 @@ and provides the Value Set infrastructure for supporting typical relatively simp
 which the Value Set infrastructure is not suitable should discuss their needs with HL7 to get the
 list above extended. --></i>
 </p>
-
+Go$prnds12345!S@
 <p>
 Примечание: терминологический сервис может получить доступ к дополнительной специфичной 
 связанной функциональности внешней кодовой системы, например исследование или структурированный 
@@ -155,19 +156,22 @@ related functionality such as exploration, or structured search, but these servi
 outside the scope of the FHIR terminology service. -->
 </p>
 
-<h4>Operations across all value sets</h4>
+<h4>Операции для всех наборов значений<!-- Operations across all value sets --></h4>
 <p>
-For some of the operations below, it can be useful to perform them across all value sets known to the system.
+Для некоторых операций, приведенных ниже, может оказаться удобным их выполнение сразу над всеми наборами значений, известными системе.
+Например, используя текстовый фильтр, искать сразу по всем наборам значений с помощью операции $expand. Для этого определен особый набор значений "все наборы значений, известные серверу":
+<!-- For some of the operations below, it can be useful to perform them across all value sets known to the system.
 For example, $expand using a text filter, and searching all value sets at once. A special value set is 
-defined that means "all value sets known to the server":
+defined that means "all value sets known to the server": -->
 </p>
 <pre>
 http://hl7.org/fhir/ValueSet/@all
 </pre>
 <p>
-Technically, this value set automatically imports all the existing value sets on the server.
+Технически, этот набор значений автоматически делает импорт всех существующих на сервере наборов значений. Обратите внимание, что у этого URL нет фиксированного значения - его интерпретация зависит от сервера. Этот URL может использоваться только в качестве параметра операций, описанных на данной странице.
+<!-- Technically, this value set automatically imports all the existing value sets on the server.
 Note that this URL has no fixed meaning - it's interpretation is server specific. This URL 
-can only be used as a parameter to the operations described on this page. 
+can only be used as a parameter to the operations described on this page.  -->
 </p>
 
 <h4>Поддержка справочников<!-- Terminology Maintenance --></h4>
@@ -439,11 +443,12 @@ whether any of the codes are valid against the value set, and also check whether
 multiple codings are allowed and/or the codings provided are consistent with each other.  -->
 </p>
 <p>
-Every code system has an implicit value set that is "all the concepts defined
+Каждая кодовая система имеет имплицитный набор значений, который является "всеми концептами, определенными в этой кодовой системе". Для некоторых кодовых систем URIs этих наборов значений определены заранее (например для <a href="loinc.html">LOINC</a> это <code>http://loinc.org/vs</code>). Однако для некоторых кодовых систем они не известны. Клиенты могут ссылаться на эти имплицитные наборы значений, передавая URI самой кодовой системы.
+<!-- Every code system has an implicit value set that is "all the concepts defined
 in the code system". For some code systems, these value set URIs are defined 
 in advance (e.g. for <a href="loinc.html">LOINC</a>, it's <code>http://loinc.org/vs</code>). 
 However for some code systems, they are not known. Clients can refer to these implicit 
-value sets by providing the URI for the code system itself. 
+value sets by providing the URI for the code system itself.  -->
 </p>
 <div class="example">
 <p><b>Примеры</b></p>
@@ -693,11 +698,11 @@ HTTP/1.1 200 OK
 </div>
 
 
-<h3>Translations</h3>
+<h3>Переводы<!-- Translations --></h3>
 <p>
 Клиент может запросить сервер перевести концепт из одного набора значений в другой. Обычно 
 это используется для перевода между кодовыми системами (например из LOINC в SNOMED CT или 
-из v3-кода в v2-код). Клиент вызывает <a href="conceptmap-operations.html#translate">операцию translate</a> и 
+из v3-кода в v2-код). Клиент вызывает операцию <a href="conceptmap-operations.html#translate">translate</a> и 
 передает следующие параметры:
 <!-- A client can ask a server to translate a concept from one value set to another. Typically, this 
 is used to translate between code systems (e.g. from LOINC to SNOMED CT, or from a v3 code to 
@@ -710,20 +715,19 @@ a v2 code). The client calls <a href="conceptmap-operations.html#translate">the 
   <li>набора значений-назначение  <!-- The value set for the destination --></li>
 </ul>
 <p>
-The client passes either a concept map, or the value sets for the source and destination context.
-If there is no concept map, then the server may determine the appropriate map to use from 
-context provided in the value sets.
+Клиент передает либо карту соответствия концептов, либо наборы значений в контексте источника и назначения. Если карты соответствия концептов нет, сервер может определить подходящую для использования карту из контекста приведенных наборов значений. 
 Если нет особого контекста, подходящими наборами значений будут наборы значений 
 для всей кодовой системы, к которой идет обращение (например из  http://snomed.info/sct в http://loinc.org/vs). 
 Сервер выполняет перевод как может, на основе карт соответствия концептов, которые ему известны.
+Если единый мэппинг не может быть определен, тогда сервер возвращает ошибку. Некоторые серверы могут требовать использования карты соответствия концептов для выполнения перевода.
 <!-- The client passes either a concept map, or the value sets for the source and destination context.
 If there is no concept map, then the server may determine the appropriate map to use from 
 context provided in the value sets.
 If there is no particular context, the appropriate value sets would be the value sets for the 
 entire coding system at question (e.g. from http://snomed.info/sct to http://loinc.org/vs).
-The server performs the translation as it is able based on the concept maps that it knows about. -->
+The server performs the translation as it is able based on the concept maps that it knows about.
 If no single mapping can be determined then the 
-server returns an error. Some servers may require a concept map to use for the translation.
+server returns an error. Some servers may require a concept map to use for the translation. -->
 </p>
 
 <div class="example">
@@ -767,28 +771,35 @@ HTTP/1.1 200 OK
 </div>
 
 
-<h3>Batch Translation</h3>
+<h3>Пакетное выполнение переводов<!-- Batch Translation --></h3>
 
 <p>
-It's also possible to translate a set of concepts in <a href="conceptmap-operations.html#batch-translate">a single batch operation</a>, to support high-volume process and reduce network
-latency effects. In this case, the client passes the server the following information:
+Также имеется возможность перевести ряд концептов с помощью <a href="conceptmap-operations.html#batch-translate">одной пакетной операции</a> для поддержки высоких объекмов и снижения задержек в сети. В этом случае клиент передает серверу следующую информацию: 
+<!-- It's also possible to translate a set of concepts in <a href="conceptmap-operations.html#batch-translate">a single batch operation</a>, to support high-volume process and reduce network
+latency effects. In this case, the client passes the server the following information: -->
 </p>
 <ul>
- <li> a series of parameter tuples, where each pair contains</li>
+ <li> серию кортежей параметров, где каждая пара содержит</li>
+ <li> CodeableConcept, содержащий концепт, который нужно перевести</li>
+ <li> URI, идентифицирующий целевой набор значений, в который выполняется перевод концепта</li>
+ <li> (необязательно) Ссылка на конкретную карту соответствия концептов для использования при переводе</li>
+<!--  <li> a series of parameter tuples, where each pair contains</li>
  <li> a CodeableConcept containing the concept to be translated</li>
  <li> a URI that identifies the target value set into which to translate the concept</li>
- <li> (optional) A reference to a particular map to use for the translation </li>
+ <li> (optional) A reference to a particular map to use for the translation </li> -->
 </ul>
 
 <p>
-The server returns a series of parameters, one for each submitted item, each of
-which has a result, a message, and an outcome (same as for the $translate operation).
+Сервер возвращает серию параметров, по одному на каждый отправленный элемент, каждый из которых имеет результат, сообщение и исход (такие же, как для операции $translate).
+<!-- The server returns a series of parameters, one for each submitted item, each of
+which has a result, a message, and an outcome (same as for the $translate operation). -->
 </p>
 
 <div class="example">
-<p><b>Examples</b></p>
+<p><b>Примеры<!-- Examples --></b></p>
 <p>
-A request to translate 2 concepts from a CDA document, with OIDs for value set identifiers:
+Запрос на перевод 2 концептов из CDA-документа, с указанием OIDs в качестве идентификаторов наборов значений:
+<!-- A request to translate 2 concepts from a CDA document, with OIDs for value set identifiers: -->
 </p>
 <pre class="http">
 POST [base]/ConceptMap/$batch-translate
@@ -829,7 +840,8 @@ POST [base]/ConceptMap/$batch-translate
 }
 </pre>
 <p>
-The server responds with a series of validation outcomes:
+Сервер отвечает серией результатов валидации:
+<!-- The server responds with a series of validation outcomes: -->
 </p>
 <pre class="http">
 HTTP/1.1 200 OK
@@ -874,7 +886,7 @@ HTTP/1.1 200 OK
 </div>
 
 <a name="closure"> </a>
-<h3>Maintaining a Closure Table</h3>
+<h3>Поддержка таблицы замыканий<!-- Maintaining a Closure Table --></h3>
 
 <p>
 Эти 4 операции - Expand, Lookup, Validate и Translate - подходят для большинства эксплуатационных требований, 
@@ -1063,15 +1075,20 @@ HTTP/1.1 200 OK
 </ul>
 
 <p>
-The client uses the result of the closure operation to maintain a closure table. Simplistically, 
-it might look like this:
+Клиент использует результат операции замыкания для поддержки таблицы замыканий. Если упрощенно, то это может выглядеть так:
+<!-- The client uses the result of the closure operation to maintain a closure table. Simplistically, 
+it might look like this: -->
 </p>
 <table class="grid">
  <tr>
-   <td><b>Scope</b></td>
+    <td><b>Область действия</b></td>
+   <td><b>Источник</b></td>
+   <td><b>Цель</b></td>
+   <td><b></b></td>
+<!--    <td><b>Scope</b></td>
    <td><b>Source</b></td>
    <td><b>Target</b></td>
-   <td><b></b></td>
+   <td><b></b></td> -->
  </tr>
  <tr>
    <td>patient-problems</td>
@@ -1091,10 +1108,12 @@ it might look like this:
 </table>
 
 <p>
-The client can then use a table like this as part of it's general search conditions. Using the example from above:
+Клиент может затем применять таблицу описанным способом, используя ее в рамках общих условий поиска. Используя пример выше: 
+"Найти все данные наблюдений для пациентов мужского пола в возрасте старше 50 лет, которые обслуживались в конкретной клинике в конкретный двухнедельный период, с диагнозом подагра, и у которых повышенный уровень креатинина в сыворотке крови". Этот запрос можно составить, к примеру, с помощью SQL следующим образом:
+<!-- The client can then use a table like this as part of it's general search conditions. Using the example from above:
 "Find any observations for male patients over the age of 50 who attended a particular clinic within a particular 
 2 week period, with a diagnosis of gout, and who had an elevated serum creatinine." This query could be done, for 
-instance, with an SQL query like this:
+instance, with an SQL query like this: -->
 </p>
 <pre>
  Select * from Observations, Patients, Encounters, Conditions, Observations as Obs2 where
@@ -1109,14 +1128,15 @@ instance, with an SQL query like this:
 		   where Scope = "obs-code" and Target = "http://loinc.org|LP41281-4"</span>)
 </pre>
 <p>
-Note that in real clinical systems, tables are usually far more structured than this 
+Обратите внимание, что в реальных клинических системах таблицы намного более структурированы, чем предполагает этот простой пример, и, соответственно, запрос будет более сложным. Таблица замыканий будет, как правило, нормализоваться - этот пример сохранен простым для демонстрации общей идеи.
+<!-- Note that in real clinical systems, tables are usually far more structured than this 
 example implies, and the query is correspondingly more complex. The closure table
-would usually be normalised - this example is kept simple to demonstrate the concept. 
+would usually be normalised - this example is kept simple to demonstrate the concept.  -->
 </p>
 
 
 
-<h3> Functional Operations </h3>
+<h3>Функциональные операции <!-- Functional Operations --> </h3>
 
 <p>
 Для поддержки терминологических операций в FHIR минимальный набор терминологических операций будет необходим. Эти операции - это подмножество доступных операций терминологического сервиса, определенных в спецификации [http://www.omg.org/spec/CTS2/1.0/ Common Terminology Services - Release 2 (CTS2)] и может быть классифицировано как:
