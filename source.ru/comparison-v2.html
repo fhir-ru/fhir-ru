@@ -74,7 +74,9 @@ resource is itself complex, having nested structures for dosage instructions, di
 that are not simple data types. -->
 </p>
 <p>
-<b>Extensibility:</b> HL7 V2 provides an extensibility mechanism through the use of "Z-segments".  
+<b>Расширяемость:</b> HL7 V2 предоставляет механизм расширений с помощью использования "Z-сегментов". Значение этих сегментов непрозрачно без предварительного ручного объяснения от отправителя. Предполагается, что расширения будут ограничены элементами данных, которые не влияют на смысл "стандартных" сегментов.
+С другой стороны, в FHIR <a href="extensibility.html">расширения</a> могут появляться на любом уровне (включая типы данных). <a href="extensibility.html#modifierExtension">ModifierExtensions</a> могут использоваться в обстоятельствах, когда расширение может менять смысл других элементов (например введение в запись индикатора отрицания). Наконец, значение расширений FHIR обнаруживается разрешением URI, который определяет расширение. Такой подход с URI также гарантирует, что расширения, созданные независимыми системами, не будут конфликтовать. (Что может быть проблемой для Z-сегментов.)
+<!-- <b>Extensibility:</b> HL7 V2 provides an extensibility mechanism through the use of "Z-segments".  
 The meaning of these extensions is opaque without prior manual explanation by the sender.  Extensions 
 are supposed to be restricted to data elements that do not affect the meaning of the "standard" segments.  
 FHIR <a href="extensibility.html">extensions</a>, on the other hand, can appear at any level (including 
@@ -82,40 +84,44 @@ within data types).  <a href="extensibility.html#modifierExtension">ModifierExte
 to in circumstances where an extension can change the meaning of other elements (e.g. the introduction 
 of a negation indicator on a record).  Finally, the meaning of FHIR extensions is discoverable by resolving 
 the URI that defines the extension.  The URI approach also ensures that extensions created by independent 
-systems won't collide. (This can be an issue with Z-segments.)
+systems won't collide. (This can be an issue with Z-segments.) -->
 </p>
 <p>
-<b>Inter-version compatibility:</b> HL7 version 2 has strict processes for maintaining forward and backward 
+<b>Межверсионная совместимость:</b> HL7 version 2 имеет строгие процессы поддержки прямой и обратной совместимости. Содержимое может добавляться только в конец существующих полей, компонентов и т. п. Ожидается, что приложения будут игнорировать неожиданное содержимое или повторы. FHIR сулит аналогичные правила совместимости. Путь к элементу в FHIR-экземпляре остается неизменным в следующих версиях. Особые правила обработки "новых" элементов (игнорирование, проверка на наличие индикаторов "must understand" и т. п. будут разработаны в течение периода DSTU.
+<!-- <b>Inter-version compatibility:</b> HL7 version 2 has strict processes for maintaining forward and backward 
 compatibility.  Content can only be added to the end of existing fields, components, etc.  Applications are 
 expected to ignore unexpected content or repetitions.  FHIR promises similar compatibility rules.  The path 
 to an element within a FHIR instance will remain unchanged in future versions.  Specific rules on handling 
 "new" elements (ignoring, checking for "must understand" indicators, etc. will be developed during the DSTU 
-period.
+period. -->
 </p>
 <p>
-<b>Human readability:</b> In general, HL7 V2 instances do not provide for human readable versions of the 
+<b>Удобочитаемость человеком:</b> In general, экземпляры HL7 V2 не предлагают людям удобочитаемые версии обмениваемого содержимого. В то время как некоторые системы могут применять NTE-сегменты для передачи человекочитаемого отображения всего или части полезной нагрузки сообщения, правила, когда и при каких условиях это происходит, зависят от конкретного сайта. FHIR требует предоставления человекочитаемого содержимого для каждого ресурса.
+<!-- <b>Human readability:</b> In general, HL7 V2 instances do not provide for human readable versions of the 
 content exchanged.  While some systems may make use of NTE segments to provide a human-readable rendering 
 of all or part of a message payload, the rules for when or if this occurs is site-specific.  FHIR requires 
-human readable content to be provided for each resource.
+human readable content to be provided for each resource. -->
 </p>
 <p>
-<b>Update behavior:</b> HL7 V2 data is typically exchanged in "snapshot" mode - updates are communicated by 
+<b>Update behavior:</b> Данными HL7 V2 обычно обмениваются в режиме "снапшота" - обновления передаются отправкой полной копии экземпляра, заполненного новыми данными. Однако некоторые сегменты и сообщения в V2 поддерживают более сложный обмен, когда только измененные данные отправляются и коды или особые значения указывают, какой тип изменений должен произойти (например добавить этот адрес, удалить это имя). FHIR "из коробки" функционирует только в режиме "снапшота". Хотя для введения эквивалентного V2 поведения и возможно применение <a href="extensibility.html#modifierExtension">ModifierExtensions</a>, это привело бы к возникновению проблем совместимости и затруднило бы использование ресурсов вне парадигмы обмена сообщениями.
+<!-- <b>Update behavior:</b> HL7 V2 data is typically exchanged in "snapshot" mode - updates are communicated by 
 sending a complete copy of the instance with the new data filled in.  However, some segments and messages in 
 V2 support more sophisticated exchanges where only changed data is sent and codes or special values indicate 
 what sort of change is to occur (e.g. add this address, remove this name).  Out-of-the-box, FHIR only functions 
 using snapshot mode.  While the use of <a href="extensibility.html#modifierExtension">ModifierExtensions</a> to 
 introduce equivalent behavior to V2 is possible, doing so would create interoperability issues and would make 
-use of the resources difficult outside the messaging paradigm.
+use of the resources difficult outside the messaging paradigm. -->
 </p>
 <p>
-<b>Optionality &amp; Profiles:</b> Both HL7 V2 and FHIR provide a similar degree of flexibility at the 
+<b>Факультативность &amp; Профили:</b> И HL7 V2, и FHIR обеспечивают одинаковую степень гибкости на уровне международного стандарта. Большинство элементов данных являются необязательными. Однако имеется и два различия. FHIR-ресурсы намного более ограничены в терминах того, какие элементы включены в основную спецификацию - только те элементы, которые будут поддерживать большинство систем. HL7 V2 стремится включить много элементов, которые применяются только в очень ограниченных обстоятельствах, для которых FHIR применяет расширения. И V2, и FHIR предлагают формальные механизмы для определения профилей, давая рекомендации по применению спецификации. Однако механизм V2 не широко используется.  FHIR-<a href="profiling.html">профили</a> образуют существенный компонент методологии и встроены в инструментарий, что увеличивает вероятность их использования.
+<!-- <b>Optionality &amp; Profiles:</b> Both HL7 V2 and FHIR provide a similar degree of flexibility at the 
 international standard level.  Most data elements are optional.  However, there are two differences.  
 FHIR resources are much more limited in terms of what elements are included in the core specification - only 
 those elements that the vast majority of systems will support.  HL7 V2 tends to include many elements that 
 are used in only very limited circumstances. FHIR uses extensions for those circumstances.  V2 and FHIR both 
 provide formal mechanisms for defining profiles to give guidance on the use of the specification.  However, 
 the V2 mechanism has not been widely used.  FHIR <a href="profiling.html">Profiles</a> form an essential 
-component of the methodology and are built into tooling, increasing the likelihood of their use.
+component of the methodology and are built into tooling, increasing the likelihood of their use. -->
 </p>
 
 <h3>V2 Interoperability Considerations</h3>
