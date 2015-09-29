@@ -126,32 +126,39 @@ component of the methodology and are built into tooling, increasing the likeliho
 
 <h3>V2 Interoperability Considerations</h3>
 <p>
-<b>Mapping:</b> One of the biggest challenges with HL7 V2 interoperability is the variation of implementation.  
+<b>Mapping:</b> Одна из самых больших проблем с совместимостью HL7 V2 - это различия в реализациях.
+Даже когда идентичные сценарии обрабатываются в аналогичных бизнес-средах, поддерживаемые элементы данных могут различаться и даже место, где данные элемент данных расположение в экземпляре может меняться. В итоге задание непротиворечивых правил мэппинга между V2 и FHIR на международном или даже на региональном уровне не является реалистичным.
+Предлагаемые FHIR мэппинги дают начальную точку для рассмотрения, однако мэппинги потребуется выполнять для реализации на пореализационной основе.
+<!-- <b>Mapping:</b> One of the biggest challenges with HL7 V2 interoperability is the variation of implementation.  
 Even when identical scenarios are being handled in similar business environments, the data elements supported 
 can vary and even the place where a given data element is placed in an instance can vary.  As a result, defining 
 consistent mapping rules between V2 and FHIR at an international or even regional level is not terribly realistic.  
 The FHIR mappings provided give a starting point for consideration, but mappings will generally need to be done 
-on an implementation by implementation basis.
+on an implementation by implementation basis. -->
 </p>
 <p>
-<b>Extensions:</b><a name="V2-extensions"> </a>While some V2 elements will map to FHIR core, a large percentage 
+<b>Расширения:</b><a name="V2-extensions"> </a>Хотя некоторые V2 элементы хорошо ложатся на основные элементы FHIR, большой процент элементов - нет. Если V2-элемент не поддержан ядром, потребуется расширение для совместного использования информации. При проявлении заинтересованности HL7 может опубликовать и поддерживать расширения для V2-элементов, которые не поддержаны ядром спецификации FHIR. Перед созданием локальных расширений следует проверить реестр расширений FHIR <!-- Todo: Link -->. Если позволяет время, следует связаться с ответственной рабочей группой HL7 с запросом на определение дополнительных расширений V2, если требуемые отсутствуют. Если времени нет, приложения могут задавать свои собственные расширения, но должны иметь план миграции для если/когда HL7 определит их позже. Для Z-сегментов URIs должны быть определены, чтобы различаться для системы/среды, которая задала этот Z-сегмент (например http://acme.org/fhir/extensions/consent), не на основе имени самого Z-сегмента (при условии, что могут существовать Z-сегменты с одинаковыми именами, но разными значениями) (например http://hl7.org/ZAC).
+<!-- <b>Extensions:</b><a name="V2-extensions"> </a>While some V2 elements will map to FHIR core, a large percentage 
 will not.  Where a V2 element is not supported by core, an extension will be needed to share the information.  
 Where there is interest, HL7 may choose to publish and maintain extensions for V2 elements that are not supported 
-as part of the core FHIR specification.  The FHIR extension registry <!-- Todo: Link --> should be searched prior 
+as part of the core FHIR specification.  The FHIR extension registry --> <!-- Todo: Link --> <!-- should be searched prior 
 to defining local extensions.  If time permits, the relevant HL7 WG should be contacted with a request to define 
 additional V2 extensions if needed ones are not present.  If time does not permit, applications can define their 
 own extensions, but should have a migration plan for if/when HL7 defines it later.  For Z-segments, URIs should 
 be defined to be specific to the system/environment that defined the Z-segment (e.g. http://acme.org/fhir/extensions/consent), 
 not based on the name of the Z-segment itself (given that Z-segments with the same name but different meaning may 
-exist) (e.g. http://hl7.org/ZAC).
+exist) (e.g. http://hl7.org/ZAC). -->
 </p>
 <p>
-<b>Resource identification:</b><a name="V2-identification"> </a>V2 messages will often reference objects that 
+<b>Идентификация ресурсов:</b><a name="V2-identification"> </a>Сообщения V2 будут часто ссылаться на объекты, на которые уже давались ссылки в предыдущих сообщениях. При конвертации сообщений в FHIR, эти ссылки будет необходимо направить на тот же URI ресурса. При условии, что не все объекты сообщений V2 имеют идентификаторы в сообщении, это может быть проблематично. В FHIR имеется подход для решения этой проблемы - <a href="http.html#transaction">транзакции</a>. 
+Однако пока еще не решен вопрос разветвлений использования этого подхода в среде обмена сообщениями.
+Реализаторам потребуется исследовать свои собственные стратегии в рамках ранней адаптации.
+<!-- <b>Resource identification:</b><a name="V2-identification"> </a>V2 messages will often reference objects that 
 have already been referred to in previous messages.  When converting the messages to FHIR, these references 
 will need to point to the same resource URI.  Given that not all V2 message objects have identifiers in the 
 message, this can be somewhat problematic.  An approach to handling this issue exists for FHIR <a href="http.html#transaction">transactions</a>.  
 However, the ramifications of using this approach in a messaging environment have not yet been resolved.  
-Implementers will need to explore their own strategies as part of early adoption.
+Implementers will need to explore their own strategies as part of early adoption. -->
 </p>
 <p>
 <b>Merging references and resources:</b><a name="V2-merging"> </a> V2 message instances may well reference the 
