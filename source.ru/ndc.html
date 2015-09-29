@@ -14,6 +14,7 @@
 <%txheader%>
 
 <h2>Using NDC and NHRIC Codes with FHIR</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
 The National Drug Codes (NDC) and National Health Related Items Code (NHRIC) codes 
@@ -36,14 +37,15 @@ codes are being replaced by the <a href="http://www.fda.gov/MedicalDevices/Devic
 <h3>Version Issues</h3>
 <p>
 The FDA published list of NDC codes for <a href="http://www.fda.gov/Drugs/InformationOnDrugs/ucm142438.htm">finished drug products</a> is updated daily.
-Use the format YYYYMMDD to refer to a particular distribution. However note that not all valid NDC codes apear in the distribution file, so the 
-full set of NDCs cannot be versioned.
+Use the format YYYYMMDD to refer to a particular distribution. Note that while only valid NDC codes appear in the distribution file, there are other NDC codes 
+that organizations have assigned but not yet reported to FDA.  Therefore the full set of NDCs that exists in the marketplace is unknown and cannot be 
+versioned completely.
 </p>
 
 <h3>Copyright/License Issues</h3>
 
 <p>
-NDC codes have no copyright acknowledgement needed, nor are there any license terms to adhere to.
+NDC codes have no copyright acknnowledgment or license requirements.
 </p>
 
 <h3>NDF-RT Filter Properties</h3>

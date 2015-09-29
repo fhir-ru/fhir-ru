@@ -11,7 +11,7 @@
  <asserter>
      <reference value="Practitioner/f201"/>
  </asserter>
- <dateAsserted value="2013-04-04"/><!--The problem was entered at April fourth-->
+    <dateRecorded value="2013-04-04"/><!--The problem was entered at April fourth-->
  <code><!--The problem is a fever-->
     <coding>
        <system value="http://snomed.info/sct"/>
@@ -30,7 +30,8 @@
         <code value="finding" />
     </coding>
  </category>
- <clinicalStatus value="confirmed"/>
+    <clinicalStatus value="active"/>
+    <verificationStatus value="confirmed"/> 
  <severity><!--The fever is mild -->
     <coding>
         <system value="http://snomed.info/sct"/>
@@ -53,27 +54,11 @@
      <display value="Temperature"/>
   </detail>
  </evidence>
- <location><!--Fever applies to whole body-->
-  <siteCodeableConcept>
+ <bodySite><!--Fever applies to whole body-->
     <coding>
         <system value="http://snomed.info/sct"/>
         <code value="38266002"/>
         <display value="Entire body as a whole"/>  
     </coding>
-  </siteCodeableConcept>
- </location>
- <dueTo>  <!-- 0..* Causes or precedents for this problem -->
-  
-  <target>
-     <reference value="Procedure/f201"/>
-     <display value="TPF chemokuur"/>
-  </target>
- </dueTo>
- <dueTo>  <!-- 0..* Causes or precedents for this problem -->
-  
-  <target>
-     <reference value="Condition/f205"/>
-     <display value="bacterial infection"/>
-  </target>
- </dueTo>
+ </bodySite>
 </Condition>

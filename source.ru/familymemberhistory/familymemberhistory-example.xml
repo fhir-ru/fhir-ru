@@ -12,7 +12,7 @@
   </patient>
   
   <date value="2011-03-18"/>
-
+  <status value="completed"/>
   <relationship>
     <coding>
       <system value="http://hl7.org/fhir/familial-relationship"/>
@@ -20,21 +20,23 @@
     </coding>
   </relationship>
   <condition>
-    <type>
+    <code>
     <coding>
       <system value="http://snomed.info/sct"/>
       <code value="315619001"/>
       <display value="Myocardial Infarction"/>
     </coding>
     <text value='Heart Attack'/>
-    </type>
+    </code>
  
 
-    <onsetAge>
+    <onsetQuantity>
       <value value="74" />
-      <units value="a" />
+      <unit value="a" />
       <system value="http://unitsofmeasure.org" />
-    </onsetAge>
-    <note value="Was fishing at the time. At least he went doing someting he loved." />
+    </onsetQuantity>
+    <note>
+      <text value="Was fishing at the time. At least he went doing someting he loved." />
+    </note>
   </condition>
 </FamilyMemberHistory>

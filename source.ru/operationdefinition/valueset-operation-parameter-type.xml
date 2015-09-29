@@ -1,19 +1,18 @@
-<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/valueset.xsd">
-  <url value="http://hl7.org/fhir/vs/operation-definition-parameter-type"/>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <url value="http://hl7.org/fhir/ValueSet/operation-definition-parameter-type"/>
   <name value="Parameter Types used in Operation Definitions"/>
-  <publisher value="HL7, Inc. FHIR project"/>
-  <description value="Parameter Types used in Operation Definitions"/>
   <status value="draft"/>
   <experimental value="false"/>
-  <extensible value="false"/>
+  <publisher value="HL7, Inc. FHIR project"/>
   <date value="2014-07-22"/>
+  <description value="Parameter Types used in Operation Definitions"/>
+  <extensible value="false"/>
   <compose>
-    <!-- search parameters --> 
-    <import value="http://hl7.org/fhir/vs/search-param-type"/>
-    
-    <!-- FHIR data types & Resources -->
-    <import value="http://hl7.org/fhir/vs/defined-types"/>
-    
-    <!-- todo: Document -->
+  <!--   search parameters   -->
+    <import value="http://hl7.org/fhir/ValueSet/search-param-type"/>
+  <!--   FHIR data types & Resources   -->
+    <import value="http://hl7.org/fhir/ValueSet/defined-types"/>
   </compose>
 </ValueSet>

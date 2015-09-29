@@ -33,13 +33,13 @@
   </medicationReference>  
   <dosage>
     <text value="one capsule three times daily" />
-    <schedule>
+    <timing>
       <repeat>
         <frequency value="3"/>
         <period value="1"/>
         <periodUnits value="d"/>
       </repeat>
-    </schedule>
+    </timing>
     <asNeededBoolean value="false" />
     <route>
       <coding>
@@ -48,13 +48,13 @@
         <display value="Oral"/>
       </coding>
     </route>
-    <quantity>
+    <quantityQuantity>
       <value value="1" />
-    </quantity>
+    </quantityQuantity>
     <maxDosePerPeriod>
       <numerator>
         <value value="3"/>
-        <units value="capsules" />
+        <unit value="capsules" />
         <system value="http://snomed.info/sct" />
         <code value="385055001"/>
       </numerator>

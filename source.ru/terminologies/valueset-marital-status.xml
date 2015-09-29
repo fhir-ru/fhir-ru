@@ -1,25 +1,27 @@
-<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/valueset.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
   <id value="marital-status"/>
   <name value="Marital Status Codes"/>
+  <status value="draft"/>
   <publisher value="FHIR Project team"/>
   <contact>
-    <telecom>  
-    <system value="url"/>
-    <value value="http://hl7.org/fhir"/>
-  </telecom>
+    <telecom>
+      <system value="other"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
   </contact>
-  <description value="This value set defines the set of codes that can be used to indicate the marital status of a person"/>
-  <status value="draft"/>
-  <define>
+  <description value="This value set defines the set of codes that can be used to indicate the marital status of a person."/>
+  <codeSystem>
     <system value="http://hl7.org/fhir/marital-status"/>
     <caseSensitive value="true"/>
     <concept>
-      <!-- work around for missing code in v3 code system - should be temporary, until added in v3 -->
+    <!--   work around for missing code in v3 code system - should be temporary, until added in v3   -->
       <code value="U"/>
-      <display value="unmarried"/>
-      <definition value="The person is not presently married. The marital history is not known or stated"/>
+      <display value="Unmarried"/>
+      <definition value="The person is not presently married. The marital history is not known or stated."/>
     </concept>
-  </define>
+  </codeSystem>
   <compose>
     <include>
       <system value="http://hl7.org/fhir/v3/MaritalStatus"/>
@@ -59,4 +61,3 @@
     </include>
   </compose>
 </ValueSet>
-

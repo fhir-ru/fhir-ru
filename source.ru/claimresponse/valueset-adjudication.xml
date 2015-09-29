@@ -1,19 +1,20 @@
-<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/valueset.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
   <name value="Adjudication Codes"/>
-  <publisher value="FHIR Project team"/>
-  <copyright value="This is an example set"/>
   <status value="draft"/>
+  <publisher value="FHIR Project team"/>
   <contact>
     <telecom>
-    <system value="url"/>
-    <value value="http://hl7.org/fhir"/>
-  </telecom>
+      <system value="other"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
   </contact>
-  <description value="This value set includes a smattering of Adjudication codes"/>
-  <status value="draft"/>
-  <define>
+  <description value="This value set includes a smattering of Adjudication codes."/>
+  <copyright value="This is an example set."/>
+  <codeSystem>
     <system value="http://hl7.org/fhir/adjudication"/>
-    <caseSensitive value="true"/>    
+    <caseSensitive value="true"/>
     <concept>
       <code value="total"/>
     </concept>
@@ -24,7 +25,7 @@
       <code value="eligible"/>
     </concept>
     <concept>
-      <code value="deductable"/>
+      <code value="deductible"/>
     </concept>
     <concept>
       <code value="eligpercent"/>
@@ -35,5 +36,5 @@
     <concept>
       <code value="benefit"/>
     </concept>
-  </define>
+  </codeSystem>
 </ValueSet>

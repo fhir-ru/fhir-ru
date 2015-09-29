@@ -11,7 +11,7 @@
     <reference value="Practitioner/example"/>
   </practitioner>
   <prescription>
-    <reference value="MedicationPrescriptionexample8"/>
+    <reference value="MedicationOrder/medrx008"/>
   </prescription>
   <effectiveTimePeriod>
   <start value="2015-01-15T14:30:00+01:00"/>
@@ -31,24 +31,24 @@
     </route>
     <quantity>
       <value value="80"/>
-      <units value="mg"/>
+      <unit value="mg"/>
       <system value="http://unitsofmeasure.org"/>
       <code value="mg"/>
     </quantity>
-    <rate>
+    <rateRatio>
       <numerator>
         <value value="80"/>
-        <units value="mg"/>
+        <unit value="mg"/>
         <system value="http://unitsofmeasure.org"/>
         <code value="mg"/>
       </numerator>
       <denominator>
         <value value="60"/>
-        <units value="minutes"/>
+        <unit value="minutes"/>
         <system value="http://snomed.info/sct"/>
         <code value="258702006"/>
       </denominator>
-    </rate>
+    </rateRatio>
   </dosage>
   
 </MedicationAdministration>

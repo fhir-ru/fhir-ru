@@ -8,7 +8,7 @@
       <display value="Roel"/>
    </patient>
    <!--It was not established during an encounter, but through a diagnostic report of december 2012-->
-   <dateAsserted value="2012-12-01"/>
+   <dateRecorded value="2012-12-01"/>
    <!--The problem was asserted at December first-->
    <code>
       <!--The problem is a malignant tumor-->
@@ -24,7 +24,8 @@
          <code value="diagnosis"/>
       </coding>
    </category>
-   <clinicalStatus value="confirmed"/>
+   <clinicalStatus value="active"/>
+   <verificationStatus value="confirmed"/>
    <severity>
       <coding>
          <system value="http://snomed.info/sct"/>
@@ -32,12 +33,12 @@
          <display value="Severe"/>
       </coding>
    </severity>
-   <onsetAge>
+   <onsetQuantity>
       <value value="52"/>
-      <units value="years"/>
+      <unit value="years"/>
       <system value="http://snomed.info/sct"/>
       <code value="258707000"/>
-   </onsetAge>
+   </onsetQuantity>
    <!--No remission means no <rebatement>-->
    <evidence>
       <!--Problem is confirmed in diagnostic report-->
@@ -46,14 +47,12 @@
          <display value="Erasmus' diagnostic report of Roel's tumor"/>
       </detail>
    </evidence>
-   <location>
+   <bodySite>
       <!--Head and neck malignancy-->
-      <siteCodeableConcept>
          <coding>
             <system value="http://snomed.info/sct"/>
             <code value="361355005"/>
             <display value="Entire head and neck"/>
-         </coding>
-      </siteCodeableConcept>
-   </location>
+         </coding>  
+   </bodySite>
 </Condition>

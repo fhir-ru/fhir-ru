@@ -6,7 +6,11 @@
     <div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>
   </text>
 
-  <criteria value="/Observation?name=http://loinc.org|1975-2"/>
+  <criteria value="Observation?name=http://loinc.org|1975-2"/>
+  <contact>
+    <system value="phone"/>
+    <value value="ext 4123"/>
+  </contact>
   <reason value="Monitor new neonatal function"/>
   <status value="requested"/>
   <channel>
@@ -15,5 +19,9 @@
     <payload value="application/json"/>
     <header value="Authorization: Bearer secret-token-abc-123"/>
   </channel>  
-  
+  <end value="2021-01-01T00:00:00Z"/>
+  <tag>
+    <system value="http://example.org/fhir/cs/internal"/>
+    <code value="bili-done"/>
+  </tag>
 </Subscription>

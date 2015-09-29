@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="http://hl7.org/fhir file:///C:/work/org.hl7.fhir/build/schema/valueset.xsd">
+
+<ValueSet xmlns="http://hl7.org/fhir">
   <url value="http://nema.org/dicom/dicm/401"/>
   <version value="20100826"/>
   <name value="Audit Event Sub-Type"/>
-  <publisher value="NEMA/DICOM"/>
-  <description value="More detailed code concerning the type of the audit event - defined by DICOM with some FHIR specific additions"/>
-  <copyright value="These codes are excerpted from Digital Imaging and Communications in Medicine (DICOM) Standard, Part 16: Content Mapping Resource, Copyright 2011 by the National Electrical Manufacturers Association"/>
   <status value="active"/>
+  <publisher value="NEMA/DICOM"/>
   <date value="2010-08-26"/>
+  <description value="More detailed code concerning the type of the audit event - defined by DICOM with some FHIR specific additions."/>
+  <copyright value="These codes are excerpted from Digital Imaging and Communications in Medicine (DICOM) Standard, Part 16: Content Mapping Resource, Copyright © 2011 by the National Electrical Manufacturers Association."/>
   <compose>
     <include>
       <system value="http://nema.org/dicom/dicm"/>
@@ -79,12 +79,12 @@
         <code value="110141"/>
       </concept>
       <concept>
-        <code value="110142"/>      
+        <code value="110142"/>
       </concept>
     </include>
     <include>
       <system value="http://hl7.org/fhir/restful-interaction"/>
-      <concept>
+<!--      <concept>
         <code value="read"/>
       </concept>
       <concept>
@@ -119,7 +119,7 @@
       </concept>
       <concept>
         <code value="transaction"/>
-      </concept>
+      </concept> -->
     </include>
   </compose>
 </ValueSet>

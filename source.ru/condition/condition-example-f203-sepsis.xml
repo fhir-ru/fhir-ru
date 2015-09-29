@@ -13,7 +13,7 @@
  <asserter>
      <reference value="Practitioner/f201"/>
  </asserter>
- <dateAsserted value="2013-03-11"/>
+    <dateRecorded value="2013-03-11"/>
  <code><!--The problem is bacterial sepsis-->
     <coding>
        <system value="http://snomed.info/sct"/>
@@ -32,7 +32,8 @@
          <code value="finding"/>
      </coding>
  </category>
- <clinicalStatus value="confirmed"/>
+    <clinicalStatus value="active"/>
+    <verificationStatus value="confirmed"/>
  <severity>
     <coding>
         <system value="http://snomed.info/sct"/>
@@ -47,23 +48,11 @@
      <display value="Diagnostic report for Roel's sepsis"/>
   </detail>
  </evidence>
- <location><!--Location is intravascular pulmonary-->
-  <siteCodeableConcept>
+ <bodySite><!--Location is intravascular pulmonary-->
     <coding>
         <system value="http://snomed.info/sct"/>
         <code value="281158006"/>
         <display value="Pulmonary vascular structure"/> 
     </coding>
-  </siteCodeableConcept>
- </location>
- <!-- todo - this is an illegal reference (Grahame, 2/2/2015)
- 
- <dueTo><!- -Bacterial sepsis is due to Staphylococcus Aureus-!>
-  
-  <target>
-     <reference value="Substance/f202"/>
-     <display value="Staphylococcus Aureus"/>
-  </target>
- </dueTo>
- -->
+ </bodySite>
 </Condition>

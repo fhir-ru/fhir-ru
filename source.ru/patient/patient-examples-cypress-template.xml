@@ -5,9 +5,9 @@
   <meta>
     <lastUpdated value="2012-05-29T23:45:32Z"/> 
   </meta> 
-  <type value="collection"/>
-  <base value="http://hl7.org/fhir"/> [%loop count=70%]
+  <type value="collection"/> [%loop count=70%]
   <entry>
+    <fullUrl value="http://hl7.org/fhir/Patient/[%count%]"/>
     <resource>
       <Patient>
         <id value="[%count%]"/>
@@ -29,6 +29,7 @@
           <system value="https://github.com/projectcypress/cypress/patient"/>
           <value value="[%patient_id%]"/>
         </identifier>
+        <active value="true"/>
         <name>
           <use value="official"/>
           <family value="[%last name%]"/>
@@ -39,7 +40,6 @@
         <managingOrganization>
           <reference value="Organization/[%organization%]"/>
         </managingOrganization>
-        <active value="true"/>
       </Patient>
     </resource>
   </entry> [%endloop%] 

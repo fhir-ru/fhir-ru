@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <name value="Substitution Reason Codes"/>
+  <status value="draft"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="other"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="This example value set includes some introduction (procedure) codes from the v3 SubstanceAdminSubstitutionReason code system. The value set to instantiate this attribute should be drawn from a terminologically robust code system that consists of or          contains concepts to support the medication process, in particular the process and reasons for substitution"/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/v3/_SubstanceAdminSubstitutionReason"/>
+      <concept>
+        <code value="CT"/>
+      </concept>
+      <concept>
+        <code value="FP"/>
+      </concept>
+      <concept>
+        <code value="OS"/>
+      </concept>
+      <concept>
+        <code value="RR"/>
+      </concept>
+    </include>
+    <include>
+      <system value="http://hl7.org/fhir/v3/_SubstanceAdministrationPermissionRefusalReasonCode"/>
+      <concept>
+        <code value="NOUSEPERM"/>
+      </concept>
+      <concept>
+        <code value="PATINELIG"/>
+      </concept>
+      <concept>
+        <code value="PROTUNMET"/>
+      </concept>
+      <concept>
+        <code value="PROVUNAUTH"/>
+      </concept>
+    </include>
+    <include>
+      <system value="http://hl7.org/fhir/v3/NullFlavor"/>
+      <concept>
+        <code value="UNK"/>
+      </concept>
+    </include>
+  </compose>
+</ValueSet>
