@@ -1,47 +1,53 @@
-<ValueSet xmlns="http://hl7.org/fhir" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/valueset.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
   <name value="Diet"/>
+  <status value="draft"/>
   <publisher value="FHIR Project team"/>
   <contact>
-    <telecom>  
-    <system value="url"/>
-    <value value="http://hl7.org/fhir"/>
-  </telecom>
+    <telecom>
+      <system value="other"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
   </contact>
   <description value="This value set defines a set of codes that can be used to indicate dietary preferences or restrictions a patient may have."/>
-  <status value="draft"/>
-  <define>
+  <codeSystem>
     <system value="http://hl7.org/fhir/diet"/>
     <caseSensitive value="true"/>
     <concept>
       <code value="vegetarian"/>
-      <definition value="Food without meat, poultry or seafood"/>
+      <display value="Vegetarian"/>
+      <definition value="Food without meat, poultry or seafood."/>
     </concept>
     <concept>
       <code value="dairy-free"/>
-      <definition value="Exludes dairy products"/>
+      <display value="Dairy Free"/>
+      <definition value="Excludes dairy products."/>
     </concept>
     <concept>
       <code value="nut-free"/>
-      <definition value="Excludes ingredients containing nuts"/>
-    </concept>  
+      <display value="Nut Free"/>
+      <definition value="Excludes ingredients containing nuts."/>
+    </concept>
     <concept>
       <code value="gluten-free"/>
-      <definition value="Excludes ingredients containing gluten"/>
-    </concept>  
+      <display value="Gluten Free"/>
+      <definition value="Excludes ingredients containing gluten."/>
+    </concept>
     <concept>
       <code value="vegan"/>
-      <definition value="Food without meat, poultry, seafood, eggs, dairy products and other animal-derived substances"/>
-    </concept>  
+      <display value="Vegan"/>
+      <definition value="Food without meat, poultry, seafood, eggs, dairy products and other animal-derived substances."/>
+    </concept>
     <concept>
       <code value="halal"/>
-      <definition value="Foods that conform to Islamic law"/>
-    </concept> 
+      <display value="Halal"/>
+      <definition value="Foods that conform to Islamic law."/>
+    </concept>
     <concept>
       <code value="kosher"/>
-      <definition value="foods that conform to Jewish dietary law"/>
-    </concept> 
-  </define>
+      <display value="Kosher"/>
+      <definition value="Foods that conform to Jewish dietary law."/>
+    </concept>
+  </codeSystem>
 </ValueSet>
-
-

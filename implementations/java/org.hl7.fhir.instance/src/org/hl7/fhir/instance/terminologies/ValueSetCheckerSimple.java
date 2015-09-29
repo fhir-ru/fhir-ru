@@ -11,23 +11,25 @@ import org.hl7.fhir.instance.model.ValueSet.ConceptSetFilterComponent;
 import org.hl7.fhir.instance.model.ValueSet.ValueSetExpansionContainsComponent;
 import org.hl7.fhir.instance.terminologies.ValueSetExpander.ETooCostly;
 import org.hl7.fhir.instance.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
-import org.hl7.fhir.instance.utils.WorkerContext;
+import org.hl7.fhir.instance.utils.EOperationOutcome;
+import org.hl7.fhir.instance.utils.IWorkerContext;
+import org.hl7.fhir.instance.utils.IWorkerContext.ValidationResult;
 
 public class ValueSetCheckerSimple implements ValueSetChecker {
 
   private ValueSet valueset;
   private ValueSetExpanderFactory factory;
-  private WorkerContext context;
+  private IWorkerContext context;
 
-  public ValueSetCheckerSimple(ValueSet source, ValueSetExpanderFactory factory, WorkerContext context) {
+  public ValueSetCheckerSimple(ValueSet source, ValueSetExpanderFactory factory, IWorkerContext context) {
     this.valueset = source;
     this.factory = factory;
     this.context = context;
   }
 
   @Override
-  public boolean codeInValueSet(String system, String code) throws ETooCostly {
-    if (valueset.hasDefine() && system.equals(valueset.getDefine().getSystem()) && codeInDefine(valueset.getDefine().getConcept(), code, valueset.getDefine().getCaseSensitive()))
+  public boolean codeInValueSet(String system, String code) throws EOperationOutcome, Exception {
+    if (valueset.hasCodeSystem() && system.equals(valueset.getCodeSystem().getSystem()) && codeInDefine(valueset.getCodeSystem().getConcept(), code, valueset.getCodeSystem().getCaseSensitive()))
      return true;
 
     if (valueset.hasCompose()) {
@@ -46,14 +48,14 @@ public class ValueSetCheckerSimple implements ValueSetChecker {
     return false;
   }
 
-  private boolean inImport(String uri, String system, String code) throws ETooCostly {
-    ValueSet vs = context.getValueSets().get(uri);
+  private boolean inImport(String uri, String system, String code) throws EOperationOutcome, Exception {
+    ValueSet vs = context.fetchResource(ValueSet.class, uri);
     if (vs == null) 
       return false ; // we can't tell
     return codeInExpansion(factory.getExpander().expand(vs), system, code);
   }
 
-  private boolean codeInExpansion(ValueSetExpansionOutcome vso, String system, String code) throws ETooCostly {
+  private boolean codeInExpansion(ValueSetExpansionOutcome vso, String system, String code) throws EOperationOutcome, Exception {
     if (vso.getService() != null) {
       return vso.getService().codeInValueSet(system, code);
     } else {
@@ -78,7 +80,7 @@ public class ValueSetCheckerSimple implements ValueSetChecker {
   }
 
 
-  private boolean inComponent(ConceptSetComponent vsi, String system, String code) {
+  private boolean inComponent(ConceptSetComponent vsi, String system, String code) throws Exception {
     if (!vsi.getSystem().equals(system))
       return false; 
     // whether we know the system or not, we'll accept the stated codes at face value
@@ -87,9 +89,9 @@ public class ValueSetCheckerSimple implements ValueSetChecker {
         return true;
       }
       
-    if (context.getCodeSystems().containsKey(system)) {
-      ValueSet def = context.getCodeSystems().get(system);
-      if (!def.getDefine().getCaseSensitive()) {
+    ValueSet def = context.fetchCodeSystem(system);
+    if (def != null) {
+      if (!def.getCodeSystem().getCaseSensitive()) {
         // well, ok, it's not case sensitive - we'll check that too now
         for (ConceptReferenceComponent cc : vsi.getConcept())
           if (cc.getCode().equalsIgnoreCase(code)) {
@@ -97,14 +99,15 @@ public class ValueSetCheckerSimple implements ValueSetChecker {
           }
       }
       if (vsi.getConcept().isEmpty() && vsi.getFilter().isEmpty()) {
-        return codeInDefine(def.getDefine().getConcept(), code, def.getDefine().getCaseSensitive());
+        return codeInDefine(def.getCodeSystem().getConcept(), code, def.getCodeSystem().getCaseSensitive());
       }
       for (ConceptSetFilterComponent f: vsi.getFilter())
         throw new Error("not done yet: "+f.getValue());
 
       return false;
-    } else if (context.getTerminologyServices().supportsSystem(system)) {
-      return context.getTerminologyServices().checkVS(vsi, system, code);
+    } else if (context.supportsSystem(system)) {
+      ValidationResult vv = context.validateCode(system, code, null, vsi);
+      return vv.isOk();
     } else
       // we don't know this system, and can't resolve it
       return false;

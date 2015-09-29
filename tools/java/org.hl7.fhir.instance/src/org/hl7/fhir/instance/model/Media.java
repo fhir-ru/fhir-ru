@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -135,28 +135,28 @@ public class Media extends DomainResource {
     /**
      * Whether the media is a photo (still image), an audio recording, or a video recording.
      */
-    @Child(name = "type", type = {CodeType.class}, order=0, min=1, max=1)
+    @Child(name = "type", type = {CodeType.class}, order=0, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="photo | video | audio", formalDefinition="Whether the media is a photo (still image), an audio recording, or a video recording." )
     protected Enumeration<DigitalMediaType> type;
 
     /**
      * Details of the type of the media - usually, how it was acquired (what type of device). If images sourced from a DICOM system, are wrapped in a Media resource, then this is the modality.
      */
-    @Child(name = "subtype", type = {CodeableConcept.class}, order=1, min=0, max=1)
+    @Child(name = "subtype", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="The type of acquisition equipment/process", formalDefinition="Details of the type of the media - usually, how it was acquired (what type of device). If images sourced from a DICOM system, are wrapped in a Media resource, then this is the modality." )
     protected CodeableConcept subtype;
 
     /**
      * Identifiers associated with the image - these may include identifiers for the image itself, identifiers for the context of its collection (e.g. series ids) and context ids such as accession numbers or other workflow identifiers.
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "identifier", type = {Identifier.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Identifier(s) for the image", formalDefinition="Identifiers associated with the image - these may include identifiers for the image itself, identifiers for the context of its collection (e.g. series ids) and context ids such as accession numbers or other workflow identifiers." )
     protected List<Identifier> identifier;
 
     /**
      * Who/What this Media is a record of.
      */
-    @Child(name = "subject", type = {Patient.class, Practitioner.class, Group.class, Device.class, Specimen.class}, order=3, min=0, max=1)
+    @Child(name = "subject", type = {Patient.class, Practitioner.class, Group.class, Device.class, Specimen.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Who/What this Media is a record of", formalDefinition="Who/What this Media is a record of." )
     protected Reference subject;
 
@@ -168,7 +168,7 @@ public class Media extends DomainResource {
     /**
      * The person who administered the collection of the image.
      */
-    @Child(name = "operator", type = {Practitioner.class}, order=4, min=0, max=1)
+    @Child(name = "operator", type = {Practitioner.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="The person who generated the image", formalDefinition="The person who administered the collection of the image." )
     protected Reference operator;
 
@@ -178,51 +178,51 @@ public class Media extends DomainResource {
     protected Practitioner operatorTarget;
 
     /**
-     * The name of the imaging view e.g Lateral or Antero-posterior (AP).
+     * The name of the imaging view e.g. Lateral or Antero-posterior (AP).
      */
-    @Child(name = "view", type = {CodeableConcept.class}, order=5, min=0, max=1)
-    @Description(shortDefinition="Imaging view e.g Lateral or Antero-posterior", formalDefinition="The name of the imaging view e.g Lateral or Antero-posterior (AP)." )
+    @Child(name = "view", type = {CodeableConcept.class}, order=5, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Imaging view, e.g. Lateral or Antero-posterior", formalDefinition="The name of the imaging view e.g. Lateral or Antero-posterior (AP)." )
     protected CodeableConcept view;
 
     /**
      * The name of the device / manufacturer of the device  that was used to make the recording.
      */
-    @Child(name = "deviceName", type = {StringType.class}, order=6, min=0, max=1)
+    @Child(name = "deviceName", type = {StringType.class}, order=6, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Name of the device/manufacturer", formalDefinition="The name of the device / manufacturer of the device  that was used to make the recording." )
     protected StringType deviceName;
 
     /**
-     * Height of the image in pixels(photo/video).
+     * Height of the image in pixels (photo/video).
      */
-    @Child(name = "height", type = {PositiveIntType.class}, order=7, min=0, max=1)
-    @Description(shortDefinition="Height of the image in pixels(photo/video)", formalDefinition="Height of the image in pixels(photo/video)." )
+    @Child(name = "height", type = {PositiveIntType.class}, order=7, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Height of the image in pixels (photo/video)", formalDefinition="Height of the image in pixels (photo/video)." )
     protected PositiveIntType height;
 
     /**
      * Width of the image in pixels (photo/video).
      */
-    @Child(name = "width", type = {PositiveIntType.class}, order=8, min=0, max=1)
+    @Child(name = "width", type = {PositiveIntType.class}, order=8, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Width of the image in pixels (photo/video)", formalDefinition="Width of the image in pixels (photo/video)." )
     protected PositiveIntType width;
 
     /**
      * The number of frames in a photo. This is used with a multi-page fax, or an imaging acquisition context that takes multiple slices in a single image, or an animated gif. If there is more than one frame, this SHALL have a value in order to alert interface software that a multi-frame capable rendering widget is required.
      */
-    @Child(name = "frames", type = {PositiveIntType.class}, order=9, min=0, max=1)
+    @Child(name = "frames", type = {PositiveIntType.class}, order=9, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Number of frames if > 1 (photo)", formalDefinition="The number of frames in a photo. This is used with a multi-page fax, or an imaging acquisition context that takes multiple slices in a single image, or an animated gif. If there is more than one frame, this SHALL have a value in order to alert interface software that a multi-frame capable rendering widget is required." )
     protected PositiveIntType frames;
 
     /**
      * The duration of the recording in seconds - for audio and video.
      */
-    @Child(name = "duration", type = {UnsignedIntType.class}, order=10, min=0, max=1)
+    @Child(name = "duration", type = {UnsignedIntType.class}, order=10, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Length in seconds (audio / video)", formalDefinition="The duration of the recording in seconds - for audio and video." )
     protected UnsignedIntType duration;
 
     /**
      * The actual content of the media - inline or by direct reference to the media source file.
      */
-    @Child(name = "content", type = {Attachment.class}, order=11, min=1, max=1)
+    @Child(name = "content", type = {Attachment.class}, order=11, min=1, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Actual Media - reference or data", formalDefinition="The actual content of the media - inline or by direct reference to the media source file." )
     protected Attachment content;
 
@@ -437,7 +437,7 @@ public class Media extends DomainResource {
     }
 
     /**
-     * @return {@link #view} (The name of the imaging view e.g Lateral or Antero-posterior (AP).)
+     * @return {@link #view} (The name of the imaging view e.g. Lateral or Antero-posterior (AP).)
      */
     public CodeableConcept getView() { 
       if (this.view == null)
@@ -453,7 +453,7 @@ public class Media extends DomainResource {
     }
 
     /**
-     * @param value {@link #view} (The name of the imaging view e.g Lateral or Antero-posterior (AP).)
+     * @param value {@link #view} (The name of the imaging view e.g. Lateral or Antero-posterior (AP).)
      */
     public Media setView(CodeableConcept value) { 
       this.view = value;
@@ -510,7 +510,7 @@ public class Media extends DomainResource {
     }
 
     /**
-     * @return {@link #height} (Height of the image in pixels(photo/video).). This is the underlying object with id, value and extensions. The accessor "getHeight" gives direct access to the value
+     * @return {@link #height} (Height of the image in pixels (photo/video).). This is the underlying object with id, value and extensions. The accessor "getHeight" gives direct access to the value
      */
     public PositiveIntType getHeightElement() { 
       if (this.height == null)
@@ -530,7 +530,7 @@ public class Media extends DomainResource {
     }
 
     /**
-     * @param value {@link #height} (Height of the image in pixels(photo/video).). This is the underlying object with id, value and extensions. The accessor "getHeight" gives direct access to the value
+     * @param value {@link #height} (Height of the image in pixels (photo/video).). This is the underlying object with id, value and extensions. The accessor "getHeight" gives direct access to the value
      */
     public Media setHeightElement(PositiveIntType value) { 
       this.height = value;
@@ -538,14 +538,14 @@ public class Media extends DomainResource {
     }
 
     /**
-     * @return Height of the image in pixels(photo/video).
+     * @return Height of the image in pixels (photo/video).
      */
     public int getHeight() { 
       return this.height == null || this.height.isEmpty() ? 0 : this.height.getValue();
     }
 
     /**
-     * @param value Height of the image in pixels(photo/video).
+     * @param value Height of the image in pixels (photo/video).
      */
     public Media setHeight(int value) { 
         if (this.height == null)
@@ -720,9 +720,9 @@ public class Media extends DomainResource {
         childrenList.add(new Property("identifier", "Identifier", "Identifiers associated with the image - these may include identifiers for the image itself, identifiers for the context of its collection (e.g. series ids) and context ids such as accession numbers or other workflow identifiers.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("subject", "Reference(Patient|Practitioner|Group|Device|Specimen)", "Who/What this Media is a record of.", 0, java.lang.Integer.MAX_VALUE, subject));
         childrenList.add(new Property("operator", "Reference(Practitioner)", "The person who administered the collection of the image.", 0, java.lang.Integer.MAX_VALUE, operator));
-        childrenList.add(new Property("view", "CodeableConcept", "The name of the imaging view e.g Lateral or Antero-posterior (AP).", 0, java.lang.Integer.MAX_VALUE, view));
+        childrenList.add(new Property("view", "CodeableConcept", "The name of the imaging view e.g. Lateral or Antero-posterior (AP).", 0, java.lang.Integer.MAX_VALUE, view));
         childrenList.add(new Property("deviceName", "string", "The name of the device / manufacturer of the device  that was used to make the recording.", 0, java.lang.Integer.MAX_VALUE, deviceName));
-        childrenList.add(new Property("height", "positiveInt", "Height of the image in pixels(photo/video).", 0, java.lang.Integer.MAX_VALUE, height));
+        childrenList.add(new Property("height", "positiveInt", "Height of the image in pixels (photo/video).", 0, java.lang.Integer.MAX_VALUE, height));
         childrenList.add(new Property("width", "positiveInt", "Width of the image in pixels (photo/video).", 0, java.lang.Integer.MAX_VALUE, width));
         childrenList.add(new Property("frames", "positiveInt", "The number of frames in a photo. This is used with a multi-page fax, or an imaging acquisition context that takes multiple slices in a single image, or an animated gif. If there is more than one frame, this SHALL have a value in order to alert interface software that a multi-frame capable rendering widget is required.", 0, java.lang.Integer.MAX_VALUE, frames));
         childrenList.add(new Property("duration", "unsignedInt", "The duration of the recording in seconds - for audio and video.", 0, java.lang.Integer.MAX_VALUE, duration));
@@ -802,7 +802,7 @@ public class Media extends DomainResource {
   public static final String SP_SUBJECT = "subject";
   @SearchParamDefinition(name="subtype", path="Media.subtype", description="The type of acquisition equipment/process", type="token" )
   public static final String SP_SUBTYPE = "subtype";
-  @SearchParamDefinition(name="view", path="Media.view", description="Imaging view e.g Lateral or Antero-posterior", type="token" )
+  @SearchParamDefinition(name="view", path="Media.view", description="Imaging view, e.g. Lateral or Antero-posterior", type="token" )
   public static final String SP_VIEW = "view";
   @SearchParamDefinition(name="type", path="Media.type", description="photo | video | audio", type="token" )
   public static final String SP_TYPE = "type";

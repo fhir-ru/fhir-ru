@@ -14,6 +14,7 @@
 <%txheader%>
 
 <h2>Using LOINC with FHIR</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <h3>Summary</h3>
 
@@ -51,7 +52,7 @@ For comparison purposes, LOINC codes, displays, and property values are not case
 <p>
 As described in the <a href="http://loinc.org/downloads/files/LOINCManual.pdf">LOINC Manual</a> section 10.2,
 LOINC Parts are a coded representation of a value for a dimension used to specify a LOINC Term
-which are assigned a non-semantic identifier with a “LP” prefix and a mod-10 check digit. Following
+which are assigned a non-semantic identifier with a "LP" prefix and a mod-10 check digit. Following
 the LOINC license, these part codes may be used in the following ways:
 </p>
 <ul>
@@ -103,7 +104,7 @@ code system in value set composition statements.
  <tr><td>Description</td><td>Allows for the inclusion or exclusion of LOINC codes that include 3rd party copyright notices</td></tr>
  <tr><td>Property Name</td><td>copyright</td></tr>
  <tr><td>Operations Allowed</td><td>=</td></tr>
- <tr><td>Values Allowed</td><td>LOINC | 3rdParty | All</td></tr>
+ <tr><td>Values Allowed</td><td>LOINC | 3rdParty</td></tr>
  <tr><td>Comments</td><td>LOINC = only codes with a sole copyright by Regenstrief. 3rdParty = only codes with a 3rd party copyright in addition to the one from Regenstrief.</td></tr>
 </table>
 
@@ -127,7 +128,7 @@ Document.Kind, Document.TypeOfService, Document.Setting, Document.Role, and Docu
 <p>
 Implicit value sets are those whose specification can be predicted based on the grammar of the 
 underlying code system, and the known structure of the URL that refers to them. LOINC
-defines one sets of implicit value sets: By Multi-Axial Hierarchy Entry.
+defines one set of implicit value sets: By Multi-Axial Hierarchy Entry.
 </p>
 <p>
 If any value set resources exist with an identifier that conforms to the URL patterns specified below,
@@ -237,12 +238,12 @@ multi-axial hierarchy:
     &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
       [some html that identifies that this value set 
       includes all LOINC codes subsumed by the identified 
-      Multi-Axial Heirarchy Part Code]
+      Multi-Axial Hierarchy Part Code]
     &lt;/div&gt;
   &lt;/text&gt;
   &lt;identifier value=&quot;http://loinc.org/vs/[partcode]&quot;/&gt;
   &lt;version value=&quot;[optional - but strongly recommended - LOINC version]&quot;/&gt;
-  &lt;name value=&quot;LOINC Value Set from Multi-Axial Heirarchy code [partcode]&quot;/&gt;
+  &lt;name value=&quot;LOINC Value Set from Multi-Axial Hierarchy code [partcode]&quot;/&gt;
   &lt;description value=&quot;All LOINC codes for [partcode or name]&quot;/&gt;
   &lt;status value=&quot;active&quot;/&gt;
   &lt;date value=&quot;[optional date of LOINC release]&quot;/&gt;

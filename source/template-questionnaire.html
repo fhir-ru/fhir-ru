@@ -1,8 +1,5 @@
 <!DOCTYPE HTML>
 
-
-<%setlevel 0%>
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <%file newheader%>
@@ -12,11 +9,12 @@
 
 <div class="col-9">
 
-<h3>[%title%] - Example Form</h3>
+<%resheader questionnaire%>
+
+<h2>[%title%] - Example Form</h2>
 
 <p>
-
-This is an example form generated from the questionnaire. See also the <a href="<%name%>.xml.html">XML</a> or <a href="<%name%>.json.html">JSON</a> format.
+This is an example form based on a questionnaire generated from the definition, to help visualise the content. See also the <a href="<%name%>.xml.html">XML</a> or <a href="<%name%>.json.html">JSON</a> questionnaire.
 </p>
 
 <%questionnaire%>

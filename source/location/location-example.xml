@@ -15,6 +15,7 @@
 	<identifier>
     <value value="B1-S.F2" />
   </identifier>
+  <status value="active" />
   <name value="South Wing, second floor"/>
   <description value="Second floor of the Old South Wing, formerly in use by Psychiatry"/>
 	<mode value="instance" />
@@ -33,7 +34,7 @@
     <value value="second wing admissions"/>
   </telecom>
   <telecom>
-    <system value="url"/>
+    <system value="other"/>
     <value value="http://sampleorg.com/southwing"/>
 		<use value="work"/>
   </telecom>
@@ -59,5 +60,4 @@
   <managingOrganization>
     <reference value="Organization/f001"/>
   </managingOrganization>
-  <status value="active" />
 </Location>

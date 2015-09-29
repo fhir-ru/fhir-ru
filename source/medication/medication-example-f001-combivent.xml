@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Medication xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/medication.xsd">
   <id value="f001"/>
-    <name value="Combivent"/>
     <code>
         <coding>
             <system value="http://snomed.info/sct"/>
@@ -15,7 +14,6 @@
         <reference value="Organization/f001"/>TODO Incorrecte verwijzing
         <display value="Eureco-Pharma B.V."/>
     </manufacturer>-->
-    <kind value="product"/> 
     <product>
         <form>
             <coding>
@@ -33,7 +31,7 @@
             <amount>
                 <numerator>
                     <value value="100"/>
-                    <units value="ml"/>
+                    <unit value="ml"/>
                     <system value="http://unitsofmeasure.org"/> <!-- UnitsOfMeasure.org clasification system -->
                     <code value="ml"/>
                 </numerator>

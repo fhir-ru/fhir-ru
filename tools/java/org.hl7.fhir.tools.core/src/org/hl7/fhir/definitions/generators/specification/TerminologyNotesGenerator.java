@@ -92,24 +92,24 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 		this.page = page;
 	}
 
-	public void generateExtension(StructureDefinition ed) throws Exception
+	public void generateExtension(String prefix, StructureDefinition ed) throws Exception
 	{
 	  scanExtension(ed, ed.getUrl());
-		gen(txusages);
+		gen(prefix, txusages);
 		flush();
 		close();
 	}
 
 
-  public void generate(ElementDefn root) throws Exception
+  public void generate(String prefix, ElementDefn root) throws Exception
   {
     scan(root, root.getName());
-    gen(txusages);
+    gen(prefix, txusages);
     flush();
     close();
   }
 
-  public void generate(ConstraintStructure profile) throws Exception
+  public void generate(String prefix, ConstraintStructure profile) throws Exception
   {
 //    write("<p>\r\nDefined Bindings\r\n</p>\r\n<ul>\r\n");
 //    for (BindingSpecification b : profile.getBindings()) {
@@ -117,7 +117,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 //    }
 //    write("</ul>\r\n");
     scan(profile);
-    gen(txusages);
+    gen(prefix, txusages);
     flush();
     close();
   }
@@ -144,7 +144,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
     // todo
 	}
 
-  private void gen(Map<BindingSpecification, List<CDUsage>> txusages2) throws Exception {
+  private void gen(String prefix, Map<BindingSpecification, List<CDUsage>> txusages2) throws Exception {
 		List<BindingSpecification> cds = new ArrayList<BindingSpecification>();
 		cds.addAll(txusages.keySet());
 		if (cds.size() == 0)
@@ -176,39 +176,45 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
       if (cd.getBinding() == BindingMethod.Unbound)
         write("<td>Unknown</td><td valign=\"top\">No details provided yet</td>");
       else { 
-        write("<td><a href=\"terminologies.html#"+cd.getStrength().toCode()+"\">"+cd.getStrength().getDisplay()+"</a></td>");
+        write("<td><a href=\""+prefix+"terminologies.html#"+cd.getStrength().toCode()+"\">"+cd.getStrength().getDisplay()+"</a></td>");
         write("<td valign=\"top\">");
         if (cd.getBinding() == BindingSpecification.BindingMethod.Special) {
           if (name.equals("MessageEvent"))
-            write("<a href=\"message-events.html\">http://hl7.org/fhir/valueset/message-events</a>");
+            write("<a href=\""+prefix+"valueset-message-events.html\">http://hl7.org/fhir/valueset/message-events</a>");
           else if (name.equals("ResourceType"))
-            write("<a href=\"resource-types.html\">http://hl7.org/fhir/valueset/resource-types</a>");
+            write("<a href=\""+prefix+"valueset-resource-types.html\">http://hl7.org/fhir/valueset/resource-types</a>");
           else if (name.equals("DataType"))
-            write("<a href=\"data-types.html\">http://hl7.org/fhir/valueset/data-types</a>");
+            write("<a href=\""+prefix+"valueset-data-types.html\">http://hl7.org/fhir/valueset/data-types</a>");
           else if (name.equals("FHIRDefinedType"))
-            write("<a href=\"defined-types.html\">http://hl7.org/fhir/valueset/defined-types</a>");
+            write("<a href=\""+prefix+"valueset-defined-types.html\">http://hl7.org/fhir/valueset/defined-types</a>");
           else 
             throw new Exception("Unknown special type "+name);
         } 
-        if (cd.getBinding() == BindingSpecification.BindingMethod.ValueSet) {
+        if (cd.getValueSet() != null) {
+          ValueSet vs = cd.getValueSet();
+          String pp = (String) vs.getUserData("path");
+          if (pp == null)
+            throw new Exception("unknown path on "+cd.getReference());
+          write("<a href=\""+prefix+pp.replace(File.separatorChar, '/')+"\">"+vs.getName()+"</a><!-- b -->");
+        } else if (cd.getBinding() == BindingSpecification.BindingMethod.ValueSet) {
           if (Utilities.noString(cd.getReference())) 
             write("??");
           else if (cd.getReference().startsWith("valueset-"))
-            write("<a href=\""+cd.getReference()+".html\">http://hl7.org/fhir/vs/"+cd.getReference().substring(9)+"</a><!-- a -->");            
+            write("<a href=\""+prefix+cd.getReference()+".html\">http://hl7.org/fhir/ValueSet/"+cd.getReference().substring(9)+"</a><!-- a -->");            
           else if (cd.getReference().startsWith("http://hl7.org/fhir")) {
-            if (cd.getReference().startsWith("http://hl7.org/fhir/v3/vs/")) {
+            if (cd.getReference().startsWith("http://hl7.org/fhir/ValueSet/v3-")) {
               ValueSet vs = page.getValueSets().get(cd.getReference());
               String pp = (String) vs.getUserData("path");
               if (pp == null)
                 throw new Exception("unknown path on "+cd.getReference());
-              write("<a href=\""+pp.replace(File.separatorChar, '/')+"\">"+cd.getReference()+"</a><!-- b -->");
-            } else if (cd.getReference().startsWith("http://hl7.org/fhir/v2/vs/")) {
+              write("<a href=\""+prefix+pp.replace(File.separatorChar, '/')+"\">"+cd.getReference()+"</a><!-- b -->");
+            } else if (cd.getReference().startsWith("http://hl7.org/fhir/ValueSet/v2-")) {
                 ValueSet vs = page.getValueSets().get(cd.getReference());
                 String pp = (String) vs.getUserData("path");
-                write("<a href=\""+pp.replace(File.separatorChar, '/')+"\">"+cd.getReference()+"</a><!-- c -->");
-            } else if (cd.getReference().startsWith("http://hl7.org/fhir/vs/")) {
+                write("<a href=\""+prefix+pp.replace(File.separatorChar, '/')+"\">"+cd.getReference()+"</a><!-- c -->");
+            } else if (cd.getReference().startsWith("http://hl7.org/fhir/ValueSet/")) {
               String ref = getBindingLink(cd);
-              write("<a href=\""+ref+"\">"+cd.getReference()+"</a><!-- d -->");
+              write("<a href=\""+prefix+ref+"\">"+cd.getReference()+"</a><!-- d -->");
 //              BindingSpecification bs1 = page.getDefinitions().getBindingByURL(cd.getReference());
 //              if (bs1 != null)
 //                write("<a href=\""+cd.getReference().substring(23)+".html\">"+cd.getReference()+"</a><!-- d -->");
@@ -216,14 +222,14 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 //                write("<a href=\"valueset-"+cd.getReference().substring(23)+".html\">"+cd.getReference()+"</a><!-- d -->");
             } else
               throw new Exception("Internal reference "+cd.getReference()+" not handled yet");
-          } else
-            write("<a href=\""+cd.getReference()+".html\">http://hl7.org/fhir/"+cd.getReference()+"</a><!-- e -->");            
-        }
-        if (cd.getBinding() == BindingSpecification.BindingMethod.CodeList) {
-          write("<a href=\""+cd.getReference().substring(1)+".html\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a><!-- f -->");            
-        }
-        if (cd.getBinding() == BindingSpecification.BindingMethod.Reference) {
-          write("<a href=\""+cd.getReference()+"\">"+cd.getDescription()+"</a><!-- g -->");
+          } else if (cd.getReference().startsWith("http:"))
+            write("<a href=\""+cd.getReference()+"\">"+cd.getReference()+"</a><!-- e -->");            
+          else
+            write("<a href=\""+prefix+"valueset-"+cd.getReference()+".html\">http://hl7.org/fhir/"+cd.getReference()+"</a><!-- e -->");            
+        } else if (cd.getBinding() == BindingSpecification.BindingMethod.CodeList) {
+          write("<a href=\""+prefix+"valueset-"+cd.getReference().substring(1)+".html\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a><!-- f -->");            
+        } else if (cd.getBinding() == BindingSpecification.BindingMethod.Reference) {
+          write("<a href=\""+prefix+cd.getReference()+"\">"+cd.getDescription()+"</a><!-- g -->");
         }
 
         write("</td>");
@@ -233,14 +239,14 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
     write("</table>\r\n<p> </p>\r\n");		
 	}
 
-  public static String describeBinding(ElementDefinitionBindingComponent def, PageProcessor page) throws Exception {
+  public static String describeBinding(String prefix, ElementDefinitionBindingComponent def, PageProcessor page) throws Exception {
     if (!def.hasValueSet()) 
       return def.getDescription();
     String ref = def.getValueSet() instanceof UriType ? ((UriType) def.getValueSet()).asStringValue() : ((Reference) def.getValueSet()).getReference();
     ValueSet vs = page.getValueSets().get(ref);
     if (vs != null) {
       String pp = (String) vs.getUserData("path");
-      return def.getDescription()+"<br/>"+conf(def)+ "<a href=\""+pp.replace(File.separatorChar, '/')+"\">"+vs.getName()+"</a>"+confTail(def);
+      return def.getDescription()+"<br/>"+conf(def)+ "<a href=\""+prefix+pp.replace(File.separatorChar, '/')+"\">"+vs.getName()+"</a>"+confTail(def);
     }
     if (ref.startsWith("http:") || ref.startsWith("https:"))
       return def.getDescription()+"<br/>"+conf(def)+" <a href=\""+ref+"\">"+ref+"</a>"+confTail(def);
@@ -270,53 +276,41 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
     }
   }
 
-  public static String describeBinding(BindingSpecification cd, PageProcessor page) throws Exception {
+  public static String describeBinding(String prefix, BindingSpecification cd, PageProcessor page) throws Exception {
     if (cd.getBinding() == BindingSpecification.BindingMethod.Unbound) 
       return cd.getDefinition();
     if (cd.getBinding() == BindingSpecification.BindingMethod.Special) {
       if (cd.getValueSet().getName().equals("MessageEvent"))
-        return "the <a href=\"message-events.html\">Event List in the messaging framework</a>";
+        return "the <a href=\""+prefix+"valueset-message-events.html\">Event List in the messaging framework</a>";
       else if (cd.getValueSet().getName().equals("ResourceType"))
-        return "<a href=\"resource-types.html\">Any defined Resource Type name</a>";
+        return "<a href=\""+prefix+"valueset-resource-types.html\">Any defined Resource Type name</a>";
       else if (cd.getValueSet().getName().equals("DataType"))
-        return "<a href=\"data-types.html\">Any defined Data Type name</a>";
+        return "<a href=\""+prefix+"valueset-data-types.html\">Any defined Data Type name</a>";
       else if (cd.getValueSet().getName().equals("FHIRDefinedType"))
-        return "<a href=\"defined-types.html\">Any defined Resource or Data Type name</a>";
+        return "<a href=\""+prefix+"valueset-defined-types.html\">Any defined Resource or Data Type name</a>";
       else 
         throw new Exception("Unknown special type "+cd.getValueSet().getName());
     } 
-    String bs = "<a href=\"terminologies.html#"+cd.getStrength().toCode()+"\">"+cd.getStrength().getDisplay()+"</a>";
-    if (cd.getBinding() == BindingSpecification.BindingMethod.ValueSet) {
+    String bs = "<a href=\""+prefix+"terminologies.html#"+cd.getStrength().toCode()+"\">"+cd.getStrength().getDisplay()+"</a>";
+    if (cd.getValueSet() != null) {
+      ValueSet vs = cd.getValueSet();
+      String pp = (String) vs.getUserData("path");
+      return "<a href=\""+prefix+pp.replace(File.separatorChar, '/')+"\">"+cd.getDefinition()+"</a> ("+bs+")";      
+    } else if (cd.getBinding() == BindingSpecification.BindingMethod.ValueSet) {
       if (Utilities.noString(cd.getReference())) 
         return cd.getDescription();
-      else if (cd.getReference().startsWith("http://hl7.org/fhir/v3/vs/")) {
-        ValueSet vs = page.getValueSets().get(cd.getReference());
-        String pp = (String) vs.getUserData("path");
-        return "<a href=\""+pp.replace(File.separatorChar, '/')+"\">"+cd.getDefinition()+"</a> ("+bs+")";
-      } else if (cd.getReference().startsWith("http://hl7.org/fhir/v2/vs")) {
-          ValueSet vs = page.getValueSets().get(cd.getReference());
-          String pp = (String) vs.getUserData("path");
-          return "<a href=\""+pp.replace(File.separatorChar, '/')+"\">"+cd.getDefinition()+"</a> ("+bs+")";
-      } else if (cd.getValueSet() != null) {
-        if (cd.getReference().startsWith("http://hl7.org/fhir/vs/")) {
-          if (page.getValueSets().containsKey(cd.getReference()) && page.getValueSets().get(cd.getReference()).getUserData("filename") != null)
-            return bs+": <a href=\""+page.getValueSets().get(cd.getReference()).getUserData("path")+"\">See "+cd.getValueSet().getUrl()+"</a> ("+cd.getDefinition()+")"; 
-          else
-          return bs+": <a href=\""+cd.getReference().substring(23)+".html\">See "+cd.getValueSet().getUrl()+"</a> ("+cd.getDefinition()+")";
-        } else 
-          return bs+": <a href=\""+cd.getReference()+".html\">See "+cd.getValueSet().getUrl()+"</a> ("+cd.getDefinition()+")";
-      }
+      else if (cd.getValueSet() == null)
+        return bs+": <a href=\""+(cd.getReference().startsWith("http") ? cd.getReference() : prefix+cd.getReference()+".html")+"\">See "+cd.getDescription()+"</a> ("+cd.getDefinition()+")";
       else
-        return bs+": <a href=\""+cd.getReference()+".html\">Value Set Definition</a> ("+cd.getDefinition()+")";
-    }
-    if (cd.getBinding() == BindingSpecification.BindingMethod.CodeList) {
+        return bs+": <a href=\""+prefix+cd.getReference()+".html\">See "+cd.getValueSet().getUrl()+"</a> ("+cd.getDefinition()+")";
+    } else if (cd.getBinding() == BindingSpecification.BindingMethod.CodeList) {
       if (Utilities.noString(cd.getReference())) 
         return bs+": "+cd.getDescription()+" ("+cd.getDefinition()+")";
       else
-        return bs+": <a href=\""+cd.getReference().substring(1)+".html\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a> ("+cd.getDefinition()+")";
+        return bs+": <a href=\""+prefix+"valueset-"+cd.getReference().substring(1)+".html\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a> ("+cd.getDefinition()+")";
     }
     if (cd.getBinding() == BindingSpecification.BindingMethod.Reference) {
-      return bs+": <a href=\""+cd.getReference()+"\">"+cd.getDescription()+"</a> ("+cd.getDefinition()+")";
+      return bs+": <a href=\""+prefix+cd.getReference()+"\">"+cd.getDescription()+"</a> ("+cd.getDefinition()+")";
     }
     return "??";
   }

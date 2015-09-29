@@ -40,20 +40,24 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
+import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.IParser.OutputStyle;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.ElementDefinition;
 import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionConstraintComponent;
+import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionSlicingComponent;
 import org.hl7.fhir.instance.model.ElementDefinition.PropertyRepresentation;
 import org.hl7.fhir.instance.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.instance.model.Enumeration;
 import org.hl7.fhir.instance.model.Reference;
+import org.hl7.fhir.instance.model.StringType;
 import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.model.Type;
 import org.hl7.fhir.instance.model.UriType;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.tools.publisher.PageProcessor;
+import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
 
 public class XmlSpecGenerator extends OutputStreamWriter {
@@ -62,13 +66,15 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 	private String dtRoot;
 	private Definitions definitions;
   private PageProcessor page;
+  private String prefix; 
 
-	public XmlSpecGenerator(OutputStream out, String defPage, String dtRoot, PageProcessor page) throws UnsupportedEncodingException {
+	public XmlSpecGenerator(OutputStream out, String defPage, String dtRoot, PageProcessor page, String prefix) throws UnsupportedEncodingException {
 		super(out, "UTF-8");
 		this.defPage = defPage;
 		this.dtRoot = dtRoot == null ? "" : dtRoot;
 		this.definitions = page.getDefinitions();
 		this.page = page;
+		this.prefix = prefix;
 	}
 
   protected String getBindingLink(ElementDefn e) throws Exception {
@@ -106,7 +112,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
   private void generateExtensionInner(StructureDefinition ed) throws IOException, Exception {
     ElementDefinition root = ed.getSnapshot().getElement().get(0);
     write("&lt;!-- "+Utilities.escapeXml(ed.getName())+" -->");
-    write("<span style=\"float: right\"><a title=\"Documentation for this format\" href=\"xml.html\"><img src=\"help.png\" alt=\"doco\"/></a></span>\r\n");
+    write("<span style=\"float: right\"><a title=\"Documentation for this format\" href=\""+prefix+"xml.html\"><img src=\""+prefix+"help.png\" alt=\"doco\"/></a></span>\r\n");
     String rn = ed.getSnapshot().getElement().get(0).getIsModifier() ? "modifierExtension" : "extension";
 
     write("\r\n&lt;");
@@ -114,7 +120,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
       write("<span title=\"" + Utilities.escapeXml(root.getDefinition())
           + "\"><b>");
     else
-      write("<a href=\"" + (defPage + "#" + root.getName()).replace("[", "_").replace("]", "_") + "\" title=\""
+      write("<a href=\"" + (defPage + "#" + root.getName()) + "\" title=\""
           + Utilities.escapeXml(root.getDefinition())
           + "\" class=\"dict\"><b>");
     write(rn);
@@ -127,18 +133,28 @@ public class XmlSpecGenerator extends OutputStreamWriter {
     generateExtensionAttribute(ed);
     write(" &gt;\r\n");
 
-    write("  &lt;!-- from Element: <a href=\"extensibility.html\">extension</a> -->\r\n");
-    
-      List<ElementDefinition> children = getChildren(ed.getSnapshot().getElement(), ed.getSnapshot().getElement().get(0));
-      for (ElementDefinition child : children)
-        generateCoreElem(ed.getSnapshot().getElement(), child, 1, rn, false);
+    List<ElementDefinition> children = getChildren(ed.getSnapshot().getElement(), ed.getSnapshot().getElement().get(0));
+    boolean complex = isComplex(children);
+    if (!complex)
+      write("  &lt;!-- from Element: <a href=\""+prefix+"extensibility.html\">extension</a> -->\r\n");
+    for (ElementDefinition child : children)
+      generateCoreElem(ed.getSnapshot().getElement(), child, 1, rn, false, complex);
 
     write("&lt;/");
     write(rn);
     write("&gt;\r\n");
   }
   
-	private void generateInner(ElementDefn root, boolean resource, boolean isAbstract) throws IOException, Exception {
+	private boolean isComplex(List<ElementDefinition> children) {
+	  int c = 0;
+	  for (ElementDefinition child : children) {
+	    if (child.getPath().equals("Extension.extension"))
+	      c++;
+	  }
+    return c > 1;
+  }
+
+  private void generateInner(ElementDefn root, boolean resource, boolean isAbstract) throws IOException, Exception {
 		String rn;
 		if (root.getName().equals("Extension")) 
 		  rn = "extension|modifierExtension";
@@ -155,7 +171,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			write("<span title=\"" + Utilities.escapeXml(root.getDefinition())
 					+ "\"><b>");
 		else
-			write("<a href=\"" + (defPage + "#" + root.getName()).replace("[", "_").replace("]", "_") + "\" title=\""
+			write("<a href=\"" + (defPage + "#" + root.getName()) + "\" title=\""
 					+ Utilities.escapeXml(root.getDefinition())
 					+ "\" class=\"dict\"><b>");
 		write(rn);
@@ -180,17 +196,17 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		  }
 		}
 		if (resource) {
-		    write("&gt; <span style=\"float: right\"><a title=\"Documentation for this format\" href=\"xml.html\"><img src=\"help.png\" alt=\"doco\"/></a></span>\r\n");
+		    write("&gt; <span style=\"float: right\"><a title=\"Documentation for this format\" href=\""+prefix+"xml.html\"><img src=\""+prefix+"help.png\" alt=\"doco\"/></a></span>\r\n");
 		} else 
 		  write("&gt;\r\n");
     if (rn.equals(root.getName()) && resource) {
       if (!Utilities.noString(root.typeCode())) {
-        write(" &lt;!-- from <a href=\"resource.html\">Resource</a>: <a href=\"resource.html#id\">id</a>, <a href=\"resource.html#meta\">meta</a>, <a href=\"resource.html#implicitRules\">implicitRules</a>, and <a href=\"resource.html#language\">language</a> -->\r\n");
+        write(" &lt;!-- from <a href=\""+prefix+"resource.html\">Resource</a>: <a href=\""+prefix+"resource.html#id\">id</a>, <a href=\""+prefix+"resource.html#meta\">meta</a>, <a href=\""+prefix+"resource.html#implicitRules\">implicitRules</a>, and <a href=\""+prefix+"resource.html#language\">language</a> -->\r\n");
         if (root.typeCode().equals("DomainResource"))
-          write(" &lt;!-- from <a href=\"domainresource.html\">DomainResource</a>: <a href=\"narrative.html#Narrative\">text</a>, <a href=\"references.html#contained\">contained</a>, <a href=\"extensibility.html\">extension</a>, and <a href=\"extensibility.html#modifierExtension\">modifierExtension</a> -->\r\n");
+          write(" &lt;!-- from <a href=\""+prefix+"domainresource.html\">DomainResource</a>: <a href=\""+prefix+"narrative.html#Narrative\">text</a>, <a href=\""+prefix+"references.html#contained\">contained</a>, <a href=\""+prefix+"extensibility.html\">extension</a>, and <a href=\""+prefix+"extensibility.html#modifierExtension\">modifierExtension</a> -->\r\n");
       }
     } else {
-      write(" &lt;!-- from Element: <a href=\"extensibility.html\">extension</a> -->\r\n");
+      write(" &lt;!-- from Element: <a href=\""+prefix+"extensibility.html\">extension</a> -->\r\n");
     }
 		for (ElementDefn elem : root.getElements()) {
 		  if (!elem.typeCode().equals("xml:lang") && !elem.isXmlAttribute())
@@ -219,152 +235,10 @@ public class XmlSpecGenerator extends OutputStreamWriter {
     write(" (<span style=\"color: darkgreen\"><a href=\"" + (dtRoot + definitions.getSrcFile(t)+ ".html#" + t) + "\">" + t + "</a></span>)\"");
   }
 
-//  public void generate(ProfileDefn profile, String root) throws Exception {
-//		write("<pre class=\"spec\"> <span style=\"float: right\"><a title=\"Documentation for this format\" href=\"xml.html\"><img src=\"help.png\" alt=\"doco\"/></a></span>\r\n");
-//
-//		ResourceDefn r = profile.getResource();
-//		write("<span style=\"color: Gray\">&lt;!--<a name=\"" + r.getRoot().getProfileName() + "\"> </a><span style=\"color: Darkviolet\">"+Utilities.escapeXml(r.getRoot().getProfileName())+"</span> --&gt;</span>\r\n");
-//		generateInner(r.getRoot(), false, false);
-//		write("\r\n");
-//
-////		if (profile.getExtensions().size() > 0) {
-////			write("<span style=\" color: Gray\">&lt;!-- <span style=\"color: Darkviolet\">Extensions</span> --&gt;</span>\r\n");
-////			for (ExtensionDefn ex : profile.getExtensions()) {
-////				generateExtension(ex, profile, definitions, root, 0);
-////        write("\r\n");
-////			}
-////		}
-//
-//		write("</pre>\r\n");
-//		flush();
-//		close();
-//	}
-
-/*	private void generateExtension(ExtensionDefn ex, ProfileDefn profile, Definitions definitions, String root, int indent) throws Exception {
-	  String n = (indent == 0) ? "extension" : "extension"; // in case contained extensions have a different name
-	  String ind = Utilities.padLeft("", ' ', indent);  
-    if (indent == 0) {
-      write(ind+"<a name=\""+ex.getCode()+"\">&lt;!--</a> ");
-      writeCardinality(ex.getDefinition());
-      write("  ");
-      write("<span style=\"color: navy\">" + Utilities.escapeXml("Context: "+ex.getType().toString()+" = "+ex.getContext()) + "</span>");
-      write(" -->\r\n");
-    }
-
-    if (ex.getDefinition().isModifier1())
-	    write(ind+"&lt;<span style=\"text-decoration: underline\" title=\"" + Utilities.escapeXml(ex.getDefinition().getEnhancedDefinition()) + "\"><b>"+n+"</b></span>");
-	  else
-	    write(ind+"&lt;<span title=\"" + Utilities.escapeXml(ex.getDefinition().getDefinition()) + "\"><b>"+n+"</b></span>");
-    write(" <b>url</b>=\"<span style=\"color: maroon\">"+ (indent == 0 ? root  : "") + "#"+ ex.getCode() + "</span>\"&gt;");
-    if (indent != 0) {
-      write(ind+"<a name=\""+ex.getCode()+"\"> </a>&lt;!-- ");
-      writeCardinality(ex.getDefinition());
-      write(" -->");
-    }
-    write("\r\n");
-
-//		write(" &lt;<b>definition</b>><span style=\" color: Gray\">&lt;!-- </span> <span style=\"color: brown;\"><b>1..1</b></span> <span style=\"color: darkgreen;\"><a href=\"datatypes.html#uri\">uri</a></span> <span style=\"color: navy\">where registered</span> <span style=\" color: Gray\">--&gt;</span>&lt;/definition>\r\n");
-//		write(" &lt;<b>ref</b>&gt; <span style=\"color: navy\"><span style=\"color: darkgreen;\"><a href=\"references.html#idref\">Ref</a></span> to a "
-//				+ ex.getContext()
-//				+ " ("
-//				+ ex.getType().toString()
-    //				+ ")</span>\">  \r\n");
-    //		if (ex.getDefinition().isMustUnderstand())
-    //			write(" &lt;<b>mustUnderstand</b>>true&lt;/mustUnderstand>\r\n");
-    if (ex.getChildren().isEmpty()) {
-      if (ex.getDefinition().getTypes().size() == 0 ) {
-        write(" <span title=\"" + Utilities.escapeXml(ex.getDefinition().getDefinition()) + "\">");
-        write("<span style=\" color: Gray\">&lt;!-- </span>");
-        write("<span style=\"color: navy\">"+getExtensionTargetList(ex, profile)+"</span> ");
-        write("<span style=\" color: Gray\">--> </span>");
-        write("</span>\r\n");
-      } else {
-        String t = null; 
-
-        String vn = "value[x]";
-        if (ex.getDefinition().getTypes().size() == 1) {
-          t = ex.getDefinition().typeCode();
-          if (t.startsWith("Reference("))
-            t = "Reference";
-          vn = "value" + upFirst(t);
-        }
-
-        write(ind+"  &lt;<span title=\"" + Utilities.escapeXml(ex.getDefinition().getDefinition()) + "\"><b>" + vn + "</b></span>");
-        if (ex.getDefinition().getTypes().size() == 1
-            && definitions.hasElementDefn(t)) {
-          write("&gt;");
-          write("<span style=\" color: Gray\">&lt;!-- </span>");
-          writeTypeLinks(ex.getDefinition(), 0);
-          if (Utilities.isURL(ex.getDefinition().getShortDefn()))
-            write("<span style=\"color: navy\"><a href=\""+Utilities.escapeXml(ex.getDefinition().getShortDefn())+"\">" + Utilities.escapeXml(ex.getDefinition().getShortDefn())+"</a></span>");
-          else
-            write(" <span style=\"color: navy\">"+Utilities.escapeXml(ex.getDefinition().getShortDefn())+"</span>");
-          write(" <span style=\" color: Gray\">--&gt; </span>&lt;/" + vn + ">\r\n");
-        } else if (ex.getDefinition().getTypes().size() == 1) {
-          write(" value=\"[<span style=\"color: darkgreen\"><a href=\"" + (dtRoot + GeneratorUtils.getSrcFile(t, false)+ ".html#" + t) + "\">" + t+ "</a></span>]\"/>");
-          write("<span style=\" color: Gray\">&lt;!-- </span>");
-          write("<span style=\"color: navy\">"
-              + Utilities.escapeXml(ex.getDefinition().getShortDefn())
-              + "</span>");
-          write("<span style=\" color: Gray\"> --></span>\r\n");
-        } else {
-          write("&gt;");
-          write("[todo: type and short defn]&lt;/" + vn + ">\r\n");
-        }
-      }
-    }
-		for (ExtensionDefn child : ex.getChildren())
-		  generateExtension(child, profile, definitions, root, indent+2);
-		write(ind+"&lt;/"+n+">\r\n");
-	}
-  
-	private String getExtensionTargetList(ExtensionDefn ex, ProfileDefn profile) {
-	  StringBuilder s = new StringBuilder();
-    for (ExtensionDefn t : profile.getExtensions()) {
-      if (t.getType() == ContextType.Extension && t.getContext().equals(profile.metadata("extension.uri")+"#"+ex.getCode()))
-        s.append(", #"+t.getCode());
-    }
-    if (s.length() > 0)
-      return "Extensions: "+s.substring(2);
-    else
-      return "Other extensions as defined";
-  }
-*/
-
   private String upFirst(String s) {
 		return s.substring(0, 1).toUpperCase() + s.substring(1);
 	}
 
-	/*
-	 */
-
-	// private void generateElem(ElementDefn elem, int indent, String rootName,
-	// String pathName) throws Exception {
-	// // if ((!elem.unbounded() && 1 == elem.getMaxCardinality()) ||
-	// elem.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
-	// generateCoreElem(elem, indent, rootName, pathName);
-	// // else
-	// // generateWrapperElem(elem, indent, rootName, pathName);
-	//
-	// }
-
-	// private void generateWrapperElem(ElementDefn elem, int indent, String
-	// rootName, String pathName) throws Exception {
-	// for (int i= 0; i < indent; i++)
-	// {
-	// write(" ");
-	// }
-	// write("&lt;"+Utilities.pluralizeMe(elem.getName()));
-	// write(" <span style=\"color: darkgreen\">type=\"list\"</span>&gt;  <span style=\"color: Gray\">&lt;!-- "+elem.textForCardinality()+" --&gt;</span>\r\n");
-	//
-	// generateCoreElem(elem, indent+1, rootName, pathName);
-	//
-	// for (int i= 0; i < indent; i++)
-	// {
-	// write(" ");
-	// }
-	// write("&lt;/"+Utilities.pluralizeMe(elem.getName())+"&gt;\r\n");
-	// }
 
 	private void generateCoreElem(ElementDefn elem, int indent,	String rootName, String pathName, boolean backbone) throws Exception {
 		// if (elem.getConformance() == ElementDefn.Conformance.Prohibited)
@@ -399,10 +273,10 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			else
 				write("&lt;<span title=\"" + Utilities.escapeXml(elem.getDefinition()) + "\">");
 		} else if (elem.isModifier() || elem.getMustSupport()) 
-      write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en).replace("[", "_").replace("]", "_")+ "\" title=\"" + Utilities .escapeXml(elem.getEnhancedDefinition()) 
+      write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en)+ "\" title=\"" + Utilities .escapeXml(elem.getEnhancedDefinition()) 
             + "\" class=\"dict\"><span style=\"text-decoration: underline\">");
 		else
-			write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en).replace("[", "_").replace("]", "_") + "\" title=\"" + Utilities.escapeXml(elem.getDefinition()) + "\" class=\"dict\">");
+			write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en) + "\" title=\"" + Utilities.escapeXml(elem.getDefinition()) + "\" class=\"dict\">");
 
 		// element contains xhtml
 		if (!elem.getTypes().isEmpty() && elem.getTypes().get(0).isXhtml()) {
@@ -441,7 +315,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			if (elem.getTypes().size() == 1 && (definitions.getPrimitives().containsKey(elem.typeCode()))) {
 			  doneType = true;
 			  TypeRef t = elem.getTypes().get(0);
-  			write(" value=\"[<span style=\"color: darkgreen\"><a href=\"" + (dtRoot + definitions.getSrcFile(t.getName())+ ".html#" + t.getName()).replace("[", "_").replace("]", "_") + "\">" + t.getName()+ "</a></span>]\"/");
+  			write(" value=\"[<span style=\"color: darkgreen\"><a href=\"" + (dtRoot + definitions.getSrcFile(t.getName())+ ".html#" + t.getName()) + "\">" + t.getName()+ "</a></span>]\"/");
 			}
 			write("&gt;");
 
@@ -479,12 +353,12 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				  width = writeTypeLinks(elem, indent);
 				}
 			} else if (elem.getName().equals("extension")) {
-				write(" <a href=\"extensibility.html\"><span style=\"color: navy\">See Extensions</span></a> ");
+				write(" <a href=\""+prefix+"extensibility.html\"><span style=\"color: navy\">See Extensions</span></a> ");
 			} else if (elem.getTypes().size() == 1
 					&& elem.getTypes().get(0).isWildcardType()) {
 				writeCardinality(elem);
 		    write(" <span style=\"color: darkgreen\">");
-        write("<a href=\"datatypes.html#open\">*</a>");     
+        write("<a href=\""+prefix+"datatypes.html#open\">*</a>");     
 		    write("</span>");
 				listed = true;
 			}
@@ -495,39 +369,14 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			write(" ");
 			if (elem.getElements().isEmpty() && !sharedDT) {
 				if ("See Extensions".equals(elem.getShortDefn())) {
-					write(" <a href=\"extensibility.html\"><span style=\"color: navy\">"
+					write(" <a href=\""+prefix+"extensibility.html\"><span style=\"color: navy\">"
 							+ Utilities.escapeXml(elem.getShortDefn())
 							+ "</span></a> ");
 				} else {
 				  if (elem.eliminated()) 
 				    write("<span style=\"text-decoration: line-through\">");
 	        String ref = getBindingLink(elem);
-          write("<span style=\"color: navy\"><a href=\""+ref+"\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a></span>");
-//				  BindingSpecification bs = elem.getBinding();
-//				  if (bs != null && bs.getBinding() != BindingMethod.Unbound && !Utilities.noString(bs.getReference())) { 
-//				    if (bs.getBinding() == BindingMethod.CodeList || bs.getBinding() == BindingMethod.Special)
-//				      write("<span style=\"color: navy\"><a href=\""+bs.getReference().substring(1)+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a></span>");
-//				    else if (bs.getReference().startsWith("http://hl7.org/fhir")) {
-//				      if (bs.getReference().startsWith("http://hl7.org/fhir/v3/vs/")) {
-//				        ValueSet vs = page.getValueSets().get(bs.getReference()); // night be null in a partial build
-//	              String pp = (String) vs.getUserData("path");
-//				        write("<a href=\""+(vs == null ? "??" : pp.replace(File.separatorChar, '/'))+"\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a>");
-//				      } else if (bs.getReference().startsWith("http://hl7.org/fhir/v2/vs/")) {
-//	                ValueSet vs = page.getValueSets().get(bs.getReference());
-//	                String pp = (String) vs.getUserData("path");
-//	                write("<a href=\""+(vs == null ? "??" : pp.replace(File.separatorChar, '/'))+"\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn())+ "</a>");
-//				      } else if (bs.getReference().startsWith("http://hl7.org/fhir/vs/")) {
-//				        BindingSpecification bs1 = page.getDefinitions().getBindingByURL(bs.getReference());
-//				        if (bs1 != null)
-//                  write("<a href=\""+bs.getReference().substring(23)+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a>");
-//                else
-//                  write("<a href=\"valueset-"+bs.getReference().substring(23)+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a>");
-//				      } else
-//				        throw new Exception("Internal reference "+bs.getReference()+" not handled yet");
-//				    } else
-//				      write("<span style=\"color: navy\"><a href=\""+bs.getReference()+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a></span>");				  
-//				  } else
-//					  write("<span style=\"color: navy\">" + docPrefix(width, indent, elem)+Utilities.escapeXml(elem.getShortDefn()) + "</span>");
+          write("<span style=\"color: navy\"><a href=\""+prefix+ref+"\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</a></span>");
           if (elem.eliminated()) 
             write("</span>");
 				}
@@ -573,7 +422,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 //				  if (backbone) {
 //			      for (int i = 0; i < indent; i++)
 //			        write(" ");
-//				    write(" &lt;!-- <a href=\"extensibility.html\">extension</a>, <a href=\"extensibility.html#modifierExtension\">modifierExtension</a> -->\r\n");
+//				    write(" &lt;!-- <a href=\""+prefix+"extensibility.html\">extension</a>, <a href=\""+prefix+"extensibility.html#modifierExtension\">modifierExtension</a> -->\r\n");
 //				  }
 				  if (sharedDT) {
 				    ElementDefn sdt = definitions.getElementDefn(elem
@@ -607,13 +456,15 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		}
 	}
 
-  private void generateCoreElem(List<ElementDefinition> elements, ElementDefinition elem, int indent, String pathName, boolean asValue) throws Exception {
+  private void generateCoreElem(List<ElementDefinition> elements, ElementDefinition elem, int indent, String pathName, boolean asValue, boolean complex) throws Exception {
     // if (elem.getConformance() == ElementDefn.Conformance.Prohibited)
     // return;
     for (Enumeration<PropertyRepresentation> t : elem.getRepresentation()) 
       if (t.getValue() == PropertyRepresentation.XMLATTR)
         return;
-    if (elem.getPath().endsWith(".extension"))
+    if (elem.getPath().endsWith(".extension") && !complex)
+      return;
+    if (complex && elem.getMax().equals("0"))
       return;
 
     boolean listed = false;
@@ -635,23 +486,32 @@ public class XmlSpecGenerator extends OutputStreamWriter {
       en = en.replace("[x]", upFirst(elem.getType().get(0).getCode()));
 
     String closeOut;
-    if (asValue) {
+    if (elem.hasSlicing()) {
+      write("<span style=\"color: navy\">&lt;-- "+en+describeSlicing(elem.getSlicing())+"--&gt;</span>\r\n");
+      closeOut = "";
+      return;
+    } else if (asValue) {
       closeOut = "";
       throw new Error("not done yet");
     } else if (elem.getIsModifier() || elem.getMustSupport()) { 
-      write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en).replace("[", "_").replace("]", "_")+ "\" title=\"" + Utilities .escapeXml(getEnhancedDefinition(elem)) 
+      write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en)+ "\" title=\"" + Utilities .escapeXml(getEnhancedDefinition(elem)) 
             + "\" class=\"dict\"><span style=\"text-decoration: underline\">");
       closeOut = "</b></span></a>";
     } else {
-      write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en).replace("[", "_").replace("]", "_") + "\" title=\"" + Utilities.escapeXml(elem.getDefinition()) + "\" class=\"dict\">");
+      write("&lt;<a href=\"" + (defPage + "#" + pathName + "." + en) + "\" title=\"" + Utilities.escapeXml(elem.getDefinition()) + "\" class=\"dict\">");
       closeOut = "</b></a>";
     }
     write("<b>"+Utilities.escapeXml(en));
-    
-      write(closeOut+" ");
+
+    write(closeOut);
+    if (complex && elem.getPath().endsWith(".extension")) {
+      write(" url=\"");
+      write("<span style=\"color: navy\">" + getUrl(children)+"</span>");
+      write("\"");
+    }
       if (elem.getType().size() == 1 && (definitions.getPrimitives().containsKey(elem.getType().get(0).getCode()))) {
         doneType = true;
-        write(" value=\"[<span style=\"color: darkgreen\"><a href=\"" + (dtRoot + definitions.getSrcFile(elem.getType().get(0).getCode())+ ".html#" + elem.getType().get(0).getCode()) + "\">" + elem.getType().get(0).getCode()+ "</a></span>]\"/");
+        write(" value=\"[<span style=\"color: darkgreen\"><a href=\"" + prefix+dtRoot + definitions.getSrcFile(elem.getType().get(0).getCode())+ ".html#" + elem.getType().get(0).getCode() + "\">" + elem.getType().get(0).getCode()+ "</a></span>]\"/");
       }
       write("&gt;");
 
@@ -676,15 +536,15 @@ public class XmlSpecGenerator extends OutputStreamWriter {
           width = writeTypeLinks(elem, indent);
         }
       } else if (tail(elem.getPath()).equals("extension")) {
-        write(" <a href=\"extensibility.html\"><span style=\"color: navy\">See Extensions</span></a> ");
+        write(" <a href=\""+prefix+"extensibility.html\"><span style=\"color: navy\">See Extensions</span></a> ");
       } else {
-        write(" <a href=\"none.html\"><span style=\"color: navy\">No Types?</span></a> ");
+        write(" <a href=\""+prefix+"none.html\"><span style=\"color: navy\">No Types?</span></a> ");
       }
 
       write(" ");
       if (children.isEmpty()) {
         if (name.equals("extension") || name.equals("modifierExtension")) {
-          write(" <a href=\"extensibility.html\"><span style=\"color: navy\">"
+          write(" <a href=\""+prefix+"extensibility.html\"><span style=\"color: navy\">"
               + Utilities.escapeXml(elem.getShort())
               + "</span></a> ");
         } else {
@@ -693,7 +553,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
           if (elem.hasBinding() && elem.getBinding().hasValueSet()) {
             ValueSet vs = resolveValueSet(elem.getBinding().getValueSet());
             if (vs != null)
-              write("<span style=\"color: navy\"><a href=\""+vs.getUserData("filename")+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");
+              write("<span style=\"color: navy\"><a href=\""+prefix+vs.getUserData("filename")+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");
             else if (elem.getBinding().getValueSet() instanceof UriType)
               write("<span style=\"color: navy\"><a href=\""+((UriType)elem.getBinding().getValueSet()).getValue()+".html\" style=\"color: navy\">" + Utilities.escapeXml(elem.getShort()) + "</a></span>");          
             else
@@ -703,6 +563,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
           if (elem.hasMax() && elem.getMax().equals("0")) 
             write("</span>");
         }
+        if (children.isEmpty())
+          write("<span style=\"color: Gray\"> --&gt;</span>");
       } else {
         if ("*".equals(elem.getMax()) && !listed) { // isNolist()) {
           if (elem.hasShort()) {
@@ -739,7 +601,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
           //            write(" &lt;!-- <a href=\"extensibility.html\">extension</a>, <a href=\"extensibility.html#modifierExtension\">modifierExtension</a> -->\r\n");
           //          }
           for (ElementDefinition child : children) {
-            generateCoreElem(elements, child, indent + 1, pathName + "." + name, false);
+            generateCoreElem(elements, child, indent + 1, pathName + "." + name, false, false);
           }
         }
 
@@ -756,6 +618,23 @@ public class XmlSpecGenerator extends OutputStreamWriter {
       }
     }
     write("\r\n");
+  }
+
+  private String getUrl(List<ElementDefinition> children) {
+    for (ElementDefinition c : children) {
+      if (c.getPath().endsWith(".url") && c.hasFixed() && c.getFixed() instanceof UriType)
+        return ((UriType) c.getFixed()).asStringValue();
+    }
+    return "??";
+  }
+
+  private String describeSlicing(ElementDefinitionSlicingComponent slicing) {
+    CommaSeparatedStringBuilder csv = new CommaSeparatedStringBuilder();
+    for (StringType d : slicing.getDiscriminator()) {
+      csv.append(d.getValue());
+    }
+    String s = slicing.getOrdered() ? " in any order" : " in the specified order" + slicing.getRules().getDisplay();
+    return " sliced by "+csv.toString()+" "+s;
   }
 
   private ValueSet resolveValueSet(Type reference) {
@@ -786,9 +665,12 @@ public class XmlSpecGenerator extends OutputStreamWriter {
     int i = elements.indexOf(elem)+1;
     List<ElementDefinition> res = new ArrayList<ElementDefinition>();
     while (i < elements.size()) {
-      if (elements.get(i).getPath().startsWith(elem.getPath()+".")) 
-        res.add(elements.get(i));
-      else
+      String tgt = elements.get(i).getPath();
+      String src = elem.getPath();
+      if (tgt.startsWith(src+".")) {
+        if (!tgt.substring(src.length()+1).contains(".")) 
+          res.add(elements.get(i));
+      } else
         return res;
       i++;
     }
@@ -849,10 +731,18 @@ public class XmlSpecGenerator extends OutputStreamWriter {
       if (t.isXhtml() || t.getName().equals("list"))
         write(t.getName());
       else if (t.getName().equals("Extension") && t.getParams().size() == 0 && !Utilities.noString(t.getProfile()))
-        write("<a href=\""+t.getProfile()+"\"><span style=\"color: DarkViolet\">@"+t.getProfile().substring(1)+"</span></a>");     
-      else
+        write("<a href=\""+prefix+t.getProfile()+"\"><span style=\"color: DarkViolet\">@"+t.getProfile().substring(1)+"</span></a>");     
+      else if (definitions.getConstraints().containsKey(t.getName())) {
+        ProfiledType pt = definitions.getConstraints().get(t.getName());
+        write("<a href=\"" + (dtRoot + definitions.getSrcFile(pt.getBaseType())
+        + ".html#" + pt.getBaseType() + "\">" + pt.getBaseType())+"</a>");
+        w = w + pt.getBaseType().length()+2; 
+        write("(<a style=\"color:navy\" href=\"" + (dtRoot + definitions.getSrcFile(t.getName())
+        + ".html#" + t.getName() + "\">" + t.getName())
+        + "</a>)");
+      } else
         write("<a href=\"" + (dtRoot + definitions.getSrcFile(t.getName())
-            + ".html#" + t.getName() + "\">" + t.getName()).replace("[", "_").replace("]", "_")
+            + ".html#" + t.getName() + "\">" + t.getName())
             + "</a>");
       if (t.hasParams()) {
         write("(");
@@ -874,13 +764,13 @@ public class XmlSpecGenerator extends OutputStreamWriter {
           
           // TODO: Display action and/or profile information
 					if (p.equals("Any")) {
-            write("<a href=\"" + "resourcelist.html" + "\">" + p + "</a>");								
+            write("<a href=\"" +prefix+"resourcelist.html" + "\">" + p + "</a>");								
           }
           else if (t.getName().equals("Reference") && t.getParams().size() == 1 && !Utilities.noString(t.getProfile()))
-            write("<a href=\""+t.getProfile()+"\"><span style=\"color: DarkViolet\">@"+t.getProfile().substring(1)+"</span></a>");     
+            write("<a href=\""+prefix+t.getProfile()+"\"><span style=\"color: DarkViolet\">@"+t.getProfile().substring(1)+"</span></a>");     
           else
             write("<a href=\"" + (dtRoot + definitions.getSrcFile(p)
-                + ".html#" + p).replace("[", "_").replace("]", "_") + "\">" + p + "</a>");
+                + ".html#" + p) + "\">" + p + "</a>");
 
           firstp = false;
         }
@@ -913,11 +803,26 @@ public class XmlSpecGenerator extends OutputStreamWriter {
       if (t.getCode().equals("list"))
         write(t.getCode());
       else if (t.getCode().equals("Extension") && t.hasProfile())
-        write("<a href=\""+t.getProfile()+"\"><span style=\"color: DarkViolet\">@"+t.getProfile().get(0).getValue().substring(1)+"</span></a>");     
-      else
-        write("<a href=\"" + (dtRoot + definitions.getSrcFile(t.getCode())
+        write("<a href=\""+prefix+t.getProfile()+"\"><span style=\"color: DarkViolet\">@"+t.getProfile().get(0).getValue().substring(1)+"</span></a>");     
+      else {
+        write("<a href=\"" + prefix+(dtRoot + definitions.getSrcFile(t.getCode())
             + ".html#" + t.getCode() + "\">" + t.getCode())
             + "</a>");
+        if (t.getCode().equals("Reference") && t.hasProfile()) {
+          write("(");
+          String pt = t.getProfile().get(0).getValue();
+          if (pt.startsWith("http://hl7.org/fhir/StructureDefinition/") && definitions.hasResource(pt.substring(40))) {
+            write("<a href=\"" + prefix+pt.substring(40).toLowerCase() + ".html\">" + pt.substring(40) + "</a>");
+          } else {
+            StructureDefinition sd = page.getProfiles().get(pt);
+            if (sd != null)
+              write("<a href=\"" + prefix+sd.getUserString("path") + "\">" + sd.getName() + "</a>");
+            else
+              write("<a href=\"" + pt + "\">" + pt + "</a>");
+          }
+          write(")");
+        }
+      }
       i++;
     }
     write("</span>");

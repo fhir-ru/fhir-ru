@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Scope and Usage</h2>
 <p>
 Performing a clinical assessment is a fundamental part of a clinician's workflow, performed repeatedly throughout the day. 
@@ -18,8 +19,10 @@ ongoing process of care, and the patient will be re-assessed repeatedly. For thi
 impression can explicit reference both care plans (preceeding and resulting) and reference a previous
 impression that this impression follows on from.
 </p>
+<blockquote class="dstu-note">
+<a name="dstu"> </a>
 <p>
-Unlike many other resources, there is little prior art with regard to exchanging records of 
+<b>DSTU Note:</b> Unlike many other resources, there is little prior art with regard to exchanging records of 
 clinical assessments. For this reason, this resource should be regarded as particularly 
 prone to ongoing revision. In terms of scope and usage, the Patient Care workgroup wishes to
 draw the attention of reviewers and implementers to the following issues: 
@@ -33,9 +36,15 @@ draw the attention of reviewers and implementers to the following issues:
  <li>Should an impression reference other impressions that are related? (how related?)</li>
  <li>Investigations - the specification needs a good value set for the code for the group, and will be considering the name "investigations" further</li>
 </ul> 
+<p>
+Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+</p>
+</blockquote>
+
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Boundaries and Relationships</h2>
 <p>
 There is another related clinical concept often called an "assessment": assessment Tools such as Apgar (also known as "Assessment Scales").
@@ -47,6 +56,7 @@ during the assessment process.
 </div>
 
 <div>
+<a name="bnc"> </a>
 <h2>Background and Context</h2>
 <p>
 An important background to understanding this resource is <a href="http://wiki.hl7.org/index.php?title=Clinical_Assessment">the FHIR wiki page for clinical assessment</a>. In particular,

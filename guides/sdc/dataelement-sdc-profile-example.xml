@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This DataElement is an example reflecting the CCDA patient gender element -->
-<DataElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../publish/dataelement.xsd" xmlns="http://hl7.org/fhir">
+
+<DataElement xmlns="http://hl7.org/fhir">
   <id value="dataelement-sdc-profile-example"/>
   <text>
     <status value="generated"/>
@@ -12,17 +12,17 @@
   </identifier>
   <name value="Patient Gender"/>
   <status value="draft"/>
-  <date value="2015-02-04"/>
   <publisher value="Health Level Seven, International"/>
   <contact>
     <telecom>
-      <system value="url"/>
+      <system value="other"/>
       <value value="http://hl7.org"/>
     </telecom>
   </contact>
+  <date value="2015-02-04"/>
   <mapping>
-    <identity value="ccda"/>
-    <uri value="http://hl7.org/CCDA-not-a-real-url"/>
+    <identity value="c-cda"/>
+    <uri value="http://hl7.org/C-CDA-not-a-real-url"/>
     <name value="Consolidated CDA R2"/>
   </mapping>
   <element>
@@ -32,14 +32,13 @@
       <code value="CodeableConcept"/>
     </type>
     <binding>
-      <name value="AdministrativeGender"/>
       <strength value="required"/>
       <valueSetReference>
-        <reference value="http://hl7.org/fhir/vs/AdministrativeGender"/>
+        <reference value="http://hl7.org/fhir/ValueSet/AdministrativeGender"/>
       </valueSetReference>
     </binding>
     <mapping>
-      <identity value="ccda"/>
+      <identity value="c-cda"/>
       <language value="xpath"/>
       <map value="/ClinicalDocument/recordTarget/patientRole/patient/administrativeGender"/>
     </mapping>

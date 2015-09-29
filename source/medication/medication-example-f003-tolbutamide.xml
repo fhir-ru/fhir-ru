@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Medication xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/medication.xsd">
   <id value="f003"/>
-    <name value="Tolbutamide"/>
     <code>
         <coding>
             <system value="http://snomed.info/sct"/>
@@ -15,7 +14,6 @@
         <reference value="Organization/F000"/>
         <display value="Merck"/>
         </manufacturer>-->
-    <kind value="product"/>
     <package>
         <container>
             <coding>
@@ -28,7 +26,7 @@
             <item> 1..1 Reference(Medication) A product in the package </item>
             <amount>
                 <value value="30"/>
-                <units value="Pill"/>
+                <unit value="Pill"/>
                 <system value="http://snomed.info/sct"/>
                 <code value="46992007"/>
             </amount>

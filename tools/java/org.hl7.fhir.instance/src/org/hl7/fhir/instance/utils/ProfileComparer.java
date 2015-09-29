@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hl7.fhir.instance.formats.JsonParser;
+import org.hl7.fhir.instance.formats.IParser;
 import org.hl7.fhir.instance.model.Base;
 import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.ElementDefinition;
@@ -19,18 +19,17 @@ import org.hl7.fhir.instance.model.Enumerations.BindingStrength;
 import org.hl7.fhir.instance.model.Enumerations.ConformanceResourceStatus;
 import org.hl7.fhir.instance.model.IntegerType;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
+import org.hl7.fhir.instance.model.OperationOutcome.IssueType;
 import org.hl7.fhir.instance.model.PrimitiveType;
 import org.hl7.fhir.instance.model.Reference;
 import org.hl7.fhir.instance.model.StringType;
 import org.hl7.fhir.instance.model.StructureDefinition;
-import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionType;
 import org.hl7.fhir.instance.model.Type;
 import org.hl7.fhir.instance.model.UriType;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.model.ValueSet.ConceptReferenceComponent;
 import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.instance.model.ValueSet.ValueSetExpansionContainsComponent;
-import org.hl7.fhir.instance.model.valuesets.IssueType;
 import org.hl7.fhir.instance.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
 import org.hl7.fhir.instance.validation.ValidationMessage;
 import org.hl7.fhir.instance.validation.ValidationMessage.Source;
@@ -57,9 +56,9 @@ import org.hl7.fhir.utilities.Utilities;
  */
 public class ProfileComparer {
 
-  private WorkerContext context;
+  private IWorkerContext context;
   
-  public ProfileComparer(WorkerContext context) {
+  public ProfileComparer(IWorkerContext context) {
     super();
     this.context = context;
   }
@@ -191,7 +190,7 @@ public class ProfileComparer {
       if (val instanceof PrimitiveType) 
         return "\"" + ((PrimitiveType) val).getValueAsString()+"\"";
       
-      JsonParser jp = new JsonParser();
+      IParser jp = context.newJsonParser();
       return jp.composeString(val, "value");
     }
     
@@ -289,11 +288,15 @@ public class ProfileComparer {
       if (compareElements(outcome, ln.path(), ln, rn)) {
         outcome.subset.setName("intersection of "+outcome.leftName()+" and "+outcome.rightName());
         outcome.subset.setStatus(ConformanceResourceStatus.DRAFT);
-        outcome.subset.setType(StructureDefinitionType.CONSTRAINT);
+        outcome.subset.setKind(outcome.left.getKind());
+        outcome.subset.setConstrainedType(outcome.left.getConstrainedType());
+        outcome.subset.setBase("http://hl7.org/fhir/StructureDefinition/"+outcome.subset.getConstrainedType());
         outcome.subset.setAbstract(false);
         outcome.superset.setName("union of "+outcome.leftName()+" and "+outcome.rightName());
         outcome.superset.setStatus(ConformanceResourceStatus.DRAFT);
-        outcome.superset.setType(StructureDefinitionType.CONSTRAINT);
+        outcome.superset.setKind(outcome.left.getKind());
+        outcome.superset.setConstrainedType(outcome.left.getConstrainedType());
+        outcome.superset.setBase("http://hl7.org/fhir/StructureDefinition/"+outcome.subset.getConstrainedType());
         outcome.superset.setAbstract(false);
       } else {
         outcome.subset = null;
@@ -558,8 +561,6 @@ public class ProfileComparer {
     subset.setBinding(subBinding);
     ElementDefinitionBindingComponent superBinding = new ElementDefinitionBindingComponent();
     superset.setBinding(superBinding);
-    subBinding.setName(mergeText(subset, outcome, path, "name", left.getName(), right.getName()));
-    superBinding.setName(mergeText(subset, outcome, null, "name", left.getName(), right.getName()));
     subBinding.setDescription(mergeText(subset, outcome, path, "description", left.getDescription(), right.getDescription()));
     superBinding.setDescription(mergeText(subset, outcome, null, "description", left.getDescription(), right.getDescription()));
     if (left.getStrength() == BindingStrength.REQUIRED || right.getStrength() == BindingStrength.REQUIRED)
@@ -599,8 +600,8 @@ public class ProfileComparer {
           ValueSetExpansionOutcome le;
           ValueSetExpansionOutcome re;
           try {
-            le = context.getTerminologyServices().expand(lvs);
-            re = context.getTerminologyServices().expand(rvs);
+            le = context.expandVS(lvs);
+            re = context.expandVS(rvs);
             if (!closed(le.getValueset()) || !closed(re.getValueset())) 
               throw new Exception("unclosed value sets are not handled yet");
             cvs = intersectByExpansion(lvs, rvs);
@@ -622,14 +623,13 @@ public class ProfileComparer {
     return false;
   }
 
-  private ElementDefinitionBindingComponent unionBindings(ElementDefinition ed, ProfileComparison outcome, String path, ElementDefinitionBindingComponent left, ElementDefinitionBindingComponent right) {
+  private ElementDefinitionBindingComponent unionBindings(ElementDefinition ed, ProfileComparison outcome, String path, ElementDefinitionBindingComponent left, ElementDefinitionBindingComponent right) throws EOperationOutcome, Exception {
     ElementDefinitionBindingComponent union = new ElementDefinitionBindingComponent();
     if (left.getStrength().compareTo(right.getStrength()) < 0)
       union.setStrength(left.getStrength());
     else
       union.setStrength(right.getStrength());
     union.setDescription(mergeText(ed, outcome, path, "binding.description", left.getDescription(), right.getDescription()));
-    union.setName(mergeText(ed, outcome, null, "binding.description", left.getDescription(), right.getDescription()));
     if (Base.compareDeep(left.getValueSet(), right.getValueSet(), false))
       union.setValueSet(left.getValueSet());
     else {
@@ -648,10 +648,10 @@ public class ProfileComparer {
   
   private ValueSet unite(ElementDefinition ed, ProfileComparison outcome, String path, ValueSet lvs, ValueSet rvs) {
     ValueSet vs = new ValueSet();
-    if (lvs.hasDefine())
-      vs.getCompose().addInclude().setSystem(lvs.getDefine().getSystem());
-    if (rvs.hasDefine())
-      vs.getCompose().addInclude().setSystem(rvs.getDefine().getSystem());
+    if (lvs.hasCodeSystem())
+      vs.getCompose().addInclude().setSystem(lvs.getCodeSystem().getSystem());
+    if (rvs.hasCodeSystem())
+      vs.getCompose().addInclude().setSystem(rvs.getCodeSystem().getSystem());
     if (lvs.hasCompose()) {
       for (UriType imp : lvs.getCompose().getImport()) 
         vs.getCompose().getImport().add(imp);
@@ -706,7 +706,7 @@ public class ProfileComparer {
     return false;
   }
 
-  private ValueSet resolveVS(StructureDefinition ctxtLeft, Type vsRef) {
+  private ValueSet resolveVS(StructureDefinition ctxtLeft, Type vsRef) throws EOperationOutcome, Exception {
     if (vsRef == null)
       return null;
     if (vsRef instanceof UriType)
@@ -715,7 +715,7 @@ public class ProfileComparer {
       Reference ref = (Reference) vsRef;
       if (!ref.hasReference())
         return null;
-      return context.getValueSets().get(ref.getReference());
+      return context.fetchResource(ValueSet.class, ref.getReference());
     }
   }
 
@@ -803,7 +803,7 @@ public class ProfileComparer {
               c.getProfile().clear();
               c.getProfile().add(r.getProfile().get(0));
               found = true;
-            } else if (sdl.getSnapshot().getElement().get(0).getPath().equals(sdr.getSnapshot().getElement().get(0).getPath())) {
+            } else if (sdl.hasConstrainedType() && sdr.hasConstrainedType() && sdl.getConstrainedType().equals(sdr.getConstrainedType())) {
               ProfileComparison comp = compareProfiles(sdl, sdr);
               if (comp.getSubset() != null) {
                 found = true;
@@ -819,8 +819,8 @@ public class ProfileComparer {
     return result;
   }
 
-  private StructureDefinition resolveProfile(ElementDefinition ed, ProfileComparison outcome, String path, String url, String name) {
-    StructureDefinition res = context.getProfiles().get(url);
+  private StructureDefinition resolveProfile(ElementDefinition ed, ProfileComparison outcome, String path, String url, String name) throws EOperationOutcome, Exception {
+    StructureDefinition res = context.fetchResource(StructureDefinition.class, url);
     if (res == null) {
       outcome.messages.add(new ValidationMessage(Source.ProfileComparer, IssueType.INFORMATIONAL, path, "Unable to resolve profile "+url+" in profile "+name, IssueSeverity.INFORMATION));
       status(ed, ProfileUtilities.STATUS_HINT);
@@ -855,8 +855,8 @@ public class ProfileComparer {
           ex.getProfile().clear();
         } else {
           // both have profiles. Is one derived from the other? 
-          StructureDefinition sdex = context.getProfiles().get(ex.getProfile().get(0).getValueAsString());
-          StructureDefinition sdnw = context.getProfiles().get(nw.getProfile().get(0).getValueAsString());
+          StructureDefinition sdex = context.fetchResource(StructureDefinition.class, ex.getProfile().get(0).getValueAsString());
+          StructureDefinition sdnw = context.fetchResource(StructureDefinition.class, nw.getProfile().get(0).getValueAsString());
           if (sdex != null && sdnw != null) {
             if (sdex == sdnw) {
               found = true;

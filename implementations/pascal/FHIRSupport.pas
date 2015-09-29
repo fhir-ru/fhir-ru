@@ -42,7 +42,7 @@ uses
   StringSupport, DecimalSupport, GuidSupport,
   AdvObjects, AdvBuffers, AdvStringLists, AdvStringMatches,
   DateAndTime, JWT, SCIMObjects,
-  FHirBase, FHirResources, FHIRConstants, FHIRComponents, FHIRTypes, FHIRSecurity;
+  FHirBase, FHirResources, FHIRConstants, FHIRTypes, FHIRSecurity, FHIRTags;
 
 Const
    HTTP_OK_200 = 200;
@@ -205,7 +205,7 @@ Type
     A FHIR request.
 
     The request may have been received over a FHIR RESTful interface, or by receiving
-    a resource or an atom feed directly from some other kind of interface.
+    a resource or an atom bundle directly from some other kind of interface.
 
     The request may be modified by a script. HL7Connect will ignore changes to the following
     properties: url, baseURL, resourceType, and format. These properties should be treated as read-only,
@@ -231,7 +231,7 @@ Type
     FDefaultSearch: boolean;
     FLang: String;
     FSession: TFhirSession;
-    FCategories : TFHIRCodingList;
+    FTags : TFHIRTagList;
     FContent : TAdvBuffer;
     FIp: string;
     FCompartments: String;
@@ -244,13 +244,15 @@ Type
     FIfNoneMatch: String;
     FIfModifiedSince: TDateTime;
     FIfNoneExist: String;
+    FSummary: TFHIRSummaryOption;
     procedure SetResource(const Value: TFhirResource);
     procedure SetSource(const Value: TAdvBuffer);
     procedure SetSession(const Value: TFhirSession);
-    function GetFeed: TFhirBundle;
-    procedure SetFeed(const Value: TFhirBundle);
+    function GetBundle: TFhirBundle;
+    procedure SetBundle(const Value: TFhirBundle);
     procedure SetMeta(const Value: TFhirMeta);
     procedure SetProvenance(const Value: TFhirProvenance);
+    procedure processParams;
   Public
     Constructor Create; Override;
     Destructor Destroy; Override;
@@ -337,13 +339,13 @@ Type
       part of the FHIR specification
     }
     Property Resource : TFhirResource read FResource write SetResource;
-    Property Feed : TFhirBundle read GetFeed write SetFeed;
+    Property Bundle : TFhirBundle read GetBundle write SetBundle;
     property meta : TFhirMeta read FMeta write SetMeta;
 
-    {@member categories
+    {@member Tags
       Tags on the request - if it's a resource directly
     }
-    property categories : TFHIRCodingList read Fcategories;
+    property Tags : TFHIRTagList read FTags;
 
     {@member originalId
       The specified originalId of the resource in the request (if present) (i.e. in a transaction)
@@ -380,6 +382,11 @@ Type
     }
     Property Lang : String read FLang write FLang;
 
+    {@member Summary
+      What kind of summary is requested
+    }
+    Property Summary : TFHIRSummaryOption read FSummary write FSummary;
+
     Property IfMatch : String read FIfMatch write FIfMatch;
     Property IfNoneMatch : String read FIfNoneMatch write FIfNoneMatch;
     Property IfModifiedSince : TDateTime read FIfModifiedSince write FIfModifiedSince;
@@ -397,7 +404,7 @@ Type
     A response may have only one of
       * a body
       * a resource
-      * a feed
+      * a bundle
 
     The string body is used for error messages, or to return xhtml or schema etc.
 
@@ -418,14 +425,14 @@ Type
     FFormat: TFHIRFormat;
     FContentLocation: String;
     FLocation: String;
-    FCategories : TFHIRCodingList;
+    FTags : TFHIRTagList;
     Flink_list : TFhirBundleLinkList;
     FOrigin: String;
     FId: String;
     FMeta: TFhirMeta;
     procedure SetResource(const Value: TFhirResource);
-    function GetFeed: TFhirBundle;
-    procedure SetFeed(const Value: TFhirBundle);
+    function GetBundle: TFhirBundle;
+    procedure SetBundle(const Value: TFhirBundle);
     procedure SetMeta(const Value: TFhirMeta);
   public
     Constructor Create; Override;
@@ -470,7 +477,7 @@ Type
       part of the FHIR specification
     }
     Property Resource : TFhirResource read FResource write SetResource;
-    Property Feed : TFhirBundle read GetFeed write SetFeed;
+    Property Bundle : TFhirBundle read GetBundle write SetBundle;
 
     {@member Format
       The format for the response, if known and identified (xml, or json). Derived
@@ -481,7 +488,7 @@ Type
     {@member ContentType
       The content type of the response. if left blank, this will be determined
       automatically (text/plain for body, and type as specifed in the FHIR
-      specification for resources and feeds.
+      specification for resources and bundles.
     }
     Property ContentType : String read FContentType write FContentType;
 
@@ -515,10 +522,10 @@ Type
     }
     Property Location : String read FLocation write FLocation;
 
-    {@member categories
+    {@member Tags
       Tags for the response
     }
-    property categories : TFHIRCodingList read Fcategories;
+    property Tags : TFHIRTagList read FTags;
 
     property meta : TFhirMeta read FMeta write SetMeta;
 
@@ -533,6 +540,7 @@ Type
       If this has a value when the response is returned, then it will be returned in the Access-Control-Allow-Origin header
     }
     Property Origin : String read FOrigin write FOrigin;
+
   end;
 
   ERestfulException = class (EAdvException)
@@ -796,14 +804,14 @@ end;
 constructor TFHIRRequest.Create;
 begin
   inherited;
-  FCategories := TFHIRCodingList.create;
+  FTags := TFHIRTagList.create;
 end;
 
 destructor TFHIRRequest.Destroy;
 begin
   FMeta.Free;
   FContent.Free;
-  FCategories.free;
+  FTags.free;
   FSession.Free;
   FSource.Free;
   FResource.Free;
@@ -811,7 +819,7 @@ begin
   inherited;
 end;
 
-function TFHIRRequest.GetFeed: TFhirBundle;
+function TFHIRRequest.GetBundle: TFhirBundle;
 begin
   if not (Resource is TFHIRBundle) then
     raise Exception.Create('Found a '+resource.FhirType+' expecting a Bundle');
@@ -829,6 +837,7 @@ begin
     FParams.Free;
   FParams := nil;
   FParams := TParseMap.create(s);
+  processParams;
 end;
 
 procedure TFHIRRequest.LoadParams(form: TIdSoapMimeMessage);
@@ -848,6 +857,7 @@ begin
         FParams.addItem(n, s);
     end;
   end;
+  processParams;
 end;
 
 function TFHIRRequest.LogSummary: String;
@@ -857,7 +867,24 @@ begin
     result := result + '\'+SubId;
 end;
 
-procedure TFHIRRequest.SetFeed(const Value: TFhirBundle);
+procedure TFHIRRequest.processParams;
+var
+  s : String;
+begin
+  s := FParams.GetVar('_summary');
+  if s = 'true' then
+    Summary := soSummary
+  else if s = 'text' then
+    Summary := soText
+  else if s = 'data' then
+    Summary := soData
+  else if s = 'count' then
+    Summary := soCount
+  else
+    Summary := soFull;
+end;
+
+procedure TFHIRRequest.SetBundle(const Value: TFhirBundle);
 begin
   setresource(value);
 end;
@@ -914,7 +941,7 @@ begin
   addValue('Content-Location', FcontentLocation, FcontentLocation <> '');
   addValue('defaultSearch', BooleanToString(FDefaultSearch), CommandType = fcmdSearch);
   addValue('Language', FLang, FLang <> '');
-  addValue('Category', FCategories.ToString, FCategories.count > 0);
+  addValue('Tag', FTags.ToString, FTags.count > 0);
   addValue('ip', FIp, FIp <> '');
   addValue('compartments', FCompartments, FCompartments <> '');
   addValue('compartmentId', FCompartmentId, FCompartmentId <> '');
@@ -925,20 +952,20 @@ end;
 constructor TFHIRResponse.Create;
 begin
   inherited;
-  FCategories := TFHIRCodingList.create;
+  FTags := TFHIRTagList.create;
   Flink_list := TFhirBundleLinkList.create;
 end;
 
 destructor TFHIRResponse.Destroy;
 begin
   Flink_list.Free;
-  FCategories.free;
+  FTags.free;
   FResource.Free;
   FMeta.Free;
   inherited;
 end;
 
-function TFHIRResponse.GetFeed: TFhirBundle;
+function TFHIRResponse.GetBundle: TFhirBundle;
 begin
   result := FResource as TFhirBundle;
 end;
@@ -948,7 +975,7 @@ begin
   result := TFHIRResponse(Inherited Link);
 end;
 
-procedure TFHIRResponse.SetFeed(const Value: TFhirBundle);
+procedure TFHIRResponse.SetBundle(const Value: TFhirBundle);
 begin
   SetResource(value);
 end;
@@ -1163,7 +1190,7 @@ begin
   result := TFhirQuantity.create;
   try
     result.value := value;
-    result.units := units;
+    result.unit_ := units;
     result.link;
   finally
     result.free;
@@ -1175,7 +1202,7 @@ begin
   result := TFhirQuantity.create;
   try
     result.value := value;
-    result.units := units;
+    result.unit_ := units;
     result.system := system;
     result.code := code;
     result.link;

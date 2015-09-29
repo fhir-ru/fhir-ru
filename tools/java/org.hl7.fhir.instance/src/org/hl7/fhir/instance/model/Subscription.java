@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -48,19 +48,19 @@ public class Subscription extends DomainResource {
 
     public enum SubscriptionStatus {
         /**
-         * The client has requested the subscription, and the server has not yet set it up
+         * The client has requested the subscription, and the server has not yet set it up.
          */
         REQUESTED, 
         /**
-         * The subscription is active
+         * The subscription is active.
          */
         ACTIVE, 
         /**
-         * The server has an error executing the notification
+         * The server has an error executing the notification.
          */
         ERROR, 
         /**
-         * Too many errors have occurred or the subscription has expired
+         * Too many errors have occurred or the subscription has expired.
          */
         OFF, 
         /**
@@ -100,10 +100,10 @@ public class Subscription extends DomainResource {
         }
         public String getDefinition() {
           switch (this) {
-            case REQUESTED: return "The client has requested the subscription, and the server has not yet set it up";
-            case ACTIVE: return "The subscription is active";
-            case ERROR: return "The server has an error executing the notification";
-            case OFF: return "Too many errors have occurred or the subscription has expired";
+            case REQUESTED: return "The client has requested the subscription, and the server has not yet set it up.";
+            case ACTIVE: return "The subscription is active.";
+            case ERROR: return "The server has an error executing the notification.";
+            case OFF: return "Too many errors have occurred or the subscription has expired.";
             default: return "?";
           }
         }
@@ -148,23 +148,23 @@ public class Subscription extends DomainResource {
 
     public enum SubscriptionChannelType {
         /**
-         * The channel is executed by making a post to the URI. If a payload is included, the URL is interpreted as the service base, and an update (PUT) is made
+         * The channel is executed by making a post to the URI. If a payload is included, the URL is interpreted as the service base, and an update (PUT) is made.
          */
         RESTHOOK, 
         /**
-         * The channel is executed by sending a packet across a web socket connection maintained by the client. The URL identifies the websocket, and the client binds to this URL
+         * The channel is executed by sending a packet across a web socket connection maintained by the client. The URL identifies the websocket, and the client binds to this URL.
          */
         WEBSOCKET, 
         /**
-         * The channel is executed by sending an email to the email addressed in the URI (which must be a mailto:)
+         * The channel is executed by sending an email to the email addressed in the URI (which must be a mailto:).
          */
         EMAIL, 
         /**
-         * The channel is executed by sending an SMS message to the phone number identified in the URL (tel:)
+         * The channel is executed by sending an SMS message to the phone number identified in the URL (tel:).
          */
         SMS, 
         /**
-         * The channel Is executed by sending a message (e.g. a Bundle with a MessageHeader resource etc) to the application identified in the URI
+         * The channel is executed by sending a message (e.g. a Bundle with a MessageHeader resource etc.) to the application identified in the URI.
          */
         MESSAGE, 
         /**
@@ -208,11 +208,11 @@ public class Subscription extends DomainResource {
         }
         public String getDefinition() {
           switch (this) {
-            case RESTHOOK: return "The channel is executed by making a post to the URI. If a payload is included, the URL is interpreted as the service base, and an update (PUT) is made";
-            case WEBSOCKET: return "The channel is executed by sending a packet across a web socket connection maintained by the client. The URL identifies the websocket, and the client binds to this URL";
-            case EMAIL: return "The channel is executed by sending an email to the email addressed in the URI (which must be a mailto:)";
-            case SMS: return "The channel is executed by sending an SMS message to the phone number identified in the URL (tel:)";
-            case MESSAGE: return "The channel Is executed by sending a message (e.g. a Bundle with a MessageHeader resource etc) to the application identified in the URI";
+            case RESTHOOK: return "The channel is executed by making a post to the URI. If a payload is included, the URL is interpreted as the service base, and an update (PUT) is made.";
+            case WEBSOCKET: return "The channel is executed by sending a packet across a web socket connection maintained by the client. The URL identifies the websocket, and the client binds to this URL.";
+            case EMAIL: return "The channel is executed by sending an email to the email addressed in the URI (which must be a mailto:).";
+            case SMS: return "The channel is executed by sending an SMS message to the phone number identified in the URL (tel:).";
+            case MESSAGE: return "The channel is executed by sending a message (e.g. a Bundle with a MessageHeader resource etc.) to the application identified in the URI.";
             default: return "?";
           }
         }
@@ -221,7 +221,7 @@ public class Subscription extends DomainResource {
             case RESTHOOK: return "Rest Hook";
             case WEBSOCKET: return "Websocket";
             case EMAIL: return "Email";
-            case SMS: return "Sms";
+            case SMS: return "SMS";
             case MESSAGE: return "Message";
             default: return "?";
           }
@@ -263,30 +263,30 @@ public class Subscription extends DomainResource {
     @Block()
     public static class SubscriptionChannelComponent extends BackboneElement implements IBaseBackboneElement {
         /**
-         * The type of channel to send notififcations on.
+         * The type of channel to send notifications on.
          */
-        @Child(name = "type", type = {CodeType.class}, order=1, min=1, max=1)
-        @Description(shortDefinition="rest-hook | websocket | email | sms | message", formalDefinition="The type of channel to send notififcations on." )
+        @Child(name = "type", type = {CodeType.class}, order=1, min=1, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="rest-hook | websocket | email | sms | message", formalDefinition="The type of channel to send notifications on." )
         protected Enumeration<SubscriptionChannelType> type;
 
         /**
-         * The uri that describes tha actual end point to send messages to.
+         * The uri that describes the actual end-point to send messages to.
          */
-        @Child(name = "endpoint", type = {UriType.class}, order=2, min=0, max=1)
-        @Description(shortDefinition="Where the channel points to", formalDefinition="The uri that describes tha actual end point to send messages to." )
+        @Child(name = "endpoint", type = {UriType.class}, order=2, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Where the channel points to", formalDefinition="The uri that describes the actual end-point to send messages to." )
         protected UriType endpoint;
 
         /**
          * The mime type to send the payload in - either application/xml+fhir, or application/json+fhir. If the mime type is blank, then there is no payload in the notification, just a notification.
          */
-        @Child(name = "payload", type = {StringType.class}, order=3, min=1, max=1)
+        @Child(name = "payload", type = {StringType.class}, order=3, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Mimetype to send, or blank for no payload", formalDefinition="The mime type to send the payload in - either application/xml+fhir, or application/json+fhir. If the mime type is blank, then there is no payload in the notification, just a notification." )
         protected StringType payload;
 
         /**
          * Additional headers / information to send as part of the notification.
          */
-        @Child(name = "header", type = {StringType.class}, order=4, min=0, max=1)
+        @Child(name = "header", type = {StringType.class}, order=4, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Usage depends on the channel type", formalDefinition="Additional headers / information to send as part of the notification." )
         protected StringType header;
 
@@ -309,7 +309,7 @@ public class Subscription extends DomainResource {
       }
 
         /**
-         * @return {@link #type} (The type of channel to send notififcations on.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
+         * @return {@link #type} (The type of channel to send notifications on.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
         public Enumeration<SubscriptionChannelType> getTypeElement() { 
           if (this.type == null)
@@ -329,7 +329,7 @@ public class Subscription extends DomainResource {
         }
 
         /**
-         * @param value {@link #type} (The type of channel to send notififcations on.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
+         * @param value {@link #type} (The type of channel to send notifications on.). This is the underlying object with id, value and extensions. The accessor "getType" gives direct access to the value
          */
         public SubscriptionChannelComponent setTypeElement(Enumeration<SubscriptionChannelType> value) { 
           this.type = value;
@@ -337,14 +337,14 @@ public class Subscription extends DomainResource {
         }
 
         /**
-         * @return The type of channel to send notififcations on.
+         * @return The type of channel to send notifications on.
          */
         public SubscriptionChannelType getType() { 
           return this.type == null ? null : this.type.getValue();
         }
 
         /**
-         * @param value The type of channel to send notififcations on.
+         * @param value The type of channel to send notifications on.
          */
         public SubscriptionChannelComponent setType(SubscriptionChannelType value) { 
             if (this.type == null)
@@ -354,7 +354,7 @@ public class Subscription extends DomainResource {
         }
 
         /**
-         * @return {@link #endpoint} (The uri that describes tha actual end point to send messages to.). This is the underlying object with id, value and extensions. The accessor "getEndpoint" gives direct access to the value
+         * @return {@link #endpoint} (The uri that describes the actual end-point to send messages to.). This is the underlying object with id, value and extensions. The accessor "getEndpoint" gives direct access to the value
          */
         public UriType getEndpointElement() { 
           if (this.endpoint == null)
@@ -374,7 +374,7 @@ public class Subscription extends DomainResource {
         }
 
         /**
-         * @param value {@link #endpoint} (The uri that describes tha actual end point to send messages to.). This is the underlying object with id, value and extensions. The accessor "getEndpoint" gives direct access to the value
+         * @param value {@link #endpoint} (The uri that describes the actual end-point to send messages to.). This is the underlying object with id, value and extensions. The accessor "getEndpoint" gives direct access to the value
          */
         public SubscriptionChannelComponent setEndpointElement(UriType value) { 
           this.endpoint = value;
@@ -382,14 +382,14 @@ public class Subscription extends DomainResource {
         }
 
         /**
-         * @return The uri that describes tha actual end point to send messages to.
+         * @return The uri that describes the actual end-point to send messages to.
          */
         public String getEndpoint() { 
           return this.endpoint == null ? null : this.endpoint.getValue();
         }
 
         /**
-         * @param value The uri that describes tha actual end point to send messages to.
+         * @param value The uri that describes the actual end-point to send messages to.
          */
         public SubscriptionChannelComponent setEndpoint(String value) { 
           if (Utilities.noString(value))
@@ -498,8 +498,8 @@ public class Subscription extends DomainResource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("type", "code", "The type of channel to send notififcations on.", 0, java.lang.Integer.MAX_VALUE, type));
-          childrenList.add(new Property("endpoint", "uri", "The uri that describes tha actual end point to send messages to.", 0, java.lang.Integer.MAX_VALUE, endpoint));
+          childrenList.add(new Property("type", "code", "The type of channel to send notifications on.", 0, java.lang.Integer.MAX_VALUE, type));
+          childrenList.add(new Property("endpoint", "uri", "The uri that describes the actual end-point to send messages to.", 0, java.lang.Integer.MAX_VALUE, endpoint));
           childrenList.add(new Property("payload", "string", "The mime type to send the payload in - either application/xml+fhir, or application/json+fhir. If the mime type is blank, then there is no payload in the notification, just a notification.", 0, java.lang.Integer.MAX_VALUE, payload));
           childrenList.add(new Property("header", "string", "Additional headers / information to send as part of the notification.", 0, java.lang.Integer.MAX_VALUE, header));
         }
@@ -546,56 +546,56 @@ public class Subscription extends DomainResource {
     /**
      * The rules that the server should use to determine when to generate notifications for this subscription.
      */
-    @Child(name = "criteria", type = {StringType.class}, order=0, min=1, max=1)
+    @Child(name = "criteria", type = {StringType.class}, order=0, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Rule for server push criteria", formalDefinition="The rules that the server should use to determine when to generate notifications for this subscription." )
     protected StringType criteria;
 
     /**
      * Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting.
      */
-    @Child(name = "contact", type = {ContactPoint.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "contact", type = {ContactPoint.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Contact details for source (e.g. troubleshooting)", formalDefinition="Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting." )
     protected List<ContactPoint> contact;
 
     /**
      * A description of why this subscription is defined.
      */
-    @Child(name = "reason", type = {StringType.class}, order=2, min=1, max=1)
+    @Child(name = "reason", type = {StringType.class}, order=2, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Description of why this subscription was created", formalDefinition="A description of why this subscription is defined." )
     protected StringType reason;
 
     /**
      * The status of the subscription, which marks the server state for managing the subscription.
      */
-    @Child(name = "status", type = {CodeType.class}, order=3, min=1, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=3, min=1, max=1, modifier=true, summary=true)
     @Description(shortDefinition="requested | active | error | off", formalDefinition="The status of the subscription, which marks the server state for managing the subscription." )
     protected Enumeration<SubscriptionStatus> status;
 
     /**
      * A record of the last error that occurred when the server processed a notification.
      */
-    @Child(name = "error", type = {StringType.class}, order=4, min=0, max=1)
+    @Child(name = "error", type = {StringType.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Latest error note", formalDefinition="A record of the last error that occurred when the server processed a notification." )
     protected StringType error;
 
     /**
      * Details where to send notifications when resources are received that meet the criteria.
      */
-    @Child(name = "channel", type = {}, order=5, min=1, max=1)
+    @Child(name = "channel", type = {}, order=5, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="The channel on which to report matches to the criteria", formalDefinition="Details where to send notifications when resources are received that meet the criteria." )
     protected SubscriptionChannelComponent channel;
 
     /**
      * The time for the server to turn the subscription off.
      */
-    @Child(name = "end", type = {InstantType.class}, order=6, min=0, max=1)
+    @Child(name = "end", type = {InstantType.class}, order=6, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="When to automatically delete the subscription", formalDefinition="The time for the server to turn the subscription off." )
     protected InstantType end;
 
     /**
      * A tag to add to any resource that matches the criteria, after the subscription is processed.
      */
-    @Child(name = "tag", type = {Coding.class}, order=7, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "tag", type = {Coding.class}, order=7, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="A tag to add to matching resources", formalDefinition="A tag to add to any resource that matches the criteria, after the subscription is processed." )
     protected List<Coding> tag;
 

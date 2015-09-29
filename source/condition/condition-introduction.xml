@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Scope and Usage</h2>
 <p>
 Used to record detailed information pertinent to a clinician's assessment and assertion of a particular aspect of a person's state of health. 
@@ -18,15 +19,16 @@ or identification of health issues/situations considered harmful, potentially ha
 </p>
 <p>
 The condition resource may also be used to record certain health state of a patient which does not normally present negative outcome (until complications 
-are predicted or detected), e.g. pregnancy. Examples of complications of pregnancy include: hyperemesis gravidarum, preeclampsia, eclampsia, which are 
+are predicted or detected), e.g. pregnancy. Examples of complications of pregnancy include: hyperemesis gravidarum, preeclampsia, eclampsia - which are 
 captured as problems/diagnoses.
 </p>
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Boundaries and Relationships</h2>
 <p>
-The condition resource may be referenced by other resources as "reasons" for an action (e.g. <a href="medicationprescription.html">MedicationPrescription</a>,
+    The condition resource may be referenced by other resources as "reasons" for an action (e.g. <a href="medicationorder.html">MedicationOrder</a>,
 <a href="procedure.html">Procedure</a>, <a href="diagnosticorder.html">DiagnosticOrder</a>, etc.)
 </p>
 <p>

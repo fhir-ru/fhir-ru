@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Conformance xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://hl7.org/fhir ..\..\publish\conformance.xsd">
+<Conformance xmlns="http://hl7.org/fhir">
    <id value="conformance-sdc-form-receiver"/>
    <text>
       <status value="generated"/>
@@ -8,7 +7,7 @@
          <h2>SDC Form Receiver</h2>
          <p>(Requirements Definition)</p>
          <p>Published: 2014-07-06 (draft)</p>
-         <p>Published by: <b/>
+         <p>Published by: <b>U.S. Office of the National Coordinator (ONC)</b>
          </p>
          <p>This profile defines the expected capabilities of the <i>SDC Form Receiver</i> role when conforming to the S&amp;I Framework's <a href="sdc.html">Structured Data Capture FHIR implementation guide</a>.  This role is responsible for storing and returning completed and partially-completed forms.</p>
          <h2>General</h2>
@@ -16,7 +15,7 @@
             <tbody>
                <tr>
                   <th>FHIR Version:</th>
-                  <td>0.2</td>
+                  <td>$ver$</td>
                </tr>
                <tr>
                   <th>Supported formats:</th>
@@ -29,7 +28,7 @@
             <b>Security:</b>
          </p>
          <p>Implementations must meet the general security requirements documented in the <a href="sdc-security.html">SDC implementation guide</a>.</p>
-         <h3>Summary</h3>
+         <h3>Resource summary</h3>
          <table class="grid">
             <thead>
                <tr>
@@ -39,7 +38,6 @@
                   <th>Read Version</th>
                   <th>Instance History</th>
                   <th>Resource History</th>
-                  <th>Validate</th>
                   <th>Create</th>
                   <th>Update</th>
                   <th>Delete</th>
@@ -47,33 +45,29 @@
             </thead>
             <tbody>
                <tr>
-                  <th>QuestionnaireAnswers</th>
+                  <th>QuestionnaireResponse (<a href="http://hl7.org/fhir/StructureDefinition/sdc-element">Profile</a>)</th>
                   <td>
                      <a title="Allows a user to search for existing completed or partially-completed forms.  Generally used to find partially-completed forms for update."
-                        href="#QuestionnaireAnswers-search-type">SHALL</a>
+                        href="#QuestionnaireResponse-search-type">SHALL</a>
                   </td>
                   <td/>
                   <td/>
                   <td>
                      <a title="Allows review of prior versions of an answer set - allows reversion to previously recorded versions"
-                        href="#QuestionnaireAnswers-history-instance">SHALL</a>
+                        href="#QuestionnaireResponse-history-instance">SHALL</a>
                   </td>
                   <td/>
                   <td>
-                     <a title="Allows checking an answer set for validity against submission rules without persisting any data"
-                        href="#QuestionnaireAnswers-validate">SHALL</a>
-                  </td>
-                  <td>
                      <a title="Allows recording a completed or partially-completed form"
-                        href="#QuestionnaireAnswers-create">SHALL</a>
+                        href="#QuestionnaireResponse-create">SHALL</a>
                   </td>
                   <td>
                      <a title="Allows updating an existing completed or partially-completed form.  (Systems may place rules on who can update forms and under what circumstances.)"
-                        href="#QuestionnaireAnswers-update">SHALL</a>
+                        href="#QuestionnaireResponse-update">SHALL</a>
                   </td>
                   <td>
                      <a title="Allows removal of a completed form from a repository.  Note that the removal may be logical rather than physical.  Some systems may have rules for who can remove a completed form and under what circumstances."
-                        href="#QuestionnaireAnswers-delete">SHALL</a>
+                        href="#QuestionnaireResponse-delete">SHALL</a>
                   </td>
                </tr>
             </tbody>
@@ -81,7 +75,7 @@
          <br/>
          <br/>
          <h3>
-            <a href="questionnaireanswers.html">QuestionnaireAnswers</a>
+            <a href="../questionnaireresponse.html">QuestionnaireResponse</a>
          </h3>
          <h4>Interactions</h4>
          <table class="list">
@@ -95,7 +89,7 @@
             <tbody>
                <tr>
                   <th>
-                     <a name="QuestionnaireAnswers-search-type"> </a>
+                     <a name="QuestionnaireResponse-search-type"> </a>
                      <span>search-type</span>
                   </th>
                   <td>SHALL</td>
@@ -105,7 +99,7 @@
                </tr>
                <tr>
                   <th>
-                     <a name="QuestionnaireAnswers-create"> </a>
+                     <a name="QuestionnaireResponse-create"> </a>
                      <span>create</span>
                   </th>
                   <td>SHALL</td>
@@ -115,7 +109,7 @@
                </tr>
                <tr>
                   <th>
-                     <a name="QuestionnaireAnswers-update"> </a>
+                     <a name="QuestionnaireResponse-update"> </a>
                      <span>update</span>
                   </th>
                   <td>SHALL</td>
@@ -125,7 +119,7 @@
                </tr>
                <tr>
                   <th>
-                     <a name="QuestionnaireAnswers-delete"> </a>
+                     <a name="QuestionnaireResponse-delete"> </a>
                      <span>delete</span>
                   </th>
                   <td>SHALL</td>
@@ -135,7 +129,7 @@
                </tr>
                <tr>
                   <th>
-                     <a name="QuestionnaireAnswers-history-instance"> </a>
+                     <a name="QuestionnaireResponse-history-instance"> </a>
                      <span>history-instance</span>
                   </th>
                   <td>SHALL</td>
@@ -145,7 +139,7 @@
                </tr>
                <tr>
                   <th>
-                     <a name="QuestionnaireAnswers-validate"> </a>
+                     <a name="QuestionnaireResponse-validate"> </a>
                      <span>validate</span>
                   </th>
                   <td>SHALL</td>
@@ -156,7 +150,7 @@
             </tbody>
          </table>
          <h4>Search</h4>
-         <p>Supported Includes: QuestionnaireAnswers.questionnaire Questionnaire.group.question.options</p>
+         <p>Supported Includes: QuestionnaireResponse.questionnaire Questionnaire.group.question.options</p>
          <table class="list">
             <thead>
                <tr>
@@ -209,21 +203,30 @@
    </text>
    
    
+   
+   
+   
+   
+   
+   
+   
+   
   
   
   <name value="SDC Form Receiver"/>
+  <status value="draft"/>
   <publisher value="U.S. Office of the National Coordinator (ONC)"/>
   <contact>
       <telecom>
-         <system value="url"/>
+         <system value="other"/>
          <value value="http://wiki.siframework.org/Structured+Data+Capture+Initiative"/>
       </telecom>
   </contact>
-  <description value="This profile defines the expected capabilities of the ''SDC Form Receiver'' role when conforming to the S&amp;I Framework's [[sdc|Structured Data Capture FHIR implementation guide]].  This role is responsible for storing and returning completed and partially-completed forms."/>
-  <status value="draft"/>
   <date value="2014-07-06"/>
-  <fhirVersion value="0.2"/>
-  <acceptUnknown value="false"/>
+  <description value="This profile defines the expected capabilities of the ''SDC Form Receiver'' role when conforming to the S&amp;I Framework's [[sdc|Structured Data Capture FHIR implementation guide]].  This role is responsible for storing and returning completed and partially-completed forms."/>
+  <kind value="requirements"/>
+  <fhirVersion value="1.0.0"/>
+  <acceptUnknown value="extensions"/>
   <format value="xml"/>
   <format value="json"/>
   <rest>
@@ -232,100 +235,100 @@
          <description value="Implementations must meet the general security requirements documented in the [[sdc-security|SDC implementation guide]]."/>
       </security>
       <resource>
-         <type value="QuestionnaireAnswers"/>
+         <type value="QuestionnaireResponse"/>
          <profile>
-            <reference value="http://hl7.org/fhir/StructureDefinition/dataelement-sdc"/>
+            <reference value="http://hl7.org/fhir/StructureDefinition/sdc-element"/>
          </profile>
          <interaction>
-            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-common-expectation">
+            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-expectation">
                <valueCode value="SHALL"/>
             </extension>
             <code value="search-type"/>
             <documentation value="Allows a user to search for existing completed or partially-completed forms.  Generally used to find partially-completed forms for update."/>
          </interaction>
          <interaction>
-            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-common-expectation">
+            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-expectation">
                <valueCode value="SHALL"/>
             </extension>
             <code value="create"/>
             <documentation value="Allows recording a completed or partially-completed form"/>
          </interaction>
          <interaction>
-            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-common-expectation">
+            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-expectation">
                <valueCode value="SHALL"/>
             </extension>
             <code value="update"/>
             <documentation value="Allows updating an existing completed or partially-completed form.  (Systems may place rules on who can update forms and under what circumstances.)"/>
          </interaction>
          <interaction>
-            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-common-expectation">
+            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-expectation">
                <valueCode value="SHALL"/>
             </extension>
             <code value="delete"/>
             <documentation value="Allows removal of a completed form from a repository.  Note that the removal may be logical rather than physical.  Some systems may have rules for who can remove a completed form and under what circumstances."/>
          </interaction>
          <interaction>
-            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-common-expectation">
+            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-expectation">
                <valueCode value="SHALL"/>
             </extension>
             <code value="history-instance"/>
             <documentation value="Allows review of prior versions of an answer set - allows reversion to previously recorded versions"/>
          </interaction>
          <interaction>
-            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-common-expectation">
+            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-expectation">
                <valueCode value="SHALL"/>
             </extension>
             <code value="validate"/>
             <documentation value="Allows checking an answer set for validity against submission rules without persisting any data"/>
          </interaction>
-         <searchInclude value="QuestionnaireAnswers.questionnaire"/>
+         <searchInclude value="QuestionnaireResponse.questionnaire"/>
          <searchInclude value="Questionnaire.group.question.options"/>
          <searchParam>
-            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-common-expectation">
+            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-expectation">
                <valueCode value="SHALL"/>
             </extension>
             <name value="author"/>
-            <definition value="http://hl7.org/fhir/SearchParameter/questionnaireanswers#author"/>
+            <definition value="http://hl7.org/fhir/SearchParameter/questionnaireresponse#author"/>
             <type value="token"/>
          </searchParam>
          <searchParam>
-            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-common-expectation">
+            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-expectation">
                <valueCode value="SHALL"/>
             </extension>
             <name value="authored"/>
-            <definition value="http://hl7.org/fhir/SearchParameter/questionnaireanswers#authored"/>
+            <definition value="http://hl7.org/fhir/SearchParameter/questionnaireresponse#authored"/>
             <type value="date"/>
          </searchParam>
          <searchParam>
-            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-common-expectation">
+            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-expectation">
                <valueCode value="SHALL"/>
             </extension>
             <name value="questionnaire"/>
-            <definition value="http://hl7.org/fhir/SearchParameter/questionnaireanswers#questionnaire"/>
+            <definition value="http://hl7.org/fhir/SearchParameter/questionnaireresponse#questionnaire"/>
             <type value="token"/>
          </searchParam>
          <searchParam>
-            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-common-expectation">
+            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-expectation">
                <valueCode value="SHALL"/>
             </extension>
             <name value="status"/>
-            <definition value="http://hl7.org/fhir/SearchParameter/questionnaireanswers#status"/>
+            <definition value="http://hl7.org/fhir/SearchParameter/questionnaireresponse#status"/>
             <type value="token"/>
          </searchParam>
          <searchParam>
-            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-common-expectation">
+            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-expectation">
                <valueCode value="SHALL"/>
             </extension>
             <name value="subject"/>
-            <definition value="http://hl7.org/fhir/SearchParameter/questionnaireanswers#subject"/>
+            <definition value="http://hl7.org/fhir/SearchParameter/questionnaireresponse#subject"/>
             <type value="token"/>
          </searchParam>
          <searchParam>
-            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-common-expectation">
+            <extension url="http://hl7.org/fhir/StructureDefinition/conformance-expectation">
                <valueCode value="SHOULD"/>
             </extension>
             <name value="encounter"/>
-            <definition value="http://hl7.org/fhir/SearchParameter/questionnaireanswers#encounter"/>
+            <definition value="http://hl7.org/fhir/SearchParameter/questionnaireresponse#encounter"/>
             <type value="token"/>
          </searchParam>
       </resource>

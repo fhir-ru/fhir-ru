@@ -11,18 +11,21 @@ import java.util.List;
 import java.util.UUID;
 
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.instance.model.valuesets.IssueType;
+import org.hl7.fhir.instance.model.OperationOutcome.IssueType;
 import org.hl7.fhir.instance.validation.ValidationMessage;
 import org.hl7.fhir.instance.validation.ValidationMessage.Source;
 import org.hl7.fhir.tools.publisher.BreadCrumbManager.Page;
 import org.hl7.fhir.utilities.FileNotifier;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
+import org.hl7.fhir.utilities.Logger.LogMessageType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlDocument;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 import org.hl7.fhir.utilities.xml.XMLWriter;
+
+//import nl.siegmann.epublib.epub.EpubReader;
 
 public class EPubManager implements FileNotifier {
   public static final String XHTML_TYPE = "application/xhtml+xml";
@@ -33,20 +36,23 @@ public class EPubManager implements FileNotifier {
   public static final String EOT_TYPE = "application/vnd.ms-fontobject";
   public static final String BIN_TYPE = "application/octet-stream";
   public static final String SVG_TYPE = "application/avg";
+  public static final boolean WANT_EPUB = false;
 
   private class Entry {
     private String filename;
     private String title;
     private String type;
+    private boolean include;
     private List<String> anchors = new ArrayList<String>();
     private boolean checked = false;
     public byte[] bytes;
 
-    public Entry(String filename, String title, String type) {
+    public Entry(String filename, String title, String type, boolean include) {
       super();
       this.filename = filename;
       this.title = title;
       this.type = type;
+      this.include = include;
     }
   }
 
@@ -55,36 +61,53 @@ public class EPubManager implements FileNotifier {
   private List<String> externals = new ArrayList<String>();
   private String uuid;
   private List<ValidationMessage> issues;
+  private String webPath;
 
   
-  public EPubManager(PageProcessor page, List<ValidationMessage> issues) {
+  public EPubManager(PageProcessor page, List<ValidationMessage> issues, String webPath) {
     super();
     this.page = page;
     this.issues = issues;
+    this.webPath = webPath;
   }
 
   public void registerExternal(String filename) {
+//    if (filename.startsWith(page.getFolders().dstDir))
+//      filename = filename.substring(page.getFolders().dstDir.length());
+//    externals.add(filename);
     if (filename.startsWith(page.getFolders().dstDir))
       filename = filename.substring(page.getFolders().dstDir.length());
-    externals.add(filename);
+//    if (type == null)
+//      type = BIN_TYPE;
+    if (getEntryForFile(filename) != null)
+      throw new Error("File "+filename+" already registered");
+    else
+      entries.add(new Entry(filename, "--title--", BIN_TYPE, false));
   }
   
-  public void registerFile(String filename, String title, String type) {
+  public void registerFile(String filename, String title, String type, boolean include) {
     if (filename.startsWith(page.getFolders().dstDir))
       filename = filename.substring(page.getFolders().dstDir.length());
-    if (type != null && getEntryForFile(filename) == null)
-      entries.add(new Entry(filename, title, type));
+    if (type == null)
+      type = BIN_TYPE;
+    if (getEntryForFile(filename) != null)
+      throw new Error("File "+filename+" already registered");
+    else
+      entries.add(new Entry(filename, title, type, include));
   }
 
   public void produce() throws FileNotFoundException, Exception {
-    ZipGenerator zip = new ZipGenerator(Utilities.path(page.getFolders().dstDir, "fhir-v"+page.getVersion()+".epub"));
-    zip.addMimeTypeFile("mimetype", Utilities.path(page.getFolders().rootDir, "tools", "epub", "mimetype"));
-    zip.addFileName("META-INF/container.xml", Utilities.path(page.getFolders().rootDir, "tools", "epub", "container.xml"), false);
-    zip.addBytes("OEBPS/content.opf", generateContentFile(), false);
-    zip.addBytes("OEBPS/toc.ncx", generateIndexFile(), false);
-    build(zip);
-    zip.close();
-    
+    if (WANT_EPUB) {
+      ZipGenerator zip = new ZipGenerator(Utilities.path(page.getFolders().dstDir, "fhir-v"+page.getVersion()+".epub"));
+      //    zip.addMimeTypeFile("mimetype", Utilities.path(page.getFolders().rootDir, "tools", "epub", "mimetype"));
+      zip.addBytes("mimetype", new String("application/epub+zip").getBytes("UTF-8"), false);
+      zip.addFileName("META-INF/container.xml", Utilities.path(page.getFolders().rootDir, "tools", "epub", "container.xml"), false);
+      zip.addBytes("OEBPS/content.opf", generateContentFile(), false);
+      zip.addBytes("OEBPS/toc.ncx", generateIndexFile(), false);
+      build(zip);
+      zip.close();
+    }
+//    new EpubReader().readEpub(new FileInputStream(Utilities.path(page.getFolders().dstDir, "fhir-v"+page.getVersion()+".epub")));
 //    zip = new ZipGenerator(Utilities.path(page.getFolders().dstDir, "fhir-v"+page.getVersion()+".epub.zip"));
 //    zip.addFileName("fhir-v"+page.getVersion()+".epub", Utilities.path(page.getFolders().dstDir, "fhir-v"+page.getVersion()+".epub"), false);
 //    zip.close();
@@ -122,12 +145,16 @@ public class EPubManager implements FileNotifier {
     xml.attribute("href", "toc.ncx");
     xml.attribute("media-type", "application/x-dtbncx+xml");   
     xml.element("item", null);
+    int c = 0;
     for (int i = 0; i < entries.size(); i++) {
       Entry e = entries.get(i);
-      xml.attribute("id", "n"+Integer.toString(i));
-      xml.attribute("href", e.filename);
-      xml.attribute("media-type", e.type);
-      xml.element("item", null);
+      if (e.include) {
+        c++;
+        xml.attribute("id", "n"+Integer.toString(i));
+        xml.attribute("href", e.filename);
+        xml.attribute("media-type", e.type);
+        xml.element("item", null);
+      }
     }
     xml.exit("manifest");
     
@@ -138,7 +165,7 @@ public class EPubManager implements FileNotifier {
       addToSpine(xml, n);
     List<String> others = new ArrayList<String>();
     for (Entry e : entries) 
-      if (!spineOrder.contains(e.filename))
+      if (e.include && !spineOrder.contains(e.filename))
         others.add(e.filename);
     Collections.sort(others);
     for (String n : others) 
@@ -146,6 +173,11 @@ public class EPubManager implements FileNotifier {
     xml.exit("spine");
     xml.exit("package");
     xml.end();
+    
+    page.log("Total Pages: "+Integer.toString(entries.size()+externals.size()), LogMessageType.Process);
+    page.log("External Pages: "+Integer.toString(externals.size()), LogMessageType.Process);
+    page.log("Included Pages: "+Integer.toString(c), LogMessageType.Process);
+        
     return stream.toByteArray();
   }
 
@@ -211,9 +243,12 @@ public class EPubManager implements FileNotifier {
 
   private void addToSpine(XMLWriter xml, String n) throws IOException {
     int i = getEntryIndex(n);
-    xml.comment(n, false);
-    xml.attribute("idref", "n"+Integer.toString(i));
-    xml.element("itemref", null);
+    if (i >= 0) {
+      xml.comment(n, false);
+      xml.attribute("idref", "n"+Integer.toString(i));
+      xml.element("itemref", null);
+    } else 
+      System.out.println("Can't find "+n+" in epub");
   }
 
   private void build(ZipGenerator zip) throws FileNotFoundException, Exception {
@@ -221,9 +256,12 @@ public class EPubManager implements FileNotifier {
       if (XHTML_TYPE.equals(e.type)) {
         if (!e.checked)
           check(e);
-        zip.addBytes("OEBPS/"+e.filename, e.bytes, false);
+        if (e.bytes == null)
+          throw new Exception("no content in "+e.filename);
+        if (e.include) 
+          zip.addBytes("OEBPS/"+e.filename, e.bytes, false);
         e.bytes = null;        
-      } else {
+      } else if (e.include) {
         zip.addFileName("OEBPS/"+e.filename, Utilities.path(page.getFolders().dstDir, e.filename), true);
       }
     }
@@ -241,6 +279,8 @@ public class EPubManager implements FileNotifier {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         new XhtmlComposer().compose(stream, doc);
         e.bytes = stream.toByteArray();
+        if (e.bytes == null || e.bytes.length == 0)
+          throw new Exception("File is empty");
       } catch (Exception e1) {
         throw new Exception("Error parsing "+Utilities.path(page.getFolders().dstDir, e.filename), e1);
       }
@@ -298,14 +338,20 @@ public class EPubManager implements FileNotifier {
   }
 
   private boolean ok(String msg) {
-    if (msg.contains("hspc"))
+    if (msg.contains("hspc-specimen"))
       return true;
-    if (msg.contains("cda"))
+    if (msg.contains("hspc-performinglaboratory"))
       return true;
-    if (msg.contains("quick\\"))
+    if (msg.contains("hspc-responsibleobserver"))
       return true;
-    if (msg.contains("-examples.html"))
-      return true;
+//    if (msg.contains("cda"))
+//      return true;
+//    if (msg.contains("daf-cqi"))
+//      return true;
+//    if (msg.contains("quick\\"))
+//      return true;
+//    if (msg.contains("-examples.html"))
+//      return true;
     if (msg.contains("'??"))
       return true;
     return false;
@@ -345,10 +391,10 @@ public class EPubManager implements FileNotifier {
       if (target.endsWith(".xml") || target.endsWith(".json") || target.endsWith(".xsd") || target.endsWith(".txt") || target.endsWith(".sch") || target.endsWith(".pdf") || target.endsWith(".epub")) {
         if (!(new File(Utilities.path(page.getFolders().dstDir, target)).exists()))
           reportError(base, "Broken Link (1) in "+base+": '"+href+"' not found at \""+Utilities.path(page.getFolders().dstDir, target)+"\" ("+node.allText()+")");
-        node.setAttribute("href", "http://hl7.org/fhir/"+target.replace(File.separatorChar, '/'));
+        node.setAttribute("href", webPath+"/"+target.replace(File.separatorChar, '/'));
         e = null;
       } else if (externals.contains(target)) {
-        node.setAttribute("href", "http://hl7.org/fhir/"+target.replace(File.separatorChar, '/'));
+        node.setAttribute("href", webPath+"/"+target.replace(File.separatorChar, '/'));
         e = null;
       } else {
         e = getEntryForFile(target);
@@ -359,6 +405,8 @@ public class EPubManager implements FileNotifier {
             return;
           reportError(base, "Broken Link (2) in "+base+": '"+href+"' not found at \""+target+"\"("+node.allText()+")");
           return;
+        } else if (!e.include) {
+          node.setAttribute("href", webPath+"/"+node.getAttribute("href"));          
         }
       }
     } else 
@@ -378,8 +426,11 @@ public class EPubManager implements FileNotifier {
 
   private Entry getEntryForFile(String target) {
     for (Entry e : entries) {
-      if (e.filename.equals(target))
+      if (e.filename.equalsIgnoreCase(target)) {
+        if (!e.filename.equals(target))
+          throw new Error("Case Error: found "+e.filename+" looking for "+target);
         return e;
+      }
     }
     return null;
   }
@@ -443,7 +494,7 @@ public class EPubManager implements FileNotifier {
   @Override
   public void copyFile(String src, String dst) {
     if (dst.startsWith(page.getFolders().dstDir))
-    registerFile(dst.substring(page.getFolders().dstDir.length()+1), "Support File", determineType(dst));
+      registerFile(dst.substring(page.getFolders().dstDir.length()+1), "Support File", determineType(dst), true);
     
   }
 

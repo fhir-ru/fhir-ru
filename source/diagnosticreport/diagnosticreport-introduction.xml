@@ -1,12 +1,13 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Scope and Usage</h2>
 <p>
 A diagnostic report is the set of information that is typically provided by a diagnostic service
 when investigations are complete. The information includes a mix of atomic results, text reports, images,
 and codes. The mix varies depending on the nature of the diagnostic procedure, and sometimes on the nature
-of the outcomes for a particular investigation.  In FHIR, the report can conveyed in a variety of ways including a <a href="documents.html">Document</a>, <a href="http.html">RESTful API</a>, or <a href="messaging.html">Messaging </a> framework.  Included within each of these, would be the DiagnosticReport resource itself.
+of the outcomes for a particular investigation.  In FHIR, the report can be conveyed in a variety of ways including a <a href="documents.html">Document</a>, <a href="http.html">RESTful API</a>, or <a href="messaging.html">Messaging </a> framework.  Included within each of these, would be the DiagnosticReport resource itself.
 </p>
 <p>
 The DiagnosticReport resource has information about the diagnostic report itself, and about the subject and, in the case of lab tests, the specimen of the report.  It can also refers to the request details and atomic observations details or image instances.  Report conclusions can be expressed as a simple text blob, structured coded data or as an attached fully formatted report such as a PDF.</p>
@@ -26,12 +27,13 @@ The DiagnosticReport resource does not yet provide full support for detailed str
 </div>
 
 <div>
+<a name="bnc"> </a>
 <h2>Background and Context</h2>
 <!--p>
 The DiagnosticReport resource has the following aspects:
 </p>
 <ul>
- <li>status, issued, identifier, performer, serviceCategory: information about the diagnostic report itself</li>
+ <li>status, issued, identifier, performer, category: information about the diagnostic report itself</li>
  <li>subject, diagnostic[x]: information about the subject of the report</li>
  <li>request details: a reference to 0 or more <a href="diagnosticorder.html">DiagnosticOrder resources</a> to allow the report to connect to clinical work flows</li>
  <li>results: a reference to 0 or more <a href="observation.html">Observation resources</a> which provide
@@ -59,18 +61,28 @@ The results are assembled in "groups" which are nested structures of Observation
 
 </div>
 <div>
+<a name="bnr"> </a>
 <h2>Boundaries and Relationships</h2>
 <p>
-Note that many diagnostic processes are procedures that generate observations and diagnostic reports. In many cases, such an observation does not require an explicit representation of the procedure used to create the observation, but where there are details of interest about how the diagnostic procedure was performed, the <a href="procedure.html">procedure resource</a> is used to describe the activity.
+Note that many diagnostic processes are procedures that generate observations and diagnostic reports. In many cases, such an observation does not require an explicit representation of the procedure used to create the observation, but where there are details of interest about how the diagnostic procedure was performed, the <a href="procedure.html">Procedure</a> resource is used to describe the activity.
 </p>
 
 <p>
-In contrast to the <a href="observation.html">Observation resource</a>, the DiagnosticReport resource typically includes additional clinical context and and some mix of atomic results, images, imaging reports, textual and coded interpretation, and formatted representations. Laboratory reports, pathology reports, and imaging reports should be represented using the DiagnosticReport resource. The Observation resource is referenced by the DiagnosticReport to provide the atomic results for a particular investigation.
+In contrast to the <a href="observation.html">Observation</a> resource, the DiagnosticReport resource typically includes additional clinical context and some mix of atomic results, images, imaging reports, textual and coded interpretation, and formatted representations. Laboratory reports, pathology reports, and imaging reports should be represented using the DiagnosticReport resource. The Observation resource is referenced by the DiagnosticReport to provide the atomic results for a particular investigation.
 </p>
 
 <p>
-Details about the request for a diagnostic investigations are captured in the <a href="diagnosticorder.html">DiagnosticOrder resource</a>.  The DiagnosticOrder resource is referenced by the DiagnosticReport to to allow the report to connect to clinical work flows.
+If you have a highly structured report, then use DiagnosticReport - it has data and workflow support.  Details about the request for a diagnostic investigation are captured in the various "request" resources (e.g., the <a href="diagnosticorder.html">DiagnosticOrder</a>) resource and allow the report to connect to clinical workflows. For more narrative driven reports with less work flow (histology/mortuary, etc.), the <a href="composition.html">Composition</a> resource would be more appropriate.
 </p>
+<blockquote class="dstu-note">
+<a name="dstu"> </a>
+<p>
+<b>DSTU Note:</b> The relationship between the two resources is subject to ongoing evaluation during the trial use period.
+</p>
+<p>
+Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+</p>
+</blockquote>
 
 <p>
 Image and media representations of the report and supporting images are referenced in the DiagnosticReport resource.  The details and actual image instances can be referenced directly in Diagnostic report using the "imaging" element or by indirect reference through the <a href="imagingobjectselection.html">ImagingObjectSelection</a> or <a href="imagingobjectselection.html">ImagingStudy</a> resources which represent the content produced in a DICOM imaging study or set of DICOM Instances of a patient.

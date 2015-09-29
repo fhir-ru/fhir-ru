@@ -13,8 +13,9 @@
 <div class="col-9">
 <%dtheader mappings%>
 <h2>Data Type Mappings</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
-<p>This page provides mappings for the data types. There are mappings to HL7 v2, v3, and (where appropriate) vCard.</p>
+<p>This page provides mappings for the data types. There are mappings to <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>, <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>, and (where appropriate) vCard.</p>
 
 <p><b>Table of Contents</b></p>
 <table class="grid">
@@ -90,6 +91,8 @@ See also <a href="datatypes.html#CodeableConcept">Base Definition</a>, <a href="
 
 <a name="Quantity"> </a>
 <a name="quantity"> </a>
+<a name="SimpleQuantity"> </a>
+<a name="simplequantity"> </a>
 <a name="age"> </a>
 <a name="distance"> </a>
 <a name="duration"> </a>
@@ -168,18 +171,6 @@ See also <a href="datatypes.html#Address">Base Definition</a>, <a href="datatype
 
 <%dtmappings Address%>
 
-<div class="mapping">
-<p><b><a href="http://tools.ietf.org/html/rfc6350">vCard</a> Mappings</b></p>
-<ul>
- <li>Address.text = vCard "ADDRESS" "LABEL" parameter</li>
- <li>Address.use = vCard "TYPE" parameter</li>
- <li>Address.line = vCard "street" list component</li>
- <li>Address.city = vCard "locality" list component</li>
- <li>Address.state = vCard "region" list component</li>
- <li>Address.zip = vCard "code" list component</li>
- <li>Address.country = vCard "country" list component</li>
-</ul>
-</div>
 
 <a name="ContactPoint"> </a>
 <a name="contactpoint"> </a>

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -41,43 +41,43 @@ import org.hl7.fhir.instance.model.annotations.Description;
 import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.api.*;
 /**
- * This resource provides the insurance Enrollment details to the insurer regarding a specified coverage.
+ * This resource provides the insurance enrollment details to the insurer regarding a specified coverage.
  */
 @ResourceDef(name="EnrollmentRequest", profile="http://hl7.org/fhir/Profile/EnrollmentRequest")
 public class EnrollmentRequest extends DomainResource {
 
     /**
-     * The Response Business Identifier.
+     * The Response business identifier.
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
-    @Description(shortDefinition="Business Identifier", formalDefinition="The Response Business Identifier." )
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="Business Identifier", formalDefinition="The Response business identifier." )
     protected List<Identifier> identifier;
 
     /**
      * The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.
      */
-    @Child(name = "ruleset", type = {Coding.class}, order=1, min=0, max=1)
+    @Child(name = "ruleset", type = {Coding.class}, order=1, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Resource version", formalDefinition="The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources." )
     protected Coding ruleset;
 
     /**
      * The style (standard) and version of the original material which was converted into this resource.
      */
-    @Child(name = "originalRuleset", type = {Coding.class}, order=2, min=0, max=1)
+    @Child(name = "originalRuleset", type = {Coding.class}, order=2, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Original version", formalDefinition="The style (standard) and version of the original material which was converted into this resource." )
     protected Coding originalRuleset;
 
     /**
      * The date when this resource was created.
      */
-    @Child(name = "created", type = {DateTimeType.class}, order=3, min=0, max=1)
+    @Child(name = "created", type = {DateTimeType.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Creation date", formalDefinition="The date when this resource was created." )
     protected DateTimeType created;
 
     /**
      * The Insurer who is target  of the request.
      */
-    @Child(name = "target", type = {Organization.class}, order=4, min=0, max=1)
+    @Child(name = "target", type = {Organization.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Insurer", formalDefinition="The Insurer who is target  of the request." )
     protected Reference target;
 
@@ -89,7 +89,7 @@ public class EnrollmentRequest extends DomainResource {
     /**
      * The practitioner who is responsible for the services rendered to the patient.
      */
-    @Child(name = "provider", type = {Practitioner.class}, order=5, min=0, max=1)
+    @Child(name = "provider", type = {Practitioner.class}, order=5, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Responsible practitioner", formalDefinition="The practitioner who is responsible for the services rendered to the patient." )
     protected Reference provider;
 
@@ -101,7 +101,7 @@ public class EnrollmentRequest extends DomainResource {
     /**
      * The organization which is responsible for the services rendered to the patient.
      */
-    @Child(name = "organization", type = {Organization.class}, order=6, min=0, max=1)
+    @Child(name = "organization", type = {Organization.class}, order=6, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Responsible organization", formalDefinition="The organization which is responsible for the services rendered to the patient." )
     protected Reference organization;
 
@@ -113,7 +113,7 @@ public class EnrollmentRequest extends DomainResource {
     /**
      * Patient Resource.
      */
-    @Child(name = "subject", type = {Patient.class}, order=7, min=1, max=1)
+    @Child(name = "subject", type = {Patient.class}, order=7, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="The subject of the Products and Services", formalDefinition="Patient Resource." )
     protected Reference subject;
 
@@ -125,7 +125,7 @@ public class EnrollmentRequest extends DomainResource {
     /**
      * Reference to the program or plan identification, underwriter or payor.
      */
-    @Child(name = "coverage", type = {Coverage.class}, order=8, min=1, max=1)
+    @Child(name = "coverage", type = {Coverage.class}, order=8, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Insurance information", formalDefinition="Reference to the program or plan identification, underwriter or payor." )
     protected Reference coverage;
 
@@ -137,7 +137,7 @@ public class EnrollmentRequest extends DomainResource {
     /**
      * The relationship of the patient to the subscriber.
      */
-    @Child(name = "relationship", type = {Coding.class}, order=9, min=1, max=1)
+    @Child(name = "relationship", type = {Coding.class}, order=9, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Patient relationship to subscriber", formalDefinition="The relationship of the patient to the subscriber." )
     protected Coding relationship;
 
@@ -161,7 +161,7 @@ public class EnrollmentRequest extends DomainResource {
     }
 
     /**
-     * @return {@link #identifier} (The Response Business Identifier.)
+     * @return {@link #identifier} (The Response business identifier.)
      */
     public List<Identifier> getIdentifier() { 
       if (this.identifier == null)
@@ -179,7 +179,7 @@ public class EnrollmentRequest extends DomainResource {
     }
 
     /**
-     * @return {@link #identifier} (The Response Business Identifier.)
+     * @return {@link #identifier} (The Response business identifier.)
      */
     // syntactic sugar
     public Identifier addIdentifier() { //3
@@ -543,7 +543,7 @@ public class EnrollmentRequest extends DomainResource {
 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
-        childrenList.add(new Property("identifier", "Identifier", "The Response Business Identifier.", 0, java.lang.Integer.MAX_VALUE, identifier));
+        childrenList.add(new Property("identifier", "Identifier", "The Response business identifier.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("ruleset", "Coding", "The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.", 0, java.lang.Integer.MAX_VALUE, ruleset));
         childrenList.add(new Property("originalRuleset", "Coding", "The style (standard) and version of the original material which was converted into this resource.", 0, java.lang.Integer.MAX_VALUE, originalRuleset));
         childrenList.add(new Property("created", "dateTime", "The date when this resource was created.", 0, java.lang.Integer.MAX_VALUE, created));

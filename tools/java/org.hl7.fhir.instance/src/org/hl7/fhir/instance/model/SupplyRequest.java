@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -48,19 +48,19 @@ public class SupplyRequest extends DomainResource {
 
     public enum SupplyRequestStatus {
         /**
-         * Supply has been requested, but not dispensed
+         * Supply has been requested, but not dispensed.
          */
         REQUESTED, 
         /**
-         * Supply has been received by the requestor
+         * Supply has been received by the requestor.
          */
         COMPLETED, 
         /**
-         * The supply will not be completed because the supplier was unable or unwilling to supply the item
+         * The supply will not be completed because the supplier was unable or unwilling to supply the item.
          */
         FAILED, 
         /**
-         * The orderer of the supply cancelled the request
+         * The orderer of the supply cancelled the request.
          */
         CANCELLED, 
         /**
@@ -91,19 +91,19 @@ public class SupplyRequest extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case REQUESTED: return "http://hl7.org/fhir/valueset-supplyrequest-status";
-            case COMPLETED: return "http://hl7.org/fhir/valueset-supplyrequest-status";
-            case FAILED: return "http://hl7.org/fhir/valueset-supplyrequest-status";
-            case CANCELLED: return "http://hl7.org/fhir/valueset-supplyrequest-status";
+            case REQUESTED: return "http://hl7.org/fhir/supplyrequest-status";
+            case COMPLETED: return "http://hl7.org/fhir/supplyrequest-status";
+            case FAILED: return "http://hl7.org/fhir/supplyrequest-status";
+            case CANCELLED: return "http://hl7.org/fhir/supplyrequest-status";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case REQUESTED: return "Supply has been requested, but not dispensed";
-            case COMPLETED: return "Supply has been received by the requestor";
-            case FAILED: return "The supply will not be completed because the supplier was unable or unwilling to supply the item";
-            case CANCELLED: return "The orderer of the supply cancelled the request";
+            case REQUESTED: return "Supply has been requested, but not dispensed.";
+            case COMPLETED: return "Supply has been received by the requestor.";
+            case FAILED: return "The supply will not be completed because the supplier was unable or unwilling to supply the item.";
+            case CANCELLED: return "The orderer of the supply cancelled the request.";
             default: return "?";
           }
         }
@@ -149,16 +149,16 @@ public class SupplyRequest extends DomainResource {
     @Block()
     public static class SupplyRequestWhenComponent extends BackboneElement implements IBaseBackboneElement {
         /**
-         * Fulfilment code.
+         * Code indicating when the request should be fulfilled.
          */
-        @Child(name = "code", type = {CodeableConcept.class}, order=1, min=0, max=1)
-        @Description(shortDefinition="Fulfilment code", formalDefinition="Fulfilment code." )
+        @Child(name = "code", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Fulfilment code", formalDefinition="Code indicating when the request should be fulfilled." )
         protected CodeableConcept code;
 
         /**
          * Formal fulfillment schedule.
          */
-        @Child(name = "schedule", type = {Timing.class}, order=2, min=0, max=1)
+        @Child(name = "schedule", type = {Timing.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Formal fulfillment schedule", formalDefinition="Formal fulfillment schedule." )
         protected Timing schedule;
 
@@ -172,7 +172,7 @@ public class SupplyRequest extends DomainResource {
       }
 
         /**
-         * @return {@link #code} (Fulfilment code.)
+         * @return {@link #code} (Code indicating when the request should be fulfilled.)
          */
         public CodeableConcept getCode() { 
           if (this.code == null)
@@ -188,7 +188,7 @@ public class SupplyRequest extends DomainResource {
         }
 
         /**
-         * @param value {@link #code} (Fulfilment code.)
+         * @param value {@link #code} (Code indicating when the request should be fulfilled.)
          */
         public SupplyRequestWhenComponent setCode(CodeableConcept value) { 
           this.code = value;
@@ -221,7 +221,7 @@ public class SupplyRequest extends DomainResource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("code", "CodeableConcept", "Fulfilment code.", 0, java.lang.Integer.MAX_VALUE, code));
+          childrenList.add(new Property("code", "CodeableConcept", "Code indicating when the request should be fulfilled.", 0, java.lang.Integer.MAX_VALUE, code));
           childrenList.add(new Property("schedule", "Timing", "Formal fulfillment schedule.", 0, java.lang.Integer.MAX_VALUE, schedule));
         }
 
@@ -263,7 +263,7 @@ public class SupplyRequest extends DomainResource {
     /**
      * A link to a resource representing the person whom the ordered item is for.
      */
-    @Child(name = "patient", type = {Patient.class}, order=0, min=0, max=1)
+    @Child(name = "patient", type = {Patient.class}, order=0, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Patient for whom the item is supplied", formalDefinition="A link to a resource representing the person whom the ordered item is for." )
     protected Reference patient;
 
@@ -273,49 +273,49 @@ public class SupplyRequest extends DomainResource {
     protected Patient patientTarget;
 
     /**
-     * The Practitioner , Organization or Patient who initiated this order for the Supply.
+     * The Practitioner , Organization or Patient who initiated this order for the supply.
      */
-    @Child(name = "source", type = {Practitioner.class, Organization.class, Patient.class}, order=1, min=0, max=1)
-    @Description(shortDefinition="Who initiated this order", formalDefinition="The Practitioner , Organization or Patient who initiated this order for the Supply." )
+    @Child(name = "source", type = {Practitioner.class, Organization.class, Patient.class}, order=1, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Who initiated this order", formalDefinition="The Practitioner , Organization or Patient who initiated this order for the supply." )
     protected Reference source;
 
     /**
-     * The actual object that is the target of the reference (The Practitioner , Organization or Patient who initiated this order for the Supply.)
+     * The actual object that is the target of the reference (The Practitioner , Organization or Patient who initiated this order for the supply.)
      */
     protected Resource sourceTarget;
 
     /**
      * When the request was made.
      */
-    @Child(name = "date", type = {DateTimeType.class}, order=2, min=0, max=1)
+    @Child(name = "date", type = {DateTimeType.class}, order=2, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="When the request was made", formalDefinition="When the request was made." )
     protected DateTimeType date;
 
     /**
      * Unique identifier for this supply request.
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=3, min=0, max=1)
+    @Child(name = "identifier", type = {Identifier.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Unique identifier", formalDefinition="Unique identifier for this supply request." )
     protected Identifier identifier;
 
     /**
      * Status of the supply request.
      */
-    @Child(name = "status", type = {CodeType.class}, order=4, min=0, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=4, min=0, max=1, modifier=true, summary=true)
     @Description(shortDefinition="requested | completed | failed | cancelled", formalDefinition="Status of the supply request." )
     protected Enumeration<SupplyRequestStatus> status;
 
     /**
      * Category of supply, e.g.  central, non-stock, etc. This is used to support work flows associated with the supply process.
      */
-    @Child(name = "kind", type = {CodeableConcept.class}, order=5, min=0, max=1)
-    @Description(shortDefinition="The kind of supply (central, non-stock, etc)", formalDefinition="Category of supply, e.g.  central, non-stock, etc. This is used to support work flows associated with the supply process." )
+    @Child(name = "kind", type = {CodeableConcept.class}, order=5, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="The kind of supply (central, non-stock, etc.)", formalDefinition="Category of supply, e.g.  central, non-stock, etc. This is used to support work flows associated with the supply process." )
     protected CodeableConcept kind;
 
     /**
      * The item that is requested to be supplied.
      */
-    @Child(name = "orderedItem", type = {Medication.class, Substance.class, Device.class}, order=6, min=0, max=1)
+    @Child(name = "orderedItem", type = {Medication.class, Substance.class, Device.class}, order=6, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Medication, Substance, or Device requested to be supplied", formalDefinition="The item that is requested to be supplied." )
     protected Reference orderedItem;
 
@@ -327,7 +327,7 @@ public class SupplyRequest extends DomainResource {
     /**
      * Who is intended to fulfill the request.
      */
-    @Child(name = "supplier", type = {Organization.class}, order=7, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "supplier", type = {Organization.class}, order=7, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Who is intended to fulfill the request", formalDefinition="Who is intended to fulfill the request." )
     protected List<Reference> supplier;
     /**
@@ -339,14 +339,14 @@ public class SupplyRequest extends DomainResource {
     /**
      * Why the supply item was requested.
      */
-    @Child(name = "reason", type = {CodeableConcept.class}, order=8, min=0, max=1)
+    @Child(name = "reason", type = {CodeableConcept.class}, order=8, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Why the supply item was requested", formalDefinition="Why the supply item was requested." )
     protected Type reason;
 
     /**
      * When the request should be fulfilled.
      */
-    @Child(name = "when", type = {}, order=9, min=0, max=1)
+    @Child(name = "when", type = {}, order=9, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="When the request should be fulfilled", formalDefinition="When the request should be fulfilled." )
     protected SupplyRequestWhenComponent when;
 
@@ -404,7 +404,7 @@ public class SupplyRequest extends DomainResource {
     }
 
     /**
-     * @return {@link #source} (The Practitioner , Organization or Patient who initiated this order for the Supply.)
+     * @return {@link #source} (The Practitioner , Organization or Patient who initiated this order for the supply.)
      */
     public Reference getSource() { 
       if (this.source == null)
@@ -420,7 +420,7 @@ public class SupplyRequest extends DomainResource {
     }
 
     /**
-     * @param value {@link #source} (The Practitioner , Organization or Patient who initiated this order for the Supply.)
+     * @param value {@link #source} (The Practitioner , Organization or Patient who initiated this order for the supply.)
      */
     public SupplyRequest setSource(Reference value) { 
       this.source = value;
@@ -428,14 +428,14 @@ public class SupplyRequest extends DomainResource {
     }
 
     /**
-     * @return {@link #source} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The Practitioner , Organization or Patient who initiated this order for the Supply.)
+     * @return {@link #source} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The Practitioner , Organization or Patient who initiated this order for the supply.)
      */
     public Resource getSourceTarget() { 
       return this.sourceTarget;
     }
 
     /**
-     * @param value {@link #source} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The Practitioner , Organization or Patient who initiated this order for the Supply.)
+     * @param value {@link #source} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The Practitioner , Organization or Patient who initiated this order for the supply.)
      */
     public SupplyRequest setSourceTarget(Resource value) { 
       this.sourceTarget = value;
@@ -760,14 +760,14 @@ public class SupplyRequest extends DomainResource {
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("patient", "Reference(Patient)", "A link to a resource representing the person whom the ordered item is for.", 0, java.lang.Integer.MAX_VALUE, patient));
-        childrenList.add(new Property("source", "Reference(Practitioner|Organization|Patient)", "The Practitioner , Organization or Patient who initiated this order for the Supply.", 0, java.lang.Integer.MAX_VALUE, source));
+        childrenList.add(new Property("source", "Reference(Practitioner|Organization|Patient)", "The Practitioner , Organization or Patient who initiated this order for the supply.", 0, java.lang.Integer.MAX_VALUE, source));
         childrenList.add(new Property("date", "dateTime", "When the request was made.", 0, java.lang.Integer.MAX_VALUE, date));
         childrenList.add(new Property("identifier", "Identifier", "Unique identifier for this supply request.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("status", "code", "Status of the supply request.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("kind", "CodeableConcept", "Category of supply, e.g.  central, non-stock, etc. This is used to support work flows associated with the supply process.", 0, java.lang.Integer.MAX_VALUE, kind));
         childrenList.add(new Property("orderedItem", "Reference(Medication|Substance|Device)", "The item that is requested to be supplied.", 0, java.lang.Integer.MAX_VALUE, orderedItem));
         childrenList.add(new Property("supplier", "Reference(Organization)", "Who is intended to fulfill the request.", 0, java.lang.Integer.MAX_VALUE, supplier));
-        childrenList.add(new Property("reason[x]", "CodeableConcept|Reference(any)", "Why the supply item was requested.", 0, java.lang.Integer.MAX_VALUE, reason));
+        childrenList.add(new Property("reason[x]", "CodeableConcept|Reference(Any)", "Why the supply item was requested.", 0, java.lang.Integer.MAX_VALUE, reason));
         childrenList.add(new Property("when", "", "When the request should be fulfilled.", 0, java.lang.Integer.MAX_VALUE, when));
       }
 
@@ -842,7 +842,7 @@ public class SupplyRequest extends DomainResource {
   public static final String SP_IDENTIFIER = "identifier";
   @SearchParamDefinition(name="supplier", path="SupplyRequest.supplier", description="Who is intended to fulfill the request", type="reference" )
   public static final String SP_SUPPLIER = "supplier";
-  @SearchParamDefinition(name="kind", path="SupplyRequest.kind", description="The kind of supply (central, non-stock, etc)", type="token" )
+  @SearchParamDefinition(name="kind", path="SupplyRequest.kind", description="The kind of supply (central, non-stock, etc.)", type="token" )
   public static final String SP_KIND = "kind";
 
 }

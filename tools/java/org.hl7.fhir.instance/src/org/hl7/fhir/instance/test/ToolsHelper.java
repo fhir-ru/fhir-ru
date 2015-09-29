@@ -45,16 +45,12 @@ import java.util.zip.ZipInputStream;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.hl7.fhir.instance.client.FHIRSimpleClient;
-import org.hl7.fhir.instance.client.IFHIRClient;
 import org.hl7.fhir.instance.formats.IParser.OutputStyle;
 import org.hl7.fhir.instance.formats.JsonParser;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.Constants;
 import org.hl7.fhir.instance.model.Resource;
-import org.hl7.fhir.instance.model.StructureDefinition;
-import org.hl7.fhir.instance.utils.ProfileUtilities;
-import org.hl7.fhir.instance.utils.WorkerContext;
+import org.hl7.fhir.instance.utils.SimpleWorkerContext;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.TextFile;
@@ -122,26 +118,23 @@ public class ToolsHelper {
 	  String address = args[1];
 	  String definitions = args[3];
 	  
-    WorkerContext context = WorkerContext.fromDefinitions(getDefinitions(definitions));
+    SimpleWorkerContext context = SimpleWorkerContext.fromDefinitions(getDefinitions(definitions));
 
-    if (address.startsWith("http:") || address.startsWith("http:")) {
-    	// this is on a restful interface
-    	String[] parts = address.split("\\/Profile\\/");
-    	if (parts.length != 2)
-    		throw new Exception("Unable to understand address of profile");
-    	IFHIRClient client = new FHIRSimpleClient();
-    	client.initialize(parts[0]);
-    	StructureDefinition profile = client.read(StructureDefinition.class, parts[1]);
-    	ProfileUtilities utils = new ProfileUtilities(context);
-    	StructureDefinition base = utils.getProfile(profile, profile.getBase());
-    	if (base == null)
-    		throw new Exception("Unable to resolve profile "+profile.getBase());
-    	utils.generateSnapshot(base, profile, address, profile.getName(), null);
-    	client.update(StructureDefinition.class, profile, parts[1]);
-    } else {
-    	throw new Exception("not done yet (address = "+address+")");
-    }
-
+//    if (address.startsWith("http:") || address.startsWith("http:")) {
+//    	// this is on a restful interface
+//    	String[] parts = address.split("\\/Profile\\/");
+//    	if (parts.length != 2)
+//    		throw new Exception("Unable to understand address of profile");
+//    	StructureDefinition profile = context.fetchResource(StructureDefinition.class, parts[1]);
+//    	ProfileUtilities utils = new ProfileUtilities(context);
+//    	StructureDefinition base = utils.getProfile(profile, profile.getBase());
+//    	if (base == null)
+//    		throw new Exception("Unable to resolve profile "+profile.getBase());
+//    	utils.generateSnapshot(base, profile, address, profile.getName(), null, null);
+//    	// client.update(StructureDefinition.class, profile, parts[1]);
+//    } else {
+    	throw new Exception("generating snapshots not done yet (address = "+address+")");
+//    }
 	}
 
   private Map<String, byte[]> getDefinitions(String definitions) throws Exception {
@@ -369,30 +362,46 @@ public class ToolsHelper {
     }
   }
 
-  public void testRoundTrip(String rootDir, String tmpDir, Collection<String> names) throws Exception {
+  public void testRoundTrip(String rootDir, String tmpDir, Collection<String> names) throws Throwable {
+		try {
+  	System.err.println("Round trip from "+rootDir+" to "+tmpDir+":"+Integer.toString(names.size())+" files");
     for (String n : names) {
+    	System.err.print("  "+n);
       String source = rootDir + n + ".xml";
       // String tmpJson = tmpDir + n + ".json";
-      String dest = tmpDir + n + ".java.xml";
+      String tmp = tmpDir + n.replace(File.separator, "-") + ".tmp";
+      String dest = tmpDir + n.replace(File.separator, "-") + ".java.xml";
       
       FileInputStream in = new FileInputStream(source);
       XmlParser xp = new XmlParser();
       Resource r = xp.parse(in);
+    	System.err.print(".");
       JsonParser jp = new JsonParser();
-      ByteArrayOutputStream json = new ByteArrayOutputStream();
+      FileOutputStream out = new FileOutputStream(tmp);
       jp.setOutputStyle(OutputStyle.PRETTY);
-      jp.compose(json, r);
-      json.close();
-      // TextFile.stringToFile(new String(json.toByteArray()), tmpJson);
+      jp.compose(out, r);
+      out.close();
+      r = null;
+    	System.err.print(".");
       
-      r = jp.parse(new ByteArrayInputStream(json.toByteArray()));
-      FileOutputStream s = new FileOutputStream(dest);
-      new XmlParser().compose(s, r, true);
-      s.close();
+      in = new FileInputStream(tmp);
+    	System.err.print(",");
+  		r = jp.parse(in);
+    	System.err.print(".");
+      out = new FileOutputStream(dest);
+      new XmlParser().compose(out, r, true);
+    	System.err.println("!");
+      out.close();
+      r = null;
+      System.gc();
+    }
+		} catch (Throwable e) {
+			System.err.println("Error: "+e.getMessage());
+			throw e;
     }
   }
 
-  private void executeTest(String[] args) throws Exception {
+  private void executeTest(String[] args) throws Throwable {
   	try {
   		@SuppressWarnings("unchecked")
   		List<String> lines = FileUtils.readLines(new File(args[1]), "UTF-8");

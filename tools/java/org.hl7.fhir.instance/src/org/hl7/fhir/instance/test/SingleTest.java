@@ -30,6 +30,7 @@ package org.hl7.fhir.instance.test;
 
 import java.io.File;
 
+
 public class SingleTest {
 
   /**
@@ -38,7 +39,7 @@ public class SingleTest {
   public static void main(String[] args) {
     try {
       ResourceTest r = new ResourceTest();
-      r.setSource(new File("C:\\work\\org.hl7.fhir\\build\\publish\\familyhistory-qicore-example.xml"));
+      r.setSource(new File("C:\\work\\org.hl7.fhir\\build\\publish\\patient-example.xml"));
       r.test();
       System.out.println("Completed OK");
     } catch (Exception e) {

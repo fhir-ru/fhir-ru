@@ -29,11 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.annotations.Child;
 import org.hl7.fhir.instance.model.annotations.Description;
 import org.hl7.fhir.instance.model.annotations.DatatypeDef;
@@ -46,38 +47,38 @@ import org.hl7.fhir.instance.model.api.*;
 public class Meta extends Type implements IBaseMetaType {
 
     /**
-     * The version specific identifier, as it appears in the version portion of the url. This values changes when the resource is created, updated, or deleted.
+     * The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.
      */
-    @Child(name = "versionId", type = {IdType.class}, order=0, min=0, max=1)
-    @Description(shortDefinition="Version specific identifier", formalDefinition="The version specific identifier, as it appears in the version portion of the url. This values changes when the resource is created, updated, or deleted." )
+    @Child(name = "versionId", type = {IdType.class}, order=0, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Version specific identifier", formalDefinition="The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted." )
     protected IdType versionId;
 
     /**
      * When the resource last changed - e.g. when the version changed.
      */
-    @Child(name = "lastUpdated", type = {InstantType.class}, order=1, min=0, max=1)
+    @Child(name = "lastUpdated", type = {InstantType.class}, order=1, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="When the resource version last changed", formalDefinition="When the resource last changed - e.g. when the version changed." )
     protected InstantType lastUpdated;
 
     /**
      * A list of profiles [[[StructureDefinition]]]s that this resource claims to conform to. The URL is a reference to [[[StructureDefinition.url]]].
      */
-    @Child(name = "profile", type = {UriType.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "profile", type = {UriType.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Profiles this resource claims to conform to", formalDefinition="A list of profiles [[[StructureDefinition]]]s that this resource claims to conform to. The URL is a reference to [[[StructureDefinition.url]]]." )
     protected List<UriType> profile;
 
     /**
      * Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure.
      */
-    @Child(name = "security", type = {Coding.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "security", type = {Coding.class}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Security Labels applied to this resource", formalDefinition="Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure." )
     protected List<Coding> security;
 
     /**
-     * Tags applied to this resource. Tags are intended to to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.
+     * Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.
      */
-    @Child(name = "tag", type = {Coding.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
-    @Description(shortDefinition="Tags applied", formalDefinition="Tags applied to this resource. Tags are intended to to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource." )
+    @Child(name = "tag", type = {Coding.class}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="Tags applied to this resource", formalDefinition="Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource." )
     protected List<Coding> tag;
 
     private static final long serialVersionUID = 867134915L;
@@ -90,7 +91,7 @@ public class Meta extends Type implements IBaseMetaType {
     }
 
     /**
-     * @return {@link #versionId} (The version specific identifier, as it appears in the version portion of the url. This values changes when the resource is created, updated, or deleted.). This is the underlying object with id, value and extensions. The accessor "getVersionId" gives direct access to the value
+     * @return {@link #versionId} (The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.). This is the underlying object with id, value and extensions. The accessor "getVersionId" gives direct access to the value
      */
     public IdType getVersionIdElement() { 
       if (this.versionId == null)
@@ -110,7 +111,7 @@ public class Meta extends Type implements IBaseMetaType {
     }
 
     /**
-     * @param value {@link #versionId} (The version specific identifier, as it appears in the version portion of the url. This values changes when the resource is created, updated, or deleted.). This is the underlying object with id, value and extensions. The accessor "getVersionId" gives direct access to the value
+     * @param value {@link #versionId} (The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.). This is the underlying object with id, value and extensions. The accessor "getVersionId" gives direct access to the value
      */
     public Meta setVersionIdElement(IdType value) { 
       this.versionId = value;
@@ -118,14 +119,14 @@ public class Meta extends Type implements IBaseMetaType {
     }
 
     /**
-     * @return The version specific identifier, as it appears in the version portion of the url. This values changes when the resource is created, updated, or deleted.
+     * @return The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.
      */
     public String getVersionId() { 
       return this.versionId == null ? null : this.versionId.getValue();
     }
 
     /**
-     * @param value The version specific identifier, as it appears in the version portion of the url. This values changes when the resource is created, updated, or deleted.
+     * @param value The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.
      */
     public Meta setVersionId(String value) { 
       if (Utilities.noString(value))
@@ -282,7 +283,7 @@ public class Meta extends Type implements IBaseMetaType {
     }
 
     /**
-     * @return {@link #tag} (Tags applied to this resource. Tags are intended to to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.)
+     * @return {@link #tag} (Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.)
      */
     public List<Coding> getTag() { 
       if (this.tag == null)
@@ -300,7 +301,7 @@ public class Meta extends Type implements IBaseMetaType {
     }
 
     /**
-     * @return {@link #tag} (Tags applied to this resource. Tags are intended to to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.)
+     * @return {@link #tag} (Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.)
      */
     // syntactic sugar
     public Coding addTag() { //3
@@ -323,11 +324,11 @@ public class Meta extends Type implements IBaseMetaType {
 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
-        childrenList.add(new Property("versionId", "id", "The version specific identifier, as it appears in the version portion of the url. This values changes when the resource is created, updated, or deleted.", 0, java.lang.Integer.MAX_VALUE, versionId));
+        childrenList.add(new Property("versionId", "id", "The version specific identifier, as it appears in the version portion of the URL. This values changes when the resource is created, updated, or deleted.", 0, java.lang.Integer.MAX_VALUE, versionId));
         childrenList.add(new Property("lastUpdated", "instant", "When the resource last changed - e.g. when the version changed.", 0, java.lang.Integer.MAX_VALUE, lastUpdated));
         childrenList.add(new Property("profile", "uri", "A list of profiles [[[StructureDefinition]]]s that this resource claims to conform to. The URL is a reference to [[[StructureDefinition.url]]].", 0, java.lang.Integer.MAX_VALUE, profile));
         childrenList.add(new Property("security", "Coding", "Security labels applied to this resource. These tags connect specific resources to the overall security policy and infrastructure.", 0, java.lang.Integer.MAX_VALUE, security));
-        childrenList.add(new Property("tag", "Coding", "Tags applied to this resource. Tags are intended to to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.", 0, java.lang.Integer.MAX_VALUE, tag));
+        childrenList.add(new Property("tag", "Coding", "Tags applied to this resource. Tags are intended to be used to identify and relate resources to process and workflow, and applications are not required to consider the tags when interpreting the meaning of a resource.", 0, java.lang.Integer.MAX_VALUE, tag));
       }
 
       public Meta copy() {

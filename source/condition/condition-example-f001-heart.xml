@@ -12,7 +12,7 @@
         <reference value="Patient/f001"/>
         <display value="P. van de Heuvel"/>
     </asserter>
-    <dateAsserted value="2011-10-05"/>
+    <dateRecorded value="2011-10-05"/>
     <code>
         <coding>
             <system value="http://snomed.info/sct"/>
@@ -27,7 +27,8 @@
             <display value="diagnosis"/>
         </coding>
     </category>
-    <clinicalStatus value="confirmed"/>
+    <clinicalStatus value="active"/>
+    <verificationStatus value="confirmed"/>
     <severity>
         <coding>
             <system value="http://snomed.info/sct"/>
@@ -45,14 +46,12 @@
             </coding>
         </code>
     </evidence>
-    <location>
-        <siteCodeableConcept>
+    <bodySite>
             <coding>
                 <system value="http://snomed.info/sct"/>
                 <code value="40768004"/>
                 <display value="Left thorax"/>
             </coding>
         <text value="heart structure"/>
-        </siteCodeableConcept>
-    </location>
+    </bodySite>
 </Condition>

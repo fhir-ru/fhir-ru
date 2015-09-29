@@ -13,6 +13,8 @@
 
 <a name="version"> </a>
 <h2>Inter-version Compatibility</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+
 <blockquote>
 <p>
 The following rules will apply to resources, profiles and other content within the specification
@@ -129,7 +131,7 @@ error code.  <!-- TODO: Grahame - should this be more explicit? -->
         For non-immutable value sets:
         </p>
         <ul>
-          <li>Value sets with an enumerated list of codes and having a 'fixed' binding may have additional codes introduced but will never have codes removed.</li>
+          <li>Value sets with an enumerated list of codes and having a 'fixed' binding may have additional codes introduced but will never have codes removed, thought they may be deprecated.</li>
           <li>Value sets making use of filters may have filters loosened or tightened to accommodate changes to
           underlying code systems.  StableDates and referenced code system and value set versions may be adjusted
           to point to newer versions.</li>
@@ -187,7 +189,7 @@ error code.  <!-- TODO: Grahame - should this be more explicit? -->
       <td>
       New operations may be defined but operations may not be removed or renamed.  Existing parameters will not be removed or renamed, nor may their type
       or lower cardinality be changed.  Upper cardinality may be changed from 1 to *.  (Systems should ignore unexpected repetitions.)
-      Additional optional parameters may be introduced. E.g. Operation signatures cannot change, instead, additional operation variants will be defined.
+      Additional optional parameters may be introduced; e.g. Operation signatures cannot change; instead, additional operation variants will be defined.
       </td>
     </tr>
     <tr>

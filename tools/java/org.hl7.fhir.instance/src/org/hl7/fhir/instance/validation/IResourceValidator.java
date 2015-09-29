@@ -10,6 +10,21 @@ import com.google.gson.JsonObject;
 
 public interface IResourceValidator {
 
+  /**
+   * whether the validator should enforce best practice guidelines
+   * as defined by various HL7 committees 
+   *  
+   *  
+   * @author Grahame Grieve
+   *
+   */
+  public enum BestPracticeWarningLevel {
+    Ignore,
+    Hint,
+    Warning,
+    Error
+  }
+
   public enum CheckDisplayOption {
     Ignore,
     Check,
@@ -37,6 +52,9 @@ public interface IResourceValidator {
    */
   boolean isRequireResourceId();
   void setRequireResourceId(boolean requiresResourceId);
+  
+  BestPracticeWarningLevel getBasePracticeWarningLevel();
+  void setBestPracticeWarningLevel(BestPracticeWarningLevel value);
   
   
   /**

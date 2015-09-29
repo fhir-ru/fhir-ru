@@ -33,6 +33,7 @@ Type
     client : TIdHTTP;
     ssl : TIdSSLIOHandlerSocketOpenSSL;
     FOnClientStatus : TFHIRClientStatusEvent;
+    FLastUpdated : TDateAndTime;
     procedure status(msg : String);
     function serialise(resource : TFhirResource):TStream; overload;
     function makeUrl(tail : String; params : TAdvStringMatch = nil) : String;
@@ -63,7 +64,6 @@ Type
 
     property OnClientStatus : TFHIRClientStatusEvent read FOnClientStatus write FOnClientStatus;
 
-    function lastUpdate : TDateAndTime;
   end;
 
 implementation
@@ -244,7 +244,7 @@ Var
   src, frm : TStream;
   ct : String;
 begin
-  raise Exception.Create('Not don yet');
+  raise Exception.Create('Not done yet');
 //  src := serialise(resource);
 //  try
 //    src.Position := 0;
@@ -322,8 +322,8 @@ begin
               op := TFhirOperationOutcome(comp.resource);
               if (op.text <> nil) and (op.text.div_ <> nil) then
                 Raise EFHIRClientException.create(FhirHtmlToText(op.text.div_), comp.resource.link as TFhirOperationOutcome)
-              else if (op.issueList.Count > 0) and (op.issueList[0].details <> '') then
-                Raise EFHIRClientException.create(op.issueList[0].details, comp.resource.link as TFhirOperationOutcome)
+              else if (op.issueList.Count > 0) and (op.issueList[0].diagnostics <> '') then
+                Raise EFHIRClientException.create(op.issueList[0].diagnostics, comp.resource.link as TFhirOperationOutcome)
               else
                 raise exception.Create(cnt)
             end
@@ -562,11 +562,6 @@ begin
   finally
     result.Free;
   end;
-end;
-
-function TFhirClient.lastUpdate: TDateAndTime;
-begin
-  result := nil;
 end;
 
 end.

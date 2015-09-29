@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -48,15 +48,15 @@ public class Flag extends DomainResource {
 
     public enum FlagStatus {
         /**
-         * A current flag that should be displayed to a user. A system may use the category to determine which roles should view the flag
+         * A current flag that should be displayed to a user. A system may use the category to determine which roles should view the flag.
          */
         ACTIVE, 
         /**
-         * The flag does not need to be displayed any more
+         * The flag does not need to be displayed any more.
          */
         INACTIVE, 
         /**
-         * The flag was added in error, and should no longer be displayed
+         * The flag was added in error, and should no longer be displayed.
          */
         ENTEREDINERROR, 
         /**
@@ -92,9 +92,9 @@ public class Flag extends DomainResource {
         }
         public String getDefinition() {
           switch (this) {
-            case ACTIVE: return "A current flag that should be displayed to a user. A system may use the category to determine which roles should view the flag";
-            case INACTIVE: return "The flag does not need to be displayed any more";
-            case ENTEREDINERROR: return "The flag was added in error, and should no longer be displayed";
+            case ACTIVE: return "A current flag that should be displayed to a user. A system may use the category to determine which roles should view the flag.";
+            case INACTIVE: return "The flag does not need to be displayed any more.";
+            case ENTEREDINERROR: return "The flag was added in error, and should no longer be displayed.";
             default: return "?";
           }
         }
@@ -102,7 +102,7 @@ public class Flag extends DomainResource {
           switch (this) {
             case ACTIVE: return "Active";
             case INACTIVE: return "Inactive";
-            case ENTEREDINERROR: return "Entered In Error";
+            case ENTEREDINERROR: return "Entered in Error";
             default: return "?";
           }
         }
@@ -135,63 +135,75 @@ public class Flag extends DomainResource {
     /**
      * Identifier assigned to the flag for external use (outside the FHIR environment).
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Business identifier", formalDefinition="Identifier assigned to the flag for external use (outside the FHIR environment)." )
     protected List<Identifier> identifier;
 
     /**
-     * Allows an flag to be divided into different categories like clinical, administrative etc.
+     * Allows an flag to be divided into different categories like clinical, administrative etc. Intended to be used as a means of filtering which flags are displayed to particular user or in a given context.
      */
-    @Child(name = "category", type = {CodeableConcept.class}, order=1, min=0, max=1)
-    @Description(shortDefinition="Clinical, administrative, etc.", formalDefinition="Allows an flag to be divided into different categories like clinical, administrative etc." )
+    @Child(name = "category", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Clinical, administrative, etc.", formalDefinition="Allows an flag to be divided into different categories like clinical, administrative etc. Intended to be used as a means of filtering which flags are displayed to particular user or in a given context." )
     protected CodeableConcept category;
 
     /**
      * Supports basic workflow.
      */
-    @Child(name = "status", type = {CodeType.class}, order=2, min=1, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=2, min=1, max=1, modifier=true, summary=true)
     @Description(shortDefinition="active | inactive | entered-in-error", formalDefinition="Supports basic workflow." )
     protected Enumeration<FlagStatus> status;
 
     /**
      * The period of time from the activation of the flag to inactivation of the flag. If the flag is active, the end of the period should be unspecified.
      */
-    @Child(name = "period", type = {Period.class}, order=3, min=0, max=1)
+    @Child(name = "period", type = {Period.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Time period when flag is active", formalDefinition="The period of time from the activation of the flag to inactivation of the flag. If the flag is active, the end of the period should be unspecified." )
     protected Period period;
 
     /**
-     * The patient record this flag is associated with.
+     * The patient, location, group , organization , or practitioner this is about record this flag is associated with.
      */
-    @Child(name = "patient", type = {Patient.class}, order=4, min=1, max=1)
-    @Description(shortDefinition="Who is flag about?", formalDefinition="The patient record this flag is associated with." )
-    protected Reference patient;
+    @Child(name = "subject", type = {Patient.class, Location.class, Group.class, Organization.class, Practitioner.class}, order=4, min=1, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Who/What is flag about?", formalDefinition="The patient, location, group , organization , or practitioner this is about record this flag is associated with." )
+    protected Reference subject;
 
     /**
-     * The actual object that is the target of the reference (The patient record this flag is associated with.)
+     * The actual object that is the target of the reference (The patient, location, group , organization , or practitioner this is about record this flag is associated with.)
      */
-    protected Patient patientTarget;
+    protected Resource subjectTarget;
 
     /**
-     * The person or device that created the flag.
+     * This alert is only relevant during the encounter.
      */
-    @Child(name = "author", type = {Practitioner.class, Patient.class, Device.class}, order=5, min=0, max=1)
-    @Description(shortDefinition="Flag creator", formalDefinition="The person or device that created the flag." )
+    @Child(name = "encounter", type = {Encounter.class}, order=5, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Alert relevant during encounter", formalDefinition="This alert is only relevant during the encounter." )
+    protected Reference encounter;
+
+    /**
+     * The actual object that is the target of the reference (This alert is only relevant during the encounter.)
+     */
+    protected Encounter encounterTarget;
+
+    /**
+     * The person, organization or device that created the flag.
+     */
+    @Child(name = "author", type = {Device.class, Organization.class, Patient.class, Practitioner.class}, order=6, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Flag creator", formalDefinition="The person, organization or device that created the flag." )
     protected Reference author;
 
     /**
-     * The actual object that is the target of the reference (The person or device that created the flag.)
+     * The actual object that is the target of the reference (The person, organization or device that created the flag.)
      */
     protected Resource authorTarget;
 
     /**
      * The coded value or textual component of the flag to display to the user.
      */
-    @Child(name = "code", type = {CodeableConcept.class}, order=6, min=1, max=1)
+    @Child(name = "code", type = {CodeableConcept.class}, order=7, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Partially deaf, Requires easy open caps, No permanent address, etc.", formalDefinition="The coded value or textual component of the flag to display to the user." )
     protected CodeableConcept code;
 
-    private static final long serialVersionUID = 1117780761L;
+    private static final long serialVersionUID = 701147751L;
 
   /*
    * Constructor
@@ -203,10 +215,10 @@ public class Flag extends DomainResource {
   /*
    * Constructor
    */
-    public Flag(Enumeration<FlagStatus> status, Reference patient, CodeableConcept code) {
+    public Flag(Enumeration<FlagStatus> status, Reference subject, CodeableConcept code) {
       super();
       this.status = status;
-      this.patient = patient;
+      this.subject = subject;
       this.code = code;
     }
 
@@ -251,7 +263,7 @@ public class Flag extends DomainResource {
     }
 
     /**
-     * @return {@link #category} (Allows an flag to be divided into different categories like clinical, administrative etc.)
+     * @return {@link #category} (Allows an flag to be divided into different categories like clinical, administrative etc. Intended to be used as a means of filtering which flags are displayed to particular user or in a given context.)
      */
     public CodeableConcept getCategory() { 
       if (this.category == null)
@@ -267,7 +279,7 @@ public class Flag extends DomainResource {
     }
 
     /**
-     * @param value {@link #category} (Allows an flag to be divided into different categories like clinical, administrative etc.)
+     * @param value {@link #category} (Allows an flag to be divided into different categories like clinical, administrative etc. Intended to be used as a means of filtering which flags are displayed to particular user or in a given context.)
      */
     public Flag setCategory(CodeableConcept value) { 
       this.category = value;
@@ -344,51 +356,90 @@ public class Flag extends DomainResource {
     }
 
     /**
-     * @return {@link #patient} (The patient record this flag is associated with.)
+     * @return {@link #subject} (The patient, location, group , organization , or practitioner this is about record this flag is associated with.)
      */
-    public Reference getPatient() { 
-      if (this.patient == null)
+    public Reference getSubject() { 
+      if (this.subject == null)
         if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Flag.patient");
+          throw new Error("Attempt to auto-create Flag.subject");
         else if (Configuration.doAutoCreate())
-          this.patient = new Reference(); // cc
-      return this.patient;
+          this.subject = new Reference(); // cc
+      return this.subject;
     }
 
-    public boolean hasPatient() { 
-      return this.patient != null && !this.patient.isEmpty();
+    public boolean hasSubject() { 
+      return this.subject != null && !this.subject.isEmpty();
     }
 
     /**
-     * @param value {@link #patient} (The patient record this flag is associated with.)
+     * @param value {@link #subject} (The patient, location, group , organization , or practitioner this is about record this flag is associated with.)
      */
-    public Flag setPatient(Reference value) { 
-      this.patient = value;
+    public Flag setSubject(Reference value) { 
+      this.subject = value;
       return this;
     }
 
     /**
-     * @return {@link #patient} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The patient record this flag is associated with.)
+     * @return {@link #subject} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The patient, location, group , organization , or practitioner this is about record this flag is associated with.)
      */
-    public Patient getPatientTarget() { 
-      if (this.patientTarget == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create Flag.patient");
-        else if (Configuration.doAutoCreate())
-          this.patientTarget = new Patient(); // aa
-      return this.patientTarget;
+    public Resource getSubjectTarget() { 
+      return this.subjectTarget;
     }
 
     /**
-     * @param value {@link #patient} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The patient record this flag is associated with.)
+     * @param value {@link #subject} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The patient, location, group , organization , or practitioner this is about record this flag is associated with.)
      */
-    public Flag setPatientTarget(Patient value) { 
-      this.patientTarget = value;
+    public Flag setSubjectTarget(Resource value) { 
+      this.subjectTarget = value;
       return this;
     }
 
     /**
-     * @return {@link #author} (The person or device that created the flag.)
+     * @return {@link #encounter} (This alert is only relevant during the encounter.)
+     */
+    public Reference getEncounter() { 
+      if (this.encounter == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Flag.encounter");
+        else if (Configuration.doAutoCreate())
+          this.encounter = new Reference(); // cc
+      return this.encounter;
+    }
+
+    public boolean hasEncounter() { 
+      return this.encounter != null && !this.encounter.isEmpty();
+    }
+
+    /**
+     * @param value {@link #encounter} (This alert is only relevant during the encounter.)
+     */
+    public Flag setEncounter(Reference value) { 
+      this.encounter = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #encounter} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (This alert is only relevant during the encounter.)
+     */
+    public Encounter getEncounterTarget() { 
+      if (this.encounterTarget == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create Flag.encounter");
+        else if (Configuration.doAutoCreate())
+          this.encounterTarget = new Encounter(); // aa
+      return this.encounterTarget;
+    }
+
+    /**
+     * @param value {@link #encounter} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (This alert is only relevant during the encounter.)
+     */
+    public Flag setEncounterTarget(Encounter value) { 
+      this.encounterTarget = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #author} (The person, organization or device that created the flag.)
      */
     public Reference getAuthor() { 
       if (this.author == null)
@@ -404,7 +455,7 @@ public class Flag extends DomainResource {
     }
 
     /**
-     * @param value {@link #author} (The person or device that created the flag.)
+     * @param value {@link #author} (The person, organization or device that created the flag.)
      */
     public Flag setAuthor(Reference value) { 
       this.author = value;
@@ -412,14 +463,14 @@ public class Flag extends DomainResource {
     }
 
     /**
-     * @return {@link #author} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The person or device that created the flag.)
+     * @return {@link #author} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The person, organization or device that created the flag.)
      */
     public Resource getAuthorTarget() { 
       return this.authorTarget;
     }
 
     /**
-     * @param value {@link #author} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The person or device that created the flag.)
+     * @param value {@link #author} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The person, organization or device that created the flag.)
      */
     public Flag setAuthorTarget(Resource value) { 
       this.authorTarget = value;
@@ -453,11 +504,12 @@ public class Flag extends DomainResource {
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "Identifier assigned to the flag for external use (outside the FHIR environment).", 0, java.lang.Integer.MAX_VALUE, identifier));
-        childrenList.add(new Property("category", "CodeableConcept", "Allows an flag to be divided into different categories like clinical, administrative etc.", 0, java.lang.Integer.MAX_VALUE, category));
+        childrenList.add(new Property("category", "CodeableConcept", "Allows an flag to be divided into different categories like clinical, administrative etc. Intended to be used as a means of filtering which flags are displayed to particular user or in a given context.", 0, java.lang.Integer.MAX_VALUE, category));
         childrenList.add(new Property("status", "code", "Supports basic workflow.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("period", "Period", "The period of time from the activation of the flag to inactivation of the flag. If the flag is active, the end of the period should be unspecified.", 0, java.lang.Integer.MAX_VALUE, period));
-        childrenList.add(new Property("patient", "Reference(Patient)", "The patient record this flag is associated with.", 0, java.lang.Integer.MAX_VALUE, patient));
-        childrenList.add(new Property("author", "Reference(Practitioner|Patient|Device)", "The person or device that created the flag.", 0, java.lang.Integer.MAX_VALUE, author));
+        childrenList.add(new Property("subject", "Reference(Patient|Location|Group|Organization|Practitioner)", "The patient, location, group , organization , or practitioner this is about record this flag is associated with.", 0, java.lang.Integer.MAX_VALUE, subject));
+        childrenList.add(new Property("encounter", "Reference(Encounter)", "This alert is only relevant during the encounter.", 0, java.lang.Integer.MAX_VALUE, encounter));
+        childrenList.add(new Property("author", "Reference(Device|Organization|Patient|Practitioner)", "The person, organization or device that created the flag.", 0, java.lang.Integer.MAX_VALUE, author));
         childrenList.add(new Property("code", "CodeableConcept", "The coded value or textual component of the flag to display to the user.", 0, java.lang.Integer.MAX_VALUE, code));
       }
 
@@ -472,7 +524,8 @@ public class Flag extends DomainResource {
         dst.category = category == null ? null : category.copy();
         dst.status = status == null ? null : status.copy();
         dst.period = period == null ? null : period.copy();
-        dst.patient = patient == null ? null : patient.copy();
+        dst.subject = subject == null ? null : subject.copy();
+        dst.encounter = encounter == null ? null : encounter.copy();
         dst.author = author == null ? null : author.copy();
         dst.code = code == null ? null : code.copy();
         return dst;
@@ -490,8 +543,8 @@ public class Flag extends DomainResource {
           return false;
         Flag o = (Flag) other;
         return compareDeep(identifier, o.identifier, true) && compareDeep(category, o.category, true) && compareDeep(status, o.status, true)
-           && compareDeep(period, o.period, true) && compareDeep(patient, o.patient, true) && compareDeep(author, o.author, true)
-           && compareDeep(code, o.code, true);
+           && compareDeep(period, o.period, true) && compareDeep(subject, o.subject, true) && compareDeep(encounter, o.encounter, true)
+           && compareDeep(author, o.author, true) && compareDeep(code, o.code, true);
       }
 
       @Override
@@ -506,8 +559,9 @@ public class Flag extends DomainResource {
 
       public boolean isEmpty() {
         return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (category == null || category.isEmpty())
-           && (status == null || status.isEmpty()) && (period == null || period.isEmpty()) && (patient == null || patient.isEmpty())
-           && (author == null || author.isEmpty()) && (code == null || code.isEmpty());
+           && (status == null || status.isEmpty()) && (period == null || period.isEmpty()) && (subject == null || subject.isEmpty())
+           && (encounter == null || encounter.isEmpty()) && (author == null || author.isEmpty()) && (code == null || code.isEmpty())
+          ;
       }
 
   @Override
@@ -517,10 +571,12 @@ public class Flag extends DomainResource {
 
   @SearchParamDefinition(name="author", path="Flag.author", description="Flag creator", type="reference" )
   public static final String SP_AUTHOR = "author";
-  @SearchParamDefinition(name="patient", path="Flag.patient", description="The identity of a subject to list flags for", type="reference" )
+  @SearchParamDefinition(name="patient", path="Flag.subject", description="The identity of a subject to list flags for", type="reference" )
   public static final String SP_PATIENT = "patient";
-  @SearchParamDefinition(name="subject", path="Flag.patient", description="The identity of a subject to list flags for", type="reference" )
+  @SearchParamDefinition(name="subject", path="Flag.subject", description="The identity of a subject to list flags for", type="reference" )
   public static final String SP_SUBJECT = "subject";
+  @SearchParamDefinition(name="encounter", path="Flag.encounter", description="Alert relevant during encounter", type="reference" )
+  public static final String SP_ENCOUNTER = "encounter";
   @SearchParamDefinition(name="date", path="Flag.period", description="Time period when flag is active", type="date" )
   public static final String SP_DATE = "date";
 

@@ -12,7 +12,7 @@
  <asserter>
      <reference value="Practitioner/f201"/>
  </asserter>
- <dateAsserted value="2013-03-11"/>
+    <dateRecorded value="2013-03-11"/>
  <code>
      <coding>
        <system value="http://snomed.info/sct"/>
@@ -31,7 +31,8 @@
          <code value="finding"/>
      </coding>
  </category>
- <clinicalStatus value="working"/><!--The patient is being treated on the basis that this is the problem, but it is still not confirmed (<certainty> is therewith also working)-->
+    <clinicalStatus value="active"/>
+    <verificationStatus value="differential"/><!--The patient is being treated on the basis that this is the problem, but it is still not confirmed (<certainty> is therewith also working)-->
  <severity>
     <coding>
         <system value="http://snomed.info/sct"/>
@@ -40,7 +41,7 @@
     </coding>
  </severity>
  <onsetDateTime value="2013-03-11"/>
- <abatementDate value="2013-03-20"/><!--After the nine days of inpatient admission, the problem went in remission-->
+ <abatementDateTime value="2013-03-20"/><!--After the nine days of inpatient admission, the problem went in remission-->
  <stage><!--The problem is temporary and will not become permanent renal insufficiency-->
   <summary>
     <coding>
@@ -50,20 +51,11 @@
     </coding>
   </summary>
  </stage>
- <location> 
-  <siteCodeableConcept>
+ <bodySite> 
     <coding>
         <system value="http://snomed.info/sct"/>
         <code value="181414000"/>
         <display value="Kidney"/> 
     </coding>
-  </siteCodeableConcept>
- </location>
- <dueTo>  
-  <!--TODO the difference between "due-to" and "follows" is very unclear in the current documentation-->
-  <target>    
-     <reference value="Procedure/f201"/>
-     <display value="TPF chemotherapy for the sphenoid bone"/>
-  </target>
- </dueTo>
+ </bodySite>
 </Condition>

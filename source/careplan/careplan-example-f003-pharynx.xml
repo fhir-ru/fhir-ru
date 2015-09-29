@@ -1,17 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CarePlan xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/careplan.xsd">
+<?xml version="1.0" encoding="UTF-8"?><CarePlan xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/careplan.xsd">
   <id value="f003"/>
   <contained>
     <Goal>
       <id value="goal"/>
-      <patient>
+      <subject>
         <reference value="Patient/f001"/>
         <display value="P. van de Heuvel"/>
-      </patient>
+      </subject>
       <description value="Retropharyngeal abscess removal"/>
       <status value="achieved"/>
       <!-- urn:oid:2.16.840.1.113883.4.642.1.38 -->
-      <notes value="goal accomplished without complications"/>
+      <note>
+        <text value="goal accomplished without complications"/> 
+      </note>
     </Goal>
   </contained>
   <identifier>
@@ -20,10 +21,10 @@
     <system value="http://www.bmc.nl/zorgportal/identifiers/careplans"/>
     <value value="CP3953"/>
   </identifier>
-  <patient>
+  <subject>
     <reference value="Patient/f001"/>
     <display value="P. van de Heuvel"/>
-  </patient>
+  </subject>
   <status value="completed"/>
   <!-- urn:oid:2.16.840.1.113883.4.642.1.36 -->
   <period>
@@ -31,11 +32,11 @@
     <end value="2013-03-08T09:30:10+01:00"/>
   </period>
   <modified value="2013-06-27T09:30:10+01:00"/>
-  <concern>
+  <addresses>
     <reference value="Condition/f201"/>
     <!--TODO Correcte referentie-->
     <display value="?????"/>
-  </concern>
+  </addresses>
   <participant>
     <member>
       <reference value="Practitioner/f001"/>
@@ -47,7 +48,7 @@
   </goal>
   <activity>
     <detail>
-      <category value="procedure"/>
+      <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="procedure"/></coding></category>
       <!-- urn:oid:2.16.840.1.113883.4.642.1.39 -->
       <code>
         <coding>

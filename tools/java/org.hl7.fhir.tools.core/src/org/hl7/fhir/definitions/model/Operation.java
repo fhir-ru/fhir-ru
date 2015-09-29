@@ -3,7 +3,31 @@ package org.hl7.fhir.definitions.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hl7.fhir.definitions.model.Operation.OperationExample;
+
 public class Operation {
+
+  public static class OperationExample {
+    private String content;
+    private String comment;
+    private boolean response;
+    public OperationExample(String content, String comment, boolean response) {
+      super();
+      this.content = content;
+      this.comment = comment;
+      this.response = response;
+    }
+    public String getContent() {
+      return content;
+    }
+    public String getComment() {
+      return comment;
+    }
+    public boolean isResponse() {
+      return response;
+    }
+   
+  }
 
   private String name;
   private boolean system;
@@ -14,8 +38,9 @@ public class Operation {
   private List<OperationParameter> parameters = new ArrayList<OperationParameter>();
   private String title;
   private String footer;
+  private List<OperationExample> examples = new ArrayList<Operation.OperationExample>();
 
-  public Operation(String name, boolean system, boolean type, boolean instance, String kind, String title, String doco, String footer) {
+  public Operation(String name, boolean system, boolean type, boolean instance, String kind, String title, String doco, String footer, List<OperationExample> examples) {
     this.name = name;
     this.title = title;
     this.system = system;
@@ -24,7 +49,7 @@ public class Operation {
     this.kind = kind;
     this.doco = doco;
     this.footer = footer;
-    
+    this.examples.addAll(examples);
   }
 
   public String getName() {
@@ -95,6 +120,10 @@ public class Operation {
   public void setFooter(String footer) {
     this.footer = footer;
   }
+  
+  public List<OperationExample> getExamples() {
+    return examples;
+  }
 
   public OperationParameter getParameter(String name) {
     for (OperationParameter p : parameters) {
@@ -103,4 +132,5 @@ public class Operation {
     }
     return null;
   }
+
 }

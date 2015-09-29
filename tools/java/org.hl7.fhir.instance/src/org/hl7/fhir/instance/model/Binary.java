@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -50,14 +50,14 @@ public class Binary extends BaseBinary implements IBaseBinary {
     /**
      * MimeType of the binary content represented as a standard MimeType (BCP 13).
      */
-    @Child(name = "contentType", type = {CodeType.class}, order=0, min=1, max=1)
+    @Child(name = "contentType", type = {CodeType.class}, order=0, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="MimeType of the binary content", formalDefinition="MimeType of the binary content represented as a standard MimeType (BCP 13)." )
     protected CodeType contentType;
 
     /**
      * The actual content, base64 encoded.
      */
-    @Child(name = "content", type = {Base64BinaryType.class}, order=1, min=1, max=1)
+    @Child(name = "content", type = {Base64BinaryType.class}, order=1, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="The actual content", formalDefinition="The actual content, base64 encoded." )
     protected Base64BinaryType content;
 

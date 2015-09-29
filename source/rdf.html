@@ -19,7 +19,8 @@ in order to support consistent definitions for schema and UML derived code.
 <%fmtheader rdf%>
 
 <a name="root"> </a>
-<h2>RDF Representation </h2>
+<h2>Resource Description Framework (RDF) Representation </h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: 0</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">Draft</a></td></tr></table>
 
 <div style="background-color: #F0B0B0; border:1px solid black; padding: 5px;">
 <p>
@@ -67,7 +68,7 @@ The FHIR RDF definitions are defined for the following purposes:
  <li>Supporting reasoning across the information/terminology model boundary</li>
 </ul>
 <p>
-The RDF definitions are piblished as a series of <a href="fhir.ttl.zip">turtle</a> files.
+The RDF definitions are published as a series of turtle files <a href="rim.ttl">RIM</a> and <a href="fhir.ttl">FHIR</a>.
 </p>
 
 <h4>RDF Class Definitions</h4>
@@ -75,10 +76,10 @@ The RDF definitions are piblished as a series of <a href="fhir.ttl.zip">turtle</
 The backbone of the RDF definitions are a formal definition of the FHIR resources as RDF classes. 
 Each data type, resource, or element within a resource is defined as rdf:Class with a series of 
 rdf:Property items. Each property has a rdfs:range the specifies the value domain for the property. 
-In most cases, the conversion from the base resource definitions is straight-forward. 
+In most cases, the conversion from the base resource definitions is straightforward. 
 </p>
 <p>
-Constraints are represented intwo ways - as OWL statements, and as SHACL predicates. Implementers
+Constraints are represented in two ways - as OWL statements, and as SHACL predicates. Implementers
 wishing to enforce constraints can use tools from either language, or process the knowledge represented
 in these constraints in any other way they see fit.
 </p>
@@ -102,8 +103,8 @@ they do not define semantics that are necessary to understand the FHIR resources
 </p>
 <p>
 The Ontological RIM is a variant of the <a href="http://www.hl7.org/implement/standards/rim.cfm">v3 RIM</a>
-optimised for it's use as an ontology supporting FHIR and other reasonsing uses. It has the following
-variations from the classical v3 RIM:
+optimised for its use as an ontology supporting FHIR and other reasonsing uses. It has the following
+variations from the classical <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> RIM:
 </p>
 <ul>
  <li>II.root and CD.codeSystem are changed to xs:anyUri so that they can accomodate RDF concepts as well as pure OIDs and UUIDs</li>
@@ -117,6 +118,36 @@ In addition to mappings to the Ontological RIM, the RDF contains mappings to oth
 sources of knowledge, including LOINC, SNOMED CT, OBO, etc. In these cases, the mappings 
 reference concepts that are not defined within the RDF content provided as part of this
 specification, and implementers will need to locate them elsewhere.
+</p>
+
+<a name="decimal"> </a>
+<h3>Decimal Precision</h3>
+<p>
+todo.
+<!-- 
+From Tony:
+This is what it should be:
+ 
+fhir:string rdf:type owl:Class ;
+           
+            rdfs:subClassOf fhir:Element ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty fhir:value ;
+                              owl:allValuesFrom [ rdf:type rdfs:Datatype ;
+                                                  owl:onDatatype xsd:string ;
+                                                  owl:withRestrictions ( [ xsd:minLength 1 ]
+                                                                         [ xsd:maxLength 1000000 ]
+                                                                       )
+                                                ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty fhir:value ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:string
+                            ] ;
+           
+            rdfs:comment "A sequence of Unicode characters with a minimum of 1 and max 1000000" .
+-->
 </p>
 
 <a name="profile"> </a>
@@ -139,7 +170,7 @@ instances using turtle, but production instances can use any valid RDF syntax.
 :resource a fhir:Flag;...
 </pre>
 <p>
-The ":resource" object has a type predicate ("a") the indicates what kind of resource it is. 
+The ":resource" object has a type predicate ("a") that indicates what kind of resource it is. 
 In addition, the object will have a series of predicates for the properties 
 defined in the RDF class definitions:
 </p>
@@ -151,7 +182,7 @@ defined in the RDF class definitions:
   flag:status fhir:flag-status\#active.
 </pre>
 <p>
-Enumerated fields are represented using a anonymous concept that has an rdf:type which 
+Enumerated fields are represented using an anonymous concept that has an rdf:type which 
 is the concept as defined in the RDF code system definitions.
 </p>
 <p>
@@ -182,7 +213,7 @@ There are several special issues for the RDF based representation:
 There are a number of elements in the FHIR resources and data types
 that have an explicit meaning or a default value when they are missing. 
 Default values are represented explicitly in the RDF representation; 
-they are omitted. For example, Patient.active has a default value of 
+they are not not omitted. For example, Patient.active has a default value of 
 "false", and is defined like this:
 </p>
 <pre>
@@ -206,7 +237,7 @@ Since it has a default value, it can never be omitted from an instance:
 Some elements do not have a default value, but they do have a meaning 
 when there is no element present. As an example, 
 if <a href="patient-definitions.html#Patient.animal">Patient.animal</a> is not present, 
-the the patient is a human. In RDF (OWL particularly), reasoners cannot 
+the patient is a human. In RDF (OWL particularly), reasoners cannot 
 infer meaning from missing elements, so the element must always be present,
 but may have a value of http://hl7.org/fhir/nil (in RDF, fhir:nil).
 </p>
@@ -226,8 +257,8 @@ If the patient is human then the representation will be:
 </pre>
 <p>
 Note: fhir:nil may be used for any property that has no value in a JSON or XML 
-instance, but  when the element has a 'meaning when missing', there SHALL be either
-a value of fhir:nil in the instance.
+instance, but when the element has a 'meaning when missing', there SHALL be either
+an explicit value or else fhir:nil in the instance.
 </p>
 <h4>Order</h4>
 <p>
@@ -299,17 +330,17 @@ or a complex object with further extensions.
 </p>
 <h4>Concept References</h4>
 <p>
-The data type <a href="datatypes.html#Coding">Coding</a> and it's 
+The data type <a href="datatypes.html#Coding">Coding</a> and its 
 container <a href="datatypes.html#CodeableConcept">CodeableConcept</a> 
 represent references from a resource to a separate knowledge container. 
-The definitions of the Coding data type is constained by operational 
+The definitions of the Coding data type are constained by operational 
 considerations around incomplete knowledge, longitudinal version issues, 
-use across multiple contexts, etc, so a mapping process is required to 
+use across multiple contexts, etc., so a mapping process is required to 
 match the information that constitutes the Coding reference to the target
 RDF concept on which reasoning will be based. 
 </p>
 <p>
-For instance, a reference to a LOINC code in an JSON resource 
+For instance, a reference to a LOINC code in a JSON resource 
 instance takes this form: 
 </p>
 <pre class="json">
@@ -380,7 +411,7 @@ can be carried as a normal FHIR extension in both the XML and JSON forms:
 <p>
 Implementers should note that these type assertions often reference 
 local ontologies, and the correct URI may be scope dependent or 
-may vary on a different lifecycle to the coding information itself, 
+may vary on a different lifecycle due to the coding information itself, 
 and so it is usually not appropriate to persist these references.
 </p>
 <p>
@@ -392,7 +423,7 @@ on the Coding.
 <h4>Resource References</h4>
 <p>
 The <a href="references.html#Reference">Reference</a> data type 
-represents a reference from a resource to to another. The reference 
+represents a reference from one resource to another. The reference 
 may be a relative URL, and resolution is subject to local 
 rules and context (e.g. server API [base], or context in a bundle). 
 For the same reasons as with Concept References, this can be reconciled
@@ -408,7 +439,7 @@ a reference to a resource would be represented like this in JSON:
 }
 </pre>
 <p>
-In RDF, this is represented as a an anonymous instance of the data type reference:
+In RDF, this is represented as an anonymous instance of the data type reference:
 </p>
 <pre class="rdf">
 :resource a fhir:Observation;
@@ -430,7 +461,7 @@ subject is directly assigned to the instance:
 <p>
 The details of the reference are added to the target resource. 
 <i>TODO: this means that traceability of the reference is lost, and it's not round-trippable
-if the reconciliation includes resources that have more one literal value to reference the 
+if the reconciliation includes resources that have more than one literal value to reference in the 
 target resource</i>
 </p>
 

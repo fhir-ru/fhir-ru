@@ -2,6 +2,7 @@
 
 
 <div>
+<a name="scope"> </a>
 <h2>Scope and Usage</h2>
 <p>
 This specification defines a series of different types of resource that can be used to exchange and/or store data 
@@ -34,10 +35,11 @@ Basic definitions:
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Boundaries and Relationships</h2>
 
 <p>
-All resources have the following optional or mandatory elements and properties:
+The following optional elements and properties are defined for all resources:
 </p>
 <ul>
  <li>An identity</li>
@@ -46,7 +48,7 @@ All resources have the following optional or mandatory elements and properties:
  <li>A reference to "Implicit Rules"</li>
 </ul>
 <p>
-Most resources are derived from <a href="domainresource.html">Domain Resources</a> - so they also contain text, contained resources, extensions,
+Most resources are derived from <a href="domainresource.html">Domain Resources</a> - so they also can contain text, contained resources, extensions,
 and data elements specific to the particular domain of the resource. There is a special type of resource called <a href="bundle.html">Bundle</a> for collections of resources. 
 </p>
 <p>

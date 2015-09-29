@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -49,11 +49,11 @@ public class VisionPrescription extends DomainResource {
 
     public enum VisionEyes {
         /**
-         * right eye
+         * Right Eye
          */
         RIGHT, 
         /**
-         * left eye
+         * Left Eye
          */
         LEFT, 
         /**
@@ -78,22 +78,22 @@ public class VisionPrescription extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case RIGHT: return "http://hl7.org/fhir/eye-codes";
-            case LEFT: return "http://hl7.org/fhir/eye-codes";
+            case RIGHT: return "http://hl7.org/fhir/vision-eye-codes";
+            case LEFT: return "http://hl7.org/fhir/vision-eye-codes";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case RIGHT: return "right eye";
-            case LEFT: return "left eye";
+            case RIGHT: return "Right Eye";
+            case LEFT: return "Left Eye";
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case RIGHT: return "Right";
-            case LEFT: return "Left";
+            case RIGHT: return "Right Eye";
+            case LEFT: return "Left Eye";
             default: return "?";
           }
         }
@@ -164,10 +164,10 @@ public class VisionPrescription extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case UP: return "http://hl7.org/fhir/base-codes";
-            case DOWN: return "http://hl7.org/fhir/base-codes";
-            case IN: return "http://hl7.org/fhir/base-codes";
-            case OUT: return "http://hl7.org/fhir/base-codes";
+            case UP: return "http://hl7.org/fhir/vision-base-codes";
+            case DOWN: return "http://hl7.org/fhir/vision-base-codes";
+            case IN: return "http://hl7.org/fhir/vision-base-codes";
+            case OUT: return "http://hl7.org/fhir/vision-base-codes";
             default: return "?";
           }
         }
@@ -222,111 +222,111 @@ public class VisionPrescription extends DomainResource {
     @Block()
     public static class VisionPrescriptionDispenseComponent extends BackboneElement implements IBaseBackboneElement {
         /**
-         * Identifies the type of Vision correction product which is required for the patient.
+         * Identifies the type of vision correction product which is required for the patient.
          */
-        @Child(name = "product", type = {Coding.class}, order=1, min=1, max=1)
-        @Description(shortDefinition="Product to be supplied", formalDefinition="Identifies the type of Vision correction product which is required for the patient." )
+        @Child(name = "product", type = {Coding.class}, order=1, min=1, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Product to be supplied", formalDefinition="Identifies the type of vision correction product which is required for the patient." )
         protected Coding product;
 
         /**
          * The eye for which the lens applies.
          */
-        @Child(name = "eye", type = {CodeType.class}, order=2, min=0, max=1)
+        @Child(name = "eye", type = {CodeType.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="right | left", formalDefinition="The eye for which the lens applies." )
         protected Enumeration<VisionEyes> eye;
 
         /**
          * Lens power measured in diopters (0.25 units).
          */
-        @Child(name = "sphere", type = {DecimalType.class}, order=3, min=0, max=1)
+        @Child(name = "sphere", type = {DecimalType.class}, order=3, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Lens sphere", formalDefinition="Lens power measured in diopters (0.25 units)." )
         protected DecimalType sphere;
 
         /**
          * Power adjustment for astigmatism measured in diopters (0.25 units).
          */
-        @Child(name = "cylinder", type = {DecimalType.class}, order=4, min=0, max=1)
+        @Child(name = "cylinder", type = {DecimalType.class}, order=4, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Lens cylinder", formalDefinition="Power adjustment for astigmatism measured in diopters (0.25 units)." )
         protected DecimalType cylinder;
 
         /**
          * Adjustment for astigmatism measured in integer degrees.
          */
-        @Child(name = "axis", type = {IntegerType.class}, order=5, min=0, max=1)
+        @Child(name = "axis", type = {IntegerType.class}, order=5, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Lens axis", formalDefinition="Adjustment for astigmatism measured in integer degrees." )
         protected IntegerType axis;
 
         /**
          * Amount of prism to compensate for eye alignment in fractional units.
          */
-        @Child(name = "prism", type = {DecimalType.class}, order=6, min=0, max=1)
+        @Child(name = "prism", type = {DecimalType.class}, order=6, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Lens prism", formalDefinition="Amount of prism to compensate for eye alignment in fractional units." )
         protected DecimalType prism;
 
         /**
          * The relative base, or reference lens edge, for the prism.
          */
-        @Child(name = "base", type = {CodeType.class}, order=7, min=0, max=1)
+        @Child(name = "base", type = {CodeType.class}, order=7, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="up | down | in | out", formalDefinition="The relative base, or reference lens edge, for the prism." )
         protected Enumeration<VisionBase> base;
 
         /**
          * Power adjustment for multifocal lenses measured in diopters (0.25 units).
          */
-        @Child(name = "add", type = {DecimalType.class}, order=8, min=0, max=1)
+        @Child(name = "add", type = {DecimalType.class}, order=8, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Lens add", formalDefinition="Power adjustment for multifocal lenses measured in diopters (0.25 units)." )
         protected DecimalType add;
 
         /**
          * Contact lens power measured in diopters (0.25 units).
          */
-        @Child(name = "power", type = {DecimalType.class}, order=9, min=0, max=1)
-        @Description(shortDefinition="Contact Lens power", formalDefinition="Contact lens power measured in diopters (0.25 units)." )
+        @Child(name = "power", type = {DecimalType.class}, order=9, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Contact lens power", formalDefinition="Contact lens power measured in diopters (0.25 units)." )
         protected DecimalType power;
 
         /**
-         * Back Curvature measured in millimeters.
+         * Back curvature measured in millimeters.
          */
-        @Child(name = "backCurve", type = {DecimalType.class}, order=10, min=0, max=1)
-        @Description(shortDefinition="Contact lens back curvature", formalDefinition="Back Curvature measured in millimeters." )
+        @Child(name = "backCurve", type = {DecimalType.class}, order=10, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Contact lens back curvature", formalDefinition="Back curvature measured in millimeters." )
         protected DecimalType backCurve;
 
         /**
          * Contact lens diameter measured in millimeters.
          */
-        @Child(name = "diameter", type = {DecimalType.class}, order=11, min=0, max=1)
-        @Description(shortDefinition="Contact Lens diameter", formalDefinition="Contact lens diameter measured in millimeters." )
+        @Child(name = "diameter", type = {DecimalType.class}, order=11, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Contact lens diameter", formalDefinition="Contact lens diameter measured in millimeters." )
         protected DecimalType diameter;
 
         /**
          * The recommended maximum wear period for the lens.
          */
-        @Child(name = "duration", type = {Quantity.class}, order=12, min=0, max=1)
+        @Child(name = "duration", type = {SimpleQuantity.class}, order=12, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Lens wear duration", formalDefinition="The recommended maximum wear period for the lens." )
-        protected Quantity duration;
+        protected SimpleQuantity duration;
 
         /**
          * Special color or pattern.
          */
-        @Child(name = "color", type = {StringType.class}, order=13, min=0, max=1)
+        @Child(name = "color", type = {StringType.class}, order=13, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Lens add", formalDefinition="Special color or pattern." )
         protected StringType color;
 
         /**
          * Brand recommendations or restrictions.
          */
-        @Child(name = "brand", type = {StringType.class}, order=14, min=0, max=1)
+        @Child(name = "brand", type = {StringType.class}, order=14, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Lens add", formalDefinition="Brand recommendations or restrictions." )
         protected StringType brand;
 
         /**
          * Notes for special requirements such as coatings and lens materials.
          */
-        @Child(name = "notes", type = {StringType.class}, order=15, min=0, max=1)
+        @Child(name = "notes", type = {StringType.class}, order=15, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Notes for coatings", formalDefinition="Notes for special requirements such as coatings and lens materials." )
         protected StringType notes;
 
-        private static final long serialVersionUID = -946795088L;
+        private static final long serialVersionUID = -1586392610L;
 
     /*
      * Constructor
@@ -344,7 +344,7 @@ public class VisionPrescription extends DomainResource {
       }
 
         /**
-         * @return {@link #product} (Identifies the type of Vision correction product which is required for the patient.)
+         * @return {@link #product} (Identifies the type of vision correction product which is required for the patient.)
          */
         public Coding getProduct() { 
           if (this.product == null)
@@ -360,7 +360,7 @@ public class VisionPrescription extends DomainResource {
         }
 
         /**
-         * @param value {@link #product} (Identifies the type of Vision correction product which is required for the patient.)
+         * @param value {@link #product} (Identifies the type of vision correction product which is required for the patient.)
          */
         public VisionPrescriptionDispenseComponent setProduct(Coding value) { 
           this.product = value;
@@ -756,7 +756,7 @@ public class VisionPrescription extends DomainResource {
         }
 
         /**
-         * @return {@link #backCurve} (Back Curvature measured in millimeters.). This is the underlying object with id, value and extensions. The accessor "getBackCurve" gives direct access to the value
+         * @return {@link #backCurve} (Back curvature measured in millimeters.). This is the underlying object with id, value and extensions. The accessor "getBackCurve" gives direct access to the value
          */
         public DecimalType getBackCurveElement() { 
           if (this.backCurve == null)
@@ -776,7 +776,7 @@ public class VisionPrescription extends DomainResource {
         }
 
         /**
-         * @param value {@link #backCurve} (Back Curvature measured in millimeters.). This is the underlying object with id, value and extensions. The accessor "getBackCurve" gives direct access to the value
+         * @param value {@link #backCurve} (Back curvature measured in millimeters.). This is the underlying object with id, value and extensions. The accessor "getBackCurve" gives direct access to the value
          */
         public VisionPrescriptionDispenseComponent setBackCurveElement(DecimalType value) { 
           this.backCurve = value;
@@ -784,14 +784,14 @@ public class VisionPrescription extends DomainResource {
         }
 
         /**
-         * @return Back Curvature measured in millimeters.
+         * @return Back curvature measured in millimeters.
          */
         public BigDecimal getBackCurve() { 
           return this.backCurve == null ? null : this.backCurve.getValue();
         }
 
         /**
-         * @param value Back Curvature measured in millimeters.
+         * @param value Back curvature measured in millimeters.
          */
         public VisionPrescriptionDispenseComponent setBackCurve(BigDecimal value) { 
           if (value == null)
@@ -856,12 +856,12 @@ public class VisionPrescription extends DomainResource {
         /**
          * @return {@link #duration} (The recommended maximum wear period for the lens.)
          */
-        public Quantity getDuration() { 
+        public SimpleQuantity getDuration() { 
           if (this.duration == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create VisionPrescriptionDispenseComponent.duration");
             else if (Configuration.doAutoCreate())
-              this.duration = new Quantity(); // cc
+              this.duration = new SimpleQuantity(); // cc
           return this.duration;
         }
 
@@ -872,7 +872,7 @@ public class VisionPrescription extends DomainResource {
         /**
          * @param value {@link #duration} (The recommended maximum wear period for the lens.)
          */
-        public VisionPrescriptionDispenseComponent setDuration(Quantity value) { 
+        public VisionPrescriptionDispenseComponent setDuration(SimpleQuantity value) { 
           this.duration = value;
           return this;
         }
@@ -1026,7 +1026,7 @@ public class VisionPrescription extends DomainResource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("product", "Coding", "Identifies the type of Vision correction product which is required for the patient.", 0, java.lang.Integer.MAX_VALUE, product));
+          childrenList.add(new Property("product", "Coding", "Identifies the type of vision correction product which is required for the patient.", 0, java.lang.Integer.MAX_VALUE, product));
           childrenList.add(new Property("eye", "code", "The eye for which the lens applies.", 0, java.lang.Integer.MAX_VALUE, eye));
           childrenList.add(new Property("sphere", "decimal", "Lens power measured in diopters (0.25 units).", 0, java.lang.Integer.MAX_VALUE, sphere));
           childrenList.add(new Property("cylinder", "decimal", "Power adjustment for astigmatism measured in diopters (0.25 units).", 0, java.lang.Integer.MAX_VALUE, cylinder));
@@ -1035,9 +1035,9 @@ public class VisionPrescription extends DomainResource {
           childrenList.add(new Property("base", "code", "The relative base, or reference lens edge, for the prism.", 0, java.lang.Integer.MAX_VALUE, base));
           childrenList.add(new Property("add", "decimal", "Power adjustment for multifocal lenses measured in diopters (0.25 units).", 0, java.lang.Integer.MAX_VALUE, add));
           childrenList.add(new Property("power", "decimal", "Contact lens power measured in diopters (0.25 units).", 0, java.lang.Integer.MAX_VALUE, power));
-          childrenList.add(new Property("backCurve", "decimal", "Back Curvature measured in millimeters.", 0, java.lang.Integer.MAX_VALUE, backCurve));
+          childrenList.add(new Property("backCurve", "decimal", "Back curvature measured in millimeters.", 0, java.lang.Integer.MAX_VALUE, backCurve));
           childrenList.add(new Property("diameter", "decimal", "Contact lens diameter measured in millimeters.", 0, java.lang.Integer.MAX_VALUE, diameter));
-          childrenList.add(new Property("duration", "Quantity", "The recommended maximum wear period for the lens.", 0, java.lang.Integer.MAX_VALUE, duration));
+          childrenList.add(new Property("duration", "SimpleQuantity", "The recommended maximum wear period for the lens.", 0, java.lang.Integer.MAX_VALUE, duration));
           childrenList.add(new Property("color", "string", "Special color or pattern.", 0, java.lang.Integer.MAX_VALUE, color));
           childrenList.add(new Property("brand", "string", "Brand recommendations or restrictions.", 0, java.lang.Integer.MAX_VALUE, brand));
           childrenList.add(new Property("notes", "string", "Notes for special requirements such as coatings and lens materials.", 0, java.lang.Integer.MAX_VALUE, notes));
@@ -1107,34 +1107,34 @@ public class VisionPrescription extends DomainResource {
     /**
      * Business identifier which may be used by other parties to reference or identify the prescription.
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Business identifier", formalDefinition="Business identifier which may be used by other parties to reference or identify the prescription." )
     protected List<Identifier> identifier;
 
     /**
      * The date (and perhaps time) when the prescription was written.
      */
-    @Child(name = "dateWritten", type = {DateTimeType.class}, order=1, min=0, max=1)
+    @Child(name = "dateWritten", type = {DateTimeType.class}, order=1, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="When prescription was authorized", formalDefinition="The date (and perhaps time) when the prescription was written." )
     protected DateTimeType dateWritten;
 
     /**
-     * A link to a resource representing the person to whom the Vision products will be supplied.
+     * A link to a resource representing the person to whom the vision products will be supplied.
      */
-    @Child(name = "patient", type = {Patient.class}, order=2, min=0, max=1)
-    @Description(shortDefinition="Who prescription is for", formalDefinition="A link to a resource representing the person to whom the Vision products will be supplied." )
+    @Child(name = "patient", type = {Patient.class}, order=2, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Who prescription is for", formalDefinition="A link to a resource representing the person to whom the vision products will be supplied." )
     protected Reference patient;
 
     /**
-     * The actual object that is the target of the reference (A link to a resource representing the person to whom the Vision products will be supplied.)
+     * The actual object that is the target of the reference (A link to a resource representing the person to whom the vision products will be supplied.)
      */
     protected Patient patientTarget;
 
     /**
      * The healthcare professional responsible for authorizing the prescription.
      */
-    @Child(name = "prescriber", type = {Practitioner.class}, order=3, min=0, max=1)
-    @Description(shortDefinition="Who authorizes the Vision product", formalDefinition="The healthcare professional responsible for authorizing the prescription." )
+    @Child(name = "prescriber", type = {Practitioner.class}, order=3, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Who authorizes the vision product", formalDefinition="The healthcare professional responsible for authorizing the prescription." )
     protected Reference prescriber;
 
     /**
@@ -1145,7 +1145,7 @@ public class VisionPrescription extends DomainResource {
     /**
      * A link to a resource that identifies the particular occurrence of contact between patient and health care provider.
      */
-    @Child(name = "encounter", type = {Encounter.class}, order=4, min=0, max=1)
+    @Child(name = "encounter", type = {Encounter.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Created during encounter / admission / stay", formalDefinition="A link to a resource that identifies the particular occurrence of contact between patient and health care provider." )
     protected Reference encounter;
 
@@ -1157,14 +1157,14 @@ public class VisionPrescription extends DomainResource {
     /**
      * Can be the reason or the indication for writing the prescription.
      */
-    @Child(name = "reason", type = {CodeableConcept.class, Condition.class}, order=5, min=0, max=1)
+    @Child(name = "reason", type = {CodeableConcept.class, Condition.class}, order=5, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Reason or indication for writing the prescription", formalDefinition="Can be the reason or the indication for writing the prescription." )
     protected Type reason;
 
     /**
      * Deals with details of the dispense part of the supply specification.
      */
-    @Child(name = "dispense", type = {}, order=6, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "dispense", type = {}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Vision supply authorization", formalDefinition="Deals with details of the dispense part of the supply specification." )
     protected List<VisionPrescriptionDispenseComponent> dispense;
 
@@ -1267,7 +1267,7 @@ public class VisionPrescription extends DomainResource {
     }
 
     /**
-     * @return {@link #patient} (A link to a resource representing the person to whom the Vision products will be supplied.)
+     * @return {@link #patient} (A link to a resource representing the person to whom the vision products will be supplied.)
      */
     public Reference getPatient() { 
       if (this.patient == null)
@@ -1283,7 +1283,7 @@ public class VisionPrescription extends DomainResource {
     }
 
     /**
-     * @param value {@link #patient} (A link to a resource representing the person to whom the Vision products will be supplied.)
+     * @param value {@link #patient} (A link to a resource representing the person to whom the vision products will be supplied.)
      */
     public VisionPrescription setPatient(Reference value) { 
       this.patient = value;
@@ -1291,7 +1291,7 @@ public class VisionPrescription extends DomainResource {
     }
 
     /**
-     * @return {@link #patient} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (A link to a resource representing the person to whom the Vision products will be supplied.)
+     * @return {@link #patient} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (A link to a resource representing the person to whom the vision products will be supplied.)
      */
     public Patient getPatientTarget() { 
       if (this.patientTarget == null)
@@ -1303,7 +1303,7 @@ public class VisionPrescription extends DomainResource {
     }
 
     /**
-     * @param value {@link #patient} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (A link to a resource representing the person to whom the Vision products will be supplied.)
+     * @param value {@link #patient} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (A link to a resource representing the person to whom the vision products will be supplied.)
      */
     public VisionPrescription setPatientTarget(Patient value) { 
       this.patientTarget = value;
@@ -1487,7 +1487,7 @@ public class VisionPrescription extends DomainResource {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "Business identifier which may be used by other parties to reference or identify the prescription.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("dateWritten", "dateTime", "The date (and perhaps time) when the prescription was written.", 0, java.lang.Integer.MAX_VALUE, dateWritten));
-        childrenList.add(new Property("patient", "Reference(Patient)", "A link to a resource representing the person to whom the Vision products will be supplied.", 0, java.lang.Integer.MAX_VALUE, patient));
+        childrenList.add(new Property("patient", "Reference(Patient)", "A link to a resource representing the person to whom the vision products will be supplied.", 0, java.lang.Integer.MAX_VALUE, patient));
         childrenList.add(new Property("prescriber", "Reference(Practitioner)", "The healthcare professional responsible for authorizing the prescription.", 0, java.lang.Integer.MAX_VALUE, prescriber));
         childrenList.add(new Property("encounter", "Reference(Encounter)", "A link to a resource that identifies the particular occurrence of contact between patient and health care provider.", 0, java.lang.Integer.MAX_VALUE, encounter));
         childrenList.add(new Property("reason[x]", "CodeableConcept|Reference(Condition)", "Can be the reason or the indication for writing the prescription.", 0, java.lang.Integer.MAX_VALUE, reason));
@@ -1555,13 +1555,13 @@ public class VisionPrescription extends DomainResource {
 
   @SearchParamDefinition(name="datewritten", path="VisionPrescription.dateWritten", description="Return prescriptions written on this date", type="date" )
   public static final String SP_DATEWRITTEN = "datewritten";
-  @SearchParamDefinition(name="patient", path="VisionPrescription.patient", description="The identity of a patient to list dispenses  for", type="reference" )
+  @SearchParamDefinition(name="patient", path="VisionPrescription.patient", description="The identity of a patient to list dispenses for", type="reference" )
   public static final String SP_PATIENT = "patient";
-  @SearchParamDefinition(name="prescriber", path="VisionPrescription.prescriber", description="Who authorizes the Vision product", type="reference" )
+  @SearchParamDefinition(name="prescriber", path="VisionPrescription.prescriber", description="Who authorizes the vision product", type="reference" )
   public static final String SP_PRESCRIBER = "prescriber";
-  @SearchParamDefinition(name="encounter", path="VisionPrescription.encounter", description="Return prescriptions with this encounter identity", type="reference" )
+  @SearchParamDefinition(name="encounter", path="VisionPrescription.encounter", description="Return prescriptions with this encounter identifier", type="reference" )
   public static final String SP_ENCOUNTER = "encounter";
-  @SearchParamDefinition(name="identifier", path="VisionPrescription.identifier", description="Return prescriptions with this external identity", type="token" )
+  @SearchParamDefinition(name="identifier", path="VisionPrescription.identifier", description="Return prescriptions with this external identifier", type="token" )
   public static final String SP_IDENTIFIER = "identifier";
 
 }

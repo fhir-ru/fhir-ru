@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -41,22 +41,22 @@ import org.hl7.fhir.instance.model.annotations.Description;
 import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.api.*;
 /**
- * Record of delivery of what is supply.
+ * Record of delivery of what is supplied.
  */
 @ResourceDef(name="SupplyDelivery", profile="http://hl7.org/fhir/Profile/SupplyDelivery")
 public class SupplyDelivery extends DomainResource {
 
     public enum SupplyDeliveryStatus {
         /**
-         * Supply has been requested, but not delivered
+         * Supply has been requested, but not delivered.
          */
         INPROGRESS, 
         /**
-         * Supply has been delivered. ( "completed")
+         * Supply has been delivered ("completed").
          */
         COMPLETED, 
         /**
-         * Dispensing was not completed
+         * Dispensing was not completed.
          */
         ABANDONED, 
         /**
@@ -84,17 +84,17 @@ public class SupplyDelivery extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case INPROGRESS: return "http://hl7.org/fhir/valueset-supplydelivery-status";
-            case COMPLETED: return "http://hl7.org/fhir/valueset-supplydelivery-status";
-            case ABANDONED: return "http://hl7.org/fhir/valueset-supplydelivery-status";
+            case INPROGRESS: return "http://hl7.org/fhir/supplydelivery-status";
+            case COMPLETED: return "http://hl7.org/fhir/supplydelivery-status";
+            case ABANDONED: return "http://hl7.org/fhir/supplydelivery-status";
             default: return "?";
           }
         }
         public String getDefinition() {
           switch (this) {
-            case INPROGRESS: return "Supply has been requested, but not delivered";
-            case COMPLETED: return "Supply has been delivered. ( 'completed')";
-            case ABANDONED: return "Dispensing was not completed";
+            case INPROGRESS: return "Supply has been requested, but not delivered.";
+            case COMPLETED: return "Supply has been delivered (\"completed\").";
+            case ABANDONED: return "Dispensing was not completed.";
             default: return "?";
           }
         }
@@ -135,21 +135,21 @@ public class SupplyDelivery extends DomainResource {
     /**
      * Identifier assigned by the dispensing facility when the item(s) is dispensed.
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=1)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="External identifier", formalDefinition="Identifier assigned by the dispensing facility when the item(s) is dispensed." )
     protected Identifier identifier;
 
     /**
      * A code specifying the state of the dispense event.
      */
-    @Child(name = "status", type = {CodeType.class}, order=1, min=0, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=1, min=0, max=1, modifier=true, summary=true)
     @Description(shortDefinition="in-progress | completed | abandoned", formalDefinition="A code specifying the state of the dispense event." )
     protected Enumeration<SupplyDeliveryStatus> status;
 
     /**
      * A link to a resource representing the person whom the delivered item is for.
      */
-    @Child(name = "patient", type = {Patient.class}, order=2, min=0, max=1)
+    @Child(name = "patient", type = {Patient.class}, order=2, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Patient for whom the item is supplied", formalDefinition="A link to a resource representing the person whom the delivered item is for." )
     protected Reference patient;
 
@@ -161,33 +161,33 @@ public class SupplyDelivery extends DomainResource {
     /**
      * Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.
      */
-    @Child(name = "type", type = {CodeableConcept.class}, order=3, min=0, max=1)
+    @Child(name = "type", type = {CodeableConcept.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Category of dispense event", formalDefinition="Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc." )
     protected CodeableConcept type;
 
     /**
      * The amount of supply that has been dispensed. Includes unit of measure.
      */
-    @Child(name = "quantity", type = {Quantity.class}, order=4, min=0, max=1)
+    @Child(name = "quantity", type = {SimpleQuantity.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Amount dispensed", formalDefinition="The amount of supply that has been dispensed. Includes unit of measure." )
-    protected Quantity quantity;
+    protected SimpleQuantity quantity;
 
     /**
-     * Identifies the medication or substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.
+     * Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.
      */
-    @Child(name = "suppliedItem", type = {Medication.class, Substance.class, Device.class}, order=5, min=0, max=1)
-    @Description(shortDefinition="Medication, Substance, or Device supplied", formalDefinition="Identifies the medication or substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list." )
+    @Child(name = "suppliedItem", type = {Medication.class, Substance.class, Device.class}, order=5, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Medication, Substance, or Device supplied", formalDefinition="Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list." )
     protected Reference suppliedItem;
 
     /**
-     * The actual object that is the target of the reference (Identifies the medication or substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
+     * The actual object that is the target of the reference (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
      */
     protected Resource suppliedItemTarget;
 
     /**
      * The individual responsible for dispensing the medication, supplier or device.
      */
-    @Child(name = "supplier", type = {Practitioner.class}, order=6, min=0, max=1)
+    @Child(name = "supplier", type = {Practitioner.class}, order=6, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Dispenser", formalDefinition="The individual responsible for dispensing the medication, supplier or device." )
     protected Reference supplier;
 
@@ -199,21 +199,21 @@ public class SupplyDelivery extends DomainResource {
     /**
      * The time the dispense event occurred.
      */
-    @Child(name = "whenPrepared", type = {Period.class}, order=7, min=0, max=1)
+    @Child(name = "whenPrepared", type = {Period.class}, order=7, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Dispensing time", formalDefinition="The time the dispense event occurred." )
     protected Period whenPrepared;
 
     /**
      * The time the dispensed item was sent or handed to the patient (or agent).
      */
-    @Child(name = "time", type = {DateTimeType.class}, order=8, min=0, max=1)
+    @Child(name = "time", type = {DateTimeType.class}, order=8, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Handover time", formalDefinition="The time the dispensed item was sent or handed to the patient (or agent)." )
     protected DateTimeType time;
 
     /**
      * Identification of the facility/location where the Supply was shipped to, as part of the dispense event.
      */
-    @Child(name = "destination", type = {Location.class}, order=9, min=0, max=1)
+    @Child(name = "destination", type = {Location.class}, order=9, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Where the Supply was sent", formalDefinition="Identification of the facility/location where the Supply was shipped to, as part of the dispense event." )
     protected Reference destination;
 
@@ -225,7 +225,7 @@ public class SupplyDelivery extends DomainResource {
     /**
      * Identifies the person who picked up the Supply.
      */
-    @Child(name = "receiver", type = {Practitioner.class}, order=10, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "receiver", type = {Practitioner.class}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Who collected the Supply", formalDefinition="Identifies the person who picked up the Supply." )
     protected List<Reference> receiver;
     /**
@@ -234,7 +234,7 @@ public class SupplyDelivery extends DomainResource {
     protected List<Practitioner> receiverTarget;
 
 
-    private static final long serialVersionUID = 1938067331L;
+    private static final long serialVersionUID = -1520129707L;
 
   /*
    * Constructor
@@ -387,12 +387,12 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @return {@link #quantity} (The amount of supply that has been dispensed. Includes unit of measure.)
      */
-    public Quantity getQuantity() { 
+    public SimpleQuantity getQuantity() { 
       if (this.quantity == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create SupplyDelivery.quantity");
         else if (Configuration.doAutoCreate())
-          this.quantity = new Quantity(); // cc
+          this.quantity = new SimpleQuantity(); // cc
       return this.quantity;
     }
 
@@ -403,13 +403,13 @@ public class SupplyDelivery extends DomainResource {
     /**
      * @param value {@link #quantity} (The amount of supply that has been dispensed. Includes unit of measure.)
      */
-    public SupplyDelivery setQuantity(Quantity value) { 
+    public SupplyDelivery setQuantity(SimpleQuantity value) { 
       this.quantity = value;
       return this;
     }
 
     /**
-     * @return {@link #suppliedItem} (Identifies the medication or substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
+     * @return {@link #suppliedItem} (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
      */
     public Reference getSuppliedItem() { 
       if (this.suppliedItem == null)
@@ -425,7 +425,7 @@ public class SupplyDelivery extends DomainResource {
     }
 
     /**
-     * @param value {@link #suppliedItem} (Identifies the medication or substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
+     * @param value {@link #suppliedItem} (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
      */
     public SupplyDelivery setSuppliedItem(Reference value) { 
       this.suppliedItem = value;
@@ -433,14 +433,14 @@ public class SupplyDelivery extends DomainResource {
     }
 
     /**
-     * @return {@link #suppliedItem} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Identifies the medication or substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
+     * @return {@link #suppliedItem} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
      */
     public Resource getSuppliedItemTarget() { 
       return this.suppliedItemTarget;
     }
 
     /**
-     * @param value {@link #suppliedItem} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Identifies the medication or substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
+     * @param value {@link #suppliedItem} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
      */
     public SupplyDelivery setSuppliedItemTarget(Resource value) { 
       this.suppliedItemTarget = value;
@@ -675,8 +675,8 @@ public class SupplyDelivery extends DomainResource {
         childrenList.add(new Property("status", "code", "A code specifying the state of the dispense event.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("patient", "Reference(Patient)", "A link to a resource representing the person whom the delivered item is for.", 0, java.lang.Integer.MAX_VALUE, patient));
         childrenList.add(new Property("type", "CodeableConcept", "Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.", 0, java.lang.Integer.MAX_VALUE, type));
-        childrenList.add(new Property("quantity", "Quantity", "The amount of supply that has been dispensed. Includes unit of measure.", 0, java.lang.Integer.MAX_VALUE, quantity));
-        childrenList.add(new Property("suppliedItem", "Reference(Medication|Substance|Device)", "Identifies the medication or substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.", 0, java.lang.Integer.MAX_VALUE, suppliedItem));
+        childrenList.add(new Property("quantity", "SimpleQuantity", "The amount of supply that has been dispensed. Includes unit of measure.", 0, java.lang.Integer.MAX_VALUE, quantity));
+        childrenList.add(new Property("suppliedItem", "Reference(Medication|Substance|Device)", "Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.", 0, java.lang.Integer.MAX_VALUE, suppliedItem));
         childrenList.add(new Property("supplier", "Reference(Practitioner)", "The individual responsible for dispensing the medication, supplier or device.", 0, java.lang.Integer.MAX_VALUE, supplier));
         childrenList.add(new Property("whenPrepared", "Period", "The time the dispense event occurred.", 0, java.lang.Integer.MAX_VALUE, whenPrepared));
         childrenList.add(new Property("time", "dateTime", "The time the dispensed item was sent or handed to the patient (or agent).", 0, java.lang.Integer.MAX_VALUE, time));

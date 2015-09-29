@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -152,7 +152,7 @@ public class Person extends DomainResource {
         /**
          * The resource to which this actual person is associated.
          */
-        @Child(name = "target", type = {Patient.class, Practitioner.class, RelatedPerson.class, Person.class}, order=1, min=1, max=1)
+        @Child(name = "target", type = {Patient.class, Practitioner.class, RelatedPerson.class, Person.class}, order=1, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="The resource to which this actual person is associated", formalDefinition="The resource to which this actual person is associated." )
         protected Reference target;
 
@@ -164,7 +164,7 @@ public class Person extends DomainResource {
         /**
          * Level of assurance that this link is actually associated with the target resource.
          */
-        @Child(name = "assurance", type = {CodeType.class}, order=2, min=0, max=1)
+        @Child(name = "assurance", type = {CodeType.class}, order=2, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="level1 | level2 | level3 | level4", formalDefinition="Level of assurance that this link is actually associated with the target resource." )
         protected Enumeration<IdentityAssuranceLevel> assurance;
 
@@ -317,79 +317,79 @@ public class Person extends DomainResource {
     /**
      * Identifier for a person within a particular scope.
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
-    @Description(shortDefinition="A Human identifier for this person", formalDefinition="Identifier for a person within a particular scope." )
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="A human identifier for this person", formalDefinition="Identifier for a person within a particular scope." )
     protected List<Identifier> identifier;
 
     /**
      * A name associated with the person.
      */
-    @Child(name = "name", type = {HumanName.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "name", type = {HumanName.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="A name associated with the person", formalDefinition="A name associated with the person." )
     protected List<HumanName> name;
 
     /**
      * A contact detail for the person, e.g. a telephone number or an email address.
      */
-    @Child(name = "telecom", type = {ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "telecom", type = {ContactPoint.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="A contact detail for the person", formalDefinition="A contact detail for the person, e.g. a telephone number or an email address." )
     protected List<ContactPoint> telecom;
 
     /**
      * Administrative Gender.
      */
-    @Child(name = "gender", type = {CodeType.class}, order=3, min=0, max=1)
+    @Child(name = "gender", type = {CodeType.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="male | female | other | unknown", formalDefinition="Administrative Gender." )
     protected Enumeration<AdministrativeGender> gender;
 
     /**
      * The birth date for the person.
      */
-    @Child(name = "birthDate", type = {DateTimeType.class}, order=4, min=0, max=1)
+    @Child(name = "birthDate", type = {DateType.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="The date on which the person was born", formalDefinition="The birth date for the person." )
-    protected DateTimeType birthDate;
+    protected DateType birthDate;
 
     /**
      * One or more addresses for the person.
      */
-    @Child(name = "address", type = {Address.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "address", type = {Address.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="One or more addresses for the person", formalDefinition="One or more addresses for the person." )
     protected List<Address> address;
 
     /**
      * An image that can be displayed as a thumbnail of the person to enhance the identification of the individual.
      */
-    @Child(name = "photo", type = {Attachment.class}, order=6, min=0, max=1)
-    @Description(shortDefinition="Image of the Person", formalDefinition="An image that can be displayed as a thumbnail of the person to enhance the identification of the individual." )
+    @Child(name = "photo", type = {Attachment.class}, order=6, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Image of the person", formalDefinition="An image that can be displayed as a thumbnail of the person to enhance the identification of the individual." )
     protected Attachment photo;
 
     /**
-     * The Organization that is the custodian of the person record.
+     * The organization that is the custodian of the person record.
      */
-    @Child(name = "managingOrganization", type = {Organization.class}, order=7, min=0, max=1)
-    @Description(shortDefinition="The Organization that is the custodian of the person record", formalDefinition="The Organization that is the custodian of the person record." )
+    @Child(name = "managingOrganization", type = {Organization.class}, order=7, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="The organization that is the custodian of the person record", formalDefinition="The organization that is the custodian of the person record." )
     protected Reference managingOrganization;
 
     /**
-     * The actual object that is the target of the reference (The Organization that is the custodian of the person record.)
+     * The actual object that is the target of the reference (The organization that is the custodian of the person record.)
      */
     protected Organization managingOrganizationTarget;
 
     /**
      * Whether this person's record is in active use.
      */
-    @Child(name = "active", type = {BooleanType.class}, order=8, min=0, max=1)
+    @Child(name = "active", type = {BooleanType.class}, order=8, min=0, max=1, modifier=true, summary=true)
     @Description(shortDefinition="This person's record is in active use", formalDefinition="Whether this person's record is in active use." )
     protected BooleanType active;
 
     /**
      * Link to a resource that concerns the same actual person.
      */
-    @Child(name = "link", type = {}, order=9, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "link", type = {}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Link to a resource that concerns the same actual person", formalDefinition="Link to a resource that concerns the same actual person." )
     protected List<PersonLinkComponent> link;
 
-    private static final long serialVersionUID = -2072707611L;
+    private static final long serialVersionUID = -117464654L;
 
   /*
    * Constructor
@@ -570,12 +570,12 @@ public class Person extends DomainResource {
     /**
      * @return {@link #birthDate} (The birth date for the person.). This is the underlying object with id, value and extensions. The accessor "getBirthDate" gives direct access to the value
      */
-    public DateTimeType getBirthDateElement() { 
+    public DateType getBirthDateElement() { 
       if (this.birthDate == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Person.birthDate");
         else if (Configuration.doAutoCreate())
-          this.birthDate = new DateTimeType(); // bb
+          this.birthDate = new DateType(); // bb
       return this.birthDate;
     }
 
@@ -590,7 +590,7 @@ public class Person extends DomainResource {
     /**
      * @param value {@link #birthDate} (The birth date for the person.). This is the underlying object with id, value and extensions. The accessor "getBirthDate" gives direct access to the value
      */
-    public Person setBirthDateElement(DateTimeType value) { 
+    public Person setBirthDateElement(DateType value) { 
       this.birthDate = value;
       return this;
     }
@@ -610,7 +610,7 @@ public class Person extends DomainResource {
         this.birthDate = null;
       else {
         if (this.birthDate == null)
-          this.birthDate = new DateTimeType();
+          this.birthDate = new DateType();
         this.birthDate.setValue(value);
       }
       return this;
@@ -681,7 +681,7 @@ public class Person extends DomainResource {
     }
 
     /**
-     * @return {@link #managingOrganization} (The Organization that is the custodian of the person record.)
+     * @return {@link #managingOrganization} (The organization that is the custodian of the person record.)
      */
     public Reference getManagingOrganization() { 
       if (this.managingOrganization == null)
@@ -697,7 +697,7 @@ public class Person extends DomainResource {
     }
 
     /**
-     * @param value {@link #managingOrganization} (The Organization that is the custodian of the person record.)
+     * @param value {@link #managingOrganization} (The organization that is the custodian of the person record.)
      */
     public Person setManagingOrganization(Reference value) { 
       this.managingOrganization = value;
@@ -705,7 +705,7 @@ public class Person extends DomainResource {
     }
 
     /**
-     * @return {@link #managingOrganization} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The Organization that is the custodian of the person record.)
+     * @return {@link #managingOrganization} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The organization that is the custodian of the person record.)
      */
     public Organization getManagingOrganizationTarget() { 
       if (this.managingOrganizationTarget == null)
@@ -717,7 +717,7 @@ public class Person extends DomainResource {
     }
 
     /**
-     * @param value {@link #managingOrganization} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The Organization that is the custodian of the person record.)
+     * @param value {@link #managingOrganization} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The organization that is the custodian of the person record.)
      */
     public Person setManagingOrganizationTarget(Organization value) { 
       this.managingOrganizationTarget = value;
@@ -815,10 +815,10 @@ public class Person extends DomainResource {
         childrenList.add(new Property("name", "HumanName", "A name associated with the person.", 0, java.lang.Integer.MAX_VALUE, name));
         childrenList.add(new Property("telecom", "ContactPoint", "A contact detail for the person, e.g. a telephone number or an email address.", 0, java.lang.Integer.MAX_VALUE, telecom));
         childrenList.add(new Property("gender", "code", "Administrative Gender.", 0, java.lang.Integer.MAX_VALUE, gender));
-        childrenList.add(new Property("birthDate", "dateTime", "The birth date for the person.", 0, java.lang.Integer.MAX_VALUE, birthDate));
+        childrenList.add(new Property("birthDate", "date", "The birth date for the person.", 0, java.lang.Integer.MAX_VALUE, birthDate));
         childrenList.add(new Property("address", "Address", "One or more addresses for the person.", 0, java.lang.Integer.MAX_VALUE, address));
         childrenList.add(new Property("photo", "Attachment", "An image that can be displayed as a thumbnail of the person to enhance the identification of the individual.", 0, java.lang.Integer.MAX_VALUE, photo));
-        childrenList.add(new Property("managingOrganization", "Reference(Organization)", "The Organization that is the custodian of the person record.", 0, java.lang.Integer.MAX_VALUE, managingOrganization));
+        childrenList.add(new Property("managingOrganization", "Reference(Organization)", "The organization that is the custodian of the person record.", 0, java.lang.Integer.MAX_VALUE, managingOrganization));
         childrenList.add(new Property("active", "boolean", "Whether this person's record is in active use.", 0, java.lang.Integer.MAX_VALUE, active));
         childrenList.add(new Property("link", "", "Link to a resource that concerns the same actual person.", 0, java.lang.Integer.MAX_VALUE, link));
       }
@@ -899,7 +899,9 @@ public class Person extends DomainResource {
     return ResourceType.Person;
    }
 
-  @SearchParamDefinition(name="phonetic", path="", description="A portion of name using some kind of phonetic matching algorithm", type="string" )
+  @SearchParamDefinition(name="phone", path="Person.telecom(system=phone)", description="A value in a phone contact", type="token" )
+  public static final String SP_PHONE = "phone";
+  @SearchParamDefinition(name="phonetic", path="Person.name", description="A portion of name using some kind of phonetic matching algorithm", type="string" )
   public static final String SP_PHONETIC = "phonetic";
   @SearchParamDefinition(name="link", path="Person.link.target", description="Any link has this Patient, Person, RelatedPerson or Practitioner reference", type="reference" )
   public static final String SP_LINK = "link";
@@ -917,21 +919,23 @@ public class Person extends DomainResource {
   public static final String SP_ADDRESSSTATE = "address-state";
   @SearchParamDefinition(name="practitioner", path="Person.link.target", description="The Person links to this Practitioner", type="reference" )
   public static final String SP_PRACTITIONER = "practitioner";
+  @SearchParamDefinition(name="email", path="Person.telecom(system=email)", description="A value in an email contact", type="token" )
+  public static final String SP_EMAIL = "email";
   @SearchParamDefinition(name="address", path="Person.address", description="An address in any kind of address/part", type="string" )
   public static final String SP_ADDRESS = "address";
   @SearchParamDefinition(name="address-use", path="Person.address.use", description="A use code specified in an address", type="token" )
   public static final String SP_ADDRESSUSE = "address-use";
   @SearchParamDefinition(name="name", path="Person.name", description="A portion of name in any name part", type="string" )
   public static final String SP_NAME = "name";
-  @SearchParamDefinition(name="telecom", path="Person.telecom", description="The value in any kind of contact", type="token" )
-  public static final String SP_TELECOM = "telecom";
   @SearchParamDefinition(name="birthdate", path="Person.birthDate", description="The person's date of birth", type="date" )
   public static final String SP_BIRTHDATE = "birthdate";
+  @SearchParamDefinition(name="telecom", path="Person.telecom", description="The value in any kind of contact", type="token" )
+  public static final String SP_TELECOM = "telecom";
   @SearchParamDefinition(name="gender", path="Person.gender", description="The gender of the person", type="token" )
   public static final String SP_GENDER = "gender";
   @SearchParamDefinition(name="identifier", path="Person.identifier", description="A person Identifier", type="token" )
   public static final String SP_IDENTIFIER = "identifier";
-  @SearchParamDefinition(name="address-postalcode", path="Person.address.postalCode", description="A postalCode specified in an address", type="string" )
+  @SearchParamDefinition(name="address-postalcode", path="Person.address.postalCode", description="A postal code specified in an address", type="string" )
   public static final String SP_ADDRESSPOSTALCODE = "address-postalcode";
 
 }

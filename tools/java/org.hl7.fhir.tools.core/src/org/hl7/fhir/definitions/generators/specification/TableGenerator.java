@@ -1,17 +1,28 @@
 package org.hl7.fhir.definitions.generators.specification;
 
+import org.hl7.fhir.definitions.generators.specification.TableGenerator.RenderMode;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
+import org.hl7.fhir.definitions.model.ProfiledType;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.Utilities;
-import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator;
-import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator.Cell;
-import org.hl7.fhir.utilities.xhtml.HeirarchicalTableGenerator.Row;
+import org.hl7.fhir.utilities.xhtml.HierarchicalTableGenerator;
+import org.hl7.fhir.utilities.xhtml.HierarchicalTableGenerator.Cell;
+import org.hl7.fhir.utilities.xhtml.HierarchicalTableGenerator.Row;
 
 public class TableGenerator extends BaseGenerator {
+  public enum RenderMode {
+    DATATYPE,
+    RESOURCE,
+    LOGICAL
+  }
+
+  private final boolean ADD_REFERENCE_TO_TABLE = true;
+  
   protected String dest; 
   protected String pageName;
   protected boolean inlineGraphics;
@@ -28,7 +39,7 @@ public class TableGenerator extends BaseGenerator {
   protected boolean dictLinks() {
     return pageName != null;
   }
-  protected Row genElement(ElementDefn e, HeirarchicalTableGenerator gen, boolean resource, String path, boolean isProfile) throws Exception {
+  protected Row genElement(ElementDefn e, HierarchicalTableGenerator gen, boolean resource, String path, boolean isProfile, String prefix, RenderMode mode) throws Exception {
     Row row = gen.new Row();
 
     row.setAnchor(path);
@@ -48,27 +59,34 @@ public class TableGenerator extends BaseGenerator {
     if (resource) {
       row.getCells().add(gen.new Cell()); 
   
-      row.setIcon("icon_resource.png", HeirarchicalTableGenerator.TEXT_ICON_RESOURCE);
+      row.setIcon("icon_resource.png", HierarchicalTableGenerator.TEXT_ICON_RESOURCE);
       if (Utilities.noString(e.typeCode()))
         row.getCells().add(gen.new Cell(null, null, "n/a", null, null)); 
       else
-        row.getCells().add(gen.new Cell(null, e.typeCode().toLowerCase()+".html", e.typeCode(), null, null)); 
+        row.getCells().add(gen.new Cell(null, prefix+e.typeCode().toLowerCase()+".html", e.typeCode(), null, null)); 
       // todo: base elements
     } else {
       if (!e.getElements().isEmpty()) {
         row.getCells().add(gen.new Cell(null, null, path.contains(".") ? e.describeCardinality() : "", null, null)); 
-        row.setIcon("icon_element.gif", HeirarchicalTableGenerator.TEXT_ICON_ELEMENT);
-        row.getCells().add(gen.new Cell(null, "element.html", "Element", null, null));   
+        row.setIcon("icon_element.gif", HierarchicalTableGenerator.TEXT_ICON_ELEMENT);
+        if (mode == RenderMode.RESOURCE)
+          row.getCells().add(gen.new Cell(null, prefix+"backboneelement.html", "BackboneElement", null, null));
+        else
+          row.getCells().add(gen.new Cell(null, prefix+"element.html", "Element", null, null));   
       } else if (e.getTypes().size() == 1) {
         row.getCells().add(gen.new Cell(null, null, path.contains(".") ? e.describeCardinality() : "", null, null)); 
         String t = e.getTypes().get(0).getName();
         Cell c;
         if (t.startsWith("@")) {
-          row.setIcon("icon_reuse.png", HeirarchicalTableGenerator.TEXT_ICON_REUSE);
+          row.setIcon("icon_reuse.png", HierarchicalTableGenerator.TEXT_ICON_REUSE);
           c = gen.new Cell("see ", "#"+t.substring(1), t.substring(t.lastIndexOf(".")+1), t.substring(1), null);
         } else if (t.equals("Reference")) {
-          row.setIcon("icon_reference.png", HeirarchicalTableGenerator.TEXT_ICON_REFERENCE);
+          row.setIcon("icon_reference.png", HierarchicalTableGenerator.TEXT_ICON_REFERENCE);
           c = gen.new Cell();
+          if (ADD_REFERENCE_TO_TABLE) {
+          c.getPieces().add(gen.new Piece(prefix+"references.html", "Reference", null));
+          c.getPieces().add(gen.new Piece(null, "(", null));
+          }
           boolean first = true;
           for (String rt : e.getTypes().get(0).getParams()) {
             if (!first)
@@ -76,23 +94,25 @@ public class TableGenerator extends BaseGenerator {
             if (first && isProfile && e.getTypes().get(0).getProfile() != null)
               c.getPieces().add(gen.new Piece(null, e.getTypes().get(0).getProfile(), null));
             else
-              c.getPieces().add(gen.new Piece(findPage(rt)+".html", rt, null));
+              c.getPieces().add(gen.new Piece(prefix+findPage(rt)+".html", rt, null));
             first = false;
           }
+          if (ADD_REFERENCE_TO_TABLE) 
+            c.getPieces().add(gen.new Piece(null, ")", null));
         } else if (definitions.getPrimitives().containsKey(t)) {
-          row.setIcon("icon_primitive.png", HeirarchicalTableGenerator.TEXT_ICON_PRIMITIVE);
-          c = gen.new Cell(null, "datatypes.html#"+t, t, null, null);
+          row.setIcon("icon_primitive.png", HierarchicalTableGenerator.TEXT_ICON_PRIMITIVE);
+          c = gen.new Cell(null, prefix+"datatypes.html#"+t, t, null, null);
         } else {
           if (t.equals("Extension"))
-            row.setIcon("icon_extension_simple.png", HeirarchicalTableGenerator.TEXT_ICON_EXTENSION);
+            row.setIcon("icon_extension_simple.png", HierarchicalTableGenerator.TEXT_ICON_EXTENSION);
           else
-            row.setIcon("icon_datatype.gif", HeirarchicalTableGenerator.TEXT_ICON_DATATYPE);
-          c = gen.new Cell(null, definitions.getSrcFile(t)+".html#"+t.replace("*", "open"), t, null, null);
+            row.setIcon("icon_datatype.gif", HierarchicalTableGenerator.TEXT_ICON_DATATYPE);
+          c = gen.new Cell(null, prefix+definitions.getSrcFile(t)+".html#"+t.replace("*", "open"), t, null, null);
         }
         row.getCells().add(c);
       } else {
         row.getCells().add(gen.new Cell(null, null, e.describeCardinality(), null, null));   
-        row.setIcon("icon_choice.gif", HeirarchicalTableGenerator.TEXT_ICON_CHOICE);
+        row.setIcon("icon_choice.gif", HierarchicalTableGenerator.TEXT_ICON_CHOICE);
         row.getCells().add(gen.new Cell(null, null, "", null, null));   
       }
     }
@@ -109,11 +129,11 @@ public class TableGenerator extends BaseGenerator {
     if (e.hasBinding() && e.getBinding() != null && e.getBinding().getBinding() != BindingMethod.Unbound) {
       if (cc.getPieces().size() == 1)
         cc.addPiece(gen.new Piece("br"));
-      cc.getPieces().add(gen.new Piece(getBindingLink(e), e.getBinding().getValueSet() != null ? e.getBinding().getValueSet().getName() : e.getBinding().getName(), 
+      cc.getPieces().add(gen.new Piece(getBindingLink(prefix, e), e.getBinding().getValueSet() != null ? e.getBinding().getValueSet().getName() : e.getBinding().getName(), 
             e.getBinding().getDefinition()));
       cc.getPieces().add(gen.new Piece(null, " (", null));
       BindingSpecification b = e.getBinding();
-      cc.getPieces().add(gen.new Piece("terminologies.html#"+b.getStrength().toCode(), b.getStrength().getDisplay(),  b.getStrength().getDefinition()));
+      cc.getPieces().add(gen.new Piece(prefix+"terminologies.html#"+b.getStrength().toCode(), b.getStrength().getDisplay(),  b.getStrength().getDefinition()));
       cc.getPieces().add(gen.new Piece(null, ")", null));
     }
     for (String name : e.getInvariants().keySet()) {
@@ -121,7 +141,15 @@ public class TableGenerator extends BaseGenerator {
       cc.addPiece(gen.new Piece("br"));
       cc.getPieces().add(gen.new Piece(null, inv.getEnglish(), inv.getId()).setStyle("font-style: italic"));
     }
-    
+
+    if (mode == RenderMode.LOGICAL) {
+      String logical = e.getMappings().get("http://hl7.org/fhir/logical");
+      Cell c = gen.new Cell();
+      row.getCells().add(c);
+      if (logical != null)
+        presentLogicalMapping(gen, c, logical, prefix);
+    }
+      
     if (e.getTypes().size() > 1) {
       // create a child for each choice
       for (TypeRef tr : e.getTypes()) {
@@ -131,27 +159,41 @@ public class TableGenerator extends BaseGenerator {
           choicerow.getCells().add(gen.new Cell(null, null, e.getName().replace("[x]",  "Reference"), null, null));
           choicerow.getCells().add(gen.new Cell());
           choicerow.getCells().add(gen.new Cell(null, null, "", null, null));
-          choicerow.setIcon("icon_reference.png", HeirarchicalTableGenerator.TEXT_ICON_REFERENCE);
+          choicerow.setIcon("icon_reference.png", HierarchicalTableGenerator.TEXT_ICON_REFERENCE);
           Cell c = gen.new Cell();
           choicerow.getCells().add(c);
+          if (ADD_REFERENCE_TO_TABLE) {
+            c.getPieces().add(gen.new Piece(prefix+"references.html", "Reference", null));
+            c.getPieces().add(gen.new Piece(null, "(", null));
+          }
           boolean first = true;
           for (String rt : tr.getParams()) {
             if (!first)
               c.getPieces().add(gen.new Piece(null, " | ", null));
-            c.getPieces().add(gen.new Piece(findPage(rt)+".html", rt, null));
+            c.getPieces().add(gen.new Piece(prefix+findPage(rt)+".html", rt, null));
             first = false;
           }
+          if (ADD_REFERENCE_TO_TABLE) 
+            c.getPieces().add(gen.new Piece(null, ")", null));
+          
         } else if (definitions.getPrimitives().containsKey(t)) {
           choicerow.getCells().add(gen.new Cell(null, null, e.getName().replace("[x]",  Utilities.capitalize(t)), definitions.getPrimitives().get(t).getDefinition(), null));
           choicerow.getCells().add(gen.new Cell());
           choicerow.getCells().add(gen.new Cell(null, null, "", null, null));
-          choicerow.setIcon("icon_primitive.png", HeirarchicalTableGenerator.TEXT_ICON_PRIMITIVE);
-          choicerow.getCells().add(gen.new Cell(null, "datatypes.html#"+t, t, null, null));
+          choicerow.setIcon("icon_primitive.png", HierarchicalTableGenerator.TEXT_ICON_PRIMITIVE);
+          choicerow.getCells().add(gen.new Cell(null, prefix+"datatypes.html#"+t, t, null, null));
+        } else if (definitions.getConstraints().containsKey(t)) {
+          ProfiledType pt = definitions.getConstraints().get(t);
+          choicerow.getCells().add(gen.new Cell(null, null, e.getName().replace("[x]", Utilities.capitalize(pt.getBaseType())), definitions.getTypes().containsKey(t) ? definitions.getTypes().get(t).getDefinition() : null, null));
+          choicerow.getCells().add(gen.new Cell());
+          choicerow.getCells().add(gen.new Cell(null, null, "", null, null));
+          choicerow.setIcon("icon_datatype.gif", HierarchicalTableGenerator.TEXT_ICON_DATATYPE);
+          choicerow.getCells().add(gen.new Cell(null, definitions.getSrcFile(t)+".html#"+t.replace("*", "open"), t, null, null));
         } else {
           choicerow.getCells().add(gen.new Cell(null, null, e.getName().replace("[x]",  Utilities.capitalize(t)), definitions.getTypes().containsKey(t) ? definitions.getTypes().get(t).getDefinition() : null, null));
           choicerow.getCells().add(gen.new Cell());
           choicerow.getCells().add(gen.new Cell(null, null, "", null, null));
-          choicerow.setIcon("icon_datatype.gif", HeirarchicalTableGenerator.TEXT_ICON_DATATYPE);
+          choicerow.setIcon("icon_datatype.gif", HierarchicalTableGenerator.TEXT_ICON_DATATYPE);
           choicerow.getCells().add(gen.new Cell(null, definitions.getSrcFile(t)+".html#"+t.replace("*", "open"), t, null, null));
         }
       
@@ -161,8 +203,61 @@ public class TableGenerator extends BaseGenerator {
       }
     } else
       for (ElementDefn c : e.getElements())
-        row.getSubRows().add(genElement(c, gen, false, path+'.'+c.getName(), isProfile));
+        row.getSubRows().add(genElement(c, gen, false, path+'.'+c.getName(), isProfile, prefix, mode));
     return row;
+  }
+
+  private void presentLogicalMapping(HierarchicalTableGenerator gen, Cell c, String logical, String prefix) {
+    String[] parts = logical.split(" ");
+    boolean first = true;
+    for (String p : parts) {
+      if (first)
+        first = false;
+      else
+        c.addPiece(gen.new Piece(null, " ", null));
+      if (p.contains(":")) {
+        String[] pp = p.split("\\:");
+        presentLogicalMappingWord(gen, c, pp[0], prefix);
+        c.addPiece(gen.new Piece(null, ":", null));
+        if (page.getDefinitions().hasResource(pp[1]))
+          c.addPiece(gen.new Piece(prefix+pp[1].toLowerCase()+".html", pp[1], null));
+        else
+          c.addPiece(gen.new Piece(null, pp[1], null));
+      } else if (p.contains("[")) {
+        String[] pp = p.split("\\[");
+        presentLogicalMappingWord(gen, c, pp[0], prefix);
+        c.addPiece(gen.new Piece(null, "["+pp[1], null));
+      } else {
+        presentLogicalMappingWord(gen, c, p, prefix);
+      }
+    }
+  }
+
+  private void presentLogicalMappingWord(HierarchicalTableGenerator gen, Cell c, String p, String prefix) {
+    if (p.contains(".") && page.getDefinitions().hasResource(p.substring(0, p.indexOf(".")))) {
+      String rn = p.substring(0, p.indexOf("."));
+      String rp = p.substring(p.indexOf(".")+1);
+      c.addPiece(gen.new Piece(prefix+rn.toLowerCase()+".html", rn, null));
+      c.addPiece(gen.new Piece(null, ".", null));
+      ResourceDefn r;
+      ElementDefn e; 
+      try {
+        r = page.getDefinitions().getResourceByName(rn);
+        e = r.getRoot().getElementForPath(p, page.getDefinitions(), "logical mapping", true);
+      } catch (Exception e1) {
+        r = null;
+        e = null;
+      }
+      if (e == null)
+        c.addPiece(gen.new Piece(null, rp, null));
+      else
+        c.addPiece(gen.new Piece(prefix+rn.toLowerCase()+"-definitions.html#"+p, rp, null));
+    } else if (page.getDefinitions().hasResource(p)) {
+      c.addPiece(gen.new Piece(prefix+p.toLowerCase()+".html", p, null));
+    } else {
+      c.addPiece(gen.new Piece(null, p, null));
+    }
+    
   }
 
   private String findPage(String rt) {

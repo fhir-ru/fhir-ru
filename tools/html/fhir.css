@@ -84,6 +84,14 @@ table.bare td {
 	border-spacing: 0;
 }
 
+ul.dict li {
+	font-size: 11px;
+	line-height: 1.2em;
+	font-family: verdana;
+	font-weight: normal;
+	padding: 3px;
+}
+
 table.dict td {
         padding:3px 7px 2px 7px;
 	font-size: 11px;
@@ -562,7 +570,7 @@ x-margin-right: 30px;
 	opacity: 1;
 }
 
-.heirarchy {
+.hierarchy {
   border: 0px;
   padding:0px 4px 0px 4px;
 	font-size: 11px;
@@ -570,7 +578,7 @@ x-margin-right: 30px;
 	vertical-align: top;
 }
 
-tr.heirarchy {
+tr.hierarchy {
   border: 1px #F0F0F0 solid;
   padding:0px 4px 0px 4px;
 	font-size: 11px;
@@ -578,7 +586,7 @@ tr.heirarchy {
 	vertical-align: top;
 }
 
-img.heirarchy {
+img.hierarchy {
   border: 0px;
   padding:0px;
 	vertical-align: top;
@@ -609,4 +617,10 @@ code {
   color: black; 
   display: inline-block; 
   min-width: 2.5em; 
+}
+
+div.warning {
+  background-color: #FFE6E6;
+  border: 1px silver solid;
+  padding: 5px;
 }

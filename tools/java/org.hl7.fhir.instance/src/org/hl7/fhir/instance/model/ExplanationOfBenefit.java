@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -48,16 +48,16 @@ import org.hl7.fhir.instance.model.api.*;
 public class ExplanationOfBenefit extends DomainResource {
 
     /**
-     * The Response Business Identifier.
+     * The Response business identifier.
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
-    @Description(shortDefinition="Business Identifier", formalDefinition="The Response Business Identifier." )
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="Business Identifier", formalDefinition="The Response business identifier." )
     protected List<Identifier> identifier;
 
     /**
      * Original request resource reference.
      */
-    @Child(name = "request", type = {Claim.class}, order=1, min=0, max=1)
+    @Child(name = "request", type = {Claim.class}, order=1, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Claim reference", formalDefinition="Original request resource reference." )
     protected Reference request;
 
@@ -69,42 +69,42 @@ public class ExplanationOfBenefit extends DomainResource {
     /**
      * Transaction status: error, complete.
      */
-    @Child(name = "outcome", type = {CodeType.class}, order=2, min=0, max=1)
+    @Child(name = "outcome", type = {CodeType.class}, order=2, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="complete | error", formalDefinition="Transaction status: error, complete." )
     protected Enumeration<RemittanceOutcome> outcome;
 
     /**
      * A description of the status of the adjudication.
      */
-    @Child(name = "disposition", type = {StringType.class}, order=3, min=0, max=1)
+    @Child(name = "disposition", type = {StringType.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Disposition Message", formalDefinition="A description of the status of the adjudication." )
     protected StringType disposition;
 
     /**
      * The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.
      */
-    @Child(name = "ruleset", type = {Coding.class}, order=4, min=0, max=1)
+    @Child(name = "ruleset", type = {Coding.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Resource version", formalDefinition="The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources." )
     protected Coding ruleset;
 
     /**
      * The style (standard) and version of the original material which was converted into this resource.
      */
-    @Child(name = "originalRuleset", type = {Coding.class}, order=5, min=0, max=1)
+    @Child(name = "originalRuleset", type = {Coding.class}, order=5, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Original version", formalDefinition="The style (standard) and version of the original material which was converted into this resource." )
     protected Coding originalRuleset;
 
     /**
      * The date when the enclosed suite of services were performed or completed.
      */
-    @Child(name = "created", type = {DateTimeType.class}, order=6, min=0, max=1)
+    @Child(name = "created", type = {DateTimeType.class}, order=6, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Creation date", formalDefinition="The date when the enclosed suite of services were performed or completed." )
     protected DateTimeType created;
 
     /**
      * The Insurer who produced this adjudicated response.
      */
-    @Child(name = "organization", type = {Organization.class}, order=7, min=0, max=1)
+    @Child(name = "organization", type = {Organization.class}, order=7, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Insurer", formalDefinition="The Insurer who produced this adjudicated response." )
     protected Reference organization;
 
@@ -116,7 +116,7 @@ public class ExplanationOfBenefit extends DomainResource {
     /**
      * The practitioner who is responsible for the services rendered to the patient.
      */
-    @Child(name = "requestProvider", type = {Practitioner.class}, order=8, min=0, max=1)
+    @Child(name = "requestProvider", type = {Practitioner.class}, order=8, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Responsible practitioner", formalDefinition="The practitioner who is responsible for the services rendered to the patient." )
     protected Reference requestProvider;
 
@@ -128,7 +128,7 @@ public class ExplanationOfBenefit extends DomainResource {
     /**
      * The organization which is responsible for the services rendered to the patient.
      */
-    @Child(name = "requestOrganization", type = {Organization.class}, order=9, min=0, max=1)
+    @Child(name = "requestOrganization", type = {Organization.class}, order=9, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Responsible organization", formalDefinition="The organization which is responsible for the services rendered to the patient." )
     protected Reference requestOrganization;
 
@@ -147,7 +147,7 @@ public class ExplanationOfBenefit extends DomainResource {
     }
 
     /**
-     * @return {@link #identifier} (The Response Business Identifier.)
+     * @return {@link #identifier} (The Response business identifier.)
      */
     public List<Identifier> getIdentifier() { 
       if (this.identifier == null)
@@ -165,7 +165,7 @@ public class ExplanationOfBenefit extends DomainResource {
     }
 
     /**
-     * @return {@link #identifier} (The Response Business Identifier.)
+     * @return {@link #identifier} (The Response business identifier.)
      */
     // syntactic sugar
     public Identifier addIdentifier() { //3
@@ -559,7 +559,7 @@ public class ExplanationOfBenefit extends DomainResource {
 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
-        childrenList.add(new Property("identifier", "Identifier", "The Response Business Identifier.", 0, java.lang.Integer.MAX_VALUE, identifier));
+        childrenList.add(new Property("identifier", "Identifier", "The Response business identifier.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("request", "Reference(Claim)", "Original request resource reference.", 0, java.lang.Integer.MAX_VALUE, request));
         childrenList.add(new Property("outcome", "code", "Transaction status: error, complete.", 0, java.lang.Integer.MAX_VALUE, outcome));
         childrenList.add(new Property("disposition", "string", "A description of the status of the adjudication.", 0, java.lang.Integer.MAX_VALUE, disposition));

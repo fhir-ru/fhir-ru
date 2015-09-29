@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -52,11 +52,11 @@ public class ClinicalImpression extends DomainResource {
          */
         INPROGRESS, 
         /**
-         * The assessment is done and the results are final
+         * The assessment is done and the results are final.
          */
         COMPLETED, 
         /**
-         * This assessment was never actually done and the record is erroneous (e.g. Wrong patient)
+         * This assessment was never actually done and the record is erroneous (e.g. Wrong patient).
          */
         ENTEREDINERROR, 
         /**
@@ -93,8 +93,8 @@ public class ClinicalImpression extends DomainResource {
         public String getDefinition() {
           switch (this) {
             case INPROGRESS: return "The assessment is still on-going and results are not yet final.";
-            case COMPLETED: return "The assessment is done and the results are final";
-            case ENTEREDINERROR: return "This assessment was never actually done and the record is erroneous (e.g. Wrong patient)";
+            case COMPLETED: return "The assessment is done and the results are final.";
+            case ENTEREDINERROR: return "This assessment was never actually done and the record is erroneous (e.g. Wrong patient).";
             default: return "?";
           }
         }
@@ -137,14 +137,14 @@ public class ClinicalImpression extends DomainResource {
         /**
          * A name/code for the group ("set") of investigations. Typically, this will be something like "signs", "symptoms", "clinical", "diagnostic", but the list is not constrained, and others such groups such as (exposure|family|travel|nutitirional) history may be used.
          */
-        @Child(name = "code", type = {CodeableConcept.class}, order=1, min=1, max=1)
-        @Description(shortDefinition="A name/code for the set", formalDefinition="A name/code for the group ('set') of investigations. Typically, this will be something like 'signs', 'symptoms', 'clinical', 'diagnostic', but the list is not constrained, and others such groups such as (exposure|family|travel|nutitirional) history may be used." )
+        @Child(name = "code", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="A name/code for the set", formalDefinition="A name/code for the group (\"set\") of investigations. Typically, this will be something like \"signs\", \"symptoms\", \"clinical\", \"diagnostic\", but the list is not constrained, and others such groups such as (exposure|family|travel|nutitirional) history may be used." )
         protected CodeableConcept code;
 
         /**
          * A record of a specific investigation that was undertaken.
          */
-        @Child(name = "item", type = {Observation.class, QuestionnaireAnswers.class, FamilyMemberHistory.class, DiagnosticReport.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "item", type = {Observation.class, QuestionnaireResponse.class, FamilyMemberHistory.class, DiagnosticReport.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
         @Description(shortDefinition="Record of a specific investigation", formalDefinition="A record of a specific investigation that was undertaken." )
         protected List<Reference> item;
         /**
@@ -245,8 +245,8 @@ public class ClinicalImpression extends DomainResource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("code", "CodeableConcept", "A name/code for the group ('set') of investigations. Typically, this will be something like 'signs', 'symptoms', 'clinical', 'diagnostic', but the list is not constrained, and others such groups such as (exposure|family|travel|nutitirional) history may be used.", 0, java.lang.Integer.MAX_VALUE, code));
-          childrenList.add(new Property("item", "Reference(Observation|QuestionnaireAnswers|FamilyMemberHistory|DiagnosticReport)", "A record of a specific investigation that was undertaken.", 0, java.lang.Integer.MAX_VALUE, item));
+          childrenList.add(new Property("code", "CodeableConcept", "A name/code for the group (\"set\") of investigations. Typically, this will be something like \"signs\", \"symptoms\", \"clinical\", \"diagnostic\", but the list is not constrained, and others such groups such as (exposure|family|travel|nutitirional) history may be used.", 0, java.lang.Integer.MAX_VALUE, code));
+          childrenList.add(new Property("item", "Reference(Observation|QuestionnaireResponse|FamilyMemberHistory|DiagnosticReport)", "A record of a specific investigation that was undertaken.", 0, java.lang.Integer.MAX_VALUE, item));
         }
 
       public ClinicalImpressionInvestigationsComponent copy() {
@@ -293,14 +293,14 @@ public class ClinicalImpression extends DomainResource {
         /**
          * Specific text of code for finding or diagnosis.
          */
-        @Child(name = "item", type = {CodeableConcept.class}, order=1, min=1, max=1)
+        @Child(name = "item", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Specific text or code for finding", formalDefinition="Specific text of code for finding or diagnosis." )
         protected CodeableConcept item;
 
         /**
          * Which investigations support finding or diagnosis.
          */
-        @Child(name = "cause", type = {StringType.class}, order=2, min=0, max=1)
+        @Child(name = "cause", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Which investigations support finding", formalDefinition="Which investigations support finding or diagnosis." )
         protected StringType cause;
 
@@ -440,14 +440,14 @@ public class ClinicalImpression extends DomainResource {
         /**
          * Specific text of code for diagnosis.
          */
-        @Child(name = "item", type = {CodeableConcept.class}, order=1, min=1, max=1)
+        @Child(name = "item", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Specific text of code for diagnosis", formalDefinition="Specific text of code for diagnosis." )
         protected CodeableConcept item;
 
         /**
          * Grounds for elimination.
          */
-        @Child(name = "reason", type = {StringType.class}, order=2, min=0, max=1)
+        @Child(name = "reason", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Grounds for elimination", formalDefinition="Grounds for elimination." )
         protected StringType reason;
 
@@ -585,7 +585,7 @@ public class ClinicalImpression extends DomainResource {
     /**
      * The patient being assessed.
      */
-    @Child(name = "patient", type = {Patient.class}, order=0, min=1, max=1)
+    @Child(name = "patient", type = {Patient.class}, order=0, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="The patient being assessed", formalDefinition="The patient being assessed." )
     protected Reference patient;
 
@@ -597,7 +597,7 @@ public class ClinicalImpression extends DomainResource {
     /**
      * The clinician performing the assessment.
      */
-    @Child(name = "assessor", type = {Practitioner.class}, order=1, min=0, max=1)
+    @Child(name = "assessor", type = {Practitioner.class}, order=1, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="The clinician performing the assessment", formalDefinition="The clinician performing the assessment." )
     protected Reference assessor;
 
@@ -609,28 +609,28 @@ public class ClinicalImpression extends DomainResource {
     /**
      * Identifies the workflow status of the assessment.
      */
-    @Child(name = "status", type = {CodeType.class}, order=2, min=1, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=2, min=1, max=1, modifier=true, summary=true)
     @Description(shortDefinition="in-progress | completed | entered-in-error", formalDefinition="Identifies the workflow status of the assessment." )
     protected Enumeration<ClinicalImpressionStatus> status;
 
     /**
      * The point in time at which the assessment was concluded (not when it was recorded).
      */
-    @Child(name = "date", type = {DateTimeType.class}, order=3, min=0, max=1)
+    @Child(name = "date", type = {DateTimeType.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="When the assessment occurred", formalDefinition="The point in time at which the assessment was concluded (not when it was recorded)." )
     protected DateTimeType date;
 
     /**
      * A summary of the context and/or cause of the assessment - why / where was it peformed, and what patient events/sstatus prompted it.
      */
-    @Child(name = "description", type = {StringType.class}, order=4, min=0, max=1)
+    @Child(name = "description", type = {StringType.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Why/how the assessment was performed", formalDefinition="A summary of the context and/or cause of the assessment - why / where was it peformed, and what patient events/sstatus prompted it." )
     protected StringType description;
 
     /**
      * A reference to the last assesment that was conducted bon this patient. Assessments are often/usually ongoing in nature; a care provider (practitioner or team) will make new assessments on an ongoing basis as new data arises or the patient's conditions changes.
      */
-    @Child(name = "previous", type = {ClinicalImpression.class}, order=5, min=0, max=1)
+    @Child(name = "previous", type = {ClinicalImpression.class}, order=5, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Reference to last assessment", formalDefinition="A reference to the last assesment that was conducted bon this patient. Assessments are often/usually ongoing in nature; a care provider (practitioner or team) will make new assessments on an ongoing basis as new data arises or the patient's conditions changes." )
     protected Reference previous;
 
@@ -642,7 +642,7 @@ public class ClinicalImpression extends DomainResource {
     /**
      * This a list of the general problems/conditions for a patient.
      */
-    @Child(name = "problem", type = {Condition.class, AllergyIntolerance.class}, order=6, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "problem", type = {Condition.class, AllergyIntolerance.class}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="General assessment of patient state", formalDefinition="This a list of the general problems/conditions for a patient." )
     protected List<Reference> problem;
     /**
@@ -654,63 +654,63 @@ public class ClinicalImpression extends DomainResource {
     /**
      * The request or event that necessitated this assessment. This may be a diagnosis, a Care Plan, a Request Referral, or some other resource.
      */
-    @Child(name = "trigger", type = {CodeableConcept.class}, order=7, min=0, max=1)
+    @Child(name = "trigger", type = {CodeableConcept.class}, order=7, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Request or event that necessitated this assessment", formalDefinition="The request or event that necessitated this assessment. This may be a diagnosis, a Care Plan, a Request Referral, or some other resource." )
     protected Type trigger;
 
     /**
-     * One or more sets of investigations (signs, symptions, etc). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.
+     * One or more sets of investigations (signs, symptions, etc.). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.
      */
-    @Child(name = "investigations", type = {}, order=8, min=0, max=Child.MAX_UNLIMITED)
-    @Description(shortDefinition="One or more sets of investigations (signs, symptions, etc)", formalDefinition="One or more sets of investigations (signs, symptions, etc). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes." )
+    @Child(name = "investigations", type = {}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="One or more sets of investigations (signs, symptions, etc.)", formalDefinition="One or more sets of investigations (signs, symptions, etc.). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes." )
     protected List<ClinicalImpressionInvestigationsComponent> investigations;
 
     /**
      * Reference to a specific published clinical protocol that was followed during this assessment, and/or that provides evidence in support of the diagnosis.
      */
-    @Child(name = "protocol", type = {UriType.class}, order=9, min=0, max=1)
+    @Child(name = "protocol", type = {UriType.class}, order=9, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Clinical Protocol followed", formalDefinition="Reference to a specific published clinical protocol that was followed during this assessment, and/or that provides evidence in support of the diagnosis." )
     protected UriType protocol;
 
     /**
      * A text summary of the investigations and the diagnosis.
      */
-    @Child(name = "summary", type = {StringType.class}, order=10, min=0, max=1)
+    @Child(name = "summary", type = {StringType.class}, order=10, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Summary of the assessment", formalDefinition="A text summary of the investigations and the diagnosis." )
     protected StringType summary;
 
     /**
      * Specific findings or diagnoses that was considered likely or relevant to ongoing treatment.
      */
-    @Child(name = "finding", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "finding", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Possible or likely findings and diagnoses", formalDefinition="Specific findings or diagnoses that was considered likely or relevant to ongoing treatment." )
     protected List<ClinicalImpressionFindingComponent> finding;
 
     /**
      * Diagnoses/conditions resolved since the last assessment.
      */
-    @Child(name = "resolved", type = {CodeableConcept.class}, order=12, min=0, max=Child.MAX_UNLIMITED)
-    @Description(shortDefinition="Diagnosies/conditions resolved since previous assessment", formalDefinition="Diagnoses/conditions resolved since the last assessment." )
+    @Child(name = "resolved", type = {CodeableConcept.class}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Diagnoses/conditions resolved since previous assessment", formalDefinition="Diagnoses/conditions resolved since the last assessment." )
     protected List<CodeableConcept> resolved;
 
     /**
      * Diagnosis considered not possible.
      */
-    @Child(name = "ruledOut", type = {}, order=13, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "ruledOut", type = {}, order=13, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Diagnosis considered not possible", formalDefinition="Diagnosis considered not possible." )
     protected List<ClinicalImpressionRuledOutComponent> ruledOut;
 
     /**
      * Estimate of likely outcome.
      */
-    @Child(name = "prognosis", type = {StringType.class}, order=14, min=0, max=1)
+    @Child(name = "prognosis", type = {StringType.class}, order=14, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Estimate of likely outcome", formalDefinition="Estimate of likely outcome." )
     protected StringType prognosis;
 
     /**
      * Plan of action after assessment.
      */
-    @Child(name = "plan", type = {CarePlan.class, Appointment.class, CommunicationRequest.class, DeviceUseRequest.class, DiagnosticOrder.class, MedicationPrescription.class, NutritionOrder.class, Order.class, ProcedureRequest.class, ProcessRequest.class, ReferralRequest.class, Supply.class, VisionPrescription.class}, order=15, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "plan", type = {CarePlan.class, Appointment.class, CommunicationRequest.class, DeviceUseRequest.class, DiagnosticOrder.class, MedicationOrder.class, NutritionOrder.class, Order.class, ProcedureRequest.class, ProcessRequest.class, ReferralRequest.class, SupplyRequest.class, VisionPrescription.class}, order=15, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Plan of action after assessment", formalDefinition="Plan of action after assessment." )
     protected List<Reference> plan;
     /**
@@ -722,7 +722,7 @@ public class ClinicalImpression extends DomainResource {
     /**
      * Actions taken during assessment.
      */
-    @Child(name = "action", type = {ReferralRequest.class, ProcedureRequest.class, Procedure.class, MedicationPrescription.class, DiagnosticOrder.class, NutritionOrder.class, Supply.class, Appointment.class}, order=16, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "action", type = {ReferralRequest.class, ProcedureRequest.class, Procedure.class, MedicationOrder.class, DiagnosticOrder.class, NutritionOrder.class, SupplyRequest.class, Appointment.class}, order=16, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Actions taken during assessment", formalDefinition="Actions taken during assessment." )
     protected List<Reference> action;
     /**
@@ -1119,7 +1119,7 @@ public class ClinicalImpression extends DomainResource {
     }
 
     /**
-     * @return {@link #investigations} (One or more sets of investigations (signs, symptions, etc). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.)
+     * @return {@link #investigations} (One or more sets of investigations (signs, symptions, etc.). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.)
      */
     public List<ClinicalImpressionInvestigationsComponent> getInvestigations() { 
       if (this.investigations == null)
@@ -1137,7 +1137,7 @@ public class ClinicalImpression extends DomainResource {
     }
 
     /**
-     * @return {@link #investigations} (One or more sets of investigations (signs, symptions, etc). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.)
+     * @return {@link #investigations} (One or more sets of investigations (signs, symptions, etc.). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.)
      */
     // syntactic sugar
     public ClinicalImpressionInvestigationsComponent addInvestigations() { //3
@@ -1533,15 +1533,15 @@ public class ClinicalImpression extends DomainResource {
         childrenList.add(new Property("previous", "Reference(ClinicalImpression)", "A reference to the last assesment that was conducted bon this patient. Assessments are often/usually ongoing in nature; a care provider (practitioner or team) will make new assessments on an ongoing basis as new data arises or the patient's conditions changes.", 0, java.lang.Integer.MAX_VALUE, previous));
         childrenList.add(new Property("problem", "Reference(Condition|AllergyIntolerance)", "This a list of the general problems/conditions for a patient.", 0, java.lang.Integer.MAX_VALUE, problem));
         childrenList.add(new Property("trigger[x]", "CodeableConcept|Reference(Any)", "The request or event that necessitated this assessment. This may be a diagnosis, a Care Plan, a Request Referral, or some other resource.", 0, java.lang.Integer.MAX_VALUE, trigger));
-        childrenList.add(new Property("investigations", "", "One or more sets of investigations (signs, symptions, etc). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.", 0, java.lang.Integer.MAX_VALUE, investigations));
+        childrenList.add(new Property("investigations", "", "One or more sets of investigations (signs, symptions, etc.). The actual grouping of investigations vary greatly depending on the type and context of the assessment. These investigations may include data generated during the assessment process, or data previously generated and recorded that is pertinent to the outcomes.", 0, java.lang.Integer.MAX_VALUE, investigations));
         childrenList.add(new Property("protocol", "uri", "Reference to a specific published clinical protocol that was followed during this assessment, and/or that provides evidence in support of the diagnosis.", 0, java.lang.Integer.MAX_VALUE, protocol));
         childrenList.add(new Property("summary", "string", "A text summary of the investigations and the diagnosis.", 0, java.lang.Integer.MAX_VALUE, summary));
         childrenList.add(new Property("finding", "", "Specific findings or diagnoses that was considered likely or relevant to ongoing treatment.", 0, java.lang.Integer.MAX_VALUE, finding));
         childrenList.add(new Property("resolved", "CodeableConcept", "Diagnoses/conditions resolved since the last assessment.", 0, java.lang.Integer.MAX_VALUE, resolved));
         childrenList.add(new Property("ruledOut", "", "Diagnosis considered not possible.", 0, java.lang.Integer.MAX_VALUE, ruledOut));
         childrenList.add(new Property("prognosis", "string", "Estimate of likely outcome.", 0, java.lang.Integer.MAX_VALUE, prognosis));
-        childrenList.add(new Property("plan", "Reference(CarePlan|Appointment|CommunicationRequest|DeviceUseRequest|DiagnosticOrder|MedicationPrescription|NutritionOrder|Order|ProcedureRequest|ProcessRequest|ReferralRequest|Supply|VisionPrescription)", "Plan of action after assessment.", 0, java.lang.Integer.MAX_VALUE, plan));
-        childrenList.add(new Property("action", "Reference(ReferralRequest|ProcedureRequest|Procedure|MedicationPrescription|DiagnosticOrder|NutritionOrder|Supply|Appointment)", "Actions taken during assessment.", 0, java.lang.Integer.MAX_VALUE, action));
+        childrenList.add(new Property("plan", "Reference(CarePlan|Appointment|CommunicationRequest|DeviceUseRequest|DiagnosticOrder|MedicationOrder|NutritionOrder|Order|ProcedureRequest|ProcessRequest|ReferralRequest|SupplyRequest|VisionPrescription)", "Plan of action after assessment.", 0, java.lang.Integer.MAX_VALUE, plan));
+        childrenList.add(new Property("action", "Reference(ReferralRequest|ProcedureRequest|Procedure|MedicationOrder|DiagnosticOrder|NutritionOrder|SupplyRequest|Appointment)", "Actions taken during assessment.", 0, java.lang.Integer.MAX_VALUE, action));
       }
 
       public ClinicalImpression copy() {
@@ -1649,7 +1649,7 @@ public class ClinicalImpression extends DomainResource {
   public static final String SP_PATIENT = "patient";
   @SearchParamDefinition(name="plan", path="ClinicalImpression.plan", description="Plan of action after assessment", type="reference" )
   public static final String SP_PLAN = "plan";
-  @SearchParamDefinition(name="resolved", path="ClinicalImpression.resolved", description="Diagnosies/conditions resolved since previous assessment", type="token" )
+  @SearchParamDefinition(name="resolved", path="ClinicalImpression.resolved", description="Diagnoses/conditions resolved since previous assessment", type="token" )
   public static final String SP_RESOLVED = "resolved";
   @SearchParamDefinition(name="trigger-code", path="ClinicalImpression.triggerCodeableConcept", description="Request or event that necessitated this assessment", type="token" )
   public static final String SP_TRIGGERCODE = "trigger-code";

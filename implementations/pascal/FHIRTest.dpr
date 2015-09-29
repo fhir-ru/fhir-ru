@@ -100,14 +100,21 @@ uses
   FHIRParserBase in 'FHIRParserBase.pas',
   FHIRConstants in 'FHIRConstants.pas',
   FHIRTypes in 'FHIRTypes.pas',
-  FHIRComponents in 'FHIRComponents.pas',
   FHIRResources in 'FHIRResources.pas',
   FHIRParser in 'FHIRParser.pas',
   FHIRSupport in 'FHIRSupport.pas',
   FHIRUtilities in 'FHIRUtilities.pas',
   FHIRDigitalSignatures in 'FHIRDigitalSignatures.pas',
   AdvNames in 'support\AdvNames.pas',
-  OIDSupport in 'support\OIDSupport.pas';
+  OIDSupport in 'support\OIDSupport.pas',
+  FHIRValidator in 'FHIRValidator.pas',
+  AltovaXMLLib_TLB in 'support\AltovaXMLLib_TLB.pas',
+  AdvZipReaders in 'support\AdvZipReaders.pas',
+  AdvNameBuffers in 'support\AdvNameBuffers.pas',
+  AdvZipDeclarations in 'support\AdvZipDeclarations.pas',
+  AdvZipParts in 'support\AdvZipParts.pas',
+  AdvZipUtilities in 'support\AdvZipUtilities.pas',
+  AdvZipWorkers in 'support\AdvZipWorkers.pas';
 
 procedure SaveStringToFile(s : AnsiString; fn : String);
 var
@@ -282,7 +289,7 @@ var
 begin
   for s in names do
     try
-      roundtrip(src+s+'.xml', dst+s+'.pascal.xml');
+      roundtrip(src+s+'.xml', dst+s.Replace('\', '_')+'.pascal.xml');
     except
       on e : exception do
         raise Exception.Create('Error Processing '+s+': '+e.message);

@@ -453,10 +453,6 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 		}
 		if (doPretty) {
 			writePretty();
-			if (isPretty()) {
-				for (int i = 0; i < levels.size(); i++)
-					write("  ");
-			}
 		}
 		if (levels.inComment())
 			write("<!-- "+comment+" -- >");
@@ -675,6 +671,10 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	public void element(String name, String content) throws IOException {
 		element(null, name, content);
 	}
+
+  public void element(String name) throws IOException {
+    element(null, name, null);
+  }
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#text(java.lang.String)

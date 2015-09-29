@@ -36,10 +36,10 @@
   <!-- this individual has had several reactions, and there is no 
     question that the allergy is real and serious --> 
   <status value="confirmed"/>
-  <criticality value="high"/>
+  <criticality value="CRITH"/>
   
   <!-- note: it's often unknown whether an allergy is mediated by an immune response, and not as significant as once thought -->
-  <type value="immune"/>
+  <type value="allergy"/>
   
   <!-- this categorisation is implied by "cashew nut" and therefore basically 
     redundant, but many systems collect this field anyway, since it's either 
@@ -53,7 +53,7 @@
   
   <!-- past events. There's no claim that this is all the events, and 
      that should not be assumed -->
-  <event> 
+  <reaction> 
     <!-- 
       It's possible to list specific things to which the patient responded,
       e.g. chocolate (that happened to contain cashew nuts). This event has
@@ -80,9 +80,9 @@
     <description value="Challenge Protocol. Severe Reaction to 1/8 cashew. Epinephrine administered"/>
     <onset value="2012-06-12"/>
     <severity value="severe"/>
-  </event>
-  <event> 
-    <!-- this was the first occurence -->
+  </reaction>
+  <reaction> 
+    <!-- this was the first occurrence -->
     <certainty value="likely"/>
     <manifestation>
       <coding>
@@ -93,5 +93,5 @@
     </manifestation>
     <onset value="2004"/>
     <severity value="moderate"/>
-  </event>
+  </reaction>
 </AllergyIntolerance>

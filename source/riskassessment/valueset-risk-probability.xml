@@ -1,43 +1,43 @@
-<ValueSet xmlns="http://hl7.org/fhir" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/valueset.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
   <name value="Risk Probability"/>
+  <status value="draft"/>
   <publisher value="FHIR Project team"/>
   <contact>
-    <telecom>  
-    <system value="url"/>
-    <value value="http://hl7.org/fhir"/>
-  </telecom>
+    <telecom>
+      <system value="other"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
   </contact>
-  <description value="Codes representing the likelihood of a particular outcome in a risk assessment"/>
-  <status value="draft"/>
-  <define>
+  <description value="Codes representing the likelihood of a particular outcome in a risk assessment."/>
+  <codeSystem>
     <system value="http://hl7.org/fhir/risk-probability"/>
-    <caseSensitive value="true"/>    
+    <caseSensitive value="true"/>
     <concept>
       <code value="negligible"/>
-      <display value="negligible likelihood"/>
-      <definition value="The specified outcome is exceptionally unlikely"/>
+      <display value="Negligible likelihood"/>
+      <definition value="The specified outcome is exceptionally unlikely."/>
     </concept>
     <concept>
       <code value="low"/>
-      <display value="low likelihood"/>
-      <definition value="The specified outcome is possible but unlikely"/>
+      <display value="Low likelihood"/>
+      <definition value="The specified outcome is possible but unlikely."/>
     </concept>
     <concept>
       <code value="moderate"/>
-      <display value="moderate likelihood"/>
-      <definition value="The specified outcome has a reasonable likelihood of occurrence"/>
+      <display value="Moderate likelihood"/>
+      <definition value="The specified outcome has a reasonable likelihood of occurrence."/>
     </concept>
     <concept>
       <code value="high"/>
-      <display value="high likelihood"/>
-      <definition value="The specified outcome is more likely to occur than not"/>
+      <display value="High likelihood"/>
+      <definition value="The specified outcome is more likely to occur than not."/>
     </concept>
     <concept>
       <code value="certain"/>
-      <display value="certain"/>
-      <definition value="The specified outcome is effectively guaranteed"/>
+      <display value="Certain"/>
+      <definition value="The specified outcome is effectively guaranteed."/>
     </concept>
-  </define>
+  </codeSystem>
 </ValueSet>
-

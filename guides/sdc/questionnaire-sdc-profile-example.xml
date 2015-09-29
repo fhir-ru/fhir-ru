@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Bundle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://hl7.org/fhir" xsi:schemaLocation="http://hl7.org/fhir ../../schema/bundle.xsd">
+
+<Bundle xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/questionnaire.xsd">
   <id value="questionnaire-sdc-profile-example"/>
   <meta>
     <lastUpdated value="2014-05-15T17:25:15Z"/>
   </meta>
   <type value="collection"/>
-  <base value="http://AHRQ.org/form"/>
   <entry>
+    <fullUrl value="http://AHRQ.org/form/Questionnaire/F8-1.2"/>
     <resource>
       <Questionnaire>
         <id value="F8-1.2"/>
@@ -21,7 +22,7 @@
           <ValueSet>
             <id value="d1e551-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE270-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -66,14 +67,14 @@
                 <code value="A1215"/>
                 <display value="Other substance: PLEASE SPECIFY"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e639-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE273-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -92,14 +93,14 @@
                 <code value="UNK"/>
                 <display value="Unknown"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e910-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE279-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -110,14 +111,14 @@
                 <code value="A1236"/>
                 <display value="Other biological products (e.g., thrombolytic)"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e1125-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE285-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -140,14 +141,14 @@
                 <code value="A66"/>
                 <display value="Other: PLEASE SPECIFY"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e1558-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE288-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -166,14 +167,14 @@
                 <code value="UNK"/>
                 <display value="Unknown"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e1746-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE291-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -236,14 +237,14 @@
                 <code value="A66"/>
                 <display value="Other: PLEASE SPECIFY"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e1863-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE294-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -266,14 +267,14 @@
                 <code value="UNK"/>
                 <display value="Unknown"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e2109-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE297-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -288,14 +289,14 @@
                 <code value="UNK"/>
                 <display value="Unknown"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e2272-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE300-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -310,14 +311,14 @@
                 <code value="UNK"/>
                 <display value="Unknown"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e2489-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE303-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -332,14 +333,14 @@
                 <code value="UNK"/>
                 <display value="Unknown"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e2768-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE309-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -354,14 +355,14 @@
                 <code value="UNK"/>
                 <display value="Unkown"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e2928-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE312-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -380,14 +381,14 @@
                 <code value="A66"/>
                 <display value="Other: PLEASE SPECIFY"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e3159-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE315-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -430,14 +431,14 @@
                 <code value="A66"/>
                 <display value="Other: PLEASE SPECIFY"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e4024-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE333-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -448,14 +449,14 @@
                 <code value="A18"/>
                 <display value="No"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e4118-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE336-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -466,14 +467,14 @@
                 <code value="A18"/>
                 <display value="No"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e4236-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE348-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -540,14 +541,14 @@
                 <code value="A66"/>
                 <display value="Other: PLEASE SPECIFY"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e4716-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#Medication/DE351-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -614,7 +615,7 @@
                 <code value="A66"/>
                 <display value="Other: PLEASE SPECIFY"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-category">
@@ -631,11 +632,13 @@
         <status value="published"/>
         <date value="2012-04-01"/>
         <publisher value="Agency for Healthcare Research and Quality (AHRQ)"/>
+        <subjectType value="Patient"/>
         <group>
           <linkId value="root"/>
           <title value="Medication or Other Substance"/>
+          <required value="true"/>
           <group>
-            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-sdc-specialGroup">
+            <extension url="http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-specialGroup">
               <valueCode value="header"/>
             </extension>
             <linkId value="Medication/header"/>
@@ -753,12 +756,13 @@
                       <required value="false"/>
                       <repeats value="false"/>
                       <question>
-                        <!--                        <extension url="http://hl7.org/fhir/StructureDefinition/minValue">
+                      <!-- 
+                        <extension url="http://hl7.org/fhir/StructureDefinition/minValue">
                           <valueInteger value="??"/>
                         </extension>
                         <extension url="http://hl7.org/fhir/StructureDefinition/maxValue">
                           <valueInteger value="??"/>
-                        </extension>-->
+                        </extension>  -->
                         <linkId value="Medication/DE282"/>
                         <text value="What was the lot number of the vaccine?"/>
                         <type value="string"/>
@@ -1062,7 +1066,7 @@
             </group>
           </group>
           <group>
-            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-sdc-specialGroup">
+            <extension url="http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-specialGroup">
               <valueCode value="footer"/>
             </extension>
             <linkId value="Medication/footer"/>
@@ -1073,6 +1077,7 @@
     </resource>
   </entry>
   <entry>
+    <fullUrl value="http://AHRQ.org/form/Questionnaire/HERF-1.2"/>
     <resource>
       <Questionnaire>
         <id value="HERF-1.2"/>
@@ -1087,7 +1092,7 @@
           <ValueSet>
             <id value="d1e5879-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#HERF/DE3-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1105,14 +1110,14 @@
                 <display value="Unsafe Condition"/>
                 <definition value="Any circumstance that increases the probability of a patient safety event."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e6177-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#HERF/DE21-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1155,14 +1160,14 @@
                 <code value="A66"/>
                 <display value="Other: PLEASE SPECIFY"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e6853-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#HERF/DE42-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1177,14 +1182,14 @@
                 <code value="UNK"/>
                 <display value="Unknown"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e7006-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#HERF/Hidden-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1195,14 +1200,14 @@
                 <code value="A18"/>
                 <display value="No"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e7220-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#HERF/DE43-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1217,14 +1222,14 @@
                 <code value="UNK"/>
                 <display value="Unknown"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e7422-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://AHRQ.org/form/question_identifier#HERF/DE33-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1235,7 +1240,7 @@
                 <code value="A18"/>
                 <display value="No"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <identifier>
@@ -1246,8 +1251,9 @@
         <group>
           <linkId value="root"/>
           <title value="Healthcare Event Reporting Form (HERF) Hospital Version 1.2"/>
+          <required value="true"/>
           <group>
-            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-sdc-specialGroup">
+            <extension url="http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-specialGroup">
               <valueCode value="header"/>
             </extension>
             <linkId value="HERF/header"/>
@@ -1379,24 +1385,24 @@
             <text value="Please complete the patient identifiers below. Additional patient information is captured on the Patient Information Form (PIF). (When reporting a perinatal incident that affected a mother and a neonate, please complete the patient identifiers below for the mother (Q8 – Q11) and the neonate (Q12 – Q15). Please also complete a separate PIF for the neonate involved.)"/>
             <question>
               <linkId value="HERF/DE46"/>
-              <text value="Patient's Name"/>
+              <text value="Patient&#39;s Name"/>
               <type value="string"/>
               <required value="true"/>
             </question>
             <question>
               <linkId value="HERF/DE47"/>
-              <text value="Patient's Date of Birth"/>
+              <text value="Patient&#39;s Date of Birth"/>
               <type value="string"/>
             </question>
             <question>
               <linkId value="HERF/DE49"/>
-              <text value="Patient's Medical Record #"/>
+              <text value="Patient&#39;s Medical Record #"/>
               <type value="string"/>
               <required value="true"/>
             </question>
             <question>
               <linkId value="HERF/DE42"/>
-              <text value="Patients' Gender"/>
+              <text value="Patients&#39; Gender"/>
               <type value="open-choice"/>
               <options>
                 <reference value="#d1e6853-vs"/>
@@ -1420,23 +1426,23 @@
                 <repeats value="false"/>
                 <question>
                   <linkId value="HERF/DE34"/>
-                  <text value="Neonate's Name"/>
+                  <text value="Neonate&#39;s Name"/>
                   <type value="string"/>
                 </question>
                 <question>
                   <linkId value="HERF/DE37"/>
-                  <text value="Neonate's Date of Birth"/>
+                  <text value="Neonate&#39;s Date of Birth"/>
                   <type value="string"/>
                 </question>
                 <question>
                   <linkId value="HERF/DE40"/>
-                  <text value="Neonate's Medical Record #"/>
+                  <text value="Neonate&#39;s Medical Record #"/>
                   <type value="string"/>
                   <required value="true"/>
                 </question>
                 <question>
                   <linkId value="HERF/DE43"/>
-                  <text value="Neonate's Gender"/>
+                  <text value="Neonate&#39;s Gender"/>
                   <type value="open-choice"/>
                   <required value="true"/>
                   <options>
@@ -1462,7 +1468,7 @@
                 <repeats value="false"/>
                 <question>
                   <linkId value="HERF/DE50"/>
-                  <text value="Reporter's Name"/>
+                  <text value="Reporter&#39;s Name"/>
                   <type value="string"/>
                   <required value="true"/>
                 </question>
@@ -1480,7 +1486,7 @@
                 </question>
                 <question>
                   <linkId value="HERF/DE36"/>
-                  <text value="Reporter's Job or Position"/>
+                  <text value="Reporter&#39;s Job or Position"/>
                   <type value="string"/>
                 </question>
               </group>
@@ -1492,7 +1498,7 @@
             <text value="OMB No. 0935-0143 Exp. Date 10/31/2014 Public reporting burden for the collection of information is estimated to average 10 minutes per response. An agency may not conduct or sponsor, and a person is not required to respond to, a collection of information unless it displays a currently valid OMB control number. Send comments regarding this burden estimate or any other aspect of this collection of information, including suggestions for reducing this burden, to: AHRQ Reports Clearance Officer, Attention: PRA, Paperwork Reduction Project (0935-0143), AHRQ, 540 Gaither Road, Room #5036, Rockville, MD 20850."/>
           </group>
           <group>
-            <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-sdc-specialGroup">
+            <extension url="http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-specialGroup">
               <valueCode value="footer"/>
             </extension>
             <linkId value="HERF/footer"/>
@@ -1503,6 +1509,7 @@
     </resource>
   </entry>
   <entry>
+    <fullUrl value="http://AHRQ.org/form/Questionnaire/3921052v1.0"/>
     <resource>
       <Questionnaire>
         <id value="3921052v1.0"/>
@@ -1518,7 +1525,7 @@
           <ValueSet>
             <id value="d1e8086-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921060v1.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1541,14 +1548,14 @@
                 <display value="Unknown"/>
                 <definition value="Not known, not observed, not recorded, or refused."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e8407-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921071v1.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1576,14 +1583,14 @@
                 <display value="Current Diagnosis"/>
                 <definition value="Occurring in or belonging to the present time.: The investigation, analysis and recognition of the presence and nature of disease, condition, or injury from expressed signs and symptoms; also, the scientific determination of any kind; the concise results of such an investigation."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e8830-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921081v1.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1601,14 +1608,14 @@
                 <display value="Histologic and Cytologic Procedures"/>
                 <definition value="Pertaining to the combined microscopic physical features of cells and their surrounding extracellular environment in tissues.: The light microscopic study of normal and abnormal cells in fine needle aspirates (FNAs), body cavity fluids, and smears.: Having been established or verified."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e9025-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3921052v1.0/question_identifier#3921085v1.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1629,7 +1636,7 @@
               <concept>
                 <code value="G4"/>
                 <display value="Undifferentiated"/>
-                <definition value="A term used to describe cells or tissues that do not have specialized (&#34;mature&#34;) structures or functions. Undifferentiated cancer cells often grow and spread quickly."/>
+                <definition value="A term used to describe cells or tissues that do not have specialized (&quot;mature&quot;) structures or functions. Undifferentiated cancer cells often grow and spread quickly."/>
               </concept>
               <concept>
                 <code value="GB"/>
@@ -1651,7 +1658,7 @@
                 <display value="Low Grade"/>
                 <definition value="Used to describe tumor samples that exhibit well to moderately well differentiated cells. They are generally expected to be slow growing and less aggressive."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-category">
@@ -1671,6 +1678,7 @@
         <group>
           <linkId value="root"/>
           <title value="Diagnosis NCI Standard Template"/>
+          <required value="true"/>
           <group>
             <linkId value="3921053v1.0"/>
             <title value="Mandatory Diagnosis Questions"/>
@@ -1805,6 +1813,7 @@
     </resource>
   </entry>
   <entry>
+    <fullUrl value="http://AHRQ.org/form/Questionnaire/F2674812v4.0"/>
     <resource>
       <Questionnaire>
         <id value="2674812v4.0"/>
@@ -1820,7 +1829,7 @@
           <ValueSet>
             <id value="d1e9892-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/2674812v4.0/question_identifier#3702892v4.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1843,14 +1852,14 @@
                 <display value="Unspecified"/>
                 <definition value="Not stated explicitly or in detail."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e10146-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/2674812v4.0/question_identifier#3702904v4.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1866,7 +1875,7 @@
               <concept>
                 <code value="Black or African American"/>
                 <display value="Black or African American"/>
-                <definition value="A person having origins in any of the black racial groups of Africa. Terms such as &#34;Haitian&#34; or &#34;Negro&#34; can be used in addition to &#34;Black or African American.&#34;"/>
+                <definition value="A person having origins in any of the black racial groups of Africa. Terms such as &quot;Haitian&quot; or &quot;Negro&quot; can be used in addition to &quot;Black or African American.&quot;"/>
               </concept>
               <concept>
                 <code value="Native Hawaiian or other Pacific Islander"/>
@@ -1888,14 +1897,14 @@
                 <display value="White"/>
                 <definition value="A person having origins in any of the original peoples of Europe, the Middle East, or North Africa."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e10593-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/2674812v4.0/question_identifier#3702898v4.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1918,14 +1927,14 @@
                 <display value="Unknown"/>
                 <definition value="Could not be determined or unsure"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e10923-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/2674812v4.0/question_identifier#3702916v4.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -1998,25 +2007,25 @@
                 <display value="Veterans Administration Sponsor Insurance"/>
                 <definition value="A division of the Executive Branch of the United States government concerned with overall planning, promoting, and administering programs pertaining to veterans. The Department of Veterans Affairs (VA) was established March 15, 1989 as a Cabinet-level position.: A person or organization that supports or champions something.: A mechanism for guarding against financial aspects of risk by making payments in the form of premiums to an insurance company, which pays an agreed-upon sum to the insured in the event of loss."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e11887-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/2674812v4.0/question_identifier#3702942v4.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
-                <code value="Bachelor's Degree"/>
-                <display value="Bachelor's Degree"/>
-                <definition value="Bachelor's degree is an award (baccalaureate or equivalent degree, as determined by the Secretary of the U.S. Department of Education) conferred by a college, university, or other postsecondary education institution as official recognition for the successful completion of a program of studies, that normally requires at least four years of full-time equivalent college-level work. This includes bachelor's degrees conferred in a five-year cooperative program."/>
+                <code value="Bachelor&#39;s Degree"/>
+                <display value="Bachelor&#39;s Degree"/>
+                <definition value="Bachelor&#39;s degree is an award (baccalaureate or equivalent degree, as determined by the Secretary of the U.S. Department of Education) conferred by a college, university, or other postsecondary education institution as official recognition for the successful completion of a program of studies, that normally requires at least four years of full-time equivalent college-level work. This includes bachelor&#39;s degrees conferred in a five-year cooperative program."/>
               </concept>
               <concept>
                 <code value="Doctoral degree or professional degree"/>
                 <display value="Professional Doctorate or Doctorate Degree"/>
-                <definition value="A doctorate awarded in certain fields where most holders of the degree are not engaged primarily in scholarly research and academic activities, but rather in a profession, such as law, medicine, music, or ministry.: Or; used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise.: The Doctor's Degree is the highest award a student can earn for graduate study. The doctor's degree classification includes such degrees in any field."/>
+                <definition value="A doctorate awarded in certain fields where most holders of the degree are not engaged primarily in scholarly research and academic activities, but rather in a profession, such as law, medicine, music, or ministry.: Or; used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise.: The Doctor&#39;s Degree is the highest award a student can earn for graduate study. The doctor&#39;s degree classification includes such degrees in any field."/>
               </concept>
               <concept>
                 <code value="Grade School"/>
@@ -2034,9 +2043,9 @@
                 <definition value="Indicates that a person has attended high school and has received a high school diploma.: Or; used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise.: Indicates that a person has received a General Equivalency Diploma in lieu of a high school diploma."/>
               </concept>
               <concept>
-                <code value="Master's Degree"/>
-                <display value="Master's Degree"/>
-                <definition value="The Master's Degree is an award that requires the successful completion of a program of study of at least the full-time equivalent of 1 but not more than two academic years of work beyond the bachelor's degree."/>
+                <code value="Master&#39;s Degree"/>
+                <display value="Master&#39;s Degree"/>
+                <definition value="The Master&#39;s Degree is an award that requires the successful completion of a program of study of at least the full-time equivalent of 1 but not more than two academic years of work beyond the bachelor&#39;s degree."/>
               </concept>
               <concept>
                 <code value="No formal education"/>
@@ -2053,14 +2062,14 @@
                 <display value="Some College or Associates Degree"/>
                 <definition value="An institution of higher education created to educate and grant degrees; often a part of a university.: At least a small amount or number of.: Or; used to connect words, phrases, or clauses representing alternatives; used to connect alternative terms for the same thing; used in correlation; used to correct or rephrase what was previously said; otherwise.: A degree granted by a two-year college on successful completion of the undergraduates course of studies."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e12384-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/2674812v4.0/question_identifier#3702952v4.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -2083,14 +2092,14 @@
                 <display value="USA, SPECIFY THE 2 LETTER STATE CODE, EG NY"/>
                 <definition value="USA, SPECIFY THE 2 LETTER STATE CODE, EG NY"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e12630-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/2674812v4.0/question_identifier#3702957v4.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -2165,11 +2174,11 @@
               </concept>
               <concept>
                 <code value="Bachelor Degree"/>
-                <display value="Bachelor's Degree Completion"/>
+                <display value="Bachelor&#39;s Degree Completion"/>
                 <definition value="Indicates that a person has received a degree for successful completion of a program of studies that normally requires at least 4-5 years of full-time equivalent college-level work."/>
               </concept>
               <concept>
-                <code value="Don't Know"/>
+                <code value="Don&#39;t Know"/>
                 <display value="Does Not Know"/>
                 <definition value="The answer is not known by the person answering."/>
               </concept>
@@ -2189,9 +2198,9 @@
                 <definition value="Indicates that kindergarten is the highest level of education achievement."/>
               </concept>
               <concept>
-                <code value="Master's Degree"/>
-                <display value="Master's Degree Completion"/>
-                <definition value="Indicates that a person has received a degree for completion of at least one year of prescribed study beyond the bachelor's degree."/>
+                <code value="Master&#39;s Degree"/>
+                <display value="Master&#39;s Degree Completion"/>
+                <definition value="Indicates that a person has received a degree for completion of at least one year of prescribed study beyond the bachelor&#39;s degree."/>
               </concept>
               <concept>
                 <code value="No Formal Schooling"/>
@@ -2223,14 +2232,14 @@
                 <display value="Vocational Degree"/>
                 <definition value="Indicates that a person has received a degree from a occupational, technical, or vocational program."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e14027-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/2674812v4.0/question_identifier#3702985v4.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -2263,7 +2272,7 @@
                 <display value="WIDOWED"/>
                 <definition value="A person who is no longer married because of the death of his/her spouse and who has not remarried."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-category">
@@ -2290,6 +2299,7 @@
         <group>
           <linkId value="root"/>
           <title value="Demography NCI Standard Template"/>
+          <required value="true"/>
           <group>
             <linkId value="3702891v4.0"/>
             <title value="Mandatory Demography Questions"/>
@@ -2340,7 +2350,7 @@
                 </valueReference>
               </extension>
               <linkId value="3702903v4.0"/>
-              <text value="Patient's Date of Birth"/>
+              <text value="Patient&#39;s Date of Birth"/>
               <type value="string"/>
             </question>
             <question>
@@ -2536,6 +2546,7 @@
     </resource>
   </entry>
   <entry>
+    <fullUrl value="http://AHRQ.org/form/Questionnaire/3265657v2.0"/>
     <resource>
       <Questionnaire>
         <id value="3265657v2.0"/>
@@ -2551,7 +2562,7 @@
           <ValueSet>
             <id value="d1e14927-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3556214v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -2612,7 +2623,7 @@
               <concept>
                 <code value="Adrenal insufficiency"/>
                 <display value="Adrenal insufficiency"/>
-                <definition value="A disorder that occurs when the adrenal cortex does not produce enough of the hormone cortisol and in some cases, the hormone aldosterone. It may be due to a disorder of the adrenal cortex as in Addison's disease or primary adrenal insufficiency."/>
+                <definition value="A disorder that occurs when the adrenal cortex does not produce enough of the hormone cortisol and in some cases, the hormone aldosterone. It may be due to a disorder of the adrenal cortex as in Addison&#39;s disease or primary adrenal insufficiency."/>
               </concept>
               <concept>
                 <code value="Adult respiratory distress syndrome"/>
@@ -3262,7 +3273,7 @@
               <concept>
                 <code value="Cushingoid"/>
                 <display value="Cushingoid"/>
-                <definition value="A disorder characterized by signs and symptoms that resemble Cushing's disease or syndrome: buffalo hump obesity, striations, adiposity, hypertension, diabetes, and osteoporosis, usually due to exogenous corticosteroids."/>
+                <definition value="A disorder characterized by signs and symptoms that resemble Cushing&#39;s disease or syndrome: buffalo hump obesity, striations, adiposity, hypertension, diabetes, and osteoporosis, usually due to exogenous corticosteroids."/>
               </concept>
               <concept>
                 <code value="Cystitis noninfective"/>
@@ -3747,7 +3758,7 @@
               <concept>
                 <code value="Fever"/>
                 <display value="Fever"/>
-                <definition value="A disorder characterized by elevation of the body's temperature above the upper limit of normal."/>
+                <definition value="A disorder characterized by elevation of the body&#39;s temperature above the upper limit of normal."/>
               </concept>
               <concept>
                 <code value="Fibrinogen decreased"/>
@@ -4342,7 +4353,7 @@
               <concept>
                 <code value="INR increased"/>
                 <display value="INR increased"/>
-                <definition value="A finding based on laboratory test results that indicate an increase in the ratio of the patient's prothrombin time to a control sample in the blood."/>
+                <definition value="A finding based on laboratory test results that indicate an increase in the ratio of the patient&#39;s prothrombin time to a control sample in the blood."/>
               </concept>
               <concept>
                 <code value="Insomnia"/>
@@ -5052,7 +5063,7 @@
               <concept>
                 <code value="Otitis externa"/>
                 <display value="Otitis externa"/>
-                <definition value="A disorder characterized by an infectious process involving the outer ear and ear canal. Contributory factors include excessive water exposure (swimmer's ear infection) and cuts in the ear canal. Symptoms include fullness, itching, swelling and marked discomfort in the ear and ear drainage."/>
+                <definition value="A disorder characterized by an infectious process involving the outer ear and ear canal. Contributory factors include excessive water exposure (swimmer&#39;s ear infection) and cuts in the ear canal. Symptoms include fullness, itching, swelling and marked discomfort in the ear and ear drainage."/>
               </concept>
               <concept>
                 <code value="Otitis media"/>
@@ -5272,7 +5283,7 @@
               <concept>
                 <code value="Personality change"/>
                 <display value="Personality change"/>
-                <definition value="A disorder characterized by a conspicuous change in a person's behavior and thinking."/>
+                <definition value="A disorder characterized by a conspicuous change in a person&#39;s behavior and thinking."/>
               </concept>
               <concept>
                 <code value="Phantom pain"/>
@@ -5972,12 +5983,12 @@
               <concept>
                 <code value="Suicidal ideation"/>
                 <display value="Suicidal ideation"/>
-                <definition value="A disorder characterized by thoughts of taking one's own life."/>
+                <definition value="A disorder characterized by thoughts of taking one&#39;s own life."/>
               </concept>
               <concept>
                 <code value="Suicide attempt"/>
                 <display value="Suicide attempt"/>
-                <definition value="A disorder characterized by self-inflicted harm in an attempt to end one's own life."/>
+                <definition value="A disorder characterized by self-inflicted harm in an attempt to end one&#39;s own life."/>
               </concept>
               <concept>
                 <code value="Superficial soft tissue fibrosis"/>
@@ -6504,14 +6515,14 @@
                 <display value="Wrist fracture"/>
                 <definition value="A finding of traumatic injury to the wrist joint in which the continuity of a wrist bone is broken."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e54652-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557008v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -6539,14 +6550,14 @@
                 <display value="Death Related to Adverse Event"/>
                 <definition value="The termination of life associated with an adverse event."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e55041-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557021v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -6559,14 +6570,14 @@
                 <display value="No"/>
                 <definition value="The non-affirmative response to a question."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e55265-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557032v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -6592,7 +6603,7 @@
               <concept>
                 <code value="Device"/>
                 <display value="Medical_Device"/>
-                <definition value="Medical device - any machinery designed to aid diagnostic and medical therapies. Medical device has to be designed with rigorous safety standards. There are several basic types of medical devices: life support equipment used to maintain a patient's body functions; therapeutic equipment; monitors and detectors to measure the indexes of a patient's state; imagine machines and laboratory equipment used with diagnostic and status monitoring purposes. In insurance parlance, the term is usually synonymous with assistive device, although it may include medical supplies."/>
+                <definition value="Medical device - any machinery designed to aid diagnostic and medical therapies. Medical device has to be designed with rigorous safety standards. There are several basic types of medical devices: life support equipment used to maintain a patient&#39;s body functions; therapeutic equipment; monitors and detectors to measure the indexes of a patient&#39;s state; imagine machines and laboratory equipment used with diagnostic and status monitoring purposes. In insurance parlance, the term is usually synonymous with assistive device, although it may include medical supplies."/>
               </concept>
               <concept>
                 <code value="Disease"/>
@@ -6629,14 +6640,14 @@
                 <display value="Surgery"/>
                 <definition value="A specialty in which manual or operative procedures are used in the treatment of disease, injuries, or deformities."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e56008-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557869v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -6732,7 +6743,7 @@
               <concept>
                 <code value="Psychiatric disorders"/>
                 <display value="Psychiatric Disorder"/>
-                <definition value="Any deviation from the normal structure or function of the brain and a psychiatric condition, that results in an impairment of an individual's normal cognitive, emotional, or behavioral functioning, and is caused by physiological or psychosocial factors."/>
+                <definition value="Any deviation from the normal structure or function of the brain and a psychiatric condition, that results in an impairment of an individual&#39;s normal cognitive, emotional, or behavioral functioning, and is caused by physiological or psychosocial factors."/>
               </concept>
               <concept>
                 <code value="Renal and urinary disorders"/>
@@ -6769,14 +6780,14 @@
                 <display value="Vascular Disorder"/>
                 <definition value="Any deviation from the normal structure or function of the vascular system that is manifested by a characteristic set of symptoms and signs."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e57358-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557050v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -6807,7 +6818,7 @@
               <concept>
                 <code value="10001367"/>
                 <display value="Adrenal insufficiency"/>
-                <definition value="A disorder that occurs when the adrenal cortex does not produce enough of the hormone cortisol and in some cases, the hormone aldosterone. It may be due to a disorder of the adrenal cortex as in Addison's disease or primary adrenal insufficiency."/>
+                <definition value="A disorder that occurs when the adrenal cortex does not produce enough of the hormone cortisol and in some cases, the hormone aldosterone. It may be due to a disorder of the adrenal cortex as in Addison&#39;s disease or primary adrenal insufficiency."/>
               </concept>
               <concept>
                 <code value="10001409"/>
@@ -7302,7 +7313,7 @@
               <concept>
                 <code value="10011655"/>
                 <display value="Cushingoid"/>
-                <definition value="A disorder characterized by signs and symptoms that resemble Cushing's disease or syndrome: buffalo hump obesity, striations, adiposity, hypertension, diabetes, and osteoporosis, usually due to exogenous corticosteroids."/>
+                <definition value="A disorder characterized by signs and symptoms that resemble Cushing&#39;s disease or syndrome: buffalo hump obesity, striations, adiposity, hypertension, diabetes, and osteoporosis, usually due to exogenous corticosteroids."/>
               </concept>
               <concept>
                 <code value="10011912"/>
@@ -7627,7 +7638,7 @@
               <concept>
                 <code value="10016558"/>
                 <display value="Fever"/>
-                <definition value="A disorder characterized by elevation of the body's temperature above the upper limit of normal."/>
+                <definition value="A disorder characterized by elevation of the body&#39;s temperature above the upper limit of normal."/>
               </concept>
               <concept>
                 <code value="10016596"/>
@@ -8092,7 +8103,7 @@
               <concept>
                 <code value="10022402"/>
                 <display value="INR increased"/>
-                <definition value="A finding based on laboratory test results that indicate an increase in the ratio of the patient's prothrombin time to a control sample in the blood."/>
+                <definition value="A finding based on laboratory test results that indicate an increase in the ratio of the patient&#39;s prothrombin time to a control sample in the blood."/>
               </concept>
               <concept>
                 <code value="10022437"/>
@@ -8432,7 +8443,7 @@
               <concept>
                 <code value="10033072"/>
                 <display value="Otitis externa"/>
-                <definition value="A disorder characterized by an infectious process involving the outer ear and ear canal. Contributory factors include excessive water exposure (swimmer's ear infection) and cuts in the ear canal. Symptoms include fullness, itching, swelling and marked discomfort in the ear and ear drainage."/>
+                <definition value="A disorder characterized by an infectious process involving the outer ear and ear canal. Contributory factors include excessive water exposure (swimmer&#39;s ear infection) and cuts in the ear canal. Symptoms include fullness, itching, swelling and marked discomfort in the ear and ear drainage."/>
               </concept>
               <concept>
                 <code value="10033078"/>
@@ -8547,7 +8558,7 @@
               <concept>
                 <code value="10034719"/>
                 <display value="Personality change"/>
-                <definition value="A disorder characterized by a conspicuous change in a person's behavior and thinking."/>
+                <definition value="A disorder characterized by a conspicuous change in a person&#39;s behavior and thinking."/>
               </concept>
               <concept>
                 <code value="10034825"/>
@@ -9012,12 +9023,12 @@
               <concept>
                 <code value="10042458"/>
                 <display value="Suicidal ideation"/>
-                <definition value="A disorder characterized by thoughts of taking one's own life."/>
+                <definition value="A disorder characterized by thoughts of taking one&#39;s own life."/>
               </concept>
               <concept>
                 <code value="10042464"/>
                 <display value="Suicide attempt"/>
-                <definition value="A disorder characterized by self-inflicted harm in an attempt to end one's own life."/>
+                <definition value="A disorder characterized by self-inflicted harm in an attempt to end one&#39;s own life."/>
               </concept>
               <concept>
                 <code value="10042554"/>
@@ -10729,14 +10740,14 @@
                 <display value="Left ventricular systolic dysfunction"/>
                 <definition value="A disorder characterized by failure of the left ventricle to produce adequate output despite an increase in distending pressure and in end-diastolic volume. Clinical manifestations mayinclude dyspnea, orthopnea, and other signs and symptoms of pulmonary congestion and edema."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e97042-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557842v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -10764,14 +10775,14 @@
                 <display value="UNRELATED"/>
                 <definition value="UNRELATED"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e97392-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557851v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -10789,14 +10800,14 @@
                 <display value="Unknown"/>
                 <definition value="Not known, not observed, not recorded, or refused."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e97594-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557856v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -10809,14 +10820,14 @@
                 <display value="No"/>
                 <definition value="The non-affirmative response to a question."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e97746-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557859v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -10829,14 +10840,14 @@
                 <display value="No"/>
                 <definition value="The non-affirmative response to a question."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e98036-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557913v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -10849,14 +10860,14 @@
                 <display value="No"/>
                 <definition value="The non-affirmative response to a question."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e98234-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557028v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -10869,14 +10880,14 @@
                 <display value="No"/>
                 <definition value="The non-affirmative response to a question."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e98385-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557896v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -10909,14 +10920,14 @@
                 <display value="Unknown"/>
                 <definition value="Not known, not observed, not recorded, or refused."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e98732-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557906v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -10934,14 +10945,14 @@
                 <display value="CONTINUOUS"/>
                 <definition value="Existing in time or space without stop or interruption."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e98928-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3557917v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -10959,14 +10970,14 @@
                 <display value="Not Applicable"/>
                 <definition value="Determination of a value is not relevant in the current context."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e99214-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3556199v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -11009,14 +11020,14 @@
                 <display value="Meets criteria per protocol but does not meet other criterion (above)"/>
                 <definition value="Meets criteria per protocol but does not meet other criterion (above)"/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <contained>
           <ValueSet>
             <id value="d1e99668-vs"/>
             <status value="active"/>
-            <define>
+            <codeSystem>
               <system value="http://nci.nih.gov/xml/owl/cadsr/form/form_design_identifier/3265657v2.0/question_identifier#3556209v2.0-cs"/>
               <caseSensitive value="true"/>
               <concept>
@@ -11029,7 +11040,7 @@
                 <display value="Yes"/>
                 <definition value="The affirmative response to a question or activity."/>
               </concept>
-            </define>
+            </codeSystem>
           </ValueSet>
         </contained>
         <extension url="http://hl7.org/fhir/StructureDefinition/questionnaire-category">
@@ -11049,6 +11060,7 @@
         <group>
           <linkId value="root"/>
           <title value="Adverse Event/Serious Adverse Event CTCAE v4 NCI Standard Template"/>
+          <required value="true"/>
           <group>
             <linkId value="3556213v2.0"/>
             <title value="Mandatory Adverse Event Questions"/>
@@ -11080,7 +11092,7 @@
                 </valueReference>
               </extension>
               <linkId value="3557006v2.0"/>
-              <text value="Describe 'Other' Adverse Event"/>
+              <text value="Describe &#39;Other&#39; Adverse Event"/>
               <type value="string"/>
             </question>
             <question>

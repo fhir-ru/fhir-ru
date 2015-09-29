@@ -1,8 +1,9 @@
 package org.hl7.fhir.instance.model;
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 public enum ResourceType {
+    Account,
     AllergyIntolerance,
     Appointment,
     AppointmentResponse,
@@ -22,9 +23,9 @@ public enum ResourceType {
     Condition,
     Conformance,
     Contract,
-    Contraindication,
     Coverage,
     DataElement,
+    DetectedIssue,
     Device,
     DeviceComponent,
     DeviceMetric,
@@ -57,7 +58,7 @@ public enum ResourceType {
     Medication,
     MedicationAdministration,
     MedicationDispense,
-    MedicationPrescription,
+    MedicationOrder,
     MedicationStatement,
     MessageHeader,
     NamingSystem,
@@ -80,7 +81,7 @@ public enum ResourceType {
     ProcessResponse,
     Provenance,
     Questionnaire,
-    QuestionnaireAnswers,
+    QuestionnaireResponse,
     ReferralRequest,
     RelatedPerson,
     RiskAssessment,
@@ -91,7 +92,6 @@ public enum ResourceType {
     StructureDefinition,
     Subscription,
     Substance,
-    Supply,
     SupplyDelivery,
     SupplyRequest,
     TestScript,
@@ -101,6 +101,8 @@ public enum ResourceType {
 
     public String getPath() {;
       switch (this) {
+    case Account:
+      return "account";
     case AllergyIntolerance:
       return "allergyintolerance";
     case Appointment:
@@ -139,12 +141,12 @@ public enum ResourceType {
       return "conformance";
     case Contract:
       return "contract";
-    case Contraindication:
-      return "contraindication";
     case Coverage:
       return "coverage";
     case DataElement:
       return "dataelement";
+    case DetectedIssue:
+      return "detectedissue";
     case Device:
       return "device";
     case DeviceComponent:
@@ -209,8 +211,8 @@ public enum ResourceType {
       return "medicationadministration";
     case MedicationDispense:
       return "medicationdispense";
-    case MedicationPrescription:
-      return "medicationprescription";
+    case MedicationOrder:
+      return "medicationorder";
     case MedicationStatement:
       return "medicationstatement";
     case MessageHeader:
@@ -255,8 +257,8 @@ public enum ResourceType {
       return "provenance";
     case Questionnaire:
       return "questionnaire";
-    case QuestionnaireAnswers:
-      return "questionnaireanswers";
+    case QuestionnaireResponse:
+      return "questionnaireresponse";
     case ReferralRequest:
       return "referralrequest";
     case RelatedPerson:
@@ -277,8 +279,6 @@ public enum ResourceType {
       return "subscription";
     case Substance:
       return "substance";
-    case Supply:
-      return "supply";
     case SupplyDelivery:
       return "supplydelivery";
     case SupplyRequest:

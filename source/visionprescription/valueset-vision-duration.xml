@@ -1,17 +1,18 @@
-<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/valueset.xsd">
-  <name value="Example Vision Prescription Product Codes"/>
-  <publisher value="Financial Management"/>
-  <copyright value="This is an example set"/>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <name value="Example Vision Contact Duration Codes"/>
   <status value="draft"/>
+  <publisher value="Financial Management"/>
   <contact>
     <telecom>
-    <system value="url"/>
-    <value value="http://hl7.org/fhir"/>
-  </telecom>
+      <system value="other"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
   </contact>
-  <description value="This value set includes a smattering of Contact Duration codes"/>
-  <status value="draft"/>
-  <define>
+  <description value="This value set includes a smattering of Contact Duration codes."/>
+  <copyright value="This is an example set."/>
+  <codeSystem>
     <system value="http://hl7.org/fhir/ex-visioncontactduration"/>
     <caseSensitive value="true"/>
     <concept>
@@ -28,9 +29,9 @@
     </concept>
     <concept>
       <code value="year"/>
-    </concept>    
-	<concept>
+    </concept>
+    <concept>
       <code value="indefinite"/>
     </concept>
-  </define>
+  </codeSystem>
 </ValueSet>

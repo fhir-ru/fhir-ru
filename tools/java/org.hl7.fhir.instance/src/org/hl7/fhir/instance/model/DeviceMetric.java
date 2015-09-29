@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -48,15 +48,15 @@ public class DeviceMetric extends DomainResource {
 
     public enum DeviceMetricOperationalStatus {
         /**
-         * The DeviceMetric is operating and will generate DeviceObservations
+         * The DeviceMetric is operating and will generate DeviceObservations.
          */
         ON, 
         /**
-         * The DeviceMetric is not operating
+         * The DeviceMetric is not operating.
          */
         OFF, 
         /**
-         * The DeviceMetric is operating, but will not generate any DeviceObservations
+         * The DeviceMetric is operating, but will not generate any DeviceObservations.
          */
         STANDBY, 
         /**
@@ -92,9 +92,9 @@ public class DeviceMetric extends DomainResource {
         }
         public String getDefinition() {
           switch (this) {
-            case ON: return "The DeviceMetric is operating and will generate DeviceObservations";
-            case OFF: return "The DeviceMetric is not operating";
-            case STANDBY: return "The DeviceMetric is operating, but will not generate any DeviceObservations";
+            case ON: return "The DeviceMetric is operating and will generate DeviceObservations.";
+            case OFF: return "The DeviceMetric is not operating.";
+            case STANDBY: return "The DeviceMetric is operating, but will not generate any DeviceObservations.";
             default: return "?";
           }
         }
@@ -134,35 +134,35 @@ public class DeviceMetric extends DomainResource {
 
     public enum DeviceMetricColor {
         /**
-         * Color for representation - black
+         * Color for representation - black.
          */
         BLACK, 
         /**
-         * Color for representation - red
+         * Color for representation - red.
          */
         RED, 
         /**
-         * Color for representation - green
+         * Color for representation - green.
          */
         GREEN, 
         /**
-         * Color for representation - yellow
+         * Color for representation - yellow.
          */
         YELLOW, 
         /**
-         * Color for representation - blue
+         * Color for representation - blue.
          */
         BLUE, 
         /**
-         * Color for representation - magenta
+         * Color for representation - magenta.
          */
         MAGENTA, 
         /**
-         * Color for representation - cyan
+         * Color for representation - cyan.
          */
         CYAN, 
         /**
-         * Color for representation - white
+         * Color for representation - white.
          */
         WHITE, 
         /**
@@ -218,27 +218,27 @@ public class DeviceMetric extends DomainResource {
         }
         public String getDefinition() {
           switch (this) {
-            case BLACK: return "Color for representation - black";
-            case RED: return "Color for representation - red";
-            case GREEN: return "Color for representation - green";
-            case YELLOW: return "Color for representation - yellow";
-            case BLUE: return "Color for representation - blue";
-            case MAGENTA: return "Color for representation - magenta";
-            case CYAN: return "Color for representation - cyan";
-            case WHITE: return "Color for representation - white";
+            case BLACK: return "Color for representation - black.";
+            case RED: return "Color for representation - red.";
+            case GREEN: return "Color for representation - green.";
+            case YELLOW: return "Color for representation - yellow.";
+            case BLUE: return "Color for representation - blue.";
+            case MAGENTA: return "Color for representation - magenta.";
+            case CYAN: return "Color for representation - cyan.";
+            case WHITE: return "Color for representation - white.";
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case BLACK: return "col-black";
-            case RED: return "col-red";
-            case GREEN: return "col-green";
-            case YELLOW: return "col-yellow";
-            case BLUE: return "col-blue";
-            case MAGENTA: return "col-magenta";
-            case CYAN: return "col-cyan";
-            case WHITE: return "col-white";
+            case BLACK: return "Color Black";
+            case RED: return "Color Red";
+            case GREEN: return "Color Green";
+            case YELLOW: return "Color Yellow";
+            case BLUE: return "Color Blue";
+            case MAGENTA: return "Color Magenta";
+            case CYAN: return "Color Cyan";
+            case WHITE: return "Color White";
             default: return "?";
           }
         }
@@ -593,21 +593,21 @@ public class DeviceMetric extends DomainResource {
         /**
          * Describes the type of the calibration method.
          */
-        @Child(name = "type", type = {CodeType.class}, order=1, min=0, max=1)
+        @Child(name = "type", type = {CodeType.class}, order=1, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="unspecified | offset | gain | two-point", formalDefinition="Describes the type of the calibration method." )
         protected Enumeration<DeviceMetricCalibrationType> type;
 
         /**
          * Describes the state of the calibration.
          */
-        @Child(name = "state", type = {CodeType.class}, order=2, min=0, max=1)
+        @Child(name = "state", type = {CodeType.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="not-calibrated | calibration-required | calibrated | unspecified", formalDefinition="Describes the state of the calibration." )
         protected Enumeration<DeviceMetricCalibrationState> state;
 
         /**
          * Describes the time last calibration has been performed.
          */
-        @Child(name = "time", type = {InstantType.class}, order=3, min=0, max=1)
+        @Child(name = "time", type = {InstantType.class}, order=3, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Describes the time last calibration has been performed", formalDefinition="Describes the time last calibration has been performed." )
         protected InstantType time;
 
@@ -815,29 +815,28 @@ public class DeviceMetric extends DomainResource {
     /**
      * Describes the type of the metric. For example: Heart Rate, PEEP Setting, etc.
      */
-    @Child(name = "type", type = {CodeableConcept.class}, order=0, min=1, max=1)
+    @Child(name = "type", type = {CodeableConcept.class}, order=0, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Type of metric", formalDefinition="Describes the type of the metric. For example: Heart Rate, PEEP Setting, etc." )
     protected CodeableConcept type;
 
     /**
-     * Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID. 
-It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.
+     * Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID.  It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=1, min=1, max=1)
-    @Description(shortDefinition="Unique identifier of this DeviceMetric", formalDefinition="Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID. \nIt should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device." )
+    @Child(name = "identifier", type = {Identifier.class}, order=1, min=1, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Unique identifier of this DeviceMetric", formalDefinition="Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID.  It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device." )
     protected Identifier identifier;
 
     /**
      * Describes the unit that an observed value determined for this metric will have. For example: Percent, Seconds, etc.
      */
-    @Child(name = "unit", type = {CodeableConcept.class}, order=2, min=0, max=1)
+    @Child(name = "unit", type = {CodeableConcept.class}, order=2, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Unit of metric", formalDefinition="Describes the unit that an observed value determined for this metric will have. For example: Percent, Seconds, etc." )
     protected CodeableConcept unit;
 
     /**
      * Describes the link to the  Device that this DeviceMetric belongs to and that contains administrative device information such as manufacture, serial number, etc.
      */
-    @Child(name = "source", type = {Device.class}, order=3, min=0, max=1)
+    @Child(name = "source", type = {Device.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Describes the link to the source Device", formalDefinition="Describes the link to the  Device that this DeviceMetric belongs to and that contains administrative device information such as manufacture, serial number, etc." )
     protected Reference source;
 
@@ -847,53 +846,49 @@ It should be noted that in order to make the identifier unique, the system eleme
     protected Device sourceTarget;
 
     /**
-     * Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device.
-An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.
+     * Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device. An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.
      */
-    @Child(name = "parent", type = {DeviceComponent.class}, order=4, min=0, max=1)
-    @Description(shortDefinition="Describes the link to the parent DeviceComponent", formalDefinition="Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device.\nAn example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location." )
+    @Child(name = "parent", type = {DeviceComponent.class}, order=4, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Describes the link to the parent DeviceComponent", formalDefinition="Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device. An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location." )
     protected Reference parent;
 
     /**
-     * The actual object that is the target of the reference (Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device.
-An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.)
+     * The actual object that is the target of the reference (Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device. An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.)
      */
     protected DeviceComponent parentTarget;
 
     /**
      * Indicates current operational state of the device. For example: On, Off, Standby, etc.
      */
-    @Child(name = "operationalStatus", type = {CodeType.class}, order=5, min=0, max=1)
+    @Child(name = "operationalStatus", type = {CodeType.class}, order=5, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="on | off | standby", formalDefinition="Indicates current operational state of the device. For example: On, Off, Standby, etc." )
     protected Enumeration<DeviceMetricOperationalStatus> operationalStatus;
 
     /**
      * Describes the color representation for the metric. This is often used to aid clinicians to track and identify parameter types by color. In practice, consider a Patient Monitor that has ECG/HR and Pleth for example; the parameters are displayed in different characteristic colors, such as HR-blue, BP-green, and PR and SpO2- magenta.
      */
-    @Child(name = "color", type = {CodeType.class}, order=6, min=0, max=1)
+    @Child(name = "color", type = {CodeType.class}, order=6, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="black | red | green | yellow | blue | magenta | cyan | white", formalDefinition="Describes the color representation for the metric. This is often used to aid clinicians to track and identify parameter types by color. In practice, consider a Patient Monitor that has ECG/HR and Pleth for example; the parameters are displayed in different characteristic colors, such as HR-blue, BP-green, and PR and SpO2- magenta." )
     protected Enumeration<DeviceMetricColor> color;
 
     /**
      * Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation.
      */
-    @Child(name = "category", type = {CodeType.class}, order=7, min=1, max=1)
+    @Child(name = "category", type = {CodeType.class}, order=7, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="measurement | setting | calculation | unspecified", formalDefinition="Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation." )
     protected Enumeration<DeviceMetricCategory> category;
 
     /**
-     * Describes the measurement repetition time. This is not necessarily the same as the update period.
-The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour.
-The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.
+     * Describes the measurement repetition time. This is not necessarily the same as the update period. The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour. The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.
      */
-    @Child(name = "measurementPeriod", type = {Timing.class}, order=8, min=0, max=1)
-    @Description(shortDefinition="Describes the measurement repetition time", formalDefinition="Describes the measurement repetition time. This is not necessarily the same as the update period.\nThe measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour.\nThe update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured." )
+    @Child(name = "measurementPeriod", type = {Timing.class}, order=8, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Describes the measurement repetition time", formalDefinition="Describes the measurement repetition time. This is not necessarily the same as the update period. The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour. The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured." )
     protected Timing measurementPeriod;
 
     /**
      * Describes the calibrations that have been performed or that are required to be performed.
      */
-    @Child(name = "calibration", type = {}, order=9, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "calibration", type = {}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Describes the calibrations that have been performed or that are required to be performed", formalDefinition="Describes the calibrations that have been performed or that are required to be performed." )
     protected List<DeviceMetricCalibrationComponent> calibration;
 
@@ -941,8 +936,7 @@ The update period may be different than the measurement repetition time, if the 
     }
 
     /**
-     * @return {@link #identifier} (Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID. 
-It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.)
+     * @return {@link #identifier} (Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID.  It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.)
      */
     public Identifier getIdentifier() { 
       if (this.identifier == null)
@@ -958,8 +952,7 @@ It should be noted that in order to make the identifier unique, the system eleme
     }
 
     /**
-     * @param value {@link #identifier} (Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID. 
-It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.)
+     * @param value {@link #identifier} (Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID.  It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.)
      */
     public DeviceMetric setIdentifier(Identifier value) { 
       this.identifier = value;
@@ -1035,8 +1028,7 @@ It should be noted that in order to make the identifier unique, the system eleme
     }
 
     /**
-     * @return {@link #parent} (Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device.
-An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.)
+     * @return {@link #parent} (Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device. An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.)
      */
     public Reference getParent() { 
       if (this.parent == null)
@@ -1052,8 +1044,7 @@ An example would be a DeviceComponent that represents a Channel. This reference 
     }
 
     /**
-     * @param value {@link #parent} (Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device.
-An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.)
+     * @param value {@link #parent} (Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device. An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.)
      */
     public DeviceMetric setParent(Reference value) { 
       this.parent = value;
@@ -1061,8 +1052,7 @@ An example would be a DeviceComponent that represents a Channel. This reference 
     }
 
     /**
-     * @return {@link #parent} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device.
-An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.)
+     * @return {@link #parent} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device. An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.)
      */
     public DeviceComponent getParentTarget() { 
       if (this.parentTarget == null)
@@ -1074,8 +1064,7 @@ An example would be a DeviceComponent that represents a Channel. This reference 
     }
 
     /**
-     * @param value {@link #parent} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device.
-An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.)
+     * @param value {@link #parent} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device. An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.)
      */
     public DeviceMetric setParentTarget(DeviceComponent value) { 
       this.parentTarget = value;
@@ -1226,9 +1215,7 @@ An example would be a DeviceComponent that represents a Channel. This reference 
     }
 
     /**
-     * @return {@link #measurementPeriod} (Describes the measurement repetition time. This is not necessarily the same as the update period.
-The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour.
-The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.)
+     * @return {@link #measurementPeriod} (Describes the measurement repetition time. This is not necessarily the same as the update period. The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour. The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.)
      */
     public Timing getMeasurementPeriod() { 
       if (this.measurementPeriod == null)
@@ -1244,9 +1231,7 @@ The update period may be different than the measurement repetition time, if the 
     }
 
     /**
-     * @param value {@link #measurementPeriod} (Describes the measurement repetition time. This is not necessarily the same as the update period.
-The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour.
-The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.)
+     * @param value {@link #measurementPeriod} (Describes the measurement repetition time. This is not necessarily the same as the update period. The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour. The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.)
      */
     public DeviceMetric setMeasurementPeriod(Timing value) { 
       this.measurementPeriod = value;
@@ -1296,14 +1281,14 @@ The update period may be different than the measurement repetition time, if the 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("type", "CodeableConcept", "Describes the type of the metric. For example: Heart Rate, PEEP Setting, etc.", 0, java.lang.Integer.MAX_VALUE, type));
-        childrenList.add(new Property("identifier", "Identifier", "Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID. \nIt should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.", 0, java.lang.Integer.MAX_VALUE, identifier));
+        childrenList.add(new Property("identifier", "Identifier", "Describes the unique identification of this metric that has been assigned by the device or gateway software. For example: handle ID.  It should be noted that in order to make the identifier unique, the system element of the identifier should be set to the unique identifier of the device.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("unit", "CodeableConcept", "Describes the unit that an observed value determined for this metric will have. For example: Percent, Seconds, etc.", 0, java.lang.Integer.MAX_VALUE, unit));
         childrenList.add(new Property("source", "Reference(Device)", "Describes the link to the  Device that this DeviceMetric belongs to and that contains administrative device information such as manufacture, serial number, etc.", 0, java.lang.Integer.MAX_VALUE, source));
-        childrenList.add(new Property("parent", "Reference(DeviceComponent)", "Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device.\nAn example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.", 0, java.lang.Integer.MAX_VALUE, parent));
+        childrenList.add(new Property("parent", "Reference(DeviceComponent)", "Describes the link to the  DeviceComponent that this DeviceMetric belongs to and that provide information about the location of this DeviceMetric in the containment structure of the parent Device. An example would be a DeviceComponent that represents a Channel. This reference can be used by a client application to distinguish DeviceMetrics that have the same type, but should be interpreted based on their containment location.", 0, java.lang.Integer.MAX_VALUE, parent));
         childrenList.add(new Property("operationalStatus", "code", "Indicates current operational state of the device. For example: On, Off, Standby, etc.", 0, java.lang.Integer.MAX_VALUE, operationalStatus));
         childrenList.add(new Property("color", "code", "Describes the color representation for the metric. This is often used to aid clinicians to track and identify parameter types by color. In practice, consider a Patient Monitor that has ECG/HR and Pleth for example; the parameters are displayed in different characteristic colors, such as HR-blue, BP-green, and PR and SpO2- magenta.", 0, java.lang.Integer.MAX_VALUE, color));
         childrenList.add(new Property("category", "code", "Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation.", 0, java.lang.Integer.MAX_VALUE, category));
-        childrenList.add(new Property("measurementPeriod", "Timing", "Describes the measurement repetition time. This is not necessarily the same as the update period.\nThe measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour.\nThe update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.", 0, java.lang.Integer.MAX_VALUE, measurementPeriod));
+        childrenList.add(new Property("measurementPeriod", "Timing", "Describes the measurement repetition time. This is not necessarily the same as the update period. The measurement repetition time can range from milliseconds up to hours. An example for a measurement repetition time in the range of milliseconds is the sampling rate of an ECG. An example for a measurement repetition time in the range of hours is a NIBP that is triggered automatically every hour. The update period may be different than the measurement repetition time, if the device does not update the published observed value with the same frequency as it was measured.", 0, java.lang.Integer.MAX_VALUE, measurementPeriod));
         childrenList.add(new Property("calibration", "", "Describes the calibrations that have been performed or that are required to be performed.", 0, java.lang.Integer.MAX_VALUE, calibration));
       }
 

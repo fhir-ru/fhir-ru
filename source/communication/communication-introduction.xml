@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Scope and Usage</h2>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
     
@@ -14,10 +15,18 @@ The sender and receivers may be patients, practitioners, related persons, organi
 <li>A notification to a public health agency of a patient presenting with a communicable disease reportable to the public health agency</li>
 <li>Patient educational material sent by a provider to a patient</li>
 </ul>
+<p>
+Non-patient specific communication use cases may include:
+</p>
+<ul>
+<li>A nurse call from a hall bathroom</li>
+<li>Advisory for battery service from a pump</li>
+</ul>
 </div>
 
 <!-- (recommended): -->
 <div>
+<a name="bnr"> </a>
 <h2>Boundaries and Relationships</h2>
 <p>
 This resource is a record of a communication that has occurred. It does not represent the actual flow of communication.
@@ -26,13 +35,26 @@ phone calls, letters and other interactions that are not system-to-system.  And 
 specific end recipients may not be known.  As well, <a href="auditevent.html">AuditEvents</a> are not considered to be "part"
 of the patient record, while <b>Communication</b> instances are.  The <b>Communication</b> resource is not used as a general
 audit mechanism to track every disclosure of every record.  Rather, it is used when a clinician or other user wants to ensure
-a record of a particular communication is itself maintaned as part of the reviewable health record.
+a record of a particular communication is itself maintained as part of the reviewable health record.
 </p>
 <p>
 <a href="flag.html">Flag</a> resources represent a continuous ongoing "communication" alerting anyone dealing with the patient
 of certain precautions to take or issues to be aware of.  The flags are continuously present as an ongoing reminder.  This is 
 distinct from <b>Communication</b> where there is a specific intended sender and receiver and the information is delivered only
 once.
+</p>
+
+<p><b>Communication and Encounter</b></p>
+<p>
+The Communication is about the transfer of information (which may or may not occur as part of an encounter), while Encounter 
+is about the coming together (in person or virtually) of a Patient with a Practitioner.  Communication does not deal with 
+the duration of a call, it represents the fact that information was transferred at a particular point in time.
+</p>
+<p>
+The phone calls involving the Patient should be handled using <a href="encounter.html">Encounter</a>.  Phone calls not involving the patient 
+(e.g. between practitioners or practitioner to relative) that are tracked for billing or other purposes can use Communication 
+to represent the information transferred, but are not ideal to represent the call itself.  
+A better mechanism for handling such calls will be explored in a future release.
 </p>
 </div>
 

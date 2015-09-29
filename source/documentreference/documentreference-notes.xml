@@ -1,35 +1,50 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
+<a name="impl"> </a>
 <h2>Implementation Notes</h2>
 <ul>
  <li>The use of the .docStatus codes is discussed in the <a href="composition.html#status">Composition description</a></li>
- <li>The resources maintain one way relationships that point backwards - e.g. the document that replaces one document points towards the document that it replaced. The reverse relationships can be followed by using 
+ <li>The resources maintain one way relationships that point backwards - e.g., the document that replaces one document points towards the document that it replaced. The reverse relationships can be followed by using 
   indexes built from the resources. Typically, this is done using the search parameters described below. Given that documents may have other documents that replace or append them, clients should always check these relationships when accessing documents</li>
   
 </ul>
-
+<!--   No longer needed now that we have format code vocabulary
 <h3>Document Formats</h3>
 <p>
-In addition to a mime type (which is mandatory), there is also a <i>format</i> element which carries
-a URI. This element has one or more identifiers that indicate that the format and/or content of the 
+In addition to a <code>.content.contentType</code>, there is also a <i>format</i> element of type 
+<a href="datatypes.html#Coding">Coding</a> that indicates that the format and/or content of the 
 document conforms to additional rules beyond the base format indicated in the mimeType. This is most 
 often used when the mime-type is text/xml, to provide additional information for finding the correct
-document.
+document. 
 </p>
 <p>
-Defined URIs:
+Several organizations define codes for document formats:
 </p>
 <ul>
- <li><a href="http://www.astm.org/Standards/E2369.htm">ASTM CCR</a>: urn:astm-org:CCR</li>
- <li>CCDA: urn:hl7-org:sdwg:ccda-level-1:1.1, urn:hl7-org:sdwg:ccda-level-2:1.1 and urn:hl7-org:sdwg:ccda-level-3:1.1</li>
- <li>IHE defines URIs <a href="http://wiki.ihe.net/index.php?title=IHE_Format_Codes">here</a> and 
-   OIDs <a href="http://wiki.ihe.net/index.php?title=PCC_Vocabulary_Registry_and_Data_Dictionary">here</a> (prefix OIDs with urn:oid: in the resource).</li> 
+ <li>HL7 for CCDA levels:
+   <ul>
+     <li>urn:hl7-org:sdwg:ccda-level-1:1.1</li>
+     <li>urn:hl7-org:sdwg:ccda-level-2:1.1</li>
+     <li>urn:hl7-org:sdwg:ccda-level-3:1.1</li>
+   </ul>
+  </li>
+ <li>ASTM for CCR:
+   <ul>
+     <li>urn:astm-org:CCR</li>
+   </ul>
+  </li>
+ <li>IHE:
+   <ul>
+     <li>See <a href="http://wiki.ihe.net/index.php?title=IHE_Format_Codes">IHE Format Codes</a></li>
+     <li>See <a href="http://wiki.ihe.net/index.php?title=PCC_Vocabulary_Registry_and_Data_Dictionary">PCC Vocabulary Registry</a></li>
+   </ul>
+  </li>
 </ul>
 <p>
-Other URIs can be used for items not on this list.
+Note that IHE specifies that their URNs and OIDs are codes in the code system <code>urn:oid:1.3.6.1.4.1.19376.1.2.3</code>.
+HL7 and ASTM URIs are in the general URI code system <code>urn:ietf:rfc:3986</code>.
 </p>
-
-
+-->
 <h3>Generating a Document Reference</h3>
 <p>
 A client can ask a server to generate a document reference from a document.
@@ -40,21 +55,21 @@ return or generate document references for the following types of content:
 <table class="grid">
   <tr> <td><b>Type</b></td> <td><b>Comments</b></td> </tr>
   <tr> <td><a href="documents.html">FHIR Documents</a></td> <td>The uri refers to an existing Document</td> </tr>
-  <tr> <td>CDA Document</td> <td>The uri is a reference to a <a href="compartments.html#Binary">Binary</a> end-point that returns either a CDA 
-    document, or some kind of CDA Package that the server knows how to process (e.g. an IHE .zip) </td> </tr>
+  <tr> <td><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> Document</td> <td>The uri is a reference to a <a href="compartments.html#Binary">Binary</a> end-point that returns either a CDA 
+    document, or some kind of CDA Package that the server knows how to process (e.g., an IHE .zip) </td> </tr>
   <tr> <td>Other</td> <td>The server can be asked to generate a document reference for other kinds of 
-    documents. For some of these documents (e.g. PDF documents) a server could only provide a 
-    DocumentReference it is already existed, or the server had special knowledge of the document</td> </tr>
+    documents. For some of these documents (e.g., PDF documents) a server could only provide a 
+    document reference if it already existed or the server had special knowledge of the document.</td> </tr>
 </table>
 <p>
-The server either returns a search result containing a single DocumentReference, 
+The server either returns a search result containing a single document reference, 
 or it returns an error. 
-If some the URI refers to another server, it is at the discretion of the 
+If the URI refers to another server, it is at the discretion of the 
 server whether to retrieve it or return an error. 
 </p>
 <p>
 The operation is initiated by a named query, using _query=generate on the /DocumentReference
-end point:
+end-point:
 </p>
 <pre>
   GET [service-url]/DocumentReference/?_query=generate&amp;uri=:url&amp;...
@@ -65,7 +80,7 @@ document types described above. Other parameters may be supplied:
 </p>
 <table class="grid">
   <tr> <td><b>Name</b></td> <td><b>Meaning</b></td> </tr>
-  <tr> <td>persist</td> <td>Whether to store the document at the document end-point (/Document) or not once it is generated. Value = true or false (default is for the server to decide)</td> </tr>
+  <tr> <td>persist</td> <td>Whether to store the document at the document end-point (/Document) or not, once it is generated. Value = true or false (default is for the server to decide).</td> </tr>
 </table>
 
 </div>

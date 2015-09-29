@@ -33,13 +33,13 @@
   </medicationReference> 
   <dosage>
     <text value="one tablet four times daily as needed for pain" />
-    <schedule>
+    <timing>
       <repeat>
         <frequency value="4"/>
         <period value="1"/>
         <periodUnits value="d"/>
       </repeat>
-    </schedule>
+    </timing>
     <asNeededBoolean value="true" />
     <route>
       <coding>
@@ -48,13 +48,13 @@
       <display value="Oral"/>
       </coding>
     </route>
-    <quantity>
+    <quantityQuantity>
       <value value="1" />
-    </quantity>
+    </quantityQuantity>
     <maxDosePerPeriod>
       <numerator>
         <value value="4"/>
-        <units value="tablets" />
+        <unit value="tablets" />
         <system value="http://snomed.info/sct" />
         <code value="385055001"/>
       </numerator>

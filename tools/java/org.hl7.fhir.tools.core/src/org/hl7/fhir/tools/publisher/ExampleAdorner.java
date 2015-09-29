@@ -35,10 +35,12 @@ import org.hl7.fhir.definitions.generators.specification.BaseGenerator;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Example;
+import org.hl7.fhir.definitions.model.ImplementationGuideDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.instance.formats.FormatUtilities;
 import org.hl7.fhir.instance.model.IdType;
 import org.hl7.fhir.tools.implementations.GeneratorUtils;
+import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.xml.XhtmlGenerator;
 import org.hl7.fhir.utilities.xml.XhtmlGeneratorAdorner;
@@ -86,9 +88,11 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
   }
 
   private Definitions definitions;
+  private String prefix; 
 
-  public ExampleAdorner(Definitions definitions) {
+  public ExampleAdorner(Definitions definitions, String prefix) {
     this.definitions = definitions;
+    this.prefix = prefix;
   }
 
   private String extractId(String id, String type) throws Exception {
@@ -143,13 +147,15 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
     } else {
       ExampleAdornerState s = (ExampleAdornerState) state;
       if (s.getState() == State.Element) {
+        if (s.definition.typeCode().equals("Resource") && (s.path.endsWith(".entry.resource") || s.path.endsWith(".contained")) && definitions.isResource(node.getNodeName())) // account for extra element
+          return new ExampleAdornerState(State.Element, s.path, definitions.getResourceByName(node.getNodeName()).getRoot(), "", "");
         String p = s.path+"."+node.getNodeName();
-        ElementDefn e = s.getDefinition().getElementByName(node.getLocalName(), true, definitions);
+        ElementDefn e = s.getDefinition().getElementByName(node.getLocalName(), true, definitions, "adorn example");
         if (e == null && definitions.hasElementDefn(s.getDefinition().typeCode())) {
           // well, we see if it's inherited...
           ElementDefn t = definitions.getElementDefn(s.getDefinition().typeCode());
           while (t != null && e == null) {
-            e = t.getElementByName(node.getLocalName(), true, definitions);
+            e = t.getElementByName(node.getLocalName(), true, definitions, "adorn example");
             if (e != null)
               p = t.getName()+"."+e.getName();
             else if (definitions.hasElementDefn(t.typeCode()))
@@ -163,6 +169,8 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
         if (e == null)
           return new ExampleAdornerState(State.Unknown, s.path, null, "", "");
         if (!e.isBaseResourceElement() && e.typeCode().contains("Reference"))
+          return new ExampleAdornerState(State.Reference, p, e, "", "");
+        else if (!e.isBaseResourceElement() && e.typeCode().equals("uri"))
           return new ExampleAdornerState(State.Reference, p, e, "", "");
         else
           return new ExampleAdornerState(State.Element, p, e, "", "");
@@ -178,7 +186,12 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
             throw new Exception("unable to find type "+type);
           for (Example e : r.getExamples()) {
             if (id.equals(e.getId()))
-              return new ExampleAdornerState(State.Reference, s.path+".reference", s.getDefinition(), "<a href=\""+e.getFileTitle()+".xml.html\">", "</a>");
+              if (Utilities.noString(e.getIg())) {
+                return new ExampleAdornerState(State.Reference, s.path+".reference", s.getDefinition(), "<a href=\""+prefix+e.getTitle()+".xml.html\">", "</a>");
+              } else {
+                ImplementationGuideDefn ig = definitions.getIgs().get(e.getIg());
+                return new ExampleAdornerState(State.Reference, s.path+".reference", s.getDefinition(), "<a href=\""+prefix+ig.getPrefix()+e.getTitle()+".xml.html\">", "</a>");
+              }
             if (e.getXml() != null && e.getXml().getDocumentElement().getLocalName().equals("feed")) {
               List<Element> entries = new ArrayList<Element>();
               XMLUtil.getNamedChildren(e.getXml().getDocumentElement(), "entry", entries);
@@ -186,7 +199,7 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
               for (Element c : entries) {
                 String t = XMLUtil.getNamedChild(c, "id").getAttribute("value");
                 if (url.equals(t))
-                  return new ExampleAdornerState(State.Reference, s.path+".reference", s.getDefinition(), "<a href=\""+e.getFileTitle()+".xml.html#"+id+"\">", "</a>");
+                  return new ExampleAdornerState(State.Reference, s.path+".reference", s.getDefinition(), "<a href=\""+prefix+e.getTitle()+".xml.html#"+id+"\">", "</a>");
               }
             }
           }
@@ -195,9 +208,9 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
         else
           return new ExampleAdornerState(State.Reference, s.path, s.getDefinition(), "", "");
       } else // if (s.getState() == State.Unknown) {
-        if (node.getNamespaceURI().equals("http://www.w3.org/1999/xhtml"))
-          return new ExampleAdornerState(State.Unknown, s.path, null, "Snipped for brevity");
-        else
+//        if (node.getNamespaceURI().equals("http://www.w3.org/1999/xhtml"))
+//          return new ExampleAdornerState(State.Unknown, s.path, null, "Snipped for brevity");
+//        else
           return new ExampleAdornerState(State.Unknown, s.path, null, "", "");
     }
   }
@@ -208,6 +221,8 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
     if (s != null && s.getState() == ExampleAdorner.State.Reference && node.getNodeName().equals("type") && nodeName.equals("value")) 
       return new ExampleAdornerState(State.Unknown, s.path, null, state.getPrefix(), state.getSuffix());
     else if (s != null && s.getState() == ExampleAdorner.State.Reference && node.getNodeName().equals("reference") && nodeName.equals("value")) 
+      return new ExampleAdornerState(State.Unknown, s.path, null, state.getPrefix(), state.getSuffix());
+    else if (s != null && s.getState() == ExampleAdorner.State.Reference && node.getNodeName().equals("url") && nodeName.equals("value")) 
       return new ExampleAdornerState(State.Unknown, s.path, null, state.getPrefix(), state.getSuffix());
     else
       return new ExampleAdornerState(State.Unknown, s.path, null, "", "");
@@ -220,34 +235,36 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
         return null;
       else {
         definitions.getResourceByName(node.getLocalName()).getRoot().setCoveredByExample(true);
-        return node.getLocalName().toLowerCase()+"-definitions.html";
+        return prefix+node.getLocalName().toLowerCase()+"-definitions.html";
       }
     } else {
       ExampleAdornerState s = (ExampleAdornerState) state;
       if (s.definition == null)
         if (node.getNamespaceURI().equals("http://www.w3.org/1999/xhtml"))
-          return "narrative.html";
+          return prefix+"narrative.html";
         else 
           return null;
       ElementDefn t = s.definition;
-      ElementDefn child = t.getElementByName(node.getNodeName(), true, definitions);
+      if (t.typeCode().equals("Resource") && (s.path.endsWith(".entry.resource") || s.path.endsWith(".contained")) && definitions.isResource(node.getNodeName()))
+        return null;        
+      ElementDefn child = t.getElementByName(node.getNodeName(), true, definitions, "adorn example");
       String p = child == null ? null : s.path+"."+child.getName();
       while (child == null && t != null && definitions.hasElementDefn(t.typeCode())) {
         t = definitions.getElementDefn(t.typeCode());
-        child = t.getElementByName(node.getNodeName(), true, definitions);
+        child = t.getElementByName(node.getNodeName(), true, definitions, "adorn example");
         if (child != null) {
           p = t.getName()+"."+child.getName();
         }
       }
       if (child == null)
         if (node.getNamespaceURI().equals("http://www.w3.org/1999/xhtml"))
-          return "narrative.html";
+          return prefix+"narrative.html";
         else 
           return null;
       else {
         child.setCoveredByExample(true);
         String r = p.contains(".") ? p.substring(0, p.indexOf(".")) : p;
-        return definitions.getSrcFile(r)+"-definitions.html#"+p;
+        return prefix+definitions.getSrcFile(r)+"-definitions.html#"+p;
       }
     }
   }

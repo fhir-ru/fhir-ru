@@ -23,22 +23,24 @@ import org.hl7.fhir.definitions.model.W5Entry;
 import org.hl7.fhir.instance.model.BooleanType;
 import org.hl7.fhir.instance.model.Bundle;
 import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.instance.model.CodeType;
 import org.hl7.fhir.instance.model.CodeableConcept;
 import org.hl7.fhir.instance.model.Coding;
 import org.hl7.fhir.instance.model.DecimalType;
 import org.hl7.fhir.instance.model.ElementDefinition;
 import org.hl7.fhir.instance.model.Enumerations.BindingStrength;
 import org.hl7.fhir.instance.model.IntegerType;
+import org.hl7.fhir.instance.model.OperationOutcome;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetDefineComponent;
-import org.hl7.fhir.instance.model.valuesets.IssueType;
-import org.hl7.fhir.instance.utils.WorkerContext;
+import org.hl7.fhir.instance.model.ValueSet.ValueSetCodeSystemComponent;
+import org.hl7.fhir.instance.model.OperationOutcome.IssueType;
 import org.hl7.fhir.instance.validation.ValidationMessage;
 import org.hl7.fhir.instance.validation.ValidationMessage.Source;
 import org.hl7.fhir.rdf.TurtleGenerator;
+import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.utilities.Utilities;
 
 public class FhirTurtleGenerator extends TurtleGenerator {
@@ -70,13 +72,13 @@ public class FhirTurtleGenerator extends TurtleGenerator {
   }
   
   private Definitions definitions;
-  private WorkerContext context;
+  private BuildWorkerContext context;
   private Deque<AnonTypeInfo> anonTypes = new ArrayDeque<AnonTypeInfo>();
   private Map<String, ValueSet> valuesets = new HashMap<String, ValueSet>();
   private Subject nilInstance;
   private List<ValidationMessage> issues;
 
-  public FhirTurtleGenerator(OutputStream destination, Definitions definitions, WorkerContext context, List<ValidationMessage> issues) {
+  public FhirTurtleGenerator(OutputStream destination, Definitions definitions, BuildWorkerContext context, List<ValidationMessage> issues) {
     super(destination);
     this.definitions = definitions;
     this.context = context;
@@ -110,9 +112,9 @@ public class FhirTurtleGenerator extends TurtleGenerator {
 //    triple(fhir("FHIR"), isa, none("spec"));
 
     prefix("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
-    prefix("rdfs", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
+    prefix("rdfs", "http://www.w3.org/2000/01/rdf-schema#");
     prefix("fhir", "http://hl7.org/fhir/");
-    prefix("fhir-vs", "http://hl7.org/fhir/vs/");
+    prefix("fhir-vs", "http://hl7.org/fhir/ValueSet/");
     prefix("ex", "http://hl7.org/fhir/StructureDefinition/");
     prefix("xs", "http://www.w3.org/2001/XMLSchema#");
     prefix("owl", "http://www.w3.org/2002/07/owl#");
@@ -489,8 +491,8 @@ public class FhirTurtleGenerator extends TurtleGenerator {
         BindingSpecification bs = e.getBinding();
         if (bs.getValueSet() != null) {
           String bn = getPNameForUri(bs.getValueSet().getUrl());
-          if (bs.getStrength() == BindingStrength.REQUIRED && bs.getBinding() == BindingMethod.CodeList && tr.getName().equals("code") && bs.getValueSet().hasDefine())
-            section.triple("fhir:"+tn+"."+en, "rdfs:range", getPNameForUri(bs.getValueSet().getDefine().getSystem()));
+          if (bs.getStrength() == BindingStrength.REQUIRED && bs.getBinding() == BindingMethod.CodeList && tr.getName().equals("code") && bs.getValueSet().hasCodeSystem())
+            section.triple("fhir:"+tn+"."+en, "rdfs:range", getPNameForUri(bs.getValueSet().getCodeSystem().getSystem()));
           else
             section.triple("fhir:"+tn+"."+en, "rdfs:range", processType(tr.getName()));
           section.triple("fhir:"+tn+"."+en, "fhir:binding", bn);
@@ -511,6 +513,8 @@ public class FhirTurtleGenerator extends TurtleGenerator {
         section.triple("fhir:"+tn+"."+en, "fhir:default", complex().predicate("a", "fhir:boolean").predicate("fhir:value", literal(((BooleanType) e.getDefaultValue()).asStringValue())));
       else if (e.getDefaultValue() instanceof IntegerType) 
         section.triple("fhir:"+tn+"."+en, "fhir:default", complex().predicate("a", "fhir:integer").predicate("fhir:value", literal(((IntegerType) e.getDefaultValue()).asStringValue())));
+      else if (e.getDefaultValue() instanceof CodeType) 
+        section.triple("fhir:"+tn+"."+en, "fhir:default", complex().predicate("a", "fhir:integer").predicate("fhir:value", literal(((CodeType) e.getDefaultValue()).asStringValue())));
       else
         throw new Error("default of type "+e.getDefaultValue().getClass().getName()+" not handled yet");
     }
@@ -641,7 +645,7 @@ public class FhirTurtleGenerator extends TurtleGenerator {
       subject.label(extension.getDisplay());
       subject.comment(extension.getDescription());
       if (extension.hasVersion())
-        subject.predicate("fhir:version", extension.getVersion());
+        subject.predicate("fhir:version", literal(extension.getVersion()));
       if (extension.hasCopyright()) 
         subject.predicate("dc:rights", literal(extension.getCopyright()));
       subject.predicate("fhir:status", complex().predicate("a", "fhir:conformance-resource-status\\#"+extension.getStatus().toCode()));
@@ -675,12 +679,12 @@ public class FhirTurtleGenerator extends TurtleGenerator {
       codedTriple(section, bn, "fhir:useContext", cc);
     section.triple(bn, "fhir:status", complex().predicate("a", "fhir:conformance-resource-status\\#"+vs.getStatus().toCode()));
     section.triple(bn, "fhir:canonicalStatus", complex().predicate("a", getCanonicalStatus("ValueSet.status", vs.getStatus().toCode())));
-    if (vs.hasDefine()) {
-      section.triple(bn, "fhir:include", gen(section, vs.getDefine(), vs));
+    if (vs.hasCodeSystem()) {
+      section.triple(bn, "fhir:include", gen(section, vs.getCodeSystem(), vs));
     }
   }
 
-  private String gen(Section section, ValueSetDefineComponent define, ValueSet vs) {
+  private String gen(Section section, ValueSetCodeSystemComponent define, ValueSet vs) {
     String bn = getPNameForUri(define.getSystem()); 
     if (!bn.startsWith("<")) {
       section.triple(bn+".system", "a", "fhir:CodeSystem");
@@ -753,15 +757,15 @@ public class FhirTurtleGenerator extends TurtleGenerator {
 
   private String getPNameForUri(String url) {
     String  s = null;
-//    String s = matches(url, "http://hl7.org/fhir/v2/vs/", "v2-vs");
+//    String s = matches(url, "http://hl7.org/fhir/ValueSet/v2-", "v2-vs");
 //    if (s == null)
 //      s = matches(url, "http://hl7.org/fhir/v2/", "v2");
     if (s == null)
-      s = matches(url, "http://hl7.org/fhir/v3/vs/", "vs");
+      s = matches(url, "http://hl7.org/fhir/ValueSet/v3-", "vs");
     if (s == null)
       s = matches(url, "http://hl7.org/fhir/v3/", "cs");
     if (s == null)
-      s = matches(url, "http://hl7.org/fhir/vs/", "fhir-vs");
+      s = matches(url, "http://hl7.org/fhir/ValueSet/", "fhir-vs");
     if (s == null)
       s = matches(url, "http://hl7.org/fhir/", "fhir");
     if (s == null)
@@ -803,11 +807,11 @@ public class FhirTurtleGenerator extends TurtleGenerator {
   protected void chckSubjects() {
     for (String s : sorted(predicateSet)) {
       if (s.startsWith("fhir:") && !subjectSet.contains(s))
-        issues.add(new ValidationMessage(Source.Ontology, IssueType.INVALID, -1, -1, "turtle", "Undefined predicate "+s, IssueSeverity.WARNING));
+        issues.add(new ValidationMessage(Source.Ontology, IssueType.INVALID, -1, -1, "turtle", "Undefined predicate "+s, IssueSeverity.INFORMATION/*WARNING*/));
     }
     for (String s : sorted(objectSet)) {
       if (s.startsWith("fhir:") && !subjectSet.contains(s))
-        issues.add(new ValidationMessage(Source.Ontology, IssueType.INVALID, -1, -1, "turtle", "Undefined object "+s, IssueSeverity.WARNING));
+        issues.add(new ValidationMessage(Source.Ontology, IssueType.INVALID, -1, -1, "turtle", "Undefined object "+s, IssueSeverity.INFORMATION/*WARNING*/));
     }
   }
 

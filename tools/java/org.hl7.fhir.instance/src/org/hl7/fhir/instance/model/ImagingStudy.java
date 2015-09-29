@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -41,7 +41,7 @@ import org.hl7.fhir.instance.model.annotations.Description;
 import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.api.*;
 /**
- * Representation of the content produced in a DICOM imaging study. A study comprises a set of Series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A Series is of only one modality (e.g., X-ray, CT, MR, ultrasound), but a Study may have multiple Series of different modalities.
+ * Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.
  */
 @ResourceDef(name="ImagingStudy", profile="http://hl7.org/fhir/Profile/ImagingStudy")
 public class ImagingStudy extends DomainResource {
@@ -146,872 +146,86 @@ public class ImagingStudy extends DomainResource {
       }
     }
 
-    public enum Modality {
-        /**
-         * null
-         */
-        AR, 
-        /**
-         * null
-         */
-        AU, 
-        /**
-         * null
-         */
-        BDUS, 
-        /**
-         * null
-         */
-        BI, 
-        /**
-         * null
-         */
-        BMD, 
-        /**
-         * null
-         */
-        CR, 
-        /**
-         * null
-         */
-        CT, 
-        /**
-         * null
-         */
-        DG, 
-        /**
-         * null
-         */
-        DX, 
-        /**
-         * null
-         */
-        ECG, 
-        /**
-         * null
-         */
-        EPS, 
-        /**
-         * null
-         */
-        ES, 
-        /**
-         * null
-         */
-        GM, 
-        /**
-         * null
-         */
-        HC, 
-        /**
-         * null
-         */
-        HD, 
-        /**
-         * null
-         */
-        IO, 
-        /**
-         * null
-         */
-        IVOCT, 
-        /**
-         * null
-         */
-        IVUS, 
-        /**
-         * null
-         */
-        KER, 
-        /**
-         * null
-         */
-        KO, 
-        /**
-         * null
-         */
-        LEN, 
-        /**
-         * null
-         */
-        LS, 
-        /**
-         * null
-         */
-        MG, 
-        /**
-         * null
-         */
-        MR, 
-        /**
-         * null
-         */
-        NM, 
-        /**
-         * null
-         */
-        OAM, 
-        /**
-         * null
-         */
-        OCT, 
-        /**
-         * null
-         */
-        OP, 
-        /**
-         * null
-         */
-        OPM, 
-        /**
-         * null
-         */
-        OPT, 
-        /**
-         * null
-         */
-        OPV, 
-        /**
-         * null
-         */
-        OT, 
-        /**
-         * null
-         */
-        PR, 
-        /**
-         * null
-         */
-        PT, 
-        /**
-         * null
-         */
-        PX, 
-        /**
-         * null
-         */
-        REG, 
-        /**
-         * null
-         */
-        RF, 
-        /**
-         * null
-         */
-        RG, 
-        /**
-         * null
-         */
-        RTDOSE, 
-        /**
-         * null
-         */
-        RTIMAGE, 
-        /**
-         * null
-         */
-        RTPLAN, 
-        /**
-         * null
-         */
-        RTRECORD, 
-        /**
-         * null
-         */
-        RTSTRUCT, 
-        /**
-         * null
-         */
-        SEG, 
-        /**
-         * null
-         */
-        SM, 
-        /**
-         * null
-         */
-        SMR, 
-        /**
-         * null
-         */
-        SR, 
-        /**
-         * null
-         */
-        SRF, 
-        /**
-         * null
-         */
-        TG, 
-        /**
-         * null
-         */
-        US, 
-        /**
-         * null
-         */
-        VA, 
-        /**
-         * null
-         */
-        XA, 
-        /**
-         * null
-         */
-        XC, 
-        /**
-         * added to help the parsers
-         */
-        NULL;
-        public static Modality fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("AR".equals(codeString))
-          return AR;
-        if ("AU".equals(codeString))
-          return AU;
-        if ("BDUS".equals(codeString))
-          return BDUS;
-        if ("BI".equals(codeString))
-          return BI;
-        if ("BMD".equals(codeString))
-          return BMD;
-        if ("CR".equals(codeString))
-          return CR;
-        if ("CT".equals(codeString))
-          return CT;
-        if ("DG".equals(codeString))
-          return DG;
-        if ("DX".equals(codeString))
-          return DX;
-        if ("ECG".equals(codeString))
-          return ECG;
-        if ("EPS".equals(codeString))
-          return EPS;
-        if ("ES".equals(codeString))
-          return ES;
-        if ("GM".equals(codeString))
-          return GM;
-        if ("HC".equals(codeString))
-          return HC;
-        if ("HD".equals(codeString))
-          return HD;
-        if ("IO".equals(codeString))
-          return IO;
-        if ("IVOCT".equals(codeString))
-          return IVOCT;
-        if ("IVUS".equals(codeString))
-          return IVUS;
-        if ("KER".equals(codeString))
-          return KER;
-        if ("KO".equals(codeString))
-          return KO;
-        if ("LEN".equals(codeString))
-          return LEN;
-        if ("LS".equals(codeString))
-          return LS;
-        if ("MG".equals(codeString))
-          return MG;
-        if ("MR".equals(codeString))
-          return MR;
-        if ("NM".equals(codeString))
-          return NM;
-        if ("OAM".equals(codeString))
-          return OAM;
-        if ("OCT".equals(codeString))
-          return OCT;
-        if ("OP".equals(codeString))
-          return OP;
-        if ("OPM".equals(codeString))
-          return OPM;
-        if ("OPT".equals(codeString))
-          return OPT;
-        if ("OPV".equals(codeString))
-          return OPV;
-        if ("OT".equals(codeString))
-          return OT;
-        if ("PR".equals(codeString))
-          return PR;
-        if ("PT".equals(codeString))
-          return PT;
-        if ("PX".equals(codeString))
-          return PX;
-        if ("REG".equals(codeString))
-          return REG;
-        if ("RF".equals(codeString))
-          return RF;
-        if ("RG".equals(codeString))
-          return RG;
-        if ("RTDOSE".equals(codeString))
-          return RTDOSE;
-        if ("RTIMAGE".equals(codeString))
-          return RTIMAGE;
-        if ("RTPLAN".equals(codeString))
-          return RTPLAN;
-        if ("RTRECORD".equals(codeString))
-          return RTRECORD;
-        if ("RTSTRUCT".equals(codeString))
-          return RTSTRUCT;
-        if ("SEG".equals(codeString))
-          return SEG;
-        if ("SM".equals(codeString))
-          return SM;
-        if ("SMR".equals(codeString))
-          return SMR;
-        if ("SR".equals(codeString))
-          return SR;
-        if ("SRF".equals(codeString))
-          return SRF;
-        if ("TG".equals(codeString))
-          return TG;
-        if ("US".equals(codeString))
-          return US;
-        if ("VA".equals(codeString))
-          return VA;
-        if ("XA".equals(codeString))
-          return XA;
-        if ("XC".equals(codeString))
-          return XC;
-        throw new Exception("Unknown Modality code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case AR: return "AR";
-            case AU: return "AU";
-            case BDUS: return "BDUS";
-            case BI: return "BI";
-            case BMD: return "BMD";
-            case CR: return "CR";
-            case CT: return "CT";
-            case DG: return "DG";
-            case DX: return "DX";
-            case ECG: return "ECG";
-            case EPS: return "EPS";
-            case ES: return "ES";
-            case GM: return "GM";
-            case HC: return "HC";
-            case HD: return "HD";
-            case IO: return "IO";
-            case IVOCT: return "IVOCT";
-            case IVUS: return "IVUS";
-            case KER: return "KER";
-            case KO: return "KO";
-            case LEN: return "LEN";
-            case LS: return "LS";
-            case MG: return "MG";
-            case MR: return "MR";
-            case NM: return "NM";
-            case OAM: return "OAM";
-            case OCT: return "OCT";
-            case OP: return "OP";
-            case OPM: return "OPM";
-            case OPT: return "OPT";
-            case OPV: return "OPV";
-            case OT: return "OT";
-            case PR: return "PR";
-            case PT: return "PT";
-            case PX: return "PX";
-            case REG: return "REG";
-            case RF: return "RF";
-            case RG: return "RG";
-            case RTDOSE: return "RTDOSE";
-            case RTIMAGE: return "RTIMAGE";
-            case RTPLAN: return "RTPLAN";
-            case RTRECORD: return "RTRECORD";
-            case RTSTRUCT: return "RTSTRUCT";
-            case SEG: return "SEG";
-            case SM: return "SM";
-            case SMR: return "SMR";
-            case SR: return "SR";
-            case SRF: return "SRF";
-            case TG: return "TG";
-            case US: return "US";
-            case VA: return "VA";
-            case XA: return "XA";
-            case XC: return "XC";
-            default: return "?";
-          }
-        }
-        public String getSystem() {
-          switch (this) {
-            case AR: return "http://nema.org/dicom/dicm";
-            case AU: return "http://nema.org/dicom/dicm";
-            case BDUS: return "http://nema.org/dicom/dicm";
-            case BI: return "http://nema.org/dicom/dicm";
-            case BMD: return "http://nema.org/dicom/dicm";
-            case CR: return "http://nema.org/dicom/dicm";
-            case CT: return "http://nema.org/dicom/dicm";
-            case DG: return "http://nema.org/dicom/dicm";
-            case DX: return "http://nema.org/dicom/dicm";
-            case ECG: return "http://nema.org/dicom/dicm";
-            case EPS: return "http://nema.org/dicom/dicm";
-            case ES: return "http://nema.org/dicom/dicm";
-            case GM: return "http://nema.org/dicom/dicm";
-            case HC: return "http://nema.org/dicom/dicm";
-            case HD: return "http://nema.org/dicom/dicm";
-            case IO: return "http://nema.org/dicom/dicm";
-            case IVOCT: return "http://nema.org/dicom/dicm";
-            case IVUS: return "http://nema.org/dicom/dicm";
-            case KER: return "http://nema.org/dicom/dicm";
-            case KO: return "http://nema.org/dicom/dicm";
-            case LEN: return "http://nema.org/dicom/dicm";
-            case LS: return "http://nema.org/dicom/dicm";
-            case MG: return "http://nema.org/dicom/dicm";
-            case MR: return "http://nema.org/dicom/dicm";
-            case NM: return "http://nema.org/dicom/dicm";
-            case OAM: return "http://nema.org/dicom/dicm";
-            case OCT: return "http://nema.org/dicom/dicm";
-            case OP: return "http://nema.org/dicom/dicm";
-            case OPM: return "http://nema.org/dicom/dicm";
-            case OPT: return "http://nema.org/dicom/dicm";
-            case OPV: return "http://nema.org/dicom/dicm";
-            case OT: return "http://nema.org/dicom/dicm";
-            case PR: return "http://nema.org/dicom/dicm";
-            case PT: return "http://nema.org/dicom/dicm";
-            case PX: return "http://nema.org/dicom/dicm";
-            case REG: return "http://nema.org/dicom/dicm";
-            case RF: return "http://nema.org/dicom/dicm";
-            case RG: return "http://nema.org/dicom/dicm";
-            case RTDOSE: return "http://nema.org/dicom/dicm";
-            case RTIMAGE: return "http://nema.org/dicom/dicm";
-            case RTPLAN: return "http://nema.org/dicom/dicm";
-            case RTRECORD: return "http://nema.org/dicom/dicm";
-            case RTSTRUCT: return "http://nema.org/dicom/dicm";
-            case SEG: return "http://nema.org/dicom/dicm";
-            case SM: return "http://nema.org/dicom/dicm";
-            case SMR: return "http://nema.org/dicom/dicm";
-            case SR: return "http://nema.org/dicom/dicm";
-            case SRF: return "http://nema.org/dicom/dicm";
-            case TG: return "http://nema.org/dicom/dicm";
-            case US: return "http://nema.org/dicom/dicm";
-            case VA: return "http://nema.org/dicom/dicm";
-            case XA: return "http://nema.org/dicom/dicm";
-            case XC: return "http://nema.org/dicom/dicm";
-            default: return "?";
-          }
-        }
-        public String getDefinition() {
-          switch (this) {
-            case AR: return "";
-            case AU: return "";
-            case BDUS: return "";
-            case BI: return "";
-            case BMD: return "";
-            case CR: return "";
-            case CT: return "";
-            case DG: return "";
-            case DX: return "";
-            case ECG: return "";
-            case EPS: return "";
-            case ES: return "";
-            case GM: return "";
-            case HC: return "";
-            case HD: return "";
-            case IO: return "";
-            case IVOCT: return "";
-            case IVUS: return "";
-            case KER: return "";
-            case KO: return "";
-            case LEN: return "";
-            case LS: return "";
-            case MG: return "";
-            case MR: return "";
-            case NM: return "";
-            case OAM: return "";
-            case OCT: return "";
-            case OP: return "";
-            case OPM: return "";
-            case OPT: return "";
-            case OPV: return "";
-            case OT: return "";
-            case PR: return "";
-            case PT: return "";
-            case PX: return "";
-            case REG: return "";
-            case RF: return "";
-            case RG: return "";
-            case RTDOSE: return "";
-            case RTIMAGE: return "";
-            case RTPLAN: return "";
-            case RTRECORD: return "";
-            case RTSTRUCT: return "";
-            case SEG: return "";
-            case SM: return "";
-            case SMR: return "";
-            case SR: return "";
-            case SRF: return "";
-            case TG: return "";
-            case US: return "";
-            case VA: return "";
-            case XA: return "";
-            case XC: return "";
-            default: return "?";
-          }
-        }
-        public String getDisplay() {
-          switch (this) {
-            case AR: return "AR";
-            case AU: return "AU";
-            case BDUS: return "BDUS";
-            case BI: return "BI";
-            case BMD: return "BMD";
-            case CR: return "CR";
-            case CT: return "CT";
-            case DG: return "DG";
-            case DX: return "DX";
-            case ECG: return "ECG";
-            case EPS: return "EPS";
-            case ES: return "ES";
-            case GM: return "GM";
-            case HC: return "HC";
-            case HD: return "HD";
-            case IO: return "IO";
-            case IVOCT: return "IVOCT";
-            case IVUS: return "IVUS";
-            case KER: return "KER";
-            case KO: return "KO";
-            case LEN: return "LEN";
-            case LS: return "LS";
-            case MG: return "MG";
-            case MR: return "MR";
-            case NM: return "NM";
-            case OAM: return "OAM";
-            case OCT: return "OCT";
-            case OP: return "OP";
-            case OPM: return "OPM";
-            case OPT: return "OPT";
-            case OPV: return "OPV";
-            case OT: return "OT";
-            case PR: return "PR";
-            case PT: return "PT";
-            case PX: return "PX";
-            case REG: return "REG";
-            case RF: return "RF";
-            case RG: return "RG";
-            case RTDOSE: return "RTDOSE";
-            case RTIMAGE: return "RTIMAGE";
-            case RTPLAN: return "RTPLAN";
-            case RTRECORD: return "RTRECORD";
-            case RTSTRUCT: return "RTSTRUCT";
-            case SEG: return "SEG";
-            case SM: return "SM";
-            case SMR: return "SMR";
-            case SR: return "SR";
-            case SRF: return "SRF";
-            case TG: return "TG";
-            case US: return "US";
-            case VA: return "VA";
-            case XA: return "XA";
-            case XC: return "XC";
-            default: return "?";
-          }
-        }
-    }
-
-  public static class ModalityEnumFactory implements EnumFactory<Modality> {
-    public Modality fromCode(String codeString) throws IllegalArgumentException {
-      if (codeString == null || "".equals(codeString))
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("AR".equals(codeString))
-          return Modality.AR;
-        if ("AU".equals(codeString))
-          return Modality.AU;
-        if ("BDUS".equals(codeString))
-          return Modality.BDUS;
-        if ("BI".equals(codeString))
-          return Modality.BI;
-        if ("BMD".equals(codeString))
-          return Modality.BMD;
-        if ("CR".equals(codeString))
-          return Modality.CR;
-        if ("CT".equals(codeString))
-          return Modality.CT;
-        if ("DG".equals(codeString))
-          return Modality.DG;
-        if ("DX".equals(codeString))
-          return Modality.DX;
-        if ("ECG".equals(codeString))
-          return Modality.ECG;
-        if ("EPS".equals(codeString))
-          return Modality.EPS;
-        if ("ES".equals(codeString))
-          return Modality.ES;
-        if ("GM".equals(codeString))
-          return Modality.GM;
-        if ("HC".equals(codeString))
-          return Modality.HC;
-        if ("HD".equals(codeString))
-          return Modality.HD;
-        if ("IO".equals(codeString))
-          return Modality.IO;
-        if ("IVOCT".equals(codeString))
-          return Modality.IVOCT;
-        if ("IVUS".equals(codeString))
-          return Modality.IVUS;
-        if ("KER".equals(codeString))
-          return Modality.KER;
-        if ("KO".equals(codeString))
-          return Modality.KO;
-        if ("LEN".equals(codeString))
-          return Modality.LEN;
-        if ("LS".equals(codeString))
-          return Modality.LS;
-        if ("MG".equals(codeString))
-          return Modality.MG;
-        if ("MR".equals(codeString))
-          return Modality.MR;
-        if ("NM".equals(codeString))
-          return Modality.NM;
-        if ("OAM".equals(codeString))
-          return Modality.OAM;
-        if ("OCT".equals(codeString))
-          return Modality.OCT;
-        if ("OP".equals(codeString))
-          return Modality.OP;
-        if ("OPM".equals(codeString))
-          return Modality.OPM;
-        if ("OPT".equals(codeString))
-          return Modality.OPT;
-        if ("OPV".equals(codeString))
-          return Modality.OPV;
-        if ("OT".equals(codeString))
-          return Modality.OT;
-        if ("PR".equals(codeString))
-          return Modality.PR;
-        if ("PT".equals(codeString))
-          return Modality.PT;
-        if ("PX".equals(codeString))
-          return Modality.PX;
-        if ("REG".equals(codeString))
-          return Modality.REG;
-        if ("RF".equals(codeString))
-          return Modality.RF;
-        if ("RG".equals(codeString))
-          return Modality.RG;
-        if ("RTDOSE".equals(codeString))
-          return Modality.RTDOSE;
-        if ("RTIMAGE".equals(codeString))
-          return Modality.RTIMAGE;
-        if ("RTPLAN".equals(codeString))
-          return Modality.RTPLAN;
-        if ("RTRECORD".equals(codeString))
-          return Modality.RTRECORD;
-        if ("RTSTRUCT".equals(codeString))
-          return Modality.RTSTRUCT;
-        if ("SEG".equals(codeString))
-          return Modality.SEG;
-        if ("SM".equals(codeString))
-          return Modality.SM;
-        if ("SMR".equals(codeString))
-          return Modality.SMR;
-        if ("SR".equals(codeString))
-          return Modality.SR;
-        if ("SRF".equals(codeString))
-          return Modality.SRF;
-        if ("TG".equals(codeString))
-          return Modality.TG;
-        if ("US".equals(codeString))
-          return Modality.US;
-        if ("VA".equals(codeString))
-          return Modality.VA;
-        if ("XA".equals(codeString))
-          return Modality.XA;
-        if ("XC".equals(codeString))
-          return Modality.XC;
-        throw new IllegalArgumentException("Unknown Modality code '"+codeString+"'");
-        }
-    public String toCode(Modality code) {
-      if (code == Modality.AR)
-        return "AR";
-      if (code == Modality.AU)
-        return "AU";
-      if (code == Modality.BDUS)
-        return "BDUS";
-      if (code == Modality.BI)
-        return "BI";
-      if (code == Modality.BMD)
-        return "BMD";
-      if (code == Modality.CR)
-        return "CR";
-      if (code == Modality.CT)
-        return "CT";
-      if (code == Modality.DG)
-        return "DG";
-      if (code == Modality.DX)
-        return "DX";
-      if (code == Modality.ECG)
-        return "ECG";
-      if (code == Modality.EPS)
-        return "EPS";
-      if (code == Modality.ES)
-        return "ES";
-      if (code == Modality.GM)
-        return "GM";
-      if (code == Modality.HC)
-        return "HC";
-      if (code == Modality.HD)
-        return "HD";
-      if (code == Modality.IO)
-        return "IO";
-      if (code == Modality.IVOCT)
-        return "IVOCT";
-      if (code == Modality.IVUS)
-        return "IVUS";
-      if (code == Modality.KER)
-        return "KER";
-      if (code == Modality.KO)
-        return "KO";
-      if (code == Modality.LEN)
-        return "LEN";
-      if (code == Modality.LS)
-        return "LS";
-      if (code == Modality.MG)
-        return "MG";
-      if (code == Modality.MR)
-        return "MR";
-      if (code == Modality.NM)
-        return "NM";
-      if (code == Modality.OAM)
-        return "OAM";
-      if (code == Modality.OCT)
-        return "OCT";
-      if (code == Modality.OP)
-        return "OP";
-      if (code == Modality.OPM)
-        return "OPM";
-      if (code == Modality.OPT)
-        return "OPT";
-      if (code == Modality.OPV)
-        return "OPV";
-      if (code == Modality.OT)
-        return "OT";
-      if (code == Modality.PR)
-        return "PR";
-      if (code == Modality.PT)
-        return "PT";
-      if (code == Modality.PX)
-        return "PX";
-      if (code == Modality.REG)
-        return "REG";
-      if (code == Modality.RF)
-        return "RF";
-      if (code == Modality.RG)
-        return "RG";
-      if (code == Modality.RTDOSE)
-        return "RTDOSE";
-      if (code == Modality.RTIMAGE)
-        return "RTIMAGE";
-      if (code == Modality.RTPLAN)
-        return "RTPLAN";
-      if (code == Modality.RTRECORD)
-        return "RTRECORD";
-      if (code == Modality.RTSTRUCT)
-        return "RTSTRUCT";
-      if (code == Modality.SEG)
-        return "SEG";
-      if (code == Modality.SM)
-        return "SM";
-      if (code == Modality.SMR)
-        return "SMR";
-      if (code == Modality.SR)
-        return "SR";
-      if (code == Modality.SRF)
-        return "SRF";
-      if (code == Modality.TG)
-        return "TG";
-      if (code == Modality.US)
-        return "US";
-      if (code == Modality.VA)
-        return "VA";
-      if (code == Modality.XA)
-        return "XA";
-      if (code == Modality.XC)
-        return "XC";
-      return "?";
-      }
-    }
-
     @Block()
     public static class ImagingStudySeriesComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The Numeric identifier of this series in the study.
          */
-        @Child(name = "number", type = {UnsignedIntType.class}, order=1, min=0, max=1)
-        @Description(shortDefinition="Numeric identifier of this series (0020,0011)", formalDefinition="The Numeric identifier of this series in the study." )
+        @Child(name = "number", type = {UnsignedIntType.class}, order=1, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Numeric identifier of this series", formalDefinition="The Numeric identifier of this series in the study." )
         protected UnsignedIntType number;
 
         /**
          * The modality of this series sequence.
          */
-        @Child(name = "modality", type = {CodeType.class}, order=2, min=1, max=1)
-        @Description(shortDefinition="The modality of the instances in the series (0008,0060)", formalDefinition="The modality of this series sequence." )
-        protected Enumeration<Modality> modality;
+        @Child(name = "modality", type = {Coding.class}, order=2, min=1, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="The modality of the instances in the series", formalDefinition="The modality of this series sequence." )
+        protected Coding modality;
 
         /**
          * Formal identifier for this series.
          */
-        @Child(name = "uid", type = {OidType.class}, order=3, min=1, max=1)
-        @Description(shortDefinition="Formal identifier for this series (0020,000E)", formalDefinition="Formal identifier for this series." )
+        @Child(name = "uid", type = {OidType.class}, order=3, min=1, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Formal identifier for this series", formalDefinition="Formal identifier for this series." )
         protected OidType uid;
 
         /**
          * A description of the series.
          */
-        @Child(name = "description", type = {StringType.class}, order=4, min=0, max=1)
-        @Description(shortDefinition="A description of the series (0008,103E)", formalDefinition="A description of the series." )
+        @Child(name = "description", type = {StringType.class}, order=4, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="A description of the series", formalDefinition="A description of the series." )
         protected StringType description;
 
         /**
          * Number of SOP Instances in Series.
          */
-        @Child(name = "numberOfInstances", type = {UnsignedIntType.class}, order=5, min=1, max=1)
-        @Description(shortDefinition="Number of Series Related Instances (0020,1209)", formalDefinition="Number of SOP Instances in Series." )
+        @Child(name = "numberOfInstances", type = {UnsignedIntType.class}, order=5, min=1, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Number of Series Related Instances", formalDefinition="Number of SOP Instances in Series." )
         protected UnsignedIntType numberOfInstances;
 
         /**
          * Availability of series (online, offline or nearline).
          */
-        @Child(name = "availability", type = {CodeType.class}, order=6, min=0, max=1)
-        @Description(shortDefinition="ONLINE | OFFLINE | NEARLINE | UNAVAILABLE (0008,0056)", formalDefinition="Availability of series (online, offline or nearline)." )
+        @Child(name = "availability", type = {CodeType.class}, order=6, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="ONLINE | OFFLINE | NEARLINE | UNAVAILABLE", formalDefinition="Availability of series (online, offline or nearline)." )
         protected Enumeration<InstanceAvailability> availability;
 
         /**
          * URI/URL specifying the location of the referenced series using WADO-RS.
          */
-        @Child(name = "url", type = {UriType.class}, order=7, min=0, max=1)
-        @Description(shortDefinition="Location of the referenced instance(s) (0008,1115 in 0008,1190)", formalDefinition="URI/URL specifying the location of the referenced series using WADO-RS." )
+        @Child(name = "url", type = {UriType.class}, order=7, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Location of the referenced instance(s)", formalDefinition="URI/URL specifying the location of the referenced series using WADO-RS." )
         protected UriType url;
 
         /**
-         * Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed.
+         * Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed CT.
          */
-        @Child(name = "bodySite", type = {Coding.class}, order=8, min=0, max=1)
-        @Description(shortDefinition="Body part examined (Map from 0018,0015)", formalDefinition="Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed." )
+        @Child(name = "bodySite", type = {Coding.class}, order=8, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Body part examined", formalDefinition="Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed CT." )
         protected Coding bodySite;
 
         /**
-         * Laterality if bodySite is paired anatomic structure and laterality is not pre-coordinated in bodySite code, map from (0020, 0060).
+         * Laterality if body site is paired anatomic structure and laterality is not pre-coordinated in body site code.
          */
-        @Child(name = "laterality", type = {Coding.class}, order=9, min=0, max=1)
-        @Description(shortDefinition="Body part laterality", formalDefinition="Laterality if bodySite is paired anatomic structure and laterality is not pre-coordinated in bodySite code, map from (0020, 0060)." )
+        @Child(name = "laterality", type = {Coding.class}, order=9, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Body part laterality", formalDefinition="Laterality if body site is paired anatomic structure and laterality is not pre-coordinated in body site code." )
         protected Coding laterality;
 
         /**
-         * The date and time when the series was started.
+         * The date and time the series was started.
          */
-        @Child(name = "dateTime", type = {DateTimeType.class}, order=10, min=0, max=1)
-        @Description(shortDefinition="When the series started", formalDefinition="The date and time when the series was started." )
-        protected DateTimeType dateTime;
+        @Child(name = "started", type = {DateTimeType.class}, order=10, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="When the series started", formalDefinition="The date and time the series was started." )
+        protected DateTimeType started;
 
         /**
-         * A single SOP Instance within the series, e.g., an image, or presentation state.
+         * A single SOP Instance within the series, e.g. an image, or presentation state.
          */
-        @Child(name = "instance", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED)
-        @Description(shortDefinition="A single instance taken from a patient (image or other)", formalDefinition="A single SOP Instance within the series, e.g., an image, or presentation state." )
+        @Child(name = "instance", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+        @Description(shortDefinition="A single SOP instance from the series", formalDefinition="A single SOP Instance within the series, e.g. an image, or presentation state." )
         protected List<ImagingStudySeriesInstanceComponent> instance;
 
-        private static final long serialVersionUID = 1186612269L;
+        private static final long serialVersionUID = -1798366943L;
 
     /*
      * Constructor
@@ -1023,7 +237,7 @@ public class ImagingStudy extends DomainResource {
     /*
      * Constructor
      */
-      public ImagingStudySeriesComponent(Enumeration<Modality> modality, OidType uid, UnsignedIntType numberOfInstances) {
+      public ImagingStudySeriesComponent(Coding modality, OidType uid, UnsignedIntType numberOfInstances) {
         super();
         this.modality = modality;
         this.uid = uid;
@@ -1076,19 +290,15 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @return {@link #modality} (The modality of this series sequence.). This is the underlying object with id, value and extensions. The accessor "getModality" gives direct access to the value
+         * @return {@link #modality} (The modality of this series sequence.)
          */
-        public Enumeration<Modality> getModalityElement() { 
+        public Coding getModality() { 
           if (this.modality == null)
             if (Configuration.errorOnAutoCreate())
               throw new Error("Attempt to auto-create ImagingStudySeriesComponent.modality");
             else if (Configuration.doAutoCreate())
-              this.modality = new Enumeration<Modality>(new ModalityEnumFactory()); // bb
+              this.modality = new Coding(); // cc
           return this.modality;
-        }
-
-        public boolean hasModalityElement() { 
-          return this.modality != null && !this.modality.isEmpty();
         }
 
         public boolean hasModality() { 
@@ -1096,27 +306,10 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @param value {@link #modality} (The modality of this series sequence.). This is the underlying object with id, value and extensions. The accessor "getModality" gives direct access to the value
+         * @param value {@link #modality} (The modality of this series sequence.)
          */
-        public ImagingStudySeriesComponent setModalityElement(Enumeration<Modality> value) { 
+        public ImagingStudySeriesComponent setModality(Coding value) { 
           this.modality = value;
-          return this;
-        }
-
-        /**
-         * @return The modality of this series sequence.
-         */
-        public Modality getModality() { 
-          return this.modality == null ? null : this.modality.getValue();
-        }
-
-        /**
-         * @param value The modality of this series sequence.
-         */
-        public ImagingStudySeriesComponent setModality(Modality value) { 
-            if (this.modality == null)
-              this.modality = new Enumeration<Modality>(new ModalityEnumFactory());
-            this.modality.setValue(value);
           return this;
         }
 
@@ -1358,7 +551,7 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @return {@link #bodySite} (Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed.)
+         * @return {@link #bodySite} (Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed CT.)
          */
         public Coding getBodySite() { 
           if (this.bodySite == null)
@@ -1374,7 +567,7 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @param value {@link #bodySite} (Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed.)
+         * @param value {@link #bodySite} (Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed CT.)
          */
         public ImagingStudySeriesComponent setBodySite(Coding value) { 
           this.bodySite = value;
@@ -1382,7 +575,7 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @return {@link #laterality} (Laterality if bodySite is paired anatomic structure and laterality is not pre-coordinated in bodySite code, map from (0020, 0060).)
+         * @return {@link #laterality} (Laterality if body site is paired anatomic structure and laterality is not pre-coordinated in body site code.)
          */
         public Coding getLaterality() { 
           if (this.laterality == null)
@@ -1398,7 +591,7 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @param value {@link #laterality} (Laterality if bodySite is paired anatomic structure and laterality is not pre-coordinated in bodySite code, map from (0020, 0060).)
+         * @param value {@link #laterality} (Laterality if body site is paired anatomic structure and laterality is not pre-coordinated in body site code.)
          */
         public ImagingStudySeriesComponent setLaterality(Coding value) { 
           this.laterality = value;
@@ -1406,56 +599,56 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @return {@link #dateTime} (The date and time when the series was started.). This is the underlying object with id, value and extensions. The accessor "getDateTime" gives direct access to the value
+         * @return {@link #started} (The date and time the series was started.). This is the underlying object with id, value and extensions. The accessor "getStarted" gives direct access to the value
          */
-        public DateTimeType getDateTimeElement() { 
-          if (this.dateTime == null)
+        public DateTimeType getStartedElement() { 
+          if (this.started == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create ImagingStudySeriesComponent.dateTime");
+              throw new Error("Attempt to auto-create ImagingStudySeriesComponent.started");
             else if (Configuration.doAutoCreate())
-              this.dateTime = new DateTimeType(); // bb
-          return this.dateTime;
+              this.started = new DateTimeType(); // bb
+          return this.started;
         }
 
-        public boolean hasDateTimeElement() { 
-          return this.dateTime != null && !this.dateTime.isEmpty();
+        public boolean hasStartedElement() { 
+          return this.started != null && !this.started.isEmpty();
         }
 
-        public boolean hasDateTime() { 
-          return this.dateTime != null && !this.dateTime.isEmpty();
+        public boolean hasStarted() { 
+          return this.started != null && !this.started.isEmpty();
         }
 
         /**
-         * @param value {@link #dateTime} (The date and time when the series was started.). This is the underlying object with id, value and extensions. The accessor "getDateTime" gives direct access to the value
+         * @param value {@link #started} (The date and time the series was started.). This is the underlying object with id, value and extensions. The accessor "getStarted" gives direct access to the value
          */
-        public ImagingStudySeriesComponent setDateTimeElement(DateTimeType value) { 
-          this.dateTime = value;
+        public ImagingStudySeriesComponent setStartedElement(DateTimeType value) { 
+          this.started = value;
           return this;
         }
 
         /**
-         * @return The date and time when the series was started.
+         * @return The date and time the series was started.
          */
-        public Date getDateTime() { 
-          return this.dateTime == null ? null : this.dateTime.getValue();
+        public Date getStarted() { 
+          return this.started == null ? null : this.started.getValue();
         }
 
         /**
-         * @param value The date and time when the series was started.
+         * @param value The date and time the series was started.
          */
-        public ImagingStudySeriesComponent setDateTime(Date value) { 
+        public ImagingStudySeriesComponent setStarted(Date value) { 
           if (value == null)
-            this.dateTime = null;
+            this.started = null;
           else {
-            if (this.dateTime == null)
-              this.dateTime = new DateTimeType();
-            this.dateTime.setValue(value);
+            if (this.started == null)
+              this.started = new DateTimeType();
+            this.started.setValue(value);
           }
           return this;
         }
 
         /**
-         * @return {@link #instance} (A single SOP Instance within the series, e.g., an image, or presentation state.)
+         * @return {@link #instance} (A single SOP Instance within the series, e.g. an image, or presentation state.)
          */
         public List<ImagingStudySeriesInstanceComponent> getInstance() { 
           if (this.instance == null)
@@ -1473,7 +666,7 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @return {@link #instance} (A single SOP Instance within the series, e.g., an image, or presentation state.)
+         * @return {@link #instance} (A single SOP Instance within the series, e.g. an image, or presentation state.)
          */
     // syntactic sugar
         public ImagingStudySeriesInstanceComponent addInstance() { //3
@@ -1497,16 +690,16 @@ public class ImagingStudy extends DomainResource {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("number", "unsignedInt", "The Numeric identifier of this series in the study.", 0, java.lang.Integer.MAX_VALUE, number));
-          childrenList.add(new Property("modality", "code", "The modality of this series sequence.", 0, java.lang.Integer.MAX_VALUE, modality));
+          childrenList.add(new Property("modality", "Coding", "The modality of this series sequence.", 0, java.lang.Integer.MAX_VALUE, modality));
           childrenList.add(new Property("uid", "oid", "Formal identifier for this series.", 0, java.lang.Integer.MAX_VALUE, uid));
           childrenList.add(new Property("description", "string", "A description of the series.", 0, java.lang.Integer.MAX_VALUE, description));
           childrenList.add(new Property("numberOfInstances", "unsignedInt", "Number of SOP Instances in Series.", 0, java.lang.Integer.MAX_VALUE, numberOfInstances));
           childrenList.add(new Property("availability", "code", "Availability of series (online, offline or nearline).", 0, java.lang.Integer.MAX_VALUE, availability));
           childrenList.add(new Property("url", "uri", "URI/URL specifying the location of the referenced series using WADO-RS.", 0, java.lang.Integer.MAX_VALUE, url));
-          childrenList.add(new Property("bodySite", "Coding", "Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed.", 0, java.lang.Integer.MAX_VALUE, bodySite));
-          childrenList.add(new Property("laterality", "Coding", "Laterality if bodySite is paired anatomic structure and laterality is not pre-coordinated in bodySite code, map from (0020, 0060).", 0, java.lang.Integer.MAX_VALUE, laterality));
-          childrenList.add(new Property("dateTime", "dateTime", "The date and time when the series was started.", 0, java.lang.Integer.MAX_VALUE, dateTime));
-          childrenList.add(new Property("instance", "", "A single SOP Instance within the series, e.g., an image, or presentation state.", 0, java.lang.Integer.MAX_VALUE, instance));
+          childrenList.add(new Property("bodySite", "Coding", "Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed CT.", 0, java.lang.Integer.MAX_VALUE, bodySite));
+          childrenList.add(new Property("laterality", "Coding", "Laterality if body site is paired anatomic structure and laterality is not pre-coordinated in body site code.", 0, java.lang.Integer.MAX_VALUE, laterality));
+          childrenList.add(new Property("started", "dateTime", "The date and time the series was started.", 0, java.lang.Integer.MAX_VALUE, started));
+          childrenList.add(new Property("instance", "", "A single SOP Instance within the series, e.g. an image, or presentation state.", 0, java.lang.Integer.MAX_VALUE, instance));
         }
 
       public ImagingStudySeriesComponent copy() {
@@ -1521,7 +714,7 @@ public class ImagingStudy extends DomainResource {
         dst.url = url == null ? null : url.copy();
         dst.bodySite = bodySite == null ? null : bodySite.copy();
         dst.laterality = laterality == null ? null : laterality.copy();
-        dst.dateTime = dateTime == null ? null : dateTime.copy();
+        dst.started = started == null ? null : started.copy();
         if (instance != null) {
           dst.instance = new ArrayList<ImagingStudySeriesInstanceComponent>();
           for (ImagingStudySeriesInstanceComponent i : instance)
@@ -1540,7 +733,7 @@ public class ImagingStudy extends DomainResource {
         return compareDeep(number, o.number, true) && compareDeep(modality, o.modality, true) && compareDeep(uid, o.uid, true)
            && compareDeep(description, o.description, true) && compareDeep(numberOfInstances, o.numberOfInstances, true)
            && compareDeep(availability, o.availability, true) && compareDeep(url, o.url, true) && compareDeep(bodySite, o.bodySite, true)
-           && compareDeep(laterality, o.laterality, true) && compareDeep(dateTime, o.dateTime, true) && compareDeep(instance, o.instance, true)
+           && compareDeep(laterality, o.laterality, true) && compareDeep(started, o.started, true) && compareDeep(instance, o.instance, true)
           ;
       }
 
@@ -1551,17 +744,16 @@ public class ImagingStudy extends DomainResource {
         if (!(other instanceof ImagingStudySeriesComponent))
           return false;
         ImagingStudySeriesComponent o = (ImagingStudySeriesComponent) other;
-        return compareValues(number, o.number, true) && compareValues(modality, o.modality, true) && compareValues(uid, o.uid, true)
-           && compareValues(description, o.description, true) && compareValues(numberOfInstances, o.numberOfInstances, true)
-           && compareValues(availability, o.availability, true) && compareValues(url, o.url, true) && compareValues(dateTime, o.dateTime, true)
-          ;
+        return compareValues(number, o.number, true) && compareValues(uid, o.uid, true) && compareValues(description, o.description, true)
+           && compareValues(numberOfInstances, o.numberOfInstances, true) && compareValues(availability, o.availability, true)
+           && compareValues(url, o.url, true) && compareValues(started, o.started, true);
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && (number == null || number.isEmpty()) && (modality == null || modality.isEmpty())
            && (uid == null || uid.isEmpty()) && (description == null || description.isEmpty()) && (numberOfInstances == null || numberOfInstances.isEmpty())
            && (availability == null || availability.isEmpty()) && (url == null || url.isEmpty()) && (bodySite == null || bodySite.isEmpty())
-           && (laterality == null || laterality.isEmpty()) && (dateTime == null || dateTime.isEmpty())
+           && (laterality == null || laterality.isEmpty()) && (started == null || started.isEmpty())
            && (instance == null || instance.isEmpty());
       }
 
@@ -1570,48 +762,48 @@ public class ImagingStudy extends DomainResource {
     @Block()
     public static class ImagingStudySeriesInstanceComponent extends BackboneElement implements IBaseBackboneElement {
         /**
-         * The number of this image in the series.
+         * The number of instance in the series.
          */
-        @Child(name = "number", type = {UnsignedIntType.class}, order=1, min=0, max=1)
-        @Description(shortDefinition="The number of this instance in the series (0020,0013)", formalDefinition="The number of this image in the series." )
+        @Child(name = "number", type = {UnsignedIntType.class}, order=1, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="The number of this instance in the series", formalDefinition="The number of instance in the series." )
         protected UnsignedIntType number;
 
         /**
-         * Formal identifier for this image.
+         * Formal identifier for this image or other content.
          */
-        @Child(name = "uid", type = {OidType.class}, order=2, min=1, max=1)
-        @Description(shortDefinition="Formal identifier for this instance (0008,0018)", formalDefinition="Formal identifier for this image." )
+        @Child(name = "uid", type = {OidType.class}, order=2, min=1, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Formal identifier for this instance", formalDefinition="Formal identifier for this image or other content." )
         protected OidType uid;
 
         /**
-         * DICOM Image type.
+         * DICOM instance  type.
          */
-        @Child(name = "sopclass", type = {OidType.class}, order=3, min=1, max=1)
-        @Description(shortDefinition="DICOM class type (0008,0016)", formalDefinition="DICOM Image type." )
-        protected OidType sopclass;
+        @Child(name = "sopClass", type = {OidType.class}, order=3, min=1, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="DICOM class type", formalDefinition="DICOM instance  type." )
+        protected OidType sopClass;
 
         /**
          * A human-friendly SOP Class name.
          */
-        @Child(name = "type", type = {StringType.class}, order=4, min=0, max=1)
-        @Description(shortDefinition="Type of instance (image etc) (0004,1430)", formalDefinition="A human-friendly SOP Class name." )
+        @Child(name = "type", type = {StringType.class}, order=4, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Type of instance (image etc.)", formalDefinition="A human-friendly SOP Class name." )
         protected StringType type;
 
         /**
          * The description of the instance.
          */
-        @Child(name = "title", type = {StringType.class}, order=5, min=0, max=1)
-        @Description(shortDefinition="Description (0070,0080 | 0040,A043 > 0008,0104 | 0042,0010 | 0008,0008)", formalDefinition="The description of the instance." )
+        @Child(name = "title", type = {StringType.class}, order=5, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Description of instance", formalDefinition="The description of the instance." )
         protected StringType title;
 
         /**
-         * Content of the instance or a rendering thereof (e.g., a JPEG of an image, or an XML of a structured report). May be represented by inline encoding, or by a URL reference to a WADO-RS service that makes the instance available. Multiple content attachments may be used for alternate representations of the instance.
+         * Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.
          */
-        @Child(name = "content", type = {Attachment.class}, order=6, min=0, max=Child.MAX_UNLIMITED)
-        @Description(shortDefinition="Content of the instance", formalDefinition="Content of the instance or a rendering thereof (e.g., a JPEG of an image, or an XML of a structured report). May be represented by inline encoding, or by a URL reference to a WADO-RS service that makes the instance available. Multiple content attachments may be used for alternate representations of the instance." )
+        @Child(name = "content", type = {Attachment.class}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+        @Description(shortDefinition="Content of the instance", formalDefinition="Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance." )
         protected List<Attachment> content;
 
-        private static final long serialVersionUID = 264997991L;
+        private static final long serialVersionUID = -1450403705L;
 
     /*
      * Constructor
@@ -1623,14 +815,14 @@ public class ImagingStudy extends DomainResource {
     /*
      * Constructor
      */
-      public ImagingStudySeriesInstanceComponent(OidType uid, OidType sopclass) {
+      public ImagingStudySeriesInstanceComponent(OidType uid, OidType sopClass) {
         super();
         this.uid = uid;
-        this.sopclass = sopclass;
+        this.sopClass = sopClass;
       }
 
         /**
-         * @return {@link #number} (The number of this image in the series.). This is the underlying object with id, value and extensions. The accessor "getNumber" gives direct access to the value
+         * @return {@link #number} (The number of instance in the series.). This is the underlying object with id, value and extensions. The accessor "getNumber" gives direct access to the value
          */
         public UnsignedIntType getNumberElement() { 
           if (this.number == null)
@@ -1650,7 +842,7 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @param value {@link #number} (The number of this image in the series.). This is the underlying object with id, value and extensions. The accessor "getNumber" gives direct access to the value
+         * @param value {@link #number} (The number of instance in the series.). This is the underlying object with id, value and extensions. The accessor "getNumber" gives direct access to the value
          */
         public ImagingStudySeriesInstanceComponent setNumberElement(UnsignedIntType value) { 
           this.number = value;
@@ -1658,14 +850,14 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @return The number of this image in the series.
+         * @return The number of instance in the series.
          */
         public int getNumber() { 
           return this.number == null || this.number.isEmpty() ? 0 : this.number.getValue();
         }
 
         /**
-         * @param value The number of this image in the series.
+         * @param value The number of instance in the series.
          */
         public ImagingStudySeriesInstanceComponent setNumber(int value) { 
             if (this.number == null)
@@ -1675,7 +867,7 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @return {@link #uid} (Formal identifier for this image.). This is the underlying object with id, value and extensions. The accessor "getUid" gives direct access to the value
+         * @return {@link #uid} (Formal identifier for this image or other content.). This is the underlying object with id, value and extensions. The accessor "getUid" gives direct access to the value
          */
         public OidType getUidElement() { 
           if (this.uid == null)
@@ -1695,7 +887,7 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @param value {@link #uid} (Formal identifier for this image.). This is the underlying object with id, value and extensions. The accessor "getUid" gives direct access to the value
+         * @param value {@link #uid} (Formal identifier for this image or other content.). This is the underlying object with id, value and extensions. The accessor "getUid" gives direct access to the value
          */
         public ImagingStudySeriesInstanceComponent setUidElement(OidType value) { 
           this.uid = value;
@@ -1703,14 +895,14 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @return Formal identifier for this image.
+         * @return Formal identifier for this image or other content.
          */
         public String getUid() { 
           return this.uid == null ? null : this.uid.getValue();
         }
 
         /**
-         * @param value Formal identifier for this image.
+         * @param value Formal identifier for this image or other content.
          */
         public ImagingStudySeriesInstanceComponent setUid(String value) { 
             if (this.uid == null)
@@ -1720,47 +912,47 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @return {@link #sopclass} (DICOM Image type.). This is the underlying object with id, value and extensions. The accessor "getSopclass" gives direct access to the value
+         * @return {@link #sopClass} (DICOM instance  type.). This is the underlying object with id, value and extensions. The accessor "getSopClass" gives direct access to the value
          */
-        public OidType getSopclassElement() { 
-          if (this.sopclass == null)
+        public OidType getSopClassElement() { 
+          if (this.sopClass == null)
             if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create ImagingStudySeriesInstanceComponent.sopclass");
+              throw new Error("Attempt to auto-create ImagingStudySeriesInstanceComponent.sopClass");
             else if (Configuration.doAutoCreate())
-              this.sopclass = new OidType(); // bb
-          return this.sopclass;
+              this.sopClass = new OidType(); // bb
+          return this.sopClass;
         }
 
-        public boolean hasSopclassElement() { 
-          return this.sopclass != null && !this.sopclass.isEmpty();
+        public boolean hasSopClassElement() { 
+          return this.sopClass != null && !this.sopClass.isEmpty();
         }
 
-        public boolean hasSopclass() { 
-          return this.sopclass != null && !this.sopclass.isEmpty();
+        public boolean hasSopClass() { 
+          return this.sopClass != null && !this.sopClass.isEmpty();
         }
 
         /**
-         * @param value {@link #sopclass} (DICOM Image type.). This is the underlying object with id, value and extensions. The accessor "getSopclass" gives direct access to the value
+         * @param value {@link #sopClass} (DICOM instance  type.). This is the underlying object with id, value and extensions. The accessor "getSopClass" gives direct access to the value
          */
-        public ImagingStudySeriesInstanceComponent setSopclassElement(OidType value) { 
-          this.sopclass = value;
+        public ImagingStudySeriesInstanceComponent setSopClassElement(OidType value) { 
+          this.sopClass = value;
           return this;
         }
 
         /**
-         * @return DICOM Image type.
+         * @return DICOM instance  type.
          */
-        public String getSopclass() { 
-          return this.sopclass == null ? null : this.sopclass.getValue();
+        public String getSopClass() { 
+          return this.sopClass == null ? null : this.sopClass.getValue();
         }
 
         /**
-         * @param value DICOM Image type.
+         * @param value DICOM instance  type.
          */
-        public ImagingStudySeriesInstanceComponent setSopclass(String value) { 
-            if (this.sopclass == null)
-              this.sopclass = new OidType();
-            this.sopclass.setValue(value);
+        public ImagingStudySeriesInstanceComponent setSopClass(String value) { 
+            if (this.sopClass == null)
+              this.sopClass = new OidType();
+            this.sopClass.setValue(value);
           return this;
         }
 
@@ -1863,7 +1055,7 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @return {@link #content} (Content of the instance or a rendering thereof (e.g., a JPEG of an image, or an XML of a structured report). May be represented by inline encoding, or by a URL reference to a WADO-RS service that makes the instance available. Multiple content attachments may be used for alternate representations of the instance.)
+         * @return {@link #content} (Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.)
          */
         public List<Attachment> getContent() { 
           if (this.content == null)
@@ -1881,7 +1073,7 @@ public class ImagingStudy extends DomainResource {
         }
 
         /**
-         * @return {@link #content} (Content of the instance or a rendering thereof (e.g., a JPEG of an image, or an XML of a structured report). May be represented by inline encoding, or by a URL reference to a WADO-RS service that makes the instance available. Multiple content attachments may be used for alternate representations of the instance.)
+         * @return {@link #content} (Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.)
          */
     // syntactic sugar
         public Attachment addContent() { //3
@@ -1904,12 +1096,12 @@ public class ImagingStudy extends DomainResource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("number", "unsignedInt", "The number of this image in the series.", 0, java.lang.Integer.MAX_VALUE, number));
-          childrenList.add(new Property("uid", "oid", "Formal identifier for this image.", 0, java.lang.Integer.MAX_VALUE, uid));
-          childrenList.add(new Property("sopclass", "oid", "DICOM Image type.", 0, java.lang.Integer.MAX_VALUE, sopclass));
+          childrenList.add(new Property("number", "unsignedInt", "The number of instance in the series.", 0, java.lang.Integer.MAX_VALUE, number));
+          childrenList.add(new Property("uid", "oid", "Formal identifier for this image or other content.", 0, java.lang.Integer.MAX_VALUE, uid));
+          childrenList.add(new Property("sopClass", "oid", "DICOM instance  type.", 0, java.lang.Integer.MAX_VALUE, sopClass));
           childrenList.add(new Property("type", "string", "A human-friendly SOP Class name.", 0, java.lang.Integer.MAX_VALUE, type));
           childrenList.add(new Property("title", "string", "The description of the instance.", 0, java.lang.Integer.MAX_VALUE, title));
-          childrenList.add(new Property("content", "Attachment", "Content of the instance or a rendering thereof (e.g., a JPEG of an image, or an XML of a structured report). May be represented by inline encoding, or by a URL reference to a WADO-RS service that makes the instance available. Multiple content attachments may be used for alternate representations of the instance.", 0, java.lang.Integer.MAX_VALUE, content));
+          childrenList.add(new Property("content", "Attachment", "Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.", 0, java.lang.Integer.MAX_VALUE, content));
         }
 
       public ImagingStudySeriesInstanceComponent copy() {
@@ -1917,7 +1109,7 @@ public class ImagingStudy extends DomainResource {
         copyValues(dst);
         dst.number = number == null ? null : number.copy();
         dst.uid = uid == null ? null : uid.copy();
-        dst.sopclass = sopclass == null ? null : sopclass.copy();
+        dst.sopClass = sopClass == null ? null : sopClass.copy();
         dst.type = type == null ? null : type.copy();
         dst.title = title == null ? null : title.copy();
         if (content != null) {
@@ -1935,7 +1127,7 @@ public class ImagingStudy extends DomainResource {
         if (!(other instanceof ImagingStudySeriesInstanceComponent))
           return false;
         ImagingStudySeriesInstanceComponent o = (ImagingStudySeriesInstanceComponent) other;
-        return compareDeep(number, o.number, true) && compareDeep(uid, o.uid, true) && compareDeep(sopclass, o.sopclass, true)
+        return compareDeep(number, o.number, true) && compareDeep(uid, o.uid, true) && compareDeep(sopClass, o.sopClass, true)
            && compareDeep(type, o.type, true) && compareDeep(title, o.title, true) && compareDeep(content, o.content, true)
           ;
       }
@@ -1947,30 +1139,30 @@ public class ImagingStudy extends DomainResource {
         if (!(other instanceof ImagingStudySeriesInstanceComponent))
           return false;
         ImagingStudySeriesInstanceComponent o = (ImagingStudySeriesInstanceComponent) other;
-        return compareValues(number, o.number, true) && compareValues(uid, o.uid, true) && compareValues(sopclass, o.sopclass, true)
+        return compareValues(number, o.number, true) && compareValues(uid, o.uid, true) && compareValues(sopClass, o.sopClass, true)
            && compareValues(type, o.type, true) && compareValues(title, o.title, true);
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && (number == null || number.isEmpty()) && (uid == null || uid.isEmpty())
-           && (sopclass == null || sopclass.isEmpty()) && (type == null || type.isEmpty()) && (title == null || title.isEmpty())
+           && (sopClass == null || sopClass.isEmpty()) && (type == null || type.isEmpty()) && (title == null || title.isEmpty())
            && (content == null || content.isEmpty());
       }
 
   }
 
     /**
-     * Date and Time the study started. Timezone Offset From UTC.
+     * Date and Time the study started.
      */
-    @Child(name = "started", type = {DateTimeType.class}, order=0, min=0, max=1)
-    @Description(shortDefinition="When the study was started (0008,0020)+(0008,0030)", formalDefinition="Date and Time the study started. Timezone Offset From UTC." )
+    @Child(name = "started", type = {DateTimeType.class}, order=0, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="When the study was started", formalDefinition="Date and Time the study started." )
     protected DateTimeType started;
 
     /**
      * The patient imaged in the study.
      */
-    @Child(name = "patient", type = {Patient.class}, order=1, min=1, max=1)
-    @Description(shortDefinition="Who the images are of (0010/*)", formalDefinition="The patient imaged in the study." )
+    @Child(name = "patient", type = {Patient.class}, order=1, min=1, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Who the images are of", formalDefinition="The patient imaged in the study." )
     protected Reference patient;
 
     /**
@@ -1981,29 +1173,28 @@ public class ImagingStudy extends DomainResource {
     /**
      * Formal identifier for the study.
      */
-    @Child(name = "uid", type = {OidType.class}, order=2, min=1, max=1)
-    @Description(shortDefinition="Formal identifier for the study (0020,000D)", formalDefinition="Formal identifier for the study." )
+    @Child(name = "uid", type = {OidType.class}, order=2, min=1, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Formal identifier for the study", formalDefinition="Formal identifier for the study." )
     protected OidType uid;
 
     /**
-     * Accession Number is an identifier related to some aspect of imaging workflow and data management, and usage may vary across different institutions. 
-See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf).
+     * Accession Number is an identifier related to some aspect of imaging workflow and data management. Usage may vary across different institutions.  See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf).
      */
-    @Child(name = "accession", type = {Identifier.class}, order=3, min=0, max=1)
-    @Description(shortDefinition="Related workflow identifier ('Accession Number') (0008,0050)", formalDefinition="Accession Number is an identifier related to some aspect of imaging workflow and data management, and usage may vary across different institutions. \nSee for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf)." )
+    @Child(name = "accession", type = {Identifier.class}, order=3, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Related workflow identifier (\"Accession Number\")", formalDefinition="Accession Number is an identifier related to some aspect of imaging workflow and data management. Usage may vary across different institutions.  See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf)." )
     protected Identifier accession;
 
     /**
      * Other identifiers for the study.
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
-    @Description(shortDefinition="Other identifiers for the study (0020,0010)", formalDefinition="Other identifiers for the study." )
+    @Child(name = "identifier", type = {Identifier.class}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="Other identifiers for the study", formalDefinition="Other identifiers for the study." )
     protected List<Identifier> identifier;
 
     /**
      * A list of the diagnostic orders that resulted in this imaging study being performed.
      */
-    @Child(name = "order", type = {DiagnosticOrder.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "order", type = {DiagnosticOrder.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Order(s) that caused this study to be performed", formalDefinition="A list of the diagnostic orders that resulted in this imaging study being performed." )
     protected List<Reference> order;
     /**
@@ -2015,14 +1206,14 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     /**
      * A list of all the Series.ImageModality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19).
      */
-    @Child(name = "modalityList", type = {Coding.class}, order=6, min=0, max=Child.MAX_UNLIMITED)
-    @Description(shortDefinition="All series.modality if actual acquisition modalities", formalDefinition="A list of all the Series.ImageModality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19)." )
+    @Child(name = "modalityList", type = {Coding.class}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="All series modality if actual acquisition modalities", formalDefinition="A list of all the Series.ImageModality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19)." )
     protected List<Coding> modalityList;
 
     /**
      * The requesting/referring physician.
      */
-    @Child(name = "referrer", type = {Practitioner.class}, order=7, min=0, max=1)
+    @Child(name = "referrer", type = {Practitioner.class}, order=7, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Referring physician (0008,0090)", formalDefinition="The requesting/referring physician." )
     protected Reference referrer;
 
@@ -2034,43 +1225,36 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     /**
      * Availability of study (online, offline or nearline).
      */
-    @Child(name = "availability", type = {CodeType.class}, order=8, min=0, max=1)
+    @Child(name = "availability", type = {CodeType.class}, order=8, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="ONLINE | OFFLINE | NEARLINE | UNAVAILABLE (0008,0056)", formalDefinition="Availability of study (online, offline or nearline)." )
     protected Enumeration<InstanceAvailability> availability;
 
     /**
      * WADO-RS resource where Study is available.
      */
-    @Child(name = "url", type = {UriType.class}, order=9, min=0, max=1)
-    @Description(shortDefinition="Retrieve URI (0008,1190)", formalDefinition="WADO-RS resource where Study is available." )
+    @Child(name = "url", type = {UriType.class}, order=9, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Retrieve URI", formalDefinition="WADO-RS resource where Study is available." )
     protected UriType url;
 
     /**
      * Number of Series in Study.
      */
-    @Child(name = "numberOfSeries", type = {UnsignedIntType.class}, order=10, min=1, max=1)
-    @Description(shortDefinition="Number of Study Related Series (0020,1206)", formalDefinition="Number of Series in Study." )
+    @Child(name = "numberOfSeries", type = {UnsignedIntType.class}, order=10, min=1, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Number of Study Related Series", formalDefinition="Number of Series in Study." )
     protected UnsignedIntType numberOfSeries;
 
     /**
      * Number of SOP Instances in Study.
      */
-    @Child(name = "numberOfInstances", type = {UnsignedIntType.class}, order=11, min=1, max=1)
-    @Description(shortDefinition="Number of Study Related Instances (0020,1208)", formalDefinition="Number of SOP Instances in Study." )
+    @Child(name = "numberOfInstances", type = {UnsignedIntType.class}, order=11, min=1, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Number of Study Related Instances", formalDefinition="Number of SOP Instances in Study." )
     protected UnsignedIntType numberOfInstances;
-
-    /**
-     * Diagnoses etc provided with request.
-     */
-    @Child(name = "clinicalInformation", type = {StringType.class}, order=12, min=0, max=1)
-    @Description(shortDefinition="Diagnoses etc with request (0040,1002)", formalDefinition="Diagnoses etc provided with request." )
-    protected StringType clinicalInformation;
 
     /**
      * Type of procedure performed.
      */
-    @Child(name = "procedure", type = {Procedure.class}, order=13, min=0, max=Child.MAX_UNLIMITED)
-    @Description(shortDefinition="Type of procedure performed (0008,1032)", formalDefinition="Type of procedure performed." )
+    @Child(name = "procedure", type = {Procedure.class}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="Type of procedure performed", formalDefinition="Type of procedure performed." )
     protected List<Reference> procedure;
     /**
      * The actual objects that are the target of the reference (Type of procedure performed.)
@@ -2079,32 +1263,32 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
 
 
     /**
-     * Who read study and interpreted the images.
+     * Who read the study and interpreted the images or other content.
      */
-    @Child(name = "interpreter", type = {Practitioner.class}, order=14, min=0, max=1)
-    @Description(shortDefinition="Who interpreted images (0008,1060)", formalDefinition="Who read study and interpreted the images." )
+    @Child(name = "interpreter", type = {Practitioner.class}, order=13, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Who interpreted images", formalDefinition="Who read the study and interpreted the images or other content." )
     protected Reference interpreter;
 
     /**
-     * The actual object that is the target of the reference (Who read study and interpreted the images.)
+     * The actual object that is the target of the reference (Who read the study and interpreted the images or other content.)
      */
     protected Practitioner interpreterTarget;
 
     /**
      * Institution-generated description or classification of the Study performed.
      */
-    @Child(name = "description", type = {StringType.class}, order=15, min=0, max=1)
-    @Description(shortDefinition="Institution-generated description (0008,1030)", formalDefinition="Institution-generated description or classification of the Study performed." )
+    @Child(name = "description", type = {StringType.class}, order=14, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Institution-generated description", formalDefinition="Institution-generated description or classification of the Study performed." )
     protected StringType description;
 
     /**
-     * Each study has one or more series of image instances.
+     * Each study has one or more series of images or other content.
      */
-    @Child(name = "series", type = {}, order=16, min=0, max=Child.MAX_UNLIMITED)
-    @Description(shortDefinition="Each study has one or more series of instances", formalDefinition="Each study has one or more series of image instances." )
+    @Child(name = "series", type = {}, order=15, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Description(shortDefinition="Each study has one or more series of instances", formalDefinition="Each study has one or more series of images or other content." )
     protected List<ImagingStudySeriesComponent> series;
 
-    private static final long serialVersionUID = -367817262L;
+    private static final long serialVersionUID = 1895046380L;
 
   /*
    * Constructor
@@ -2125,7 +1309,7 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     }
 
     /**
-     * @return {@link #started} (Date and Time the study started. Timezone Offset From UTC.). This is the underlying object with id, value and extensions. The accessor "getStarted" gives direct access to the value
+     * @return {@link #started} (Date and Time the study started.). This is the underlying object with id, value and extensions. The accessor "getStarted" gives direct access to the value
      */
     public DateTimeType getStartedElement() { 
       if (this.started == null)
@@ -2145,7 +1329,7 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     }
 
     /**
-     * @param value {@link #started} (Date and Time the study started. Timezone Offset From UTC.). This is the underlying object with id, value and extensions. The accessor "getStarted" gives direct access to the value
+     * @param value {@link #started} (Date and Time the study started.). This is the underlying object with id, value and extensions. The accessor "getStarted" gives direct access to the value
      */
     public ImagingStudy setStartedElement(DateTimeType value) { 
       this.started = value;
@@ -2153,14 +1337,14 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     }
 
     /**
-     * @return Date and Time the study started. Timezone Offset From UTC.
+     * @return Date and Time the study started.
      */
     public Date getStarted() { 
       return this.started == null ? null : this.started.getValue();
     }
 
     /**
-     * @param value Date and Time the study started. Timezone Offset From UTC.
+     * @param value Date and Time the study started.
      */
     public ImagingStudy setStarted(Date value) { 
       if (value == null)
@@ -2263,8 +1447,7 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     }
 
     /**
-     * @return {@link #accession} (Accession Number is an identifier related to some aspect of imaging workflow and data management, and usage may vary across different institutions. 
-See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf).)
+     * @return {@link #accession} (Accession Number is an identifier related to some aspect of imaging workflow and data management. Usage may vary across different institutions.  See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf).)
      */
     public Identifier getAccession() { 
       if (this.accession == null)
@@ -2280,8 +1463,7 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     }
 
     /**
-     * @param value {@link #accession} (Accession Number is an identifier related to some aspect of imaging workflow and data management, and usage may vary across different institutions. 
-See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf).)
+     * @param value {@link #accession} (Accession Number is an identifier related to some aspect of imaging workflow and data management. Usage may vary across different institutions.  See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf).)
      */
     public ImagingStudy setAccession(Identifier value) { 
       this.accession = value;
@@ -2662,55 +1844,6 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     }
 
     /**
-     * @return {@link #clinicalInformation} (Diagnoses etc provided with request.). This is the underlying object with id, value and extensions. The accessor "getClinicalInformation" gives direct access to the value
-     */
-    public StringType getClinicalInformationElement() { 
-      if (this.clinicalInformation == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create ImagingStudy.clinicalInformation");
-        else if (Configuration.doAutoCreate())
-          this.clinicalInformation = new StringType(); // bb
-      return this.clinicalInformation;
-    }
-
-    public boolean hasClinicalInformationElement() { 
-      return this.clinicalInformation != null && !this.clinicalInformation.isEmpty();
-    }
-
-    public boolean hasClinicalInformation() { 
-      return this.clinicalInformation != null && !this.clinicalInformation.isEmpty();
-    }
-
-    /**
-     * @param value {@link #clinicalInformation} (Diagnoses etc provided with request.). This is the underlying object with id, value and extensions. The accessor "getClinicalInformation" gives direct access to the value
-     */
-    public ImagingStudy setClinicalInformationElement(StringType value) { 
-      this.clinicalInformation = value;
-      return this;
-    }
-
-    /**
-     * @return Diagnoses etc provided with request.
-     */
-    public String getClinicalInformation() { 
-      return this.clinicalInformation == null ? null : this.clinicalInformation.getValue();
-    }
-
-    /**
-     * @param value Diagnoses etc provided with request.
-     */
-    public ImagingStudy setClinicalInformation(String value) { 
-      if (Utilities.noString(value))
-        this.clinicalInformation = null;
-      else {
-        if (this.clinicalInformation == null)
-          this.clinicalInformation = new StringType();
-        this.clinicalInformation.setValue(value);
-      }
-      return this;
-    }
-
-    /**
      * @return {@link #procedure} (Type of procedure performed.)
      */
     public List<Reference> getProcedure() { 
@@ -2772,7 +1905,7 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     }
 
     /**
-     * @return {@link #interpreter} (Who read study and interpreted the images.)
+     * @return {@link #interpreter} (Who read the study and interpreted the images or other content.)
      */
     public Reference getInterpreter() { 
       if (this.interpreter == null)
@@ -2788,7 +1921,7 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     }
 
     /**
-     * @param value {@link #interpreter} (Who read study and interpreted the images.)
+     * @param value {@link #interpreter} (Who read the study and interpreted the images or other content.)
      */
     public ImagingStudy setInterpreter(Reference value) { 
       this.interpreter = value;
@@ -2796,7 +1929,7 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     }
 
     /**
-     * @return {@link #interpreter} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Who read study and interpreted the images.)
+     * @return {@link #interpreter} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Who read the study and interpreted the images or other content.)
      */
     public Practitioner getInterpreterTarget() { 
       if (this.interpreterTarget == null)
@@ -2808,7 +1941,7 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     }
 
     /**
-     * @param value {@link #interpreter} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Who read study and interpreted the images.)
+     * @param value {@link #interpreter} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Who read the study and interpreted the images or other content.)
      */
     public ImagingStudy setInterpreterTarget(Practitioner value) { 
       this.interpreterTarget = value;
@@ -2865,7 +1998,7 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     }
 
     /**
-     * @return {@link #series} (Each study has one or more series of image instances.)
+     * @return {@link #series} (Each study has one or more series of images or other content.)
      */
     public List<ImagingStudySeriesComponent> getSeries() { 
       if (this.series == null)
@@ -2883,7 +2016,7 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     }
 
     /**
-     * @return {@link #series} (Each study has one or more series of image instances.)
+     * @return {@link #series} (Each study has one or more series of images or other content.)
      */
     // syntactic sugar
     public ImagingStudySeriesComponent addSeries() { //3
@@ -2906,10 +2039,10 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
-        childrenList.add(new Property("started", "dateTime", "Date and Time the study started. Timezone Offset From UTC.", 0, java.lang.Integer.MAX_VALUE, started));
+        childrenList.add(new Property("started", "dateTime", "Date and Time the study started.", 0, java.lang.Integer.MAX_VALUE, started));
         childrenList.add(new Property("patient", "Reference(Patient)", "The patient imaged in the study.", 0, java.lang.Integer.MAX_VALUE, patient));
         childrenList.add(new Property("uid", "oid", "Formal identifier for the study.", 0, java.lang.Integer.MAX_VALUE, uid));
-        childrenList.add(new Property("accession", "Identifier", "Accession Number is an identifier related to some aspect of imaging workflow and data management, and usage may vary across different institutions. \nSee for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf).", 0, java.lang.Integer.MAX_VALUE, accession));
+        childrenList.add(new Property("accession", "Identifier", "Accession Number is an identifier related to some aspect of imaging workflow and data management. Usage may vary across different institutions.  See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf).", 0, java.lang.Integer.MAX_VALUE, accession));
         childrenList.add(new Property("identifier", "Identifier", "Other identifiers for the study.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("order", "Reference(DiagnosticOrder)", "A list of the diagnostic orders that resulted in this imaging study being performed.", 0, java.lang.Integer.MAX_VALUE, order));
         childrenList.add(new Property("modalityList", "Coding", "A list of all the Series.ImageModality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19).", 0, java.lang.Integer.MAX_VALUE, modalityList));
@@ -2918,11 +2051,10 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
         childrenList.add(new Property("url", "uri", "WADO-RS resource where Study is available.", 0, java.lang.Integer.MAX_VALUE, url));
         childrenList.add(new Property("numberOfSeries", "unsignedInt", "Number of Series in Study.", 0, java.lang.Integer.MAX_VALUE, numberOfSeries));
         childrenList.add(new Property("numberOfInstances", "unsignedInt", "Number of SOP Instances in Study.", 0, java.lang.Integer.MAX_VALUE, numberOfInstances));
-        childrenList.add(new Property("clinicalInformation", "string", "Diagnoses etc provided with request.", 0, java.lang.Integer.MAX_VALUE, clinicalInformation));
         childrenList.add(new Property("procedure", "Reference(Procedure)", "Type of procedure performed.", 0, java.lang.Integer.MAX_VALUE, procedure));
-        childrenList.add(new Property("interpreter", "Reference(Practitioner)", "Who read study and interpreted the images.", 0, java.lang.Integer.MAX_VALUE, interpreter));
+        childrenList.add(new Property("interpreter", "Reference(Practitioner)", "Who read the study and interpreted the images or other content.", 0, java.lang.Integer.MAX_VALUE, interpreter));
         childrenList.add(new Property("description", "string", "Institution-generated description or classification of the Study performed.", 0, java.lang.Integer.MAX_VALUE, description));
-        childrenList.add(new Property("series", "", "Each study has one or more series of image instances.", 0, java.lang.Integer.MAX_VALUE, series));
+        childrenList.add(new Property("series", "", "Each study has one or more series of images or other content.", 0, java.lang.Integer.MAX_VALUE, series));
       }
 
       public ImagingStudy copy() {
@@ -2952,7 +2084,6 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
         dst.url = url == null ? null : url.copy();
         dst.numberOfSeries = numberOfSeries == null ? null : numberOfSeries.copy();
         dst.numberOfInstances = numberOfInstances == null ? null : numberOfInstances.copy();
-        dst.clinicalInformation = clinicalInformation == null ? null : clinicalInformation.copy();
         if (procedure != null) {
           dst.procedure = new ArrayList<Reference>();
           for (Reference i : procedure)
@@ -2983,8 +2114,7 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
            && compareDeep(accession, o.accession, true) && compareDeep(identifier, o.identifier, true) && compareDeep(order, o.order, true)
            && compareDeep(modalityList, o.modalityList, true) && compareDeep(referrer, o.referrer, true) && compareDeep(availability, o.availability, true)
            && compareDeep(url, o.url, true) && compareDeep(numberOfSeries, o.numberOfSeries, true) && compareDeep(numberOfInstances, o.numberOfInstances, true)
-           && compareDeep(clinicalInformation, o.clinicalInformation, true) && compareDeep(procedure, o.procedure, true)
-           && compareDeep(interpreter, o.interpreter, true) && compareDeep(description, o.description, true)
+           && compareDeep(procedure, o.procedure, true) && compareDeep(interpreter, o.interpreter, true) && compareDeep(description, o.description, true)
            && compareDeep(series, o.series, true);
       }
 
@@ -2997,8 +2127,7 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
         ImagingStudy o = (ImagingStudy) other;
         return compareValues(started, o.started, true) && compareValues(uid, o.uid, true) && compareValues(availability, o.availability, true)
            && compareValues(url, o.url, true) && compareValues(numberOfSeries, o.numberOfSeries, true) && compareValues(numberOfInstances, o.numberOfInstances, true)
-           && compareValues(clinicalInformation, o.clinicalInformation, true) && compareValues(description, o.description, true)
-          ;
+           && compareValues(description, o.description, true);
       }
 
       public boolean isEmpty() {
@@ -3007,10 +2136,9 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
            && (order == null || order.isEmpty()) && (modalityList == null || modalityList.isEmpty())
            && (referrer == null || referrer.isEmpty()) && (availability == null || availability.isEmpty())
            && (url == null || url.isEmpty()) && (numberOfSeries == null || numberOfSeries.isEmpty())
-           && (numberOfInstances == null || numberOfInstances.isEmpty()) && (clinicalInformation == null || clinicalInformation.isEmpty())
-           && (procedure == null || procedure.isEmpty()) && (interpreter == null || interpreter.isEmpty())
-           && (description == null || description.isEmpty()) && (series == null || series.isEmpty())
-          ;
+           && (numberOfInstances == null || numberOfInstances.isEmpty()) && (procedure == null || procedure.isEmpty())
+           && (interpreter == null || interpreter.isEmpty()) && (description == null || description.isEmpty())
+           && (series == null || series.isEmpty());
       }
 
   @Override
@@ -3018,25 +2146,25 @@ See for instance [IHE Radiology Technical Framework Volume 1 Appendix A](http://
     return ResourceType.ImagingStudy;
    }
 
-  @SearchParamDefinition(name="uid", path="ImagingStudy.series.instance.uid", description="Formal identifier for this instance (0008,0018)", type="token" )
+  @SearchParamDefinition(name="uid", path="ImagingStudy.series.instance.uid", description="The instance unique identifier", type="uri" )
   public static final String SP_UID = "uid";
-  @SearchParamDefinition(name="series", path="ImagingStudy.series.uid", description="The series id for the image", type="token" )
+  @SearchParamDefinition(name="series", path="ImagingStudy.series.uid", description="The identifier of the series of images", type="uri" )
   public static final String SP_SERIES = "series";
   @SearchParamDefinition(name="patient", path="ImagingStudy.patient", description="Who the study is about", type="reference" )
   public static final String SP_PATIENT = "patient";
   @SearchParamDefinition(name="order", path="ImagingStudy.order", description="The order for the image", type="reference" )
   public static final String SP_ORDER = "order";
-  @SearchParamDefinition(name="bodysite", path="ImagingStudy.series.bodySite", description="Body part examined (Map from 0018,0015)", type="token" )
+  @SearchParamDefinition(name="bodysite", path="ImagingStudy.series.bodySite", description="The body site studied", type="token" )
   public static final String SP_BODYSITE = "bodysite";
-  @SearchParamDefinition(name="accession", path="ImagingStudy.accession", description="The accession id for the image", type="token" )
+  @SearchParamDefinition(name="accession", path="ImagingStudy.accession", description="The accession identifier for the study", type="token" )
   public static final String SP_ACCESSION = "accession";
-  @SearchParamDefinition(name="study", path="ImagingStudy.uid", description="The study id for the image", type="token" )
+  @SearchParamDefinition(name="study", path="ImagingStudy.uid", description="The study identifier for the image", type="uri" )
   public static final String SP_STUDY = "study";
-  @SearchParamDefinition(name="modality", path="ImagingStudy.series.modality", description="The modality of the image", type="token" )
+  @SearchParamDefinition(name="modality", path="ImagingStudy.series.modality", description="The modality of the series", type="token" )
   public static final String SP_MODALITY = "modality";
   @SearchParamDefinition(name="started", path="ImagingStudy.started", description="When the study was started", type="date" )
   public static final String SP_STARTED = "started";
-  @SearchParamDefinition(name="dicom-class", path="ImagingStudy.series.instance.sopclass", description="DICOM class type (0008,0016)", type="token" )
+  @SearchParamDefinition(name="dicom-class", path="ImagingStudy.series.instance.sopClass", description="The type of the instance", type="uri" )
   public static final String SP_DICOMCLASS = "dicom-class";
 
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This example is used with contraindication-example-dup, so don't make changes that would cause it to no longer be a duplicate -->
+<!-- This example is used with detectedissue-example-dup, so don't make changes that would cause it to no longer be a duplicate -->
 <ImagingStudy xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\imagingstudy.xsd">
   <id value="example"/>
   <text>
@@ -16,7 +16,10 @@
   
   <series>
     <number value="3"/>
-    <modality value="CT"/>
+    <modality>
+		  <system value="http://nema.org/dicom/dicm"/>
+		  <code value="CT"/>
+		</modality> 
     <uid value="urn:oid:2.16.124.113543.6003.2588828330.45298.17418.2723805630"/>
     <description value="CT Surview 180"/>
     <numberOfInstances value="1"/>
@@ -29,7 +32,7 @@
     <instance>
       <number value="1"/>
       <uid value="urn:oid:2.16.124.113543.6003.189642796.63084.16748.2599092903"/>
-      <sopclass value="urn:oid:1.2.840.10008.5.1.4.1.1.2"/>
+      <sopClass value="urn:oid:1.2.840.10008.5.1.4.1.1.2"/>
       <content>
         <url value="http://localhost/fhir/Binary/1.2.840.11361907579238403408700.3.0.14.19970327150033"/>
       </content>

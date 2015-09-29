@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -40,7 +40,7 @@ import org.hl7.fhir.instance.model.annotations.DatatypeDef;
 import org.hl7.fhir.instance.model.annotations.Block;
 import org.hl7.fhir.instance.model.api.*;
 /**
- * Details for All kinds of technology mediated contact points for a person or organization, including telephone, email, etc.
+ * Details for all kinds of technology mediated contact points for a person or organization, including telephone, email, etc.
  */
 @DatatypeDef(name="ContactPoint")
 public class ContactPoint extends Type implements ICompositeType {
@@ -55,13 +55,17 @@ public class ContactPoint extends Type implements ICompositeType {
          */
         FAX, 
         /**
-         * The value is an email address
+         * The value is an email address.
          */
         EMAIL, 
         /**
-         * The value is a url. This is intended for various personal contacts including blogs, Twitter, Facebook, etc. Do not use for email addresses
+         * The value is a pager number. These may be local pager numbers that are only usable on a particular pager system.
          */
-        URL, 
+        PAGER, 
+        /**
+         * A contact that is not a phone, fax, or email address. The format of the value SHOULD be a URL. This is intended for various personal contacts including blogs, Twitter, Facebook, etc. Do not use for email addresses. If this is not a URL, then it will require human interpretation.
+         */
+        OTHER, 
         /**
          * added to help the parsers
          */
@@ -75,8 +79,10 @@ public class ContactPoint extends Type implements ICompositeType {
           return FAX;
         if ("email".equals(codeString))
           return EMAIL;
-        if ("url".equals(codeString))
-          return URL;
+        if ("pager".equals(codeString))
+          return PAGER;
+        if ("other".equals(codeString))
+          return OTHER;
         throw new Exception("Unknown ContactPointSystem code '"+codeString+"'");
         }
         public String toCode() {
@@ -84,7 +90,8 @@ public class ContactPoint extends Type implements ICompositeType {
             case PHONE: return "phone";
             case FAX: return "fax";
             case EMAIL: return "email";
-            case URL: return "url";
+            case PAGER: return "pager";
+            case OTHER: return "other";
             default: return "?";
           }
         }
@@ -93,7 +100,8 @@ public class ContactPoint extends Type implements ICompositeType {
             case PHONE: return "http://hl7.org/fhir/contact-point-system";
             case FAX: return "http://hl7.org/fhir/contact-point-system";
             case EMAIL: return "http://hl7.org/fhir/contact-point-system";
-            case URL: return "http://hl7.org/fhir/contact-point-system";
+            case PAGER: return "http://hl7.org/fhir/contact-point-system";
+            case OTHER: return "http://hl7.org/fhir/contact-point-system";
             default: return "?";
           }
         }
@@ -101,8 +109,9 @@ public class ContactPoint extends Type implements ICompositeType {
           switch (this) {
             case PHONE: return "The value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.";
             case FAX: return "The value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.";
-            case EMAIL: return "The value is an email address";
-            case URL: return "The value is a url. This is intended for various personal contacts including blogs, Twitter, Facebook, etc. Do not use for email addresses";
+            case EMAIL: return "The value is an email address.";
+            case PAGER: return "The value is a pager number. These may be local pager numbers that are only usable on a particular pager system.";
+            case OTHER: return "A contact that is not a phone, fax, or email address. The format of the value SHOULD be a URL. This is intended for various personal contacts including blogs, Twitter, Facebook, etc. Do not use for email addresses. If this is not a URL, then it will require human interpretation.";
             default: return "?";
           }
         }
@@ -111,7 +120,8 @@ public class ContactPoint extends Type implements ICompositeType {
             case PHONE: return "Phone";
             case FAX: return "Fax";
             case EMAIL: return "Email";
-            case URL: return "Url";
+            case PAGER: return "Pager";
+            case OTHER: return "URL";
             default: return "?";
           }
         }
@@ -128,8 +138,10 @@ public class ContactPoint extends Type implements ICompositeType {
           return ContactPointSystem.FAX;
         if ("email".equals(codeString))
           return ContactPointSystem.EMAIL;
-        if ("url".equals(codeString))
-          return ContactPointSystem.URL;
+        if ("pager".equals(codeString))
+          return ContactPointSystem.PAGER;
+        if ("other".equals(codeString))
+          return ContactPointSystem.OTHER;
         throw new IllegalArgumentException("Unknown ContactPointSystem code '"+codeString+"'");
         }
     public String toCode(ContactPointSystem code) {
@@ -139,8 +151,10 @@ public class ContactPoint extends Type implements ICompositeType {
         return "fax";
       if (code == ContactPointSystem.EMAIL)
         return "email";
-      if (code == ContactPointSystem.URL)
-        return "url";
+      if (code == ContactPointSystem.PAGER)
+        return "pager";
+      if (code == ContactPointSystem.OTHER)
+        return "other";
       return "?";
       }
     }
@@ -159,11 +173,11 @@ public class ContactPoint extends Type implements ICompositeType {
          */
         TEMP, 
         /**
-         * This contact point is no longer in use (or was never correct, but retained for records)
+         * This contact point is no longer in use (or was never correct, but retained for records).
          */
         OLD, 
         /**
-         * A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business
+         * A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business.
          */
         MOBILE, 
         /**
@@ -210,8 +224,8 @@ public class ContactPoint extends Type implements ICompositeType {
             case HOME: return "A communication contact point at a home; attempted contacts for business purposes might intrude privacy and chances are one will contact family or other household members instead of the person one wishes to call. Typically used with urgent cases, or if no other contacts are available.";
             case WORK: return "An office contact point. First choice for business related contacts during business hours.";
             case TEMP: return "A temporary contact point. The period can provide more detailed information.";
-            case OLD: return "This contact point is no longer in use (or was never correct, but retained for records)";
-            case MOBILE: return "A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business";
+            case OLD: return "This contact point is no longer in use (or was never correct, but retained for records).";
+            case MOBILE: return "A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business.";
             default: return "?";
           }
         }
@@ -262,32 +276,39 @@ public class ContactPoint extends Type implements ICompositeType {
     /**
      * Telecommunications form for contact point - what communications system is required to make use of the contact.
      */
-    @Child(name = "system", type = {CodeType.class}, order=0, min=0, max=1)
-    @Description(shortDefinition="phone | fax | email | url", formalDefinition="Telecommunications form for contact point - what communications system is required to make use of the contact." )
+    @Child(name = "system", type = {CodeType.class}, order=0, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="phone | fax | email | pager | other", formalDefinition="Telecommunications form for contact point - what communications system is required to make use of the contact." )
     protected Enumeration<ContactPointSystem> system;
 
     /**
      * The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).
      */
-    @Child(name = "value", type = {StringType.class}, order=1, min=0, max=1)
+    @Child(name = "value", type = {StringType.class}, order=1, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="The actual contact point details", formalDefinition="The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address)." )
     protected StringType value;
 
     /**
      * Identifies the purpose for the contact point.
      */
-    @Child(name = "use", type = {CodeType.class}, order=2, min=0, max=1)
+    @Child(name = "use", type = {CodeType.class}, order=2, min=0, max=1, modifier=true, summary=true)
     @Description(shortDefinition="home | work | temp | old | mobile - purpose of this contact point", formalDefinition="Identifies the purpose for the contact point." )
     protected Enumeration<ContactPointUse> use;
 
     /**
+     * Specifies a preferred order in which to use a set of contacts. Contacts are ranked with lower values coming before higher values.
+     */
+    @Child(name = "rank", type = {PositiveIntType.class}, order=3, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Specify preferred order of use (1 = highest)", formalDefinition="Specifies a preferred order in which to use a set of contacts. Contacts are ranked with lower values coming before higher values." )
+    protected PositiveIntType rank;
+
+    /**
      * Time period when the contact point was/is in use.
      */
-    @Child(name = "period", type = {Period.class}, order=3, min=0, max=1)
+    @Child(name = "period", type = {Period.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Time period when the contact point was/is in use", formalDefinition="Time period when the contact point was/is in use." )
     protected Period period;
 
-    private static final long serialVersionUID = 1972725348L;
+    private static final long serialVersionUID = 1509610874L;
 
   /*
    * Constructor
@@ -444,6 +465,51 @@ public class ContactPoint extends Type implements ICompositeType {
     }
 
     /**
+     * @return {@link #rank} (Specifies a preferred order in which to use a set of contacts. Contacts are ranked with lower values coming before higher values.). This is the underlying object with id, value and extensions. The accessor "getRank" gives direct access to the value
+     */
+    public PositiveIntType getRankElement() { 
+      if (this.rank == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create ContactPoint.rank");
+        else if (Configuration.doAutoCreate())
+          this.rank = new PositiveIntType(); // bb
+      return this.rank;
+    }
+
+    public boolean hasRankElement() { 
+      return this.rank != null && !this.rank.isEmpty();
+    }
+
+    public boolean hasRank() { 
+      return this.rank != null && !this.rank.isEmpty();
+    }
+
+    /**
+     * @param value {@link #rank} (Specifies a preferred order in which to use a set of contacts. Contacts are ranked with lower values coming before higher values.). This is the underlying object with id, value and extensions. The accessor "getRank" gives direct access to the value
+     */
+    public ContactPoint setRankElement(PositiveIntType value) { 
+      this.rank = value;
+      return this;
+    }
+
+    /**
+     * @return Specifies a preferred order in which to use a set of contacts. Contacts are ranked with lower values coming before higher values.
+     */
+    public int getRank() { 
+      return this.rank == null || this.rank.isEmpty() ? 0 : this.rank.getValue();
+    }
+
+    /**
+     * @param value Specifies a preferred order in which to use a set of contacts. Contacts are ranked with lower values coming before higher values.
+     */
+    public ContactPoint setRank(int value) { 
+        if (this.rank == null)
+          this.rank = new PositiveIntType();
+        this.rank.setValue(value);
+      return this;
+    }
+
+    /**
      * @return {@link #period} (Time period when the contact point was/is in use.)
      */
     public Period getPeriod() { 
@@ -472,6 +538,7 @@ public class ContactPoint extends Type implements ICompositeType {
         childrenList.add(new Property("system", "code", "Telecommunications form for contact point - what communications system is required to make use of the contact.", 0, java.lang.Integer.MAX_VALUE, system));
         childrenList.add(new Property("value", "string", "The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).", 0, java.lang.Integer.MAX_VALUE, value));
         childrenList.add(new Property("use", "code", "Identifies the purpose for the contact point.", 0, java.lang.Integer.MAX_VALUE, use));
+        childrenList.add(new Property("rank", "positiveInt", "Specifies a preferred order in which to use a set of contacts. Contacts are ranked with lower values coming before higher values.", 0, java.lang.Integer.MAX_VALUE, rank));
         childrenList.add(new Property("period", "Period", "Time period when the contact point was/is in use.", 0, java.lang.Integer.MAX_VALUE, period));
       }
 
@@ -481,6 +548,7 @@ public class ContactPoint extends Type implements ICompositeType {
         dst.system = system == null ? null : system.copy();
         dst.value = value == null ? null : value.copy();
         dst.use = use == null ? null : use.copy();
+        dst.rank = rank == null ? null : rank.copy();
         dst.period = period == null ? null : period.copy();
         return dst;
       }
@@ -497,7 +565,7 @@ public class ContactPoint extends Type implements ICompositeType {
           return false;
         ContactPoint o = (ContactPoint) other;
         return compareDeep(system, o.system, true) && compareDeep(value, o.value, true) && compareDeep(use, o.use, true)
-           && compareDeep(period, o.period, true);
+           && compareDeep(rank, o.rank, true) && compareDeep(period, o.period, true);
       }
 
       @Override
@@ -508,12 +576,13 @@ public class ContactPoint extends Type implements ICompositeType {
           return false;
         ContactPoint o = (ContactPoint) other;
         return compareValues(system, o.system, true) && compareValues(value, o.value, true) && compareValues(use, o.use, true)
-          ;
+           && compareValues(rank, o.rank, true);
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && (system == null || system.isEmpty()) && (value == null || value.isEmpty())
-           && (use == null || use.isEmpty()) && (period == null || period.isEmpty());
+           && (use == null || use.isEmpty()) && (rank == null || rank.isEmpty()) && (period == null || period.isEmpty())
+          ;
       }
 
 

@@ -1,5 +1,6 @@
 package org.hl7.fhir.definitions.validation;
 
+import java.io.IOException;
 /*
  Copyright (c) 2011+, HL7, Inc
  All rights reserved.
@@ -40,22 +41,26 @@ import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
 import org.hl7.fhir.definitions.model.BindingSpecification.ElementType;
 import org.hl7.fhir.definitions.model.Compartment;
 import org.hl7.fhir.definitions.model.DefinedCode;
+import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Operation;
+import org.hl7.fhir.definitions.model.Operation.OperationExample;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.definitions.model.W5Entry;
 import org.hl7.fhir.instance.model.Enumerations.BindingStrength;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.instance.model.ValueSet;
 import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.instance.model.valuesets.IssueType;
+import org.hl7.fhir.instance.model.OperationOutcome.IssueType;
 import org.hl7.fhir.instance.utils.Translations;
 import org.hl7.fhir.instance.validation.BaseValidator;
 import org.hl7.fhir.instance.validation.ValidationMessage;
 import org.hl7.fhir.instance.validation.ValidationMessage.Source;
+import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
 
 
@@ -81,17 +86,33 @@ public class ResourceValidator extends BaseValidator {
   private final Map<SearchType, UsageT> usagest = new HashMap<SearchType, UsageT>();
   private Translations translations;
   private final Map<String, ValueSet> codeSystems;
+  private SpellChecker speller;
+  private int maxElementLength;
+  
 //  private Map<String, Integer> typeCounter = new HashMap<String, Integer>();
 
-	public ResourceValidator(Definitions definitions, Translations translations, Map<String, ValueSet> map) {
+	public ResourceValidator(Definitions definitions, Translations translations, Map<String, ValueSet> map, String srcFolder) throws IOException {
 		super();
 		source = Source.ResourceValidator;
 		this.definitions = definitions;
 		this.translations = translations;
 		this.codeSystems = map;
+		speller = new SpellChecker(srcFolder, definitions);
+		int l = 0;
+		for (String n : definitions.getTypes().keySet())
+		  l = Math.max(l, n.length());
+    for (String n : definitions.getPrimitives().keySet())
+      l = Math.max(l, n.length());
+    for (String n : definitions.getStructures().keySet())
+      l = Math.max(l, n.length());
+    for (String n : definitions.getConstraints().keySet())
+      l = Math.max(l, n.length());
+    for (String n : definitions.getInfrastructure().keySet())
+      l = Math.max(l, n.length());
+		maxElementLength = (60 - 7) - l;
 	}
 
-	// public void setConceptDomains(List<ConceptDomain> conceptDomains) {
+  // public void setConceptDomains(List<ConceptDomain> conceptDomains) {
 	// this.conceptDomains = conceptDomains;
 	// }
 	//
@@ -106,7 +127,7 @@ public class ResourceValidator extends BaseValidator {
 	// }
 	// }
 
-  public void checkStucture(List<ValidationMessage> errors, String name, ElementDefn structure) {
+  public void checkStucture(List<ValidationMessage> errors, String name, ElementDefn structure) throws Exception {
     rule(errors, IssueType.STRUCTURE, structure.getName(), name.length() > 1 && Character.isUpperCase(name.charAt(0)), "Resource Name must start with an uppercase alpha character");
     checkElement(errors, structure.getName(), structure, null, null, true, false, hasSummary(structure), new ArrayList<String>());
   }
@@ -121,7 +142,7 @@ public class ResourceValidator extends BaseValidator {
     return false;
   }
 
-  public List<ValidationMessage> checkStucture(String name, ElementDefn structure) {
+  public List<ValidationMessage> checkStucture(String name, ElementDefn structure) throws Exception {
     List<ValidationMessage> errors = new ArrayList<ValidationMessage>();
     checkStucture(errors, name, structure);
     return errors;
@@ -129,83 +150,116 @@ public class ResourceValidator extends BaseValidator {
   
   protected boolean rule(List<ValidationMessage> errors, IssueType type, String path, boolean b, String msg) {
     String rn = path.contains(".") ? path.substring(0, path.indexOf(".")) : path;
-    return super.rule(errors, type, path, b, msg, "<a href=\""+(rn.toLowerCase())+".html\">"+rn+": "+Utilities.escapeXml(msg));
+    return super.rule(errors, type, path, b, msg, "<a href=\""+(rn.toLowerCase())+".html\">"+rn+"</a>: "+Utilities.escapeXml(msg));
   }
 
-  public void check(List<ValidationMessage> errors, String name, ResourceDefn parent) throws Exception {    
-    rule(errors, IssueType.STRUCTURE, parent.getName(), !name.equals("Metadata"), "The name 'Metadata' is not a legal name for a resource");
-    rule(errors, IssueType.STRUCTURE, parent.getName(), !name.equals("History"), "The name 'History' is not a legal name for a resource");
-    rule(errors, IssueType.STRUCTURE, parent.getName(), !name.equals("Tag"), "The name 'Tag' is not a legal name for a resource");
-    rule(errors, IssueType.STRUCTURE, parent.getName(), !name.equals("Tags"), "The name 'Tags' is not a legal name for a resource");
-    rule(errors, IssueType.STRUCTURE, parent.getName(), !name.equals("MailBox"), "The name 'MailBox' is not a legal name for a resource");
-    rule(errors, IssueType.STRUCTURE, parent.getName(), !name.equals("Validation"), "The name 'Validation' is not a legal name for a resource");
-    rule(errors, IssueType.REQUIRED,  parent.getName(), translations.hasTranslation(name), "The name '"+name+"' is not found in the file translations.xml");
-    rule(errors, IssueType.STRUCTURE, parent.getName(), name.length() > 1 && Character.isUpperCase(name.charAt(0)), "Resource Name must start with an uppercase alpha character");
-    rule(errors, IssueType.STRUCTURE, parent.getName(), !Utilities.noString(parent.getFmmLevel()), "Resource must have a maturity level");
+  public void check(List<ValidationMessage> errors, String name, ResourceDefn rd) throws Exception {    
+    rule(errors, IssueType.STRUCTURE, rd.getName(), !name.equals("Metadata"), "The name 'Metadata' is not a legal name for a resource");
+    rule(errors, IssueType.STRUCTURE, rd.getName(), !name.equals("History"), "The name 'History' is not a legal name for a resource");
+    rule(errors, IssueType.STRUCTURE, rd.getName(), !name.equals("Tag"), "The name 'Tag' is not a legal name for a resource");
+    rule(errors, IssueType.STRUCTURE, rd.getName(), !name.equals("Tags"), "The name 'Tags' is not a legal name for a resource");
+    rule(errors, IssueType.STRUCTURE, rd.getName(), !name.equals("MailBox"), "The name 'MailBox' is not a legal name for a resource");
+    rule(errors, IssueType.STRUCTURE, rd.getName(), !name.equals("Validation"), "The name 'Validation' is not a legal name for a resource");
+    rule(errors, IssueType.REQUIRED,  rd.getName(), translations.hasTranslation(name), "The name '"+name+"' is not found in the file translations.xml");
+    rule(errors, IssueType.STRUCTURE, rd.getName(), name.length() > 1 && Character.isUpperCase(name.charAt(0)), "Resource Name must start with an uppercase alpha character");
+    rule(errors, IssueType.STRUCTURE, rd.getName(), !Utilities.noString(rd.getFmmLevel()), "Resource must have a maturity level");
 
-    rule(errors, IssueType.REQUIRED,  parent.getName(), parent.getRoot().getElements().size() > 0, "A resource must have at least one element in it before the build can proceed"); // too many downstream issues in the parsers, and it would only happen as a transient thing when designing the resources
-    rule(errors, IssueType.REQUIRED,  parent.getName(), parent.getWg() != null, "A resource must have a designated owner"); // too many downstream issues in the parsers, and it would only happen as a transient thing when designing the resources
+    rule(errors, IssueType.REQUIRED,  rd.getName(), rd.getRoot().getElements().size() > 0, "A resource must have at least one element in it before the build can proceed"); // too many downstream issues in the parsers, and it would only happen as a transient thing when designing the resources
+    rule(errors, IssueType.REQUIRED,  rd.getName(), rd.getWg() != null, "A resource must have a designated owner"); // too many downstream issues in the parsers, and it would only happen as a transient thing when designing the resources
+    rule(errors, IssueType.REQUIRED,  rd.getName(), !Utilities.noString(rd.getRoot().getW5()), "A resource must have a W5 category"); 
     
-    if (Utilities.noString(parent.getEnteredInErrorStatus()))
-      if (hasStatus(parent, "entered-in-error"))
-        parent.setEnteredInErrorStatus(".status = entered-in-error");
-      else if (hasStatus(parent, "retired"))
-        parent.setEnteredInErrorStatus(".status = retired");
-      else if (hasActivFalse(parent))
-        parent.setEnteredInErrorStatus(".active = false");
+    if (suppressedwarning(errors, IssueType.REQUIRED, rd.getName(), hasW5Mappings(rd) || rd.getName().equals("Binary") || rd.getName().equals("OperationOutcome"), "A resource must have w5 mappings")) {
+      String w5Order = listW5Elements(rd);
+      String w5CorrectOrder = listW5Correct(rd);
+      if (!w5Order.equals(w5CorrectOrder)) {
+        hint(errors, IssueType.REQUIRED, rd.getName(), false, "Resource elements are out of order. The correct order is '"+w5CorrectOrder+"' but the actual order is '"+w5Order+"'");
+//        System.out.println("Resource "+parent.getName()+": elements are out of order. The correct order is '"+w5CorrectOrder+"' but the actual order is '"+w5Order+"'");
+      }
+      if (!Utilities.noString(rd.getProposedOrder())) {
+        w5Order = listW5Elements(rd, rd.getProposedOrder());
+        if (!w5Order.equals(w5CorrectOrder)) {
+          rule(errors, IssueType.REQUIRED, rd.getName(), false, "Proposed Resource elements are out of order. The correct order is '"+w5CorrectOrder+"' but the proposed order is '"+w5Order+"'");
+        } else 
+          System.out.println("Proposed order for "+rd.getName()+": build order ok");
+      }
+    }
+    if (Utilities.noString(rd.getEnteredInErrorStatus()))
+      if (hasStatus(rd, "entered-in-error"))
+        rd.setEnteredInErrorStatus(".status = entered-in-error");
+      else if (hasStatus(rd, "retired"))
+        rd.setEnteredInErrorStatus(".status = retired");
+      else if (hasActivFalse(rd))
+        rd.setEnteredInErrorStatus(".active = false");
       else 
-        hint(errors, IssueType.REQUIRED,  parent.getName(), false, "A resource must have an 'entered in error' status"); // too many downstream issues in the parsers, and it would only happen as a transient thing when designing the resources
+        hint(errors, IssueType.REQUIRED,  rd.getName(), false, "A resource must have an 'entered in error' status"); // too many downstream issues in the parsers, and it would only happen as a transient thing when designing the resources
         
-    String s = parent.getRoot().getMapping(Definitions.RIM_MAPPING);
-    warning(errors, IssueType.REQUIRED, parent.getName(), !Utilities.noString(s), "RIM Mapping is required");
+    String s = rd.getRoot().getMapping(Definitions.RIM_MAPPING);
+    hint(errors, IssueType.REQUIRED, rd.getName(), !Utilities.noString(s), "RIM Mapping is required");
 
+    for (Operation op : rd.getOperations()) {
+      suppressedwarning(errors, IssueType.BUSINESSRULE, rd.getName()+".$"+op.getName(), hasOpExample(op.getExamples(), false), "Operation must have an example request");
+      suppressedwarning(errors, IssueType.BUSINESSRULE, rd.getName()+".$"+op.getName(), hasOpExample(op.getExamples(), true), "Operation must have an example response");
+    }
     List<String> vsWarns = new ArrayList<String>();
-    int vsWarnings = checkElement(errors, parent.getName(), parent.getRoot(), parent, null, s == null || !s.equalsIgnoreCase("n/a"), false, hasSummary(parent.getRoot()), vsWarns);
+    int vsWarnings = checkElement(errors, rd.getName(), rd.getRoot(), rd, null, s == null || !s.equalsIgnoreCase("n/a"), false, hasSummary(rd.getRoot()), vsWarns);
     
     if (!resourceIsTechnical(name)) { // these are exempt because identification is tightly managed
-      ElementDefn id = parent.getRoot().getElementByName("identifier");
-      if (id == null)
-        warning(errors, IssueType.STRUCTURE, parent.getName(), false, "All resources should have an identifier");
+      ElementDefn id = rd.getRoot().getElementByName("identifier");
+      if (id == null) 
+        suppressedwarning(errors, IssueType.STRUCTURE, rd.getName(), false, "All resources should have an identifier");
       else 
-        rule(errors, IssueType.STRUCTURE, parent.getName(), id.typeCode().equals("Identifier"), "If a resource has an element named identifier, it must have a type 'Identifier'");
+        rule(errors, IssueType.STRUCTURE, rd.getName(), id.typeCode().equals("Identifier"), "If a resource has an element named identifier, it must have a type 'Identifier'");
     }
-    rule(errors, IssueType.STRUCTURE, parent.getName(), parent.getRoot().getElementByName("text") == null, "Element named \"text\" not allowed");
-    rule(errors, IssueType.STRUCTURE, parent.getName(), parent.getRoot().getElementByName("contained") == null, "Element named \"contained\" not allowed");
-    if (parent.getRoot().getElementByName("subject") != null && parent.getRoot().getElementByName("subject").typeCode().startsWith("Reference"))
-      rule(errors, IssueType.STRUCTURE, parent.getName(), parent.getSearchParams().containsKey("subject"), "A resource that contains a subject reference must have a search parameter 'subject'");
-    if (parent.getRoot().getElementByName("patient") != null && parent.getRoot().getElementByName("patient").typeCode().startsWith("Reference"))
-      rule(errors, IssueType.STRUCTURE, parent.getName(), parent.getSearchParams().containsKey("patient"), "A resource that contains a patient reference must have a search parameter 'patient'");
-    for (org.hl7.fhir.definitions.model.SearchParameterDefn p : parent.getSearchParams().values()) {
+    rule(errors, IssueType.STRUCTURE, rd.getName(), rd.getRoot().getElementByName("text") == null, "Element named \"text\" not allowed");
+    rule(errors, IssueType.STRUCTURE, rd.getName(), rd.getRoot().getElementByName("contained") == null, "Element named \"contained\" not allowed");
+    if (rd.getRoot().getElementByName("subject") != null && rd.getRoot().getElementByName("subject").typeCode().startsWith("Reference"))
+      rule(errors, IssueType.STRUCTURE, rd.getName(), rd.getSearchParams().containsKey("subject"), "A resource that contains a subject reference must have a search parameter 'subject'");
+    if (rd.getRoot().getElementByName("patient") != null && rd.getRoot().getElementByName("patient").typeCode().startsWith("Reference"))
+      rule(errors, IssueType.STRUCTURE, rd.getName(), rd.getSearchParams().containsKey("patient"), "A resource that contains a patient reference must have a search parameter 'patient'");
+    if (rd.getRoot().getElementByName("identifier") != null) {
+      hint(errors, IssueType.STRUCTURE, rd.getName(), rd.getSearchParams().containsKey("identifier"), "A resource that contains an identifier must have a search parameter 'identifier'");
+    }
+    if (rd.getRoot().getElementByName("url") != null) {
+      hint(errors, IssueType.STRUCTURE, rd.getName(), rd.getSearchParams().containsKey("url"), "A resource that contains a url element must have a search parameter 'url'");
+    }
+    for (org.hl7.fhir.definitions.model.SearchParameterDefn p : rd.getSearchParams().values()) {
       if (!usages.containsKey(p.getCode()))
         usages.put(p.getCode(), new Usage());
       usages.get(p.getCode()).usage.add(p.getType());
       if (!usagest.containsKey(p.getType()))
         usagest.put(p.getType(), new UsageT());
-      rule(errors, IssueType.STRUCTURE, parent.getName(), !p.getCode().equals("filter"), "Search Parameter Name cannot be 'filter')");
-      rule(errors, IssueType.STRUCTURE, parent.getName(), !p.getCode().contains("."), "Search Parameter Names cannot contain a '.' (\""+p.getCode()+"\")");
-      rule(errors, IssueType.STRUCTURE, parent.getName(), !p.getCode().equalsIgnoreCase("id"), "Search Parameter Names cannot be named 'id' (\""+p.getCode()+"\")");
-      hint(errors, IssueType.STRUCTURE, parent.getName(), !stringMatches(p.getCode(), "id", "lastUpdated", "tag", "profile", "security", "text", "content", "list", "query"), "Search Parameter Names cannot be named one of the reserved names (\""+p.getCode()+"\")");
-      rule(errors, IssueType.STRUCTURE, parent.getName(), p.getCode().equals(p.getCode().toLowerCase()), "Search Parameter Names should be all lowercase (\""+p.getCode()+"\")");
-      if (rule(errors, IssueType.STRUCTURE, parent.getName(), !Utilities.noString(p.getDescription()), "Search Parameter description is empty (\""+p.getCode()+"\")"))
-        rule(errors, IssueType.STRUCTURE, parent.getName(), Character.isUpperCase(p.getDescription().charAt(0)) || p.getDescription().startsWith("e.g. ") || p.getDescription().contains("|"), "Search Parameter descriptions should start with an uppercase character(\""+p.getDescription()+"\")");
+      rule(errors, IssueType.STRUCTURE, rd.getName(), !p.getCode().equals("filter"), "Search Parameter Name cannot be 'filter')");
+      rule(errors, IssueType.STRUCTURE, rd.getName(), !p.getCode().contains("."), "Search Parameter Names cannot contain a '.' (\""+p.getCode()+"\")");
+      rule(errors, IssueType.STRUCTURE, rd.getName(), !p.getCode().equalsIgnoreCase("id"), "Search Parameter Names cannot be named 'id' (\""+p.getCode()+"\")");
+      hint(errors, IssueType.STRUCTURE, rd.getName(), !stringMatches(p.getCode(), "id", "lastUpdated", "tag", "profile", "security", "text", "content", "list", "query"), "Search Parameter Names cannot be named one of the reserved names (\""+p.getCode()+"\")");
+      hint(errors, IssueType.STRUCTURE, rd.getName(), searchNameOk(p.getCode()), "Search Parameter name '"+p.getCode()+"' does not follow the style guide");
+      rule(errors, IssueType.STRUCTURE, rd.getName(), p.getCode().equals(p.getCode().toLowerCase()), "Search Parameter Names should be all lowercase (\""+p.getCode()+"\")");
+      if (rule(errors, IssueType.STRUCTURE, rd.getName(), !Utilities.noString(p.getDescription()), "Search Parameter description is empty (\""+p.getCode()+"\")"))
+        rule(errors, IssueType.STRUCTURE, rd.getName(), Character.isUpperCase(p.getDescription().charAt(0)) || p.getDescription().startsWith("e.g. ") || p.getDescription().contains("|"), "Search Parameter descriptions should start with an uppercase character(\""+p.getDescription()+"\")");
       try {
         for (String path : p.getPaths()) {
           ElementDefn e;
-          e = parent.getRoot().getElementForPath(path, definitions, "Resolving Search Parameter Path", true);
+          String pp = trimIndexes(path);
+          e = rd.getRoot().getElementForPath(pp, definitions, "Resolving Search Parameter Path", true);
           List<TypeRef> tlist;
-          if (path.endsWith("."+e.getName()))
+          if (pp.endsWith("."+e.getName()))
             tlist = e.getTypes();
           else {
             tlist = new ArrayList<TypeRef>();
             for (TypeRef t : e.getTypes())
-              if (path.endsWith(Utilities.capitalize(t.getName())))
+              if (pp.endsWith(Utilities.capitalize(t.getName())))
                 tlist.add(t);
           }
           for (TypeRef t : tlist) {
-            if (definitions.getSearchRules().containsKey(t.getName()) && definitions.getSearchRules().get(t.getName()).contains(p.getType().name())) 
-              usagest.get(p.getType()).usage.add((e.getTypes().size() > 1 ? path+":" : "") +t.getName());
-            else 
-              rule(errors, IssueType.STRUCTURE, parent.getName(), tlist.size() > 0, "Search Parameter "+p.getCode()+" : "+p.getType().name()+" type illegal for "+path+" : "+t.getName()+"");      
+            String tn = t.getName();
+            if (definitions.getSearchRules().containsKey(tn) && definitions.getSearchRules().get(tn).contains(p.getType().name())) { 
+              if (definitions.getConstraints().containsKey(tn))
+                tn = definitions.getConstraints().get(tn).getBaseType();
+              else if (definitions.getPrimitives().containsKey(tn) && definitions.getPrimitives().get(tn) instanceof DefinedStringPattern && !tn.equals("code")) 
+                tn = ((DefinedStringPattern) definitions.getPrimitives().get(tn)).getBase();            
+              usagest.get(p.getType()).usage.add(tn);
+            } else 
+              warning(errors, IssueType.STRUCTURE, rd.getName(), tlist.size() > 1, "Search Parameter "+p.getCode()+" : "+p.getType().name()+" type illegal for "+path+" : "+tn+" ("+e.typeCode()+")");      
           }
         }
       } catch (Exception e1) {
@@ -214,7 +268,8 @@ public class ResourceValidator extends BaseValidator {
         if (p.getType() == SearchType.reference) {
           for (String path : p.getPaths()) {
             ElementDefn e;
-            e = parent.getRoot().getElementForPath(path, definitions, "Resolving Search Parameter Path", true);
+            String pp = trimIndexes(path);
+            e = rd.getRoot().getElementForPath(pp, definitions, "Resolving Search Parameter Path", true);
             for (TypeRef t : e.getTypes()) {
               if (t.getName().equals("Reference")) {
                 for (String pn : t.getParams()) {
@@ -225,23 +280,23 @@ public class ResourceValidator extends BaseValidator {
           }
         }
       } catch (Exception e1) {
-        rule(errors, IssueType.STRUCTURE, parent.getName(), false, e1.getMessage());
+        rule(errors, IssueType.STRUCTURE, rd.getName(), false, e1.getMessage());
       }
     }
-    for (Operation op : parent.getOperations()) {
-      rule(errors, IssueType.STRUCTURE, parent.getName()+"/$"+op.getName(), !parentHasOp(parent.getRoot().typeCode(), op.getName()), "Duplicate Operation Name $"+op.getName()+" on "+parent.getName()); 
+    for (Operation op : rd.getOperations()) {
+      rule(errors, IssueType.STRUCTURE, rd.getName()+"/$"+op.getName(), !parentHasOp(rd.getRoot().typeCode(), op.getName()), "Duplicate Operation Name $"+op.getName()+" on "+rd.getName()); 
     }
     
     for (Compartment c : definitions.getCompartments()) {
-      if (rule(errors, IssueType.STRUCTURE, parent.getName(), c.getResources().containsKey(parent), "Resource not entered in resource map for compartment '"+c.getTitle()+"' (compartments.xml)")) {
-        String param = c.getResources().get(parent);
+      if (rule(errors, IssueType.STRUCTURE, rd.getName(), c.getResources().containsKey(rd), "Resource not entered in resource map for compartment '"+c.getTitle()+"' (compartments.xml)")) {
+        String param = c.getResources().get(rd);
         if (!Utilities.noString(param)) {
 //          rule(errors, IssueType.STRUCTURE, parent.getName(), param.equals("{def}") || parent.getSearchParams().containsKey(c.getName()), "Resource "+parent.getName()+" in compartment " +c.getName()+" must have a search parameter named "+c.getName().toLowerCase()+")");
           for (String p : param.split("\\|")) {
             String pn = p.trim();
             if (pn.contains("."))
               pn = pn.substring(0, pn.indexOf("."));
-            rule(errors, IssueType.STRUCTURE, parent.getName(), Utilities.noString(pn) || pn.equals("{def}") || parent.getSearchParams().containsKey(pn), "Resource "+parent.getName()+" in compartment " +c.getName()+": parameter "+param+" was not found ("+pn+")");
+            rule(errors, IssueType.STRUCTURE, rd.getName(), Utilities.noString(pn) || pn.equals("{def}") || rd.getSearchParams().containsKey(pn), "Resource "+rd.getName()+" in compartment " +c.getName()+": parameter "+param+" was not found ("+pn+")");
           }
         }
       }
@@ -252,9 +307,76 @@ public class ResourceValidator extends BaseValidator {
       if (em.getLevel() == IssueSeverity.WARNING)
         warnings++;
     }
-    if (rule(errors, IssueType.STRUCTURE, parent.getName(), warnings == 0 || parent.getFmmLevel().equals("0"), "Resource "+parent.getName()+" (FMM="+parent.getFmmLevel()+") cannot have a FMM level >1 if it has warnings"))
-      rule(errors, IssueType.STRUCTURE, parent.getName(), vsWarnings == 0 || parent.getFmmLevel().equals("0"), "Resource "+parent.getName()+" (FMM="+parent.getFmmLevel()+") cannot have a FMM level >1 if it has linked value set warnings ("+vsWarns.toString()+")");
+    if (rule(errors, IssueType.STRUCTURE, rd.getName(), warnings == 0 || rd.getFmmLevel().equals("0"), "Resource "+rd.getName()+" (FMM="+rd.getFmmLevel()+") cannot have a FMM level >1 if it has warnings"))
+      rule(errors, IssueType.STRUCTURE, rd.getName(), vsWarnings == 0 || rd.getFmmLevel().equals("0"), "Resource "+rd.getName()+" (FMM="+rd.getFmmLevel()+") cannot have a FMM level >1 if it has linked value set warnings ("+vsWarns.toString()+")");
 	}
+
+  private String listW5Elements(ResourceDefn parent, String proposedOrder) {
+    String[] names = proposedOrder.split("\\,"); 
+    List<String> items = new ArrayList<String>();
+    for (String n : names) {
+      ElementDefn e = parent.getRoot().getElementByName(n);
+      if (e == null)
+        throw new Error("Unable to resolve element in proposed order: "+n);
+      if (!Utilities.noString(e.getW5()))
+        items.add(e.getName()+"(="+e.getW5()+")");
+    }
+    return items.toString();
+  }
+
+  private String listW5Correct(ResourceDefn parent) {
+    List<String> items = new ArrayList<String>();
+    for (W5Entry w5 : definitions.getW5list()) {
+      for (ElementDefn e : parent.getRoot().getElements()) {
+        if (w5.getCode().equals(e.getW5()))
+          items.add(e.getName()+"(="+e.getW5()+")");
+      }
+    }
+    return items.toString();
+  }
+
+  private String listW5Elements(ResourceDefn parent) {
+    List<String> items = new ArrayList<String>();
+    for (ElementDefn e : parent.getRoot().getElements()) {
+      if (!Utilities.noString(e.getW5()))
+        items.add(e.getName()+"(="+e.getW5()+")");
+    }
+    return items.toString();
+  }
+
+  private boolean hasW5Mappings(ResourceDefn parent) {
+    for (ElementDefn e : parent.getRoot().getElements()) {
+      if (!Utilities.noString(e.getW5()))
+        return true;
+    }
+    return false;
+  }
+
+  private String trimIndexes(String p) {
+    while (p.contains("("))
+      if (p.indexOf(")") == p.length()-1)
+        p = p.substring(0, p.indexOf("("));
+      else
+        p = p.substring(0, p.indexOf("("))+p.substring(p.indexOf(")"+1));
+    return p;
+  }
+
+  private boolean searchNameOk(String code) {
+    String[] ws = code.split("\\-");
+    for (String w : ws) {
+      if (!speller.ok(w))
+        return false;
+    }
+    return true;
+  }
+
+  private boolean hasOpExample(List<OperationExample> examples, boolean resp) {
+    for (OperationExample ex: examples) {
+      if (ex.isResponse() == resp)
+        return true;
+    }
+    return false;
+  }
 
   private boolean stringMatches(String value, String... args) {
     for(String arg: args) {
@@ -276,8 +398,8 @@ public class ResourceValidator extends BaseValidator {
   private boolean hasStatus(ResourceDefn parent, String code) {
     ElementDefn e = parent.getRoot().getElementByName("status");
     if (e != null) {
-      if (e.hasBinding() && e.getBinding().getValueSet() != null && e.getBinding().getValueSet().hasDefine()) {
-        for (ConceptDefinitionComponent cc : e.getBinding().getValueSet().getDefine().getConcept()) {
+      if (e.hasBinding() && e.getBinding().getValueSet() != null && e.getBinding().getValueSet().hasCodeSystem()) {
+        for (ConceptDefinitionComponent cc : e.getBinding().getValueSet().getCodeSystem().getConcept()) {
           if (cc.getCode().equals(code))
             return true;
         }
@@ -299,14 +421,18 @@ public class ResourceValidator extends BaseValidator {
 
   private boolean resourceIsTechnical(String name) {
     return 
+        name.equals("AuditEvent") || 
         name.equals("Binary") || 
         name.equals("Bundle") || 
         name.equals("ConceptMap") || 
         name.equals("Conformance") || 
         name.equals("MessageHeader") || 
         name.equals("Subscription") || 
+        name.equals("ImplementationGuide") ||
         name.equals("DataElement") || 
-        name.equals("Profile") || 
+        name.equals("NamingSystem") || 
+        name.equals("SearchParameter") || 
+        name.equals("Provenance") || 
         name.equals("Query") || 
         name.equals("ValueSet") ||         
         name.equals("OperationDefinition") ||         
@@ -322,29 +448,32 @@ public class ResourceValidator extends BaseValidator {
   
 	//todo: check that primitives *in datatypes* don't repeat
 	
-	private int checkElement(List<ValidationMessage> errors, String path, ElementDefn e, ResourceDefn parent, String parentName, boolean needsRimMapping, boolean optionalParent, boolean hasSummary, List<String> vsWarns) {
+	private int checkElement(List<ValidationMessage> errors, String path, ElementDefn e, ResourceDefn parent, String parentName, boolean needsRimMapping, boolean optionalParent, boolean hasSummary, List<String> vsWarns) throws Exception {
 //	  for (TypeRef t : e.getTypes()) {
 //  	  if (!typeCounter.containsKey(t.getName()))
 //	      typeCounter.put(t.getName(), 1);
 //  	  else
 //  	    typeCounter.put(t.getName(), typeCounter.get(t.getName())+1);
 //	  }
+	  e.setPath(path);
 	  int vsWarnings = 0;
 	  if (!names.containsKey(e.getName()))
 	    names.put(e.getName(), 0);
     names.put(e.getName(), names.get(e.getName())+1);
 	  
+    rule(errors, IssueType.STRUCTURE, path, e.getName().length() < maxElementLength, "Name "+e.getName()+" is too long (max element name length = "+Integer.toString(maxElementLength));
     rule(errors, IssueType.STRUCTURE, path, isValidToken(e.getName(), !path.contains(".")), "Name "+e.getName()+" is not a valid element name");
 	  rule(errors, IssueType.STRUCTURE, path, e.unbounded() || e.getMaxCardinality() == 1,	"Max Cardinality must be 1 or unbounded");
 		rule(errors, IssueType.STRUCTURE, path, e.getMinCardinality() == 0 || e.getMinCardinality() == 1, "Min Cardinality must be 0 or 1");
-		if (hasSummary && e.getMinCardinality() == 0) {
-      rule(errors, IssueType.STRUCTURE, path, optionalParent || e.isSummary(),  "An element with a minimum cardinality = 1 must be in the summary");
-      optionalParent = false;
-		}
-		hasSummary = hasSummary && e.isSummary();
+		
+    if (!hasSummary)
+      e.setSummaryItem(true);
+    rule(errors, IssueType.STRUCTURE, path, optionalParent || e.isSummary() || !path.contains(".") || e.getMinCardinality() == 0,  "An element with a minimum cardinality = 1 must be in the summary ("+path+")");
+    optionalParent = optionalParent || e.getMinCardinality() == 0;
+    
 		hint(errors, IssueType.STRUCTURE, path, !nameOverlaps(e.getName(), parentName), "Name of child ("+e.getName()+") overlaps with name of parent ("+parentName+")");
     checkDefinitions(errors, path, e);
-    warning(errors, IssueType.STRUCTURE, path, !Utilities.isPlural(e.getName()) || !e.unbounded(), "Element names should be singular");
+    suppressedwarning(errors, IssueType.STRUCTURE, path, !path.contains(".") || !Utilities.isPlural(e.getName()) || !e.unbounded(), "Element names should be singular");
     rule(errors, IssueType.STRUCTURE, path, !e.getName().equals("id"), "Element named \"id\" not allowed");
     hint(errors, IssueType.STRUCTURE, path, !e.getName().equals("comments"), "Element named \"comments\" not allowed - use 'comment'");
     hint(errors, IssueType.STRUCTURE, path, !e.getName().equals("notes"), "Element named \"notes\" not allowed - use 'note'");
@@ -359,8 +488,22 @@ public class ResourceValidator extends BaseValidator {
     if (e.usesType("string") && e.usesType("CodeableConcept"))
       rule(errors, IssueType.STRUCTURE, path, e.getComments().contains("string") && e.getComments().contains("CodeableConcept"), "Element type cannot have both string and CodeableConcept unless the difference between their usage is explained in the comments");
     hint(errors, IssueType.BUSINESSRULE, path, Utilities.noString(e.getTodo()), "Element has a todo associated with it ("+e.getTodo()+")");
+    
+    if (!Utilities.noString(e.getW5())) {
+      if (path.contains("."))
+        rule(errors, IssueType.INVALID, path, definitions.getW5s().containsKey(e.getW5()), "The w5 value '"+e.getW5()+"' is illegal");
+      else {
+        String[] vs = e.getW5().split("\\."); 
+        rule(errors, IssueType.INVALID, path, vs.length ==2 && definitions.getW5s().containsKey(vs[0]) && definitions.getW5s().get(vs[0]).getSubClasses().contains(vs[1]), "The w5 value '"+e.getW5()+"' is illegal");
+      }
+    }
+    if (e.getName().equals("subject"))
+      suppressedwarning(errors, IssueType.STRUCTURE, path, !e.typeCode().equals("Reference(Patient)"), "Elements with name 'subject' cannot be a reference to just a patient"); // make this an error...
+    if (e.getName().equals("patient"))
+      rule(errors, IssueType.STRUCTURE, path, e.typeCode().equals("Reference(Patient)"), "Elements with name 'patient' must be a reference to just a patient");
+    
 //    if (needsRimMapping)
-//      warning(errors, IssueType.REQUIRED, path, !Utilities.noString(e.getMapping(ElementDefn.RIM_MAPPING)), "RIM Mapping is required");
+//      suppressedwarning(errors, IssueType.REQUIRED, path, !Utilities.noString(e.getMapping(ElementDefn.RIM_MAPPING)), "RIM Mapping is required");
 
     if (e.getName().equals("comment")) {
       hint(errors, IssueType.STRUCTURE, path, false, "MnM must have confirmed this should not be an Annotation");
@@ -399,8 +542,20 @@ public class ResourceValidator extends BaseValidator {
 		if (e.typeCode().equals("code") && parent != null && !e.isNoBindingAllowed()) {
 		  rule(errors, IssueType.STRUCTURE, path, e.hasBinding(), "An element of type code must have a binding");
 		}
-    if ((e.usesType("Coding") && !parentName.equals("CodeableConcept")) || e.usesType("CodeableConcept")) {
+    if ((e.usesType("Coding") && !parentName.equals("CodeableConcept")) || (e.usesType("CodeableConcept") && !(e.usesType("Quantity") || e.usesType("SimpleQuantity")))) {
       warning(errors, IssueType.STRUCTURE, path, e.hasBinding(), "An element of type CodeableConcept or Coding must have a binding");
+    }
+    if (e.getTypes().size() > 1) {
+      Set<String> types = new HashSet<String>();
+      for (TypeRef t : e.getTypes()) {
+        String base = null;
+        if (definitions.getConstraints().containsKey(t.getName()))
+          base = definitions.getConstraints().get(t.getName()).getBaseType();
+        else
+          base = t.getName();
+        rule(errors, IssueType.STRUCTURE, path, !types.contains(base), "Element type combination includes multiple actual types that are the same");
+        types.add(base);
+      }
     }
 		
 		if (e.hasBinding()) {
@@ -423,7 +578,7 @@ public class ResourceValidator extends BaseValidator {
 		}
 
     String s = e.getMapping(Definitions.RIM_MAPPING);
-    warning(errors, IssueType.REQUIRED, path, !needsRimMapping || !Utilities.noString(s), "RIM Mapping is required");
+    hint(errors, IssueType.REQUIRED, path, !needsRimMapping || !Utilities.noString(s), "RIM Mapping is required");
 
     needsRimMapping = needsRimMapping && !"n/a".equalsIgnoreCase(s) && !Utilities.noString(s);
     
@@ -479,8 +634,8 @@ public class ResourceValidator extends BaseValidator {
     if (!e.hasShortDefn()) 
       return;
     
-    warning(errors, IssueType.STRUCTURE, path, !e.getShortDefn().equals(e.getDefinition()), "Element needs a definition of its own");
-    warning(errors, IssueType.STRUCTURE, path, !e.getShortDefn().equals(e.getName()), "Short description can't be the same as the name");
+    suppressedwarning(errors, IssueType.STRUCTURE, path, !e.getShortDefn().equals(e.getDefinition()), "Element needs a definition of its own");
+    suppressedwarning(errors, IssueType.STRUCTURE, path, !e.getShortDefn().equals(e.getName()), "Short description can't be the same as the name");
     Set<String> defn = new HashSet<String>();
     for (String w : splitByCamelCase(e.getName()).toLowerCase().split(" ")) 
       defn.add(Utilities.pluralizeMe(w));
@@ -496,7 +651,7 @@ public class ResourceValidator extends BaseValidator {
     for (String s : provided)
       if (!defn.contains(s))
         ok = true;
-    warning(errors, IssueType.STRUCTURE, path, ok, "Short description doesn't add any new content: '"+e.getShortDefn()+"'");
+    suppressedwarning(errors, IssueType.STRUCTURE, path, ok, "Short description doesn't add any new content: '"+e.getShortDefn()+"'");
   }
 
   private boolean nameOverlaps(String name, String parentName) {
@@ -588,9 +743,10 @@ public class ResourceValidator extends BaseValidator {
 //    return errors;
 //  }
   
-	private void check(List<ValidationMessage> errors, String path, BindingSpecification cd, String sd, ElementDefn e)  {
+	private void check(List<ValidationMessage> errors, String path, BindingSpecification cd, String sd, ElementDefn e) throws Exception  {
     // basic integrity checks
-    for (DefinedCode c : cd.getAllCodes()) {
+    List<DefinedCode> ac = cd.getAllCodes(definitions.getCodeSystems(), definitions.getValuesets(), false);
+    for (DefinedCode c : ac) {
       String d = c.getCode();
       if (Utilities.noString(d))
         d = c.getId();
@@ -600,22 +756,22 @@ public class ResourceValidator extends BaseValidator {
         d = c.getDisplay();
       
       if (Utilities.noString(c.getSystem()))
-        warning(errors, IssueType.STRUCTURE, "Binding @ "+path, !Utilities.noString(c.getDefinition()), "Code "+d+" must have a definition");
-      warning(errors, IssueType.STRUCTURE, "Binding @ "+path, !(Utilities.noString(c.getId()) && Utilities.noString(c.getSystem())) , "Code "+d+" must have a id or a system");
+        suppressedwarning(errors, IssueType.STRUCTURE, "Binding @ "+path, !Utilities.noString(c.getDefinition()), "Code "+d+" must have a definition");
+      rule(errors, IssueType.STRUCTURE, "Binding @ "+path, !(Utilities.noString(c.getId()) && Utilities.noString(c.getSystem())) , "Code "+d+" must have a id or a system");
     }
     
     // trigger processing into a Heirachical set if necessary
 //    rule(errors, IssueType.STRUCTURE, "Binding @ "+path, !cd.isHeirachical() || (cd.getChildCodes().size() < cd.getCodes().size()), "Logic error processing Hirachical code set");
 
     // now, rules for the source
-    warning(errors, IssueType.STRUCTURE, "Binding @ "+path, cd.getBinding() != BindingMethod.Unbound, "Need to provide a binding");
+    suppressedwarning(errors, IssueType.STRUCTURE, "Binding @ "+path, cd.getBinding() != BindingMethod.Unbound, "Need to provide a binding");
     rule(errors, IssueType.STRUCTURE, "Binding @ "+path, cd.getElementType() != ElementType.Simple || cd.getBinding() != BindingMethod.Unbound, "Need to provide a binding for code elements");
     rule(errors, IssueType.STRUCTURE, "Binding @ "+path, (cd.getElementType() != ElementType.Simple || cd.getStrength() == BindingStrength.REQUIRED), "Must be a required binding if bound to a code instead of a Coding/CodeableConcept");
     rule(errors, IssueType.STRUCTURE, "Binding @ "+path, Utilities.noString(cd.getDefinition())  || (cd.getDefinition().charAt(0) == cd.getDefinition().toUpperCase().charAt(0)), "Definition cannot start with a lowercase letter");
     if (cd.getBinding() == BindingMethod.CodeList) {
       if (path.toLowerCase().endsWith("status")) {
         if (rule(errors, IssueType.STRUCTURE, path, definitions.getStatusCodes().containsKey(path), "Status element not registered in status-codes.xml")) {
-          for (DefinedCode c : cd.getAllCodes()) {
+          for (DefinedCode c : ac) {
             boolean ok = false;
             for (String s : definitions.getStatusCodes().get(path)) {
               String[] parts = s.split("\\,");
@@ -628,7 +784,7 @@ public class ResourceValidator extends BaseValidator {
         }
       }
       StringBuilder b = new StringBuilder();
-      for (DefinedCode c : cd.getAllCodes()) {
+      for (DefinedCode c : ac) {
         b.append(" | ").append(c.getCode());
       }
       if (sd.equals("*")) {
@@ -639,12 +795,13 @@ public class ResourceValidator extends BaseValidator {
       if (sd.contains("|")) {
         String esd = b.substring(3);
         rule(errors, IssueType.STRUCTURE, path, sd.startsWith(esd) || (sd.endsWith("+") && b.substring(3).startsWith(sd.substring(0, sd.length()-1)) ), "The short description \""+sd+"\" does not match the expected (\""+b.substring(3)+"\")");
-      } else
-        rule(errors, IssueType.STRUCTURE, path, cd.getStrength() != BindingStrength.REQUIRED || cd.getAllCodes().size() > 20 || cd.getAllCodes().size() == 1 || !hasGoodCode(cd.getAllCodes()) || isExemptFromCodeList(path), "The short description of an element with a code list should have the format code | code | etc");
+      } else {
+        rule(errors, IssueType.STRUCTURE, path, cd.getStrength() != BindingStrength.REQUIRED || ac.size() > 20 || ac.size() == 1 || !hasGoodCode(ac) || isExemptFromCodeList(path), "The short description of an element with a code list should have the format code | code | etc");
+      }
     }
     boolean isComplex = !e.typeCode().equals("code");
 
-    if (isComplex && cd.getValueSet() != null && cd.getValueSet().hasDefine() && cd.getStrength() != BindingStrength.EXAMPLE && 
+    if (isComplex && cd.getValueSet() != null && cd.getValueSet().hasCodeSystem() && cd.getStrength() != BindingStrength.EXAMPLE && 
           !cd.getValueSet().getUrl().contains("/v2/") && !cd.getValueSet().getUrl().contains("/v3/")) {
       hint(errors, IssueType.BUSINESSRULE, path, false, "The value "+cd.getValueSet().getUrl()+" defines codes, but is used by a Coding/CodeableConcept @ "+path+", so it should not use FHIR defined codes");
       cd.getValueSet().setUserData("vs-val-warned", true);
@@ -697,4 +854,7 @@ public class ResourceValidator extends BaseValidator {
     
   }
 
+  public void close() throws Exception {
+    speller.close();
+  }
 }

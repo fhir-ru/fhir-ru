@@ -65,7 +65,7 @@ import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.model.Constants;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.model.valuesets.IssueType;
+import org.hl7.fhir.instance.model.OperationOutcome.IssueType;
 import org.hl7.fhir.instance.test.ToolsHelper;
 import org.hl7.fhir.instance.utils.Version;
 import org.hl7.fhir.instance.validation.ValidationMessage;
@@ -89,7 +89,11 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     private long sourceDate;
     private long targetDate;
     private List<JavaClass> dependencies;
-    public Boolean doCompile;  
+    public Boolean doCompile;
+    
+    public String getName() {
+    	return sourceFile.getName();
+    }
   }
 
   private static final boolean IN_PROCESS = false;
@@ -198,7 +202,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     }
 
     for (ValueSet vs : definitions.getValuesets().values()) {
-      if (vs.getUserData("java-generated") == null && vs.hasDefine() && !vs.hasCompose() && !vs.getId().startsWith("v2-")) {
+      if (vs.getUserData("java-generated") == null && vs.hasCodeSystem() && !vs.hasCompose() && !vs.getId().startsWith("v2-")) {
         String tns = tokenize(vs.getId());
         JavaValueSetGenerator vsgen = new JavaValueSetGenerator(new FileOutputStream(Utilities.path(javaDir, "valuesets", tns+".java"))); 
         vsgen.generate(genDate, version, vs, tns);
@@ -400,6 +404,10 @@ public boolean doesCompile() {
     List<String> options = new ArrayList<String>();
     options.add("-encoding");
     options.add("UTF-8");
+    options.add("-source");
+    options.add("1.6");
+    options.add("-target");
+    options.add("1.6");
     StringBuilder path= new StringBuilder();
     for (String n : paths)
       path.append(File.pathSeparator+n);
@@ -434,13 +442,14 @@ public boolean doesCompile() {
     AddJarToJar(jar, importsDir+sl+"xpp3-1.1.4c.jar", names);
     AddJarToJar(jar, importsDir+sl+"gson-2.3.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-codec-1.9.jar", names);
-    AddJarToJar(jar, importsDir+sl+"Saxon-B-9.0.jar", names);
+//    AddJarToJar(jar, importsDir+sl+"Saxon-B-9.0.jar", names);
+//    AddJarToJar(jar, importsDir+sl+"saxon-dom-8.7.jar", names);
+    AddJarToJar(jar, importsDir+sl+"Saxon-HE-9.5.1-5.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-lang3-3.3.2.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-logging-1.1.1.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-logging-api-1.1.jar", names);    
     AddJarToJar(jar, importsDir+sl+"httpclient-4.2.3.jar", names);
     AddJarToJar(jar, importsDir+sl+"httpcore-4.2.2.jar", names);
-
     
     // by adding source first, we add all the newly built classes, and these are not updated when the older stuff is included
     AddToJar(jar, new File(rootDir+"implementations"+sl+"java"+sl+"org.hl7.fhir.instance"+sl+"src"), (rootDir+"implementations"+sl+"java"+sl+"org.hl7.fhir.instance"+sl+"src"+sl).length(), names);
@@ -463,7 +472,7 @@ public boolean doesCompile() {
     AddJarToJar(jar, importsDir+sl+"gson-2.3.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-codec-1.9.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-io-1.2.jar", names);
-    AddJarToJar(jar, importsDir+sl+"Saxon-B-9.0.jar", names);
+    AddJarToJar(jar, importsDir+sl+"Saxon-HE-9.5.1-5.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-lang3-3.3.2.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-logging-1.1.1.jar", names);
     AddJarToJar(jar, importsDir+sl+"commons-logging-api-1.1.jar", names);    
@@ -525,13 +534,13 @@ public boolean doesCompile() {
   }
 
   private Boolean checkNeedsCompile(List<JavaClass> dependencies) {
-    for (JavaClass jc : dependencies) {
-      if (jc.doCompile == null)
-        jc.doCompile = checkNeedsCompile(jc.dependencies);
-      if (jc.doCompile)
-        return true;
-    }
-    return false;
+//    for (JavaClass jc : dependencies) {
+//      if (jc.doCompile == null)
+//        jc.doCompile = checkNeedsCompile(jc.dependencies);
+//      if (jc.doCompile)
+//        return true;
+//    }
+    return true;
   }
 
   private List<JavaClass> determineDependencies(JavaClass jc, Map<String, JavaClass> classes) throws IOException {
@@ -574,7 +583,7 @@ public boolean doesCompile() {
           }
         }
         if (!found)
-          throw new Error("unable to find import "+imp);
+          throw new Error("unable to find import for class " + jc.getName() + ": " +imp);
       }
         
     }
@@ -755,6 +764,11 @@ public void loadAndSave(FolderManager folders, String sourceFile, String destFil
       ProcessBuilder builder = new ProcessBuilder(command);
       builder.directory(new File(folders.dstDir));
       final Process process = builder.start();
+      BufferedReader stdError = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+      String s;
+      while ((s = stdError.readLine()) != null) {
+        System.err.println(s);
+      }    
       process.waitFor();
       String result = TextFile.fileToString(err);
       if (!"ok".equals(result))
@@ -851,8 +865,13 @@ public void loadAndSave(FolderManager folders, String sourceFile, String destFil
   public void test(FolderManager folders, Collection<String> names) throws Exception {
     if (IN_PROCESS) {
       ToolsHelper t = new ToolsHelper();
-      t.testRoundTrip(folders.dstDir, folders.tmpDir, names);
+      try {
+        t.testRoundTrip(folders.dstDir, folders.tmpDir, names);
+      } catch (Throwable e) {
+        throw new Exception(e);
+      }
     } else {
+      System.out.println("Roundtrip: "+names);
       StringBuilder b = new StringBuilder();
       b.append(folders.dstDir);
       b.append("\r\n");
@@ -875,19 +894,25 @@ public void loadAndSave(FolderManager folders, String sourceFile, String destFil
       command.add("org.hl7.fhir.tools.jar");
       command.add("test");
       command.add(ctrl);
+      boolean done = false;
+      int i = 0;
+      do {
+        ProcessBuilder builder = new ProcessBuilder(command);
+        builder.directory(new File(folders.dstDir));
+        final Process process = builder.start();
+        BufferedReader stdError = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+        String s;
+        while ((s = stdError.readLine()) != null) {
+          System.err.println(s);
+        }    
+        i++;
+        process.waitFor();
+        if (file.exists())
+          done = true;
+        else if (i == 3)
+          throw new Exception("Java Round trip execution failed without generating any response (tried 3 times)");
+      } while (!done);
 
-      ProcessBuilder builder = new ProcessBuilder(command);
-      builder.directory(new File(folders.dstDir));
-      final Process process = builder.start();
-      BufferedReader stdError = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-      String s;
-      while ((s = stdError.readLine()) != null) {
-        System.err.println(s);
-      }    
-      process.waitFor();
-      if (!file.exists())
-        throw new Exception("Java Round trip execution failed without generating any response");
-      
       String result = TextFile.fileToString(err);
       if (!"ok".equals(result))
         throw new Exception(result);

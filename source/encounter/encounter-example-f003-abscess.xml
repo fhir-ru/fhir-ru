@@ -15,6 +15,13 @@
             <display value="Patient-initiated encounter"/>
         </coding>
     </type>
+    <priority>
+        <coding>
+            <system value="http://snomed.info/sct"/>
+            <code value="103391001"/>
+            <display value="Non-urgent ear, nose and throat admission"/>
+        </coding>
+    </priority>
     <patient>
         <reference value="Patient/f001"/>
         <display value="P. van de Heuvel"/>
@@ -27,24 +34,20 @@
     </participant>
     <length>
         <value value="90"/>
-        <units value="min" />
+        <unit value="min" />
         <system value="http://unitsofmeasure.org" />
         <code value="min" />
     </length>
     <reason>
+		<extension url="http://hl7.org/fhir/StructureDefinition/encounter-primaryDiagnosis">
+			<valuePositiveInt value="1"/>
+		</extension>
         <coding>
             <system value="http://snomed.info/sct"/>
             <code value="18099001"/>
             <display value="Retropharyngeal abscess"/>
         </coding>
     </reason>
-    <priority>
-        <coding>
-            <system value="http://snomed.info/sct"/>
-            <code value="103391001"/>
-            <display value="Non-urgent ear, nose and throat admission"/>
-        </coding>
-    </priority>
     <hospitalization>
         <preAdmissionIdentifier>
             <use value="official"/>
@@ -77,7 +80,6 @@
                 <display value="Discharge to home"/>
             </coding>
         </dischargeDisposition>
-        <reAdmission value="false"/>
     </hospitalization>
     <serviceProvider>
         <reference value="Organization/f001"/>

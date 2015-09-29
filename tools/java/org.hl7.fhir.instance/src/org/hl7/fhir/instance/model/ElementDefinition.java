@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -48,7 +48,7 @@ public class ElementDefinition extends Type implements ICompositeType {
 
     public enum PropertyRepresentation {
         /**
-         * In XML, this property is represented as an attribute not an element
+         * In XML, this property is represented as an attribute not an element.
          */
         XMLATTR, 
         /**
@@ -76,13 +76,13 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
         public String getDefinition() {
           switch (this) {
-            case XMLATTR: return "In XML, this property is represented as an attribute not an element";
+            case XMLATTR: return "In XML, this property is represented as an attribute not an element.";
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case XMLATTR: return "Xml Attr";
+            case XMLATTR: return "XML Attribute";
             default: return "?";
           }
         }
@@ -106,15 +106,15 @@ public class ElementDefinition extends Type implements ICompositeType {
 
     public enum SlicingRules {
         /**
-         * No additional content is allowed other than that described by the slices in this profile
+         * No additional content is allowed other than that described by the slices in this profile.
          */
         CLOSED, 
         /**
-         * Additional content is allowed anywhere in the list
+         * Additional content is allowed anywhere in the list.
          */
         OPEN, 
         /**
-         * Additional content is allowed, but only at the end of the list. Note that using this requires that the slices be ordered, which makes it hard to share uses. This should only be done where absolutely required
+         * Additional content is allowed, but only at the end of the list. Note that using this requires that the slices be ordered, which makes it hard to share uses. This should only be done where absolutely required.
          */
         OPENATEND, 
         /**
@@ -150,9 +150,9 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
         public String getDefinition() {
           switch (this) {
-            case CLOSED: return "No additional content is allowed other than that described by the slices in this profile";
-            case OPEN: return "Additional content is allowed anywhere in the list";
-            case OPENATEND: return "Additional content is allowed, but only at the end of the list. Note that using this requires that the slices be ordered, which makes it hard to share uses. This should only be done where absolutely required";
+            case CLOSED: return "No additional content is allowed other than that described by the slices in this profile.";
+            case OPEN: return "Additional content is allowed anywhere in the list.";
+            case OPENATEND: return "Additional content is allowed, but only at the end of the list. Note that using this requires that the slices be ordered, which makes it hard to share uses. This should only be done where absolutely required.";
             default: return "?";
           }
         }
@@ -160,7 +160,7 @@ public class ElementDefinition extends Type implements ICompositeType {
           switch (this) {
             case CLOSED: return "Closed";
             case OPEN: return "Open";
-            case OPENATEND: return "Open At End";
+            case OPENATEND: return "Open at End";
             default: return "?";
           }
         }
@@ -192,15 +192,15 @@ public class ElementDefinition extends Type implements ICompositeType {
 
     public enum AggregationMode {
         /**
-         * The reference is a local reference to a contained resource
+         * The reference is a local reference to a contained resource.
          */
         CONTAINED, 
         /**
-         * The reference to a resource that has to be resolved externally to the resource that includes the reference
+         * The reference to a resource that has to be resolved externally to the resource that includes the reference.
          */
         REFERENCED, 
         /**
-         * The resource the reference points to will be found in the same bundle as the resource that includes the reference
+         * The resource the reference points to will be found in the same bundle as the resource that includes the reference.
          */
         BUNDLED, 
         /**
@@ -236,9 +236,9 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
         public String getDefinition() {
           switch (this) {
-            case CONTAINED: return "The reference is a local reference to a contained resource";
-            case REFERENCED: return "The reference to a resource that has to be resolved externally to the resource that includes the reference";
-            case BUNDLED: return "The resource the reference points to will be found in the same bundle as the resource that includes the reference";
+            case CONTAINED: return "The reference is a local reference to a contained resource.";
+            case REFERENCED: return "The reference to a resource that has to be resolved externally to the resource that includes the reference.";
+            case BUNDLED: return "The resource the reference points to will be found in the same bundle as the resource that includes the reference.";
             default: return "?";
           }
         }
@@ -278,7 +278,7 @@ public class ElementDefinition extends Type implements ICompositeType {
 
     public enum ConstraintSeverity {
         /**
-         * If the constraint is violated, the resource is not conformant
+         * If the constraint is violated, the resource is not conformant.
          */
         ERROR, 
         /**
@@ -314,7 +314,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
         public String getDefinition() {
           switch (this) {
-            case ERROR: return "If the constraint is violated, the resource is not conformant";
+            case ERROR: return "If the constraint is violated, the resource is not conformant.";
             case WARNING: return "If the constraint is violated, the resource is conformant, but it is not necessarily following best practice.";
             default: return "?";
           }
@@ -353,28 +353,28 @@ public class ElementDefinition extends Type implements ICompositeType {
         /**
          * Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices.
          */
-        @Child(name = "discriminator", type = {StringType.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
+        @Child(name = "discriminator", type = {StringType.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
         @Description(shortDefinition="Element values that used to distinguish the slices", formalDefinition="Designates which child elements are used to discriminate between the slices when processing an instance. If one or more discriminators are provided, the value of the child elements in the instance data SHALL completely distinguish which slice the element in the resource matches based on the allowed values for those elements in each of the slices." )
         protected List<StringType> discriminator;
 
         /**
          * A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated.
          */
-        @Child(name = "description", type = {StringType.class}, order=2, min=0, max=1)
+        @Child(name = "description", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Text description of how slicing works (or not)", formalDefinition="A human-readable text description of how the slicing works. If there is no discriminator, this is required to be present to provide whatever information is possible about how the slices can be differentiated." )
         protected StringType description;
 
         /**
          * If the matching elements have to occur in the same order as defined in the profile.
          */
-        @Child(name = "ordered", type = {BooleanType.class}, order=3, min=0, max=1)
+        @Child(name = "ordered", type = {BooleanType.class}, order=3, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="If elements must be in same order as slices", formalDefinition="If the matching elements have to occur in the same order as defined in the profile." )
         protected BooleanType ordered;
 
         /**
          * Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end.
          */
-        @Child(name = "rules", type = {CodeType.class}, order=4, min=1, max=1)
+        @Child(name = "rules", type = {CodeType.class}, order=4, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="closed | open | openAtEnd", formalDefinition="Whether additional slices are allowed or not. When the slices are ordered, profile authors can also say that additional slices are only allowed at the end." )
         protected Enumeration<SlicingRules> rules;
 
@@ -640,26 +640,248 @@ public class ElementDefinition extends Type implements ICompositeType {
   }
 
     @Block()
+    public static class ElementDefinitionBaseComponent extends Element implements IBaseDatatypeElement {
+        /**
+         * The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [[[StructureDefinition]]] without a StructureDefinition.base.
+         */
+        @Child(name = "path", type = {StringType.class}, order=1, min=1, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Path that identifies the base element", formalDefinition="The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [[[StructureDefinition]]] without a StructureDefinition.base." )
+        protected StringType path;
+
+        /**
+         * Minimum cardinality of the base element identified by the path.
+         */
+        @Child(name = "min", type = {IntegerType.class}, order=2, min=1, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Min cardinality of the base element", formalDefinition="Minimum cardinality of the base element identified by the path." )
+        protected IntegerType min;
+
+        /**
+         * Maximum cardinality of the base element identified by the path.
+         */
+        @Child(name = "max", type = {StringType.class}, order=3, min=1, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Max cardinality of the base element", formalDefinition="Maximum cardinality of the base element identified by the path." )
+        protected StringType max;
+
+        private static final long serialVersionUID = 232204455L;
+
+    /*
+     * Constructor
+     */
+      public ElementDefinitionBaseComponent() {
+        super();
+      }
+
+    /*
+     * Constructor
+     */
+      public ElementDefinitionBaseComponent(StringType path, IntegerType min, StringType max) {
+        super();
+        this.path = path;
+        this.min = min;
+        this.max = max;
+      }
+
+        /**
+         * @return {@link #path} (The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [[[StructureDefinition]]] without a StructureDefinition.base.). This is the underlying object with id, value and extensions. The accessor "getPath" gives direct access to the value
+         */
+        public StringType getPathElement() { 
+          if (this.path == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create ElementDefinitionBaseComponent.path");
+            else if (Configuration.doAutoCreate())
+              this.path = new StringType(); // bb
+          return this.path;
+        }
+
+        public boolean hasPathElement() { 
+          return this.path != null && !this.path.isEmpty();
+        }
+
+        public boolean hasPath() { 
+          return this.path != null && !this.path.isEmpty();
+        }
+
+        /**
+         * @param value {@link #path} (The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [[[StructureDefinition]]] without a StructureDefinition.base.). This is the underlying object with id, value and extensions. The accessor "getPath" gives direct access to the value
+         */
+        public ElementDefinitionBaseComponent setPathElement(StringType value) { 
+          this.path = value;
+          return this;
+        }
+
+        /**
+         * @return The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [[[StructureDefinition]]] without a StructureDefinition.base.
+         */
+        public String getPath() { 
+          return this.path == null ? null : this.path.getValue();
+        }
+
+        /**
+         * @param value The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [[[StructureDefinition]]] without a StructureDefinition.base.
+         */
+        public ElementDefinitionBaseComponent setPath(String value) { 
+            if (this.path == null)
+              this.path = new StringType();
+            this.path.setValue(value);
+          return this;
+        }
+
+        /**
+         * @return {@link #min} (Minimum cardinality of the base element identified by the path.). This is the underlying object with id, value and extensions. The accessor "getMin" gives direct access to the value
+         */
+        public IntegerType getMinElement() { 
+          if (this.min == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create ElementDefinitionBaseComponent.min");
+            else if (Configuration.doAutoCreate())
+              this.min = new IntegerType(); // bb
+          return this.min;
+        }
+
+        public boolean hasMinElement() { 
+          return this.min != null && !this.min.isEmpty();
+        }
+
+        public boolean hasMin() { 
+          return this.min != null && !this.min.isEmpty();
+        }
+
+        /**
+         * @param value {@link #min} (Minimum cardinality of the base element identified by the path.). This is the underlying object with id, value and extensions. The accessor "getMin" gives direct access to the value
+         */
+        public ElementDefinitionBaseComponent setMinElement(IntegerType value) { 
+          this.min = value;
+          return this;
+        }
+
+        /**
+         * @return Minimum cardinality of the base element identified by the path.
+         */
+        public int getMin() { 
+          return this.min == null || this.min.isEmpty() ? 0 : this.min.getValue();
+        }
+
+        /**
+         * @param value Minimum cardinality of the base element identified by the path.
+         */
+        public ElementDefinitionBaseComponent setMin(int value) { 
+            if (this.min == null)
+              this.min = new IntegerType();
+            this.min.setValue(value);
+          return this;
+        }
+
+        /**
+         * @return {@link #max} (Maximum cardinality of the base element identified by the path.). This is the underlying object with id, value and extensions. The accessor "getMax" gives direct access to the value
+         */
+        public StringType getMaxElement() { 
+          if (this.max == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create ElementDefinitionBaseComponent.max");
+            else if (Configuration.doAutoCreate())
+              this.max = new StringType(); // bb
+          return this.max;
+        }
+
+        public boolean hasMaxElement() { 
+          return this.max != null && !this.max.isEmpty();
+        }
+
+        public boolean hasMax() { 
+          return this.max != null && !this.max.isEmpty();
+        }
+
+        /**
+         * @param value {@link #max} (Maximum cardinality of the base element identified by the path.). This is the underlying object with id, value and extensions. The accessor "getMax" gives direct access to the value
+         */
+        public ElementDefinitionBaseComponent setMaxElement(StringType value) { 
+          this.max = value;
+          return this;
+        }
+
+        /**
+         * @return Maximum cardinality of the base element identified by the path.
+         */
+        public String getMax() { 
+          return this.max == null ? null : this.max.getValue();
+        }
+
+        /**
+         * @param value Maximum cardinality of the base element identified by the path.
+         */
+        public ElementDefinitionBaseComponent setMax(String value) { 
+            if (this.max == null)
+              this.max = new StringType();
+            this.max.setValue(value);
+          return this;
+        }
+
+        protected void listChildren(List<Property> childrenList) {
+          super.listChildren(childrenList);
+          childrenList.add(new Property("path", "string", "The Path that identifies the base element - this matches the ElementDefinition.path for that element. Across FHIR, there is only one base definition of any element - that is, an element definition on a [[[StructureDefinition]]] without a StructureDefinition.base.", 0, java.lang.Integer.MAX_VALUE, path));
+          childrenList.add(new Property("min", "integer", "Minimum cardinality of the base element identified by the path.", 0, java.lang.Integer.MAX_VALUE, min));
+          childrenList.add(new Property("max", "string", "Maximum cardinality of the base element identified by the path.", 0, java.lang.Integer.MAX_VALUE, max));
+        }
+
+      public ElementDefinitionBaseComponent copy() {
+        ElementDefinitionBaseComponent dst = new ElementDefinitionBaseComponent();
+        copyValues(dst);
+        dst.path = path == null ? null : path.copy();
+        dst.min = min == null ? null : min.copy();
+        dst.max = max == null ? null : max.copy();
+        return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof ElementDefinitionBaseComponent))
+          return false;
+        ElementDefinitionBaseComponent o = (ElementDefinitionBaseComponent) other;
+        return compareDeep(path, o.path, true) && compareDeep(min, o.min, true) && compareDeep(max, o.max, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof ElementDefinitionBaseComponent))
+          return false;
+        ElementDefinitionBaseComponent o = (ElementDefinitionBaseComponent) other;
+        return compareValues(path, o.path, true) && compareValues(min, o.min, true) && compareValues(max, o.max, true)
+          ;
+      }
+
+      public boolean isEmpty() {
+        return super.isEmpty() && (path == null || path.isEmpty()) && (min == null || min.isEmpty())
+           && (max == null || max.isEmpty());
+      }
+
+  }
+
+    @Block()
     public static class TypeRefComponent extends Element implements IBaseDatatypeElement {
         /**
          * Name of Data type or Resource that is a(or the) type used for this element.
          */
-        @Child(name = "code", type = {CodeType.class}, order=1, min=1, max=1)
+        @Child(name = "code", type = {CodeType.class}, order=1, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Name of Data type or Resource", formalDefinition="Name of Data type or Resource that is a(or the) type used for this element." )
         protected CodeType code;
 
         /**
-         * Identifies a profile structure that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them.
+         * Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
          */
-        @Child(name = "profile", type = {UriType.class}, order=2, min=0, max=Child.MAX_UNLIMITED)
-        @Description(shortDefinition="Profile (StructureDefinition) to apply", formalDefinition="Identifies a profile structure that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them." )
+        @Child(name = "profile", type = {UriType.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+        @Description(shortDefinition="Profile (StructureDefinition) to apply (or IG)", formalDefinition="Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide." )
         protected List<UriType> profile;
 
         /**
-         * If the type is a reference to another resource, how the resource is or can be aggreated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.
+         * If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.
          */
-        @Child(name = "aggregation", type = {CodeType.class}, order=3, min=0, max=Child.MAX_UNLIMITED)
-        @Description(shortDefinition="contained | referenced | bundled - how aggregated", formalDefinition="If the type is a reference to another resource, how the resource is or can be aggreated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle." )
+        @Child(name = "aggregation", type = {CodeType.class}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+        @Description(shortDefinition="contained | referenced | bundled - how aggregated", formalDefinition="If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle." )
         protected List<Enumeration<AggregationMode>> aggregation;
 
         private static final long serialVersionUID = -988693373L;
@@ -725,7 +947,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @return {@link #profile} (Identifies a profile structure that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them.)
+         * @return {@link #profile} (Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.)
          */
         public List<UriType> getProfile() { 
           if (this.profile == null)
@@ -743,7 +965,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @return {@link #profile} (Identifies a profile structure that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them.)
+         * @return {@link #profile} (Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.)
          */
     // syntactic sugar
         public UriType addProfileElement() {//2 
@@ -755,7 +977,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @param value {@link #profile} (Identifies a profile structure that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them.)
+         * @param value {@link #profile} (Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.)
          */
         public TypeRefComponent addProfile(String value) { //1
           UriType t = new UriType();
@@ -767,7 +989,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @param value {@link #profile} (Identifies a profile structure that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them.)
+         * @param value {@link #profile} (Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.)
          */
         public boolean hasProfile(String value) { 
           if (this.profile == null)
@@ -779,7 +1001,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @return {@link #aggregation} (If the type is a reference to another resource, how the resource is or can be aggreated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.)
+         * @return {@link #aggregation} (If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.)
          */
         public List<Enumeration<AggregationMode>> getAggregation() { 
           if (this.aggregation == null)
@@ -797,7 +1019,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @return {@link #aggregation} (If the type is a reference to another resource, how the resource is or can be aggreated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.)
+         * @return {@link #aggregation} (If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.)
          */
     // syntactic sugar
         public Enumeration<AggregationMode> addAggregationElement() {//2 
@@ -809,7 +1031,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @param value {@link #aggregation} (If the type is a reference to another resource, how the resource is or can be aggreated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.)
+         * @param value {@link #aggregation} (If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.)
          */
         public TypeRefComponent addAggregation(AggregationMode value) { //1
           Enumeration<AggregationMode> t = new Enumeration<AggregationMode>(new AggregationModeEnumFactory());
@@ -821,7 +1043,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @param value {@link #aggregation} (If the type is a reference to another resource, how the resource is or can be aggreated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.)
+         * @param value {@link #aggregation} (If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.)
          */
         public boolean hasAggregation(AggregationMode value) { 
           if (this.aggregation == null)
@@ -835,8 +1057,8 @@ public class ElementDefinition extends Type implements ICompositeType {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("code", "code", "Name of Data type or Resource that is a(or the) type used for this element.", 0, java.lang.Integer.MAX_VALUE, code));
-          childrenList.add(new Property("profile", "uri", "Identifies a profile structure that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them.", 0, java.lang.Integer.MAX_VALUE, profile));
-          childrenList.add(new Property("aggregation", "code", "If the type is a reference to another resource, how the resource is or can be aggreated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.", 0, java.lang.Integer.MAX_VALUE, aggregation));
+          childrenList.add(new Property("profile", "uri", "Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.", 0, java.lang.Integer.MAX_VALUE, profile));
+          childrenList.add(new Property("aggregation", "code", "If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.", 0, java.lang.Integer.MAX_VALUE, aggregation));
         }
 
       public TypeRefComponent copy() {
@@ -890,35 +1112,35 @@ public class ElementDefinition extends Type implements ICompositeType {
         /**
          * Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality.
          */
-        @Child(name = "key", type = {IdType.class}, order=1, min=1, max=1)
+        @Child(name = "key", type = {IdType.class}, order=1, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Target of 'condition' reference above", formalDefinition="Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality." )
         protected IdType key;
 
         /**
          * Description of why this constraint is necessary or appropriate.
          */
-        @Child(name = "requirements", type = {StringType.class}, order=2, min=0, max=1)
+        @Child(name = "requirements", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Why this constraint necessary or appropriate", formalDefinition="Description of why this constraint is necessary or appropriate." )
         protected StringType requirements;
 
         /**
          * Identifies the impact constraint violation has on the conformance of the instance.
          */
-        @Child(name = "severity", type = {CodeType.class}, order=3, min=1, max=1)
+        @Child(name = "severity", type = {CodeType.class}, order=3, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="error | warning", formalDefinition="Identifies the impact constraint violation has on the conformance of the instance." )
         protected Enumeration<ConstraintSeverity> severity;
 
         /**
          * Text that can be used to describe the constraint in messages identifying that the constraint has been violated.
          */
-        @Child(name = "human", type = {StringType.class}, order=4, min=1, max=1)
+        @Child(name = "human", type = {StringType.class}, order=4, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Human description of constraint", formalDefinition="Text that can be used to describe the constraint in messages identifying that the constraint has been violated." )
         protected StringType human;
 
         /**
          * An XPath expression of constraint that can be executed to see if this constraint is met.
          */
-        @Child(name = "xpath", type = {StringType.class}, order=5, min=1, max=1)
+        @Child(name = "xpath", type = {StringType.class}, order=5, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="XPath expression of constraint", formalDefinition="An XPath expression of constraint that can be executed to see if this constraint is met." )
         protected StringType xpath;
 
@@ -1224,34 +1446,27 @@ public class ElementDefinition extends Type implements ICompositeType {
     @Block()
     public static class ElementDefinitionBindingComponent extends Element implements IBaseDatatypeElement {
         /**
-         * A descriptive name for this - can be useful for generating implementation artifacts.
-         */
-        @Child(name = "name", type = {StringType.class}, order=1, min=0, max=1)
-        @Description(shortDefinition="Descriptive Name", formalDefinition="A descriptive name for this - can be useful for generating implementation artifacts." )
-        protected StringType name;
-
-        /**
          * Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.
          */
-        @Child(name = "strength", type = {CodeType.class}, order=2, min=1, max=1)
+        @Child(name = "strength", type = {CodeType.class}, order=1, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="required | extensible | preferred | example", formalDefinition="Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances." )
         protected Enumeration<BindingStrength> strength;
 
         /**
          * Describes the intended use of this particular set of codes.
          */
-        @Child(name = "description", type = {StringType.class}, order=3, min=0, max=1)
+        @Child(name = "description", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Human explanation of the value set", formalDefinition="Describes the intended use of this particular set of codes." )
         protected StringType description;
 
         /**
          * Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.
          */
-        @Child(name = "valueSet", type = {UriType.class, ValueSet.class}, order=4, min=0, max=1)
+        @Child(name = "valueSet", type = {UriType.class, ValueSet.class}, order=3, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Source of value set", formalDefinition="Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used." )
         protected Type valueSet;
 
-        private static final long serialVersionUID = 325485202L;
+        private static final long serialVersionUID = 1355538460L;
 
     /*
      * Constructor
@@ -1267,55 +1482,6 @@ public class ElementDefinition extends Type implements ICompositeType {
         super();
         this.strength = strength;
       }
-
-        /**
-         * @return {@link #name} (A descriptive name for this - can be useful for generating implementation artifacts.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
-         */
-        public StringType getNameElement() { 
-          if (this.name == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create ElementDefinitionBindingComponent.name");
-            else if (Configuration.doAutoCreate())
-              this.name = new StringType(); // bb
-          return this.name;
-        }
-
-        public boolean hasNameElement() { 
-          return this.name != null && !this.name.isEmpty();
-        }
-
-        public boolean hasName() { 
-          return this.name != null && !this.name.isEmpty();
-        }
-
-        /**
-         * @param value {@link #name} (A descriptive name for this - can be useful for generating implementation artifacts.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
-         */
-        public ElementDefinitionBindingComponent setNameElement(StringType value) { 
-          this.name = value;
-          return this;
-        }
-
-        /**
-         * @return A descriptive name for this - can be useful for generating implementation artifacts.
-         */
-        public String getName() { 
-          return this.name == null ? null : this.name.getValue();
-        }
-
-        /**
-         * @param value A descriptive name for this - can be useful for generating implementation artifacts.
-         */
-        public ElementDefinitionBindingComponent setName(String value) { 
-          if (Utilities.noString(value))
-            this.name = null;
-          else {
-            if (this.name == null)
-              this.name = new StringType();
-            this.name.setValue(value);
-          }
-          return this;
-        }
 
         /**
          * @return {@link #strength} (Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.). This is the underlying object with id, value and extensions. The accessor "getStrength" gives direct access to the value
@@ -1458,7 +1624,6 @@ public class ElementDefinition extends Type implements ICompositeType {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("name", "string", "A descriptive name for this - can be useful for generating implementation artifacts.", 0, java.lang.Integer.MAX_VALUE, name));
           childrenList.add(new Property("strength", "code", "Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.", 0, java.lang.Integer.MAX_VALUE, strength));
           childrenList.add(new Property("description", "string", "Describes the intended use of this particular set of codes.", 0, java.lang.Integer.MAX_VALUE, description));
           childrenList.add(new Property("valueSet[x]", "uri|Reference(ValueSet)", "Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.", 0, java.lang.Integer.MAX_VALUE, valueSet));
@@ -1467,7 +1632,6 @@ public class ElementDefinition extends Type implements ICompositeType {
       public ElementDefinitionBindingComponent copy() {
         ElementDefinitionBindingComponent dst = new ElementDefinitionBindingComponent();
         copyValues(dst);
-        dst.name = name == null ? null : name.copy();
         dst.strength = strength == null ? null : strength.copy();
         dst.description = description == null ? null : description.copy();
         dst.valueSet = valueSet == null ? null : valueSet.copy();
@@ -1481,7 +1645,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         if (!(other instanceof ElementDefinitionBindingComponent))
           return false;
         ElementDefinitionBindingComponent o = (ElementDefinitionBindingComponent) other;
-        return compareDeep(name, o.name, true) && compareDeep(strength, o.strength, true) && compareDeep(description, o.description, true)
+        return compareDeep(strength, o.strength, true) && compareDeep(description, o.description, true)
            && compareDeep(valueSet, o.valueSet, true);
       }
 
@@ -1492,14 +1656,13 @@ public class ElementDefinition extends Type implements ICompositeType {
         if (!(other instanceof ElementDefinitionBindingComponent))
           return false;
         ElementDefinitionBindingComponent o = (ElementDefinitionBindingComponent) other;
-        return compareValues(name, o.name, true) && compareValues(strength, o.strength, true) && compareValues(description, o.description, true)
+        return compareValues(strength, o.strength, true) && compareValues(description, o.description, true)
           ;
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (name == null || name.isEmpty()) && (strength == null || strength.isEmpty())
-           && (description == null || description.isEmpty()) && (valueSet == null || valueSet.isEmpty())
-          ;
+        return super.isEmpty() && (strength == null || strength.isEmpty()) && (description == null || description.isEmpty())
+           && (valueSet == null || valueSet.isEmpty());
       }
 
   }
@@ -1509,21 +1672,21 @@ public class ElementDefinition extends Type implements ICompositeType {
         /**
          * An internal reference to the definition of a mapping.
          */
-        @Child(name = "identity", type = {IdType.class}, order=1, min=1, max=1)
+        @Child(name = "identity", type = {IdType.class}, order=1, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Reference to mapping declaration", formalDefinition="An internal reference to the definition of a mapping." )
         protected IdType identity;
 
         /**
          * Identifies the computable language in which mapping.map is expressed.
          */
-        @Child(name = "language", type = {CodeType.class}, order=2, min=0, max=1)
+        @Child(name = "language", type = {CodeType.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Computable language of mapping", formalDefinition="Identifies the computable language in which mapping.map is expressed." )
         protected CodeType language;
 
         /**
          * Expresses what part of the target specification corresponds to this element.
          */
-        @Child(name = "map", type = {StringType.class}, order=3, min=1, max=1)
+        @Child(name = "map", type = {StringType.class}, order=3, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Details of the mapping", formalDefinition="Expresses what part of the target specification corresponds to this element." )
         protected StringType map;
 
@@ -1732,200 +1895,221 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * The path identifies the element and is expressed as a "."-separated list of ancestor elements, beginning with the name of the resource or extension.
      */
-    @Child(name = "path", type = {StringType.class}, order=0, min=1, max=1)
-    @Description(shortDefinition="The path of the element (see the Detailed Descriptions)", formalDefinition="The path identifies the element and is expressed as a '.'-separated list of ancestor elements, beginning with the name of the resource or extension." )
+    @Child(name = "path", type = {StringType.class}, order=0, min=1, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="The path of the element (see the Detailed Descriptions)", formalDefinition="The path identifies the element and is expressed as a \".\"-separated list of ancestor elements, beginning with the name of the resource or extension." )
     protected StringType path;
 
     /**
      * Codes that define how this element is represented in instances, when the deviation varies from the normal case.
      */
-    @Child(name = "representation", type = {CodeType.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "representation", type = {CodeType.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="How this element is represented in instances", formalDefinition="Codes that define how this element is represented in instances, when the deviation varies from the normal case." )
     protected List<Enumeration<PropertyRepresentation>> representation;
 
     /**
      * The name of this element definition (to refer to it from other element definitions using ElementDefinition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.
      */
-    @Child(name = "name", type = {StringType.class}, order=2, min=0, max=1)
+    @Child(name = "name", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Name for this particular element definition (reference target)", formalDefinition="The name of this element definition (to refer to it from other element definitions using ElementDefinition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element." )
     protected StringType name;
 
     /**
      * The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.
      */
-    @Child(name = "label", type = {StringType.class}, order=3, min=0, max=1)
+    @Child(name = "label", type = {StringType.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Name for element to display with or prompt for element", formalDefinition="The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form." )
     protected StringType label;
 
     /**
      * A code that provides the meaning for the element according to a particular terminology.
      */
-    @Child(name = "code", type = {Coding.class}, order=4, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "code", type = {Coding.class}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Defining code", formalDefinition="A code that provides the meaning for the element according to a particular terminology." )
     protected List<Coding> code;
 
     /**
-     * Indicates that the element is sliced into a set of alternative definitions (there are multiple definitions on a single element in the base resource). The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).
+     * Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).
      */
-    @Child(name = "slicing", type = {}, order=5, min=0, max=1)
-    @Description(shortDefinition="This element is sliced - slices follow", formalDefinition="Indicates that the element is sliced into a set of alternative definitions (there are multiple definitions on a single element in the base resource). The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set)." )
+    @Child(name = "slicing", type = {}, order=5, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="This element is sliced - slices follow", formalDefinition="Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set)." )
     protected ElementDefinitionSlicingComponent slicing;
 
     /**
-     * A concise definition that  is shown in the generated XML format that summarizes profiles (used throughout the specification).
+     * A concise description of what this element means (e.g. for use in autogenerated summaries).
      */
-    @Child(name = "short_", type = {StringType.class}, order=6, min=0, max=1)
-    @Description(shortDefinition="Concise definition for xml presentation", formalDefinition="A concise definition that  is shown in the generated XML format that summarizes profiles (used throughout the specification)." )
+    @Child(name = "short", type = {StringType.class}, order=6, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Concise definition for xml presentation", formalDefinition="A concise description of what this element means (e.g. for use in autogenerated summaries)." )
     protected StringType short_;
 
     /**
      * Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.
      */
-    @Child(name = "definition", type = {StringType.class}, order=7, min=0, max=1)
+    @Child(name = "definition", type = {MarkdownType.class}, order=7, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Full formal definition as narrative text", formalDefinition="Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource." )
-    protected StringType definition;
+    protected MarkdownType definition;
 
     /**
      * Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.
      */
-    @Child(name = "comments", type = {StringType.class}, order=8, min=0, max=1)
+    @Child(name = "comments", type = {MarkdownType.class}, order=8, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Comments about the use of this element", formalDefinition="Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc." )
-    protected StringType comments;
+    protected MarkdownType comments;
 
     /**
      * This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.
      */
-    @Child(name = "requirements", type = {StringType.class}, order=9, min=0, max=1)
+    @Child(name = "requirements", type = {MarkdownType.class}, order=9, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Why is this needed?", formalDefinition="This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element." )
-    protected StringType requirements;
+    protected MarkdownType requirements;
 
     /**
      * Identifies additional names by which this element might also be known.
      */
-    @Child(name = "alias", type = {StringType.class}, order=10, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "alias", type = {StringType.class}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Other names", formalDefinition="Identifies additional names by which this element might also be known." )
     protected List<StringType> alias;
 
     /**
      * The minimum number of times this element SHALL appear in the instance.
      */
-    @Child(name = "min", type = {IntegerType.class}, order=11, min=0, max=1)
+    @Child(name = "min", type = {IntegerType.class}, order=11, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Minimum Cardinality", formalDefinition="The minimum number of times this element SHALL appear in the instance." )
     protected IntegerType min;
 
     /**
      * The maximum number of times this element is permitted to appear in the instance.
      */
-    @Child(name = "max", type = {StringType.class}, order=12, min=0, max=1)
+    @Child(name = "max", type = {StringType.class}, order=12, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Maximum Cardinality (a number or *)", formalDefinition="The maximum number of times this element is permitted to appear in the instance." )
     protected StringType max;
 
     /**
+     * Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.
+     */
+    @Child(name = "base", type = {}, order=13, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Base definition information for tools", formalDefinition="Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition." )
+    protected ElementDefinitionBaseComponent base;
+
+    /**
      * The data type or resource that the value of this element is permitted to be.
      */
-    @Child(name = "type", type = {}, order=13, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "type", type = {}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Data type and Profile for this element", formalDefinition="The data type or resource that the value of this element is permitted to be." )
     protected List<TypeRefComponent> type;
 
     /**
      * Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element.
      */
-    @Child(name = "nameReference", type = {StringType.class}, order=14, min=0, max=1)
+    @Child(name = "nameReference", type = {StringType.class}, order=15, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="To another element constraint (by element.name)", formalDefinition="Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element." )
     protected StringType nameReference;
 
     /**
-     * The value that should be used if there is no value stated in the instance.
+     * The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').
      */
-    @Child(name = "defaultValue", type = {}, order=15, min=0, max=1)
-    @Description(shortDefinition="Specified value it missing from instance", formalDefinition="The value that should be used if there is no value stated in the instance." )
+    @Child(name = "defaultValue", type = {}, order=16, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Specified value it missing from instance", formalDefinition="The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false')." )
     protected org.hl7.fhir.instance.model.Type defaultValue;
 
     /**
-     * The Implicit meaning that is to be understood when this element is missing.
+     * The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.
      */
-    @Child(name = "meaningWhenMissing", type = {StringType.class}, order=16, min=0, max=1)
-    @Description(shortDefinition="Implicit meaning when this element is missing", formalDefinition="The Implicit meaning that is to be understood when this element is missing." )
-    protected StringType meaningWhenMissing;
+    @Child(name = "meaningWhenMissing", type = {MarkdownType.class}, order=17, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Implicit meaning when this element is missing", formalDefinition="The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'." )
+    protected MarkdownType meaningWhenMissing;
 
     /**
-     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-signficant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
+     * Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.
      */
-    @Child(name = "fixed", type = {}, order=17, min=0, max=1)
-    @Description(shortDefinition="Value must be exactly this", formalDefinition="Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-signficant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing." )
+    @Child(name = "fixed", type = {}, order=18, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Value must be exactly this", formalDefinition="Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing." )
     protected org.hl7.fhir.instance.model.Type fixed;
 
     /**
-     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-senstive, accent-sensitive, etc.).
+     * Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).
      */
-    @Child(name = "pattern", type = {}, order=18, min=0, max=1)
-    @Description(shortDefinition="Value must have at least these property values", formalDefinition="Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-senstive, accent-sensitive, etc.)." )
+    @Child(name = "pattern", type = {}, order=19, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Value must have at least these property values", formalDefinition="Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.)." )
     protected org.hl7.fhir.instance.model.Type pattern;
 
     /**
      * A sample value for this element demonstrating the type of information that would typically be captured.
      */
-    @Child(name = "example", type = {}, order=19, min=0, max=1)
+    @Child(name = "example", type = {}, order=20, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Example value: [as defined for type]", formalDefinition="A sample value for this element demonstrating the type of information that would typically be captured." )
     protected org.hl7.fhir.instance.model.Type example;
 
     /**
+     * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    @Child(name = "minValue", type = {}, order=21, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Minimum Allowed Value (for some types)", formalDefinition="The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity." )
+    protected org.hl7.fhir.instance.model.Type minValue;
+
+    /**
+     * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
+     */
+    @Child(name = "maxValue", type = {}, order=22, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Maximum Allowed Value (for some types)", formalDefinition="The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity." )
+    protected org.hl7.fhir.instance.model.Type maxValue;
+
+    /**
      * Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.
      */
-    @Child(name = "maxLength", type = {IntegerType.class}, order=20, min=0, max=1)
+    @Child(name = "maxLength", type = {IntegerType.class}, order=23, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Max length for strings", formalDefinition="Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element." )
     protected IntegerType maxLength;
 
     /**
      * A reference to an invariant that may make additional statements about the cardinality or value in the instance.
      */
-    @Child(name = "condition", type = {IdType.class}, order=21, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "condition", type = {IdType.class}, order=24, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Reference to invariant about presence", formalDefinition="A reference to an invariant that may make additional statements about the cardinality or value in the instance." )
     protected List<IdType> condition;
 
     /**
      * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
      */
-    @Child(name = "constraint", type = {}, order=22, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "constraint", type = {}, order=25, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Condition that must evaluate to true", formalDefinition="Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance." )
     protected List<ElementDefinitionConstraintComponent> constraint;
 
     /**
-     * If true, conformant resource authors SHALL be capable of providing a value for the element and resource consumers SHALL be capable of extracting and doing something useful with the data element.  If false, the element may be ignored and not supported.
+     * If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported.
      */
-    @Child(name = "mustSupport", type = {BooleanType.class}, order=23, min=0, max=1)
-    @Description(shortDefinition="If the element must supported", formalDefinition="If true, conformant resource authors SHALL be capable of providing a value for the element and resource consumers SHALL be capable of extracting and doing something useful with the data element.  If false, the element may be ignored and not supported." )
+    @Child(name = "mustSupport", type = {BooleanType.class}, order=26, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="If the element must supported", formalDefinition="If true, implementations that produce or consume resources SHALL provide \"support\" for the element in some meaningful way.  If false, the element may be ignored and not supported." )
     protected BooleanType mustSupport;
 
     /**
      * If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system.
      */
-    @Child(name = "isModifier", type = {BooleanType.class}, order=24, min=0, max=1)
+    @Child(name = "isModifier", type = {BooleanType.class}, order=27, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="If this modifies the meaning of other elements", formalDefinition="If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system." )
     protected BooleanType isModifier;
 
     /**
      * Whether the element should be included if a client requests a search with the parameter _summary=true.
      */
-    @Child(name = "isSummary", type = {BooleanType.class}, order=25, min=0, max=1)
+    @Child(name = "isSummary", type = {BooleanType.class}, order=28, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Include when _summary = true?", formalDefinition="Whether the element should be included if a client requests a search with the parameter _summary=true." )
     protected BooleanType isSummary;
 
     /**
      * Binds to a value set if this element is coded (code, Coding, CodeableConcept).
      */
-    @Child(name = "binding", type = {}, order=26, min=0, max=1)
+    @Child(name = "binding", type = {}, order=29, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="ValueSet details if this is coded", formalDefinition="Binds to a value set if this element is coded (code, Coding, CodeableConcept)." )
     protected ElementDefinitionBindingComponent binding;
 
     /**
      * Identifies a concept from an external specification that roughly corresponds to this element.
      */
-    @Child(name = "mapping", type = {}, order=27, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "mapping", type = {}, order=30, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Map element to another set of definitions", formalDefinition="Identifies a concept from an external specification that roughly corresponds to this element." )
     protected List<ElementDefinitionMappingComponent> mapping;
 
-    private static final long serialVersionUID = 1149674414L;
+    private static final long serialVersionUID = -2084587620L;
 
   /*
    * Constructor
@@ -2180,7 +2364,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #slicing} (Indicates that the element is sliced into a set of alternative definitions (there are multiple definitions on a single element in the base resource). The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).)
+     * @return {@link #slicing} (Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).)
      */
     public ElementDefinitionSlicingComponent getSlicing() { 
       if (this.slicing == null)
@@ -2196,7 +2380,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #slicing} (Indicates that the element is sliced into a set of alternative definitions (there are multiple definitions on a single element in the base resource). The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).)
+     * @param value {@link #slicing} (Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).)
      */
     public ElementDefinition setSlicing(ElementDefinitionSlicingComponent value) { 
       this.slicing = value;
@@ -2204,7 +2388,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #short_} (A concise definition that  is shown in the generated XML format that summarizes profiles (used throughout the specification).). This is the underlying object with id, value and extensions. The accessor "getShort" gives direct access to the value
+     * @return {@link #short_} (A concise description of what this element means (e.g. for use in autogenerated summaries).). This is the underlying object with id, value and extensions. The accessor "getShort" gives direct access to the value
      */
     public StringType getShortElement() { 
       if (this.short_ == null)
@@ -2224,7 +2408,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #short_} (A concise definition that  is shown in the generated XML format that summarizes profiles (used throughout the specification).). This is the underlying object with id, value and extensions. The accessor "getShort" gives direct access to the value
+     * @param value {@link #short_} (A concise description of what this element means (e.g. for use in autogenerated summaries).). This is the underlying object with id, value and extensions. The accessor "getShort" gives direct access to the value
      */
     public ElementDefinition setShortElement(StringType value) { 
       this.short_ = value;
@@ -2232,14 +2416,14 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return A concise definition that  is shown in the generated XML format that summarizes profiles (used throughout the specification).
+     * @return A concise description of what this element means (e.g. for use in autogenerated summaries).
      */
     public String getShort() { 
       return this.short_ == null ? null : this.short_.getValue();
     }
 
     /**
-     * @param value A concise definition that  is shown in the generated XML format that summarizes profiles (used throughout the specification).
+     * @param value A concise description of what this element means (e.g. for use in autogenerated summaries).
      */
     public ElementDefinition setShort(String value) { 
       if (Utilities.noString(value))
@@ -2255,12 +2439,12 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * @return {@link #definition} (Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.). This is the underlying object with id, value and extensions. The accessor "getDefinition" gives direct access to the value
      */
-    public StringType getDefinitionElement() { 
+    public MarkdownType getDefinitionElement() { 
       if (this.definition == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.definition");
         else if (Configuration.doAutoCreate())
-          this.definition = new StringType(); // bb
+          this.definition = new MarkdownType(); // bb
       return this.definition;
     }
 
@@ -2275,7 +2459,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * @param value {@link #definition} (Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.). This is the underlying object with id, value and extensions. The accessor "getDefinition" gives direct access to the value
      */
-    public ElementDefinition setDefinitionElement(StringType value) { 
+    public ElementDefinition setDefinitionElement(MarkdownType value) { 
       this.definition = value;
       return this;
     }
@@ -2291,11 +2475,11 @@ public class ElementDefinition extends Type implements ICompositeType {
      * @param value Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.
      */
     public ElementDefinition setDefinition(String value) { 
-      if (Utilities.noString(value))
+      if (value == null)
         this.definition = null;
       else {
         if (this.definition == null)
-          this.definition = new StringType();
+          this.definition = new MarkdownType();
         this.definition.setValue(value);
       }
       return this;
@@ -2304,12 +2488,12 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * @return {@link #comments} (Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.). This is the underlying object with id, value and extensions. The accessor "getComments" gives direct access to the value
      */
-    public StringType getCommentsElement() { 
+    public MarkdownType getCommentsElement() { 
       if (this.comments == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.comments");
         else if (Configuration.doAutoCreate())
-          this.comments = new StringType(); // bb
+          this.comments = new MarkdownType(); // bb
       return this.comments;
     }
 
@@ -2324,7 +2508,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * @param value {@link #comments} (Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.). This is the underlying object with id, value and extensions. The accessor "getComments" gives direct access to the value
      */
-    public ElementDefinition setCommentsElement(StringType value) { 
+    public ElementDefinition setCommentsElement(MarkdownType value) { 
       this.comments = value;
       return this;
     }
@@ -2340,11 +2524,11 @@ public class ElementDefinition extends Type implements ICompositeType {
      * @param value Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.
      */
     public ElementDefinition setComments(String value) { 
-      if (Utilities.noString(value))
+      if (value == null)
         this.comments = null;
       else {
         if (this.comments == null)
-          this.comments = new StringType();
+          this.comments = new MarkdownType();
         this.comments.setValue(value);
       }
       return this;
@@ -2353,12 +2537,12 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * @return {@link #requirements} (This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.). This is the underlying object with id, value and extensions. The accessor "getRequirements" gives direct access to the value
      */
-    public StringType getRequirementsElement() { 
+    public MarkdownType getRequirementsElement() { 
       if (this.requirements == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.requirements");
         else if (Configuration.doAutoCreate())
-          this.requirements = new StringType(); // bb
+          this.requirements = new MarkdownType(); // bb
       return this.requirements;
     }
 
@@ -2373,7 +2557,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * @param value {@link #requirements} (This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.). This is the underlying object with id, value and extensions. The accessor "getRequirements" gives direct access to the value
      */
-    public ElementDefinition setRequirementsElement(StringType value) { 
+    public ElementDefinition setRequirementsElement(MarkdownType value) { 
       this.requirements = value;
       return this;
     }
@@ -2389,11 +2573,11 @@ public class ElementDefinition extends Type implements ICompositeType {
      * @param value This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.
      */
     public ElementDefinition setRequirements(String value) { 
-      if (Utilities.noString(value))
+      if (value == null)
         this.requirements = null;
       else {
         if (this.requirements == null)
-          this.requirements = new StringType();
+          this.requirements = new MarkdownType();
         this.requirements.setValue(value);
       }
       return this;
@@ -2548,6 +2732,30 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
+     * @return {@link #base} (Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.)
+     */
+    public ElementDefinitionBaseComponent getBase() { 
+      if (this.base == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create ElementDefinition.base");
+        else if (Configuration.doAutoCreate())
+          this.base = new ElementDefinitionBaseComponent(); // cc
+      return this.base;
+    }
+
+    public boolean hasBase() { 
+      return this.base != null && !this.base.isEmpty();
+    }
+
+    /**
+     * @param value {@link #base} (Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.)
+     */
+    public ElementDefinition setBase(ElementDefinitionBaseComponent value) { 
+      this.base = value;
+      return this;
+    }
+
+    /**
      * @return {@link #type} (The data type or resource that the value of this element is permitted to be.)
      */
     public List<TypeRefComponent> getType() { 
@@ -2637,7 +2845,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #defaultValue} (The value that should be used if there is no value stated in the instance.)
+     * @return {@link #defaultValue} (The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').)
      */
     public org.hl7.fhir.instance.model.Type getDefaultValue() { 
       return this.defaultValue;
@@ -2648,7 +2856,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #defaultValue} (The value that should be used if there is no value stated in the instance.)
+     * @param value {@link #defaultValue} (The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').)
      */
     public ElementDefinition setDefaultValue(org.hl7.fhir.instance.model.Type value) { 
       this.defaultValue = value;
@@ -2656,14 +2864,14 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #meaningWhenMissing} (The Implicit meaning that is to be understood when this element is missing.). This is the underlying object with id, value and extensions. The accessor "getMeaningWhenMissing" gives direct access to the value
+     * @return {@link #meaningWhenMissing} (The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.). This is the underlying object with id, value and extensions. The accessor "getMeaningWhenMissing" gives direct access to the value
      */
-    public StringType getMeaningWhenMissingElement() { 
+    public MarkdownType getMeaningWhenMissingElement() { 
       if (this.meaningWhenMissing == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create ElementDefinition.meaningWhenMissing");
         else if (Configuration.doAutoCreate())
-          this.meaningWhenMissing = new StringType(); // bb
+          this.meaningWhenMissing = new MarkdownType(); // bb
       return this.meaningWhenMissing;
     }
 
@@ -2676,36 +2884,36 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #meaningWhenMissing} (The Implicit meaning that is to be understood when this element is missing.). This is the underlying object with id, value and extensions. The accessor "getMeaningWhenMissing" gives direct access to the value
+     * @param value {@link #meaningWhenMissing} (The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.). This is the underlying object with id, value and extensions. The accessor "getMeaningWhenMissing" gives direct access to the value
      */
-    public ElementDefinition setMeaningWhenMissingElement(StringType value) { 
+    public ElementDefinition setMeaningWhenMissingElement(MarkdownType value) { 
       this.meaningWhenMissing = value;
       return this;
     }
 
     /**
-     * @return The Implicit meaning that is to be understood when this element is missing.
+     * @return The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.
      */
     public String getMeaningWhenMissing() { 
       return this.meaningWhenMissing == null ? null : this.meaningWhenMissing.getValue();
     }
 
     /**
-     * @param value The Implicit meaning that is to be understood when this element is missing.
+     * @param value The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.
      */
     public ElementDefinition setMeaningWhenMissing(String value) { 
-      if (Utilities.noString(value))
+      if (value == null)
         this.meaningWhenMissing = null;
       else {
         if (this.meaningWhenMissing == null)
-          this.meaningWhenMissing = new StringType();
+          this.meaningWhenMissing = new MarkdownType();
         this.meaningWhenMissing.setValue(value);
       }
       return this;
     }
 
     /**
-     * @return {@link #fixed} (Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-signficant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.)
+     * @return {@link #fixed} (Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.)
      */
     public org.hl7.fhir.instance.model.Type getFixed() { 
       return this.fixed;
@@ -2716,7 +2924,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #fixed} (Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-signficant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.)
+     * @param value {@link #fixed} (Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.)
      */
     public ElementDefinition setFixed(org.hl7.fhir.instance.model.Type value) { 
       this.fixed = value;
@@ -2724,7 +2932,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #pattern} (Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-senstive, accent-sensitive, etc.).)
+     * @return {@link #pattern} (Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).)
      */
     public org.hl7.fhir.instance.model.Type getPattern() { 
       return this.pattern;
@@ -2735,7 +2943,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #pattern} (Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-senstive, accent-sensitive, etc.).)
+     * @param value {@link #pattern} (Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).)
      */
     public ElementDefinition setPattern(org.hl7.fhir.instance.model.Type value) { 
       this.pattern = value;
@@ -2758,6 +2966,44 @@ public class ElementDefinition extends Type implements ICompositeType {
      */
     public ElementDefinition setExample(org.hl7.fhir.instance.model.Type value) { 
       this.example = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public org.hl7.fhir.instance.model.Type getMinValue() { 
+      return this.minValue;
+    }
+
+    public boolean hasMinValue() { 
+      return this.minValue != null && !this.minValue.isEmpty();
+    }
+
+    /**
+     * @param value {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public ElementDefinition setMinValue(org.hl7.fhir.instance.model.Type value) { 
+      this.minValue = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public org.hl7.fhir.instance.model.Type getMaxValue() { 
+      return this.maxValue;
+    }
+
+    public boolean hasMaxValue() { 
+      return this.maxValue != null && !this.maxValue.isEmpty();
+    }
+
+    /**
+     * @param value {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public ElementDefinition setMaxValue(org.hl7.fhir.instance.model.Type value) { 
+      this.maxValue = value;
       return this;
     }
 
@@ -2901,7 +3147,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #mustSupport} (If true, conformant resource authors SHALL be capable of providing a value for the element and resource consumers SHALL be capable of extracting and doing something useful with the data element.  If false, the element may be ignored and not supported.). This is the underlying object with id, value and extensions. The accessor "getMustSupport" gives direct access to the value
+     * @return {@link #mustSupport} (If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported.). This is the underlying object with id, value and extensions. The accessor "getMustSupport" gives direct access to the value
      */
     public BooleanType getMustSupportElement() { 
       if (this.mustSupport == null)
@@ -2921,7 +3167,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #mustSupport} (If true, conformant resource authors SHALL be capable of providing a value for the element and resource consumers SHALL be capable of extracting and doing something useful with the data element.  If false, the element may be ignored and not supported.). This is the underlying object with id, value and extensions. The accessor "getMustSupport" gives direct access to the value
+     * @param value {@link #mustSupport} (If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported.). This is the underlying object with id, value and extensions. The accessor "getMustSupport" gives direct access to the value
      */
     public ElementDefinition setMustSupportElement(BooleanType value) { 
       this.mustSupport = value;
@@ -2929,14 +3175,14 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return If true, conformant resource authors SHALL be capable of providing a value for the element and resource consumers SHALL be capable of extracting and doing something useful with the data element.  If false, the element may be ignored and not supported.
+     * @return If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported.
      */
     public boolean getMustSupport() { 
       return this.mustSupport == null || this.mustSupport.isEmpty() ? false : this.mustSupport.getValue();
     }
 
     /**
-     * @param value If true, conformant resource authors SHALL be capable of providing a value for the element and resource consumers SHALL be capable of extracting and doing something useful with the data element.  If false, the element may be ignored and not supported.
+     * @param value If true, implementations that produce or consume resources SHALL provide "support" for the element in some meaningful way.  If false, the element may be ignored and not supported.
      */
     public ElementDefinition setMustSupport(boolean value) { 
         if (this.mustSupport == null)
@@ -3101,30 +3347,33 @@ public class ElementDefinition extends Type implements ICompositeType {
 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
-        childrenList.add(new Property("path", "string", "The path identifies the element and is expressed as a '.'-separated list of ancestor elements, beginning with the name of the resource or extension.", 0, java.lang.Integer.MAX_VALUE, path));
+        childrenList.add(new Property("path", "string", "The path identifies the element and is expressed as a \".\"-separated list of ancestor elements, beginning with the name of the resource or extension.", 0, java.lang.Integer.MAX_VALUE, path));
         childrenList.add(new Property("representation", "code", "Codes that define how this element is represented in instances, when the deviation varies from the normal case.", 0, java.lang.Integer.MAX_VALUE, representation));
         childrenList.add(new Property("name", "string", "The name of this element definition (to refer to it from other element definitions using ElementDefinition.nameReference). This is a unique name referring to a specific set of constraints applied to this element. One use of this is to provide a name to different slices of the same element.", 0, java.lang.Integer.MAX_VALUE, name));
         childrenList.add(new Property("label", "string", "The text to display beside the element indicating its meaning or to use to prompt for the element in a user display or form.", 0, java.lang.Integer.MAX_VALUE, label));
         childrenList.add(new Property("code", "Coding", "A code that provides the meaning for the element according to a particular terminology.", 0, java.lang.Integer.MAX_VALUE, code));
-        childrenList.add(new Property("slicing", "", "Indicates that the element is sliced into a set of alternative definitions (there are multiple definitions on a single element in the base resource). The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).", 0, java.lang.Integer.MAX_VALUE, slicing));
-        childrenList.add(new Property("short", "string", "A concise definition that  is shown in the generated XML format that summarizes profiles (used throughout the specification).", 0, java.lang.Integer.MAX_VALUE, short_));
-        childrenList.add(new Property("definition", "string", "Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.", 0, java.lang.Integer.MAX_VALUE, definition));
-        childrenList.add(new Property("comments", "string", "Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.", 0, java.lang.Integer.MAX_VALUE, comments));
-        childrenList.add(new Property("requirements", "string", "This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.", 0, java.lang.Integer.MAX_VALUE, requirements));
+        childrenList.add(new Property("slicing", "", "Indicates that the element is sliced into a set of alternative definitions (i.e. in a structure definition, there are multiple different constraints on a single element in the base resource). Slicing can be used in any resource that has cardinality ..* on the base resource, or any resource with a choice of types. The set of slices is any elements that come after this in the element sequence that have the same path, until a shorter path occurs (the shorter path terminates the set).", 0, java.lang.Integer.MAX_VALUE, slicing));
+        childrenList.add(new Property("short", "string", "A concise description of what this element means (e.g. for use in autogenerated summaries).", 0, java.lang.Integer.MAX_VALUE, short_));
+        childrenList.add(new Property("definition", "markdown", "Provides a complete explanation of the meaning of the data element for human readability.  For the case of elements derived from existing elements (e.g. constraints), the definition SHALL be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource.", 0, java.lang.Integer.MAX_VALUE, definition));
+        childrenList.add(new Property("comments", "markdown", "Explanatory notes and implementation guidance about the data element, including notes about how to use the data properly, exceptions to proper use, etc.", 0, java.lang.Integer.MAX_VALUE, comments));
+        childrenList.add(new Property("requirements", "markdown", "This element is for traceability of why the element was created and why the constraints exist as they do. This may be used to point to source materials or specifications that drove the structure of this element.", 0, java.lang.Integer.MAX_VALUE, requirements));
         childrenList.add(new Property("alias", "string", "Identifies additional names by which this element might also be known.", 0, java.lang.Integer.MAX_VALUE, alias));
         childrenList.add(new Property("min", "integer", "The minimum number of times this element SHALL appear in the instance.", 0, java.lang.Integer.MAX_VALUE, min));
         childrenList.add(new Property("max", "string", "The maximum number of times this element is permitted to appear in the instance.", 0, java.lang.Integer.MAX_VALUE, max));
+        childrenList.add(new Property("base", "", "Information about the base definition of the element, provided to make it unncessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.", 0, java.lang.Integer.MAX_VALUE, base));
         childrenList.add(new Property("type", "", "The data type or resource that the value of this element is permitted to be.", 0, java.lang.Integer.MAX_VALUE, type));
         childrenList.add(new Property("nameReference", "string", "Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element.", 0, java.lang.Integer.MAX_VALUE, nameReference));
-        childrenList.add(new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance.", 0, java.lang.Integer.MAX_VALUE, defaultValue));
-        childrenList.add(new Property("meaningWhenMissing", "string", "The Implicit meaning that is to be understood when this element is missing.", 0, java.lang.Integer.MAX_VALUE, meaningWhenMissing));
-        childrenList.add(new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-signficant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, java.lang.Integer.MAX_VALUE, fixed));
-        childrenList.add(new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-senstive, accent-sensitive, etc.).", 0, java.lang.Integer.MAX_VALUE, pattern));
+        childrenList.add(new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, java.lang.Integer.MAX_VALUE, defaultValue));
+        childrenList.add(new Property("meaningWhenMissing", "markdown", "The Implicit meaning that is to be understood when this element is missing (e.g. 'when this element is missing, the period is ongoing'.", 0, java.lang.Integer.MAX_VALUE, meaningWhenMissing));
+        childrenList.add(new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, java.lang.Integer.MAX_VALUE, fixed));
+        childrenList.add(new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, java.lang.Integer.MAX_VALUE, pattern));
         childrenList.add(new Property("example[x]", "*", "A sample value for this element demonstrating the type of information that would typically be captured.", 0, java.lang.Integer.MAX_VALUE, example));
+        childrenList.add(new Property("minValue[x]", "*", "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.", 0, java.lang.Integer.MAX_VALUE, minValue));
+        childrenList.add(new Property("maxValue[x]", "*", "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.", 0, java.lang.Integer.MAX_VALUE, maxValue));
         childrenList.add(new Property("maxLength", "integer", "Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.", 0, java.lang.Integer.MAX_VALUE, maxLength));
         childrenList.add(new Property("condition", "id", "A reference to an invariant that may make additional statements about the cardinality or value in the instance.", 0, java.lang.Integer.MAX_VALUE, condition));
         childrenList.add(new Property("constraint", "", "Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.", 0, java.lang.Integer.MAX_VALUE, constraint));
-        childrenList.add(new Property("mustSupport", "boolean", "If true, conformant resource authors SHALL be capable of providing a value for the element and resource consumers SHALL be capable of extracting and doing something useful with the data element.  If false, the element may be ignored and not supported.", 0, java.lang.Integer.MAX_VALUE, mustSupport));
+        childrenList.add(new Property("mustSupport", "boolean", "If true, implementations that produce or consume resources SHALL provide \"support\" for the element in some meaningful way.  If false, the element may be ignored and not supported.", 0, java.lang.Integer.MAX_VALUE, mustSupport));
         childrenList.add(new Property("isModifier", "boolean", "If true, the value of this element affects the interpretation of the element or resource that contains it, and the value of the element cannot be ignored. Typically, this is used for status, negation and qualification codes. The effect of this is that the element cannot be ignored by systems: they SHALL either recognize the element and process it, and/or a pre-determination has been made that it is not relevant to their particular system.", 0, java.lang.Integer.MAX_VALUE, isModifier));
         childrenList.add(new Property("isSummary", "boolean", "Whether the element should be included if a client requests a search with the parameter _summary=true.", 0, java.lang.Integer.MAX_VALUE, isSummary));
         childrenList.add(new Property("binding", "", "Binds to a value set if this element is coded (code, Coding, CodeableConcept).", 0, java.lang.Integer.MAX_VALUE, binding));
@@ -3159,6 +3408,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         };
         dst.min = min == null ? null : min.copy();
         dst.max = max == null ? null : max.copy();
+        dst.base = base == null ? null : base.copy();
         if (type != null) {
           dst.type = new ArrayList<TypeRefComponent>();
           for (TypeRefComponent i : type)
@@ -3170,6 +3420,8 @@ public class ElementDefinition extends Type implements ICompositeType {
         dst.fixed = fixed == null ? null : fixed.copy();
         dst.pattern = pattern == null ? null : pattern.copy();
         dst.example = example == null ? null : example.copy();
+        dst.minValue = minValue == null ? null : minValue.copy();
+        dst.maxValue = maxValue == null ? null : maxValue.copy();
         dst.maxLength = maxLength == null ? null : maxLength.copy();
         if (condition != null) {
           dst.condition = new ArrayList<IdType>();
@@ -3208,13 +3460,14 @@ public class ElementDefinition extends Type implements ICompositeType {
            && compareDeep(label, o.label, true) && compareDeep(code, o.code, true) && compareDeep(slicing, o.slicing, true)
            && compareDeep(short_, o.short_, true) && compareDeep(definition, o.definition, true) && compareDeep(comments, o.comments, true)
            && compareDeep(requirements, o.requirements, true) && compareDeep(alias, o.alias, true) && compareDeep(min, o.min, true)
-           && compareDeep(max, o.max, true) && compareDeep(type, o.type, true) && compareDeep(nameReference, o.nameReference, true)
-           && compareDeep(defaultValue, o.defaultValue, true) && compareDeep(meaningWhenMissing, o.meaningWhenMissing, true)
-           && compareDeep(fixed, o.fixed, true) && compareDeep(pattern, o.pattern, true) && compareDeep(example, o.example, true)
-           && compareDeep(maxLength, o.maxLength, true) && compareDeep(condition, o.condition, true) && compareDeep(constraint, o.constraint, true)
-           && compareDeep(mustSupport, o.mustSupport, true) && compareDeep(isModifier, o.isModifier, true)
-           && compareDeep(isSummary, o.isSummary, true) && compareDeep(binding, o.binding, true) && compareDeep(mapping, o.mapping, true)
-          ;
+           && compareDeep(max, o.max, true) && compareDeep(base, o.base, true) && compareDeep(type, o.type, true)
+           && compareDeep(nameReference, o.nameReference, true) && compareDeep(defaultValue, o.defaultValue, true)
+           && compareDeep(meaningWhenMissing, o.meaningWhenMissing, true) && compareDeep(fixed, o.fixed, true)
+           && compareDeep(pattern, o.pattern, true) && compareDeep(example, o.example, true) && compareDeep(minValue, o.minValue, true)
+           && compareDeep(maxValue, o.maxValue, true) && compareDeep(maxLength, o.maxLength, true) && compareDeep(condition, o.condition, true)
+           && compareDeep(constraint, o.constraint, true) && compareDeep(mustSupport, o.mustSupport, true)
+           && compareDeep(isModifier, o.isModifier, true) && compareDeep(isSummary, o.isSummary, true) && compareDeep(binding, o.binding, true)
+           && compareDeep(mapping, o.mapping, true);
       }
 
       @Override
@@ -3239,13 +3492,14 @@ public class ElementDefinition extends Type implements ICompositeType {
            && (slicing == null || slicing.isEmpty()) && (short_ == null || short_.isEmpty()) && (definition == null || definition.isEmpty())
            && (comments == null || comments.isEmpty()) && (requirements == null || requirements.isEmpty())
            && (alias == null || alias.isEmpty()) && (min == null || min.isEmpty()) && (max == null || max.isEmpty())
-           && (type == null || type.isEmpty()) && (nameReference == null || nameReference.isEmpty())
+           && (base == null || base.isEmpty()) && (type == null || type.isEmpty()) && (nameReference == null || nameReference.isEmpty())
            && (defaultValue == null || defaultValue.isEmpty()) && (meaningWhenMissing == null || meaningWhenMissing.isEmpty())
            && (fixed == null || fixed.isEmpty()) && (pattern == null || pattern.isEmpty()) && (example == null || example.isEmpty())
-           && (maxLength == null || maxLength.isEmpty()) && (condition == null || condition.isEmpty())
-           && (constraint == null || constraint.isEmpty()) && (mustSupport == null || mustSupport.isEmpty())
-           && (isModifier == null || isModifier.isEmpty()) && (isSummary == null || isSummary.isEmpty())
-           && (binding == null || binding.isEmpty()) && (mapping == null || mapping.isEmpty());
+           && (minValue == null || minValue.isEmpty()) && (maxValue == null || maxValue.isEmpty()) && (maxLength == null || maxLength.isEmpty())
+           && (condition == null || condition.isEmpty()) && (constraint == null || constraint.isEmpty())
+           && (mustSupport == null || mustSupport.isEmpty()) && (isModifier == null || isModifier.isEmpty())
+           && (isSummary == null || isSummary.isEmpty()) && (binding == null || binding.isEmpty()) && (mapping == null || mapping.isEmpty())
+          ;
       }
 
 

@@ -578,7 +578,7 @@ public class Utilities {
       else if (c == '\n')
         b.append("\\n");
       else if (c == '"')
-        b.append("'");
+        b.append("\\\"");
       else if (c == '\\')
         b.append("\\\\");
       else 
@@ -901,6 +901,11 @@ public class Utilities {
 
   public static boolean compareIgnoreWhitespace(String fn1, String fn2) throws IOException {
     return compareIgnoreWhitespace(new File(fn1), new File(fn2));
+  }
+
+
+  public static boolean isAbsoluteUrl(String ref) {
+    return ref.startsWith("http:") || ref.startsWith("https:") || ref.startsWith("urn:uuid:") || ref.startsWith("urn:oid:") ;
   }
 
 

@@ -131,7 +131,7 @@ Type
 
   TJsonObjectHandler = procedure (jsn : TJsonObject; ctxt : TFHIRObjectList) of object;
   TJsonObjectPrimitiveHandler = procedure (value : String; jsn : TJsonObject; ctxt : TFHIRObjectList) of object;
-  TJsonObjectEnumHandler = procedure (value : String; jsn : TJsonObject; ctxt : TFHIRObjectList; Const aNames : Array Of String) of object;
+  TJsonObjectEnumHandler = procedure (path, value : String; jsn : TJsonObject; ctxt : TFHIRObjectList; Const aNames : Array Of String) of object;
 
   TFHIRJsonParserBase = class (TFHIRParser)
   Protected
@@ -143,7 +143,7 @@ Type
 
     procedure iterateArray(arr : TJsonArray; ctxt : TFHIRObjectList; handler : TJsonObjectHandler);
     procedure iteratePrimitiveArray(arr1, arr2 : TJsonArray; ctxt : TFHIRObjectList; handler : TJsonObjectPrimitiveHandler);
-    procedure iterateEnumArray(arr1, arr2 : TJsonArray; ctxt : TFHIRObjectList; handler : TJsonObjectEnumHandler; Const aNames : Array Of String);
+    procedure iterateEnumArray(arr1, arr2 : TJsonArray; path : String; ctxt : TFHIRObjectList; handler : TJsonObjectEnumHandler; Const aNames : Array Of String);
 
     // handlers
     procedure parseDomainResource(jsn : TJsonObject; ctxt : TFHIRObjectList);
@@ -158,7 +158,8 @@ Type
   TFHIRComposer = {abstract} class (TFHIRObject)
   private
     FLang: String;
-    FSummaryOnly: Boolean;
+    FSummaryOption: TFHIRSummaryOption;
+    FNoHeader: Boolean;
   protected
     Procedure ComposeResource(xml : TXmlBuilder; oResource : TFhirResource; links : TFhirBundleLinkList = nil); overload; virtual;
 //    Procedure ComposeBinary(xml : TXmlBuilder; binary : TFhirBinary);
@@ -177,8 +178,11 @@ Type
 
     Function MimeType : String; virtual;
     Property Lang : String read FLang write FLang;
-    Property SummaryOnly : Boolean read FSummaryOnly write FSummaryOnly;
+    Property SummaryOption : TFHIRSummaryOption read FSummaryOption write FSummaryOption;
+    property NoHeader : Boolean read FNoHeader write FNoHeader;
   End;
+
+  TFHIRComposerClass = class of TFHIRComposer;
 
   TFHIRXmlComposerBase = class (TFHIRComposer)
   private
@@ -191,7 +195,8 @@ Type
     Procedure Text(xml : TXmlBuilder; name, value : String);
     procedure closeOutElement(xml : TXmlBuilder; value : TFhirBase);
     Procedure ComposeDomainResource(xml : TXmlBuilder; name : String; value : TFhirDomainResource);
-    Procedure ComposeInnerResource(xml : TXmlBuilder; name : String; value : TFhirResource); overload;
+    Procedure ComposeInnerResource(xml : TXmlBuilder; name : String; holder : TFhirDomainResource; value : TFhirResource); overload;
+    Procedure ComposeInnerResource(xml : TXmlBuilder; name : String; holder : TFHIRElement; value : TFhirResource); overload;
   Public
     Procedure Compose(stream : TStream; oResource : TFhirResource; isPretty : Boolean = false; links : TFhirBundleLinkList = nil); Override;
     Procedure Compose(node : IXmlDomNode; oResource : TFhirResource; links : TFhirBundleLinkList = nil); Overload;
@@ -215,7 +220,8 @@ Type
 
     Procedure composeComments(json : TJSONWriter; base : TFHIRBase);
     procedure ComposeDomainResource(json : TJSONWriter; name : String; oResource : TFhirDomainResource); overload; virtual;
-    procedure ComposeInnerResource(json : TJSONWriter; name : String; oResource : TFhirResource); overload; virtual;
+    procedure ComposeInnerResource(json : TJSONWriter; name : String; holder : TFHIRElement; oResource : TFhirResource); overload; virtual;
+    procedure ComposeInnerResource(json : TJSONWriter; name : String; holder : TFhirDomainResource; oResource : TFhirResource); overload; virtual;
     Procedure ComposeResource(json : TJSONWriter; oResource : TFhirResource; links : TFhirBundleLinkList); overload; virtual;
     Procedure ComposeResource(xml : TXmlBuilder; oResource : TFhirResource; links : TFhirBundleLinkList); overload; override;
 //    Procedure ComposeExtension(json : TJSONWriter; name : String; extension : TFhirExtension; noObj : boolean = false); virtual;
@@ -234,14 +240,14 @@ Type
   private
     FBaseURL: String;
     FSession: TFhirSession;
-    FTags : TFHIRCodingList;
+    FTags : TFHIRTagList;
     FrelativeReferenceAdjustment: integer;
     FOnGetLink: TFHIRXhtmlComposerGetLink;
     FOperationName : String;
     procedure SetSession(const Value: TFhirSession);
-    function PresentTags(aType : TFhirResourceType; target : String; tags : TFHIRCodingList; c : integer):String; overload;
+    function PresentTags(aType : TFhirResourceType; target : String; tags : TFHIRTagList; c : integer):String; overload;
     function PresentTags(aType : TFhirResourceType; target : String; meta: TFhirMeta; c : integer):String; overload;
-    procedure SetTags(const Value: TFHIRCodingList);
+    procedure SetTags(const Value: TFHIRTagList);
     function PatchToWeb(url: String): String;
 //    xml : TXmlBuilder;
 //    procedure ComposeNode(node : TFhirXHtmlNode);
@@ -254,7 +260,7 @@ Type
     Destructor Destroy; override;
     property BaseURL : String read FBaseURL write FBaseURL;
     Property Session : TFhirSession read FSession write SetSession;
-    property Tags : TFHIRCodingList read FTags write SetTags;
+    property Tags : TFHIRTagList read FTags write SetTags;
     Procedure ComposeResource(xml : TXmlBuilder; oResource : TFhirResource; links : TFhirBundleLinkList = nil); Override;
     Procedure Compose(stream : TStream; oResource : TFhirResource; isPretty : Boolean = false; links : TFhirBundleLinkList = nil); Override;
     Function MimeType : String; Override;
@@ -528,14 +534,14 @@ begin
   end;
 end;
 
-procedure TFHIRJsonParserBase.iterateEnumArray(arr1, arr2 : TJsonArray; ctxt : TFHIRObjectList; handler : TJsonObjectEnumHandler; Const aNames : Array Of String);
+procedure TFHIRJsonParserBase.iterateEnumArray(arr1, arr2 : TJsonArray; path : String; ctxt : TFHIRObjectList; handler : TJsonObjectEnumHandler; Const aNames : Array Of String);
 var
   i : integer;
 begin
   if (arr1 <> nil) or (arr2 <> nil) then
   begin
     for i := 0 to max(arr1.Count, arr2.Count) - 1 do
-      handler(arr1.Value[i], arr2.Obj[i], ctxt, aNames);
+      handler(path+'['+inttostr(i+1)+']', arr1.Value[i], arr2.Obj[i], ctxt, aNames);
   end;
 end;
 
@@ -549,6 +555,7 @@ begin
     xml := TAdvXmlBuilder.Create;
     try
       xml.IsPretty := isPretty;
+    xml.NoHeader := NoHeader;
       xml.CurrentNamespaces.DefaultNS := FHIR_NS;
       xml.Start;
       if FComment <> '' then
@@ -640,6 +647,16 @@ begin
   xml.close(name);
 
     end;
+
+procedure TFHIRXmlComposerBase.ComposeInnerResource(xml: TXmlBuilder; name: String; holder: TFhirDomainResource; value: TFhirResource);
+begin
+  if value <> nil then
+  begin
+    xml.open(name);
+    ComposeResource(xml, value, nil);
+    xml.close(name);
+  end;
+end;
 
 //procedure TFHIRXmlComposerBase.Compose(stream: TStream; ResourceType : TFhirResourceType; oTags: TFHIRCodingList; isPretty: Boolean);
 //var
@@ -782,9 +799,28 @@ begin
   json.FinishObject;
 end;
 
-procedure TFHIRJsonComposerBase.composeInnerResource(json: TJSONWriter; name: String; oResource: TFhirResource);
+procedure TFHIRJsonComposerBase.ComposeInnerResource(json: TJSONWriter; name: String; holder: TFhirDomainResource; oResource: TFhirResource);
 begin
   if oResource <> nil then
+  begin
+    json.ValueObject(name);
+    ComposeResource(json, oResource, nil);
+    json.FinishObject;
+  end;
+end;
+
+procedure TFHIRJsonComposerBase.composeInnerResource(json: TJSONWriter; name: String; holder : TFHIRElement; oResource: TFhirResource);
+var
+  blob : TAdvBuffer;
+  bytes : TBytes;
+begin
+  if (holder <> nil) and (holder.Tag <> nil) then
+begin
+    blob := holder.Tag as TAdvBuffer;
+    bytes := blob.AsBytes;
+    json.ValueBytes(name, bytes);
+  end
+  else if oResource <> nil then
   begin
     json.ValueObject(name);
     ComposeResource(json, oResource, nil);
@@ -1030,9 +1066,18 @@ begin
   raise exception.create('don''t use TFHIRXmlComposerBase directly - use TFHIRXmlComposer');
 end;
 
-procedure TFHIRXmlComposerBase.ComposeInnerResource(xml: TXmlBuilder; name: String; value: TFhirResource);
+procedure TFHIRXmlComposerBase.ComposeInnerResource(xml: TXmlBuilder; name: String; holder : TFHIRElement; value: TFhirResource);
+var
+  blob : TAdvBuffer;
 begin
-  if value <> nil then
+  if (holder <> nil) and (holder.Tag <> nil) then
+  begin
+    blob := holder.Tag as TAdvBuffer;
+    xml.open(name);
+    xml.inject(blob.AsBytes);
+    xml.close(name);
+  end
+  else if value <> nil then
   begin
   xml.open(name);
   ComposeResource(xml, value, nil);
@@ -1169,10 +1214,10 @@ Header(Session, FBaseURL, lang)+
         if (links <> nil) and (links.Matches['z-edit-src'] <> '') then
           s.append('. Edit this as <a href="'+patchToWeb(links.Matches['z-edit-src'])+'?srcformat=xml">XML</a> or <a href="'+patchToWeb(links.Matches['z-edit-src'])+'?srcformat=json">JSON</a>');
         if (links <> nil) and (links.Matches['edit-form'] <> '') then
-          if (oResource is TFHIRQuestionnaireAnswers) then
+          if (oResource is TFHIRQuestionnaireResponse) then
           begin
-            if (TFHIRQuestionnaireAnswers(oResource).questionnaire <> nil) then
-              s.append('. <a href="'+patchToWeb(links.Matches['edit-form'])+'">Edit this Resource</a> (or <a href="'+TFHIRQuestionnaireAnswers(oResource).questionnaire.reference+'">see the questionnaire</a>)')
+            if (TFHIRQuestionnaireResponse(oResource).questionnaire <> nil) then
+              s.append('. <a href="'+patchToWeb(links.Matches['edit-form'])+'">Edit this Resource</a> (or <a href="'+TFHIRQuestionnaireResponse(oResource).questionnaire.reference+'">see the questionnaire</a>)')
           end
           else
             s.append('. <a href="'+patchToWeb(links.Matches['edit-form'])+'">Edit this Resource</a> (or <a href="'+links.Matches['edit-form']+'">see resources underlying that</a>)');
@@ -1209,7 +1254,7 @@ begin
   result := FBaseURL+'_web/'+url.substring(FBaseURL.length);
 end;
 
-function TFHIRXhtmlComposer.PresentTags(aType: TFhirResourceType; target: String; tags: TFHIRCodingList; c: integer): String;
+function TFHIRXhtmlComposer.PresentTags(aType: TFhirResourceType; target: String; tags: TFHIRTagList; c: integer): String;
 begin
 //  PresentTags()
 end;
@@ -1301,10 +1346,10 @@ end;
 //
 //        {$IFNDEF FHIR-DSTU}
 //        if e.links.GetRel('edit-form') <> '' then
-//          if (e.resource is TFHIRQuestionnaireAnswers) then
+//          if (e.resource is TFHIRQuestionnaireResponse) then
 //          begin
-//            if (TFHIRQuestionnaireAnswers(e.resource).questionnaire <> nil) then
-//              s.append(' <a href="'+patchToWeb(e.links.GetRel('edit-form'))+'">Edit this Resource</a> (or <a href="'+TFHIRQuestionnaireAnswers(e.resource).questionnaire.reference+'">see the questionnaire</a>)')
+//            if (TFHIRQuestionnaireResponse(e.resource).questionnaire <> nil) then
+//              s.append(' <a href="'+patchToWeb(e.links.GetRel('edit-form'))+'">Edit this Resource</a> (or <a href="'+TFHIRQuestionnaireResponse(e.resource).questionnaire.reference+'">see the questionnaire</a>)')
 //          end
 //          else
 //            s.append(' <a href="'+patchToWeb(e.links.GetRel('edit-form'))+'">Edit this Resource</a> (or just see <a href="'+e.links.GetRel('edit-form')+'">the Questionnaire</a>)');
@@ -1372,7 +1417,7 @@ end;
 
 
 const
-  TYPE_TITLE : Array[TFhirBundleType] of String = ('', 'Document', 'Message', 'Transaction', 'Trnsaction Response', 'History Record', 'Search Results', 'Resource Collection');
+  TYPE_TITLE : Array[TFhirBundleType] of String = ('', 'Document', 'Message', 'Transaction', 'Trnsaction Response', 'Batch', 'Batch Response', 'History Record', 'Search Results', 'Resource Collection');
 
 {
 procedure TFHIRXhtmlComposer.Compose(stream: TStream; oMeta: TFhirMeta; ResourceType : TFhirResourceType; id, ver : String; isPretty: Boolean; links: TFhirBundleLinkList);
@@ -1549,10 +1594,10 @@ Header(Session, FBaseURL, lang)+
           s.append(' Edit this as <a href="'+patchToWeb(e.tags['z-edit-src'])+'?srcformat=xml">XML</a> or <a href="'+patchToWeb(e.tags['z-edit-src'])+'?srcformat=json">JSON</a>.');
 
         if e.tags['edit-form'] <> '' then
-          if (e.resource is TFHIRQuestionnaireAnswers) then
+          if (e.resource is TFHIRQuestionnaireResponse) then
           begin
-            if (TFHIRQuestionnaireAnswers(e.resource).questionnaire <> nil) then
-              s.append(' <a href="'+patchToWeb(e.tags['edit-form'])+'">Edit this Resource</a> (or <a href="'+TFHIRQuestionnaireAnswers(e.resource).questionnaire.reference+'">see the questionnaire</a>)')
+            if (TFHIRQuestionnaireResponse(e.resource).questionnaire <> nil) then
+              s.append(' <a href="'+patchToWeb(e.tags['edit-form'])+'">Edit this Resource</a> (or <a href="'+TFHIRQuestionnaireResponse(e.resource).questionnaire.reference+'">see the questionnaire</a>)')
           end
           else
             s.append(' <a href="'+patchToWeb(e.tags['edit-form'])+'">Edit this Resource</a> (or just see <a href="'+e.tags['edit-form']+'">the Questionnaire</a>)');
@@ -1871,11 +1916,11 @@ begin
   if bPrefixLinks then
   begin
     pfx := base+'/'+CODES_TFHIRResourceType[a]+'/';
-    pfxp := base+'/'+'profile/'
+    pfxp := base+'/'+'StructureDefinition/'
   end
   else
   begin
-    pfxp := '../profile/';
+    pfxp := '../StructureDefinition/';
     pfx := '';
   end;
 
@@ -2203,7 +2248,7 @@ begin
 end;
 
 
-procedure TFHIRXhtmlComposer.SetTags(const Value: TFHIRCodingList);
+procedure TFHIRXhtmlComposer.SetTags(const Value: TFHIRTagList);
 begin
   FTags.free;
   FTags := Value;

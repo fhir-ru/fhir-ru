@@ -15,12 +15,13 @@
 [%cmpheader cda%]
 
 <h2>Clinical Document Architecture (CDA)</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 <a name="cda"> </a>
 <p>
-CDA is HL7's most widely adopted V3 standard.  It provides both a standardized 
+<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> is HL7's most widely adopted <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> standard.  It provides both a standardized 
 header containing metadata about the document as well as the ability to convey 
 a wide variety of clinical content organized into various sections.  The document 
-content can be un-encoded, such as a PDF through to a fully encoded V3 instance.
+content can be un-encoded, such as a PDF through to a fully encoded HL7 v3 instance.
 </p>
 <p>
 NOTE: While FHIR can be used to create <a href="documents.html">documents</a> using 
@@ -32,7 +33,7 @@ resource, and handling the CDA document itself as a binary attachment (as XDS do
 <h3>CDA Similarities and Differences</h3>
 <p>
 <b>Clinical document focus:</b> As its name implies, Clinical Document Architecture 
-is limited "clinical" use cases.  The CDA model does not support exchange of content 
+is limited to "clinical" use cases.  The CDA model does not support exchange of content 
 not deemed to have clinical relevance, such as financial information and is limited to 
 documents that deal with patients.  (In some cases, such as the HL7 Structured Product 
 Labeling standard, non-patient-specific CDA-like specifications are created to get 
@@ -42,12 +43,6 @@ have subjects other than patients.
 <p>
 <b>Human readability approach:</b> CDA and FHIR both require that content be 
 human-readable and define specific rules for how the human readable text is presented.  
-One small difference is that in CDA, the human readable portion is defined for the 
-section, while for FHIR the text is on the resource the section points to.  However, 
-this produces no real difference in effect.  The other difference is that, for FHIR, 
-the human-readable aspect is not limited to the document - it's driven by the resource 
-itself.  This may result in slightly less flexibility in rendering approach if a document 
-is compiling existing resources.
 </p>
 <p>
 <b>Clinical Statement vs. resources:</b> In CDA, the "content" of the document is expressed 
@@ -70,7 +65,7 @@ resource has not yet been defined.
 </p>
 <p>
 <b>Templates and Profiles:</b> As discussed above, CDA relies on the presence of templates in 
-order to understand the meaning of instances.  (While the meaning can theoretically be determined 
+order to understand the meaning of instances. While the meaning can theoretically be determined 
 by looking at RIM attributes and codes, the reality is that this is often not safe or sufficient.  
 As such, pretty much every CDA instance includes <i>templateId</i> attribute values scattered 
 throughout the instance to define meaning.  With FHIR, meaning is defined by the resource.  
@@ -87,8 +82,8 @@ alternatively provide a fully rendered version of the document).
 </p>
 
 <h3>CDA Interoperability Considerations</h3>
-<p>CDA is a type of V3 specification.  Therefore, all <a href="comparison-v3.html#V3-interoperability">considerations</a> 
-that apply to V3 messaging also apply to CDA.  In addition, the following topics are specific to CDA 
+<p>CDA is a type of <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> specification.  Therefore, all <a href="comparison-v3.html#V3-interoperability">considerations</a> 
+that apply to v3 messaging also apply to CDA.  In addition, the following topics are specific to CDA 
 implementations.</p>
 <p>
 <b>What to map:</b> The right-hand side (clinical content) portion of the CDA model qualifies as an 

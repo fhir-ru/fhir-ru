@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:output method="xml" version="1.0" encoding="UTF-8" omit-xml-declaration="yes"/>
+	<xsl:output method="xml" version="1.0" encoding="UTF-8"/>
 	<xsl:template match="warnings">
     <table border="1">
       <tbody>
@@ -41,9 +41,11 @@
                 <xsl:value-of select="count(descendant::message[@level='INFORMATION'])"/>
               </td>
               <td style="color:red">
-                <b>
-                  <xsl:value-of select="if (@basefmm) then @basefmm else if (@fmm &gt; 0) then @fmm else ''"/>
-                </b>
+                <xsl:if test="count(descendant::message[@level='WARNING'])">
+                  <b>
+                    <xsl:value-of select="if (@basefmm) then @basefmm else if (@fmm &gt; 0) then @fmm else ''"/>
+                  </b>
+                </xsl:if>
               </td>
             </tr>
           </xsl:for-each>
@@ -65,7 +67,7 @@
     <h3>
       <xsl:choose>
         <xsl:when test="@type='Resource'">
-          <a href="{@id}.html">
+          <a href="{lower-case(@id)}.html">
             <xsl:value-of select="concat(@type, ' ', @id)"/>
           </a>
         </xsl:when>
@@ -85,7 +87,10 @@
 	</xsl:template>
 	<xsl:template match="message">
     <li>
-      <xsl:value-of select="@display"/>
+      <span>
+        <xsl:value-of select="concat(@level, if (not(@location='')) then concat(':', @location) else '', '&#xA0;')"/>
+      </span>
+      <xsl:copy-of select="node()"/>
     </li>
 	</xsl:template>
 </xsl:stylesheet>

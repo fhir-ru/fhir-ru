@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <!-- insert xhtml content here -->
+<a name="notes"> </a>
 <h2>Notes</h2>
 <ul>
 <li>Multiple Organizations or Practitioners may provide services at a Location. These references are not kept in Location, but can be found
@@ -22,7 +23,7 @@ E.g. when a patient arrived 'by ambulance', but it is not known by which ambulan
 missing identifier, not a Location of 'kind' ambulance.</p>
 <p>
 Some of Location's data elements are only relevant when mode is 'instance' and should not be used when mode is 'kind':<br/>
-	<i>(however this information could still be included if was relevant, such as when it is a generic item, but not globally generic, eg a Burgers MU ambulance)</i>
+	<i>(however this information could still be included if was relevant, such as when it is a generic item, but not globally generic, e.g. a Burgers MU ambulance)</i>
 </p>
 <ul>
 <li>Location.identifier</li>
@@ -33,10 +34,11 @@ Some of Location's data elements are only relevant when mode is 'instance' and s
 <li>Location.managingOrganization</li>
 </ul>
 
-	<h2>Example Location Heirachy</h2>
+<a name="example"> </a>
+	<h2>Example Location Hierarchy</h2>
 	<p>
-		An example location heirachy should help give some guidance as to one example
-		of how a location heirachy could look within a fictitious Hospital.<br/>
+		An example location hierarchy should help give some guidance as to one example
+		of how a location hierarchy could look within a fictitious Hospital.<br/>
 		<i>(The nesting here would be the "part-of" structure of the location)</i>
 	</p>
 	<pre>
@@ -69,6 +71,6 @@ Mobile Services (kind)
         Ambulance AMB2 (instance)
 	</pre>
 	<p>
-		<i>Note that Wards/Departments are not part of this structure, these would form part of the Organizational Hierarchy.</i>
+		<i>Note: Wards/departments are not part of this structure - these would form part of the Organizational Hierarchy.</i>
 	</p>
 </div>

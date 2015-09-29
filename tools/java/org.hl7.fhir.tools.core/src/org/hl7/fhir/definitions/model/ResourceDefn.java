@@ -34,6 +34,8 @@ import java.util.Map;
 
 import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.xml.XMLUtil;
+import org.w3c.dom.Element;
 
 public class ResourceDefn  {
   public class StringPair {
@@ -60,6 +62,8 @@ public class ResourceDefn  {
   private String enteredInErrorStatus;
   private String fmmLevel;
   private String fmmLevelNoWarnings;
+  private String proposedOrder;
+  private String display;
 
   private List<InheritedMapping> inheritedMappings = new ArrayList<InheritedMapping>();
 
@@ -261,6 +265,39 @@ public class ResourceDefn  {
     for (Profile p : conformancePackages)
       if (p.getId().equals(id))
         return p;
+    return null;
+  }
+
+  public String getProposedOrder() {
+    return proposedOrder;
+  }
+
+  public void setProposedOrder(String proposedOrder) {
+    this.proposedOrder = proposedOrder;
+  }
+
+  public String getDisplay() {
+    return display;
+  }
+
+  public void setDisplay(String display) {
+    this.display = display;
+  }
+
+  public Example getExampleById(String id) {
+    for (Example e : examples) {
+      if (e.getId().equals(id))
+        return e;
+      if ("Bundle".equals(e.getResourceName())) {
+        List<Element> children = new ArrayList<Element>();
+        XMLUtil.getNamedChildren(e.getXml().getDocumentElement(), "entry", children);
+        for (Element c : children) {
+          Element res = XMLUtil.getFirstChild(XMLUtil.getNamedChild(c, "resource"));
+          if (id.equals(XMLUtil.getNamedChildValue(res, "id")))
+            return e;
+        }
+      }
+    }
     return null;
   }
   

@@ -35,6 +35,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,15 +59,15 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
 import org.apache.commons.io.IOUtils;
+import org.hl7.fhir.instance.formats.IParser;
 import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.OperationOutcome;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.instance.model.valuesets.IssueType;
+import org.hl7.fhir.instance.model.OperationOutcome.IssueType;
 import org.hl7.fhir.instance.model.StructureDefinition;
 import org.hl7.fhir.instance.terminologies.ValueSetExpansionCache;
 import org.hl7.fhir.instance.utils.NarrativeGenerator;
-import org.hl7.fhir.instance.utils.WorkerContext;
+import org.hl7.fhir.instance.utils.SimpleWorkerContext;
 import org.hl7.fhir.instance.validation.ValidationMessage.Source;
 import org.hl7.fhir.utilities.SchemaInputSource;
 import org.hl7.fhir.utilities.Utilities;
@@ -95,7 +96,7 @@ public class ValidationEngine {
 	private boolean noSchematron;
 	private StructureDefinition profile;
 	private String profileURI;
-	private WorkerContext context;
+	private SimpleWorkerContext context;
 	private Schema schema;
 	private byte[] schCache = null;
 	private ValueSetExpansionCache cache;
@@ -118,9 +119,12 @@ public class ValidationEngine {
 			processJson();
 	}
 	
-  private boolean isXml() {
+  private boolean isXml() throws Exception {
+  	
 	  int x = position(source, '<'); 
 	  int j = position(source, '{');
+	  if (x == Integer.MAX_VALUE && j == Integer.MAX_VALUE)
+	  	throw new Exception("Unable to interpret the content as either XML or JSON");
 	  return (x < j);
   }
 
@@ -145,7 +149,7 @@ public class ValidationEngine {
     factory.setValidating(false);
     factory.setSchema(schema);
     DocumentBuilder builder = factory.newDocumentBuilder();
-    builder.setErrorHandler(new ValidationErrorHandler(outputs));
+    builder.setErrorHandler(new ValidationErrorHandler(outputs, "XML Source"));
     Document doc = builder.parse(new ByteArrayInputStream(source));
 
     if (!noSchematron) {
@@ -191,7 +195,7 @@ public class ValidationEngine {
       outputs.addAll(validator.validate(doc));
     
 		try {
-    new XmlParser().parse(new ByteArrayInputStream(source));
+		  context.newXmlParser().parse(new ByteArrayInputStream(source));
 		} catch (Exception e) {
 			outputs.add(new ValidationMessage(Source.InstanceValidator, IssueType.STRUCTURE, -1, -1, "??", e.getMessage(), IssueSeverity.ERROR));
 		}
@@ -200,7 +204,7 @@ public class ValidationEngine {
     for (ValidationMessage vm : outputs) {
       op.getIssue().add(vm.asIssue(op));
     }
-    new NarrativeGenerator("", context).generate(op);
+    new NarrativeGenerator("", "", context).generate(op);
     outcome = op;
   }
 
@@ -236,7 +240,7 @@ public class ValidationEngine {
 		for (ValidationMessage vm : outputs) {
 			op.getIssue().add(vm.asIssue(op));
 		}
-		new NarrativeGenerator("", context).generate(op);
+		new NarrativeGenerator("", "", context).generate(op);
 		outcome = op;
 	}
 
@@ -262,7 +266,7 @@ public class ValidationEngine {
     sources[0] = new StreamSource(new ByteArrayInputStream(definitions.get("fhir-all.xsd")));
 
     SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-    schemaFactory.setErrorHandler(new ValidationErrorHandler(outputs));
+    schemaFactory.setErrorHandler(new ValidationErrorHandler(outputs, "xml source"));
     schemaFactory.setResourceResolver(new ValidatorResourceResolver(definitions));
     Schema schema = schemaFactory.newSchema(sources);
     return schema;
@@ -281,13 +285,7 @@ public class ValidationEngine {
     if (nl.getLength() > 0) {
       for (int i = 0; i < nl.getLength(); i++) {
         Element e = (Element) nl.item(i);
-        ValidationMessage o = new ValidationMessage();
-        o.setSource(Source.Schematron);
-        o.setType(IssueType.INVARIANT);
-        o.setLevel(IssueSeverity.ERROR);
-        o.setLocation(e.getAttribute("location"));
-        o.setMessage(e.getTextContent());
-        outputs.add(o);
+        outputs.add(new ValidationMessage(Source.Schematron, IssueType.INVARIANT, e.getAttribute("location"), e.getTextContent(), IssueSeverity.ERROR));
       }
     }
   }
@@ -333,11 +331,11 @@ public class ValidationEngine {
   }
 
   public void init() throws Exception {
-    context = WorkerContext.fromDefinitions(definitions);    
+		context = SimpleWorkerContext.fromDefinitions(definitions);    
 		schema = readSchema();
   }
 
-  public WorkerContext getContext() {
+  public SimpleWorkerContext getContext() {
     return context;
 	}
 
@@ -393,15 +391,15 @@ public class ValidationEngine {
 	public void loadProfile(String profile) throws Exception {
 		if (!Utilities.noString(profile)) { 
 	    System.out.println("  .. load profile "+profile);
-			if (getContext().getProfiles().containsKey(profile))
-				setProfile(getContext().getProfiles().get(profile));
+			if (getContext().hasResource(StructureDefinition.class, profile))
+				setProfile(getContext().fetchResource(StructureDefinition.class, profile));
 			else
 				setProfile(readProfile(loadProfileCnt(profile)));
 		}
 	}
 
 	private StructureDefinition readProfile(byte[] content) throws Exception {
-		XmlParser xml = new XmlParser(true);
+		IParser xml = context.newXmlParser();
 		return (StructureDefinition) xml.parse(new ByteArrayInputStream(content));
 	}
 
@@ -438,6 +436,11 @@ public class ValidationEngine {
 
 	public void setAnyExtensionsAllowed(boolean anyExtensionsAllowed) {
 		this.anyExtensionsAllowed = anyExtensionsAllowed;
+	}
+
+	public void connectToTSServer(String url) throws URISyntaxException {
+    System.out.println("  .. connect to terminology server "+url);
+    context.connectToTSServer(url);
 	}
 
 

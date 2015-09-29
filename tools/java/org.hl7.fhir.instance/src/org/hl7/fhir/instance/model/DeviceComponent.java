@@ -29,11 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.instance.model.Enumerations.*;
 import org.hl7.fhir.instance.model.annotations.ResourceDef;
 import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;
 import org.hl7.fhir.instance.model.annotations.Child;
@@ -48,47 +49,47 @@ public class DeviceComponent extends DomainResource {
 
     public enum MeasmntPrinciple {
         /**
-         * Measurement principle isn't in the list
+         * Measurement principle isn't in the list.
          */
         OTHER, 
         /**
-         * Measurement is done using chemical
+         * Measurement is done using the chemical principle.
          */
         CHEMICAL, 
         /**
-         * Measurement is done using electrical
+         * Measurement is done using the electrical principle.
          */
         ELECTRICAL, 
         /**
-         * Measurement is done using impedance
+         * Measurement is done using the impedance principle.
          */
         IMPEDANCE, 
         /**
-         * Measurement is done using nuclear
+         * Measurement is done using the nuclear principle.
          */
         NUCLEAR, 
         /**
-         * Measurement is done using optical
+         * Measurement is done using the optical principle.
          */
         OPTICAL, 
         /**
-         * Measurement is done using thermal
+         * Measurement is done using the thermal principle.
          */
         THERMAL, 
         /**
-         * Measurement is done using biological
+         * Measurement is done using the biological principle.
          */
         BIOLOGICAL, 
         /**
-         * Measurement is done using mechanical
+         * Measurement is done using the mechanical principle.
          */
         MECHANICAL, 
         /**
-         * Measurement is done using acoustical
+         * Measurement is done using the acoustical principle.
          */
         ACOUSTICAL, 
         /**
-         * Measurement is done using manual
+         * Measurement is done using the manual principle.
          */
         MANUAL, 
         /**
@@ -156,33 +157,33 @@ public class DeviceComponent extends DomainResource {
         }
         public String getDefinition() {
           switch (this) {
-            case OTHER: return "Measurement principle isn't in the list";
-            case CHEMICAL: return "Measurement is done using chemical";
-            case ELECTRICAL: return "Measurement is done using electrical";
-            case IMPEDANCE: return "Measurement is done using impedance";
-            case NUCLEAR: return "Measurement is done using nuclear";
-            case OPTICAL: return "Measurement is done using optical";
-            case THERMAL: return "Measurement is done using thermal";
-            case BIOLOGICAL: return "Measurement is done using biological";
-            case MECHANICAL: return "Measurement is done using mechanical";
-            case ACOUSTICAL: return "Measurement is done using acoustical";
-            case MANUAL: return "Measurement is done using manual";
+            case OTHER: return "Measurement principle isn't in the list.";
+            case CHEMICAL: return "Measurement is done using the chemical principle.";
+            case ELECTRICAL: return "Measurement is done using the electrical principle.";
+            case IMPEDANCE: return "Measurement is done using the impedance principle.";
+            case NUCLEAR: return "Measurement is done using the nuclear principle.";
+            case OPTICAL: return "Measurement is done using the optical principle.";
+            case THERMAL: return "Measurement is done using the thermal principle.";
+            case BIOLOGICAL: return "Measurement is done using the biological principle.";
+            case MECHANICAL: return "Measurement is done using the mechanical principle.";
+            case ACOUSTICAL: return "Measurement is done using the acoustical principle.";
+            case MANUAL: return "Measurement is done using the manual principle.";
             default: return "?";
           }
         }
         public String getDisplay() {
           switch (this) {
-            case OTHER: return "msp-other";
-            case CHEMICAL: return "msp-chemical";
-            case ELECTRICAL: return "msp-electrical";
-            case IMPEDANCE: return "msp-impedance";
-            case NUCLEAR: return "msp-nuclear";
-            case OPTICAL: return "msp-optical";
-            case THERMAL: return "msp-thermal";
-            case BIOLOGICAL: return "msp-biological";
-            case MECHANICAL: return "msp-mechanical";
-            case ACOUSTICAL: return "msp-acoustical";
-            case MANUAL: return "msp-manual";
+            case OTHER: return "MSP Other";
+            case CHEMICAL: return "MSP Chemical";
+            case ELECTRICAL: return "MSP Electrical";
+            case IMPEDANCE: return "MSP Impedance";
+            case NUCLEAR: return "MSP Nuclear";
+            case OPTICAL: return "MSP Optical";
+            case THERMAL: return "MSP Thermal";
+            case BIOLOGICAL: return "MSP Biological";
+            case MECHANICAL: return "MSP Mechanical";
+            case ACOUSTICAL: return "MSP Acoustical";
+            case MANUAL: return "MSP Manual";
             default: return "?";
           }
         }
@@ -249,21 +250,21 @@ public class DeviceComponent extends DomainResource {
         /**
          * Describes the specification type, such as, serial number, part number, hardware revision, software revision, etc.
          */
-        @Child(name = "specType", type = {CodeableConcept.class}, order=1, min=0, max=1)
+        @Child(name = "specType", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Specification type", formalDefinition="Describes the specification type, such as, serial number, part number, hardware revision, software revision, etc." )
         protected CodeableConcept specType;
 
         /**
          * Describes the internal component unique identification. This is a provision for manufacture specific standard components using a private OID. 11073-10101 has a partition for private OID semantic that the manufacture can make use of.
          */
-        @Child(name = "componentId", type = {Identifier.class}, order=2, min=0, max=1)
+        @Child(name = "componentId", type = {Identifier.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Internal component unique identification", formalDefinition="Describes the internal component unique identification. This is a provision for manufacture specific standard components using a private OID. 11073-10101 has a partition for private OID semantic that the manufacture can make use of." )
         protected Identifier componentId;
 
         /**
          * Describes the printable string defining the component.
          */
-        @Child(name = "productionSpec", type = {StringType.class}, order=3, min=0, max=1)
+        @Child(name = "productionSpec", type = {StringType.class}, order=3, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="A printable string defining the component", formalDefinition="Describes the printable string defining the component." )
         protected StringType productionSpec;
 
@@ -420,28 +421,28 @@ public class DeviceComponent extends DomainResource {
     /**
      * Describes the specific component type as defined in the object-oriented or metric nomenclature partition.
      */
-    @Child(name = "type", type = {CodeableConcept.class}, order=0, min=1, max=1)
+    @Child(name = "type", type = {CodeableConcept.class}, order=0, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="What kind of component it is", formalDefinition="Describes the specific component type as defined in the object-oriented or metric nomenclature partition." )
     protected CodeableConcept type;
 
     /**
      * Describes the local assigned unique identification by the software. For example: handle ID.
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=1, min=1, max=1)
+    @Child(name = "identifier", type = {Identifier.class}, order=1, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Instance id assigned by the software stack", formalDefinition="Describes the local assigned unique identification by the software. For example: handle ID." )
     protected Identifier identifier;
 
     /**
      * Describes the timestamp for the most recent system change which includes device configuration or setting change.
      */
-    @Child(name = "lastSystemChange", type = {InstantType.class}, order=2, min=1, max=1)
+    @Child(name = "lastSystemChange", type = {InstantType.class}, order=2, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Recent system change timestamp", formalDefinition="Describes the timestamp for the most recent system change which includes device configuration or setting change." )
     protected InstantType lastSystemChange;
 
     /**
      * Describes the link to the source Device that contains administrative device information such as manufacture, serial number, etc.
      */
-    @Child(name = "source", type = {Device.class}, order=3, min=0, max=1)
+    @Child(name = "source", type = {Device.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="A source device of this component", formalDefinition="Describes the link to the source Device that contains administrative device information such as manufacture, serial number, etc." )
     protected Reference source;
 
@@ -453,7 +454,7 @@ public class DeviceComponent extends DomainResource {
     /**
      * Describes the link to the parent resource. For example: Channel is linked to its VMD parent.
      */
-    @Child(name = "parent", type = {DeviceComponent.class}, order=4, min=0, max=1)
+    @Child(name = "parent", type = {DeviceComponent.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Parent resource link", formalDefinition="Describes the link to the parent resource. For example: Channel is linked to its VMD parent." )
     protected Reference parent;
 
@@ -465,35 +466,35 @@ public class DeviceComponent extends DomainResource {
     /**
      * Indicates current operational status of the device. For example: On, Off, Standby, etc.
      */
-    @Child(name = "operationalStatus", type = {CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "operationalStatus", type = {CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Component operational status", formalDefinition="Indicates current operational status of the device. For example: On, Off, Standby, etc." )
     protected List<CodeableConcept> operationalStatus;
 
     /**
-     * Describes the parameter group supported by the current device component that is based on some nomenclature, e.g., cardiovascular.
+     * Describes the parameter group supported by the current device component that is based on some nomenclature, e.g. cardiovascular.
      */
-    @Child(name = "parameterGroup", type = {CodeableConcept.class}, order=6, min=0, max=1)
-    @Description(shortDefinition="Current supported parameter group", formalDefinition="Describes the parameter group supported by the current device component that is based on some nomenclature, e.g., cardiovascular." )
+    @Child(name = "parameterGroup", type = {CodeableConcept.class}, order=6, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Current supported parameter group", formalDefinition="Describes the parameter group supported by the current device component that is based on some nomenclature, e.g. cardiovascular." )
     protected CodeableConcept parameterGroup;
 
     /**
      * Describes the physical principle of the measurement. For example: thermal, chemical, acoustical, etc.
      */
-    @Child(name = "measurementPrinciple", type = {CodeType.class}, order=7, min=0, max=1)
+    @Child(name = "measurementPrinciple", type = {CodeType.class}, order=7, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="other | chemical | electrical | impedance | nuclear | optical | thermal | biological | mechanical | acoustical | manual+", formalDefinition="Describes the physical principle of the measurement. For example: thermal, chemical, acoustical, etc." )
     protected Enumeration<MeasmntPrinciple> measurementPrinciple;
 
     /**
      * Describes the production specification such as component revision, serial number, etc.
      */
-    @Child(name = "productionSpecification", type = {}, order=8, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "productionSpecification", type = {}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Production specification of the component", formalDefinition="Describes the production specification such as component revision, serial number, etc." )
     protected List<DeviceComponentProductionSpecificationComponent> productionSpecification;
 
     /**
      * Describes the language code for the human-readable text string produced by the device. This language code will follow the IETF language tag. Example: en-US.
      */
-    @Child(name = "languageCode", type = {CodeableConcept.class}, order=9, min=0, max=1)
+    @Child(name = "languageCode", type = {CodeableConcept.class}, order=9, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Language code for the human-readable text strings produced by the device", formalDefinition="Describes the language code for the human-readable text string produced by the device. This language code will follow the IETF language tag. Example: en-US." )
     protected CodeableConcept languageCode;
 
@@ -738,7 +739,7 @@ public class DeviceComponent extends DomainResource {
     }
 
     /**
-     * @return {@link #parameterGroup} (Describes the parameter group supported by the current device component that is based on some nomenclature, e.g., cardiovascular.)
+     * @return {@link #parameterGroup} (Describes the parameter group supported by the current device component that is based on some nomenclature, e.g. cardiovascular.)
      */
     public CodeableConcept getParameterGroup() { 
       if (this.parameterGroup == null)
@@ -754,7 +755,7 @@ public class DeviceComponent extends DomainResource {
     }
 
     /**
-     * @param value {@link #parameterGroup} (Describes the parameter group supported by the current device component that is based on some nomenclature, e.g., cardiovascular.)
+     * @param value {@link #parameterGroup} (Describes the parameter group supported by the current device component that is based on some nomenclature, e.g. cardiovascular.)
      */
     public DeviceComponent setParameterGroup(CodeableConcept value) { 
       this.parameterGroup = value;
@@ -882,7 +883,7 @@ public class DeviceComponent extends DomainResource {
         childrenList.add(new Property("source", "Reference(Device)", "Describes the link to the source Device that contains administrative device information such as manufacture, serial number, etc.", 0, java.lang.Integer.MAX_VALUE, source));
         childrenList.add(new Property("parent", "Reference(DeviceComponent)", "Describes the link to the parent resource. For example: Channel is linked to its VMD parent.", 0, java.lang.Integer.MAX_VALUE, parent));
         childrenList.add(new Property("operationalStatus", "CodeableConcept", "Indicates current operational status of the device. For example: On, Off, Standby, etc.", 0, java.lang.Integer.MAX_VALUE, operationalStatus));
-        childrenList.add(new Property("parameterGroup", "CodeableConcept", "Describes the parameter group supported by the current device component that is based on some nomenclature, e.g., cardiovascular.", 0, java.lang.Integer.MAX_VALUE, parameterGroup));
+        childrenList.add(new Property("parameterGroup", "CodeableConcept", "Describes the parameter group supported by the current device component that is based on some nomenclature, e.g. cardiovascular.", 0, java.lang.Integer.MAX_VALUE, parameterGroup));
         childrenList.add(new Property("measurementPrinciple", "code", "Describes the physical principle of the measurement. For example: thermal, chemical, acoustical, etc.", 0, java.lang.Integer.MAX_VALUE, measurementPrinciple));
         childrenList.add(new Property("productionSpecification", "", "Describes the production specification such as component revision, serial number, etc.", 0, java.lang.Integer.MAX_VALUE, productionSpecification));
         childrenList.add(new Property("languageCode", "CodeableConcept", "Describes the language code for the human-readable text string produced by the device. This language code will follow the IETF language tag. Example: en-US.", 0, java.lang.Integer.MAX_VALUE, languageCode));

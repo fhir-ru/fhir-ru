@@ -83,6 +83,11 @@ public class XSDGenerator  {
 		  write(Config.FULL_LICENSE_CODE);
 		  write("\r\n");
 		  write("  Generated on "+genDate+" for FHIR v"+version+" \r\n");
+      write("\r\n");
+      write("  Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources\r\n");
+      write("  valid. Implementers will still need to be familiar with the content of the specification and with\r\n");
+      write("  any profiles that apply to the resources in order to make a conformant implementation.\r\n");
+      write("\r\n");
 		  write("-->\r\n");
 		  write("<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://hl7.org/fhir\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" "+
 		      "targetNamespace=\"http://hl7.org/fhir\" elementFormDefault=\"qualified\" version=\"1.0\">\r\n");
@@ -115,8 +120,8 @@ public class XSDGenerator  {
 		write("  <xs:simpleType name=\""+en+"-list\">\r\n");
 		write("    <xs:restriction base=\"xs:string\">\r\n");
 		ValueSet vs = enums.get(en);
-    if (vs.hasDefine()) {
-      for (ConceptDefinitionComponent c : vs.getDefine().getConcept()) {
+    if (vs.hasCodeSystem()) {
+      for (ConceptDefinitionComponent c : vs.getCodeSystem().getConcept()) {
         genDefinedCode(c);
       }
     }
@@ -269,7 +274,7 @@ public class XSDGenerator  {
 			else
 				for (TypeRef t : e.getTypes()) {
 					String tn = encodeType(e, t, true);
-					String n = e.getName().replace("[x]", tn.toUpperCase().substring(0, 1) + tn.substring(1));
+					String n = e.getName().replace("[x]", nameForType(tn));
 					if (t.getName().equals("Reference"))
  	          n = e.getName().replace("[x]", "Reference");
   			  write("            <xs:element name=\""+n+"\" type=\""+encodeType(e, t, true)+"\""+close+"\r\n");
@@ -326,7 +331,14 @@ public class XSDGenerator  {
 		}
 	}
 
-	private void scanTypes(ElementDefn root, ElementDefn focus) {
+	private CharSequence nameForType(String type) {
+	  if (definitions.getConstraints().containsKey(type))
+      return definitions.getConstraints().get(type).getBaseType();
+    else 
+      return Utilities.capitalize(type);
+	 }
+
+  private void scanTypes(ElementDefn root, ElementDefn focus) {
 	  for (ElementDefn e : focus.getElements()) {
 	    if (e.getTypes().size() == 0 && e.getElements().size() > 0) {
         int i = 0;

@@ -1,24 +1,29 @@
-<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/valueset.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
   <name value="Example Service/Product Codes"/>
-  <publisher value="Financial Management"/>
-  <copyright value="This is an example set"/>
   <status value="draft"/>
+  <publisher value="Financial Management"/>
   <contact>
     <telecom>
-    <system value="url"/>
-    <value value="http://hl7.org/fhir"/>
-  </telecom>
+      <system value="other"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
   </contact>
-  <description value="This value set includes a smattering of Service/Product codes"/>
-  <status value="draft"/>
-  <define>
+  <description value="This value set includes a smattering of Service/Product codes."/>
+  <copyright value="This is an example set."/>
+  <codeSystem>
     <system value="http://hl7.org/fhir/ex-serviceproduct"/>
-    <caseSensitive value="true"/>      
+    <caseSensitive value="true"/>
     <concept>
       <code value="exam"/>
+      <display value="Exam"/>
+      <definition value="Exam"/>
     </concept>
     <concept>
       <code value="flushot"/>
+      <display value="Flu shot"/>
+      <definition value="Flu shot"/>
     </concept>
-  </define>
+  </codeSystem>
 </ValueSet>

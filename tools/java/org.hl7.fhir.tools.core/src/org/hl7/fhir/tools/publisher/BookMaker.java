@@ -39,7 +39,7 @@ import java.util.Set;
 
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.instance.model.valuesets.IssueType;
+import org.hl7.fhir.instance.model.OperationOutcome.IssueType;
 import org.hl7.fhir.instance.validation.ValidationMessage;
 import org.hl7.fhir.instance.validation.ValidationMessage.Source;
 import org.hl7.fhir.utilities.TextFile;
@@ -76,7 +76,7 @@ public class BookMaker {
     checkCrossLinks();
     
     String src = TextFile.fileToString(page.getFolders().srcDir+"book.html");
-    src = page.processPageIncludes(page.getFolders().srcDir+"book.html", src, "book", null, null, null, "Book");
+    src = page.processPageIncludes(page.getFolders().srcDir+"book.html", src, "book", null, null, null, "Book", null);
     XhtmlDocument doc = new XhtmlParser().parse(src, "html");
     XhtmlNode body = doc.getElement("html").getElement("body");
     addTOC(body);   

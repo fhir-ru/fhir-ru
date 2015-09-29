@@ -9,9 +9,8 @@
 
 <div class="col-9">
 
-<%txheader service%>
-
 <h2>Terminology Service</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
 This specification includes support for the provision of a terminology service - that is, a
@@ -41,7 +40,7 @@ This specification does not require any particular approach to security.
 <h3>Basic Concepts</h3>
 <p>
 A FHIR terminology service is simply a set of functions built on the definitions
-provided by a set of <a href="valueset.html">ValueSet</a> and
+provided by a collection of <a href="valueset.html">ValueSet</a> and
 <a href="conceptmap.html">ConceptMap</a> resources, with additional inherently known terminologies providing support.
 </p>
 <p>
@@ -58,17 +57,17 @@ In addition, implementers should be familiar with the <a href="operations.html">
 framework</a>. Further useful information may be found in:
 </p>
 <ul>
- <li>Underlying Principles: <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">V3 Core Principles</a></li>
+ <li>Underlying Principles: <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a></li>
  <li>SNOMED CT <a href="http://ihtsdo.org/fileadmin/user_upload/doc/">technical documentation</a>. Note: "namespace" is used differently here from the way it is used by IHTSDO (see <a href="terminologies.html">discussion here</a>)</li>
 </ul>
 
 <h4>External Code Systems</h4>
 <p>
-In order to be used with a value set, codes must be defined somewhere. They can be defined as part of
-an <a href="valueset.html#define">inline code system definition</a>, or they can be defined elsewhere,
+In order to be used with a value set, code systems must be defined somewhere. They can be defined as part of
+an <a href="valueset.html#codeSystem">inline code system definition</a>, or they can be defined elsewhere,
 and then used in a value set by quoting the correct namespace. The FHIR specification defines a <a href="terminologies-systems.html">set of
 namespaces</a> for commonly encountered code systems, and defines how some work with FHIR (e.g.
-<a href="snomedct.html">SNOMED-CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorm.html">RxNorm</a>).
+<a href="snomedct.html">SNOMED CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorm.html">RxNorm</a>).
 These code systems are often large, and have many internally defined properties that are part of their
 formal definitions. Inline code systems in Value Set resources are not an appropriate way to define
 these code systems; FHIR does not provide a formal representation at all. Instead, these terminologies
@@ -82,14 +81,14 @@ beyond those defined in its value sets is published to clients by (still to figu
 </p>
 <p>
 A server SHOULD publish the additional code systems that it supports through intrinsic knowledge
-using the <a href="extension-conformance-common-supported-system.html">http://hl7.org/fhir/StructureDefinition/conformance-common-supported-system extension:</a>
+using the <a href="extension-conformance-supported-system.html">http://hl7.org/fhir/StructureDefinition/conformance-supported-system extension:</a>
 </p>
 <pre class="json">
 {
  "resourceType" : "Conformance",
  "extension" : [
    { 
-     "url" : "http://hl7.org/fhir/StructureDefinition/conformance-common-supported-system",
+     "url" : "http://hl7.org/fhir/StructureDefinition/conformance-supported-system",
      "valueUri" : "http://loinc.org" 
    }]  
 }
@@ -111,8 +110,8 @@ logical information for a terminology:
 </ul>
 <p>
 The FHIR specification itself defines these things for common terminologies (including
-<a href="snomedct.html">SNOMED-CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorm.html">RxNorm</a>),
-and provides the Value Set infrastructure for supporting typical relatively simple small code systems.
+<a href="snomedct.html">SNOMED CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorm.html">RxNorm</a>),
+  and provides the <a href="valueset.html">ValueSet</a> infrastructure for supporting typical relatively simple small code systems.
 </p>
 <p>
 <i>Implementers Note: Implementers interested in working with existing published terminologies for
@@ -126,6 +125,7 @@ related functionality such as exploration, or structured search, but these servi
 outside the scope of the FHIR terminology service.
 </p>
 
+<a name="all"> </a>
 <h4>Operations across all value sets</h4>
 <p>
 For some of the operations below, it can be useful to perform them across all value sets known to the system.
@@ -137,7 +137,7 @@ http://hl7.org/fhir/ValueSet/@all
 </pre>
 <p>
 Technically, this value set automatically imports all the existing value sets on the server.
-Note that this URL has no fixed meaning - it's interpretation is server specific. This URL 
+Note that this URL has no fixed meaning - its interpretation is server specific. This URL 
 can only be used as a parameter to the operations described on this page. 
 </p>
 
@@ -175,7 +175,7 @@ As a summary, the client passes the server the following information:
 The server returns a value set that contains the current list of codes that meet the filter criteria (or an
 <a href="operationoutcome.html">OperationOutcome</a> with an error if the expansion fails).
 Note that some value sets expand to many thousands of codes, or even an infinite number,
-and for these, the server SHOULD return an <a href="issue-type.html#too-costly">error code
+and for these, the server SHOULD return an <a href="valueset-issue-type.html#too-costly">error code
 <i>too-costly</i></a>. In these cases the client can try again with a more specific text filter
 to reduce the number of codes returned.
 </p>
@@ -188,8 +188,8 @@ in a set of partial views, in order to present the most optimal user experience.
 The client specifies both an offset and a count - how many codes per page, and where in the sequence 
 to start. The return expansion specifies the number of concepts in the expansion, and the offset 
 at which this partial view starts. Note that all expansions SHOULD include the total code count,
-but the offset element SHALL only exist when paging is being used. Expansions that are heirarchical 
-trees of concepts are not subject to paging, and the server simply returns the entire expansion.
+but the offset element SHALL only exist when paging is being used. Expansions that are hierarchical 
+trees of concepts are not subject to paging and the server simply returns the entire expansion.
 </p>
 <p>
 Some example uses for the expansion operation:
@@ -205,7 +205,7 @@ Some example uses for the expansion operation:
 <div class="example">
 <p><b>Examples</b></p>
 <p>
-Expanding a value set that is already registered on the server as "23", with a text filter of "abdo" :
+Expanding a value set that is already registered on the server as "23", with a text filter of "abdo":
 </p>
 <pre class="http">
 GET [base]/ValueSet/23/$expand?filter=abdo
@@ -262,20 +262,20 @@ combination using <a href="valueset-operations.html#lookup">the lookup operation
 purposes. The client passes the server the following information:
 </p>
 <ul>
- <li> the code value (either a code+system, or a Coding data type</li>
+ <li> the code value (either a code + system, or a Coding data type)</li>
  <li> (Optionally) a date at which the code information should be returned (usually, this is the current date/time, but there are circumstances where that is not appropriate)</li>
 </ul>
 <p>
 The server returns the following information:
 </p>
 <ul>
- <li> A human description of the system</li>
- <li> A recommended display for the code </li>
- <li> Whether the code is abstract or not</li>
- <li> Other designations for the code (a value, optionally with language and/or a use code)</li>
+ <li> a human description of the system</li>
+ <li> a recommended display for the code </li>
+ <li> whether the code is abstract or not</li>
+ <li> other designations for the code (a value, optionally with language and/or a use code)</li>
 </ul>
 <p>
-The recommended display to the code is a text representation of the code
+The recommended display for the code is a text representation of the code
 that the terminology server recommends as the default choice to show
 to the user, though a  client may choose out of the other designations if it has reason to.
 </p>
@@ -283,7 +283,7 @@ to the user, though a  client may choose out of the other designations if it has
 <div class="example">
 <p><b>Examples</b></p>
 <p>
-Looking up a code/system :
+Looking up a code/system:
 </p>
 <pre class="http">
 GET [base]/ValueSet/$lookup?system=http://loinc.org&amp;code=1963-8
@@ -355,7 +355,7 @@ provides <a href="valueset-operations.html#validate-code">a "validate-code" oper
 </p>
 <ul>
  <li> the value set (either by its URL on the RESTful interface, by its logical identifier <a href="valueset-definitions.html#ValueSet.url">(ValueSet.url)</a>, or directly as a parameter to the call)</li>
- <li> the code value (either a code+system, a Coding data type, or a CodeableConcept</li>
+ <li> the code value (either a code + system, a Coding data type, or a CodeableConcept</li>
  <li> (Optionally) a date at which the expansion should be evaluated (usually, this is the current date/time, but there are circumstances where that is not appropriate)</li>
 </ul>
 <p>
@@ -371,7 +371,7 @@ multiple codings are allowed and/or the codings provided are consistent with eac
 <p>
 Every code system has an implicit value set that is "all the concepts defined
 in the code system". For some code systems, these value set URIs are defined
-in advance (e.g. for <a href="loinc.html">LOINC</a>, it's <code>http://loinc.org/vs</code>).
+in advance (e.g. for <a href="loinc.html">LOINC</a>, it is <code>http://loinc.org/vs</code>).
 However for some code systems, they are not known. Clients can refer to these implicit
 value sets by providing the URI for the code system itself.
 </p>
@@ -447,7 +447,7 @@ The Expand and Validate operations can be used to perform subsumption testing. T
 <i>code A</i> subsumes <i>code B</i>, perform a validate specifying a value set built of all the
 codes that are subsumed by <i>code A</i>, and test whether <i>code B</i> is subsumed by it.
 Note that a server is allowed (and SHOULD, but is not required to) consider concept maps when
-doing subsumption testing. E.g. if A is a LOINC code, and it has a precise mapping to a
+doing subsumption testing. For example if A is a LOINC code, and it has a precise mapping to a
 SNOMED CT code that subsumes B, with an appropriate scope, then the server can indicate
 that this it is true that LOINC code A subsumes SNOMED CT code B.
 </p>
@@ -460,7 +460,7 @@ codes subsumed by a code.
 <div class="example">
 <p><b>Examples</b></p>
 <p>
-Test whether a Snomed Concept 399211009 (History of myocardial infarction) is subsumed by 22298006 (Myocardial infarction):
+Test whether a SNOMED CT Concept 399211009 (History of myocardial infarction) is subsumed by 22298006 (Myocardial infarction):
 </p>
 <pre class="http">
 GET [base]/ValueSet/$validate-code?system=http://snomed.info/sct&amp;code=399211009&amp;identifier=http://snomed.info/sct?fhir_vs%3Disa/22298006
@@ -487,73 +487,38 @@ HTTP/1.1 200 OK
 <h3>Batch Validation</h3>
 
 <p>
-It's also possible to validate a set of concepts against their relevant value
-sets in <a href="valueset-operations.html#batch-validate">a single batch operation</a>, to support high-volume process and reduce network
-latency effects. In this case, the client passes the server the following information:
-</p>
-<ul>
- <li> a series of pairs of parameters, where each pair contains</li>
- <li> a CodeableConcept containing the concept to be validated</li>
- <li> a URI referring to the value set against which the code should be validated</li>
- <li> (Optionally) a date at which the expansion should be evaluated (usually, this is the current date/time, but there are circumstances where that is not appropriate)</li>
-</ul>
-<p>
-Code system URIs may be used to refer to the implicit value set that includes
-all the codes in the code system  (as described for the validation operation).
-</p>
-
-<p>
-The server returns a series of parameters, one for each submitted item, each of
-which has a result, a message, and a display (same as for the $validate-code operation).
-</p>
-<p>
-This operation could be used, for instance, to validate a set of codes in a
-CDA document, by converting from the CDA CD data type to CodeableConcepts.
+It is also possible to validate a set of concepts against their relevant value
+sets by using the <code>$validate-code</code> operation in a <a href="http.html#batch">Batch</a> 
+interaction.
 </p>
 
 <div class="example">
-<p><b>Examples</b></p>
+<p><b>Example</b></p>
 <p>
-A request to validate 2 concepts from a CDA document, with OIDs for value set identifiers:
+A request to validate 2 concepts from a <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> document, with OIDs for value set identifiers:
 </p>
 <pre class="http">
-POST [base]/ValueSet/$batch-validate
+POST [base]
 [other headers]
 
 {
-  "ResourceType" : "Parameters",
-  "parameter" : [
-    {
-    "name" : "item",
-    "part" : [
-      {
-      "name" : "concept",
-      "valueCodeableConcept" : {
-        "system" : "http://loinc.org",
-        "code" : "2324-4"
-      },
+  "ResourceType": "Bundle",
+  "type": "batch",
+  "entry": [{
+    "request": {
+      "method": "Get",
+      "url": "ValueSet?system=http://loinc.org&amp;code=2324-4&amp;uri=urn:oid:1.2.3.4.6"
     }
-      "name" : "uri",
-      "valueUri" : "urn:oid:1.2.3.4.6"
-    ]
   },
   {
-    "name" : "item",
-    "part" : [
-      {
-      "name" : "concept",
-      "valueCodeableConcept" : {
-        "system" : "http://snomed.info/sct",
-        "code" : "22298006"
-      },
+    "request": {
+      "method": "GET",
+      "url": "ValueSet?system=http://snomed.info/sct&amp;codes=22298006&amp;uri=urn:oid:1.2.3.4.7"
     }
-      "name" : "uri",
-      "valueUri" : "urn:oid:1.2.3.4.7"
-    ]
-  }
-  ]
+  }]
 }
 </pre>
+
 <p>
 The server responds with a series of validation outcomes (JSON this time):
 </p>
@@ -562,54 +527,54 @@ HTTP/1.1 200 OK
 [other headers]
 
 {
-  "resourceType" : "Parameters",
-  "parameter" : [
-    {
-      "name" : "item",
-      "part" : [
-        {
-        "name" : "result",
-        "valueBoolean" : "false"
+  "ResourceType": "Bundle",
+  "type": "batch-response",
+  "entry": [{
+    "resource": {
+      "resourceType": "Parameters",
+      "parameter": [{
+        "name": "result",
+        "valueBoolean": "false"
       },
       {
-        "name" : "message",
-        "valueString" : "'2324-4' is not a valid LOINC code"
-      }
-    ]
+        "name": "message",
+        "valueString": "'2324-4' is not a valid LOINC code"
+      }]
+    }
   },
   {
-      "name" : "item",
-      "part" : [
-        {
-        "name" : "result",
-        "valueBoolean" : "false"
+    "resource": {
+      "resourceType": "Parameters",
+      "parameter": [{
+        "name": "result",
+        "valueBoolean": "false"
       },
       {
-        "name" : "message",
-        "valueString" : "The concept is not in the specified value set (\"Organisms\")"
+        "name": "message",
+        "valueString": "The concept is not in the specified value set (\"Organisms\")"
       },
       {
-        "name" : "display",
-        "valueString" : "Myocardial infarction"
-      }
-    ]
-  }]
-}
+        "name": "display",
+        "valueString": "Myocardial infarction"
+      }]
+    }]
+  }
 </pre>
+
 </div>
 
 
 <h3>Translations</h3>
 <p>
 A client can ask a server to translate a concept from one value set to another. Typically, this
-is used to translate between code systems (e.g. from LOINC to SNOMED CT, or from a v3 code to
-a v2 code). The client calls <a href="conceptmap-operations.html#translate">the translate operation</a> and passes the following parameters:
+is used to translate between code systems (e.g. from LOINC to SNOMED CT, or from a <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 V3</a> code to
+a <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 V2</a> code). The client calls <a href="conceptmap-operations.html#translate">the translate operation</a> and passes the following parameters:
 </p>
 <ul>
-  <li>A code+system, Coding, or CodeableConcept</li>
-  <li>A Concept Map to use for the translation</li>
-  <li>The value set for the context of the source </li>
-  <li>The value set for the destination</li>
+  <li>a code + system, Coding, or CodeableConcept</li>
+  <li>a Concept Map to use for the translation</li>
+  <li>the value set for the context of the source </li>
+  <li>the value set for the destination</li>
 </ul>
 <p>
 The client passes either a concept map, or the value sets for the source and destination context.
@@ -625,13 +590,13 @@ server returns an error. Some servers may require a concept map to use for the t
 <div class="example">
 <p><b>Example</b></p>
 <p>
-Translate from FHIR Composition status to V3 Act Status (based on
+Translate from FHIR Composition status to <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> Act Status (based on
 <a href="composition-status-map-v3.html">this defined concept map</a>:
 </p>
 <pre class="http">
 GET [base]/ConceptMap/$translate?system=http://hl7.org/fhir/composition-status
-  &amp;code=preliminary&amp;valueSet= http://hl7.org/fhir/vs/composition-status
-  &amp;target=http://hl7.org/fhir/v3/vs/ActStatus
+  &amp;code=preliminary&amp;valueSet= http://hl7.org/fhir/ValueSet/composition-status
+  &amp;target=http://hl7.org/fhir/ValueSet/v3-ActStatus
 </pre>
 <p>
 The server responds with validation information:
@@ -663,107 +628,110 @@ HTTP/1.1 200 OK
 <h3>Batch Translation</h3>
 
 <p>
-It's also possible to translate a set of concepts in <a href="conceptmap-operations.html#batch-translate">a single batch operation</a>, to support high-volume process and reduce network
-latency effects. In this case, the client passes the server the following information:
-</p>
-<ul>
- <li> a series of parameter tuples, where each pair contains</li>
- <li> a CodeableConcept containing the concept to be translated</li>
- <li> a URI that identifies the target value set into which to translate the concept</li>
- <li> (optional) A reference to a particular map to use for the translation </li>
-</ul>
-
-<p>
-The server returns a series of parameters, one for each submitted item, each of
-which has a result, a message, and an outcome (same as for the $translate operation).
+It is also possible to validate a set of concepts against their relevant value
+sets by using the <code>$translate</code> operation in a <a href="http.html#batch">Batch</a> 
+interaction.
 </p>
 
 <div class="example">
-<p><b>Examples</b></p>
+<p><b>Example</b></p>
 <p>
-A request to translate 2 concepts from a CDA document, with OIDs for value set identifiers:
+A request to translate 2 concepts from a <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> document, with OIDs for value set identifiers:
 </p>
 <pre class="http">
-POST [base]/ConceptMap/$batch-translate
+POST [base]
 [other headers]
 
 {
-  "ResourceType" : "Parameters",
-  "parameter" : [
-    {
-    "name" : "item",
-    "part" : [
-      {
-      "name" : "concept",
-      "valueCodeableConcept" : {
-        "system" : "http://loinc.org",
-        "code" : "2324-4"
+  "ResourceType": "Bundle",
+  "type": "batch",
+  "entry": [{
+    "resource": {
+      "ResourceType": "Parameters",
+      "parameter": [{
+        "name": "concept",
+        "valueCodeableConcept": {
+          "system": "http://loinc.org",
+          "code": "2324-4"
+        }
       },
+      {
+        "name": "target",
+        "valueUri": "urn:oid:1.2.3.4.6"
+      }]
+    },
+    "request": {
+      "method": "POST",
+      "url": "ConceptMap/$translate"
     }
-      "name" : "target",
-      "valueUri" : "urn:oid:1.2.3.4.6"
-    ]
   },
   {
-    "name" : "item",
-    "part" : [
-      {
-      "name" : "concept",
-      "valueCodeableConcept" : {
-        "system" : "http://snomed.info/sct",
-        "code" : "22298006"
+    "resource": {
+      "ResourceType": "Parameters",
+      "parameter": [{
+        "name": "concept",
+        "valueCodeableConcept": {
+          "system": "http://snomed.info/sct",
+          "code": "22298006"
+        }
       },
-    }
-      "name" : "target",
-      "valueUri" : "urn:oid:1.2.3.4.7"
-    ]
+      {
+        "name": "target",
+        "valueUri": "urn:oid:1.2.3.4.7"
+      }]
+    },
+    {
+      "request": {
+        "method": "POST",
+        "url": "ConceptMap/$translate"
+      }
+    }]
   }
-  ]
-}
 </pre>
 <p>
-The server responds with a series of validation outcomes:
+The server responds with a series of translation outcomes:
 </p>
 <pre class="http">
 HTTP/1.1 200 OK
 [other headers]
 
 {
-  "resourceType" : "Parameters",
-  "parameter" : [
-    {
-      "name" : "item",
-      "part" : [
-        {
-        "name" : "result",
-        "valueBoolean" : "false"
+  "ResourceType": "Bundle",
+  "type": "batch-response",
+  "entry": [{
+    "resource": {
+      "resourceType": "Parameters",
+      "parameter": [{
+        "name": "result",
+        "valueBoolean": "false"
       },
       {
-        "name" : "message",
-        "valueString" : "'2324-4' is not a valid LOINC code"
-      }
-    ]
+        "name": "message",
+        "valueString": "'2324-4' is not a valid LOINC code"
+      }]
+    }
   },
   {
-      "name" : "item",
-      "part" : [
-        {
-        "name" : "result",
-        "valueBoolean" : "false"
+    "resource": {
+      "resourceType": "Parameters",
+      "parameter": [{
+        "name": "result",
+        "valueBoolean": "false"
       },
       {
-        "name" : "outcome",
-        "valueCodeableConcept" : {
-          "coding" : {
-            "system" : "http://example.com/codesystems/example",
-            "code" : "xxxx"
+        "name": "outcome",
+        "valueCodeableConcept": {
+          "coding": {
+            "system": "http://example.com/codesystems/example",
+            "code": "xxxx"
           }
         }
-      }
-    ]
+      }]
+    }
   }]
 }
 </pre>
+
 </div>
 
 <a name="closure"> </a>
@@ -772,7 +740,7 @@ HTTP/1.1 200 OK
 <p>
 The 4 operations Expand, Lookup, Validate, and Translate account for most operational requirements
 associated with terminology use. However there is one difficult but important use case that
-they do not address, which is integrating terminologically based logic into application search.
+they do not address, which is integrating terminologically based logic into application searches.
 </p>
 <p>
 A typical example of this is a user that wants to find any observations for male patients over
@@ -780,7 +748,7 @@ the age of 50 who attended a particular clinic within a particular 2 week period
 diagnosis of gout, and who had an elevated serum creatinine.
 </p>
 <p>
-In this case, both "diagnosis of gout" and "serum creatinine" involve valueset and/or subsumption queries
+In this case, both "diagnosis of gout" and "serum creatinine" involve value set and/or subsumption queries
 (e.g. against SNOMED CT and LOINC respectively). This search has to be executed by some
 logical processing engine that knows how to find this data in a given persistence store.
 Often, this is some kind of SQL query, though many other technological choices are available.
@@ -793,7 +761,7 @@ the search could generate expansions, and then search for these expansions. This
 </p>
 <ul>
   <li> the list of subsumed codes could be very long, and the search operation becomes correspondingly inefficient</li>
-  <li> the expansion of the subsumption might not be closed, and so the search operation can't be correct </li>
+  <li> the expansion of the subsumption might not be closed, and so the search operation cannot be correct </li>
 </ul>
 <p>
 An alternative approach is to generate a subsumption <a href="http://karwin.blogspot.com.au/2010/03/rendering-trees-with-closure-tables.html">closure table</a>,
@@ -801,37 +769,37 @@ which lists all the possible relationships, and allows for rapid execution of th
 </p>
 <ul>
   <li> the subsumption table can be very large (&gt;500000 records for SNOMED CT), even though very few of the codes are used</li>
-  <li> subsumption tables are generally built up front, and don't deal with new codes as they are encountered very well</li>
-  <li> they still don't offer a solution for non-closed expansions</li>
+  <li> subsumption tables are generally built up front, and do not deal with new codes as they are encountered very well</li>
+  <li> they still do not offer a solution for non-closed expansions</li>
 </ul>
 <p>
-This is the main reason why most systems don't support post-coordination or other forms
+This is the main reason why most systems do not support post-coordination or other forms
 of coded expressions.
 </p>
 <p>
-In FHIR, this problem is solved by building a closure table on the fly, as new codes are seen.
+In FHIR, this problem is solved by building a closure table on the fly as new codes are seen.
 This technique leaves the FHIR terminology server responsible for the terminological reasoning,
 and the client responsible for the closure table maintenance. To the client, it doesn't matter
 whether the concept is post-coordinated or not. Here's a description of how the process works:
 </p>
 <ol>
- <li> The client defines a name associated with a particular context in which it wishes to maintain a subsumption based closure table.</li>
- <li> The client registers this name with the FHIR Terminology server using the $closure operation (described below), with only one parameter, the name of the context</li>
- <li> any time the client system encounters a new Coding that isn't entered in the closure table, it calls the $closure operation with the context name, and the Coding value it has encountered</li>
+ <li> the client defines a name associated with a particular context in which it wishes to maintain a subsumption based closure table</li>
+ <li> the client registers this name with the FHIR Terminology server using the $closure operation (described below), with only one parameter, the name of the context</li>
+ <li> any time the client system encounters a new Coding that is not entered in the closure table, it calls the $closure operation with the context name, and the Coding value it has encountered</li>
  <li> the server returns a ConceptMap resource with a list of new entries (code&nbsp;: system -&gt; code&nbsp;: system) that the client should add to its closure table
    <ul>
     <li> the server can indicate that entries should be removed from the table by providing a (code&nbsp;: system -&gt; code&nbsp;: system) with equivalence "unmatched" (though it's not known why that would be needed)</li>
    </ul>
  </li>
- <li> The client makes these entries into its closure table </li>
+ <li> the client makes these entries into its closure table </li>
  <li> to facilitate the initialization process, a client can call $closure with multiple Coding values</li>
 </ol>
 <p>
 The <a href="conceptmap-operations.html#closure">$closure operation</a> takes 2 parameters:
 </p>
 <ul>
- <li> Closure table context name</li>
- <li> Coding to enter into the table (0 or more - 0 codings is a request to (re-)initialise the table)</li>
+ <li> closure table context name</li>
+ <li> concepts to enter into the table (0 or more - 0 codings is a request to (re-)initialise the table)</li>
 </ul>
 <p>
 The operation returns a concept map which has a list of mappings that represent new entries to make in the closure table.
@@ -892,7 +860,7 @@ HTTP/1.1 200 OK
         {
           "codeSystem": "http://snomed.info/sct",
           "code": "128599005",
-          "equivalence": "narrower"
+          "equivalence": "wider"
         }
       ]
     },
@@ -940,7 +908,7 @@ it might look like this:
 </table>
 
 <p>
-The client can then use a table like this as part of it's general search conditions. Using the example from above:
+The client can then use a table like this as part of its general search conditions. Using the example from above:
 "Find any observations for male patients over the age of 50 who attended a particular clinic within a particular 
 2 week period, with a diagnosis of gout, and who had an elevated serum creatinine." This query could be done, for 
 instance, with an SQL query like this:
@@ -949,13 +917,13 @@ instance, with an SQL query like this:
  Select * from Observations, Patients, Encounters, Conditions, Observations as Obs2 where
    Observations.patient = Patients.Key and Patients.Age > 50 and 
    Observations.encounter = Encounters.Key and Encounter.clinic = [key] 
-	   and encounter.date >= [date] and encounter.date &lt;= [date] and
-	 Conditions.patient = Patients.Key and Conditions.code 
-	   in (<span style="color: DarkGreen">select Source From ClosureTable 
-		   where Scope = "patient-problems" and Target = "http://snomed.info/sct|90560007"</span>) and
-	 Obs2.patient = Patients.Key and Obs2.value > 0.19 and Obs2.code 
-	   in (<span style="color: DarkGreen">select Source From ClosureTable 
-		   where Scope = "obs-code" and Target = "http://loinc.org|LP41281-4"</span>)
+     and encounter.date >= [date] and encounter.date &lt;= [date] and
+   Conditions.patient = Patients.Key and Conditions.code 
+     in (<span style="color: DarkGreen">select Source From ClosureTable 
+       where Scope = "patient-problems" and Target = "http://snomed.info/sct|90560007"</span>) and
+   Obs2.patient = Patients.Key and Obs2.value > 0.19 and Obs2.code 
+     in (<span style="color: DarkGreen">select Source From ClosureTable 
+       where Scope = "obs-code" and Target = "http://loinc.org|LP41281-4"</span>)
 </pre>
 <p>
 Note that in real clinical systems, tables are usually far more structured than this 
@@ -981,53 +949,53 @@ Functional operations within these categories support the access and management 
 
 <h4> Administrative Operations </h4>
 <ul>
- <li> Be able to load a standard or local code system</li>
+ <li> be able to load a standard or local code system</li>
 </ul>
 
 <h4> Search/Query Operations </h4>
 
 <p> Concepts </p>
 <ul>
- <li> Retrieve the concept details (display name, qualifiers, associations, etc.) for a given code/code system</li>
- <li> Return possible concept matches  based on search criteria </li>
- <li> Validate whether a code is valid within a given code system (content)</li>
- <li> Retrieve a list of codes (for example, to populate a user interface)</li>
- <li> Return the decedents of a given concept</li>
+ <li> retrieve the concept details (display name, qualifiers, associations, etc.) for a given code/code system</li>
+ <li> return possible concept matches  based on search criteria </li>
+ <li> validate whether a code is valid within a given code system (content)</li>
+ <li> retrieve a list of codes (for example, to populate a user interface)</li>
+ <li> return the decedents of a given concept</li>
 </ul>
 
 <p> Code System </p>
 <ul>
- <li> Retrieve the metadata for a code system</li>
+ <li> retrieve the metadata for a code system</li>
 </ul>
 
 <p> Value Set </p>
 <ul>
- <li> Retrieve the metadata for a value set</li>
- <li> Return a value set based on search criteria</li>
- <li> Determine if a code is valid in a value set</li>
- <li> Generate the Value set Expansion from the Value Set Definition.</li>
+ <li> retrieve the metadata for a value set</li>
+ <li> return a value set based on search criteria</li>
+ <li> determine if a code is valid in a value set</li>
+ <li> generate the Value set Expansion from the Value Set Definition.</li>
 </ul>
 
 <p> Mapping </p>
 <ul>
- <li> Retrieve the metadata for map set</li>
- <li> Retrieve a translation (mapping) of concept(s) from a given source code system to target concept(s) from a target code system</li>
+ <li> retrieve the metadata for map set</li>
+ <li> retrieve a translation (mapping) of concept(s) from a given source code system to target concept(s) from a target code system</li>
 </ul>
 
 <h4> Authoring/Maintenance Operations </h4>
 <p>Concepts</p>
 <ul>
- <li> Maintain a closure table</li>
+ <li> maintain a closure table</li>
 </ul>
 
 <p> Value Set </p>
 <ul>
- <li> Create/editing a value set</li>
+ <li> create/editing a value set</li>
 </ul>
 
 <p> Mapping </p>
 <ul>
- <li> Translate (map) from a source code system to a target code system</li>
+ <li> translate (map) from a source code system to a target code system</li>
 </ul>
 
 

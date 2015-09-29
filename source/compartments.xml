@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -16,8 +16,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>13275</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
+  <WindowHeight>8400</WindowHeight>
+  <WindowWidth>19170</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
@@ -81,14 +81,14 @@
     <Cell><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">The set of resources associated with a particular patient</Data></Cell>
     <Cell><Data ss:Type="String">There is an instance of the patient compartment for each patient resource, and the identity of the compartment is the same as the patient. When a patient is linked to another patient, all the records associated with the linked patient are in the compartment associated with the target of the link. </Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">The patient compartment includes any resources where the subject of &#13;the resource is the patient, and some other resources that are directly linked &#13;to resources in the patient compartment</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">The patient compartment includes any resources where the subject of  the resource is the patient, and some other resources that are directly linked  to resources in the patient compartment</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">encounter</Data></Cell>
     <Cell><Data ss:Type="String">Encounter</Data></Cell>
     <Cell><Data ss:Type="String">The set of resources associated with a particular encounter</Data></Cell>
     <Cell><Data ss:Type="String">There is an instance of the encounter compartment for each encounter resource, and the identity of the compartment is the same as the encounter</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">The encounter compartment includes any resources where the resource has an explicitly nominated encounter, and some other resources that them selves link &#13;to resources in the encounter compartment. Note that for many resources, the exact nature of the link to encounter can be ambiguous (e.g. for a DiagnosticReport, is it the encounter when it was initiated, or when it was reported?)</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">The encounter compartment includes any resources where the resource has an explicitly nominated encounter, and some other resources that them selves link  to resources in the encounter compartment. Note that for many resources, the exact nature of the link to encounter can be ambiguous (e.g. for a DiagnosticReport, is it the encounter when it was initiated, or when it was reported?)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">relatedPerson</Data></Cell>
@@ -151,6 +151,12 @@
     <Cell><Data ss:Type="String">recorder | reporter</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Account</Data></Cell>
+    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">subject</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Appointment</Data></Cell>
     <Cell><Data ss:Type="String">actor</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">actor</Data></Cell>
@@ -166,7 +172,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AuditEvent</Data></Cell>
-    <Cell><Data ss:Type="String">patient | participant</Data></Cell>
+    <Cell><Data ss:Type="String">patient | participant.patient | reference.patient</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">participant</Data></Cell>
     <Cell><Data ss:Type="String">participant</Data></Cell>
    </Row>
@@ -234,7 +240,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Condition</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">encounter</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">asserter</Data></Cell>
    </Row>
@@ -242,17 +248,13 @@
     <Cell><Data ss:Type="String">Conformance</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Contract</Data></Cell>
-    <Cell><Data ss:Type="String">subject | signer | actor</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">actor | signer</Data></Cell>
-    <Cell><Data ss:Type="String">actor | signer</Data></Cell>
-    <Cell><Data ss:Type="String">actor</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Contraindication</Data></Cell>
+    <Cell><Data ss:Type="String">DetectedIssue</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">author</Data></Cell>
     <Cell><Data ss:Type="String">author</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Contract</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Coverage</Data></Cell>
@@ -344,7 +346,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Flag</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">author</Data></Cell>
     <Cell><Data ss:Type="String">author</Data></Cell>
    </Row>
@@ -374,12 +376,12 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Immunization</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">performer | requester</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ImmunizationRecommendation</Data></Cell>
-    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ImplementationGuide</Data></Cell>
@@ -415,7 +417,7 @@
     <Cell ss:Index="5"><Data ss:Type="String">dispenser | receiver | responsibleparty</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">MedicationPrescription</Data></Cell>
+    <Cell><Data ss:Type="String">MedicationOrder</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
     <Cell><Data ss:Type="String">encounter</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">prescriber</Data></Cell>
@@ -462,7 +464,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">OrderResponse</Data></Cell>
-    <Cell><Data ss:Type="String">patient</Data></Cell>
+    <Cell><Data ss:Type="String">request.patient</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">who</Data></Cell>
     <Cell><Data ss:Type="String">who</Data></Cell>
    </Row>
@@ -524,7 +526,7 @@
     <Cell><Data ss:Type="String">Questionnaire</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">QuestionnaireAnswers</Data></Cell>
+    <Cell><Data ss:Type="String">QuestionnaireResponse</Data></Cell>
     <Cell><Data ss:Type="String">subject | author</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">encounter</Data></Cell>
     <Cell><Data ss:Type="String">author | source</Data></Cell>
@@ -575,11 +577,6 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Substance</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Supply</Data></Cell>
-    <Cell><Data ss:Type="String">patient</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">supplier</Data></Cell>
-   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell><Data ss:Type="String">SupplyRequest</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
@@ -619,7 +616,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>42</TopRowBottomPane>
+   <TopRowBottomPane>10</TopRowBottomPane>
    <ActivePane>2</ActivePane>
    <Panes>
     <Pane>
@@ -627,8 +624,8 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>74</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>20</ActiveRow>
+     <RangeSelection>R21</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

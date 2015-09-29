@@ -18,7 +18,7 @@
     <reference value="Practitioner/example"/>
   </practitioner>
   <prescription>
-    <reference value="MedicationPrescription/example"/>
+    <reference value="MedicationOrder/example"/>
   </prescription>
   <effectiveTimePeriod>
   <start value="2012-06-01T14:30:00+01:00"/>
@@ -37,7 +37,7 @@
     </route>
     <quantity>
       <value value="10"/>
-      <units value="ml"/>
+      <unit value="ml"/>
       <system value="http://unitsofmeasure.org"/>
       <code value="ml"/>
     </quantity>

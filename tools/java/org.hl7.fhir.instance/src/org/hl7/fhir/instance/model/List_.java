@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 6, 2015 16:44+1000 for FHIR v0.5.0
+// Generated on Tue, Sep 22, 2015 13:17+1000 for FHIR v1.0.1
 
 import java.util.*;
 
@@ -93,7 +93,7 @@ public class List_ extends DomainResource {
         public String getDefinition() {
           switch (this) {
             case CURRENT: return "The list is considered to be an active part of the patient's record.";
-            case RETIRED: return "The list is 'old' and should no longer be considered accurate or relevant.";
+            case RETIRED: return "The list is \"old\" and should no longer be considered accurate or relevant.";
             case ENTEREDINERROR: return "The list was never accurate.  It is retained for medico-legal purposes only.";
             default: return "?";
           }
@@ -186,9 +186,9 @@ public class List_ extends DomainResource {
         }
         public String getDisplay() {
           switch (this) {
-            case WORKING: return "Working";
-            case SNAPSHOT: return "Snapshot";
-            case CHANGES: return "Changes";
+            case WORKING: return "Working List";
+            case SNAPSHOT: return "Snapshot List";
+            case CHANGES: return "Change List";
             default: return "?";
           }
         }
@@ -221,30 +221,30 @@ public class List_ extends DomainResource {
     @Block()
     public static class ListEntryComponent extends BackboneElement implements IBaseBackboneElement {
         /**
-         * The flag allows the system constructing the list to make one or more statements about the role and significance of the item in the list.
+         * The flag allows the system constructing the list to indicate the role and significance of the item in the list.
          */
-        @Child(name = "flag", type = {CodeableConcept.class}, order=1, min=0, max=Child.MAX_UNLIMITED)
-        @Description(shortDefinition="Workflow information about this item", formalDefinition="The flag allows the system constructing the list to make one or more statements about the role and significance of the item in the list." )
-        protected List<CodeableConcept> flag;
+        @Child(name = "flag", type = {CodeableConcept.class}, order=1, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Status/Workflow information about this item", formalDefinition="The flag allows the system constructing the list to indicate the role and significance of the item in the list." )
+        protected CodeableConcept flag;
 
         /**
          * True if this item is marked as deleted in the list.
          */
-        @Child(name = "deleted", type = {BooleanType.class}, order=2, min=0, max=1)
+        @Child(name = "deleted", type = {BooleanType.class}, order=2, min=0, max=1, modifier=true, summary=false)
         @Description(shortDefinition="If this item is actually marked as deleted", formalDefinition="True if this item is marked as deleted in the list." )
         protected BooleanType deleted;
 
         /**
          * When this item was added to the list.
          */
-        @Child(name = "date", type = {DateTimeType.class}, order=3, min=0, max=1)
+        @Child(name = "date", type = {DateTimeType.class}, order=3, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="When item added to list", formalDefinition="When this item was added to the list." )
         protected DateTimeType date;
 
         /**
          * A reference to the actual resource from which data was derived.
          */
-        @Child(name = "item", type = {}, order=4, min=1, max=1)
+        @Child(name = "item", type = {}, order=4, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Actual entry", formalDefinition="A reference to the actual resource from which data was derived." )
         protected Reference item;
 
@@ -253,7 +253,7 @@ public class List_ extends DomainResource {
          */
         protected Resource itemTarget;
 
-        private static final long serialVersionUID = -27973283L;
+        private static final long serialVersionUID = -758164425L;
 
     /*
      * Constructor
@@ -271,42 +271,26 @@ public class List_ extends DomainResource {
       }
 
         /**
-         * @return {@link #flag} (The flag allows the system constructing the list to make one or more statements about the role and significance of the item in the list.)
+         * @return {@link #flag} (The flag allows the system constructing the list to indicate the role and significance of the item in the list.)
          */
-        public List<CodeableConcept> getFlag() { 
+        public CodeableConcept getFlag() { 
           if (this.flag == null)
-            this.flag = new ArrayList<CodeableConcept>();
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create ListEntryComponent.flag");
+            else if (Configuration.doAutoCreate())
+              this.flag = new CodeableConcept(); // cc
           return this.flag;
         }
 
         public boolean hasFlag() { 
-          if (this.flag == null)
-            return false;
-          for (CodeableConcept item : this.flag)
-            if (!item.isEmpty())
-              return true;
-          return false;
+          return this.flag != null && !this.flag.isEmpty();
         }
 
         /**
-         * @return {@link #flag} (The flag allows the system constructing the list to make one or more statements about the role and significance of the item in the list.)
+         * @param value {@link #flag} (The flag allows the system constructing the list to indicate the role and significance of the item in the list.)
          */
-    // syntactic sugar
-        public CodeableConcept addFlag() { //3
-          CodeableConcept t = new CodeableConcept();
-          if (this.flag == null)
-            this.flag = new ArrayList<CodeableConcept>();
-          this.flag.add(t);
-          return t;
-        }
-
-    // syntactic sugar
-        public ListEntryComponent addFlag(CodeableConcept t) { //3
-          if (t == null)
-            return this;
-          if (this.flag == null)
-            this.flag = new ArrayList<CodeableConcept>();
-          this.flag.add(t);
+        public ListEntryComponent setFlag(CodeableConcept value) { 
+          this.flag = value;
           return this;
         }
 
@@ -445,7 +429,7 @@ public class List_ extends DomainResource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("flag", "CodeableConcept", "The flag allows the system constructing the list to make one or more statements about the role and significance of the item in the list.", 0, java.lang.Integer.MAX_VALUE, flag));
+          childrenList.add(new Property("flag", "CodeableConcept", "The flag allows the system constructing the list to indicate the role and significance of the item in the list.", 0, java.lang.Integer.MAX_VALUE, flag));
           childrenList.add(new Property("deleted", "boolean", "True if this item is marked as deleted in the list.", 0, java.lang.Integer.MAX_VALUE, deleted));
           childrenList.add(new Property("date", "dateTime", "When this item was added to the list.", 0, java.lang.Integer.MAX_VALUE, date));
           childrenList.add(new Property("item", "Reference(Any)", "A reference to the actual resource from which data was derived.", 0, java.lang.Integer.MAX_VALUE, item));
@@ -454,11 +438,7 @@ public class List_ extends DomainResource {
       public ListEntryComponent copy() {
         ListEntryComponent dst = new ListEntryComponent();
         copyValues(dst);
-        if (flag != null) {
-          dst.flag = new ArrayList<CodeableConcept>();
-          for (CodeableConcept i : flag)
-            dst.flag.add(i.copy());
-        };
+        dst.flag = flag == null ? null : flag.copy();
         dst.deleted = deleted == null ? null : deleted.copy();
         dst.date = date == null ? null : date.copy();
         dst.item = item == null ? null : item.copy();
@@ -496,28 +476,28 @@ public class List_ extends DomainResource {
     /**
      * Identifier for the List assigned for business purposes outside the context of FHIR.
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Business identifier", formalDefinition="Identifier for the List assigned for business purposes outside the context of FHIR." )
     protected List<Identifier> identifier;
 
     /**
      * A label for the list assigned by the author.
      */
-    @Child(name = "title", type = {StringType.class}, order=1, min=0, max=1)
+    @Child(name = "title", type = {StringType.class}, order=1, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Descriptive name for the list", formalDefinition="A label for the list assigned by the author." )
     protected StringType title;
 
     /**
      * This code defines the purpose of the list - why it was created.
      */
-    @Child(name = "code", type = {CodeableConcept.class}, order=2, min=0, max=1)
+    @Child(name = "code", type = {CodeableConcept.class}, order=2, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="What the purpose of this list is", formalDefinition="This code defines the purpose of the list - why it was created." )
     protected CodeableConcept code;
 
     /**
      * The common subject (or patient) of the resources that are in the list, if there is one.
      */
-    @Child(name = "subject", type = {Patient.class, Group.class, Device.class, Location.class}, order=3, min=0, max=1)
+    @Child(name = "subject", type = {Patient.class, Group.class, Device.class, Location.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="If all resources have the same subject", formalDefinition="The common subject (or patient) of the resources that are in the list, if there is one." )
     protected Reference subject;
 
@@ -527,21 +507,21 @@ public class List_ extends DomainResource {
     protected Resource subjectTarget;
 
     /**
-     * The entity responsible for deciding what the contents of the list were.
+     * The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list.
      */
-    @Child(name = "source", type = {Practitioner.class, Patient.class, Device.class}, order=4, min=0, max=1)
-    @Description(shortDefinition="Who and/or what defined the list contents", formalDefinition="The entity responsible for deciding what the contents of the list were." )
+    @Child(name = "source", type = {Practitioner.class, Patient.class, Device.class}, order=4, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Who and/or what defined the list contents (aka Author)", formalDefinition="The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list." )
     protected Reference source;
 
     /**
-     * The actual object that is the target of the reference (The entity responsible for deciding what the contents of the list were.)
+     * The actual object that is the target of the reference (The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list.)
      */
     protected Resource sourceTarget;
 
     /**
      * The encounter that is the context in which this list was created.
      */
-    @Child(name = "encounter", type = {Encounter.class}, order=5, min=0, max=1)
+    @Child(name = "encounter", type = {Encounter.class}, order=5, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Context in which list created", formalDefinition="The encounter that is the context in which this list was created." )
     protected Reference encounter;
 
@@ -553,49 +533,49 @@ public class List_ extends DomainResource {
     /**
      * Indicates the current state of this list.
      */
-    @Child(name = "status", type = {CodeType.class}, order=6, min=1, max=1)
+    @Child(name = "status", type = {CodeType.class}, order=6, min=1, max=1, modifier=true, summary=true)
     @Description(shortDefinition="current | retired | entered-in-error", formalDefinition="Indicates the current state of this list." )
     protected Enumeration<ListStatus> status;
 
     /**
      * The date that the list was prepared.
      */
-    @Child(name = "date", type = {DateTimeType.class}, order=7, min=0, max=1)
+    @Child(name = "date", type = {DateTimeType.class}, order=7, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="When the list was prepared", formalDefinition="The date that the list was prepared." )
     protected DateTimeType date;
 
     /**
      * What order applies to the items in the list.
      */
-    @Child(name = "orderedBy", type = {CodeableConcept.class}, order=8, min=0, max=1)
+    @Child(name = "orderedBy", type = {CodeableConcept.class}, order=8, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="What order the list has", formalDefinition="What order applies to the items in the list." )
     protected CodeableConcept orderedBy;
 
     /**
      * How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted.
      */
-    @Child(name = "mode", type = {CodeType.class}, order=9, min=1, max=1)
+    @Child(name = "mode", type = {CodeType.class}, order=9, min=1, max=1, modifier=true, summary=true)
     @Description(shortDefinition="working | snapshot | changes", formalDefinition="How this list was prepared - whether it is a working list that is suitable for being maintained on an ongoing basis, or if it represents a snapshot of a list of items from another source, or whether it is a prepared list where items may be marked as added, modified or deleted." )
     protected Enumeration<ListMode> mode;
 
     /**
      * Comments that apply to the overall list.
      */
-    @Child(name = "note", type = {StringType.class}, order=10, min=0, max=1)
+    @Child(name = "note", type = {StringType.class}, order=10, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Comments about the list", formalDefinition="Comments that apply to the overall list." )
     protected StringType note;
 
     /**
      * Entries in this list.
      */
-    @Child(name = "entry", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED)
+    @Child(name = "entry", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Entries in the list", formalDefinition="Entries in this list." )
     protected List<ListEntryComponent> entry;
 
     /**
      * If the list is empty, why the list is empty.
      */
-    @Child(name = "emptyReason", type = {CodeableConcept.class}, order=12, min=0, max=1)
+    @Child(name = "emptyReason", type = {CodeableConcept.class}, order=12, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Why list is empty", formalDefinition="If the list is empty, why the list is empty." )
     protected CodeableConcept emptyReason;
 
@@ -770,7 +750,7 @@ public class List_ extends DomainResource {
     }
 
     /**
-     * @return {@link #source} (The entity responsible for deciding what the contents of the list were.)
+     * @return {@link #source} (The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list.)
      */
     public Reference getSource() { 
       if (this.source == null)
@@ -786,7 +766,7 @@ public class List_ extends DomainResource {
     }
 
     /**
-     * @param value {@link #source} (The entity responsible for deciding what the contents of the list were.)
+     * @param value {@link #source} (The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list.)
      */
     public List_ setSource(Reference value) { 
       this.source = value;
@@ -794,14 +774,14 @@ public class List_ extends DomainResource {
     }
 
     /**
-     * @return {@link #source} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The entity responsible for deciding what the contents of the list were.)
+     * @return {@link #source} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list.)
      */
     public Resource getSourceTarget() { 
       return this.sourceTarget;
     }
 
     /**
-     * @param value {@link #source} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The entity responsible for deciding what the contents of the list were.)
+     * @param value {@link #source} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list.)
      */
     public List_ setSourceTarget(Resource value) { 
       this.sourceTarget = value;
@@ -1134,7 +1114,7 @@ public class List_ extends DomainResource {
         childrenList.add(new Property("title", "string", "A label for the list assigned by the author.", 0, java.lang.Integer.MAX_VALUE, title));
         childrenList.add(new Property("code", "CodeableConcept", "This code defines the purpose of the list - why it was created.", 0, java.lang.Integer.MAX_VALUE, code));
         childrenList.add(new Property("subject", "Reference(Patient|Group|Device|Location)", "The common subject (or patient) of the resources that are in the list, if there is one.", 0, java.lang.Integer.MAX_VALUE, subject));
-        childrenList.add(new Property("source", "Reference(Practitioner|Patient|Device)", "The entity responsible for deciding what the contents of the list were.", 0, java.lang.Integer.MAX_VALUE, source));
+        childrenList.add(new Property("source", "Reference(Practitioner|Patient|Device)", "The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list.", 0, java.lang.Integer.MAX_VALUE, source));
         childrenList.add(new Property("encounter", "Reference(Encounter)", "The encounter that is the context in which this list was created.", 0, java.lang.Integer.MAX_VALUE, encounter));
         childrenList.add(new Property("status", "code", "Indicates the current state of this list.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("date", "dateTime", "The date that the list was prepared.", 0, java.lang.Integer.MAX_VALUE, date));
@@ -1218,7 +1198,7 @@ public class List_ extends DomainResource {
   public static final String SP_TITLE = "title";
   @SearchParamDefinition(name="patient", path="List.subject", description="If all resources have the same subject", type="reference" )
   public static final String SP_PATIENT = "patient";
-  @SearchParamDefinition(name="source", path="List.source", description="Who and/or what defined the list contents", type="reference" )
+  @SearchParamDefinition(name="source", path="List.source", description="Who and/or what defined the list contents (aka Author)", type="reference" )
   public static final String SP_SOURCE = "source";
   @SearchParamDefinition(name="status", path="List.status", description="current | retired | entered-in-error", type="token" )
   public static final String SP_STATUS = "status";
