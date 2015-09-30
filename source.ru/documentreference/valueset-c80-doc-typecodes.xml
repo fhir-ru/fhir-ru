@@ -1,4 +1,6 @@
-﻿<ValueSet xmlns="http://hl7.org/fhir">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
   <id value="valueset-doc-typecodes"/>
   <meta>
     <lastUpdated value="2015-03-17T12:06:30.047+00:00"/>
@@ -7,27 +9,20 @@
   <extension url="http://hl7.org/fhir/StructureDefinition/valueset-oid">
     <valueUri value="urn:oid:2.16.840.1.113883.3.88.12.80.47"/>
   </extension>
-  <url value="http://hl7.org/fhir/vs/valueset-doc-typecodes"/>
+  <url value="http://hl7.org/fhir/ValueSet/valueset-doc-typecodes"/>
   <version value="20091109"/>
   <name value="Document Type Value Set"/>
-  <publisher value="HITSP"/>
-  <description value="Это код точного типа документа (например Pulmonary History and 
-Physical, Discharge Summary, Ultrasound Report и т. д.). Набор значений Document Type включает в себя все значения LOINC, перечисленные в HITSP C80 Table 2-144 Document Class Value Set Definition выше, используемые для Document Class, и все значения LOINC, у которых SCALE = DOC в базе данных LOINC."/>
-<!-- This is the code specifying the precise type of document (e.g., Pulmonary History and 
-Physical, Discharge Summary, Ultrasound Report, etc.). The Document Type value set includes all LOINC 
-values listed in HITSP C80 Table 2-144 Document Class Value Set Definition above used for Document Class, 
-and all LOINC values whose SCALE is DOC in the LOINC database. -->
-  <copyright value="На этот контент из LOINC&#174; распространяется авторское право &#169; 1995 Regenstrief Institute, Inc. и комитета LOINC, и он предоставляется без каких-либо затрат по лицензии http://loinc.org/terms-of-use"/>
-  <!-- This content from LOINC&#174; is copyright &#169; 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use -->
-  
   <status value="active"/>
   <experimental value="false"/>
-
-
+  <publisher value="HITSP"/>
+  <description value="Это код точного типа документа (например Pulmonary History and 
+Physical, Discharge Summary, Ultrasound Report и т. д.). Набор значений Document Type включает в себя все значения LOINC, перечисленные в HITSP C80 Table 2-144 Document Class Value Set Definition выше, используемые в качестве значений Document Class, и все значения LOINC, у которых SCALE = DOC в базе данных LOINC."/>
+<!-- This is the code specifying the precise type of document (e.g. Pulmonary History and  Physical, Discharge Summary, Ultrasound Report, etc.). The Document Type value set includes all LOINC  values listed in HITSP C80 Table 2-144 Document Class Value Set Definition above used for Document Class,  and all LOINC values whose SCALE is DOC in the LOINC database."/>
+  <copyright value="На содержимое LOINC® распространяется авторское право © 1995 Regenstrief Institute, Inc. и комитета LOINC, и оно предоставляется без каких-либо затрат в соответствии с лицензией http://loinc.org/terms-of-use -->
+  <!-- This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use. -->
   <compose>
    <include>
    <system value="http://loinc.org"/>
-      
    <concept>
     <code value="55107-7"/>
     <display value="Addendum Document"/>
@@ -954,7 +949,7 @@ and all LOINC values whose SCALE is DOC in the LOINC database. -->
    </concept>
    <concept>
     <code value="34107-3"/>
-    <display value="Patient's home Education note"/>
+        <display value="Patient&#39;s home Education note"/>
    </concept>
    <concept>
     <code value="34856-5"/>
@@ -1254,7 +1249,7 @@ and all LOINC values whose SCALE is DOC in the LOINC database. -->
    </concept>
    <concept>
     <code value="34118-0"/>
-    <display value="Patient's home Initial assessment note"/>
+        <display value="Patient&#39;s home Initial assessment note"/>
    </concept>
    <concept>
     <code value="74209-8"/>
@@ -2610,11 +2605,11 @@ and all LOINC values whose SCALE is DOC in the LOINC database. -->
    </concept>
    <concept>
     <code value="34129-7"/>
-    <display value="Patient's home Progress note"/>
+        <display value="Patient&#39;s home Progress note"/>
    </concept>
    <concept>
     <code value="34125-5"/>
-    <display value="Case manager Patient's home Progress note"/>
+        <display value="Case manager Patient&#39;s home Progress note"/>
    </concept>
    <concept>
     <code value="74468-0"/>
@@ -4106,7 +4101,7 @@ and all LOINC values whose SCALE is DOC in the LOINC database. -->
    </concept>
    <concept>
     <code value="25041-5"/>
-    <display value="CT Guidance for aspiration or biopsy of Unspecified body region&#45;- W contrast IV"/>
+        <display value="CT Guidance for aspiration or biopsy of Unspecified body region-- W contrast IV"/>
    </concept>
    <concept>
     <code value="46281-2"/>
@@ -4266,19 +4261,19 @@ and all LOINC values whose SCALE is DOC in the LOINC database. -->
    </concept>
    <concept>
     <code value="24755-1"/>
-    <display value="Fluoroscopic angiogram Guidance for atherectomy of Vein&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for atherectomy of Vein-- W contrast IV"/>
    </concept>
    <concept>
     <code value="26298-0"/>
-    <display value="Fluoroscopic angiogram Guidance for atherectomy of Vein - bilateral&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for atherectomy of Vein - bilateral-- W contrast IV"/>
    </concept>
    <concept>
     <code value="26299-8"/>
-    <display value="Fluoroscopic angiogram Guidance for atherectomy of Vein - left&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for atherectomy of Vein - left-- W contrast IV"/>
    </concept>
    <concept>
     <code value="26300-4"/>
-    <display value="Fluoroscopic angiogram Guidance for atherectomy of Vein - right&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for atherectomy of Vein - right-- W contrast IV"/>
    </concept>
    <concept>
     <code value="30601-9"/>

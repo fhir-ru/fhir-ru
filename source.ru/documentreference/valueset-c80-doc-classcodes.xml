@@ -1,4 +1,6 @@
-﻿<ValueSet xmlns="http://hl7.org/fhir">
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
   <id value="valueset-doc-classcodes"/>
   <meta>
     <lastUpdated value="2015-03-17T12:06:30.047+00:00"/>
@@ -7,25 +9,19 @@
   <extension url="http://hl7.org/fhir/StructureDefinition/valueset-oid">
     <valueUri value="urn:oid:2.16.840.1.113883.3.88.12.80.46"/>
   </extension>
-  <url value="http://hl7.org/fhir/vs/valueset-doc-classcodes"/>
+  <url value="http://hl7.org/fhir/ValueSet/valueset-doc-classcodes"/>
   <version value="20091109"/>
   <name value="Document Class Value Set"/>
-  <publisher value="USHIK"/>
-  <description value="Это код высокоуровевого вида документа (например Prescription, Discharge Summary, Report и т. д.). Набор значений Document Class воспроизводится из HITSP C80 Table 2-144 Document Class Value Set Definition. Примечание: Код класса для документов берется из LOINC и основывается на одном из следующих: Тип услуги, описываемой в документе.  Он описывается в очень обобщенном виде в разделе 7.3 руководства по LOINC.  Тип выполненного исследования. Установлен определением видов отчетов об исследованиях. Раздел медкарты, куда помещается документ. Берется из наборов, созданных по запросам от Claims Attachment."/>
-    <!-- This is the code specifying the high-level kind of document (e.g., Prescription, Discharge Summary, Report, etc.). The Document Class value set is reproduced from HITSP C80 Table 2-144 Document Class Value Set Definition. Note: Class code for documents comes from LOINC, and is based upon one of the following:The type of service described by the document. It is described at a very high level in Section 7.3 of the LOINC Manual. The type study performed. It was determined by identifying modalities for study reports. The section of the chart where the document is placed. It was determined from the SETs created for Claims Attachment requests."/>
-  <copyright value="This content from LOINC&#174; is copyright &#169; 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use -->
-  <copyright value="На этот контент из LOINC&#174; распространяется авторское право &#169; 1995 Regenstrief Institute, Inc. и комитета LOINC, и он предоставляется без каких-либо затрат по лицензии http://loinc.org/terms-of-use"/>
-<!-- This content from LOINC&#174; is copyright &#169; 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use -->
-  
   <status value="active"/>
   <experimental value="false"/>
-
-
+  <publisher value="USHIK"/>
+  <description value="Это код высокоуровевого вида документа (например Prescription, Discharge Summary, Report и т. д.). Набор значений Document Class воспроизводится из HITSP C80 Table 2-144 Document Class Value Set Definition. Примечание: Код класса для документов берется из LOINC и основывается на одном из следующих: Тип услуги, описываемой в документе.  Он описывается в очень обобщенном виде в разделе 7.3 руководства по LOINC.  Тип выполненного исследования. Установлен определением видов отчетов об исследованиях. Раздел медкарты, куда помещается документ. Берется из наборов, созданных по запросам от Claims Attachment."/>
+  <!-- This is the code specifying the high-level kind of document (e.g. Prescription, Discharge Summary, Report, etc.). The Document Class value set is reproduced from HITSP C80 Table 2-144 Document Class Value Set Definition. Note: Class code for documents comes from LOINC, and is based upon one of the following:The type of service described by the document. It is described at a very high level in Section 7.3 of the LOINC Manual. The type study performed. It was determined by identifying modalities for study reports. The section of the chart where the document is placed. It was determined from the SETs created for Claims Attachment requests. -->
+  <copyright value="На содержимое LOINC® распространяется авторское право © 1995 Regenstrief Institute, Inc. и комитета LOINC, и оно предоставляется без каких-либо затрат в соответствии с лицензией http://loinc.org/terms-of-use"/>
+  <!-- This content from LOINC® is copyright © 1995 Regenstrief Institute, Inc. and the LOINC Committee, and available at no cost under the license at http://loinc.org/terms-of-use. -->
   <compose>
    <include>
    <system value="http://loinc.org"/>
-      
-
    <concept>
     <code value="11369-6"/>
     <display value="History of Immunization"/>
@@ -190,13 +186,22 @@
     <code value="53576-5"/>
     <display value="Personal health monitoring report Document"/>
    </concept>
-
-
+      <concept>
+        <code value="56447-6"/>
+        <display value="Plan of care note"/>
+      </concept>
+      <concept>
+        <code value="18748-4"/>
+        <display value="Diagnostic imaging study"/>
+      </concept>
+      <concept>
+        <code value="11504-8"/>
+        <display value="Surgical operation note "/>
+      </concept>
+      <concept>
+        <code value="57133-1"/>
+        <display value="Referral note"/>
+      </concept>
    </include>
-  
-
   </compose>  
-
-
 </ValueSet>
-

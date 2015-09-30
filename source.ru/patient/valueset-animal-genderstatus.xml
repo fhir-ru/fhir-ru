@@ -1,22 +1,23 @@
-<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/valueset.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
     <name value="GenderStatus"/>
+  <status value="draft"/>
     <publisher value="FHIR Project team"/>
     <contact>
     <telecom>
-        <system value="url"/>
+      <system value="other"/>
         <value value="http://hl7.org/fhir"/>
     </telecom>
   </contact>
-    <description value=" This example value set defines a set of codes that can be used to indicate the current state of the 
-    animal's reproductive organs."/>
-    <status value="draft"/>
-    <define>
+  <description value="This example value set defines a set of codes that can be used to indicate the current state of the animal&#39;s reproductive organs."/>
+  <codeSystem>
         <system value="http://hl7.org/fhir/animal-genderstatus"/>
         <caseSensitive value="true"/>
         <concept>
             <code value="neutered"/>
             <display value="Neutered"/>
-            <definition value="The animal has been castrated and is infertile"/>
+      <definition value="The animal has been sterilized, castrated or otherwise made infertile."/>
             <designation>
                 <language value="nl"/>
                 <value value="gesteriliseerd"/>
@@ -29,15 +30,24 @@
         <concept>
             <code value="intact"/>
             <display value="Intact"/>
-            <definition value="The animals reproductive organs are intact"/>
+      <definition value="The animal&#39;s reproductive organs are intact."/>
             <designation>
                 <language value="nl"/>
                 <value value="intact"/>
             </designation>
+    </concept>
+    <concept>
+      <code value="unknown"/>
+      <display value="Unknown"/>
+      <definition value="Unable to determine whether the animal has been neutered."/>
 			<designation>
 				<language value="ru"/>
 				<value value="Некастрированное"/>
             </designation>
+      		<designation>
+		        <language value="nl"/>
+		        <value value="onbekend"/>
+		    </designation>
         </concept>
-    </define>
+  </codeSystem>
 </ValueSet>
