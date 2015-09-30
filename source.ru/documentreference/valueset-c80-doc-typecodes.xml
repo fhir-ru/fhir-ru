@@ -4881,31 +4881,31 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="44225-1"/>
-    <display value="Fluoroscopy Guidance for needle biopsy of Liver&#45;- W contrast IV"/>
+        <display value="Fluoroscopy Guidance for needle biopsy of Liver-- W contrast IV"/>
    </concept>
    <concept>
     <code value="24718-9"/>
-    <display value="Fluoroscopy Guidance for transjugular biopsy of Liver&#45;- W contrast IV"/>
+        <display value="Fluoroscopy Guidance for transjugular biopsy of Liver-- W contrast IV"/>
    </concept>
    <concept>
     <code value="35910-9"/>
-    <display value="CT Guidance for biopsy of Chest&#45;- W and WO contrast IV"/>
+        <display value="CT Guidance for biopsy of Chest-- W and WO contrast IV"/>
    </concept>
    <concept>
     <code value="46289-5"/>
-    <display value="CT Guidance for biopsy of Unspecified body region&#45;- W and WO contrast IV"/>
+        <display value="CT Guidance for biopsy of Unspecified body region-- W and WO contrast IV"/>
    </concept>
    <concept>
     <code value="35909-1"/>
-    <display value="CT Guidance for biopsy of Chest&#45;- W contrast IV"/>
+        <display value="CT Guidance for biopsy of Chest-- W contrast IV"/>
    </concept>
    <concept>
     <code value="69093-3"/>
-    <display value="CT Guidance for biopsy of Pelvis&#45;- W contrast IV"/>
+        <display value="CT Guidance for biopsy of Pelvis-- W contrast IV"/>
    </concept>
    <concept>
     <code value="42260-0"/>
-    <display value="CT Guidance for biopsy of Unspecified body region&#45;- W contrast IV"/>
+        <display value="CT Guidance for biopsy of Unspecified body region-- W contrast IV"/>
    </concept>
    <concept>
     <code value="46366-1"/>
@@ -4917,23 +4917,23 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="69083-4"/>
-    <display value="CT Guidance for biopsy of Abdomen&#45;- WO contrast"/>
+        <display value="CT Guidance for biopsy of Abdomen-- WO contrast"/>
    </concept>
    <concept>
     <code value="35911-7"/>
-    <display value="CT Guidance for biopsy of Chest&#45;- WO contrast"/>
+        <display value="CT Guidance for biopsy of Chest-- WO contrast"/>
    </concept>
    <concept>
     <code value="69092-5"/>
-    <display value="CT Guidance for biopsy of Liver&#45;- WO contrast"/>
+        <display value="CT Guidance for biopsy of Liver-- WO contrast"/>
    </concept>
    <concept>
     <code value="69094-1"/>
-    <display value="CT Guidance for biopsy of Pelvis&#45;- WO contrast"/>
+        <display value="CT Guidance for biopsy of Pelvis-- WO contrast"/>
    </concept>
    <concept>
     <code value="46290-3"/>
-    <display value="CT Guidance for biopsy of Unspecified body region&#45;- WO contrast"/>
+        <display value="CT Guidance for biopsy of Unspecified body region-- WO contrast"/>
    </concept>
    <concept>
     <code value="35889-5"/>
@@ -4941,39 +4941,39 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="64998-8"/>
-    <display value="Fluoroscopy Guidance for catheterization of Fallopian tube - left&#45;- transcervical"/>
+        <display value="Fluoroscopy Guidance for catheterization of Fallopian tube - left-- transcervical"/>
    </concept>
    <concept>
     <code value="64999-6"/>
-    <display value="Fluoroscopy Guidance for catheterization of Fallopian tube -right&#45;- transcervical"/>
+        <display value="Fluoroscopy Guidance for catheterization of Fallopian tube -right-- transcervical"/>
    </concept>
    <concept>
     <code value="30818-9"/>
-    <display value="Fluoroscopy Guidance for catheterization of Fallopian tubes&#45;- transcervical"/>
+        <display value="Fluoroscopy Guidance for catheterization of Fallopian tubes-- transcervical"/>
    </concept>
    <concept>
     <code value="30892-4"/>
-    <display value="Fluoroscopy Guidance for catheterization of Biliary ducts and Pancreatic duct&#45;- W contrast retrograde"/>
+        <display value="Fluoroscopy Guidance for catheterization of Biliary ducts and Pancreatic duct-- W contrast retrograde"/>
    </concept>
    <concept>
     <code value="24624-9"/>
-    <display value="Fluoroscopic angiogram Guidance for change of central catheter in Central vein&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for change of central catheter in Central vein-- W contrast IV"/>
    </concept>
    <concept>
     <code value="26331-9"/>
-    <display value="Fluoroscopic angiogram Guidance for change of central catheter in Central vein - bilateral&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for change of central catheter in Central vein - bilateral-- W contrast IV"/>
    </concept>
    <concept>
     <code value="26332-7"/>
-    <display value="Fluoroscopic angiogram Guidance for change of central catheter in Central vein - left&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for change of central catheter in Central vein - left-- W contrast IV"/>
    </concept>
    <concept>
     <code value="26333-5"/>
-    <display value="Fluoroscopic angiogram Guidance for change of central catheter in Central vein - right&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for change of central catheter in Central vein - right-- W contrast IV"/>
    </concept>
    <concept>
     <code value="43558-6"/>
-    <display value="Fluoroscopy Guidance for change of dialysis catheter in Unspecified body region&#45;- W contrast IV"/>
+        <display value="Fluoroscopy Guidance for change of dialysis catheter in Unspecified body region-- W contrast IV"/>
    </concept>
    <concept>
     <code value="36769-8"/>
@@ -4981,15 +4981,15 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="24781-7"/>
-    <display value="Fluoroscopy Guidance for change of percutaneous nephrostomy tube in Kidney - bilateral&#45;- W contrast"/>
+        <display value="Fluoroscopy Guidance for change of percutaneous nephrostomy tube in Kidney - bilateral-- W contrast"/>
    </concept>
    <concept>
     <code value="46371-1"/>
-    <display value="X-ray Guidance for change of percutaneous tube in Unspecified body region&#45;- W contrast"/>
+        <display value="X-ray Guidance for change of percutaneous tube in Unspecified body region-- W contrast"/>
    </concept>
    <concept>
     <code value="30646-4"/>
-    <display value="Fluoroscopy Guidance for change of tube in Sinus tract&#45;- W contrast"/>
+        <display value="Fluoroscopy Guidance for change of tube in Sinus tract-- W contrast"/>
    </concept>
    <concept>
     <code value="69400-0"/>
@@ -5145,23 +5145,23 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="46291-1"/>
-    <display value="CT Guidance for drainage of Unspecified body region&#45;- W and WO contrast IV"/>
+        <display value="CT Guidance for drainage of Unspecified body region-- W and WO contrast IV"/>
    </concept>
    <concept>
     <code value="35923-2"/>
-    <display value="CT Guidance for drainage of Chest&#45;- W contrast IV"/>
+        <display value="CT Guidance for drainage of Chest-- W contrast IV"/>
    </concept>
    <concept>
     <code value="46292-9"/>
-    <display value="CT Guidance for drainage of Unspecified body region&#45;- W contrast IV"/>
+        <display value="CT Guidance for drainage of Unspecified body region-- W contrast IV"/>
    </concept>
    <concept>
     <code value="35924-0"/>
-    <display value="CT Guidance for drainage of Chest&#45;- WO contrast"/>
+        <display value="CT Guidance for drainage of Chest-- WO contrast"/>
    </concept>
    <concept>
     <code value="46293-7"/>
-    <display value="CT Guidance for drainage of Unspecified body region&#45;- WO contrast"/>
+        <display value="CT Guidance for drainage of Unspecified body region-- WO contrast"/>
    </concept>
    <concept>
     <code value="35925-7"/>
@@ -5169,27 +5169,27 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="43478-7"/>
-    <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct&#45;- 1.5 hours post contrast retrograde"/>
+        <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct-- 1.5 hours post contrast retrograde"/>
    </concept>
    <concept>
     <code value="43474-6"/>
-    <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct&#45;- 15 minutes post contrast retrograde"/>
+        <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct-- 15 minutes post contrast retrograde"/>
    </concept>
    <concept>
     <code value="43477-9"/>
-    <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct&#45;- 1 hour post contrast retrograde"/>
+        <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct-- 1 hour post contrast retrograde"/>
    </concept>
    <concept>
     <code value="43473-8"/>
-    <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct&#45;- 2 hours post contrast retrograde"/>
+        <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct-- 2 hours post contrast retrograde"/>
    </concept>
    <concept>
     <code value="43475-3"/>
-    <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct&#45;- 30 minutes post contrast retrograde"/>
+        <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct-- 30 minutes post contrast retrograde"/>
    </concept>
    <concept>
     <code value="43476-1"/>
-    <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct&#45;- 45 minutes post contrast retrograde"/>
+        <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct-- 45 minutes post contrast retrograde"/>
    </concept>
    <concept>
     <code value="72248-8"/>
@@ -5197,15 +5197,15 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="44214-5"/>
-    <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts&#45;- W contrast retrograde"/>
+        <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts-- W contrast retrograde"/>
    </concept>
    <concept>
     <code value="30815-5"/>
-    <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct&#45;- W contrast retrograde"/>
+        <display value="Fluoroscopy Guidance for endoscopy of Biliary ducts and Pancreatic duct-- W contrast retrograde"/>
    </concept>
    <concept>
     <code value="44213-7"/>
-    <display value="Fluoroscopy Guidance for endoscopy of Pancreatic duct&#45;- W contrast retrograde"/>
+        <display value="Fluoroscopy Guidance for endoscopy of Pancreatic duct-- W contrast retrograde"/>
    </concept>
    <concept>
     <code value="58740-2"/>
@@ -5433,7 +5433,7 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="39761-2"/>
-    <display value="Scan Guidance for localization of tumor limited&#45;- W Tc-99m Sestamibi IV"/>
+        <display value="Scan Guidance for localization of tumor limited-- W Tc-99m Sestamibi IV"/>
    </concept>
    <concept>
     <code value="39953-5"/>
@@ -5521,7 +5521,7 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="44118-8"/>
-    <display value="CT Guidance for needle localization of Breast&#45;- W and WO contrast IV"/>
+        <display value="CT Guidance for needle localization of Breast-- W and WO contrast IV"/>
    </concept>
    <concept>
     <code value="35930-7"/>
@@ -5697,31 +5697,31 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="30644-9"/>
-    <display value="US Guidance for placement of catheter in Central vein&#45;- Tunneled"/>
+        <display value="US Guidance for placement of catheter in Central vein-- Tunneled"/>
    </concept>
    <concept>
     <code value="25077-9"/>
-    <display value="Fluoroscopic angiogram Guidance for placement of catheter in Hepatic artery&#45;- W contrast IA"/>
+        <display value="Fluoroscopic angiogram Guidance for placement of catheter in Hepatic artery-- W contrast IA"/>
    </concept>
    <concept>
     <code value="24625-6"/>
-    <display value="Fluoroscopic angiogram Guidance for placement of catheter in Central vein&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for placement of catheter in Central vein-- W contrast IV"/>
    </concept>
    <concept>
     <code value="26310-3"/>
-    <display value="Fluoroscopic angiogram Guidance for placement of catheter in Central vein - bilateral&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for placement of catheter in Central vein - bilateral-- W contrast IV"/>
    </concept>
    <concept>
     <code value="26311-1"/>
-    <display value="Fluoroscopic angiogram Guidance for placement of catheter in Central vein - left&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for placement of catheter in Central vein - left-- W contrast IV"/>
    </concept>
    <concept>
     <code value="26312-9"/>
-    <display value="Fluoroscopic angiogram Guidance for placement of catheter in Central vein - right&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for placement of catheter in Central vein - right-- W contrast IV"/>
    </concept>
    <concept>
     <code value="41801-2"/>
-    <display value="Fluoroscopic angiogram Guidance for placement of catheter in Portal vein&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for placement of catheter in Portal vein-- W contrast IV"/>
    </concept>
    <concept>
     <code value="24716-3"/>
@@ -5729,11 +5729,11 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="62491-6"/>
-    <display value="Fluoroscopic angiogram Guidance for placement of ilio-iliac tube endoprosthesis in Iliac artery - left&#45;- W contrast IA"/>
+        <display value="Fluoroscopic angiogram Guidance for placement of ilio-iliac tube endoprosthesis in Iliac artery - left-- W contrast IA"/>
    </concept>
    <concept>
     <code value="62492-4"/>
-    <display value="Fluoroscopic angiogram Guidance for placement of ilio-iliac tube endoprosthesis in Iliac artery - right&#45;- W contrast IA"/>
+        <display value="Fluoroscopic angiogram Guidance for placement of ilio-iliac tube endoprosthesis in Iliac artery - right-- W contrast IA"/>
    </concept>
    <concept>
     <code value="25072-0"/>
@@ -5745,7 +5745,7 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="25026-6"/>
-    <display value="Fluoroscopic angiogram Guidance for placement of IVC filter in Inferior vena cava&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for placement of IVC filter in Inferior vena cava-- W contrast IV"/>
    </concept>
    <concept>
     <code value="25027-4"/>
@@ -5793,7 +5793,7 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="24779-1"/>
-    <display value="Fluoroscopy Guidance for placement of percutaneous nephrostomy in Kidney - bilateral&#45;- W contrast via tube"/>
+        <display value="Fluoroscopy Guidance for placement of percutaneous nephrostomy in Kidney - bilateral-- W contrast via tube"/>
    </concept>
    <concept>
     <code value="24782-5"/>
@@ -5893,19 +5893,19 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="30581-3"/>
-    <display value="CT Guidance for radiation treatment of Unspecified body region&#45;- W contrast IV"/>
+        <display value="CT Guidance for radiation treatment of Unspecified body region-- W contrast IV"/>
    </concept>
    <concept>
     <code value="30664-7"/>
-    <display value="MRI Guidance for radiation treatment of Unspecified body region&#45;- W contrast IV"/>
+        <display value="MRI Guidance for radiation treatment of Unspecified body region-- W contrast IV"/>
    </concept>
    <concept>
     <code value="30582-1"/>
-    <display value="CT Guidance for radiation treatment of Unspecified body region&#45;- WO contrast"/>
+        <display value="CT Guidance for radiation treatment of Unspecified body region-- WO contrast"/>
    </concept>
    <concept>
     <code value="30665-4"/>
-    <display value="MRI Guidance for radiation treatment of Unspecified body region&#45;- WO contrast"/>
+        <display value="MRI Guidance for radiation treatment of Unspecified body region-- WO contrast"/>
    </concept>
    <concept>
     <code value="25053-0"/>
@@ -5913,7 +5913,7 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="25054-8"/>
-    <display value="CT Guidance for radiosurgery of Unspecified body region&#45;- W contrast IV"/>
+        <display value="CT Guidance for radiosurgery of Unspecified body region-- W contrast IV"/>
    </concept>
    <concept>
     <code value="24537-3"/>
@@ -5921,15 +5921,15 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="42141-2"/>
-    <display value="US Guidance for removal of catheter from Central vein&#45;- Tunneled"/>
+        <display value="US Guidance for removal of catheter from Central vein-- Tunneled"/>
    </concept>
    <concept>
     <code value="72549-9"/>
-    <display value="Fluoroscopy Guidance for removal of catheter from Central vein&#45;- Tunneled"/>
+        <display value="Fluoroscopy Guidance for removal of catheter from Central vein-- Tunneled"/>
    </concept>
    <concept>
     <code value="72548-1"/>
-    <display value="Fluoroscopic angiogram Guidance for removal of catheter from Central vein&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for removal of catheter from Central vein-- W contrast IV"/>
    </concept>
    <concept>
     <code value="72547-3"/>
@@ -5961,7 +5961,7 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="72544-0"/>
-    <display value="Fluoroscopy Guidance for removal of percutaneous nephrostomy tube from Kidney - bilateral&#45;- W contrast"/>
+        <display value="Fluoroscopy Guidance for removal of percutaneous nephrostomy tube from Kidney - bilateral-- W contrast"/>
    </concept>
    <concept>
     <code value="24885-6"/>
@@ -6001,19 +6001,19 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="24626-4"/>
-    <display value="Fluoroscopic angiogram Guidance for reposition of catheter in Central vein&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for reposition of catheter in Central vein-- W contrast IV"/>
    </concept>
    <concept>
     <code value="26295-6"/>
-    <display value="Fluoroscopic angiogram Guidance for reposition of catheter in Central vein - bilateral&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for reposition of catheter in Central vein - bilateral-- W contrast IV"/>
    </concept>
    <concept>
     <code value="26296-4"/>
-    <display value="Fluoroscopic angiogram Guidance for reposition of catheter in Central vein - left&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for reposition of catheter in Central vein - left-- W contrast IV"/>
    </concept>
    <concept>
     <code value="26297-2"/>
-    <display value="Fluoroscopic angiogram Guidance for reposition of catheter in Central vein - right&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for reposition of catheter in Central vein - right-- W contrast IV"/>
    </concept>
    <concept>
     <code value="48740-5"/>
@@ -6029,23 +6029,23 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="24570-4"/>
-    <display value="Fluoroscopy Guidance for stone removal of Biliary duct common&#45;- W contrast intra biliary duct"/>
+        <display value="Fluoroscopy Guidance for stone removal of Biliary duct common-- W contrast intra biliary duct"/>
    </concept>
    <concept>
     <code value="43763-2"/>
-    <display value="Fluoroscopic angiogram Guidance for thrombectomy of Vein&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for thrombectomy of Vein-- W contrast IV"/>
    </concept>
    <concept>
     <code value="43761-6"/>
-    <display value="Fluoroscopic angiogram Guidance for thrombectomy of Vein - bilateral&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for thrombectomy of Vein - bilateral-- W contrast IV"/>
    </concept>
    <concept>
     <code value="43762-4"/>
-    <display value="Fluoroscopic angiogram Guidance for thrombectomy of Vein - left&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for thrombectomy of Vein - left-- W contrast IV"/>
    </concept>
    <concept>
     <code value="43764-0"/>
-    <display value="Fluoroscopic angiogram Guidance for thrombectomy of Vein - right&#45;- W contrast IV"/>
+        <display value="Fluoroscopic angiogram Guidance for thrombectomy of Vein - right-- W contrast IV"/>
    </concept>
    <concept>
     <code value="72554-9"/>
@@ -6101,23 +6101,23 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="24585-2"/>
-    <display value="CT Guidance.stereotactic for biopsy of Head&#45;- W contrast IV"/>
+        <display value="CT Guidance.stereotactic for biopsy of Head-- W contrast IV"/>
    </concept>
    <concept>
     <code value="36929-8"/>
-    <display value="CT Guidance.stereotactic for biopsy of Head&#45;- WO contrast"/>
+        <display value="CT Guidance.stereotactic for biopsy of Head-- WO contrast"/>
    </concept>
    <concept>
     <code value="44122-0"/>
-    <display value="MRI Guidance.stereotactic for localization in Brain&#45;- W and WO contrast IV"/>
+        <display value="MRI Guidance.stereotactic for localization in Brain-- W and WO contrast IV"/>
    </concept>
    <concept>
     <code value="30656-3"/>
-    <display value="MRI Guidance.stereotactic for localization in Brain&#45;- W contrast IV"/>
+        <display value="MRI Guidance.stereotactic for localization in Brain-- W contrast IV"/>
    </concept>
    <concept>
     <code value="30800-7"/>
-    <display value="MRI Guidance.stereotactic for localization in Brain&#45;- WO contrast"/>
+        <display value="MRI Guidance.stereotactic for localization in Brain-- WO contrast"/>
    </concept>
    <concept>
     <code value="28632-8"/>
@@ -6165,7 +6165,7 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="65806-2"/>
-    <display value="Inhalation challenge test report Document &#45;-W methacholine inhaled"/>
+        <display value="Inhalation challenge test report Document --W methacholine inhaled"/>
    </concept>
    <concept>
     <code value="11500-6"/>
@@ -25465,15 +25465,15 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="57553-0"/>
-    <display value="18-Hydroxydeoxycorticosterone [Moles/volume] in Serum or Plasma &#45;-1 hour post dose corticotropin"/>
+        <display value="18-Hydroxydeoxycorticosterone [Moles/volume] in Serum or Plasma --1 hour post dose corticotropin"/>
    </concept>
    <concept>
     <code value="57552-2"/>
-    <display value="18-Hydroxydeoxycorticosterone [Moles/volume] in Serum or Plasma &#45;-30 minutes post dose corticotropin"/>
+        <display value="18-Hydroxydeoxycorticosterone [Moles/volume] in Serum or Plasma --30 minutes post dose corticotropin"/>
    </concept>
    <concept>
     <code value="57551-4"/>
-    <display value="18-Hydroxydeoxycorticosterone [Moles/volume] in Serum or Plasma &#45;-pre dose corticotropin"/>
+        <display value="18-Hydroxydeoxycorticosterone [Moles/volume] in Serum or Plasma --pre dose corticotropin"/>
    </concept>
    <concept>
     <code value="53347-1"/>
@@ -25509,91 +25509,91 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="56611-7"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-1.5 hours post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --1.5 hours post XXX challenge"/>
    </concept>
    <concept>
     <code value="56608-3"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-15 minutes post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --15 minutes post XXX challenge"/>
    </concept>
    <concept>
     <code value="57493-9"/>
-    <display value="11-Deoxycorticosterone [Moles/volume] in Serum or Plasma &#45;-1 hour post 250 ug corticotropin"/>
+        <display value="11-Deoxycorticosterone [Moles/volume] in Serum or Plasma --1 hour post 250 ug corticotropin"/>
    </concept>
    <concept>
     <code value="40816-1"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-1 hour post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --1 hour post XXX challenge"/>
    </concept>
    <concept>
     <code value="56602-6"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-1st specimen post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --1st specimen post XXX challenge"/>
    </concept>
    <concept>
     <code value="56613-3"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-2.5 hours post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --2.5 hours post XXX challenge"/>
    </concept>
    <concept>
     <code value="56609-1"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-20 minutes post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --20 minutes post XXX challenge"/>
    </concept>
    <concept>
     <code value="56612-5"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-2 hours post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --2 hours post XXX challenge"/>
    </concept>
    <concept>
     <code value="56603-4"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-2nd specimen post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --2nd specimen post XXX challenge"/>
    </concept>
    <concept>
     <code value="57492-1"/>
-    <display value="11-Deoxycorticosterone [Moles/volume] in Serum or Plasma &#45;-30 minutes post 250 ug corticotropin"/>
+        <display value="11-Deoxycorticosterone [Moles/volume] in Serum or Plasma --30 minutes post 250 ug corticotropin"/>
    </concept>
    <concept>
     <code value="56556-4"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-30 minutes post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --30 minutes post XXX challenge"/>
    </concept>
    <concept>
     <code value="56604-2"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-3rd specimen post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --3rd specimen post XXX challenge"/>
    </concept>
    <concept>
     <code value="56610-9"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-40 minutes post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --40 minutes post XXX challenge"/>
    </concept>
    <concept>
     <code value="56605-9"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-4th specimen post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --4th specimen post XXX challenge"/>
    </concept>
    <concept>
     <code value="59987-8"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-5th specimen post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --5th specimen post XXX challenge"/>
    </concept>
    <concept>
     <code value="59986-0"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-6th specimen post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --6th specimen post XXX challenge"/>
    </concept>
    <concept>
     <code value="59985-2"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-7th specimen post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --7th specimen post XXX challenge"/>
    </concept>
    <concept>
     <code value="59984-5"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-8th specimen post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --8th specimen post XXX challenge"/>
    </concept>
    <concept>
     <code value="56555-6"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-baseline"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --baseline"/>
    </concept>
    <concept>
     <code value="16294-1"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-post XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --post XXX challenge"/>
    </concept>
    <concept>
     <code value="57491-3"/>
-    <display value="11-Deoxycorticosterone [Moles/volume] in Serum or Plasma &#45;-pre 250 ug corticotropin"/>
+        <display value="11-Deoxycorticosterone [Moles/volume] in Serum or Plasma --pre 250 ug corticotropin"/>
    </concept>
    <concept>
     <code value="56606-7"/>
-    <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma &#45;-pre XXX challenge"/>
+        <display value="11-Deoxycorticosterone [Mass/volume] in Serum or Plasma --pre XXX challenge"/>
    </concept>
    <concept>
     <code value="13480-9"/>
@@ -25609,15 +25609,15 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
    </concept>
    <concept>
     <code value="57562-1"/>
-    <display value="21-Deoxycorticosterone [Moles/volume] in Serum or Plasma &#45;-1 hour post dose corticotropin"/>
+        <display value="21-Deoxycorticosterone [Moles/volume] in Serum or Plasma --1 hour post dose corticotropin"/>
    </concept>
    <concept>
     <code value="57561-3"/>
-    <display value="21-Deoxycorticosterone [Moles/volume] in Serum or Plasma &#45;-30 minutes post dose corticotropin"/>
+        <display value="21-Deoxycorticosterone [Moles/volume] in Serum or Plasma --30 minutes post dose corticotropin"/>
    </concept>
    <concept>
     <code value="57560-5"/>
-    <display value="21-Deoxycorticosterone [Moles/volume] in Serum or Plasma &#45;-pre dose corticotropin"/>
+        <display value="21-Deoxycorticosterone [Moles/volume] in Serum or Plasma --pre dose corticotropin"/>
    </concept>
    <concept>
     <code value="72510-1"/>
@@ -25627,13 +25627,6 @@ Physical, Discharge Summary, Ultrasound Report и т. д.). Набор знач�
     <code value="72509-3"/>
     <display value="Reporting rate Reporting period population Calculated"/>
    </concept>
-
-
    </include>
-  
-
   </compose>  
-
-
 </ValueSet>
-
