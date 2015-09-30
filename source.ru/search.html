@@ -12,6 +12,7 @@
 
 <a name="base"> </a>
 <h2>Поиск</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
 Один из основополагающих аспектов в работе FHIR - это механизм поиска набора ресурсов. Операции поиска ищут в существующем наборе ресурсов в соответствии с критериями поиска, переданными в качестве параметров механизму поиска. На этой странице задокументирована система поиска FHIR от простых примеров до самых сложных случаев. Реализациям требуется внедрить только ту степень сложности, которая им необходима.
@@ -23,32 +24,33 @@
 <tr><td><b>Типы параметров поиска</b></td><td><b>Параметры для всех ресурсов</b></td><td><b>Параметры результатов поиска</b></td></tr>
 <tr>
 <td>
-<%codetoc http://hl7.org/fhir/vs/search-param-type%>
+<%codetoc http://hl7.org/fhir/ValueSet/search-param-type%>
 </td>
 <td>
-<a href="#id">_id</a><br/>
-<a href="#lastUpdated">_lastUpdated</a><br/>
-<a href="#tag">_tag</a><br/>
-<a href="#profile">_profile</a><br/>
-<a href="#security">_security</a><br/>
-<a href="#text">_text</a><br/>
-<a href="#content">_content</a><br/>
-<a href="#list">_list</a><br/>
-<a href="#query">_query</a><br/>
+<a href="#id"><code>_id</code></a><br/>
+<a href="#lastUpdated"><code>_lastUpdated</code></a><br/>
+<a href="#tag"><code>_tag</code></a><br/>
+<a href="#profile"><code>_profile</code></a><br/>
+<a href="#security"><code>_security</code></a><br/>
+<a href="#text"><code>_text</code></a><br/>
+<a href="#content"><code>_content</code></a><br/>
+<a href="#list"><code>_list</code></a><br/>
+<a href="#query"><code>_query</code></a><br/>
 </td>
 <td>
-<a href="#sort">_sort</a><br/>
-<a href="#count">_count</a><br/>
-<a href="#include">_include</a><br/>
-<a href="#revinclude">_revinclude</a><br/>
-<a href="#summary">_summary</a><br/>
-<a href="#contained">_contained</a><br/>
-<a href="#containedType">_containedType</a><br/>
+<a href="#sort"><code>_sort</code></a><br/>
+<a href="#count"><code>_count</code></a><br/>
+<a href="#include"><code>_include</code></a><br/>
+<a href="#revinclude"><code>_revinclude</code></a><br/>
+<a href="#summary"><code>_summary</code></a><br/>
+<a href="#elements"><code>_elements</code></a><br/>
+<a href="#contained"><code>_contained</code></a><br/>
+<a href="#containedType"><code>_containedType</code></a><br/>
 </td>
 </tr>
 </table>
 <p>
-In addition, there is a special search parameter <a href="#filter">_filter</a> that allows a different method of searching.
+In addition, there is a special search parameter called <a href="#filter"><code>_filter</code></a> that allows for an alternative method of searching.
 </p>
 
 <h3>Введение</h3>
@@ -675,7 +677,7 @@ This way, the last matching resource will be returned.
 <p>
 Клиенты могут запросить, чтобы система вернула дополнительные ресурсы, относящиеся к результатам поиска, с целью уменьшения общей сетевей задержки при повторных извлечениях связанных ресурсов. Типичный случай, когда это полезно, это когда клиент ищет некоторый тип клинического ресурса, однако для каждого возвращения такого ресурса клиенту также нужен ресурс-объект (пациент), к которому относится клинический ресурс. Клиент запрашивает включение зависимых ресурсов в набор результатов указанием одного или нескольких параметров _include. An alternative scenario is where the client 
 wishes to fetch a particular resource, and any resources that refer
-to it. For example, the client may wish to fetch a MedicationPrescription,
+to it. For example, the client may wish to fetch a MedicationOrder,
 and any provenance resources that refer to the prescription. This is known
 as a reverse include, and specified by providing a _revinclude parameter.
 </p>
@@ -689,11 +691,11 @@ Each _include parameter specifies a search parameter to join on:
 Каждый параметр _include содержит поисковый параметр для присоединения по:
 </p>
 <pre>
- GET [base]/MedicationPrescription?_include=MedicationPrescription:patient&amp;criteria...
- GET [base]/MedicationPrescription?_revinclude=Provenance:target&amp;criteria...
+ GET [base]/MedicationOrder?_include=MedicationOrder:patient&amp;criteria...
+ GET [base]/MedicationOrder?_revinclude=Provenance:target&amp;criteria...
 </pre>
 <p>
-The first search means, for any matching MedicationPrescription, include 
+The first search means, for any matching MedicationOrder, include 
 any patient that the medication prescriptions in the result set refer to. 
 The second search means, for any matching prescriptions, return all 
 the provenance resources that refer to them. 
@@ -719,13 +721,13 @@ matches, and which are includes).
 </p>
 <p>
 The inclusion process can be recursive. For example, this example search 
-returns all the <a href="medicationprescription.html">Medication
-Prescription</a> resources and their <a href="practitioner.html">prescribing Practitioner</a> Resources
+returns all the <a href="medicationorder.html">Medication
+Order</a> resources and their <a href="practitioner.html">prescribing Practitioner</a> Resources
 for the matching <a href="medicationdispense.html">Medication Dispense</a> resources:
 </p>
 <pre>
 GET [base]/MedicationDispense?_include=MedicationDispense.authorizingPrescription
-    &amp;_include=MedicationPrescription.prescriber&amp;criteria...
+    &amp;_include=MedicationOrder.prescriber&amp;criteria...
 </pre>
 <p>
 Both _include and _reverseInclude and use the wild card "*" for the search parameter
@@ -758,14 +760,14 @@ alone as a coherent package.
 <p>
 By default, search results only include resources that are not contained in other resources. 
 A chained condition will be evaluated inside contained resources. To illustrate this, consider
-a MedicationPrescription resource that has a contained Medication resource specifying 
+a MedicationOrder resource that has a contained Medication resource specifying 
 a custom formulation that has ingredient that has a value Substance/x23. In this case, a search:
 </p>
 <pre>
-GET MedicationPrescription?medication.ingredient=Substance/x23
+GET MedicationOrder?medication.ingredient=Substance/x23
 </pre>
 <p>
-will include the MedicationPrescription resource in the results. However this search:
+will include the MedicationOrder resource in the results. However this search:
 </p>
 <pre>
 GET Medication?ingredient=Substance/x23
@@ -804,7 +806,7 @@ search results:
   &lt;base value=&quot;http://example.com/fhir&quot;/&gt;
   &lt;entry&gt;
     &lt;resource&gt;
-      &lt;MedicationPrescription&gt;
+      &lt;MedicationOrder&gt;
         &lt;id value=&quot;23&quot;&gt;
         ....
         &lt;contained&gt;
@@ -814,7 +816,7 @@ search results:
           &lt;/Medication&gt;
         &lt;contained&gt;
 
-      &lt;/MedicationPrescription&gt;
+      &lt;/MedicationOrder&gt;
     &lt;/resource&gt;
     &lt;search&gt;
       &lt;mode value=&quot;match&quot;/&gt;
@@ -833,7 +835,7 @@ differently:
   ...
   &lt;base value=&quot;http://example.com/fhir&quot;/&gt;
   &lt;entry&gt;
-    &lt;base value=&quot;http://example.com/fhir/MedicationPrescription/23#&quot;/&gt;
+    &lt;base value=&quot;http://example.com/fhir/MedicationOrder/23#&quot;/&gt;
     &lt;resource&gt;
       &lt;Medication&gt;
         &lt;id value=&quot;m1&quot;&gt;

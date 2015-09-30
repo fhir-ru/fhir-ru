@@ -31,9 +31,9 @@ captured as problems/diagnoses. -->
 <div>
 <h2>Границы и связи</h2>
 <p>
-Другие ресурсы могут ссылаться на ресурс condition в качестве "основания" для действия (например <a href="medicationprescription.html">MedicationPrescription</a>,
+Другие ресурсы могут ссылаться на ресурс condition в качестве "основания" для действия (например <a href="medicationorder.html">MedicationOrder</a>,
 <a href="procedure.html">Procedure</a>, <a href="diagnosticorder.html">DiagnosticOrder</a> и др.)
-<!-- The condition resource may be referenced by other resources as "reasons" for an action (e.g. <a href="medicationprescription.html">MedicationPrescription</a>,
+<!-- The condition resource may be referenced by other resources as "reasons" for an action (e.g. <a href="medicationorder.html">MedicationOrder</a>,
 <a href="procedure.html">Procedure</a>, <a href="diagnosticorder.html">DiagnosticOrder</a>, etc.) -->
 </p>
 <p>

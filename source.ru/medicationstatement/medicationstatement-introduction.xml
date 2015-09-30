@@ -14,13 +14,14 @@
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 <b>Домен Medication включает в себя ряд взаимосвязанных ресурсов:<!-- The Medication domain includes a number of related resources --></b>
 </p>
 <table border="1" cellpadding="1" cellspacing="2" frame="box">
     <tr>
-        <td><a href="medicationprescription.html">MedicationPrescription</a></td>
+        <td><a href="medicationorder.html">MedicationOrder</a></td>
         <td>Заказ как на поставку лекарственного средства, так и распоряжения по вводу лекарственного средства пациенту.<!-- An order for both supply of the medication and the instructions for administration of the medicine to a patient. --></td>
     </tr>
     <tr>
@@ -33,20 +34,20 @@
     </tr>
     <tr>
         <td>MedicationStatement</td>
-        <td>Запись о том, что лекарственное средство было принято пациентом, или что лекарственное средство было выдано пациенту, где данная запись является результатом сообщения от пациента или другого клинициста. Medication statement не является частью последовательности выписать->отпустить препарат по рецепту->ввести (в организм) (prescribe->dispense->administer), это протокол о том, что такая последовательность (или, по крайней мере, её часть) действительно имела место и привела к убеждению о том, что пациент получил конкретный медикамент. <!-- This is a record of medication being taken by a patient, or that the medication has been given to a patient where the record is the result of a report from the patient, or another clinician. 
-          A medication statement is not a part of the prescribe->dispense->administer sequence but is a report that such a sequence (or at least a part of it) did take place resulting in a belief that the patient has received a particular medication. -->
+        <td>Запись о том, что лекарственное средство было принято пациентом, или что лекарственное средство было выдано пациенту, где данная запись является результатом сообщения от пациента или другого клинициста. Medication statement не является частью последовательности выписать->отпустить препарат по рецепту->ввести (в организм) (prescribe->dispense->administer), это протокол о том, что такая последовательность (или, по крайней мере, её часть) действительно имела место и привела к убеждению о том, что пациент получил конкретный медикамент. <!-- This is a record of a medication being taken by a patient or that a medication has been given to a patient, where the record is the result of a report from the patient or another clinician. 
+          A medication statement is not a part of the prescribe->dispense->administer sequence, but is a report that such a sequence (or at least a part of it) did take place, resulting in a belief that the patient has received a particular medication. -->
         </td>
     </tr>
 </table>
 
 <p>
-Данный ресурс отличается от <a href="medicationprescription.html">MedicationPrescription</a>, <a href="medicationdispense.html">MedicationDispense</a> 
+Данный ресурс отличается от <a href="medicationorder.html">MedicationOrder</a>, <a href="medicationdispense.html">MedicationDispense</a> 
 и <a href="medicationadministration.html">MedicationAdministration</a>. Каждый из этих трех ресурсов относится к конкретным событиям - отдельный заказ, предоставление отдельного медикамента, отдельная доза. MedicationStatement - это более широкое утверждение, охватывающее больший промежуток времени и не зависящее от конкретных событий. Наличие экземпляров ресурсов любого из предыдущих трех типов может использоваться, чтобы заключить Medication statement. Однако Medication statement может также записываться на основе другой информации, включая утверждение пациентом или лицом, осуществляющим уход, результатов лабораторных тестов и т. п.
-<!-- This resource is distinct from <a href="medicationprescription.html">MedicationPrescription</a>, <a href="medicationdispense.html">MedicationDispense</a> 
+<!-- This resource is distinct from <a href="medicationorder.html">MedicationOrder</a>, <a href="medicationdispense.html">MedicationDispense</a> 
 and <a href="medicationadministration.html">MedicationAdministration</a>.  Each of those resources refer to specific events - an individual 
 order, an individual provisioning of medication or an individual dosing.  MedicationStatement is a broader assertion covering a wider 
-timespan and independent of specific events.  The existence of resource instances of any of the preceding three types may be used to infer 
-a Medication statement.  However, medication statements can also be captured on the basis of other information including an assertion by the 
+timespan and is independent of specific events.  The existence of resource instances of any of the preceding three types may be used to infer 
+a medication statement.  However, medication statements can also be captured on the basis of other information, including an assertion by the 
 patient or a care-giver, the results of a lab test, etc. -->
 </p>
 </div>

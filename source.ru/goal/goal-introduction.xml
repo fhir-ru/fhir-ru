@@ -34,9 +34,9 @@ goal to maintain skin integrity)  -->
 <div>
 <h2>Границы и связи</h2>
 <p>
-Цели, как правило, устанавливаются в контексте плана по уходу <a href="careplan.html">CarePlan</a>. Тем не менее, на цели могут также непосредственно ссылаться с помощью расширений ресурсы-запросы (например <a href="medicationprescription.html">MedicationPrescription</a> или <a href="referralrequest.html">ReferralRequest</a>).
+Цели, как правило, устанавливаются в контексте плана по уходу <a href="careplan.html">CarePlan</a>. Тем не менее, на цели могут также непосредственно ссылаться с помощью расширений ресурсы-запросы (например <a href="medicationorder.html">MedicationOrder</a> или <a href="referralrequest.html">ReferralRequest</a>).
 <!-- Goals are typically established in the context of a <a href="careplan.html">CarePlan</a>.  However, goals may also be directly
-referenced by request-type resources (e.g. <a href="medicationprescription.html">MedicationPrescription</a> or <a href="referralrequest.html">ReferralRequest</a>)
+referenced by request-type resources (e.g. <a href="medicationorder.html">MedicationOrder</a> or <a href="referralrequest.html">ReferralRequest</a>)
 by using an extension. -->
 </p>
 <p>

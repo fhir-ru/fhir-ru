@@ -13,8 +13,8 @@ These nutrition orders are combined with information on a patient's food allergi
 <div>
 <h2>Границы и связи</h2>
 <p>
-Ресурс NutritionOrder используется для оформления заказов на питание, пероральные пищевые добавки и энтеральное питание в условиях стационара. Ресурс <a href="medicationprescription.html">MedicationPrescription</a> следует использовать для заказа парентерального (внутривенного) питания и для предписания витаминных и минеральных пищевых добавок.
-<!-- The NutritionOrder resource is used for requesting oral diets, oral nutrition supplements and enteral feedings in an in-patient setting. The <a href="medicationprescription.html">MedicationPrescription</a> resource should be used for requesting parenteral(IV) nutrition and prescribing dietary supplements such as vitamin or mineral supplements. -->
+Ресурс NutritionOrder используется для оформления заказов на питание, пероральные пищевые добавки и энтеральное питание в условиях стационара. Ресурс <a href="medicationorder.html">MedicationOrder</a> следует использовать для заказа парентерального (внутривенного) питания и для предписания витаминных и минеральных пищевых добавок.
+<!-- The NutritionOrder resource is used for requesting oral diets, oral nutrition supplements and enteral feedings in an in-patient setting. The <a href="medicationorder.html">MedicationOrder</a> resource should be used for requesting parenteral(IV) nutrition and prescribing dietary supplements such as vitamin or mineral supplements. -->
 </p>
 <p>
 Nutrition Order - это запись заказа на поставку питания, пероральной добавки или энтеральные смеси для пациента. Однако чтобы инициировать этот заказ, требуется использовать ресурс <a href="order.html">Order</a> и связанный с ним рабочий процесс с указанием NutritionOrder в поле Order.details или с помощью ресурса NutritionOrder в контексте обмена сообщениями или работы сервисов, где этот запрос будет явным или неявным.
