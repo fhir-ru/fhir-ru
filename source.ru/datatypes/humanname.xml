@@ -1076,19 +1076,19 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s78">
-					<Data ss:Type="String">Имя человека - компоненты и применение<!-- Name of a human - parts and usage --></Data>
+					<Data ss:Type="String">Name of a human - parts and usage</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s80">
-					<Data ss:Type="String">Имя человека с возможностью указать его компоненты и применение<!-- A human's name with the ability to identify parts and usage --></Data>
+					<Data ss:Type="String">A human's name with the ability to identify parts and usage</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s81">
-					<Data ss:Type="String">Необходима возможность записывать имена наряду с примечаниями об их использовании<!-- Need to be able to record names, along with notes about their use --></Data>
+					<Data ss:Type="String">Need to be able to record names, along with notes about their use</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s80">
-					<Data ss:Type="String">Имена могут меняться, от них могут отрекаться, люди могут иметь различные имена в разных контекстах.  Имена могут быть разбиты на части разного типа, имеющие переменное значение в зависимости от контекста, хотя деление на части не всегда существенно. NВ личных именах различные части могут быть пронизаны некоторым неявным смыслом; различные культуры придают различную важность частями имени, и степень, с которой система должна заботиться о частях имени, по всему миру широко варьируется.<!-- Names may be changed, or repudiated, or people may have different names in different contexts. Names may be divided into parts of different type that have variable significance depending on context, though the division into parts does not always matter. With personal names, the different parts may or may not be imbued with some implicit meaning; various cultures associate different importance with the name parts and the degree to which systems must care about name parts around the world varies widely. --></Data>
+					<Data ss:Type="String">Names may be changed, or repudiated, or people may have different names in different contexts. Names may be divided into parts of different type that have variable significance depending on context, though the division into parts does not always matter. With personal names, the different parts may or may not be imbued with some implicit meaning; various cultures associate different importance with the name parts and the degree to which systems must care about name parts around the world varies widely.</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s81">
@@ -1169,11 +1169,11 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Указывает назначение имени<!-- Identifies the purpose for this name --></Data>
+					<Data ss:Type="String">Identifies the purpose for this name</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
-					<Data ss:Type="String">Позволяет выбрать из ряда имен подходящее для конкретного контекста использования<!-- Allows the appropriate name for a particular context of use to be selected from among a set of names --></Data>
+					<Data ss:Type="String">Allows the appropriate name for a particular context of use to be selected from among a set of names</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
@@ -1188,7 +1188,7 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s90">
-					<Data ss:Type="String">XPN.7, но часто определяется полем, которое содержит это имя<!-- XPN.7, but often indicated by which field contains the name --></Data>
+					<Data ss:Type="String">XPN.7, but often indicated by which field contains the name</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s90">
@@ -1252,15 +1252,15 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
-					<Data ss:Type="String">Текстовое представление полного имени<!-- Text representation of the full name --></Data>
+					<Data ss:Type="String">Text representation of the full name</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Полное текстовое представление имени<!-- A full text representation of the name --></Data>
+					<Data ss:Type="String">A full text representation of the name</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
-					<Data ss:Type="String">Визуализируемая, не закодированная форма<!-- A renderable, unencoded form --></Data>
+					<Data ss:Type="String">A renderable, unencoded form</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
@@ -1340,11 +1340,11 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
-					<Data ss:Type="String">Родовое имя (часто называемое фамилией)<!-- Family name (often called 'Surname') --></Data>
+					<Data ss:Type="String">Family name (often called 'Surname')</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Часть имени, связанная с родословной. В некоторых культурах (например Эритрее) родовое имя сына является первым именем его отца.<!-- The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father. --></Data>
+					<Data ss:Type="String">The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -1427,7 +1427,7 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
-					<Data ss:Type="String">Имена (не обязательно 'первое'). Включает второе имя (middle names)<!-- Given names (not always 'first'). Includes middle names --></Data>
+					<Data ss:Type="String">Given names (not always 'first'). Includes middle names</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
@@ -1513,11 +1513,11 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
-					<Data ss:Type="String">Компоненты, идущие перед  именем<!-- Parts that come before the name --></Data>
+					<Data ss:Type="String">Parts that come before the name</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Компонент, отражающий академические, правовые, профессиональные или дворянские звания и идущий в начале имени<!-- Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name --></Data>
+					<Data ss:Type="String">Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -1598,11 +1598,11 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
-					<Data ss:Type="String">Компоненты, идущие после имени<!-- Parts that come after the name --></Data>
+					<Data ss:Type="String">Parts that come after the name</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Компонент, отражающий академические, правовые, профессиональные или дворянские звания и идущий в конце имени<!-- Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name --></Data>
+					<Data ss:Type="String">Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -1682,15 +1682,15 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
-					<Data ss:Type="String">Период времени, когда имя было/есть в употреблении<!-- Time period when name was/is in use --></Data>
+					<Data ss:Type="String">Time period when name was/is in use</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Указывает период времени действия этого имени для человека.<!-- Indicates the period of time when this name was valid for the named person. --></Data>
+					<Data ss:Type="String">Indicates the period of time when this name was valid for the named person.</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
-					<Data ss:Type="String">Позволяет размещать имена в историческом контексте<!-- Allows names to be placed in historical context --></Data>
+					<Data ss:Type="String">Allows names to be placed in historical context</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">

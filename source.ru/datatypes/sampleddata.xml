@@ -1058,15 +1058,15 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s78">
-					<Data ss:Type="String">Серия измерений, сделанных с помощью устройства<!-- A series of measurements taken by a device --></Data>
+					<Data ss:Type="String">A series of measurements taken by a device</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s80">
-					<Data ss:Type="String">Серия измерений, снятых устройством, с верхним и нижним пределами. Данные могут содержать больше одного измерения<!-- A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data --></Data>
+					<Data ss:Type="String">A series of measurements taken by a device, with upper and lower limits. There may be more than one dimension in the data</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s81">
-					<Data ss:Type="String">Существует необходимость в сжатом виде для обработки данных, полученных с помощью устройств, которые снимают показатели физического состояния с высокой частотой<!-- There is a need for a concise way to handle the data produced by devices that sample a physical state at a high frequency --></Data>
+					<Data ss:Type="String">There is a need for a concise way to handle the data produced by devices that sample a physical state at a high frequency</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s80">
@@ -1138,11 +1138,11 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
-					<Data ss:Type="String">Нулевое значение и единицы<!-- Zero value and units --></Data>
+					<Data ss:Type="String">Zero value and units</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Базовая величина, соответствующая измерению нулевого значения. Кроме того, здесь указываются единицы измерения для всей серии измерений<!-- The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series --></Data>
+					<Data ss:Type="String">The base quantity that a measured value of zero represents. In addition, this provides the units of the entire measurement series</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -1215,18 +1215,18 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
-					<Data ss:Type="String">Число миллисекунд между замерами<!-- Number of milliseconds between samples --></Data>
+					<Data ss:Type="String">Number of milliseconds between samples</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Продолжительность времени между замерами, измеренная в миллисекундах<!-- The length of time between sampling times, measured in milliseconds --></Data>
+					<Data ss:Type="String">The length of time between sampling times, measured in milliseconds</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Как правило, это целое число<!-- This is usually a whole number --></Data>
+					<Data ss:Type="String">This is usually a whole number</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -1294,11 +1294,11 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
-					<Data ss:Type="String">Умножьте данные на это значение, прежде чем добавлять к точке отсчета<!-- Multiply data by this before adding to origin --></Data>
+					<Data ss:Type="String">Multiply data by this before adding to origin</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Поправочный коэффициент, который применяется к точкам дискретных данных, прежде чем они будут добавлены к точке отсчета<!-- A correction factor that is applied to the sampled data points before they are added to the origin --></Data>
+					<Data ss:Type="String">A correction factor that is applied to the sampled data points before they are added to the origin</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -1371,7 +1371,7 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
-					<Data ss:Type="String">Нижний предел обнаружения<!-- Lower limit of detection --></Data>
+					<Data ss:Type="String">Lower limit of detection</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
@@ -1448,7 +1448,7 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
-					<Data ss:Type="String">Верхний предел обнаружения<!-- Upper limit of detection --></Data>
+					<Data ss:Type="String">Upper limit of detection</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
@@ -1525,18 +1525,18 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
-					<Data ss:Type="String">Количество измеренных точек в каждый момент времени<!-- Number of sample points at each time point --></Data>
+					<Data ss:Type="String">Number of sample points at each time point</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Количество измеренных точек в каждый момент времени. Если это значение больше единицы, значит измерения будут чередоваться - все измеренные точки в один момент времени будут записываться одновременно<!-- The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once --></Data>
+					<Data ss:Type="String">The number of sample points at each time point. If this value is greater than one, then the dimensions will be interlaced - all the sample points for a point in time will be recorded at once</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">При наличии более одного измерения смысл измерений определяется из кода для этого типа данных (типично для электрокардиограмм)<!-- If there is more than one dimension, the code for the type of data will define the meaning of the dimensions (typically ECG data) --></Data>
+					<Data ss:Type="String">If there is more than one dimension, the code for the type of data will define the meaning of the dimensions (typically ECG data)</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">

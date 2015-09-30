@@ -1012,11 +1012,11 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s77">
-					<Data ss:Type="String">Текстовый узел с атрибутами<!-- Text node with attribution --></Data>
+					<Data ss:Type="String">Text node with attribution</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s79">
-					<Data ss:Type="String">Текстовое примечание, которое также содержит информацию о том, кем и когда было сделано это утверждение<!-- A  text note which also  contains information about who made the statement and when --></Data>
+					<Data ss:Type="String">A  text note which also  contains information about who made the statement and when</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s80">
@@ -1090,11 +1090,11 @@ This element may need to be included in narrative because of the potential for m
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s85">
-					<Data ss:Type="String">Лицо, ответственное за данную аннотацию<!-- Individual responsible for the annotation --></Data>
+					<Data ss:Type="String">Individual responsible for the annotation</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s86">
-					<Data ss:Type="String">Лицо, ответственное за создание этой аннотации.<!-- The individual responsible for making the annotation. --></Data>
+					<Data ss:Type="String">The individual responsible for making the annotation.</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
@@ -1165,11 +1165,11 @@ This element may need to be included in narrative because of the potential for m
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s85">
-					<Data ss:Type="String">Когда была сделана эта аннотация<!-- When the annotation was made --></Data>
+					<Data ss:Type="String">When the annotation was made</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s86">
-					<Data ss:Type="String">Указывает, когда была сделана эта конкретная аннотация<!-- Indicates when this particular annotation was made --></Data>
+					<Data ss:Type="String">Indicates when this particular annotation was made</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
@@ -1240,11 +1240,11 @@ This element may need to be included in narrative because of the potential for m
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s85">
-					<Data ss:Type="String">Аннотация - текстовое содержимое<!-- The annotation  - text content --></Data>
+					<Data ss:Type="String">The annotation  - text content</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s86">
-					<Data ss:Type="String">Текст аннотации<!-- The text of the annotation --></Data>
+					<Data ss:Type="String">The text of the annotation</Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
