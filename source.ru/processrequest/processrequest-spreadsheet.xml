@@ -6571,7 +6571,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s153"><Data ss:Type="String">ActionList</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">List of allowable action which this resource can request.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Перечень допустимых действий, которые может запросить этот ресурс<!-- List of allowable action which this resource can request -->.</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#actionlist</Data></Cell>

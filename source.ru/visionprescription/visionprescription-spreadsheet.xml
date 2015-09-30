@@ -1415,7 +1415,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Регулировка мощности линзы<!-- Lens add --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Регулировка мощности линзы<!-- Дополнительно<!-- Рекомендации<!-- Lens add --> --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Регулировка мощности для мультифокальных линз, измеренная в диоптриях (0.25 единиц).<!-- Power adjustment for multifocal lenses measured in diopters (0.25 units). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1565,7 +1565,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительно<!-- Lens add --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Lens add</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Особый цвет или узор.<!-- Special color or pattern. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1595,7 +1595,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Рекомендации<!-- Lens add --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Lens add</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Рекомендации по торговой марке или ограничения.<!-- Brand recommendations or restrictions. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

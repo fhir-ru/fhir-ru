@@ -1148,7 +1148,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Именованное анатомическое расположение<!-- Named anatomical location  --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Именованное анатомическое расположение<!-- Именованное анатомическое расположение<!-- Named anatomical location  --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Named anatomical location - ideally coded where possible.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1212,13 +1212,13 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Латеральность<!-- Laterality --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Латеральность<!-- Латеральность<!-- Laterality --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Латеральность<!-- Laterality --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Laterality</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Модификатор для уточнения анатомического расположения. Сюда входят такие модификаторы, как латеральность, относительное расположение, направленность, число и плоскость.<!-- Modifier to refine the anatomical location.  This includes concepts for laterality, relative location, directionality, number, and plane. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1345,7 +1345,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Выявленный ориентир<!-- Identified landmark --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Выявленный ориентир<!-- Выявленный ориентир<!-- Identified landmark --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Выявленный анатомический ориентир, относительно которого указывается анатомическое расположение.<!-- Identified anatomical landmark from which to specify relative anatomical location. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1355,7 +1355,7 @@
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Выявленный ориентир<!-- Identified landmark --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Identified landmark</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4342,7 +4342,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s96"><Data ss:Type="String">BodySite.code</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Именованное анатомическое расположение<!-- Named anatomical location  --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Named anatomical location </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">patient</Data></Cell>

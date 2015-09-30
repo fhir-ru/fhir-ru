@@ -989,7 +989,7 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Манифест, определяющий набор документов<!-- A manifest that defines a set of documents --></Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Манифест, определяющий набор документов<!-- Манифест, определяющий набор документов<!-- A manifest that defines a set of documents --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">A manifest that defines a set of documents.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1130,7 +1130,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Пациент, медицинский работник, или организация, которой предназначен этот набор документов<!-- A patient, practitioner, or organization for which this set of documents is intended --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">How the recipient receives the document set or is notified of it is up to the implementation. This element is just a statement of intent. If the recipient is a person, and it is not known whether the person is a patient or a practitioner, RelatedPerson would be the default choice </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Как реципиент получает набор документов или уведомление о нем - зависит от реализации. Этот элемент - всего лишь заявление о намерении<!-- How the recipient receives the document set or is notified of it is up to the implementation. This element is just a statement of intent -->. If the recipient is a person, and it is not known whether the person is a patient or a practitioner, RelatedPerson would be the default choice </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.participation[typeCode=IRCP].role</Data><NamedCell

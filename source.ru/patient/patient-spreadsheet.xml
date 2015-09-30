@@ -1003,7 +1003,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Информация о человеке или животном, получающем услуги здравоохранения <!-- Information about an individual or animal receiving health care services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Demographics and other administrative information about an individual or animal receiving care or other health-related services.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Демографическая и другая административная информация о человеке или животном, получающем медицинскую помощь или другие услуги, связанные со здоровьем <!-- Demographics and other administrative information about an individual or animal receiving care or other health-related services -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Процесс здравоохранения сосредоточен на отслеживании пациента<!-- Tracking patient is the center of the healthcare process --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1038,9 +1038,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор этого пациента<!-- An identifier for this patient --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор этого пациента<!-- Идентификатор этого пациента<!-- An identifier for this patient --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор этого пациента<!-- An identifier for this patient --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">An identifier for this patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Пациентам почти всегда присваиваются индивидуальные числовые идентификаторы<!-- Patients are almost always assigned specific numerical identifiers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1157,7 +1157,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">У людей есть (основные) способы связи с ними, например по телефону, электронной почте.<!-- People have (primary) ways to contact them in some way such as phone, email. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">У людей есть (основные) способы связи с ними, например по телефону, электронной почте.<!-- У людей есть (в основном) способы связи с ними, такие как телефон, электронная почта.<!-- People have (primary) ways to contact them in some way such as phone, email. --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner's phone)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1310,9 +1310,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Указывает, умер ли индивидуум или нет<!-- Indicates if the individual is deceased or not --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Указывает, умер ли индивидуум или нет<!-- Указывает, умер ли индивидуум или нет<!-- Indicates if the individual is deceased or not --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Указывает, умер ли индивидуум или нет<!-- Indicates if the individual is deceased or not --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates if the individual is deceased or not</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Факт смерти пациента влияет на клинический процесс. Кроме того, в человеческом общении и управлении отношениями необходимо знать, жив ли человек.<!-- The fact that a patient is deceased influences the clinical process. Also, in human communication and relation management it is necessary to know whether the person is alive. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1348,9 +1348,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Адрес индивидуума<!-- Addresses for the individual --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Адрес индивидуума<!-- Адрес индивидуума<!-- Addresses for the individual --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Адрес индивидуума<!-- Addresses for the individual --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Addresses for the individual</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Может потребоваться для отслеживания адресов пациента для связи, выставления счетов или требований к отчетности, а также для идентификации <!-- May need to keep track of patient addresses for contacting, billing or reporting requirements and also to help with identification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1458,9 +1458,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Изображение пациента<!--  Image of the patient --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Изображение пациента<!--  Изображение пациента <!-- Image of the patient --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Изображение пациента <!-- Image of the patient --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Image of the patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Большинство EHR-систем имеют возможность сохранять изображение пациента. Также это соответствует новому применению социальных средств массовой информации.<!-- Many EHR systems have the capability to capture an image of the patient. Fits with newer social media usage too. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1494,9 +1494,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактное лицо пациента (например опекун, партнер, друг)<!-- A contact party (e.g. guardian, partner, friend) for the patient --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактное лицо пациента (например опекун, партнер, друг)<!-- Контактное лицо пациента (например опекун, партнер, друг)<!-- A contact party (e.g. guardian, partner, friend) for the patient --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Контактное лицо пациента (например опекун, партнер, друг)<!-- A contact party (e.g. guardian, partner, friend) for the patient --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A contact party (e.g. guardian, partner, friend) for the patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Требуется для отслеживания людей, с которыми вы может связаться насчет пациента<!-- Need to track people you can contact about the patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1568,9 +1568,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя, ассоциируемое с этим контактным лицом <!-- A name associated with the contact person --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя, ассоциируемое с этим контактным лицом <!-- Имя, ассоциируемое с этим контактным лицом<!-- A name associated with the contact person --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя, ассоциируемое с этим контактным лицом<!-- A name associated with the contact person --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A name associated with the contact person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Контактные лица необходимо идентифицировать по имени, но редко когда нужны подробности о других именах этого контактного лица <!-- Contact persons need to be identified by name, but it is uncommon to need details about multiple other names for that contact person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1608,7 +1608,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Контактные данные для этого человека, например номер телефона или адрес электронной почты.<!-- A contact detail for the person, e.g. a telephone number or an email address. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">У людей есть (в основном) способы связи с ними, такие как телефон, электронная почта.<!-- People have (primary) ways to contact them in some way such as phone, email. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">People have (primary) ways to contact them in some way such as phone, email.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Contact may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1641,9 +1641,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Адрес контактного лица<!-- Address for the contact person --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Адрес контактного лица<!-- Адрес контактного лица<!-- Address for the contact person --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Адрес контактного лица<!-- Address for the contact person --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Address for the contact person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Нужно отслеживать, по какому адресу с контактным лицом можно связаться по почте, а по какому посетить<!-- Need to keep track where the contact person can be contacted per postal mail or visited --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1751,9 +1751,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Период времени, в течение которого с этим контактным лицом или организацией можно связываться по поводу данного пациента <!-- The period during which this contact person or organization is valid to be contacted relating to this patient --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Период времени, в течение которого с этим контактным лицом или организацией можно связываться по поводу данного пациента <!-- Период времени, в течение которого с этим контактным лицом или организацией можно связываться по поводу данного пациента <!-- The period during which this contact person or organization is valid to be contacted relating to this patient --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Период времени, в течение которого с этим контактным лицом или организацией можно связываться по поводу данного пациента <!-- The period during which this contact person or organization is valid to be contacted relating to this patient --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The period during which this contact person or organization is valid to be contacted relating to this patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1941,9 +1941,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Язык, который можно использовать для общения с пациентом о его или ее здоровье<!-- Languages which may be used to communicate with the patient about his or her health --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Язык, который можно использовать для общения с пациентом о его или ее здоровье<!-- Язык, который можно использовать для общения с пациентом о его или ее здоровье<!-- Языки, на которых можно общаться с пациентом о его/ее здоровье<!--  Languages which may be used to communicate with the patient about his or her health --> --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Язык, который можно использовать для общения с пациентом о его или ее здоровье<!-- Languages which may be used to communicate with the patient about his or her health --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Languages which may be used to communicate with the patient about his or her health</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Если пациент не говорит на местном языке, могут потребоваться переводчики, поэтому важно знать как для пациента, так и для других заинтересованных лиц, на каких языках говорит пациент<!-- If a patient does not speak the local language, interpreters may be required, so languages spoken is an important things to keep track of both for patient and other persons of interest --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1980,7 +1980,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень языков, на которых можно общаться с пациентом о его/ее здоровье <!-- A list of Languages which may be used to communicate with the patient about his or her health --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Языки, на которых можно общаться с пациентом о его/ее здоровье<!--  Languages which may be used to communicate with the patient about his or her health --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Languages which may be used to communicate with the patient about his or her health</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Если пациент не говорит на местном языке, могут потребоваться переводчики, поэтому важно знать как для пациента, так и для других заинтересованных лиц, какими языками и на каком уровне владеет пациент<!-- If a patient does not speak the local language, interpreters may be required, so languages spoken and proficiency is an important things to keep track of both for patient and other persons of interest --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2169,7 +2169,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Patient's nominated primary care provider</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Назначенный пациенту поставщик услуг (care provider)<!-- Patient's nominated care provider --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Назначенный пациенту поставщик услуг (care provider)<!-- Назначенный пациенту поставщик услуг (care provider)<!-- Patient's nominated care provider --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">This may be the primary care provider (in a GP context), or it may be a patient nominated care manager in a community/disablity setting, or even organization that will provide people to perform the care provider roles.&#10;&#10;This is not to be used to record Care Teams, these should be recorded on either the CarePlan or EpisodeOfCare resources.</Data><NamedCell
@@ -2205,9 +2205,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, занимающаяся хранением записи пациента<!-- Organization that is the custodian of the patient record --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, занимающаяся хранением записи пациента<!-- Организация, занимающаяся хранением записи пациента<!-- Organization that is the custodian of the patient record --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Организация, занимающаяся хранением записи пациента<!-- Organization that is the custodian of the patient record --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Organization that is the custodian of the patient record</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Необходимо, чтобы знать, кто занимается распознаванием данной записи, администрирует и обновляет ее<!-- Need to know who recognizes this patient record, manages and updates it --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2279,9 +2279,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Другой ресурс patient, на который указывает ссылка<!-- The other patient resource that the link refers to --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Другой ресурс patient, на который указывает ссылка<!-- Другой ресурс patient, на который указывает ссылка<!-- The other patient resource that the link refers to --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Другой ресурс patient, на который указывает ссылка<!-- The other patient resource that the link refers to --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The other patient resource that the link refers to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2318,7 +2318,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">replace | refer | seealso - type of link</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип связи между данным ресурсом patient и другим ресурсом patient.<!-- The type of link between this patient resource and another patient resource. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип связи между данным ресурсом patient и другим ресурсом patient.<!-- Тип связи между этим ресурсом patient и другим ресурсом patient.<!-- The type of link between this patient resource and another patient resource. --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6728,7 +6728,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">AnimalGenderStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The state of the animal's reproductive organs.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Состояние репродуктивных органов животного<!-- The state of the animal's reproductive organs -->.</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">valueset-animal-genderstatus</Data></Cell>
@@ -6743,7 +6743,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">AnimalSpecies</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The species of an animal.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид животного<!-- The species of an animal -->.</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-animal-species</Data></Cell>
@@ -6758,7 +6758,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">AnimalBreed</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The breed of an animal.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Порода животного<!-- The breed of an animal -->.</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-animal-breeds</Data></Cell>
@@ -6773,7 +6773,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">ContactRelationship</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The nature of the relationship between a patient and a contact person for that patient.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид родственных отношений между пациентом и контактным лицом этого пациента<!-- The nature of the relationship between a patient and a contact person for that patient -->.</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-patient-contact-relationship</Data></Cell>
@@ -6788,7 +6788,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">LinkType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип связи между этим ресурсом patient и другим ресурсом patient.<!-- The type of link between this patient resource and another patient resource. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of link between this patient resource and another patient resource.</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#link-type</Data></Cell>

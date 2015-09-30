@@ -6330,7 +6330,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s149"><Data ss:Type="String">Country</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for identifying countries.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды для обозначения стран<!-- Codes for identifying countries -->.</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">http://www.iso.org/iso/country_codes</Data></Cell>

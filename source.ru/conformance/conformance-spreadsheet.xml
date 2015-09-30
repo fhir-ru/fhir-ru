@@ -1359,7 +1359,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дата(/время) публикации<!-- Publication Date(/time) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The date  (and optionally time) when the conformance statement was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the conformance statement changes</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата (и, необязательно, время), когда заявление о соответствии было опубликовано<!-- The date  (and optionally time) when the conformance statement was published -->. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the conformance statement changes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Additional specific dates may be added as extensions</Data><NamedCell
@@ -1694,7 +1694,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Описывает этот конкретный экземпляр<!-- Describes this specific instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Information about the specific installation that this conformance statement relates to </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Информация об этой конкретной инсталляции, к которой относится это заявление о соответствии<!-- Information about the specific installation that this conformance statement relates to --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1756,7 +1756,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">FHIR Version the system uses</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Версия FHIR<!-- FHIR Version --> the system uses</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Версия спецификации FHIR, на которой основывается это заявление о соответствии<!-- The version of the FHIR specification on which this conformance statement is based --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1823,7 +1823,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">formats supported (xml | json | mime type)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">поддерживаемые форматы<!-- formats supported --> (xml | json | mime type)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Список форматов, поддерживаемых этой реализацией с помощью их типов контента<!-- A list of the formats supported by this implementation using their content types --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2080,9 +2080,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Общее описание работы безопасности<!-- General description of how security works --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Общее описание работы безопасности<!-- Общее описание того, как работает обеспечение безопасности<!-- General description of how security works --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Общее описание того, как работает обеспечение безопасности<!-- General description of how security works --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">General description of how security works</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2110,9 +2110,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Сертификаты, связанные с профилями безопасности<!-- Certificates associated with security profiles --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сертификаты, связанные с профилями безопасности<!-- Сертификаты, связанные с профилями безопасности<!-- Certificates associated with security profiles --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Сертификаты, связанные с профилями безопасности<!-- Certificates associated with security profiles --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Certificates associated with security profiles</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2143,7 +2143,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Mime type for certificate</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">MIME-тип сертификата<!-- MIME-тип сертификата<!-- Mime type for certificate --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Mime type for certificate</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2174,9 +2174,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Непосредственно сам сертификат<!-- Actual certificate --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Непосредственно сам сертификат<!-- Непосредственно сам сертификат<!-- Actual certificate --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Непосредственно сам сертификат<!-- Actual certificate --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Actual certificate</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2303,7 +2303,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Какие операции поддерживаются?<!-- What operations are supported? --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Какие операции поддерживаются?<!-- Какие операции поддерживаются?<!-- What operations are supported? --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Идентифицирует restful-операцию, поддерживаемую решением <!-- Identifies a restful operation supported by the solution --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2367,7 +2367,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Особенности работы операции<!-- Anything special about operation behavior --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Особенности работы операции<!-- Особенности работы операции<!-- Anything special about operation behavior --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Руководство по реализации этой операции, например 'delete - это логическое удаление' или 'обновления разрешены только с version id' или 'creates разрешены только с сертификатами предварительной авторизации'<!-- Guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only' --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2913,7 +2913,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Какие операции поддерживаются?<!-- What operations are supported? --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">What operations are supported?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Спецификация restful-операций, поддерживаемых системой<!-- A specification of restful operations supported by the system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2977,7 +2977,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Особенности работы операции<!-- Anything special about operation behavior --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Anything special about operation behavior</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Руководство по реализации этой операции, например ограничение разрешенных видов транзакции или информация об осуществлении системного поиска <!-- Guidance specific to the implementation of this operation, such as limitations on the kind of transactions allowed, or information about system wide search is implemented --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -3300,7 +3300,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Address of end-point</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The network address of the end-point. For solutions that do not use network addresses for routing, it can be just an identifier</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The network address of the end-point. Для решений, не использующих для маршрутизации сетевые адреса, это может быть просто идентификатор<!-- For solutions that do not use network addresses for routing, it can be just an identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3619,7 +3619,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Документация события, специфичная для точки взаимодействия<!-- Endpoint-specific event documentation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Guidance on how this event is handled, such as internal system trigger points, business rules, etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Руководство по обработке этого события, например внутренние системные точки запуска, бизнес-правила и т. д. <!-- Guidance on how this event is handled, such as internal system trigger points, business rules, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>

@@ -1446,7 +1446,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">При включении в вопросник текста, каждый раздел может содержать дополнительные пояснения<!-- When including text for the questionnaire, each section may contain additional explanations are background text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Для более специализированных видов текста для отображения определены общие расширения<!-- Common extensions are defined for more specialized types of display text --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для более специализированных видов текста для отображения определены общие расширения<!-- Для более специализированных видов текста для отображения определены общие расширения<!-- Common extensions are defined for more specialized types of display text --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.text</Data><NamedCell
@@ -1483,7 +1483,7 @@
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Не поддерживается - MIF/слой шаблонов для захвата набора значений<!-- Not supported - MIF/templating layer --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Не поддерживается - MIF/слой шаблонов для захвата набора значений<!-- Не поддерживается - MIF/слой шаблонов для захвата набора значений<!-- Не поддерживается - MIF/слой шаблонов для захвата набора значений<!-- Не поддерживается - MIF/слой шаблонов для захвата набора значений<!-- Not supported - MIF/templating layer --> --> --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1518,7 +1518,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Не поддерживается - MIF/слой шаблонов для захвата набора значений<!-- Not supported - MIF/templating layer --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Not supported - MIF/templating layer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1545,7 +1545,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Вложенная группа вопросника<!-- Nested questionnaire group --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вложенная группа вопросника<!-- Вложенная группа вопросника<!-- Nested questionnaire group --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Подгруппа в группе. Порядок групп в пределах этой группы имеет значение<!-- A sub-group within a group. The ordering of groups within this group is relevant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1693,7 +1693,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">При включении в вопросник текста, каждый вопрос может содержать отдельный текст для отображения<!-- When including text for the questionnaire, each question may contain its actual question display text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Для более специализированных видов текста для отображения определены общие расширения<!-- Common extensions are defined for more specialized types of display text --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Common extensions are defined for more specialized types of display text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.code.display</Data><NamedCell
@@ -1766,7 +1766,7 @@
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Не поддерживается - MIF/слой шаблонов для захвата набора значений<!-- Not supported - MIF/templating layer --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Not supported - MIF/templating layer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1802,7 +1802,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Будет ли сам вопрос отображаться для каждого ответа - это вопрос визуализации и, как правило, зависит от того, есть ли вложенные группы.<!-- Whether the question itself will be displayed for each answer is a rendering choice typically based on whether there are nested groups. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Не поддерживается - MIF/слой шаблонов для захвата набора значений<!-- Not supported - MIF/templating layer --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Not supported - MIF/templating layer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1898,7 +1898,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Вложенная группа вопросника<!-- Nested questionnaire group --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Nested questionnaire group</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Вложенная группа, содержащая вложенный вопрос для этого вопроса. Порядок групп в пределах этого вопроса имеет значение<!-- Nested group, containing nested question for this question. The order of groups within the question is relevant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6594,7 +6594,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">QuestionnaireStatus</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Lifecycle status of the questionnaire.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус жизненного цикла Questionnaire<!-- Lifecycle status of the questionnaire -->.</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">#questionnaire-status</Data></Cell>
@@ -6609,7 +6609,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">AnswerFormat</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The expected format of an answer.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Формат ожидаемого ответа<!-- The expected format of an answer -->.</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">#answer-format</Data></Cell>

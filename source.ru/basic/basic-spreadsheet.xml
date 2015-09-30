@@ -1088,7 +1088,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the patient, practitioner, device or any other resource that is the &quot;focus&quot; of this resource.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Требуется для разбиения ресурсов по пациентам<!-- Needed for partitioning the resource by Patient. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Требуется для разбиения ресурсов по пациентам<!-- Требуется для распределения (partitioning) ресурса<!-- Needed for partitioning the resource --> by Patient. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Необязательный элемент, так как не все потенциальные ресурсы имеют субъекты. Ресурсы, ассоциированные с несколькими субъектами, могут решить этот вопрос через расширение. <!-- Optional as not all resources potential resources will have subjects.  Resources associated with multiple subjects can handle this via extension. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1123,7 +1123,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, кто ответственен за создание экземпляра ресурса<!-- Indicates who was responsible for creating the resource instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Требуется для распределения (partitioning) ресурса<!-- Needed for partitioning the resource --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Needed for partitioning the resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>

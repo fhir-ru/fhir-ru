@@ -1360,7 +1360,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать, когда концепт-карта впервые была разрешена к использованию, изъята или заменена.<!-- Need to know when a concept map was first legal for use or became withdrawn or replaced. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the concept map. Additional specific dates may be added as extensions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обратите внимание, что это не то же самое, что дата последней модификации ресурса, так как ресурс может быть вторичным представлением концепт-карты.<!-- Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the concept map -->. Additional specific dates may be added as extensions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">N/A</Data><NamedCell
@@ -1534,7 +1534,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Набор значений - источник концептов этого мэппинга<!-- The source value set that specifies the concepts that are being mapped --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Should be a version specific reference. URIs SHOULD be absolute</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Должно быть версионно-зависимой ссылкой<!-- Should be a version specific reference -->. URIs SHOULD be absolute</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1729,7 +1729,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">An absolute URI that identifies the code system of the target code (if the target is a value set that cross code systems)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Должно быть версионно-зависимой ссылкой<!-- Should be a version specific reference --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Should be a version specific reference</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>

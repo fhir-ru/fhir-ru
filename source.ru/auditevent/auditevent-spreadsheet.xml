@@ -1104,7 +1104,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Тип/идентификатор события<!-- Type/identifier of event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifier for a family of the event.  For example, a menu item, program, rule, policy, function code, application name or URL. It identifies the performed function</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентификатор семейства этого события<!-- Identifier for a family of the event -->.  For example, a menu item, program, rule, policy, function code, application name or URL. It identifies the performed function</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Определяет выполненную функцию. Для &quot;Execute&quot; Event Action Code отчетов определяет совершенную функцию приложения.<!--  This identifies the performed function. For &quot;Execute&quot; Event Action Code audit records, this identifies the application function performed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1266,7 +1266,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Было ли событие успешным или произошел сбой<!-- Whether the event succeeded or failed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Показывает, было ли событие успешным или произошел сбой<!-- Indicates whether the event succeeded or failed --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Показывает, было ли событие успешным или произошел сбой<!-- Показывает, было ли событие успешным или произошел сбой<!-- Indicates whether the event succeeded or failed --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">В некоторых случаях "успех" может быть частичным, к примеру, неполная или прерванная передача радиологического исследования. В целях установления подотчетности эти различия не играют роли<!-- In some cases a &quot;success&quot; may be partial, for example, an incomplete or interrupted transfer of a radiological study. For the purpose of establishing accountability, these distinctions are not relevant --></Data><NamedCell
@@ -1468,7 +1468,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Прямая ссылка на ресурс, определяющий участника<!-- Direct reference to a resource that identifies the participant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">This field ties an audit event to a specific resource</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Это поле привязывает событие аудита к определенному ресурсу<!-- This field ties an audit event to a specific resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1584,11 +1584,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя пользователя, понятное человеку<!-- Human-meaningful name for the user --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя пользователя, понятное человеку<!-- Имя пользователя, понятное человеку<!-- Human-meaningful name for the user --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Имя пользователя, понятное человеку<!-- Human-meaningful name for the user --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Human-meaningful name for the user</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">The User ID and Authorization User ID may be internal or otherwise obscure values. This field assists the auditor in identifying the actual user</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">User ID и Authorization User ID могут быть внутренними или наоборот неизвестными значениями. Это поле помогает аудитору определить фактического пользователя<!-- The User ID and Authorization User ID may be internal or otherwise obscure values. This field assists the auditor in identifying the actual user --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1706,7 +1706,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Это значение используется для определения политики авторизации задним числом.<!-- This value is used retrospectively to determine the authorization policies. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String"> For example: Where an OAuth token authorizes, the unique identifier from the OAuth token is placed into the policy element Where a policy engine (e.g. XACML) holds policy logic, the unique policy identifier is placed into the policy element.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String"> Например: Когда OAuth-токен авторизуется, уникальный идентификатор из OAuth-токена помещается в элемент policy, где policy-система (например XACML) содержит логику политики, уникальный идентификатор политики помещается в элемент policy.<!-- For example: Where an OAuth token authorizes, the unique identifier from the OAuth token is placed into the policy element Where a policy engine (e.g. XACML) holds policy logic, the unique policy identifier is placed into the policy element. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">ActPolicyType</Data><NamedCell
@@ -1820,7 +1820,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Идентификатор точки доступа к сети устройства пользователя для события аудита<!-- An identifier for the network access point of the user device for the audit event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">This datum identifies the user's network access point, which may be distinct from the server that performed the action. It is an optional value that may be used to group events recorded on separate servers for analysis of a specific network access point's data access across all servers </Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Эта информация определяет точку доступа к сети пользователя, которая может отличаться от сервера, на котором выполняется действие. Это необязательное значение, которое может быть использовано для групповых мероприятий, записанных на отдельных серверах для анализа доступа к данным в конкретной точке сетевого доступа по всем серверам<!-- This datum identifies the user's network access point, which may be distinct from the server that performed the action. It is an optional value that may be used to group events recorded on separate servers for analysis of a specific network access point's data access across all servers  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Это может быть идентификатор устройства, IP-адрес или другой идентификатор, ассоциированный с устройством<!-- This could be a device id, IP address or some other identifier associated with a device --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2009,7 +2009,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Логическое расположение источника в пределах предприятия<!-- Logical source location within the enterprise --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Logical source location within the healthcare enterprise network.  For example, a hospital or other provider location within a multi-entity provider group</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Логическое расположение источника в сети предприятия здравоохранения<!-- Logical source location within the healthcare enterprise network -->.  For example, больница или другое местоположение поставщика в группе нескольких поставщиков<!-- a hospital or other provider location within a multi-entity provider group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Это значение различается среди сайтов в многоместной информационной системе предприятия здравоохранения<!-- This value differentiates among the sites in a multi-site enterprise health information system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2122,9 +2122,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Конкретные экземпляры данных или объектов, к которым осуществлялся доступ<!-- Specific instances of data or objects that have been accessed  --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Конкретные экземпляры данных или объектов, к которым осуществлялся доступ<!-- Конкретные экземпляры данных или объектов, к которым осуществлялся доступ<!-- Specific instances of data or objects that have been accessed -->  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Конкретные экземпляры данных или объектов, к которым осуществлялся доступ<!-- Specific instances of data or objects that have been accessed --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Specific instances of data or objects that have been accessed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">В событии могут быть задействованы и другие объекты<!-- The event may have other objects involved --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2167,7 +2167,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Конкретный экземпляр объекта (например версионированный)<!-- Specific instance of object (e.g. versioned) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентифицирует конкретный экземпляр объекта участия. Ссылка всегда должна быть с указанием версии<!-- Identifies a specific instance of the participant object. The reference should always be version specific --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентифицирует конкретный экземпляр объекта участия. Ссылка всегда должна быть с указанием версии<!-- Идентифицирует конкретный экземпляр объекта участия. Ссылка всегда должна быть с указанием версии<!-- Identifies a specific instance of the participant object. The reference should always be version specific --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Identifier detail depends on object type</Data><NamedCell
@@ -2206,7 +2206,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Конкретный экземпляр ресурса (например версионированный)<!-- Specific instance of resource (e.g. versioned) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентифицирует конкретный экземпляр объекта участия. Ссылка всегда должна быть с указанием версии<!-- Identifies a specific instance of the participant object. The reference should always be version specific --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifies a specific instance of the participant object. The reference should always be version specific</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2322,7 +2322,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">What role the Object played </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Какую роль выполняет объект<!-- What role the Object played --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Код, представляющий собой функциональную роль в приложении аудируемого объекта участия<!-- Code representing the functional application role of Participant Object being audited --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -7029,7 +7029,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventOutcome</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Показывает, было ли событие успешным или произошел сбой<!-- Indicates whether the event succeeded or failed --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates whether the event succeeded or failed</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#audit-event-outcome</Data></Cell>
@@ -7059,7 +7059,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventObjectType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Code for the object type involved audited.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код типа объекта, участвующего в аудите<!-- Code for the object type involved audited -->.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#object-type</Data></Cell>
@@ -7074,7 +7074,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventObjectRole</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Code representing the role the Object played in the event.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код роли объекта в событии<!-- Code representing the role the Object played in the event -->.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#object-role</Data></Cell>
@@ -7089,7 +7089,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventObjectLifecycle</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifier for the data life-cycle stage for the object.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор стадии жизненного цикла данных этого объекта<!-- Identifier for the data life-cycle stage for the object -->.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#object-lifecycle</Data></Cell>
@@ -7104,7 +7104,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Type of event.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип события<!-- Type of event -->.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-audit-event-type</Data></Cell>
@@ -7119,7 +7119,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventSubType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Sub-type of event.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Подтип события<!-- Sub-type of event -->.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-audit-event-sub-type</Data></Cell>
@@ -7134,7 +7134,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">DICOMRoleId</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Role(s) the user plays (from RBAC).</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Роли пользователя (из RBAC)<!-- Role(s) the user plays (from RBAC) -->.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-dicm-402-roleid</Data></Cell>
@@ -7164,7 +7164,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventSourceType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Code specifying the type of system that detected and recorded the event.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, указывающий тип системы, которая обнаружила и записала это событие<!-- Code specifying the type of system that detected and recorded the event -->.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-audit-source-type</Data></Cell>
@@ -7209,7 +7209,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s95"><Data ss:Type="String">!AuditEventObjectSensitivity</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The sensitivity of an object. May also encompass confidentiality and rudimentary access control (e.g. HCS).</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Степень конфиденциальности объекта. Может также охватывать конфиденциальность и элементарный контроль доступа (например HCS)<!-- The sensitivity of an object. May also encompass confidentiality and rudimentary access control (e.g. HCS) -->.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-audit-event-sensitivity</Data></Cell>

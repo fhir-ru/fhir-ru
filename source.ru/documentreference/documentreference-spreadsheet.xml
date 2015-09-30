@@ -1147,7 +1147,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">A categorization for the type of document referenced - helps for indexing and searching. This may be implied by or derived from the code specified in the DocumentReference.type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Helps humans to assess whether the document is of interest when viewing a list of documents.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает людям оценивать, представляет ли документ интерес<!-- Helps humans to assess whether the document is of interest --> when viewing a list of documents.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">This is a metadata field from [XDS/MHD](http://wiki.ihe.net/index.php?title=Mobile_access_to_Health_Documents_(MHD)) </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1600,7 +1600,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Человекочитаемое описание документа-источника. Также известно как &quot;заголовок<!-- Human-readable description of the source document. This is sometimes known as the &quot;title&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Помогает людям оценивать, представляет ли документ интерес<!-- Helps humans to assess whether the document is of interest --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Helps humans to assess whether the document is of interest</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Говорит, о чем этот документ, а не пересказывает его краткое изложение. Как правило, записи не имеют заголовка, и на них в совокупности ссылаются по имени для отображения кода записи (например &quot;consultation&quot; или &quot;progress note&quot;).<!-- What the document is about, rather than a terse summary of the document. It is commonly the case that records do not have a title and are collectively referred to by the display name of Record code (e.g. a &quot;consultation&quot; or &quot;progress note&quot;). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1940,7 +1940,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная информация о том, где было создано содержимое (например клиническая специальность)<!-- Additional details about where the content was created (e.g. clinical specialty) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная информация о том, где было создано содержимое (например клиническая специальность)<!-- Дополнительная информация о том, где создавался контент (например клиническая специальность)<!-- Additional details about where the content was created (e.g. clinical specialty) --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Это свойство может передавать подробности рабочих условий, в которых был создан контент, часто отражающие клиническую специальность <!-- This property may convey specifics about the practice setting where the content was created, often reflecting the clinical specialty --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6247,7 +6247,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">DocumentC80Class</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">High-level kind of a clinical document at a macro level.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Высокоуровневая классификация клинического документа на макроуровне<!-- High-level kind of a clinical document at a macro level -->.</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell><Data ss:Type="String">example</Data></Cell>
@@ -6279,7 +6279,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">ReferredDocumentStatus</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Status of the underlying document.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус лежащего в основе документа<!-- Status of the underlying document -->.</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell><Data ss:Type="String">Required</Data></Cell>
@@ -6296,7 +6296,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">DocumentRelationshipType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of relationship between documents.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип взаимосвязи между документами<!-- The type of relationship between documents -->.</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell><Data ss:Type="String">Required</Data></Cell>
@@ -6328,7 +6328,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">DocumentFormat</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Document Format Codes.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код формата документа<!-- Document Format Codes -->.</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell><Data ss:Type="String">Preferred</Data></Cell>

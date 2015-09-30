@@ -1003,7 +1003,7 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">Определение операции или именованного запроса<!-- Definition of an operation or a named query --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Формальное исчисляемое определение операции (для RESTful интерфейса) или именованного запроса (для взаимодействия search) <!-- A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction) -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1139,7 +1139,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Статус профиля<!-- The status of the profile --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Позволяет отфильтровывать подходящие к использованию профили от неподходящих<!-- Allows filtering of profiles that are appropriate for use vs. not --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Позволяет отфильтровывать подходящие к использованию профили от неподходящих<!-- Позволяет отфильтровывать подходящие к использованию профили от неподходящих<!-- Allows filtering of profiles that are appropriate for use vs. not --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1205,7 +1205,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Этот профиль был создан для тестирования (или обучения/оценки/маркетинга), и не предназначен для реального применения.<!-- This profile was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Позволяет отфильтровывать подходящие к использованию профили от неподходящих<!-- Allows filtering of profiles that are appropriate for use vs. not --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Allows filtering of profiles that are appropriate for use vs. not</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1690,7 +1690,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Параметры операции/запроса<!-- The parameters for the operation/query --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Определения запросов имеют только один выходной параметр с именем &quot;result&quot;. Это может не указываться, но необходимо для определения профиля<!-- Query Definitions only have one output parameter, named &quot;result&quot;. This may not be described, but can be to allow a profile to be defined --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Определения запросов имеют только один выходной параметр с именем &quot;result&quot;. Это может не указываться, но необходимо для определения профиля<!-- Определения запросов имеют только один выходной параметр с именем &quot;result&quot;. Он может не описываться, но может, чтобы позволить определить профиль<!-- Query Definitions only have one output parameter, named &quot;result&quot;. This may not be described, but can be to allow a profile to be defined --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1721,10 +1721,10 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Name in Parameters.parameter.name or in URL</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя для идентификации параметра<!-- The name of used to identify the parameter --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя для идентификации параметра<!-- Имя для указания на параметр<!-- The name of used to identify the parameter --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Это имя должно быть токеном (начинаться с буквы a..z и содержать только буквы, цифры и знак подчеркивания<!-- This name must be a token (start with a letter in a..z, and only contain letters, numerals, and underscore --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это имя должно быть токеном (начинаться с буквы a..z и содержать только буквы, цифры и знак подчеркивания<!-- Это имя должно быть токеном (начинаться с буквы a..z и содержать только буквы, цифры и знак подчеркивания)<!-- This name must be a token (start with a letter in a..z, and only contain letters, numerals, and underscore --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1784,9 +1784,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Мин. кард. число<!-- Minimum Cardinality --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Мин. кард. число<!-- Мин. кард. число<!-- Minimum Cardinality --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Минимальное количество раз, которое этот параметр ДОЛЖЕН появиться в запросе или ответе<!-- The minimum number of times this parameter SHALL appear in the request or response --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Минимальное количество раз, которое этот параметр ДОЛЖЕН появиться в запросе или ответе<!-- Минимальное количество раз, которое этот параметр ДОЛЖЕН появиться в запросе или ответе<!-- The minimum number of times this parameter SHALL appear in the request or response --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1815,9 +1815,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Макс. кард. число (число либо *)<!-- Maximum Cardinality (a number or *) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Макс. кард. число (число либо *)<!-- Макс. кард. число (число или *)<!-- Maximum Cardinality (a number or *) --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Максимальное количество раз, которое этому элементу разрешено появиться в запросе или ответе<!-- The maximum number of times this element is permitted to appear in the request or response --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Максимальное количество раз, которое этому элементу разрешено появиться в запросе или ответе<!-- Максимальное количество раз, которое этому элементу разрешено появиться в запросе или ответе<!-- The maximum number of times this element is permitted to appear in the request or response --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1846,9 +1846,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание значения/применения<!-- Description of meaning/use --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание значения/применения<!-- Описание значения/применения<!-- Description of meaning/use --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает значение или использование этого параметра<!-- Describes the meaning or use of this parameter --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает значение или использование этого параметра<!-- Описывает значение или использование этого параметра<!-- Describes the meaning or use of this parameter --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1881,7 +1881,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">What type this parameter has</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип этого параметра<!-- The type for this parameter --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип этого параметра<!-- Тип этого параметра<!-- The type for this parameter --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">если не установлено, тогда параметр имеет тип &quot;Tuple&quot; и должен иметь как минимум одно определение элемента part<!-- if there is no stated parameter, then the parameter is a &quot;Tuple&quot; type and must have at least one part defined --></Data><NamedCell
@@ -1911,9 +1911,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Профиль для этого типа<!-- Profile on the type --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Профиль для этого типа<!-- Профиль на тип<!-- Profile on the type --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Профиль, устанавливающий правила, которым должен соответствовать этот параметр<!-- A profile the specifies the rules that this parameter must conform to --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Профиль, устанавливающий правила, которым должен соответствовать этот параметр<!-- Профиль, определяющий правила, которым этот параметр должен соответствовать<!-- A profile the specifies the rules that this parameter must conform to --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2046,7 +2046,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Элементы part для параметра с типом Tuple<!-- The parts of a Tuple Parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Определения запросов имеют только один выходной параметр с именем &quot;result&quot;. Он может не описываться, но может, чтобы позволить определить профиль<!-- Query Definitions only have one output parameter, named &quot;result&quot;. This may not be described, but can be to allow a profile to be defined --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Query Definitions only have one output parameter, named &quot;result&quot;. This may not be described, but can be to allow a profile to be defined</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2075,12 +2075,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя параметра<!-- Name of the parameter --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя параметра<!-- Имя параметра<!-- Name of the parameter --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя для указания на параметр<!-- The name of used to identify the parameter --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The name of used to identify the parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Это имя должно быть токеном (начинаться с буквы a..z и содержать только буквы, цифры и знак подчеркивания)<!-- This name must be a token (start with a letter in a..z, and only contain letters, numerals, and underscore --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">This name must be a token (start with a letter in a..z, and only contain letters, numerals, and underscore</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2107,9 +2107,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Мин. кард. число<!-- Minimum Cardinality --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Minimum Cardinality</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Минимальное количество раз, которое этот параметр ДОЛЖЕН появиться в запросе или ответе<!-- The minimum number of times this parameter SHALL appear in the request or response --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The minimum number of times this parameter SHALL appear in the request or response</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2138,9 +2138,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Макс. кард. число (число или *)<!-- Maximum Cardinality (a number or *) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Maximum Cardinality (a number or *)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Максимальное количество раз, которое этому элементу разрешено появиться в запросе или ответе<!-- The maximum number of times this element is permitted to appear in the request or response --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The maximum number of times this element is permitted to appear in the request or response</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2169,9 +2169,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание значения/применения<!-- Description of meaning/use --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Description of meaning/use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает значение или использование этого параметра<!-- Describes the meaning or use of this parameter --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the meaning or use of this parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2203,7 +2203,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">What type this parameter has</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип этого параметра<!-- The type for this parameter --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The type for this parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2232,9 +2232,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Профиль на тип<!-- Profile on the type --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Profile on the type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Профиль, определяющий правила, которым этот параметр должен соответствовать<!-- A profile the specifies the rules that this parameter must conform to --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A profile the specifies the rules that this parameter must conform to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6552,7 +6552,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">OperationKind</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Whether an operation is a normal operation or a query.</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Это обычная операция или запрос?<!-- Whether an operation is a normal operation or a query -->.</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#operation-kind</Data></Cell>
@@ -6567,7 +6567,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">OperationParameterUse</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether an operation parameter is an input or an output parameter.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Является ли параметр операции выходным или выходным<!-- Whether an operation parameter is an input or an output parameter -->.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">#operation-parameter-use</Data></Cell>
@@ -6582,7 +6582,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">OperationParameterType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of a parameter.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип параметра<!-- The type of a parameter -->.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">valueset-operation-parameter-type</Data></Cell>

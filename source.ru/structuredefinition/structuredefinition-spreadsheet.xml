@@ -1085,7 +1085,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Структурное определение<!-- Structural Definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions, and constraints on resources and data types.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Определение FHIR-структуры. Данный ресурс используется для описания основных ресурсов, типов данных, определенных в FHIR, а также для описания расширений и ограничений на ресурсы и типы данных<!-- A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions, and constraints on resources and data types -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1301,7 +1301,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Статус StructureDefinition <!-- The status of the StructureDefinition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет отфильтровывать подходящие к использованию StructureDefinitions от неподходящих <!-- Allows filtering of StructureDefinitions that are appropriate for use vs. not --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет отфильтровывать подходящие к использованию StructureDefinitions от неподходящих <!-- Позволяет отфильтровывать подходящие к использованию StructureDefinitions от неподходящих <!-- Allows filtering of StructureDefinitions that are appropriate for use vs. not --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1337,7 +1337,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Этот StructureDefinition был создан для тестирования (или обучения/оценки/маркетинга), и не предназначен для реального применения <!-- This StructureDefinition was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет отфильтровывать подходящие к использованию StructureDefinitions от неподходящих <!-- Allows filtering of StructureDefinitions that are appropriate for use vs. not --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows filtering of StructureDefinitions that are appropriate for use vs. not</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1884,7 +1884,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Versions, Issues, Scope limitations etc.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Версии, проблемы, ограничения области применения и др<!-- Versions, Issues, Scope limitations etc -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Комментарии к этому мэппингу, включая версионные примечания, вопросы, ограничения области применения и другие важные примечания к использованию<!-- Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1992,7 +1992,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Является ли описываемая структура абстрактной или нет - то есть может ли фактический обмениваемый элемент вообще быть этого типа <!-- Whether structure this definition describes is abstract or not  - that is, whether an actual exchanged item can ever be of this type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Abstract Resources cannot be instantiated - a concrete sub-type must be used. Abstract datatypes and extensions cannot be used in an instance. Flagging a constraint structure as abstract conveys design intent but makes no difference to how the structure definition is handled. Note that inline declared elements that are given the type &quot;Element&quot; in the profile, but have children described, are anonymous concrete types that specialise Element. Abstract is not relevant for logical models</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Абстрактные типы не могут использоваться в экземплярах - необходимо использовать конкретный подтип. Абстрактные типы данных и расширения нельзя использовать в экземплярах. Помечая структуру типа constraint как абстрактную, вы передаете замысел проектирования, однако это не дает информации о том, как обрабатывать это структурное определение. Обратите вниание, что объявленные инлайн элементы, которым назначен тип &quot;Element&quot; в профиле, но имеют описанных потомков, являются анонимными конкретными типами, специализирующими Element <!-- Abstract Resources cannot be instantiated - a concrete sub-type must be used. Abstract datatypes and extensions cannot be used in an instance. Flagging a constraint structure as abstract conveys design intent but makes no difference to how the structure definition is handled. Note that inline declared elements that are given the type &quot;Element&quot; in the profile, but have children described, are anonymous concrete types that specialise Element -->. Abstract is not relevant for logical models</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2062,7 +2062,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет типы элементов ресурса или типа данных, к которым может применяться это расширение<!-- Identifies the types of resource or data type elements to which the extension can be applied --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the context is an element that can have multiple types, then use (e.g.) value[x] if the extension works on all choice types, or otherwise an enumeration of explicitly named elements if not. Note that a context of &quot;string&quot; doesn't mean that the extension can be used with one of the string patterns such as &quot;id&quot; etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если контекстом выступает элемент, имеющий несколько типов на выбор, тогда используйте value[x], если расширение подходит для всех перечисленных типов, либо перечислите явно названия элементов, если нет. Обратите внимание, что контекст &quot;string&quot; не означает, что расширение может использоваться только с одним из строковых шаблонов. таких как &quot;id&quot; и т. п. <!-- If the context is an element that can have multiple types, then use (e.g.) value[x] if the extension works on all choice types, or otherwise an enumeration of explicitly named elements if not. Note that a context of &quot;string&quot; doesn't mean that the extension can be used with one of the string patterns such as &quot;id&quot; etc -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2159,9 +2159,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение элементов в ресурсе (если нет StructureDefinition) <!-- Definition of elements in the resource (if no StructureDefinition) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение элементов в ресурсе (если нет StructureDefinition) <!-- Определение элементов в ресурсе (если нет StructureDefinition) <!-- Definition of elements in the resource (if no StructureDefinition) --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Собирает ограничения со всех элементов ресурса<!-- Captures constraints on each element within the resource --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Собирает ограничения со всех элементов ресурса<!-- Собирает ограничения со всех элементов ресурса <!-- Captures constraints on each element within the resource --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2225,9 +2225,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение элементов в ресурсе (если нет StructureDefinition) <!-- Definition of elements in the resource (if no StructureDefinition) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Definition of elements in the resource (if no StructureDefinition)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Собирает ограничения со всех элементов ресурса <!-- Captures constraints on each element within the resource --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Captures constraints on each element within the resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6925,7 +6925,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">StructureDefinitionKind</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Defines the type of structure that a definition is describing.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Задает тип структуры, которую описывает определение<!-- Defines the type of structure that a definition is describing -->.</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#structure-definition-kind</Data></Cell>
@@ -6940,7 +6940,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">ExtensionContext</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">How an extension context is interpreted.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Как интерпретируется контекст расширения<!-- How an extension context is interpreted -->.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">#extension-context</Data></Cell>

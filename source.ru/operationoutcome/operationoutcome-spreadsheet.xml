@@ -989,7 +989,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Информация об успешности/сбое действия<!-- Information about the success/failure of an action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A collection of error, warning or information messages that result from a system action.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Коллекция ошибок, предупреждений или информационных сообщений, являющихся результатом действия системы <!-- A collection of error, warning or information messages that result from a system action -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Может быть результатом сбоя REST-вызова или частью ответного сообщения, возвращенного на сообщение-запрос. Если отправляется с расширениями, перекрывающими определенные вопросы/проблемы, может даже появиться в рамках сообщения-запроса<!-- Can result from the failure of a REST call or be part of the response message returned from a request message.  If sent with extensions overriding particular issues, might even appear as part of a request message. --></Data><NamedCell
@@ -1097,7 +1097,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Код ошибки или предупреждения<!-- Error or warning code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Describes the type of the issue. The system that creates an OperationOutcome SHALL choose the most applicable code from the IssueType value set, and may additional provide its own code for the error in the details element</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описывает тип проблемы <!-- Describes the type of the issue -->. The system that creates an OperationOutcome SHALL choose the most applicable code from the IssueType value set, and may additional provide its own code for the error in the details element</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Expresses the issue in a human and computer-friendly way, allowing the requesting system to behave differently based on the type of issue</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6319,7 +6319,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">IssueSeverity</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">How the issue affects the success of the action.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Как эта проблема влияет на действие<!-- How the issue affects the success of the action -->.</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s146"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#issue-severity</Data></Cell>

@@ -1003,7 +1003,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Заказ на питание, молочную смесь или пищевую добавку<!-- A request for a diet, formula or nutritional supplement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Заказ на поставку питания, кормление смесями (энтеральное) или пероральной пищевой добавки пациенту/резиденту<!-- A request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient/resident -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Referenced by an Order Request (workflow)</Data><NamedCell
@@ -1825,7 +1825,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольные текстовые или дополнительные инструкции или информация, относящаяся к пероральной диете.<!-- Free text or additional instructions or information pertaining to the oral diet. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольные текстовые инструкции по дозировке могут использоваться в случаях, когда указания слишком трудно закодировать.<!-- Free text dosage instructions can be used for cases where the instructions are too complex to code. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольные текстовые инструкции по дозировке могут использоваться в случаях, когда указания слишком трудно закодировать.<!-- Произвольные текстовые инструкции по дозировке могут использоваться в случаях, когда указания слишком трудно закодировать.<!-- Произвольные текстовые инструкции по дозировке могут использоваться в случаях, когда указания слишком трудно закодировать.<!-- Free text dosage instructions can be used for cases where the instructions are too complex to code. --> --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">.text</Data><NamedCell
@@ -2039,7 +2039,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольный текст или дополнительные указания или информация, относящаяся к пероральной добавке.<!-- Free text or additional instructions or information pertaining to the oral supplement. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольные текстовые инструкции по дозировке могут использоваться в случаях, когда указания слишком трудно закодировать.<!-- Free text dosage instructions can be used for cases where the instructions are too complex to code. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Free text dosage instructions can be used for cases where the instructions are too complex to code.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.text</Data><NamedCell
@@ -2535,7 +2535,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольное текстовое назначение смеси, указания по кормлению или дополнительные инструкции и информация. <!-- Free text formula administration, feeding instructions or additional instructions or information.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольные текстовые инструкции по дозировке могут использоваться в случаях, когда указания слишком трудно закодировать.<!-- Free text dosage instructions can be used for cases where the instructions are too complex to code. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Free text dosage instructions can be used for cases where the instructions are too complex to code.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">N/A</Data><NamedCell

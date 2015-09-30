@@ -988,7 +988,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Ответ на заказ<!-- A response to an order --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ответ на заказ<!-- Ответ на заказ<!-- A response to an order --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">A response to an order.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6222,7 +6222,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">OrderStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The status of the response to an order.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус ответа на заказ<!-- The status of the response to an order -->.</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s115"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">#order-status</Data></Cell>

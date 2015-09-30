@@ -6271,7 +6271,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">BodySite</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes describing anatomical locations. May include laterality.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes describing anatomical locations. Может включать латерализацию (указание стороны)<!-- May include laterality -->.</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s149" ss:HRef="http://hl7.org/fhir/ValueSet/body-site"><Data
