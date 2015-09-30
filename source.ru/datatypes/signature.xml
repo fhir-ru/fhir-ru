@@ -760,7 +760,7 @@
     <Cell ss:StyleID="s82"><Data ss:Type="String">Дата подписания цифровой подписью.<!-- When the digital signature was signed.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">Должно соответствовать информации в подписи<!-- Должно соответствовать информации в подписи<!-- This should agree with the information in the signature --> --></Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Должно соответствовать информации в подписи<!-- This should agree with the information in the signature --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
