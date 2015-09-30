@@ -8,8 +8,8 @@ appear in the list may be an important part of the meaning of the list.
 Reordering the items in a list may change the meaning of the list. 
 </p>
 <p>
-While a list always contains an ordered set of items, the signficance
-of the order may be unknown, or it may be insigificant. As an 
+While a list always contains an ordered set of items, the significance
+of the order may be unknown, or it may be insignificant. As an 
 example, consider a list of patients for a practitioner to visit.
 The list may be in order, where the patients are to be visited in
 the stated order, or just an unsorted list of patients to be visited
@@ -33,12 +33,21 @@ understand the impact of this on the meaning of the list.
 Имеется несколько различных видов использования ресурса List:
 <!-- There are several different kinds of uses for a List resource: -->
 </p>
-<%codelist http://hl7.org/fhir/vs/list-mode%>
+[%codelist http://hl7.org/fhir/ValueSet/list-mode%]
 
 <p>
-A changes list may include deleted items. Some examples of change lists are 
-a reconciled list of allergies and a discharge medication list - a list 
-with new, updated and deleted items in it, though these may not be lists that 
+The most common mode is "snapshot" - a list that is accurate 
+within the context it is used in but not current or maintained
+after that; e.g., medications on discharge in a discharge summary.
+Note that these lists usually have a status of 'current' - they
+were current when they were prepared. Some kinds of lists may 
+be explicitly retired (particularly if mode = working), but most 
+will not be maintained after creation. 
+</p>
+<p>
+A change list may include deleted items. Some examples of change lists are 
+a reconciled list of allergies, a discharge medication list and a list 
+with new, updated and deleted items in it - though these may not be lists that 
 include changes (this is an implementation decision). In order to ensure that 
 the list is safe to process, any item where the flag implies that the 
 item has actually been deleted SHALL have the deleted element set to true. 
@@ -67,8 +76,8 @@ flags were used to implement version tracking history within the resource. -->
 of the items in the list, their key information, along with a human-readable 
 summary of their flags (if present). The narrative may be generated
 from the data content and/or narrative of the resources referred to in
-the list, or it may be a narrative written by a human which is partially or
-completely matched by structured data in the linked resources, or human
+the list, or it may be a narrative written by a human, which is partially or
+completely matched by structured data in the linked resources. The human
 written narrative may be the only content if the list has no entries
 (which would equate to a narrative only section in a document). -->
 </p>
@@ -77,7 +86,7 @@ written narrative may be the only content if the list has no entries
 Каждый List.item должен появиться в описательной части ресурса. Т. е. НЕ ДОЛЖНО требоваться извлечь items списка, чтобы получить человекочитаемое отображение его содержимого. Кроме того, если List.text.status = "generated", тогда описательная часть не должна предполагать, что список содержит items, для которых нет соответствующих элементов List.item.
 Если в списке если флаги, представление на экране должно использовать понятные визуальные подсказки (границы, линии, маркеры списков и т. п.), чтобы гарантировать, что читатели не запутаются, какие флаги к каким пунктам относятся, на маленьких экранах (например для предотвращения переносов, разносящих флаги и пункты по разным местам экрана).
 <!-- An HTML table is the recommended approach, though this is not required.
-Each List.item should appear in the narrative for the resource.  I.e. It 
+Each List.item should appear in the narrative for the resource; i.e. it 
 SHALL NOT be necessary to retrieve the list items in order to have a 
 human-readable rendering of the content. In addition, if the List.text.status is 
 "generated", then the narrative should not suggest the list 
@@ -136,10 +145,10 @@ possible approaches to work around this issue: -->
 <!-- The information to populate the list wasn't gathered - i.e. "Not asked" --></li>
 </ul>
 <p>
-Учитывая эти возможности и общий и важный первый случай, исходные системы ДОЛЖНЫ предоставлять причину в случае пустого списка. Из-за важности этого случая необходимо использовать особое значение <a href="special-values.html">"nil-known"</a>, когда нет (существенных) записей в этом контексте медицинской помощи. Обратите внимание, что это понятие иногда описывается по-разному, например "пациент отрицает прием медикаментов" или "пациент не был в состоянии указать какую-либо значимую историю болезни".
+Учитывая эти возможности и общий и важный первый случай, исходные системы ДОЛЖНЫ предоставлять причину в случае пустого списка. Из-за важности этого случая необходимо использовать особое значение <a href="valueset-list-empty-reason.html">"nil-known"</a>, когда нет (существенных) записей в этом контексте медицинской помощи. Обратите внимание, что это понятие иногда описывается по-разному, например "пациент отрицает прием медикаментов" или "пациент не был в состоянии указать какую-либо значимую историю болезни".
 <!-- Given these possibilities, and the common and significant first case, source systems SHOULD 
 provide an empty reason if the list is empty. Because of the importance of this case, the 
-<a href="special-values.html">special value "nil-known"</a> should be used when 
+<a href="valueset-list-empty-reason.html">special value "nil-known"</a> should be used when 
 there are no (significant) entries in this context of care. Note that this concept is 
 sometimes described differently, such as "patient denies taking medications", or 
 "patient was unable to identify any relevant medical history". -->
