@@ -949,7 +949,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Ссылка на код, определенный терминологической системой<!-- Ссылка на код, определенный терминологической системой<!-- A reference to a code defined by a terminology system  --> --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ссылка на код, определенный терминологической системой<!-- A reference to a code defined by a terminology system  --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">A reference to a code defined by a terminology system </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
