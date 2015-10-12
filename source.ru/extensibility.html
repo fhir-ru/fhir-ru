@@ -17,6 +17,8 @@
 
 <a name="root"> </a>
 <h1>Расширяемость</h1>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+
 <p>
 Данный стандарт обмена данными основывается на универсальных и общепринятых клинических требованиях, учитывает 
 различные функциональные подходы, соответствует предметным областям здравоохранения и реалиям стран и территорий мира. Для конкретных реализаций характерно иметь действующие требования, которые не являются частью этих согласованных общепринятых требований. Стремление учесть все возможные требования в рамках одной спецификации сделало бы её слишком объёмной и труднореализуемой. Поэтому ожидается, что все специфические требования будут реализованы в элементах, являющихся расширениями ресурсов (extensions).
@@ -54,30 +56,31 @@
  <li>Если для приложения, обрабатывающего содержимое ресурса, не безопасно игнорировать расширение, это должно быть представлено по-другому (см. <a href="#modifier">ниже</a>)</li>
  <li>Фактическим именем элемента <i>value[x]</i> является слово "value", к которому добавляется с большой буквы имя одного из следующих определенных типов, а его содержимым будет то, которое определено для этого типа:
   <ul class="dense">
-   <li><a href="datatypes.html#integer">Integer</a></li>
-   <li><a href="datatypes.html#decimal">Decimal</a></li>
-   <li><a href="datatypes.html#dateTime">DateTime</a></li>
-   <li><a href="datatypes.html#date">Date</a></li>
-   <li><a href="datatypes.html#instant">Instant</a></li>
-   <li><a href="datatypes.html#string">String</a></li>
-   <li><a href="datatypes.html#uri">Uri</a></li>
-   <li><a href="datatypes.html#boolean">Boolean</a></li>
-   <li><a href="datatypes.html#code">Code</a> (только если расширение предоставляет <a href="terminologies.html#code">фиксированную</a> привязку к допустимому набору кодов)</li>
-   <li><a href="datatypes.html#base64Binary">Base64Binary</a></li>
-   <li><a href="datatypes.html#Coding">Coding</a></li>
-   <li><a href="datatypes.html#CodeableConcept">CodeableConcept</a></li>
-   <li><a href="datatypes.html#Attachment">Attachment</a></li>
-   <li><a href="datatypes.html#Identifier">Identifier</a></li>
-   <li><a href="datatypes.html#Quantity">Quantity</a></li>
-   <li><a href="datatypes.html#Range">Range</a></li>
-   <li><a href="datatypes.html#Period">Period</a></li>
-   <li><a href="datatypes.html#Ratio">Ratio</a></li>
-   <li><a href="datatypes.html#HumanName">HumanName</a></li>
-   <li><a href="datatypes.html#Address">Address</a></li>
-   <li><a href="datatypes.html#ContactPoint">ContactPoint</a></li>
-   <li><a href="datatypes.html#Timing">Timing</a></li>
-   <li><a href="datatypes.html#Signature">Signature</a></li>
-   <li><a href="references.html#Reference">Reference</a> - ссылка на другой ресурс</li>
+   <li>valueInteger : <a href="datatypes.html#integer">integer</a></li>
+   <li>valueDecimal : <a href="datatypes.html#decimal">decimal</a></li>
+   <li>valueDateTime : <a href="datatypes.html#dateTime">dateTime</a></li>
+   <li>valueDate : <a href="datatypes.html#date">date</a></li>
+   <li>valueInstant : <a href="datatypes.html#instant">instant</a></li>
+   <li>valueString : <a href="datatypes.html#string">string</a></li>
+   <li>valueUri : <a href="datatypes.html#uri">uri</a></li>
+   <li>valueBoolean : <a href="datatypes.html#boolean">boolean</a></li>
+   <li>valueCode : <a href="datatypes.html#code">code</a> (only if the extension definition provides a <a href="terminologies.html#code">fixed</a> binding to a suitable set of codes)</li>
+   <li>valueMarkdown : <a href="datatypes.html#markdown">markdown</a></li>
+   <li>valueBase64Binary : <a href="datatypes.html#base64Binary">base64Binary</a></li>
+   <li>valueCoding : <a href="datatypes.html#Coding">Coding</a></li>
+   <li>valueCodeableConcept : <a href="datatypes.html#CodeableConcept">CodeableConcept</a></li>
+   <li>valueAttachment : <a href="datatypes.html#Attachment">Attachment</a></li>
+   <li>valueIdentifier : <a href="datatypes.html#Identifier">Identifier</a></li>
+   <li>valueQuantity : <a href="datatypes.html#Quantity">Quantity</a></li>
+   <li>valueRange : <a href="datatypes.html#Range">Range</a></li>
+   <li>valuePeriod : <a href="datatypes.html#Period">Period</a></li>
+   <li>valueRatio : <a href="datatypes.html#Ratio">Ratio</a></li>
+   <li>valueHumanName : <a href="datatypes.html#HumanName">HumanName</a></li>
+   <li>valueAddress : <a href="datatypes.html#Address">Address</a></li>
+   <li>valueContactPoint : <a href="datatypes.html#ContactPoint">ContactPoint</a></li>
+   <li>valueTiming : <a href="datatypes.html#Timing">Timing</a></li>
+   <li>valueSignature : <a href="datatypes.html#Signature">Signature</a></li>
+   <li>valueReference : <a href="references.html#Reference">Reference</a> - a reference to another resource</li>
   </ul>
  </li> 
 </ul>
@@ -115,6 +118,10 @@ practice).
 Явное указание типов в представлении означает, что все системы могут читать и писать (и, следовательно, хранить и/или обмениваться) расширениями корректно без необходимости доступа к определению расширения.
 </p>
 <p>
+Note that the JSON represenation for extensions on primitive data types is handled
+differently. See <a href="json.html#primitive">Representing primtive types in JSON</a> for further information.
+</p>
+<p>
 Расширения также могут содержать расширения либо потому, что определение расширения само описывает сложносоставное содержимое - то есть вложенное дерево значений в расширении, либо потому, что расширение расширено дополнительным расширением, определенным отдельно. 
 </p>
 <p>
@@ -122,21 +129,26 @@ practice).
 </p>
 <div class="example">
 <p>
-В качестве примера давайте рассмотрим расширение ресурса "пациент" статусом принятия участия в клиническом исследовании тремя полями: статус, дата записи и человек, который зарегистрировал их (см. <a href="??">definition</a>). В XML:
+В качестве примера давайте рассмотрим расширение ресурса "пациент" статусом принятия участия в клиническом исследовании с тремя полями: номер клинического исследования, период участия и основание участия. В XML:
 </p>
 <pre class="xml" fragment="Patient">
 &lt;Patient&gt;
-  &lt;extension url=&quot;http://acme.org/fhir/StructureDefinition/trial-status&quot; &gt;
-    &lt;extension url=&quot;code&quot; &gt;	  
-      &lt;valueCode value=&quot;unsure&quot; /&gt;	  
+  &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial&quot; &gt;
+    &lt;extension url=&quot;NCT&quot; &gt;
+      &lt;valueString value=&quot;123456789&quot; /&gt;
     &lt;/extension&gt;
-    &lt;extension url=&quot;date&quot; &gt;	  
-      &lt;valueDate value=&quot;2009-03-14&quot; /&gt;	  
+    &lt;extension url=&quot;period&quot; &gt;	  
+      &lt;valuePeriod&gt;
+        &lt;start value=&quot;2009-03-14&quot; /&gt;	  
+      &lt;/valuePeriod&gt;
     &lt;/extension&gt;
-    &lt;extension url=&quot;registrar&quot; &gt;	  
-      &lt;valueReference&gt;	  
-        &lt;reference value=&quot;Practitioner/example&quot; /&gt;	  	    
-      &lt;/valueReference&gt;	  
+    &lt;extension url=&quot;reason&quot; &gt;	  
+      &lt;valueCodeableConcept&gt;	  
+        &lt;coding&gt;	  	    
+          &lt;system value=&quot;http://acme.org/codes/general&quot; /&gt;	  
+          &lt;code value=&quot;tt14j&quot; /&gt;	  
+        &lt;/coding&gt;	  	    
+      &lt;/valueCodeableConcept&gt;	  
     &lt;/extension&gt;
   &lt;/extension&gt;
   &lt;!-- other data for patient --&gt;
@@ -149,17 +161,22 @@ practice).
 {
   "resourceType" : "Patient",
   "extension" : [{
-    "url" : "http://acme.org/fhir/StructureDefinition/trial-status",
+    "url" : "http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial",
     "extension" : [{ 
-      "url" : "code",
-      "valueCode" : "unsure"
+      "url" : "NCT",
+      "valueString" : "123456789"
     }, {
-      "url" : "date", 
-      "valueDate" : "2009-03-14" 
+      "url" : "period", 
+      "valuePeriod" : {
+         "start" : "2009-03-14" 
+      }   
     },  {
-      "url" : "registrar",
-      "valueReference" : {
-      "reference" : "Practitioner/example"
+      "url" : "reason",
+      "valueCodeableConcept" : {
+          "coding" : {
+             "system" : "http://acme.org/codes/general",
+             "code" : "tt14j",
+          }
       }
     }]
   }]
@@ -167,29 +184,41 @@ practice).
 }
 </pre>
 </div>
-
 <p>
-Во втором случае вложенное расширение определяется отдельно.
+As the URL suggests, <a href="extension-patient-clinicaltrial.html">this extension is defined as part of this specification</a>.
+</p>
+<p>
+This can be extended again, by adding a "registrar" extension:
 </p>
 <div class="example">
 <p>
-В этом случае регистратор был определен как отдельное расширение (например для более широкого использования), а не как часть расширения clinical-trial. URL-адрес расширения будет другим:
+Регистратор определен как отдельное расширение (например организацией-реализатором), а не как часть официального расширения clinical-trial. URL-адрес расширения будет другим:
 </p>
 <pre class="xml" fragment="Patient">
 &lt;Patient&gt;
-  &lt;extension url=&quot;http://acme.org/fhir/StructureDefinition/trial-status&quot; &gt;
-    &lt;extension url=&quot;code&quot; &gt;	  
-      &lt;valueCode value=&quot;unsure&quot; /&gt;	  
+  &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial&quot; &gt;
+    &lt;extension url=&quot;NCT&quot; &gt;
+      &lt;valueString value=&quot;123456789&quot; /&gt;
     &lt;/extension&gt;
-    &lt;extension url=&quot;date&quot; &gt;	  
-      &lt;valueDate value=&quot;2009-03-14&quot; /&gt;	  
+    &lt;extension url=&quot;period&quot; &gt;	  
+      &lt;valuePeriod&gt;
+        &lt;start value=&quot;2009-03-14&quot; /&gt;	  
+      &lt;/valuePeriod&gt;
+    &lt;/extension&gt;
+    &lt;extension url=&quot;reason&quot; &gt;	  
+      &lt;valueCodeableConcept&gt;	  
+        &lt;coding&gt;	  	    
+          &lt;system value=&quot;http://acme.org/codes/general&quot; /&gt;	  
+          &lt;code value=&quot;tt14j&quot; /&gt;	  
+        &lt;/coding&gt;	  	    
+      &lt;/valueCodeableConcept&gt;	  
+    &lt;/extension&gt;
     &lt;/extension&gt;
     &lt;extension url=&quot;http://acme.org/fhir/StructureDefinition/registrar&quot; &gt;
-      &lt;valueReference array="true"&gt;	  
+      &lt;valueReference&gt;
         &lt;reference value=&quot;Practitioner/example&quot; /&gt;	  	    
       &lt;/valueReference&gt;	  
     &lt;/extension&gt;
-  &lt;/extension&gt;
   &lt;!-- other data for patient --&gt;
 &lt;/Patient&gt;
 </pre>
@@ -200,14 +229,24 @@ practice).
 {
   "resourceType" : "Patient",
   "extension" : [{
-    "url" : "http://acme.org/fhir/StructureDefinition/trial-status",
+    "url" : "http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial",
     "extension" : [{
-      "url" : "code",
-      "valueCode" : "unsure"
+      "url" : "NCT",
+      "valueString" : "123456789"
     }, {
-      "url" : "date",
-      "valueDate" : "2009-03-14" 
+      "url" : "period", 
+      "valuePeriod" : {
+         "start" : "2009-03-14" 
+      }   
     }, {
+      "url" : "reason",
+      "valueCodeableConcept" : {
+          "coding" : {
+             "system" : "http://acme.org/codes/general",
+             "code" : "tt14j",
+          }
+       }
+    },{
       "url" : "http://acme.org/fhir/StructureDefinition/registrar",
       "valueReference" : {
       "reference" : "Practitioner/example"
@@ -229,8 +268,8 @@ practice).
 значение родительского элемента. Рассмотрим некоторые примеры:
 </p>
 <ul>
- <li>С помощью элемента "extension" можно выразить <b>запрет</b> на прием лекарственного средства</li>
- <li>Элемент "extension" ресурса <a href="condition.html">Condition (Клиническое состояние)</a> позволяет сформировать запись, в которой говориться о том, что пациент <b>не</b> имеет какого-то конкретного диагноза (в отличие от опровержения)</li>
+ <li>Антипредписание: с помощью элемента "extension" можно выразить <b>запрет</b> на прием лекарственного средства</li>
+ <li>Элемент "extension" ресурса <a href="condition.html">Condition (Клиническое состояние)</a> позволяет сформировать запись, в которой говорится о том, что у пациента есть не само это клиническое состояние, а запись о нем в семейном анамнезе</li>
  <li>Элемент "extension" информирует о том, что исполнитель (performer) <b>не</b> принимал участие в выполнении<a href="procedure.html">процедуры (Procedure)</a></li>
  <li>Элемент "extension" декларирует дополнительную взаимосвязь категоризации для концепта в <a href="valueset.html">value set</a></li>
 </ul>
@@ -253,19 +292,19 @@ the resource) или в структуру любого другого элем�
 Пример: у ресурса <a href="medicationorder.html">MedicationOrder</a> нет элемента, чтобы сделать "антипредписание" - инструкцию не принимать медикамент некоторое время. Классические системы медицинских записей не записывают это как предписание, а какая-то одна система записывает, и эти "антипредписания" необходимо совместно использовать в учреждении, где это происходит, так как они являются важной частью рабочего процесса. Поэтому приложениям разрешается расширять ресурс такими данными, как:
 </p>
 <pre class="xml">
-&lt;MedicationPescription&gt;
+&lt;MedicationOrder&gt;
   &lt;modifierExtension url=&quot;http://example.org/fhir/StructureDefinition/anti-prescription&quot;&gt;
     &lt;valueBoolean value="true"/&gt;
   &lt;/modifierExtension&gt;
   &lt;!-- ... other content ... --&gt;
-&lt;/Procedure&gt;
+&lt;/MedicationOrder&gt;
 </pre>
 <p>
 Или в JSON:
 </p>
 <pre class="json">
 {
-  "resourceType" : "MedicationPescription",
+  "resourceType" : "MedicationOrder",
   "modifierExtension" : [{ 
     "url" : "http://example.org/fhir/StructureDefinition/anti-prescription",
     "valueBoolean" : "true"
@@ -293,7 +332,9 @@ the resource) или в структуру любого другого элем�
 <b>#1</b>: Если приложение понимает семантику расширения, это является результатом того, что разработчик подготовил соответствующие
 инструкции по интерпретации содержимого с учетом существования расширения-модификатора.
 </p>
-<p><b>#2</b>: Это значит, что от конкретных реализаций, по сути, не требуется "поддерживать" расширение-модификатор любым существенным способом - они могут достигнуть этого понимания отклонением экземпляров, которые содержат это расширение. Приложения могут также игнорировать расширение-модификатор, если знают, что это безопасно делать в своем собственном контексте, хотя это не будет, как правило, иметь место.
+<p><b>#2</b>: Это значит, что от конкретных реализаций, по сути, не требуется "поддерживать" расширение-модификатор любым существенным способом - они могут достигнуть этого понимания отклонением экземпляров, которые содержат это расширение (a server, for instance, could return a HTTP 422 status code with
+an <a href="operationoutcome.html">OperationOutcome</a> if a client
+PUTs or POSTs a modifier extension it does not know. Приложения могут также игнорировать расширение-модификатор, если знают, что это безопасно делать в своем собственном контексте, хотя это не будет, как правило, иметь место.
 </p>
 <p> 
 Обратите внимание, что конкретные реализации могут иметь возможность быть уверенными благодаря их среде реализации (например особое соглашение торговых партнеров), что расширения-модификаторы никогда не будут использоваться, и, следовательно, выполнить требование проверки наличия модификаторов уже на стадии проектирования. Тем не менее, так как условия интеграции и внедрения часто изменяются впоследствии, приложениям всё равно СЛЕДУЕТ всегда проверять наличие расширений-модификаторов при обработке ресурсов.
@@ -311,7 +352,7 @@ the resource) или в структуру любого другого элем�
 Вот пример предписания, приведенного выше, с описательной частью:
 </p>
 <pre class="xml">
-&lt;MedicationPescription xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+&lt;MedicationOrder xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;text&gt;
     &lt;status value=&quot;generated&quot;/&gt;
     &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
@@ -321,10 +362,10 @@ the resource) или в структуру любого другого элем�
   &lt;/text&gt;
   &lt;!-- ...data... --&gt;
   &lt;modifierExtension url=&quot;http://example.org/fhir/StructureDefinition/anti-prescription&quot;&gt;
-      &lt;boolean value="true"/&gt;
+    &lt;valueBoolean value="true"/&gt;
     &lt;/modifierExtension&gt;
   &lt;!-- ...data... --&gt;
-&lt;/MedicationPescription&gt;
+&lt;/MedicationOrder&gt;
 </pre>
 </div>
 <p>

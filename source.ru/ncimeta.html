@@ -14,6 +14,7 @@
 <%txheader%>
 
 <h2>Применение NCI Metathesaurus в FHIR<!-- Using the NCI Metathesaurus with FHIR --></h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <h3>Краткие сведения<!-- Summary --></h3>
 
@@ -22,14 +23,15 @@
  <tr><td>System</td><td>URI <a href="http://ncimeta.nci.nih.gov">http://ncimeta.nci.nih.gov</a> идентифицирует NCI Metathesaurus</td></tr>
  <tr><td>Version</td><td>У NCI Metathesaurus отсутствует версия или версионирование</td></tr>
  <tr><td>Code</td><td>Concept Unique Identifier (CUI) используется в качестве значения кода Metathesaurus-концепта</td></tr>
- <tr><td>Display</td><td>При применении на английском языке для отображения необходимо использовать название (например "Aerosol Dose Form" для CUI C1112870)</td></tr>
+ <tr><td>Display</td><td>При применении на английском языке для отображения необходимо использовать название (например "<i>Aerosol Dose Form</i>" для CUI C1112870)</td></tr>
  <tr><td>Filter Properties</td><td>Пока что не описаны</td></tr>
 <!--  <tr><td>Source</td><td>NCI Metathesaurus <a href="http://cbiit.nci.nih.gov">the NCI Center for Biomedical Informatics and Information Technology (CBIIT) </a></td></tr>
  <tr><td>System</td><td>The URI <a href="http://ncimeta.nci.nih.gov">http://ncimeta.nci.nih.gov</a> identifies the NCI Metathesaurus</td></tr>
  <tr><td>Version</td><td>There is no version or versioning associated with the NCI metathesaurus</td></tr>
  <tr><td>Code</td><td>The Concept Unique Identifier (CUI) is used for the code value for a Metathesaurus concept</td></tr>
- <tr><td>Display</td><td>The name should be used as the display for English usage (e.g. "Aerosol Dose Form" for CUI C1112870)</td></tr>
- <tr><td>Filter Properties</td><td>None are described yet</td></tr> -->
+ <tr><td>Display</td><td>The name should be used as the display for English usage (e.g. "<i>Aerosol Dose Form</i>" for CUI C1112870)</td></tr>
+ <tr><td>Filter Properties</td><td>None are described yet</td></tr>
+ -->
 </table>
 
 <h3>Вопросы версионирования<!-- Version Issues --></h3>
@@ -41,16 +43,15 @@
 <h3>Вопросы авторских прав/лицензий<!-- Copyright/License Issues --></h3>
 
 <p>
-NCI metathesaurus является общественным достоянием, поэтому не требуется уведомление об авторских правах в наборах значений, которые ссылаются на концепты NCI metathesaurus, и нет требований лицензирования для использования концептов в экземплярах или системах.
-<!-- The NCI metathesaurus is in the public domain, so there are not copyright notices need 
+NCI metathesaurus находится в общественном доступе, поэтому не требуется уведомление об авторских правах в наборах значений, которые ссылаются на концепты NCI metathesaurus, и нет требований лицензирования, ограничивающих использование концептов NCI metathesaurus в экземплярах или системах.
+<!-- The NCI metathesaurus is in the public domain, so there are no copyright notices needed 
 in value sets that refer to NCI metathesaurus concepts, and there are no licensing 
-requirements to use concepts in instances or systems. -->
+requirements limiting use of NCI metathesaurus concepts in instances or systems. -->
 </p>
 
 <h3>База данных NCI Metathesaurus MySQL<!-- MCI Metathesaurus MySQL Database --></h3>
 <p>
-Как и в <a href="rxnorm.html">RxNorm</a>, RRF-файлы, входящие в исходный дистрибутив NCI Metathesaurus, можно использовать для пополнения базы данных MySQL, которая содержит данные. Здесь приводятся SQL-запросы, описывающие, как правильно реализовать функциональные возможности NCI Metathesaurus в этой базе данных. Они созданы для удобства реализаторов и не подразумевают, что в реализациях необходимо использовать какой-то определенный подход.
- (Примечание: для обеспечения согласованности используются названия таблиц и колонок из rxnorm; кроме того, CUIs на 1 символ длиннее, поэтому скрипты необходимо обновить).
+Как и в <a href="rxnorm.html">RxNorm</a>, RRF-файлы, входящие в исходный дистрибутив NCI Metathesaurus, можно использовать для пополнения базы данных MySQL, которая содержит данные. Здесь приводятся SQL-запросы, описывающие, как правильно реализовать функциональные возможности NCI Metathesaurus в этой базе данных. Они созданы только для удобства реализаторов и не подразумевают, что в реализациях необходимо обязательно использовать какой-то определенный подход. (Примечание: для обеспечения согласованности используются названия таблиц и колонок из RxNorm и CUIs на 1 символ длиннее, поэтому скрипты необходимо обновить).
 <!-- Like <a href="rxnorm.html">RxNorm</a> the RRF files that are the distributed source of the NCI Metathesaurus can be used
 to populate a MySQL database that contains the data. This page provides SQL statements that describe how to implement 
 the features of the NCI Metathesaurus correctly against this database. These are provided for implementer convenience, and 
@@ -58,9 +59,12 @@ do not imply that any particular approach be used in implementations. (note: for
 are used; also, the CUIs are 1 character longer, so the scripts must be updated). -->
 </p>
 <p>
-<!-- For example, the correct display name for a CUI is 'Select STR from rxnconso where RXCUI = :code and SAB = 'RXNORM' and TTY &lt;&gt; 'SY'. -->
-К примеру, корректным названием для отображения CUI будет 'Select STR from rxnconso where RXCUI = :code and SAB = 'RXNORM' and TTY &lt;&gt; 'SY'.
+<!-- For example, the correct display name for a CUI is -->
+К примеру, корректным названием для отображения CUI будет
 </p>
+<pre>
+  select STR from rxnconso where RXCUI = :code and SAB = 'RXNORM' and TTY &lt;&gt; 'SY'
+</pre>.
 
 <h3>Свойства фильтра NCI metathesaurus<!-- NCI metathesaurus Filter Properties --></h3>
 
@@ -75,7 +79,7 @@ code system in value set composition statements. -->
 is: -->
 </p>
 <pre>
-  Select RXCUI from RXNCONSO where SAB = 'RXNORM' and TTY &lt;&gt; 'SY' 
+  select RXCUI from RXNCONSO where SAB = 'RXNORM' and TTY &lt;&gt; 'SY' 
 </pre>
 
 <h4>Семантический тип<!-- Semantic Type --></h4>

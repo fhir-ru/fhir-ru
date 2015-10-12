@@ -13,8 +13,9 @@
 <div class="col-9">
 <%dtheader mappings%>
 <h2>Мэппинг типов данных</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
-<p>На этой странице приведена карта соответствия типов данных. Имеется отображение типов данных в другие системы HL7: v2, v3 и (где это уместно) vCard.</p>
+<p>На этой странице приведена карта соответствия типов данных. Имеется отображение типов данных в другие системы HL7: <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>, <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> и (где это уместно) vCard.</p>
 
 <p><b>Оглавление<!-- Table of Contents --></b></p>
 <table class="grid">
@@ -90,6 +91,8 @@
 
 <a name="Quantity"> </a>
 <a name="quantity"> </a>
+<a name="SimpleQuantity"> </a>
+<a name="simplequantity"> </a>
 <a name="age"> </a>
 <a name="distance"> </a>
 <a name="duration"> </a>
@@ -168,18 +171,6 @@
 
 <%dtmappings Address%>
 
-<div class="mapping">
-<p><b><a href="http://tools.ietf.org/html/rfc6350">vCard</a> Mappings</b></p>
-<ul>
- <li>Address.text =  параметр "LABEL" свойства vCard "ADDRESS"</li>
- <li>Address.use = параметр vCard "TYPE"</li>
- <li>Address.line = компонент списка (list component) vCard "street"</li>
- <li>Address.city = компонент списка vCard "locality"</li>
- <li>Address.state = компонент списка vCard "region"</li>
- <li>Address.zip = компонент списка vCard "code"</li>
- <li>Address.country = компонент списка vCard "country"</li>
-</ul>
-</div>
 
 <a name="ContactPoint"> </a>
 <a name="contactpoint"> </a>

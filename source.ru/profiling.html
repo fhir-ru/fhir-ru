@@ -14,12 +14,13 @@
 [%profilesheader base%]
 
 <h2>Профилирование FHIR</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
 Основная спецификация FHIR (данная спецификация) описывает набор базовых ресурсов, механизмов и интерфейсов, которые используются в различных контекстах в сфере здравоохранения. Однако имеются разногласия между юрисдикциями и экосистемой здравоохранения насчет методов, требований, норм, образования и того, какие действия являются выполнимыми и/или выгодными.
 <!-- The base FHIR specification (this specification) describes a set of base resources, frameworks
 and APIs that are used in many different contexts in healthcare. However there is wide variability 
-between jurisdictions and across the healthcare eco-system around 
+between jurisdictions and across the healthcare ecosystem around 
 practices, requirements, regulations, education and what actions are feasible 
 and/or beneficial. -->
 </p>
@@ -39,7 +40,7 @@ contexts of use. Typically, these adaptations specify: -->
 </ul>
 <p>
 Обратите внимание, что из-за особенности медицинской экосистемы может появиться множество перекрывающих друг друга адаптаций - по домену здравоохранения, по стране, по учреждению и/или по поставщику/реализации.
-<!-- Note that because of the nature of the healthcare eco-system, there may be multiple 
+<!-- Note that because of the nature of the healthcare ecosystem, there may be multiple
 overlapping sets of adaptations - by healthcare domain, by country, by institution, and/or by vendor/implementation.  -->
 </p>
 <a name="glossary"> </a>
@@ -51,28 +52,28 @@ FHIR defines a cascade of artifacts for this purpose:
  <tr>
   <td><b>Artifact</b></td>
   <td><b>Description</b></td>
-  <td><b><a href="daf.html">DAF</a> example</b></td>
+  <td><b><a href="daf/daf.html">DAF</a> example</b></td>
  </tr>
  <tr>
-  <td>Implementation Guide</td>
-  <td>A coherent and bounded set of adaptations that are published as a single unit. Validation occurs within the contextz of the Implementation Guide</td>
-  <td><a href="daf.html">DAF IG</a></td>
+  <td>Implementation Guide (IG)</td>
+  <td>A coherent and bounded set of adaptations that are published as a single unit. Validation occurs within the context of the Implementation Guide</td>
+  <td><a href="daf/daf.html">DAF IG</a></td>
  </tr>
  <tr>
   <td>Package</td>
   <td>A group of related adaptations that are published as a group within an Implementation Guide</td>
-  <td><a href="daf-medicationusage.html">DAF Medication Usage</a></td>
+  <td><a href="daf/daf-medicationusage.html">DAF Medication Usage</a></td>
  </tr>
  <tr>
-  <td>Conformance Item</td>
+  <td>Conformance Resource</td>
   <td>A single resource in a package that makes rules about how an implementation works. These are described below</td>
-  <td><a href="medicationprescription-daf.html">DAF Prescription</a></td>
+   <td><a href="daf/medicationorder-daf.html">DAF Prescription</a></td>
  </tr>
 </table>
 <p>
-The term "profile" is general one that is used about either a "package" or an "item". 
+The term "profile" is a general one that is used about either a "package" or an "item". 
 "Profiling" is a general term that describes the process of creating an implementation guide,
-or any of the resources found in one. 
+or any of the conformance resources found in one. 
 </p>
 
 <a name="conf-res"> </a>
@@ -87,8 +88,8 @@ can be used to represent and share the decisions that have been made, and allows
 resources are known as the conformance resources. These conformance resources allow implementers to: -->
 </p>
 <ul>
- <li>Указывать, что <a href="http.html">некоторые вызовы интерфейса</a> не используются в определенных случаях, и предоставлять дополнительное описание по использованию интерфейса (ресурс <a href="conformance.html">Conformance</a>) <!--  
- <li>Indicate that <a href="http.html">some API calls</a> are not used for a particular use , and provide additional details about how the API calls are used (<a href="conformance.html">Conformance</a> Resource) --></li>
+ <li>Указывать, что <a href="http.html">некоторые API-вызовы</a> не используются в определенной ситуации, и предоставлять дополнительное описание по использованию программного интерфейса приложения (ресурс <a href="conformance.html">Conformance</a>) <!--  
+ <li>Indicate that <a href="http.html">some API calls</a> are not used for a particular situation, and provide additional details about how API calls are used (<a href="conformance.html">Conformance</a> Resource) --></li>
  <li>Вводить дополнительные <a href="operations.html">операции</a> и <a href="search.html">параметры поиска</a>, отсутствующие в базовой спецификации (с помощью ресурсов <a href="operationdefinition.html">OperationDefinition</a> и <a href="searchparameter.html">SearchParameter</a>)<!-- Add additional <a href="operations.html">operations</a> or <a href="search.html">search parameters</a> not in the base specification 
    (using the <a href="operationdefinition.html">OperationDefinition</a> resource or the <a href="searchparameter.html">SearchParameter</a> Resource --></li>
  <li>Задавать способ использования конкретной структуры (ресурса, расширения или типа данных) (ресурс <a href="structuredefinition.html">StructureDefinition</a>):<!-- 
@@ -100,11 +101,11 @@ Define how a particular structure (Resource, Extension or Data Type) is used (<a
       <li>Определять расширения для использования в ресурсах или типах данных <!-- Define extensions that can be used in resources or data types --> </li>
     </ul>
  </li>
- <li>Смешивать пользовательские и стандартные справочники и выбирать, какие коды из них использовать в конкретных случаях (ресурсы <a href="valueset.html">Value Set</a> и StructureDefinition)
-<!-- Mix custom and standard terminologies and choose which codes from these to use for a particular use (<a href="valueset.html">Value Set</a> and StructureDefinition Resources) --> </li>
+ <li>Смешивать пользовательские и стандартные справочники и выбирать, какие коды из них использовать в конкретном случае (ресурсы <a href="valueset.html">Value Set</a> и StructureDefinition)
+<!-- Mix custom and standard terminologies and choose which codes from these to use for a particular (<a href="valueset.html">Value Set</a> and StructureDefinition Resources) --> </li>
  <li>Устанавливать соответствие между локальными и стандартными справочниками или моделями содержания (ресурс <a href="conceptmap.html">Concept Map</a>)<!-- Map between local and standard terminologies or content models (<a href="conceptmap.html">Concept Map</a> Resource) --></li>
  <li>Регистрировать пространства имен систем для идентификаторов и справочников (ресурс <a href="namingsystem.html">NamingSystem</a>)<!-- Register system namespaces for identifiers and terminologies (<a href="namingsystem.html">NamingSystem</a> Resource) --></li>
- <li>Регистрировать и описывать особые элементы данных, которые используются в Словаре данных различных систем (ресурс <a href="dataelement.html">DataElement</a> )<!-- Describe and register specific Data Elements that are used across systems in a Data Dictionary (<a href="dataelement.html">DataElement</a> Resource) --></li>
+ <li>Регистрировать и описывать в Словаре данных особые элементы данных, которые используются в различных системах (ресурс <a href="dataelement.html">DataElement</a> )<!-- Describe and register in a Data Dictionary specific Data Elements that are used across systems (<a href="dataelement.html">DataElement</a> Resource) --></li>
 </ul>
 <p>
 Эти ресурсы необходимо использовать, придерживаясь правил, рассмотренных ниже, а также 
@@ -121,15 +122,15 @@ For implementer convenience, the specification itself publishes its base definit
 <p>
 Ресурс <a href="conformance.html">Conformance</a> описывает два различных способа применения профилей ресурсов: профили ресурсов (Resource Profiles) и системные профили (System Profiles). Профили ресурсов задаются с помощью элемента <i>Conformance.rest.resource.profile</i>, а системные профили задаются с помощью элемента <i>Conformance.profile</i>.
 <!-- The <a href="conformance.html">Conformance</a> resource describes two different uses for profiles on resources:
-Resource Profiles and System Profiles. Resource Profiles are specified using <i>Conformance.rest.resource.profile</i> element 
-and System Profiles are specified using <i>Conformance.profile</i> element.  -->
+Resource Profiles and System Profiles. Resource Profiles are specified using the <i>Conformance.rest.resource.profile</i> element 
+and System Profiles are specified using the <i>Conformance.profile</i> element.  -->
 </p>
 <h4>Conformance.rest.resource.profile</h4>
 <p>
 Такие профили описывают общие свойства, поддерживаемые системой для каждого вида ресурса. Как правило, это супермножество всех возможных сценариев использования, реализованных системой. Это взгляд на функциональность системы с уровня ресурсов.
 <!-- These profiles describe the general features that are supported by the system for each kind of 
 resource. Typically, this is the superset of all the different use-cases implemented by the system. 
-This is a resource-level perspective of the system functionality.  -->
+This is a resource-level perspective of a system's functionality.  -->
 </p>
 <h4>Conformance.profile</h4>
 <p>
@@ -145,7 +146,7 @@ Some examples of the uses for these kind of profiles: -->
 <p>
 Как правило, эти профили являются рядом вариаций одного набора ресурсов - различные варианты использования, приводящие к обработке ресурсов, представляющей их по-разному. Все эти сценарии использования, приведенные выше, относятся к системе, производящей и публикующей данные, однако та же самая концепция применяется и к системам, которые являются потребителями данных. Например:
 <!-- Typically, these profiles are a series of variations on the same set of resources - different use cases leading to handling 
-the resources that represent them differently. These use-cases described above all pertain to system that produce and publish
+the resources that represent them differently. These usecases described above all pertain to system that produce and publish
 data, but the same concept applies to systems that consume data. For instance: -->
 </p>
 <ul>
@@ -161,8 +162,8 @@ made available by the producer system and deal only with the ones relevant
 to the use case.  -->
 </p>
 <p>
-В качестве примера рассмотрим лабораторную систему, производящую тысячи отчетов в день. 1% этих отчетов будет некоторый эндокринный отчет, который система поддержки принятия решений знает как обрабатывать. Обе системы декларируют, что они поддерживают определенный эндокринный профиль, однако как экспертная система на деле находит те эндокринные отчеты, которые она умеет обрабатывать?
-<!-- As an example consider a laboratory system generating 1000s of reports 
+В качестве примера рассмотрим лабораторную систему, производящую тысячи отчетов в день. 1% этих отчетов будет некоторый эндокринный отчет, который система поддержки принятия решений знает как обрабатывать. Обе системы декларируют, что поддерживают определенный профиль эндокринного отчета, однако как экспертная система на деле находит те эндокринные отчеты, которые она умеет обрабатывать?
+<!-- As an example consider a laboratory system generating thousands of reports 
 a day. 1% of those reports are a particular endocrine report that a 
 decision support system knows how to process. Both systems declare that 
 they support the particular endocrine profile, but how does the expert
@@ -186,18 +187,21 @@ resources also SHALL, for any profile declared in Conformance.profile: -->
  <li>(для сервера) поддерживать поиск по <a href="search.html#profile">параметру _profile</a> для заявленных профилей<!-- (if a server) support searching by the <a href="search.html#profile">_profile parameter</a> for the declared profiles --></li>
 </ol>
 <p>
-Помимо этих требований, производитель ресурсов ДОЛЖЕН гарантировать, что любые данные, от которых резонно будет ожидаться соответствие заявленным профилям, ДОЛЖНЫ быть опубликованы в этой форме.
-<!-- Beyond these requirements, a producer of resources SHOULD ensure that any data that would reasonably be expected
+Помимо этих требований, производитель ресурсов ДОЛЖЕН гарантировать, что любой экземпляр ресурса, от которого было бы резонно ожидать соответствия заявленным профилям, ДОЛЖЕН быть опубликован в этой форме.
+<!-- Beyond these requirements, a producer of resources SHOULD ensure that any resource instance that would reasonably be expected
 to conform to the declared profiles SHOULD be published in this form.  -->
 </p>
 
+<blockquote class="dstu-note">
 <a name="dstu"> </a>
-<blockquote>
 <p>
-Примечание к DSTU: имеется много неисследованных вопросов, связанных с таким использованием профилей. HL7 ведет активный поиск обратной связи от пользователей, которые экспериментируют в этой области, и пользователи должны быть готовы к изменениям свойств и обязательств в этой области в будущем.
-<!-- DSTU note: there are many uninvestigated issues associated with this use of profiles. 
+<b>Примечание к DSTU:</b> имеется много неисследованных вопросов, связанных с таким использованием профилей. HL7 ведет активный поиск обратной связи от пользователей, которые экспериментируют в этой области, и пользователи должны быть готовы к изменениям свойств и обязательств в этой области в будущем.
+<!-- <b>DSTU Note:</b> there are many uninvestigated issues associated with this use of profiles. 
 HL7 is actively seeking feedback from users who experiment in this area, and users
 should be prepared for changes to features and obligations in this area in the future. -->
+</p>
+<p>
+Feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
 </p>
 </blockquote>
 
@@ -205,7 +209,7 @@ should be prepared for changes to features and obligations in this area in the f
 <h3>Сужение и расширение интерфейса<!-- Extending and Restricting the API --></h3>
 <p>
 Ресурс Conformance перечисляет REST-взаимодействия  (read, update, search и т.п.), которые предлагает сервер или которые использует клиент, наряду с некоторой вспомогательной информацией для каждого. Может также использоваться для задания набора желаемого поведения (например в рамках спецификации или Request for Proposal). Единственное взаимодействие, которые серверы обязаны поддерживать, это само взаимодействие <a href="http.html#conformance">Conformance</a> - для получения заявления о соответствии сервера. Помимо этого, серверы и клиенты поддерживают и используют те API-вызовы, которые подходят в их случае.
-<!-- A conformance resource lists the REST interactions (read, update, search, etc) that a server provides or that a client uses, along with 
+<!-- A conformance resource lists the REST interactions (read, update, search, etc.) that a server provides or that a client uses, along with 
 some supporting information for each. It can also be used to define a set of desired behavior (e.g. as part of a specification or
 a Request for Proposal).  The only interaction that servers are required to support is the <a href="http.html#conformance">Conformance</a>
 interaction itself - to retrieve the server's conformance statement. Beyond that, servers and clients support and use whichever
@@ -217,7 +221,7 @@ API calls are relevant to their use case. -->
 operations that are not part of the FHIR specification. Implementers can safely do this 
 by appending a custom operation name prefixed with '$' to an existing FHIR URL, as the <a href="operations.html">Operations
 framework</a> does. The Conformance resource supports defining what OperationDefinitions make use of particular
-names on an end point.  If services are defined that are not declared using OperationDefinition, it may be
+names on an end-point.  If services are defined that are not declared using OperationDefinition, it may be
 appropriate to use longer names, reducing the chance of collision (and confusion) with services declared by
 other interfaces.  The base specification will never define operation names with a "." in them, so 
 implementers are recommended to use some appropriate prefix for their names (such as "ihe.someService")
@@ -241,12 +245,32 @@ safely be used in addition to those defined in this specification. -->
 <h3>Расширение и ограничение ресурсов<!-- Extending and Restricting Resources --></h3>
 
 <p>
-Расширение и ограничение ресурсов (соответствующее общему понятию "ограничение ресурса"; 'constraining a resource') выполняется с помощью ресурса "StructureDefinition", который представляет собой правила о том, каким образом используются элементы в ресурсе и где в ресурсе используются расширения.
+Расширение и ограничение ресурсов (соответствующее общему понятию "профилирование ресурса") выполняется с помощью ресурса "StructureDefinition", который представляет собой правила о том, каким образом используются элементы в ресурсе и где в ресурсе используются расширения.
 <!-- 
-Extending and restricting resources (collectively known as 'constraining a resource') is done with a 
+Extending and restricting resources (collectively known as 'profiling a resource') is done with a 
 "StructureDefinition" resource, which is a statement of rules about 
 how the elements in a resource are used, and where extensions are used in a resource.
  --> 
+</p>
+
+<a name="cardinality"> </a>
+<h3>Changing Cardinality</h3>
+
+<p>
+One key function of profiles is to change the cardinality of an element. A profile
+can restrict the cardinality of an element within the limits of the base structure
+it is constraining. This table summarizes what types of restrictions are allowed:
+</p>
+<table class="grid">
+ <tr><td>derived (across)<br/>base (down)</td>       <td>0..0<br/>(Not used)</td>      <td>0..1<br/>(optional)</td>              <td>0..n<br/>(optional, many)</td>      <td>1..1<br/>(required)</td>     <td>1..n<br/>(at least 1)</td>    </tr>
+ <tr><td>0..1</td>   <td>yes</td>                     <td>yes</td>                             <td>no</td>                            <td>yes</td>                    <td>no</td>                      </tr>
+ <tr><td>0..*</td>   <td>yes</td>                     <td>yes</td>                             <td>yes</td>                           <td>yes</td>                    <td>yes</td>                     </tr>
+ <tr><td>1..1</td>   <td>no</td>                      <td>no</td>                              <td>no</td>                            <td>yes</td>                    <td>no</td>                      </tr>
+ <tr><td>1..*</td>   <td>no</td>                      <td>no</td>                              <td>no</td>                            <td>yes</td>                    <td>yes</td>                     </tr>
+</table>
+<p>
+When a profile is constraining another profile where there are more cardinality options (e.g. low is not just 0 or 1, and high is not just 1 or *), the same 
+principles still apply: the constraining profile can only allow what the base profile allows.
 </p>
 
 <h3>Границы применения<!-- Limitations of Use --></h3>
@@ -257,7 +281,7 @@ What Structure Definitions can do when they are constraining existing resources 
  -->
 </p>
 <ul>
- <li>Профили не могут нарушать правила, установленные в базовой спецификации (например если кардинальное число элемента в базовой спецификации 1..1, профиль не может объявить его 0..1 или 1..*)<!-- Profiles cannot break the rules established in the base specification (e.g. if the element cardinality is 1..1 in the base specification, a profile cannot say it is 0..1, or 1..*) --></li>
+ <li>Профили не могут нарушать правила, установленные в базовой спецификации (например кардинальное число, как описано выше)<!-- Profiles cannot break the rules established in the base specification (e.g. cardinality as described above) --></li>
  <li>Профили не могут задавать элементам значения или смысл по умолчанию<!-- Profiles cannot specify default values or meanings for elements --></li>
  <li>Профили не могут давать элементам более конкретные имена<!-- Profiles cannot give more specific names to elements --></li>
  <li>Обрабатывать ресурс без знания его профиля должно быть безопасно<!-- It must be safe to process a resource without knowing the profile --></li>
@@ -278,36 +302,38 @@ in the profile itself that this is what the resource means; instead, the profile
 say that the resource must have an extension that represents this knowledge.  -->
 </p>
 <p>
-Существует средство для обозначения ресурсов, что они могут быть безопасно поняты только при таком способе обработки, когда известен и понятен набор опубликованных правил. Для получения дополнительной информации см. <a href="resource.html#ruleset">Restricted Understanding of Resources</a>.
-<!-- There is the facility to mark resources that they can only be safely understood by 
+Имеется средство помечать ресурсы для обозначения, что они могут быть безопасно поняты только при таком способе обработки, когда известен и понятен набор опубликованных правил. Для получения дополнительной информации см. <a href="resource.html#implicitRules">Restricted Understanding of Resources</a>.
+<!-- There is a facility to mark resources to indicate that they can only be safely understood by 
 a process that is aware of and understands a set of published rules. For more information,
-see <a href="resource.html#ruleset">Restricted Understanding of Resources</a>. -->
+see <a href="resource.html#implicitRules">Restricted Understanding of Resources</a>. -->
 </p>
  
 
 <h3>Применение Structure Definitions<!-- Using Structure Definitions --></h3>
 <p>
-Ограничивающее Structure Definition устанавливает ряд ограничений для содержимого FHIR-ресурса или типа данных. Заданное structure definition идентифицируются по своему каноническому URL-адресу, который ДОЛЖЕН быть тем URL, по которому он был опубликован. О том, каким образом используется элемент, можно делать следующие утверждения:
-<!-- A "constraint" Structure Definition specifies a set of restrictions on the content of a FHIR resource or data type.
+Ограничивающее Structure Definition устанавливает ряд ограничений для содержимого FHIR-ресурса или типа данных, или дополнительный набор ограничений для существующего профиля. Заданное structure definition идентифицируются по своему каноническому URL-адресу, который ДОЛЖЕН быть тем URL, по которому он был опубликован. С помощью ряда <a href="elementdefinition.html">определений элементов </a> можно делать следующие утверждения о том, каким образом используется элемент:
+<!-- A "constraint" Structure Definition specifies a set of restrictions on the content of a FHIR resource or data type,
+or an additional set of constraints on an existing profile.
 A given structure definition is identified by its canonical URL, which SHOULD be the URL at which it
-is published. The following kinds of statements can be made about how an element is used: -->
+is published. The following kinds of statements can be made about how an element is used, using a 
+series of <a href="elementdefinition.html">Element Definitions</a>: -->
 </p>
 <ul>
- <li>Уменьшение кардинального числа элемента, например базовая спецификация может разрешать 0..*, а конкретное приложение может поддерживать 1..2<!-- Restricting the cardinality of the element. e.g. the base might allow 0..*, and a particular application might support 1..2 --></li>
+ <li>Уменьшение кардинального числа элемента, например базовая спецификация может разрешать 0..*, а конкретное приложение может поддерживать 1..2<!-- Restricting the cardinality of the element; e.g. the base might allow 0..*, and a particular application might support 1..2 --></li>
  <li>Исключение элемента из использования  установкой его максимального значения кардинального числа в 0<!-- Ruling out use of an element by setting its maximum cardinality to 0 --></li>
  <li>Ограничение содержимого элемента одним фиксированным значением<!-- Restricting the contents of an element to a single fixed value --></li>
- <li>Создание дополнительных инвариантов для содержимого вложенных элементов внутри ресурса (выраженных в виде XPath-утверждений)<!-- Making additional invariants on the content of nested elements within the resource (expressed as XPath statements) --></li>
+ <li>Создание дополнительных ограничений для содержимого вложенных элементов внутри ресурса (выраженных в виде XPath-утверждений)<!-- Making additional constraints on the content of nested elements within the resource (expressed as XPath statements) --></li>
  <li>Ограничение доступных типов данных для элемента, в котором допустимы несколько типов<!-- Restricting the types for an element that allows multiple types --></li>
  <li>Требование к типизированному элементу или целевому объекту ссылки ресурса соответствовать другому структурному профилю (объявленному в этом же профиле либо в другом месте)<!-- Requiring a typed element or the target of a resource reference to conform to another structure profile (declared in the same profile, or elsewhere) --></li>
  <li>Указание привязки к другому терминологическому набору значений (см. ниже)<!-- Specifying a binding to a different terminology value set (see below) --></li>
  <li>Предоставление альтернативных определений, комментариев/примечаний к использованию и примеров для элементов, заданных в ресурсе, для объяснения, каким образом они используются в контексте этого профиля<!-- Providing alternative definitions, comments/usage notes for the elements defined in a Resource to explain how they are used in the context of the Profile --></li>
- <li>Предоставление более конкретных или дополнительных таблиц соответствия (например с v2 или v3) для ресурса при использовании в определенном контексте<!-- Providing more specific or additional mappings (e.g. to v2 or v3) for the resource when used in a particular context --></li>
+ <li>Предоставление более конкретных или дополнительных таблиц соответствия (например с <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> или <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>) для ресурса при использовании в определенном контексте<!-- Providing more specific or additional mappings (e.g. to <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> or <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>) for the resource when used in a particular context --></li>
  <li>Объявление, что один или несколько элементов в структуре должны быть 'поддержаны' (см. ниже)<!-- Declaring that one or more elements in the structure must be 'supported' (see below) --></li>
 </ul>
 <p>
-Все изменённые определения ДОЛЖНЫ быть ограничениями, которые не противоречат правилам, установленным в базовом ресурсе в спецификации FHIR. Обратите внимание, что некоторые из этих ограничений могут быть обеспечены принудительно с помощью инструментов (и обеспечиваются средствами FHIR), однако другие (например регулирование изменений описательного текста) не могут быть автоматически применены.
-<!-- Any changed definitions SHALL be restrictions that are consistent with the 
-rules defined in the base resource in the FHIR Specification. Note that some of 
+Все изменённые определения ДОЛЖНЫ быть ограничениями, которые не противоречат правилам, установленным для данного ресурса в спецификации FHIR, для которого создается профиль. Обратите внимание, что некоторые из этих ограничений могут быть обеспечены принудительно с помощью инструментов (и обеспечиваются средствами FHIR), однако другие (например регулирование изменений описательного текста) не могут быть автоматически применены.
+<!-- Any changed definitions SHALL be restrictions that are consistent with the
+rules defined in the resource in the FHIR Specification from which the profile is derived. Note that some of 
 these restrictions can be enforced by tooling (and are by the FHIR tooling), but 
 others (e.g. alignment of changes to descriptive text) cannot be automatically enforced. -->
 </p>
@@ -316,8 +342,8 @@ Note that structure definitions cannot 'remove' mappings and constraints that ar
 but for purposes of clarity, they can refrain from repeating them.
 </p>
 <p>
-Structure definition содержит линейный список объявлений элементов. Присущая вложенная структура элементов происходит из значения <i>path</i> каждого элемента. К примеру, такая последовательность путей элементов
-<!-- A structure definition contains a linear list of element declarations. The inherent 
+Structure definition содержит линейный список <a href="elementdefinition.html">объявлений элементов</a>. Присущая вложенная структура элементов происходит из значения <i>path</i> каждого элемента. К примеру, такая последовательность путей элементов
+<!-- A structure definition contains a linear list of <a href="elementdefinition.html">element definitions</a>. The inherent 
 nested structure of the elements is derived from the <i>path</i> value of each element. 
 For instance, a sequence of the element paths like this: -->
 </p>
@@ -352,13 +378,13 @@ is easier with a flat structure. -->
 <h3>Differential vs Snapshot</h3>
  
 <p>
-Structure Definitions могут содержать либо differential statement, либо snapshot statement, либо оба.
-<!-- Structure Definitions may contain either a differential statement, a snapshot
+Structure Definitions могут содержать только различия, только полную версию, либо и то, и другое.
+<!-- Structure Definitions may contain a differential statement, a snapshot
 statement or both. -->
 </p>
 <p>
-Differential statements описывают только те изменения, которые они задают по отношению к другому structure definition (которым чаще всего является базовый FHIR-ресурс или тип данных). Например профиль может делать один из элементов обязательным (кардинальное число 1..1). В этом случае дифференциальная структура будет содержать один элемент и его путь, сделанный обязательным, и кардинальное число.
-Больше ничего не заявляется - вся остальная структура подразумевается (примечание: это означает, что дифференциальный профиль может быть разреженным и указывать только те элементы, которые были изменены, без необходимости перечисления всей структуры).
+Дифференциальные профили описывают только те изменения, которые они задают по отношению к другому structure definition (которым чаще всего является базовый FHIR-ресурс или тип данных). Например профиль может делать один из элементов обязательным (кардинальное число 1..1). В этом случае дифференциальная структура будет содержать один элемент и его путь, сделанный обязательным, и кардинальное число.
+Больше никаких утверждений не делается - вся остальная структура подразумевается (примечание: это означает, что дифференциальный профиль может быть очень кратким и содержать только те элементы, которые были изменены, без приведения всей структуры целиком).
 <!-- 
 Differential statements describe only the differences that they make
 relative to another structure definition (which is most often the base FHIR resource or data type). 
@@ -366,13 +392,21 @@ For example, a profile may make a single element mandatory (cardinality 1..1).
 In the case of a differential structure, it will contain a single element 
 with the path of the element being made mandatory, and a cardinality statement.
 Nothing else is stated - all the rest of the structural information is implied (note:
-this implies that a differential profile can be sparse, and only 
+this means that a differential profile can be sparse and only
 mention the elements that are changed, without having to list the
 full structure).
  -->
 </p>
 <p>
-Чтобы правильно понять дифференциальную структуру, ее необходимо применить к structure definition, на котором она основывается. Чтобы предотвратить инструменты от необходимости поддерживать эту операцию (которая требует большого объема вычислений - и не возможна, если базовая структура недоступна), StructureDefinition может также хранить "снимок" - полностью вычисляемая форма структура, которая не зависит ни от какой другой структуры. Проект FHIR предлагает инструменты для распространенных платформ, которые могут восстановить снимок из дифференциала  (обратите внимание, что этот инструмент создает полные, подробные снапшоты; он не поддерживает возможность убрать мэппинги и ограничения).
+Note that a differential can choose not to constrain elements. 
+Doing so means that the profile will be more flexible in terms of compatibility
+with other profiles, but will require more work to support from implementing
+systems. Alternatively, a profile can constrain all optional elements to be not 
+present (max cardinality = 0) - this closes the content, which makes 
+implementation easier, but the reduces its usefulness. 
+</p>
+<p>
+Чтобы правильно понять дифференциальную структуру, ее необходимо применить к structure definition, на котором она основывается. Чтобы предотвратить инструменты от необходимости поддерживать эту операцию (которая требует большого объема вычислений - и не возможна, если базовая структура недоступна), StructureDefinition может также хранить "снимок" - полностью вычисляемая форма структура, которая не зависит ни от какой другой структуры. Проект FHIR предлагает инструменты для распространенных платформ, которые могут восстановить снимок из дифференциала  (обратите внимание, что эти инструменты создают полные, подробные снапшоты; они не позволяют убирать мэппинги и ограничения).
 <!-- In order to properly understand a differential structure, it must be 
 applied to the structure definition on which it is based. In order to save
 tools from needing to support this operation (which is computationally intensive - and 
@@ -380,7 +414,7 @@ impossible if the base structure is not available), a StructureDefinition
 can also carry a "snapshot" - a fully calculated form of the
 structure that is not dependent on any other structure. The FHIR
 project provides tools for the common platforms that can populate
-a snapshot from a differential (note that this tool generates complete 
+a snapshot from a differential (note that the tools generate complete 
 verbose snapshots; it does not support suppressing mappings or constraints). -->
 </p>
 <p>
@@ -397,11 +431,11 @@ systems should always have the snapshot view populated. -->
 <a name="slicing"> </a>
 <h3>Нарезка (Slicing)</h3>
 <p>
-Одна из распространенных функций constraining Structure Definitions - это взять элемент, который может появиться больше одного раза (например список) и разбить этот список на последовательность подсписков, каждый со своими ограничениями на элементы в подсписке с ассоциированным дополнительным значением. В FHIR эта операция называется "нарезка" ("Slicing") списка. Общепринято "нарезать" список на подсписки, содержащие по одному элементу, эффективно накладывая ограничения на каждый элемент в списке.
-<!-- One common feature of constraining Structure Definitions is to take an element that may occur more than once (e.g. in a list), --> <!-- What about slicing type choices? -->
-<!-- and split the list into a series of sublists, each with different restrictions on the elements in the sublist with associated 
+Одна из распространенных функций constraining Structure Definitions - это взять элемент, который может появиться больше одного раза (например список) и разбить этот список на последовательность подсписков, каждый со своими ограничениями на элементы в подсписке с ассоциированным дополнительным значением. В FHIR эта операция называется "нарезка" ("Slicing") списка. Общепринято "нарезать" список на подсписки, где каждый подсписок содержит по одному элементу, эффективно накладывая ограничения на каждый элемент в списке.
+<!-- One common feature of constraining Structure Definitions is to take an element that may occur more than once (e.g. in a list), 
+and split the list into a series of sublists, each with different restrictions on the elements in the sublist with associated 
 additional meaning. In FHIR, this operation is known as "Slicing" a list. It is common to 
-“slice” a list into sub-lists containing just one element, effectively putting constraints on each element in the list. -->
+"slice" a list into sub-lists each containing just one element, effectively putting constraints on each element in the list. -->
 </p>
 <p>
 Вот пример для иллюстрации этого процесса:
@@ -409,28 +443,14 @@ additional meaning. In FHIR, this operation is known as "Slicing" a list. It is 
 </p>
 <img alt="Slicing diagram" src="slicing.png" width="461" height="353"/>
 <p>
-В этом примере базовое structure definition для ресурса определяет элемент "related", который относится к другому Observation, который связан с основным Observation и который может появляться многократно. Каждый "related" элемент имеет элемент "type", обозначающий природу этого взаимоотношения (компонент, замещение, производное и т.п.), и элемент "target", указывающий непосредственно на observation. На этой диаграмме для удобства содержимое элемента "target" показано во внутреннем прямоугольнике, вместо того чтобы показать целевую ссылку явно. Также, чтобы избежать лишнего загромождения в этом упрощенном примере, атрибут "name" в Observation показан просто как код, а не полный CodeableConcept.
-<!-- 
-In this example, the base structure definition for the resource defines the "related" element which refers to 
-another Observation which is related to the main Observation and which may occur
-multiple times. Each "related" element has a "type" element specifying the nature 
-of the relationship (component, replacement, derivation etc.), and a "target" element
-which identifies the actual observation. In this diagram, for convenience, the contents 
-of the target element are shown in the inner box instead of the showing the target 
-reference explicitly. Also, to avoid adding clutter in this simplified example, 
-the "name" attribute of Observation is shown as just a code not a full CodeableConcept.
- -->
+В данном примере базовое structure definition для ресурса <a href="observation.html">Observation</a> определяет элемент "component", который содержит вложенный код и значение для наблюдений, которые имеют несколько значений. Классическим примером такого вида наблюдений является измерение кровяного давления: оно содержит два значения, одно для систолического давления, другое - для диастолического (<a href="observation-example-bloodpressure.html">пример</a>). 
 </p>
 <p>
-Structure definition для Blood Pressure разбивает связанный список элементов на 2 подсписка из одного элемента каждый: элемент systolic и элемент diastolic. Каждый из этих элементов имеет фиксированное значение для типа элемента, и structure definition также закрепляет содержимое целевого observation, указывая постоянный LOINC-код для элемента name и устанавливая для обоих значение типа Quantity. Это процесс также называется "нарезка" (slicing), а элементы Systolic и Diastolic - "срезы" (slices).
-<!-- The structure definition for Blood Pressure splits the related element list into 
-2 sublists of one element each: a systolic element, and a diastolic element. Each of these
-elements has a fixed value for the type element, and the structure definition also fixes the 
-contents of the target observation as well, specifying a fixed LOINC code for
-the name and specifying that both have a value of type Quantity. This process
-is known as "slicing" and the Systolic and Diastolic elements are called "slices". -->
+На этой диаграмме концептульно показан процесс "нарезки" списка компонентов на систолический и диастолический срезы (примечание: для избежания нагромождения информации атрибут "name" ресурса Observation показывается просто как код, а не полный кодируемый концепт).
 </p>
-
+<p>
+Structure definition для Blood Pressure разбивает список компонентов на 2 подсписка, каждый из которых содержит один элемент: элемент systolic и элемент diastolic. Каждый из этих элементов имеет фиксированное значение для типа code (фиксированный LOINC-код для элемента "name"), и оба имеют элемент "value" типа Quantity. Это процесс называется "нарезка" (slicing), а элементы Systolic и Diastolic - "срезы" (slices).
+</p>
 <p>
 Обратите внимание, что при обмене ресурсом, проводной формат обмена не изменяется constraining definition. Это означает, что имена элементов, определенные в structure definition (в этом примере "systolic")  никогда не меняются. Экземпляр ресурса выглядит следующим образом:
 <!-- Note that when the resource is exchanged, the wire format that is exchanged is not 
@@ -441,24 +461,18 @@ instance looks like this: -->
 <pre>
  &lt;Observation&gt;
    ...
-   &lt;related&gt;
-     &lt;type value=&quot;component&quot;/&gt;
-     &lt;target ...&gt; &lt;!-- has the name "8480-6" -->
-   &lt;/related&gt;
-   &lt;related&gt;
-     &lt;type value=&quot;component&quot;/&gt;
-     &lt;target ...&gt;  &lt;!-- has the name "8462-4" -->
-   &lt;/related&gt;
+   &lt;component&gt;
+     &lt;code {LOINC=&quot;8480-6}&quot;/&gt;
+     &lt;value ...&gt; 
+   &lt;/component&gt;
+   &lt;component&gt;
+     &lt;code {LOINC=&quot;8462-4}&quot;/&gt;
+     &lt;value ...&gt;
+   &lt;/component&gt;
  &lt;/Observation&gt;
 </pre>
 <p>
-Для того чтобы определить, что первый связанный элемент соответствует "Systolic" в structure definition, так чтобы он мог установить, каким дополнительным ограничениям для подсписка этот элемент соответствует, система проверяет значения этих элементов. В этом случае можно использовать элемент "name" в целевом ресурсе, к которому относится эта ссылка, для определения, какому срезу (slice) он относится. Этот элемент называется "дискриминатор" (классифицирующая функция, “discriminator”).
-<!-- In order to determine that the first related item corresponds to "Systolic" in
-the structure definition, so that it can determine which additional constraints for a sub-list the item conforms, 
-the system checks the values of the elements. In this case, the "name" element
-in the target resource can be used to determine which slice that target refers to. 
-This element is called the “discriminator”.
- -->
+Для того чтобы определить, что первый связанный элемент соответствует "Systolic" в structure definition, так чтобы он мог установить, каким дополнительным ограничениям для подсписка этот элемент соответствует, система проверяет значения этих элементов. В этом случае можно использовать элемент "name" в целевом ресурсе, к которому относится эта ссылка, для определения, какому срезу (slice) он относится. Этот элемент называется "дискриминатор" (классифицирующая функция, "discriminator").
 </p>
 
 <a name="discriminator"> </a>
@@ -469,8 +483,6 @@ This element is called the “discriminator”.
 that slices a list can determine which slice an item in 
 the list is to by checking whether its content meets the rules specified
 for the slice.  -->
-</p>
-<p>
 Это требует от обработчика возможности проверить все правила, применимые к этому срезу и сделать это умозрительно depth-first способом. Ничто из этого не подходит для операционной системы, в частности для генерируемого кода. По этой причине срез может nominate набор полей, которые ведут себя как "дискриминатор" - они используются для разделения срезов друг от друга.
 <!-- This requires for a processor to be able to check all the rules
 applied in the slice and to do so speculatively in a depth-first

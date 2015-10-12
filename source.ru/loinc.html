@@ -14,6 +14,7 @@
 <%txheader%>
 
 <h2>Применение LOINC в FHIR<!-- Using LOINC with FHIR --></h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <h3>Краткие сведения<!-- Summary --></h3>
 
@@ -61,7 +62,7 @@ copyright statement as well. -->
 Как описано в разделе 10.2 <a href="http://loinc.org/downloads/files/LOINCManual.pdf">пособия по LOINC</a>, LOINC Parts - это кодированное представление значения для измерения, используемого для указания LOINC-термина, которым назначен не-семантический идентификатор с префиксом "LP" и контрольная цифра по модулю 10 (mod-10). В соответствии с лицензией LOINC, эти part codes можно использовать следующим образом:
 <!-- As described in the <a href="http://loinc.org/downloads/files/LOINCManual.pdf">LOINC Manual</a> section 10.2,
 LOINC Parts are a coded representation of a value for a dimension used to specify a LOINC Term
-which are assigned a non-semantic identifier with a “LP” prefix and a mod-10 check digit. Following
+which are assigned a non-semantic identifier with a "LP" prefix and a mod-10 check digit. Following
 the LOINC license, these part codes may be used in the following ways: -->
 </p>
 <ul>
@@ -125,12 +126,12 @@ code system in value set composition statements. -->
  <tr><td>Описание</td><td>Позволяет включать или исключать LOINC-коды, содержащие предупреждения об авторских правах третьей стороны</td></tr>
  <tr><td>Имя свойства</td><td>copyright</td></tr>
  <tr><td>Допустимые операции</td><td>=</td></tr>
- <tr><td>Допустимые значения</td><td>LOINC | 3rdParty | All</td></tr>
+ <tr><td>Допустимые значения</td><td>LOINC | 3rdParty</td></tr>
  <tr><td>Комментарии</td><td>LOINC = только коды с авторским правом, принадлежащим исключительно Regenstrief. 3rdParty = только коды с авторским правом третьей стороны в дополнение к Regenstrief.</td></tr>
 <!--  <tr><td>Description</td><td>Allows for the inclusion or exclusion of LOINC codes that include 3rd party copyright notices</td></tr>
  <tr><td>Property Name</td><td>copyright</td></tr>
  <tr><td>Operations Allowed</td><td>=</td></tr>
- <tr><td>Values Allowed</td><td>LOINC | 3rdParty | All</td></tr>
+ <tr><td>Values Allowed</td><td>LOINC | 3rdParty</td></tr>
  <tr><td>Comments</td><td>LOINC = only codes with a sole copyright by Regenstrief. 3rdParty = only codes with a 3rd party copyright in addition to the one from Regenstrief.</td></tr> -->
 </table>
 
@@ -160,7 +161,7 @@ Document.Kind, Document.TypeOfService, Document.Setting, Document.Role, and Docu
 Имплицитные наборы значений - те, спецификация которых может быть предсказана на основе грамматики лежащей в основе кодовой системы и известной структуры URL, который ссылается на них. В LOINC определена одна группа имплицитных наборов значений: по записи многоосной иерархии (By Multi-Axial Hierarchy Entry).
 <!-- Implicit value sets are those whose specification can be predicted based on the grammar of the 
 underlying code system, and the known structure of the URL that refers to them. LOINC
-defines one sets of implicit value sets: By Multi-Axial Hierarchy Entry. -->
+defines one set of implicit value sets: By Multi-Axial Hierarchy Entry. -->
 </p>
 <p>
 Если какие-либо ресурсы value set созданы с идентификатором, который соответствует одному из шаблонов URL, приведенных ниже, содержимое таких ресурсов должно соответствовать приведенному шаблону. Профилям и другим ссылкам на наборы значений допускается ссылаться на эти наборы значений напрямую. <i>todo: может ли у LOINC в действительности быть сервис, который будет возвращать это?</i>
@@ -276,12 +277,12 @@ multi-axial hierarchy: -->
     &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
       [some html that identifies that this value set 
       includes all LOINC codes subsumed by the identified 
-      Multi-Axial Heirarchy Part Code]
+      Multi-Axial Hierarchy Part Code]
     &lt;/div&gt;
   &lt;/text&gt;
   &lt;identifier value=&quot;http://loinc.org/vs/[partcode]&quot;/&gt;
   &lt;version value=&quot;[optional - but strongly recommended - LOINC version]&quot;/&gt;
-  &lt;name value=&quot;LOINC Value Set from Multi-Axial Heirarchy code [partcode]&quot;/&gt;
+  &lt;name value=&quot;LOINC Value Set from Multi-Axial Hierarchy code [partcode]&quot;/&gt;
   &lt;description value=&quot;All LOINC codes for [partcode or name]&quot;/&gt;
   &lt;status value=&quot;active&quot;/&gt;
   &lt;date value=&quot;[optional date of LOINC release]&quot;/&gt;

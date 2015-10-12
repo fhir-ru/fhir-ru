@@ -20,6 +20,7 @@ in order to support consistent definitions for schema and UML derived code.
 
 <a name="root"> </a>
 <h2>XML-представление ресурсов</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg its%]">[%wgt its%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
 XML-представление для ресурса описано с помощью следующего формата: 
@@ -42,7 +43,7 @@ XML-представление для ресурса описано с помо�
  <li>Элементы должны всегда появляться в том порядке, в котором они описаны</li>
  <li>Когда повторение элемента разрешено, элементы упорядочены, и реализации должны сохранять этот порядок (примечание: смысл такого упорядочения может быть не известен)
  <!-- When an element is allowed to repeat, the elements are ordered, and implementations must preserve order (note: the meaning of the order may not be known) --></li>
- <li>Некоторые свойства представлены в виде атрибутов: примитивные значения в атрибуте "value", URL-адреса расширений в атрибуте "url" в расширениях, и свойство "id"</li>
+ <li>Некоторые свойства представлены в виде атрибутов: примитивные значения в атрибуте <code>value</code>, URL-адреса расширений в атрибуте <code>url</code> в расширениях, и свойство <code>id</code></li>
  <li>Любой из XML-элементов может иметь атрибут "id", служащий в качестве <a href="references.html#id">цели внутренней ссылки</a>. Атрибут "id" не показывается в этом формате</li>
  <li>FHIR-элементы всегда принадлежат пространству имен <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>. Обычно оно указывается в корневом элементе в качестве пространства имен по умолчанию.
 В FHIR-ресурсах может встретиться ещё только одно пространство имен - XHTML (<a href="narrative.html">XHTML встречается в большинстве ресурсов)</a></li>
@@ -54,12 +55,13 @@ XML-представление для ресурса описано с помо�
  </li>
  <li>FHIR-элементы не бывают пустыми. Если элемент присутствует в ресурсе, он ОБЯЗАН иметь либо атрибут value, либо элементы-потомки, определенные для его типа, либо 1 или больше <a href="extensibility.html">расширений</a></li>
  <li>Атрибуты не могут быть пустыми. Либо они отсутствуют, либо присутствуют с по крайней мере одним символом не пробельного содержимого</li>
- <li>Иконка замочка (<img alt="??" src="lock.png"/>) означает, что элемент вводит или зависит от  <a href="conformance-rules.html#invariants">дополнительных правил</a>, которые регулируют его пристутсвие и/или содержимое</li>
+ <li>Implementers SHOULD trim leading and trailing whitespace before writing and SHOULD trim leading and trailing whitespace when reading attribute values</li>
+ <li>Иконка замочка (<img alt="??" src="lock.png"/>) означает, что элемент вводит или зависит от <a href="conformance-rules.html#constraints">дополнительных правил</a>, которые регулируют его пристутсвие и/или содержимое</li>
  <li>XML-комментарии, команды обработки и форматирования не являются частью содержимого ресурса</li>
- <li>XML-ресурсы должны обмениваться в кодировке UTF-8. Указание схемы кодирования символов с помощью команды обработки &lt;?xml encoding="UTF-8" ?&gt; не обязательно, но рекомендуется</li>
+ <li>XML-ресурсы должны обмениваться в кодировке UTF-8. Указание схемы кодирования символов с помощью команды обработки <code>&lt;?xml encoding="UTF-8" ?&gt;</code> не обязательно, но рекомендуется</li>
  <li>Другие команды обработки НЕ ДОЛЖНЫ быть включены и НЕ ДОЛЖНЫ требоваться в целях правильного понимания и/или представления данных ресурса или его описательной части. 
 Приложения МОГУТ сохранять команды обработки при оперировании ресурсами, но это не является обязательным</li>
- <li>MIME-тип для этого формата - application/xml+fhir</li>
+ <li>MIME-тип для этого формата - <code>application/xml+fhir</code>.</li>
 </ul>
 
 <a name="schema"> </a>
@@ -78,14 +80,123 @@ XML-представление для ресурса описано с помо�
 Операционные системы могут использовать инструменты схемы для проверки валидации, но не обязаны это делать.
 Обмениваемое содержимое НЕ ДОЛЖНО задавать схему или даже просто содержать пространство имен экземпляра схемы в самом ресурсе. 
 </p>
+<p>
+Given the way <a href="extensibility.html">extensions</a> work, applications reading
+XML resources will never encounter unknown elements. However once an application 
+starts trading with other appplications that conform to later versions of this specification,
+unknown XML elements may be encountered. Applications MAY choose to ignore unknown elements
+in order to foster forwards compatibility in this regard, but may also choose not to - which 
+would be the normal behavior for schema generated applications. Applications declare 
+their behavior with regard to unknown elements using <a href="conformance-definitions.html#Conformance.acceptUnknown">Conformance.acceptUnknown</a>.
+</p>
 
-<h3>Цифровые подписи</h3>
-<a name="digsig"> </a>
-<p>Ресурсы и/или комплекты (Bundles) могут быть подписаны цифровой подписью (ссылка будет предоставлена). Одним из последствий подписания документа является то, что URL-адреса, идентификаторы и внутренние ссылки замораживаются и не могут быть изменены. Это может быть желаемым свойством, но может также лишить способности к взаимодействию закрытые экосистемы, где часто происходит <a href="managing.html">повторное определение (re-identification)</a>. По этой причине рекомендуется подписывать только Комплекты документов (Document Bundles) и только после того, как все связанные ресурсы находятся в комплекте.</p>
+<a name="schema-gen"> </a>
+<h3>Code Generation Schema</h3>
 
 <p>
-todo: canonical XML
+In addition to the validation schema, this specification provides a
+set of schema suitable for code generation. These schema describe
+the same XML syntax, but apply less validation in order to create a 
+schema that works with more code generation tooling. 
 </p>
+<p>
+Specifically, these schemas are generated without any <code>xsd:choice</code> elements, 
+for code generators that don't deal with choices well. Implementers that 
+use these schemas will need to enforce the correct usage of the 
+<a href="formats.html#choice">choice elements</a> without schema
+support.
+</p>
+<p>
+Implementers making use of schema driven code generation tooling need
+to consider how to handle the <a href="datatypes.html#decimal">decimal</a>
+data type. The decimal data type is defined to be precision aware - that 
+is, that implementers need to preserve the difference between "2.0" and
+"2.00" - this is ubiquitiously considered important in handling observed
+data in healthcare. Both schemas map this data type to <code>xsd:decimal</code>, but
+the base <a href="http://www.w3.org/TR/xmlschema-2/#decimal">W3C schema decimal type</a> is specified not to be precision aware. Schema
+driven implementations vary as to how precision is handled, and implementers
+will need to determine how their generated code handles decimals, and 
+consider changing the type for decimal in the schema from <code>xsd:decimal</code>
+to <code>xsd:string</code>. Specifically, implementers may wish to change 
+</p>
+<pre>
+  &lt;xs:simpleType name=&quot;decimal-primitive&quot;&gt;
+    &lt;xs:restriction base=&quot;xs:decimal&quot;&gt;
+      &lt;xs:pattern value=&quot;-?([0]|([1-9][0-9]*))(\.[0-9]+)?&quot;/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+</pre>
+<p>
+to this:
+</p>
+<pre>
+  &lt;xs:simpleType name=&quot;decimal-primitive&quot;&gt;
+    &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+      &lt;xs:pattern value=&quot;-?([0]|([1-9][0-9]*))(\.[0-9]+)?&quot;/&gt;
+    &lt;/xs:restriction&gt;
+  &lt;/xs:simpleType&gt;
+</pre>
+<p>
+Alternatively, if supported, implementers may wish to use the 
+<a href="http://www.w3.org/TR/xsd-precisionDecimal/">precisionDecimal</a> from the XSD 1.1 framework.
+</p>
+<p>
+Note that most code generation frameworks ignore the pattern restriction.
+</p>
+
+
+<a name="canonical"> </a>
+<a name="digsig"> </a>
+
+<h3>Canonical XML</h3>
+<p>
+Resources and/or Bundles may be digitally signed (see <a href="bundle.html">Bundle</a> and <a href="provenance.html">Provenance</a>). 
+</p>
+<p>
+This specification defines the following method for canonicalizing FHIR resources, when represented as 
+xml:
+</p>
+<ul>
+ <li>No whitespace other than single spaces in attribute values and in the xhtml in the <a href="narrative.html">Narrative</a></li>
+ <li>Use default namespaces for the FHIR and XHTML namespaces</li>
+ <li>Omit all elements that have a default value, if a default value is defined</li>
+ <li>Omit all comments</li>
+ <li>Always use the unicode character representation for any XML entities (e.g. <code>&amp;#39;</code> instead of <code>&amp;quot;</code>)</li>
+ <li>Include the XML processing instruction <code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code></li>
+ <li>Using the XML canonical method <a href="http://www.w3.org/TR/xmldsig-core1/#sec-Canonical">Canonical XML 1.1</a> (<code>http://www.w3.org/2006/12/xml-c14n11</code>)</li>
+</ul>
+<p>
+This canonicalization method is identified by the URL <code>http://hl7.org/fhir/canonicalization/xml</code>. The 
+following additional canonicalization URLS are also defined:
+</p>
+<table class="grid">
+ <tr>
+  <td>http://hl7.org/fhir/canonicalization/xml#data</td>
+  <td>The narrative (<code>Resource.text</code>) is omitted prior to signing (note the deletion is at <code>Resource.text</code>, not <code>Resource.text.div</code>)</td>
+ </tr>
+ <tr>
+  <td>http://hl7.org/fhir/canonicalization/xml#static</td>
+  <td>In addition to narrative (Resource.text), the <code>Resource.meta</code> element is removed. This makes the signature robust as the content is moved from server to server, or workflow and access tags are added or removed</td>
+ </tr>
+ <tr>
+  <td>http://hl7.org/fhir/canonicalization/xml#narrative</td>
+  <td>The method only covers the <code>Resource.id</code> and Narrative is retained</td>
+ </tr>
+</table>
+<p>
+These canonicalization methods allow system the flexibility to sign the various portions of 
+the resource that matter for the workflow the signature serves.
+</p>
+
+<p>
+Note: One consequence of signing the document is that URLs, identifiers and internal references are frozen and 
+cannot be changed. This might be a desired feature, but it may also cripple interoperability between closed 
+ecosystems where <a href="managing.html">re-identification</a> frequently occurs. For this reason, it is 
+recommended that systems consider carefully the impact of any signature processes. The impact of signatures
+on <a href="documents.html">Document bundles</a> and their related processes is the most well understood
+use of digital signatures.
+</p>
+
 
 
 

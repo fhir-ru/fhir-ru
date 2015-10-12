@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Типовые сценарии%]
+[%settitle Примеры типовых сценариев в FHIR%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -12,7 +12,8 @@
 <div class="col-9">
   
 <a name="root"> </a>
-<h1>Разрешение типовых клинических сценариев средствами FHIR <!--Common Scenarios in FHIR--></h1>
+<h1>Примеры типовых сценариев в FHIR</h1>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
 FHIR представляет собой стандартизованную методологию, определяющую единый способ решения проблем в здравоохранении c
@@ -24,6 +25,10 @@ and provides a set of resources that can be used in many different ways.
 This page describes how certain common usage scenarios are implemented using the capabilities that 
 FHIR defines.  The provided scenarios are examples of usage and are not in any way exhaustive.  FHIR
 can and will be used in a wide variety of circumstances. -->
+</p>
+
+<p>
+In addition, to the information on this page, see also <a href="resourceguide.html">Resource Guide</a>.
 </p>
 
 <a name="phr"></a>
@@ -55,15 +60,14 @@ In this scenario, the PHR provider: -->
 по отношению к следующим ресурсам: 
 </p>
 <ol>
- <li><a href="patient.html">patient</a> - для просмотра демографической информации о пациенте. 
+ <li><a href="patient.html">Patient</a> - для просмотра демографической информации о пациенте. 
  Когда с клиентской стороны отправляется запрос без каких-либо критериев поиска, сервер предоставляет перечень всех
- пациентов, информация о которых доступна конкретному пользователю.
- <!--When a client searches patients with no search criteria, they get a list of all patients they have access to --></li>
- <li><!-- <a href="http.html#search">search</a> and <a href="http.html#read">read</a> on the -->
+ пациентов, информация о которых доступна конкретному пользователю.</li>
+ <li>
  <a href="documentreference.html"> Document Reference (ссылка на документ)</a> - для предоставления доступа к 
  неспециализированным медицинским документам в формате pdf или др. (формат pdf предпочтительный)
- <!--resource to provide access to general patient documents in the form of PDFs etc. (PDFs are preferred) --></li>
- <li><!--<a href="http.html#search">search</a> and <a href="http.html#read">read</a> on a set of --> 
+ </li>
+ <li> 
  <a href="clinical.html">другим клиническим ресурсам (clinical resources)</a></li> 
 </ol>
 <p>
@@ -82,17 +86,15 @@ In this scenario, the PHR provider: -->
 Дополнительные функции потребуют реализации и открытия дополнительных возможностей API. ЭМК-сервер может разрешать 
 использование 
 операций <a href="http.html#search">search</a>, <a href="http.html#read">read</a> и <a href="http.html#history">history</a>
-по отношению к ресурсу Audit Event, входящего в состав записей о пациентах для просмотра пациентом журнала (логов) 
-обращений к его данным. Обратите внимание, все факты использования RESTful API должны быть отражены в логах ресурса 
-SecurityEvent.
+по отношению к ресурсу <a href="auditevent.html">AuditEvent</a>, входящего в состав записей о пациентах для просмотра пациентом журнала (логов) 
+обращений к его данным. Обратите внимание, все факты использования RESTful API должны быть отражены в логах ресурса AuditEvent.
 <!--The EMR may also choose to provide additional functionality, such as shared access to patient 
 records by relatives/carers, to allow the patient to upload their own documents, medication statements, observations
 (e.g. from patient monitoring devices) and/or to allow the patient to make appointments. This 
 additional functionality will involve additional API capabilities to be implemented and 
-exposed. The EMR server may also choose to expose the <a href="http.html#search">search</a>, 
-<a href="http.html#read">read</a> and <a href="http.html#history">history</a> operation on 
-the Audit Event resource for the patient-specific records to allow patient review of record access. Note that all 
-usage of the RESTful API should be logged in SecurityEvent resources. -->
+exposed. The EMR server may also choose to expose the <a href="http.html#search">search</a>, <a href="http.html#read">read</a> and <a href="http.html#history">history</a> operation on 
+the <a href="auditevent.html">AuditEvent</a> resource for the patient-specific records to allow patient review of record access. Note that all 
+usage of the RESTful API should be logged in an AuditEvent resource. -->
 </p>
 
 <a name="xds"></a>
@@ -162,7 +164,7 @@ clinical systems. Common uses of clinical decision support are: -->
 <ul>
  <li>Проверка взаимодействия лекарственных средств и, в более общем смысле, проверка "безопасности" лекарственных назначений (prescription safety checks) <!-- Drug-drug interaction checking, and more generally, prescription safety checks --></li>
  <li>Предложение (обычно опускаемой) интерпретации данных диагностики (including delta checking) 
- <!--Suggesting commonly missed Diagnostic Data interpretations (including delta checking) --></li>
+ <!--Suggesting commonly missed diagnostic data interpretations (including delta checking) --></li>
  <li>Контроль за состоянием пациента для раннего обнаружения ухудшения в состоянии здоровья (как при интенсивной терапии, так и при амбулаторном лечении) <!--Patient surveillance for early warning of deteriorating patient health (both acute and ambulatory care) --></li>
  <li>Определение пациентов-кандидатов на переход к альтернативным планам лечения для повышения эффективности лечения <!--Identifying candidates for alternative treatment plans for improved efficacy --></li>
 </ul>
@@ -186,10 +188,8 @@ decision support implementation in the FHIR specification. Generally, the patter
  состоянием пациента, информация о котором доступна в FHIR-интерфейсе 
  <!--The decision support engine uses existing data and generates alarm messages concerning patient state that are 
  visible on the FHIR interface --></li>
- <li>Взаимодействие с подсистемой поддержки принятия решений (decision support engine) происходит через описанный 
- интерфейс; она получает запрос о решении и возвращает его запрашивающей стороне
- <!--The decision support engine is consulted through a described interface; it accepts a request for a 
- decision and returns a decision --></li>
+ <li>Обращение к подсистеме поддержки принятия решений происходит через описанный интерфейс; она принимает запрос и возвращает решение
+ <!--The decision support engine is consulted through a described interface; it accepts a request for, and returns a decision --></li>
 </ol>
 <p>
 Любая СППР может быть классифицирована в соответствии с несколькими представленными выше категориями, в зависимости от 
@@ -206,9 +206,7 @@ decision support implementation in the FHIR specification. Generally, the patter
   <li>FHIR не предусматривает наличие какого-либо ресурса, использующегося для данных целей. Ресурс <a href="flag.html">Flag</a> предназначен для работы с медицинскими записями (clinical notes) и не может использоваться
   для содействия принятию решений.  В будущем для данных целей будет использоваться ресурс "Alarm" (в настоящий момент 
   в подготовке).
-    <!--There is no suitable resource for this use yet. The <a href="flag.html">Flag</a> resource is intended or 
-  clinical notes about the patient, and is not intended for this use. A resource called "Alarm" is under preparation 
-  for this purpose --> </li>
+    <!-- There is no suitable resource for this use yet. The <a href="flag.html">Flag</a> resource is intended for clinical notes about the patient, and is not intended for this use. A resource called "Alarm" is under preparation for this purpose --> </li>
    <li>Запрос поддержки принятия решения понимается как операция <a href="search.html">search</a>, использующей 
    именованный запрос (named query) с набором параметров (using a named query that takes a set of parameters).
    См.далее <!--A request for a decision support is understood as a <a href="search.html">search</a> using 
@@ -253,9 +251,9 @@ decision support implementation in the FHIR specification. Generally, the patter
 <p><b>Ответ (Response)</b></p>
 <ul>
  <li>Если подсистема поддержки принятия решений не в состоянии предоставить запрашиваемое решение, она возвращает
- ресурс <a href="operationoutcome.html">Operation Outcome </a> с описанием возникшей проблемы 
+ ресурс <a href="operationoutcome.html">OperationOutcome</a> с описанием возникшей проблемы 
  <!-- If the decision support engine is unable to provide the requested decision, 
- it returns an <a href="operationoutcome.html">Operation Outcome Resource</a> describing the issue --> </li>
+ it returns an <a href="operationoutcome.html">OperationOutcome Resource</a> describing the issue --> </li>
  <li>Иначе, СППР возвращает ресурс, представляющий решение, вместе с другими ресурсами (в качестве сопроводительной)
  информации, как описано в ресурсе или применяемых интеграционных профилях
   <!--Otherwise it returns a resource that represents the decision, along with other resources as supporting information, 

@@ -15,6 +15,7 @@
 <%txheader%>
 
 <h1>Использование кодов в ресурсах</h1>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <a name="bindings"> </a>
 <p>
@@ -24,7 +25,7 @@
 <ul>
  <li>Как одно из набора фиксированных значений, приведенных в этой спецификации</li>
  <li>В информационных документах Интернета RFC (например MIME-тип, язык)</li>
- <li>В спецификации HL7 (кодовая система v3 или таблица v2)</li>
+ <li>В спецификации HL7 ( или таблица v2<a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">кодовая система HL7 v3</a> или <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">таблица HL7 v2</a>)</li>
  <li>Во внешних справочниках или онтологиях, таких как <a href="http://loinc.org">LOINC</a> или <a href="http://www.ihtsdo.org">SNOMED CT</a></li>
  <li>В локально сохраненном словаре, таблице поиска или перечне в приложении (дополнительную информацию по локально определенным наборам значений см. в <a href="profiling.html">"Profiling FHIR"</a></li>
 </ul>
@@ -129,16 +130,16 @@ defining the correct URI to use: -->
  <li>Once defined, the URI will require agreement from all implementers to change, and some may not be able to change (stored resources). If the set of users is not closed, it will usually not be possible to change the URI</li>
  <li>Implementers strongly prefer a human readable URI. http://acme.com/patients/mrn is a great deal easier to work with than urn:oid:1.2.3.4.5.6.7</li>
  <li>An http: address SHOULD resolve to some useful description of the code system. Ideally, if a user makes a request of the address with the media type set to a FHIR media type, the server will respond
-   with a FHIR Value Set resource with an inline <a href="valueset-definitions.html#ValueSet.define">code system</a>, but some other human or computable definition is allowed</li>
- <li>http addresses should be permalinks which may re-direct to the current correct content</li>
- <li>A scope of the code system URI and the correct usage of codes and displays in it's namespace SHOULD be clearly defined. 
+   with a FHIR Value Set resource with an inline <a href="valueset-definitions.html#ValueSet.codeSystem">code system</a>, but some other human or computable definition is allowed</li>
+ <li>HTTP addresses should be permalinks which may re-direct to the current correct content</li>
+ <li>A scope of the code system URI and the correct usage of codes and displays in its namespace SHOULD be clearly defined. 
    See examples for <a href="snomedct.html">SNOMED CT</a>, <a href="rxnorm.html">RxNorm</a>, <a href="loinc.html">LOINC</a>, <a href="ndc.html">NDC</a></li>
- <li>Generally, allocation of URLs is heirarchical, and most care is required in choosing the root URL. One sub-URL policies are clearly defined, URIs can often be automatically assigned</li>
+ <li>Generally, allocation of URLs is hierarchical, and most care is required in choosing the root URL. One sub-URL policies are clearly defined, URIs can often be automatically assigned</li>
 </ul> 
 <p>
-Примечание: если кодовая система упакована и доступна внутри ресурса <a href="valueset.html">ValueSet</a>, корректным URL для значения <code>system</code> будет <i>ValueSet.define.system</i>, а не <i>ValueSet.uri</i>.
+Примечание: если кодовая система упакована и доступна внутри ресурса <a href="valueset.html">ValueSet</a>, корректным URL для значения <code>system</code> будет <i>ValueSet.codeSystem.system</i>, а не <i>ValueSet.uri</i>.
 <!-- Note: if the code system is made available packaged inside a <a href="valueset.html">ValueSet</a> resource, the 
-correct URL for the <code>system</code> value is <i>ValueSet.define.system</i>, not <i>ValueSet.uri</i>. -->
+correct URL for the <code>system</code> value is <i>ValueSet.codeSystem.system</i>, not <i>ValueSet.uri</i>. -->
 </p>
 
 
@@ -243,7 +244,7 @@ resolve a value set with that URL as its identity. -->
     ...
     &lt;binding&gt;
       ...
-      &lt;valueSetUri value=&quot;http://hl7.org/fhir/vs/clinical-findings&quot;/&gt;
+      &lt;valueSetUri value=&quot;http://hl7.org/fhir/ValueSet/clinical-findings&quot;/&gt;
     &lt;/binding&gt;
     ...
   &lt;/element&gt;
@@ -251,10 +252,10 @@ resolve a value set with that URL as its identity. -->
 &lt;/StructureDefinition&gt;
 </pre>
 <p>
-Здесь указывается, что элемент привязан к набору значений с Value.url = <a href="http://hl7.org/fhir/vs/clinical-findings">http://hl7.org/fhir/vs/clinical-findings</a>. Один из способов получить доступ к этому набору значений - это попытаться выполнить запрос GET http://hl7.org/fhir/vs/clinical-findings, который работает, для этого набора значений - http://hl7.org/fhir/vs/clinical-findings вернет официальный набора значений для этого URL.
+Здесь указывается, что элемент привязан к набору значений с Value.url = <a href="http://hl7.org/fhir/ValueSet/clinical-findings">http://hl7.org/fhir/ValueSet/clinical-findings</a>. Один из способов получить доступ к этому набору значений - это попытаться выполнить запрос GET http://hl7.org/fhir/ValueSet/clinical-findings, который работает, для этого набора значений - http://hl7.org/fhir/ValueSet/clinical-findings вернет официальный набора значений для этого URL.
 <!-- This specifies that the element is bound to the value set with a Value.url of
-<a href="http://hl7.org/fhir/vs/clinical-findings">http://hl7.org/fhir/vs/clinical-findings</a>. One way to accees this value set is 
-to try GET http://hl7.org/fhir/vs/clinical-findings - which works, for this value set - http://hl7.org/fhir/vs/clinical-findings 
+<a href="http://hl7.org/fhir/ValueSet/clinical-findings">http://hl7.org/fhir/ValueSet/clinical-findings</a>. One way to accees this value set is 
+to try GET http://hl7.org/fhir/ValueSet/clinical-findings - which works, for this value set - http://hl7.org/fhir/ValueSet/clinical-findings 
 returns the authoritative value set for this URL.  -->
 </p>
 <p>
@@ -266,7 +267,7 @@ If that's running a <a href="terminology-service.html">FHIR Terminology Server</
 then this would work like this: -->
 </p>
 <pre>
-GET fhir/ValueSet?url=http://hl7.org/fhir/vs/clinical-findings
+GET fhir/ValueSet?url=http://hl7.org/fhir/ValueSet/clinical-findings
 </pre>
 <p>
 Если терминологическому серверу известен указанный набор значений, то он вернет этот набор значений.
@@ -302,10 +303,10 @@ ValueSet.url with different versions.  -->
 <p>
 Для уточнения, на какую версию набора значений идет ссылка, добавьте версию к логическому URL следующим образом:
 <!-- To be precise about which version of a value set is being referred to in 
-a value set reference, append the the version to the logical url like this: -->
+a value set reference, append the version to the logical url like this: -->
 </p>
 <pre>
-&lt;valueSetUri value=&quot;http://hl7.org/fhir/vs/clinical-findings?version=0.8&quot;/&gt;
+&lt;valueSetUri value=&quot;http://hl7.org/fhir/ValueSet/clinical-findings?version=0.8&quot;/&gt;
 </pre>
 <p>
 Это ссылка на конкретную версию набора значений. Поиск такого набора значений на терминологическом сервере будет выглядеть следующим образом:
@@ -313,7 +314,7 @@ a value set reference, append the the version to the logical url like this: -->
 for this on a terminology server would look like this: -->
 </p>
 <pre>
-GET fhir/ValueSet?url=http://hl7.org/fhir/vs/clinical-findings&amp;version=0.8
+GET fhir/ValueSet?url=http://hl7.org/fhir/ValueSet/clinical-findings&amp;version=0.8
 </pre>
 <p>
 Заметим, что если ссылка на набор значений не имеет версии, и сервер находит несколько версий для набора значений, система, использующая этот набор значений, должна выбрать последнюю версию этого набора значений и использовать его.
@@ -389,13 +390,13 @@ recommended, but is not an acceptible substitute for the required code. -->
 </p>
 <ul>
  <li>Там, где набор значений определен стандартом FHIR, список допустимых кодов будет зафиксирован  в XML-схеме</li>
- <li>Сравнение между кодами всегда чувствительно к регистру, если только эти коды не берутся из другой спецификации, где явно указано иное </li>
+ <li>Сравнение между кодами всегда чувствительно к регистру, если только эти коды не выбраны с помощью ссылки (например ValueSet.compose) из спецификации, в которой явно указано иное</li>
  <li>Список разрешенных кодов может быть расширен только в последующих версиях спецификации FHIR</li>
 </ul>
 <p>
-Когда элемент привязан к обязательному набору значений, <a href="profiling.html">производные профили</a> могут устанавливать правила использования этих кодов, но не могут определять новые или дополнительные коды для этих элементов.
+Когда элемент привязан к обязательному набору значений, <a href="profiling.html">производные профили</a> могут устанавливать правила использования этих кодов, но не могут выбирать новые или дополнительные коды для этих элементов.
 <!-- When an element is bound to a required value set, <a href="profiling.html">derived profiles</a> 
-may state rules on which codes can be used, but cannot define new or additional codes for these elements. -->
+may state rules on which codes can be used, but cannot select new or additional codes for these elements. -->
 </p>
 
 <a name="extensible"> </a>
@@ -492,11 +493,12 @@ jurisdictions may adopt value sets that require licenses. -->
 may bind the element to any value set they choose. -->
 </p>
 
+<a name="other"> </a>
 <h2>Другие примечания<!-- Other notes --></h2>
 
 <ul>
- <li>Последующие версии FHIR могут заменять наборы значений-примеры на предпочтительные привязки при достижении единодушного мнения
- <!-- Subsequent versions of FHIR may replace example value sets with preferred bindings if enough consensus emerges in the space --></li>
+ <li>Последующие версии FHIR могут заменять наборы значений-примеры на предпочтительные привязки при достижении единодушного мнения в соответствующей сфере
+ <!-- Subsequent versions of FHIR may replace example value sets with preferred bindings if enough consensus emerges in the relevant sphere. --></li>
  <li>Привязки, приведенные в спецификации, всегда относятся к тому набору значений, который опубликован в той же версии спецификации. Набор значений может быть ограничен списком перечисленных кодов, или может включать коды по их свойствам вместе с не зависящей от версии ссылкой на их кодовую систему, в этом случае список допустимых концептов может измениться со временем.
  <!-- Bindings to value sets provided as part of the specification are always specific
 to the version of the value set published with the specification. The value set
@@ -509,7 +511,7 @@ underlying code system, in which case the list of valid concepts may change over
 <h3>Binding String Values</h3>
 <p>
 In a few special cases, humans customarily use codes directly for elements that have type "string". A typical case is codes for states,
-and there are several places where a URIs must come from a set of controlled values. 
+and there are several places where a URI must come from a set of controlled values. 
 An element of type <a href="datatypes.html#string">string</a> or <a href="datatypes.html#uri">uri</a> can also be bound to a value set. 
 When a string or URI is bound to a value set, the value property SHALL contain the code specified by the value set, and the system 
 and display values are ignored. 

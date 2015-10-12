@@ -53,13 +53,13 @@ describes: -->
 <!-- Describes the lifecycle states of complex activities common in healthcare. Typically, these states follow a chronological life cycle that leads from initiation to the conclusion of the action. A characteristic set of states for the clinical workflow process pattern include: --></p>
 <ul>
 	<li>запланирован - ресурсы для этой деятельности были размещены, но сама деятельность ещё не началась<!-- planned – resources for the activity are being allocated but the activity has not begun --></li>
-	<li>отменен - планируемая деятельность не состоится<!-- cancelled – the planned activity will not take place --></li>
+	<li>отменен - планируемая деятельность не началась и не состоится<!-- cancelled - the planned activity did not start and will not take place --></li>
 	<li>действующий - деятельность началась<!-- in-progress – the activity has begun --></li>
 	<li>отложен (приостановлен) - деятельность была временно приостановлена<!-- on-hold (suspended) – the activity has been temporarily interrupted --></li>
 	<li>остановлен (прерван, сбой) - деятельность не была завершена, но на будущее никакое действие не запланировано<!-- stopped (aborted, failed) – the activity has not been completed but no future action is planned --></li>
 	<li>завершен (закончен) - деятельность была завершена<!-- completed (finished) – the activity has been completed --></li>
 </ul>
-<p>Примеры шаблона статусов клинического рабочего процесса:<!-- Examples of the clinical workflow pattern: --></p>
+<p>Примеры жизненного цикла клинического рабочего процесса:<!-- Examples of the clinical workflow life cycle: --></p>
 <ul>
  <li>Communication.status: <%sclist Communication.status%></li>
  <li>Encounter.status:  <%sclist Encounter.status%></li>
@@ -73,8 +73,8 @@ describes: -->
 
 <h3>Request/Order Life Cycle</h3>
 
-<p>Некоторые ресурсы в FHIR представляют собой заказы или запросы. Жизненный цикл запроса можно обобщить на основе четырех этапов: создание запроса, отправка запроса, получение отказа или подтверждения о приеме запроса, и исполнение запроса. Характерный набор статусов для шаблона запроса/заявки включает в себя:
-<!-- Some resources in FHIR represent orders or requests. The request lifecycle can be generalized in terms of four stages: creating the request, sending the request, receiving acceptance or refusal of the request, and fulfillment of the request. A characteristic set of states for the clinical workflow process pattern include: --></p>
+<p>Некоторые ресурсы в FHIR представляют собой заказы или запросы. Жизненный цикл запроса можно обобщить на основе четырех этапов: создание запроса, отправка запроса, получение отказа или подтверждения о приеме запроса, и исполнение запроса. Характерный (но не исчерпывающий) набор статусов для шаблона запроса/заявки включает в себя:
+<!-- Some resources in FHIR represent orders or requests. The request lifecycle can be generalized in terms of four stages: creating the request, sending the request, receiving acceptance or refusal of the request, and fulfillment of the request. A characteristic (but non-exhaustive) set of states for the request/order pattern include: --></p>
 
 <ul>
 <li>предложен: Исполнитель (например система поддержки клинических решений) предложил действие для запроса</li>
@@ -98,7 +98,7 @@ describes: -->
 <li>completed: Work on the requested task has been completed, and no further action is required</li>
 <li>cancelled: The request has been withdrawn</li> -->
 </ul>
-<p>Примеры шаблона статусов запроса/заявки<!-- Examples of the request/order pattern: --></p>
+<p>Примеры жизненного цикла запроса/заявки<!-- Examples of the request/order life cycle: --></p>
 <ul>
  <li>CommunicationRequest.status:  <%sclist CommunicationRequest.status%></li>
  <li>DeviceUseRequest.status: <%sclist DeviceUseRequest.status%></li>
@@ -109,10 +109,10 @@ describes: -->
 </ul>
 
 <a name="entity"> </a>
-<h3>Шаблон пригодности объекта<!-- Entity Availability Pattern --></h3>
+<h3>Жизненный цикл пригодности объекта<!-- Entity Availability Life Cycle --></h3>
 
-<p>Шаблон пригодности объекта указывает, готов ли ресурс или объект, описываемый ресурсом, к использованию, или пока не готов к использованию, или был изъят из обращения. Характерный набор статусов для шаблона пригодности объекта включает в себя:
-<!-- The entity availability pattern indicates if the resource, or the entity described by the resource, is ready for use, not yet ready for use, or has been retired from use. A characteristic set of states for the clinical workflow process pattern include:  --></p>
+<p>Жизненный цикл пригодности объекта указывает, готов ли ресурс или объект, описываемый ресурсом, к использованию, или пока не готов к использованию, или был изъят из обращения. Характерный (но не исчерпывающий) набор статусов жизненного цикла пригодности объекта включает в себя:
+<!-- The entity availability life cycle indicates if the resource, or the entity described by the resource, is ready for use, not yet ready for use, or has been retired from use. A characteristic (but non-exhaustive) set of states for the entity availability life cycle include:  --></p>
 
 <ul>
 <li>черновик: Объект подготавливается, но еще не используется</li>
@@ -121,7 +121,7 @@ describes: -->
 <li>исправленный: Объект подвергся пересмотру, но по-прежнему активен</li>
 <li>изъят из обращения (заменен): Объект больше не находится в использовании.</li>
 </ul>
-<p>Примеры шаблона пригодности объекта<!-- Examples of the entity availability pattern: --></p>
+<p>Примеры жизненного цикла пригодности объекта<!-- Examples of the entity availability life cycle: --></p>
 <ul>
  <li>DiagnosticReport.status: <%sclist DiagnosticReport.status%></li>
  <li>MedicationStatement.status: <%sclist MedicationStatement.status%>. (note: in-progress and completed are states reflecting the administration of the medication)</li>
@@ -141,7 +141,7 @@ describes: -->
 
 <a name="cstatus"> </a>
 
-<h3>Шаблон клинических статусов<!-- Clinical Status Pattern --></h3>
+<h3>Жизненный цикл клинического статуса<!-- Clinical Status Life Cycle --></h3>
 <p>Клинический статус несколько отличается от предыдущих значений статусов, так как он не имеет отношения к рабочему процессу или жизненному циклу. Вместо этого он показывает, как данные влияют на клиническую интерпретацию. Вот два примера:
 <!-- Clinical status is somewhat different than the previous status values, since it does not deal with workflow or lifecycle. Instead, it indicates how evidence is affecting a clinical interpretation. Here are two examples: --></p>
 <ul>
@@ -265,10 +265,11 @@ FHIR определяет следующие имена функциональн
 <h3>Статус "введен по ошибке" <!-- Entered In Error Summary --></h3>
 
 <p>
-Статус "введен по ошибке" говорит о том, что ресурс был создан случайно, и его следует игнорировать. Этот статус может применяться к ресурсам, созданным путем ручного ввода. Его, как правило, связывают не с шаблоном клинического рабочего процесса, а с шаблонами запроса/заказа и пригодности объекта.
+Статус "введен по ошибке" говорит о том, что ресурс был создан случайно, и его следует игнорировать. Этот статус может применяться к ресурсам, созданным путем ручного ввода. Его, как правило, связывают не с жизненным циклом клинического рабочего процесса, а с жизненными циклами запроса/заказа и пригодности объекта.
 <!-- The entered-in-error state indicates the resource was created accidentally, and 
 should be ignored. This state can apply to resources created by manual 
-entry. It is usually not associated with the Clinical Workflow Process pattern, but can be associated with the Request/Order and the Entity Availability patterns. -->
+entry. It is usually not associated with the Clinical Workflow Process life cycle, 
+but can be associated with the Request/Order and the Entity Availability life cycles. -->
 </p>
 
 <p>
