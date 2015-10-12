@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 
-[%settitle Введение в FHIR для медицинских работников%]
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-[%file newheader%]
+
 <style type="css">
 .code { counter-reset: listing }
 code { counter-increment: listing; }
@@ -14,7 +14,7 @@ code { counter-increment: listing; }
 
 </head>
 <body>
-[%file newnavbar%]
+
 
 <div class="col-9">
 
@@ -171,6 +171,7 @@ one Medication, etc.  Each folder (which represents a single Resource <i>instanc
 of that instance.  Every time someone updates a record, a new piece of paper is added to the top of the
 file folder.  To see the history of a resource, you simply have to flip through the pieces of paper in the folder. -->
 REST - это простейший механизм обмена. Продолжая метафору "формы", RESTful-сервер можно рассматривать как комнату, заполненную шкафами для хранения документов. В комнате есть шкаф для каждого "типа" формы (или "ресурса"), которую он поддерживает. В шкафу находятся папки, каждая папка имеет уникальный номер и соответствует одной конкретной сущности реального мира: одному пациенту, одному визиту, одному лекарственному средству и т. д. Каждая папка (представляющая собой отдельный <i>экземпляр</i> ресурса) содержит несколько листов бумаги, где каждый лист бумаги представляет собой определенную "версию" этого экземпляра. Каждый раз, когда кто-то обновляет запись, новый лист бумаги добавляется сверху в папку-регистратор. Чтобы увидеть историю ресурса, вам нужно всего лишь пролистать страницы в папке.
+</p>
 <p>
 Note that a typical medical record is generally a big "folder-of-folders" with many different
 types of 'forms' or 'reports' gathered together. This is convenient for someone who wants to review
@@ -286,7 +287,7 @@ on resource design, consider getting involved. -->
 </p>
 </div>
 
-[%file newfooter%]
+
 
 </body>
 </html>
