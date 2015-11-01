@@ -18,7 +18,9 @@
 -->
 
 <%dtheader base%>
+
 <h1>Типы данных</h1>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
 В спецификации FHIR описаны типы данных, которые используются в элементах ресурсов. 
@@ -111,11 +113,11 @@
  </tr>
  <tr>
    <td style="border-top: 0px silver solid"></td>
-   <td colspan="3" style="border-top: 0px silver solid"><i>Todo: is it possible to impose an upper absolute limit on a base64Binary (for denial of service reasons, like on string)</i></td>
+   <td colspan="3" style="border-top: 0px silver solid"><code>Todo: is it possible to impose an upper absolute limit on a base64Binary (for denial of service reasons, like on string)</code></td>
  </tr> 
  <tr>
    <td>instant<a name="instant"> </a></td>
-   <td>Момент времени, указанный <b>с точностью как минимум до секунды и всегда включающий в себя часовой пояс.</b><!-- An instant in time - <b>known at least to the second and always includes a time zone</b> --></td>
+   <td>Момент времени, указанный <b>с точностью как минимум до секунды и всегда включающий в себя часовой пояс.</b> Note: This is intended for precisely observed times (typically system logs etc.), and not human-reported times - for them, use date and dateTime. <code>instant</code> is a more constrained dateTime</td>
    <td>xs:dateTime</td>
    <td>A JSON string - an xs:dateTime</td>
  </tr>
@@ -160,16 +162,19 @@
 <!-- Notes: -->
 </p>
 <ul>
- <li>Для всех типов их XML и JSON представления совпадают за исключением различий в экранировании символов в XML и JSON<!-- For all the types, the XML and JSON representations are the same except for different escaping in XML and JSON --></li>
- <li>Приведенные регулярные выражения пропускают более широкий набор значений, чем фактически допустим (например високосные года), поэтому требуется дополнительная валидация 
- <!-- The regexes allow a broader set of values than are actually valid (e.g. leap years) so additional validation is needed --></li>
- <li>Точность десятичных значений существенна:<!-- The precision of the decimal value is signficant: -->
+ <li>Для всех типов их XML и JSON представления совпадают за исключением различий в экранировании символов в XML и JSON</li>
+<li>Boolean values can also be represented using coded values (such as <a href="v2/0136/index.html">HL7 v2 Table 0136</a>). See <a href="observation.html#valuex">Observation</a> for one such use</li>
+ <li>Приведенные регулярные выражения могут пропускать более широкий набор значений, чем фактически допустимый (например високосные года), поэтому требуется дополнительная валидация 
+</li>
+
+ <li>Точность десятичных значений имеет значение: <a name="precision"> </a>
     <ul> 
-      <li>например 0.010 рассматривается как отличное от 0.01<!-- e.g 0.010 is regarded as different to 0.01 --></li>
-      <li>Реализации ДОЛЖНЫ обрабатывать десятичные значения таким образом, чтобы сохранять и учитывать точность представленного значения
-	  <!-- Implementations SHALL handle decimal values in ways that preserve and respect the precision of the value as represented --></li> 
-      <li>Реализации, выполняющие это ограничение, являются GMP-реализациями или Java BigDecimal, который реализует произвольную точность, либо комбинацией значения с плавающей точкой (64 bit) с полем для указания точности
-	  <!-- Implementations that might meet this constraint are GMP implementations or Java BigDecimal that implement arbitrary precision, or a combination of a (64 bit) floating point value with a precision field --></li> 
+      <li>например 0.010 рассматривается как отличное от 0.01</li>
+      <li>Реализации ДОЛЖНЫ обрабатывать десятичные значения таким образом, чтобы сохранять и учитывать точность представленного значения в целях отображения</li> 
+	<li>Implementations are not required to perform calculations with these numbers differently, though they may choose to do so (i.e. preserve significance)</li>
+      <li>See implementation comments for <a href="xml.html#schema-gen">XML</a>, <a href="json.html#decimal">JSON</a> and <a href="rdf.html#decimal">RDF</a></li> 
+      <li>В объектном коде, реализации, выполняющие это ограничение, являются GMP-реализациями или эквивалентами Java BigDecimal, которые реализуют произвольную точность, либо комбинацией значения с плавающей точкой (64 bit) с полем для указания точности
+	  <!-- In object code, implementations that might meet this constraint are GMP implementations or equivalents to Java BigDecimal that implement arbitrary precision, or a combination of a (64 bit) floating point value with a precision field --></li> 
       <li>Обратите внимание, что нет абсолютного лимита для размера значения, хотя большие и/или высокоточные значения чрезвычайно редки в медицине. Единственный элемент, где могут встретиться десятичные значения высокой точности - это координаты в <a href="location.html">Location</a>
 	  <!-- Note that there is no absolute limit to the magnitude of the value, though large and/or highly precise values are extremely rare in medicine. One element where highly precise decimals may be encountered is the <a href="location.html">Location</a> coordinates --></li>
     </ul>
@@ -195,9 +200,13 @@ The value is represented in XML as an attribute named "value": -->
   "count" : 2
 </pre>
 <p>
-Дополнительную информацию включая представление внутренней сущности и расширений см. на страницах описания форматов <a href="xml.html">XML</a> и <a href="json.html">JSON</a>. Когда значение отсутствует, оно не обозначается в экземпляре; XML-атрибут value или JSON-свойство в этом случае не указываются вообще.
+Дополнительную информацию включая представление внутренней сущности и расширений см. на страницах описания форматов <a href="xml.html">XML</a> и <a href="json.html">JSON</a>. Когда значение отсутствует, оно не обозначается в экземпляре; XML-атрибут value или JSON-свойство в этом случае не указываются вообще. This means that 
+in xml, attributes are never present with a length of 0 (value=""), and properties are never a 0 length string or null in JSON ("name" : "" is not valid). 
+(note: there is one specific <a href="json.html#null">use of the null</a> in the JSON representation).
 <!-- For additional details, including how the internal identity and extensions are represented, see the <a href="xml.html">XML</a> and <a href="json.html">JSON</a> formats. 
-When the value is missing, it is not represented in the instance; the XML value attribute or the JSON property are not represented at all.  -->
+When the value is missing, it is not represented in the instance; the XML value attribute or the JSON property are not represented at all. This means that 
+in xml, attributes are never present with a length of 0 (value=""), and properties are never a 0 length string or null in JSON ("name" : "" is not valid). 
+(note: there is one specific <a href="json.html#null">use of the null</a> in the JSON representation). -->
 </p>
 <p>
 В соответствии с XML-схемой пробелы в начале и в конце атрибута value игнорируются для типов boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid и uri. Обратите внимание, из этого следует, что библиотеки XML, следующие схеме, дают разные значения атрибутов по сравнению с библиотеками, не соответствующими схеме, во время чтения экземпляров XML. По этой причине атрибут value для этих типов НЕ ДОЛЖЕН иметь пробелы в начале и в конце. Строковые значения могут иметь пробелы в начале и в конце, если они являются частью содержимого их значения. В JSON пробелы в строковых значениях всегда являются значимыми. Примитивные типы за исключением string НЕ ДОЛЖНЫ содержать пробелы в начале и в конце.
@@ -222,15 +231,16 @@ In JSON, whitespace in string values is always significant. Primitive types othe
 <a name="id"> </a>
 <a name="unsignedInt"> </a>
 <a name="positiveInt"> </a>
+<a name="markdown"> </a>
 
 <table class="list">
  <tr>
    <th>Имя в FHIR<!-- FHIR Name --></th><th>Базовый FHIR-тип<!-- Base FHIR Type --></th><th>Описание<!-- Description --></th>
  </tr>
- <tr><td>code</td><td>string</td><td>Указывает, что значение взято из набора регулируемых строк, определенных в другом месте (см. <a href="terminologies.html">Использование кодов</a> для дальнейшего обсуждения). Техническое ограничение: код должен быть строкой, содержащей хотя бы один символ и не имеющей пробела в начале и в конце, внутри которой есть только одиночные пробелы<!-- Indicates that the value is taken from a set of controlled strings defined elsewhere (see <a href="terminologies.html">Using codes</a> for further discussion). Technically, a code is restricted to string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents --> <br/>regex: [^\s]+([\s]+[^\s]+)*</td></tr>
+ <tr><td>code</td><td>string</td><td>Указывает, что значение взято из набора регулируемых строк, определенных в другом месте (см. <a href="terminologies.html">Использование кодов</a> для дальнейшего обсуждения). Техническое ограничение: код должен быть строкой, содержащей хотя бы один символ и не имеющей пробела в начале и в конце, внутри которой есть только одиночные пробелы<!-- Indicates that the value is taken from a set of controlled strings defined elsewhere (see <a href="terminologies.html">Using codes</a> for further discussion). Technically, a code is restricted to a string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents --> <br/>regex: [^\s]+([\s]+[^\s]+)*</td></tr>
  
  
- <tr><td>oid</td><td>uri</td><td>OID (идентификатор объекта), представленный в виде URI<!-- An OID represented as a URI --> (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>). Например urn:oid:1.2.3.4.5</td></tr>
+ <tr><td>oid</td><td>uri</td><td>OID (идентификатор объекта), представленный в виде URI<!-- An OID represented as a URI --> (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>); например urn:oid:1.2.3.4.5  <br/>regex: urn:oid:[0-2](\.[1-9]\d*)+</td></tr>
 <!--
  <tr><td>uuid</td><td>uri</td><td>A UUID, represented as a URI (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>): urn:uuid:a5afddf4-e880-459b-876e-e4591b0acc11. Note the RFC comments about case: UUID values SHALL be represented in lower case, but systems SHOULD interpret them case insensitively</td></tr>
 -->
@@ -238,24 +248,46 @@ In JSON, whitespace in string values is always significant. Primitive types othe
  <!-- Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.  (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.) -->
    <br/>regex: [%id_regex%]</td></tr>
 
+ <tr><td>markdown</td><td>string</td><td>A string that may contain markdown syntax for optional processing by a markdown presentation engine</td></tr>
  <tr><td>unsignedInt</td><td>int</td><td>Любое неотрицательное целое (т. е. >= 0)<br/>regex: [0-9]+</td></tr>
- <tr><td>positiveInt</td><td>int</td><td>Любое положительное целое (т. е. > 0)<br/>regex: [1-9][0-9]+</td></tr>
+ <tr><td>positiveInt</td><td>int</td><td>Любое положительное целое (т. е. > 0)<br/>regex: [1-9][0-9]*</td></tr>
 </table>
  
 <p>
-Некоторые дополнительные замечания по типу данных <i>id</i>:
-<!-- Some additional notes about the <i>id</i> datatype: -->
+Некоторые дополнительные замечания по типу данных <code>id</code>:
+<!-- Some additional notes about the <code>id</code> datatype: -->
 </p>
 <ul>
  <li>Идентификаторы чувствительны к регистру. UUID-ы ДОЛЖНЫ передаваться с использованием строчных букв
  <!-- Ids are case sensitive. UUIDs SHALL be sent using lowercase letters --></li>
  <li>Тип ID включает в себя идентификаторы в соответствии с <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, но также включает и другие форматы идентификаторов, но не чувствителен к регистру, как ISO 18232.
  <!-- The ID type includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232. --></li>
- <li>В типичном FHIR URL, наподобие http://example.com/fhir/Patient/<span style="color: navy">1234</span>, последняя часть "1234" (выделена цветом) имеет тип данных ID
+ <li>В типичном FHIR URL, наподобие <code>http://example.com/fhir/Patient/<span style="color: maroon">1234</span></code>, последняя часть "1234" (выделена красным цветом) имеет тип данных ID
  <!-- In a typical FHIR URL, like http://example.com/fhir/Patient/<span style="color: navy">1234</span>, the last part "1234" (highlighted in navy) is the part that is an id datatype --></li>
- <li>Полный UUID - это <i>URI</i>, а не <i>id</i>. UUID-ы в URI также ДОЛЖНЫ быть представлены в нижнем регистре (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b)
- <!-- A full UUID is a <i>uri</i>, not an <i>id</i>. UUIDs in URIs SHALL also be represented in lowercase (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b), which SHALL be in lowercase --></li>
+ <li>Полный UUID - это <code>uri</code>, а не <code>id</code>. UUID-ы в URI также ДОЛЖНЫ быть представлены в нижнем регистре (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b)
+ <!-- A full UUID is a <code>uri</code>, not an <code>id</code>. UUIDs in URIs SHALL also be represented in lowercase (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b) --></li>
 </ul>
+
+<p>
+Some additional notes about the <code>markdown</code> datatype:
+</p>
+<ul>
+ <li>Systems are not required to have markdown support, and there is considerable variation in markdown syntax, 
+   so the content of a string should be readable without markdown processing, per markdown philosophy</li>
+ <li>The preferred markdown syntax is described at <a href="http://daringfireball.net/projects/markdown/syntax">http://daringfireball.net/projects/markdown/syntax</a>
+   (see tests here: <a href="http://daringfireball.net/projects/downloads/MarkdownTest_1.0.zip">http://daringfireball.net/projects/downloads/MarkdownTest_1.0.zip</a>)</li> 
+</ul>
+
+<blockquote class="dstu-note">
+<a name="dstu"> </a>
+<p>
+<b>DSTU Note:</b>  <a href="http://commonmark.org/">CommonMark</a> is a new arrival but may gain sufficient impetus to be preferred in a future version. 
+</p>
+<p>
+Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+</p>
+</blockquote>
+
 <!-- 
 boolean: [%dtusage boolean%]
 integer: [%dtusage integer%]
@@ -274,7 +306,7 @@ id: [%dtusage id%]
 -->
 <hr/>
 
-<a name="Types"/>
+<a name="Types"> </a><a name="complex"> </a>
 <h2>Сложные типы</h2>
 
 <p>
@@ -305,12 +337,21 @@ id: [%dtusage id%]
 </p>
 [%dt Attachment 1%] 
 <p>
-Элемент <i>contentType</i> всегда ДОЛЖЕН иметь значение. Он может содержать информацию о кодировке (charset) и MIME-расширении по мере необходимости. Если в элементе <i>contentType</i> не указана кодировка, тогда правильный курс действий не определен, хотя некоторые медиа-типы могут указывать кодировку по умолчанию и/или правильная кодировка может определяться проверкой содержимого. 
-</p>
-<p>Само содержимое вложения (Attachment) может быть передано непосредственно с помощью элемента <i>data</i>, либо через указание ссылки в элементе <i>URL</i>.  Если приведено и то, и то, ссылка ДОЛЖНА вести на то же самое содержимое, что и в элементе <i>data</i>. Эта ссылка не может быть повторно использована для указания на какие-то другие данные (например относиться только к определенной версии). Ссылка в элементе <i>URL</i> ДОЛЖНА указывать на место, возвращающее сами данные; некоторые URIs, например cid:, отвечают этому требованию. Если в <i>URL</i> указана относительная ссылка, она интерпретируется таким же образом, как и  <a href="references.html#references">ссылка на ресурс</a>.
+The actual content of an Attachment can be conveyed directly using the <code>data</code> element
+or a <code>URL</code> reference can be provided. If both are provided, the reference SHALL 
+point to the same content as found in the data. The reference can never be reused to point to
+some different data (i.e. the reference is version specific). The <code>URL</code> reference SHALL 
+point to a location that resolves to actual data; some URIs such as cid: meet this requirement. 
+If the URL is a relative reference, it is interpreted in the same way as a <a href="references.html#references">resource reference</a>.
+Само содержимое вложения (Attachment) может быть передано непосредственно с помощью элемента <code>data</code>, либо через указание ссылки в элементе <code>URL</code>.  Если приведено и то, и то, ссылка ДОЛЖНА вести на то же самое содержимое, что и в элементе <code>data</code>. Эта ссылка не может быть повторно использована для указания на какие-то другие данные (например относиться только к определенной версии). Ссылка в элементе <code>URL</code> ДОЛЖНА указывать на место, возвращающее сами данные; некоторые URIs, например cid:, отвечают этому требованию. Если в <code>URL</code> указана относительная ссылка, она интерпретируется таким же образом, как и  <a href="references.html#references">ссылка на ресурс</a>.
 </p>
 <p>
-Элемент <i>hash</i> позволяет приложениям проверить, что содержимое, возвращаемое по ссылке в <i>URL</i>, не изменилось.
+The <code>contentType</code> element SHALL always be populated when an Attachment contains <code>data</code>, and 
+MAY be populated when there is a <code>url</code>. It can include charset information 
+and other mime type extensions as appropriate. Если в элементе <code>contentType</code> не указана кодировка, тогда правильный курс действий не определен, хотя некоторые медиа-типы могут указывать кодировку по умолчанию и/или правильная кодировка может определяться проверкой содержимого. 
+</p>
+<p>
+Элемент <code>hash</code> позволяет приложениям проверить, что содержимое, возвращаемое по ссылке в <code>URL</code>, не изменилось.
 </p>
 <p>
 В большинстве случаев использования вложения (Attachment), количество элементов &gt;1. Допустимое использование повторов позволяет передавать одно и то же  содержание на разных языках и MIME-типах. Указания по интерпретации повторяющихся элементов ДОЛЖНЫ быть приведены в определении повторяющегося элемента ресурса или расширения, ссылающегося на этот тип (or extension that references this type).  Элемент language описывает язык вложения с помощью <a href="http://tools.ietf.org/html/bcp47">кодов, определенных в BCP (Best Current Practice) 47</a>.
@@ -319,7 +360,7 @@ id: [%dtusage id%]
 <p><b>Ограничения</b></p>
 [%dt.constraints Attachment%]
 <p>
-Если ни <i>data</i>, ни <i>URL</i> не заполнены, значение следует понимать как утверждение о том, что для такой комбинации  <i>language</i> и <i>contentType</i> нет доступных данных. 
+Если ни <code>data</code>, ни <code>URL</code> не заполнены, это значение следует понимать как утверждение о том, что нет доступных данных для указанного <code>mimeType</code> и/или <code>language</code> для такой комбинации <code>language</code> и <code>contentType</code>. 
 </p>
 <p>
 Контекст использования часто может диктовать правила о том, какой тип вложения (и, следовательно, какой MIME-тип) может быть использован. 
@@ -345,19 +386,32 @@ Coding - это представление определенного конце
 [%dt Coding 2%]
 
 <p>
-Значение Coding определяется кодом. <i>Система (system)</i> указывает на источник определения кода наряду с необязательной ссылкой на версию. Элемент display содержит человекочитаемый  текст, определенный системой - он не добавляет другого значения. Ссылка на Value Set дает информацию о контексте выбора этого кода.
+Значение Coding определяется кодом. <code>System</code> указывает на источник определения кода наряду с необязательной ссылкой на версию. Элемент display содержит человекочитаемый  текст, определенный системой - он не добавляет другого значения. Ссылка на Value Set дает информацию о контексте выбора этого кода.
+The meaning of the Coding is defined by the code. The <code>system</code> provides
+the source of the definition of the code, along with an optional version reference.
+The display is a human display for the text defined by the system - it adds no other 
+value.
 </p>
 <p>
-Система <code>system</code> - это URI, ссылающийся на кодовую систему, определяющую этот код <i>code</i>. 
+Система <code>system</code> - это URI, ссылающийся на кодовую систему, определяющую этот код <code>code</code>. 
 Выбор правильной системы важен; для получения более подробной информации по URI кодовой системы см. раздел <a href="terminologies.html#system">Managing Terminology System URIs</a>.
 URI системы НЕ ДОЛЖЕН содержать ссылку на набор значений (например ValueSet.url).
 Если код взят из набора значений с инлайновой (встроенной) кодовой системой, <i>ValueSet.define.system</i> является корректным значением для URI системы.
+The <code>system</code> is a URI that references the code system that defines the <code>code</code>. 
+Choosing the correct system is important; for more information about the code system 
+URI, read <a href="terminologies.html#system">Managing Terminology System URIs</a>.
+The system URI SHALL NOT contain a reference to a value set (e.g. ValueSet.url). 
+If the code is taken from a ValueSet with an inline code system, <code>ValueSet.codeSystem.system</code>,
+is the correct value for the system uri.
 </p>
 <p>
 Также может быть указана версия кодовой системы. Если значение кодов в кодовой системе остается постоянным в разных версиях, то это не обязательно. 
 Версию НЕОБХОДИМО менять, когда система больше не поддерживает непротиворечивые определения в разных версиях.
 Если есть ссылка на набор значений (value set), и этот набор значений определяет кодовую систему, и в этом определении указана версия, то эта версия ДОЛЖНА быть такой же, как и в наборе значений (value set). 
 Обратите внимание, что следующим системам указывать версию НЕОБХОДИМО всегда:
+A code system version may also be supplied. If the meaning of codes within the code system is consistent across releases, this is not required. 
+The version SHOULD be exchanged when the system does not maintain consistent definitions across versions.
+Note that the following systems SHOULD always have a version specified:
 </p>
 <ul>
  <li>Национальные выпуски SNOMED CT (согласованность определений различается в разных странах, и некоторые страны могут принимать свои собственные правила на этот счет)</li>
@@ -365,66 +419,60 @@ URI системы НЕ ДОЛЖЕН содержать ссылку на наб
 </ul>
 <p>
 В общем случае любая классификация (например кодовая система), которая включает концепты с относительными определениями, например "not otherwise coded", потребует указания версии. См. <a href="valueset.html#versioning">обсуждение версий кодовых систем в ресурсе Value Set</a> для дальнейшего обсуждения версионирования.
+More generally, any classification (e.g.  a code system that includes concepts with relative definitions such as "not otherwise coded"
+will require a version. See the <a href="valueset.html#versioning">discussion of code system versions in the Value Set resource</a> for 
+further discussion on versioning.
 </p>
 
 <p>
-Если имеется, <i>code</i> ДОЛЖЕН быть синтаксически правильным символом, как это определено системой <i>system</i>.
-В некоторых кодовых системах, например SNOMED CT, этот символ может быть выражением, составленным из других предопределенных символов (например post-coordination). Обратите внимание, что коды чувствительны к регистру, если в кодовой системе не указано иное. <i>display</i> - это текстовое представление кода, определенное системой <i>system</i> и используемое для отображения значения кода приложением, которое не знает этой системы <i>system</i>.
+Если имеется, <code>code</code> ДОЛЖЕН быть синтаксически правильным символом, как это определено системой <code>system</code>.
+В некоторых кодовых системах, например SNOMED CT, этот символ может быть выражением, составленным из других предопределенных символов (например post-coordination). Обратите внимание, что коды чувствительны к регистру, если в кодовой системе не указано иное. <code>display</code> - это текстовое представление кода, определенное системой <code>system</code> и используемое для отображения значения кода приложением, которое не знает этой системы <code>system</code>.
+If present, the <code>code</code> SHALL be a syntactically correct symbol as defined by the <code>system</code>.
+In some code systems such as SNOMED CT, the symbol may be an expression composed of other predefined symbol (e.g. post-coordination). 
+Note that codes are case sensitive unless specified otherwise by the code system. The <code>display</code> 
+is a text representation of the code defined by the <code>system</code> and is used to display 
+the meaning of the code by an application that is not aware of the <code>system</code>.
 </p>
 <p>
-Если в кодовой системе имеется несколько возможных строк для отображения, то одна из них ДОЛЖНА быть использована в <i>display</i>. Если одна из них помечена как предпочтительная, то именно она ДОЛЖНА быть использована. Если кодовая система не предлагает текстовое представление (например SNOMED CT Expressions), тогда <i>display</i> не может быть заполнен, и значение кода не будет доступно системам, которые не понимают кодовое выражение. 
+Если в кодовой системе имеется несколько возможных строк для отображения, то одна из них ДОЛЖНА быть использована в <code>display</code>. Если одна из них помечена как предпочтительная, то именно она ДОЛЖНА быть использована. Если кодовая система не предлагает текстовое представление (например SNOMED CT Expressions), тогда <code>display</code> не может быть заполнен, и значение кода не будет доступно системам, которые не понимают кодовое выражение. 
+Where the code system defines multiple possible display strings, one of these SHALL be used in <code>display</code>. 
+If one is labeled as preferred, it SHOULD be used. If the code system does not define a text representation 
+(e.g. SNOMED CT Expressions) then <code>display</code> cannot be populated, and the meaning of the code won't be 
+accessible to systems that don't understand the code expression.
 </p>
 
 <p>
-В некоторых случая система <i>system</i> может не быть известна - известен только код. 
+В некоторых случая система <code>system</code> может не быть известна - известен только код. 
 В этом случае никакая полезная обработка кода не может быть выполнена, если только система не может быть надежно выведена из контекста.
 Этой практики следует избегать, где это возможно, так как обмен информации в более широком контексте весьма вероятно возникнет в конце концов, и коды не могут использоваться в отсутствие знания о системе. 
+In some cases, the <code>system</code> may not be known - only the code is known. 
+In this case, no useful processing of the code may be performed unless
+the system can be safely inferred by the context. 
+This practice should be avoided where possible, as 
+information sharing in a wider context is very likely to arise eventually, and codes cannot
+be used in the absence of a known system.
 </p>
 <p>
 Если система присутствует, и нет кода, это следует понимать как отсутствие подходящего кода в системе, где должен быть этот код (in which to represent the code). 
+If the system is present, and there is no code, then this is understood to mean that there
+is no suitable code in the system in which to represent the code. 
 </p>
 <p>
-Если два codings имеют одинаковые систему <i>system</i>, версию  <i>version</i> и код <i>code</i>, значит они имеют одинаковое значение. Если информация о версии отсутствует, или элементы система <i>system</i>, версия  <i>version</i>  или код <i>code</i> различаются, тогда как их коды связаны, может быть определено обращением к определениям этих систем(ы), и любые <a href="conceptmap.html">мэппинги</a> доступны. 
+Если два codings имеют одинаковые систему <code>system</code>, версию  <code>version</code> и код <code>code</code>, значит они имеют одинаковое значение. Если информация о версии отсутствует, или элементы система <code>system</code>, версия  <code>version</code>  или код <code>code</code> различаются, тогда как их коды связаны, может быть определено обращением к определениям этих систем(ы), и любые <a href="conceptmap.html">мэппинги</a> доступны. 
+If two codings have the same <code>system</code>, <code>version</code> and <code>code</code> then they have the same meaning.
+If the version information is missing, or the <code>system</code>, <code>version</code> or the <code>code</code> elements differ, then 
+how the codes are related can only be determined by consulting the definitions of the system(s) and any <a href="conceptmap.html">mappings</a> available.
 </p>
 <p>
 Элемент coding может быть помечен как "выбранный пользователем" ("userSelected"), если пользователь выбрал определенное кодовое значение в интерфейсе пользователя (например пользователь выбирает пункт в списке). Если выбранный пользователем кодинг существует, то он является предпочтительным выбором при выполнении переводов и т. п.
 </p>
 
-<!--<h3>Version Management</h3>
-<p>
-Some code systems have periodic releases where the meanings of the codes are changed between
-each release. Other code systems provide multiple releases where only minor consistent changes 
-are allowed - mainly the addition of new codes. Finally, a few code systems provide an elaborate 
-set of policies and procedures to allow concepts to be refined and modified within a single
-definitional space. For the second two types of code system, it may help with implementation 
-and interpretation tasks to track which minor release (version) of the code system is in use. 
-</p>
-<p>
-For SNOMED CT, the minor release (and optionally module/release) are indicated as part of the 
-<i>system</i> element using the http://snomed.info/sct identifier as defined by SNOMED CT. For
-all other code systems, the <i>version</i> element is used to indicate the minor release. 
-In the absence of a specified version release format by the code system (such as 2.36 for 
-LOINC), the release date is to be used.
-</p>
-<p>
-The <i>version</i> element SHALL always be ignored when comparing <i>Coding</i> values
-</p>-->
 <div class="use">
 <p><b>Ограничения</b></p>
-<!--
 [%dt.constraints Coding%]
 <p>
-Unless the Coding element has a dataAbsentReason flag, it SHALL contain a <i>system</i> element 
-and it should contain a <i>display</i> if it contains a <i>code</i>.
-<!-!- It can only contain a
-<i>version</i> element if it contains a <i>system</i> element.-!->
-</p>
--->
-<p>
-Если valueSet указан, системный URI ДОЛЖЕН быть также приведен.
-</p>
-<p>
-Контекст использования (как определено в ресурсе или применимом (подходящем) профиле) обычно устанавливает правила о том, какие коды и системы разрешены или требуются в определенном контексте с помощью <a href="terminologies.html">привязки</a> элемента к набору значений.
+The context of use (as defined in the resource or applicable profile) usually makes rules about what codes and systems are allowed or required in a 
+particular context by <a href="terminologies.html">binding</a> the element to a value set.
 </p>
 </div>
 
@@ -441,10 +489,10 @@ Coding используется в следующих местах: [%dtusage Co
  <li><b>CodeableConcept</b>: текстовое описание и/или список Codings (т.е. список ссылок на коды, определенные кодовой системой)</li>
 </ul>
 <p>
-Тип данных <i>Coding</i> соответствует простому случаю выбора одиночного кода из списка. Однако этот тип редко используется в спецификациях FHIR; большой опыт обмена кодированными значениями в HL7 показал, что в общем случае системы должны иметь возможность обмениваться несколькими переводами кодов и/или оригинальным текстом. 
+Тип данных <code>Coding</code> соответствует простому случаю выбора одиночного кода из списка. Однако этот тип редко используется в спецификациях FHIR; большой опыт обмена кодированными значениями в HL7 показал, что в общем случае системы должны иметь возможность обмениваться несколькими переводами кодов и/или оригинальным текстом. 
 </p>
 <p>
-Тип данных <i>Coding</i> используется, когда есть уверенность в том, что значение должно быть выбрано непосредственно из доступных кодов, и список возможных кодов согласован со всеми участниками. Обычно это не тот случай в контексте FHIR - общей совместимости - таким образом Coding используется главным образом в расширениях, которые обычно предназначены для определения хорошо контролируемых условий использования.
+Тип данных <code>Coding</code> используется, когда есть уверенность в том, что значение должно быть выбрано непосредственно из доступных кодов, и список возможных кодов согласован со всеми участниками. Обычно это не тот случай в контексте FHIR - общей совместимости - таким образом Coding используется главным образом в расширениях, которые обычно предназначены для определения хорошо контролируемых условий использования.
 </p>
 </blockquote>
 
@@ -461,10 +509,10 @@ CodeableConcept представляет собой значение, котор
 </p>
 [%dt CodeableConcept 3%]
 <p>
-Каждый <i>coding</i> является представлением концепта как описано выше. Концепт может быть закодирован несколько раз в различных кодовых системах (или даже несколько раз в одной и той же кодовой системе, где допустимо несколько форм, например SNOMED CT). Различные кодинги могут иметь слегка различающуюся степень разбиения (структурирования, детализации) из-за различий в определениях лежащих в основе кодов. Порядок кодингов внутри <i>CodeableConcept</i> не имеет значения. Типичное использование <i>CodeableConcept</i> - отправка локального кода, которым был закодирован концепт, и также один или несколько переводов в публично определенные кодовые системы, например LOINC or SNOMED CT. Отправка локальных кодов - полезное и важное в целях отладки и ведения контроля за целостностью.
+Каждый <code>coding</code> является представлением концепта как описано выше. Концепт может быть закодирован несколько раз в различных кодовых системах (или даже несколько раз в одной и той же кодовой системе, где допустимо несколько форм, например SNOMED CT). Различные кодинги могут иметь слегка различающуюся степень разбиения (структурирования, детализации) из-за различий в определениях лежащих в основе кодов. Порядок кодингов внутри <code>CodeableConcept</code> не имеет значения. Типичное использование <code>CodeableConcept</code> - отправка локального кода, которым был закодирован концепт, и также один или несколько переводов в публично определенные кодовые системы, например LOINC or SNOMED CT. Отправка локальных кодов - полезное и важное в целях отладки и ведения контроля за целостностью.
 </p>
 <p>
-Независимо от того, какие элементы <i>coding</i> присутствуют, текст <i>text</i> - это представление концепта, как введено или выбрано пользователем, и который наиболее точно передает заложенное значение пользователя или концепта. Очень часто текст <i>text</i> совпадает со значением <i>display</i> одного из кодингов. Один из кодингов может быть помечен как userSelected - это код или концепт, который пользователь в действительности непосредственно выбрал. Когда ни один из элементов <i>coding</i> не отмечен как userSelected, тогда текст (если присутствует) является предпочтительным источником значения.
+Независимо от того, какие элементы <code>coding</code> присутствуют, текст <code>text</code> - это представление концепта, как введено или выбрано пользователем, и который наиболее точно передает заложенное значение пользователя или концепта. Очень часто текст <code>text</code> совпадает со значением <code>display</code> одного из кодингов. Один из кодингов может быть помечен как userSelected - это код или концепт, который пользователь в действительности непосредственно выбрал. Когда ни один из элементов <code>coding</code> не отмечен как userSelected, тогда текст (если присутствует) является предпочтительным источником значения.
 </p>
 
 <div class="use">
@@ -493,23 +541,23 @@ Quantity (Количество)
 [%dt Quantity 4%]
 
 <p>
-Элемент <i>value</i> содержит числовое значение величины, включая подразумеваемую точность (implicit precision).  
-Если компаратор не указан, то значением является указанное значение (т.е. '='). Элемент <i>comparator</i> не может игнорироваться.
+Элемент <code>value</code> содержит числовое значение величины, включая подразумеваемую точность (implicit precision).  
+Если компаратор не указан, то значением является указанное значение (т.е. '='). Элемент <code>comparator</code> не может игнорироваться.
 </p>
 <p>
-Элемент <i>units</i> содержит отображаемую на экране единицу измерения того, что было измерено. Единицы измерений также могут быть закодированы некоторым формальным образом с помощью <i>code</i> и <i>system</i> 
-(см. <a href="#Coding">Coding</a> для получения дополнительной информации о том, как использовать элемент <i>system</i>). 
+Элемент <code>unit</code> содержит отображаемую на экране единицу измерения того, что было измерено. Единицы измерений также могут быть закодированы некоторым формальным образом с помощью <code>code</code> и <code>system</code> 
+(см. <a href="#Coding">Coding</a> для получения дополнительной информации о том, как использовать элемент <code>system</code>). 
 </p>
 <p>
-Если единицы измерений можно закодировать с помощью системы UCUM (Unified Code for Units of Measure) и код присутствует, тогда это ДОЛЖЕН быть код UCUM. Если в <i>code</i> указана единица измерения из UCUM, то можно использовать каноническое значение для сравнения величин. Обратите внимание, что элемент <i>units</i> будет часто содержать текст, являющийся фактически допустимой единицей измерения UCUM, но нельзя предполагать, что элемент units действительно содержит допустимую единицу измерения UCUM.
+Если единицы измерений можно закодировать с помощью системы UCUM (Unified Code for Units of Measure) и код присутствует, тогда это ДОЛЖЕН быть код UCUM. Если в <code>code</code> указана единица измерения из UCUM, то можно использовать каноническое значение для сравнения величин. Обратите внимание, что элемент <code>unit</code> будет часто содержать текст, являющийся фактически допустимой единицей измерения UCUM, но нельзя предполагать, что элемент unit действительно содержит допустимую единицу измерения UCUM.
 </p>
 
 <div class="use">
 <p><b>Ограничения</b></p>
 [%dt.constraints Quantity%]
 <p>
-Контекст использования часто может указывать, что это за величина и, следовательно, какие единицы измерений могут применяться. Кроме того, контекст использования может требовать <i>code</i> из определенной <i>system</i>.
-Контекст использования может также ограничивать значения <i>value</i> или <i>range</i>.
+Контекст использования часто может указывать, что это за измеренная величина и, следовательно, какие единицы измерений могут применяться. Кроме того, контекст использования может требовать <code>code</code> из определенной <code>system</code>.
+Контекст использования может также ограничивать значения <code>value</code> или <code>range</code>.
 </p>
 </div>
 <p>
@@ -540,10 +588,10 @@ Range обозначает множество возможных значени�
 </p>
 [%dt Range 5%]
 <p>
-Элементы <i>units</i> и <i>code</i>/<i>system</i> в элементах <i>low</i> и <i>high</i> ДОЛЖНЫ совпадать. Если элемент  <i>low</i> или <i>high</i> отсутствует, это означает, что нижняя или верхняя граница не известна и, следовательно, ни тот, ни другой не является полным диапазоном (neither is the complete range).
+Элементы <code>unit</code> и <code>code</code>/<code>system</code> в элементах <code>low</code> и <code>high</code> ДОЛЖНЫ совпадать. Если элемент  <code>low</code> или <code>high</code> отсутствует, это означает, что нижняя или верхняя граница не известна и, следовательно, ни тот, ни другой не является полным диапазоном (neither is the complete range).
 </p>
 <p>
-Элементы <i>low</i> и <i>high</i> не могут иметь флаг <i>comparator</i>. Обратите внимание, что тип Range не должен использоваться для измерений, выходящих за пределы диапазона: в этом случае следует использовать тип quantity с элементом comparator.
+Элементы <code>low</code> и <code>high</code> не могут иметь флаг <code>comparator</code>. Обратите внимание, что тип Range не должен использоваться для измерений, выходящих за пределы диапазона: в этом случае следует использовать тип quantity с элементом comparator.
 </p>
 <p>
 Значения low и high входят в диапазон и предполагается, что они имеют сколь угодно высокую точность. К примеру, диапазон 1.5 - 2.5 включает значения 1.50 и 2.50, но не 1.49 или 2.51.
@@ -604,7 +652,9 @@ Period (Период)
 </p>
 [%dt Period 7%]
 <p>
-Если элемент <i>start</i> отсутствует, значит начало периода не известно. Если элемент <i>end</i> отсутствует, значит период продолжается.
+Если элемент <code>start</code> отсутствует, значит начало периода не известно. Если элемент <code>end</code> отсутствует, значит период продолжается,
+or the start may be in the past, and the end date in the future, which means that period 
+is expected/planned to end at the specified time
 </p>
 <p>
 Значение end включает в себя любую подходящую дату/время. К примеру, период с 2011-05-23 по 2011-05-27 включает любое время с начала дня 23 мая до конца дня 27 мая.
@@ -635,7 +685,7 @@ SampledData представляет собой удобный способ уп
 </p>
 [%dt SampledData 8%]
 <p>
-Данные представляют собой множество десятичных значений, разделенных одиночным пробелом (символ Юникода u20). В дополнение к десятичным значениям используются значения "E" (ошибка), "L" (ниже предела обнаружения) и "U" (выше предела обнаружения). Если имеется более одного измерения, различные измерения чередуются - все точки данных для конкретного времени представлены вместе. Значением коэффициента <i>factor</i> по умолчанию является 1.
+Данные представляют собой множество десятичных значений, разделенных одиночным пробелом (символ Юникода u20). В дополнение к десятичным значениям используются значения "E" (ошибка), "L" (ниже предела обнаружения) и "U" (выше предела обнаружения). Если имеется более одного измерения, различные измерения чередуются - все точки данных для конкретного времени представлены вместе. Значением коэффициента <code>factor</code> по умолчанию является 1.
 </p>
 
 <p>
@@ -658,17 +708,25 @@ Identifier (Идентификатор)
 [%dt Identifier 9%]
 
 <p>
-Система <i>system</i>, на которую ссылается URI, устанавливает, каким образом определяется идентификатор (т.е. каким образом обеспечивается уникальность значения). Это может быть некоторое приложение или признанный стандарт/спецификация, определяющие доступное множество идентификаторов или способ обеспечения их уникальности. Значение  <i>value</i> ДОЛЖНО быть уникальным в пределах указанной системы и иметь соответствующее значение, где бы оно ни появлялось. И  <i>system</i>, и <i>value</i> всегда чувствительны к регистру.
+Система <code>system</code>, на которую ссылается URI, устанавливает, каким образом определяется идентификатор (т.е. каким образом обеспечивается уникальность значения). Это может быть некоторое приложение или признанный стандарт/спецификация, определяющие доступное множество идентификаторов или способ обеспечения их уникальности. Значение  <code>value</code> ДОЛЖНО быть уникальным в пределах указанной системы и иметь соответствующее значение, где бы оно ни появлялось. И  <code>system</code>, и <code>value</code> всегда чувствительны к регистру.
 </p>
 <p>
-FHIR сразу задает <a href="identifier-registry.html">несколько полезных URIs</a>. OIDs (urn:oid:) и UUIDs (urn:uuid:) могут быть зарегистрированы в <a href="http://hl7.org/oid">Реестре HL7 OID</a> и должны быть, если их содержимое совместно используется или передается между общественными организациями. Если идентификатор сам по себе является глобально уникальным (например OID, UUID или URI без локального окончания), тогда значением системы <i>system</i> SHALL be "urn:ietf:rfc:3986", ДОЛЖНО быть "urn:ietf:rfc:3986", а в  <i>value</i> должен быть указан сам URI.
+In addition to the <code>system</code> (which provides a uniqueness scope) and the <code>value</code>, identifiers may also have a
+<code>type</code>, which may be useful when a system encounters identifiers with unknown system values. 
+Note, however, that the type of an identifier is not a well controlled vocabulary with wide variations
+in practice. The <code>type</code> deals only with general categories of identifiers and SHOULD not be 
+used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple 
+categories due to variations in common usage.
+</p>
+<p>
+FHIR сразу задает <a href="identifier-registry.html">несколько полезных URIs</a>. OIDs (urn:oid:) и UUIDs (urn:uuid:) могут быть зарегистрированы в <a href="http://hl7.org/oid">Реестре HL7 OID</a> и должны быть, если их содержимое совместно используется или передается между общественными организациями. Если идентификатор сам по себе является глобально уникальным (например OID, UUID или URI без локального окончания), тогда значением системы <code>system</code> SHALL be "urn:ietf:rfc:3986", ДОЛЖНО быть "urn:ietf:rfc:3986", а в  <code>value</code> должен быть указан сам URI.
 </p>
 <p>
 В некоторых случаях система может быть не известна - известно только значение (например простое устройство, сканирующее штрих-коды), или система понимается неявно (простой обмен в ограниченном контексте, зачастую обусловленный считывателями штрих-кодов). В этом случае невозможно выполнить полезное сопоставление значения, если только система не может быть с уверенностью выведена из контекста.
 Подобную практику следует по возможности избегать, так как со временем растет вероятность совместного использования информации в более широком контексте, а значения без системы по своей природе ограничены в использовании. 
 </p>
 <p>
-Элемент <i>assigner</i> используется для указания, какой реестр/государство/учреждение/пр. назначили идентификатор.
+Элемент <code>assigner</code> используется для указания, какой реестр/государство/учреждение/пр. назначили идентификатор.
 </p>  
 <p>
 Identifier используется в следующих местах: [%dtusage Identifier%]
@@ -713,15 +771,15 @@ consult the <a href="datatypes-examples.html#HumanName">examples</a>. -->
 </p>
 <p>
 Многочисленные части имен и фамилий объединяются в единое имя. Несколько имен и фамилий используются, когда имя человека состоит из нескольких имен (относительно распространено в разных культурах) и несколько фамилий (менее распространено).
-Если у человека есть альтернативные имена, которые могут быть использованы взаимозаменяемо, то это будут разные экземпляры <i>HumanName</i>.
-<!-- The multiple give and family name parts combine to form a single name. Multiple given and family names are for
+Если у человека есть альтернативные имена, которые могут быть использованы взаимозаменяемо, то это будут разные экземпляры <code>HumanName</code>.
+<!-- The multiple given and family name parts combine to form a single name. Multiple given and family names are for
 when a person's name has multiple given names (relatively common across cultures) and multiple surnames (less common).
 Where a person has alternate names that may be used in place of each other, these are different
-instances of <i>HumanName</i>. -->
+instances of <code>HumanName</code>. -->
 </p>
 <p>
-Элемент <i>text</i> содержит полное имя в том виде, в котором оно должно показываться. Он может быть задан как в дополнение к частям имени, так и вместо них, и может быть составлен из этих частей, хотя правильный порядок сборки зависит от культуры: порядок частей в пределах типа составляющей имени "given" имеет значение и ДОЛЖЕН соблюдаться. Надлежащий порядок от фамилией и "given" именами зависит от культуры и контекста использования.
-<!-- The <i>text</i> element specifies the entire name as it should be represented. This
+Элемент <code>text</code> содержит полное имя в том виде, в котором оно должно показываться. Он может быть задан как в дополнение к частям имени, так и вместо них, и может быть составлен из этих частей, хотя правильный порядок сборки зависит от культуры: порядок частей в пределах типа составляющей имени "given" имеет значение и ДОЛЖЕН соблюдаться. Надлежащий порядок от фамилией и "given" именами зависит от культуры и контекста использования.
+<!-- The <code>text</code> element specifies the entire name as it should be represented. This
 may be provided instead of or as well as specific parts, and can be built from the parts, though
 the correct order of assembly is culture dependent: the order of the  parts within a given part type has significance and SHALL be observed. The appropriate order between 
 family name and given names depends on culture and context of use. -->
@@ -768,7 +826,7 @@ Address (Адрес)
 
 [%dt Address 11%]
 <p>
-Элемент <i>text</i> содержит полный адрес в том виде, в котором он должен отображаться. Его можно задать вместо либо в дополнение к отдельным частям. Приложения, обновляющие адрес, ДОЛЖНЫ убедиться, что либо текст соответствует частям адреса, либо из них присутствует только что-то одно.
+Элемент <code>text</code> содержит полный адрес в том виде, в котором он должен отображаться. Его можно задать вместо либо в дополнение к отдельным частям. Приложения, обновляющие адрес, ДОЛЖНЫ убедиться, что либо текст соответствует частям адреса, либо из них присутствует только что-то одно.
 </p>
 
 
@@ -799,7 +857,18 @@ ContactPoint
 При записи телефона, факса или подобного типа связи (contact point), значение должно быть должным образом отформатировано в соответствии с
 <a href="http://www.itu.int/rec/T-REC-E.123-200102-I/e">ITU-T E.123</a>. 
 Тем не менее это часто не представляется возможным из-за устаревших данных и/или способа записи. 
+However, this is frequently not possible due to legacy data and/or clerical practices when recording contact details.
+For this reason, phone, fax, page and email addresses are not handled as formal URLs. For other kinds 
+of contacts, the <code>system</code> is "other" and the <code>value</code> SHOULD be a URL so that its use can be determined automatically. Typical 
+URL schemes used in the value are http(s): for web addresses, and URL schemes for various kinds of messaging systems.
+If the value is not a URL, then human interpretation will be required.
 </p>
+<p>
+The <code>rank</code> element can be used to specify a preference for the order in which a set of contacts
+is used. Contacts are ranked with lower values coming before higher values. Note that <code>rank</code> does not necessarily 
+follow the order in which the contacts are represented in the instance.
+</p>
+
 <div class="use">
 <p><b>Ограничения</b></p>
 [%dt.constraints ContactPoint%]
@@ -842,28 +911,35 @@ the schedule will terminate on some criteria that are expressed elsewhere.  -->
 </p>
 <p>
 Если в <code>duration</code> указан <a href="#Range">Range</a>, единицы измерения Range
-ДОЛЖНЫ БЫТЬ <a href="units-of-time.html">единицами измерения времени UCUM</a>.
+ДОЛЖНЫ БЫТЬ <a href="valueset-units-of-time.html">единицами измерения времени UCUM</a>.
 </p>
 <p>
 В данной таблице представлены некоторые общие способы применения критериев типа данных Timing.
 <!-- This table summarises some common uses of the Timing Data Type criteria. -->
 </p>
 <table class="grid">
- <tr><td><b>text</b></td><td><b>duration+units</b></td><td><b>frequency</b></td><td><b>frequencyMax</b></td><td><b>period+units</b></td><td><b>periodMax</b></td><td><b>when</b></td></tr>
- <tr><td>BID</td><td></td><td>2</td><td></td><td>1 d</td><td></td><td></td></tr>
- <tr><td>TID</td><td></td><td>3</td><td></td><td>1 d</td><td></td><td></td></tr>
- <tr><td>QID</td><td></td><td>4</td><td></td><td>1 d</td><td></td><td></td></tr>
- <tr><td>Q6H</td><td></td><td>1</td><td></td><td>6 h</td><td></td><td></td></tr>
- <tr><td>Every 8 hours</td><td></td><td>1</td><td></td><td>8 h</td><td></td><td></td></tr>
- <tr><td>Every 7 days</td><td></td><td>1</td><td></td><td>7 d</td><td></td><td></td></tr>
- <tr><td>3 times a day</td><td></td><td>3</td><td></td><td>1 d</td><td></td><td></td></tr>
- <tr><td>3-4 times a day</td><td></td><td>3</td><td>4</td><td>1 d</td><td></td><td></td></tr>
- <tr><td>Every 4-6 hours</td><td></td><td>1</td><td></td><td>4 h</td><td>6</td><td></td></tr>
- <tr><td>Every 21 days for 1 hour</td><td>1 hr</td><td>1</td><td></td><td>21 d</td><td></td><td></td></tr>
- <tr><td>Three times a week for ½ hour</td><td>0.5 hr</td><td>3</td><td></td><td>1 wk</td><td></td><td></td></tr>
- <tr><td>With breakfast</td><td></td><td></td><td></td><td></td><td></td><td>CM</td></tr>
- <tr><td>For 10 minutes before meals</td><td>10 min</td><td></td><td></td><td>10 min</td><td></td><td>AC</td></tr>
+ <tr><td><b>description</b></td> <td><b>duration</b></td> <td><b>durationUnits</b></td> <td><b>frequency</b></td> <td><b>frequencyMax</b></td> <td><b>period</b></td> <td><b>periodUnits</b></td> <td><b>periodMax</b></td> <td><b>when</b></td> <td><b>bounds[x]</b></td></tr>
+ <tr><td>BID</td>                <td></td>                <td></td>                     <td>2</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td></td>            <td></td></tr>
+ <tr><td>TID</td>                <td></td>                <td></td>                     <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td></td>            <td></td></tr>
+ <tr><td>QID</td>                <td></td>                <td></td>                     <td>4</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td></td>            <td></td></tr>
+ <tr><td>Q6H</td>                <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>6</td>             <td>h</td>                  <td></td>                 <td></td>            <td></td></tr>
+ <tr><td>Every 8 hours</td>      <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>8</td>             <td>h</td>                  <td></td>                 <td></td>            <td></td></tr>
+ <tr><td>Every 7 days</td>       <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>7</td>             <td>d</td>                  <td></td>                 <td></td>            <td></td></tr>
+ <tr><td>3 times a day</td>      <td></td>                <td></td>                     <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td></td>            <td></td></tr>
+ <tr><td>3-4 times a day</td>    <td></td>                <td></td>                     <td>3</td>                <td>4</td>                   <td>1</td>             <td>d</td>                  <td></td>                 <td></td>            <td></td></tr>
+ <tr><td>Every 4-6 hours</td>    <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>4</td>             <td>h</td>                  <td>6</td>                <td></td>            <td></td></tr>
+ <tr><td>Every 21 days for 1 hour</td> <td>1</td>         <td>hr</td>                   <td>1</td>                <td></td>                    <td>21</td>            <td>d</td>                  <td></td>                 <td></td>            <td></td></tr>
+ <tr><td>Three times a week for ½ hour</td> <td>0.5</td>  <td>hr</td>                   <td>3</td>                <td></td>                    <td>1</td>             <td>wk</td>                 <td></td>                 <td></td>            <td></td></tr>
+ <tr><td>With breakfast</td>     <td></td>                <td></td>                     <td></td>                 <td></td>                    <td></td>              <td></td>                   <td></td>                 <td>CM</td>          <td></td></tr>
+ <tr><td>For 5 minutes, 10 minutes before meals</td> <td>5</td>     <td>min</td>        <td></td>                 <td></td>                    <td>10</td>            <td>min</td>                <td></td>                 <td>AC</td>          <td></td></tr>
+ <tr><td>TID, for 14 days</td>   <td></td>                <td></td>                     <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td></td>            <td>Duration = 14 days</td></tr>
+ <tr><td>BID, start on 7/1/2015 at 1:00 PM</td> <td></td> <td></td>                     <td>2</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td></td>            <td>Period, low = 2015-07-01T13:00:00</td></tr>
+ <tr><td></td>                   <td></td>                <td></td>                     <td></td>                 <td></td>                    <td></td>              <td></td>                   <td></td>                 <td></td>            <td></td></tr>
 </table>
+
+
+
+
 
 <div class="use">
 <p><b>Constraints</b></p>
@@ -886,35 +962,38 @@ Signature
 </p>
 <p>
 Signature содержит электронную цифровую подпись и вспомогательный контекст в доступной FHIR форме. Доказательство невозможности отказа от авторства указывается через XML-Signature BLOB (прим. пер. - binary large object; большой двоичный объект, "блоб").
-<!-- A Signature holds a Digital Signature and supporting context in a FHIR accessible form. The non-repudiation proof is provided through the XML-Signature blob.  -->
+A Signature holds an electronic representation of a signature and its supporting context in a FHIR accessible form. 
+The signature may either be a cryptographic type (XML DigSig or a JWT), which is able to provide non-repudiation proof, or 
+it may be a graphical image that represents a signature or a signature process. 
 </p>
 [%dt Signature 14%]
+<div class="use">
+<p><b>Constraints</b></p>
+[%dt.constraints Signature%]
+</div>
+
 <p>
-Signature.blob - это XML-Signature в кодировке base64. XML-Signature - это <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#def-SignatureDetached">Detached</a> Signature, где подписанное содержимое отделено от самой подписи.
-<!-- The Signature.blob is base64 encoded XML-Signature. The XML-Signature is a <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#def-SignatureDetached">Detached</a> Signature. Where the content that is signed is separate from the signature itself.  -->
+Note: One consequence of signing the document is that URLs, identifiers and internal references are frozen and 
+cannot be changed. This might be a desired feature, but it may also cripple interoperability between closed 
+ecosystems where <a href="managing.html">re-identification</a> frequently occurs. For this reason, it is 
+recommended that systems consider carefully the impact of any signature processes. The impact of signatures
+on <a href="documents.html">Document bundles</a> and their related processes is the most well understood
+use of digital signatures.
 </p>
+
+<p>&nbsp;</p>
+<h3>XML Signature rules</h3>
 <p>
-Signature должна соответствовать XAdES-X-L для поддержки подписей в долгосрочной перспективе. Спецификация XAdES-X-L добавляет штамп времени подписания, включение сертификата подписи и заявление об аннулировании.
-<!-- The Signature should conform to XAdES-X-L for support of Long Term signatures. The XAdES-X-L specification adds the timestamp of the signing, inclusion of the signing certificate, and statement of revocation.  -->
+When the signature is an XML Digital Signature (contentType = application/signature+xml), the following rules apply:
 </p>
-<p>
-Там, где подписанным содержимым является FHIR-ресурс(-ы), подпись ставится на XML-форму ресурса(-ов).
-<!-- Where the signed content is a FHIR Resource(s), the signature is across the the XML form of the resource(s). -->
-</p>
-<p>
-Содержимое должно быть представлено в канонизированной форме с помощью "Canonical XML 1.1. with Comments".
-<!-- The content should be canonicalized using the "Canonical XML 1.1. with Comments". -->
-</p>
-<p>
-Подпись должна использовать алгоритм хэширования SHA256. XML-подпись показывает используемый алгоритм. Если предполагается использование других алгоритмов хэширования, приемлемость будет определяться политикой валидации подписи.
-<!-- The Signature should use the hashing algorithm sha256. The XML-Signature indicates the algorithm used. Other hashing algoirthms should be expected to have been used, signature validation policy would determine acceptability. -->
-</p>
-<p>
-Подпись должна включать в себя элемент "“CommitmentTypeIndication"для указания назначения (назначений) подписи. Назначение может быть заверяемым действием, или ролью, связанной с цифровой подписью. Значение нужно брать из ASTM E1762-95(2013). 
-Signature.type содержит те же значения, что и committmentTypeIndication.
-<!-- The Signature Shall include a “CommitmentTypeIndication” element for the Purpose(s) of Signature. The Purpose can be the action being attested to, or the role associated with the signature. The value shall come from ASTM E1762-95(2013). 
-The Signature.type shall contain the same values as committmentTypeIndication. -->
-</p>
+<ul>
+ <li>The Signature.blob is base64 encoded XML-Signature</li>
+ <li>The XML-Signature is a <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#def-SignatureDetached">Detached</a> Signature (where the content that is signed is separate from the signature itself)</li> 
+ <li>The Signature SHOULD conform to XAdES-X-L for support of Long Term signatures. The XAdES-X-L specification adds the timestamp of the signing, inclusion of the signing certificate, and statement of revocation</li>
+ <li>When FHIR Resources are signed, the signature is accross the <a href="xml.html#canonical">Canonical XML form</a> of the resource(s)</li>
+ <li>The Signature SHOULD use the hashing algorithm sha256. Signature validation policy will apply to the signature and determine acceptability</li>
+ <li>The Signature SHALL include a "CommitmentTypeIndication" element for the Purpose(s) of Signature. The Purpose can be the action being attested to, or the role associated with the signature. The value shall come from ASTM E1762-95(2013). The Signature.type shall contain the same values as committmentTypeIndication</li>
+</ul>
 <p>
 Есть три уровня проверки подписи:
 <!-- There are three levels of signature verification:  -->
@@ -924,7 +1003,7 @@ The Signature.type shall contain the same values as committmentTypeIndication. -
    <li>подтверждение, что подписавшая сторона подлинна, не была отозвана, и соответствует назначению подписи,
    <!-- confirming that the signer was authentic, not revoked, and appropriate to the signature purpose,  --></li>
    <li>подтверждение, что интересуемое подписанное содержимое не изменялось, с помощью алгоритма хеширования.
-   <!-- confirming that the signed content of interest are unmodified using the hash algorithm. --></li>
+   <!-- confirming that the signed content of interest is unmodified using the hash algorithm. --></li>
 </ol>
 </p>
 <p>
@@ -933,11 +1012,6 @@ The Signature.type shall contain the same values as committmentTypeIndication. -
 <!-- Deviations from these guidelines would need to be expressed in site policy, and would be enumerated in the XML-Signature block. 
 For example some environments may choose a different XAdES profile, hashing algorithm, policy identifier, or signature purpose vocabulary.  -->
 </p>
-<div class="use">
-<p><b>Ограничения</b></p>
-[%dt.constraints Signature%]
-
-</div>
 
 <p>
 Signature используется в следующих местах: [%dtusage Signature%]
@@ -981,32 +1055,39 @@ Annotation is used in the following places: [%dtusage Annotation%]
 У некоторых элементов вместо типа стоит символ "*". В таких случаях типом элемента может быть один из следующих:
 </p>
 <ul class="dense">
+ <li><a href="datatypes.html#boolean">boolean</a></li>
  <li><a href="datatypes.html#integer">integer</a></li>
  <li><a href="datatypes.html#decimal">decimal</a></li>
- <li><a href="datatypes.html#dateTime">dateTime</a></li>
- <li><a href="datatypes.html#date">date</a></li>
+ <li><a href="datatypes.html#base64Binary">base64Binary</a></li>
  <li><a href="datatypes.html#instant">instant</a></li>
- <li><a href="datatypes.html#time">time</a></li>
  <li><a href="datatypes.html#string">string</a></li>
  <li><a href="datatypes.html#uri">uri</a></li>
- <li><a href="datatypes.html#boolean">boolean</a></li>
- <li><a href="datatypes.html#code">code</a> -  если определение расширения содержит привязку к подходящему набору кодов</li>
- <li><a href="datatypes.html#base64Binary">base64Binary</a></li>
- <li><a href="datatypes.html#Coding">Coding</a></li>
- <li><a href="datatypes.html#CodeableConcept">CodeableConcept</a></li>
+ <li><a href="datatypes.html#date">date</a></li>
+ <li><a href="datatypes.html#dateTime">dateTime</a></li>
+ <li><a href="datatypes.html#time">time</a></li>
+ <li><a href="datatypes.html#code">code</a></li>
+ <li><a href="datatypes.html#oid">oid</a></li>
+ <li><a href="datatypes.html#id">id</a></li>
+ <li><a href="datatypes.html#unsignedInt">unsignedInt</a></li>
+ <li><a href="datatypes.html#positiveInt">positiveInt</a></li>
+ <li><a href="datatypes.html#markdown">markdown</a></li>
+ <li><a href="datatypes.html#Annotation">Annotation</a></li>
  <li><a href="datatypes.html#Attachment">Attachment</a></li>
  <li><a href="datatypes.html#Identifier">Identifier</a></li>
+ <li><a href="datatypes.html#CodeableConcept">CodeableConcept</a></li>
+ <li><a href="datatypes.html#Coding">Coding</a></li>
  <li><a href="datatypes.html#Quantity">Quantity</a></li>
  <li><a href="datatypes.html#Range">Range</a></li>
  <li><a href="datatypes.html#Period">Period</a></li>
  <li><a href="datatypes.html#Ratio">Ratio</a></li>
+ <li><a href="datatypes.html#SampledData">SampledData</a></li>
+ <li><a href="datatypes.html#Signature">Signature</a></li>
  <li><a href="datatypes.html#HumanName">HumanName</a></li>
  <li><a href="datatypes.html#Address">Address</a></li>
  <li><a href="datatypes.html#ContactPoint">ContactPoint</a></li>
  <li><a href="datatypes.html#Timing">Timing</a></li>
- <li><a href="datatypes.html#Signature">Signature</a></li>
- <li><a href="datatypes.html#Annotation">Annotation</a></li>
- <li><a href="references.html#Reference">Reference</a> - - ссылка на другой ресурс</li>
+ <li><a href="references.html#Reference">Reference</a> - a reference to another resource</li>
+ <li><a href="resource.html#Meta">Meta</a></li>
 </ul>
 <p>
 Имена таких элементов заканчиваются на "[x]", эта часть заменяется на имя типа данных с большой буквы.

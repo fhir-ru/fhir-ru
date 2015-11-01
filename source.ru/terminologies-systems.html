@@ -14,6 +14,7 @@
 <%txheader systems%>
 
 <h3>Известные кодовые системы</h3>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
 Следующие имена (URI) могут использоваться в элементе <i>system</i> типа данных <a href="datatypes.html#Coding">Coding</a>. Если URI определен здесь, ему СЛЕДУЕТ отдавать предпочтение при использовании относительно других механизмов идентификации. Если кодовая система не перечислена здесь, корректный URI может быть определен проработкой следующего списка, в порядке:
@@ -26,6 +27,10 @@
 </ul>
 
 <p>
+See also the <a href="identifier-registry.html">list of known identifier systems</a> that can be used in the <i>system</i> element of the <a href="datatypes.html#Identifier">Identifier</a> data type.
+Additional identifier systems may be registered on the HL7 FHIR registry at <a href="http://hl7.org/fhir/registry">http://hl7.org/fhir/registry</a>.
+</p>
+<p>
 <b>Важные примечания:<!-- Important Notes: --></b>
 </p>
 <ul>
@@ -33,10 +38,12 @@
 <li>Note that some of the URNs in this list follow the URN specification in <a href="http://tools.ietf.org/html/rfc5141">RFC 5141</a> for referring to 
 standards published by ISO, such as urn:iso:std:iso:11073:10101. Where ISO standards define codes with meanings, and there is no entry in the list above,
 and they are not registered in the HL7 OID registry, the default URN for the code system is that defined by the RFC 5141.</li>
+<li>For several of the code systems in this list, multiple systems are given. This means that the variants identified are different code systems, not just variants of the same code system</li>
 <!--  <li>This list of names is incomplete and subject to change. Some values may be dropped and others will likely be added in the coming months as HL7 institutes formal processes around URIs in vocabulary</li>
 <li>Note that some of the URNs in this list follow the URN specification in <a href="http://tools.ietf.org/html/rfc5141">RFC 5141</a> for referring to 
 standards published by ISO, such as urn:iso:std:iso:11073:10101. Where ISO standards define codes with meanings, and there is no entry in the list above,
-and they are not registered in the HL7 OID registry, the default URN for the code system is that defined by the RFC 5141.</li> -->
+and they are not registered in the HL7 OID registry, the default URN for the code system is that defined by the RFC 5141.</li>
+<li>For several of the code systems in this list, multiple systems are given. This means that the variants identified are different code systems, not just variants of the same code system</li> -->
 </ul>
 
 <table class="grid">
@@ -105,8 +112,8 @@ and they are not registered in the HL7 OID registry, the default URN for the cod
    <td>2.16.840.1.113883.6.69</td>
  </tr>
  <tr>
-   <td>http://www2a.cdc.gov/vaccines/<br/>iis/iisstandards/vaccines.asp?rpt=cvx <a name="http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx"> </a></td>
-   <td><a href="http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx">CVX (Vaccine Admnistered)</a></td>
+   <td>http://hl7.org/fhir/sid/cvx <a name="http://hl7.org/fhir/sid/cvx"> </a></td>
+   <td><a href="http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx">CVX (Vaccine Administered)</a></td>
    <td>See <a href="cvx.html">Using CVX with FHIR</a></td>
    <td>2.16.840.1.113883.12.292</td>
  </tr>
@@ -129,16 +136,20 @@ and they are not registered in the HL7 OID registry, the default URN for the cod
    <td>2.16.840.1.113883.6.256 </td>
  </tr>
  <tr>
-   <td>http://hl7.org/fhir/sid/icd-10 <a name="http://hl7.org/fhir/sid/icd-10"> </a></td>
-   <td>ICD-10 International (<a href="http://www.who.int/classifications/icd/en/">WHO</a>)</td>
+   <td>
+     http://hl7.org/fhir/sid/icd-10 <a name="http://hl7.org/fhir/sid/icd-10"> </a><br/>
+     http://hl7.org/fhir/sid/icd-10-de <a name="http://hl7.org/fhir/sid/icd-10-de"> </a><br/>
+     http://hl7.org/fhir/sid/icd-10-nl <a name="http://hl7.org/fhir/sid/icd-10-nl"> </a><br/>
+     http://hl7.org/fhir/sid/icd-10-us <a name="http://hl7.org/fhir/sid/icd-10-us"> </a>
+   </td>
+   <td>ICD-10 International (<a href="http://www.who.int/classifications/icd/en/">WHO</a>) &amp; Local Variants</td>
    <td></td>
-   <td>2.16.840.1.113883.6.3 </td>
- </tr>
-  <tr>
-   <td>http://hl7.org/fhir/sid/icpc2 <a name="http://hl7.org/fhir/sid/icpc2"> </a></td>
-   <td>ICPC2 (International Classification of Primary Care) (<a href="http://www.ph3c.org/">PH3C</a>)</td>
-   <td></td>
-   <td>2.16.840.1.113883.6.139</td>
+   <td>
+     2.16.840.1.113883.6.3 <br/>
+     1.2.276.0.76.5.409 <br/>
+     2.16.840.1.113883.6.3.2 <br/>
+     ?? <br/>
+   </td>
  </tr>
   <tr>
    <td>http://www.icd10data.com/icd10pcs <a name="http://www.icd10data.com/icd10pcs"> </a></td>
@@ -147,15 +158,39 @@ and they are not registered in the HL7 OID registry, the default URN for the cod
    <td>2.16.840.1.113883.6.4 </td>
  </tr>
  <tr>
-   <td>http://hl7.org/fhir/sid/icd-9 <a name="http://hl7.org/fhir/sid/icd-9"> </a></td>
+   <td>
+     http://hl7.org/fhir/sid/icd-9-cm <a name="http://hl7.org/fhir/sid/icd-9-cm"> </a><br/>
+     http://hl7.org/fhir/sid/icd-9-cm/diagosis <a name="http://hl7.org/fhir/sid/icd-9-cm/diagosis"> </a><br/>
+     http://hl7.org/fhir/sid/icd-9-cm/procedure <a name="http://hl7.org/fhir/sid/icd-9-cm/procedure"> </a>
+   </td>
    <td>ICD-9 USA (<a href="http://www.cdc.gov/nchs/icd/icd9.htm">CDC</a>)</td>
    <td></td>
-   <td>2.16.840.1.113883.6.42 </td>
+   <td>2.16.840.1.113883.6.42 <br/> ? <br/> ? </td>
+ </tr>
+ <tr>
+   <td>
+     http://hl7.org/fhir/sid/icpc-1 <a name="http://hl7.org/fhir/sid/icpc-1"> </a> <br/>
+     http://hl7.org/fhir/sid/icpc-1-nl <a name="http://hl7.org/fhir/sid/icpc-1-nl"> </a> <br/>
+     http://hl7.org/fhir/sid/icpc-2 <a name="http://hl7.org/fhir/sid/icpc-2"> </a>
+   </td>
+   <td>ICPC (International Classification of Primary Care) (<a href="http://www.ph3c.org/">PH3C</a>)</td>
+   <td></td>
+   <td>
+      <br/>
+     2.16.840.1.113883.2.4.4.31.1 <br/>
+     2.16.840.1.113883.6.139
+   </td>
+ </tr>
+ <tr>
+   <td>http://hl7.org/fhir/sid/icf-nl <a name="http://hl7.org/fhir/sid/icf-nl"> </a></td>
+   <td>ICF  (International Classification of Functioning, Disability and Health) (<a href="http://www.who.int/classifications/icf/en/">WHO</a>)</td>
+   <td></td>
+   <td>2.16.840.1.113883.6.254</td>
  </tr>
  <tr>
    <td>http://hl7.org/fhir/v2/[X](/v) <a name="http://hl7.org/fhir/v2/[X](/v"> </a></td>
     <td><a href="terminologies-v2.html">Version 2 tables</a></td>
-   <td>[X] - это 4значный идентификатор таблицы, например http://hl7.org/fhir/v2/0203<br/>
+   <td>[X] - это 4значный идентификатор таблицы; например http://hl7.org/fhir/v2/0203<br/>
      Примечание: только <a href="terminologies-v2.html">некоторые таблицы</a> можно трактовать таким образом.
 	 Для некоторых таблиц значение кода является версионно-зависимым, и поэтому дополнительная информация должна быть включена в пространство имен, например http://hl7.org/fhir/v2/0123/2.3+, как определено в <a href="terminologies-v2.html">v2 table namespace list</a>.
 	 Коды версии 2 регистрозависимые.</td>
@@ -163,8 +198,8 @@ and they are not registered in the HL7 OID registry, the default URN for the cod
  </tr>
  <tr>
    <td>http://hl7.org/fhir/v3/[X] <a name="http://hl7.org/fhir/v3/[X"> </a></td>
-   <td><a href="terminologies-v3.html">A Version 3 code system</a></td>
-   <td>[X] - это имя кодовой системы, например http://hl7.org/fhir/v3/GenderStatus. Кодовые системы версии 3 являются регистрозависимыми.</td>
+   <td><a href="terminologies-v3.html">A <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> code system</a></td>
+   <td>[X] - это имя кодовой системы; например http://hl7.org/fhir/v3/GenderStatus. Кодовые системы HL7 v3 являются регистрозависимыми.</td>
    <td>См. <a href="terminologies-v3.html">перечень систем v3</a></td>
  </tr>
  <tr>
@@ -177,6 +212,13 @@ and they are not registered in the HL7 OID registry, the default URN for the cod
    <td>urn:ietf:bcp:47 <a name="urn:ietf:bcp:47"> </a></td>
    <td>IETF language (see <a href="http://tools.ietf.org/html/bcp47">Tags for Identifying Languages - BCP 47</a>)</td>
    <td>This is used for identifying langauge throughout FHIR. Note that usually these codes are in a <code>code</code> and the system is assumed</td>
+   <td></td>
+ </tr> 
+ <tr>
+   <td>urn:ietf:bcp:13 <a name="urn:ietf:bcp:47"> </a></td>
+   <td>Mime Types (see <a href="http://tools.ietf.org/html/bcp13">Multipurpose Internet Mail Extensions (MIME) Part Four - BCP 13</a>)</td>
+   <td>This is used for identifying the mime type system throughout FHIR. Note that these codes are in a <code>code</code> (e.g. <a href="datatypes.html#Attachment">Attachment.contentType</a> 
+   and in these elements the system is assumed). This system is defined for when constructing value sets of mime type codes</td>
    <td></td>
  </tr> 
  <tr>
