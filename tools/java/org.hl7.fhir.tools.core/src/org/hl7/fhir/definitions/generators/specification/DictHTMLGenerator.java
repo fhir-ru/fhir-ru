@@ -187,30 +187,30 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   }
 
   private void generateElementInner(StructureDefinition profile, ElementDefinition d, int mode, ElementDefinition value) throws Exception {
-    tableRowNE("Definition", null, page.processMarkdown(profile.getName(), d.getDefinition(), prefix));
-    tableRowNE("Note", null, businessIdWarning(tail(d.getPath())));
-    tableRow("Control", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
-    tableRowNE("Binding", "terminologies.html", describeBinding(d));
+    tableRowNE("Определение", null, page.processMarkdown(profile.getName(), d.getDefinition(), prefix));
+    tableRowNE("Примечание", null, businessIdWarning(tail(d.getPath())));
+    tableRow("Кард. множество", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
+    tableRowNE("Привязка", "terminologies.html", describeBinding(d));
     if (d.hasNameReference())
-      tableRow("Type", null, "See "+d.getNameReference());
+      tableRow("Тип", null, "See "+d.getNameReference());
     else
-      tableRowNE("Type", "datatypes.html", describeTypes(d.getType()) + processSecondary(mode, value));
+      tableRowNE("Тип", "datatypes.html", describeTypes(d.getType()) + processSecondary(mode, value));
     if (d.getPath().endsWith("[x]"))
-      tableRowNE("[x] Note", null, "See <a href=\""+prefix+"formats.html#choice\">Choice of Data Types</a> for further information about how to use [x]");
-    tableRow("Is Modifier", "conformance-rules.html#ismodifier", displayBoolean(d.getIsModifier()));
-    tableRow("Must Support", "conformance-rules.html#mustSupport", displayBoolean(d.getMustSupport()));
-    tableRowNE("Requirements",  null, page.processMarkdown(profile.getName(), d.getRequirements(), prefix));
-    tableRowHint("Alternate Names", "Other names by which this resource/element may be known", null, describeAliases(d.getAlias()));
-    tableRowNE("Comments",  null, page.processMarkdown(profile.getName(), d.getComments(), prefix));
-    tableRow("Max Length", null, !d.hasMaxLengthElement() ? null : Integer.toString(d.getMaxLength()));
-    tableRowNE("Default Value", null, encodeValue(d.getDefaultValue()));
-    tableRowNE("Meaning if Missing", null, d.getMeaningWhenMissing());
-    tableRowNE("Fixed Value", null, encodeValue(d.getFixed()));
-    tableRowNE("Pattern Value", null, encodeValue(d.getPattern()));
-    tableRow("Example", null, encodeValue(d.getExample()));
-    tableRowNE("Invariants", null, invariants(d.getConstraint()));
-    tableRow("LOINC Code", null, getMapping(profile, d, Definitions.LOINC_MAPPING));
-    tableRow("SNOMED-CT Code", null, getMapping(profile, d, Definitions.SNOMED_MAPPING));
+      tableRowNE("[x] Примечание", null, "См. более подробную информацию об использовании [x]в разделе <a href=\""+prefix+"formats.html#choice\">Выбор типов данных</a>");
+    tableRow("Является модификатором", "conformance-rules.html#ismodifier", displayBoolean(d.getIsModifier()));
+    tableRow("Должен быть поддержан", "conformance-rules.html#mustSupport", displayBoolean(d.getMustSupport()));
+    tableRowNE("Требования",  null, page.processMarkdown(profile.getName(), d.getRequirements(), prefix));
+    tableRowHint("Альтернативные имена", "Другие имена, под которыми этот ресурс/элемент может быть известен", null, describeAliases(d.getAlias()));
+    tableRowNE("Комментарии",  null, page.processMarkdown(profile.getName(), d.getComments(), prefix));
+    tableRow("Макс. длина", null, !d.hasMaxLengthElement() ? null : Integer.toString(d.getMaxLength()));
+    tableRowNE("Значение по умолчанию", null, encodeValue(d.getDefaultValue()));
+    tableRowNE("Значение, если отсутствует", null, d.getMeaningWhenMissing());
+    tableRowNE("Фиксированное значение", null, encodeValue(d.getFixed()));
+    tableRowNE("Шаблон значения", null, encodeValue(d.getPattern()));
+    tableRow("Пример", null, encodeValue(d.getExample()));
+    tableRowNE("Инварианты", null, invariants(d.getConstraint()));
+    tableRow("LOINC-код", null, getMapping(profile, d, Definitions.LOINC_MAPPING));
+    tableRow("SNOMED-CT-код", null, getMapping(profile, d, Definitions.SNOMED_MAPPING));
    }
 
   private String processSecondary(int mode, ElementDefinition value) throws Exception {
@@ -224,9 +224,9 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 
   private String businessIdWarning(String name) {
     if (name.equals("identifier"))
-      return "This is a business identifer, not a resource identifier (see <a href=\""+prefix+"resource.html#identifiers\">discussion</a>)";
+      return "Это бизнес-идентификатор, а не идентификатор ресурса (см. <a href=\""+prefix+"resource.html#identifiers\">обсуждение</a>)";
     if (name.equals("version"))
-      return "This is a business versionId, not a resource identifier (see <a href=\""+prefix+"resource.html#versions\">discussion</a>)";
+      return "Это бизнес-versionId, а не идентификатор ресурса (см. <a href=\""+prefix+"resource.html#versions\">обсуждение</a>)";
     return null;
   }
 
@@ -330,7 +330,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
       return null;
     StringBuilder s = new StringBuilder();
     if (constraints.size() > 0) {
-      s.append("<b>Defined on this element</b><br/>\r\n");
+      s.append("<b>Определено на этом элементе</b><br/>\r\n");
       List<String> ids = new ArrayList<String>();
       for (ElementDefinitionConstraintComponent id : constraints)
         ids.add(id.getKey());
@@ -420,28 +420,28 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 
 	private void writeEntry(String path, String cardinality, String type, BindingSpecification bs, ElementDefn e) throws Exception {
 		write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+path.replace("[", "_").replace("]", "_")+"\"> </a><b>"+path+"</b></td></tr>\r\n");
-		tableRowNE("Definition", null, page.processMarkdown(path, e.getDefinition(), prefix));
-    tableRowNE("Note", null, businessIdWarning(e.getName()));
-		tableRow("Control", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
-		tableRowNE("Binding", "terminologies.html", describeBinding(path, e));
+		tableRowNE("Определение", null, page.processMarkdown(path, e.getDefinition(), prefix));
+    tableRowNE("Примечание", null, businessIdWarning(e.getName()));
+		tableRow("Кард. множество", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
+		tableRowNE("Привязка", "terminologies.html", describeBinding(path, e));
 		if (!Utilities.noString(type) && type.startsWith("@"))
-		  tableRowNE("Type", null, "<a href=\"#"+type.substring(1)+"\">See "+type.substring(1)+"</a>");
+		  tableRowNE("Тип", null, "<a href=\"#"+type.substring(1)+"\">См. "+type.substring(1)+"</a>");
 		else
-		  tableRowNE("Type", "datatypes.html", type);
+		  tableRowNE("Тип", "datatypes.html", type);
     if (path.endsWith("[x]"))
       tableRowNE("[x] Note", null, "See <a href=\""+prefix+"formats.html#choice\">Choice of Data Types</a> for further information about how to use [x]");
-		tableRow("Is Modifier", "conformance-rules.html#ismodifier", displayBoolean(e.isModifier()));
-    tableRowNE("Default Value", null, encodeValue(e.getDefaultValue()));
-    tableRowNE("Meaning if Missing", null, e.getMeaningWhenMissing());
+		tableRow("Является модификатором", "conformance-rules.html#ismodifier", displayBoolean(e.isModifier()));
+    tableRowNE("Значение по умолчанию", null, encodeValue(e.getDefaultValue()));
+    tableRowNE("Значение, если отсутствует", null, e.getMeaningWhenMissing());
 
-		tableRowNE("Requirements", null, page.processMarkdown(path, e.getRequirements(), prefix));
-		tableRowHint("Alternate Names", "Other names by which this resource/element may be known", null, toSeperatedString(e.getAliases()));
+		tableRowNE("Требования", null, page.processMarkdown(path, e.getRequirements(), prefix));
+		tableRowHint("Альтернативные имена", "Другие имена, под которыми этот ресурс/элемент может быть известен", null, toSeperatedString(e.getAliases()));
     if (e.hasSummaryItem())
-      tableRow("Summary", "search.html#summary", Boolean.toString(e.isSummaryItem()));
-    tableRowNE("Comments", null, page.processMarkdown(path, e.getComments(), prefix));
-    tableRowNE("Invariants", null, invariants(e.getInvariants(), e.getStatedInvariants()));
-    tableRow("LOINC Code", null, e.getMapping(Definitions.LOINC_MAPPING));
-    tableRow("SNOMED-CT Code", null, e.getMapping(Definitions.SNOMED_MAPPING));
+      tableRow("Суммарный", "search.html#summary", Boolean.toString(e.isSummaryItem()));
+    tableRowNE("Комментарии", null, page.processMarkdown(path, e.getComments(), prefix));
+    tableRowNE("Инварианты", null, invariants(e.getInvariants(), e.getStatedInvariants()));
+    tableRow("LOINC-код", null, e.getMapping(Definitions.LOINC_MAPPING));
+    tableRow("SNOMED-CT-код", null, e.getMapping(Definitions.SNOMED_MAPPING));
 		tableRow("To Do", null, e.getTodo());
 		if (e.getTasks().size() > 0) {
 	    tableRowNE("gForge Tasks", null, tasks(e.getTasks()));
@@ -501,7 +501,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     List<String> done = new ArrayList<String>();
 	  StringBuilder s = new StringBuilder();
 	  if (invariants.size() > 0) {
-	    s.append("<b>Defined on this element</b><br/>\r\n");
+	    s.append("<b>Определено на этом элементе</b><br/>\r\n");
 	    List<String> ids = new ArrayList<String>();
 	    for (String id : invariants.keySet())
 	      ids.add(id);
@@ -519,7 +519,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     if (stated.size() > 0) {
       if (s.length() > 0)
         s.append("<br/>");
-      s.append("<b>Affect this element</b><br/>\r\n");
+      s.append("<b>Влияет на этот элемент</b><br/>\r\n");
       boolean b = false;
       for (Invariant id : stated) {
         if (!done.contains(id.getId())) {

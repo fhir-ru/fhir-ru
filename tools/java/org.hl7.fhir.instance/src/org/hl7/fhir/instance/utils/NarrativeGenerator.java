@@ -2208,7 +2208,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 
   private void generateCopyright(XhtmlNode x, ValueSet vs) {
     XhtmlNode p = x.addTag("p");
-    p.addTag("b").addText("Copyright Statement:");
+    p.addTag("b").addText("Предупреждение об авторском праве:");
     smartAddText(p, " " + vs.getCopyright());
   }
 
@@ -2216,16 +2216,16 @@ public class NarrativeGenerator implements INarrativeGenerator {
   private XhtmlNode addTableHeaderRowStandard(XhtmlNode t, boolean hasHierarchy, boolean hasDisplay, boolean definitions, boolean comments, boolean deprecated) {
     XhtmlNode tr = t.addTag("tr");
     if (hasHierarchy)
-      tr.addTag("td").addTag("b").addText("Lvl");
-    tr.addTag("td").addTag("b").addText("Code");
+      tr.addTag("td").addTag("b").addText("Уровень");
+    tr.addTag("td").addTag("b").addText("Код");
     if (hasDisplay)
-      tr.addTag("td").addTag("b").addText("Display");
+      tr.addTag("td").addTag("b").addText("Отображение");
     if (definitions)
-      tr.addTag("td").addTag("b").addText("Definition");
+      tr.addTag("td").addTag("b").addText("Определение");
     if (deprecated)
-      tr.addTag("td").addTag("b").addText("Deprecated");
+      tr.addTag("td").addTag("b").addText("Устарел");
     if (comments)
-      tr.addTag("td").addTag("b").addText("Comments");
+      tr.addTag("td").addTag("b").addText("Комментарии");
     return tr;
   }
 
@@ -2424,24 +2424,24 @@ public class NarrativeGenerator implements INarrativeGenerator {
           generateCopyright(x, vs);
       }
       XhtmlNode p = x.addTag("p");
-      p.addText("This value set includes codes from the following code systems:");
+      p.addText("Этот набор значений включает в себя коды, определённые в другой кодовой системе, по следующим правилам:");
     } else {
       XhtmlNode p = x.addTag("p");
-      p.addText("In addition, this value set includes codes from other code systems:");
+      p.addText("Дополнительно этот набор значений включает в себя коды из других кодовых систем:");
     }
 
     XhtmlNode ul = x.addTag("ul");
     XhtmlNode li;
     for (UriType imp : vs.getCompose().getImport()) {
       li = ul.addTag("li");
-      li.addText("Import all the codes that are contained in ");
+      li.addText("Импортировать все коды, которые входят в ");
       AddVsRef(imp.getValue(), li);
     }
     for (ConceptSetComponent inc : vs.getCompose().getInclude()) {
-      hasExtensions = genInclude(ul, inc, "Include") || hasExtensions;
+      hasExtensions = genInclude(ul, inc, "Включить") || hasExtensions;
     }
     for (ConceptSetComponent exc : vs.getCompose().getExclude()) {
-      hasExtensions = genInclude(ul, exc, "Exclude") || hasExtensions;
+      hasExtensions = genInclude(ul, exc, "Исключить") || hasExtensions;
     }
     return hasExtensions;
   }
@@ -2480,11 +2480,11 @@ public class NarrativeGenerator implements INarrativeGenerator {
     ValueSet e = context.fetchCodeSystem(inc.getSystem());
 
     if (inc.getConcept().size() == 0 && inc.getFilter().size() == 0) {
-      li.addText(type+" all codes defined in ");
+      li.addText(type+" все коды, определенные в ");
       addCsRef(inc, li, e);
     } else {
       if (inc.getConcept().size() > 0) {
-        li.addText(type+" these codes as defined in ");
+        li.addText(type+" эти коды, как определено в ");
         addCsRef(inc, li, e);
 
         XhtmlNode t = li.addTag("table");
@@ -2727,15 +2727,15 @@ public class NarrativeGenerator implements INarrativeGenerator {
         x.addTag("p").addText("URL: [base]/"+c.getValue()+"/[id]/$"+opd.getCode());
     }
 
-    x.addTag("p").addText("Parameters");
+    x.addTag("p").addText("Параметры");
     XhtmlNode tbl = x.addTag("table").setAttribute("class", "grid");
     XhtmlNode tr = tbl.addTag("tr");
-    tr.addTag("td").addTag("b").addText("Use");
-    tr.addTag("td").addTag("b").addText("Name");
-    tr.addTag("td").addTag("b").addText("Cardinality");
-    tr.addTag("td").addTag("b").addText("Type");
-    tr.addTag("td").addTag("b").addText("Binding");
-    tr.addTag("td").addTag("b").addText("Documentation");
+    tr.addTag("td").addTag("b").addText("Применение");
+    tr.addTag("td").addTag("b").addText("Имя");
+    tr.addTag("td").addTag("b").addText("Кард. множество");
+    tr.addTag("td").addTag("b").addText("Тип");
+    tr.addTag("td").addTag("b").addText("Привязка");
+    tr.addTag("td").addTag("b").addText("Документация");
     for (OperationDefinitionParameterComponent p : opd.getParameter()) {
       genOpParam(tbl, "", p);
     }
@@ -2804,17 +2804,17 @@ public class NarrativeGenerator implements INarrativeGenerator {
     smartAddText(x.addTag("p"), conf.getDescription());
     ConformanceRestComponent rest = conf.getRest().get(0);
     XhtmlNode t = x.addTag("table");
-    addTableRow(t, "Mode", rest.getMode().toString());
-    addTableRow(t, "Description", rest.getDocumentation());
+    addTableRow(t, "Метод", rest.getMode().toString());
+    addTableRow(t, "Описание", rest.getDocumentation());
 
-    addTableRow(t, "Transaction", showOp(rest, SystemRestfulInteraction.TRANSACTION));
-    addTableRow(t, "System History", showOp(rest, SystemRestfulInteraction.HISTORYSYSTEM));
-    addTableRow(t, "System Search", showOp(rest, SystemRestfulInteraction.SEARCHSYSTEM));
+    addTableRow(t, "Транзакция", showOp(rest, SystemRestfulInteraction.TRANSACTION));
+    addTableRow(t, "Системная история", showOp(rest, SystemRestfulInteraction.HISTORYSYSTEM));
+    addTableRow(t, "Системный поиск", showOp(rest, SystemRestfulInteraction.SEARCHSYSTEM));
 
     t = x.addTag("table");
     XhtmlNode tr = t.addTag("tr");
-    tr.addTag("th").addTag("b").addText("Resource Type");
-    tr.addTag("th").addTag("b").addText("Profile");
+    tr.addTag("th").addTag("b").addText("Тип ресурса");
+    tr.addTag("th").addTag("b").addText("Профиль");
     tr.addTag("th").addTag("b").addText("Read");
     tr.addTag("th").addTag("b").addText("V-Read");
     tr.addTag("th").addTag("b").addText("Search");
