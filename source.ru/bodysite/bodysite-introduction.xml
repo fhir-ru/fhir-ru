@@ -6,7 +6,7 @@
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>Примечание к DSTU:</b> Приветствуется фидбек на тему: следует ли сделать BodySite независимым ресурсом, или типом данных, который будет использоваться, когда элемент ресурса описывает анатомическое расположение (например Observation.bodySite)</b>
+<b>Примечание к DSTU:</b> Приветствуется фидбек на тему: следует ли сделать BodySite независимым ресурсом, или типом данных, который будет использоваться, когда элемент ресурса описывает анатомическое расположение (например Observation.bodySite)
 <!-- <b>DSTU Note:</b> Feedback is welcome on whether BodySite should be an independent resource or a datatype to be used when a resource element is an anatomic location (for example Observation.bodySite) -->
 </p>
 <p>

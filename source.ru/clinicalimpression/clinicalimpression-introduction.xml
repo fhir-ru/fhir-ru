@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование</h2>
 <p>
 Выполнение клинической оценки является фундаментальной частью рабочего процесса клинициста, выполняемой многократно в течение дня.
@@ -23,9 +24,11 @@ ongoing process of care, and the patient will be re-assessed repeatedly. For thi
 impression can explicit reference both care plans (preceeding and resulting) and reference a previous
 impression that this impression follows on from. -->
 </p>
+<blockquote class="dstu-note">
+<a name="dstu"> </a>
 <p>
-В отличие от многих других ресурсов у обмена записями клинических оценок имеется небольшой прототип. По этой причине данный ресурс должен рассматриваться как особо склонный к постоянным правкам. Рабочая группа Patient Care хотела бы обратить особое внимание рецензентов и исполнителей на следующие вопросы с точки зрения масштаба и использования:
-<!-- Unlike many other resources, there is little prior art with regard to exchanging records of 
+<b>Примечание к DSTU:</b> В отличие от многих других ресурсов у обмена записями клинических оценок имеется небольшой прототип. По этой причине данный ресурс должен рассматриваться как особо склонный к постоянным правкам. Рабочая группа Patient Care хотела бы обратить особое внимание рецензентов и исполнителей на следующие вопросы с точки зрения масштаба и использования:
+<!-- <b>DSTU Note:</b> Unlike many other resources, there is little prior art with regard to exchanging records of 
 clinical assessments. For this reason, this resource should be regarded as particularly 
 prone to ongoing revision. In terms of scope and usage, the Patient Care workgroup wishes to
 draw the attention of reviewers and implementers to the following issues:  -->
@@ -45,9 +48,15 @@ draw the attention of reviewers and implementers to the following issues:  -->
  <li>Should an impression reference other impressions that are related? (how related?)</li>
  <li>Investigations - the specification needs a good value set for the code for the group, and will be considering the name "investigations" further</li> -->
 </ul> 
+<p>
+Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+</p>
+</blockquote>
+
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи</h2>
 <p>
 Есть другое связанное клиническое понятие, которое часто называют "оценкой" - инструменты оценки, например шкала Апгар (также известные как шкалы оценки).
@@ -61,6 +70,7 @@ during the assessment process. -->
 </div>
 
 <div>
+<a name="bnc"> </a>
 <h2>Предпосылки и контекст</h2>
 <p>
 Важные исходные данные для понимания этого ресурса можно найти на <a href="http://wiki.hl7.org/index.php?title=Clinical_Assessment">страницах wiki-раздела FHIR</a>. В частности, раскадровка планирования дизайна ресурса, а также основа, используемая для всех создаваемых примеров.

@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование</h2>
 <p>
 OralHealthClaim - один из набора аналогичных ресурсов (OralHealthClaim, VisionClaim, PharmacyClaim, ProfessionalClaim, InstitutionalClaim), которые используются поставщиками для обмена финансовой информацией, а также для поддержки клинической информации в отношении предоставления услуг здравоохранения. Основными видами использования этого ресурса является поддержка eClaims, обмен данными о текущих или предлагаемых услугах c плательщиками пособий (benefit payors), страховщиками и национальными программами здравоохранения для планирования оплаты лечения и компенсации.
