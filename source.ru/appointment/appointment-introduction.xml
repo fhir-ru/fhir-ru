@@ -1,5 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 	<div>
+<a name="scope"> </a>
 		<h2>Область применения и использование<!-- Scope and Usage --></h2>
 		<p>
 		Ресурсы Appointment используются для предоставления информации о планируемом или состоявшемся приёме. Ресурс описывает только одну встречу; серия повторяющихся визитов к специалисту требует создания нескольких ресурсов Appointment для каждой встречи.
@@ -28,9 +29,9 @@
 			<li>
 				<b>Обнаружение/адресация<!-- Discovery/Addressing --></b>
 				<p>
-				Перед тем как создавать Appointment, необходимо определить адрес ресурса, с помощью которого мы хотим запланировать оказание медицинской услуги. Выбор, как правило, основывается на типе услуги здравоохранения и информации о формате, которая указывает, как сделать этот запрос. Обычно это выполняется с помощью ресурса Schedule.
-					<!-- Before an appointment can be made the address of the resource that we want to schedule
-					an appointment with must be determined. This is often based on the healthcare Service Type,
+				Перед тем как создавать Appointment, необходимо определить адрес/точку взаимодействия ресурса, для которого мы хотим запланировать appointment. Выбор, как правило, основывается на типе услуги здравоохранения и информации о формате, которая указывает, как сделать этот запрос. Обычно это выполняется с помощью ресурса Schedule.
+					<!-- Before an appointment can be made the address/endpoint details of the resource that we want 
+					to schedule an appointment with must be determined. This is often based on the healthcare Service Type,
 					any formatting information which indicates how to make the request.
 					This is typically handled via the Schedule resource. -->
 				</p>
@@ -58,14 +59,14 @@
 			<li>
 				<b>Создание запроса на запись к специалисту <!-- Making the Appointment Request --></b>
 				<p>
-					Создание запроса выполняется размещением ресурса Appointment по адресу, определенному на шаге discovery.
-					Он будет содержать статус требуемых действий для каждого участника.
-					(Система, которая получит запрос, может поменять статус любого размещенного Appointment на основе внутренних бизнес-правил, например что у определенных пользователей нет прав на создание каких-то записей на приём).
-					<!-- The request is performed by posting an Appointment to the address found during discovery.
-					This will have a needs-action status for each of the participants.
-					(The system that receives the request may modify the status of any posted appointment based
-					on internal business rules, such as certain users do not have permission to request certain
-					appointments) -->
+Когда возникает необходимость в создании записи на прием, запрашивающий создает новый ресурс Appointment со статусом Appointment.status="proposed".<br/>
+Все входящие в него участники (обязательные и необязательные) должны иметь статус status="needs-action", чтобы дать возможность пользователям-участникам фильтровать и отображать записи на прием для принятия или отклонения новых или обновленных запросов. Основанные не внутренних бизнес-правилах системы, некоторые статусы могут обновляться автоматически, например "отклонить, потому что запрашиваемый участник в отпуске" или "данному типу пользователя не разрешено запрашивать конкретно эти записи на прием".					
+					<!-- When an appointment is required, a requester creates new Appointment resource with the Appointment.status="proposed".<br/>
+					All included participants (optional or mandatory) should have the status="needs-action" to allow filtering and displaying
+					appointments to user-participants for accepting or rejecting new and updated requests. Based on internal system business rules,
+					certain statuses may be automatically updated, for example: "reject because the requested participant is on vacation" or 
+					"this type of user is not allowed to request those specific appointments".
+ -->
 				</p>
 			</li>
 			<li>
@@ -73,7 +74,7 @@
 				<p>
 				Ответ на запрос выполняется человеком/системой, обрабатывающими запрос, при необходимости статусы участников обновляются. Если участвует несколько систем, то они создадут ресурсы AppointmentResponse с нужными статусами.
 					<!-- The reply process is simply performed by the person/system handing the requests updating
-					the Participant Statuses as needed. If there are multiple systems involved, then these
+					the participant statuses as needed. If there are multiple systems involved, then these
 					will create AppointmentResponse entries with the desired statuses. -->
 				</p>
 				<p>
@@ -87,8 +88,8 @@
 				<b>Проверка общего статуса (запрашивающим)<!-- Checking the overall status (Requester) --></b>
 				<p>
 				Запрашивающий запись на приём (организатор) проверяет общий статус планируемого приёма (и ресурсов AppointmentResponse, по возможности) с помощью FHIR-модели "издатель-подписчик".
-					<!-- The Requester (organizer) of the appointment checks for the overall status of the appointment
-					(and appointmentresponses where applicable) using fhir pub-sub techniques. -->
+					<!-- The requester (organizer) of the appointment checks for the overall status of the appointment
+					(and appointment responses, where applicable) using FHIR pub-sub techniques. -->
 				</p>
 				<p>
 				Если статусы участников показывают, что необходимо изменить время и/или дату встречи, то процесс может начаться заново, с другими системами, отвечающими на новый набор слотов времени.
@@ -121,6 +122,7 @@
 					<!-- Consideration should be given to situations where scheduling needs to be handled
 					in more of a queue-like process. -->
 				</p>
+				<blockquote>
 				<p>
 				Примечание: конкретно этот тип клинического планирования записей на приём не был включён в определение записи на приём (и связанных ресурсов), однако, если вы хотели бы внести вклад в модификацию этого ресурса для покрытия таких сценариев, пожалуйста, свяжитесь с рабочей группой HL7 Patient Administration.
 					<!-- Note: This type of clinical appointment scheduling has not been specifically covered
@@ -128,12 +130,36 @@
 					would like to contribute to the modification of this resource to cover these use cases,
 					please contact the HL7 Patient Administration work-group. -->
 				</p>
+				</blockquote>
 			</li>
 		</ul>
 	</div>
   <div>
+<a name="bnr"> </a>
     <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
-
+	<h3>Appointment Request/Response Pattern</h3>
+		<p>
+			When using a request response style of appointment this is done using Appointment 
+			and AppointmentResponse resources.<br/>
+			The request is made in the form of an Appointment with a proposed or pending status,
+			and the list of actors with a participation status of "needs-action".
+		</p>
+		<p>
+			Participants in the appointment respond their acceptance (or not) to the appointment
+			by creating AppointmentResponse resources.<br/>
+			Once all the participants have replied, then the appointment resource is able to be
+			updated with an overall status which collates the results of all the participants
+			and presents the approved details of the appointment.
+		</p>
+		<p>
+			The participant type property can be used to represent a specific role that a practitioner 
+			is required to perform for the appointment. This could be specified without an actor when the actual
+			practitioner is not known, and will be filled in closer to the scheduled time.<br/>
+			This property must be the same between the Appointment-participant and the AppointmentResponse
+			so that the appropriate values can be allocated.
+			If you need multiple actors of a specific type, then multiple participants with that type value
+			are included on the appointment.
+		</p>
     <h3>Статусы записи на прием и Encounters<!-- Appointment Statuses and Encounters --></h3>
     <p>
 	Ресурс Appointment можно считать чисто административным, а ресурс Encounter будет применяться непосредственно в нуждах клиники.
@@ -161,7 +187,7 @@ Encounter, как правило, создается с началом оказ�
       non health appointment systems which implement this standard, and the desire to integrate
       with the consumer who has no access to health based software is highly desirable. --><br/>
      Для ведения разработки шлюзов между FHIR-серверами и iCAL-системами предоставлен мэппинг на стандарт iCAL.
-	 <!--  The mappings to the iCAL standard has been provided to guide implementation of gateways between
+	 <!--  The mappings to the iCAL standard have been provided to guide implementation of gateways between
       FHIR servers and iCAL systems. -->
     </p>
 		<h3>Место проведения условленной встречи и участие в ней<!-- Appointment Locations and Participation --></h3>

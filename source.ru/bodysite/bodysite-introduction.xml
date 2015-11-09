@@ -1,13 +1,19 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование</h2>
-<blockquote>
+<blockquote class="dstu-note">
+<a name="dstu"> </a>
 <p>
-<b><a name="dstu">Примечание для участвующих в голосовании</a>:  мы ожидаем входные данные о том, следует ли сделать BodySite независимым ресурсом или типом данных, который будет использоваться, когда элемент ресурса описывает анатомическое расположение (например Observation.bodySite)</b>
-<!-- <b><a name="dstu">Note to Balloters</a>:  We are seeking input on whether BodySite should be an independent resource or a datatype to be used when a resource element is an anatomic location (for example Observation.bodySite)</b> -->
+<b>Примечание к DSTU:</b> Приветствуется фидбек на тему: следует ли сделать BodySite независимым ресурсом, или типом данных, который будет использоваться, когда элемент ресурса описывает анатомическое расположение (например Observation.bodySite)</b>
+<!-- <b>DSTU Note:</b> Feedback is welcome on whether BodySite should be an independent resource or a datatype to be used when a resource element is an anatomic location (for example Observation.bodySite) -->
+</p>
+<p>
+Фидбек оставлять <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">здесь</a>.
 </p>
 </blockquote>
+
 <p>
 Ресурс BodySite содержит подробные сведения об анатомическом расположении образца для анализа или части тела, включая информацию о пациенте, идентификаторы, а также описания и изображения. Он предусматривает добавление к анатомическому расположению модификаторов, таких как латеральность и направленность для тех случаев, где использование предопределенных кодов не представляется возможным.
 Ресурс BodySite поддерживает запись и отслеживание анатомического расположения или структуры на пациенте вне зависимости от контекста другого ресурса. Например он может быть целью ресурса <a href="procedure.html">Procedure</a> или <a href="observation.html">Observation</a>.
@@ -17,6 +23,7 @@
 
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи</h2>
 <p>
 Ресурс BodySite не предназначен для замены предкоординации кодов. Если предкоординация кодов поддерживается реализацией, и элемент ресурса поддерживает выбор между codeableConcept и BodySite, то следует использовать codeableConcept. Данный ресурс предназначен для описания не типа анатомического расположения, а определенного участка тела конкретного пациента.

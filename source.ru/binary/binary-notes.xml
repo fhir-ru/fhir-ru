@@ -5,8 +5,8 @@
 
 <p>
 Ресурсы Binary ведут себя несколько иначе, чем всех остальные ресурсы в RESTful API. Особенно при получении запроса на чтение двоичного ресурса, в котором явно не указан FHIR-тип контента "application/xml+fhir" или "application/json+fhir", тогда содержимое следует вернуть, используя тип контента, указанный в ресурсе. Например если тип контента в ресурсе "application/pdf", то содержимое следует вернуть непосредственно в формате PDF.
-<!-- The Binary resources behaves slightly differently to all other resources on the RESTful API.
-specifically, when a read request is made for the binary resource that doesn't explicitly
+<!-- The Binary resources behave slightly differently to all other resources on the RESTful API.
+Specifically, when a read request is made for the binary resource that doesn't explicitly
 specify the FHIR content types "application/xml+fhir" or "application/json+fhir", then 
 the content should be returned using the content type stated in the resource. 
 e.g. if the content type in the resource is "application/pdf", then the content should
@@ -15,7 +15,7 @@ be returned as a PDF directly.  -->
 <p>
 Обратите внимание, что из-за способа работы веб-инфраструктуры не возможно ввести оющие правила об отношениях между полем "Accept" в запросе HTTP, и типом возвращаемого значения, вот почему по этому поводу нет никаких жестких правил. Однако замысел состоит в том, что если только на это нет специального запроса, то FHIR XML/JSON представление не возвращается.
 <!-- Note that due to the way the web infrastructure works, it is not possible to make blanket
-rules about the relationship between the "Accept" field in the http request, and the 
+rules about the relationship between the "Accept" field in the HTTP request, and the 
 return type, which is why there is no hard rule about this. However the intent is that
 unless specifically requested, the FHIR XML/JSON representation is not returned.  -->
 </p>
@@ -36,7 +36,7 @@ malicious or malformed content. For more details see <a href="security.html#narr
 <h3>Binary Support</h3>
 <p>
 FHIR servers can choose to support <a href="compartments.html#binary">Binary Resources</a>
-at the end point [base]/Binary. The binary end-point accepts
+at the end-point [base]/Binary. The binary end-point accepts
 any kind of content, such as images and other media, documents (CDA, 
 PDF, Word etc.), plain text, XML or anything else, and stores the 
 content as is, along with the content type provided by the HTTP headers. 
@@ -47,7 +47,7 @@ above. The _format  parameter has no meaning when used with binary
 resources: they are always represented using their original content type.
 </p>
 <p>
-Note that on GET, POST, and PUT operations, the http content-type
+Note that on GET, POST, and PUT operations, the HTTP content-type
 header is the mime type of the binary resource, and the HTTP body is
 the resource in its binary form. (The <a href="xml.html#binary">XML</a> 
 and <a href="json.html#binary">JSON</a> Bundle Representations for binary 
@@ -67,7 +67,6 @@ Content-Type: text/xml
 Access-Control-Allow-Origin: *
 Last-Modified: Thu, 24 Oct 2013 00:41:55 +0000
 ETag: 1
-Content-Location: http://[server]/[path]/Binary/4/_history/1
 
 &lt;ClinicalDocument xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
   xmlns=&quot;urn:hl7-org:v3&quot;xmlns:cda=&quot;urn:hl7-org:v3&quot;&gt;
