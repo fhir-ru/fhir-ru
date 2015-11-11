@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <!-- Состояние -->
 Используется для записи подробной информации, имеющей отношение к оценке и утверждениям клинициста о конкретных аспектах состояния здоровья человека.
@@ -20,15 +21,16 @@ pathophysiologic findings (diagnosis), or identification of health issues/situat
 or identification of health issues/situations considered harmful, potentially harmful and required to be investigated and managed (problems). -->
 </p>
 <p>
-Ресурс condition можно также использовать для записи конкретного состояния здоровья пациента, которое, как правило, не имеет негативного исхода (пока не прогнозируются или не обнаруживаются осложнения), например беременность. Примеры осложнений беременности включают: гиперемезис беременных, эклампсизм (поздний токсикоз беременных), эклампсия (тяжелая форма позднего токсикоза беременных), которые вводятся в качестве проблем/диагнозов.
+Ресурс condition можно также использовать для записи конкретного состояния здоровья пациента, которое, как правило, не имеет негативного исхода (пока не прогнозируются или не обнаруживаются осложнения), например беременность. Примеры осложнений беременности включают: гиперемезис беременных, эклампсизм (поздний токсикоз беременных), эклампсия (тяжелая форма позднего токсикоза беременных) - которые вводятся в качестве проблем/диагнозов.
 <!-- 
 The condition resource may also be used to record certain health state of a patient which does not normally present negative outcome (until complications 
-are predicted or detected), e.g. pregnancy. Examples of complications of pregnancy include: hyperemesis gravidarum, preeclampsia, eclampsia, which are 
+are predicted or detected), e.g. pregnancy. Examples of complications of pregnancy include: hyperemesis gravidarum, preeclampsia, eclampsia - which are 
 captured as problems/diagnoses. -->
 </p>
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи</h2>
 <p>
 Другие ресурсы могут ссылаться на ресурс condition в качестве "основания" для действия (например <a href="medicationorder.html">MedicationOrder</a>,

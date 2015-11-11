@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование</h2>
 <p>
 Ресурс DeviceMetric описывает обязательные статичные свойства, которые характеризуют прямое или производное, качественное или количественное измерение биосигналов, установку или вычисления, производимые медицинским изделием.
@@ -19,6 +20,7 @@ The DeviceMetric resource can also be used to describe the non-static but highly
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи</h2>
 <p>
 Имеется два связанных ресурса

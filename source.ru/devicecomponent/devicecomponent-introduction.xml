@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование</h2>
 <p>
 Ресурс DeviceComponent применяется для описания характеристик, рабочего состояния и возможностей связанного с медициной компонента медицинского изделия. Это может быть физический компонент, встроенный в устройство, съемный физический компонент или не физический компонент, позволяющий группировать данные физиологического измерения и производные данные в иерархическую организацию информации.
@@ -16,6 +17,7 @@
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи</h2>
 <p>
 DeviceComponent позволяет нам менять конфигурацию изделия без необходимости менять экземпляр ресурса Device. Жизненный цикл конфигурации может полностью отличаться от жизненного цикла самого изделия.
@@ -39,6 +41,7 @@ DeviceComponent позволяет нам менять конфигурацию 
 </div>
 
 <div>
+<a name="bnc"> </a>
 <h2>Предпосылки и контекст</h2>
 <h3>Структура ресурса DeviceComponent<!-- Structure of a DeviceComponent Resource --></h3>
 
@@ -52,7 +55,7 @@ to describe  the characteristics, operational status and capabilities of a medic
 component of a medical device. It can be a physical component that is integrated inside 
 the device, a removable physical component, or a non-physical component that allows 
 physiological measurement data and its derived data to be grouped in a hierarchical 
-information organization. Devices are conceptualised using the following main structure: -->
+information organization. Devices are conceptualized using the following main structure: -->
 </p>
 <ol>
 <li><b>MedicalDeviceSystem</b> - Фактическое устройство, с которым общаются внешние системы. В 11073 это называется MDS.</li>

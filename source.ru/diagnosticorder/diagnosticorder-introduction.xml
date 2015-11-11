@@ -1,15 +1,15 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
-
-<div>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
-<p>
+	<div>
+<a name="scope"> </a>
+		<h2>Область применения и использование</h2>
+		<p>
 <i>Diagnostic Order</i> - это запись о запросе на выполнение набора диагностических исследований. Результатом исследования будет <a href="diagnosticreport.html">Diagnostic Report</a>, в котором сведены все результаты исследования, и который включает все полезные данные и/или изображения, которые имеют отношение к лечению/управлению субъектом. 
 <!-- A <i>Diagnostic Order</i> is a record of a request for a set of diagnostic investigations to be performed.
 The investigation will lead to a <a href="diagnosticreport.html">Diagnostic Report</a> that summarizes the
 outcome of the investigation, and includes any useful data and/or images that are relevant to the
 treatment/management of the subject. -->
 </p>
-<p>
+		<p>
 Основным предназначением <i>Diagnostic Order</i> является поддержка заказов диагностических исследований пациентов (включая отличных от человека пациентов в ветеринарной медицине). Однако в большинстве контекстов процессы, связанные со здравоохранением, включают в себя выполнение диагностических исследований групп субъектов, устройств, вовлеченных в предоставление медицинской помощи, и даже окружающую среду, например воздуховоды, водоемы и т. п. <i>Diagnostic Order</i> поддерживает все эти варианты использования.
 <!-- The principal intention of the <i>Diagnostic Order</i> is to support ordering diagnostic investigations
 on patients (which includes non-human patients in veterinary medicine). However in many contexts,
@@ -17,7 +17,7 @@ healthcare related processes include performing diagnostic  investigations on gr
 devices involved in the provision of healthcare, and even environmental locations such as ducts,
 bodies of water, etc. The <i>Diagnostic Order</i> supports all these usages. -->
 </p>
-<p>
+		<p>
 Основной рабочий процесс, который данный ресурс упрощает, это когда клиническая система создает диагностический заказ (diagnostic
 order). Диагностический заказ затем обменивается, возможно через посредников, с системой, которая представляет диагностический сервис, который может выполнить исследование по запросу. Диагностический сервис будет обновлять запрос по мере выполнения работы и затем выпустит окончательный отчет, который будет ссылаться на запросы, которые он выполняет. 
 <!-- The general work flow that this resource facilitates is that a clinical system creates a diagnostic
@@ -26,25 +26,40 @@ represents a diagnostic service that can perform the investigation as a request 
 The diagnostic service will update the request as the work is performed, and then finally
 issue a report that references the requests that it fulfills. -->
 </p>
-</div>
+	</div>
+	<div>
+ <a name="bnr"> </a>
 
-<div>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
-<p>
-Обратите внимание, что сам по себе Diagnostic Order не является запросом на выполнение исследования - это просто запись того факта, что запрос был сделан. 
-Чтобы действительно сделать запрос на выполнение диагностической процедуры, требуется дополнительный рабочий процесс помимо просто существования Diagnostic Order. Это может быть достигнуто с помощью ресурса <a href="order.html">Order</a>, в котором элемент <i>Order.details</i> ссылается на Diagnostic Order, либо используя ресурс Diagnostic Order в контексте рабочего процесса обмена сообщениями или сервисов, где запрос может быть явным или неявным.
-<!-- Note that the Diagnostic Order itself is not a request to perform the
-investigation - it is just a record of the fact that a request was made.
-To actually request that a diagnostic procedure be performed, additional
-workflow beyond simply the existence of a Diagnostic Order is required.
-This can be achieved by using an <a href="order.html">Order</a> resource,
-with the Diagnostic Order referenced from the <i>Order.details</i>, or
-by using the Diagnostic Order resource in the context of an
-messaging or service workflow where the request is explicit or implicit. -->
+		<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+
+		<p>
+DiagnosticOrder is closely related to other types of "request" resources, particularly <a href="referralrequest.html">ReferralRequest</a> and <a href="procedurerequest.html">ProcedureRequest</a>. In fact, for some services, it may be appropriate to use any one of these resources to request that the service be performed. Which one is used may be driven by organization practice and by context. When it is unclear which to use, the following principles may be helpful:
+
+<ul>
+				<li>
+ProcedureRequest or DiagnosticOrder are typically used when the requesting clinician has and wishes to exercise the authority (and expertise) to decide exactly what action will be done. 
+</li>
+				<li>
+A ReferralRequest is used when the requesting practitioner is seeking another practitioner or organization to use their own expertise and/or authority to determine the specific action to take. 
+</li>
+				<li>
+Whether an activity is deemed to be a procedure or only a diagnostic order is typically driven by how invasive the diagnostic process is. More invasive processes are typically represented as procedures, though the dividing line will vary by organization.
+</li>
+			</ul>
+Irrespective of the guidance above, systems should be prepared for some degree of overlap between these resources and be prepared to execute searches against multiple resources in cases where differentiation cannot be guaranteed. As well, in some workflows more than one type of resource or even all three might exist; e.g. Upon receiving a ReferralRequest a practitioner might initiate a DiagnosticOrder. The diagnostic service might then initiate a ProcedureRequest.
 </p>
+		<p>
+The DiagnosticOrder supports references to the numerous other resources that define information about the subject - the orderer, associated encounter, specimen, body site and other supporting information.   For example, <a href = "patient.html">Patient</a>, <a href = "practitioner.html">Practitioner</a>, <a href="specimen.html">Specimen</a> and <a href="condition.html">Condition</a> are all referenced in this resource.  Some systems may choose to bundle up a DiagnosticOrder and this referenced information into a Document for delivery to the recipient. However, REST, Messaging and Services are also valid architectures for managing referrals and may be more appropriate where active workflow management is needed.
+</p>
+		<p>
+The CarePlan resource can be used to describe more sophisticated requests for combinations of services and DiagnosticOrder may be referenced as part of a CarePlan.  Similarly ClinicalImpression resource can reference DiagnosticOrder as part of a follow up to plan to the assessment. 
+</p>
+		<p>
+Обратите внимание, что сам по себе Diagnostic Order не является запросом на выполнение исследования - скорее это  запись о том, что запрос был сделан. 
+Чтобы действительно инициировать, требуется дополнительный рабочий процесс помимо просто существования Diagnostic Order. Это может быть достигнуто с помощью ресурса <a href="order.html">Order</a>, в котором элемент Order.details ссылается на Diagnostic Order, либо используя ресурс Diagnostic Order в контексте рабочего процесса обмена сообщениями или сервисов, где запрос может быть явным или неявным.
+<!-- Note that the Diagnostic Order itself is not a request to perform the investigation - but rather a record of the fact that a request was made. To actually initiate the workflow beyond simply the existence of a Diagnostic Order may required. This can be achieved by using an <a href="order.html">Order</a> resource, with the Diagnostic Order referenced from the Order.details, or by using the Diagnostic Order resource in the context of an messaging or service workflow where the request is explicit or implicit." -->
 
+</p>
+	</div>
+	<!-- profiles? -->
 </div>
-
-<!-- profiles? -->
-</div>
-
