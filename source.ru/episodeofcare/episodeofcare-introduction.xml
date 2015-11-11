@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
   <div>
+<a name="scope"> </a>
     <h2>Область применения и использование</h2>
     <p>
 	Ресурс EpisodeOfCare содержит информацию о связи между пациентом и поставщиком медицинских услуг на период времени, в течение которого может произойти деятельность, связанная со здравоохранением.
@@ -27,7 +28,7 @@
     <p>
 	В EpisodeOfCare может быть вовлечено много организаций, однако каждая организация будет иметь свой собственный EpisodeOfCare, отслеживающий их ответственность перед пациентом.
       <!-- Many organizations can be involved in an EpisodeOfCare, however each organization will have their own EpisodeOfCare
-      which tracks their responsibility with the Patient. -->
+      which tracks their responsibility with the patient. -->
     </p>
     <p>
 	Когда организация завершает свое участие в уходе за пациентом и передает заботу о нем другой организации. Часто это оформляется в виде направления в другую организацию (или организации).
@@ -44,6 +45,7 @@
     </p>
   </div>
   <div>
+ <a name="bnr"> </a>
     <h2>Границы и связи</h2>
     <p>
 	Основное различие между EpisodeOfCare и Encounter в том, что Encounter содержит сведения об активности, относящейся непосредственно к пациенту, а EpisodeOfCare является контейнером, который объединяет несколько Encounters по проблемам/вопросам.
@@ -65,6 +67,7 @@
   </div>
 
   <div>
+ <a name="bnc"> </a>
     <h2>Предпосылки и контекст</h2>
     <p>
 	Системы собирают когерентную группу активностей (таких как encounters), относящихся к состоянию или проблеме со здоровьем пациента, часто называемую эпизодом лечения.

@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p> 
 Encounter (визит) пациента дополнительно характеризуется условиями, в которых он проходит. Среди Encounter имеются амбулаторный, неотложный, на дому, стационарный и виртуальный визиты. Encounter охватывает жизненный цикл от предварительного приема, непосредственно самого визита (для амбулаторных), до приема, пребывания и выписки (для стационарных). В течение encounter пациент может перемещаться между разными practitioner и из одного места в другое место.
@@ -52,9 +53,25 @@ This could be done my scanning throuh all the versions of the encounter and then
 and doing some form of post processing. To ease the burden of this (or where a system doesn't support resource
 histories) a status history component is included. -->
 </p>
+<p>
+There is no direct indication purely by the status field as to if an encounter is considered "admitted".<br/>
+The context of the encounter and business practices/policies/workflows/types can influence this definition.
+(e.g., acute care facility, aged care center, outpatient clinic, emergency department, community based clinic).<br/>
+Statuses of "arrived" or "in progress" could be considered the start of the admission, and also have the 
+presence of the hospitalization sub-component entered.
+</p>
+<p>
+The "on leave" status may or may not be a part of the admission, for example if the patient 
+was permitted to go home for a weekend or some other form of external event.<br/>
+The location is also likely to be filled in with a location status of "present".<br/>
+For other examples such as an outpatient visit (Day Procedure - colonoscopy), the patient could also be 
+considered to be admitted, hence the encounter doesn't have a fixed definition of admitted.
+At a minimum, we do believe that a patient IS admitted when the status is in-progress.
+</p>
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p> 
 Ресурс Encounter не предназначен для хранения информации о встрече (appointment), для этого есть ресурс Appointment. 
@@ -68,7 +85,7 @@ applicable to information about the actual Encounter, i.e. the patient showing u
 <!-- As such an encounter in the "planned" status is not identical to the appointment that scheduled it,
 but it is the encounter prior to its actual occurrence, with the expectation that encounter will be
 updated as it progresses to completion. Patient arrival at a location does not necessarily mean the
-start of the encounter (e.g., a patient arrives an hour earlier than he is actually seen by a practitioner). -->
+start of the encounter (e.g. a patient arrives an hour earlier than he is actually seen by a practitioner). -->
 </p>
 <p>
 Appointment обычно используется на стадии планирования встречи, поиска, нахождения доступного времени, затем записи на прием. Как только этот процесс завершен и встреча начинается, тогда appointment помечается как выполненный и привязывается к новому созданному encounter.
@@ -79,6 +96,11 @@ will be marked as fulfilled, and linked to the newly created encounter. -->
 Этот новый encounter может начаться в статусе "прибыл" ("arrived"), когда вводятся с указанием помещения в здании, и затем переходят к статусу "в палате", где может начаться другая часть (part-of) encounter.
 <!-- This new encounter may start in an "arrived" status when they are admitted with a location of the facility, and then will
 move to the ward where another part-of encounter may begin. -->
+</p>
+<p>
+Communication resources are used for a direct simultaneous interaction between a practitioner and a patient where there is no
+direct contact. Such as phone message, or transmission of some correspondence documentation.<br/>
+There is no duration recorded for a communication resource, but could contain sent and received times.
 </p>
 <p>
 Стандартное расширение: <b>Associated Encounter</b><br/>

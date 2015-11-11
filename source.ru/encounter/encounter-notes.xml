@@ -1,5 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
+<a name="notes"> </a>
 <h2>Примечания<!-- Notes --></h2>
 <p>
 <ul>
@@ -28,6 +29,9 @@ treated him for final evaluation - If relevant, for each of these short visits, 
 with a single participant. Since these took place during the last part of the stay, the partOf element can be
 used to associate these short visits with either the third patient movement or the bigger overall encounter. --></li>
 </ul>
-<p>Каким именно образом используется Encounter, зависит от информации, имеющейся в исходной системе, релевантности обмена каждого уровня Encounter и требований, специфических для взаимодействующих партнеров. Ожидается, что для каждого домена обмена используются Профили для ограничения гибкости Encounter,  чтобы удовлетворить требования сценария использования.<!-- Exactly how the Encounter is used depends on information available in the source system, the relevance of exchange of each level of Encounter and demands specific to the communicating partners. The expectation is that for each domain of exchange, Profiles are used to limit the flexibility of Encounter to meet the demands of the usecase. --></p>
+<p>Каким именно образом используется Encounter, зависит от информации, имеющейся в исходной системе, релевантности обмена каждого уровня Encounter и требований, специфических для взаимодействующих партнеров. Ожидается, что для каждого домена обмена используются Профили для ограничения гибкости Encounter,  чтобы удовлетворить требования сценария использования.<!-- 
+Exactly how the Encounter is used depends on information available in the source system, the relevance of exchange
+of each level of Encounter and demands specific to the communicating partners. The expectation is that for each 
+domain of exchange, profiles are used to limit the flexibility of Encounter to meet the demands of the use case. --></p>
 
 </div>
