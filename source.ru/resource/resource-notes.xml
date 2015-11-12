@@ -5,64 +5,79 @@
 
 <p>
 У каждого ресурса есть элемент "id", который содержит логический идентификатор ресурса, присвоенный ему сервером, отвечающим за его хранение. У ресурсов всегда есть известный идентификатор за исключением особого случая, когда новые ресурсы отправляются на сервер для назначения им идентификатора (операция <a href="http.html#create">create</a>). 
-Логический идентификатор является уникальным в пространстве всех ресурсов одного типа на одном сервере. Однажды присвоенный, идентификатор больше никогда не меняется, однако копии одного ресурса, сделанные в другом месте, могут не сохранить этот идентификатор.
+Логический идентификатор является уникальным в пространстве всех ресурсов одного типа на одном сервере. Однажды присвоенный, идентификатор больше никогда не меняется. Обратите внимание, что если ресурс копируется на другой сервер, копия может не сохранить тот же идентификатор. 
 <!-- Each resource has an "id" element which contains the logical identity of the resource 
 assigned by the server responsible for storing it. Resources always have a known identity
 except for the special case when a new resources is being sent to a server to assign
 an identity (<a href="http.html#create">create interaction</a>). 
 The logical identity is unique within the space of all resources of the same type on 
-the same server. Once assigned, the identity is never changed, though copies of the 
-same resource made elsewhere may not retain the same identity. -->
+the same server. Once assigned, the identity is never changed. Note that if the
+resource is copied to another server, the copy might not be able to retain 
+the same logical identity. -->
 </p>
 
 <p>
-Полный идентификатор ресурса представляет собой абсолютный URL, построенный из базового адреса сервера, на котором он находится, типа ресурса и логического идентификатора, например http://test.fhir.org/rest/Patient/123 (где 123 - это логический идентификатор). Обратите внимание, что реализации НЕ ДОЛЖНЫ полагаться на то, что идентификатор ресурса не всегда разрешается сервером в буквальном смысле - он может быть временно не доступен, либо не доступен из-за политики безопасности (например брандмауэры), либо, в некоторых случаях, он может не существовать в действительности (например использование ресурса вне среды RESTful). Ресурсы ссылаются друг на друга по своим идентификаторам. Такие ссылки могут быть абсолютными или относительными (см. <a href="references.html">Resource References</a> для дальнейшего обсуждения).
+Буквальный идентификатор ресурса - действительный HTTP-адрес, по которому он доступен - это абсолютный URL, построенный из базового адреса сервера, на котором он находится, типа ресурса и логического идентификатора, например http://test.fhir.org/rest/Patient/123 (где 123 - это логический идентификатор). Обратите внимание, что реализациям НЕ СЛЕДУЕТ предполагать, что идентификатор ресурса всегда разрешается на какой-то сервер буквально - он может быть временно не доступен, либо не доступен из-за политики безопасности (например брандмауэры), либо, в некоторых случаях, он может не существовать в действительности (например при использовании ресурса вне среды RESTful). Ресурсы ссылаются друг на друга по своим идентификаторам. Такие ссылки могут быть абсолютными или относительными (см. <a href="references.html">Resource References</a> для дальнейшего обсуждения).
 Копирование или перемещение ресурсов с одного сервера на другое означает, что ресурсы получают новые идентификаторы. Более подробную информацию см. в <a href="managing.html">Managing Resource Identity</a>.
-<!-- The full identity of a resource is an absolute URL constructed from the server base address at 
-which it is found, the resource type, and the Logical Id, such as http://test.fhir.org/rest/Patient/123 
-(where 123 is the Logical Id). Note that implementations SHOULD NOT assume that the identity of a resource 
-is always resolvable to a literal server - it may be temporarily unavailable, or not available by policy (e.g. firewalls) or in some 
-cases, it may not actually exist (e.g. use of resource outside a RESTful environment). Resources reference each other by their identity. 
-These references are allowed to be absolute or relative (see <a href="references.html">Resource References</a> for further discussion).
+<!-- The literal identity of a resource - the actual HTTP address it which it can be accessed - is an 
+absolute URL constructed from the server base address at which it is found, the resource type, and the Logical Id, 
+such as http://test.fhir.org/rest/Patient/123 (where 123 is the Logical Id). Note that 
+implementations SHOULD NOT assume that the identity of a resource is always resolvable 
+to a literal server - it may be temporarily unavailable, or not available by policy (e.g. firewalls) or in some 
+cases, it may not actually exist (e.g. use of resource outside a RESTful environment). 
+Resources reference each other by their identity. These references are allowed to be absolute 
+or relative (see <a href="references.html">Resource References</a> for further discussion).
 Copying or moving resources from one server to another means that resources acquire a new identity. For further details, 
 see <a href="managing.html">Managing Resource Identity</a>. -->
 </p>
 
 <p>
-Логические идентификаторы чувствительны к регистру. Идентификаторы всегда непрозрачны, и системам нет необходимости и не следует пытаться определить их внутреннюю структуру. Идентификатор ДОЛЖЕН всегда быть представлен одинаковым образом в ссылках на ресурсы и в URL-адресах. Идентификаторы могут быть до 64 символов длиной и содержать любую комбинацию букв верхнего и нижнего регистра в коде ASCII (Американский стандартный код обмена информацией), цифр, знаков "-" и ".".
-<!-- Logical ids are case sensitive. Ids are always opaque, and external systems need not and should not 
-attempt to determine their internal structure. An id SHALL always be represented in the same way in 
-resource references and URLs. Ids can be up to 64 characters long, and contain any combination of 
-upper and lowercase ASCII letters, numerals, "-" and ".".  -->
+Логические идентификаторы (и, следовательно, буквальные идентификаторы) чувствительны к регистру. Логические идентификаторы всегда непрозрачны, и внешним системам не требуется и не следует пытаться определить их внутреннюю структуру. Логический идентификатор ДОЛЖЕН всегда быть представлен одинаковым образом в ссылках на ресурсы и в URL-адресах. Идентификаторы могут быть до 64 символов длиной и содержать любую комбинацию букв верхнего и нижнего регистра в коде ASCII (Американский стандартный код обмена информацией), цифр, знаков "-" и ".".
+<!-- Logical ids (and therefore literal identities) are case sensitive. Logical Ids are always 
+opaque, and external systems need not and should not attempt to determine their internal 
+structure. A logical id SHALL always be represented in the same way in resource references 
+and URLs. Ids can be up to 64 characters long, and contain any combination of upper and 
+lowercase ASCII letters, numerals, "-" and ".".  -->
 </p>
 
 <a name="identifiers"> </a>
 <h4>Бизнес-идентификаторы<!-- "Business" Identifiers --></h4>
 <p>
-Кроме элемента идентификации ресурса "id", многие ресурсы содержат элемент "identifier", который, если заполнен, содержит различного вида идентификаторы.
-<!-- In addition to the Resource identity element "id", many resources contain an
-element named "identifier", which, if populated, contains a different kind of 
-identifier. -->
+Кроме логического идентификатора и буквальной идентификации, описанной выше, большинство ресурсов содержат элемент  "identifier", который, если заполнен, содержит идентификатор некоторого типа. При копировании ресурсов с сервера на сервер, их буквальные идентификаторы будут меняться, их логические идентификаторы также могут поменяться.
+<!-- In addition to the logical id and literal identity discussed above, many 
+resources contain an element named "identifier", which, if populated, 
+contains a different kind of identifier. As resources are copied
+from server to server, their literal identity will change, and their
+logical id may change. -->
 </p>
 <p>
-Идентификатор ресурса - это прямая (буквальная) ссылка, которая предназначена для доступа через http для возвращения ресурса. Если ресурс копируется с сервера на сервер, идентификатор ресурса будет меняться, поскольку идентификаторы ресурсу присваивают серверы.
-<!-- The resource identity is a direct ("literal") reference that is intended to 
-be accessed via http for a resource to be returned. As a resource is copied
-from server to server, the resource identity will change as the servers 
-assign identities to the resource. -->
-</p>
-<p>
-Однако все копии ресурса ссылаются на один и тот же лежащий в основе концепт, и этот концепт может также быть представлен в других форматах (по-разному, v2,
-CDA, XDS и многих других). Каждое представление имеет один и тот же идентификатор, который определяет его единообразно во всех контекстах использования. Этот идентификатор называется бизнес-идентификатором и хранится в элементе <i>identifier</i>.
-В нескольких ресурсах есть элемент <i>url</i>, который служит этой же цели, но имеет ограничение - должен быть буквальным URL.
-<!-- However all copies of the resource refer to the same underlying concept,
-and this concept may also be represented in other formats (variously, v2,
-CDA, XDS, and many more). Each representation carries the same identifier
+Однако все копии ресурса ссылаются на один и тот же лежащий в основе концепт, и этот концепт может также быть представлен в других форматах (по-разному, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>,
+<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>, XDS и многих других). Каждое представление имеет один и тот же идентификатор, который определяет его единообразно во всех контекстах использования. Этот идентификатор называется бизнес-идентификатором и хранится в элементе <i>identifier</i>.
+В нескольких ресурсах есть элемент <i>url</i>, который служит этой же цели, но имеет ограничение - должен быть буквальным URL в целях реализации.
+<!-- However, all copies of the resource refer to the same underlying concept,
+and this concept may also be represented in other formats (variously, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>,
+<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>, XDS, and many more). Each representation carries the same identifier
 that identifies it consistently across all contexts of use. This is known
 as the business identifier, and is found in the <i>identifier</i> element. 
 In a few resources, there is a <i>url</i> element that serves a similar
-purpose, but is constrained to be a literal URL. -->
+purpose, but is constrained to be a literal URL for implementation reasons. -->
 </p>
+<p>
+All resources that have an <code>identifier</code> element support searching
+by the identifier, so that records can located by that method. So if 
+an <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> message has the following OBR:
+</p>
+<pre>
+OBR|1|845439^GHH OE|1045813^GHH LAB|1554-5^GLUCOSE^LN|||200202150730|...
+</pre>
+<p>
+Then the DiagnosticReport it represents can be located using the 
+following query:
+</p>
+<pre>
+ GET [base]/DiagnosticReport?identifier=1045813
+</pre>
+<p>
 <p>
 Если FHIR-сервер является стабильным сервером, то есть каноническим мастер-источником определения концепта, бизнес-идентификатор всех систем может совпадать с буквальным идентификатором ресурса на мастер-сервере.
 <!-- If a FHIR server is a stable server that is the canonical master source 
@@ -201,7 +216,7 @@ These 2 versions elements have quite different lifecycles. To illustrate, take t
  <li>
   A value set is posted to a server (POST [base]/ValueSet) with ValueSet.url = "http://acme.com/valuesets/example". This is identified as the 1st version of the value set (ValueSet.version = 1). 
   When the server gets it, it assigns an identity e.g. ValueSet.id = x1, and ValueSet.meta.versionId = 1. 
-  Later, another user creates a revised version of the value set, and this is called version 2. It is commmited to the server 
+  Later, another user creates a revised version of the value set, and this is called version 2. It is committed to the server 
   as an update (PUT [base]/ValueSet/x1). 
   <br/>
   Now, ValueSet.url = http://acme.com/valuesets/example, ValueSet.id = x1, ValueSet.version = 2 and ValueSet.meta.versionId = 2
@@ -237,7 +252,7 @@ that was followed when the resource was constructed, and which must be understoo
 <p>
 Asserting this rule set restricts the content to be only understood by a limited set of 
 trading partners. This inherently limits the usefulness of the data in the long term,
-and should be avoided where possible. However the existing health 
+and should be avoided where possible. However, the existing health 
 eco-system is highly fractured, and not yet ready to define, collect, and exchange 
 data in a generally exchangeable sense. 
 </p>
@@ -284,9 +299,9 @@ such as workflow management. A typical use of tagging would be to maintain an in
 of resources that need review.
 </p>
 <p>
-In a general tag, the <a href="datatypes.html#coding">concept</a> may be a reference to a 
+In a general tag, the <a href="datatypes.html#coding">coded concept</a> may be a reference to a 
 healthcare vocabulary, including ones defined in this specification, or vocabularies such 
-as those defined by HL7 for other purposes (e.g. v2 and v3/CDA), LOINC, or SNOMED CT. 
+as those defined by HL7 for other purposes (e.g. <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> and <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>/<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>), LOINC, or SNOMED CT. 
 Alternatively, the concept may be one defined by the implementation in the local context. 
 </p>
 <p>
@@ -300,7 +315,7 @@ The list of tags on a resource is a set, where each tag is unique based on the
 A profile assertion represents a claim that the resource conforms to <a href="structuredefinition.html">the identified StructureDefinition</a>,
 which makes rules about what 
 content is allowed to be in a resource. In a profile tag, the term
-is a URL that references a <a href="structuredefinition.html">the identified StructureDefinition</a> resource.
+is a URL that references an identified <a href="structuredefinition.html">StructureDefinition</a> resource.
 </p>
 <p>
 It's always possible to determine whether a resource conforms to any 
@@ -322,7 +337,7 @@ against which to validate the resource.
 </p>
 <p>
 Note: resources can conform to multiple profiles at once. A resource can conform to 
-a profile without ever being labelled that it does, or a resource may falsely claim to conform 
+a profile without ever being labeled that it does, or a resource may falsely claim to conform 
 to a profile. For this reason, applications processing resources SHOULD always 
 depend on the contents of the resource when processing them, and/or check resources
 against the <a href="structuredefinition.html">StructureDefinition</a>s directly rather 
@@ -367,19 +382,22 @@ or remove previously existing recognized tags if this is known to be appropriate
 <a name="maturity"> </a>
 <h3>Maturity Levels</h3>
 <p>
-All resources in this specification are assigned a "Maturity Level", known as FMM (after the well known <a href="http://en.wikipedia.org/wiki/Capability_Maturity_Model">CMM</a> gradings).
+All resources in this specification are assigned a "Maturity Level", known as FMM (after the well known <a href="http://en.wikipedia.org/wiki/Capability_Maturity_Model">CMM</a> grades).
 The FMM level can be used by implementers to judge how advanced - and therefore stable - a resource is. The following FMM levels are defined:
 </p>
 <ol start="0">
  <li>the resource or profile (artifact) has been published on the current build</li>
  <li>FMM0 + the artifact produces no warnings during the build process and the responsible WG has indicated that they consider the artifact substantially complete and ready for implementation</li>
- <li>FMM1 + the artifact has been tested at an HL7 International connectathon</li>
- <li>FMM2 + the artifact has been subject to a round of formal balloting with at least 10 implementer comments drawn from at least 3 organizations resulting in at least one substantive change</li>
- <li>FMM3 + the artifact has been tested across its scope, published in a formal publication (e.g. DSTU), and implemented in multiple prototype projects</li>
- <li>FMM4 + the artifact has been published in two formal publication release cycles and has been implemented in at least 5 independent production systems in more than one country</li>
+ <li>FMM1 + the artifact has been tested and successfully exchanged between at least three independently developed systems at a connectathon whose results have been reported to the FHIR Management Group</li>
+ <li>FMM2 + the artifact has been verified by the work group as meeting the <a href="http://wiki.hl7.org/index.php?title=DSTU_2_QA_guidelines">DSTU Quality Guidelines</a> and has been subject to a 
+ round of formal balloting with at least 10 implementer comments drawn from at least 3 organizations resulting in at least one substantive change</li>
+ <li>FMM3 + he artifact has been tested across its scope (see below), published in a formal publication (e.g. DSTU), and implemented in multiple prototype projects. As well, the responsible 
+ work group agrees the resource is sufficiently stable to require implementer consensus for subsequent non-backward compatible changes.</li>
+ <li>FMM4 + the artifact has been published in two formal publication release cycles at FMM1+ (i.e. DSTU level) and has been implemented in at least 5 independent production systems in more than one country</li>
 </ol>
+<p></p>
 <p>
-The Maturity level is strongly related to stability; the higher the stability level, the more controls are enforced to restrict breaking changes to the resource.
+The Maturity level is strongly related to stability; the higher the maturity level, the more controls are enforced to restrict breaking changes to the resource.
 For further information, and discussion, see the <a href="http://wiki.hl7.org/index.php?title=FHIR_Maturity_Model">FHIR Wiki</a>.
 </p>
  

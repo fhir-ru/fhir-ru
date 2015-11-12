@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 	<div>
+<a name="scope"> </a>
 		<h2>Область применения и использование</h2>
 	<p>
 	Ресурсы Slot используются для записи временных слотов, которые можно забронировать с помощью appointment.
@@ -27,7 +28,7 @@
 		В некоторых случаях у услуги может быть специальный набор слотов, зарезервированных для особых случаев, таких как пришедшие без предварительной договорённости или если у некоторой организации есть постоянная бронь на утро каждого четверга.
 		Это может указываться с помощью поля "type" с установленным и согласованным значением.
 			<!-- In some situations a service may have a specific set of slots reserved for specific uses, such 
-			as "walk-ins" or a specific Organisation has a "standing booking" for Thursday mornings.
+			as "walk-ins" or a specific organization has a "standing booking" for Thursday mornings.
 			These should be represented using the type field with a specified and agreed value. --><br/>
 			Разрешения безопасности или особые бизнес-правила, используемые в системе, могут обеспечивать соблюдение, чтобы в них размещались только подходящие appointments.
 			<!-- Security Permissions or specific business rules on the system could enforce that only eligible
@@ -46,7 +47,7 @@
       <!-- The slots in a schedule do not need to be the same size, and can be different for different
       days of the week. --><br/>
 	  Экземпляры Slot не содержат никакой информации о периодичности. Если необходимо указать периодичность, это будет делаться вне этих ресурсов или включаться в них в виде расширений.
-      <!-- Slot instances do not have any recurrance information included. If recurring information is
+      <!-- Slot instances do not have any recurrence information included. If recurring information is
       desired, this will be managed outside these resources, or included as extensions. -->
 	</p>
 	</div>

@@ -2,6 +2,7 @@
 
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 Данная спецификация определяет ряд различных типов ресурсов, которые могут быть использованы для обмена и/или хранения данных с целью решения широкого диапазона задач, связанных со здравоохранением, как медицинских, так и административных. Кроме того спецификация описывает несколько различных способов обмена ресурсами.
@@ -36,11 +37,12 @@ Basic definitions:
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 
 <p>
-Все ресурсы имеют следующие необязательные или обязательные элементы и свойства:
-<!-- All resources have the following optional or mandatory elements and properties: -->
+Cледующие необязательные элементы и свойства определены для всех ресурсов:
+<!-- The following optional elements and properties are defined for all resources: -->
 </p>
 <ul>
  <li>Идентификатор<!-- An identity --></li>
@@ -49,8 +51,8 @@ Basic definitions:
  <li>Ссылка на "Implicit Rules"<!-- A reference to "Implicit Rules" --></li>
 </ul>
 <p>
-Большинство ресурсов являются производными от <a href="domainresource.html">Domain Resources</a> - поэтому они также содержат текст, вложенные ресурсы, расширения и элементы данных, характерные для конкретного домена ресурса. Для коллекций ресурсов имеется специальный тип ресурса <a href="bundle.html">Bundle</a>.
-<!-- Most resources are derived from <a href="domainresource.html">Domain Resources</a> - so they also contain text, contained resources, extensions,
+Большинство ресурсов являются производными от <a href="domainresource.html">Domain Resources</a> - поэтому они также могут содержать текст, вложенные ресурсы, расширения и элементы данных, характерные для конкретного домена ресурса. Для коллекций ресурсов имеется специальный тип ресурса <a href="bundle.html">Bundle</a>.
+<!-- Most resources are derived from <a href="domainresource.html">Domain Resources</a> - so they also can contain text, contained resources, extensions,
 and data elements specific to the particular domain of the resource. There is a special type of resource called <a href="bundle.html">Bundle</a> for collections of resources.  -->
 </p>
 <p>

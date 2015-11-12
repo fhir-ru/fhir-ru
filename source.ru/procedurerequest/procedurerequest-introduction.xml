@@ -1,18 +1,20 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование</h2>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
 <p>
-<i>Procedure Request</i> - это запись запроса на выполнение процедуры. Может использоваться для представления процедуры, которая планируется, предложена или заказана.
-<!-- A <i>Procedure Request</i> is a record of a request for a procedure to be performed. 
-It can be used to represent a procedure that is planned, that is proposed, or that is ordered. -->
+<i>Procedure Request</i> - это запись запроса на выполнение процедуры. Может использоваться для представления процедуры, которая планируется, предложена или заказана, что указывается значением поля ProcedureRequestStatus.
+<!-- A <i>Procedure Request</i> is a record of a request for a procedure to be performed. It can 
+be used to represent a procedure that is planned, that is proposed, or that is ordered, as distinguished by 
+the value of the ProcedureRequestStatus field. -->
 </p>
 <p>
 Процедура - это действие, выполняемое с ил инад пациентом в рамках оказания ухода. Примеры включают в себя хирургические процедуры, диагностические, эндоскопические процедуры, биопсию, консультирование, физиотерапию, управженения и т. п. Процедуры могут выполняться специалистом по медицинскому обеспечению, другом, родственником или, в некоторых случаях, самим пациентом.
 <!-- A procedure is an activity 
 that is performed with or on a patient as part of the provision of care. Examples include surgical 
-procedures, diagnostic procedures, endoscopic procedures, biopsies, counselling, physiotherapy, exercise, etc.
+procedures, diagnostic procedures, endoscopic procedures, biopsies, counseling, physiotherapy, exercise, etc.
 Procedures may be performed by a healthcare professional, a friend or relative or in some cases by the patient
 themselves. -->
 </p>
@@ -26,6 +28,7 @@ on a patient's clinical record and context of care. Planned procedures reference
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи</h2>
 <p>
 ProcedureRequest тесно связан с другими типами ресурсов-запросов, в частности с <a href="diagnosticorder.html">DiagnosticOrder</a> и <a href="referralrequest.html">ReferralRequest</a>. На самом деле для некоторых услуг может подойти использование любого из этих ресурсов для запроса на выполнение процедуры. Какой из них использовать - может определяться принятой в организации практикой, и контекстом. Когда неясно, какой из них использовать, могут помочь следующие правила:
@@ -55,7 +58,7 @@ is.  More invasive processes are typically represented as procedures, though the
 Независимо от приведенных выше инструкций, системы должны быть готовы к частичному пересечению этих ресурсов и быть готовы выполнять поиск по нескольким ресурсам в тех случаях, когда разграничение гарантировать невозможно. Кроме того, в некоторых рабочих процессах может участвовать больше одного типа ресурсов или даже все три. Например после получения ReferralRequest врач может инициировать DiagnosticOrder. Затем служба диагностики может инициировать ProcedureRequest.
 <!-- Irrespective of the guidance above, systems should be prepared for some degree of overlap between these resources and be
 prepared to execute searches against multiple resources in cases where differentiation cannot be guaranteed.  As well, in some workflows
-more than one type of resource or even all three might exist.  E.g. Upon receiving a ReferralRequest a practitioner might initiate a 
+more than one type of resource or even all three might exist; e.g. Upon receiving a ReferralRequest a practitioner might initiate a 
 DiagnosticOrder.  The diagnostic service might then initiate a ProcedureRequest. -->
 </p>
 <p>
@@ -63,7 +66,7 @@ DiagnosticOrder.  The diagnostic service might then initiate a ProcedureRequest.
 Границы между определением, является ли действие обучением или консультацией (и, следовательно, ProcedureRequest) в отличие от CommunicationRequest, основывается на том, есть ли конкретное намерение изменить привычный ход мыслей пациента. Запрос на всего лишь разглашение информации будет считаться CommunicationRequest. Вызов процесса, который будет включать в себя подтверждение понимания пациентом или попытку изменить психическое состояние пациента, будет ProcedureRequest. 
 <!-- The notion of ProcedureRequest and <a href="communicationrequest.html">CommunicationRequest</a> are also closely related.  
 The boundary between determining whether an action is
-considered to be training or counselling (and thus a ProcedureRequest) as opposed to a CommunicationRequest is based on whether
+considered to be training or counseling (and thus a ProcedureRequest) as opposed to a CommunicationRequest is based on whether
 there's a specific intent to change the mind-set of the patient.  A request to merely disclose information would be considered
 a CommunicationRequest.  Invocation of a process that will involve verification of the patient's comprehension or an attempt to
 change the patient's mental state would be a ProcedureRequest. -->

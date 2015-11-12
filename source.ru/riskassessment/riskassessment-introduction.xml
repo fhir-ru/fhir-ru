@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование</h2>
 <p>
 В данном ресурсе фиксируется прогнозируемый исход для пациента или населения на основе исходной информации. Примеры включают в себя:
@@ -25,6 +26,7 @@ on existing knowledge and previous experience. -->
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи</h2>
 <p>
 Оценка риска является специализированным типом наблюдения. Мы используем специализированный ресурс, чтобы обеспечить простой механизм ввода серии рисков и для связывания этих рисков с временными диапазонами, вероятностями и т. д. Все сделанные утверждения риска вводятся в одно время на основе единого набора источников входных данных. Ввода одного риска МОЖЕТ быть сделан с помощью класса <a href="observation.html">Observation</a>, особенно в условиях, когда он обрабатывается как общее наблюдение, однако для непротиворечивости все оценки риска и прогнозы ДОЛЖНЫ фиксироваться с помощью <b>RiskAssessment</b>.
@@ -48,9 +50,18 @@ on existing knowledge and previous experience. -->
 Поскольку так много ресурсов потенциально могут быть использованы, нет ограничения по тому, какие ресурсы можно отправлять в <code>RiskAssessment.basis</code>. Однако некоторые ресурсы для этого использовать бессмысленно (например <a href="messageheader.html">MessageHeader</a>).
 <!-- Because so many resources can potentially be used, no limit is placed on what resources can be sent in <code>RiskAssessment.basis</code>.  However, some resources would be nonsensical for this use (e.g. <a href="messageheader.html">MessageHeader</a>). -->
 </p>
+
+<p>
+<b>AllergyIntolerance and RiskAssessment</b></p>
+<p>
+AllergyIntolerance describes a specific type of risk - propensity to reaction to a substance while <a href="riskassessment.html">RiskAssessment</a> describes 
+general risks to a subject, not generally based on a reaction.
+</p>
+
 </div>
 
 <div>
+<a name="bnc"> </a>
 <h2>Предпосылки и контекст</h2>
 <p>
 Оценка риска может быть определена вручную медицинскими работниками в зависимости от их профессионального опыта, с помощью системы алгоритмического подсчета или с помощью их комбинации. Оценка риска также может быть вычислена с помощью систем поддержки принятия решений. На сервере могут быть определены <a href="operationdefinition.html">OperationDefinitions</a> для генерации оценок риска на основе определенных комбинаций исходных ресурсов или других материалов.

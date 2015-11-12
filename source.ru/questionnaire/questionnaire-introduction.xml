@@ -1,13 +1,14 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
- <b>Questionnaire</b> (вопросник) - это организованная некоторым образом коллекция вопросов, предназначенная для получения информации от пациентов, поставщиков или других лиц, вовлеченных в здравоохранение. Вопросники могут представлять собой простые линейные списки вопросов или быть иерархически организованы в группы и подгруппы, каждая из которых содержит вопросы. <b>Questionnaire</b> определяет вопросы, которые следует задать, то, как они упорядочены и сгруппированы, а также ограничения на допустимые ответы. Результаты <b>Questionnaire</b> можно передавать с помощью ресурса <a href="questionnaireanswers.html">QuestionnaireAnswer</a>.
+ <b>Questionnaire</b> (вопросник) - это организованная некоторым образом коллекция вопросов, предназначенная для получения информации от пациентов, поставщиков или других лиц, вовлеченных в здравоохранение. Вопросники могут представлять собой простые линейные списки вопросов или быть иерархически организованы в группы и подгруппы, каждая из которых содержит вопросы. <b>Questionnaire</b> определяет вопросы, которые следует задать, то, как они упорядочены и сгруппированы, а также ограничения на допустимые ответы. Результаты <b>Questionnaire</b> можно передавать с помощью ресурса <a href="questionnaireresponse.html">QuestionnaireResponse</a>.
 <!-- A <b>Questionnaire</b> is an organized collection of questions intended to solicit information from patients, providers or other individuals involved
 in the healthcare domain.  They may be simple flat lists of questions or can be hierarchically organized in 
 groups and sub-groups, each containing questions.  The <b>Questionnaire</b> defines the questions to be asked, how they are ordered and grouped and what
-the constraints are on the allowed answers.  The results of a <b>Questionnaire</b> can be communicated using the <a href="questionnaireanswers.html">QuestionnaireAnswer</a> resource. -->
+the constraints are on the allowed answers.  The results of a <b>Questionnaire</b> can be communicated using the <a href="questionnaireresponse.html">QuestionnaireResponse</a> resource. -->
 </p>
 <p>
 Вопросники покрывают потребность в передаче данных, поступающих из форм, используемых во время медицинских осмотров, научно-исследовательских анкет и, иногда, полных клинических специализированных записей. В большинстве систем эти данные собираются с помощью пользовательских экранов и форм. Вопросники записывают особенности ввода данных - какие именно вопросы были заданы, в каком порядке, какие были варианты ответов и т. п. Каждый из этих вопросов является частью Questionnaire, а Questionnaire как таковой - это отдельно идентифицируемый ресурс, тогда как отдельные вопросы - нет.
@@ -43,6 +44,7 @@ more sophisticated questionnaires and forms. -->
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 <b>Questionnaires</b> отличаются от  <a href="list.html">Lists</a> тем, что <a href="list.html">Lists</a> группируют существующие ресурсы, а <b>Questionnaires</b> группируют произвольные вопросы. Теоретически, <b>Questionnaire</b> может быть выражен через <a href="list.html">List</a> или <a href="composition.html">Composition</a>, содержащие ресурсы <a href="dataelement.html">DataElement</a>. Однако в первом случает будет игнорироваться "цельность", связанная с вопросником, в котором вопросы обычно должны поддерживаться в виде единой структуры. Во втором случае фокус будет на передаче элементов данных, а не на организации сбора информации.
@@ -54,6 +56,7 @@ must generally be maintained as a single structure.  The latter would focus on r
 </div>
 
 <div>
+<a name="bnc"> </a>
 <h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 Группы и вопросы, которые составляют вопросник, могут быть явно закодированы для ссылки на определенную извне нумерацию или идентификацию вопросов и разделов из формально определенных вопросников. Это позволяет извлекать данные на форме и выполнять пост-обработку данных, содержащихся в Questionnaire. Однако такое кодирование не является обязательным, и вопросники могут быть определены весьма расплывчато. В разделе <a href="#qversusr">Сравнение Questionnaire с другими ресурсами</a> ниже обсуждаются вопросы сбора данных в таких расплывчато определенных Questionnaires по сравнению со сбором данных через четко определенные отдельные ресурсы.

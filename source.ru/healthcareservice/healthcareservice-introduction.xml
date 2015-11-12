@@ -49,9 +49,10 @@
 			<li>Consulting psychologists and/or psychology services</li>
 			<li>Group Hydrotherapy</li>
 			<li>Little River Home Maintenance</li>
+       -->
 		</ul>
 		<p>
-			<i>Ресурсы HealthcareService не имеют отношения к компьютерным сервисам (это не SOA)<!-- HealthcareService resources do not represent Computer related Services (not SOA) --></i>
+			<i>Ресурсы HealthcareService не имеют отношения к компьютерным сервисам (это не SOA)</i><!-- HealthcareService resources do not represent Computer related Services (not SOA) -->
 		</p>
 		<p>Примеры применения ресурсов HealthcareService:<!-- Example uses of HealthcareService resources are: --></p>
 		<ul>
