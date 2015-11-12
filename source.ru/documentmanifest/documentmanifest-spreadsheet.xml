@@ -1470,7 +1470,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержание этого набора документов<!-- Contents of this set of documents --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержимое этого набора документов<!-- Contents of this set of documents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">The list of references to document content, or Attachment that consist of the parts of this document manifest. Usually, these would be document references, but direct references to Media or Attachments are also allowed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

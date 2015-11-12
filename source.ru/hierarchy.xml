@@ -9,7 +9,7 @@ signatures.html
 	<page title="Главная" note="(map + search) - focus on useful links" filename="index.html">
 		<page title="Документация" filename="documentation.html">
 
-    <page title="Содержание" filename="toc.html"/>
+    <page title="Оглавление" filename="toc.html"/>
 			<page title="Documentation Guidance and Glossary" filename="help.html"/>
 			<page title="Лицензирование и условия использования" filename="license.html"/>
 			<page title="Наше сообщество и благодарности" filename="credits.html"/>
@@ -19,7 +19,7 @@ signatures.html
 			<page title="Краткий обзор" filename="summary.html"/>
 			<page title="Введение" filename="overview.html">
 				<page title="Введение для разработчиков" filename="overview-dev.html"/>
-				<page title="Clinical Introduction" filename="overview-clinical.html"/>
+				<page title="Введение для медицинских работников" filename="overview-clinical.html"/>
 			</page>
 			<page title="Хронология FHIR" filename="timelines.html"/>
 			<page title="Межверсионная совместимость" filename="compatibility.html"/>
