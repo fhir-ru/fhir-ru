@@ -1,11 +1,12 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 
+<a name="safety"> </a>
 <h2>Надежность и безопасность<!-- Safety and Security --></h2>
 <p>Исполнение каждого из каналов, задокументированных ниже, включает сервер, отправляющий коммуникацию, которая обнаружит информацию о взаимосвязи клиента и сервера, и, если весь ресурс целиком отправлен, административную или клиническую информацию, которая может быть в достаточной степени конфиденциальной и/или защищенной законом. Серверы отвечают за обеспечение применения надлежащих мер безопасности для каждого канала. Ресурс subscription не решает эти проблемы напрямую - предполагается, что они регулируются другой конфигурацией. К примеру, сервер может поддерживать белый список допустимых серверов для методов rest-create/rest-update.
 <!-- Executing each of the channels documented below involves the server
 sending a communication that will reveal information about the 
-client and server relatinoship, and, if the entire resource is 
+client and server relationship, and, if the entire resource is 
 sent, administrative or clinical information that may be quite 
 sensitive and/or protected under law. Servers are responsible
 for ensuring appropriate security is employed for each channel. 
@@ -20,6 +21,7 @@ of acceptable servers for the rest-create/rest-update methods. -->
 <a href="http://directproject.org/">Direct</a>. -->
 </p>
 
+<a name="errors"> </a>
 <h2>Управление подписками и ошибки<!-- Managing Subscriptions and Errors --></h2>
 <p>
 Подписка задается созданием ресурса subscription на сервере.
@@ -32,7 +34,7 @@ use in subsequent operations. -->
 </p>
 <p>
 Критерии подлежат тем же ограничениям, что и клиент, создавший их, например доступ к модулям пациента и т. п. Обратите внимание, что подписка остается активной после того, как истекает токен доступа клиента.
-<!-- The criteria is subject to the same limitations as the client that
+<!-- The criteria are subject to the same limitations as the client that
 created it, such as access to patient compartments etc. Note that the
 subscription remains active after the client access tokens expire. -->
 </p>
@@ -66,6 +68,7 @@ deletes it at the specified time. -->
 </p>
  
 
+<a name="channels"> </a>
 <h2>Каналы<!-- Channels --></h2>
 
 <h3>REST Hook</h3>
@@ -98,7 +101,7 @@ sends a POST request with no body to the nominated URL. -->
 <!-- When the client receives a POST to https://biliwatch.com/customers/mount-auburn-miu/on-result, 
 it re-issues the criteria as a query to the server, appending &amp;_since=:last (where :last is 
 replaced by the time at which the client last checked). In this way it can fetch all new 
-relevent <a href="observation.html">Observations</a>. -->
+relevant <a href="observation.html">Observations</a>. -->
 </p>
 <p>
 Поскольку полезная нагрузка отсутствует, данные в ресурсах доступны только через REST API, который помогает объединить логику авторизации и аутентификации. Сервер должен добавить заголовки, если они заданы, к POST-запросу, который он создает для клиента.
@@ -110,7 +113,7 @@ makes to the client. -->
 <p>
 Кроме того, сервер можно запросить отправить весь ресурс целиком на указанную точку взаимодействия FHIR. Как правило, это целесообразно для определения правил маршрутизации в пределах управляемой экосистемы, например в учреждении здравоохранения.
 <!-- Alternatively, the server can be asked to send the entire 
-resource to a nominated FHIR end point. This is usually appropriate
+resource to a nominated FHIR end-point. This is usually appropriate
 for defining routing rules within a managed eco-system such
 as a healthcare institution.  -->
 </p>
@@ -181,9 +184,11 @@ protocol is used to listen for notifications: -->
 
 <h3>Email/SMS</h3>
 
+<p>
 Клиент может зарегистрироваться на своего пользователя для получения уведомлений по электронной почте:
 <!-- A client can register for its user to receive notifications by
 email: -->
+</p>
 
 <pre class="json">
   "channel": {
@@ -196,7 +201,7 @@ email: -->
 <p>
 Сервер будет отправлять новое сообщение для каждого соответствующего критериям ресурса. Тело электронного письма может быть пустым или содержать ссылку на поиск или соответствующий ресурс. Какое количество информации предоставлять остается на усмотрение сервера. Электронная почта должна быть надлежащим образом защищена, например с помощью Direct, как указано в правилах действующей юрисдикции.
 <!-- The server would send a new message for each matching resource.
-The body of the email may be empty, or it may contain a refernce
+The body of the email may be empty, or it may contain a reference
 to the search or the matching resource. It is at the discretion
 of the server as to how much information to provide. The email
 should be secured appropriately, such as using Direct, as specified
@@ -214,16 +219,40 @@ by the rules of the applicable jurisdictions. -->
 </pre>
 
 <p>
-Примечание: SMS-сообщения чрезвычайно ограничены в размерах, так что полезная нагрузка должна отсутствовать,
-а большинство серверов откажется отправлять полезную нагрузку через SMS.
-<!-- Note: SMS messages are extremely limited in size, so payload should be set to false,
-and most servers will refuse to send payloads in SMS.  -->
+Примечание: SMS-сообщения чрезвычайно ограничены в размере, поэтому полезная нагрузка должна быть установлена в "false".
+Вне зависимостри от резамера, большинство серверов откажется отправлять полезную нагрузку через SMS.
+<!-- Note: SMS messages are extremely limited in size, so payload should be set to false
+Irrespective of size, most servers will refuse to send payloads in SMS for security 
+reasons.  -->
 </p>
 
 <h3>Обмен сообщениями<!-- Messaging --></h3>
 
 <p>
-Todo
+A client can register for its user to receive notifications by <a href="messaging.html">messaging</a>:
 </p>
+
+<pre class="json">
+  "channel": {
+    "type": "message",
+    "url": "http://ehr.example.org/fhir/$process-message"
+  }
+</pre>
+<p>
+For each matching resource, a server will send a message to the 
+nominated end-point. Most servers will require that the end-point
+is white-listed prior to allowing these kinds of subscriptions. 
+</p>
+<blockquote class="dstu-note">
+<a name="dstu"> </a>
+<p>
+<b>DSTU Note:</b>  The details of the message - mainly the event code - are 
+still to be resolved during the trial use period.
+</p>
+<p>
+Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+</p>
+</blockquote>
+
 
 </div>

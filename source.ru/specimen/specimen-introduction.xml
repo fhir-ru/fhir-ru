@@ -1,5 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 	<div>
+	<a name="scope"> </a>
 		<h2>Область применения и использование<!-- Scope and Usage --></h2>
 		<p>Любой образец материала:<!-- Any material sample: --></p>
 		<ul>
@@ -18,14 +19,15 @@
 </p>
 	</div>
 	<div>
-		<h2>Предпосылки и контекст<!-- Background and Context --></h2>
+		<a name="bnc"> </a>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 		<p>
-Нынешнее определение ресурса specimen содержит только основную информацию о контейнерах для образцов. Оно не описывает рекурсивную природу контейнеров или отслеживание положения одного контейнера внутри другого (к примеру: трубка в лотке в стойке в морозильной камере). Частота, с которой эти элементы отслеживаются, может зависеть от контекста использования; общая лаборатория; банк биологических материалов и т. п. Приветствуются комментарии от рецензентов к соответствующей области применения данного ресурса, а также необходимости отслеживания соответствующих атрибутов образцов. 
+Нынешнее определение ресурса specimen содержит только основную информацию о контейнерах для образцов. Оно не описывает рекурсивную природу контейнеров или отслеживание положения одного контейнера внутри другого (к примеру: трубка в лотке в стойке в морозильной камере). Частота, с которой эти элементы отслеживаются, может зависеть от контекста использования; общая лаборатория, банк биологических материалов и т. п. Приветствуются комментарии от рецензентов к соответствующей области применения данного ресурса, а также необходимости отслеживания соответствующих атрибутов образцов. 
 <!-- The current definition of the specimen resource contains only basic information about specimen containers. It does not
 address the recursive nature of containers or the tracking of the location of a container within its parent container
 (for instance: a tube in a tray in a rack in a freezer). The frequency with which these elements are tracked may depend on the context
-of use; general lab; biobanking, etc. Comments from reviewers on the appropriate scope for this resource, and the need for tracking
+of use; general lab, biobanking, etc. Comments from reviewers on the appropriate scope for this resource, and the need for tracking
 related specimen management attributes, are welcomed. -->
 </p>
-</div>
+	</div>
 </div>

@@ -1,11 +1,12 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 	<div>
+<a name="scope"> </a>
 		<h2>Область применения и использование</h2>
 	<p>
-	Ресурс HealthcareService используется для описания отдельной услуги здравоохранения, которая предоставляется организацией в некотором местоположении.
-		<!-- The HealthcareService resource is used to describe a single healthcare service that is
-			being provided by an organization at a location. --><br/>
+	Ресурс HealthcareService используется для описания отдельной услуги здравоохранения или категории услуг, которые предоставляются организацией в некотором местоположении.
+		<!-- The HealthcareService resource is used to describe a single healthcare service or
+			category of services that are provided by an organization at a location. --><br/>
 			Местоположение услуг может быть виртуальным, например услуги телемедицины.
 			<!-- The location of the services could be virtual, as with TeleMedicine Services. --><br/>
 		</p>
@@ -35,7 +36,7 @@
 			<li>Podiatry Service</li>
 			<li>Smallville Hospital Emergency Services</li>
 			<li>Respite care provided at a nursing home or hostel</li>
-			<li>24hr crisis telephone counselling service</li>
+			<li>24hr crisis telephone counseling service</li>
 			<li>Information, advice and/or referral services; Disability, Telecommunications</li>
 			<li>Rural TeleHealth Services</li>
 			<li>Hospital in the home</li>
@@ -43,12 +44,11 @@
 			<li>Pharmacy</li>
 			<li>Active Rehab</li>
 			<li>Social Support</li>
-			<li>Drug and/or alcohol counselling</li>
+			<li>Drug and/or alcohol counseling</li>
 			<li>Day Programs, Adult Training &amp; Support Services</li>
 			<li>Consulting psychologists and/or psychology services</li>
 			<li>Group Hydrotherapy</li>
 			<li>Little River Home Maintenance</li>
-			<li>Example mowing services</li> -->
 		</ul>
 		<p>
 			<i>Ресурсы HealthcareService не имеют отношения к компьютерным сервисам (это не SOA)<!-- HealthcareService resources do not represent Computer related Services (not SOA) --></i>
@@ -89,6 +89,7 @@
 	</div>
 
 	<div>
+	<a name="bnr"> </a>
 		<h2>Границы и связи</h2>
 		<p>
 		Ресурс HealthcareService может использоваться в ресурсе Schedule для задания фактической доступности услуги. Это делается с помощью свойства Actor ресурса Schedule.
