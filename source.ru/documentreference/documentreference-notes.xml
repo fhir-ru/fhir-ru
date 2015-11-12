@@ -11,14 +11,14 @@ The resources maintain one way relationships that point backwards - e.g., the do
 </ul>
 <!--   No longer needed now that we have format code vocabulary
 
-<h3>Форматы документов<!-- Document Formats --></h3>
+<h3>Форматы документов</h3>
 <p>
 Кроме <code>.content.contentType</code> (который является обязательным), имеется также элемент <i>format</i> типа <a href="datatypes.html#Coding">Coding</a>, который показывает, что формат и/или содержимое этого документа соответствует заявленному в mimeType типу. Чаще всего это используется с mime-типом text/xml для предоставления дополнительной информации для нахождения корректного документа.
-<!-- In addition to a <code>.content.contentType</code>, there is also a <i>format</i> element of type 
+In addition to a <code>.content.contentType</code>, there is also a <i>format</i> element of type 
 <a href="datatypes.html#Coding">Coding</a> that indicates that the format and/or content of the 
 document conforms to additional rules beyond the base format indicated in the mimeType. This is most 
 often used when the mime-type is text/xml, to provide additional information for finding the correct
-document. -->
+document.
 </p>
 <p>
 Several organizations define codes for document formats:
