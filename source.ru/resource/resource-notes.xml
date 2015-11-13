@@ -78,7 +78,6 @@ following query:
  GET [base]/DiagnosticReport?identifier=1045813
 </pre>
 <p>
-<p>
 Если FHIR-сервер является стабильным сервером, то есть каноническим мастер-источником определения концепта, бизнес-идентификатор всех систем может совпадать с буквальным идентификатором ресурса на мастер-сервере.
 <!-- If a FHIR server is a stable server that is the canonical master source 
 for the definition of a concept, the business identifier for all 
