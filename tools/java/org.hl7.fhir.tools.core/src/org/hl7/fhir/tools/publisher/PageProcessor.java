@@ -4068,9 +4068,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
 
   private String searchLink(String s2) {
     if (s2.equals("search-link"))
-      return "<a href=\"search.cfm\">Search this specification</a>";
+      return "<a href=\"search.cfm\">Поиск по спецификации</a>";
     else
-      return s2.substring(11)+" <a href=\"search.cfm\">search this specification</a>";
+      return s2.substring(11)+" <a href=\"search.cfm\">поиск по спецификации</a>";
   }
 
   private String igRegistryList(String purpose, String type) throws Exception {
