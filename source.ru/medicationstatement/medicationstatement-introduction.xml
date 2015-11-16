@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 Стандартное использование включает в себя:
@@ -11,6 +12,11 @@
  <li>запись списка принимаемых медикаментов при госпитализации<!-- the recording of an intake medication list upon admission to hospital --></li>
  <li>резюмирование активных медикаментов пациента в профиле пациента<!-- the summarization of a patient's "active medications" in a patient profile --></li>
 </ul>
+<p>
+This resource does not produce a medication list, but it does produce individual medication statements that may be used in the List resource to construct various types of medication lists.  Note that other medication lists can also be constructed from the other Pharmacy resources (e.g., MedicationOrder, MedicationAdministration).  
+</p><p>
+A medication statement is not a part of the prescribe -> dispense -> administer sequence, but is a report by a patient, significant other or a clinician that one or more of the prescribe, dispense or administer actions has occurred, resulting is a belief that the patient is, has, or will be using a particular medication.
+</p>
 </div>
 
 <div>
@@ -34,7 +40,8 @@
     </tr>
     <tr>
         <td>MedicationStatement</td>
-        <td>Запись о том, что лекарственное средство было принято пациентом, или что лекарственное средство было выдано пациенту, где данная запись является результатом сообщения от пациента или другого клинициста. Medication statement не является частью последовательности выписать->отпустить препарат по рецепту->ввести (в организм) (prescribe->dispense->administer), это протокол о том, что такая последовательность (или, по крайней мере, её часть) действительно имела место и привела к убеждению о том, что пациент получил конкретный медикамент. <!-- This is a record of a medication being taken by a patient or that a medication has been given to a patient, where the record is the result of a report from the patient or another clinician. 
+        <td>Запись о том, что лекарственное средство было принято пациентом, или что лекарственное средство было выдано пациенту, где данная запись является результатом сообщения от пациента или другого клинициста. Medication statement не является частью последовательности выписать->отпустить препарат по рецепту->ввести (в организм) (prescribe->dispense->administer), это протокол о том, что такая последовательность (или, по крайней мере, её часть) действительно имела место и привела к убеждению о том, что пациент получил конкретный медикамент. <!-- 
+This is a record of a medication being taken by a patient or that a medication has been given to a patient, where the record is the result of a report from the patient or another clinician. 
           A medication statement is not a part of the prescribe->dispense->administer sequence, but is a report that such a sequence (or at least a part of it) did take place, resulting in a belief that the patient has received a particular medication. -->
         </td>
     </tr>

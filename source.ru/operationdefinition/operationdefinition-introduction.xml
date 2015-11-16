@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 Ресурс OperationDefinition предоставляет формальное исчисляемое определение  <a href="operations.html">операции</a> или <a href="search.html#advanced">именованного запроса</a>. OperationDefinition выполняет две принципиальные задачи:
@@ -18,6 +19,7 @@ The OperationDefinition serves two principle purposes: -->
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 Operation Definitions публикуются для определения операций, которые может осуществлять сервер обычным образом. 

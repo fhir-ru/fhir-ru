@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <!-- insert xhtml content here -->
+<a name="notes"> </a>
 <h2>Примечания<!-- Notes --></h2>
 <ul>
 <li>В некотором местоположении оказывать услуги могут несколько организаций или специалистов. Такие ссылки не хранятся в ресурсе Location, вместо этого их можно найти в моделях для <a href="organization.html">Organization</a> и <a href="practitioner.html">Practitioner</a>.</li>
@@ -34,7 +35,7 @@ missing identifier, not a Location of 'kind' ambulance. --></p>
 Некоторые из элементов данных ресурса Location имеют значение только в режиме "instance" и не должны быть использованы в режиме "kind":
 <!-- Some of Location's data elements are only relevant when mode is 'instance' and should not be used when mode is 'kind': --><br/>
 	<i>(однако эта информация все еще может быть включена, если она необходима, например когда это общий элемент, но не глобально общий, например машина скорой помощи Burgers MU)
-	<!-- (however this information could still be included if was relevant, such as when it is a generic item, but not globally generic, eg a Burgers MU ambulance) --></i>
+	<!-- (however this information could still be included if was relevant, such as when it is a generic item, but not globally generic, e.g. a Burgers MU ambulance) --></i>
 </p>
 <ul>
 <li>Location.identifier</li>
@@ -45,11 +46,11 @@ missing identifier, not a Location of 'kind' ambulance. --></p>
 <li>Location.managingOrganization</li>
 </ul>
 
-	<h2>Пример иерархии ресурсов Location<!-- Example Location Heirachy --></h2>
+	<h2>Пример иерархии ресурсов Location<!-- Example Location Hierarchy --></h2>
 	<p>
 	Пример иерархии местоположений призван помочь дать некоторые рекомендации в качестве примера, как может выглядеть иерархия местоположений в фиктивной больнице.
-		<!-- An example location heirachy should help give some guidance as to one example
-		of how a location heirachy could look within a fictitious Hospital. --><br/>
+		<!-- An example location hierarchy should help give some guidance as to one example
+		of how a location hierarchy could look within a fictitious Hospital. --><br/>
 		<i>(Вложенность здесь будет передаваться с помощью структуры "part-of")<!-- (The nesting here would be the "part-of" structure of the location) --></i>
 	</p>
 		<pre>
@@ -111,7 +112,7 @@ Mobile Services (kind)
         Ambulance AMB2 (instance)
 	</pre> -->
 	<p>
-		<i>Обратите внимание, что палаты/отделения не являются частью этой структуры, они входят в иерархию организационной структуры.
-		<!-- Note that Wards/Departments are not part of this structure, these would form part of the Organizational Hierarchy. --></i>
+		<i>Примечание: палаты/отделения не являются частью этой структуры - они входят в организационную иерархию.
+		<!-- Note: Wards/departments are not part of this structure - these would form part of the Organizational Hierarchy. --></i>
 	</p>
 </div>

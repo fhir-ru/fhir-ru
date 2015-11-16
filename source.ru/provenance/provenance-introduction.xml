@@ -1,50 +1,51 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 Ресурс provenance отслеживает информацию об активности по созданию версий ресурса, включая сущности и агентов, участвующих в создании ресурса. 
 Эта информация может использоваться для получения оценки качества, надежности и достоверности, или для предоставления указателей, куда перейти для дальнейшего изучения происхождения ресурса и содержащейся в нем информации.
-<!-- The provenance resource tracks information about activity that created a version of a resource, including the entities, and agents involved in producing a resource.
-This information can be used to form assessments about its quality, reliability or trustworthiness, or to provide pointers for where to go to further investigate the origins of the resource and the information in it.  -->
+<!-- The Provenance resource tracks information about the activity that created a version of a resource, including the entities, and agents involved in producing a resource.
+This information can be used to form assessments about its quality, reliability or trustworthiness, or to provide pointers for where to go to further investigate the origins of the resource and the information in it. -->
 </p>
 <p>
 <a href="provenance.html">Ресурсы Provenance</a> ведут учет по сбору информации о контексте, в котором была получена информация в ресурсе. Ресурсы Provenance подготавливаются приложением, которое инициирует создание/обновление и т. п. ресурса. 
-Ресурс <a href="auditevent.html">Audit Event</a> содержит пересекающуюся информацию, но создается при наступлении события для отслеживания и аудита событий. 
-Ресурсы Audit Event часто (хотя и не исключительно) создаются приложением, в ответ на событие чтения/запроса/создания/обновления и т. п.
+Ресурс <a href="auditevent.html">AuditEvent</a> содержит пересекающуюся информацию, но создается при наступлении события для отслеживания и аудита событий. 
+Ресурсы AuditEvent часто (хотя и не исключительно) создаются приложением, в ответ на событие чтения/запроса/создания/обновления и т. п.
 <!-- <a href="provenance.html">Provenance resources</a> are a record-keeping assertion that gathers information about the context in which the information in a resource was obtained. 
 Provenance resources are prepared by the application that initiates the create/update etc. of the resource.
-A <a href="auditevent.html">Audit Event</a> resource contains overlapping information, but is created as events occur, to track and audit the events. 
-Audit Event resources are often (though not exclusively) created by the application responding to the read/query/create/update etc. event.  -->
+A <a href="auditevent.html">AuditEvent</a> resource contains overlapping information, but is created as events occur, to track and audit the events. 
+AuditEvent resources are often (though not exclusively) created by the application responding to the read/query/create/update, etc., event.  -->
 </p>
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<a name="overlap"> </a>
 <p>
 Многие другие FHIR-ресурсы содержат элементы с информацией о происхождении ресурса, которые пересекаются с функциональностью ресурса Provenance. Этим свойствам в других ресурсах всегда следует отдавать предпочтение при использовании, а ресурс Provenance следует использовать тогда, когда требуется указать дополнительную информацию, хоть и может возникнуть дублирование.
 <!-- Many other FHIR resources contain some elements that represent information
 about how the resource was obtained, and therefore they overlap with the 
 functionality of the Provenance resource. These properties in other resources
-should always be used in preference to the provenance resource, and the 
-provenance resource should be used where additional information is required,
+should always be used in preference to the Provenance resource, and the 
+Provenance resource should be used where additional information is required,
 though overlap can occur.  -->
 </p>
 </div>
 
 <div>
+<a name="bnc"> </a>
 <h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 Ресурс Provenance основывается на <a href="http://www.w3.org/TR/2013/NOTE-prov-overview-20130430/">W3C-спецификации Provenance</a>, с которой у него есть мэппинги. Ресурс Provenance адаптирован, чтобы лучше соответствовать сценариям использования в FHIR для описания происхождения. 
 In terms of <a href="http://www.w3.org/TR/prov-dm/">W3C Provenance</a> the FHIR <a href="provenance.html">Provenance resources</a> covers "Generation" of "Entity" with 
-respect to FHIR defined Resources for creation or updating; 
-where as <a href="auditevent.html">Audit Event</a> covers "Usage" of "Entity" and all other "Activity" as defined in W3C Provenance.
+respect to FHIR defined resources for creation or updating; 
+whereas <a href="auditevent.html">AuditEvent</a> covers "Usage" of "Entity" and all other "Activity" as defined in W3C Provenance.
 </p>
 <p>
 W3C-спецификация Provenance определяет следующую основную модель:
-
-<!-- The provenance resource is based on the <a href="http://www.w3.org/TR/2013/NOTE-prov-overview-20130430/">W3C Provenance specification</a>, 
-and mappings are provided. The Provenance resource is tailored to fit the FHIR use-cases for provenance more directly. --> 
 <!-- 
 The W3C Provenance Specification has the following fundamental model: -->
 </p>
@@ -52,11 +53,49 @@ The W3C Provenance Specification has the following fundamental model: -->
 <img alt="Key concepts" src="http://www.w3.org/TR/prov-primer/images/key-concepts.png" width="280" height="173" style="float: none; clear: both"/>
 </p>
 <p>
+Where:
+</p>
+<ul>
+<li>Target - An entity that is a FHIR resource instance that is created, updated or deleted.</li>
+<li>Entity - An entity is a physical, digital, conceptual or other kind of thing with some fixed aspects; entities may be real or imaginary.</li>
+<li>Agent - An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity.</li>
+<li>Activity - An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.</li>
+</ul>
+<p>
 Ресурс <i>Provenance</i> фактически соответствует одной активности, которая определяет набор ресурсов (<i>target</i>), генерируемых этой активностью. 
 Эта активность также ссылается на другие сущности (<i>entity</i>), которые были использованы, и агентов (<i>agent</i>), которые были связаны с этой активностью.
-<!-- The <i>Provenance</i> resource actually corresponds to a single activity that identifies a set of resources (<i>target</i>) generated by the activity.
+<!-- The Provenance resource actually corresponds to a single activity that identifies a set of resources (<i>target</i>) generated by the activity.
 The activity also references other entities (<i>entity</i>) that were used and the agents (<i>agent</i>) that were associated with the activity.  -->
 </p>
+<a name="TODO"> </a>
+<h3>Open Issues and Request for Comments</h3>
+<p>
+At this juncture, Provenance has several areas of concern for the Security WG. The first concern is whether the current HL7 
+ProvenanceEvent value set is sufficient for conveying the states 
+to which a trigger event can cause an activity to transition the FHIR Resource target of the Provenance Resource from a previous state.  
+The current value set was will be updated post DSTU2.
+</p>
+<p>
+While the intended FHIR ProvenanceEvent value set has sub-value sets from multiple sources such as W3C and HL7, there are 
+some duplicate and colliding definitions, the upside is that there are more provenance event related actions than in the 
+HL7 ProvenanceEvent value set.  The Security, Community Based Collaborative Care, and the EHR Work Groups are in 
+the process of refining and de-duplicating this value set in hopes of replacing the current one in DSTU 2.1 if the 
+Provenance Resource is permitted to be re-published.  In any case, feedback from business and implementer communities 
+would be very much appreciated.
+</p>
+<p>
+Another area of concern is whether the Provenance.entity.role element is necessary at all if there is a sufficient 
+activity value set, and if it is useful, whether W3C codes indicating that the entity is the target of 
+provenance, e.g., derivation or revision, make sense where the entity is an input into a target resource which may 
+be a revision or derivation of that entity.
+</p>
+<p>
+Note that the binding of the ProvenanceEvent and Purpose of Use value sets are currently set to extensible rather 
+than example.  Concerns have been raised about constraining vocabulary choices during DSTU especially for other 
+jurisdictions.  For example, outside of the US, ISO 13606 Purpose of Use codes are more likely used.  
+Security WG would also appreciate feedback on whether these bindings should be example or extensible.
+</p>
+
 </div>
 
 </div>

@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 	<div>
+<a name="notes"> </a>
 	<h2>
 		Notes:
 	</h2>
@@ -16,12 +17,13 @@ reaching a person or party that has been designated by the organization to be co
 </div>
 
 	<div>
+<a name="example"> </a>
 		<h2>
 			Example Organization Hierarchy:
 		</h2>
 	<p>
-		An example organization heirachy should help give some guidance as to one example
-		of how a location heirachy could look within a fictitious Medical Organization.<br/>
+		An example organization hierarchy should help give some guidance as to one example
+		of how a location hierarchy could look within a fictitious Medical Organization.<br/>
 		<i>(The nesting here would be the "part-of" structure of the Organization resource)</i>
 	</p>
 	<pre>
@@ -42,7 +44,7 @@ Burgers University Medical Center
         ...
 	</pre>
 	<p>
-		<i>Note that physical structures of this heirarchy are not present, these are defined by a Location hierarchy.</i>
+		<i>Note that physical structures of this hierarchy are not present - these are defined by a Location hierarchy.</i>
 	</p>
 	</div>
 </div>

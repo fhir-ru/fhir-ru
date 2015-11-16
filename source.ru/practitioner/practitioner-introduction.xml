@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 Ресурс Practitioner охватывает всех лиц, которые участвуют в процессе здравоохранения и оказании медицинских услуг в рамках своих официальных обязанностей, и этот ресурс используется для приписывания деятельности и обязанностей этим лицам.
@@ -18,20 +19,38 @@ Practitioners include (but are not limited to): -->
 <li>социальные работники, профессиональные домашние сиделки, официальные добровольцы<!-- social workers, professional home carers, official volunteers --></li>
 <li>администраторы, занимающиеся регистрацией пациентов<!-- receptionists handling patient registration --></li>
 <li>IT-персонал, выполняющий объединение или разделение записей пациентов<!-- IT personnel merging or unmerging patient records --></li>
+<li>Служебные животные (например приставленная больницей собака, натренированная обнаруживать рак у пациентов<!-- Service animal (e.g., ward assigned dog capable of detecting cancer in patients) --></li>
 </ul>
 </div>
 
 <div>
+<a name="bnr"> </a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 Ресурс НЕ СЛЕДУЕТ использовать для лиц, вовлеченных без официальной ответственности, например людей, ухаживающих за друзьями, родственниками или соседями. Их следует регистрировать как контакты пациента (Patient's Contact). Если они  выполняют какое-то действие или нужно их упоминание в другом ресурсе, используйте ресурс <a href="relatedperson.html">RelatedPerson</a>.
-<!-- The Resource SHALL not be used for persons involved without a formal responsibility like individuals taking care for friends, 
+<!-- The Resource SHALL NOT be used for persons involved without a formal responsibility like individuals taking care for friends, 
 relatives or neighbors. These can be registered as a Patient's Contact.  If performing some action or being referenced by another
-resource, use <a href="relatedperson.html">RelatedPerson</a>. -->
+resource, use <a href="relatedperson.html">RelatedPerson</a> resource. -->
+</p>
+<p>
+	The primary distinction between a Practitioner and a RelatedPerson is based on whether:
+</p>
+<ul>
+<li>
+	The person/animal operates on behalf of the care delivery organization over multiple patients (Practitioner) or,
+</li>
+<li>
+	Where the person/animal is not associated with the organization, and instead is
+	allocated tasks specifically for the RelatedPerson's Patient (RelatedPerson).
+</li>
+</ul>
+<p>
+	A standard extension <a href="extension-practitioner-animalspecies.html">animalSpecies</a> can be used to indicate the species of a service animal.
 </p>
 </div>
 
 <div>
+<a name="bnc"> </a>
 <h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 Practitioner исполняет различные роли в пределах одной или даже различных организаций. В зависимости от юрисдикции и обычаев может потребоваться поддержка особого ресурса Practitioner для каждой такой роли или отдельного ресурса Practitioner с несколькими ролями. 

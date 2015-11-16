@@ -5,7 +5,7 @@
 <!-- Notes: -->
 </p>
 <ul>
-<li>multipleBirth может быть выражено либо в виде булева значения (просто указание, появился ли пациент при многоплодных родах), либо в виде целого числа, указывающего фактическую очередность рождения.<!-- multipleBirth can be either expressed as a boolean (just indicating whether the patient is part of a multiple birth) or as an integer, indicating the actual birth order. --></li>
+<li>multipleBirth может быть выражено либо в виде булева значения (просто указание, появился ли пациент при многоплодных родах), либо в виде целого числа, указывающего фактическую очередность рождения.<!-- multipleBirth can be either expressed as a Boolean (just indicating whether the patient is part of a multiple birth) or as an integer, indicating the actual birth order. --></li>
 <li>Записи Patient могут быть только в одном из двух статусов: "в употреблении" (active=true) и "не используется" (active=false). Обычное состояние для записи - активна, т. е. используется. Значение активности устанавливается в 'false', когда запись создана по ошибке или является дубликатом. Нет необходимости связывать запись, чтобы ее инактивировать.<!-- Patient records may only be in one of two statuses: in use (active=true) and not in use (active=false). 
 A normal record is active, i.e. it is in use. Active is set to 'false' when a record is created as a duplicate or in error. 
 A record does not need to be linked to be inactivated. -->
@@ -16,6 +16,7 @@ See below for further discussion --></li>
 <li>У Contact для Patient есть элемент <i>organization</i>, это для использования с опекунами или бизнес-контактами, где важна только организация.<!-- The Contact for a Patient has an element <i>organization</i>, this is for use with guardians or business related contacts where just the organization is relevant. --></li>
 </ul>
 
+<a name="ids"> </a>
 <h2>Patient id's and Patient resource id's</h2>
 <p>Resource Id записи Patient никогда не меняется. По этой причине идентификаторы, с которыми связаны люди (часто называются MRN - Номер медицинской карты (Medical Record Number), или UR (Unit Record) - единичная запись), не следует использовать для идентификаторов ресурса, поскольку MRN может измениться, например в результате дублирующихся записей для одного пациента. Вместо этого они должны быть представлены в списке <i>Patient.identifier</i>, где ими можно управлять. Также это полезно в случае учреждений, которые получили несколько номеров из-за слияния пациентов учетных систем с течением времени.  <!-- 
 A Patient record's Resource Id can never change. For this reason the identifiers with which humans are concerned (often called MRN - Medical Record Number, or UR - Unit Record) should not be used for the resource's id, since MRN's may change, i.e. as a result of having duplicate records of the same patient. Instead they should be represented in the <i>Patient.identifier</i> list where they can be managed. This is also useful for the case of institutions that have acquired multiple numbers because of mergers of patient record systems over time.
@@ -52,7 +53,7 @@ record referred to does not point back to the referring record. --></p>
 <!-- In a distributed architecture, multiple systems keep separate patient records concerning the same patient. These
 records are not considered duplicates, but contain a distributed, potentially overlapping view of the patient's data.
 Each such record may have its own focus or maintaining organization and there need not be a sense of one record
-being more complete or more authorative than another. In such cases, links of type 'seealso' can be used to point to
+being more complete or more authorative than another. In such cases, links of type 'see also' can be used to point to
 other patient records. It is not a requirement that such links are bilateral.  -->
 </p>
 
@@ -70,26 +71,26 @@ Patient Link, в свою очередь, предназначен для исп
 <!-- The Patient Link however is only intended to be used for Patient resources. -->
 </p>
 <p>
-Основной сценарий использования для ресурса Person - возможность поддержки реестров Person, которые не обязательно имеют медицинский контекст и способны идентифицировать и оценивать уровни достоверности, что это один и тот же человек. 
-<!-- The primary use case for the Person resource is to be able to support Person registries that do not necessarily have a
-healthcare context, and are able to identify and quantify confidence levels that this is the same person. -->
-<br/>
-Это может включать потребительские порталы, где фактическим хранителем информации о человеке является непосредственно сам человек.
-<!-- This could include consumer portals where the actual maintainer of the Person information is the actual person themselves. -->
-<br/>
-Система может использовать запись Person для перепроверки изменений в информации, применимой к одной части записи, к значениям в другой системе. Потребитель при переезде обновляет свою контактные номера и адрес в своей Person записи, и затем система администрирования пациентов способна увидеть, что эти данные изменились, и предложить организации дополнить данные пациента, который привязан к записи этого человека, если они хотят обновить его информацию или, если им больше не нужны услуги и они должны быть отменены, поскольку они переехали из этого района.
-<!-- A system could use the Person entry to cross check changes to information applied to one part of a record to values in another
-system. e.g. A Consumer updates his contact numbers and address when moving in his Person record, and then a Patient Administation
-system is able to see that this data is changed, and prompt the organization to follow up with the patient that was linked to
+Основной сценарий использования ресурса Person - возможность поддержки реестров людей, которые не обязательно имеют медицинский контекст и способны идентифицировать и оценивать уровни достоверности того, что это один и тот же человек.<br/>
+Он может включать потребительские порталы, где хранителем информации о человеке является непосредственно сам человек.<br/>
+Система может использовать запись Person для перепроверки изменений в информации, применимой к одной части записи, к значениям в другой системе; например при переезде потребитель обновляет свои контактные номера и адреса в своей персональной записи, а затем система администрирования пациентов обнаруживает, что эти данные изменились и предлагает организации дополнить данные пациента, который привязан к этой персональной записи, если они хотят обновить его информацию или, если им больше не нужны услуги и они должны быть отменены, поскольку они переехали из этого района.
+
+<!-- The primary use case for the Person resource is to be able to support person registries that do not necessarily have a
+healthcare context, and are able to identify and quantify confidence levels that this is the same person.<br/>
+This could include consumer portals where the maintainer of the person information is the actual person themselves.<br/>
+A system could use the Person entry to cross check changes to information applied to one part of a record to values in another
+system; e.g., when moving, a consumer updates his contact numbers and address in his person record, and then a Patient Administration
+system is able to see that this data is changed and prompt the organization to follow up with the patient that was linked to
 the person record if they want their details updated, or if they no longer need services and they should be cancelled, 
 as they've moved from the area. -->
 </p>
   
-<h2>Сравнение Patient.Contact и RelatedPerson<!-- Patient.Contact vs RelatedPerson --></h2>
+<a name="contact"> </a>
+<h2>Сравнение Patient.Contact и RelatedPerson<!-- Patient.contact vs. RelatedPerson --></h2>
 <p>
-Компонент contact в ресурсе Patient следует использовать для хранения контактной информации людей. Ресурс RelatedPerson следует использовать там, где у системы имеется отдельная запись для других людей для иных целей, чем просто контактные данные.
-<!-- The contact component on the Patient Resource should be used for storing people to contact information.
-Where a system has a separate record for other people for purposes other than just the contact details, The RelatedPerson
+Элемент "contact" в ресурсе Patient следует использовать для хранения контактной информации людей. Ресурс RelatedPerson следует использовать там, где у системы имеется отдельная запись для других людей для иных целей, чем просто контактные данные.
+<!-- The contact element on the Patient Resource should be used for storing people to contact information.
+Where a system has a separate record for other people for purposes other than just the contact details, the RelatedPerson
 resource should be used. -->
 <br/>
 Это включает в себя случаи, когда эти связанные люди фактически вносят вклад в запись, и на них нужно ссылаться индивидуально (например, CarePlan.Participant, Encounter, DocumentReference, Appointment), где не может быть использован компонент Patient.Contact.
@@ -97,10 +98,11 @@ resource should be used. -->
 (e.g. CarePlan.Participant, Encounter, DocumentReference, Appointment) where the Patient.Contact component cannot be used. -->
 </p>
 <p>
-Не ожидается, что эти записи будут использоваться для основного лечащего врача, данная информация должна храниться в поле Patient.careProvider.
-<!-- It is not expected that these records will be used for primary care provider, this information should be stored in
+Эти записи не предназначены для записи основного лечащего врача; данная информация должна храниться в поле Patient.careProvider.
+<!-- It is not expected that these records will be used for recording the primary care provider; this information should be stored in
 the Patient.careProvider field. --></p>
 
+<a name="merge"> </a>
 <h2>Слияние записей<!-- Merging records --></h2>
 <p>
 Данная спецификация не определяет функциональность слияния: если обнаруживается, что несколько записей пациента являются дубликатами, они могут быть связаны вместе, как описано выше. Такие ссылки просто выражают отношения между записями, а в случае ссылки замещения указывают на "мастер"-запись. Данная спецификация не требует, чтобы FHIR-серверы мигрировали данные между такими записями при обнаружении такой ссылки. Отметьте:
@@ -115,4 +117,88 @@ does not mandate that FHIR servers migrate information between such records on f
  <li>Серверы могут осуществлять слияние/миграцию записей, хоть это и не является обязательным.
  <!-- Servers are allowed to implement merging/record migration even though it is not mandated. --> </li>
 </ul>
+<blockquote class="dstu-note">
+<a name="dstu"> </a>
+<p>
+<b>DSTU Note:</b>   We are seeking input from the implementer community on what effect linking/merging/unlinking should have on 
+other functionality such as the GET operation (where the result is the old version of the Patient), searching, reverse includes, etc.; e.g., should observation resources from all linked/merged patients be returned when querying for one of them?<br/>
+How should an unlink behavior be done? (Assuming that no data was "re-allocated" as part of merge)
+These suggested updated behaviors could be the subject of a future connectathon.
+</p>
+<p>
+Feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+</p>
+</blockquote>
+
+<a name="match"> </a>
+<h2>Patient Matching using an MPI</h2>
+<p>
+A Master Patient Index (<a href="http://en.wikipedia.org/wiki/Enterprise_master_patient_index">MPI</a>) is a service used to manage patient identification in a context
+where multiple patient databases exist. Healthcare applications and middleware use the 
+MPI to match patients between the databases, and as new patient details are encountered.
+MPIs are highly specialized applications, often tailored extensively to the institution's 
+particular mix of patients. MPIs can also be run on a regional and national basis. 
+</p>
+<p>
+To ask an MPI to match a patient, clients use the "mpi" <a href="search.html#query">query</a>,
+which uses the normal search parameters defined for patient. However, rather than
+their normal use, they are interpreted as MPI inputs - e.g. instead of requiring 
+that the resources literally contain the search parameters, they are passed to an 
+MPI algorithm of some kind that uses them to determine the most appropriate matches 
+in the patient set. 
+</p>
+<pre>
+  GET [base]/Patient?_query=mpi&amp;parameters...
+</pre>
+<p>
+The response from an "mpi" query is a set of patient records, ordered from most
+likely to least likely. If there are not patient matches, the MPI SHALL return 
+an empty search set with no error, but may include an <a href="operationoutcome.html">operation outcome</a> with 
+further advice. All patient records SHALL have a score from 0 to 1, where
+1 is the most certain match, along with an <a href="extensibility.html">extension</a>
+<a href="extension-patient-mpi-match.html">"patient-mpi-match"</a> that indicates the MPI's position on the match quality:
+</p>
+<pre>
+  &lt;entry&gt; 
+    &lt;resource&gt;
+      &lt;Patient&gt;
+        &lt;!-- patient details --&gt;
+      &lt;/Patient&gt;
+    &lt;/resource&gt;
+    &lt;search&gt;
+      &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/patient-mpi-match&quot;&gt;
+        &lt;valueCode value=&quot;probable&quot;/&gt;
+      &lt;/extension&gt;
+      &lt;score value=&quot;0.80&quot;/&gt;
+    &lt;/search&gt;
+  &lt;/entry&gt; 
+</pre>
+<p>
+The patient-mpi-match extension has one of the <a href="valueset-patient-mpi-match.html">following codes</a>:
+</p>
+[%codelist-nh http://hl7.org/fhir/ValueSet/patient-mpi-match%]
+<p>
+One optional parameter to the MPI match operation is "userid", which is
+used to pass the user details from a trusted client to the MPI. This may 
+be used by the MPI to restrict the possible matches that are returned, based 
+on the user's rights. For example, a staff member covered by policies, etc.,
+may well get a different result than a patient trying to find their own 
+record. Note that this parameter is used where the user would not be 
+expected to log in to the MPI directly; whether this is appropriate or not is 
+a deployment choice.
+</p>
+<p>
+A <a href="patient-mpi-search.html">formal definition</a> for the MPI query is published.
+</p>
+<blockquote class="dstu-note">
+<a name="dstu-2"> </a>
+<p>
+<b>DSTU Note:</b>  This is the first draft of this approach, as a result of 
+connectathon testing.
+</p>
+<p>
+Feedback is sought <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+</p>
+</blockquote>
+
 </div>

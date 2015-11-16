@@ -1,6 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
+<a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 Этот ресурс включает информацию о пациентах и животных, участвующих в широком диапазоне деятельности, связанной со здоровьем, в том числе:
@@ -21,6 +22,12 @@
 information necessary to support the administrative, financial and logistic procedures. A Patient record is generally 
 created and maintained by each organization providing care for a patient. A patient or animal receiving care at multiple
 organizations may therefore have its information present in multiple Patient Resources. -->
+</p>
+<p>
+Not all concepts are included within the base resource (such as race, ethnicity, organ donor status, nationalilty, etc.), 
+but may be found in <a href="patient-profiles.html">profiles</a> defined for specific jurisdictions (e.g., US Meaningful Use Program) or <a href="patient-extensions.html">standard extensions</a>.<br/>
+Such fields vary widely between jurisdictions and often have different names and valuesets for the similar concepts,
+but they are not similar enough to be able to map and exchange
 </p>
 </div>
 

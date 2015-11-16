@@ -1,7 +1,8 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 	<div>
-		
+
+<a name="scope"> </a>		
 	<h2>Область применения и использование</h2>
 <p>
 Ресурс Location (Местоположение) включает в себя как случайные места (место, которое используется для оказания услуг здравоохранения без предварительного назначения или разрешения), так и выделенные, формально назначаемые места. Местоположение может быть частным, государственным, мобильным или фиксированным и варьироваться по масштабу от малых морозильных камер до целых зданий больниц или автостоянок.
@@ -29,13 +30,14 @@ freezers to full hospital buildings or parking garages. -->
   </p>
 </div>
 <div>
+<a name="bnr"> </a>
 	<h2>Границы и связи</h2>
   <p>
   Ресурсы Location и Organization очень тесно связаны и часто могут комбинироваться/совпадать/вызывать путаницу. <br/>
 Ресурс Location предназначен для описания в большей мере физических структур, которыми управляет/эксплуатирует организация, а ресурс Organization предназначен для представления  в большей мере концептуальных иерархий, таких как палата.
-<!--     Locations and Organizations are very closely related resources and can often be mix/matched/confused.<br/>
-		The Location is intended to describe the more physical structures managed/operated by an organization, where the Organization is intended to
-		represent the more conceptual heirarchies, such as a ward. -->
+<!--     Locations and Organizations are very closely related resources and can often be mixed/matched/confused.<br/>
+		The Location is intended to describe the more physical structures managed/operated by an organization, whereas the Organization is intended to
+		represent the more conceptual hierarchies, such as a ward. -->
 	</p>
 	<p>
 	Location действует без адреса в тех случаях, когда он может быть точно описан географическими координатами в отдаленных областях, или при записи с помощью устройства. Locations с режимом = "kind", вероятно, также не будут иметь адреса , так как они обозначают просто тип местоположения, но так же могут иметь адрес, по которому они могут быть найдены.
@@ -47,7 +49,7 @@ freezers to full hospital buildings or parking garages. -->
 	<p>
 	Другим использованием местоположения может быть описание юрисдикции. Эта юрисдикция может считаться объявлением границы, которая может быть сочетанием физической границы и некоторого другого дискриминатора(-ов):
 		<!-- Another use of location could be for describing a Jurisdiction. This jurisdiction may be considered a classified boundary
-		which could be a combination of a physical boundary, and some other descrimintor(s): -->
+		which could be a combination of a physical boundary, and some other discriminator(s): -->
 	</p>
 	<ul>
 		<li>Nation - Country wide community or Federal Government (Ministry of Health)</li>
