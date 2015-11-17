@@ -869,7 +869,7 @@ NOTE: while translations on Resources are possible they should be used for rende
 		<translation lang="pl">Fast Healthcare Interoperability Resources - Strona główna</translation>
 		<translation lang="es">Fast Healthcare Interoperability Resources - Página de Inicio</translation>
 		<translation lang="fr">Fast Healthcare Interoperability Resources - Accueil</translation>
-		<translation lang="ru">Fast Healthcare Interoperability Resources - Домашняя страница</translation>
+		<translation lang="ru">Fast Healthcare Interoperability Resources - Главная страница</translation>
 	</item>
 	<item id="MSG_ID_INVALID" ecode="true">
 		<translation lang="en">Id "%s" has an invalid character "%s"</translation>
@@ -1684,6 +1684,7 @@ NOTE: while translations on Resources are possible they should be used for rende
 		<translation lang="en">Home</translation>
 		<translation lang="nl">Start</translation>
 		<translation lang="fr">Accueil</translation>
+    <translation lang="ru">Главная</translation>
 	</item>
 	<item id="SERVER_HOME">
 		<translation lang="en">Server Home</translation>

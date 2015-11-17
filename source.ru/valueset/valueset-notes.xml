@@ -228,8 +228,10 @@ For each <i>compose.import</i>, find the referenced value set by ValueSet.url, e
    <li>Если есть фильтры, обработайте их в порядке (как описано выше) и добавьте пересечение их результатов к итоговому набору.<!-- If any filters are present, process them in order (as explained above), and add the intersection of their results to the result set. --></li>
   </ul>
  </li>
- <li>для каждого <i>compose.exclude</i> следуйте тому же самому алгоритму, что и для <i>compose.include</i>, но вместо добавления удалите коды из итогового набора<!-- for each <i>compose.exclude</i>, follow the same process as for <i>compose.include</i>, but remove any codes from the result set, instead of adding them --></li>
- <li>добавьте коды из <i>define</i> в итоговый набор<!-- add any codes in the <i>define</i> to the result set --></li>
+ <li>для каждого <i>compose.exclude</i> следуйте тому же самому алгоритму, что и для <i>compose.include</i>, но вместо добавления удалите коды из итогового набора.<!-- 
+For each <i>compose.exclude</i>, follow the same process as for <i>compose.include</i>, but remove any codes from the result set, instead of adding them. --></li>
+ <li>добавьте коды из <i>define</i> в итоговый набор.<!-- 
+Add any codes in the <i>codeSystem</i> to the result set. --></li>
 </ul>
 <p>
 "Итоговый набор" после этого будет представлен в <i>расширении</i>. Обратите внимание, что структура расширения по своей природе упорядочена, а также 
@@ -240,36 +242,44 @@ of these, and the conceptual approach described should not be understood to proh
 these regards. There is a <a href="valueset-operations.html">defined operation</a> to ask a server to perform this expansion. -->
 </p>
 <p>
-Расширение может включать записи в расширение, которое служить только в целях произвольной группировки, чтобы упростить для человека использование списка. Такие элементы не имеют системы и кода и должны быть помечены как абстрактные. Обратите внимание, что определение и составление набора значений не предлагают поддержки в определении этого, но это не исключает серверы от использования расширений или других сообщений для внесения таких групп в особенности реализации. 
+Расширение может включать записи в расширение, которое служит только в целях произвольной группировки, чтобы упростить для человека использование списка. Такие элементы не имеют системы и кода и должны быть помечены как абстрактные. Обратите внимание, что <code>codeSystem</code> и <code>compose</code> набора значений не предлагают поддержки в определении этого, но это не исключает серверы от использования расширений или других сообщений для внесения таких групп в особенности реализации. 
 <!-- An expansion may include entries in the expansion that only serve an arbitrary grouping purpose, to make it easier
 for a human to use the list. These entries have no system or code, and must be marked as abstract. Note that the 
-value set define and compose offer no support for defining these, but this does not exclude servers from using
+value set <code>codeSystem</code> and <code>compose</code> offer no support for defining these, but this does not exclude servers from using
 extensions or other knowledge to introduce such groups as an implementation feature. --> 
 </p>
 <p>
-Whether to store expanded value sets, or simply to store their definitions, and expand on the fly is 
-a matter for system deployment. Any system that stores an expansion must be concerned with how to determine
-whether it is current, which requires deep knowledge of how the expansion was created. A system with a 
-dedicated terminology server that returns expansions on demand avoids this problem, but leaves open
-the question of how to audit the specific expansion that was used for a particular case. One solution
-to this is to use a dedicated terminology server, and have the clients ask for expansions on demand
-based on the value set definitions, and for the server to store (and reuse as appropriate) the 
-returned expansion (ValueSet.expansion.identifier).
+The codes in the expansion should be treated as case sensitive - implementers should use the correct 
+case. Implementers can consult the definition of the code system to determine whether the code system
+that defines the code is case sensitive or not. 
+</p>
+<p>
+Whether to store expanded value sets, or simply to store their definitions and expand on the fly is 
+a matter for system deployment. Some servers, including public value sets servers, only store expansions. 
+However any system that stores an expansion must be concerned with how to determine whether the expansion 
+is still current, and this requires deep knowledge of how the expansion was created. 
+A system with a dedicated terminology server that returns expansions on demand avoids this problem, but 
+leaves open the question of how to audit the specific expansion that was used for a particular case. 
+One solution to this is to use a dedicated terminology server, and have the clients ask for 
+expansions on demand based on the value set definitions, and for the server to store (and reuse as 
+appropriate) the returned expansion (when it reuses the expansion, ValueSet.expansion.identifier will
+be the same).
 </p>
 
 <a name="detailed-metadata"/>
 <h3>Code systems with detailed metadata</h3>
 <p>
 Sometimes code systems may be used to represent more complex information than just 
-code, display name and code system.  For example a code system of drug information, 
-of observation types, of locations, and other similar registry-type information.  
+code, display name and code system.  For example, a code system of drug information
+which contains information about the content of the medication (e.g., RxNorm), or a set of  
+observation types, that contain methods, units, etc. (e.g., LOINC).  
 In FHIR, these are handled by splitting the concept into two distinct parts - the 
 <b>ValueSet</b> resource is used to manage the codes, display names and relationships.  
-A separate "detail" resource (e.g. <a href="medication.html">Medication</a> for 
+A separate "detail" resource (e.g., <a href="medication.html">Medication</a> for 
 drugs, <a href="dataelement.html">DataElement</a> for observation types, 
 <a href="location.html">Location</a> for location, etc.) is used to convey detailed 
 information (dose form &amp; strength, allowed data type or permitted values, address &amp;
-hours of operation, etc.)  One "detail" resource instance is created for each code.
+hours of operation, etc.).  One "detail" resource instance is created for each code.
 </p>
 <p>
 This division accomplishes several things:
@@ -284,15 +294,15 @@ retrieve the entire resource.  By packaging the detailed information in separate
 resources, independent retrieval and update is possible.</li>
 <li>It supports use-cases for sharing medication, location, observation type and 
 similar information in circumstances where the code may be unknown, unavailable or 
-occasionally non-existent (e.g. custom compounds, non-registered locations).  Having 
-a distinct resource supports these capabilties which would not be possible using 
+occasionally non-existent (e.g., custom compounds, non-registered locations).  Having 
+a distinct resource supports these capabilities, which would not be possible using 
 <b>ValueSet</b>.</li>
 </ul>
 <p>
 Note that this division in FHIR does not imply that a similar division is required in 
 the internal representation used by systems exposing a FHIR interface.  Similarly, some 
 systems may choose to only expose or maintain one aspect of such information types (i.e. 
-only the discrete resource instances or only the value set.)
+only the discrete resource instances or only the value set).
 </p>
 <p>
 The linkage between the "detail" resource and the <b>ValueSet</b> is accomplished via the 

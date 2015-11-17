@@ -1038,7 +1038,7 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">Аллергия или непереносимость (как правило, это риск нежелательной побочной реакции на вещество)<!-- Allergy or Intolerance (generally: Risk Of Adverse reaction to a substance) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Риск вредной или нежелательной физиологической реакции, присущей именному этому человеку и связанной с воздействием некоторого вещества.<!-- Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Для записи клинической оценки предрасположенности или потенциального для человека риска нежелательной побочной реакции на воздействие определенного вещества или класса веществ<!-- To record a clinical assessment of a propensity, or potential risk to an individual, of an adverse reaction upon future exposure to the specified substance, or class of substance. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1071,7 +1071,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">External ids for this item</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Внешние идентификаторы<!-- External ids for this item --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">This records identifiers associated with this allergy/intolerance concern that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
