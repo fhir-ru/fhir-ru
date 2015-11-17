@@ -1501,7 +1501,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">oid | uuid | uri | other</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает уникальную схему идентификации, используемой для этого конкретного идентификатора.<!-- Identifies the unique identifier scheme used for this particular identifier. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает уникальную схему идентификации, используемой для этого конкретного идентификатора.<!-- Identifies Уникальный идентификатор<!-- the unique identifier --> scheme used for this particular identifier. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Различные типы идентификаторов могут использоваться в различных типах коммуникаций (OIDs for v3, URIs for FHIR, etc.). Другие включают RUIDs из v3, standard v2 code name strings, etc.<!-- Different identifier types may be used in different types of communications (OIDs for v3, URIs for FHIR, etc.).  Other includes RUIDs from v3, standard v2 code name strings, etc. --></Data><NamedCell
@@ -1532,7 +1532,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный идентификатор<!-- The unique identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The unique identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Строка, которую следует оправлять для идентификации кодовой системы или идентифицирующей системы<!-- The string that should be sent over the wire to identify the code system or identifier system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6330,7 +6330,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s149"><Data ss:Type="String">Country</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for identifying countries.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды для обозначения стран<!-- Codes for identifying countries -->.</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">http://www.iso.org/iso/country_codes</Data></Cell>

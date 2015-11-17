@@ -1156,7 +1156,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Клиническая специальность (дисциплина), которая указана в направлении<!-- The clinical specialty (discipline) that the referral is requested for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indication of the clinical domain or discipline to which the referral or transfer of care request is sent.  For example: Cardiology Gastroenterology Diabetology</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначение клинической области или дисциплины, куда высылается запрос на направление или перевод ответственности за оказание ухода<!-- Indication of the clinical domain or discipline to which the referral or transfer of care request is sent -->.  For example: Cardiology Gastroenterology Diabetology</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1403,9 +1403,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason for referral / transfer of care request</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование запроса на направление / передачу ответственности за оказание ухода<!-- Reason for referral / transfer of care request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Description of clinical condition indicating why referral/transfer of care is requested.  For example:  Pathological Anomalies, Disabled (physical or mental),  Behavioral Management  </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание клинического состояния, указывающего, почему был сделан запрос на направление/передачу ответственности за оказание ухода<!-- Description of clinical condition indicating why referral/transfer of care is requested -->.  For example:  Pathological Anomalies, Disabled (physical or mental),  Behavioral Management  </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1473,7 +1473,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Actions requested as part of the referral</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The service(s) that is/are requested to be provided to the patient.  For example: cardiac pacemaker insertion</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Услуги, на оказание пациенту которых делается запрос<!-- The service(s) that is/are requested to be provided to the patient -->.  For example: cardiac pacemaker insertion</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1507,7 +1507,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная вспомогательная информация о направлении или передаче ответственности за оказание ухода<!-- Additonal information to support referral or transfer of care request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Any additional (administrative, financial or clinical) information required to support request for referral or transfer of care.  For example: Presenting problems/chief complaints Medical History Family History Alerts Allergy/Intolerance and Adverse Reactions Medications Observations/Assessments (may include cognitive and fundtional assessments) Diagnostic Reports Care Plan</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Любая дополнительная (административная, финансовая или клиническая) информация, необходимая для поддержки запроса на направление или передачу ответственности за оказание ухода<!-- Any additional (administrative, financial or clinical) information required to support request for referral or transfer of care -->.  For example: Presenting problems/chief complaints Medical History Family History Alerts Allergy/Intolerance and Adverse Reactions Medications Observations/Assessments (may include cognitive and fundtional assessments) Diagnostic Reports Care Plan</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4329,7 +4329,7 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">ReferralRequest.status</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Статус направления<!-- The status of the referral --></Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Статус направления<!-- Статус направления<!-- The status of the referral --> --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">date</Data></Cell>

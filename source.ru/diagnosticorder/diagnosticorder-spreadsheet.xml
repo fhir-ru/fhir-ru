@@ -1174,10 +1174,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Пояснение/обоснование исследования<!-- Explanation/Justification for test --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An explanation or justification for why this diagnostic investigation is being requested.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Пояснение или обоснование запроса на данное диагностическое исследование<!-- An explanation or justification for why this diagnostic investigation is being requested -->.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This may be used to decide how the diagnostic investigation will be performed, or even if it will be performed at all.   Use CodeableConcept text element if the data is free (uncoded) text as shown in the [CT Scan example](diagnosticorder-example-di.html).</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может использоваться для принятия решения, каким образом будет выполняться диагностическое исследование, и даже будет ли оно вообще выполняться<!-- This may be used to decide how the diagnostic investigation will be performed, or even if it will be performed at all -->.   Use CodeableConcept text element if the data is free (uncoded) text as shown in the [CT Scan example](diagnosticorder-example-di.html).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.reasonCode</Data><NamedCell
@@ -6397,7 +6397,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">DiagnosticOrderStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The status of a diagnostic order.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус диагностического заказа<!-- The status of a diagnostic order -->.</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#diagnostic-order-status</Data></Cell>
@@ -6412,7 +6412,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">DiagnosticOrderPriority</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The clinical priority of a diagnostic order.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Клинический приоритет диагностического заказа<!-- The clinical priority of a diagnostic order -->.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">#diagnostic-order-priority</Data></Cell>
@@ -6427,7 +6427,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">DiagnosticRequests</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for tests/services that can be performed by diagnostic services.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды тестов/услуг, которые могут быть выполнены службами диагностики<!-- Codes for tests/services that can be performed by diagnostic services -->.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">valueset-diagnostic-requests</Data></Cell>
@@ -6442,7 +6442,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">DiagnosticOrderEventDescription</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional information about an event that occurred to a diagnostic order - e.g. if the status remained unchanged.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная информация о событии, которое произошло с диагностическим заказом - например если статус не меняется<!-- Additional information about an event that occurred to a diagnostic order - e.g. if the status remained unchanged -->.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">valueset-diagnostic-order-event</Data></Cell>

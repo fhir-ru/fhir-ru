@@ -974,7 +974,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The details of a healthcare service available at a location</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Сведения об услугах здравоохранения, оказываемых в некотором месте<!-- The details of a healthcare service available at a location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">The details of a healthcare service available at a location.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1009,7 +1009,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">External identifiers for this item</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешние идентификаторы для этой опции<!-- External identifiers for this item --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">External identifiers for this item</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1045,7 +1045,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Organization that provides this service</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The organization that provides this healthcare service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, которая оказывает данную медицинскую услугу<!-- Организация, которая предоставляет данную медицинскую услугу<!-- The organization that provides this healthcare service --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">This property is recommended to be the same as the Location's managingOrganization, and if not provided should be interpreted as such. If the Location does not have a managing Organization, then this property should be populated.</Data><NamedCell
@@ -1185,7 +1185,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Specialties handled by the Service Site</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Collection of specialties handled by the service site. This is more of a medical term</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Совокупность специальностей, контролируемых Service Site. Это в большей мере медицинские термины<!-- Collection of specialties handled by the service site. This is more of a medical term --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1419,7 +1419,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">Местоположения, для которых данная услуга доступна (а не где эта услуга оказывается)<!-- The location(s) that this service is available to (not where the service is provided) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The locations referenced by the coverage area can include both specific locations, including areas, and also conceptual domains too (mode = kind), such as a physical area (tri-state area) and some other attribute (covered by Example Care Organization). These types of Locations are often not managed by any specific organization. This could also include generic locations such as &quot;in-home&quot;.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Ресурсы location, на которые ссылается данный элемент "площадь покрытия", могут включать как конкретные места, включая области, а также концептуальные домены (режим = "kind"), такие как физические области (tri-state area) и некоторые другие атрибуты (покрытые в примере Care Organization). Эти типы местоположений часто не контролируются никакими определенными организациями. Они могут также включать общие указания места, например &quot;на дому&quot;.<!-- The locations referenced by the coverage area can include both specific locations, including areas, and also conceptual domains too (mode = kind), such as a physical area (tri-state area) and some other attribute (covered by Example Care Organization). These types of Locations are often not managed by any specific organization. This could also include generic locations such as &quot;in-home&quot;. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1450,7 +1450,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Conditions under which service is available/offered</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды, подробно описывающие условия, под которыми доступна/предлагается данная медицинская услуга<!-- The code(s) that detail the conditions under which the healthcare service is available/offered --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды, подробно описывающие условия, под которыми доступна/предлагается данная медицинская услуга<!-- Коды, подробно описывающие условия, под которыми доступна/предлагается данная медицинская услуга<!-- The code(s) that detail the conditions under which the healthcare service is available/offered --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">The provision means being commissioned by, contractually obliged or financially sourced. Types of costings that may apply to this healthcare service, such if the service may be available for free, some discounts available, or fees apply.</Data><NamedCell
@@ -1484,7 +1484,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Specific eligibility requirements required to use the service</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Does this service have specific eligibility requirements that need to be met in order to use the service?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Есть ли у данной услуги особые требования, которым необходимо удовлетворять, чтобы иметь возможность ею воспользоваться<!-- Does this service have specific eligibility requirements that need to be met in order to use the service -->?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1581,7 +1581,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Collection of characteristics (attributes) </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Совокупность характеристик (атрибутов)<!-- Collection of characteristics (attributes)  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Collection of characteristics (attributes) </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1682,7 +1682,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">If an appointment is required for access to this service</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates whether or not a prospective consumer will require an appointment for a particular service at a site to be provided by the Organization. Indicates if an appointment is required for access to this service.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates whether or not a prospective consumer will require an appointment for a particular service at a site to be provided by the Organization. Указывает, требуется ли условленная встреча для получения этой услуги<!-- Indicates if an appointment is required for access to this service -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1713,7 +1713,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Times the Service Site is available</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A collection of times that the Service Site is available</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень указаний времени, когда этот  Service Site доступен<!-- A collection of times that the Service Site is available --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Более подробные сведения о доступности могут быть предоставлены в связанных ресурсах Schedule/Slot.<!-- More detailed availability information may be provided in associated Schedule/Slot resources. --></Data><NamedCell
@@ -1748,7 +1748,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">mon | tue | wed | thu | fri | sat | sun</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates which days of the week are available between the start and end Times</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Указывает, в какие дни недели будет доступна услуга в период между временем начала и окончания<!-- Indicates which days of the week are available between the start and end Times --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2009,7 +2009,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">Web service address of the ELS server's Lookup interface</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Это следует перенести в расширение (Australians!))<!-- This is to be moved into an extension (Australians!) --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это следует перенести в расширение (Australians!))<!-- This is Перенести в расширение<!-- to be moved into an extension --> (Australians!) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2018,7 +2018,7 @@
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Перенести в расширение<!-- To be moved into an extension --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">To be moved into an extension</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="72">
@@ -4501,7 +4501,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">HealthcareService.providedBy</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Организация, которая оказывает данную медицинскую услугу<!-- The organization that provides this Healthcare Service --></Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">The organization that provides this Healthcare Service</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">programname</Data></Cell>
@@ -6431,7 +6431,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s93"><Data ss:Type="String">ReferralMethod</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The methods of referral can be used when referring to a specific HealthCareService resource.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Какие методы направления можно использовать при ссылке на определенный ресурс HealthCareService<!-- The methods of referral can be used when referring to a specific HealthCareService resource -->.</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">Example</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">#service-referral-method</Data></Cell>
@@ -6446,7 +6446,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s93"><Data ss:Type="String">DaysOfWeek</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The days of the week.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дни недели<!-- The days of the week -->.</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">#days-of-week</Data></Cell>

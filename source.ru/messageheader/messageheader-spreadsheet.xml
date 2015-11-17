@@ -982,7 +982,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс, который описывает сообщение, которым обмениваются системы<!-- A resource that describes a message that is exchanged between systems --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The header for a message exchange that is either requesting or responding to an action.  The reference(s) that are the subject of the action as well as other information related to the action are typically transmitted in a bundle in which the MessageHeader resource instance is the first resource in the bundle.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Заголовок сообщения обмена, которое либо запрашивает, либо отвечает на действие. Reference(s), являющиеся субъектами этого действия, также как и другая информация, связанная с этим действием, обычно передаются в виде комплекта, в котором первым идёт экземпляр ресурса MessageHeader <!-- The header for a message exchange that is either requesting or responding to an action.  The reference(s) that are the subject of the action as well as other information related to the action are typically transmitted in a bundle in which the MessageHeader resource instance is the first resource in the bundle -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Многие реализации не готовы к использованию REST и требуют инфраструктуры на основе обмена сообщениями<!-- Many implementations are not prepared to use REST and need a messaging based infrastructure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1297,7 +1297,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Название системы<!-- Name of system --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Название системы<!-- Название системы<!-- Name of system --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое название исходной системы<!-- Human-readable name for the source system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1335,7 +1335,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Может включать конфигурацию или другую информацию, полезную при отладке.<!-- May include configuration or other information useful in debugging. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Поддерживает аудит и, возможно, поведение механизма интерфейса<!-- Supports audit and possibly interface engine behavior --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Поддерживает аудит и, возможно, поведение механизма интерфейса<!-- Поддерживает аудит и, возможно, поведение механизма интерфейса<!-- Supports audit and possibly interface engine behavior --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1369,7 +1369,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Может передавать версии нескольких систем в ситуациях, когда сообщение проходит через несколько рук.<!-- Can convey versions of multiple systems in situations where a message passes through multiple hands. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Поддерживает аудит и, возможно, поведение механизма интерфейса<!-- Supports audit and possibly interface engine behavior --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Supports audit and possibly interface engine behavior</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1441,7 +1441,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Указывает, куда отправлять ответы, может влиять на разрешения безопасности<!-- Identifies where to send responses, may influence security permissions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор может быть неразрешимым URI для систем, которые не используют адреса стандартной сети<!-- The id may be a non-resolvable URI for systems that do not use standard network-based addresses --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор может быть неразрешимым URI для систем, которые не используют адреса стандартной сети<!-- Идентификатор может быть неразрешимым URI для систем, которые не используют стандартные сетевые адреса<!-- The id may be a non-resolvable URI for systems that do not use standard network-based addresses --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./telecom[isNormalDatatype()]</Data><NamedCell
@@ -1477,7 +1477,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates where message is to be sent for routing purposes.  Allows verification of &quot;am I the intended recipient&quot;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">There SHOULD be at least one destination, but in some circumstances, the source system is unaware of any particular destination system</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">ДОЛЖНО быть как минимум одно назначение, однако в некоторых обстоятельствах исходной системе не известна конкретная система назначения<!-- There SHOULD be at least one destination, but in some circumstances, the source system is unaware of any particular destination system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./communicationFunction[typeCode=&quot;RCV&quot;]</Data><NamedCell
@@ -1506,7 +1506,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Название системы<!-- Name of system --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое название целевой системы<!-- Human-readable name for the target system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1579,7 +1579,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Указывает, куда направить сообщение<!-- Identifies where to route the message --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор может быть неразрешимым URI для систем, которые не используют стандартные сетевые адреса<!-- The id may be a non-resolvable URI for systems that do not use standard network-based addresses --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The id may be a non-resolvable URI for systems that do not use standard network-based addresses</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./telecom</Data><NamedCell
@@ -1613,9 +1613,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Физическое лицо или устройство, выполнившее ввод данных, вызвавшее это сообщение. Когда имеется несколько кандидатур, выберите наиболее подходящую к сообщению. Остальных можно будет указать в расширениях<!-- The person or device that performed the data entry leading to this message. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать в целях аудита/отслеживания и, возможно, для авторизации.<!-- Need to know for audit/traceback requirements and possibly for authorization. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать в целях аудита/отслеживания и, возможно, для авторизации.<!-- Необходимо знать в целях аудита/отслеживания и, возможно, для авторизации.<!-- Необходимо знать в целях аудита/отслеживания и, возможно, для авторизации.<!-- Need to know for audit/traceback requirements and possibly for authorization. --> --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно только для запроса, однако может использоваться и в ответе<!-- Usually only for the request, but can be used in a response --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно только для запроса, однако может использоваться и в ответе<!-- Обычно только для запроса, однако может использоваться и в ответе<!-- Обычно только для запроса, однако может использоваться и в ответе<!-- Usually only for the request, but can be used in a response --> --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">unique(./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[typeCode=&quot;ENT&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole()]/player[isNormalEntity() and classCode=(&quot;DEV&quot;, &quot;PSN&quot;) and determinerCode=&quot;INST&quot;])</Data><NamedCell
@@ -1649,9 +1649,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Логический автор сообщения - физическое лицо или устройство, принявшее решение о том, что описанное событие должно произойти. Когда имеется несколько кандидатур, выберите наиболее подходящую к MessageHeader. Остальных авторов можно будет указать в расширениях<!-- The logical author of the message - the person or device that decided the described event should happen. Where there is more than one candidate, pick the most proximal to the MessageHeader. Can provide other authors in extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать в целях аудита/отслеживания и, возможно, для авторизации.<!-- Need to know for audit/traceback requirements and possibly for authorization. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to know for audit/traceback requirements and possibly for authorization.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно только для запроса, однако может использоваться и в ответе<!-- Usually only for the request, but can be used in a response --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Usually only for the request, but can be used in a response</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">unique(./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[isHighest(priorityCode) and typeCode=&quot;AUT&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole()]/player[isNormalEntity() and classCode=(&quot;DEV&quot;, &quot;PSN&quot;) and determinerCode=&quot;INST&quot;])</Data><NamedCell
@@ -1721,9 +1721,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Физическое лицо или организация, которые принимают полную ответственность за содержимое этого сообщения. Подразумевается, что событие в сообщении произошло в рамках политики ответственной стороны<!-- The person or organization that accepts overall responsibility for the contents of the message. The implication is that the message event happened under the policies of the responsible party --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать в целях аудита/отслеживания и, возможно, для авторизации.<!-- Need to know for audit/traceback requirements and possibly for authorization. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to know for audit/traceback requirements and possibly for authorization.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно только для запроса, однако может использоваться и в ответе<!-- Usually only for the request, but can be used in a response --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Usually only for the request, but can be used in a response</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">unique(./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[isHighest(priorityCode) and typeCode=&quot;RESP&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole()]/player[isNormalEntity() and classCode=&quot;PSN&quot; and determinerCode=&quot;INST&quot;] or ./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[isHighest(priorityCode) and typeCode=&quot;RESP&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole()]/scoper[isNormalEntity() and classCode=&quot;ORG&quot; and determinerCode=&quot;INST&quot;])</Data><NamedCell

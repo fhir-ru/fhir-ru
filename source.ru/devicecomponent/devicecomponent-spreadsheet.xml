@@ -6210,7 +6210,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ComponentType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Describes the type of the component.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Описывает тип компонента<!-- Describes the type of the component -->.</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s147" ss:HRef="https://rtmms.nist.gov/rtmms/index.htm#!hrosetta"><Data
@@ -6226,7 +6226,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">Measmnt-Principle</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Different measurement principle supported by the device.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Различные принципы измерения, поддерживаеыме устройством<!-- Different measurement principle supported by the device -->.</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#measurement-principle</Data></Cell>

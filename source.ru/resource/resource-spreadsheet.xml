@@ -4367,8 +4367,8 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">Meta</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Итоговые метаданные ресурса<!-- Resulting meta for the resource --></Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Итоговые метаданные ресурса<!-- Resulting meta for the resource --></Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Итоговые метаданные ресурса<!-- Итоговые метаданные ресурса<!-- Resulting meta for the resource --> --></Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Resulting meta for the resource</Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">

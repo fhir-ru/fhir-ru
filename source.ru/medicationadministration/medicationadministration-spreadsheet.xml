@@ -3934,7 +3934,7 @@
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">MedicationAdministration.dosage</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">SHALL have at least one of dosage.quantity and dosage.rate[x]</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">ДОЛЖНО содержать по крайней мере dosage.quantity или dosage.rate<!-- SHALL have at least one of dosage.quantity and dosage.rate -->[x]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">exists(f:quantity) or exists(f:rateRatio) or exists(f:rateRange)</Data><NamedCell

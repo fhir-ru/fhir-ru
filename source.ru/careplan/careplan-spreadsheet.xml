@@ -962,7 +962,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Healthcare plan for patient or group</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">План медицинского обслуживания пациента<!-- Healthcare plan for patient --> or group</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1535,7 +1535,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Конкретный человек или организация, которая участвует / ожидается участие в плане ухода.<!-- The specific person or organization who is participating/expected to participate in the care plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Patient only needs to be listed if they have a role other than &quot;subject of care&quot;.&#10;&#10;Member is optional because some participants may be known only by their role, particularly in draft plans.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Пациента здесь необходимо указывать, только если у него есть еще какая-то роль помимо &quot;subject of care&quot;<!-- Patient only needs to be listed if they have a role other than &quot;subject of care&quot; -->.&#10;&#10;Member is optional because some participants may be known only by their role, particularly in draft plans.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.role</Data><NamedCell
@@ -1565,7 +1565,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Желаемые результаты плана<!-- Desired outcome of plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Describes the intended objective(s) of carrying out the care plan.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описывает поставленные цели следования плану по уходу.<!-- Describes the intended objective(s) of carrying out the care plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Предоставляет контекст плана. Позволяет клиницистам оценить эффективность плана.<!-- Provides context for plan.  Allows plan effectiveness to be evaluated by clinicians. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1662,7 +1662,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Comments about the activity status/progress</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Комментарии к этой деятельности<!-- Comments about the activity --> status/progress</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Notes about the adherence/status/progress of the activity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1731,7 +1731,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Встроенное определение активности<!-- In-line definition of activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Простой обзор планируемой деятельности подходит для системы планирования общего ухода (например на основе форм), которой не известно о конкретных ресурсах, таких как процедура и т. д.<!-- A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Подробности в простой форме для систем общего плана ухода<!-- Details in a simple form for generic care plan systems --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1765,7 +1765,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">diet | drug | encounter | observation | procedure | supply | other</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Высокоуровневая классификация типа активности в плане по уходу.<!-- High-level categorization of the type of activity in a care plan. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Высокоуровневая классификация типа активности в плане по уходу.<!-- Высокоуровневая классификация типа активности в плане по уходу.<!-- High-level categorization of the type of activity in a care plan. --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Может определять, какие типы расширений разрешены<!-- May determine what types of extensions are permitted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1934,7 +1934,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Показывает прогресс по выполнению плана, по-прежнему ли данная активность актуальна для плана<!-- Indicates progress against the plan, whether the activity is still relevant for the plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Some aspects of status can be inferred based on the resources linked in actionTaken.  Note that &quot;status&quot; is only as current as the plan was most recently updated.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Некоторые аспекты статуса могут быть выведены на основе ресурсов, указанных в элементе actionTaken. Обратите внимание, что &quot;status&quot; является актуальным настолько, насколько недавно план был обновлен.<!-- Some aspects of status can be inferred based on the resources linked in actionTaken.  Note that &quot;status&quot; is only as current as the plan was most recently updated. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.statusCode not-started = new scheduled = not-started (and fulfillment relationship to appointent) in-progress = active on-hold = suspended completed = completed cancelled = aborted</Data><NamedCell
@@ -1996,7 +1996,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">НЕ ДЕЛАТЬ<!-- Do NOT do --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Do NOT do</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Если да, показывает, что описанное мероприятие НЕ ДОЛЖНО происходить при следовании данному плану.<!-- If true, indicates that the described activity is one that must NOT be engaged in when following the plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2065,7 +2065,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the facility where the activity will occur; e.g. home, hospital, specific clinic, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает планировать мероприятие<!-- Helps in planning of activity --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает планировать мероприятие<!-- Помогает планировать мероприятие<!-- Helps in planning of activity --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">May reference a specific clinical location or may identify a type of location.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2099,7 +2099,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет, кто, как ожидается, будет участвовать в деятельности.<!-- Identifies who's expected to be involved in the activity. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает планировать мероприятие<!-- Helps in planning of activity --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Helps in planning of activity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Исполнитель также МОЖЕТ быть участником плана ухода<!-- A performer MAY also be a participant in the care plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6543,7 +6543,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanActivityCategory</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Высокоуровневая классификация типа активности в плане по уходу.<!-- High-level categorization of the type of activity in a care plan. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">High-level categorization of the type of activity in a care plan.</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s116"/>
@@ -6575,7 +6575,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanActivityStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates where the activity is at in its overall life cycle.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает стадию активности в ее общем жизненном цикле<!-- Indicates where the activity is at in its overall life cycle -->.</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s116"/>

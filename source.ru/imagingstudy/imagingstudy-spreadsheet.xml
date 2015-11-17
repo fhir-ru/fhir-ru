@@ -1069,7 +1069,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">When the study was started </Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Время начала исследования<!-- When the study was started --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">Date and Time the study started</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2126,7 +2126,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Body part examined</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed CT</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Часть тела, которая исследовалась. См. информацию по маппингу DICOM на Snomed в DICOM часть 16 приложение L<!-- Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed --> CT</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2298,7 +2298,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Formal identifier for this instance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Formal identifier for this image or other content</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Формальный идентификатор этого изображения<!-- Formal identifier for this image --> or other content</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4712,7 +4712,7 @@
     <Cell ss:StyleID="s92"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s92"/>
     <Cell ss:StyleID="s125"><Data ss:Type="String">ImagingStudy.started</Data></Cell>
-    <Cell ss:StyleID="s126"><Data ss:Type="String">Время начала исследования<!-- When the study was started --></Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">When the study was started</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s124"><Data ss:Type="String">accession</Data></Cell>

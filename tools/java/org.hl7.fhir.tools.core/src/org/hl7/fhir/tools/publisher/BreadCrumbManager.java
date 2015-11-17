@@ -221,7 +221,7 @@ public class BreadCrumbManager {
 
   public String navlist(String name, String prefix) {
     StringBuilder b = new StringBuilder();
-    b.append("              <li><a href=\""+prefix+"index.html\">"+translations.getMessage("HOME", "Home")+"</a></li>\r\n");
+    b.append("              <li><a href=\""+prefix+"index.html\">"+translations.getMessage("HOME", "Главная")+"</a></li>\r\n");
     for (Node n : home.getChildren()) {
       b.append("              <li><a href=\""+prefix+((Page) n).getFilename()+"\">"+((Page) n).getTitle()+"</a></li>\r\n");
     }
@@ -233,7 +233,7 @@ public class BreadCrumbManager {
     if (name.equals("index")) {
       b.append("        <li><b>Главная</b></li>\r\n");      
     } else {
-      b.append("        <li><a href=\""+prefix+"index.html\">"+translations.getMessage("HOME", "Home")+"</a></li>\r\n");
+      b.append("        <li><a href=\""+prefix+"index.html\">"+translations.getMessage("HOME", "Главная")+"</a></li>\r\n");
       if (!name.endsWith(".html"))
         name = name + ".html";
       String nt = Utilities.changeFileExt(name, "");

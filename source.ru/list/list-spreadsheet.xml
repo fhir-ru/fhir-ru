@@ -999,7 +999,7 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">Суммарная информация из списка других ресурсов<!-- Information summarized from a list of other resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">A set of information summarized from a list of other resources.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Суммарный набор данных из списка других ресурсов<!-- A set of information summarized from a list of other resources -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1173,9 +1173,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Who and/or what defined the list contents (aka Author)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кто и/или что определил содержимое списка<!-- Who and/or what defined the list contents --> (aka Author)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Сущность, ответственная за решение, каким будет содержимое списка<!-- The entity responsible for deciding what the contents of the list were -->. Where the list was created by a human, this is the same as the author of the list</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Для учета (follow-up) и контекста <!-- Allows follow-up as well as context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1449,7 +1449,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Status/Workflow information about this item</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Status/Информация по рабочему процессу этого пункта<!-- Workflow information about this item --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">The flag allows the system constructing the list to indicate the role and significance of the item in the list</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1594,7 +1594,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Позволяет улавливать такие вещи, как &quot;none exist&quot; или &quot;not asked&quot;, что может быть важно для многих списков<!-- Allows capturing things like &quot;none exist&quot; or &quot;not asked&quot; which can be important for most lists --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The various reasons for an empty list make a significant interpretation to its interpretation. Note that this code is for use when the entire list has been suppressed, and not for when individual items are omitted - implementers may consider using a text note or a flag on an entry in these cases </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Различные причины пустого списка значительно влияют на его интерпретацию<!-- The various reasons for an empty list make a significant interpretation to its interpretation -->. Note that this code is for use when the entire list has been suppressed, and not for when individual items are omitted - implementers may consider using a text note or a flag on an entry in these cases </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.inboundRelationship[typeCode=SUBJ,code&lt;{ListEmptyReason}].value[type=CD]</Data><NamedCell

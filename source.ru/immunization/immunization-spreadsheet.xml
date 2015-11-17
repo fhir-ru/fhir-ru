@@ -995,7 +995,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Информация о событии иммунизации<!-- Immunization event information --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Информация о событии иммунизации<!-- Информация о событии иммунизации<!-- Immunization event information --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

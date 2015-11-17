@@ -6332,7 +6332,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s87"><Data ss:Type="String">CommunicationMedium</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for communication mediums such as phone, fax, email, in person, etc.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for Средство коммуникации<!-- communication medium -->s such as phone, fax, email, in person, etc.</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-ParticipationMode</Data></Cell>

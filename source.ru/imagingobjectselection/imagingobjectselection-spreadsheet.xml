@@ -1278,7 +1278,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Идентификация исследований для выбранных экземпляров<!-- Study identity of the selected instances --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Идентификация исследований для выбранных экземпляров<!-- Study identity of Отобранный экземпляр<!-- the selected instance -->s --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Идентификация исследований и информация о размещении DICOM SOP-экземпляров в выборке.<!-- Study identity and locating information of the DICOM SOP instances in the selection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1555,7 +1555,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><Data ss:Type="String">Название сущности приложения позволяет извлекать всю серию целиком с помощью протокола верхнего уровня DICOM.<!-- Application Entity Title enables retrieval of the entire series using DICOM upper layer protocol. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Информация о локаторе на уровне серии является необязательной. Если указана, то это будет AE-название, поддерживающее извлечение всей серии целиком, хотя в выборке используется только ее подмножество.<!-- Series level locator information is optional. If provided, this is the AE Title which supports retrieval of the entire series, though only a subset of these are selected in the selection. --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Информация о локаторе на уровне серии является необязательной. Если указана, то это будет AE-название, поддерживающее извлечение всей серии целиком, хотя в выборке используется только ее подмножество.<!-- Информация о локаторе на уровне серии является необязательной.<!-- Series level locator information is optional. --> If provided, this is the AE Title which supports retrieval of the entire series, though only a subset of these are selected in the selection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1589,7 +1589,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><Data ss:Type="String">Retrieve Location UID identifies the system which provides the retrieve service.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Информация о локаторе на уровне серии является необязательной.<!-- Series level locator information is optional. --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Series level locator information is optional.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1652,7 +1652,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s102"><Data ss:Type="String">Отобранный экземпляр<!-- The selected instance --></Data><NamedCell
+    <Cell ss:StyleID="s102"><Data ss:Type="String">The selected instance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">Информация об идентификации и местоположении отобранных DICOM SOP-экземпляров<!-- Identity and locating information of the selected DICOM SOP instances --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1764,7 +1764,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><Data ss:Type="String">Название сущности приложения позволяет извлекать SOP-экземпляр с помощью протокола верхнего уровня DICOM.<!-- Application Entity Title enables retrieval of the SOP instance using DICOM upper layer protocol. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">Информация о локаторе на уровне экземпляра является обязательной.<!-- Instance level locator information is required.  --></Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">Информация о локаторе на уровне экземпляра является обязательной.<!-- Информация о локаторе на уровне экземпляра является обязательной.<!-- Instance level locator information is required.  --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1832,7 +1832,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">WADO-RS URL enables retrieval of the SOP instance using DICOM WADO-RS API.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">Информация о локаторе на уровне экземпляра является обязательной.<!-- Instance level locator information is required.  --></Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">Instance level locator information is required. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>

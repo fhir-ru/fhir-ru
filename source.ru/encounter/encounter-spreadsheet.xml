@@ -1269,7 +1269,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает срочность encounter<!-- Indicates the urgency of the encounter --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает срочность encounter<!-- Указывает срочность encounter<!-- Indicates the urgency of the encounter --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1438,9 +1438,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Роль участника в Encounter<!-- Role of participant in encounter --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Роль участника в Encounter<!-- Роль участника encounter<!-- Role of participant in encounter --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Роль участника encounter<!-- Role of participant in encounter --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Role of participant in encounter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">The participant type indicates how an individual partitipates in an encounter. It includes non-practitioner participants, and for practitioners this is to describe the action type in the context of this encounter (e.g. Admitting Dr, Attending Dr, Translator, Consulting Dr). This is different to the practitioner roles which are functional roles, derived from terms of employment, education, licensing, etc.</Data><NamedCell
@@ -1572,9 +1572,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Время начала и время окончания encounter<!-- The start and end time of the encounter --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Время начала и время окончания encounter<!-- Время начала и время окончания encounter<!-- The start and end time of the encounter --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Время начала и время окончания encounter<!-- The start and end time of the encounter --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The start and end time of the encounter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Если (пока что) не известно, время окончания может быть опущено<!-- If not (yet) known, the end of the Period may be omitted --></Data><NamedCell
@@ -1908,7 +1908,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">The type of hospital re-admission that has occurred (if any). If the value is absent, then this is not identified as a readmission</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Whether this hospitalization is a readmission and why if known</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Является ли данная госпитализация повторным приемом (регоспитализацией)<!-- Whether this hospitalization is a readmission --> and why if known</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1940,9 +1940,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Период, в течение которого пациент был госпитализирован<!-- Period during which the patient was admitted --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период, в течение которого пациент был госпитализирован<!-- Период, в течение которого пациент был госпитализирован<!-- Period during which the patient was admitted --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Период, в течение которого пациент был госпитализирован<!-- Period during which the patient was admitted --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Period during which the patient was admitted</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Может отличаться от времени начала + время пребывания, так как сюда не входит время отсутствия.<!-- May differ from start + length, since length excludes leaves of absence. --></Data><NamedCell
@@ -2104,7 +2104,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Особые знаки внимания (VIP, член совета директоров)<!-- Special courtesies (VIP, board member) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Особые знаки внимания (VIP, член совета директоров)<!-- Особые знаки внимания<!-- Special courtesies --> (VIP, board member) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2137,7 +2137,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Wheelchair, translator, stretcher, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Инвалидная коляска, переводчик, носилки и т. п<!-- Wheelchair, translator, stretcher, etc -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6781,7 +6781,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">Courtesies</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Особые знаки внимания<!-- Special courtesies --></Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Special courtesies</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">valueset-encounter-special-courtesy</Data></Cell>
@@ -6811,7 +6811,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">PatientDiet</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Medical, cultural or ethical food preferences to help with catering requirements.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Медицинские, культурные или этические предпочтения, связанные с пищей, для выполнения требований питания<!-- Medical, cultural or ethical food preferences to help with catering requirements -->.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">valueset-encounter-diet</Data></Cell>
@@ -6841,7 +6841,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">AdmitSource</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">From where the patient was admitted.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Откуда был госпитализирован пациент<!-- From where the patient was admitted -->.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">valueset-encounter-admit-source</Data></Cell>
@@ -6871,7 +6871,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s149"><Data ss:Type="String">EncounterReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reason why the encounter takes place.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Основание проведения encounter<!-- Reason why the encounter takes place -->.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">valueset-encounter-reason</Data></Cell>
@@ -6886,7 +6886,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s149"><Data ss:Type="String">EncounterLocationStatus</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of the location.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус размещения<!-- The status of the location -->.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">#encounter-location-status</Data></Cell>

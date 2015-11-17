@@ -1089,7 +1089,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">proposed | pending | booked | arrived | fulfilled | cancelled | noshow</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">The overall status of the Appointment. Each of the participants has their own participation status which indicates their involvement in the process, however this status indicates the shared status</Data><NamedCell
+    <Cell><Data ss:Type="String">Общий статус записи на прием<!-- The overall status of the Appointment -->. Each of the participants has their own participation status which indicates their involvement in the process, however this status indicates the shared status</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">If the Appointment's status is &quot;cancelled&quot; then all participants are expected to have their calendars released for the appointment period, and as such any Slots that were marked as BUSY can be re-set to FREE</Data><NamedCell
@@ -1200,7 +1200,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Used to make informed decisions if needing to re-prioritize</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Приоритет этой записи на прием. Может использоваться для принятия обоснованного решения о необходимости повторного присвоения приоритета записям на прием. (Стандарт iCal использует следующие обозначения: 0 - не определено, 1 - самый высокий приоритет, 9 - самый низкий приоритет)<!--  The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize appointments. (The iCal Standard specifies 0 as undefined, 1 as highest, 9 as lowest priority) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Приоритет этой записи на прием. Может использоваться для принятия обоснованного решения о необходимости повторного присвоения приоритета записям на прием. (Стандарт iCal использует следующие обозначения: 0 - не определено, 1 - самый высокий приоритет, 9 - самый низкий приоритет)<!-- The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize appointments. (The iCal Standard specifies 0 as undefined, 1 as highest, 9 as lowest priority) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Seeking implementer feedback on this property and how interoperable it is.&#10;&#10;Using an extension to record a codeableconcept for named values may be tested at a future connectathon</Data><NamedCell
@@ -1448,7 +1448,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">If provided, then no schedule and start/end values MUST match slot</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс slot, который использует эта запись на прием. Если указано, тогда поле schedule не указывается, так как слоты не рекурсивные, и значения начала/окончания ДОЛЖНЫ быть такими же, как в слоте<!--  The slot that this appointment is filling. If provided then the schedule will not be provided as slots are not recursive, and the start/end values MUST be the same as from the slot --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс slot, который использует эта запись на прием. Если указано, тогда поле schedule не указывается, так как слоты не рекурсивные, и значения начала/окончания ДОЛЖНЫ быть такими же, как в слоте<!-- The slot that this appointment is filling. If provided then the schedule will not be provided as slots are not recursive, and the start/end values MUST be the same as from the slot --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1702,7 +1702,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">required | optional | information-only</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Требуется ли присутствие участника на встрече. Используется в случаях, когда 2 докторам необходимо встретиться для обсуждения результатов определенного пациента, присутствие которого на этой встрече не требуется<!--  Is this participant required to be present at the meeting. This covers a use-case where 2 doctors need to meet to discuss the results for a specific patient, and the patient is not required to be present. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Требуется ли присутствие участника на встрече. Используется в случаях, когда 2 докторам необходимо встретиться для обсуждения результатов определенного пациента, присутствие которого на этой встрече не требуется<!-- Is this participant required to be present at the meeting. This covers a use-case where 2 doctors need to meet to discuss the results for a specific patient, and the patient is not required to be present. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4596,7 +4596,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">Appointment.status</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">Общий статус записи на прием<!-- The overall status of the appointment --></Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">The overall status of the appointment</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">actor</Data></Cell>
@@ -6571,7 +6571,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">AppointmentStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The free/busy status of an appointment.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус "свободный/занятый" записи на прием<!-- The free/busy status of an appointment -->.</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#appointmentstatus</Data></Cell>
@@ -6586,7 +6586,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s93"><Data ss:Type="String">ParticipationStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The Participation status of an appointment.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус участия в условленной встрече<!-- The Participation status of an appointment -->.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">#participationstatus</Data></Cell>
@@ -6601,7 +6601,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s93"><Data ss:Type="String">ParticipantRequired</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Is the Participant required to attend the appointment.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Требуется ли от участника присутствовать на встрече<!-- Is the Participant required to attend the appointment -->.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">#participantrequired</Data></Cell>
@@ -6631,7 +6631,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s93"><Data ss:Type="String">ApptReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The Reason for the appointment to take place.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование проведения этой условленной встречи<!-- The Reason for the appointment to take place -->.</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s120"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/encounter-reason</Data></Cell>

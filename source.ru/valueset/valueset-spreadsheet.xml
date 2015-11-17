@@ -1014,7 +1014,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Набор кодов, взятых из одной или нескольких кодовых систем<!-- A set of codes drawn from one or more code systems --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A value set specifies a set of codes drawn from one or more code systems.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Набор значений устанавливает набор кодов, взятых из одной или нескольких кодовых систем <!-- A value set specifies a set of codes drawn from one or more code systems -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1196,7 +1196,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">draft | active | retired </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус набора значений<!-- The status of the value set --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус набора значений<!-- Статус этого набора значений<!-- The status of the value set --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Указывает, когда/если набор значений следует использовать<!-- Identify when/if the value set should be used. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1266,7 +1266,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of the publisher (organization or individual)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя владельца (организации или отдельного человека)<!-- Name of the publisher (organization or individual) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Имя лица или организации, которые опубликовали этот набор значений<!-- The name of the individual or organization that published the value set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1404,11 +1404,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дата установки данного статуса<!-- Date for given status --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date that the value set status was last changed. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the implementation guide changes (e.g. the 'content logical definition')</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата, когда статус набора значений менялся последний раз<!-- The date that the value set status was last changed -->. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the implementation guide changes (e.g. the 'content logical definition')</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать, когда набор значений впервые был разрешен к использованию, изъят или заменен.  <!-- Need to know when a value set was first legal for use or became withdrawn or replaced. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the value set. Additional specific dates may be added as extensions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обратите внимание, что это не то же самое, что дата последней модификации ресурса, так как ресурс может быть вторичным представлением набора значений<!-- Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the value set -->. Additional specific dates may be added as extensions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">N/A</Data><NamedCell
@@ -1617,7 +1617,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Use and/or publishing restrictions</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ограничения по использованию и/или публикации<!-- Use and/or publishing restrictions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Информация об авторских правах относительно этого набора значений и/или его содержимого. Обычно это юридические ограничения по использованию и публикации набора значений <!-- A copyright statement relating to the value set and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the value set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1888,9 +1888,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Если этот код не предназначен для использования в качестве фактического концепта<!-- If this code is not for use as a real concept --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если этот код не предназначен для использования в качестве фактического концепта<!-- Если этот код не предназначен для использования в качестве фактического концепта<!-- If this code is not for use as a real concept --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если этот код не предназначен для использования в качестве фактического концепта<!-- If this code is not for use as a real concept --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If this code is not for use as a real concept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2054,7 +2054,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Подробно описывает, как это обозначение будет использоваться<!-- Details how this designation would be used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, который подробно описывает, как это обозначение будет использоваться<!-- A code that details how this designation would be used --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, который подробно описывает, как это обозначение будет использоваться<!-- Код, который описывает, каким образом будет использоваться это обозначение<!-- A code that details how this designation would be used --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">If no use is provided, the designation can be assumed to be suitable for general display to a human user</Data><NamedCell
@@ -2220,9 +2220,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Включает один или больше кодов из кодовой системы<!-- Include one or more codes from a code system --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Включает один или больше кодов из кодовой системы<!-- Включает один или больше кодов из кодовой системы<!-- Include one or more codes from a code system --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Включает один или больше кодов из кодовой системы<!-- Include one or more codes from a code system --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Include one or more codes from a code system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">If there are no codes or filters, the entire code system is included. Note that the set of codes that are included may contain abstract codes</Data><NamedCell
@@ -2469,7 +2469,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительные представления для этого набора значений<!-- Additional representations for this valueset --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительные представления этого концепта<!-- Additional representations for this concept --> when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2739,7 +2739,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Time ValueSet expansion happened</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время выполнения развертки набора значений<!-- Time ValueSet expansion happened --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Время, когда была выполнена развертка набора значений разворачивающей системой<!-- The time at which the expansion was produced by the expanding system.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2939,7 +2939,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Коды в этом наборе значений<!-- Codes in the value set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды, содержащиеся в расширении набора значений<!-- The codes that are contained in the value set expansion --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды, содержащиеся в расширении набора значений<!-- The codes that are contained in the Развертка набора значений<!-- value set expansion --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5006,7 +5006,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s122"><Data ss:Type="String">ValueSet.status</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">Статус этого набора значений<!-- The status of the value set --></Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">The status of the value set</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s121"><Data ss:Type="String">date</Data></Cell>
@@ -5266,7 +5266,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">operation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s119"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Развертка набора значений<!-- Value Set Expansion --></Data><NamedCell
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Value Set Expansion</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">The definition of a value set is used to create a simple collection of codes suitable for use for data entry or validation.   If the operation is not called at the instance level, one of the in parameters identifier, context or valueset must be provided.  An expanded value set will be returned, or an OperationOutcome with an error message. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -5395,7 +5395,7 @@
     <Cell ss:StyleID="s122"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s122"/>
     <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">Код, который необходимо провалидировать. Если код указан, также необходимо указать и систему<!-- The code that is to be validated. If a code is provided, a system must be provided --></Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">Код, который необходимо провалидировать. Если код указан, также необходимо указать и систему<!-- Код, который необходимо провалидировать. Если код указан, также необходимо указать и систему<!-- The code that is to be validated. If a code is provided, a system must be provided --> --></Data></Cell>
     <Cell ss:StyleID="s137"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5406,7 +5406,7 @@
     <Cell ss:StyleID="s122"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s122"/>
     <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">Система для кода, который необходимо провалидировать<!-- The system for the code that is to be validated --></Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">Система для кода, который необходимо провалидировать<!-- Система для кода, который необходимо провалидировать<!-- The system for the code that is to be validated --> --></Data></Cell>
     <Cell ss:StyleID="s137"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -5417,7 +5417,7 @@
     <Cell ss:StyleID="s122"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s122"/>
     <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">Версия системы, если она была указана в данных источника<!-- The version of the system, if one was provided in the source data --></Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">Версия системы, если она была указана в данных источника<!-- Версия системы, если она была указана в данных источника<!-- The version of the system, if one was provided in the source data --> --></Data></Cell>
     <Cell ss:StyleID="s137"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5494,7 +5494,7 @@
     <Cell ss:StyleID="s122"><Data ss:Type="String">Tuple</Data></Cell>
     <Cell ss:StyleID="s122"/>
     <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">Дополнительные представления этого концепта<!-- Additional representations for this concept --></Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">Additional representations for this concept</Data></Cell>
     <Cell ss:StyleID="s137"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5516,7 +5516,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">Coding</Data></Cell>
     <Cell ss:StyleID="s122"/>
     <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, который описывает, каким образом будет использоваться это обозначение<!-- A code that details how this designation would be used --></Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A code that details how this designation would be used</Data></Cell>
     <Cell ss:StyleID="s137"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5584,7 +5584,7 @@
     <Cell ss:StyleID="s122"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s122"/>
     <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">Код, который необходимо провалидировать. Если код указан, также необходимо указать и систему<!-- The code that is to be validated. If a code is provided, a system must be provided --></Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">The code that is to be validated. If a code is provided, a system must be provided</Data></Cell>
     <Cell ss:StyleID="s137"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5595,7 +5595,7 @@
     <Cell ss:StyleID="s122"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s122"/>
     <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">Система для кода, который необходимо провалидировать<!-- The system for the code that is to be validated --></Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">The system for the code that is to be validated</Data></Cell>
     <Cell ss:StyleID="s137"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -5606,7 +5606,7 @@
     <Cell ss:StyleID="s122"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s122"/>
     <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">Версия системы, если она была указана в данных источника<!-- The version of the system, if one was provided in the source data --></Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">The version of the system, if one was provided in the source data</Data></Cell>
     <Cell ss:StyleID="s137"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5672,7 +5672,7 @@
     <Cell ss:StyleID="s122"><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:StyleID="s122"/>
     <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">Истинно, если предоставленные детали концепта валидны<!-- True if the concept details supplied are valid --></Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">Истинно, если предоставленные детали концепта валидны<!-- Истинно, если предоставленные детали концепта валидны<!-- True if the concept details supplied are valid --> --></Data></Cell>
     <Cell ss:StyleID="s137"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -5694,7 +5694,7 @@
     <Cell ss:StyleID="s122"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s122"/>
     <Cell ss:StyleID="s122"/>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">Валидное значение для отображения концепта, если система хочет показать это пользователю<!-- A valid display for the concept if the system wishes to display this to a user --></Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">Валидное значение для отображения концепта, если система хочет показать это пользователю<!-- Валидное значение для отображения концепта, если система хочет показать это пользователю<!-- A valid display for the concept if the system wishes to display this to a user --> --></Data></Cell>
     <Cell ss:StyleID="s137"/>
    </Row>
    <Row ss:Index="44" ss:AutoFitHeight="0">
@@ -7061,7 +7061,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s151"><Data ss:Type="String">FilterOperator</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The kind of operation to perform as a part of a property based filter.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид операции для совершения в рамках фильтра на основе свойства<!-- The kind of operation to perform as a part of a property based filter -->.</Data></Cell>
     <Cell ss:StyleID="s122"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s122"/>
     <Cell ss:StyleID="s122"><Data ss:Type="String">#filter-operator</Data></Cell>
@@ -7076,7 +7076,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s151"><Data ss:Type="String">ConceptDesignationUse</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Details of how a designation would be used.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание того, как обозначение будет использоваться<!-- Details of how a designation would be used -->.</Data></Cell>
     <Cell ss:StyleID="s122"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s122"><Data ss:Type="String">valueset-designation-use</Data></Cell>

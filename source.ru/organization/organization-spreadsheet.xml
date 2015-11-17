@@ -997,7 +997,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Объединение в группу людей или организаций с общей целью<!-- A grouping of people or organizations with a common purpose --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Формально или неформально признанное объединение в группу людей или организаций, сформированное с целью выполнения некоторой формы коллективного действия. Включает в себя компании, учреждения, корпорации, отделы, сообщества, группы медицинской практики и т. д<!-- A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1073,9 +1073,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Находится ли запись организации в активном использовании<!-- Whether the organization's record is still in active use --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Находится ли запись организации в активном использовании<!-- Находится ли запись организации в активном использовании<!-- Whether the organization's record is still in active use --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Находится ли запись организации в активном использовании<!-- Whether the organization's record is still in active use --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether the organization's record is still in active use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Нужен флаг для указания, что запись больше не должна использоваться и должна быть вообще спрятана для пользователя в интерфейсе.<!-- Need a flag to indicate a record is no longer to be used and should generally be hidden for the user in the UI. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1191,9 +1191,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактная информация организации<!-- A contact detail for the organization --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактная информация организации<!-- Контактная информация организации<!-- A contact detail for the organization --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактная информация организации<!-- A contact detail for the organization --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A contact detail for the organization</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Контакт человека для организации<!-- Human contact for the organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1229,9 +1229,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Адрес организации<!-- An address for the organization --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Адрес организации<!-- Адрес организации<!-- An address for the organization --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Адрес организации<!-- An address for the organization --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An address for the organization</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Может потребоваться для отслеживания адресов организации в целях контакта, выставления счетов или подготовки отчетов<!-- May need to keep track of the organization's addresses for contacting, billing or reporting requirements --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1442,9 +1442,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, частью которой является данная организация<!-- The organization of which this organization forms a part --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, частью которой является данная организация<!-- Организация, частью которой является данная организация<!-- The organization of which this organization forms a part --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, частью которой является данная организация<!-- The organization of which this organization forms a part --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The organization of which this organization forms a part</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность отслеживать иерархию организаций внутри организации<!-- Need to be able to track the hierarchy of organizations within an organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1547,9 +1547,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя контактного лица<!-- A name associated with the contact --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя контактного лица<!-- Имя контактного лица<!-- A name associated with the contact --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя контактного лица<!-- A name associated with the contact --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A name associated with the contact</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to track the person by name. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1617,9 +1617,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Почтовый адрес или адрес для посещений для контакта<!-- Visiting or postal addresses for the contact --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Почтовый адрес или адрес для посещений для контакта<!-- Почтовый адрес или адрес для посещений для контакта<!-- Visiting or postal addresses for the contact --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Почтовый адрес или адрес для посещений для контакта<!-- Visiting or postal addresses for the contact --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Visiting or postal addresses for the contact</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Может потребоваться отслеживать адрес контактного лица для связи, выставления счетов или подготовки отчетов<!-- May need to keep track of a contact party's address for contacting, billing or reporting requirements --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1689,9 +1689,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Местоположение(-я), которое организация использует для оказания услуг<!-- Location(s) the organization uses to provide services --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Местоположение(-я), которое организация использует для оказания услуг<!-- Местоположение(-я), которое организация использует для оказания услуг<!-- Location(s) the organization uses to provide services --> --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Местоположение(-я), которое организация использует для оказания услуг<!-- Location(s) the organization uses to provide services --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Location(s) the organization uses to provide services</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
