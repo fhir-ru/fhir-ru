@@ -9525,7 +9525,7 @@ See wiki for guidance</Font>
 					<Data ss:Type="String">DeviceUseStatement.subject</Data>
 				</Cell>
 				<Cell ss:StyleID="s117">
-					<Data ss:Type="String">Поиск по субъекту - пациент<!-- Search by subject - a patient --></Data>
+					<Data ss:Type="String">Поиск по субъекту<!-- Search by subject --> - a patient</Data>
 				</Cell>
 			</Row>
 			<Row ss:AutoFitHeight="0">

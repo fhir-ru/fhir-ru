@@ -1123,7 +1123,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, кто ответственен за создание экземпляра ресурса<!-- Indicates who was responsible for creating the resource instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Needed for partitioning the resource</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Требуется для распределения (partitioning) ресурса<!-- Needed for partitioning the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>

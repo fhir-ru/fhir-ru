@@ -1022,7 +1022,7 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">Заявление о соответствии<!-- A conformance statement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Заявление о соответствии<!-- A conformance statement --> is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1092,7 +1092,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор для указания на конкретную версию заявления о соответствии в спецификации, модели, проекте или примере. Это произвольное значение, контролируемое автором профиля вручную, и оно должно быть штампом времени<!-- The identifier that is used to identify this version of the conformance statement when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Несколько различных экземпляров заявления о соответствии могут иметь одинаковый идентификатор, но различные версии<!-- There may be multiple different instances of a conformance statement that have the same identifier but different versions --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">There may be multiple different instances of Заявление о соответствии<!-- A conformance statement --> that have the same identifier but different versions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1531,7 +1531,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">ПО, покрываемое этим заявлением о соответствии<!-- Software that is covered by this conformance statement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Программное обеспечение, которое подпадает под условия данного заявления о соответствии. Используется, когда conformance statement описывает возможности конкретной версии программного обеспечения, независимо от инсталляции.<!-- Software that is covered by this conformance statement.  It is used when the conformance statement describes the capabilities of a particular software version, independent of an installation. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">ПО, покрываемое этим заявлением о соответствии<!-- Software that is covered by this conformance statement -->.  It is used when the conformance statement describes the capabilities of a particular software version, independent of an installation.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2080,9 +2080,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Общее описание работы безопасности<!-- Общее описание того, как работает обеспечение безопасности<!-- General description of how security works --> --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Общее описание того, как работает обеспечение безопасности<!-- General description of how security works --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">General description of how security works</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Общее описание того, как работает обеспечение безопасности<!-- General description of how security works --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2110,9 +2110,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Сертификаты, связанные с профилями безопасности<!-- Сертификаты, связанные с профилями безопасности<!-- Certificates associated with security profiles --> --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сертификаты, связанные с профилями безопасности<!-- Certificates associated with security profiles --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Certificates associated with security profiles</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Сертификаты, связанные с профилями безопасности<!-- Certificates associated with security profiles --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2174,9 +2174,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Непосредственно сам сертификат<!-- Непосредственно сам сертификат<!-- Actual certificate --> --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Непосредственно сам сертификат<!-- Actual certificate --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Actual certificate</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Непосредственно сам сертификат<!-- Actual certificate --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2303,7 +2303,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Какие операции поддерживаются?<!-- Какие операции поддерживаются?<!-- What operations are supported? --> --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Какие операции поддерживаются?<!-- What operations are supported? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Идентифицирует restful-операцию, поддерживаемую решением <!-- Identifies a restful operation supported by the solution --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2367,7 +2367,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Особенности работы операции<!-- Особенности работы операции<!-- Anything special about operation behavior --> --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Особенности работы операции<!-- Anything special about operation behavior --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Руководство по реализации этой операции, например 'delete - это логическое удаление' или 'обновления разрешены только с version id' или 'creates разрешены только с сертификатами предварительной авторизации'<!-- Guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only' --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2595,7 +2595,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Значения _include, поддерживаемые сервером<!-- _include values supported by the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Список значений _include, поддерживаемых сервером<!-- A list of _include values supported by the server --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A list of Значения _include, поддерживаемые сервером<!-- _include values supported by the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Если список пустой, значит сервер не поддерживает включения<!-- If this list is empty, the server does not support includes --></Data><NamedCell
@@ -2630,7 +2630,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">A list of _revinclude (reverse include) values supported by the server</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If this list is empty, the server does not support includes</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если список пустой, значит сервер не поддерживает включения<!-- If this list is empty, the server does not support includes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2913,7 +2913,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">What operations are supported?</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Какие операции поддерживаются?<!-- What operations are supported? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Спецификация restful-операций, поддерживаемых системой<!-- A specification of restful operations supported by the system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2977,7 +2977,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Anything special about operation behavior</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Особенности работы операции<!-- Anything special about operation behavior --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Руководство по реализации этой операции, например ограничение разрешенных видов транзакции или информация об осуществлении системного поиска <!-- Guidance specific to the implementation of this operation, such as limitations on the kind of transactions allowed, or information about system wide search is implemented --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -3650,7 +3650,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Определение документа<!-- Document definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Определение документа<!-- A document definition --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A Определение документа<!-- Document definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3745,7 +3745,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Ограничение на ресурс, используемый в документе<!-- Constraint on a resource used in the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Ограничение на ресурс, используемый в документе<!-- A constraint on a resource used in the document --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A Ограничение на ресурс, используемый в документе<!-- Constraint on a resource used in the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Первый ресурс - это document<!-- The first resource is the document resource --></Data><NamedCell
@@ -4557,7 +4557,7 @@
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">Conformance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">A Conformance statement SHALL have at least one of REST, messaging or document</Data><NamedCell
+    <Cell ss:StyleID="s84"><Data ss:Type="String">Заявление о соответствии<!-- A conformance statement --> SHALL have at least one of REST, messaging or document</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s109"><Data ss:Type="String">exists(f:rest) or exists(f:messaging) or exists(f:document)</Data><NamedCell
@@ -4569,7 +4569,7 @@
     <Cell ss:StyleID="s91"><Data ss:Type="String">Details</Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Conformance</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Заявление о соответствии ДОЛЖНО иметь хотя бы один из [элементов] description, software или implementation<!-- A Conformance statement SHALL have at least one of description, software, or implementation --></Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Заявление о соответствии<!-- A conformance statement --> SHALL have at least one of description, software, or implementation</Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s111"><Data ss:Type="String">count(f:software | f:implementation | f:description) &gt; 0</Data></Cell>
    </Row>
@@ -5114,14 +5114,14 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s124"><Data ss:Type="String">Conformance.rest.resource.type</Data></Cell>
-    <Cell ss:StyleID="s125"><Data ss:Type="String">Name of a resource mentioned in a conformance statement</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">Name of a resource mentioned in Заявление о соответствии<!-- A conformance statement --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s123"><Data ss:Type="String">event</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s124"><Data ss:Type="String">Conformance.messaging.event.code</Data></Cell>
-    <Cell ss:StyleID="s125"><Data ss:Type="String">Event code in a conformance statement</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">Event code in Заявление о соответствии<!-- A conformance statement --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s123"><Data ss:Type="String">mode</Data></Cell>
@@ -5135,7 +5135,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s124"><Data ss:Type="String">Conformance.rest.resource.profile</Data></Cell>
-    <Cell ss:StyleID="s125"><Data ss:Type="String">A profile id invoked in a conformance statement</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">A profile id invoked in Заявление о соответствии<!-- A conformance statement --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s123"><Data ss:Type="String">format</Data></Cell>
@@ -7115,7 +7115,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">ConformanceStatementKind</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">How a conformance statement is intended to be used.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">How Заявление о соответствии<!-- A conformance statement --> is intended to be used.</Data></Cell>
     <Cell ss:StyleID="s124"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s124"/>
     <Cell ss:StyleID="s124"><Data ss:Type="String">#conformance-statement-kind</Data></Cell>

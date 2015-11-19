@@ -1311,7 +1311,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Тип спецификации<!-- Specification type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает тип спецификации, например серийный номер, номер партии, инспекция аппаратного обеспечения, контроль программного обеспечения и т. п.<!-- Describes the specification type, such as, serial number, part number, hardware revision, software revision, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the Тип спецификации<!-- Specification type -->, such as, serial number, part number, hardware revision, software revision, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1342,7 +1342,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор внутреннего компонента<!-- Internal component unique identification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает уникальную идентификацию внутреннего компонента. Это положение для имеющих особенность при производстве стандартных компонентов. использующих частный OID. 11073-10101 содержит разбиение на частную семантику OID, которую можно использовать при производстве.<!-- Describes the internal component unique identification. This is a provision for manufacture specific standard components using a private OID. 11073-10101 has a partition for private OID semantic that the manufacture can make use of. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the Уникальный идентификатор внутреннего компонента<!-- Internal component unique identification -->. This is a provision for manufacture specific standard components using a private OID. 11073-10101 has a partition for private OID semantic that the manufacture can make use of.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6256,7 +6256,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s88"><Data ss:Type="String">DeviceSpecificationSpecType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes for device specification types such as serial number, part number, hardware revision, software revision, etc.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes for device Тип спецификации<!-- Specification type -->s such as serial number, part number, hardware revision, software revision, etc.</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>

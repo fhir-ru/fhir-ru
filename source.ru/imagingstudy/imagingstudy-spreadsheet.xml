@@ -1145,7 +1145,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Формальный идентификатор исследования<!-- Formal identifier for the study --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Formal identifier for the study</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Формальный идентификатор исследования<!-- Formal identifier for the study --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1219,7 +1219,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Другие идентификаторы исследования<!-- Other identifiers for the study --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Other identifiers for the study</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Другие идентификаторы исследования<!-- Other identifiers for the study --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1539,7 +1539,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Тип выполненной процедуры<!-- Type of procedure performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Type of procedure performed</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Тип выполненной процедуры<!-- Type of procedure performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">For the Procedure.code, LOINC radiology orderables would be a good value set to use</Data><NamedCell
@@ -1752,7 +1752,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Формальный идентификатор для этой серии<!-- Formal identifier for this series --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Formal identifier for this series</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Формальный идентификатор для этой серии<!-- Formal identifier for this series --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1788,7 +1788,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Описание серии<!-- A description of the series --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">A description of the series</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Описание серии<!-- A description of the series --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2700,7 +2700,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Содержимое экземпляра<!-- Content of the instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Содержимое экземпляра<!-- Content of the instance --> or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">Use of Attachment.data is discouraged.</Data><NamedCell
@@ -4712,7 +4712,7 @@
     <Cell ss:StyleID="s92"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s92"/>
     <Cell ss:StyleID="s125"><Data ss:Type="String">ImagingStudy.started</Data></Cell>
-    <Cell ss:StyleID="s126"><Data ss:Type="String">When the study was started</Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Время начала исследования<!-- When the study was started --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s124"><Data ss:Type="String">accession</Data></Cell>

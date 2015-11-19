@@ -1097,9 +1097,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Рекомендации по введению вакцин<!-- Рекомендации по введению вакцин<!-- Vaccine administration recommendations --> --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Рекомендации по введению вакцин<!-- Vaccine administration recommendations --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Vaccine administration recommendations</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Рекомендации по введению вакцин<!-- Vaccine administration recommendations --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1208,7 +1208,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Рекомендуемая числовая доза<!-- Recommended dose number --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Здесь указывается следующая рекомендуемая числовая доза (например доза 2 - это следующая рекомендуемая доза).<!-- This indicates the next recommended dose number (e.g. dose 2 is the next recommended dose). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">This indicates the next Рекомендуемая числовая доза<!-- Recommended dose number --> (e.g. dose 2 is the next recommended dose).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Могут потребоваться другие концепты дозы, например введена в отличие от допустима<!-- May need other dose concepts such as administered vs. valid --></Data><NamedCell
@@ -1244,9 +1244,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус введения вакцины<!-- Статус введения вакцины<!-- Vaccine administration status --> --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус введения вакцины<!-- Vaccine administration status --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Vaccine administration status</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус введения вакцины<!-- Vaccine administration status --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1280,7 +1280,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Dates governing proposed immunization</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Vaccine Рекомендованная дата<!-- Date recommendation -->s.  For example, earliest date to administer, latest date to administer, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1421,7 +1421,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Dose number within sequence</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает номинальную позицию в серии следующей дозы. Это рекомендованное число дозы в соответствии с указанным протоколом.<!-- Indicates the nominal position in a series of the next dose.  This is the recommended dose number as per a specified protocol. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the nominal position in a series of the next dose.  This is the Рекомендуемая числовая доза<!-- Recommended dose number --> as per a specified protocol.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>

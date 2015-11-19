@@ -1146,9 +1146,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя, ассоциированное с этим человеком<!-- Имя, ассоциированное с этим человеком<!-- A name associated with the person --> --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя, ассоциированное с этим человеком<!-- A name associated with the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A name associated with the person</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя, ассоциированное с этим человеком<!-- A name associated with the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Related persons need to be identified by name, but it is uncommon to need details about multiple other names for that person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1183,7 +1183,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Контактная информация этого человека<!-- A contact detail for the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Контактная информация этого человека, например телефонный номер или адрес электронной почты.<!-- A contact detail for the person, e.g. a telephone number or an email address. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Контактная информация этого человека<!-- A contact detail for the person -->, e.g. a telephone number or an email address.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">People have (primary) ways to contact them in some way such as phone, email.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1318,9 +1318,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Изображение человека<!-- Изображение человека<!-- Image of the person --> --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Изображение человека<!-- Image of the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Image of the person</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Изображение человека<!-- Image of the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Большинство EHR-систем имеют возможность сохранять изображение пациента. Также это соответствует новому применению социальных средств массовой информации.<!-- Many EHR systems have the capability to capture an image of persons. Fits with newer social media usage too. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

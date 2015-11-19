@@ -1077,7 +1077,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">registered | partial | final | corrected | appended | cancelled | entered-in-error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Общий статус диагностического отчета<!-- Статус диагностического отчета в целом<!-- The status of the diagnostic report as a whole --> --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус диагностического отчета в целом<!-- The status of the diagnostic report as a whole --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Службы диагностики регулярно выпускают предварительные/незаконченные отчеты и иногда отменяют (удаляют) выпущенные ранее отчеты.<!-- Diagnostic services routinely issue provisional/incomplete reports, and sometimes withdraw previously released reports. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1202,7 +1202,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Объект отчета, обычно, но не всегда, пациент<!-- Предмет отчета<!-- The subject of the report -->, usually, but not always, the patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Объект отчета. Обычно, но не всегда, это пациент. Также службы диагностики выполняют анализ образцов, взятых из множества других источников.<!-- The subject of the report. Usually, but not always, this is a patient. However diagnostic services also perform analyses on specimens collected from a variety of other sources. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Объект отчета. Обычно, но не всегда, это пациент. Также службы диагностики выполняют анализ образцов, взятых из множества других источников.<!-- Предмет отчета<!-- The subject of the report -->. Usually, but not always, this is a patient. However diagnostic services also perform analyses on specimens collected from a variety of other sources. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">НЕОБХОДИМО знать о контексте субъекта<!-- SHALL know the subject context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1281,7 +1281,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Clinically Relevant time/time-period for report</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The time or time-period the observed values are related to. When Предмет отчета<!-- The subject of the report --> is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Нужно знать, где в истории болезни пациента показывать/хранить в определённом порядке этот отчет <!-- Need to know where in the patient history to file/present this report --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1445,7 +1445,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Подробная информации об образцах, к которым относится этот диагностический отчет<!-- Details about the specimens on which this diagnostic report is based --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность протоколировать информацию о собранных образцах, на которых основывается отчет<!-- Нужна возможность протоколировать информацию о собранных образцах, к которым относится этот отчет<!-- Need to be able to report information about the collected specimens on which the report is based --> --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность протоколировать информацию о собранных образцах, к которым относится этот отчет<!-- Need to be able to report information about the collected specimens on which the report is based --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Если образец достаточно полно описывается кодом в названии результата исследования, тогда эта дополнительная информация может быть излишней. Если имеется несколько образцов, они могут отображаться для каждого наблюдения (Observation) или группы.<!-- If the specimen is sufficiently specified with a code in the test result name, then this additional data may be redundant. If there are multiple specimens, these may be represented per Observation or group. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1557,7 +1557,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Ключевые изображения, связанные с отчетом<!-- Key images associated with this report --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest).</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A list of Ключевые изображения, связанные с отчетом<!-- Key images associated with this report -->. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Большинство служб диагностики включают изображения в отчет в рамках своей работы<!-- Many diagnostic services include images in the report as part of their service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4545,7 +4545,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">DiagnosticReport.subject</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The subject of the report</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Предмет отчета<!-- The subject of the report --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">performer</Data></Cell>
@@ -4608,7 +4608,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">DiagnosticReport.image.link</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A reference to the image source.</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">A Ссылка на источник изображения<!-- Reference to the image source -->.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">request</Data></Cell>
@@ -4622,7 +4622,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">DiagnosticReport.subject</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Предмет отчета, если это пациент<!-- The subject of the report if a patient --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Предмет отчета<!-- The subject of the report --> if a patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">encounter</Data></Cell>
@@ -6543,7 +6543,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">DiagnosticReportStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The status of the diagnostic report as a whole.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус диагностического отчета в целом<!-- The status of the diagnostic report as a whole -->.</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#diagnostic-report-status</Data></Cell>

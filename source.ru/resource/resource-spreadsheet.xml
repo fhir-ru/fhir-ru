@@ -969,7 +969,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Базовый ресурс<!-- Base Resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">This is the base resource type for everything.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">This is the Базовый ресурс<!-- Base Resource --> type for everything.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1035,7 +1035,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Метаданные ресурса<!-- Metadata about the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Метаданные ресурса. Это такая информация, которая поддерживается инфраструктурой. Изменения этой информации не всегда можно ассоциировать с версионными изменениями ресурса<!-- The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The Метаданные ресурса<!-- Metadata about the resource -->. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4330,7 +4330,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Метаданные, возвращаемые этой операцией<!-- The meta returned by the operation --></Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">The meta returned by the operation</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Метаданные, возвращаемые этой операцией<!-- The meta returned by the operation --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4381,7 +4381,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Удаление у ресурса профилей, тегов и меток уровня безопасности<!-- Delete profiles, tags, and security labels for a resource --></Data></Cell>
     <Cell ss:StyleID="s131"><Data ss:Type="String">This operation takes a meta, and deletes the profiles, tags, and security labels found in it from the nominated resource.   This operation can also be used on historical entries</Data></Cell>
-    <Cell ss:StyleID="s132"><Data ss:Type="String">This operation is special in that executing this operation does not cause a new version of the resource to be created. The meta is updated directly. This is because the content in meta does not affect the meaning of the resource, and the security labels (in particular) are used to apply access rules to existing versions of resources</Data></Cell>
+    <Cell ss:StyleID="s132"><Data ss:Type="String">Эта операция отличается от других тем, что ее выполнение не влечет за собой создания новой версии ресурса. Обновляются непосредственно метаданные. Это объясняется тем, что содержимое метаданных не влияет на смысл ресурса, а метки уровня безопасности (в частности) используются для применения правил доступа к существующим версиям ресурсов<!-- This operation is special in that executing this operation does not cause a new version of the resource to be created. The meta is updated directly. This is because the content in meta does not affect the meaning of the resource, and the security labels (in particular) are used to apply access rules to existing versions of resources --></Data></Cell>
     <Cell><Data ss:Type="String">$meta-delete-request.txt</Data></Cell>
     <Cell><Data ss:Type="String">$meta-delete-response.txt</Data></Cell>
    </Row>
@@ -4405,8 +4405,8 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">Meta</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Resulting meta for the resource</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Resulting meta for the resource</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Итоговые метаданные ресурса<!-- Resulting meta for the resource --></Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Итоговые метаданные ресурса<!-- Resulting meta for the resource --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0">

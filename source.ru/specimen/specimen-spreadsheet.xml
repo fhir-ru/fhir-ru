@@ -999,7 +999,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Образец для анализа<!-- Образец для анализа<!-- Sample for analysis --> --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Образец для анализа<!-- Sample for analysis --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">A sample to be used for analysis.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1109,7 +1109,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Вид материала, из которого взят образец<!-- Kind of material that forms the specimen --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The kind of material that forms the specimen</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The Вид материала, из которого взят образец<!-- Kind of material that forms the specimen --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Тип влияет на способ обработки образца и на то, какой вид анализов может быть выполнен надлежащим образом над образцом. Часто используется в диагностическом рабочем процессе систем принятия решений.<!-- The type can change the way that a specimen is handled, and drives what kind of analyses can properly be performed on the specimen. It is frequently used in diagnostic work flow decision making systems. --></Data><NamedCell
@@ -1279,7 +1279,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор, назначенный лабораторией<!-- Identifier assigned by the lab --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The identifier assigned by the lab when accessioning specimen(s). This is not necessarily the same as the specimen identifier, depending on local lab procedures. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The Идентификатор, назначенный лабораторией<!-- Identifier assigned by the lab --> when accessioning specimen(s). This is not necessarily the same as the specimen identifier, depending on local lab procedures. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1379,9 +1379,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто осуществил сбор образца<!-- Кто взял пробу для анализа<!-- Who collected the specimen --> --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто взял пробу для анализа<!-- Who collected the specimen --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, который осуществил сбор образца <!-- Person who collected the specimen --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Person Кто взял пробу для анализа<!-- Who collected the specimen --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1482,7 +1482,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Количество собранного образца<!-- The quantity of specimen collected --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество собранного образца; например объем пробы крови или физическое измерение образца анатомической патологии.<!-- The quantity of specimen collected; for instance the volume of a blood sample, or the physical measurement of an anatomic pathology sample. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество собранного образца<!-- The quantity of specimen collected -->; for instance the volume of a blood sample, or the physical measurement of an anatomic pathology sample.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4431,7 +4431,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Specimen.type</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The specimen type</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Тип образца для анализа<!-- the specimen type --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">parent</Data></Cell>
@@ -4460,7 +4460,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Specimen.collection.collector</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Who collected the specimen</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Кто взял пробу для анализа<!-- Who collected the specimen --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">bodysite</Data></Cell>
@@ -4475,7 +4475,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Specimen.container.identifier</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Уникальный идентификатор, ассоциированный с контейнером образца<!-- The unique identifier associated with the specimen container --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Уникальный идентификатор, ассоциированный с образцом<!-- The unique identifier associated with the specimen --> container</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">container</Data></Cell>

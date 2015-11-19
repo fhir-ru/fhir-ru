@@ -1501,7 +1501,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Специалист (или организация) из этой команды<!-- The practitioner (or Organization) within the team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The practitioner (or Organization) within the team</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Специалист (или организация) из этой команды<!-- The practitioner (or Organization) within the team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Если в команду включена организация, то она действительно оказывает некоторую форму услуг в этом EpisodeOfCare (например Jim's Mowing Services), подробные сведения об этих услугах будут включены в план по уходу<!-- Where an Organization is included in the CareTeam, it is really providing some form of services to the EpisodeOfCare (e.g. Jim's Mowing Services) the details of the services would be included on a CarePlan --></Data><NamedCell

@@ -1147,7 +1147,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Тип страхового покрытия<!-- Type of coverage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health. </Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">The Тип страхового покрытия<!-- Type of coverage -->: social program, medical plan, accident coverage (workers compensation, auto), group health. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">От типа страхового покрытия зависит порядок применения страховых покрытий.<!-- The order of application of coverages is dependent on the types of coverage. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1252,7 +1252,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор группы<!-- An identifier for the group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентифицирует направление или коллектив страхового покрытия, предоставляемого страховщиком, например может использоваться для определения категории страхового покрытия или группы работодателя. Может также упоминаться как номер полиса или группы (Policy ID, Group ID).<!-- Идентифицирует направление или коллектив страхового покрытия, предоставляемого страховщиком, например может использоваться для определения категории страхового покрытия или группы работодателя. Может также упоминаться как номер полиса или группы (Policy ID, Group ID).<!-- Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID. --> --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентифицирует направление или коллектив страхового покрытия, предоставляемого страховщиком, например может использоваться для определения категории страхового покрытия или группы работодателя. Может также упоминаться как номер полиса или группы (Policy ID, Group ID).<!-- Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1286,9 +1286,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">An identifier for the plan</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор плана (медицинского обслуживания)<!-- An identifier for the plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентифицирует направление или коллектив страхового покрытия, предоставляемого страховщиком, например может использоваться для определения категории страхового покрытия или группы работодателя. Может также упоминаться как номер полиса или группы (Policy ID, Group ID).<!-- Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1359,7 +1359,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Уникальный идентификатор материально зависимого лица страхового покрытия.<!-- A unique identifier for a dependent under the coverage. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Для некоторых страховых покрытий держателю полиса (PolicyHolder) назначается один идентификатор, а для каждого материально зависимого лица выпускается зависимый номер в целях отслеживания и администрирования плана.<!-- For some coverage a single identifier is issued to the PolicyHolder and dependent number issues to each to each of their dependents to track and manage the plan. --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Для некоторых страховых покрытий держателю полиса (PolicyHolder) назначается один идентификатор, а для каждого материально зависимого лица выпускается зависимый номер в целях отслеживания и администрирования плана.<!-- For some coverage a single identifier is issued to the PolicyHolder and Номер материально зависимого лица<!-- dependent number --> issues to each to each of their dependents to track and manage the plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4501,7 +4501,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Coverage.dependent</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Dependent number</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Номер материально зависимого лица<!-- dependent number --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">sequence</Data></Cell>

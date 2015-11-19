@@ -999,7 +999,7 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">Суммарная информация из списка других ресурсов<!-- Information summarized from a list of other resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Суммарный набор данных из списка других ресурсов<!-- A set of information summarized from a list of other resources -->.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">A set of Суммарная информация из списка других ресурсов<!-- Information summarized from a list of other resources -->.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1419,7 +1419,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Записи в списке<!-- Entries in this list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Если в списке нет записей, необходимо заполнить emptyReason<!-- If there are no entries in the list, an emptyReason SHOULD be provided --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">If there are no Записи в списке<!-- Entries in the list -->, an emptyReason SHOULD be provided</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]</Data><NamedCell

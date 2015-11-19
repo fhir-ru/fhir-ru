@@ -1051,9 +1051,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя, ассоциированное с этим человеком<!-- Имя, ассоциированное с этим человеком<!-- A name associated with the person --> --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя, ассоциированное с этим человеком<!-- A name associated with the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A name associated with the person</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя, ассоциированное с этим человеком<!-- A name associated with the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность отслеживать человека по нескольким именам. Примерами являются ваше официальное имя и имя партнера.<!-- Need to be able to track the person by multiple names. Examples are your official name and a partner name. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1088,7 +1088,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Контактные данные человека<!-- A contact detail for the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактные данные человека, например телефонный номер или адрес электронной почты.<!-- A contact detail for the person, e.g. a telephone number or an email address. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактные данные человека<!-- A contact detail for the person -->, e.g. a telephone number or an email address.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">У людей есть (основные) способы связаться с ними некоторым образом, например по телефону, электронной почте.<!-- People have (primary) ways to contact them in some way such as phone, email. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1138,7 +1138,7 @@
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">'gender' is still the administrative gender, but this is reflected in its description rather than its name.</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">'gender' is still the Административный пол<!-- Administrative Gender -->, but this is reflected in its description rather than its name.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
@@ -1192,9 +1192,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает, умер ли этот человек или нет<!-- Показывает, умер ли этот человек или нет<!-- Indicates if the Person is deceased or not --> --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает, умер ли этот человек или нет<!-- Indicates if the Person is deceased or not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates if the Person is deceased or not</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает, умер ли этот человек или нет<!-- Indicates if the Person is deceased or not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Если значение не указано, это означает, что нет никакого утверждения о том, умер этот человек или нет. Большинство систем будет интерпретировать отсутствие значения как признак того, что человек все еще жив.<!-- If there's no value in the instance it means there is no statement on whether or not the person deceased. Most systems will interpret the absence of a value as a sign of the person being alive. --></Data><NamedCell
@@ -1225,9 +1225,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Один или несколько адресов человека<!-- Один или несколько адресов этого человека<!-- One or more addresses for the person --> --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Один или несколько адресов этого человека<!-- One or more addresses for the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">One or more addresses for the person</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Один или несколько адресов этого человека<!-- One or more addresses for the person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">May need to keep track of person's addresses for contacting, billing or reporting requirements and also to help with identification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1457,9 +1457,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, которая является хранителем записи о человеке<!-- Организация, которая является хранителем записи о человеке<!-- The organization that is the custodian of the person record --> --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, которая является хранителем записи о человеке<!-- The organization that is the custodian of the person record --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The organization that is the custodian of the person record</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, которая является хранителем записи о человеке<!-- The organization that is the custodian of the person record --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать, кто признает эту запись о человеке, управляет и обновляет ее<!-- Need to know who recognizes this person record, manages and updates it --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1493,7 +1493,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Запись об этом человеке находится в активном использовании<!-- This person's record is in active use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Находится ли запись об этом человеке в активном использовании<!-- Whether this person's record is in active use --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether Запись об этом человеке находится в активном использовании<!-- This person's record is in active use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность пометить запись человека как не предназначенную для использования, поскольку она была создана по ошибке<!-- Need to be able to mark a person record as not to be used because it was created in error --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

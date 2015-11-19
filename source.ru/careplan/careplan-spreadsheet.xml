@@ -1765,7 +1765,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">diet | drug | encounter | observation | procedure | supply | other</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Высокоуровневая классификация типа активности в плане по уходу.<!-- Высокоуровневая классификация типа активности в плане по уходу.<!-- High-level categorization of the type of activity in a care plan. --> --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Высокоуровневая классификация типа активности в плане по уходу.<!-- High-level categorization of the type of activity in a care plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Может определять, какие типы расширений разрешены<!-- May determine what types of extensions are permitted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1799,7 +1799,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Тип активности<!-- Detail type of activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Detailed description of the type of planned activity; e.g. What lab test, what procedure, what kind of encounter.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Detailed description of the Тип плана<!-- Type of plan -->ned activity; e.g. What lab test, what procedure, what kind of encounter.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет подбирать соответствующие запланированным, а также проверять относительно протоколов<!-- Allows matching performed to planned as well as validation against protocols --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2065,7 +2065,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the facility where the activity will occur; e.g. home, hospital, specific clinic, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает планировать мероприятие<!-- Помогает планировать мероприятие<!-- Helps in planning of activity --> --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает планировать мероприятие<!-- Helps in planning of activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">May reference a specific clinical location or may identify a type of location.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2099,7 +2099,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет, кто, как ожидается, будет участвовать в деятельности.<!-- Identifies who's expected to be involved in the activity. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Helps in planning of activity</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает планировать мероприятие<!-- Helps in planning of activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Исполнитель также МОЖЕТ быть участником плана ухода<!-- A performer MAY also be a participant in the care plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6543,7 +6543,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanActivityCategory</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">High-level categorization of the type of activity in a care plan.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Высокоуровневая классификация типа активности в плане по уходу.<!-- High-level categorization of the type of activity in a care plan. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s116"/>

@@ -1215,9 +1215,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Где произошла активность, если это уместно<!-- Где произошла активность, если это уместно<!-- Where the activity occurred, if relevant --> --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Где произошла активность, если это уместно<!-- Where the activity occurred, if relevant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Where the activity occurred, if relevant</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Где произошла активность, если это уместно<!-- Where the activity occurred, if relevant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1254,7 +1254,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Политика или план, по которому произошла активность<!-- Policy or plan the activity was defined by --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Политика или план, по которому произошла активность. Как правило, отдельная активность может иметь несколько применимых документов политики, такие как согласие пациента, гарант финансирования и т. п.<!-- Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Политика или план, по которому произошла активность<!-- Policy or plan the activity was defined by -->. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String"> For example: Where an OAuth token authorizes, the unique identifier from the OAuth token is placed into the policy element Where a policy engine (e.g. XACML) holds policy logic, the unique policy identifier is placed into the policy element.</Data><NamedCell
@@ -1554,9 +1554,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Сущность, использованная в этой активности<!-- Сущность, использованная в этой активности<!-- An entity used in this activity --> --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сущность, использованная в этой активности<!-- An entity used in this activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An entity used in this activity</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сущность, использованная в этой активности<!-- An entity used in this activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Multiple userIds may be associated with the same Practitioner or other individual across various appearances, each with distinct privileges</Data><NamedCell

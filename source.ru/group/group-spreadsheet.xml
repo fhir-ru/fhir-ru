@@ -1215,7 +1215,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Размер группы является общей определяющей характеристикой <!-- Group size is a common defining characteristic --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Note that the quantity may be less than the number of members if some of the members are not active </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Note that the quantity may be less than the Количество членов группы<!-- Number of members --> if some of the members are not active </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">./quantity</Data><NamedCell

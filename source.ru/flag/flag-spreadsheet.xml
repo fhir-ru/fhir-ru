@@ -4284,14 +4284,14 @@
     <Cell ss:StyleID="s79"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s79"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">Flag.subject</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Идентификация субъекта, для которого перечисляются флаги<!-- Идентификация субъекта, для которого перечисляются флаги<!-- The identity of a subject to list flags for --> --></Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Идентификация субъекта, для которого перечисляются флаги<!-- The identity of a subject to list flags for --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Flag.subject</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The identity of a subject to list flags for</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Идентификация субъекта, для которого перечисляются флаги<!-- The identity of a subject to list flags for --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">author</Data></Cell>

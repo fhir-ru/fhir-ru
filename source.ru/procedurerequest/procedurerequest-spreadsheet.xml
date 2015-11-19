@@ -1068,7 +1068,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на выполнение процедуры <!-- A request for a procedure to be performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Запрос на выполнение процедуры. Может быть предложением или заказом. <!-- A request for a procedure to be performed. May be a proposal or an order. --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Запрос на выполнение процедуры <!-- A request for a procedure to be performed -->. May be a proposal or an order.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1246,7 +1246,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><Data ss:Type="String">Знание того, где выполняется процедура, важно отслеживать, если возможны варианты.<!-- Knowing where the procedure is made is important for tracking if multiple site are possible. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s97"><Data ss:Type="String">Используется, только если код не подразумевается из ProcedureRequest.type<!-- Используется, только если код не подразумевается из ProcedureRequest.type<!-- Only used if not implicit in code found in ProcedureRequest.type --> --></Data><NamedCell
+    <Cell ss:StyleID="s97"><Data ss:Type="String">Используется, только если код не подразумевается из ProcedureRequest.type<!-- Only used if not implicit in code found in ProcedureRequest.type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4465,7 +4465,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">ProcedureRequest.subject</Data></Cell>
-    <Cell ss:StyleID="s124"><Data ss:Type="String">Поиск по субъекту-пациенту<!-- Search by subject - a patient --></Data></Cell>
+    <Cell ss:StyleID="s124"><Data ss:Type="String">Поиск по субъекту<!-- Search by subject --> - a patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s122"><Data ss:Type="String">orderer</Data></Cell>

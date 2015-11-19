@@ -1128,7 +1128,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Тип записи на прием, которая бронируется<!-- The type of appointment that is being booked --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип записи на прием, которая бронируется (может быть связано с участниками местоположением и/или HealthcareService)<!-- The type of appointment that is being booked (This may also be associated with participants for location, and/or a HealthcareService) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип записи на прием, которая бронируется<!-- The type of appointment that is being booked --> (This may also be associated with participants for location, and/or a HealthcareService)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1553,7 +1553,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс Order, который привел к созданию этой записи на прием<!-- An Order that lead to the creation of this appointment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">An Order that lead to the creation of this appointment</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс Order, который привел к созданию этой записи на прием<!-- An Order that lead to the creation of this appointment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1626,7 +1626,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Роль участника в этой условленной встрече<!-- Role of participant in the appointment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Role of participant in the appointment</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Роль участника в этой условленной встрече<!-- Role of participant in the appointment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The role of the participant can be used to declare what the actor will be doing in the scope of this appointment.&#10;&#10;If the actor is not specified, then it is expected that the actor will be filled in at a later stage of planning.&#10;&#10;This value MUST be the same when creating an AppointmentResponse so that they can be matched, and subsequently update the Appointment.</Data><NamedCell
@@ -4596,7 +4596,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">Appointment.status</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">The overall status of the appointment</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Общий статус записи на прием<!-- The overall status of the Appointment --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">actor</Data></Cell>

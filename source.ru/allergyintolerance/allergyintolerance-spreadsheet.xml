@@ -1247,7 +1247,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Источник информации об этой аллергии<!-- Source of the information about the allergy --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Источник информации об аллергии, которая записывается<!-- The source of the information about the allergy that is recorded --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The Источник информации об этой аллергии<!-- Source of the information about the allergy --> that is recorded</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Регистратор записи несет ответственность за её содержание, но может ссылаться на источник, откуда он её получил<!-- The recorder takes repsonsibility for the content, but can reference the source from where they got it --></Data><NamedCell
@@ -1694,7 +1694,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Date(/time) when manifestations showed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата (/время) начала проявлений<!-- Date(/time) when manifestations showed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Запись даты и/или времени начала реакции<!-- Record of the date and/or time of the onset of the Reaction --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

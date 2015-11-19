@@ -1316,7 +1316,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Описание точного местоположения<!-- Precise location details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Detailed and structured anatomical location information. Multiple locations are allowed - e.g. multiple punch biopsies of a lesion</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Подробная и структурированная информация об анатомическом расположении. Можно указывать несколько местоположений - например многократная пункционная биопсия раны<!-- Detailed and structured anatomical location information. Multiple locations are allowed - e.g. multiple punch biopsies of a lesion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6563,7 +6563,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">ProcedureRelationshipType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип взаимосвязи с данной процедурой<!-- The nature of the relationship with this procedure -->.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип взаимосвязи<!-- The nature of the relationship --> with this procedure.</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s115"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">#procedure-relationship-type</Data></Cell>

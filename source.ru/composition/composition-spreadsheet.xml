@@ -1105,7 +1105,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Время редактирования композиции<!-- Composition editing time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Время редактирования композиции, когда композиция последний раз логически изменялась автором<!-- The composition editing time, when the composition was last logically changed by the author --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The Время редактирования композиции<!-- Composition editing time -->, when the composition was last logically changed by the author</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">dateTime is used for tracking, organizing versions and searching.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1558,7 +1558,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Кто заверил композицию<!-- Who attested the composition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Кто заверил композицию указанным образом<!-- Who attested the composition in the specified way --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кто заверил композицию<!-- Who attested the composition --> in the specified way</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет, кто взял ответственность за правильность содержимого композиции.<!-- Identifies who has taken on the responsibility for accuracy of the composition content. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2143,7 +2143,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Вложенный подраздел внутри данного раздела<!-- A nested sub-section within this section --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Вложенные разделы в основном используются для помощи читателям в переходе к конкретной части документа<!-- Nested sections are primarily used to help human readers navigate to particular portions of the document --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вложенный раздел<!-- Nested Section -->s are primarily used to help human readers navigate to particular portions of the document</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./outboundRelationship[typeCode=&quot;COMP&quot; and isNormalActRelationship()]/target[moodCode=&quot;EVN&quot; and classCode=&quot;DOCSECT&quot; and isNormalAct]</Data><NamedCell

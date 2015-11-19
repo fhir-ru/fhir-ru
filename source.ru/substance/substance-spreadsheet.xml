@@ -4504,7 +4504,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Substance.instance.identifier</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Identifier of the package/container</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Идентификатор упаковки/контейнера<!-- Identifier of the package/container --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">expiry</Data></Cell>
@@ -4518,14 +4518,14 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">quantity</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Substance.instance.quantity</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Amount of substance in the package</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество вещества в упаковке<!-- Amount of substance in the package --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">substance</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Substance.ingredient.substance</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A component of the substance</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Компонент вещества<!-- A component of the substance --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">identifier</Data></Cell>

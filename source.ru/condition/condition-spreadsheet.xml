@@ -1218,7 +1218,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификация состояния, проблемы или диагноза<!-- Identification of the condition, problem or diagnosis --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификация состояния, проблемы или диагноза.<!-- Identification of the condition, problem or diagnosis.  --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификация состояния, проблемы или диагноза<!-- Identification of the condition, problem or diagnosis -->. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1365,7 +1365,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Степень уверенности<!-- Degree of confidence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Степень уверенности, что это состояние верно<!-- The degree of confidence that this condition is correct --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The Степень уверенности<!-- Degree of confidence --> that this condition is correct</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Может быть в процентах<!-- May be a percentage --></Data><NamedCell
@@ -1612,7 +1612,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Подтверждающие данные<!-- Supporting evidence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Подтверждающие данные / проявления (болезни), на основании которых подозревается или подтверждается данное состояние<!-- Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Подтверждающие данные<!-- Supporting evidence --> / manifestations that are the basis on which this condition is suspected or confirmed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Основания могут быть простым перечислением кодированных симптомов/проявлений или ссылками на наблюдения или официальные оценки, или и на то, и другое одновременно<!-- The evidence may be a simple list of coded symptoms/manifestations, or references to observations or formal assessments, or both --></Data><NamedCell
@@ -1751,7 +1751,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная информация о состоянии<!-- Additional information about the Condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Дополнительная информация о состоянии. Это общая запись текстовых заметок/комментариев к описанию состояния, его диагноз и прогноз<!-- Additional information about the Condition. This is a general notes/comments entry  for description of the Condition, its diagnosis and prognosis --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дополнительная информация о состоянии<!-- Additional information about the Condition -->. This is a general notes/comments entry  for description of the Condition, its diagnosis and prognosis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6226,7 +6226,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">!ConditionCertainty</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The degree of confidence that this condition is correct.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The Степень уверенности<!-- Degree of confidence --> that this condition is correct.</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">valueset-condition-certainty</Data></Cell>
@@ -6241,7 +6241,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">ConditionSeverity</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A subjective assessment of the severity of the condition as evaluated by the clinician.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Субъективная оценка тяжести состояния, оцененная клиницистом.<!-- A subjective assessment of the severity of the condition as evaluated by the clinician. --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">valueset-condition-severity</Data></Cell>

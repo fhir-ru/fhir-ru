@@ -1532,7 +1532,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The unique identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный идентификатор<!-- the unique identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Строка, которую следует оправлять для идентификации кодовой системы или идентифицирующей системы<!-- The string that should be sent over the wire to identify the code system or identifier system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

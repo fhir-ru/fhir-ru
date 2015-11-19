@@ -1051,7 +1051,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Внешний идентификатор<!-- External identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Внешний идентификатор<!-- External identifier --> - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1539,7 +1539,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Инструкции по дозировке<!-- Dosage Instructions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Произвольные текстовые инструкции по дозировке могут указываться в случае, когда они слишком сложные, чтобы их закодировать. Если присутствуют кодированные инструкции, произвольные текстовые инструкции могут также прилагаться для отображения людям, принимающим или вводящим этот медикамент.<!-- Free text dosage instructions can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Free text Инструкции по дозировке<!-- Dosage Instructions --> can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4471,7 +4471,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">MedicationAdministration.identifier</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Return administrations with this external identifier</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Return administrations with this Внешний идентификатор<!-- External identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">medication</Data></Cell>

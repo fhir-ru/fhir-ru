@@ -1262,7 +1262,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Используйте это название при отображении значения<!-- Use this name when displaying the value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Определено для того, чтобы приложения могли использовать это название при отображения значения расширения пользователю<!-- Defined so that applications can use this name when displaying the value of the extension to the user  --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Defined so that applications can Используйте это название при отображении значения<!-- Use this name when displaying the value --> of the extension to the user </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Приложения не обязаны использовать это название, но всегда могут прибегнуть к нему. В случае отсутствия значения этого элемента используйте name<!-- Applications don't have to use this name, but can always fall back to it. In the absence of a value for this element, use the name --></Data><NamedCell
@@ -1301,7 +1301,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Статус StructureDefinition <!-- The status of the StructureDefinition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет отфильтровывать подходящие к использованию StructureDefinitions от неподходящих <!-- Позволяет отфильтровывать подходящие к использованию StructureDefinitions от неподходящих <!-- Allows filtering of StructureDefinitions that are appropriate for use vs. not --> --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет отфильтровывать подходящие к использованию StructureDefinitions от неподходящих <!-- Allows filtering of StructureDefinitions that are appropriate for use vs. not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1337,7 +1337,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Этот StructureDefinition был создан для тестирования (или обучения/оценки/маркетинга), и не предназначен для реального применения <!-- This StructureDefinition was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows filtering of StructureDefinitions that are appropriate for use vs. not</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет отфильтровывать подходящие к использованию StructureDefinitions от неподходящих <!-- Allows filtering of StructureDefinitions that are appropriate for use vs. not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1543,7 +1543,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Описание StructureDefinition на естественном языке <!-- Natural language description of the StructureDefinition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольное текстовое описание  StructureDefinition и его использования, на естественном языке <!-- A free text natural language description of the StructureDefinition and its use --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A free text Описание StructureDefinition на естественном языке <!-- Natural language description of the StructureDefinition --> and its use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">This field can be used for things such as why the StructureDefinition was written, comments about misuse, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.  It is *not* a rendering of the StructureDefinition as conveyed in StructureDefinition.text. This item SHOULD be populated unless the information is available from context</Data><NamedCell
@@ -1753,7 +1753,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Внешняя спецификация, с которой сопоставляется это содержимое<!-- External specification that the content is mapped to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Внешняя спецификация, с которой сопоставляется это содержимое<!-- An external specification that the content is mapped to --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">An Внешняя спецификация, с которой сопоставляется это содержимое<!-- External specification that the content is mapped to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2159,9 +2159,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение элементов в ресурсе (если нет StructureDefinition) <!-- Определение элементов в ресурсе (если нет StructureDefinition) <!-- Definition of elements in the resource (if no StructureDefinition) --> --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение элементов в ресурсе (если нет StructureDefinition) <!-- Definition of elements in the resource (if no StructureDefinition) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Собирает ограничения со всех элементов ресурса<!-- Собирает ограничения со всех элементов ресурса <!-- Captures constraints on each element within the resource --> --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Собирает ограничения со всех элементов ресурса <!-- Captures constraints on each element within the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2225,9 +2225,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Definition of elements in the resource (if no StructureDefinition)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение элементов в ресурсе (если нет StructureDefinition) <!-- Definition of elements in the resource (if no StructureDefinition) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Captures constraints on each element within the resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Собирает ограничения со всех элементов ресурса <!-- Captures constraints on each element within the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6454,7 +6454,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><Data ss:Type="String">Profile</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
-        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Name of the profile  example is associated with (and should be published with)</Font>       </ss:Data></Comment><NamedCell
+        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Имя профиля <!-- Name of the profile -->  example is associated with (and should be published with)</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">In Book</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font

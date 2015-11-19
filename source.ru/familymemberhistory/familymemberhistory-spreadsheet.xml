@@ -1307,7 +1307,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">(approximate) age</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Фактический или приблизительный возраст родственника на момент записи семейного анамнеза<!-- Фактический или приблизительный возраст родственника на момент записи семейного анамнеза<!-- The actual or approximate age of the relative at the time the family member history is recorded --> --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Фактический или приблизительный возраст родственника на момент записи семейного анамнеза<!-- The actual or approximate age of the relative at the time the family member history is recorded --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Хотя возраст и можно подсчитать через дату рождения, иногда запись непосредственно возраста больше подходит клиницистам.<!-- While age can be calculated from date of birth, sometimes recording age directly is more natureal for clinicians. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
