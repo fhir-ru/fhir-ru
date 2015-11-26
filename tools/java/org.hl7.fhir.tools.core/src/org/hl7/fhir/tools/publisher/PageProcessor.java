@@ -5126,7 +5126,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
               return;
             } else { 
               if (scope == null) {
-                if (s.equals("Scope and Usage")) { 
+                if (s.equals("Scope and Usage")) || (s.equals("Область применения и использование")) { 
                   scope = x;
                   if (r != null) 
                     r.setRequirements(new XhtmlComposer().composePlainText(x));
@@ -5134,7 +5134,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
                   log("file \""+filename+"\": 'Scope and Usage' must come first", LogMessageType.Error);
                   return;
                 }
-                if (s.equals("Boundaries and Relationships")) {
+                if (s.equals("Boundaries and Relationships"))  || (s.equals("Границы и связи")) {
                   if (context != null) {
                     log("file \""+filename+"\": 'Boundaries and Relationships' must come first before 'Background and Context'", LogMessageType.Error);
                     return;
