@@ -1093,7 +1093,7 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s80">
-					<Data ss:Type="String">A record of a device being used by a patient where the record is the result of a report from the patient or another clinician.</Data>
+					<Data ss:Type="String">Запись об устройстве, которым пользовался пациент, появившаяся в результате сообщения пациента или другого клинициста.<!-- A record of a device being used by a patient where the record is the result of a report from the patient or another clinician. --></Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s81">
@@ -1172,15 +1172,15 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s87">
-					<Data ss:Type="String">Target body site</Data>
+					<Data ss:Type="String">Целевое место на теле<!-- Target body site --></Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Indicates the site on the subject's body where the device was used ( i.e. the target site).</Data>
+					<Data ss:Type="String">Обозначает место на теле субъекта, где следует использовать устройство (т. е. целевое место).<!-- Indicates the site on the subject's body where the device was used ( i.e. the target site). --></Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
-					<Data ss:Type="String">Knowing where the device is targeted is important for tracking if multiple sites are possible.</Data>
+					<Data ss:Type="String">Знание о том, где следует использовать устройство, важно для отслеживания, когда возможно несколько мест.<!-- Knowing where the device is targeted is important for tracking if multiple sites are possible. --></Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
@@ -1263,7 +1263,7 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">The time period over which the device was used.</Data>
+					<Data ss:Type="String">Период времени, в течение которого это изделие использовалось.<!-- The time period over which the device was used. --></Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -1346,7 +1346,7 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">The details of the device used.</Data>
+					<Data ss:Type="String">Подробные сведения об использованном изделии.<!-- The details of the device used. --></Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -1429,7 +1429,7 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">An external identifier for this statement such as an IRI.</Data>
+					<Data ss:Type="String">Внешний идентификатор для этого утверждения, например IRI.<!-- An external identifier for this statement such as an IRI. --></Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -1512,7 +1512,7 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Reason or justification for the use of the device.</Data>
+					<Data ss:Type="String">Причина или обоснование для использования этого устройства.<!-- Reason or justification for the use of the device. --></Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -1594,7 +1594,7 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">Details about the device statement that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement.</Data>
+					<Data ss:Type="String">Сведения об этом запросе, которые не были представлены вообще или в достаточной мере в одном из атрибутов, указанных в классе. Может включать в себя, к примеру, комментарий, указание или заметку, связанную с мотивировкой решения.<!-- Details about the device statement that were not represented at all or sufficiently in one of the attributes provided in a class. These may include for example a comment, an instruction, or a note associated with the statement. --></Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -1677,7 +1677,7 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">The time at which the statement was made/recorded. </Data>
+					<Data ss:Type="String">Время, когда утверждение было сделано/записано.<!-- The time at which the statement was made/recorded.  --></Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -1760,7 +1760,7 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">The patient who used the device.</Data>
+					<Data ss:Type="String">Пациент, который использовал изделие.<!-- The patient who used the device. --></Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -1843,7 +1843,7 @@ See wiki for guidance</Font>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s88">
-					<Data ss:Type="String">How often the device was used.</Data>
+					<Data ss:Type="String">Как часто применялось изделие.<!-- How often the device was used. --></Data>
 					<NamedCell ss:Name="_FilterDatabase"/>
 				</Cell>
 				<Cell ss:StyleID="s89">
@@ -9511,7 +9511,7 @@ See wiki for guidance</Font>
 					<Data ss:Type="String">DeviceUseStatement.subject</Data>
 				</Cell>
 				<Cell ss:StyleID="s115">
-					<Data ss:Type="String">Search by subject</Data>
+					<Data ss:Type="String">Поиск по субъекту<!-- Search by subject --></Data>
 				</Cell>
 			</Row>
 			<Row ss:AutoFitHeight="0" ss:Height="30">
@@ -9525,7 +9525,7 @@ See wiki for guidance</Font>
 					<Data ss:Type="String">DeviceUseStatement.subject</Data>
 				</Cell>
 				<Cell ss:StyleID="s117">
-					<Data ss:Type="String">Search by subject - a patient</Data>
+					<Data ss:Type="String">Поиск по субъекту - пациент<!-- Search by subject - a patient --></Data>
 				</Cell>
 			</Row>
 			<Row ss:AutoFitHeight="0">
@@ -9540,7 +9540,7 @@ See wiki for guidance</Font>
 					<Data ss:Type="String">DeviceUseStatement.device</Data>
 				</Cell>
 				<Cell ss:StyleID="s117">
-					<Data ss:Type="String">Search by device</Data>
+					<Data ss:Type="String">Поиск по устройству<!-- Search by device --></Data>
 				</Cell>
 			</Row>
 			<Row ss:AutoFitHeight="0">
