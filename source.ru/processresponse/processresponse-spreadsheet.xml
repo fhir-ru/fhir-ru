@@ -1419,7 +1419,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Примечания<!-- Notes --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Notes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Набор примечаний к обработке или дополнительных требований, если процессинг был отложен.<!-- Suite of processing note or additional requirements is the processing has been held. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -5140,7 +5140,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">What triggers the event and what behavior it drives</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s102"><Data ss:Type="String">Примечания<!-- Notes --></Data><Comment
+    <Cell ss:StyleID="s102"><Data ss:Type="String">Notes</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional implementer guidance</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

@@ -1212,13 +1212,13 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Латеральность<!-- Laterality --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Laterality</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Латеральность<!-- Laterality --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Laterality</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Модификатор для уточнения анатомического расположения. Сюда входят такие модификаторы, как латеральность, относительное расположение, направленность, число и плоскость.<!-- Modifier to refine the anatomical location.  This includes concepts for laterality, relative location, directionality, number, and plane. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

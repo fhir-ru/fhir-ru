@@ -1212,7 +1212,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Страховщик<!-- Insurer --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Insurer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор страховщика, типичный номер ОГРН (6-значный).<!-- Insurer Identifier, typical BIN number (6 digit). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1403,7 +1403,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Автор<!-- Author --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Author</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Человек, который создал счет / иск / предварительное определение или предварительное разрешение.<!-- Person who created the invoice/claim/pre-determination or pre-authorization. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1465,7 +1465,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Предписание<!-- Prescription --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Prescription</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Предписание для поддержки распределения продуктов коррекции зрения или медикаментов<!-- Prescription to support the dispensing of Pharmacy or Vision products. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1555,7 +1555,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Получатель платежа<!-- Payee --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Payee</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Сторона, которой должны быть возмещены расходы на услуги.<!-- The party to be reimbursed for the services. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1801,7 +1801,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Диагноз<!-- Diagnosis --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Diagnosis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Нумерованный список диагнозов пациента, которому оказывается лечение.<!-- Ordered list of patient diagnosis for which care is sought.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

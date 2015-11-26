@@ -1197,7 +1197,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Страховщик<!-- Insurer --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Insurer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Страховщик, который выдал это решение по иску.<!-- The Insurer who produced this adjudicated response. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

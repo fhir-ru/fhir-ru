@@ -1089,7 +1089,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">0..*</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор<!-- Identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1284,7 +1284,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Action.Показание<!-- indication -->.reason</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Action.indication.reason</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1488,7 +1488,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Proposal.При необходимости<!-- prn -->Reason.reason</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Proposal.prnReason.reason</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4455,7 +4455,7 @@
     <Cell ss:StyleID="s124"><Data ss:Type="String">A unique identifier of the Procedure Request</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s125"><Data ss:Type="String">Субъект<!-- subject --></Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="s86"><Data ss:Type="String">ProcedureRequest.subject</Data></Cell>
     <Cell ss:StyleID="s126"><Data ss:Type="String">Поиск по субъекту<!-- Search by subject --></Data></Cell>
@@ -4475,14 +4475,14 @@
     <Cell ss:StyleID="s124"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s122"><Data ss:Type="String">Исполнитель<!-- performer --></Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">performer</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s127"><Data ss:Type="String">ProcedureRequest.performer</Data></Cell>
     <Cell ss:StyleID="s124"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s122"><Data ss:Type="String">Случай обслуживания (Encounter)<!-- encounter --></Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">encounter</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s127"><Data ss:Type="String">ProcedureRequest.encounter</Data></Cell>
@@ -5359,7 +5359,7 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">What triggers the event and what behavior it drives</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s111"><Data ss:Type="String">Примечания<!-- Notes --></Data><Comment
+    <Cell ss:StyleID="s111"><Data ss:Type="String">Notes</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Additional implementer guidance</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
