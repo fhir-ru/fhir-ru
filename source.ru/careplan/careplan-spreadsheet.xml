@@ -1731,7 +1731,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Встроенное определение активности<!-- In-line definition of activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Простой обзор планируемой деятельности подходит для системы планирования общего ухода (например на основе форм), которой не известно о конкретных ресурсах, таких как процедура и т. д.<!-- A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc -->.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Простой обзор планируемой деятельности подходит для системы планирования общего ухода (например на основе форм), которой не известно о конкретных ресурсах, таких как процедура и т. д.<!-- A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Подробности в простой форме для систем общего плана ухода<!-- Details in a simple form for generic care plan systems --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6575,7 +6575,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanActivityStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает стадию активности в ее общем жизненном цикле<!-- Indicates where the activity is at in its overall life cycle -->.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает стадию активности в ее общем жизненном цикле<!-- Indicates where the activity is at in its overall life cycle --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s116"/>

@@ -6609,7 +6609,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">AnswerFormat</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Формат ожидаемого ответа<!-- The expected format of an answer -->.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Формат ожидаемого ответа<!-- The expected format of an answer --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">#answer-format</Data></Cell>

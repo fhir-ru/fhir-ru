@@ -1058,11 +1058,11 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Измерения и простые утверждения<!-- Measurements and simple assertions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Измерения и простые утверждения, сделанные о пациенте, устройстве или другом субъекте<!-- Measurements and simple assertions made about a patient, device or other subject -->.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Измерения и простые утверждения, сделанные о пациенте, устройстве или другом субъекте<!-- Measurements and simple assertions made about a patient, device or other subject --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Наблюдения являются ключевым аспектом в здравоохранении. Данный ресурс используется для ввода того, что не требует более сложных механизмов.<!-- Observations are a key aspect of healthcare.  This resource is used to capture those that do not require more sophisticated mechanisms. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Используется для таких простых наблюдений, как измерения устройств, лабораторные атомарные результаты, основные показатели состояния организма, рост, вес, статус курильщика, комментарии и т. п. Для обеспечения контекста наблюдений используются другие ресурсы, например лабораторные отчеты и др<!-- Used for simple observations such as device measurements, laboratory atomic results, vital signs, height, weight, smoking status, comments, etc.  Other resources are used to provide context for observations such as lab reports, etc -->.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Используется для таких простых наблюдений, как измерения устройств, лабораторные атомарные результаты, основные показатели состояния организма, рост, вес, статус курильщика, комментарии и т. п. Для обеспечения контекста наблюдений используются другие ресурсы, например лабораторные отчеты и др<!-- Used for simple observations such as device measurements, laboratory atomic results, vital signs, height, weight, smoking status, comments, etc.  Other resources are used to provide context for observations such as lab reports, etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Observation[classCode=OBS, moodCode=EVN]</Data><NamedCell
@@ -1459,7 +1459,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время, когда это наблюдение было предоставлено<!-- The date and time this observation was made available --> to providers, typically after the results have been reviewed and verified.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обновляется при обновлении результата<!-- Updated when the result is updated -->.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обновляется при обновлении результата<!-- Updated when the result is updated --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">participation[typeCode=AUT].time</Data><NamedCell
@@ -7011,7 +7011,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s150"><Data ss:Type="String">ObservationMethod</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Методы простых наблюдений<!-- Methods for simple observations -->.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Методы простых наблюдений<!-- Methods for simple observations --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-observation-methods</Data></Cell>
@@ -7056,7 +7056,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s87"><Data ss:Type="String">ObservationInterpretation</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды интерпретаций наблюдений <!-- Codes identifying interpretations of observations -->.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды интерпретаций наблюдений <!-- Codes identifying interpretations of observations --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-observation-interpretation</Data></Cell>

@@ -7059,7 +7059,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventObjectType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Код типа объекта, участвующего в аудите<!-- Code for the object type involved audited -->.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код типа объекта, участвующего в аудите<!-- Code for the object type involved audited --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#object-type</Data></Cell>
@@ -7074,7 +7074,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventObjectRole</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Код роли объекта в событии<!-- Code representing the role the Object played in the event -->.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код роли объекта в событии<!-- Code representing the role the Object played in the event --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#object-role</Data></Cell>
@@ -7089,7 +7089,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventObjectLifecycle</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор стадии жизненного цикла данных этого объекта<!-- Identifier for the data life-cycle stage for the object -->.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор стадии жизненного цикла данных этого объекта<!-- Identifier for the data life-cycle stage for the object --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#object-lifecycle</Data></Cell>
@@ -7104,7 +7104,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип события<!-- Type of event -->.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип события<!-- Type of event --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-audit-event-type</Data></Cell>
@@ -7119,7 +7119,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventSubType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Подтип события<!-- Sub-type of event -->.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Подтип события<!-- Sub-type of event --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-audit-event-sub-type</Data></Cell>
@@ -7134,7 +7134,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">DICOMRoleId</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Роли пользователя (из RBAC)<!-- Role(s) the user plays (from RBAC) -->.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Роли пользователя (из RBAC)<!-- Role(s) the user plays (from RBAC) --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-dicm-402-roleid</Data></Cell>
@@ -7164,7 +7164,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventSourceType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, указывающий тип системы, которая обнаружила и записала это событие<!-- Code specifying the type of system that detected and recorded the event -->.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, указывающий тип системы, которая обнаружила и записала это событие<!-- Code specifying the type of system that detected and recorded the event --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-audit-source-type</Data></Cell>
@@ -7209,7 +7209,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s95"><Data ss:Type="String">!AuditEventObjectSensitivity</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Степень конфиденциальности объекта. Может также охватывать конфиденциальность и элементарный контроль доступа (например HCS)<!-- The sensitivity of an object. May also encompass confidentiality and rudimentary access control (e.g. HCS) -->.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Степень конфиденциальности объекта. Может также охватывать конфиденциальность и элементарный контроль доступа (например HCS)<!-- The sensitivity of an object. May also encompass confidentiality and rudimentary access control (e.g. HCS) --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-audit-event-sensitivity</Data></Cell>

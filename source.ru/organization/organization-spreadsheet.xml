@@ -997,7 +997,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Объединение в группу людей или организаций с общей целью<!-- A grouping of people or organizations with a common purpose --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Формально или неформально признанное объединение в группу людей или организаций, сформированное с целью выполнения некоторой формы коллективного действия. Включает в себя компании, учреждения, корпорации, отделы, сообщества, группы медицинской практики и т. д<!-- A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc -->.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Формально или неформально признанное объединение в группу людей или организаций, сформированное с целью выполнения некоторой формы коллективного действия. Включает в себя компании, учреждения, корпорации, отделы, сообщества, группы медицинской практики и т. д<!-- A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>

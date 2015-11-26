@@ -1002,7 +1002,7 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String"> Detailed information about conditions, problems or diagnoses</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Используйте для записи подробной информации о состояниях, проблемах или диагнозах, установленных клиницистом. Есть множество применений, включая: запись диагноза во время Encounter; заполнение списка проблем или сводного отчета, например выписного эпикриза<!-- Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary -->.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Используйте для записи подробной информации о состояниях, проблемах или диагнозах, установленных клиницистом. Есть множество применений, включая: запись диагноза во время Encounter; заполнение списка проблем или сводного отчета, например выписного эпикриза<!-- Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6271,7 +6271,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">BodySite</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes describing anatomical locations. Может включать латерализацию (указание стороны)<!-- May include laterality -->.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes describing anatomical locations. Может включать латерализацию (указание стороны)<!-- May include laterality --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s149" ss:HRef="http://hl7.org/fhir/ValueSet/body-site"><Data

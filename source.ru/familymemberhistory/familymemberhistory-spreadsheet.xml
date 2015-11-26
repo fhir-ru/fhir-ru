@@ -996,7 +996,7 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">Информация о родственниках пациента, относящаяся к пациенту<!-- Information about patient's relatives, relevant for patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Значимые события и состояния в здоровье человека, связанного с пациентом, существенные в контексте ухода за пациентом<!-- Significant health events and conditions for a person related to the patient relevant in the context of care for the patient -->.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Значимые события и состояния в здоровье человека, связанного с пациентом, существенные в контексте ухода за пациентом<!-- Significant health events and conditions for a person related to the patient relevant in the context of care for the patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6226,7 +6226,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s146"><Data ss:Type="String">FamilialRelationship</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Характер родственных отношений между пациентом и родственником, описываемым в семейном анамнезе<!-- The nature of the relationship between the patient and the related person being described in the family member history -->.</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Характер родственных отношений между пациентом и родственником, описываемым в семейном анамнезе<!-- The nature of the relationship between the patient and the related person being described in the family member history --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-FamilyMember</Data></Cell>

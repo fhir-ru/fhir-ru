@@ -6247,7 +6247,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">DocumentC80Class</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Высокоуровневая классификация клинического документа на макроуровне<!-- High-level kind of a clinical document at a macro level -->.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Высокоуровневая классификация клинического документа на макроуровне<!-- High-level kind of a clinical document at a macro level --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell><Data ss:Type="String">example</Data></Cell>
@@ -6296,7 +6296,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">DocumentRelationshipType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип взаимосвязи между документами<!-- The type of relationship between documents -->.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип взаимосвязи между документами<!-- The type of relationship between documents --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell><Data ss:Type="String">Required</Data></Cell>
@@ -6328,7 +6328,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">DocumentFormat</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Код формата документа<!-- Document Format Codes -->.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код формата документа<!-- Document Format Codes --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell><Data ss:Type="String">Preferred</Data></Cell>

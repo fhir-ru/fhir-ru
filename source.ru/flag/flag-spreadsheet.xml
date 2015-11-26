@@ -992,7 +992,7 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">Ключевая информация для оповещения поставщиков медицинских услуг<!-- Key information to flag to healthcare providers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Будущие предупреждения о потенциальных проблемах при предоставлении лечения пациенту<!-- Prospective warnings of potential issues when providing care to the patient -->.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Будущие предупреждения о потенциальных проблемах при предоставлении лечения пациенту<!-- Prospective warnings of potential issues when providing care to the patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6270,7 +6270,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s146"><Data ss:Type="String">FlagStatus</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Указывает, является ли этот флаг активным, и нужно ли его отображать пользователю, или он больше не нужен, или введен по ошибке<!-- Indicates whether this flag is active and needs to be displayed to a user, or whether it is no longer needed or entered in error -->.</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Указывает, является ли этот флаг активным, и нужно ли его отображать пользователю, или он больше не нужен, или введен по ошибке<!-- Indicates whether this flag is active and needs to be displayed to a user, or whether it is no longer needed or entered in error --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">#flag-status</Data></Cell>

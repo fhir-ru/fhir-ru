@@ -6284,7 +6284,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s93"><Data ss:Type="String">CompositionAttestationMode</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Способ, которым некоторое лицо заверило композицию<!-- The way in which a person authenticated a composition -->.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Способ, которым некоторое лицо заверило композицию<!-- The way in which a person authenticated a composition --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s119"/>
@@ -6300,7 +6300,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s93"><Data ss:Type="String">DocumentType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип композиции<!-- Type of a composition -->.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип композиции<!-- Type of a composition --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s119"/>
@@ -6316,7 +6316,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s93"><Data ss:Type="String">DocumentConfidentiality</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды, указывающие уровень конфиденциальности композиции<!-- Codes specifying the level of confidentiality of the composition -->.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды, указывающие уровень конфиденциальности композиции<!-- Codes specifying the level of confidentiality of the composition --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s119"/>
@@ -6332,7 +6332,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s93"><Data ss:Type="String">CompositionStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Клинический статус/статус рабочего процесса композиции<!-- The workflow/clinical status of the composition -->.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Клинический статус/статус рабочего процесса композиции<!-- The workflow/clinical status of the composition --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s119"/>
@@ -6348,7 +6348,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s93"><Data ss:Type="String">DocumentEventType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень кодов основных клинических актов, которые документируются<!-- This list of codes represents the main clinical acts being documented -->.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень кодов основных клинических актов, которые документируются<!-- This list of codes represents the main clinical acts being documented --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s119"/>

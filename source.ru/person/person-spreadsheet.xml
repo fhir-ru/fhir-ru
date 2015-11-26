@@ -985,7 +985,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Запись общего вида о человеке<!-- A generic person record --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Демографическая и административная информация о человеке независимо от конкретного контекста, связанного со здравоохранением<!-- Demographics and administrative information about a person independent of a specific health-related context -->.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Демографическая и административная информация о человеке независимо от конкретного контекста, связанного со здравоохранением<!-- Demographics and administrative information about a person independent of a specific health-related context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Необходимо отслеживать людей, возможно в разных ролях<!-- Need to track persons potentially across multiple roles --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6142,7 +6142,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s146"><Data ss:Type="String">IdentityAssuranceLevel</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Уровень уверенности, что эта ссылка ведет на того же самого реального человека, в зависимости от уровня NIST аутентификации<!-- The level of confidence that this link represents the same actual person, based on NIST Authentication Levels -->.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уровень уверенности, что эта ссылка ведет на того же самого реального человека, в зависимости от уровня NIST аутентификации<!-- The level of confidence that this link represents the same actual person, based on NIST Authentication Levels --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#identity-assuranceLevel</Data></Cell>

@@ -6444,7 +6444,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ParticipantStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус участия в условленной встрече<!-- The Participation status of an appointment -->.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус участия в условленной встрече<!-- The Participation status of an appointment --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#participantstatus</Data></Cell>

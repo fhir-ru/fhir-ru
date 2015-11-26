@@ -984,7 +984,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Критерии подписки на доставку данных сервером (методом push)<!-- A server push subscription criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс subscription (подписка) используется для определения подписки на основе метода push с сервера в другую систему. После регистрации подписки на сервере, сервер проверяет каждый ресурс, который создается или обновляется, и если ресурс соответствует заданным критериям, то он посылает сообщение в определенный &quot;канал&quot;, чтобы другая система могла выполнить надлежащее действие<!-- The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined &quot;channel&quot; so that another system is able to take an appropriate action -->.</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс subscription (подписка) используется для определения подписки на основе метода push с сервера в другую систему. После регистрации подписки на сервере, сервер проверяет каждый ресурс, который создается или обновляется, и если ресурс соответствует заданным критериям, то он посылает сообщение в определенный &quot;канал&quot;, чтобы другая система могла выполнить надлежащее действие<!-- The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined &quot;channel&quot; so that another system is able to take an appropriate action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6121,7 +6121,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">SubscriptionChannelType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Тип метода, используемого для осуществления подписки<!-- The type of method used to execute a subscription -->.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Тип метода, используемого для осуществления подписки<!-- The type of method used to execute a subscription --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#subscription-channel-type</Data></Cell>
@@ -6136,7 +6136,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">SubscriptionStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус подписки<!-- The status of a subscription -->.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус подписки<!-- The status of a subscription --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#subscription-status</Data></Cell>
