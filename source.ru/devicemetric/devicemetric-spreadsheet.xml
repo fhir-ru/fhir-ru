@@ -442,8 +442,8 @@
     <Cell ss:StyleID="s72"/>
     <Cell><Data ss:Type="String">DomainResource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">administrative.device</Data></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">Измерение, вычисление или возможная настройка медицинского изделия<!-- Measurement, calculation or setting capability of a medical device --></Data></Cell>
-    <Cell><Data ss:Type="String">Describes a Измерение, вычисление или возможная настройка медицинского изделия<!-- Measurement, calculation or setting capability of a medical device -->.</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Measurement, calculation or setting capability of a medical device</Data></Cell>
+    <Cell><Data ss:Type="String">Describes a measurement, calculation or setting capability of a medical device.</Data></Cell>
     <Cell ss:Index="12" ss:StyleID="s74"><Data ss:Type="String">For the initial scope, this DeviceMetric resource is only applicable to describe a single metric node in the containment tree that is produced by the context scanner in any medical device that implements or derives from the ISO/IEEE 11073 standard.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -511,7 +511,7 @@
     <Cell><Data ss:Type="String">DeviceMetricCategory</Data></Cell>
     <Cell><Data ss:Type="String">class</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">measurement | setting | calculation | unspecified</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Обозначает категорию процесса генерации наблюдения. DeviceMetric может быть, к примеру, настройкой, измерением или вычислением.<!-- Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation.  --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Indicates the category of the observation generation process. A DeviceMetric can be for example a setting, measurement, or calculation. </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="33.75" ss:StyleID="s75">
     <Cell ss:StyleID="s77"><Data ss:Type="String">DeviceMetric.measurementPeriod</Data></Cell>

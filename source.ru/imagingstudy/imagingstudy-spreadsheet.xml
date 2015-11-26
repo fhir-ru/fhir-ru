@@ -1031,7 +1031,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">Серия изображений, созданных в одном исследовании (одна или несколько серий изображений)<!-- A set of images produced in single study (one or more series of references images) --></Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">A set of images produced in single study (one or more series of references images)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">Representation of the content produced in a DICOM imaging study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context.  A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1069,7 +1069,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Время начала исследования<!-- When the study was started --> </Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">When the study was started </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">Date and Time the study started</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1107,7 +1107,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Who the images are of </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Пациент, для которого выполнялась визуализация в этом исследовании.<!-- The patient imaged in the study. --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">The patient imaged in the study.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1143,9 +1143,9 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Формальный идентификатор исследования<!-- Formal identifier for the study --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Formal identifier for the study</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Формальный идентификатор исследования<!-- Formal identifier for the study --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Formal identifier for the study</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1217,9 +1217,9 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Другие идентификаторы исследования<!-- Other identifiers for the study --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Other identifiers for the study</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Другие идентификаторы исследования<!-- Other identifiers for the study --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Other identifiers for the study</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1251,9 +1251,9 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Заказ(ы), которые привели к выполнению этого исследования<!-- Order(s) that caused this study to be performed --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Order(s) that caused this study to be performed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Список заказов на диагностику, которые привели к выполнению данного визуализирующего исследования<!-- A list of the diagnostic orders that resulted in this imaging study being performed --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">A list of the diagnostic orders that resulted in this imaging study being performed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><Data ss:Type="String">To support grouped procedures (one imaging study supporting multiple ordered procedures, e.g. chest/abdomen/pelvis CT)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1290,7 +1290,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">All series modality if actual acquisition modalities</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Список всех значений Series.ImageModality, которые являются фактическими модальностями получения, т. е. те, что в контекстной группе 29 DICOM (набор значений OID 1.2.840.10008.6.1.19)<!-- A list of all the Series.ImageModality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19) --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">A list of all the Series.ImageModality values that are actual acquisition modalities, i.e. those in the DICOM Context Group 29 (value set OID 1.2.840.10008.6.1.19)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1324,9 +1324,9 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Направляющий врач (0008,0090)<!-- Referring physician (0008,0090) --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Referring physician (0008,0090)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Запрашивающий/направляющий врач<!-- The requesting/referring physician --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">The requesting/referring physician</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1363,7 +1363,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">ONLINE | OFFLINE | NEARLINE | UNAVAILABLE (0008,0056)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Доступность исследования (онлайн, офлайн или полуоперативная)<!-- Availability of study (online, offline or nearline) --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Availability of study (online, offline or nearline)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1398,7 +1398,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Retrieve URI</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Ресурс WADO-RS, в котором доступно это исследование.<!-- WADO-RS resource where Study is available. --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">WADO-RS resource where Study is available.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1433,7 +1433,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Number of Study Related Series</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Количество серий в исследовании<!-- Number of Series in Study --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Number of Series in Study</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1468,7 +1468,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Number of Study Related Instances</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Количество SOP-экземпляров в исследовании<!-- Number of SOP Instances in Study --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Number of SOP Instances in Study</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1537,9 +1537,9 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Тип выполненной процедуры<!-- Type of procedure performed --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Type of procedure performed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Тип выполненной процедуры<!-- Type of procedure performed --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Type of procedure performed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">For the Procedure.code, LOINC radiology orderables would be a good value set to use</Data><NamedCell
@@ -1611,7 +1611,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Institution-generated description</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Установленное в учреждении описание или классификация выполненного исследования<!-- Institution-generated description or classification of the Study performed --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Institution-generated description or classification of the Study performed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1642,7 +1642,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Каждое исследование содержит одну или больше серий экземпляров<!-- Each study has one or more series of instances --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Each study has one or more series of instances</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">Each study has one or more series of images or other content </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1680,7 +1680,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Numeric identifier of this series</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Числовой идентификатор этой серии в исследовании.<!-- The Numeric identifier of this series in the study. --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">The Numeric identifier of this series in the study.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1716,7 +1716,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">The modality of the instances in the series</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Модальность последовательности этой серии<!-- The modality of this series sequence --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">The modality of this series sequence</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1750,9 +1750,9 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Формальный идентификатор для этой серии<!-- Formal identifier for this series --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Formal identifier for this series</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Формальный идентификатор для этой серии<!-- Formal identifier for this series --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Formal identifier for this series</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1786,9 +1786,9 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Описание серии<!-- A description of the series --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">A description of the series</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Описание серии<!-- A description of the series --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">A description of the series</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1823,7 +1823,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Number of Series Related Instances</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Количество экземпляров SOP в серии.<!-- Number of SOP Instances in Series. --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Number of SOP Instances in Series.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1989,7 +1989,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">ONLINE | OFFLINE | NEARLINE | UNAVAILABLE</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Доступность серии (онлайн, офлайн или полуоперативная)<!-- Availability of series (online, offline or nearline) --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Availability of series (online, offline or nearline)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2126,7 +2126,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Body part examined</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Часть тела, которая исследовалась. См. информацию по маппингу DICOM на Snomed в DICOM часть 16 приложение L<!-- Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed --> CT</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed CT</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2159,7 +2159,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Латеральность части тела<!-- Body part laterality --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Body part laterality</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">Laterality if body site is paired anatomic structure and laterality is not pre-coordinated in body site code.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2192,7 +2192,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Когда началась серия<!-- When the series started --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">When the series started</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">The date and time the series was started.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2298,7 +2298,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Formal identifier for this instance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Формальный идентификатор этого изображения<!-- Formal identifier for this image --> or other content</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Formal identifier for this image or other content</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2368,7 +2368,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Type of instance (image etc.)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Понятное человеку название класса SOP<!-- A human-friendly SOP Class name --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">A human-friendly SOP Class name</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">E.g. 'CT image', 'MR multi-frame', 'blending presentation'.</Data><NamedCell
@@ -2403,10 +2403,10 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Description of instance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Описание экземпляра<!-- The description of the instance --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">The description of the instance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">В частности, для post-acquisition аналитических объектов, таких как SR, состояний презентации, маппинга значений и т. д.<!-- Particularly for post-acquisition analytic objects, such as SR, presentation states, value mapping, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Particularly for post-acquisition analytic objects, such as SR, presentation states, value mapping, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">.title</Data><NamedCell
@@ -2440,7 +2440,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">ONLINE | OFFLINE | NEARLINE | UNAVAILABLE</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Доступность экземпляра (онлайн, офлайн или полуоперативная)<!-- Availability of instance (online, offline or nearline) --></Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Availability of instance (online, offline or nearline)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2471,7 +2471,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Когда было получено это изображение<!-- When this image was taken --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">When this image was taken</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2502,7 +2502,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Если экземпляром является изображение<!-- When instance is an image --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">When instance is an image</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2515,7 +2515,7 @@
     <Cell ss:StyleID="s97"><Data ss:Type="String">left</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Удалено, пока нет подходящего сценария использования<!-- This is deletd until a use case is found --></Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">This is deletd until a use case is found</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -2698,9 +2698,9 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Содержимое экземпляра<!-- Content of the instance --></Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Content of the instance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Содержимое экземпляра<!-- Content of the instance --> or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">Use of Attachment.data is discouraged.</Data><NamedCell
@@ -4705,14 +4705,14 @@
     <Cell ss:StyleID="s82"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s82"/>
     <Cell ss:StyleID="s122"><Data ss:Type="String">ImagingStudy.patient</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">Кто был субъектом исследования<!-- Who the study is about --></Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Who the study is about</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s124"><Data ss:Type="String">started</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s92"/>
     <Cell ss:StyleID="s125"><Data ss:Type="String">ImagingStudy.started</Data></Cell>
-    <Cell ss:StyleID="s126"><Data ss:Type="String">Время начала исследования<!-- When the study was started --></Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">When the study was started</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s124"><Data ss:Type="String">accession</Data></Cell>
@@ -4768,7 +4768,7 @@
     <Cell ss:StyleID="s92"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s92"/>
     <Cell ss:StyleID="s125"><Data ss:Type="String">ImagingStudy.order</Data></Cell>
-    <Cell ss:StyleID="s126"><Data ss:Type="String">Порядок изображения<!-- The order for the image --></Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">The order for the image</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s124"/>
@@ -6670,7 +6670,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell ss:StyleID="s153"><Data ss:Type="String">InstanceAvailability</Data></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Доступность ресурса<!-- Availability of the resource --></Data></Cell>
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Availability of the resource</Data></Cell>
     <Cell ss:StyleID="s125"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s122"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s125"><Data ss:Type="String">#instance-availability</Data></Cell>
