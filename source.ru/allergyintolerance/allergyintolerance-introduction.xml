@@ -1,119 +1,154 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 	<div>
 		<a name="scope"> </a>
-		<h2>Scope and Usage</h2>
+		<h2>Область применения и использование</h2>
 		<p>
+Запись клинической оценки аллергии или непереносимости; предрасположенность или потенциальный риск того, что у человека проявится нежелательная побочная реакция на воздействие указанного вещества или класса веществ в будущем.
+<!-- 
 A record of a clinical assessment of an allergy or intolerance; a propensity, or a potential risk 
 to an individual, to have an adverse reaction on future exposure to the specified substance, or class 
-of substance. 
+of substance. -->
 </p>
 		<p>
+При установлении предрасположенности, производится запись о случае реакции, которая характеризуется как любая вредная или нежелательная физиологическая реакция, присущая конкретному человеку и вызываемая воздействием на человека определенного вещества или класса веществ. 
+<!-- 
 Where a propensity is identified, to record information or evidence about a reaction event 
 that is characterized by any harmful or undesirable physiological response that is specific 
 to the individual and triggered by exposure of an individual to the identified substance 
-or class of substance.
+or class of substance. -->
 </p>
 		<p>
+Веществами, несущими потенциальный риск возникновения нежелательной реакции могут выступить: терапевтические вещества, корректно введенные человеку в подходящей дозировке; пища; материалы растительного или животного происхождения; яд от укусов насекомых. Представленный список веществ не является исчерпывающим.
+<!-- 
 Substances include, but are not limited to: a therapeutic substance administered correctly 
 at an appropriate dosage for the individual; food; material derived from plants or animals; 
-or venom from insect stings.
+or venom from insect stings. -->
 </p>
 		<p>
-			<b>Note for Reviewers</b>
+			<b>Примечание для рецензентов</b>
 		</p>
 		<p>
-Presently open issues for this resource:
+Открытые на текущий момент вопросы для этого ресурса:
+<!-- Presently open issues for this resource: -->
 </p>
 		<ul>
-			<li>This resource represents a condition of susceptibility to a substance, with a list of supporting events and/or symptoms,
-   and has no direct relationship to an event reporting framework; this will be re-assessed when adverse event reporting resource(s) and/or profiles are added to FHIR (not expected to happen prior to DSTU 2)
+			<li>Этот ресурс показывает состояние восприимчивости к веществу и список подтверждающих его событий и/или симптомов и не имеет прямого отношения к фреймворку оповещения о событиях; он будет подвергнут пересмотру, когда в FHIR будут добавлены ресурсы и/или профили по оповещению о неблагоприятных событиях (ожидается после DSTU 2).
+<!-- This resource represents a condition of susceptibility to a substance, with a list of supporting events and/or symptoms,
+   and has no direct relationship to an event reporting framework; this will be re-assessed when adverse event reporting resource(s) and/or profiles are added to FHIR (not expected to happen prior to DSTU 2) -->
  </li>
-			<li>Other HL7 models and the openEHR archetype have "exposure date" but this is not found in any surveyed systems, so this is left as an extension (more appropriate for adverse event reporting)</li>
+			<li>В других моделях HL7 и архетипе openEHR имеется "exposure date" (дата воздействия), но она не была найдена ни в каких опрошенных системах, поэтому была оставлена в качестве расширения (больше подходит для оповещений о неблагоприятных событиях).
+ <!-- Other HL7 models and the openEHR archetype have "exposure date" but this is not found in any surveyed systems, so this is left as an extension (more appropriate for adverse event reporting) --></li>
 		</ul>
 	</div>
 	<div>
 		<a name="bnr"> </a>
-		<h2>Boundaries and Relationships</h2>
+		<h2>Границы и связи</h2>
 		<p>
-This resource is used to provide a single place within the health record to document a range of clinical statements about adverse reactions, including:
+Этот ресурс используется для обеспечения единого места в медицинской карте для документирования клинических заявлений о нежелательных побочных реакциях, в том числе:
+<!-- This resource is used to provide a single place within the health record to document a range of clinical statements about adverse reactions, including: -->
 </p>
 		<ul>
-			<li>record a clinical assessment of the individual's propensity to a potential future reaction upon re-exposure</li>
-			<li>record cumulative information about the reaction to each exposure, including 'no reaction' if appropriate</li>
+			<li>запись клинической оценки предрасположенности человека к потенциальной реакции при повторном воздействии
+<!-- record a clinical assessment of the individual's propensity to a potential future reaction upon re-exposure --></li>
+			<li>запись совокупной информации о реакции организма на каждое воздействие, в том числе отметки "реакция отсутствует" при необходимости
+<!-- record cumulative information about the reaction to each exposure, including 'no reaction' if appropriate --></li>
 		</ul>
 		<p>
-Use to record information about the positive presence of the risk of an adverse reaction:
+Используйте ресурс для записи информации о наличии риска неблагоприятной побочной реакции: -->
+<!-- Use to record information about the positive presence of the risk of an adverse reaction:
 </p>
 		<ul>
-			<li>to support direct clinical care of an individual</li>
+<li>для содействия персоналу при прямом медицинском уходе за человеком</li>
+<li>в рамках администрирования списка нежелательных побочных реакций или аллергий/непереносимостей</li>
+<li>для поддержки обмена информацией о предрасположенности и событий, связанных с нежелательными побочными реакциями</li>
+<li>для оповещения о нежелательной побочной реакции</li>
+<li>для содействия компьютеризированной поддержки клинических решений и оповещений</li>
+<!-- <li>to support direct clinical care of an individual</li>
 			<li>as part of a managed adverse reaction or allergy/intolerance list</li>
 			<li>to support exchange of information about the propensity and events related to adverse reactions</li>
 			<li>to inform adverse reaction reporting</li>
-			<li>to assist computerized knowledge-based activities such as clinical decision support and alerts</li>
+			<li>to assist computerized knowledge-based activities such as clinical decision support and alerts</li> -->
 		</ul>
 		<p>
-Use to record information about adverse reactions to a broad range of substances, including: biological 
-&amp; blood products; incipients and excipients in medicinal preparations; foods; metal salts; and organic chemical compounds.  
+Используйте ресурс для записи информации о нежелательных побочных реакциях на широкий круг веществ, в том числе: биологические продукты и продукты крови; инсипиенты и наполнители в лекарственных препаратах; пищевые продукты; соли металлов; органические химические соединения.
+<!-- Use to record information about adverse reactions to a broad range of substances, including: biological 
+&amp; blood products; incipients and excipients in medicinal preparations; foods; metal salts; and organic chemical compounds.   -->
 </p>
 		<p>
-Adverse reactions may be:
+Нежелательные побочные реакции могут быть следующих типов:
+<!-- Adverse reactions may be: -->
 </p>
 		<ul>
-			<li>an allergy (typically type I hypersensitivity, plus other "allergy-like" reactions, including pseudoallergy)</li>
-			<li>an intolerance (typically non-immune adverse reactions that are not determined or perceived to be allergic or "allergy-like", and are to some degree idiosyncratic and/or individually specific [i.e. are not a reaction that is expected to occur with most or all patients given similar circumstances])</li>
+			<li>аллергия (как правило, гиперчувствительность I типа, а также другие аллерго-подобные реакции, включая псевдоаллергические)<!-- an allergy (typically type I hypersensitivity, plus other "allergy-like" reactions, including pseudoallergy) --></li>
+			<li>непереносимость (как правило, неиммунные нежелательные побочные реакции, которые не определены или не воспринимаются как аллергические или аллерго-подобные, и являются в некоторой степени идиосинкразическими и/или индивидуальными [т. е. не являются реакцией, которая ожидается у большинства или всех пациентов в аналогичных обстоятельствах])
+<!-- an intolerance (typically non-immune adverse reactions that are not determined or perceived to be allergic or "allergy-like", and are to some degree idiosyncratic and/or individually specific [i.e. are not a reaction that is expected to occur with most or all patients given similar circumstances]) --></li>
 		</ul>
 		<p>
-In clinical practice distinguishing between allergy and intolerance is difficult and may not be practical. Often the term "allergy" is used rather generically and may overlap with "intolerance", and the boundaries between these concepts may not be well-defined or understood. As noted above, the term "intolerance" should generally be applied to a propensity for adverse reactions which is either determined (to the extent that is possible) or perceived to not be allergic or "allergy-like".  If it is not possible to determine whether a particular propensity condition is an allergy or an intolerance, then the type element should be omitted from the resource.  Identification of the type of reaction is not a proxy for seriousness or risk of harm to the patient, which is better expressed in the documentation of the clinical manifestation and the assessment of criticality.</p>
+В клинической практике аллергию и непереносимость различать трудно и часто не практично. Часто термин "аллергия" используется достаточно в общем и может заменять "непереносимость", и границы между этими понятиями могут быть определены нечетко или пониматься неправильно. Как уже было упомянуто выше, термин "непереносимость" следует относить к предрасположенности к нежелательным побочным реакциям, что либо определено (до того, что это возможно) или воспринимается не как аллергическая или аллерго-подобная. Если невозможно установить, является ли конкретное условие предрасположенности аллергией или непереносимостью, тогда элемент "type" в ресурсе следует опустить. Тип реакции не определяет серьезность причинённого пациенту ущерба или степень риска, которые лучше выражаются в документации клинического проявления и оценке критичности.
+<!-- In clinical practice distinguishing between allergy and intolerance is difficult and may not be practical. Often the term "allergy" is used rather generically and may overlap with "intolerance", and the boundaries between these concepts may not be well-defined or understood. As noted above, the term "intolerance" should generally be applied to a propensity for adverse reactions which is either determined (to the extent that is possible) or perceived to not be allergic or "allergy-like".  If it is not possible to determine whether a particular propensity condition is an allergy or an intolerance, then the type element should be omitted from the resource.  Identification of the type of reaction is not a proxy for seriousness or risk of harm to the patient, which is better expressed in the documentation of the clinical manifestation and the assessment of criticality. --></p>
 		<p>
-The sensitivity in the case of either an allergy or intolerance is unique to the individual, and is distinguished from those reactions that are a property of the circumstance, such as toxicity of a food or drug, overdose, drug-drug, drug-food, or drug-disease interaction (which are reactions that would be expected to occur for any individual given the same circumstances). </p>
+Чувствительность, как в случае с аллергией, так и с непереносимостью, является уникальной для индивидуума и отличается от тех реакций, которые являются свойством обстоятельства, напирмер токсичность пищевого продукта или лекарства, передозировка, взаимодействие лекарств, лекарств и пищевых продуктов или лекарств и заболеваний (которые являются реакциями, появление которых в таких же обстоятельствах ожидаемо для любого индивидуума).<!-- The sensitivity in the case of either an allergy or intolerance is unique to the individual, and is distinguished from those reactions that are a property of the circumstance, such as toxicity of a food or drug, overdose, drug-drug, drug-food, or drug-disease interaction (which are reactions that would be expected to occur for any individual given the same circumstances).  --></p>
 		<p>
-The risk of an adverse reaction event or manifestation should not be recorded without identifying a proposed causative 
+Риск неблагоприятной побочной реакции или проявления не следует записывать без идентификации предполагаемого причинного вещества или класса веществ. В случае неопределенности какое конкретно вещество стало причиной, эта неопределенность может быть записана с помощью элемента данных "status". Если есть несколько возможных веществ, которые, возможно, вызвали реакцию/проявление, каждое вещество должно быть записано с помощью отдельного экземпляра этого ресурса с элементом "status" установленным в значение "unconfirmed" "не подтверждено", с тем чтобы можно было поддержать проверку неблагоприятной побочной реакции в клинических системах.
+Если позже будет установлено, что это вещество, агент или класс не является причиной данной реакции, то значение элемента "status" можно изменить на "refuted" ("опровергнуто").
+<!-- The risk of an adverse reaction event or manifestation should not be recorded without identifying a proposed causative 
 substance or class of substance. If there is uncertainty that a specific substance is the cause, this uncertainty can be 
 recorded using the 'status' data element. If there are multiple possible substances that may have caused a reaction/manifestation, 
 each substance should be recorded using a separate instance of this resource with the 
 'status' set to an initial state of 'unconfirmed' so that adverse reaction checking can be supported in clinical systems. 
 If a substance, agent or class is later proven not to be the cause for a given reaction then the 'status' can be modified 
-to 'refuted'.
+to 'refuted'. -->
 </p>
 		<p>
+Этот ресурс был разработан для записи информации о конкретном веществе (например амоксициллин, устрицы или яд жала пчелы) или о классе вещества (например пенициллины)). Если записывается только класс вещества, то идентификация точного вещества может быть записана на основании воздействия.
+<!-- 
 This resource has been designed to allow recording of information about a specific substance (e.g., amoxicillin, 
 oysters, or bee sting venom) or, alternatively, a class of substance (e.g., penicillins). If a class of substance is recorded, 
-then identification of the exact substance can be recorded on a per exposure basis.
+then identification of the exact substance can be recorded on a per exposure basis. -->
 </p>
 		<p>
-The scope of this FHIR resource has deliberately focused on identifying a pragmatic data set that are used in 
+Предметная область этого FHIR-ресурса сознательно направлена на выявление прагматического набора данных, которые используются в большинстве клинических систем или будут пригодны для наиболее распространенных клинических сценариев; при необходимости указания дополнительных деталей <a href="extensibility.html">можно использовать расширения</a>. Примеры клинических ситуаций, при которых могут потребоваться расширения: подробная оценка аллерголога/иммунолога, составление отчетов для регулирующих органов или для использования в клинических испытаниях.
+<!-- The scope of this FHIR resource has deliberately focused on identifying a pragmatic data set that are used in 
 most clinical systems or will be suitable for most common clinical scenarios; <a href="extensibility.html">extensions
 can be used</a> to add additional detail if required. Examples of clinical situations where the extension may 
 be required include: a detailed allergist/immunologist assessment, for reporting to regulatory bodies or use 
-in a clinical trial.
+in a clinical trial. -->
 </p>
 		<p>
-The act of recording any adverse reaction in a health record involves the clinical assessment that a potential hazard 
+Акт записи любой нежелательной побочной реакции в медицинскую карту включает в себя указание на то, что для человека существует потенциальная опасность, если он подвергнется воздействию того же самого вещества /агента/класса веществ в будущем - то есть относительное противопоказание - и, при отсутствии дополнительной информации, указывающей более высокий уровень потенциального риска, значение элемента "criticality" ("критичность") по умолчанию должно быть установлено в "Low Risk" ("низкий риск"). Если врач считает, что для человека будет небезопасно  преднамеренно подвергнуться воздействию этого вещества/агента снова, например если за этим последует проявление опасной для жизни анафилаксии, то элемент данных 'criticality' следует изменить на  'High Risk' ("высокий риск").
+<!-- The act of recording any adverse reaction in a health record involves the clinical assessment that a potential hazard 
 exists for an individual if they are exposed to the same substance/agent/class in the future - that is, a relative 
-contraindication - and, in the absence of additional information indicating a higher level of potential risk, the default 'criticality' value should be set to 'Low Risk'. If a clinician considers that it is not safe for the individual to be deliberately re-exposed to the substance/agent again, for example, following a manifestation of a life-threatening anaphylaxis, then the 'criticality' data element should be amended to 'High Risk'. 
+contraindication - and, in the absence of additional information indicating a higher level of potential risk, the default 'criticality' value should be set to 'Low Risk'. If a clinician considers that it is not safe for the individual to be deliberately re-exposed to the substance/agent again, for example, following a manifestation of a life-threatening anaphylaxis, then the 'criticality' data element should be amended to 'High Risk'. --> 
 </p>
 		<p>
-A formal adverse event report to regulatory bodies is a document that will contain a broad range of information in 
+Официальный отчет о неблагоприятных событиях в регулирующие органы - это документ, который будет содержать широкий диапазон информации в дополнение к конкретным подробностям нежелательной побочной реакции. Такой отчет может частично использовать этот ресурс, наряду с дополнительными данными, согласно требованиям юрисдикции.
+<!-- A formal adverse event report to regulatory bodies is a document that will contain a broad range of information in 
 addition to the specific details about the adverse reaction. The report could utilize parts of this resource plus 
-include additional data as required per jurisdiction.
+include additional data as required per jurisdiction. -->
 </p>
 		<p>
-An adverse reaction or allergy/intolerance list is a record of all identified propensities for an adverse reaction 
+Список нежелательных побочных реакций или аллергий/непереносимостей - это запись всех выявленных предрасположенностей к нежелательной побочной реакции для человека на воздействие вещества или класса веществ, который также обеспечивает потенциальный доступ к подробной информации о каждом случае проявления такой реакции.
+<!-- An adverse reaction or allergy/intolerance list is a record of all identified propensities for an adverse reaction 
 for the individual upon future exposure to the substance or class, plus provides potential access to the evidence 
-provided by details about each reaction event, such as manifestation.
+provided by details about each reaction event, such as manifestation. -->
 </p>
 		<p>
-Valuable first-level information that could be presented to the clinician when they need to assess propensity for 
-future reactions are:
+Ценная информация первого уровня значимости, которая может быть представлена врачу при необходимости оценить предрасположенность к реакциям в будущем:
+<!-- Valuable first-level information that could be presented to the clinician when they need to assess propensity for 
+future reactions are: -->
 </p>
 		<ul>
-			<li>statements about previous clinical manifestations following exposure</li>
+			<li>отчеты о имевших ранее место клинических проявлениях, последовавших за воздействием</li>
+			<li>источник информации</li>
+			<li>показатель 'критичности'</li>
+			<!-- <li>statements about previous clinical manifestations following exposure</li>
 			<li>source of the information/reporter</li>
-			<li>the 'criticality' flag</li>
+			<li>the 'criticality' flag</li> -->
 		</ul>
 		<p>
-Second-level information can be drawn from each exposure event and links to additional detailed information 
-such as history, examination and diagnoses stored elsewhere in the record, if it is available.
+Сведения второго уровня значимости, полученные на основе каждого случая воздействия, и ссылки на такую дополнительную информацию, как история, осмотр и диагнозы, сохраненную где-то в другом месте медицинской карты, если она доступна.
+<!-- Second-level information can be drawn from each exposure event and links to additional detailed information 
+such as history, examination and diagnoses stored elsewhere in the record, if it is available. -->
 </p>
 		<p>
 			<b>AllergyIntolerance and RiskAssessment</b>
@@ -130,25 +165,25 @@ general risks to a subject, not generally based on a reaction.
 <a href="allergyintolerance.html">AllergyIntolerance</a> record should be created to indicate it, as most systems will not query against past Immunization.reaction.
 </p>
 		<p>
-			<b>Misuse</b>
+			<b>Неправильное использование<!-- Misuse --></b>
 		</p>
 		<ul>
-			<li>The allergy/intolerance list exists as a patient safety tool to inform decision support around ordering of 
+			<li>Список аллергий/непереносимостей служит инструментом безопасности паиента при поддержке принятия решений при заказе лекарственных средств и питания и назначении клинического лечения. Остальные реакции, вызываемые физическими раздражителями - свет, тепло, холод, давление, вибрации, которые могут имитировать аллергические реакции и непереносимости, следут записывать с помощью ресурса <a href="condition.html">Condition</a> в списке проблем, а не использовать для этого AllergyIntolerance.<!-- The allergy/intolerance list exists as a patient safety tool to inform decision support around ordering of 
    medications and nutrition and to guide clinical treatment.  Other reactions triggered by physical 
    stimuli -- light, heat, cold, pressure, vibration, which may mimic allergic or intolerance reactions,  
-   should be recorded as <a href="condition.html">Condition</a> on the problem list, not using AllergyIntolerance.</li>
-			<li>Not to be used to record adverse events, including failures of clinical process, interventions or products. For example, 
+   should be recorded as <a href="condition.html">Condition</a> on the problem list, not using AllergyIntolerance. --></li>
+			<li>Не использовать для записи неблагоприятных событий, в том числе сбоев клинического процесса, вмешательств или продуктов. Например: неправильное использование или ошибки/просчеты, допущенные при ошибочном назначении средств или веществ; неправильная дозировка; неправильная маркировка; вред или ущерб, вызванный вмешательством или процедурой; передозировка/отравление и т. д.<!-- Not to be used to record adverse events, including failures of clinical process, interventions or products. For example, 
    abnormal use or mistakes/errors made in maladministration of an agent or substance, incorrect dosage, mislabelling, 
-   harm or injury caused by an intervention or procedure, overdose/poisoning, etc.</li>
-			<li>Not to be used as a proxy for an adverse event report. See above for how it may be used as one component of an adverse event report</li>
-			<li>Not to be used for recording alerts. Alerts are handled using <a href="flag.html">Flag</a> or - where event-specific, <a href="detectedissue.html">DetectedIssue</a>
-			</li>
-			<li>Not to be used for recording failed therapy</li>
+   harm or injury caused by an intervention or procedure, overdose/poisoning, etc. --></li>
+			<li>Не следует использовать в качестве системы отчётов о нежелательных явлениях. См. выше информацию о том, как его можно использовать в качестве одного из компонентов системы отчётов о нежелательных явлениях<!-- Not to be used as a proxy for an adverse event report. See above for how it may be used as one component of an adverse event report --></li>
+			<li>Не использовать для записи оповещений. Оповещения обрабатываются с помощью <a href="flag.html">Flag</a> или, в зависимости от случая, <a href="detectedissue.html">DetectedIssue</a><!-- Not to be used for recording alerts. Alerts are handled using <a href="flag.html">Flag</a> or - where event-specific, <a href="detectedissue.html">DetectedIssue</a>
+		 	--></li>
+			<li>Не использовать для записи неудавшегося лечения<!-- Not to be used for recording failed therapy --></li>
 		</ul>
 	</div>
 	<!-- (optional):
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст</h2>
 <p>
 Provides additional detail on exactly how the resource is to be used
 </p>
