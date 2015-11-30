@@ -1,13 +1,13 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h3>Отрицание аллергий и непереносимостей<!-- Negated Allergies and Intolerances --></h3>
+<h3>Отрицание наличия аллергий и непереносимостей<!-- Negated Allergies and Intolerances --></h3>
 
-<p>Важно различать утвердительное заявление о том, что у пациента нет известных аллергий, от невключения аллергий в медкарту (например эпизодический документ, где аллергии не считаются относящимися к этому документу) или утверждения о том, что аллергии не были проверены и не известны.
+<p>Важно различать утвердительное заявление о том, что у пациента нет известных аллергий, от невключения аллергий в медкарту (например эпизодический документ, где аллергии не считаются относящимися к этому документу) и утверждения о том, что аллергии не были проверены и не известны.
 <!-- It is important to differentiate between affirmatively stating that a patient has no known allergies versus either
 not including allergies in the record (for example an episodic document where the allergies are not considered 
 relevant to the document); or asserting that allergies were not reviewed and are unknown. --></p>
 
-<p>Аллергии со статусом "введено по ошибке (entered-in-error)" считаются неактивными аллергиями.<!-- Allergies with the status "entered-in-error" are considered to be inactive allergies. --></p>
+<p>Аллергии со статусом "введено по ошибке (entered-in-error)" считаются недействующими аллергиями.<!-- Allergies with the status "entered-in-error" are considered to be inactive allergies. --></p>
 <p>Аллергии со статусом "опровергнуто (refuted)" обязательно должны отображаться для указания того, что реакция на вещество была исключена с высоким уровнем клинической уверенности (например дополнительным тестированием, повторной стимуляцией).<!-- Allergies with the status "refuted" must be displayed to indicate that a reaction to a substance has been ruled out
 with the high level of clinical certainty (e.g. additional testing, rechallenging).  --></p>
 <p>Перед тем как добавлять новую аллергию/непереносимость, следует проверить и согласовать список существующих отрицаемых или опровергнутых аллергий.<!-- Prior to adding a new allergy/intolerance, a list of existing negated and refuted reactions should be reviewed
