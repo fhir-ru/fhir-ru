@@ -54,8 +54,8 @@ or venom from insect stings. -->
 <!-- record cumulative information about the reaction to each exposure, including 'no reaction' if appropriate --></li>
 		</ul>
 		<p>
-Используйте ресурс для записи информации о наличии риска неблагоприятной побочной реакции: -->
-<!-- Use to record information about the positive presence of the risk of an adverse reaction:
+Используйте ресурс для записи информации о наличии риска неблагоприятной побочной реакции:
+<!-- Use to record information about the positive presence of the risk of an adverse reaction: -->
 </p>
 		<ul>
 <li>для содействия персоналу при прямом медицинском уходе за человеком</li>
@@ -170,7 +170,7 @@ general risks to a subject, not generally based on a reaction.
 		<ul>
 			<li>Список аллергий/непереносимостей служит инструментом безопасности паиента при поддержке принятия решений при заказе лекарственных средств и питания и назначении клинического лечения. Остальные реакции, вызываемые физическими раздражителями - свет, тепло, холод, давление, вибрации, которые могут имитировать аллергические реакции и непереносимости, следут записывать с помощью ресурса <a href="condition.html">Condition</a> в списке проблем, а не использовать для этого AllergyIntolerance.<!-- The allergy/intolerance list exists as a patient safety tool to inform decision support around ordering of 
    medications and nutrition and to guide clinical treatment.  Other reactions triggered by physical 
-   stimuli -- light, heat, cold, pressure, vibration, which may mimic allergic or intolerance reactions,  
+   stimuli - light, heat, cold, pressure, vibration, which may mimic allergic or intolerance reactions,  
    should be recorded as <a href="condition.html">Condition</a> on the problem list, not using AllergyIntolerance. --></li>
 			<li>Не использовать для записи неблагоприятных событий, в том числе сбоев клинического процесса, вмешательств или продуктов. Например: неправильное использование или ошибки/просчеты, допущенные при ошибочном назначении средств или веществ; неправильная дозировка; неправильная маркировка; вред или ущерб, вызванный вмешательством или процедурой; передозировка/отравление и т. д.<!-- Not to be used to record adverse events, including failures of clinical process, interventions or products. For example, 
    abnormal use or mistakes/errors made in maladministration of an agent or substance, incorrect dosage, mislabelling, 
