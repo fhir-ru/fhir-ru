@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
       
-[%settitle Element Definition%]
+[%settitle Определение элемента%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -16,109 +16,136 @@
 -->
 
 <%edheader base%>
-<h1>Element Definition</h1>
+<h1>Определение Элемента<!-- Element Definition --></h1>
 <table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
-The definition of an element in a resource or extension. The definition includes:
+Определение элемента в ресурсе или расширении. Определение включает в себя:
+<!-- The definition of an element in a resource or extension. The definition includes: -->
 </p>
 <ul>
- <li>Name, Cardinality, and data type</li>
+ <li>Имя, кардинальное множество, тип данных</li>
+ <li>Определения, примечания к использованию, требования</li>
+ <li>Фиксированные или значения по умолчанию</li>
+ <li>Ограничивающие условия, ограничения по длине и другие правила использования</li>
+ <li>Терминологические привязки</li>
+ <li>Таблицы соответствия с другими спецификациями</li>
+ <li>Информация об использовании структуры - <a href="profiling.html#slicing">Slicing</a></li>
+<!--  <li>Name, Cardinality, and data type</li>
  <li>Definitions, usage notes, requirements</li>
  <li>Default or fixed values</li>
  <li>Constraints, Length limits, and other usage rules</li>
  <li>Terminology Binding</li>
  <li>Mappings to other specifications</li>
- <li>Structural Usage Information such as <a href="profiling.html#slicing">Slicing</a></li>
+ <li>Structural Usage Information such as <a href="profiling.html#slicing">Slicing</a></li> -->
 </ul>
 <p>
-The ElementDefinition type is the core of the FHIR metadata layer, and is 
+Тип данных ElementDefinition является основой слоя метаданных FHIR и соответствует <a href="elementdefinition-mappings.html#iso11179">ISO 11179</a>. Ресурс <a href="dataelement.html">DataElement</a> представляет собой обёртку над типом данных ElementDefinition. Все элементы данных, определенные в данной спецификации, публикуются в виде коллекции элементов данных (<a href="dataelements.xml">XML</a> или <a href="dataelements.json">JSON</a>). 
+<!-- The ElementDefinition type is the core of the FHIR metadata layer, and is 
 closely (conceptually) aligned to <a href="elementdefinition-mappings.html#iso11179">ISO 11179</a>.
 The <a href="dataelement.html">DataElement</a> resource is a packaging wrapper around the
 ElementDefinition type. All the data elements defined in this specification are published 
-as a collection of data elements (<a href="dataelements.xml">XML</a> or <a href="dataelements.json">JSON</a>).
+as a collection of data elements (<a href="dataelements.xml">XML</a> or <a href="dataelements.json">JSON</a>). -->
 </p>
 
 
 <a name="definition"></a>
 <h2 style="margin-bottom: 1px">
-Content
+<!-- Content -->Содержимое
 </h2>
 
 [%dt ElementDefinition 1%]
 
 
 <div class="use">
-<p><b>Constraints</b></p>
+<p><b>Ограничивающие условия</b></p>
 [%dt.constraints ElementDefinition%]
 </div>
 
 <a name="interpretation"> </a>
 
-<h2>Interpretation of ElementDefinition in different contexts</h2>
+<h2>Интерпретация ElementDefinition в различных контекстах<!-- Interpretation of ElementDefinition in different contexts --></h2>
 
-<p>The data type <code>ElementDefinition</code> is used both in <a href="structuredefinition.html">StructureDefinition</a> and <a href="dataelement.html">DataElement</a>, and within those resources, the way its elements are to be used and interpreted depend on the context where <code>ElementDefinition</code> used:</p>
+<p>Тип данных <code>ElementDefinition</code> используется и в <a href="structuredefinition.html">StructureDefinition</a>, и в <a href="dataelement.html">DataElement</a>, и способы применения и интерпретации его элементов зависит от контекста, в котором используется <code>ElementDefinition</code>:
+<!-- The data type <code>ElementDefinition</code> is used both in <a href="structuredefinition.html">StructureDefinition</a> and <a href="dataelement.html">DataElement</a>, and within those resources, the way its elements are to be used and interpreted depend on the context where <code>ElementDefinition</code> used: --></p>
 
 <table class="grid">
- <tr> <td><b>ElementDefinition field</b></td> <td><b>DataElement</b></td> <td><b>Base definition, first element</b></td> <td><b>Base definition, following elements</b></td> <td><b>Constraint Definition, first element</b></td> <td><b>Constraint Definition, following elements</b></td> </tr>
- <tr> <td>name</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>optional, for profile re-use</td> </tr>
- <tr> <td>slicing</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>optional</td> </tr>
- <tr> <td>short/definition</td> <td>optional</td> <td>required</td> <td>required</td> <td>required<sup>‡</sup></td> <td>required<sup>‡</sup></td> </tr>
- <tr> <td>requirements/<br/>comments/alias</td> <td>optional</td> <td>optional</td> <td>optional</td> <td>optional<sup>‡</sup></td> <td>optional<sup>‡</sup></td> </tr>
- <tr> <td>base</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>required</td> <td>required</td> </tr>
- <tr> <td>nameReference</td> <td>prohibited</td> <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional</td> </tr>
- <tr> <td>defaultValue[x]</td> <td>optional</td> <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional<sup>†</sup></td> </tr>
- <tr> <td>meaningWhenMissing</td> <td>optional</td> <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional<sup>†</sup></td> </tr>
- <tr> <td>fixed[x]</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>optional</td> </tr>
- <tr> <td>pattern[x]</td> <td>optional</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>optional</td> </tr>
- <tr> <td>example[x]</td> <td>optional</td> <td></td> <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional</td> </tr>
- <tr> <td>minValue[x]</td> <td>optional</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>optional</td> </tr>
- <tr> <td>maxValue[x]</td> <td>optional</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>optional</td> </tr>
- <tr> <td>maxLength</td> <td>optional</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>optional</td> </tr>
- <tr> <td>mustSupport</td> <td>optional</td> <td>prohibited</td> <td>prohibited</td> <td>optional</td> <td>optional</td> </tr>
- <tr> <td>isModifier</td> <td>prohibited</td>  <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional<sup>†</sup></td> </tr>
- <tr> <td>isSummary</td> <td>prohibited</td> <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional<sup>†</sup></td> </tr>
- <tr> <td>binding</td> <td>optional</td> <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional</td> </tr>
- <tr> <td>constraint/mapping</td> <td>optional</td> <td>prohibited</td> <td>optional</td> <td>optional<sup>∆</sup></td> <td>optional<sup>∆</sup></td> </tr>
+ <tr> <td><b>Поле типа данных ElementDefinition</b></td> <td><b>DataElement</b></td> <td><b>Базовое определение, первый элемент</b></td> <td><b>Базовое определение, последующие элементы</b></td> <td><b>Определение ограничивающего условия, первый элемент</b></td> <td><b>Определение ограничивающего условия, последующие элементы</b></td> </tr>
+ <tr> <td>name</td> <td>запрещён</td> <td>запрещён</td> <td>запрещён</td> <td>запрещён</td> <td>необязательный, для повторного использования профилей</td> </tr>
+ <tr> <td>slicing</td> <td>запрещён</td> <td>запрещён</td> <td>запрещён</td> <td>запрещён</td> <td>необязательный</td> </tr>
+ <tr> <td>short/definition</td> <td>необязательный</td> <td>обязательный</td> <td>обязательный</td> <td>обязательный<sup>‡</sup></td> <td>обязательный<sup>‡</sup></td> </tr>
+ <tr> <td>requirements/<br/>comments/alias</td> <td>необязательный</td> <td>необязательный</td> <td>необязательный</td> <td>необязательный<sup>‡</sup></td> <td>необязательный<sup>‡</sup></td> </tr>
+ <tr> <td>base</td> <td>запрещён</td> <td>запрещён</td> <td>запрещён</td> <td>обязательный</td> <td>обязательный</td> </tr>
+ <tr> <td>nameReference</td> <td>запрещён</td> <td>запрещён</td> <td>необязательный</td> <td>запрещён</td> <td>необязательный</td> </tr>
+ <tr> <td>defaultValue[x]</td> <td>необязательный</td> <td>запрещён</td> <td>необязательный</td> <td>запрещён</td> <td>необязательный<sup>†</sup></td> </tr>
+ <tr> <td>meaningWhenMissing</td> <td>необязательный</td> <td>запрещён</td> <td>необязательный</td> <td>запрещён</td> <td>необязательный<sup>†</sup></td> </tr>
+ <tr> <td>fixed[x]</td> <td>запрещён</td> <td>запрещён</td> <td>запрещён</td> <td>запрещён</td> <td>необязательный</td> </tr>
+ <tr> <td>pattern[x]</td> <td>необязательный</td> <td>запрещён</td> <td>запрещён</td> <td>запрещён</td> <td>необязательный</td> </tr>
+ <tr> <td>example[x]</td> <td>необязательный</td> <td>запрещён</td> <td>необязательный</td> <td>запрещён</td> <td>необязательный</td> </tr>
+ <tr> <td>minValue[x]</td> <td>необязательный</td> <td>запрещён</td> <td>запрещён</td> <td>запрещён</td> <td>необязательный</td> </tr>
+ <tr> <td>maxValue[x]</td> <td>необязательный</td> <td>запрещён</td> <td>запрещён</td> <td>запрещён</td> <td>необязательный</td> </tr>
+ <tr> <td>maxLength</td> <td>необязательный</td> <td>запрещён</td> <td>запрещён</td> <td>запрещён</td> <td>необязательный</td> </tr>
+ <tr> <td>mustSupport</td> <td>необязательный</td> <td>запрещён</td> <td>запрещён</td> <td>необязательный</td> <td>необязательный</td> </tr>
+ <tr> <td>isModifier</td> <td>запрещён</td>  <td>запрещён</td> <td>необязательный</td> <td>запрещён</td> <td>необязательный<sup>†</sup></td> </tr>
+ <tr> <td>isSummary</td> <td>запрещён</td> <td>запрещён</td> <td>необязательный</td> <td>запрещён</td> <td>необязательный<sup>†</sup></td> </tr>
+ <tr> <td>binding</td> <td>необязательный</td> <td>запрещён</td> <td>необязательный</td> <td>запрещён</td> <td>необязательный</td> </tr>
+ <tr> <td>constraint/mapping</td> <td>необязательный</td> <td>запрещён</td> <td>необязательный</td> <td>необязательный<sup>∆</sup></td> <td>необязательный<sup>∆</sup></td> </tr>
 </table>
 <p>
-Notes:
+Примечания:
+<!-- Notes: -->
 </p>
 <ul>
- <li>Base definition: A StructureDefinition without a <code>base</code> element - e.g. a definition of a structure that doesn't constrain another structure</li>
+ <li>Базовое определение: StructureDefinition без элемента <code>base</code> - например определение структуры, которая не содержит ограничивающие условия другой структуры</li>
+ <li>Ограничивающее определение: StructureDefinition с элементом <code>base</code> - например определение структуры, которая содержит ограничивающие условия другой базовой структуры</li>
+ <li><sup>†</sup>: Наличие элемента и его значение должны соответствовать определению в базовой структуре</li>
+ <li><sup>‡</sup>: Содержимое элемента не должно противоречить соответствующему элементу в базовой структуре</li>
+ <li><sup>∆</sup>: Могут быть определены дополнительные ограничивающие условия и мэппинги, однако они не замещают те, что содержатся в базовой структуре</li>
+<!--  <li>Base definition: A StructureDefinition without a <code>base</code> element - e.g. a definition of a structure that doesn't constrain another structure</li>
  <li>Constraint definition: A StructureDefinition with a <code>base</code> element - e.g. a definition of a structure that constrains another base structure</li>
  <li><sup>†</sup>: The element's presence, and value, must match the definition in the base structure</li>
  <li><sup>‡</sup>: The element content must be consistent with that matching element in the base structure</li>
- <li><sup>∆</sup>: Additional constraints and mappings can be defined, but they do not replace the ones in the base structure</li>
+ <li><sup>∆</sup>: Additional constraints and mappings can be defined, but they do not replace the ones in the base structure</li> -->
 </ul>
 <p>
-The use of Path and type depends more deeply on the context where the ElementDefinition is used:
+Применение элементов "path" и "type" в сильной степени зависит от контекста использования ElementDefinition:
+<!-- The use of Path and type depends more deeply on the context where the ElementDefinition is used: -->
 </p>
 <table class="grid">
- <tr> <td><b>Context</b></td> <td><b>path (1st element)</b></td> <td><b>path (following elements)</b></td> <td><b>type (1st element)</b></td> </tr>
- <tr> <td>Data Element</td> <td>Any token</td> <td>Any token (distinct in the DataElement)</td> <td>Any type</td> </tr>
- <tr> <td>Base definition of a data type <br/>(example: <a href="datatypes.html#Quantity">Quantity</a> - <a href="quantity.profile.xml.html">XML</a>, <a href="quantity.profile.json.html">JSON</a>)</td> 
-       <td>Name of the type</td> <td>Path inside the datatype</td> <td><code>Element</code></td> </tr>
- <tr> <td>A constrained data type <br/>(example: <a href="datatypes.html#Money">Money</a>  - <a href="money.profile.xml.html">XML</a>, <a href="money.profile.json.html">JSON</a>)</td>
-        <td>Name of the base type</td> <td>Path inside the datatype</td> <td>Name of the base type</td> </tr>
- <tr> <td>Base definition of a resource <br/>(example: <a href="patient.html">Patient</a> - <a href="patient.profile.xml.html">XML</a>, <a href="patient.profile.json.html">JSON</a>)</td>
-        <td>The name of the resource</td> <td>Path inside the resource</td> <td><code>DomainResource</code> or sometimes <code>Resource</code></td> </tr>
- <tr> <td>Constraint on a resource <br/>(example: <a href="daf/daf-patient.html">DAF Patient</a> - <a href="daf/daf-patient.profile.xml.html">XML</a>, <a href="daf/daf-patient.profile.json.html">JSON</a>)</td>
-        <td>The name of the resource</td> <td>Path inside the resource <br/>(including into the data types)</td> <td>The name of the resource</td> </tr>
- <tr> <td>Base Extension (a standard data type) <br/>(example: <a href="extensibility.html#Extension">Extension</a> - <a href="extension.profile.xml.html">XML</a>, <a href="extension.profile.json.html">JSON</a>)</td>
-        <td><code>Extension</code></td> <td><code>Extension.value[x]</code> or <code>Extension.extension</code></td> <td><code>Extension</code></td> </tr>
- <tr> <td>A defined Extension <br/>(example: <a href="extension-us-core-race.html">Extension</a>  - <a href="extension-us-core-race.xml.html">XML</a>, <a href="extension-us-core-race.json.html">JSON</a>)</td>
-        <td><code>Extension</code></td> <td><code>Extension.value[x]</code> or <code>Extension.extension</code> (for complex extensions)</td> <td><code>Extension</code></td> </tr>
+ <tr> <td><b>Контекст</b></td> <td><b>path (I элемент)</b></td> <td><b>path (последующие элементы)</b></td> <td><b>type (I элемент)</b></td> </tr>
+ <tr> <td>Элемент данных</td> <td>Любая лексема</td> <td>Любая лексема (distinct in the DataElement)</td> <td>Любой тип</td> </tr>
+ <tr> <td>Базовое определение типа данных <br/>(пример: <a href="datatypes.html#Quantity">Quantity</a> - <a href="quantity.profile.xml.html">XML</a>, <a href="quantity.profile.json.html">JSON</a>)</td> 
+       <td>Имя типа</td> <td>Путь внутри типа данных</td> <td><code>Element</code></td> </tr>
+ <tr> <td>Тип данных с ограничивающим условием <br/>(пример: <a href="datatypes.html#Money">Money</a>  - <a href="money.profile.xml.html">XML</a>, <a href="money.profile.json.html">JSON</a>)</td>
+        <td>Имя базового типа</td> <td>Путь внутри типа данных</td> <td>Имя базового типа</td> </tr>
+ <tr> <td>Базовое определение ресурса <br/>(пример: <a href="patient.html">Patient</a> - <a href="patient.profile.xml.html">XML</a>, <a href="patient.profile.json.html">JSON</a>)</td>
+        <td>Имя ресурса</td> <td>Путь внутри ресурса</td> <td><code>DomainResource</code> или, иногда, <code>Resource</code></td> </tr>
+ <tr> <td>Ограничивающее условие на ресурс <br/>(пример: <a href="daf/daf-patient.html">DAF Patient</a> - <a href="daf/daf-patient.profile.xml.html">XML</a>, <a href="daf/daf-patient.profile.json.html">JSON</a>)</td>
+        <td>Имя ресурса</td> <td>Путь внутри ресурса <br/>(including into the data types)</td> <td>Имя ресурса</td> </tr>
+ <tr> <td>Базовое расширение (стандартный тип данных) <br/>(пример: <a href="extensibility.html#Extension">Extension</a> - <a href="extension.profile.xml.html">XML</a>, <a href="extension.profile.json.html">JSON</a>)</td>
+        <td><code>Extension</code></td> <td><code>Extension.value[x]</code> или <code>Extension.extension</code></td> <td><code>Extension</code></td> </tr>
+ <tr> <td>Расширение, имеющее определение <br/>(пример: <a href="extension-us-core-race.html">Extension</a>  - <a href="extension-us-core-race.xml.html">XML</a>, <a href="extension-us-core-race.json.html">JSON</a>)</td>
+        <td><code>Extension</code></td> <td><code>Extension.value[x]</code> или <code>Extension.extension</code> (for complex extensions)</td> <td><code>Extension</code></td> </tr>
 </table>
 
 <p>
 
 <a name="slicing"> </a>
-<h3>Rules about Slicing</h3>
+<h3>Правила, касающиеся нарезки (Slicing)<!-- Rules about Slicing --></h3>
 
 </p>
 <ul>
- <li>Slicing is only allowed when constraining an existing structure</li>
+ <li>Нарезка разрешена только в случае ограничения существующей структуры</li>
+ <li>Элемент <code>slicing</code> можно использовать только в первом экземпляре повторяющегося элемента, этот элемент считается  this element is considered the slicing entry</li>
+ <li>Первая запись (которая содержит элемент <code>slicing</code>) понимается как набор ограничивающих условий для использования в &quot;открытом&quot; срезе, т. е. когда срез открыт, это определение используется как ограничивающее условие на элементах в экземпляре, которые не являются частью среза и принадлежат открытой части среза. Такое применение соответствует &quot;стандартному случаю использования&quot;, за исключением:
+    <ul>
+      <li>должен присутствовать элемент <code>slicing</code></li>
+      <li>значения элементов <code>min</code> и <code>max</code> обусловливают общее количество появлений срезов элемента, включая количество появлений в открытой части среза.</li>
+    </ul>
+ </li> 
+ <li>Элемент с кардинальным множеством 0..1 и выбором из нескольких типов данных может быть нарезан по типу. Это может понадобиться для указания различных ограничивающих условий для различных типов данных. В этом случае дискриминатором ДОЛЖЕН быть "@type"<!-- An element with a cardinality of 0..1 and a choice of multiple types can be sliced by type. This is in order to specify different constraints for different types. In this case, the discriminator SHALL be "@type" --></li>
+ <li></li>
+<!--  <li>Slicing is only allowed when constraining an existing structure</li>
  <li><code>slicing</code> can only be used on the first repeat of an element, this element is considered the slicing entry</li>
  <li>The first entry (the one having the <code>slicing</code> information) is understood to be the set of constraints to be used for the &quot;open&quot; slice. i.e. when the slice is open, this definition is used as a constraint on elements in the instance that are not part of a slice and belong to the open portion of the slice. Its use follows the &quot;normal case&quot;, except:
     <ul>
@@ -127,68 +154,82 @@ The use of Path and type depends more deeply on the context where the ElementDef
     </ul>
  </li> 
  <li>An element with a cardinality of 0..1 and a choice of multiple types can be sliced by type. This is in order to specify different constraints for different types. In this case, the discriminator SHALL be "@type"</li>
- <li></li>
+ <li></li> -->
 </ul>
 
 <a name="min-max"> </a>
-<h3>Rules about min and max</h3>
+<h3>Правила указания элементов "min" и "max"<!-- Rules about min and max --></h3>
 <p>
-In a <a href="dataelement.html">DataElement</a>, <code>min</code> and <code>max</code> are always required.
+В <a href="dataelement.html">DataElement</a> наличие элементов <code>min</code> и <code>max</code> всегда обязательно.
+<!-- In a <a href="dataelement.html">DataElement</a>, <code>min</code> and <code>max</code> are always required. -->
 </p>
 <p>
-In a <a href="structuredefinition.html">StructureDefinition</a>:
+В <a href="structuredefinition.html">StructureDefinition</a>:
+<!-- In a <a href="structuredefinition.html">StructureDefinition</a>: -->
 </p>
 <ul>
- <li><b>If there is no <code>StructureDefinition.base</code></b>: min and max are always required</li>
+ <li><b>Если отсутствует элемент <code>StructureDefinition.base</code></b>: элементы "min" и "max" всегда обязательны</li>
+ <li>иначе, в <code>StructureDefinition.differential</code>: элементы "min" и "max" всегда необязательны; если они отсутствуют, то приравниваются по умолчанию к базовым "min" и "max"</li>
+ <li>и в <code>StructureDefinition.snapshot</code>: элементы "min" и "max" всегда обязательны</li>
+<!--  <li><b>If there is no <code>StructureDefinition.base</code></b>: min and max are always required</li>
  <li>Else, in <code>StructureDefinition.differential</code>: min and max are always optional; if they are not present, they default to the base min and max</li>
- <li>and in <code>StructureDefinition.snapshot</code>: min and max are always required</li>
+ <li>and in <code>StructureDefinition.snapshot</code>: min and max are always required</li> -->
 </ul>
 
 <a name="missing"> </a>
-<h3>Missing Elements</h3>
+<h3>Отсутствующие элементы<!-- Missing Elements --></h3>
 <p>
-Most elements have a minimum cardinality of 0, which means that they may be missing from a resource when it is exchanged between systems.
+У большинства элементов минимальное кардинальное множество 0, что означает, что они могут отсутствовать в ресурсе при обмене им между системами.
+Обычно, когда элемент отсутствует, всё, что приложение, обрабатывающее этот ресурс может сказать об этом элементе, это то, что его значение не известно - он может иметь корректное значение, однако оно не было предоставлено по причинам безопасности или в соответствии с рабочим процессом. С другой стороны, он может и не иметь значения вообще. Всё, что приложение может сказать, это то, что это значение не известно.
+<!-- Most elements have a minimum cardinality of 0, which means that they may be missing from a resource when it is exchanged between systems.
 Generally, when an element is missing, all that an application processing the resource can say about the element is that the 
 value is unknown - it may have a correct value, but it has not been provided for security or workflow reasons. On the
-other hand, it may not have a value at all. All the application can say is that the value is unknown. 
+other hand, it may not have a value at all. All the application can say is that the value is unknown.  -->
 </p>
 <p>
-However, for some elements, this specification makes specific rules about what it means if the 
+Однако для некоторых элементов данная спецификация вводит особые правила интерпретации отсутствия элемента. Для некоторых элементов правило вводит значение по умолчанию, значение, которое следует присваивать, если элемент присутствует. Вот примеры некоторых значений по умолчанию: 
+<!-- However, for some elements, this specification makes specific rules about what it means if the 
 element is missing. For some elements, this takes the form of a default value, a value that should
-be assumed if on element is present. For example, here are some default values:
+be assumed if on element is present. For example, here are some default values: -->
 </p>
 <table class="grid">
- <tr><td><b>Element</b></td><td><b>Default Value</b></td></tr>
+ <tr><td><b>Элемент</b></td><td><b>Значение по умолчанию</b></td></tr>
  <tr><td>ElementDefinition.mustSupport</td><td>false</td></tr>
  <tr><td>SampledData.factor</td><td>1</td></tr>
  <tr><td>ValueSet.codeSystem.concept.abstract</td><td>false</td></tr>
  <tr><td>List.entry.deleted</td><td>false</td></tr>
 </table>
 <p>
-Most default values are mathematical / numerical non-operations e.g. false, 0 for addition or 1 for multiplication. 
-Default values are rarely used because:
+Большинство значений по умолчанию не являются математическими/числовыми операциями, например false, 0 для сложения или 1 для умножения. Значения по умолчанию используются редко, потому что:
+<!-- Most default values are mathematical / numerical non-operations e.g. false, 0 for addition or 1 for multiplication. 
+Default values are rarely used because: -->
 </p>
 <ul>
- <li>The value must be known by all implementations</li>
+ <li>Значение должно быть известно всем реализаторам</li>
+ <li>Когда у элемента есть значение по умолчанию, его значение не может быть неизвестным, поскольку неявно становится обязательным</li>
+ <li>Значение по умолчанию не может быть изменено.</li>
+<!--  <li>The value must be known by all implementations</li>
  <li>When an element has a default value, it can never be unknown - e.g. it is implicitly mandatory</li>
- <li>The default value can never be changed.</li>
+ <li>The default value can never be changed.</li> -->
 </ul>
 <p>
-For other elements, the resource explicitly documents what 
+Для остальных элементов в ресурсе явным образом документируется значение отсутствующего элемента, и это значение не является значением по умолчанию. Вот некоторые примеры:
+<!-- For other elements, the resource explicitly documents what 
 the meaning of a missing element is, and the meaning is not
-represented by a default value. Some examples:
+represented by a default value. Some examples: -->
 </p>
 <table class="grid">
- <tr><td><b>Element</b></td><td><b>Meaning when missing</b></td></tr>
- <tr><td>Period.end</td><td>If the end of the period is missing, it means that the period is ongoing</td></tr>
- <tr><td>Quantity.comparator</td><td>If there is no comparator, then there is no modification of the value</td></tr>
- <tr><td>MedicationAdministration.wasNotGiven</td><td>If this is missing, then the medication was administered</td></tr>
- <tr><td>Substance.instance</td><td>If this element is not present, then the substance resource describes a kind of substance</td></tr>
+ <tr><td><b>Элемент</b></td><td><b>Значение, когда отсутствует</b></td></tr>
+ <tr><td>Period.end</td><td>Если отсутствует окончание периода, это означает, что период всё ещё продолжается</td></tr>
+ <tr><td>Quantity.comparator</td><td>Если компаратор не указан, значит модифицирование значения отсутствует</td></tr>
+ <tr><td>MedicationAdministration.wasNotGiven</td><td>Если не указано, значит это лекарственное средство было введено</td></tr>
+ <tr><td>Substance.instance</td><td>Если этот элемент отсутствует, тогда ресурс Substance описывает тип вещества</td></tr>
 </table>
 <p>
-Like default values, and for the same reasons, assigning a meaning when an element is missing
+Аналогично значениям по умолчанию и по тем же причинам присвоение значения, когда элемент отсутствует, происходит не очень часто. Обратите внимание, что профили не могут изменять значение по умолчанию или значение отсутствия элемента, поскольку это не может быть сделано и в базовой спецификации.
+<!-- Like default values, and for the same reasons, assigning a meaning when an element is missing
 is something that is not done very often. Note that Profiles cannot change the default value
-or missing meaning of an element, since it can't be done in the base specification either.
+or missing meaning of an element, since it can't be done in the base specification either. -->
 </p>
 
 </div>

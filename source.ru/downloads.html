@@ -11,7 +11,7 @@
 <div class="col-12">
 
 
-<h1>Загрузки</h1>
+<h1>Материалы для скачивания</h1>
 
 <table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
@@ -29,7 +29,7 @@
        <li><a href="fhir-all-xsd.zip">Схемы валидации</a> (включают схемы поддержки, схемы ресурсов, агрегатные и комбинированные схемы, а также  схематрон-схемы<!-- <a href="fhir-all-xsd.zip">Validation Schemas</a> (includes support schemas, resource schemas, modular &amp; combined schemas, and Schematrons) --></li>
        <li><a href="fhir-codegen-xsd.zip">Схемы кодогенерации</a> (см. <a href="xml.html#schema-gen">примечания к схемам кодогенерации</a>)<!-- <a href="fhir-codegen-xsd.zip">Code Generation Schemas</a> (See <a href="xml.html#schema-gen">notes about code-generation schemas</a>) --></li>
       </ul>
-      Примечание: схемы и схематрон-схемыне содержат всех правил валидности ресурсов. Для создания соответствующих спецификации реализаций всё равно необходимо знакомство с текстом спецификации и с <a href="profiling.html">профилями, которые применяются к ресурсам</a>.
+      Примечание: схемы и схематрон-схемы не содержат всех правил валидности ресурсов. Для создания соответствующих спецификации реализаций всё равно необходимо знакомство с текстом спецификации и с <a href="profiling.html">профилями, которые применяются к ресурсам</a>.
       <!-- Note: the schemas &amp; schematrons do not contain all of the rules about what makes resources valid. Implementers 
       will still need to be familiar with the content of the specification and with any <a href="profiling.html">profiles that apply to the resources</a> in order to make a conformant implementation. -->
     </td>
@@ -37,13 +37,13 @@
 
   <tr>
     <td>Определения FHIR<!-- FHIR Definitions --></td>
-    <td>Все наборы значений, профили и т. п., определенные в рамках спецификации FHIR, и включённые в спецификацию руководства по реализации. Эти определения идут в 4 формах - XML или JSON, с или без текстовых определений:
+    <td>Сюда входят все наборы значений, профили и т. п., определенные в рамках спецификации FHIR, и включённые в спецификацию руководства по реализации. Эти определения представлены в 4 вариантах - XML или JSON, с или без текстовых определений:
     <!-- All the value sets, profiles, etc.defined as part of the FHIR specification, and the included implementation guides. The definitions come in 4 different forms - XML or JSON, and with and without text definitions: -->
     <ul>
      <li>XML: <a href="validation.xml.zip">с текстом</a> и <a href="validation-min.xml.zip">без текста</a><!-- XML: <a href="validation.xml.zip">with text</a> and <a href="validation-min.xml.zip">without text</a> --></li>
      <li>JSON: <a href="validation.json.zip">с текстом</a> и <a href="validation-min.json.zip">без текста</a><!-- JSON: <a href="validation.json.zip">with text</a> and <a href="validation-min.json.zip">without text</a> --></li>
     </ul>
-    Обратите внимание, что формы без определений включены для использования вместе с инструментами, которые не используют текстовые определения (например инструменты валидации) - они меньше и грузятся быстрее.
+    Обратите внимание, что варианты без определений включены для применения с инструментами, которые не используют текстовые определения (например инструменты валидации) - они меньше и грузятся быстрее.
     <!-- Note that the forms without definitions are included to be used with tools that don't use the text definitions (e.g. validation tooling) - they are smaller and load faster -->
     </td>
   </tr>
@@ -71,7 +71,7 @@
   </tr>
 
   <tr>
-    <td colspan="2" style="background: #eeeeee"><b>Specification Downloads</b></td>
+    <td colspan="2" style="background: #eeeeee"><b>Ссылка для скачивания спецификации<!-- Specification Downloads --></b></td>
   </tr>
 <!--
   <tr>
@@ -123,7 +123,7 @@ They may be used in production instances, although HL7 and the contributors acce
 use.  These implementations are provided under a standard OSI-approved license (mostly BSD-3-Clause). -->
 <br/> 
 <br/> 
-<span style="color: Maroon">Обратите внимание, что эти эталонные реализации предоставлены для помощи реализаторам в адаптации спецификации и поддерживаются командой проекта FHIR, но не являются частью спецификации, и от реализаций не требуется соответствовать им, также они не подлежат формальному развитию стандарта.
+<span style="color: Maroon">Обратите внимание, что эталонные реализации предоставлены для помощи реализаторам в адаптации спецификации и поддерживаются командой проекта FHIR, но не являются частью спецификации, и от реализаций не требуется соответствовать им, также они не подлежат формальному развитию стандарта.
 <!-- Note that these reference implementations are provided to assist to 
 implementers to adopt the specification, and are maintained by the FHIR project team, but are not 
 part of the specification, and implementations are not required to conform to these, nor are they 
@@ -146,10 +146,10 @@ subject to the formal standards process. --></span>
 </ul>
 <hr/>
 <p>
-Следует отметить, что эталонные реализации обычно ограничиваются визуальным представлением содержимого ресурсов в нативной форме, и их парсингом и сериализацией в XML и JSON. Некоторые из этих реализаций поддерживают построение с помощью  определений ресурсов. В некоторые реализации входит клиентское приложение, которое поддерживает RESTful API.
+Следует отметить, что эталонные реализации обычно ограничиваются визуальным представлением содержимого ресурсов в нативной форме, их парсингом и сериализацией в XML и JSON. Часть реализаций поддерживает построение с помощью определений ресурсов. В некоторые реализации входит клиентское приложение, которое поддерживает RESTful API.
 </p>
 <p>
-Полноценные открытые реализации FHIR, некоторые из которых используют эти базовые реализации, перечислены в
+Полноценные открытые реализации FHIR, часть которых использует эталонные реализации, перечислены в
 <a href="http://wiki.hl7.org/index.php?title=Open_Source_FHIR_implementations">wiki-разделе сайта HL7</a>.
 </p>
 <p>
