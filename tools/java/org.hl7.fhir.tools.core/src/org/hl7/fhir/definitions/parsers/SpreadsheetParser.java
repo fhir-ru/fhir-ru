@@ -1573,37 +1573,37 @@ public class SpreadsheetParser {
 		ElementDefn e;
 		String path = sheet.getColumn(row, "Element");
 		if (firstTime) {
-      tabfmt.column("Element");
-      tabfmt.column("Profile Name");
-      tabfmt.column("Discriminator");
+      tabfmt.column("Элемент");
+      tabfmt.column("Имя профиля");
+      tabfmt.column("Дискриминатор");
       tabfmt.column("gForge");
-      tabfmt.column("Card.");
-      tabfmt.column("Slice Description");
-      tabfmt.column("Aliases");
-      tabfmt.column("Is Modifier");
-      tabfmt.column("Must Support");
+      tabfmt.column("Кард.");
+      tabfmt.column("Описание среза");
+      tabfmt.column("Альтернативные имена");
+      tabfmt.column("Является модификатором");
+      tabfmt.column("Должен поддерживаться");
       tabfmt.column("Summary");
-      tabfmt.column("Regex");
+      tabfmt.column("Рег. выр.");
       tabfmt.column("UML");
-      tabfmt.column("Inv.");
-      tabfmt.column("Type");
-      tabfmt.column("Binding");
-      tabfmt.column("Short Label");
-      tabfmt.column("Definition");
-      tabfmt.column("Max Length");
-      tabfmt.column("Requirements");
-      tabfmt.column("Comments");
+      tabfmt.column("Инв.");
+      tabfmt.column("Тип");
+      tabfmt.column("Привязка");
+      tabfmt.column("Краткое название");
+      tabfmt.column("Определение");
+      tabfmt.column("Макс. длина");
+      tabfmt.column("Требования");
+      tabfmt.column("Комментарии");
       for (String n : mappings.keySet()) {
         tabfmt.column(mappings.get(n).getColumnName());
       }
       tabfmt.column("To Do");
-      tabfmt.column("Example");
-      tabfmt.column("Committee Notes");
-      tabfmt.column("Display Hint");
-      tabfmt.column("Value");
-      tabfmt.column("Pattern");
-      tabfmt.column("Default Value");
-      tabfmt.column("Missing Meaning");
+      tabfmt.column("Пример");
+      tabfmt.column("Примечания комиссии");
+      tabfmt.column("Подсказка для отображения");
+      tabfmt.column("Значение");
+      tabfmt.column("Шаблон");
+      tabfmt.column("Значение по умолчанию");
+      tabfmt.column("Значение, если отсутствует");
       tabfmt.column("w5");
 		}
 		
