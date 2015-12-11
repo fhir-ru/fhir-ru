@@ -4,17 +4,21 @@
 <a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-The conformance statement is a key part of the overall conformance framework in FHIR. 
+Заявление о соответствии является ключевой частью общего фреймворка соответствия в FHIR. Используется в качестве декларации характеристик самого программного обеспечения или как набор правил для приложения, которым оно должно соответствовать. Такое заявление связывает все детализированные декларации функциональности, такие как <a href="structuredefinition.html">StructureDefinitions</a> 
+и <a href="valueset.html">ValueSets</a>. Это составное заявление функциональности приложения используется либо как источник, либо цель оценки соответствия. Более подробную информацию о тестировании соответствия см. в <a href="conformance-rules.html">Conformance Rules</a>
+и <a href="profiling.html">Profiling FHIR</a>.
+<!-- The conformance statement is a key part of the overall conformance framework in FHIR. 
 It is used as a statement of the features of actual software, or of a set of 
 rules for an application to conform to. This statement connects to all the detailed 
 statements of functionality, such as <a href="structuredefinition.html">StructureDefinitions</a> 
 and <a href="valueset.html">ValueSets</a>. This composite statement of application 
 functionality is used as either the source or target of a conformance assessment. 
 For further information about Conformance testing, see <a href="conformance-rules.html">Conformance Rules</a>
-and <a href="profiling.html">Profiling FHIR</a>.
+and <a href="profiling.html">Profiling FHIR</a>. -->
 </p>
 <p>
-Specifically, conformance statements are used in one of three ways:
+В частности, заявления о соответствии используются одним из трёх способов:
+<!-- Specifically, conformance statements are used in one of three ways: -->
 </p>
 <h3>Опишите фактическую реализацию<!-- Describe an actual implementation --></h3>
 <p>

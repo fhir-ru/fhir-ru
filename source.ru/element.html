@@ -247,15 +247,16 @@ as opposed to optionally present without any content. -->
 </p>
 
 <a name="its"> </a>
-<h2>Representation of Element</h2>
+<h2>Представление элемента<!-- Representation of Element --></h2>
 <p>
-As the base type for all elements included in a resource, <code>Element</code>
+<code>Element</code> - базовый тип всех элементов, входящих в ресурс, является важным структурным элементом в FHIR. Даже примитивные типы наследуют основные характеристики и правила представления, применяемые к типу Element.
+<!-- As the base type for all elements included in a resource, <code>Element</code>
 is an important structural element of FHIR. Even the primitive types inherit
-the base features and representation rules that apply to the Element type.
+the base features and representation rules that apply to the Element type. -->
 </p>
 
 <a name="xml"> </a>
-<h2>XML Representation</h2>
+<h2>XML-представление</h2>
 <p>
 Элементы описываются с помощью XML-элемента. Имя элемента берется из контекста, в котором оно используется, а не из типа. Внутренний  <code>id</code> представляется атрибутом (аналогично xml:id, но см. ниже про область действия). Расширения представляют с помощью XML-элементов. Вот пример представления элемента 'code' типа данных <a href="datatypes.html#Coding">Coding</a>: 
 <!-- Elements are represented by an XML element. The name of the element comes from
