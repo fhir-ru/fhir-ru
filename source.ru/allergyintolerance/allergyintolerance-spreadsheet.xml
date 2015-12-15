@@ -1038,11 +1038,11 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">Аллергия или непереносимость (как правило, это риск нежелательной побочной реакции на вещество)<!-- Allergy or Intolerance (generally: Risk Of Adverse reaction to a substance) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Риск вредной или нежелательной физиологической реакции, присущей именному этому человеку и связанной с воздействием некоторого вещества<!-- Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Риск вредной или нежелательной физиологической реакции, присущей конкретному человеку и связанной с воздействием определённого вещества<!-- Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">Для записи клинической оценки предрасположенности или потенциального для человека риска нежелательной побочной реакции на воздействие определенного вещества или класса веществ<!-- To record a clinical assessment of a propensity, or potential risk to an individual, of an adverse reaction upon future exposure to the specified substance, or class of substance. --></Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Для записи клинической оценки предрасположенности или потенциального для человека риска нежелательной побочной реакции на воздействие определённого вещества или класса веществ<!-- To record a clinical assessment of a propensity, or potential risk to an individual, of an adverse reaction upon future exposure to the specified substance, or class of substance. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Вещества включают, но не ограничиваются следующими: терапевтические вещества, корректно введенные человеку в подходящей дозировке; пища; материалы, полученные из растений или животных; яд от укусов насекомых.<!-- Substances include, but are not limited to: a therapeutic substance administered correctly at an appropriate dosage for the individual; food; material derived from plants or animals; or venom from insect stings. --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Вещества включают в себя, но не ограничиваются следующими: терапевтические вещества, корректно введенные человеку в подходящей дозировке; пища; материалы, полученные из растений или животных; яд от укусов насекомых.<!-- Substances include, but are not limited to: a therapeutic substance administered correctly at an appropriate dosage for the individual; food; material derived from plants or animals; or venom from insect stings. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1107,7 +1107,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дата (/время) начала проявлений<!-- Date(/time) when manifestations showed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Record of the date and/or time of the onset of the Allergy or Intolerance</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Запись даты и/или времени возникновения аллергии или непереносимости <!-- Record of the date and/or time of the onset of the Allergy or Intolerance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1287,7 +1287,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Наименование вещества или класса веществ, которое считается вызвавшим или имеющим риск вызвать неблагоприятную побочную реакцию<!-- Identification of a substance, or a class of substances, that is considered to be responsible for the adverse reaction risk --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">It is strongly recommended that the substance be coded with a terminology, where possible. For example, some terminologies used include RxNorm, SNOMED CT, DM+D, NDFRT, ICD-9, IDC-10, UNI, ATC and CPT. Plain text should only be used if there is no appropriate terminology available. Additional details about a substance can be specified in the text.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Настоятельно рекомендуется для записи вещества всегда использовать коды из справочников, когда это возможно. Примеры используемых справочников: RxNorm, SNOMED CT, DM+D, NDFRT, ICD-9, IDC-10, UNI, ATC и CPT. Простой текст следует использовать, только если подходящий справочник не доступен. В этом тексте можно указать более подробную информацию о веществе.<!-- It is strongly recommended that the substance be coded with a terminology, where possible. For example, some terminologies used include RxNorm, SNOMED CT, DM+D, NDFRT, ICD-9, IDC-10, UNI, ATC and CPT. Plain text should only be used if there is no appropriate terminology available. Additional details about a substance can be specified in the text. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1325,7 +1325,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Утверждение об определенности, связанной с предрасположенностью или потенциальным риском реакции на названное вещество<!-- Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified Substance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Decision support would typically raise alerts for 'Unconfirmed', 'Confirmed', and 'Resolved' and ignore a 'Refuted' reaction. In particular, 'Refuted' may be useful for reconciliation of the Adverse Reaction List. Some implementations may choose to make this field mandatory.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Система поддержки принятия решений обычо оповещает о реакциях со статусами 'Unconfirmed', 'Confirmed', and 'Resolved' и игнорирует 'Refuted'. В частности, 'Refuted' может использоваться для согласования списков нежелательных побочных реакций. В некоторых реализациях это поле может быть сделано обязательным.<!-- Decision support would typically raise alerts for 'Unconfirmed', 'Confirmed', and 'Resolved' and ignore a 'Refuted' reaction. In particular, 'Refuted' may be useful for reconciliation of the Adverse Reaction List. Some implementations may choose to make this field mandatory. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1362,7 +1362,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Предположительная оценка потенциального клинического вреда, или серьезность реакции на указанное вещество<!-- Estimate of the potential clinical harm, or seriousness, of the reaction to the identified Substance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The default criticality value for any propensity to an adverse reaction should be 'Low Risk', indicating at the very least a relative contraindication to deliberate or voluntary exposure to the Substance. 'High Risk' is flagged if the clinician has identified a propensity for a more serious or potentially life-threatening reaction, such as anaphylaxis, and implies an absolute contraindication to deliberate or voluntary exposure to the substance. If this element is missing, the criticality is unknown (though it may be known elsewhere)</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Значением критичности по умолчанию оценки предрасположенности к нежелательной побочной реакции должно быть 'Low Risk', обозначающее по меньшей мере относительное противопоказание к преднамеренному или непреднамеренному воздействию указанного вещества. Значение 'High Risk' ставится, когда клиницист определил предрасположенность к более серьезной или потенциально опасной для жизни реакции, например анафилаксии, и означает абсолютное противопоказание к преднамеренному или непреднамеренному воздействию указанного вещества. Если этот элемент отсутствует, критичность считается неизвестной (однако она может быть известна где-то в другом месте)<!-- The default criticality value for any propensity to an adverse reaction should be 'Low Risk', indicating at the very least a relative contraindication to deliberate or voluntary exposure to the Substance. 'High Risk' is flagged if the clinician has identified a propensity for a more serious or potentially life-threatening reaction, such as anaphylaxis, and implies an absolute contraindication to deliberate or voluntary exposure to the substance. If this element is missing, the criticality is unknown (though it may be known elsewhere) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1392,12 +1392,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">allergy | intolerance - Underlying mechanism (if known)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">allergy | intolerance - лежащий в основе механизм (если известен)<!-- allergy | intolerance - Underlying mechanism (if known) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Определение лежащего в основе физиологического механизма реакции<!-- Identification of the underlying physiological mechanism for the reaction risk --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allergic (typically immune-mediated) reactions have been traditionally regarded as an indicator for potential escalation to significant future risk. Contemporary knowledge suggests that some reactions previously thought to be immune-mediated are, in fact, non-immune, but in some cases can still pose a life threatening risk. It is acknowledged that many clinicians may not be in a position to distinguish the mechanism of a particular reaction. Often the term &quot;allergy&quot; is used rather generically and may overlap with the use of &quot;intolerance&quot; - in practice the boundaries between these two concepts may not be well-defined or understood. This data element is included nevertheless, because many legacy systems have captured this attribute. Immunologic testing may provide supporting evidence for the basis of the reaction and the causative substance, but no tests are 100% sensitive or specific for sensitivity to a particular substance. If, as is commonly the case, it is unclear whether the reaction is due to an allergy or an intolerance, then the type element should be omitted from the resource.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Аллергические (иммуно-опосредованные) реакции традиционно рассматривают как индикатор потенциального обострения до существенного риска в будущем. Современные знания предполагают, что некоторые реакции, которые раньше считались иммуно-опосредованными, по факту являются не-иммунными, но в некоторых случаях могут приводить к риску угрозы жизни. Признано, что многие врачи могут быть не в состоянии распознать механизм конкретной реакции. Зачастую термин &quot;аллергия&quot; используется весьма обобщённо и может замещать термин &quot;непереносимость&quot; - на практике границы между двумя этими понятиями не очень хорошо определены и могут трактоваться не совсем верно. Тем не менее этот элемент данных включён в ресурс, поскольку многие существующие системы используют этот атрибут. С помощью мммунологического тестирования можно узнать и подтвердить тип механизма реакции и вызывающее её вещество, но тесты не дают 100% результат. Если, что это является распространённым случаем, не получается определить, аллергия это или непереносимость, то элемент "type" не включается в ресурс.
+    <!-- Allergic (typically immune-mediated) reactions have been traditionally regarded as an indicator for potential escalation to significant future risk. Contemporary knowledge suggests that some reactions previously thought to be immune-mediated are, in fact, non-immune, but in some cases can still pose a life threatening risk. It is acknowledged that many clinicians may not be in a position to distinguish the mechanism of a particular reaction. Often the term &quot;allergy&quot; is used rather generically and may overlap with the use of &quot;intolerance&quot; - in practice the boundaries between these two concepts may not be well-defined or understood. This data element is included nevertheless, because many legacy systems have captured this attribute. Immunologic testing may provide supporting evidence for the basis of the reaction and the causative substance, but no tests are 100% sensitive or specific for sensitivity to a particular substance. If, as is commonly the case, it is unclear whether the reaction is due to an allergy or an intolerance, then the type element should be omitted from the resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1429,12 +1430,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">food | medication | environment | other - Category of Substance</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">food | medication | environment | other - категория вещества<!-- food | medication | environment | other - Category of Substance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Категория указанного вещества<!-- Category of the identified Substance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This data element has been included because it is currently being captured in some clinical systems. This data can be derived from the Substance where coding systems are used, and is effectively redundant in that situation.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Этот элемент данных был включён, поскольку он записывается в текущее время в некоторых медицинских системах. Эта информация может проистекать из названия вещества там, где используются кодовые системы, в такой ситуации она является избыточной. <!-- This data element has been included because it is currently being captured in some clinical systems. This data can be derived from the Substance where coding systems are used, and is effectively redundant in that situation. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1467,7 +1468,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Представляет дату и/или время последнего известного случая наступления реакции<!-- Represents the date and/or time of the last known occurrence of a reaction event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This date may be replicated by one of the Onset of Reaction dates. Where a textual representation of the date of last occurrence is required e.g. 'In Childhood, '10 years ago' the Comment element should be used.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Эта дата может совпадать с одной из дат проявления реакции. Если требуется текстовое уточнение даты последней реакции, например "в детстве", "10 лет назад", нужно использовать элемент "Comment".<!-- This date may be replicated by one of the Onset of Reaction dates. Where a textual representation of the date of last occurrence is required e.g. 'In Childhood, '10 years ago' the Comment element should be used. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1499,7 +1500,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Дополнительная информация о предрасположенности к нежелательной побочной реакции, не фиксируемая в других полях.<!-- Additional narrative about the propensity for the Adverse Reaction, not captured in other fields. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">For example: including reason for flagging a seriousness of 'High Risk'; and instructions related to future exposure or administration of the Substance, such as administration within an Intensive Care Unit or under corticosteroid cover. The notes should be related to an allergy or intolerance as a condition in general and not related to any particular episode of it. For episode notes and descriptions, use AllergyIntolerance.event.description and  AllergyIntolerance.event.notes.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Например: указание причины выбора степени серьёзности 'High Risk'; указания, связанные с будущим воздействием или введением вещества, например при его введении в отделении интенсивной терапии или при применении кортикостероидов. Записи должны относиться к аллергии или непереносимости как к медицинскому состоянию в общем, а не к какому-то из их эпизодов. Для примечаний к эпизодам и их описаний используйте элементы AllergyIntolerance.event.description и AllergyIntolerance.event.notes.<!-- For example: including reason for flagging a seriousness of 'High Risk'; and instructions related to future exposure or administration of the Substance, such as administration within an Intensive Care Unit or under corticosteroid cover. The notes should be related to an allergy or intolerance as a condition in general and not related to any particular episode of it. For episode notes and descriptions, use AllergyIntolerance.event.description and  AllergyIntolerance.event.notes. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1564,7 +1565,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Наименование конкретного вещества, которое считается вызвавшим это событие нежелательной побочной реакции. Примечание: вещество, вызвавшее конкретную реакцию, может отличаться от вещества, указанного в качестве потенциального риска, но должно быть непротиворечивым. Например это может быть указание более конкретного вещества (марка лекарственного средства) или сложносоставное вещество, содержащее указанное вещество. Обработка только поля AllergyIntolerance.substance и игнорирование AllergyIntolerance.event.substance должно быть клинически безопасным<!-- Identification of the specific substance considered to be responsible for the Adverse Reaction event. Note: the substance for a specific reaction may be different to the substance identified as the cause of the risk, but must be consistent with it. For instance, it may be a more specific substance (e.g. a brand medication) or a composite substance that includes the identified substance. It must be clinically safe to only process the AllergyIntolerance.substance and ignore the AllergyIntolerance.event.substance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Coding of the specific substance with a terminology capable of triggering decision support should be used wherever possible.  The substance field allows for the use of a specific substance or a group or class of substances, for example &quot;Penicillins&quot;. The specific substance field could be used for Amoxycillin. Duplication is acceptable when a specific substance has been recorded in the 'substance' field. </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Кодирование конкретного вещества с помощью справочника, позволяющее системе поддержки принятия решений срабатывать, следует использовать везде, где это возможно. В поле "substance" можно указывать вещество или группу/класс веществ, например &quot;пенициллины&quot;. В поле "substance" можно указать Amoxycillin. Дублирование приемлено, если в поле "substance" записывается конкретное вещество.<!-- Coding of the specific substance with a terminology capable of triggering decision support should be used wherever possible.  The substance field allows for the use of a specific substance or a group or class of substances, for example &quot;Penicillins&quot;. The specific substance field could be used for Amoxycillin. Duplication is acceptable when a specific substance has been recorded in the 'substance' field.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1594,7 +1595,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">unlikely | likely | confirmed - clinical certainty about the specific substance</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">unlikely | likely | confirmed - степень клинической уверенности насчёт конкретного вещества<!-- unlikely | likely | confirmed - clinical certainty about the specific substance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Степень клинической уверенности в том, что конкретное вещество было причиной проявления этой реакции<!-- Statement about the degree of clinical certainty that the specific substance was the cause of the manifestation in this reaction event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1633,7 +1634,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Клинические симптомы/признаки, наблюдаемые или связанные с событием нежелательной побочной реакции<!-- Clinical symptoms and/or signs that are observed or associated with the adverse reaction event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Manifestation can be expressed as a single word, phrase or brief description. For example: nausea, rash or no reaction. It is preferable that manifestation should be coded with a terminology, where possible. The values entered here may be used to display on an application screen as part of a list of adverse reactions, as recommended in the UK NHS CUI guidelines.  Terminologies commonly used include, but are not limited to, SNOMED CT or ICD10.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Проявление может быть выражено одним словом, фразой или кратким описанием. Например: тошнота, сыпь, отсутствие реакции. Предпочтительнее, чтобы проявление было закодировано с помощью справочника там, где это возможно. Значения, введённые здесь, могут использоваться для отображения на экране приложения списка нежелательных побочных реакций в соответствии с рекомендациями руководств UK NHS CUI. Часто используемые справочники включают, но не ограничиваются SNOMED CT и ICD10. <!-- Manifestation can be expressed as a single word, phrase or brief description. For example: nausea, rash or no reaction. It is preferable that manifestation should be coded with a terminology, where possible. The values entered here may be used to display on an application screen as part of a list of adverse reactions, as recommended in the UK NHS CUI guidelines.  Terminologies commonly used include, but are not limited to, SNOMED CT or ICD10. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1666,7 +1667,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Текстовое описание реакции в целом, в том числе подробности проявления при необходимости<!-- Text description about the reaction as a whole, including details of the manifestation if required --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Use the description to provide any details of a particular event of the occurred reaction such as circumstances, reaction specifics, what happened before/after. Information, related to the event, but not describing a particular care should be captured in the comment field. For example: at the age of four, the patient was given penicillin for strep throat and subsequently developed severe hives. </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Используйте описание для указания деталей определенного события возникшей реакции, например обстоятельств, особенностей реакции, что происходило до/после. Информацию, связанную с этим событием, но не описывающую конкретный уход, следует помещать в поле "comment". Например: в возрасте 4 лет пациенту дали пенициллин при остром фарингите, что потом привело к тяжёлой крапивнице.<!-- Use the description to provide any details of a particular event of the occurred reaction such as circumstances, reaction specifics, what happened before/after. Information, related to the event, but not describing a particular care should be captured in the comment field. For example: at the age of four, the patient was given penicillin for strep throat and subsequently developed severe hives.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -11292,3 +11293,4 @@
   </AutoFilter>
  </Worksheet>
 </Workbook>
+
