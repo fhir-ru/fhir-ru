@@ -79,8 +79,8 @@ or venom from insect stings. -->
 <!-- Adverse reactions may be: -->
 </p>
 		<ul>
-			<li>аллергия (как правило, гиперчувствительность I типа, а также другие аллерго-подобные реакции, включая псевдоаллергические)<!-- an allergy (typically type I hypersensitivity, plus other "allergy-like" reactions, including pseudoallergy) --></li>
-			<li>непереносимость (как правило, неиммунные нежелательные побочные реакции, которые не определены или не воспринимаются как аллергические или аллерго-подобные, и являются в некоторой степени идиосинкразическими и/или индивидуальными [т. е. не являются реакцией, которая ожидается у большинства или всех пациентов в аналогичных обстоятельствах])
+			<li>аллергия (как правило, гиперчувствительность I типа, а также другие аллерго-подобные реакции, включая псевдоаллергические);<!-- an allergy (typically type I hypersensitivity, plus other "allergy-like" reactions, including pseudoallergy) --></li>
+			<li>непереносимость (как правило, неиммунные нежелательные побочные реакции, которые не определены или не воспринимаются как аллергические или аллерго-подобные, и являются в некоторой степени идиосинкразическими и/или индивидуальными [т. е. не являются реакцией, которая ожидается у большинства или всех пациентов в аналогичных обстоятельствах]).
 <!-- an intolerance (typically non-immune adverse reactions that are not determined or perceived to be allergic or "allergy-like", and are to some degree idiosyncratic and/or individually specific [i.e. are not a reaction that is expected to occur with most or all patients given similar circumstances]) --></li>
 		</ul>
 		<p>
@@ -151,18 +151,20 @@ future reactions are: -->
 such as history, examination and diagnoses stored elsewhere in the record, if it is available. -->
 </p>
 		<p>
-			<b>AllergyIntolerance and RiskAssessment</b>
+			<b>AllergyIntolerance и RiskAssessment</b>
 		</p>
 		<p>
-AllergyIntolerance describes a specific type of risk - propensity to reaction to a substance while <a href="riskassessment.html">RiskAssessment</a> describes 
-general risks to a subject, not generally based on a reaction.
+    AllergyIntolerance описывает конкретный тип риска - предрасположенность к реакции на вещество, в то время как <a href="riskassessment.html">RiskAssessment</a> описывает общие риски для субъекта, не обязательно основанные на реакциях.
+<!-- AllergyIntolerance describes a specific type of risk - propensity to reaction to a substance while <a href="riskassessment.html">RiskAssessment</a> describes 
+general risks to a subject, not generally based on a reaction. -->
 </p>
 		<p>
-			<b>AllergyIntolerance and Immunization.reaction</b>
+			<b>AllergyIntolerance и Immunization.reaction</b>
 		</p>
 		<p>
-			<a href="immunization-definitions.html#Immunization.reaction">Immunization.reaction</a> may be an indication of an allergy or intolerance. If this is deemed to be the case, a separate 
-<a href="allergyintolerance.html">AllergyIntolerance</a> record should be created to indicate it, as most systems will not query against past Immunization.reaction.
+    			<a href="immunization-definitions.html#Immunization.reaction">Immunization.reaction</a> может быть свидетельством аллергии или непереносимости. Если это именно такой случай, то необходимо создать отдельную запись <a href="allergyintolerance.html">AllergyIntolerance</a>, поскольку большинство систем не будет запрашивать Immunization.reaction.
+<!-- 			<a href="immunization-definitions.html#Immunization.reaction">Immunization.reaction</a> may be an indication of an allergy or intolerance. If this is deemed to be the case, a separate 
+<a href="allergyintolerance.html">AllergyIntolerance</a> record should be created to indicate it, as most systems will not query against past Immunization.reaction. -->
 </p>
 		<p>
 			<b>Неправильное использование<!-- Misuse --></b>
