@@ -1728,12 +1728,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">mild | moderate | severe (of event as a whole)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">mild | moderate | severe (для всего события в целом)<!-- mild | moderate | severe (of event as a whole) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Клиническая оценка тяжести реакции в целом с потенциальным рассмотрением нескольких различных проявлений<!-- Clinical assessment of the severity of the reaction event as a whole, potentially considering multiple different manifestations --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">It is acknowledged that this assessment is very subjective. There may be some some specific practice domains where objective scales have been applied. Objective scales can be included in this model as extensions</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Признано, что такая оценка является слишком субъективной. В некоторых специфичных областях применения могут использоваться объективные шкалы. Объективные шкалы могут быть включены в эту модель в виде расширений<!-- It is acknowledged that this assessment is very subjective. There may be some some specific practice domains where objective scales have been applied. Objective scales can be included in this model as extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1767,7 +1767,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Определение способа, которым субъект подвергался воздействию вещества.<!-- Identification of the route by which the subject was exposed to the substance. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Coding of the route of exposure with a terminology should be used wherever possible.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Везде, где это возможно, способ воздействия следует кодировать с помощью справочников.<!-- Coding of the route of exposure with a terminology should be used wherever possible. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1799,7 +1799,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Дополнительный текст о событии неблагоприятной побочной реакции, не учтенный в других полях<!-- Additional text about the adverse reaction event not captured in other fields --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Use this field to record information indirectly related to a particular event and not captured in the description. For example: Clinical records are no longer available, recorded based on information provided to the patient by her mother and her mother is deceased.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Используйте это поле для записи информации, связанной непосредственно с конкретным событием и не вошедшей в элемент "description". Например: история болезни больше не доступна, запись произведена на основе информации, переданной пациенту от её матери, которая скончалась. <!-- Use this field to record information indirectly related to a particular event and not captured in the description. For example: Clinical records are no longer available, recorded based on information provided to the patient by her mother and her mother is deceased. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6479,7 +6479,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">AllergyIntoleranceSubstance</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Type of the substance and Negation codes for reporting no known allergies.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип вещества и коды для отрицания наличия известных аллергий.<!-- Type of the substance and Negation codes for reporting no known allergies. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-allergyintolerance-substance-code</Data></Cell>
@@ -6494,7 +6494,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">RouteOfAdministration</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject. </Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированный концепт, описывающий способ или физиологический путь введения терапевтического средства в или на тело пациента.<!-- A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject.  --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s148" ss:HRef="http://hl7.org/fhir/ValueSet/route-codes"><Data
@@ -6510,7 +6510,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">SubstanceCode</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes defining the type of the substance.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды, описывающие тип вещества.<!-- Codes defining the type of the substance. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s148" ss:HRef="http://hl7.org/fhir/ValueSet/substance-code"><Data
