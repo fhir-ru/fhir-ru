@@ -1524,20 +1524,26 @@ system troubleshooting. -->
 In this regard, FHIR functions as a Record Format Profile as described in that specification. Note the following significant factors to be aware of: -->
 </p>
 <ul>
- <li>FHIR maps the hData sections to resource types, and hData documents to resource instances. There are no subsections, and client systems are not able to create new sections,
+ <li>FHIR устанавливает соответствие между hData-разделами и типами ресурсов, и hData-документами и экземплярами ресурсов. Подразделы отсутствуют, а клиентские системы не могут создавать новые секции, хотя <a href="compartments.html#compartments">compartments</a> ведут себя в некоторой степени наподобие разделов</li>
+ <li>Так как клиенты не могут создавать новые секции (<code>POST</code> на URL сервиса), <code>POST</code> на URL сервиса использован для взаимодействия <a href="#transaction">transaction</a> (различие проходит проверку)</li>
+ <li>FHIR не определяет (пока что) корневой документ. Когда определен, он будет содержать информацию о том, что FHIR-сервер сделал (в противоположность заявлению о соответствии, которое описывает, что он может сделать)</li>
+ <li>Обратите внимание, что данная спецификация не приводит повторно правила из hData RESTful Transport, относящиеся к команде <code>OPTIONS</code> в URL сервиса, однако эти правила (дополнительные заголовки и пр.) по-прежнему применяются</li>
+<!--  <li>FHIR maps the hData sections to resource types, and hData documents to resource instances. There are no subsections, and client systems are not able to create new sections,
  though <a href="compartments.html#compartments">compartments</a> behave somewhat like sections</li>
  <li>Because clients cannot submit new sections (<code>POST</code> to service URL), <code>POST</code> to the service URL has been re-used for <a href="#transaction">the transaction
  interaction</a> (difference under review)</li>
  <li>FHIR does not (yet) define a root document. When defined, it will contain information about what the FHIR server has done (as opposed to a conformance statement, which describes what it is capable of doing)</li>
- <li>Note that this specification does not repeat the rules in the hData RESTful Transport concerning the <code>OPTIONS</code> command on the service URL, but these rules (extra headers etc.) still apply</li>
+ <li>Note that this specification does not repeat the rules in the hData RESTful Transport concerning the <code>OPTIONS</code> command on the service URL, but these rules (extra headers etc.) still apply</li> -->
 </ul>
 
 <a name="summary"> </a>
-<h3>Summary</h3>
+<h3>Сводная таблица<!-- Summary --></h3>
 <p>
-These tables present a summary of the interactions described here.
+Таблицы ниже представляют собой сводку всех описанных здесь взаимодействий.
+<!-- These tables present a summary of the interactions described here. -->
 
-Note that <i>all</i> requests may include an optional <code>Accept</code> header to indicate the format used for the response (this is even true for <code>DELETE</code> since an OperationOutcome may be returned).
+Обратите внимание, что <i>все</i>  запросы могут включать необязательный <code>Accept</code>-заголовок для указания формата, используемого для ответа (это справедливо даже в отношении <code>DELETE</code>, так как может быть возвращен OperationOutcome).
+<!-- Note that <i>all</i> requests may include an optional <code>Accept</code> header to indicate the format used for the response (this is even true for <code>DELETE</code> since an OperationOutcome may be returned). -->
 </p>
 
 <table class="grid">
@@ -1563,11 +1569,12 @@ Note that <i>all</i> requests may include an optional <code>Accept</code> header
 </table>
 
 <p>
-Notes: 
+Примечания: 
+<!-- Notes:  -->
 </p>
 <ul>
- <li>N/A = not present, R = Required, O = optional</li>
- <li>For operations defined on all resources, including direct access to the meta element, see <a href="resource-operations.html">Resource Operations</a></li>
+ <li>N/A = не представлен (not present), R = обязательный (Required), O = необязательный (optional)<!-- N/A = not present, R = Required, O = optional --></li>
+ <li>Операции, определенные для всех ресурсов, включая прямой доступ к элементу meta, см. в <a href="resource-operations.html">Resource Operations<!-- For operations defined on all resources, including direct access to the meta element, see <a href="resource-operations.html">Resource Operations</a> --></li>
 </ul>
 
 <table class="grid">
@@ -1589,8 +1596,10 @@ Notes:
 </table>
 
 <p>
-Note: this table lists the status codes described here, but other status codes are possible as described by the HTTP specification.
-Additional codes that are likely are server errors and various codes associated with authentication protocols.
+Примечание: в этой таблице перечислены все упомянутые коды состояния, но возможно использование и других кодов состояния в соответствии  
+с HTTP-спецификацией. Дополнительными кодами будут, скорее всего, ошибки сервера и различные коды, связанные с протоколами аутентификации.
+<!-- Note: this table lists the status codes described here, but other status codes are possible as described by the HTTP specification.
+Additional codes that are likely are server errors and various codes associated with authentication protocols. -->
 </p>
 
 </div>
