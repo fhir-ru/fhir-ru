@@ -11,22 +11,25 @@
 <div class="col-12">
 
 <a name="base"> </a>
-<h2>Search</h2>
+<h2>Поиск</h2>
 <table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
-Searching for resources is fundamental to the mechanics of FHIR.
+Поиск ресурсов является основополагающим в механике FHIR.
+Операции поиска проходят по существующим ресурсам, отфильтровывая их в соответствии с параметрами, переданными операции поиска. Текст ниже описывает систему поиска в FHIR, начиная от простых случаев и заканчивая комплексными. Реализаторам потребуется реализовать только ту часть функциональности, которая им необходима для своих реализаций.
+<!-- Searching for resources is fundamental to the mechanics of FHIR.
 Search operations traverse through an existing set of resources filtering by 
 parameters supplied to the search operation. The text below describes
 the FHIR search framework, starting with simple cases moving to the more complex.
 Implementers need only implement the amount of
-complexity that they require for their implementaitons.
+complexity that they require for their implementaitons. -->
 </p>
 
-<h3>Summary Table</h3>
+<h3>Сводная таблица</h3>
 
 <table class="grid">
-<tr><td><b>Search Parameter Types</b></td><td><b>Parameters for all resources</b></td><td><b>Search result parameters</b></td></tr>
+<tr><td><b>Типы параметров поиска</b></td><td><b>Параметры для всех ресурсов</b></td><td><b>Параметры результатов поиска</b></td></tr>
+<!-- <tr><td><b>Search Parameter Types</b></td><td><b>Parameters for all resources</b></td><td><b>Search result parameters</b></td></tr> -->
 <tr>
 <td>
 <%codetoc http://hl7.org/fhir/ValueSet/search-param-type%>
@@ -55,129 +58,157 @@ complexity that they require for their implementaitons.
 </tr>
 </table>
 <p>
-In addition, there is a special search parameter called <a href="#filter"><code>_filter</code></a> that allows for an alternative method of searching.
+Кроме этого, есть еще особый параметр поиска <a href="#filter"><code>_filter</code></a>, который учитывает альтернативный метод поиска.
+<!-- In addition, there is a special search parameter called <a href="#filter"><code>_filter</code></a> that allows for an alternative method of searching. -->
 </p>
 
-<h3>Introduction</h3>
+<h3>Введение</h3>
 <p>
-In the simplest case, a search is executed by performing a <code>GET</code> operation
-in the RESTful framework:
+В простейшем случае поиск выполняется операцией <code>GET</code> в RESTful-системе:
+<!-- In the simplest case, a search is executed by performing a <code>GET</code> operation
+in the RESTful framework: -->
 </p>
 <pre>
  GET [base]/[resourcetype]?name=value&amp;...
 </pre>
 <p> 
-For this RESTful search (see <a href="http.html#search">definition in RESTful API</a>), the parameters are a series
+Для такого RESTful-поиска (см. <a href="http.html#search">определение в RESTful API</a>) параметры представляют собой последовательность пар вида имя=[значение] (name=[value]), кодированных в URL [процентная кодировка] или в формате application/x-www-form-urlencoded для [запроса] POST:
+<!-- For this RESTful search (see <a href="http.html#search">definition in RESTful API</a>), the parameters are a series
 of name=[value] pairs encoded in the URL or as an
-application/x-www-form-urlencoded submission for a POST:
+application/x-www-form-urlencoded submission for a POST: -->
 </p>
 <pre>
  POST  [base]/[type]/_search{?[parameters]{&amp;_format=[mime-type]}}
 </pre>
 <p> 
-The server determines which of the set of resources it serves meet
+Сервер определяет, какие ресурсы из набора, который он обслуживает, соответствуют указанным критериям, и возвращает результаты в HTTP-ответе в виде <a href="bundle.html">bundle</a>, который включает в себя ресурсы, являющиеся результатами этого поиска.
+<!-- The server determines which of the set of resources it serves meet
 the specific criteria, and returns the results in the HTTP response 
 as a <a href="bundle.html">bundle</a> which includes the resources 
-that are the results of the search. 
+that are the results of the search.  -->
 </p>
 <p>
-<a href="http.html#search">Search operations</a> are executed in one of three defined contexts that control which set of resources are being searched:
+<a href="http.html#search">Операции поиска</a> выполняются в одном из трех заданных контекстов, определяющих, в каком наборе ресурсов будет осуществляться поиск:
+<!-- <a href="http.html#search">Search operations</a> are executed in one of three defined contexts that control which set of resources are being searched: -->
 </p>
 <ul>
- <li>A specified resource type: <code>GET [base]/[ResourceType]?parameter(s)</code></li>
+ <li>Определенный тип ресурса: <code>GET [base]/[ResourceType]?parameter(s)</code></li>
+ <li>Определенный <a href="compartments.html#compartments">модуль</a>, возможно с указанием типа ресурса в этом модуле: <code>GET [base]/Patient/[id]/[ResourceType]?parameter(s)</code></li>
+ <li>Все ресурсы: <code>GET [base]/_search?parameter(s)</code> (только параметры, общие для всех типов)</li>
+<!--  <li>A specified resource type: <code>GET [base]/[ResourceType]?parameter(s)</code></li>
  <li>A specified <a href="compartments.html#compartments">compartment</a>, perhaps with a specified resource type in that compartment: <code>GET [base]/Patient/[id]/[ResourceType]?parameter(s)</code></li>
- <li>All resource types: <code>GET [base]/_search?parameter(s)</code> (parameters common to all types only)</li>
+ <li>All resource types: <code>GET [base]/_search?parameter(s)</code> (parameters common to all types only)</li> -->
 </ul>
 <p>
-Search operations can also be implemented in <a href="messaging.html#search">the messaging framework</a>.
+Операции поиска также могут быть реализованы в <a href="messaging.html#search">фреймворке обмена сообщениями</a>.
+<!-- Search operations can also be implemented in <a href="messaging.html#search">the messaging framework</a>. -->
 </p>
 <p>
-The server determines which of their resources meet the criteria 
+Сервер определяет, какие из его ресурсов соответствуют критериям, содержащимся в параметрах поиска, как описано ниже. Однако у сервера имеется привилегия возвращать дополнительные результаты поиска, если он считает их релевантными. Примечание: имеется особый случай поиска наиболее релевантного контекста, в котором поисковый набор является неопределимым - <a href="patient.html#mpi">Patient MPI Search</a>.
+<!-- The server determines which of their resources meet the criteria 
 contained in the search parameters as described below. However
 the server has the prerogative to return additional search results 
 if it believes them to be relevant. Note: There is a 
 special search for the most relevant context in which the 
-search set is indeterminate: <a href="patient.html#mpi">Patient MPI Search</a>.
+search set is indeterminate: <a href="patient.html#mpi">Patient MPI Search</a>. -->
 </p>
 <p>
-Search using <code>GET</code> may include sensitive information in the search parameters.  Therefore 
-secure communications and endpoint management are recommended, see <a href="security.html#http">Security Communications</a>
+Поиск с помощью <code>GET</code> может содержать регистрозависимую информацию в параметрах поиска. Поэтому рекомендуется использовать безопасную коммуникацию и контроль точек взаимодействия, см. <a href="security.html#http">Security Communications</a>.
+<!-- Search using <code>GET</code> may include sensitive information in the search parameters.  Therefore 
+secure communications and endpoint management are recommended, see <a href="security.html#http">Security Communications</a> -->
 </p>
 
 <a name="errors"> </a>
-<h3>Handling Errors</h3>
+<h3>Обработка ошибок<!-- Handling Errors --></h3>
 <p>
-If a server is unable to execute a search request, it may return an error. 
+Если сервер не может выполнить поисковый запрос, он возвращает ошибку. 
+HTTP-код состояния <code>403</code> говорит о том, что сервер отказался выполнять поиск, в то время как другие коды <code>4xx</code> и <code>5xx</code> означают, что произошла некоторая ошибка. Если поиск не выполнился, сервер ДОЛЖЕН вернуть <a href="operationoutcome.html">OperationOutcome</a> в указанием причины неудачи. Примечание: пустой результат поиска не считается неудачей.
+<!-- If a server is unable to execute a search request, it may return an error. 
 A HTTP status code of <code>403</code> signifies that the server refused to perform the search,
 while other <code>4xx</code> and <code>5xx</code> codes signify that some sort of error has occurred. When
 the search fails, a server SHOULD return an <a href="operationoutcome.html">OperationOutcome</a>
-detailing the cause of the failure. Note: An empty search result is not a failure.
+detailing the cause of the failure. Note: An empty search result is not a failure. -->
 </p>
 <p>
-In some cases, parameters may cause an error. For instance:
+В некоторых случаях параметры могут вызвать ошибку. Например:
+<!-- In some cases, parameters may cause an error. For instance: -->
 </p>
 <ul>
- <li>A parameter may refer to a non-existent resource e.g. <code>GET [base]/Observation?subject=101</code>, where "101" does not exist</li>
+ <li>В параметре может быть указан несуществующий ресурс, например <code>GET [base]/Observation?subject=101</code>, где "101" не существует</li>
+ <li>В параметре может быть указан неизвестный код, например<code>GET [base]/Observation?code=loinc|1234-1</code>, где LOINC-код "1234-1" не известен серверу</li>
+ <li>В параметре может быть указано время вне допустимого диапазона, например <code>GET [base]/Condition?onset=le1995</code>, когда система имеет данные только начиная с 2001 года</li>
+ <li>В параметре может быть использован запрещённый или недопустимый модификатор, например <code>GET [base]/Condition?onset:text=1995</code>, где этот модификатор не может быть обработан сервером</li>
+ <li>Параметр даты/времени может иметь неправильный формат, например <code>GET [base]/Condition?onset=23%20May%202009</code></li>
+<!--  <li>A parameter may refer to a non-existent resource e.g. <code>GET [base]/Observation?subject=101</code>, where "101" does not exist</li>
  <li>A parameter may refer to an unknown code e.g. <code>GET [base]/Observation?code=loinc|1234-1</code>, where the LOINC code "1234-1" is not known to the server</li>
  <li>A parameter may refer to a time that is out of scope e.g. <code>GET [base]/Condition?onset=le1995</code>, where the system only has data going back to 2001</li>
  <li>A parameter may use an illegal or unaaceptable modifier e.g. <code>GET [base]/Condition?onset:text=1995</code>, where the modifier cannot be processed by the server</li>
- <li>A data time parameter may have incorrect format e.g. <code>GET [base]/Condition?onset=23%20May%202009</code></li>
+ <li>A data time parameter may have incorrect format e.g. <code>GET [base]/Condition?onset=23%20May%202009</code></li> -->
 </ul>
 <p>
-Where the content of the parameter is syntactically correct, servers SHOULD return an error. 
+Если содержимое параметра синтаксически правильное, сервер ДОЛЖЕН вернуть ошибку. Однако если проблема в логическом условии (например указан неизвестный "subject" или "code"), сервер ДОЛЖЕН обработать поиск с указанным параметром - результатом будет пустой результат поиска, поскольку такой параметр не может быть выполнен.
+<!-- Where the content of the parameter is syntactically correct, servers SHOULD return an error. 
 However where the issue is a logical condition (e.g. unknown subject or code), the server 
 SHOULD process the search, including processing the parameter - with the result of returning
-an empty search set, since the parameter cannot be satisfied. 
+an empty search set, since the parameter cannot be satisfied.  -->
 </p>
 <p>
-In such cases, the search process MAY include an <a href="operationoutcome.html">OperationOutcome</a>
+В таких случаях процесс поиска МОЖЕТ включать <a href="operationoutcome.html">OperationOutcome</a> в поисковый набор, который содержит дополнительный подсказки и предупреждения относительно процесса поиска. В результаты поиска это входит в виде записи "entry" с <a href="bundle-definitions.html#Bundle.entry.search.mode">search mode</a> = <a href="valueset-search-entry-mode.html"><code>outcome</code></a>. Клиенты могут использовать эту информацию для улучшения последующих поисков.
+<!-- In such cases, the search process MAY include an <a href="operationoutcome.html">OperationOutcome</a>
 in the search set that contains additional hints and warnings about the search process.
 This is included in the search results as an entry with <a href="bundle-definitions.html#Bundle.entry.search.mode">search mode</a> = <a href="valueset-search-entry-mode.html"><code>outcome</code></a>.
-Clients can use this information to improve future searches.
+Clients can use this information to improve future searches. -->
 </p>
 
 <a name="standard"> </a>
-<h3>Standard Parameters</h3>
+<h3>Стандартные параметры<!-- Standard Parameters --></h3>
 
 <a name="all"> </a>
-<h4>Parameters for all resources</h4>
+<h4>Параметры для всех ресурсов<!-- Parameters for all resources --></h4>
 <p>
-The following parameters apply <a href="resource.html#search">to all resources</a>: [%allparams%]. In addition, the search 
-parameter <a href="#text"><code>_text</code></a> and <a href="#filter"><code>_filter</code></a>, (documented below) also applies to all resources (as do the search result parameters). 
+Эти параметры <a href="resource.html#search">описаны здесь</a> и применяются ко всем ресурсам: [%allparams%]. Кроме того, параметры поиска  <a href="#text"><code>_text</code></a> и <a href="#filter"><code>_filter</code></a> (задокументированы ниже) также применяются ко всем ресурсом (как и параметры результатов поиска). 
+<!-- The following parameters apply <a href="resource.html#search">to all resources</a>: [%allparams%]. In addition, the search 
+parameter <a href="#text"><code>_text</code></a> and <a href="#filter"><code>_filter</code></a>, (documented below) also applies to all resources (as do the search result parameters).  -->
 </p>
 <a name="id"> </a>
 <p>
-The search parameter <code>_id</code> refers to the logical id of the resource, and can be used when the search context specifies a resource type:
+Параметр поиска <code>_id</code> относится к логическому id ресурса и может быть использован, когда в качестве контекста поиска указан тип ресурса:
+<!-- The search parameter <code>_id</code> refers to the logical id of the resource, and can be used when the search context specifies a resource type: -->
 </p>
 <pre>
  GET [base]/Patient?_id=23
 </pre>
 <p>
-This search finds the patient resource with the given id (there can only be one
+В этом примере поиска ищется ресурс patient с указанным id (может быть только один ресурс с таким id). С функциональной точки зрения это эквивалентно <a href="http.html#read">простой операции чтения</a>:
+<!-- This search finds the patient resource with the given id (there can only be one
 resource for a given id). Functionally, this is equivalent to a <a href="http.html#read">simple
-read operation</a>:
+read operation</a>: -->
 </p>
 <pre>
  GET [base]/Patient/23
 </pre>
 <p>
-However, the search with parameter <code>_id</code> returns a bundle with the requested resource, instead of just the
+Однако поиск с параметром <code>_id</code> возвращает бандл с запрашиваемым ресурсом, а не просто сам этот ресурс. Могут быть добавлены дополнительные параметры, которые  предоставят дополнительную функциональность к этой базовой, эквивалентной чтению (например <a href="#include"><code>_include</code></a>).
+<!-- However, the search with parameter <code>_id</code> returns a bundle with the requested resource, instead of just the
 resource itself. Additional parameters can be added which may provide
-additional functionality on top of this base read equivalence (e.g. <a href="#include"><code>_include</code></a>).
+additional functionality on top of this base read equivalence (e.g. <a href="#include"><code>_include</code></a>). -->
 </p>
 <a name="lastUpdated"> </a>
 <p>
-The search parameter <code>_lastUpdated</code> can be used to select resources based
-on the last time they were changed:
+Параметр поиска <code>_lastUpdated</code> может использоваться для выбора ресурсов по дате их последнего изменения:
+<!-- The search parameter <code>_lastUpdated</code> can be used to select resources based
+on the last time they were changed: -->
 </p>
 <pre>
  GET [base]/Observation?_lastUpdated=>2010-10-01
 </pre>
 <p>
-This search finds any observations changed since 1-Oct 2010. When
+В этом примере поиска ищутся все Observations, измененные после 1-Окт 2010. При использовании этого параметра поиска приложениям следует принимать во внимание подходы к синхронизации (<a href="http.html#history">RESTful история</a>
+или ресурс <a href="subscription.html">Subscription</a>.
+<!-- This search finds any observations changed since 1-Oct 2010. When
 this search parameter is used, applications should consider
 synchronization approaches (<a href="http.html#history">RESTful history</a>
-or the <a href="subscription.html">Subscription resource</a>).
+or the <a href="subscription.html">Subscription resource</a>). -->
 </p>
 <a name="tag"> </a>
 <a name="tags"> </a>
@@ -185,15 +216,18 @@ or the <a href="subscription.html">Subscription resource</a>).
 <a name="security"> </a>
 
 <p>
-The search parameters <code>_tag</code>, <code>_profile</code> and <code>_security</code> parameters search
+Параметры поиска <code>_tag</code>, <code>_profile</code> и <code>_security</code> ищут по соответствующим элементам в элементе <a href="resource.html#meta">meta</a>.
+Например
+<!-- The search parameters <code>_tag</code>, <code>_profile</code> and <code>_security</code> parameters search
 on the equivalent elements in the <a href="resource.html#meta"><code>meta</code> element</a>.
-For example,
+For example, -->
 </p>
 <pre>
  GET [base]/Condition?_tag=http://acme.org/codes|needs-review
 </pre>
 <p>
-searches for all Condition resources with the tag:
+ищет все ресурсы Condition с тегом:
+<!-- searches for all Condition resources with the tag: -->
 </p>
 <pre class="json">
 {
@@ -202,93 +236,159 @@ searches for all Condition resources with the tag:
 }
 </pre>
 <p>
-In the same manner:
+Таким же образом:
+<!-- In the same manner: -->
 </p>
 <pre>
  GET [base]/DiagnosticReport?_profile=http://hl7.org/fhir/StructureDefinition/lipid
  GET [base]/DiagnosticReport?_profile=Profile/lipid
 </pre>
 <p>
-restricts the search to only DiagnosticReport resources that are tagged as conforming to a particular profile.
-The second reference is relative, and refers a local profile on the same server.
+ограничивает поиск только ресурсами DiagnosticReport с тегом, что согласуется с определенным профилем. Вторая ссылка относительная и ссылается на локальный профиль на том же сервере.
+<!-- restricts the search to only DiagnosticReport resources that are tagged as conforming to a particular profile.
+The second reference is relative, and refers a local profile on the same server. -->
 </p>
 <p>
-<code>_tag</code>, <code>_profile</code> and <code>_security</code> parameters are all token types (see <a href="#token">below</a>).
+Параметры <code>_tag</code>, <code>_profile</code> и <code>_security</code> имеют тип токен (см. <a href="#token">ниже</a>).
+<!-- <code>_tag</code>, <code>_profile</code> and <code>_security</code> parameters are all token types (see <a href="#token">below</a>). -->
 </p>
 
 
-<h4>Parameters for each resource</h4>
+<h4>Указание параметров для каждого ресурса<!-- Parameters for each resource --></h4>
 <p>
-In addition to the <code>_id</code> parameter which exists for all resources, each
+Кроме параметра <code>_id</code>, который применяется ко всем ресурсам, каждый тип FHIR-ресурса определяет свой собственный набор параметров поиска по именам, типам и значениям. Эти параметры поиска можно найти на той же самой странице, где и определения ресурса, также они опубликованы как часть стандартного заявления о соответствии (<a href="conformance-base.xml.html">XML</a> и <a href="conformance-base.json.html">JSON</a>).
+<!-- In addition to the <code>_id</code> parameter which exists for all resources, each
 FHIR resource type defines its own set of search parameters with
 their names, types, and meanings. These search parameters are on the
 same page as the resource definitions, and are also published as part
-of the standard conformance statement (<a href="conformance-base.xml.html">XML</a> or <a href="conformance-base.json.html">JSON</a>).
+of the standard conformance statement (<a href="conformance-base.xml.html">XML</a> or <a href="conformance-base.json.html">JSON</a>). -->
 </p>
 <p>
-In general, the defined search parameters correspond to a
+Как правило, заданные параметры поиска соответствуют одному элементу в ресурсе, однако это не является обязательным, и некоторые параметры поиска относятся к одному типу элемента в нескольких местах или относятся к их значениям.
+<!-- In general, the defined search parameters correspond to a
 single element in the resource, but this is not required, and some
 search parameters refer to the same type of element in multiple
-places, or refer to derived values.
+places, or refer to derived values. -->
 </p>
 <p>
-Some search parameters defined by resources are associated
+Некоторые параметры поиска, заданные ресурсами, ассоциируются с более чем одним путем в ресурсе. Это означает, что соответствие такоум параметру поиска выполняется в случае, когда любой из путей содержит совпадающее содержимое. Если путь соответствует, ресурс целиком возвращается в результатах поиска. Клиенту может потребоваться проверить ресурс, чтобы определить, который из путей содержит совпадение.
+<!-- Some search parameters defined by resources are associated
 with more than one path in a resource. This means that the search
 parameter matches if any of the paths contain matching content.  If a
 path matches, the whole resource is returned in the
 search results. The client may have to examine the resource to determine
-which path contains the match.
+which path contains the match. -->
 </p>
 <p>
-Servers are not required to implement any of the standard search parameters
+Серверам не обязательно реализовывать ни один из этих параметров поиска (за исключением параметра <code>_id</code>, описанного выше), и они могут определять свои собственные параметры.
+<!-- Servers are not required to implement any of the standard search parameters
 (except for the <code>_id</code> parameter described above), and may define their own
- parameters.
+ parameters. -->
 </p>
 
 <a name="ptypes" />
-<h4>Search Parameter Types</h4>
-<p>Each search parameter is defined by a type that specifies how the search parameter
-behaves. These are the defined parameter types:
+<h4>Типы параметров поиска<!-- Search Parameter Types --></h4>
+<p>
+Каждый параметр поиска указывается с типом, который определяет способ поведения параметра поиска. Далее следуют определения типов параметров:
+<!-- Each search parameter is defined by a type that specifies how the search parameter
+behaves. These are the defined parameter types: -->
 </p>
 <%linkcodelist http://hl7.org/fhir/ValueSet/search-param-type%>
 <p>
-The search parameters can also append "modifiers" that control
+К этим параметрам поиска могут также добавляться "модификаторы", которые управляют их поведением. Виды модификаторов, которые могут использоваться, зависят от типа параметра, который требуется модифицировать.
+<!-- The search parameters can also append "modifiers" that control
 their behavior. The kinds of modifiers that available is dependent on the type
-of parameter being modified.
+of parameter being modified. -->
 </p>
 
 <a name="modifiers" />
-<h4>Modifiers</h4>
-<p>Parameters are defined per resource.  Parameter names may specify a modifier as a suffix.
-The modifiers are separated from the parameter name by a colon. Modifiers are:</p>
+<h4>Модификаторы<!-- Modifiers --></h4>
+<p>
+Параметры определены для каждого ресурса. К имени параметра может добавляться модификатор в виде суффикса. Такие модификаторы отделяются от имени параметра двоеточием. Модификаторами являются:
+<!-- Parameters are defined per resource.  Parameter names may specify a modifier as a suffix.
+The modifiers are separated from the parameter name by a colon. Modifiers are: --></p>
 <ul>
- <li>For all parameters (except combination): <code>:missing</code>; e.g. gender:missing=true (or false).
+ <li>Для всех параметров (кроме комбинации): <code>:missing</code>, например gender:missing=true (or false). Поиск по <code>gender:missing=true</code> вернет все ресурсы, которые не имеют никакого значения параметра gender (что, как правило, приравнивается к отсутствию соответствующего элемента в ресурсе). Поиск по <code>gender:missing=false</code> вернет все ресурсы, имеющие значение параметра <code>gender</code>.</li>
+ <li>Для строки: <code>:exact</code> (совпадение должно быть точным, не частичным совпадением, чувствительным к регистру и диакритическим знакам), либо <code>:contains</code> (регистронезависимый и не чувствительный к диакритическим знакам, частичное совпадение в начале или в конце), вместо поведения по умолчанию (регистронезависимый и не чувствительный к диакритическим знакам, частичное совпадение в начале или в конце)</li>
+ <li>Для лексемы (token): <code>:text</code> (совпадение совершает частичные поиски по части text в CodeableConcept или 
+части display в Coding), вместо поиска по умолчанию, который использует коды. Другие модификаторы <code>:in</code>, <code>:below</code>, <code>:above</code> и <code>:not-in</code> описаны ниже.</li>
+ <li>Для ссылки: <code>:[type]</code>, где [type] - это имя типа ресурса.</li>
+ <li>Для uri: <code>:below</code>, <code>:above</code> означают, что вместо точного совпадения значению соответствует либо левосторонний поиск, либо наоборот.</li>
+<!--  <li>For all parameters (except combination): <code>:missing</code>; e.g. gender:missing=true (or false).
   Searching for <code>gender:missing=true</code> will return all the resources that don't have a value for the gender parameter (which usually
   equates to not having the relevant element in the resource). Searching for <code>gender:missing=false</code>
   will return all the resources that have a value for the <code>gender</code> parameter. </li>
  <li>For string: <code>:exact</code> (the match needs to be exact, no partial matches, case sensitive and accent-sensitive), or <code>:contains</code> (case insensitive and accent-insensitive, partial match at start or end), instead of the default behavior (case insensitive and accent-insensitive, partial matches at the end of the string).</li>
  <li>For token: <code>:text</code> (the match does a partial searches on the text portion of a CodeableConcept or the display portion of a Coding), instead of the default search which uses codes. Other defined modifiers are <code>:in</code>, <code>:below</code>, <code>:above</code> and <code>:not-in</code> which are described below.</li>
  <li>For reference: <code>:[type]</code> where [type] is the name of a type of resource</li>
- <li>For uri: <code>:below</code>, <code>:above</code> indicate that instead of an exact match, either the search term left matches the value, or vice-versa.</li>
+ <li>For uri: <code>:below</code>, <code>:above</code> indicate that instead of an exact match, either the search term left matches the value, or vice-versa.</li> -->
 </ul>
 <p>
-Server SHALL reject any search request that contains is suffixed by a modifier that the 
+Сервер ДОЛЖЕН отклонять любые запросы поиска, которые содержат суффиксы-модификаторы, которые сервер <b>не</b> поддерживает для данного параметра. К примеру, если сервер поддерживает параметр поиска <code>name</code>, но не его модификатор <code>:exact</code>, ему следует отклонять поиск с параметром <code>name:exact=Bill</code> и возвращать HTTP-ошибку <code>400</code> и <a href="operationoutcome.html">OperationOutcome</a> с <a href="operationoutcome-example-searchfail.html">чётким сообщением об ошибке</a>.
+<!-- Server SHALL reject any search request that contains is suffixed by a modifier that the 
 server does <b>not</b> support for that parameter. For example, if the server supports 
 the <code>name</code> search param, but not the <code>:exact</code> modifier on the name, it should reject a 
 search with the parameter <code>name:exact=Bill</code>, using an HTTP <code>400</code> error with
-an <a href="operationoutcome.html">OperationOutcome</a> with a <a href="operationoutcome-example-searchfail.html">clear error message</a>.
+an <a href="operationoutcome.html">OperationOutcome</a> with a <a href="operationoutcome-example-searchfail.html">clear error message</a>. -->
 
 </p>
 
 <a name="prefix" />
-<h4>Prefixes</h4>
+<h4>Префиксы<!-- Prefixes --></h4>
 <p>
-For the ordered parameter types of <a href="#number">number</a>, <a href="#date">date</a>, and <a href="#quantity">quantity</a>, 
+Для упорядоченных параметров типа <a href="#number">number</a>, <a href="#date">date</a>и <a href="#quantity">quantity</a>, префикс к значению параметра может быть использован для управления характером поиска совпадения. Чтобы избежать экранирования URL-строки и визуальной путаницы, используются следующие префиксы:
+<!-- For the ordered parameter types of <a href="#number">number</a>, <a href="#date">date</a>, and <a href="#quantity">quantity</a>, 
 a prefix to the parameter value may be used to control the nature of the matching. To avoid URL escaping and visual confusion,
-the following prefixes are used:
+the following prefixes are used: -->
 </p>
 <table class="grid">
  <tr>
+	<td><code>eq</code></td>
+	<td>значение параметра в ресурсе равно указанному значению</td>
+	<td>диапазон значения поиска целиком содержит диапазон целевого значения</td>
+ </tr>
+ <tr>
+	<td><code>ne</code></td>
+	<td>the value for the parameter in the resource is not equal to the provided value</td>
+  <td>the range of the search value does not fully contain the range of the target value</td>
+ </tr>
+ <tr>
+	<td><code>gt</code></td>
+	<td>the value for the parameter in the resource is greater than the provided value</td>
+  <td>the range above the search value intersects (i.e. overlaps) with the range of the target value</td>
+ </tr>
+ <tr>
+	<td><code>lt</code></td>
+	<td>the value for the parameter in the resource is less than the provided value</td>
+  <td>the range below the search value intersects (i.e. overlaps) with the range of the target value</td>
+ </tr>
+ <tr>
+	<td><code>ge</code></td>
+	<td>the value for the parameter in the resource is greater or equal to the provided value</td>
+  <td>the range above the search value intersects (i.e. overlaps) with the range of the target value, or the range of the search value fully contains the range of the target value</td>
+ </tr>
+ <tr>
+	<td><code>le</code></td>
+	<td>the value for the parameter in the resource is less or equal to the provided value</td>
+  <td>the range below the search value intersects (i.e. overlaps) with the range of the target value or the range of the search value fully contains the range of the target value</td>
+ </tr>
+ <tr>
+	<td><code>sa</code></td>
+	<td>the value for the parameter in the resource starts after the provided value</td>
+  <td>the range of the search value does not overlap with the range of the target value, and the range below the search value contains the range of the target value</td>
+ </tr>
+ <tr>
+	<td><code>eb</code></td>
+	<td>the value for the parameter in the resource ends before the provided value</td>
+  <td>the range of the search value does overlap not with the range of the target value, and the range above the search value contains the range of the target value</td>
+ </tr>
+ <tr>
+	<td><code>ap</code></td>
+	<td>the value for the parameter in the resource is approximately the same to the provided value.<br/> 
+	Note that the recommended value for the approximation is 10% of the stated value (or for a date, 10% of the gap between now and the date), but systems may choose other values where appropriate</td>
+  <td>the range of the search value overlaps with the range of the target value</td>
+ </tr>
+<!--  <tr>
 	<td><code>eq</code></td>
 	<td>the value for the parameter in the resource is equal to the provided value</td>
 	<td>the range of the search value fully contains the range of the target value</td>
@@ -333,7 +433,7 @@ the following prefixes are used:
 	<td>the value for the parameter in the resource is approximately the same to the provided value.<br/> 
 	Note that the recommended value for the approximation is 10% of the stated value (or for a date, 10% of the gap between now and the date), but systems may choose other values where appropriate</td>
   <td>the range of the search value overlaps with the range of the target value</td>
- </tr>
+ </tr> -->
 </table>
 <p>
 If no prefix is present, the prefix <code>eq</code> is assumed. Note that the way search parameters operate 
