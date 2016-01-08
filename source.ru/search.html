@@ -271,7 +271,7 @@ search parameters refer to the same type of element in multiple
 places, or refer to derived values. -->
 </p>
 <p>
-Некоторые параметры поиска, заданные ресурсами, ассоциируются с более чем одним путем в ресурсе. Это означает, что соответствие такоум параметру поиска выполняется в случае, когда любой из путей содержит совпадающее содержимое. Если путь соответствует, ресурс целиком возвращается в результатах поиска. Клиенту может потребоваться проверить ресурс, чтобы определить, который из путей содержит совпадение.
+Некоторые параметры поиска, заданные ресурсами, ассоциируются с более чем одним путем в ресурсе. Это означает, что соответствие такому параметру поиска выполняется в случае, когда любой из путей содержит совпадающее содержимое. Если путь соответствует, ресурс целиком возвращается в результатах поиска. Клиенту может потребоваться проверить ресурс, чтобы определить, который из путей содержит совпадение.
 <!-- Some search parameters defined by resources are associated
 with more than one path in a resource. This means that the search
 parameter matches if any of the paths contain matching content.  If a
@@ -345,27 +345,27 @@ the following prefixes are used: -->
  <tr>
 	<td><code>eq</code></td>
 	<td>значение параметра в ресурсе равно указанному значению</td>
-	<td>диапазон значения поиска целиком содержит диапазон целевого значения</td>
+	<td>диапазон значения поиска целиком содержит диапазон искомого значения</td>
  </tr>
  <tr>
 	<td><code>ne</code></td>
-	<td>the value for the parameter in the resource is not equal to the provided value</td>
-  <td>the range of the search value does not fully contain the range of the target value</td>
+	<td>значение этого параметра в ресурсе не равно указанному значению</td>
+  <td>диапазон значения параметра поиска не полностью содержит диапазон искомого значения</td>
  </tr>
  <tr>
 	<td><code>gt</code></td>
-	<td>the value for the parameter in the resource is greater than the provided value</td>
-  <td>the range above the search value intersects (i.e. overlaps) with the range of the target value</td>
+	<td>значение этого параметра в ресурсе больше, чем указанное значение</td>
+  <td>диапазон выше значения поиска пересекается (т. е. частично совпадает) с диапазоном искомого значения</td>
  </tr>
  <tr>
 	<td><code>lt</code></td>
-	<td>the value for the parameter in the resource is less than the provided value</td>
-  <td>the range below the search value intersects (i.e. overlaps) with the range of the target value</td>
+	<td>значение этого параметра в ресурсе меньше, чем указанное значение</td>
+  <td>диапазон ниже значения поиска пересекается (т. е. частично совпадает) с диапазоном искомого значения</td>
  </tr>
  <tr>
 	<td><code>ge</code></td>
-	<td>the value for the parameter in the resource is greater or equal to the provided value</td>
-  <td>the range above the search value intersects (i.e. overlaps) with the range of the target value, or the range of the search value fully contains the range of the target value</td>
+	<td>значение этого параметра в ресурсе больше или равно указанному значению</td>
+  <td>диапазон выше значения поиска пересекается (т. е. перекрывает) диапазон искомого значения, либо диапазон значения поиска полностью содержит диапазон искомого значения </td>
  </tr>
  <tr>
 	<td><code>le</code></td>
@@ -436,22 +436,43 @@ the following prefixes are used: -->
  </tr> -->
 </table>
 <p>
-If no prefix is present, the prefix <code>eq</code> is assumed. Note that the way search parameters operate 
+Если префикс не указан, предполагается, что это префикс <code>eq</code>. Обратите внимание, что способ работы параметров поиска отличается от способа работы операций над двумя числами в математическом смысле. <code>sa</code> (<code>starts-after</code>) и 
+<code>eb</code> (<code>ends-before</code>) не используются для целых чисел.
+<!-- If no prefix is present, the prefix <code>eq</code> is assumed. Note that the way search parameters operate 
 is not the same as the way the operations on two numbers work in a mathematical sense. <code>sa</code> (<code>starts-after</code>) and 
-<code>eb</code> (<code>ends-before</code>) are not used with integer values.
+<code>eb</code> (<code>ends-before</code>) are not used with integer values. -->
 </p>
 <p>
-For each prefix above, two interpretations are provided - the simple intent of the prefix and the 
+Для каждого префикса, приведённого выше, указаны две интерпретации - назначение префикса и интерпретация этого параметра при применении к диапазонам. Интерпретация диапазонов приведена для десятичных чисел и дат. 
+<!-- For each prefix above, two interpretations are provided - the simple intent of the prefix and the 
 interpretation of the parameter when applied to ranges. The range interpretation is provided
 for decimals and dates.  Searches are always performed on values that are implicitly
 or explicitly a range. For instance, the number 2.0 has an implicit range of 
 1.95 to 2.05, and the date 2015-08-12 has an implicit range of the all the time during that day. 
 If the target value is a <a href="datatypes.html#range">Range</a>, a <a href="datatypes.html#period">Period</a>, 
 or a <a href="datatypes.html#timing">Timing</a>, then the target is explicitly a range. Three ranges 
-are identified:
+are identified: -->
 </p>
 <table class="grid">
  <tr>
+	<td>границы интервала</td>
+	<td>Пределы, вытекающие из точности значения</td>
+  <td>Число 2.0 имеет диапазон от 1.95 до 2.05<br/>
+      Дата 2015-08-12 имеет диапазон от 00:00 до 00:00 исключительно</td>
+ </tr>
+ <tr>
+	<td>интервал левее указанного значения</td>
+	<td>До указанного числа</td>
+  <td>Интервал левее 2.0 включает в себя любое значение, которое меньше или равно &lt;2.00000000000000000000<br/>
+      Интервал левее 2015-08-12T05:23:45 включает в себя любое время до 2015-08-12T05:23:45.000000000000000</td>
+ </tr>
+ <tr>
+	<td>диапазон правее указанного значения</td>
+	<td>Указанное значение и выше</td>
+  <td>Интервал правее 2.0 включает в себя любое значение, которое больше или равно &lt;2.00000000000000000000<br/>
+      Интервал правее 2015-08-12T05:23:45 включает в себя любое время после 2015-08-12T05:23:45.000000000000000</td>
+ </tr>
+<!--  <tr>
 	<td>range of the value</td>
 	<td>The limits implied by the precision of the value</td>
   <td>The number 2.0 has a range of 1.95 to 2.05<br/>
@@ -468,98 +489,137 @@ are identified:
 	<td>The specified value and up</td>
   <td>The range above 2.0 includes any value greater or equal to &lt;2.00000000000000000000<br/>
       The range after 2015-08-12T05:23:45 includes any time after 2015-08-12T05:23:45.000000000000000</td>
- </tr>
+ </tr> -->
 </table>
 <p>
-The proper use of these ranges is discussed further below. 
+Обсуждение надлежащего использования этих интервалов будет продолжено ниже.
+<!-- The proper use of these ranges is discussed further below.  -->
 </p>
 
 <a name="number" />
 <h4>number</h4>
 <p>
-Sarching on a simple numerical value in a resource. Examples:
+Примеры поиска простых численных значений в ресурсе:
+<!-- Sarching on a simple numerical value in a resource. Examples: -->
 </p>
 <table class="grid">
- <tr><td><code>[parameter]=100</code></td><td>Values that equal 100, to 3 significant figures precision, so range [99.5 ... 100.5)</td></tr>
+ <tr><td><code>[parameter]=100</code></td><td>Значения, равные 100 с точностью до 3 значимых знаков, таким образом это будет диапазон [99.5 ... 100.5)</td></tr>
+ <tr><td><code>[parameter]=100.00</code></td><td>Значения, равные 100 с точностью до 5 значимых знаков, таким образом это будет диапазон [99.995 ... 100.005). Целые числа также равны 100.00, но не 100.01</td></tr>
+ <tr><td><code>[parameter]=lt100</code></td><td>Значения меньше 100</td></tr>
+ <tr><td><code>[parameter]=le100</code></td><td>Значения, которые меньше или равны 100</td></tr>
+ <tr><td><code>[parameter]=gt100</code></td><td>Значения больше 100</td></tr>
+ <tr><td><code>[parameter]=ge100</code></td><td>Значения, которые больше или равны 100</td></tr>
+ <tr><td><code>[parameter]=ne100</code></td><td>Значения, которые не равны 100</td></tr>
+<!--  <tr><td><code>[parameter]=100</code></td><td>Values that equal 100, to 3 significant figures precision, so range [99.5 ... 100.5)</td></tr>
  <tr><td><code>[parameter]=100.00</code></td><td>Values that equal 100, to 5 significant figures precision, so range [99.995 ... 100.005). Whole numbers also equal 100.00, but not 100.01</td></tr>
  <tr><td><code>[parameter]=lt100</code></td><td>Values that are less than 100</td></tr>
  <tr><td><code>[parameter]=le100</code></td><td>Values that are less or equal to 100</td></tr>
  <tr><td><code>[parameter]=gt100</code></td><td>Values that are greater than 100</td></tr>
  <tr><td><code>[parameter]=ge100</code></td><td>Values that are greater or equal to 100</td></tr>
- <tr><td><code>[parameter]=ne100</code></td><td>Values that are not equal to 100</td></tr>
+ <tr><td><code>[parameter]=ne100</code></td><td>Values that are not equal to 100</td></tr> -->
 </table>
 <p>
-Note: Uncertainty does not factor in evaluations.  The precision of the numbers is considered arbitrarily high. (The 
-way search parameters operate in resources is not the same as whether two numbers are equal to each other in a mathematical sense).
+Примечание: неточность не играет роли при вычислениях. Точность чисел полагается произвольно высокой. (То, как параметры поиска работают в ресурсах, отличается от того, являются ли два числа равными друг другу в математическом смысле).
+<!-- Note: Uncertainty does not factor in evaluations.  The precision of the numbers is considered arbitrarily high. (The 
+way search parameters operate in resources is not the same as whether two numbers are equal to each other in a mathematical sense). -->
 </p>
 
 <p>
-Here are some example searches:
+Вот несколько примеров поиска:
+<!-- Here are some example searches: -->
 </p>
 <table>
- <tr><td width="50%"><b>Search</b></td><td><b>Description</b></td></tr>
+ <tr><td width="50%"><b>Поиск</b></td><td><b>Описание</b></td></tr>
+ <tr><td><pre> GET [base]/Encounter?length=gt20</pre></td><td>Поиск всех визитов, длившихся более 20 дней</td></tr>
+ <tr><td><pre> GET [base]/ImmunizationRecommendation?deo-number=2</pre></td><td>Поиск всех рекомендаций по иммунизации, рекомендующих вторую дозу</td></tr>
+<!--  <tr><td width="50%"><b>Search</b></td><td><b>Description</b></td></tr>
  <tr><td><pre> GET [base]/Encounter?length=gt20</pre></td><td>Search for all the encounters longer than 20 days</td></tr>
- <tr><td><pre> GET [base]/ImmunizationRecommendation?deo-number=2</pre></td><td>Search for any immunization recommendation recommending a second dose</td></tr>
+ <tr><td><pre> GET [base]/ImmunizationRecommendation?deo-number=2</pre></td><td>Search for any immunization recommendation recommending a second dose</td></tr> -->
 </table>
 
 
 <a name="date" />
 <h4>date</h4>
 <p>
-A date parameter searches on a date/time or period. As is usual for date/time related functionality, while the
-concepts are relatively straight-forward, there are a number of subtleties involved in ensuring consistent behavior.
+Параметр даты ищет по дате/времени или периоду. Как это принято для функциональности, связанной с датой/временем, хотя эти понятия и являются относительно простыми, имеется целый ряд тонкостей, связанных с обеспечением их согласованного поведения.
+<!-- A date parameter searches on a date/time or period. As is usual for date/time related functionality, while the
+concepts are relatively straight-forward, there are a number of subtleties involved in ensuring consistent behavior. -->
 </p>
 <p>
-The date parameter format is <code>yyyy-mm-ddThh:nn:ss(TZ)</code> (the standard XML format).
+Формат параметра даты следующий: <code>yyyy-mm-ddThh:nn:ss(TZ)</code> (стандартный XML-формат).
+<!-- The date parameter format is <code>yyyy-mm-ddThh:nn:ss(TZ)</code> (the standard XML format). -->
 </p>
 <p>
-Technically, this is any of the <a href="datatypes.html#date">date</a>, <a href="datatypes.html#dateTime">dateTime</a>, 
+Технически, им является любой из типов данных <a href="datatypes.html#date">date</a>, <a href="datatypes.html#dateTime">dateTime</a> 
+и <a href="datatypes.html#instant">instant</a>; при этом может указываться любая степень точности даты, однако она ДОЛЖНА идти слева направо (т. е. нельзя указать месяц без года), за исключением того, что минуты ДОЛЖНЫ присутствовать, если указан час, и вы ДОЛЖНЫ указать часовой пояс, если присутствует время. Примечание: временнАя часть даты может состоять из часов и минут без секунд, в отличие от типа dateTime XML-схемы. Некоторые пользовательские агенты могут экранировать символы <code>:</code> в URL, и серверы ДОЛЖНЫ корректно обрабатывать это.
+<!-- Technically, this is any of the <a href="datatypes.html#date">date</a>, <a href="datatypes.html#dateTime">dateTime</a>, 
 and <a href="datatypes.html#instant">instant</a> data types; e.g. Any degree of precision can be provided, but it SHALL 
 be populated from the left (e.g. can't specify a month without a year), except that the minutes SHALL be present if 
 an hour is present, and you SHOULD provide a time zone if the time part is present. Note: Time can consist of hours and minutes with no seconds, unlike the XML Schema dateTime type. Some user agents may escape the <code>:</code> 
-characters in the URL, and servers SHALL handle this correctly.
+characters in the URL, and servers SHALL handle this correctly. -->
 </p>
 <p>
-Date parameters may be used with the following data types:
+Параметры даты можно использовать со следующими типами данных:
+<!-- Date parameters may be used with the following data types: -->
 </p>
 <table class="grid">
- <tr><td><a href="datatypes.html#date">date</a></td><td>The range of the value is the day, month, or year as specified</td></tr>
+ <tr><td><a href="datatypes.html#date">date</a></td><td>В диапазон этого значения входит день, месяц или год, смотря что указано</td></tr>
+ <tr><td><a href="datatypes.html#dateTime">dateTime</a></td><td>Это значение включает в себя диапазон в соответствии с указанным выше; например дата 2013-01-10 обозначает любое время от 00:00 10-Янв 2013 непосредственно до 00:00 11-Янв 2013</td></tr>
+ <tr><td><a href="datatypes.html#instant">instant</a></td><td>Мгновением считается фиксированный момент времени с интервалом меньшим, чем точность системы, т. е. интервал с эффективной шириной 0</td></tr>
+ <tr><td><a href="datatypes.html#Period">Period</a></td><td>Период, хотя верхняя или нижняя граница может быть в действительности не указана в ресурсах.</td></tr>
+ <tr><td><a href="datatypes.html#Timing">Timing</a></td><td>the specified scheduling details are ignored and only the outer limits matter. For instance, a schedule that specifies every second day between
+   31-Jan 2013 and 24-Mar 2013 includes 1-Feb 2013, even though that is on an odd day that is not specified by the period. This is
+   to keep the server load processing queries reasonable.</td></tr>
+<!--  <tr><td><a href="datatypes.html#date">date</a></td><td>The range of the value is the day, month, or year as specified</td></tr>
  <tr><td><a href="datatypes.html#dateTime">dateTime</a></td><td>The range of the value as defined above; e.g. For example, the 
    date 2013-01-10 specifies all the time from 00:00 on 10-Jan 2013 to immediately before 00:00 on 11-Jan 2013</td></tr>
  <tr><td><a href="datatypes.html#instant">instant</a></td><td>An instant is considered a fixed point in time with an interval smaller than the precision of the system, i.e. an interval with an effective width of 0</td></tr>
  <tr><td><a href="datatypes.html#Period">Period</a></td><td>Explicit, though the upper or lower bound may not actually be specified in resources.</td></tr>
  <tr><td><a href="datatypes.html#Timing">Timing</a></td><td>the specified scheduling details are ignored and only the outer limits matter. For instance, a schedule that specifies every second day between
    31-Jan 2013 and 24-Mar 2013 includes 1-Feb 2013, even though that is on an odd day that is not specified by the period. This is
-   to keep the server load processing queries reasonable.</td></tr>
+   to keep the server load processing queries reasonable.</td></tr> -->
 </table>
 <p>
-Implicitly, a missing lower boundary is "less than" any actual date.  A missing upper boundary is "greater than" any actual date.
-The use of the prefixes:
+Неявно, опущенная нижняя граница "меньше", чем любая реальная дата. Опущенная верхняя граница "больше", чем любая реальная дата. 
+Применение префиксов:
+<!-- Implicitly, a missing lower boundary is "less than" any actual date.  A missing upper boundary is "greater than" any actual date.
+The use of the prefixes: -->
 </p>
 <table class="grid">
- <tr><td><code>[parameter]=eq2013-01-14</code></td><td>matches 2013-01-14T00:00 (obviously) and also 2013-01-14T10:00 but not 2013-01-15T00:00</td></tr>
+ <tr><td><code>[parameter]=eq2013-01-14</code></td><td>соответствует 2013-01-14T00:00 (очевидно), а также 2013-01-14T10:00, но не 2013-01-15T00:00</td></tr>
+ <tr><td><code>[parameter]=ne2013-01-14</code></td><td>соответствует 2013-01-15T00:00, но не 2013-01-14T00:00 или 2013-01-14T10:00</td></tr>
+ <tr><td><code>[parameter]=lt2013-01-14T10:00</code></td><td>Включает в себя дату 2013-01-14, поскольку содержит в себе часть 14-Jan 2013 до 10 утра</td></tr>
+ <tr><td><code>[parameter]=gt2013-01-14T10:00</code></td><td>Включает в себя дату 2013-01-14, поскольку содержит в себе часть 14-Jan 2013 после 10 утра</td></tr>
+ <tr><td><code>[parameter]=ge2013-03-14</code></td><td>Включает в себя период от 21-Jan 2013 и далее, поскольку охватывает даты после 14-Mar 2013</td></tr>
+<!--  <tr><td><code>[parameter]=eq2013-01-14</code></td><td>matches 2013-01-14T00:00 (obviously) and also 2013-01-14T10:00 but not 2013-01-15T00:00</td></tr>
  <tr><td><code>[parameter]=ne2013-01-14</code></td><td>matches 2013-01-15T00:00 but not 2013-01-14T00:00 or 2013-01-14T10:00</td></tr>
  <tr><td><code>[parameter]=lt2013-01-14T10:00</code></td><td>Includes the time 2013-01-14, because it includes the part of 14-Jan 2013 before 10am </td></tr>
  <tr><td><code>[parameter]=gt2013-01-14T10:00</code></td><td>Includes the time 2013-01-14, because it includes the part of 14-Jan 2013 after 10am</td></tr>
- <tr><td><code>[parameter]=ge2013-03-14</code></td><td>Incldues the period from 21-Jan 2013 onwards, because it may include times after 14-Mar 2013</td></tr>
+ <tr><td><code>[parameter]=ge2013-03-14</code></td><td>Incldues the period from 21-Jan 2013 onwards, because it may include times after 14-Mar 2013</td></tr> -->
 </table>
 <p>
-Other notes:
+Другие примечания:
+<!-- Other notes: -->
 </p>
 <ul>
- <li>When the date parameter is not fully specified, matches against it are based on the behavior of intervals, where:
+ <li>Когда параметр даты указан не полностью, совпадения с ним основываются на поведении интервалов, где:
+ <!-- When the date parameter is not fully specified, matches against it are based on the behavior of intervals, where: -->
 	<ul>
-		<li>Dates with only the year specified are equivalent to an interval that starts at the first instant of January 1st to the last instant of December 31st, e.g. 2000 is equivalent to an interval of [2000-01-01T00:00, 2000-12-31T23:59].</li>
-		<li>Dates with the year and month are equivalent to an interval that starts at the first instant of the first day of the month and ends on the last instant of the last day of the month, e.g. 2000-04 is equivalent to an interval of [2000-04-01T00:00, 2000-04-30T23:59].</li>
+		<li>Даты, где указан только год, эквивалентны интервалу, который начинается в первое мгновение 1го января до последнего мгновения 31го декабря, например 2000 эквивалентно интервалу [2000-01-01T00:00, 2000-12-31T23:59]
+    <!-- Dates with only the year specified are equivalent to an interval that starts at the first instant of January 1st to the last instant of December 31st, e.g. 2000 is equivalent to an interval of [2000-01-01T00:00, 2000-12-31T23:59]. --></li>
+		<li>Даты, где указан год и месяц, эквивалентны интервалу, который начинается в первое мгновение первого дня месяца и заканчивается в последнее мгновение последнего дня этого месяца, например 2000-04 эквивалентно интервалу [2000-04-01T00:00, 2000-04-30T23:59].
+    <!-- Dates with the year and month are equivalent to an interval that starts at the first instant of the first day of the month and ends on the last instant of the last day of the month, e.g. 2000-04 is equivalent to an interval of [2000-04-01T00:00, 2000-04-30T23:59]. --></li>
 	</ul>
  </li>
- <li>Where possible, the system should correct for timezones when performing queries. Dates do not have time zones, and time zones
+ <li>Везде, где это возможно, система должна корректировать часовые пояса при совершении запросов. Даты не имеют часовых поясов, и часовые пояса не должны учитываться. Там, где и параметр поиска, и дата время элемента ресурса не имеют часового пояса, им следует присваивать локальный часовой пояс сервера.
+ <!-- Where possible, the system should correct for timezones when performing queries. Dates do not have time zones, and time zones
    should not be considered. Where both search parameters and resource element date times do not have time zones, the servers local
-   time zone should be assumed.
+   time zone should be assumed. -->
  </li>
 </ul>
 <p>
-To search for all the procedures in a patient compartment that occurred over a 2 year period:
+Чтобы найти все процедуры в модуле patient, которые произошли за двухлетний период:
+<!-- To search for all the procedures in a patient compartment that occurred over a 2 year period: -->
 </p>
 <pre>
  GET [base]/Patient/23/Procedure?date=ge2010-01-01&amp;date=le2011-12-31
@@ -569,72 +629,91 @@ To search for all the procedures in a patient compartment that occurred over a 2
 <a name="string" />
 <h4>string</h4>
 <p>
-For a simple string search, a string parameter serves as the input for a case- and accent-insensitive search against sequences of characters. 
+Для простого текстового поиска строковый параметр служит как входные данные для регистронезависимого и нечувствительного к диакритическим знакам поиска по последовательностям символов.
+По умолчанию, поле соответствует строковому запросу, если значение этого поля равно или начинается со значения указанного параметра, после того как они оба были приведены к одному регистру и диакритическим знакам. Модификатор <code>:contains</code> возвращает результаты. которые включают в себя значение указанного параметра в любом месте в пределах области поиска. Модификатор <code>:exact</code> возвращает результаты, которые соответствуют указанному параметру полностью, включая регистр и диакритические знаки.
+<!-- For a simple string search, a string parameter serves as the input for a case- and accent-insensitive search against sequences of characters. 
 By default, a field matches a string query 
 if the value of the field equals or starts with the supplied parameter value, after 
 both have been normalized by case and accent. The <code>:contains</code> modifier 
 returns results that include the supplied parameter value anywhere within the field 
 being searched. The <code>:exact</code> modifier returns results that match 
-the entire supplied parameter, including casing and accents.
+the entire supplied parameter, including casing and accents. -->
 </p>
 <p>
-Examples:
+Примеры:
+<!-- Examples: -->
 </p>
 <table class="grid">
- <tr><td><code>[base]/Patient?name=eve</code></td><td>Any patients with a name containing "eve" at the start of the name. This would include patients with the name "Eve", "Evelyn".</td></tr>
+ <tr><td><code>[base]/Patient?name=eve</code></td><td>Все пациенты с именем, содержащим "eve" в начале имени. Сюда войдут пациенты с именами "Eve", "Evelyn".</td></tr>
+ <tr><td><code>[base]/Patient?name:contains=eve</code></td><td>Все пациенты с именем, содержащим "eve" в любом месте имени. Сюда войдут пациенты с именами "Eve", "Evelyn", а также "Severine".</td></tr>
+ <tr><td><code>[base]/Patient?name:exact=Eve</code></td><td>Все пациенты в точности с именем "Eve". Примечание: сюда не войдут пациенты с именами "eve" или "EVE".</td></tr>
+<!--  <tr><td><code>[base]/Patient?name=eve</code></td><td>Any patients with a name containing "eve" at the start of the name. This would include patients with the name "Eve", "Evelyn".</td></tr>
  <tr><td><code>[base]/Patient?name:contains=eve</code></td><td>Any patients with a name containing "eve" at any position. This would include patients with the name "Eve", "Evelyn", and also "Severine".</td></tr>
- <tr><td><code>[base]/Patient?name:exact=Eve</code></td><td>Any patients with a name that is exactly "Eve". Note: This would not include patients with the name "eve" or "EVE".</td></tr>
+ <tr><td><code>[base]/Patient?name:exact=Eve</code></td><td>Any patients with a name that is exactly "Eve". Note: This would not include patients with the name "eve" or "EVE".</td></tr> -->
 </table>
 <p>
-An additional modifier <code>:text</code>
+ Дополнительный модификатор <code>:text</code> можно использовать для указания поиска с продвинутым управлением текста  (см. <a href="#text">ниже</a>), однако такую возможность предлагает только несколько серверов.
+<!-- An additional modifier <code>:text</code>
 can be used to specify a search with advanced text handling (see <a href="#text">below</a>)
-though only a few servers are expected to offer this facility.
+though only a few servers are expected to offer this facility. -->
 </p>
 <p>
-It is at the discretion of the server whether to pre-process names, addresses,
+Решение о том, делать ли предварительную обработку имен, адресов и контактной информации для удаления символов-разделителей до нахождения соответствия, чтобы гарантировать непротиворечивое поведение, остается на усмотрение сервера. Например сервер мог бы удалить все пробелы и символы  <code>-</code> из телефонных номеров. Что лучше всего подходит, варьируется в зависимости от культуры и контекста.
+<!-- It is at the discretion of the server whether to pre-process names, addresses,
 and contact details to remove separator characters prior to matching in order
 to ensure more consistent behavior. For example, a server might remove all
 spaces and <code>-</code> characters from phone numbers. What is most appropriate varies
-depending on culture and context.
+depending on culture and context. -->
 </p>
 
 
 <a name="uri" />
 <h4>uri</h4>
 <p>
-The uri parameter refers to a URI (<a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>) element.
+Параметр URI относится к элементу URI (<a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>). 
+Совпадения являются точными (регистр, диакритические знаки, экранирование), и весь URI целиком должен совпадать. С помощью модификатора  <code>:above</code> или <code>:below</code> можно указать, что используется частичное совпадение. Например:
+<!-- The uri parameter refers to a URI (<a href="https://tools.ietf.org/html/rfc3986">RFC 3986</a>) element.
 Matches are precise (e.g. case, accent, and escape) sensitive, and the entire URI must match. 
 The modifier <code>:above</code> or <code>:below</code> can be used to indicate
-that partial matching is used. For example:
+that partial matching is used. For example: -->
 </p>
 <pre>
  GET [base]/ValueSet?url=http://acme.org/fhir/ValueSet/123
  GET [base]/ValueSet?url:below=http://acme.org/fhir/
 </pre>
 <p>
-The first line is a request to find any value set with the exact url "http://acme.org/fhir/ValueSet/123". 
+Первый запрос - поиск набора значений с точным URL "http://acme.org/fhir/ValueSet/123". 
+Второй запрос вернет все наборы значений, у которых URL начинается с "http://acme.org/fhir/".
+Обратное утверждение - поиск всех наборов значений, кроме данного конкретного URL - может пригодиться для поиска систем назначения имён, но не так полезно, чем поиск с <code>:below</code>.
+<!-- The first line is a request to find any value set with the exact url "http://acme.org/fhir/ValueSet/123". 
 The second line performs a search that will return any value sets that have a URL that starts with "http://acme.org/fhir/".
 The converse - the search for any value set above a given specific URL.  This approach may be useful for searching
-name systems, but it is generally less useful than the <code>:below</code> search. 
+name systems, but it is generally less useful than the <code>:below</code> search.  -->
 </p>
 
 <a name="token"> </a>
 <h4>token</h4>
 <p>
-A token type is a parameter that searches on a URI/value pair. It is used against
+Тип токен - это параметр, который ищет по паре URI/значение. Используется для поиска по типу данных code или identifier, когда значение этого параметра будет содержать URI, ограничивающий его значение. Поиск выполняется по паре из Coding или Identifier. Синтаксис для значения будет одним из следующих:
+<!-- A token type is a parameter that searches on a URI/value pair. It is used against
 a code or identifier data type where the value may 
-have a URI that scopes its meaning. The search is performed against the  pair from a Coding or an Identifier. The syntax for the value is one of the following:
+have a URI that scopes its meaning. The search is performed against the  pair from a Coding or an Identifier. The syntax for the value is one of the following: -->
 </p>
 <ul>
- <li><b><code>[parameter]=[code]</code></b>: the value of <code>[code]</code> matches a Coding.code or Identifier.value irrespective of the value of the system property</li>
+ <li><b><code>[parameter]=[code]</code></b>: значение <code>[code]</code> совпадает с Coding.code или Identifier.value не зависимо от значения свойства "system"</li>
+ <li><b><code>[parameter]=[system]|[code]</code></b>: значение <code>[code]</code> совпадает с Coding.code или Identifier.value, а значение <code>[system]</code> совпадает со значением свойства "system" в Identifier или Coding</li>
+ <li><b><code>[parameter]=|[code]</code></b>: значение <code>[code]</code> совпадает с Coding.code или Identifier.value, а Coding/Identifier не содержит свойства "system"</li>
+<!--  <li><b><code>[parameter]=[code]</code></b>: the value of <code>[code]</code> matches a Coding.code or Identifier.value irrespective of the value of the system property</li>
  <li><b><code>[parameter]=[system]|[code]</code></b>: the value of <code>[code]</code> matches a Coding.code or Identifier.value, and the value of <code>[system]</code> matches the system property of the Identifier or Coding</li>
- <li><b><code>[parameter]=|[code]</code></b>: the value of <code>[code]</code> matches a Coding.code or Identifier.value, and the Coding/Identifier has no system property</li>
+ <li><b><code>[parameter]=|[code]</code></b>: the value of <code>[code]</code> matches a Coding.code or Identifier.value, and the Coding/Identifier has no system property</li> -->
 </ul>
 <p>
-Note: The namespace URI and code both must be <a href="#escaping">escaped</a>. Matches are literal (e.g. not based on subsumption or other code system features), but not case sensitive.
+Примечание: URI пространства имен и код необходимо <a href="#escaping">экранировать</a>. Совпадения должны быть буквальными (т. е. не должны основываться на отнесении к какой-либо категории или других характеристиках кодовых систем), но не должны зависеть от регистра.
+<!-- Note: The namespace URI and code both must be <a href="#escaping">escaped</a>. Matches are literal (e.g. not based on subsumption or other code system features), but not case sensitive. -->
 </p>
 <p>
-Token search parameters are used for the following data types:
+Параметры поиска по лексемам используются для следующих типов данных:
+<!-- Token search parameters are used for the following data types: -->
 </p>
 <table class="lines">
  <tr>
@@ -687,30 +766,41 @@ Token search parameters are used for the following data types:
  </tr>
 </table>
 <p>
-Note: The use of token search parameters for boolean fields: the boolean values "true" and "false" are also represented
+Примечание: Использование параметров поиска по лексемам для булевых полей: булевы значения "true" и "false" также представлены в виде формальных кодов в кодовой системе <a href="valueset-special-values.html">Special Values</a>, которая полезна, когда булевы значения нужно представить в виде типа данных <a href="datatypes.html#coding">Coding</a>. Пространство имён для этих кодов - http://hl7.org/fhir/special-values, однако обычно нет причин использовать это, поскольку достаточно и простых значений true или false.
+<!-- Note: The use of token search parameters for boolean fields: the boolean values "true" and "false" are also represented
 as formal codes in the <a href="valueset-special-values.html">Special Values</a> code system, which is useful when boolean values 
 need to be represented in a <a href="datatypes.html#coding">Coding</a> data type. The namespace for these codes is 
-http://hl7.org/fhir/special-values, though there is usually no reason to use this, as a simple true or false is sufficient.
+http://hl7.org/fhir/special-values, though there is usually no reason to use this, as a simple true or false is sufficient. -->
 </p>
 
-<p><b>Modifiers:</b></p>
+<p><b>Модификаторы<!-- Modifiers -->:</b></p>
 <table class="lines">
- <tr> <td><b>Modifier</b></td> <td><b>Use</b></td> </tr>
+ <tr> <td><b>Модификатор</b></td> <td><b>Применение</b></td> </tr>
+ <tr> <td><code>:text</code></td> <td>Этот параметр поиска обрабатывается как строка поиска по тексту, ассоциированному с кодом/значением - <i>CodeableConcept.text</i>, <i>Coding.display</i>, либо <i>Identifier.type.text</i>.</td> </tr>
+ <tr> <td><code>:not</code></td> <td>Изменяет на противоположное совпадение по коду, описанное в параграфе выше.</td> </tr>
+ <tr> <td><code>:above</code></td> <td>Параметром поиска является концепт с формой <code>[system]|[code]</code>, и он проверяет, включает ли кодинг в ресурсе указанный в поиске код. Например поисковый концепт имеет связь "is-a" с кодингом в ресурсе, и сюда входит сам кодинг.</td> </tr>
+ <tr> <td><code>:below</code></td> <td>Параметром поиска является концепт с формой <code>[system]|[code]</code>, и он проверяет, относится ли кодинг в ресурсе к указанному в поиске коду. Например кодинг в ресурсе имеет связь "is-a" с поисковым концептом, и сюда входит сам кодинг.</td> </tr>
+ <tr> <td><code>:in</code></td> <td>Параметром поиска является URI (относительный или абсолютный), который идентифицирует набор значений, и поисковый параметр проверяет, входит ли кодинг в указанный <a href="valueset.html">набор значений</a>. Ссылка может быть буквальной (адрес, где находится этот набор значений) или логической (ссылка на ValueSet.identifier). Если сервер может обработать эту ссылку как буквальный URL, он это делает, иначе пытается найти соответствие в известных логических значениях ValueSet.url.</td> </tr>
+ <tr> <td><code>:not-in</code></td> <td>Параметром поиска является URI (относительный или абсолютный), который идентифицирует набор значений, и поисковый параметр проверяет, что кодинг не входит в указанный набор значений.</td> </tr>
+<!--  <tr> <td><b>Modifier</b></td> <td><b>Use</b></td> </tr>
  <tr> <td><code>:text</code></td> <td>Rhe search parameter is processed as a string that searches text associated with the code/value - either <i>CodeableConcept.text</i>, <i>Coding.display</i>, or <i>Identifier.type.text</i>.</td> </tr>
  <tr> <td><code>:not</code></td> <td>Reverse the code matching described in the paragraph above.</td> </tr>
  <tr> <td><code>:above</code></td> <td>Rhe search parameter is a concept with the form <code>[system]|[code]</code>, and the search parameter tests whether the coding in a resource subsumes the specified search code.  For example, the search concept has an is-a relationship with the coding in the resource, and this includes the coding itself.</td> </tr>
  <tr> <td><code>:below</code></td> <td>the search parameter is a concept with the form <code>[system]|[code]</code>, and the search parameter tests whether the coding in a resource is subsumed by the specified search code. For example, the coding in the resource has an is-a relationship with the search concept, and this includes the coding itself.</td> </tr>
  <tr> <td><code>:in</code></td> <td>The search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is in the specified <a href="valueset.html">value set</a>. The reference may be literal (to an address where the value set can be found) or logical (a reference to ValueSet.url). If the server can treat the reference as a literal URL, it does, else it tries to match known logical ValueSet.url values.</td> </tr>
- <tr> <td><code>:not-in</code></td> <td>The search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is not in the specified value set.</td> </tr>
+ <tr> <td><code>:not-in</code></td> <td>The search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is not in the specified value set.</td> </tr> -->
 </table>
 <p>
-Most servers will only process value sets that are already known/registered/supported internally.
+Большинство серверов будут обрабатывать только заранее известные/зарегистрированные/поддерживаемые внутренние наборы значений. Однако серверы по выбору могут принимать любые валидные ссылки на наборы значений.
+Серверы по выбору могут учитывать таблицы соответствий концептов при проверке связей категоризации (отнесения объекта к определённой категории).
+<!-- Most servers will only process value sets that are already known/registered/supported internally.
 However, servers can elect to accept any valid reference to a value set.
-Servers may elect to consider concept mappings when testing for subsumption relationships.
+Servers may elect to consider concept mappings when testing for subsumption relationships. -->
 </p>
 
 <p>
-Example searches:
+Примеры запросов:
+<!-- Example searches: -->
 </p>
 <table>
  <tr><td width="50%"><b>Search</b></td><td><b>Description</b></td></tr>

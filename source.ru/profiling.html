@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Profiling FHIR%]
+[%settitle Профилирование FHIR%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,31 +13,35 @@
 
 [%profilesheader base%]
 
-<h2>Profiling FHIR</h2>
+<h2>Профилирование FHIR</h2>
 <table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
-The base FHIR specification (this specification) describes a set of base resources, frameworks
+Основная спецификация FHIR (данная спецификация) описывает набор базовых ресурсов, механизмов и интерфейсов, которые используются в различных контекстах в сфере здравоохранения. Однако имеются разногласия между юрисдикциями и экосистемой здравоохранения насчет методов, требований, норм, образования и того, какие действия являются выполнимыми и/или выгодными.
+<!-- The base FHIR specification (this specification) describes a set of base resources, frameworks
 and APIs that are used in many different contexts in healthcare. However there is wide variability 
 between jurisdictions and across the healthcare ecosystem around 
 practices, requirements, regulations, education and what actions are feasible 
-and/or beneficial.
+and/or beneficial. -->
 </p>
 <p>
-For this reason, the FHIR specification is a "platform specification" - it creates
+По этой причине спецификация FHIR является "платформенной спецификацией" - она создает общую платформу или фундамент, на котором реализуется множество различных решений.
+Вследствие этого, данной спецификации, как правило, требуется дальнейшая адаптация к конкретному контексту использования. Обычно такие адаптации означают:
+<!-- For this reason, the FHIR specification is a "platform specification" - it creates
 a common platform or foundation on which a variety of different solutions are implemented. 
 As a consequence, this specification usually requires further adaptation to particular
-contexts of use. Typically, these adaptations specify:
+contexts of use. Typically, these adaptations specify: -->
 </p>
 <ul>
- <li>Rules about which resource elements are or are not used, and what additional elements are added that are not part of the base specification</li>
- <li>Rules about which API features are used, and how</li>
- <li>Rules about which terminologies and used in particular elements</li>
- <li>Descriptions of how the Resource elements and API features map to local requirements and/or implementations</li>
+ <li>Правила о том, какие элементы ресурса использовать, какие не использовать, а также какие дополнительные элементы, которые не вошли в основную спецификацию,  добавлять<!-- Rules about which resource elements are or are not used, and what additional elements are added that are not part of the base specification --></li>
+ <li>Правила о том, какие свойства интерфейса использовать и каким образом<!-- Rules about which API features are used, and how --></li>
+ <li>Правила о том, какие справочники использовать в конкретных элементах<!-- Rules about which terminologies and used in particular elements --></li>
+ <li>Описание, каким образом элементы ресурса и свойства интерфейса сопоставляются с локальными требованиями и/или реализациями<!-- Descriptions of how the Resource elements and API features map to local requirements and/or implementations --></li>
 </ul>
 <p>
-Note that because of the nature of the healthcare ecosystem, there may be multiple
-overlapping sets of adaptations - by healthcare domain, by country, by institution, and/or by vendor/implementation.
+Обратите внимание, что из-за особенности медицинской экосистемы может появиться множество перекрывающих друг друга адаптаций - по домену здравоохранения, по стране, по учреждению и/или по поставщику/реализации.
+<!-- Note that because of the nature of the healthcare ecosystem, there may be multiple
+overlapping sets of adaptations - by healthcare domain, by country, by institution, and/or by vendor/implementation.  -->
 </p>
 <a name="glossary"> </a>
 <h3>Glossary</h3>
@@ -76,80 +80,95 @@ or any of the conformance resources found in one.
 <h3>Conformance Resources</h3>
 
 <p>
-Typically, Implementation Guides both restrict and extend APIs, resources and terminologies. FHIR provides a set of resources that
+Руководства по реализации, как правило, и ограничивают, и расширяют API, ресурсы и справочники. FHIR предоставляет набор ресурсов, которые могут использоваться для отображения и совместного использования решений, которые были созданы, и позволяет реализаторам на их базе создавать полезные сервисы. Эти
+ресурсы известны как ресурсы соответствия. Эти ресурсы соответствия позволяют реализаторам:
+<!-- Typically, Implementation Guides both restrict and extend APIs, resources and terminologies. FHIR provides a set of resources that
 can be used to represent and share the decisions that have been made, and allows implementers to build useful services from them. These
-resources are known as the conformance resources. These conformance resources allow implementers to:
+resources are known as the conformance resources. These conformance resources allow implementers to: -->
 </p>
 <ul>
- <li>Indicate that <a href="http.html">some API calls</a> are not used for a particular situation, and provide additional details about how API calls are used (<a href="conformance.html">Conformance</a> Resource)</li>
- <li>Add additional <a href="operations.html">operations</a> or <a href="search.html">search parameters</a> not in the base specification
-   (using the <a href="operationdefinition.html">OperationDefinition</a> resource or the <a href="searchparameter.html">SearchParameter</a> Resource</li>
- <li>Define how a particular structure (Resource, Extension or Data Type) is used (<a href="structuredefinition.html">StructureDefinition</a> Resource):
+ <li>Указывать, что <a href="http.html">некоторые вызовы интерфейса</a> не используются в определенных случаях, и предоставлять дополнительное описание по использованию интерфейса (ресурс <a href="conformance.html">Conformance</a>) <!-- Indicate that <a href="http.html">some API calls</a> are not used for a particular situation, and provide additional details about how API calls are used (<a href="conformance.html">Conformance</a> Resource) --></li>
+ <li>Вводить дополнительные <a href="operations.html">операции</a> и <a href="search.html">параметры поиска</a>, отсутствующие в базовой спецификации (с помощью ресурсов <a href="operationdefinition.html">OperationDefinition</a> и <a href="searchparameter.html">SearchParameter</a>)<!-- Add additional <a href="operations.html">operations</a> or <a href="search.html">search parameters</a> not in the base specification 
+   (using the <a href="operationdefinition.html">OperationDefinition</a> resource or the <a href="searchparameter.html">SearchParameter</a> Resource --></li>
+ <li>Задавать способ использования конкретной структуры (ресурса, расширения или типа данных) (ресурс <a href="structuredefinition.html">StructureDefinition</a>):<!-- Define how a particular structure (Resource, Extension or Data Type) is used (<a href="structuredefinition.html">StructureDefinition</a> Resource):
+ -->
     <ul>
-      <li>Describe how existing elements in resources are used</li>
-      <li>Identify existing elements that are not used</li>
-      <li>Define extensions that can be used in resources or data types</li>
+      <li>Описывать, каким образом используются существующие элементы ресурсов <!-- Describe how existing elements in resources are used --> </li>
+      <li>Указывать, какие именно элементы в ресурсах не используются <!-- Identify existing elements that are not used --> </li>
+      <li>Определять расширения для использования в ресурсах или типах данных <!-- Define extensions that can be used in resources or data types --> </li>
     </ul>
  </li>
- <li>Mix custom and standard terminologies and choose which codes from these to use for a particular (<a href="valueset.html">Value Set</a> and StructureDefinition Resources)</li>
- <li>Map between local and standard terminologies or content models (<a href="conceptmap.html">Concept Map</a> Resource)</li>
- <li>Register system namespaces for identifiers and terminologies (<a href="namingsystem.html">NamingSystem</a> Resource)</li>
- <li>Describe and register in a Data Dictionary specific Data Elements that are used across systems (<a href="dataelement.html">DataElement</a> Resource)</li>
+ <li>Смешивать пользовательские и стандартные справочники и выбирать, какие коды из них использовать в конкретных случаях (ресурсы <a href="valueset.html">Value Set</a> и StructureDefinition)
+<!-- Mix custom and standard terminologies and choose which codes from these to use for a particular (<a href="valueset.html">Value Set</a> and StructureDefinition Resources) --></li>
+ <li>Устанавливать соответствие между локальными и стандартными справочниками или моделями содержания (ресурс <a href="conceptmap.html">Concept Map</a>)<!-- Map between local and standard terminologies or content models (<a href="conceptmap.html">Concept Map</a> Resource) --></li>
+ <li>Регистрировать пространства имен систем для идентификаторов и справочников (ресурс <a href="namingsystem.html">NamingSystem</a>)<!-- Register system namespaces for identifiers and terminologies (<a href="namingsystem.html">NamingSystem</a> Resource) --></li>
+ <li>Регистрировать и описывать в Словаре данных особые элементы данных, которые используются в различных системах (ресурс <a href="dataelement.html">DataElement</a> )<!-- Describe and register in a Data Dictionary specific Data Elements that are used across systems (<a href="dataelement.html">DataElement</a> Resource) --></li>
 </ul>
 <p>
+Эти ресурсы необходимо использовать, придерживаясь правил, рассмотренных ниже, а также 
+следуя основным концепциям расширения, которые описаны в разделе <a href="extensibility.html">"Расширяемость"</a>.
+Для удобства реализаторов основные определения самой спецификации публикуются с помощью этих же самых ресурсов.
+<!-- 
 These resources need to be used as discussed below, and also
 following the basic concepts for extension that are described in <a href="extensibility.html">"Extensibility"</a>. 
-For implementer convenience, the specification itself publishes its base definitions using these same resources.
+For implementer convenience, the specification itself publishes its base definitions using these same resources. -->
 </p>
 
 <a name="profile-uses"> </a>
-<h3>Two uses of Profiles</h3>
+<h3>Два применения профилей<!-- Two uses of Profiles --></h3>
 <p>
-The <a href="conformance.html">Conformance</a> resource describes two different uses for profiles on resources:
+Ресурс <a href="conformance.html">Conformance</a> описывает два различных способа применения профилей ресурсов: профили ресурсов (Resource Profiles) и системные профили (System Profiles). Профили ресурсов задаются с помощью элемента <i>Conformance.rest.resource.profile</i>, а системные профили задаются с помощью элемента <i>Conformance.profile</i>.
+<!-- The <a href="conformance.html">Conformance</a> resource describes two different uses for profiles on resources:
 Resource Profiles and System Profiles. Resource Profiles are specified using the <i>Conformance.rest.resource.profile</i> element 
-and System Profiles are specified using the <i>Conformance.profile</i> element. 
+and System Profiles are specified using the <i>Conformance.profile</i> element.  -->
 </p>
 <h4>Conformance.rest.resource.profile</h4>
 <p>
-These profiles describe the general features that are supported by the system for each kind of 
+Такие профили описывают общие свойства, поддерживаемые системой для каждого вида ресурса. Как правило, это супермножество всех возможных сценариев использования, реализованных системой. Это взгляд на функциональность системы с уровня ресурсов.
+<!-- These profiles describe the general features that are supported by the system for each kind of 
 resource. Typically, this is the superset of all the different use-cases implemented by the system. 
-This is a resource-level perspective of a system's functionality. 
+This is a resource-level perspective of a system's functionality.  -->
 </p>
 <h4>Conformance.profile</h4>
 <p>
-These profiles describe the information handled/produced by the system on a per use case basis.
-Some examples of the uses for these kind of profiles:
+Такие профили описывают информацию, обрабатываемую/создаваемую системой на посценарной основе. Вот некоторые примеры профилей этого типа:
+<!-- These profiles describe the information handled/produced by the system on a per use case basis.
+Some examples of the uses for these kind of profiles: -->
 </p>
 <ul>
- <li>A Laboratory service producing a set of different reports - general chemistry, blood count, etc. Typical labs would support several hundred different reports</li>
- <li>A care manager which handles a set of different types of care plans and associated clinical resources</li>
- <li>A medications formulary that handles several different levels of sophistication in its medication representations</li>
+ <li>Лабораторный сервис, создающий ряд различных отчетов - общая химия, анализ крови и т. п. Типичные лаборатории будут поддерживать несколько сотен различных отчетов<!-- A Laboratory service producing a set of different reports - general chemistry, blood count, etc. Typical labs would support several hundred different reports --></li>
+ <li>Управляющий медицинским обслуживанием (care manager), оперирующий множеством планов медицинского обслуживания (care plans) различного типа и связанных клинических ресурсов<!-- A care manager which handles a set of different types of care plans and associated clinical resources --></li>
+ <li>Формуляр медикаментов, оперирующий несколькими различными уровнями сложности представления медикаментов<!-- A medications formulary that handles several different levels of sophistication in its medication representations --></li>
 </ul> 
 <p>
-Typically, these profiles are a series of variations on the same set of resources - different use cases leading to handling 
+Как правило, эти профили являются рядом вариаций одного набора ресурсов - различные варианты использования, приводящие к обработке ресурсов, представляющей их по-разному. Все эти сценарии использования, приведенные выше, относятся к системе, производящей и публикующей данные, однако та же самая концепция применяется и к системам, которые являются потребителями данных. Например:
+<!-- Typically, these profiles are a series of variations on the same set of resources - different use cases leading to handling 
 the resources that represent them differently. These usecases described above all pertain to system that produce and publish
-data, but the same concept applies to systems that consume data. For instance:
+data, but the same concept applies to systems that consume data. For instance: -->
 </p>
 <ul>
- <li>An expert service that provides analysis on several different sets of data conforming to a particular pattern - tests x,y and z with particular codes and units</li>
+ <li>Экспертная система, проводящая анализ нескольких различных множеств данных, соответствующих определенному паттерну - проверяет x,y и z с конкретными кодами и единицами<!-- An expert service that provides analysis on several different sets of data conforming to a particular pattern - tests x,y and z with particular codes and units --></li>
 </ul>
 <p>
-For producer and a consumer systems to exchange data successfully based on 
+Системам-производителям и системам-потребителям для успешного обмена данными на основе одного из таких поддерживаемых системой профилей не достаточно знать, что системам случается иметь системные профили, которые частично совпадают с интересующим сценарием использования; потребитель должен иметь возможность фильтровать общий набор ресурсов, доступных в системе-производителе, и иметь дело только с теми, которые относятся к данному сценарию использования.
+<!-- For producer and a consumer systems to exchange data successfully based on 
 one of these system supported profiles, it's not enough to know that the
 systems happen to have system profiles that overlap for the use case 
 of interest; the consumer must be able to filter the total set of resources
 made available by the producer system and deal only with the ones relevant
-to the use case. 
+to the use case.  -->
 </p>
 <p>
-As an example consider a laboratory system generating thousands of reports 
+В качестве примера рассмотрим лабораторную систему, производящую тысячи отчетов в день. 1% этих отчетов будет некоторый эндокринный отчет, который система поддержки принятия решений знает как обрабатывать. Обе системы декларируют, что они поддерживают определенный профиль эндокринного отчета, однако как экспертная система на деле находит те эндокринные отчеты, которые она умеет обрабатывать?
+<!-- As an example consider a laboratory system generating thousands of reports 
 a day. 1% of those reports are a particular endocrine report that a 
 decision support system knows how to process. Both systems declare that 
 they support the particular endocrine report profile, but how does the expert
-system actually find the endocrine reports that it knows how to process? 
+system actually find the endocrine reports that it knows how to process?  -->
 </p>
 <p>
-One possible option is for the expert system to receive every single 
+Одним из возможных решений для экспертной системы будет получать каждый отчет, приходящий из лабораторной системы, проверять его на соответствие профилю и затем принимать решение, обрабатывать ли его. Проверка, соответствует ли ресурс определенному профилю - это прямая операция (как вариант можно использовать <a href="downloads.html">предложенные для этого инструменты</a>), однако это очень неэффективный способ - экспертной системе придется получить и обработать в 100 раз больше ресурсов, чем нужно. Чтобы помочь потребителю находить подходящий набор отчетов для конкретного варианта использования, производитель ресурсов ДОЛЖЕН для всех профилей, объявленных в Conformance.profile:
+<!-- One possible option is for the expert system to receive every single 
 report coming from the lab system, check whether it conforms to the 
 profile or not, and then decide whether to process it. Checking whether
 a resource conforms to a particular profile or not is a straight 
@@ -157,23 +176,26 @@ forward operation (one option is to use the <a href="downloads.html">provided to
 but this is very inefficient way - the expert system has to receive 
 and process 100 times many resources as it uses. To help a consumer 
 find the correct set of reports for a use-case, a producer of  
-resources also SHALL, for any profile declared in Conformance.profile:
+resources also SHALL, for any profile declared in Conformance.profile: -->
 </p>
 <ol>
- <li><a href="resource.html#meta">Mark resources</a> with profile assertions documenting the profile(s) they conform to (this enables indexing by the profile)</li>
- <li>(if a server) support searching by the <a href="search.html#profile">_profile parameter</a> for the declared profiles</li>
+ <li><a href="resource.html#meta">Указать для ресурсов</a> профили, которым они соответствуют (что позволит делать индексирование по профилям)
+ <!-- <a href="resource.html#meta">Mark resources</a> with profile assertions documenting the profile(s) they conform to (this enables indexing by the profile) --></li>
+ <li>(для сервера) поддерживать поиск по <a href="search.html#profile">параметру _profile</a> для заявленных профилей<!-- (if a server) support searching by the <a href="search.html#profile">_profile parameter</a> for the declared profiles --></li>
 </ol>
 <p>
-Beyond these requirements, a producer of resources SHOULD ensure that any resource instance that would reasonably be expected
-to conform to the declared profiles SHOULD be published in this form. 
+Помимо этих требований, производитель ресурсов ДОЛЖЕН гарантировать, что любые экземпляры ресурсов, от которых резонно будет ожидать соответствия заявленным профилям, ДОЛЖНЫ быть опубликованы в этой форме.
+<!-- Beyond these requirements, a producer of resources SHOULD ensure that any resource instance that would reasonably be expected
+to conform to the declared profiles SHOULD be published in this form. --> 
 </p>
 
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>DSTU Note:</b> there are many uninvestigated issues associated with this use of profiles. 
+<b>Примечание к DSTU:</b> имеется много неисследованных вопросов, связанных с таким использованием профилей. HL7 ведет активный поиск обратной связи от пользователей, которые экспериментируют в этой области, и пользователи должны быть готовы к изменениям свойств и обязательств в этой области в будущем.
+<!-- <b>DSTU Note:</b> there are many uninvestigated issues associated with this use of profiles. 
 HL7 is actively seeking feedback from users who experiment in this area, and users
-should be prepared for changes to features and obligations in this area in the future.
+should be prepared for changes to features and obligations in this area in the future. -->
 </p>
 <p>
 Feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
@@ -181,16 +203,18 @@ Feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedbac
 </blockquote>
 
 <a name="api"> </a>
-<h3>Extending and Restricting the API</h3>
+<h3>Ограничение и расширение интерфейса<!-- Extending and Restricting the API --></h3>
 <p>
-A conformance resource lists the REST interactions (read, update, search, etc.) that a server provides or that a client uses, along with 
+Ресурс Conformance перечисляет REST-взаимодействия  (read, update, search и т.п.), которые предлагает сервер или которые использует клиент, наряду с некоторой вспомогательной информацией для каждого. Может также использоваться для задания набора желаемого поведения (например в рамках спецификации или Request for Proposal). Единственное взаимодействие, которые серверы обязаны поддерживать, это само взаимодействие <a href="http.html#conformance">Conformance</a> - для получения заявления о соответствии сервера. Помимо этого, серверы и клиенты поддерживают и используют те API-вызовы, которые подходят в их случае.
+<!-- A conformance resource lists the REST interactions (read, update, search, etc.) that a server provides or that a client uses, along with 
 some supporting information for each. It can also be used to define a set of desired behavior (e.g. as part of a specification or
 a Request for Proposal).  The only interaction that servers are required to support is the <a href="http.html#conformance">Conformance</a>
 interaction itself - to retrieve the server's conformance statement. Beyond that, servers and clients support and use whichever
-API calls are relevant to their use case.
+API calls are relevant to their use case. -->
 </p>
 <p>
-In addition to the operations that FHIR provides, servers may provide additional 
+В дополнение к операциям, которые предлагает FHIR, серверы могут предоставлять дополнительные операции, которые не входят в FHIR-спецификацию. Реализаторы могут безопасно делать это добавлением имени пользовательской операции с префиксом '$' к существующему URL-адресу FHIR, как это делает  <a href="operations.html">Operations framework</a>. Ресурс Conformance поддерживает определение того, что OperationDefinitions использует конкретные имена в точке взаимодействия. Если определены сервисы, которые не объявлены с помощью OperationDefinition, может быть допустимо использовать более длинные имена, сокращая шанс коллизии (и путаницы) с сервисами, объявленными в других интерфейсах. Базовая спецификация никогда не будет давать операциям имена, содержащие "." , поэтому реализаторам рекомендуется использовать некоторый подходящий префикс в их именах (например "ihe.someService") для уменьшения вероятности конфликта имен.
+<!-- In addition to the operations that FHIR provides, servers may provide additional 
 operations that are not part of the FHIR specification. Implementers can safely do this 
 by appending a custom operation name prefixed with '$' to an existing FHIR URL, as the <a href="operations.html">Operations
 framework</a> does. The Conformance resource supports defining what OperationDefinitions make use of particular
@@ -198,27 +222,32 @@ names on an end-point.  If services are defined that are not declared using Oper
 appropriate to use longer names, reducing the chance of collision (and confusion) with services declared by
 other interfaces.  The base specification will never define operation names with a "." in them, so 
 implementers are recommended to use some appropriate prefix for their names (such as "ihe.someService")
-to reduce the likelihood of name conflicts. 
+to reduce the likelihood of name conflicts.  -->
 </p>
 <p>
-Implementations are encouraged, but not required, to define operations using the standard
+В реализациях поощряется, но не требуется определять операции с помощью стандартного фреймворка операций FHIR - то есть объявлять операции, используя ресурс OperationDefinition, однако некоторые операции могут включать форматы, которые не могут быть описаны этим способом.
+<!-- Implementations are encouraged, but not required, to define operations using the standard
 FHIR operations framework - that is, to declare the operations using the OperationDefinition
-resource, but some operations may involve formats that can't be described that way. 
+resource, but some operations may involve formats that can't be described that way.  -->
 </p>
 <p>
-Implementations are also able to extend the FHIR API using additional content types. 
+В реализациях также можно расширять FHIR API, используя дополнительные типы содержимого. К примеру, может быть полезно <a href="http.html#read">read</a> или <a href="http.html#update">update</a> ресурсы appointment с помощью формата на основе vCard. vCard определяет собственный MIME-тип, и эти дополнительные MIME-типы можно безопасно использовать в дополнение к тем, что определены в данной спецификации.
+<!-- Implementations are also able to extend the FHIR API using additional content types. 
 For instance, it might be useful to <a href="http.html#read">read</a> or <a href="http.html#update">update</a> 
 the appointment resources using a vCard based format. vCard defines its own mime type, and these additional mime types can 
-safely be used in addition to those defined in this specification.
+safely be used in addition to those defined in this specification. -->
 </p>
 
 <a name="resources"> </a>
-<h3>Extending and Restricting Resources</h3>
+<h3>Расширение и ограничение ресурсов<!-- Extending and Restricting Resources --></h3>
 
 <p>
+Расширение и ограничение ресурсов (общеизвестное как "профилирование ресурса") выполняется с помощью ресурса "StructureDefinition", который представляет собой правила о том, каким образом используются элементы в ресурсе и где в ресурсе используются расширения.
+<!-- 
 Extending and restricting resources (collectively known as 'profiling a resource') is done with a 
 "StructureDefinition" resource, which is a statement of rules about 
 how the elements in a resource are used, and where extensions are used in a resource.
+ --> 
 </p>
 
 <a name="cardinality"> </a>
@@ -241,32 +270,39 @@ When a profile is constraining another profile where there are more cardinality 
 principles still apply: the constraining profile can only allow what the base profile allows.
 </p>
 
-<h3>Limitations of Use</h3>
+<h3>Границы применения<!-- Limitations of Use --></h3>
 <p>
+Возможности Structure Definitions по ограничению существующих ресурсов и типов данных несколько ограничены:
+<!-- 
 What Structure Definitions can do when they are constraining existing resources and datatypes is limited in some respects:
+ -->
 </p>
 <ul>
- <li>Profiles cannot break the rules established in the base specification (e.g. cardinality as described above)</li>
- <li>Profiles cannot specify default values or meanings for elements</li>
- <li>Profiles cannot give more specific names to elements</li>
- <li>It must be safe to process a resource without knowing the profile</li>
+ <li>Профили не могут нарушать правила, установленные в базовой спецификации (например кардинальное число, как описано выше)<!-- Profiles cannot break the rules established in the base specification (e.g. cardinality as described above) --></li>
+ <li>Профили не могут задавать элементам значения или смысл по умолчанию<!-- Profiles cannot specify default values or meanings for elements --></li>
+ <li>Профили не могут давать элементам более конкретные имена<!-- Profiles cannot give more specific names to elements --></li>
+ <li>Обрабатывать ресурс без знания его профиля должно быть безопасно<!-- It must be safe to process a resource without knowing the profile --></li>
 </ul>
 <p>
-The consequence of this is that if a profile mandates extended behavior that cannot
+Следствием этого является то, что если профиль разрешает расширенное поведение, которое нельзя игнорировать, он должен также разрешать использование <a href="extensibility.html#modifiers">расширения-модификатора</a>.
+Другими словами, это знание должно быть явным в экзепляре, а не подразумеваться в профиле.
+<!-- The consequence of this is that if a profile mandates extended behavior that cannot 
 be ignored, it must also mandate the use of a <a href="extensibility.html#modifiers">modifier extension</a>. 
 Another way of saying this is that knowledge must be explicit in
-the instance, not implicit in the profile. 
+the instance, not implicit in the profile.  -->
 </p>
 <p>
-As an example, if a profile wished to describe that a <a href="procedure.html">Procedure</a>
+В качестве примера, если профиль желает описать, что ресурс <a href="procedure.html">Procedure</a> отрицается (например утверждение, что это никогда не случалось), он не может просто сказать в самом профиле, что это то, что значеит ресурс; вместо этого профиль должен сказать, что этот ресурс должен иметь расширение, которое представляет это знание.
+<!-- As an example, if a profile wished to describe that a <a href="procedure.html">Procedure</a>
 resource was being negated (e.g. asserting that it never happened), it could not simply say 
 in the profile itself that this is what the resource means; instead, the profile must 
-say that the resource must have an extension that represents this knowledge. 
+say that the resource must have an extension that represents this knowledge.  -->
 </p>
 <p>
-There is a facility to mark resources to indicate that they can only be safely understood by 
+Существует средство для обозначения ресурсов, что они могут быть безопасно поняты только при таком способе обработки, когда известен и понятен набор опубликованных правил. Для получения дополнительной информации см. <a href="resource.html#implicitRules">Restricted Understanding of Resources</a>.
+<!-- There is a facility to mark resources to indicate that they can only be safely understood by 
 a process that is aware of and understands a set of published rules. For more information,
-see <a href="resource.html#implicitRules">Restricted Understanding of Resources</a>.
+see <a href="resource.html#implicitRules">Restricted Understanding of Resources</a>. -->
 </p>
  
 
