@@ -820,14 +820,16 @@ Servers may elect to consider concept mappings when testing for subsumption rela
 <a name="quantity" />
 <h4>quantity</h4>
 <p>
-A quantity parameter searches on the <a href="datatypes.html#Quantity">Quantity</a> data type.
-The syntax for the value follows the form:
+Параметр величины ищет по типу данных <a href="datatypes.html#Quantity">Quantity</a>. Синтаксис для значения соответствует следующей форме:
+<!-- A quantity parameter searches on the <a href="datatypes.html#Quantity">Quantity</a> data type.
+The syntax for the value follows the form: -->
 </p>
 <ul>
- <li><b>[parameter]=[prefix][number]|[system]|[code]</b> matches a quantity with the given unit</li>
+ <li><b>[parameter]=[prefix][number]|[system]|[code]</b> соответствует количеству с заданными единицами измерения<!-- matches a quantity with the given unit --></li>
 </ul>
 <p>
-The prefix is optional, and is as described <a href="#prefix">above</a>, both regarding how precision and comparator/range operators are interpreted. Example searches:
+Префикс является необязательным и, как описано <a href="#prefix">выше</a>, зависит от того, как интерпретируются точность и  операторы сравнения/диапазона. Примеры поиска:
+<!-- The prefix is optional, and is as described <a href="#prefix">above</a>, both regarding how precision and comparator/range operators are interpreted. Example searches: -->
 </p>
 
 <table>
@@ -839,7 +841,8 @@ The prefix is optional, and is as described <a href="#prefix">above</a>, both re
 </table>
 
 <p>
-The search processor may choose to perform a search based on <a href="datatypes.html#quantity">canonical units</a> (e.g. any value where the units can be converted to a value in mg in the case above).
+Поисковый процессор может решить выполнить поиск, основанный на <a href="datatypes.html#quantity">канонических единицах измерений</a> (например любое значение, которое может быть преобразовано в значение в миллиграммах, для случая выше).
+<!-- The search processor may choose to perform a search based on <a href="datatypes.html#quantity">canonical units</a> (e.g. any value where the units can be converted to a value in mg in the case above). -->
 </p>
 
 
@@ -847,9 +850,10 @@ The search processor may choose to perform a search based on <a href="datatypes.
 <a name="reference" />
 <h4>reference</h4>
 <p>
-A reference parameter refers to <a href="references.html">references between resources</a>.  For example, find all
+Ссылочный параметр относится к <a href="references.html">ссылкам между ресурсами</a>. Например найти все Conditions, где объектом ссылки является определенный пациент, где пациент выбирается по имени или идентификатору. Интерпретация параметра <i>ссылка</i> одна из двух:
+<!-- A reference parameter refers to <a href="references.html">references between resources</a>.  For example, find all
 Conditions where the subject reference is a particular patient, where the patient is selected by name or identifier.
-The interpretation of a <i>reference</i> parameter is either:
+The interpretation of a <i>reference</i> parameter is either: -->
 </p>
 <ul>
  <li><b><code>[parameter]=[id]</code></b> the logical [id] of a resource using a local reference (i.e. a relative reference)</li>
@@ -858,8 +862,10 @@ The interpretation of a <i>reference</i> parameter is either:
  <li><b><code>[parameter]=[url]</code></b> where the [url] is an absolute URL - a reference to a resource by its absolute location</li>
 </ul>
 <p>
-Note: A relative reference resolveing to the same value as a specified absolute URL, or vice versa, qualifies as a match.
-For example, if the search parameter value is Patient/123, then this will find references like this: 
+Примечание: относительная ссылка, разрешаемая в то же значение, что и указанный абсолютный URL-адрес, либо наоборот, также считается совпадением.
+К примеру, если значением параметра поиска является Patient/123, тогда будут найдены подобные ссылки:
+<!-- Note: A relative reference resolveing to the same value as a specified absolute URL, or vice versa, qualifies as a match.
+For example, if the search parameter value is Patient/123, then this will find references like this:  -->
 </p>
 <pre>
  &lt;patient&gt;
@@ -867,9 +873,10 @@ For example, if the search parameter value is Patient/123, then this will find r
  &lt;/patient&gt;
 </pre>
 <p>
-If the server base address is http://example.org/fhir, then the full URL for that reference is 
+Если базовый адрес сервера http://example.org/fhir, тогда полный URL-адрес для этой ссылки будет ttp://example.org/fhir/Patient/123, что означает, что условию поиска будут соответствовать такие ссылки, как:
+<!-- If the server base address is http://example.org/fhir, then the full URL for that reference is 
 http://example.org/fhir/Patient/123, which means that the search term also matches patient
-references like this:
+references like this: -->
 </p>
 <pre>
  &lt;patient&gt;
@@ -877,36 +884,43 @@ references like this:
  &lt;/patient&gt;
 </pre>
 <p>
-In addition, searching for <code>reference=http://example.org/fhir/Patient/123</code> will also 
-match both references.
+Кроме того, поиск <code>reference=http://example.org/fhir/Patient/123</code> соответствует обеим ссылкам.
+<!-- In addition, searching for <code>reference=http://example.org/fhir/Patient/123</code> will also 
+match both references. -->
 </p>
 <p>
-Some references are allowed to point to more than one type of resource; e.g. subject : Reference(Patient|Group|Device|..).
+Некоторым ссылкам можно указывать на более чем один тип ресурса; например subject : Reference(Patient|Group|Device|..).
+В этом случае несколько ресурсов могут иметь одинаковый логический идентификатор. Серверы ДОЛЖНЫ отклонять поиск, где логический идентификатор ссылается более чем на один соответствующий поиску ресурс среди различных типов. Для того чтобы дать возможность клиенту выполнять поиск в таких ситуациях, тип указывается явно:
+<!-- Some references are allowed to point to more than one type of resource; e.g. subject : Reference(Patient|Group|Device|..).
 In these cases, multiple resources may have the same logical identifier. Servers SHOULD reject a search where 
 the logical id refers to more than one matching resource across different types.
-In order to allow the client to perform a search in these situations the type is specified explicitly:
+In order to allow the client to perform a search in these situations the type is specified explicitly: -->
 </p>
 <pre>
  GET [base]/Condition?subject=Patient/23
 </pre>
 <p>
-This searches for any conditions where the subject refers to the patient resource with the
+Это запрос возвращает все ресурсы Condition, у которых "subject" ведёт на ресурс Patient с логическим идентификатором "23". Также определён модификатор, чтобы клиенты могли явно указывать нужный тип:
+<!-- This searches for any conditions where the subject refers to the patient resource with the
 logical identifier "23". A modifier is also defined to to allow the client to be explicit 
-about the intended type:
+about the intended type: -->
 </p>
 <pre>
  GET [base]/Condition?subject:Patient=23
 </pre>
 <p>
-This has the same effect as the previous search. The modifier becomes useful when used with chaining
+Этот запрос возвращает те же результаты, что и предыдущий. Модификатор становится полезным, когда используется в цепочечных запросах, о которых будет рассказано в следующем разделе. Примечание: модификатор <code>[type]</code> нельзя использовать со ссылкой на ресурс, расположенный на другом сервере, поскольку серверу обычно не известно, какой тип имеет этот ресурс. Однако, поскольку это абсолютные ссылки, не может возникнуть неоднозначность относительно типа.
+<!-- This has the same effect as the previous search. The modifier becomes useful when used with chaining
 as explained in the next section. Note: The <code>[type]</code> modifier can't be used with a reference to a resource found on another server, 
 since the server would not usually know what type that resource has.  However, since these are absolute references, 
-there can be no ambiguity about the type.
+there can be no ambiguity about the type. -->
 </p>
 
-<h4>Chained parameters</h4>
+<h4>Цепочечные параметры<!-- Chained parameters --></h4>
 <p>
-In order to save a client from performing a series of search operations,
+Чтобы избавить клиента от необходимости выполнять серию операций поиска, ссылочные параметры могут быть "сцеплены" (объединены в последовательность) добавлением к ним точки <code>.</code>, за которой следует имя параметра поиска, указанного для целевого ресурса. Это может быть сделано рекурсивно, следуя логическому пути через граф связанных ресурсов, разделенных точкой <code>.</code>. К примеру дано, что ресурс <a href="diagnosticreport.html">DiagnosticReport</a> 
+имеет параметр поиска с именем <i>subject</i>, который обычно является ссылкой на ресурс <a href="patient.html">Patient</a>, и этот ресурс Patient содержит параметр <i>name</i>, который ищет по имени пациента, тогда поиск вида
+<!-- In order to save a client from performing a series of search operations,
 reference parameters may be "chained" by appending them with
 a period (<code>.</code>) followed by the name of a search parameter defined for the target
 resource. This can be done recursively, following a logical path
@@ -916,21 +930,23 @@ the resource <a href="diagnosticreport.html">DiagnosticReport</a>
 has a search parameter named <i>subject</i>, which is usually a
 reference to a <a href="patient.html">Patient</a> resource, and
 the Patient resource includes a parameter <i>name</i> which
-searches on patient name, then the search
+searches on patient name, then the search -->
 </p>
 <pre>
  GET [base]/DiagnosticReport?subject.name=peter
 </pre>
 <p>
-is a request to return all the lab reports that have a subject whose name includes "peter". Because
+- это запрос на возвращение всех лабораторных отчетов, в которых имеется объект, чье имя содержит "peter". Так как  объект Diagnostic Report может быть одним из набора различных ресурсов, необходимо ограничить поиск определенным типом:
+<!-- is a request to return all the lab reports that have a subject whose name includes "peter". Because
 the Diagnostic Report subject can be one of a set of different resources, it's necessary to limit
-the search to a particular type:
+the search to a particular type: -->
 </p>
 <pre>
  GET [base]/DiagnosticReport?subject:Patient.name=peter
 </pre>
 <p>
-This request returns all the lab reports that have a subject which is a patient, whose name includes "peter".
+Этот запрос возвращает все лабораторные отчеты, имеющие в качестве объекта пациента, чье имя содержит "peter".
+<!-- This request returns all the lab reports that have a subject which is a patient, whose name includes "peter". -->
 </p>
 
 <p>

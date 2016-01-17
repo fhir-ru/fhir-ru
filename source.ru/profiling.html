@@ -873,46 +873,56 @@ Search criteria fall into one of four categories: -->
 </p>
 
 <a name="mixing"> </a>
-<h3>Supporting Multiple Profiles</h3>
+<h3>Поддержка нескольких профилей<!-- Supporting Multiple Profiles --></h3>
 
 <p>
-Applications may be required to support more than one profile at a time. 
+Может возникнуть ситуация, когда приложению необходимо поддерживать больше одного профиля одновременно. Типичный пример такой ситуации - приложение системы ЭМК, которое должно поддерживать профиль совместного использования данных общего назначения (например <a href="daf/daf.html">DAF</a>), а также поддерживать специфические профили для системы поддержки принятия решений, использующей тот же самый интерфейс.
+<!-- Applications may be required to support more than one profile at a time. 
 A typical example might be an EHR application that is required to support
 a general purpose data sharing profile (such as <a href="daf/daf.html">DAF</a>),
 and also must support specific profiles for decision support using the same 
-interface. 
+interface.  -->
 </p>
 <p>
-The impact of supporting two sets of profiles depends on whether resources
+Эффект от поддержки двух наборов профилей зависит от того, создаются ли ресурсы или используются. Когда приложение создаёт некоторый контент, оно должно создать такой контект, который соответствует обоим наборам профилей - т. е. "пересечению" этих профилей (intersection). Когда приложение получает информацию в качестве потребителя, оно должно иметь возможность принимать контент,  который соответствует каждому набору профилей - т. е. "объединению" этих профилей (union).
+<!-- The impact of supporting two sets of profiles depends on whether resources
 are being created or consumed. When an application is creating content, it 
 has to create content that conforms to both sets of profiles - that is, the 
 intersection of the profiles. When an application is consuming information,
 then it must be able to consume content that conforms to either set of 
-profiles - that is, the union of the profiles. 
+profiles - that is, the union of the profiles.  -->
 </p>
 <p>
-Since applications generally consume and produce resources at the same time,
+Поскольку приложения, как правило, получают и создают ресурсы одновременно, соответствие более чем одному профилю может быть невозможно, если только профили не спроектированы таким образом, чтобы описывать ограничения на разных уровнях, а ситуация, описанная выше, является одним из подобных случаев, когда один профиль направлен на доступ к данным, происхождение и доступность, а другой - на клиническое содержимое.
+<!-- Since applications generally consume and produce resources at the same time,
 conforming to more than one profile may not be possible, unless the profiles
 are designed to make statements at different levels - and the case above
 is one such case, where one profile is focused on data access, provenance, 
-and availability, the other profile is focused on clinical content.
+and availability, the other profile is focused on clinical content. -->
 </p>
 <p>
-Accordingly, profiles can relate to each other in four different ways. 
-Each profile can be thought of in terms of the set of instances that conform to the profile:
+Соответственно, профили могут быть связаны друг с другом четырьмя разными способами.
+Каждый профиль может быть представлен в терминах множества экземпляров, которые соответствуют этому профилю:
+<!-- Accordingly, profiles can relate to each other in four different ways. 
+Each profile can be thought of in terms of the set of instances that conform to the profile: -->
 </p>
 <ol>
- <li>non-overlapping: there no instances that conform to profiles A &amp; B (technically, the intersection of profiles A &amp; B is an empty set)</li>
+ <li>непересекающиеся множества: нет экземпляров, которые соответствуют профилям А и Б (технически, пересечение профилей А и Б соответствует пустому множеству)</li>
+ <li>частично пересекающиеся множества: некоторые экземпляры соответствуют и А, и Б, остальные - только А или Б</li>
+ <li>одно множество входит в другое: все ресурсы, которые соответствуют А, соответствуют и Б, но только некоторые из тех, что соответствуют Б, соответствуют А (или наоборот)</li>
+ <li>равные множества: все ресурсы, которые соответствуют профилю А, также соответствуют и профилю Б, а все ресурсы, которые не соответствуют профилю Б, не соответствуют и профилю А</li>
+<!--  <li>non-overlapping: there no instances that conform to profiles A &amp; B (technically, the intersection of profiles A &amp; B is an empty set)</li>
  <li>partly overlapping: some instances conform to both A &amp; B, but others only conform to A or B</li>
  <li>one set contained in the other: all resources that conform to A conform to B, but only some of the ones that conform to B conform to A (or vice versa)</li>
- <li>identical sets: all resources that conform to A also conform to B and any resources that don't conform to B, don't conform to A</li>
+ <li>identical sets: all resources that conform to A also conform to B and any resources that don't conform to B, don't conform to A</li> -->
 </ol>
 <p>
-Profiles can be compared to determine their compatibility. 
+Профили можно сравнивать для определения их совместимости. Одно <a href="daf-cqi.html">такое сравнение </a> можно найти между <a href="daf/daf.html">DAF</a> и <a href="qicore/qicore.html">QICore</a>. Обратите внимание, что их разработка продолжается, а это сгенерированое инструментарием сравнение приведено исключительно для демонстрации концепции сравнения профилей.
+<!-- Profiles can be compared to determine their compatibility. 
 One <a href="daf-cqi.html">such comparison</a> can be found between <a href="daf/daf.html">DAF</a>
 and <a href="qicore/qicore.html">QICore</a>. Note that this comparison is 
 generated by tooling under ongoing development, and is purely draft content to
-demonstrate the idea of profile comparison.
+demonstrate the idea of profile comparison. -->
 </p>
 
 </div>
