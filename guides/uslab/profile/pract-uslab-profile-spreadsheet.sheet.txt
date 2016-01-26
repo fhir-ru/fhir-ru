@@ -8,6 +8,7 @@
   Context = Practitioner
   English = Shall have Organization.name and/or Organization.identifier.
   XPath = exists(f:name) or exists(f:identifier)
+  Expression = name or identifier
   Severity = error
 
  -- Row 2 -----------------------------------
@@ -15,6 +16,7 @@
   Context = Practitioner.address.postalCode
   English = (Zip or Postal Code) SHALL be formatted as 99999[-9999] for US Zip or ZIP +4 codes or as A9A9A9 for Canadian postal codes.
   XPath = f:matches(issued,[0-9]{5}(-[0-9]{4}){0,1} )
+  Expression = postalCode:matches(\"[0-9]{5}(-[0-9]{4}){0,1}\")
   Severity = error
 
 === Sheet USLab-Pract =====================================
@@ -64,10 +66,10 @@
   Must Support = Y
   Type = uri
   Short Label = OID for National Provider Identifier (NPI)
-  Definition = See https://nppes.cms.hhs.gov/NPPES/
+  Definition = See http://hl7.org/fhir/sid/us-npi
   Requirements = NPI for practitioner is used
-  Committee Notes = could also use \'https://nppes.cms.hhs.gov/NPPES/\'
-  Value = urn:oid:2.16.840.1.113883.4.6
+  Committee Notes = could also use \'http://hl7.org/fhir/sid/us-npi\'
+  Value = http://hl7.org.fhir/sid/us-npi
 
  -- Row 7 -----------------------------------
   Element = Practitioner.identifier.value
@@ -238,6 +240,7 @@
   Context = Practitioner
   English = Shall have Organization.name and/or Organization.identifier.
   XPath = exists(f:name) or exists(f:identifier)
+  Expression = name or identifier
   Severity = error
 
  -- Row 2 -----------------------------------
@@ -245,6 +248,7 @@
   Context = Practitioner.address.postalCode
   English = (Zip or Postal Code) SHALL be formatted as 99999[-9999] for US Zip or ZIP +4 codes or as A9A9A9 for Canadian postal codes.
   XPath = f:matches(issued,[0-9]{5}(-[0-9]{4}){0,1} )
+  Expression = postalCode:matches(\"[0-9]{5}(-[0-9]{4}){0,1}\")
   Severity = error
 
 === Sheet USLab-PHPract =====================================
@@ -294,10 +298,10 @@
   Must Support = Y
   Type = uri
   Short Label = OID for National Provider Identifier (NPI)
-  Definition = See https://nppes.cms.hhs.gov/NPPES/
+  Definition = See http://hl7.org/fhir/sid/us-npi
   Requirements = NPI for practitioner is used
-  Committee Notes = could also use \'https://nppes.cms.hhs.gov/NPPES/\'
-  Value = urn:oid:2.16.840.1.113883.4.6
+  Committee Notes = could also use \'http://hl7.org/fhir/sid/us-npi\'
+  Value = http://hl7.org.fhir/sid/us-npi
 
  -- Row 7 -----------------------------------
   Element = Practitioner.identifier.value

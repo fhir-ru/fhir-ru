@@ -56,24 +56,28 @@
   Context = Media
   English = Height can only be used for a photo or video
   XPath = not(f:type/@value=\'audio\') or not(f:height)
+  Expression = height.empty() or type != \'audio\'
 
  -- Row 2 -----------------------------------
   Id = 2
   Context = Media
   English = Width can only be used for a photo or video
   XPath = not(f:type/@value=\'audio\') or not(f:width)
+  Expression = width.empty() or type != \'audio\'
 
  -- Row 3 -----------------------------------
   Id = 3
   Context = Media
   English = Frames can only be used for a photo
   XPath = (f:type/@value=\'photo\') or not(f:frames)
+  Expression = frames.empty() or type = \'photo\'
 
  -- Row 4 -----------------------------------
   Id = 4
   Context = Media
   English = Duration can only be used for an audio or a video
   XPath = not(f:type/@value=\'photo\') or not(f:duration)
+  Expression = duration.empty() or type != \'photo\'
 
 === Sheet Data Elements =====================================
 
@@ -86,29 +90,6 @@
   w5 = infrastructure.structure
 
  -- Row 2 -----------------------------------
-  Element = Media.type
-  Card. = 1..1
-  Summary = y
-  Type = code
-  Binding = DigitalMediaType
-  Short Label = photo | video | audio
-  Definition = Whether the media is a photo (still image), an audio recording, or a video recording
-  RIM Mapping = .code
-  w5 = class
-
- -- Row 3 -----------------------------------
-  Element = Media.subtype
-  Card. = 0..1
-  Summary = y
-  Type = CodeableConcept
-  Binding = DigitalMediaSubtype
-  Short Label = The type of acquisition equipment/process
-  Definition = Details of the type of the media - usually, how it was acquired (what type of device). If images sourced from a DICOM system, are wrapped in a Media resource, then this is the modality
-  RIM Mapping = .outboundRelationship[typeCode=\"COMP].target[classCode=\"LIST\", moodCode=\"EVN\"].code
-  DICOM Mapping = 0008,0060 | 0008,1032
-  w5 = class
-
- -- Row 4 -----------------------------------
   Element = Media.identifier
   Card. = 0..*
   Summary = y
@@ -120,7 +101,41 @@
   DICOM Mapping = 0008,0018 | ~0008,0050 | 0020,000D | 0020,000E
   w5 = id
 
+ -- Row 3 -----------------------------------
+  Element = Media.type
+  Card. = 1..1
+  Summary = y
+  Type = code
+  Binding = DigitalMediaType
+  Short Label = photo | video | audio
+  Definition = Whether the media is a photo (still image), an audio recording, or a video recording
+  RIM Mapping = .code
+  w5 = class
+
+ -- Row 4 -----------------------------------
+  Element = Media.subtype
+  Card. = 0..1
+  Summary = y
+  Type = CodeableConcept
+  Binding = DigitalMediaSubtype
+  Short Label = The type of acquisition equipment/process
+  Definition = Details of the type of the media - usually, how it was acquired (what type of device). If images sourced from a DICOM system, are wrapped in a Media resource, then this is the modality
+  RIM Mapping = .outboundRelationship[typeCode=\"COMP].target[classCode=\"LIST\", moodCode=\"EVN\"].code
+  DICOM Mapping = 0008,0060 | 0008,1032
+  w5 = class
+
  -- Row 5 -----------------------------------
+  Element = Media.view
+  Card. = 0..1
+  Summary = y
+  Type = CodeableConcept
+  Binding = MediaView
+  Short Label = Imaging view, e.g. Lateral or Antero-posterior
+  Definition = The name of the imaging view e.g. Lateral or Antero-posterior (AP).
+  RIM Mapping = DiagnosticImage.subjectOrientationCode
+  w5 = class
+
+ -- Row 6 -----------------------------------
   Element = Media.subject
   Card. = 0..1
   Summary = y
@@ -131,7 +146,7 @@
   DICOM Mapping = ~0010,0020
   w5 = who.focus
 
- -- Row 6 -----------------------------------
+ -- Row 7 -----------------------------------
   Element = !Media.requester
   Card. = 0..1
   Summary = y
@@ -143,7 +158,7 @@
   DICOM Mapping = 0008,0090
   w5 = who.init
 
- -- Row 7 -----------------------------------
+ -- Row 8 -----------------------------------
   Element = Media.operator
   Card. = 0..1
   Summary = y
@@ -153,17 +168,6 @@
   RIM Mapping = .participation[typeCode=\"PERF\"]???
   DICOM Mapping = 0008,1060?
   w5 = who.actor
-
- -- Row 8 -----------------------------------
-  Element = Media.view
-  Card. = 0..1
-  Summary = y
-  Type = CodeableConcept
-  Binding = MediaView
-  Short Label = Imaging view, e.g. Lateral or Antero-posterior
-  Definition = The name of the imaging view e.g. Lateral or Antero-posterior (AP).
-  RIM Mapping = DiagnosticImage.subjectOrientationCode
-  w5 = class
 
  -- Row 9 -----------------------------------
   Element = Media.deviceName

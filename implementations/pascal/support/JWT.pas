@@ -230,6 +230,8 @@ Type
     property issuedAt : TDateTime read GetissuedAt write SetissuedAt; // 'ist'
     property id : string read Getid write Setid; // 'jti'
 
+    function desc : String;
+
     // from openid:
     property name : string  read Getname write Setname; // 'name' End-User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences.
     property givenName : string read GetgivenName write SetgivenName; // 'given_name' Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.
@@ -426,12 +428,12 @@ end;
 
 function TJWK.GetExponent: TBytes;
 begin
-  result := JWTDeBase64URL(FObj.vStr['e']);
+  result := JWTDeBase64URL(FObj['e']);
 end;
 
 function TJWK.GetG: TBytes;
 begin
-  result := JWTDeBase64URL(FObj.vStr['g']);
+  result := JWTDeBase64URL(FObj['g']);
 end;
 
 function TJWK.GetHasExponent: boolean;
@@ -481,72 +483,72 @@ end;
 
 function TJWK.GetId: String;
 begin
-  result := FObj.vStr['kid'];
+  result := FObj['kid'];
 end;
 
 function TJWK.GetKey: TBytes;
 begin
-  result := JWTDeBase64URL(FObj.vStr['k']);
+  result := JWTDeBase64URL(FObj['k']);
 end;
 
 function TJWK.GetKeyType: String;
 begin
-  result := FObj.vStr['kty'];
+  result := FObj['kty'];
 end;
 
 function TJWK.GetP: TBytes;
 begin
-  result := JWTDeBase64URL(FObj.vStr['p']);
+  result := JWTDeBase64URL(FObj['p']);
 end;
 
 function TJWK.GetPrivateKey: TBytes;
 begin
-  result := JWTDeBase64URL(FObj.vStr['d']);
+  result := JWTDeBase64URL(FObj['d']);
 end;
 
 function TJWK.GetPublicKey: TBytes;
 begin
-  result := JWTDeBase64URL(FObj.vStr['n']);
+  result := JWTDeBase64URL(FObj['n']);
 end;
 
 function TJWK.GetQ: TBytes;
 begin
-  result := JWTDeBase64URL(FObj.vStr['q']);
+  result := JWTDeBase64URL(FObj['q']);
 end;
 
 function TJWK.GetX: TBytes;
 begin
-  result := JWTDeBase64URL(FObj.vStr['x']);
+  result := JWTDeBase64URL(FObj['x']);
 end;
 
 function TJWK.GetY: TBytes;
 begin
-  result := JWTDeBase64URL(FObj.vStr['y']);
+  result := JWTDeBase64URL(FObj['y']);
 end;
 
 procedure TJWK.SetExponent(const Value: TBytes);
 begin
-  FObj.vStr['e'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
+  FObj['e'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
 end;
 
 procedure TJWK.SetG(const Value: TBytes);
 begin
-  FObj.vStr['g'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
+  FObj['g'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
 end;
 
 procedure TJWK.SetId(const Value: String);
 begin
-  FObj.vStr['kid'] := Value;
+  FObj['kid'] := Value;
 end;
 
 procedure TJWK.SetKey(const Value: TBytes);
 begin
-  FObj.vStr['k'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
+  FObj['k'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
 end;
 
 procedure TJWK.SetKeyType(const Value: String);
 begin
-  FObj.vStr['kty'] := Value;
+  FObj['kty'] := Value;
 end;
 
 procedure TJWK.setObj(const Value: TJsonObject);
@@ -557,32 +559,32 @@ end;
 
 procedure TJWK.SetP(const Value: TBytes);
 begin
-  FObj.vStr['p'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
+  FObj['p'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
 end;
 
 procedure TJWK.SetPrivateKey(const Value: TBytes);
 begin
-  FObj.vStr['d'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
+  FObj['d'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
 end;
 
 procedure TJWK.SetPublicKey(const Value: TBytes);
 begin
-  FObj.vStr['n'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
+  FObj['n'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
 end;
 
 procedure TJWK.SetQ(const Value: TBytes);
 begin
-  FObj.vStr['q'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
+  FObj['q'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
 end;
 
 procedure TJWK.SetX(const Value: TBytes);
 begin
-  FObj.vStr['x'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
+  FObj['x'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
 end;
 
 procedure TJWK.SetY(const Value: TBytes);
 begin
-  FObj.vStr['y'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
+  FObj['y'] := String(BytesAsAnsiString(JWTBase64URL(Value)));
 end;
 
 function TJWK.Load(privKey : boolean): PRSA;
@@ -696,7 +698,7 @@ begin
   else if Value.has('keys') then
   begin
     FObj := Value;
-    arr := FObj.vArr['keys'];
+    arr := FObj.Arr['keys'];
     for i := 0 to arr.Count  - 1 do
       Add(TJWK.create(arr.Obj[i].Link));
   end
@@ -711,6 +713,18 @@ begin
   Create;
   FHeader := header;
   FPayload := payload;
+end;
+
+function TJWT.desc: String;
+begin
+  if preferredName <> '' then
+    result := preferredName
+  else if name <> '' then
+    result := name
+  else if id <> '' then
+    result := id
+  else
+    result := '??';
 end;
 
 constructor TJWT.create;
@@ -773,12 +787,12 @@ end;
 
 function TJWT.Getexpires : TDateTime;
 begin
-  result := UnixToDateTime(StrToIntDef(payload['exp'], 0));
+  result := UnixToDateTime(StrToIntDef(payload.num['exp'], 0));
 end;
 
 procedure TJWT.Setexpires(value : TDateTime);
 begin
-  payload['exp'] := IntToStr(DateTimeToUnix(value));
+  payload.num['exp'] := IntToStr(DateTimeToUnix(value));
 end;
 
 function TJWT.GetnotBefore : TDateTime;
@@ -1060,16 +1074,16 @@ class function TJWTUtils.pack(jwt: TJWT; method: TJWTAlgorithm; key: TJWK): Stri
 var
   input, sig : TBytes;
 begin
-  jwt.header.vStr['typ'] := 'JWT';
+  jwt.header['typ'] := 'JWT';
   case method of
-    jwt_none : jwt.header.vStr['alg'] := 'none';
-    jwt_hmac_sha256 : jwt.header.vStr['alg'] := 'HS256';
-    jwt_hmac_rsa256 : jwt.header.vStr['alg'] := 'RS256';
+    jwt_none : jwt.header['alg'] := 'none';
+    jwt_hmac_sha256 : jwt.header['alg'] := 'HS256';
+    jwt_hmac_rsa256 : jwt.header['alg'] := 'RS256';
   else
     raise Exception.Create('Unsupported Message Encryption Format');
   end;
   if (key <> nil) and (method <> jwt_none) and (key.id <> '') then
-    jwt.header.vStr['kid'] := key.id;
+    jwt.header['kid'] := key.id;
 
   input := JWTBase64URL(TJSONWriter.writeObject(jwt.header));
   input := BytesAdd(input, Byte('.'));
@@ -1213,9 +1227,9 @@ class function TJWTUtils.rsa_pack(jwt: TJWT; method: TJWTAlgorithm; pem_file, pe
 var
   input, sig : TBytes;
 begin
-  jwt.header.vStr['typ'] := 'JWT';
+  jwt.header['typ'] := 'JWT';
   case method of
-    jwt_hmac_rsa256 : jwt.header.vStr['alg'] := 'RS256';
+    jwt_hmac_rsa256 : jwt.header['alg'] := 'RS256';
   else
     raise Exception.Create('Unsupported Message Encryption Format for PEM based signature');
   end;
@@ -1248,17 +1262,17 @@ begin
     try
       if verify then
       begin
-        if (h.vStr['alg'] = 'HS256') then
+        if (h['alg'] = 'HS256') then
         begin
           check(keys.count = 1, 'There can only be a single key for HMA/SHA-256');
           verify_hmac_SHA256(AnsiStringAsBytes(AnsiString(header+'.'+payload)), JWTDeBase64URL(sig), keys[0])
         end
-        else if (h.vStr['alg'] = 'RS256') then
+        else if (h['alg'] = 'RS256') then
           verify_hmac_RSA256(AnsiStringAsBytes(AnsiString(header+'.'+payload)), JWTDeBase64URL(sig), h, keys)
-        else if (h.vStr['alg'] = 'none') then
+        else if (h['alg'] = 'none') then
           check(sig = '', 'There cannot be a sig when there is no algorithm')
         else
-          raise Exception.Create('Unknown Algorithm '+h.vStr['alg']);
+          raise Exception.Create('Unknown Algorithm '+h['alg']);
       end;
       result := TJWT.create(h.Link, p.Link);
     finally

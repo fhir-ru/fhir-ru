@@ -31,16 +31,17 @@ POSSIBILITY OF SUCH DAMAGE.
 interface
 
 uses
-  SysUtils, Classes,
+  SysUtils, Classes, Soap.EncdDecd,
   StringSupport, GuidSupport, DateSupport, BytesSupport, OidSupport, EncodeSupport,
-  AdvObjects, AdvStringBuilders, AdvGenerics,
+  AdvObjects, AdvStringBuilders, AdvGenerics, DateAndTime,  AdvStreams,  ADvVclStreams, AdvBuffers, AdvMemories,
 
-  IdSoapMime, TextUtilities, ZLib,
+  MimeMessage, TextUtilities, ZLib,
 
   FHIRSupport, FHIRParserBase, FHIRParser, FHIRBase, FHIRTypes, FHIRResources, FHIRConstants;
 
 Type
   ETooCostly = class (Exception);
+  EUnsafeOperation = class (Exception);
 
 const
   MIN_DATE = DATETIME_MIN;
@@ -48,6 +49,7 @@ const
   ANY_CODE_VS = 'http://www.healthintersections.com.au/fhir/ValueSet/anything';
 
 
+function HumanNamesAsText(names : TFhirHumanNameList):String;
 function HumanNameAsText(name : TFhirHumanName):String;
 function GetEmailAddress(contacts : TFhirContactPointList):String;
 function ResourceTypeByName(name : String) : TFhirResourceType;
@@ -69,19 +71,23 @@ function fullResourceUri(base: String; ref : TFhirReference) : String; overload;
 function isHistoryURL(url : String) : boolean;
 procedure splitHistoryUrl(var url : String; var history : String);
 procedure RemoveBOM(var s : String);
+function isAbsoluteUrl(s: String): boolean;
 
 procedure listReferences(resource : TFhirResource; list : TFhirReferenceList);
 procedure listAttachments(resource : TFhirResource; list : TFhirAttachmentList);
 Function FhirHtmlToText(html : TFhirXHtmlNode):String;
 function FindContainedResource(resource : TFhirDomainResource; ref : TFhirReference) : TFhirResource;
-function LoadFromFormParam(part : TIdSoapMimePart; lang : String) : TFhirResource;
-function LoadDTFromFormParam(part : TIdSoapMimePart; lang, name : String; type_ : TFHIRTypeClass) : TFhirType;
+function LoadFromFormParam(part : TMimePart; lang : String) : TFhirResource;
+function LoadDTFromFormParam(part : TMimePart; lang, name : String; type_ : TFHIRTypeClass) : TFhirType;
 function LoadDTFromParam(value : String; lang, name : String; type_ : TFHIRTypeClass) : TFhirType;
 
-function BuildOperationOutcome(lang : String; e : exception) : TFhirOperationOutcome; overload;
-Function BuildOperationOutcome(lang, message : String) : TFhirOperationOutcome; overload;
+function BuildOperationOutcome(lang : String; e : exception; issueCode : TFhirIssueTypeEnum = IssueTypeNull) : TFhirOperationOutcome; overload;
+Function BuildOperationOutcome(lang, message : String; issueCode : TFhirIssueTypeEnum = IssueTypeNull) : TFhirOperationOutcome; overload;
 
 function getChildMap(profile : TFHIRStructureDefinition; name, path, nameReference : String) : TFHIRElementDefinitionList;
+function CreateResourceByName(name : String) : TFhirResource;
+function CreateTypeByName(name : String) : TFhirElement;
+function CreateBasicChildren(element : TFhirElement; exCoding : TFHIRCoding) : TFhirElement;
 
 function asUTCMin(value : TFhirInstant) : TDateTime; overload;
 function asUTCMax(value : TFhirInstant) : TDateTime; overload;
@@ -93,6 +99,9 @@ function asUTCMin(value : TFhirPeriod) : TDateTime; overload;
 function asUTCMax(value : TFhirPeriod) : TDateTime; overload;
 function asUTCMin(value : TFhirTiming) : TDateTime; overload;
 function asUTCMax(value : TFhirTiming) : TDateTime; overload;
+
+function asCode(obj : TFHIRObject) : TFHIRCode;
+function asEnum(obj : TFHIRObject) : TFHIREnum;
 
 function HasExtension(element : TFhirElement; url : string):Boolean;
 function GetExtension(element : TFhirElement; url : string) : TFhirExtension;
@@ -124,6 +133,7 @@ type
 
   TFHIRElementHelper = class helper for TFHIRElement
   public
+    function addExtension(url : String) : TFHIRExtension; overload;
     procedure addExtension(url : String; t : TFhirType); overload;
     procedure addExtension(url : String; v : String); overload;
     function hasExtension(url : String) : boolean;
@@ -135,11 +145,22 @@ type
     procedure setExtensionString(url, value : String);
   end;
 
+  TFHIRBackboneElementHelper = class helper for TFHIRBackboneElement
+  public
+    procedure checkNoModifiers(place, role : String);
+  end;
+
   TFhirElementDefinitionTypeHelper = class helper for TFhirElementDefinitionType
   private
     function GetProfile: String;
   public
     property profile : String read GetProfile;
+  end;
+
+  TFhirElementDefinitionHelper = class helper for TFhirElementDefinition
+  public
+    function hasType(t : String; out profile : String) : boolean;  overload;
+    function hasType(t : String) : boolean; overload;
   end;
 
   TFHIRResourceHelper = class helper for TFHIRResource
@@ -148,6 +169,8 @@ type
     procedure SetmlId(const Value: String);
   public
     property xmlId : String read GetXmlId write SetmlId;
+
+    procedure checkNoImplicitRules(place, role : String);
   end;
 
   TFHIRDomainResourceHelper = class helper (TFHIRResourceHelper) for TFHIRDomainResource
@@ -157,6 +180,7 @@ type
     property Contained[id : String] : TFhirResource read GetContained; default;
     procedure collapseAllContained;
     function addExtension(url : String; t : TFhirType) : TFhirExtension; overload;
+    function addExtension(url : String) : TFhirExtension; overload;
     function addExtension(url : String; v : String) : TFhirExtension; overload;
     function hasExtension(url : String) : boolean;
     function getExtension(url : String) : Integer;
@@ -165,6 +189,19 @@ type
     function getExtensionString(url : String; index : integer) : String; overload;
     procedure removeExtension(url : String);
     procedure setExtensionString(url, value : String);
+    function narrativeAsWebPage : String;
+    procedure checkNoModifiers(place, role : String);
+  end;
+
+  TFhirCodeListHelper = class helper for TFhirCodeList
+  public
+    function hasCode(code : String) : boolean;
+  end;
+
+  TFhirUriListHelper = class helper for TFhirUriList
+  public
+    function hasUri(uri : String) : boolean;
+    procedure removeUri(uri : String);
   end;
 
   TFhirProfileStructureSnapshotElementDefinitionTypeListHelper = class helper for TFhirElementDefinitionList
@@ -175,6 +212,7 @@ type
   TFHIRConformanceHelper = class helper (TFHIRDomainResourceHelper) for TFHIRConformance
   public
     function rest(type_ : TFhirResourceType) : TFhirConformanceRestResource;
+    procedure checkCompatible;
   end;
 
   TFHIRCodeableConceptHelper = class helper (TFHIRElementHelper) for TFHIRCodeableConcept
@@ -184,19 +222,19 @@ type
 
   TFhirConformanceRestResourceHelper = class helper (TFHIRElementHelper) for TFhirConformanceRestResource
   public
-    function interaction(type_ : TFhirTypeRestfulInteraction) : TFhirConformanceRestResourceInteraction;
+    function interaction(type_ : TFhirTypeRestfulInteractionEnum) : TFhirConformanceRestResourceInteraction;
   end;
 
   TFHIRContactPointListHelper = class helper for TFhirContactPointList
   public
-    function system(type_ : TFhirContactPointSystem) : String;
-    procedure setSystem(type_ : TFhirContactPointSystem; value : String);
+    function system(type_ : TFHIRContactPointSystemEnum) : String;
+    procedure setSystem(type_ : TFHIRContactPointSystemEnum; value : String);
   end;
 
   TFhirValueSetContactListHelper = class helper for TFhirValueSetContactList
   public
-    function system(type_ : TFhirContactPointSystem) : String;
-    procedure setSystem(type_ : TFhirContactPointSystem; value : String);
+    function system(type_ : TFHIRContactPointSystemEnum) : String;
+    procedure setSystem(type_ : TFHIRContactPointSystemEnum; value : String);
   end;
 
   TFhirValueSetHelper = class helper for TFhirValueSet
@@ -207,10 +245,10 @@ type
 
   TFHIROperationOutcomeHelper = class helper (TFHIRDomainResourceHelper) for TFhirOperationOutcome
   public
-    function rule(level : TFhirIssueSeverity; source : String; typeCode : TFhirIssueType; path : string; test : boolean; msg : string) : boolean;
-    function error(source : String; typeCode : TFhirIssueType; path : string; test : boolean; msg : string) : boolean;
-    function warning(source : String; typeCode : TFhirIssueType; path : string; test : boolean; msg : string) : boolean;
-    function hint(source : String; typeCode : TFhirIssueType; path : string; test : boolean; msg : string) : boolean;
+    function rule(level : TFhirIssueSeverityEnum; source : String; typeCode : TFhirIssueTypeEnum; path : string; test : boolean; msg : string) : boolean;
+    function error(source : String; typeCode : TFhirIssueTypeEnum; path : string; test : boolean; msg : string) : boolean;
+    function warning(source : String; typeCode : TFhirIssueTypeEnum; path : string; test : boolean; msg : string) : boolean;
+    function hint(source : String; typeCode : TFhirIssueTypeEnum; path : string; test : boolean; msg : string) : boolean;
 
     function hasErrors : boolean;
   end;
@@ -235,12 +273,20 @@ type
   public
     property Links[s : string] : String read GetLinks;
     procedure deleteEntry(resource : TFHIRResource);
-    class function Create(aType : TFhirBundleType) : TFhirBundle; overload;
+    class function Create(aType : TFhirBundleTypeEnum) : TFhirBundle; overload;
   end;
 
   TFHIRCodingListHelper = class helper for TFHIRCodingList
   public
     function AddCoding(system, code, display : String) : TFHIRCoding;
+    procedure RemoveCoding(system, code : String);
+  end;
+
+  TFHIRStringListHelper = class helper for TFHIRStringList
+  public
+    function hasValue(value : String) : boolean;
+    procedure add(s : String); overload;
+    function summary : String;
   end;
 
   TFhirBundleLinkListHelper = class helper for TFhirBundleLinkList
@@ -257,21 +303,73 @@ type
   private
     function GetNamedParameter(name: String): TFhirBase;
     function GetStringParameter(name: String): String;
+    function GetBooleanParameter(name: String): boolean;
+    function GetResourceParameter(name: String): TFHIRResource;
+    function GetParameterParameter(name: String): TFhirParametersParameter;
   public
     function hasParameter(name : String):Boolean;
     Property NamedParameter[name : String] : TFhirBase read GetNamedParameter; default;
+    Property res[name : String] : TFHIRResource read GetResourceParameter;
     Property str[name : String] : String read GetStringParameter;
+    Property param[name : String] : TFhirParametersParameter read GetParameterParameter;
+    Property bool[name : String] : boolean read GetBooleanParameter;
     procedure AddParameter(name: String; value: TFhirType); overload;
     procedure AddParameter(name: String; value: TFhirResource); overload;
     procedure AddParameter(name: String; value: boolean); overload;
     procedure AddParameter(name, value: string); overload;
+    function AddParameter(name: String) : TFhirParametersParameter; overload;
+  end;
+
+  TFhirParametersParameterHelper = class helper for TFhirParametersParameter
+  private
+    function GetNamedParameter(name: String): TFhirBase;
+    function GetStringParameter(name: String): String;
+    function GetParameterParameter(name: String): TFhirParametersParameter;
+  public
+    function hasParameter(name : String):Boolean;
+    Property NamedParameter[name : String] : TFhirBase read GetNamedParameter; default;
+    Property str[name : String] : String read GetStringParameter;
+    Property param[name : String] : TFhirParametersParameter read GetParameterParameter;
+    procedure AddParameter(name: String; value: TFhirType); overload;
+    procedure AddParameter(name: String; value: TFhirResource); overload;
+    procedure AddParameter(name: String; value: boolean); overload;
+    procedure AddParameter(name, value: string); overload;
+    function AddParameter(name: String) : TFhirParametersParameter; overload;
   end;
 
   TFhirResourceMetaHelper = class helper for TFhirMeta
+  private
+    function GetTag(system, code: String): TFhirCoding;
   public
     function HasTag(system, code : String)  : boolean;
     function addTag(system, code, display : String) : TFhirCoding;
     function removeTag(system, code : String) : boolean;
+  end;
+
+  TFhirOperationOutcomeIssueHelper = class helper for TFhirOperationOutcomeIssue
+  public
+    constructor create(Severity : TFhirIssueSeverityEnum; Code : TFhirIssueTypeEnum; Diagnostics : string; location : String); overload;
+    function summary : String;
+  end;
+
+  TFhirOperationOutcomeIssueListHelper = class helper for TFhirOperationOutcomeIssueList
+  public
+    function errorCount : integer;
+  end;
+
+  TFhirValueSetCodeSystemHelper = class helper for TFhirValueSetCodeSystem
+  private
+    function locate(parent: TFhirValueSetCodeSystemConcept; list: TFhirValueSetCodeSystemConceptList; code : String; var foundParent, foundConcept: TFhirValueSetCodeSystemConcept): boolean;
+    procedure scanForSubsumes(parentList, conceptList : TFhirValueSetCodeSystemConceptList; code : String);
+
+  public
+    function getParents(concept : TFhirValueSetCodeSystemConcept) : TFhirValueSetCodeSystemConceptList;
+    function getChildren(concept : TFhirValueSetCodeSystemConcept) : TFhirValueSetCodeSystemConceptList;
+  end;
+
+  TFhirExpansionProfileHelper = class helper for TFhirExpansionProfile
+  public
+    function hash : String;
   end;
 
 function Path(const parts : array of String) : String;
@@ -283,13 +381,56 @@ function TryZDecompressBytes(const s: TBytes): TBytes;
 
 function gen(coding : TFHIRCoding):String; overload;
 function gen(code : TFhirCodeableConcept):String; overload;
+function gen(ref : TFhirReference) : String; overload;
+function gen(id : TFhirIdentifier) : String; overload;
+function gen(obj : TFhirAnnotation) : String; overload;
+function gen(obj : TFhirAttachment) : String; overload;
+function gen(obj : TFhirQuantity) : String; overload;
+function gen(obj : TFhirRange) : String; overload;
+function gen(obj : TFhirPeriod) : String; overload;
+function gen(obj : TFhirRatio) : String; overload;
+function gen(obj : TFhirSampledData) : String; overload;
+function gen(obj : TFhirSignature) : String; overload;
+function gen(obj : TFhirAddress) : String; overload;
+function gen(obj : TFhirContactPoint) : String; overload;
+function gen(obj : TFhirTiming) : String; overload;
+
 function gen(t : TFhirType):String; overload;
 
+function compareValues(e1, e2 : TFHIRObjectList; allowNull : boolean) : boolean; overload;
+function compareValues(e1, e2 : TFHIRPrimitiveType; allowNull : boolean) : boolean; overload;
 
 implementation
 
+uses
+  JclDebug;
 
-function DetectFormat(oContent : TStream) : TFHIRParserClass;
+function dumpStack : String;
+var
+  st : TJclStackInfoList;
+  ts : TStringList;
+begin
+  if JclExceptionTrackingActive then
+  begin
+  st := JclCreateStackList(true, 3, nil);
+  try
+    ts := TStringList.Create;
+    try
+      st.AddToStrings(ts, true);
+      result := ts.Text;
+    finally
+      ts.Free;
+    end;
+  finally
+    st.Free;
+  end;
+  end
+  else
+    result := '';
+end;
+
+
+function DetectFormat(oContent : TStream) : TFHIRParserClass; overload;
 var
   i : integer;
   s : String;
@@ -298,6 +439,18 @@ begin
   setlength(s, ocontent.Size - oContent.Position);
   ocontent.Read(s[1], length(s));
   oContent.Position := i;
+  if (pos('<', s) > 0) and ((pos('<', s) < 10)) then
+    result := TFHIRXmlParser
+  else
+    result := TFHIRJsonParser;
+
+end;
+
+function DetectFormat(oContent : TAdvBuffer) : TFHIRParserClass; overload;
+var
+  s : String;
+begin
+  s := oContent.AsUnicode;
   if (pos('<', s) > 0) and ((pos('<', s) < 10)) then
     result := TFHIRXmlParser
   else
@@ -400,7 +553,7 @@ Begin
   else if sName = '' then
     result := ffAsIs
   else
-    raise ERestfulException.create('FHIRBase', 'RecogniseFHIRFormat', 'Unknown format '+sName, HTTP_ERR_BAD_REQUEST);
+    raise ERestfulException.create('FHIRBase', 'RecogniseFHIRFormat', 'Unknown format '+sName, HTTP_ERR_BAD_REQUEST, IssueTypeStructure);
 End;
 
 
@@ -439,26 +592,26 @@ var
   iter : TFHIRPropertyIterator;
   i : integer;
 begin
-  iter := node.createIterator(true);
+  iter := node.createIterator(true, true);
   try
     while iter.More do
     begin
-      if (iter.Current.list <> nil)  then
+      if (iter.Current.Values <> nil)  then
       begin
         if StringStartsWith(iter.Current.Type_, 'Reference(') then
       begin
-        for i := 0 to iter.Current.List.count - 1 do
-            if (iter.current.list[i] <> nil)  and not StringStartsWith(TFhirReference(iter.current.list[i]).reference, '#') then
-            list.add(iter.Current.list[i].Link)
+          for i := 0 to iter.Current.Values.count - 1 do
+            if (iter.current.Values[i] <> nil)  and not StringStartsWith(TFhirReference(iter.current.Values[i]).reference, '#') then
+              list.add(iter.Current.Values[i].Link)
       end
         else if (iter.Current.Type_ = 'Resource') then
       begin
-          for i := 0 to iter.Current.List.count - 1 do
-            iterateReferences(path+'/'+iter.Current.Name, TFhirReference(iter.current.list[i]), list)
+          for i := 0 to iter.Current.Values.count - 1 do
+            iterateReferences(path+'/'+iter.Current.Name, TFhirReference(iter.current.Values[i]), list)
         end
         else if not ((node is TFHIRPrimitiveType) and (iter.current.name = 'value')) then
-        for i := 0 to iter.Current.list.Count - 1 Do
-            iterateReferences(path+'/'+iter.Current.Name, iter.Current.list[i], list);
+          for i := 0 to iter.Current.Values.Count - 1 Do
+            iterateReferences(path+'/'+iter.Current.Name, iter.Current.Values[i], list);
       end;
       iter.Next;
     end;
@@ -477,16 +630,16 @@ var
   iter : TFHIRPropertyIterator;
   i : integer;
 begin
-  iter := node.createIterator(true);
+  iter := node.createIterator(true, true);
   try
     while iter.More do
     begin
-      if (iter.Current.List <> nil)  then
-        for i := 0 to iter.Current.List.Count - 1 do
+      if (iter.Current.Values <> nil)  then
+        for i := 0 to iter.Current.Values.Count - 1 do
           if (iter.Current.Type_ = 'Attachment') then
-            list.add(iter.Current.list[i].Link)
+            list.add(iter.Current.Values[i].Link)
           else if not ((node is TFHIRPrimitiveType) and (iter.current.name = 'value'))  then
-            iterateAttachments(path+'/'+iter.Current.Name, iter.Current.list[i], list);
+            iterateAttachments(path+'/'+iter.Current.Name, iter.Current.Values[i], list);
       iter.Next;
     end;
   finally
@@ -659,12 +812,12 @@ begin
   result := html.AsPlainText;
 end;
 
-function BuildOperationOutcome(lang : String; e : exception) : TFhirOperationOutcome;
+function BuildOperationOutcome(lang : String; e : exception; issueCode : TFhirIssueTypeEnum = IssueTypeNull) : TFhirOperationOutcome;
 begin
-  result := BuildOperationOutcome(lang, e.message);
+  result := BuildOperationOutcome(lang, e.message, issueCode);
 end;
 
-Function BuildOperationOutcome(lang, message : String) : TFhirOperationOutcome; overload;
+Function BuildOperationOutcome(lang, message : String; issueCode : TFhirIssueTypeEnum = IssueTypeNull) : TFhirOperationOutcome; overload;
 var
   outcome : TFhirOperationOutcome;
   report :  TFhirOperationOutcomeIssue;
@@ -676,6 +829,7 @@ begin
     outcome.text.div_ := ParseXhtml(lang, '<div><p>'+FormatTextToHTML(message)+'</p></div>', xppReject);
     report := outcome.issueList.Append;
     report.severity := issueSeverityError;
+    report.code := issueCode;
     report.diagnostics := message;
     result := outcome.Link;
   finally
@@ -727,6 +881,143 @@ begin
     result := gen(code.codingList[0])
   else
     result := '';
+end;
+
+function gen(ref : TFhirReference) : String;
+begin
+  if (ref = nil) then
+    result := ''
+  else if ref.display <> '' then
+    result := ref.display
+  else
+    result := ref.reference;
+end;
+
+function gen(id : TFhirIdentifier) : String;
+begin
+  if (id = nil) then
+    result := ''
+  else
+    result := id.value;
+end;
+
+function gen(obj : TFhirAnnotation) : String;
+begin
+  if (obj = nil) then
+    result := ''
+  else
+    result := obj.text;
+end;
+
+function gen(obj : TFhirAttachment) : String;
+begin
+  if (obj = nil) then
+    result := ''
+  else if (obj.url <> '') then
+    result := obj.url
+  else
+    result := '(Attachment)';
+end;
+
+function gen(obj : TFhirQuantity) : String;
+begin
+  if (obj = nil) then
+  begin
+    result := '';
+    exit;
+  end;
+
+  if obj.comparator = QuantityComparatorNull then
+    result := obj.value
+  else
+    result := CODES_TFhirQuantityComparatorEnum[obj.comparator]+obj.value;
+  if obj.unit_ <> '' then
+    result := result + ' '+obj.unit_
+  else
+    result := result + ' '+obj.code;
+end;
+
+function gen(obj : TFhirRange) : String;
+begin
+  if (obj = nil) then
+    result := ''
+  else
+    result := gen(obj.low) + ' -> '+gen(obj.high);
+end;
+
+function gen(obj : TDateAndTime) : String; overload;
+begin
+  if (obj = nil) then
+    result := ''
+  else
+    result := obj.AsString;
+end;
+
+function gen(obj : TFhirPeriod) : String;
+begin
+  if (obj = nil) then
+    result := ''
+  else
+    result := gen(obj.start) + ' -> '+gen(obj.end_);
+end;
+
+function gen(obj : TFhirRatio) : String;
+begin
+  if (obj = nil) then
+    result := ''
+  else
+    result := gen(obj.numerator) + ' / '+gen(obj.denominator);
+end;
+
+function gen(obj : TFhirSampledData) : String;
+begin
+  if (obj = nil) then
+    result := ''
+  else
+    result := '(SampledData)';
+end;
+
+function gen(obj : TFhirSignature) : String;
+begin
+  if (obj = nil) then
+    result := ''
+  else
+    result := '(Signature)';
+end;
+
+function gen(obj : TFhirAddress) : String;
+var
+  i : integer;
+begin
+  if obj = nil then
+    result := ''
+  else if obj.text <> '' then
+    result := obj.text
+  else
+  begin
+    result := ' ';
+    for i := 0 to obj.lineList.Count - 1 do
+      result := result + obj.lineList[i].value;
+    result := result + ' '+obj.city;
+    result := result + ' '+obj.district;
+    result := result + ' '+obj.state;
+    result := result + ' '+obj.postalCode;
+    result := result + ' '+obj.country;
+    result := result.Replace('  ', ' ').Trim;
+  end;
+end;
+
+function gen(obj : TFhirContactPoint) : String;
+begin
+  if (obj = nil) then
+    result := ''
+  else
+    result := CODES_TFhirContactPointSystemEnum[obj.system]+': '+obj.value;
+end;
+
+function gen(obj : TFhirTiming) : String;
+begin
+
 end;
 
 function gen(extension : TFHIRExtension):String; overload;
@@ -781,7 +1072,7 @@ begin
       begin
         issue := op.issueList[i];
         tr := tbl.addTag('tr');
-        tr.addTag('td').addText(CODES_TFhirIssueSeverity[issue.severity]);
+        tr.addTag('td').addText(CODES_TFhirIssueSeverityEnum[issue.severity]);
         td := tr.addTag('td');
         d := false;
         for j := 0 to issue.locationList.count -1 do
@@ -795,7 +1086,7 @@ begin
         end;
         tr.addTag('td').addText(gen(issue.details));
         tr.addTag('td').addText(issue.diagnostics);
-        tr.addTag('td').addText(CODES_TFhirIssueType[issue.code]);
+        tr.addTag('td').addText(CODES_TFhirIssueTypeEnum[issue.code]);
         if (hasSource) then
           tr.addTag('td').addText(gen(getExtension(issue, 'http://hl7.org/fhir/tools#issue-source')));
       end;
@@ -963,6 +1254,14 @@ begin
         result := contacts[i].value;
 end;
 
+function HumanNamesAsText(names : TFhirHumanNameList):String;
+begin
+  if (names = nil) or (names.Count = 0) then
+    result := '??'
+  else
+    result := HumanNameAsText(names[0]);
+end;
+
 function HumanNameAsText(name : TFhirHumanName):String;
 var
   i : integer;
@@ -981,10 +1280,12 @@ begin
   end;
 end;
 
-function LoadDTFromFormParam(part : TIdSoapMimePart; lang, name : String; type_ : TFHIRTypeClass) : TFhirType;
+function LoadDTFromFormParam(part : TMimePart; lang, name : String; type_ : TFHIRTypeClass) : TFhirType;
 var
   ct : String;
   parser : TFHIRParser;
+  mem : TAdvMemoryStream;
+  s : TVCLStream;
 begin
   parser := nil;
   try
@@ -1000,8 +1301,21 @@ begin
     end;
     if parser = nil then
       parser := DetectFormat(part.content).Create(lang);
-    parser.source := part.Content;
+    mem := TAdvMemoryStream.Create;
+    try
+      mem.Buffer := part.content.Link;
+      s := TVCLStream.Create;
+      try
+        s.Stream := mem.Link;
+        parser.source := s;
     result := parser.ParseDT(name, type_);
+  finally
+        s.Free;
+      end;
+    finally
+      mem.Free;
+
+    end;
   finally
     parser.Free;
   end;
@@ -1009,7 +1323,6 @@ end;
 
 function LoadDTFromParam(value : String; lang, name : String; type_ : TFHIRTypeClass) : TFhirType;
 var
-  ct : String;
   parser : TFHIRParser;
   mem : TStringStream;
 begin
@@ -1028,14 +1341,15 @@ begin
   end;
 end;
 
-function LoadFromFormParam(part : TIdSoapMimePart; lang : String) : TFhirResource;
+function LoadFromFormParam(part : TMimePart; lang : String) : TFhirResource;
 var
   ct : String;
   parser : TFHIRParser;
+  s : TVCLStream;
+  mem : TAdvMemoryStream;
 begin
   parser := nil;
   try
-    part.content.position := 0;
     // first, figure out the format
     ct := part.Headers.Values['Content-Type'];
     if ct <> '' then
@@ -1048,9 +1362,21 @@ begin
     end;
     if parser = nil then
       parser := DetectFormat(part.content).Create(lang);
-    parser.source := part.Content;
+    mem := TAdvMemoryStream.Create;
+    try
+      mem.Buffer := part.content.Link;
+      s := TVCLStream.Create;
+      try
+        s.Stream := mem.Link;
+        parser.source := s;
     parser.Parse;
     result := parser.resource.Link;
+  finally
+        s.Free;
+      end;
+    finally
+      mem.Free;
+    end;
   finally
     parser.Free;
   end;
@@ -1206,7 +1532,7 @@ end;
 { TFHIROperationOutcomeHelper }
 
 
-function TFHIROperationOutcomeHelper.error(source : String; typeCode : TFhirIssueType; path: string; test: boolean; msg: string): boolean;
+function TFHIROperationOutcomeHelper.error(source : String; typeCode : TFhirIssueTypeEnum; path: string; test: boolean; msg: string): boolean;
 var
   issue : TFhirOperationOutcomeIssue;
   ex : TFhirExtension;
@@ -1217,7 +1543,10 @@ begin
     try
       issue.severity := IssueSeverityError;
       issue.code := typeCode;
-      issue.diagnostics := msg;
+      issue.details := TFHIRCodeableConcept.create;
+      issue.details.text := msg;
+      issue.diagnostics := dumpStack;
+      if (path <> '') then
       issue.locationList.Append.value := path;
       ex := issue.ExtensionList.Append;
       ex.url := 'http://hl7.org/fhir/tools#issue-source';
@@ -1248,7 +1577,7 @@ begin
     result := result or (issueList[i].severity in [IssueSeverityFatal, IssueSeverityError]);
 end;
 
-function TFHIROperationOutcomeHelper.hint(source : String; typeCode : TFhirIssueType; path: string; test: boolean; msg: string): boolean;
+function TFHIROperationOutcomeHelper.hint(source : String; typeCode : TFhirIssueTypeEnum; path: string; test: boolean; msg: string): boolean;
 var
   issue : TFhirOperationOutcomeIssue;
   ex : TFhirExtension;
@@ -1259,7 +1588,10 @@ begin
     try
       issue.severity := IssueSeverityInformation;
       issue.code := typeCode;
-      issue.diagnostics := msg;
+      issue.details := TFHIRCodeableConcept.create;
+      issue.details.text := msg;
+      issue.diagnostics := dumpStack;
+      if (path <> '') then
       issue.locationList.Append.value := path;
       ex := issue.ExtensionList.Append;
       ex.url := 'http://hl7.org/fhir/tools#issue-source';
@@ -1273,7 +1605,7 @@ begin
   result := test;
 end;
 
-function TFHIROperationOutcomeHelper.rule(level: TFhirIssueSeverity; source : String; typeCode : TFhirIssueType; path: string; test: boolean; msg: string): boolean;
+function TFHIROperationOutcomeHelper.rule(level: TFhirIssueSeverityEnum; source : String; typeCode : TFhirIssueTypeEnum; path: string; test: boolean; msg: string): boolean;
 var
   issue : TFhirOperationOutcomeIssue;
   ex : TFhirExtension;
@@ -1284,7 +1616,10 @@ begin
     try
       issue.severity := level;
       issue.code := typeCode;
-      issue.diagnostics := msg;
+      issue.details := TFHIRCodeableConcept.create;
+      issue.details.text := msg;
+      issue.diagnostics := dumpStack;
+      if (path <> '') then
       issue.locationList.Append.value := path;
       ex := issue.ExtensionList.Append;
       ex.url := 'http://hl7.org/fhir/tools#issue-source';
@@ -1298,7 +1633,7 @@ begin
   result := test;
 end;
 
-function TFHIROperationOutcomeHelper.warning(source : String; typeCode : TFhirIssueType; path: string; test: boolean; msg: string): boolean;
+function TFHIROperationOutcomeHelper.warning(source : String; typeCode : TFhirIssueTypeEnum; path: string; test: boolean; msg: string): boolean;
 var
   issue : TFhirOperationOutcomeIssue;
   ex : TFhirExtension;
@@ -1309,7 +1644,10 @@ begin
     try
       issue.severity := IssueSeverityWarning;
       issue.code := typeCode;
-      issue.diagnostics := msg;
+      issue.details := TFHIRCodeableConcept.create;
+      issue.details.text := msg;
+      issue.diagnostics := dumpStack;
+      if (path <> '') then
       issue.locationList.Append.value := path;
       ex := issue.ExtensionList.Append;
       ex.url := 'http://hl7.org/fhir/tools#issue-source';
@@ -1337,6 +1675,13 @@ end;
 procedure TFHIRElementHelper.addExtension(url, v: String);
 begin
   addExtension(url, TFhirString.Create(v));
+end;
+
+
+function TFHIRElementHelper.addExtension(url: String): TFHIRExtension;
+begin
+  result := self.ExtensionList.Append;
+  result.url := url;
 end;
 
 function TFHIRElementHelper.getExtension(url: String): Integer;
@@ -1486,6 +1831,14 @@ begin
   result := getExtension(url) > -1;
 end;
 
+function TFHIRDomainResourceHelper.narrativeAsWebPage: String;
+begin
+  if (text = nil) or (text.div_ = nil) then
+    result := '<html><body>No Narrative</body></html>'
+  else
+    result := '<html><body>'+ComposeXHtml(text.div_)+'</body></html>'
+end;
+
 procedure TFHIRDomainResourceHelper.removeExtension(url: String);
 var
   ndx : integer;
@@ -1511,6 +1864,19 @@ end;
 
 { TFHIRConformanceHelper }
 
+procedure TFHIRConformanceHelper.checkCompatible;
+var
+  res, code : String;
+begin
+  res := fhirVersion;
+  if res.Contains('-') then
+    res := res.Substring(0, res.IndexOf('-'));
+  res := res.Substring(0, res.LastIndexOf('.'));
+  code := FHIR_GENERATED_VERSION.Substring(0, FHIR_GENERATED_VERSION.LastIndexOf('.'));
+  if (code <> res) then
+    raise Exception.Create('Version Mismatch - this code is at version '+FHIR_GENERATED_VERSION+'-'+FHIR_GENERATED_REVISION+', but the server is version '+fhirVersion);
+end;
+
 function TFHIRConformanceHelper.rest(type_: TFhirResourceType): TFhirConformanceRestResource;
 var
   i : integer;
@@ -1529,7 +1895,7 @@ end;
 
 { TFhirConformanceRestResourceHelper }
 
-function TFhirConformanceRestResourceHelper.interaction(type_: TFhirTypeRestfulInteraction): TFhirConformanceRestResourceInteraction;
+function TFhirConformanceRestResourceHelper.interaction(type_: TFhirTypeRestfulInteractionEnum): TFhirConformanceRestResourceInteraction;
 var
   i : integer;
 begin
@@ -1547,7 +1913,7 @@ end;
 
 { TFHIRContactPointListHelper }
 
-procedure TFHIRContactPointListHelper.setSystem(type_: TFhirContactPointSystem; value: String);
+procedure TFHIRContactPointListHelper.setSystem(type_: TFHIRContactPointSystemEnum; value: String);
 var
   i : integer;
   c : TFhirContactPoint;
@@ -1563,7 +1929,7 @@ begin
   c.value := value;
 end;
 
-function TFHIRContactPointListHelper.system(type_: TFhirContactPointSystem): String;
+function TFHIRContactPointListHelper.system(type_: TFHIRContactPointSystemEnum): String;
 var
   i : integer;
 begin
@@ -1658,6 +2024,18 @@ end;
 
 { TFHIRDomainResourceHelper }
 
+function TFHIRDomainResourceHelper.addExtension(url: String): TFhirExtension;
+begin
+  result := self.ExtensionList.Append;
+  result.url := url;
+end;
+
+procedure TFHIRDomainResourceHelper.checkNoModifiers(place, role: String);
+begin
+  if modifierExtensionList.Count > 0 then
+    raise EUnsafeOperation.Create('The element '+role+' has modifier exceptions that are unknown at '+place);
+end;
+
 procedure TFHIRDomainResourceHelper.collapseAllContained;
 var
   i : integer;
@@ -1723,6 +2101,12 @@ end;
 
 { TFHIRResourceHelper }
 
+procedure TFHIRResourceHelper.checkNoImplicitRules(place, role: String);
+begin
+  if implicitRules <> '' then
+    raise EUnsafeOperation.Create('The resource '+role+' has an unknown implicitRules tag at '+place);
+end;
+
 function TFHIRResourceHelper.GetXmlId: String;
 begin
   result := id;
@@ -1735,7 +2119,7 @@ end;
 
 { TFHIRBundleHelper }
 
-class function TFHIRBundleHelper.Create(aType: TFhirBundleType): TFhirBundle;
+class function TFHIRBundleHelper.Create(aType: TFhirBundleTypeEnum): TFhirBundle;
 begin
   result := TFhirBundle.Create;
   result.type_ := aType;
@@ -1773,6 +2157,7 @@ begin
   c.system := system;
   c.code := code;
   c.display := display;
+  result := c;
 end;
 
 //function TFHIRCodingListHelper.AsHeader: String;
@@ -1812,6 +2197,15 @@ end;
 //  raise Exception.Create('todo');
 //end;
 //
+procedure TFHIRCodingListHelper.RemoveCoding(system, code: String);
+var
+  i : integer;
+begin
+ for i := Count - 1 downto 0 do
+   if (Item(i).system = system) and (Item(i).code = code) then
+     Remove(i);
+end;
+
 { TFhirBundleLinkListHelper }
 
 procedure TFhirBundleLinkListHelper.AddRelRef(rel, ref: String);
@@ -1913,6 +2307,7 @@ begin
   history := url.Substring(url.IndexOf('/_history/')+10);
   url := url.Substring(0, url.IndexOf('/_history/'));
 end;
+
 { TFhirParametersHelper }
 
 procedure TFhirParametersHelper.AddParameter(name: String; value: TFhirType);
@@ -1921,7 +2316,7 @@ var
 begin
   p := self.parameterList.Append;
   p.name := name;
-  p.value := value.Link;
+  p.value := value;
 end;
 
 procedure TFhirParametersHelper.AddParameter(name: String; value: TFhirResource);
@@ -1930,7 +2325,7 @@ var
 begin
   p := self.parameterList.Append;
   p.name := name;
-  p.resource := value.Link;
+  p.resource := value;
 end;
 
 procedure TFhirParametersHelper.AddParameter(name: String; value: boolean);
@@ -1951,6 +2346,31 @@ begin
   p.value := TFhirString.Create(value);
 end;
 
+function TFhirParametersHelper.AddParameter(name: String): TFhirParametersParameter;
+begin
+  result := self.parameterList.Append;
+  result.name := name;
+end;
+
+function TFhirParametersHelper.GetBooleanParameter(name: String): boolean;
+var
+  v : TFhirBase;
+begin
+  v := NamedParameter[name];
+  if (v = nil) then
+    result := false
+  else if not (v is TFhirBoolean) then
+  begin
+    try
+      raise Exception.Create('Attempt to read "'+name+'" as a boolean, when it is a '+NamedParameter[name].FhirType);
+    finally
+      v.free;
+    end;
+  end
+  else
+    result := (v as TFhirBoolean).value;
+end;
+
 function TFhirParametersHelper.GetNamedParameter(name: String): TFhirBase;
 var
   i: Integer;
@@ -1959,17 +2379,60 @@ begin
     if (parameterList[i].name = name) then
     begin
       if parameterList[i].valueElement <> nil then
-        result := parameterList[i].valueElement.Link
+        result := parameterList[i].valueElement
       else
-        result := parameterList[i].resourceElement.Link;
+        result := parameterList[i].resourceElement;
       exit;
     end;
   result := nil;
 end;
 
-function TFhirParametersHelper.GetStringParameter(name: String): String;
+function TFhirParametersHelper.GetParameterParameter(name: String): TFhirParametersParameter;
+var
+  i: Integer;
 begin
-  result := (NamedParameter[name] as TFhirPrimitiveType).StringValue;
+  for i := 0 to parameterList.Count - 1 do
+    if (parameterList[i].name = name) then
+    begin
+      result := parameterList[i];
+      exit;
+    end;
+  result := nil;
+end;
+
+function TFhirParametersHelper.GetResourceParameter(name: String): TFHIRResource;
+var
+  i: Integer;
+begin
+  for i := 0 to parameterList.Count - 1 do
+    if (parameterList[i].name = name) then
+    begin
+      if parameterList[i].resourceElement <> nil then
+      begin
+        result := parameterList[i].resourceElement;
+      exit;
+    end;
+    end;
+  result := nil;
+end;
+
+function TFhirParametersHelper.GetStringParameter(name: String): String;
+var
+  v : TFhirBase;
+begin
+  v := NamedParameter[name];
+  if (v = nil) then
+    result := ''
+  else if not (v is TFhirPrimitiveType) then
+  begin
+    try
+      raise Exception.Create('Attempt to read "'+name+'" as a string, when it is a '+NamedParameter[name].FhirType);
+    finally
+      v.free;
+    end;
+  end
+  else
+    result := (v as TFhirPrimitiveType).StringValue;
 end;
 
 function TFhirParametersHelper.hasParameter(name: String): Boolean;
@@ -1983,6 +2446,97 @@ begin
       exit;
     end;
   result := false;
+end;
+
+{ TFhirParametersParameterHelper }
+
+procedure TFhirParametersParameterHelper.AddParameter(name: String; value: TFhirType);
+var
+  p : TFhirParametersParameter;
+begin
+  p := self.partList.Append;
+  p.name := name;
+  p.value := value;
+end;
+
+procedure TFhirParametersParameterHelper.AddParameter(name: String; value: TFhirResource);
+var
+  p : TFhirParametersParameter;
+begin
+  p := self.partList.Append;
+  p.name := name;
+  p.resource := value;
+end;
+
+procedure TFhirParametersParameterHelper.AddParameter(name: String; value: boolean);
+var
+  p : TFhirParametersParameter;
+begin
+  p := self.partList.Append;
+  p.name := name;
+  p.value := TFhirBoolean.Create(value);
+end;
+
+procedure TFhirParametersParameterHelper.AddParameter(name, value: string);
+var
+  p : TFhirParametersParameter;
+begin
+  p := self.partList.Append;
+  p.name := name;
+  p.value := TFhirString.Create(value);
+end;
+
+function TFhirParametersParameterHelper.GetNamedParameter(name: String): TFhirBase;
+var
+  i: Integer;
+begin
+  for i := 0 to partList.Count - 1 do
+    if (partList[i].name = name) then
+    begin
+      if partList[i].valueElement <> nil then
+        result := partList[i].valueElement.Link
+      else
+        result := partList[i].resourceElement.Link;
+      exit;
+    end;
+  result := nil;
+end;
+
+function TFhirParametersParameterHelper.GetParameterParameter(name: String): TFhirParametersParameter;
+var
+  i: Integer;
+begin
+  for i := 0 to partList.Count - 1 do
+    if (partList[i].name = name) then
+    begin
+      result := partList[i];
+      exit;
+    end;
+  result := nil;
+end;
+
+function TFhirParametersParameterHelper.GetStringParameter(name: String): String;
+begin
+  result := (NamedParameter[name] as TFhirPrimitiveType).StringValue;
+end;
+
+function TFhirParametersParameterHelper.hasParameter(name: String): Boolean;
+var
+  i: Integer;
+begin
+  for i := 0 to partList.Count - 1 do
+    if (partList[i].name = name) then
+    begin
+      result := true;
+      exit;
+    end;
+  result := false;
+end;
+
+function TFhirParametersParameterHelper.AddParameter(name: String): TFhirParametersParameter;
+begin
+  result := self.partList.Append;
+  result.name := name;
 end;
 
 { TFHIRCodeableConceptHelper }
@@ -2020,7 +2574,10 @@ begin
     c.system := system;
     c.code := code;
     c.display := display;
-  end;
+    result := c;
+  end
+  else
+    result := getTag(system, code);
 end;
 
 function TFhirResourceMetaHelper.HasTag(system, code: String): boolean;
@@ -2030,6 +2587,19 @@ begin
   result := false;
   for i := 0 to taglist.Count - 1 do
     result := result or (taglist[i].system = system) and (taglist[i].code = code);
+end;
+
+function TFhirResourceMetaHelper.GetTag(system, code: String): TFhirCoding;
+var
+  i : integer;
+begin
+  result := nil;
+  for i := 0 to taglist.Count - 1 do
+    if (taglist[i].system = system) and (taglist[i].code = code) then
+    begin
+      result := taglist[i];
+      exit;
+    end;
 end;
 
 function TFhirResourceMetaHelper.removeTag(system, code : String): boolean;
@@ -2090,7 +2660,7 @@ end;
 
 { TFhirValueSetContactListHelper }
 
-procedure TFhirValueSetContactListHelper.setSystem(type_: TFhirContactPointSystem; value: String);
+procedure TFhirValueSetContactListHelper.setSystem(type_: TFHIRContactPointSystemEnum; value: String);
 var
   i : integer;
   c : TFhirContactPoint;
@@ -2108,7 +2678,7 @@ begin
   c.value := value;
 end;
 
-function TFhirValueSetContactListHelper.system(type_: TFhirContactPointSystem): String;
+function TFhirValueSetContactListHelper.system(type_: TFHIRContactPointSystemEnum): String;
 var
   i, j : integer;
 begin
@@ -2222,6 +2792,34 @@ begin
     result := TFhirString(t).value
   else if t is TFhirEnum then
     result := TFhirEnum(t).value
+  else if t is TFhirHumanName then
+    result := HumanNameAsText(TFhirHumanName(t))
+  else if t is TFhirReference then
+    result := gen(TFhirReference(t))
+  else if t is TFhirIdentifier then
+    result := gen(TFhirIdentifier(t))
+  else if t is TFhirAnnotation then
+    result := gen(TFhirAnnotation(t))
+  else if t is TFhirAttachment then
+    result := gen(TFhirAttachment(t))
+  else if t is TFhirQuantity then
+    result := gen(TFhirQuantity(t))
+  else if t is TFhirRange then
+    result := gen(TFhirRange(t))
+  else if t is TFhirPeriod then
+    result := gen(TFhirPeriod(t))
+  else if t is TFhirRatio then
+    result := gen(TFhirRatio(t))
+  else if t is TFhirSampledData then
+    result := gen(TFhirSampledData(t))
+  else if t is TFhirSignature then
+    result := gen(TFhirSignature(t))
+  else if t is TFhirAddress then
+    result := gen(TFhirAddress(t))
+  else if t is TFhirContactPoint then
+    result := gen(TFhirContactPoint(t))
+  else if t is TFhirTiming then
+    result := gen(TFhirTiming(t))
   else if t is TFhirBoolean then
     if TFhirBoolean(t).value then
       result := 'true'
@@ -2255,8 +2853,10 @@ var
    found : boolean;
    e : TFhirElementDefinition;
    p, tail : String;
+   inScope : boolean;
 begin
   result := TFHIRElementDefinitionList.create();
+  try
   // if we have a name reference, we have to find it, and iterate it's children
   if (nameReference <> '') then
   begin
@@ -2273,6 +2873,7 @@ begin
       raise Exception.create('Unable to resolve name reference '+nameReference+' at path '+path);
   end;
 
+    inScope := false;
   for e in profile.Snapshot.ElementList do
   begin
     p := e.Path;
@@ -2296,7 +2897,17 @@ begin
         exit;
       end;
     end
-    else if (p.startsWith(path+'.')) then
+      else
+      begin
+        if (p = path) then
+        begin
+          if (name = '') or (e.name = name) then
+            inscope := true
+          else
+            inscope := false;
+        end;
+
+        if inScope and (p.startsWith(path+'.')) then
     begin
       // The path of the element is a child of the path we're looking for (i.e. the parent),
       // so add this element to the result.
@@ -2304,8 +2915,538 @@ begin
       // Only add direct children, not any deeper paths
       if (not tail.contains('.')) then
         result.add(e.Link);
+        end
+        else if (p.Length < path.Length) then
+          inScope := false;
+      end;
     end;
+    result.link;
+  finally
+    result.free;
   end;
+end;
+
+function compareValues(e1, e2 : TFHIRObjectList; allowNull : boolean) : boolean;
+var
+  i : integer;
+begin
+  if (e1 = nil) and (e2 = nil) and (allowNull) then
+    result := true
+  else if (e1 = nil) or (e2 = nil) then
+    result := false
+  else if (e1.count <> e2.count) then
+    result := false
+  else
+  begin
+    result := true;
+    for i := 0 to e1.count - 1 do
+      if (not compareValues(e1.get(i) as TFHIRPrimitiveType, e2.get(i) as TFHIRPrimitiveType, allowNull)) then
+        result := false;
+  end;
+end;
+
+function compareValues(e1, e2 : TFHIRPrimitiveType; allowNull : boolean) : boolean;
+begin
+  if (e1 = nil) and (e2 = nil) and (allowNull) then
+    result := true
+  else if (e1 = nil) or (e2 = nil) then
+    result := false
+  else
+    result := e1.equalsShallow(e2);
+end;
+
+{ TFHIRStringListHelper }
+
+procedure TFHIRStringListHelper.add(s: String);
+begin
+  add(TFhirString.Create(s));
+end;
+
+function TFHIRStringListHelper.hasValue(value: String): boolean;
+var
+  v : TFhirString;
+begin
+  result := false;
+  for v in Self do
+    if (v.value = value) then
+      result := true;
+end;
+
+function TFHIRStringListHelper.summary: String;
+var
+  b : TStringBuilder;
+  f : boolean;
+  v : TFHIRString;
+begin
+  f := true;
+  b := TStringBuilder.Create;
+  try
+    for v in self do
+    begin
+      if (f) then
+        f := false
+      else
+        b.Append(', ');
+      b.Append(v.value);
+    end;
+    result := b.ToString;
+  finally
+    b.Free
+  end;
+end;
+
+{ TFhirOperationOutcomeIssueHelper }
+
+constructor TFhirOperationOutcomeIssueHelper.create(Severity: TFhirIssueSeverityEnum; Code: TFhirIssueTypeEnum; Diagnostics, location: String);
+begin
+  Create;
+  self.severity := Severity;
+  self.code := code;
+  self.diagnostics := Diagnostics;
+  self.locationList.Add(location);
+end;
+
+function CreateResourceByName(name : String) : TFhirResource;
+var
+  i : integer;
+begin
+  i := StringArrayIndexOfSensitive(CODES_TFhirResourceType, name);
+  if i = -1 then
+    raise Exception.Create('Unknown resource type '+name);
+  result := CLASSES_TFhirResourceType[TFhirResourceType(i)].Create;
+end;
+
+function CreateTypeByName(name : String) : TFhirElement;
+begin
+  if name = 'boolean' then
+    result := TFHIRboolean.create(false)
+  else if name = 'integer' then
+    result := TFHIRinteger.create('1')
+  else if name = 'decimal' then
+    result := TFHIRdecimal.create('1.0')
+  else if name = 'base64Binary' then
+    result := TFHIRbase64Binary.create(AnsiStringAsBytes('%test content%'))
+  else if name = 'instant' then
+    result := TFHIRinstant.create(NowUTC)
+  else if name = 'string' then
+    result := TFHIRstring.create('%string%')
+  else if name = 'uri' then
+    result := TFHIRuri.create('http://uri...')
+  else if name = 'date' then
+    result := TFHIRdate.create(today)
+  else if name = 'dateTime' then
+    result := TFHIRdateTime.create(NowLocal)
+  else if name = 'time' then
+    result := TFHIRtime.create('00:10:00')
+  else if name = 'code' then
+    result := TFHIRcode.create('%code%')
+  else if name = 'oid' then
+    result := TFHIRoid.create('urn:oid:0.1.2.3')
+  else if name = 'id' then
+    result := TFHIRid.create('%id%')
+  else if name = 'unsignedInt' then
+    result := TFHIRunsignedInt.create('0')
+  else if name = 'positiveInt' then
+    result := TFHIRpositiveInt.create('1')
+  else if name = 'markdown' then
+    result := TFHIRmarkdown.create('*markdown*')
+  else if name = 'Annotation' then
+    result := TFHIRAnnotation.create
+  else if name = 'Attachment' then
+    result := TFHIRAttachment.create
+  else if name = 'Identifier' then
+    result := TFHIRIdentifier.create
+  else if name = 'CodeableConcept' then
+    result := TFHIRCodeableConcept.create
+  else if name = 'Coding' then
+    result := TFHIRCoding.create
+  else if name = 'Quantity' then
+    result := TFHIRQuantity.create
+  else if name = 'Range' then
+    result := TFHIRRange.create
+  else if name = 'Period' then
+    result := TFHIRPeriod.create
+  else if name = 'Ratio' then
+    result := TFHIRRatio.create
+  else if name = 'SampledData' then
+    result := TFHIRSampledData.create
+  else if name = 'Signature' then
+    result := TFHIRSignature.create
+  else if name = 'HumanName' then
+    result := TFHIRHumanName.create
+  else if name = 'Address' then
+    result := TFHIRAddress.create
+  else if name = 'ContactPoint' then
+    result := TFHIRContactPoint.create
+  else if name = 'Timing' then
+    result := TFHIRTiming.create
+  else if name = 'Reference' then
+    result := TFHIRReference.create
+  else if name = 'Narrative' then
+    result := TFHIRNarrative.create
+  else if name = 'Meta' then
+    result := TFHIRMeta.create
+  else if name = 'xhtml' then
+    result := nil
+  else
+    raise Exception.Create('Unknown type: '+name);
+end;
+
+function CreateBasicChildren(element : TFhirElement; exCoding : TFHIRCoding) : TFhirElement;
+begin
+  result := element;
+  if element.FhirType = 'Annotation' then
+  begin
+    TFHIRAnnotation(element).author := CreateBasicChildren(TFhirReference.Create, nil) as TFhirReference;
+    TFHIRAnnotation(element).time := NowLocal;
+    TFHIRAnnotation(element).text := 'annotation text';
+  end
+  else if element.FhirType = 'Attachment' then
+  begin
+    TFHIRAttachment(element).contentType := 'text/plain';
+    TFHIRAttachment(element).language := 'en-US';
+    TFHIRAttachment(element).url := 'http://somewhere';
+  end
+  else if element.FhirType = 'Identifier' then
+  begin
+    TFHIRIdentifier(element).use := IdentifierUseUsual;
+    TFHIRIdentifier(element).system := 'http://unique.namepace/details';
+    TFHIRIdentifier(element).value := 'unique-id';
+  end
+  else if element.FhirType = 'CodeableConcept' then
+  begin
+    TFHIRCodeableConcept(element).text := 'text representation';
+    if exCoding <> nil then
+      TFHIRCodeableConcept(element).codingList.add(exCoding.Link)
+    else
+      CreateBasicChildren(TFHIRCodeableConcept(element).codingList.Append, nil);
+  end
+  else if element.FhirType = 'Coding' then
+  begin
+    if exCoding <> nil then
+    begin
+      TFHIRCoding(element).system := exCoding.system;
+      TFHIRCoding(element).code := exCoding.code;
+      TFHIRCoding(element).display := exCoding.display;
+    end
+    else
+    begin
+    TFHIRCoding(element).system := 'http://system.id';
+    TFHIRCoding(element).code := 'code';
+    TFHIRCoding(element).display := 'display';
+    end;
+  end
+  else if element.FhirType = 'Quantity' then
+  begin
+    TFHIRQuantity(element).value := '5.4';
+    if exCoding <> nil then
+    begin
+      TFHIRQuantity(element).system := exCoding.system;
+      TFHIRQuantity(element).code := exCoding.code;
+      TFHIRQuantity(element).unit_ := exCoding.display;
+    end
+    else
+    begin
+    TFHIRQuantity(element).unit_ := 'mg/mL';
+    TFHIRQuantity(element).system := 'http://unitsofmeasure.org';
+      TFHIRQuantity(element).code := 'mg/mL';
+    end;
+  end
+  else if element.FhirType = 'Range' then
+  begin
+    TFHIRRange(element).low := CreateBasicChildren(TFHIRQuantity.Create, exCoding) as TFhirQuantity;
+    TFHIRRange(element).low.value := '4.8';
+    TFHIRRange(element).high := CreateBasicChildren(TFHIRQuantity.Create, exCoding) as TFhirQuantity;
+  end
+  else if element.FhirType = 'Period' then
+  begin
+    TFHIRPeriod(element).start := NowLocal;
+    TFHIRPeriod(element).end_ := NowLocal;
+  end
+  else if element.FhirType = 'Ratio' then
+  begin
+    TFHIRRatio(element).numerator := TFhirQuantity.Create;
+    TFHIRRatio(element).numerator.value := '5.4';
+    TFHIRRatio(element).numerator.unit_ := '$';
+    TFHIRRatio(element).denominator := TFhirQuantity.Create;
+    TFHIRRatio(element).denominator.value := '1';
+    TFHIRRatio(element).denominator.unit_ := 'kg';
+  end
+  else if element.FhirType = 'Signature' then
+  begin
+    if exCoding <> nil then
+      TFHIRSignature(element).type_List.Add(exCoding.Link)
+    else
+    begin
+    TFHIRSignature(element).type_List.Append;
+    TFHIRSignature(element).type_List[0].system := 'http://hl7.org/fhir/valueset-signature-type';
+    TFHIRSignature(element).type_List[0].code := '1.2.840.10065.1.12.1.1';
+    TFHIRSignature(element).type_List[0].display := 'AuthorID';
+    end;
+    TFHIRSignature(element).when := NowUTC;
+    TFHIRSignature(element).who := CreateBasicChildren(TFhirReference.Create, nil) as TFhirReference;
+    TFHIRSignature(element).contentType := 'application/signature+xml';
+    TFHIRSignature(element).blob := AnsiStringAsBytes('signature content');
+  end
+  else if element.FhirType = 'HumanName' then
+  begin
+    TFHIRHumanName(element).use := NameUseUsual;
+    TFHIRHumanName(element).text := 'prefix given family';
+    TFHIRHumanName(element).givenList.add('%given%');
+    TFHIRHumanName(element).familyList.add('%family%');
+    TFHIRHumanName(element).prefixList.add('%prefix%');
+  end
+  else if element.FhirType = 'Address' then
+  begin
+    TFHIRAddress(element).use := AddressUseHome;
+    TFHIRAddress(element).text := '13 Boring St, Erewhon, 5555 (New Zealand)';
+    TFHIRAddress(element).lineList.add('13 Boring St');
+    TFHIRAddress(element).city := 'Erewhon';
+    TFHIRAddress(element).postalCode := '5555';
+    TFHIRAddress(element).country := 'New Zealand';
+  end
+  else if element.FhirType = 'ContactPoint' then
+  begin
+    TFHIRContactPoint(element).system := ContactPointSystemPhone;
+    TFHIRContactPoint(element).value := '%555-555-5555%';
+    TFHIRContactPoint(element).use := ContactPointUseWork;
+  end
+  else if element.FhirType = 'Timing' then
+  begin
+    TFHIRTiming(element).eventList.Append.value := NowLocal;
+    TFHIRTiming(element).repeat_ := TFhirTimingRepeat.create;
+    TFHIRTiming(element).repeat_.duration := '1';
+    TFHIRTiming(element).repeat_.durationUnits := UnitsOfTimeH;
+    TFHIRTiming(element).repeat_.frequency := '3';
+    TFHIRTiming(element).repeat_.period := '21';
+    TFHIRTiming(element).repeat_.periodUnits := UnitsOfTimeD;
+  end
+  else if element.FhirType = 'Reference' then
+  begin
+    TFHIRReference(element).display := '%test description%';
+    TFHIRReference(element).reference := '%Type/id%';
+  end
+  else if element.FhirType = 'Narrative' then
+  begin
+    TFhirNarrative(element).status := NarrativeStatusAdditional;
+    TFhirNarrative(element).div_ := ParseXhtml('en', '<div xmlns="http://www.w3.org/1999/xhtml"><p>%Some xhtml content%</p></div>', xppAllow);
+  end
+  else if element.FhirType = 'Meta' then
+  begin
+    TFHIRMeta(element).lastUpdated := NowUTC;
+  end
+  else if (exCoding <> nil) and (element is TFHIRCode) then
+    TFHIRCode(element).value := exCoding.code
+  else if (exCoding <> nil) and (element is TFHIREnum) then
+    TFHIREnum(element).value := exCoding.code
+end;
+
+function asCode(obj : TFHIRObject) : TFHIRCode;
+begin
+  if obj is TFHIRCode then
+    result := obj as TFHIRCode
+  else if obj is TFHIREnum then
+  begin
+    result := TFHIRCode.create(TFHIREnum(obj).value);
+    obj.Free;
+  end
+  else
+  begin
+    obj.Free;
+    raise Exception.Create('Type mismatch: cannot convert from \"'+obj.className+'\" to \"TFHIRCode\"')
+  end;
+end;
+
+function asEnum(obj : TFHIRObject) : TFHIREnum;
+begin
+  if obj is TFHIREnum then
+    result := obj as TFHIREnum
+  else if obj is TFHIRCode then
+  begin
+    result := TFHIREnum.create(TFHIRCode(obj).value);
+    obj.Free;
+  end
+  else
+  begin
+    obj.Free;
+    raise Exception.Create('Type mismatch: cannot convert from \"'+obj.className+'\" to \"TFHIRCode\"')
+  end;
+end;
+
+function TFhirOperationOutcomeIssueHelper.summary: String;
+begin
+  if details <> nil then
+    result := CODES_TFhirIssueSeverityEnum[severity]+': '+details.text.Trim+' ('+CODES_TFhirIssueTypeEnum[code]+') @ '+locationList.summary
+  else
+    result := CODES_TFhirIssueSeverityEnum[severity]+': '+diagnostics.Trim+' ('+CODES_TFhirIssueTypeEnum[code]+') @ '+locationList.summary;
+end;
+
+{ TFhirOperationOutcomeIssueListHelper }
+
+function TFhirOperationOutcomeIssueListHelper.errorCount: integer;
+var
+  issue : TFhirOperationOutcomeIssue;
+begin
+  result := 0;
+  for issue in self do
+    if (issue.severity in [IssueSeverityFatal, IssueSeverityError]) then
+      inc(result);
+end;
+
+{ TFhirElementDefinitionHelper }
+
+function TFhirElementDefinitionHelper.hasType(t: String): boolean;
+var
+  edt : TFhirElementDefinitionType;
+begin
+  result := false;
+  for edt in type_List do
+    if edt.code = t then
+      exit(true);
+end;
+
+function TFhirElementDefinitionHelper.hasType(t: String; out profile: String): boolean;
+var
+  edt : TFhirElementDefinitionType;
+begin
+  result := false;
+  for edt in type_List do
+    if SameText(edt.code, t) then
+    begin
+      if edt.profileList.Count > 0 then
+        profile := edt.profileList[0].value
+      else
+        profile := '';
+      exit(true);
+    end;
+end;
+
+{ TFHIRBackboneElementHelper }
+
+procedure TFHIRBackboneElementHelper.checkNoModifiers(place, role: String);
+begin
+  if modifierExtensionList.Count > 0 then
+    raise EUnsafeOperation.Create('The element '+role+' has modifier exceptions that are unknown at '+place);
+end;
+
+function isAbsoluteUrl(s: String): boolean;
+begin
+  result := s.StartsWith('urn:') or s.StartsWith('http:') or s.StartsWith('https:') or s.StartsWith('ftp:');
+end;
+
+{ TFhirCodeListHelper }
+
+function TFhirCodeListHelper.hasCode(code: String): boolean;
+var
+   c : TFhirCode;
+begin
+  result := false;
+  for c in self do
+    if c.value = code then
+      exit(true);
+end;
+
+{ TFhirUriListHelper }
+
+function TFhirUriListHelper.hasUri(uri: String): boolean;
+var
+  i : integer;
+begin
+  result := false;
+  for i := Count - 1 downto 0 do
+    if (Item(i).value = uri) then
+      Exit(true);
+end;
+
+procedure TFhirUriListHelper.removeUri(uri: String);
+var
+  i : integer;
+begin
+ for i := Count - 1 downto 0 do
+   if (Item(i).value = uri) then
+     Remove(i);
+end;
+
+
+{ TFhirValueSetCodeSystemHelper }
+
+function TFhirValueSetCodeSystemHelper.locate(parent : TFhirValueSetCodeSystemConcept; list : TFhirValueSetCodeSystemConceptList; code : String; var foundParent, foundConcept : TFhirValueSetCodeSystemConcept) : boolean;
+var
+  i : integer;
+  c : TFhirValueSetCodeSystemConcept;
+begin
+  result := false;
+  for c in list do
+  begin
+    if (c.code = code) then
+    begin
+      foundParent := parent;
+      foundConcept := c;
+      exit(true);
+    end;
+    result := Locate(c, c.conceptList, code, foundParent, foundConcept);
+    if result then
+      exit;
+  end;
+end;
+
+
+procedure TFhirValueSetCodeSystemHelper.scanForSubsumes(parentList, conceptList: TFhirValueSetCodeSystemConceptList; code: String);
+var
+  ext : TFHIRExtension;
+  c : TFhirValueSetCodeSystemConcept;
+begin
+  for c in conceptList do
+  begin
+    for ext in c.modifierExtensionList do
+      if (ext.url = 'http://hl7.org/fhir/StructureDefinition/valueset-subsumes') then
+        if (ext.value as TFHIRCode).value = code then
+          parentList.Add(c.link);
+    scanForSubsumes(parentList, c.conceptList, code);
+  end;
+end;
+
+function TFhirValueSetCodeSystemHelper.getChildren(concept: TFhirValueSetCodeSystemConcept): TFhirValueSetCodeSystemConceptList;
+var
+  ext : TFHIRExtension;
+  p, c : TFhirValueSetCodeSystemConcept;
+begin
+  result := TFhirValueSetCodeSystemConceptList.Create;
+  try
+    result.AddAll(concept.conceptList);
+    for ext in concept.modifierExtensionList do
+      if (ext.url= 'http://hl7.org/fhir/StructureDefinition/valueset-subsumes') then
+        if locate(nil, conceptList, (ext.value as TFHIRCode).value, p, c) then
+          result.Add(c.link);
+    result.Link;
+  finally
+    result.Free;
+  end;
+end;
+
+function TFhirValueSetCodeSystemHelper.getParents(concept: TFhirValueSetCodeSystemConcept): TFhirValueSetCodeSystemConceptList;
+var
+  p, c : TFhirValueSetCodeSystemConcept;
+begin
+  result := TFhirValueSetCodeSystemConceptList.Create;
+  try
+    if locate(nil, conceptList, concept.code, p, c) then
+      if (p <> nil) then
+        result.Add(p.Link);
+    scanForSubsumes(result, conceptList, concept.code);
+    result.Link;
+  finally
+    result.Free;
+  end;
+
+end;
+
+
+{ TFhirExpansionProfileHelper }
+
+function TFhirExpansionProfileHelper.hash: String;
+begin
+  result := BooleanToString(includeDefinition)+'|'+BooleanToString(limitedExpansion);
 end;
 
 end.

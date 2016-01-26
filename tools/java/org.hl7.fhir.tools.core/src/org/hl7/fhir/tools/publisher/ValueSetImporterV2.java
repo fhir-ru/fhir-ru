@@ -3,12 +3,10 @@ package org.hl7.fhir.tools.publisher;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -18,24 +16,22 @@ import java.util.Set;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.hl7.fhir.definitions.validation.ValueSetValidator;
-import org.hl7.fhir.instance.formats.FormatUtilities;
-import org.hl7.fhir.instance.model.ContactPoint.ContactPointSystem;
-import org.hl7.fhir.instance.model.DateTimeType;
-import org.hl7.fhir.instance.model.Enumerations.ConformanceResourceStatus;
-import org.hl7.fhir.instance.model.Factory;
-import org.hl7.fhir.instance.model.Narrative;
-import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
-import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionDesignationComponent;
-import org.hl7.fhir.instance.model.ValueSet.ConceptReferenceComponent;
-import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetCodeSystemComponent;
-import org.hl7.fhir.instance.terminologies.ValueSetUtilities;
-import org.hl7.fhir.instance.utils.ToolingExtensions;
-import org.hl7.fhir.instance.validation.ValidationMessage;
-import org.hl7.fhir.tools.publisher.ValueSetImporterV2.TableRegistration;
+import org.hl7.fhir.dstu21.formats.FormatUtilities;
+import org.hl7.fhir.dstu21.model.DateTimeType;
+import org.hl7.fhir.dstu21.model.Factory;
+import org.hl7.fhir.dstu21.model.Narrative;
+import org.hl7.fhir.dstu21.model.ValueSet;
+import org.hl7.fhir.dstu21.model.ContactPoint.ContactPointSystem;
+import org.hl7.fhir.dstu21.model.Enumerations.ConformanceResourceStatus;
+import org.hl7.fhir.dstu21.model.Narrative.NarrativeStatus;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionDesignationComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptReferenceComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ValueSetCodeSystemComponent;
+import org.hl7.fhir.dstu21.terminologies.ValueSetUtilities;
+import org.hl7.fhir.dstu21.utils.ToolingExtensions;
+import org.hl7.fhir.dstu21.validation.ValidationMessage;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.IniFile;
@@ -250,7 +246,8 @@ public class ValueSetImporterV2 {
   }
 
   private void addLangDesc(ConceptDefinitionComponent c, String lang, String value) {
-    c.addDesignation().setLanguage(lang).setValue(value);
+    if (!Utilities.noString(value))
+      c.addDesignation().setLanguage(lang).setValue(value);
   }
 
   private List<Element> getLangList(Element node) {

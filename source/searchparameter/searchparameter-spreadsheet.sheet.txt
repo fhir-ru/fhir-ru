@@ -47,6 +47,7 @@
   Context = SearchParameter
   English = If an xpath is present, there SHALL be an xpathUsage
   XPath = not(exists(f:xpath)) or exists(f:xpathUsage)
+  Expression = xpath.empty() or xpathUsage
   Severity = error
 
 === Sheet Data Elements =====================================
@@ -260,12 +261,18 @@
 
 === Sheet Profiles =====================================
 
+ -- Row 1 -----------------------------------
+  Name = SearchParameter.extensions
+  IG Name = core
+  Filename = searchparameter-extensions.xml
+  Type = spreadsheet
+
 === Sheet Examples =====================================
 
  -- Row 1 -----------------------------------
   Name = General
   Identity = example
-  Description = General example for searching on an extension
+  Description = General example
   Filename = searchparameter-example.xml
 
  -- Row 2 -----------------------------------

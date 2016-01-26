@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.hl7.fhir.instance.model.SearchParameter;
+import org.hl7.fhir.dstu21.model.SearchParameter;
 
 /*
 Copyright (c) 2011+, HL7, Inc
@@ -54,6 +54,7 @@ public class SearchParameterDefn {
   private SearchType type;
   private SearchParameter.XPathUsageType xPathUsage;
   private List<String> paths = new ArrayList<String>();
+  private String expression;
   private List<String> composites = new ArrayList<String>();
   private Set<String> targets = new HashSet<String>();
   private Set<String> manualTargets = new HashSet<String>();
@@ -85,14 +86,17 @@ public class SearchParameterDefn {
     this.type = type;
     this.xPathUsage = xPathUsage; 
   }
-  
-  public SearchParameterDefn addPath(String value) {
-    paths.add(value);
-    return this;
-  }
-  
+    
   public List<String> getPaths() {
     return paths;
+  }
+
+  public String getExpression() {
+    return expression;
+  }
+
+  public void setExpression(String expression) {
+    this.expression = expression;
   }
 
   public List<String> getComposites() {

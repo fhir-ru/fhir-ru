@@ -2,15 +2,11 @@ package org.hl7.fhir.definitions.parsers;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.hl7.fhir.definitions.generators.specification.ToolResourceUtilities;
 import org.hl7.fhir.definitions.model.BindingSpecification;
@@ -21,46 +17,32 @@ import org.hl7.fhir.definitions.model.Example.ExampleType;
 import org.hl7.fhir.definitions.model.ImplementationGuideDefn;
 import org.hl7.fhir.definitions.model.LogicalModel;
 import org.hl7.fhir.definitions.model.MappingSpace;
-import org.hl7.fhir.definitions.model.Operation;
 import org.hl7.fhir.definitions.model.Profile;
 import org.hl7.fhir.definitions.model.Profile.ConformancePackageSourceType;
-import org.hl7.fhir.instance.formats.XmlParser;
-import org.hl7.fhir.instance.model.ConceptMap;
-import org.hl7.fhir.instance.model.Conformance;
-import org.hl7.fhir.instance.model.DataElement;
-import org.hl7.fhir.instance.model.DateTimeType;
-import org.hl7.fhir.instance.model.Extension;
-import org.hl7.fhir.instance.model.ImplementationGuide;
-import org.hl7.fhir.instance.model.ImplementationGuide.GuideDependencyType;
-import org.hl7.fhir.instance.model.ImplementationGuide.GuidePageKind;
-import org.hl7.fhir.instance.model.ImplementationGuide.GuideResourcePurpose;
-import org.hl7.fhir.instance.model.ImplementationGuide.ImplementationGuideDependencyComponent;
-import org.hl7.fhir.instance.model.ImplementationGuide.ImplementationGuidePackageComponent;
-import org.hl7.fhir.instance.model.ImplementationGuide.ImplementationGuidePackageResourceComponent;
-import org.hl7.fhir.instance.model.ImplementationGuide.ImplementationGuidePageComponent;
-import org.hl7.fhir.instance.model.OperationOutcome.IssueType;
-import org.hl7.fhir.instance.model.NamingSystem;
-import org.hl7.fhir.instance.model.OperationDefinition;
-import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.instance.model.Resource;
-import org.hl7.fhir.instance.model.SearchParameter;
-import org.hl7.fhir.instance.model.StructureDefinition;
-import org.hl7.fhir.instance.model.TestScript;
-import org.hl7.fhir.instance.model.UriType;
-import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.utils.ProfileUtilities.ProfileKnowledgeProvider;
-import org.hl7.fhir.instance.utils.ToolingExtensions;
-import org.hl7.fhir.instance.validation.ValidationMessage;
-import org.hl7.fhir.instance.validation.ValidationMessage.Source;
+import org.hl7.fhir.dstu21.formats.XmlParser;
+import org.hl7.fhir.dstu21.model.DateTimeType;
+import org.hl7.fhir.dstu21.model.Extension;
+import org.hl7.fhir.dstu21.model.ImplementationGuide;
+import org.hl7.fhir.dstu21.model.Resource;
+import org.hl7.fhir.dstu21.model.StructureDefinition;
+import org.hl7.fhir.dstu21.model.UriType;
+import org.hl7.fhir.dstu21.model.ValueSet;
+import org.hl7.fhir.dstu21.model.ImplementationGuide.GuideDependencyType;
+import org.hl7.fhir.dstu21.model.ImplementationGuide.GuidePageKind;
+import org.hl7.fhir.dstu21.model.ImplementationGuide.GuideResourcePurpose;
+import org.hl7.fhir.dstu21.model.ImplementationGuide.ImplementationGuideDependencyComponent;
+import org.hl7.fhir.dstu21.model.ImplementationGuide.ImplementationGuidePackageComponent;
+import org.hl7.fhir.dstu21.model.ImplementationGuide.ImplementationGuidePackageResourceComponent;
+import org.hl7.fhir.dstu21.model.ImplementationGuide.ImplementationGuidePageComponent;
+import org.hl7.fhir.dstu21.utils.ToolingExtensions;
+import org.hl7.fhir.dstu21.utils.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.dstu21.validation.ValidationMessage;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Logger.LogMessageType;
 import org.hl7.fhir.utilities.Utilities;
-import org.hl7.fhir.utilities.xml.XMLUtil;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 public class IgParser {
 
@@ -160,11 +142,34 @@ public class IgParser {
           r.setUserData(ToolResourceUtilities.RES_ACTUAL_RESOURCE, vs);
           r.setSource(new UriType(fn.getName()));
         } else if (r.getPurpose() == GuideResourcePurpose.PROFILE) {
-          throw new Error("Not implemented yet");
+          Profile pr = new Profile(igd.getCode());
+          pr.setSource(fn.getAbsolutePath());
+          StructureDefinition sd = (StructureDefinition) new XmlParser().parse(new CSFileInputStream(pr.getSource()));
+          if (!sd.hasId())
+            sd.setId(tail(sd.getUrl()));
+          pr.forceMetadata("id", sd.getId()+"-profile");
+          pr.setSourceType(ConformancePackageSourceType.SturctureDefinition);
+          ConstraintStructure cs = new ConstraintStructure(sd, igd);
+          pr.getProfiles().add(cs);
+          igd.getProfiles().add(pr);
+        } else if (r.getPurpose() == GuideResourcePurpose.EXTENSION) {
+          StructureDefinition sd = (StructureDefinition) new XmlParser().parse(new CSFileInputStream(fn.getAbsolutePath()));
+          sd.setId(tail(sd.getUrl()));
+          sd.setUserData(ToolResourceUtilities.NAME_RES_IG, igd.getCode());
+          ToolResourceUtilities.updateUsage(sd, igd.getCode());
+          this.context.seeExtensionDefinition("http://hl7.org/fhir", sd);
+        } else if (r.getPurpose() == GuideResourcePurpose.LOGICAL) {
+          fn = new CSFile(Utilities.path(myRoot, r.getSourceUriType().asStringValue()));
+          StructureDefinition sd = (StructureDefinition) new XmlParser().parse(new FileInputStream(fn));
+          LogicalModel lm = new LogicalModel(sd);
+          lm.setSource(fn.getAbsolutePath());
+          lm.setId(sd.getId());
+          igd.getLogicalModels().add(lm);        
         } else if (r.getPurpose() == GuideResourcePurpose.DICTIONARY) {
           Dictionary d = new Dictionary(id, r.getName(), igd.getCode(), fn.getAbsolutePath(), igd);
           igd.getDictionaries().add(d);
-        }
+        } else 
+          throw new Error("Not implemented yet - purpose = "+r.getPurpose().toCode());
 
 
         //        if (r.hasExampleFor()) {
@@ -330,6 +335,10 @@ public class IgParser {
 //        throw new Exception("Unknown element name in IG: "+e.getNodeName());
 //      e = XMLUtil.getNextSibling(e);
 //    }    
+  }
+
+  private String tail(String url) {
+    return url.substring(url.lastIndexOf("/")+1);
   }
 
   private void processPage(ImplementationGuidePageComponent page, ImplementationGuideDefn igd) throws Exception {

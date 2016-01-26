@@ -42,22 +42,22 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.instance.formats.IParser.OutputStyle;
-import org.hl7.fhir.instance.formats.XmlParser;
-import org.hl7.fhir.instance.model.ElementDefinition;
-import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionConstraintComponent;
-import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionMappingComponent;
-import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionSlicingComponent;
-import org.hl7.fhir.instance.model.ElementDefinition.TypeRefComponent;
-import org.hl7.fhir.instance.model.IdType;
-import org.hl7.fhir.instance.model.PrimitiveType;
-import org.hl7.fhir.instance.model.StringType;
-import org.hl7.fhir.instance.model.StructureDefinition;
-import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionMappingComponent;
-import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionKind;
-import org.hl7.fhir.instance.model.Type;
-import org.hl7.fhir.instance.model.UriType;
-import org.hl7.fhir.instance.utils.ProfileUtilities;
+import org.hl7.fhir.dstu21.formats.XmlParser;
+import org.hl7.fhir.dstu21.formats.IParser.OutputStyle;
+import org.hl7.fhir.dstu21.model.ElementDefinition;
+import org.hl7.fhir.dstu21.model.IdType;
+import org.hl7.fhir.dstu21.model.PrimitiveType;
+import org.hl7.fhir.dstu21.model.StringType;
+import org.hl7.fhir.dstu21.model.StructureDefinition;
+import org.hl7.fhir.dstu21.model.Type;
+import org.hl7.fhir.dstu21.model.UriType;
+import org.hl7.fhir.dstu21.model.ElementDefinition.ElementDefinitionConstraintComponent;
+import org.hl7.fhir.dstu21.model.ElementDefinition.ElementDefinitionMappingComponent;
+import org.hl7.fhir.dstu21.model.ElementDefinition.ElementDefinitionSlicingComponent;
+import org.hl7.fhir.dstu21.model.ElementDefinition.TypeRefComponent;
+import org.hl7.fhir.dstu21.model.StructureDefinition.StructureDefinitionKind;
+import org.hl7.fhir.dstu21.model.StructureDefinition.StructureDefinitionMappingComponent;
+import org.hl7.fhir.dstu21.utils.ProfileUtilities;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
@@ -65,7 +65,6 @@ import org.hl7.fhir.utilities.Utilities;
 public class DictHTMLGenerator  extends OutputStreamWriter {
 
 	private Definitions definitions;
-	private ProfileUtilities utilities;
 	private PageProcessor page;
 	private String prefix;
 	
@@ -73,7 +72,6 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	  super(out, "UTF-8");
 	  this.definitions = page.getDefinitions();
 	  this.page = page;
-	  this.utilities = new ProfileUtilities(page.getWorkerContext());
 	  this.prefix = prefix;
 	}
 
@@ -183,7 +181,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   }
   
   private boolean isProfiledExtension(ElementDefinition ec) {
-    return ec.getType().size() == 1 && ec.getType().get(0).getCode().equals("Extension") && ec.getType().get(0).hasProfile();
+    return ec.getType().size() == 1 && "Extension".equals(ec.getType().get(0).getCode()) && ec.getType().get(0).hasProfile();
   }
 
   private void generateElementInner(StructureDefinition profile, ElementDefinition d, int mode, ElementDefinition value) throws Exception {
@@ -280,6 +278,8 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   }
 
   private void describeType(StringBuilder b, TypeRefComponent t) throws Exception {
+    if (t.getCode() == null)
+      return;
     if (t.getCode().startsWith("="))
       return;
     
@@ -512,7 +512,10 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	      done.add(inv.getId());
 	      if (b)
 	        s.append("<br/>");
-	      s.append("<b title=\"Formal Invariant Identifier\">"+i+"</b>: "+Utilities.escapeXml(inv.getEnglish())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")");
+	      if (inv.getExpression().equals("n/a"))
+	        s.append("<b title=\"Formal Invariant Identifier\">"+i+"</b>: "+Utilities.escapeXml(inv.getEnglish())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")");
+	      else
+	        s.append("<b title=\"Formal Invariant Identifier\">"+i+"</b>: "+Utilities.escapeXml(inv.getEnglish())+" (expression: "+Utilities.escapeXml(inv.getExpression())+", xpath: "+Utilities.escapeXml(inv.getXpath())+")");
 	      b = true;
 	    }
 	  }
@@ -525,7 +528,10 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
         if (!done.contains(id.getId())) {
           if (b)
             s.append("<br/>");
-          s.append("<b>"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (xpath: "+Utilities.escapeXml(id.getXpath())+")");
+          if (id.getExpression().equals("n/a"))
+            s.append("<b title=\"Formal Invariant Identifier\">"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (xpath: "+Utilities.escapeXml(id.getXpath())+")");
+          else
+            s.append("<b title=\"Formal Invariant Identifier\">"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (expression: "+Utilities.escapeXml(id.getExpression())+", xpath: "+Utilities.escapeXml(id.getXpath())+")");
           b = true;
         }
       }

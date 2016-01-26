@@ -63,6 +63,7 @@ type
 
       Procedure AddWord(val : word);
       Procedure AddCardinal(val : cardinal);
+      Procedure AddInteger(val : integer);
       Procedure AddUInt64(val : UInt64);
       Procedure AddString(val : String);
       Procedure AddAnsiString(val : AnsiString);
@@ -669,13 +670,25 @@ Begin
   Append(s);
 end;
 
+procedure TAdvBytesBuilder.AddInteger(val: integer);
+Var
+  s : TBytes;
+Begin
+  SetLength(s, 4);
+  move(val, s[0], 4);
+  Append(s);
+end;
+
 procedure TAdvBytesBuilder.AddString(val: String);
 Var
   s : TBytes;
 Begin
+  if val.length > 0 then
+  begin
   SetLength(s, val.Length*2);
   move(val[1], s[0], val.Length*2);
   Append(s);
+  end;
 end;
 
 procedure TAdvBytesBuilder.AddUInt64(val: UInt64);

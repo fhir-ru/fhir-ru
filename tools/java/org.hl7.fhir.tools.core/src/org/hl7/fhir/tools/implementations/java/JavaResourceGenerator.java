@@ -1,4 +1,6 @@
 package org.hl7.fhir.tools.implementations.java;
+import static org.apache.commons.lang3.StringUtils.defaultString;
+
 /*
 Copyright (c) 2011+, HL7, Inc
 All rights reserved.
@@ -36,6 +38,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.Validate;
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
@@ -43,10 +46,8 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
+import org.hl7.fhir.definitions.model.SearchParameterDefn.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.instance.model.Extension;
-import org.hl7.fhir.instance.model.api.IBaseConformance;
-import org.hl7.fhir.tools.implementations.GeneratorUtils;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -69,16 +70,12 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
 	private Map<ElementDefn, String> typeNames = new HashMap<ElementDefn, String>();
 	private List<String> typeNameStrings = new ArrayList<String>();
-
 	private List<ElementDefn> enums = new ArrayList<ElementDefn>();
 	private List<String> enumNames = new ArrayList<String>();
 	private List<ElementDefn> strucs  = new ArrayList<ElementDefn>();
-
   private String classname;
-
   private String allfields;
   private long hashSum;
-
   private String inheritedHash;
 
 
@@ -86,7 +83,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		return typeNames;
 	}
 
-	public void generate(ElementDefn root, String name, JavaGenClass clss, ProfiledType cd, Date genDate, String version, boolean isAbstract, Map<String, SearchParameterDefn> map) throws Exception {
+	public void generate(ElementDefn root, String name, JavaGenClass clss, ProfiledType cd, Date genDate, String version, boolean isAbstract, Map<String, SearchParameterDefn> nameToSearchParamDef) throws Exception {
 		typeNames.clear();
 		typeNameStrings.clear();
 		enums.clear();
@@ -100,7 +97,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 //      elem.getTypes().get(0);
 //    }
 		
-		write("package org.hl7.fhir.instance.model;\r\n");
+		write("package org.hl7.fhir.dstu21.model;\r\n");
 		write("\r\n/*\r\n"+Config.FULL_LICENSE_CODE+"*/\r\n\r\n");
 		write("// Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n\r\n");
     if (clss != JavaGenClass.Constraint) {
@@ -120,27 +117,28 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
         if (s)
           write("import org.hl7.fhir.utilities.Utilities;\r\n");
         if (e)
-          write("import org.hl7.fhir.instance.model.Enumerations.*;\r\n");
+          write("import org.hl7.fhir.dstu21.model.Enumerations.*;\r\n");
       }
       if (clss == JavaGenClass.Resource) {
-        write("import org.hl7.fhir.instance.model.annotations.ResourceDef;\r\n");
-        write("import org.hl7.fhir.instance.model.annotations.SearchParamDefinition;\r\n");
+        write("import ca.uhn.fhir.model.api.annotation.ResourceDef;\r\n");
+        write("import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;\r\n");
       } 
-      write("import org.hl7.fhir.instance.model.annotations.Child;\r\n");
-      write("import org.hl7.fhir.instance.model.annotations.Description;\r\n");
+      write("import ca.uhn.fhir.model.api.annotation.Child;\r\n");
+      write("import ca.uhn.fhir.model.api.annotation.Description;\r\n");
     }
     if (clss != JavaGenClass.Resource) {
-      write("import org.hl7.fhir.instance.model.annotations.DatatypeDef;\r\n");
+      write("import ca.uhn.fhir.model.api.annotation.DatatypeDef;\r\n");
     }
-    write("import org.hl7.fhir.instance.model.annotations.Block;\r\n");
+    write("import ca.uhn.fhir.model.api.annotation.Block;\r\n");
     write("import org.hl7.fhir.instance.model.api.*;\r\n");
+    write("import org.hl7.fhir.dstu21.exceptions.FHIRException;\r\n");
     
 		jdoc("", root.getDefinition());
 		classname = upFirst(name);
 		if (clss == JavaGenClass.Resource) {
 		  
 		  if (!isAbstract) {
-		    write("@ResourceDef(name=\""+upFirst(name).replace("_", "")+"\", profile=\"http://hl7.org/fhir/Profile/"+upFirst(name)+"\")\r\n");
+		    write("@ResourceDef(name=\""+upFirst(name).replace("ListResource", "List")+"\", profile=\"http://hl7.org/fhir/Profile/"+upFirst(name)+"\")\r\n");
 		  }
 		  
 			String hierarchy;
@@ -236,15 +234,18 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	    if (mandatory.size() > 0)
 	      generateConstructor(upFirst(name), mandatory, "  ");
 
-	    generateTypeSpecificConstructors(isRefType);
+	    generateTypeSpecificConstructors(upFirst(name));
 	    
 			for (ElementDefn e : root.getElements()) {
   			generateAccessors(root, e, "    ", upFirst(name));
 			}
 			
-			generateTypeSpecificAccessors(name, clss);
+			generateTypeSpecificAccessors(name);
 			
 			generateChildrenRegister(root, "    ", isAbstract);
+      generatePropertySetter(root, "    ");
+      generateChildAdder(root, "    ", classname);
+      generateFhirType(root.getName());
 		} else {
       write("    private static final long serialVersionUID = "+inheritedHash+"L;\r\n\r\n");
 		}
@@ -263,133 +264,557 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		  write("  public abstract ResourceType getResourceType();\r\n");
 		}
 		
-		
-		if (map != null) {
-		  for (SearchParameterDefn sp : map.values()) {
-		    write("  @SearchParamDefinition(name=\""+sp.getCode()+"\", path=\""+pipeSeparate(sp.getPaths())+"\", description=\""+Utilities.escapeJava(sp.getDescription())+"\", type=\""+sp.getType().toString()+"\" )\r\n");
-		    write("  public static final String SP_"+clean(sp.getCode()).toUpperCase()+" = \""+sp.getCode()+"\";\r\n");
+		// Write resource fields which can be used as constants in client code
+		// to refer to standard search params
+		if (nameToSearchParamDef != null) {
+		  for (SearchParameterDefn sp : nameToSearchParamDef.values()) {
+		    
+		    String code = sp.getCode();
+        
+        /* 
+         * For composite codes we want to find the two param this is a composite
+		     * of. We generate search parameter constants which reference the 
+		     * component parts of the composite.  
+		     */
+        if (sp.getType() == SearchType.composite) {
+          
+          if (code.endsWith("-[x]")) {
+            // partialCode will have "value" in this example
+            String partialCode = code.substring(0, code.length() - 4);
+            partialCode = partialCode.substring(partialCode.lastIndexOf('-') + 1);
+          
+            // rootCode will have "component-code"
+            String rootCode = code.substring(0, code.indexOf("-" + partialCode));
+          
+            /*
+             * If the composite has the form "foo-bar[x]" we expand this to create 
+             * a constant for each of the possible [x] values, so that client have
+             * static binding to the individual possibilities. AFAIK this is only
+             * used right now in Observation (e.g. for code-value-[x]) 
+             */
+            for (SearchParameterDefn nextCandidate : nameToSearchParamDef.values()) {
+              if (nextCandidate.getCode().startsWith(partialCode)) {
+                String nextCompositeCode = rootCode + "-" + nextCandidate.getCode();
+                String[] compositeOf = new String[] { rootCode, nextCandidate.getCode() };
+                writeSearchParameterField(name, clss, isAbstract, sp, nextCompositeCode, compositeOf, nameToSearchParamDef);
+              }
+            }
+          } else {
+            String code0 = sp.getComposites().get(0);
+            String code1 = sp.getComposites().get(1);
+            SearchParameterDefn comp0 = nameToSearchParamDef.get(code0);
+            SearchParameterDefn comp1 = nameToSearchParamDef.get(code1);
+            Validate.notNull(comp0, "Couldn't find composite component " + code0 + " - Values are: " + nameToSearchParamDef.keySet());
+            Validate.notNull(comp1, "Couldn't find composite component " + code1 + " - Values are: " + nameToSearchParamDef.keySet());
+            String[] compositeOf = new String[] { code0, code1 };
+            writeSearchParameterField(name, clss, isAbstract, sp, sp.getCode(), compositeOf, nameToSearchParamDef);
+          }
+  
+        } else if (code.contains("[x]")) {
+          /*
+           * We only know how to handle search parameters with [x] in the name
+           * where it's a composite, and the [x] comes last. Are there other possibilities?
+           */
+          throw new Exception("Unable to generate constant for search parameter: " + code);
+        } else {
+          writeSearchParameterField(name, clss, isAbstract, sp, code, null, nameToSearchParamDef);
+        }
+		    
 		  }
 		}
+		
+		
+		
 		write("\r\n");
 		write("}\r\n");
 		write("\r\n");
 		flush();
 	}
 
-  private void generateTypeSpecificConstructors(boolean isRefType) throws IOException {
-    //@formatter:off
-    if (isRefType) {
-      write("    /**\r\n" + 
-          "     * Constructor\r\n" + 
-          "     * \r\n" + 
-          "     * @param theReference The given reference string (e.g. \"Patient/123\" or \"http://example.com/Patient/123\")\r\n" + 
-          "     */\r\n" + 
-          "    public Reference(String theReference) {\r\n" + 
-          "      super(theReference);\r\n" + 
-          "    }\r\n" + 
-          "\r\n" + 
-          "    /**\r\n" + 
-          "     * Constructor\r\n" + 
-          "     * \r\n" + 
-          "     * @param theReference The given reference as an IdType (e.g. \"Patient/123\" or \"http://example.com/Patient/123\")\r\n" + 
-          "     */\r\n" + 
-          "    public Reference(IdType theReference) {\r\n" + 
-          "      super(theReference);\r\n" + 
-          "    }\r\n" + 
-          "\r\n" + 
-          "    /**\r\n" + 
-          "     * Constructor\r\n" + 
-          "     * \r\n" + 
-          "     * @param theResource The resource represented by this reference\r\n" + 
-          "     */\r\n" + 
-          "    public Reference(IAnyResource theResource) {\r\n" + 
-          "      super(theResource);\r\n" + 
-          "    }\r\n" + 
-          "\r\n");
+  private void writeSearchParameterField(String name, JavaGenClass clss, boolean isAbstract, SearchParameterDefn sp, String code, String[] theCompositeOf, Map<String, SearchParameterDefn> theNameToSearchParamDef) throws IOException {
+    String constName = cleanSpName(code).toUpperCase();
+    
+    /*
+     * SearchParamDefinition (SP_[name])
+     */
+    write(" /**\r\n"); 
+    write("   * Search parameter: <b>" + code + "</b>\r\n"); 
+    write("   * <p>\r\n");
+    write("   * Description: <b>" + sp.getDescription() + "</b><br>\r\n"); 
+    write("   * Type: <b>"+ sp.getType() + "</b><br>\r\n");
+    write("   * Path: <b>" + sp.getPathSummary() + "</b><br>\r\n"); 
+    write("   * </p>\r\n");
+    write("   */\r\n");
+    write("  @SearchParamDefinition(name=\"" + code + "\", path=\"" + defaultString(sp.getExpression()) + "\", description=\""+Utilities.escapeJava(sp.getDescription())+"\", type=\""+sp.getType().toString() + "\"");
+    if (theCompositeOf != null && theCompositeOf.length > 0) {
+      write(", compositeOf={");
+      for (int i = 0; i < theCompositeOf.length; i++) {
+        if (i > 0) {
+          write(", ");
+        }
+        write("\"" + theCompositeOf[i] + "\"");
+      }
+      write("}");
     }
-    //@formatter:on
+    write(" )\r\n");
+    write("  public static final String SP_"+constName+" = \""+code+"\";\r\n");
+
+    String genericTypes = "";
+    if (theCompositeOf != null && theCompositeOf.length > 0) {
+      SearchParameterDefn typeDef0 = theNameToSearchParamDef.get(theCompositeOf[0]);
+      SearchParameterDefn typeDef1 = theNameToSearchParamDef.get(theCompositeOf[1]);
+      genericTypes = "<ca.uhn.fhir.rest.gclient." + upFirst(typeDef0.getType().name()) + "ClientParam" + ", ca.uhn.fhir.rest.gclient." + upFirst(typeDef1.getType().name()) + "ClientParam>";
+    }
+    
+    /*
+     * Client parameter ([name])
+     */
+    write(" /**\r\n"); 
+    write("   * <b>Fluent Client</b> search parameter constant for <b>" + code + "</b>\r\n"); 
+    write("   * <p>\r\n");
+    write("   * Description: <b>" + sp.getDescription() + "</b><br>\r\n"); 
+    write("   * Type: <b>"+ sp.getType() + "</b><br>\r\n");
+    write("   * Path: <b>" + sp.getPathSummary() + "</b><br>\r\n"); 
+    write("   * </p>\r\n");
+    write("   */\r\n");
+    write("  public static final ca.uhn.fhir.rest.gclient." + upFirst(sp.getType().name()) + "ClientParam" + genericTypes + " " + constName + " = new ca.uhn.fhir.rest.gclient." + upFirst(sp.getType().name()) + "ClientParam" + genericTypes + "(SP_" + constName + ");\r\n\r\n"); 
+    
+    if (sp.getType() == SearchType.reference && clss == JavaGenClass.Resource && !isAbstract) {
+      String incName = upFirst(name) + ":" + code;
+      write("/**\r\n"); 
+      write("   * Constant for fluent queries to be used to add include statements. Specifies\r\n"); 
+      write("   * the path value of \"<b>" + incName + "</b>\".\r\n" );
+      write("   */\r\n" );
+      write("  public static final ca.uhn.fhir.model.api.Include INCLUDE_" + cleanSpName(code).toUpperCase() + " = new ca.uhn.fhir.model.api.Include(\"" + incName + "\").toLocked();\r\n\r\n");
+    }
   }
 
-  private void generateTypeSpecificAccessors(String name, JavaGenClass clss) throws IOException {
+  private void generateTypeSpecificConstructors(String theName) throws IOException {
+    if ("Coding".equals(theName)) {
+      write("    /**\r\n"); 
+      write(    "     * Convenience constructor\r\n" ); 
+      write(    "     * \r\n" );
+      write(    "     * @param theSystem The {@link #setSystem(String) code system}\r\n"); 
+      write(    "     * @param theCode The {@link #setCode(String) code}\r\n" );
+      write(    "     * @param theDisplay The {@link #setDisplay(String) human readable display}\r\n"); 
+      write(    "     */\r\n" );
+      write(    "      public Coding(String theSystem, String theCode, String theDisplay) {\r\n"); 
+      write(    "        setSystem(theSystem);\r\n");
+      write(    "        setCode(theCode);\r\n");
+      write(    "        setDisplay(theDisplay);\r\n"); 
+      write(    "      }\r\n");
+    }
+    if ("Extension".equals(theName)) {
+      write("    /**\r\n"); 
+          write("     * Constructor\r\n"); 
+          write("     */\r\n"); 
+          write("    public Extension(String theUrl) {\r\n"); 
+          write("      setUrl(theUrl);\r\n"); 
+          write("    }\r\n"); 
+          write("\r\n"); 
+          write("    /**\r\n"); 
+          write("     * Constructor\r\n"); 
+          write("     */\r\n"); 
+          write("    public Extension(String theUrl, IBaseDatatype theValue) {\r\n"); 
+          write("      setUrl(theUrl);\r\n"); 
+          write("      setValue(theValue);\r\n"); 
+          write("    }\r\n"); 
+          write("\r\n");
+    } else if ("Reference".equals(theName)) {
+      write("    /**\r\n"); 
+          write("     * Constructor\r\n"); 
+          write("     * \r\n"); 
+          write("     * @param theReference The given reference string (e.g. \"Patient/123\" or \"http://example.com/Patient/123\")\r\n"); 
+          write("     */\r\n"); 
+          write("    public Reference(String theReference) {\r\n"); 
+          write("      super(theReference);\r\n"); 
+          write("    }\r\n"); 
+          write("\r\n"); 
+          write("    /**\r\n"); 
+          write("     * Constructor\r\n"); 
+          write("     * \r\n"); 
+          write("     * @param theReference The given reference as an IdType (e.g. \"Patient/123\" or \"http://example.com/Patient/123\")\r\n"); 
+          write("     */\r\n"); 
+          write("    public Reference(IIdType theReference) {\r\n"); 
+          write("      super(theReference);\r\n"); 
+          write("    }\r\n"); 
+          write("\r\n"); 
+          write("    /**\r\n"); 
+          write("     * Constructor\r\n"); 
+          write("     * \r\n"); 
+          write("     * @param theResource The resource represented by this reference\r\n"); 
+          write("     */\r\n"); 
+          write("    public Reference(IAnyResource theResource) {\r\n"); 
+          write("      super(theResource);\r\n"); 
+          write("    }\r\n"); 
+          write("\r\n");
+    } else if ("Quantity".equals(theName)) {
+      write(" /**\r\n"); 
+          write("   * Convenience constructor\r\n"); 
+          write("   * \r\n"); 
+          write("   * @param theValue The {@link #setValue(double) value}\r\n"); 
+          write("   */\r\n"); 
+          write("  public Quantity(double theValue) {\r\n"); 
+          write("    setValue(theValue);\r\n"); 
+          write("  }\r\n"); 
+          write("\r\n"); 
+          write("  /**\r\n"); 
+          write("   * Convenience constructor\r\n"); 
+          write("   * \r\n"); 
+          write("   * @param theValue The {@link #setValue(long) value}\r\n"); 
+          write("   */\r\n"); 
+          write("  public Quantity(long theValue) {\r\n"); 
+          write("    setValue(theValue);\r\n"); 
+          write("  }\r\n"); 
+          write("  \r\n"); 
+          write("  /**\r\n"); 
+          write("   * Convenience constructor\r\n"); 
+          write("   * \r\n"); 
+          write("   * @param theComparator The {@link #setComparator(QuantityComparator) comparator}\r\n"); 
+          write("   * @param theValue The {@link #setValue(BigDecimal) value}\r\n"); 
+          write("   * @param theSystem The {@link #setSystem(String)} (the code system for the units}\r\n"); 
+          write("   * @param theCode The {@link #setCode(String)} (the code for the units}\r\n"); 
+          write("   * @param theUnit The {@link #setUnit(String)} (the human readable display name for the units}\r\n"); 
+          write("   */\r\n"); 
+          write("  public Quantity(QuantityComparator theComparator, double theValue, String theSystem, String theCode, String theUnit) {\r\n"); 
+          write("    setValue(theValue);\r\n"); 
+          write("    setComparator(theComparator);\r\n"); 
+          write("    setSystem(theSystem);\r\n"); 
+          write("    setCode(theCode);\r\n"); 
+          write("    setUnit(theUnit);\r\n"); 
+          write("  }\r\n"); 
+          write("\r\n"); 
+          write("  /**\r\n"); 
+          write("   * Convenience constructor\r\n"); 
+          write("   * \r\n"); 
+          write("   * @param theComparator The {@link #setComparator(QuantityComparator) comparator}\r\n"); 
+          write("   * @param theValue The {@link #setValue(BigDecimal) value}\r\n"); 
+          write("   * @param theSystem The {@link #setSystem(String)} (the code system for the units}\r\n"); 
+          write("   * @param theCode The {@link #setCode(String)} (the code for the units}\r\n"); 
+          write("   * @param theUnit The {@link #setUnit(String)} (the human readable display name for the units}\r\n"); 
+          write("   */\r\n"); 
+          write("  public Quantity(QuantityComparator theComparator, long theValue, String theSystem, String theCode, String theUnit) {\r\n"); 
+          write("    setValue(theValue);\r\n"); 
+          write("    setComparator(theComparator);\r\n"); 
+          write("    setSystem(theSystem);\r\n"); 
+          write("    setCode(theCode);\r\n"); 
+          write("    setUnit(theUnit);\r\n"); 
+          write("  }\r\n"); 
+          write("");
+    }
+  }
+
+  private void generateTypeSpecificAccessors(String name) throws IOException {
+    if (upFirst(name).equals("DomainResource")) {
+      write("    /**\r\n"); 
+          write("     * Returns a list of extensions from this element which have the given URL. Note that\r\n"); 
+          write("     * this list may not be modified (you can not add or remove elements from it)\r\n"); 
+          write("     */\r\n"); 
+          write("    public List<Extension> getExtensionsByUrl(String theUrl) {\r\n"); 
+          write("      org.apache.commons.lang3.Validate.notBlank(theUrl, \"theUrl must be provided with a value\");\r\n"); 
+          write("      ArrayList<Extension> retVal = new ArrayList<Extension>();\r\n"); 
+          write("      for (Extension next : getExtension()) {\r\n"); 
+          write("        if (theUrl.equals(next.getUrl())) {\r\n"); 
+          write("          retVal.add(next);\r\n"); 
+          write("        }\r\n"); 
+          write("      }\r\n"); 
+          write("      return Collections.unmodifiableList(retVal);\r\n"); 
+          write("    }\r\n"); 
+          write("\r\n"); 
+          write("    /**\r\n"); 
+          write("     * Returns a list of modifier extensions from this element which have the given URL. Note that\r\n"); 
+          write("     * this list may not be modified (you can not add or remove elements from it)\r\n"); 
+          write("     */\r\n"); 
+          write("    public List<Extension> getModifierExtensionsByUrl(String theUrl) {\r\n"); 
+          write("      org.apache.commons.lang3.Validate.notBlank(theUrl, \"theUrl must be provided with a value\");\r\n"); 
+          write("      ArrayList<Extension> retVal = new ArrayList<Extension>();\r\n"); 
+          write("      for (Extension next : getModifierExtension()) {\r\n"); 
+          write("        if (theUrl.equals(next.getUrl())) {\r\n"); 
+          write("          retVal.add(next);\r\n"); 
+          write("        }\r\n"); 
+          write("      }\r\n"); 
+          write("      return Collections.unmodifiableList(retVal);\r\n"); 
+          write("    }\r\n"); 
+          write("\r\n");
+    }
     if (upFirst(name).equals("Element")) {
-      write("   /**\r\n" + 
-          "    * Returns an unmodifiable list containing all extensions on this element which \r\n" + 
-          "    * match the given URL.\r\n" + 
-          "    * \r\n" + 
-          "    * @param theUrl The URL. Must not be blank or null.\r\n" + 
-          "    * @return an unmodifiable list containing all extensions on this element which \r\n" + 
-          "    * match the given URL\r\n" + 
-          "    */\r\n" + 
-          "   public List<Extension> getExtensionsByUrl(String theUrl) {\r\n" + 
-          "     org.apache.commons.lang3.Validate.notBlank(theUrl, \"theUrl must not be blank or null\");\r\n" + 
-          "     ArrayList<Extension> retVal = new ArrayList<Extension>();\r\n" + 
-          "     for (Extension next : getExtension()) {\r\n" + 
-          "       if (theUrl.equals(next.getUrl())) {\r\n" + 
-          "         retVal.add(next);\r\n" + 
-          "       }\r\n" + 
-          "     }\r\n" + 
-          "     return java.util.Collections.unmodifiableList(retVal);\r\n" + 
-          "   }\r\n");
+      write("   /**\r\n"); 
+          write("    * Returns an unmodifiable list containing all extensions on this element which \r\n"); 
+          write("    * match the given URL.\r\n"); 
+          write("    * \r\n"); 
+          write("    * @param theUrl The URL. Must not be blank or null.\r\n"); 
+          write("    * @return an unmodifiable list containing all extensions on this element which \r\n"); 
+          write("    * match the given URL\r\n"); 
+          write("    */\r\n"); 
+          write("   public List<Extension> getExtensionsByUrl(String theUrl) {\r\n"); 
+          write("     org.apache.commons.lang3.Validate.notBlank(theUrl, \"theUrl must not be blank or null\");\r\n"); 
+          write("     ArrayList<Extension> retVal = new ArrayList<Extension>();\r\n"); 
+          write("     for (Extension next : getExtension()) {\r\n"); 
+          write("       if (theUrl.equals(next.getUrl())) {\r\n"); 
+          write("         retVal.add(next);\r\n"); 
+          write("       }\r\n"); 
+          write("     }\r\n"); 
+          write("     return java.util.Collections.unmodifiableList(retVal);\r\n"); 
+          write("   }\r\n");
+      write("  public boolean hasExtension(String theUrl) {\r\n");
+      write("    return !getExtensionsByUrl(theUrl).isEmpty(); \r\n");
+      write("  }\r\n");
+      write("\r\n");
+      write("  public String getExtensionString(String theUrl) throws FHIRException {\r\n");
+      write("    List<Extension> ext = getExtensionsByUrl(theUrl); \r\n");
+      write("    if (ext.isEmpty()) \r\n");
+      write("      return null; \r\n");
+      write("    if (ext.size() > 1) \r\n");
+      write("      throw new FHIRException(\"Multiple matching extensions found\");\r\n");
+      write("    if (!ext.get(0).getValue().isPrimitive())\r\n");
+      write("      throw new FHIRException(\"Extension could not be converted to a string\");\r\n");
+      write("    return ext.get(0).getValue().primitiveValue();\r\n");
+      write("  }\r\n");
+      write("\r\n");
     }
-    if (clss == JavaGenClass.Resource && upFirst(name).equals("Bundle")) {
-      //@formatter:off
-		  write(" /**\r\n" + 
-		      "   * Returns the {@link #getLink() link} which matches a given {@link BundleLinkComponent#getRelation() relation}. \r\n" + 
-		      "   * If no link is found which matches the given relation, returns <code>null</code>. If more than one\r\n" + 
-		      "   * link is found which matches the given relation, returns the first matching BundleLinkComponent.\r\n" + 
-		      "   * \r\n" + 
-		      "   * @param theRelation\r\n" + 
-		      "   *            The relation, such as \"next\", or \"self. See the constants such as {@link IBaseBundle#LINK_SELF} and {@link IBaseBundle#LINK_NEXT}.\r\n" + 
-		      "   * @return Returns a matching BundleLinkComponent, or <code>null</code>\r\n" + 
-		      "   * @see IBaseBundle#LINK_NEXT\r\n" + 
-		      "   * @see IBaseBundle#LINK_PREV\r\n" + 
-		      "   * @see IBaseBundle#LINK_SELF\r\n" + 
-		      "   */\r\n" + 
-		      "  public BundleLinkComponent getLink(String theRelation) {\r\n" + 
-		      "    org.apache.commons.lang3.Validate.notBlank(theRelation, \"theRelation may not be null or empty\");\r\n" + 
-		      "    for (BundleLinkComponent next : getLink()) {\r\n" + 
-		      "      if (theRelation.equals(next.getRelation())) {\r\n" + 
-		      "        return next;\r\n" + 
-		      "      }\r\n" + 
-		      "    }\r\n" + 
-		      "    return null;\r\n" + 
-		      "  }\r\n" + 
-		      "\r\n" + 
-		      "  /**\r\n" + 
-		      "   * Returns the {@link #getLink() link} which matches a given {@link BundleLinkComponent#getRelation() relation}. \r\n" + 
-		      "   * If no link is found which matches the given relation, creates a new BundleLinkComponent with the\r\n" + 
-		      "   * given relation and adds it to this Bundle. If more than one\r\n" + 
-		      "   * link is found which matches the given relation, returns the first matching BundleLinkComponent.\r\n" + 
-		      "   * \r\n" + 
-		      "   * @param theRelation\r\n" + 
-		      "   *            The relation, such as \"next\", or \"self. See the constants such as {@link IBaseBundle#LINK_SELF} and {@link IBaseBundle#LINK_NEXT}.\r\n" + 
-		      "   * @return Returns a matching BundleLinkComponent, or <code>null</code>\r\n" + 
-		      "   * @see IBaseBundle#LINK_NEXT\r\n" + 
-		      "   * @see IBaseBundle#LINK_PREV\r\n" + 
-		      "   * @see IBaseBundle#LINK_SELF\r\n" + 
-		      "   */\r\n" + 
-		      "  public BundleLinkComponent getLinkOrCreate(String theRelation) {\r\n" + 
-		      "    org.apache.commons.lang3.Validate.notBlank(theRelation, \"theRelation may not be null or empty\");\r\n" + 
-		      "    for (BundleLinkComponent next : getLink()) {\r\n" + 
-		      "      if (theRelation.equals(next.getRelation())) {\r\n" + 
-		      "        return next;\r\n" + 
-		      "      }\r\n" + 
-		      "    }\r\n" + 
-		      "    BundleLinkComponent retVal = new BundleLinkComponent();\r\n" + 
-		      "    retVal.setRelation(theRelation);\r\n" + 
-		      "    getLink().add(retVal);\r\n" + 
-		      "    return retVal;\r\n" + 
-		      "  }\r\n" + 
-		      "");
-		  //@formatter:on
+    if (upFirst(name).equals("Bundle") || upFirst(name).equals("BundleEntryComponent")) {
+		  write(" /**\r\n"); 
+		      write("   * Returns the {@link #getLink() link} which matches a given {@link BundleLinkComponent#getRelation() relation}. \r\n"); 
+		      write("   * If no link is found which matches the given relation, returns <code>null</code>. If more than one\r\n"); 
+		      write("   * link is found which matches the given relation, returns the first matching BundleLinkComponent.\r\n"); 
+		      write("   * \r\n"); 
+		      write("   * @param theRelation\r\n"); 
+		      write("   *            The relation, such as \"next\", or \"self. See the constants such as {@link IBaseBundle#LINK_SELF} and {@link IBaseBundle#LINK_NEXT}.\r\n"); 
+		      write("   * @return Returns a matching BundleLinkComponent, or <code>null</code>\r\n"); 
+		      write("   * @see IBaseBundle#LINK_NEXT\r\n"); 
+		      write("   * @see IBaseBundle#LINK_PREV\r\n"); 
+		      write("   * @see IBaseBundle#LINK_SELF\r\n"); 
+		      write("   */\r\n"); 
+		      write("  public BundleLinkComponent getLink(String theRelation) {\r\n"); 
+		      write("    org.apache.commons.lang3.Validate.notBlank(theRelation, \"theRelation may not be null or empty\");\r\n"); 
+		      write("    for (BundleLinkComponent next : getLink()) {\r\n"); 
+		      write("      if (theRelation.equals(next.getRelation())) {\r\n"); 
+		      write("        return next;\r\n"); 
+		      write("      }\r\n"); 
+		      write("    }\r\n"); 
+		      write("    return null;\r\n"); 
+		      write("  }\r\n"); 
+		      write("\r\n"); 
+		      write("  /**\r\n"); 
+		      write("   * Returns the {@link #getLink() link} which matches a given {@link BundleLinkComponent#getRelation() relation}. \r\n"); 
+		      write("   * If no link is found which matches the given relation, creates a new BundleLinkComponent with the\r\n"); 
+		      write("   * given relation and adds it to this Bundle. If more than one\r\n"); 
+		      write("   * link is found which matches the given relation, returns the first matching BundleLinkComponent.\r\n"); 
+		      write("   * \r\n"); 
+		      write("   * @param theRelation\r\n"); 
+		      write("   *            The relation, such as \"next\", or \"self. See the constants such as {@link IBaseBundle#LINK_SELF} and {@link IBaseBundle#LINK_NEXT}.\r\n"); 
+		      write("   * @return Returns a matching BundleLinkComponent, or <code>null</code>\r\n"); 
+		      write("   * @see IBaseBundle#LINK_NEXT\r\n"); 
+		      write("   * @see IBaseBundle#LINK_PREV\r\n"); 
+		      write("   * @see IBaseBundle#LINK_SELF\r\n"); 
+		      write("   */\r\n"); 
+		      write("  public BundleLinkComponent getLinkOrCreate(String theRelation) {\r\n"); 
+		      write("    org.apache.commons.lang3.Validate.notBlank(theRelation, \"theRelation may not be null or empty\");\r\n"); 
+		      write("    for (BundleLinkComponent next : getLink()) {\r\n"); 
+		      write("      if (theRelation.equals(next.getRelation())) {\r\n"); 
+		      write("        return next;\r\n"); 
+		      write("      }\r\n"); 
+		      write("    }\r\n"); 
+		      write("    BundleLinkComponent retVal = new BundleLinkComponent();\r\n"); 
+		      write("    retVal.setRelation(theRelation);\r\n"); 
+		      write("    getLink().add(retVal);\r\n"); 
+		      write("    return retVal;\r\n"); 
+		      write("  }\r\n"); 
+		      write("");
 		}
+    if (upFirst(name).equals("HumanName")) {
+      write(" /**\r\n"); 
+          write("   * Returns all repetitions of {@link #getFamily() family name} as a space separated string\r\n"); 
+          write("   * \r\n"); 
+          write("   * @see DatatypeUtil#joinStringsSpaceSeparated(List)\r\n"); 
+          write("   */\r\n"); 
+          write("  public String getFamilyAsSingleString() {\r\n"); 
+          write("    return joinStringsSpaceSeparated(getFamily());\r\n"); 
+          write("  }\r\n"); 
+          write("\r\n"); 
+          write("  /**\r\n"); 
+          write("   * Returns all repetitions of {@link #getGiven() given name} as a space separated string\r\n"); 
+          write("   * \r\n"); 
+          write("   * @see DatatypeUtil#joinStringsSpaceSeparated(List)\r\n"); 
+          write("   */\r\n"); 
+          write("  public String getGivenAsSingleString() {\r\n"); 
+          write("    return joinStringsSpaceSeparated(getGiven());\r\n"); 
+          write("  }\r\n"); 
+          write("\r\n"); 
+          write("  /**\r\n"); 
+          write("   * Returns all repetitions of {@link #getPrefix() prefix name} as a space separated string\r\n"); 
+          write("   * \r\n"); 
+          write("   * @see DatatypeUtil#joinStringsSpaceSeparated(List)\r\n"); 
+          write("   */\r\n"); 
+          write("  public String getPrefixAsSingleString() {\r\n"); 
+          write("    return joinStringsSpaceSeparated(getPrefix());\r\n"); 
+          write("  }\r\n"); 
+          write("\r\n"); 
+          write("  /**\r\n"); 
+          write("   * Returns all repetitions of {@link #getSuffix() suffix} as a space separated string\r\n"); 
+          write("   * \r\n"); 
+          write("   * @see DatatypeUtil#joinStringsSpaceSeparated(List)\r\n"); 
+          write("   */\r\n"); 
+          write("  public String getSuffixAsSingleString() {\r\n"); 
+          write("    return joinStringsSpaceSeparated(getSuffix());\r\n"); 
+          write("  }\r\n"); 
+          write("\r\n"); 
+          write("  /**\r\n"); 
+          write("   * Returns all of the components of the name (prefix, given, family, suffix) as a single string with a single spaced\r\n"); 
+          write("   * string separating each part.\r\n"); 
+          write("   * <p>\r\n"); 
+          write("   * If none of the parts are populated, returns the {@link #getTextElement() text} element value instead.\r\n"); 
+          write("   * </p>\r\n"); 
+          write("   */\r\n"); 
+          write("  public String getNameAsSingleString() {\r\n"); 
+          write("    List<StringType> nameParts = new ArrayList<StringType>();\r\n"); 
+          write("    nameParts.addAll(getPrefix());\r\n"); 
+          write("    nameParts.addAll(getGiven());\r\n"); 
+          write("    nameParts.addAll(getFamily());\r\n"); 
+          write("    nameParts.addAll(getSuffix());\r\n"); 
+          write("    if (nameParts.size() > 0) {\r\n"); 
+          write("      return joinStringsSpaceSeparated(nameParts);\r\n"); 
+          write("    } else {\r\n"); 
+          write("      return getTextElement().getValue();\r\n"); 
+          write("    }\r\n"); 
+          write("  }\r\n"); 
+          write("\r\n"); 
+          write("  /**\r\n"); 
+          write("   * Joins a list of strings with a single space (' ') between each string\r\n"); 
+          write("   * \r\n"); 
+          write("   * TODO: replace with call to ca.uhn.fhir.util.DatatypeUtil.joinStringsSpaceSeparated when HAPI upgrades to 1.4\r\n"); 
+          write("   */\r\n"); 
+          write("  private static String joinStringsSpaceSeparated(List<? extends IPrimitiveType<String>> theStrings) {\r\n"); 
+          write("    StringBuilder b = new StringBuilder();\r\n"); 
+          write("    for (IPrimitiveType<String> next : theStrings) {\r\n"); 
+          write("      if (next.isEmpty()) {\r\n"); 
+          write("        continue;\r\n"); 
+          write("      }\r\n"); 
+          write("      if (b.length() > 0) {\r\n"); 
+          write("        b.append(' ');\r\n"); 
+          write("      }\r\n"); 
+          write("      b.append(next.getValue());\r\n"); 
+          write("    }\r\n"); 
+          write("    return b.toString();\r\n"); 
+          write("  }\r\n"); 
+          write("");
+    }
+    if (upFirst(name).equals("Meta")) {
+      write("    /**\r\n"); 
+          write("     * Convenience method which adds a tag\r\n"); 
+          write("     * \r\n"); 
+          write("     * @param theSystem The code system\r\n"); 
+          write("     * @param theCode The code\r\n"); 
+          write("     * @param theDisplay The display name\r\n"); 
+          write("     * @return Returns a reference to <code>this</code> for easy chaining\r\n"); 
+          write("     */\r\n"); 
+          write("    public Meta addTag(String theSystem, String theCode, String theDisplay) {\r\n"); 
+          write("     addTag().setSystem(theSystem).setCode(theCode).setDisplay(theDisplay);\r\n"); 
+          write("     return this;\r\n"); 
+          write("    }\r\n"); 
+          write("");
+      write("    /**\r\n"); 
+          write("     * Convenience method which adds a security tag\r\n"); 
+          write("     * \r\n"); 
+          write("     * @param theSystem The code system\r\n"); 
+          write("     * @param theCode The code\r\n"); 
+          write("     * @param theDisplay The display name\r\n"); 
+          write("     * @return Returns a reference to <code>this</code> for easy chaining\r\n"); 
+          write("     */\r\n"); 
+          write("    public Meta addSecurity(String theSystem, String theCode, String theDisplay) {\r\n"); 
+          write("     addSecurity().setSystem(theSystem).setCode(theCode).setDisplay(theDisplay);\r\n"); 
+          write("     return this;\r\n"); 
+          write("    }\r\n"); 
+          write("");
+          write("   /**\r\n" );
+          write(    "   * Returns the first tag (if any) that has the given system and code, or returns\r\n"); 
+          write(    "   * <code>null</code> if none\r\n"); 
+          write(    "   */\r\n" );
+          write(    "  public Coding getTag(String theSystem, String theCode) {\r\n"); 
+          write (   "    for (Coding next : getTag()) {\r\n" );
+          write  (  "      if (ca.uhn.fhir.util.ObjectUtil.equals(next.getSystem(), theSystem) && ca.uhn.fhir.util.ObjectUtil.equals(next.getCode(), theCode)) {\r\n" ); 
+          write (   "        return next;\r\n" ); 
+          write (   "      }\r\n" ); 
+          write (   "    }\r\n" );
+              write(    "    return null;\r\n" ); 
+              write(     "  }\r\n" ); 
+              write(     "\r\n" );
+              write(     "  /**\r\n" );
+              write(     "   * Returns the first security label (if any) that has the given system and code, or returns\r\n" ); 
+              write(     "   * <code>null</code> if none\r\n"); 
+              write(     "   */\r\n" );
+              write(     "  public Coding getSecurity(String theSystem, String theCode) {\r\n"); 
+              write(     "    for (Coding next : getTag()) {\r\n" );
+              write(      "      if (ca.uhn.fhir.util.ObjectUtil.equals(next.getSystem(), theSystem) && ca.uhn.fhir.util.ObjectUtil.equals(next.getCode(), theCode)) {\r\n" ); 
+              write(      "        return next;\r\n" ); 
+              write(      "      }\r\n" ); 
+              write(      "    }\r\n" );
+              write(      "    return null;\r\n"); 
+              write(      "  }\r\n");
+    }
+    if (upFirst(name).equals("Period")) {
+      write("   /**\r\n");
+      write("   * Sets the value for <b>start</b> ()\r\n"); 
+      write("   *\r\n");
+      write("     * <p>\r\n");
+      write("     * <b>Definition:</b>\r\n");
+      write("     * The start of the period. The boundary is inclusive.\r\n"); 
+      write("     * </p> \r\n"); 
+      write("   */\r\n");
+      write("  public Period setStart( Date theDate,  TemporalPrecisionEnum thePrecision) {\r\n"); 
+      write("    start = new DateTimeType(theDate, thePrecision); \r\n"); 
+      write("    return this; \r\n"); 
+      write("  }\r\n"); 
+      write("\r\n");
+      write("   /**\r\n");
+      write("   * Sets the value for <b>end</b> ()\r\n"); 
+      write("   *\r\n");
+      write("     * <p>\r\n");
+      write("     * <b>Definition:</b>\r\n");
+      write("     * The end of the period. The boundary is inclusive.\r\n"); 
+      write("     * </p> \r\n"); 
+      write("   */\r\n");
+      write("  public Period setEnd( Date theDate,  TemporalPrecisionEnum thePrecision) {\r\n"); 
+      write("    end = new DateTimeType(theDate, thePrecision); \r\n"); 
+      write("    return this; \r\n"); 
+      write("  }\r\n"); 
+      write("\r\n");
+    }
+    if (upFirst(name).equals("Reference")) {
+      write(" /**\r\n"); 
+          write("   * Convenience setter which sets the reference to the complete {@link IIdType#getValue() value} of the given\r\n"); 
+          write("   * reference.\r\n"); 
+          write("   *\r\n"); 
+          write("   * @param theReference The reference, or <code>null</code>\r\n"); 
+          write("   * @return \r\n"); 
+          write("   * @return Returns a reference to this\r\n"); 
+          write("   */\r\n"); 
+          write("  public Reference setReferenceElement(IIdType theReference) {\r\n"); 
+          write("    if (theReference != null) {\r\n"); 
+          write("      setReference(theReference.getValue());\r\n"); 
+          write("    } else {\r\n"); 
+          write("      setReference(null);\r\n"); 
+          write("    }\r\n"); 
+          write("    return this;\r\n"); 
+          write("  }\r\n"); 
+          write("");
+    }
   }
 
-  private String clean(String code) {
+  private void generateFhirType(String path) throws IOException {
+    write("  public String fhirType() {\r\n");
+    write("    return \""+path+"\";\r\n\r\n");
+    write("  }\r\n\r\n");
+  }
+
+  private String cleanSpName(String code) {
     StringBuilder b = new StringBuilder();
     for (char c : code.toCharArray())
-      if (Character.isLetter(c))
+      if (Character.isLetter(c)) {
         b.append(c);
+      } else if (c == '-') {
+        b.append('_');
+      }
     return b.toString();
   }
 
@@ -423,8 +848,138 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	  write(indent+"  }\r\n\r\n");  
   }
 
+  private void generatePropertySetter(ElementDefn p, String indent) throws Exception {
+    write(indent+"  @Override\r\n");
+    write(indent+"  public void setProperty(String name, Base value) throws FHIRException {\r\n");
+    boolean first = true;
+    for (ElementDefn e : p.getElements()) {
+      String tn = typeNames.get(e);
+      if (!e.typeCode().equals("xhtml")) {
+        if (first) 
+          write(indent+"    ");
+        else
+          write(indent+"    else ");
+        first = false;
+        write(           "if (name.equals(\""+e.getName()+"\"))\r\n");
+        String name = e.getName().replace("[x]", "");
+        String cn = "("+tn+") value";
+        if (tn.contains("Enumeration<")) { // enumeration
+          cn = "new "+tn.substring(tn.indexOf("<")+1, tn.length()-1)+"EnumFactory().fromType(value)";
+        } else if (e.getTypes().size() == 1 && !e.typeCode().equals("*") && !e.getTypes().get(0).getName().startsWith("@")) { 
+          cn = "castTo"+upFirst(e.getTypes().get(0).getName())+"(value)";
+        }
+        if (e.unbounded()) {
+          write(indent+"      this.get"+upFirst(name)+"().add("+cn+");\r\n");
+        } else {
+          write(indent+"      this."+getElementName(name, true)+" = "+cn+"; // "+tn+"\r\n");
+        }
+      }
+    }
+    if (!first)
+      write(indent+"    else\r\n");
+    write(indent+"      super.setProperty(name, value);\r\n");
+    write(indent+"  }\r\n\r\n");  
+  }
+
+  private void generateChildAdder(ElementDefn p, String indent, String parent) throws Exception {
+    write(indent+"  @Override\r\n");
+    write(indent+"  public Base addChild(String name) throws FHIRException {\r\n");
+    boolean first = true;
+    for (ElementDefn e : p.getElements()) {
+      if (!e.typeCode().equals("xhtml")) { 
+      if (e.getTypes().size() <= 1 && !e.typeCode().equals("*")) {
+        String tn = typeNames.get(e);
+        String name = e.getName();
+        String namet = e.getName();
+        first = generateChildAddItem(indent, parent, first, e, tn, name, namet);
+      } else {
+        for (TypeRef t : getTypes(e.getTypes())) {
+          String tn = getTypename(t);
+          String name = e.getName().replace("[x]", "");
+          String namet = e.getName().replace("[x]", upFirst(t.getName()));
+          first = generateChildAddItem(indent, parent, first, e, tn, name, namet);
+        }
+      }
+      }
+    }
+    if (!first)
+      write(indent+"    else\r\n");
+    write(indent+"      return super.addChild(name);\r\n");
+    write(indent+"  }\r\n\r\n");  
+  }
+
+  private boolean generateChildAddItem(String indent, String parent, boolean first, ElementDefn e, String tn, String name, String namet) throws IOException {
+    if (first) 
+      write(indent+"    ");
+    else
+      write(indent+"    else ");
+    first = false;
+    write(           "if (name.equals(\""+namet+"\")) {\r\n");
+    if (isPrimitive(e.typeCode()))
+      write(indent+"      throw new FHIRException(\"Cannot call addChild on a primitive type "+parent+"."+e.getName()+"\");\r\n"); 
+    else if (isAbstract(e.typeCode()))
+      write(indent+"      throw new FHIRException(\"Cannot call addChild on an abstract type "+parent+"."+e.getName()+"\");\r\n"); 
+    else if (e.unbounded()) {
+      write(indent+"      return add"+upFirst(name)+"();\r\n");
+    } else {
+      write(indent+"      this."+getElementName(name, true)+" = new "+tn+"();\r\n");
+      write(indent+"      return this."+getElementName(name, true)+";\r\n");
+    }
+    write(indent+"    }\r\n");
+    return first;
+  }
+
+  private List<TypeRef> getTypes(List<TypeRef> types) {
+    if (types.size() == 1 && types.get(0).getName().equals("*")) {
+      List<TypeRef> t = new ArrayList<TypeRef>();
+      t.add(new TypeRef("boolean"));
+      t.add(new TypeRef("integer"));
+      t.add(new TypeRef("decimal"));
+      t.add(new TypeRef("base64Binary"));
+      t.add(new TypeRef("instant"));
+      t.add(new TypeRef("string"));
+      t.add(new TypeRef("uri"));
+      t.add(new TypeRef("date"));
+      t.add(new TypeRef("dateTime"));
+      t.add(new TypeRef("time"));
+      t.add(new TypeRef("code"));
+      t.add(new TypeRef("oid"));
+      t.add(new TypeRef("id"));
+      t.add(new TypeRef("unsignedInt"));
+      t.add(new TypeRef("positiveInt"));
+      t.add(new TypeRef("markdown"));
+      t.add(new TypeRef("Annotation"));
+      t.add(new TypeRef("Attachment"));
+      t.add(new TypeRef("Identifier"));
+      t.add(new TypeRef("CodeableConcept"));
+      t.add(new TypeRef("Coding"));
+      t.add(new TypeRef("Quantity"));
+      t.add(new TypeRef("Range"));
+      t.add(new TypeRef("Period"));
+      t.add(new TypeRef("Ratio"));
+      t.add(new TypeRef("SampledData"));
+      t.add(new TypeRef("Signature"));
+      t.add(new TypeRef("HumanName"));
+      t.add(new TypeRef("Address"));
+      t.add(new TypeRef("ContactPoint"));
+      t.add(new TypeRef("Timing"));
+      t.add(new TypeRef("Reference"));
+      t.add(new TypeRef("Meta"));
+      return t;
+    }
+    else
+      return types;
+  }
+
+  private boolean isAbstract(String typeCode) {
+    if (typeCode.equals("Resource"))
+      return true;
+    else
+      return false;
+  }
+
   private void generateConstructor(String className, List<ElementDefn> params, String indent) throws IOException {
-    write(indent+"/*\r\n");
+    write(indent+"/**\r\n");
     write(indent+" * Constructor\r\n");
     write(indent+" */\r\n");
     write(indent+"  public "+className+"(");
@@ -547,7 +1102,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     write("        NULL;\r\n");
 
 
-		write("        public static "+tns+" fromCode(String codeString) throws Exception {\r\n");
+		write("        public static "+tns+" fromCode(String codeString) throws FHIRException {\r\n");
 		write("            if (codeString == null || \"\".equals(codeString))\r\n");
 		write("                return null;\r\n");
 		for (DefinedCode c : codes) {
@@ -556,7 +1111,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			write("        if (\""+c.getCode()+"\".equals(codeString))\r\n");
 			write("          return "+cc+";\r\n");
 		}		
-		write("        throw new Exception(\"Unknown "+tns+" code '\"+codeString+\"'\");\r\n");
+		write("        throw new FHIRException(\"Unknown "+tns+" code '\"+codeString+\"'\");\r\n");
 		write("        }\r\n");	
 
 		write("        public String toCode() {\r\n");
@@ -621,6 +1176,21 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     }   
     write("        throw new IllegalArgumentException(\"Unknown "+tns+" code '\"+codeString+\"'\");\r\n");
     write("        }\r\n"); 
+    write("        public Enumeration<"+tns+"> fromType(Base code) throws FHIRException {\r\n");
+    write("          if (code == null || code.isEmpty())\r\n");
+    write("            return null;\r\n");
+    write("          String codeString = ((PrimitiveType) code).asStringValue();\r\n");
+    write("          if (codeString == null || \"\".equals(codeString))\r\n");
+    write("            return null;\r\n");
+    for (DefinedCode c : codes) {
+      String cc = Utilities.camelCase(c.getCode());
+      cc = makeConst(cc);
+      write("        if (\""+c.getCode()+"\".equals(codeString))\r\n");
+      write("          return new Enumeration<"+tns+">(this, "+tns+"."+cc+");\r\n");
+    }   
+    write("        throw new FHIRException(\"Unknown "+tns+" code '\"+codeString+\"'\");\r\n");
+    write("        }\r\n"); 
+
     write("    public String toCode("+tns+" code) {\r\n");
     for (DefinedCode c : codes) {
       String cc = Utilities.camelCase(c.getCode());
@@ -628,6 +1198,10 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
       write("      if (code == "+tns+"."+cc+")\r\n        return \""+c.getCode()+"\";\r\n");
     }
     write("      return \"?\";\r\n"); 
+    write("      }\r\n"); 
+    
+    write("    public String toSystem("+tns+" code) {\r\n");
+    write("      return code.getSystem();\r\n");
     write("      }\r\n"); 
     write("    }\r\n"); 
     write("\r\n");
@@ -652,7 +1226,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     hashSum = hashSum + allfields.hashCode();
 
     List<ElementDefn> mandatory = new ArrayList<ElementDefn>();
-    generateConstructor(tn, mandatory, "    ");      
+    generateConstructor(tn, mandatory, "    ");
     for (ElementDefn c : e.getElements()) {
       if (c.isMandatory())
         mandatory.add(c);
@@ -663,10 +1237,14 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		for (ElementDefn c : e.getElements()) {
 			generateAccessors(e, c, "        ", tn);
 		}
+		generateTypeSpecificAccessors(tn);
     generateChildrenRegister(e, "      ", false);
+    generatePropertySetter(e, "    ");
+    generateChildAdder(e, "    ", classname);
     generateCopy(e, tn, true, false);
     generateEquals(e, tn, true, false);
     generateIsEmpty(e, tn, true, false);
+    generateFhirType(e.getPath());
     write("  }\r\n");
 		write("\r\n");
 
@@ -844,7 +1422,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 				else if (e.isXhtmlElement()) 
 					tn = "XhtmlNode";
 				else if (e.getTypes().get(0).isWildcardType())
-					tn ="org.hl7.fhir.instance.model.Type";
+					tn ="org.hl7.fhir.dstu21.model.Type";
 				else if (definitions.hasPrimitiveType(tn))
 				  tn = upFirst(tn)+"Type";
 
@@ -934,7 +1512,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	        if (rn.equals("Any"))
 	          rn = "Resource";
 	        else if (rn.equals("List"))
-            rn = "List_";
+            rn = "ListResource";
 	        jdoc(indent, "The actual objects that are the target of the reference ("+e.getDefinition()+")");
 	        writeWithHash(indent+"protected List<"+rn+"> "+getElementName(e.getName(), true)+"Target;\r\n");
 	        write("\r\n");
@@ -952,7 +1530,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
         if (rn.equals("Any"))
           rn = "Resource";
         else if (rn.equals("List"))
-          rn = "List_";
+          rn = "ListResource";
         jdoc(indent, "The actual object that is the target of the reference ("+e.getDefinition()+")");
         writeWithHash(indent+"protected "+rn+" "+getElementName(e.getName(), true)+"Target;\r\n");
         write("\r\n");
@@ -1066,7 +1644,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
 		boolean isReferenceRefField = (root.getName().equals("Reference") && e.getName().equals("reference"));
 		
-		if (e.unbounded()) {
+		String simpleType = getSimpleType(tn);
+    if (e.unbounded()) {
 		  jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
 			if (tn == null && e.usesCompositeType()) {
 				write(indent+"public List<"+root.getName()+"> get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
@@ -1101,7 +1680,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
         write(indent+"}\r\n");
         write("\r\n");
         jdoc(indent, "@param value {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
-        write(indent+"public "+className+" add"+getTitle(getElementName(e.getName(), false))+"("+getSimpleType(tn)+" value) { //1\r\n");
+        write(indent+"public "+className+" add"+getTitle(getElementName(e.getName(), false))+"("+simpleType+" value) { //1\r\n");
         write(indent+"  "+tn+" t = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+");\r\n");
         write(indent+"  t.setValue(value);\r\n");
         write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
@@ -1111,7 +1690,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
         write(indent+"}\r\n");
         write("\r\n");
         jdoc(indent, "@param value {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
-        write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"("+getSimpleType(tn)+" value) { \r\n");
+        write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"("+simpleType+" value) { \r\n");
         write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
         write(indent+"    return false;\r\n");
         write(indent+"  for ("+tn+" v : this."+getElementName(e.getName(), true)+")\r\n");
@@ -1153,7 +1732,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
           if (rn.equals("Any"))
             rn = "Resource";
           else if (rn.equals("List"))
-            rn = "List_";
+            rn = "ListResource";
           
 
           jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. "+e.getDefinition()+")");
@@ -1210,7 +1789,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	      write(indent+"}\r\n");
 	      write("\r\n");
 	      jdoc(indent, "@return "+e.getDefinition());
-	      write(indent+"public "+getSimpleType(tn)+" get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
+	      write(indent+"public "+simpleType+" get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
 	      if (e.typeCode().equals("boolean"))
           write(indent+"  return this."+getElementName(e.getName(), true)+" == null || this."+getElementName(e.getName(), true)+".isEmpty() ? false : this."+getElementName(e.getName(), true)+".getValue();\r\n");
 	      else if (e.typeCode().equals("integer") || e.typeCode().equals("unsignedInt") || e.typeCode().equals("positiveInt"))
@@ -1219,26 +1798,14 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	        write(indent+"  return this."+getElementName(e.getName(), true)+" == null ? null : this."+getElementName(e.getName(), true)+".getValue();\r\n");
 	      write(indent+"}\r\n");
 	      write("\r\n");
-	      jdoc(indent, "@param value "+e.getDefinition());
-	      write(indent+"public "+className+" set"+getTitle(getElementName(e.getName(), false))+"("+getSimpleType(tn)+" value) { \r\n");
-	      if (e.getMinCardinality() == 0 && !tn.equals("IntegerType") && !tn.equals("PositiveIntType") && !tn.equals("UnsignedIntType") && !tn.equals("BooleanType")) {
-          if (isString(tn))
-            write(indent+"  if (Utilities.noString(value))\r\n");
-	        else
-	          write(indent+"  if (value == null)\r\n");
-	        write(indent+"    this."+getElementName(e.getName(), true)+" = null;\r\n");
-	        write(indent+"  else {\r\n");
+	      generateSetter(e, indent, className, tn, simpleType);
+
+	      // BigDecimal sugar methods 
+	      if (simpleType.equals("BigDecimal")) {
+          generateSetter(e, indent, className, tn, "long");
+	        generateSetter(e, indent, className, tn, "double");
 	      }
-	      write(indent+"    if (this."+getElementName(e.getName(), true)+" == null)\r\n");
-        write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+");\r\n");
-        write(indent+"    this."+getElementName(e.getName(), true)+".setValue(value);\r\n");
-        if (e.getMinCardinality() == 0 && !tn.equals("IntegerType") && !tn.equals("PositiveIntType") && !tn.equals("UnsignedIntType") && !tn.equals("BooleanType")) {
-          write(indent+"  }\r\n");
-        }
-        write(indent+"  return this;\r\n");
-        write(indent+"}\r\n");
-	      write("\r\n");
-			  
+	      
 			} else {
 			  jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
 			  write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
@@ -1256,13 +1823,13 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			    for (TypeRef t : e.getTypes()) {
 		        jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
 		        String ttn = getTypename(t);
-		        write(indent+"public "+ttn+" get"+getTitle(getElementName(e.getName(), false))+ttn+"() throws Exception { \r\n");
+		        write(indent+"public "+ttn+" get"+getTitle(getElementName(e.getName(), false))+ttn+"() throws FHIRException { \r\n");
 		        write(indent+"  if (!(this."+getElementName(e.getName(), true)+" instanceof "+ttn+"))\r\n");
-		        write(indent+"    throw new Exception(\"Type mismatch: the type "+ttn+" was expected, but \"+this."+getElementName(e.getName(), true)+".getClass().getName()+\" was encountered\");\r\n");
+		        write(indent+"    throw new FHIRException(\"Type mismatch: the type "+ttn+" was expected, but \"+this."+getElementName(e.getName(), true)+".getClass().getName()+\" was encountered\");\r\n");
 		        write(indent+"  return ("+ttn+") this."+getElementName(e.getName(), true)+";\r\n");
 		        write(indent+"}\r\n");
 		        write("\r\n");
-            write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+ttn+"() throws Exception { \r\n");
+            write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+ttn+"() { \r\n");
             write(indent+"  return this."+getElementName(e.getName(), true)+" instanceof "+ttn+";\r\n");
             write(indent+"}\r\n");
             write("\r\n");
@@ -1284,7 +1851,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			    if (rn.equals("Any"))
 			      rn = "Resource";
           else if (rn.equals("List"))
-            rn = "List_";
+            rn = "ListResource";
 			    jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. ("+e.getDefinition()+")");
 			    write(indent+"public "+rn+" get"+getTitle(getElementName(e.getName(), false))+"Target() { \r\n");
 			    if (!rn.equals("Resource")) {
@@ -1308,6 +1875,33 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		}
 
 	}
+
+  private void generateSetter(ElementDefn e, String indent, String className, String tn, String simpleType) throws IOException {
+    jdoc(indent, "@param value "+e.getDefinition());
+    write(indent+"public "+className+" set"+getTitle(getElementName(e.getName(), false))+"("+simpleType+" value) { \r\n");
+    if ("long".equals(simpleType) || "double".equals(simpleType)) {
+      write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+");\r\n");
+      write(indent+"    this."+getElementName(e.getName(), true)+".setValue(value);\r\n");      
+    } else {
+      if (e.getMinCardinality() == 0 && !tn.equals("IntegerType") && !tn.equals("PositiveIntType") && !tn.equals("UnsignedIntType") && !tn.equals("BooleanType")) {
+        if (isString(tn))
+          write(indent+"  if (Utilities.noString(value))\r\n");
+        else
+          write(indent+"  if (value == null)\r\n");
+        write(indent+"    this."+getElementName(e.getName(), true)+" = null;\r\n");
+        write(indent+"  else {\r\n");
+      }
+      write(indent+"    if (this."+getElementName(e.getName(), true)+" == null)\r\n");
+      write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+");\r\n");
+      write(indent+"    this."+getElementName(e.getName(), true)+".setValue(value);\r\n");
+      if (e.getMinCardinality() == 0 && !tn.equals("IntegerType") && !tn.equals("PositiveIntType") && !tn.equals("UnsignedIntType") && !tn.equals("BooleanType")) {
+        write(indent+"  }\r\n");
+      }
+    }
+    write(indent+"  return this;\r\n");
+    write(indent+"}\r\n");
+    write("\r\n");
+  }
 
   private boolean isString(String tn) {
     return tn.equals("StringType") || tn.equals("CodeType") || tn.equals("IdType") || tn.equals("UriType") || tn.equals("OidType") || tn.equals("UuidType");

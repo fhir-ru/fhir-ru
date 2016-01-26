@@ -37,12 +37,12 @@ interface
 uses
   Classes,
   SysUtils,
-  IdGlobal, IdSoapMime,
+  IdGlobal,
   Parsemap, TextUtilities,
   StringSupport, DecimalSupport, GuidSupport,
-  AdvObjects, AdvBuffers, AdvStringLists, AdvStringMatches,
-  DateAndTime, JWT, SCIMObjects,
-  FHirBase, FHirResources, FHIRConstants, FHIRTypes, FHIRSecurity, FHIRTags;
+  AdvObjects, AdvBuffers, AdvStringLists, AdvStringMatches, AdvJson,
+  MimeMessage, DateAndTime, JWT, SCIMObjects,
+  FHirBase, FHirResources, FHIRConstants, FHIRTypes, FHIRSecurity, FHIRTags, FHIRLang;
 
 Const
    HTTP_OK_200 = 200;
@@ -67,6 +67,7 @@ Const
    HTTP_ERR_INTERNAL = 500;
 
 Type
+  TFHIRRequestOrigin = (roRest, roOperation, roConfig, roSubscription, roSweep, roUpload);
   {$M+}
 
 
@@ -103,6 +104,7 @@ Type
     Fanonymous : boolean;
     FSecurity : TFHIRSecurityRights;
     FSecure : boolean;
+    FUserKey: integer;
 
     procedure SetJwt(const Value: TJWT);
     procedure SetUser(const Value: TSCIMUser);
@@ -112,6 +114,7 @@ Type
     Constructor Create(secure : boolean);
     destructor Destroy; Override;
     function Link : TFhirSession; overload;
+    procedure describe(b : TStringBuilder);
     Property scopes : String read GetScopes write SetScopes;
 
     {@member Key
@@ -139,6 +142,11 @@ Type
       OAuth provided user id
     }
     Property Id : String read FId write FId;
+
+    {@member UserKey
+      OAuth provider internal key
+    }
+    property UserKey : integer read FUserKey write FUserKey;
 
     {@member Name
       OAuth provider User name
@@ -227,51 +235,60 @@ Type
     FlastModifiedDate: TDateTime;
     FParams: TParseMap;
     FSource: TAdvBuffer;
-    FcontentLocation: String;
+//    FcontentLocation: String;
     FDefaultSearch: boolean;
     FLang: String;
     FSession: TFhirSession;
     FTags : TFHIRTagList;
-    FContent : TAdvBuffer;
     FIp: string;
     FCompartments: String;
     FCompartmentId: String;
-    FForm: TIdSoapMimeMessage;
+    FForm: TMimeMessage;
     FOperationName: String;
     FIfMatch : String;
-    FMeta: TFhirMeta;
     FProvenance: TFhirProvenance;
     FIfNoneMatch: String;
     FIfModifiedSince: TDateTime;
     FIfNoneExist: String;
     FSummary: TFHIRSummaryOption;
+    FOrigin : TFHIRRequestOrigin;
+    FSecure : Boolean;
+    FPatch: TJsonArray;
     procedure SetResource(const Value: TFhirResource);
     procedure SetSource(const Value: TAdvBuffer);
     procedure SetSession(const Value: TFhirSession);
     function GetBundle: TFhirBundle;
     procedure SetBundle(const Value: TFhirBundle);
-    procedure SetMeta(const Value: TFhirMeta);
     procedure SetProvenance(const Value: TFhirProvenance);
     procedure processParams;
+    procedure SetForm(const Value: TMimeMessage);
+    procedure SetPatch(const Value: TJsonArray);
   Public
-    Constructor Create; Override;
+    Constructor Create(origin : TFHIRRequestOrigin);
     Destructor Destroy; Override;
     Function Link : TFHIRRequest; Overload;
 
     {!Script Hide}
     Function Compose : String;
     procedure LoadParams(s : String); overload;
-    procedure LoadParams(form : TIdSoapMimeMessage); overload;
+    procedure LoadParams(form : TMimeMessage); overload;
     Function LogSummary : String;
     function XMLSummary : String;
     Procedure CopyPost(stream : TStream);
     Property Source : TAdvBuffer read FSource write SetSource;
     Property Session : TFhirSession read FSession write SetSession;
     Property ip : string read FIp write FIp;
-    Property form : TIdSoapMimeMessage read FForm write FForm;
+    Property form : TMimeMessage read FForm write SetForm;
     function canRead(aResourceType : TFhirResourceType):boolean;
     function canWrite(aResourceType : TFhirResourceType):boolean;
     function canGetUser : boolean;
+    procedure reset;
+
+    // main rest function. Set the following things before calling this:
+    // form
+    // also, the base must be stipped out before calling this
+    function preAnalyse(url : String) : String;
+    procedure analyse(sCommand, sUrl : String; out relativeReferenceAdjustment : integer);
 
     Property DefaultSearch : boolean read FDefaultSearch write FDefaultSearch;
 
@@ -281,7 +298,6 @@ Type
     }
     property Parameters : TParseMap read FParams;
 
-    Property Content : TAdvBuffer read FContent;
     {!Script Show}
 
   published
@@ -289,6 +305,11 @@ Type
       The full URL of the original request, if the request was made on a RESTful interface (else empty)
     }
     property url : String read FUrl write FUrl;
+
+    {@member secure
+      Whether the request was made on an SSL interface or not (SSL = smart on fhir as well)
+    }
+    property secure : Boolean read FSecure write FSecure;
 
     {@member baseUrl
       The baseURL (see the FHIR specification under "HTTP REST interface) of the interface,
@@ -339,9 +360,8 @@ Type
       part of the FHIR specification
     }
     Property Resource : TFhirResource read FResource write SetResource;
-    Property Bundle : TFhirBundle read GetBundle write SetBundle;
-    property meta : TFhirMeta read FMeta write SetMeta;
 
+    Property patch : TJsonArray read FPatch write SetPatch;
     {@member Tags
       Tags on the request - if it's a resource directly
     }
@@ -365,7 +385,7 @@ Type
     {@member contentLocation
       Quoted Content location on request. Used for version aware updates. Only on RESTful interface
     }
-    Property contentLocation : String read FcontentLocation write FcontentLocation;
+//    Property contentLocation : String read FcontentLocation write FcontentLocation;
 
 //    {@member versionId
 //      The ETag of the resource identified in the request (if present)
@@ -393,6 +413,7 @@ Type
     Property IfNoneExist : String read FIfNoneExist write FIfNoneExist;
 
     Property Provenance : TFhirProvenance read FProvenance write SetProvenance;
+    Property Origin : TFHIRRequestOrigin read FOrigin;
   End;
 
   {@Class TFHIRResponse
@@ -429,11 +450,9 @@ Type
     Flink_list : TFhirBundleLinkList;
     FOrigin: String;
     FId: String;
-    FMeta: TFhirMeta;
     procedure SetResource(const Value: TFhirResource);
     function GetBundle: TFhirBundle;
     procedure SetBundle(const Value: TFhirBundle);
-    procedure SetMeta(const Value: TFhirMeta);
   public
     Constructor Create; Override;
     Destructor Destroy; Override;
@@ -527,7 +546,6 @@ Type
     }
     property Tags : TFHIRTagList read FTags;
 
-    property meta : TFhirMeta read FMeta write SetMeta;
 
     {@member link_list
       link_list for the response
@@ -546,10 +564,12 @@ Type
   ERestfulException = class (EAdvException)
   Private
     FStatus : word;
+    FCode : TFhirIssueTypeEnum;
   Public
-    Constructor Create(Const sSender, sMethod, sReason : String; aStatus : word); Overload; Virtual;
+    Constructor Create(Const sSender, sMethod, sReason : String; aStatus : word; code : TFhirIssueTypeEnum); Overload; Virtual;
 
     Property Status : word read FStatus write FStatus;
+    Property Code : TFhirIssueTypeEnum read FCode write FCode;
   End;
 
   {@Class TFHIRFactory
@@ -715,7 +735,7 @@ Type
       make a new Fhir request (for a conversion parameter)
     }
     {!script nolink}
-    function makeRequest : TFhirRequest;
+    function makeRequest(origin : TFHIRRequestOrigin) : TFhirRequest;
 
     {@member makeRequest
       make a new OperationOutcome that claims success
@@ -731,18 +751,314 @@ implementation
 
 uses
   FHIRParser,
-  FHIRParserBase;
+  FHIRParserBase,
+  FHIRUtilities;
 
 { ERestfulException }
 
-constructor ERestfulException.Create(const sSender, sMethod, sReason: String; aStatus : word);
+constructor ERestfulException.Create(const sSender, sMethod, sReason: String; aStatus : word; code : TFhirIssueTypeEnum);
 begin
   Create(sSender, sMethod, sReason);
   FStatus := aStatus;
+  FCode := code;
 end;
 
 
 { TFHIRRequest }
+
+function TFHIRRequest.preAnalyse(url : String) : String;
+var
+  i : integer;
+begin
+  i := StringFind(uRL, ['?']);
+  if (i = 0) then
+    LoadParams('')
+  else
+  begin
+    LoadParams(copy(uRL, i+1, $FFF));
+    url := copy(uRL, 1, i-1);
+  end;
+  if url.StartsWith('/') then
+    url := url.Substring(1);
+  if form <> nil then
+    LoadParams(form);
+  result := url;
+end;
+
+Procedure CheckId(lang, id : String);
+var
+  i : integer;
+begin
+  if (Length(id) > ID_LENGTH) then
+    Raise ERestfulException.Create('TFhirWebServer', 'SplitId', StringFormat(GetFhirMessage('MSG_ID_TOO_LONG', lang), [id]), HTTP_ERR_BAD_REQUEST, IssueTypeInvalid);
+  for i := 1 to length(id) do
+    if not CharInSet(id[i], ['a'..'z', '0'..'9', 'A'..'Z', '.', '-']) then
+      Raise ERestfulException.Create('TFhirWebServer', 'SplitId', StringFormat(GetFhirMessage('MSG_ID_INVALID', lang), [id, id[i]]), HTTP_ERR_BAD_REQUEST, IssueTypeInvalid);
+end;
+
+
+procedure TFHIRRequest.analyse(sCommand, sUrl: String; out relativeReferenceAdjustment : integer);
+Var
+  sId, sType : String;
+  aResourceType : TFHIRResourceType;
+  Function NextSegment(var url : String):String;
+  var
+    i : integer;
+  Begin
+    i := StringFind(url, ['/']);
+    if i = 0 then
+    begin
+      result := url;
+      url := '';
+    end
+    else
+    begin
+      inc(relativeReferenceAdjustment);
+      result := copy(url, 1, i-1);
+      url := copy(url, i + 1, $FFF);
+    end;
+  End;
+  procedure ForceMethod(sMethod : String);
+  begin
+    if (sCommand <> sMethod) Then
+      raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', StringFormat(GetFhirMessage('MSG_BAD_FORMAT', lang), [sUrl, sMethod]), HTTP_ERR_FORBIDDEN, IssueTypeInvalid);
+  end;
+var
+  s, soURL : String;
+begin
+  soURL := sUrl;
+  relativeReferenceAdjustment := 0;
+  sType := NextSegment(sURL);
+  if (sType = '') Then
+  begin
+    if sCommand = 'OPTIONS' then
+      CommandType := fcmdConformanceStmt
+    else if (sCommand = 'POST') then
+    begin
+      if form <> nil then
+      begin
+        s := Parameters.GetVar('op');
+        if (s = 'transaction') or (s = '') then
+          CommandType := fcmdTransaction
+        else if (s = 'validation') or (s = 'validate') then
+          CommandType := fcmdValidate
+        else
+          raise Exception.create('Unknown Operation: '+s);
+      end
+      else
+        CommandType := fcmdTransaction
+    end
+    else
+    begin
+      ForceMethod('GET');
+      if Parameters.Count > 0 then
+        CommandType := fcmdSearch
+      else
+        CommandType := fcmdUnknown;
+    end
+  end
+  else if (sCommand = 'OPTIONS') then
+    CommandType := fcmdNull
+  else if (sType = '_web') then // special
+  begin
+    if sCommand <> 'POST' then
+      ForceMethod('GET');
+    CommandType := fcmdWebUI;
+    id := sUrl;
+    sUrl := '';
+  end
+  else if StringStartsWith(sType, '$', false)  then
+  begin
+    CommandType := fcmdOperation;
+    OperationName := sType.Substring(1);
+    if sCommand <> 'GET' then
+      ForceMethod('POST');
+  end
+  else if (sType = '_history') then
+  begin
+    ForceMethod('GET');
+    CommandType := fcmdHistorySystem;
+  end
+  else if (sType = 'metadata') Then
+  begin
+    CommandType := fcmdConformanceStmt;
+    ForceMethod('GET');
+  end
+  else if (sType = 'validation') then
+  begin
+    CommandType := fcmdValidate;
+    ForceMethod('POST');
+    if Parameters.VarExists('profile') and (Parameters.GetVar('profile') <> '') then
+      tags.AddTag(0, tcProfile, 'urn:ietf:rfc:3986', 'http://localhost/'+Parameters.GetVar('profile'), '');
+  end
+  else if (sType = '_search') then
+  begin
+    CommandType := fcmdSearch;
+    if (sCommand <> 'GET') and (sCommand <> 'POST') then
+      raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', StringFormat(GetFhirMessage('MSG_BAD_SYNTAX', lang), [soURL]), HTTP_ERR_BAD_REQUEST, IssueTypeInvalid);
+  end
+  else
+  begin
+    if (sType <> '') And not RecogniseFHIRResourceManagerName(sType, aResourceType) Then
+      Raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', StringFormat(GetFhirMessage('MSG_NO_MODULE', lang), [sType]), HTTP_ERR_NOTFOUND, IssueTypeNotSupported);
+    ResourceType := aResourceType;
+    sId := NextSegment(sURL);
+    if sId = '' then
+    begin
+      if sCommand = 'GET' then
+      begin
+        CommandType := fcmdSearch;
+        DefaultSearch := true;
+      end
+      else if sCommand = 'POST' then
+        CommandType := fcmdCreate
+      else if (scommand = 'DELETE') then
+      begin
+        CommandType := fcmdDelete;
+        DefaultSearch := true;
+      end
+      else
+        raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', StringFormat(GetFhirMessage('MSG_BAD_SYNTAX', lang), [soURL]), HTTP_ERR_BAD_REQUEST, IssueTypeInvalid);
+    end
+    else if StringStartsWith(sId, '$', false) then
+    begin
+      CommandType := fcmdOperation;
+      OperationName := sId.Substring(1);
+      if sCommand <> 'GET' then
+        ForceMethod('POST');
+    end
+    else if not StringStartsWith(sId, '_', true) Then
+    begin
+      // operations on a resource
+      CheckId(lang, sId);
+      Id := sId;
+      sId := NextSegment(sUrl);
+      if (sId = '') Then
+      begin
+        if sCommand = 'GET' Then
+          CommandType := fcmdRead
+        else if sCommand = 'PUT' Then
+          CommandType := fcmdUpdate
+        else if sCommand = 'PATCH' Then
+          CommandType := fcmdPatch
+        else if sCommand = 'DELETE' Then
+          CommandType := fcmdDelete
+        else if sCommand = 'OPTIONS' then // CORS
+          CommandType := fcmdConformanceStmt
+        else
+          raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', StringFormat(GetFhirMessage('MSG_BAD_FORMAT', lang), [soURL, 'GET, PUT or DELETE']), HTTP_ERR_FORBIDDEN, IssueTypeNotSupported);
+      end
+      else if StringStartsWith(sId, '$', false)  then
+      begin
+        CommandType := fcmdOperation;
+        OperationName := sId.Substring(1);
+        if sCommand <> 'GET' then
+          ForceMethod('POST');
+      end
+      else if (sId = '_history') then
+      begin
+        sId := NextSegment(sURL);
+        if sId = '' then
+        begin
+          ForceMethod('GET');
+          CommandType := fcmdHistoryInstance;
+        end
+        else if not StringStartsWith(sId, '_', true) Then
+        begin
+          CheckId(lang, sId);
+          SubId := sId;
+          sId := NextSegment(sURL);
+          if sid = '' then
+          begin
+            ForceMethod('GET');
+            CommandType := fcmdVersionRead;
+          end
+          else if (sId = '$meta') then
+            begin
+            ForceMethod('GET');
+            CommandType := fcmdOperation;
+            OperationName := 'meta';
+          end
+          else if (sId = '$meta-add') then
+            begin
+              ForceMethod('POST');
+            CommandType := fcmdOperation;
+            OperationName := 'meta-add';
+      end
+          else if (sId = '$meta-delete') then
+      begin
+            ForceMethod('POST');
+            CommandType := fcmdOperation;
+            OperationName := 'meta-delete';
+          end
+          else
+            raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', StringFormat(GetFhirMessage('MSG_BAD_SYNTAX', lang), [soURL]), HTTP_ERR_BAD_REQUEST, IssueTypeInvalid);
+        end
+        else
+          raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', StringFormat(GetFhirMessage('MSG_BAD_SYNTAX', lang), [soURL]), HTTP_ERR_BAD_REQUEST, IssueTypeInvalid);
+      end
+      else if sId = '*' then // all tpes
+      begin
+        if ResourceType <> frtPatient then
+          raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', StringFormat(GetFhirMessage('MSG_UNKNOWN_COMPARTMENT', lang), [soURL, 'GET, POST or DELETE']), HTTP_ERR_FORBIDDEN, IssueTypeNotSupported);
+
+        CompartmentId := Id;
+        CommandType := fcmdSearch;
+        ResourceType := frtNull;
+        Id := '';
+      end
+      else if StringArrayExistsInSensitive(CODES_TFhirResourceType, sId) then
+      begin
+        aResourceType := TFHIRResourceType(StringArrayIndexOfInSensitive(CODES_TFhirResourceType, sId));
+        if (COMPARTMENT_PARAM_NAMES[ResourceType, aResourceType] <> '') then
+        begin
+          if ResourceType <> frtPatient then
+            raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', StringFormat(GetFhirMessage('MSG_UNKNOWN_COMPARTMENT', lang), [soURL, 'GET, POST or DELETE']), HTTP_ERR_FORBIDDEN, IssueTypeNotSupported);
+
+          CompartmentId := Id;
+          CommandType := fcmdSearch;
+          ResourceType := aResourceType;
+          Id := '';
+        end
+        else
+          raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', StringFormat(GetFhirMessage('MSG_BAD_SYNTAX', lang), [soURL]), HTTP_ERR_BAD_REQUEST, IssueTypeInvalid);
+      end
+      else
+        raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', StringFormat(GetFhirMessage('MSG_BAD_SYNTAX', lang), [soURL]), HTTP_ERR_BAD_REQUEST, IssueTypeInvalid);
+    end
+    else if (sId = '_validate') Then
+    begin
+      ForceMethod('POST');
+      CommandType := fcmdValidate;
+      sId := NextSegment(sUrl);
+      if sId <> '' Then
+      Begin
+        if (sURL <> '') or (sId = '') Then
+          raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', 'Bad Syntax in "'+soURL+'"', HTTP_ERR_BAD_REQUEST, IssueTypeInvalid);
+        CheckId(lang, copy(sId, 2, $FF));
+        Id := copy(sId, 2, $FF);
+      End;
+    end
+    else if (sId = '_search') or (sId = '_search.xml') or (sId = '_search.json') Then
+      CommandType := fcmdSearch
+    else if (sId = '_history') or (sId = '_history.xml') or (sId = '_history.json') Then
+    begin
+      ForceMethod('GET');
+      CommandType := fcmdHistoryType
+    end
+    // Extension on this server - remove?
+    else if (sId = '_upload') or (sId = '_upload.htm') then
+    begin
+      CommandType := fcmdUpload;
+      PostFormat := ffXhtml;
+    end
+    else
+      raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', StringFormat(GetFhirMessage('MSG_BAD_SYNTAX', lang), ['URL'+soURL]), HTTP_ERR_BAD_REQUEST, IssueTypeInvalid);
+  End;
+  if (CommandType <> fcmdNull)  then
+    if (sURL <> '') then
+      raise ERestfulException.Create('TFhirWebServer', 'HTTPRequest', StringFormat(GetFhirMessage('MSG_BAD_SYNTAX', lang), [soURL]), HTTP_ERR_BAD_REQUEST, IssueTypeInvalid);
+end;
 
 function TFHIRRequest.canGetUser: boolean;
 begin
@@ -797,25 +1113,27 @@ begin
   SetLength(b, t);
   Stream.Read(b[0], t);
   stream.position := p;
-  FContent := TAdvBuffer.create;
-  FContent.AsBytes := b;
+  FSource := TAdvBuffer.create;
+  FSource.AsBytes := b;
 end;
 
-constructor TFHIRRequest.Create;
+constructor TFHIRRequest.Create(origin : TFHIRRequestOrigin);
 begin
-  inherited;
+  inherited Create;
   FTags := TFHIRTagList.create;
+  FOrigin := origin;
 end;
 
 destructor TFHIRRequest.Destroy;
 begin
-  FMeta.Free;
-  FContent.Free;
+  FPatch.Free;
   FTags.free;
   FSession.Free;
   FSource.Free;
   FResource.Free;
   FProvenance.Free;
+  FForm.Free;
+  FParams.Free;
   inherited;
 end;
 
@@ -840,19 +1158,19 @@ begin
   processParams;
 end;
 
-procedure TFHIRRequest.LoadParams(form: TIdSoapMimeMessage);
+procedure TFHIRRequest.LoadParams(form: TMimeMessage);
 var
   i : integer;
-  p : TIdSoapMimePart;
+  p : TMimePart;
   s, n : String;
 begin
   for i := 0 to form.Parts.Count - 1 do
   begin
-    p := form.Parts.PartByIndex[i];
+    p := form.Parts[i];
     if (p.MediaType = '') then
     begin
       n := p.ParamName;
-      s := UTF8StreamToString(p.Content).trimRight([#13, #10]);
+      s := p.Content.AsUnicode.trimRight([#13, #10]);
       if (n <> '') and (not s.Contains(#10)) then
         FParams.addItem(n, s);
     end;
@@ -884,15 +1202,42 @@ begin
     Summary := soFull;
 end;
 
+procedure TFHIRRequest.reset;
+begin
+  FId := '';
+  FSubId := '';
+  FCommandType := fcmdUnknown;
+  FResourceType := frtNull;
+  FResource := nil;
+  FUrl := '';
+  FParams.Free;
+  FParams := nil;
+  if FSource <> nil then
+    FSource.Clear;
+  FDefaultSearch := false;
+  FForm := nil;
+  FOperationName := '';
+  FIfMatch  := '';
+  FIfNoneMatch := '';
+  FIfModifiedSince := 0;
+  FIfNoneExist := '';
+  FSummary := soFull;
+end;
+
 procedure TFHIRRequest.SetBundle(const Value: TFhirBundle);
 begin
   setresource(value);
 end;
 
-procedure TFHIRRequest.SetMeta(const Value: TFhirMeta);
+procedure TFHIRRequest.SetForm(const Value: TMimeMessage);
 begin
-  FMeta.Free;
-  FMeta := Value;
+  FForm := Value;
+end;
+
+procedure TFHIRRequest.SetPatch(const Value: TJsonArray);
+begin
+  FPatch.Free;
+  FPatch := Value;
 end;
 
 procedure TFHIRRequest.SetProvenance(const Value: TFhirProvenance);
@@ -938,7 +1283,7 @@ begin
   addValue('originalId', ForiginalId, ForiginalId <> '');
   addValue('versionId', FversionId, FversionId <> '');
   addValue('Last-Modified', FormatDateTime('c', FlastModifiedDate), FlastModifiedDate <> 0);
-  addValue('Content-Location', FcontentLocation, FcontentLocation <> '');
+//  addValue('Content-Location', FcontentLocation, FcontentLocation <> '');
   addValue('defaultSearch', BooleanToString(FDefaultSearch), CommandType = fcmdSearch);
   addValue('Language', FLang, FLang <> '');
   addValue('Tag', FTags.ToString, FTags.count > 0);
@@ -961,7 +1306,6 @@ begin
   Flink_list.Free;
   FTags.free;
   FResource.Free;
-  FMeta.Free;
   inherited;
 end;
 
@@ -978,12 +1322,6 @@ end;
 procedure TFHIRResponse.SetBundle(const Value: TFhirBundle);
 begin
   SetResource(value);
-end;
-
-procedure TFHIRResponse.SetMeta(const Value: TFhirMeta);
-begin
-  FMeta.Free;
-  FMeta := Value;
 end;
 
 procedure TFHIRResponse.SetResource(const Value: TFhirResource);
@@ -1077,8 +1415,8 @@ function TFHIRFactory.makeContactPoint(system, value, use: String): TFhirContact
 begin
   result := TFhirContactPoint.create;
   try
-    result.useElement := CheckEnum(CODES_TFhirContactPointUse, use);
-    result.systemElement := CheckEnum(CODES_TFhirContactPointSystem, system);
+    result.useElement := CheckEnum(CODES_TFhirContactPointUseEnum, use);
+    result.systemElement := CheckEnum(CODES_TFhirContactPointSystemEnum, system);
     result.value := value;
     result.link;
   finally
@@ -1090,7 +1428,7 @@ function TFHIRFactory.makeAddress(use, street, city, state, postalCode, country 
 begin
   result := TFhirAddress.create;
   try
-    result.useElement := CheckEnum(CODES_TFhirAddressUse, use);
+    result.useElement := CheckEnum(CODES_TFhirAddressUseEnum, use);
     result.lineList.AddItem(street);
     result.city := city;
     result.state := state;
@@ -1106,7 +1444,7 @@ function TFHIRFactory.makeIdentifierWithLabel(use : string; label_, idSystem, id
 begin
   result := TFhirIdentifier.create;
   try
-    result.useElement := CheckEnum(CODES_TFhirIdentifierUse, use);
+    result.useElement := CheckEnum(CODES_TFhirIdentifierUseEnum, use);
     result.type_ := TFhirCodeableConcept.Create;
     result.type_.text := label_;
     result.system := idsystem;
@@ -1121,7 +1459,7 @@ function TFHIRFactory.makeHumanName(use, family, given, prefix, suffix: String):
 begin
   result := TFhirHumanName.create;
   try
-    result.useElement := CheckEnum(CODES_TFhirNameUse, use);
+    result.useElement := CheckEnum(CODES_TFhirNameUseEnum, use);
     result.familyList.addItem(family);
     result.givenList.addItem(given);
     result.prefixList.addItem(prefix);
@@ -1140,7 +1478,7 @@ begin
     result.value := key;
     result.type_ := TFhirCodeableConcept.Create;
     result.type_.text := label_;
-    result.useElement := CheckEnum(CODES_TFhirIdentifierUse, use);
+    result.useElement := CheckEnum(CODES_TFhirIdentifierUseEnum, use);
     result.link;
   finally
     result.free;
@@ -1260,7 +1598,7 @@ function TFHIRFactory.makeNarrative(status, html: String; policy : TFHIRXhtmlPar
 begin
   result := TFhirNarrative.create;
   try
-    result.statusElement := CheckEnum(CODES_TFhirNarrativeStatus, status);
+    result.statusElement := CheckEnum(CODES_TFhirNarrativeStatusEnum, status);
     result.div_ := parseHTML(html, policy);
     result.link;
   finally
@@ -1306,9 +1644,9 @@ begin
   end;
 end;
 
-function TFHIRFactory.makeRequest: TFhirRequest;
+function TFHIRFactory.makeRequest(origin : TFHIRRequestOrigin): TFhirRequest;
 begin
-  result := TFhirRequest.create;
+  result := TFhirRequest.create(origin);
 end;
 
 function TFHIRFactory.makeSuccessfulOperation: TFhirOperationOutcome;
@@ -1326,7 +1664,7 @@ function TFHIRFactory.makeHumanNameText(use, text: String): TFhirHumanName;
 begin
   result := TFhirHumanName.create;
   try
-    result.useElement := CheckEnum(CODES_TFhirNameUse, use);
+    result.useElement := CheckEnum(CODES_TFhirNameUseEnum, use);
     result.text := text;
     result.link;
   finally
@@ -1339,7 +1677,7 @@ function TFHIRFactory.makeAddressText(use, text: String): TFhirAddress;
 begin
   result := TFhirAddress.create;
   try
-    result.useElement := CheckEnum(CODES_TFhirAddressUse, use);
+    result.useElement := CheckEnum(CODES_TFhirAddressUseEnum, use);
     result.text := text;
     result.link;
   finally
@@ -1400,6 +1738,57 @@ begin
   FFirstCreated := now;
   FTaggedCompartments := TStringList.create;
   FPatientList := TStringList.create;
+end;
+
+procedure TFhirSession.describe(b: TStringBuilder);
+begin
+  b.Append('<tr>');
+//  session key
+  b.Append('<td>');
+  b.Append(inttostr(FKey));
+  b.Append('</td>');
+//  identity
+  b.Append('<td>');
+  if Fanonymous then
+    b.Append('(anonymous)')
+  else if FProvider = apNone then
+    b.Append(FId)
+  else
+    b.Append(Names_TFHIRAuthProvider[FProvider]+'\'+FId);
+  b.Append('</td>');
+//  userkey
+  b.Append('<td>');
+  b.Append(inttostr(FUserKey));
+  b.Append('</td>');
+//  name
+  b.Append('<td>');
+  b.Append(FormatTextToHTML(FName));
+  b.Append('</td>');
+//  created
+  b.Append('<td>');
+  b.Append(FormatDateTime('c', FFirstCreated));
+  b.Append('</td>');
+//  expires
+  b.Append('<td>');
+  b.Append(FormatDateTime('c', FExpires));
+  b.Append('</td>');
+//  next check time
+  b.Append('<td>');
+  b.Append(FormatDateTime('c', FNextTokenCheck));
+  b.Append('</td>');
+//  next use count
+  b.Append('<td>');
+  b.Append(inttostr(FUseCount));
+  b.Append('</td>');
+//  scopes
+  b.Append('<td>');
+  b.Append(FSecurity.source);
+  b.Append('</td>');
+//  compartments
+  b.Append('<td>');
+  b.Append(FTaggedCompartments.CommaText +' '+FPatientList.CommaText);
+  b.Append('</td>');
+  b.Append('</tr>'#13#10);
 end;
 
 destructor TFhirSession.Destroy;

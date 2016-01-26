@@ -32,9 +32,8 @@ Interface
 
 Uses
   Windows, SysUtils, Classes, ComObj,
-  IdSoapMsXml,
   AdvObjects, Advmemories, AdvBuffers, AdvStreams, AdvStringLists,
-  XmlBuilder;
+  XmlBuilder, MsXml;
 
 
 Type
@@ -44,6 +43,7 @@ Type
   private
     FLocator : IVBSAXLocator;
     FLocation : TSourceLocation;
+    FExceptionMessage : String;
   protected
     FXmlComments : TAdvStringList;
     procedure startElement(sourceLocation : TSourceLocation; uri, localname : string; attrs : IVBSAXAttributes); overload; virtual;
@@ -52,12 +52,15 @@ Type
   public
     Constructor create;
     destructor Destroy; override;
+
+    property ExceptionMessage : String read FExceptionMessage;
     { SAX }
    // IDispatch
     function GetTypeInfoCount(out Count: Integer): HResult; stdcall;
     function GetTypeInfo(Index, LocaleID: Integer; out TypeInfo): HResult; stdcall;
     function GetIDsOfNames(const IID: TGUID; Names: Pointer; NameCount, LocaleID: Integer; DispIDs: Pointer): HResult; stdcall;
     function Invoke(DispID: Integer; const IID: TGUID; LocaleID: Integer; Flags: Word; var Params; VarResult, ExcepInfo, ArgErr: Pointer): HResult; stdcall;
+    procedure _Set_documentLocator(const locator: IVBSAXLocator); safecall;
     procedure Set_documentLocator(const locator: IVBSAXLocator); safecall;
     procedure startDocument; safecall;
     procedure endDocument; safecall;
@@ -77,11 +80,11 @@ Type
   TMsXmlParser = class (TAdvObject)
   Private
   Public
-    Function Parse(Const sFilename : String) : IXMLDomDocument2; Overload;
-    Function Parse(Const oSource : TStream) : IXMLDomDocument2; Overload;
-    Function Parse(Const oSource : TAdvStream) : IXMLDomDocument2; Overload;
-    Function Parse(Const oSource : TAdvBuffer) : IXMLDomDocument2; Overload;
-    Function ParseString(Const sSource : String) : IXMLDomDocument2; Overload;
+    Class Function Parse(Const sFilename : String) : IXMLDomDocument2; Overload;
+    Class Function Parse(Const oSource : TStream) : IXMLDomDocument2; Overload;
+    Class Function Parse(Const oSource : TAdvStream) : IXMLDomDocument2; Overload;
+    Class Function Parse(Const oSource : TAdvBuffer) : IXMLDomDocument2; Overload;
+    Class Function ParseString(Const sSource : String) : IXMLDomDocument2; Overload;
 
     Class Function GetAttribute(oElement : IXMLDOMElement; Const sName : WideString) : WideString; overload;
     Class Function GetAttribute(oElement : IXMLDOMElement; Const sNamespace, sName : WideString) : WideString; overload;
@@ -89,25 +92,90 @@ Type
     Class Function NextSibling(oElement : IXMLDOMElement) : IXMLDOMElement;
     Class Function TextContent(oElement : IXMLDOMElement; aTextAction : TTextAction) : WideString;
 
-    Procedure Parse(Const sFilename : String; handler : TMsXmlSaxHandler); Overload;
-    Procedure Parse(Const oSource : TStream; handler : TMsXmlSaxHandler); Overload;
-    Procedure Parse(Const oSource : TAdvStream; handler : TMsXmlSaxHandler); Overload;
-    Procedure Parse(Const oSource : TAdvBuffer; handler : TMsXmlSaxHandler); Overload;
+    Class Procedure Parse(Const sFilename : String; handler : TMsXmlSaxHandler); Overload;
+    Class Procedure Parse(Const oSource : TStream; handler : TMsXmlSaxHandler); Overload;
+    Class Procedure Parse(Const oSource : TAdvStream; handler : TMsXmlSaxHandler); Overload;
+    Class Procedure Parse(Const oSource : TAdvBuffer; handler : TMsXmlSaxHandler); Overload;
   End;
+
+Procedure DetermineMsXmlProgId;
+Function LoadMsXMLDom : IXMLDomDocument2;
+Function LoadMsXMLDomV(isFree : boolean = false) : Variant;
+
+Var
+  GMsXmlProgId_DOM : String;
+  GMsXmlProgId_FTDOM : String;
+  GMsXmlProgId_SCHEMA : String;
+  GMsXmlProgId_XSLT : String;
+  GMsXmlProgId_XSLP : String;
+  GMsXmlProgId_SAX : String;
 
 Implementation
 
 Uses
   ActiveX,
   AdvWinInetClients,
-  IdSoapXml,
   MsXmlBuilder,
   StringSupport,
   AdvVclStreams;
 
+Procedure DetermineMsXmlProgId;
+  Function TryLoad(sId : String) : Boolean;
+  Var
+    ClassID: TCLSID;
+    iTest : IDispatch;
+    Res : HResult;
+  Begin
+    Result := false;
+    if Succeeded(CLSIDFromProgID(PWideChar(String('MSXML2.DOMDocument'+sId)), ClassID)) Then
+    Begin
+      Res := CoCreateInstance(ClassID, nil, CLSCTX_INPROC_SERVER or CLSCTX_LOCAL_SERVER, IDispatch, iTest);
+      result := Succeeded(Res);
+      If result then
+      Begin
+        iTest := nil;
+        GMsXmlProgId_DOM := 'MSXML2.DOMDocument'+sId;
+        GMsXmlProgId_FTDOM := 'MSXML2.FreeThreadedDOMDocument'+sId;
+        GMsXmlProgId_SCHEMA := 'MSXML2.XMLSchemaCache'+sId;
+        GMsXmlProgId_XSLT := 'MSXML2.XSLTemplate'+sId;
+        GMsXmlProgId_XSLP := 'MSXML2.XSLProcessor'+sId;
+        GMsXmlProgId_SAX := 'MSXML2.SAXXMLReader'+sId;
+      End;
+    End;
+  End;
+Begin
+  CoInitializeEx(nil, COINIT_MULTITHREADED);
+  Try
+   If not TryLoad('.6.0') And not TryLoad('.5.0')
+       And not TryLoad('.4.0') And not TryLoad('') Then
+        GMsXmlProgId_DOM := '';
+  Finally
+    CoUninitialize;
+  End;
+End;
+
+Function LoadMsXMLDom : IXMLDomDocument2;
+Var
+  LVariant: Variant;
+Begin
+  LVariant := LoadMsXMLDomV;
+  Result := IUnknown(TVarData(LVariant).VDispatch) as IXMLDomDocument2;
+End;
+
+Function LoadMsXMLDomV(isFree : boolean = false) : Variant;
+Begin
+  if GMsXmlProgId_DOM = '' Then
+    Raise Exception.Create('Unable to load Microsoft XML Services');
+  if isFree then
+    Result := CreateOleObject(GMsXmlProgId_FTDOM)
+  else
+    Result := CreateOleObject(GMsXmlProgId_DOM);
+End;
+
+
 { TMsXmlParser }
 
-function TMsXmlParser.Parse(const sFilename: String): IXMLDomDocument2;
+Class function TMsXmlParser.Parse(const sFilename: String): IXMLDomDocument2;
 var
   oFile : TFileStream;
   oWeb : TAdvWinInetClient;
@@ -140,7 +208,7 @@ begin
 end;
 
 
-function TMsXmlParser.Parse(const oSource: TStream): IXMLDomDocument2;
+Class function TMsXmlParser.Parse(const oSource: TStream): IXMLDomDocument2;
 Var
   iDom : IXMLDomDocument2;
   vAdapter : Variant;
@@ -159,13 +227,13 @@ begin
     if iDom.parseError.url <> '' Then
       sError := sError + '. url="'+ iDom.parseError.url+'"';
     sError := sError + '. source = '+ iDom.parseError.srcText+'"';
-    Error('Parse', sError);
+    raise Exception.Create(sError);
   End;
   Result := iDom;
 end;
 
 
-function TMsXmlParser.Parse(const oSource: TAdvStream): IXMLDomDocument2;
+class function TMsXmlParser.Parse(const oSource: TAdvStream): IXMLDomDocument2;
 Var
   oWrapper : TVCLStream;
 begin
@@ -240,7 +308,7 @@ End;
 
 
 
-procedure TMsXmlParser.Parse(const oSource: TStream; handler: TMsXmlSaxHandler);
+class procedure TMsXmlParser.Parse(const oSource: TStream; handler: TMsXmlSaxHandler);
 var
   v : variant;
   sax : IVBSAXXMLReader ;
@@ -253,9 +321,11 @@ begin
 
   v := TStreamAdapter.Create(oSource) As IStream;
   sax.parse(v);
+  if handler.ExceptionMessage <> '' then
+    raise Exception.create(handler.ExceptionMessage);
 end;
 
-procedure TMsXmlParser.Parse(const sFilename: String; handler: TMsXmlSaxHandler);
+class procedure TMsXmlParser.Parse(const sFilename: String; handler: TMsXmlSaxHandler);
 var
   oFile : TFileStream;
   oWeb : TAdvWinInetClient;
@@ -288,7 +358,7 @@ begin
 
 end;
 
-procedure TMsXmlParser.Parse(const oSource: TAdvBuffer; handler: TMsXmlSaxHandler);
+class procedure TMsXmlParser.Parse(const oSource: TAdvBuffer; handler: TMsXmlSaxHandler);
 var
   oMem : TAdvMemoryStream;
 begin
@@ -301,7 +371,7 @@ begin
   End;
 end;
 
-function TMsXmlParser.ParseString(const sSource: String): IXMLDomDocument2;
+class function TMsXmlParser.ParseString(const sSource: String): IXMLDomDocument2;
 var
   oMem : TStringStream;
 begin
@@ -313,7 +383,7 @@ begin
   End;
 end;
 
-procedure TMsXmlParser.Parse(const oSource: TAdvStream; handler: TMsXmlSaxHandler);
+class procedure TMsXmlParser.Parse(const oSource: TAdvStream; handler: TMsXmlSaxHandler);
 Var
   oWrapper : TVCLStream;
 begin
@@ -354,7 +424,7 @@ Begin
   End;
 end;
 
-function TMsXmlParser.Parse(const oSource: TAdvBuffer): IXMLDomDocument2;
+class function TMsXmlParser.Parse(const oSource: TAdvBuffer): IXMLDomDocument2;
 var
   oMem : TAdvMemoryStream;
 begin
@@ -411,16 +481,14 @@ begin
   // nothing
 end;
 
-procedure TMsXmlSaxHandler.error(const oLocator: IVBSAXLocator;
-  var strErrorMessage: WideString; nErrorCode: Integer);
+procedure TMsXmlSaxHandler.error(const oLocator: IVBSAXLocator; var strErrorMessage: WideString; nErrorCode: Integer);
 begin
-  raise Exception.Create('todo');
+  FExceptionMessage := strErrorMessage+' at line '+inttostr(oLocator.lineNumber);
 end;
 
-procedure TMsXmlSaxHandler.fatalError(const oLocator: IVBSAXLocator;
-  var strErrorMessage: WideString; nErrorCode: Integer);
+procedure TMsXmlSaxHandler.fatalError(const oLocator: IVBSAXLocator; var strErrorMessage: WideString; nErrorCode: Integer);
 begin
-  raise Exception.Create('todo');
+  FExceptionMessage := strErrorMessage+' at line '+inttostr(oLocator.lineNumber);
 end;
 
 function TMsXmlSaxHandler.GetIDsOfNames(const IID: TGUID; Names: Pointer; NameCount, LocaleID: Integer; DispIDs: Pointer): HResult;
@@ -496,6 +564,13 @@ begin
   // for descendents
 end;
 
+procedure TMsXmlSaxHandler._Set_documentLocator(const locator: IVBSAXLocator);
+begin
+  Set_documentLocator(locator);
+end;
+
+Initialization
+  DetermineMsXmlProgId;
 End.
 
 

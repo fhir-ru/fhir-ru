@@ -295,6 +295,12 @@
     <sourceUri value="list-uslab-valuesets.xml"/>
   </resource>
    -->
+    <binary value="uslabreportpushrest.png"/>
+    <binary value="uslabreportpullrest.png"/>
+    <binary value="uslabreportcontext.png"/>
+    <binary value="uslaborderpushrest.png"/>
+    <binary value="uslaborderpullrest.png"/>
+    <binary value="uslabordercontext.png"/>
 	<page>
 		<source value="uslab.html"/>
 		<name value="US Lab Implementation Guide Home Page"/>
@@ -546,7 +552,7 @@
 		</page>
 		<page>
 			<source value="pract-uslab.html"/>
-			<name value="US Laboratory Patient Profiles "/>
+			<name value="US Laboratory Practitioner Profiles "/>
 			<kind value="page"/>
 			<format value="generated"/>
 			<page>
@@ -599,7 +605,7 @@
 			</page>
 			<page>
 				<source value="uslab-performinglab.html"/>
-				<name value="US Laboratory Practitioner Performing Laboratory Details"/>
+				<name value="US Laboratory Performing Laboratory Details"/>
 				<kind value="resource"/>
 				<format value="generated"/>
 					<page>

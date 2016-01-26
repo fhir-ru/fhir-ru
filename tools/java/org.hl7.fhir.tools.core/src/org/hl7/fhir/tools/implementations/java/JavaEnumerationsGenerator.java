@@ -39,7 +39,6 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
-import org.hl7.fhir.tools.implementations.GeneratorUtils;
 import org.hl7.fhir.utilities.Utilities;
 
 /*
@@ -57,11 +56,12 @@ public class JavaEnumerationsGenerator extends JavaBaseGenerator {
 	}
 
 	public void generate(Date genDate, String version) throws Exception {		
-		write("package org.hl7.fhir.instance.model;\r\n");
+		write("package org.hl7.fhir.dstu21.model;\r\n");
 		write("\r\n/*\r\n"+Config.FULL_LICENSE_CODE+"*/\r\n\r\n");
 		write("// Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n\r\n");
     write("\r\n");
     write("import org.hl7.fhir.instance.model.api.*;\r\n");
+    write("import org.hl7.fhir.dstu21.exceptions.FHIRException;\r\n");
     write("\r\n");
 
     write("public class Enumerations {\r\n");
@@ -97,39 +97,39 @@ public class JavaEnumerationsGenerator extends JavaBaseGenerator {
 		int l = cd.getAllCodes(definitions.getCodeSystems(), definitions.getValuesets(), true).size();
 		int i = 0;
 		for (DefinedCode c : cd.getAllCodes(definitions.getCodeSystems(), definitions.getValuesets(), true)) {
-			i++;
-			String cc = Utilities.camelCase(c.getCode());
-      cc = makeConst(cc);
-      write("        /**\r\n");
-      write("         * "+c.getDefinition()+"\r\n");
-      write("         */\r\n");      
-			write("        "+cc.toUpperCase()+", \r\n");
-		}
+				i++;
+				String cc = Utilities.camelCase(c.getCode());
+	      cc = makeConst(cc);
+	      write("        /**\r\n");
+	      write("         * "+c.getDefinition()+"\r\n");
+	      write("         */\r\n");      
+				write("        "+cc.toUpperCase()+", \r\n");
+			}
     write("        /**\r\n");
     write("         * added to help the parsers\r\n");
     write("         */\r\n");      
     write("        NULL;\r\n");
 
 
-		write("        public static "+tns+" fromCode(String codeString) throws Exception {\r\n");
+		write("        public static "+tns+" fromCode(String codeString) throws FHIRException {\r\n");
 		write("            if (codeString == null || \"\".equals(codeString))\r\n");
 		write("                return null;\r\n");
 		for (DefinedCode c : cd.getAllCodes(definitions.getCodeSystems(), definitions.getValuesets(), true)) {
-			String cc = Utilities.camelCase(c.getCode());
-			cc = makeConst(cc);
-			write("        if (\""+c.getCode()+"\".equals(codeString))\r\n");
-			write("          return "+cc+";\r\n");
-		}		
-		write("        throw new Exception(\"Unknown "+tns+" code '\"+codeString+\"'\");\r\n");
+				String cc = Utilities.camelCase(c.getCode());
+				cc = makeConst(cc);
+				write("        if (\""+c.getCode()+"\".equals(codeString))\r\n");
+				write("          return "+cc+";\r\n");
+			}
+		write("        throw new FHIRException(\"Unknown "+tns+" code '\"+codeString+\"'\");\r\n");
 		write("        }\r\n");	
 
 		write("        public String toCode() {\r\n");
 		write("          switch (this) {\r\n");
 		for (DefinedCode c : cd.getAllCodes(definitions.getCodeSystems(), definitions.getValuesets(), true)) {
-			String cc = Utilities.camelCase(c.getCode());
-      cc = makeConst(cc);
-			write("            case "+cc+": return \""+c.getCode()+"\";\r\n");
-		}   
+				String cc = Utilities.camelCase(c.getCode());
+	      cc = makeConst(cc);
+				write("            case "+cc+": return \""+c.getCode()+"\";\r\n");
+			}
 		write("            default: return \"?\";\r\n");
 		write("          }\r\n"); 
 		write("        }\r\n"); 
@@ -137,10 +137,10 @@ public class JavaEnumerationsGenerator extends JavaBaseGenerator {
     write("        public String getSystem() {\r\n");
     write("          switch (this) {\r\n");
     for (DefinedCode c : cd.getAllCodes(definitions.getCodeSystems(), definitions.getValuesets(), true)) {
-      String cc = Utilities.camelCase(c.getCode());
-      cc = makeConst(cc);
-      write("            case "+cc+": return \""+c.getSystem()+"\";\r\n");
-    }   
+	      String cc = Utilities.camelCase(c.getCode());
+	      cc = makeConst(cc);
+	      write("            case "+cc+": return \""+c.getSystem()+"\";\r\n");
+			}
     write("            default: return \"?\";\r\n");
     write("          }\r\n"); 
     write("        }\r\n"); 
@@ -148,10 +148,10 @@ public class JavaEnumerationsGenerator extends JavaBaseGenerator {
     write("        public String getDefinition() {\r\n");
     write("          switch (this) {\r\n");
     for (DefinedCode c : cd.getAllCodes(definitions.getCodeSystems(), definitions.getValuesets(), true)) {
-      String cc = Utilities.camelCase(c.getCode());
-      cc = makeConst(cc);
-      write("            case "+cc+": return \""+Utilities.escapeJava(c.getDefinition())+"\";\r\n");
-    }   
+	      String cc = Utilities.camelCase(c.getCode());
+	      cc = makeConst(cc);
+	      write("            case "+cc+": return \""+Utilities.escapeJava(c.getDefinition())+"\";\r\n");
+			}
     write("            default: return \"?\";\r\n");
     write("          }\r\n"); 
     write("        }\r\n"); 
@@ -159,10 +159,10 @@ public class JavaEnumerationsGenerator extends JavaBaseGenerator {
     write("        public String getDisplay() {\r\n");
     write("          switch (this) {\r\n");
     for (DefinedCode c : cd.getAllCodes(definitions.getCodeSystems(), definitions.getValuesets(), true)) {
-      String cc = Utilities.camelCase(c.getCode());
-      cc = makeConst(cc);
-      write("            case "+cc+": return \""+Utilities.escapeJava(Utilities.noString(c.getDisplay()) ? c.getCode() : c.getDisplay())+"\";\r\n");
-    }   
+	      String cc = Utilities.camelCase(c.getCode());
+	      cc = makeConst(cc);
+	      write("            case "+cc+": return \""+Utilities.escapeJava(Utilities.noString(c.getDisplay()) ? c.getCode() : c.getDisplay())+"\";\r\n");
+			}
     write("            default: return \"?\";\r\n");
     write("          }\r\n"); 
     write("        }\r\n"); 
@@ -178,21 +178,40 @@ public class JavaEnumerationsGenerator extends JavaBaseGenerator {
     write("            if (codeString == null || \"\".equals(codeString))\r\n");
     write("                return null;\r\n");
     for (DefinedCode c : cd.getAllCodes(definitions.getCodeSystems(), definitions.getValuesets(), true)) {
-      String cc = Utilities.camelCase(c.getCode());
-      cc = makeConst(cc);
-      write("        if (\""+c.getCode()+"\".equals(codeString))\r\n");
-      write("          return "+tns+"."+cc+";\r\n");
-    }   
+	      String cc = Utilities.camelCase(c.getCode());
+	      cc = makeConst(cc);
+	      write("        if (\""+c.getCode()+"\".equals(codeString))\r\n");
+	      write("          return "+tns+"."+cc+";\r\n");
+			}
     write("        throw new IllegalArgumentException(\"Unknown "+tns+" code '\"+codeString+\"'\");\r\n");
     write("        }\r\n"); 
-    write("    public String toCode("+tns+" code) {\r\n");
+    write("        public Enumeration<"+tns+"> fromType(Base code) throws FHIRException {\r\n");
+    write("          if (code == null || code.isEmpty())\r\n");
+    write("            return null;\r\n");
+    write("          String codeString = ((PrimitiveType) code).asStringValue();\r\n");
+    write("          if (codeString == null || \"\".equals(codeString))\r\n");
+    write("            return null;\r\n");
     for (DefinedCode c : cd.getAllCodes(definitions.getCodeSystems(), definitions.getValuesets(), true)) {
       String cc = Utilities.camelCase(c.getCode());
       cc = makeConst(cc);
-      write("      if (code == "+tns+"."+cc+")\r\n        return \""+c.getCode()+"\";\r\n");
+      write("        if (\""+c.getCode()+"\".equals(codeString))\r\n");
+      write("          return new Enumeration<"+tns+">(this, "+tns+"."+cc+");\r\n");
+    }   
+    write("        throw new FHIRException(\"Unknown "+tns+" code '\"+codeString+\"'\");\r\n");
+    write("        }\r\n"); 
+    write("    public String toCode("+tns+" code) {\r\n");
+    for (DefinedCode c : cd.getAllCodes(definitions.getCodeSystems(), definitions.getValuesets(), true)) {
+	      String cc = Utilities.camelCase(c.getCode());
+	      cc = makeConst(cc);
+	      write("      if (code == "+tns+"."+cc+")\r\n        return \""+c.getCode()+"\";\r\n");
     }
     write("      return \"?\";\r\n"); 
+    write("      }\r\n");
+    
+    write("    public String toSystem("+tns+" code) {\r\n");
+    write("      return code.getSystem();\r\n");
     write("      }\r\n"); 
+
     write("    }\r\n"); 
     write("\r\n");
 	}

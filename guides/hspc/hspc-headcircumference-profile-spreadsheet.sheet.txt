@@ -10,17 +10,34 @@
 
  -- Row 2 -----------------------------------
   Binding Name = ObservationStatusBasic
-  Binding = value set
-  Reference = valueset-observationstatusbasic
+  Binding = code list
+  Reference = #observationstatusbasic
   Definition = A set of codes that describe the state of the observation
-  Conformance = preferred
+  Conformance = required
+
+=== Sheet observationstatusbasic =====================================
+
+ -- Row 1 -----------------------------------
+  System = http://hl7.org/fhir/observation-status
+  Code = final
+  Display = final
+
+ -- Row 2 -----------------------------------
+  System = http://hl7.org/fhir/observation-status
+  Code = entered-in-error
+  Display = entered-in-error
+
+ -- Row 3 -----------------------------------
+  System = http://hl7.org/fhir/observation-status
+  Code = unknown
+  Display = unknown
 
 === Sheet hspc-headcirc =====================================
 
  -- Row 1 -----------------------------------
   Element = Observation
   Profile Name = HSPC Head Occipital Frontal Circumference by Tape measure
-  Type = Resource
+  Type = {http://hl7.org/fhir/StructureDefinition/qicore-observation}
 
  -- Row 2 -----------------------------------
   Element = Observation.code

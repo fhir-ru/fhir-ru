@@ -1,6 +1,5 @@
 package org.hl7.fhir.definitions.generators.specification;
 
-import org.hl7.fhir.definitions.generators.specification.TableGenerator.RenderMode;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -208,7 +207,7 @@ public class TableGenerator extends BaseGenerator {
   }
 
   private void presentLogicalMapping(HierarchicalTableGenerator gen, Cell c, String logical, String prefix) {
-    String[] parts = logical.split(" ");
+    String[] parts = logical.replace("->", "\u2192").split(" ");
     boolean first = true;
     for (String p : parts) {
       if (first)

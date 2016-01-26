@@ -29,15 +29,12 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.hl7.fhir.definitions.Config;
-import org.hl7.fhir.definitions.model.Definitions;
-import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.tools.implementations.GeneratorUtils;
+import org.hl7.fhir.dstu21.model.ValueSet;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionComponent;
 import org.hl7.fhir.utilities.Utilities;
 
 /*
@@ -51,11 +48,11 @@ public class JavaValueSetFactoryGenerator extends JavaBaseGenerator {
 	}
 
 	public void generate(Date genDate, String version, ValueSet vs, String tns) throws Exception {		
-		write("package org.hl7.fhir.instance.model.valuesets;\r\n");
+		write("package org.hl7.fhir.dstu21.model.valuesets;\r\n");
 		write("\r\n/*\r\n"+Config.FULL_LICENSE_CODE+"*/\r\n\r\n");
 		write("// Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n\r\n");
     write("\r\n");
-    write("import org.hl7.fhir.instance.model.EnumFactory;\r\n");
+    write("import org.hl7.fhir.dstu21.model.EnumFactory;\r\n");
     write("\r\n");
 
     write("public class "+tns+"EnumFactory implements EnumFactory<"+tns+"> {\r\n");
@@ -86,6 +83,10 @@ public class JavaValueSetFactoryGenerator extends JavaBaseGenerator {
     write("  }\r\n"); 
     write("\r\n");
 
+    write("    public String toSystem("+tns+" code) {\r\n");
+    write("      return code.getSystem();\r\n");
+    write("      }\r\n"); 
+    
     write("\r\n");
 		write("}\r\n");
 		write("\r\n");

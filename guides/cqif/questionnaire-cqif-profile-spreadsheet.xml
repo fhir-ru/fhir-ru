@@ -10,7 +10,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Bryn</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2015-07-30T19:10:01Z</LastSaved>
+  <LastSaved>2015-12-07T22:06:29Z</LastSaved>
   <Version>15.00</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,11 +20,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8400</WindowHeight>
-  <WindowWidth>19170</WindowWidth>
+  <WindowHeight>13635</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>2</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -1054,7 +1054,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1084,9 +1083,9 @@
  <Worksheet ss:Name="CQIF-Questionnaire">
   <Names>
    <NamedRange ss:Name="_FilterDatabase"
-    ss:RefersTo="='CQIF-Questionnaire'!R1C1:R103C24" ss:Hidden="1"/>
+    ss:RefersTo="='CQIF-Questionnaire'!R1C1:R102C24" ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="24" ss:ExpandedRowCount="104" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="24" ss:ExpandedRowCount="103" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s84" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s84" ss:AutoFitWidth="0" ss:Width="165.75"/>
    <Column ss:StyleID="s85" ss:Width="67.5"/>
@@ -1208,7 +1207,7 @@
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Not published</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="150">
     <Cell ss:StyleID="s92"><Data ss:Type="String">CQIF-Questionnaire</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1239,18 +1238,18 @@
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s103"><Data ss:Type="String">content</Data><NamedCell
+   <Row ss:AutoFitHeight="0" ss:Height="60">
+    <Cell ss:StyleID="s103"><Data ss:Type="String">library</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">Questionnaire.extension</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s106"><Data ss:Type="String">content</Data><NamedCell
+    <Cell ss:StyleID="s106"><Data ss:Type="String">library</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s106"><Data ss:Type="String">Extension{http://hl7.org/fhir/StructureDefinition/cqif-basic-content}</Data><NamedCell
+    <Cell ss:StyleID="s106"><Data ss:Type="String">Extension{http://hl7.org/fhir/StructureDefinition/cqif-basic-library}</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1258,9 +1257,9 @@
     <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s106"><Data ss:Type="String">An attachment containing any logic referenced by the questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s106"><Data ss:Type="String">A library containing logic referenced by the questionnaire</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s108"><Data ss:Type="String">A CQL or ELM attachment containing any logic referenced by the questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s108"><Data ss:Type="String">A CQL or ELM library containing any logic referenced by the questionnaire</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s109"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s108"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1275,7 +1274,7 @@
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s104"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s105"><Data ss:Type="String">Questionnaire.group</Data><NamedCell
+    <Cell ss:StyleID="s105"><Data ss:Type="String">Questionnaire.item</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1298,19 +1297,19 @@
     <Cell ss:StyleID="s112"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s113"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="180">
     <Cell ss:StyleID="s103"><Data ss:Type="String">condition</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s105"><Data ss:Type="String">Questionnaire.group.extension</Data><NamedCell
+    <Cell ss:StyleID="s105"><Data ss:Type="String">Questionnaire.item.extension</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">condition</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s106"><Data ss:Type="String">Extension{http://hl7.org/fhir/StructureDefinition/cqif-basic-expression}</Data><NamedCell
+    <Cell ss:StyleID="s106"><Data ss:Type="String">Extension{http://hl7.org/fhir/StructureDefinition/cqif-basic-condition}</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1332,46 +1331,19 @@
     <Cell ss:StyleID="s111"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s113"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s104"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s104"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s105"><Data ss:Type="String">Questionnaire.group.question</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s107"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s108"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s109"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s108"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s109"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s110"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s111"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s111"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s112"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s113"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell ss:StyleID="s103"><Data ss:Type="String">initialValue</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s105"><Data ss:Type="String">Questionnaire.group.question.extension</Data><NamedCell
+    <Cell ss:StyleID="s105"><Data ss:Type="String">Questionnaire.item.extension</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">initialValue</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s106"><Data ss:Type="String">Extension{http://hl7.org/fhir/StructureDefinition/cqif-basic-expression}</Data><NamedCell
+    <Cell ss:StyleID="s106"><Data ss:Type="String">Extension{http://hl7.org/fhir/StructureDefinition/cqif-basic-initialValue}</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1392,19 +1364,19 @@
     <Cell ss:StyleID="s111"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s113"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell ss:StyleID="s103"><Data ss:Type="String">calculatedValue</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s114"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s105"><Data ss:Type="String">Questionnaire.group.question.extension</Data><NamedCell
+    <Cell ss:StyleID="s105"><Data ss:Type="String">Questionnaire.item.extension</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">calculatedValue</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s106"><Data ss:Type="String">Extension{http://hl7.org/fhir/StructureDefinition/cqif-basic-expression}</Data><NamedCell
+    <Cell ss:StyleID="s106"><Data ss:Type="String">Extension{http://hl7.org/fhir/StructureDefinition/cqif-basic-calculatedValue}</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3869,7 +3841,7 @@
     <Cell ss:StyleID="s111"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s113"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s116"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s116"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3895,7 +3867,7 @@
     <Cell ss:StyleID="s121"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s122"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0"/>
+   <Row ss:AutoFitHeight="0" ss:Height="15.75"/>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -3909,12 +3881,13 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>2</TopRowBottomPane>
    <SplitVertical>4</SplitVertical>
-   <LeftColumnRightPane>12</LeftColumnRightPane>
+   <LeftColumnRightPane>4</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -3926,17 +3899,18 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>15</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
-  <AutoFilter x:Range="R1C1:R103C24"
+  <AutoFilter x:Range="R1C1:R102C24"
    xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
  </Worksheet>

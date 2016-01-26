@@ -55,7 +55,8 @@
  -- Row 1 -----------------------------------
   Element = Observation
   Profile Name = HSPC Height
-  Type = Resource
+  Aliases = HSPC Body Length
+  Type = {http://hl7.org/fhir/StructureDefinition/qicore-observation}
 
  -- Row 2 -----------------------------------
   Element = Observation.code
@@ -76,65 +77,46 @@
   Binding = heightUOM
 
  -- Row 6 -----------------------------------
-  Element = Observation.interpretation
-  Binding = abnIntNumNom
-
- -- Row 7 -----------------------------------
   Element = Observation.issued
   Card. = 0..0
 
- -- Row 8 -----------------------------------
-  Element = Observation.status
-  Card. = 0..0
-
- -- Row 9 -----------------------------------
-  Element = !Observation.reliability
-  Card. = 0..0
-
- -- Row 10 -----------------------------------
+ -- Row 7 -----------------------------------
   Element = Observation.bodySite
   Card. = 0..0
 
- -- Row 11 -----------------------------------
+ -- Row 8 -----------------------------------
   Element = Observation.method
   Binding = HeightMeasMethodDevice
 
- -- Row 12 -----------------------------------
+ -- Row 9 -----------------------------------
   Element = Observation.specimen
   Card. = 0..0
 
- -- Row 13 -----------------------------------
+ -- Row 10 -----------------------------------
   Element = Observation.performer
   Profile Name = Performer
   Card. = 0..1
   Type = Reference(Practitioner){http://hl7.org/fhir/StructureDefinition/hspc-provpract}|Reference(Organization){http://hl7.org/fhir/StructureDefinition/hspc-organization}|Reference(Patient){http://hl7.org/fhir/StructureDefinition/hspc-patient}|Reference(RelatedPerson)
 
- -- Row 14 -----------------------------------
-  Element = Observation.extension
-  Profile Name = BodyPosition
-  Card. = 0..1
-  Type = Extension{http://hl7.org/fhir/StructureDefinition/observation-bodyPosition}
-  Binding = BodyPosition
-
- -- Row 15 -----------------------------------
+ -- Row 11 -----------------------------------
   Element = Observation.extension
   Profile Name = DeltaFlag
   Card. = 0..1
-  Type = Extension{http://hl7.org/fhir/StructureDefinition/observation-delta}
+  Type = Extension{http://hl7.org/fhir/StructureDefinition/hspc-extensionsdeltaFlag}
   Binding = hspc-DeltaFlag
 
- -- Row 16 -----------------------------------
+ -- Row 12 -----------------------------------
   Element = Observation.extension
   Profile Name = Data Origination Mode
   Card. = 0..1
-  Type = Extension{http://hl7.org/fhir/StructureDefinition/hspc-age#hspc-dataOriginationMode}
+  Type = Extension{http://hl7.org/fhir/StructureDefinition/hspc-extensionsdataOriginationMode}
   Binding = dataOriginationModeVS
 
- -- Row 17 -----------------------------------
+ -- Row 13 -----------------------------------
   Element = Observation.extension
   Profile Name = AssociatedPrecondition
   Card. = 0..*
-  Type = Extension{#hspc-associatedPrecondition}
+  Type = Extension{http://hl7.org/fhir/StructureDefinition/hspc-extensionsassociatedPrecondition}
   Binding = HeightMeasAssociatedPrecondition
 
 === Sheet Search =====================================

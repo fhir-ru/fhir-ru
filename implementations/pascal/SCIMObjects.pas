@@ -1,5 +1,34 @@
 unit SCIMObjects;
 
+
+{
+Copyright (c) 2001-2013, Health Intersections Pty Ltd (http://www.healthintersections.com.au)
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+ * Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+ * Neither the name of HL7 nor the names of its contributors may be used to
+   endorse or promote products derived from this software without specific
+   prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS' AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+}
+
 interface
 
 uses
@@ -137,6 +166,7 @@ Type
     FPhoneNums : TSCIMContactList;
     FIMs : TSCIMContactList;
     FAddresses : TSCIMAddressList;
+    FHash: string;
 
     function GetPassword: String;
     procedure SetPassword(const Value: String);
@@ -185,6 +215,7 @@ Type
     procedure check;
     procedure copyFrom(source : TSCIMUser);
 
+    property hash : string read FHash write FHash; // an internal property of the user that is never serialised
     Property password : String read GetPassword write SetPassword;
     Property username : String read GetUsername write SetUsername;
 
@@ -493,19 +524,17 @@ procedure TSCIMUser.copyFrom(source: TSCIMUser);
 var
   i : integer;
   n : string;
+  jn : TJsonNode;
 begin
   // copy from the source unless exists in the dest
-  for i := 0 to source.FJson.properties.Count - 1 do
-  begin
-    n := source.FJson.properties.KeyByIndex[i];
+  for n in source.FJson.properties.Keys do
     if not FJson.has(n) then
       FJson.properties.Add(n, source.FJson.properties[n].Link);
-  end;
 
   // now delete anything in the dest that is null
-  for i := FJson.properties.Count - 1 downto 0 do
-    if FJson.properties.ValueByIndex[i] is TJsonNull then
-      FJson.properties.DeleteByIndex(i);
+  for n in source.FJson.properties.Keys do
+    if FJson.properties[n] is TJsonNull then
+      FJson.properties.Remove(n);
 end;
 
 constructor TSCIMUser.Create(FJson: TJsonObject);
@@ -910,7 +939,7 @@ end;
 
 function TSCIMContact.GetPrimary: Boolean;
 begin
-  result := JsonStringToBool(FJson['primary'], false);
+  result := FJson.bool['primary'];
 end;
 
 function TSCIMContact.GetType: String;
@@ -925,10 +954,7 @@ end;
 
 procedure TSCIMContact.SetPrimary(const Value: Boolean);
 begin
-  if value then
-    FJson['primary'] := 'true'
-  else
-    FJson['primary'] := 'false';
+  FJson.bool['primary'] := value;
 end;
 
 procedure TSCIMContact.SetType(const Value: String);
@@ -992,7 +1018,7 @@ end;
 
 function TSCIMAddress.GetPrimary: Boolean;
 begin
-  result := StrToBoolDef(FJson['primary'], false);
+  result := FJson.bool['primary'];
 end;
 
 function TSCIMAddress.GetRegion: String;
@@ -1032,10 +1058,7 @@ end;
 
 procedure TSCIMAddress.SetPrimary(const Value: Boolean);
 begin
-  if value then
-    FJson['primary'] := 'true'
-  else
-    FJson['primary'] := 'false';
+  FJson.bool['primary'] := value;
 end;
 
 procedure TSCIMAddress.SetRegion(const Value: String);

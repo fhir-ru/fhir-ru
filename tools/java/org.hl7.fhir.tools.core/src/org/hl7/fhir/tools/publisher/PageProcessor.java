@@ -1,6 +1,5 @@
 package org.hl7.fhir.tools.publisher;
 
-import java.io.ByteArrayInputStream;
 /*
 Copyright (c) 2011+, HL7, Inc
 All rights reserved.
@@ -76,6 +75,7 @@ import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerat
 import org.hl7.fhir.definitions.generators.specification.ToolResourceUtilities;
 import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
 import org.hl7.fhir.definitions.model.Compartment;
 import org.hl7.fhir.definitions.model.ConstraintStructure;
 import org.hl7.fhir.definitions.model.DefinedCode;
@@ -101,68 +101,62 @@ import org.hl7.fhir.definitions.model.SearchParameterDefn.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.model.W5Entry;
 import org.hl7.fhir.definitions.model.WorkGroup;
-import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
 import org.hl7.fhir.definitions.parsers.BindingNameRegistry;
 import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.definitions.validation.ValueSetValidator;
-import org.hl7.fhir.instance.formats.FormatUtilities;
-import org.hl7.fhir.instance.formats.IParser;
-import org.hl7.fhir.instance.formats.IParser.OutputStyle;
-import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.formats.XmlParser;
-import org.hl7.fhir.instance.model.Bundle;
-import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
-import org.hl7.fhir.instance.model.Bundle.BundleType;
-import org.hl7.fhir.instance.model.CodeType;
-import org.hl7.fhir.instance.model.CodeableConcept;
-import org.hl7.fhir.instance.model.Coding;
-import org.hl7.fhir.instance.model.ConceptMap;
-import org.hl7.fhir.instance.model.ContactPoint.ContactPointSystem;
-import org.hl7.fhir.instance.model.ElementDefinition;
-import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionBindingComponent;
-import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionConstraintComponent;
-import org.hl7.fhir.instance.model.ElementDefinition.ElementDefinitionSlicingComponent;
-import org.hl7.fhir.instance.model.ElementDefinition.SlicingRules;
-import org.hl7.fhir.instance.model.ElementDefinition.TypeRefComponent;
-import org.hl7.fhir.instance.model.Enumerations.SearchParamType;
-import org.hl7.fhir.instance.model.ImplementationGuide.GuideResourcePurpose;
-import org.hl7.fhir.instance.model.ImplementationGuide.ImplementationGuidePackageComponent;
-import org.hl7.fhir.instance.model.ImplementationGuide.ImplementationGuidePackageResourceComponent;
-import org.hl7.fhir.instance.model.ImplementationGuide.ImplementationGuidePageComponent;
-import org.hl7.fhir.instance.model.NamingSystem;
-import org.hl7.fhir.instance.model.NamingSystem.NamingSystemIdentifierType;
-import org.hl7.fhir.instance.model.NamingSystem.NamingSystemUniqueIdComponent;
-import org.hl7.fhir.instance.model.OperationDefinition.OperationParameterUseEnumFactory;
-import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.instance.model.Quantity;
-import org.hl7.fhir.instance.model.Reference;
-import org.hl7.fhir.instance.model.Resource;
-import org.hl7.fhir.instance.model.SearchParameter;
-import org.hl7.fhir.instance.model.StringType;
-import org.hl7.fhir.instance.model.StructureDefinition;
-import org.hl7.fhir.instance.model.StructureDefinition.ExtensionContext;
-import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionMappingComponent;
-import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionSnapshotComponent;
-import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionKind;
-import org.hl7.fhir.instance.model.Type;
-import org.hl7.fhir.instance.model.UriType;
-import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
-import org.hl7.fhir.instance.model.OperationOutcome.IssueType;
-import org.hl7.fhir.instance.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
-import org.hl7.fhir.instance.terminologies.ValueSetExpansionCache;
-import org.hl7.fhir.instance.utils.NarrativeGenerator;
-import org.hl7.fhir.instance.utils.ProfileComparer;
-import org.hl7.fhir.instance.utils.ProfileComparer.ProfileComparison;
-import org.hl7.fhir.instance.utils.ProfileUtilities;
-import org.hl7.fhir.instance.utils.ProfileUtilities.ProfileKnowledgeProvider;
-import org.hl7.fhir.instance.utils.ResourceUtilities;
-import org.hl7.fhir.instance.utils.ToolingExtensions;
-import org.hl7.fhir.instance.utils.Translations;
-import org.hl7.fhir.instance.utils.client.FHIRToolingClient;
-import org.hl7.fhir.instance.validation.ValidationMessage;
-import org.hl7.fhir.instance.validation.ValidationMessage.Source;
+import org.hl7.fhir.dstu21.formats.FormatUtilities;
+import org.hl7.fhir.dstu21.formats.IParser;
+import org.hl7.fhir.dstu21.formats.JsonParser;
+import org.hl7.fhir.dstu21.formats.XmlParser;
+import org.hl7.fhir.dstu21.formats.IParser.OutputStyle;
+import org.hl7.fhir.dstu21.model.Bundle;
+import org.hl7.fhir.dstu21.model.CodeType;
+import org.hl7.fhir.dstu21.model.CodeableConcept;
+import org.hl7.fhir.dstu21.model.Coding;
+import org.hl7.fhir.dstu21.model.ConceptMap;
+import org.hl7.fhir.dstu21.model.ElementDefinition;
+import org.hl7.fhir.dstu21.model.NamingSystem;
+import org.hl7.fhir.dstu21.model.Quantity;
+import org.hl7.fhir.dstu21.model.Reference;
+import org.hl7.fhir.dstu21.model.Resource;
+import org.hl7.fhir.dstu21.model.SearchParameter;
+import org.hl7.fhir.dstu21.model.StringType;
+import org.hl7.fhir.dstu21.model.StructureDefinition;
+import org.hl7.fhir.dstu21.model.Type;
+import org.hl7.fhir.dstu21.model.UriType;
+import org.hl7.fhir.dstu21.model.ValueSet;
+import org.hl7.fhir.dstu21.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.dstu21.model.ContactPoint.ContactPointSystem;
+import org.hl7.fhir.dstu21.model.ElementDefinition.ElementDefinitionBindingComponent;
+import org.hl7.fhir.dstu21.model.ElementDefinition.ElementDefinitionConstraintComponent;
+import org.hl7.fhir.dstu21.model.ElementDefinition.ElementDefinitionSlicingComponent;
+import org.hl7.fhir.dstu21.model.ElementDefinition.SlicingRules;
+import org.hl7.fhir.dstu21.model.ElementDefinition.TypeRefComponent;
+import org.hl7.fhir.dstu21.model.Enumerations.SearchParamType;
+import org.hl7.fhir.dstu21.model.ImplementationGuide.GuideResourcePurpose;
+import org.hl7.fhir.dstu21.model.ImplementationGuide.ImplementationGuidePackageComponent;
+import org.hl7.fhir.dstu21.model.ImplementationGuide.ImplementationGuidePackageResourceComponent;
+import org.hl7.fhir.dstu21.model.ImplementationGuide.ImplementationGuidePageComponent;
+import org.hl7.fhir.dstu21.model.NamingSystem.NamingSystemIdentifierType;
+import org.hl7.fhir.dstu21.model.NamingSystem.NamingSystemUniqueIdComponent;
+import org.hl7.fhir.dstu21.model.OperationOutcome.IssueSeverity;
+import org.hl7.fhir.dstu21.model.OperationOutcome.IssueType;
+import org.hl7.fhir.dstu21.model.StructureDefinition.ExtensionContext;
+import org.hl7.fhir.dstu21.model.StructureDefinition.StructureDefinitionMappingComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.dstu21.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
+import org.hl7.fhir.dstu21.utils.NarrativeGenerator;
+import org.hl7.fhir.dstu21.utils.ProfileComparer;
+import org.hl7.fhir.dstu21.utils.ProfileUtilities;
+import org.hl7.fhir.dstu21.utils.ResourceUtilities;
+import org.hl7.fhir.dstu21.utils.ToolingExtensions;
+import org.hl7.fhir.dstu21.utils.Translations;
+import org.hl7.fhir.dstu21.utils.ProfileComparer.ProfileComparison;
+import org.hl7.fhir.dstu21.utils.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.dstu21.utils.client.FHIRToolingClient;
+import org.hl7.fhir.dstu21.validation.ValidationMessage;
+import org.hl7.fhir.dstu21.validation.ValidationMessage.Source;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
@@ -171,17 +165,14 @@ import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.HierarchicalTableGenerator;
-import org.hl7.fhir.utilities.xhtml.HierarchicalTableGenerator.Piece;
 import org.hl7.fhir.utilities.xhtml.HierarchicalTableGenerator.Row;
 import org.hl7.fhir.utilities.xhtml.HierarchicalTableGenerator.TableModel;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
-import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.xml.XhtmlGenerator;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 import com.github.rjeschke.txtmark.Processor;
 
@@ -216,8 +207,6 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return 0;
     }
   }
-
-  private static final String SIDEBAR_SPACER = "<p>&#xA0;</p>\r\n";
 
   private final List<String> suppressedMessages = new ArrayList<String>();
   private Definitions definitions;
@@ -267,6 +256,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     FHIRToolingClient client;
     try {
       client = new FHIRToolingClient(tsServer);
+      if (System.getenv().containsKey("http.proxyHost") && System.getenv().containsKey("http.proxyPort") )
+        client.configureProxy(System.getenv().get("http.proxyHost"), Integer.parseInt(System.getenv().get("http.proxyPort")));
     } catch(Exception e) {
       System.out.println("Warning @ PageProcessor client initialize: " + e.getLocalizedMessage());
       client = null;
@@ -274,15 +265,15 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     workerContext = new BuildWorkerContext(definitions, client, codeSystems, valueSets, conceptMaps, profiles);
   }
 
-//  public final static String DEF_TS_SERVER = "http://fhir-dev.healthintersections.com.au/open";
-  public final static String DEV_TS_SERVER = "http://local.healthintersections.com.au:960/open";
+  public final static String DEF_TS_SERVER = "http://fhir2.healthintersections.com.au/open";
+//  public final static String DEV_TS_SERVER = "http://local.healthintersections.com.au:960/open";
   
   public final static String WEB_PUB_NAME = "DSTU2";
   public final static String CI_PUB_NAME = "Текущая сборка";
   
   public final static String WEB_PUB_NOTICE =
       "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px;\">\r\n"+
-       " This is the Current officially released version of FHIR, which is <a href=\timelines.html\">DSTU 2</a>. <br/>For a full list of available versions, see the <a href=\"http://hl7.org/fhir/directory.html\">Directory of published versions</a>.\r\n"+
+       " This is the Current officially released version of FHIR, which is <a href=\"timelines.html\">DSTU 2</a>. <br/>For a full list of available versions, see the <a href=\"http://hl7.org/fhir/directory.html\">Directory of published versions</a>.\r\n"+
       "</p>\r\n";
   
   public final static String CI_PUB_NOTICE = 
@@ -290,7 +281,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
           "Это непрерывная интеграционная сборка FHIR (может быть некорректной время от времени). См. <a href=\"http://hl7.org/fhir/directory.html\">указатель опубликованных версий</a>\r\n"+
           "</p>\r\n";
 
-  public static final String CODE_LIMIT_EXPANSION = "1000";
+  public static final String CODE_LIMIT_EXPANSION = "10000";
   public static final String TOO_MANY_CODES_TEXT = "This value set has >1000 codes in it. In order to keep the publication size manageable, only a selection  (1000 codes) of the whole set of codes is shown";
   private static final String NO_CODESYSTEM_TEXT = "This value set refers to code systems that the FHIR Publication Tooling does not support";
 
@@ -627,7 +618,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       } else if (com[0].equals("search-link")) {
         src = s1+searchLink(s2)+s3;
       } else if (com[0].equals("search-footer")) {
-        src = s1+searchFooter(level, s2)+s3;
+        src = s1+searchFooter(level)+s3;
+      } else if (com[0].equals("search-header")) { 
+          src = s1+searchHeader(level)+s3;
       } else if (com[0].equals("profileheader")) {
         src = s1+profileHeader(((StructureDefinition) resource).getId().toLowerCase(), com[1], false)+s3;
       } else if (com.length != 1)
@@ -1101,7 +1094,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String genCompModel(StructureDefinition sd, String name, String base, String prefix) throws Exception {
     if (sd == null)
       return "<p style=\"color: maroon\">No "+name+" could be generated</p>\r\n";
-    return new XhtmlComposer().compose(new ProfileUtilities(workerContext).generateTable("??", sd, false, folders.dstDir, false, this, base, true, prefix)); 
+    return new XhtmlComposer().compose(new ProfileUtilities(workerContext, null, this).generateTable("??", sd, false, folders.dstDir, false, base, true, prefix)); 
   }
 
   private String genCmpMessages(ProfileComparison cmp) {
@@ -2065,7 +2058,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     return b.toString();
   }
 
-  private String mapOnThisPage(String mappings) {
+  public String mapOnThisPage(String mappings) {
     if (mappings == null) {
       List<ElementDefn> list = new ArrayList<ElementDefn>();
       list.addAll(definitions.getStructures().values());
@@ -2427,7 +2420,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     ResourceTableGenerator gen = new ResourceTableGenerator(folders.dstDir, this, res.getName()+"-definitions.html", false);
     return new XhtmlComposer().compose(gen.generate(e, prefix));
   }
-  
+    
   private String genResourceConstraints(ResourceDefn res) throws Exception {
     ElementDefn e = res.getRoot();
     Map<String, String> invs = new HashMap<String, String>();
@@ -2882,14 +2875,19 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     return b.toString();   
   }
 
-  private String lmHeader(String n, String title, String mode) throws Exception {
+  private String lmHeader(String n, String title, String mode, boolean hasXMlJson) throws Exception {
     StringBuilder b = new StringBuilder();
 
     b.append("<ul class=\"nav nav-tabs\">");
     
     b.append(makeHeaderTab("Content", n+".html", mode==null || "content".equals(mode)));
+    b.append(makeHeaderTab("Examples", n+"-examples.html", "examples".equals(mode)));
     b.append(makeHeaderTab("Detailed Descriptions", n+"-definitions.html", "definitions".equals(mode)));
     b.append(makeHeaderTab("Mappings", n+"-mappings.html", "mappings".equals(mode)));
+    if (hasXMlJson) {
+      b.append(makeHeaderTab("XML", n+".profile.xml.html", "xml".equals(mode)));
+      b.append(makeHeaderTab("JSON", n+".profile.json.html", "json".equals(mode)));
+    }
     b.append("</ul>\r\n");
 
     return b.toString();   
@@ -3616,7 +3614,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     if (!hasDynamicContent(vs))
       return "";
     try {
-      ValueSetExpansionOutcome result = workerContext.expandVS(vs);
+      ValueSetExpansionOutcome result = workerContext.expandVS(vs, true);
       if (result.getError() != null)
         return "<hr/>\r\n"+VS_INC_START+"<!--1-->"+processExpansionError(result.getError())+VS_INC_END;
       ValueSet exp = result.getValueset();
@@ -3684,7 +3682,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
   
   public ValueSet expandValueSet(ValueSet vs) throws Exception {
-    ValueSetExpansionOutcome result = workerContext.expandVS(vs);
+    ValueSetExpansionOutcome result = workerContext.expandVS(vs, true);
     if (result.getError() != null)
       return null;
     else
@@ -3841,7 +3839,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       } else if (com[0].equals("search-link")) {
         src = s1+searchLink(s2)+s3;
       } else if (com[0].equals("search-footer")) {
-        src = s1+searchFooter(level, s2)+s3;
+        src = s1+searchFooter(level)+s3;
+      } else if (com[0].equals("search-header")) { 
+          src = s1+searchHeader(level)+s3;
       } else if (com[0].equals("toc1")) {
         src = s1 + generateToc(com[1], 1) + s3;
       } else if (com[0].equals("toc2")) {
@@ -4058,11 +4058,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     return src;
   } 
 
-  private String searchFooter(int level, String s2) {
-    if (isForPublication())
-      return "<a style=\"color: #81BEF7\" href=\""+genlevel(level)+"search.cfm\">Search</a>";
-    else
-      return "<a style=\"color: #81BEF7\" href=\"http://hl7.org/fhir/search.cfm\">Search</a>";
+  private String searchFooter(int level) {
+    return "<a style=\"color: #81BEF7\" href=\"http://hl7.org/fhir/search.cfm\">Search</a>";
+  }
+
+  private String searchHeader(int level) {
+    return "<div id=\"hl7-nav\"><a id=\"hl7-logo\" no-external=\"true\" href=\"http://hl7.org/fhir/search.cfm\"><img alt=\"Search FHIR\" src=\"./assets/images/search.png\"/></a></div>";
   }
 
 
@@ -4223,7 +4224,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("aresheader"))
         src = s1+abstractResHeader(name, resource.getName(), com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("lmheader"))
-        src = s1+lmHeader(name, resource.getName(), com.length > 1 ? com[1] : null)+s3;
+        src = s1+lmHeader(name, resource.getName(), com.length > 1 ? com[1] : null, false)+s3;
       else if (com[0].equals("sidebar"))
         src = s1+generateSideBar(com.length > 1 ? com[1] : "")+s3;
       else if (com[0].equals("file"))
@@ -4349,7 +4350,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].startsWith("!"))
         src = s1 + s3;  
       else if (com[0].equals("search-footer")) 
-        src = s1+searchFooter(level, s2)+s3;
+        src = s1+searchFooter(level)+s3;
+      else if (com[0].equals("search-header")) 
+        src = s1+searchHeader(level)+s3;
       else if (com[0].equals("resurl")) {
         if (isAggregationEndpoint(resource.getName()))
           src = s1+s3;
@@ -4389,6 +4392,13 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String getDraftNote(ResourceDefn resource) {
     if ("draft".equals(resource.getStatus()))
       return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">This resource is <a href=\"timelines.html#levels\">marked as a draft</a>.</p>";
+    else
+      return "";
+  }
+
+  public String getDraftNote(StructureDefinition definition) {
+    if ("draft".equals(definition.getStatus().toCode()))
+      return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">This artefact is <a href=\"timelines.html#levels\">marked as a draft</a>.</p>";
     else
       return "";
   }
@@ -5100,7 +5110,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
 
   private void checkFormat(String filename, String res, ResourceDefn r) throws Exception {
     XhtmlNode doc = new XhtmlParser().parse("<div>"+res+"</div>", null).getFirstElement();
-    if (!doc.getFirstElement().getName().equals("div"))
+    if (doc.getFirstElement() == null || !doc.getFirstElement().getName().equals("div"))
       log("file \""+filename+"\": root element should be 'div'", LogMessageType.Error);
     else if (doc.getFirstElement() == null) {
       log("file \""+filename+"\": there is no 'Scope and Usage'", LogMessageType.Error);
@@ -5178,7 +5188,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     return true;
   }
 
-  private String loadXmlNotes(String name, String suffix, boolean checkHeaders, String definition, ResourceDefn resource, List<String> tabs, ImplementationGuideDefn ig) throws Exception {
+  public String loadXmlNotes(String name, String suffix, boolean checkHeaders, String definition, ResourceDefn resource, List<String> tabs, ImplementationGuideDefn ig) throws Exception {
     String filename;
     if (definitions.hasLogicalModel(name)) {
       LogicalModel lm = definitions.getLogicalModel(name);
@@ -5186,6 +5196,16 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     } else
       filename = folders.srcDir + name+File.separatorChar+name+"-"+suffix+".xml";
     return loadXmlNotesFromFile(filename, checkHeaders, definition, resource, tabs, ig);
+  }
+
+  private String loadXmlNotes(String name, String suffix, boolean checkHeaders, String definition, StructureDefinition sd, List<String> tabs, ImplementationGuideDefn ig) throws Exception {
+    String filename;
+    if (definitions.hasLogicalModel(name)) {
+      LogicalModel lm = definitions.getLogicalModel(name);
+      filename = Utilities.changeFileExt(lm.getSource(), "-"+suffix+".xml");
+    } else
+      filename = folders.srcDir + name+File.separatorChar+name+"-"+suffix+".xml";
+    return loadXmlNotesFromFile(filename, checkHeaders, definition, null, tabs, ig);
   }
 
   public String processProfileIncludes(String filename, String fileid, Profile pack, ConstraintStructure profile, String xml, String json, String tx, String src, String master, String path, String intro, String notes, ImplementationGuideDefn ig, boolean isDict) throws Exception {
@@ -5341,7 +5361,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("profile.notes"))
         src = s1 +genProfileDoco(pack, notes)+ s3;
       else if (com[0].equals("search-footer")) 
-        src = s1+searchFooter(level, s2)+s3;
+        src = s1+searchFooter(level)+s3;
+      else if (com[0].equals("search-header")) 
+        src = s1+searchHeader(level)+s3;
       else if (com[0].startsWith("!"))
         src = s1 + s3;  
       else if (com[0].equals("resurl")) {
@@ -5574,8 +5596,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   private String summariseValue(Type fixed) throws Exception {
-    if (fixed instanceof org.hl7.fhir.instance.model.PrimitiveType)
-      return ((org.hl7.fhir.instance.model.PrimitiveType) fixed).asStringValue();
+    if (fixed instanceof org.hl7.fhir.dstu21.model.PrimitiveType)
+      return ((org.hl7.fhir.dstu21.model.PrimitiveType) fixed).asStringValue();
     if (fixed instanceof CodeableConcept) 
       return summarise((CodeableConcept) fixed);
     if (fixed instanceof Quantity) 
@@ -5740,7 +5762,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("ext-name"))
         src = s1+Utilities.escapeXml(ed.getName())+s3;
       else if (com[0].equals("search-footer")) 
-        src = s1+searchFooter(level, s2)+s3;
+        src = s1+searchFooter(level)+s3;
+      else if (com[0].equals("search-header")) 
+        src = s1+searchHeader(level)+s3;
       else if (com[0].startsWith("!"))
         src = s1 + s3;  
       else 
@@ -5754,7 +5778,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   private String generateExtensionTable(StructureDefinition ed, String filename, String full, String prefix) throws Exception {
-    return new XhtmlComposer().compose(new ProfileUtilities(workerContext).generateExtensionTable(filename, ed, folders.dstDir, false, this, full.equals("true"), prefix));
+    return new XhtmlComposer().compose(new ProfileUtilities(workerContext, null, this).generateExtensionTable(filename, ed, folders.dstDir, false, full.equals("true"), prefix));
   }
 
 
@@ -5932,7 +5956,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       }
     } else {
       String[] parts = structure.getBase().split("#");
-      StructureDefinition profile = new ProfileUtilities(workerContext).getProfile(structure, parts[0]);
+      StructureDefinition profile = new ProfileUtilities(workerContext, null, null).getProfile(structure, parts[0]);
       if (profile != null) {
         if (parts.length == 2) {
           return "<a href=\""+prefix+profile.getUserData("filename")+"."+parts[1]+".html\">the structure "+parts[1]+"</a> in <a href=\""+profile.getUserData("filename")+".html\">the "+profile.getName()+" profile</a>";
@@ -5947,7 +5971,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String generateProfileStructureTable(ConstraintStructure profile, boolean diff, String filename, String baseName, String prefix) throws Exception {
     String fn = filename.contains(".") ? filename.substring(0, filename.indexOf('.')) : filename;
     String deffile = fn+"-definitions.html";
-    return new XhtmlComposer().compose(new ProfileUtilities(workerContext).generateTable(deffile, profile.getResource(), diff, folders.dstDir, false, this, baseName, !diff, prefix));
+    return new XhtmlComposer().compose(new ProfileUtilities(workerContext, null, this).generateTable(deffile, profile.getResource(), diff, folders.dstDir, false, baseName, !diff, prefix));
   }
 
   private boolean isAggregationEndpoint(String name) {
@@ -6012,6 +6036,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
 
   public void setDefinitions(Definitions definitions) {
     this.definitions = definitions;
+    workerContext.setDefinitions(definitions);
     breadCrumbManager.setDefinitions(definitions);
     vsValidator = new ValueSetValidator(workerContext, definitions.getVsFixups(), definitions.getStyleExemptions());
   }
@@ -6230,7 +6255,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   @Override
-  public String getLinkFor(String type) throws Exception {
+  public String getLinkFor(String type) {
     if (definitions.hasResource(type) || definitions.getBaseResources().containsKey(type)) 
       return type.toLowerCase()+".html";
     else if (definitions.hasType(type))
@@ -6270,7 +6295,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       } 
       if (Utilities.noString(url)) {
         String[] paths = parts[0].split("\\.");
-        StructureDefinition p = new ProfileUtilities(workerContext).getProfile(null, paths[0]);
+        StructureDefinition p = new ProfileUtilities(workerContext, null, null).getProfile(null, paths[0]);
         if (p != null) {
           String suffix = (paths.length > 1) ? "-definitions.html#"+parts[0] : ".html";
           if (p.getUserData("filename") == null)
@@ -6392,14 +6417,14 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   @Override
-  public String getLinkForProfile(StructureDefinition profile, String url) throws Exception {
+  public String getLinkForProfile(StructureDefinition profile, String url) {
     String fn;
     if (url.equals("http://hl7.org/fhir/markdown"))  // magic
       return "narrative.html#markdown|markdown";
       
     if (!url.startsWith("#")) {
       String[] path = url.split("#");
-      profile = new ProfileUtilities(workerContext).getProfile(null, path[0]);
+      profile = new ProfileUtilities(workerContext, null, null).getProfile(null, path[0]);
 //      if (profile == null && url.startsWith("StructureDefinition/"))
 //        return "hspc-"+url.substring(8)+".html|"+url.substring(8);
     }
@@ -6551,7 +6576,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("package-content"))
         src = s1 + getPackageContent(pack, genlevel(level)) + s3;  
       else if (com[0].equals("search-footer")) 
-        src = s1+searchFooter(level, s2)+s3;
+        src = s1+searchFooter(level)+s3;
+      else if (com[0].equals("search-header")) 
+        src = s1+searchHeader(level)+s3;
       else if (com[0].equals("package.search"))
         src = s1+getSearch(pack)+s3;
       else if (com[0].startsWith("!"))
@@ -6754,7 +6781,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
 
   public String expandVS(ValueSet vs, String prefix, String base) {
     try {
-      ValueSetExpansionOutcome result = workerContext.expandVS(vs);
+      ValueSetExpansionOutcome result = workerContext.expandVS(vs, true);
       if (result.getError() != null)
         return "<hr/>\r\n"+VS_INC_START+"<!--3-->"+processExpansionError(result.getError())+VS_INC_END;
 
@@ -6817,7 +6844,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     ResourceDefn rd = definitions.getResourceByName(resourceName);
     if (rd == null)
       throw new Exception("unable to find resource '"+resourceName+"'");
-    return " <a href=\"resource.html#maturity\" style=\"color: maroon; hover: maroon; visited; maroon; opacity: 0.7\" title=\"Maturity Level\">"+rd.getFmmLevel()+"</a>";
+    return "&nbsp;<a href=\"resource.html#maturity\" style=\"color: maroon; hover: maroon; visited; maroon; opacity: 0.7\" title=\"Maturity Level\">"+rd.getFmmLevel()+"</a>";
   }
   
   private String getXcm(String param) {
@@ -6978,7 +7005,6 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
 
   public void setForPublication(boolean forPublication) {
     this.forPublication = forPublication;
-  }
-  
+  }  
 
 }

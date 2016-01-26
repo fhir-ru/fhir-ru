@@ -65,6 +65,7 @@ import org.hl7.fhir.definitions.model.Dictionary;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.Example;
+import org.hl7.fhir.definitions.model.Example.ExampleType;
 import org.hl7.fhir.definitions.model.ImplementationGuideDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.MappingSpace;
@@ -76,24 +77,23 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.model.W5Entry;
 import org.hl7.fhir.definitions.model.WorkGroup;
-import org.hl7.fhir.definitions.model.Example.ExampleType;
 import org.hl7.fhir.definitions.parsers.converters.BindingConverter;
 import org.hl7.fhir.definitions.parsers.converters.CompositeTypeConverter;
 import org.hl7.fhir.definitions.parsers.converters.ConstrainedTypeConverter;
 import org.hl7.fhir.definitions.parsers.converters.EventConverter;
 import org.hl7.fhir.definitions.parsers.converters.PrimitiveConverter;
-import org.hl7.fhir.instance.formats.FormatUtilities;
-import org.hl7.fhir.instance.formats.XmlParser;
-import org.hl7.fhir.instance.model.Bundle;
-import org.hl7.fhir.instance.model.Bundle.BundleEntryComponent;
-import org.hl7.fhir.instance.model.Bundle.BundleType;
-import org.hl7.fhir.instance.model.Composition;
-import org.hl7.fhir.instance.model.Resource;
-import org.hl7.fhir.instance.model.StringType;
-import org.hl7.fhir.instance.model.StructureDefinition;
-import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionKind;
-import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.validation.ValidationMessage;
+import org.hl7.fhir.definitions.validation.FHIRPathUsage;
+import org.hl7.fhir.dstu21.formats.FormatUtilities;
+import org.hl7.fhir.dstu21.formats.XmlParser;
+import org.hl7.fhir.dstu21.model.Bundle;
+import org.hl7.fhir.dstu21.model.Composition;
+import org.hl7.fhir.dstu21.model.Resource;
+import org.hl7.fhir.dstu21.model.StringType;
+import org.hl7.fhir.dstu21.model.StructureDefinition;
+import org.hl7.fhir.dstu21.model.ValueSet;
+import org.hl7.fhir.dstu21.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.dstu21.model.Bundle.BundleType;
+import org.hl7.fhir.dstu21.validation.ValidationMessage;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.CSFile;
@@ -140,8 +140,9 @@ public class SourceParser {
   private final PageProcessor page;
   private final Set<String> igNames = new HashSet<String>();
   private boolean forPublication;
+  private List<FHIRPathUsage> fpUsages;
 
-  public SourceParser(Logger logger, String root, Definitions definitions, boolean forPublication, String version, BuildWorkerContext context, Calendar genDate, Map<String, StructureDefinition> extensionDefinitions, PageProcessor page) {
+  public SourceParser(Logger logger, String root, Definitions definitions, boolean forPublication, String version, BuildWorkerContext context, Calendar genDate, Map<String, StructureDefinition> extensionDefinitions, PageProcessor page, List<FHIRPathUsage> fpUsages) {
     this.logger = logger;
     this.forPublication = forPublication;
     this.registry = new BindingNameRegistry(root, forPublication);
@@ -150,6 +151,7 @@ public class SourceParser {
     this.context = context;
     this.genDate = genDate;
     this.page = page;
+    this.fpUsages = fpUsages;
 
     char sl = File.separatorChar;
     srcDir = root + sl + "source" + sl;
@@ -425,7 +427,7 @@ public class SourceParser {
     if (root.getNodeName().equals("igs")) {
       Element ig = XMLUtil.getFirstChild(root);
       while (ig != null) {
-        if (ig.getNodeName().equals("ig") && (!ig.hasAttribute("local") || isOkLocally(ig.getAttribute("code")))) {
+        if (ig.getNodeName().equals("ig") && (!ig.hasAttribute("local") || isOkLocally(ig.getAttribute("code"))) && !isRuledOutLocally(ig.getAttribute("code"))) {
           ImplementationGuideDefn igg = new ImplementationGuideDefn(ig.getAttribute("committee"), ig.getAttribute("code"), ig.getAttribute("name"), ig.getAttribute("brief"), 
               ig.getAttribute("source").replace('\\', File.separatorChar), "1".equals(ig.getAttribute("review")),
               ig.getAttribute("ballot"), ig.getAttribute("fmm"), ig.getAttribute("section"), "yes".equals(ig.getAttribute("core")), page.getValidationErrors());
@@ -437,6 +439,14 @@ public class SourceParser {
     }
   }
 
+  private boolean isRuledOutLocally(String code) {
+    String inifile = Utilities.path(rootDir, "local.ini");
+    if (!new File(inifile).exists())
+      return false;
+    IniFile ini = new IniFile(inifile);
+    boolean ok = "false".equals(ini.getStringProperty("igs", code));
+    return ok;
+  }
 
   private boolean isOkLocally(String code) {
     if (forPublication)
@@ -449,7 +459,6 @@ public class SourceParser {
     return ok;
   }
 
-
   private void loadTypePages() {
     String[] tps = ini.getPropertyNames("type-pages");
     for (String tp : tps) {
@@ -457,7 +466,6 @@ public class SourceParser {
       definitions.getTypePages().put(tp, s);
     }        
   }
-
 
   private void loadW5s() {
     if (new File(Utilities.path(srcDir, "w5.ini")).exists()) {
@@ -596,7 +604,7 @@ public class SourceParser {
     String[] v = ini.getStringProperty("profiles", n).split("\\:");
     File spreadsheet = new CSFile(rootDir+v[1]);
     if (TextFile.fileToString(spreadsheet.getAbsolutePath()).contains("urn:schemas-microsoft-com:office:spreadsheet")) {
-      SpreadsheetParser sparser = new SpreadsheetParser(n, new CSFileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, false, extensionDefinitions, page, false, ini, v[0], definitions.getProfileIds());
+      SpreadsheetParser sparser = new SpreadsheetParser(n, new CSFileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, false, extensionDefinitions, page, false, ini, v[0], definitions.getProfileIds(), fpUsages);
       try {
         Profile pack = new Profile(usage);
         pack.setTitle(n);
@@ -655,7 +663,7 @@ public class SourceParser {
 
   private void loadConformancePackage(Profile ap, String committee, List<ValidationMessage> issues) throws FileNotFoundException, IOException, Exception {
     if (ap.getSourceType() == ConformancePackageSourceType.Spreadsheet) {
-      SpreadsheetParser sparser = new SpreadsheetParser(ap.getCategory(), new CSFileInputStream(ap.getSource()), Utilities.noString(ap.getId()) ? ap.getSource() : ap.getId(), definitions, srcDir, logger, registry, version, context, genDate, false, extensionDefinitions, page, false, ini, committee, definitions.getProfileIds());
+      SpreadsheetParser sparser = new SpreadsheetParser(ap.getCategory(), new CSFileInputStream(ap.getSource()), Utilities.noString(ap.getId()) ? ap.getSource() : ap.getId(), definitions, srcDir, logger, registry, version, context, genDate, false, extensionDefinitions, page, false, ini, committee, definitions.getProfileIds(), fpUsages);
       sparser.setFolder(Utilities.getDirectoryForFile(ap.getSource()));
       sparser.parseConformancePackage(ap, definitions, Utilities.getDirectoryForFile(ap.getSource()), ap.getCategory(), issues);
     } else // if (ap.getSourceType() == ConformancePackageSourceType.Bundle) {
@@ -702,6 +710,7 @@ public class SourceParser {
     prim.setDefinition(sheet.getColumn(row, "Definition"));
     prim.setComment(sheet.getColumn(row, "Comments"));
     prim.setSchemaType(sheet.getColumn(row, "Schema"));
+    prim.setJsonType(sheet.getColumn(row, "Json"));
     prim.setRegEx(sheet.getColumn(row, "RegEx"));
     prim.setV2(sheet.getColumn(row, "v2"));
     prim.setV3(sheet.getColumn(row, "v3"));
@@ -718,6 +727,7 @@ public class SourceParser {
     prim.setComment(sheet.getColumn(row, "Comments"));
     prim.setRegex(sheet.getColumn(row, "RegEx"));
     prim.setSchema(sheet.getColumn(row, "Schema"));
+    prim.setJsonType(sheet.getColumn(row, "Json"));
     prim.setBase(sheet.getColumn(row, "Base"));
     TypeRef td = new TypeRef();
     td.setName(prim.getCode());
@@ -728,7 +738,7 @@ public class SourceParser {
   private void genTypeProfile(org.hl7.fhir.definitions.model.TypeDefn t) throws Exception {
     StructureDefinition profile;
     try {
-      profile = new ProfileGenerator(definitions, context, page, genDate, version, null).generate(t);
+      profile = new ProfileGenerator(definitions, context, page, genDate, version, null, fpUsages).generate(t);
       t.setProfile(profile);
       DataTypeTableGenerator dtg = new DataTypeTableGenerator(dstDir, page, t.getName(), true);
       t.getProfile().getText().setDiv(new XhtmlNode(NodeType.Element, "div"));
@@ -751,7 +761,7 @@ public class SourceParser {
       TypeRef t = ts.get(0);
       File csv = new CSFile(dtDir + t.getName().toLowerCase() + ".xml");
       if (csv.exists()) {
-        SpreadsheetParser p = new SpreadsheetParser("core", new CSFileInputStream(csv), csv.getName(), definitions, srcDir, logger, registry, version, context, genDate, false, extensionDefinitions, page, true, ini, "fhir", definitions.getProfileIds());
+        SpreadsheetParser p = new SpreadsheetParser("core", new CSFileInputStream(csv), csv.getName(), definitions, srcDir, logger, registry, version, context, genDate, false, extensionDefinitions, page, true, ini, "fhir", definitions.getProfileIds(), fpUsages);
         org.hl7.fhir.definitions.model.TypeDefn el = p.parseCompositeType();
         map.put(t.getName(), el);
         el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
@@ -774,6 +784,7 @@ public class SourceParser {
             inv.setEnglish(sheet.getColumn(i,"Rules"));
             inv.setOcl(sheet.getColumn(i, "OCL"));
             inv.setXpath(sheet.getColumn(i, "XPath"));
+            inv.setExpression(sheet.getColumn(i, "Expression"));
             inv.setTurtle(sheet.getColumn(i, "RDF"));
             ProfiledType pt = new ProfiledType();
             pt.setDefinition(sheet.getColumn(i, "Definition"));
@@ -811,7 +822,7 @@ public class SourceParser {
       throw new Exception("No Workgroup found for resource "+n+": '"+ini.getStringProperty("workgroups", n)+"'");
     
     SpreadsheetParser sparser = new SpreadsheetParser("core", new CSFileInputStream(
-        spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, isAbstract, extensionDefinitions, page, false, ini, wg.getCode(), definitions.getProfileIds());
+        spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, isAbstract, extensionDefinitions, page, false, ini, wg.getCode(), definitions.getProfileIds(), fpUsages);
     ResourceDefn root;
     try {
       root = sparser.parseResource();
@@ -819,6 +830,7 @@ public class SourceParser {
       throw new Exception("Error Parsing Resource "+n+": "+e.getMessage(), e);
     }
     root.setWg(wg);
+    root.setFmmLevel(ini.getStringProperty("fmm", n.toLowerCase()));
 
     for (EventDefn e : sparser.getEvents())
       processEvent(e, root.getRoot());

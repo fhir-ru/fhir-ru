@@ -73,6 +73,7 @@
   Context = Patient.address.postalCode
   English = (Zip or Postal Code) SHALL be formatted as 99999[-9999] for US Zip or ZIP +4 codes or as A9A9A9 for Canadian postal codes.
   XPath = f:matches(issued,[0-9]{5}(-[0-9]{4}){0,1} )
+  Expression = postalCode:matches(\"[0-9]{5}(-[0-9]{4}){0,1}\")
   Severity = error
 
 === Sheet USLab-Patient =====================================
@@ -89,7 +90,7 @@
  -- Row 2 -----------------------------------
   Element = Patient.extension
   Profile Name = race
-  Card. = 0..*
+  Card. = 0..1
   Must Support = Y
   Type = Extension{http://hl7.org/fhir/StructureDefinition/us-core-race}
   Binding = DAFRace
@@ -515,6 +516,7 @@
   Context = Patient.address.postalCode
   English = (Zip or Postal Code) SHALL be formatted as 99999[-9999] for US Zip or ZIP +4 codes or as A9A9A9 for Canadian postal codes.
   XPath = f:matches(issued,[0-9]{5}(-[0-9]{4}){0,1} )
+  Expression = postalCode:matches(\"[0-9]{5}(-[0-9]{4}){0,1}\")
   Severity = error
 
  -- Row 2 -----------------------------------
@@ -522,6 +524,7 @@
   Context = Patient.contact.address.postalCode
   English = (Zip or Postal Code) SHALL be formatted as 99999[-9999] for US Zip or ZIP +4 codes or as A9A9A9 for Canadian postal codes.
   XPath = f:matches(issued,[0-9]{5}(-[0-9]{4}){0,1} )
+  Expression = postalCode:matches(\"[0-9]{5}(-[0-9]{4}){0,1}\")
   Severity = error
 
 === Sheet USLab-PHPatient =====================================
@@ -538,7 +541,7 @@
  -- Row 2 -----------------------------------
   Element = Patient.extension
   Profile Name = DAFRace
-  Card. = 0..*
+  Card. = 0..1
   Must Support = Y
   Type = Extension{http://hl7.org/fhir/StructureDefinition/us-core-race}
   Binding = DAFRace

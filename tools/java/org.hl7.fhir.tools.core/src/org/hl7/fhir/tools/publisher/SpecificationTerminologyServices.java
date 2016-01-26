@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -23,31 +21,25 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.hl7.fhir.instance.formats.IParser.OutputStyle;
-import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.model.Bundle;
-import org.hl7.fhir.instance.model.CodeableConcept;
-import org.hl7.fhir.instance.model.OperationOutcome;
-import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.instance.model.OperationOutcome.IssueType;
-import org.hl7.fhir.instance.model.OperationOutcome.OperationOutcomeIssueComponent;
-import org.hl7.fhir.instance.model.Resource;
-import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionDesignationComponent;
-import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetComposeComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetExpansionComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetExpansionContainsComponent;
-import org.hl7.fhir.instance.terminologies.ValueSetExpansionCache;
-import org.hl7.fhir.instance.utils.EOperationOutcome;
-import org.hl7.fhir.instance.utils.IWorkerContext.ValidationResult;
-import org.hl7.fhir.instance.utils.client.EFhirClientException;
-import org.hl7.fhir.instance.utils.client.FHIRToolingClient;
-import org.hl7.fhir.instance.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
+import org.hl7.fhir.dstu21.formats.JsonParser;
+import org.hl7.fhir.dstu21.formats.IParser.OutputStyle;
+import org.hl7.fhir.dstu21.model.OperationOutcome;
+import org.hl7.fhir.dstu21.model.Resource;
+import org.hl7.fhir.dstu21.model.ValueSet;
+import org.hl7.fhir.dstu21.model.OperationOutcome.IssueSeverity;
+import org.hl7.fhir.dstu21.model.OperationOutcome.IssueType;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionDesignationComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ValueSetComposeComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ValueSetExpansionComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ValueSetExpansionContainsComponent;
+import org.hl7.fhir.dstu21.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
+import org.hl7.fhir.dstu21.utils.IWorkerContext.ValidationResult;
+import org.hl7.fhir.dstu21.utils.client.EFhirClientException;
+import org.hl7.fhir.dstu21.utils.client.FHIRToolingClient;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
-import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.xml.XMLWriter;
@@ -151,8 +143,8 @@ public class SpecificationTerminologyServices {
       triedServer = true;
       serverOk = false;
       HttpClient httpclient = new DefaultHttpClient();
-      // HttpGet httpget = new HttpGet("http://fhir.healthintersections.com.au/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20"));
-      HttpGet httpget = new HttpGet("http://localhost:960/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20")); // don't like the url encoded this way
+       HttpGet httpget = new HttpGet("http://fhir.healthintersections.com.au/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20"));
+//      HttpGet httpget = new HttpGet("http://localhost:960/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20")); // don't like the url encoded this way
       HttpResponse response = httpclient.execute(httpget);
       HttpEntity entity = response.getEntity();
       InputStream instream = entity.getContent();
@@ -415,6 +407,8 @@ public class SpecificationTerminologyServices {
         // for this, we use the FHIR client
         if (client == null) {
           client = new FHIRToolingClient(tsServer);
+          if (System.getenv().containsKey("http.proxyHost") && System.getenv().containsKey("http.proxyPort") )
+            client.configureProxy(System.getenv().get("http.proxyHost"), Integer.parseInt(System.getenv().get("http.proxyPort")));
         }
         Map<String, String> params = new HashMap<String, String>();
         params.put("_limit", PageProcessor.CODE_LIMIT_EXPANSION);

@@ -7,12 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,53 +23,58 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.hl7.fhir.definitions.model.Definitions;
-import org.hl7.fhir.instance.formats.IParser;
-import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.formats.ParserType;
-import org.hl7.fhir.instance.formats.XmlParser;
-import org.hl7.fhir.instance.formats.IParser.OutputStyle;
-import org.hl7.fhir.instance.model.Bundle;
-import org.hl7.fhir.instance.model.ConceptMap;
-import org.hl7.fhir.instance.model.Conformance;
-import org.hl7.fhir.instance.model.DataElement;
-import org.hl7.fhir.instance.model.ElementDefinition.TypeRefComponent;
-import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.instance.model.OperationOutcome.IssueType;
-import org.hl7.fhir.instance.model.OperationOutcome;
-import org.hl7.fhir.instance.model.Parameters;
-import org.hl7.fhir.instance.model.Parameters.ParametersParameterComponent;
-import org.hl7.fhir.instance.model.Questionnaire;
-import org.hl7.fhir.instance.model.Reference;
-import org.hl7.fhir.instance.model.Resource;
-import org.hl7.fhir.instance.model.SearchParameter;
-import org.hl7.fhir.instance.model.StringType;
-import org.hl7.fhir.instance.model.StructureDefinition;
-import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionDesignationComponent;
-import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetComposeComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetExpansionComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetExpansionContainsComponent;
-import org.hl7.fhir.instance.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
-import org.hl7.fhir.instance.terminologies.ValueSetExpanderSimple;
-import org.hl7.fhir.instance.terminologies.ValueSetExpansionCache;
-import org.hl7.fhir.instance.utils.EOperationOutcome;
-import org.hl7.fhir.instance.utils.INarrativeGenerator;
-import org.hl7.fhir.instance.utils.IWorkerContext;
-import org.hl7.fhir.instance.utils.NarrativeGenerator;
-import org.hl7.fhir.instance.utils.IWorkerContext.ValidationResult;
-import org.hl7.fhir.instance.utils.client.EFhirClientException;
-import org.hl7.fhir.instance.utils.client.FHIRToolingClient;
-import org.hl7.fhir.instance.validation.IResourceValidator;
-import org.hl7.fhir.instance.validation.InstanceValidator;
+import org.hl7.fhir.dstu21.formats.IParser;
+import org.hl7.fhir.dstu21.formats.JsonParser;
+import org.hl7.fhir.dstu21.formats.ParserType;
+import org.hl7.fhir.dstu21.formats.XmlParser;
+import org.hl7.fhir.dstu21.formats.IParser.OutputStyle;
+import org.hl7.fhir.dstu21.model.ConceptMap;
+import org.hl7.fhir.dstu21.model.DataElement;
+import org.hl7.fhir.dstu21.model.OperationOutcome;
+import org.hl7.fhir.dstu21.model.Parameters;
+import org.hl7.fhir.dstu21.model.Questionnaire;
+import org.hl7.fhir.dstu21.model.Reference;
+import org.hl7.fhir.dstu21.model.Resource;
+import org.hl7.fhir.dstu21.model.SearchParameter;
+import org.hl7.fhir.dstu21.model.StringType;
+import org.hl7.fhir.dstu21.model.StructureDefinition;
+import org.hl7.fhir.dstu21.model.ValueSet;
+import org.hl7.fhir.dstu21.model.ElementDefinition.TypeRefComponent;
+import org.hl7.fhir.dstu21.model.OperationOutcome.IssueSeverity;
+import org.hl7.fhir.dstu21.model.OperationOutcome.IssueType;
+import org.hl7.fhir.dstu21.model.Parameters.ParametersParameterComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionDesignationComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ValueSetComposeComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ValueSetExpansionComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ValueSetExpansionContainsComponent;
+import org.hl7.fhir.dstu21.terminologies.ValueSetExpansionCache;
+import org.hl7.fhir.dstu21.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
+import org.hl7.fhir.dstu21.utils.BaseWorkerContext;
+import org.hl7.fhir.dstu21.utils.EOperationOutcome;
+import org.hl7.fhir.dstu21.utils.INarrativeGenerator;
+import org.hl7.fhir.dstu21.utils.IWorkerContext;
+import org.hl7.fhir.dstu21.utils.NarrativeGenerator;
+import org.hl7.fhir.dstu21.utils.client.EFhirClientException;
+import org.hl7.fhir.dstu21.utils.client.FHIRToolingClient;
+import org.hl7.fhir.dstu21.validation.IResourceValidator;
+import org.hl7.fhir.dstu21.validation.InstanceValidator;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
+import org.hl7.fhir.utilities.TextFile;
+import org.hl7.fhir.utilities.TextStreamWriter;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.xml.XMLWriter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.stream.JsonWriter;
 
 /*
  *  private static Map<String, StructureDefinition> loadProfiles() throws Exception {
@@ -94,13 +96,12 @@ import org.w3c.dom.Element;
  - list of resource names
 
  */
-public class BuildWorkerContext implements IWorkerContext {
+public class BuildWorkerContext extends BaseWorkerContext implements IWorkerContext {
 
-  private FHIRToolingClient client;
-  private Map<String, ValueSet> codeSystems = new HashMap<String, ValueSet>();
+//  private Map<String, ValueSet> codeSystems = new HashMap<String, ValueSet>();
+//  private Map<String, ValueSet> valueSets = new HashMap<String, ValueSet>();
+//  private Map<String, ConceptMap> maps = new HashMap<String, ConceptMap>();
   private Map<String, DataElement> dataElements = new HashMap<String, DataElement>();
-  private Map<String, ValueSet> valueSets = new HashMap<String, ValueSet>();
-  private Map<String, ConceptMap> maps = new HashMap<String, ConceptMap>();
   private Map<String, StructureDefinition> profiles = new HashMap<String, StructureDefinition>();
   private Map<String, SearchParameter> searchParameters = new HashMap<String, SearchParameter>();
   private Map<String, StructureDefinition> extensionDefinitions = new HashMap<String, StructureDefinition>();
@@ -114,26 +115,27 @@ public class BuildWorkerContext implements IWorkerContext {
   private boolean serverOk = false;
   private String cache;
   private String tsServer;
-  private ValueSetExpansionCache expansionCache;
+  private String validationCachePath;
   
 
 
   public BuildWorkerContext(Definitions definitions, FHIRToolingClient client, Map<String, ValueSet> codeSystems, Map<String, ValueSet> valueSets, Map<String, ConceptMap> maps, Map<String, StructureDefinition> profiles) {
     super();
     this.definitions = definitions;
-    this.client = client;
+    this.txServer = client;
     this.codeSystems = codeSystems;
     this.valueSets = valueSets;
     this.maps = maps;
     this.profiles = profiles;
+    this.cacheValidation = true;
   }
 
   public boolean hasClient() {
-    return client != null;
+    return txServer != null;
   }
 
   public FHIRToolingClient getClient() {
-    return client;
+    return txServer;
   }
 
   public Map<String, ValueSet> getCodeSystems() {
@@ -277,7 +279,7 @@ public class BuildWorkerContext implements IWorkerContext {
 
   @SuppressWarnings("unchecked")
   @Override
-  public <T extends Resource> T fetchResource(Class<T> class_, String uri) throws EOperationOutcome, Exception {
+  public <T extends Resource> T fetchResource(Class<T> class_, String uri) {
     if (class_ == StructureDefinition.class && !uri.contains("/"))
       uri = "http://hl7.org/fhir/StructureDefinition/"+uri;
     
@@ -304,6 +306,8 @@ public class BuildWorkerContext implements IWorkerContext {
       return null;      
     }
       
+    if (class_ == Questionnaire.class)
+      return null;
     throw new Error("not done yet");
   }
 
@@ -322,8 +326,8 @@ public class BuildWorkerContext implements IWorkerContext {
   }
 
   @Override
-  public IResourceValidator newValidator() throws Exception {
-    return new InstanceValidator(this, null);
+  public IResourceValidator newValidator() {
+    return new InstanceValidator(this);
   }
 
   @Override
@@ -336,20 +340,34 @@ public class BuildWorkerContext implements IWorkerContext {
   }
 
   @Override
-  public ValueSet fetchCodeSystem(String system) {
-    return codeSystems.get(system);
+  public boolean supportsSystem(String system) {
+    return "http://snomed.info/sct".equals(system) || "http://loinc.org".equals(system) || super.supportsSystem(system) ;
   }
-
+  
   @Override
-  public ValidationResult validateCode(String system, String code, String display, ValueSet vs) {
-    throw new Error("not done yet");
+  public ValueSetExpansionOutcome expandVS(ValueSet vs, boolean cacheOk) {
+    try {
+      if (vs.hasExpansion()) {
+        return new ValueSetExpansionOutcome(vs.copy());
+      }
+      String cacheFn = Utilities.path(cache, determineCacheId(vs)+".json");
+      if (new File(cacheFn).exists())
+        return loadFromCache(vs.copy(), cacheFn);
+      if (cacheOk && vs.hasUrl()) {
+        ValueSetExpansionOutcome vse = expansionCache.getExpander().expand(vs);
+        if (vse.getValueset() != null) {
+          FileOutputStream s = new FileOutputStream(cacheFn);
+          newJsonParser().compose(new FileOutputStream(cacheFn), vse.getValueset());
+          s.close();
+          return vse;
+        }
+      }
+      return expandOnServer(vs, cacheFn);
+    } catch (Exception e) {
+      return new ValueSetExpansionOutcome(e.getMessage());
+    }
   }
-
-  @Override
-  public ValidationResult validateCode(String system, String code, String display, ConceptSetComponent vsi) {
-    throw new Error("not done yet");
-  }
-
+  
   public static class Concept {
     private String display; // preferred
     private List<String> displays = new ArrayList<String>();
@@ -585,10 +603,6 @@ public class BuildWorkerContext implements IWorkerContext {
   }
 
   
-  public boolean supportsSystem(String system) {
-    return "http://snomed.info/sct".equals(system) || "http://loinc.org".equals(system) ;
-  }
-
   public void loadSnomed(String filename) throws Exception {
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     DocumentBuilder builder = factory.newDocumentBuilder();
@@ -677,29 +691,6 @@ public class BuildWorkerContext implements IWorkerContext {
     return true;
   }
 
-  @Override
-  public ValueSetExpansionOutcome expandVS(ValueSet vs) {
-    try {
-      if (vs.hasExpansion()) {
-        return new ValueSetExpansionOutcome(vs.copy());
-      }
-      String cacheFn = Utilities.path(cache, determineCacheId(vs)+".json");
-      if (new File(cacheFn).exists())
-        return loadFromCache(vs.copy(), cacheFn);
-      if (vs.hasUrl()) {
-        ValueSetExpansionOutcome vse = expansionCache.getExpander().expand(vs);
-        if (vse.getValueset() != null) {
-          FileOutputStream s = new FileOutputStream(cacheFn);
-          newJsonParser().compose(new FileOutputStream(cacheFn), vse.getValueset());
-          s.close();
-          return vse;
-        }
-      }
-      return expandOnServer(vs, cacheFn);
-    } catch (Exception e) {
-      return new ValueSetExpansionOutcome(e.getMessage());
-    }
-  }
 
   private String determineCacheId(ValueSet vs) throws Exception {
     // just the content logical definition is hashed
@@ -735,13 +726,15 @@ public class BuildWorkerContext implements IWorkerContext {
         triedServer = true;
         serverOk = false;
         // for this, we use the FHIR client
-        if (client == null) {
-          client = new FHIRToolingClient(tsServer);
+        if (txServer == null) {
+          txServer = new FHIRToolingClient(tsServer);
+          if (System.getenv().containsKey("http.proxyHost") && System.getenv().containsKey("http.proxyPort") )
+            txServer.configureProxy(System.getenv().get("http.proxyHost"), Integer.parseInt(System.getenv().get("http.proxyPort")));
         }
         Map<String, String> params = new HashMap<String, String>();
         params.put("code", code);
         params.put("system", "http://loinc.org");
-        Parameters result = client.lookupCode(params);
+        Parameters result = txServer.lookupCode(params);
         serverOk = true;
 
         for (ParametersParameterComponent p : result.getParameter()) {
@@ -765,14 +758,16 @@ public class BuildWorkerContext implements IWorkerContext {
         triedServer = true;
         serverOk = false;
         // for this, we use the FHIR client
-        if (client == null) {
-          client = new FHIRToolingClient(tsServer);
+        if (txServer == null) {
+          txServer = new FHIRToolingClient(tsServer);
+          if (System.getenv().containsKey("http.proxyHost") && System.getenv().containsKey("http.proxyPort") )
+            txServer.configureProxy(System.getenv().get("http.proxyHost"), Integer.parseInt(System.getenv().get("http.proxyPort")));
         }
         Map<String, String> params = new HashMap<String, String>();
         params.put("_limit", PageProcessor.CODE_LIMIT_EXPANSION);
         params.put("_incomplete", "true");
         params.put("profile", "http://www.healthintersections.com.au/fhir/expansion/no-details");
-        ValueSet result = client.expandValueset(vs, params);
+        ValueSet result = txServer.expandValueset(vs, params);
         serverOk = true;
         FileOutputStream s = new FileOutputStream(cacheFn);
         parser.compose(s, result);
@@ -874,7 +869,7 @@ public class BuildWorkerContext implements IWorkerContext {
     ValueSet vs = new ValueSet();
     vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().getInclude().add(inc);
-    ValueSetExpansionOutcome vse = expandVS(vs);
+    ValueSetExpansionOutcome vse = expandVS(vs, true);
     return vse.getValueset().getExpansion();
   }
 
@@ -882,6 +877,127 @@ public class BuildWorkerContext implements IWorkerContext {
     cache = path;
     this.tsServer = tsServer;
     expansionCache = new ValueSetExpansionCache(this, null);
+    validationCachePath = Utilities.path(path, "validation.cache");
+    try {
+      loadValidationCache();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
+
+  public void saveCache() throws IOException {
+    saveValidationCache();
+  }
+
+  private void loadValidationCache() throws JsonSyntaxException, Exception {
+    File dir = new File(validationCachePath);
+    if (!dir.exists())
+      return;
+    
+    String[] files = dir.list();
+    for (String f : files) {
+      String fn = Utilities.path(validationCachePath, f);
+      com.google.gson.JsonParser  parser = new com.google.gson.JsonParser();
+      JsonObject json = (JsonObject) parser.parse(TextFile.fileToString(fn));
+      Map<String, ValidationResult> t = new HashMap<String, IWorkerContext.ValidationResult>();
+      for (JsonElement i : json.getAsJsonArray("outcomes")) {
+        JsonObject o = (JsonObject) i;
+        String s = o.get("hash").getAsString();
+        JsonElement j = o.get("message");
+        String m = null;
+        if (!(j instanceof JsonNull))
+          m = o.get("message").getAsString();
+        j = o.get("severity");
+        IssueSeverity sev = null;
+        if (!(j instanceof JsonNull))
+          sev = IssueSeverity.fromCode(j.getAsString());
+        ConceptDefinitionComponent def = null;
+        j = o.get("definition");
+        if (j != null && j instanceof JsonObject) {
+          def = new ConceptDefinitionComponent();
+          o = (JsonObject) j;
+          def.setAbstract(o.get("abstract").getAsBoolean());
+          if (!(o.get("code") instanceof JsonNull))
+            def.setCode(o.get("code").getAsString());
+          if (!(o.get("definition") instanceof JsonNull))
+            def.setDefinition(o.get("definition").getAsString());
+          if (!(o.get("display") instanceof JsonNull))
+            def.setDisplay(o.get("display").getAsString());
+        }
+        t.put(s, new ValidationResult(sev, m, def));
+      }
+      validationCache.put(json.get("url").getAsString(), t);
+    }
+    
+  }
+
+  private void saveValidationCache() throws IOException {
+    File dir = new File(validationCachePath);
+    if (dir.exists())
+      Utilities.clearDirectory(validationCachePath);
+    else
+      dir.mkdir();
+    for (String s : validationCache.keySet()) {
+      String fn = makeFileName(s)+".json";
+      JsonWriter gson = new JsonWriter(new TextStreamWriter(new FileOutputStream(Utilities.path(validationCachePath, fn))));
+      gson.setIndent("  ");;
+      gson.beginObject();
+      gson.name("url");
+      gson.value(s);
+      gson.name("outcomes");
+      gson.beginArray();
+      Map<String, ValidationResult> t = validationCache.get(s);
+      for (String sp : t.keySet()) {
+        ValidationResult vr = t.get(sp);
+        gson.beginObject();
+        gson.name("hash");
+        gson.value(sp);
+        gson.name("severity");
+        if (vr.getSeverity() == null)
+          gson.nullValue();
+        else
+          gson.value(vr.getSeverity().toCode());
+        gson.name("message");
+        gson.value(vr.getMessage());
+        if (vr.asConceptDefinition() != null) {
+          gson.name("definition");
+          gson.beginObject();
+          gson.name("abstract");
+          gson.value(vr.asConceptDefinition().getAbstract());
+          gson.name("code");
+          gson.value(vr.asConceptDefinition().getCode());
+          gson.name("definition");
+          gson.value(vr.asConceptDefinition().getDefinition());
+          gson.name("display");
+          gson.value(vr.asConceptDefinition().getDisplay());
+          gson.endObject();
+        }
+        gson.endObject();
+      }
+      gson.endArray();
+      gson.endObject();
+      gson.close();
+    }
+  }
+
+  private String makeFileName(String s) {
+    return s.replace("http://hl7.org/fhir/ValueSet/", "").replace("http://", "").replace("/", "_");
+  }
+
+  @Override
+  public String getAbbreviation(String name) {
+    String s = definitions.getTLAs().get(name.toLowerCase());
+    if (Utilities.noString(s))
+      return "xxx";
+    else
+      return s;
+  }
+
+  public void setDefinitions(Definitions definitions) {
+    this.definitions = definitions;    
+  }
+
+
+
 
 }

@@ -29,15 +29,12 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.hl7.fhir.definitions.Config;
-import org.hl7.fhir.definitions.model.Definitions;
-import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.tools.implementations.GeneratorUtils;
+import org.hl7.fhir.dstu21.model.ValueSet;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionComponent;
 import org.hl7.fhir.utilities.Utilities;
 
 /*
@@ -51,9 +48,11 @@ public class JavaValueSetGenerator extends JavaBaseGenerator {
 	}
 
 	public void generate(Date genDate, String version, ValueSet vs, String tns) throws Exception {		
-		write("package org.hl7.fhir.instance.model.valuesets;\r\n");
+		write("package org.hl7.fhir.dstu21.model.valuesets;\r\n");
 		write("\r\n/*\r\n"+Config.FULL_LICENSE_CODE+"*/\r\n\r\n");
 		write("// Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n\r\n");
+    write("\r\n");
+    write("import org.hl7.fhir.dstu21.exceptions.FHIRException;\r\n");
     write("\r\n");
 
     write("public enum "+tns+" {\r\n");
@@ -73,7 +72,7 @@ public class JavaValueSetGenerator extends JavaBaseGenerator {
     write("         */\r\n");      
     write("        NULL;\r\n");
 
-    write("        public static "+tns+" fromCode(String codeString) throws Exception {\r\n");
+    write("        public static "+tns+" fromCode(String codeString) throws FHIRException {\r\n");
     write("            if (codeString == null || \"\".equals(codeString))\r\n");
     write("                return null;\r\n");
     for (ConceptDefinitionComponent c : codes) {
@@ -82,7 +81,7 @@ public class JavaValueSetGenerator extends JavaBaseGenerator {
       write("        if (\""+c.getCode()+"\".equals(codeString))\r\n");
       write("          return "+cc+";\r\n");
     }   
-    write("        throw new Exception(\"Unknown "+tns+" code '\"+codeString+\"'\");\r\n");
+    write("        throw new FHIRException(\"Unknown "+tns+" code '\"+codeString+\"'\");\r\n");
     write("        }\r\n"); 
 
     write("        public String toCode() {\r\n");

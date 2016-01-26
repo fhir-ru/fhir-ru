@@ -3,13 +3,13 @@ package org.hl7.fhir.definitions.parsers;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.instance.model.ValueSet.ConceptReferenceComponent;
-import org.hl7.fhir.instance.model.ValueSet.ConceptSetComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetComposeComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetCodeSystemComponent;
-import org.hl7.fhir.instance.utils.ToolingExtensions;
+import org.hl7.fhir.dstu21.model.ValueSet;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptReferenceComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ValueSetCodeSystemComponent;
+import org.hl7.fhir.dstu21.model.ValueSet.ValueSetComposeComponent;
+import org.hl7.fhir.dstu21.utils.ToolingExtensions;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
 
@@ -31,6 +31,7 @@ public class CodeListToValueSetParser {
 
     tabfmt.column("System");
     tabfmt.column("Id");
+    tabfmt.column("Abstract");
     tabfmt.column("Code");
     tabfmt.column("Display");
     tabfmt.column("Definition");
@@ -49,6 +50,7 @@ public class CodeListToValueSetParser {
       tabfmt.row();
       tabfmt.cell(sheet.getColumn(row, "System"));
       tabfmt.cell(sheet.getColumn(row, "Id"));
+      tabfmt.cell(sheet.getColumn(row, "Abstract"));
       tabfmt.cell(sheet.getColumn(row, "Code"));
       tabfmt.cell(sheet.getColumn(row, "Display"));
       tabfmt.cell(sheet.getColumn(row, "Definition"));
@@ -87,6 +89,8 @@ public class CodeListToValueSetParser {
           codes.put(cc.getCode(), cc);
           codesById.put(cc.getUserString("id"), cc);
           cc.setDisplay(sheet.getColumn(row, "Display"));
+          if (sheet.getColumn(row, "Abstract").toUpperCase().equals("Y"))
+          	cc.setAbstract(true);
           if (cc.hasCode() && !cc.hasDisplay())
             cc.setDisplay(Utilities.humanize(cc.getCode()));
           cc.setDefinition(sheet.getColumn(row, "Definition"));

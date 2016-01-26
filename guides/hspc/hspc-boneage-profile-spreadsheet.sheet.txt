@@ -17,17 +17,34 @@
 
  -- Row 3 -----------------------------------
   Binding Name = ObservationStatusBasic
-  Binding = value set
-  Reference = valueset-observationstatusbasic
+  Binding = code list
+  Reference = #observationstatusbasic
   Definition = A set of codes that describe the state of the observation
-  Conformance = preferred
+  Conformance = required
+
+=== Sheet observationstatusbasic =====================================
+
+ -- Row 1 -----------------------------------
+  System = http://hl7.org/fhir/observation-status
+  Code = final
+  Display = final
+
+ -- Row 2 -----------------------------------
+  System = http://hl7.org/fhir/observation-status
+  Code = entered-in-error
+  Display = entered-in-error
+
+ -- Row 3 -----------------------------------
+  System = http://hl7.org/fhir/observation-status
+  Code = unknown
+  Display = unknown
 
 === Sheet hspc-boneage =====================================
 
  -- Row 1 -----------------------------------
   Element = Observation
   Profile Name = HSPC Bone Age
-  Type = Resource
+  Type = {http://hl7.org/fhir/StructureDefinition/qicore-observation}
 
  -- Row 2 -----------------------------------
   Element = Observation.code
@@ -91,7 +108,11 @@
   Element = Observation.extension
   Profile Name = DataOriginationMode
   Card. = 0..1
-  Type = Extension{http://hl7.org/fhir/StructureDefinition/hspc-age#hspc-dataOriginationMode}
+  Type = Extension{http://hl7.org/fhir/StructureDefinition/hspc-extensionsdataOriginationMode}
   Binding = dataOriginationModeVS
+
+ -- Row 17 -----------------------------------
+  Element = Observation.observation-bodyPosition
+  Card. = 0..0
 
 === Sheet Search =====================================

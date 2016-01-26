@@ -1,0 +1,37 @@
+﻿
+=== Sheet Bindings =====================================
+
+=== Sheet hspc-bppanel =====================================
+
+ -- Row 1 -----------------------------------
+  Element = Observation
+  Profile Name = HSPC Blood Pressure Panel
+  Type = {http://hl7.org/fhir/StructureDefinition/qicore-observation}
+
+ -- Row 2 -----------------------------------
+  Element = Observation.code
+  Type = CodeableConcept
+  Value = <code><coding><system value=\"http://loinc.org\"/><code value=\"35094-2\"/><display value=\"Blood pressure panel\"/></coding></code>
+
+ -- Row 3 -----------------------------------
+  Element = Observation.component
+
+ -- Row 4 -----------------------------------
+  Element = Observation.component.extension
+  Profile Name = Systolic pressure
+  Slice Description = Systolic
+  Type = Reference{http://hl7.org/fhir/StructureDefinition/hspc-systolicbp}
+
+ -- Row 5 -----------------------------------
+  Element = Observation.component.extension
+  Profile Name = Diastolic pressure
+  Slice Description = Diastolic
+  Type = Reference{http://hl7.org/fhir/StructureDefinition/hspc-diastolicbp}
+
+ -- Row 6 -----------------------------------
+  Element = Observation.component.extension
+  Profile Name = Mean Arterial Pressure
+  Slice Description = Mean Arterial Pressure
+  Type = Reference{http://hl7.org/fhir/StructureDefinition/hspc-meanarterialpressure}
+
+=== Sheet Search =====================================

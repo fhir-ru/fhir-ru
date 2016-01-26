@@ -70,7 +70,7 @@
      <system value="http://hl7.org/fhir/ex-pharmaservice"/>
      <code value="smokecess"/> <!-- smoking cessation consult -->
    </service>
-   <serviceDate value="2014-08-16"/>
+   <servicedDate value="2014-08-16"/>
    <unitPrice>
       <value value="60.00"/>
 	  <system value="urn:iso:std:iso:4217"/>

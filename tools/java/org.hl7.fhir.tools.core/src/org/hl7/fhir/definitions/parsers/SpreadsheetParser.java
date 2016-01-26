@@ -31,22 +31,13 @@ package org.hl7.fhir.definitions.parsers;
 
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.io.IOUtils;
 import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
@@ -78,66 +69,57 @@ import org.hl7.fhir.definitions.model.SearchParameterDefn.SearchType;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.model.W5Entry;
-import org.hl7.fhir.instance.formats.FormatUtilities;
-import org.hl7.fhir.instance.formats.IParser;
-import org.hl7.fhir.instance.formats.JsonParser;
-import org.hl7.fhir.instance.formats.XmlParser;
-import org.hl7.fhir.instance.model.Base64BinaryType;
-import org.hl7.fhir.instance.model.BooleanType;
-import org.hl7.fhir.instance.model.CodeType;
-import org.hl7.fhir.instance.model.CodeableConcept;
-import org.hl7.fhir.instance.model.Constants;
-import org.hl7.fhir.instance.model.ContactPoint.ContactPointSystem;
-import org.hl7.fhir.instance.model.DateTimeType;
-import org.hl7.fhir.instance.model.DateType;
-import org.hl7.fhir.instance.model.DecimalType;
-import org.hl7.fhir.instance.model.Enumerations.ConformanceResourceStatus;
-import org.hl7.fhir.instance.model.Enumerations.SearchParamType;
-import org.hl7.fhir.instance.model.Factory;
-import org.hl7.fhir.instance.model.IdType;
-import org.hl7.fhir.instance.model.Identifier;
-import org.hl7.fhir.instance.model.InstantType;
-import org.hl7.fhir.instance.model.IntegerType;
-import org.hl7.fhir.instance.model.OidType;
-import org.hl7.fhir.instance.model.Period;
-import org.hl7.fhir.instance.model.PositiveIntType;
-import org.hl7.fhir.instance.model.Quantity;
-import org.hl7.fhir.instance.model.Quantity.QuantityComparator;
-import org.hl7.fhir.instance.model.Reference;
-import org.hl7.fhir.instance.model.SearchParameter;
-import org.hl7.fhir.instance.model.StringType;
-import org.hl7.fhir.instance.model.StructureDefinition;
-import org.hl7.fhir.instance.model.StructureDefinition.ExtensionContext;
-import org.hl7.fhir.instance.model.StructureDefinition.StructureDefinitionKind;
-import org.hl7.fhir.instance.model.TimeType;
-import org.hl7.fhir.instance.model.Type;
-import org.hl7.fhir.instance.model.UnsignedIntType;
-import org.hl7.fhir.instance.model.UriType;
-import org.hl7.fhir.instance.model.UuidType;
-import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.instance.model.ValueSet.ValueSetContactComponent;
-import org.hl7.fhir.instance.terminologies.ValueSetUtilities;
-import org.hl7.fhir.instance.utils.IWorkerContext.ValidationResult;
-import org.hl7.fhir.instance.utils.ProfileUtilities;
-import org.hl7.fhir.instance.utils.ProfileUtilities.ProfileKnowledgeProvider;
-import org.hl7.fhir.instance.utils.ToolingExtensions;
-import org.hl7.fhir.instance.validation.ValidationMessage;
+import org.hl7.fhir.definitions.validation.FHIRPathUsage;
+import org.hl7.fhir.dstu21.formats.FormatUtilities;
+import org.hl7.fhir.dstu21.formats.IParser;
+import org.hl7.fhir.dstu21.formats.JsonParser;
+import org.hl7.fhir.dstu21.formats.XmlParser;
+import org.hl7.fhir.dstu21.model.Base64BinaryType;
+import org.hl7.fhir.dstu21.model.BooleanType;
+import org.hl7.fhir.dstu21.model.CodeType;
+import org.hl7.fhir.dstu21.model.CodeableConcept;
+import org.hl7.fhir.dstu21.model.DateTimeType;
+import org.hl7.fhir.dstu21.model.DateType;
+import org.hl7.fhir.dstu21.model.DecimalType;
+import org.hl7.fhir.dstu21.model.Factory;
+import org.hl7.fhir.dstu21.model.IdType;
+import org.hl7.fhir.dstu21.model.Identifier;
+import org.hl7.fhir.dstu21.model.InstantType;
+import org.hl7.fhir.dstu21.model.IntegerType;
+import org.hl7.fhir.dstu21.model.OidType;
+import org.hl7.fhir.dstu21.model.Period;
+import org.hl7.fhir.dstu21.model.PositiveIntType;
+import org.hl7.fhir.dstu21.model.Quantity;
+import org.hl7.fhir.dstu21.model.Reference;
+import org.hl7.fhir.dstu21.model.SearchParameter;
+import org.hl7.fhir.dstu21.model.StringType;
+import org.hl7.fhir.dstu21.model.StructureDefinition;
+import org.hl7.fhir.dstu21.model.TimeType;
+import org.hl7.fhir.dstu21.model.Type;
+import org.hl7.fhir.dstu21.model.UnsignedIntType;
+import org.hl7.fhir.dstu21.model.UriType;
+import org.hl7.fhir.dstu21.model.UuidType;
+import org.hl7.fhir.dstu21.model.ValueSet;
+import org.hl7.fhir.dstu21.model.ContactPoint.ContactPointSystem;
+import org.hl7.fhir.dstu21.model.Enumerations.ConformanceResourceStatus;
+import org.hl7.fhir.dstu21.model.Enumerations.SearchParamType;
+import org.hl7.fhir.dstu21.model.Quantity.QuantityComparator;
+import org.hl7.fhir.dstu21.model.StructureDefinition.ExtensionContext;
+import org.hl7.fhir.dstu21.model.StructureDefinition.StructureDefinitionKind;
+import org.hl7.fhir.dstu21.terminologies.ValueSetUtilities;
+import org.hl7.fhir.dstu21.utils.ProfileUtilities;
+import org.hl7.fhir.dstu21.utils.ToolingExtensions;
+import org.hl7.fhir.dstu21.utils.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.dstu21.validation.ValidationMessage;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
-import org.hl7.fhir.utilities.Logger.LogMessageType;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
-import org.hl7.fhir.utilities.xml.XMLUtil;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.xml.sax.SAXException;
 
 import com.trilead.ssh2.crypto.Base64;
 
@@ -172,8 +154,9 @@ public class SpreadsheetParser {
   private TabDelimitedSpreadSheet tabfmt;
   private Map<String, ConstraintStructure> profileIds;
   private List<ValueSet> valuesets = new ArrayList<ValueSet>();
-  
-	public SpreadsheetParser(String usageContext, InputStream in, String name,	Definitions definitions, String root, Logger log, BindingNameRegistry registry, String version, BuildWorkerContext context, Calendar genDate, boolean isAbstract, Map<String, StructureDefinition> extensionDefinitions, ProfileKnowledgeProvider pkp, boolean isType, IniFile ini, String committee, Map<String, ConstraintStructure> profileIds) throws Exception {
+  private List<FHIRPathUsage> fpUsages;
+
+	public SpreadsheetParser(String usageContext, InputStream in, String name,	Definitions definitions, String root, Logger log, BindingNameRegistry registry, String version, BuildWorkerContext context, Calendar genDate, boolean isAbstract, Map<String, StructureDefinition> extensionDefinitions, ProfileKnowledgeProvider pkp, boolean isType, IniFile ini, String committee, Map<String, ConstraintStructure> profileIds, List<FHIRPathUsage> fpUsages) throws Exception {
 	  this.usageContext = usageContext;
 		this.name = name;
   	xls = new XLSXmlParser(in, name);	
@@ -198,6 +181,7 @@ public class SpreadsheetParser {
 		this.pkp = pkp;
 		this.ini = ini;
 		this.committee = committee;
+		this.fpUsages = fpUsages;
 		tabfmt = new TabDelimitedSpreadSheet();
 		tabfmt.setFileName(((CSFileInputStream) in).getPath(), Utilities.changeFileExt(((CSFileInputStream) in).getPath(), ".sheet.txt"));
 		this.profileIds = profileIds;
@@ -236,7 +220,7 @@ public class SpreadsheetParser {
 
 	public TypeDefn parseCompositeType() throws Exception {
 		isProfile = false;
-		return parseCommonTypeColumns().getRoot();
+		return parseCommonTypeColumns(false).getRoot();
 	}
 
 	private Sheet loadSheet(String name) {
@@ -254,7 +238,7 @@ public class SpreadsheetParser {
       return "inv";
   }
 	
-	private ResourceDefn parseCommonTypeColumns() throws Exception {
+	private ResourceDefn parseCommonTypeColumns(boolean isResource) throws Exception {
 		ResourceDefn resource = new ResourceDefn();
 		
 		Sheet sheet = loadSheet("Bindings");
@@ -289,6 +273,12 @@ public class SpreadsheetParser {
           }
 		      else if (inv.getXpath().contains("\""))
 		        throw new Exception("Type "+resource.getRoot().getName()+" Invariant "+inv.getId()+" ("+inv.getEnglish()+") contains a \" character");
+          if (Utilities.noString(inv.getExpression())) {
+				// This has been disabled for now, per Lloyd McKenzie's request via Skype - jamesagnew
+            //throw new Exception("Type "+resource.getRoot().getName()+" Invariant "+inv.getId()+" ("+inv.getEnglish()+") has no Expression statement (in FHIRPath format)");
+          } else {
+            fpUsages.add(new FHIRPathUsage(inv.getContext(), isResource ? resource.getName() : null, inv.getContext(), null, inv.getExpression(), inv.getXpath()));
+          }
 		    }
 		  }
 		}
@@ -312,10 +302,6 @@ public class SpreadsheetParser {
       for (int row = 0; row < sheet.rows.size(); row++) {
         if (sheet.rows.get(row).size() >= 2 && "entered-in-error-status".equals(sheet.rows.get(row).get(0)))
           resource.setEnteredInErrorStatus(sheet.rows.get(row).get(1));
-        if (sheet.rows.get(row).size() >= 2 && "fmm".equals(sheet.rows.get(row).get(0)))
-          resource.setFmmLevel(sheet.rows.get(row).get(1));
-        if (sheet.rows.get(row).size() >= 2 && "fmm-no-warnings".equals(sheet.rows.get(row).get(0)))
-          resource.setFmmLevelNoWarnings(sheet.rows.get(row).get(1));
         if (sheet.rows.get(row).size() >= 2 && "proposed-order".equals(sheet.rows.get(row).get(0)))
           resource.setProposedOrder(sheet.rows.get(row).get(1));
       }
@@ -397,7 +383,7 @@ public class SpreadsheetParser {
 	
 	public ResourceDefn parseResource() throws Exception {
 	  isProfile = false;
-	  ResourceDefn root = parseCommonTypeColumns();
+	  ResourceDefn root = parseCommonTypeColumns(true);
 
 	  readInheritedMappings(root, loadSheet("Inherited Mappings"));
 	  readEvents(loadSheet("Events"));
@@ -678,6 +664,7 @@ public class SpreadsheetParser {
     tabfmt.column("Context");
     tabfmt.column("English");
     tabfmt.column("XPath");
+    tabfmt.column("Expression");
     tabfmt.column("Severity");
     tabfmt.column("RDF");
 
@@ -690,7 +677,8 @@ public class SpreadsheetParser {
 			tabfmt.cell(sheet.getColumn(row, "Requirements"));
 			tabfmt.cell(sheet.getColumn(row, "Context"));
 			tabfmt.cell(sheet.getColumn(row, "English"));
-			tabfmt.cell(sheet.getColumn(row, "XPath"));
+      tabfmt.cell(sheet.getColumn(row, "XPath"));
+      tabfmt.cell(sheet.getColumn(row, "Expression"));
 			tabfmt.cell(sheet.getColumn(row, "Severity"));
 			tabfmt.cell(sheet.getColumn(row, "RDF"));
 
@@ -700,12 +688,12 @@ public class SpreadsheetParser {
 			  inv.setRequirements(sheet.getColumn(row, "Requirements"));
 			  inv.setContext(sheet.getColumn(row, "Context"));
 			  inv.setEnglish(sheet.getColumn(row, "English"));
-			  inv.setXpath(sheet.getColumn(row, "XPath"));
+        inv.setXpath(sheet.getColumn(row, "XPath"));
+        inv.setExpression(sheet.getColumn(row, "Expression"));
+			  
 			  inv.setSeverity(sheet.getColumn(row, "Severity"));
         inv.setTurtle(sheet.getColumn(row, "RDF"));
 
-			  if (!Utilities.noString(sheet.getColumn(row,  "Schematron")))
-			    log.log("Value found for schematron "+getLocation(row), LogMessageType.Hint);  
 			  inv.setOcl(sheet.getColumn(row, "OCL"));
 			  if (s.equals("") || result.containsKey(s))
 			    throw new Exception("duplicate or missing invariant id "
@@ -958,9 +946,15 @@ public class SpreadsheetParser {
             }
             if (!forProfile && t == SearchType.reference && pn.size() == 0 && !sheet.hasColumn(row, "Target Types"))
               throw new Exception("Search Param "+root2.getName()+"/"+n+" of type reference has no path(s) "+ getLocation(row));
+            
+            
 
             sp = new SearchParameterDefn(n, d, t, pu);
             sp.getPaths().addAll(pn);
+            if (Utilities.noString(sheet.getColumn(row, "Expression")))
+              sp.setExpression(pipeSeparate(pn));
+            else
+              sp.setExpression(pipeSeparate(sheet.getColumn(row, "Expression").split("\\^")));
             if (!Utilities.noString(sheet.getColumn(row, "Target Types"))) {
               sp.setManualTypes(sheet.getColumn(row, "Target Types").split("\\,"));
             }
@@ -970,6 +964,32 @@ public class SpreadsheetParser {
       }
     }
 	}
+
+	private String pipeSeparate(String[] paths) {
+    StringBuilder b = new StringBuilder();
+    boolean first = true;
+    for (String p : paths) {
+      if (first)
+        first = false;
+      else
+        b.append(" | ");
+      b.append(p);
+    }
+    return b.toString();
+  }
+
+  private String pipeSeparate(List<String> paths) {
+	  StringBuilder b = new StringBuilder();
+    boolean first = true;
+    for (String p : paths) {
+      if (first)
+        first = false;
+      else
+        b.append(" | ");
+      b.append(p);
+    }
+    return b.toString();
+  }
 
 	private String trimIndexes(String p) {
     while (p.contains("("))
@@ -1226,6 +1246,7 @@ public class SpreadsheetParser {
 		for (int row = 0; row < sheet.rows.size(); row++) {
 			DefinedCode c = new DefinedCode();
 			c.setId(sheet.getColumn(row, "Id"));
+      c.setAbstract(sheet.getColumn(row, "Abstract").toUpperCase().equals("Y"));
 			c.setCode(sheet.getColumn(row, "Code"));
       c.setDisplay(sheet.getColumn(row, "Display"));
       if (c.hasCode() && !c.hasDisplay())
@@ -1416,6 +1437,8 @@ public class SpreadsheetParser {
           }
 			    else if (inv.getXpath().contains("\""))
 	          throw new Exception("Type "+resource.getRoot().getName()+" Invariant "+inv.getId()+" ("+inv.getEnglish()+") contains a \" character");
+//          if (Utilities.noString(inv.getExpression())) 
+//            throw new Exception("Type "+resource.getRoot().getName()+" Invariant "+inv.getId()+" ("+inv.getEnglish()+") has no Expression statement (in FHIRPath format)");
 			  }
 			}
 		}
@@ -1654,8 +1677,6 @@ public class SpreadsheetParser {
 
     String profileName = isProfile ? sheet.getColumn(row, "Profile Name") : "";
     String discriminator = isProfile ? sheet.getColumn(row, "Discriminator") : "";
-		if (!Utilities.noString(profileName) && Utilities.noString(discriminator) && (path.endsWith(".extension") || path.endsWith(".modifierExtension")))
-		  discriminator = "url";
 		  
 		boolean isRoot = !path.contains(".");
 		
@@ -1796,15 +1817,15 @@ public class SpreadsheetParser {
       }      
     }
 		e.setTodo(Utilities.appendPeriod(sheet.getColumn(row, "To Do")));
-		e.setExample(processValue(sheet, row, "Example", e));
+		e.setExample(processValue(sheet, row, "Example", sheet.getColumn(row, "Example"), e));
 		processOtherExamples(e, sheet, row);		
 		e.setCommitteeNotes(Utilities.appendPeriod(sheet.getColumn(row, "Committee Notes")));
 		e.setDisplayHint(sheet.getColumn(row, "Display Hint"));
 		if (isProfile) {
-      e.setFixed(processValue(sheet, row, "Value", e));
-      e.setPattern(processValue(sheet, row, "Pattern", e));
+      e.setFixed(processValue(sheet, row, "Value", sheet.getColumn(row, "Value"), e));
+      e.setPattern(processValue(sheet, row, "Pattern", sheet.getColumn(row, "Pattern"), e));
 		} else {
-      e.setDefaultValue(processValue(sheet, row, "Default Value", e));
+      e.setDefaultValue(processValue(sheet, row, "Default Value", sheet.getColumn(row, "Default Value"), e));
       e.setMeaningWhenMissing(sheet.getColumn(row, "Missing Meaning"));
 		}
 		e.setW5(checkW5(sheet.getColumn(row, "w5"), path));
@@ -1812,10 +1833,12 @@ public class SpreadsheetParser {
 	}
 
 	private void processOtherExamples(ElementDefn e, Sheet sheet, int row) throws Exception {
-	  for (int i = 1; i <= 10; i++) {
+	  for (int i = 1; i <= 20; i++) {
 	    String s = sheet.getColumn(row, "Example "+Integer.toString(i));
+	    if (Utilities.noString(s))
+	      s = sheet.getByColumnPrefix(row, "Example "+Integer.toString(i)+" (");
 	    if (!Utilities.noString(s))
-       e.getOtherExamples().put(i, processValue(sheet, row, "Example "+Integer.toString(i), e));
+        e.getOtherExamples().put(i, processValue(sheet, row, "Example "+Integer.toString(i), s, e));
 	  }    
   }
 
@@ -1839,12 +1862,11 @@ public class SpreadsheetParser {
   }
 
 
-  private Type processValue(Sheet sheet, int row, String column, ElementDefn e) throws Exception {
-    String source = sheet.getColumn(row, column);
+  private Type processValue(Sheet sheet, int row, String column, String source, ElementDefn e) throws Exception {
     if (Utilities.noString(source))
       return null;  
 	  if (e.getTypes().size() != 1) 
-      throw new Exception("Unable to process "+column+" unless a single type is specified (types = "+e.typeCode()+") "+getLocation(row));
+      throw new Exception("Unable to process "+column+" unless a single type is specified (types = "+e.typeCode()+") "+getLocation(row)+", column = "+column);
     String type = e.typeCode();
     if (definitions != null) {
       if (definitions.getConstraints().containsKey(type))
@@ -2028,7 +2050,7 @@ public class SpreadsheetParser {
 	        exe.getInvariants().put(inv.getId(), inv);
 	    }
 	  }
-     
+	  
     parseExtensionElement(sheet, row, definitions, exe, false);
     String sl = exe.getShortDefn();
     ex.setName(sheet.getColumn(row, "Name"));
@@ -2076,12 +2098,12 @@ public class SpreadsheetParser {
       row++;
     }
 	  
-    new ProfileGenerator(definitions, null, pkp, null, null, null).convertElements(exe, ex, null);
+    new ProfileGenerator(definitions, null, pkp, null, null, null, fpUsages).convertElements(exe, ex, null);
     StructureDefinition base = definitions != null ? definitions.getSnapShotForType("Extension") : this.context.getProfiles().get("http://hl7.org/fhir/StructureDefinition/Extension");
     List<String> errors = new ArrayList<String>();
-    new ProfileUtilities(this.context).sortDifferential(base, ex, "extension "+ex.getUrl(), pkp, errors);
+    new ProfileUtilities(this.context, issues, pkp).sortDifferential(base, ex, "extension "+ex.getUrl(), errors);
     assert(errors.size() == 0);
-    new ProfileUtilities(this.context).generateSnapshot(base, ex, ex.getUrl(), ex.getName(), pkp, issues);
+    new ProfileUtilities(this.context, issues, pkp).generateSnapshot(base, ex, ex.getUrl(), ex.getName());
 	  this.context.seeExtensionDefinition("http://hl7.org/fhir", ex);
 	  return row;
 	}
@@ -2144,7 +2166,7 @@ public class SpreadsheetParser {
       // exv.setBinding();
       exv.setMaxLength(sheet.getColumn(row, "Max Length"));
       exv.getTypes().addAll(new TypeParser().parse(sheet.getColumn(row, "Type"), true, profileExtensionBase, context, false));
-      exv.setExample(processValue(sheet, row, "Example", exv));
+      exv.setExample(processValue(sheet, row, "Example", sheet.getColumn(row, "Example"), exv));
     }
   }
 
@@ -2333,6 +2355,8 @@ public class SpreadsheetParser {
           }
           else if (inv.getXpath().contains("\""))
             throw new Exception("Type "+resource.getRoot().getName()+" Invariant "+inv.getId()+" ("+inv.getEnglish()+") contains a \" character");
+//          if (Utilities.noString(inv.getExpression())) 
+//            throw new Exception("Type "+resource.getRoot().getName()+" Invariant "+inv.getId()+" ("+inv.getEnglish()+") has no Expression statement (in FHIRPath format)");
         }
       }
     }
@@ -2345,7 +2369,6 @@ public class SpreadsheetParser {
     scanNestedTypes(resource, resource.getRoot(), resource.getName());
     
     LogicalModel lm = new LogicalModel();
-    lm.setRoot(resource.getRoot());
     lm.setResource(resource);
     tabfmt.close();
 

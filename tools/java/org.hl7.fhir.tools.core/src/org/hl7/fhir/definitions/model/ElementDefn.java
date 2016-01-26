@@ -33,8 +33,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hl7.fhir.instance.model.ElementDefinition;
-import org.hl7.fhir.instance.model.Type;
+import org.hl7.fhir.dstu21.model.ElementDefinition;
+import org.hl7.fhir.dstu21.model.Type;
 import org.hl7.fhir.utilities.Utilities;
 
 public class ElementDefn {
@@ -764,7 +764,7 @@ public class ElementDefn {
 
   public boolean usesType(String name) {
     for (TypeRef t : getTypes()) {
-      if (t.summary().equals(name))
+      if (t.summary().equals(name) || (t.getName().equals(name) && name.equals("Reference")))
         return true;
     }
     return false;
@@ -873,6 +873,10 @@ public class ElementDefn {
 
   public Map<Integer, Type> getOtherExamples() {
     return otherExamples;
+  }
+
+  public String getPathTail() {
+    return path.contains(".") ? path.substring(path.lastIndexOf(".")+1) : path;
   }	
   
 }

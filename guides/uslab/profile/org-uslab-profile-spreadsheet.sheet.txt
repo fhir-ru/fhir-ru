@@ -8,6 +8,7 @@
   Context = Organization
   English = Shall have Organization.name and/or Organization.identifier.
   XPath = exists(f:name) or exists(f:identifier)
+  FHIRPath = name or identifier
   Severity = error
 
  -- Row 2 -----------------------------------
@@ -15,6 +16,7 @@
   Context = Organization.address.postalCode
   English = (Zip or Postal Code) SHALL be formatted as 99999[-9999] for US Zip or ZIP +4 codes or as A9A9A9 for Canadian postal codes.
   XPath = f:matches(issued,[0-9]{5}(-[0-9]{4}){0,1} )
+  FHIRPath = postalCode:matches(\"[0-9]{5}(-[0-9]{4}){0,1}\")
   Severity = error
 
 === Sheet USLab-OrderFacility =====================================
@@ -67,9 +69,9 @@
   Slice Description = OID for National Provider Identifier (NPI)
   Must Support = Y
   Type = uri
-  Short Label = See https://nppes.cms.hhs.gov/NPPES/
+  Short Label = See http://hl7.org/fhir/sid/us-npi
   Committee Notes = ORC.21.10:Organization Identifier:ST:C(R/RE):::1..20:= , EI datatypeORC.21.10:Organization Identifier:ST:C(R/RE):::1..20:= , EI datatype
-  Value = urn:oid:2.16.840.1.113883.4.6
+  Value = http://hl7.org/fhir/sid/us-npi
 
  -- Row 7 -----------------------------------
   Element = Organization.identifier.value
@@ -198,6 +200,7 @@
   Context = Organization
   English = Shall have Organization.name and/or Organization.identifier.
   XPath = exists(f:name) or exists(f:identifier)
+  FHIRPath = name or identifier
   Severity = error
 
  -- Row 2 -----------------------------------
@@ -205,6 +208,7 @@
   Context = Organization.address.postalCode
   English = (Zip or Postal Code) SHALL be formatted as 99999[-9999] for US Zip or ZIP +4 codes or as A9A9A9 for Canadian postal codes.
   XPath = f:matches(issued,[0-9]{5}(-[0-9]{4}){0,1} )
+  FHIRPath = postalCode:matches(\"[0-9]{5}(-[0-9]{4}){0,1}\")
   Severity = error
 
 === Sheet USLab-PerformingLab =====================================
@@ -407,6 +411,7 @@
   Context = Organization
   English = Shall have Organization.name and/or Organization.identifier.
   XPath = exists(f:name) or exists(f:identifier)
+  FHIRPath = name or identifier
   Severity = error
 
  -- Row 2 -----------------------------------
@@ -414,6 +419,7 @@
   Context = Organization.address.postalCode
   English = (Zip or Postal Code) SHALL be formatted as 99999[-9999] for US Zip or ZIP +4 codes or as A9A9A9 for Canadian postal codes.
   XPath = f:matches(issued,[0-9]{5}(-[0-9]{4}){0,1} )
+  FHIRPath = postalCode:matches(\"[0-9]{5}(-[0-9]{4}){0,1}\")
   Severity = error
 
 === Sheet USLab-CCTarget =====================================
@@ -462,12 +468,12 @@
  -- Row 6 -----------------------------------
   Element = Organization.identifier.system
   Card. = 1..1
-  Slice Description = OID for National Provider Identifier (NPI)
+  Slice Description = URL for National Provider Identifier (NPI)
   Must Support = Y
   Type = uri
-  Short Label = See https://nppes.cms.hhs.gov/NPPES/
+  Short Label = See http://hl7.org/fhir/sid/us-npi
   Committee Notes = 11/19/2014 EH: shall have generated text narrative
-  Value = urn:oid:2.16.840.1.113883.4.6
+  Value = http://hl7.org/fhir/sid/us-npi
 
  -- Row 7 -----------------------------------
   Element = Organization.identifier.value

@@ -3,7 +3,6 @@ package org.hl7.fhir.definitions.generators.specification;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +10,8 @@ import java.util.Map;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
+import org.hl7.fhir.dstu21.model.StructureDefinition;
+import org.hl7.fhir.dstu21.model.Enumerations.BindingStrength;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -18,7 +19,6 @@ import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.instance.model.Enumerations.BindingStrength;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.IniFile;
@@ -196,6 +196,10 @@ public class SvgGenerator extends BaseGenerator {
     links.clear();
     XMLWriter xml = new XMLWriter(new FileOutputStream(filename), "UTF-8");
     generate(resource, xml);
+  }
+
+  public String generate(StructureDefinition definition, String filename, String id) throws Exception {
+    return "todo";
   }
 
   private void generate(ResourceDefn resource, XMLWriter xml) throws Exception {

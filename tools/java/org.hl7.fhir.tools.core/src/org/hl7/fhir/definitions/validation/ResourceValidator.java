@@ -49,18 +49,17 @@ import org.hl7.fhir.definitions.model.Operation.OperationExample;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn.SearchType;
+import org.hl7.fhir.dstu21.model.ValueSet;
+import org.hl7.fhir.dstu21.model.Enumerations.BindingStrength;
+import org.hl7.fhir.dstu21.model.OperationOutcome.IssueSeverity;
+import org.hl7.fhir.dstu21.model.OperationOutcome.IssueType;
+import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionComponent;
+import org.hl7.fhir.dstu21.utils.Translations;
+import org.hl7.fhir.dstu21.validation.BaseValidator;
+import org.hl7.fhir.dstu21.validation.ValidationMessage;
+import org.hl7.fhir.dstu21.validation.ValidationMessage.Source;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.model.W5Entry;
-import org.hl7.fhir.instance.model.Enumerations.BindingStrength;
-import org.hl7.fhir.instance.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.instance.model.ValueSet;
-import org.hl7.fhir.instance.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.instance.model.OperationOutcome.IssueType;
-import org.hl7.fhir.instance.utils.Translations;
-import org.hl7.fhir.instance.validation.BaseValidator;
-import org.hl7.fhir.instance.validation.ValidationMessage;
-import org.hl7.fhir.instance.validation.ValidationMessage.Source;
-import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
 
 
@@ -88,15 +87,17 @@ public class ResourceValidator extends BaseValidator {
   private final Map<String, ValueSet> codeSystems;
   private SpellChecker speller;
   private int maxElementLength;
+  private List<FHIRPathUsage> fpUsages;
   
 //  private Map<String, Integer> typeCounter = new HashMap<String, Integer>();
 
-	public ResourceValidator(Definitions definitions, Translations translations, Map<String, ValueSet> map, String srcFolder) throws IOException {
+	public ResourceValidator(Definitions definitions, Translations translations, Map<String, ValueSet> map, String srcFolder, List<FHIRPathUsage> fpUsages) throws IOException {
 		super();
 		source = Source.ResourceValidator;
 		this.definitions = definitions;
 		this.translations = translations;
 		this.codeSystems = map;
+		this.fpUsages = fpUsages;
 		speller = new SpellChecker(srcFolder, definitions);
 		int l = 0;
 		for (String n : definitions.getTypes().keySet())
@@ -237,6 +238,8 @@ public class ResourceValidator extends BaseValidator {
       if (rule(errors, IssueType.STRUCTURE, rd.getName(), !Utilities.noString(p.getDescription()), "Search Parameter description is empty (\""+p.getCode()+"\")"))
         rule(errors, IssueType.STRUCTURE, rd.getName(), Character.isUpperCase(p.getDescription().charAt(0)) || p.getDescription().startsWith("e.g. ") || p.getDescription().contains("|"), "Search Parameter descriptions should start with an uppercase character(\""+p.getDescription()+"\")");
       try {
+        if (!Utilities.noString(p.getExpression()))
+          fpUsages.add(new FHIRPathUsage(rd.getName()+"::"+p.getCode(), rd.getName(), rd.getName(), p.getDescription(), p.getExpression()));
         for (String path : p.getPaths()) {
           ElementDefn e;
           String pp = trimIndexes(path);
@@ -542,7 +545,7 @@ public class ResourceValidator extends BaseValidator {
 		if (e.typeCode().equals("code") && parent != null && !e.isNoBindingAllowed()) {
 		  rule(errors, IssueType.STRUCTURE, path, e.hasBinding(), "An element of type code must have a binding");
 		}
-    if ((e.usesType("Coding") && !parentName.equals("CodeableConcept")) || (e.usesType("CodeableConcept") && !(e.usesType("Quantity") || e.usesType("SimpleQuantity")))) {
+    if ((e.usesType("Coding") && !parentName.equals("CodeableConcept")) || (e.usesType("CodeableConcept") && !(e.usesType("Reference") || e.usesType("Quantity") || e.usesType("SimpleQuantity")))) {
       warning(errors, IssueType.STRUCTURE, path, e.hasBinding(), "An element of type CodeableConcept or Coding must have a binding");
     }
     if (e.getTypes().size() > 1) {
@@ -582,9 +585,21 @@ public class ResourceValidator extends BaseValidator {
 
     needsRimMapping = needsRimMapping && !"n/a".equalsIgnoreCase(s) && !Utilities.noString(s);
     
-		for (ElementDefn c : e.getElements()) {
-		  vsWarnings = vsWarnings + checkElement(errors, path + "." + c.getName(), c, parent, e.getName(), needsRimMapping, optionalParent, hasSummary, vsWarns);
-		}
+    // check name uniqueness
+    for (ElementDefn c : e.getElements()) {
+      String name = c.getName();
+      if (name.endsWith("[x]")) {
+        name = name.substring(0, name.length()-3);
+        for (ElementDefn c2 : e.getElements()) {
+          if (c != c2)
+            rule(errors, IssueType.STRUCTURE, path, !c2.getName().startsWith(name) || !definitions.hasType(c2.getName().substring(name.length())), "Duplicate Child Name "+c.getName()+"/"+c2.getName()+" at "+path);
+        }
+      }
+    }
+    
+    for (ElementDefn c : e.getElements()) {
+      vsWarnings = vsWarnings + checkElement(errors, path + "." + c.getName(), c, parent, e.getName(), needsRimMapping, optionalParent, hasSummary, vsWarns);
+    }
 		return vsWarnings;
 	}
 
@@ -785,7 +800,8 @@ public class ResourceValidator extends BaseValidator {
       }
       StringBuilder b = new StringBuilder();
       for (DefinedCode c : ac) {
-        b.append(" | ").append(c.getCode());
+      	if (!c.getAbstract())
+        	b.append(" | ").append(c.getCode());
       }
       if (sd.equals("*")) {
         e.setShortDefn(b.toString().substring(3));
