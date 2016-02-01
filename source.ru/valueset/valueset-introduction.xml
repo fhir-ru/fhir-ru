@@ -25,11 +25,11 @@
 Эта операция выполняется для создании коллекции кодов, готовых к использованию при вводе данных или валидации. Кроме того, расширенный набор значений может содержать и первоначальное определение.
 </p>
 <p>
-Наборы значений, которые содержат инлайновые кодовые системы, предназначены для маленьких, простых кодовых систем, которые можно найти повсеместно по всему контексту реализации (например списки больничных палат, коды состояния, перечни). 
+Наборы значений, которые содержат инлайновые кодовые системы, предназначены для маленьких, простых кодовых систем, которые можно найти повсеместно по всему контексту реализации (например списки слов, коды состояния, перечни). 
 Определение встроенной кодовой системы не предназначено для отображения больших публичных справочников, таких как LOINC и т. п. - такие справочники имеют собственные форматы распространения.
 <!-- 
 Value sets that contain inline code systems are intended for small, simple code systems that are 
-found throughout the implementation context (e.g., lists of wards, status codes, enumerations). 
+found throughout the implementation context (e.g., lists of words, status codes, enumerations). 
 The inline code system definition is not intended to represent large publically defined terminologies 
 such as LOINC, etc. - these terminologies have their own distribution formats.
  -->

@@ -159,7 +159,7 @@ operation. This can be accomplished using a websocket notification channel. -->
 
 <pre class="json">
   "channel": {
-    "type": "webSocket"
+    "type": "websocket"
   }
 </pre>
 

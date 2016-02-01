@@ -193,12 +193,21 @@ signatures.html
 			<page type="resource" resource="Condition"/>
 			<page type="resource" resource="CarePlan"/>
 			<page type="resource" resource="Goal"/>
+			<page type="resource" resource="Protocol"/>
 			<page type="resource" resource="ClinicalImpression"/>
 			<page type="resource" resource="ReferralRequest"/>
 			<page type="resource" resource="Procedure"/>
 			<page type="resource" resource="ProcedureRequest"/>
+			<page type="resource" resource="DecisionSupportServiceModule"/>
+			<page type="resource" resource="DecisionSupportRule"/>
 			<page type="resource" resource="DetectedIssue"/>
 			<page type="resource" resource="RiskAssessment"/>
+			<page type="resource" resource="ModuleMetadata"/>
+			<page type="resource" resource="ModuleDefinition"/>
+			<page type="resource" resource="Library"/>
+			<page type="resource" resource="OrderSet"/>
+			<page type="resource" resource="GuidanceResponse"/>
+			<page type="resource" resource="Measure"/>
 			<page type="resource" resource="Medication"/>
 			<page type="resource" resource="MedicationOrder"/>
 			<page type="resource" resource="MedicationAdministration"/>
@@ -212,6 +221,7 @@ signatures.html
 			<page type="resource" resource="DiagnosticOrder"/>
 			<page type="resource" resource="ImagingStudy"/>
 			<page type="resource" resource="ImagingObjectSelection"/>
+            <page type="resource" resource="Sequence"/>
 			<page type="resource" resource="Specimen"/>
 			<!--<page type="resource" resource="DeviceObservationReport"/>-->
 			<page type="resource" resource="Questionnaire"/>
@@ -229,6 +239,7 @@ signatures.html
 			<page type="resource" resource="Account"/>
 			<page type="resource" resource="ProcessRequest"/>
 			<page type="resource" resource="ProcessResponse"/>
+			<page type="resource" resource="Linkage"/>
 			<page type="resource" resource="Device"/>
 			<page type="resource" resource="DeviceComponent"/>
 			<page type="resource" resource="DeviceMetric"/>
@@ -277,6 +288,7 @@ signatures.html
 			<page type="resource" resource="SearchParameter"/>
 			<page type="resource" resource="DataElement"/>
 			<page type="resource" resource="ValueSet"/>
+                        <page type="resource" resource="ExpansionProfile"/>
 			<page type="resource" resource="NamingSystem"/>
 			<page type="resource" resource="ConceptMap"/>
 			<page type="resource" resource="TestScript" />

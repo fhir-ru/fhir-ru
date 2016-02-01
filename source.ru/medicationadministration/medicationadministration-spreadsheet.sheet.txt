@@ -91,18 +91,21 @@
   Context = MedicationAdministration.dosage
   English = SHALL have at least one of dosage.quantity and dosage.rate[x]
   XPath = exists(f:quantity) or exists(f:rateRatio) or exists(f:rateRange)
+  Expression = quantity or rate[x]
 
  -- Row 2 -----------------------------------
   Id = 2
   Context = MedicationAdministration
   English = Reason not given is only permitted if wasNotGiven is true
   XPath = not(exists(f:reasonNotGiven) and f:wasNotGiven/@value=false())
+  Expression = reasonNotGiven.empty() or wasNotGiven = \'true\'
 
  -- Row 3 -----------------------------------
   Id = 3
   Context = MedicationAdministration
   English = Reason given is only permitted if wasNotGiven is false
   XPath = not(exists(f:reasonGiven) and f:wasNotGiven/@value=true())
+  Expression = reasonGiven.empty() or wasNotGiven = \'false\'
 
 === Sheet Data Elements =====================================
 
@@ -239,8 +242,8 @@
 
  -- Row 14 -----------------------------------
   Element = MedicationAdministration.note
-  Card. = 0..1
-  Type = string
+  Card. = 0..*
+  Type = Annotation
   Short Label = Information about the administration
   Definition = Extra information about the medication administration that is not conveyed by the other attributes.
 
@@ -251,7 +254,6 @@
   Short Label = Details of how medication was taken
   Definition = Describes the medication dosage information details e.g. dose, rate, site, route, etc.
   RIM Mapping = component->SubstanceAdministrationEvent
-  To Do = The RMIM has priority code on the act relationship.  How do we handle this?
 
  -- Row 16 -----------------------------------
   Element = MedicationAdministration.dosage.text

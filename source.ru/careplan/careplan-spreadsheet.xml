@@ -16,11 +16,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11175</WindowHeight>
+  <WindowHeight>12975</WindowHeight>
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>2</ActiveSheet>
   <FirstVisibleSheet>1</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
@@ -962,7 +962,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">План медицинского обслуживания пациента<!-- Healthcare plan for patient --> or group</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Healthcare plan for patient or group</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Описывает намерение одного или нескольких медицинских специалистов, направленное на оказание медицинского ухода конкретному пациенту в течение некоторого периода времени, возможно ограниченное уходом только при одном или нескольких определенных состояниях<!-- Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1535,7 +1535,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Конкретный человек или организация, которая участвует / ожидается участие в плане ухода.<!-- The specific person or organization who is participating/expected to participate in the care plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Пациента здесь необходимо указывать, только если у него есть еще какая-то роль помимо &quot;subject of care&quot;<!-- Patient only needs to be listed if they have a role other than &quot;subject of care&quot; -->.&#10;&#10;Member is optional because some participants may be known only by their role, particularly in draft plans.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Patient only needs to be listed if they have a role other than &quot;subject of care&quot;.&#10;&#10;Member is optional because some participants may be known only by their role, particularly in draft plans.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.role</Data><NamedCell
@@ -1662,7 +1662,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Комментарии к этой деятельности<!-- Comments about the activity --> status/progress</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Comments about the activity status/progress</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Notes about the adherence/status/progress of the activity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -3940,7 +3940,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -4006,9 +4005,9 @@
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">English description of constraint</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s102"><Data ss:Type="String">OCL</Data><Comment ss:Author=""><ss:Data
-       xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
-        x:Family="Swiss" html:Size="8" html:Color="#000000">Optional - OCL expression of the rule</Font>       </ss:Data></Comment><NamedCell
+    <Cell ss:StyleID="s102"><Data ss:Type="String">Expression</Data><Comment
+      ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
+        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000">Optional - OCL expression of the rule</Font>       </ss:Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s103"><Data ss:Type="String">XPath</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
@@ -4022,7 +4021,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">CarePlan.activity</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Provide a reference or detail, not both</Data></Cell>
-    <Cell ss:StyleID="s90"/>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">detail.empty() or reference.empty()</Data></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(exists(f:detail)) or not(exists(f:reference))</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4453,6 +4452,7 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -4472,8 +4472,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

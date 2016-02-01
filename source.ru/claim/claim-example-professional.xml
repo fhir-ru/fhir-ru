@@ -70,7 +70,7 @@
      <system value="http://hl7.org/fhir/ex-serviceproduct"/>
      <code value="exam"/> 
    </service>
-   <serviceDate value="2014-08-16"/>
+   <servicedDate value="2014-08-16"/>
    <unitPrice>
       <value value="75.00"/>
 	  <system value="urn:iso:std:iso:4217"/>
