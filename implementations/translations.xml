@@ -697,7 +697,7 @@
         <translation lang="pl">Powrót do strony głównej</translation>
         <translation lang="es">Volver al inicio</translation>
         <translation lang="fr">Retour à l'accueil</translation>
-        <translation lang="ru">В начало</translation>
+		<translation lang="ru">На главную</translation>
     </item>
     <item id="MSG_BAD_FORMAT" ecode="true">
         <translation lang="en">Bad Syntax: "%s" must be a %s'</translation>
@@ -902,7 +902,7 @@
         <translation lang="pl">Fast Healthcare Interoperability Resources - Strona główna</translation>
         <translation lang="es">Fast Healthcare Interoperability Resources - Página de Inicio</translation>
         <translation lang="fr">Fast Healthcare Interoperability Resources - Accueil</translation>
-        <translation lang="ru">Fast Healthcare Interoperability Resources - Домашняя страница</translation>
+        <translation lang="ru">Fast Healthcare Interoperability Resources - Главная страница</translation>
     </item>
     <item id="MSG_ID_INVALID" ecode="true">
         <translation lang="en">Id "%s" has an invalid character "%s"</translation>
@@ -1722,6 +1722,7 @@
         <translation lang="en">Home</translation>
         <translation lang="nl">Start</translation>
         <translation lang="fr">Accueil</translation>
+    <translation lang="ru">Главная</translation>
     </item>
     <item id="SERVER_HOME">
         <translation lang="en">Server Home</translation>
