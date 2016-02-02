@@ -1,37 +1,49 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 <div>
     
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p>
-    The Sequence resource is designed to describe a sequence variant or a sequence without variant information. Complete genetic sequence information, of which specific genetic variations are a part, is reported by reference to the GA4GH repository.  Thus, the FHIR Sequence resource avoids large genomic payloads in a manner analogous to how the FHIR ImagingStudy resource references large images maintained in other systems.
-    This resource contextualizes well established standards from the field of clinical genetics into the standards of healthcare (e.g. HGNC - HUGO Gene Nomenclature Committee's international standard for gene names, symbols, and identifiers).
+Ресурс Sequence предназначен для описания генетических вариантов и последовательностей без информации о вариантах. Полная информация о генетической последовательности, частью которой являются особые генетические варианты, передаётся с помощью ссылки на GA4GH-репозиторий. Таким образом, FHIR-ресурс Sequence избегает передачи больших объёмов генетических данных аналогично тому, как FHIR-ресурс ImagingStudy ссылается на большие изображения, находящиеся в других системах.
+Этот ресурс связывает давно устоявшиеся стандарты из области медицинской генетики и стандарты здравоохранения (например международный стандарт по утверждению уникальных названий, аббревиатур (символов) и идентификаторов геномов Комитета по номенклатуре геномов Международной организации по изучению генома человека (HGNC)).
+<!--     The Sequence resource is designed to describe a sequence variant or a sequence without variant information. Complete genetic sequence information, of which specific genetic variations are a part, is reported by reference to the GA4GH repository.  Thus, the FHIR Sequence resource avoids large genomic payloads in a manner analogous to how the FHIR ImagingStudy resource references large images maintained in other systems.
+    This resource contextualizes well established standards from the field of clinical genetics into the standards of healthcare (e.g. HGNC - HUGO Gene Nomenclature Committee's international standard for gene names, symbols, and identifiers). -->
 </p>
-<h3>Genetic Standards and Resources include:</h3>
+<h3>Генетические стандарты и ресурсы включают:<!-- Genetic Standards and Resources include: --></h3>
 <ul>
-    <li>Variant Databases: <a href="http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi">dbSNP</a> , <a href="http://www.ncbi.nlm.nih.gov/clinvar/">ClinVar</a>, and <a href="http://cancer.sanger.ac.uk/cosmic/">COSMIC</a> </li>
-    <li>Reference Sequences: <a href="http://www.ncbi.nlm.nih.gov/refseq/">RefSeq</a> and <a href="http://www.ensembl.org/index.html">ENSEMBL</a> </li>
+    <li>База данных генетических вариантов: <a href="http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi">dbSNP</a> , <a href="http://www.ncbi.nlm.nih.gov/clinvar/">ClinVar</a> и <a href="http://cancer.sanger.ac.uk/cosmic/">COSMIC</a> </li>
+    <li>Справочники последовательностей: <a href="http://www.ncbi.nlm.nih.gov/refseq/">RefSeq</a> и <a href="http://www.ensembl.org/index.html">ENSEMBL</a> </li>
+<!--     <li>Variant Databases: <a href="http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi">dbSNP</a> , <a href="http://www.ncbi.nlm.nih.gov/clinvar/">ClinVar</a>, and <a href="http://cancer.sanger.ac.uk/cosmic/">COSMIC</a> </li>
+    <li>Reference Sequences: <a href="http://www.ncbi.nlm.nih.gov/refseq/">RefSeq</a> and <a href="http://www.ensembl.org/index.html">ENSEMBL</a> </li> -->
 </ul>
 <p>
-    This resource is designed to describe a sequence variation with clinical significance with information such as:
+Этот ресурс предназначен для описания генетических вариантов клинической значимости через указание следующей информации:
+    <!-- This resource is designed to describe a sequence variation with clinical significance with information such as: -->
 </p>
     <ul>
-        <li>Name of the variation represented</li>
+        <li>Название представленной вариации</li>
+        <li>Тип вариации</li>
+        <li>Область гена, занятая вариацией</li>
+        <li>Название гена</li>
+        <li>Источник ткани, использованный для определения генотипа вариации</li>
+<!--         <li>Name of the variation represented</li>
         <li>Type of the variation</li>
         <li>Gene region occupied by the variation</li>
         <li>Name of the gene</li>
-        <li>Tissue source used to determine genotype of the variation</li>
+        <li>Tissue source used to determine genotype of the variation</li> -->
     </ul>
 <p>
-    It is strongly encouraged to provide all available information in this resource for any reported variants, because receiving systems (e.g. discovery research, outcomes analysis, and public health reporting) may use this information to normalize variants over time or across sources.  However, these data should not be used to dynamically correct/change variant representations for clinical use outside of the laboratory, due to insufficient information.
+Настоятельно рекомендуется предоставлять всю имеющуюся информацию в этом ресурсе для любых зарегистрированных вариантов, потому что принимающие системы (например научное исследование, анализ результатов и представление отчетности по здравоохранению) могут использовать эту информацию для нормализации вариантов по времени и по источникам. Тем не менее, эти данные не должны быть использованы для динамической корректировки/изменения представлений вариантов для клинического использования вне лаборатории из-за недостаточной полноты информации.
+    <!-- It is strongly encouraged to provide all available information in this resource for any reported variants, because receiving systems (e.g. discovery research, outcomes analysis, and public health reporting) may use this information to normalize variants over time or across sources.  However, these data should not be used to dynamically correct/change variant representations for clinical use outside of the laboratory, due to insufficient information. -->
 </p>
 <p>
-    Implementers should be aware that semantic equivalency of results of genetic variants cannot be guaranteed unless there is an agreed upon standard between sending and receiving systems.
+Реализаторы должны знать, что семантическая эквивалентность результатов генетических вариантов не может быть гарантирована, если нет согласованного стандарта между системами отправки и получения.
+    <!-- Implementers should be aware that semantic equivalency of results of genetic variants cannot be guaranteed unless there is an agreed upon standard between sending and receiving systems. -->
 </p>
 
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи</h2>
 
 <p>
     Focus of the resource is to provide data <b>immediately</b> relevant to clinical decision-making. Hence data such as precise read of DNA sequences and sequence alignment are not included; such data are nonetheless accessible through references to <a href="http://ga4gh.org/#/">GA4GH</a> (Global Alliance for Genomics and Health) API.
