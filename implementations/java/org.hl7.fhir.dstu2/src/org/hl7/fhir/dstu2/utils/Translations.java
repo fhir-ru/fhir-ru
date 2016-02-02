@@ -91,7 +91,7 @@ public class Translations {
         return res;
     }
     if (defaultMsg == null) {
-      String res = getByLang(msg, "en");
+      String res = getByLang(msg, "ru");
       if (res != null)
         return res;
     }
@@ -116,8 +116,8 @@ public class Translations {
       return "Nederlands (Dutch)";
     if (s.equals("de"))
       return "Deutsch (German)";
-    if (s.equals("du"))
-      return "Ру�?�?кий (Russian)";
+    if (s.equals("ru"))
+      return "Русский (Russian)";
     return "\"" + s + "\"";
   }
 

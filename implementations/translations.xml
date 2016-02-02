@@ -1719,7 +1719,7 @@
         <translation lang="ru">Сервер FHIR RESTful - Загрузка для %s завершена</translation>
     </item>
     <item id="HOME">
-        <translation lang="en">Home1</translation>
+        <translation lang="en">Home</translation>
         <translation lang="nl">Start</translation>
         <translation lang="fr">Accueil</translation>
     <translation lang="ru">Главная</translation>
