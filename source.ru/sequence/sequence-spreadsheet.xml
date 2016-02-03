@@ -1077,9 +1077,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">A Sequence</Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Последовательность<!-- A Sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">Variation and Sequence data.</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Данные о вариации или последовательности.<!-- Variation and Sequence data. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1103,7 +1103,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">AA | DNA | RNA</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Amino acid / cDNA transcript / RNA variation.</Data><NamedCell
+    <Cell><Data ss:Type="String">Аминокислота / Транскрипция комплементарной ДНК / РНК-вариация.<!-- Amino acid / cDNA transcript / RNA variation. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1116,9 +1116,9 @@
     <Cell ss:Index="8" ss:StyleID="s90"><Data ss:Type="String">sequenceVariation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Identifier for variant and ClinVar, dbSNP or COSMIC identifier should be used </Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Идентификатор варианты и ClinVar, dbSNP или COSMIC-идентификатор необходимо использовать<!-- Identifier for variant and ClinVar, dbSNP or COSMIC identifier should be used  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifier for variant.  If a germline variant, ClinVar or dbSNP identifier should be used.  If a somatic variant, COSMIC identifier should be used, unless in ClinVar then either maybe used. Need to provide the code system used (ClinVar, dbSNP, COSMIC).</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор варианты. В случае варианты зародышевой линии, следует использовать идентификатор ClinVar или dbSNP. Если это соматическая вариация, необходимо использовать идентификатор COSMIC, если не в ClinVar, тогда можно использовать любой из двух. Необходимо указывать кодовую систему  (ClinVar, dbSNP, COSMIC).<!-- Identifier for variant.  If a germline variant, ClinVar or dbSNP identifier should be used.  If a somatic variant, COSMIC identifier should be used, unless in ClinVar then either maybe used. Need to provide the code system used (ClinVar, dbSNP, COSMIC). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1131,9 +1131,9 @@
     <Cell ss:Index="8"><Data ss:Type="String">sequenceReference</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Reference identifier.  It must match the type in the Sequence.type field </Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Справочный идентификатор. Должен совпадать с типом в поле Sequence.type<!-- Reference identifier.  It must match the type in the Sequence.type field  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reference identifier for cDNA transcript/protein, with version, from NCBI's RefSeq or ENSEMBL. This reference sequence identifier must match the type in the Sequence.type field</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Справочный идентификатор для cDNA transcript/protein, с версией, из NCBI's RefSeq или ENSEMBL. Этот справочный идентификатор последовательности должен совпадать с типом, указанным в поле Sequence.type<!-- Reference identifier for cDNA transcript/protein, with version, from NCBI's RefSeq or ENSEMBL. This reference sequence identifier must match the type in the Sequence.type field --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1144,9 +1144,9 @@
     <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">Quantity of the sequence </Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">Количество последовательности<!-- Quantity of the sequence  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Quantity of the sequence. </Data><NamedCell
+    <Cell><Data ss:Type="String">Количество последовательности.<!-- Quantity of the sequence.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1165,9 +1165,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The coordinate of the variant</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Координата варианты<!-- The coordinate of the variant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The coordinate of the variant.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Координата варианты.<!-- The coordinate of the variant. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1196,9 +1196,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The chromosome containing the genetic finding</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Хромосома, содержащая генетические сведения<!-- The chromosome containing the genetic finding --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The chromosome containing the genetic finding. The value set will be 1-22, X, Y when the species is human without chromosome abnormality. Otherwise,  NCBI-Gene code system should be used.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Хромосома, содержащая генетические сведения. Набор значений будет 1-22, X, Y для человеческой особи без хромосомных аномалий. В противном случае следует использовать кодовую систему NCBI-Gene.<!-- The chromosome containing the genetic finding. The value set will be 1-22, X, Y when the species is human without chromosome abnormality. Otherwise,  NCBI-Gene code system should be used. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
