@@ -1716,10 +1716,10 @@
         <translation lang="pl">Serwer FHIR RESTful - Upload %s ukończono</translation>
         <translation lang="es">FHIR RESTful Server - Subida de %s completada</translation>
         <translation lang="fr">Serveur RESTful FHIR - Upload de %s terminé</translation>
-        <translation lang="ru">Сервер FHIR RESTful - Загрузка для %s завершена</translation>
+        <translation lang="ru">Сервер FHIR RESTful - Загрузка на %s завершена</translation>
     </item>
     <item id="HOME">
-        <translation lang="en">Home</translation>
+        <translation lang="en">Главная</translation>
         <translation lang="nl">Start</translation>
         <translation lang="fr">Accueil</translation>
     <translation lang="ru">Главная</translation>
