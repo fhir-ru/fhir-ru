@@ -971,9 +971,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Описание функциональности сервиса поддержки принятия решений<!-- A description of decision support service functionality --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">A description of decision support service functionality</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Ресурс DecisionSupportServiceModule описывает функциональность поддержки принятия решений, доступную в виде сервиса<!-- The DecisionSupportServiceModule resource describes decision support functionality that is available as a service --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">The DecisionSupportServiceModule resource describes decision support functionality that is available as a service</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1004,9 +1004,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Логический идентификатор<!-- Logical identifier --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Logical identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Логический идентификатор для модуля, например CMS или NQF-идентификаторы для артефакта измерения<!-- A logical identifier for the module such as the CMS or NQF identifiers for a measure artifact --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A logical identifier for the module such as the CMS or NQF identifiers for a measure artifact</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1036,9 +1036,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Версия модуля, если есть<!-- The version of the module, if any --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The version of the module, if any</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Версия модуля, если есть. Для указания версии, соответствующей спецификации Decision Support Service, используйте формат Major.Minor.Revision (например 1.0.0). Более подробную информацию по версионированию модулей знаний смотрите в спецификации Decision Support Service<!-- The version of the module, if any. To provide a version consistent with the Decision Support Service specification, use the format Major.Minor.Revision (e.g. 1.0.0). For more information on versioning knowledge modules, refer to the Decision Support Service specification --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The version of the module, if any. To provide a version consistent with the Decision Support Service specification, use the format Major.Minor.Revision (e.g. 1.0.0). For more information on versioning knowledge modules, refer to the Decision Support Service specification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1067,9 +1067,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Метаданные модуля сервиса<!-- Metadata for the service module --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Metadata for the service module</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс ModuleMetadata, содержащий метаданные модуля сервиса поддержки принятия решений<!-- A reference to a ModuleMetadata resource describing the metadata for the decision support service module --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A reference to a ModuleMetadata resource describing the metadata for the decision support service module</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1097,9 +1097,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Параметры модуля<!-- Parameters to the module --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Parameters to the module</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Параметры модуля. Указываются входные и выходные параметры. Входные параметры передаются вызывающим в рамках операции $evaluate. Выходные параметры включены в GuidanceResponse<!-- The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The parameters to the module. This collection specifies both the input and output parameters. Input parameters are provided by the caller as part of the $evaluate operation. Output parameters are included in the GuidanceResponse</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1129,9 +1129,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя параметра<!-- Parameter name --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Parameter name</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя параметра<!-- The name of the parameter --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of the parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1162,7 +1162,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Является ли параметр входным или выходным для модуля<!-- Whether the parameter is input or output for the module --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether the parameter is input or output for the module</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1191,9 +1191,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Краткое описание параметра<!-- A brief description of the parameter --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A brief description of the parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Краткое описание, для чего нужен этот параметр и как он используется модулем<!-- A brief discussion of what the parameter is for and how it is used by the module --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A brief discussion of what the parameter is for and how it is used by the module</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1224,7 +1224,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип параметра<!-- The type of the parameter --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of the parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1253,9 +1253,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Профиль параметра, если есть<!-- The profile of the parameter, any --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The profile of the parameter, any</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если профиль указан, то входные или выходные данные должны ему соответствовать <!-- If specified, this indicates a profile that the input data must conform to, or that the output data will conform to --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If specified, this indicates a profile that the input data must conform to, or that the output data will conform to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1284,9 +1284,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Означает, что на указанные структурные элементы ссылается модуль знаний<!-- Indicates that specific structure elements are referenced by the knowledge module --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates that specific structure elements are referenced by the knowledge module</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Означает, что на указанные структурные элементы ссылается модуль знаний, и они должны поддерживаться принимающей системой для корректной работы. Не означает, что значение для этого элемента является обязательным, означает, что принимающая система должна понимать этот элемент и предоставлять значения для него, если они доступны<!-- Indicates that specific elements of the type are referenced by the knowledge module and must be supported by the consumer in order to obtain an effective evaluation. This does not mean that a value is required for this element, only that the consuming system must understand the element and be able to provide values for it if they are available --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates that specific elements of the type are referenced by the knowledge module and must be supported by the consumer in order to obtain an effective evaluation. This does not mean that a value is required for this element, only that the consuming system must understand the element and be able to provide values for it if they are available</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1314,9 +1314,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодовые фильтры для обязательных данных, если есть<!-- Code filters for the required data, if any --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Code filters for the required data, if any</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Означает, что входные данные для этого параметра должны соответствовать заданному кодовому фильтру. Другими словами, значение элемента "path" во всех экземплярах должно быть из указанного набора значений (или списка концептов)<!-- Indicates that incoming data for this parameter is expected to match the given code filter. In other words, every instance should have a value for the path element that comes from the specified value set (or list of concepts) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates that incoming data for this parameter is expected to match the given code filter. In other words, every instance should have a value for the path element that comes from the specified value set (or list of concepts)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1345,9 +1345,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодовый атрибут фильтра<!-- The code-valued attribute of the filter --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The code-valued attribute of the filter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодовый атрибут фильтра. Указанный путь должен разрешаться из типа обязательных данных. Может содержать определители (.) для доступа к вложенным элементам, а также индексаторы ([x]) для элементов с кардинальным множеством больше единицы. Обратите внимание, что индекс должен быть целочисленной константой. Путь должен разрешаться в элемент типа "code", "Coding" или "CodeableConcept"<!-- The code-valued attribute of the filter. The specified path must be resolvable from the type of the required data. The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements. Note that the index must be an integer constant. The path must resolve to an element of type code, Coding, or CodeableConcept --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The code-valued attribute of the filter. The specified path must be resolvable from the type of the required data. The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements. Note that the index must be an integer constant. The path must resolve to an element of type code, Coding, or CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1376,9 +1376,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Набор значений для кодового фильтра<!-- The valueset for the code filter --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The valueset for the code filter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Набор значений для кодового фильтра. Элементы valueSet и codeableConcept - взаимоисключающие. Если указан valueSet, то фильтр будет возвращать только те элементы данных, для которых значение кодового элемента, указанного в пути, входит в приведенный набор значений<!-- The valueset for the code filter. The valueSet or codeableConcept elements are exclusive. If valueSet is specified, the filter will return only those data items for which the value of the code-valued element specified in the path is a member of the specified valueset --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The valueset for the code filter. The valueSet or codeableConcept elements are exclusive. If valueSet is specified, the filter will return only those data items for which the value of the code-valued element specified in the path is a member of the specified valueset</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1407,9 +1407,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодируемые концепты для фильтра<!-- The codeableConcepts for the filter --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The codeableConcepts for the filter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодируемый концепт для кодового фильтра. Только один valueSet или codeableConcept может быть указан. Если заданы codeableConcepts, то фильтр будет возвращать только те элементы данных, для которых кодовый атрибут, указанный в пути, имеет значение, являющееся одним из указанных кодируемых концептов<!-- The codeable concept for the code filter. Only one of valueSet or codeableConcept may be specified. If codeableConcepts are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified codeable concepts --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The codeable concept for the code filter. Only one of valueSet or codeableConcept may be specified. If codeableConcepts are given, the filter will return only those data items for which the code-valued attribute specified by the path has a value that is one of the specified codeable concepts</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1437,9 +1437,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Фильтры по дате для обязательных данных, если есть<!-- Date filters for the required data, if any --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Date filters for the required data, if any</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Означает, что входные данные для этого параметра должны соответствовать заданному фильру по дате. Другими словами, значение элемента "path" во всех экземплярах должно быть равно заданной дате/времени (или входить в период)<!-- Indicates that incoming data for this parameter is expected to match the given date filter. In other words, every instance should have a value for the path element that is equal to the given datetime (or within the given Period) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates that incoming data for this parameter is expected to match the given date filter. In other words, every instance should have a value for the path element that is equal to the given datetime (or within the given Period)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1468,9 +1468,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Временной атрибут фильтра<!-- The date-valued attribute of the filter --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The date-valued attribute of the filter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Временной атрибут фильтра. Указанный путь должен разрешаться из типа обязательных данных. Может содержать уточняющие элементы (.) для доступа к вложенным элементам, а также индексаторы ([x]) для повторяющихся элементов. Обратите внимание, что индекс должен быть целочисленной константой. Путь должен разрешаться в элемент типа dateTime, Period, Schedule или Timing<!-- The date-valued attribute of the filter. The specified path must be resolvable from the type of the required data. The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements. Note that the index must be an integer constant. The path must resolve to an element of type dateTime, Period, Schedule, or Timing --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The date-valued attribute of the filter. The specified path must be resolvable from the type of the required data. The path is allowed to contain qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to traverse multiple-cardinality sub-elements. Note that the index must be an integer constant. The path must resolve to an element of type dateTime, Period, Schedule, or Timing</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1499,9 +1499,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Значение фильтра, например период или дата/время<!-- The value of the filter, as a Period or dateTime value --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The value of the filter, as a Period or dateTime value</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Значение фильтра. Если указан период, то фильтр будет возвращать только те элементы данных, которые входят в границы периода включительно. Если указана дата/время, фильтр будет возвращать только те элементы данных, которые равны указанной дате/времени<!-- The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The value of the filter. If period is specified, the filter will return only those data items that fall within the bounds determined by the Period, inclusive of the period boundaries. If dateTime is specified, the filter will return only those data items that are equal to the specified dateTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
