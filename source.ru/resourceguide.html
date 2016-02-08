@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-[%settitle Guide to Resources%]
+[%settitle Путеводитель по ресурсам%]
 [%file newheader%]
 </head>
 <body>
@@ -10,52 +10,76 @@
 
 <div class="col-12">
 
-<h2>Guide to resources</h2>
+<h2>Путеводитель по ресурсам</h2>
 <table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">Draft</a></td></tr></table>
 
 <p>
-The FHIR specification defines a set of resources, and an infrastructure for handling resources. 
+В спецификации FHIR определён набор ресурсов и инфраструктура для работы с ними. Чтобы использовать FHIR при создании решений по интеграции, реализаторам необходимо найти соответствие между своими задачами и ресурсами и их содержимым.
+<!-- The FHIR specification defines a set of resources, and an infrastructure for handling resources. 
 In order to use FHIR to create solutions for integration requirements, implementers must map their 
-problems to resources and their content. 
+problems to resources and their content.  -->
 </p>
 <p>
-The resources are classified into 6 sections:
+Ресурсы сгруппированы в 6 разделов:
+<!-- The resources are classified into 6 sections: -->
 </p>
 <ol>
- <li><a href="#clinical"><b>Clinical</b></a>: The content of a clinical record </li>
+ <li><a href="#clinical"><b>Клинические</b></a>: содержимое истории болезни</li>
+ <li><a href="#identification"><b>Идентификационные</b></a>: вспомогательные сущности, участвующие в процессе оказания лечения</li>
+ <li><a href="#workflow"><b>Рабочий процесс</b></a>: управление процессом здравоохранения</li>
+ <li><a href="#financial"><b>Финансовые</b></a>: ресурсы для поддержки FHIR в части выставления счетов и платежей</li>
+ <li><a href="#conformance"><b>Обеспечение соответствия</b></a>: ресурсы для работы со спецификацией, разработки и тестирования решений на базе FHIR</li>
+ <li><a href="#infrastructure"><b>Инфраструктурные</b></a>: общая функциональность и ресурсы для внутренних потребностей FHIR</li>
+<!--  <li><a href="#clinical"><b>Clinical</b></a>: The content of a clinical record </li>
  <li><a href="#identification"><b>Identification</b></a>: Supporting entities involved in the care process</li>
  <li><a href="#workflow"><b>Workflow</b></a>: Manage the healthcare process</li>
  <li><a href="#financial"><b>Financial</b></a>: Resources that support the billing and payment parts of FHIR</li>
  <li><a href="#conformance"><b>Conformance</b></a>: Resources use to manage specification, development and testing of FHIR solutions</li>
- <li><a href="#infrastructure"><b>Infrastructure</b></a>: General functionality, and resources for internal FHIR requirements</li>
+ <li><a href="#infrastructure"><b>Infrastructure</b></a>: General functionality, and resources for internal FHIR requirements</li> -->
 </ol>
 <p>
-This page describes the resources and their functional intent in more detail to assist implementers to 
-understand their purpose and scope, and their supporting classifications.
+На этой странице приведено более подробное описание ресурсов и их функциональное назначение, чтобы помочь реализаторам в понимании их назначения и области действия, а также вспомогательная классификация.
+<!-- This page describes the resources and their functional intent in more detail to assist implementers to 
+understand their purpose and scope, and their supporting classifications. -->
 </p>
 
 <p>
-Where to find common concepts in this specification:
+Где смотреть информацию по общим понятиям данной спецификации:
+<!-- Where to find common concepts in this specification: -->
 </p>
 <table class="grid">
  <tr>
-  <td><b>Concept</b></td>
+   <td><b>Понятие</b></td>
+  <td><b>Пример</b></td>
+  <td><b>Где найти</b></td>
+<!--   <td><b>Concept</b></td>
   <td><b>Example</b></td>
-  <td><b>Where to find</b></td>
+  <td><b>Where to find</b></td> -->
  </tr>
  
- <tr><td colspan="3"><b>Clinical Findings</b></td></tr>
+  <tr><td colspan="3"><b>Результаты медицинских исследований</b></td></tr>
+ <tr><td>Лабораторные результаты</td><td>Blood panels such as CBC with Differential, Liver Panel, etc.</td><td><a href="diagnosticreport.html">DiagnosticReport</a> с <a href="observation.html">Observations</a></td></tr>
+ <tr><td>Результаты радиологических исследований</td><td>CT Scans, MRI, Plain Radiographs, Ultrasounds)</td><td><a href="diagnosticreport.html">DiagnosticReport</a> (некоторые с <a href="observation.html">Observations</a>)</td></tr>
+ <tr><td>Результаты диагностических исследований</td><td>EKG, pulmonary function test, EEG</td><td><a href="observation.html">Observations</a> (и, возможно, <a href="diagnosticreport.html">DiagnosticReport</a>)</td></tr>
+ <tr><td>Основные показатели состояния организма</td><td>Температура, кровяное давление, частота сердцебиения, частота дыхания</td><td><a href="observation.html">Observation</a></td></tr>
+ <tr><td>Другие результаты медицинских осмотров</td><td>Результаты выслушивания (больного)</td><td><a href="observation.html">Observation</a></td></tr>
+ <tr><td>Табличные данные по катетерам легочной артерии</td><td>Давление в легочной артерии</td><td><a href="observation.html">Observation</a></td></tr>
+<!--  <tr><td colspan="3"><b>Clinical Findings</b></td></tr>
  <tr><td>Laboratory Results</td><td>Blood panels such as CBC with Differential, Liver Panel, etc.</td><td><a href="diagnosticreport.html">DiagnosticReport</a> with <a href="observation.html">Observations</a></td></tr>
  <tr><td>Imaging Study Findings</td><td>CT Scans, MRI, Plain Radiographs, Ultrasounds)</td><td><a href="diagnosticreport.html">DiagnosticReport</a> (some with <a href="observation.html">Observations</a>)</td></tr>
  <tr><td>Diagnostic Test Results</td><td>EKG, pulmonary function test, EEG</td><td><a href="observation.html">Observations</a> (and maybe a <a href="diagnosticreport.html">DiagnosticReport</a>)</td></tr>
  <tr><td>Vital Signs</td><td>Temperature, Blood Pressure, Heart Rate, Respiratory Rate</td><td><a href="observation.html">Observation</a></td></tr>
  <tr><td>Other Physical Exam Findings</td><td>Auscultation findings</td><td><a href="observation.html">Observation</a></td></tr>
- <tr><td>Pulmonary Artery Catheter readings</td><td>Pulmonary artery pressure</td><td><a href="observation.html">Observation</a></td></tr>
+ <tr><td>Pulmonary Artery Catheter readings</td><td>Pulmonary artery pressure</td><td><a href="observation.html">Observation</a></td></tr> -->
  
- <tr><td colspan="3"><b>Patient Problems, Allergies and Adverse Events</b></td></tr> 
+  <tr><td colspan="3"><b>Проблемы, аллергии пациента и неблагоприятные события</b></td></tr> 
+ <tr><td>Аллергия</td><td>Пищевые или лекарственные аллергии</td><td><a href="allergyintolerance.html">AllergyIntolerance</a> </td></tr>
+ <tr><td>Клинический диагноз</td><td>Сахарный диабет, застойная сердечная недостаточность</td><td><a href="condition.html">Condition</a> </td></tr>
+ <tr><td>Adverse Event / Reaction</td><td>отрицательная побочная реакция на вещество, падения, нежелательные побочные проявления после операции, внутрибольничные инфекции</td><td>(ещё не сделано)</td></tr>
+<!--  <tr><td colspan="3"><b>Patient Problems, Allergies and Adverse Events</b></td></tr> 
  <tr><td>Allergy</td><td>Food or drug allergies</td><td><a href="allergyintolerance.html">AllergyIntolerance</a> </td></tr>
  <tr><td>Clinical Diagnosis</td><td>Diabetes, Congestive Heart Failure</td><td><a href="condition.html">Condition</a> </td></tr>
- <tr><td>Adverse Event / Reaction</td><td>Adverse reaction to an agent, falls, adverse surgical events, hospital infections</td><td>(not done yet)</td></tr>
+ <tr><td>Adverse Event / Reaction</td><td>Adverse reaction to an agent, falls, adverse surgical events, hospital infections</td><td>(not done yet)</td></tr> -->
  
  <tr><td colspan="3"><b>Patient History</b></td></tr>
  <tr><td>Chief Complaint</td><td>Cough, Pain, Fever, Fatigue</td><td><a href="condition.html">Condition</a> </td></tr>
