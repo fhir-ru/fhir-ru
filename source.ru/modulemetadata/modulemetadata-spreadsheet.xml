@@ -976,9 +976,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Defines common metadata used by quality artifacts</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Задает общие метаданные, используемые артефактами качества<!-- Defines common metadata used by quality artifacts --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The ModuleMetadata resource defines the common metadata elements used by quality improvement artifacts. This information includes descriptive and topical metadata to enable repository searches, as well as governance and evidentiary support information</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Ресурс ModuleMetadata задает общие элементы метаданных, используемые артефактами повышения качества. Эта информация включает в себя описательные и тематические метаданные для поддержки поиска по репозиториям, а также управления и доказательных вспомогательных данных<!-- The ModuleMetadata resource defines the common metadata elements used by quality improvement artifacts. This information includes descriptive and topical metadata to enable repository searches, as well as governance and evidentiary support information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1009,9 +1009,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Logical identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Логический идентификатор<!-- Logical identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A logical identifier for the module such as the CMS or NQF identifiers for a measure artifact</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Логический идентификатор модуля, например CMS или NQF-идентификаторы для артефакта измерения<!-- A logical identifier for the module such as the CMS or NQF identifiers for a measure artifact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
