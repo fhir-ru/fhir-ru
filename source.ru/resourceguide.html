@@ -75,13 +75,22 @@ understand their purpose and scope, and their supporting classifications. -->
   <tr><td colspan="3"><b>Проблемы, аллергии пациента и неблагоприятные события</b></td></tr> 
  <tr><td>Аллергия</td><td>Пищевые или лекарственные аллергии</td><td><a href="allergyintolerance.html">AllergyIntolerance</a> </td></tr>
  <tr><td>Клинический диагноз</td><td>Сахарный диабет, застойная сердечная недостаточность</td><td><a href="condition.html">Condition</a> </td></tr>
- <tr><td>Adverse Event / Reaction</td><td>отрицательная побочная реакция на вещество, падения, нежелательные побочные проявления после операции, внутрибольничные инфекции</td><td>(ещё не сделано)</td></tr>
+ <tr><td>Adverse Event / Reaction</td><td>Отрицательная побочная реакция на вещество, падения, нежелательные побочные проявления после операции, внутрибольничные инфекции</td><td>(ещё не сделано)</td></tr> 
 <!--  <tr><td colspan="3"><b>Patient Problems, Allergies and Adverse Events</b></td></tr> 
  <tr><td>Allergy</td><td>Food or drug allergies</td><td><a href="allergyintolerance.html">AllergyIntolerance</a> </td></tr>
  <tr><td>Clinical Diagnosis</td><td>Diabetes, Congestive Heart Failure</td><td><a href="condition.html">Condition</a> </td></tr>
  <tr><td>Adverse Event / Reaction</td><td>Adverse reaction to an agent, falls, adverse surgical events, hospital infections</td><td>(not done yet)</td></tr> -->
- 
- <tr><td colspan="3"><b>Patient History</b></td></tr>
+
+ <tr><td colspan="3"><b>История болезни</b></td></tr>
+ <tr><td>Основная жалоба больного</td><td>Кашель, боль, жар, утомление</td><td><a href="condition.html">Condition</a> </td></tr>
+ <tr><td>Хирургический анамнез</td><td>Аппендэктомия, герниопластика</td><td><a href="procedure.html">Procedure</a> </td></tr>
+ <tr><td>Перенесённые заболевания (анамнез)</td><td>Сахарный диабет, застойная сердечная недостаточность</td><td><a href="condition.html">Condition</a> </td></tr>
+ <tr><td>Карточка назначений (Medication Administration Record)</td><td>Варфарин 5 мг перорально - введён 12/10/2013 в 15:00</td><td><a href="medicationadministration.html">MedicationAdministration</a> </td></tr>
+ <tr><td>Домашние медикаменты</td><td>Варфарин 5 мг, 30-дневное количество, выдан 12/01/2013</td><td><a href="medicationstatement.html">MedicationStatement</a> </td></tr>
+ <tr><td>Социальный анамнез</td><td>сексуальное поведение, статус курильщика, употребление алкоголя, употребление запрещённых веществ</td><td><a href="observation.html">Observation</a> </td></tr>
+ <tr><td>Семейный анамнез</td><td>У матери сахарный диабет</td><td><a href="familymemberhistory.html">FamilyMemberHistory</a> </td></tr>
+ <tr><td>Признаки и симптомы</td><td>из исследования систем организма - боль, жар</td><td><a href="condition.html">Condition</a> </td></tr> 
+<!--  <tr><td colspan="3"><b>Patient History</b></td></tr>
  <tr><td>Chief Complaint</td><td>Cough, Pain, Fever, Fatigue</td><td><a href="condition.html">Condition</a> </td></tr>
  <tr><td>Past Surgical History</td><td>Appendectomy, Hernia repair</td><td><a href="procedure.html">Procedure</a> </td></tr>
  <tr><td>Past Medical History</td><td>Diabetes, Congestive heart failure</td><td><a href="condition.html">Condition</a> </td></tr>
@@ -89,40 +98,77 @@ understand their purpose and scope, and their supporting classifications. -->
  <tr><td>Home Meds</td><td>Warfarin 5mg, 30 day supply, dispensed on 12/01/2013</td><td><a href="medicationstatement.html">MedicationStatement</a> </td></tr>
  <tr><td>Social History</td><td>Sexual behavior, Smoking status, Alcohol intake, Illicit drug use</td><td><a href="observation.html">Observation</a> </td></tr>
  <tr><td>Family History</td><td>Mother has diabetes</td><td><a href="familymemberhistory.html">FamilyMemberHistory</a> </td></tr>
- <tr><td>Signs &amp; Symptoms</td><td>from a review of systems- Pain, Fever</td><td><a href="condition.html">Condition</a> </td></tr>
+ <tr><td>Signs &amp; Symptoms</td><td>from a review of systems- Pain, Fever</td><td><a href="condition.html">Condition</a> </td></tr> -->
 
- <tr><td colspan="3"><b>Suggested Physician Orders </b></td></tr>
+  <tr><td colspan="3"><b>Suggested Physician Orders </b></td></tr>
  <tr><td>Proposal for a laboratory test</td><td>A blood panel, a stool analysis</td><td><a href="diagnosticorder.html">DiagnosticOrder</a> </td></tr>
  <tr><td>Proposal for an imaging procedure</td><td>CT Scan, MRI, X-Rays</td><td><a href="diagnosticorder.html">DiagnosticOrder</a> </td></tr>
  <tr><td>Proposed Diet Order</td><td>An oral diet order</td><td><a href="nutritionorder.html">NutritionOrder</a> </td></tr>
  <tr><td>Proposed respiratory order</td><td>Oxygen delivery</td><td>Not done yet</td></tr>
  <tr><td>Proposed Medications</td><td>Aspirin, Lisinopril</td><td><a href="medicationorder.html">MedicationOrder</a> </td></tr>
  <tr><td>Proposed Supply</td><td>Wheel Chair, Food Tray</td><td><a href="supplyrequest.html">SupplyRequest</a> </td></tr>
+<!--  <tr><td colspan="3"><b>Suggested Physician Orders </b></td></tr>
+ <tr><td>Proposal for a laboratory test</td><td>A blood panel, a stool analysis</td><td><a href="diagnosticorder.html">DiagnosticOrder</a> </td></tr>
+ <tr><td>Proposal for an imaging procedure</td><td>CT Scan, MRI, X-Rays</td><td><a href="diagnosticorder.html">DiagnosticOrder</a> </td></tr>
+ <tr><td>Proposed Diet Order</td><td>An oral diet order</td><td><a href="nutritionorder.html">NutritionOrder</a> </td></tr>
+ <tr><td>Proposed respiratory order</td><td>Oxygen delivery</td><td>Not done yet</td></tr>
+ <tr><td>Proposed Medications</td><td>Aspirin, Lisinopril</td><td><a href="medicationorder.html">MedicationOrder</a> </td></tr>
+ <tr><td>Proposed Supply</td><td>Wheel Chair, Food Tray</td><td><a href="supplyrequest.html">SupplyRequest</a> </td></tr> -->
  
- <tr><td colspan="3"><b>Interdisciplinary Care Planning</b></td></tr>
+  <tr><td colspan="3"><b>Междисциплинарное планирование ухода</b></td></tr>
+ <tr><td>Цель пациента</td><td>Уменьшить риск падений, сбросить вес</td><td><a href="goal.html">Goal</a> (как часть <a href="careplan.html">CarePlan</a>)</td></tr>
+ <tr><td>Вмешательство</td><td>Оценка состояния пациента</td><td><a href="procedurerequest.html">ProcedureRequest</a> </td></tr>
+<!--  <tr><td colspan="3"><b>Interdisciplinary Care Planning</b></td></tr>
  <tr><td>Patient Goal</td><td>Reduce risk of falls, lose weight</td><td><a href="goal.html">Goal</a> (as part of a <a href="careplan.html">CarePlan</a>)</td></tr>
- <tr><td>Intervention</td><td>Patient assessments</td><td><a href="procedurerequest.html">ProcedureRequest</a> </td></tr>
+ <tr><td>Intervention</td><td>Patient assessments</td><td><a href="procedurerequest.html">ProcedureRequest</a> </td></tr> -->
 </table>
 
 <p>
-In addition, to the information on this page, see also <a href="usecases.html">Common Use Cases</a>.
+В дополнение к информации на этой странице, смотрите также <a href="usecases.html">Распространённые сценарии использования</a>.
+<!-- In addition, to the information on this page, see also <a href="usecases.html">Common Use Cases</a>. -->
 </p>
 
 <a name="w5"> </a>
-<h3>Resource Classification</h3>
+<h3>Классификация ресурсов<!-- Resource Classification --></h3>
 
 <p>
-In addition to the overall classification above, Resources and the data elements in them are 
-tapped into an overall ontology that provides consistent meaning across the resources. 
+Кроме общей классификации, приведённой выше, ресурсы и элементы данных в них представлены в виде всеобщей онтологии для получения согласованного представления о значении всех ресурсов.
+<!-- In addition to the overall classification above, Resources and the data elements in them are 
+tapped into an overall ontology that provides consistent meaning across the resources.  -->
 </p>
 
 <p>
-One of the most fundamental aspects of a resource is tense - where it fits
+Одним из фундаментальных аспектов ресурсов является грамматическое время - где ресурс расположен на временной шкале. Некоторые ресурсы представляют собой записи о прошедших событиях, другие - планы на будущее. В таблице ниже приведены категории, на которые делятся ресурсы в соответствии с такой классификацией:
+<!-- One of the most fundamental aspects of a resource is tense - where it fits
 into the time line. Some resources are records of past events, some are plans for
-the future, etc. This table summarizes the categories:
+the future, etc. This table summarizes the categories: -->
 </p>
 <table>
  <tr> 
+  <td><b>Тип</b></td>
+  <td><b>Описание</b></td>
+ </tr>
+ <tr> 
+  <td><a name="Record"> </a>Прошлое</td>
+  <td>Записи о событии, которое уже произошло</td>
+ </tr>
+ <tr> 
+  <td><a name="Warning"> </a>Настоящее</td>
+  <td>Запись, отражающая обмен [данными] в настоящее время</td>
+ </tr>
+ <tr> 
+  <td><a name="Plan"> </a>Будущее</td>
+  <td>Запись, которая описывает будущее намерение</td>
+ </tr>
+ <tr> 
+  <td><a name="Thing"> </a>Продолжающееся</td>
+  <td>Запись, поддерживаемая во времени, которая отслеживает состояние пациента</td>
+ </tr>
+ <tr> 
+  <td><a name="Thing"> </a>Несвязанное</td>
+  <td>Запись, не имеющая отношения ко времени (например фиксированная сущность)</td>
+ </tr>
+<!--  <tr> 
   <td><b>Type</b></td>
   <td><b>Description</b></td>
  </tr>
@@ -145,30 +191,40 @@ the future, etc. This table summarizes the categories:
  <tr> 
   <td><a name="Thing"> </a>Unrelated</td>
   <td>A record that doesn't relate to time (e.g. a fixed entity)</td>
- </tr>
+ </tr> -->
 </table>
 <p>
-Note that even future records end up in the past after 
-the event they are concerned with passes. 
+Обратите внимание, что даже записи, описывающие будущее, становятся прошлыми после того, как событие, с которым они связаны, проходит.
+<!-- Note that even future records end up in the past after 
+the event they are concerned with passes.  -->
 </p>
 
-<h3>Clinical</h3>
+<h3>Клинические<!-- Clinical --></h3>
 
-<h4>General</h4>
+<h4>Общие<!-- General --></h4>
 
 <p>
-  <code>AllergyIntolerance</code>, <code>Condition</code>, and <code>Procedure</code> are common resources that appear throughout 
+  <code>AllergyIntolerance</code>, <code>Condition</code> и <code>Procedure</code> - это ресурсы общего назначения, которые появляются в истории болезни и резюмируют состояние или анамнез пациента.
+  
+  <code>FamilyMemberHistory</code> отслеживает значительные с медицинской точки зрения изменения в здоровье родственников пациента, поскольку они являются значимыми факторами риска для пациента.
+  
+  Эти ресурсы могут использоваться в карте больного, эпизоде, выписном эпикризе, консультационном заключении.
+<!--   <code>AllergyIntolerance</code>, <code>Condition</code>, and <code>Procedure</code> are common resources that appear throughout 
   the patient record - summaries of the patient status or history. 
   
   <code>FamilyMemberHistory</code> tracks significant health issues for relatives of the patient, since these are significant risk factors for the patient.
   
-  These resources may be found in patient, episode, discharge summaries, and consultation records.
+  These resources may be found in patient, episode, discharge summaries, and consultation records. -->
 </p>
 <p>
-  <code>ClinicalImpression</code> (aka ClinicalAssessment) records the core of a clinical consultation/assessment/impression.
+  <code>ClinicalImpression</code> (также известный под именем ClinicalAssessment) records the core of a clinical consultation/assessment/impression.
   When a single text note is inserted directly in the patient record, this is typically a 
   ClinicalImpression.summary. A <code>RiskAssessment</code> is an assessment - usually, but not necessarily, by 
   a decision support engine of the likely outcomes of some course of action for a patient. 
+<!--   <code>ClinicalImpression</code> (aka ClinicalAssessment) records the core of a clinical consultation/assessment/impression.
+  When a single text note is inserted directly in the patient record, this is typically a 
+  ClinicalImpression.summary. A <code>RiskAssessment</code> is an assessment - usually, but not necessarily, by 
+  a decision support engine of the likely outcomes of some course of action for a patient.  -->
 </p>  
 <p>
   A <code>DetectedIssue</code> is an active alert that there is a clinical issue with/between one or more active or 
@@ -177,7 +233,7 @@ the event they are concerned with passes.
 </p>
 
 <table class="grid">
-<tr><td><b>Resource</b></td><td><b>Category</b></td><td><b>RIM</b></td><td><b>Lifecycle</b></td></tr>
+<tr><td><b>Ресурс</b></td><td><b>Категория</b></td><td><b>RIM</b></td><td><b>Жизненный цикл</b></td></tr>
 <tr><td><a href="allergyintolerance.html">AllergyIntolerance</a></td><td><a href="#ongoing">Ongoing</a></td><td>Act</td><td>This has a <a href="lifecycle.html#current">Current List</a></td></tr>
 <tr><td><a href="condition.html">Condition</a></td><td><a href="#ongoing">Ongoing</a></td><td>Act</td><td>This has a <a href="lifecycle.html#current">Current List</a></td></tr>
 <tr><td><a href="procedure.html">Procedure</a></td><td><a href="#past">Past</a></td><td>Act</td><td><a href="lifecycle.html#clinical">Clinical Workflow</a></td></tr>
@@ -185,6 +241,14 @@ the event they are concerned with passes.
 <tr><td><a href="clinicalimpression.html">ClinicalImpression</a></td><td><a href="#past">Past</a></td><td>Act</td><td></td></tr>
 <tr><td><a href="riskassessment.html">RiskAssessment</a></td><td><a href="#present">Present</a></td><td>Act</td><td><a href="lifecycle.html#clinical">Clinical Workflow</a></td></tr>
 <tr><td><a href="detectedissue.html">DetectedIssue</a></td><td><a href="#present">Present</a></td><td>Act</td><td></td></tr>
+<!-- <tr><td><b>Resource</b></td><td><b>Category</b></td><td><b>RIM</b></td><td><b>Lifecycle</b></td></tr>
+<tr><td><a href="allergyintolerance.html">AllergyIntolerance</a></td><td><a href="#ongoing">Ongoing</a></td><td>Act</td><td>This has a <a href="lifecycle.html#current">Current List</a></td></tr>
+<tr><td><a href="condition.html">Condition</a></td><td><a href="#ongoing">Ongoing</a></td><td>Act</td><td>This has a <a href="lifecycle.html#current">Current List</a></td></tr>
+<tr><td><a href="procedure.html">Procedure</a></td><td><a href="#past">Past</a></td><td>Act</td><td><a href="lifecycle.html#clinical">Clinical Workflow</a></td></tr>
+<tr><td><a href="familymemberhistory.html">FamilyMemberHistory</a></td><td><a href="#past">Past</a></td><td>Act</td><td></td></tr>
+<tr><td><a href="clinicalimpression.html">ClinicalImpression</a></td><td><a href="#past">Past</a></td><td>Act</td><td></td></tr>
+<tr><td><a href="riskassessment.html">RiskAssessment</a></td><td><a href="#present">Present</a></td><td>Act</td><td><a href="lifecycle.html#clinical">Clinical Workflow</a></td></tr>
+<tr><td><a href="detectedissue.html">DetectedIssue</a></td><td><a href="#present">Present</a></td><td>Act</td><td></td></tr> -->
 </table>
 
 <h4>Care Provision</h4>
