@@ -4388,24 +4388,24 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     }
     return b.toString();
   }
-
+/* This resource is marked as a draft */
   private String getDraftNote(ResourceDefn resource) {
     if ("draft".equals(resource.getStatus()))
-      return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">This resource is <a href=\"timelines.html#levels\">marked as a draft</a>.</p>";
+      return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">Этот ресурс <a href=\"timelines.html#levels\">находится на стадии проекта (статус \"draft\")</a>.</p>";
     else
       return "";
   }
 
   public String getDraftNote(StructureDefinition definition) {
     if ("draft".equals(definition.getStatus().toCode()))
-      return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">This artefact is <a href=\"timelines.html#levels\">marked as a draft</a>.</p>";
+      return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">Этот артефакт <a href=\"timelines.html#levels\">находится на стадии проекта (статус \"draft\")</a>.</p>";
     else
       return "";
   }
 
   private String getDraftNote(Profile pack, String prefix) {
     if ("draft".equals(pack.metadata("publication.status")))
-      return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">This profile is <a href=\""+prefix+"timelines.html#levels\">marked as a draft</a>.</p>";
+      return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">Этот профиль <a href=\""+prefix+"timelines.html#levels\">находится на стадии проекта (статус \"draft\")</a>.</p>";
     else
       return "";
   }

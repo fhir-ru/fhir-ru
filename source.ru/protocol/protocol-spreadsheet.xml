@@ -991,9 +991,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Contextual set of behaviors</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Контекстное множество вариантов поведения<!-- Contextual set of behaviors --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A definition of behaviors to be taken in particular circumstances, often including conditions, options and other decision points</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Определение действий, которые необходимо выполнить в определенных обстоятельствах, включая условия, варианты и другие точки принятия решения<!-- A definition of behaviors to be taken in particular circumstances, often including conditions, options and other decision points --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1023,9 +1023,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Unique Id for this particular protocol</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный идентификатор этого протокола<!-- Unique Id for this particular protocol --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A unique identifier for the protocol instance.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор этого экземпляра протокола.<!-- A unique identifier for the protocol instance. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1055,7 +1055,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of protocol</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя протокола<!-- Name of protocol --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1090,9 +1090,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">draft | testing | review | active | withdrawn | superseded</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of the protocol.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус протокола<!-- The status of the protocol. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allow for filtering of Protocols that are appropriate for use in production.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Возможность фильтрации ресурсов Protocol, которые подходят для использования в продакшене<!-- Allow for filtering of Protocols that are appropriate for use in production. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1101,7 +1101,7 @@
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Do we need status date?</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Есть ли необходимость в дате статуса?<!-- Do we need status date? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="18">
@@ -1126,7 +1126,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">condition | device | drug | study</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String"> A code that classifies the general type of context to which these behavior definitions apply.  This is used for searching, sorting and display purposes.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, классифицирующий общий тип контекста, к которому применимы данные определения поведения. Используется для поиска, сортировки и отображения. <!-- A code that classifies the general type of context to which these behavior definitions apply.  This is used for searching, sorting and display purposes. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1157,7 +1157,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What does protocol deal with?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">К чему относится протокол?<!-- What does protocol deal with? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1189,7 +1189,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">To whom does Protocol apply?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">К кому применим этот протокол?<!-- To whom does Protocol apply? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1220,7 +1220,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When is protocol to be used?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда этот протокол должен использоваться?<!-- When is protocol to be used? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1251,7 +1251,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who wrote protocol?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто написал протокол?<!-- Who wrote protocol? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1281,7 +1281,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What's done as part of protocol</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Что должно быть сделано в рамках этого протокола<!-- What's done as part of protocol --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1311,7 +1311,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Label for step</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Наименование шага<!-- Label for step --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1341,7 +1341,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Human description of activity</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Человекочитаемое определение действия<!-- Human description of activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1371,7 +1371,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">How long does step last?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сколько времени длится шаг?<!-- How long does step last? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1401,7 +1401,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Rules prior to execution</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Правила перед выполнением<!-- Rules prior to execution --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1431,9 +1431,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Description of condition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание условий<!-- Description of condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Human-readable description of the condition</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое описание условий<!-- Human-readable description of the condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1462,9 +1462,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Condition evaluated</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Проверка выполнения условия<!-- Condition evaluated --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Defines the name/value pair that must hold for the condition to be met.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет пару имя/значение, которая должна иметь место для выполнения условия.<!-- Defines the name/value pair that must hold for the condition to be met. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1498,7 +1498,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Observation / test / assertion</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of observation, test or other assertion being evaluated by the condition.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип наблюдения, теста или другого утверждения, оцениваемого данным условием.<!-- The type of observation, test or other assertion being evaluated by the condition. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1527,12 +1527,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Value needed to satisfy condition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Значение, необходимое для выполнения условия<!-- Value needed to satisfy condition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates what value the observation/test/assertion must have in order for the condition to be considered to be satisfied.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает, какое значение должно иметь наблюдение/тест/утверждение, чтобы условие считалось выполненным.<!-- Indicates what value the observation/test/assertion must have in order for the condition to be considered to be satisfied. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the value is an interval, the condition matches if the value falls within the interval.   The binding of .condition.valueCodeableConcept is unbound and is a coded value of an  observation used as basis for conditional execution of one or more activities</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если значение представляет собой интервал, то условие соответствует, если значение попадает в этот интервал. Привязка .condition.valueCodeableConcept является открытой и представляет собой закодированное значение наблюдения, используемое в качестве основания для условного выполнения одного или нескольких действий<!-- If the value is an interval, the condition matches if the value falls within the interval.   The binding of .condition.valueCodeableConcept is unbound and is a coded value of an  observation used as basis for conditional execution of one or more activities --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1560,9 +1560,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">And conditions</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Условия, связанные оператором "И"<!-- And conditions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Lists a set of conditions that must all be met</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечисление набора условий, все из которых должны быть выполнены<!-- Lists a set of conditions that must all be met --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1592,9 +1592,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Or conditions</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Условия, связанные оператором "ИЛИ"<!-- Or conditions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Lists alternative conditions, at least one of must be met</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечисление альтернативных условий, по крайней мере одно из них должно выполняться<!-- Lists alternative conditions, at least one of must be met --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1624,9 +1624,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Not conditions</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Условия, связанные оператором "НЕ"<!-- Not conditions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Lists conditions of which none must be met</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечисление условий, ни одно из которых не должно выполняться<!-- Lists conditions of which none must be met --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1656,12 +1656,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Rules prior to completion</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Правила до завершения<!-- Rules prior to completion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the conditions that must be met for activities that are part of this time point to terminate.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает условия, которые должны быть выполнены для действий, которые в этот момент времени должны быть завершены.<!-- Indicates the conditions that must be met for activities that are part of this time point to terminate. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If not specified, activities end based on occurrence and duration information specified in the activity.  Conditions specified here may be used to allow exception handling as well as to ensure certain conditions are met while activities are proceeding.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если не указано, окончание действий основывается на информации о наступлении и продолжительности, указанной для действия. Условия, указанные здесь, могут быть использованы для обработки исключений, а также для обеспечения определенных условий во время выполнения действий.<!-- If not specified, activities end based on occurrence and duration information specified in the activity.  Conditions specified here may be used to allow exception handling as well as to ensure certain conditions are met while activities are proceeding. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1689,11 +1689,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">First activity within timepoint</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Первое действие в момент времени<!-- First activity within timepoint --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Multiple activities are assumed to start in parallel</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Предполагается, что несколько действий начинаются параллельно<!-- Multiple activities are assumed to start in parallel --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1720,11 +1720,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Activities that occur within timepoint</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Действия, которые должны произойти в течение момента времени<!-- Activities that occur within timepoint --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">We send them as a collection because a single activity may be referenced multiple times; e.g. Activity C may be a follow-on activity to both A and B which happen in parallel.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Мы сделали их коллекцией, потому что на одно действие может быть несколько ссылок; например действие С может быть продолжением действий А и В, которые происходят параллельно.<!-- We send them as a collection because a single activity may be referenced multiple times; e.g. Activity C may be a follow-on activity to both A and B which happen in parallel. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1753,7 +1753,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What can be done instead?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Что можно сделать вместо этого?<!-- What can be done instead? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1782,7 +1782,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Activities that are part of this activity</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Действия, которые являются частью этого действия<!-- Activities that are part of this activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1814,11 +1814,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Order of occurrence</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Порядок наступления<!-- Order of occurrence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Equivalent values happen in parallel</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Эквивалентные значения происходят параллельно<!-- Equivalent values happen in parallel --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1845,7 +1845,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Component activity</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Действие компонента<!-- Component activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1876,11 +1876,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What happens next</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Что происходит дальше<!-- What happens next --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Multiple activities are assumed to start in parallel</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Предполагается, что несколько действий начинаются параллельно<!-- Multiple activities are assumed to start in parallel --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1908,9 +1908,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Pause before start</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Пауза перед началом<!-- Pause before start --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the length of time to wait between the conditions being satisfied for the activity to start and the actual start of the activity.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает интервал времени ожидания между выполнением условий для начала действия и фактическим началом действия.<!-- Indicates the length of time to wait between the conditions being satisfied for the activity to start and the actual start of the activity. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1939,9 +1939,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Details of activity</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробная информация о деятельности<!-- Details of activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Information about the nature of the activity, including type, timing and other qualifiers</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Данные о характере деятельности, в том числе типе, время и другая уточняющая информация<!-- Information about the nature of the activity, including type, timing and other qualifiers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1975,9 +1975,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">diet | drug | encounter | observation +</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">High-level categorization of the type of activity.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Высокоуровневая классификация типа активности.<!-- High-level categorization of the type of activity. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">May determine what types of extensions are permitted</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Может определять, какие типы расширений разрешены<!-- May determine what types of extensions are permitted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2008,13 +2008,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Detail type of activity</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробный тип активности<!-- Detail type of activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Detailed description of the type of activity; e.g. What lab test, what procedure, what kind of encounter.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Подробное описание вида деятельности; например, какой лабораторный тест, какая процедура, какой тип визита.<!-- Detailed description of the type of activity; e.g. What lab test, what procedure, what kind of encounter. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows matching performed to planned as well as validation against protocols</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет различать выполненные от запланированных, а также для валидации протоколов<!-- Allows matching performed to planned as well as validation against protocols --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Tends to be less relevant for activities involving particular products.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Как правило, менее значим для деятельности, связанной с конкретной продукцией.<!-- Tends to be less relevant for activities involving particular products. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.code</Data><NamedCell
@@ -2043,11 +2043,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When activity is to occur</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда должна произойти активность<!-- When activity is to occur --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The period, timing or frequency upon which the described activity is to occur.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период, срок или частота, с которой описанная активность должна происходить.<!-- The period, timing or frequency upon which the described activity is to occur. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows prompting for activities and detection of missed planned activities.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет напоминать об активности и обнаруживать пропущенные запланированные активности.<!-- Allows prompting for activities and detection of missed planned activities. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Add constraint prohibiting event (once it won't raise an error on the name timingSchedule)</Data><NamedCell
@@ -2078,13 +2078,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Where it should happen</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Где это должно произойти<!-- Where it should happen --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the facility where the activity will occur; e.g. home, hospital, specific clinic, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет объект, где активность будет происходить; например дома, в больнице, в конкретной клинике и т. д.<!-- Identifies the facility where the activity will occur; e.g. home, hospital, specific clinic, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Helps in planning of activity</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для помощи в планировании активности<!-- Helps in planning of activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">May reference a specific clinical location or may just identify a type of location.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Можно указать конкретное клиническое расположение или просто тип расположения.<!-- May reference a specific clinical location or may just identify a type of location. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2111,11 +2111,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who's responsible?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто ответственный?<!-- Who's responsible? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies who's expected to be involved in the activity.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентифицирует предполагаемых участников активности.<!-- Identifies who's expected to be involved in the activity. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Helps in planning of activity</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для помощи в планировании активности<!-- Helps in planning of activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2143,9 +2143,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What's administered/supplied</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Что вводится/поставляется<!-- What's administered/supplied --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the food, drug or other product being consumed or supplied in the activity.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указание пищи, лекарств или других продуктов, потребляемых или поставляемых в рамках активности.<!-- Identifies the food, drug or other product being consumed or supplied in the activity. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2175,9 +2175,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">How much is administered/consumed/supplied</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сколько вводится/потребляется/поставляется<!-- How much is administered/consumed/supplied --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the quantity expected to be consumed at once (per dose, per meal, etc.)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет предполагаемое количество для употребления за один раз (для одной дозы, одного приёма пищи и т. д.)<!-- Identifies the quantity expected to be consumed at once (per dose, per meal, etc.) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2206,9 +2206,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Extra info on activity occurrence</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная информация о наступлении активности<!-- Extra info on activity occurrence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This provides a textual description of constraints on the activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывается текстовое описание ограничительных условий наступления активности, включая взаимосвязи с другими активностями. Также может включать цели, предварительные условия и конечные условия. Наконец, здесь можно передавать особенности активности, например место на теле, способ, путь и т. д.<!-- This provides a textual description of constraints on the activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2236,7 +2236,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What happens next?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Что происходит дальше?<!-- What happens next? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2266,7 +2266,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Description of what happens next</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание того, что произойдет дальше<!-- Description of what happens next --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2296,7 +2296,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Id of following step</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор следующего шага<!-- Id of following step --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2326,7 +2326,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Condition in which next step is executed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Условие, при котором выполняется следующий шаг<!-- Condition in which next step is executed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4130,7 +4130,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Protocol.step.precondition</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Only one of condition, intersection, union or exclude may be present</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Только что-то одно из condition, intersection, union или exclude может присутствовать<!-- Only one of condition, intersection, union or exclude may be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">(count(f:condition) + count(f:intersection[1]) + count(f:union[1]) + count(f:exclude[1])) &lt;= 1</Data><NamedCell
@@ -4651,14 +4651,14 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Protocol.subject</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Protocols with specified subject</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Протоколы с определенным субъектом<!-- Protocols with specified subject --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Protocol.identifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The unique id for a particular protocol</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Уникальный идентификатор этого протокола<!-- The unique id for a particular protocol --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6678,7 +6678,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">ProtocolStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The lifecycle status of a Protocol</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус жизненного цикла протокола<!-- The lifecycle status of a Protocol --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#protocol-status</Data></Cell>
@@ -6693,7 +6693,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ProtocolType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">High-level categorization of the protocol</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Высокоуровневая классификация протокола<!-- High-level categorization of the protocol --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#protocol-type</Data></Cell>
@@ -6708,7 +6708,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ConditionType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of observation used as basis for conditional execution of one or more activities</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип наблюдения, используемый в качестве основания для условного выполнения одной или нескольких активностей<!-- Type of observation used as basis for conditional execution of one or more activities --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
@@ -6738,7 +6738,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ActivityDefinitionCategory</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">High-level categorization of the type of activity in a protocol.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Высокоуровневая классификация типа активности в протоколе.<!-- High-level categorization of the type of activity in a protocol. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#activity-definition-category</Data></Cell>
@@ -6753,7 +6753,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ActivityDefinitionType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Detailed type of planned activity; e.g. CBC</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробный тип запланированной активности; например CBC<!-- Detailed type of planned activity; e.g. CBC --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
@@ -6768,7 +6768,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ActivityTiming</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Code describing the timing of an activity; e.g. BID, QD</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код, описывающий временной график наступления активности; например BID, QD<!-- Code describing the timing of an activity; e.g. BID, QD --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
