@@ -4276,7 +4276,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("profiles")) 
         src = s1+produceProfiles(resource)+s3;
       else if (com[0].equals("wg")) 
-        src = s1+(resource.getWg() == null ?  "(Рабочая группа не назначен)" : "<a _target=\"blank\" href=\""+resource.getWg().getUrl()+"\">"+resource.getWg().getName()+"</a> Work Group")+s3;
+        src = s1+(resource.getWg() == null ?  "(Рабочая группа не назначена)" : "<a _target=\"blank\" href=\""+resource.getWg().getUrl()+"\">"+resource.getWg().getName()+"</a> Рабочая группа")+s3;
       else if (com[0].equals("fmm")) 
         src = s1+"<a href=\"resource.html#maturity\">Уровень готовности</a>: "+resource.getFmmLevel()+s3;
       else if (com[0].equals("complinks")) 
@@ -4372,9 +4372,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         names.add(comp.getName());
     }
     StringBuilder b = new StringBuilder();
-    b.append("<a href=\"compartments.html\">Compartments</a>: ");
+    b.append("<a href=\"compartments.html\">Логические модули (Compartments)</a>: ");
     if (names.isEmpty())
-      b.append("Not linked to any defined compartments");
+      b.append("Нет привязки к логическим модулям");
     else {
       Collections.sort(names);
       boolean first = true;

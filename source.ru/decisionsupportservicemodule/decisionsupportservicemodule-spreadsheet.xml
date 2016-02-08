@@ -6234,7 +6234,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ModuleDefinitionParameterType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of the parameter</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип параметра<!-- The type of the parameter --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s62" ss:HRef="http://hl7.org/fhir/ValueSet/operation-parameter-type"><Data
@@ -6250,7 +6250,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ModuleDefinitionParameterUse</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether the parameter is input or output</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Является ли параметр входным или выходным<!-- Whether the parameter is input or output --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s131" ss:HRef="http://hl7.org/fhir/ValueSet/operation-parameter-use"><Data
