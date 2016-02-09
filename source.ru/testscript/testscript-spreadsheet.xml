@@ -1479,12 +1479,12 @@
     <Cell ss:Index="10" ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Scope and Usage this Test Script is for</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Область применения этого сценария тестирования и его использование<!-- Scope and Usage this Test Script is for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Explains why this Test Script is needed and why it's been constrained as it has</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Поясняет, зачем нужен этот сценарий тестирования и почему в нём были установлены такие ограничения<!-- Explains why this Test Script is needed and why it's been constrained as it has --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This element does not describe the usage of the Test Script (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Этот элемент предназначен не для описания применения сценария тестирования (которое даётся в комментариях), а для ответа на вопрос -  *почему* элемент необходим или почему в нём были установлены такие ограничения. Это поле может использоваться для указания на исходные материалы или спецификации, которые повлияли на структуру этого элемента данных<!-- This element does not describe the usage of the Test Script (that's done in comments), rather it's for traceability of *why* the element is either needed or why the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="18" ss:StyleID="s87"><Data ss:Type="String">why</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
