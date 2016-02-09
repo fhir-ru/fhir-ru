@@ -1192,7 +1192,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Эта ConceptMap была создана в целях тестирования (или обучения/оценки/маркетинга) и не предназначена для реального использования<!-- This ConceptMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Allows filtering of ConceptMap resources that are appropriate for use</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Позволяет отфильтровывать подходящие для использования ресурсы ConceptMap от неподходящих<!-- Allows filtering of ConceptMap resources that are appropriate for use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1225,9 +1225,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Имя лица или организации, опубликовавших эту карту соответствия концептов<!-- The name of the individual or organization that published the concept map --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Helps establish the &quot;authority/credibility&quot; of the concept map.  May also allow for contact</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает установить &quot;авторитет/надежность&quot; карты соответствия концептов. Может также потребоваться для контакта<!-- Helps establish the &quot;authority/credibility&quot; of the concept map.  May also allow for contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно организация, но может быть и физическое лицо. Этот элемент СЛЕДУЕТ заполнить, если только эта информация не доступна из контекста.<!-- Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно это организация, но может быть и физическое лицо. Этот элемент СЛЕДУЕТ заполнить, если только эта информация не доступна из контекста.<!-- Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1259,7 +1259,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Контактные данные для помощи пользователю в поиске и коммуникации с издателем <!-- Contacts to assist a user in finding and communicating with the publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">May be a web site, an email address, a telephone number, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может быть веб-сайтом, адресом электронной почты, телефонным номером и т. п.<!-- May be a web site, an email address, a telephone number, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1288,12 +1288,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of a individual to contact</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя контактного лица для связи<!-- Name of a individual to contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of an individual to contact regarding the concept map</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя контактного лица для связи по поводу этой карты соответствия концептов<!-- The name of an individual to contact regarding the concept map --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If there is no named individual, the telecom is for the organization as a whole</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если нет отдельного лица, то указываются контактные данные организации в целом<!-- If there is no named individual, the telecom is for the organization as a whole --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1321,9 +1321,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contact details for individual or publisher</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактная информация физического лица или издателя<!-- Contact details for individual or publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contact details for individual (if a name was provided) or the publisher</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактная информация физического лица (если было указано имя) или издателя<!-- Contact details for individual (if a name was provided) or the publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1356,7 +1356,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дата данного статуса<!-- Date for given status --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date this version of the concept map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the concept map changes</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата публикации этой карты соответствия концептов. Дата должна меняться в случае изменения бизнес-версии или статуса. Кроме того, она должна меняться при внесении значительных изменений в содержимое карты соответствия концептов<!-- The date this version of the concept map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the concept map changes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать, когда концепт-карта впервые была разрешена к использованию, изъята или заменена.<!-- Need to know when a concept map was first legal for use or became withdrawn or replaced. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

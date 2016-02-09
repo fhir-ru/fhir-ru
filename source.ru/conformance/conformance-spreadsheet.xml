@@ -1390,12 +1390,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание заявления о соответствии для человека<!-- Human description of the conformance statement --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое описание заявления о соответствии<!-- Human description of the conformance statement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A free text natural language description of the conformance statement and its use. Typically, this is used when the conformance statement describes a desired rather than an actual solution, for example as a formal expression of requirements as part of an RFP</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Произвольное текстовое описание на естественном языке заявления о соответствии и его применения. Как правило, используется, когда заявление о соответствии описывает скорее желаемое, чем действительное решение, например формальное выражение требований в рамках RFP<!-- A free text natural language description of the conformance statement and its use. Typically, this is used when the conformance statement describes a desired rather than an actual solution, for example as a formal expression of requirements as part of an RFP --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This field may include the purpose of this conformance statement, comments about its context etc. This does not need to be populated if the description is adequately implied by the software or implementation details</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это поле может содержать назначение этого заявления о соответствии, комментарии о его контексте и т. д. Его не требуется заполнять, если эта информация вытекает из программного обеспечения или деталей реализации<!-- This field may include the purpose of this conformance statement, comments about its context etc. This does not need to be populated if the description is adequately implied by the software or implementation details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1495,9 +1495,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">instance | capability | requirements</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The way that this statement is intended to be used, to describe an actual running instance of software, a particular product (kind not instance of software) or a class of implementation (e.g. a desired purchase)</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Способ, которым это заявление о соответствии планируется использовать, чтобы описать действующий экземпляр программного обеспечения, конкретный продукт (не экземпляр ПО) или тип реализации (например желаемая покупка)<!-- The way that this statement is intended to be used, to describe an actual running instance of software, a particular product (kind not instance of software) or a class of implementation (e.g. a desired purchase) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Allow searching the 3 modes</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Позволяет фильтровать ресурсы по этим 3 типам<!-- Allow searching the 3 modes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1693,7 +1693,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Описывает этот конкретный экземпляр<!-- Describes this specific instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Information about the specific installation that this conformance statement relates to </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Информация об особенностях инсталляции, к которой относится это заявление о соответствии<!-- Information about the specific installation that this conformance statement relates to  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1755,7 +1755,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">FHIR Version the system uses</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Версия FHIR, которую использует система<!-- FHIR Version the system uses --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Версия спецификации FHIR, на которой основывается это заявление о соответствии<!-- The version of the FHIR specification on which this conformance statement is based --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1790,10 +1790,10 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">no | extensions | elements | both</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A code that indicates whether the application accepts unknown elements or extensions when reading resources</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, указывающий, принимает ли это приложение неизвестные элементы или расширения при чтении ресурсов<!-- A code that indicates whether the application accepts unknown elements or extensions when reading resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Unknown elements in a resource can only arise as later versions of the specification are published, because this is the only place where such elements can be defined. Hence accepting unknown elements is about inter-version compatibility.&#10;&#10;Applications are recommended to accept unknown extensions and elements ('both'), but this is not always possible</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Неизвестные элементы в ресурсе могут возникнуть после публикации более поздних версий спецификации, поскольку это единственное место, где эти элементы могут быть определены. Из этого следует, что приём неизвестных элементов относится к межверсионной совместимости.&#10;&#10;Приложениям рекомендуется принимать неизвестные расширения и элементы (значение поля 'both'), однако это не всегда возможно<!-- Unknown elements in a resource can only arise as later versions of the specification are published, because this is the only place where such elements can be defined. Hence accepting unknown elements is about inter-version compatibility.&#10;&#10;Applications are recommended to accept unknown extensions and elements ('both'), but this is not always possible --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
