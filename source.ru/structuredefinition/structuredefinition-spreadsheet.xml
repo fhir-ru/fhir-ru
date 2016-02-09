@@ -1649,9 +1649,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Use and/or publishing restrictions </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ограничения по использованию и/или публикации<!-- Use and/or publishing restrictions --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Предупреждение об авторском праве на структурное определение. Предупреждения об авторских правах, как правило, являются правовыми ограничениями на использование и публикацию информации об ограничениях и мэппинге<!-- A copyright statement relating to the structure definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Предупреждение об авторском праве на структурное определение и/или его содержимое. Предупреждения об авторских правах, как правило, являются правовыми ограничениями на использование и публикацию информации об ограничениях и мэппинге<!-- A copyright statement relating to the structure definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>

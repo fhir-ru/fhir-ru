@@ -1496,9 +1496,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Use and/or publishing restrictions </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ограничения по использованию и/или публикации<!-- Use and/or publishing restrictions --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A copyright statement relating to the concept map and/or its contents</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация об авторских правах относительно этой карты соответствия концептов и/или её содержимого<!-- A copyright statement relating to the concept map and/or its contents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Часто авторские права на карту соответствия концептов и на коды, которые в неё включены, различаются. В информации об авторских правах при необходимости следует четко разграничивать эти понятия<!-- Frequently, the copyright differs between the concept map, and codes that are included. The copyright statement should clearly differentiate between these when required --></Data><NamedCell
