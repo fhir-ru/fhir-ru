@@ -1066,9 +1066,9 @@
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Defines behaviour and contraints on the ValueSet Expansion operation</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Задаёт поведение и ограничивающие условия для операции развёртывания ValueSet<!-- Defines behaviour and contraints on the ValueSet Expansion operation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Resource to define constraints on the Expansion of a FHIR ValueSet.</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Ресурс для определения ограничивающих условий развёртывания FHIR ValueSet<!-- Resource to define constraints on the Expansion of a FHIR ValueSet. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1099,9 +1099,9 @@
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Globally unique logical identifier for  expansion profile</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Глобально уникальный логический идентификатор профиля расширения<!-- Globally unique logical identifier for  expansion profile --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">An absolute URL that is used to identify this expansion profile when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this expansion profile is (or will be) published</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Абсолютный URL для идентификации этого профиля расширения, когда на него ссылаются в спецификации, модели, проекте или примере. Это должен быть URL, он должен быть глобально уникальным и должен быть адресом, по которому опубликован (или будет опубликован) профиль расширения<!-- An absolute URL that is used to identify this expansion profile when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this expansion profile is (or will be) published --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
