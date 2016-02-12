@@ -256,8 +256,6 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     FHIRToolingClient client;
     try {
       client = new FHIRToolingClient(tsServer);
-      if (System.getenv().containsKey("http.proxyHost") && System.getenv().containsKey("http.proxyPort") )
-        client.configureProxy(System.getenv().get("http.proxyHost"), Integer.parseInt(System.getenv().get("http.proxyPort")));
     } catch(Exception e) {
       System.out.println("Warning @ PageProcessor client initialize: " + e.getLocalizedMessage());
       client = null;
@@ -266,7 +264,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   public final static String DEF_TS_SERVER = "http://fhir2.healthintersections.com.au/open";
-//  public final static String DEV_TS_SERVER = "http://local.healthintersections.com.au:960/open";
+//  public final static String DEF_TS_SERVER = "http://local.healthintersections.com.au:960/open";
   
   public final static String WEB_PUB_NAME = "DSTU2";
   public final static String CI_PUB_NAME = "Текущая сборка";
@@ -505,6 +503,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1+elHeader(com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("extheader"))
         src = s1+extHeader(com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("mmheader"))
+        src = s1+mmHeader(com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("narrheader"))
         src = s1+narrHeader(com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("profilesheader"))
@@ -547,12 +547,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       } else if (com[0].equals("aresheader"))
         src = s1+abstractResHeader("document", "Document", com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("onthispage"))
-        src = s1+onThisPage(s2.substring(com[0].length()+1))+s3;
+        src = s1+onThisPage(s2.substring(com[0].length() + 1))+s3;
       else if (com[0].equals("maponthispage"))
           src = s1+mapOnThisPage(null)+s3;
       else if (com[0].equals("res-category")) {
         even = false;
-        src = s1+resCategory(s2.substring(com[0].length()+1))+s3;
+        src = s1+resCategory(s2.substring(com[0].length() + 1))+s3;
       } else if (com[0].equals("res-item")) {
         even = !even;
         src = s1+resItem(com[1], even)+s3;
@@ -646,7 +646,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("title"))
         src = s1+(workingTitle == null ? Utilities.escapeXml(name.toUpperCase().substring(0, 1)+name.substring(1)) : workingTitle)+s3;
       else if (com[0].equals("xtitle"))
-        src = s1+Utilities.escapeXml(name.toUpperCase().substring(0, 1)+name.substring(1))+s3;
+        src = s1+Utilities.escapeXml(name.toUpperCase().substring(0, 1) + name.substring(1))+s3;
       else if (com[0].equals("name"))
         src = s1+name+s3;
       else if (com[0].equals("name.tail"))
@@ -879,9 +879,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("cmp.messages"))
         src = s1 + "<p>"+genCmpMessages(((ProfileComparison) object))+"</p>"+s3;
       else if (com[0].equals("cmp.subset"))
-        src = s1 + genCompModel(((ProfileComparison) object).getSubset(), "intersection", file.substring(0,file.indexOf(".")), genlevel(level))+s3;
+        src = s1 + genCompModel(((ProfileComparison) object).getSubset(), "intersection", file.substring(0, file.indexOf(".")), genlevel(level))+s3;
       else if (com[0].equals("cmp.superset"))
-        src = s1 + genCompModel(((ProfileComparison) object).getSuperset(), "union", file.substring(0,file.indexOf(".")), genlevel(level))+s3;
+        src = s1 + genCompModel(((ProfileComparison) object).getSuperset(), "union", file.substring(0, file.indexOf(".")), genlevel(level))+s3;
       else if (com[0].equals("identifierlist"))
         src = s1 + genIdentifierList()+s3;
       else if (com[0].equals("internalsystemlist"))
@@ -1094,7 +1094,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String genCompModel(StructureDefinition sd, String name, String base, String prefix) throws Exception {
     if (sd == null)
       return "<p style=\"color: maroon\">No "+name+" could be generated</p>\r\n";
-    return new XhtmlComposer().compose(new ProfileUtilities(workerContext, null, this).generateTable("??", sd, false, folders.dstDir, false, base, true, prefix)); 
+    return new XhtmlComposer().compose(new ProfileUtilities(workerContext, null, this).generateTable("??", sd, false, folders.dstDir, false, base, true, prefix, false)); 
   }
 
   private String genCmpMessages(ProfileComparison cmp) {
@@ -2485,7 +2485,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         invs.put(inv.getId(), "<li><b title=\"Formal Invariant Identifier\">"+inv.getId()+"</b>: On "+path+": "+Utilities.escapeXml(inv.getEnglish())+" (xpath on "+presentPath(path)+": <span style=\"font-family: Courier New, monospace\">"+Utilities.escapeXml(inv.getXpath())+"</span>)</li>");
     }
     for (ElementDefn c : e.getElements()) {
-      generateConstraints(path+"."+c.getName(), c, invs, false);
+      generateConstraints(path + "." + c.getName(), c, invs, false);
     }    
   }
 
@@ -2495,7 +2495,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     for (String p : parts) {
       if (s.length() > 0)
         s.append("/");
-      s.append("f:"+p);
+      s.append("f:" + p);
     }
     return s.toString();
       
@@ -2512,6 +2512,17 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     b.append(makeHeaderTab("Примеры", "datatypes-examples.html", mode==null || "examples".equals(mode)));
     b.append(makeHeaderTab("Подробное описание", "datatypes-definitions.html", mode==null || "definitions".equals(mode)));
     b.append(makeHeaderTab("Мэппинги", "datatypes-mappings.html", mode==null || "mappings".equals(mode)));
+    b.append("</ul>\r\n");
+    return b.toString();
+  }
+
+  private String mmHeader(String mode) {
+    StringBuilder b = new StringBuilder();
+    b.append("<ul class=\"nav nav-tabs\">");
+    b.append(makeHeaderTab("Module Metadata", "modulemetadata.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Examples", "modulemetadata-examples.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Detailed Descriptions", "modulemetadata-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Mappings", "modulemetadata-mappings.html", mode==null || "mappings".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -3377,7 +3388,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1+genRestrictions(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
-      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("edheader") || com[0].equals("elheader") || com[0].equals("extheader") || com[0].equals("narrheader") || com[0].equals("formatsheader") || com[0].equals("resourcesheader") || 
+      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("edheader") || com[0].equals("mmheader") || com[0].equals("mmheader") || com[0].equals("elheader") || com[0].equals("extheader") || com[0].equals("narrheader") || com[0].equals("formatsheader") || com[0].equals("resourcesheader") ||
           com[0].equals("txheader") || com[1].equals("txheader0") || com[0].equals("refheader") || com[0].equals("extrasheader") || com[0].equals("profilesheader") || com[0].equals("fmtheader") || 
           com[0].equals("igheader") || com[0].equals("cmpheader") || com[0].equals("atomheader") || com[0].equals("dictheader"))
         src = s1+s3;
@@ -3764,7 +3775,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1+genRestrictions(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
-      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("edheader") || com[0].equals("elheader") || com[0].equals("extheader") || com[0].equals("resourcesheader") || 
+      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("edheader") || com[0].equals("mmheader") || com[0].equals("elheader") || com[0].equals("extheader") || com[0].equals("resourcesheader") ||
           com[0].equals("formatsheader") || com[0].equals("narrheader") || com[0].equals("refheader") ||  com[0].equals("extrasheader") || com[0].equals("profilesheader") ||
           com[0].equals("txheader") || com[0].equals("txheader0") || com[0].equals("fmtheader") || com[0].equals("igheader") || com[0].equals("cmpheader") || com[0].equals("atomheader") || com[0].equals("dictheader")) 
         src = s1+s3;
@@ -5971,7 +5982,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String generateProfileStructureTable(ConstraintStructure profile, boolean diff, String filename, String baseName, String prefix) throws Exception {
     String fn = filename.contains(".") ? filename.substring(0, filename.indexOf('.')) : filename;
     String deffile = fn+"-definitions.html";
-    return new XhtmlComposer().compose(new ProfileUtilities(workerContext, null, this).generateTable(deffile, profile.getResource(), diff, folders.dstDir, false, baseName, !diff, prefix));
+    return new XhtmlComposer().compose(new ProfileUtilities(workerContext, null, this).generateTable(deffile, profile.getResource(), diff, folders.dstDir, false, baseName, !diff, prefix, false));
   }
 
   private boolean isAggregationEndpoint(String name) {
