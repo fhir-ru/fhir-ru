@@ -6387,7 +6387,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">OrderSetParticipantType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of participant for an action in the orderset</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип участника действия из ордерсета<!-- The type of participant for an action in the orderset --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#order-set-participant</Data></Cell>
@@ -6402,7 +6402,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">OrderSetItemType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of orderset item </Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип пункта ордерсета<!-- The type of orderset item  --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#order-set-item-type</Data></Cell>
@@ -6417,7 +6417,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">OrderSetItemGroupingBehavior</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Defines organization behavior of a group</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Задание организационного поведения группы<!-- Defines organization behavior of a group --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#grouping-behavior</Data></Cell>
@@ -6432,7 +6432,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">OrderSetItemSelectionBehavior</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Defines selection behavior of a group</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Задание поведения выборки группы<!-- Defines selection behavior of a group --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#selection-behavior</Data></Cell>
@@ -6447,7 +6447,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">OrderSetItemRequiredBehavior</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Defines requiredness behavior for selecting an action or an action group</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определяет степень обязательности выбора действия или группы действий<!-- Defines requiredness behavior for selecting an action or an action group --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#required-behavior</Data></Cell>
@@ -6462,7 +6462,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">OrderSetItemPrecheckBehavior</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Defines selection frequency behavior for an action or group</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Задание особого поведения, связанного с частотой выбора некоторого действия или группы<!-- Defines selection frequency behavior for an action or group --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#precheck-behavior</Data></Cell>
@@ -6477,7 +6477,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">OrderSetItemCardinalityBehavior</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Defines behavior for an action or a group for how many times that item may be repeated</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Задание поведения для действия или группы, связанного с тем, сколько раз этот пункт может повторяться<!-- Defines behavior for an action or a group for how many times that item may be repeated --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#cardinality-behavior</Data></Cell>

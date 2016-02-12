@@ -1109,7 +1109,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">module | library | decision-support-rule | documentation-template | order-set</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет тип модуля знаний, например правило, библиотека, шаблон документа или измерение<!-- Identifies the type of knowledge module, such as a rule, library, documentation template, or measure --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип модуля знаний, например правило, библиотека, шаблон документа или измерение<!-- Identifies the type of knowledge module, such as a rule, library, documentation template, or measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4251,49 +4251,49 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">ModuleMetadata.identifier</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Logical identifier for the module (e.g. CMS-143)</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Логический идентификатор модуля (например CMS-143)<!-- Logical identifier for the module (e.g. CMS-143) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">keyword</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ModuleMetadata.keyword</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Keywords associated with the module</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Ключевые слова, ассоциированные с этим модулем<!-- Keywords associated with the module --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">topic</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ModuleMetadata.topic</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Topics associated with the module</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Предметные темы, связанные с этим модулем<!-- Topics associated with the module --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">title</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ModuleMetadata.title</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Text search against the title</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по названиям<!-- Text search against the title --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">description</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ModuleMetadata.description</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Text search against the description</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по описаниям<!-- Text search against the description --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">version</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ModuleMetadata.version</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Version of the module (e.g. 1.0.0)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Версия модуля (например 1.0.0)<!-- Version of the module (e.g. 1.0.0) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ModuleMetadata.status</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Status of the module</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Статус модуля<!-- Status of the module --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">!minScore</Data></Cell>
@@ -6220,7 +6220,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">ModuleMetadataType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The type of knowledge module being described</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Тип описываемого модуля знаний<!-- The type of knowledge module being described --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#module-metadata-type</Data></Cell>
@@ -6235,7 +6235,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ModuleMetadataStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The status of the knowledge module</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус модуля знаний<!-- The status of the knowledge module --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#module-metadata-status</Data></Cell>
@@ -6250,7 +6250,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ModuleMetadataFocusType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Specifies clinical metadata that can be used to retrieve, index and/or categorize the knowledge artifact. This metadata can either be specific to the applicable population (e.g., age category, DRG) or the specific context of care (e.g., venue, care setting, provider of care)</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Клинические метаданные, которые можно использовать для извлечения, индексации и/или категоризации артефакта знаний. Эти метаданные могут быть либо специфичными для применимой численности (например возрастная категория, диагностически родственные группы), либо конкретным контекстом оказания ухода (например место проведения; окружение, в котором обеспечивается уход; поставщик медицинского лечения)<!-- Specifies clinical metadata that can be used to retrieve, index and/or categorize the knowledge artifact. This metadata can either be specific to the applicable population (e.g., age category, DRG) or the specific context of care (e.g., venue, care setting, provider of care) --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#module-metadata-focus-type</Data></Cell>
@@ -6265,7 +6265,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ModuleMetadataContributorType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of contributor</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип участника, вносящего вклад<!-- The type of contributor --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#module-metadata-contributor</Data></Cell>
@@ -6280,7 +6280,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ModuleMetadataResourceType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of related resource for the module</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип связанного с модулем ресурса<!-- The type of related resource for the module --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#module-metadata-resource-type</Data></Cell>
