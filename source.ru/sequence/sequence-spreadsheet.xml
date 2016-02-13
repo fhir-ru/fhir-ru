@@ -1079,9 +1079,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Последовательность<!-- A Sequence --></Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Генетический код<!-- A Sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">Данные о вариации или последовательности.<!-- Variation and Sequence data. --></Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Данные о генетическом варианте или коде.<!-- Variation and Sequence data. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1120,7 +1120,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Identifier for variant and ClinVar, dbSNP or COSMIC identifier should be used </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор варианты. В случае варианты зародышевой линии, следует использовать идентификатор ClinVar или dbSNP. Если это соматическая вариация, необходимо использовать идентификатор COSMIC, если не в ClinVar, тогда можно использовать любой из двух. Необходимо указывать кодовую систему  (ClinVar, dbSNP, COSMIC).<!-- Identifier for variant.  If a germline variant, ClinVar or dbSNP identifier should be used.  If a somatic variant, COSMIC identifier should be used, unless in ClinVar then either maybe used. Need to provide the code system used (ClinVar, dbSNP, COSMIC). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор варианта. В случае варианта зародышевой линии, следует использовать идентификатор ClinVar или dbSNP. Если это соматический вариант, необходимо использовать идентификатор COSMIC, если не из ClinVar, тогда можно использовать любой из двух. Необходимо указывать кодовую систему  (ClinVar, dbSNP, COSMIC).<!-- Identifier for variant.  If a germline variant, ClinVar or dbSNP identifier should be used.  If a somatic variant, COSMIC identifier should be used, unless in ClinVar then either maybe used. Need to provide the code system used (ClinVar, dbSNP, COSMIC). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1167,9 +1167,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Координата варианты<!-- The coordinate of the variant --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Координата варианта<!-- The coordinate of the variant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Координата варианты.<!-- The coordinate of the variant. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Координата варианта.<!-- The coordinate of the variant. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1199,9 +1199,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Хромосома, содержащая генетические сведения<!-- The chromosome containing the genetic finding --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Хромосома, содержащая генетическую информацию<!-- The chromosome containing the genetic finding --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Хромосома, содержащая генетические сведения. Набор значений будет 1-22, X, Y для человеческой особи без хромосомных аномалий. В противном случае следует использовать кодовую систему NCBI-Gene.<!-- The chromosome containing the genetic finding. The value set will be 1-22, X, Y when the species is human without chromosome abnormality. Otherwise,  NCBI-Gene code system should be used. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Хромосома, содержащая генетическую информацию. Набор значений будет 1-22, X, Y для человеческой особи без хромосомных аномалий. В противном случае следует использовать кодовую систему NCBI-Gene.<!-- The chromosome containing the genetic finding. The value set will be 1-22, X, Y when the species is human without chromosome abnormality. Otherwise,  NCBI-Gene code system should be used. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1230,7 +1230,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">0-based start position (inclusive) of the sequence</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Начальная позиция последовательности (включительно), считая от нуля<!-- 0-based start position (inclusive) of the sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Inclusive 0-based nucleotide position for start of genomic finding on the positive (+) genomics strand.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1261,7 +1261,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">0-based end position (exclusive) of the sequence</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Конечная позиция последовательности (исключительно), считая от нуля<!-- 0-based end position (exclusive) of the sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Exclusive 0-based nucleotide position for end of genomic finding on the positive (+) genomic strand.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1326,7 +1326,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Supporting tests of human, viruses, and bacteria</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">The organism from which sample of the sequence was extracted. Supporting tests of human, viruses, and bacteria.</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Организм, откуда был взят образец последовательности. Вспомогательные тесты для человека, вирусов и бактерий.  <!-- The organism from which sample of the sequence was extracted. Supporting tests of human, viruses, and bacteria. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1634,9 +1634,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">External repository</Data><NamedCell
+    <Cell><Data ss:Type="String">Внешнее хранилище данных<!-- External repository --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">External repository</Data><NamedCell
+    <Cell><Data ss:Type="String">Внешнее хранилище данных<!-- External repository --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1665,9 +1665,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">URI of the repository</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">URI хранилища данных<!-- URI of the repository --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">URI of a GA4GH repository which contains further details about the genetics data.</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">URI хранилища данных GA4GH, которое содержит дополнительные сведения об этих генетических данных.<!-- URI of a GA4GH repository which contains further details about the genetics data. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1696,9 +1696,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Name of the repository</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Название репозитория<!-- Name of the repository --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">URI of a GA4GH repository which contains further details about the genetics data.</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Название хранилища данных GA4GH, которое содержит дополнительные сведения об этих генетических данных.<!-- URI of a GA4GH repository which contains further details about the genetics data. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1718,9 +1718,9 @@
     <Cell ss:Index="5"><Data ss:Type="String">uri</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">URI of the page containing information about the structure of the repository</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">URI страницы, содержащей информацию о структуре этого репозитория<!-- URI of the page containing information about the structure of the repository --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">URI of the page containing information about the structure of the repository</Data><NamedCell
+    <Cell><Data ss:Type="String">URI страницы, содержащей информацию о структуре этого репозитория<!-- URI of the page containing information about the structure of the repository --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1749,9 +1749,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Id of a GA4GH variant</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор GA4GH-варианта<!-- Id of a GA4GH variant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Id of the GA4GH call set that matches identity of patient. A CallSet in GA4GH represents an individual.</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Идентификатор GA4GH-варианта (CallSet), который соответствует идентификации пациента. CallSet в GA4GH представляет отдельного человека.<!-- Id of the GA4GH call set that matches identity of patient. A CallSet in GA4GH represents an individual. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
