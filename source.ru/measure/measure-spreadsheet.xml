@@ -7320,7 +7320,7 @@
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s148"/>
     <Cell ss:StyleID="s148"><Data ss:Type="String">Initial Population</Data></Cell>
-    <Cell ss:StyleID="s148"><Data ss:Type="String">The initial population for the measure</Data></Cell>
+    <Cell ss:StyleID="s148"><Data ss:Type="String">Начальная популяция для этого показателя<!-- The initial population for the measure --></Data></Cell>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
@@ -7331,7 +7331,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Numerator</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The numerator for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Числитель для этого показателя<!-- The numerator for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -7342,7 +7342,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Numerator Exclusion</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The numerator exclusion for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Исключение из числителя для этого показателя<!-- The numerator exclusion for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -7353,7 +7353,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Denominator</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The denominator for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Знаменатель для этого показателя<!-- The denominator for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -7364,7 +7364,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Denominator Exclusion</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The denominator exclusion for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Исключение из знаменателя для этого показателя<!-- The denominator exclusion for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -7375,7 +7375,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Denominator Exception</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The denominator exception for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Невключение для знаменателя этого показателя<!-- The denominator exception for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -7386,7 +7386,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Measure Population</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The measure population for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Популяция для измерения этого показателя<!-- The measure population for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -7397,7 +7397,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Measure Population Exclusion</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The measure population exclusion for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Исключение из популяции для измерения этого показателя<!-- The measure population exclusion for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -7408,7 +7408,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Measure Score</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The measure score for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Оценка измерения для этого показателя<!-- The measure score for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
