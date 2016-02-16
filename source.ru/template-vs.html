@@ -20,14 +20,14 @@
 Это набор значений, определенный <%vssource%><%vsxref%>
 </p>
 
-<p><b>Summary</b></p>
+<p><b>Краткая сводка<!-- Summary --></b></p>
 <table class="grid">
- <tr><td>Defining URL:</td><td><%vsurl%></td></tr>
- <tr><td>Name:</td><td><%vsname%></td></tr>
- <tr><td>Definition:</td><td><%vsdef%></td></tr>
- <tr><td>OID:</td><td><%vsoid%> (for OID based terminology systems)</td></tr>
+ <tr><td>URL определения<!-- Defining URL: --></td><td><%vsurl%></td></tr>
+ <tr><td>Название</td><td><%vsname%></td></tr>
+ <tr><td>Определение</td><td><%vsdef%></td></tr>
+ <tr><td>OID</td><td><%vsoid%> (для терминологических систем на базе OID)</td></tr>
 <%txsummary%>
- <tr><td>Source Resource</td><td><a href="<%vsref%>.xml.html">XML</a> / <a href="<%vsref%>.json.html">JSON</a></td></tr>
+ <tr><td>Исходники ресурса<!-- Source Resource --></td><td><a href="<%vsref%>.xml.html">XML</a> / <a href="<%vsref%>.json.html">JSON</a></td></tr>
 </table>
 
 <%vs-warning%>
@@ -37,7 +37,7 @@
 <%vsusage%>
 
 <a name="definition"> </a>
-<h2>Content Logical Definition</h2>
+<h2>Содержимое набора значений<!-- Content Logical Definition --></h2>
 
 <%vscld%>
 
@@ -48,22 +48,23 @@
 
 
 <p>
-See <a href="<%level%>terminologies-valuesets.html">the full registry of value sets</a> defined as part of FHIR.
+См. <a href="<%level%>terminologies-valuesets.html">полный реестр наборов значений</a>, определённых в рамках спецификации FHIR.
 </p>
 
 <hr/>
 
 <p>
-Explanation of the columns that may appear on this page:
+Значения колонок, которые могут показываться на этой странице:
+<!-- Explanation of the columns that may appear on this page: -->
 </p>
 <table class="grid">
- <tr><td>Level</td><td>A few code lists that FHIR defines are hierarchical - each code is assigned a level. 
- In this scheme, some codes are under other codes, and imply that the code they are under also applies</td></tr> 
- <tr><td>Source</td><td>The source of the definition of the code (when the value set draws in codes defined elsewhere)</td></tr>
- <tr><td>Code</td><td>The code (used as the code in the resource instance)</td></tr>
- <tr><td>Display</td><td>The display (used in the <i>display</i> element of a <a href="<%level%>datatypes.html#Coding">Coding</a>). If there is no display, implementers should not simply display the code, but map the concept into their application</td></tr>
- <tr><td>Definition</td><td>An explanation of the meaning of the concept</td></tr>
- <tr><td>Comments</td><td>Additional notes about how to use the code</td></tr>
+ <tr><td>Уровень<!-- Level --></td><td>Некоторые списки кодов могут быть иерархическими, где каждому коду присваивается некоторый уровень. По этой схеме некоторые коды оказываются под другими кодами, и подразумевается, что вложенные коды тоже применяются<!-- A few code lists that FHIR defines are hierarchical - each code is assigned a level. 
+ In this scheme, some codes are under other codes, and imply that the code they are under also applies --></td></tr> 
+ <tr><td>Источник<!-- Source --></td><td>Источник определения кода (если набор значений содержит коды, определённые где-то в другом месте)<!-- The source of the definition of the code (when the value set draws in codes defined elsewhere) --></td></tr>
+ <tr><td>Код<!-- Code --></td><td>Код (который используется в экземпляре ресурса)<!-- The code (used as the code in the resource instance) --></td></tr>
+ <tr><td>Значение для отображения<!-- Display --></td><td>Значение для отображения (используется в элементе <i>display</i> в <a href="<%level%>datatypes.html#Coding">кодинге</a>). Если значение для отображения не указано, реализаторам следует не просто показывать код, а замапить такой концепт в своём приложении<!-- The display (used in the <i>display</i> element of a <a href="<%level%>datatypes.html#Coding">Coding</a>). If there is no display, implementers should not simply display the code, but map the concept into their application --></td></tr>
+ <tr><td>Определение<!-- Definition --></td><td>Объяснение смыслового значения концепта<!-- An explanation of the meaning of the concept --></td></tr>
+ <tr><td>Комментарии<!-- Comments --></td><td>Дополнительная информация по использованию кода<!-- Additional notes about how to use the code --></td></tr>
 </table>
 
 </div>
