@@ -2013,16 +2013,16 @@ public class NarrativeGenerator implements INarrativeGenerator {
     else {
       Integer count = countMembership(vs);
       if (count == null)
-        x.addTag("p").addText("This value set does not contain a fixed number of concepts");
+        x.addTag("p").addText("Данный набор значений не содержит фиксированного числа концептов");
       else
-        x.addTag("p").addText("This value set contains "+count.toString()+" concepts");
+        x.addTag("p").addText("Данный набор значений содержит "+count.toString()+" концепта(ов)");
     }
 
     boolean doSystem = checkDoSystem(vs, src);
     if (doSystem && allFromOneSystem(vs)) {
       doSystem = false;
       XhtmlNode p = x.addTag("p");
-      p.addText("All codes from system ");
+      p.addText("Все коды взяты из системы ");
       p.addTag("code").addText(vs.getExpansion().getContains().get(0).getSystem());
     }
     XhtmlNode t = x.addTag("table").setAttribute("class", "codes");
@@ -2120,7 +2120,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
         generateCopyright(x, vs);
     }
     XhtmlNode p = x.addTag("p");
-    p.addText("This value set has an inline code system "+vs.getCodeSystem().getSystem()+", which defines the following codes:");
+    p.addText("Данный набор значений содержит встроенную кодовую систему "+vs.getCodeSystem().getSystem()+", в которой заданы следующие коды:");
     XhtmlNode t = x.addTag("table").setAttribute("class", "codes");
     boolean commentS = false;
     boolean deprecated = false;
