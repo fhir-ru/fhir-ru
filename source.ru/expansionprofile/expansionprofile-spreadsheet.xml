@@ -1439,7 +1439,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">Необходимо знать, когда концепт-карта впервые была разрешена к использованию, изъята или заменена.<!-- Need to know when an expansion profile was first legal for use or became withdrawn or replaced. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">Обратите внимание, что это не то же самое, что дата последнего изменения ресурса, поскольку ресурс может быть вторичным представлением профиля развёртки. Дополнительные специфические даты можно добавить в развёртках<!-- Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the expansion profile. Additional specific dates may be added as extensions --></Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">Обратите внимание, что это не то же самое, что дата последнего изменения ресурса, поскольку ресурс может быть вторичным представлением профиля развёртки. Дополнительные специфические даты можно добавить в расширениях<!-- Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the expansion profile. Additional specific dates may be added as extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4050,7 +4050,7 @@
     <Cell ss:StyleID="s115"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">ExpansionProfile.codeSystem</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">SHALL NOT have include and exclude</Data><NamedCell
+    <Cell ss:StyleID="s115"><Data ss:Type="String">НЕ ДОЛЖЕН иметь одновременно оба элемента include и exclude<!-- SHALL NOT have include and exclude --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">include.empty() or exclude.empty()</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4063,7 +4063,7 @@
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">ExpansionProfile.designation</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">SHALL NOT have include and exclude</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">НЕ ДОЛЖЕН иметь одновременно оба элемента include и exclude<!-- SHALL NOT have include and exclude --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">include.empty() or exclude.empty()</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">not(exists(f:include)) or not(exists(f:exclude))</Data></Cell>
    </Row>
@@ -4073,7 +4073,7 @@
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">ExpansionProfile.designation.include.designation</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">SHALL have at least one of language or use</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">ДОЛЖЕН иметь элемент language или use<!-- SHALL have at least one of language or use --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">language.empty().not() or use.empty().not()</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">exists(f:language) or exists(f:use)</Data></Cell>
    </Row>
@@ -4083,7 +4083,7 @@
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">ExpansionProfile.designation.exclude.designation</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">SHALL have at least one of language or use</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">ДОЛЖЕН иметь элемент language или use<!-- SHALL have at least one of language or use --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">language.empty().not() or use.empty().not()</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">exists(f:language) or exists(f:use)</Data></Cell>
    </Row>
@@ -4507,56 +4507,56 @@
     <Cell ss:StyleID="s80"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s80"/>
     <Cell ss:StyleID="s132"><Data ss:Type="String">ExpansionProfile.url</Data></Cell>
-    <Cell ss:StyleID="s133"><Data ss:Type="String">The logical URL for the expansion profile</Data></Cell>
+    <Cell ss:StyleID="s133"><Data ss:Type="String">Логический URL профиля развёртки<!-- The logical URL for the expansion profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s134"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s135"><Data ss:Type="String">ExpansionProfile.identifier</Data></Cell>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">The identifier for the expansion profile</Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">Идентификатор профиля развёртки<!-- The identifier for the expansion profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s134"><Data ss:Type="String">version</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s135"><Data ss:Type="String">ExpansionProfile.version</Data></Cell>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">The version identifier of the expansion profile</Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">Идентификатор версии профиля развёртки<!-- The version identifier of the expansion profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s134"><Data ss:Type="String">name</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s135"><Data ss:Type="String">ExpansionProfile.name</Data></Cell>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">The name of the expansion profile</Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">Название профиля развёртки<!-- The name of the expansion profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s134"><Data ss:Type="String">publisher</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s135"><Data ss:Type="String">ExpansionProfile.publisher</Data></Cell>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">Name of the publisher of the expansion profile</Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">Имя издателя профиля развёртки<!-- Name of the publisher of the expansion profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s134"><Data ss:Type="String">description</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s135"><Data ss:Type="String">ExpansionProfile.description</Data></Cell>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">Text search in the description of the expansion profile</Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">Текстовый поиск по описаниям профилей развёртки<!-- Text search in the description of the expansion profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s134"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s135"><Data ss:Type="String">ExpansionProfile.status</Data></Cell>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">The status of the expansion profile</Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">Статус профиля развёртки<!-- The status of the expansion profile --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s134"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s135"><Data ss:Type="String">ExpansionProfile.date</Data></Cell>
-    <Cell ss:StyleID="s136"><Data ss:Type="String">The expansion profile publication date</Data></Cell>
+    <Cell ss:StyleID="s136"><Data ss:Type="String">Дата публикации профиля развёртки<!-- The expansion profile publication date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s134"/>
@@ -6474,7 +6474,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163"><Data ss:Type="String">ConceptDesignationUse</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Details of how a designation would be used.</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Сведения о том, каким образом наименование будет использоваться.<!-- Details of how a designation would be used. --></Data></Cell>
     <Cell ss:StyleID="s135"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s135"><Data ss:Type="String">valueset-designation-use</Data></Cell>
     <Cell ss:StyleID="s132"/>
