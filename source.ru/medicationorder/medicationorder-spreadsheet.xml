@@ -1010,9 +1010,9 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Предписание лекарственного средства пациенту<!-- Prescription of medication to for patient --></Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Рецепт на лекарственное средство для пациента<!-- Prescription of medication to for patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Заказ как на поставку лекарственного средства, так и на инструкции по введению лекарственного средства пациенту. Ресурс был переименован с &quot;MedicationPrescription&quot; на &quot;MedicationOrder&quot;, чтобы обобщить его использование в стационарных и амбулаторных условиях, а также в планах по уходу и т. д.<!-- An order for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called &quot;MedicationOrder&quot; rather than &quot;MedicationPrescription&quot; to generalize the use across inpatient and outpatient settings as well as for care plans, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Заказ на поставку и инструкции по введению лекарственного средства пациенту. Ресурс был переименован с &quot;MedicationPrescription&quot; на &quot;MedicationOrder&quot;, чтобы обобщить его использование в стационарных и амбулаторных условиях, а также в планах по уходу и т. п.<!-- An order for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called &quot;MedicationOrder&quot; rather than &quot;MedicationPrescription&quot; to generalize the use across inpatient and outpatient settings as well as for care plans, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1045,7 +1045,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Внешний идентификатор <!-- External identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Внешний идентификатор, который будет использоваться другой не-FHIR системой - например система возмещения расходов может назначать свой собственный идентификатор каждому создаваемому предписанию. Особенно это важно там, где FHIR обеспечивает только часть общего рабочего процесса, а записи должны отслеживаться целой системой. <!-- External identifier - one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an entire workflow process where records have to be tracked through an entire system. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Внешний идентификатор, который будет использоваться другой не-FHIR системой - например система возмещения расходов может назначать свой собственный идентификатор каждому создаваемому рецепту. Особенно это важно там, где FHIR обеспечивает только часть общего рабочего процесса, а записи должны отслеживаться целой системой. <!-- External identifier - one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an entire workflow process where records have to be tracked through an entire system. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1147,7 +1147,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Для кого это предписание<!-- Who prescription is for --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для кого выписан этот рецепт<!-- Who prescription is for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Ссылка на ресурс, описывающий персону, которой будет выдано это лекарственное средство. <!-- A link to a resource representing the person to whom the medication will be given. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1217,9 +1217,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда было выписано предписание<!-- When prescription was authorized --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда был выписан рецепт<!-- When prescription was authorized --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата (и, возможно, время), когда было выписано предписание<!-- The date (and perhaps time) when the prescription was written --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата (и, возможно, время), когда был выписан рецепт<!-- The date (and perhaps time) when the prescription was written --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1253,7 +1253,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Кто заказал лекарственное средство<!-- Who ordered the medication(s) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Специалист по медицинскому обеспечению, ответственный за разрешение этого предписания<!-- The healthcare professional responsible for authorizing the prescription --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Специалист по медицинскому обеспечению, ответственный за разрешение этого рецепта<!-- The healthcare professional responsible for authorizing the prescription --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1286,9 +1286,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Причина или показание к выписке предписания<!-- Reason or indication for writing the prescription --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Причина или показание к выписке этого рецепта<!-- Reason or indication for writing the prescription --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Может быть причиной или показанием к выписке предписания. <!-- Can be the reason or the indication for writing the prescription.   --> </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Может быть причиной или показанием к выписке рецепта. <!-- Can be the reason or the indication for writing the prescription.   --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1319,9 +1319,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда это предписание было остановлено<!-- When prescription was stopped --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда действие этого рецепта было остановлено<!-- When prescription was stopped --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата (и, возможно, время), когда это предписание было остановлено<!-- The date (and perhaps time) when the prescription was stopped --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата (и, возможно, время), когда действие этого рецепта было остановлено<!-- The date (and perhaps time) when the prescription was stopped --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1351,9 +1351,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Почему предписание было остановлено<!-- Why prescription was stopped --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Почему действие этого рецепта было остановлено<!-- Why prescription was stopped --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Причина, по которой предписание было остановлено, если было<!-- The reason why the prescription was stopped, if it was --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Причина, по которой действие этого рецепта было остановлено (если было)<!-- The reason why the prescription was stopped, if it was --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1382,9 +1382,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация об этом предписании<!-- Information about the prescription --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация об этом рецепте<!-- Information about the prescription --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Дополнительная информация о предписании, для передачи которой нет отдельных элементов. <!-- Extra information about the prescription that could not be conveyed by the other attributes. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дополнительная информация о рецепте, для передачи которой нет отдельных элементов. <!-- Extra information about the prescription that could not be conveyed by the other attributes. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1854,9 +1854,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Период, на время которого разрешена поставка<!-- Time period supply is authorized for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Это срок действия предписания<!-- This indicates the validity period of a prescription (stale dating the Prescription) --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это срок действия рецепта<!-- This indicates the validity period of a prescription (stale dating the Prescription) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Показывает, когда предписание вступает в силу и когда прекращает действовать.<!-- Indicates when the Prescription becomes valid, and when it ceases to be a dispensable Prescription. -->  </Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Показывает, когда рецепт вступает в силу и когда прекращает действовать.<!-- Indicates when the Prescription becomes valid, and when it ceases to be a dispensable Prescription. -->  </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String"> It reflects the prescriber perspective for the validity of the prescription. Dispenses must not be made against the prescription outside of this period. The lower-bound of the Dispensing Window signifies the earliest date that the prescription can be filled for the first time. If an upper-bound is not specified then the Prescription is open-ended or will default to a stale-date based on regulations.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1922,7 +1922,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Количество лекарственного средства для одной выдачи<!-- Amount of medication to supply per dispense --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Количество, которое должно быть выдано за одно использование предписания.<!-- The amount that is to be dispensed for one fill.  --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Количество, которое должно быть выдано за одно использование рецепта.<!-- The amount that is to be dispensed for one fill.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1953,9 +1953,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество дней поставки для одной выдачи по предписанию<!-- Number of days supply per dispense --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество дней поставки для одной выдачи по рецепту<!-- Number of days supply per dispense --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Период времени, в течение которого этот поставляемый продукт, предполагается, будет использован, или продолжительность времени, сколько эта выдача, предполагается, будет длиться.<!-- Identifies the period time over which the supplied product is expected to be used, or the length of time the dispense is expected to last. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Период времени, в течение которого предполагается использование поставляемого продукта, или продолжительность времени, сколько эта выдача предположительно будет длиться.<!-- Identifies the period time over which the supplied product is expected to be used, or the length of time the dispense is expected to last. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">In some situations, this attribute may be used instead of quantity to identify the amount supplied by how long it is expected to last, rather than the physical quantity issued, e.g. 90 days supply of medication (based on an ordered dosage) When possible, it is always better to specify quantity, as this tends to be more precise. expectedSupplyDuration will always be an estimate that can be influenced by external factors.  </Data><NamedCell
@@ -2021,7 +2021,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">generic | formulary +</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, означающий, следует ли выдать другой медикамент вместо того, который был назначен. <!-- A code signifying whether a different drug should be dispensed from what was prescribed. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, означающий, следует ли выдать другой медикамент вместо назначенного в рецепте. <!-- A code signifying whether a different drug should be dispensed from what was prescribed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2086,9 +2086,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Заказ/предписание, которое данный заказ замещает<!-- An order/prescription that this supersedes --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Заказ/рецепт, который данный заказ замещает<!-- An order/prescription that this supersedes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Ссылка на ресурс более раннего заказа или предписания, который данный заказ замещает<!-- A link to a resource representing an earlier order or prescription that this order supersedes --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Ссылка на ресурс более раннего заказа или рецепта, который данный заказ замещает<!-- A link to a resource representing an earlier order or prescription that this order supersedes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4535,49 +4535,49 @@
     <Cell ss:StyleID="s79"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s79"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">MedicationOrder.dateWritten</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Return prescriptions written on this date</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Возвращает рецепты, выписанные в указанную дату<!-- Return prescriptions written on this date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">encounter</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">MedicationOrder.encounter</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Return prescriptions with this encounter identifier</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает рецепты с указанным идентификатором визита<!-- Return prescriptions with this encounter identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">MedicationOrder.identifier</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Return prescriptions with this external identifier</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает рецепты с указанным внешним идентификатором<!-- Return prescriptions with this external identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">medication</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">MedicationOrder.medicationReference</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Return administrations of this medication reference</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает назначения этой ссылки на лекарственное средство<!-- Return administrations of this medication reference --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">MedicationOrder.medicationCodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Return administrations of this medication code</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает назначения этого кода лекарственного средства<!-- Return administrations of this medication code --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">MedicationOrder.patient</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The identity of a patient to list orders  for</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Пациент, для которого выводятся заказы<!-- The identity of a patient to list orders  for --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">MedicationOrder.status</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Status of the prescription</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Статус рецепта<!-- Status of the prescription --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">prescriber</Data></Cell>
@@ -6559,7 +6559,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s151"><Data ss:Type="String">MedicationIntendedSubstitutionType</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">A coded concept describing whether a different medicinal product may be dispensed other than the product as specified exactly in the prescription.</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Закодированное понятие, описывающее, можно ли выдать другое лекарственное средство вместо продукта, указанного в рецепте.<!-- A coded concept describing whether a different medicinal product may be dispensed other than the product as specified exactly in the prescription. --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-ActSubstanceAdminSubstitutionCode</Data></Cell>
@@ -6574,7 +6574,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s152"><Data ss:Type="String">MedicationIntendedSubstitutionReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept describing the reason that a different medication should (or should not) be substituted from what was prescribed.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Закодированное понятие, описывающее причину, по которой другое лекарственное средство следует (или не следует) выдать вместо указанного в рецепте. <!-- A coded concept describing the reason that a different medication should (or should not) be substituted from what was prescribed. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-SubstanceAdminSubstitutionReason</Data></Cell>
@@ -6589,7 +6589,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s152"><Data ss:Type="String">MedicationAsNeededReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept identifying the precondition that should be met or evaluated prior to consuming or administering a medication dose.  For example &quot;pain&quot;, &quot;30 minutes prior to sexual intercourse&quot;, &quot;on flare-up&quot; etc.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Закодированное понятие, описывающее предварительное условие, которое должно выполняться и оцениваться до употребления или введения дозы медикамента. Например &quot;боль&quot;, &quot;за 30 минут до полового акта&quot;, &quot;при обострении болезни&quot; и т. д.<!-- A coded concept identifying the precondition that should be met or evaluated prior to consuming or administering a medication dose.  For example &quot;pain&quot;, &quot;30 minutes prior to sexual intercourse&quot;, &quot;on flare-up&quot; etc. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
@@ -6604,7 +6604,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s152"><Data ss:Type="String">MedicationAdministrationSite</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept describing the site location the medicine enters into or onto the body.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Закодированное понятие, описывающее местоположение на теле, где лекарство попадает в или на тело.<!-- A coded concept describing the site location the medicine enters into or onto the body. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/approach-site-codes</Data></Cell>
@@ -6619,7 +6619,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s152"><Data ss:Type="String">MedicationAdministrationMethod</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept describing the technique by which the medicine is administered.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Закодированное понятие, описывающее метод введения лекарства.<!-- A coded concept describing the technique by which the medicine is administered. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
@@ -6634,7 +6634,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s152"><Data ss:Type="String">MedicationOrderStatus</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code specifying the state of the prescribing event. Describes the lifecycle of the prescription.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код состояния события предписания. Описывает жизненный цикл рецепта.<!-- A code specifying the state of the prescribing event. Describes the lifecycle of the prescription. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#medication-order-status</Data></Cell>
@@ -6649,7 +6649,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s152"><Data ss:Type="String">RouteOfAdministration</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject. </Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Закодированное понятие, описывающее физиологический путь или способ ввода терапевтического средства пациенту.<!-- A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject.  --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-route-codes</Data></Cell>
@@ -6664,7 +6664,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s88"><Data ss:Type="String">EndReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes indicating why the medication was terminated; e.g. Adverse reaction, medication change, issue resolved, etc.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды причин, почему назначение этого медикамента было прекращено; например Нежелательная аллергическая реакция, смена медикамента, проблема решена и т. п.<!-- Codes indicating why the medication was terminated; e.g. Adverse reaction, medication change, issue resolved, etc. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
@@ -6679,7 +6679,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s88"><Data ss:Type="String">OrderReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes indicating why the medication was ordered.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды причин, почему данный медикамент был заказан.<!-- Codes indicating why the medication was ordered. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/condition-code</Data></Cell>
@@ -6709,7 +6709,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s88"><Data ss:Type="String">AdditionalInstructions</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes identifying additional instructions such as &quot;take with water&quot; or &quot;avoid operating heavy machinery&quot;.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды дополнительных инструкций, например &quot;принимать с водой&quot; или &quot;избегать эксплуатации тяжелой техники&quot;.<!-- Codes identifying additional instructions such as &quot;take with water&quot; or &quot;avoid operating heavy machinery&quot;. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
