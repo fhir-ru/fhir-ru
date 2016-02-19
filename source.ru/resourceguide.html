@@ -58,9 +58,9 @@ understand their purpose and scope, and their supporting classifications. -->
  </tr>
  
   <tr><td colspan="3"><b>Результаты медицинских исследований</b></td></tr>
- <tr><td>Лабораторные результаты</td><td>Blood panels such as CBC with Differential, Liver Panel, etc.</td><td><a href="diagnosticreport.html">DiagnosticReport</a> с <a href="observation.html">Observations</a></td></tr>
- <tr><td>Результаты радиологических исследований</td><td>CT Scans, MRI, Plain Radiographs, Ultrasounds)</td><td><a href="diagnosticreport.html">DiagnosticReport</a> (некоторые с <a href="observation.html">Observations</a>)</td></tr>
- <tr><td>Результаты диагностических исследований</td><td>EKG, pulmonary function test, EEG</td><td><a href="observation.html">Observations</a> (и, возможно, <a href="diagnosticreport.html">DiagnosticReport</a>)</td></tr>
+ <tr><td>Лабораторные результаты</td><td>Панель тестов, например общий анализ крови с дифференциалом, анализы для оценки функции печени</td><td><a href="diagnosticreport.html">DiagnosticReport</a> с <a href="observation.html">Observations</a></td></tr>
+ <tr><td>Результаты радиологических исследований</td><td>КТ, МРТ, рентгенография, УЗИ</td><td><a href="diagnosticreport.html">DiagnosticReport</a> (некоторые с <a href="observation.html">Observations</a>)</td></tr>
+ <tr><td>Результаты диагностических исследований</td><td>ЭКГ, анализ лёгочной функции, ЭЭГ</td><td><a href="observation.html">Observations</a> (и, возможно, <a href="diagnosticreport.html">DiagnosticReport</a>)</td></tr>
  <tr><td>Основные показатели состояния организма</td><td>Температура, кровяное давление, частота сердцебиения, частота дыхания</td><td><a href="observation.html">Observation</a></td></tr>
  <tr><td>Другие результаты медицинских осмотров</td><td>Результаты выслушивания (больного)</td><td><a href="observation.html">Observation</a></td></tr>
  <tr><td>Табличные данные по катетерам легочной артерии</td><td>Давление в легочной артерии</td><td><a href="observation.html">Observation</a></td></tr>
@@ -101,12 +101,12 @@ understand their purpose and scope, and their supporting classifications. -->
  <tr><td>Signs &amp; Symptoms</td><td>from a review of systems- Pain, Fever</td><td><a href="condition.html">Condition</a> </td></tr> -->
 
   <tr><td colspan="3"><b>Suggested Physician Orders </b></td></tr>
- <tr><td>Proposal for a laboratory test</td><td>A blood panel, a stool analysis</td><td><a href="diagnosticorder.html">DiagnosticOrder</a> </td></tr>
- <tr><td>Proposal for an imaging procedure</td><td>CT Scan, MRI, X-Rays</td><td><a href="diagnosticorder.html">DiagnosticOrder</a> </td></tr>
- <tr><td>Proposed Diet Order</td><td>An oral diet order</td><td><a href="nutritionorder.html">NutritionOrder</a> </td></tr>
- <tr><td>Proposed respiratory order</td><td>Oxygen delivery</td><td>Not done yet</td></tr>
- <tr><td>Proposed Medications</td><td>Aspirin, Lisinopril</td><td><a href="medicationorder.html">MedicationOrder</a> </td></tr>
- <tr><td>Proposed Supply</td><td>Wheel Chair, Food Tray</td><td><a href="supplyrequest.html">SupplyRequest</a> </td></tr>
+ <tr><td>Предложение лабораторного анализа</td><td>Анализ крови, анализ кала</td><td><a href="diagnosticorder.html">DiagnosticOrder</a> </td></tr>
+ <tr><td>Предложение радиологической диагностики</td><td>КТ, МРТ, рентген</td><td><a href="diagnosticorder.html">DiagnosticOrder</a> </td></tr>
+ <tr><td>Предложенный заказ питания</td><td>Заказ орального питания</td><td><a href="nutritionorder.html">NutritionOrder</a> </td></tr>
+ <tr><td>Предложенный респираторный заказ</td><td>Подача кислорода</td><td>Пока нет</td></tr>
+ <tr><td>Предложенные медикаменты</td><td>Аспирин, лизиноприл</td><td><a href="medicationorder.html">MedicationOrder</a> </td></tr>
+ <tr><td>Предложенное обеспечение</td><td>Инвалидное кресло, поднос для еды</td><td><a href="supplyrequest.html">SupplyRequest</a> </td></tr>
 <!--  <tr><td colspan="3"><b>Suggested Physician Orders </b></td></tr>
  <tr><td>Proposal for a laboratory test</td><td>A blood panel, a stool analysis</td><td><a href="diagnosticorder.html">DiagnosticOrder</a> </td></tr>
  <tr><td>Proposal for an imaging procedure</td><td>CT Scan, MRI, X-Rays</td><td><a href="diagnosticorder.html">DiagnosticOrder</a> </td></tr>
@@ -463,18 +463,20 @@ dedicated person registries. -->
 <tr><td><a href="person.html">Person</a></td><td><a href="#unrelated">Unrelated</a></td><td>Entity</td><td></td></tr>
 </table>
 
-<h4>Медицинское изделие<!-- Device --></h4>
+<h4>Устройство<!-- Device --></h4>
 
 <p>
-<code>Device</code> is used to track non-consumable manufactured materials through the
+Ресурс <code>Device</code> используется для описания нерасходуемых искусственных материалов, используемых в здравоохранении. Они включают в себя имплантаты, большие инструменты, немедицинские вещи (включая программное обеспечение) и контейнеры. Устройства - а, следовательно, и ресурс Device - имеют разное назначение, в том числе управление запасами, локационные установки, отслеживание имплантатов.
+<!-- <code>Device</code> is used to track non-consumable manufactured materials through the
 healthcare process. It includes implants, large instruments, non-medical things (including
 software), and containers. Devices - and therefore the device resource - have many purposes,
-including stock control, locating devices, and tracking implants.
+including stock control, locating devices, and tracking implants. -->
 </p>
 <p>
-<code>DeviceComponent</code> and <code>DeviceMetric</code> are used to report the status
+Ресурсы <code>DeviceComponent</code> и <code>DeviceMetric</code> используются для сообщения состояния и характеристик видов медицинских изделий, которые производят поток одной или нескольких точек данных (<a href="observation.html">Observations</a>), как правило, о пациенте.
+<!-- <code>DeviceComponent</code> and <code>DeviceMetric</code> are used to report the status
 and characteristics of the kinds of medical devices that produce a stream of one or 
-more data points (<a href="observation.html">Observations</a>), usually about a patient. 
+more data points (<a href="observation.html">Observations</a>), usually about a patient.  -->
 </p>
 
 <table class="grid">
@@ -484,29 +486,34 @@ more data points (<a href="observation.html">Observations</a>), usually about a 
 <tr><td><a href="devicemetric.html">DeviceMetric</a></td><td><a href="#unrelated">Unrelated</a></td><td>Role</td><td></td></tr>
 </table>
 
-<h3>Work Flow</h3>
+<h3>Рабочий процесс<!-- Work Flow --></h3>
 
-<h4>Encounters</h4>
+<h4>Визиты<!-- Encounters --></h4>
 
 <p>
-<code>Encounter</code> tracks an interaction between a patient and healthcare provider(s).
+Ресурс <code>Encounter</code> отслеживает взаимодействие между пациентом и поставщиками медицинских услуг.
+этот ресурс отслеживает административную информацию об этом взаимодействии, а не медицинские детали (хотя они обычно привязаны к ней). Альтернативные названия включают "госпитализацию", "консультацию", иногда "назначенную встречу". Визиты могут быть вложенными - например когда пациент идёт на физиотерапию в рамках больничной госпитализации. 
+<!-- <code>Encounter</code> tracks an interaction between a patient and healthcare provider(s).
 Specifically, this resource tracks the administrative details of the interaction, not the
 clinical details (though these usual link to it). Aliases for this include 
 'admission', 'consultation', and sometimes 'appointment'. Encounters may be nested - e.g. 
-when the patient goes to physiotherapy as part of a hospital admission.
+when the patient goes to physiotherapy as part of a hospital admission. -->
 </p>
 <p>
-An <code>EpisodeofCare</code> is an association between a patient and a care provider
+Ресурс <code>EpisodeofCare</code> (эпизода оказания медицинской помощи) описывает связь между пациентом и поставщиком медицинских услуг, которая может длиться на протяжении нескольких визитов. Назначение ресурса EpisodeOfCare - отслеживать поставщика (персону или организацию), заинтересованного в продолжающемся уходе за пациентом.
+<!-- An <code>EpisodeofCare</code> is an association between a patient and a care provider
 that may last over several encounters. The purpose of EpisodeOfCare is track a provider
-(person or organization) that has an interest in the ongoing care of the patient.
+(person or organization) that has an interest in the ongoing care of the patient. -->
 </p>
 <p>
-A <code>Communication</code> is a record of a formal communication with a 
-patient or another party with an interest in their care - a letter, email, phone call etc. 
+Ресурс <code>Communication</code> - это запись о формальном коммуникационном общении с пациентом или другой стороной, заинтересованной в медицинском лечении - письмо, электронное письмо, телефонный звонок и т. п.
+<!-- A <code>Communication</code> is a record of a formal communication with a 
+patient or another party with an interest in their care - a letter, email, phone call etc.  -->
 </p>
 <p>
-A <code>Flag</code> is warning maintained in the system that alerts care providers to potential
-issues they should be aware of when providing care to a patient, or at a location.
+Ресурс <code>Flag</code> - это предупреждение, поддерживаемое в системе, которое оповещает поставщиком медицинских услуг о потенциальных проблемах, о которых они должны знать при предоставлении помощи пациентам, или на месте.
+<!-- A <code>Flag</code> is warning maintained in the system that alerts care providers to potential
+issues they should be aware of when providing care to a patient, or at a location. -->
 </p>
 
 <table class="grid">
@@ -517,19 +524,25 @@ issues they should be aware of when providing care to a patient, or at a locatio
 <tr><td><a href="flag.html">Flag</a></td><td><a href="#ongoing">Ongoing</a></td><td>Act</td><td><a href="lifecycle.html#entity">Entity Availability Workflow</a></td></tr>
 </table>
 
-<h4>Scheduling</h4>
+<h4>Составление расписания<!-- Scheduling --></h4>
 
 <p>
-These resources are concerned with planning times and locations for future delivery of care:
+Эти ресурсы связаны с планированием времени и места оказания медицинской помощи:
+<!-- These resources are concerned with planning times and locations for future delivery of care: -->
 </p>
 <ul>
- <li>A <code>Schedule</code> describes a set of times in the future that a service or individual may be available</li>
+ <li>Ресурс <code>Schedule</code> описывает время в будущем, когда услуга или человек будет доступен</li>
+ <li>Ресурс <code>Slot</code> - это указание времени в расписании, которое можно зарезервировать</li>
+ <li>Ресурс <code>Appointment</code> - это предложенное или подтверждённое событие в будущем, со списком его участников, которые, возможно, подтвердили или не подтвердили своё участие</li>
+ <li>Ресурс <code>AppointmentResponse</code> - это принятие человеком или отказ от назначенной встречи</li>
+<!--  <li>A <code>Schedule</code> describes a set of times in the future that a service or individual may be available</li>
  <li>A <code>Slot</code> is an instance of a time in a schedule that may be reserved</li>
  <li>An <code>Appointment</code> is proposed or confirmed future event, with a list of participants who may or may not have confirmed their attendance</li>
- <li>An <code>AppointmentResponse</code> is an individual's acceptance or rejection of an appointment</li>
+ <li>An <code>AppointmentResponse</code> is an individual's acceptance or rejection of an appointment</li> -->
 </ul>
 <p>
-The scheduling systems is closely aligned with the iCal system so that systems may leverage web bookings while maintaining integrity with the rest of the clinical record.
+Системы планирования тесно связаны с системой iCal, так что они могут использовать веб-заказы при сохранении согласованности с остальной частью истории болезни.
+<!-- The scheduling systems is closely aligned with the iCal system so that systems may leverage web bookings while maintaining integrity with the rest of the clinical record. -->
 </p>
 <table class="grid">
 <tr><td><b>Ресурс</b></td><td><b>Категория</b></td><td><b>RIM</b></td><td><b>Жизненный цикл</b></td></tr>
@@ -543,7 +556,6 @@ The scheduling systems is closely aligned with the iCal system so that systems m
 
 <p>
 Todo: все эти ресурсы находятся на стадии проекта ресурсов. Их подготовка и тестирование в условиях реальных сценариев - главная текущая цель проекта FHIR.
-hese resources are all draft. Bringing them to maturity and testing their support for real-world scenarios is a major ongoing focus of the FHIR project.
 <!-- Todo: these resources are all draft. Bringing them to maturity and testing their support for real-world scenarios is a major ongoing focus of the FHIR project. -->
 </p>
 
