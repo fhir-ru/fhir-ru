@@ -376,7 +376,7 @@ diagnostic images). -->
 <h3>Административные ресурсы<!-- Administrative Resources --></h3>
 
 <p>
-Это ресурсы для поддержки идентификации различных сущностей, вовлечённых в здравоохранение: людей, организаций, веществ, медицинских изделий и т. п.
+Это ресурсы, идентифицирующие различные сущности, вовлечённые в здравоохранение: людей, организаций, веществ, медицинских изделий и т. п.
 <!-- These resources provide support for identifying
 the various entities involved in healthcare: 
 people, organizations, substances, devices, etc. -->
@@ -385,22 +385,25 @@ people, organizations, substances, devices, etc. -->
 <h4>Физические лица<!-- Individuals --></h4>
 
 <p>
-The <code>Patient</code> resource represents the recipient of healthcare. This concept
+Ресурс <code>Patient</code> описывает получателя медицинское обеспечение. Это понятие не всегда описывается словом "пациент" - часто используются и другие слова, например клиент, заказчик, проживающий и др., однако в данной спецификации получатель здравоохранения называется просто "пациент". Ресурс Patient включает в себя основную демографическую информацию и информацию о ближайших родственниках.
+<!-- The <code>Patient</code> resource represents the recipient of healthcare. This concept
 is not always referred to as a 'patient' - other words such as client, customer, resident,
 etc. are commonly used, but in this specification, the recipient of healthcare is 
 simply known as the patient. The patient resource includes basic demographics and 
-next of kin information.
+next of kin information. -->
 </p>
 <p>
-The <code>Practitioner</code> resource is used to identify and describe any person
+Ресурс <code>Practitioner</code> используется для идентификации и описания любой персоны, вовлечённой в предоставление медицинской помощи, включая докторов, медсестёр, канцелярских служащих, вспомогательный персонал и т. д.
+<!-- The <code>Practitioner</code> resource is used to identify and describe any person
 (or even animal) involved in the provision of care, including doctors, nurses, 
-clerical staff, specialist support staff, etc. 
+clerical staff, specialist support staff, etc.  -->
 </p>
 <p>
-<code>RelatedPerson</code> is used to describe individuals who are related 
+Ресурс <code>RelatedPerson</code> используется для описания физических лиц, связанных с пациентом, которые вовлечены в процесс предоставления ему медицинской помощи, а не просто являются родственниками - они могут подписывать документы, вводить лекарственные средства, выступать источником информации или оказывать случайную помощь при несчастном случае.
+<!-- <code>RelatedPerson</code> is used to describe individuals who are related 
 to the patient who are involved in the healthcare process, beyond merely 
 being next of kin - they may sign documents, administer medications, be the 
-source of information, or simply provide care by chance at an accident. 
+source of information, or simply provide care by chance at an accident.  -->
 </p>
 
 <table class="grid">
@@ -410,19 +413,21 @@ source of information, or simply provide care by chance at an accident.
 <tr><td><a href="relatedperson.html">RelatedPerson</a></td><td><a href="#unrelated">Unrelated</a></td><td>Role</td><td></td></tr>
 </table>
 
-<h4>Groups</h4>
+<h4>Группы<!-- Groups --></h4>
 
 <p>
-In most provision of healthcare, some <code>Organization</code> is responsible and accountable
+В большинстве процессов предоставления медицинской помощи, некоторая организация (описываемая ресурсом <code>Organization</code>) несёт ответственность и отчитывается за эту помощь, а ссылки на неё добавляются в историю болезни. Такая организация является юридической лицом, которое может действовать в нескольких местоположениях. Ресурс <code>HealthcareService</code> описывает услуги, предлагаемые одной или несколькими организациями в одном местоположении.
+<!-- In most provision of healthcare, some <code>Organization</code> is responsible and accountable
 for the care, and references appear throughout the clinical record. The organization is 
 a legal entity that may operate at multiple locations. A <code>HealthcareService</code>
-represents the services offered by one or more organizations at a single location.
+represents the services offered by one or more organizations at a single location. -->
 </p>
 <p>
-A <code>Group</code> is used to describe one or more individuals - usually people, though
+Ресурс <code>Group</code> используется для описания одного или нескольких физических лиц - обычно людей, хотя допустимы и другие виды сущностей. Как правило, эти ресурсы используются для сообщения сводных показателей, иногда помощь показывается группе лиц одновременно (некоторые консультационные процедуры, процедуры общественного здравоохранения, стада крупного рогатого скота и т. п.).
+<!-- A <code>Group</code> is used to describe one or more individuals - usually people, though
 other kinds of entities are allowed. Typically, these are used with aggregate reporting,
 though sometimes care is provided to a set of individuals at once (some counseling
-procedures, public health procedures, herds of cattle, etc.).
+procedures, public health procedures, herds of cattle, etc.). -->
 </p>
 
 <table class="grid">
@@ -432,20 +437,22 @@ procedures, public health procedures, herds of cattle, etc.).
 <tr><td><a href="group.html">Group</a></td><td><a href="#unrelated">Unrelated</a></td><td>Entity</td><td></td></tr>
 </table>
 
-<h4>Entities</h4>
+<h4>Сущности<!-- Entities --></h4>
 
 <p>
-<code>Location</code> - for where things happen. Locations are either by instance (e.g. 
+Ресурс <code>Location</code> описывает место, где что-то происходит. Местоположение указывается либо как частный случай (например эта конкретная комната по указанному адресу или GPS-координатам), либо общим описанием вида местоположения (например задняя часть машины скорой помощи). То же самое с ресурсом <code>Substance</code>, который используется для описания материалов (например химических), применяемых в здравоохранении - может описывать идентифицированный экземпляр (например бутылка) или вид химиката.
+<!-- <code>Location</code> - for where things happen. Locations are either by instance (e.g. 
 this particular room at a given address or GPS coordinates) or by kind (e.g. the back
 of some ambulance). The same applies to <code>Substance</code>, for some kind of 
 material (e.g. chemical) used in healthcare - it may refer to an identified instance 
-(e.g. bottle) or a kind of chemical. 
+(e.g. bottle) or a kind of chemical.  -->
 </p>
 <p>
-The <code>Person</code> resource is used to track associations between different
+Ресурс <code>Person</code> используется для отслеживания связей между различными историями болезни при оказании медицинской помощи (например "единый идентификатор пациента"). Ресурсы Person не используются напрямую в других ресурсах; они предназначены для специализированных реестров пациентов.
+<!-- The <code>Person</code> resource is used to track associations between different
 patient records across the provision of healthcare (e.g. "master patient indexes").
 Person resources are not referred directly from other resources; their use is for 
-dedicated person registries.
+dedicated person registries. -->
 </p>
 
 
@@ -456,7 +463,7 @@ dedicated person registries.
 <tr><td><a href="person.html">Person</a></td><td><a href="#unrelated">Unrelated</a></td><td>Entity</td><td></td></tr>
 </table>
 
-<h4>Device</h4>
+<h4>Медицинское изделие<!-- Device --></h4>
 
 <p>
 <code>Device</code> is used to track non-consumable manufactured materials through the

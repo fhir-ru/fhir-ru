@@ -4725,9 +4725,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       StringBuilder b = new StringBuilder();
       b.append("<h2>Параметры поиска</h2>\r\n");
       if (resource.getName().equals("Query"))
-        b.append("<p>Параметры поиска для этого ресурса. Также применяются <a href=\"#all\">общие параметры</a>.</p>\r\n");
+        b.append("<p>Параметры поиска для этого ресурса. Также к нему применяются <a href=\"#all\">общие параметры</a>.</p>\r\n");
       else
-        b.append("<p>Параметры поиска для этого ресурса. Также применяются <a href=\"search.html#all\">общие параметры</a>. См. раздел <a href=\"search.html\">Поиск</a> for more information about searching in REST, messaging, and servicesдля более подробной информации о поиске в REST, обмене сообщениями и в сервисах.</p>\r\n");
+        b.append("<p>Параметры поиска для этого ресурса. Также к нему применяются <a href=\"search.html#all\">общие параметры</a>. Более подробную информацию о поиске в REST, обмене сообщениями и сервисах смотрите на странице <a href=\"search.html\">Поиск</a>.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
       b.append("<tr><td><b>Имя</b></td><td><b>Type</b></td><td><b>Описание</b></td><td><b>Пути</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
@@ -4749,7 +4749,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     else {
       StringBuilder b = new StringBuilder();
       b.append("<h2>Параметры поиска</h2>\r\n");
-      b.append("<p>Общие параметры поиска, определенные этим ресурсом. См. раздел <a href=\"search.html\">Поиск</a> для более подробной информации о поиске в REST, обмене сообщениями и в сервисах</p>\r\n");
+      b.append("<p>Общие параметры поиска, применимые к этому ресурсу. Более подробную информацию о поиске в REST, обмене сообщениями и сервисах смотрите на странице <a href=\"search.html\">Поиск</a>.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
       b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Пути</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
@@ -4771,7 +4771,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     else {
       StringBuilder b = new StringBuilder();
       b.append("<h2>Параметры поиска</h2>\r\n");       
-      b.append("<p>Параметры поиска, определенные этой структурой. См. раздел <a href=\"search.html\">Поиск</a> для более подробной информации о поиске в REST, обмене сообщениями и в сервисах.</p>\r\n");
+      b.append("<p>Параметры поиска, определенные этой структурой. Более подробную информацию о поиске в REST, обмене сообщениями и сервисах смотрите на странице <a href=\"search.html\">Поиск</a>.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
       b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Пути</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
@@ -6627,10 +6627,10 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       // search parameters
       StringBuilder b = new StringBuilder();
       b.append("<a name=\"search\"> </a>\r\n");
-      b.append("<h3>Search Parameters</h3>\r\n");
-      b.append("<p>Search parameters defined by this package. See <a href=\""+prefix+"search.html\">Searching</a> for more information about searching in REST, messaging, and services.</p>\r\n");
+      b.append("<h3>Параметры поиска</h3>\r\n");//Search Parameters
+      b.append("<p>Параметры поиска, заданные в этом пакете. Более подробную информацию о поиске в REST, обмене сообщениями и сервисах смотрите на странице <a href=\""+prefix+"search.html\">Поиск</a>.</p>\r\n");//Search parameters defined by this package. See <a href=\""+prefix+"search.html\">Searching</a> for more information about searching in REST, messaging, and services.
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Paths</b></td><td><b>Source</b></td></tr>\r\n");
+      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Пути</b></td><td><b>Источник</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       for (SearchParameter sp : pack.getSearchParameters())
         names.add(sp.getName());
