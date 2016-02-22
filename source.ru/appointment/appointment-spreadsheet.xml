@@ -1162,7 +1162,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason this appointment is scheduled</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование планирования этой условленной встречи<!-- Reason this appointment is scheduled --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование, почему планируется эта запись на прием, это больше клиническая информация, чем административная<!-- The reason that this appointment is being scheduled. This is more clinical than administrative --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1198,7 +1198,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Used to make informed decisions if needing to re-prioritize</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Используется для вынесения обоснованных решений при необходимости повторной приоритезации<!-- Used to make informed decisions if needing to re-prioritize --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Приоритет этой записи на прием. Может использоваться для принятия обоснованного решения о необходимости повторного присвоения приоритета записям на прием. (Стандарт iCal использует следующие обозначения: 0 - не определено, 1 - самый высокий приоритет, 9 - самый низкий приоритет)<!-- The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize appointments. (The iCal Standard specifies 0 as undefined, 1 as highest, 9 as lowest priority) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1235,7 +1235,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Shown on a subject line in a meeting request, or appointment list</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывается в качестве темы запроса на встречу или в списке условленных встреч<!-- Shown on a subject line in a meeting request, or appointment list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Краткое описание записи на прием, которое будет показываться на строке "subject" (тема) в запросе на встречу или в списке записей на прием. Подробную или расширенную информацию следует указывать в поле "comment"<!-- The brief description of the appointment as would be shown on a subject line in a meeting request, or appointment list. Detailed or expanded information should be put in the comment field --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1273,7 +1273,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When appointment is to take place</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда должна произойти условленная встреча<!-- When appointment is to take place --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дата/время, когда должна произойти условленная встреча<!-- Date/Time that the appointment is to take place --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1310,7 +1310,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When appointment is to conclude</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда должна завершиться условленная встреча<!-- When appointment is to conclude --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дата/время, когда условленная встреча должна завершиться<!-- Date/Time that the appointment is to conclude --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1345,9 +1345,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Can be less than start/end (e.g. estimate)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Может быть меньше даты начала/окончания (например приблизительный подсчёт)<!-- Can be less than start/end (e.g. estimate) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Number of minutes that the appointment is to take. This can be less than the duration between the start and end times (where actual time of appointment is only an estimate or is a planned appointment request)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Число минут, которое должна занять условленная встреча. Может быть меньше интервала между временем начала и окончания (где фактическое время условленной встречи - это только предположительная оценка или плановый запрос на условленную встречу) <!-- Number of minutes that the appointment is to take. This can be less than the duration between the start and end times (where actual time of appointment is only an estimate or is a planned appointment request) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1379,7 +1379,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When (if) appointment repeats</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда (если) условленная встреча периодически повторяется<!-- When (if) appointment repeats --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">График повторения записи на прием. Дата окончания в "schedule" означает конец повторений, а не окончание определенной условленной встречи<!-- The recurrence schedule for the appointment. The end date in the schedule marks the end of the recurrence(s), not the end of an individual appointment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1412,7 +1412,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">For when schedule crosses a daylight saving boundary</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Для случая, когда расписание попадает на перевод часов<!-- For when schedule crosses a daylight saving boundary --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Часовой пояс, в который необходимо конвертировать даты/время. Требуется для повторяющихся записей на прием для сохранения точности во время переходов на летнее/зимнее время<!-- The timezone that the times are to be converted to. Required for recurring appointments to remain accurate where the schedule makes the appointment cross a daylight saving boundary --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1446,7 +1446,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If provided, then no schedule and start/end values MUST match slot</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если указано, то никакое расписание и даты начала/окончания НЕ ДОЛЖНЫ совпадать со слотом<!-- If provided, then no schedule and start/end values MUST match slot --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс slot, который использует эта запись на прием. Если указано, тогда поле schedule не указывается, так как слоты не рекурсивные, и значения начала/окончания ДОЛЖНЫ быть такими же, как в слоте<!-- The slot that this appointment is filling. If provided then the schedule will not be provided as slots are not recursive, and the start/end values MUST be the same as from the slot --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1481,7 +1481,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Primary location</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Основное местоположение<!-- Primary location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Основное местоположение, где будет происходить эта условленная встреча<!-- The primary location that this appointment is to take place --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1515,7 +1515,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional comments</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительные комментарии<!-- Additional comments --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительные комментарии к этой записи на прием<!-- Additional comments about the appointment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1586,7 +1586,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Participants involved in appointment</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Участники условленной встречи<!-- Participants involved in appointment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Список участников этой условленной встречи<!-- List of participants involved in the appointment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1662,7 +1662,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Person, Location/HealthcareService or Device</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс Person, Location/HealthcareService или Device<!-- Person, Location/HealthcareService or Device --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс Person, Location/HealthcareService или Device, который участвует в этой условленной встрече<!-- A Person, Location/HealthcareService or Device that is participating in the appointment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4058,7 +4058,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Appointment.participant</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Either the type or actor on the participant MUST be specified</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Либо тип, либо действующее лицо ДОЛЖНЫ быть указаны для участника<!-- Either the type or actor on the participant MUST be specified --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">type or actor</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4071,7 +4071,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">start and end time</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Appointment</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Either start and end are specified, or neither</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Либо указываются начало и окончание, либо ничего<!-- Either start and end are specified, or neither --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">start.empty() xor end</Data></Cell>
     <Cell ss:StyleID="s109"><Data ss:Type="String">((exists(f:start) and exists(f:end)) or (not(exists(f:start)) and not(exists(f:end))))</Data></Cell>
    </Row>
@@ -4081,7 +4081,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">planned time</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Appointment</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Only proposed or cancelled appointments can be missing start/end dates</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Только предложенные или отменённые условленные встречи могут не иметь дат начала и окончания<!-- Only proposed or cancelled appointments can be missing start/end dates --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">(start and end) or status = 'proposed' or status = 'cancelled'</Data></Cell>
     <Cell ss:StyleID="s109"><Data ss:Type="String">((exists(f:start) and exists(f:end)) or (f:status/@value='proposed') or (f:status/@value='cancelled'))</Data></Cell>
    </Row>
@@ -6648,7 +6648,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">DocumentC80PracticeSetting</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional details about where the content was created (e.g. clinical specialty).</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительные сведения о том, где было введена эта информация (например клиническая специальность).<!-- Additional details about where the content was created (e.g. clinical specialty). --></Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">Preferred</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/c80-practice-codes</Data></Cell>
@@ -6667,7 +6667,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s93"><Data ss:Type="String">ParticipantType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Role of participant in encounter.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Роль участника в визите.<!-- Role of participant in encounter. --></Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s120"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/encounter-participant-type</Data></Cell>

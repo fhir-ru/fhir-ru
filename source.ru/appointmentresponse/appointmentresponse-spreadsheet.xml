@@ -986,7 +986,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Ответ на запрос условленной встречи для пациента и/или специалиста(-ов), например подтверждение или отклонение<!-- A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Ответ на запрос условленной встречи для пациента и/или специалиста(-ов), например подтверждение или отклонение.<!-- A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1056,7 +1056,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Appointment this response relates to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс Appointment, к которому относится этот ответ<!-- Appointment this response relates to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Appointment that this </Font><B><Font
@@ -1092,7 +1092,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Time from appointment, or requested new start time</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время из ресурса Appointment, либо запрошенное новое время начала<!-- Time from appointment, or requested new start time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дата/время, когда должна произойти условленная встреча, или другое запрошенное время начала<!-- Date/Time that the appointment is to take place, or requested new start time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1128,7 +1128,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Time from appointment, or requested new end time</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время из ресурса Appointment, либо запрошенное новое время окончания<!-- Time from appointment, or requested new end time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Может либо совпадать с запросом на запись на прием для подтверждения информации об условленной встрече, либо отличаться, тогда это будет запрос на пересмотр времени окончания.<!-- This may be either the same as the appointment request to confirm the details of the appointment, or alternately a new time to request a re-negotiation of the end time. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1201,7 +1201,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Person, Location/HealthcareService or Device</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс Person, Location/HealthcareService или Device<!-- Person, Location/HealthcareService or Device --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс Person, Location/HealthcareService или Device, который участвует в этой условленной встрече<!-- A Person, Location/HealthcareService or Device that is participating in the appointment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1273,7 +1273,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional comments</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительные комментарии<!-- Additional comments --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительные комментарии к этой записи на прием<!-- Additional comments about the appointment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -3929,7 +3929,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">AppointmentResponse</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">Either the participantType or actor must be specified</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Либо тип участника, либо действующее лицо должно быть указано<!-- Either the participantType or actor must be specified --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">participantType or actor</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4450,14 +4450,14 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">AppointmentResponse.appointment</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Ресурс appointment, к которому относится этот ответ<!-- The appointment that the response is attached to --></Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Ресурс Appointment, к которому относится этот ответ на запрос<!-- The appointment that the response is attached to --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">part-status</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">AppointmentResponse.participantStatus</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Статус принятие участия в этой условленной встрече<!-- The participants acceptance status for this appointment --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Статус принятия участия в этой условленной встрече<!-- The participants acceptance status for this appointment --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s114"><Data ss:Type="String">actor</Data></Cell>
@@ -4471,28 +4471,28 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">AppointmentResponse.actor</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Данный AppointmentResponse относится к этому ресурсу Patient<!-- This Response is for this Patient --></Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">К этому ресурсу Patient относится данный AppointmentResponse<!-- This Response is for this Patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s114"><Data ss:Type="String">practitioner</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Practitioner</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">AppointmentResponse.actor</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Данный AppointmentResponse относится к этому ресурсу Practitioner<!-- This Response is for this Practitioner --></Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">К этому ресурсу Practitioner относится данный AppointmentResponse<!-- This Response is for this Practitioner --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s114"><Data ss:Type="String">location</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Location</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">AppointmentResponse.actor</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Данный AppointmentResponse относится к этому ресурсу Location<!-- This Response is for this Location --></Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">К этому ресурсу Location относится данный AppointmentResponse<!-- This Response is for this Location --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s114"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">AppointmentResponse.identifier</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">An Identifier in this appointment response</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Идентификатор в данном ответе на запрос условленной встречи<!-- An Identifier in this appointment response --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s114"/>
@@ -6460,7 +6460,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ParticipantType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Role of participant in encounter.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Роль участника в визите.<!-- Role of participant in encounter. --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s115"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/encounter-participant-type</Data></Cell>
