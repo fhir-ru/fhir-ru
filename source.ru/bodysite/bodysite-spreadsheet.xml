@@ -1054,7 +1054,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Patient</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Пациент<!-- Patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, для которого указывается место на теле<!-- The person to which the body site belongs --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1150,7 +1150,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Именованное анатомическое расположение<!-- Named anatomical location  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Named anatomical location - ideally coded where possible.</Data><NamedCell
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Именованное анатомическое расположение - в идеале закодированное, где это возможно<!-- Named anatomical location - ideally coded where possible. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1314,7 +1314,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Относительная анатомическая локализация<!-- Relative anatomical location(s) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Уточнители для выявления неспецифического месторасположения, например 5 см (расстояние) ниже (направление) бугристости большеберцовой кости (ориентир). Может потребоваться указать более одного относительного расположения для обеспечения перекрестной ссылки.<!-- Qualifiers to identify non-specific location e.g. 5cm (distance) inferior (aspect) to the tibial tuberosity (landmark). There may be more than one relative location required to provide a cross reference. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уточнители для выявления неспецифического расположения, например 5 см (расстояние) ниже (направление) бугристости большеберцовой кости (ориентир). Может потребоваться указать более одного относительного расположения для обеспечения перекрестной ссылки.<!-- Qualifiers to identify non-specific location e.g. 5cm (distance) inferior (aspect) to the tibial tuberosity (landmark). There may be more than one relative location required to provide a cross reference. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1415,7 +1415,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Расстояние от ориентира<!-- Distance from Landmark --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Расстояние от указанного ориентира до местоположения<!-- Distance of location from the identified landmark. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Расстояние от указанного ориентира до расположения<!-- Distance of location from the identified landmark. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1481,7 +1481,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Вложенные изображения<!-- Attached images --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Изображения, используемые для определения месторасположения.<!-- Image or images used to identify a location. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Изображения, используемые для определения расположения.<!-- Image or images used to identify a location. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4356,7 +4356,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">BodySite.identifier</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifier for this instance of the anatomical location</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор данного экземпляра анатомического расположения<!-- Identifier for this instance of the anatomical location --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"/>
@@ -6276,7 +6276,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s151"><Data ss:Type="String">BodySite</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes describing anatomical locations. May include laterality</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды, описывающие анатомическое расположение. Могут включать латеральность<!-- Codes describing anatomical locations. May include laterality --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">valueset-body-site</Data></Cell>
