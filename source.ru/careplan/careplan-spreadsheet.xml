@@ -962,7 +962,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Healthcare plan for patient or group</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Медицинский план для пациента или группы<!-- Healthcare plan for patient or group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Описывает намерение одного или нескольких медицинских специалистов, направленное на оказание медицинского ухода конкретному пациенту в течение некоторого периода времени, возможно ограниченное уходом только при одном или нескольких определенных состояниях<!-- Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1101,12 +1101,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Created in context of</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контекст создания<!-- Created in context of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the context in which this particular CarePlan is defined.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определение контекста, в котором создавался этот план<!-- Identifies the context in which this particular CarePlan is defined. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Activities conducted as a result of the care plan may well occur as part of other encounters/episodes</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Активности, проводимые в результате действия по этой плану ухода, могут также происходить в рамках других визитов/эпизодов<!-- Activities conducted as a result of the care plan may well occur as part of other encounters/episodes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.</Data><NamedCell
@@ -1171,7 +1171,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who is responsible for contents of the plan</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто несёт ответственность за содержимое плана<!-- Who is responsible for contents of the plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет лицо или организацию, несущих ответственность за содержимое этого плана по уходу<!-- Identifies the individual(s) or ogranization who is responsible for the content of the care plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1273,11 +1273,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Summary of nature of plan</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сводная характеристика плана<!-- Summary of nature of plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A description of the scope and nature of the plan</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание области использования и характера плана<!-- A description of the scope and nature of the plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Provides more detail than conveyed by category</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Предоставляет более подробные сведения, чем можно указать в категории<!-- Provides more detail than conveyed by category --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1369,12 +1369,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Plans related to this one</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Другие планы, связанные с этим<!-- Plans related to this one --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies CarePlans with some sort of formal relationship to the current plan.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указание других планов, имеющих некоторую формальную связь с данным планом.<!-- Identifies CarePlans with some sort of formal relationship to the current plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Relationships are uni-directional with the &quot;newer&quot; plan pointing to the older one.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Связи должны быть однонаправленные, где более новый план указывает на более старый.<!-- Relationships are uni-directional with the &quot;newer&quot; plan pointing to the older one. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1403,10 +1403,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">includes | replaces | fulfills</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the type of relationship this plan has to the target plan.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет тип связи этого плана с указанным.<!-- Identifies the type of relationship this plan has to the target plan. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Read the relationship as &quot;this plan&quot; [relatedPlan.code] &quot;relatedPlan.plan&quot;; e.g. This plan includes Plan B.&#10;&#10;Additional relationship types can be proposed for future releases or handled as extensions.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Связь следует читать как &quot;этот план&quot; [relatedPlan.code] &quot;relatedPlan.plan&quot;; например этот план включает План B.&#10;&#10;Можно предложить дополнительные типы связи для будущих выпусков или указывать в расширениях. <!-- Read the relationship as &quot;this plan&quot; [relatedPlan.code] &quot;relatedPlan.plan&quot;; e.g. This plan includes Plan B.&#10;&#10;Additional relationship types can be proposed for future releases or handled as extensions. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1432,9 +1432,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Plan relationship exists with</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">План, с которым существует взаимосвязь<!-- Plan relationship exists with --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A reference to the plan to which a relationship is asserted.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на план, с которым установлена взаимосвязь.<!-- A reference to the plan to which a relationship is asserted. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1662,13 +1662,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Comments about the activity status/progress</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Примечания к статусу/прогрессу по этой активности<!-- Comments about the activity status/progress --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Notes about the adherence/status/progress of the activity</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Заметки о соблюдении/статусе/прогрессе по этой активности<!-- Notes about the adherence/status/progress of the activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Может использоваться для сбора информации о соблюдении, прогрессе, проблемах и т. д.<!-- Can be used to capture information about adherence, progress, concerns, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This element should NOT be used to describe the activity to be performed - that occurs either within the resource pointed to by activity.detail.reference or in activity.detail.description</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Этот элемент НЕ СЛЕДУЕТ использовать для описания активности для выполнения - это происходит либо в ресурсе, на который указывает элемент activity.detail.reference или activity.detail.description<!-- This element should NOT be used to describe the activity to be performed - that occurs either within the resource pointed to by activity.detail.reference or in activity.detail.description --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=&quot;annotation&quot;].value</Data><NamedCell
@@ -2228,7 +2228,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Extra info describing activity to perform</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная информация, описывающая активность для выполнения<!-- Extra info describing activity to perform --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Предоставляет текстовое описание ограничений на проведение предполагаемой деятельности, в том числе отношение к другим мероприятиям. Может также включать в себя цели, предпосылки и конечные условия. Наконец, может передавать особенности деятельности, такие как участок тела, метод, путь поступления и т. д.<!-- This provides a textual description of constraints on the intended activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4020,7 +4020,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">details by reference, or simple details</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">CarePlan.activity</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Provide a reference or detail, not both</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Укажите ссылку или детали, но не и то, и другое<!-- Provide a reference or detail, not both --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">detail.empty() or reference.empty()</Data></Cell>
     <Cell ss:StyleID="s105"><Data ss:Type="String">not(exists(f:detail)) or not(exists(f:reference))</Data></Cell>
    </Row>
@@ -4603,7 +4603,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">composite</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">relatedcode &amp; relatedplan</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">A combination of the type of relationship and the related plan</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Комбинация типа взаимосвязи и связанного плана<!-- A combination of the type of relationship and the related plan --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"/>
@@ -6606,7 +6606,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanCategory</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifies what &quot;kind&quot; of plan this is to support differentiation between multiple co-existing plans; e.g. &quot;Home health&quot;, &quot;psychiatric&quot;, &quot;asthma&quot;, &quot;disease management&quot;, etc.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определяет тип плана, чтобы можно было различать несколько одновременно действующих планов. Например "На дому", "Психиатрический", "Астма", "Управление течением заболевания" и т. д.<!-- Identifies what &quot;kind&quot; of plan this is to support differentiation between multiple co-existing plans; e.g. &quot;Home health&quot;, &quot;psychiatric&quot;, &quot;asthma&quot;, &quot;disease management&quot;, etc. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s116"/>
@@ -6638,7 +6638,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanRelationship</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes identifying the types of relationships between two plans.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды типов взаимосвязи между двумя планами.<!-- Codes identifying the types of relationships between two plans. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s116"/>
@@ -6654,7 +6654,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CarePlanProduct</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A product supplied or administered as part of a care plan activity.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Продукт, поставляемый или вводимый в рамках мероприятия из плана по уходу.<!-- A product supplied or administered as part of a care plan activity. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s116"/>
