@@ -1664,7 +1664,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Where</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Где<!-- Where --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Где произошло событие<!-- Where the event occurred --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1898,12 +1898,12 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Reason given for this user</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Обоснование, данное для этого пользователя<!-- Reason given for this user --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The reason (purpose of use), specific to this agent, that was used during the event being recorded. </Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Обоснование (назначения использования), специфичное для этого агента, которые было использовано во время записи события.<!-- The reason (purpose of use), specific to this agent, that was used during the event being recorded.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Use AuditEvent.agent.purposeOfUse when you know that is specific to the agent, otherwise use AuditEvent.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Используйте AuditEvent.agent.purposeOfUse, когда вы знаете, что это специфично для агента, в ином случае используйте AuditEvent.purposeOfEvent. К примеру, во время передачи от машины машине может быть не очевидно для системы аудита, кто вызвал это событие, однако известно - почему.<!-- Use AuditEvent.agent.purposeOfUse when you know that is specific to the agent, otherwise use AuditEvent.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">*.reasonCode [ActHealthInformationPurposeOfUseReason codes/v:PurposeOfUse&#10;(2.16.840.1.113883.1.11.20448)&#10;* .outboundRelationship[typeCode=RSON or SUBJ].target</Data><NamedCell
@@ -2048,7 +2048,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The identity of source detecting the event</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор источника, зафиксировавшего событие<!-- The identity of source detecting the event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Идентификатор источника, где произошло событие<!-- Identifier of the source where the event was detected --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2325,9 +2325,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">What role the entity played </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Какую роль играет сущность<!-- What role the entity played  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Code representing the role the entity played in the event being audited</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Код роли, которую играет сущность в аудируемом событии<!-- Code representing the role the entity played in the event being audited --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Для какого-то детального анализа аудита может потребоваться указать более гранулярный тип участия, основанный на роли в приложении, которую он служит<!-- For some detailed audit analysis it may be necessary to indicate a more granular type of entity, based on the application role it serves --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2406,11 +2406,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Security labels applied to the object</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Метки уровня безопасности, применённые к объекту<!-- Security labels applied to the object --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Denotes security labels for the identified entity. </Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Обозначает метки уровня безопасности для указанной сущности.<!-- Denotes security labels for the identified entity.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">This field identifies the security labels for a specific instance of an object, such as a patient, to detect/track privacy and security issues</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Это поле показывает метки уровня безопасности для конкретного экземпляра объекта, например пациента, для отслеживания/обнаружения проблем безопасности и конфиденциальности<!-- This field identifies the security labels for a specific instance of an object, such as a patient, to detect/track privacy and security issues --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2446,11 +2446,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Descriptor for entity</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дескриптор сущности<!-- Descriptor for entity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">A name of the entity in the audit event.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Имя сущности в аудируемом событии.<!-- A name of the entity in the audit event. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Use only where entity can't be identified with an identifier.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Используйте только там, где сущность не может быть идентифицирована с помощью идентификатора.<!-- Use only where entity can't be identified with an identifier. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Это поле можно использовать в запросе/отчете для идентификации аудируемых событий для конкретного человека, например когда используется несколько синонимичных идентификаторов объекта участника (номер пациента, номер медкарты, номер случая обслуживания и т. п.)<!-- This field may be used in a query/report to identify audit events for a specific person.  For example, where multiple synonymous entity identifers (patient number, medical record number, encounter number, etc.) have been used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2486,11 +2486,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Descriptive text</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описание<!-- Descriptive text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Text that describes the entity in more detail</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Текст, описывающий сущность более подробно<!-- Text that describes the entity in more detail --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Use only where entity can't be identified with an identifier.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Используйте только там, где сущность не может быть идентифицирована с помощью идентификатора.<!-- Use only where entity can't be identified with an identifier. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2526,9 +2526,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Query parameters</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Параметры запроса<!-- Query parameters --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The query parameters for a query-type entities</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Параметры запроса для сущностей типа "запрос"<!-- The query parameters for a query-type entities --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Для событий типа query может возникнуть необходимость зафиксировать сам входной запрос для обработки запроса, чтобы идентифицировать определенное событие. Из-за различий между реализациями и кодированием данных для них, используется "блоб" в кодировке base64. Он может быть впоследствии декодирован или интерпретирован в процессе обработки нисходящего анализа аудита<!-- For query events it may be necessary to capture the actual query input to the query process in order to identify the specific event. Because of differences among query implementations and data encoding for them, this is a base 64 encoded data blob. It may be subsequently decoded or interpreted by downstream audit analysis processing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2563,7 +2563,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Additional Information about the entity</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дополнительная информация о сущности<!-- Additional Information about the entity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4518,7 +4518,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">AuditEvent.entity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Либо имя, либо запрос (или оба)<!-- Either a name or a query (NOT both) --></Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Либо имя, либо запрос (но не оба)<!-- Either a name or a query (NOT both) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">name.empty() or query.empty()</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -7152,7 +7152,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">DICOMMediaType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Used when the event is about exporting/importing onto media.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Используется, когда событие связано с импортом/экспортом медиа.<!-- Used when the event is about exporting/importing onto media. --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-dicm-405-mediatype</Data></Cell>
@@ -7227,7 +7227,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditPurposeOfUse</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The reason the activity took place.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Причина, по которой произошла активность.<!-- The reason the activity took place. --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s151"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-PurposeOfUse</Data></Cell>

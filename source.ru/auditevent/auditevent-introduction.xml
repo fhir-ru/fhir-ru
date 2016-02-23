@@ -4,24 +4,32 @@
 <a name="scope"> </a>
 <h2>Область применения и использование</h2>
 <p>
-Запись о событии основана на IHE-ATNA Audit record definitions, первоначально из <a href="http://tools.ietf.org/html/rfc3881">RFC 3881</a>, а теперь контролируемое DICOM (см. <a href="http://medical.nema.org/medical/dicom/current/output/html/part15.html#sect_A.5">DICOM Part 15 Annex A5</a>).
+Ресурс AuditEvent разрабатывается на базе определений ведения аудита IHE-ATNA, в его основу положен документ <a href="http://tools.ietf.org/html/rfc3881">RFC 3881</a>, и в текущее время контролируется DICOM (см. <a href="http://medical.nema.org/medical/dicom/current/output/html/part15.html#sect_A.5">DICOM Часть 15, Приложение A5</a>).
 <!-- The audit event is based on the IHE-ATNA Audit record definitions, originally from <a href="http://tools.ietf.org/html/rfc3881">RFC 3881</a>, and now managed by
 DICOM (see <a href="http://medical.nema.org/medical/dicom/current/output/html/part15.html#sect_A.5">DICOM Part 15 Annex A5</a>).  -->
 </p>
 <ul>
-<li>ASTM E2147 – Setup the concept of security audit logs for healthcare including accounting of disclosures</li>
+<li>ASTM E2147 – установил понятие журнала аудита безопасности для области здравоохранения, включая отчеты о предоставлении информации</li>
+<li>IETF RFC 3881 – определил информационную модель (по правилам IETF она должна быть информативной)</li>
+<li>DICOM Audit Log Message – сделал эту информационную модель нормативной, задал словарь, транспортные привязки и схему</li>
+<li>IHE ATNA – определяет сочетание защищённого управления доступом и передачей; задаёт конкретные виды записей журнала аудита для конкретных транзакций IHE.</li>
+<li>NIST SP800-92 – показывает, как сделать управление журналом аудита и отчеты - в соответствии с нашей моделью</li>
+<li>HL7 PASS – определил Сервис аудита с несением ответственности и интерфейсом запросов для использования отчётов</li>
+<li>ISO 27789 – определил подмножество событий аудита, которые могут понадобиться системе ведения ЭМК</li>
+<!-- <li>ASTM E2147 – Setup the concept of security audit logs for healthcare including accounting of disclosures</li>
 <li>IETF RFC 3881 – Defined the Information Model (IETF rule forced this to be informative)</li>
 <li>DICOM Audit Log Message – Made the information model Normative, defined Vocabulary, Transport Binding, and Schema</li>
 <li>IHE ATNA – Defines the grouping with secure transport and access controls; and defined specific audit log records for specific IHE transactions.</li>
 <li>NIST SP800-92 – Shows how to do audit log management and reporting – consistent with our model</li>
 <li>HL7 PASS – Defined an Audit Service with responsibilities and a query interface for reporting use</li>
-<li>ISO 27789 – Defined the subset of audit events that an EHR would need </li>
+<li>ISO 27789 – Defined the subset of audit events that an EHR would need </li> -->
 </ul>
 <p>
-This resource is managed collaboratively between HL7, DICOM, and IHE. 
+Этот ресурс разрабатывается совместно организациями HL7, DICOM и IHE.
+<!-- This resource is managed collaboratively between HL7, DICOM, and IHE.  -->
 </p>
 <p>
-Главное назначение этого ресурса - ведение контрольного журнала безопасности. Однако он может также использоваться для любого протоколирования и системы простых уведомлений на основе событий.
+Главное назначение этого ресурса - ведение контрольного журнала безопасности. Однако он может также использоваться для любого протоколирования и простых уведомлений на основе событий.
 <!-- The primary purpose of this resource is the maintenance of security audit log information.  However, 
 it can also be used for any audit logging needs and simple event-based notification. -->
 </p>
@@ -31,7 +39,8 @@ it can also be used for any audit logging needs and simple event-based notificat
 <a name="bnc"> </a>
 <h2>Предпосылки и контекст</h2>
 <p>
-All actors; such as applications, processes, and services; involved in an auditable event should record an AuditEvent. 
+Все действующие лица, такие как приложения, процессы и сервисы, участвующие в аудируемом событии, должны записывать ресурс AuditEvent. Это, вероятно, приведёт к созданию множества записей AuditEvent, которые показывают, должным ли образом функционируют меры безопасности и конфиденциальности, такие как контроль доступа, в систем систем предприятия. Таким образом, закономерно получить аудируемое событие, записанное как приложением во время рабочего процесса, так и сервисами, которые поддерживают их. По этой причине ожидаются дубликаты записей, что может быть полезно, поскольку это может помочь в обнаружении, к примеру, меньшего количества действующих лиц, чем ожидается, в многопользовательском процессе, или атрибуты, связанные с этими записями, могут конфликтовать, что является признаком проблемы безопасности. Могут быть неучаствующие действующие лица, например доверенный посредник, что также определяет относящееся к безопасности событие и, таким образом, должно создать экземпляр AuditEvent.
+<!-- All actors; such as applications, processes, and services; involved in an auditable event should record an AuditEvent. 
 This will likely result in multiple AuditEvent entries that show whether privacy and security 
 safeguards, such as access control, are the properly functioning across an enterprise's system-of-systems. 
 Thus it is typical to get an auditable event recorded by both the application in a workflow process, and the servers that support them. 
@@ -39,49 +48,56 @@ For this reason, duplicate entries are expected, which is helpful because it may
 fewer than expected actors being recorded in a multi-actor process or attributes related to those records being in 
 conflict, which is an indication of a security problem.
 There may be non-participating actors that also detect a security relevant event and thus would record 
-an AuditEvent, such as a trusted intermediary.
+an AuditEvent, such as a trusted intermediary. -->
 </p>
 <p>
-Security relevant events are not limited to communications or RESTful events. They include software startup and shutdown; 
+События, связанные с безопасностью, не ограничены событиями передачи сообщений или RESTful-событиями. Они включают в себя запуск программного обеспечения и завершение работы; вход и выход пользователя из системы; решения контроля доступа; изменения настроек конфигурации; установку программного обеспечения; изменения правил политики безопасности; манипуляции с данными, влияющими на данные для пользователей. См. словарь Подтипы событий аудита для получения руководства по некоторым событиям, относящимся к безопасности.
+<!-- Security relevant events are not limited to communications or RESTful events. They include software startup and shutdown; 
 user login and logout; access control decisions; configuration events; software installation; policy rules changes; 
 and manipulation of data that exposes the data to users. See 
-Audit Event Sub-Type vocabulary for guidance on some security relevant events.
+Audit Event Sub-Type vocabulary for guidance on some security relevant events. -->
 </p>
 <p>
-The content of an AuditEvent is intended for use by Security System Administrators, Security and Privacy Information 
+Содержимое ресурса AuditEvent предназначено для использования системными администраторами по безопасности, менеджерами по безопасности и конфиденциальности информации, и персоналом по делопроизводству. Содержимое ресурса не предназначено для доступа или медицинского использования напрямую другими пользователями, такими как поставщики медицинского обеспечения или пациентами, однако отчёты, генерируемые по этим данным могут быть полезными. Примером является пациент ориентированный учёт раскрытия информации или отчёт по доступу к данным. Серверы, предоставляющие поддержку ресурсов AuditEvent, как правило, не принимают операции удаления или обновления для этих ресурсов, так как это может поставить под угрозу целостность ведения аудита. Доступ к ресурсам AuditEvent, как правило, ограничивается вопросами безопасности, конфиденциальности и другими целями системного администрирования.
+<!-- The content of an AuditEvent is intended for use by Security System Administrators, Security and Privacy Information 
 Managers, and Records Management personnel.  This content is not intended to be accessible or used directly by other 
 healthcare users, such as Providers or Patients, although reports generated from the raw data would be useful. An 
 example is a Patient centric Accounting of Disclosures or an Access Report. Servers that provide support for Audit 
 Event resources would not generally accept update or delete operations on the resources, as this would compromise 
 the integrity of the audit record. Access of the AuditEvent would typically be limited to e.g., security, privacy, 
-or other system administration purposes.
+or other system administration purposes. -->
 </p>
 <p>
-Relationship of AuditEvent and Provenance resources are often (though not exclusively) created by the application 
+Связь между ресурсами AuditEvent и Provenance часто (но не всегда) создаётся приложением, отвечающим на событие создания/чтения/запроса/обновления/удаления/выполнения. 
+Ресурс <a href="provenance.html">Provenance</a> содержит пересекающуюся информацию, однако представляет собой ведение учёта, которое собирает информацию о контексте, в котором эта информация в ресурсе появилась в своём текущем состоянии, например была ли она создана заново или получена из другого объекта целиком, частично или путём трансформации. Ресурсы Provenance создаются приложением, которое инициирует создание/обновление ресурса, и могут храниться вместе с целевым ресурсом ресурса AuditEvent.
+<!-- Relationship of AuditEvent and Provenance resources are often (though not exclusively) created by the application 
 responding to the create/read/query/update/delete/execute etc. event. 
 A <a href="provenance.html">Provenance resource</a> resource contains overlapping 
 information, but is a record-keeping assertion that gathers information about the context in which the information 
 in a resource "came to be" in its current state, e.g., whether it was created de novo or obtained from another entity 
 in whole, part, or by transformation. Provenance resources are prepared by the application that initiates the 
-create/update of the resource, and may be persisted with the AuditEvent target resource. 
+create/update of the resource, and may be persisted with the AuditEvent target resource.  -->
 </p>
 <a name="TODO"> </a>
-<h3>Open Issues and Request for Comments</h3>
+<h3>Открытые вопросы и Запрос на комментарии<!-- Open Issues and Request for Comments --></h3>
 <p>
-The AuditEvent Resource, like many of the FHIR Resources in DSTU, continues to be developed by the sponsoring HL7 Security 
+Ресурс AuditEvent, как и многие FHIR-ресурсы в DSTU, всё ещё разрабатывается Рабочей группой HL7 по безопасности. В частности, Рабочая группа по безопасности сосредоточена на уточнении наборов значений, используемых ресурсом AuditEvent и тесно связанным с ним ресурсом Provenance для обеспечения полного покрытия действий системы и конечного пользователя и записи оснований для этих действий, которые воздействуют на объекты безопасности (данные, процессы, приложения, серверы и т. п.). Рабочая группа по безопасности особо заинтересована в отзывах от реализаторов по этим областям, и в то же время предостерегает реализаторов в необходимости проявления осмотрительности при адаптации этих ресурсов под свои сценарии использования.
+<!-- The AuditEvent Resource, like many of the FHIR Resources in DSTU, continues to be developed by the sponsoring HL7 Security 
 Work Group.  In particular, the Security WG continues to focus on refining the value sets used by both AuditEvent and 
 its closely related Provenance Resource to ensure complete coverage of system and end user actions and action reasons 
 that impact security objects (data, processes, applications, servers, etc.)  The Security WG is particularly interested 
 in implementer feedback on these focus areas, and at the same time cautions implementers to undertake due diligence in 
-adapting these resources to their use cases. 
+adapting these resources to their use cases.  -->
 </p>
 <p>
-At this juncture, there are multiple standard vocabularies in use that reflect different perspectives and levels of 
+В настоящий момент применяется несколько стандартных словарей, которые отражают различные точки зрения и уровни гранулярности понятий, используемых для передачи действий и обоснований для этих действий. Оба ресурса AuditEvent и Provenance используют некоторое количество этих словарей через привязки элементов в ресурсах.
+<!-- At this juncture, there are multiple standard vocabularies in use that reflect different perspectives and levels of 
 granularity on the concepts used to convey actions and reasons for actions.  Both the AuditEvent and Provenance Resources 
-are making available a number of those vocabularies via resource element bindings.  
+are making available a number of those vocabularies via resource element bindings.   -->
 </p>
 <p>
-For example, AuditEvent has four elements that bind to "activity" vocabularies which could be used to convey the same 
+Например в ресурсе AuditEvent есть четыре элемента, которые привязаны к словарям "activity", которые могут использоваться для передачи одного и того же понятия, где для этого нет чёткого сценария. Например действие "read" можно передать в элементах AuditEvent.event.type, AuditEvent.event.subtype, AuditEvent.event.action и AuditEvent.object.lifecycle. Только AuditEvent.event.type является обязательным, но есть ли вариант использования для включения остальных, если базовое действие то же самое? Однако могут быть сценарии, когда CRUDE-действие высокого уровня является важным дополнением к требуемому коду из AuditEvent.event.type. Например кажется полезным там, где обязательный код = событие аудита: какая активность приложения имела место, и не так полезен, если обязательный код = использование журнала аудита. Развязка состоит в том, что реализаторам потребуется тщательно сопоставлять понятия в привязанных наборах значений с их сценариями использования для гарантии, что уровень гранулярности и выбранные понятия являются подходящими. Рабочая группа по безопасности будет благодарна за комментарии по этому вопросу и, в частности, насколько может быть допустима или полезна предварительная координация по множеству этих наборов значений для действий, или будет более уместно совместить их в один или два.
+<!-- For example, AuditEvent has four elements that bind to "activity" vocabularies which could be used to convey the same 
 concept where there’s no clear use case for doing so.  E.g., a "read" action could be conveyed by AuditEvent.event.type, 
 AuditEvent.event.subtype, AuditEvent.event.action, and AuditEvent.object.lifecycle.  Only the AuditEvent.event.type is 
 required, but is there a use case for including the others if the basic action is the same?  However, there may be use 
@@ -90,34 +106,45 @@ E.g., seems helpful where the required code = Audit event: Application Activity 
 required code = Audit Log has been used.  The upshot is that implementers will need to carefully match the concepts in the 
 value set bindings to their use cases to ensure that the level of granularity and concept selections are appropriate.  
 The Security WG would appreciate comments on this, and in particular, how feasible or useful pre-coordination of these 
-multiple activity value sets might be or whether collapsing these into one or two might be more appropriate.
+multiple activity value sets might be or whether collapsing these into one or two might be more appropriate. -->
 </p>
 <p>
-The Security WG would also appreciate feedback from the implementer community on how well they are able to discern and 
+Рабочая группа по безопасности также будет благодарна за отзывы от сообщества реализаторов по вопросу, насколько хорошо они могут распознать и использовать различные контексты, в которых обоснование для действий передаётся с помощью HL7-словаря Назначение использования [V:PurposeOfUse:2.16.840.1.113883.1.11.20448]. В текущий момент времени ресурс AuditEvent имеет привязки к этому набору значений в четырёх местах:
+<!-- The Security WG would also appreciate feedback from the implementer community on how well they are able to discern and 
 utilize the different contexts in which the rationale for actions is conveyed using the HL7 Purpose of Use 
-vocabulary [V:PurposeOfUse:2.16.840.1.113883.1.11.20448]. At this juncture, AuditEvent binds to this value set in four places: 
+vocabulary [V:PurposeOfUse:2.16.840.1.113883.1.11.20448]. At this juncture, AuditEvent binds to this value set in four places:  -->
 <ul>
-<li>As Purpose of Event – where it’s a machine that is the audited agent</li> 
+<li>Назначение события – где это машина, которая является аудируемым средством</li> 
+<li>Назначение использования – это POU, утверждённый пользователем-человеком</li>
+<li>Элемент метки уровня безопасности – см. третье подробное описание ниже</li>
+<li>Метаданные метки уровня безопасности Meta.security (Extensible)</li>
+<!-- <li>As Purpose of Event – where it’s a machine that is the audited agent</li> 
 <li>As Purpose of Use – which is the Human User’s asserted POU </li>
 <li>As a Security Label Element – see 3rd Detailed Description below</li>
-<li>As a Security Label Metadata value Meta.security (Extensible)</li>
+<li>As a Security Label Metadata value Meta.security (Extensible)</li> -->
 </ul>
 </p>
 <p>
-The Security WG envisions use cases where these could be used in concert, but that would require system functionality 
-that may not be feasible or beneficial to the implementer community.  For example, 
+Рабочая группа по безопасности предвидит сценарии использования, где это может использоваться во взаимодействии, однако это может потребовать функциональности системы, которая может быть не доступна или не выгодна для сообщества реализаторов. Например:
+<!-- The Security WG envisions use cases where these could be used in concert, but that would require system functionality 
+that may not be feasible or beneficial to the implementer community.  For example,  -->
 <ul>
-<li>Purpose of Event when the machine2machine is an EHR server and the user’s client supposedly being used for Treatment</li>
+<li>Назначение события, когда взаимодействуют две машины, одна их них - это сервер ЭМК, другая - пользовательский клиент,  используемых предположительно для лечения</li>
+<li>POU конечного пользователя является лечение и исследование с использованием, например, DAF</li>
+<li>POU Метка уровня безопасности на объекте-участнике или целевом объекте AuditEvent = Legal, которое является назначением использования, к примеру, Legal Hold [т. е., никто, кроме персонала по делопроизводству и праву не должен иметь доступа, однако Система контроля доступа не делает ABAC; или для директивы согласия пациента запрещено назначение использования типа "research", однако система аудита не реализовала сегментацию данных для предотвращения конечного пользователя от использования этих данных для исследования</li>
+<li>Метка уровня безопасности на ресурсе AuditEvent = Системная администрация [поскольку единственным разрешённым использованием является системное администрирование/безопасность]</li>
+<!-- <li>Purpose of Event when the machine2machine is an EHR server and the user’s client supposedly being used for Treatment</li>
 <li>End User’s POU is Treatment and Research using e.g., DAF</li>
 <li>POU Security Label on the participant/target object of the AuditEvent = Legal, which is the POU for e.g., Legal Hold [i.e., no one but Records Management and Legal is supposed to have access but the Access Control System doesn’t do ABAC or the patient’s consent directive does not assent to POU = research, but the audited system has not implemented data segmentation to prevent End User from using the data to research</li>
-<li>Security Label on the AuditEvent Resource = System administration [because the only permitted use is for system administration/security]</li>
+<li>Security Label on the AuditEvent Resource = System administration [because the only permitted use is for system administration/security]</li> -->
 </ul>
 </p>
 <p>
-Note that the binding of the value sets discussed above are currently set to extensible rather than example.  
+Обратите внимание, что привязки к наборам значений, упомянутым выше, в текущее время являются расширяемыми, а не примерными.  Были высказаны опасения об ограничении выбора словарей во время DSTU, особенно для других стран. Например в других странах помимо США более вероятно применение словаря ISO 13606 Purpose of Use. Рабочая группа по безопасности будет также благодарна за отзывы по вопросу, должны ли эти привязки быть примерными или расширяемыми.
+<!-- Note that the binding of the value sets discussed above are currently set to extensible rather than example.  
 Concerns have been raised about constraining vocabulary choices during DSTU especially for other jurisdictions.  
 For example, outside of the US, ISO 13606 Purpose of Use codes are more likely used.  Security WG would also 
-appreciate feedback on whether these bindings should be example or extensible.
+appreciate feedback on whether these bindings should be example or extensible. -->
 </p>
 </div>
 
