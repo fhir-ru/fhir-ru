@@ -100,7 +100,7 @@ used to return the total number of resources that are included in the update his
 and that may be returned by following the "next" <a href="bundle-definitions.html#Bundle.link">link</a>. -->
 </p>
 
-<p>Example to do</p>
+<p>Пример to do<!-- Example to do --></p>
 
 <a name="transaction"> </a>
 <h4>Тип Transaction<!-- Transaction --></h4>
@@ -147,19 +147,61 @@ Each entry element SHALL contain a resource. -->
 <p><a href="diagnosticreport-examples.html">Пример</a></p>
 
 <a name="bundle-unique"> </a>
-<h2>Resource URL &amp; Uniqueness rules in a bundle</h2>
+<h2>URL ресурса и правила уникальности в бандле<!-- Resource URL &amp; Uniqueness rules in a bundle --></h2>
 
 <p>
-Each entry in a batch must have a full Url which is the identity of the resource in
+Каждая запись в пакете должна иметь полный URL, являющийся идентификатором ресурса в записи. Обратите внимание, что это не версионная ссылка на ресурс, а его идентификатор. Если ресурсу не назначен постоянный идентификатор, который может быть использован в бандле, следует использовать UUID (urn:uuid:...).
+<!-- Each entry in a batch must have a full Url which is the identity of the resource in
 the entry. Note that this is not a versioned reference to the resource, but its 
 identity. Where a resource is not assigned a persistent identity that can be used
-in the bundle, a UUID should be used (urn:uuid:...).
+in the bundle, a UUID should be used (urn:uuid:...). -->
 </p>
 <p>
-In some bundles, a given resource can only appear once:
+В некоторых бандлах заданный ресурс может появляться только один раз:
+<!-- In some bundles, a given resource can only appear once: -->
 </p>
 <table class="grid">
  <tr>
+  <td><b>Тип</b></td>
+  <td><b>Правила</b></td>
+ </tr>
+ <tr>
+  <td>document</td>
+  <td>нет дубликатов (странные крайние случаи - отслеживание изменений?)</td>
+ </tr>
+ <tr>
+  <td>message</td>
+  <td>нет дубликатов (ну а дельты при обмене сообщениями?)</td>
+ </tr>
+ <tr>
+  <td>transaction</td>
+  <td>дубликаты не разрешены</td>
+ </tr>
+ <tr>
+  <td>transaction-response</td>
+  <td>дубликаты не разрешены</td>
+ </tr>
+ <tr>
+  <td>batch</td>
+  <td>дубликаты не разрешены</td>
+ </tr>
+ <tr>
+  <td>batch-response</td>
+  <td>дубликаты не разрешены</td>
+ </tr>
+ <tr>
+  <td>history</td>
+  <td>да, дубликаты разрешаются</td>
+ </tr>
+ <tr>
+  <td>searchset</td>
+  <td>дубликаты не разрешены</td>
+ </tr>
+ <tr>
+  <td>collection</td>
+  <td>да, дубликаты разрешаются, хотя это и не очень хорошая идея</td>
+ </tr>
+<!--  <tr>
   <td><b>Type</b></td>
   <td><b>Rules</b></td>
  </tr>
@@ -198,7 +240,7 @@ In some bundles, a given resource can only appear once:
  <tr>
   <td>collection</td>
   <td>yes, duplicates are allowed, though generally would not be a good idea</td>
- </tr>
+ </tr> -->
 </table>
 
 
@@ -208,17 +250,19 @@ In some bundles, a given resource can only appear once:
 <h3>Разрешение ссылок в ресурсах Bundle<!-- Resolving references in Bundles --></h3>
 
 <p>
-The <code>Bundle</code> resource is a packaging construct that has one of more entries that 
+Ресурс <code>Bundle</code> - это упаковочная конструкция, содержащая одну или несколько записей, являющихся другими видами ресурсов. Сами эти ресурсы в свою очередь имеют ссылки на другие ресурсы - например Observation, который ссылается на ресурс Patient. Ресурсы, на которые даются ссылки, также могут находиться в бандле. К примеру, система, создающая бандл, может включить оба ресурса Observation и Patient. Содержимое по ссылками между ресурсами не меняется из-за бандла.
+<!-- The <code>Bundle</code> resource is a packaging construct that has one of more entries that 
 are other kinds of resources. Those resources themselves have references to other resources - e.g. 
 an Observation that refers to a Patient. The referenced resources may also be found
 in the bundle. For example, the system that constructed the bundle may have included both
 the observation and the patient. The content of the references between resources doesn't 
-change because of the bundle.
+change because of the bundle. -->
 </p>
 <p>
-This section documents a method that resolves references correctly within a bundle. Note
+В этой секции описывается метод корректного разрешения ссылок в бандле. Обратите внимание, что этот метод не определяет новую семантику; разрешение ссылок основывается на том способе, по которому работает идентифицикация ресурсов и ссылки на ресурсы.
+<!-- This section documents a method that resolves references correctly within a bundle. Note
 that this method does not define any new semantics; resolution is based on the way
-resource identity and resource references work.
+resource identity and resource references work. -->
 </p>
 <p>
 Приложения, выполняющие чтение связки, всегда должны сначала <a href="references.html#bundle-refs">искать ресурс</a> в связке по его идентификатору, прежде чем пытаться получить к нему доступ по его URL.
@@ -226,36 +270,39 @@ resource identity and resource references work.
 by its identity in the bundle first before trying to access it by its URL. -->
 </p>
 <p>
-How to resolve a reference in a bundle:
+Как разрешается ссылка в бандле:
+<!-- How to resolve a reference in a bundle: -->
 </p>
 <ol>
- <li>If the reference is not an absolute reference, convert it
+ <li>Если ссылка не абсолютная, то сконвертировать её<!-- If the reference is not an absolute reference, convert it -->
   <ul>
-    <li>if the fullUrl is a uri, then (you're stuffed!) What to do in this case? </li>
-    <li>if the fullUrl of the resource that contains the reference is a RESTful one (see the <a href="references.html#regex">RESTful URL regex</a>), extract the <a href="http.html#base">[base]</a>, and append the reference to it</li>
-    <li>otherwise, treat the fullUrl as a normal URL, and follow the normal method for <a href="https://tools.ietf.org/html/rfc2396#section-5.2">Resolving Relative References to Absolute Form</a></li>
+    <li>если в fullUrl указан URI, тогда (вы попали!) Что делать в этом случае?<!-- if the fullUrl is a uri, then (you're stuffed!) What to do in this case?  --></li>
+    <li>если fullUrl ресурса содержит RESTful-ссылку (см. <a href="references.html#regex">регулярное выражение для RESTful URL</a>), извлечь <a href="http.html#base">[base]</a>, и добавить к нему эту ссылку<!-- if the fullUrl of the resource that contains the reference is a RESTful one (see the <a href="references.html#regex">RESTful URL regex</a>), extract the <a href="http.html#base">[base]</a>, and append the reference to it --></li>
+    <li>иначе работать с fullUrl как с обычной URL-ссылкой по стандартному методу <a href="https://tools.ietf.org/html/rfc2396#section-5.2">Приведение относительных ссылок к абсолютной форме</a><!-- otherwise, treat the fullUrl as a normal URL, and follow the normal method for <a href="https://tools.ietf.org/html/rfc2396#section-5.2">Resolving Relative References to Absolute Form</a> --></li>
   </ul>
  </li>
- <li>Look for an entry with a fullUrl that contains the URL in the reference
+ <li>Найти запись с fullUrl, которая указанный содержит URL<!-- Look for an entry with a fullUrl that contains the URL in the reference -->
   <ul>
-   <li>If no match is found, the resource is not in the bundle, and must be found elsewhere (e.g. if an http: URL, try accessing it directly)</li>
-   <li>If multiple matches are found, it is ambiguous which is correct</li>
+   <li>Если совпадений не найдено, ресурс находится не в бандле, и его необходимо искать где-то ещё (например если это http-адрес, попытаться открыть его напрямую)<!-- If no match is found, the resource is not in the bundle, and must be found elsewhere (e.g. if an http: URL, try accessing it directly) --></li>
+   <li>Если найдено несколько совпадений, неоднозначно, какое из них правильное<!-- If multiple matches are found, it is ambiguous which is correct --></li>
   </ul>
  </li>
 </ol>
 <p>
-If the reference is version specific (either relative or absolute), then remove the version from the 
-URL before matching fullUrl, and then match the version based on <code>Resource.meta.versionId</code>.
+Если ссылка является версионной (относительной или абсолютной), то удалить версию из URL перед поиском соответствия с fullUrl, а затем найти соответствующую версию по <code>Resource.meta.versionId</code>.
+<!-- If the reference is version specific (either relative or absolute), then remove the version from the 
+URL before matching fullUrl, and then match the version based on <code>Resource.meta.versionId</code>. -->
 </p>
 <p>
-Here is an example Bundle the demonstrates these rules:
+Вот пример ресурса Bundle, в котором демонстрируются эти правила:
+<!-- Here is an example Bundle the demonstrates these rules: -->
 </p>
 <div class="example">
 <pre class="xml">
 &lt;Bundle xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;type value=&quot;collection&quot;/&gt;
 
-  &lt;!-- A patient that already has an id on a server --&gt;
+  &lt;!-- Ресурс Пациент, у которого уже есть идентификатор на сервере --&gt;
   &lt;entry&gt;
     &lt;fullUrl value=&quot;http://example.org/fhir/Patient/23&quot;/&gt;
     &lt;resource&gt;
@@ -265,8 +312,7 @@ Here is an example Bundle the demonstrates these rules:
     &lt;/resource&gt;
   &lt;entry&gt;
   
-  &lt;!-- A patient that doesn't have a persistent home - but it does have 
-      a UUID assigned for this bundle "locally identified" --&gt;
+  &lt;!-- Ресурс Пациент, у которого нет постоянного адреса, но есть UUID, присвоенный для локального использования в этом бандле --&gt;
   &lt;entry&gt;
     &lt;fullUrl value=&quot;urn:uuid:04121321-4af5-424c-a0e1-ed3aab1c349d&quot;/&gt;
     &lt;resource&gt;
@@ -275,56 +321,56 @@ Here is an example Bundle the demonstrates these rules:
     &lt;/resource&gt;
   &lt;entry&gt;
   
-  &lt;!-- a relative resource reference --&gt;
+  &lt;!-- относительная ссылка на ресурс --&gt;
   &lt;entry&gt;
     &lt;fullUrl value=&quot;http://example.org/fhir/Observation/123&quot;/&gt;
     &lt;resource&gt;
       &lt;Observation&gt;
          &lt;id value=&quot;123&quot;/&gt;
          &lt;subject&gt;
-           &lt;!-- this is reference to the resource above --&gt;
+           &lt;!-- это ссылка на ресурс выше --&gt;
            &lt;reference value=&quot;Patient/1&quot;/&gt;
          &lt;/subject&gt;
       &lt;/Organization&gt;
     &lt;/resource&gt;
   &lt;entry&gt;
 
-  &lt;!-- an absolute reference --&gt;
+  &lt;!-- абсолютная ссылка --&gt;
   &lt;entry&gt;
     &lt;fullUrl value=&quot;http://example.org/fhir/Observation/123&quot;/&gt;
     &lt;resource&gt;
       &lt;Observation&gt;
          &lt;id value=&quot;123&quot;/&gt;
          &lt;subject&gt;
-           &lt;!-- this is reference to the resource above --&gt;
+           &lt;!-- это ссылка на ресурс выше --&gt;
            &lt;reference value=&quot;http://example.org/fhir/Patient/1&quot;/&gt;
          &lt;/subject&gt;
       &lt;/Organization&gt;
     &lt;/resource&gt;
   &lt;entry&gt;
 
-  &lt;!-- reference to a locally identified resource --&gt;
+  &lt;!-- ссылка на локально идентифицированный ресурс --&gt;
   &lt;entry&gt;
     &lt;fullUrl value=&quot;http://example.org/fhir/Observation/12&quot;/&gt;
     &lt;resource&gt;
       &lt;Observation&gt;
          &lt;id value=&quot;12&quot;/&gt;
          &lt;subject&gt;
-           &lt;!-- reference to the patient immediately above --&gt;
+           &lt;!-- ссылка на пациента выше --&gt;
            &lt;reference value=&quot;urn:uuid:04121321-4af5-424c-a0e1-ed3aab1c349d&quot;/&gt;
          &lt;/subject&gt;
       &lt;/Observation&gt;
     &lt;/resource&gt;
   &lt;entry&gt;
   
-  &lt;!-- reference that doesn't resolve in this bundle --&gt;
+  &lt;!-- ссылка, которая не разрешается в этом бандле --&gt;
   &lt;entry&gt;
     &lt;fullUrl value=&quot;http://example.org/fhir/Observation/12&quot;/&gt;
     &lt;resource&gt;
       &lt;Observation&gt;
          &lt;id value=&quot;12&quot;/&gt;
          &lt;subject&gt;
-           &lt;!-- reference to a patient not found in this bundle --&gt;
+           &lt;!-- ссылка на пациента, которого нет в этом бандле --&gt;
            &lt;reference value=&quot;http://example.org/fhir-2/Patient/1&quot;/&gt;
          &lt;/subject&gt;
       &lt;/Observation&gt;

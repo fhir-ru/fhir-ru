@@ -988,9 +988,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Contains a collection of resources</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Содержит коллекцию ресурсов<!-- Contains a collection of resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A container for a collection of resources.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Контейнер для коллекции ресурсов.<!-- A container for a collection of resources. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1249,12 +1249,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Absolute URL for resource (server address, or UUID/OID)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Абсолютный URL ресурса (адрес на сервере или UUID/OID)<!-- Absolute URL for resource (server address, or UUID/OID) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The Absolute URL for the resource. This must be provided for all resources. The fullUrl SHALL not disagree with the id in the resource. The fullUrl is a version independent reference to the resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Абсолютный URL ресурса. Необходимо указывать для всех ресурсов. fullUrl НЕ ДОЛЖЕН расходиться с идентификатором в этом ресурсе. fullUrl - это версионнонезависимая ссылка на ресурс<!-- The Absolute URL for the resource. This must be provided for all resources. The fullUrl SHALL not disagree with the id in the resource. The fullUrl is a version independent reference to the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">fullUrl may not be [unique in the context of a resource](bundle.html#bundle-unique). Note that since [FHIR resources do not need to be served through the FHIR API](references.html), the absolute URL may not end with the logical id of the resource (Resource.id), but if the fullUrl does look like a RESTful server URL (e.g. meets the [regex](references.html#regex), then it SHALL end with the Resource.id  </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">fullUrl может быть не [уникальным в контексте ресурса](bundle.html#bundle-unique). Обратите внимание, что поскольку [FHIR-ресурсы не требуют обслуживания через FHIR API](references.html), абсолютный URL может не заканчиваться логическим идентификатором ресурса (Resource.id), однако если fullUrl выглядит как URL на RESTful-сервере (например соответствует [regex](references.html#regex), тогда он ДОЛЖЕН заканчиваться указанием Resource.id<!-- fullUrl may not be [unique in the context of a resource](bundle.html#bundle-unique). Note that since [FHIR resources do not need to be served through the FHIR API](references.html), the absolute URL may not end with the logical id of the resource (Resource.id), but if the fullUrl does look like a RESTful server URL (e.g. meets the [regex](references.html#regex), then it SHALL end with the Resource.id   --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1281,9 +1281,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A resource in the bundle</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ресурс в бандле<!-- A resource in the bundle --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурсы в записи<!-- The Resources for the entry --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурсы для этой записи<!-- The Resources for the entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1474,12 +1474,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">URL for HTTP equivalent of this entry</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">URL для HTTP-эквивалента этой записи<!-- URL for HTTP equivalent of this entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The URL for this entry, relative to the root (the address to which the request is posted)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">URL для этой записи, относительно корня (адрес, по которому постится запрос)<!-- The URL for this entry, relative to the root (the address to which the request is posted) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">E.g. for a Patient Create, the method would be &quot;POST&quot; and the URL would be &quot;Patient&quot;. For a Patient Update, the method would be PUT, and the URL would be &quot;Patient/[id]&quot;</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Например для создания ресурса Patient метод будет &quot;POST&quot;, а URL будет &quot;Patient&quot;. Для обновления ресурса Patient метод будет PUT, а URL будет &quot;Patient/[id]&quot;<!-- E.g. for a Patient Create, the method would be &quot;POST&quot; and the URL would be &quot;Patient&quot;. For a Patient Update, the method would be PUT, and the URL would be &quot;Patient/[id]&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1508,7 +1508,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Для управления актуальностью кэша<!-- For managing cache currency --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the ETag values match, return a 304 Not modified status. See the API documentation for [&quot;Conditional Read&quot;](http.html#cread)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если значения ETag совпадают, будет возвращена ошибка 304 Not modified status. См. [&quot;Условное чтение&quot;](http.html#cread) в документации по API<!-- If the ETag values match, return a 304 Not modified status. See the API documentation for [&quot;Conditional Read&quot;](http.html#cread) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1539,7 +1539,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Для разрешения конфликтов при обновлении<!-- For managing update contention --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Only perform the operation if the last updated date matches. See the API documentation for [&quot;Conditional Read&quot;](http.html#cread)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Операция будет выполнена, только если дата последнего обновления совпадает. См. [&quot;Условное чтение&quot;](http.html#cread) в документации по API<!-- Only perform the operation if the last updated date matches. See the API documentation for [&quot;Conditional Read&quot;](http.html#cread) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1601,7 +1601,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Для операций условного создания<!-- For conditional creates --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Instruct the server not to perform the create if a specified resource already exists. For further information, see the API documentation for [&quot;Conditional Create&quot;](http.html#ccreate). This is just the query portion of the URL - what follows the &quot;?&quot; (not including the &quot;?&quot;)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает серверу не выполнять операцию создания, если указанный ресурс уже существует. Более подробную информацию можно посмотреть в разделе [&quot;Условное создание&quot;](http.html#ccreate) документации по API. Это только та часть запроса в URL, которая идёт после &quot;?&quot; (не включая сам &quot;?&quot;)<!-- Instruct the server not to perform the create if a specified resource already exists. For further information, see the API documentation for [&quot;Conditional Create&quot;](http.html#ccreate). This is just the query portion of the URL - what follows the &quot;?&quot; (not including the &quot;?&quot;) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1693,7 +1693,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The location, if the operation returns a location</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Заголовок location, если операция возвращает расположение<!-- The location, if the operation returns a location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Заголовок location, созданный при выполнении этой операции<!-- The location header created by processing this operation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1724,9 +1724,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The etag for the resource (if relevant)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">ETag ресурса (если применимо)<!-- The etag for the resource (if relevant) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The etag for the resource, it the operation for the entry produced a versioned resource</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">ETag - тег ресурса (уникальный идентификатор версии сущности, используемый при кэшировании), если операция для этой записи вернула версионируемый ресурс.<!-- The etag for the resource, it the operation for the entry produced a versioned resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Должен совпадать с version id в заголовке, если ресурс включен<!-- This has to match the version id in the header if a resource is included --></Data><NamedCell
@@ -1788,13 +1788,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Digital Signature</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Электронная цифровая подпись<!-- Digital Signature --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Digital Signature - base64 encoded. XML DigSIg or a JWT</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Электронная цифровая подпись в кодировке base64. XML DigSIg или JWT<!-- Digital Signature - base64 encoded. XML DigSIg or a JWT --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This element allows capturing signatures on documents. It also allows signatures on messages, transactions or even query responses. It may support content-authentication, non-repudiation or other business cases. This is primarily relevant where the bundle may travel through multiple hops or via other mechanisms where HTTPS non-repudiation is insufficient</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Этот элемент позволяет хранить подписи на документы, а также сообщения, транзакции и даже ответы на запросы. Может поддерживать аутентификацию содержимого, невозможность отказа от авторства и другое. В первую очередь это актуально там, где бандл может неоднократно ретранслироваться или передаваться с помощью механизмов, где безотказности HTTPS недостаточно  <!-- This element allows capturing signatures on documents. It also allows signatures on messages, transactions or even query responses. It may support content-authentication, non-repudiation or other business cases. This is primarily relevant where the bundle may travel through multiple hops or via other mechanisms where HTTPS non-repudiation is insufficient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The signature could be created by the &quot;author&quot; of the bundle or by the originating device.   Requirements around inclusion of a signature, verification of signatures and treatment of signed/non-signed bundles is implementation-environment specific</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Подпись может создаваться &quot;автором&quot; бандла или инициирующим устройством. Требования по включению подписи, верификации подписей и обращению с подписанными/неподписанными бандлами зависят от контекста реализации<!-- The signature could be created by the &quot;author&quot; of the bundle or by the originating device.   Requirements around inclusion of a signature, verification of signatures and treatment of signed/non-signed bundles is implementation-environment specific --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3979,7 +3979,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">total</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">total only when a search or history</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">total указывается только для поиска и истории<!-- total only when a search or history --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">total.empty() or (type = 'searchset') or (type = 'history')</Data></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">not(f:total) or (f:type/@value = 'searchset') or (f:type/@value = 'history')</Data></Cell>
    </Row>
@@ -3989,7 +3989,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.search</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">entry.search only when a search</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">entry.search указывается только для поиска<!-- entry.search only when a search --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.search.empty() or (type = 'searchset')</Data></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">not(f:entry/f:search) or (f:type/@value = 'searchset')</Data></Cell>
    </Row>
@@ -3999,7 +3999,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.request</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">entry.request only for some types of bundles</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">entry.request только для некоторых типов бандлов<!-- entry.request only for some types of bundles --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.request.empty() or type = 'batch' or type = 'transaction' or type = 'history'</Data></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">not(f:entry/f:request) or (f:type/@value = 'batch') or (f:type/@value = 'transaction') or (f:type/@value = 'history')</Data></Cell>
    </Row>
@@ -4009,7 +4009,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.response</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">entry.response only for some types of bundles</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">entry.response только для некоторых типов бандлов<!-- entry.response only for some types of bundles --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.response.empty() or type = 'batch-response' or type = 'transaction-response'</Data></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">not(f:entry/f:response) or (f:type/@value = 'batch-response') or (f:type/@value = 'transaction-response')</Data></Cell>
    </Row>
@@ -4019,7 +4019,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.resource</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle.entry</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">must be a resource unless there's a request or response</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">должно быть ресурсом, если только это не запрос или ответ<!-- must be a resource unless there's a request or response --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">resource or request or response</Data></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">f:resource or f:request or f:response</Data></Cell>
    </Row>
@@ -4029,7 +4029,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">fullUrl only when there's a resource</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle.entry</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The fullUrl element must be present when a resource is present, and not present otherwise</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Элемент fullUrl должен быть указан только для ресурса, в ином случае присутствовать не должен<!-- The fullUrl element must be present when a resource is present, and not present otherwise --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">fullUrl.empty() xor resource</Data></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">(not(exists(f:fullUrl)) and not(exists(f:resource))) or (exists(f:fullUrl) and exists(f:resource))</Data></Cell>
    </Row>
@@ -4039,7 +4039,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">fullUrl must be unique except for versioning</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">FullUrl must be unique in a bundle, or else entries with the same fullUrl must have different meta.versionId</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">FullUrl должен быть уникальным в бандле, либо записи с одинаковыми FullUrl должны иметь различные meta.versionId<!-- FullUrl must be unique in a bundle, or else entries with the same fullUrl must have different meta.versionId --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.where(fullUrl).distinct(fullUrl,resource.meta.versionId)</Data></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String">count(for $entry in f:entry[f:resource] return $entry[count(parent::f:Bundle/f:entry[f:fullUrl/@value=$entry/f:fullUrl/@value and ((not(f:resource/*/f:meta/f:versionId/@value) and not($entry/f:resource/*/f:meta/f:versionId/@value)) or f:resource/*/f:meta/f:versionId/@value=$entry/f:resource/*/f:meta/f:versionId/@value)])!=1])=0</Data></Cell>
    </Row>
@@ -6551,7 +6551,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s149"><Data ss:Type="String">HTTPVerb</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">HTTP verbs (in the HTTP command line).</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">HTTP-методы (в командной строке HTTP).<!-- HTTP verbs (in the HTTP command line). --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#http-verb</Data></Cell>
