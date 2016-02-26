@@ -22,11 +22,14 @@ The sender and receivers may be patients, practitioners, related persons, organi
 <li>Patient educational material sent by a provider to a patient</li> -->
 </ul>
 <p>
-Non-patient specific communication use cases may include:
+Не относящиеся к конкретному пациенту сценарии коммуникации могут включать в себя:
+<!-- Non-patient specific communication use cases may include: -->
 </p>
 <ul>
-<li>A nurse call from a hall bathroom</li>
-<li>Advisory for battery service from a pump</li>
+<li>Вызов медсестры из уборной в коридоре</li>
+<li>Предупреждение от помпы о необходимости обслуживания батареи</li>
+<!-- <li>A nurse call from a hall bathroom</li>
+<li>Advisory for battery service from a pump</li> -->
 </ul>
 </div>
 
@@ -53,17 +56,19 @@ distinct from <b>Communication</b> where there is a specific intended sender and
 once. -->
 </p>
 
-<p><b>Communication and Encounter</b></p>
+<p><b>Ресурсы Communication и Encounter<!-- Communication and Encounter --></b></p>
 <p>
-The Communication is about the transfer of information (which may or may not occur as part of an encounter), while Encounter 
+Ресурс Communication описывает передачу информации (которая может быть получена как в рамках визита, так и нет), а ресурс Encounter описывает встречу (личную или виртуальную) пациента и врача. Ресурс Communication описывает не сам звонок, а факт о том, что некая информация была передана в определённый момент времени.
+<!-- The Communication is about the transfer of information (which may or may not occur as part of an encounter), while Encounter 
 is about the coming together (in person or virtually) of a Patient with a Practitioner.  Communication does not deal with 
-the duration of a call, it represents the fact that information was transferred at a particular point in time.
+the duration of a call, it represents the fact that information was transferred at a particular point in time. -->
 </p>
 <p>
-The phone calls involving the Patient should be handled using <a href="encounter.html">Encounter</a>.  Phone calls not involving the patient 
+Телефонные звонки пациентам следует описывать с помощью ресурса <a href="encounter.html">Encounter</a>. Телефонные звонки, не вовлекающие пациентов (например между врачами или врачом и родственниками), которые отслеживаются для выставления счетов или в других целях, могут использовать ресурс Communication для описания переданной информации, но не идеальны для представления самих звонков. Более совершенный механизм описания таких звонков будет рассматриваться в будущих версиях стандарта.
+<!-- The phone calls involving the Patient should be handled using <a href="encounter.html">Encounter</a>.  Phone calls not involving the patient 
 (e.g. between practitioners or practitioner to relative) that are tracked for billing or other purposes can use Communication 
 to represent the information transferred, but are not ideal to represent the call itself.  
-A better mechanism for handling such calls will be explored in a future release.
+A better mechanism for handling such calls will be explored in a future release. -->
 </p>
 </div>
 

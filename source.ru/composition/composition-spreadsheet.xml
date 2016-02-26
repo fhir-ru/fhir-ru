@@ -992,11 +992,11 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Набор ресурсов, скомпонованных в единую согласованную клиническую ведомость с клиническим заверением<!-- A set of resources composed into a single coherent clinical statement with clinical attestation --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ряд ресурсов, скомпонованных в единый согласованный заверенный клинический документ<!-- A set of resources composed into a single coherent clinical statement with clinical attestation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Связанная со здравоохранением информация, собранная в единый логический документ, представляющий собой некое единое согласованное утверждение, устанавливающий свой собственный контекст и клинически засвидетельствованный по отношению к тому, кто делает это утверждение. Ресурс Composition задаёт только структуру и сам в действительности не имеет содержимого: всё содержимое документа содержится в ресурсе Bundle, в котором ресурс Composition является первым вложенным ресурсом<!-- A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Для поддержки документов, а также для ввода идеи EN13606 о заверенных коммитах в электронную медицинскую запись пациента, а также чтобы позволить собирать ряд несоизмеримых на информационном/прикладном уровне ресурсов в клиническую ведомость<!-- To support documents, and also to capture the EN13606 notion of an attested commit to the patient EHR, and to allow a set of disparate resources at the information/engineering level to be gathered into a clinical statement --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Для поддержки документов, а также для ввода представления EN13606 о заверенных коммитах в электронную медицинскую запись пациента, а также чтобы позволить собирать ряд несоизмеримых на информационном/прикладном уровне ресурсов в клиническое утверждение<!-- To support documents, and also to capture the EN13606 notion of an attested commit to the patient EHR, and to allow a set of disparate resources at the information/engineering level to be gathered into a clinical statement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Хотя данная спецификация направлена на клинические ведомости для отдельных пациентов, этот ресурс может также применяться к другим ведомостям, связанным со здравоохранением, таким как study protocol designs, медицинские счета и другие виды деятельности, не обязательно клинические или связанные с пациентами  <!-- While the focus of this specification is on patient-specific clinical statements, this resource can also apply to other healthcare-related statements such as study protocol designs, healthcare invoices and other activities that are not necessarily patient-specific or clinical --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1068,7 +1068,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Версионный идентификатор композиции<!-- Version-specific identifier for composition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Version specific identifier for the composition, assigned when each version is created/updated. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Версионный идентификатор композиции, присваиваемый при каждом создании/обновлении версии.<!-- Version specific identifier for the composition, assigned when each version is created/updated.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Хотя каждый ресурс, включая саму композицию, имеет свой собственный версионный идентификатор, это формальный идентификатор логической версии композиции в целом. Он будет оставаться неизменным, если ресурсы будут перемещены на новый сервер, и все получат новые индивидуальные версии ресурса, к примеру<!-- While each resource, including the composition itself, has its own version identifier, this is a formal identifier for the logical version of the composition as a whole. It would remain constant if the resources were moved to a new server, and all got new individual resource versions, for example --></Data><NamedCell
@@ -1107,7 +1107,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Время редактирования композиции, когда композиция последний раз логически изменялась автором<!-- The composition editing time, when the composition was last logically changed by the author --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">dateTime is used for tracking, organizing versions and searching.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Эта дата/время используется для отслеживания, организации версий и поиска.<!-- dateTime is used for tracking, organizing versions and searching. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дата последнего изменения композиции может быть позже даты заверения документа, если он не был изменен<!-- The Last Modified Date on the composition may be after the date of the document was attested without being changed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1148,7 +1148,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Ключевой элемент метаданных, описывающий композицию, используемый при поиске/фильтрации.<!-- Key metadata element describing the composition, used in searching/filtering. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">For Composition type, LOINC is ubiquitous and strongly endorsed by HL7. Most implementation guides will require a specific LOINC code, or use LOINC as an extensible binding</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">HL7 одобряет и поощряет использовать LOINC-коды для типа композиции. Большинство руководств по реализации будут требовать указания кодов LOINC или использовать коды LOINC в качестве расширяемых наборов значений<!-- For Composition type, LOINC is ubiquitous and strongly endorsed by HL7. Most implementation guides will require a specific LOINC code, or use LOINC as an extensible binding --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./code</Data><NamedCell
@@ -1183,11 +1183,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Классификация композиции<!-- Categorization of Composition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Классификация типа композиции помогает при индексации и поиске. Может подразумеваться или вытекать из кода, указанного в типе композиции<!-- A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает людям оценивать, представляет ли для них композиция интерес, при просмотре указателя композиций или документов<!-- Helps humans to assess whether the composition is of interest when viewing an index of compositions or documents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This is a metadata field from [XDS/MHD](http://wiki.ihe.net/index.php?title=Mobile_access_to_Health_Documents_(MHD))</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это поле метаданных из [XDS/MHD](http://wiki.ihe.net/index.php?title=Mobile_access_to_Health_Documents_(MHD))<!-- This is a metadata field from [XDS/MHD](http://wiki.ihe.net/index.php?title=Mobile_access_to_Health_Documents_(MHD)) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.outboundRelationship[typeCode=&quot;COMP].target[classCode=&quot;LIST&quot;, moodCode=&quot;EVN&quot;].code</Data><NamedCell
@@ -1223,7 +1223,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Официальное человекочитаемое обозначение композиции<!-- Official human-readable label for the composition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">For many compositions, the title is the same as the text or a display name of Composition.type (e.g. a &quot;consultation&quot; or &quot;progress note&quot;). Note that CDA does not make title mandatory, but there are no known cases where it is useful for title to be omitted, so it is mandatory here. Feedback on this requirement is welcome during the trial use period</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для большинства композиций заголовок совпадает с текстом или именем для отображения элемента Composition.type (например &quot;consultation&quot; or &quot;progress note&quot;). Отметьте, что в CDA поле &quot;title&quot; не является обязательным, но поскольку нет известных сценариев, когда оно не было бы нужно, здесь оно сделано обязательным. Ваши отзывы по этому требованию приветствуются во время периода пробного использования<!-- For many compositions, the title is the same as the text or a display name of Composition.type (e.g. a &quot;consultation&quot; or &quot;progress note&quot;). Note that CDA does not make title mandatory, but there are no known cases where it is useful for title to be omitted, so it is mandatory here. Feedback on this requirement is welcome during the trial use period --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./title</Data><NamedCell
@@ -1263,7 +1263,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность помечать композиции как промежуточные, с внесенными поправками или изъятые <!-- Need to be able to mark interim, amended, or withdrawn compositions or documents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If a composition is marked as withdrawn, the compositions/documents in the series, or data from the composition or document series, should never be displayed to a user without being clearly marked as untrustworthy. The flag &quot;withdrawn&quot; is why this element is labeled as a modifier of other elements. &#10;&#10;Some reporting work flows require that the original narrative of a final document never be altered; instead, only new narrative can be added. The composition resource has no explicit status for explicitly noting whether this business rule is in effect. This would be handled by an extension if required</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если композиция помечена как изъятая, то нельзя показывать документы или данные из этой композиции пользователю без чёткого пояснения, что они являются ненадёжными. Именно из-за флага &quot;withdrawn&quot; этот элемент помечен как модификатор других элементов. &#10;&#10;Некоторые процедуры ведения отчётов требуют, чтобы исходное текстовое описание финального документа никогда не менялось, а вместо этого добавлялось новое описание. У ресурса Composition нет отдельного поля для статуса, действует ли это бизнес-правило или нет. При необходимости это решается с помощью расширения<!-- If a composition is marked as withdrawn, the compositions/documents in the series, or data from the composition or document series, should never be displayed to a user without being clearly marked as untrustworthy. The flag &quot;withdrawn&quot; is why this element is labeled as a modifier of other elements. &#10;&#10;Some reporting work flows require that the original narrative of a final document never be altered; instead, only new narrative can be added. The composition resource has no explicit status for explicitly noting whether this business rule is in effect. This would be handled by an extension if required --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">interim: .completionCode=&quot;IN&quot; &amp; ./statusCode[isNormalDatatype()]=&quot;active&quot;;  final: .completionCode=&quot;AU&quot; &amp;&amp;  ./statusCode[isNormalDatatype()]=&quot;complete&quot; and not(./inboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#CACT&quot;) and moodCode=&quot;EVN&quot; and domainMember(&quot;ReviseComposition&quot;, code) and isNormalAct()]);  amended: .completionCode=&quot;AU&quot; &amp;&amp;  ./statusCode[isNormalDatatype()]=&quot;complete&quot; and ./inboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#CACT&quot;) and moodCode=&quot;EVN&quot; and domainMember(&quot;ReviseComposition&quot;, code) and isNormalAct() and statusCode=&quot;completed&quot;];  withdrawn : .completionCode=NI &amp;&amp;  ./statusCode[isNormalDatatype()]=&quot;obsolete&quot;  </Data><NamedCell
@@ -1296,9 +1296,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Источник ввода данных<!-- The source of the data entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The person or device that performed the data entry leading to this composition. Where there is more than one candidate, pick the most proximal to the document creation or capture on a per-section basis. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек или устройство, выполнившее ввод данных по составлению этой композиции. При необходимости указать несколько участников, выберите одного из них, наиболее релевантного созданию документа, либо вводите их для каждой секции. <!-- The person or device that performed the data entry leading to this composition. Where there is more than one candidate, pick the most proximal to the document creation or capture on a per-section basis.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifies who is responsible for the entry of the data.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Указание ответственного за ввод данных.<!-- Identifies who is responsible for the entry of the data. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Остальных можно указать в расширениях<!-- Can provide other enterers in extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1338,7 +1338,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код, указывающий уровень конфиденциальности композиции<!-- The code specifying the level of confidentiality of the Composition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The exact use of this element, and enforcement and issues related to highly sensitive documents are out of scope for the base specification, and delegated to implementation profiles (see security section)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Точные указания по использованию этого элемента, а также его принудительное применение и проблемы, касающиеся документов с высоким уровнем конфиденциальности, выходят за рамки данной спецификации и делегированы профилям реализации (см. раздел по безопасности)<!-- The exact use of this element, and enforcement and issues related to highly sensitive documents are out of scope for the base specification, and delegated to implementation profiles (see security section) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.confidentialityCode</Data><NamedCell
@@ -1523,7 +1523,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Когда композиция была заверена стороной<!-- When composition was attested by the party --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет, когда информация в композиции была признана правильной. (Что-то могло измениться с тех пор.)<!-- Identifies when the information in the composition was deemed accurate.  (Things may have changed since then.) --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет, когда информация в композиции была признана правильной (что-то могло измениться с тех пор)<!-- Identifies when the information in the composition was deemed accurate.  (Things may have changed since then.) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1672,7 +1672,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Данный список кодов представляет собой основные клинические акты, такие как колоноскопия или аппендэктомия, которые документируются. В некоторых случаях событие берется из typeCode, например &quot;History and Physical Report&quot;, в котором документируемой процедурой обязательно будет акт &quot;History and Physical&quot;. <!-- This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a &quot;History and Physical Report&quot; in which the procedure being documented is necessarily a &quot;History and Physical&quot; act. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Событие может дополнительно специализировать акт, заложенный в typeCode, например когда это просто &quot;Procedure Report&quot; и процедурой была &quot;colonoscopy&quot;. Если один или несколько eventCodes включены, они НЕ ДОЛЖНЫ конфликтовать со значениями, заложенными в classCode, practiceSettingCode или typeCode, поскольку такой конфликт мог бы создать неоднозначную ситуацию. Этот короткий список кодов предоставлен для использования в качестве ???ключевых слов??? для некоторых типов запросов.<!-- An event can further specialize the act inherent in the typeCode, such as where it is simply &quot;Procedure Report&quot; and the procedure was a &quot;colonoscopy&quot;. If one or more eventCodes are included, they SHALL NOT conflict with the values inherent in the classCode, practiceSettingCode or typeCode, as such a conflict would create an ambiguous situation. This short list of codes is provided to be used as key words for certain types of queries. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Событие может дополнительно специализировать акт, заложенный в typeCode, например когда это просто &quot;Procedure Report&quot; и процедурой была &quot;colonoscopy&quot;. Если один или несколько eventCodes включены, они НЕ ДОЛЖНЫ конфликтовать со значениями, заложенными в classCode, practiceSettingCode или typeCode, поскольку такой конфликт мог бы создать неоднозначную ситуацию. Этот короткий список кодов предоставлен для использования в качестве ключевых слов для некоторых типов запросов.<!-- An event can further specialize the act inherent in the typeCode, such as where it is simply &quot;Procedure Report&quot; and the procedure was a &quot;colonoscopy&quot;. If one or more eventCodes are included, they SHALL NOT conflict with the values inherent in the classCode, practiceSettingCode or typeCode, as such a conflict would create an ambiguous situation. This short list of codes is provided to be used as key words for certain types of queries. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.code</Data><NamedCell
@@ -1738,9 +1738,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The event(s) being documented</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">События, о которых идёт речь в документе<!-- The event(s) being documented --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The description and/or reference of the event(s) being documented. For example, this could be used to document such a colonoscopy or an appendectomy</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание и/или ссылки на события, о которых идёт речь в документе. Например здесь можно задокументировать колоноскопию или аппендэктомию<!-- The description and/or reference of the event(s) being documented. For example, this could be used to document such a colonoscopy or an appendectomy --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1774,7 +1774,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Context of the Composition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контекст данной композиции<!-- Context of the Composition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Описывает клинический визит или тип ухода, с которым связана данная документация.<!-- Describes the clinical encounter or type of care this documentation is associated with. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1851,7 +1851,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Заголовки разделов часто стандартизованы для различных типов документов. Это дает указания людям о том, как организован документ<!-- Section headings are often standardized for different types of documents.  They give guidance to humans on how the document is organized --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The title identifies the section for a human reader. The title must be consistent with the narrative of the resource that is the target of the section.content reference. Generally, sections SHOULD have titles, but in some documents it is unnecessary or inappropriate. Typically, this is where a section has subsections that have their own adequately distinguishing title,  or documents that only have a single section. Most Implementation Guides will make section title to be a required element</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Заголовок идентифицирует секцию для читателя. Заголовок не должен противоречить описательной части ресурса, на который ссылается данная секция в элементе section.content reference. Как правило, у секций должен быть заголовок, однако для некоторых документов в этом нет необходимости или это неуместно. Обычно это в тех случаях, когда секция содержит подсекции, у каждой из которых есть свой заголовок, или документ содержит только одну секцию. В большинстве руководств по реализации заголовок секции сделан обязательным элементом<!-- The title identifies the section for a human reader. The title must be consistent with the narrative of the resource that is the target of the section.content reference. Generally, sections SHOULD have titles, but in some documents it is unnecessary or inappropriate. Typically, this is where a section has subsections that have their own adequately distinguishing title,  or documents that only have a single section. Most Implementation Guides will make section title to be a required element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./title</Data><NamedCell
@@ -1955,12 +1955,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Text summary of the section, for human interpretation</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Краткое текстовое изложение секции для интерпретации человеком<!-- Text summary of the section, for human interpretation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A human-readable narrative that contains the attested content of the section, used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it &quot;clinically safe&quot; for a human to just read the narrative.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемая описательная часть, содержащая заверенное содержимое секции, используемое для представления содержимого ресурса человеку. В описательную часть нет необходимости включать все структурированные данные, однако она должна содержать достаточно информации для обеспечения &quot;клинической надёжности&quot; при чтении описательной части человеком.<!-- A human-readable narrative that contains the attested content of the section, used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it &quot;clinically safe&quot; for a human to just read the narrative. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Document profiles may define what content should be represented in the narrative to ensure clinical safety</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Профили на документы могут задавать, какое содержимое должно присутствовать в описательной части для обеспечения клинической безопасности<!-- Document profiles may define what content should be represented in the narrative to ensure clinical safety --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.text</Data><NamedCell

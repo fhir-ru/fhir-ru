@@ -64,18 +64,20 @@ of a FHIR <a href="documents.html">document</a>.  The full content of the docume
 </ul>
 
 <p>
-The Composition resource organizes clinical and administrative content into sections, each of which contains a narrative, 
+Ресурс Composition организует клиническое и административное содержимое в секции, каждая из которых содержит описательную часть и ссылки на другие ресурсы с вспомогательными данными. Содержимое описательной части различных секций в ресурсе Composition поддерживаются ресурсами, на которые даются ссылки в разделах. Полный набор содержимого для составления документа включает ресурс Composition вместе с различными ресурсами, указывающими на или косвенно связанными с этим ресурсом Composition, все они объединены в <a href="bundle.html">Bundle</a> для передачи и хранения. В бандл необходимо включать следующие ссылки на ресурс Composition:
+<!-- The Composition resource organizes clinical and administrative content into sections, each of which contains a narrative, 
 and references other resources for supporting data. The narrative content of the various sections in a Composition are 
 supported by the resources referenced in the section entries.  The complete set of content to make up a document includes 
 the Composition resource together with various resources pointed to or indirectly
 connected to the Composition, all gathered together into a <a href="bundle.html">Bundle</a> for transport and persistence.
-The following list of Composition references SHALL be included in the bundle:
+The following list of Composition references SHALL be included in the bundle: -->
 </p>
 <%res-ref-list Composition%>
 
 <p>
-Other resources referred to by those resources may be included in the bundle at the discretion of the authoring 
-system, or as specified by any applicable profiles. 
+Другие ресурсы, на которые ссылаются эти ресурсы, могут быть включены в бандл по решению системы-составителя или в соответствии с применяемыми профилями.
+<!-- Other resources referred to by those resources may be included in the bundle at the discretion of the authoring 
+system, or as specified by any applicable profiles.  -->
 </p>
 </div>
 
@@ -103,7 +105,7 @@ system, or as specified by any applicable profiles.
  <tr> <td>retracted</td> <td>The composition was originally created/issued in error and this is an amendment that marks that the entire composition and any past versions or copies should not be considered as valid.</td> </tr> -->
 </table>
 <p>
-Статус композиции, как правило, передвигается только вниз по этому списку - от предварительного к финальному, и затем он может стать либо appended, либо amended. 
+Статус композиции, как правило, передвигается только вниз по этому списку - от предварительного к финальному, и затем он может стать либо "appended", либо "amended". 
 Обратите внимание, что в большинстве рабочих процессов только финальные композиции сделаны доступными, и статус preliminary не используется.
 <!-- Composition status generally only moves down through this list - it moves from preliminary to final and then it may progress to either appended or amended. 
 Note that in many workflows, only final compositions are made available and the preliminary status is not used.  -->
@@ -146,10 +148,11 @@ differences between CDA and the Composition resource: -->
    actually references to other <a href="resourcelist.html">resources</a> that hold the supporting data content for the section. 
    This design means that the data can be reused in many other ways. -->
    </li>
-  <li>Unlike CDA, the context defined in the <code>Composition</code> (the confidentiality, subject, author, event, event period and encounter) apply to the composition and do not specifically apply to the resources referenced from 
+  <li>В отличие от CDA, контекст, заданный в <code>Composition</code> (конфиденциальность, тема, автор, событие, период события and визит) применяются к этой композиции и не применяются к ресурсам, на которые даются ссылки в элементах <code>section.entry</code>. В FHIR отсутствует модель вытекания контекста, поэтому каждый ресурс, на который дана ссылка в <code>Composition</code>, имеет свой собственный индивидуальный контекст. Таким образом, это позволяет безопасно извлекать клиническое содержимое из композиции.
+  <!-- Unlike CDA, the context defined in the <code>Composition</code> (the confidentiality, subject, author, event, event period and encounter) apply to the composition and do not specifically apply to the resources referenced from 
   the <code>section.entry</code>. There is no context flow model in FHIR, so each resource referenced from 
   within a <code>Composition</code> expresses its own individual context.  In this way, clinical content can 
-  safely be extracted from the composition.</li>
+  safely be extracted from the composition. --></li>
 </ul>
 <p>
 Кроме того, следует отметить, что и перечни кодов (например <a href="valueset-composition-status.html">Composition.status</a>), и ресурс Composition <a href="composition-mappings.html">имеют мэппинги</a> на <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> и/или CDA.

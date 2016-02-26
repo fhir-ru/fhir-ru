@@ -986,7 +986,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на отправку информации получателю<!-- A request for information to be sent to a receiver --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Запрос на передачу информации; например система поддержки принятия решений предлагает отправить оповещение ответственному врачу; система поддержки принятия решений предлагает оповестить организацию общественного здравоохранения о подлежащем регистрации состоянии.<!-- A request to convey information; e.g. the CDS system proposes that an alert be sent to a responsible provider, the CDS system proposes that the public health agency be notified about a reportable condition. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1215,9 +1215,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A channel of communication</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Канал коммуникации<!-- A channel of communication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A channel that was used for this communication (e.g. email, fax).</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Канал, который использовался для данной коммуникации (например электронная почта, факс).<!-- A channel that was used for this communication (e.g. email, fax). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1248,9 +1248,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">An individual who requested a communication</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Человек, запросивший данную коммуникацию<!-- An individual who requested a communication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Несущий ответственность человек, который уполномочивает этот заказ, например врач. Это может быть не автор заявления на заказ, например клерк, который ввел это заявление в приложение для ввода заказов.<!-- The responsible person who authorizes this order, e.g. physician. This may be different than the author of the order statement, e.g. clerk, who may have entered the statement into the order entry application. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уполномоченный человек, ответственный за этот заказ, например врач. Указанный здесь человек может не совпадать с составителем заказа, например клерком, который непосредственно ввёл этот заказ в приложение для ввода заказов.<!-- The responsible person who authorizes this order, e.g. physician. This may be different than the author of the order statement, e.g. clerk, who may have entered the statement into the order entry application. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1285,7 +1285,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">proposed | planned | requested | received | accepted | in-progress | completed | suspended | rejected | failed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус предложения или заказа<!-- The status of the proposal or order. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус предложения или заказа.<!-- The status of the proposal or order. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1316,9 +1316,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter leading to message</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Визит, в рамках которого запросили передачу этого сообщения<!-- Encounter leading to message --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The encounter within which the communication request was created.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Визит, в рамках которого был создан этот запрос на коммуникацию.<!-- The encounter within which the communication request was created. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1448,7 +1448,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">О ком сообщение<!-- Focus of message --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Пациент, к которому относится это сообщение<!-- Focus of message --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Пациент, о котором идет речь в этом запросе на коммуникацию<!-- The patient who is the focus of this communication request. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6302,7 +6302,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">CommunicationRequestStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The status of the communication.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус передачи сообщения.<!-- The status of the communication. --></Data></Cell>
     <Cell ss:StyleID="s126"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s126"/>
     <Cell ss:StyleID="s126"><Data ss:Type="String">#communication-request-status</Data></Cell>
@@ -6317,7 +6317,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s87"><Data ss:Type="String">CommunicationCategory</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for general categories of communications such as alerts, instruction, etc.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды основных категорий сообщений, например оповещение, инструкция и т. п.<!-- Codes for general categories of communications such as alerts, instruction, etc. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>
@@ -6332,7 +6332,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s87"><Data ss:Type="String">CommunicationMedium</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for Средство коммуникации<!-- communication medium -->s such as phone, fax, email, in person, etc.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды средств коммуникации, например телефон, факс, электронная почта, лично и т. п.<!-- Codes for communication mediums such as phone, fax, email, in person, etc. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-ParticipationMode</Data></Cell>
@@ -6347,7 +6347,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s87"><Data ss:Type="String">CommunicationReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for describing reasons for the occurrence of a communication.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды причин, которые привели к данной коммуникации.<!-- Codes for describing reasons for the occurrence of a communication. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"/>
@@ -6362,7 +6362,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">CommunicationPriority</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes indicating the relative importance of a communication request.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды относительной важности запроса на коммуникацию.<!-- Codes indicating the relative importance of a communication request. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/diagnostic-order-priority</Data></Cell>
