@@ -1000,7 +1000,7 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String"> Detailed information about conditions, problems or diagnoses</Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Подробная информация о клинических состояниях, проблемах или диагнозах<!--  Detailed information about conditions, problems or diagnoses --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Используйте для записи подробной информации о состояниях, проблемах или диагнозах, установленных клиницистом. Есть множество применений, включая: запись диагноза во время Encounter; заполнение списка проблем или сводного отчета, например выписного эпикриза<!-- Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1179,9 +1179,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">When first entered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда впервые задокументировано<!-- When first entered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A date, when  the Condition statement was documented</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата, когда состояние было задокументировано<!-- A date, when  the Condition statement was documented --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">The Date Recorded represents the date when this particular Condition record was created in the EHR, not the date of the most recent update in terms of when severity, abatement, etc. were specified. &#160;The date of the last record modification can be retrieved from the resource metadata.</Data><NamedCell
@@ -1254,7 +1254,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">complaint | symptom | finding | diagnosis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A category assigned to the condition.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Категория состояния.<!-- A category assigned to the condition. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Эта классификация часто очень зависит от контекста и может оказаться слабо дифференцированной или не слишком полезной в других контекстах<!-- The categorization is often highly contextual and may appear poorly differentiated or not very useful in other contexts --></Data><NamedCell
@@ -1292,7 +1292,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">active | relapse | remission | resolved</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The clinical status of the condition.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Клинический статус состояния.<!-- The clinical status of the condition. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>

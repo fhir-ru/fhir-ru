@@ -973,7 +973,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Отображение одного набора концептов на один или несколько других концептов<!-- A map from one set of concepts to one or more other concepts --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Утверждение о наличии взаимосвязи между набором концептов и одним или несколькими другими концептами - либо кодовые системы или элементы данных, либо классы в моделях классов<!-- A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1006,7 +1006,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Globally unique logical id for concept map</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Глобально уникальный логический идентификатор карты соответствия концептов<!-- Globally unique logical id for concept map --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">An absolute URL that is used to identify this concept map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this concept map is (or will be) published</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1040,7 +1040,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional identifier for the concept map</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительный идентификатор карты соответствия концептов<!-- Additional identifier for the concept map --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Formal identifier that is used to identify this concept map when it is represented in other formats, or referenced in a specification, model, design or an instance.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

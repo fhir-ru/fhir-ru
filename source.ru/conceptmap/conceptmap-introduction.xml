@@ -29,16 +29,16 @@ Each source concept may have multiple targets:  -->
 </p>
 <ul>
  <li>поскольку имеется несколько возможных мэппингов (например неоднозначных) 
-because there are multiple possible mappings (e.g., ambiguous)</li>
- <li>чтобы указать корректный мэппинг, а остальные пометить как недопустимые 
-to specify a correct map, and specify other mappings as invalid</li>
+because there are multiple possible mappings (e.g., ambiguous)<!-- </li>
+ --> <li>чтобы указать корректный мэппинг, а остальные пометить как недопустимые 
+<!-- to specify a correct map, and specify other mappings as invalid --></li>
  <li>когда имеется несколько мэппингов, зависящих от значений других элементов (dependsOn) 
-when there are multiple mappings depending on the values of other elements (dependsOn)</li>
+<!-- when there are multiple mappings depending on the values of other elements (dependsOn) --></li>
 </ul>
 <p>
 У каждого элемента должен быть указан хотя бы один адресат, однако некоторые неполные карты соответствия концептов могут не иметь адресата для каждого концепта.
-There SHOULD be at least one target for each element, but some incomplete concept maps 
-may not have a target for each concept. 
+<!-- There SHOULD be at least one target for each element, but some incomplete concept maps 
+may not have a target for each concept.  -->
 </p>
 
 </div> 

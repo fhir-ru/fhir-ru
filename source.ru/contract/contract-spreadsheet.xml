@@ -1114,7 +1114,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Contract</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Контракт<!-- Contract --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Официальное соглашение между участниками относительно ведения бизнеса, обмена информацией или других вопросов.<!-- A formal agreement between parties regarding the conduct of business, exchange of information or other matters. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
