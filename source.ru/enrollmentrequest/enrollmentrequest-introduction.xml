@@ -5,7 +5,7 @@
 <h2>Область применения и использование</h2>
 <p><b>Данный ресурс еще не прошел надлежащую проверку рабочей группой FM. В настоящее время его следует считать черновым.<!-- This resource has not yet undergone proper review by FM. At this time, it is to be considered as a draft. --></b></p>
 <p>
-Ресурс EnrollmentRequest учитывает добавление и удаление подписчиков плана и их иждивенцев к страховому покрытию здоровья.
+Ресурс EnrollmentRequest позволяет добавлять и удалять подписчиков и иждивенцев к медицинской страховке.
 <!-- The EnrollmentRequest resource allows for the addition and removal of plan subscribers and their 
 dependents to health insurance coverage. -->
 </p>

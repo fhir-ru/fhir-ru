@@ -985,7 +985,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на регистрацию<!-- Enrollment request --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на внесение (в страховку)<!-- Enrollment request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Данный ресурс предоставляет сведения о регистрации страховки страховой компании относительно указанного страхового покрытия.<!-- This resource provides the insurance enrollment details to the insurer regarding a specified coverage. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1046,7 +1046,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Бизнес-идентификатор<!-- Business Identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Бизнес-идентификатор ответа<!-- The Response business identifier --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Бизнес-идентификатор ответа на запрос<!-- The Response business identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1171,7 +1171,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Insurer</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Страховщик<!-- Insurer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Страховщик, которому был направлен этот запрос.<!-- The Insurer who is target  of the request. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1202,9 +1202,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Несущий ответственность (медицинский) специалист<!-- Responsible practitioner --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Несущий ответственность врач<!-- Responsible practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Специалист, который несет ответственность за услуги, оказанные пациенту.<!-- The practitioner who is responsible for the services rendered to the patient. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Врач, который несет ответственность за услуги, оказанные пациенту.<!-- The practitioner who is responsible for the services rendered to the patient. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1388,7 +1388,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Взаимосвязь пациента и подписчика<!-- The relationship of the patient to the subscriber --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">To determine the relationship between the patient and the subscriber</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Для определения взаимосвязи между пациентом и подписчиком<!-- To determine the relationship between the patient and the subscriber --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4227,21 +4227,21 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">EnrollmentRequest.organization</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The organization who generated this resource</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Организация, создавшая этот ресурс<!-- The organization who generated this resource --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">EnrollmentRequest.subject</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Сторона, которая должна быть зачислена<!-- The party to be enrolled --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Сторона, которая должна стать членом<!-- The party to be enrolled --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">EnrollmentRequest.subject</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Сторона, которая должна быть зачислена<!-- The party to be enrolled --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Сторона, которая должна стать членом<!-- The party to be enrolled --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
