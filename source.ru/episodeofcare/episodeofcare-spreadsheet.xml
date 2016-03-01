@@ -1016,7 +1016,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifier(s) for the EpisodeOfCare</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификаторы эпизода лечения<!-- Identifier(s) for the EpisodeOfCare --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификаторы, под которыми известен этот EpisodeOfCare<!-- Identifier(s) by which this EpisodeOfCare is known --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1081,9 +1081,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Past list of status codes</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Список предыдущих кодов статусов<!-- Past list of status codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">История изменения статусов данного эпизода лечения (без необходимости обработки истории изменения ресурса)<!-- The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1145,7 +1145,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Period for the status</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Время действия статуса<!-- Period for the status --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Период времени в течение этого EpisodeOfCare, когда у него был указанный статус <!-- The period during this EpisodeOfCare that the specific status applied --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1179,9 +1179,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Type/class  - e.g. specialist referral, disease management</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип/класс - например направление к специалисту, управление течением заболевания<!-- Type/class  - e.g. specialist referral, disease management --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">A classification of the type of encounter; e.g. specialist referral, disease management, type of funded care</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Классификация типа случая обслуживания; например направление к специалисту, управление течением заболевания, тип финансируемого ухода<!-- A classification of the type of encounter; e.g. specialist referral, disease management, type of funded care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Знание типа может быть очень важным при обработке, так как его можно использовать для определения, подлежит ли данный EpisodeOfCare определенному сообщению в правительственные органы или другим типам классификации<!-- The type can be very important in processing as this could be used in determining if the EpisodeOfCare is relevant to specific government reporting, or other types of classifications --></Data><NamedCell
@@ -1212,7 +1212,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Conditions/problems/diagnoses this episode of care is for</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Медицинское состояние/проблемы/диагнозы, для которых создаётся данный эпизод лечения<!-- Conditions/problems/diagnoses this episode of care is for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Перечень состояний/проблем/диагнозов, для лечения которых предназначен данный EpisodeOfCare<!-- A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1245,7 +1245,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Patient for this episode of care</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Пациент этого эпизода лечения<!-- Patient for this episode of care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Пациент, к которому относится данный EpisodeOfCare<!-- The patient that this EpisodeOfCare applies to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1277,7 +1277,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Organization that assumes care</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, которая берёт на себя уход<!-- Organization that assumes care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, которая принимает на себя определенную ответственность на указанный период<!-- The organization that has assumed the specific responsibilities for the specified duration --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1311,7 +1311,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Interval during responsibility is assumed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Интервал, на время которого берётся ответственность<!-- Interval during responsibility is assumed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Интервал, в течение которого управляющая организация принимает на себя определенную ответственность<!-- The interval during which the managing organization assumes the defined responsibility --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1342,7 +1342,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Originating Referral Request(s)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Инициирующие направления<!-- Originating Referral Request(s) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Входящие направления, которые выполняются в рамках данного EpisodeOfCare<!-- Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming referrals --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1373,7 +1373,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Care manager/care co-ordinator for the patient</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Управляющий медицинским обслуживанием/координатор ухода за пациентом<!-- Care manager/care co-ordinator for the patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Специалист, являющийся управляющим медицинским обслуживанием/координатором ухода за пациентом<!-- The practitioner that is the care manager/care co-ordinator for this patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1403,7 +1403,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Other practitioners facilitating this episode of care</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Другие медицинские специалисты, участвующие в данном эпизоде лечения<!-- Other practitioners facilitating this episode of care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Список специалистов, которые могут принимать участие в данном эпизоде лечения в определенных целях<!-- The list of practitioners that may be facilitating this episode of care for specific purposes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1436,9 +1436,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Role taken by this team member</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Роль данного члена команды<!-- Role taken by this team member --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The role this team member is taking within this episode of care</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Роль, которую играет данный член команды в этом эпизоде лечения<!-- The role this team member is taking within this episode of care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1467,7 +1467,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Period of time for this role</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период действия данной роли<!-- Period of time for this role --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Период времени, в течение которого этот специалист выполняет некоторую роль в рамках данного эпизода лечения<!-- The period of time this practitioner is performing some role within the episode of care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6383,7 +6383,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">EpisodeOfCareType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of the encounter.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип случая обслуживания.<!-- The type of the encounter. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:Index="5" ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
@@ -6397,7 +6397,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">EpisodeOfCareTeamRole</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Type of participation expected by a team member.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Форма участия, ожидаемая от члена команды.<!-- Type of participation expected by a team member. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/participant-role</Data></Cell>

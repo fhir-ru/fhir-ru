@@ -4,8 +4,8 @@
 	<div>
 
 	<a name="status"> </a>
-		<h2>Status Management</h2>
-		<h3>History and Period</h3>
+		<h2>Управление статусами<!-- Status Management --></h2>
+		<h3>История и период<!-- History and Period --></h3>
 		<p>
 		Когда организация принимает на себя ответственность за пациента, то создается EpisodeOfCare и вводится дата начала, чтобы показать, когда он начался.
 			<!-- When an organization assumes responsibility for a patient, then the EpisodeOfCare is created and a start date
@@ -16,7 +16,7 @@
 			<!-- This is described via an example below for an example intake workflow. -->
 		</p>
 		<p></p>
-		<h3>Leave Handling</h3>
+		<h3>Обработка отсутствия<!-- Leave Handling --></h3>
 		<p>
 		При оказании долгосрочной помощи часто используется концепция приостановки предоставления помощи по различным причинам. У многих систем имеются исчерпывающие решения по Leave Management/Tracking, которые учитывают сложность этой области, однако данный ресурс EpisodeOfCare НЕ ПРЕДНАЗНАЧЕН для обеспечения этого уровня отслеживания.
 			<!-- With long term care there is often a concept of the provision of care being suspended for various reasons.
@@ -37,7 +37,7 @@
 		</ul>
 
 		<p></p>
-		<h3>Example Intake Workflow</h3>
+		<h3>Пример процесса приёма<!-- Example Intake Workflow --></h3>
 		<p>
 		Этот пример демонстрирует последовательность переходов некоторых статусов и взаимодействие других ресурсов.
 			<!-- This example sequence demonstrates some status transitions and how other resources interact. --><br/>
@@ -92,11 +92,11 @@
 			<!-- The actual provision of services may also be funded separately, and this would be via the Encounters. -->
 		</p>
 
-		<h3>EpisodeOfCare Outcomes Review</h3>
+		<h3>Обзор результатов EpisodeOfCare<!-- EpisodeOfCare Outcomes Review --></h3>
 		<p>
-		Организация может проводить аналитику своих эпизодов предоставления ухода, чтобы иметь представление о состоянии их бизнеса.
+		Организация может проводить аналитику своих эпизодов предоставления ухода, чтобы иметь представление о состоянии своего бизнеса.
 			<!-- An Organization may perform analytics on their Episodes Of Care to have an understanding of how their business is performing. --><br/>
-			Наблюдение, что было 60 завершенных и 40 отмененных эпизодов, не очень информативно. Организация предпочла бы узнать причины, почему эти эпизоды завершились, чтобы более эффективно планировать свой бизнес.
+			Наблюдение о том, что было 60 завершённых и 40 отмененных эпизодов, не очень информативно. Организация предпочла бы узнать причины, почему эти эпизоды завершились, чтобы более эффективно планировать свой бизнес.
 			<!-- Observing that there was a 60/40 split of episodes being finished/cancelled is not very informative. The organization would
 			prefer to know the reason why the episodes are completing so that they can plan their business effectively. --><br/>
 			Она больше заинтересована в знании, случилось ли это потому, что наступила дата принудительного окончания предоставления услуг, из-за смерти клиента, перевода клиентов на более высокий уровень услуг, предоставляемых этой организацией, или к другому провайдеру, и т. п.
