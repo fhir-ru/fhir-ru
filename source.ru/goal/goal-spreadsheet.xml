@@ -954,12 +954,12 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Describes the intended objective(s) for a patient, group or organization</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Описание поставленных целей для пациента, группы или организации<!-- Describes the intended objective(s) for a patient, group or organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Описание поставленных целей для пациента, группы или организации, например потеря веса, восстановление действия по удовлетворению повседневных нужд, иммунизация стада, выполнение цели по улучшению процесса и т. д.<!-- Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Целью может быть достижение конкретного изменения или просто поддержание текущего состояния, или даже замедление ухудшение.<!-- Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline. --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Целью может быть достижение конкретного показателя, просто поддержание текущего состояния или даже замедление ухудшения.<!-- Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">.outboundRelationship[typeCode&lt;=OBJ].</Data><NamedCell
@@ -1024,11 +1024,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Who this goal is intended for</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для кого ставится эта цель<!-- Who this goal is intended for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifies the patient, group or organization for whom the goal is being established.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Указание пациента, группы или организации, для которых устанавливается цель.<!-- Identifies the patient, group or organization for whom the goal is being established. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Subject is optional to support annonymized reporting</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Элемент сделан необязательным для поддержки анонимных отчётов<!-- Subject is optional to support annonymized reporting --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1060,11 +1060,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">When goal pursuit begins</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Когда началось выполнение цели<!-- When goal pursuit begins --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The date or event after which the goal should begin being pursued</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Дата или событие, после которого должно начаться выполнение цели<!-- The date or event after which the goal should begin being pursued --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Goals can be established prior to there being an intention to start pursuing them; e.g. Goals for post-surgical recovery established prior to surgery.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Цели могут устанавливаться заранее, до начала их выполнения, например цель послеоперационного восстановления устанавливается ещё до операции.<!-- Goals can be established prior to there being an intention to start pursuing them; e.g. Goals for post-surgical recovery established prior to surgery. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1095,7 +1095,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Достигнуть цели в или ранее<!-- Reach goal on or before --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Indicates either the date or the duration after start by which the goal should be met</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Дата или продолжительность после начала, когда цель должна быть достигнута<!-- Indicates either the date or the duration after start by which the goal should be met --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Определяет, когда следует оценивать цель.<!-- Identifies when the goal should be evaluated. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1127,11 +1127,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">E.g. Treatment, dietary, behavioral, etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Например терапевтическая, диетическая, психологическая и т. п.<!-- E.g. Treatment, dietary, behavioral, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Indicates a category the goal falls within</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Категория цели<!-- Indicates a category the goal falls within --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Allows goals to be filtered and sorted</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Для фильтрации и сортировки целей<!-- Allows goals to be filtered and sorted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1267,12 +1267,12 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Reason for current status</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Причина текущего статуса<!-- Reason for current status --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Captures the reason for the current status.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Обоснование текущего статуса.<!-- Captures the reason for the current status. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">This will typically be captured for statuses such as rejected, on-hold or cancelled, but could be present for others.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Это поле обычно заполняется для таких статусов, как отклонена, отложена или отменена, но может быть указано и для других статусов.<!-- This will typically be captured for statuses such as rejected, on-hold or cancelled, but could be present for others. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1306,7 +1306,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Обозначает, для кого предназначена эта цель - для пациента, для специалиста и т. д.<!-- Indicates whose goal this is - patient goal, practitioner goal, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">This is the individual reponsible for establishing the goal, not necessarily who recorded it.  (For that, use the Provenance resource.)</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Это лицо, ответственное за установление этой цели, это не обязательно именно тот, кто записал её (для этого используйте ресурс Provenance).<!-- This is the individual reponsible for establishing the goal, not necessarily who recorded it.  (For that, use the Provenance resource.) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1337,11 +1337,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">high | medium |low</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifies the mutually agreed level of importance associated with reaching/sustaining the goal</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Определяет взаимно согласованный уровень важности, связанный с достижением/поддержания цели<!-- Identifies the mutually agreed level of importance associated with reaching/sustaining the goal --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Used for sorting and presenting goals</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Используется для сортировки и отображения целей<!-- Used for sorting and presenting goals --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Extensions are available to track priorities as established by each participant (i.e. Priority from the patient's perspective, different practitioners' perspectives, family member's perspectives)&#10;&#10;The ordinal extension on Coding can be used to convey a numerically comparable ranking to priority.  (Keep in mind that different coding systems may use a &quot;low value=important&quot;</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Для отслеживания приоритетов, устанавливаемых каждым участником, можно использовать расширения (т. е. приоритет с точки зрения пациента, различных врачей, членов семьи)&#10;&#10;Для численного ранжирования приоритетов можно использовать расширение для типа данных Coding (имейте в виду, что различные системы кодирования могут использовать разные принципы, например&quot;чем меньше числовое значение, тем выше приоритет&quot;<!-- Extensions are available to track priorities as established by each participant (i.e. Priority from the patient's perspective, different practitioners' perspectives, family member's perspectives)&#10;&#10;The ordinal extension on Coding can be used to convey a numerically comparable ranking to priority.  (Keep in mind that different coding systems may use a &quot;low value=important&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">.priorityCode</Data><NamedCell
@@ -1369,7 +1369,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Issues addressed by this goal</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Проблемы, решаемые в рамках данной цели<!-- Issues addressed by this goal --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Выявленные состояния и другие элементы медицинской карты, которые планируется решить в рамках этой цели <!-- The identified conditions and other health record elements that are intended to be addressed by the goal --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
