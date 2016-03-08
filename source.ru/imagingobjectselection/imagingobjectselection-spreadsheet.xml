@@ -1068,11 +1068,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Instance UID</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">UID экземпляра<!-- Instance UID --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Instance UID of the DICOM KOS SOP Instances represented in this resource.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">UID экземпляра для DICOM KOS SOP-экземпляров в этом ресурсе<!-- Instance UID of the DICOM KOS SOP Instances represented in this resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">DICOM SOP Instance is always assigned with a unique identifier (UID).</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">DICOM SOP-экземплярам всегда присваивается уникальный идентификатор (UID).<!-- DICOM SOP Instance is always assigned with a unique identifier (UID). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1107,9 +1107,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><Data ss:Type="String">Ссылка на ресурс Patient пациента, который является субъектом всех DICOM SOP-экземпляров в данной выборке ключевых объектов.<!-- A patient resource reference which is the patient subject of all DICOM SOP Instances in this ImagingObjectSelection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">SOP Instances in ImagingObjectSelection must be from the same patient.</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">SOP-экземпляры в ресурсе ImagingObjectSelection должны относиться к одному и тому же пациенту.<!-- SOP Instances in ImagingObjectSelection must be from the same patient. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">SOP instances selected in the ImagingObjectSelection can be from different studies, but must be of the same patient.</Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">SOP-экземпляры, отобранные для ресурса ImagingObjectSelection, могут быть из разных исследований, но все должны быть от одного и того же пациента.<!-- SOP instances selected in the ImagingObjectSelection can be from different studies, but must be of the same patient. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.participation[typeCode=SBJ].role</Data><NamedCell
@@ -1145,7 +1145,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><Data ss:Type="String">Необходимо указать цель применения, для которой SOP-экземпляры в выборке ключевых объектов были отобраны.<!-- Need to represent the application purpose that the SOP instances in ImagingObjectSelection are selected for. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">Coded concept of kind of the ImagingObjectSelection. Value set is defined in the DICOM standard Part 16, CID-7010.  </Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">Закодированный концепт для описания типа ресурса ImagingObjectSelection. Соответствующий набор значений определён в стандарте DICOM, часть 16, раздел CID-7010.<!-- Coded concept of kind of the ImagingObjectSelection. Value set is defined in the DICOM standard Part 16, CID-7010.   --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1211,9 +1211,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><Data ss:Type="String">Автор (человек или машина)<!-- Author (human or machine) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">Author of ImagingObjectSelection. It can be a human author or a device which made the decision of the SOP instances selected. For example, a radiologist selected a set of imaging SOP instances to attach in a diagnostic report, and a CAD application may author a selection to describe SOP instances it used to generate a detection conclusion.</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">Автор-составитель ресурса ImagingObjectSelection. Это может быть человек или устройство, принявшие решение по отбору SOP-экземпляров. Например рентгенолог отобрал несколько радиологических SOP-экземпляров для включения в диагностический отчёт; или приложение CAD составило выборку для описания SOP-экземпляров, которые оно использовало для генерации заключения.<!-- Author of ImagingObjectSelection. It can be a human author or a device which made the decision of the SOP instances selected. For example, a radiologist selected a set of imaging SOP instances to attach in a diagnostic report, and a CAD application may author a selection to describe SOP instances it used to generate a detection conclusion. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">Track the selection decision maker. </Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">Отслеживание принимающего решение по выборке.<!-- Track the selection decision maker.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1246,7 +1246,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">Время создания выборки<!-- Authoring time of the selection --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">Date and time when the selection of the referenced instances were made. It is (typically) different from the creation date of the selection resource, and from dates associated with the referenced instances (e.g. capture time of the referenced image). </Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">Дата и время, когда была сделана выборка экземпляров. Обычно отличается от даты создания ресурса и от дат, ассоциированных с самими экземплярами (например от даты сохранения изображения).<!-- Date and time when the selection of the referenced instances were made. It is (typically) different from the creation date of the selection resource, and from dates associated with the referenced instances (e.g. capture time of the referenced image).  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">Дата и время, когда была сделана выборка, могут быть важными для понимания содержания выборки.<!-- Date and time when the selection was made can be important to understand the content of selection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1282,7 +1282,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Идентификация исследований и информация о размещении DICOM SOP-экземпляров в выборке.<!-- Study identity and locating information of the DICOM SOP instances in the selection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">DICOM SOP instances are identified through the UIDs of the study - series - instance hierarchy. In addition, the locator at the study level provide a means of retrieving the entire study.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">DICOM SOP-экземпляры идентифицируются с помощью иерархии уникальных идентификаторов: UID исследования - UID серии - UID экземпляра. Кроме этого, локатор на уровне исследования обеспечивает возможность извлечения всего исследования целиком.<!-- DICOM SOP instances are identified through the UIDs of the study - series - instance hierarchy. In addition, the locator at the study level provide a means of retrieving the entire study. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Компонент Study представляет собой идентификацию и информацию о размещении DICOM SOP-экземпляров в выборке на уровне исследования. Это верхний уровень идентификации в иерархии экземпляров.<!-- Study component represents the study level identity and locator information of the DICOM SOP instances in the selection. It is the top level identity of the hierachical identification of the instances. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1313,11 +1313,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Study instance UID</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">UID исследования<!-- Study instance UID --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Study instance UID of the SOP instances in the selection</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">UID исследования SOP-экземпляров в выборке<!-- Study instance UID of the SOP instances in the selection --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Study instance UID is required to fully identify the DICOM SOP instances in the selection</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">UID исследования необходим для полной идентификации DICOM SOP-экземпляров в выборке<!-- Study instance UID is required to fully identify the DICOM SOP instances in the selection --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1346,7 +1346,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">AE Title where may be retrieved</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">AE-название, где может быть получено<!-- AE Title where may be retrieved --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><Data ss:Type="String">Название сущности приложения DICOM, где может быть получено исследование.&#10;Обратите внимание, что это AE-название указывается для извлечения всех SOP-экземпляров исследования, а не только тех, что в выборке.<!-- The DICOM Application Entity Title where the study can be retrieved. Note that this AE Title is provided to retrieve all SOP instances of the study, not only those in the selection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1380,11 +1380,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">Retrieve location UID</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">UID для извлечения<!-- Retrieve location UID --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><Data ss:Type="String">Уникальный идентификатор системы (который предоставляет и управляет получением AE-названия), по которому может быть извлечено исследование.<!-- The unique identifier of the system (which exposes and manages the retrieve AE Title) where the study can be retrieved. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">Retrieve Location UID identifies the system which provides the retrieve service.</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">UID для извлечения идентифицирует систему, предоставляющую сервис по извлечению.<!-- Retrieve Location UID identifies the system which provides the retrieve service. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">Study level locator information is optional. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1415,11 +1415,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">Retrieve study URL</Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">URL извлечения исследования<!-- Retrieve study URL --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">WADO-RS URL to retrieve the study. Note that this URL retrieves all SOP instances of the study, not only those in the selection.</Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">WADO-RS URL для извлечения исследования. Обратите внимание, что по этому URL извлекаются все SOP-экземпляры исследования, а не только те, что в выборке.<!-- WADO-RS URL to retrieve the study. Note that this URL retrieves all SOP instances of the study, not only those in the selection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">WADO-RS URL enables retrieval of the entire study using DICOM WADO-RS API.</Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">WADO-RS URL позволяет извлекать всё исследование целиком с помощью использования DICOM WADO-RS API.<!-- WADO-RS URL enables retrieval of the entire study using DICOM WADO-RS API. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">Информация о локаторе на уровне исследования является необязательной. Если указана, то это будет URL для извлечения всего исследования целиком через взаимодействие с WADO-RS, хотя в выборке используется только его подмножество.<!-- Study level locator information is optional. If provided, this is the URL to retrieve the entire study with WADO-RS interaction, though only a subset of these are selected in the selection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1449,11 +1449,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">Reference to ImagingStudy</Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">Ссылка на ресурс ImagingStudy<!-- Reference to ImagingStudy --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">Reference to the Imaging Study in FHIR form.</Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">Ссылка на FHIR-ресурс ImagingStudy<!-- Reference to the Imaging Study in FHIR form. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">Used to retrieve the ImagingStudy that contain the images referenced in the Imaging ObjectSelection.study</Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">Используется для извлечения ресурса ImagingStudy, содержащего изображения, на которые ссылается элемент ImagingObjectSelection.study<!-- Used to retrieve the ImagingStudy that contain the images referenced in the Imaging ObjectSelection.study --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1516,11 +1516,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Series instance UID</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">UID серии<!-- Series instance UID --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Series instance UID of the SOP instances in the selection</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">UID серии SOP-экземпляров в выборке<!-- Series instance UID of the SOP instances in the selection --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">Series instance UID is required to fully identify the DICOM SOP instances in the selection</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">UID серии необходим для полной идентификации DICOM SOP-экземпляров в выборке<!-- Series instance UID is required to fully identify the DICOM SOP instances in the selection --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="Default"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1549,7 +1549,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">AE Title where may be retrieved</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">AE-заголовок, где может быть извлечена<!-- AE Title where may be retrieved --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><Data ss:Type="String">Название сущности приложения DICOM, где может быть получена серия.&#10;Обратите внимание, что это AE-название указывается для извлечения всех SOP-экземпляров серии, а не только тех, что в выборке.<!-- The DICOM Application Entity Title where the series can be retrieved. Note that this AE Title is provided to retrieve all SOP instances of the series not only those in the selection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1583,7 +1583,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">Retrieve location UID</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">UID для извлечения<!-- Retrieve location UID --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><Data ss:Type="String">Уникальный идентификатор системы (которая предоставляет и управляет получением AE-названия), по которому может быть извлечена серия.<!-- The unique identifier of the system (which exposes and manages the retrieve AE Title) where the series can be retrieved. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1618,7 +1618,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">Retrieve series URL</Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">URL извлечения серии<!-- Retrieve series URL --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">WADO-RS URL to retrieve the series. Note that this URL retrieves all SOP instances of the series not only those in the selection.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1727,7 +1727,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">SOP Instance UID of the selected instance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s95"><Data ss:Type="String">SOP instance UID is required to fully identify the DICOM SOP instance in the selection.</Data><NamedCell
+    <Cell ss:StyleID="s95"><Data ss:Type="String">UID SOP-экземпляра необходим для полной идентификации DICOM SOP-экземпляров в выборке.<!-- SOP instance UID is required to fully identify the DICOM SOP instance in the selection. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">SOP instance UID identifies the instance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

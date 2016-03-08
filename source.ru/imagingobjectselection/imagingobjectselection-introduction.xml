@@ -7,9 +7,9 @@
 <p>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
 Данный ресурс суммирует ряд изображений или других экземпляров, собранных вместе с определенной целью, и предоставляет ссылки, по которым эти изображения доступны через WADO-RS. Этот ресурс используется для предоставления информации, касающейся изображений и т. д., предназначенных для обмена в других клинических ситуациях, таких как диагностические отчеты, планы ухода и т. д.
-This resource summarizes a set of images or other instances gathered for some specified purpose, and provides references 
+<!-- This resource summarizes a set of images or other instances gathered for some specified purpose, and provides references 
 to where the images are available using WADO-RS. This resource is used to make available information concerning images etc. 
-that are intended to be exchanged into other clinical contexts such as diagnostic reports, Care Plans, etc. 
+that are intended to be exchanged into other clinical contexts such as diagnostic reports, Care Plans, etc.  -->
 </p>
 </div>
 

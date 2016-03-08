@@ -1136,7 +1136,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Descriptive name for the list</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описательное название списка<!-- Descriptive name for the list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">A label for the list assigned by the author</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

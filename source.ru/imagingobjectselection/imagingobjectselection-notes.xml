@@ -2,9 +2,10 @@
 
 <!-- insert xhtml content here -->
 
-<h3>Use Case</h3>
+<h3>Сценарий использования<!-- Use Case --></h3>
 <p>
-Joe Angina complains of shortness of breath and occasional chest pain to his primary care physician, Dr. Pat Down at Local MultiClinic, who orders a stress echocardiogram; the order is created as a FHIR Order resource to manage the workflow, with a link to a DiagnosticOrder resource with the details of the request.   The order is scheduled and assigned to cardiologist Dr. Art Skann, also at Local MultiClinic.   
+Джо Энджене жалуется на одышку и нерегулярную боль в груди своему основному лечащему врачу доктору Пату Дауну в местной поликлинике, который заказал для него стресс-эхокардиограмму; этот заказ создаётся в виде FHIR-ресурса Order для управления рабочим процессом, со ссылкой на ресурс DiagnosticOrder с деталями запроса. Заказ запланирован, и его исполнение назначенено кардиологу доктору Арту Сканну, также работающему в этой поликлинике.
+<!-- Joe Angina complains of shortness of breath and occasional chest pain to his primary care physician, Dr. Pat Down at Local MultiClinic, who orders a stress echocardiogram; the order is created as a FHIR Order resource to manage the workflow, with a link to a DiagnosticOrder resource with the details of the request.   The order is scheduled and assigned to cardiologist Dr. Art Skann, also at Local MultiClinic.    -->
 </p>
 <p>
 On the scheduled day of the exam, Joe arrives at the echo lab to meet with Dr. Skann and have the study done.  Dr. Skann’s workstation shows the daily list of Orders, and he follows the link to retrieve the DiagnosticOrder. (He may follow the links through the referenced Patient resource to access Joe’s electronic medical record, but that is not the concern of this storyboard.)  

@@ -8,8 +8,8 @@
 <!-- The Immunization resource is intended to cover the recording of current and historical administration of vaccines to patients across all healthcare disciplines in all care settings and all regions. This includes immunization of both humans and animals, but does not include the administration of non-vaccine agents, even those that may have or claim to have immunological effects.  --> 
 </p>
 <p>
-Кроме того предполагается, что ресурс immunization покрое ключевые понятия, относящиеся к созданию, проверке и выдаче запросов к истории иммунизации пациента. Данный ресурс - после консультации с рабочей группой PHER - полагается, удовлетворит ключевые сценарии использования и информационные требования, как определено в существующем руководстве по реализации иммунизации HL7 v2.x, домене HL7 v3 POIZ и Модели анализа домена иммунизации.
-Additionally, the Immunization resource is expected to cover key concepts related to the creation, revision and querying of a patient's immunization history. This resource - through consultation with the PHER work group - is believed to meet key use cases and information requirements as defined in the existing <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> immunization implementation guide, <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> POIZ domain and Immunization Domain Analysis Model.
+Кроме того предполагается, что ресурс Immunization покроет ключевые понятия, относящиеся к созданию, проверке и выдаче запросов к истории иммунизации пациента. Данный ресурс - после консультации с рабочей группой PHER - полагаем, удовлетворит ключевые сценарии использования и информационные требования, определённые в существующем руководстве по реализации иммунизации <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>, домене <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> POIZ и Модели анализа домена иммунизации.
+<!-- Additionally, the Immunization resource is expected to cover key concepts related to the creation, revision and querying of a patient's immunization history. This resource - through consultation with the PHER work group - is believed to meet key use cases and information requirements as defined in the existing <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> immunization implementation guide, <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> POIZ domain and Immunization Domain Analysis Model. -->
 </p>
 </div>
 
@@ -34,10 +34,11 @@ Additionally, the Immunization resource is expected to cover key concepts relate
 </p>
 
     <p>
-        <b>AllergyIntolerance and Immunization.reaction</b></p>
+        <b>Ресурс AllergyIntolerance и элемент Immunization.reaction<!-- AllergyIntolerance and Immunization.reaction --></b></p>
     <p>
-        <a href="immunization-definitions.html#Immunization.reaction">Immunization.reaction</a> may be an indication of an allergy or intolerance. If this is deemed to be the case, a separate 
-        <a href="allergyintolerance.html">AllergyIntolerance</a> resource instance should be created to indicate it, as most systems will not query against past Immunization.reaction.
+    Элемент <a href="immunization-definitions.html#Immunization.reaction">Immunization.reaction</a> может быть указанием на аллергию или непереносимость. Если считается, что это именно тот случай, то для него следует создать отдельный экземпляр ресурса <a href="allergyintolerance.html">AllergyIntolerance</a>, поскольку большинство систем не будут делать запросы на старые значения элемента Immunization.reaction.
+        <!-- <a href="immunization-definitions.html#Immunization.reaction">Immunization.reaction</a> may be an indication of an allergy or intolerance. If this is deemed to be the case, a separate 
+        <a href="allergyintolerance.html">AllergyIntolerance</a> resource instance should be created to indicate it, as most systems will not query against past Immunization.reaction. -->
     </p>
     
     

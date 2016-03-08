@@ -976,7 +976,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Сведения об услугах здравоохранения, оказываемых в некотором месте<!-- The details of a healthcare service available at a location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The details of a healthcare service available at a location.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Сведения об услугах здравоохранения, оказываемых в некотором месте<!-- The details of a healthcare service available at a location. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1043,7 +1043,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Organization that provides this service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, которая предоставляет данную услугу<!-- Organization that provides this service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, которая предоставляет данную медицинскую услугу<!-- The organization that provides this healthcare service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1080,12 +1080,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Broad category of service being performed or delivered</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Общая категория предоставляемой услуги<!-- Broad category of service being performed or delivered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifies the broad category of service being performed or delivered</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описывает общую категорию предоставляемой услуги<!-- Identifies the broad category of service being performed or delivered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Selecting a Service Category then determines the list of relevant service types that can be selected in the primary service type</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Общая категории услуги определяет список соответствующих этой категории типов, которые можно будет выбирать для услуг<!-- Selecting a Service Category then determines the list of relevant service types that can be selected in the primary service type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1113,7 +1113,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific service delivered or performed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретная услуга, которая была предоставлена<!-- Specific service delivered or performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Более конкретный тип услуги, которая может быть доставлена или выполнена<!-- A specific type of service that may be delivered or performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1148,7 +1148,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of service delivered or performed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип предоставленной услуги<!-- Type of service delivered or performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретный тип доставляемой или выполняемой услуги<!-- The specific type of service being delivered or performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1183,7 +1183,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Specialties handled by the Service Site</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Медицинская специализация данной услуги<!-- Specialties handled by the Service Site --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Совокупность специальностей, контролируемых Service Site. Это в большей мере медицинские термины<!-- Collection of specialties handled by the service site. This is more of a medical term --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1217,7 +1217,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Location where service may be provided</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Место предоставления услуги<!-- Location where service may be provided --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Место, где может быть оказана данная медицинская услуга<!-- The location where this healthcare service may be provided --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1250,7 +1250,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Description of service as presented to a consumer while searching</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание услуги, каким оно будет показываться клиенту при поиске<!-- Description of service as presented to a consumer while searching --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Более подробное описание услуги, которое будет предоставлено потребителю при поиске<!-- Further description of the service as it would be presented to a consumer while searching --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1283,7 +1283,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional description and/or any specific issues not covered elsewhere</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительное описание услуги и/или связанных с ней вопросов, не освещённых в других элементах<!-- Additional description and/or any specific issues not covered elsewhere --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительное описание услуги и/или определенных вопросов, не покрытых другими атрибутами, которое будет отображаться как более подробные сведения под serviceName<!-- Any additional description of the service and/or any specific issues not covered by the other attributes, which can be displayed as further detail under the serviceName --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1349,7 +1349,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Facilitates quick identification of the service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Способствует быстрой идентификации услуги<!-- Facilitates quick identification of the service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Если у данной медицинской услуги есть соответствующая фотография или условное обозначение, то его можно включить сюда для упрощения поиска услуги в списках <!-- If there is a photo/symbol associated with this HealthcareService, it may be included here to facilitate quick identification of the service in a list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1381,12 +1381,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contacts related to the healthcare service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контакты, относящиеся к услуге здравоохранения<!-- Contacts related to the healthcare service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">List of contacts related to this specific healthcare service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Список контактов, относящихся к данной конкретной услуге здравоохранения<!-- List of contacts related to this specific healthcare service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If this is empty, then refer to the location's contacts</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если элемент не задан, тогда см. контакты элемента location<!-- If this is empty, then refer to the location's contacts --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1414,7 +1414,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Location(s) service is inteded for/available to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Местоположения, для которых данная услуга предназначена/доступна<!-- Location(s) service is inteded for/available to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Местоположения, для которых данная услуга доступна (а не где эта услуга оказывается)<!-- The location(s) that this service is available to (not where the service is provided) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1448,7 +1448,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Conditions under which service is available/offered</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Условия, под которыми услуга предлагается/доступна<!-- Conditions under which service is available/offered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Коды, подробно описывающие условия, под которыми доступна/предлагается данная медицинская услуга<!-- The code(s) that detail the conditions under which the healthcare service is available/offered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1482,7 +1482,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific eligibility requirements required to use the service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Особые требования приемлемости для использования данной услуги<!-- Specific eligibility requirements required to use the service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Есть ли у данной услуги особые требования, которым необходимо удовлетворять, чтобы иметь возможность ею воспользоваться<!-- Does this service have specific eligibility requirements that need to be met in order to use the service -->?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1547,7 +1547,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Program Names that categorize the service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Названия программ для классификации услуги<!-- Program Names that categorize the service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Названия программ, которые могут использоваться для классификации этой услуги<!-- Program Names that can be used to categorize the service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1647,7 +1647,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">PKI Public keys to support secure communications</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Публичные PKI-ключи доступа для безопасного соединения<!-- PKI Public keys to support secure communications --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Открытая часть "ключей", выделенных организации аккредитованным органом для поддержки защищенного обмена данными через Интернет. Должна предоставляться организацией, если это возможно<!-- The public part of the 'keys' allocated to an Organization by an accredited body to support secure exchange of data over the internet. To be provided by the Organization, where available --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1680,9 +1680,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If an appointment is required for access to this service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если для доступа к этой услуге необходима запись на приём<!-- If an appointment is required for access to this service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates whether or not a prospective consumer will require an appointment for a particular service at a site to be provided by the Organization. Указывает, требуется ли условленная встреча для получения этой услуги<!-- Indicates if an appointment is required for access to this service --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Указывает, требуется ли от предполагаемого клиента запись на приём для получения этой услуги в месте, предоставленном организацией<!-- Indicates whether or not a prospective consumer will require an appointment for a particular service at a site to be provided by the Organization. Indicates if an appointment is required for access to this service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1711,7 +1711,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Times the Service Site is available</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Расписание доступности услуги<!-- Times the Service Site is available --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень указаний времени, когда этот  Service Site доступен<!-- A collection of times that the Service Site is available --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1778,7 +1778,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Always available? e.g. 24 hour service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Всегда доступна? Например круглосуточно<!-- Always available? e.g. 24 hour service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Всегда ли это доступно? (следовательно, время не имеет значения) например 24-часовое обслуживание<!-- Is this always available? (hence times are irrelevant) e.g. 24 hour service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1810,12 +1810,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Opening time of day (ignored if allDay = true)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время открытия (игнорируется, если allDay = true)<!-- Opening time of day (ignored if allDay = true) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Время открытия. Примечание: если стоит флаг "AllDay", то указанное здесь время будет игнорироваться<!-- The opening time of day. Note: If the AllDay flag is set, then this time is ignored --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The timezone is expected to be for where this HealthcareService is provided at.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо указывать часовой пояс для места, где услуга будет оказываться.<!-- The timezone is expected to be for where this HealthcareService is provided at. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1843,12 +1843,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Closing time of day (ignored if allDay = true)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время закрытия (игнорируется, если allDay = true)<!-- Closing time of day (ignored if allDay = true) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Время закрытия. Примечание: если стоит флаг "AllDay", то указанное здесь время будет игнорироваться<!-- The closing time of day. Note: If the AllDay flag is set, then this time is ignored --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The timezone is expected to be for where this HealthcareService is provided at.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо указывать часовой пояс для места, где услуга будет оказываться.<!-- The timezone is expected to be for where this HealthcareService is provided at. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1875,7 +1875,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Not available during this time due to provided reason</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Не доступна в течение данного периода времени по указанной причине<!-- Not available during this time due to provided reason --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Медицинская услуга не будет доступна в течение данного периода времени по указанной причине<!-- The HealthcareService is not available during this period of time due to the provided reason --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1908,7 +1908,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason presented to the user explaining why time not available</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Причина, показываемая пользователю, объясняющая, почему это время недоступно<!-- Reason presented to the user explaining why time not available --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Причина недоступности этого времени для отображения пользователям<!-- The reason that can be presented to the user as to why this time is not available --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1940,7 +1940,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Service not availablefrom this date</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Услуга не доступна с этой даты<!-- Service not availablefrom this date --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Услуга не доступна (сезонно или в официальные нерабочие дни) с этой даты<!-- Service is not available (seasonally or for a public holiday) from this date --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1972,9 +1972,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Description of availability exceptions</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание ограничений доступности услуги<!-- Description of availability exceptions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание исключений доступности сайта, например в официальные нерабочие дни. Краткое описание всех возможных отклонений от нормальной работы сайта в виде указания доступного и не доступного времени<!-- A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание исключений доступности услуги, например в официальные нерабочие дни. Краткое описание всех возможных отклонений от нормальной работы сайта в виде указания доступного и не доступного времени<!-- A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
