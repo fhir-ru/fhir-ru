@@ -1278,7 +1278,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Dates governing proposed immunization</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Даты проведения иммунизации, предложенные правительством<!-- Dates governing proposed immunization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Рекомендации по срокам введения вакцины - например самая ранняя дата введения, самая поздняя дата введения и т. п.<!-- Vaccine date recommendations.  For example, earliest date to administer, latest date to administer, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1419,7 +1419,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Dose number within sequence</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Номер дозы в последовательности<!-- Dose number within sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает номинальную позицию в серии следующей дозы. Это рекомендованное число дозы в соответствии с указанным протоколом.<!-- Indicates the nominal position in a series of the next dose.  This is the recommended dose number as per a specified protocol. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6458,7 +6458,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">ImmunizationRecommendationStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The patient's status with respect to a vaccination protocol</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус пациента относительно протокола вакцинации<!-- The patient's status with respect to a vaccination protocol --></Data></Cell>
     <Cell ss:StyleID="s125"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s125"><Data ss:Type="String">valueset-immunization-recommendation-status</Data></Cell>
@@ -6473,7 +6473,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ImmunizationRecommendationDateCriterion</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Classifies date criterion with respect to conveying information about a patient's vaccination status (e.g. due date, latest to give date, etc.)</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Классификация временнЫх критериев касательно передаваемой информации о статусе вакцинации пациента (например срок выполнения, самая поздняя дата и т. п.)<!-- Classifies date criterion with respect to conveying information about a patient's vaccination status (e.g. due date, latest to give date, etc.) --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">valueset-immunization-recommendation-date-criterion</Data></Cell>
@@ -6488,7 +6488,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">VaccineCode</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The type of vaccine administered</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Тип введённой вакцины<!-- The type of vaccine administered --></Data></Cell>
     <Cell ss:StyleID="s125"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/vaccine-code</Data></Cell>

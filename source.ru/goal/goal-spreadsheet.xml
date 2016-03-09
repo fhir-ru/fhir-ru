@@ -1127,7 +1127,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Например терапевтическая, диетическая, психологическая и т. п.<!-- E.g. Treatment, dietary, behavioral, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Например терапевтическая, диетическая, психологическая и т. п<!-- E.g. Treatment, dietary, behavioral, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Категория цели<!-- Indicates a category the goal falls within --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

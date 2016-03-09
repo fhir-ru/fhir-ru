@@ -1,9 +1,10 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <a name="bp"> </a>
-<h2>Best practices for using 'Medication'</h2>
+<h2>Практический опыт использования ресурса Medication<!-- Best practices for using 'Medication' --></h2>
 <p>
-Medications that are entered in error should simply be deleted.
+Лекарственные средства, введённые по ошибке, нужно просто удалять.
+<!-- Medications that are entered in error should simply be deleted. -->
 </p>
  
 </div>
