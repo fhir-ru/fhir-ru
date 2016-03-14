@@ -639,7 +639,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s72"><Data ss:Type="String">DocumentReferenceStatus</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The status of the document reference.</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Статус ссылки на документ.</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">Required</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">#document-reference-status</Data></Cell>
@@ -676,7 +676,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s77"><Data ss:Type="String">RemittanceOutcome</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The outcome of the processing.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Результаты обработки (денежного перевода).</Data></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:Index="5" ss:StyleID="s79"><Data ss:Type="String">#remittance-outcome</Data></Cell>
     <Cell ss:StyleID="s79"/>
@@ -730,7 +730,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s72"><Data ss:Type="String">Language</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">A human language.</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Естественный язык.</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s73"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">http://tools.ietf.org/html/bcp47</Data></Cell>
@@ -774,7 +774,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MessageEvent</Data></Cell>
-    <Cell><Data ss:Type="String">One of the message events defined as part of FHIR.</Data></Cell>
+    <Cell><Data ss:Type="String">Одно из сообщений о событии, определённых в рамках спецификации FHIR.</Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
     <Cell><Data ss:Type="String">preferred</Data></Cell>
     <Cell><Data ss:Type="String">#message-events</Data></Cell>
@@ -789,7 +789,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s75"><Data ss:Type="String">ClinicalBaseGender</Data></Cell>
-    <Cell><Data ss:Type="String">The gender of a person used for clinical purposes . This has the same base codes as [[[AdministrativeGender]]], but is extensible to allow for finer differentiation of uncertainty, for gender re-assignment programs, and for social gender status.</Data></Cell>
+    <Cell><Data ss:Type="String">Пол человека для использования в клинических целях. Этот элемент использует тот же список базовых кодов, что и [[[AdministrativeGender]]], однако здесь он расширяемый, чтобы можно было более точно указать степень неопределённости для программ по изменению пола, а также для указания социального статуса пола.</Data></Cell>
     <Cell><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/administrative-gender</Data></Cell>
@@ -828,7 +828,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s75"><Data ss:Type="String">Ruleset</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The static and dynamic model to which contents conform, which may be business version or standard/version.</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Статическая и динамическая модель содержимого, это может быть бизнес-версия или версия стандарта.</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">valueset-ruleset</Data></Cell>
@@ -871,7 +871,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s75"><Data ss:Type="String">Relationship</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The code for the relationship of the patient to the subscriber.</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Код взаимосвязи пациента и подписчика.</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">valueset-relationship</Data></Cell>
@@ -885,7 +885,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s75"><Data ss:Type="String">Forms</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The forms codes.</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Коды форм.</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s73"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">valueset-forms</Data></Cell>
@@ -899,7 +899,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s75"><Data ss:Type="String">AdjudicationError</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The error codes for adjudication processing.</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Коды ошибок процесса вынесения решения по делу.</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:Index="5" ss:StyleID="s73"><Data ss:Type="String">valueset-adjudication-error</Data></Cell>
     <Cell ss:StyleID="s73"/>
@@ -982,7 +982,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s75"><Data ss:Type="String">SecurityLabels</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Security Labels from the Healthcare Privacy and Security Classification System.</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Метки уровня безопасности от системы классификации медицинской конфиденциальности и уровней безопасности.</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">valueset-security-labels</Data></Cell>
