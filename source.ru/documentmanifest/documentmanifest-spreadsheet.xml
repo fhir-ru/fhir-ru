@@ -6282,7 +6282,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell ss:StyleID="s94"><Data ss:Type="String">DocumentC80Type</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Precise type of clinical document.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Точный тип клинического документа.<!-- Precise type of clinical document. --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell><Data ss:Type="String">Preferred</Data></Cell>

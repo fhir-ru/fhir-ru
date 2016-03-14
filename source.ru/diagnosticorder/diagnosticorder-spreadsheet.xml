@@ -1220,9 +1220,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The encounter that this diagnostic order is associated with</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Случай обслуживания, с которым связан данный заказ диагностики<!-- The encounter that this diagnostic order is associated with --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An encounter that provides additional information about the healthcare context in which this request is made</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Случай обслуживания, содержащий дополнительную информацию о медицинском контексте, в котором был сделан данный запрос<!-- An encounter that provides additional information about the healthcare context in which this request is made --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6545,7 +6545,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s151"><Data ss:Type="String">BodySite</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes describing anatomical locations. May include laterality.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды описания анатомического расположения. Могут включать латеральность.<!-- Codes describing anatomical locations. May include laterality. --></Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/body-site</Data></Cell>
@@ -6560,7 +6560,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s150"><Data ss:Type="String">DiagnosticOrderReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Diagnosis or problem codes justifying the reason for requesting the diagnostic investigation.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды диагнозов или проблем, являющихся обоснованием запроса на данное диагностическое исследование.<!-- Diagnosis or problem codes justifying the reason for requesting the diagnostic investigation. --></Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/condition-code</Data></Cell>

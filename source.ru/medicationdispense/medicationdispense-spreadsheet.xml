@@ -1020,7 +1020,7 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">Выдача лекарственного средства названному пациенту<!-- Dispensing a medication to a named patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Обозначает, что лекарственный продукт был или должен быть выдан названному лицу/пациенту. Включает в себя описание и инструкции по применению поставляемого лекарственного продукта. Выдача лекарственного средства - это ответное действие фармацевтической системы на заказ лекарственного средства.<!-- Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1055,7 +1055,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Внешний идентификатор<!-- External identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifier assigned by the dispensing facility - this is an identifier assigned outside FHIR.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификаторы, назначенные выдающим (лекарственное средство) учреждением - это внешние для FHIR идентификаторы.<!-- Identifier assigned by the dispensing facility - this is an identifier assigned outside FHIR. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1105,7 +1105,7 @@
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Active - processed but not pickup Completed - process and pickup Aborted - process and put back in stock  This is not related to partialFill whioch is really a partialFulfillment of the order</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Active - обработано, но ещё не выдано; Completed - обработано и забрали; Aborted - обработано и возвращено на склад. Это не связано с частичным наполнением (partialFill), что на самом деле является частичным выполнением заказа (partialFulfillment)<!-- Active - processed but not pickup Completed - process and pickup Aborted - process and put back in stock  This is not related to partialFill whioch is really a partialFulfillment of the order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="225">
@@ -1131,7 +1131,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет вводимое лекарственное средство. Это либо ссылка на ресурс, представляющий детали лекарственного средства, либо простой атрибут с кодом лекарственного средства из известного списка медикаментов. <!-- Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the dispensed medication. When the only available information is a text description of the medication, Medication.code.text should be used</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если указан только код, тогда это должен быть код конкретного продукта. Если требуется больше информации, тогда рекомендуется использовать ресурс Medication. Примечание: не используйте поле Medication.name для описания выданного лекарственного средства. Когда единственной доступной информацией является текстовое описание медикамента, тогда следует использовать поле Medication.code.text<!-- If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the dispensed medication. When the only available information is a text description of the medication, Medication.code.text should be used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.participation[typeCode=PRD].role</Data><NamedCell
@@ -1199,7 +1199,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Practitioner responsible for dispensing medication</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Врач, ответственный за выдачу лекарственного средства<!-- Practitioner responsible for dispensing medication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Лицо, ответственное за выдачу лекарственного средства<!-- The individual responsible for dispensing the medication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1269,9 +1269,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Trial fill, partial fill, emergency fill, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Пробная выдача, частичная выдача, неотложная выдача и т. д.<!-- Trial fill, partial fill, emergency fill, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc. </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Обозначает тип события выдачи. Например пробная выдача, завершение испытания, частичная выдача, неотложная выдача, образцы и т. п.<!-- Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1339,7 +1339,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Amount of medication expressed as a timing amount</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество лекарственного средства, выраженное в виде временного срока<!-- Amount of medication expressed as a timing amount --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Количество лекарственного средства, выраженное в виде временного срока. <!-- The amount of medication expressed as a timing amount. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1407,7 +1407,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">When product was given out</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда продукт был выдан<!-- When product was given out --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Время, когда приготовленный продукт был выдан пациенту или его представителю. <!-- The time the dispensed product was provided to the patient or their representative. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1582,9 +1582,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Free text dosage instructions e.g. SIG</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольные текстовые инструкции по дозировке, например SIG<!-- Free text dosage instructions e.g. SIG --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Free text dosage instructions can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Произвольные текстовые инструкции по дозировке можно использовать в случаях, когда инструкции слишком сложные для кодирования. Если присутствуют закодированные инструкции, произвольные текстовые инструкции тоже могут присутствовать для отображения людям, принимающим или вводящим данное лекарственное средство. <!-- Free text dosage instructions can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1650,7 +1650,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Когда должно быть введено лекарственное средство<!-- When medication should be administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions.  For example, &quot;Every  8 hours&quot;; &quot;Three times a day&quot;; &quot;1/2 an hour before breakfast for 10 days from 23-Dec 2011:&quot;;  &quot;15 Oct 2013, 17 Oct 2013 and 1 Nov 2013&quot;</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Календарный график выдачи медикамента пациенту. Тип данных Schedule позволяет использовать множество различных выражений, например &quot;каждые  8 часов&quot;; &quot;три раза в день&quot;; &quot;за полчаса до завтрака в течение 10 дней с 23-Dec 2011:&quot;;  &quot;15 Oct 2013, 17 Oct 2013 и 1 Nov 2013&quot;<!-- The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions.  For example, &quot;Every  8 hours&quot;; &quot;Three times a day&quot;; &quot;1/2 an hour before breakfast for 10 days from 23-Dec 2011:&quot;;  &quot;15 Oct 2013, 17 Oct 2013 and 1 Nov 2013&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1685,7 +1685,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Принимать по мере необходимости (при x)  <!-- Take &quot;as needed&quot; f(or x) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  &#10;&#10;Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.&#10;</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Показывает, нужно ли это лекарственное средство принимать только при необходимости по указанному графику дозирования (вариант Boolean), либо является условием для принятия медикамента (вариант CodeableConcept). &#10;&#10;В частности, если выбран тип данных 'boolean', то используется следующая логика: если значение True, это означает, что медикамент принимается только при необходимости по указанному расписанию.&#10;<!-- Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  &#10;&#10;Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.&#10; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1792,10 +1792,10 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Метод введения лекарственного средства<!-- Technique for administering medication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Закодированное значение, обозначающее метод введения лекарственного средства в или на тело.<!-- A coded value indicating the method by which the medication is intended to be or was introduced into or on the body. -->  </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.  One of the reasons this attribute is not used often, is that the method is often pre-coordinated with the route and/or form of administration.  This means the codes used in route or form may pre-coordinate the method in the route code or the form code.  The implementation decision about what coding system to use for route or form code will determine how frequently the method code will be populated e.g. if route or form code pre-coordinate method code, then this attribute will not be populated often; if there is no pre-coordination then method code may  be used frequently.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Одна из причин, почему этот атрибут нечасто используется, состоит в том, что метод часто указывается вместе с местом и/или формой введения. Это означает, что коды, используемые для указания места или формы введения, могут одновременно устанавливать и метод. Решение реализаторов, какую кодовую систему использовать для указания пути или формы введения, будет определять, насколько часто будет заполняться код метода, например, если код пути или формы устанавливает код метода, тогда этот атрибут будет заполняться нечасто; если не устанавливает, тогда код метода будет указываться часто.<!-- This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.  One of the reasons this attribute is not used often, is that the method is often pre-coordinated with the route and/or form of administration.  This means the codes used in route or form may pre-coordinate the method in the route code or the form code.  The implementation decision about what coding system to use for route or form code will determine how frequently the method code will be populated e.g. if route or form code pre-coordinate method code, then this attribute will not be populated often; if there is no pre-coordination then method code may  be used frequently. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.methodCode</Data><NamedCell
@@ -1830,7 +1830,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Количество терапевтического или другого вещества, выданного при одном введении. <!-- The amount of therapeutic or other substance given at one administration event.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Note that this specifies the quantity of the specified medication, not the quantity of active ingredient(s).  The prescribed strength can be calculated by multiplying the doseQuantity by the strength of each active ingredient in the prescribed Medication. If the administration is not intended to be instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount to be administered over the period of time as indicated by the schedule.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Обратите внимание, что здесь задаётся количество указанного лекарственного средства, а не количество активных ингредиентов. Значение предписанной силы можно подсчитать, умножив doseQuantity на силу каждого активного ингредиента в выписанном медикаменте. Если введение будет не мгновенным (указана скорость или продолжительность), тогда это поле может использоваться для передачи общего количества для введения за период времени в соответствии с расписанием.<!-- Note that this specifies the quantity of the specified medication, not the quantity of active ingredient(s).  The prescribed strength can be calculated by multiplying the doseQuantity by the strength of each active ingredient in the prescribed Medication. If the administration is not intended to be instantaneous (rate is present or timing has a duration), this can be specified to convey the total amount to be administered over the period of time as indicated by the schedule. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.doseQuantity</Data><NamedCell
@@ -1863,7 +1863,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Количество лекарственного средства в единицу времени<!-- Amount of medication per unit of time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает скорость ввода лекарственного средства пациенту. Обычно указывается, как скорость вливания, например 100 мл в час или 100 мл/час. Также может быть выражено в виде скорости в единицу времени, например 500 мл за 2 часа. В настоящий момент мы не указываем значение по умолчанию '1' в знаменателе, однако это обсуждается. Другие примеры: 200 мкг/мин или 200 мкг/1 мин; 1 литр/8 часов<!-- Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1967,9 +1967,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code signifying whether a different drug was dispensed from what was prescribed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, означающий, был ли приготовлен другой препарат, а не тот, что указан в рецепте<!-- Code signifying whether a different drug was dispensed from what was prescribed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, означающий, был ли приготовлен другой препарат по сравнению с тем, что был предписан по рецепту. <!-- A code signifying whether a different drug was dispensed from what was prescribed. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, означающий, был ли приготовлен другой препарат, а не тот, что указан в рецепте. <!-- A code signifying whether a different drug was dispensed from what was prescribed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4538,35 +4538,35 @@
     <Cell ss:StyleID="s79"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s79"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">MedicationDispense.destination</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Return dispenses that should be sent to a specific destination</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Возвращает записи о выдаче, которые должны быть отправлены в указанный пункт назначения<!-- Return dispenses that should be sent to a specific destination --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">dispenser</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">MedicationDispense.dispenser</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает все dispenses, выполненные указанным лицом<!-- Return all dispenses performed by a specific individual --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает все записи о выдаче, выполненные указанным лицом<!-- Return all dispenses performed by a specific individual --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">MedicationDispense.identifier</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Return dispenses with this external identifier</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает записи о выдаче с указанным внешним идентификатором<!-- Return dispenses with this external identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">medication</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">MedicationDispense.medicationReference</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Return dispenses of this medicine resource</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает записи о выдаче лекарственного средства, описываемого заданным ресурсом<!-- Return dispenses of this medicine resource --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">MedicationDispense.medicationCodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Return dispenses of this medicine code</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает записи о выдаче указанного кода лекарственного средства<!-- Return dispenses of this medicine code --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">patient</Data></Cell>
@@ -4587,7 +4587,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">MedicationDispense.substitution.responsibleParty</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Return all dispenses with the specified responsible party</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает все записи о выдаче с указанным ответственным лицом<!-- Return all dispenses with the specified responsible party --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">status</Data></Cell>
@@ -4601,7 +4601,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">MedicationDispense.type</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает все dispenses указанного типа<!-- Return all dispenses of a specific type --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает все записи о выдаче указанного типа<!-- Return all dispenses of a specific type --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s117"><Data ss:Type="String">whenhandedover</Data></Cell>
@@ -6502,7 +6502,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s148"><Data ss:Type="String">MedicationDispenseType</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc. </Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Обозначает тип события выдачи. Например пробная выдача, завершение испытания, частичная выдача, неотложная выдача, образцы и т. п.<!-- Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.  --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType</Data></Cell>
@@ -6517,7 +6517,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">MedicationDispenseStatus</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code specifying the state of the dispense event.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код состояния события выдачи.<!-- A code specifying the state of the dispense event. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#medication-dispense-status</Data></Cell>
@@ -6532,7 +6532,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">MedicationAdministrationSite</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept describing the site location the medicine enters into or onto the body</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированный концепт, описывающий анатомическое расположение, где медикамент попадает в или на тело<!-- A coded concept describing the site location the medicine enters into or onto the body --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/approach-site-codes</Data></Cell>
@@ -6547,7 +6547,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s149"><Data ss:Type="String">RouteOfAdministration</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Закодированный концепт, описывающий способ или физиологический путь введения терапевтического средства в или на тело субъекта<!-- A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/route-codes</Data></Cell>
@@ -6562,7 +6562,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">MedicationAdministrationMethod</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept describing the technique by which the medicine is administered</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированный концепт, описывающий метод введения медикамента<!-- A coded concept describing the technique by which the medicine is administered --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
@@ -6577,7 +6577,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell ss:StyleID="s149"><Data ss:Type="String">MedicationAsNeededReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept identifying the precondition that should be met or evaluated prior to consuming or administering a medication dose.  For example &quot;pain&quot;, &quot;30 minutes prior to sexual intercourse&quot;, &quot;on flare-up&quot; etc.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кодированный концепт, определяющий условие, которое должно выполниться до принятия дозы лекарственного средства. Например &quot;боль&quot;, &quot;за 30 минут до полового акта&quot;, &quot;при обострении болезни&quot; и т. п. <!-- A coded concept identifying the precondition that should be met or evaluated prior to consuming or administering a medication dose.  For example &quot;pain&quot;, &quot;30 minutes prior to sexual intercourse&quot;, &quot;on flare-up&quot; etc. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
@@ -6592,7 +6592,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s149"><Data ss:Type="String">MedicationIntendedSubstitutionType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept describing whether a different medicinal product may be dispensed other than the product as specified exactly in the prescription</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Закодированное понятие, описывающее, можно ли выдать другое лекарственное средство вместо продукта, указанного в рецепте<!-- A coded concept describing whether a different medicinal product may be dispensed other than the product as specified exactly in the prescription --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-ActSubstanceAdminSubstitutionCode</Data></Cell>
@@ -6607,7 +6607,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s149"><Data ss:Type="String">MedicationIntendedSubstitutionReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept describing the reason that a different medication should (or should not) be substituted from what was prescribed</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Закодированное понятие, описывающее причину, по которой другое лекарственное средство следует (или не следует) выдать вместо указанного в рецепте<!-- A coded concept describing the reason that a different medication should (or should not) be substituted from what was prescribed --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-SubstanceAdminSubstitutionReason</Data></Cell>
@@ -6622,7 +6622,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s88"><Data ss:Type="String">AdditionalInstructions</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes identifying additional instructions such as &quot;take with water&quot; or &quot;avoid operating heavy machinery&quot;</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды, обозначающие дополнительные инструкции, например &quot;запить водой&quot; или &quot;избегать работы с тяжёлым оборудованием&quot;<!-- Codes identifying additional instructions such as &quot;take with water&quot; or &quot;avoid operating heavy machinery&quot; --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>

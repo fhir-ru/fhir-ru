@@ -1430,7 +1430,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Статус документа<!-- The status of this document reference  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Это статус объекта DocumentReference, который может быть независимым от docStatus.<!-- This is the status of the DocumentReference object, which might be independent from the docStatus element. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это статус объекта DocumentReference, который может быть независимым от элемента docStatus.<!-- This is the status of the DocumentReference object, which might be independent from the docStatus element. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">interim: .completionCode=&quot;IN&quot; &amp; ./statusCode[isNormalDatatype()]=&quot;active&quot;;  final: .completionCode=&quot;AU&quot; &amp;&amp;  ./statusCode[isNormalDatatype()]=&quot;complete&quot; and not(./inboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#CACT&quot;) and moodCode=&quot;EVN&quot; and domainMember(&quot;ReviseDocument&quot;, code) and isNormalAct()]);  amended: .completionCode=&quot;AU&quot; &amp;&amp;  ./statusCode[isNormalDatatype()]=&quot;complete&quot; and ./inboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#CACT&quot;) and moodCode=&quot;EVN&quot; and domainMember(&quot;ReviseDocument&quot;, code) and isNormalAct() and statusCode=&quot;completed&quot;];  withdrawn : .completionCode=NI &amp;&amp;  ./statusCode[isNormalDatatype()]=&quot;obsolete&quot;  </Data><NamedCell
@@ -6231,7 +6231,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">DocumentC80Type</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Precise type of clinical document.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Точный тип клинического документа.<!-- Precise type of clinical document. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell><Data ss:Type="String">Preferred</Data></Cell>
@@ -6263,7 +6263,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">DocumentC80FacilityType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">XDS Facility Type.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">XDS-тип учреждения.<!-- XDS Facility Type. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell><Data ss:Type="String">example</Data></Cell>
@@ -6279,7 +6279,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">ReferredDocumentStatus</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Status of the underlying document.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус лежащего в основе документа.<!-- Status of the underlying document. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell><Data ss:Type="String">Required</Data></Cell>
@@ -6312,7 +6312,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">DocumentC80PracticeSetting</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional details about where the content was created (e.g. clinical specialty).</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная информация о том, где был создан данный контент (например клиническая специальность).<!-- Additional details about where the content was created (e.g. clinical specialty). --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell><Data ss:Type="String">example</Data></Cell>
@@ -6344,7 +6344,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s94"><Data ss:Type="String">DocumentEventType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This list of codes represents the main clinical acts being documented.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечень кодов основных документируемых клинических актов.<!-- This list of codes represents the main clinical acts being documented. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:Index="5" ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-ActCode</Data></Cell>

@@ -6336,7 +6336,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s147"><Data ss:Type="String">LocationType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates the type of function performed at the location.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описывает функцию этого места.<!-- Indicates the type of function performed at the location. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-ServiceDeliveryLocationRoleType</Data></Cell>
@@ -6351,7 +6351,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">LocationMode</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates whether a resource instance represents a specific location or a class of locations.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает, описывает ли экземпляр ресурса конкретное место или только его тип.<!-- Indicates whether a resource instance represents a specific location or a class of locations. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#location-mode</Data></Cell>

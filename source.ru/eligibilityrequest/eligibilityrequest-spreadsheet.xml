@@ -4672,35 +4672,35 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">EligibilityRequest.patient</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The reference to the patient</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Ссылка на пациента<!-- The reference to the patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">created</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">EligibilityRequest.created</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The creation date for the EOB</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Дата создания объяснения по выплатам<!-- The creation date for the EOB --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">provider</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">EligibilityRequest.provider</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The reference to the provider</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Ссылка на поставщика<!-- The reference to the provider --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">organization</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">EligibilityRequest.organization</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The reference to the providing organization</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Ссылка на организацию-поставщика<!-- The reference to the providing organization --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">facility</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">EligibilityRequest.facility</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Facility responsible for the goods and services</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Учреждение, ответственное за предоставление продуктов и услуг<!-- Facility responsible for the goods and services --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
@@ -6662,7 +6662,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">BenefitCategory</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Benefit categories such as: oral, medical, vision etc.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Категория льготы: стоматологическая, медицинская, коррекция зрения и т. д.<!-- Benefit categories such as: oral, medical, vision etc. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/benefit-category</Data></Cell>
@@ -6677,7 +6677,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">BenefitSubCategory</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Benefit subcategories such as: oral-basic, major, glasses</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Подкатегория льготы: базовая стоматологическая, основная, на очки<!-- Benefit subcategories such as: oral-basic, major, glasses --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/benefit-subcategory</Data></Cell>
@@ -6692,7 +6692,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">ProcessPriority</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The timeliness with which processing is required: STAT, normal, Deferred</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Срочность обработки: немедленная, обычная, отложенная<!-- The timeliness with which processing is required: STAT, normal, Deferred --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/process-priority</Data></Cell>
