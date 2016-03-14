@@ -4671,9 +4671,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       }
     }
     if (refs.size() == 1)
-      return "<p>На этот ресурс ссылаются <a href=\""+refs.get(0).toLowerCase()+".html\">"+refs.get(0).toLowerCase()+"</a></p>\r\n";
+      return "<p>На этот ресурс ссылаются: <a href=\""+refs.get(0).toLowerCase()+".html\">"+refs.get(0).toLowerCase()+".</a></p>\r\n";
     else if (refs.size() > 1)
-      return "<p>На этот ресурс ссылаются "+asLinks(refs)+"</p>\r\n";
+      return "<p>На этот ресурс ссылаются: "+asLinks(refs)+".</p>\r\n";
     else
       return "";
   }
