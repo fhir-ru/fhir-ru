@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Relationship between FHIR and HL7 v2 Messaging%]
+[%settitle Связь между FHIR и HL7 v2 Messaging%]
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -14,7 +14,7 @@
 
 [%cmpheader HL7 v2%]
 
-<h2>HL7 Version 2</h2>
+<h2>HL7 версии 2<!-- HL7 Version 2 --></h2>
 <table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 <a name="HL7 v2"> </a>
 <p>
@@ -63,7 +63,7 @@ Order Message) includes: -->
   <li>etc.</li> -->
 </ul>  
 <p>
-Подход к гранулярности, используемый в HL7 v2, подчеркивает повторное использование "шаблонов" информации. Например распределение по срокам и информация о способе применения будут бесполезны сами по себе, однако нужны во многих обстоятельствах. Из-за трехуровнего ограничения вложенности отдельные сегменты также требуются для структур данных, которые в противном случае имели бы слишком глубокую вложенность. У FHIR другой подход к повторному применению, направленный на объекты, которые можно поддерживать независимо. Ресурс <a href="medicationorder.html">MedicationOrder</a> охватывает все аспекты приведенных выше сегментов, за исключением некоторых аспектов рабочего процесса ORC, которые регулируются ресурсом <a href="order.html">Order</a>. Ресурс <a href="medicationorder.html">MedicationOrder</a> сам по себе является комплексным, содержащим вложенные структуры для указаний по дозировке, инструкций по выдаче и т. п., которые не являются простыми типами данных.
+Подход к гранулярности, используемый в HL7 v2, выделяет повторное использование "шаблонов" информации. Например распределение по срокам и информация о способе применения будут бесполезны сами по себе, однако нужны во многих обстоятельствах. Из-за трехуровнего ограничения вложенности отдельные сегменты также требуются для структур данных, которые в противном случае имели бы слишком глубокую вложенность. У FHIR другой подход к повторному применению, направленный на объекты, которые можно поддерживать независимо. Ресурс <a href="medicationorder.html">MedicationOrder</a> охватывает все аспекты приведенных выше сегментов, за исключением некоторых аспектов рабочего процесса ORC, которые регулируются ресурсом <a href="order.html">Order</a>. Ресурс <a href="medicationorder.html">MedicationOrder</a> сам по себе является комплексным, содержащим вложенные структуры для указаний по дозировке, инструкций по выдаче и т. п., которые не являются простыми типами данных.
 <!-- The HL7 v2 approach to granularity emphasizes re-use of "patterns" of information.  For example, timing and 
 route information are not useful on their own, but they are useful in many circumstances.  Due to the 
 3-level nesting limit, separate segments are also required for data structures that would otherwise nest 
@@ -97,14 +97,14 @@ to an element within a FHIR instance will remain unchanged in future versions.  
 period. -->
 </p>
 <p>
-<b>Удобочитаемость человеком:</b> In general, экземпляры HL7 v2 не предлагают людям удобочитаемые версии обмениваемого содержимого. В то время как некоторые системы могут применять NTE-сегменты для передачи человекочитаемого отображения всего или части полезной нагрузки сообщения, правила, когда и при каких условиях это происходит, зависят от конкретного сайта. FHIR требует предоставления человекочитаемого содержимого для каждого ресурса.
+<b>Удобочитаемость для человека:</b> In general, экземпляры HL7 v2 не предлагают людям удобочитаемые версии обмениваемого содержимого. В то время как некоторые системы могут применять NTE-сегменты для передачи человекочитаемого отображения всего или части полезной нагрузки сообщения, правила, когда и при каких условиях это происходит, зависят от конкретного сайта. FHIR требует предоставления человекочитаемого содержимого для каждого ресурса.
 <!-- <b>Human readability:</b> In general, HL7 v2 instances do not provide for human readable versions of the 
 content exchanged.  While some systems may make use of NTE segments to provide a human-readable rendering 
 of all or part of a message payload, the rules for when or if this occurs is site-specific.  FHIR requires 
 human readable content to be provided for each resource. -->
 </p>
 <p>
-<b>Update behavior:</b> Данными HL7 v2 обычно обмениваются в режиме "снапшота" - обновления передаются отправкой полной копии экземпляра, заполненного новыми данными. Однако некоторые сегменты и сообщения в HL7 v2 поддерживают более сложный обмен, когда только измененные данные отправляются и коды или особые значения указывают, какой тип изменений должен произойти (например добавить этот адрес, удалить это имя). FHIR "из коробки" функционирует только в режиме "снапшота". Хотя для введения эквивалентного HL7 v2 поведения и возможно применение <a href="extensibility.html#modifierExtension">ModifierExtensions</a>, это привело бы к возникновению проблем совместимости и затруднило бы использование ресурсов вне парадигмы обмена сообщениями.
+<b>Механизм обновления<!-- Update behavior -->:</b> Данными HL7 v2 обычно обмениваются в режиме "снапшота" - обновления передаются отправкой полной копии экземпляра, заполненного новыми данными. Однако некоторые сегменты и сообщения в HL7 v2 поддерживают более сложный обмен, когда только измененные данные отправляются и коды или особые значения указывают, какой тип изменений должен произойти (например добавить этот адрес, удалить это имя). FHIR "из коробки" функционирует только в режиме "снапшота". Хотя для введения эквивалентного HL7 v2 поведения и возможно применение <a href="extensibility.html#modifierExtension">ModifierExtensions</a>, это привело бы к возникновению проблем совместимости и затруднило бы использование ресурсов вне парадигмы обмена сообщениями.
 <!-- <b>Update behavior:</b> HL7 v2 data is typically exchanged in "snapshot" mode - updates are communicated by 
 sending a complete copy of the instance with the new data filled in.  However, some segments and messages in 
 HL7 v2 support more sophisticated exchanges where only changed data is sent and codes or special values indicate 
@@ -125,11 +125,11 @@ the HL7 v2 mechanism has not been widely used.  FHIR <a href="profiling.html">Pr
 component of the methodology and are built into tooling, increasing the likelihood of their use. -->
 </p>
 
-<h3>HL7 v2 Interoperability Considerations</h3>
+<h3>Соображения совместимости HL7 v2<!-- HL7 v2 Interoperability Considerations --></h3>
 <p>
-<b>Mapping:</b> Одна из самых больших проблем с совместимостью HL7 v2 - это различия в реализациях.
+<b>Установление соответствия (мэппинг)<!-- Mapping -->:</b> Одна из самых больших проблем с совместимостью HL7 v2 - это различия в реализациях.
 Даже когда идентичные сценарии обрабатываются в аналогичных бизнес-средах, поддерживаемые элементы данных могут различаться и даже место, где данные элемент данных расположение в экземпляре может меняться. В итоге задание непротиворечивых правил мэппинга между HL7 v2 и FHIR на международном или даже на региональном уровне не является реалистичным.
-Предлагаемые FHIR мэппинги дают начальную точку для рассмотрения, однако мэппинги потребуется выполнять для реализации на пореализационной основе.
+Предлагаемые FHIR мэппинги дают начальную точку для рассмотрения, однако мэппинги потребуется выполнять для каждой реализации.
 <!-- <b>Mapping:</b> One of the biggest challenges with HL7 v2 interoperability is the variation of implementation.  
 Even when identical scenarios are being handled in similar business environments, the data elements supported 
 can vary and even the place where a given data element is placed in an instance can vary.  As a result, defining 
@@ -163,7 +163,10 @@ However, the ramifications of using this approach in a messaging environment hav
 Implementers will need to explore their own strategies as part of early adoption. -->
 </p>
 <p>
-<b>Merging references and resources:</b><a name="HL7 v2-merging"> </a> HL7 v2 message instances may well reference the 
+<b>Объединение ссылок и ресурсов<!-- Merging references and resources -->:</b><a name="HL7 v2-merging"> </a> 
+Сообщения HL7 v2 могут успешно ссылаться на один и тот же "объект" множество раз. Например сообщение, содержащее медицинскую историю болезни пациента, вероятно, будет многократно ссылаться на одних и тех же медицинских работников и клиники/больницы. При этом в некоторых случаях данные, сохранённые для данного объекта, могут быть одинаковыми для всех случаев применения, в других случаях информация может варьироваться. Например система-отправитель может передавать архивные номера телефонов из старых записей и текущие номера телефонов для более новых записей. В качестве альтернативы, структура сообщерия может позволять выражать различное количество деталей в различных частях сообщения или приложение-отправитель может просто быть запрограммировано передавать различное количество деталей в различных частях сообщения (например ередача номера телефона для заказывающего мед. работника, но не для вводящего данные мед. работника). При конвертации в FHIR-ресурсы, все ссылки на один и тот же "объект" будут, как правило, иметь одинаковый идентификатор ресурса и упоминаться в экземпляре только один раз - с полным набором необходимой/доступной информации. Это создаёт две проблемы:
+
+<!-- HL7 v2 message instances may well reference the 
 same "object" numerous times.  For example, a message containing a patient's medication history is likely to 
 include references to the same clinicians and clinics/hospitals many times.  While in some cases, the data 
 captured for a given object might be identical in all uses, in other cases the information might vary.  For 
@@ -173,10 +176,12 @@ in different portions of the message or the sending application might simply be 
 amounts of detail in different portions of the message (e.g. conveying phone number for an ordering clinician, 
 but not for a data-entry clinician).  When converting to FHIR, all references to the same "object" will generally 
 have a single resource identifier and be referenced only once in the instance - with the complete set of 
-information needed/available.  This creates two challenges:
+information needed/available.  This creates two challenges: -->
 </p>
 <ol>
-  <li><i>How does the conversion software recognize when two portions of a message are referencing the same 
+  <li><i>Как программа-конвертор узнает, когда две части сообщения ссылаются на один и тот же объект?</i> Если некоторые ссылки могут иметь уникальные идентификаторы или имена, которых достаточно для подтверждения, что это один и тот же объект, другие могут их не иметь - хотя может быть достаточно и некоторой другой комбинации атрибутов. Реализаторам потребуется задать особые правила преобразования</li>
+  <li><i>Если присутствуют несколько версий данных, какие данные следует использовать - или следует отправлять несколько версий с различными архивными идентификаторами?  (И если последнее, каким должен быть порядок версий?</i> Если порядок версий можно определить по данным в сообщении (например предположить, что в более ранних датах заказа хранится более старая демографическая информация), можно указать эти даты в элементе <i>updated</i> для указания относительного упорядочивания. Если порядок невозможно определить, будет трудно объединить данные в один ресурс или представить его в помощью нескольких ресурсов.</li>
+<!--   <li><i>How does the conversion software recognize when two portions of a message are referencing the same 
   object?</i>  While some references may have unique identifiers or names that are sufficient to confirm "same object", 
   others may not - though some other combination of attributes may be sufficient.  The specific rules will need to 
   be determined by the implementer performing the conversion</li>
@@ -185,7 +190,7 @@ information needed/available.  This creates two challenges:
   of the versions can be determined by data in the message (e.g. assuming older order dates have "older" 
   demographics), dates can be specified on the entry <i>updated</i> element to indicate relative ordering.  
   If the ordering can't be determined, it will be difficult to merge the data into a single resource or 
-  represent it using multiple resources.</li>
+  represent it using multiple resources.</li> -->
 </ol>
 <p>
 <b>Identified vs. Contained resources:</b><a name="HL7 v2-contained"> </a> Each HL7 v2 message will be mapped to 
@@ -205,20 +210,23 @@ contained resource, whereas an XCN of <code>|12345^Smith^John|</code> generally 
 process will need to be aware of the scope and management processes around the identifier.
 </p>
 <p>
-<b>Generating human-readable content:</b><a name="HL7 v2-humanReadable"> </a> FHIR requires that every 
+<b>Генерация человекочитаемого содержимого:</b><a name="HL7 v2-humanReadable"> </a> FHIR требует, чтобы каждый ресурс содержал человекочитаемую <a href="narrative.html">описательную часть</a>, которая содержит всю информацию, значимую для принятия решения человеком. При конвертации из HL7 v2, разработчики (вероятно по указанию врачей) потребуется определить, какая информация из сообещния должна отображаться и каким образом генерировать это содержимое.
+<!-- <b>Generating human-readable content:</b><a name="HL7 v2-humanReadable"> </a> FHIR requires that every 
 resource have a human readable <a href="narrative.html">narrative</a> that contains all information 
 relevant to human decision-making.  When converting from HL7 v2, developers (likely with guidance from 
 clinicians) will need to determine what information from the message should be rendered and how
-to generate this content.
+to generate this content. -->
 </p>
 <p>
-<b>Nulls and update modes:</b><a name="HL7 v2-updateMode"> </a>In HL7 v2, "action" codes can determine 
+<b>Отсутствие информации и режимы обновления:</b><a name="HL7 v2-updateMode"> </a>В HL7 v2 коды "действия" могут определить, 
+определённые сегменты содержать информацию для добавления, обновления или удаления. ПОля могут быть заполнены "нулями" (две последовательных двойных кавычки без других символов) для обозначения поля, подлежащего удалению. Опущенный элемент или повторение интерпретируются, как правило, как "оставить существующие данные неизменёнными". Это противоположно FHIR-подходу, требующему присутствия всех данных в виде снапшота. Системам потребуется либо логика для генерации полного снимка каждого ресурса или потребуется ввести расширения-модификаторы для обеспечения аналогичного HL7 v2 поведения.
+<!-- Nulls and update modes:</b><a name="HL7 v2-updateMode"> </a>In HL7 v2, "action" codes can determine 
 whether particular segments represent information to be added, updated or deleted.  Fields can be 
 populated with "null" (two consecutive double-quotes with no other characters) to note a field is 
 to be deleted.  An omitted element or repetition is generally interpreted as "retain existing data 
 unchanged".  This contrasts with the FHIR approach of requiring all data to be present as a snapshot.  
 Systems will either need to build in logic to generate a full snapshot of each resource or will need 
-to introduce modifier extensions to allow similar behavior to HL7 v2.
+to introduce modifier extensions to allow similar behavior to HL7 v2. -->
 </p>
 
 </div>
