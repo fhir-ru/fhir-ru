@@ -1269,7 +1269,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Пробная выдача, частичная выдача, неотложная выдача и т. д.<!-- Trial fill, partial fill, emergency fill, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Пробная выдача, частичная выдача, неотложная выдача и т. д<!-- Trial fill, partial fill, emergency fill, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Обозначает тип события выдачи. Например пробная выдача, завершение испытания, частичная выдача, неотложная выдача, образцы и т. п.<!-- Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
