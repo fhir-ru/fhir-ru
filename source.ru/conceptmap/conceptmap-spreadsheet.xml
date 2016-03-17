@@ -1358,7 +1358,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать, когда концепт-карта впервые была разрешена к использованию, изъята или заменена.<!-- Need to know when a concept map was first legal for use or became withdrawn or replaced. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обратите внимание, что это не то же самое, что дата последнего изменения ресурса, поскольку ресурс может быть вторичным представлением карты соответствия концептов. Дополнительные специфические даты можно добавить в расширениях<!-- Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the concept map. Additional specific dates may be added as extensions --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обратите внимание, что это не то же самое, что дата последнего изменения ресурса, поскольку ресурс может быть вторичным представлением карты соответствия концептов. Дополнительные специфичные даты можно добавить в расширениях<!-- Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the concept map. Additional specific dates may be added as extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">N/A</Data><NamedCell

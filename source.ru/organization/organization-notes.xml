@@ -2,8 +2,8 @@
 
 	<div>
 <a name="notes"> </a>
-	<h2>
-		Notes:
+	<h2>Примечания:
+		<!-- Notes: -->
 	</h2>
 	<ul>
 		<li>
@@ -18,16 +18,32 @@ reaching a person or party that has been designated by the organization to be co
 
 	<div>
 <a name="example"> </a>
-		<h2>
-			Example Organization Hierarchy:
+		<h2>Пример иерархии организаций
+			<!-- Example Organization Hierarchy: -->
 		</h2>
-	<p>
-		An example organization hierarchy should help give some guidance as to one example
+	<p>Пример иерархии организаций приведён в качестве руководства, как может выглядеть иерархия местоположений в вымышленной медицинской организации.<br/>
+  <i>(Уровень вложенности здесь соответствует структуре "part-of" ресурса Organization)</i>
+		<!-- An example organization hierarchy should help give some guidance as to one example
 		of how a location hierarchy could look within a fictitious Medical Organization.<br/>
-		<i>(The nesting here would be the "part-of" structure of the Organization resource)</i>
+		<i>(The nesting here would be the "part-of" structure of the Organization resource)</i> -->
 	</p>
 	<pre>
-Burgers University Medical Center
+Медицинский центр при университете Бюргерс
+    Eastern Services (prov)
+        Отделение скорой помощи
+        Онкологическое отделение
+            Neuclear Medicine Research Trials (edu)
+        Maternity Ward
+        Childrens Ward
+        Day Procedures Unit
+    Mobile Services (Ambulance)
+    Research Center (edu)
+        Neuclear Medicine  (edu)
+    Burgers University (edu)
+        Neuclear Medicine Faculty (edu)
+        Undergraduate Medicine (edu)
+        ...  
+<!-- Burgers University Medical Center
     Eastern Services (prov)
         Emergency Dept
         Oncology Dept
@@ -41,7 +57,7 @@ Burgers University Medical Center
     Burgers University (edu)
         Neuclear Medicine Faculty (edu)
         Undergraduate Medicine (edu)
-        ...
+        ... -->
 	</pre>
 	<p>
 		<i>Note that physical structures of this hierarchy are not present - these are defined by a Location hierarchy.</i>
