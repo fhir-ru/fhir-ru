@@ -1334,7 +1334,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Например водитель, поставщик, пациент, банк и т. п.<!-- e.g. driver,  provider,  patient, bank etc. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Например водитель, поставщик, пациент, банк и т. п<!-- e.g. driver,  provider,  patient, bank etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Классификация системы назначения имён для упрощения поиска по сгруппированным родственным системам назначения имён.<!-- Categorizes a naming system for easier search by grouping related naming systems. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
