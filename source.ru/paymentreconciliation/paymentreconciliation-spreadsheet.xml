@@ -1408,9 +1408,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Details</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сведения<!-- Details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">List of individual settlement amounts and the corresponding transaction.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Перечень индивидуальных расчётных сумм и соответствующих сделок.<!-- List of individual settlement amounts and the corresponding transaction. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1441,9 +1441,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Type code</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код типа<!-- Type code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Code to indicate the nature of the payment, adjustment, funds advance, etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код для указания характера платежа, корректировка, аванс и т. п.<!-- Code to indicate the nature of the payment, adjustment, funds advance, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1472,9 +1472,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Claim</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Иск (ресурс Claim)<!-- Claim --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The claim or financial resource.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Иск или другой финансовый ресурс.<!-- The claim or financial resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1503,9 +1503,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Claim Response</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ответ на иск<!-- Claim Response --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The claim response resource.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Ресурс ClaimResponse<!-- The claim response resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1534,9 +1534,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Submitter</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Податель<!-- Submitter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The Organization which submitted the invoice or financial transaction.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Организация, которая подала счёт-фактуру или провела финансовую операцию.<!-- The Organization which submitted the invoice or financial transaction. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1565,9 +1565,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Payee</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Получатель платежа<!-- Payee --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The organization which is receiving the payment.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Организация, которая получает выплату.<!-- The organization which is receiving the payment. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1596,9 +1596,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Invoice date</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата выставления счёта<!-- Invoice date --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The date of the invoice or financial resource.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата выставления счета или другого финансового ресурса.<!-- The date of the invoice or financial resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1627,9 +1627,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Detail amount</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сумма<!-- Detail amount --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Amount paid for this detail.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Сумма, заплаченная по этому пункту.<!-- Amount paid for this detail. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1659,9 +1659,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Printed Form Identifier</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор формы для печати<!-- Printed Form Identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The form to be used for printing the content.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Форма для печати содержимого.<!-- The form to be used for printing the content. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1691,9 +1691,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Total amount of Payment</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Общая сумма платежа<!-- Total amount of Payment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Total payment amount.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Общая сумма платежа.<!-- Total payment amount. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1750,9 +1750,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Error code</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код ошибки<!-- Error code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">List of errors detected in the request.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Список ошибок, обнаруженных в запросе.<!-- List of errors detected in the request. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1808,9 +1808,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Note text</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Текст примечания<!-- Note text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Suite of notes</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Набор примечаний<!-- Suite of notes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1843,7 +1843,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">display | print | printoper</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The note purpose: Print/Display.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Назначение примечания: для печати/для отображения.<!-- The note purpose: Print/Display. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1872,9 +1872,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Notes text</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Текст примечания<!-- Notes text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The note text.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Текст примечания.<!-- The note text. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4344,56 +4344,56 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">PaymentReconciliation.identifier</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">The business identifier of the Explanation of Benefit</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Бизнес-идентификатор Пояснения по выплатам<!-- The business identifier of the Explanation of Benefit --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">request</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">PaymentReconciliation.request</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The reference to the claim</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Ссылка на иск<!-- The reference to the claim --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">organization</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">PaymentReconciliation.organization</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The organization who generated this resource</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Организация, создавшая этот ресурс<!-- The organization who generated this resource --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">outcome</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">PaymentReconciliation.outcome</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The processing outcome</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Результат обработки<!-- The processing outcome --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">created</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">PaymentReconciliation.created</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The creation date</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Дата создания<!-- The creation date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">disposition</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">PaymentReconciliation.disposition</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The contents of the disposition message</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Текст распоряжения<!-- The contents of the disposition message --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">requestprovider</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">PaymentReconciliation.requestProvider</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The reference to the provider who sumbitted the claim</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Ссылка на поставщика, подавшего иск<!-- The reference to the provider who sumbitted the claim --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">requestorganization</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">PaymentReconciliation.requestOrganization</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The organization who generated this resource</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Организация, создавшая этот ресурс<!-- The organization who generated this resource --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"/>
@@ -6353,7 +6353,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">PaymentType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The reason for the amount: payment, adjustment, advance.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Основание для суммы: платёж, корректировка, аванс.<!-- The reason for the amount: payment, adjustment, advance. --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">valueset-payment-type</Data></Cell>

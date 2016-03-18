@@ -1295,9 +1295,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Response reference</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ответ<!-- Response reference --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Reference of response to resource to reverse</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Ссылка на ответ на ресурс для отмены<!-- Reference of response to resource to reverse --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1327,9 +1327,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Status of the payment</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус платежа<!-- Status of the payment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The payment status, typically paid: payment sent, cleared: payment received.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Статус платежа, обычно это paid - оплачено - деньги отправлены, cleared - погашен - деньги получены.<!-- The payment status, typically paid: payment sent, cleared: payment received. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1358,9 +1358,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Payment or clearing date</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата оплаты или погашения<!-- Payment or clearing date --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The date when the above payment action occurrred.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата наступления платежа.<!-- The date when the above payment action occurrred. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3908,56 +3908,56 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">PaymentNotice.identifier</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">The business identifier of the notice</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Бизнес-идентификатор извещения<!-- The business identifier of the notice --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">organization</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">PaymentNotice.organization</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The organization who generated this resource</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Организация, создавшая этот ресурс<!-- The organization who generated this resource --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">created</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">PaymentNotice.created</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Creation date fro the notice</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Дата создания извещения<!-- Creation date fro the notice --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">provider</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">PaymentNotice.provider</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The reference to the provider</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Ссылка на поставщика<!-- The reference to the provider --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">request</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">PaymentNotice.request</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The Claim</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Иск (Claim)<!-- The Claim --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">response</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">PaymentNotice.response</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The ClaimResponse</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Ответ на иск (ClaimResponse)<!-- The ClaimResponse --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">paymentstatus</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">PaymentNotice.paymentStatus</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The type of payment notice</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Тип извещения о платеже<!-- The type of payment notice --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">statusdate</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">PaymentNotice.statusDate</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The date of the payment action</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Дата проведения платежа<!-- The date of the payment action --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
@@ -5924,7 +5924,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">PaymentStatus</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The payment conveyance status codes</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды состояния перевода платежа<!-- The payment conveyance status codes --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-payment-status</Data></Cell>
