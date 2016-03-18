@@ -1169,11 +1169,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The date on which the person was born</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата рождения этого человека<!-- The date on which the person was born --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дата рождения этого человека.<!-- The birth date for the person. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Age of person drives many clinical processes, and is often used in performing identification of the person. Times are not included so as to not confuse things with potential timezone issues.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Возраст человека влияет на многие клинические процессы и часто используется для его идентификации. Время здесь не указывается, чтобы избежать возможной путаницы с часовыми поясами.<!-- Age of person drives many clinical processes, and is often used in performing identification of the person. Times are not included so as to not confuse things with potential timezone issues. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Необходимо указать хотя бы предположительный год рождения, если точная дата рождения не известна<!-- At least an estimated year should be provided as a guess if the real DOB is unknown --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1533,7 +1533,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Link to a resource that concerns the same actual person</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылка на ресурс, относящийся к тому же самому реальному человеку<!-- Link to a resource that concerns the same actual person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4185,7 +4185,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.telecom(system=phone)</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.telecom.where(system='phone')</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A value in a phone contact</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Номер телефона<!-- A value in a phone contact --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">email</Data></Cell>
@@ -4194,7 +4194,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.telecom(system=email)</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.telecom.where(system='email')</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A value in an email contact</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Адрес электронной почты<!-- A value in an email contact --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address</Data></Cell>
@@ -4212,7 +4212,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.address.city</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A city specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Город, указанный в адресе<!-- A city specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-state</Data></Cell>
@@ -4221,7 +4221,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.address.state</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A state specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Штат, указанный в адресе<!-- A state specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-postalcode</Data></Cell>
@@ -4230,7 +4230,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.address.postalCode</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A postal code specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Почтовый индекс, указанный в адресе<!-- A postal code specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-country</Data></Cell>
@@ -4239,7 +4239,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.address.country</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A country specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Страна, указанная в адресе<!-- A country specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-use</Data></Cell>
@@ -4248,7 +4248,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.address.use</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A use code specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Код типа использования, указанный в адресе<!-- A use code specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">gender</Data></Cell>

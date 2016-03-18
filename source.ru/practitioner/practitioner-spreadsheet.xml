@@ -1074,13 +1074,13 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether this practitioner's record is in active use</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Действительна ли данная запись о враче<!-- Whether this practitioner's record is in active use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether this practitioner's record is in active use</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Действительна ли данная запись о враче<!-- Whether this practitioner's record is in active use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need to be able to mark a practitioner record as not to be used because it was created in error</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность пометить запись о враче как непригодную для использования, поскольку она была введена по ошибке<!-- Need to be able to mark a practitioner record as not to be used because it was created in error --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Default is true. &#10;&#10;If the practitioner is not in use by one organization, then it should mark the period on the PractitonerRole with an end date (even if they are active) as they may be active in another role.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">По умолчанию значение true. &#10;&#10;Если врач на работает в организации, тогда следует отметить период в элементе PractitonerRole с указанием даты окончания (даже если они всё ещё действующие), так как они могут действовать в другой роли.<!-- Default is true. &#10;&#10;If the practitioner is not in use by one organization, then it should mark the period on the PractitonerRole with an end date (even if they are active) as they may be active in another role. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./StatusCode</Data><NamedCell
@@ -1260,9 +1260,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The date  on which the practitioner was born</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата рождения врача<!-- The date  on which the practitioner was born --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата рождения practitioner<!-- The date of birth for the practitioner --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата рождения врача<!-- The date of birth for the practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Нужно для идентификации<!-- Needed for identification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1367,9 +1367,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Roles/organizations the practitioner is associated with</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Роли и организации, с которыми связан врач<!-- Roles/organizations the practitioner is associated with --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The list of roles/organizations that the practitioner is associated with</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень ролей/организаций, с которыми связан врач<!-- The list of roles/organizations that the practitioner is associated with --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4561,7 +4561,7 @@
     <Cell ss:StyleID="s115"><Data ss:Type="String">Practitioner.identifier</Data></Cell>
     <Cell ss:StyleID="s115"/>
     <Cell ss:StyleID="s115"/>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">A practitioner's Identifier</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Идентификатор врача<!-- A practitioner's Identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">name</Data></Cell>
@@ -4570,7 +4570,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.name</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A portion of either family or given name</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Фамилия и имя<!-- A portion of either family or given name --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">family</Data></Cell>
@@ -4579,7 +4579,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.name.family</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A portion of the family name</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Фамилия<!-- A portion of the family name --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">given</Data></Cell>
@@ -4588,7 +4588,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.name.given</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A portion of the given name</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Имя<!-- A portion of the given name --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s117"><Data ss:Type="String">phonetic</Data></Cell>
@@ -4597,7 +4597,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.name</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">phonetic</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A portion of either family or given name using some kind of phonetic matching algorithm</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Фонетическое звучание имени и фамилии<!-- A portion of either family or given name using some kind of phonetic matching algorithm --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">telecom</Data></Cell>
@@ -4606,7 +4606,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.telecom</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The value in any kind of contact</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Любой вид контактных данных<!-- The value in any kind of contact --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">phone</Data></Cell>
@@ -4615,7 +4615,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.telecom(system=phone)</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.telecom.where(system='phone')</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A value in a phone contact</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Телефон<!-- A value in a phone contact --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">email</Data></Cell>
@@ -4624,7 +4624,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.telecom(system=email)</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.telecom.where(system='email')</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A value in an email contact</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Адрес электронной почты<!-- A value in an email contact --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address</Data></Cell>
@@ -4633,7 +4633,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.address</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">An address in any kind of address/part</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Адрес или часть адреса в любом виде<!-- An address in any kind of address/part --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-city</Data></Cell>
@@ -4642,7 +4642,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.address.city</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A city specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Город, указанный в адресе<!-- A city specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-state</Data></Cell>
@@ -4651,7 +4651,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.address.state</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A state specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Штат, указанный в адресе<!-- A state specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-postalcode</Data></Cell>
@@ -4660,7 +4660,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.address.postalCode</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A postalCode specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Почтовый индекс, указанный в адресе<!-- A postalCode specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-country</Data></Cell>
@@ -4669,7 +4669,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.address.country</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A country specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Страна, указанная в адресе<!-- A country specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-use</Data></Cell>
@@ -4678,7 +4678,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.address.use</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A use code specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Код типа использования, указанный в адресе<!-- A use code specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">gender</Data></Cell>
@@ -4687,7 +4687,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.gender</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Gender of the practitioner</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Пол врача<!-- Gender of the practitioner --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">organization</Data></Cell>
@@ -4696,7 +4696,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.practitionerRole.managingOrganization</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The identity of the organization the practitioner represents / acts on behalf of</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Идентификация организации, от имени которой действует врач или которую представляет врач<!-- The identity of the organization the practitioner represents / acts on behalf of --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s117"><Data ss:Type="String">communication</Data></Cell>
@@ -4705,7 +4705,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.communication</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">One of the languages that the practitioner can communicate with</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Один из языков, на котором может общаться врач<!-- One of the languages that the practitioner can communicate with --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">location</Data></Cell>
@@ -4713,7 +4713,7 @@
     <Cell ss:Index="4" ss:StyleID="s87"><Data ss:Type="String">Practitioner.practitionerRole.location</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">One of the locations at which this practitioner provides care</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Одно из местоположений, где данный врач оказывает медицинскую помощь<!-- One of the locations at which this practitioner provides care --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">specialty</Data></Cell>
@@ -4722,7 +4722,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.practitionerRole.specialty</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The practitioner has this specialty at an organization</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">В этой организации у этого врача данная специальность<!-- The practitioner has this specialty at an organization --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">role</Data></Cell>
@@ -4731,7 +4731,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.practitionerRole.role</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The practitioner can perform this role at for the organization</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Врач может выполнять данную роль в этой организации<!-- The practitioner can perform this role at for the organization --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
@@ -6549,7 +6549,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">PractitionerRole</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The role a person plays representing an organization</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Роль, которую играет человек, представляющий организацию<!-- The role a person plays representing an organization --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">valueset-practitioner-role</Data></Cell>
@@ -6564,7 +6564,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">PractitionerSpecialty</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific specialty associated with the agency</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Специализация учреждения<!-- Specific specialty associated with the agency --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-practitioner-specialty</Data></Cell>
@@ -6579,7 +6579,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">Qualification</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Specific qualification the practitioner has to provide a service</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Квалификация врача, в соответствии с которой он оказывает услуги<!-- Specific qualification the practitioner has to provide a service --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-anzsco-occupations</Data></Cell>

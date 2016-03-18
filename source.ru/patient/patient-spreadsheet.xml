@@ -1231,13 +1231,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The date of birth for the individual</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата рождения индивидуума<!-- The date of birth for the individual --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The date of birth for the individual</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата рождения индивидуума<!-- The date of birth for the individual --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Возраст индивидуума влияет на многие клинические процессы. <!-- Age of the individual drives many clinical processes.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">At least an estimated year should be provided as a guess if the real DOB is unknown  There is a standard extension &quot;patient-birthTime&quot; available that should be used where Time is required (such as in maternaty/infant care systems)</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо указать хотя бы предположительный год рождения, если точная дата рождения не известна. Есть стандартное расширение &quot;patient-birthTime&quot;, которое следует использовать там, где требуется время рождения (например в системах по уходу за новорожденными)<!-- At least an estimated year should be provided as a guess if the real DOB is unknown  There is a standard extension &quot;patient-birthTime&quot; available that should be used where Time is required (such as in maternaty/infant care systems) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">player[classCode=PSN|ANM and determinerCode=INSTANCE]/birthTime</Data><NamedCell
@@ -1270,11 +1270,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The time of birth for the individual</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время рождения индивидуума<!-- The time of birth for the individual --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The  time of birth for the individual</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Время рождения индивидуума<!-- The  time of birth for the individual --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">In some cases birth time is important (e.g. multiple births). Hospitals will capture the time of birth in most cases.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В некоторых случаях важно время рождения (например в случае многоплодных родов). Госпиталь фиксирует время рождения в большинстве случаев.<!-- In some cases birth time is important (e.g. multiple births). Hospitals will capture the time of birth in most cases. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1787,13 +1787,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">This patient is known to be an animal (non-human)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Этот пациент является животным (не человеком)<!-- This patient is known to be an animal (non-human) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This patient is known to be an animal</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Этот пациент является животным<!-- This patient is known to be an animal --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Большинство клинических систем распространяют уход на пациентов-животных наряду с пациентами-людьми <!-- Many clinical systems are extended to care for animal patients as well as human --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The animal element is labeled &quot;Is Modifier&quot; since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject declared animal records.   The absense of the animal element does not imply that the patient is a human. If a system requires such a positive assertion that the patient is human, an extension will be required.  (Do not use a species of homo-sapiens in animal species, as this would incorrectly infer that the patient is an animal)</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Элемент animal является модификатором, поскольку пациентами могут быть не только люди. Системам следует либо должным образом обрабатывать данные пациента (например информировать пользователей, что пациент не является человеком) или отклонять записи о животных. Отсутствие элемента animal не подразумевает, что этот пациент является человеком. Если системе требуется такое положительное утверждение о том, что пациент является человеком, то потребуется расширение. (Не используйте указание в качестве породы животного вид человек разумный, поскольку это будет некорректно подразумевать, что пациент является животным)<!-- The animal element is labeled &quot;Is Modifier&quot; since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject declared animal records.   The absense of the animal element does not imply that the patient is a human. If a system requires such a positive assertion that the patient is human, an extension will be required.  (Do not use a species of homo-sapiens in animal species, as this would incorrectly infer that the patient is an animal) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">player[classCode=ANM]</Data><NamedCell
@@ -1871,7 +1871,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Может понадобиться, чтобы узнать конкретный подвид<!-- May need to know the specific kind within the species --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Breed MAY be used to provide further taxonomic or non-taxonomic classification.  It may involve local or proprietary designation&#45;-such as commercial strain&#45;-and/or additional information such as production type.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Порода может использоваться для обеспечения дополнительной таксономической или не таксономической классификации. Может включать в себя местное или фирменное наименование&#45;- например коммерческий штамм&#45;- и/или дополнительную информацию, такую как тип разведения.<!-- Breed MAY be used to provide further taxonomic or non-taxonomic classification.  It may involve local or proprietary designation&#45;-such as commercial strain&#45;-and/or additional information such as production type. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">playedRole[classCode=GEN]/scoper[classCode=ANM, determinerCode=KIND]/code</Data><NamedCell
@@ -2167,12 +2167,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Patient's nominated primary care provider</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Назначенный пациенту первичный поставщик медицинских услуг<!-- Patient's nominated primary care provider --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Назначенный пациенту поставщик услуг (care provider)<!-- Patient's nominated care provider --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Назначенный пациенту поставщик медицинских услуг<!-- Patient's nominated care provider --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This may be the primary care provider (in a GP context), or it may be a patient nominated care manager in a community/disablity setting, or even organization that will provide people to perform the care provider roles.&#10;&#10;This is not to be used to record Care Teams, these should be recorded on either the CarePlan or EpisodeOfCare resources.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это может быть основной лечащий врач (в контексте GP), или это может быть менеджер по уходу, назначенный пациенту в связи с недееспособностью, или даже организация, предоставляющая людей для выполнения ролей поставщиков медицинских услуг.&#10;&#10;Этот элемент не следует использовать для записи команды по уходу, она записывается в ресурсе CarePlan или EpisodeOfCare.<!-- This may be the primary care provider (in a GP context), or it may be a patient nominated care manager in a community/disablity setting, or even organization that will provide people to perform the care provider roles.&#10;&#10;This is not to be used to record Care Teams, these should be recorded on either the CarePlan or EpisodeOfCare resources. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Необходимо рационализировать это с circleOfCare из CarePlan<!-- Need to rationalize this with circleOfCare from CarePlan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2211,7 +2211,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Необходимо, чтобы знать, кто занимается распознаванием данной записи, администрирует и обновляет ее<!-- Need to know who recognizes this patient record, manages and updates it --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">There is only one managing organization for a specific patient record. Other organizations will have their own Patient record, and may use the Link property to join the records together (or a Person resource which can include confidence ratings for the association)</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">У конкретной записи пациента есть только одна управляющая организация. У других организаций будут свои собственные записи пациента, они могут использовать свойство Link для объединения записей (или ресурс Person, который может включать в себя степень уверенности в их взаимосвязи)<!-- There is only one managing organization for a specific patient record. Other organizations will have their own Patient record, and may use the Link property to join the records together (or a Person resource which can include confidence ratings for the association) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">scoper</Data><NamedCell
@@ -2247,7 +2247,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Есть несколько сценариев использования: * Записи-дубликаты пациента вследствие канцелярских ошибок, связанных с трудностью непротиворечивой идентификации людей, и * Распределение информации о пациенте среди нескольких серверов  <!-- There are multiple usecases: &#10;&#10;* Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">There is no assumption that linked patient records have mutual links. </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Не предполагается, что связанные записи пациентов будут иметь взаимные ссылки.<!-- There is no assumption that linked patient records have mutual links.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">outboundLink</Data><NamedCell

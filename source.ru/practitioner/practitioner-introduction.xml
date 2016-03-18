@@ -33,19 +33,22 @@ relatives or neighbors. These can be registered as a Patient's Contact.  If perf
 resource, use <a href="relatedperson.html">RelatedPerson</a> resource. -->
 </p>
 <p>
-	The primary distinction between a Practitioner and a RelatedPerson is based on whether:
+Основное различие между ресурсами Practitioner и RelatedPerson основано на следующем:
+	<!-- The primary distinction between a Practitioner and a RelatedPerson is based on whether: -->
 </p>
 <ul>
 <li>
-	The person/animal operates on behalf of the care delivery organization over multiple patients (Practitioner) or,
+Человек взаимодействует от имени оказывающей медицинские услуги организации со множеством пациентов (Practitioner).
+<!-- 	The person/animal operates on behalf of the care delivery organization over multiple patients (Practitioner) or, -->
 </li>
 <li>
-	Where the person/animal is not associated with the organization, and instead is
-	allocated tasks specifically for the RelatedPerson's Patient (RelatedPerson).
+Там, где человек/животное не связаны с организацией, а есть задачи конкретно для родственника пациента (RelatedPerson).
+<!-- 	Where the person/animal is not associated with the organization, and instead is
+	allocated tasks specifically for the RelatedPerson's Patient (RelatedPerson). -->
 </li>
 </ul>
-<p>
-	A standard extension <a href="extension-practitioner-animalspecies.html">animalSpecies</a> can be used to indicate the species of a service animal.
+<p>Стандартное расширение  <a href="extension-practitioner-animalspecies.html">animalSpecies</a> можно использовать для указания породы обслуживаемого животного.
+<!-- 	A standard extension <a href="extension-practitioner-animalspecies.html">animalSpecies</a> can be used to indicate the species of a service animal. -->
 </p>
 </div>
 
@@ -53,7 +56,7 @@ resource, use <a href="relatedperson.html">RelatedPerson</a> resource. -->
 <a name="bnc"> </a>
 <h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
-Practitioner исполняет различные роли в пределах одной или даже различных организаций. В зависимости от юрисдикции и обычаев может потребоваться поддержка особого ресурса Practitioner для каждой такой роли или отдельного ресурса Practitioner с несколькими ролями. 
+Врач играет различные роли в пределах одной или даже различных организаций. В зависимости от юрисдикции и обычаев может потребоваться поддержка особого ресурса Practitioner для каждой такой роли или отдельного ресурса Practitioner с несколькими ролями. 
 Роль может быть ограничена определенным периодом, после которого предоставление полномочий для этой роли заканчивается. Обратите внимание, что представляемая им организация не обязательно должна быть (непосредственным) работодателем Practitioner.
 <!-- Practitioner performs different roles within the same or even different organizations. Depending on jurisdiction and custom, 
 it may be necessary to maintain a specific Practitioner Resource for each such role or have a single Practitioner with multiple roles.

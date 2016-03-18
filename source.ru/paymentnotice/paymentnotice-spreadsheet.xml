@@ -984,7 +984,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">PaymentNotice request</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на PaymentNotice<!-- PaymentNotice request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Данный ресурс показывает статус оплаты предоставленных товаров и услуг, а также ссылки на ресурсы запроса и ответа.<!-- This resource provides the status of the payment for goods and services rendered, and the request and response resource references. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1043,9 +1043,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Business Identifier</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Бизнес-идентификатор<!-- Business Identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The Response business identifier</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Бизнес-идентификатор ответа<!-- The Response business identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1075,9 +1075,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Resource version</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Версия ресурса<!-- Resource version --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Версия стиля оформления содержимого ресурса. Она должна соответствовать разрешёнными профилям, предназначенным для этого и вспомогательных ресурсов.<!-- The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1107,11 +1107,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Original version</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Исходная версия<!-- Original version --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The style (standard) and version of the original material which was converted into this resource.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Стиль (стандарт) и версия исходных материалов, которые легли в основу этого ресурса.<!-- The style (standard) and version of the original material which was converted into this resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Знание исходной версии может сообщить обработчику этого экземпляра, что информация, подлежащая обработке инициирующей системой, может быть сгенерирована.<!-- Knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1139,9 +1139,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Creation date</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата создания<!-- Creation date --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The date when this resource was created.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата создания этого ресурса.<!-- The date when this resource was created. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1170,9 +1170,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Insurer or Regulatory body</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Страховая компания или регулирующий орган<!-- Insurer or Regulatory body --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The Insurer who is target  of the request.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Страховая компания, которой направляется данный запрос.<!-- The Insurer who is target  of the request. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1201,9 +1201,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Responsible practitioner</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ответственный врач<!-- Responsible practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The practitioner who is responsible for the services rendered to the patient.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Врач, ответственный за оказанные пациенту услуги.<!-- The practitioner who is responsible for the services rendered to the patient. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1233,9 +1233,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Responsible organization</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ответственная организация<!-- Responsible organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The organization which is responsible for the services rendered to the patient.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Организация, ответственная за оказанные пациенту услуги.<<!-- The organization which is responsible for the services rendered to the patient. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1264,9 +1264,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Request reference</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на запрос<!-- Request reference --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Reference of resource to reverse</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Ссылка на ресурс для обращения<!-- Reference of resource to reverse --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
