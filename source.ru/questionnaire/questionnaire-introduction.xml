@@ -15,7 +15,7 @@ the constraints are on the allowed answers.  The results of a <b>Questionnaire</
 Вопросники покрывают потребность в передаче данных, поступающих из форм, используемых во время медицинских осмотров, научно-исследовательских анкет и, иногда, полных клинических специализированных записей. В большинстве систем эти данные собираются с помощью пользовательских экранов и форм. Вопросники записывают особенности ввода данных - какие именно вопросы были заданы, в каком порядке, какие были варианты ответов и т. п. Каждый из этих вопросов является частью Questionnaire, а Questionnaire как таковой - это отдельно идентифицируемый ресурс, тогда как отдельные вопросы - нет.
 <!-- Questionnaires cover the need to communicate data originating from forms used in medical history examinations, research questionnaires and sometimes full clinical specialty records. In many systems this data is collected using user-defined screens and forms. Questionnaires define specifics about data capture - exactly what questions were asked, in what order, what choices for answers were, etc. Each of these questions is part of the Questionnaire, and as such the Questionnaire is a separately identifiable Resource, whereas the individual questions are not. -->
 </p>
-<p>Примеры вопросников включают в себя:
+<p>Примеры вопросников:
 <!-- Examples of Questionnaires include: --></p>
 <ul>
 <li><!-- Past medical history (PMH) -->Анамнез</li>

@@ -4078,7 +4078,7 @@
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Procedure</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Reason not performed is only permitted if notPerformed indicator is true</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Причину невыполнения можно указывать, только если индикатор notPerformed имеет значение true<!-- Reason not performed is only permitted if notPerformed indicator is true --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">reasonNotPerformed.empty() or notPerformed = 'true'</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4601,14 +4601,14 @@
     <Cell ss:StyleID="s79"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s79"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">Procedure.code</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">A code to identify a  procedure</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Код для идентификации процедуры<!-- A code to identify a  procedure --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Procedure.identifier</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A unique identifier for a procedure</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Уникальный идентификатор процедуры<!-- A unique identifier for a procedure --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">date</Data></Cell>
@@ -4643,14 +4643,14 @@
     <Cell ss:StyleID="s79"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Procedure.subject</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Search by subject</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Поиск по субъекту<!-- Search by subject --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Procedure.subject</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Search by subject - a patient</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Поиск по субъекту-пациенту<!-- Search by subject - a patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
@@ -6580,7 +6580,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s88"><Data ss:Type="String">DeviceActionKind</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A kind of change that happened to the device during the procedure.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вид изменения, которое произошло с устройством во время процедуры.<!-- A kind of change that happened to the device during the procedure. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-device-action</Data></Cell>
@@ -6610,7 +6610,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">ProcedureCode</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code to identify a specific procedure .</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код определения конкретной процедуры.<!-- A code to identify a specific procedure . --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-procedure-code</Data></Cell>
@@ -6625,7 +6625,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s88"><Data ss:Type="String">ProcedureOutcome</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An outcome of a procedure - whether it was resolved or otherwise.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Результаты процедуры - были ли достигнуты цели её выполнения или нет.<!-- An outcome of a procedure - whether it was resolved or otherwise. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-procedure-outcome</Data></Cell>
@@ -6640,7 +6640,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s88"><Data ss:Type="String">ProcedureFollowUp</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Конкретное последующее наблюдение , требуемое после процедуры, например снятие швов<!-- Specific follow up required for a procedure e.g. removal of sutures --></Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определённое последующее наблюдение , требуемое после процедуры, например снятие швов<!-- Specific follow up required for a procedure e.g. removal of sutures --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-procedure-followup</Data></Cell>
@@ -6655,7 +6655,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">ProcedureCategory</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Код классификации процедуры в целях поиска, сортировки и отображения<!-- A code that classifies a procedure for searching, sorting and display purposes --></Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код классификации процедуры для поиска, сортировки и отображения<!-- A code that classifies a procedure for searching, sorting and display purposes --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-procedure-category</Data></Cell>
@@ -6670,7 +6670,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">ProcedureNegationReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code that identifies the reason a procedure was not performed.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код причины, почему процедура не была выполнена.<!-- A code that identifies the reason a procedure was not performed. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-procedure-not-performed-reason</Data></Cell>
@@ -6685,7 +6685,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">ProcedureReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code that identifies the reason a procedure is  required.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код причины, по которой требуется процедура.<!-- A code that identifies the reason a procedure is  required. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-procedure-reason</Data></Cell>
@@ -6700,7 +6700,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">ProcedurePerformerRole</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code that identifies the role of a performer of the procedure.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код роли исполнителя процедуры.<!-- A code that identifies the role of a performer of the procedure. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-performer-role</Data></Cell>
@@ -6715,7 +6715,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s149"><Data ss:Type="String">BodySite</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes describing anatomical locations. May include laterality.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды описания анатомического расположения. Могут включать в себя указание латеральности.<!-- Codes describing anatomical locations. May include laterality. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/body-site</Data></Cell>
@@ -6730,7 +6730,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30.75">
     <Cell ss:StyleID="s150"><Data ss:Type="String">ProcedureComplication</Data></Cell>
-    <Cell ss:StyleID="s122"><Data ss:Type="String">Codes describing complications that resulted from a procedure.</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Коды, описывающие осложнения, возникшие из-за процедуры.<!-- Codes describing complications that resulted from a procedure. --></Data></Cell>
     <Cell ss:StyleID="s123"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s123"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s123"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/condition-code</Data></Cell>

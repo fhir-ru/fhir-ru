@@ -4,9 +4,7 @@
 <a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-Данный ресурс используется для записи подробной информации о процедурах, выполненных пациенту. Процедура - это действие, выполненное пациенту или над ним в рамках оказания медицинской помощи. Примеры включают в себя хирургическое вмешательство, диагностические и эндоскопические процедуры, биопсию, консультации, физиотерапию, упражнения и т. д.
-Procedures may be performed by a healthcare professional, a friend or relative or in some cases by the patient
-themselves.
+Данный ресурс используется для записи подробной информации о процедурах, выполненных пациенту. Процедура - это действие, выполненное пациенту или над ним в рамках оказания медицинской помощи. Примеры включают в себя хирургическое вмешательство, диагностические и эндоскопические процедуры, биопсию, консультации, физиотерапию, упражнения и т. д. Процедуры могут выполняться специалистом по медицинскому обеспечению, другом или родственником, а в некоторых случаях самим пациентом.
 <!-- 
 This resource is used to record the details of procedures performed on a patient. A procedure is an activity 
 that is performed with or on a patient as part of the provision of care. Examples include  surgical 
@@ -28,8 +26,8 @@ real-time procedure information awaits the identification of a specific implemen
 <a name="bnr"> </a>
 <h2>Границы и связи</h2>
 <p>
-Ресурс Procedure не следует использовать для ввода событий, для которых есть отдельные ресурсы, например <a href="immunization.html">immunizations</a>, <a href="medicationadministration.html">drug administrations</a>
-и <a href="communication.html">communications</a>. Границы между определением, считать ли действие обучением или консультацией (и, следовательно, процедурой), а не Communication, основываются на том, есть ли конкретное намерение повлиять на привычный образ мыслей пациента. Просто раскрытие информации считается коммуникацией (ресурс Communication). Процесс, включающий в себя проверку понимания пациента или изменение психического состояния, будет процедурой (ресурс Procedure).
+Ресурс Procedure не следует использовать для ввода событий, для которых есть отдельные ресурсы, например <a href="immunization.html">иммунизация</a>, <a href="medicationadministration.html">введение лекарственных средств</a>
+и <a href="communication.html">коммуникации</a>. Границы между определением, считать ли действие обучением или консультацией (и, следовательно, процедурой), а не коммуникацией, основываются на том, есть ли конкретное намерение повлиять на привычный образ мыслей пациента. Просто раскрытие информации считается коммуникацией (ресурс Communication). Процесс, включающий в себя проверку понимания пациента или изменение психического состояния, будет процедурой (ресурс Procedure).
 <!-- The Procedure resource should not be used to capture an event if a more specific resource already exists - i.e. 
 <a href="immunization.html">immunizations</a>, <a href="medicationadministration.html">drug administrations</a>
 and <a href="communication.html">communications</a>.  The boundary between determining whether an action is

@@ -4452,7 +4452,7 @@
     <Cell ss:StyleID="s122"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="s123"><Data ss:Type="String">ProcedureRequest.identifier</Data></Cell>
-    <Cell ss:StyleID="s124"><Data ss:Type="String">A unique identifier of the Procedure Request</Data></Cell>
+    <Cell ss:StyleID="s124"><Data ss:Type="String">Уникальный идентификатор запроса на процедуру<!-- A unique identifier of the Procedure Request --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s125"><Data ss:Type="String">subject</Data></Cell>
