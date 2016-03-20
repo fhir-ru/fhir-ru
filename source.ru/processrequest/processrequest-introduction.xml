@@ -5,7 +5,7 @@
 <h2>Область применения и использование</h2>
 <p>
 Ресурс ProcessRequest позволяет описать действие для выполнения над существующим ресурсом или ресурсами, и предоставляет дополнительную вспомогательную информацию для поддержки этого действия. На данный момент определены следующие действия: отменить, опросить, повторно обработать, получить статус (cancel, poll, 
-reprocess, status.).
+reprocess, status).
 <!-- The ProcessRequest resource allows for the specification of an action to be performed on an existing resporce or resources and the 
 provides the additional supporting information to support that action. The actions currently defined are: cancel, poll, 
 reprocess, and status.  -->
@@ -20,7 +20,7 @@ information for the reversal and whether the receiving system is permitted to re
 reversed resource. -->
 </p>
 <p>
-Отмена - это официальный запрос на прекращение обработки незавершенного предыдущего запроса или на отмену и/или аннулирование завершенного предыдущего запроса или отправки информации. Когда nullify=true, все копии исходной отправки должны быть очищены, хотя при этом могут сохраниться записи в аудите. Когда Nullify=false, копия исходного запроса может быть сохранена. ProcessResponse может быть создан или возвращен для указания, было ли запрашиваемое действие принято и успешно выполнено.
+Отмена - это официальный запрос на прекращение обработки незавершенного предыдущего запроса или на отмену и/или аннулирование завершенного предыдущего запроса или отправки информации. Когда nullify=true, все копии исходной отправки должны быть очищены, хотя при этом могут сохраниться записи в аудите. Когда nullify=false, копия исходного запроса может быть сохранена. ProcessResponse может быть создан или возвращен для указания, было ли запрашиваемое действие принято и успешно выполнено.
 <!-- The Cancel is the formal request to cease processing an incomplete prior request or to reverse 
 and/or nullify a complete prior request or information submission. When nullify=true then all copies 
 of the original submission are to be purged, although audit logs may be retained. When Nullify=false 
@@ -35,7 +35,7 @@ this is a previously undelivered response or a StatusResponse (or other acknowle
 contain errors).  -->
 </p>
 <p>
-Это официальный запрос для плательщиков, или систем, которым такое требуется, и/или способов передаче данных, которые не поддерживают операцию Get, для извлечения приостановленных, зависших ресурсов.
+Это официальный запрос для плательщиков или систем, которые этого требуюь, и/или способов передаче данных, которые не поддерживают операцию Get, для извлечения приостановленных, зависших ресурсов.
 <!-- This is a formal request for Payors or systems which require such and/or transports which don't 
 support a 'Get Operation', for the retrieval of pended, held, resources. -->
 </p>
@@ -46,11 +46,10 @@ any pended resource. Specific types of business behaviors may be supported by pr
 filtering elements, for example: -->
 <ul>
 <li>Получить любой ожидающий обработки ресурс - фильтры не указаны</li>
-<li>Get deferred response to a Claim - specify the Claim in the 'request'</li>
-<li>Get all Supporting Documentation - specify 'SupportingDocumentation' as an 'include'</li>
-<li>Get an Explanation of Benefit - specify 'ExplanationOfBenefit' as an 'include'</li>
-<li>Get a payment reconciliation - specify a 'period' which contains the expected reconciliation 
-creation date, and specify 'PaymentReconciliation' as an 'include'</li> 
+<li>Получить отложенный ответ на иск - указать ссылку на ресурс Claim в "запросе"</li>
+<li>Получить всю вспомогательную документацию - указать 'SupportingDocumentation' в качестве включения 'include'</li>
+<li>Получить объяснение по выплатам (Explanation of Benefit) - указать 'ExplanationOfBenefit' в качестве включения 'include'</li>
+<li>Получить сверку оплаты - указать период 'period', в которых входит требуемая дата создания  сверки, и указать 'PaymentReconciliation' в качестве включения 'include'</li> 
 <!-- <li>Get any pended resource - no filters specified</li>
 <li>Get deferred response to a Claim - specify the Claim in the 'request'</li>
 <li>Get all Supporting Documentation - specify 'SupportingDocumentation' as an 'include'</li>

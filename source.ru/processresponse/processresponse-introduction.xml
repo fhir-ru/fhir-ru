@@ -10,7 +10,7 @@ provides simple acknowledgement and status information of application level erro
 convey additional processing requirements in a text form. -->
 </p>
 <p>
-Это официальный ответ на ProcessRequest и может использоваться в качестве ответа на уровне приложения на ресурсы PaymentNotice и SupportingDocumentation.
+Это официальный ответ на ProcessRequest, который может использоваться в качестве ответа на уровне приложения на ресурсы PaymentNotice и SupportingDocumentation.
 <!-- This is the formal response to a ProcessRequest and may be used as a application level response to PaymentNotice 
 and SupportingDocumentation resources. -->
 </p>

@@ -1177,9 +1177,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Activity that occurred</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Активность, которая наступила<!-- Activity that occurred --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Активность - это что-то, что происходит за некоторый период времени и действует над или с сущностями; может включать в себя употребление, обработку, преобразование, изменение, перемещение, использование или образование сущностей <!-- An activity is something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1257,7 +1257,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Политика или план, по которому произошла активность. Как правило, отдельная активность может иметь несколько применимых документов политики, такие как согласие пациента, гарант финансирования и т. п.<!-- Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String"> For example: Where an OAuth token authorizes, the unique identifier from the OAuth token is placed into the policy element Where a policy engine (e.g. XACML) holds policy logic, the unique policy identifier is placed into the policy element.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Например: при авторизации OAuth-токена, уникальный идентификатор из этого OAuth-токена помещается в элемент policy. Когда механизм политики безопасности (например XACML) хранит логику политики, уникальный идентификатор политики помещается в элемент policy.<!-- For example: Where an OAuth token authorizes, the unique identifier from the OAuth token is placed into the policy element Where a policy engine (e.g. XACML) holds policy logic, the unique policy identifier is placed into the policy element. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./inboundRelationship[isNormalActRelationship() and typeCode=&quot;SUBJ&quot;]/source[isNormalAct and subsumes(POLICY, classCode) and moodCode=EVN]/text[typeCode='ED'/tel</Data><NamedCell
@@ -1289,12 +1289,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Agents involved in creating resource</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Посредники, участвующие в создании ресурса<!-- Agents involved in creating resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Агент играет определенную роль в активности, таким образом агенту может быть присвоена некоторая степень ответственности за идущую активность. Агент может быть человеком, организацией, программным обеспечением или другими сущностями, которым может быть приписана ответственность<!-- An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed responsibility --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Посредник играет определенную роль в активности, таким образом агенту может быть присвоена некоторая степень ответственности за идущую активность. Посредник может быть человеком, организацией, программным обеспечением или другими сущностями, которым может быть приписана ответственность<!-- An agent takes a role in an activity such that the agent can be assigned some degree of responsibility for the activity taking place. An agent can be a person, an organization, software, or other entities that may be ascribed responsibility --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">С активностью могут быть ассоциированы (т. е. нести какую-то ответственность за активность) несколько агентов и наоборот <!-- Several agents may be associated (i.e. has some responsibility for an activity) with an activity and vice-versa --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">С активностью могут быть ассоциированы (т. е. нести какую-то ответственность за активность) несколько посредников и наоборот <!-- Several agents may be associated (i.e. has some responsibility for an activity) with an activity and vice-versa --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./participation[isNormalParticipation()]  OR  ./outboundRelationship[isNormalActRelationship() and typeCode='DRIV']</Data><NamedCell
@@ -1330,12 +1330,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">What the agents involvement was</Data><NamedCell
+    <Cell><Data ss:Type="String">В чём заключалось участие посредника<!-- What the agents involvement was --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Функция агента по отношения к этой активности <!-- The function of the agent with respect to the activity. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Функция посредника по отношению к этой активности <!-- The function of the agent with respect to the activity. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">For example, author, performer, enterer, attester, etc.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Например автор, исполнитель, специалист по вводу, проверяющий и т. п.<!-- For example, author, performer, enterer, attester, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">attester: .[self::participation]/typeCode='RESP' author: .[self::participation]/typeCode='AUT' cc: .[self::participation]/typeCode='IRCP' enterer:  .[self::participation]/typeCode='ENT' informant: .[self::participation]/typeCode='INF' performer: .[self::participation]/typeCode='PRF' verifier: .[self::participation]/typeCode='VRF' source: .[self::outboundRelationship]/typeCode=''</Data><NamedCell
@@ -1370,9 +1370,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Individual, device or organization playing role</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Человек, устройство или организация, играющие роль<!-- Individual, device or organization playing role --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The individual, device or organization that participated in the event</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, устройство или организация, участвующие в этом событии<!-- The individual, device or organization that participated in the event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1408,9 +1408,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Authorization-system identifier for the agent</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор посредника в системе авторизации<!-- Authorization-system identifier for the agent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The identity of the agent as known by the authorization system</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор посредника, под которым он известен системе авторизации<!-- The identity of the agent as known by the authorization system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1444,9 +1444,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Track delegation between agents</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Делегирование между посредниками<!-- Track delegation between agents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A relationship between two the agents referenced in this resource. This is defined to allow for explicit description of the delegation between agents.  For example, this human author used this device, or one person acted on another's behest</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Взаимосвязь двух посредников, на которых ссылается данный ресурс. Этот элемент позволяет явно описать делегирование между посредниками. Например этот человек, являющийся автором, использовал данное устройство, или один человек действовал по распоряжению другого<!-- A relationship between two the agents referenced in this resource. This is defined to allow for explicit description of the delegation between agents.  For example, this human author used this device, or one person acted on another's behest --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1482,9 +1482,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of relationship between agents</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип взаимосвязи между посредниками<!-- Type of relationship between agents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип участия агента <!-- The type of relationship between agents --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип взаимосвязи между посредниками<!-- The type of relationship between agents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1518,12 +1518,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reference to other agent in this resource by identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылка на другого посредника в этом ресурсе посредством идентификатора<!-- Reference to other agent in this resource by identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An internal reference to another agent listed in this provenance by its identifier</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Внутренняя ссылка на другого посредника, перечисленного в данном ресурсе Provenance, по идентификатору<!-- An internal reference to another agent listed in this provenance by its identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The uri has the form #[id] where [id] is on another Provenance.agent in this same resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Этот URI имеет форму #[id], где [id] - это другой Provenance.agent в этом же самом ресурсе<!-- The uri has the form #[id] where [id] is on another Provenance.agent in this same resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">.target</Data><NamedCell
@@ -1559,7 +1559,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Сущность, использованная в этой активности<!-- An entity used in this activity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Multiple userIds may be associated with the same Practitioner or other individual across various appearances, each with distinct privileges</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">С одним ресурсом Practitioner или другим лицом может быть ассоциировано несколько идентификаторов пользователя (userId) в различных проявлениях, каждое с отличающимися привилегиями<!-- Multiple userIds may be associated with the same Practitioner or other individual across various appearances, each with distinct privileges --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./subjectOf</Data><NamedCell
@@ -1633,7 +1633,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of resource in this entity</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип ресурса в этой сущности<!-- The type of resource in this entity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Тип сущности. Если сущностью является ресурс, тогда это тип ресурса<!-- The type of the entity. If the entity is a resource, then this is a resource type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1781,9 +1781,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Signature on target</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Электронная цифровая подпись целевого объекта<!-- Signature on target --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A digital signature on the target Reference(s). The signer should match a Provenance.agent. The purpose of the signature is indicated.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Электронная цифровая подпись на целевых ссылках. Подписавшая сторона должна соответствовать Provenance.agent. Указывается назначение этой подписи.<!-- A digital signature on the target Reference(s). The signer should match a Provenance.agent. The purpose of the signature is indicated. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6692,7 +6692,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">ProvenanceAgentRole</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The role that a provenance agent played with respect to the activity.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Роль, которую играл посредник источника относительно данной активности.<!-- The role that a provenance agent played with respect to the activity. --></Data></Cell>
     <Cell ss:StyleID="s113"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s113"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">extensible</Data></Cell>
@@ -6708,7 +6708,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ProvenanceAgentType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of a provenance agent.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип посредника источника.<!-- The type of a provenance agent. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">extensible</Data></Cell>
@@ -6724,7 +6724,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ProvenanceEntityRole</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">How an entity was used in an activity.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Каким образом сущность была использована в этой активности.<!-- How an entity was used in an activity. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"/>
@@ -6740,7 +6740,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ProvenanceEntityType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of an entity used in an activity.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип сущности, использованной в этой активности.<!-- The type of an entity used in an activity. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">extensible</Data></Cell>
@@ -6756,7 +6756,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ProvenanceReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The reason the activity took place.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Причина, по которой произошла эта активность.<!-- The reason the activity took place. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">extensible</Data></Cell>
@@ -6772,7 +6772,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ProvenanceActivity</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The activity that took place.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Активность, которая имела место.<!-- The activity that took place. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">extensible</Data></Cell>
@@ -6788,7 +6788,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">RelatedAgentType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Type of relationship between two provenance agents.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип взаимосвязи между двумя посредниками источника.<!-- Type of relationship between two provenance agents. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">example</Data></Cell>

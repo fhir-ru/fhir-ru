@@ -34,7 +34,7 @@ provides details on use of the <i>signature</i> element. The Signature.type code
 when the signature is for simply proving that the resource content is the same as it was when the resource
 was updated or created.  -->
 </p>
-<h3>Party References</h3>
+<h3>Ссылки на стороны-участники<!-- Party References --></h3>
 
 <p>
 Поскольку ресурс Provenance часто относится к субъектам, не представленным в виде FHIR-ресурсов, ссылки <i>agent</i> и <i>entity</i> могут быть либо ссылками на другие ресурсы, либо они могут ссылаться на другие сущности, которые не являются FHIR-ресурсами.
@@ -43,11 +43,13 @@ as FHIR resources, <i>agent</i> and <i>entity</i> references are allowed to be e
 to other resources, or they can refer to other entities that are not FHIR resources. -->
 </p>
 <p>
-For Provenance.agent, the <i>actor</i> element is used to reference an existing resource. To reference an entity that is not a FHIR resource, the <i>userId</i> element is used. 
+В Provenance.agent элемент <i>actor</i> используется для ссылки на существующий ресурс. Для ссылки на сущность, не являющуюся FHIR-ресурсом, используется элемент <i>userId</i>. 
+<!-- For Provenance.agent, the <i>actor</i> element is used to reference an existing resource. To reference an entity that is not a FHIR resource, the <i>userId</i> element is used.  -->
 </p>
 <div class="example">
 <p>
-A version specific reference to a FHIR resource on the same server:
+Версионная ссылка на FHIR-ресурс на том же сервере:
+<!-- A version specific reference to a FHIR resource on the same server: -->
 </p>
 <pre class="xml">
   &lt;agent&gt;
@@ -59,7 +61,8 @@ A version specific reference to a FHIR resource on the same server:
 </div>
 <div class="example">
 <p>
-A reference to a user (a person) not represented by a FHIR resource:
+Ссылка на пользователя (человека), не представленного с помощью FHIR-ресурса:
+<!-- A reference to a user (a person) not represented by a FHIR resource: -->
 </p>
 <pre class="xml">
   &lt;agent&gt;
@@ -71,10 +74,11 @@ A reference to a user (a person) not represented by a FHIR resource:
 </div>
 
 <p>
-For Provenance.entity, the code in the <i>.type</i> element is used to differentiate between the two cases: if the 
+В Provenance.entity код в элементе <i>.type</i> используется, чтобы различать два случая: когда код в системе "http://hl7.org/fhir/resource-types", тогда это ссылка на ресурс, и элемент <i>reference</i> работает точно также, как и в случае <a href="references.html#references">ссылки на ресурс</a>. 
+<!-- For Provenance.entity, the code in the <i>.type</i> element is used to differentiate between the two cases: if the 
 code is in the system "http://hl7.org/fhir/resource-types", then the reference is to 
 a resource, and the element <i>reference</i> functions exactly the same as in 
-a <a href="references.html#references">resource reference</a>. 
+a <a href="references.html#references">resource reference</a>.  -->
 </p>
 <div class="example">
 <p>
@@ -114,7 +118,7 @@ resources.  -->
 </div>
 
 <p>
-Есть один тонкий вопрос в использовании ресурса Provenance - как различать, это ссылка на сам ресурс, или это ссылка на сущность реального мира, которую представляет ресурс, например это человек участвовал в активности или запись об этом человеке. В случае агентов следует понимать, что речь идет о сущности реального мира, которую представляет ресурс. 
+Есть один нюанс при использовании ресурса Provenance - как различать, это ссылка на сам ресурс, или это ссылка на сущность из реального мира, которую представляет ресурс, например это человек участвовал в активности, или это запись об этом человеке. В случае агентов следует понимать, что речь идет о сущности реального мира, которую представляет ресурс. 
 <!-- One subtle issue with the use of the Provenance resource is to differentiate
 between whether the reference is to the resource itself, or whether the 
 the reference is to the real world thing that the resource represents,

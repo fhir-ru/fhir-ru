@@ -47,9 +47,10 @@ such an observation does not require an explicit representation of the procedure
 observation, but where there are details of interest about how the diagnostic procedure was performed, 
 the procedure resource is used to describe the activity. -->
 </p>
-<p> Some diagnostic procedures may not have a Procedure record.  The Procedure record is only necessary when 
+<p>Некоторые диагностические процедуры могут не иметь соответствующей записи Procedure. Запись Procedure необходима только тогда, когда требуется зафиксировать информацию о физическом вмешательстве, совершённом для получения диагностической информации (например обезболивающее, надрез, размер области и т. п.).
+<!--  Some diagnostic procedures may not have a Procedure record.  The Procedure record is only necessary when 
 there is a need to capture information about the physical intervention that was performed to capture the diagnostic 
-information (e.g. anesthetic, incision, scope size, etc.)</p>
+information (e.g. anesthetic, incision, scope size, etc.) --></p>
 </div>
 
 </div>
