@@ -4497,7 +4497,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Organization.accreditation.code</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Any accreditation code</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Любой код аккредитации<!-- Any accreditation code --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">partof</Data></Cell>
@@ -4521,7 +4521,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Organization.address</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A (part of the) address of the Organization</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Адрес организации или часть адреса<!-- A (part of the) address of the Organization --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-city</Data></Cell>
@@ -4529,7 +4529,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Organization.address.city</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A city specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Город, указанный в адресе<!-- A city specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-state</Data></Cell>
@@ -4537,7 +4537,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Organization.address.state</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A state specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Штат, указанный в адресе<!-- A state specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-postalcode</Data></Cell>
@@ -4545,7 +4545,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Organization.address.postalCode</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A postal code specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Почтовый индекс, указанный в адресе<!-- A postal code specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-country</Data></Cell>
@@ -4553,7 +4553,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Organization.address.country</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A country specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Страна, указанная в адресе<!-- A country specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-use</Data></Cell>
@@ -4561,7 +4561,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Organization.address.use</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A use code specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Код применения, указанный в адресе<!-- A use code specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>

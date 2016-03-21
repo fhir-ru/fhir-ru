@@ -21,17 +21,19 @@ return a bundle containing a set of resources, so all the out parameters must be
 resources, not data types etc. -->
 </p>
  
-<h3>Passing Resources to Operations</h3> 
+<h3>Передача ресурсов в операции<!-- Passing Resources to Operations --></h3> 
 
 <p>
-There are two ways to pass resources to an operation - directly, or by reference.
+Есть два способа передачи ресурсов операциям: напрямую или по ссылке. Поскольку эти две формы имеют очень различное поведение и последствия, определение операции различается для них.
+<!-- There are two ways to pass resources to an operation - directly, or by reference.
 Since the two forms havevery different behaviors and consequences, the definition of 
-an Operation distinguishes between these two. 
+an Operation distinguishes between these two.  -->
 </p>
 <p>
-As an example, take the <a href="questionnaire-operations.html#populate">Questionnaire.$populate operation</a>.  
+В качестве примера возьмём операцию <a href="questionnaire-operations.html#populate">Questionnaire.$populate</a>. Эта операция принимает ресурс Вопросник в качестве прямого параметра. Типом этого параметра будет 'Questionnaire'. В ресурсе Parameters это будет выражено следующим образом:
+<!-- As an example, take the <a href="questionnaire-operations.html#populate">Questionnaire.$populate operation</a>.  
 This operation takes a questionnaire as a direct parameter. The type of the parameter is 
-defined as 'Questionnaire'. In a parameters resource, it would be represented like this:
+defined as 'Questionnaire'. In a parameters resource, it would be represented like this: -->
 </p>
 <pre class="xml">
   &lt;parameter&gt;
@@ -59,11 +61,12 @@ or, in JSON:
 </pre>
 
 <p>
-Other parameters are passed by reference. For example, populate takes a 
+Другие параметры передаются с помощью ссылок. Например операция populate принимает ссылки на другие ресурсы, которые следует использовать для предварительного заполнения вопросника. Они передаются с помощью ссылок, а типом этого параметра будет 'Reference(Any)' - ссылка на ресурс любого типа. В ресурсе Parameters это будет выражено следующим образом:
+<!-- Other parameters are passed by reference. For example, populate takes a 
 set of references to other resources that should be used to pre-populate the 
 questionnaire. These are passed by reference, and the type of the 
 parameter is 'Reference(Any)' - a reference to any kind of resource.
-In a parameters resource, it would be represented like this: 
+In a parameters resource, it would be represented like this:  -->
 </p>
 <pre class="xml">
   &lt;parameter&gt;
@@ -74,8 +77,8 @@ In a parameters resource, it would be represented like this:
     &lt;/valueReference&gt;
   &lt;/parameter&gt; 
 </pre>
-<p>
-or, in JSON:
+<p>или в JSON:
+<!-- or, in JSON: -->
 </p>
 <pre>
  "parameter": [
@@ -89,8 +92,9 @@ or, in JSON:
 </pre>
 
 <p>
-Some operations can take either form; in that case, two different parameters
-must be defined, one for a resource directly, and one for a reference.
+Некоторые операции могут принимать одну из форм; в этом случае необходимо задать два разных параметра, один непосредственно для ресурса, другой - для ссылки.
+<!-- Some operations can take either form; in that case, two different parameters
+must be defined, one for a resource directly, and one for a reference. -->
 </p>
  
 <h3>Переименовывание OperationDefinition.name<!-- Renaming OperationDefinition.name --></h3>

@@ -32,16 +32,16 @@ reaching a person or party that has been designated by the organization to be co
     Eastern Services (prov)
         Отделение скорой помощи
         Онкологическое отделение
-            Neuclear Medicine Research Trials (edu)
-        Maternity Ward
-        Childrens Ward
-        Day Procedures Unit
-    Mobile Services (Ambulance)
-    Research Center (edu)
-        Neuclear Medicine  (edu)
-    Burgers University (edu)
-        Neuclear Medicine Faculty (edu)
-        Undergraduate Medicine (edu)
+             Радиологический медицинский научно-исследовательский центр (обучение)
+        Материнская палата
+        Детская палата
+        Отделение дневных процедур
+    Мобильные услуги (скорая помощь)
+    Научно-исследовательский центр (обучение)
+        Медицинская радиология (обучение)
+    Университет Бюргерс (обучение)
+        Факультет медицинской радиологии (обучение)
+        Бакалавриат (обучение)
         ...  
 <!-- Burgers University Medical Center
     Eastern Services (prov)
@@ -60,7 +60,8 @@ reaching a person or party that has been designated by the organization to be co
         ... -->
 	</pre>
 	<p>
-		<i>Note that physical structures of this hierarchy are not present - these are defined by a Location hierarchy.</i>
+  <i>Отметьте, что физические структуры в этой иерархии не присутствуют - они задаются с помощью иерархии мест (ресурсы Location).</i>
+		<!-- <i>Note that physical structures of this hierarchy are not present - these are defined by a Location hierarchy.</i> -->
 	</p>
 	</div>
 </div>

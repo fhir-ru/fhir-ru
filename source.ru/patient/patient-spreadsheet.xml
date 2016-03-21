@@ -4738,7 +4738,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Patient.telecom(system=phone)</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Patient.telecom.where(system='phone')</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A value in a phone contact</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Номер телефона<!-- A value in a phone contact --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">email</Data></Cell>
@@ -4747,7 +4747,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Patient.telecom(system=email)</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Patient.telecom.where(system='email')</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A value in an email contact</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Адрес электронной почты<!-- A value in an email contact --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address</Data></Cell>
@@ -4765,7 +4765,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Patient.address.city</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A city specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Город, указанный в адресе<!-- A city specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-state</Data></Cell>
@@ -4774,7 +4774,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Patient.address.state</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A state specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Штат, указанный в адресе<!-- A state specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-postalcode</Data></Cell>
@@ -4783,7 +4783,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Patient.address.postalCode</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A postalCode specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Почтовый индекс, указанный в адресе<!-- A postalCode specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-country</Data></Cell>
@@ -4792,7 +4792,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Patient.address.country</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A country specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Страна, указанная в адресе<!-- A country specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-use</Data></Cell>
@@ -4801,7 +4801,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Patient.address.use</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A use code specified in an address</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Код применения, указанный в адресе<!-- A use code specified in an address --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">gender</Data></Cell>
@@ -4891,7 +4891,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Patient.deceased[x]</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">This patient has been marked as deceased, or as a death date entered</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Этот пациент помечен как умерший, либо введена дата смерти<!-- This patient has been marked as deceased, or as a death date entered --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">deathdate</Data></Cell>
@@ -4900,7 +4900,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Patient.deceasedDateTime</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The date of death has been provided and satisfies this search value</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Была указана дата смерти, или удовлетворяет данному искомому значению<!-- The date of death has been provided and satisfies this search value --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>

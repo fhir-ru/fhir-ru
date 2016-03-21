@@ -1131,12 +1131,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional details about the error</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительные сведения об этой ошибке<!-- Additional details about the error --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional details about the error. This may be a text description of the error, or a system code that identifies the error</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительные сведения об этой ошибке. Это может быть текстовое описание ошибки или системный код, идентифицирующий ошибку<!-- Additional details about the error. This may be a text description of the error, or a system code that identifies the error --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A human readable description of the error issue SHOULD be placed in details.text</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое описание ошибки необходимо помещать в details.text<!-- A human readable description of the error issue SHOULD be placed in details.text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./code</Data><NamedCell
@@ -1171,7 +1171,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная диагностическая информация о проблеме. Обычно это описание того, в каком значении ошибка, либо стек ошибки для трассировки проблемы. <!-- Additional diagnostic information about the issue.  Typically, this may be a description of how a value is erroneous, or a stack dump to help trace the issue. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">обычно это поле используется для предоставления диагностической информации об ошибке<!-- Typically this field is used to provide troubleshooting information about the error --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно это поле используется для предоставления диагностической информации об ошибке<!-- Typically this field is used to provide troubleshooting information about the error --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./text[parent::AcknowledgmentDetail]</Data><NamedCell
@@ -1201,7 +1201,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">XPath of element(s) related to issue</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">XPath элементов, связанных с проблемой<!-- XPath of element(s) related to issue --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Простой XPath, ограниченный именами элементов, индикаторами повтора и доступом к потомкам по умолчанию, идентифицирующий один из элементов в ресурсе, который вызвал появление этой проблемы.<!-- A simple XPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6334,7 +6334,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">IssueType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A code that describes the type of issue.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код типа проблемы.<!-- A code that describes the type of issue. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s146"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#issue-type</Data></Cell>
@@ -6349,7 +6349,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">IssueDetails</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A code that provides details as the exact issue.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код, предоставляющий детальные сведения о проблеме.<!-- A code that provides details as the exact issue. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">special</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#operation-outcome</Data></Cell>

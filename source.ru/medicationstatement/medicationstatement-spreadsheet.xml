@@ -1039,9 +1039,9 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Record of medication being taken by a patient</Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Запись о том, что лекарственное средство было принято пациентомRecord of medication being taken by a patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from e.g. the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains &#13;&#13;The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Запись о том, что лекарственное средство было употреблено пациентом. MedicationStatement может указывать на то, что пациент может принимать медикамент в текущее время, или принял медикамент в прошлом, или примет медикамент в будущем. Источником этой информации может выступать пациент, кто-то значимый для него (член семьи или супруг) или клиницист. Распространённым сценарием, когда вводится такая информация, является процесс сбора анамнеза пациента во время его визита или пребывания. Информация о медикаменте может сообщаться пациентом по памяти, быть взята из предписания на бутылочке с лекарством или из списка медикаментов, поддерживаемого пациентом, клиницистом или другой стороной &#13;&#13;Основное различие между заявлением о медикаменте и введением медикамента в том, что введение медикамента содержит полную информацию о введении и основывается на реальной информации о введении от человека, который ввёл этот медикамент. Заявление о медикаменте часто, если не всегда, будет менее точным. В нём нет обязательного указания даты/времени, когда медикамент был введён, на деле мы знаем только, что источник сообщил о том, что пациент принимает этот медикамент, и такие детали, как время, количество, скорость или даже название медицинского препарата могут быть неполными, неточными или отсутствовать. Как указано выше, информация для заявления о медикаменте может идти из памяти пациента, из предписания на бутылочке или из списка медикаментов, поддерживаемого пациентом, клиницистом или другой стороной. Введение медикамента является более официальным, и в нём нет отсутствующих деталей информации.<!-- A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from e.g. the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains &#13;&#13;The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1109,7 +1109,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">active | completed | entered-in-error | intended</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A code representing the patient or other source's judgment about the state of the medication used that this statement is about.  Generally this will be active or completed.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, представляющий собой суждение пациента или другого источника о статусе использованного медикамента, о котором сделано заявление. Как правило, это будет статус active или completed.<!-- A code representing the patient or other source's judgment about the state of the medication used that this statement is about.  Generally this will be active or completed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1173,7 +1173,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Who is/was taking  the medication</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кто принимал или принимает этот медикаментWho is/was taking  the medication</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Человек или животное, кто принял/принимает лекарственное средство.<!-- The person or animal who is/was taking the medication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1303,9 +1303,9 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Если этот элемент отсутствует, значит медикамент был принят<!-- If this is missing, then the medication was taken --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">True if medication is/was not being taken</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Истинно, если медикамент не был принят/не принимается<!-- True if medication is/was not being taken --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Установите в true, если запись говорит о том, что лекарственное средство НЕ БЫЛО принято.<!-- Set this to true if the record is saying that the medication was NOT taken. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Установите в истину, если запись говорит о том, что лекарственное средство НЕ БЫЛО принято.<!-- Set this to true if the record is saying that the medication was NOT taken. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1337,7 +1337,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">True if asserting medication was not given</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Истинно, если описываемый медикамент не был выдан<!-- True if asserting medication was not given --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Код, указывающий, почему медикамент не был принят.<!-- A code indicating why the medication was not taken. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1431,12 +1431,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional supporting information</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная вспомогательная информация<!-- Additional supporting information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports the MedicationStatement.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет связывать MedicationStatement с лежащим в его основе MedicationOrder или другой вспомогательной информацией для этого MedicationStatement <!-- Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports the MedicationStatement. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Likely references would be to MedicationOrder, MedicationDispense, Claim, Observation or QuestionnaireAnswers.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Вероятными ссылками будут ссылки на ресурсы MedicationOrder, MedicationDispense, Claim, Observation или QuestionnaireAnswers.<!-- Likely references would be to MedicationOrder, MedicationDispense, Claim, Observation or QuestionnaireAnswers. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1496,9 +1496,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reported dosage information</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сообщённая информация о дозировке<!-- Reported dosage information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Free text dosage information as reported about a patient's medication use. When coded dosage information is present, the free text may still be present for display to humans.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Произвольная текстовая информация о дозировке, сообщённая об использовании медикамента пациентом. Если присутствует закодированная информация, тода произвольный текст тоже может присутствовать для отображения людям.<!-- Free text dosage information as reported about a patient's medication use. When coded dosage information is present, the free text may still be present for display to humans. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1593,9 +1593,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Where (on body) medication is/was administered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Где (на теле) медикамент был введён или вводится<!-- Where (on body) medication is/was administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A coded specification of or a reference to the anatomic site where the medication first enters the body</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Закодированное описание или ссылка на анатомическое расположение, где медикамент изначально попадает в тело<!-- A coded specification of or a reference to the anatomic site where the medication first enters the body --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1626,7 +1626,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">How the medication entered the body</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Каким образом медикамент попадает в тело<!-- How the medication entered the body --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Код, обозначающий способ или физиологический путь ввода терапевтического средства в или на субъект.<!-- A code specifying the route or physiological path of administration of a therapeutic agent into or onto a subject.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4001,7 +4001,7 @@
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">MedicationStatement</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">Reason not taken is only permitted if wasNotTaken is true</Data><NamedCell
+    <Cell ss:StyleID="s84"><Data ss:Type="String">Причина, почему не было принято, разрешена, только если wasNotTaken имеет значение истинаReason not taken is only permitted if wasNotTaken is true</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">reasonNotTaken.empty() or wasNotTaken = true</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4014,7 +4014,7 @@
     <Cell ss:StyleID="s91"><Data ss:Type="String">Reason for use</Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">MedicationStatement</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Reason for use is only permitted if wasNotTaken is false</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Обоснование для употребления разрешена, только если wasNotTaken имеет значение ложьReason for use is only permitted if wasNotTaken is false</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">reasonForUse[x].empty() or wasNotTaken = false</Data></Cell>
     <Cell ss:StyleID="s108"><Data ss:Type="String">not(exists(*[starts-with(local-name(.), 'reasonForUse')]) and f:wasNotTaken/@value=true())</Data></Cell>
    </Row>
@@ -4524,49 +4524,49 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.identifier</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Return statements with this external identifier</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Возвращает заявления с указанным внешним идентификаторомReturn statements with this external identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">medication</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.medicationReference</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Return administrations of this medication reference</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Возвращает зписи о введении этого медикамента, ссылка на который указанаReturn administrations of this medication reference</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.medicationCodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Return administrations of this medication code</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Возвращает записи о введении этого медикамента, код которого указанReturn administrations of this medication code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.patient</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">The identity of a patient to list statements  for</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Ссылка на пациента, для которого будут перечислены заявленияThe identity of a patient to list statements  for</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">effective</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.effective[x]</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Date when patient was taking (or not taking) the medication</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Дата, когда пациент принял (или не принял) этот медикаментDate when patient was taking (or not taking) the medication</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.status</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Return statements that match the given status</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Возвращает заявления, которые соответствуют указанному статусуReturn statements that match the given status</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">source</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">MedicationStatement.informationSource</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Who the information in the statement came from</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Кто сообщил информацию для заявленияWho the information in the statement came from</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"/>
@@ -6463,7 +6463,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s151"><Data ss:Type="String">MedicationStatementStatus</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">A set of codes indicating the current status of a MedicationStatement.</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Набор кодов, обозначающих текущий статус ресурса MedicationStatement.<!-- A set of codes indicating the current status of a MedicationStatement. --></Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">#medication-statement-status</Data></Cell>
@@ -6478,7 +6478,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s152"><Data ss:Type="String">MedicationAdministrationSite</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept describing the site location the medicine enters into or onto the body.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Закодированный концепт, описывающий анатомическое расположение, где лекарство входит в или попадает на тело.<!-- A coded concept describing the site location the medicine enters into or onto the body. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/approach-site-codes</Data></Cell>
@@ -6493,7 +6493,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s152"><Data ss:Type="String">RouteOfAdministration</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Закодированный концепт, описывающий маршрут или физиологический путь введения лекарственного средства в или на тело субъекта.<!-- A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/route-codes</Data></Cell>
@@ -6508,7 +6508,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s152"><Data ss:Type="String">MedicationAdministrationMethod</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept describing the technique by which the medicine is administered.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Закодированный концепт, описывающий метод введения лекарства.<!-- A coded concept describing the technique by which the medicine is administered. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="Default"/>
@@ -6523,7 +6523,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell ss:StyleID="s152"><Data ss:Type="String">MedicationAsNeededReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept identifying the precondition that should be met or evaluated prior to consuming or administering a medication dose.  For example &quot;pain&quot;, &quot;30 minutes prior to sexual intercourse&quot;, &quot;on flare-up&quot; etc.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Закодированный концепт, определяющий предварительное условие, которое должно выполняться или оцениваться перед употреблением или введением дозы медикаменты. Например боль, за 30 минут до полового акта, при обострении болезни и т. п.<!-- A coded concept identifying the precondition that should be met or evaluated prior to consuming or administering a medication dose.  For example &quot;pain&quot;, &quot;30 minutes prior to sexual intercourse&quot;, &quot;on flare-up&quot; etc. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"/>
@@ -6538,7 +6538,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s152"><Data ss:Type="String">MedicationAdministrationNegationReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A set of codes indicating the reason why the MedicationAdministration is negated.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Набор кодов, обозначающих причину, по которой введение медикамента отрицается.<!-- A set of codes indicating the reason why the MedicationAdministration is negated. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes</Data></Cell>
@@ -6553,7 +6553,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s152"><Data ss:Type="String">MedicationReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes identifying why the medication is being taken.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды обоснования приёма медикамента.<!-- Codes identifying why the medication is being taken. --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">example</Data></Cell>
     <Cell><Data ss:Type="String">http://hl7.org/fhir/ValueSet/condition-code</Data></Cell>
