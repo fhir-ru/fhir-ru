@@ -93,12 +93,15 @@ requests for combinations of services.  Likewise, ReferralRequest may be referen
 resources may be used to help manage such workflows. -->
 </p>
 <p>
-A ReferralRequest might be fulfilled by a <a href="diagnosticreport.html">DiagnosticReport</a>, <a href="encounter.html">Encounter</a>,
-<a href="procedure.html">Procedure</a>,  or other assessment-related resource.
+Ресурс ReferralRequest может быть выполнен с помощью создания ресурса <a href="diagnosticreport.html">DiagnosticReport</a>, <a href="encounter.html">Encounter</a>,
+<a href="procedure.html">Procedure</a> или другого ресурса, связанного с оцениванием состояния пациента.
+<!-- A ReferralRequest might be fulfilled by a <a href="diagnosticreport.html">DiagnosticReport</a>, <a href="encounter.html">Encounter</a>,
+<a href="procedure.html">Procedure</a>,  or other assessment-related resource. -->
 </p>
 <p>
-A ReferralRequest should not be confused with an <a href="appointment.html">Appointment</a>, as appointments are intended for 
-booking/scheduling purposes.
+Ресурс ReferralRequest не следует путать с ресурсом <a href="appointment.html">Appointment</a>, поскольку последний предназначен для записи на приём и календарного планирования.
+<!-- A ReferralRequest should not be confused with an <a href="appointment.html">Appointment</a>, as appointments are intended for 
+booking/scheduling purposes. -->
 </p>
 </div>
 

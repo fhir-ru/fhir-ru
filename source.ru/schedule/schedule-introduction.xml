@@ -14,7 +14,7 @@
 			to determine if an appointment might be available. -->
     </p>
 		<p>
-		Примечание: ресурс schedule не используется для выдачи лекарственных средств, для этого есть тип данных <a href="datatypes.html#Timing">Timing</a>.
+		Примечание: ресурс Schedule не используется для выдачи лекарственных средств, для этого есть тип данных <a href="datatypes.html#Timing">Timing</a>.
       <!-- Note: A schedule is not used for the delivery of medication, that is the <a href="datatypes.html#Timing">Timing</a> data type. -->
 		</p>
 
@@ -23,7 +23,7 @@
 			<!-- Context -->
 		</h3>
 		<p>
-		В ресурсе schedule задаются даты и время, доступные для выполнения услуги и/или использования ресурса. Один ресурс Schedule применяется к одной услуге или ресурсу, так как каждая услуга или ресурс может быть зарезервирован независимо от других.
+		В ресурсе Schedule задаются даты и время, доступные для выполнения услуги и/или использования ресурса. Один ресурс Schedule применяется к одной услуге или ресурсу, так как каждая услуга или ресурс может быть зарезервирован независимо от других.
 			<!-- A schedule controls the dates and times available for the performance of a service
 			and/or the use of a resource.  One schedule applies to one service or resource, since
       each service or resource can be reserved independently of the others. --><br/>
@@ -32,7 +32,7 @@
       of one another, they are considered to be one activity or resource.) -->
     </p>
     <p>
-	Ресурс schedule состоит из слотов времени, в течение которых контролируемая услуга или ресурс потенциально доступен для предоставления или использования. Слоты подразделяются на открытые, забронированные и заблокированные. Открытый слот в расписании означает, что услуга или ресурс доступны для предоставления или использования в течение данного периода времени. Забронированный слот означает, что услуга или ресурс не доступен в данный период времени, так как была запланирована условленная встреча. Забронированный слот означает, что услуга или ресурс не доступен по другим причинам, отличным от запланированной условленной встречи.
+	Ресурс Schedule состоит из слотов времени, в течение которых контролируемая услуга или ресурс потенциально доступен для предоставления или использования. Слоты подразделяются на открытые, забронированные и заблокированные. Открытый слот в расписании означает, что услуга или ресурс доступны для предоставления или использования в течение данного периода времени. Забронированный слот означает, что услуга или ресурс не доступен в данный период времени, так как была запланирована условленная встреча. Забронированный слот означает, что услуга или ресурс не доступен по другим причинам, отличным от запланированной условленной встречи.
       <!-- A schedule consists of slots of time during which the controlled service or resource is potentially available
 			for provision or use.  Slots are categorized as open, booked, or blocked.  An open slot
 			on a schedule indicates that the service or resource is available for provision or use
@@ -42,7 +42,7 @@
 			appointment. -->
 		</p>
 		<p>
-		Реальным, не автоматизированным аналогом ресурса schedule, описанного выше, будет стандартный дневник деловых встреч. Такие дневники, как правило, разлинованы на слоты времени, в течение которых доступна услуга или ресурс.
+		Реальным, не автоматизированным аналогом ресурса Schedule, описанного выше, будет стандартный дневник деловых встреч. Такие дневники, как правило, разлинованы на слоты времени, в течение которых доступна услуга или ресурс.
 		<!-- The real-world, non-automated analog of the schedule described above is a standard
 		appointment book.  These books are generally organized with rows of time slots, during
 		which a service or resource is available. -->
@@ -57,7 +57,7 @@
 			then there are twelve slots for the given block of time. -->
 		</p>
 
-		<h3>Действующее лицо - к кому применяется расписание<!-- Actor - What the schedule applies to --></h3>
+		<h3>Действующее лицо - к кому относится расписание<!-- Actor - What the schedule applies to --></h3>
 		<p>
 		Расписание принадлежит отдельному владельцу, действующему лицу. Обычно это HealthcareService, Practitioner, Location
 			или Device. При бронировании условленной встречи может потребоваться проверка нескольких расписаний в зависимости от конфигурации системы.
@@ -74,7 +74,7 @@
 			time of the appointment. -->
   </p>
 
-		<h3>Проверка доступности - Поиск<!-- Checking availability - Searching --></h3>
+		<h3>Проверка доступности и поиск<!-- Checking availability - Searching --></h3>
 		<p>
 		Выполняя проверку доступности, создатель условленной встречи должен проверить, какие расписания являются подходящими, и затем проверить доступность слотов в этих расписаниях.
 			<!-- When checking availability for an appointment, the creator of the appointment should check

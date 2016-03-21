@@ -967,7 +967,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String buildIgRegistry(ImplementationGuideDefn ig, String types) throws Exception {
     StringBuilder b = new StringBuilder();
     b.append("<table class=\"codes\">\r\n");
-    b.append("<tr><td><b>Id</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>\r\n");
+    b.append("<tr><td><b>Идентификатор</b></td><td><b>Имя</b></td><td><b>Описание</b></td></tr>\r\n");
     for (GuideResourcePurpose purpose : GuideResourcePurpose.values()) {
       boolean usedPurpose = false;
       for (String type : types.split("\\,")) {
@@ -1551,8 +1551,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     StringBuilder b = new StringBuilder();
     b.append("<table class=\"grid\">\r\n");
     b.append("  <tr>\r\n");
-    b.append("    <td><b>Name</b></td>\r\n");
-    b.append("    <td><b>Description</b></td>\r\n");
+    b.append("    <td><b>Имя</b></td>\r\n");
+    b.append("    <td><b>Описание</b></td>\r\n");
     b.append("  </tr>\r\n");
     
     b.append("  <tr>\r\n");
@@ -1782,7 +1782,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String compartmentlist() {
     StringBuilder b = new StringBuilder();
     b.append("<table class=\"grid\">\r\n");
-    b.append(" <tr><td><b>Title</b></td><td><b>Description</b></td><td><b>Identity</b></td><td><b>Membership</b></td></tr>\r\n");
+    b.append(" <tr><td><b>Название</b></td><td><b>Описание</b></td><td><b>Сущность</b></td><td><b>Членство</b></td></tr>\r\n");
     for (Compartment c : definitions.getCompartments()) {
       b.append(" <tr><td><a href=\"compartment-").append(c.getName()).append(".html\">").append(c.getTitle()).append("</a></td><td>")
               .append(Utilities.escapeXml(c.getDescription())).append("</td>").append("<td>").append(Utilities.escapeXml(c.getIdentity())).append("</td><td>").append(Utilities.escapeXml(c.getMembership())).append("</td></tr>\r\n");
@@ -1892,7 +1892,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String genV3CSIndex() {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"grid\">\r\n");
-    s.append(" <tr><td><b>Name (URI = http://hl7.org/fhir/v3/...)</b></td><td><b>Description</b></td><td><b>OID</b></td></tr>\r\n");
+    s.append(" <tr><td><b>Имя (URI = http://hl7.org/fhir/v3/...)</b></td><td><b>Описание</b></td><td><b>OID</b></td></tr>\r\n");
     
     List<String> names = new ArrayList<String>();
     Map<String, Resource> map = new HashMap<String, Resource>();
@@ -2394,7 +2394,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       }
     }    
     if (b.length() > 0)
-      return "<p>Constraints</p><ul>"+b+"</ul>";
+      return "<p>Ограничивающие условия</p><ul>"+b+"</ul>";
     else
       return "";
   }
@@ -2410,7 +2410,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       }
     }    
     if (b.length() > 0)
-      return "<p>Constraints</p><ul>"+b+"</ul>";
+      return "<p>Ограничивающие условия</p><ul>"+b+"</ul>";
     else
       return "";
   }
@@ -2435,7 +2435,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       b.append(invs.get(n));
     }
     if (b.length() > 0)
-      return "<a name=\"invs\"> </a>\r\n<h3>Constraints</h3><ul>"+b+"</ul>";
+      return "<a name=\"invs\"> </a>\r\n<h3>Ограничивающие условия</h3><ul>"+b+"</ul>";
     else
       return "";
   }
@@ -3265,7 +3265,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     Collections.sort(codes);
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"grid\">\r\n");
-    s.append(" <tr><th>Code</th><th>Category</th><th>Description</th><th>Request Resources</th><th>Response Resources</th><th>Notes</th></tr>\r\n");
+    s.append(" <tr><th>Код</th><th>Категория</th><th>Описание</th><th>Ресурсы-запросы</th><th>Ресурсы-ответы</th><th>Примечания</th></tr>\r\n");
     for (String c : codes) {
       EventDefn e = definitions.getEvents().get(c);
       if (e.getUsages().size() == 1) {
@@ -4729,7 +4729,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else
         b.append("<p>Параметры поиска для этого ресурса. Также к нему применяются <a href=\"search.html#all\">общие параметры</a>. Более подробную информацию о поиске в REST, обмене сообщениями и сервисах смотрите на странице <a href=\"search.html\">Поиск</a>.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Имя</b></td><td><b>Type</b></td><td><b>Описание</b></td><td><b>Пути</b></td></tr>\r\n");
+      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Путь</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       names.addAll(resource.getSearchParams().keySet());
       Collections.sort(names);
@@ -4751,7 +4751,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       b.append("<h2>Параметры поиска</h2>\r\n");
       b.append("<p>Общие параметры поиска, применимые к этому ресурсу. Более подробную информацию о поиске в REST, обмене сообщениями и сервисах смотрите на странице <a href=\"search.html\">Поиск</a>.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Пути</b></td></tr>\r\n");
+      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Путь</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       names.addAll(resource.getSearchParams().keySet());
       Collections.sort(names);
@@ -4773,7 +4773,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       b.append("<h2>Параметры поиска</h2>\r\n");       
       b.append("<p>Параметры поиска, определенные этой структурой. Более подробную информацию о поиске в REST, обмене сообщениями и сервисах смотрите на странице <a href=\"search.html\">Поиск</a>.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Пути</b></td></tr>\r\n");
+      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Путь</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       for (SearchParameter t : pack.getSearchParameters())
         names.add(t.getName());
@@ -4922,16 +4922,16 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     
     s.append("<div id=\"tabs\">\r\n");
     s.append("<ul>\r\n");
-    s.append("  <li><a href=\"#tabs-1\">Base Types</a></li>\r\n");
-    s.append("  <li><a href=\"#tabs-2\">Resources</a></li>\r\n");
-    s.append("  <li><a href=\"#tabs-3\">Constraints</a></li>\r\n");
-    s.append("  <li><a href=\"#tabs-4\">Extensions</a></li>\r\n");
+    s.append("  <li><a href=\"#tabs-1\">Базовые типы</a></li>\r\n");
+    s.append("  <li><a href=\"#tabs-2\">Ресурсы</a></li>\r\n");
+    s.append("  <li><a href=\"#tabs-3\">Ограничивающие условия</a></li>\r\n");
+    s.append("  <li><a href=\"#tabs-4\">Расширения</a></li>\r\n");
     s.append("</ul>\r\n");
     s.append("<div id=\"tabs-1\">\r\n");
 
     // base types
     s.append("<table class=\"list\">\r\n");
-    genStructureExampleCategory(s, "Abstract Types");
+    genStructureExampleCategory(s, "Абстрактные типы");
     genStructureExample(s, "element.html", "element.profile", "element", "Element");
     genStructureExample(s, "backboneelement.html", "backboneelement.profile", "backboneelement", "BackBoneElement");
     genStructureExample(s, "resource.html", "resource.profile", "resource", "Resource");
@@ -4946,7 +4946,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       genStructureExample(s, "datatypes.html#"+dc.getCode(), dc.getCode().toLowerCase()+".profile", dc.getCode().toLowerCase(), dc.getCode());
     }
 
-    genStructureExampleCategory(s, "Data Types");
+    genStructureExampleCategory(s, "Типы данных");
     names.clear();
     names.addAll(definitions.getTypes().keySet());
     names.addAll(definitions.getStructures().keySet());
@@ -5785,7 +5785,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   private String describeExtensionContext(StructureDefinition ed) {
-    return "<p>Context of Use: "+ProfileUtilities.describeExtensionContext(ed)+"</p>";
+    return "<p>Контекст использования: "+ProfileUtilities.describeExtensionContext(ed)+"</p>";
   }
 
   private String generateExtensionTable(StructureDefinition ed, String filename, String full, String prefix) throws Exception {
@@ -5809,9 +5809,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "";
     else {
       StringBuilder b = new StringBuilder();
-      b.append("<h4>Terminology Bindings</h4>\r\n");       
+      b.append("<h4>Терминологические привязки</h4>\r\n");       
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Path</b></td><td><b>Name</b></td><td><b>Conformance</b></td><td><b>ValueSet</b></td></tr>\r\n");
+      b.append("<tr><td><b>Путь</b></td><td><b>Имя</b></td><td><b>Conformance</b></td><td><b>ValueSet</b></td></tr>\r\n");
       for (String path : txlist)  {
         ElementDefinitionBindingComponent tx = txmap.get(path);
         String vss = "";
@@ -5853,9 +5853,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "";
     else {
       StringBuilder b = new StringBuilder();
-      b.append("<h4>Constraints</h4>\r\n");       
+      b.append("<h4>Ограничивающие условия</h4>\r\n");       
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td width=\"60\"><b>Id</b></td><td><b>Path</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>\r\n");
+      b.append("<tr><td width=\"60\"><b>Id</b></td><td><b>Path</b></td><td><b>Сведения</b></td><td><b>Требования</b></td></tr>\r\n");
       for (String path : txlist)  {
         List<ElementDefinitionConstraintComponent> invs = txmap.get(path);
         for (ElementDefinitionConstraintComponent inv : invs) {
@@ -6630,7 +6630,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       b.append("<h3>Параметры поиска</h3>\r\n");//Search Parameters
       b.append("<p>Параметры поиска, заданные в этом пакете. Более подробную информацию о поиске в REST, обмене сообщениями и сервисах смотрите на странице <a href=\""+prefix+"search.html\">Поиск</a>.</p>\r\n");//Search parameters defined by this package. See <a href=\""+prefix+"search.html\">Searching</a> for more information about searching in REST, messaging, and services.
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Пути</b></td><td><b>Источник</b></td></tr>\r\n");
+      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Путь</b></td><td><b>Источник</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       for (SearchParameter sp : pack.getSearchParameters())
         names.add(sp.getName());

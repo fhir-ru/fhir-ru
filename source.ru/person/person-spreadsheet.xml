@@ -1033,7 +1033,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор человека в конкретной области.<!-- Identifier for a person within a particular scope. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">У людей обычно несколько идентификаторов. некоторые учреждения поддерживают несколько, а большинство собирает идентификаторы для обмена с другими организациями данными, касающимися этого человека. Примерами будут национальный идентификатор личности и локальный идентификатор<!-- People are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the person. Examples are national person identifier and local identifier --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">У людей обычно несколько идентификаторов. Некоторые учреждения поддерживают несколько, и большинство собирает идентификаторы для обмена с другими организациями данными, касающимися этого человека. Примерами будут национальный идентификатор личности и локальный идентификатор<!-- People are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the person. Examples are national person identifier and local identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4176,7 +4176,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Person.telecom</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Значение контакта любого вида<!-- The value in any kind of contact --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Контактные данные любого вида<!-- The value in any kind of contact --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">phone</Data></Cell>
