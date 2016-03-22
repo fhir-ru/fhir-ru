@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 <a name="srch"> </a>
-<h2>SearchParameters on Extensions</h2>
+<h2>Параметры поиска по расширениям<!-- SearchParameters on Extensions --></h2>
 <p>Ресурс SearchParameter можно использовать для определения различных поисков по расширениям. В зависимости от контекста расширения (типы контекста приводятся в <a href="structuredefinition.html">StructureDefinition</a>) может потребоваться несколько экземпляров элемента SearchParameter.xpath следующим образом:
 <!-- 
 The SearchParameter resource may be used to define searches on extensions. Depending on the context of the extension

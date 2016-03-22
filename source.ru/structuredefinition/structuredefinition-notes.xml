@@ -20,12 +20,13 @@ Names of elements that are choices retain the "[x]" in the name, even if a const
 <!-- The condition element is used to assert that a constraint defined on another element affects the allowed cardinality of this element. --></li>
 </ul>
 
-<h3>Different uses for StructureDefinition</h3>
+<h3>Варианты использования ресурса StructureDefinition<!-- Different uses for StructureDefinition --></h3>
 <p>
-The base structure definition is used in a number of different ways to support
+Базовое структурное определение используется несколькими способами для поддержки спецификации FHIR. Варианты применения ресурса StructureDefinition настраиваются с помощью элементов <code>kind</code>, <code>constrainedType</code>, <code>base</code> и <code>url</code> по следующему основному шаблону:
+<!-- The base structure definition is used in a number of different ways to support
 the FHIR specification. The various uses of the StructureDefinition are 
 controlled by the elements <code>kind</code>, <code>constrainedType</code>, <code>base</code>, and <code>url</code>,
-using this basic pattern:
+using this basic pattern: -->
 </p>
 <pre class="json">
 {
@@ -36,10 +37,12 @@ using this basic pattern:
 }
 </pre>
 <p>
-This list shows a number of examples, with links to real examples for each:
+Ниже приводится несколько примеров со ссылками на реальные случаи применения:
+<!-- This list shows a number of examples, with links to real examples for each: -->
 </p>
 <ol>
- <li>Base definition of a data type (example: <a href="datatypes.html#Quantity">Quantity</a> - <a href="quantity.profile.xml.html">XML</a>, <a href="quantity.profile.json.html">JSON</a>):<br/>
+<li>Базовое определение типа данных (пример: <a href="datatypes.html#Quantity">Quantity</a> - <a href="quantity.profile.xml.html">XML</a>, <a href="quantity.profile.json.html">JSON</a>):
+<!--  Base definition of a data type (example: <a href="datatypes.html#Quantity">Quantity</a> - <a href="quantity.profile.xml.html">XML</a>, <a href="quantity.profile.json.html">JSON</a>): --><br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -51,7 +54,9 @@ This list shows a number of examples, with links to real examples for each:
 </pre>
  </li>
 
- <li>A constrained data type (example: <a href="datatypes.html#Money">Money</a>  - <a href="money.profile.xml.html">XML</a>, <a href="money.profile.json.html">JSON</a>):<br/>
+ <li>
+ Тип данных с ограничивающими условиями (пример: <a href="datatypes.html#Money">Money</a>  - <a href="money.profile.xml.html">XML</a>, <a href="money.profile.json.html">JSON</a>):
+ <!-- A constrained data type (example: <a href="datatypes.html#Money">Money</a>  - <a href="money.profile.xml.html">XML</a>, <a href="money.profile.json.html">JSON</a>): --><br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -64,7 +69,8 @@ This list shows a number of examples, with links to real examples for each:
 </pre>
 	</li>
 
- <li>Base definition of a resource (example: <a href="patient.html">Patient</a> - <a href="patient.profile.xml.html">XML</a>, <a href="patient.profile.json.html">JSON</a>): <br/>
+ <li>Базовое определение ресурса (пример: <a href="patient.html">Patient</a> - <a href="patient.profile.xml.html">XML</a>, <a href="patient.profile.json.html">JSON</a>):
+ <!-- Base definition of a resource (example: <a href="patient.html">Patient</a> - <a href="patient.profile.xml.html">XML</a>, <a href="patient.profile.json.html">JSON</a>): --> <br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -76,7 +82,8 @@ This list shows a number of examples, with links to real examples for each:
 </pre>
  </li>
 
- <li>Constraint on a resource (example: <a href="daf/daf-patient.html">DAF Patient</a> - <a href="daf/daf-patient.profile.xml.html">XML</a>, <a href="daf/daf-patient.profile.json.html">JSON</a>): <br/>
+ <li>Ограничивающее условие для ресурса (пример: <a href="daf/daf-patient.html">DAF Patient</a> - <a href="daf/daf-patient.profile.xml.html">XML</a>, <a href="daf/daf-patient.profile.json.html">JSON</a>): 
+ <!-- Constraint on a resource (example: <a href="daf/daf-patient.html">DAF Patient</a> - <a href="daf/daf-patient.profile.xml.html">XML</a>, <a href="daf/daf-patient.profile.json.html">JSON</a>):  --><br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -89,7 +96,8 @@ This list shows a number of examples, with links to real examples for each:
 </pre>
  </li>
 
- <li>Base Extension (a standard data type) (example: <a href="extensibility.html#Extension">Extension</a> - <a href="extension.profile.xml.html">XML</a>, <a href="extension.profile.json.html">JSON</a>): <br/>
+ <li>Базовое расширение (стандартный тип данных) (пример: <a href="extensibility.html#Extension">Extension</a> - <a href="extension.profile.xml.html">XML</a>, <a href="extension.profile.json.html">JSON</a>): 
+ <!-- Base Extension (a standard data type) (example: <a href="extensibility.html#Extension">Extension</a> - <a href="extension.profile.xml.html">XML</a>, <a href="extension.profile.json.html">JSON</a>):  --><br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -101,7 +109,8 @@ This list shows a number of examples, with links to real examples for each:
 </pre>
  </li>
 
- <li>A defined Extension  (example: <a href="extension-us-core-race.html">Extension</a>  - <a href="extension-us-core-race.xml.html">XML</a>, <a href="extension-us-core-race.json.html">JSON</a>): <br/>
+ <li>Заданное расширение (пример: <a href="extension-us-core-race.html">Extension</a>  - <a href="extension-us-core-race.xml.html">XML</a>, <a href="extension-us-core-race.json.html">JSON</a>):
+ <!-- A defined Extension  (example: <a href="extension-us-core-race.html">Extension</a>  - <a href="extension-us-core-race.xml.html">XML</a>, <a href="extension-us-core-race.json.html">JSON</a>): --> <br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -114,7 +123,8 @@ This list shows a number of examples, with links to real examples for each:
 </pre>
  </li>
  
- <li>A constraint on a defined extension (no examples currently defined): <br/>
+ <li>Ограничивающее условие для заданного расширения (пока нет примеров): 
+ <!-- A constraint on a defined extension (no examples currently defined):  --><br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -130,8 +140,9 @@ This list shows a number of examples, with links to real examples for each:
 </ol>
 
 <p>
-On this list, structure definitions of type 1, 3, and 5 can only be defined by the FHIR specification itself. The other kinds of structure definitions 
-are (or may be) created by the specification, but can also be defined by other implementers.
+Первое, третье и пятое структурные определения в этом списке может задать только сама спецификация FHIR. Другие виды структурных определений созданы спецификацией, но могут быть созданы и самими реализаторами.
+<!-- On this list, structure definitions of type 1, 3, and 5 can only be defined by the FHIR specification itself. The other kinds of structure definitions 
+are (or may be) created by the specification, but can also be defined by other implementers. -->
 </p>
 
 <h3>Правила для структур ограничивающего типа  (Constrained Types)<!-- Rules for Constrained Types --></h3>
@@ -142,7 +153,7 @@ are (or may be) created by the specification, but can also be defined by other i
 <ul>
  <li>В структуре обязательно необходимо указать базовый ресурс, на котором она построена
  <!-- The structure must nominate a base resource from which it is derived --></li>
- <li>structure definition не может вводить новые элементы или домены значений, которые не допустимы в этой структуре - например структура должна быть истинно ограничивающей и всё, что соответствует описанию этой структуры также должно быть допустимым в соответствии с описанием базовой структуры
+ <li>Структурное определение не может вводить новые элементы или домены значений, которые не допустимы в этой структуре - например структура должна быть истинно ограничивающей и всё, что соответствует описанию этой структуры также должно быть допустимым в соответствии с описанием базовой структуры
  <!-- The structure definition cannot introduce any new elements or value domains that are not valid in the structure - e.g. the structure must be a true constraint, and anything that meets the description of this structure must also be valid following the description of the base structure --></li>
  <li>На практике это означает, что:<!-- In practice, this means that: -->
    <ul>
@@ -154,7 +165,7 @@ are (or may be) created by the specification, but can also be defined by other i
 	 <!-- The cardinality must be a subset of the allowable cardinality in the base structure i.e. the minimum must be >= the base minimum, and the maximum must be &lt;= the base maximum --></li>
    </ul>
   </li>
-  <li>Обратите внимание, что благодаря слайсингу одному пути может соответствовать больше одного элемента. Более подробную информацию см. в <a href="profiling.html">профилировании ресурсов</a>
+  <li>Обратите внимание, что из-за нарезки одному пути может соответствовать больше одного элемента. Более подробную информацию см. в разделе <a href="profiling.html">Профилирование ресурсов</a>.
   <!-- Note that because of slicing, there can be more than element for the same path. For details, see <a href="profiling.html">Profiling resources</a> --></li>
 </ul>
   
@@ -172,7 +183,7 @@ though the maximum one still does.
   
 <h3>Распространенные адресаты мэппинга<!-- Common Mapping Targets --></h3>
 <p>
-В структурах есть возможность мапить элементы на концепты в других системах определений. Они, как правило, используются для мэппинга элементов на локальные модели реализации, пути данных и концепты. Однако они также используются для мэппинга на другие стандарты и опубликованные справочники. Вот стандартные URI распространенных адресатов мэппинга:
+В структурах есть возможность отображать элементы на концепты в других системах определений. Они, как правило, используются для отображения элементов на локальные модели реализации, пути данных и концепты. Однако они также используются для отображения на другие стандарты и опубликованные справочники. Вот стандартные URI распространённых объектов отображения:
 <!-- Structures are able to map elements to concepts in other definition systems. Generally these are used to 
 map the elements to local implementation models, data paths, and concepts. However they are also used to map
 to other standards and published terminologies. These are the standard URIs used for common targets of the 

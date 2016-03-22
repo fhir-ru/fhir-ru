@@ -16,31 +16,32 @@ If the device is implanted in a patient, then the patient element will be presen
 
 <div>
 <a name="bnr"> </a>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
         <p>Список ресурсов, связанных с ресурсом Device 
         <!-- These are the device related resources --></p>
         <ul>
-          <li>Device (данный ресурс) - административный ресурс, который
-          отслеживает отдельные изделия всех видов и их расположение. В
-          основном используется для соотнесения действий с изделиями. Device (this resource) - An administrative resource that tracks individual device types or instances of a device and their location. It Is referenced by other resource for recording which device performed an action such as a procedure or an observation.  It is also referenced when prescribing and dispensing devices for patient use or for ordering supplies.</li>
+          <li>Device (данный ресурс) - административный ресурс для
+          отслеживания отдельных типов устройств или экземпляров устройства и их расположения. Другие ресурсы ссылаются на него для записи информации об устройстве, выполнившем некоторое действие, например процедуру или обследование. Также на него ссылаются, когда выписывают и выдают устройства для использования пациентами или заказывают расходные материалы.<!-- Device (this resource) - An administrative resource that tracks individual device types or instances of a device and their location. It Is referenced by other resource for recording which device performed an action such as a procedure or an observation.  It is also referenced when prescribing and dispensing devices for patient use or for ordering supplies. --></li>
           <li>
           <a href="devicemetric.html">DeviceMetric</a> - описывает измерение, вычисление или
-          возможную настройку медицинского изделия</li>
+          возможную настройку устройства.</li>
           <li>
           <a href="devicecomponent.html">DeviceComponent</a>, частью которого является DeviceMetric. Это
           может быть DeviceComponent любого вида, например VirtualMedicalDevice (VMD), MedicalDeviceSystem (MDS)
-          или Channel</li>
+          или Channel.</li>
           <!--  <li>Device (this resource) - An administrative resource that tracks individual device types or instances of a device and their location. It Is referenced by other resource for recording which device performed an action such as a procedure or an observation.  It is also referenced when prescribing and dispensing devices for patient use or for ordering supplies.</li>
  <li><a href="devicemetric.html">DeviceMetric</a> - Describes a measurement, calculation or setting  capability of a medical device.</li>
  <li><a href="devicecomponent.html">DeviceComponent</a> that the DeviceMetric is part of. This can be a DeviceComponent of any kind like a VirtualMedicalDevice (VMD), a MedicalDeviceSystem (MDS) , or a Channel</li> -->
         </ul>
         <p>
-In FHIR, the "Device" is the "administrative" resource for the device (it does not change much and has manufacturer information etc.), where as the DeviceComponent and DeviceMetric (which is really a kind of DeviceComponent) model the physical part, including operation status and is much more volatile.
-
-The physical composition of a Device is done by the DeviceComponents pointing to their "parent" component using <a href="devicecomponent-definitions.html#DeviceComponent.parent">DeviceComponent.parent</a>, e.g. channel to VMD and VMD to the MDS. All components point to the "logical" Device they belong to, using <a href="devicecomponent-definitions.html#DeviceComponent.source">DeviceComponent.source</a>.  Similarly, if for example you want to express which logical device your observation came from, you can just use Device, but if you need to be more specific observation can point to DeviceMetric which in turn points to the "logical" Device it belongs to, using <a href="devicecomponent-definitions.html#DeviceMetric.source">DeviceMetric.source</a>.</p>
+        В FHIR ресурс Device описывает административную информацию об устройстве (она не изменяется существенным образом и содержит информацию об изготовителе и т. п.), тогда как ресурсы DeviceComponent и DeviceMetric (который, по сути, является разновидностью ресурса DeviceComponent) описывают физическую составляющую устройства, включая рабочее состояние, и являются намного более непостоянными.
+<!-- In FHIR, the "Device" is the "administrative" resource for the device (it does not change much and has manufacturer information etc.), where as the DeviceComponent and DeviceMetric (which is really a kind of DeviceComponent) model the physical part, including operation status and is much more volatile. -->
+Компоненты устройства описываются в ресурсе DeviceComponents, указывающем на свой родительский компонент с помощью элемента <a href="devicecomponent-definitions.html#DeviceComponent.parent">DeviceComponent.parent</a>, например канал - на VMD, а VMD - на MDS. Все компоненты указывают на "логический" ресурс Device, которому они принадлежат, с помощью элемента <a href="devicecomponent-definitions.html#DeviceComponent.source">DeviceComponent.source</a>.  Аналогичным образом, если, например, вы хотите показать, на каком логическом устройстве был получен некоторый результат наблюдения, вы можете просто использовать ресурс Device, однако если вам нужно больше подробностей, то наблюдение может указывать на ресурс DeviceMetric, который, в свою очередь, будет вести на "логический" ресурс Device, к которому он относится, с помощью элемента <a href="devicecomponent-definitions.html#DeviceMetric.source">DeviceMetric.source</a>.
+<!-- The physical composition of a Device is done by the DeviceComponents pointing to their "parent" component using <a href="devicecomponent-definitions.html#DeviceComponent.parent">DeviceComponent.parent</a>, e.g. channel to VMD and VMD to the MDS. All components point to the "logical" Device they belong to, using <a href="devicecomponent-definitions.html#DeviceComponent.source">DeviceComponent.source</a>.  Similarly, if for example you want to express which logical device your observation came from, you can just use Device, but if you need to be more specific observation can point to DeviceMetric which in turn points to the "logical" Device it belongs to, using <a href="devicecomponent-definitions.html#DeviceMetric.source">DeviceMetric.source</a>. --></p>
 <p>
-Devices that are implanted in a patient differ from medications because they are not "used up" - they remain active in a patient in an ongoing fashion.
-The <a href="medication.html">Medication resource</a> SHOULD not be used to represent implanted devices.
+Медицинские изделия, имплантируемые пациентам, отличаются от медикаментов, поскольку они не "расходуются" - они продолжают работать внутри пациента постоянно. Поэтому не следует использовать ресурс <a href="medication.html">Medication</a> для описания имплантируемых медицинских изделий.
+<!-- Devices that are implanted in a patient differ from medications because they are not "used up" - they remain active in a patient in an ongoing fashion.
+The <a href="medication.html">Medication resource</a> SHOULD not be used to represent implanted devices. -->
 </p>
 
 </div>

@@ -1287,9 +1287,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Publication Date(/time)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата (/время) публикации<!-- Publication Date(/time) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The date  (and optionally time) when the search parameter definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата (и, необязательно, время) публикации этого определения параметра поиска. Дата должна меняться в случае изменения бизнес-версии или кода статуса. Кроме того, она должна меняться при внесении значительных изменений в содержимое определения параметра поиска<!-- The date  (and optionally time) when the search parameter definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Additional specific dates may be added as extensions</Data><NamedCell
@@ -1324,7 +1324,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Почему определен этот параметр поиска<!-- Why this search parameter is defined --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The Scope and Usage that this search parameter was created to meet</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Область действия и применение этого параметра поиска<!-- The Scope and Usage that this search parameter was created to meet --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1355,12 +1355,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code used in URL</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, используемый в URL<!-- Code used in URL --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The code used in the URL or the parameter name in a parameters resource for this search parameter</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, используемый в URL, или имя параметра в ресурсе Parameters, для данного параметра поиска<!-- The code used in the URL or the parameter name in a parameters resource for this search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">For maximum compatibility, use only lowercase ASCII characters</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для максимальной совместимости используйте только символы ASCII в нижнем регистре<!-- For maximum compatibility, use only lowercase ASCII characters --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1391,7 +1391,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Тип ресурса, к которому применяется этот параметр поиска<!-- The resource type this search parameter applies to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The base resource type that this search parameter refers to </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип базового ресурса, к которому применяется этот параметр поиска<!-- The base resource type that this search parameter refers to  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1486,9 +1486,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">XPath that extracts the values</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">XPath-выражение, извлекающее значения<!-- XPath that extracts the values --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">An XPath expression that returns a set of elements for the search parameter</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">XPath-выражение, которое возвращает набор элементов для этого параметра поиска<!-- An XPath expression that returns a set of elements for the search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Обратите внимание, что элементы, возвращаемые этим XPath, иногда являются комплексными элементами, и требуется логика для определения того, как их обрабатывать. Например CodeableConcepts могут содержать текст и/или несколько кодингов, где сами кодинги содержат код и систему<!-- Note that the elements returned by the XPath are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system --></Data><NamedCell
@@ -1522,7 +1522,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">normal | phonetic | nearby | distance | other</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">How the search parameter relates to the set of elements returned by evaluating the xpath query</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Каким образом параметр поиска соотносится с набором элементов, возвращаемых при вычислении этого xpath-выражения<!-- How the search parameter relates to the set of elements returned by evaluating the xpath query --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6454,7 +6454,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">XPathUsageType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">How a search parameter relates to the set of elements returned by evaluating its xpath query.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Каким образом параметр поиска соотносится с набором элементов, возвращаемых при вычислении этого xpath-выражения.<!-- How a search parameter relates to the set of elements returned by evaluating its xpath query. --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">#search-xpath-usage</Data></Cell>
