@@ -286,11 +286,11 @@ public class HierarchicalTableGenerator  {
     
     model.setDocoImg(prefix+"help16.png");
     model.setDocoRef(prefix+"formats.html#table");
-    model.getTitles().add(new Title(null, model.getDocoRef(), "Name", "The logical name of the element", null, 0));
-    model.getTitles().add(new Title(null, model.getDocoRef(), "Flags", "Information about the use of the element", null, 0));
-    model.getTitles().add(new Title(null, model.getDocoRef(), "Card.", "Minimum and Maximum # of times the the element can appear in the instance", null, 0));
-    model.getTitles().add(new Title(null, model.getDocoRef(), "Type", "Reference to the type of the element", null, 100));
-    model.getTitles().add(new Title(null, model.getDocoRef(), "Description & Constraints", "Additional information about the element", null, 0));
+    model.getTitles().add(new Title(null, model.getDocoRef(), "Имя", "The logical name of the element", null, 0));
+    model.getTitles().add(new Title(null, model.getDocoRef(), "Флаги", "Information about the use of the element", null, 0));
+    model.getTitles().add(new Title(null, model.getDocoRef(), "Кард.", "Minimum and Maximum # of times the the element can appear in the instance", null, 0));
+    model.getTitles().add(new Title(null, model.getDocoRef(), "Тип", "Reference to the type of the element", null, 100));
+    model.getTitles().add(new Title(null, model.getDocoRef(), "Описание и ограничения", "Дополнительная информация об элементе", null, 0));
     if (isLogical) {
       model.getTitles().add(new Title(null, prefix+"logical.html", "Implemented As", "How this logical data item is implemented in a concrete resource", null, 0));
     }
@@ -324,7 +324,7 @@ public class HierarchicalTableGenerator  {
       XhtmlNode a = tc.addTag("a").setAttribute("title", "Legend for this format").setAttribute("href", model.getDocoRef());
       if (model.getDocoImg() != null)
         a.addTag("img").setAttribute("alt", "doco").setAttribute("style", "background-color: inherit").setAttribute("src", model.getDocoImg());
-      a.addText(" Documentation for this format");
+      a.addText(" Документация по этому формату");
     }
     return table;
   }
