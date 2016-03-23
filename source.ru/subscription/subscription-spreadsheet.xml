@@ -1240,10 +1240,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Куда указывает этот канал<!-- Where the channel points to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The uri that describes the actual end-point to send messages to</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">URI точки взаимодействия канала, по которому можно отправлять сообщения<!-- The uri that describes the actual end-point to send messages to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">For rest-hook, and websocket, the end-point must be an http: or https: URL; for email, a mailto: url, for sms, a tel: url, and for message the endpoint can be in any form of url the server understands (usually, http: or mllp:). The URI is allowed to be relative; in which case, it is relative to the server end-point (since their may be more than one, clients should avoid using relative URIs)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для REST-хуков и вебсокетов точка взаимодействия должна быть http: или https: URL; для электронной почты mailto: url, для смс tel: url, для сообщения точка взаимодействия может иметь URL любого вида, который распознаётся сервером (обычно это http: or mllp:). URI может быть относительным; в таком случае он будет определяться относительно точки взаимодействия сервера (поскольку их может быть больше одного, клиентам следует избегать использования относительных URI)
+    <!-- For rest-hook, and websocket, the end-point must be an http: or https: URL; for email, a mailto: url, for sms, a tel: url, and for message the endpoint can be in any form of url the server understands (usually, http: or mllp:). The URI is allowed to be relative; in which case, it is relative to the server end-point (since their may be more than one, clients should avoid using relative URIs) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1270,9 +1271,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Mimetype to send, or blank for no payload</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">MIME-тип для отправки, либо оставить пустым, если не несёт полезной нагрузки<!-- Mimetype to send, or blank for no payload --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The mime type to send the payload in - either application/xml+fhir, or application/json+fhir. If the mime type is blank, then there is no payload in the notification, just a notification</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">MIME-тип для отправки полезной нагрузки - application/xml+fhir или application/json+fhir. Если MIME-тип оставлен пустым, значет уведомление не содержит полезной нагрузки, это просто оповещение<!-- The mime type to send the payload in - either application/xml+fhir, or application/json+fhir. If the mime type is blank, then there is no payload in the notification, just a notification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Отправка полезных данных имеет очевидные последствия для безопасности. Сервер отвечает за обеспечение того, что содержимое будет соответствующим образом защищено<!-- Sending the payload has obvious security consequences. The server is responsible for ensuring that the content is appropriately secured --></Data><NamedCell

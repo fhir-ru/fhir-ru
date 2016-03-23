@@ -229,7 +229,8 @@ reasons.  -->
 <h3>Обмен сообщениями<!-- Messaging --></h3>
 
 <p>
-A client can register for its user to receive notifications by <a href="messaging.html">messaging</a>:
+Клиент может зарегистрироваться, чтобы его пользователю приходили уведомления посредством <a href="messaging.html">обмена сообщениями</a>:
+<!-- A client can register for its user to receive notifications by <a href="messaging.html">messaging</a>: -->
 </p>
 
 <pre class="json">
@@ -239,9 +240,10 @@ A client can register for its user to receive notifications by <a href="messagin
   }
 </pre>
 <p>
-For each matching resource, a server will send a message to the 
+Для каждого соответствующего ресурса сервер будет отправлять сообщение на указанную точку взаимодействия. Большинству серверов потребуется, чтобы эта точка взаимодействия была добавлена в "белый" список, чтобы позволить такой вид подписки.
+<!-- For each matching resource, a server will send a message to the 
 nominated end-point. Most servers will require that the end-point
-is white-listed prior to allowing these kinds of subscriptions. 
+is white-listed prior to allowing these kinds of subscriptions.  -->
 </p>
 <blockquote class="dstu-note">
 <a name="dstu"> </a>

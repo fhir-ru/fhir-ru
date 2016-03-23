@@ -1122,9 +1122,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Абсолютная URL-ссылка на этот ресурс StructureDefinition<!-- Absolute URL used to reference this StructureDefinition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An absolute URL that is used to identify this structure definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this structure definition is (or will be) published</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Абсолютный URL для идентификации данного структурного определения, когда на него ссылаются в спецификации, модели, проекте или экземпляре. Это должен быть URL, он должен быть глобально уникальным и должен быть адресом, по которому это структурное определение опубликовано (или будет опубликовано)<!-- An absolute URL that is used to identify this structure definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this structure definition is (or will be) published --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">So you can say, in a StructureDefinition, what the full extension URLs should be. This is required to allow hosting StructureDefinitions on multiple different servers, and to allow for the editorial process</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Чтобы вы могли заявлять в StructureDefinition, какими должны быть полные URL-адреса расширений. Это нужно, чтобы размещать ресурсы StructureDefinition на нескольких различных серверах, а также для редакционного процесса<!-- So you can say, in a StructureDefinition, what the full extension URLs should be. This is required to allow hosting StructureDefinitions on multiple different servers, and to allow for the editorial process --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1955,10 +1955,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Любой тип данных или ресурс, включая абстрактные<!-- Any datatype or resource, including abstract ones --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of type that is being constrained - a data type, an extension, a resource, including abstract ones. If this field is present, it indicates that the structure definition is a constraint. If it is not present, then the structure definition is the definition of a base structure </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип, для которого задаются ограничивающие условия - тип данных, расширение, ресурс, включая абстрактные. Если это поле присутствует, значит это определение базовой структуры<!-- The type of type that is being constrained - a data type, an extension, a resource, including abstract ones. If this field is present, it indicates that the structure definition is a constraint. If it is not present, then the structure definition is the definition of a base structure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">if a constrained type is present, then there SHALL be a base resource as well. Note that the constrained type could be determined by chasing through the base references until the base definition is reached, or by looking at the path of the first element in the snapshot - if present - but providing the constrainedType directly makes for simpler tooling and indexing</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если указан ограничиваемый тип, необходимо также указать и базовый ресурс. Обратите внимание, что ограничиваемый тип может быть определён переходом по базовым ссылкам, пока не будет достигнуто базовое определение, или глядя на путь первого элемента в снапшоте - если присутствует - однако прямое указание элемента constrainedType упрощает поиск и индексацию<!-- if a constrained type is present, then there SHALL be a base resource as well. Note that the constrained type could be determined by chasing through the base references until the base definition is reached, or by looking at the path of the first element in the snapshot - if present - but providing the constrainedType directly makes for simpler tooling and indexing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1992,7 +1992,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Является ли описываемая структура абстрактной или нет - то есть может ли фактический обмениваемый элемент вообще быть этого типа <!-- Whether structure this definition describes is abstract or not  - that is, whether an actual exchanged item can ever be of this type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Abstract Resources cannot be instantiated - a concrete sub-type must be used. Abstract datatypes and extensions cannot be used in an instance. Flagging a constraint structure as abstract conveys design intent but makes no difference to how the structure definition is handled. Note that inline declared elements that are given the type &quot;Element&quot; in the profile, but have children described, are anonymous concrete types that specialise Element. Abstract is not relevant for logical models</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Нельзя создавать экземпляры абстрактных ресурсов, необходимо использовать конкретный подтип. Абсолютные типы данных и расширения нельзя использовать в экземпляре. Пометив ограничивающую структуру абстрактной, вы передаёте концепцию конструкции, но это не меняет то, каким образом будет обрабатываться эта структура. Обратите внимание, что встроенные задекларированные элементы, которые имеют тип&quot;Element&quot; в профиле, но содержат описание дочерних элементов, являются конкретными анонимными типами, наследующими класс Element. Абстракция не имеет значения для логических моделей<!-- Abstract Resources cannot be instantiated - a concrete sub-type must be used. Abstract datatypes and extensions cannot be used in an instance. Flagging a constraint structure as abstract conveys design intent but makes no difference to how the structure definition is handled. Note that inline declared elements that are given the type &quot;Element&quot; in the profile, but have children described, are anonymous concrete types that specialise Element. Abstract is not relevant for logical models --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4417,7 +4417,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition.snapshot</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Each element definition in a snapshot must have a formal definition and cardinalities</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Каждое определение элемента в снапшоте должно иметь формальное определение и кардинальное множество<!-- Each element definition in a snapshot must have a formal definition and cardinalities --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">element.all(definition and min and max)</Data></Cell>
     <Cell ss:StyleID="s110"><Data ss:Type="String">count(f:element) = count(f:element[exists(f:definition) and exists(f:min) and exists(f:max)])</Data></Cell>
    </Row>
@@ -4427,7 +4427,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">A structure must have a base unless abstract = true</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Структура должна иметь элемент base, если только она не является абстрактной<!-- A structure must have a base unless abstract = true --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">base or abstract = 'true'</Data></Cell>
     <Cell ss:StyleID="s110"><Data ss:Type="String">(f:abstract/@value =true()) or exists(f:base)</Data></Cell>
    </Row>
@@ -8634,3 +8634,4 @@
   </AutoFilter>
  </Worksheet>
 </Workbook>
+
