@@ -27,11 +27,12 @@ identifiers SHALL be different. -->
    when used in a <a href="datatypes.html#Coding">Coding</a> --></li>
  <li>Удобство в использовании кодов тесно связано с качеством их определений. Хотя наличие определения для каждого концепта и не обязательно, СЛЕДУЕТ приводить хорошее определение. При отсутствии хоть какого-то определения с концептом не ассоциируется никакое формальное значение.<!-- The usability of the codes is closely linked to the quality of the definitions. 
    Although a definition is not required for each concept, a good definition SHOULD be provided. In the absence of any definition, there is no formal meaning associated with the concept. --></li>
-<li>This specification does not fix the meaning of the relationship between parent and child codes. Most code systems use a subsumption based approach, but 
-    other kinds of relationships are possible, including partitive and categorization relationships. The definitions of the concepts dictate the nature of the relationship.
+<li>Данная спецификация не устанавливает значение взаимосвязи между родительским и дочерним кодами. Многие кодовые системы используют подход на основе отнесения объекта в определённой категории, однако возможно использование и других видов отношений, включая разделительные и отношения классификации.
+<!-- This specification does not fix the meaning of the relationship between parent and child codes. Most code systems use a subsumption based approach, but 
+    other kinds of relationships are possible, including partitive and categorization relationships. The definitions of the concepts dictate the nature of the relationship. -->
  </li>
  <li>Абстрактный концепт ДОЛЖЕН иметь вложенные концепты<!-- An abstract concept SHALL have contained concepts --></li>
-  <li>КОдовая система НЕ ДОЛЖНА содержать дублирующиеся коды<!-- The code system SHALL NOT contain duplicate codes --></li>
+  <li>Кодовая система НЕ ДОЛЖНА содержать дубликаты кодов<!-- The code system SHALL NOT contain duplicate codes --></li>
 </ul>
 <p>
 Примечание: Наборы значений содержат встроенные кодовые системы только в том случае, когда они не определены где-то ещё, например в SNOMED CT, LOINC, RxNorm и др., которые имеют свои собственные публичные дистрибутивы. Для задания набора значений, состоящего из кодов других кодовых систем, см. "компоновку" ниже.<!-- Note: Value sets only contain inline code systems when they are not defined elsewhere,
@@ -114,7 +115,7 @@ facility is provided to cover the following circumstances: -->
 <ul>
  <li>Система, которая определяет код или выражение, не предоставляет значения для отображения для этого кода (или всех кодов).<!-- The system that defines the code or expression doesn't provide a display for this code (or any codes). --></li>
  <li>Система, которая определяет код или выражение, предоставляет на выбор несколько значений для отображения.<!-- The system that defines the code or expression defines multiple choices for display. --></li>
- <li>Система предлагает очень длинное название для отображения, в котором нет необходимости или которое не подходит в контексте данного набора значений (например название для отображения "Glucose [Mass/volume] in Serum or Plasma --10 PM specimen" для LOINC-кода 48991-4, когда набор значений включает только Glucose mass/vol в кодах serum/plasma). С удлинением названий для отображения эта возможность становится все более и более актуальной. <!-- The system provides a very long display name that is unnecssary or innappropriate in the context of this value set (e.g. a display name of "Glucose [Mass/volume] in Serum or Plasma --10 PM specimen" for LOINC code 48991-4, when the value set only includes Glucose mass/vol in serum/plasma codes). As the display names get longer, this becomes more important. --></li>
+ <li>Система предлагает очень длинное название для отображения, в котором нет необходимости или которое не подходит в контексте данного набора значений (например название для отображения "Glucose [Mass/volume] in Serum or Plasma --10 PM specimen" для LOINC-кода 48991-4, когда набор значений включает только Glucose mass/vol в кодах serum/plasma). С удлинением названий для отображения эта возможность становится все более и более актуальной. <!-- The system provides a very long display name that is unnecssary or innappropriate in the context of this value set (e.g. a display name of "Glucose [Mass/volume] in Serum or Plasma -10 PM specimen" for LOINC code 48991-4, when the value set only includes Glucose mass/vol in serum/plasma codes). As the display names get longer, this becomes more important. --></li>
 </ul>
 <p>
 Обратите внимание, что необходимо соблюдать осторожность, чтобы избежать "изменения смысла" концепта что он значит что-то другое, чем явное определение концепта в лежащей в основе системе (например для случая выше это будет использование значения для отображения "Glucose Concentration at 10pm"). 
@@ -133,22 +134,25 @@ specified in the value set would go in <a href="datatypes.html#CodeableConcept">
 </p>
  
 <a name="multiples"> </a>
-<h2>Value Sets with multiple code systems</h2> 
+<h2>Наборы значений с несколькими кодовыми системами<!-- Value Sets with multiple code systems --></h2> 
 <p>
-Value sets may select codes from multiple code systems - either 
+Наборы значений могут выбирать коды из нескольких кодовых систем: через включение кодов из различных систем, импорт других наборов значений, которые их содержат, и/или содержать свою собственную кодовую систему.
+<!-- Value sets may select codes from multiple code systems - either 
 by including codes from different systems, importing other 
-value sets that include them, and/or containing their own code system.
+value sets that include them, and/or containing their own code system. -->
 </p>
 <p>
-Note that a value set always includes any codes in an inline code system, even if 
+Отметьте, что набор значений всегда включает в себя все коды встроенной кодовой системы, даже если содержит элемент "compose". Обычно набор значений содержит и элемент "compose", и встроенную кодовую систему, когда включает в себя набор кодов откуда-то ещё, и добавляет несколько дополнительных кодов для покрытия случаев использования, для которых не подходят включенные коды.
+<!-- Note that a value set always includes any codes in an inline code system, even if 
 it also has a compose. A typical use for containing both a compose statement and 
 an inline code system is when including a set of codes from elsewhere, and adding 
-a few additional codes to cover cases not catered to by the included codes. 
+a few additional codes to cover cases not catered to by the included codes.  -->
 </p> 
 <p>
-Best Practice Note: Mixing definitional systems offers the potential for 
+Рекомендация: смешивание систем определений является потенциальным источником путаницы, наложений и противоречивых определений. Следует с осторожностью создавать наборы значений, комбинирующие кодовые системы, чтобы избежать путаницы в определениях.
+<!-- Best Practice Note: Mixing definitional systems offers the potential for 
 confusing, overlapping, and inconsistent definitions. Creating value sets that cross
-code systems should be done with care to avoid creating definitional confusion.
+code systems should be done with care to avoid creating definitional confusion. -->
 </p>
 <a name="csnote"> </a> 
 <h3>Примечание к кодовым системам<!-- Code systems Note --></h3>
@@ -249,12 +253,14 @@ value set <code>codeSystem</code> and <code>compose</code> offer no support for 
 extensions or other knowledge to introduce such groups as an implementation feature. --> 
 </p>
 <p>
-The codes in the expansion should be treated as case sensitive - implementers should use the correct 
+Коды в развёртке необходимо обрабатывать как чувствительные к регистру - реализаторы должны использовать правильный регистр. Реализаторы могут обратиться к определению кодовой системы, чтобы установить, чувствительны ли к регистру коды этой системы.
+<!-- The codes in the expansion should be treated as case sensitive - implementers should use the correct 
 case. Implementers can consult the definition of the code system to determine whether the code system
-that defines the code is case sensitive or not. 
+that defines the code is case sensitive or not.  -->
 </p>
 <p>
-Whether to store expanded value sets, or simply to store their definitions and expand on the fly is 
+Хранить ли развёртки наборов значений или только их определения и разворачивать на лету - является вопросом разработки системы.  Некоторые серверы, включая публичные серверы наборов значений, хранят только развёртки. Однако любая система, хранящая развёртку, должна заботиться о том, чтобы развёртка оставалась актуальной, что требует знания того, как была создана эта развёртка. Система с выделенным терминологическим сервером, который возвращает развёртки по запросу, избегает этой проблемы, но оставляет открытым вопрос, как проводить аудит такой развёртки, которая была использована для конкретного случая. Одним из решений для этого вопроса может быть использование выделенного терминологического сервера, и клиенты будут запрашивать развёртки по требованию на основе определений наборов значений, и для сервера хранить (и повторно использовать при необходимости) возвращаемую развёртку (когда он повторно использует развёртку, идентификатор ValueSet.expansion.identifier будет оставаться тем же самым).
+<!-- Whether to store expanded value sets, or simply to store their definitions and expand on the fly is 
 a matter for system deployment. Some servers, including public value sets servers, only store expansions. 
 However any system that stores an expansion must be concerned with how to determine whether the expansion 
 is still current, and this requires deep knowledge of how the expansion was created. 
@@ -263,13 +269,14 @@ leaves open the question of how to audit the specific expansion that was used fo
 One solution to this is to use a dedicated terminology server, and have the clients ask for 
 expansions on demand based on the value set definitions, and for the server to store (and reuse as 
 appropriate) the returned expansion (when it reuses the expansion, ValueSet.expansion.identifier will
-be the same).
+be the same). -->
 </p>
 
 <a name="detailed-metadata"/>
-<h3>Code systems with detailed metadata</h3>
+<h3>Кодовые системы с подробными метаданными<!-- Code systems with detailed metadata --></h3>
 <p>
-Sometimes code systems may be used to represent more complex information than just 
+Иногда кодовые системы можно использовать для представления более сложной информации, чем просто код, значение доля отображения и кодовая система. Например кодовая система лекарственных препаратов, которая содержит информацию о медикаменте (например RxNorm) или набор типов наблюдений, который содержит методы, единицы измерения и т. п. (например LOINC). В FHIR это обрабатывается разбиением концепта на две разные части - ресурс <b>ValueSet</b> используется для задания кодов, имён для отображения и взаимосвязей. Отдельный "детализирующий" ресурс (например  <a href="medication.html">Medication</a> для лекарственных препаратов,  <a href="dataelement.html">DataElement</a> для типов наблюдений, <a href="location.html">Location</a> для местоположений и т. д.) используется для передачи подробной информации (форма и сила дозы, допустимый тип данных или разрешённые значения, адрес и время операции, и др.). Для каждого кода создаётся отдельный "детализирующий" ресурс.
+<!-- Sometimes code systems may be used to represent more complex information than just 
 code, display name and code system.  For example, a code system of drug information
 which contains information about the content of the medication (e.g., RxNorm), or a set of  
 observation types, that contain methods, units, etc. (e.g., LOINC).  
@@ -279,38 +286,41 @@ A separate "detail" resource (e.g., <a href="medication.html">Medication</a> for
 drugs, <a href="dataelement.html">DataElement</a> for observation types, 
 <a href="location.html">Location</a> for location, etc.) is used to convey detailed 
 information (dose form &amp; strength, allowed data type or permitted values, address &amp;
-hours of operation, etc.).  One "detail" resource instance is created for each code.
+hours of operation, etc.).  One "detail" resource instance is created for each code. -->
 </p>
 <p>
-This division accomplishes several things:
+Такое подразделение служит нескольким целям:
+<!-- This division accomplishes several things: -->
 </p>
 <ul>
-<li>It allows generic systems that support terminology management to perform standard 
+<li>Оно позволяет общим системам, которые поддерживают управление справочниками, выполнять стандартные терминологические операции над кодовыми системами, работающими со сложными структурами - поиск по кодам, валидация, проверка на вхождение, установление соответствия и перевод.<!-- It allows generic systems that support terminology management to perform standard 
 terminology operations on code systems dealing with complex structures - code lookup, 
-validation, subsumption testing, mapping and translation.</li>
-<li>It allows information to be exchanged about individual medications, data elements 
+validation, subsumption testing, mapping and translation. --></li>
+<li>Оно позволяет обмениваться информацией об отдельных медикаментах, элементах данных и местоположениях. В FHIR нельзя извлекать коды по отдельности - только весь ресурс целиком. Размещение детализированной информации в отдельные ресурсы делает возможным их независимое извлечение и обновление.<!-- It allows information to be exchanged about individual medications, data elements 
 and locations.  Codes can't be retrieved individually in FHIR - it is necessary to 
 retrieve the entire resource.  By packaging the detailed information in separate 
-resources, independent retrieval and update is possible.</li>
-<li>It supports use-cases for sharing medication, location, observation type and 
+resources, independent retrieval and update is possible. --></li>
+<li>Оно поддерживают сценарии совместного использования данных о медикаменте, местоположении, типе наблюдения и другой подобной информации в обстоятельствах, когда код может быть неизвестен, недоступен или может не существовать (например заказные соединения, незарегисрированные местоположения). Наличие отдельного ресурса даёт такие возможности, которые были бы невозможны с использованием ресурса <b>ValueSet</b>.<!-- It supports use-cases for sharing medication, location, observation type and 
 similar information in circumstances where the code may be unknown, unavailable or 
 occasionally non-existent (e.g., custom compounds, non-registered locations).  Having 
 a distinct resource supports these capabilities, which would not be possible using 
-<b>ValueSet</b>.</li>
+<b>ValueSet</b>. --></li>
 </ul>
 <p>
-Note that this division in FHIR does not imply that a similar division is required in 
+Обратите внимание, что такое разделение в FHIR не подразумевает, что подобное разделение требуется во внутреннем представлении, используемом системами с FHIR-интерфейсом. Аналогичным образом, некоторые системы могут выбрать поддерживать или использовать только один аспект подобных информационных типов (т. е. только отдельные экземпляры ресурса или только набор значений).
+<!-- Note that this division in FHIR does not imply that a similar division is required in 
 the internal representation used by systems exposing a FHIR interface.  Similarly, some 
 systems may choose to only expose or maintain one aspect of such information types (i.e. 
-only the discrete resource instances or only the value set).
+only the discrete resource instances or only the value set). -->
 </p>
 <p>
-The linkage between the "detail" resource and the <b>ValueSet</b> is accomplished via the 
+Связь между "детализирующим" ресурсом и набором значений <b>ValueSet</b> устанавливается с помощью элемента <code>code</code> (или его эквивалента) в детализирующем ресурсе. Также "name" или "title" детализирующего ресурса обычно совпадает с именем для отображения в соответствующем коде. Многие детализирующие ресурсы будут также иметь элемент "identifier". Он <i>может</i> быть установлен в то же самое значение и пространство имён, что и этот код, однако если единственным идентификатором ресурса будет его код определения, может быть лучше опустить такой идентификатор полностью.
+<!-- The linkage between the "detail" resource and the <b>ValueSet</b> is accomplished via the 
 <code>code</code> element (or equivalent) on the detail resource.  As well, the "name" or 
 "title" on the detail resource generally corresponds with the display name on the matching 
 code.  Most detail resources will also have an "identifier" element.  This <i>can</i> be
 set to the same value and namespace as the code, but if the only identifier a resource has
-is its defining code, it may be better to omit the identifier entirely.
+is its defining code, it may be better to omit the identifier entirely. -->
 </p>
 
 </div>

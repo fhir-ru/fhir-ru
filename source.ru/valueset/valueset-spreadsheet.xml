@@ -4448,7 +4448,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">ValueSet</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">A value set with only one import SHALL also have an include and/or an exclude unless the value set includes and inline code system</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Набор значений с одним только импортом ДОЛЖЕН также иметь элементы include и/или exclude, если только этот набор значений не содержит встроенную кодовую систему <!-- A value set with only one import SHALL also have an include and/or an exclude unless the value set includes and inline code system --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">compose.import.count() != 1 or compose.include or compose.exclude or codeSystem</Data></Cell>
     <Cell ss:StyleID="s111"><Data ss:Type="String">not(exists(f:compose)) or (count(f:compose/f:import)!=1 or exists(f:compose/f:include) or exists(f:compose/f:exclude) or exists(f:codeSystem))</Data></Cell>
    </Row>
@@ -4468,7 +4468,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">ValueSet</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Value set SHALL contain at least one of a codeSystem, a compose, or an expansion element</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Набор значений ДОЛЖЕН содержать по крайней мере один из элементов codeSystem, compose или expansion<!-- Value set SHALL contain at least one of a codeSystem, a compose, or an expansion element --></Data></Cell>
     <Cell ss:StyleID="s111"><Data ss:Type="String">codeSystem or compose or expansion</Data></Cell>
     <Cell ss:StyleID="s111"><Data ss:Type="String">exists(f:codeSystem) or exists(f:compose) or exists(f:expansion)</Data></Cell>
    </Row>
@@ -4488,7 +4488,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">ValueSet</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">A defined code system (if present) SHALL have a different url than the value set url</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Заданная кодовая система (если присутствует) ДОЛЖНА иметь URL, отличный от URL набора значений<!-- A defined code system (if present) SHALL have a different url than the value set url --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">codeSystem.empty() or (codeSystem.system != url)</Data></Cell>
     <Cell ss:StyleID="s112"><Data ss:Type="String">not(f:codeSystem/f:system/@value = f:url/@value)</Data></Cell>
    </Row>
@@ -4528,7 +4528,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s83"><Data ss:Type="String">ValueSet.compose.include</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Cannot have both concept and filter</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Не может иметь одновременно элементы concept и filter<!-- Cannot have both concept and filter --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">concept.empty() or filter.empty()</Data></Cell>
     <Cell ss:StyleID="s109"><Data ss:Type="String">not(exists(f:concept)) or not(exists(f:filter))</Data></Cell>
    </Row>
@@ -4966,7 +4966,7 @@
     <Cell><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">ValueSet.url</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The logical URL for the value set</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Логический URL набора значений<!-- The logical URL for the value set --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">identifier</Data></Cell>
@@ -5043,7 +5043,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s122"><Data ss:Type="String">ValueSet.useContext</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">A use context assigned to the value set</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Контекст использования набора значений<!-- A use context assigned to the value set --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s121"><Data ss:Type="String">expansion</Data></Cell>
