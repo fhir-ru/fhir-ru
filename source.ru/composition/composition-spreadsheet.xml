@@ -1592,13 +1592,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Organization which maintains the composition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, обслуживающая композицию<!-- Organization which maintains the composition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет организацию или группу, которая несет ответственность за текущее обслуживание и доступ к информации композиции/документа<!-- Identifies the organization or group who is responsible for ongoing maintenance of and access to the composition/document information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет, куда идти, чтобы найти текущую версию, куда сообщать о проблемах и т. п. <!-- Identifies where to go to find the current version, where to report issues, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет, где можно найти текущую версию, куда сообщать о проблемах и т. п. <!-- Identifies where to go to find the current version, where to report issues, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Это полезно, если документы получены из композиции - дает указания о том, как получить последнюю версию документа. Не является обязательным, поскольку знание об этом иногда не известно авторской системе, и может быть выведено из контекста. Однако важно, чтобы эта информация была известна при работе с полученным документом, таким образом рекомендуется предоставление хранителя (custodian)<!-- This is useful when documents are derived from a composition - provides guidance for how to get the latest version of the document. This is optional because this is sometimes not known by the authoring system, and can be inferred by context. However it is important that this information be known when working with a derived document, so providing a custodian is encouraged --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это полезно, если документы получены из композиции - даёт указания о том, как получить последнюю версию документа. Не является обязательным, поскольку знание об этом иногда не известно авторской системе, и может быть выведено из контекста. Однако важно, чтобы эта информация была известна при работе с полученным документом, таким образом рекомендуется предоставление хранителя (custodian)<!-- This is useful when documents are derived from a composition - provides guidance for how to get the latest version of the document. This is optional because this is sometimes not known by the authoring system, and can be inferred by context. However it is important that this information be known when working with a derived document, so providing a custodian is encouraged --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.participation[typeCode=&quot;RCV&quot;].role[classCode=&quot;CUST&quot;].scoper[classCode=&quot;ORG&quot; and determinerCode=&quot;INST&quot;]</Data><NamedCell
@@ -1628,9 +1628,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Документируемые клиническая(-ие) услуга(-и)<!-- The clinical service(s) being documented --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Документируемые клинические услуги<!-- The clinical service(s) being documented --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Клиническая услуга, например колоноскопия или аппендэктомия, которая документируется<!-- The clinical service, such as a colonoscopy or an appendectomy, being documented --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Документируемая клиническая услуга, например колоноскопия или аппендэктомия<!-- The clinical service, such as a colonoscopy or an appendectomy, being documented --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Предоставляет контекст для композиции и создает связь между ресурсом, описывающим событие, и композицией, созданной для описания этого события.<!-- Provides context for the composition and creates a linkage between a resource describing an event and the composition created describing the event. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1667,7 +1667,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Код(-ы), который применяется к документируемому событию<!-- Code(s) that apply to the event being documented --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды, относящиеся к документируемому событию<!-- Code(s) that apply to the event being documented --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Данный список кодов представляет собой основные клинические акты, такие как колоноскопия или аппендэктомия, которые документируются. В некоторых случаях событие берется из typeCode, например &quot;History and Physical Report&quot;, в котором документируемой процедурой обязательно будет акт &quot;History and Physical&quot;. <!-- This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a &quot;History and Physical Report&quot; in which the procedure being documented is necessarily a &quot;History and Physical&quot; act. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2029,13 +2029,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Order of section entries</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Порядок записей в секции<!-- Order of section entries --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Specifies the order applied to the items in the section entries</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет порядок записей в секциях<!-- Specifies the order applied to the items in the section entries --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это важно для показа и отображения. Списки могут быть отсортированы, чтобы расположить более важную информацию первой или сгруппировать связанные записи.<!-- Important for presentation and rendering.  Lists may be sorted to place more important information first or to group related entries. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Applications SHOULD render ordered lists in the order provided, but MAY allow users to re-order based on their own preferences as well. If there is no order specified, the order is unknown, though there may still be some order</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Приложения должны отображать списки с применением указанного порядка сортировки, однако могут также позволять пользователям менять порядок сортировки в соответствии со своими предпочтениями. Если порядок сортировки не указан, то он считается неизвестным, хотя некоторый порядок всё ещё может присутствовать <!-- Applications SHOULD render ordered lists in the order provided, but MAY allow users to re-order based on their own preferences as well. If there is no order specified, the order is unknown, though there may still be some order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.outboundRelationship[typeCode=COMP].sequenceNumber &gt; 1 </Data><NamedCell
@@ -2065,12 +2065,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A reference to data that supports this section</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылка на вспомогательные данные для этой секции<!-- A reference to data that supports this section --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A reference to the actual resource from which the narrative in the section is derived</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на актуальный ресурс, из которого взята описательная часть для секции<!-- A reference to the actual resource from which the narrative in the section is derived --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If there are no entries in the list, an emptyReason SHOULD be provided</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если в списке нет записей, необходимо указать причину их отсутствия с помощью элемента emptyReason<!-- If there are no entries in the list, an emptyReason SHOULD be provided --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.outboundRelationship[typeCode=COMP] or  .participation[typeCode=SBJ]</Data><NamedCell
@@ -2102,13 +2102,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Why the section is empty</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Почему секция пустая<!-- Why the section is empty --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the section is empty, why the list is empty. An empty section typically has some text explaining the empty reason</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если секция пустая, указать, почему список пуст. Пустая секция обычно содержит некоторый текст, поясняющий, почему она пустая<!-- If the section is empty, why the list is empty. An empty section typically has some text explaining the empty reason --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows capturing things like &quot;none exist&quot; or &quot;not asked&quot; which can be important for most lists</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Помогает фиксировать такие значения, как &quot;таковые отсутствуют&quot; или &quot;не спросили&quot;, которые могут быть важными для многих списков<!-- Allows capturing things like &quot;none exist&quot; or &quot;not asked&quot; which can be important for most lists --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The various reasons for an empty section make a significant interpretation to its interpretation. Note that this code is for use when the entire section content has been suppressed, and not for when individual items are omitted - implementers may consider using a text note or a flag on an entry in these cases </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Различные причины пустой секции важны для её интерпретации. Обратите внимание, что этот код используется тогда, когда содержимое всей секции целиком замалчивается, а не когда опущены отдельные пункты - для этих случаев реализаторы могут рассмотреть использование флага для записи<!-- The various reasons for an empty section make a significant interpretation to its interpretation. Note that this code is for use when the entire section content has been suppressed, and not for when individual items are omitted - implementers may consider using a text note or a flag on an entry in these cases  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.inboundRelationship[typeCode=SUBJ,code&lt;{ListEmptyReason}].value[type=CD]</Data><NamedCell
@@ -3782,7 +3782,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Section Content</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Composition.section</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">A section must at least one of text, entries, or sub-sections</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Секция должна содержать хотя бы один из элементов text, entry или section<!-- A section must at least one of text, entries, or sub-sections --></Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">text or entry or section</Data></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String">exists(f:text) or exists(f:entry) or exists(f:section)</Data></Cell>
    </Row>
@@ -3792,7 +3792,7 @@
     <Cell ss:StyleID="s83"><Data ss:Type="String">No emptyReason if section entries are not empty</Data></Cell>
     <Cell ss:StyleID="s83"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Composition.section</Data></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">A section can only have an emptyReason if it is empty</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Секция может иметь элемент emptyReason, только если она пустая<!-- A section can only have an emptyReason if it is empty --></Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">emptyReason.empty() or entry.empty()</Data></Cell>
     <Cell ss:StyleID="s109"><Data ss:Type="String">not(exists(f:emptyReason) and exists(f:entry))</Data></Cell>
    </Row>
@@ -6365,7 +6365,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s93"><Data ss:Type="String">DocumentClass</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">High-level kind of a clinical document at a macro level.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Высокоуровневая классификация клинического документа на макроуровне.<!-- High-level kind of a clinical document at a macro level. --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s119"/>
@@ -6385,7 +6385,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">SectionMode</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The processing mode that applies to this section.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Режим обработки, который применяется к данной секции.<!-- The processing mode that applies to this section. --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s119"/>
@@ -6401,7 +6401,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">SectionEmptyReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If a section is empty, why it is empty.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если секция пустая, то причина, почему она пустая.<!-- If a section is empty, why it is empty. --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s119"/>
@@ -6417,7 +6417,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">SectionEntryOrder</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What order applies to the items in the entry.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Какой порядок сортировки применяется к пунктам этой записи.<!-- What order applies to the items in the entry. --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s119"/>

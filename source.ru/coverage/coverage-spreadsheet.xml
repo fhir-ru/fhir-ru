@@ -1076,9 +1076,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">BIN Number</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Бизнес-идентификационный номер<!-- BIN Number --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Business Identification Number (BIN number) used to identify the routing  of eclaims if the insurer themselves don't have a BIN number for all of their business.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Бизнес-идентификационный номер (БИН), используемый для идентификации маршрутизации электронных исков, если сам страховщик не имеет БИН для своего бизнеса.<!-- Business Identification Number (BIN number) used to identify the routing  of eclaims if the insurer themselves don't have a BIN number for all of their business. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1146,7 +1146,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Тип страхового покрытия<!-- Type of coverage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health. </Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Тип страхового покрытия: социальная программа, медицинский план, страховка от несчастных случаев (компенсации работникам, авто), групповое медицинское страхование.<!-- The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">От типа страхового покрытия зависит порядок применения страховых покрытий.<!-- The order of application of coverages is dependent on the types of coverage. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1181,7 +1181,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор подписчика<!-- Subscriber ID --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The id issued to the subscriber.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентификатор подписчика.<!-- The id issued to the subscriber. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1565,7 +1565,8 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Стороны, покрываемые страховкой<!-- Covered parties --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Persons for whom this coverage provides health insurance.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">
+Лица, для которых это страховое покрытие обеспечивает медицинское страхование.<!-- Persons for whom this coverage provides health insurance. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4520,7 +4521,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Coverage.subscriber</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Reference to the subscriber</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Ссылка на подписчика<!-- Reference to the subscriber --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"/>

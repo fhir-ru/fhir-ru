@@ -4,7 +4,7 @@
 <a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-Ресурс Contract - основной ресурс для передачи информации о всевозможных контрактах на обязательства по финансированию (например страховые полисы), сделки (например договоры на поставку), конфиденциальность и безопасность (например директивы согласия (consent directives)).
+Ресурс Contract - основной ресурс для передачи информации о всевозможных контрактах на обязательства по финансированию (например страховые полисы), сделки (например договоры на поставку), конфиденциальность и безопасность (например директивы согласия).
 <!-- The Contract resource is the basal resource to convey information of all manner of contracts for financial (e.g. Insurance policies),
  business arrangements (eg. supply contracts) and privacy and security (e.g. consent directives). -->
 
