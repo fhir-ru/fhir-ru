@@ -984,7 +984,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Критерии подписки на доставку данных сервером (методом push)<!-- A server push subscription criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс subscription (подписка) используется для определения подписки на основе метода push с сервера в другую систему. После регистрации подписки на сервере, сервер проверяет каждый ресурс, который создается или обновляется, и если ресурс соответствует заданным критериям, то он посылает сообщение в определенный &quot;канал&quot;, чтобы другая система могла выполнить надлежащее действие<!-- The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined &quot;channel&quot; so that another system is able to take an appropriate action --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Ресурс Subscription (Подписка) используется для определения подписки на основе метода push с сервера в другую систему. После регистрации подписки на сервере, сервер проверяет каждый ресурс, который создается или обновляется, и если ресурс соответствует заданным критериям, то он посылает сообщение в определенный &quot;канал&quot;, чтобы другая система могла выполнить надлежащее действие<!-- The subscription resource is used to define a push based subscription from a server to another system. Once a subscription is registered with the server, the server checks every resource that is created or updated, and if the resource matches the given criteria, it sends a message on the defined &quot;channel&quot; so that another system is able to take an appropriate action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1014,7 +1014,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Правило критерия выполнения команды push сервера<!-- Rule for server push criteria --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Правило для критерия выполнения команды push сервером<!-- Rule for server push criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Правила, которые использует сервер для определения, когда ему следует создавать оповещения для данной подписки<!-- The rules that the server should use to determine when to generate notifications for this subscription --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1243,7 +1243,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">URI точки взаимодействия канала, по которому можно отправлять сообщения<!-- The uri that describes the actual end-point to send messages to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Для REST-хуков и вебсокетов точка взаимодействия должна быть http: или https: URL; для электронной почты mailto: url, для смс tel: url, для сообщения точка взаимодействия может иметь URL любого вида, который распознаётся сервером (обычно это http: or mllp:). URI может быть относительным; в таком случае он будет определяться относительно точки взаимодействия сервера (поскольку их может быть больше одного, клиентам следует избегать использования относительных URI)
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для REST-хуков и вебсокетов точка взаимодействия должна быть http: или https: URL; для электронной почты mailto: url, для SMS tel: url, для сообщения точка взаимодействия может иметь URL любого вида, который распознаётся сервером (обычно это http: or mllp:). URI может быть относительным; в таком случае он будет определяться относительно точки взаимодействия сервера (поскольку их может быть больше одного, клиентам следует избегать использования относительных URI)
     <!-- For rest-hook, and websocket, the end-point must be an http: or https: URL; for email, a mailto: url, for sms, a tel: url, and for message the endpoint can be in any form of url the server understands (usually, http: or mllp:). The URI is allowed to be relative; in which case, it is relative to the server end-point (since their may be more than one, clients should avoid using relative URIs) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1369,12 +1369,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тег для добавления к соответствующим ресурсам<!-- A tag to add to matching resources --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тег для добавления соответствующим ресурсам<!-- A tag to add to matching resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тег для добавления к любому ресурсу, который соответствует критериям, после обработки подписки<!-- A tag to add to any resource that matches the criteria, after the subscription is processed --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тег для добавления любому ресурсу, который соответствует критериям, после обработки подписки<!-- A tag to add to any resource that matches the criteria, after the subscription is processed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Чтобы другие системы могли сказать, какие ресурсы выступали объектом оповещения<!-- So that other systems can tell which resources have been the subject of a notification --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Чтобы другие системы могли сказать, какие ресурсы были объектами оповещения<!-- So that other systems can tell which resources have been the subject of a notification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6152,7 +6152,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">SubscriptionTag</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Tags to put on a resource after subscriptions have been sent.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Теги для добавления ресурсу после отправки подписок.<!-- Tags to put on a resource after subscriptions have been sent. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#subscription-tag</Data></Cell>

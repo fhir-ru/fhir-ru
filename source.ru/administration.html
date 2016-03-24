@@ -10,30 +10,30 @@
 
 <div class="col-12">
 
-<tr><td colspan="4" style="border-top: silver solid 1px"><a href="administration.html"><b>Identification</b></a></td></tr>
+<tr><td colspan="4" style="border-top: silver solid 1px"><a href="administration.html"><b>Идентификация<!-- Identification --></b></a></td></tr>
 <tr><td>
-<p><b>Individuals:</b></p>
+<p><b>Люди<!-- Individuals -->:</b></p>
 <ul>
   <li><a title="[%resdesc Patient%]" href="patient.html">Patient</a>[%fmm Patient%]</li>
   <li><a title="[%resdesc Practitioner%]" href="practitioner.html">Practitioner</a>[%fmm Practitioner%]</li>
   <li><a title="[%resdesc RelatedPerson%]" href="relatedperson.html">RelatedPerson</a>[%fmm RelatedPerson%]</li>
 </ul>
 </td><td style="border-left: 1px solid #eeeeee">
-<p><b>Groups:</b></p>
+<p><b>Группы<!-- Groups -->:</b></p>
 <ul>
   <li><a title="[%resdesc Group%]" href="group.html">Group</a>[%fmm Group%]</li>
   <li><a title="[%resdesc HealthcareService%]" href="healthcareservice.html">HealthcareService</a>[%fmm HealthcareService%]</li>
   <li><a title="[%resdesc Organization%]" href="organization.html">Organization</a>[%fmm Organization%]</li>
 </ul>
 </td><td style="border-left: 1px solid #eeeeee">
-<p><b>Entities:</b></p>
+<p><b>Сущности<!-- Entities -->:</b></p>
 <ul>
   <li><a title="[%resdesc Location%]" href="location.html">Location</a>[%fmm Location%]</li>
   <li><a title="[%resdesc Person%]" href="person.html">Person</a>[%fmm Person%]</li>
   <li><a title="[%resdesc Substance%]" href="substance.html">Substance</a>[%fmm Substance%]</li>
 </ul>
 </td><td style="border-left: 1px solid #eeeeee">
-<p><b>Devices:</b></p>
+<p><b>Устройства<!-- Devices -->:</b></p>
 <ul>
   <li><a title="[%resdesc Device%]" href="device.html">Device</a>[%fmm Device%]</li>
   <li><a title="[%resdesc DeviceComponent%]" href="devicecomponent.html">DeviceComponent</a>[%fmm DeviceComponent%]</li>
@@ -42,7 +42,7 @@
 </td></tr>
 <tr><td colspan="4" style="border-top: silver solid 1px"><a href="administration.html"><b>Workflow</b></a></td></tr>
 <tr><td>
-<p><b>Patient Management:</b></p>
+<p><b>Ведение пациента<!-- Patient Management -->:</b></p>
 <ul>
   <li><a title="[%resdesc Encounter%]" href="encounter.html">Encounter</a>[%fmm Encounter%]</li>
   <li><a title="[%resdesc EpisodeOfCare%]" href="episodeofcare.html">EpisodeOfCare</a>[%fmm EpisodeOfCare%]</li>
@@ -50,7 +50,7 @@
   <li><a title="[%resdesc Communication%]" href="communication.html">Communication</a>[%fmm Communication%]</li>
 </ul>
 </td><td style="border-left: 1px solid #eeeeee">
-<p><b>Scheduling:</b></p>
+<p><b>Планирование расписания<!-- Scheduling -->:</b></p>
 <ul>
 	<li><a title="[%resdesc Appointment%]" href="appointment.html">Appointment</a>[%fmm Appointment%]</li>
 	<li><a title="[%resdesc AppointmentResponse%]" href="appointmentresponse.html">AppointmentResponse</a>[%fmm AppointmentResponse%]</li>
@@ -58,7 +58,7 @@
 	<li><a title="[%resdesc Slot%]" href="slot.html">Slot</a>[%fmm Slot%]</li>
 </ul>
 </td><td style="border-left: 1px solid #eeeeee">
-<p><b>Workflow #1:</b></p>
+<p><b>Рабочий процесс #1<!-- Workflow #1 -->:</b></p>
 <ul>
   <li><a title="[%resdesc Order%]" href="order.html">Order</a>[%fmm Order%]</li>
   <li><a title="[%resdesc OrderResponse%]" href="orderresponse.html">OrderResponse</a>[%fmm OrderResponse%]</li>
@@ -67,7 +67,7 @@
   <li><a title="[%resdesc CommunicationRequest%]" href="communicationrequest.html">CommunicationRequest</a>[%fmm CommunicationRequest%]</li>
 </ul>
 </td><td style="border-left: 1px solid #eeeeee">
-<p><b>Workflow #2:</b></p>
+<p><b>Рабочий процесс #2<!-- Workflow #2 -->:</b></p>
 <ul>
   <li><a title="[%resdesc ProcessRequest%]" href="processrequest.html">ProcessRequest</a>[%fmm ProcessRequest%]</li>
   <li><a title="[%resdesc ProcessResponse%]" href="processresponse.html">ProcessResponse</a>[%fmm ProcessResponse%]</li>
@@ -83,48 +83,53 @@
 <table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
  
 	<table class="bare">
-		[%res-category Люди| Отслеживание людей и организаций, участвующих в процессе оказания услуг по лечению%]
+		[%res-category Люди| Отслеживание людей и организаций, участвующих в процессе оказания медицинских услуг%]
 		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item Patient%]
 		[%res-item RelatedPerson%]
 		[%res-item Practitioner%]
 
-		[%res-category Groups|Track grouping entities involved in the provision of healthcare%]
-		<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+		[%res-category Группы|Отслеживание групп сущностей, участвующих в процессе оказания медицинских услуг%]
+<!--     Groups|Track grouping entities involved in the provision of healthcare -->
+		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item Group%]
 		[%res-item HealthcareService%]
 		[%res-item Organization%]
 
-		[%res-category Entities|Track other kinds of entities used in the provision of healthcare%]
-		<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+		[%res-category Сущности|Отслеживание других видов сущностей,  участвующих в процессе оказания медицинских услуг%]
+<!--     Entities|Track other kinds of entities used in the provision of healthcare -->
+		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item Location%]
 		[%res-item Person%]
 		[%res-item Substance%]
 
 
-		[%res-category Devices|Devices and their capabilities%]
+		[%res-category Устройства|Устройства и их характеристики%]
+<!--     Devices|Devices and their capabilities -->
 		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item Device%]
 		[%res-item DeviceComponent%]
 		[%res-item DeviceMetric%]
 
-		[%res-category Patient Management|Tracking the status of patients%]
+		[%res-category Ведение пациента|Отслеживание состояния пациентов%]
+<!--     Patient Management|Tracking the status of patients -->
 		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item Encounter%]
 		[%res-item EpisodeOfCare%]
 		[%res-item Flag%]
 		[%res-item Communication%]
 
-		[%res-category Scheduling/Ordering|Создание и управление условленными встречами (appointments), а также рабочий процесс заказов%]
- 		<tr><td colspan="3"><i><em>Note:</em> The PA work-group would appreciate contributions to enhance the appointment resource(s) to cover additional use-cases if required for implementations</i></td></tr>
-		<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+		[%res-category Планирование расписания/Заказы|Создание и управление условленными встречами, а также рабочий процесс заказов%]
+ 		<tr><td colspan="3"><i><em>Примечание:</em> Рабочая группа по администрации пациента будет признательна за вклад в улучшение ресурсов Appointment и AppointmentResponse с целью покрытия дополнительных сценариев использования, которые могут потребоваться реализаторам<!-- The PA work-group would appreciate contributions to enhance the appointment resource(s) to cover additional use-cases if required for implementations --></i></td></tr>
+		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item Appointment%]
 		[%res-item AppointmentResponse%]
 		[%res-item Schedule%]
 		[%res-item Slot%]
     
-		[%res-category Workflow|General healthcare provision workflow support%]
-		<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+		[%res-category Рабочий процесс|Общая поддержка рабочего процесса по предоставлению медицинской помощи%]
+<!--     Workflow|General healthcare provision workflow support -->
+		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item Order%]
 		[%res-item OrderResponse%]
 		[%res-item DeviceUseRequest%]

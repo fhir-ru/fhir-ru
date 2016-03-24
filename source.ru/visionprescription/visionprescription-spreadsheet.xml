@@ -3680,14 +3680,14 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">VisionPrescription.encounter</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Return prescriptions with this encounter identifier</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает рецепты с указанным идентификатором случая обслуживания<!-- Return prescriptions with this encounter identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">VisionPrescription.identifier</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Return prescriptions with this external identifier</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Возвращает рецепты с указанным внешним идентификатором<!-- Return prescriptions with this external identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">patient</Data></Cell>

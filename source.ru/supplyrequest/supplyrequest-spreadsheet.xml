@@ -973,13 +973,13 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Request for a medication, substance or device</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на медикамент, вещество или устройство<!-- Request for a medication, substance or device --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A record of a request for a medication, substance or device used in the healthcare setting.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Запись запроса на медикамент, вещество или устройство, используемое в здравоохранении.<!-- A record of a request for a medication, substance or device used in the healthcare setting. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">should there be an element for supply requester?</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Должен ли здесь быть элемент для запрашивающей поставку стороны?<!-- should there be an element for supply requester? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Supply[moodCode=RQO]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1038,9 +1038,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who initiated this order</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто инициировал этот заказ<!-- Who initiated this order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The Practitioner , Organization or Patient who initiated this order for the supply</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Медицинский специалист, организация или пациент, который инициировал данный заказ на поставку<!-- The Practitioner , Organization or Patient who initiated this order for the supply --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1068,9 +1068,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When the request was made</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда был сделан запрос<!-- When the request was made --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When the request was made</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда был сделан запрос<!-- When the request was made --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1228,9 +1228,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who is intended to fulfill the request</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто должен выполнить этот запрос<!-- Who is intended to fulfill the request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who is intended to fulfill the request</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто должен выполнить этот запрос<!-- Who is intended to fulfill the request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1259,9 +1259,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Why the supply item was requested</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Зачем был заказан этот предмет поставки<!-- Why the supply item was requested --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Why the supply item was requested</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Зачем был заказан этот предмет поставки<!-- Why the supply item was requested --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1288,9 +1288,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When the request should be fulfilled</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда этот запрос должен быть выполнен<!-- When the request should be fulfilled --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When the request should be fulfilled</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда этот запрос должен быть выполнен<!-- When the request should be fulfilled --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1320,12 +1320,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String"> Fulfilment code</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код выполнения<!-- Fulfilment code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Code indicating when the request should be fulfilled.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код, указывающий, когда этот запрос должен быть выполнен.<!-- Code indicating when the request should be fulfilled. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code may simply be a priority code</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это может быть просто код приоритета<!-- Code may simply be a priority code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1351,9 +1351,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Formal fulfillment schedule</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Формальный график выполнения<!-- Formal fulfillment schedule --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Formal fulfillment schedule</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Формальный график выполнения<!-- Formal fulfillment schedule --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
