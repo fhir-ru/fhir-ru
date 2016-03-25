@@ -3235,7 +3235,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Куда сообщения должны быть отправлены<!-- Where messages should be sent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">точка взаимодействия (доступный сетевой адрес), куда должны быть отправлены сообщения и/или ответы<!-- An endpoint (network accessible address) to which messages and/or replies are to be sent. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Точка взаимодействия (доступный сетевой адрес), куда должны быть отправлены сообщения и/или ответы<!-- An endpoint (network accessible address) to which messages and/or replies are to be sent. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
