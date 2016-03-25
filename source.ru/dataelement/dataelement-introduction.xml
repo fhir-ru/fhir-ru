@@ -78,8 +78,9 @@ ElementDefinition and <a href="questionnaire.html">Questionnaire</a>'s Question 
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>Примечание к DSTU<!-- DSTU Note -->:</b>   Should a shared structure be used in <a href="structuredefinition.html">StructureDefinition</a>, <a href="questionnaire.html">Questionnaire</a> and <b>DataElement</b>
-to capture constraints on data elements, or is it acceptable for them to continue to be maintained in a separate, but "similar" manner?
+<b>Примечание к DSTU<!-- DSTU Note -->:</b> Следует ли использовать общую структуру в <a href="structuredefinition.html">StructureDefinition</a>, <a href="questionnaire.html">Questionnaire</a> и <b>DataElement</b> для ввода ограничивающих условий на элементы данных или продолжать поддерживать для них раздельные, но аналогичные структуры?
+<!-- Should a shared structure be used in <a href="structuredefinition.html">StructureDefinition</a>, <a href="questionnaire.html">Questionnaire</a> and <b>DataElement</b>
+to capture constraints on data elements, or is it acceptable for them to continue to be maintained in a separate, but "similar" manner? -->
 </p>
 <p>
 Будем благодарны за <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывы</a>.

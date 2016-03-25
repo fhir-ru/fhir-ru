@@ -1225,10 +1225,10 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дата(/время) публикации<!-- Publication Date(/time) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The date  (and optionally time) when the conformance statement was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the conformance statement changes</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата (и, необязательно, время) публикации этого структурного определения. Дата должна меняться в случае изменения бизнес-версии или кода статуса. Кроме того, она должна меняться при внесении значительных изменений в содержимое структурного определения<!-- The date  (and optionally time) when the conformance statement was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the conformance statement changes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Additional specific dates may be added as extensions</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дополнительные специфичные даты можно добавить в расширениях<!-- Additional specific dates may be added as extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2401,7 +2401,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">no-version | versioned | versioned-update</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This field is set to no-version to specify that the system does not support (server) or use (client) versioning for this resource type. If this has some other value, the server must at least correctly track and populate the versionId meta-property on resources. If the value is 'versioned-update', then the server supports all the versioning features, including using e-tags for version integrity in the API</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Значение no-version в этом поле показывает, что система не поддерживает (сервер) или не использует (клиент) версионирование для этого типа ресурса. Если в поле задано какое-то другое значение, сервер должен по меньшей мере корректно отслеживать и заполнять метасвойство ресурсов versionId. Если в поле указано значение 'versioned-update', значит сервер поддерживает все возможности версионирования, включая использование в API электронных тегов для обеспечения версионной целостности<!-- This field is set to no-version to specify that the system does not support (server) or use (client) versioning for this resource type. If this has some other value, the server must at least correctly track and populate the versionId meta-property on resources. If the value is 'versioned-update', then the server supports all the versioning features, including using e-tags for version integrity in the API --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Если сервер поддерживает versionIds корректно, он должен также поддерживать и vread, но не обязан этого делать<!-- If a server supports versionIds correctly, it SHOULD support vread too, but is not required to do so --></Data><NamedCell
@@ -2465,7 +2465,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Может ли update создавать новые сущности<!-- If update can commit to a new identity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A flag to indicate that the server allows or needs to allow the client to create new identities on the server (e.g. that is, the client PUTs to a location where there is no existing resource). Allowing this operation means that the server allows the client to create new identities on the server</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Флаг для указания, что сервер позволяет или должен позволять клиентам создавать новые сущности на сервере (например это значит, что клиент методом PUT создаёт ресурс по адресу, где до этого ресурс не существовал). Разрешение этой операции означает, что сервер позволяет клиентам создавать новые сущности на сервере<!-- A flag to indicate that the server allows or needs to allow the client to create new identities on the server (e.g. that is, the client PUTs to a location where there is no existing resource). Allowing this operation means that the server allows the client to create new identities on the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Разрешение клиентам создавать новые сущности на сервере означает, что системный администратор должен быть уверен в том, что клиенты не создадут конфликтующие между собой сущности. Очевидно, что если клиент только один, то этого не произойдет. В то же время создание сущностей на клиенте означает, что контроль необходим клиентам, а это намного более удобно в большинстве сценариев, если такое управление можно ввести в действие<!-- Allowing the clients to create new identities on the server means that the system administrator needs to have confidence that the clients do not create clashing identities between them. Obviously, if there is only one client, this won't happen. While creating identities on the client means that the clients need to be managed, it's much more convenient for many scenarios if such management can be put in place --></Data><NamedCell
@@ -2624,9 +2624,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">_revinclude values supported by the server</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Возможные значения параметра _revinclude, поддерживаемые сервером<!-- _revinclude values supported by the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A list of _revinclude (reverse include) values supported by the server</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Список возможных значений параметра _revinclude (обратное включение), поддерживаемых сервером<!-- A list of _revinclude (reverse include) values supported by the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Если список пустой, значит сервер не поддерживает включения<!-- If this list is empty, the server does not support includes --></Data><NamedCell
@@ -2851,7 +2851,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">missing | exact | contains | not | text | in | not-in | below | above | type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A modifier supported for the search parameter</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Модификатор, поддерживаемый параметром поиска<!-- A modifier supported for the search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2882,10 +2882,10 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Поддерживемые цепочечные имена<!-- Chained names supported --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Contains the names of any search parameters which may be chained to the containing search parameter. Chained parameters may be added to search parameters of type reference, and specify that resources will only be returned if they contain a reference to a resource which matches the chained parameter value. Values for this field should be drawn from Conformance.rest.resource.searchParam.name on the target resource type</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Содержит имена всех параметров поиска, которые могут быть составлены в цепочку внутри данного параметра поиска. Цепочечные параметры могут добавляться к параметрам поиска типа reference (ссылка) и указывать, что возвращаться будут только те ресурсы, которые содержат ссылку на ресурс, соответствующий значению цепочечного параметра. Значения для этого поля необходимо брать из поля Conformance.rest.resource.searchParam.name задаваемого типа ресурса.<!-- Contains the names of any search parameters which may be chained to the containing search parameter. Chained parameters may be added to search parameters of type reference, and specify that resources will only be returned if they contain a reference to a resource which matches the chained parameter value. Values for this field should be drawn from Conformance.rest.resource.searchParam.name on the target resource type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Systems are not required to list all the chain names they support, but if they don't list them, clients may not know to use them</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Системам не обязательно перечислять все имена цепочечных параметров, которые они поддерживают, однако если они не перечислят их, клиенты могут не узнать, что их можно использовать<!-- Systems are not required to list all the chain names they support, but if they don't list them, clients may not know to use them --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3618,7 +3618,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Документация события, специфичная для точки взаимодействия<!-- Endpoint-specific event documentation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Guidance on how this event is handled, such as internal system trigger points, business rules, etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Инструкции, каким образом обрабатывать это событие, например внутренние точки запуска системы, бизнес-правила и т. д.<!-- Guidance on how this event is handled, such as internal system trigger points, business rules, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3747,7 +3747,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Ограничение на ресурс, используемый в документе<!-- A constraint on a resource used in the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Первый ресурс - это document<!-- The first resource is the document resource --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Первый ресурсом будет Document<!-- The first resource is the document resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>

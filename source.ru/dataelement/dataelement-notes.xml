@@ -60,18 +60,18 @@ that is common for both codes and data elements - identifier, name and definitio
 a list of codes. -->
 </p>
 <p>
-One of the purposes of data elements is to define variables, observations, or questions that include information about how to 
-collect a variable's value--including information about data types and guidance about the use of about answer lists and/or units of measure.
+Одно из назначений элементов данных - задавать переменные, наблюдения или вопросы, содержащие информацию о том, как собирать значения переменной - включая информацию о типах данных и инструкциях по использованию списоков ответов и/или единиц измерений. Эта функция обычно выполняется кодовыми системами, такими как <a href="http://loinc.org">LOINC</a> и
+<a href="http://www.ihtsdo.org/snomed-ct/">SNOMED CT</a>. (Обратите внимание, что LOINC предоставляет значительную детализацию допустимых ответов, в то время как большинство других кодовых систем, например SNOMED CT, позволяют только идентифицировать вопрос). Можно было бы обращаться к реестру элементов данных, используя общий идентификатор система/пространство имён в качестве кодовой системы. Аналогичным образом элементы данных можно отображать на другие и на коды), как коды можно установить соответствия, используя ресурс <a href="conceptmap.html">ConceptMap</a>.
+<!-- One of the purposes of data elements is to define variables, observations, or questions that include information about how to 
+collect a variable's value-including information about data types and guidance about the use of about answer lists and/or units of measure.
 This function is typically done by code systems such as <a href="http://loinc.org">LOINC</a> and
 <a href="http://www.ihtsdo.org/snomed-ct/">SNOMED CT</a>.  (Note that LOINC provides considerable detail about allowed answers, while most other code 
 systems such as SNOMED CT only allow identifying the question.)  It would be possible to treat a registry of data elements using a common
 identifier system/namespace as a code system.  Similarly, data elements can be mapped to each other (and to codes) in the same manner as 
-codes can be mapped by making use of the <a href="conceptmap.html">ConceptMap</a> resource.
+codes can be mapped by making use of the <a href="conceptmap.html">ConceptMap</a> resource. -->
 </p>
 <p>
-That said, FHIR treats code systems as simple structures that provide identity, names and definitions.  Code systems that provide significant additional
-detail (recommended doses for drugs, data types for data elements, etc.) are treated as a mix of a code system together with a supplementary resource to
-provide the details.
+ем не менее, FHIR рассматривает кодовые системы, как простые структуры, которые предоставляют идентификаторы, имена и определения. Кодовые системы, которые предлагают значительные дополнительные детали (рекомендуемые дозы для лекарственных средств, типы данных для элементов данных и т. п.), рассматриваются как сочетание кодовой системы и дополнительного ресурса для предоставления деталей.
 См. раздел <a href="valueset.html#detailed-metadata">Кодовые системы с подробным описанием метаданных</a> ресурса <a href="valueset.html">ValueSet</a> для дополнительного обсуждения взаимосвязи между DataElement и кодовыми системами.
 <!-- That said, FHIR treats code systems as simple structures that provide identity, names and definitions.  Code systems that provide significant additional
 detail (recommended doses for drugs, data types for data elements, etc.) are treated as a mix of a code system together with a supplementary resource to
@@ -115,10 +115,14 @@ achieve significant benefit. -->
 <!-- Data elements can be defined at a wide variety of granularities.  For example:
  --></p>
 <ul>
-  <li>Systolic Blood pressure</li>
+  <li>Систолическое кровяное давление</li>
+  <li>Систолическое кровяное давление (в положении сидя)</li>
+  <li>Систолическое кровяное давление (в положении сидя, давление манжеты)</li>
+  <li>Систолическое кровяное давление (в положении сидя, давление манжеты) мм рт. ст.</li>
+<!--   <li>Systolic Blood pressure</li>
   <li>Systolic Blood pressure (sitting)</li>
   <li>Systolic Blood pressure (sitting, pressure cuff)</li>
-  <li>Systolic Blood pressure (sitting, pressure cuff) mmHg</li>
+  <li>Systolic Blood pressure (sitting, pressure cuff) mmHg</li> -->
 </ul>
 <p>
 Кодированные элементы данных могут быть определены: без наборов значений, с предложенными наборами значений, с ограниченными, но расширяемыми наборами значений или же с полностью ограниченными наборами значений. Числовые значения могут быть определены с использованием или без допустимого диапазона. Строковые данные могут быть определены с указанием шаблонов и длины или без. Все они являются допустимыми  элементами данных.
