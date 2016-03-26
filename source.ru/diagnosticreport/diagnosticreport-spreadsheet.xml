@@ -1017,7 +1017,7 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">A Diagnostic report - a combination of request information, atomic results, images, interpretation, as well as formatted reports</Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Диагностический отчёт - это комбинация информации о запросе, атомарных результатов, изображений, интерпретаций, а также форматированных отчётов<!-- A Diagnostic report - a combination of request information, atomic results, images, interpretation, as well as formatted reports --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">Полученные данные и интерпретация диагностических исследований, выполненных над пациентами, группами пациентов, устройствами, локациями, и/или полученными у них образцами. Отчет включает в себя клинический контекст, например информацию о запросе и поставщике информации, и некоторое сочетание атомарных результатов, изображений, текстовой и кодированной интерпретации, и форматированное представление диагностических отчетов.<!-- The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1062,7 +1062,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор для внешних ссылок на этот отчет<!-- Id for external references to this report --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Локальный идентификатор, назначенный отчету заполнителем заказа (order filler), обычно информационной системой провайдера службы диагностики<!-- The local ID assigned to the report by the order filler, usually by the Information System of the diagnostic service provider --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Локальный идентификатор, назначенный отчету исполнителем заказа, обычно информационной системой провайдера службы диагностики<!-- The local ID assigned to the report by the order filler, usually by the Information System of the diagnostic service provider --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Нужно знать, какой идентификатор использовать при создании запросов по поводу этого отчета из исходной лаборатории, а также для привязки к отчету вне FHIR-контекста<!-- Need to know what identifier to use when making queries about this report from the source laboratory, and for linking to the report outside FHIR context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1145,12 +1145,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Service category</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Категория услуги<!-- Service category --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код классификации клинической дисциплины, отделения или службы диагностики, в рамках которой был создан этот отчёт (например кардиология, биохимия, гематология, МРТ). Он используется для поиска, сортировки и отображения.<!-- A code that classifies the clinical discipline, department or diagnostic service that created the report (e.g. cardiology, biochemistry, hematology, MRI). This is used for searching, sorting and display purposes. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The level of granularity is defined by the category concepts in the value set. More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in DiagnosticReport.code.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Степень детализации задаётся концептами классификации в наборе значений. Более точная фильтрация может достигаться за счёт метаданных и/или терминологической иерархии в элементе DiagnosticReport.code.<!-- The level of granularity is defined by the category concepts in the value set. More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in DiagnosticReport.code. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">inboundRelationship[typeCode=COMP].source[classCode=LIST, moodCode=EVN, code &lt; LabService].code</Data><NamedCell
@@ -1186,7 +1186,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Name/Code for this diagnostic report</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Название/код для этого диагностического отчёта<!-- Name/Code for this diagnostic report --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Код или название, описывающее этот диагностический отчет<!-- A code or name that describes this diagnostic report --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1266,9 +1266,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Health care event when test ordered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Случай обслуживания, когда был заказан этот тест<!-- Health care event when test ordered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The link to the health care event (encounter) when the order was made.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Связь со случаем обслуживания (визитом), когда был сделан этот заказ.<!-- The link to the health care event (encounter) when the order was made. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1305,9 +1305,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Clinically Relevant time/time-period for report</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Клинически значимое время/временной период для отчёта<!-- Clinically Relevant time/time-period for report --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Время или период времени, к которому относятся наблюдаемые значения. Когда субъектом отчёта является пациент, это обычно либо время процедуры, либо время взятия пробы на анализ, однако очень часто источник информации о дате/времени неизвестен, а известна только сама дата/время.<!-- The time or time-period the observed values are related to. When the subject of the report is a patient, this is usually either the time of the procedure or of specimen collection(s), but very often the source of the date/time is not known, only the date/time itself. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Нужно знать, где в истории болезни пациента показывать/хранить в определённом порядке этот отчет <!-- Need to know where in the patient history to file/present this report --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1346,13 +1346,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">DateTime this version was released</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата/время выпуска этой версии<!-- DateTime this version was released --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The date and time that this version of the report was released from the source diagnostic service</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата и время, когда эта версия отчёта была выпущена исходной службой диагностики<!-- The date and time that this version of the report was released from the source diagnostic service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Клиницистам нужна возможность проверить дату выпуска отчета<!-- Clinicians need to be able to check the date that the report was released --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">May be different from the update time of the resource itself, because that is the status of the record (potentially a secondary copy), not the actual release time of the report</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Может отличаться от времени обновления самого ресурса, поскольку это состояние записи (потенциально вторичной копии), а не само время выпуска отчёта<!-- May be different from the update time of the resource itself, because that is the status of the record (potentially a secondary copy), not the actual release time of the report --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">participation[typeCode=VRF or AUT].time</Data><NamedCell
@@ -1395,7 +1395,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Нужно знать, с кем связываться, если возникнут вопросы по поводу результатов. Также может потребоваться отслеживать источник отчетов для вторичного анализа данных<!-- Need to know whom to contact if there are queries about the results. Also may need to track the source of reports for secondary data analysis --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This is not necessarily the source of the atomic data items. It is the entity that takes responsibility for the clinical report.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это не обязательно источник атомарных данных. Это та сущность, которая несёт ответственность за клинический отчёт.<!-- This is not necessarily the source of the atomic data items. It is the entity that takes responsibility for the clinical report. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">participation[typeCode=AUT].role[classCode=ASSIGN].scoper</Data><NamedCell
@@ -1430,7 +1430,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Что было заказано<!-- What was requested --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Details concerning a test or procedure requested.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Сведения относительно заказанного теста или процедуры.<!-- Details concerning a test or procedure requested. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Нужна возможность отслеживать выполнение запросов касательно выпущенных отчетов, а также для протоколирования того, какие диагностические исследования были заказаны (не всегда совпадает с тем, что поставляется)<!-- Need to be able to track completion of requests based on reports issued and also to report what diagnostic tests were requested (not always the same as what is delivered) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1508,9 +1508,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Данные наблюдений (Observations) - простые либо сложные вложенные группы<!-- Observations - simple, or complex nested groups --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Observations that are part of this diagnostic report. Observations can be simple name/value pairs (e.g. &quot;atomic&quot; results), or they can be grouping observations that include references to other members of the group (e.g. &quot;panels&quot;).</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Наблюдения, входящие в данный диагностический отчёт. Наблюдения могут быть просто парами название/значение (например &quot;атомарные&quot; результаты), либо это могут быть группы наблюдений, содержащие ссылки на других членов группы (например &quot;батареи&quot; тестов).<!-- Observations that are part of this diagnostic report. Observations can be simple name/value pairs (e.g. &quot;atomic&quot; results), or they can be grouping observations that include references to other members of the group (e.g. &quot;panels&quot;). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Need to support individual results, or report groups of results, where the result grouping is arbitrary, but meaningful. This structure is recursive - observations can contain observations</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Нужна поддержка отдельных результатов или групп результатов отчёта, где группировка результатов является произвольной, но значимой. Это рекурсивная структура - наблюдения могут содержать вложенные наблюдения.<!-- Need to support individual results, or report groups of results, where the result grouping is arbitrary, but meaningful. This structure is recursive - observations can contain observations --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1548,7 +1548,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Одна или несколько ссылок на полную детальную информацию обо всех изображениях, выполненных во время диагностического исследования. Обычно это изображения, выполненные методами, поддерживающими DICOM, но это не обязательно. Полностью поддерживающий PACS просмотрщик может использовать эту информацию для показа исходных изображений. <!-- One or more links to full details of any imaging performed during the diagnostic investigation. Typically, this is imaging performed by DICOM enabled modalities, but this is not required. A fully enabled PACS viewer can use this information to provide views of the source images. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">ImagingStudy and ImageObjectStudy and the image element are somewhat overlapping - typically, the list of image references in the image element will also be found in one of the imaging study resources. However each caters to different types of displays for different types of purposes. Neither, either, or both may be provided.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">ImagingStudy, ImageObjectStudy и элемент image в чём-то пересекаются - обычно перечень ссылок на изображения в элементе image можно также найти в одном из этих ресурсов. Однако каждый из них предназначен для разных типов отображения и имеет своё предназначение. Могут быть указаны оба, один из них или ни одного.<!-- ImagingStudy and ImageObjectStudy and the image element are somewhat overlapping - typically, the list of image references in the image element will also be found in one of the imaging study resources. However each caters to different types of displays for different types of purposes. Neither, either, or both may be provided. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">outboundRelationship[typeCode=COMP].target[classsCode=DGIMG, moodCode=EVN]</Data><NamedCell
@@ -1583,7 +1583,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Ключевые изображения, связанные с отчетом<!-- Key images associated with this report --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest).</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Перечень ключевых изображений, связанных с этим отчётом. Эти изображения обычно создаются во время диагностического процесса и могут быть изображениями непосредственно пациента или образцами для анализа (т. е. представляющие интерес слайды).<!-- A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Большинство служб диагностики включают изображения в отчет в рамках своей работы<!-- Many diagnostic services include images in the report as part of their service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1698,7 +1698,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Нужна возможность привести заключение, которое не потеряется среди данных основного результата<!-- Need to be able to provide a conclusion that is not lost among the basic result data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Typically, a report is either [all data, no narrative (e.g. Core lab)] or [a mix of data with some concluding narrative (e.g. Structured Pathology Report, Bone Density)], or [all narrative (e.g. typical imaging report, histopathology)]. In all of these cases, the narrative goes in &quot;text&quot;.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Как правило, отчёт - это либо [только данные без текстового описания (например Core lab)], либо [сочетание данных и заключительного текстового описания (например структурированный патологический отчёт, Плотность костной ткани)], либо [только текстовое описание (например стандартный радиологический отчёт, гистопатология)]. Во всех этих случаях текст идёт в элементе &quot;text&quot;.<!-- Typically, a report is either [all data, no narrative (e.g. Core lab)] or [a mix of data with some concluding narrative (e.g. Structured Pathology Report, Bone Density)], or [all narrative (e.g. typical imaging report, histopathology)]. In all of these cases, the narrative goes in &quot;text&quot;. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">inboundRelationship[typeCode=&quot;SPRT&quot;].source[classCode=OBS, moodCode=EVN, code=LOINC:48767-8].value (type=ST)</Data><NamedCell
@@ -6574,7 +6574,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">DiagnosticServiceSection</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Код направления диагностической службы<!-- Codes for diagnostic service sections --></Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код отделений службы диагностики<!-- Codes for diagnostic service sections --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">valueset-diagnostic-service-sections</Data></Cell>
@@ -6604,7 +6604,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">DiagnosticReportStatus</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of the diagnostic report as a whole.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус диагностического отчёта в целом.<!-- The status of the diagnostic report as a whole. --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">#diagnostic-report-status</Data></Cell>

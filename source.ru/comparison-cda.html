@@ -18,7 +18,7 @@
 <table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 <a name="cda"> </a>
 <p>
-<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> - это наиболее широко используемый стандарт семейства <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>. Он описывает стандартизированный заголовок, содержащий метаданные документа, а также возможность передавать большое разнообразие клинического содержимого, структурированного в различные разделы. Содержимое документа может быть как незакодированным, например PDF, так и полностью закодированным экземпляром HL7 v3.
+<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> - это наиболее широко используемый стандарт семейства <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>. Он описывает стандартизированный заголовок, содержащий метаданные документа, и предоставляет возможность передавать большое разнообразие клинического содержимого, структурированного в различные разделы. Содержимое документа может быть как незакодированным, например PDF, так и полностью закодированным экземпляром HL7 v3.
 <!-- <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> is HL7's most widely adopted <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> standard. It provides both a standardized 
 header containing metadata about the document as well as the ability to convey 
 a wide variety of clinical content organized into various sections. The document 
@@ -81,7 +81,7 @@ declared within the instance via <a href="resource.html#tag">tags</a>. However, 
 is not required. -->
 </p>
 <p>
-<b>Язык разметки:</b> У CDA свой собственный XML-синтаксис для текстового содержимого, отчасти основывающийся на HTML. FHIR использует ограниченный набор XHTML, который несколько более выразительный, чем разметка CDA. Преобразование из FHIR и CDA потребует принимать в расчёт эти ограничения (или, в качестве альтернативы, предоставлять полностью отображаемую версию документа).
+<b>Язык разметки:</b> У CDA свой собственный XML-синтаксис для текстового содержимого, отчасти основывающийся на HTML. FHIR использует ограниченный набор XHTML, который несколько более выразительный, чем разметка CDA. Преобразование из FHIR в CDA потребует принимать в расчёт эти ограничения (или, в качестве альтернативы, предоставлять полностью отображаемую версию документа).
 <!-- <b>Mark-up language:</b> CDA defines its own XML syntax for narrative content, loosely based on 
 HTML. FHIR makes use of a constrained set of XHTML which is somewhat more expressive than the CDA 
 markup. Conversions from FHIR to CDA will need to take these constraints into account (or 
