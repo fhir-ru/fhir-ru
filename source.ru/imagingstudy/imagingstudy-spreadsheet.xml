@@ -1542,7 +1542,7 @@
     <Cell ss:StyleID="s93"><Data ss:Type="String">Тип выполненной процедуры<!-- Type of procedure performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">For the Procedure.code, LOINC radiology orderables would be a good value set to use</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Подходящим набором значений для Procedure.code был бы радиологический в LOINC<!-- For the Procedure.code, LOINC radiology orderables would be a good value set to use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">.outboundRelationship[typeCode=COMP].target[classCode=PROC, moodCode=EVN]</Data><NamedCell
@@ -1558,7 +1558,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s91"><Data ss:Type="String">ImagingStudy.interpreter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Name of Physician(s) Reading Study</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Имя медицинского специалиста, интерпретировавшего исследование<!-- Name of Physician(s) Reading Study --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2298,7 +2298,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Формальный идентификатор этого экземпляра<!-- Formal identifier for this instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Формальный идентификатор этого изображения<!-- Formal identifier for this image --> or other content</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Формальный идентификатор этого изображения или другое содержимое<!-- Formal identifier for this image or other content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2371,7 +2371,7 @@
     <Cell ss:StyleID="s93"><Data ss:Type="String">Понятное человеку название класса SOP<!-- A human-friendly SOP Class name --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">E.g. 'CT image', 'MR multi-frame', 'blending presentation'.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Например 'изображение КТ', 'мультикадровое изображение МРТ', 'смешанная презентация.'<!-- E.g. 'CT image', 'MR multi-frame', 'blending presentation'. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">.code</Data><NamedCell
@@ -2700,10 +2700,10 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Содержимое экземпляра<!-- Content of the instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Содержимое экземпляра или его рендеринг (например JPEG для изображения, XML для структурированного отчёта). Может быть представлено с помощью встроенной кодировки; URL-ссылкой на сервис WADO-RS, который делает экземпляр доступным; или на FHIR-ресурс (например Media, Document и др.). Для альтернативного представления экземпляра может использоваться несколько вложений содержимого.<!-- Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Use of Attachment.data is discouraged.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Использование элемента Attachment.data не поощряется.<!-- Use of Attachment.data is discouraged. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">.text.binary</Data><NamedCell

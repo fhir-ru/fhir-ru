@@ -106,9 +106,11 @@ will be marked as fulfilled, and linked to the newly created encounter. -->
 move to the ward where another part-of encounter may begin. -->
 </p>
 <p>
-Communication resources are used for a direct simultaneous interaction between a practitioner and a patient where there is no
-direct contact. Such as phone message, or transmission of some correspondence documentation.<br/>
-There is no duration recorded for a communication resource, but could contain sent and received times.
+Ресурсы Communication используются для прямого одновременного взаимодействия между медицинским специалистом и пациентом, когда прямой контакт отсутствует. Например сообщение по телефону или заочная передача документов.
+<!-- Communication resources are used for a direct simultaneous interaction between a practitioner and a patient where there is no
+direct contact. Such as phone message, or transmission of some correspondence documentation. --><br/>
+В ресурсе Communication не записывается продолжительность взаимодействия, однако он может содержать информацию о времени отправления и получения.
+<!-- There is no duration recorded for a communication resource, but could contain sent and received times. -->
 </p>
 <p>
 Стандартное расширение: <b>Associated Encounter</b><br/>
