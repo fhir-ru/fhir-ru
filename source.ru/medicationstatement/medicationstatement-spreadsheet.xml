@@ -1144,7 +1144,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Идентифицирует лекарственное средство, которое было введено. Это либо ссылка на ресурс, представляющий подробное описание медикамента, либо простой атрибут с кодом медикамента из известного списка лекарственных средств.<!-- Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the medication this statement concerns. When the only available information is a text description of the medication, Medication.code.text should be used</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если указан только код, тогда это должен быть код конкретного продукта. Если необходима дополнительная информация, тогда рекомендуется использовать ресурс Medication. Примечание: не используйте элемент Medication.name для описания медикамента, относящегося к этому заявлению. Когда единственной имеющейся информацией является текстовое описание медикамента, следует использовать элемент Medication.code.text<!-- If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the medication this statement concerns. When the only available information is a text description of the medication, Medication.code.text should be used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">SubstanceAdministration&gt;Component&gt;SubstanceAdministrationRequest.consumable</Data><NamedCell
@@ -1562,7 +1562,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Принимать по мере надобности (при х)<!-- Take &quot;as needed&quot; (for x) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  &#10;&#10;Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.&#10;</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Показывает, что это лекарственное средство принимать только при необходимости по указанному графику дозировки (тип Boolean), либо здесь задаётся условие, по которому этот медикамент будет приниматься (тип CodeableConcept). &#10;&#10;Если выбран тип данных 'boolean', тогда применяется следующая логика: если значение истина, это означает, что этот медикамент будет приниматься только при необходимости по указанному расписанию.&#10;<!-- Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  &#10;&#10;Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.&#10; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1661,10 +1661,10 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Метод, используемый для ввода медикамента<!-- Technique used to administer medication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.  </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Закодированное значение, обозначающее метод введения лекарственного средства в или на тело. Чаще всего этот атрибут заполняться не будет. Используется в основном для инъекций. Например медленное внутривенное вливание, глубокое внутримышечное вливание.<!-- A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.   --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">One of the reasons this attribute is not used often, is that the method is often pre-coordinated with the route and/or form of administration.  This means the codes used in route or form may pre-coordinate the method in the route code or the form code.  The implementation decision about what coding system to use for route or form code will determine how frequently the method code will be populated e.g. if route or form code pre-coordinate method code, then this attribute will not be populated often; if there is no pre-coordination then method code may  be used frequently.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Одна из причин, почему этот атрибут нечасто используется, состоит в том, что метод часто указывается вместе с местом и/или формой введения. Это означает, что коды, используемые для указания места или формы введения, могут одновременно устанавливать и метод. Решение реализаторов, какую кодовую систему использовать для указания пути или формы введения, будет определять, насколько часто будет заполняться код метода, например, если код пути или формы устанавливает код метода, тогда этот атрибут будет заполняться нечасто; если не устанавливает, тогда код метода будет указываться часто.<!-- One of the reasons this attribute is not used often, is that the method is often pre-coordinated with the route and/or form of administration.  This means the codes used in route or form may pre-coordinate the method in the route code or the form code.  The implementation decision about what coding system to use for route or form code will determine how frequently the method code will be populated e.g. if route or form code pre-coordinate method code, then this attribute will not be populated often; if there is no pre-coordination then method code may  be used frequently. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.methodCode</Data><NamedCell
@@ -1726,7 +1726,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Количество дозы в единицу времени<!-- Dose quantity per unit of time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает скорость ввода лекарственного средства пациенту. Обычно указывается, как скорость вливания, например 100 мл в час или 100 мл/час. Также может быть выражено в виде скорости в единицу времени, например 500 мл за 2 часа. В настоящий момент мы не указываем значение по умолчанию '1' в знаменателе, однако это обсуждается. Другие примеры: 200 мкг/мин или 200 мкг/1 мин; 1 литр/8 часов<!-- Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Currently we do not specify a default of '1' in the denominator, but this is being discussed. Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4001,7 +4001,7 @@
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">MedicationStatement</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">Причина, почему не было принято, разрешена, только если wasNotTaken имеет значение истинаReason not taken is only permitted if wasNotTaken is true</Data><NamedCell
+    <Cell ss:StyleID="s84"><Data ss:Type="String">Причина, почему не было принято, разрешена, только если wasNotTaken имеет значение истина<!-- Reason not taken is only permitted if wasNotTaken is true --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">reasonNotTaken.empty() or wasNotTaken = true</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4014,7 +4014,7 @@
     <Cell ss:StyleID="s91"><Data ss:Type="String">Reason for use</Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">MedicationStatement</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Обоснование для употребления разрешена, только если wasNotTaken имеет значение ложьReason for use is only permitted if wasNotTaken is false</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Обоснование для употребления разрешена, только если wasNotTaken имеет значение ложь<!-- Reason for use is only permitted if wasNotTaken is false --></Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">reasonForUse[x].empty() or wasNotTaken = false</Data></Cell>
     <Cell ss:StyleID="s108"><Data ss:Type="String">not(exists(*[starts-with(local-name(.), 'reasonForUse')]) and f:wasNotTaken/@value=true())</Data></Cell>
    </Row>
@@ -4524,49 +4524,49 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.identifier</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Возвращает заявления с указанным внешним идентификаторомReturn statements with this external identifier</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Возвращает заявления с указанным внешним идентификатором<!-- Return statements with this external identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">medication</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.medicationReference</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Возвращает зписи о введении этого медикамента, ссылка на который указанаReturn administrations of this medication reference</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Возвращает зписи о введении этого медикамента, ссылка на который указана<!-- Return administrations of this medication reference --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.medicationCodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Возвращает записи о введении этого медикамента, код которого указанReturn administrations of this medication code</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Возвращает записи о введении этого медикамента, код которого указан<!-- Return administrations of this medication code --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.patient</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Ссылка на пациента, для которого будут перечислены заявленияThe identity of a patient to list statements  for</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Ссылка на пациента, для которого будут перечислены заявления<!-- The identity of a patient to list statements  for --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">effective</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.effective[x]</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Дата, когда пациент принял (или не принял) этот медикаментDate when patient was taking (or not taking) the medication</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Дата, когда пациент принял (или не принял) этот медикамент<!-- Date when patient was taking (or not taking) the medication --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.status</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Возвращает заявления, которые соответствуют указанному статусуReturn statements that match the given status</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Возвращает заявления, которые соответствуют указанному статусу<!-- Return statements that match the given status --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">source</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">MedicationStatement.informationSource</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Кто сообщил информацию для заявленияWho the information in the statement came from</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Кто сообщил информацию для заявления<!-- Who the information in the statement came from --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"/>

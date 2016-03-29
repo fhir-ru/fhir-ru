@@ -1068,7 +1068,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">current | retired | entered-in-error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates the current state of this list</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Показывает текущий статус списка<!-- Indicates the current state of this list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1138,9 +1138,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Описательное название списка<!-- Descriptive name for the list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A label for the list assigned by the author</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Название списка, присвоенное автором<!-- A label for the list assigned by the author --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Allows customization beyond just the code identifying the kind of list</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Для персонализации помимо кода, идентифицирующего тип списка<!-- Allows customization beyond just the code identifying the kind of list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1213,7 +1213,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Основное назначение явного перечисления тем должно помочь при поиске нужного списка<!-- The primary purpose of listing the subject explicitly is to help with finding the right list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Some purely arbitrary lists do not have a common subject, so this is optional</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Некоторые чисто произвольные списки не имеют общего субъекта, поэтому это необязательный элемент<!-- Some purely arbitrary lists do not have a common subject, so this is optional --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.participation[typeCode&lt;SUB].role (and sometimes .player)</Data><NamedCell
@@ -1242,9 +1242,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Context in which list created</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контекст, в котором был создан список<!-- Context in which list created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The encounter that is the context in which this list was created</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Случай обслуживания, в контексте которого был создан этот список<!-- The encounter that is the context in which this list was created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1313,11 +1313,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Who and/or what defined the list contents (aka Author)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кто и/или что определили содержимое этого списка (также известный как автор)<!-- Who and/or what defined the list contents (aka Author) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Субъект, ответственный за решение о том, какое содержимое войдёт в этот список. Если список был создан человеком, тогда здесь указывается автор списка<!-- The entity responsible for deciding what the contents of the list were. Where the list was created by a human, this is the same as the author of the list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Для учета (follow-up) и контекста <!-- Allows follow-up as well as context --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Для последующего учёта, а также для обеспечения контекста<!-- Allows follow-up as well as context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Первоисточник - сущность, принявшая решение о том, какие пункты будут в списке. Это может быть программное обеспечение или пользователь<!-- The primary source is the entity that made the decisions what items are in the list. This may be software or user --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1382,9 +1382,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Comments about the list</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Комментарии ко всему списку в целом<!-- Comments about the list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Comments that apply to the overall list</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Комментарии ко всему списку в целом<!-- Comments that apply to the overall list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1448,13 +1448,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Status/Workflow information about this item</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Информация о статусе/рабочем процессе для этого пункта<!-- Status/Workflow information about this item --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The flag allows the system constructing the list to indicate the role and significance of the item in the list</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Этот флаг позволяет систем, составляющим список, указывать роль и важность этого пункта в списке<!-- The flag allows the system constructing the list to indicate the role and significance of the item in the list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Это поле предназначено для поддержки различных клинических вариантов использования списков, например как список медикаментов в Discharge Summary, где флаги указывают, был ли медикамент добавлен, изменен или удален из списка<!-- This field is present to support various clinical uses of lists, such as a discharge summary medication list, where flags specify whether the medication was added, modified, or deleted from the list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The flag can only be understood in the context of the List.code. If the flag means that the entry has actually been deleted from the list, the deleted element SHALL be true. Deleted can only be used if the List.mode is &quot;changes&quot;</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Этот флаг можно интерпретировать только в контексте элемента List.code. Если флаг показывает, что эта запись была удалена из списка, значение элемента deleted должно быть установлено в true. Элемент deleted можно использовать только для списков в режиме изменений, когда List.mode = &quot;changes&quot;<!-- The flag can only be understood in the context of the List.code. If the flag means that the entry has actually been deleted from the list, the deleted element SHALL be true. Deleted can only be used if the List.mode is &quot;changes&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.outBoundRelationship[typeCode=COMP].target[classCode=OBS&quot;].value</Data><NamedCell
@@ -1485,9 +1485,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если этот пункт действительно помечен как удаленный<!-- If this item is actually marked as deleted --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если этот пункт действительно помечен как удалённый<!-- If this item is actually marked as deleted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">True if this item is marked as deleted in the list.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Истина, если этот пункт помечен в списке как удалённый.<!-- True if this item is marked as deleted in the list. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Элемент флаг может содержать коды, которые приложение, обрабатывающее список, не распознает. Однако неоднозначность при этом может и не возникнуть, если пункт списка фактически помечен как удаленный &quot;deleted&quot; <!-- The flag element may contain codes that an application processing the list does not understand. However there can be no ambiguity if a list item is actually marked as &quot;deleted&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1593,7 +1593,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Позволяет улавливать такие вещи, как &quot;none exist&quot; или &quot;not asked&quot;, что может быть важно для многих списков<!-- Allows capturing things like &quot;none exist&quot; or &quot;not asked&quot; which can be important for most lists --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The various reasons for an empty list make a significant interpretation to its interpretation. Note that this code is for use when the entire list has been suppressed, and not for when individual items are omitted - implementers may consider using a text note or a flag on an entry in these cases </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Различные причины, почему список пустой, в значительной степени влияют на его интерпретацию. Обратите внимание, что этот код используется, когда весь список пустой, а не когда опущены отдельные пункты в нём - реализаторы могут рассмотреть для таких случаев вариант использования текстового примечания или флага для записи<!-- The various reasons for an empty list make a significant interpretation to its interpretation. Note that this code is for use when the entire list has been suppressed, and not for when individual items are omitted - implementers may consider using a text note or a flag on an entry in these cases --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.inboundRelationship[typeCode=SUBJ,code&lt;{ListEmptyReason}].value[type=CD]</Data><NamedCell
@@ -3910,7 +3910,7 @@
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">List</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">A list can only have an emptyReason if it is empty</Data><NamedCell
+    <Cell ss:StyleID="s84"><Data ss:Type="String">Только пустой (нет элементов entry) ресурс List может содержать элемент emptyReason<!-- A list can only have an emptyReason if it is empty --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">emptyReason.empty() or entry.empty()</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -3923,7 +3923,7 @@
     <Cell ss:StyleID="s91"><Data ss:Type="String">Deleted Rule</Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">List</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">The deleted flag can only be used if the mode of the list is &quot;changes&quot;</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Флаг "deleted" можно использовать только для списка в режиме изменений &quot;changes&quot;<!-- The deleted flag can only be used if the mode of the list is &quot;changes&quot; --></Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">mode = 'changes' or entry.deleted.empty()</Data></Cell>
     <Cell ss:StyleID="s108"><Data ss:Type="String">(f:mode/@value = 'changes') or not(exists(f:entry/f:deleted))</Data></Cell>
    </Row>

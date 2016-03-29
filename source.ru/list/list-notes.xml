@@ -1,33 +1,37 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <a name="order"> </a>
-<h2>List Order</h2>
+<h2>Порядок пунктов списка<!-- List Order --></h2>
 <p>
-All lists are considered ordered - the order in which items literally 
+Все списки считаются упорядоченными - порядок, в котором пункты в буквальном смысле появляются в списке, может быть важным компонентом смыслового значения списка. Изменение порядка следования пунктов в списке может изменить смысл списка.
+<!-- All lists are considered ordered - the order in which items literally 
 appear in the list may be an important part of the meaning of the list. 
-Reordering the items in a list may change the meaning of the list. 
+Reordering the items in a list may change the meaning of the list.  -->
 </p>
 <p>
-While a list always contains an ordered set of items, the significance
+В то время как список всегда содержит упорядоченный набор пунктов, важность порядка может быть неизвестна или незначительна. В качестве примера рассмотрим список пациентов, которых должен посетить врач. Пациенты в этом списке могут идти в том порядке, в котором их необходимо посетить, либо это может быть неотсортированный список пациентов для посещения в любом порядке.
+<!-- While a list always contains an ordered set of items, the significance
 of the order may be unknown, or it may be insignificant. As an 
 example, consider a list of patients for a practitioner to visit.
 The list may be in order, where the patients are to be visited in
 the stated order, or just an unsorted list of patients to be visited
-in any order.
+in any order. -->
 </p>
 <p>
-The list resource has a property <code>orderedBy</code> that, if
+В ресурсе List есть свойство <code>orderedBy</code>, которое, если присутствует, определяет значение порядка следования пунктов. Отметьте, однако, что смысл порядка следования может вытекать неявно и без указания в элементе <code>orderedBy</code>.
+<!-- The list resource has a property <code>orderedBy</code> that, if
 present, specifies the meaning of the item order. Note, though,
 that the meaning of the order may be known implicitly rather 
-than specified in the <code>orderedBy</code> element.
+than specified in the <code>orderedBy</code> element. -->
 </p>
 <p>
-Applications SHOULD NOT reorder the elements in a list unless they
-understand the impact of this on the meaning of the list.
+Приложениям НЕ СЛЕДУЕТ менять порядок элементов в списке, если только они не понимают влияние этого на смысл списка.
+<!-- Applications SHOULD NOT reorder the elements in a list unless they
+understand the impact of this on the meaning of the list. -->
 </p>
 
 <a name="status"> </a>
-<h2>List Mode &amp; Item Deleted</h2>
+<h2>Вид использования списка и удалённые пункты<!-- List Mode &amp; Item Deleted --></h2>
 
 <p>
 Имеется несколько различных видов использования ресурса List:
@@ -36,21 +40,23 @@ understand the impact of this on the meaning of the list.
 [%codelist http://hl7.org/fhir/ValueSet/list-mode%]
 
 <p>
-The most common mode is "snapshot" - a list that is accurate 
+Наиболее распространённым видом использования является "моментальный снимок" - это список, правильный в контексте своего использования, но не являющийся текущим или поддерживаемым вне этого контекста; например медикаменты при выписке в выписном эпикризе. Обратите внимание, что эти списки обычно имеют статуст "текущих" - они были текущими на момент своего создания. Некоторые виды списков могут явным образом устаревать (в частности, если режим = working), однако большинство списков не будет поддерживаться после создания.
+<!-- The most common mode is "snapshot" - a list that is accurate 
 within the context it is used in but not current or maintained
 after that; e.g., medications on discharge in a discharge summary.
 Note that these lists usually have a status of 'current' - they
 were current when they were prepared. Some kinds of lists may 
 be explicitly retired (particularly if mode = working), but most 
-will not be maintained after creation. 
+will not be maintained after creation.  -->
 </p>
 <p>
-A change list may include deleted items. Some examples of change lists are 
+Список изменений может содержать удалённые пункты. Примерами списков изменений будут согласованный список аллергий, список медикаментов при выписке и список с новыми, обнволёнными или удалёнными пунктами в нем - хотя они могут не быть списками, которые содержат изменения (по решению реализаторов). Для того чтобы гарантировать безопасность обработки списка, у всех пунктов, которые были удалены, значение элемента deleted должно быть установлено в "true".
+<!-- A change list may include deleted items. Some examples of change lists are 
 a reconciled list of allergies, a discharge medication list and a list 
 with new, updated and deleted items in it - though these may not be lists that 
 include changes (this is an implementation decision). In order to ensure that 
 the list is safe to process, any item where the flag implies that the 
-item has actually been deleted SHALL have the deleted element set to true. 
+item has actually been deleted SHALL have the deleted element set to true.  -->
 </p>
 <p>
 Обратите внимание, что нет никакого вывода о статусе ресурса, который был удален. Единственное утверждение, которое делается - что этот ресурс был убран из списка. Однако приложениям следует гарантировать, что добавление или удаление пунктов в списке по смыслу не противоречит логическому статусу соответствующего ресурса и его содержимого.
@@ -68,7 +74,7 @@ flags were used to implement version tracking history within the resource. -->
 </p>
 
 <a name="narrative"> </a>
-<h2>Narrative Content</h2>
+<h2>Содержимое описательной части<!-- Narrative Content --></h2>
 
 <p>
 Описательная часть ресурса List должна содержать сводку элементов item в списке, их ключевую информацию наряду с человекочитаемой сводкой их флагов (если они есть). Описательная часть может генерироваться из содержимого data и/или описательных частей ресурсов, входящих в список, либо это может быть описательная часть, написанная человеком, которая частично или полностью соответствует структурированным данным в связанных ресурсах, либо описательная часть, написанная человеком, может быть единственным содержимым, если в списке нет записей (что приравнивается к документу с единственным разделом - описательной частью).
@@ -98,8 +104,9 @@ displays (e.g. to prevent wrapping from separating the flags from the items). --
 </p>
 
 <p>
-Note that when a List resource is used in a <a href="documents.html">Document</a>,
-the narrative of the list is part of the attested content of the document.
+Обратите внимание, что когда ресурс List используется в <a href="documents.html">документе</a>, описательная часть этого списка входит в заверенное содержимое документа.
+<!-- Note that when a List resource is used in a <a href="documents.html">Document</a>,
+the narrative of the list is part of the attested content of the document. -->
 </p>
 
 <p>
@@ -128,7 +135,7 @@ possible approaches to work around this issue: -->
 </ul>
 
 <a name="emptyReason"> </a>
-<h2>Empty Reason</h2>
+<h2>Причина отсутствия<!-- Empty Reason --></h2>
 
 <p>
 Если список пустой, этому может быть несколько различных причин. Например:

@@ -429,7 +429,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 		else
 		  tableRowNE("Тип", "datatypes.html", type);
     if (path.endsWith("[x]"))
-      tableRowNE("[x] Note", null, "See <a href=\""+prefix+"formats.html#choice\">Choice of Data Types</a> for further information about how to use [x]");
+      tableRowNE("Примечание к [x]", null, "См. дополнительную информацию об использовании [x] в разделе <a href=\""+prefix+"formats.html#choice\">Выбор типов данных</a>");
 		tableRow("Является модификатором", "conformance-rules.html#ismodifier", displayBoolean(e.isModifier()));
     tableRowNE("Значение по умолчанию", null, encodeValue(e.getDefaultValue()));
     tableRowNE("Значение, если отсутствует", null, e.getMeaningWhenMissing());
