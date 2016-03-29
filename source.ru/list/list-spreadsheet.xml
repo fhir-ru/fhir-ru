@@ -6408,7 +6408,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ListPurpose</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">What the purpose of a list is</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Назначение списка<!-- What the purpose of a list is --></Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">valueset-list-example-codes</Data></Cell>
@@ -6423,7 +6423,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">ListMode</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The processing mode that applies to this list</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Режим обработки, который применяется к этому списку<!-- The processing mode that applies to this list --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">#list-mode</Data></Cell>
@@ -6438,7 +6438,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s148"><Data ss:Type="String">ListItemFlag</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes that provide further information about the reason and meaning of the item in the list</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды для предоставления более подробной информации о причине и смысловому значению этого пункта в списке<!-- Codes that provide further information about the reason and meaning of the item in the list --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">valueset-list-item-flag</Data></Cell>
@@ -6454,7 +6454,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">ListEmptyReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If a list is empty, why it is empty</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если список пустой, то почему он пустой<!-- If a list is empty, why it is empty --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">valueset-list-empty-reason</Data></Cell>
@@ -6469,7 +6469,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">ListOrder</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">What order applies to the items in a list</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Какой порядок сортировки применён к пунктам в списке<!-- What order applies to the items in a list --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">valueset-list-order</Data></Cell>
@@ -6484,7 +6484,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s148"><Data ss:Type="String">ListStatus</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The current state of the list</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Текущий статус списка<!-- The current state of the list --></Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">#list-status</Data></Cell>
@@ -6944,7 +6944,7 @@
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s151"/>
     <Cell ss:StyleID="s151"><Data ss:Type="String">Working List</Data></Cell>
-    <Cell ss:StyleID="s151"><Data ss:Type="String">This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is tracking changes</Data></Cell>
+    <Cell ss:StyleID="s151"><Data ss:Type="String">Этот список является основным, поддерживаемым на постоянной основе с регулярными обновлениями по мере изменения реального списка, изменения в котором он отслеживает<!-- This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is tracking changes --></Data></Cell>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s141"/>
@@ -6955,7 +6955,7 @@
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s152"/>
     <Cell ss:StyleID="s152"><Data ss:Type="String">Snapshot List</Data></Cell>
-    <Cell ss:StyleID="s152"><Data ss:Type="String">This list was prepared as a snapshot. It should not be assumed to be current</Data></Cell>
+    <Cell ss:StyleID="s152"><Data ss:Type="String">Этот список был подготовлен в режиме моментального снимка. Его не следует считать текущим<!-- This list was prepared as a snapshot. It should not be assumed to be current --></Data></Cell>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"><Data ss:Type="String">Mostly this status is used in documents where the list won't be changed once the document is completed</Data></Cell>
@@ -6966,7 +6966,7 @@
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s152"/>
     <Cell ss:StyleID="s152"><Data ss:Type="String">Change List</Data></Cell>
-    <Cell ss:StyleID="s152"><Data ss:Type="String">A list that indicates where changes have been made or recommended</Data></Cell>
+    <Cell ss:StyleID="s152"><Data ss:Type="String">Список, показывающий, где были произведены или рекомендованы изменения<!-- A list that indicates where changes have been made or recommended --></Data></Cell>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s132"/>
     <Cell ss:StyleID="s143"><Data ss:Type="String">This is typically used in clinical summaries (e.g. Discharge Summary, Transfers of care). These lists should be understood as human-readable statements, and applications should be extremely careful if automated processing is attempted</Data></Cell>

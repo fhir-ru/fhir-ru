@@ -1175,7 +1175,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Случай обслуживания (encounter), связанный с этим заказом питания<!-- The encounter associated with this nutrition order --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Случай обслуживания, связанный с этим заказом питания<!-- The encounter associated with this nutrition order --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Случай обслуживания, предоставляющий дополнительную информацию о контексте здравоохранения, в котором был сделан этот запрос<!-- An encounter that provides additional information about the healthcare context in which this request is made --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1703,7 +1703,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Required  texture modifications </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Требуемая модификация текстуры<!-- Required  texture modifications --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Класс, который описывает все модификации текстуры, необходимые для пациента, чтобы безопасно употреблять различные типы твердых продуктов.<!-- Class that describes any texture modifications required for the patient to safely consume various types of solid foods. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2345,12 +2345,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Formula feeding instruction as structured data</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Инструкции по искусственному вскармливанию в структурированном виде<!-- Formula feeding instruction as structured data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Инструкции по введению смесей в структурированном виде. Эта повторяющаяся структура позволяет изменение скорости введения или объёма с течением времени для болюсого и непрерывного питания. Примером будет инструкция увеличивать скорость непрерывного питания каждые 2 часа.<!-- Formula administration instructions as structured data.  This repeating structure allows for changing the administration rate or volume over time for both bolus and continuous feeding.  An example of this would be an instruction to increase the rate of continuous feeding every 2 hours. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">See implementation notes below for further discussion on how to order continuous vs bolus enteral feeding using this resource.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">См. примечания к реализации ниже с пояснениями, как заказывать непрерывное или болюсное энтеральное питание с помощью этого ресурса.<!-- See implementation notes below for further discussion on how to order continuous vs bolus enteral feeding using this resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.outboundRelationship [typeCode =COMP], target [classCode=SBADM, moodCode=RQO]</Data><NamedCell
@@ -2458,7 +2458,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Скорость подачи смеси через питательный насос, например 60 мл в час, в соответствии с указанным графиком.<!-- The rate of administration of formula via a feeding pump, e.g. 60 mL per hour, according to the specified schedule. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ratio is used when the quantity value in the denominator is not &quot;1&quot;, otherwise use Quantity. For example, the Ratio datatype is used for &quot;200 mL/4 hrs&quot; versus the Quantity datatype for &quot;50 mL/hr&quot;.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Пропорция используется, когда значение количества в знаменателе не равно &quot;1&quot;, в остальных случаях используйте Quantity. Например тип данных Ratio используется для &quot;200 mL/4 hrs&quot;, тогда как тип данных Quantity - для &quot;50 mL/hr&quot;.<!-- Ratio is used when the quantity value in the denominator is not &quot;1&quot;, otherwise use Quantity. For example, the Ratio datatype is used for &quot;200 mL/4 hrs&quot; versus the Quantity datatype for &quot;50 mL/hr&quot;. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><Data ss:Type="String">.rateQuantity</Data><NamedCell
@@ -4302,7 +4302,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">NutritionOrder</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Nutrition Order SHALL contain either Oral Diet , Supplement, or Enteral Formula class</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Заказ на питание ДОЛЖЕН содержать указание пероральной диеты, пищевой добавки или энтеральной смеси<!-- Nutrition Order SHALL contain either Oral Diet , Supplement, or Enteral Formula class --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s109"><Data ss:Type="String">oralDiet or supplement or enteralFormula</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4826,7 +4826,7 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">NutritionOrder.patient</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The identity of the person who requires the diet, formula or nutritional supplement</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Идентификатор человека, который заказл диету, смесь или пищевую добавку<!-- The identity of the person who requires the diet, formula or nutritional supplement --></Data></Cell>
     <Cell><Data ss:Type="String">2/4/2015 EH- [#3707] change subject to patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4834,42 +4834,42 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s121"><Data ss:Type="String">NutritionOrder.orderer</Data></Cell>
-    <Cell ss:StyleID="s122"><Data ss:Type="String">The identify of the provider who placed the nutrition order</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Идентификатор провайдера, который разместил заказ на питание<!-- The identify of the provider who placed the nutrition order --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s120"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s121"><Data ss:Type="String">NutritionOrder.identifier</Data></Cell>
-    <Cell ss:StyleID="s122"><Data ss:Type="String">Return nutrition orders with this external identifier</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Возвращает заказы на питание с этим внешним идентификатором<!-- Return nutrition orders with this external identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s120"><Data ss:Type="String">encounter</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s121"><Data ss:Type="String">NutritionOrder.encounter</Data></Cell>
-    <Cell ss:StyleID="s122"><Data ss:Type="String">Return nutrition orders with this encounter identifier</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Возвращает заказы на питание с указанным идентификатором случая обслуживания<!-- Return nutrition orders with this encounter identifier --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s120"><Data ss:Type="String">datetime</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s121"><Data ss:Type="String">NutritionOrder.dateTime</Data></Cell>
-    <Cell ss:StyleID="s122"><Data ss:Type="String">Return nutrition orders requested on this date</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Возвращает заказы на питание, заказанные в эту дату<!-- Return nutrition orders requested on this date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s120"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s121"><Data ss:Type="String">NutritionOrder.status</Data></Cell>
-    <Cell ss:StyleID="s122"><Data ss:Type="String">Status of the nutrition order.</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Статус заказа на питание.<!-- Status of the nutrition order. --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s120"><Data ss:Type="String">oraldiet</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s121"><Data ss:Type="String">NutritionOrder.oralDiet.type</Data></Cell>
-    <Cell ss:StyleID="s122"><Data ss:Type="String">Type of diet that can be consumed orally (i.e., take via the mouth).</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Тип диеты, которая может употребляться перорально (т. е. приниматься через рот).<!-- Type of diet that can be consumed orally (i.e., take via the mouth). --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s120"><Data ss:Type="String">supplement</Data></Cell>
@@ -4890,7 +4890,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s121"><Data ss:Type="String">NutritionOrder.enteralFormula.additiveType</Data></Cell>
-    <Cell ss:StyleID="s122"><Data ss:Type="String">Type of module component to add to the feeding</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Тип модульного компонента для добавления к питанию<!-- Type of module component to add to the feeding --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s120"/>
@@ -6868,7 +6868,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s149"><Data ss:Type="String">NutritionOrderStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Codes specifying the state of the request. Describes the lifecycle of the nutrition order.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Код статуса запроса. Описывает жизненный цикл заказа на питание.<!-- Codes specifying the state of the request. Describes the lifecycle of the nutrition order. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#nutrition-order-status</Data></Cell>
@@ -6883,7 +6883,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">FoodType</Data></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Codes used to indicate the type of food that should NOT be given to the patient.</Data></Cell>
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Коды, используемые для указания типа пищи, которую НЕ СЛЕДУЕТ давать пациенту.<!-- Codes used to indicate the type of food that should NOT be given to the patient. --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-food-type</Data></Cell>
@@ -6898,7 +6898,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s150"><Data ss:Type="String">OralDiet</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes used to indicate the type of diet being ordered for a patient.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды для указания типа диеты, заказываемой для пациента.<!-- Codes used to indicate the type of diet being ordered for a patient. --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-diet-type</Data></Cell>
@@ -6913,7 +6913,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s150"><Data ss:Type="String">NutrientModifier</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for types of nutrient that is being modified such as carbohydrate or sodium.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды типов питательных веществ, которые следует модифицировать, например углеводы или натрий.<!-- Codes for types of nutrient that is being modified such as carbohydrate or sodium. --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-nutrient-code</Data></Cell>
@@ -6928,7 +6928,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s150"><Data ss:Type="String">TextureModifier</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for food consistency types or texture modifications to apply to foods.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды типов консистенции пищи или модификации текстуры для применения к пищевым продуктам.<!-- Codes for food consistency types or texture modifications to apply to foods. --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-texture-code</Data></Cell>
@@ -6943,7 +6943,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s150"><Data ss:Type="String">TextureModifiedFoodType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for types of foods that are texture modified.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды типов пищевых продуктов, текстуру которых требуется модифицировать.<!-- Codes for types of foods that are texture modified. --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-modified-foodtype</Data></Cell>
@@ -6958,7 +6958,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s150"><Data ss:Type="String">FluidConsistencyType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes used to represent the consistency of fluids and liquids provided to the patient.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды для указания консистенции флюидов и жидкостей, выдаваемых пациенту.<!-- Codes used to represent the consistency of fluids and liquids provided to the patient. --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-consistency-type</Data></Cell>
@@ -6973,7 +6973,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s150"><Data ss:Type="String">SupplementType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for nutritional supplements to be provided to the patient </Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды пищевых добавок для выдачи пациенту<!-- Codes for nutritional supplements to be provided to the patient  --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-supplement-type</Data></Cell>
@@ -6988,7 +6988,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s150"><Data ss:Type="String">EnteralFormulaType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for type of enteral formula to be administered to patient.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды типов энтеральных смесей для введения пациенту.<!-- Codes for type of enteral formula to be administered to patient. --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-entformula-type</Data></Cell>
@@ -7003,7 +7003,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s150"><Data ss:Type="String">EnteralFormulaAdditiveType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for the type of modular component such as protein, carbohydrate or fiber to be provided in addition to or mixed with the base formula.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды типов модульных компонентов, таких как белок, углеводы или клетчатка, которые должны быть предоставлены в дополнение к или в сочетании с базовой смесью.<!-- Codes for the type of modular component such as protein, carbohydrate or fiber to be provided in addition to or mixed with the base formula. --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-entformula-additive</Data></Cell>
@@ -7018,7 +7018,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s150"><Data ss:Type="String">EnteralRouteOfAdministration</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes specifying the route of administration of enteral formula.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды, определяющие пути введения энтеральной смеси.<!-- Codes specifying the route of administration of enteral formula. --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-enteral-route</Data></Cell>
@@ -7033,7 +7033,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s150"><Data ss:Type="String">PatientDiet</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Medical, cultural or ethical food preferences to help with catering requirements</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Медицинские, культурные или этические предпочтения в еде, чтобы помочь с требованиями общественного питания<!-- Medical, cultural or ethical food preferences to help with catering requirements --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/encounter-diet</Data></Cell>

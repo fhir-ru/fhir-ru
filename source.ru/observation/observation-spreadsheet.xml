@@ -5117,14 +5117,14 @@
     <Cell ss:StyleID="s79"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s79"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Observation.code</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The code of the observation type</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Код типа наблюдения<!-- The code of the observation type --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">component-code</Data></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s79"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">Observation.component.code</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The component code of the observation type</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Код компонента типа наблюдения<!-- The component code of the observation type --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s121"><Data ss:Type="String">value-quantity</Data></Cell>
@@ -5138,7 +5138,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">quantity</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s122"><Data ss:Type="String">Observation.component.valueQuantity</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">The value of the component observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Значение наблюдения-компонента, если значением является Quantity, или SampledData (просто ищите по границам значений в дискретных данных)<!-- The value of the component observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data) --></Data></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">5/15/2015:#7517</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -5153,7 +5153,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s122"><Data ss:Type="String">Observation.component.valueCodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">The value of the component observation, if the value is a CodeableConcept</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Значение наблюдения-компонента. если это CodeableConcept<!-- The value of the component observation, if the value is a CodeableConcept --></Data></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">5/15/2015:#7517</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -5161,21 +5161,21 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s122"><Data ss:Type="String">Observation.valueDateTime | Observation.valuePeriod</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">The value of the observation, if the value is a date or period of time</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Значение наблюдения, если этим значением является дата или период времени<!-- The value of the observation, if the value is a date or period of time --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="Default"><Data ss:Type="String">value-string</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Observation.valueString</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">Значение наблюдения, если этим значением является строка (string), также ищет по CodeableConcept.text<!-- The value of the observation, if the value is a string, and also searches in CodeableConcept.text --></Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Значение наблюдения, если это строковое значение, также ищет по CodeableConcept.text<!-- The value of the observation, if the value is a string, and also searches in CodeableConcept.text --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s124"><Data ss:Type="String">component-value-string</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s124"><Data ss:Type="String">Observation.component.valueString</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">The value of the component observation, if the value is a string, and also searches in CodeableConcept.text</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Значение наблюдения-компонента, если это строковое значение, также ищет по CodeableConcept.text<!-- The value of the component observation, if the value is a string, and also searches in CodeableConcept.text --></Data></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">5/15/2015:#7517</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -5183,7 +5183,7 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">composite</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s124"><Data ss:Type="String">code &amp; value[x]</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">Both code and one of the value parameters</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Код и один из параметров значения<!-- Both code and one of the value parameters --></Data></Cell>
     <Cell><Data ss:Type="String">[#3045]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -5191,7 +5191,7 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">composite</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s124"><Data ss:Type="String">component-code &amp; component-value[x]</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">Both component code and one of the component value parameters</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Код компонента и параметры одного из значений компонента<!-- Both component code and one of the component value parameters --></Data></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">5/15/2015:#7517</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -5220,14 +5220,14 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Observation.subject</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">Предмет этого наблюдения<!-- The subject that the observation is about --></Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Субъект, над которым проводилось наблюдение<!-- The subject that the observation is about --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"><Data ss:Type="String">performer</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Observation.performer</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">Who performed the observation</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Кто выполнил это наблюдение<!-- Who performed the observation --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"><Data ss:Type="String">specimen</Data></Cell>
@@ -5256,7 +5256,7 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">composite</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">related-target &amp; related-type</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">Related Observations - search on related-type and related-target together</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Связанные наблюдения - поиск одновременно по related-type и related-target<!-- Related Observations - search on related-type and related-target together --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"><Data ss:Type="String">encounter</Data></Cell>
@@ -5271,28 +5271,28 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Observation.dataAbsentReason</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">Причина, по которой ожидаемое значение элемента Observation.value[x] отсутствует.<!-- The reason why the expected value in the element Observation.value[x] is missing. --></Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Причина, по которой ожидаемое значение в элементе Observation.value[x] отсутствует.<!-- The reason why the expected value in the element Observation.value[x] is missing. --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s124"><Data ss:Type="String">component-data-absent-reason</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s124"><Data ss:Type="String">Observation.component.dataAbsentReason</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">The reason why the expected value in the element Observation.component.value[x] is missing.</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Причина, по которой ожидаемое значение в элементе Observation.component.value[x] отсутствует.<!-- The reason why the expected value in the element Observation.component.value[x] is missing. --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Observation.subject</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">The subject that the observation is about (if patient)</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Субъект, над которым проводилось наблюдение (если это пациент)<!-- The subject that the observation is about (if patient) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Observation.identifier</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">The unique id for a particular observation</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Уникальный идентификатор конкретного наблюдения<!-- The unique id for a particular observation --></Data></Cell>
     <Cell><Data ss:Type="String">[#3417]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5300,14 +5300,14 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Observation.device</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">The Device that generated the observation data.</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Устройство, сгенерировавшее данные наблюдения.<!-- The Device that generated the observation data. --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"><Data ss:Type="String">category</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s124"><Data ss:Type="String">Observation.category</Data></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">The classification of the type of observation</Data></Cell>
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Классификация типов наблюдений<!-- The classification of the type of observation --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"/>
