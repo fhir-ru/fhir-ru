@@ -4867,49 +4867,49 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ClaimResponse.identifier</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The identity of the insurer</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Идентификатор страховой компании<!-- The identity of the insurer --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">request</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">ClaimResponse.request</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">The claim reference</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Ссылка на иск<!-- The claim reference --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">organization</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">ClaimResponse.organization</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">The organization who generated this resource</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Организация, которая создала этот ресурс<!-- The organization who generated this resource --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">outcome</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">ClaimResponse.outcome</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">The processing outcome</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Результаты обработки<!-- The processing outcome --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">created</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">ClaimResponse.created</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">The creation date</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Дата создания<!-- The creation date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">disposition</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">ClaimResponse.disposition</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">The contents of the disposition message</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Содержимое disposition сообщения<!-- The contents of the disposition message --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"><Data ss:Type="String">paymentdate</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">ClaimResponse.paymentDate</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">The expected paymentDate</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Ожидаемая дата оплаты<!-- The expected paymentDate --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"/>
