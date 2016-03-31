@@ -87,13 +87,17 @@
 			</pre>
   </li>
   <li>
-		A value set is bound to the ValueCodeableConcept element. For example, in the USLab Observation Profile this element is bound to  <a href="uslab/valueset-uslab-obs-codedresults.html">USlab Coded Results</a>, which is composed of several SNOMED CT hierarchies. The source system may also provide their own ("local") coded result values as well. Hence coded results are often coded in multiple value sets based on different code systems and these may be mapped using the ConceptMap resource and/or given as translations directly in the element as shown in the example above.
+  Набор значений привязан к элементу ValueCodeableConcept. Например в профиле USLab Observation этот элемент привязан к <a href="uslab/valueset-uslab-obs-codedresults.html">USlab Coded Results</a>, который состоит из нескольких иерархий SNOMED CT. Исходная система может также предоставлять свои собственные (локальные) закодированные значения результатов. Поэтому закодированные результаты часто кодируются в нескольких наборах значений на основе различных кодовых систем, и между ними можно устанавливать соответствия с помощью ресурса ConceptMap и/или давать переводы непосредственно в самом элементе, как показано в примере выше.
+<!-- 		A value set is bound to the ValueCodeableConcept element. For example, in the USLab Observation Profile this element is bound to  <a href="uslab/valueset-uslab-obs-codedresults.html">USlab Coded Results</a>, which is composed of several SNOMED CT hierarchies. The source system may also provide their own ("local") coded result values as well. Hence coded results are often coded in multiple value sets based on different code systems and these may be mapped using the ConceptMap resource and/or given as translations directly in the element as shown in the example above. -->
   </li>
   <li>
-		The Boolean data type is rarely used for Observation.value[x] because most observations result values are never truly Boolean due to exceptional values such as "unknown".   If needed, use valueCodeableConcept for a Boolean concept instead, and select codes from <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> <a href="v2/0136/index.html">Table 0136</a>. These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.
+  Тип данных Boolean редко используется в элементе Observation.value[x], поскольку для большинства наблюдений полученные значения никогда не будут по-настоящему булевыми из-за опускаемых значений, таких как "unknown" (неизвестно). При необходимости используйте valueCodeableConcept для логических концептов и выбирайте коды из <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> <a href="v2/0136/index.html">Таблицы 0136</a>. Можно устанавливать соответствие между этими концептами "да/нет" и значениями для отображения "true/false" или другими взаимоисключающими понятиями, которые могут понадобиться.
+<!-- 		The Boolean data type is rarely used for Observation.value[x] because most observations result values are never truly Boolean due to exceptional values such as "unknown".   If needed, use valueCodeableConcept for a Boolean concept instead, and select codes from <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> <a href="v2/0136/index.html">Table 0136</a>. These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed. -->
   </li>
-		<li>The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can be used are in the SampledData data type. However when using valueQuantity in an observation for above and below detection limit values, valueQuantity should be used by stating the limit along with the comparator.  In addition, when there is an error the dataAbsentReason element should be used with the appropriate value  ( 'error' or "NaN").
-		  For example if the value was below the lower limit of detection of  &lt;2.0 mmol/L the Observation.valueQuantity would be:
+		<li>В типе данных SampledData могут использоваться особые значения: "E" (ошибка), "L" (ниже предела обнаружения) и "U" (выше предела обнаружения). Однако при использовании valueQuantity в наблюдении для значений "выше/ниже предела обнаружения", valueQuantity следует использовать для указания пределов вместе с компаратором (знаком сравнения). Кроме того, для ошибки необходимо использовать элемент dataAbsentReason с подходящим значением ('error' или "NaN"). Например если значение было ниже нижнего предела обнаружения &lt;2.0 mmol/L, то Observation.valueQuantity будет следующим:
+    
+    <!-- The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can be used are in the SampledData data type. However when using valueQuantity in an observation for above and below detection limit values, valueQuantity should be used by stating the limit along with the comparator.  In addition, when there is an error the dataAbsentReason element should be used with the appropriate value  ( 'error' or "NaN").
+		  For example if the value was below the lower limit of detection of  &lt;2.0 mmol/L the Observation.valueQuantity would be: -->
 			<pre class="json">
 		"valueQuantity": {
     "value": 2.0,
@@ -103,7 +107,8 @@
     "code": "mmol/L"
      }
 			</pre>
-If the value was "NaN"  (i.e. an error)  the Observation.valueCodeableConcept would be absent and Observation.dataAbsentReason would be:
+      Если значением было "NaN"  (т. е. ошибка), то Observation.valueCodeableConcept будет отсутствовать, а Observation.dataAbsentReason будет следующим:
+<!-- If the value was "NaN"  (i.e. an error)  the Observation.valueCodeableConcept would be absent and Observation.dataAbsentReason would be: -->
 <pre class="json">
 "dataAbsentReason": {
     "coding": [
@@ -115,11 +120,13 @@ If the value was "NaN"  (i.e. an error)  the Observation.valueCodeableConcept wo
       </pre>
  </li>
  <li>
-   Because there are multiple types allowed for the <i>value</i> element, multiple value search parameters are defined. There is no standard parameter for searching values of type Attachment, or Ratio
+ Поскольку в элементе <i>value</i> разрешено несколько типов данных, то для него определено несколько параметров поиска по значению. Для поиска значений типа Attachment или Ratio нет стандартных параметров.
+<!--    Because there are multiple types allowed for the <i>value</i> element, multiple value search parameters are defined. There is no standard parameter for searching values of type Attachment, or Ratio -->
  </li>
 	</ul>
-	<h3>Physiologically Relevant Time of the Observation</h3>
-	<p> The effectiveDateTime or effectivePeriod is the time that the observation is most 
+	<h3>Физиологически значимое время наблюдения<!-- Physiologically Relevant Time of the Observation --></h3>
+	<p>effectiveDateTime или effectivePeriod - это непосредственно время наблюдения субъекта. Для биологических субъектов (например пациента-человека) это физиологически значимое время наблюдения. Если наблюдение производится над образцом для анализа, то это время начала и окончания взятия пробы для анализа (например анализ на натрий в суточной моче), однако если время сбора существенно мало, оно указывается как некоторый момент времени (например обычная венопункция). Если наблюдение производится непосредственно над субъектом (например кровяное давление, рентген грудной клетки), то это будет время начала и окончания процесса наблюдения, которое опять-таки часто сообщается как отдельный момент времени.  
+  <!--  The effectiveDateTime or effectivePeriod is the time that the observation is most 
     relevant as an observation of the subject. For a biological subject (e.g. a human patient), 
     this is the physiologically relevant time of the observation. 
 	In the case of an observation using a specimen, this represents the start and 
@@ -127,11 +134,14 @@ If the value was "NaN"  (i.e. an error)  the Observation.valueCodeableConcept wo
     sufficiently short, this is reported as a point in time value (e.g. normal venipuncture). 
     In the case of an observation obtained directly from a subject (e.g. BP, 
     Chest X-ray), this is the start and end time of the observation process, which again, is 
-    often reported as a single point in time.</p>
-	<h3>Reference Range</h3>
+    often reported as a single point in time. --></p>
+	<h3>Диапазон нормальных значений<!-- Reference Range --></h3>
 	<p>
-		Most commonly observations will only have one generic reference range.  Reference ranges may be useful for lab tests and other measures like systolic blood pressure, but will have little 	relevance for something like "pregnancy status". Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties.
+Чаще всего наблюдения имеют только один общий диапазон нормальных значений. Диапазоны нормальных значений могут быть полезны для лабораторных тестов и других измерений, например систолического кровяного давления, однако не имеют смысла для чего-то вроде "беременность". Системы МОГУТ вводить ограничения на указание только имеющих смысл диапазонов нормальных значений на основе знаний о пациенте (например конкретно для возраста, пола, веса пациента и других факторов), однако это не всегда возможно или целесообразно. Всякий раз, когда указывается больше одного диапазона нормальных значений, необходимо предоставлять различия между ними в свойствах диапазона нормальных значений и/или возраста.
+<!-- 		Most commonly observations will only have one generic reference range.  Reference ranges may be useful for lab tests and other measures like systolic blood pressure, but will have little 	relevance for something like "pregnancy status". Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties. -->
 		</p>
-	<h3>Canceled or Aborted Observations</h3>
-	<p>If a measurement or test could not be completed (for example if the specimen is unsatisfactory or the provider cancelled the order), then the status value should be updated to "canceled" and the specific details given - preferably as coded  values in the dataAbsentReason or valueCodeableConcept element.  Additional information may provided in comments as well.  The <a href="observation-example-unsat.html">specimen reject example</a> demonstrates this using a coded value for unsatisfactory specimen in dataAbsentReason.</p>
+	<h3>Отменённые или прерванные наблюдения<!-- Canceled or Aborted Observations --></h3>
+	<p>
+  Если измерение или тест не могут быть завершены (например, если образец для анализа неудовлетворительный или поставщик отменил заказ), тогда значение статуса необходимо обновить до "canceled" и дать соответствующие пояснения - предпочтительно закодированные значения в элементе dataAbsentReason или valueCodeableConcept. Также можно указать дополнительную информацию в комментариях. <a href="observation-example-unsat.html">Пример отклонения образца для анализа</a> демонстрирует использование закодированного значения для неудовлетворительного образца для анализа в элементе dataAbsentReason.
+  <!-- If a measurement or test could not be completed (for example if the specimen is unsatisfactory or the provider cancelled the order), then the status value should be updated to "canceled" and the specific details given - preferably as coded  values in the dataAbsentReason or valueCodeableConcept element.  Additional information may provided in comments as well.  The <a href="observation-example-unsat.html">specimen reject example</a> demonstrates this using a coded value for unsatisfactory specimen in dataAbsentReason. --></p>
 </div>

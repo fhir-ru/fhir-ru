@@ -2320,13 +2320,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Component results</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Результаты компонента<!-- Component results --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.  </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Некоторые наблюдения состоят из нескольких компонентов. Эти составные наблюдения выражаются в виде отдельных пар код/значение, которые разделяют между собой одинаковые атрибуты. Примерами будут систолический и диастолический компоненты наблюдения для измерения кровяного давления и множественные компоненты генетических наблюдений.<!-- Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations. -->  </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Component observations share the same attributes in the Observation resource as the primary observation and are always treated a part of a single observation (they are not separable).   However, the reference range for the primary observation value is not inherited by the component values and is required when appropriate for each component observation.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Составные наблюдения разделяют одинаковые атрибуты в ресурсе Observation в качестве первичного наблюдения и всегда обрабатываются как единое наблюдение (они неразделимы). Однако диапазон нормальных значений для значения первичного наблюдения не наследуется значениями компонентов и требуется, когда это целесообразно, для каждого компонента наблюдения.<!-- Component observations share the same attributes in the Observation resource as the primary observation and are always treated a part of a single observation (they are not separable).   However, the reference range for the primary observation value is not inherited by the component values and is required when appropriate for each component observation. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">For a discussion on the ways Observations can assembled in groups together see [Notes below](observation.html#4.20.4).</Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">Информацию о способах группировки наблюдений см. в [примечаниях ниже](observation.html#4.20.4).<!-- For a discussion on the ways Observations can assembled in groups together see [Notes below](observation.html#4.20.4). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">outBoundRelationship[typeCode=COMP]</Data><NamedCell
@@ -2363,7 +2363,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Type of component observation (code / type)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип наблюдения компонента (код/тип)<!-- Type of component observation (code / type) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает, что именно наблюдалось. Иногда называется &quot;кодом&quot; наблюдения<!-- Describes what was observed. Sometimes this is called the observation &quot;code&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2423,7 +2423,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Actual component result</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Фактический результат компонента<!-- Actual component result --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Информация, определенная в результате выполнения этого наблюдения, если эта информация имеет простое значение<!-- The information determined as a result of making the observation, if the information has a simple value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2469,7 +2469,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Why the component result is missing</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Почему результат компонента отсутствует<!-- Why the component result is missing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Указывает причину, почему ожидаемое значение в элементе Observation.value[x] отсутствует.<!-- Provides a reason why the expected value in the element Observation.value[x] is missing. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -7103,7 +7103,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s150"><Data ss:Type="String">ObservationCode</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes identifying names of simple observations.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды названий простых наблюдений.<!-- Codes identifying names of simple observations. --></Data></Cell>
     <Cell ss:StyleID="s122"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s122"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s122"><Data ss:Type="String">valueset-observation-codes</Data></Cell>
@@ -7118,7 +7118,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s151"><Data ss:Type="String">ObservationRangeMeaning</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Code for the meaning of a reference range.</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Код смыслового значения диапазона нормальных значений.<!-- Code for the meaning of a reference range. --></Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">valueset-referencerange-meaning</Data></Cell>
@@ -7148,7 +7148,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="Default"><Data ss:Type="String">ObservationStatus</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Codes providing the status of an observation.</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Коды статуса наблюдения.<!-- Codes providing the status of an observation. --></Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">#observation-status</Data></Cell>
@@ -7163,7 +7163,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"><Data ss:Type="String">ObservationRelationshipType</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Codes specifying how two observations are related.</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Коды, обозначающие, как связаны два наблюдения между собой.<!-- Codes specifying how two observations are related. --></Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">#observation-relationshiptypes</Data></Cell>
@@ -7178,7 +7178,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="Default"><Data ss:Type="String">ObservationValueAbsentReason</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Codes specifying why the result (Observation.value[x]) is missing.</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Коды причин, почему результат (Observation.value[x]) отсутствует.<!-- Codes specifying why the result (Observation.value[x]) is missing. --></Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s124"><Data ss:Type="String">valueset-observation-valueabsentreason</Data></Cell>
@@ -7193,7 +7193,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s150"><Data ss:Type="String">ObservationCategory</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes for high level observation categories .</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды высокоуровневой классификации наблюдений.<!-- Codes for high level observation categories . --></Data></Cell>
     <Cell ss:StyleID="s122"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s124"><Data ss:Type="String">valueset-observation-category</Data></Cell>
@@ -7208,7 +7208,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s150"><Data ss:Type="String">BodySite</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Codes describing anatomical locations. May include laterality.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды для описания анатомического расположения. Могут включать указание латеральности.<!-- Codes describing anatomical locations. May include laterality. --></Data></Cell>
     <Cell ss:StyleID="s122"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s122"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/body-site</Data></Cell>
