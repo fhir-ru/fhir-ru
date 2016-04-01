@@ -10,7 +10,8 @@
 		<!-- The referral request here is only partially specified, additional information will be provided from context, see the action definition below -->
 		<ReferralRequest>
 			<id value="referralRequest"/>
-			<status value="requested"/>
+			<status value="active"/>
+			<category value="request"/>
 			<type>
 				<coding>
 					<!-- Error: Connection to http://localhost:960 refused -->
@@ -47,7 +48,7 @@
 					<repeat>
 						<frequency value="1"/>
 						<period value="1"/>
-						<periodUnits value="d"/>
+						<periodUnit value="d"/>
 					</repeat>
 				</timing>
 				<route>
@@ -95,9 +96,9 @@
 					<text value="Tablet dose form"/>
 				</form>
 				<ingredient>
-					<item>
+					<itemReference>
 						<reference value="#citalopramSubstance"/>
-					</item>
+					</itemReference>
 					<amount>
 						<numerator>
 							<value value="20"/>
@@ -252,16 +253,22 @@
 		<reference value="Library/mmi-suiciderisk-orderset-logic"/>
 	</library>
 	
-	<!-- Items -->
+	<!-- Actions -->
 	<!-- Suicide Risk Assessment and Outpatient Management -->
-	<item>
+	<action>
 		<title value="Suicide Risk Assessment and Outpatient Management"/>
 		<!-- Consults and Referrals -->
-		<items>
+		<action>
 			<title value="Consults and Referrals"/>
-			<groupingBehavior value="logical-group"/>
-			<selectionBehavior value="any"/>
-			<items>
+			<behavior>
+				<type><code value="grouping-behavior"/></type>
+				<value><code value="logical-group"/></value>
+			</behavior>
+			<behavior>
+				<type><code value="selection-behavior"/></type>
+				<value><code value="any"/></value>
+			</behavior>
+			<action>
 				<!-- Refer to outpatient mental health program for evaluation and treatment of mental health conditions now -->
 				<textEquivalent value="Refer to outpatient mental health program for evaluation and treatment of mental health conditions now"/>
 				<resource>
@@ -287,14 +294,20 @@
 					<path value="supportingInformation"/>
 					<expression value="RiskAssessment"/>
 				</customization>
-			</items>
-		</items>
+			</action>
+		</action>
 		<!-- Medications -->
-		<items>
+		<action>
 			<title value="Medications"/>
-			<groupingBehavior value="logical-group"/>
-			<selectionBehavior value="at-most-one"/>
-			<items>
+			<behavior>
+				<type><code value="grouping-behavior"/></type>
+				<value><code value="logical-group"/></value>
+			</behavior>
+			<behavior>
+				<type><code value="selection-behavior"/></type>
+				<value><code value="at-most-one"/></value>
+			</behavior>
+			<action>
 
 				<!-- First-Line Antidepressants -->
 				<title value="First-Line Antidepressants"/>
@@ -303,9 +316,15 @@
 					<url value="http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"/>
 					<title value="Practice Guideline for the Treatment of Patients with Major Depressive Disorder"/>
 				</supportingEvidence>
-				<groupingBehavior value="logical-group"/>
-				<selectionBehavior value="at-most-one"/>
-				<items>
+				<behavior>
+					<type><code value="grouping-behavior"/></type>
+					<value><code value="logical-group"/></value>
+				</behavior>
+				<behavior>
+					<type><code value="selection-behavior"/></type>
+					<value><code value="at-most-one"/></value>
+				</behavior>
+				<action>
 					<!-- Selective Serotonin Reuptake Inhibitors (Choose a maximum of one or document reasons for exception) -->
 					<title value="Selective Serotonin Reuptake Inhibitors (Choose a mazimum of one or document reasons for exception)"/>
 					<documentation>
@@ -313,52 +332,58 @@
 						<url value="http://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6daeb45c-451d-b135-bf8f-2d6dff4b6b01"/>
 						<title value="National Library of Medicine. DailyMed website. CITALOPRAM- citalopram hydrobromide tablet, film coated."/>
 					</documentation>
-					<groupingBehavior value="logical-group"/>
-					<selectionBehavior value="at-most-one"/>
-					<items>
+					<behavior>
+						<type><code value="grouping-behavior"/></type>
+						<value><code value="logical-group"/></value>
+					</behavior>
+					<behavior>
+						<type><code value="selection-behavior"/></type>
+						<value><code value="at-most-one"/></value>
+					</behavior>
+					<action>
 						<!-- citalopram 20 mg tablet 1 tablet oral 1 time daily now (30 table; 3 refills) -->
 						<textEquivalent value="citalopram 20 mg tablet 1 tablet oral 1 time daily now (30 table; 3 refills)"/>
 						<resource>
 							<reference value="#citalopramPrescription"/>
 						</resource>
-					</items>
-					<items>
+					</action>
+					<action>
 						<!-- escitalopram 10 mg tablet 1 tablet oral 1 time daily now (30 tablet; 3 refills) -->
 						<textEquivalent value="escitalopram 10 mg tablet 1 tablet oral 1 time daily now (30 tablet; 3 refills)"/>
 						<!-- Follows pattern established above -->
-					</items>
-					<items>
+					</action>
+					<action>
 						<!-- fluoxetine 20 mg capsule 1 capsule oral 1 time daily now (30 tablet; 3 refills) -->
 						<textEquivalent value="fluoxetine 20 mg capsule 1 capsule oral 1 time daily now (30 tablet; 3 refills)"/>
 						<!-- Follows pattern established above -->
-					</items>
-					<items>
+					</action>
+					<action>
 						<!-- paroxetine 20 mg tablet 1 tablet oral 1 time daily now (30 tablet; 3 refills) -->
 						<textEquivalent value="paroxetine 20 mg tablet 1 tablet oral 1 time daily now (30 tablet; 3 refills)"/>
 						<!-- Follows pattern established above -->
-					</items>
-					<items>
+					</action>
+					<action>
 						<!-- sertraline 50 mg tablet 1 tablet oral 1 time daily now (30 tablet; 3 refills) -->
 						<textEquivalent value="sertraline 50 mg tablet 1 tablet oral 1 time daily now (30 tablet; 3 refills)"/>
 						<!-- Follows pattern established above -->
-					</items>
-				</items>
-				<items>
+					</action>
+				</action>
+				<action>
 					<!-- Dopamine Norepinephrine Reuptake Inhibitors (Choose a maximum of one or document reasons for exception) -->
 					<textEquivalent value="Dopamine Norepinephrine Reuptake Inhibitors (Choose a maximum of one or document reasons for exception)"/>
 					<!-- Follows pattern established above -->
-				</items>
-				<items>
+				</action>
+				<action>
 					<!-- Serotonin Norepinephrine Reuptake Inhibitors (Choose a maximum of one or doument reasons for exception) -->
 					<textEquivalent value="Serotonin Norepinephrine Reuptake Inhibitors (Choose a maximum of one or doument reasons for exception)"/>
 					<!-- Follows pattern established above -->
-				</items>
-				<items>
+				</action>
+				<action>
 					<!-- Norepinephrine-Serotonin Modulators (Choose a maximum of one or document reasons for exception) -->
 					<textEquivalent value="Norepinephrine-Serotonin Modulators (Choose a maximum of one or document reasons for exception)"/>
 					<!-- Follows pattern established above -->
-				</items>
-			</items>
-		</items>
-	</item>
+				</action>
+			</action>
+		</action>
+	</action>
 </OrderSet>

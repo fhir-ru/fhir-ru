@@ -13,6 +13,7 @@
   Binding = code list
   Reference = #days-of-week
   Definition = The days of the week.
+  Conformance = required
 
  -- Row 3 -----------------------------------
   Binding Name = ServiceProvisionConditions
@@ -22,21 +23,25 @@
   Conformance = Example
 
  -- Row 4 -----------------------------------
-  Binding Name = DocumentC80PracticeSetting
+  Binding Name = service-category
   Binding = value set
-  Reference = http://hl7.org/fhir/ValueSet/c80-practice-codes
-  Definition = Additional details about where the content was created (e.g. clinical specialty).
-  Conformance = Preferred
+  Reference = valueset-service-category
+  Definition = A category of the service(s) that could be provided.
+  Conformance = example
 
  -- Row 5 -----------------------------------
-  Binding Name = ServiceSpecialty
-  Binding = unbound
-  Definition = A specialty that a healthcare service may provide.
+  Binding Name = service-type
+  Binding = value set
+  Reference = valueset-service-type
+  Definition = Additional details about where the content was created (e.g. clinical specialty).
+  Conformance = example
 
  -- Row 6 -----------------------------------
-  Binding Name = ServiceCategory
-  Binding = unbound
-  Definition = A category of the service(s) that could be provided.
+  Binding Name = service-specialty
+  Binding = value set
+  Reference = http://hl7.org/fhir/ValueSet/c80-practice-codes
+  Definition = A specialty that a healthcare service may provide.
+  Conformance = Preferred
 
  -- Row 7 -----------------------------------
   Binding Name = ServiceCharacteristic
@@ -181,14 +186,14 @@
   Card. = 0..1
   Summary = Y
   Type = CodeableConcept
-  Binding = ServiceCategory
+  Binding = service-category
   Short Label = Broad category of service being performed or delivered
   Definition = Identifies the broad category of service being performed or delivered
   Comments = Selecting a Service Category then determines the list of relevant service types that can be selected in the primary service type
   w5 = class
 
  -- Row 5 -----------------------------------
-  Element = HealthcareService.serviceType
+  Element = !HealthcareService.serviceType
   Card. = 0..*
   Summary = Y
   UML = 350;0
@@ -197,31 +202,30 @@
   Definition = A specific type of service that may be delivered or performed
 
  -- Row 6 -----------------------------------
-  Element = HealthcareService.serviceType.type
-  Card. = 1..1
-  Summary = Y
-  Type = CodeableConcept
-  Binding = DocumentC80PracticeSetting
-  Short Label = Type of service delivered or performed
-  Definition = The specific type of service being delivered or performed
-  Comments = Change to serviceType?
-
- -- Row 7 -----------------------------------
-  Element = HealthcareService.serviceType.specialty
+  Element = HealthcareService.serviceType
   Card. = 0..*
   Summary = Y
   Type = CodeableConcept
-  Binding = ServiceSpecialty
-  Short Label = Specialties handled by the Service Site
+  Binding = service-type
+  Short Label = Type of service that may be delivered or performed
+  Definition = The specific type of service that may be delivered or performed
+
+ -- Row 7 -----------------------------------
+  Element = HealthcareService.specialty
+  Card. = 0..*
+  Summary = Y
+  Type = CodeableConcept
+  Binding = service-specialty
+  Short Label = Specialties handled by the HealthcareService
   Definition = Collection of specialties handled by the service site. This is more of a medical term
 
  -- Row 8 -----------------------------------
   Element = HealthcareService.location
-  Card. = 1..1
+  Card. = 0..*
   Summary = Y
   Type = Reference(Location)
-  Short Label = Location where service may be provided
-  Definition = The location where this healthcare service may be provided
+  Short Label = Location(s) where service may be provided
+  Definition = The location(s) where this healthcare service may be provided
   w5 = where
 
  -- Row 9 -----------------------------------
@@ -459,7 +463,7 @@
   Name = servicetype
   Type = token
   Description = The type of service provided by this healthcare service
-  Path = HealthcareService.serviceType.type
+  Path = HealthcareService.serviceType
 
  -- Row 4 -----------------------------------
   Name = !availability

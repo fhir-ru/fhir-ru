@@ -1323,6 +1323,10 @@
     <display value="Continuous (qualifier value)"/>
     <display value="Continuous"/>
   </concept>
+  <concept id="255327002" display="Ambulatory (qualifier value)">
+    <display value="Ambulatory"/>
+    <display value="Ambulatory (qualifier value)"/>
+  </concept>
   <concept id="255365009" display="Tightness sensation quality (qualifier value)">
     <display value="Tightness sensation quality (qualifier value)"/>
     <display value="Tightness sensation quality"/>
@@ -1696,6 +1700,10 @@
     <display value="Upper"/>
     <display value="Upper (qualifier value)"/>
   </concept>
+  <concept id="261420005" display="Preliminary (qualifier value)">
+    <display value="Preliminary"/>
+    <display value="Preliminary (qualifier value)"/>
+  </concept>
   <concept id="261651009" display="Tumour stage T2a (finding)">
     <display value="Tumour stage T2a"/>
   </concept>
@@ -1730,6 +1738,10 @@
   <concept id="262068006" display="Preoperative (qualifier value)">
     <display value="Preoperative"/>
     <display value="Preoperative (qualifier value)"/>
+  </concept>
+  <concept id="263204007" display="Fracture of shaft of ulna (disorder)">
+    <display value="Fracture of shaft of ulna"/>
+    <display value="Fracture of shaft of ulna (disorder)"/>
   </concept>
   <concept id="263678003" display="At rest (qualifier value)">
     <display value="At rest"/>
@@ -1908,6 +1920,11 @@
     <display value="Elderly assessment clinic"/>
     <display value="Elderly assessment clinic (environment)"/>
   </concept>
+  <concept id="275879008" display="On examination - deaf (disorder)">
+    <display value="On examination - deaf (disorder)"/>
+    <display value="O/E - deaf"/>
+    <display value="On examination - deaf"/>
+  </concept>
   <concept id="276026009" display="Fluid balance regulation (procedure)">
     <display value="Fluid management"/>
     <display value="Hydration balance regulation"/>
@@ -2081,6 +2098,16 @@
   <concept id="303113008" display="Postmortem period (qualifier value)">
     <display value="Postmortem period"/>
     <display value="Postmortem period (qualifier value)"/>
+  </concept>
+  <concept id="303653007" display="Computed tomography of head (procedure)">
+    <display value="Computed tomography of structures of the head (procedure)"/>
+    <display value="Computed tomography of structures of the head"/>
+    <display value="Head CT"/>
+    <display value="CT of head"/>
+    <display value="Computed tomography of head (procedure)"/>
+    <display value="Computed tomography of head"/>
+    <display value="CT of structures of the head"/>
+    <display value="CT of structures of the head (procedure)"/>
   </concept>
   <concept id="303949008" display="Lumbar spinal cerebrospinal fluid pathway (body structure)">
     <display value="Lumbar spinal cerebrospinal fluid pathway"/>
@@ -2478,6 +2505,15 @@
     <display value="Heart valve replacement, NOS"/>
     <display value="Heart valve replacement"/>
     <display value="Heart valve replacement (procedure)"/>
+  </concept>
+  <concept id="34206005" display="Subcutaneous route (qualifier value)">
+    <display value="SC use"/>
+    <display value="Subcutaneous use"/>
+    <display value="SC route"/>
+    <display value="Subcutaneous"/>
+    <display value="Subcutaneous route"/>
+    <display value="Subcutaneous route (qualifier value)"/>
+    <display value="A route that begins in subcutaneous tissue."/>
   </concept>
   <concept id="34402009" display="Rectum structure (body structure)">
     <display value="Rectum structure"/>
@@ -4249,6 +4285,10 @@
     <display value="Completion time of procedure (observable entity)"/>
     <display value="Time when all instrument and sponge counts are completed and verified as correct, all post procedure radiological studies to be done in procedure room are completed, all dressings and drains are secured, and the physician or surgeons have completed all procedure related activities on the patient."/>
   </concept>
+  <concept id="442376007" display="Test with result pending (observable entity)">
+    <display value="Test with result pending"/>
+    <display value="Test with result pending (observable entity)"/>
+  </concept>
   <concept id="442651000124102" display="Adult formula (product)">
     <display value="Adult formula (product)"/>
     <display value="Adult formula"/>
@@ -4476,6 +4516,18 @@
     <display value="Dry body weight"/>
     <display value="Dry weight"/>
   </concept>
+  <concept id="445664008" display="Amended report (record artifact)">
+    <display value="Amended report (record artifact)"/>
+    <display value="Amended report"/>
+  </concept>
+  <concept id="445665009" display="Final report (record artifact)">
+    <display value="Final report (record artifact)"/>
+    <display value="Final report"/>
+  </concept>
+  <concept id="445667001" display="Interim report (record artifact)">
+    <display value="Interim report (record artifact)"/>
+    <display value="Interim report"/>
+  </concept>
   <concept id="44567001" display="Tracheal structure">
     <display value="Tracheal structure"/>
     <display value="Trachea"/>
@@ -4595,6 +4647,10 @@
   <concept id="467862000" display="Capillary patient thermometer, mercury (physical object)">
     <display value="Capillary patient thermometer, mercury"/>
     <display value="Capillary patient thermometer, mercury (physical object)"/>
+  </concept>
+  <concept id="468063009" display="Coated femoral stem prosthesis, modular (physical object)">
+    <display value="Coated femoral stem prosthesis, modular (physical object)"/>
+    <display value="Coated femoral stem prosthesis, modular"/>
   </concept>
   <concept id="46825001" display="Electrocardiographic monitoring (procedure)">
     <display value="Electrocardiographic monitoring (regime/therapy)"/>
@@ -5125,6 +5181,10 @@
     <display value="Referral for procedure"/>
     <display value="Referral for procedure (procedure)"/>
   </concept>
+  <concept id="701374003" display="Bed transporter (physical object)">
+    <display value="Bed transporter"/>
+    <display value="Bed transporter (physical object)"/>
+  </concept>
   <concept id="7087005" display="Intermittent (qualifier value)">
     <display value="Intermittent (qualifier value)"/>
     <display value="Intermittent"/>
@@ -5435,6 +5495,11 @@
   <concept id="85217002" display="Distal subtotal gastrectomy (procedure)">
     <display value="Distal subtotal gastrectomy"/>
   </concept>
+  <concept id="85455005" display="Cart, device (physical object)">
+    <display value="Cart"/>
+    <display value="Cart, device"/>
+    <display value="Cart, device (physical object)"/>
+  </concept>
   <concept id="85581007" display="Drug powder (qualifier value)">
     <display value="Drug powder (product)"/>
     <display value="Drug powder"/>
@@ -5508,6 +5573,12 @@
     <display value="Oral temperature taking (regime/therapy)"/>
     <display value="Oral temperature taking"/>
     <display value="Oral temperature taking (procedure)"/>
+  </concept>
+  <concept id="89149003" display="Stretcher, device (physical object)">
+    <display value="Stretcher"/>
+    <display value="Stretcher, NOS"/>
+    <display value="Stretcher, device"/>
+    <display value="Stretcher, device (physical object)"/>
   </concept>
   <concept id="89837001" display="Urinary bladder structure (body structure)">
     <display value="Bladder structure"/>

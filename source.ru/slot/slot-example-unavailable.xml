@@ -8,16 +8,16 @@
 			Dr Careful is out of the office
 		</div>
 	</text>
-	<type>
+	<serviceCategory>
 		<coding>
-			<code value="45"/>
-			<display value="Physiotherapy" />
+			<code value="17"/>
+			<display value="General Practice" />
 		</coding>
-	</type>
+	</serviceCategory>
 	<schedule>
 		<reference value="Schedule/example" />
 	</schedule>
-	<freeBusyType value="busy-unavailable" />
+	<status value="busy-unavailable" />
 	<start value="2013-12-25T09:30:00Z" />
 	<end value="2013-12-25T09:45:00Z" />
 	<comment value="Dr Careful is out of the office" />

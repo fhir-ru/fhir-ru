@@ -106,6 +106,16 @@
   w5 = class
 
  -- Row 6 -----------------------------------
+  Element = SearchParameter.date
+  Card. = 0..1
+  Summary = y
+  Type = dateTime
+  Short Label = Publication Date(/time)
+  Definition = The date  (and optionally time) when the search parameter definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes
+  Comments = Additional specific dates may be added as extensions
+  w5 = when.recorded
+
+ -- Row 7 -----------------------------------
   Element = SearchParameter.publisher
   Card. = 0..1
   Summary = y
@@ -116,7 +126,7 @@
   Comments = Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
   w5 = who.witness
 
- -- Row 7 -----------------------------------
+ -- Row 8 -----------------------------------
   Element = SearchParameter.contact
   Card. = 0..*
   Summary = y
@@ -125,16 +135,16 @@
   Definition = Contacts to assist a user in finding and communicating with the publisher
   Comments = May be a web site, an email address, a telephone number (tel:), etc.
 
- -- Row 8 -----------------------------------
+ -- Row 9 -----------------------------------
   Element = SearchParameter.contact.name
   Card. = 0..1
   Summary = Y
   Type = string
-  Short Label = Name of a individual to contact
+  Short Label = Name of an individual to contact
   Definition = The name of an individual to contact regarding the search parameter
   Comments = If there is no named individual, the telecom is for the organization as a whole
 
- -- Row 9 -----------------------------------
+ -- Row 10 -----------------------------------
   Element = SearchParameter.contact.telecom
   Card. = 0..*
   Summary = Y
@@ -142,17 +152,17 @@
   Short Label = Contact details for individual or publisher
   Definition = Contact details for individual (if a name was provided) or the publisher
 
- -- Row 10 -----------------------------------
-  Element = SearchParameter.date
-  Card. = 0..1
-  Summary = y
-  Type = dateTime
-  Short Label = Publication Date(/time)
-  Definition = The date  (and optionally time) when the search parameter definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes
-  Comments = Additional specific dates may be added as extensions
-  w5 = when.recorded
-
  -- Row 11 -----------------------------------
+  Element = SearchParameter.useContext
+  Card. = 0..*
+  Summary = y
+  Type = CodeableConcept
+  Binding = ConformanceUseContext
+  Short Label = Content intends to support these contexts
+  Definition = The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of search parameters.
+  Requirements = Assist in searching for appropriate content
+
+ -- Row 12 -----------------------------------
   Element = SearchParameter.requirements
   Card. = 0..1
   Type = string
@@ -160,7 +170,7 @@
   Definition = The Scope and Usage that this search parameter was created to meet
   w5 = why
 
- -- Row 12 -----------------------------------
+ -- Row 13 -----------------------------------
   Element = SearchParameter.code
   Card. = 1..1
   Summary = Y
@@ -170,7 +180,7 @@
   Definition = The code used in the URL or the parameter name in a parameters resource for this search parameter
   Comments = For maximum compatibility, use only lowercase ASCII characters
 
- -- Row 13 -----------------------------------
+ -- Row 14 -----------------------------------
   Element = SearchParameter.base
   Card. = 1..1
   Summary = Y
@@ -179,7 +189,7 @@
   Short Label = The resource type this search parameter applies to
   Definition = The base resource type that this search parameter refers to
 
- -- Row 14 -----------------------------------
+ -- Row 15 -----------------------------------
   Element = SearchParameter.type
   Card. = 1..1
   Summary = y
@@ -188,7 +198,7 @@
   Short Label = number | date | string | token | reference | composite | quantity | uri
   Definition = The type of value a search parameter refers to, and how the content is interpreted
 
- -- Row 15 -----------------------------------
+ -- Row 16 -----------------------------------
   Element = SearchParameter.description
   Card. = 1..1
   Summary = y
@@ -196,7 +206,16 @@
   Short Label = Documentation for  search parameter
   Definition = A description of the search parameters and how it used
 
- -- Row 16 -----------------------------------
+ -- Row 17 -----------------------------------
+  Element = SearchParameter.expression
+  Card. = 0..1
+  Inv. = 1
+  Type = string
+  Short Label = FluentPath expression that extracts the values
+  Definition = A FluentPath expression that returns a set of elements for the search parameter
+  Comments = Note that the elements returned by the expression are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system
+
+ -- Row 18 -----------------------------------
   Element = SearchParameter.xpath
   Card. = 0..1
   Inv. = 1
@@ -205,7 +224,7 @@
   Definition = An XPath expression that returns a set of elements for the search parameter
   Comments = Note that the elements returned by the XPath are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system
 
- -- Row 17 -----------------------------------
+ -- Row 19 -----------------------------------
   Element = SearchParameter.xpathUsage
   Card. = 0..1
   Inv. = 1
@@ -214,7 +233,7 @@
   Short Label = normal | phonetic | nearby | distance | other
   Definition = How the search parameter relates to the set of elements returned by evaluating the xpath query
 
- -- Row 18 -----------------------------------
+ -- Row 20 -----------------------------------
   Element = SearchParameter.target
   Card. = 0..*
   Type = code
@@ -258,6 +277,12 @@
   Name = code
   Type = token
   Path = SearchParameter.code
+
+ -- Row 8 -----------------------------------
+  Name = context
+  Type = token
+  Description = A use context assigned to the search parameter
+  Path = SearchParameter.useContext
 
 === Sheet Profiles =====================================
 

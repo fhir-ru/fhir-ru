@@ -19,7 +19,7 @@
 select a set of codes from one or more code systems to specify which codes can be used in a particular context. -->
 </p>
 <p>
-Ресурс CodeSystem применяется для объявлению существования кодовой системы, и его ключевые свойства следующие:
+Ресурс CodeSystem применяется для объявления о существовании кодовой системы, и его ключевые свойства следующие:
 <!-- The Code system resource is used to declare the existence of a code system, and it's key properties: -->
 </p>
 <ul>

@@ -254,13 +254,14 @@
   Short Label = Information about the dispense
   Definition = Extra information about the dispense that could not be conveyed in the other attributes.
   v2 Mapping = RXD-9 Dispense Notes
+  RIM Mapping = .inboundRelationship[typeCode=SUBJ]/source[classCode=ACT,moodCode=EVN]
 
  -- Row 16 -----------------------------------
   Element = MedicationDispense.dosageInstruction
   Card. = 0..*
   UML = right
   Short Label = Medicine administration instructions to the patient/caregiver
-  Definition = Indicates how the medication is to be used by the patient
+  Definition = Indicates how the medication is to be used by the patient.  The pharmacist reviews the medication order prior to dispense and updates the dosageInstruction based on the actual product being dispensed.
   Comments = When the dose or rate is intended to change over the entire administration period (e.g. Tapering dose prescriptions), multiple instances of dosage instructions will need to be supplied to convey the different doses/rates.
   RIM Mapping = .outboundRelationship[typeCode=COMP].target[classCode=SBADM, moodCode=INT]
   Committee Notes = The RMIM has priority code on the act relationship.  How do we handle this?
@@ -271,6 +272,7 @@
   Type = string
   Short Label = Free text dosage instructions e.g. SIG
   Definition = Free text dosage instructions can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication.
+  RIM Mapping = .text
 
  -- Row 18 -----------------------------------
   Element = MedicationDispense.dosageInstruction.additionalInstructions

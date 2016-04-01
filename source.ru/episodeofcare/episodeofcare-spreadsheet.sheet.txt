@@ -5,13 +5,13 @@
   Binding Name = EpisodeOfCareStatus
   Binding = code list
   Reference = #episode-of-care-status
-  Definition = The status of the encounter.
+  Definition = The status of the episode of care.
   Conformance = required
 
  -- Row 2 -----------------------------------
   Binding Name = EpisodeOfCareType
   Binding = unbound
-  Definition = The type of the encounter.
+  Definition = The type of the episode of care
 
  -- Row 3 -----------------------------------
   Binding Name = EpisodeOfCareTeamRole
@@ -119,7 +119,7 @@
   Type = CodeableConcept
   Binding = EpisodeOfCareType
   Short Label = Type/class  - e.g. specialist referral, disease management
-  Definition = A classification of the type of encounter; e.g. specialist referral, disease management, type of funded care
+  Definition = A classification of the type of episode of care; e.g. specialist referral, disease management, type of funded care
   Comments = The type can be very important in processing as this could be used in determining if the EpisodeOfCare is relevant to specific government reporting, or other types of classifications
   w5 = class
 
@@ -173,14 +173,16 @@
   Definition = The practitioner that is the care manager/care co-ordinator for this patient
 
  -- Row 14 -----------------------------------
-  Element = EpisodeOfCare.careTeam
+  Element = EpisodeOfCare.team
   Card. = 0..*
+  Aliases = CareTeam
   UML = 420;220
+  Type = Reference(CareTeam)
   Short Label = Other practitioners facilitating this episode of care
   Definition = The list of practitioners that may be facilitating this episode of care for specific purposes
 
  -- Row 15 -----------------------------------
-  Element = EpisodeOfCare.careTeam.role
+  Element = !EpisodeOfCare.careTeam.role
   Card. = 0..*
   Type = CodeableConcept
   Binding = EpisodeOfCareTeamRole
@@ -188,14 +190,14 @@
   Definition = The role this team member is taking within this episode of care
 
  -- Row 16 -----------------------------------
-  Element = EpisodeOfCare.careTeam.period
+  Element = !EpisodeOfCare.careTeam.period
   Card. = 0..1
   Type = Period
   Short Label = Period of time for this role
   Definition = The period of time this practitioner is performing some role within the episode of care
 
  -- Row 17 -----------------------------------
-  Element = EpisodeOfCare.careTeam.member
+  Element = !EpisodeOfCare.careTeam.member
   Card. = 0..1
   Type = Reference(Practitioner|Organization)
   Short Label = The practitioner (or Organization) within the team
@@ -260,7 +262,7 @@
   Target Types = Practitioner
 
  -- Row 10 -----------------------------------
-  Name = team-member
+  Name = !team-member
   Type = reference
   Description = A Practitioner or Organization allocated to the care team for this EpisodeOfCare
   Path = EpisodeOfCare.careTeam.member

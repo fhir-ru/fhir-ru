@@ -7,6 +7,7 @@
   <name value="Populate Questionnaire"/>
   <status value="draft"/>
   <kind value="operation"/>
+  <date value="2015-08-04"/>
   <publisher value="Acme Healthcare Services"/>
   <contact>
     <name value="System Administrator"/>
@@ -15,10 +16,9 @@
       <value value="beep@coyote.acme.com"/>
     </telecom>
   </contact>
-  <date value="2015-08-04"/>
   <description value="Limited implementation of the Populate Questionnaire implemenation"/>
   <code value="populate"/>
-  <notes value="Only implemented for Labs and Medications so far"/>
+  <comment value="Only implemented for Labs and Medications so far"/>
   <base>
     <reference value="OperationDefinition/Questionnaire-populate"/>
   </base>

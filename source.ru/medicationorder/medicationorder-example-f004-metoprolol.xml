@@ -24,13 +24,13 @@
         <reference value="Practitioner/f007"/>
         <display value="S.M. Heps"/>
     </prescriber>
-    <reasonCodeableConcept>
+    <reasonCode>
         <coding>
             <system value="http://snomed.info/sct"/>
             <code value="38341003"/>
             <display value="High blood pressure"/>
         </coding>
-    </reasonCodeableConcept>
+    </reasonCode>
     <dosageInstruction>
         <timing>
             <repeat>
@@ -39,7 +39,7 @@
                 </boundsPeriod>
                 <frequency value="1"/>
                 <period value="1"/>
-                <periodUnits value="d"/>
+                <periodUnit value="d"/>
             </repeat>
         </timing>
         <siteCodeableConcept>

@@ -7,16 +7,16 @@
 			25 Dec 2013 9:45am - 10:00am: <b>Tentative</b> Physiotherapy
 		</div>
 	</text>
-	<type>
+	<serviceCategory>
 		<coding>
-			<code value="45"/>
-			<display value="Physiotherapy" />
+			<code value="17"/>
+			<display value="General Practice" />
 		</coding>
-	</type>
-  <schedule>
+	</serviceCategory>
+	<schedule>
     <reference value="Schedule/example" />
   </schedule>
-  <freeBusyType value="busy-tentative" />
+  <status value="busy-tentative" />
 	<start value="2013-12-25T09:45:00Z" />
 	<end value="2013-12-25T10:00:00Z" />
 	<comment value="Dr Careful is out of the office" />
