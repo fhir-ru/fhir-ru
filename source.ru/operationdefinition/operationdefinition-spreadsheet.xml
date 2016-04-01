@@ -1922,7 +1922,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Тип этого параметра<!-- The type for this parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">если не установлено, тогда параметр имеет тип &quot;Tuple&quot; и должен иметь как минимум одно определение элемента part<!-- if there is no stated parameter, then the parameter is a &quot;Tuple&quot; type and must have at least one part defined --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если не установлено, тогда параметр имеет тип &quot;Tuple&quot; и должен иметь как минимум одно определение элемента part<!-- if there is no stated parameter, then the parameter is a &quot;Tuple&quot; type and must have at least one part defined --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>

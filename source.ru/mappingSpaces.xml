@@ -112,7 +112,6 @@
     </preamble>
     <sort>13</sort>
   </space>
-
   <space>
     <url>http://wiki.ihe.net/index.php?title=Data_Element_Exchange</url>
     <columnName>IHE DEX mapping</columnName>
@@ -225,5 +224,19 @@
     <id>cap</id>
     <sort>28</sort>
   </space>
+	<space>
+		<url>http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm</url>
+		<columnName>UDI Mapping</columnName>
+		<title>UDI Mapping</title>
+		<id>udi</id>
+		<preamble>
+			<p>UDI is a unique numeric or alphanumeric code that consists of two parts:			
+			 (1) a device identifier (DI), a mandatory, fixed portion of a UDI that identifies the labeler and the specific version or model of a device, and (2)
+		a production identifier (PI), a conditional, variable portion of a UDI that identifies one or more of the following when included on the label of a device: 
+		 (2a) the lot or batch number within which a device was manufactured; (2b) the serial number of a specific device; (2c) the expiration date of a specific device; (2d) the date a specific device was manufactured; (2e) the distinct identification code required by §1271.290(c) for a human cell, tissue, or cellular and tissue-based product (HCT/P) regulated as a device.
+	</p>
+		</preamble>
+		<sort>29</sort>
+	</space>
   
 </mappingSpaces>
