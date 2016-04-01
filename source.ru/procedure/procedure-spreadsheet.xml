@@ -1564,7 +1564,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Место, где была проведена процедура. Например роды приняты на дому, трахеостомия в ресторане<!-- The location where the procedure actually happened.  E.g. a newborn at home, a tracheostomy at a restaurant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Привязывает процедуру к месту, где скорее всего хранятся записи о ней<!--  Ties a procedure to where the records are likely kept --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String"> Привязывает процедуру к месту, где скорее всего хранятся записи о ней<!-- Ties a procedure to where the records are likely kept --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="18" ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4080,7 +4080,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Причину невыполнения можно указывать, только если индикатор notPerformed имеет значение true<!-- Reason not performed is only permitted if notPerformed indicator is true --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">reasonNotPerformed.empty() or notPerformed = 'true'</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">reasonNotPerformed.empty() or notPerformed = true</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(exists(f:reasonNotPerformed)) or f:notPerformed/@value=true()</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
