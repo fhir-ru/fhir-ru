@@ -42,22 +42,21 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.dstu21.formats.XmlParser;
-import org.hl7.fhir.dstu21.formats.IParser.OutputStyle;
-import org.hl7.fhir.dstu21.model.ElementDefinition;
-import org.hl7.fhir.dstu21.model.IdType;
-import org.hl7.fhir.dstu21.model.PrimitiveType;
-import org.hl7.fhir.dstu21.model.StringType;
-import org.hl7.fhir.dstu21.model.StructureDefinition;
-import org.hl7.fhir.dstu21.model.Type;
-import org.hl7.fhir.dstu21.model.UriType;
-import org.hl7.fhir.dstu21.model.ElementDefinition.ElementDefinitionConstraintComponent;
-import org.hl7.fhir.dstu21.model.ElementDefinition.ElementDefinitionMappingComponent;
-import org.hl7.fhir.dstu21.model.ElementDefinition.ElementDefinitionSlicingComponent;
-import org.hl7.fhir.dstu21.model.ElementDefinition.TypeRefComponent;
-import org.hl7.fhir.dstu21.model.StructureDefinition.StructureDefinitionKind;
-import org.hl7.fhir.dstu21.model.StructureDefinition.StructureDefinitionMappingComponent;
-import org.hl7.fhir.dstu21.utils.ProfileUtilities;
+import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
+import org.hl7.fhir.dstu3.formats.XmlParser;
+import org.hl7.fhir.dstu3.model.ElementDefinition;
+import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionConstraintComponent;
+import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionMappingComponent;
+import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionSlicingComponent;
+import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
+import org.hl7.fhir.dstu3.model.IdType;
+import org.hl7.fhir.dstu3.model.PrimitiveType;
+import org.hl7.fhir.dstu3.model.StringType;
+import org.hl7.fhir.dstu3.model.StructureDefinition;
+import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
+import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionMappingComponent;
+import org.hl7.fhir.dstu3.model.Type;
+import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
@@ -186,11 +185,11 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 
   private void generateElementInner(StructureDefinition profile, ElementDefinition d, int mode, ElementDefinition value) throws Exception {
     tableRowNE("Определение", null, page.processMarkdown(profile.getName(), d.getDefinition(), prefix));
-    tableRowNE("Примечание", null, businessIdWarning(tail(d.getPath())));
+    tableRowNE("Примечание", null, businessIdWarning(profile.getName(), tail(d.getPath())));
     tableRow("Кард. множество", "conformance-rules.html#conformance", describeCardinality(d) + summariseConditions(d.getCondition()));
     tableRowNE("Привязка", "terminologies.html", describeBinding(d));
-    if (d.hasNameReference())
-      tableRow("Тип", null, "See "+d.getNameReference());
+    if (d.hasContentReference())
+      tableRow("Тип", null, "См. "+d.getContentReference().substring(1));
     else
       tableRowNE("Тип", "datatypes.html", describeTypes(d.getType()) + processSecondary(mode, value));
     if (d.getPath().endsWith("[x]"))
@@ -220,10 +219,10 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     }
   }
 
-  private String businessIdWarning(String name) {
+  private String businessIdWarning(String resource, String name) {
     if (name.equals("identifier"))
       return "Это бизнес-идентификатор, а не идентификатор ресурса (см. <a href=\""+prefix+"resource.html#identifiers\">обсуждение</a>)";
-    if (name.equals("version"))
+    if (name.equals("version")) // && !resource.equals("Device"))
       return "Это бизнес-versionId, а не идентификатор ресурса (см. <a href=\""+prefix+"resource.html#versions\">обсуждение</a>)";
     return null;
   }
@@ -311,7 +310,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
         if (p == null)
           b.append(pt.asStringValue());
         else {
-          if (p.hasConstrainedType() )
+          if (p.hasBaseType() )
             b.append("<a href=\""+prefix+p.getUserString("path")+"\" title=\""+pt.getValue()+"\">");
           else if (p.getKind() == StructureDefinitionKind.DATATYPE)
             b.append("<a href=\""+prefix+definitions.getSrcFile(p.getName())+ ".html#" + p.getName()+"\" title=\""+p.getName()+"\">");
@@ -366,7 +365,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   private String getMapping(StructureDefinition profile, ElementDefinition d, String uri) {
     String id = null;
     for (StructureDefinitionMappingComponent m : profile.getMapping()) {
-      if (m.getUri().equals(uri))
+      if (m.hasUri() && m.getUri().equals(uri))
         id = m.getIdentity();
     }
     if (id == null)
@@ -401,9 +400,9 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
   public void generate(ElementDefn root) throws Exception
 	{
 		write("<table class=\"dict\">\r\n");
-		writeEntry(root.getName(), "1..1", "", null, root);
+		writeEntry(root.getName(), "1..1", "", null, root, root.getName());
 		for (ElementDefn e : root.getElements()) {
-		   generateElement(root.getName(), e);
+		   generateElement(root.getName(), e, root.getName());
 		}
 		write("</table>\r\n");
 		write("\r\n");
@@ -411,17 +410,17 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 		close();
 	}
 
-	private void generateElement(String name, ElementDefn e) throws Exception {
-		writeEntry(name+"."+e.getName(), e.describeCardinality(), describeType(e), e.getBinding(), e);
+	private void generateElement(String name, ElementDefn e, String resourceName) throws Exception {
+		writeEntry(name+"."+e.getName(), e.describeCardinality(), describeType(e), e.getBinding(), e, resourceName);
 		for (ElementDefn c : e.getElements())	{
-		   generateElement(name+"."+e.getName(), c);
+		   generateElement(name+"."+e.getName(), c, resourceName);
 		}
 	}
 
-	private void writeEntry(String path, String cardinality, String type, BindingSpecification bs, ElementDefn e) throws Exception {
+	private void writeEntry(String path, String cardinality, String type, BindingSpecification bs, ElementDefn e, String resourceName) throws Exception {
 		write("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+path.replace("[", "_").replace("]", "_")+"\"> </a><b>"+path+"</b></td></tr>\r\n");
 		tableRowNE("Определение", null, page.processMarkdown(path, e.getDefinition(), prefix));
-    tableRowNE("Примечание", null, businessIdWarning(e.getName()));
+    tableRowNE("Примечание", null, businessIdWarning(resourceName, e.getName()));
 		tableRow("Кард. множество", "conformance-rules.html#conformance", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
 		tableRowNE("Привязка", "terminologies.html", describeBinding(path, e));
 		if (!Utilities.noString(type) && type.startsWith("@"))
@@ -515,7 +514,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	      if (inv.getExpression().equals("n/a"))
 	        s.append("<b title=\"Formal Invariant Identifier\">"+i+"</b>: "+Utilities.escapeXml(inv.getEnglish())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")");
 	      else
-	        s.append("<b title=\"Formal Invariant Identifier\">"+i+"</b>: "+Utilities.escapeXml(inv.getEnglish())+" (expression: "+Utilities.escapeXml(inv.getExpression())+", xpath: "+Utilities.escapeXml(inv.getXpath())+")");
+	        s.append("<b title=\"Formal Invariant Identifier\">"+i+"</b>: "+Utilities.escapeXml(inv.getEnglish())+" (<a href=\""+prefix+"fluentpath.html\">expression</a>: "+Utilities.escapeXml(inv.getExpression())+", xpath: "+Utilities.escapeXml(inv.getXpath())+")");
 	      b = true;
 	    }
 	  }
@@ -531,7 +530,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
           if (id.getExpression().equals("n/a"))
             s.append("<b title=\"Formal Invariant Identifier\">"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (xpath: "+Utilities.escapeXml(id.getXpath())+")");
           else
-            s.append("<b title=\"Formal Invariant Identifier\">"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (expression: "+Utilities.escapeXml(id.getExpression())+", xpath: "+Utilities.escapeXml(id.getXpath())+")");
+            s.append("<b title=\"Formal Invariant Identifier\">"+id.getId().toString()+"</b>: "+Utilities.escapeXml(id.getEnglish())+" (<a href=\""+prefix+"fluentpath.html\">expression</a>: "+Utilities.escapeXml(id.getExpression())+", xpath: "+Utilities.escapeXml(id.getXpath())+")");
           b = true;
         }
       }

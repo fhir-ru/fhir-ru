@@ -63,7 +63,7 @@ two ways:
  <li>FHIR-like solutions (based on FHIR, but not conformant) may set expectations by trading partners which are not met due to the non-conformance of the system and these un-met expectations may also result in risk</li>
 </ul>
 
-<a name="cardinality"> </a>
+<a name="baseconf"> </a>
 <h3>Base Conformance Rules</h3>
 <p>
 The contents of a resource and the formats used to represent resources SHALL
@@ -196,8 +196,9 @@ and there are <a href="extensibility.html#modifierExtension">additional rules ab
 <h3>Must-Support</h3>
 <p>
 Labeling an element Must-Support means that implementations that produce or consume resources SHALL 
-provide "support" for the element in some meaningful way. Exactly what this means is impossible
-to describe or clarify as part of the FHIR specification.
+provide "support" for the element in some meaningful way. Because the base FHIR specification is intended
+to be independent of any particular implementation context, no elements are flagged as "must-support" as 
+part of the base specification. This flag is intended for use in profiles that have a defined implementation context.
 </p>
 <p>
 For this reason, the specification itself never labels any elements as must-support. 

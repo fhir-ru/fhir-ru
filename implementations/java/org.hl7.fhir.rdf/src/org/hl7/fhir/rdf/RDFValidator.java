@@ -7,11 +7,11 @@ import java.util.List;
 
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.RDFFormat;
-import org.hl7.fhir.dstu21.model.OperationOutcome;
-import org.hl7.fhir.dstu21.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.dstu21.model.OperationOutcome.IssueType;
-import org.hl7.fhir.dstu21.validation.ValidationMessage;
-import org.hl7.fhir.dstu21.validation.ValidationMessage.Source;
+import org.hl7.fhir.dstu3.model.OperationOutcome;
+import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
+import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
+import org.hl7.fhir.dstu3.validation.ValidationMessage;
+import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
 import org.hl7.fhir.utilities.Utilities;
 
 import com.hp.hpl.jena.query.Query;
@@ -49,14 +49,14 @@ public class RDFValidator {
   
   public void validate(String filename) throws Exception {
     Model m = RDFDataMgr.loadModel(filename);
-    System.out.println(Integer.toString(m.getGraph().size())+" triples in RDF file "+filename);
+//    System.out.println(Integer.toString(m.getGraph().size())+" triples in RDF file "+filename);
     model = model == null ? m : model.union(m);
-    FileOutputStream strm = new FileOutputStream(Utilities.changeFileExt(filename, ".rdf.xml"));
-    try {
-      RDFDataMgr.write(strm, m, RDFFormat.RDFXML_PLAIN);
-    } finally {
-      strm.close();
-    }
+//    FileOutputStream strm = new FileOutputStream(Utilities.changeFileExt(filename, ".rdf.xml"));
+//    try {
+//      RDFDataMgr.write(strm, m, RDFFormat.RDFXML_PLAIN);
+//    } finally {
+//      strm.close();
+//    }
   }
   
   public List<ValidationMessage> assertion(String sparql, String id, String rowType, String message, String description, IssueSeverity level) {

@@ -70,47 +70,50 @@ import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.model.W5Entry;
 import org.hl7.fhir.definitions.validation.FHIRPathUsage;
-import org.hl7.fhir.dstu21.formats.FormatUtilities;
-import org.hl7.fhir.dstu21.formats.IParser;
-import org.hl7.fhir.dstu21.formats.JsonParser;
-import org.hl7.fhir.dstu21.formats.XmlParser;
-import org.hl7.fhir.dstu21.model.Base64BinaryType;
-import org.hl7.fhir.dstu21.model.BooleanType;
-import org.hl7.fhir.dstu21.model.CodeType;
-import org.hl7.fhir.dstu21.model.CodeableConcept;
-import org.hl7.fhir.dstu21.model.DateTimeType;
-import org.hl7.fhir.dstu21.model.DateType;
-import org.hl7.fhir.dstu21.model.DecimalType;
-import org.hl7.fhir.dstu21.model.Factory;
-import org.hl7.fhir.dstu21.model.IdType;
-import org.hl7.fhir.dstu21.model.Identifier;
-import org.hl7.fhir.dstu21.model.InstantType;
-import org.hl7.fhir.dstu21.model.IntegerType;
-import org.hl7.fhir.dstu21.model.OidType;
-import org.hl7.fhir.dstu21.model.Period;
-import org.hl7.fhir.dstu21.model.PositiveIntType;
-import org.hl7.fhir.dstu21.model.Quantity;
-import org.hl7.fhir.dstu21.model.Reference;
-import org.hl7.fhir.dstu21.model.SearchParameter;
-import org.hl7.fhir.dstu21.model.StringType;
-import org.hl7.fhir.dstu21.model.StructureDefinition;
-import org.hl7.fhir.dstu21.model.TimeType;
-import org.hl7.fhir.dstu21.model.Type;
-import org.hl7.fhir.dstu21.model.UnsignedIntType;
-import org.hl7.fhir.dstu21.model.UriType;
-import org.hl7.fhir.dstu21.model.UuidType;
-import org.hl7.fhir.dstu21.model.ValueSet;
-import org.hl7.fhir.dstu21.model.ContactPoint.ContactPointSystem;
-import org.hl7.fhir.dstu21.model.Enumerations.ConformanceResourceStatus;
-import org.hl7.fhir.dstu21.model.Enumerations.SearchParamType;
-import org.hl7.fhir.dstu21.model.Quantity.QuantityComparator;
-import org.hl7.fhir.dstu21.model.StructureDefinition.ExtensionContext;
-import org.hl7.fhir.dstu21.model.StructureDefinition.StructureDefinitionKind;
-import org.hl7.fhir.dstu21.terminologies.ValueSetUtilities;
-import org.hl7.fhir.dstu21.utils.ProfileUtilities;
-import org.hl7.fhir.dstu21.utils.ToolingExtensions;
-import org.hl7.fhir.dstu21.utils.ProfileUtilities.ProfileKnowledgeProvider;
-import org.hl7.fhir.dstu21.validation.ValidationMessage;
+import org.hl7.fhir.dstu3.formats.FormatUtilities;
+import org.hl7.fhir.dstu3.formats.IParser;
+import org.hl7.fhir.dstu3.formats.JsonParser;
+import org.hl7.fhir.dstu3.formats.XmlParser;
+import org.hl7.fhir.dstu3.model.Base64BinaryType;
+import org.hl7.fhir.dstu3.model.BooleanType;
+import org.hl7.fhir.dstu3.model.CodeSystem;
+import org.hl7.fhir.dstu3.model.CodeType;
+import org.hl7.fhir.dstu3.model.CodeableConcept;
+import org.hl7.fhir.dstu3.model.ContactPoint.ContactPointSystem;
+import org.hl7.fhir.dstu3.model.DateTimeType;
+import org.hl7.fhir.dstu3.model.DateType;
+import org.hl7.fhir.dstu3.model.DecimalType;
+import org.hl7.fhir.dstu3.model.Enumerations.ConformanceResourceStatus;
+import org.hl7.fhir.dstu3.model.Enumerations.SearchParamType;
+import org.hl7.fhir.dstu3.model.Factory;
+import org.hl7.fhir.dstu3.model.IdType;
+import org.hl7.fhir.dstu3.model.Identifier;
+import org.hl7.fhir.dstu3.model.InstantType;
+import org.hl7.fhir.dstu3.model.IntegerType;
+import org.hl7.fhir.dstu3.model.OidType;
+import org.hl7.fhir.dstu3.model.Period;
+import org.hl7.fhir.dstu3.model.PositiveIntType;
+import org.hl7.fhir.dstu3.model.Quantity;
+import org.hl7.fhir.dstu3.model.Quantity.QuantityComparator;
+import org.hl7.fhir.dstu3.model.Reference;
+import org.hl7.fhir.dstu3.model.SearchParameter;
+import org.hl7.fhir.dstu3.model.StringType;
+import org.hl7.fhir.dstu3.model.StructureDefinition;
+import org.hl7.fhir.dstu3.model.StructureDefinition.ExtensionContext;
+import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
+import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
+import org.hl7.fhir.dstu3.model.TimeType;
+import org.hl7.fhir.dstu3.model.Type;
+import org.hl7.fhir.dstu3.model.UnsignedIntType;
+import org.hl7.fhir.dstu3.model.UriType;
+import org.hl7.fhir.dstu3.model.UuidType;
+import org.hl7.fhir.dstu3.model.ValueSet;
+import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
+import org.hl7.fhir.dstu3.utils.ProfileUtilities;
+import org.hl7.fhir.dstu3.utils.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.dstu3.utils.ToolingExtensions;
+import org.hl7.fhir.dstu3.validation.ValidationMessage;
+import org.hl7.fhir.tools.converters.CodeSystemConvertor;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
@@ -155,6 +158,7 @@ public class SpreadsheetParser {
   private Map<String, ConstraintStructure> profileIds;
   private List<ValueSet> valuesets = new ArrayList<ValueSet>();
   private List<FHIRPathUsage> fpUsages;
+  private Map<String, CodeSystem> codeSystems;
 
 	public SpreadsheetParser(String usageContext, InputStream in, String name,	Definitions definitions, String root, Logger log, BindingNameRegistry registry, String version, BuildWorkerContext context, Calendar genDate, boolean isAbstract, Map<String, StructureDefinition> extensionDefinitions, ProfileKnowledgeProvider pkp, boolean isType, IniFile ini, String committee, Map<String, ConstraintStructure> profileIds, List<FHIRPathUsage> fpUsages) throws Exception {
 	  this.usageContext = usageContext;
@@ -185,11 +189,13 @@ public class SpreadsheetParser {
 		tabfmt = new TabDelimitedSpreadSheet();
 		tabfmt.setFileName(((CSFileInputStream) in).getPath(), Utilities.changeFileExt(((CSFileInputStream) in).getPath(), ".sheet.txt"));
 		this.profileIds = profileIds;
+		this.codeSystems = definitions.getCodeSystems();
 	}
 
-  public SpreadsheetParser(String usageContext, InputStream in, String name,  ImplementationGuideDefn ig, String root, Logger log, BindingNameRegistry registry, String version, BuildWorkerContext context, Calendar genDate, boolean isAbstract, Map<String, StructureDefinition> extensionDefinitions, ProfileKnowledgeProvider pkp, boolean isType, String committee, Map<String, MappingSpace> mappings, Map<String, ConstraintStructure> profileIds) throws Exception {
+  public SpreadsheetParser(String usageContext, InputStream in, String name, ImplementationGuideDefn ig, String root, Logger log, BindingNameRegistry registry, String version, BuildWorkerContext context, Calendar genDate, boolean isAbstract, Map<String, StructureDefinition> extensionDefinitions, ProfileKnowledgeProvider pkp, boolean isType, String committee, Map<String, MappingSpace> mappings, Map<String, ConstraintStructure> profileIds, Map<String, CodeSystem> codeSystems) throws Exception {
     this.usageContext = usageContext;
     this.name = name;
+    this.registry = registry;
     xls = new XLSXmlParser(in, name); 
     this.definitions = null;
     this.mappings = mappings;
@@ -215,6 +221,7 @@ public class SpreadsheetParser {
     this.tabfmt = new TabDelimitedSpreadSheet(); 
     tabfmt.setFileName(((CSFileInputStream) in).getPath(), Utilities.changeFileExt(((CSFileInputStream) in).getPath(), ".sheet.txt"));
     this.profileIds = profileIds;
+    this.codeSystems = codeSystems;
   }
 
 
@@ -418,11 +425,13 @@ public class SpreadsheetParser {
     Map<String, OperationParameter> params = new HashMap<String, OperationParameter>();
 	  
 	  if (sheet != null) {
+	    
       tabfmt.sheet("Examples");
       tabfmt.column("Name");
       tabfmt.column("Use");
       tabfmt.column("Documentation");
       tabfmt.column("Type");
+      tabfmt.column("Search Type");
       tabfmt.column("Example.Request");
       tabfmt.column("Example.Response");
       tabfmt.column("Title");
@@ -438,6 +447,7 @@ public class SpreadsheetParser {
         tabfmt.cell(sheet.getColumn(row, "Use"));
         tabfmt.cell(sheet.getColumn(row, "Documentation"));
         tabfmt.cell(sheet.getColumn(row, "Type"));
+        tabfmt.cell(sheet.getColumn(row, "Search Type"));
         tabfmt.cell(sheet.getColumn(row, "Example.Request"));
         tabfmt.cell(sheet.getColumn(row, "Example.Response"));
         tabfmt.cell(sheet.getColumn(row, "Title"));
@@ -496,7 +506,7 @@ public class SpreadsheetParser {
               OperationParameter param = params.get(context);
               if (param == null)
                 throw new Exception("Tuple parameter '"+context+"' not found at "+getLocation(row));
-              if (!param.getType().equals("Tuple"))
+              if (!param.getFhirType().equals("Tuple"))
                 throw new Exception("Tuple parameter '"+context+"' type must be Tuple at "+getLocation(row));
               plist = param.getParts();
 	          } else {
@@ -510,7 +520,7 @@ public class SpreadsheetParser {
             String profile = sheet.getColumn(row, "Profile");
             String min = sheet.getColumn(row, "Min");
             String max = sheet.getColumn(row, "Max");
-            OperationParameter p = new OperationParameter(pname, use, doco, Integer.parseInt(min), max, type, profile);
+            OperationParameter p = new OperationParameter(pname, use, doco, Integer.parseInt(min), max, type, sheet.getColumn(row, "Search Type"), profile);
             String bs = sheet.getColumn(row, "Binding");
             if (!Utilities.noString(bs))
               p.setBs(bindings.get(bs));
@@ -1109,17 +1119,25 @@ public class SpreadsheetParser {
       if (cd.getBinding() == BindingMethod.CodeList) {
         if (ref.startsWith("#valueset-"))
           throw new Exception("don't start code list references with #valueset-");
-        cd.setValueSet(new ValueSet());
+        cd.setValueSet(ValueSetUtilities.makeShareable(new ValueSet()));
         valuesets.add(cd.getValueSet());
         cd.getValueSet().setId(igSuffix(ig)+ref.substring(1));
         cd.getValueSet().setUrl("http://hl7.org/fhir/ValueSet/"+igSuffix(ig)+ref.substring(1));
+        cd.getValueSet().setUserData("filename", "valueset-"+ref.substring(1));
+        cd.getValueSet().setUserData("committee", committee);
+        if (ig != null) {
+          cd.getValueSet().setUserDataINN(ToolResourceUtilities.NAME_RES_IG, ig);
+          cd.getValueSet().setUserData("path", ig.getCode()+"/valueset-"+cd.getValueSet().getId()+".html");
+        } else
+          cd.getValueSet().setUserData("path", "valueset-"+cd.getValueSet().getId()+".html");
         if (!ref.startsWith("#"))
           throw new Exception("Error parsing binding "+cd.getName()+": code list reference '"+ref+"' must started with '#'");
         Sheet cs = xls.getSheets().get(ref.substring(1));
         if (cs == null)
           throw new Exception("Error parsing binding "+cd.getName()+": code list reference '"+ref+"' not resolved");
         tabfmt.sheet(ref.substring(1));
-        new CodeListToValueSetParser(cs, ref.substring(1), cd.getValueSet(), version, tabfmt).execute();
+        vsGen.updateHeader(cd, cd.getValueSet());
+        new CodeListToValueSetParser(cs, ref.substring(1), cd.getValueSet(), version, tabfmt, codeSystems).execute();
       } else if (cd.getBinding() == BindingMethod.ValueSet) {
         if (ref.startsWith("http:"))
           cd.setReference(sheet.getColumn(row, "Reference")); // will sort this out later
@@ -1127,7 +1145,7 @@ public class SpreadsheetParser {
           cd.setValueSet(loadValueSet(ref));
       } else if (cd.getBinding() == BindingMethod.Special) {
         if ("#operation-outcome".equals(sheet.getColumn(row, "Reference")))
-          ValueSetGenerator.loadOperationOutcomeValueSet(cd, folder);
+          new ValueSetGenerator(definitions, version, genDate).loadOperationOutcomeValueSet(cd, folder);
         else
           throw new Exception("Special bindings are only allowed in bindings.xml");
       } else if (cd.getBinding() == BindingMethod.Reference) { 
@@ -1136,7 +1154,7 @@ public class SpreadsheetParser {
       cd.setReference(sheet.getColumn(row, "Reference")); // do this anyway in the short term
       
       if (registry == null)
-        cd.setId("0"); // igtodo: how to generate this when not doing a full build?
+        throw new Error("No id registry available"); // igtodo: how to generate this when not doing a full build?
       else
         cd.setId(registry.idForName(cd.getName()));
       
@@ -1150,8 +1168,10 @@ public class SpreadsheetParser {
           vs.setUserData("path", ig.getCode()+"/valueset-"+vs.getId()+".html");
         } else
           vs.setUserData("path", "valueset-"+vs.getId()+".html");
+        if (!ToolingExtensions.hasOID(vs))
         ToolingExtensions.setOID(vs, "urn:oid:"+BindingSpecification.DEFAULT_OID_VS + cd.getId());
-        vs.setUserData("csoid", BindingSpecification.DEFAULT_OID_CS + cd.getId());
+        if (vs.getUserData("cs") != null)
+          ToolingExtensions.setOID((CodeSystem) vs.getUserData("cs"), "urn:oid:"+BindingSpecification.DEFAULT_OID_CS + cd.getId());
         if (definitions != null)
           definitions.getBoundValueSets().put(vs.getUrl(), vs);
         else
@@ -1228,8 +1248,10 @@ public class SpreadsheetParser {
 	    result.setExperimental(true);
 	    if (!result.hasVersion())
 	      result.setVersion(version);
+      result.setUserData("filename", ref);
       result.setUserData("path", ((ig == null || ig.isCore()) ? "" : ig.getCode()+"/")+ ref+".html");
       result.setUserData("committee", committee);
+      new CodeSystemConvertor(codeSystems).convert(p, result, filename);
       valuesets.add(result);
 	    return result;
 	}
@@ -1873,8 +1895,8 @@ public class SpreadsheetParser {
         type = definitions.getConstraints().get(type).getBaseType();
     } else {
       StructureDefinition sd = context.getProfiles().get("http://hl7.org/fhir/StructureDefinition/"+type);
-      if (sd != null && sd.hasConstrainedType())
-        type = sd.getConstrainedType();
+      if (sd != null && sd.hasBaseType() && sd.getDerivation() == TypeDerivationRule.CONSTRAINT)
+        type = sd.getBaseType();
       if (type.equals("SimpleQuantity"))
         type = "Quantity";
     }
@@ -2006,8 +2028,9 @@ public class SpreadsheetParser {
     StructureDefinition ex = new StructureDefinition();
     ex.setUserData(ToolResourceUtilities.NAME_RES_IG, ig == null ? "core" : ig.getCode());
     ex.setKind(StructureDefinitionKind.DATATYPE);
-    ex.setConstrainedType("Extension");
-    ex.setBase("http://hl7.org/fhir/StructureDefinition/Extension");
+    ex.setBaseType("Extension");
+    ex.setBaseDefinition("http://hl7.org/fhir/StructureDefinition/Extension");
+    ex.setDerivation(TypeDerivationRule.CONSTRAINT);
     ex.setAbstract(false);
     ex.setFhirVersion(version);
 
@@ -2179,11 +2202,8 @@ public class SpreadsheetParser {
       return ExtensionContext.RESOURCE;
     if (value.equals("Element"))
       return ExtensionContext.RESOURCE;
-    if (value.equals("Mapping"))
-      return ExtensionContext.MAPPING;
     if (value.equals("Extension"))
       return ExtensionContext.EXTENSION;
-	  
     throw new Exception("Unable to read context type '"+value+"' at "+getLocation(row));
   }
 

@@ -1,4 +1,4 @@
-{
+﻿{
   "url": "http://hl7.org/fhir/ValueSet/immunization-reason",
   "outcomes": [
     {
@@ -9,7 +9,7 @@
         "abstract": false,
         "code": "429060002",
         "definition": null,
-        "display": "Procedure to meet occupational requirement (procedure)"
+        "display": "Procedure to meet occupational requirement"
       }
     }
   ]

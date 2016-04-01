@@ -14,55 +14,55 @@
     <name value="PCD Package" />
     <description value="Resource profiles and extensions necessary to support Privacy Consent Directive on FHIR." />
     <resource>
-      <purpose value="profile" />
+      <example value="false"/>
       <name value="ConsentDirective" />
       <description value="Privacy Consent Directive" />
       <acronym value="PCD-Contract" />
       <sourceUri value="StructureDefinition/consentdirective.profile.xml" />
     </resource>
     <resource>
-      <purpose value="example" />
+      <example value="true"/>
       <name value="pcd-example-notLabs" />
       <description value="Consent to share except to withhold or withdraw consent for disclosure of records related to specific domain (e.g. DI, LAB, etc.) " />
       <sourceUri value="Example/pcd-example-notLabs.xml" />
       <exampleFor>
-        <reference value="StructureDefinition/consentdirective.profile.xml" />
+        <reference value="StructureDefinition/consentdirective" />
       </exampleFor>
     </resource>
     <resource>
-      <purpose value="example" />
+      <example value="true"/>
       <name value="pcd-example-notThis" />
       <description value="Consent to share except to withhold or withdraw consent for disclosure of a specific record (e.g. LAB) " />
       <sourceUri value="Example/pcd-example-notThis.xml" />
       <exampleFor>
-        <reference value="StructureDefinition/consentdirective.profile.xml" />
+        <reference value="StructureDefinition/consentdirective" />
       </exampleFor>
     </resource>
     <resource>
-      <purpose value="example" />
+      <example value="true"/>
       <name value="pcd-example-notOrg" />
       <description value="Consent to share except to withhold or withdraw consent for disclosure to an organization." />
       <sourceUri value="Example/pcd-example-notOrg.xml" />
       <exampleFor>
-        <reference value="StructureDefinition/consentdirective.profile.xml" />
+        <reference value="StructureDefinition/consentdirective" />
       </exampleFor>
     </resource>
     <resource>
-      <purpose value="example" />
+      <example value="true"/>
       <name value="pcd-example-notThem" />
       <description value="Consent to share except to withhold or withdraw consent for disclosure to an individual." />
       <sourceUri value="Example/pcd-example-notThem.xml" />
       <exampleFor>
-        <reference value="StructureDefinition/consentdirective.profile.xml" />
+        <reference value="StructureDefinition/consentdirective" />
       </exampleFor>
     </resource>
     <resource>
-      <purpose value="example" />
+      <example value="true"/>
       <name value="pcd-example-notAuthor" />
       <description value="Consent to share except to withhold or withdraw consent for disclosure of records authored by a specific organization." />
       <sourceUri value="Example/pcd-example-notAuthor.xml" />
       <exampleFor>
-        <reference value="StructureDefinition/consentdirective.profile.xml" />
+        <reference value="StructureDefinition/consentdirective" />
       </exampleFor>
     </resource>
   </package>

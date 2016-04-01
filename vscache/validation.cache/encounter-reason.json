@@ -1,10 +1,10 @@
-{
+﻿{
   "url": "http://hl7.org/fhir/ValueSet/encounter-reason",
   "outcomes": [
     {
       "hash": "#|http://ihe.net/xds/connectathon/eventCodes|null|T-D8200|Arm",
       "severity": "error",
-      "message": "The code provided is not  valid"
+      "message": "The code provided is not  valid in the value set Encounter Reason Codes"
     },
     {
       "hash": "#|http://snomed.info/sct|null|18099001|Retropharyngeal abscess",
@@ -15,17 +15,6 @@
         "code": null,
         "definition": null,
         "display": "Retropharyngeal abscess"
-      }
-    },
-    {
-      "hash": "#|http://snomed.info/sct|null|413095006|null",
-      "severity": null,
-      "message": null,
-      "definition": {
-        "abstract": false,
-        "code": null,
-        "definition": null,
-        "display": "Clinical management plan review (procedure)"
       }
     },
     {
@@ -48,6 +37,17 @@
         "code": null,
         "definition": null,
         "display": "Replacement of unspecified heart valve"
+      }
+    },
+    {
+      "hash": "#|http://snomed.info/sct|null|413095006|null",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": null,
+        "definition": null,
+        "display": "Clinical management plan review (procedure)"
       }
     }
   ]

@@ -1,4 +1,4 @@
-{
+﻿{
   "url": "http://hl7.org/fhir/ValueSet/vaccination-protocol-dose-target",
   "outcomes": [
     {
@@ -9,7 +9,7 @@
         "abstract": false,
         "code": "1857005",
         "definition": null,
-        "display": "Congenital rubella syndrome (disorder)"
+        "display": "Congenital rubella syndrome"
       }
     }
   ]

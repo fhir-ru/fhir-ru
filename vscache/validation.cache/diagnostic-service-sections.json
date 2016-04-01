@@ -1,26 +1,15 @@
-{
+﻿{
   "url": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections",
   "outcomes": [
     {
-      "hash": "#|http://snomed.info/sct|null|15220000|Laboratory test#|http://hl7.org/fhir/v2/0074|null|LAB|null",
+      "hash": "#|http://hl7.org/fhir/v2/0074|null|HM|null",
       "severity": null,
       "message": null,
       "definition": {
         "abstract": false,
-        "code": "LAB",
+        "code": "HM",
         "definition": null,
-        "display": "Laboratory"
-      }
-    },
-    {
-      "hash": "#|http://snomed.info/sct|null|394914008|Radiology#|http://hl7.org/fhir/v2/0074|null|RAD|null",
-      "severity": null,
-      "message": null,
-      "definition": {
-        "abstract": false,
-        "code": "RAD",
-        "definition": null,
-        "display": "Radiology"
+        "display": "Hematology"
       }
     },
     {
@@ -35,6 +24,17 @@
       }
     },
     {
+      "hash": "#|http://snomed.info/sct|null|15220000|Laboratory test#|http://hl7.org/fhir/v2/0074|null|LAB|null",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": "LAB",
+        "definition": null,
+        "display": "Laboratory"
+      }
+    },
+    {
       "hash": "#|http://snomed.info/sct|null|252275004|Haematology test#|http://hl7.org/fhir/v2/0074|null|HM|null",
       "severity": null,
       "message": null,
@@ -46,14 +46,14 @@
       }
     },
     {
-      "hash": "#|http://hl7.org/fhir/v2/0074|null|HM|null",
+      "hash": "#|http://snomed.info/sct|null|394914008|Radiology#|http://hl7.org/fhir/v2/0074|null|RAD|null",
       "severity": null,
       "message": null,
       "definition": {
         "abstract": false,
-        "code": "HM",
+        "code": "RAD",
         "definition": null,
-        "display": "Hematology"
+        "display": "Radiology"
       }
     }
   ]

@@ -135,14 +135,14 @@
   Context = Composition.section
   English = A section must at least one of text, entries, or sub-sections
   XPath = exists(f:text) or exists(f:entry) or exists(f:section)
-  FHIRPath = text or entry or section
+  Expression = text or entry or section
 
  -- Row 2 -----------------------------------
   Id = 2
   Context = Composition.section
   English = A section can only have an emptyReason if it is empty
   XPath = not(exists(f:emptyReason) and exists(f:entry))
-  FHIRPath = emptyReason.empty() or entry.empty()
+  Expression = emptyReason.empty() or entry.empty()
 
 === Sheet Data Elements =====================================
 
@@ -617,7 +617,7 @@
 === Sheet Profiles =====================================
 
  -- Row 1 -----------------------------------
-  Name = Measure Report
+  Name = !Measure Report
   IG Name = cqmf
   Filename = composition-measurereport.xml
   Type = spreadsheet
@@ -646,7 +646,7 @@
 
  -- Row 1 -----------------------------------
   Name = document
-  Use = Resource
+  Use = Resource | Instance
   Documentation = A client can ask a server to generate a fully bundled document from a composition resource. The server takes the composition resource, locates all the referenced resources and other additional resources as configured or requested and either returns a full document bundle, or returns an error. Note that since this is a search operation, the document bundle is  wrapped inside the search bundle.  If some of the resources are located on other servers, it is at the discretion of the  server whether to retrieve them or return an error. If the correct version of the document  that would be generated already exists, then the server can return the existing one.
   Type = operation
   Example.Request = $document-request.txt

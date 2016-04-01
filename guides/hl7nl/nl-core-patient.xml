@@ -7,7 +7,7 @@
     <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
         <valueInteger value="5"/>
     </extension>
-    <url value="http://fhir.nl/fhir/StructureDefinition/nl-core-patient"/>
+    <url value="http://hl7.org/fhir/StructureDefinition/nl-core-patient"/>
     <name value="nl-core-patient"/>
     <status value="draft"/>
     <contact>
@@ -43,9 +43,10 @@
         <name value="LOINC"/>
     </mapping>
     <kind value="resource"/>
-    <constrainedType value="Patient"/>
     <abstract value="false"/>
-    <base value="http://hl7.org/fhir/StructureDefinition/Patient"/>
+    <baseType value="Patient"/>
+    <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Patient"/>
+    <derivation value="constraint"/>
     <differential>
         <element>
             <path value="Patient"/>
@@ -80,7 +81,7 @@
             <max value="*"/>
             <type>
                 <code value="HumanName"/>
-                <profile value="http://fhir.nl/fhir/StructureDefinition/nl-core-humanname"/>
+                <profile value="http://hl7.org/fhir/StructureDefinition/nl-core-humanname"/>
             </type>
             <isSummary value="true"/>
             <mapping>
@@ -106,7 +107,7 @@
             <max value="*"/>
             <type>
                 <code value="Address"/>
-                <profile value="http://fhir.nl/fhir/StructureDefinition/nl-core-address"/>
+                <profile value="http://hl7.org/fhir/StructureDefinition/nl-core-address"/>
             </type>
             <isSummary value="true"/>
             <mapping>

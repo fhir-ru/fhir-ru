@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hl7.fhir.dstu21.model.Composition;
-import org.hl7.fhir.dstu21.model.SearchParameter;
-import org.hl7.fhir.dstu21.model.StructureDefinition;
-import org.hl7.fhir.dstu21.model.ValueSet;
+import org.hl7.fhir.dstu3.model.Composition;
+import org.hl7.fhir.dstu3.model.SearchParameter;
+import org.hl7.fhir.dstu3.model.StructureDefinition;
+import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 
 // a named set of profiles and extensions
@@ -161,9 +161,12 @@ public class Profile {
     return null;
   }
   public boolean coversResource(ResourceDefn resource) {
-    for (ConstraintStructure item : profiles)
+    for (ConstraintStructure item : profiles) {
       if (item.getDefn() != null && item.getDefn().getName().equals(resource.getName()))
         return true;
+      if (item.getDefn() == null && item.getResource() != null && item.getResource().getBaseType().equals(resource.getName()))
+        return true;
+    }
     return false;
   }
   public List<Operation> getOperations() {

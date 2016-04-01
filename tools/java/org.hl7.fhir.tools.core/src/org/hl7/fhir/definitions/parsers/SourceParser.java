@@ -34,8 +34,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -46,12 +44,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.commons.io.IOUtils;
-import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
-import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.PrimitiveDefn;
-import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
 import org.hl7.fhir.definitions.generators.specification.DataTypeTableGenerator;
 import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
 import org.hl7.fhir.definitions.generators.specification.ToolResourceUtilities;
@@ -77,23 +69,20 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.model.W5Entry;
 import org.hl7.fhir.definitions.model.WorkGroup;
-import org.hl7.fhir.definitions.parsers.converters.BindingConverter;
-import org.hl7.fhir.definitions.parsers.converters.CompositeTypeConverter;
-import org.hl7.fhir.definitions.parsers.converters.ConstrainedTypeConverter;
-import org.hl7.fhir.definitions.parsers.converters.EventConverter;
-import org.hl7.fhir.definitions.parsers.converters.PrimitiveConverter;
 import org.hl7.fhir.definitions.validation.FHIRPathUsage;
-import org.hl7.fhir.dstu21.formats.FormatUtilities;
-import org.hl7.fhir.dstu21.formats.XmlParser;
-import org.hl7.fhir.dstu21.model.Bundle;
-import org.hl7.fhir.dstu21.model.Composition;
-import org.hl7.fhir.dstu21.model.Resource;
-import org.hl7.fhir.dstu21.model.StringType;
-import org.hl7.fhir.dstu21.model.StructureDefinition;
-import org.hl7.fhir.dstu21.model.ValueSet;
-import org.hl7.fhir.dstu21.model.Bundle.BundleEntryComponent;
-import org.hl7.fhir.dstu21.model.Bundle.BundleType;
-import org.hl7.fhir.dstu21.validation.ValidationMessage;
+import org.hl7.fhir.dstu3.formats.FormatUtilities;
+import org.hl7.fhir.dstu3.formats.XmlParser;
+import org.hl7.fhir.dstu3.model.Bundle;
+import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.dstu3.model.Bundle.BundleType;
+import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
+import org.hl7.fhir.dstu3.model.Composition;
+import org.hl7.fhir.dstu3.model.Resource;
+import org.hl7.fhir.dstu3.model.StringType;
+import org.hl7.fhir.dstu3.model.StructureDefinition;
+import org.hl7.fhir.dstu3.model.ValueSet;
+import org.hl7.fhir.dstu3.validation.ValidationMessage;
+import org.hl7.fhir.tools.converters.CodeSystemConvertor;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.CSFile;
@@ -166,60 +155,16 @@ public class SourceParser {
     vsGen = new ValueSetGenerator(definitions, version, genDate);
   }
 
-  private org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreParseResults = null;
-
-  public org.hl7.fhir.definitions.ecore.fhir.Definitions getECoreParseResults() {
-    return eCoreParseResults;
-  }
 
 
-  private List<BindingDefn> sortBindings(List<BindingDefn> unsorted)
-  {
-    List<BindingDefn> sorted = new ArrayList<BindingDefn>();
-    sorted.addAll(unsorted);
-
-    Collections.sort(sorted, new Comparator<BindingDefn>() {
-      @Override
-      public int compare( BindingDefn a, BindingDefn b )
-      {
-        return a.getName().compareTo(b.getName());
-      }
-    });
-
-    return sorted;
-  }
-
-
-  @SuppressWarnings("unchecked")
-  private List<TypeDefn> sortTypes(List unsorted)
-  {
-    List<TypeDefn> sorted = new ArrayList<TypeDefn>();
-    sorted.addAll(unsorted);
-
-    Collections.sort(sorted, new Comparator() {
-      @Override
-      public int compare( Object a, Object b )
-      {
-        if( a instanceof PrimitiveDefn )
-          return ((PrimitiveDefn)a).getName().compareTo( ((PrimitiveDefn)b).getName() );
-        else
-          return ((TypeDefn)a).getName().compareTo(((TypeDefn)b).getName());
-      }
-    });
-
-    return sorted;
-  }
 
   public void parse(Calendar genDate, List<ValidationMessage> issues) throws Exception {
     logger.log("Loading", LogMessageType.Process);
 
-    eCoreParseResults = DefinitionsImpl.build(genDate.getTime(), version);
     loadWorkGroups();
     loadW5s();
     loadMappingSpaces();
     loadGlobalBindings();
-    // todo: will commenting this out this cause us problems? 
-    eCoreParseResults.getBinding().addAll(sortBindings(BindingConverter.buildBindingsFromFhirModel(definitions.getCommonBindings().values(), null)));
 
     loadTLAs();
     loadIgs();
@@ -228,7 +173,6 @@ public class SourceParser {
     loadStyleExemptions();
 
     loadPrimitives();
-    eCoreParseResults.getPrimitive().addAll(PrimitiveConverter.buildPrimitiveTypesFromFhirModel(definitions.getPrimitives().values()));
 
     for (String id : ini.getPropertyNames("search-rules"))
       definitions.seachRule(id, ini.getStringProperty("search-rules", id));
@@ -252,19 +196,6 @@ public class SourceParser {
       for (String n : shared )
         definitions.getShared().add(loadCompositeType(n, definitions.getStructures()));
 
-    List<TypeDefn> allFhirComposites = new ArrayList<TypeDefn>();
-    //	allFhirComposites.add( CompositeTypeConverter.buildElementBaseType());
-    allFhirComposites.addAll( PrimitiveConverter.buildCompositeTypesForPrimitives( eCoreParseResults.getPrimitive() ) );
-    allFhirComposites.addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions.getTypes().values(), null ));
-    allFhirComposites.addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions.getStructures().values(), null ));
-
-    List<CompositeTypeDefn> infra = CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions.getInfrastructure().values(), null ); 
-    for (CompositeTypeDefn composite : infra) 
-      composite.setInfrastructure(true);
-    allFhirComposites.addAll( infra );
-    allFhirComposites.addAll( ConstrainedTypeConverter.buildConstrainedTypesFromFhirModel(definitions.getConstraints().values()));
-
-    eCoreParseResults.getType().addAll( sortTypes(allFhirComposites) );
 
     // basic infrastructure
     for (String n : ini.getPropertyNames("resource-infrastructure")) {
@@ -285,20 +216,8 @@ public class SourceParser {
     loadStatusCodes();
     buildSpecialValues();
 
-    //eCoreBaseResource.getElement().add(CompositeTypeConverter.buildInternalIdElement());		
-    eCoreParseResults.getType().addAll(sortTypes(CompositeTypeConverter.buildResourcesFromFhirModel(definitions.getBaseResources().values() )));
-    eCoreParseResults.getType().addAll(sortTypes(CompositeTypeConverter.buildResourcesFromFhirModel(definitions.getResources().values() )));
-
-    //	eCoreParseResults.getType().add(CompositeTypeConverter.buildBinaryResourceDefn());
-
     for (String n : ini.getPropertyNames("svg"))
       definitions.getDiagrams().put(n, ini.getStringProperty("svg", n));
-
-    eCoreParseResults.getEvent().addAll(EventConverter.buildEventsFromFhirModel(definitions.getEvents().values()));
-
-    // As a second pass, resolve typerefs to the types
-    fixTypeRefs(eCoreParseResults);
-    eCoreParseResults.getBinding().add(BindingConverter.buildResourceTypeBinding(eCoreParseResults));
 
     for (String n : ini.getPropertyNames("special-resources"))
       definitions.getAggregationEndpoints().add(n);
@@ -322,7 +241,7 @@ public class SourceParser {
     
     for (ImplementationGuideDefn ig : definitions.getSortedIgs()) {
       if (!Utilities.noString(ig.getSource())) {
-        new IgParser(page, page.getWorkerContext(), page.getGenDate(), page, definitions.getCommonBindings(), ig.getCommittee(), definitions.getMapTypes(), definitions.getProfileIds()).load(rootDir, ig, issues, igNames);
+        new IgParser(page, page.getWorkerContext(), page.getGenDate(), page, definitions.getCommonBindings(), ig.getCommittee(), definitions.getMapTypes(), definitions.getProfileIds(), definitions.getCodeSystems(), registry).load(rootDir, ig, issues, igNames);
         // register what needs registering
         for (ValueSet vs : ig.getValueSets()) {
           definitions.getExtraValuesets().put(vs.getId(), vs);
@@ -580,24 +499,11 @@ public class SourceParser {
   private void loadValueSet(String n) throws FileNotFoundException, Exception {
     XmlParser xml = new XmlParser();
     ValueSet vs = (ValueSet) xml.parse(new CSFileInputStream(srcDir+ini.getStringProperty("valuesets", n).replace('\\', File.separatorChar)));
+    new CodeSystemConvertor(definitions.getCodeSystems()).convert(xml, vs, srcDir+ini.getStringProperty("valuesets", n).replace('\\', File.separatorChar));
     vs.setId(FormatUtilities.makeId(n));
     vs.setUrl("http://hl7.org/fhir/ValueSet/"+vs.getId());
     definitions.getExtraValuesets().put(n, vs);
   }
-
-
-  private void fixTypeRefs( org.hl7.fhir.definitions.ecore.fhir.Definitions defs )
-  {
-    for( CompositeTypeDefn composite : defs.getLocalCompositeTypes() )
-      CompositeTypeConverter.FixTypeRefs(composite);
-
-    for( ConstrainedTypeDefn constrained : defs.getLocalConstrainedTypes() )
-      ConstrainedTypeConverter.FixTypeRefs(constrained);
-
-    for( org.hl7.fhir.definitions.ecore.fhir.ResourceDefn resource : defs.getResources() )
-      CompositeTypeConverter.FixTypeRefs(resource);
-  }
-
 
   private void loadConformancePackages(String n, List<ValidationMessage> issues) throws Exception {
     String usage = "core";
@@ -641,7 +547,7 @@ public class SourceParser {
       for (BundleEntryComponent ae : ((Bundle) rf).getEntry()) {
         if (ae.getResource() instanceof Composition)
           pack.loadFromComposition((Composition) ae.getResource(), file.getAbsolutePath());
-        else if (ae.getResource() instanceof StructureDefinition && !((StructureDefinition) ae.getResource()).getConstrainedType().equals("Extension")) {
+        else if (ae.getResource() instanceof StructureDefinition && !((StructureDefinition) ae.getResource()).getBaseType().equals("Extension")) {
           StructureDefinition ed = (StructureDefinition) ae.getResource();
           for (StringType s : ed.getContext())
             definitions.checkContextValid(ed.getContextType(), s.getValue(), file.getName());
@@ -649,8 +555,9 @@ public class SourceParser {
           pack.getProfiles().add(new ConstraintStructure(ed, definitions.getUsageIG(usage, "Parsing "+file.getAbsolutePath())));
         } else if (ae.getResource() instanceof StructureDefinition) {
           StructureDefinition ed = (StructureDefinition) ae.getResource();
-          if (Utilities.noString(ed.getBase()))
-            ed.setBase("http://hl7.org/fhir/StructureDefinition/Extension");
+          if (Utilities.noString(ed.getBaseDefinition()))
+            ed.setBaseDefinition("http://hl7.org/fhir/StructureDefinition/Extension");
+          ed.setDerivation(TypeDerivationRule.CONSTRAINT);
           context.seeExtensionDefinition(ae.hasFullUrl() ? ae.getFullUrl() : "http://hl7.org/fhir/StructureDefinition/"+ed.getId(), ed);
           pack.getExtensions().add(ed);
         }
@@ -673,7 +580,7 @@ public class SourceParser {
   private void loadGlobalBindings() throws Exception {
     logger.log("Load Concept Domains", LogMessageType.Process);
 
-    BindingsParser parser = new BindingsParser(new CSFileInputStream(new CSFile(termDir + "bindings.xml")), termDir + "bindings.xml", srcDir, registry, version);
+    BindingsParser parser = new BindingsParser(new CSFileInputStream(new CSFile(termDir + "bindings.xml")), termDir + "bindings.xml", srcDir, registry, version, definitions.getCodeSystems());
     List<BindingSpecification> cds = parser.parse();
 
     for (BindingSpecification cd : cds) {

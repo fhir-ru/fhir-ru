@@ -1,50 +1,93 @@
-{
+﻿{
   "url": "http://hl7.org/fhir/ValueSet/type-restful-interaction",
   "outcomes": [
     {
-      "hash": "|null|null|history-instance|null",
-      "severity": "fatal",
-      "message": "Error validating code \"org.hl7.fhir.dstu21.model.Coding@7fae6e43\" in system \"null\": null"
-    },
-    {
       "hash": "|null|null|create|null",
-      "severity": "fatal",
-      "message": "Error validating code \"org.hl7.fhir.dstu21.model.Coding@14c93232\" in system \"null\": null"
-    },
-    {
-      "hash": "|null|null|read|null",
-      "severity": "fatal",
-      "message": "Error validating code \"org.hl7.fhir.dstu21.model.Coding@1bab9ce\" in system \"null\": null"
-    },
-    {
-      "hash": "|null|null|search-type|null",
-      "severity": "fatal",
-      "message": "Error validating code \"org.hl7.fhir.dstu21.model.Coding@20c1556a\" in system \"null\": null"
-    },
-    {
-      "hash": "|null|null|history-type|null",
-      "severity": "fatal",
-      "message": "Error validating code \"org.hl7.fhir.dstu21.model.Coding@24fe7b47\" in system \"null\": null"
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": "create",
+        "definition": null,
+        "display": "create"
+      }
     },
     {
       "hash": "|null|null|delete|null",
-      "severity": "fatal",
-      "message": "Error validating code \"org.hl7.fhir.dstu21.model.Coding@5e8566f2\" in system \"null\": null"
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": "delete",
+        "definition": null,
+        "display": "delete"
+      }
     },
     {
-      "hash": "|null|null|vread|null",
-      "severity": "fatal",
-      "message": "Error validating code \"org.hl7.fhir.dstu21.model.Coding@9fc8445\" in system \"null\": null"
+      "hash": "|null|null|history-instance|null",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": "history-instance",
+        "definition": null,
+        "display": "history-instance"
+      }
+    },
+    {
+      "hash": "|null|null|history-type|null",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": "history-type",
+        "definition": null,
+        "display": "history-type"
+      }
+    },
+    {
+      "hash": "|null|null|read|null",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": "read",
+        "definition": null,
+        "display": "read"
+      }
+    },
+    {
+      "hash": "|null|null|search-type|null",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": "search-type",
+        "definition": null,
+        "display": "search-type"
+      }
     },
     {
       "hash": "|null|null|update|null",
-      "severity": "fatal",
-      "message": "Error validating code \"org.hl7.fhir.dstu21.model.Coding@214fd322\" in system \"null\": null"
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": "update",
+        "definition": null,
+        "display": "update"
+      }
     },
     {
-      "hash": "|null|null|validate|null",
-      "severity": "fatal",
-      "message": "Error validating code \"org.hl7.fhir.dstu21.model.Coding@829ca59\" in system \"null\": null"
+      "hash": "|null|null|vread|null",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": "vread",
+        "definition": null,
+        "display": "vread"
+      }
     }
   ]
 }

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
+  <id value="payeetype"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
+  </meta>
   <name value="Payee Type Codes"/>
   <status value="draft"/>
+  <experimental value="true"/>
   <publisher value="Financial Management"/>
   <contact>
     <telecom>
@@ -12,17 +17,9 @@
   </contact>
   <description value="This value set includes sample Payee Type codes."/>
   <copyright value="This is an example set."/>
-  <codeSystem>
-    <system value="http://hl7.org/fhir/payeetype"/>
-    <caseSensitive value="true"/>
-    <concept>
-      <code value="subscriber"/>
-    </concept>
-    <concept>
-      <code value="provider"/>
-    </concept>
-    <concept>
-      <code value="other"/>
-    </concept>
-  </codeSystem>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/payeetype"/>
+    </include>
+  </compose>
 </ValueSet>

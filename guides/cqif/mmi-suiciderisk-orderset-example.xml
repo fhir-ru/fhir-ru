@@ -40,6 +40,7 @@
 		<ReferralRequest>
 			<id value="referralRequest"/>
 			<status value="requested"/>
+      <category value="request"/>
 			<type>
 				<text value="TODO: Validation failure: term service connect denied"/>
 				<!-- Validation Failure: term server connect denied?
@@ -82,7 +83,7 @@
 					<repeat>
 						<frequency value="1"/>
 						<period value="1"/>
-						<periodUnits value="d"/>
+						<periodUnit value="d"/>
 					</repeat>
 				</timing>
 				<route>
@@ -132,9 +133,9 @@
 					-->
 				</form>
 				<ingredient>
-					<item>
+					<itemReference>
 						<reference value="#citalopramSubstance"/>
-					</item>
+					</itemReference>
 					<amount>
 						<numerator>
 							<value value="20"/>

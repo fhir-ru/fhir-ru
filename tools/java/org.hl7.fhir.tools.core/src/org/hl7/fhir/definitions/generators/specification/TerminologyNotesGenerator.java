@@ -40,14 +40,14 @@ import java.util.Map;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
-import org.hl7.fhir.dstu21.model.Reference;
-import org.hl7.fhir.dstu21.model.StructureDefinition;
-import org.hl7.fhir.dstu21.model.UriType;
-import org.hl7.fhir.dstu21.model.ValueSet;
-import org.hl7.fhir.dstu21.model.ElementDefinition.ElementDefinitionBindingComponent;
-import org.hl7.fhir.dstu21.model.Enumerations.BindingStrength;
 import org.hl7.fhir.definitions.model.ConstraintStructure;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionBindingComponent;
+import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
+import org.hl7.fhir.dstu3.model.Reference;
+import org.hl7.fhir.dstu3.model.StructureDefinition;
+import org.hl7.fhir.dstu3.model.UriType;
+import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -195,6 +195,8 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
             write("<a href=\""+prefix+"valueset-data-types.html\">http://hl7.org/fhir/valueset/data-types</a>");
           else if (name.equals("FHIRDefinedType"))
             write("<a href=\""+prefix+"valueset-defined-types.html\">http://hl7.org/fhir/valueset/defined-types</a>");
+          else if (name.equals("FHIRAllTypes"))
+            write("<a href=\""+prefix+"valueset-all-types.html\">http://hl7.org/fhir/valueset/all-types</a>");
           else 
             throw new Exception("Unknown special type "+name);
         } 
@@ -296,6 +298,8 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
         return "<a href=\""+prefix+"valueset-data-types.html\">Any defined Data Type name</a>";
       else if (cd.getValueSet().getName().equals("FHIRDefinedType"))
         return "<a href=\""+prefix+"valueset-defined-types.html\">Any defined Resource or Data Type name</a>";
+      else if (cd.getValueSet().getName().equals("FHIRAllTypes"))
+        return "<a href=\""+prefix+"valueset-all-types.html\">Any defined Resource or Data Type name (including \"Any\" and \"Type\")</a>";
       else 
         throw new Exception("Unknown special type "+cd.getValueSet().getName());
     } 

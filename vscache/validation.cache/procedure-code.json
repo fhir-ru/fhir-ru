@@ -1,28 +1,6 @@
-{
+﻿{
   "url": "http://hl7.org/fhir/ValueSet/procedure-code",
   "outcomes": [
-    {
-      "hash": "#|http://snomed.info/sct|null|25267002|Insertion of intracardiac pacemaker (procedure)",
-      "severity": null,
-      "message": null,
-      "definition": {
-        "abstract": false,
-        "code": null,
-        "definition": null,
-        "display": "Insertion of intracardiac pacemaker"
-      }
-    },
-    {
-      "hash": "#|http://snomed.info/sct|null|80146002|Appendectomy (Procedure)",
-      "severity": null,
-      "message": null,
-      "definition": {
-        "abstract": false,
-        "code": null,
-        "definition": null,
-        "display": "Appendectomy"
-      }
-    },
     {
       "hash": "#|http://snomed.info/sct|null|172960003|Incision of retropharyngeal abscess",
       "severity": null,
@@ -35,6 +13,28 @@
       }
     },
     {
+      "hash": "#|http://snomed.info/sct|null|25267002|Insertion of intracardiac pacemaker (procedure)",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": null,
+        "definition": null,
+        "display": "Insertion of intracardiac pacemaker"
+      }
+    },
+    {
+      "hash": "#|http://snomed.info/sct|null|303653007|Computed tomography of head",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": null,
+        "definition": null,
+        "display": "Computed tomography of structures of the head (procedure)"
+      }
+    },
+    {
       "hash": "#|http://snomed.info/sct|null|34068001|Heart valve replacement",
       "severity": null,
       "message": null,
@@ -43,6 +43,17 @@
         "code": null,
         "definition": null,
         "display": "Replacement of unspecified heart valve"
+      }
+    },
+    {
+      "hash": "#|http://snomed.info/sct|null|359615001|Partial lobectomy of lung",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": null,
+        "definition": null,
+        "display": "Partial lobectomy of lung"
       }
     },
     {
@@ -68,25 +79,14 @@
       }
     },
     {
-      "hash": "#|http://snomed.info/sct|null|359615001|Partial lobectomy of lung",
+      "hash": "#|http://snomed.info/sct|null|80146002|Appendectomy (Procedure)",
       "severity": null,
       "message": null,
       "definition": {
         "abstract": false,
         "code": null,
         "definition": null,
-        "display": "Partial lobectomy of lung"
-      }
-    },
-    {
-      "hash": "#|http://snomed.info/sct|null|323418000|Fix me up",
-      "severity": null,
-      "message": null,
-      "definition": {
-        "abstract": false,
-        "code": null,
-        "definition": null,
-        "display": "Phenoxymethylpenicillin 125mg/5mL oral solution (product)"
+        "display": "Appendectomy"
       }
     },
     {

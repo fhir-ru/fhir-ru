@@ -39,10 +39,6 @@ import java.util.Map;
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
-import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionDesignationComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ConceptReferenceComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
@@ -51,6 +47,9 @@ import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.dstu3.model.ValueSet.ConceptReferenceComponent;
+import org.hl7.fhir.dstu3.model.ValueSet.ConceptReferenceDesignationComponent;
+import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.utilities.Utilities;
 
 public class XSDBaseGenerator {
@@ -313,6 +312,8 @@ public class XSDBaseGenerator {
           write("    <xs:restriction base=\""+sp.getSchema().substring(0, sp.getSchema().length()-1)+"\">\r\n");
           write("      <xs:pattern value=\"" + sp.getRegex() + "\"/>\r\n");
           write("      <xs:minLength value=\"1\"/>\r\n");
+          if (sp.getCode().equals("id"))
+            write("      <xs:maxLength value=\"64\"/>\r\n");
           write("    </xs:restriction>\r\n");
           write("  </xs:simpleType>\r\n");
         } else {
@@ -557,11 +558,6 @@ public class XSDBaseGenerator {
 
     write("  <xs:simpleType name=\"" + en + "-list\">\r\n");
     write("    <xs:restriction base=\"xs:string\">\r\n");
-    if (bs.getValueSet().hasCodeSystem()) {
-      for (ConceptDefinitionComponent c : bs.getValueSet().getCodeSystem().getConcept()) {
-        genDefinedCode(c);
-      }
-    }
     if (bs.getValueSet().hasCompose()) {
       for (ConceptSetComponent cc : bs.getValueSet().getCompose().getInclude()) {
         for (ConceptReferenceComponent c : cc.getConcept()) {
@@ -592,25 +588,11 @@ public class XSDBaseGenerator {
     write("      <xs:enumeration value=\"" + Utilities.escapeXml(c.getCode()) + "\">\r\n");
     write("        <xs:annotation>\r\n");
     write("          <xs:documentation xml:lang=\"en\">" + Utilities.escapeXml(c.getDisplay()) + "</xs:documentation>\r\n"); // todo: do we need to look the definition up? 
-    for (ConceptDefinitionDesignationComponent l : c.getDesignation())
+    for (ConceptReferenceDesignationComponent l : c.getDesignation())
       if (l.hasLanguage())
         write("          <xs:documentation xml:lang=\""+l.getLanguage()+"\">"+Utilities.escapeXml(l.getValue())+"</xs:documentation>\r\n");
     write("        </xs:annotation>\r\n");
     write("      </xs:enumeration>\r\n");
-  }
-
-  private void genDefinedCode(ConceptDefinitionComponent c) throws IOException {
-    write("      <xs:enumeration value=\"" + Utilities.escapeXml(c.getCode()) + "\">\r\n");
-    write("        <xs:annotation>\r\n");
-    write("          <xs:documentation xml:lang=\"en\">" + Utilities.escapeXml(c.getDefinition()) + "</xs:documentation>\r\n");
-    for (ConceptDefinitionDesignationComponent l : c.getDesignation())
-      if (l.hasLanguage())
-        write("          <xs:documentation xml:lang=\""+l.getLanguage()+"\">"+Utilities.escapeXml(l.getValue())+"</xs:documentation>\r\n");
-    write("        </xs:annotation>\r\n");
-    write("      </xs:enumeration>\r\n");
-    for (ConceptDefinitionComponent cc : c.getConcept()) {
-      genDefinedCode(cc);
-    }
   }
 
   private void generateType(ElementDefn root, String name, ElementDefn struc)
@@ -680,7 +662,7 @@ public class XSDBaseGenerator {
       } else {
         String close = " minOccurs=\"0\">";;
         if (!forCodeGeneration) {
-          write("          <xs:choice minOccurs=\"" + checkRule(e.getMinCardinality().toString(), e.getName()+".min", rules) + "\">\r\n");
+          write("          <xs:choice minOccurs=\"" + checkRule(e.getMinCardinality().toString(), e.getName()+".min", rules) + "\" maxOccurs=\"1\">\r\n");
           if (e.hasDefinition()) {
             write("            <xs:annotation>\r\n");
             write("              <xs:documentation xml:lang=\"en\">"+Utilities.escapeXml(checkRule(e.getDefinition(), e.getName()+".defn", rules))+"</xs:documentation>\r\n");
@@ -726,7 +708,7 @@ public class XSDBaseGenerator {
       } else if (types.size() == 0 && e.getElements().size() > 0) {
         String tn = root.getName() + "." + Utilities.capitalize(e.getName());
         int i = 0;
-        while (structures.containsKey(tn)) {
+        while (typenames.contains(tn)) {
           i++;
           tn = root.getName() + "." + Utilities.capitalize(e.getName())+Integer.toString(i);
         }

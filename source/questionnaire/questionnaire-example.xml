@@ -19,42 +19,17 @@
           </pre>
     </div>
   </text>
-  <contained>
-    <ValueSet>
-      <id value="yesno"/>
-      <!--   In practice you could (should?) use boolean for this sort of circumstance.  However, the reality is
-        that many systems treat booleans as coded data   -->
-      <name value="Example YesNo"/>
-      <status value="active"/>
-      <description value="Captures simple yes-no"/>
-      <codeSystem>
-        <system value="http://example.org/system/code/yesno"/>
-        <caseSensitive value="true"/>
-        <concept>
-          <code value="1"/>
-          <display value="Yes"/>
-        </concept>
-        <concept>
-          <code value="2"/>
-          <display value="No"/>
-        </concept>
-      </codeSystem>
-    </ValueSet>
-  </contained>
   <status value="draft"/>
   <date value="2012-01"/>
   <title value="Cancer Quality Forum Questionnaire 2012"/>
   <subjectType value="Patient"/>
   <item>
-    <!--   COMORBIDITY   -->
-    <!--   First main section of the form, questions about comorbidity   -->
     <linkId value="1"/>
     <concept>
       <system value="http://example.org/system/code/sections"/>
       <code value="COMORBIDITY"/>
     </concept>
     <type value="group"/>
-    <!--   section contains one question: whether there is comorbidity   -->
     <item>
       <linkId value="1.1"/>
       <concept>
@@ -63,11 +38,9 @@
       </concept>
       <type value="choice"/>
       <options>
-        <reference value="#yesno"/>
+        <reference value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
       </options>
       <item>
-        <!--   COMORBIDITY/CARDIAL   -->
-        <!--   Subsection about specific comorbidity: cardial   -->
         <linkId value="1.1.1"/>
         <concept>
           <system value="http://example.org/system/code/sections"/>
@@ -82,11 +55,10 @@
           </concept>
           <type value="choice"/>
           <options>
-            <reference value="#yesno"/>
+            <reference value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
           </options>
         </item>
         <item>
-          <!--   This answer carries both the questionnaire-specific name and an equivalent SNOMED CT code   -->
           <linkId value="1.1.1.2"/>
           <concept>
             <system value="http://example.org/system/code/questions"/>
@@ -100,7 +72,7 @@
           </concept>
           <type value="choice"/>
           <options>
-            <reference value="#yesno"/>
+            <reference value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
           </options>
         </item>
         <item>
@@ -112,15 +84,13 @@
           </concept>
           <type value="choice"/>
           <options>
-            <reference value="#yesno"/>
+            <reference value="http://hl7.org/fhir/ValueSet/yesnodontknow"/>
           </options>
         </item>
       </item>
     </item>
   </item>
-  <!--   Todo: What's supposed to go here?   -->
   <item>
-    <!--   HISTOPATHOLOGY   -->
     <linkId value="2"/>
     <concept>
       <system value="http://example.org/system/code/sections"/>

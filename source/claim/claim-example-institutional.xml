@@ -16,13 +16,13 @@
  
   <created value="2014-08-16"/>
 
- <target>
+ <targetReference>
   <reference value="Organization/2"/>
-</target>
+</targetReference>
 
- <organization>
+ <organizationReference>
     <reference value="Organization/1"/>
- </organization>
+ </organizationReference>
 
  <use value="complete"/>
 
@@ -30,6 +30,16 @@
     <code value="normal"/>
  </priority>
 
+ <entererIdentifier>
+    <system value="http://jurisdiction.org/facilities/HOSP1234/users"/>
+    <value value="UC1234"/>
+</entererIdentifier>
+
+ <facilityIdentifier>
+    <system value="http://jurisdiction.org/facilities"/>
+    <value value="HOSP1234"/>
+</facilityIdentifier>
+ 
  <payee>
    <type>
      <code value="provider"/>
@@ -43,19 +53,16 @@
 	  </diagnosis>
   </diagnosis>
  
- <patient>
+ <patientReference>
    <reference value="Patient/1"/>
- </patient>
+ </patientReference>
  
  <coverage>
    <sequence value="1"/>
    <focal value="true"/>
-   <coverage>
+   <coverageReference>
      <reference value="Coverage/9876B1"/>
-   </coverage>
-   <relationship>
-     <code value="self"/>
-   </relationship>
+   </coverageReference>
  </coverage>
   
  <item>
@@ -63,9 +70,9 @@
    <type>
      <code value="service"/>
    </type>
-   <provider>
+   <providerReference>
      <reference value="Practitioner/example"/>
-   </provider>
+   </providerReference>
    <service>
      <system value="http://hl7.org/fhir/ex-serviceproduct"/>
      <code value="exam"/> 
@@ -83,4 +90,9 @@
    </net> 
   </item>
 
+  <total>
+    <value value="125.00"/>
+	<system value="urn:iso:std:iso:4217"/>
+    <code value="USD"/>  
+  </total>
 </Claim>

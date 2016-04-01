@@ -8,7 +8,7 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Eric Haas</LastAuthor>
+  <LastAuthor>Keith W. Boone</LastAuthor>
   <Created>2013-11-28T10:43:10Z</Created>
   <LastSaved>2015-04-15T04:11:27Z</LastSaved>
   <Version>16.00</Version>
@@ -20,7 +20,7 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>13800</WindowHeight>
+  <WindowHeight>12795</WindowHeight>
   <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
@@ -191,7 +191,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Status Codes">
-  <Table ss:ExpandedColumnCount="40" ss:ExpandedRowCount="68" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="40" ss:ExpandedRowCount="73" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultColumnWidth="65.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:Width="314.25"/>
@@ -225,6 +225,9 @@
     <Cell><Data ss:Type="String">c21</Data></Cell>
     <Cell><Data ss:Type="String">c22</Data></Cell>
     <Cell><Data ss:Type="String">c23</Data></Cell>
+    <Cell><Data ss:Type="String">c24</Data></Cell>
+    <Cell><Data ss:Type="String">c25</Data></Cell>
+    <Cell><Data ss:Type="String">c26</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="39.9375">
     <Cell><Data ss:Type="String" x:Ticked="1">@codes</Data></Cell>
@@ -251,6 +254,8 @@
     <Cell ss:StyleID="s67"><Data ss:Type="String">refuted</Data></Cell>
     <Cell><Data ss:Type="String">differential</Data></Cell>
     <Cell><Data ss:Type="String">partial</Data></Cell>
+    <Cell><Data ss:Type="String">busy-unavailable</Data></Cell>
+    <Cell><Data ss:Type="String">free</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="39.9375">
     <Cell><Data ss:Type="String" x:Ticked="1">@code</Data></Cell>
@@ -277,6 +282,8 @@
     <Cell ss:StyleID="s67"><Data ss:Type="String">refuted</Data></Cell>
     <Cell><Data ss:Type="String">differential</Data></Cell>
     <Cell><Data ss:Type="String">partial</Data></Cell>
+    <Cell><Data ss:Type="String">busy-unavailable</Data></Cell>
+    <Cell><Data ss:Type="String">free</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="23.0625">
     <Cell><Data ss:Type="String" x:Ticked="1">@definition</Data></Cell>
@@ -505,6 +512,24 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">completed</Data></Cell>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">CompartmentDefinition.status</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">draft</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">active</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">retired</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Composition.status</Data></Cell>
@@ -1106,6 +1131,25 @@
     <Cell ss:StyleID="s62"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="24.9375">
+    <Cell><Data ss:Type="String">MeasureReport.status</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">pending</Data></Cell>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">error</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">complete</Data></Cell>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s62"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="24.9375">
     <Cell><Data ss:Type="String">MedicationAdministration.status</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">entered-in-error</Data></Cell>
     <Cell ss:StyleID="s62"/>
@@ -1410,14 +1454,14 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ReferralRequest.status</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">entered-in-error</Data></Cell>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s33"><Data ss:Type="String">missing</Data></Cell>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s84"><Data ss:Type="String">draft</Data></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">requested</Data></Cell>
+    <Cell ss:StyleID="s85"/>
     <Cell ss:StyleID="s62"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">rejected</Data></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">accepted</Data></Cell>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s86"/>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s69"><Data ss:Type="String">active</Data></Cell>
     <Cell ss:StyleID="s62"/>
@@ -1446,6 +1490,26 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">retired</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Slot.status</Data></Cell>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">busy</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:Index="13" ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:Index="19" ss:StyleID="s62"><Data ss:Type="String">busy-tentative</Data></Cell>
+    <Cell ss:Index="25"><Data ss:Type="String">busy-unavailable</Data></Cell>
+    <Cell><Data ss:Type="String">free</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Specimen.status</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">entered-in-error</Data></Cell>
     <Cell ss:StyleID="s62"/>
@@ -1464,6 +1528,24 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">StructureDefinition.status</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">draft</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">active</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">retired</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">StructureMap.status</Data></Cell>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
@@ -1538,6 +1620,20 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">cancelled</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Task.status</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">draft</Data></Cell>
+    <Cell><Data ss:Type="String">requested</Data></Cell>
+    <Cell><Data ss:Type="String">received</Data></Cell>
+    <Cell><Data ss:Type="String">rejected</Data></Cell>
+    <Cell><Data ss:Type="String">accepted</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">in-progress</Data></Cell>
+    <Cell><Data ss:Type="String">on-hold</Data></Cell>
+    <Cell><Data ss:Type="String">failed</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">completed</Data></Cell>
+    <Cell ss:Index="17" ss:StyleID="s69"/>
+    <Cell ss:Index="27"><Data ss:Type="String">ready</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">TestScript.status</Data></Cell>
     <Cell ss:StyleID="s62"/>
     <Cell ss:StyleID="s62"/>
@@ -1591,7 +1687,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>4</SplitHorizontal>
-   <TopRowBottomPane>10</TopRowBottomPane>
+   <TopRowBottomPane>47</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -1608,8 +1704,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>13</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>71</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -1,6 +1,11 @@
-{
+﻿{
   "url": "http://hl7.org/fhir/ValueSet/doc-section-codes",
   "outcomes": [
+    {
+      "hash": "#|http://loinc.org|null|10157-6|History of family member diseases",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
     {
       "hash": "#|http://loinc.org|null|10157-6|History of family member diseases Narrative",
       "severity": null,
@@ -13,15 +18,9 @@
       }
     },
     {
-      "hash": "#|http://loinc.org|null|11348-0|History of past illness Narrative",
-      "severity": null,
-      "message": null,
-      "definition": {
-        "abstract": false,
-        "code": "11348-0",
-        "definition": null,
-        "display": "History of past illness Narrative"
-      }
+      "hash": "#|http://loinc.org|null|10160-0|History of Medication Use",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
     },
     {
       "hash": "#|http://loinc.org|null|10183-2|Hospital discharge medications Narrative",
@@ -35,6 +34,88 @@
       }
     },
     {
+      "hash": "#|http://loinc.org|null|10190-7|Mental status",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
+      "hash": "#|http://loinc.org|null|11348-0|History of past illness Narrative",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": "11348-0",
+        "definition": null,
+        "display": "History of past illness Narrative"
+      }
+    },
+    {
+      "hash": "#|http://loinc.org|null|11369-6|History of immunization",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
+      "hash": "#|http://loinc.org|null|11450-4|Problem list",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
+      "hash": "#|http://loinc.org|null|18776-5|Plan of treatment",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
+      "hash": "#|http://loinc.org|null|29299-5|Reason for visit Narrative",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": "29299-5",
+        "definition": null,
+        "display": "Reason for visit Narrative"
+      }
+    },
+    {
+      "hash": "#|http://loinc.org|null|29762-2|Social history",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
+      "hash": "#|http://loinc.org|null|30954-2|Relevant diagnostic tests and laboratory data",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
+      "hash": "#|http://loinc.org|null|42348-3|Advance directives",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
+      "hash": "#|http://loinc.org|null|46240-8|Encounters",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
+      "hash": "#|http://loinc.org|null|46264-8|Medical equipment",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
+      "hash": "#|http://loinc.org|null|47420-5|Functional status assessment",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
+      "hash": "#|http://loinc.org|null|47519-4|History of procedures",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
+      "hash": "#|http://loinc.org|null|48765-2|Allergies and adverse reactions",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
       "hash": "#|http://loinc.org|null|48765-2|Allergies and adverse reactions Document",
       "severity": null,
       "message": null,
@@ -46,14 +127,24 @@
       }
     },
     {
-      "hash": "#|http://loinc.org|null|29299-5|Reason for visit Narrative",
+      "hash": "#|http://loinc.org|null|48768-6|Payers",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
+      "hash": "#|http://loinc.org|null|61144-2|Diet and nutrition",
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
+    },
+    {
+      "hash": "#|http://loinc.org|null|8716-3|Vital signs",
       "severity": null,
       "message": null,
       "definition": {
         "abstract": false,
-        "code": "29299-5",
+        "code": "8716-3",
         "definition": null,
-        "display": "Reason for visit Narrative"
+        "display": "Vital signs"
       }
     }
   ]

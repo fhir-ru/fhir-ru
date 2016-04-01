@@ -1,0 +1,58 @@
+map "http://hl7.org/fhir/StructureMap/cda-ed" = "V3/FHIR Mappings: CD"
+
+uses "http://hl7.org/fhir/StructureDefinition/cda-CD" as source
+uses "http://hl7.org/fhir/StructureDefinition/CodeableConcept" as target
+
+group CD2CodeableConcept // no: override this ... extends ANY2Element
+  input src : CD as source;
+  input tgt : CodeableConcept as target;
+
+// ignore codings if there's no system
+cd.base: 
+   for src as s
+   where codeSystem.empty().not()
+   make tgt.coding as t {first} then CV2Coding(s, t) // the first coding is the root CV
+
+cd.other: 
+   for src.translation as s 
+   where system.empty().not() 
+   check translation.originalText.empty() 
+   make tgt.coding as t then then CV2Coding(s, t) // other CVs, with a bonus side check: no nested original text allowed
+
+cd.text: 
+   for src.originalText as text 
+   make tgt.text = text // copy the root original text over
+
+cd.nf: 
+   for src.nullFlavor as nf 
+   where nullFlavor != "OTH" 
+   make
+     Element.extension as ex, 
+     ex.url = "http://hl7.org/fhir/StructureDefinition/iso21090-nullFlavor", 
+     ex.value = nf  // override the any nullFlavor mapping to ignore "OTH"
+
+endgroup
+
+Group CV2Coding // base Coding rules 
+  input src : CV as source;
+  input tgt : Coding as target;
+  
+cd.code:    
+  for src.code 
+  make tgt.code = src.code
+
+cd.system:  
+  for src.codeSystem 
+  make tgt.system = translate(src.codeSystem, "http://hl7.org/fhir/ConceptMap/special-oid2uri", "code")
+     
+// codeSystemName is ignored
+cd.vers:    
+  for src.codeSystemVersion 
+  make tgt.version = src.codeSystemVersion
+    
+cd.display: 
+  for src.displayName 
+  make tgt.display = src.displayName
+
+endgroup
+  

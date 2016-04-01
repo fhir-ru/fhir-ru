@@ -65,9 +65,9 @@
 		 <display value="Withhold the identified object and any other resources that are related to this object."/>
 	   </coding>
 	 </type>
-	 <subject>
+	 <topic>
        <reference value="Order/f201"/>
-	 </subject>
+	 </topic>
      <!-- by not specifying term.actor I assume this means everyone? -->
 	 <text value="Withhold this order and any results or related objects from any provider."/>
    </term>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="argonaut-provider" />
   <meta>
@@ -30,7 +30,7 @@
   </useContext>
   <requirements value="As agree by Argonaut project " />
   <copyright value="Licensed under Create Commons 0 (Public Domain)" />
-  <fhirVersion value="1.0.1" />
+  <fhirVersion value="1.4.0" />
   <mapping>
     <identity value="v2" />
     <uri value="http://hl7.org/v2" />
@@ -52,9 +52,10 @@
     <name value="W5 Mapping" />
   </mapping>
   <kind value="resource" />
-  <constrainedType value="Practitioner" />
   <abstract value="false" />
-  <base value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
+  <baseType value="Practitioner" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
+    <derivation value="constraint"/>
   <differential>
     <element>
       <path value="Practitioner" />
@@ -2675,7 +2676,7 @@
       </mapping>
     </element>
     <element>
-      <path value="Practitioner.practitionerRole.managingOrganization" />
+      <path value="Practitioner.practitionerRole.organization" />
       <short value="Organization where the roles are performed" />
       <definition value="The organization where the Practitioner performs the roles associated." />
       <min value="1" />
@@ -2691,7 +2692,7 @@
       </mapping>
     </element>
     <element>
-      <path value="Practitioner.practitionerRole.managingOrganization.reference" />
+      <path value="Practitioner.practitionerRole.organization.reference" />
       <name value="Organization ID" />
       <short value="Relative, internal or absolute URL reference" />
       <definition value="A reference to a location at which the other resource is found. The reference may be a relative reference, in which case it is relative to the service base URL, or an absolute URL that resolves to the location where the resource is found. The reference may be version specific or not. If the reference is not to a FHIR RESTful server, then it should be assumed to be version specific. Internal fragment references (start with '#') refer to contained resources." />
@@ -2711,7 +2712,7 @@
       </mapping>
     </element>
     <element>
-      <path value="Practitioner.practitionerRole.managingOrganization.display" />
+      <path value="Practitioner.practitionerRole.organization.display" />
       <name value="Clinic name" />
       <short value="Common Name of Organization" />
       <definition value="Plain text narrative that identifies the resource in addition to the resource reference." />

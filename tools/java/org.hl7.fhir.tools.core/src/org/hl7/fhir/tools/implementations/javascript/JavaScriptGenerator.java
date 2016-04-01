@@ -37,16 +37,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.dstu21.validation.ValidationMessage;
+import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.tools.implementations.BaseGenerator;
-import org.hl7.fhir.tools.publisher.FolderManager;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.TextFile;
@@ -76,11 +74,6 @@ public class JavaScriptGenerator extends BaseGenerator implements PlatformGenera
   @Override
   public String getVersion() {
     return "0.1";
-  }
-
-  @Override
-  public boolean isECoreGenerator() {
-    return false;
   }
 
   @Override
@@ -131,31 +124,8 @@ public class JavaScriptGenerator extends BaseGenerator implements PlatformGenera
   }
 
   @Override
-  public boolean doesTest() {
-    return false;
-  }
-
-  @Override
-  public void loadAndSave(FolderManager folders, String sourceFile, String destFile) throws Exception {
-  }
-
-  @Override
-  public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger, String svnRevision) throws Exception {
-  }
-
-  @Override
   public boolean compile(String rootDir, List<String> errors, Logger logger, List<ValidationMessage> issues) throws Exception {
     return false;
-  }
-
-  @Override
-  public String checkFragments(FolderManager folders, String fragmentsXml) throws Exception {
-    return null;
-  }
-
-  @Override
-  public void test(FolderManager folders, Collection<String> names) throws Exception {
-    throw new Error("This should not be called");
   }
 
 }

@@ -21,11 +21,12 @@
     value="Profiles the diagnostic order to ensure that the services ordered can be identified and evaluated for appropraiteness"/>
   <requirements
     value="The diagnostic order resource is required to identify the diagnostic service or services that were ordered, and to provide additional details that may be necessary to evaluate the order for appropriateness."/>
-  <fhirVersion value="1.1.0"/>
+  <fhirVersion value="1.4.0" />
   <kind value="resource"/>
-  <constrainedType value="DiagnosticOrder"/>
   <abstract value="false"/>
-  <base value="http://hl7.org/fhir/StructureDefinition/DiagnosticOrder"/>
+  <baseType value="DiagnosticOrder"/>
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/DiagnosticOrder"/>
+  <derivation value="constraint"/>
   <differential>
     <element>
       <path value="DiagnosticOrder"/>

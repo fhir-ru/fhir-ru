@@ -1,0 +1,1 @@
+{"resourceType":"ValueSet","expansion":{"identifier":"urn:uuid:62076f18-d101-4730-8994-dea2b38f0e5d","timestamp":"2016-03-29T20:08:49Z","contains":[{"system":"http://healthcaresoa.org/fhir/hspc-abnInt-NumericNom","code":"higher","display":"Higher than technical"},{"system":"http://healthcaresoa.org/fhir/hspc-abnInt-NumericNom","code":"lower","display":"Lower than technical"}]}}

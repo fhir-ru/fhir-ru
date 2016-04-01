@@ -1,4 +1,4 @@
-<translations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="translations.xsd">
+﻿<translations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="translations.xsd">
     <!--
      This file is for the convenience of implementers, to enable sharing of language translations.
      There is no obligation for any implementer to use the messages contained in this file, but
@@ -90,6 +90,9 @@
         <translation lang="es">PlanCuidado</translation>
         <translation lang="fr">PlanDeSoins</translation>
     </item>
+    <item id="CareTeam">
+        <translation lang="en">CareTeam</translation>
+    </item>
     <item id="Claim">
         <translation lang="en">Claim</translation>
         <translation lang="zh">声称</translation>
@@ -114,6 +117,9 @@
     <item id="CommunicationRequest">
         <translation lang="en">CommunicationRequest</translation>
         <translation lang="fr">DemandeDeCommunication</translation>
+    </item>
+    <item id="CompartmentDefinition">
+        <translation lang="en">CompartmentDefinition</translation>
     </item>
     <item id="Composition">
         <translation lang="en">Composition</translation>
@@ -266,13 +272,16 @@
         <translation lang="en">Goal</translation>
         <translation lang="fr">But</translation>
     </item>
-    <item id="Subscription">
-        <translation lang="en">Subscription</translation>
-        <translation lang="zh">订阅</translation>
-        <translation lang="es">Suscripción</translation>
-        <translation lang="fr">Souscription</translation>
-    </item>
-    <item id="GeneExpression">
+	<item id="Endpoint">
+		<translation lang="en">Endpoint</translation>
+	</item>
+	<item id="Subscription">
+		<translation lang="en">Subscription</translation>
+		<translation lang="zh">订阅</translation>
+		<translation lang="es">Suscripción</translation>
+		<translation lang="fr">Souscription</translation>
+	</item>
+	<item id="GeneExpression">
         <translation lang="en">GeneExpression</translation>
         <translation lang="zh">基因表达</translation>
         <translation lang="es">ExpresionGenica</translation>
@@ -314,6 +323,10 @@
         <translation lang="zh">影像检查</translation>
         <translation lang="es">EstudioImagen</translation>
         <translation lang="fr">EtudeImagerie</translation>
+    </item>
+    <item id="ImagingExcerpt">
+        <translation lang="en">ImagingExcerpt</translation>
+		
     </item>
     <item id="ImagingObjectSelection">
         <translation lang="en">ImagingObjectSelection</translation>
@@ -357,6 +370,9 @@
     </item>
     <item id="Measure">
         <translation lang="en">Measure</translation>
+    </item>
+    <item id="MeasureReport">
+        <translation lang="en">MeasureReport</translation>
     </item>
     <item id="Media">
         <translation lang="en">Media</translation>
@@ -496,6 +512,9 @@
         <translation lang="zh">从业者</translation>
         <translation lang="es">Practicante</translation>
         <translation lang="fr">Praticien</translation>
+    </item>
+    <item id="PractitionerRole">
+        <translation lang="en">PractitionerRole</translation>
     </item>
     <item id="Procedure">
         <translation lang="en">Procedure</translation>
@@ -641,6 +660,9 @@
         <translation lang="es">Solicitud de Suministro</translation>
         <translation lang="fr">Demande d'approvisionnement</translation>
     </item>
+    <item id="Task">
+        <translation lang="en">Task</translation>
+    </item>
     <item id="User">
         <translation lang="en">User</translation>
         <translation lang="zh">用户</translation>
@@ -674,6 +696,9 @@
         <translation lang="zh">VCF变体</translation>
         <translation lang="es">VCFVariante</translation>
         <translation lang="fr">VCFVariante</translation>
+    </item>
+    <item id="StructureMap">
+        <translation lang="en">StructureMap</translation>
     </item>
     <item id="StructureDefinition">
         <translation lang="en">StructureDefinition</translation>
@@ -959,7 +984,7 @@
     </item>
     <item id="MSG_NO_MATCH" ecode="true">
         <translation lang="en">No Resource found matching the query "%s"</translation>
-        <translation lang="nn">Geen resource gevonden op basis van query "%s"</translation>
+        <translation lang="nl">Geen resource gevonden met query "%s"</translation>
     </item>
     <item id="MSG_NO_EXIST" ecode="true">
         <translation lang="en">Resource Id "%s" does not exist</translation>

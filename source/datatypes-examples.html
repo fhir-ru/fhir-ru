@@ -285,7 +285,7 @@ See also <a href="datatypes.html#CodeableConcept">Base Definition</a>, <a href="
 In this case, there is no display element, because no display is defined for SNOMED CT expressions.
 </p>
 
-<p>Using the valueset:</p>
+<p>Using the value set:</p>
 <p>The results on a urinalysis strip:</p>
 <pre class="xml" fragment="Coding">
   &lt;valueCoding&gt;
@@ -1141,7 +1141,7 @@ the base FHIR type does not require the phone number to be conformant. A ISO 210
 <p>Formally correct URI:</p>
 <pre class="xml" fragment="ContactPoint">
   &lt;telecom&gt;
-    &lt;extension uri="http://hl7.org/fhir/StructureDefinition/iso21090-TEL-address" &gt;
+    &lt;extension url="http://hl7.org/fhir/StructureDefinition/iso21090-TEL-address" &gt;
       &lt;valueUri value="tel:+15556755745" /&gt;
     &lt;/extension&gt;
     &lt;system value="phone" /&gt;
@@ -1176,7 +1176,7 @@ See also <a href="datatypes.html#Timing">Base Definition</a>, <a href="datatypes
    &lt;repeat&gt;
      &lt;frequency value="2" /&gt;
      &lt;period value="1" /&gt;
-     &lt;periodUnits value="d" /&gt;
+     &lt;periodUnit value="d" /&gt;
    &lt;/repeat&gt;
   &lt;/schedule&gt;
 </pre>
@@ -1190,7 +1190,7 @@ See also <a href="datatypes.html#Timing">Base Definition</a>, <a href="datatypes
       &lt;/boundsPeriod&gt;
       &lt;when value="ACM" /&gt;
       &lt;period value="30" /&gt;
-      &lt;periodUnits value="min" /&gt;
+      &lt;periodUnit value="min" /&gt;
     &lt;/repeat&gt;
   &lt;/schedule&gt;
 </pre>
@@ -1209,7 +1209,7 @@ Note that the end date is inclusive like the end date of a Period.
       &lt;/boundsDuration&gt;
       &lt;frequency value="3" /&gt;
       &lt;period value="1" /&gt;
-      &lt;periodUnits value="d" /&gt;
+      &lt;periodUnit value="d" /&gt;
     &lt;/repeat&gt;
   &lt;/schedule&gt;
 </pre>
@@ -1222,7 +1222,7 @@ Note that the end date is inclusive like the end date of a Period.
       &lt;/boundsPeriod&gt;
       &lt;frequency value="2" /&gt;
       &lt;period value="1" /&gt;
-      &lt;periodUnits value="d" /&gt;
+      &lt;periodUnit value="d" /&gt;
     &lt;/repeat&gt;
   &lt;/schedule&gt;
 </pre>

@@ -94,30 +94,35 @@
     <name value="base"/>
   <!--  value sets that are imported by directly referenced value sets in the profiles  -->
     <resource>
-      <purpose value="terminology"/>
-      <sourceUri value="profiles\valueset-substance-ndfrt.xml"/>
+      <example value="false"/>
+      <sourceUri value="profiles\valueset-daf-substance-ndfrt.xml"/>
     </resource>
     <resource>
-      <purpose value="terminology"/>
-      <sourceUri value="profiles\valueset-substance-rxnorm.xml"/>
+      <example value="false"/>
+      <sourceUri value="profiles\valueset-daf-substance-rxnorm.xml"/>
     </resource>
     <resource>
-      <purpose value="terminology"/>
-      <sourceUri value="profiles\valueset-substance-sct.xml"/>
+      <example value="false"/>
+      <sourceUri value="profiles\valueset-daf-substance-sct.xml"/>
     </resource>
     <resource>
-      <purpose value="terminology"/>
-      <sourceUri value="profiles\valueset-substance-unii.xml"/>
+      <example value="false"/>
+      <sourceUri value="profiles\valueset-daf-substance-unii.xml"/>
     </resource>
     <resource>
-      <purpose value="example"/>
+      <example value="true"/>
       <name value="DAF Responder"/>
       <sourceUri value="conformance\conformance-daf-query-responder.xml"/>
     </resource>
     <resource>
-      <purpose value="example"/>
+      <example value="true"/>
       <name value="DAF Requestor"/>
       <sourceUri value="conformance\conformance-daf-query-requestor.xml"/>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="DAF Responder Basic"/>
+      <sourceUri value="conformance\conformance-daf-query-responder-core.xml"/>
     </resource>
   </package>
 <!-- 

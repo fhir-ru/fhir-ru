@@ -4,7 +4,7 @@
     <meta>
         <lastUpdated value="2015-09-22T20:02:49.724+10:00"/>
     </meta>
-    <url value="http://fhir.nl/fhir/StructureDefinition/nl-core-address-official"/>
+    <url value="http://hl7.org/fhir/StructureDefinition/nl-core-address-official"/>
     <name value="nl-core-address-official"/>
     <status value="draft"/>
     <contact>
@@ -20,11 +20,13 @@
         <name value="RIM"/>
     </mapping>
     <kind value="datatype"/>
-    <constrainedType value="Extension"/>
     <abstract value="false"/>
     <contextType value="resource"/>
     <context value="Address"/>
-    <base value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+    <baseType value="Extension"/>
+    <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
+    <derivation value="constraint"/>
+
     <differential>
         <element>
             <path value="Extension"/>
@@ -35,10 +37,6 @@
             <type>
                 <code value="Element"/>
             </type>
-            <mapping>
-                <identity value="rim"/>
-                <map value="N/A"/>
-            </mapping>
         </element>
         <element>
             <path value="Extension.url"/>
@@ -48,11 +46,10 @@
             <comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #."/>
             <min value="1"/>
             <max value="1"/>
-            <fixedUri value="http://fhir.nl/fhir/StructureDefinition/nl-address-official"/>
-            <mapping>
-                <identity value="rim"/>
-                <map value="N/A"/>
-            </mapping>
+            <type>
+                <code value="uri"/>
+            </type>
+            <fixedUri value="http://hl7.org/fhir/StructureDefinition/nl-address-official"/>
         </element>
         <element>
             <path value="Extension.value[x]"/>

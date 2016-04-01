@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
-  <name value="Surface Codes"/>
+  <id value="relationship"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
+  </meta>
+  <name value="Beneficiary Relationship Codes"/>
   <status value="draft"/>
+  <experimental value="true"/>
   <publisher value="FHIR Project team"/>
   <contact>
     <telecom>
@@ -12,23 +17,9 @@
   </contact>
   <description value="This value set includes the Patient to subscriber relationship codes."/>
   <copyright value="This is an example set."/>
-  <codeSystem>
-    <system value="http://hl7.org/fhir/relationship"/>
-    <caseSensitive value="true"/>
-    <concept>
-      <code value="1"/>
-    </concept>
-    <concept>
-      <code value="2"/>
-    </concept>
-    <concept>
-      <code value="3"/>
-    </concept>
-    <concept>
-      <code value="4"/>
-    </concept>
-    <concept>
-      <code value="5"/>
-    </concept>
-  </codeSystem>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/relationship"/>
+    </include>
+  </compose>
 </ValueSet>

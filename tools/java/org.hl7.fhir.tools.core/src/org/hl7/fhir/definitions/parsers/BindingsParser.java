@@ -32,18 +32,21 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
-import org.hl7.fhir.dstu21.formats.IParser;
-import org.hl7.fhir.dstu21.formats.JsonParser;
-import org.hl7.fhir.dstu21.formats.XmlParser;
-import org.hl7.fhir.dstu21.model.ValueSet;
-import org.hl7.fhir.dstu21.model.Enumerations.BindingStrength;
-import org.hl7.fhir.dstu21.model.Enumerations.ConformanceResourceStatus;
-import org.hl7.fhir.dstu21.terminologies.ValueSetUtilities;
-import org.hl7.fhir.dstu21.utils.ToolingExtensions;
+import org.hl7.fhir.dstu3.formats.IParser;
+import org.hl7.fhir.dstu3.formats.JsonParser;
+import org.hl7.fhir.dstu3.formats.XmlParser;
+import org.hl7.fhir.dstu3.model.CodeSystem;
+import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
+import org.hl7.fhir.dstu3.model.Enumerations.ConformanceResourceStatus;
+import org.hl7.fhir.dstu3.model.ValueSet;
+import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
+import org.hl7.fhir.dstu3.utils.ToolingExtensions;
+import org.hl7.fhir.tools.converters.CodeSystemConvertor;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
@@ -57,13 +60,15 @@ public class BindingsParser {
   private XLSXmlParser xls;
   private BindingNameRegistry registry;
   private TabDelimitedSpreadSheet tabfmt;
+  private Map<String, CodeSystem> codeSystems;
 
-  public BindingsParser(InputStream file, String filename, String root, BindingNameRegistry registry, String version) {
+  public BindingsParser(InputStream file, String filename, String root, BindingNameRegistry registry, String version, Map<String, CodeSystem> codeSystems) {
     this.file = file;
     this.filename = filename;
     this.root = root;
     this.registry = registry;
     this.version = version;
+    this.codeSystems = codeSystems;
     tabfmt = new TabDelimitedSpreadSheet();
     tabfmt.setFileName(filename, Utilities.changeFileExt(filename, ".sheet.txt"));
   }
@@ -132,18 +137,26 @@ public class BindingsParser {
         cd.setValueSet(new ValueSet());
         cd.getValueSet().setId(ref.substring(1));
         cd.getValueSet().setUrl("http://hl7.org/fhir/ValueSet/"+ref.substring(1));
+        cd.getValueSet().setUserData("committee", sheet.getColumn(row, "Committee").toLowerCase());
+        cd.getValueSet().setUserData("filename", "valueset-"+cd.getValueSet().getId());
+        cd.getValueSet().setUserData("path", "valueset-"+cd.getValueSet().getId()+".html");
+        cd.getValueSet().setName(cd.getName());
+        cd.getValueSet().setStatus(ConformanceResourceStatus.DRAFT);
+        cd.getValueSet().setDescription(sheet.getColumn(row, "Description"));
+        if (!cd.getValueSet().hasDescription())
+          cd.getValueSet().setDescription(cd.getDefinition());
         if (!ref.startsWith("#"))
           throw new Exception("Error parsing binding "+cd.getName()+": code list reference '"+ref+"' must started with '#'");
         Sheet cs = xls.getSheets().get(ref.substring(1));
         if (cs == null)
           throw new Exception("Error parsing binding "+cd.getName()+": code list reference '"+ref+"' not resolved");
         tabfmt.sheet(ref.substring(1));
-        new CodeListToValueSetParser(cs, ref.substring(1), cd.getValueSet(), version, tabfmt).execute();
+        new CodeListToValueSetParser(cs, ref.substring(1), cd.getValueSet(), version, tabfmt, codeSystems).execute();
       } else if (cd.getBinding() == BindingMethod.ValueSet) {
         if (ref.startsWith("http:")) {
           cd.setReference(sheet.getColumn(row, "Reference")); // will sort this out later
         } else
-          cd.setValueSet(loadValueSet(ref));
+          cd.setValueSet(loadValueSet(ref, sheet.getColumn(row, "Committee").toLowerCase()));
       } else if (cd.getBinding() == BindingMethod.Special) {
         cd.setValueSet(new ValueSet());
         cd.getValueSet().setId(ref.substring(1));
@@ -161,12 +174,10 @@ public class BindingsParser {
       if (cd.getValueSet() != null) {
         ValueSet vs = cd.getValueSet();
         ValueSetUtilities.makeShareable(vs);
-        vs.setUserData("filename", "valueset-"+vs.getId());
-        vs.setUserData("committee", sheet.getColumn(row, "Committee").toLowerCase());
-        vs.setUserData("path", "valueset-"+vs.getId()+".html");
 
         ToolingExtensions.setOID(vs, "urn:oid:"+BindingSpecification.DEFAULT_OID_VS + cd.getId());
-        vs.setUserData("csoid", BindingSpecification.DEFAULT_OID_CS + cd.getId());
+        if (vs.getUserData("cs") != null)
+          ToolingExtensions.setOID((CodeSystem) vs.getUserData("cs"), "urn:oid:"+BindingSpecification.DEFAULT_OID_CS + cd.getId());
       }
       
       cd.setDescription(sheet.getColumn(row, "Description"));
@@ -186,18 +197,20 @@ public class BindingsParser {
     }
   }
 
-  private ValueSet loadValueSet(String ref) throws Exception {
+  private ValueSet loadValueSet(String ref, String committee) throws Exception {
     String folder = new File(filename).getParent();
+    String srcName;
     IParser p;
-    FileInputStream input;
     if (new File(Utilities.path(folder, ref+".xml")).exists()) {
       p = new XmlParser();
-      input = new FileInputStream(Utilities.path(folder, ref+".xml"));
+      srcName = Utilities.path(folder, ref+".xml");
     } else if (new File(Utilities.path(folder, ref+".json")).exists()) {
       p = new JsonParser();
-      input = new FileInputStream(Utilities.path(folder, ref+".json"));
+      srcName = Utilities.path(folder, ref+".json");
     } else
       throw new Exception("Unable to find source for "+ref+" in "+filename+" ("+Utilities.path(folder, ref+".xml/json)"));
+
+    FileInputStream input = new FileInputStream(srcName);
 
     try {
       ValueSet result = ValueSetUtilities.makeShareable((ValueSet) p.parse(input));
@@ -207,6 +220,12 @@ public class BindingsParser {
         result.setVersion(version);
 //      if (!result.hasUrl())
         result.setUrl("http://hl7.org/fhir/ValueSet/"+ref.substring(9));
+        
+        result.setUserData("committee", committee);
+        result.setUserData("filename", "valueset-"+ref.substring(9));
+        result.setUserData("path", "valueset-"+ref.substring(9)+".html");
+        
+        new CodeSystemConvertor(codeSystems).convert(p, result, srcName);
       return result;
     } finally {
       IOUtils.closeQuietly(input);

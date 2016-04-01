@@ -232,9 +232,9 @@
           <prefix value="Dr"/>
         </name>
         <practitionerRole>
-          <managingOrganization>
+          <organization>
             <reference value="Organization/1"/>
-          </managingOrganization>
+          </organization>
         <!--     Referring Practitioner for the first 3 months of 2012     -->
           <role>
             <coding>
@@ -380,9 +380,9 @@
           <reference value="Practitioner/example"/>
           <display value="Peter Practitioner"/>
         </prescriber>
-        <reasonCodeableConcept>
+        <reasonCode>
           <text value="Management of Asthma"/>
-        </reasonCodeableConcept>
+        </reasonCode>
       <!--   a reference to the medication being prescribed. As described earlier, this could be contained (as is the example here), separately
         within the document bundle or simply a reference to a remote server. See comment in the contained resource  -->
              <dosageInstruction>
@@ -394,7 +394,7 @@
             <repeat>
               <frequency value="2"/>
               <period value="1"/>
-              <periodUnits value="d"/>
+              <periodUnit value="d"/>
             </repeat>
           </timing>
         <!--   Orally   -->

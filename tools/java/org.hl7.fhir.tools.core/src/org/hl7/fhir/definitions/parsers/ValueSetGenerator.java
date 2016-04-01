@@ -13,21 +13,23 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
-import org.hl7.fhir.dstu21.model.Factory;
-import org.hl7.fhir.dstu21.model.ValueSet;
-import org.hl7.fhir.dstu21.model.ContactPoint.ContactPointSystem;
-import org.hl7.fhir.dstu21.model.Enumerations.ConformanceResourceStatus;
-import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionDesignationComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ValueSetCodeSystemComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ValueSetComposeComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ValueSetContactComponent;
-import org.hl7.fhir.dstu21.terminologies.ValueSetUtilities;
-import org.hl7.fhir.dstu21.utils.ToolingExtensions;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.dstu3.model.CodeSystem;
+import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
+import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
+import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
+import org.hl7.fhir.dstu3.model.ContactPoint.ContactPointSystem;
+import org.hl7.fhir.dstu3.model.Enumerations.ConformanceResourceStatus;
+import org.hl7.fhir.dstu3.model.Factory;
+import org.hl7.fhir.dstu3.model.ValueSet;
+import org.hl7.fhir.dstu3.model.ValueSet.ValueSetComposeComponent;
+import org.hl7.fhir.dstu3.model.ValueSet.ValueSetContactComponent;
+import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
+import org.hl7.fhir.dstu3.utils.ToolingExtensions;
+import org.hl7.fhir.tools.converters.CodeSystemConvertor;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
@@ -53,18 +55,30 @@ public class ValueSetGenerator {
     if (vs.getId().equals("data-types"))
       genDataTypes(vs);
     else if (vs.getId().equals("defined-types"))
-      genDefinedTypes(vs);
+      genDefinedTypes(vs, false);
+    else if (vs.getId().equals("all-types"))
+      genDefinedTypes(vs, true);
     else if (vs.getId().equals("message-events"))
       genMessageEvents(vs);
     else if (vs.getId().equals("resource-types"))
       genResourceTypes(vs);
+    else if (vs.getId().equals("abstract-types"))
+      genAbstractTypes(vs);
   }
 
   private void genDataTypes(ValueSet vs) throws Exception {
-    vs.setCodeSystem(new ValueSetCodeSystemComponent());
-    vs.getCodeSystem().setSystem("http://hl7.org/fhir/data-types");
-    vs.getCodeSystem().setVersion(version);
-    vs.getCodeSystem().setCaseSensitive(true);    
+    vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/data-types");
+    vs.setUserData("filename", "valueset-"+vs.getId());
+    vs.setUserData("committee", "fhir");
+    vs.setUserData("path", "valueset-"+vs.getId()+".html");
+    
+    CodeSystem cs = new CodeSystem();
+    CodeSystemConvertor.populate(cs, vs);
+    cs.setUrl("http://hl7.org/fhir/data-types");
+    cs.setVersion(version);
+    cs.setCaseSensitive(true);
+    cs.setContent(CodeSystemContentMode.COMPLETE);
+    definitions.getCodeSystems().put(cs.getUrl(), cs);
 
     List<String> codes = new ArrayList<String>();
     for (TypeRef t : definitions.getKnownTypes())
@@ -72,7 +86,7 @@ public class ValueSetGenerator {
     Collections.sort(codes);
     for (String s : codes) {
       if (!definitions.dataTypeIsSharedInfo(s)) {
-        ConceptDefinitionComponent c = vs.getCodeSystem().addConcept();
+        ConceptDefinitionComponent c = cs.addConcept();
         c.setCode(s);
         c.setDisplay(s);
         if (definitions.getPrimitives().containsKey(s))
@@ -85,21 +99,30 @@ public class ValueSetGenerator {
           c.setDefinition("...to do...");
       }
     }
-    ToolingExtensions.addComment(vs.getCodeSystem().addConcept().setCode("xhtml").setDisplay("XHTML").setDefinition("XHTML format, as defined by W3C, but restricted usage (mainly, no active content)"), "Special case: xhtml can only be used in the narrative Data Type");
+    ToolingExtensions.addComment(cs.addConcept().setCode("xhtml").setDisplay("XHTML").setDefinition("XHTML format, as defined by W3C, but restricted usage (mainly, no active content)"), "Special case: xhtml can only be used in the narrative Data Type");
   }
 
   private void genResourceTypes(ValueSet vs) {
-    vs.setCodeSystem(new ValueSetCodeSystemComponent());
-    vs.getCodeSystem().setSystem("http://hl7.org/fhir/resource-types");
-    vs.getCodeSystem().setVersion(version);
-    vs.getCodeSystem().setCaseSensitive(true);    
+    vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/resource-types");
+    vs.setUserData("filename", "valueset-"+vs.getId());
+    vs.setUserData("committee", "fhir");
+    vs.setUserData("path", "valueset-"+vs.getId()+".html");
+    
+    CodeSystem cs = new CodeSystem();
+    CodeSystemConvertor.populate(cs, vs);
+    cs.setUrl("http://hl7.org/fhir/resource-types");
+    cs.setVersion(version);
+    cs.setCaseSensitive(true);    
+    cs.setContent(CodeSystemContentMode.COMPLETE);
+    definitions.getCodeSystems().put(cs.getUrl(), cs);
+        
     List<String> codes = new ArrayList<String>();
     codes.addAll(definitions.getKnownResources().keySet());
     codes.addAll(definitions.getBaseResources().keySet());
     Collections.sort(codes);
     for (String s : codes) {
       DefinedCode rd = definitions.getKnownResources().get(s);
-      ConceptDefinitionComponent c = vs.getCodeSystem().addConcept();
+      ConceptDefinitionComponent c = cs.addConcept();
       if (rd == null) {
         c.setCode(s);
         c.setDisplay(definitions.getBaseResources().get(s).getName());
@@ -113,23 +136,52 @@ public class ValueSetGenerator {
 
   }
 
-  private void genDefinedTypes(ValueSet vs) throws Exception {
+  private void genAbstractTypes(ValueSet vs) {
+    vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/abstract-types");
+    vs.setUserData("filename", "valueset-"+vs.getId());
+    vs.setUserData("committee", "fhir");
+    vs.setUserData("path", "valueset-"+vs.getId()+".html");
+    
+    CodeSystem cs = new CodeSystem();
+    CodeSystemConvertor.populate(cs, vs);
+    cs.setUrl("http://hl7.org/fhir/abstract-types");
+    cs.setVersion(version);
+    cs.setCaseSensitive(true);    
+    cs.setContent(CodeSystemContentMode.COMPLETE);
+    definitions.getCodeSystems().put(cs.getUrl(), cs);
+
+    cs.addConcept().setCode("Type").setDisplay("Type").setDefinition("A place holder that means any kind of data type");
+    cs.addConcept().setCode("Any").setDisplay("Any").setDefinition("A place holder that means any kind of resource");
+  }
+
+  private void genDefinedTypes(ValueSet vs, boolean doAbstract) throws Exception {
     ValueSetComposeComponent compose = new ValueSetComposeComponent(); 
     vs.setCompose(compose);
     compose.addInclude().setSystem("http://hl7.org/fhir/data-types");
     compose.addInclude().setSystem("http://hl7.org/fhir/resource-types");
+    if (doAbstract)
+      compose.addInclude().setSystem("http://hl7.org/fhir/abstract-types");
   }
 
   private void genMessageEvents(ValueSet vs) {
-    vs.setCodeSystem(new ValueSetCodeSystemComponent());
-    vs.getCodeSystem().setSystem("http://hl7.org/fhir/message-events");
-    vs.getCodeSystem().setVersion(version);
-    vs.getCodeSystem().setCaseSensitive(true);    
+    vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/message-events");
+    vs.setUserData("filename", "valueset-"+vs.getId());
+    vs.setUserData("committee", "fhir");
+    vs.setUserData("path", "valueset-"+vs.getId()+".html");
+    
+    CodeSystem cs = new CodeSystem();
+    CodeSystemConvertor.populate(cs, vs);
+    cs.setUrl("http://hl7.org/fhir/message-events");
+    cs.setVersion(version);
+    cs.setCaseSensitive(true);
+    cs.setContent(CodeSystemContentMode.COMPLETE);
+    definitions.getCodeSystems().put(cs.getUrl(), cs);
+
     List<String> codes = new ArrayList<String>();
     codes.addAll(definitions.getEvents().keySet());
     Collections.sort(codes);
     for (String s : codes) {
-      ConceptDefinitionComponent c = vs.getCodeSystem().addConcept();
+      ConceptDefinitionComponent c = cs.addConcept();
       EventDefn e = definitions.getEvents().get(s);
       c.setCode(s);
       c.setDisplay(e.getCode());
@@ -178,7 +230,7 @@ public class ValueSetGenerator {
   }
 
 
-  public static void loadOperationOutcomeValueSet(BindingSpecification cd, String folder) throws Exception {
+  public void loadOperationOutcomeValueSet(BindingSpecification cd, String folder) throws Exception {
     ValueSet vs = new ValueSet();
     cd.setValueSet(vs);
     cd.setBindingMethod(BindingMethod.ValueSet);
@@ -186,13 +238,19 @@ public class ValueSetGenerator {
     vs.setUrl("http://hl7.org/fhir/ValueSet/"+vs.getId());
     vs.setName("Operation Outcome Codes");
     vs.setPublisher("HL7 (FHIR Project)");
+    
+    vs.setUserData("filename", "valueset-"+vs.getId());
+    vs.setUserData("committee", "fhir");
+    vs.setUserData("path", "valueset-"+vs.getId()+".html");
+    
     ValueSetContactComponent c = vs.addContact();
     c.addTelecom().setSystem(ContactPointSystem.OTHER).setValue("http://hl7.org/fhir");
     c.addTelecom().setSystem(ContactPointSystem.EMAIL).setValue("fhir@lists.hl7.org");
     vs.setDescription("Operation Outcome codes used by FHIR test servers (see Implementation file translations.xml)");
     vs.setStatus(ConformanceResourceStatus.DRAFT);
-    vs.getCodeSystem().setSystem("http://hl7.org/fhir/operation-outcome");
-    vs.getCodeSystem().setCaseSensitive(true);
+    vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/operation-outcome");
+
+    CodeSystem cs = new CodeSystem();
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     factory.setNamespaceAware(false);
     DocumentBuilder builder = factory.newDocumentBuilder();
@@ -208,7 +266,7 @@ public class ValueSetGenerator {
           l = XMLUtil.getNextSibling(l);
         }
         if (langs.containsKey("en")) {
-          ConceptDefinitionComponent cv = vs.getCodeSystem().addConcept();
+          ConceptDefinitionComponent cv = cs.addConcept();
           cv.setCode(code);
           cv.setDisplay(langs.get("en"));
           for (String lang : langs.keySet()) {
@@ -223,6 +281,12 @@ public class ValueSetGenerator {
       }
       n = XMLUtil.getNextSibling(n);
     }
+    CodeSystemConvertor.populate(cs, vs);
+    cs.setUrl("http://hl7.org/fhir/operation-outcome");
+    cs.setVersion(version);
+    cs.setCaseSensitive(true);
+    cs.setContent(CodeSystemContentMode.COMPLETE);
+    definitions.getCodeSystems().put(cs.getUrl(), cs);
   }
 
 

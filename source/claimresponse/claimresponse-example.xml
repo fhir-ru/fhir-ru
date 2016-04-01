@@ -12,20 +12,26 @@
     <value value="R3500"/>
   </identifier>
 
-  <request>
+  <requestReference>
     <reference value="http://www.BenefitsInc.com/fhir/oralhealthclaim/15476332402"/>
-  </request>
+  </requestReference>
 
   <created value="2014-08-16"/>
 
-  <organization>
+<!-- 
+  <OrganizationReference>
     <reference value="Organization/2"/>
-  </organization>
+  </OrganizationReference>
+ -->
+  <organizationIdentifier>
+    <system value="http://www.jurisdiction.org/insurers"/>
+    <value value="555123"/>
+  </organizationIdentifier>
 
-  <requestOrganization>
+ <!-- <requestOrganizationReference>
     <reference value="Organization/1"/>
-  </requestOrganization>
-
+  </requestOrganizationReference>
+-->
   <outcome value="complete"/>
  
   <disposition value="Claim settled as per contract."/>
@@ -42,9 +48,9 @@
    <sequenceLinkId value="1"/> 
 
    <adjudication>
-     <code>
+     <category>
        <code value="eligible"/>
-	 </code>
+	 </category>
 	 <amount>
  	    <value value="135.57"/>
 		<system value="urn:iso:std:iso:4217"/>
@@ -53,9 +59,9 @@
    </adjudication>
 
    <adjudication>
-     <code>
+     <category>
        <code value="copay"/>
-	 </code>
+	 </category>
 	 <amount>
 	    <value value="10.00"/>
 		<system value="urn:iso:std:iso:4217"/>
@@ -64,16 +70,16 @@
    </adjudication>
 
    <adjudication>
-     <code>
+     <category>
        <code value="eligpercent"/>
-	 </code>
+	 </category>
 	 <value value="80.00"/>
    </adjudication>
 
    <adjudication>
-     <code>
+     <category>
        <code value="benefit"/>
-	 </code>
+	 </category>
 	 <amount>
   	    <value value="100.47"/>
 		<system value="urn:iso:std:iso:4217"/>

@@ -21,23 +21,24 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.hl7.fhir.dstu21.formats.JsonParser;
-import org.hl7.fhir.dstu21.formats.IParser.OutputStyle;
-import org.hl7.fhir.dstu21.model.OperationOutcome;
-import org.hl7.fhir.dstu21.model.Resource;
-import org.hl7.fhir.dstu21.model.ValueSet;
-import org.hl7.fhir.dstu21.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.dstu21.model.OperationOutcome.IssueType;
-import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionDesignationComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ConceptSetComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ValueSetComposeComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ValueSetExpansionComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ValueSetExpansionContainsComponent;
-import org.hl7.fhir.dstu21.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
-import org.hl7.fhir.dstu21.utils.IWorkerContext.ValidationResult;
-import org.hl7.fhir.dstu21.utils.client.EFhirClientException;
-import org.hl7.fhir.dstu21.utils.client.FHIRToolingClient;
+import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
+import org.hl7.fhir.dstu3.formats.JsonParser;
+import org.hl7.fhir.dstu3.model.CodeSystem;
+import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
+import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
+import org.hl7.fhir.dstu3.model.OperationOutcome;
+import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
+import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
+import org.hl7.fhir.dstu3.model.Resource;
+import org.hl7.fhir.dstu3.model.ValueSet;
+import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.dstu3.model.ValueSet.ValueSetComposeComponent;
+import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionComponent;
+import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionContainsComponent;
+import org.hl7.fhir.dstu3.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
+import org.hl7.fhir.dstu3.utils.IWorkerContext.ValidationResult;
+import org.hl7.fhir.dstu3.utils.client.EFhirClientException;
+import org.hl7.fhir.dstu3.utils.client.FHIRToolingClient;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
@@ -73,14 +74,14 @@ public class SpecificationTerminologyServices {
 
   private Map<String, Concept> snomedCodes = new HashMap<String, Concept>();
   private Map<String, Concept> loincCodes = new HashMap<String, Concept>();
-  private Map<String, ValueSet> codeSystems;
+  private Map<String, CodeSystem> codeSystems;
   private boolean triedServer = false;
   private boolean serverOk = false;
   private String cache;
   private String tsServer;
   private FHIRToolingClient client; 
   
-  public SpecificationTerminologyServices(String cache, String tsServer, Map<String, ValueSet> codeSystems) {
+  public SpecificationTerminologyServices(String cache, String tsServer, Map<String, CodeSystem> codeSystems) {
     super();
     this.cache = cache;
     this.tsServer = tsServer;
@@ -143,7 +144,7 @@ public class SpecificationTerminologyServices {
       triedServer = true;
       serverOk = false;
       HttpClient httpclient = new DefaultHttpClient();
-       HttpGet httpget = new HttpGet("http://fhir.healthintersections.com.au/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20"));
+       HttpGet httpget = new HttpGet("http://fhir2.healthintersections.com.au/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20"));
 //      HttpGet httpget = new HttpGet("http://localhost:960/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20")); // don't like the url encoded this way
       HttpResponse response = httpclient.execute(httpget);
       HttpEntity entity = response.getEntity();
@@ -210,38 +211,24 @@ public class SpecificationTerminologyServices {
     return new ValidationResult(new ConceptDefinitionComponent().setCode(code).setDisplay(lc.display));
   }
 
-  private ValidationResult verifyCode(ValueSet vs, String code, String display) throws Exception {
-    if (vs.hasExpansion() && !vs.hasCodeSystem()) {
-      ValueSetExpansionContainsComponent cc = findCode(vs.getExpansion().getContains(), code);
-      if (cc == null)
-        return new ValidationResult(IssueSeverity.ERROR, "Unknown Code "+code+" in "+vs.getCodeSystem().getSystem());
-      if (display == null)
-        return new ValidationResult(new ConceptDefinitionComponent().setCode(code).setDisplay(cc.getDisplay()));
-      if (cc.hasDisplay()) {
-        if (display.equalsIgnoreCase(cc.getDisplay()))
-          return new ValidationResult(new ConceptDefinitionComponent().setCode(code).setDisplay(cc.getDisplay()));
-        return new ValidationResult(IssueSeverity.ERROR, "Display Name for "+code+" must be '"+cc.getDisplay()+"'");
-      }
-      return null;
-    } else {
-      ConceptDefinitionComponent cc = findCodeInConcept(vs.getCodeSystem().getConcept(), code);
-      if (cc == null)
-        return new ValidationResult(IssueSeverity.ERROR, "Unknown Code "+code+" in "+vs.getCodeSystem().getSystem());
-      if (display == null)
+  private ValidationResult verifyCode(CodeSystem cs, String code, String display) throws Exception {
+    ConceptDefinitionComponent cc = findCodeInConcept(cs.getConcept(), code);
+    if (cc == null)
+      return new ValidationResult(IssueSeverity.ERROR, "Unknown Code "+code+" in "+cs.getUrl());
+    if (display == null)
+      return new ValidationResult(cc);
+    CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
+    if (cc.hasDisplay()) {
+      b.append(cc.getDisplay());
+      if (display.equalsIgnoreCase(cc.getDisplay()))
         return new ValidationResult(cc);
-      CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
-      if (cc.hasDisplay()) {
-        b.append(cc.getDisplay());
-        if (display.equalsIgnoreCase(cc.getDisplay()))
-          return new ValidationResult(cc);
-      }
-      for (ConceptDefinitionDesignationComponent ds : cc.getDesignation()) {
-        b.append(ds.getValue());
-        if (display.equalsIgnoreCase(ds.getValue()))
-          return new ValidationResult(cc);
-      }
-      return new ValidationResult(IssueSeverity.ERROR, "Display Name for "+code+" must be one of '"+b.toString()+"'");
     }
+    for (ConceptDefinitionDesignationComponent ds : cc.getDesignation()) {
+      b.append(ds.getValue());
+      if (display.equalsIgnoreCase(ds.getValue()))
+        return new ValidationResult(cc);
+    }
+    return new ValidationResult(IssueSeverity.ERROR, "Display Name for "+code+" must be one of '"+b.toString()+"'");
   }
 
   private ValueSetExpansionContainsComponent findCode(List<ValueSetExpansionContainsComponent> contains, String code) {
@@ -373,7 +360,6 @@ public class SpecificationTerminologyServices {
   private String determineCacheId(ValueSet vs) throws Exception {
     // just the content logical definition is hashed
     ValueSet vsid = new ValueSet();
-    vsid.setCodeSystem(vs.getCodeSystem());
     vsid.setCompose(vs.getCompose());
     vsid.setLockedDate(vs.getLockedDate());
     JsonParser parser = new JsonParser();

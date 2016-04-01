@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="consentdirective" />
   <text>
@@ -15,16 +15,17 @@
   </contact>
   <date value="2014-01-31" />
   <description value="Consent Directive" />
-  <fhirVersion value="1.1.0" />
+  <fhirVersion value="1.4.0" />
   <mapping>
     <identity value="v2" />
     <uri value="http://hl7.org/v2" />
     <name value="HL7 v2" />
   </mapping>
   <kind value="resource" />
-  <constrainedType value="Contract" />
   <abstract value="false" />
-  <base value="http://hl7.org/fhir/StructureDefinition/Contract" />
+  <baseType value="Contract" />
+  <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Contract" />
+    <derivation value="constraint"/>
   <snapshot>
     <element>
       <path value="Contract" />
@@ -281,8 +282,8 @@
     <element>
       <path value="Contract.subject" />
       <name value="ConsentDirective.subject" />
-      <short value="Subject of this Consent Directive" />
-      <definition value="Patient information and actions taken on that information that are governed by this Consent Directive." />
+      <short value="Patient who is the subject of this Privacy Consent Directive" />
+      <definition value="Patient information and actions taken on that information that are governed by this Privacy Consent Directive." />
       <min value="0" />
       <max value="*" />
       <base>
@@ -783,6 +784,7 @@
         <key value="qty-3" />
         <severity value="error" />
         <human value="If a code for the unit is present, the system SHALL also be present" />
+        <expression value="code.empty() or system"/>
         <xpath value="not(exists(f:code)) or exists(f:system)" />
       </constraint>
       <constraint>
@@ -792,6 +794,7 @@
         <key value="sqty-1" />
         <severity value="error" />
         <human value="The comparator is not used on a SimpleQuantity" />
+        <expression value="comparator.empty()"/>
         <xpath value="not(exists(f:comparator))" />
       </constraint>
       <isSummary value="true" />
@@ -828,6 +831,7 @@
         <key value="qty-3" />
         <severity value="error" />
         <human value="If a code for the unit is present, the system SHALL also be present" />
+        <expression value="code.empty() or system"/>
         <xpath value="not(exists(f:code)) or exists(f:system)" />
       </constraint>
       <constraint>
@@ -837,6 +841,7 @@
         <key value="mny-1" />
         <severity value="error" />
         <human value="There SHALL be a code if there is a value and it SHALL be an expression of currency.  If system is present, it SHALL be ISO 4217 (system = &quot;urn:iso:std:iso:4217&quot; - currency)." />
+        <expression value="(code or value.empty()) and (system.empty() or system = 'urn:iso:std:iso:4217')"/>
         <xpath value="(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='urn:iso:std:iso:4217')" />
       </constraint>
       <isSummary value="true" />
@@ -925,6 +930,7 @@
         <key value="qty-3" />
         <severity value="error" />
         <human value="If a code for the unit is present, the system SHALL also be present" />
+        <expression value="code.empty() or system"/>
         <xpath value="not(exists(f:code)) or exists(f:system)" />
       </constraint>
       <constraint>
@@ -934,6 +940,7 @@
         <key value="mny-1" />
         <severity value="error" />
         <human value="There SHALL be a code if there is a value and it SHALL be an expression of currency.  If system is present, it SHALL be ISO 4217 (system = &quot;urn:iso:std:iso:4217&quot; - currency)." />
+        <expression value="(code or value.empty()) and (system.empty() or system = 'urn:iso:std:iso:4217')"/>
         <xpath value="(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='urn:iso:std:iso:4217')" />
       </constraint>
       <isSummary value="true" />
@@ -1103,7 +1110,7 @@
         <code value="string" />
       </type>
     </element>
-    <element>
+    <element id="term">
       <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name">
         <valueString value="Term" />
       </extension>
@@ -1286,14 +1293,14 @@
       </binding>
     </element>
     <element>
-      <path value="Contract.term.subject" />
-      <name value="ConsentDirective.term.subject" />
-      <short value="Subject  of this Consent Directive Term" />
+      <path value="Contract.term.topic" />
+      <name value="ConsentDirective.term.topic" />
+      <short value="Topic of this Consent Directive Term" />
       <definition value="Who or what this Consent Directive Provision is about." />
       <min value="0" />
       <max value="1" />
       <base>
-        <path value="Contract.term.subject" />
+        <path value="Contract.term.topic" />
         <min value="0" />
         <max value="1" />
       </base>
@@ -1698,6 +1705,7 @@
         <key value="qty-3" />
         <severity value="error" />
         <human value="If a code for the unit is present, the system SHALL also be present" />
+        <expression value="code.empty() or system"/>
         <xpath value="not(exists(f:code)) or exists(f:system)" />
       </constraint>
       <constraint>
@@ -1707,6 +1715,7 @@
         <key value="sqty-1" />
         <severity value="error" />
         <human value="The comparator is not used on a SimpleQuantity" />
+        <expression value="comparator.empty()"/>
         <xpath value="not(exists(f:comparator))" />
       </constraint>
       <isSummary value="true" />
@@ -1743,6 +1752,7 @@
         <key value="qty-3" />
         <severity value="error" />
         <human value="If a code for the unit is present, the system SHALL also be present" />
+        <expression value="code.empty() or system"/>
         <xpath value="not(exists(f:code)) or exists(f:system)" />
       </constraint>
       <constraint>
@@ -1752,6 +1762,7 @@
         <key value="mny-1" />
         <severity value="error" />
         <human value="There SHALL be a code if there is a value and it SHALL be an expression of currency.  If system is present, it SHALL be ISO 4217 (system = &quot;urn:iso:std:iso:4217&quot; - currency)." />
+        <expression value="(code or value.empty()) and (system.empty() or system = 'urn:iso:std:iso:4217')"/>
         <xpath value="(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='urn:iso:std:iso:4217')" />
       </constraint>
       <isSummary value="true" />
@@ -1828,6 +1839,7 @@
         <key value="qty-3" />
         <severity value="error" />
         <human value="If a code for the unit is present, the system SHALL also be present" />
+        <expression value="code.empty() or system"/>
         <xpath value="not(exists(f:code)) or exists(f:system)" />
       </constraint>
       <constraint>
@@ -1837,6 +1849,7 @@
         <key value="mny-1" />
         <severity value="error" />
         <human value="There SHALL be a code if there is a value and it SHALL be an expression of currency.  If system is present, it SHALL be ISO 4217 (system = &quot;urn:iso:std:iso:4217&quot; - currency)." />
+        <expression value="(code or value.empty()) and (system.empty() or system = 'urn:iso:std:iso:4217')"/>
         <xpath value="(f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value='urn:iso:std:iso:4217')" />
       </constraint>
       <isSummary value="true" />
@@ -1861,7 +1874,7 @@
         <min value="0" />
         <max value="*" />
       </base>
-      <nameReference value="term" />
+      <contentReference value="#term" />
     </element>
     <element>
       <path value="Contract.binding[x]" />
@@ -2292,9 +2305,9 @@
       </mapping>
     </element>
     <element>
-      <path value="Contract.subject" />
-      <name value="ConsentDirective.subject" />
-      <short value="The Patient subject of this Consent Directive" />
+      <path value="Contract.topic" />
+      <name value="ConsentDirective.topic" />
+      <short value="The Patient is the topic of this Consent Directive" />
       <definition value="Patient information and actions taken on that information that are governed by this Consent Directive." />
       <min value="1" />
       <max value="1" />
@@ -2841,12 +2854,12 @@
       </binding>
     </element>
     <element>
-      <path value="Contract.term.subject" />
-      <name value="ConsentDirective.term.subject" />
-      <short value="Subject  of this Consent Directive Term" />
+      <path value="Contract.term.topic" />
+      <name value="ConsentDirective.term.topic" />
+      <short value="Topic of this Consent Directive Term" />
       <definition value="Who or what this Consent Directive Provision is about." />
       <min value="0" />
-      <max value="1" />
+      <max value="*" />
       <type>
         <code value="Reference" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Resource" />
@@ -3117,7 +3130,7 @@
       <definition value="Nested group of Consent Directive Provision." />
       <min value="0" />
       <max value="*" />
-      <nameReference value="ConsentDirective.term" />
+      <contentReference value="#term" />
     </element>
     <element>
       <path value="Contract.binding[x]" />

@@ -27,13 +27,13 @@
         <reference value="Practitioner/f007"/>
         <display value="Patrick Pump"/>
     </prescriber>
-    <reasonCodeableConcept>
+    <reasonCode>
         <coding>
             <system value="http://snomed.info/sct"/>
             <code value="65363002"/>
             <display value="Otitis Media"/>
         </coding>
-    </reasonCodeableConcept>
+    </reasonCode>
     <dosageInstruction>
         <text value="Take two capsules to start" />
         <additionalInstructions>
@@ -47,10 +47,10 @@
             <event value="2015-01-15"/>
             <repeat>
                 <duration value="1"/>
-                <durationUnits value="d"/>
+                <durationUnit value="d"/>
                 <frequency value="1"/>
                 <period value="1"/>
-                <periodUnits value="d"/>
+                <periodUnit value="d"/>
             </repeat>
         </timing>
         <siteCodeableConcept>
@@ -86,10 +86,10 @@
             <event value="2015-01-15"/>
             <repeat>
                 <duration value="11"/>
-                <durationUnits value="d"/>
+                <durationUnit value="d"/>
                 <frequency value="2"/>
                 <period value="1"/>
-                <periodUnits value="d"/>
+                <periodUnit value="d"/>
             </repeat>
         </timing>
         <siteCodeableConcept>

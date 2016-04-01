@@ -32,14 +32,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.generators.specification.ToolResourceUtilities;
-import org.hl7.fhir.dstu21.model.UriType;
-import org.hl7.fhir.dstu21.model.ValueSet;
-import org.hl7.fhir.dstu21.model.Enumerations.BindingStrength;
-import org.hl7.fhir.dstu21.model.Enumerations.ConformanceResourceStatus;
-import org.hl7.fhir.dstu21.model.ValueSet.ConceptDefinitionComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ConceptReferenceComponent;
-import org.hl7.fhir.dstu21.model.ValueSet.ConceptSetComponent;
-import org.hl7.fhir.dstu21.utils.ToolingExtensions;
+import org.hl7.fhir.dstu3.model.CodeSystem;
+import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
+import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
+import org.hl7.fhir.dstu3.model.Enumerations.ConformanceResourceStatus;
+import org.hl7.fhir.dstu3.model.UriType;
+import org.hl7.fhir.dstu3.model.ValueSet;
+import org.hl7.fhir.dstu3.model.ValueSet.ConceptReferenceComponent;
+import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
+import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 
 /**
  * A concept domain - a use of terminology in FHIR.
@@ -367,7 +369,7 @@ public class BindingSpecification {
     ToolResourceUtilities.updateUsage(valueSet, usageContext);
   }
 
-  public List<DefinedCode> getAllCodes(Map<String, ValueSet> codeSystems, Map<String, ValueSet> valueSets, boolean wantComplete) throws Exception {
+  public List<DefinedCode> getAllCodes(Map<String, CodeSystem> codeSystems, Map<String, ValueSet> valueSets, boolean wantComplete) throws Exception {
     if (allCodes == null || allCodes.size() == 0 || wantComplete) {
       allCodes = new ArrayList<DefinedCode>();
       if (valueSet != null) {
@@ -378,10 +380,7 @@ public class BindingSpecification {
     return allCodes;
   }
 
-  private void getAllCodesForValueSet(Map<String, ValueSet> codeSystems, Map<String, ValueSet> valueSets, boolean wantComplete, ValueSet vs) throws Exception {
-    if (vs.hasCodeSystem()) 
-      for (ConceptDefinitionComponent c : vs.getCodeSystem().getConcept())
-        processCode(c, vs.getCodeSystem().getSystem(), null);
+  private void getAllCodesForValueSet(Map<String, CodeSystem> codeSystems, Map<String, ValueSet> valueSets, boolean wantComplete, ValueSet vs) throws Exception {
     if (vs.hasCompose()) {
       for (UriType ci : vs.getCompose().getImport()) {
         if (valueSets != null) {
@@ -398,9 +397,9 @@ public class BindingSpecification {
           throw new Exception("Filters are not supported in this context (getting all codes for code generation");
         if (!cc.hasConcept()) {
           if (codeSystems != null) {
-            ValueSet vs1 = codeSystems.get(cc.getSystem());
-            if (vs1 != null) {
-              getAllCodesForValueSet(codeSystems, valueSets, wantComplete, vs1);
+            CodeSystem cs1 = codeSystems.get(cc.getSystem());
+            if (cs1 != null) {
+              getAllCodesForCodeSystem(cs1);
             } else if (wantComplete)
               throw new Exception("Unable to resolve code system "+cc.getSystem());
           } else if (wantComplete)
@@ -412,6 +411,11 @@ public class BindingSpecification {
     }
   }
 
+  private void getAllCodesForCodeSystem(CodeSystem cs) throws Exception {
+    for (ConceptDefinitionComponent c : cs.getConcept())
+      processCode(cs, c, cs.getUrl(), null);
+  }
+  
   private void processCode(ConceptReferenceComponent c, String system) {
     DefinedCode code = new DefinedCode();
     code.setCode(c.getCode());
@@ -420,7 +424,7 @@ public class BindingSpecification {
     allCodes.add(code);
   }
 
-  private void processCode(ConceptDefinitionComponent c, String system, String parent) {
+  private void processCode(CodeSystem cs, ConceptDefinitionComponent c, String system, String parent) {
     DefinedCode code = new DefinedCode();
     code.setCode(c.getCode());
     code.setDisplay(c.getDisplay());
@@ -428,15 +432,14 @@ public class BindingSpecification {
     code.setDefinition(c.getDefinition());
     code.setParent(parent);
     code.setSystem(system);
-    code.setAbstract(c.getAbstract());
+    code.setAbstract(CodeSystemUtilities.isAbstract(cs, c));
     allCodes.add(code);
     for (ConceptDefinitionComponent cc : c.getConcept())
-      processCode(cc, system, c.getCode());
+      processCode(cs, cc, system, c.getCode());
   }
 
   public boolean isShared() {
     return shared;
   }  
-  
-  
+    
 }

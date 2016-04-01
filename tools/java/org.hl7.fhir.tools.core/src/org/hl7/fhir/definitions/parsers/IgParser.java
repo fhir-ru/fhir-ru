@@ -2,6 +2,7 @@ package org.hl7.fhir.definitions.parsers;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -19,24 +20,27 @@ import org.hl7.fhir.definitions.model.LogicalModel;
 import org.hl7.fhir.definitions.model.MappingSpace;
 import org.hl7.fhir.definitions.model.Profile;
 import org.hl7.fhir.definitions.model.Profile.ConformancePackageSourceType;
-import org.hl7.fhir.dstu21.formats.XmlParser;
-import org.hl7.fhir.dstu21.model.DateTimeType;
-import org.hl7.fhir.dstu21.model.Extension;
-import org.hl7.fhir.dstu21.model.ImplementationGuide;
-import org.hl7.fhir.dstu21.model.Resource;
-import org.hl7.fhir.dstu21.model.StructureDefinition;
-import org.hl7.fhir.dstu21.model.UriType;
-import org.hl7.fhir.dstu21.model.ValueSet;
-import org.hl7.fhir.dstu21.model.ImplementationGuide.GuideDependencyType;
-import org.hl7.fhir.dstu21.model.ImplementationGuide.GuidePageKind;
-import org.hl7.fhir.dstu21.model.ImplementationGuide.GuideResourcePurpose;
-import org.hl7.fhir.dstu21.model.ImplementationGuide.ImplementationGuideDependencyComponent;
-import org.hl7.fhir.dstu21.model.ImplementationGuide.ImplementationGuidePackageComponent;
-import org.hl7.fhir.dstu21.model.ImplementationGuide.ImplementationGuidePackageResourceComponent;
-import org.hl7.fhir.dstu21.model.ImplementationGuide.ImplementationGuidePageComponent;
-import org.hl7.fhir.dstu21.utils.ToolingExtensions;
-import org.hl7.fhir.dstu21.utils.ProfileUtilities.ProfileKnowledgeProvider;
-import org.hl7.fhir.dstu21.validation.ValidationMessage;
+import org.hl7.fhir.dstu3.formats.XmlParser;
+import org.hl7.fhir.dstu3.model.CodeSystem;
+import org.hl7.fhir.dstu3.model.DateTimeType;
+import org.hl7.fhir.dstu3.model.Extension;
+import org.hl7.fhir.dstu3.model.ImplementationGuide;
+import org.hl7.fhir.dstu3.model.ImplementationGuide.GuideDependencyType;
+import org.hl7.fhir.dstu3.model.ImplementationGuide.GuidePageKind;
+import org.hl7.fhir.dstu3.model.ImplementationGuide.ImplementationGuideDependencyComponent;
+import org.hl7.fhir.dstu3.model.ImplementationGuide.ImplementationGuidePackageComponent;
+import org.hl7.fhir.dstu3.model.ImplementationGuide.ImplementationGuidePackageResourceComponent;
+import org.hl7.fhir.dstu3.model.ImplementationGuide.ImplementationGuidePageComponent;
+import org.hl7.fhir.dstu3.model.Resource;
+import org.hl7.fhir.dstu3.model.ResourceType;
+import org.hl7.fhir.dstu3.model.StructureDefinition;
+import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
+import org.hl7.fhir.dstu3.model.UriType;
+import org.hl7.fhir.dstu3.model.ValueSet;
+import org.hl7.fhir.dstu3.utils.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.dstu3.utils.ToolingExtensions;
+import org.hl7.fhir.dstu3.validation.ValidationMessage;
+import org.hl7.fhir.tools.converters.CodeSystemConvertor;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
@@ -54,9 +58,11 @@ public class IgParser {
   private Map<String, MappingSpace> mappings;
   private String committee;
   private Map<String, ConstraintStructure> profileIds;
+  private Map<String, CodeSystem> codeSystems;
+  private BindingNameRegistry registry;
 
 
-  public IgParser(Logger logger, BuildWorkerContext context, Calendar genDate, ProfileKnowledgeProvider pkp, Map<String, BindingSpecification> commonBindings, String committee, Map<String, MappingSpace> mappings, Map<String, ConstraintStructure> profileIds) {
+  public IgParser(Logger logger, BuildWorkerContext context, Calendar genDate, ProfileKnowledgeProvider pkp, Map<String, BindingSpecification> commonBindings, String committee, Map<String, MappingSpace> mappings, Map<String, ConstraintStructure> profileIds, Map<String, CodeSystem> codeSystems, BindingNameRegistry registry) {
     super();
     this.logger = logger;
     this.context = context;
@@ -66,6 +72,8 @@ public class IgParser {
     this.committee = committee;
     this.mappings = mappings;
     this.profileIds = profileIds;
+    this.codeSystems = codeSystems;
+    this.registry = registry;
   }
 
   public void load(String rootDir, ImplementationGuideDefn igd, List<ValidationMessage> issues, Set<String> loadedIgs) throws Exception {
@@ -101,6 +109,8 @@ public class IgParser {
     }
     processPage(ig.getPage(), igd);
 
+    List<Example> exr = new ArrayList<Example>();
+    
     for (ImplementationGuidePackageComponent p : ig.getPackage()) {
       if (!p.hasName())
         throw new Exception("no name on package in IG "+ig.getName());
@@ -109,31 +119,47 @@ public class IgParser {
       for (ImplementationGuidePackageResourceComponent r : p.getResource()) {
         if (!r.hasSource())
           throw new Exception("no source on resource in package "+p.getName()+" in IG "+ig.getName());
-        File fn = new File(Utilities.path(myRoot, r.getSourceUriType().getValue()));
+        CSFile fn = new CSFile(Utilities.path(myRoot, r.getSourceUriType().getValue()));
         if (!fn.exists())
           throw new Exception("Source "+r.getSourceUriType().getValue()+" resource in package "+p.getName()+" in IG "+ig.getName()+" could not be located @ "+fn.getAbsolutePath());
 
         String id = Utilities.changeFileExt(fn.getName(), "");
+        // we're going to try and load the resource directly.
+        // if that fails, then we'll treat it as an example.
+        boolean isExample = r.getExample();
+        ResourceType rt = null;
+        try {
+          rt = new XmlParser().parse(new FileInputStream(fn)).getResourceType();
+        } catch (Exception e) {
+          rt = null;
+          isExample = true;
+        }
         
-        if (r.getPurpose() == GuideResourcePurpose.EXAMPLE) {
+        if (isExample) {
           if (!r.hasName()) // which means that non conformance resources must be named
             throw new Exception("no name on resource in package "+p.getName()+" in IG "+ig.getName());
           Example example = new Example(r.getName(), id, r.getDescription(), fn, false, ExampleType.XmlFile, false);
           example.setIg(igd.getCode());
+          if (r.hasExampleFor()) {
+            example.setExampleFor(r.getExampleFor().getReference());
+            example.setRegistered(true);
+            exr.add(example);
+          }
           igd.getExamples().add(example);
           r.setUserData(ToolResourceUtilities.NAME_RES_EXAMPLE, example);
           r.setSource(new UriType(example.getId()+".html"));
-        } else if (r.getPurpose() == GuideResourcePurpose.TERMINOLOGY) {
+        } else if (rt == ResourceType.ValueSet) {
           ValueSet vs = (ValueSet) new XmlParser().parse(new FileInputStream(fn));
-//          if (id.contains(File.separator))
-            if (id.startsWith("valueset-"))
-              id = id.substring(9);
+          if (id.startsWith("valueset-"))
+            id = id.substring(9);
           vs.setId(id);
           vs.setUrl("http://hl7.org/fhir/ValueSet/"+id);
           vs.setUserData(ToolResourceUtilities.NAME_RES_IG, igd);
           vs.setUserData("path", igd.getPath()+"valueset-"+id+".html");
           vs.setUserData("filename", "valueset-"+id);
           vs.setUserData("committee", committee);
+          new CodeSystemConvertor(codeSystems).convert(new XmlParser(), vs, fn.getAbsolutePath());
+//          if (id.contains(File.separator))
           igd.getValueSets().add(vs);
           if (!r.hasName())
             r.setName(vs.getName());
@@ -141,35 +167,39 @@ public class IgParser {
             r.setDescription(vs.getDescription());
           r.setUserData(ToolResourceUtilities.RES_ACTUAL_RESOURCE, vs);
           r.setSource(new UriType(fn.getName()));
-        } else if (r.getPurpose() == GuideResourcePurpose.PROFILE) {
-          Profile pr = new Profile(igd.getCode());
-          pr.setSource(fn.getAbsolutePath());
-          StructureDefinition sd = (StructureDefinition) new XmlParser().parse(new CSFileInputStream(pr.getSource()));
-          if (!sd.hasId())
+        } else if (rt == ResourceType.StructureDefinition) {
+          StructureDefinition sd;
+          sd = (StructureDefinition) new XmlParser().parse(new CSFileInputStream(fn));
+          if (sd.getKind() == StructureDefinitionKind.LOGICAL) {
+            fn = new CSFile(Utilities.path(myRoot, r.getSourceUriType().asStringValue()));
+            LogicalModel lm = new LogicalModel(sd);
+            lm.setSource(fn.getAbsolutePath());
+            lm.setId(sd.getId());
+            igd.getLogicalModels().add(lm);        
+            
+          } else if ("extension".equals(sd.getBaseType())) {
             sd.setId(tail(sd.getUrl()));
-          pr.forceMetadata("id", sd.getId()+"-profile");
-          pr.setSourceType(ConformancePackageSourceType.SturctureDefinition);
-          ConstraintStructure cs = new ConstraintStructure(sd, igd);
-          pr.getProfiles().add(cs);
-          igd.getProfiles().add(pr);
-        } else if (r.getPurpose() == GuideResourcePurpose.EXTENSION) {
-          StructureDefinition sd = (StructureDefinition) new XmlParser().parse(new CSFileInputStream(fn.getAbsolutePath()));
-          sd.setId(tail(sd.getUrl()));
-          sd.setUserData(ToolResourceUtilities.NAME_RES_IG, igd.getCode());
-          ToolResourceUtilities.updateUsage(sd, igd.getCode());
-          this.context.seeExtensionDefinition("http://hl7.org/fhir", sd);
-        } else if (r.getPurpose() == GuideResourcePurpose.LOGICAL) {
-          fn = new CSFile(Utilities.path(myRoot, r.getSourceUriType().asStringValue()));
-          StructureDefinition sd = (StructureDefinition) new XmlParser().parse(new FileInputStream(fn));
-          LogicalModel lm = new LogicalModel(sd);
-          lm.setSource(fn.getAbsolutePath());
-          lm.setId(sd.getId());
-          igd.getLogicalModels().add(lm);        
-        } else if (r.getPurpose() == GuideResourcePurpose.DICTIONARY) {
+            sd.setUserData(ToolResourceUtilities.NAME_RES_IG, igd.getCode());
+            ToolResourceUtilities.updateUsage(sd, igd.getCode());
+            this.context.seeExtensionDefinition("http://hl7.org/fhir", sd);            
+          } else {
+            Profile pr = new Profile(igd.getCode());
+            pr.setSource(fn.getAbsolutePath());
+            pr.setTitle(sd.getName());
+            if (!sd.hasId())
+              sd.setId(tail(sd.getUrl()));
+            sd.setUrl("http://hl7.org/fhir/StructureDefinition/"+sd.getId());
+            pr.forceMetadata("id", sd.getId()+"-profile");
+            pr.setSourceType(ConformancePackageSourceType.SturctureDefinition);
+            ConstraintStructure cs = new ConstraintStructure(sd, igd);
+            pr.getProfiles().add(cs);
+            igd.getProfiles().add(pr);
+          }
+        } else if (rt == ResourceType.Bundle) {
           Dictionary d = new Dictionary(id, r.getName(), igd.getCode(), fn.getAbsolutePath(), igd);
           igd.getDictionaries().add(d);
         } else 
-          throw new Error("Not implemented yet - purpose = "+r.getPurpose().toCode());
+          throw new Error("Not implemented yet - type = "+rt.toString());
 
 
         //        if (r.hasExampleFor()) {
@@ -190,7 +220,7 @@ public class IgParser {
           pr.setSource(fn.getAbsolutePath());
           pr.setSourceType(ConformancePackageSourceType.Spreadsheet);
           SpreadsheetParser sparser = new SpreadsheetParser(pr.getCategory(), new CSFileInputStream(pr.getSource()), Utilities.noString(pr.getId()) ? pr.getSource() : pr.getId(), igd, 
-                rootDir, logger, null, context.getVersion(), context, genDate, false, igd.getExtensions(), pkp, false, committee, mappings, profileIds);
+                rootDir, logger, registry, context.getVersion(), context, genDate, false, igd.getExtensions(), pkp, false, committee, mappings, profileIds, codeSystems);
           sparser.getBindings().putAll(commonBindings);
           sparser.setFolder(Utilities.getDirectoryForFile(pr.getSource()));
           sparser.parseConformancePackage(pr, null, Utilities.getDirectoryForFile(pr.getSource()), pr.getCategory(), issues);
@@ -207,12 +237,12 @@ public class IgParser {
           }
           // now, register resources for all the things in the spreadsheet
           for (ValueSet vs : sparser.getValuesets()) 
-            p.addResource().setPurpose(GuideResourcePurpose.TERMINOLOGY).setName(vs.getName()).setDescription(vs.getDescription()).setSource(new UriType("valueset-"+vs.getId()+".html")).setUserData(ToolResourceUtilities.RES_ACTUAL_RESOURCE, vs);
+            p.addResource().setExample(false).setName(vs.getName()).setDescription(vs.getDescription()).setSource(new UriType("valueset-"+vs.getId()+".html")).setUserData(ToolResourceUtilities.RES_ACTUAL_RESOURCE, vs);
           for (StructureDefinition exd : pr.getExtensions()) 
-            p.addResource().setPurpose(GuideResourcePurpose.EXTENSION).setName(exd.getName()).setDescription(exd.getDescription()).setSource(new UriType("extension-"+exd.getId().toLowerCase()+".html")).setUserData(ToolResourceUtilities.RES_ACTUAL_RESOURCE, exd);
+            p.addResource().setExample(false).setName(exd.getName()).setDescription(exd.getDescription()).setSource(new UriType("extension-"+exd.getId().toLowerCase()+".html")).setUserData(ToolResourceUtilities.RES_ACTUAL_RESOURCE, exd);
           for (ConstraintStructure cs : pr.getProfiles()) {
             cs.setResourceInfo(p.addResource());
-            cs.getResourceInfo().setPurpose(GuideResourcePurpose.PROFILE).setName(cs.getDefn().getName()).setDescription(cs.getDefn().getDefinition()).setSource(new UriType(cs.getId().toLowerCase()+".html"));
+            cs.getResourceInfo().setExample(false).setName(cs.getDefn().getName()).setDescription(cs.getDefn().getDefinition()).setSource(new UriType(cs.getId().toLowerCase()+".html"));
           }
         }
         if (ex.getUrl().equals(ToolResourceUtilities.EXT_LOGICAL_SPREADSHEET)) {
@@ -222,7 +252,7 @@ public class IgParser {
           if (s.endsWith("-spreadsheet.xml"))
             s = s.substring(0, s.length()-16);
           String id = igd.getCode()+"-"+s;
-          SpreadsheetParser sparser = new SpreadsheetParser(igd.getCode(), new CSFileInputStream(fn), id, igd, rootDir, logger, null, context.getVersion(), context, genDate, false, igd.getExtensions(), pkp, false, committee, mappings, profileIds);
+          SpreadsheetParser sparser = new SpreadsheetParser(igd.getCode(), new CSFileInputStream(fn), id, igd, rootDir, logger, registry, context.getVersion(), context, genDate, false, igd.getExtensions(), pkp, false, committee, mappings, profileIds, codeSystems);
           sparser.getBindings().putAll(commonBindings);
           sparser.setFolder(Utilities.getDirectoryForFile(fn.getAbsolutePath()));
           LogicalModel lm = sparser.parseLogicalModel();
@@ -234,6 +264,24 @@ public class IgParser {
       }
       ToolingExtensions.removeExtension(p, ToolResourceUtilities.EXT_PROFILE_SPREADSHEET);
       ToolingExtensions.removeExtension(p, ToolResourceUtilities.EXT_LOGICAL_SPREADSHEET);
+    }
+    for (Example ex : exr) {
+      Profile tp = null;
+      for (Profile pr : igd.getProfiles()) {
+        if (("StructureDefinition/"+pr.getId()).equals(ex.getExampleFor())) {
+          tp = pr;
+          break;
+        } else for (ConstraintStructure cc : pr.getProfiles()) {
+          if (("StructureDefinition/"+cc.getId()).equals(ex.getExampleFor())) {
+            tp = pr;
+            break;
+          }
+        }
+      }
+      if (tp != null)
+        tp.getExamples().add(ex);
+      else
+        throw new Exception("no profile found matching exampleFor = "+ex.getExampleFor());
     }
     igd.numberPages();
     
