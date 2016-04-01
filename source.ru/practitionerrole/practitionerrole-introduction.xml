@@ -1,0 +1,40 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+<a name="scope"> </a>
+<h2>Scope and Usage</h2>
+<p>
+PractitionerRole covers the recording of the location and types of services that Practitioners are able to provide
+for an organization.
+</p>
+<p>
+The role, specialty, Location telecom and HealthcareService properties can be repeated if required in other instances
+of the PractitionerRole. Some systems record a collection of service values for a single location, others record the 
+single service and the list of locations it is available. Both are acceptable options for prepresenting this data.
+</p>
+</div>
+
+<div>
+<a name="bnr"> </a>
+<h2>Boundaries and Relationships</h2>
+<p>
+The PractitionerRole BackboneElement on the Practitioner is to be deprecated if this resource is accepted.
+</p>
+<p>
+	The Qualifications are not a part of the PractitionerRole, as they may be appropriate for the role,
+    however they are a property of the Practitioner, not the role they may perform for an Organization.
+</p>
+</div>
+
+<div>
+<a name="bnc"> </a>
+<h2>Background and Context</h2>
+<p>
+Practitioner performs different roles within the same or even different organizations. Depending on jurisdiction and custom, 
+it may be necessary to maintain a specific Practitioner Resource for each such role or have a single Practitioner with multiple roles.
+The role can be limited to a specific period, after which authorization for this role ends. Note that the represented organization
+need not necessarily be the (direct) employer of a Practitioner.
+</p>
+</div>
+
+</div>

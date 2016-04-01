@@ -1,0 +1,191 @@
+﻿
+=== Sheet Bindings =====================================
+
+ -- Row 1 -----------------------------------
+  Binding Name = EndpointStatus
+  Binding = code list
+  Reference = #endpoint-status
+  Definition = The status of the encounter.
+  Conformance = required
+
+ -- Row 2 -----------------------------------
+  Binding Name = SubscriptionChannelType
+  Binding = value set
+  Reference = http://hl7.org/fhir/ValueSet/subscription-channel-type
+  Definition = The type of the subscription.
+  Conformance = required
+
+=== Sheet endpoint-status =====================================
+
+ -- Row 1 -----------------------------------
+  Id = 1
+  Code = active
+  Display = Active
+  Definition = This endpoint is expected to be active and can be used
+
+ -- Row 2 -----------------------------------
+  Id = 2
+  Code = suspended
+  Display = Suspended
+  Definition = This endpoint is temporarily unavailable
+
+ -- Row 3 -----------------------------------
+  Id = 3
+  Code = error
+  Display = Error
+  Definition = This endpoint has exceeded connectivity thresholds and is considered in an error state and should no longer be attempted to connect to until corrective action is taken
+
+ -- Row 4 -----------------------------------
+  Id = 4
+  Code = off
+  Display = Off
+  Definition = This endpoint is no longer to be used
+
+=== Sheet Invariants =====================================
+
+=== Sheet Data Elements =====================================
+
+ -- Row 1 -----------------------------------
+  Element = Endpoint
+  UML = 200;0
+  Type = DomainResource
+  Short Label = The technical details of an endpoint that can be used for electronic services
+  Definition = The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.
+
+ -- Row 2 -----------------------------------
+  Element = Endpoint.status
+  Card. = 1..1
+  Is Modifier = Y
+  Summary = Y
+  Type = code
+  Binding = EndpointStatus
+  Short Label = active | suspended | inactive
+  Definition = active | suspended | inactive
+  w5 = status
+
+ -- Row 3 -----------------------------------
+  Element = Endpoint.managingOrganization
+  Card. = 0..1
+  Summary = Y
+  Type = Reference(Organization)
+  Short Label = Organization that exposes the endpoint
+  Definition = The organization that exposes the endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data)
+  Committee Notes = This was left as 0..1 to permit small systems having an implied Organization
+
+ -- Row 4 -----------------------------------
+  Element = Endpoint.contact
+  Card. = 0..*
+  Type = ContactPoint
+  Short Label = Contact details for source (e.g. troubleshooting)
+  Definition = Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting
+  w5 = who.focus
+
+ -- Row 5 -----------------------------------
+  Element = Endpoint.connectionType
+  Card. = 1..1
+  Summary = Y
+  Type = code
+  Binding = SubscriptionChannelType
+  Short Label = rest-hook | websocket | email | sms | message
+  Definition = The type of channel to send notifications on
+  w5 = class
+
+ -- Row 6 -----------------------------------
+  Element = Endpoint.method
+  Card. = 0..*
+  Summary = Y
+  Type = code
+  Short Label = POST | PUT | GET
+  Definition = POST | PUT | GET
+  Comments = This is the HTTP method that must be used when using the connection
+  To Do = Should this be single, or multiple cardinality?
+
+ -- Row 7 -----------------------------------
+  Element = Endpoint.period
+  Card. = 0..1
+  Summary = Y
+  Type = Period
+  Short Label = Interval during responsibility is assumed
+  Definition = The interval during which the managing organization assumes the defined responsibility
+  w5 = when.init
+
+ -- Row 8 -----------------------------------
+  Element = Endpoint.address[x]
+  Card. = 0..1
+  Summary = y
+  Type = uri|string
+  Short Label = Where the channel points to
+  Definition = The uri that describes the actual end-point to send messages to
+  Comments = For rest-hook, and websocket, the end-point must be an http: or https: URL; for email, a mailto: url, for sms, a tel: url, and for message the endpoint can be in any form of url the server understands (usually, http: or mllp:). The URI is allowed to be relative; in which case, it is relative to the server end-point (since their may be more than one, clients should avoid using relative URIs)
+
+ -- Row 9 -----------------------------------
+  Element = Endpoint.payloadFormat
+  Card. = 1..1
+  Type = string
+  Short Label = Mimetype to send, or blank for no payload
+  Definition = The mime type to send the payload in - either application/xml+fhir, or application/json+fhir. If the mime type is blank, then there is no payload in the notification, just a notification
+  Comments = Sending the payload has obvious security consequences. The server is responsible for ensuring that the content is appropriately secured
+  To Do = Should this have multiple cardinality?
+
+ -- Row 10 -----------------------------------
+  Element = Endpoint.payloadType
+  Card. = 1..*
+  Summary = Y
+  Type = CodeableConcept
+  Short Label = The type of content that may be used at this endpoint (e.g. XDS Discharge summaries)
+  Definition = The payload type describes the acceptable content that can be communicated on the endpoint
+  Comments = The payloadFormat describes the wire format of the data, where the payloadType indicates the specific document/schema that is being transferred. E.g. DischargeSummary or CarePlan
+
+ -- Row 11 -----------------------------------
+  Element = !Endpoint.payloadSubType
+  Card. = 0..*
+  Summary = Y
+  Type = CodeableConcept
+  Short Label = The subtypes of content that can be used on this endpoint (e.g. DischargeSummary)
+
+ -- Row 12 -----------------------------------
+  Element = Endpoint.header
+  Card. = 0..*
+  Type = string
+  Short Label = Usage depends on the channel type
+  Definition = Additional headers / information to send as part of the notification
+  Comments = Exactly what these mean depend on the channel type. The can convey additional information to the recipient and/or meet security requirements
+
+ -- Row 13 -----------------------------------
+  Element = Endpoint.publicKey
+  Card. = 0..1
+  Type = string
+  Short Label = PKI Public keys to support secure communications
+  Definition = The public part of the \'keys\' allocated to an Organization by an accredited body to support secure exchange of data over the internet. To be provided by the Organization, where available
+
+=== Sheet Search =====================================
+
+ -- Row 1 -----------------------------------
+  Name = status
+  Type = token
+  Description = The current status of the Endpoint (usually expected to be active)
+  Path = Endpoint.status
+
+ -- Row 2 -----------------------------------
+  Name = organization
+  Type = reference
+  Description = The organization that is exposing the endpoint
+  Path = Endpoint.managingOrganization
+  Target Types = Organization
+
+ -- Row 3 -----------------------------------
+  Name = payload-type
+  Type = token
+  Path = Endpoint.payloadType
+
+=== Sheet Profiles =====================================
+
+=== Sheet Examples =====================================
+
+ -- Row 1 -----------------------------------
+  Name = example
+  Identity = example
+  Description = Episode Endpoint
+  Filename = endpoint-example.xml
+
+=== Sheet Examples =====================================
