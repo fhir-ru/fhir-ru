@@ -176,7 +176,7 @@
   Context = Bundle
   English = FullUrl must be unique in a bundle, or else entries with the same fullUrl must have different meta.versionId
   XPath = count(for $entry in f:entry[f:resource] return $entry[count(parent::f:Bundle/f:entry[f:fullUrl/@value=$entry/f:fullUrl/@value and ((not(f:resource/*/f:meta/f:versionId/@value) and not($entry/f:resource/*/f:meta/f:versionId/@value)) or f:resource/*/f:meta/f:versionId/@value=$entry/f:resource/*/f:meta/f:versionId/@value)])!=1])=0
-  Expression = entry.where(fullUrl).distinct(fullUrl,resource.meta.versionId)
+  Expression = entry.where(fullUrl).select(fullUrl+resource.meta.versionId).distinct()
   Severity = error
 
 === Sheet Data Elements =====================================
@@ -249,7 +249,7 @@
   Card. = 0..1
   Type = uri
   Short Label = Absolute URL for resource (server address, or UUID/OID)
-  Definition = The Absolute URL for the resource. This must be provided for all resources. The fullUrl SHALL not disagree with the id in the resource. The fullUrl is a version independent reference to the resource
+  Definition = The Absolute URL for the resource.  The fullUrl SHALL not disagree with the id in the resource. The fullUrl is a version independent reference to the resource. The fullUrl element SHALL have a value except that: \n* fullUrl can be empty on a POST (although it does not need to when specifying a temporary id for reference in the bundle)\n* Results from operations might involve resources that are not identified.
   Comments = fullUrl may not be [unique in the context of a resource](bundle.html#bundle-unique). Note that since [FHIR resources do not need to be served through the FHIR API](references.html), the absolute URL may not end with the logical id of the resource (Resource.id), but if the fullUrl does look like a RESTful server URL (e.g. meets the [regex](references.html#regex), then it SHALL end with the Resource.id
 
  -- Row 10 -----------------------------------
@@ -298,7 +298,7 @@
   Type = code
   Binding = HTTPVerb
   Short Label = GET | POST | PUT | DELETE
-  Definition = The HTTP verb for this entry in either a update history, or a transaction/ transaction response
+  Definition = The HTTP verb for this entry in either a change history, or a transaction/ transaction response
 
  -- Row 16 -----------------------------------
   Element = Bundle.entry.request.url
@@ -348,8 +348,8 @@
   Element = Bundle.entry.response.status
   Card. = 1..1
   Type = string
-  Short Label = Status return code for entry
-  Definition = The status code returned by processing this entry
+  Short Label = Status response code (text optional)
+  Definition = The status code returned by processing this entry. The status SHALL start with a 3 digit HTTP code (e.g. 404) and may contain the standard HTTP description associated with the status code
 
  -- Row 23 -----------------------------------
   Element = Bundle.entry.response.location

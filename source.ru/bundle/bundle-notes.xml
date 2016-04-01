@@ -86,28 +86,28 @@ information: -->
 <h4>Тип History<!-- History --></h4>
 
 <p>
-История обновления (type = "history") состоит из серии из 0 или более записей. Каждый элемент entry ДОЛЖЕН содержать элемент request, описывающий изменение, которое было сделано, и, если метод POST или PUT, ресурс, который представляет состояние ресурса по завершении операции. Дополнительную информацию см. в <a href="http.html#history">History</a>.
-<!-- An update history (type = "history") consists of a series of 
+История изменении (type = "history") состоит из серии из 0 или более записей. Каждый элемент entry ДОЛЖЕН содержать элемент request, описывающий изменение, которое было сделано, и, если метод POST или PUT, ресурс, который представляет состояние ресурса по завершении операции. Дополнительную информацию см. в <a href="http.html#history">History</a>.
+<!-- An change history (type = "history") consists of a series of 
 0 or more entries. Each entry element SHALL contain a request element that describes the change
 that was made, and, if the method is a POST or PUT, a resource that represents the state of the 
 resource at the conclusion of the operation. 
 See <a href="http.html#history">History</a> for further information. -->
 </p>
 <p>
-Дополнительно можно использовать <a href="bundle-definitions.html#Bundle.total">Bundle.total</a> для возвращения общего количества ресурсов, которые были включены в историю обновления, и которые можно просмотреть, следуя по <a href="bundle-definitions.html#Bundle.link">ссылке</a> "next".
+Дополнительно можно использовать <a href="bundle-definitions.html#Bundle.total">Bundle.total</a> для возвращения общего количества ресурсов, которые были включены в историю изменений, и которые можно просмотреть, следуя по <a href="bundle-definitions.html#Bundle.link">ссылке</a> "next".
 <!-- In addition, <a href="bundle-definitions.html#Bundle.total">Bundle.total</a> may be 
-used to return the total number of resources that are included in the update history, 
+used to return the total number of resources that are included in the change history, 
 and that may be returned by following the "next" <a href="bundle-definitions.html#Bundle.link">link</a>. -->
 </p>
 
 <p>Пример to do<!-- Example to do --></p>
 
 <a name="transaction"> </a>
-<h4>Тип Transaction<!-- Transaction --></h4>
+<h4>Типы Transaction и Batch<!-- Transaction / Batch --></h4>
 
 <p>
-Транзакция (type = "transaction") состоит из серии 0 или более записей. Каждый элемент entry ДОЛЖЕН содержать либо элемент request, либо элемент resource (либо оба). Дополнительную информацию можно посмотреть в разделе <a href="http.html#transaction">Transactions</a>Каждая запись (entry) в транзакции содержит детали HTTP-операции, сообщающие системе, обрабатывающей эту транзакцию, что делать с этой записью. Если в записи указан метод 'PUT' или 'POST', тогда entry ДОЛЖНА содержать ресурс, который будет телом HTTP-операции.
-<!-- A transaction (type = "transaction") consists of a series of 0 or more entries. Each entry element 
+Транзакция (type = "transaction") или пакет (type = "batch") состоит из серии, содержащей 0 или более записей. Каждый элемент entry ДОЛЖЕН содержать либо элемент request, либо элемент resource (либо оба). Дополнительную информацию можно посмотреть в разделе <a href="http.html#transaction">Transactions</a>Каждая запись (entry) в транзакции содержит детали HTTP-операции, сообщающие системе, обрабатывающей эту транзакцию, что делать с этой записью. Если в записи указан метод 'PUT' или 'POST', тогда entry ДОЛЖНА содержать ресурс, который будет телом HTTP-операции.
+<!-- A transaction (type = "transaction") or batch (type = "batch") consists of a series of 0 or more entries. Each entry element 
 SHALL contain either a request element, or a resource element (or both). See <a href="http.html#transaction">Transactions</a> 
 for further information. Each entry in a transaction has the details of an HTTP operation that informs the system 
 processing the transaction what to do with the entry. If the entry method is a 'PUT' or 
@@ -122,12 +122,12 @@ infer whether this is a create or an update from the resource identity supplied.
 <p><a href="bundle-transaction.html">Пример</a></p>
 
 <a name="transaction-response"> </a>
-<h4>Тип Transaction Response<!-- Transaction Response --></h4>
+<h4>Ответ транзакции/пакета<!-- Transaction/batch Response --></h4>
 
 <p>
-Ответ транзакции (type = "transaction-response") состоит из серии из 0 или более записей, по 1 записи на каждую запись в транзакции, к которой относится этот ответ. Каждый элемент entry ДОЛЖЕН содержать элемент <code>response</code> с результатом выполнения HTTP-операции, выполненной сервером для этой записи.
-<!-- A transaction response (type = "transaction-response") consists of a series of 
-0 or more entries, 1 for each entry in the transaction it is in response to. 
+Ответ транзакции (type = "transaction-response") или ответ пакета (type="batch-response") состоит из серии, содержащей 0 или более записей, по 1 записи на каждую запись в транзакции или пакете, к которой относится этот ответ. Каждый элемент entry ДОЛЖЕН содержать элемент <code>response</code> с результатом выполнения HTTP-операции, выполненной сервером для этой записи.
+<!-- A transaction response (type = "transaction-response") or batch response (type="batch-response") 
+consists of a series of 0 or more entries, 1 for each entry in the transaction or batch it is in response to. 
 Each entry element SHALL contain a <code>response</code> element which indicates 
 the outcome of the HTTP operation that the server performed for the entry. --> 
 </p>

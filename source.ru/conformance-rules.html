@@ -73,7 +73,7 @@ two ways:
  <li>FHIR-like solutions (based on FHIR, but not conformant) may set expectations by trading partners which are not met due to the non-conformance of the system and these un-met expectations may also result in risk</li>
 </ul> 
 
-<a name="cardinality"> </a>
+<a name="baseconf"> </a>
 <h3>Base Conformance Rules</h3>
 <p>
 The contents of a resource and the formats used to represent resources SHALL
@@ -223,10 +223,11 @@ and there are <a href="extensibility.html#modifierExtension">additional rules ab
 <a name="mustSupport"> </a>
 <h3>Must-Support</h3>
 <p>
-Маркировка элемента Must-Support означает, что реализации, создающие или использующие ресурсы, ДОЛЖНЫ предоставлять "поддержку" этого элемента каким-либо значимым способом. Что именно это означает, невозможно описать или объяснить в рамках этой спецификации FHIR.
+Отметка на элементе "Обязателен к поддержке" означает, что реализации, создающие или использующие ресурсы, ДОЛЖНЫ предоставлять "поддержку" этого элемента некоторым значимым способом. Поскольку базовая спецификация FHIR должна быть независимой от какого бы то ни было контекста конкретной реализации, в рамках базовой спецификации нет элементов с флагом "Обязателен к поддержке". Этот флаг предназначен для использования в профилях, имеющих определённый контекст реализации.
 <!-- Labeling an element Must-Support means that implementations that produce or consume resources SHALL 
-provide "support" for the element in some meaningful way. Exactly what this means is impossible
-to describe or clarify as part of the FHIR specification. -->
+provide "support" for the element in some meaningful way. Because the base FHIR specification is intended
+to be independent of any particular implementation context, no elements are flagged as "must-support" as 
+part of the base specification. This flag is intended for use in profiles that have a defined implementation context. -->
 </p>
 <p>
 По этой причине спецификация сама никогда не помечает элементы как must-support. 

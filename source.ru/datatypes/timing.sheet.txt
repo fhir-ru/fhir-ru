@@ -26,12 +26,12 @@
  -- Row 1 -----------------------------------
   System = http://hl7.org/fhir/v3/TimingEvent
   Code = HS
-  Definition = event occurs [duration] before the hour of sleep (or trying to)
+  Definition = event occurs [offset] before the hour of sleep (or trying to)
 
  -- Row 2 -----------------------------------
   System = http://hl7.org/fhir/v3/TimingEvent
   Code = WAKE
-  Definition = event occurs [duration] after waking
+  Definition = event occurs [offset] after waking
 
  -- Row 3 -----------------------------------
   System = http://hl7.org/fhir/v3/TimingEvent
@@ -56,42 +56,42 @@
  -- Row 7 -----------------------------------
   System = http://hl7.org/fhir/v3/TimingEvent
   Code = AC
-  Definition = event occurs [duration] before a meal (from the Latin ante cibus)
+  Definition = event occurs [offset] before a meal (from the Latin ante cibus)
 
  -- Row 8 -----------------------------------
   System = http://hl7.org/fhir/v3/TimingEvent
   Code = ACM
-  Definition = event occurs [duration] before breakfast (from the Latin ante cibus matutinus)
+  Definition = event occurs [offset] before breakfast (from the Latin ante cibus matutinus)
 
  -- Row 9 -----------------------------------
   System = http://hl7.org/fhir/v3/TimingEvent
   Code = ACD
-  Definition = event occurs [duration] before lunch (from the Latin ante cibus diurnus)
+  Definition = event occurs [offset] before lunch (from the Latin ante cibus diurnus)
 
  -- Row 10 -----------------------------------
   System = http://hl7.org/fhir/v3/TimingEvent
   Code = ACV
-  Definition = event occurs [duration] before dinner (from the Latin ante cibus vespertinus)
+  Definition = event occurs [offset] before dinner (from the Latin ante cibus vespertinus)
 
  -- Row 11 -----------------------------------
   System = http://hl7.org/fhir/v3/TimingEvent
   Code = PC
-  Definition = event occurs [duration] after a meal (from the Latin post cibus)
+  Definition = event occurs [offset] after a meal (from the Latin post cibus)
 
  -- Row 12 -----------------------------------
   System = http://hl7.org/fhir/v3/TimingEvent
   Code = PCM
-  Definition = event occurs [duration] after breakfast (from the Latin post cibus matutinus)
+  Definition = event occurs [offset] after breakfast (from the Latin post cibus matutinus)
 
  -- Row 13 -----------------------------------
   System = http://hl7.org/fhir/v3/TimingEvent
   Code = PCD
-  Definition = event occurs [duration] after lunch (from the Latin post cibus diurnus)
+  Definition = event occurs [offset] after lunch (from the Latin post cibus diurnus)
 
  -- Row 14 -----------------------------------
   System = http://hl7.org/fhir/v3/TimingEvent
   Code = PCV
-  Definition = event occurs [duration] after dinner (from the Latin post cibus vespertinus)
+  Definition = event occurs [offset] after dinner (from the Latin post cibus vespertinus)
 
 === Sheet units-of-time =====================================
 
@@ -192,15 +192,15 @@
   Id = 1
   Context = Timing.repeat
   English = if there\'s a duration, there needs to be duration units
-  XPath = not(exists(f:duration)) or exists(f:durationUnits)
-  Expression = duration.empty() or durationUnits
+  XPath = not(exists(f:duration)) or exists(f:durationUnit)
+  Expression = duration.empty() or durationUnit
 
  -- Row 2 -----------------------------------
   Id = 2
   Context = Timing.repeat
   English = if there\'s a period, there needs to be period units
-  XPath = not(exists(f:period)) or exists(f:periodUnits)
-  Expression = period.empty() or periodUnits
+  XPath = not(exists(f:period)) or exists(f:periodUnit)
+  Expression = period.empty() or periodUnit
 
  -- Row 3 -----------------------------------
   Id = 3
@@ -236,6 +236,20 @@
   English = If there\'s a durationMax, there must be a duration
   XPath = not(exists(f:durationMax)) or exists(f:duration)
   Expression = durationMax.empty() or duration
+
+ -- Row 8 -----------------------------------
+  Id = 8
+  Context = Timing.repeat
+  English = If there\'s a countMax, there must be a count
+  XPath = not(exists(f:countMax)) or exists(f:count)
+  Expression = countMax.empty() or count
+
+ -- Row 9 -----------------------------------
+  Id = 9
+  Context = Timing.repeat
+  English = If there\'s an offset, there must be a when
+  XPath = not(exists(f:offset)) or exists(f:when)
+  Expression = offset.empty() or when
 
 === Sheet Data Elements =====================================
 
@@ -286,6 +300,14 @@
   RIM Mapping = PIVL.count
 
  -- Row 6 -----------------------------------
+  Element = Timing.repeat.countMax
+  Card. = 0..1
+  Type = integer
+  Short Label = Maximum number of times to repeat
+  Definition = A maximum value for the count of the desired repetitions (e.g. do something 6-8 times)
+  RIM Mapping = PIVL.count
+
+ -- Row 7 -----------------------------------
   Element = Timing.repeat.duration
   Card. = 0..1
   Type = decimal
@@ -295,7 +317,7 @@
   Comments = For some events the duration is part of the definition of the event (e.g. IV infusions, where the duration is implicit in the specified quantity and rate). For others, it\'s part of the timing specification (e.g. exercise)
   RIM Mapping = PIVL.phase / EIVL.offset
 
- -- Row 7 -----------------------------------
+ -- Row 8 -----------------------------------
   Element = Timing.repeat.durationMax
   Card. = 0..1
   Type = decimal
@@ -305,8 +327,8 @@
   Comments = For some events the duration is part of the definition of the event (e.g. IV infusions, where the duration is implicit in the specified quantity and rate). For others, it\'s part of the timing specification (e.g. exercise)
   RIM Mapping = PIVL.phase / EIVL.offset
 
- -- Row 8 -----------------------------------
-  Element = Timing.repeat.durationUnits
+ -- Row 9 -----------------------------------
+  Element = Timing.repeat.durationUnit
   Card. = 0..1
   Type = code
   Binding = UnitsOfTime
@@ -314,7 +336,7 @@
   Definition = The units of time for the duration, in UCUM units
   RIM Mapping = PIVL.phase.unit
 
- -- Row 9 -----------------------------------
+ -- Row 10 -----------------------------------
   Element = Timing.repeat.frequency
   Card. = 0..1
   Type = integer
@@ -323,7 +345,7 @@
   RIM Mapping = PIVL.phase / EIVL.offset
   Default Value = 1
 
- -- Row 10 -----------------------------------
+ -- Row 11 -----------------------------------
   Element = Timing.repeat.frequencyMax
   Card. = 0..1
   Type = integer
@@ -331,7 +353,7 @@
   Definition = If present, indicates that the frequency is a range - so repeat between [frequency] and [frequencyMax] times within the period or period range
   RIM Mapping = PIVL.phase
 
- -- Row 11 -----------------------------------
+ -- Row 12 -----------------------------------
   Element = Timing.repeat.period
   Card. = 0..1
   Type = decimal
@@ -339,7 +361,7 @@
   Definition = Indicates the duration of time over which repetitions are to occur; e.g. to express \"3 times per day\", 3 would be the frequency and \"1 day\" would be the period
   RIM Mapping = PIVL.phase
 
- -- Row 12 -----------------------------------
+ -- Row 13 -----------------------------------
   Element = Timing.repeat.periodMax
   Card. = 0..1
   Type = decimal
@@ -347,8 +369,8 @@
   Definition = If present, indicates that the period is a range from [period] to [periodMax], allowing expressing concepts such as \"do this once every 3-5 days
   RIM Mapping = PIVL.phase
 
- -- Row 13 -----------------------------------
-  Element = Timing.repeat.periodUnits
+ -- Row 14 -----------------------------------
+  Element = Timing.repeat.periodUnit
   Card. = 0..1
   Type = code
   Binding = UnitsOfTime
@@ -356,7 +378,7 @@
   Definition = The units of time for the period in UCUM units
   RIM Mapping = PIVL.phase.unit
 
- -- Row 14 -----------------------------------
+ -- Row 15 -----------------------------------
   Element = Timing.repeat.when
   Card. = 0..1
   Type = code
@@ -366,12 +388,19 @@
   Requirements = Timings are frequently determined by occurrences such as waking, eating and sleep
   RIM Mapping = EIVL.event
 
- -- Row 15 -----------------------------------
+ -- Row 16 -----------------------------------
+  Element = Timing.repeat.offset
+  Card. = 0..1
+  Type = unsignedInt
+  Short Label = Minutes from event (before or after)
+  Definition = The number of minutes from the event. If the event code does not indicate whether the minutes is before or after the event, then the offset is assumed to be after the event
+
+ -- Row 17 -----------------------------------
   Element = Timing.code
   Card. = 0..1
   Type = CodeableConcept
   Binding = TimingAbbreviation
   Short Label = QD | QOD | Q4H | Q6H | BID | TID | QID | AM | PM +
-  Definition = A code for the timing pattern. Some codes such as BID are ubiquitous, but many institutions define their own additional codes
-  Comments = A repeat should always be defined except for the common codes BID, TID, QID, AM and PM, which all systems are required to understand
+  Definition = A code for the timing pattern. Some codes such as BID are ubiquitous, but many institutions define their own additional codes. If a code is provided, the code is understood to be a complete statement of whatever is specified in the structured timing data, and either the code or the data may be used to interpret the Timing
+  Comments = BID etc are defined as \'at institutionally specified times\'. For example, an institution may choose that BID is \"always at 7am and 6pm\".  If it is inappropriate for this choice to be made, the code BID should not be used. Instead, a distinct organization-specific code should be used in place of the HL7-defined BID code and/or the a structured representation should be used (in this case, specifying the two event times)
   RIM Mapping = QSC.code

@@ -20,9 +20,15 @@ return type, which is why there is no hard rule about this. However the intent i
 unless specifically requested, the FHIR XML/JSON representation is not returned.  -->
 </p>
 <p>
-Следует отметить, что в нативном двоичном представлении метаданные не доступны непосредственно, хотя некоторые из них дублируются в заголовках HTTP ответа.
-<!-- Note that in the native binary representation, the metadata is not available directly,
-though some of it is replicated in the HTTP response headers. -->
+Следует отметить, что в "родном" двоичном представлении обычные <a href="resource.html#meta">метаданные</a> ресурса недоступны напрямую, хотя некоторые из них дублируются в заголовках HTTP ответа.
+<!-- Note that in the native binary representation, the normal resource <a href="resource.html#meta">metadata</a> 
+is not available directly, though some of it is replicated in the HTTP response headers. -->
+</p>
+<p>
+При записи двоичных данных на сервер (<a href="http.html#create">create</a>/<a href="http.html#update">update</a> - POST или PUT), данные принимаются "как есть" и обрабатываются как двоичное содержимое <code>Binary</code>, когда тип содержимого "application/xml+fhir" или "application/json+fhir", за исключением особого случая, когда содержимое фактически является ресурсом <code>Binary</code>.
+<!-- When a binary is written the server (<a href="http.html#create">create</a>/<a href="http.html#update">update</a> - POST or PUT),
+the data is accepted as is and treated as a the binary content of a <code>Binary</code>, including when the content type is "application/xml+fhir" or "application/json+fhir",
+except for the special case where the content is actually a <code>Binary</code> resource. -->
 </p>
 <h3>Вопросы безопасности<!-- Security Considerations --></h3>
 <p>
@@ -35,7 +41,7 @@ malicious or malformed content. For more details see <a href="security.html#narr
 <a name="binary"> </a>
 <h3>Binary Support</h3>
 <p>
-FHIR servers can choose to support <a href="compartments.html#binary">Binary Resources</a>
+FHIR servers can choose to support <a href="compartmentdefinition.html">Binary Resources</a>
 at the end-point [base]/Binary. The binary end-point accepts
 any kind of content, such as images and other media, documents (CDA, 
 PDF, Word etc.), plain text, XML or anything else, and stores the 

@@ -10,6 +10,11 @@ DICOM, IHE or ISO, who all defined these codes to meet very specific use cases. 
 used when they are suitable, or other codes can be defined.  -->
 </p>
 <p>
+Отметьте, что при использовании кодов из словаря можно опускать displayName для сохранения небольшого размера ресурса AuditEvent и чтобы не раздувать журнал аудита одинаковыми записями.
+<!-- Note when using codes from a vocabulary, the displayName can be left off so as to keep the 
+AuditEvent size small and minimize impact of a large audit log of similar entries. -->
+</p>
+<p>
 Ожидается, что набор кодов, определенных для этого ресурса, будет расти со временем, и с помощью ссылки на сообщество, приведенной выше, могут быть предложены/затребованы дополнительные коды.
 <!-- The set of codes defined for this resource is expected to grow over time, and 
 additional codes may be proposed / requested using the community input link above. -->

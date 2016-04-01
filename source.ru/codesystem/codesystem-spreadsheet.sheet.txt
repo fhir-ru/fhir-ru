@@ -55,6 +55,18 @@
   Display = integer
   Definition = The property value is a string (often used to assign ranking values to concepts for supporting score assessments)
 
+ -- Row 5 -----------------------------------
+  Id = 5
+  Code = boolean
+  Display = boolean
+  Definition = The property value is a boolean true | false
+
+ -- Row 6 -----------------------------------
+  Id = 6
+  Code = dateTime
+  Display = dateTime
+  Definition = The property is a date or a date + time
+
 === Sheet codesystem-content-mode =====================================
 
  -- Row 1 -----------------------------------
@@ -88,7 +100,7 @@
   Context = CodeSystem
   English = Within a code system definition, all the codes SHALL be unique
   XPath = count(distinct-values(descendant::f:concept/f:code/@value))=count(descendant::f:concept)
-  Expression = concept.code*.distinct()
+  Expression = descendents().code.distinct()
 
 === Sheet Data Elements =====================================
 
@@ -97,7 +109,7 @@
   UML = 0;0
   Type = DomainResource
   Short Label = A set of codes drawn from one or more code systems
-  Definition = A code system specifies a set of codes drawn from one or more code systems.
+  Definition = A code system resource specifies a set of codes drawn from one or more code systems.
   RIM Mapping = N/A
   w5 = conformance.terminology
 
@@ -381,7 +393,7 @@
   Summary = y
   Type = code
   Binding = PropertyType
-  Short Label = code | Coding | string | integer
+  Short Label = code | Coding | string | integer | boolean | dateTime
   Definition = The type of the property value
 
  -- Row 32 -----------------------------------
@@ -465,7 +477,7 @@
  -- Row 42 -----------------------------------
   Element = CodeSystem.concept.property.value[x]
   Card. = 1..1
-  Type = code | Coding | string | integer
+  Type = code | Coding | string | integer | boolean | dateTime
   Short Label = Value of the property for this concept
   Definition = The value of this property
 
@@ -544,6 +556,12 @@
   Description = A use context assigned to the code system
   Path = CodeSystem.useContext
 
+ -- Row 12 -----------------------------------
+  Name = language
+  Type = token
+  Description = A language in which a designation is provided
+  Path = CodeSystem.concept.designation.language
+
 === Sheet Profiles =====================================
 
  -- Row 1 -----------------------------------
@@ -566,4 +584,159 @@
   Description = Simple Code System
   Filename = codesystem-example.xml
 
+ -- Row 2 -----------------------------------
+  Name = DICOM DICM
+  Identity = dicom-dcim
+  Description = Codes defined by DICOM
+  Filename = codesystem-dicom-dcim.xml
+
+ -- Row 3 -----------------------------------
+  Name = NHIN PurposeOfUse
+  Identity = nhin-purposeofuse
+  Description = NHIN Purpose of Use
+  Filename = codesystem-nhin-purposeofuse.xml
+
+ -- Row 4 -----------------------------------
+  Name = RESTful Interactions
+  Identity = restful-interaction
+  Description = The set of interactions defined by the RESTful part of the FHIR specification
+  Filename = codesystem-restful-interaction.xml
+
 === Sheet Examples =====================================
+
+ -- Row 1 -----------------------------------
+  Name = lookup
+  Use = Resource
+  Documentation = Given a code/system, or a Coding, get additional details about the concept
+  Type = operation
+  Example.Request = $lookup-request.txt
+  Example.Response = $lookup-response.txt
+  Title = Concept Look Up
+  Footer = Note that the $lookup operation is more than just a code system search  - the server finds the concept, and gathers the return information from the value set and the underlying code system definitions.
+
+ -- Row 2 -----------------------------------
+  Name = lookup.code
+  Use = in
+  Documentation = The code that is to be validated. If a code is provided, a system must be provided
+  Type = code
+  Min = 0
+  Max = 1
+
+ -- Row 3 -----------------------------------
+  Name = lookup.system
+  Use = in
+  Documentation = The system for the code that is to be validated
+  Type = uri
+  Min = 0
+  Max = 1
+
+ -- Row 4 -----------------------------------
+  Name = lookup.version
+  Use = in
+  Documentation = The version of the system, if one was provided in the source data
+  Type = string
+  Min = 0
+  Max = 1
+
+ -- Row 5 -----------------------------------
+  Name = lookup.coding
+  Use = in
+  Documentation = A coding to look up
+  Type = Coding
+  Min = 0
+  Max = 1
+
+ -- Row 6 -----------------------------------
+  Name = lookup.date
+  Use = in
+  Documentation = The date for which the information should be returned. Normally, this is the current conditions (which is the default value) but under some circumstances, systems need to acccess this information as it would have been in the past. A typical example of this would be where code selection is constrained to the set of codes that were available when the patient was treated, not when the record is being edited. Note that which date is appropriate is a matter for implementation policy.
+  Type = dateTime
+  Min = 0
+  Max = 1
+
+ -- Row 7 -----------------------------------
+  Name = lookup.property
+  Use = in
+  Documentation = A property that the client wishes to be returned in the output. If no properties are specified, the server chooses what to return
+  Type = code
+  Min = 0
+  Max = *
+
+ -- Row 8 -----------------------------------
+  Name = lookup.name
+  Use = out
+  Documentation = A display name for the code system
+  Type = string
+  Min = 1
+  Max = 1
+
+ -- Row 9 -----------------------------------
+  Name = lookup.version
+  Use = out
+  Documentation = The version that these details are based on
+  Type = string
+  Min = 0
+  Max = 1
+
+ -- Row 10 -----------------------------------
+  Name = lookup.display
+  Use = out
+  Documentation = The preferred display for this concept
+  Type = string
+  Min = 1
+  Max = 1
+
+ -- Row 11 -----------------------------------
+  Name = lookup.property
+  Use = out
+  Type = Tuple
+  Min = 0
+  Max = *
+
+ -- Row 12 -----------------------------------
+  Name = lookup.property.code
+  Type = code
+  Min = 0
+  Max = 1
+
+ -- Row 13 -----------------------------------
+  Name = lookup.property.value
+  Type = string
+  Min = 1
+  Max = 1
+
+ -- Row 14 -----------------------------------
+  Name = lookup.property.description
+  Documentation = Human Readable representation of the propery value
+  Type = string
+  Min = 0
+  Max = 1
+
+ -- Row 15 -----------------------------------
+  Name = lookup.designation
+  Use = out
+  Documentation = Additional representations for this concept
+  Type = Tuple
+  Min = 0
+  Max = *
+
+ -- Row 16 -----------------------------------
+  Name = lookup.designation.language
+  Documentation = The language this designation is defined for
+  Type = code
+  Min = 0
+  Max = 1
+
+ -- Row 17 -----------------------------------
+  Name = lookup.designation.use
+  Documentation = A code that details how this designation would be used
+  Type = Coding
+  Min = 0
+  Max = 1
+
+ -- Row 18 -----------------------------------
+  Name = lookup.designation.value
+  Documentation = The text value for this designation
+  Type = string
+  Min = 1
+  Max = 1
