@@ -2,6 +2,12 @@
 	<div>
 <a name="scope"> </a>
 		<h2>Область применения и использование</h2>
+<p>
+<b>NOTE:</b> This resource is slated to be eliminated in favor of the <a href="task.html">Task</a>
+resource as part of the FHIR Workflow refactoring.  Readers of this resource are encouraged to
+review the Task resource and consider using it instead and/or to provide feedback if they feel
+it will be inadequate to satisfy the use-cases associated with this resource.
+</p>
 		<p>
 Ресурс order описывает запрос на выполнение действия. Ожидается, что заказ приведет к одному или нескольким <a href="orderresponse.html">responses</a>, которые описывают результат обработки заказа. Ресурс order сосредоточен непосредственно на процессе запроса на действие для выполнения; само действие для выполнения описывается в отдельном ресурсе, который содержит данные по нему. Обратите внимание, что заказы часто называют "запросами", но здесь это название не используется, так как слово "запрос" (request) применяется в данной спецификации для другого.
 <!-- An order resource describes a request that an action be performed. An order is 
@@ -68,10 +74,10 @@ with no matching responses (see below)
 Two message event codes are defined for sending orders: synchronous and asynchronous.
  --></p>
 <p>
-В <a href="messaging.html#synchronous">синхронном сообщении</a> сообщение заказа (а именно <a href="compartments.html#bundle">bundle</a> с ресурсом <a href="messageheader.html">Message Header</a>, ресурсом order и ресурсом <i>detail</i> с деталями заказа - см. ниже) отправляется в систему, и она отвечает сообщением, которое включает <a href="orderresponse.html">ответ</a> 
+В <a href="messaging.html#synchronous">синхронном сообщении</a> сообщение заказа (а именно <a href="bundle.html">bundle</a> с ресурсом <a href="messageheader.html">Message Header</a>, ресурсом order и ресурсом <i>detail</i> с деталями заказа - см. ниже) отправляется в систему, и она отвечает сообщением, которое включает <a href="orderresponse.html">ответ</a> 
 (ресурс Message Header и ресурс Order Response наряду с дополнительной информацией в случае необходимости). Такой синхронный обмен сообщениями является простым, но подходит, если нужен только один ответ, и где этот ответ может быть создан в кратчайшие сроки.
 <!-- 
-In a  <a href="messaging.html#synchronous">synchronous message</a>, an order message (i.e. a <a href="compartments.html#bundle">bundle</a> with a
+In a  <a href="messaging.html#synchronous">synchronous message</a>, an order message (i.e. a <a href="bundle.html">bundle</a> with a
 <a href="messageheader.html">Message Header</a> resource, an order resource and a <i>detail</i> resource for the order - see below) 
 is sent to a system, and it responds with a message that includes the <a href="orderresponse.html">response</a> 
 (a Message Header resource, and Order Response resource, along with additional details as appropriate). This 

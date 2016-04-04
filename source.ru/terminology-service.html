@@ -13,21 +13,22 @@
 <table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
-Данная спецификация включает в себя поддержку предоставления терминологического сервиса - это сервис, который позволяет медицинским приложениям использовать коды и наборы значений без необходимости становиться экспертами в тонких деталях ресурса value set и лежащих в основе кодовых систем.
-Сервер, который поддерживает полную функциональность, приведенную здесь, может быть описан как "FHIR Terminology Service" и ДОЛЖЕН соответствовать <a href="conformance-terminology-server.html">этому заявлению о соответствии</a>.
+Данная спецификация включает в себя поддержку предоставления терминологического сервиса - это сервис, который позволяет медицинским приложениям использовать коды и наборы значений без необходимости становиться экспертами в тонких деталях ресурсов code system, value set и concept map, и лежащих в их основе кодовых систем и терминологических принципах.
+Сервер, который поддерживает полную функциональность, приведённую здесь, может быть описан как "FHIR Terminology Service" и ДОЛЖЕН соответствовать <a href="conformance-terminology-server.html">этому заявлению о соответствии</a>.
 <!-- This specification includes support for the provision of a terminology service - that is, a
 service that lets healthcare applications make use of codes and value sets without having to become
-experts in the fine details of the value set resource, and the underlying code systems.
-A server that supports all the functionality described here can be described as a "FHIR Terminology Service",
-and SHALL conform to <a href="conformance-terminology-server.html">this conformance statement</a>. -->
+experts in the fine details of the code system, value set and concept map resources, and the underlying 
+code systems and terminological principles. A server that supports all the functionality described here 
+can be described as a "FHIR Terminology Service", and SHALL conform to <a href="conformance-terminology-server.html">this 
+conformance statement</a>. -->
 </p>
 
 <h3>Безопасность<!-- Security --></h3>
 <p>
 SSL, как правило, СЛЕДУЕТ использовать для любого обмена медицинскими данными в рабочем режиме.
-Несмотря на то, что терминологические сервисы не оперируют информацией пациентов непосредственно, хакеры всё ещё в состоянии вывести информацию о пациентах, наблюдая за кодами и концептами, о которых запрашивают терминологический сервис, поэтому шифрование всё же рекомендуется.
+Несмотря на то, что терминологические сервисы обычно не оперируют непосредственно информацией пациентов, хакеры всё же могут вывести информацию о пациентах, наблюдая за кодами и концептами, о которых запрашивают терминологический сервис, поэтому шифрование всё же рекомендуется.
 <!-- Generally, SSL SHOULD be used for all production health care data exchange. 
-Even though terminology servers do not directly handle patient information, 
+Even though terminology servers do not generally handle patient information directly, 
 hackers may still be able to infer information about patients by observing 
 the codes and concepts that the terminology service is asked about, so 
 encryption is still recommended. --> 
@@ -46,9 +47,9 @@ This specification does not require any particular approach to security. -->
 
 <h3>Основные понятия<!-- Basic Concepts --></h3>
 <p>
-Терминологический сервис FHIR - это просто набор функций, построенный на определениях, предоставленных коллекцией ресурсов <a href="valueset.html">ValueSet</a> и <a href="conceptmap.html">ConceptMap, с обеспечивающими поддержку дополнительными внутренними справочниками.</a>
+Терминологический сервис FHIR - это просто набор функций, построенный на определениях, предоставленных коллекцией ресурсов <a href="codesystem.html">CodeSystem</a>,  <a href="valueset.html">ValueSet</a> и <a href="conceptmap.html">ConceptMap</a>, с обеспечивающими поддержку дополнительными внутренними справочниками.
 <!-- A FHIR terminology service is simply a set of functions built on the definitions
-provided by a collection of <a href="valueset.html">ValueSet</a> and
+provided by a collection of <a href="codesystem.html">CodeSystem</a>,  <a href="valueset.html">ValueSet</a> and
 <a href="conceptmap.html">ConceptMap</a> resources, with additional inherently known terminologies providing support. -->
 </p>
 <p>
@@ -58,13 +59,14 @@ in FHIR. Implementers should be familiar with: -->
 </p>
 <ul>
  <li><a href="terminologies.html">Использование кодов в FHIR</a></li>
+ <li>The <a href="codesystem.html">CodeSystem</a> resource</li>
  <li>Ресурс <a href="valueset.html">ValueSet</a></li>
  <li>Ресурс <a href="conceptmap.html">ConceptMap</a></li>
 </ul>
 <p>
-Кроме того, реализаторам следует ознакомиться с <a href="operations.html">фреймворком операций</a>. Дополнительная полезная информация может быть найдена в:
+Кроме того, реализаторам следует ознакомиться с <a href="operations.html">фреймворком операций</a>. Дополнительную полезную информацию о справочниках можно найти в:
 <!-- In addition, implementers should be familiar with the <a href="operations.html">operations
-framework</a>. Further useful information may be found in: -->
+framework</a>. Further useful information about terminologies may be found in: -->
 </p>
 <ul>
  <li>Основные принципы: <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a></li>
@@ -73,29 +75,25 @@ framework</a>. Further useful information may be found in: -->
 
 <h4>Внешние кодовые системы<!-- External Code Systems --></h4>
 <p>
-Чтобы использоваться в наборе значений, кодовые системы должны быть где-то определены. Они могут быть определены в рамках <a href="valueset.html#codeSystem">inline code system definition</a> либо где-то ещё, и затем использоваться в наборе значений ссылаясь на корректное пространство имён. Документация FHIR определяет <a href="terminologies-systems.html">ряд пространств имён</a> для часто встречающихся кодовых систем и описывает, как некоторые из них работают с FHIR (например <a href="snomedct.html">SNOMED CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorm.html">RxNorm</a>).
-Эти кодовые системы часто большие и имеют много определенных внутри свойств, являющихся частью их формальных описаний. Встроенные кодовые системы (Inline code systems) в ресурсах типа ValueSet не являются подходящим способом для определения этих кодовых систем; FHIR не предоставляет формального представления вообще. Вместо этого эти справочники предлагают свои собственные форматы распределения, и предполагается, что справочники известны терминологическому серверу и являются внешними по отношению к нему.
-<!-- In order to be used with a value set, code systems must be defined somewhere. They can be defined as part of
-an <a href="valueset.html#codeSystem">inline code system definition</a>, or they can be defined elsewhere,
-and then used in a value set by quoting the correct namespace. The FHIR specification defines a <a href="terminologies-systems.html">set of 
+Чтобы использоваться в наборе значений, кодовые системы и их содержимое должны быть где-то определены. Они могут быть определены явным образом с помощью ресурса <a href="codesystem.html">CodeSystem</a>, либо где-то ещё, и затем использоваться в наборе значений, ссылаясь на url-адрес нужной системы. Спецификация FHIR определяет <a href="terminologies-systems.html">ряд пространств имён</a> для часто встречающихся кодовых систем и описывает, как некоторые из них работают с FHIR (например <a href="snomedct.html">SNOMED CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorm.html">RxNorm</a>).
+Обычно это большие кодовые системы с большим количеством определённых внутри свойств, являющихся частью их формальных описаний. Ресурс CodeSystem не являются подходящим способом для распространения содержимого этих кодовых систем; ресурс CodeSystem стандарта FHIR представляет собой всего лишь свойства кодовой системы. Вместо этого эти справочники предлагают свои собственные форматы распространения, и предполагается, что содержимое этих кодовых систем известно терминологическому серверу и является внешним по отношению к нему.
+<!-- In order to be used with a value set, code systems and their content must be defined somewhere. They can be defined explicitly
+using the <a href="codesystem.html">code system resource</a>, or they can be defined elsewhere, and then used in a value set 
+by quoting the correct system url. The FHIR specification defines a <a href="terminologies-systems.html">set of
 namespaces</a> for commonly encountered code systems, and defines how some work with FHIR (e.g. 
 <a href="snomedct.html">SNOMED CT</a>, <a href="loinc.html">LOINC</a>, <a href="rxnorm.html">RxNorm</a>).
 These code systems are often large, and have many internally defined properties that are part of their 
-formal definitions. Inline code systems in Value Set resources are not an appropriate way to define 
-these code systems; FHIR does not provide a formal representation at all. Instead, these terminologies
-provide their own distribution formats, and it is assumed that they are externally known to the 
-terminology server. -->
+formal definitions. The code systems resource is not an appropriate way to distribute the contents of 
+these code systems; the standard FHIR code system resource simply represents the properties of 
+the code system. Instead, these terminologies provide their own distribution formats, and it is assumed that the
+content of these code systems are externally known to the terminology server. -->
 </p>
 <p>
-Терминологические серверы сделают одну или несколько таких внешних кодовых систем доступными для использования в наборах значений, которыми они управляют. Перечень дополнительных справочников, которые поддерживает терминологический сервер сверх тех, что определены в его наборах значений, публикуется для клиентов с помощью (всё ещё необходимо выяснить, как это работает).
+Терминологические серверы сделают одну или несколько таких внешних кодовых систем доступными для использования в наборах значений, которыми они управляют. Перечень дополнительных справочников, которые поддерживает терминологический сервер сверх тех, что определены в его наборах значений, публикуется для клиентов с помощью ссылок на ресурсы CodeSystem в <a href="conformance.html">Заявлении о соответствии</a> сервера.
 <!-- Most useful terminology servers will make one or more of these external code systems available for use
 within the value sets that they manage. The list of additional terminologies that a terminology server supports 
-beyond those defined in its value sets is published to clients by (still to figure out how this works).  -->
-</p>
-<p>
-Серверу СЛЕДУЕТ публиковать дополнительные кодовые системы, которые он поддерживает встроенно, с помощью расширения <a href="extension-conformance-supported-system.html">http://hl7.org/fhir/StructureDefinition/conformance-supported-system</a>:
-<!-- A server SHOULD publish the additional code systems that it supports through intrinsic knowledge
-using the <a href="extension-conformance-supported-system.html">http://hl7.org/fhir/StructureDefinition/conformance-supported-system extension:</a> -->
+beyond those defined in its value sets is published to clients by referencing code system resources in 
+the server's <a href="conformance.html">Conformance Statement</a>. -->
 </p>
 <pre class="json">
 {
@@ -140,10 +138,10 @@ list above extended.--></i>
 
 <p>
 Примечание: терминологический сервис может получить доступ к дополнительной специфичной 
-связанной функциональности внешней кодовой системы, например исследование или структурированный 
+связанной функциональности внешней кодовой системы, например суммирование или структурированный 
 поиск, однако эти сервисы выходят за рамки терминологического сервиса FHIR.
 <!-- Note: A terminology service may choose to expose additional external code system specific
-related functionality such as exploration, or structured search, but these services are 
+related functionality such as summation, or structured search, but these services are 
 outside the scope of the FHIR terminology service. -->
 </p>
 
@@ -170,16 +168,16 @@ can only be used as a parameter to the operations described on this page.  -->
 <p>
 Терминологический сервис использует ресурсы value set, определенные в системе - как
 неявные, ассоциированные с внешними кодовыми системами, так и явно 
-доступными в точке взаимодействия /ValueSet - в качестве управляющего интерфейса, определенного ниже.
-Когда наборы значений создаются, обновляются или удаляются, результаты управляющих сервисов 
+доступными в точках взаимодействия /CodeSystem и /ValueSet - в качестве управляющего интерфейса, определенного ниже.
+Когда кодовые системы и наборы значений создаются, обновляются или удаляются, результаты управляющих сервисов 
 меняются. Терминологический сервер следует валидировать входящие ресурсы и гарантировать целостность
 терминологических сервисов. Обычно серверы предлагают тестовое и рабочее окружение, но нет явного обозначения этого в самом интерфейсе.
 <!-- The terminology service uses the value set resources defined on the system - both 
 the implicit ones associated with the external code systems and those explicitly 
-available at the /ValueSet endpoint - to serve the operational interface defined below. 
-As value sets are created, updated or deleted, the outcomes of the operational services 
-change. A terminology server should validate incoming resources, and ensure integrity 
-of the terminology services. Typically, servers would provide a test and production 
+available at the /CodeSystem and /ValueSet endpoints - to serve the operational interface defined below. 
+As code systems and value sets are created, updated or deleted, the outcomes of the operational 
+services change. A terminology server should validate incoming resources, and ensure integrity 
+of the terminology services. Typically, servers provide a test and production 
 environment, but there is no explicit notion of this in the interface itself.  -->
 </p>
 
@@ -214,13 +212,13 @@ As a summary, the client passes the server the following information: -->
 Обратите внимание, что некоторые наборы значений расширяются на много тысяч кодов, или даже бесконечное количество,
 и для них серверу СЛЕДУЕТ возвращать <a href="valueset-issue-type.html#too-costly">код ошибки 
 <i>too-costly</i></a>. В таких случаях клиент может попытаться снова с уточняющим текстовым фильтром
-для уменьшения количества возвращаемых кодов.
+для уменьшения количества возвращаемых кодов - это может привести к получению валидной развёртки.
 <!-- The server returns a value set that contains the current list of codes that meet the filter criteria (or an
 <a href="operationoutcome.html">OperationOutcome</a> with an error if the expansion fails). 
 Note that some value sets expand to many thousands of codes, or even an infinite number, 
 and for these, the server SHOULD return an <a href="valueset-issue-type.html#too-costly">error code
 <i>too-costly</i></a>. In these cases the client can try again with a more specific text filter
-to reduce the number of codes returned. -->
+to reduce the number of codes returned - this may result in a valid expansion. -->
 </p>
 <p>
 Более подробную информацию можно получить на странице <a href="valueset-operations.html#expand">определения этой операции</a>.
@@ -306,47 +304,61 @@ HTTP/1.1 200 OK
 <h3>Поиск концепта<!-- Concept Lookup --></h3>
 <p>
 Система может запросить терминологический сервер вернуть информацию об определенной комбинации системы/кода
-с помощью  <a href="valueset-operations.html#lookup">операции поиска</a>. Сервер возвращает информацию как для отображения на экране, так и в целях обработки.
+с помощью  <a href="codesystem-operations.html#lookup">операции поиска</a>. Сервер возвращает информацию как для отображения на экране, так и в целях обработки.
 Клиент передает серверу следующую информацию:
 <!-- A system can ask a terminology server to return a set of information about a particular system/code
-combination using <a href="valueset-operations.html#lookup">the lookup operation</a>. The server returns information for both display and processing
+combination using <a href="codesystem-operations.html#lookup">the lookup operation</a>. The server returns information for both display and processing
 purposes. The client passes the server the following information: -->
 </p>
 <ul>
- <li>значение кода (либо код+система, либо тип данных Кодинг) <!-- the code value (either a code + system, or a Coding data type --></li>
+ <li>значение кода (либо код, либо тип данных Кодинг) <!-- the code value (either a code, or a Coding data type --></li>
+ <li> (Optionally) the id or the url of the code system in which the code is being checked</li>
  <li>(Необязательно) дата, когда информация по этому коду должна быть возвращена (обычно это текущая дата/время, но есть обстоятельства, где это не подходит) <!-- (Optionally) a date at which the code information should be returned (usually, this is the current date/time, but there are circumstances where that is not appropriate) --></li>
+ <li> (Optionally) a set of properties to return about the code</li>
 </ul>
 <p>
-Сервер возращает следующую информацию:
-<!-- The server returns the following information: -->
+Сервер возращает некоторую из или всю следующую информацию:
+<!-- The server returns some or all of the following information: -->
 </p>
 <ul>
- <li>Человекочитаемое описание системы <!-- a human description of the system --></li>
+ <li>Человекочитаемое описание системы<!-- a human description of the system --></li>
  <li>Рекомендуемое значение для отображения этого кода <!-- a recommended display for the code --> </li>
- <li>Является ли этот код абстрактным или нет <!-- whether the code is abstract or not --></li>
+ <li> properties of the code</li>
  <li>Другие обозначения для этого кода (значение с необязательным указанием языка и/или применения) <!-- other designations for the code (a value, optionally with language and/or a use code) --></li>
+ <li> relationships between this code and other codes</li>
 </ul>
 <p>
 The recommended display for the code is a text representation of the code
 that the terminology server recommends as the default choice to show 
 to the user, though a  client may choose out of the other designations if it has reason to.
 </p>
+<p>
+If the client does not ask for any particular properties to be returned, it is at the discretion
+of the server to decide which properties to return.
+</p>
+
 
 <div class="example">
 <p><b>Примеры</b></p>
 <p>
-Поиск по коду/системе:
-<!-- Looking up a code/system : -->
+Looking up a code in a code system:
 </p>
 <pre class="http">
-GET [base]/ValueSet/$lookup?system=http://loinc.org&amp;code=1963-8
+GET [base]/CodeSystem/loinc/$lookup?code=1963-8
 </pre>
 <p>
-Поиск с использованием Кодинга (пример в XML):
-<!-- Lookup using a Coding (this example in XML): -->
+Note that the logical id "loinc" is not a reliable identifer across systems; each server assigns
+logical ids to code system resources however it sees fit. A more reliable query is this:
 </p>
 <pre class="http">
-POST [base]/ValueSet/$lookup
+GET [base]/CodeSystem/$lookup?url=http://loinc.org&amp;code=1963-8&amp;properties=code,display,designations
+</pre>
+<p>
+Поиск кодовой системы с помощью Кодинга (этот пример в XML):
+<!-- Lookup the code system using a Coding (this example in XML): -->
+</p>
+<pre class="http">
+POST [base]/CodeSystem/$lookup
 [other headers]
 
 &lt;Parameters xmlns=&quot;http://hl7.org/fhir&quot;&gt;
@@ -379,35 +391,68 @@ HTTP/1.1 200 OK
     "valueString" : "2.48"
   }, 
   {
-    "name" : "designation",
+    "name" : "display",
     "valueString" : "Bicarbonate [Moles/volume] in Serum"
   }, 
   {
     "name" : "abstract",
     "valueString" : "false"
-  }, 
-  {
-      "name" : "designation",
-    "part" : [
-    {
-      "name" : "value",
-      "valueString" : "Bicarbonate [Moles/volume] in Serum "
-    }      
-    ]
   }
   ]
 }
 </pre>
+
+<p>
+Thie following properties are defined:
+</p>
+<table class="grid">
+ <tr>
+  <td><b>Name</b></td>
+  <td><b>Usage</b></td>
+ </tr>
+ <tr>
+  <td>system</td>
+  <td>The name of the code ssystem</td>
+ </tr>
+ <tr>
+  <td>version</td>
+  <td>The version of the code system used for the look up operation</td>
+ </tr>
+ <tr>
+  <td>display</td>
+  <td>The recommended display for the code, if one is known</td>
+ </tr>
+ <tr>
+  <td>definition</td>
+  <td>The definition for the code</td>
+ </tr>
+ <tr>
+  <td>designation</td>
+  <td>Other designations for the code</td>
+ </tr>
+ <tr>
+  <td>parent</td>
+  <td>Parent codes for this code (for code systems with a defined heirarchy)</td>
+ </tr>
+ <tr>
+  <td>child</td>
+  <td>child codes of this code (for code systems with a defined heirarchy)</td>
+ </tr>
+</table>
+<p>
+In addition, any property codes defined by the code system (CodeSysem.property.code) can be used.
+</p>
+
 </div>
 
 <h3>Валидация набора значений<!-- Value Set Validation --></h3>
 <p>
-Один из способов определения, входит ли код в набор значений - это развёртывание этого набора значений 
+Один способ определить, входит ли код в набор значений - это развёртывание этого набора значений 
 (как описано выше) и затем просмотр возвращенных кодов, чтобы увидеть, есть ли среди них этот код.
 Однако это не эффективный способ проверки, является ли код допустимым, и для некоторых наборов значений 
 (например с бесконечным числом элементов) он может не работать. Вместо этого терминологический сервер FHIR 
 предоставляет <a href="valueset-operations.html#validate-code">операцию "validate-code"</a>. Клиент передает серверу следующую информацию:
-<!-- One of the ways to determine whether a code is in a value set is to expand the value set
+<!-- One way to determine whether a code is in a value set is to expand the value set
 (as described above), and then look at the returned codes to see if the code is in the expansion. 
 However this is not an efficient way to test whether a code is valid, and for some value sets 
 (e.g. with infinite number of members), it cannot work. Instead, a FHIR terminology server 
@@ -435,9 +480,9 @@ whether any of the codes are valid against the value set, and also check whether
 multiple codings are allowed and/or the codings provided are consistent with each other.  -->
 </p>
 <p>
-Каждая кодовая система имеет имплицитный набор значений, который является "всеми концептами, определенными в этой кодовой системе". Для некоторых кодовых систем URIs этих наборов значений определены заранее (например для <a href="loinc.html">LOINC</a> это <code>http://loinc.org/vs</code>). Однако для некоторых кодовых систем они не известны. Клиенты могут ссылаться на эти имплицитные наборы значений, передавая URI самой кодовой системы.
+Каждая кодовая система имеет имплицитный набор значений, который является "всеми концептами, определенными в этой кодовой системе" (CodeSystem.valueSet). Для некоторых кодовых систем URIs этих наборов значений определены заранее (например для <a href="loinc.html">LOINC</a> это <code>http://loinc.org/vs</code>). Однако для некоторых кодовых систем они не известны. Клиенты могут ссылаться на эти имплицитные наборы значений, передавая URI самой кодовой системы.
 <!-- Every code system has an implicit value set that is "all the concepts defined
-in the code system". For some code systems, these value set URIs are defined 
+in the code system" (CodeSystem.valueSet). For some code systems, these value set URIs are defined 
 in advance (e.g. for <a href="loinc.html">LOINC</a>, it is <code>http://loinc.org/vs</code>).
 However for some code systems, they are not known. Clients can refer to these implicit 
 value sets by providing the URI for the code system itself.  -->
@@ -953,7 +998,7 @@ POST [base]/$closure
   "parameter" : [
     {
       "name" : "name",
-      "valueId : "patient-problems"
+      "valueString" : "patient-problems"
     }, 
     {
       "name" : "concept",

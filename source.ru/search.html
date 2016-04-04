@@ -22,7 +22,7 @@ Search operations traverse through an existing set of resources filtering by
 parameters supplied to the search operation. The text below describes
 the FHIR search framework, starting with simple cases moving to the more complex.
 Implementers need only implement the amount of
-complexity that they require for their implementaitons. -->
+complexity that they require for their implementations. -->
 </p>
 
 <h3>Сводная таблица</h3>
@@ -32,7 +32,7 @@ complexity that they require for their implementaitons. -->
 <!-- <tr><td><b>Search Parameter Types</b></td><td><b>Parameters for all resources</b></td><td><b>Search result parameters</b></td></tr> -->
 <tr>
 <td>
-<%codetoc http://hl7.org/fhir/ValueSet/search-param-type%>
+<%codetoc http://hl7.org/fhir/search-param-type%>
 </td>
 <td>
 <a href="#id"><code>_id</code></a><br/>
@@ -43,6 +43,7 @@ complexity that they require for their implementaitons. -->
 <a href="#text"><code>_text</code></a><br/>
 <a href="#content"><code>_content</code></a><br/>
 <a href="#list"><code>_list</code></a><br/>
+<a href="#_type"><code>_type</code></a><br/>
 <a href="#query"><code>_query</code></a><br/>
 </td>
 <td>
@@ -93,10 +94,10 @@ that are the results of the search.  -->
 </p>
 <ul>
  <li>Определенный тип ресурса: <code>GET [base]/[ResourceType]?parameter(s)</code></li>
- <li>Определенный <a href="compartments.html#compartments">модуль</a>, возможно с указанием типа ресурса в этом модуле: <code>GET [base]/Patient/[id]/[ResourceType]?parameter(s)</code></li>
+ <li>Определенный <a href="compartmentdefinition.htmls">модуль</a>, возможно с указанием типа ресурса в этом модуле: <code>GET [base]/Patient/[id]/[ResourceType]?parameter(s)</code></li>
  <li>Все ресурсы: <code>GET [base]/_search?parameter(s)</code> (только параметры, общие для всех типов)</li>
 <!--  <li>A specified resource type: <code>GET [base]/[ResourceType]?parameter(s)</code></li>
- <li>A specified <a href="compartments.html#compartments">compartment</a>, perhaps with a specified resource type in that compartment: <code>GET [base]/Patient/[id]/[ResourceType]?parameter(s)</code></li>
+ <li>A specified <a href="compartmentdefinition.htmls">compartment</a>, perhaps with a specified resource type in that compartment: <code>GET [base]/Patient/[id]/[ResourceType]?parameter(s)</code></li>
  <li>All resource types: <code>GET [base]/_search?parameter(s)</code> (parameters common to all types only)</li> -->
 </ul>
 <p>
@@ -142,12 +143,12 @@ detailing the cause of the failure. Note: An empty search result is not a failur
 <!--  <li>A parameter may refer to a non-existent resource e.g. <code>GET [base]/Observation?subject=101</code>, where "101" does not exist</li>
  <li>A parameter may refer to an unknown code e.g. <code>GET [base]/Observation?code=loinc|1234-1</code>, where the LOINC code "1234-1" is not known to the server</li>
  <li>A parameter may refer to a time that is out of scope e.g. <code>GET [base]/Condition?onset=le1995</code>, where the system only has data going back to 2001</li>
- <li>A parameter may use an illegal or unaaceptable modifier e.g. <code>GET [base]/Condition?onset:text=1995</code>, where the modifier cannot be processed by the server</li>
+ <li>A parameter may use an illegal or unacceptable modifier e.g. <code>GET [base]/Condition?onset:text=1995</code>, where the modifier cannot be processed by the server</li>
  <li>A data time parameter may have incorrect format e.g. <code>GET [base]/Condition?onset=23%20May%202009</code></li> -->
 </ul>
 <p>
-Если содержимое параметра синтаксически правильное, сервер ДОЛЖЕН вернуть ошибку. Однако если проблема в логическом условии (например указан неизвестный "subject" или "code"), сервер ДОЛЖЕН обработать поиск с указанным параметром - результатом будет пустой результат поиска, поскольку такой параметр не может быть выполнен.
-<!-- Where the content of the parameter is syntactically correct, servers SHOULD return an error. 
+Если содержимое параметра синтаксически неправильное, сервер ДОЛЖЕН вернуть ошибку. Однако если проблема в логическом условии (например указан неизвестный "subject" или "code"), сервер ДОЛЖЕН обработать поиск с указанным параметром - результатом будет пустой результат поиска, поскольку такой параметр не может быть выполнен.
+<!-- Where the content of the parameter is syntactically incorrect, servers SHOULD return an error. 
 However where the issue is a logical condition (e.g. unknown subject or code), the server 
 SHOULD process the search, including processing the parameter - with the result of returning
 an empty search set, since the parameter cannot be satisfied.  -->
@@ -293,7 +294,7 @@ which path contains the match. -->
 <!-- Each search parameter is defined by a type that specifies how the search parameter
 behaves. These are the defined parameter types: -->
 </p>
-<%linkcodelist http://hl7.org/fhir/ValueSet/search-param-type%>
+<%linkcodelist http://hl7.org/fhir/search-param-type%>
 <p>
 К этим параметрам поиска могут также добавляться "модификаторы", которые управляют их поведением. Виды модификаторов, которые могут использоваться, зависят от типа параметра, который требуется модифицировать.
 <!-- The search parameters can also append "modifiers" that control
@@ -658,6 +659,10 @@ can be used to specify a search with advanced text handling (see <a href="#text"
 though only a few servers are expected to offer this facility. -->
 </p>
 <p>
+When a string search parameter refers to the types <a href="datatypes.html#HumanName">HumanName</a> and <a href="datatypes.html#Address">Address</a>,
+the search covers the elements of type string, and does not cover elements such as <code>use</code> and <code>period</code>.
+</p>
+<p>
 Решение о том, делать ли предварительную обработку имен, адресов и контактной информации для удаления символов-разделителей до нахождения соответствия, чтобы гарантировать непротиворечивое поведение, остается на усмотрение сервера. Например сервер мог бы удалить все пробелы и символы  <code>-</code> из телефонных номеров. Что лучше всего подходит, варьируется в зависимости от культуры и контекста.
 <!-- It is at the discretion of the server whether to pre-process names, addresses,
 and contact details to remove separator characters prior to matching in order
@@ -706,6 +711,7 @@ have a URI that scopes its meaning. The search is performed against the  pair fr
 <!--  <li><b><code>[parameter]=[code]</code></b>: the value of <code>[code]</code> matches a Coding.code or Identifier.value irrespective of the value of the system property</li>
  <li><b><code>[parameter]=[system]|[code]</code></b>: the value of <code>[code]</code> matches a Coding.code or Identifier.value, and the value of <code>[system]</code> matches the system property of the Identifier or Coding</li>
  <li><b><code>[parameter]=|[code]</code></b>: the value of <code>[code]</code> matches a Coding.code or Identifier.value, and the Coding/Identifier has no system property</li> -->
+ <li><b><code>[parameter]=[system]|</code></b>: any element where the value of <code>[system]</code> matches the system property of the Identifier or Coding</li>
 </ul>
 <p>
 Примечание: URI пространства имен и код необходимо <a href="#escaping">экранировать</a>. Совпадения должны быть буквальными (т. е. не должны основываться на отнесении к какой-либо категории или других характеристиках кодовых систем), но не должны зависеть от регистра.
@@ -783,9 +789,9 @@ http://hl7.org/fhir/special-values, though there is usually no reason to use thi
  <tr> <td><code>:in</code></td> <td>Параметром поиска является URI (относительный или абсолютный), который идентифицирует набор значений, и поисковый параметр проверяет, входит ли кодинг в указанный <a href="valueset.html">набор значений</a>. Ссылка может быть буквальной (адрес, где находится этот набор значений) или логической (ссылка на ValueSet.identifier). Если сервер может обработать эту ссылку как буквальный URL, он это делает, иначе пытается найти соответствие в известных логических значениях ValueSet.url.</td> </tr>
  <tr> <td><code>:not-in</code></td> <td>Параметром поиска является URI (относительный или абсолютный), который идентифицирует набор значений, и поисковый параметр проверяет, что кодинг не входит в указанный набор значений.</td> </tr>
 <!--  <tr> <td><b>Modifier</b></td> <td><b>Use</b></td> </tr>
- <tr> <td><code>:text</code></td> <td>Rhe search parameter is processed as a string that searches text associated with the code/value - either <i>CodeableConcept.text</i>, <i>Coding.display</i>, or <i>Identifier.type.text</i>.</td> </tr>
+ <tr> <td><code>:text</code></td> <td>The search parameter is processed as a string that searches text associated with the code/value - either <i>CodeableConcept.text</i>, <i>Coding.display</i>, or <i>Identifier.type.text</i>.</td> </tr>
  <tr> <td><code>:not</code></td> <td>Reverse the code matching described in the paragraph above.</td> </tr>
- <tr> <td><code>:above</code></td> <td>Rhe search parameter is a concept with the form <code>[system]|[code]</code>, and the search parameter tests whether the coding in a resource subsumes the specified search code.  For example, the search concept has an is-a relationship with the coding in the resource, and this includes the coding itself.</td> </tr>
+ <tr> <td><code>:above</code></td> <td>The search parameter is a concept with the form <code>[system]|[code]</code>, and the search parameter tests whether the coding in a resource subsumes the specified search code.  For example, the search concept has an is-a relationship with the coding in the resource, and this includes the coding itself.</td> </tr>
  <tr> <td><code>:below</code></td> <td>the search parameter is a concept with the form <code>[system]|[code]</code>, and the search parameter tests whether the coding in a resource is subsumed by the specified search code. For example, the coding in the resource has an is-a relationship with the search concept, and this includes the coding itself.</td> </tr>
  <tr> <td><code>:in</code></td> <td>The search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is in the specified <a href="valueset.html">value set</a>. The reference may be literal (to an address where the value set can be found) or logical (a reference to ValueSet.url). If the server can treat the reference as a literal URL, it does, else it tries to match known logical ValueSet.url values.</td> </tr>
  <tr> <td><code>:not-in</code></td> <td>The search parameter is a URI (relative or absolute) that identifies a value set, and the search parameter tests whether the coding is not in the specified value set.</td> </tr> -->
@@ -897,7 +903,7 @@ the logical id refers to more than one matching resource across different types.
 In order to allow the client to perform a search in these situations the type is specified explicitly: -->
 </p>
 <pre>
- GET [base]/Condition?subject=Patient/23
+ GET [base]/Observation?subject=Patient/23
 </pre>
 <p>
 Это запрос возвращает все ресурсы Condition, у которых "subject" ведёт на ресурс Patient с логическим идентификатором "23". Также определён модификатор, чтобы клиенты могли явно указывать нужный тип:
@@ -906,7 +912,7 @@ logical identifier "23". A modifier is also defined to to allow the client to be
 about the intended type: -->
 </p>
 <pre>
- GET [base]/Condition?subject:Patient=23
+ GET [base]/Observation?subject:Patient=23
 </pre>
 <p>
 Этот запрос возвращает те же результаты, что и предыдущий. Модификатор становится полезным, когда используется в цепочечных запросах, о которых будет рассказано в следующем разделе. Примечание: модификатор <code>[type]</code> нельзя использовать со ссылкой на ресурс, расположенный на другом сервере, поскольку серверу обычно не известно, какой тип имеет этот ресурс. Однако, поскольку это абсолютные ссылки, не может возникнуть неоднозначность относительно типа.
@@ -1014,7 +1020,7 @@ Examples of using composite parameters:
 <table>
  <tr><td width="50%"><b>Search</b></td><td><b>Description</b></td></tr>
  <tr><td><pre> GET [base]/DiagnosticReport?result.code-value-quantity=http://loinc.org|2823-3$gt5.4|http://unitsofmeasure.org|mmol/L</pre></td><td>Search for all diagnostic reports that contain on observation with a potassium value of >5.4 mmol/L (UCUM)</td></tr>
- <tr><td><pre> GET [base]/Observation?component-code-value-quantity=http://loinc.org|8480-6$lt60</pre></td><td>Search for all the observations with a systolic blood pressure &lt; 60. Note that in this case, the unit is assumed (eveyone uses mmHg)</td></tr>
+ <tr><td><pre> GET [base]/Observation?component-code-value-quantity=http://loinc.org|8480-6$lt60</pre></td><td>Search for all the observations with a systolic blood pressure &lt; 60. Note that in this case, the unit is assumed (everyone uses mmHg)</td></tr>
  <tr><td><pre> GET [base]/Group?characteristic-value=gender$mixed</pre></td><td>Search for all groups that have a characteristic "gender" with a text value of "mixed"</td></tr>
 </table>
 
@@ -1034,7 +1040,7 @@ and the parameter value <code>param=xx\\xx</code> indicates a literal value of <
 <p>
 This specification defines this additional form of escape
 for a reason. The classic <code>%xx</code> escaping which is part of 
-normal HTTP URLs ensures thatthe character appears at the FHIR server 
+normal HTTP URLs ensures that the character appears at the FHIR server 
 correctly, while the <code>,</code> versus <code>\</code> becomes important once it has 
 reached the server and the query is parsed. Therefore:
 </p>
@@ -1127,7 +1133,7 @@ In addition, a system can support searching by lists by their logical function. 
  GET [base]/AllergyIntolerance?patient=42&amp;_list=$current-allergies
 </pre>
 <p>
-This request will return all allergies in patient 42's "Currrent Allergy List".
+This request will return all allergies in patient 42's "Current Allergy List".
 The server returns all relevant AllergyIntolerance resources, and can also choose
 to return the list. For further information, refer to the <a href="lifecycle.html#current">definition of "$current-allergies"</a>,
 and the <a href="list-operations.html#find">List Operation "Find"</a>.
@@ -1162,36 +1168,80 @@ GET [base]/Observation?_filter=name eq http://loinc.org|1234-5 and subject.name 
 The <code>_filter</code> parameter is described in detail on the <a href="search_filter.html">"_Filter Parameter" page</a>.
 </p>
 
+<a name="type"> </a>
+<a name="_type"> </a>
+<h4>Specifying the type of Resource</h4>
+
+<p>
+Normally, a search is initiated against a known type of resource, e.g.
+</p>
+<pre>
+GET [base]/Observation?params...
+</pre>
+<p>
+However in some circumstances, a search is executed where there is no fixed 
+type of resource:
+</p>
+<ul>
+ <li>Using search across all resource types (GET [base]?params...)</li>
+ <li>Using search with <a href="messaging.html">messaging</a></li>
+ <li>Some search specifications inside other services e.g. decision support usage</li>
+</ul>
+<p>
+In these circumstances, the search criteria may need to specify one or more  
+resource types that the search applies to. This can be done by using the 
+<code>_type</code> parameter:
+</p>
+<pre>
+GET [base]/Observation?_type=Observation,Condition&amp;other params...
+</pre>
+<p>
+Note that the only search parameters that be can be used in global search like 
+this are the base parameters that apply to all resources. In other contexts,
+searches on multiple types may allow resource specific search parameters, but 
+implementation experience will be required to determine the correct behaviour in 
+these cases.
+</p>
+
 <a name="return"> </a>
 <h3>Managing Returned Resources</h3>
 
 <a name="sort" />
+<a name="_sort" />
+
 <h4>Sorting</h4>
 <p>
 The client can indicate which order to return the results by
-using the parameter <code>_sort</code>, which can have a value of one of the search parameters.
-The <code>_sort</code> parameter can repeat to indicate sort order, with the repeats indicating
-a lower sort priority sequentially.
+using the parameter <code>_sort</code>, which can contains a 
+comma-separated list of sort rules in priority order:
+</p>
+<pre>
+GET [base]/Observation?_sort=status,-date,category
+</pre>
+<p>
+Each item in the comma separated list is a search parameter, 
+optionally with a '-' prefix. The prefix indicates decreasing 
+order; in it's absence, the parameter is applied in increasing order. 
 </p>
 <p>
-The <code>_sort</code> parameter takes one of two qualifiers, <code>:asc</code> and <code>:desc</code>, which specify
-ascending and descending sort order respectively. The default value is <code>:asc</code>.
-</p>
-<p>
-Note:
+Notes:
 </p>
 <ul>
- <li>When sorting, the actual sort value used is not returned explicitly
-by the server for each resource, just the resource contents.</li>
- <li>To sort by relevance, use <code>_sort:asc=_score</code>.</li>
- <li>The server returns the sort it performs as part of the returned search parameters (see <a href="#conformance">below</a>).</li>
+ <li>When sorting, the actual sort value used is not returned explicitly by 
+     the server for each resource, just the resource contents.</li>
+ <li>To sort by relevance, use <code>_score</code>.</li>
+ <li>The server returns the sort it performs as part of the returned 
+     search parameters (see <a href="#conformance">below</a>).</li>
  <li>A search parameter can refer to an element that repeats, and therefore
-there can be multiple values for a given search parameter for a single
-resource. In this case, the sort is based on the item in the set of
-multiple parameters that comes earliest in the specified sort order
-when ordering the returned resources.</li>
-  <li>When sorting on string search parameters, sorting SHOULD be performed on a case-insensitive basis. Accents may either be ignored or sorted as per realm convention. Note: 
-   Consistency of sorting across servers isn't as essential as consistency of filtering (even that is variable). The purpose of sorting is to provide data in a "reasonable" order for end-users. 
+     there can be multiple values for a given search parameter for a single
+     resource. In this case, the sort is based on the item in the set of
+     multiple parameters that comes earliest in the specified sort order
+     when ordering the returned resources.</li>
+  <li>When sorting on string search parameters, sorting SHOULD be performed 
+     on a case-insensitive basis. Accents may either be ignored or sorted as 
+     per realm convention. Note: Consistency of sorting across servers isn't 
+     as essential as consistency of filtering (even that is variable). The 
+     purpose of sorting is to provide data in a "reasonable" order for end-users. 
    "Reasonable" may vary by realm, particularly for accented characters.</li>
 </ul>
 
@@ -1229,8 +1279,14 @@ is proceeding.
 <p>
 Note: The combination of <code>_sort</code> and <code>_count</code> can be used to return
 only the latest resource that meets a particular criteria - set the
-critera, and then sort by date in descending order, with <code>_count=1</code>.
+criteria, and then sort by date in descending order, with <code>_count=1</code>.
 This way, the last matching resource will be returned.
+</p>
+
+<p>
+if <code>_count</code> has the value 0, this shall be treated the same as <code>_summary=count</code>: the
+server resturns a bundle that reports the total number of matches in Bundle.total, 
+but with no entries, and no prev/next/last links.
 </p>
 
 <a name="include"> </a>
@@ -1278,7 +1334,7 @@ Parameter values for both <code>_include</code> and <code>_revinclude</code> hav
  <li>(Optional) A specific of type of target resource (for when the search parameter refers to multiple possible target types)</li>
 </ol>
 <p>
-<code>_include</code> and <code>_reverseInclude</code> parameters do not include multiple values. Instead, the 
+<code>_include</code> and <code>_revInclude</code> parameters do not include multiple values. Instead, the 
 parameters are repeated for each different include criteria.
 </p>
 <p>
@@ -1311,7 +1367,7 @@ GET [base]/Observation?_include=Observation:related-target&amp;criteria...
 GET [base]/Observation?_include:recurse=Observation.related-target&amp;criteria...
 </pre>
 <p>
-Both <code>_include</code> and <code>_reverseInclude</code> use the wild card "*" for the search parameter
+Both <code>_include</code> and <code>_revInclude</code> use the wild card "*" for the search parameter
 name, indicating that any search parameter of type=reference be included.  Though 
 though both clients and servers need to take care not to request or return too many resources
 when doing this. Most notably, using recursive inclusions might lead to the retrieval of the 
@@ -1443,7 +1499,7 @@ of the client.
 <p>
 If the <code>_include</code> path selects a reference that refers to an entity that is not a Resource, such as
 an image attachment, the server may also elect to include this in the returned
-results as a <a href="compartments.html#binary">Binary</a> resource. For example, the include
+results as a <a href="binary.html">Binary</a> resource. For example, the include
 path may point to an attachment which is by reference, like this:
 </p>
 <pre>
@@ -1510,7 +1566,7 @@ resource will be retrieved when the user selects a resource.
 Servers are not obliged to return just a summary as requested. There are only 
 a limited number of summary forms defined for resources in order to allow servers 
 to store the summarized form(s) in advance. Servers SHOULD mark the resources with the 
-tag <a href="v3/SecurityIntegrityObservationValue/index.html#SUBSETTED"><code>SUBSETTED</code></a> 
+tag <a href="v3/SecurityIntegrityObservationValue/cs.html#SUBSETTED"><code>SUBSETTED</code></a> 
 to ensure that the incomplete resource is not acidentally used to overwrite 
 a complete resource.
 </p>
@@ -1536,7 +1592,7 @@ does not apply to <a href="#include">included resources</a>.
 Servers are not obliged to return just the requested elements. 
 Servers SHOULD always return mandatory elements whether they are 
 requested or not. Servers SHOULD mark the resources with the 
-tag <a href="v3/SecurityIntegrityObservationValue/index.html#SUBSETTED"><code>SUBSETTED</code></a> 
+tag <a href="v3/SecurityIntegrityObservationValue/cs.html#SUBSETTED"><code>SUBSETTED</code></a> 
 to ensure that the incomplete resource is not actually used to overwrite 
 a complete resource.
 </p>

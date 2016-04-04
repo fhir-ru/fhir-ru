@@ -14,7 +14,7 @@
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 Этот особый ресурс используется только для параметров операций, поэтому у него нет своей RESTful точки взаимодействия. Дополнительную информацию см. на странице <a href="operations.html">Операции</a>.
-<!-- This special resource has no other use than for operation parameters, and there is no RESTful end=point associated with it. 
+<!-- This special resource has no other use than for operation parameters, and there is no RESTful end-point associated with it. 
 For further information, see the <a href="operations.html">operations</a> page. -->
 </p>
 </div>

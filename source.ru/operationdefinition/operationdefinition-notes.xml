@@ -26,7 +26,7 @@ resources, not data types etc. -->
 <p>
 Есть два способа передачи ресурсов операциям: напрямую или по ссылке. Поскольку эти две формы имеют очень различное поведение и последствия, определение операции различается для них.
 <!-- There are two ways to pass resources to an operation - directly, or by reference.
-Since the two forms havevery different behaviors and consequences, the definition of 
+Since the two forms have very different behaviors and consequences, the definition of 
 an Operation distinguishes between these two.  -->
 </p>
 <p>

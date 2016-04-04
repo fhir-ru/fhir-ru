@@ -5,12 +5,13 @@
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 Observations (наблюдения) являются центральным элементом в здравоохранении, используемыми для подтверждения диагнозов, мониторинга прогресса, определения базисных линий и шаблонов, и даже для ввода демографических показателей. Большинство наблюдений представляют собой утверждения в виде простых пар имя/значение с некоторыми метаданными, однако же другие наблюдения группируют другие наблюдения вместе логически, или даже являются многокомпонентными наблюдениями. 
-Обратите внимание, что ресурс <a href="diagnosticreport.html">DiagnosticReport</a> обеспечивает клинический контекст для целого ряда наблюдений. Предполагаемые варианты использования ресурса Observation включают:
+Обратите внимание, что ресурс <a href="diagnosticreport.html">DiagnosticReport</a> обеспечивает клинический контекст для целого ряда наблюдений.
 <!-- Observations are a central element in healthcare, used to support diagnosis, monitor progress, determine baselines and patterns 
 and even capture demographic characteristics.  Most observations are simple name/value pair assertions with some metadata, 
 but some observations group other observations together logically, or even are multi-component observations.
 Note that the  <a href="diagnosticreport.html">DiagnosticReport</a> resource 
-provides a clinical or workflow context for a set of observations. Expected uses for the Observation resource include: -->
+provides a clinical or workflow context for a set of observations. --> </p>
+<p>Варианты использования ресурса Observation:<!-- Uses for the Observation resource include: -->
 </p>
 <ul>
   <li>основные показатели состояния организма: температура, кровяное давление, частота дыхания<!-- Vital signs: temperature, blood pressure, respiration rate --></li>
@@ -25,8 +26,23 @@ provides a clinical or workflow context for a set of observations. Expected uses
   <li>Социальный анамнез: употребление табака, семейная поддержка, когнитивный статус<!-- Social history: tobacco use, family supports, cognitive status --></li>
   <li>Основные характеристики: состояние беременности, подтверждение смерти<!-- Core characteristics: pregnancy status, death assertion --></li>
 </ul>
-<p>
-Как правило, наблюдение содержит либо некоторое значение (например измерение содержания глюкозы в крови), либо ряд связанных наблюдений (например electrolyte panel), но не и то, и другое. Несколько видов наблюдений (например оценка по шкале Апгар) могут иметь и значение, и связанные наблюдения (для Апгар это числовой общий балл и пять переменных, чьи баллы подсчитываются для получения общего балла).
+
+<p>The following core <a href="profiling.html">profiles</a> for the Observation resource have been defined as well. <strong>To be conformant to FHIR, implementations SHALL conform to these profiles:</strong> 
+</p>
+<ul>
+  <li><a href="observation-vitalsigns.html">Vital signs:</a> temperature, blood pressure, respiration rate</li>
+<!--	<li>Laboratory Data</li>
+	<li>Imaging results like bone density or fetal measurements</li>
+	<li>Devices Measurements such as EKG data or Pulse Oximetry data</li>
+  <li>Clinical assessment tools such as APGAR</li>
+  <li>Personal characteristics: height, weight, eye-color</li>
+  --><!--EH 12/7/2014 
+  <li>Diagnoses (Note: trackable conditions, allergies, adverse reactions and more complex structures are handled elsewhere)</li>
+  --><!--
+  <li>Social history: tobacco use, family supports, cognitive status</li>
+  <li>Core characteristics: pregnancy status, death assertion</li>
+</ul>
+<p>Как правило, наблюдение содержит либо некоторое значение (например измерение содержания глюкозы в крови), либо ряд связанных наблюдений (например electrolyte panel), но не и то, и другое. Несколько видов наблюдений (например оценка по шкале Апгар) могут иметь и значение, и связанные наблюдения (для Апгар это числовой общий балл и пять переменных, чьи баллы подсчитываются для получения общего балла).
 <!-- Normally, an observation will have either a value (e.g. a blood glucose measurement) or a set of related observations (e.g. an electrolyte panel) and not both. A few observations (e.g. Apgar store) may have both a value and related observations (for Apgar, a numeric total score and the five variables whose scores are tallied to derive the total score). --></p>
 </div>
 
