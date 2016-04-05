@@ -186,7 +186,7 @@ further advice. All patient records SHALL have a score from 0 to 1, where
 Расширение patient-mpi-match содержит один из <a href="valueset-patient-mpi-match.html">следующих кодов</a>:
 <!-- The patient-mpi-match extension has one of the <a href="valueset-patient-mpi-match.html">following codes</a>: -->
 </p>
-[%codelist-nh http://hl7.org/fhir/ValueSet/patient-mpi-match%]
+[%codelist-nh http://hl7.org/fhir/patient-mpi-match%]
 <p>
 У операции поиска совпадения MPI есть один дополнительный параметр "userid" (идентификатор пользователя), который используется для передачи информации о пользователе от доверенного клиента к MPI. MPI может использовать его, чтобы ограничить возвращаемые возможные совпадения на основе прав пользователя. Например сотрудник, подпадающий под политику безопасности и т. д., 
 вполне может получить другой результат, чем пациент, пытающийся найти

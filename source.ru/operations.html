@@ -34,7 +34,7 @@
 <h3>Executing an Operation</h3>
 
 <p>
-Most Operations are a POST to a FHIR endpoint, where the name of the operations is prefixed by a "dollar sign" ('$') character. For example:
+Operations are executed using a URL derived from the FHIR endpoint, where the name of the operations is prefixed by a "dollar sign" ('$') character. For example:
 </p>
 <pre>
  POST http://fhir.someserver.org/fhir/Patient/1/$everything
@@ -49,8 +49,8 @@ Operations can be invoked on four types of FHIR endpoints:
 <ul>
  <li>The "base" FHIR service endpoint (e.g. http://fhir.someserver.org/fhir): These are operations that operate on the full scale of the server. For example, "return me all extensions known by this server"</li>
  <li>A Resource type (e.g. http://fhir.someserver.org/fhir/Patient): These are operations that operate across all instances of a given resource type</li>
- <li>A Resource instance (e.g. http://fhir.someserver.org/fhir/Patient/1): These are operations involve only a single instance of a Resource, like the $everything operation above does</li>
- <li>A specific version of a resource instance (http://fhir.someserver.org/fhir/Patient/1/_history/4): These operations involve only a specific version of a single instance of a FHIR Resource and extists only to allow manipulation of profile and tag metadata of past versions</li>
+ <li>A Resource instance (e.g. http://fhir.someserver.org/fhir/Patient/1): These are operations that involve only a single instance of a Resource, like the $everything operation above does</li>
+ <li>A specific version of a resource instance (http://fhir.someserver.org/fhir/Patient/1/_history/4): These operations involve only a specific version of a single instance of a FHIR Resource and exists only to allow manipulation of profile and tag metadata of past versions</li>
 </ul>
 <p>
 The body of the invocation contains a special infrastructure resource called <a href="parameters.html">Parameters</a>,
@@ -60,12 +60,12 @@ formatted as search parameter types.
 </p>
 <p>
 Upon completion, the operation returns another <code>Parameters</code> resource, containing one or 
-more output parameters. This means that a FHIR operation can take any parameter <i>in</i> and return a set of 
+more output parameters. This means that a FHIR operation can take a set of zero or more parameters <i>in</i> and return a set of zero or more 
 result parameters <i>out</i>. Both the body of the POST and the returned result are always a Resource. 
 </p>
 <p>
-Some Operations with simple input types and a single Resource output parameter named '<code>return</code>' can be invoked using a GET directly, with parameters as HTTP URL parameters. 
-In this case, the response is simply the resource that is the return value, with no Parameters resource.
+Some Operations with primitive input types and a single Resource output parameter named '<code>return</code>' can be invoked using a GET directly, with parameters as HTTP URL parameters. 
+In this case, the response is simply the resource that is the return value, with no Parameters resource. These kinds of usage are discussed further below.
 </p>
 
 <a name="defined"> </a>
@@ -114,6 +114,7 @@ defined here.
  <li>Тип - тип данных или тип ресурса</li>
  <li>Profile - <a href="structuredefinition.html">StructureDefinition</a>, который применяет дополнительные ограничения к ресурсу</li>
  <li>Документация - описание применения параметра</li>
+ <li>(Optional) Search Type - if the type is a string, and the parameter is being used like a search parameter, which kind of search type applies</li>
 </ul>
 <p>
 Имеется специальный тип параметра "Tuple", у которого есть дополнительные части. Каждая часть содержит ту же самую  информацию, что и сам параметр, кроме использования, которое берется из параметра, частью которого оно является.
@@ -143,7 +144,7 @@ defined here.
 Операции обычно выполняются синхронно: клиент отправляет серверу запрос, который содержит входные (<i>in</i>) параметры операции, и сервер отвечает выходными (<i>out</i>) параметрами операции.
 <!-- Most commonly, operations are executed synchronously - the client sends a request
 to the server with the operation in parameters, and the server replies with the 
-operation out parameters.  -->
+operation's <i>out</i> parameters.  -->
 </p>
 
 <p>
@@ -170,13 +171,18 @@ The submitted content is the special <a href="parameters.html">Parameters</a> fo
 with respect to <a href="http.html#mime-type">content types</a>. -->
 </p>
 <p>
-Если у операции нет параметров с комплексными типами (включая ресурсы), и эта операция является идемпотентной (см. <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">определение термина <i>идемпотентный</i> в спецификации HTTP</a>), операцию можно вызывать выполнением операции HTTP GET, где все параметры добавляются к URL-адресу в его поисковую часть (например после символа '?'). Серверы ДОЛЖНЫ поддерживать этот метод вызова.
-<!-- If there are no parameters with complex types (including resources) to the operation, and the operation
+Если все параметры операции являются <a href="datatypes.html#primitive">примитивными типами</a>, и эта операция является идемпотентной (см. <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">определение термина <i>идемпотентный</i> в спецификации HTTP</a>), операцию можно вызывать выполнением операции HTTP GET, где все значения параметров добавляются к URL-адресу в его поисковую часть (например после символа '?'). Серверы ДОЛЖНЫ поддерживать этот метод вызова.
+<!-- If there are all the parameters for the operation are <a href="datatypes.html#primitive">primitive types</a>, and the operation
 is <i>idempotent</i> (see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP specification 
 definition of idempotent</a>), the operation may be invoked by performing an HTTP GET operation where 
-all of the parameters are appended to the URL in the search portion of the URL (e.g. after the '?' character).
+all of the values of the parameters are appended to the URL in the search portion of the URL (e.g. after the '?' character).
 Servers SHALL support this method of invocation. -->
 </p>
+<p>
+If the only parameter to the operation is a resource, then the operation can also executed 
+by a POST with that parameter as the body of the request.
+</p>
+
 <p>
 Серверы МОГУТ также поддерживать метод отправки параметров с полей формы <i>multi-part/form-data</i>, который может быть полезен при тестировании операции с помощью HTML-форм.
 <!-- Servers MAY choose to support submission of the parameters <i>multi-part/form-data</i> method as well,
@@ -190,7 +196,7 @@ which can be useful when testing an operation using HTML forms. -->
 <p>
 Если операция выполняется успешно, возвращается HTTP статус-код 200 ОК. HTTP статус-код вида 4xx или 5xx говорит об ошибке, при этом может быть возвращен <a href="operationoutcome.html">OperationOutcome</a>. 
 Пользовательским агентам следует отметить, что серверы могут переадресовывать клиента для аутентификации в ответ на запрос операции.
-<!-- If an operation succeeds, an HTTP Status code of 200 OK is retruned. An
+<!-- If an operation succeeds, an HTTP Status code of 200 OK is returned. An
 HTTP status code of 4xx or 5xx indicates an error, and an
 <a href="operationoutcome.html">OperationOutcome</a> may be returned.
 User agents should note that servers may issue redirects, etc. to
@@ -221,7 +227,7 @@ not used, and the response is simply the resource itself. -->
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>DSTU Note:</b> there is presentlly no mechanism to execute
+<b>DSTU Note:</b> there is presently no mechanism to execute
 operations asynchronously in a RESTful manner. However, the <a href="messaging.html#operations">messaging page</a>
 describes a way to execute operations asynchronously using messages.
 </p>

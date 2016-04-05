@@ -4,6 +4,14 @@
 <a name="scope"> </a>
 <h2>Область применения и использование</h2>
 <p>
+<b>NOTE:</b> This resource is slated to be refactored and reduced in scope as some of its functionality
+is taken over by the <a href="task.html">Task</a>
+resource as part of the FHIR Workflow refactoring.  Readers of this resource are encouraged to
+review the Task resource and consider using it instead and/or to provide feedback if they feel
+it will be inadequate to satisfy the use-cases associated with this resource and to express
+opinions about which purposes they feel ProcessRequest and ProcessResponse should be retained for.
+</p>	
+<p>
 Ресурс ProcessRequest позволяет описать действие для выполнения над существующим ресурсом или ресурсами, и предоставляет дополнительную вспомогательную информацию для поддержки этого действия. На данный момент определены следующие действия: отменить, опросить, повторно обработать, получить статус (cancel, poll, 
 reprocess, status).
 <!-- The ProcessRequest resource allows for the specification of an action to be performed on an existing resporce or resources and the 
@@ -44,6 +52,7 @@ support a 'Get Operation', for the retrieval of pended, held, resources. -->
 <!-- A simple Poll request, one which doesn't specify: request, include, exclude or period; would return
 any pended resource. Specific types of business behaviors may be supported by providing values for the
 filtering elements, for example: -->
+</p>
 <ul>
 <li>Получить любой ожидающий обработки ресурс - фильтры не указаны</li>
 <li>Получить отложенный ответ на иск - указать ссылку на ресурс Claim в "запросе"</li>
@@ -57,9 +66,7 @@ filtering elements, for example: -->
 <li>Get a payment reconciliation - specify a 'period' which contains the expected reconciliation 
 creation date, and specify 'PaymentReconciliation' as an 'include'</li>  -->
 </ul> 
-</p>
 
-<p>
 
 <p>
 <b>Reprocess</b> указывает на ресурс, который должен быть повторно обработан, например на повторное вынесение решения по иску, или  повторная проверка образца для анализа или диагностического изображения, и предоставляет как вспомогательную информацию для повторной обработки, так и очередь объектов для повторной обработки.
@@ -85,7 +92,6 @@ provides supporting information for the status request. -->
 </p>
 
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
-</p>
 </div>
 
 <!-- (recommended): 

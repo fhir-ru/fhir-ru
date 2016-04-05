@@ -115,8 +115,8 @@ by working through the following list, in order: -->
  <li>an OID registered in the <a href="http://hl7.org/oid">HL7 OID registry</a> - if a code system is registered here, the OID SHOULD be used (using the syntax urn:oid:[oid])</li> -->
 </ul>
 <p>
-Если название кодовой системы удалось определить по этому списку, и нет возможности проконсультироваться с ее издателем, реализаторам придется выбирать URI для использования. Приоритетом будет выбор уникального значения, которое не может быть случайно использовано другим реализатором для других целей или для той же цели, но с другой областью действия.
-<!-- If a code system is resolved by this list, and there is no publisher to consult, implementers 
+Если название кодовой системы не удалось определить по этому списку и нет возможности проконсультироваться с ее издателем, реализаторам придется выбирать URI для использования. Приоритетом будет выбор уникального значения, которое не может быть случайно использовано другим реализатором для других целей или для той же цели, но с другой областью действия.
+<!-- If a code system is not resolved by this list, and there is no publisher to consult, implementers 
 will have to choose a URI to use. The priority should be to choose a unique value that won't
 accidently be used by another implementer for a different purpose - or a very similar purpose
 with a different scope.  -->
@@ -342,7 +342,7 @@ followed: -->
 </p>
 <table class="grid">
  <tr><td>required</td><td>Для совместимости экземпляры этого элемента ДОЛЖНЫ включать код из заданного набора значений<!-- To be conformant, instances of this element SHALL include a code from the specified value set --></td></tr>
- <tr><td>extensible</td><td>Для совместимости экземпляры этого элемента должны включать код из указанного набора значений, если есть подходящий код в этом наборе значений для передаваемого концепта. Если набор значений не содержит подходящего для этого концепта кода (с точки зрения человека), то вместо него могут быть включены альтернативные кодинги (из различных кодовых систем, включая локальные) или (data type allowing) текст.<!-- To be conformant, instances of this element must include a code from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the valueset does not cover the concept (based on human review), alternate codings (from different code systems, including local ones) or (data type allowing) text) may be included instead. --></td></tr>
+ <tr><td>extensible</td><td>Для совместимости экземпляры этого элемента должны включать код из указанного набора значений, если есть подходящий код в этом наборе значений для передаваемого концепта. Если набор значений не содержит подходящего для этого концепта кода (с точки зрения человека), то вместо него могут быть включены альтернативные кодинги (из различных кодовых систем, включая локальные) или (data type allowing) текст.<!-- To be conformant, instances of this element must include a code from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the value set does not cover the concept (based on human review), alternate codings (from different code systems, including local ones) or (data type allowing) text) may be included instead. --></td></tr>
  <tr><td>preferred</td><td>Поощряется в экземплярах использовать указанные коды в целях совместимости, но не обязательно делать это, чтобы они считались совместимыми<!-- Instances are encouraged, to draw from the specified codes for interoperability purposes but are not required to do so to be considered conformant --></td></tr>
  <tr><td>example</td><td>Не ожидается и даже не поощряется в экземплярах использовать указанный набор значений. Такой набор значений просто показывает примеры типов концептов, предназначенных для использования <!-- Instances are not expected or even encouraged to draw from the specified value set.  The value set merely provides examples of the types of concepts intended to be included --></td></tr>
 </table>
@@ -404,7 +404,7 @@ may state rules on which codes can be used, but cannot select new or additional 
 <p>
 <i>Чтобы считаться совместимыми, экземпляры этого элемента ДОЛЖНЫ включать код из указанного набора значений, если хоть один из кодов в наборе значений подходит к передаваемому концепту. Если набор значений не покрывает этот концепт (с точки зрения человека), вместо него можно использовать альтернативный system.code.
 <!-- To be conformant, instances of this element SHALL include a code from the specified value set if any of the codes within the value set 
-can apply to the concept being communicated.  If the valueset does not cover the concept (based on human review), an alternate 
+can apply to the concept being communicated.  If the value set does not cover the concept (based on human review), an alternate 
 system.code may be used instead. --></i>
 </p>
 <p>

@@ -103,9 +103,9 @@ FHIR-документы - для документов, которые созда
 При представлении документа человеку приложения должны предъявлять объединенные описательные части в следующем порядке:
 </p>
 <ol>
+ <li>The <a href="composition-definitions.html#Composition.subject">subject resource</a> Narrative</li>
  <li>Описательная часть ресурса <a href="composition.html">Composition</a></li>
  <li>Описательная часть <a href="composition-definitions.html#Composition.subject">субъекта ресурса</a></li>
- <li>Описательные части <a href="composition-definitions.html#Composition.section.text">section.text</a></li>
 </ol>
 <p>
 The presentation of the document is called the 'attested content' of the document. Additional
@@ -115,6 +115,11 @@ are not attested content. Specifically, the <code>Composition.attester</code> at
 </p>
 <p>
 Описательная часть ресурса Composition должна суммировать важные части заголовка документа, которые требуются для установления клинического контекста документа (отличного от субъекта, который отображается сам по себе (in its own right). Фактически чтобы построить скомбинированную описательную часть, просто склейте все описательные &lt;div&gt;-фрагменты вместе. <!-- todo: title -->
+</p>
+<p>
+If the document is presented in a different order from that given above, 
+it may not represent the original attested content. Implementation Guides may 
+restrict docuemnt narrative and document display behaviour further.
 </p>
 <p>
 <a href="downloads.html#refimpl">XML Tools reference implementation</a> включает в себя XSLT-преобразование, конвертирующее XML-документ в XHTML, готовый для показа в браузере.
@@ -210,7 +215,7 @@ that it changes the clinical meaning of the content.
    
  <tr> <td><a href="compartments.html#binary">[baseurl]/Binary</a></td> <td>Document Bundle</td> <td>Просто сохраняет весь документ в виде последовательности байтов и по запросу возвращает точно эту самую последовательность. Нет способа обнаружить содержимое в конечной точке /Binary, поэтому обычно это ассоциируется с <a href="documentreference.html">Document Reference</a>, чтобы приложения могли найти и обработать документ, хотя это и не обязательно.</td> </tr>
    
- <tr> <td><a href="http.html#transaction">[baseurl]</a> (e.g. a transaction)</td> <td>Document Bundle</td> <td>Игнорирует факт, что комплект - это документ, и обрабатывает все ресурсы, которые он содержит как самостоятельные ресурсы. Клиентам НЕ СЛЕДУЕТ ожидать, что сервер, который получает документ, отправленный с помощью этого метода, будет в состоянии пересобрать документ точно. (Даже если сервер может пересобрать документ (см. ниже), нельзя ожидать, что результат будет в том же порядке и т. п. Соответственно, подпись документа, весьма вероятно, станет недействительной.</td> </tr>
+ <tr> <td><a href="binary.html">[baseurl]/Binary</a> (например transaction)</td> <td>Document Bundle</td> <td>Игнорирует факт, что комплект - это документ, и обрабатывает все ресурсы, которые он содержит, как самостоятельные ресурсы. Клиентам НЕ СЛЕДУЕТ ожидать, что сервер, который получает документ, отправленный с помощью этого метода, будет в состоянии пересобрать документ точно. (Даже если сервер может пересобрать документ (см. ниже), нельзя ожидать, что результат будет в том же порядке и т. п. Соответственно, подпись документа, весьма вероятно, станет недействительной.</td> </tr>
    
  <tr> <td><a href="messaging.html#mailbox">[baseurl]/$mailbox</a></td> <td>Document Bundle</td> <td>Отправляет документ на сервер для обработки. Конкретный метод обработки, который совершает сервер, является свободным выбором сервера. Он МОЖЕТ совершить одно или более из этих действий:
   <ul>

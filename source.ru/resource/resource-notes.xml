@@ -19,7 +19,7 @@ the same logical identity. -->
 <p>
 Буквальный идентификатор ресурса - действительный HTTP-адрес, по которому он доступен - это абсолютный URL, построенный из базового адреса сервера, на котором он находится, типа ресурса и логического идентификатора, например http://test.fhir.org/rest/Patient/123 (где 123 - это логический идентификатор). Обратите внимание, что реализациям НЕ СЛЕДУЕТ предполагать, что идентификатор ресурса всегда разрешается на какой-то сервер буквально - он может быть временно не доступен, либо не доступен из-за политики безопасности (например брандмауэры), либо, в некоторых случаях, он может не существовать в действительности (например при использовании ресурса вне среды RESTful). Ресурсы ссылаются друг на друга по своим идентификаторам. Такие ссылки могут быть абсолютными или относительными (см. <a href="references.html">Resource References</a> для дальнейшего обсуждения).
 Копирование или перемещение ресурсов с одного сервера на другое означает, что ресурсы получают новые идентификаторы. Более подробную информацию см. в <a href="managing.html">Managing Resource Identity</a>.
-<!-- The literal identity of a resource - the actual HTTP address it which it can be accessed - is an 
+<!-- The literal identity of a resource - the actual HTTP address at which it can be accessed - is an 
 absolute URL constructed from the server base address at which it is found, the resource type, and the Logical Id, 
 such as http://test.fhir.org/rest/Patient/123 (where 123 is the Logical Id). Note that 
 implementations SHOULD NOT assume that the identity of a resource is always resolvable 
@@ -245,8 +245,10 @@ ValueSet.meta.versionId = 1 and the other has ValueSet.id = x2, ValueSet.version
 <a name="implicitRules"> </a>
 <h3>Implicit Rules</h3>
 <p>
-A reference to a <a href="profiling.html#agreement">custom agreement</a> about how the resources are used 
-that was followed when the resource was constructed, and which must be understood when processing the content.
+A reference to a custom agreement that describes 
+how the resource is being used (e.g. an <a href="profiling.html#glossary">implementation guide</a>)  
+that was followed when the resource was constructed, where the implemenation guide must be 
+known and understood in order to safely processing the content.
 </p>
 <p>
 Asserting this rule set restricts the content to be only understood by a limited set of 
@@ -257,10 +259,12 @@ data in a generally exchangeable sense.
 </p>
 <p>
 Note that resources are almost always constructed following some custom agreement.
-Best practice is that such agreements make all knowledge about the content 
-of the resource explicit; if custom agreements do this, and declare their extensions
-as required, then it is not necessary to understand the agreement when processing the 
-resource content.
+Best practice - which is recommended through out the conformance resources - is that 
+such agreements make all knowledge about the content of the resource explicit in 
+the content of the resource (e.g. no default values in profiles); if custom agreements 
+follow this advice, and declare their extensions as required, then it is not necessary 
+to understand the agreement in order to safely process the resource content. For this 
+reason, use of <code>implicitRules</code> is rare.
 </p>
 
 <a name="lang"> </a>
@@ -385,16 +389,21 @@ All resources in this specification are assigned a "Maturity Level", known as FM
 The FMM level can be used by implementers to judge how advanced - and therefore stable - a resource is. The following FMM levels are defined:
 </p>
 <ol start="0">
- <li>the resource or profile (artifact) has been published on the current build</li>
+ <li>the resource or profile (artifact) has been published on the current build.  This level is synonymous with Draft.</li>
  <li>FMM0 + the artifact produces no warnings during the build process and the responsible WG has indicated that they consider the artifact substantially complete and ready for implementation</li>
- <li>FMM1 + the artifact has been tested and successfully exchanged between at least three independently developed systems at a connectathon whose results have been reported to the FHIR Management Group</li>
+ <li>FMM1 + the artifact has been tested and successfully exchanged between at least three independently developed systems leveraging at least 80% of the core data elements using semi-realistic data and scenarios based on at least one of the declared scopes of the resource (e.g. at a connectathon).  These interoperability results must have been reported to and accepted by the FMG</li>
  <li>FMM2 + the artifact has been verified by the work group as meeting the <a href="http://wiki.hl7.org/index.php?title=DSTU_2_QA_guidelines">DSTU Quality Guidelines</a> and has been subject to a 
- round of formal balloting with at least 10 implementer comments drawn from at least 3 organizations resulting in at least one substantive change</li>
- <li>FMM3 + he artifact has been tested across its scope (see below), published in a formal publication (e.g. DSTU), and implemented in multiple prototype projects. As well, the responsible 
+ round of formal balloting; has at least 10 implementer comments recorded in the tracker drawn from at least 3 organizations resulting in at least one substantive change</li>
+ <li>FMM3 + the artifact has been tested across its scope (see below), published in a formal publication (e.g. STU), and implemented in multiple prototype projects. As well, the responsible 
  work group agrees the resource is sufficiently stable to require implementer consensus for subsequent non-backward compatible changes.</li>
- <li>FMM4 + the artifact has been published in two formal publication release cycles at FMM1+ (i.e. DSTU level) and has been implemented in at least 5 independent production systems in more than one country</li>
+ <li>FMM4 + the artifact has been published in two formal publication release cycles at FMM1+ (i.e. STU level) and has been implemented in at least 5 independent production systems in more than one country</li>
 </ol>
 <p></p>
+<p>Tested across scope means:</p>
+<ul>
+  <li>The FMG has signed off on the list of "example contexts" defined for the artifact</li>
+  <li>For each example context, the artifact has either been: reviewed and approved by a domain expert for that scope area, mapped to an existing implemented scope-area-specific standard or tested in an implementation</li>
+</ul>
 <p>
 The Maturity level is strongly related to stability; the higher the maturity level, the more controls are enforced to restrict breaking changes to the resource.
 For further information, and discussion, see the <a href="http://wiki.hl7.org/index.php?title=FHIR_Maturity_Model">FHIR Wiki</a>.
