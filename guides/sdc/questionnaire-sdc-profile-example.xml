@@ -778,6 +778,11 @@
         <status value="published"/>
         <date value="2012-04-01"/>
         <publisher value="Agency for Healthcare Research and Quality (AHRQ)"/>
+        <useContext>
+          <coding>
+            <code value="Acute Care Hospitals"/>
+          </coding>
+        </useContext>
         <title value="Medication or Other Substance"/>
         <subjectType value="Patient"/>
         <item>
@@ -1453,6 +1458,13 @@
           <linkId value="HERF/SEC01.1"/>
           <text value="PATIENT INFORMATION (COMPLETE ONLY IF INCIDENT)"/>
           <type value="group"/>
+          <enableWhen>
+            <question value="HERF/DE3"/>
+            <answerCoding>
+              <system value="http://AHRQ.org/form/question_identifier#HERF/DE3-cs"/>
+              <code value="A3"/>
+            </answerCoding>
+          </enableWhen>
           <item>
             <text value="Please complete the patient identifiers below. Additional patient information is captured on the Patient Information Form (PIF). (When reporting a perinatal incident that affected a mother and a neonate, please complete the patient identifiers below for the mother (Q8 – Q11) and the neonate (Q12 – Q15). Please also complete a separate PIF for the neonate involved.)"/>
             <type value="display"/>
@@ -1480,6 +1492,13 @@
           <linkId value="HERF/SEC02"/>
           <text value="Patient Information (COMPLETE ONLY IF INCIDENT):"/>
           <type value="group"/>
+          <enableWhen>
+            <question value="HERF/DE3"/>
+            <answerCoding>
+              <system value="http://AHRQ.org/form/question_identifier#HERF/DE3-cs"/>
+              <code value="A3"/>
+            </answerCoding>
+          </enableWhen>
           <item>
             <text value="Please complete the patient identifiers below. Additional patient information is captured on the Patient Information Form (PIF). (When reporting a perinatal incident that affected a mother and a neonate, please complete the patient identifiers below for the mother (Q8 – Q11) and the neonate (Q12 – Q15). Please also complete a separate PIF for the neonate involved.)"/>
             <type value="display"/>
@@ -1813,6 +1832,11 @@
         <status value="draft"/>
         <date value="2013-10-16"/>
         <publisher value="National Cancer Institute (NCI)"/>
+        <useContext>
+          <coding>
+            <code value="CRF"/>
+          </coding>
+        </useContext>
         <title value="Diagnosis NCI Standard Template"/>
         <item>
           <linkId value="3921053v1.0"/>
@@ -2483,6 +2507,16 @@
         <status value="published"/>
         <date value="2013-03-22"/>
         <publisher value="National Cancer Institute (NCI)"/>
+        <useContext>
+          <coding>
+            <code value="CRF"/>
+          </coding>
+        </useContext>
+        <useContext>
+          <coding>
+            <code value="Demographic"/>
+          </coding>
+        </useContext>
         <title value="Demography NCI Standard Template"/>
         <item>
           <linkId value="3702891v4.0"/>
@@ -11360,6 +11394,11 @@
         <status value="published"/>
         <date value="2012-08-15"/>
         <publisher value="National Cancer Institute (NCI)"/>
+        <useContext>
+          <coding>
+            <code value="CRF"/>
+          </coding>
+        </useContext>
         <title value="Adverse Event/Serious Adverse Event CTCAE v4 NCI Standard Template"/>
         <item>
           <linkId value="3556213v2.0"/>
