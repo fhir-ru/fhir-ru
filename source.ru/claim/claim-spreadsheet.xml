@@ -3046,7 +3046,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Страхование или план медицинского обслуживания<!-- Insurance or medical plan --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Страховка или план медицинского обслуживания<!-- Insurance or medical plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Финансовый инструмент, с помощью которого предоставляется платежная информация для здравоохранения<!-- Financial instrument by which payment information for health care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -3087,7 +3087,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Позиция услуги.<!-- A service line item. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Для поддержания порядка в страховых покрытиях<!-- To maintain order of the coverages. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Для упорядочивания пунктов в страховых покрытиях.<!-- To maintain order of the coverages. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3256,7 +3256,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на предварительное разрешение/определение<!-- Pre-Authorization/Determination Reference --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Список ссылок от страховой компании, к которой эти услуги относятся.<!-- A list of references from the Insurer to which these services pertain. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Перечень ссылок от страховой компании, к которой эти услуги относятся.<!-- A list of references from the Insurer to which these services pertain. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Для предоставления каких-либо ссылок на предварительное определение или предварительное разрешение.<!-- To provide any pre=determination or prior authorization reference. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
