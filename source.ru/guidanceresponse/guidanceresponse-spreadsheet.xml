@@ -1047,7 +1047,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылка на модуль знаний<!-- A reference to a knowledge module --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A reference to the knowledge module that was invoked</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на модуль знаний, который был вызван<!-- A reference to the knowledge module that was invoked --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1171,7 +1171,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Proposed actions, if any</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Действия, предложенные к выполнению, если есть<!-- Proposed actions, if any --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Действия, если таковые имеются, полученные в результате оценки артефакта<!-- The actions, if any, produced by the evaluation of the artifact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1202,7 +1202,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Unique identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный идентификатор<!-- Unique identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор действия<!-- A unique identifier for the action -->. The identifier SHALL be unique within the container in which it appears, and MAY be universally unique</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1233,7 +1233,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">User-visible label for the action (e.g. 1. or A.)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Видимый пользователю номер действия( (например 1. или А.)<!-- User-visible label for the action (e.g. 1. or A.) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Видимый пользователю номер действия<!-- A user-visible label for the action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1264,9 +1264,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">User-visible title</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Видимое пользователю название<!-- User-visible title --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Наименование действия<!-- The title of the action --> displayed to a user</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Наименование действия, отображаемое пользователю<!-- The title of the action displayed to a user --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1295,9 +1295,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Short description of the action</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Краткое описание действия<!-- Short description of the action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Краткое описание действия<!-- A short description of the action --> used to provide a summary to display to the user</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Краткое описание действия для отображения пользователю<!-- A short description of the action used to provide a summary to display to the user --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
