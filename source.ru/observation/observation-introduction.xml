@@ -43,7 +43,7 @@ provides a clinical or workflow context for a set of observations. --> </p>
   <li>Core characteristics: pregnancy status, death assertion</li>
 </ul>
 <p>Как правило, наблюдение содержит либо некоторое значение (например измерение содержания глюкозы в крови), либо ряд связанных наблюдений (например electrolyte panel), но не и то, и другое. Несколько видов наблюдений (например оценка по шкале Апгар) могут иметь и значение, и связанные наблюдения (для Апгар это числовой общий балл и пять переменных, чьи баллы подсчитываются для получения общего балла).
-<!-- Normally, an observation will have either a value (e.g. a blood glucose measurement) or a set of related observations (e.g. an electrolyte panel) and not both. A few observations (e.g. Apgar store) may have both a value and related observations (for Apgar, a numeric total score and the five variables whose scores are tallied to derive the total score). --></p>
+Normally, an observation will have either a value (e.g. a blood glucose measurement) or a set of related observations (e.g. an electrolyte panel) and not both. A few observations (e.g. Apgar store) may have both a value and related observations (for Apgar, a numeric total score and the five variables whose scores are tallied to derive the total score).</p> --></ul>
 </div>
 
 
