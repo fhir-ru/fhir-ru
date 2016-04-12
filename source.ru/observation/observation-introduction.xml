@@ -27,10 +27,11 @@ provides a clinical or workflow context for a set of observations. --> </p>
   <li>Основные характеристики: состояние беременности, подтверждение смерти<!-- Core characteristics: pregnancy status, death assertion --></li>
 </ul>
 
-<p>The following core <a href="profiling.html">profiles</a> for the Observation resource have been defined as well. <strong>To be conformant to FHIR, implementations SHALL conform to these profiles:</strong> 
+<p>Также для ресурса Observation были определены следующие основные <a href="profiling.html">профили</a>. <strong>Чтобы соответствовать стандарту FHIR, реализации должны соответствовать этим профилям:</strong> 
+<!-- The following core <a href="profiling.html">profiles</a> for the Observation resource have been defined as well. <strong>To be conformant to FHIR, implementations SHALL conform to these profiles:</strong>  -->
 </p>
 <ul>
-  <li><a href="observation-vitalsigns.html">Vital signs:</a> temperature, blood pressure, respiration rate</li>
+  <li><a href="observation-vitalsigns.html">Основные показатели состояния организма:</a> температура, кровяное давление, частота дыхания<!-- <a href="observation-vitalsigns.html">Vital signs:</a> temperature, blood pressure, respiration rate --></li>
 <!--	<li>Laboratory Data</li>
 	<li>Imaging results like bone density or fetal measurements</li>
 	<li>Devices Measurements such as EKG data or Pulse Oximetry data</li>
