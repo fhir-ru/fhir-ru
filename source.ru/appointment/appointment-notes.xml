@@ -14,7 +14,8 @@
 		</tr>
 		<tr>
 			<td>
-				The Schedule is created/published <br/>(Role: Scheduler)
+        Расписание создано/опубликовано <br/>(Роль: Расписание)
+				<!-- The Schedule is created/published <br/>(Role: Scheduler) -->
 			</td>
 			<!-- Activity Description -->
 			<td>freeBusyType = FREE</td>
@@ -28,7 +29,8 @@
 		</tr>
 		<tr>
 			<td>
-				An appointment request is created after locating an available slot <br />(Role: Requester)
+        Запрос на условленную встречу создан после обнаружения доступного слота <br />(Роль: Запрашивающий)
+				<!-- An appointment request is created after locating an available slot <br />(Role: Requester) -->
 			</td>
 			<!-- Activity Description -->
 			<td></td>
@@ -45,7 +47,8 @@
 		</tr>
 		<tr>
 			<td>
-				The appointment request is processed and the slot status updated<br />(Role: Scheduler)
+        Запрос на условленную встречу обработан, статус слота обновлён <br />(Роль: Расписание)
+				<!-- The appointment request is processed and the slot status updated<br />(Role: Scheduler) -->
 			</td>
 			<!-- Activity Description -->
 			<td>freeBusyType = BUSY-TENTATIVE</td>
@@ -59,7 +62,8 @@
 		</tr>
 		<tr>
 			<td>
-				The appointment is accepted as described – by all participants <br />(Role: Participant(s))
+        Запрос на условленную встречу принят, как описано - всеми участниками <br />(Роль: Участник(и))
+				<!-- The appointment is accepted as described – by all participants <br />(Role: Participant(s)) -->
 			</td>
 			<!-- Activity Description -->
 			<td></td>
@@ -73,7 +77,8 @@
 		</tr>
 		<tr>
 			<td>
-				The appointment is confirmed as accepted by all participants<br />(Role: Scheduler)
+        Условленная встреча подтверждена как принятая всеми участниками<br />(Роль: Расписание)
+				<!-- The appointment is confirmed as accepted by all participants<br />(Role: Scheduler) -->
 			</td>
 			<!-- Activity Description -->
 			<td>freeBusyType = BUSY</td>
@@ -90,7 +95,8 @@
 		<tr>
 			<td>
 				<i>
-					Optional: Preparation for the appointment begins – could be preparing a room for the appointment etc.<br />(Role: Participants/Admin)
+          Необязательно: Начинается подготовка к условленной встрече - это может быть подготовка помещения для условленной встречи и т. п.<br />(Роль: Участники/Администратор)
+					<!-- Optional: Preparation for the appointment begins – could be preparing a room for the appointment etc.<br />(Role: Participants/Admin) -->
 				</i>
 			</td>
 			<!-- Activity Description -->
@@ -108,7 +114,8 @@
 		</tr>
 		<tr>
 			<td>
-				The patient arrives for the appointment, often sitting in a waiting room<br />(Role: Admin)
+        Пациент прибывает на условленную встречу, часто в этот момент пациент находится в комнате ожидания<br />(Роль: Администратор)
+				<!-- The patient arrives for the appointment, often sitting in a waiting room<br />(Role: Admin) -->
 			</td>
 			<!-- Activity Description -->
 			<td></td>
@@ -125,7 +132,8 @@
 		</tr>
 		<tr>
 			<td>
-				The practitioner and the patient meet and the provision of the service begins, appointment is finished with now <br />(Role: Scheduler/Participant(s)/Admin)
+        Медицинский специалист и пациент встречаются, и начинается оказание медицинских услуг, условленная встреча с этого момента завершена <br />(Роль: Расписание/Участник(и)/Администратор)
+				<!-- The practitioner and the patient meet and the provision of the service begins, appointment is finished with now <br />(Role: Scheduler/Participant(s)/Admin) -->
 			</td>
 			<!-- Activity Description -->
 			<td></td>
@@ -139,7 +147,8 @@
 		</tr>
 		<tr>
 			<td>
-				The encounter concludes<br />(Role: Scheduler/Participant(s)/Admin)
+        Случай обслуживания завершается<br />(Роль: Расписание/Участник(и)/Администратор)
+				<!-- The encounter concludes<br />(Role: Scheduler/Participant(s)/Admin) -->
 			</td>
 			<!-- Activity Description -->
 			<td></td>
@@ -163,7 +172,8 @@
 		</tr>
 		<tr>
 			<td>
-				The Schedule is created/published <br/>(Role: Scheduler)
+        Расписание создано/опубликовано <br/>(Роль: Расписание)
+				<!-- The Schedule is created/published <br/>(Role: Scheduler) -->
 			</td>
 			<!-- Activity Description -->
 			<td>freeBusyType = FREE</td>
@@ -175,7 +185,8 @@
 		</tr>
 		<tr>
 			<td>
-				 Appointment Request is created<br/>(Role: Requester)
+          Запрос на условленную встречу создан <br />(Роль: Запрашивающий)
+				 <!-- Appointment Request is created<br/>(Role: Requester) -->
 			</td>
 			<!-- Activity Description -->
 			<td></td>
@@ -190,7 +201,8 @@
 		</tr>
 		<tr>
 			<td>
-				The appointment request is processed and the slot status updated<br/>(Role: Scheduler)
+        Запрос на условленную встречу обработан, статус слота обновлён <br />(Роль: Расписание)
+				<!-- The appointment request is processed and the slot status updated<br/>(Role: Scheduler) -->
 			</td>
 			<!-- Activity Description -->
 			<td>freeBusyType = BUSY-TENTATIVE</td>
@@ -202,7 +214,8 @@
 		</tr>
 		<tr>
 			<td>
-				Participant Declines the Appointment<br/>(Role: Participant)
+        Участник отклоняет запрос на условленную встречу<br/>(Роль: Участник)
+				<!-- Participant Declines the Appointment<br/>(Role: Participant) -->
 			</td>
 			<!-- Activity Description -->
 			<td></td>
@@ -214,7 +227,8 @@
 		</tr>
 		<tr>
 			<td>
-				The appointment is cancelled<br/>(Role: Scheduler)
+        Условленная встреча отменена<br/>(Роль: Расписание)
+				<!-- The appointment is cancelled<br/>(Role: Scheduler) -->
 			</td>
 			<!-- Activity Description -->
 			<td>freeBusyType = FREE</td>
@@ -239,7 +253,7 @@
 		</tr>
 		<tr>
 			<td>
-				The Schedule is created/published <br/>(Role: Scheduler)
+				Расписание создано/опубликовано <br/>(Роль: Расписание)
 			</td> <!-- Activity Description -->
 			<td>freeBusyType = FREE</td> <!-- Slot -->
 			<td></td> <!-- Appointment -->
@@ -247,7 +261,8 @@
 		</tr>
 		<tr>
 			<td>
-				An appointment is requested with Brian and Peter<br/>(Role: Requester)
+        Сделан запрос на условленную встречу с Брайаном и Питером<br/>(Роль: Запрашивающий)
+				<!-- An appointment is requested with Brian and Peter<br/>(Role: Requester) -->
 			</td> <!-- Activity Description -->
 			<td></td> <!-- Slot -->
 			<td>
@@ -259,7 +274,8 @@
 		</tr>
 		<tr>
 			<td>
-				The Schedule is updated to inform others of interest in the slot<br/>(Role: Scheduler)
+        Расписание обновлено, чтобы проинформировать остальных, заинтересованных в этом слоте<br/>(Роль: Расписание)
+				<!-- The Schedule is updated to inform others of interest in the slot<br/>(Role: Scheduler) -->
 			</td> <!-- Activity Description -->
 			<td>freeBusyType = BUSY-TENTATIVE</td> <!-- Slot -->
 			<td></td> <!-- Appointment -->
@@ -267,7 +283,8 @@
 		</tr>
 		<tr>
 			<td>
-				Brian accepts the appointment<br/>(Role: Participant-Brian)
+        Брайан принимает приглашение на условленную встречу<br/>(Роль: Участник-Брайан)
+				<!-- Brian accepts the appointment<br/>(Role: Participant-Brian) -->
 			</td> <!-- Activity Description -->
 			<td></td> <!-- Slot -->
 			<td></td> <!-- Appointment -->
@@ -275,7 +292,8 @@
 		</tr>
 		<tr>
 			<td>
-				Appointment is updated with Brian's status<br/>(Role: Scheduler)
+        В ресурсе Appointment обновляется статус Брайана<br/>(Роль: Расписание)
+				<!-- Appointment is updated with Brian's status<br/>(Role: Scheduler) -->
 			</td> <!-- Activity Description -->
 			<td></td> <!-- Slot -->
 			<td>
@@ -286,7 +304,8 @@
 		</tr>
 		<tr>
 			<td>
-				Peter suggests a new time<br/>(Role: Participant-Peter)
+        Питер предлагает перенести условленную встречу на другое время<br/>(Роль: Участник-Питер)
+				<!-- Peter suggests a new time<br/>(Role: Participant-Peter) -->
 			</td> <!-- Activity Description -->
 			<td></td> <!-- Slot -->
 			<td></td> <!-- Appointment -->
@@ -294,7 +313,8 @@
 		</tr>
 		<tr>
 			<td>
-				Appointment is updated with new time, and indicates that action is needed by both participants<br/>(Role: Scheduler)
+        Ресурс Appointment обновляется новым временем и показывает, что обоим участникам необходимо выполнить действие<br/>(Роль: Расписание)
+				<!-- Appointment is updated with new time, and indicates that action is needed by both participants<br/>(Role: Scheduler) -->
 			</td> <!-- Activity Description -->
 			<td></td> <!-- Slot -->
 			<td>
@@ -306,7 +326,8 @@
 		</tr>
 		<tr>
 			<td>
-				Brian accepts the appointment<br/>(Role: Participant-Brian)
+        Брайан принимает приглашение на условленную встречу<br/>(Роль: Участник-Брайан)
+				<!-- Brian accepts the appointment<br/>(Role: Participant-Brian) -->
 			</td> <!-- Activity Description -->
 			<td></td> <!-- Slot -->
 			<td></td> <!-- Appointment -->
@@ -314,7 +335,8 @@
 		</tr>
 		<tr>
 			<td>
-				Appointment updated<br/>(Role: Scheduler)
+        Ресурс Appointment обновлён<br/>(Роль: Расписание)
+				<!-- Appointment updated<br/>(Role: Scheduler) -->
 			</td> <!-- Activity Description -->
 			<td></td> <!-- Slot -->
 			<td>participant(Brian).status = accepted</td> <!-- Appointment -->
@@ -322,7 +344,8 @@
 		</tr>
 		<tr>
 			<td>
-				<br/>(Role: Participant-Peter)
+        Питер принимает приглашение на условленную встречу<br/>(Роль: Участник-Питер)
+				<!-- Peter accepts the appointment<br/>(Role: Participant-Peter) -->
 			</td> <!-- Activity Description -->
 			<td></td> <!-- Slot -->
 			<td></td> <!-- Appointment -->
@@ -330,7 +353,8 @@
 		</tr>
 		<tr>
 			<td>
-				Appointment updated<br/>(Role: Scheduler)
+        Ресурс Appointment обновлён<br/>(Роль: Расписание)
+				<!-- Appointment updated<br/>(Role: Scheduler) -->
 			</td> <!-- Activity Description -->
 			<td>freeBusyType = BUSY</td> <!-- Slot -->
 			<td>
@@ -352,7 +376,7 @@
 		</tr>
 		<tr>
 			<td>
-				<i>(from typical status flow)</i>
+				<i>(из стандартного процесса смены статусов)<!-- (from typical status flow) --></i>
 			</td>
 			<!-- Activity Description -->
 			<td>freeBusyType = BUSY</td>
@@ -369,7 +393,8 @@
 		</tr>
 		<tr>
 			<td>
-				Appointment is updated as a noshow<br/>(Role: Scheduler/Admin)
+        Ресурс Appointment обновлён информацией о неявке<br/>(Роль: Расписание/Администратор)
+				<!-- Appointment is updated as a noshow<br/>(Role: Scheduler/Admin) -->
 			</td>
 			<!-- Activity Description -->
 			<td></td>
@@ -386,9 +411,9 @@
 <a name="notes"> </a>	
 	<h2>Примечания<!-- Notes: --></h2>
 	<ul>
-		<li>Placer/Filler (<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>)</li>
+		<li>Placer (заказчик)/Filler (исполнитель) (<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>)<!-- Placer/Filler (<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>) --></li>
 		<p>
-		Информация об условленной встрече для заполняющего и размещающего, фактически, одна и та же, и учитывая характер данного FHIR-ресурса, для обеих целей имеется всего один ресурс. Placer - это действующее лицо, которое выполняет операцию PUT или POST над ресурсом, а Filler - это действующее лицо, которое получает эти сообщения-ресурсы и обрабатывает информацию и принимает решение о том, может ли быть использован этот Appointment
+		Информация об условленной встрече для заказчика и исполнителя, фактически, одна и та же, и учитывая характер данного FHIR-ресурса, для обеих целей имеется всего один ресурс. Placer - это действующее лицо, которое выполняет операцию PUT или POST над ресурсом, а Filler - это действующее лицо, которое получает эти сообщения-ресурсы и обрабатывает информацию и принимает решение о том, может ли быть использован этот Appointment.
 			<!-- The appointment information is effectively the same between the filler and placer, and given the nature of the
 			fhir resource, there is only a single resource for both purposes. The Placer is the actor that performs the
 			PUT or POST operation on the resource, and the filler is the actor that receives these resource messages and
