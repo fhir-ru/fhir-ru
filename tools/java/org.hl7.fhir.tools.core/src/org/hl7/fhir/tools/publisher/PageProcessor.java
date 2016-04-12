@@ -1193,7 +1193,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     ResourceDefn r = definitions.getResourceByName(path.substring(0, path.indexOf(".")));
     if (r == null)
       throw new Exception("Unable to process sclist (1): "+path);
-    ElementDefn e = r.getRoot().getElementByName(path.substring(path.indexOf(".")+1));
+    ElementDefn e = r.getRoot().getElementByName(definitions, path.substring(path.indexOf(".")+1), true, false);
     if (e == null)
       throw new Exception("Unable to process sclist (2): "+path);
     if (e.typeCode().equals("boolean"))
@@ -6964,7 +6964,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     for (int i = 1; i < path.length; i++) {
       if (ed == null)
         return null;
-      ed = ed.getElementByName(path[i]);
+      ed = ed.getElementByName(definitions, path[i], true, false);
     }
     return ed;
   }

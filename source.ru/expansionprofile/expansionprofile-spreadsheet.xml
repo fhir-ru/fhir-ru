@@ -1202,7 +1202,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">Поддержка навигации человеком<!-- Support human navigation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s94"><Data ss:Type="String">Уникальности названия не требуется. Название должно быть указано, если только профиль развёртки не является вложенным ресурсом (например анонимный профиль развёртки в профиле FHIR). Большинство реестров потребуют название.<!-- The name is not expected to be unique. A name should be provided unless the expansion profile is a contained resource (e.g. an anonymous expansion profile in a FHIR profile). Most registries will require a name. --></Data><NamedCell
+    <Cell ss:StyleID="s94"><Data ss:Type="String">Уникальности от названия не требуется. Название должно быть указано, если только профиль развёртки не является вложенным ресурсом (например анонимный профиль развёртки в профиле FHIR). Большинство реестров потребуют название.<!-- The name is not expected to be unique. A name should be provided unless the expansion profile is a contained resource (e.g. an anonymous expansion profile in a FHIR profile). Most registries will require a name. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>

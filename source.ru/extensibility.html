@@ -70,7 +70,7 @@
    <li>valueUuid : <a href="datatypes.html#uuid">uuid</a></li>
    <li>valueId : <a href="datatypes.html#id">id</a></li>
    <li>valueBoolean : <a href="datatypes.html#boolean">boolean</a></li>
-   <li>valueCode : <a href="datatypes.html#code">code</a> (only if the extension definition provides a <a href="terminologies.html#code">fixed</a> binding to a suitable set of codes)</li>
+   <li>valueCode : <a href="datatypes.html#code">code</a> (только если определение расширения вводит <a href="terminologies.html#code">фиксированную</a> привязку к подходящему набору кодов)<!-- valueCode : <a href="datatypes.html#code">code</a> (only if the extension definition provides a <a href="terminologies.html#code">fixed</a> binding to a suitable set of codes) --></li>
    <li>valueMarkdown : <a href="datatypes.html#markdown">markdown</a></li>
    <li>valueBase64Binary : <a href="datatypes.html#base64Binary">base64Binary</a></li>
    <li>valueCoding : <a href="datatypes.html#Coding">Coding</a></li>
@@ -89,7 +89,7 @@
    <li>valueReference : <a href="references.html#Reference">Reference</a> - a reference to another resource</li>
    <li>valueAnnotation : <a href="datatypes.html#Annotation">Annotation</a></li>
    <li>valueSignature : <a href="datatypes.html#Signature">Signature</a></li>
-   <li>valueMeta : A <a href="resource.html#Meta">Meta</a> heading from a resource</li>
+   <li>valueMeta : <a href="resource.html#Meta">мета</a>заголовок из ресурса<!-- valueMeta : A <a href="resource.html#Meta">Meta</a> heading from a resource --></li>
            
   </ul>
  </li> 
@@ -107,9 +107,10 @@
 &lt;/name&gt;
 </pre>
 <p>
-In this example, the name with text = "Chief Red Cloud" is extended to have a 
+В этом примере элемент name с текстом = "Chief Red Cloud" расширен кодом использования со значением "Indigenous" (определено в ISO 21090, однако редко используется на практике).
+<!-- In this example, the name with text = "Chief Red Cloud" is extended to have a 
 name use code of "Indigenous" (defined in ISO 21090, but very rarely used in 
-practice).
+practice). -->
 </p>
 <p>
 В JSON-формате расширения описываются точно также:
@@ -128,8 +129,9 @@ practice).
 Явное указание типов в представлении означает, что все системы могут читать и писать (и, следовательно, хранить и/или обмениваться) расширениями корректно без необходимости доступа к определению расширения.
 </p>
 <p>
-Note that the JSON represenation for extensions on primitive data types is handled
-differently. See <a href="json.html#primitive">Representing primitive types in JSON</a> for further information.
+Отметьте, что JSON-представление расширений для примитивных типов данных обрабатывается по-другому. См. более подробную информацию в разделе <a href="json.html#primitive">Представление примитивных типов в JSON</a>.
+<!-- Note that the JSON represenation for extensions on primitive data types is handled
+differently. See <a href="json.html#primitive">Representing primitive types in JSON</a> for further information. -->
 </p>
 <p>
 Расширения также могут содержать расширения либо потому, что определение расширения само описывает сложносоставное содержимое - то есть вложенное дерево значений в расширении, либо потому, что расширение расширено дополнительным расширением, определенным отдельно. 
@@ -195,10 +197,12 @@ differently. See <a href="json.html#primitive">Representing primitive types in J
 </pre>
 </div>
 <p>
-As the URL suggests, <a href="extension-patient-clinicaltrial.html">this extension is defined as part of this specification</a>.
+Как видно по URL, <a href="extension-patient-clinicaltrial.html">это расширение определено в рамках данной спецификации</a>.
+<!-- As the URL suggests, <a href="extension-patient-clinicaltrial.html">this extension is defined as part of this specification</a>. -->
 </p>
 <p>
-This can be extended again, by adding a "registrar" extension:
+Его можно снова расширить, добавив расширение "registrar":
+<!-- This can be extended again, by adding a "registrar" extension: -->
 </p>
 <div class="example">
 <p>
@@ -295,11 +299,12 @@ This can be extended again, by adding a "registrar" extension:
 nor can extensions have modifier extensions internally.
 </p>
 <p>
-Note that complex extensions are allowed to have elements in the complex extension that are marked is 
+Отметьте, что сложные расширения могут иметь элементы, помеченные как модификаторы (<a href="conformance-rules.html#isModifier">modifier = true</a>), чтобы можно было модифицировать само значение расширения. Такие элементы передаются через "extension", а не "modifierExtension", поскольку предполагается, что влияние элемента-модификатора известно приложениям, которые понимают содержащееся расширение. Любое modifierExtension, заданное вне расширения, не может быть помещено в другое расширение.
+<!-- Note that complex extensions are allowed to have elements in the complex extension that are marked is 
 <a href="conformance-rules.html#isModifier">modifier = true</a>, in that the modify the extension value itself. 
 Such elements are conveyed using "extension", not "modifierExtension" because the impact of the modifier 
 element is expected to be known by applications that understand the containing extension. Any modifierExtension 
-defined outside an extension cannot be placed in another extension.
+defined outside an extension cannot be placed in another extension. -->
 </p>
 <blockquote class="dstu-note">
 <a name="dstu"> </a>

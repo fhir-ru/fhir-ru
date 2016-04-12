@@ -1272,9 +1272,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Insurer</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Страховая компания<!-- Insurer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Страховщик, который выдал это решение по иску.<!-- The Insurer who produced this adjudicated response. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Страховая компания, которая выдала это решение по иску.<!-- The Insurer who produced this adjudicated response. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4821,28 +4821,28 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">EligibilityResponse.requestProviderIdentifier</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The EligibilityRequest provider</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Поставщик из EligibilityRequest<!-- The EligibilityRequest provider --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">requestproviderreference</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">EligibilityResponse.requestProviderReference</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The EligibilityRequest provider</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Поставщик из EligibilityRequest<!-- The EligibilityRequest provider --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">requestorganizationidentifier</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">EligibilityResponse.requestOrganizationIdentifier</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The EligibilityRequest organization</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Организация из EligibilityRequest<!-- The EligibilityRequest organization --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">requestorganizationreference</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">EligibilityResponse.requestOrganizationReference</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">The EligibilityRequest organization</Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Организация из EligibilityRequest<!-- The EligibilityRequest organization --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"/>

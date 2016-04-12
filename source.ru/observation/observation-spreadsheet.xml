@@ -1203,10 +1203,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Классификация типов наблюдений<!-- Classification of  type of observation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String"> Код, классифицирующий общий тип выполняемого наблюдения. Он используется при поиске, сортировке и для отображения.<!-- A code that classifies the general type of observation being made.  This is used  for searching, sorting and display purposes. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String"> A code that classifies the general type of observation being made.  This is used  for searching, sorting and display purposes.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String"> Степень детализации определяется понятиями категорий в наборе значений. Более детализированная фильтрация может выполняться с использованием метаданных и/или терминологической иерархии в Observation.code.   &#13;<!-- The level of granularity is defined by the category concepts in the value set.   More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in Observation.code.   &#13; --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String"> The level of granularity is defined by the category concepts in the value set.   More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in Observation.code.   &#13;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.outboundRelationship[typeCode=&quot;COMP].target[classCode=&quot;LIST&quot;, moodCode=&quot;EVN&quot;].code</Data><NamedCell
@@ -4620,7 +4620,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Observation</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Код компонента не должен совпадать с кодом наблюдения<!-- Component code SHALL not be same as observation code --></Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">component.where(code = $context.code).empty()</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">component.where(code = $this.code).empty()</Data></Cell>
     <Cell ss:StyleID="s109"><Data ss:Type="String">not(exists(f:component/f:code)) or count(for $coding in f:code/f:coding return parent::*/f:component/f:code/f:coding[f:code/@value=$coding/f:code/@value and f:system/@value=$coding/f:system/@value])=0</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
