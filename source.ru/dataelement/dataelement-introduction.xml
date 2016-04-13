@@ -4,8 +4,12 @@
 <a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-DataElement is an infrastructure resource that supports the defining individual pieces of data that might be collected or stored.  While these definitions might apply 
+DataElement - это инфраструктурный ресурс для определения отдельных порций данных, которые можно собирать или хранить. Хотя эти определения могут применяться к элементам в FHIR-ресурсах или профилях, они также могут применяться к вопросам анкет, элементам в хранилищах данных и в других спецификациях (<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>, CDISC и др.). Т. е. эти определения можно использовать не только в FHIR.
+<!-- DataElement is an infrastructure resource that supports the defining individual pieces of data that might be collected or stored.  While these definitions might apply 
 to elements found in FHIR resources and profiles, they can also apply to questionnaire questions, elements in data stores, and non-FHIR specification (<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>, <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>, CDISC, 
+etc.)  I.e. the definitions aren't FHIR-specific. -->
+</p>
+<p>
 Этот ресурс охватывает два основных сценария использования:
 <!-- This resource covers two major use-cases:  -->
 </p>

@@ -1097,14 +1097,14 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Формальный идентификатор, используемый для указания на этот элемент данных при его представлении в других форматах или для ссылки в спецификации, модели, проекте или примере. <!-- Formal identifier that is used to identify this data element when it is represented in other formats, or referenced in a specification, model, design or an instance. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Typically, this is used for values that can go in a v3 II data type</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обычно используется для значений, которые могут входить в тип данных HL7 v3 II<!-- Typically, this is used for values that can go in a v3 II data type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./id[use=BUS]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">OM1.2</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">LOINC_NUM (the code is the identifier)</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">LOINC_NUM (код - это идентификатор)<!-- LOINC_NUM (the code is the identifier) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">(Identified_Item).identifier </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1271,7 +1271,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">OM1.16</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Fixed to Regenstrief or SOURCE</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Фиксировано: Regenstrief или SOURCE<!-- Fixed to Regenstrief or SOURCE --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">(Administered_Item).stewardship_record.organization.name</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1303,10 +1303,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дата этой версии элемента данных<!-- Date for this version of the data element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата публикации этой версии элемента данных. <!-- The date this version of the data element was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the data element  changes --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата публикации этой версии элемента данных. Дата должна меняться в случае изменения бизнес-версии или статуса. Кроме того, она должна меняться при внесении значительных изменений в содержимое элемента данных<!-- The date this version of the data element was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the data element  changes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This refers to the &quot;business&quot; version, the DataElement.version which changes based on business processes.  It does not refer to the date of the RESTful version which is part of the resource metadata. Additional specific dates may be added as extensions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это относится к &quot;бисзнес&quot;-версии, DataElement.version, которая меняется на основе бизнес-процессов. Это не относится к дате RESTful-версии, которая является частью метаданных ресурса. Дополнительные специфичные даты можно добавить в расширениях<!-- This refers to the &quot;business&quot; version, the DataElement.version which changes based on business processes.  It does not refer to the date of the RESTful version which is part of the resource metadata. Additional specific dates may be added as extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./participation[typeCode=AUT]/time</Data><NamedCell
@@ -1793,13 +1793,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Определение элемента<!-- Definition of element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Defines the structure, type, allowed values and other constraining characteristics of the data element</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Задаёт структуру, тип, допустимые значения и другие ограничивающие характеристики этого элемента данных<!-- Defines the structure, type, allowed values and other constraining characteristics of the data element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="Number">1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">For simple data types there will only be one repetition.  For complex data types, multiple repetitions will be present defining a nested structure using the &quot;path&quot; element</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для простых типов данных будет только одно повторение. Для сложных типов данных будут присутствовать многократные повторения, задающие вложенную структуру с помощью элемента &quot;path&quot;<!-- For simple data types there will only be one repetition.  For complex data types, multiple repetitions will be present defining a nested structure using the &quot;path&quot; element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Type should have {http://hl7.org/fhir/StructureDefinition/elementdefinition-de}</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип должен иметь {http://hl7.org/fhir/StructureDefinition/elementdefinition-de}<!-- Type should have {http://hl7.org/fhir/StructureDefinition/elementdefinition-de} --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">N/A (MIF)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

@@ -1056,7 +1056,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Логический URI для ссылки на это заявление<!-- Logical uri to reference this statement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">An absolute URL that is used to identify this conformance statement when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this conformance statement is (or will be) published</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Абсолютный URL, использующийся для идентификации этого заявления о соответствии, когда на него ссылаются в спецификации, модели, проекте или примере. Это должен быть URL, он должен быть глобально уникальным и должен быть адресом, по которому это заявление о соответствии было (или будет) опубликовано<!-- An absolute URL that is used to identify this conformance statement when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this conformance statement is (or will be) published --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1125,7 +1125,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Произвольное текстовое имя на естественном языке, идентифицирующее это заявление о соответствии<!-- A free text natural language name identifying the conformance statement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Это имя может не быть глобально уникальным<!-- The name is not expected to be globally unique --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Не ожидается, что это имя будет глобально уникальным<!-- The name is not expected to be globally unique --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1425,11 +1425,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Content intends to support these contexts</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержимое предназначено для поддержки следующих видов контекста<!-- Content intends to support these contexts --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of conformance statements.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Содержимое разрабатывалось с фокусом на и поддержкой перечисленных видов контекста. Эти термины могут использоваться для индексации и поиска заявлений о соответствии.<!-- The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of conformance statements. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Assist in searching for appropriate content</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Для поиска подходящего контента<!-- Assist in searching for appropriate content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1461,7 +1461,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Why this resource has been created</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для чего был создан этот ресурс<!-- Why this resource has been created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Поясняет, зачем это заявление о соответствии нужно и почему оно было ограничено таким образом<!-- Explains why this conformance statement is needed and why it's been constrained as it has --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2181,9 +2181,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Mime type for certificate</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">MIME-тип сертификата<!-- Mime type for certificate --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Mime type for certificate</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">MIME-тип сертификата<!-- Mime type for certificate --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2409,7 +2409,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Руководство по реализации этой операции, например 'delete - это логическое удаление' или 'обновления разрешены только с version id' или 'creates разрешены только с сертификатами предварительной авторизации'<!-- Guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only' --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">REST allows a degree of variability in the implementation of RESTful solutions that is useful for exchange partners to be aware of.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">REST даёт некоторую степень изменчивости в реализации RESTful-решений, о которой желательно знать партнёрам по обмену данными.<!-- REST allows a degree of variability in the implementation of RESTful solutions that is useful for exchange partners to be aware of. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3145,7 +3145,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Имя для вызова этой операции/запроса<!-- Name by which the operation/query is invoked --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The name of the operation or query. For an operation, this is the name  prefixed with $ and used in the url. For a query, this is the name used in the _query parameter when the query is called</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя операции или запроса. Для операции это будет имя с префиксом $, используемое в URL. Для запроса это будет имя, используемое в параметре _query при вызове запроса<!-- The name of the operation or query. For an operation, this is the name  prefixed with $ and used in the url. For a query, this is the name used in the _query parameter when the query is called --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Это имя ДОЛЖНО совпадать с именем в определении, за исключением конфликта, когда это имя не может быть использовано<!-- The name here SHOULD be the same as the name in the definition, unless there is a name clash and the name cannot be used --></Data><NamedCell
@@ -3209,10 +3209,10 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Логические модули (Compartments), обслуживаемые/используемые системой<!-- Compartments served/used by system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">An absolute URI which is a reference to the definition of a compartment that the system supports. The reference is to a CompartmentDefinition resource by it's canonical URL </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Абсолютный URI, являющийся ссылкой на определение логического модуля, который поддерживает система. Это ссылка на ресурс CompartmentDefinition по его каноническому URL<!-- An absolute URI which is a reference to the definition of a compartment that the system supports. The reference is to a CompartmentDefinition resource by it's canonical URL  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">At present, the only defined compartments are at [CompartmentDefinition](compartmentdefinition.html)</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">В настоящее время все логические модули перечислены в [CompartmentDefinition](compartmentdefinition.html)<!-- At present, the only defined compartments are at [CompartmentDefinition](compartmentdefinition.html) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3786,7 +3786,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Ограничение на ресурс, используемый в документе<!-- A constraint on a resource used in the document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Первый ресурсом будет Document<!-- The first resource is the document resource --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Первым ресурсом будет идти Document<!-- The first resource is the document resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5090,7 +5090,7 @@
     <Cell><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s79"/>
     <Cell ss:StyleID="s121"><Data ss:Type="String">Conformance.url</Data></Cell>
-    <Cell ss:StyleID="s122"><Data ss:Type="String">The uri that identifies the conformance statement</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">URI заявления о соответствии<!-- The uri that identifies the conformance statement --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s123"><Data ss:Type="String">version</Data></Cell>
@@ -5202,7 +5202,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s124"><Data ss:Type="String">Conformance.useContext</Data></Cell>
-    <Cell ss:StyleID="s125"><Data ss:Type="String">A use context assigned to the conformance statement</Data></Cell>
+    <Cell ss:StyleID="s125"><Data ss:Type="String">Контекст использования, присвоенный этому заявлению о соответствии<!-- A use context assigned to the conformance statement --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s123"/>
@@ -6961,7 +6961,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s152"><Data ss:Type="String">RestfulConformanceMode</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Режит работы RESTful заявления о соответствии.<!-- The mode of a RESTful conformance statement. --></Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">RESTful-режим работы заявления о соответствии.<!-- The mode of a RESTful conformance statement. --></Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"/>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#restful-conformance-mode</Data></Cell>
@@ -7096,7 +7096,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">TransactionMode</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code that indicates how transactions are supported.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, показывающий, какие транзакции поддержаны.<!-- A code that indicates how transactions are supported. --></Data></Cell>
     <Cell ss:StyleID="s124"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s124"/>
     <Cell ss:StyleID="s124"><Data ss:Type="String">#transaction-mode</Data></Cell>
@@ -7141,7 +7141,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">UnknownContentCode</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A code that indicates whether an application accepts unknown elements or extensions when reading resources.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, показывающий, принимает ли приложение неизвестные элементы или расширения при чтении ресурсов.<!-- A code that indicates whether an application accepts unknown elements or extensions when reading resources. --></Data></Cell>
     <Cell ss:StyleID="s124"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s124"/>
     <Cell ss:StyleID="s124"><Data ss:Type="String">#unknown-content-code</Data></Cell>

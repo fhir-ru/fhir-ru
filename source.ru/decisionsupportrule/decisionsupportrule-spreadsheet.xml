@@ -973,9 +973,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Правило содействия принятию решений<!-- A decision support rule --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Правило поддержки принятия решений<!-- A decision support rule --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Данный ресурс определяет правило содействия принятию решений по формуле: [в случае События], если Условие, то Действие<!-- This resource defines a decision support rule of the form [on Event] if Condition then Action -->. It is intended to be a shareable, computable definition of a actions that should be taken whenever some condition is met in response to a particular event or events</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Данный ресурс определяет правило поддержки принятия решений по формуле: [в случае События], если Условие, то Действие. Подразумевается, что он будет совместно используемым, вычислимым определением действий, которые необходимо предпринимать каждый раз, когда выполняется некоторое условие в ответ на определённое событие или события<!-- This resource defines a decision support rule of the form [on Event] if Condition then Action. It is intended to be a shareable, computable definition of a actions that should be taken whenever some condition is met in response to a particular event or events --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1006,7 +1006,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Информация о модуле для этого правила<!-- Module information for the rule --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The metadata for the decision support rule, including publishing, life-cycle, version, documentation, and supporting evidence</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Метаданные для этого правила поддержки принятия решений, включая информацию о публикации, жизненном цикле, версии, документацию и подтверждающие данные<!-- The metadata for the decision support rule, including publishing, life-cycle, version, documentation, and supporting evidence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1035,7 +1035,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Logic used within the rule</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Логика, применяемая в этом правиле<!-- Logic used within the rule --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс Library, содержащий формальную логику для этого правила<!-- A reference to a Library containing the formal logic used by the rule --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1066,9 +1066,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">&quot;when&quot; the rule should be invoked</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">&quot;Когда&quot; это правило должно вызываться<!-- &quot;when&quot; the rule should be invoked --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The trigger element defines when the rule should be invoked. This information is used by consumers of the rule to determine how to integrate the rule into a specific workflow</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Элемент trigger определяет, когда это правило должно вызываться. Эта информация используется потребителями этого правила для определения, каким образом интегрировать это правило в конкретный рабочий процесс<!-- The trigger element defines when the rule should be invoked. This information is used by consumers of the rule to determine how to integrate the rule into a specific workflow --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1097,9 +1097,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">&quot;if&quot; some condition is true</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">&quot;Если&quot; некоторое условие выполняется<!-- &quot;if&quot; some condition is true --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The condition element describes he &quot;if&quot; portion of the rule that determines whether or not the rule &quot;fires&quot;. The condition must be the name of an expression in a referenced library.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Элемент condition описывает &quot;условную&quot;часть правила, которая определяет, должно или не должно &quot;сработать&quot;. правило. Условие должно быть именем выражения в исходной библиотеке.<!-- The condition element describes he &quot;if&quot; portion of the rule that determines whether or not the rule &quot;fires&quot;. The condition must be the name of an expression in a referenced library. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1128,9 +1128,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">&quot;then&quot; perform these actions</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">&quot;Тогда&quot; выполнить эти действия<!-- &quot;then&quot; perform these actions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The action element defines the &quot;when&quot; portion of the rule that determines what actions should be performed if the condition evaluates to true</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Элемент action задаёт ту часть правила, которая определяет, какие действия должны быть выполнены, если вычисление условия даёт истину<!-- The action element defines the &quot;when&quot; portion of the rule that determines what actions should be performed if the condition evaluates to true --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3622,49 +3622,49 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">DecisionSupportRule.moduleMetadata.identifier</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Логический идентификатор<!-- Logical identifier --> for the module (e.g. CMS-143)</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Логический идентификатор модуля (например CMS-143)<!-- Logical identifier for the module (e.g. CMS-143) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">topic</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">DecisionSupportRule.moduleMetadata.topic</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Topics associated with the module</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Темы, связанные с модулем<!-- Topics associated with the module --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">title</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">DecisionSupportRule.moduleMetadata.title</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Text search against the title</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по названию<!-- Text search against the title --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">description</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">DecisionSupportRule.moduleMetadata.description</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Text search against the description</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по описанию<!-- Text search against the description --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">version</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">DecisionSupportRule.moduleMetadata.version</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Version of the module (e.g. 1.0.0)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Версия модуля (например 1.0.0)<!-- Version of the module (e.g. 1.0.0) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">DecisionSupportRule.moduleMetadata.status</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Status of the module</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Статус модуля<!-- Status of the module --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">!minScore</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">number</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Bundle/entry/search/score</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The minimum relevance score of any match that will be returned</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Минимальная оценка релевантности любого совпадения, которое будет возвращено<!-- The minimum relevance score of any match that will be returned --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>

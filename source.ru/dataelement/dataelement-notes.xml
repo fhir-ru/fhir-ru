@@ -27,12 +27,17 @@ reference model could be based on ISO's Object_Class and Property mechanism.  Ho
 for example: -->
 </p>
 	<ul>
-		<li>HL7's <a href="http://www.hl7.org/implement/standards/rim.cfm">Reference Information Model</a>
+    <li><a href="http://www.hl7.org/implement/standards/rim.cfm">Эталонная информационная модель</a> HL7
+		</li>
+		<li>Эталонная модель <a href="http://www.openehr.org/">Open EHR</a></li>
+		<li>Логическая модель <a href="http://bridgmodel.nci.nih.gov/about_bridg">BRIDG</a> </li>
+		<li>справочники, например <a href="http://loinc.org">LOINC</a> или <a href="http://www.ihtsdo.org/snomed-ct/">SNOMED CT</a>
+<!-- 		<li>HL7's <a href="http://www.hl7.org/implement/standards/rim.cfm">Reference Information Model</a>
 		</li>
 		<li>
 			<a href="http://www.openehr.org/">Open EHR's</a> reference model</li>
 		<li>the <a href="http://bridgmodel.nci.nih.gov/about_bridg">BRIDG</a> logical model</li>
-		<li>terminologies such as <a href="http://loinc.org">LOINC</a> or <a href="http://www.ihtsdo.org/snomed-ct/">SNOMED CT</a>
+		<li>terminologies such as <a href="http://loinc.org">LOINC</a> or <a href="http://www.ihtsdo.org/snomed-ct/">SNOMED CT</a> -->
 		</li>
 	</ul>
 	<p>
