@@ -1385,13 +1385,13 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Actor involved in the event</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Участник события<!-- Actor involved in the event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">An actor taking an active role in the event or activity that is logged.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Действующее лицо, принимающее активное участие в протоколируемом событии или активности<!-- An actor taking an active role in the event or activity that is logged. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">An agent can be a person, an organization, software, device, or other actors that may be ascribed responsibility.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Агентом может быть человек, организация, ПО, устройство и другие действующие лица, которым может быть приписана ответственность.<!-- An agent can be a person, an organization, software, device, or other actors that may be ascribed responsibility. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Several agents may be associated (i.e. have some responsibility for an activity) with an event or activity.&#10;&#10;For example, an activity may be initiated by one user for other users or involve more than one user. However, only one user may be the initiator/requestor for the activity.&#10;&#10;&#10;&#10;</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">С событием или активностью может ассоциироваться несколько агентов (т. е. нести некоторую ответственность за активность).&#10;&#10;Например активность может быть инициирована одним пользователем для других пользователей, или задействовать более одного пользователя. Тем не менее, только один пользователь может быть инициатором/запросчиком для этой активности.&#10;&#10;&#10;&#10;<!-- Several agents may be associated (i.e. have some responsibility for an activity) with an event or activity.&#10;&#10;For example, an activity may be initiated by one user for other users or involve more than one user. However, only one user may be the initiator/requestor for the activity.&#10;&#10;&#10;&#10; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">.participation</Data><NamedCell
@@ -1428,7 +1428,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Agent role in the event</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Роль агента в событии<!-- Agent role in the event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Спецификация ролей пользователя при выполнении этого события. Коды, используемые в этом элементе, как правило, являются локальными кодами, заданными системой контроля доступа на основе ролей, используемыми в локальном контексте<!-- Specification of the role(s) the user plays when performing the event. Usually the codes used in this element are local codes defined by the access control security system (e.g. RBAC, ABAC) used in the local context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1474,7 +1474,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Прямая ссылка на ресурс, определяющий участника<!-- Direct reference to a resource that identifies the agent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">This field ties an audit event to a specific resource</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Это поле привязывает событие аудита к конкретному ресурсу<!-- This field ties an audit event to a specific resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1590,11 +1590,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Human-meaningful name for the agent</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Значимое для человека имя агента<!-- Human-meaningful name for the agent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Human-meaningful name for the agent</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Значимое для человека имя агента<!-- Human-meaningful name for the agent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">The User ID and Authorization User ID may be internal or otherwise obscure values. This field assists the auditor in identifying the actual user</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Идентификатор пользователя и Идентификатор авторизации пользователя могут быть внутренними или иным образом скрытыми значениями. Это поле помогает аудитору в идентификации фактического пользователя<!-- The User ID and Authorization User ID may be internal or otherwise obscure values. This field assists the auditor in identifying the actual user --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1668,7 +1668,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Where</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Где произошло событие<!-- Where --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Где произошло событие<!-- Where the event occurred --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

@@ -1128,7 +1128,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifier for the plan issuer</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор эмитента плана<!-- Identifier for the plan issuer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Страховая компания или плательщик по программе или плану.<!-- The program or plan underwriter or payor. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1166,7 +1166,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Бизнес-идентификационный номер<!-- BIN Number --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Business Identification Number (BIN number) used to identify the routing  of eClaims.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Бизнес-идентификационный номер (БИН), используемый для идентификации электронных исков.<!-- Business Identification Number (BIN number) used to identify the routing  of eClaims. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1234,7 +1234,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Тип страхового покрытия<!-- Type of coverage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health. </Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Тип покрытия: социальная программа, медицинский план, страховка от несчастных случаев (компенсации работникам, автомобильная страховка), групповое медицинское страхование.<!-- The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">От типа страхового покрытия зависит порядок применения страховых покрытий.<!-- The order of application of coverages is dependent on the types of coverage. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1267,7 +1267,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Plan holder</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Держатель плана<!-- Plan holder --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Сторона, которая 'владеет' договорными отношениями по страхованию или в пользу которой выплачивается страховка<!-- The party who 'owns' the insurance contractual relationship to the policy or to whom the benefit of the policy is due. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1339,9 +1339,9 @@
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Plan Beneficiary</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Выгодоприобретатель плана<!-- Plan Beneficiary --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">The party who benefits from the insurance coverage.</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Сторона, которая извлекает выгоду из страхового покрытия.<!-- The party who benefits from the insurance coverage. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1377,11 +1377,11 @@
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Patient relationship to planholder</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Отношение между пациентом и держателем плана<!-- Patient relationship to planholder --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">The relationship of the patient to the planholdersubscriber)</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Отношение между пациентом и держателем/подписчиком плана<!-- The relationship of the patient to the planholdersubscriber) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">To determine relationship between the patient and the subscriber</Data><NamedCell
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Для определения взаимосвязи между пациентом и подписчиком<!-- To determine relationship between the patient and the subscriber --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1627,11 +1627,11 @@
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Eligibility exceptions</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Исключения приемлемости<!-- Eligibility exceptions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Factors which may influence the applicability of coverage.</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Факторы, которые могут повлиять на применимость покрытия.<!-- Factors which may influence the applicability of coverage. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">To determine extenuating circumstances for coverage </Data><NamedCell
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Для определения смягчающих обстоятельств для покрытия<!-- To determine extenuating circumstances for coverage  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1661,11 +1661,11 @@
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Name of School</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Название школы<!-- Name of School --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Name of school for over-aged dependants.</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Название школы для иждивенцев соответствующего возраста.<!-- Name of school for over-aged dependants. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String"> Often required for over-age dependents</Data><NamedCell
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Часто требуется для подходящих по возрасту иждивенцев<!--  Often required for over-age dependents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4641,14 +4641,14 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s129"><Data ss:Type="String">Coverage.identifier</Data></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="String">Основной идентификатор застрахованного<!-- The primary identifier of the insured --> and the coverage</Data></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="String">Основной идентификатор застрахованного и страхового покрытия<!-- The primary identifier of the insured and the coverage --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">type</Data></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s129"><Data ss:Type="String">Coverage.type</Data></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="String">Вид страхового покрытия<!-- The kind of coverage --> (health plan, auto, Workers Compensation)</Data></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="String">Тип страхового покрытия (план медицинского обслуживания, автомобильное страхование, выплата компенсации работникам)<!-- The kind of coverage (health plan, auto, Workers Compensation) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">plan</Data></Cell>
@@ -4690,7 +4690,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s129"><Data ss:Type="String">Coverage.subject</Data></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="String">Covered party</Data></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="String">Страхуемая сторона<!-- Covered party --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">!subscriber</Data></Cell>
@@ -4704,28 +4704,28 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s132"><Data ss:Type="String">Coverage.beneficiaryIdentifier</Data></Cell>
-    <Cell ss:StyleID="s133"><Data ss:Type="String">Covered party</Data></Cell>
+    <Cell ss:StyleID="s133"><Data ss:Type="String">Страхуемая сторона<!-- Covered party --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s131"><Data ss:Type="String">beneficiaryreference</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s132"><Data ss:Type="String">Coverage.beneficiaryReference</Data></Cell>
-    <Cell ss:StyleID="s133"><Data ss:Type="String">Covered party</Data></Cell>
+    <Cell ss:StyleID="s133"><Data ss:Type="String">Страхуемая сторона<!-- Covered party --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">planholderidentifier</Data></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s129"><Data ss:Type="String">Coverage.planholderIdentifier</Data></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="String">Reference to the planholder</Data></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="String">Ссылка на держателя плана<!-- Reference to the planholder --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"><Data ss:Type="String">planholderreference</Data></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s129"><Data ss:Type="String">Coverage.planholderReference</Data></Cell>
-    <Cell ss:StyleID="s130"><Data ss:Type="String">Reference to the planholder</Data></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="String">Ссылка на держателя плана<!-- Reference to the planholder --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s128"/>
@@ -6791,7 +6791,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163"><Data ss:Type="String">Exception</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The eligibility exception codes.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Коды исключений приемлемости.<!-- The eligibility exception codes. --></Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">valueset-coverage-exception</Data></Cell>

@@ -1979,7 +1979,7 @@
     <Cell ss:StyleID="s116"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s116"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s116"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Связанные иски<!-- Related Claims --> which may be revelant to processing this claimn</Data><NamedCell
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Связанные иски, которые могут быть существенными при обработке этого иска<!-- Related Claims which may be revelant to processing this claimn --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">Другие иски, связанные с данным, например предыдущие версии иска или связанные услуги.<!-- Other claims which are related to this claim such as prior claim versions or for related services. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2484,9 +2484,9 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">Occurrence Codes</Data><NamedCell
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Коды наступления<!-- Occurrence Codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">**Insert definition of Occurrence codes</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">**Вставить определение кодов наступления<!-- **Insert definition of Occurrence codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><Data ss:Type="String">Может содержать коды локального типа выставления счёта, такие как UB-04-код типа выставления счёта США.<!-- This may contain the local bill type codes such as the US UB-04 bill type code. --></Data><NamedCell
@@ -2519,9 +2519,9 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">Коды Occurrence Span<!-- Occurrence Span Codes --></Data><NamedCell
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Коды продолжительности наступления<!-- Occurrence Span Codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String"> **Вставить определение кодов Occurrence Span<!-- **Insert definition of Occurrence Span codes --></Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String"> **Вставить определение кодов продолжительности наступления<!-- **Insert definition of Occurrence Span codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><Data ss:Type="String">Может содержать коды локального типа выставления счёта, такие как UB-04-код типа выставления счёта США.<!-- This may contain the local bill type codes such as the US UB-04 bill type code. --></Data><NamedCell
@@ -2554,9 +2554,9 @@
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">Коды стоимости<!-- Value Codes --></Data><NamedCell
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Коды ценности<!-- Value Codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">**Вставить определение кодов стоимости<!-- **Insert definition of Value codes --></Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">**Вставить определение кодов ценности<!-- **Insert definition of Value codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s101"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><Data ss:Type="String">Может содержать коды локального типа выставления счёта, такие как UB-04-код типа выставления счёта США.<!-- This may contain the local bill type codes such as the US UB-04 bill type code. --></Data><NamedCell
@@ -4019,7 +4019,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Identifier|Reference(Practitioner)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Supervising Practitioner</Data><NamedCell
+    <Cell ss:Index="13"><Data ss:Type="String">Контролирующий медицинский специалист<!-- Supervising Practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Медицинский специалист, который наблюдает за работой поставщиков обслуживания.<!-- The practitioner who is supervising the work of the servicing provider(s). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4188,7 +4188,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s216"><Data ss:Type="String">Коды типов пунктов или модификаторов, например для стоматологии, было ли лечение косметическим или связано с TMJ, или было ли утеряно или украдено приспособление.<!-- Item typification or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s217"><Data ss:Type="String">May impact on adjudication.</Data><NamedCell
+    <Cell ss:StyleID="s217"><Data ss:Type="String">Может повлиять на вынесение решения.<!-- May impact on adjudication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s216"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s216"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5575,7 +5575,7 @@
     <Cell><Data ss:Type="String">Claim.item.prosthesis</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">=Prosthesis</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Prosthetic details</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Информация о протезе<!-- Prosthetic details --></Data></Cell>
     <Cell><Data ss:Type="String">Материал и дата установки предыдущего несъемного зубного протеза.<!-- The materials and placement date of prior fixed prosthesis. --> </Data></Cell>
     <Cell ss:Index="24"><Data ss:Type="String">360;770</Data></Cell>
    </Row>
@@ -5583,18 +5583,18 @@
     <Cell><Data ss:Type="String">Claim.item.prosthesis.initial</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">boolean</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Is this the initial service</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Первичное ли это оказание услуги<!-- Is this the initial service --></Data></Cell>
     <Cell><Data ss:Type="String">Указывает, первичная ли это установка фиксированного протеза.<!-- Indicates whether this is the initial placement of a fixed prosthesis. --></Data></Cell>
-    <Cell><Data ss:Type="String">May impact on adjudication.</Data></Cell>
+    <Cell><Data ss:Type="String">Может повлиять на вынесение решения.<!-- May impact on adjudication. --></Data></Cell>
     <Cell ss:Index="22"><Data ss:Type="String">F15/F18 Only for Denture, Crown, Bridge</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Claim.item.prosthesis.priorDate</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">date</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Initial service Date</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Дата первоначального оказания услуги<!-- Initial service Date --></Data></Cell>
     <Cell><Data ss:Type="String">Дата первоначальной установки.<!-- Date of the initial placement. --></Data></Cell>
-    <Cell><Data ss:Type="String">May impact on adjudication.</Data></Cell>
+    <Cell><Data ss:Type="String">Может повлиять на вынесение решения.<!-- May impact on adjudication. --></Data></Cell>
     <Cell ss:Index="22"><Data ss:Type="String">F04/F19</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -5602,9 +5602,9 @@
     <Cell ss:Index="3"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Coding</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">OralProsthoMaterial</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Prosthetic Material</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Материал протеза<!-- Prosthetic Material --></Data></Cell>
     <Cell><Data ss:Type="String">Материал предыдущего зубного протеза или мостовидного протеза (стоматология)<!-- Material of the prior denture or bridge prosthesis. (Oral) --></Data></Cell>
-    <Cell><Data ss:Type="String">May impact on adjudication.</Data></Cell>
+    <Cell><Data ss:Type="String">Может повлиять на вынесение решения.<!-- May impact on adjudication. --></Data></Cell>
     <Cell ss:Index="22"><Data ss:Type="String">F20/F21</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5670,9 +5670,9 @@
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s88"/>
-    <Cell><Data ss:Type="String">Only if type = oral</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A list of teeth which would be expected but are not found due to having been previously  extracted or for other reasons.</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The list of missing teeth may influence the adjudication of services for example with Bridges.</Data></Cell>
+    <Cell><Data ss:Type="String">Только если тип = стоматология<!-- Only if type = oral --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Перечень зубов, которые должны быть, но отсутствуют в силу того, что были ранее удалены, или по другим причинам.<!-- A list of teeth which would be expected but are not found due to having been previously  extracted or for other reasons. --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Список отсутствующих зубов может повлиять на вынесение решения по услугам, например в случае с мостовидными зубными протезами.<!-- The list of missing teeth may influence the adjudication of services for example with Bridges. --></Data></Cell>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s91"/>
@@ -5698,9 +5698,9 @@
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s88"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Tooth Code</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The code identifying which tooth is missing.</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Provides the tooth number of the missing tooth.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код зуба<!-- Tooth Code --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код для указания, какой зуб отсутствует.<!-- The code identifying which tooth is missing. --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Для указания номер отсутствующего зуба.<!-- Provides the tooth number of the missing tooth. --></Data></Cell>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s91"/>
@@ -5726,9 +5726,9 @@
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s88"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates whether it was extracted or other reason</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Missing reason may be: E-extraction, O-other</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Provides the reason for the missing tooth.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает, был ли он удалён или причина другая<!-- Indicates whether it was extracted or other reason --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Причиной отсутствия может быть: E-удаление, O-другое<!-- Missing reason may be: E-extraction, O-other --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Для указания причины отсутствия зуба.<!-- Provides the reason for the missing tooth. --></Data></Cell>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s91"/>
@@ -5754,9 +5754,9 @@
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s88"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Date tooth was extracted if known</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The date of the extraction either known from records or patient reported estimate.</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Some services and adjudications require this information.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата удаления зуба, если известна<!-- Date tooth was extracted if known --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата удаления либо из записей, либо приблизительная со слов пациента.<!-- The date of the extraction either known from records or patient reported estimate. --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Для некоторых услуг и решений требуется эта информация.<!-- Some services and adjudications require this information. --></Data></Cell>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s91"/>
@@ -6400,14 +6400,14 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s170"><Data ss:Type="String">Claim.patientReference</Data></Cell>
-    <Cell ss:StyleID="s171"><Data ss:Type="String">Patient receiving the services</Data></Cell>
+    <Cell ss:StyleID="s171"><Data ss:Type="String">Пациент, получающий услуги<!-- Patient receiving the services --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s169"><Data ss:Type="String">patientidentifier</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s170"><Data ss:Type="String">Claim.patientIdentifier</Data></Cell>
-    <Cell ss:StyleID="s171"><Data ss:Type="String">Patient receiving the services</Data></Cell>
+    <Cell ss:StyleID="s171"><Data ss:Type="String">Пациент, получающий услуги<!-- Patient receiving the services --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s169"><Data ss:Type="String">providerreference</Data></Cell>
@@ -8464,7 +8464,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s198"><Data ss:Type="String">AccidentType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Type of accident: work place, auto, etc.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Тип несчастного случая: производственный, автомобильная авария и т. д.<!-- Type of accident: work place, auto, etc. --></Data></Cell>
     <Cell ss:StyleID="s167"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s168"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-ActIncidentCode</Data></Cell>
@@ -8669,7 +8669,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s201">
     <Cell ss:StyleID="s202"><Data ss:Type="String">ItemType</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Group, Service, Product.</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Группа, услуга, продукт.<!-- Group, Service, Product. --></Data></Cell>
     <Cell ss:StyleID="s203"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s203"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">valueset-fm-itemtype</Data></Cell>
@@ -8805,7 +8805,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s99"><Data ss:Type="String">ClaimSubType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A more granulat claim typecode</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Более детализированный код типа иска<!-- A more granulat claim typecode --></Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">valueset-claim-subtype</Data></Cell>
@@ -8820,7 +8820,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s99"><Data ss:Type="String">RelatedClaimRelationship</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Relationship of this claim to a related Claim</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Взаимосвязь между этим иском и связанным иском<!-- Relationship of this claim to a related Claim --></Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">valueset-related-claim-relationship</Data></Cell>
@@ -8835,7 +8835,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s99"><Data ss:Type="String">OccurrenceCodes</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Occurrence codes</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды наступления<!-- Occurrence codes --></Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">valueset-occurrence-codes</Data></Cell>
@@ -8850,7 +8850,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s99"><Data ss:Type="String">OccurrenceSpanCodes</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Occurrence Span codes</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды продолжительности наступления<!-- Occurrence Span codes --></Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">valueset-occurrence-span-codes</Data></Cell>
@@ -8865,7 +8865,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s99"><Data ss:Type="String">ValueCodes</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Value code</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код ценности<!-- Value code --></Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">valueset-value-codes</Data></Cell>
@@ -8880,7 +8880,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s99"><Data ss:Type="String">ProviderQualification</Data></Cell>
-    <Cell><Data ss:Type="String">Provider professional qualifications</Data></Cell>
+    <Cell><Data ss:Type="String">Профессиональная квалификация поставщика<!-- Provider professional qualifications --></Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">valueset-provider-qualification</Data></Cell>
@@ -8895,7 +8895,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s99"><Data ss:Type="String">ServiceModifiers</Data></Cell>
-    <Cell><Data ss:Type="String">Factors which may influce adjudication of services</Data></Cell>
+    <Cell><Data ss:Type="String">Факторы, которые могут влиять на вынесение решений по услугам<!-- Factors which may influce adjudication of services --></Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">valueset-service-modifiers</Data></Cell>
@@ -8910,7 +8910,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s206"><Data ss:Type="String">ICD10_Procedures</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">ICD10 Procedure codes</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">ICD10-коды процедур<!-- ICD10 Procedure codes --></Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">valueset-icd-10-procedures</Data></Cell>
@@ -8924,7 +8924,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s199"><Data ss:Type="String">ProgramCode</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Program specific reason codes</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды обоснований, специфиные для программ<!-- Program specific reason codes --></Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">valueset-ex-program-code</Data></Cell>
@@ -8939,7 +8939,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s199"><Data ss:Type="String">OnsetType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Condition related start, end  and period codes</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Коды, относящиеся к началу, окончанию и продолжительности клинического состояния<!-- Condition related start, end  and period codes --></Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s170"><Data ss:Type="String">valueset-ex-onsettype</Data></Cell>
