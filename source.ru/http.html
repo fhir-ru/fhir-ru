@@ -211,7 +211,7 @@ ETag: W/"3141"
 </pre>
 <h3>Безопасность<!-- Security --></h3>
 <p>
-Использование HTTPS является необязательным, но для передачи любых реальных медицинских данных ДОЛЖЕН быть использован SSL и, при необходимости, другие дополнительные предосторожности. См. <a href="security.html#http">Безопасность HTTP </a> для более детальной информации.
+Использование HTTPS является необязательным, но для передачи любых реальных медицинских данных ДОЛЖЕН использоваться SSL и, при необходимости, другие дополнительные предосторожности. См. <a href="security.html#http">Безопасность HTTP </a> для более детальной информации.
 <!-- Using HTTPS is optional, but all production exchange of healthcare data SHOULD use SSL and 
 additional security as appropriate. See <a href="security.html#http">HTTP Security</a> for further information.
 Most operations will require user authentication, and all operations that do are subject 
@@ -548,12 +548,12 @@ using <a href="conformance-definitions.html#Conformance.rest.resource.updateCrea
 <!-- Common HTTP Status codes returned on FHIR-related errors (in addition to normal HTTP errors related to security, header and content type negotiation issues): -->
 </p>
 <ul>
- <li><b><code>400</code> Bad Request</b> - невозможно выполнить синтаксический разбор ресурса, либо ресурс не соответствует основным правилам валидации FHIR (or multiple matches were found for</li>
- <li><b><code>403</code> Not Authorized</b> - тип ресурса не поддерживается, либо это не точка взаимодействия FHIR</li>
- <li><b><code>404</code> Not Found</b> - ресурс не существует на момент обновления, и сервер не разрешает определенные клиентом идентификаторы</li>
- <li><b><code>405</code> Method Not allowed</b> - предложенный ресурс нарушает применимые профили FHIR или бизнес-правила сервера.</li>
- <li><b><code>409</code>/<code>412</code></b> - version conflict management - see <a href="#concurrency">below</a></li>
- <li><b><code>422</code> Unprocessable Entity</b> - the proposed resource violated applicable FHIR profiles or server business rules</li>
+ <li><b><code>400</code> Bad Request</b> - невозможно выполнить синтаксический разбор ресурса, либо ресурс не соответствует основным правилам валидации FHIR (или запрос применим к нескольким ресурсам)</li>
+ <li><b><code>403</code> Not Authorized</b> - требуется авторизация</li>
+ <li><b><code>404</code> Not Found</b> - тип ресурса не поддерживается, либо это не точка взаимодействия FHIR</li>
+ <li><b><code>405</code> Method Not allowed</b> - ресурс не существует на момент обновления, и сервер не разрешает определенные клиентом идентификаторы</li>
+ <li><b><code>409</code>/<code>412</code></b> - конфликт версий - см <a href="#concurrency">ниже</a></li>
+ <li><b><code>422</code> Unprocessable Entity</b> - предложенный ресурс нарушает применимые профили FHIR или бизнес-правила сервера</li>
 <!--  <li><b><code>400</code> Bad Request</b> - resource could not be parsed or failed basic FHIR validation rules (or multiple matches were found for </li>
  <li><b><code>403</code> Not Authorized</b> - authorization is required for the interaction that was attempted</li>
  <li><b><code>404</code> Not Found</b> - resource type not supported, or not a FHIR end-point</li>
@@ -561,8 +561,9 @@ using <a href="conformance-definitions.html#Conformance.rest.resource.updateCrea
  <li><b><code>409</code>/<code>412</code></b> - version conflict management - see <a href="#concurrency">below</a></li>
  <li><b><code>422</code> Unprocessable Entity</b> - the proposed resource violated applicable FHIR profiles or server business rules</li> -->
 </ul>
-<p>
-Any of these errors SHOULD be accompanied by an <a href="operationoutcome.html">OperationOutcome</a> resource providing additional detail concerning the issue.
+  <p>
+    Каждая из этих ошибок ДОЛЖНА сопровождаться ресурсом <a href="operationoutcome.html">OperationOutcome</a>, подробно описывающим произошедший сбой.
+<!--Any of these errors SHOULD be accompanied by an <a href="operationoutcome.html">OperationOutcome</a> resource providing additional detail concerning the issue.-->
 </p>
 <p>
 Для получения дополнительной информации о том, как системы могут вести себя при обработке обновления, обратитесь к странице <a href="updates.html">Механизм создания и обновления</a> .
