@@ -5592,7 +5592,7 @@
     <Cell><Data ss:Type="String">Claim.item.prosthesis.priorDate</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">date</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Дата первоначального оказания услуги.<!-- Initial service Date --></Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Дата первоначального оказания услуги<!-- Initial service Date --></Data></Cell>
     <Cell><Data ss:Type="String">Дата первоначальной установки.<!-- Date of the initial placement. --></Data></Cell>
     <Cell><Data ss:Type="String">Может повлиять на вынесение решения.<!-- May impact on adjudication. --></Data></Cell>
     <Cell ss:Index="22"><Data ss:Type="String">F04/F19</Data></Cell>
