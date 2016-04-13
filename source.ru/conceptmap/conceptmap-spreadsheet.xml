@@ -1494,7 +1494,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Use and/or publishing restrictions </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ограничения на использование и/или публикацию<!-- Use and/or publishing restrictions --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Информация об авторских правах относительно этой карты соответствия концептов и/или её содержимого<!-- A copyright statement relating to the concept map and/or its contents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
