@@ -1240,7 +1240,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">male | female | other | unknown</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Administrative Gender - the gender that the relative is considered to have for administration and record keeping purposes. </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Административный пол - пол родственника для административных целей и ведения учёта. <!-- Administrative Gender - the gender that the relative is considered to have for administration and record keeping purposes. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Не всякий тип родственной связи подразумевает пол, в то же время пол родственника может иметь значение при выполнении оценки риска<!-- Not all relationship codes imply gender and the relative's gender can be relevant for risk assessments --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1271,7 +1271,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">(approximate) date of birth</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">(приблизительная) дата рождения<!-- (approximate) date of birth --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Фактическая или приблизительная дата рождения родственника<!-- The actual or approximate date of birth of the relative --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1305,7 +1305,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">(approximate) age</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">(приблизительный) возраст<!-- (approximate) age --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Фактический или приблизительный возраст родственника на момент записи семейного анамнеза<!-- The actual or approximate age of the relative at the time the family member history is recorded --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

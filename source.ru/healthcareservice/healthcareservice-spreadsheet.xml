@@ -1149,7 +1149,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of service that may be delivered or performed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип услуги, которая может быть оказана или выполнена<!-- Type of service that may be delivered or performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретный тип доставляемой или выполняемой услуги<!-- The specific type of service that may be delivered or performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1183,9 +1183,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Specialties handled by the HealthcareService</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Специализации, охватываемые данным HealthcareService<!-- Specialties handled by the HealthcareService --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Collection of Медицинская специализация данной услуги<!-- specialties handled by the service site -->. This is more of a medical term</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коллекция специальностей, в которыми работают в месте оказания этой услуги. Это больше медицинский термин<!-- Collection of specialties handled by the service site. This is more of a medical term --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1217,9 +1217,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Location(s) where service may be provided</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Местоположения, где может быть предоставлена данная услуга<!-- Location(s) where service may be provided --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The location(s) where this healthcare service may be provided</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Местоположения, где может быть предоставлена данная услуга<!-- The location(s) where this healthcare service may be provided --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1484,7 +1484,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Особые требования приемлемости для использования данной услуги<!-- Specific eligibility requirements required to use the service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Does this service have specific eligibility requirements that need to be met in order to use the service?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Есть ли у этой услуги особые требования приемлемости, которым нужно соответствовать, чтобы пользоваться этой услугой?<!-- Does this service have specific eligibility requirements that need to be met in order to use the service? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>

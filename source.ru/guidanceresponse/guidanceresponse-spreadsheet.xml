@@ -983,7 +983,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Официальный ответ на запрос инструкции<!-- The formal response to a guidance request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A guidance response is the formal response to a guidance request, including any output parameters returned by the evaluation, as well as the description of any proposed actions to be taken</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Ответ на запрос инструкции - это официальный ответ на запрос инструкции, включающий все выходные параметры, возвращаемые в результате вычисления, а также описание всех действий, которые необходимо предпринять<!-- A guidance response is the formal response to a guidance request, including any output parameters returned by the evaluation, as well as the description of any proposed actions to be taken --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1204,7 +1204,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный идентификатор<!-- Unique identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор действия<!-- A unique identifier for the action -->. The identifier SHALL be unique within the container in which it appears, and MAY be universally unique</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор действия. Этот идентификатор должен быть уникальным в пределах содержащего его контейнера и может быть глобально уникальным<!-- A unique identifier for the action. The identifier SHALL be unique within the container in which it appears, and MAY be universally unique --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1326,9 +1326,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статический эквивалент текста, используемый, когда динамические аспекты не могут быть интерпретированы системой-получателем<!-- Static text equivalent of the action, used if the dynamic aspects cannot be interpreted by the receiving system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Текстовый эквивалент действия, которое должно быть выполнено<!-- A text equivalent of the action to be performed -->. This provides a human-interpretable description of the action when the definition is consumed by a system that may not be capable of interpreting it dynamically</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Текстовый эквивалент действия, которое должно быть выполнено. Предоставляет человекочитаемое описание действия, когда определение используется системой, которая может быть не в состоянии интерпретировать его динамически<!-- A text equivalent of the action to be performed. This provides a human-interpretable description of the action when the definition is consumed by a system that may not be capable of interpreting it dynamically --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1357,9 +1357,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The meaning of the action or its sub-actions</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Смысловое значение действия или его поддействий<!-- The meaning of the action or its sub-actions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The concept represented by this action or its sub-actions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Концепт, передаваемый этим действием или его поддействиями<!-- The concept represented by this action or its sub-actions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1388,9 +1388,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Evidence that supports taking the action</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Доказательства, которые поддерживают выполнение этого действия<!-- Evidence that supports taking the action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The evidence grade and the sources of evidence for this action</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Степень доказательства и источники доказательства этого действия<!-- The evidence grade and the sources of evidence for this action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1417,9 +1417,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">Relationship to another action</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">Взаимосвязь с другим действием<!-- Relationship to another action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A relationship to another action such as &quot;before&quot; or &quot;30-60 minutes after start of&quot;</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Взаимосвязь с другим действием, например &quot;до&quot; или &quot;через 30-60 минут после начала&quot;<!-- A relationship to another action such as &quot;before&quot; or &quot;30-60 minutes after start of&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1447,9 +1447,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">Identifier of the related action</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">Идентификатор связанного действия<!-- Identifier of the related action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The unique identifier of the related action</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор связанного действия<!-- The unique identifier of the related action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1480,7 +1480,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">before | after</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The relationship of this action to the related action</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Взаимосвязь данного действия со связанным действием<!-- The relationship of this action to the related action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1508,9 +1508,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">Time offset for the relationship</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">Смещение времени для этой взаимосвязи<!-- Time offset for the relationship --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A duration or range of durations to apply to the relationship. For example, 30-60 minutes before</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Продолжительность или диапазон продолжительностей для применения к этой взаимосвязи. Например 30-60 минут до [действия]<!-- A duration or range of durations to apply to the relationship. For example, 30-60 minutes before --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1541,7 +1541,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">start | end</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An optional indicator for how the relationship is anchored to the related action. For example &quot;before the start&quot; or &quot;before the end&quot; of the related action</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Необязательный идентификатор того, каким образом эта взаимосвязь закреплена за связанным действием. Например &quot;перед началом&quot; или &quot;перед окончанием&quot; связанного действия<!-- An optional indicator for how the relationship is anchored to the related action. For example &quot;before the start&quot; or &quot;before the end&quot; of the related action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1570,9 +1570,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Supporting documentation for the intended performer of the action</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вспомогательная документация для предполагаемого исполнителя действия<!-- Supporting documentation for the intended performer of the action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Didactic or other informational resources associated with the action that can be provided to the CDS recipient. Information resources can include inline text commentary and links to web resources</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дидактические или иные информационные материалы, связанные с этим действием, которые могут быть предоставлены получателю CDS. Информационные ресурсы могут включать встроенные текстовые комментарии и ссылки на веб-ресурсы<!-- Didactic or other informational resources associated with the action that can be provided to the CDS recipient. Information resources can include inline text commentary and links to web resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1601,7 +1601,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Participant</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Участник<!-- Participant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Участник действия<!-- The participant in the action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1662,9 +1662,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">Defines behaviors such as selection and grouping</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">Определяет модели поведения, например выборку и группировку<!-- Defines behaviors such as selection and grouping --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A behavior associated with the action. Behaviors define how the action is to be presented and/or executed within the receiving environment</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Модель поведения, ассоциированная с этим действием. Модели поведения задают, каким образом действие должно быть представлено и/или выполнено в рамках среды-получателя<!-- A behavior associated with the action. Behaviors define how the action is to be presented and/or executed within the receiving environment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1693,9 +1693,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">The type of behavior (grouping, precheck, selection, cardinality, etc)</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">Тип модели поведения (группировка, предварительная проверка, выборка, кардинальное множество и т. п.)<!-- The type of behavior (grouping, precheck, selection, cardinality, etc) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of the behavior to be described, such as grouping, visual, or selection behaviors</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип модели поведения, которая должна быть описана, например визуальная модель, группировка или выборка<!-- The type of the behavior to be described, such as grouping, visual, or selection behaviors --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1723,9 +1723,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">Specific behavior (e.g. required, at-most-one, single, etc)</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s87"><Data ss:Type="String">Особая модель поведения (например обязательно, не более одного, единственный и т. п.)<!-- Specific behavior (e.g. required, at-most-one, single, etc) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The specific behavior. The code used here is determined by the type of behavior being described. For example, the grouping behavior uses the grouping-behavior-type valueset</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Особая модель поведения. Код, используемый здесь, определяется типом описываемой модели поведения. Например модель группировки использует набор значений grouping-behavior-type<!-- The specific behavior. The code used here is determined by the type of behavior being described. For example, the grouping behavior uses the grouping-behavior-type valueset --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1754,7 +1754,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The target of the action</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Объект этого действия<!-- The target of the action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурс, который является объектом действия (например CommunicationRequest)<!-- The resource that is the target of the action (e.g. CommunicationRequest) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1785,7 +1785,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Sub action</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Поддействие<!-- Sub action --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Подпункты действия<!-- Sub actions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1816,9 +1816,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional required data</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительные необходимые данные<!-- Additional required data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the evaluation could not be completed due to lack of information, or additional information would potentially result in a more accurate response, this element will a description of the data required in order to proceed with the evaluation. A subsequent request to the service should include this data</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если вычисление не может быть выполнено из-за отсутствия информации либо дополнительная информация могла бы потенциально дать более точный ответ, то в этом элементе указывается описание данных, необходимых для выполнения этой оценки. Последующий запрос к этому сервису должен содержать эти данные<!-- If the evaluation could not be completed due to lack of information, or additional information would potentially result in a more accurate response, this element will a description of the data required in order to proceed with the evaluation. A subsequent request to the service should include this data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6455,7 +6455,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ActionBehaviorType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of behavior to be defined</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип задаваемой модели поведения<!-- The type of behavior to be defined --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s148" ss:HRef="http://hl7.org/fhir/ValueSet/action-behavior-type"><Data
@@ -6471,7 +6471,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ActionRelationshipType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Defines the types of relationships between actions</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Задаёт типы взаимосвязей между действиями<!-- Defines the types of relationships between actions --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s148" ss:HRef="http://hl7.org/fhir/ValueSet/action-relationship-type"><Data
@@ -6487,7 +6487,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ActionRelationshipAnchor</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Defines possible anchors for the relationship between actions</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Задаёт возможные точки привязки для взаимосвязей между действиями<!-- Defines possible anchors for the relationship between actions --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s148" ss:HRef="http://hl7.org/fhir/ValueSet/action-relationship-anchor"><Data

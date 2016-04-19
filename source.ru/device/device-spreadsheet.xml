@@ -1026,7 +1026,7 @@
     <Cell ss:StyleID="s81"><Data ss:Type="String">Позволяет учреждениям отслеживать свои устройства.<!-- Allows institutions to track their devices.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Determine whether HCT/TP stuff gos here or in new resource and determine boundaries.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Определить, идёт ли информация, связанная с HCT/TP, сюда или в новый ресурс, и установить границы.<!-- Determine whether HCT/TP stuff gos here or in new resource and determine boundaries. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Device</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1057,18 +1057,18 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Instance identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор экземпляра<!-- Instance identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Unique instance identifiers assigned to a device by manufacturers other organizations or owners.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальные идентификаторы экземпляра, присваиваемые устройству производителями, другими организациями или владельцами.<!-- Unique instance identifiers assigned to a device by manufacturers other organizations or owners. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The barcode string from a barcode present on a device label or package may identify the instance, include names given to the device in local usage, or may identify the type of device. If the identifier identifies the type of device, Device.type element should be used.  For [UDI](device.html#5.11.3.2.2),  this element corresponds to the variable portion of the UDI that identifies the serial number of a specific device. See [UDI mappings](device-mappings.html#udi) for a complete mapping of UDI parts to Device. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Строка штрих-кода на ярлыке или упаковке устройства может идентифицировать экземпляр, включая названия этого устройства, используемые локально, либо может идентифицировать тип этого устройства. Если это идентификатор типа устройства, то следует использовать элемент Device.type. Для [UDI](device.html#5.11.3.2.2) этот элемент соответствует изменяющейся части UDI, являющейся серийным номером конкретного устройства. Полные таблицы соответствия частей UDI и ресурса Device можно посмотреть в разделе [UDI mappings](device-mappings.html#udi).<!-- The barcode string from a barcode present on a device label or package may identify the instance, include names given to the device in local usage, or may identify the type of device. If the identifier identifies the type of device, Device.type element should be used.  For [UDI](device.html#5.11.3.2.2),  this element corresponds to the variable portion of the UDI that identifies the serial number of a specific device. See [UDI mappings](device-mappings.html#udi) for a complete mapping of UDI parts to Device.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.id</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">The serial number which is a component of the the production identifier (PI), a conditional, variable portion of a UDI.   The identifier.type code should be set to “SNO”(Serial Number) and the system left empty.&#10;</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Серийный номер, который является компонентом производственного идентификатора (PI), условной, переменной части UDI. Значение identifier.type должно быть установлено в "SNO" (серийный номер), а элемент system оставлен пустым.&#10;<!-- The serial number which is a component of the the production identifier (PI), a conditional, variable portion of a UDI.   The identifier.type code should be set to “SNO”(Serial Number) and the system left empty.&#10; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1096,16 +1096,16 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Строковое значение штрих-кода уникального идентификатора устройства (UDI)<!-- Unique Device Identifier (UDI) Barcode string --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">[Unique device identifier (UDI)](device.html#5.11.3.2.2) barcode or rfid string assigned to device label or package</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Строковое значение штрих-кода или RFID [Уникального идентификатора устройства (UDI)](device.html#5.11.3.2.2), указанное на ярлыке или упаковке устройства<!-- [Unique device identifier (UDI)](device.html#5.11.3.2.2) barcode or rfid string assigned to device label or package --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The udiCarrier string may identify an unique instance of a device, or it may only identify the type of the device. The Human Readable format (HRF) is required in FHIR. AIDC identifiers cannot be conveyed in FHIR, Because of limitations on character sets in XML and the need to round-trip JSON data through XML.  See [UDI mappings](device-mappings.html#udi) for a complete mapping of UDI parts to Device. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Строка udiCarrier может обозначать уникальный экземпляр устройства или только тип устройства. Человекочитаемый формат (HRF) является обязательным в FHIR. AIDC-идентификаторы не могут быть конвертированы в FHIR из-за ограничений символьной кодировки в XML и необходимости передавать JSON-данные через XML. Полные таблицы соответствия частей UDI и ресурса Device можно посмотреть в разделе [UDI mappings](device-mappings.html#udi).<!-- The udiCarrier string may identify an unique instance of a device, or it may only identify the type of the device. The Human Readable format (HRF) is required in FHIR. AIDC identifiers cannot be conveyed in FHIR, Because of limitations on character sets in XML and the need to round-trip JSON data through XML.  See [UDI mappings](device-mappings.html#udi) for a complete mapping of UDI parts to Device. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.id[where root is root for UDI]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">The full UDI carrier - The Human Readable Form (HRF) representation of the barcode string as printed on the packaging of the device.  The  'type' component should be set to “UDI” and the 'system' component to the the appropriate repository url.  the additional URL is needed to identify the authoritative source for UDI generation within the jurisdiction.  All UDIs are globally unique within a single namespace. with the appropriate repository uri as the system.  This allows a recipient of a UDI to know which database will contain the UDI-associated metadata.  For example,  UDIs of devices managed in the U.S. by the FDA, the value is  http://hl7.org/fhir/NamingSystem/fda-udi.  Because of limitations on character sets in XML and the need to round-trip JSON data through XML, AIDC identifiers cannot be conveyed in FHIR.  </Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Полный носитель UDI - человекочитаемая форма (HRF) представления строки штрих-кода, напечатанной на упаковке устройства. Компонент 'type' должен иметь значение "UDI", а компонент 'system' - URL соответствующего репозитория. Для идентификации авторитетного источника генерации UDI в пределах юрисдикции необходим дополнительный URL. Все UDI глобально уникальны в пределах одного пространства имён с соответствующим URI репозитория в качестве системы. Это позволяет получателю UDI узнавать, какая база данных будет содержать связанные с этим UDI метаданные. Например для UDI-идентификаторов устройств, назначаемых в США FDA, этим значением будет http://hl7.org/fhir/NamingSystem/fda-udi. Из-за ограничений символьных кодировок в XML и необходимости в двусторонней передаче JSON-данных через XML, AIDC-идентификаторы невозможно конвертировать в FHIR.<!-- The full UDI carrier - The Human Readable Form (HRF) representation of the barcode string as printed on the packaging of the device.  The  'type' component should be set to “UDI” and the 'system' component to the the appropriate repository url.  the additional URL is needed to identify the authoritative source for UDI generation within the jurisdiction.  All UDIs are globally unique within a single namespace. with the appropriate repository uri as the system.  This allows a recipient of a UDI to know which database will contain the UDI-associated metadata.  For example,  UDIs of devices managed in the U.S. by the FDA, the value is  http://hl7.org/fhir/NamingSystem/fda-udi.  Because of limitations on character sets in XML and the need to round-trip JSON data through XML, AIDC identifiers cannot be conveyed in FHIR.   --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1173,13 +1173,13 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код или идентификатор типа устройства<!-- Code or identifier to identify a kind of device. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">There can be different code values thath may correspond to different granularities of the same concept.  These can be represented as translations using  the [codeableConcept](datatypes.html#codeableconcept) datatype.  For [UDI](device.html#5.11.3.2.2), this element corresponds to the UDI device identifier (DI) part. See [UDI mappings](device-mappings.html#udi) for a complete mapping of UDI parts to Device.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Различные значения кодов могут соответствовать различным степеням детализации одного и того же концепта. Это можно выразить с помощью типа данных [codeableConcept](datatypes.html#codeableconcept). Для [UDI](device.html#5.11.3.2.2) этот элемент соответствует изменяющейся части UDI, являющейся серийным номером конкретного устройства. Полные таблицы соответствия частей UDI и ресурса Device можно посмотреть в разделе [UDI mappings](device-mappings.html#udi).<!-- There can be different code values thath may correspond to different granularities of the same concept.  These can be represented as translations using  the [codeableConcept](datatypes.html#codeableconcept) datatype.  For [UDI](device.html#5.11.3.2.2), this element corresponds to the UDI device identifier (DI) part. See [UDI mappings](device-mappings.html#udi) for a complete mapping of UDI parts to Device. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">The device identifier (DI), a mandatory, fixed portion of a UDI that identifies the labeler and the specific version or model of a devicet.  The system uri should be included. Possible URIs include&#10;GS1 DIs: &#10; http://hl7.org/fhir/NamingSystem/gs1-di&#10;HIBCC DIs:&#10; http://hl7.org/fhir/NamingSystem/hibcc-di&#10;ICCBBA DIs for blood containers:&#10; http://hl7.org/fhir/NamingSystem/iccbba-blood-di&#10;ICCBA DIs for other devices:&#10; http://hl7.org/fhir/NamingSystem/iccbba-other-di&#10;</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Идентификатор устройства (DI), обязательная, фиксированная часть UDI, которая идентифицирует маркировщика и конкретную версию или модель устройства. Должна включать в себя URI системы. Возможные значения URI включают в себя&#10;GS1 DIs: &#10; http://hl7.org/fhir/NamingSystem/gs1-di&#10;HIBCC DIs:&#10; http://hl7.org/fhir/NamingSystem/hibcc-di&#10;ICCBBA DIs for blood containers:&#10; http://hl7.org/fhir/NamingSystem/iccbba-blood-di&#10;ICCBA DIs for other devices:&#10; http://hl7.org/fhir/NamingSystem/iccbba-other-di&#10;<!-- The device identifier (DI), a mandatory, fixed portion of a UDI that identifies the labeler and the specific version or model of a devicet.  The system uri should be included. Possible URIs include&#10;GS1 DIs: &#10; http://hl7.org/fhir/NamingSystem/gs1-di&#10;HIBCC DIs:&#10; http://hl7.org/fhir/NamingSystem/hibcc-di&#10;ICCBBA DIs for blood containers:&#10; http://hl7.org/fhir/NamingSystem/iccbba-blood-di&#10;ICCBA DIs for other devices:&#10; http://hl7.org/fhir/NamingSystem/iccbba-other-di&#10; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1209,13 +1209,13 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Номер партии, присвоенный изготовителем<!-- Lot number assigned by the manufacturer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Alphanumeric. For [UDI](device.html#5.11.3.2.2), this element corresponds to the variable portion of a UDI that identifies the lot or batch number within which a physical instance of a device was manufactured. See [UDI mappings](device-mappings.html#udi) for a complete mapping of UDI parts to Device. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Буквенно-цифровой. Для [UDI](device.html#5.11.3.2.2) этот элемент соответствует изменяющейся части UDI, обозначающей номер партии, в рамках которой был произведён физический экземпляр устройства. Полные таблицы соответствия частей UDI и ресурса Device можно посмотреть в разделе [UDI mappings](device-mappings.html#udi).<!-- Alphanumeric. For [UDI](device.html#5.11.3.2.2), this element corresponds to the variable portion of a UDI that identifies the lot or batch number within which a physical instance of a device was manufactured. See [UDI mappings](device-mappings.html#udi) for a complete mapping of UDI parts to Device.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.lotNumberText</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">The lot or batch number within which a device was manufactured - which is a component of the the production identifier (PI), a conditional, variable portion of a UDI.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Номер партии, в рамках которой было произведено устройство - который является компонентом производственного идентификатора (PI), условной, переменной части UDI.<!-- The lot or batch number within which a device was manufactured - which is a component of the the production identifier (PI), a conditional, variable portion of a UDI. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1279,13 +1279,13 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время, когда было произведено устройство<!-- The date and time when the device was manufactured. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">For [UDI](device.html#5.11.3.2.2), this element corresponds to the variable portion of a UDI that identifies the date a physical instance of a device was manufactured. See [UDI mappings](device-mappings.html#udi) for a complete mapping of UDI parts to Device.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для [UDI](device.html#5.11.3.2.2) этот элемент соответствует изменяющейся части UDI, обозначающей дату производства физического экземпляра устройства. Полные таблицы соответствия частей UDI и ресурса Device можно посмотреть в разделе [UDI mappings](device-mappings.html#udi).<!-- For [UDI](device.html#5.11.3.2.2), this element corresponds to the variable portion of a UDI that identifies the date a physical instance of a device was manufactured. See [UDI mappings](device-mappings.html#udi) for a complete mapping of UDI parts to Device. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">.existenceTime.low </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">The date a specific device was manufactured - which is a component of the the production identifier (PI), a conditional, variable portion of a UDI.  For FHIR, The datetime syntax must converted to YYYY-MM-DD[THH:MM:SS].  If hour is present, the minutes and seconds should both be set to “00”.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Дата производства конкретного устройства - являющаяся компонентом производственного идентификатора (PI), условной, переменной части UDI. Для FHIR синтаксис datetime должен быть преобразован в формат YYYY-MM-DD[THH:MM:SS]. Если указан час, то минуты и секунды должны иметь значение "00".<!-- The date a specific device was manufactured - which is a component of the the production identifier (PI), a conditional, variable portion of a UDI.  For FHIR, The datetime syntax must converted to YYYY-MM-DD[THH:MM:SS].  If hour is present, the minutes and seconds should both be set to “00”. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1315,13 +1315,13 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время, после которого это устройство становится не действительным или не должно больше использоваться (если применимо)<!-- The date and time beyond which this device is no longer valid or should not be used (if applicable) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">For [UDI](device.html#5.11.3.2.2), this element corresponds to the variable portion of a UDI that identifies the expiration date of a physical instance of a device. See [UDI mappings](device-mappings.html#udi) for a complete mapping of UDI parts to Device.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для [UDI](device.html#5.11.3.2.2) этот элемент соответствует изменяющейся части UDI, обозначающей дату истечения срока годности физического экземпляра устройства. Полные таблицы соответствия частей UDI и ресурса Device можно посмотреть в разделе [UDI mappings](device-mappings.html#udi).<!-- For [UDI](device.html#5.11.3.2.2), this element corresponds to the variable portion of a UDI that identifies the expiration date of a physical instance of a device. See [UDI mappings](device-mappings.html#udi) for a complete mapping of UDI parts to Device. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.expirationTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">the expiration date of a specific device -  which is a component of the the production identifier (PI), a conditional, variable portion of a UDI.  For FHIR, The datetime syntax must converted to YYYY-MM-DD[THH:MM:SS].  If hour is present, the minutes and seconds should both be set to “00”.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Дата истечения срока годности конкретного устройства - является компонентом производственного идентификатора (PI), условной, переменной части UDI. Если указан час, то минуты и секунды должны иметь значение "00".<!-- the expiration date of a specific device -  which is a component of the the production identifier (PI), a conditional, variable portion of a UDI.  For FHIR, The datetime syntax must converted to YYYY-MM-DD[THH:MM:SS].  If hour is present, the minutes and seconds should both be set to “00”. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1452,11 +1452,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Patient to whom Device is affixed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Пациент, которому имплантировано устройство<!-- Patient to whom Device is affixed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Информация о пациенте, если ресурс являются принадлежностью человека<!-- Patient information, If the device is affixed to a person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If the device is implanted in a patient, then need to associate the device to the patient</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если устройство имплантировано пациенту, то необходимо ассоциировать это устройство с этим пациентом<!-- If the device is implanted in a patient, then need to associate the device to the patient --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1560,7 +1560,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Место, где находится это устройство.<!-- The place where the device can be found. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Device.location can be used to track device location</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Device.location можно использовать для отслеживания местонахождения устройства<!-- Device.location can be used to track device location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4483,7 +4483,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s121"><Data ss:Type="String">Device.patient</Data></Cell>
-    <Cell ss:StyleID="s122"><Data ss:Type="String">Patient information, Если ресурс прикреплен к человеку<!-- if the resource is affixed to a person --></Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">Информация о пациенте, если устройство имплантировано человеку<!-- Patient information, if the resource is affixed to a person --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s120"><Data ss:Type="String">udicarrier</Data></Cell>
@@ -6448,7 +6448,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s149"><Data ss:Type="String">DeviceKind</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Codes to identify medical devices</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Коды медицинских изделий<!-- Codes to identify medical devices --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-device-kind</Data></Cell>
