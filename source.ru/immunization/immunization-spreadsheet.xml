@@ -1409,9 +1409,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Изготовитель вакцины<!-- Vaccine manufacturer --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Производитель вакцины<!-- Vaccine manufacturer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Название изготовителя вакцины<!-- Name of vaccine manufacturer --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Название производителя вакцины<!-- Name of vaccine manufacturer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4768,14 +4768,14 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Immunization.lotNumber</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Vaccine Lot Number</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Номер партии вакцины<!-- Vaccine Lot Number --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">manufacturer</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Immunization.manufacturer</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Vaccine Manufacturer</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Производитель вакцины<!-- Vaccine Manufacturer --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">performer</Data></Cell>

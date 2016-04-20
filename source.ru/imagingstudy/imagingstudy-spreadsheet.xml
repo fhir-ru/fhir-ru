@@ -1437,7 +1437,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Retrieve URI</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">URI для извлечения<!-- Retrieve URI --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">Ресурс WADO-RS, в котором доступно это исследование.<!-- WADO-RS resource where Study is available. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1542,12 +1542,12 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Diagnoses etc.with request</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Диагнозы и др. с запросом<!-- Diagnoses etc.with request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">History and Diagnoses provided with request</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">История и диагностика, предоставляемые с запросом<!-- History and Diagnoses provided with request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">For more detailed information check the ImagingStudy.order.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">См. более подробную информацию в ImagingStudy.order.<!-- For more detailed information check the ImagingStudy.order. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">.outboundRelationship[typeCode=PERT].target</Data><NamedCell
@@ -1791,7 +1791,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">A short human readable summary of the series</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Короткое человекочитаемое итоговое заключение по серии<!-- A short human readable summary of the series --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">Описание серии<!-- A description of the series --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1958,7 +1958,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Performed Procedure Step Start Date and Time</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Дата и время начала шага выполненной процедуры<!-- Performed Procedure Step Start Date and Time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2062,7 +2062,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Retrieve AE Title</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">AE-заголовок для извлечения<!-- Retrieve AE Title --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2131,7 +2131,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Исследованная часть тела<!-- Body part examined --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed CT</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Осмотренная часть тела. См. в DICOM части 16 приложении L таблицы соответствия DICOM и Snomed CT<!-- Body part examined. See  DICOM Part 16 Annex L for the mapping from DICOM to Snomed CT --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2638,7 +2638,7 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Number of Frames</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Количество кадров<!-- Number of Frames --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2670,12 +2670,12 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">WADO-RS service where instance is available</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Служба WADO-RS, где доступен экземпляр<!-- WADO-RS service where instance is available --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">WADO-RS url where image is available</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">WADO-RS URL, по которому доступно изображение<!-- WADO-RS url where image is available --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Each instance may have a url and an attachment. Both represent the same information, but using different approaches. The URL is a reference to a WADO-RS service that makes the instance available</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Каждый экземпляр может иметь URL и вложение. Они оба являются представлениями одной и той же информации, но используют разные подходы. Этот URL - это ссылка на WADO-RS-службу, которая делает доступной этот экземпляр<!-- Each instance may have a url and an attachment. Both represent the same information, but using different approaches. The URL is a reference to a WADO-RS service that makes the instance available --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s95"><Data ss:Type="String">.text.reference</Data><NamedCell
@@ -2705,9 +2705,9 @@
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">The instance payload, such as the image binary data or URL to it</Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Полезная нагрузка экземпляра, например двоичные данные изображения или URL к нему<!-- The instance payload, such as the image binary data or URL to it --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">Содержимое экземпляра<!-- Content of the instance --> or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Содержимое экземпляра или его визуализация (например JPEG для изображения, XML для структурированного отчёта). Может быть представлено с помощью встроенной кодировки; URL-ссылкой на сервис WADO-RS, который делает экземпляр доступным; или на FHIR-ресурс (например Media, Document и др.). Для альтернативного представления экземпляра может использоваться несколько вложений содержимого.<!-- Content of the instance or a rendering thereof (e.g. a JPEG of an image, or an XML of a structured report). May be represented for example by inline encoding; by a URL reference to a WADO-RS service that makes the instance available; or to a FHIR Resource (e.g. Media, Document, etc.). Multiple content attachments may be used for alternate representations of the instance. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">Использование элемента Attachment.data не поощряется.<!-- Use of Attachment.data is discouraged. --></Data><NamedCell
@@ -4746,7 +4746,7 @@
     <Cell ss:StyleID="s92"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s92"/>
     <Cell ss:StyleID="s125"><Data ss:Type="String">ImagingStudy.identifier</Data></Cell>
-    <Cell ss:StyleID="s126"><Data ss:Type="String">Other identifiers for the Study</Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Другие идентификаторы исследования<!-- Other identifiers for the Study --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s124"><Data ss:Type="String">series</Data></Cell>

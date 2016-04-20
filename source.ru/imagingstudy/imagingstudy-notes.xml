@@ -16,16 +16,17 @@
 </ul>
 
 <h3>Сценарий использования<!-- Use Case --></h3>
-<h4>EHR access to imaging studies</h4>
+<h4>Доступ к результатам радиологических исследований из ЭМК<!-- EHR access to imaging studies --></h4>
 <p>
-Amy, a family physician, would like to see a list of available studies for her patient, Alex. Her EHR 
+Эми, семейный врач, обращается к реестру документов предприятия, содержащему результаты радиологических исследований (<a href="http://www.ihe.net">IHE Radiology XDS-I</a>), чтобы найти исследования её пациента Алекса. Её ЭМК-клиент выполняет FHIR-вызов всех доступных объектов <a href="imagingobjectselection.html">ImagingObjectSelection</a> для Алекса. В ответ она может получить идентификаторы исследований для каждого исследования, которое было опубликовано в этот реестр. В ответ предоставляется достаточно информации, чтобы получить эскиз через вызов WADO-RS или запустить просмотрщик с помощью вызова профиля <a href="http://www.ihe.net">IHE Radiology - Invoke Image Display (IID)</a>, используя элементы URL, находящиеся в <a href="imagingobjectselection.html">ImagingObjectSelection</a>. В каждом результате будет ссылка на FHIR-объект <a href="imagingstudy.html">ImagingStudy</a>, который может предоставить более подробную информацию о каждом исследовании.
+<!-- Amy, a family physician, would like to see a list of available studies for her patient, Alex. Her EHR 
 client makes a FHIR call for all <a href="imagingstudy.html">ImagingStudy</a> objects available for Alex. 
 In the response, she is able to see the study date, procedure, modality, and accession number, for each 
 study returned. There is enough information provided in the response to obtain a thumbnail via a WADO-RS 
 call, or to launch a viewer using an <a href="http://www.ihe.net">IHE Radiology - Invoke Image Display (IID)</a> 
-profile call using the url elements found in the <a href="imagingstudy.html">ImagingStudy</a>.
+profile call using the url elements found in the <a href="imagingstudy.html">ImagingStudy</a>. -->
 </p>
-<h4>Comprehensive Imaging Scheduled Workflow</h4>
+<h4>Всеобъемлющий плановый рабочий процесс работы с радиологическими изображениями<!-- Comprehensive Imaging Scheduled Workflow --></h4>
 <p>
 Джо Энджене жалуется на одышку и нерегулярную боль в груди своему основному лечащему врачу доктору Пату Дауну в местной поликлинике, который заказал для него стресс-эхокардиограмму; этот заказ создаётся в виде FHIR-ресурса <a href="order.html">Order</a> для управления рабочим процессом, со ссылкой на ресурс <a href="diagnosticorder.html">DiagnosticOrder</a> с деталями запроса. Заказ запланирован, и его исполнение назначенено кардиологу доктору Арту Сканну, также работающему в этой поликлинике.
 <!-- Joe Angina complains of shortness of breath and occasional chest pain to his primary care physician, Dr. Pat Down at 
