@@ -1138,9 +1138,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional details about the location that could be displayed as further information to identify the location beyond its name</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительные детали о месторасположении, которые могут отображаться для определения месторасположения вдобавок к его названию<!-- Additional details about the location that could be displayed as further information to identify the location beyond its name --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание местоположения<!-- Description of the Location -->, which helps in finding or referencing the place</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание месторасположения, которое помогает при поиске этого места или для ссылок на него<!-- Description of the Location, which helps in finding or referencing the place --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Людям необходима дополнительная информация для подтверждения, что место было определено корректно<!-- Humans need additional information to verify a correct location has been identified --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
