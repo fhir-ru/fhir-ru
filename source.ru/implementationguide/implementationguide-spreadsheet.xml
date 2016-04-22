@@ -1964,7 +1964,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Изображение, каскадная таблица стилей, скрипт и т. п.<!-- Image, css, script, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Изображение, каскадная таблица стилей, скрипт и т. п<!-- Image, css, script, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Бинарный файл, включаемый в руководство по реализации при публикации<!-- A binary file that is included in the  implementation guide when it is published --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
