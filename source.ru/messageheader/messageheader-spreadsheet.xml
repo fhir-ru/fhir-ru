@@ -1090,7 +1090,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Код события, которое представляет это сообщение<!-- Code for the event this message represents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value &quot;http://hl7.org/fhir/message-events&quot;</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, идентифицирующий событие, которое это сообщение представляет и связывает его со своим определением. Значением элемента system для событий, определённых в рамках спецификации FHIR, является &quot;http://hl7.org/fhir/message-events&quot;<!-- Code that identifies the event this message represents and connects it with its definition. Events defined as part of the FHIR specification have the system value &quot;http://hl7.org/fhir/message-events&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Управляет поведением, ассоциированным с этим сообщением<!-- Drives the behavior associated with this message --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1790,9 +1790,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Фактическое содержимое сообщения<!-- The actual content of the message --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The actual data of the message - a reference to the root/focus class of the event. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Непосредственно сами данные сообщения - ссылка на корневой/целевой класс события.<!-- The actual data of the message - a reference to the root/focus class of the event.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Every message event is about actual data, a single resource, that is identified in the definition of the event, and perhaps some or all linked resources</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Каждое сообщение о событии относится к фактическим данным, отдельному ресурсу, идентифицируемому в определении этого события, и, возможно, некоторым или всем связанным ресурсам<!-- Every message event is about actual data, a single resource, that is identified in the definition of the event, and perhaps some or all linked resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Данные определяются там, где определяется тип транзакции. Данные транзакции всегда включаются в комплект, т. е. полное сообщение. Указывается только корневой ресурс. Ресурсы, на которые он ссылается, должны содержаться в комплекте, однако также не перечисляются здесь. Многократные повторения разрешены в целях поддержки слияний и других ситуаций с несколькими координационными целями<!-- The data is defined where the transaction type is defined. The transaction data is always included in the bundle that is the full message.  Only the root resource is specified.  The resources it references should be contained in the bundle but are not also listed here.  Multiple repetitions are allowed to cater for merges and other situations with multiple focal targets --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

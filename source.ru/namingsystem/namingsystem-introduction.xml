@@ -4,7 +4,7 @@
 <a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-Описывает некоторую кодовую или идентификационную систему.
+Определяет некоторую кодовую или идентификационную систему.
 <!-- Defines a specific code system or identifier system --> 
 <!-- далее закомментировано авторами -->
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->

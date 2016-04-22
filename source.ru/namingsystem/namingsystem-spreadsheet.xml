@@ -1001,7 +1001,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">Система уникальной идентификации<!-- System of unique identification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Куратор пространства имён, который выдает уникальные обозначения в пределах этого пространства имён для идентификации понятий, людей, устройств и т. п. Представляет &quot;System&quot;, используемую внутри типов данных Идентификатор и Кодинг<!-- A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a &quot;System&quot; used within the Identifier and Coding data types. --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Курируемое пространство имён, которое выдает уникальные обозначения в пределах этого пространства имён для идентификации понятий, людей, устройств и т. п. Используется в качестве значения элемента &quot;System&quot; в типах данных Идентификатор и Кодинг.<!-- A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a &quot;System&quot; used within the Identifier and Coding data types. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3816,7 +3816,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">NamingSystem</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">Root systems cannot have uuid identifiers</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Корневые системы не могут иметь идентификаторов UUID<!-- Root systems cannot have uuid identifiers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">kind != 'root' or uniqueId.type = 'uuid'</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

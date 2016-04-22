@@ -1174,7 +1174,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Who is/was taking  the medication</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кто принимал/принимает этот медикамент<!-- Who is/was taking  the medication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Человек или животное, кто принял/принимает лекарственное средство.<!-- The person or animal who is/was taking the medication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1242,9 +1242,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Person who provided the information about the taking of this medication</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, предоставивший информацию о принятии этого медикамента<!-- Person who provided the information about the taking of this medication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The person who provided the information about the taking of this medication.  Note:  A MedicationStatement may be derived from supportingInformation e.g claims or medicationOrder.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Лицо, предоставивший информацию о принятии этого медикамента. Примечание: из supportingInformation можно получить MedicationStatement, например иски или medicationOrder.<!-- The person who provided the information about the taking of this medication.  Note:  A MedicationStatement may be derived from supportingInformation e.g claims or medicationOrder. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1276,7 +1276,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная вспомогательная информация<!-- Additional supporting information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports or is used to derive the MedicationStatement.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет связывать MedicationStatement с лежащим в его основе MedicationOrder или с другой информацией, вспомогательной или используемой для вывода MedicationStatement.<!-- Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports or is used to derive the MedicationStatement. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Вероятными ссылками будут ссылки на ресурсы MedicationOrder, MedicationDispense, Claim, Observation или QuestionnaireAnswers.<!-- Likely references would be to MedicationOrder, MedicationDispense, Claim, Observation or QuestionnaireAnswers. --></Data><NamedCell
@@ -1406,12 +1406,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Reason for why the medication is being/was taken</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Причина, почему это лекарственное средство принимается/было принято<!-- Reason for why the medication is being/was taken --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Причина, почему это лекарственное средство принимается/было принято.<!-- A reason for why the medication is being/was taken. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This could be a diagnosis code. If a full condition record exists or additional detail is needed, use reasonForUseReference.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это может быть код диагноза. Если имеется полная запись клинического состояния или требуются дополнительные детали, используйте reasonForUseReference.<!-- This could be a diagnosis code. If a full condition record exists or additional detail is needed, use reasonForUseReference. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.reasonCode</Data><NamedCell
@@ -1439,12 +1439,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Condition that supports why the medication is being/was taken</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Клиническое состояние, подтверждающее необходимость принятия этого медикамента<!-- Condition that supports why the medication is being/was taken --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Condition that supports why the medication is being/was taken.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Клиническое состояние, подтверждающее необходимость принятия этого медикамента.<!-- Condition that supports why the medication is being/was taken. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This is a reference to a condition that is the reason why the medication is being/was taken.  If only a code exists, use reasonForUseCode.&#10;</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это ссылка на ресурс Condition, являющийся обоснованием для принятия этого медикамента. Если имеется только код, используйте reasonForUseCode.&#10;<!-- This is a reference to a condition that is the reason why the medication is being/was taken.  If only a code exists, use reasonForUseCode.&#10; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1536,7 +1536,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Free text dosage instructions as reported by the information source</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Инструкции по дозировке в свободной текстовой форме, сообщённые источником информации<!-- Free text dosage instructions as reported by the information source --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Произвольная текстовая информация о дозировке, сообщённая об использовании медикамента пациентом. Если присутствует закодированная информация, тода произвольный текст тоже может присутствовать для отображения людям.<!-- Free text dosage information as reported about a patient's medication use. When coded dosage information is present, the free text may still be present for display to humans. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4066,7 +4066,7 @@
     <Cell ss:StyleID="s91"><Data ss:Type="String">Reason for use reference</Data></Cell>
     <Cell ss:StyleID="s91"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">MedicationStatement</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Reason for use reference is only permitted if wasNotTaken is false</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Элемент reasonForUseReference разрешён только в том случае, если wasNotTaken имеет значение ложь<!-- Reason for use reference is only permitted if wasNotTaken is false --></Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">reasonForUseReference.empty() or wasNotTaken = false</Data></Cell>
     <Cell ss:StyleID="s108"><Data ss:Type="String">not(exists(*[starts-with(local-name(.), 'reasonForUseReference')]) and f:wasNotTaken/@value=true())</Data></Cell>
    </Row>
