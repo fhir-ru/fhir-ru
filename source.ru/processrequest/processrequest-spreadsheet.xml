@@ -1388,7 +1388,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Nullify</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Аннулировать<!-- Nullify --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Если эта опция выбрана, необходимо удалить всю историю, исключая аудит.<!-- If true remove all history excluding audit. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1576,7 +1576,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Period</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период<!-- Period --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Период времени, за который удовлетворяющие ресурсы будут созданы.<!-- A period of time during which the fulfilling resources would have been created. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

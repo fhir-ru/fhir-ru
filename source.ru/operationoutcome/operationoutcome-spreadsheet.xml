@@ -1097,9 +1097,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Код ошибки или предупреждения<!-- Error or warning code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Describes the type of the issue. The system that creates an OperationOutcome SHALL choose the most applicable code from the IssueType value set, and may additional provide its own code for the error in the details element</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описывает тип проблемы. Система, которая создаёт OperationOutcome, должна выбрать наиболее подходящий код из набора значений IssueType, и может дополнительно предоставить свой собственный код ошибки в элементе details<!-- Describes the type of the issue. The system that creates an OperationOutcome SHALL choose the most applicable code from the IssueType value set, and may additional provide its own code for the error in the details element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Expresses the issue in a human and computer-friendly way, allowing the requesting system to behave differently based on the type of issue</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Выражает проблему дружественными человеку и компьютеру способами, позволяя запрашивающей системе вести себя различным образом в зависимости от типа проблемы<!-- Expresses the issue in a human and computer-friendly way, allowing the requesting system to behave differently based on the type of issue --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1201,7 +1201,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">XPath of element(s) related to issue</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">XPath элементов, связанных с этой проблемой<!-- XPath of element(s) related to issue --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Простой XPath, ограниченный именами элементов, индикаторами повтора и доступом к потомкам по умолчанию, идентифицирующий один из элементов в ресурсе, который вызвал появление этой проблемы.<!-- A simple XPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1237,13 +1237,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">FluentPath of element(s) related to issue</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">FluentPath элементов, связанных с этой проблемой<!-- FluentPath of element(s) related to issue --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A simple FluentPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Простой FluentPath, ограниченный именами элементов, индикаторами повторения и дочерним доступом по умолчанию, который идентифицирует один из элементов в ресурсе, который вызвал эту проблему.<!-- A simple FluentPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the resource that caused this issue to be raised. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет системам выделять подсветкой или другим образом направлять пользователей к элементам, связанным с проблемой, для упрощения их починки.<!-- Allows systems to highlight or otherwise guide users to elements implicated in issues to allow them to be fixed more easily. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The root of the FluentPath is the resource or bundle that generated OperationOutcome.  Each FluentPath SHALL resolve to a single node</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Корень FluentPath - это ресурс или бандл, который сгенерировал OperationOutcome. Каждый FluentPath должен разрешаться в отдельный узел<!-- The root of the FluentPath is the resource or bundle that generated OperationOutcome.  Each FluentPath SHALL resolve to a single node --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./location[parent::AcknowledgmentDetail]</Data><NamedCell

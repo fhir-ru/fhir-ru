@@ -4,12 +4,13 @@
 <a name="scope"> </a>
 <h2>Область применения и использование</h2>
 <p>
-<b>NOTE:</b> This resource is slated to be refactored and reduced in scope as some of its functionality
+<b>ПРИМЕЧАНИЕ:</b> Этот ресурс планируется устранить в пользу ресурса <a href="task.html">Task</a> в рамках рефакторинга рабочего процесса FHIR. Читателям этого ресурса рекомендуется рассмотреть ресурс Task и обсудить его использование вместо данного и/или оставить отзывы, если покажется, что его будет недостаточно для удовлетворения сценариев использования, связанных с этим ресурсом, и для выражения мнений о том, для каких целей, они считают, необходимо сохранить ресурсы ProcessRequest и ProcessResponse.
+<!-- <b>NOTE:</b> This resource is slated to be refactored and reduced in scope as some of its functionality
 is taken over by the <a href="task.html">Task</a>
 resource as part of the FHIR Workflow refactoring.  Readers of this resource are encouraged to
 review the Task resource and consider using it instead and/or to provide feedback if they feel
 it will be inadequate to satisfy the use-cases associated with this resource and to express
-opinions about which purposes they feel ProcessRequest and ProcessResponse should be retained for.
+opinions about which purposes they feel ProcessRequest and ProcessResponse should be retained for. -->
 </p>	
 <p>
 Ресурс ProcessRequest позволяет описать действие для выполнения над существующим ресурсом или ресурсами, и предоставляет дополнительную вспомогательную информацию для поддержки этого действия. На данный момент определены следующие действия: отменить, опросить, повторно обработать, получить статус (cancel, poll, 

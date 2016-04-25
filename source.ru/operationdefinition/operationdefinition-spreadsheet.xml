@@ -1433,11 +1433,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Content intends to support these contexts</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержимое предназначено для поддержки следующих видов контекста<!-- Content intends to support these contexts --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of operation definitions.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Содержимое разрабатывалось с фокусом на и поддержкой перечисленных видов контекста. Эти термины могут использоваться для индексации и поиска определений операций.<!-- The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of operation definitions. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Assist in searching for appropriate content</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Для поиска подходящего контента<!-- Assist in searching for appropriate content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1469,7 +1469,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Why this resource has been created</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Для чего был создан этот ресурс<!-- Why this resource has been created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Объясняет, зачем нужно это определение операции и почему оно было ограничено таким образом<!-- Explains why this operation definition is needed and why it's been constrained as it has --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1953,7 +1953,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">number | date | string | token | reference | composite | quantity | uri</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">How the parameter is understood as a search parameter. This is only used if the parameter type is 'string'</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Как этот параметр интерпретировать в качестве параметра поиска. Используется только для параметров типа 'string'<!-- How the parameter is understood as a search parameter. This is only used if the parameter type is 'string' --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2011,7 +2011,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">ValueSet details if this is coded</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">ValueSet устанавливает, кодируется ли этот элемент<!-- ValueSet details if this is coded --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Привязка к набору значений, если этот параметр закодирован (code, Coding, CodeableConcept)<!-- Binds to a value set if this parameter is coded (code, Coding, CodeableConcept) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2048,9 +2048,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">required | extensible | preferred | example</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Показывает степень ожидания совместимости, связанную с этой привязкой - то есть это степень, с которой необходимо придерживаться указанного набора значений в экземплярах<!-- Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="17" ss:StyleID="s89"><Data ss:Type="String">For further discussion, see [[[Using Terminologies]]]</Data><NamedCell
+    <Cell ss:Index="17" ss:StyleID="s89"><Data ss:Type="String">Более подробную информацию см. в разделе [[[Использование терминологий]]]<!-- For further discussion, see [[[Using Terminologies]]] --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2078,11 +2078,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Source of value set</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Источник набора значений<!-- Source of value set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Указывает на набор значений или внешнее определение (например неявный набор значений), который задаёт набор кодов для использования<!-- Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="17" ss:StyleID="s89"><Data ss:Type="String">For value sets with a referenceResource, the display can contain the value set description.  The reference may be version-specific or not</Data><NamedCell
+    <Cell ss:Index="17" ss:StyleID="s89"><Data ss:Type="String">У наборов значений с referenceResource элемент display может содержать описание набора значений. Ссылка может быть как версионной, так и нет<!-- For value sets with a referenceResource, the display can contain the value set description.  The reference may be version-specific or not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4116,7 +4116,7 @@
     <Cell ss:StyleID="s91"><Data ss:Type="String">Search Type</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String">OperationDefinition.parameter</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">A search type can only be specified for parameters of type string</Data></Cell>
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Тип поиска можно указывать только для параметров типа string<!-- A search type can only be specified for parameters of type string --></Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">searchType implies type = 'string'</Data></Cell>
     <Cell ss:StyleID="s110"><Data ss:Type="String">not(exists(f:searchType)) or (f:type/@value = 'string')</Data></Cell>
    </Row>
@@ -4715,7 +4715,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s120"><Data ss:Type="String">OperationDefinition.useContext</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">A use context assigned to the operation definition</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">Контекст использования определения операции<!-- A use context assigned to the operation definition --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s119"/>

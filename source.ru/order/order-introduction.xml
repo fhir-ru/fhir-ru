@@ -3,10 +3,11 @@
 <a name="scope"> </a>
 		<h2>Область применения и использование</h2>
 <p>
-<b>NOTE:</b> This resource is slated to be eliminated in favor of the <a href="task.html">Task</a>
+<b>ПРИМЕЧАНИЕ:</b> Этот ресурс планируется устранить в пользу ресурса <a href="task.html">Task</a> в рамках рефакторинга рабочего процесса FHIR. Читателям этого ресурса рекомендуется рассмотреть ресурс Task и обсудить его использование вместо данного и/или оставить отзывы, если покажется, что его будет недостаточно для удовлетворения сценариев использования, связанных с этим ресурсом. 
+<!-- <b>NOTE:</b> This resource is slated to be eliminated in favor of the <a href="task.html">Task</a>
 resource as part of the FHIR Workflow refactoring.  Readers of this resource are encouraged to
 review the Task resource and consider using it instead and/or to provide feedback if they feel
-it will be inadequate to satisfy the use-cases associated with this resource.
+it will be inadequate to satisfy the use-cases associated with this resource. -->
 </p>
 		<p>
 Ресурс order описывает запрос на выполнение действия. Ожидается, что заказ приведет к одному или нескольким <a href="orderresponse.html">responses</a>, которые описывают результат обработки заказа. Ресурс order сосредоточен непосредственно на процессе запроса на действие для выполнения; само действие для выполнения описывается в отдельном ресурсе, который содержит данные по нему. Обратите внимание, что заказы часто называют "запросами", но здесь это название не используется, так как слово "запрос" (request) применяется в данной спецификации для другого.

@@ -46,7 +46,8 @@ defined as 'Questionnaire'. In a parameters resource, it would be represented li
   &lt;/parameter&gt; 
 </pre>
 <p>
-or, in JSON:
+или в JSON:
+<!-- or, in JSON: -->
 </p>
 <pre>
  "parameter": [

@@ -967,9 +967,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Определение ордерсета<!-- The definition of an order set --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Определение набора заказов<!-- The definition of an order set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Данный ресурс позволяет определить ордерсет как совместно используемый, потребляемый и исполняемый артефакт для поддержки системы принятия клинических решений<!-- This resource allows for the definition of an order set as a sharable, consumable, and executable artifact in support of clinical decision support --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Данный ресурс позволяет определить набор заказов как совместно используемый, потребляемый и исполняемый артефакт для поддержки системы принятия клинических решений<!-- This resource allows for the definition of an order set as a sharable, consumable, and executable artifact in support of clinical decision support --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -998,9 +998,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Метаданные ордерсета<!-- The metadata for the orderset --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Метаданные набора заказов<!-- The metadata for the orderset --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс ModuleMetadata, содержащий метаданные для этого ордерсета<!-- A reference to a ModuleMetadata resource containing metadata for the orderset --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс ModuleMetadata, содержащий метаданные для этого набора заказов<!-- A reference to a ModuleMetadata resource containing metadata for the orderset --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1029,9 +1029,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Логика, используемая в ордерсете<!-- Logic used by the orderset --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Логика, используемая в наборе заказов<!-- Logic used by the orderset --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс Library, содержащий формальную логику, используемую в ордерсете<!-- A reference to a Library resource containing any formal logic used by the orderset --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс Library, содержащий формальную логику, используемую в наборе заказов<!-- A reference to a Library resource containing any formal logic used by the orderset --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1060,9 +1060,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Groups, sections, and line items of the order set</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Группы, разделы и заказные позиции набора заказов<!-- Groups, sections, and line items of the order set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The definition of the actions that make up the order set. Order set groups and sections are represented as actions which contain sub-actions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определение действий, составляющих этот набор заказов. Группы и разделы набора заказов представляют в виде действий, состоящих из поддействий<!-- The definition of the actions that make up the order set. Order set groups and sections are represented as actions which contain sub-actions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4294,42 +4294,42 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">OrderSet.moduleMetadata.topic</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Topics associated with the module</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Темы, ассоциированные с этим модулем<!-- Topics associated with the module --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">title</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">OrderSet.moduleMetadata.title</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Text search against the title</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по заголовку<!-- Text search against the title --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">description</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">OrderSet.moduleMetadata.description</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Text search against the description</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по описанию<!-- Text search against the description --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">version</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">OrderSet.moduleMetadata.version</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Version of the module (e.g. 1.0.0)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Версия модуля (например 1.0.0)<!-- Version of the module (e.g. 1.0.0) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">OrderSet.moduleMetadata.status</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Status of the module</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Статус модуля<!-- Status of the module --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">!minScore</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">number</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Bundle/entry/search/score</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The minimum relevance score of any match that will be returned</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Минимальная оценка релевантности любого совпадения, которое будет возвращено<!-- The minimum relevance score of any match that will be returned --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>

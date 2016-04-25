@@ -126,11 +126,12 @@ e.g. was it the person involved in the activity, or the record of the person.
 For agents, it should be understood that the reference is to the real 
 world thing that the resource represents.  -->
 </p>
-<h3>Provenance of Removal</h3>
+<h3>Provenance для удаления<!-- Provenance of Removal --></h3>
 <p>
-A Provenance record can be recorded to indicate who Deleted a Resource. If versioning is supported, 
+Ресурс Provenance может создаваться для указания, кто удалил ресурс. Если поддерживается версионирование, то версия, которая была удалена, указывается в элементе Provenance.target; если версионирование не поддерживается, то Provenance.target будет содержать неверсионную ссылку. Provenance.entity не используется, если только это не оговорено в бизнес-требованиях.
+<!-- A Provenance record can be recorded to indicate who Deleted a Resource. If versioning is supported, 
 the version that was deleted is referenced in Provenance.target; if versioning is not supported then 
 Provenance.target contains the non-version reference. Provenance.entity is not used unless there is 
-a business requirement to do so.
+a business requirement to do so. -->
 </p>
 </div>

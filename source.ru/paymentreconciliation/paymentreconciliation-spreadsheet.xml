@@ -1303,7 +1303,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Insurer</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Страховая компания<!-- Insurer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Страховая компания, выпустившая этот вынесенный ответ.<!-- The Insurer who produced this adjudicated response. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1424,7 +1424,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Details</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Подробная информация<!-- Details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Перечень индивидуальных расчётных сумм и соответствующих сделок.<!-- List of individual settlement amounts and the corresponding transaction. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1488,7 +1488,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Claim</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Иск<!-- Claim --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Иск или другой финансовый ресурс.<!-- The claim or financial resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1550,7 +1550,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Submitter</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Подающая сторона<!-- Submitter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Организация, которая подала счёт-фактуру или провела финансовую операцию.<!-- The Organization which submitted the invoice or financial transaction. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1581,7 +1581,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Payee</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Получатель платежа<!-- Payee --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Организация, которая получает выплату.<!-- The organization which is receiving the payment. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
