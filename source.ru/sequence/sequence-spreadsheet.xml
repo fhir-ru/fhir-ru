@@ -1571,7 +1571,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5" ss:StyleID="s89"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Список ответов LOINC 53034-5<!-- LOINC 53034-5 answerlist --></Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">LOINC 53034-5 answerlist</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">The level of occurrence of a single DNA Sequence Variation within a set of chromosomes: Heteroplasmic / Homoplasmic / Homozygous / Heterozygous / Hemizygous</Data><NamedCell
