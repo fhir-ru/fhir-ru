@@ -981,7 +981,7 @@
     <Cell ss:StyleID="s81"><Data ss:Type="String">Параметр поиска, определяющий именованный элемент поиска, который можно использовать для поиска/фильтрации по ресурсу<!-- A search parameter that defines a named search item that can be used to search/filter on a resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">In FHIR, search is not performed directly on a resource (by XML or JSON path), but on a named parameter that maps into the resource content </Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">В FHIR поиск выполняется не прямо по ресурсу (по XML- или JSON-пути), а по именованному параметру, имеющему установленное соответствие с содержимым ресурса<!-- In FHIR, search is not performed directly on a resource (by XML or JSON path), but on a named parameter that maps into the resource content  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">n/a</Data><NamedCell
@@ -1159,7 +1159,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Дата (и, необязательно, время) публикации этого определения параметра поиска. Дата должна меняться в случае изменения бизнес-версии или кода статуса. Кроме того, она должна меняться при внесении значительных изменений в содержимое определения параметра поиска<!-- The date  (and optionally time) when the search parameter definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Additional specific dates may be added as extensions</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дополнительные специфические даты можно добавить в расширениях<!-- Additional specific dates may be added as extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1323,11 +1323,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Content intends to support these contexts</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержимое предназначено для поддержки следующих видов контекста<!-- Content intends to support these contexts --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of search parameters.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Содержимое разрабатывалось с фокусом на и поддержкой перечисленных видов контекста. Эти термины могут использоваться для индексации и поиска поисковых параметров.<!-- The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of search parameters. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Assist in searching for appropriate content</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Для поиска подходящего контента<!-- Assist in searching for appropriate content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1524,12 +1524,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">FluentPath expression that extracts the values</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">FluentPath-выражение, извлекающее значения<!-- FluentPath expression that extracts the values --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A FluentPath expression that returns a set of elements for the search parameter</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">FluentPath-выражение, которое возвращает набор элементов для параметра поиска<!-- A FluentPath expression that returns a set of elements for the search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Note that the elements returned by the expression are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Отметьте, что элементы, возвращаемые этим выражением, иногда являются комплексными элементами, где требуется логика для определения того, как их обрабатывать; например элементы типа CodeableConcept могут содержать текст и/или несколько кодингов, где сами кодинги в свою очередь содержат код и систему<!-- Note that the elements returned by the expression are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1557,9 +1557,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">XPath that extracts the values</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">XPath, который извлекает эти значения<!-- XPath that extracts the values --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">An XPath expression that returns a set of elements for the search parameter</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">XPath-выражение, которое возвращает набор элементов для параметра поиска<!-- An XPath expression that returns a set of elements for the search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Обратите внимание, что элементы, возвращаемые этим XPath, иногда являются комплексными элементами, и требуется логика для определения того, как их обрабатывать. Например CodeableConcepts могут содержать текст и/или несколько кодингов, где сами кодинги содержат код и систему<!-- Note that the elements returned by the XPath are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system --></Data><NamedCell
@@ -4588,7 +4588,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">SearchParameter.useContext</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A use context assigned to the search parameter</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Контекст применения, присвоенный этому параметру поиска<!-- A use context assigned to the search parameter --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>

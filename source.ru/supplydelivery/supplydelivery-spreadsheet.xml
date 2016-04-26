@@ -1377,7 +1377,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Dispenser</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Лицо, ответственное за выдачу лекарственного средства<!-- Dispenser --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Лицо, ответственное за выдачу лекарственного средства, поставщик или устройство.<!-- The individual responsible for dispensing the medication, supplier or device. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

@@ -1070,7 +1070,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">A broad categorisation of the service that is to be performed during this appointment</Data><NamedCell
+    <Cell><Data ss:Type="String">Широкая классификация услуги, которая должна быть предоставлена во время данного случая обслуживания<!-- A broad categorisation of the service that is to be performed during this appointment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1139,7 +1139,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">The specialty of a practitioner that would be required to perform the service requested in this appointment</Data><NamedCell
+    <Cell><Data ss:Type="String">Специальность медицинского специалиста, необходимая для оказания услуги, запрошенной в данном случае обслуживания<!-- The specialty of a practitioner that would be required to perform the service requested in this appointment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1173,7 +1173,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The style of appointment or patient that has been booked in the slot (not service type)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип случая обслуживания или пациента, который был заказан в слоте (не тип услуги)<!-- The style of appointment or patient that has been booked in the slot (not service type) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1254,7 +1254,7 @@
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><Data ss:Type="String">This is not a modifier element as the status of the slot being busy is not a change in the interpretation of the slot.</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">Это не элемент-модификатор, поскольку статус занятого слота не меняет интерпретации этого слота.<!-- This is not a modifier element as the status of the slot being busy is not a change in the interpretation of the slot. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">

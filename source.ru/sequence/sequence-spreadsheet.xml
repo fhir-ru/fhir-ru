@@ -1127,7 +1127,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14" ss:StyleID="s90"><Data ss:Type="String">AA | DNA | RNA</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Amino acid / cDNA transcript / RNA variation.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Аминокислота / кДНК-представление / РНК вариант.<!-- Amino acid / cDNA transcript / RNA variation. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1137,9 +1137,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5" ss:StyleID="s89"><Data ss:Type="String">Reference(Patient)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">Who and/or what this is about</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">О ком и/или о чём это<!-- Who and/or what this is about --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">The patient, or group of patients whose sequencing results are described by this resource.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Пациент или группа пациентов, результаты секвенирования которых описываются этим ресурсом.<!-- The patient, or group of patients whose sequencing results are described by this resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1149,9 +1149,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5" ss:StyleID="s89"><Data ss:Type="String">Reference(Specimen)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">Specimen used for sequencing</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">Образец для анализа, использованный для секвенирования<!-- Specimen used for sequencing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Specimen used for sequencing</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Образец для анализа, использованный для секвенирования<!-- Specimen used for sequencing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1162,9 +1162,9 @@
     <Cell ss:Index="5"><Data ss:Type="String">Reference(Device)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">The method for sequencing</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">Метод секвенирования<!-- The method for sequencing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">The method for sequencing, for example, chip information.</Data><NamedCell
+    <Cell><Data ss:Type="String">Метод секвенирования, например информация о микросхеме.<!-- The method for sequencing, for example, chip information. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1175,9 +1175,9 @@
     <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s90"><Data ss:Type="String">Quantity of the sequence </Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s90"><Data ss:Type="String">Величина последовательности<!-- Quantity of the sequence --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Quantity of the sequence. </Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Величина последовательности.<!-- Quantity of the sequence.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1198,9 +1198,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Supporting tests of human, viruses, and bacteria</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Вспомогательные анализы человека, вирусов или бактерий<!-- Supporting tests of human, viruses, and bacteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Организм, откуда был взят образец последовательности. Вспомогательные тесты для человека, вирусов и бактерий.  <!-- The organism from which sample of the sequence was extracted. Supporting tests of human, viruses, and bacteria. --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Организм, откуда был взят образец последовательности. Вспомогательные тесты для человека, вирусов и бактерий.<!-- The organism from which sample of the sequence was extracted. Supporting tests of human, viruses, and bacteria. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1228,9 +1228,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Reference sequence</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Ссылка на последовательность<!-- Reference sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Reference Sequence. It can be described in two ways. One is provide the unique identifier of reference sequence submitted to NCBI. The start and end position of window on reference sequence should be defined.  The other way is using  genome build, chromosome number,and also the start, end position of window (this method is specifically for DNA reference sequence) . </Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Ссылка на последовательность. Она может быть описана двумя способами. Первый - предоставить уникальный идентификатор последовательности, поданной в NCBI. Начальная и конечная позиция окна последовательности должна быть определена. Второй - использовать геномную сборку, число хромосом, а также начальное и конечное положение окна (этот метод предназначен специально для эталонной последовательности ДНК).<!-- Reference Sequence. It can be described in two ways. One is provide the unique identifier of reference sequence submitted to NCBI. The start and end position of window on reference sequence should be defined.  The other way is using  genome build, chromosome number,and also the start, end position of window (this method is specifically for DNA reference sequence) .  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1291,9 +1291,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The Genome Build used for reference, following GRCh build versions e.g. 'GRCh 37'</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Геномная сборка, используемая для ссылки, за которой идёт версия GRCh-сборки, например 'GRCh 37'<!-- The Genome Build used for reference, following GRCh build versions e.g. 'GRCh 37' --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The Genome Build used for reference, following GRCh build versions e.g. 'GRCh 37'.  Version number must be included if a versioned release of a primary build was used. </Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Геномная сборка, используемая для ссылки, за которой идёт версия GRCh-сборки, например 'GRCh 37'. Номер версии должен быть включён, если был использован версионированный выпуск исходной сборки.<!-- The Genome Build used for reference, following GRCh build versions e.g. 'GRCh 37'.  Version number must be included if a versioned release of a primary build was used.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1314,9 +1314,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">sequenceReference</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s90"><Data ss:Type="String">Reference identifier</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s90"><Data ss:Type="String">Ссылочный идентификатор<!-- Reference identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Reference identifier of reference sequence submitted to NCBI. It must match the type in the Sequence.type field. For example, the prefix, “NG_” identifies reference sequence for genes, “NM_” for messenger RNA transcripts, and “NP_” for amino acid sequences. </Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Ссылочный идентификатор последовательности, поданной в NCBI. Он должен совпадать с типом в поле Sequence.type. Например префикс "NG_" идентифицирует ссылочную последовательность для генов, "NM_" - для расшифровок матричных РНК и "NP_" - для аминокислотных последовательностей.<!-- Reference identifier of reference sequence submitted to NCBI. It must match the type in the Sequence.type field. For example, the prefix, “NG_” identifies reference sequence for genes, “NM_” for messenger RNA transcripts, and “NP_” for amino acid sequences.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1327,9 +1327,9 @@
     <Cell ss:Index="5"><Data ss:Type="String">Reference(Sequence)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">A Pointer to another Sequence entity as refence sequence</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">Указатель на другую сущность Sequence в качестве ссылочной последовательности<!-- A Pointer to another Sequence entity as refence sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">A Pointer to another Sequence entity as refence sequence.</Data><NamedCell
+    <Cell><Data ss:Type="String">Указатель на другую сущность Sequence в качестве ссылочной последовательности.<!-- A Pointer to another Sequence entity as refence sequence. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1349,9 +1349,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">A Reference Sequence string</Data><NamedCell
+    <Cell><Data ss:Type="String">Строка ссылочной последовательности<!-- A Reference Sequence string --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">A Reference Sequence string.</Data><NamedCell
+    <Cell><Data ss:Type="String">Строка ссылочной последовательности.<!-- A Reference Sequence string. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1380,9 +1380,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">0-based start position (inclusive) of the window on the  reference sequence</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Стартовая позиция от нуля (включительно) окна ссылочной последовательности<!-- 0-based start position (inclusive) of the window on the  reference sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">0-based start position (inclusive) of the window on the reference sequence. </Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Стартовая позиция от нуля (включительно) окна ссылочной последовательности.<!-- 0-based start position (inclusive) of the window on the reference sequence.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1411,9 +1411,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">0-based end position (exclusive) of the window on the reference sequence</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Конечная позиция от нуля (исключительно) окна ссылочной последовательности<!-- 0-based end position (exclusive) of the window on the reference sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">0-based end position (exclusive) of the window on the reference sequence.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Конечная позиция от нуля (исключительно) окна ссылочной последовательности.<!-- 0-based end position (exclusive) of the window on the reference sequence. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1431,9 +1431,9 @@
     <Cell ss:Index="3" ss:StyleID="s89"><Data ss:Type="String">0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">Variation info in this sequence</Data><NamedCell
+    <Cell ss:Index="14"><Data ss:Type="String">Информация о варианте в этой последовательности<!-- Variation info in this sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Variation info in this sequence.</Data><NamedCell
+    <Cell><Data ss:Type="String">Информация о варианте в этой последовательности.<!-- Variation info in this sequence. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1444,9 +1444,9 @@
     <Cell ss:Index="5" ss:StyleID="s89"><Data ss:Type="String">integer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">0-based start position (inclusive) of the variation on the  reference sequence</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">Стартовая позиция от нуля (включительно) варианта ссылочной последовательности<!-- 0-based start position (inclusive) of the variation on the  reference sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">0-based start position (inclusive) of the variation on the  reference sequence.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Стартовая позиция от нуля (включительно) варианта ссылочной последовательности.<!-- 0-based start position (inclusive) of the variation on the  reference sequence. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1457,9 +1457,9 @@
     <Cell ss:Index="5" ss:StyleID="s89"><Data ss:Type="String">integer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">0-based end position (exclusive) of the variation on the reference sequence</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">Конечная позиция от нуля (исключительно) варианта ссылочной последовательности<!-- 0-based end position (exclusive) of the variation on the reference sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">0-based end position (exclusive) of the variation on the reference sequence.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Конечная позиция от нуля (исключительно) варианта ссылочной последовательности.<!-- 0-based end position (exclusive) of the variation on the reference sequence. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1470,9 +1470,9 @@
     <Cell ss:Index="5"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">Nucleotide(s)/amino acids from start position to stop position of observed variation </Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">Нуклеотиды/аминокислоты от начальной позиции до конечной позиции наблюдаемого варианта<!-- Nucleotide(s)/amino acids from start position to stop position of observed variation  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Nucleotide(s)/amino acids from start position of sequence to stop position of sequence on the positive (+) strand of the observed sequence. When the sequence  type is DNA, it should be the sequence on the positive (+) strand.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Нуклеотиды/аминокислоты от начальной позиции последовательности до конечной позиции последовательности в положительном направлении (+) кодирующей цепи наблюдаемой последовательности. Для типа последовательности ДНК это должна быть последовательность в положительном направлении (+) кодирующей цепи.<!-- Nucleotide(s)/amino acids from start position of sequence to stop position of sequence on the positive (+) strand of the observed sequence. When the sequence  type is DNA, it should be the sequence on the positive (+) strand. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1483,9 +1483,9 @@
     <Cell ss:Index="5"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">Nucleotide(s)/amino acids from start position to stop position of reference variation</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">Нуклеотиды/аминокислоты от начальной позиции до конечной позиции ссылочного варианта<!-- Nucleotide(s)/amino acids from start position to stop position of reference variation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Nucleotide(s)/amino acids from start position of sequence to stop position of sequence on the positive (+) strand of the reference sequence. When the sequence  type is DNA, it should be the sequence on the positive (+) strand.</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Нуклеотиды/аминокислоты от начальной позиции последовательности до конечной позиции последовательности в положительном направлении (+) кодирующей цепи ссылочной последовательности. Для типа последовательности ДНК это должна быть последовательность в положительном направлении (+) кодирующей цепи.<!-- Nucleotide(s)/amino acids from start position of sequence to stop position of sequence on the positive (+) strand of the reference sequence. When the sequence  type is DNA, it should be the sequence on the positive (+) strand. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1496,9 +1496,9 @@
     <Cell ss:Index="5"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">Extended CIGAR string for aligning the sequence with reference bases</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">Расширенная строка CIGAR для выравнивания последовательности относительно эталонных оснований<!-- Extended CIGAR string for aligning the sequence with reference bases --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Extended CIGAR string for aligning the sequence with reference bases. See detailed documentation [here](http://support.illumina.com/help/SequencingAnalysisWorkflow/Content/Vault/Informatics/Sequencing_Analysis/CASAVA/swSEQ_mCA_ExtendedCIGARFormat.htm).</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Расширенная строка CIGAR для выравнивания последовательности относительно эталонных оснований. См. подробную документацию [здесь](http://support.illumina.com/help/SequencingAnalysisWorkflow/Content/Vault/Informatics/Sequencing_Analysis/CASAVA/swSEQ_mCA_ExtendedCIGARFormat.htm).<!-- Extended CIGAR string for aligning the sequence with reference bases. See detailed documentation [here](http://support.illumina.com/help/SequencingAnalysisWorkflow/Content/Vault/Informatics/Sequencing_Analysis/CASAVA/swSEQ_mCA_ExtendedCIGARFormat.htm). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1507,9 +1507,9 @@
     <Cell ss:Index="3" ss:StyleID="s89"><Data ss:Type="String">0..*</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s90"><Data ss:Type="String">Sequence Quality</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s90"><Data ss:Type="String">Качество последовательности<!-- Sequence Quality --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s99"><Data ss:Type="String">Quality for sequence quality vary by platform reflecting differences in sequencing chemistry and digital processing.</Data><NamedCell
+    <Cell ss:StyleID="s99"><Data ss:Type="String">Качество последовательности зависит от платформы, отражающей различия в химии секвенирования и цифровой обработке. <!-- Quality for sequence quality vary by platform reflecting differences in sequencing chemistry and digital processing. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1522,7 +1522,7 @@
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">Начальная позиция последовательности (включительно), считая от нуля<!-- 0-based start position (inclusive) of the sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">0-based start position (inclusive) of the sequence.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Начальная позиция последовательности от нуля (включительно).<!-- 0-based start position (inclusive) of the sequence. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1535,7 +1535,7 @@
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">Конечная позиция последовательности (исключительно), считая от нуля<!-- 0-based end position (exclusive) of the sequence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">0-based end position (exclusive) of the sequence.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Конечная позиция последовательности (исключительно), считая от нуля.<!-- 0-based end position (exclusive) of the sequence. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1546,9 +1546,9 @@
     <Cell ss:Index="5"><Data ss:Type="String">Quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s90"><Data ss:Type="String">Quality score</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s90"><Data ss:Type="String">Показатель качества<!-- Quality score --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Quality score.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Показатель качества.<!-- Quality score. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1559,9 +1559,9 @@
     <Cell ss:Index="5" ss:StyleID="s89"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s90"><Data ss:Type="String">Method for quality</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s90"><Data ss:Type="String">Метод определения показателя качества<!-- Method for quality --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Method for quality.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Метод определения показателя качества.<!-- Method for quality. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1571,7 +1571,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5" ss:StyleID="s89"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">LOINC 53034-5 answerlist</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Список ответов LOINC 53034-5<!-- LOINC 53034-5 answerlist --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="14" ss:StyleID="s91"><Data ss:Type="String">The level of occurrence of a single DNA Sequence Variation within a set of chromosomes: Heteroplasmic / Homoplasmic / Homozygous / Heterozygous / Hemizygous</Data><NamedCell

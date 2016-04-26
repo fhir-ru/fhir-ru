@@ -1512,7 +1512,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дата публикации этой версии структурного определения. Дата должна меняться в случае изменения бизнес-версии или статуса. Кроме того, она должна меняться при внесении значительных изменений в содержимое структурного определения<!-- The date this version of the structure definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the structure definition changes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional specific dates may be added as extensions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительные специфичные даты можно добавить в расширениях<!-- Additional specific dates may be added as extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1649,7 +1649,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Use and/or publishing restrictions </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ограничения на использование и/или публикацию<!-- Use and/or publishing restrictions --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Предупреждение об авторском праве на структурное определение и/или его содержимое. Предупреждения об авторских правах, как правило, являются правовыми ограничениями на использование и публикацию информации об ограничениях и мэппинге<!-- A copyright statement relating to the structure definition and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1920,7 +1920,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">datatype | resource | logical</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Defines the kind of structure that this definition is describing</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Задаёт тип структуры, которую описывает это определение<!-- Defines the kind of structure that this definition is describing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2062,7 +2062,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Тип, для которого задаются ограничивающие условия - тип данных, расширение, ресурс, включая абстрактные. Если это поле присутствует, значит это определение базовой структуры<!-- The type of type that this structure is derived from - a data type, an extension, a resource, including abstract ones. If this field is present, it indicates that the structure definition is deriving from this type. If it is not present, then the structure definition is the definition of a base abstract structure  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">if a baseType is present, then there SHALL be a baseDefinition as well. Note that the baseType could be determined by chasing through the baseDefinition references until a concrete structure (derivation = specialization) is reached, or by looking at the path of the first element in the snapshot - if present - but providing the baseType directly makes for simpler tooling and indexing</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если указан элемент baseType, то также должен быть указан и элемент baseDefinition. Обратите внимание, что baseType можно определить, пройдя по ссылкам из baseDefinition, пока конкретная структура (derivation = specialization) не будет достигнута, либо по пути первого элемента в снапшоте, если указан, однако прямое указание baseType упрощает индексацию<!-- if a baseType is present, then there SHALL be a baseDefinition as well. Note that the baseType could be determined by chasing through the baseDefinition references until a concrete structure (derivation = specialization) is reached, or by looking at the path of the first element in the snapshot - if present - but providing the baseType directly makes for simpler tooling and indexing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2092,12 +2092,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Definition that this type is constrained/specialized from</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определение, из которого получен этот тип через ограничивающие условия или специализацию<!-- Definition that this type is constrained/specialized from --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An absolute URI that is the base structure from which this type is derived, either by specialization or constraint</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Абсолютный URI базовой структуры, из которой был выведен этот тип через ограничивающие условия или специализацию<!-- An absolute URI that is the base structure from which this type is derived, either by specialization or constraint --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If differential constraints are specified in this structure, they are applied to the base in a &quot;differential&quot; fashion. If there is no base, then the differential constraints cannot be provided (snapshot only). Differential structures are useful for the editing perspective, and snapshot structures are suitable for operational use. The FHIR Project provides a number of tools/services to populate snapshots from differential constraints. Logical Models have a base of &quot;Element&quot; or another logical model</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если дифференциальные ограничивающие условия указаны в этой структуре, они применяются к базе дифференциальным образом. Если база не указана, тогда дифференциальные ограничивающие условия не могут быть предоставлены (только снапшот). Дифференциальные структуры полезны при редактировании, а структуры-снапшоты подходят для эксплуатационного использования. FHIR-проект предлагает несколько инструментов/сервисов для получения снапшотов из дифференциальных ограничивающих условий. В основе логических моделей лежит &quot;Element&quot; или другая логическая модель<!-- If differential constraints are specified in this structure, they are applied to the base in a &quot;differential&quot; fashion. If there is no base, then the differential constraints cannot be provided (snapshot only). Differential structures are useful for the editing perspective, and snapshot structures are suitable for operational use. The FHIR Project provides a number of tools/services to populate snapshots from differential constraints. Logical Models have a base of &quot;Element&quot; or another logical model --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2128,12 +2128,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">specialization | constraint - How relates to base definition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">specialization | constraint - как соотносится с базовым определением<!-- specialization | constraint - How relates to base definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">How the type relates to the baseDefinition.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Как этот тип соотносится с базовым определением baseDefinition.<!-- How the type relates to the baseDefinition. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String"> If the definition is a specialization, then it adds new elements in the differential, and the snapshot includes the inherited elements.&#10;&#10;If the definition is a constraint, then it can not define new elements, it can only make new rules about existing content (see [Profiling Resources](profiling.html#resources))</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если данное определение является специализацией, тогда оно добавляет новые элементы в дифференциал, а снапшот включает унаследованные элементы.&#10;&#10;Если данное определение является ограничивающим, тогда оно не может определять новые элементы, а может только вводить новые правила для имеющегося содержимого (см. [Профилирование ресурсов](profiling.html#resources))<!--  If the definition is a specialization, then it adds new elements in the differential, and the snapshot includes the inherited elements.&#10;&#10;If the definition is a constraint, then it can not define new elements, it can only make new rules about existing content (see [Profiling Resources](profiling.html#resources)) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2425,13 +2425,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">XPath that extracts the parameter set</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">XPath для извлечения набора параметров<!-- XPath that extracts the parameter set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An XPath expression that returns a set of elements for the search parameter</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">XPath-выражение, которое возвращает набор элементов для параметра поиска<!-- An XPath expression that returns a set of elements for the search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Обратите внимание, что эти элементы иногда являются комплексными, и для определения способа их обработки треубется логика. Например CodeableConcepts могут содержать текст и/или множество кодингов, где сами кодинги содержат код и систему<!-- Note that the elements are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The XPath expression may use parent references, but this technique should be avoided except in the special case of an extension making rules about its use with other extensions. Parent references SHALL not refer to content outside the resouce that contains the content</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">XPath-выражение может использовать родительские ссылки, однако этот метод следует избегать кроме особого случая, когда расширение вводит правила по его использованию с другими расширениями. Родительские ссылки не должны вести на содержимое вне этого ресурса, который содержит этот контент<!-- The XPath expression may use parent references, but this technique should be avoided except in the special case of an extension making rules about its use with other extensions. Parent references SHALL not refer to content outside the resouce that contains the content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -7038,7 +7038,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">StructureDefinitionCode</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes for the meaning of the defined structure (SNOMED CT and LOINC codes, as an example).</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды смыслового значения заданной структуры (например коды SNOMED CT и LOINC).<!-- Codes for the meaning of the defined structure (SNOMED CT and LOINC codes, as an example). --></Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">valueset-profile-code</Data></Cell>
@@ -7053,7 +7053,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">TypeDerivationRule</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">How a type relates to it's baseDefinition.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Как тип соотносится со своим базовым определением baseDefinition.<!-- How a type relates to it's baseDefinition. --></Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s120"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#type-derivation-rule</Data></Cell>

@@ -1435,7 +1435,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Если задана дата блокировки Locked Date, тогда логическое определение контента (Content Logical Definition) должно оцениваться с помощью текущей версии всех упоминаемых кодовых систем и наборов значений по состоянию на Locked Date <!-- If a locked date is defined, then the Content Logical Definition must be evaluated using the current version of all referenced code system(s) and value set instances as of the locked date --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">С заданным lockedDate набор значений считается &quot;заблокированным&quot;. Иначе набор значений может иметь различные развертки по мере развития лежащей в его основе кодовых систем и/или наборов значений. Интерпретация lockedDate часто зависит от контекста - например набор значений из SNOMED CT с lockedDate будет иметь другую развертку в США, чем в Соединённом Королевстве. Если набор значений указывает версию для операторов include и exclude, а также указывает дату блокировки, указанные версии должны быть доступными на эту дату, иначе такой набор значений нельзя будет использовать<!-- With a defined lockedDate the value set is considered &quot;Locked&quot;. Otherwise, the value set may have different expansions as underlying code systems and/or value sets evolve.  The interpretation of lockedDate is often dependent on the context - e.g. a SNOMED CT derived value set with a lockedDate will have a different expansion in USA than in UK.  If a value set specifies a version for include and exclude statements, and also specifies a locked date, the specified versions need to be available that date, or the value set will not be usable --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">С заданным lockedDate набор значений считается &quot;заблокированным&quot;. Иначе набор значений может иметь различные развёртки по мере развития лежащей в его основе кодовых систем и/или наборов значений. Интерпретация lockedDate часто зависит от контекста - например набор значений из SNOMED CT с lockedDate будет иметь другую развёртку в США, чем в Соединённом Королевстве. Если набор значений указывает версию для операторов include и exclude, а также указывает дату блокировки, указанные версии должны быть доступными на эту дату, иначе такой набор значений нельзя будет использовать<!-- With a defined lockedDate the value set is considered &quot;Locked&quot;. Otherwise, the value set may have different expansions as underlying code systems and/or value sets evolve.  The interpretation of lockedDate is often dependent on the context - e.g. a SNOMED CT derived value set with a lockedDate will have a different expansion in USA than in UK.  If a value set specifies a version for include and exclude statements, and also specifies a locked date, the specified versions need to be available that date, or the value set will not be usable --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2491,12 +2491,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Human language of the designation</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Естественный язык обозначения<!-- Human language of the designation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The language this designation is defined for </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Язык, для которого определено это обозначение<!-- The language this designation is defined for --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">In the absence of a language, the resource language applies</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если язык не указан, то применяется язык ресурса<!-- In the absence of a language, the resource language applies --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2530,7 +2530,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код, который описывает, каким образом будет использоваться это обозначение<!-- A code that details how this designation would be used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If no use is provided, the designation can be assumed to be suitable for general display to a human user</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если тип использования не указан, обозначение можно считать подходящим для отображения пользователю-человеку<!-- If no use is provided, the designation can be assumed to be suitable for general display to a human user --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2558,9 +2558,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The text value for this designation </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Текстовое значение этого обозначения<!-- The text value for this designation --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The text value for this designation </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Текстовое значение этого обозначения<!-- The text value for this designation --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2626,7 +2626,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A property defined by the code system </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Свойство, определяемое кодовой системой<!-- A property defined by the code system --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Код, идентифицирующий свойство, определенное в кодовой системе<!-- A code that identifies a property defined in the code system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2662,7 +2662,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">= | is-a | is-not-a | regex | in | not-in</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Вид операции для выполнения при фильтрации<!-- The kind of operation to perform as a part of the filter criteria --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип операции, выполняемой при фильтрации<!-- The kind of operation to perform as a part of the filter criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2830,12 +2830,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Время выполнения развертки набора значений<!-- Time ValueSet expansion happened --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Время выполнения развёртки набора значений<!-- Time ValueSet expansion happened --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Время, когда была выполнена развертка набора значений разворачивающей системой<!-- The time at which the expansion was produced by the expanding system.  --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Время, когда была выполнена развёртка набора значений разворачивающей системой<!-- The time at which the expansion was produced by the expanding system.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This SHOULD be a fully populated instant, but in some circumstances, value sets are expanded by hand, and the expansion is published without that precision </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Следует указывать момент времени полностью, однако в некоторых случаях наборы значений развёртываются вручную, и развёртка публикуется без требуемой точности<!-- This SHOULD be a fully populated instant, but in some circumstances, value sets are expanded by hand, and the expansion is published without that precision  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2863,12 +2863,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Total number of codes in the expansion</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Общее количество кодов в развёртке<!-- Total number of codes in the expansion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The total number of concepts in the expansion. If the number of concept nodes in this resource is less than the stated number, then the server can return more using the offset parameter</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Общее количество кодов в развёртке. Если количество узлов концептов в ресурсе меньше, чем указанное здесь число, тогда сервер может вернуть больше концептов, используя параметр offset<!-- The total number of concepts in the expansion. If the number of concept nodes in this resource is less than the stated number, then the server can return more using the offset parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Paging only applies to flat expansions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Разбивка на страницы применяется только к линейным развёрткам<!-- Paging only applies to flat expansions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2894,15 +2894,15 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Paging is not being used</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Разбивка на страницы не применяется<!-- Paging is not being used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Offset at which this resource starts</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Смещение, относительно которого начинается этот ресурс<!-- Offset at which this resource starts --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If paging is being used, the offset at which this resource starts.  I.e. this resource is a partial view into the expansion. If paging is not being used, this element SHALL not be present</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если используется разбивка на страницы, то это смещение, относительно которого начинается этот ресурс. Т. е. этот ресурс представляет собой частичное представление развёртки. Если разбивка на страницы не используется, этот элемент присутствовать не должен<!-- If paging is being used, the offset at which this resource starts.  I.e. this resource is a partial view into the expansion. If paging is not being used, this element SHALL not be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Paging only applies to flat expansions. If a filter is applied, the count is the number of concepts that matched the filter, not the number of concepts in an unfiltered view of the expansion</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Разбивка на страницы применяется только к линейным развёрткам. Если применяется фильтр, то этим числом будет количество концептов, которые соответствуют фильтру, а не количество концептов в неотфильтрованном представлении развёртки<!-- Paging only applies to flat expansions. If a filter is applied, the count is the number of concepts that matched the filter, not the number of concepts in an unfiltered view of the expansion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2931,7 +2931,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Параметр, управлявший процессом разворачивания<!-- Parameter that controlled the expansion process --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Параметр, управляющий процессом развёртки. Эти параметры могут использоваться пользователями развёрток наборов значений для проверки, подходит ли развёртка для определённого использования, или для выбора подходящей развёртки<!-- A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Сервер решает, какие параметры включать сюда, однако этот список должен включать как минимум дату, фильтр и параметры профиля, переданные операции $expand (если есть)<!-- The server decides which parameters to include here, but at a minimum, the list SHOULD include the date, filter, and profile parameters passed to the $expand operation (if any) --></Data><NamedCell
@@ -2965,7 +2965,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Имя, которое было назначено сервером<!-- Name as assigned by the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of the parameter </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя параметра<!-- The name of the parameter  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Имена присваиваются по усмотрению сервера<!-- The names are assigned at the discretion of the server --></Data><NamedCell
@@ -2977,7 +2977,7 @@
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">There is no standardization of parameter names that control the expansion process. This will be reviewed in the future </Data><NamedCell
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Имена параметров процесса развёртки не стандартизованы. Это будет пересмотрено в будущем<!-- There is no standardization of parameter names that control the expansion process. This will be reviewed in the future --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s95">
@@ -2997,9 +2997,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Value of the named parameter</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Значение именованного параметра<!-- Value of the named parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The value of the parameter </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Значение параметра<!-- The value of the parameter  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3063,7 +3063,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Значение системы для этого кода<!-- System value for the code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An absolute URI which is the code system in which the code for this item in the expansion is defined</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Абсолютный URI кодовой системы, в которой определён код для этого элемента в развёртке<!-- An absolute URI which is the code system in which the code for this item in the expansion is defined --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3098,7 +3098,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Если значение true, то эта запись включена в расширение в целях навигации, и пользователь не может выбирать этот код непосредственно в качестве допустимого значения <!-- If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This should not be understood to exclude its use for searching (e.g. by subsumption testing). The client should know whether it is appropriate for the user to select an abstract code or not </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Этот элемент не следует интерпретировать как исключение его использования при поиске (например при проверке вхождения в категорию). Клиенту следует знать, уместно ли для пользователя выбирать абстрактный код или нет<!-- This should not be understood to exclude its use for searching (e.g. by subsumption testing). The client should know whether it is appropriate for the user to select an abstract code or not  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3128,7 +3128,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Версия, в которой определен этот код / значение для отображения<!-- Version in which this code/display is defined --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Версия этой кодовой системы, в которой определяется этот код и/или значение для его отображения. Этот элемент следует использовать только с кодовыми системами, которые не соблюдают концепцию неизменности<!-- The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Точное значение строки версии указывается системой, из которой берется код<!-- The exact value of the version string is specified by the system from which the code is derived --></Data><NamedCell
@@ -3163,7 +3163,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Код - если пустой, то его не возможно выбрать<!-- Code - if blank, this is not a selectable code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The code for this item in the expansion hierarchy. If this code is missing the entry in the hierarchy is a place holder (abstract) and does not represent a valid code in the value set</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код для этого элемента в иерархии развёртки. Если этот код не указан, то такая запись в иерархии будет местозаполнителем (абстрактным кодом), не представляющим собой допустимый код в наборе значений<!-- The code for this item in the expansion hierarchy. If this code is missing the entry in the hierarchy is a place holder (abstract) and does not represent a valid code in the value set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3196,7 +3196,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Значение концепта для отображения пользователю<!-- User display for the concept --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The recommended display for this item in the expansion</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Рекомендованное значение для отображения этого пункта в развёртке<!-- The recommended display for this item in the expansion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3226,12 +3226,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Codes contained under this entry</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды, входящие в эту запись<!-- Codes contained under this entry --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Other codes and entries contained under this entry in the hierarchy</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Другие коды и записи, входящие в данную запись в этой иерархии<!-- Other codes and entries contained under this entry in the hierarchy --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the expansion uses this element, there is  no implication about the logical relationship between them, and the  structure cannot be used for logical inferencing. The structure  exists to provide navigational assistance for helping human users to  locate codes in the expansion.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если в развёртке используется этот элемент, из этого не вытекает логической взаимосвязи между ними, и эта структура не может использоваться для формирования логических выводов. Такая структура предназначена для помощи в навигации пользователям при поиске кодов в развёртке.<!-- If the expansion uses this element, there is  no implication about the logical relationship between them, and the  structure cannot be used for logical inferencing. The structure  exists to provide navigational assistance for helping human users to  locate codes in the expansion. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5330,7 +5330,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">operation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s119"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Развертка набора значений<!-- Value Set Expansion --></Data><NamedCell
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Развёртка набора значений<!-- Value Set Expansion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">The definition of a value set is used to create a simple collection of codes suitable for use for data entry or validation.   If the operation is not called at the instance level, one of the in parameters identifier, context or valueset must be provided.  An expanded value set will be returned, or an OperationOutcome with an error message. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
