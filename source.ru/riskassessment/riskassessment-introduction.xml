@@ -52,10 +52,11 @@ on existing knowledge and previous experience. -->
 </p>
 
 <p>
-<b>AllergyIntolerance and RiskAssessment</b></p>
+<b>AllergyIntolerance и RiskAssessment<!-- AllergyIntolerance and RiskAssessment --></b></p>
 <p>
-AllergyIntolerance describes a specific type of risk - propensity to reaction to a substance while <a href="riskassessment.html">RiskAssessment</a> describes 
-general risks to a subject, not generally based on a reaction.
+Ресурс AllergyIntolerance описывает особый тип риска - предрасположенность к реакции на вещество, в то время как <a href="riskassessment.html">RiskAssessment</a> описывает общие риски для субъекта, как правило основанные не на реакции.
+<!-- AllergyIntolerance describes a specific type of risk - propensity to reaction to a substance while <a href="riskassessment.html">RiskAssessment</a> describes 
+general risks to a subject, not generally based on a reaction. -->
 </p>
 
 </div>

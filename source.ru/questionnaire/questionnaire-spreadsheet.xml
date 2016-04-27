@@ -1076,9 +1076,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Globally unique logical identifier for  questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Глобально уникальный логический идентификатор вопросника<!-- Globally unique logical identifier for  questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">An absolute URL that is used to identify this questionnaire when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this questionnaire is (or will be) published</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Абсолютный URL, используемый для идентификации этого вопросника, когда на него ссылаются в спецификации, модели, проекте или примере. Это должен быть URL, он должен быть глобально уникальным и должен быть адресом, по которому этот вопросник был (или будет) опубликован<!-- An absolute URL that is used to identify this questionnaire when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this questionnaire is (or will be) published --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1328,11 +1328,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Questionnaire intends to support these contexts</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вопросник предназначен для поддержки следующих видов контекста<!-- Questionnaire intends to support these contexts --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">A code that identifies the questionnaire as falling into a particular group of like questionnaires; e.g. &quot;Pediatric&quot;, &quot;Admissions&quot;, &quot;Research&quot;, &quot;Demographic&quot;, &quot;Opinion Survey&quot;, etc.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Код, который идентифицирует вопросник, относя его к определённой группе подобных вопросников: например &quot;Pediatric&quot;, &quot;Admissions&quot;, &quot;Research&quot;, &quot;Demographic&quot;, &quot;Opinion Survey&quot; и т. п.<!-- A code that identifies the questionnaire as falling into a particular group of like questionnaires; e.g. &quot;Pediatric&quot;, &quot;Admissions&quot;, &quot;Research&quot;, &quot;Demographic&quot;, &quot;Opinion Survey&quot;, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">Allows discovery of questionnaires.  Also allows organization of lists of questionnaires into groups for presentation</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Позволяет находить вопросники. Также позволяет организовать списки вопросников в группы для их представления<!-- Allows discovery of questionnaires.  Also allows organization of lists of questionnaires into groups for presentation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1507,7 +1507,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор, уникальный в пределах ресурса Questionnaire, позволяющий связывать эквивалентные пункты с ресурсом QuestionnaireResponse.<!-- An identifier that is unique within the Questionnaire allowing linkage to the equivalent item in a QuestionnaireResponse resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">[[[QuestionnaireResponse]]] does not require omitted items to be included and may have some items that repeat, so linkage based on position alone is not sufficient.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">[[[QuestionnaireResponse]]] не требует включать опущенные пункты и может иметь некоторые повторяющиеся элементы, поэтому связь на основе одной лишь позиции не является достаточной.<!-- [[[QuestionnaireResponse]]] does not require omitted items to be included and may have some items that repeat, so linkage based on position alone is not sufficient. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Может быть опущено, если не предполагается связывать ответы с вопросником. Это может быть значимым идентификатором (например LOINC-кодом), но не обязательно должно иметь какой-то смысл. Здесь подходит использовать GUID'ы и последовательную нумерацию.<!-- May be omitted if there is no expectation to link answers back to a Questionnaire.  This ''can'' be a meaningful identifier (e.g. a LOINC code) but is not intended to have any meaning.  GUIDs or sequential numbers are appropriate here. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1574,13 +1574,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">E.g. &quot;1(a)&quot;, &quot;2.5.3&quot;</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Например &quot;1(a)&quot;, &quot;2.5.3&quot;<!-- E.g. &quot;1(a)&quot;, &quot;2.5.3&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A short label for a particular group, question or set of display text within the questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Краткий заголовок конкретной группы, вопроса или текста для отображения в вопроснике<!-- A short label for a particular group, question or set of display text within the questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Separating the label from the question text allows improved rendering.  Also, instructions will often refer to specific prefixes, so there's a need for the questionnaire design to have control over what labels are used.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Отделение заголовка от текста вопроса позволяет улучшить его отображение. Кроме того, инструкции часто относятся к конкретным префиксам, поэтому при разработке вопросника требуется контроль над тем, какие заголовки используются.<!-- Separating the label from the question text allows improved rendering.  Also, instructions will often refer to specific prefixes, so there's a need for the questionnaire design to have control over what labels are used. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">These are generally unique within a questionnaire, though this is not guaranteed. Some questionnaires may have multiple questions with the same label with logic to control which gets exposed.&#10;&#10;Typically these won't be used for &quot;text&quot; items, though such use is not prohibited.&#10;&#10;Systems SHOULD NOT generate their own prefixes if prefixes are defined for any items within a Questionnaire.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Они, как правило, уникальны в пределах вопросника, хотя это не гарантируется. Некоторые вопросники могут содержать несколько вопросов с одним и тем же заголовком и логикой для управления, которая проверяется.&#10;&#10;Как правило, они не используются для текстовых элементов, хотя такое использование не запрещено.&#10;&#10;Системы не должны генерировать свои собственные префиксы, если префиксы определены для любых элементов, находящихся внутри вопросника.<!-- These are generally unique within a questionnaire, though this is not guaranteed. Some questionnaires may have multiple questions with the same label with logic to control which gets exposed.&#10;&#10;Typically these won't be used for &quot;text&quot; items, though such use is not prohibited.&#10;&#10;Systems SHOULD NOT generate their own prefixes if prefixes are defined for any items within a Questionnaire. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Not supported</Data><NamedCell
@@ -1676,13 +1676,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Only allow data when:</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Данные разрешены только когда:<!-- Only allow data when: --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If present, indicates that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если присутствует, указывает на то, что этот пункт должен быть доступен (отображён/разрешен ввод ответов), только если заданное условие истинно<!-- If present, indicates that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows questionnaires to adapt based on answers to other questions; e.g. If physical gender is specified as a male, no need to capture pregnancy history.  Also allows conditional display of instructions or groups of questions</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет адаптировать вопросники на основе ответов на другие вопросы; например если физический пол определён как мужской, нет необходимости вводить историю беременности. Также позволяет условное отображение инструкций или групп вопросов<!-- Allows questionnaires to adapt based on answers to other questions; e.g. If physical gender is specified as a male, no need to capture pregnancy history.  Also allows conditional display of instructions or groups of questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If multiple repetitions of this extension are present, the item should be enabled when the condition for *any* of the repetitions is true.  I.e. Treat &quot;enableWhen&quot;s as being joined by an &quot;or&quot; clause.&#10;&#10;If enableWhen is present for an item, &quot;required&quot; is ignored unless one of the enableWhen conditions is met.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">В случае несколько повторений этого расширения, этот пункт должен быть доступен при выполнении условия для *любого* из повторений. То есть рассматривать &quot;enableWhen&quot; как оператор &quot;ИЛИ&quot;.&#10;&#10;Если enableWhen присутствует на элементе, то &quot;required&quot; игнорируется, если только не будет выполнено одно из условий enableWhen.<!-- If multiple repetitions of this extension are present, the item should be enabled when the condition for *any* of the repetitions is true.  I.e. Treat &quot;enableWhen&quot;s as being joined by an &quot;or&quot; clause.&#10;&#10;If enableWhen is present for an item, &quot;required&quot; is ignored unless one of the enableWhen conditions is met. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">N/A - MIF rather than RIM level</Data><NamedCell

@@ -1414,7 +1414,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Иногда группа ответов относится к конкретному участнику, артефакту или порции информации в медкарте пациента, например к конкретной проблеме, родственной персоне, аллергии и т. п. <!-- Sometimes a group of answers is about a specific participant, artifact or piece of information in the patient's care or record, e.g. a specific Problem, RelatedPerson, Allergy etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">How does the questionnaire indicate where this is appropriate/necessary?</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Как вопросник указывает, где это уместно/необходимо?<!-- How does the questionnaire indicate where this is appropriate/necessary? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.participation[typeCode=SBJ].role or .outboundRelationship[typeCode=SUBJ].target</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4306,7 +4306,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">QuestionnaireResponse.encounter</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Encounter during which questionnaire was authored</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Случай обслуживания, во время которого был заполнен вопросник<!-- Encounter during which questionnaire was authored --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">patient</Data></Cell>

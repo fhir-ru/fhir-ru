@@ -1055,9 +1055,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Request fulfilled by this request</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Запрос, выполняемый в рамках данного ресурса<!-- Request fulfilled by this request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates any plans, proposals or orders that this request is intended to satisfy - in whole or in part.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Планы, предложения или заказы, для удовлетворения которых предназначен данный запрос - полностью или частично.<!-- Indicates any plans, proposals or orders that this request is intended to satisfy - in whole or in part. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1088,11 +1088,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Composite request this is part of</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Составной запрос, частью которого является данный<!-- Composite request this is part of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The business identifier of the logical &quot;grouping&quot; request/order that this referral is a part of</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Бизнес-идентификатор логической группировки запроса/заказа, частью которого является данное направление<!-- The business identifier of the logical &quot;grouping&quot; request/order that this referral is a part of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows multiple orders to be collected as part of a single requisition</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет собирать несколько заказов в одну заявку<!-- Allows multiple orders to be collected as part of a single requisition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1126,9 +1126,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">draft | active | cancelled | completed | entered-in-error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of the authorization/intention reflected by the referral request record</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус разрешения/намерения, отражённый этой записью запроса на направление<!-- The status of the authorization/intention reflected by the referral request record --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Workflow status is handled by the Task resource</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Статус рабочего процесса обрабатывается ресурсом Task<!-- Workflow status is handled by the Task resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1163,9 +1163,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">proposal | plan | request</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Distinguishes the &quot;level&quot; of authorization/demand implicit in this request.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Выделяет уровень разрешения/спроса, неявный в этом запросе.<!-- Distinguishes the &quot;level&quot; of authorization/demand implicit in this request. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The same resource structure is used when capturing proposals/recommendations, plans and actual requests.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Аналогичная структура ресурса используется при записи предложений/рекомендаций, планов и реальных запросов.<!-- The same resource structure is used when capturing proposals/recommendations, plans and actual requests. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1202,7 +1202,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Указание типа запроса на направление (или, где применимо, типа передачи ответственности за оказание ухода)<!-- An indication of the type of referral (or where applicable the type of transfer of care) request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Examples of referral type: - consultation;         second opinion;          third opinion - Assume management - Request for procedure(s)  HL7 v2.8 Example - Table 0336: S = second opinion p = patient preference o = provider ordered w = work load </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Примеры типов направлений: - консультация;         заключение другого врача;          заключение третьего врача - Assume management - Запрос на процедуру  HL7 v2.8 Example - Table 0336: S = second opinion p = patient preference o = provider ordered w = work load<!-- Examples of referral type: - consultation;         second opinion;          third opinion - Assume management - Request for procedure(s)  HL7 v2.8 Example - Table 0336: S = second opinion p = patient preference o = provider ordered w = work load  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1347,7 +1347,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Период времени, в течение которого услуги, обозначенные в направлении/передаче ответственности за оказание ухода, должны быть оказаны<!-- The period of time within which the services identified in the referral/transfer of care is specified or required to occur  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Use cases: (1) to indicate that the requested service is not to happen before a specified date, and saving the start date in Period.start; (2) to indicate that the requested service must happen before a specified date, and saving the end date in Period.end; (3) to indicate that the requested service must happen during the specified dates (&quot;start&quot; and &quot;end&quot; values).</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Сценарии использования: (1) для указания, что запрошенная услуга не должна произойти до указанной даты, и сохранения начальной даты в Period.start; (2) для указания, что запрошенная услуга должна произойти до указанной даты, и сохранения конечной даты в Period.end; (3) для указания, что запрошенная услуга должна произойти во указанный период времени (значения &quot;start&quot; и &quot;end&quot;).<!-- Use cases: (1) to indicate that the requested service is not to happen before a specified date, and saving the start date in Period.start; (2) to indicate that the requested service must happen before a specified date, and saving the end date in Period.end; (3) to indicate that the requested service must happen during the specified dates (&quot;start&quot; and &quot;end&quot; values). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1452,7 +1452,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Клиническая специальность (дисциплина), которая указана в направлении<!-- The clinical specialty (discipline) that the referral is requested for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indication of the clinical domain or discipline to which the referral or transfer of care request is sent.  For example: Cardiology Gastroenterology Diabetology</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указание клинической области или дисциплины, куда отправляется направление или запрос на передачу ухода. Например: кардиология, гастроэнтерология, диабетология<!-- Indication of the clinical domain or discipline to which the referral or transfer of care request is sent.  For example: Cardiology Gastroenterology Diabetology --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1559,7 +1559,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование запроса на направление / передачу ответственности за оказание ухода<!-- Reason for referral / transfer of care request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Description of clinical condition indicating why referral/transfer of care is requested.  For example:  Pathological Anomalies, Disabled (physical or mental),  Behavioral Management  </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание клинического состояния с указанием, почему запрашивается направление/передача ухода. Например: патологические аномалии, инвалидность (физическая или психическая), управление поведением <!-- Description of clinical condition indicating why referral/transfer of care is requested.  For example:  Pathological Anomalies, Disabled (physical or mental),  Behavioral Management   --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1592,10 +1592,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Текстовое описание направления<!-- A textual description of the referral --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The reason element gives a short description of why the referral is being made, the description expands on this to support a more complete clinical summary</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Элемент reason дает краткое описание того, почему выдаётся направление, а описание расширяет эту функцию для поддержки более полного клинического резюме<!-- The reason element gives a short description of why the referral is being made, the description expands on this to support a more complete clinical summary --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="18" ss:StyleID="s88"><Data ss:Type="String">This would be a good candidate for a 'markdown' data type</Data><NamedCell
+    <Cell ss:Index="18" ss:StyleID="s88"><Data ss:Type="String">Это было бы хорошим кандидатом для типа данных 'markdown'<!-- This would be a good candidate for a 'markdown' data type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1627,7 +1627,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Запрошенные в рамках этого направления действия<!-- Actions requested as part of the referral --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The service(s) that is/are requested to be provided to the patient.  For example: cardiac pacemaker insertion</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Услуги, оказание которых пациенту запрашивается. Например: установка кардиостимулятора<!-- The service(s) that is/are requested to be provided to the patient.  For example: cardiac pacemaker insertion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1661,7 +1661,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная вспомогательная информация о направлении или передаче ответственности за оказание ухода<!-- Additonal information to support referral or transfer of care request --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Any additional (administrative, financial or clinical) information required to support request for referral or transfer of care.  For example: Presenting problems/chief complaints Medical History Family History Alerts Allergy/Intolerance and Adverse Reactions Medications Observations/Assessments (may include cognitive and fundtional assessments) Diagnostic Reports Care Plan</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Любая дополнительная (административная, финансовая или клиническая) информация, необходимая для поддержки запроса на направление или передачу ухода. Например: текущие проблемы/основная жалоба, анамнез, семейный анамнез, оповещение об аллергиях/ непереносимостях и нежелательных побочных реакций, медикаменты, наблюдения/ оценки (могут включать в себя когнитивные и функциональные оценки), диагностические отчеты, план ухода<!-- Any additional (administrative, financial or clinical) information required to support request for referral or transfer of care.  For example: Presenting problems/chief complaints Medical History Family History Alerts Allergy/Intolerance and Adverse Reactions Medications Observations/Assessments (may include cognitive and fundtional assessments) Diagnostic Reports Care Plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4501,28 +4501,28 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ReferralRequest.category</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Proposal, plan or request</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Предложение, план или запрос<!-- Proposal, plan or request --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">context</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ReferralRequest.context</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Part of encounter or episode of care</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Часть случая обслуживания или эпизода лечения<!-- Part of encounter or episode of care --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">basedon</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ReferralRequest.basedOn</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Request being fulfilled</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Выполняемый запрос<!-- Request being fulfilled --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">parent</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">ReferralRequest.parent</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Part of common request</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Часть общего запроса<!-- Part of common request --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6523,7 +6523,7 @@
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">ReferralCategory</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifies the degree of intention/authorization associated with the request</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Определяет степень намерения/санкционирования, ассоциированную с данным запросом<!-- Identifies the degree of intention/authorization associated with the request --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#referralcategory</Data></Cell>
