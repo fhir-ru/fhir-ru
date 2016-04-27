@@ -79,7 +79,7 @@ public abstract class BuildToolScriptedPageProcessor extends ScriptedPageProcess
   protected abstract String getDescription();
 
   private String searchFooter(int level) {
-    return "<a style=\"color: #81BEF7\" href=\"http://hl7.org/fhir/search.cfm\">Search</a>";
+    return "<a style=\"color: #81BEF7\" href=\"http://hl7.org/fhir/search.cfm\">Поиск</a>";
   }
 
   private String searchHeader(int level) {
