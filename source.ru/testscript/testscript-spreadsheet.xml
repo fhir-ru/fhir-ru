@@ -1537,12 +1537,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">An abstract server representing a client or sender in a message exchange</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Абстрактный сервер, представляющий собой клиента или отправителя в обмене сообщениями<!-- An abstract server representing a client or sender in a message exchange --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">An abstract server used in operations within this test script in the origin element.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Абстрактный сервер, используемый в операциях в рамках этого сценария тестирования в исходном элементе.<!-- An abstract server used in operations within this test script in the origin element. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The purpose of this element is to define the profile of an origin element used elsewhere in the script.  Test engines could then use the origin-profile mapping to offer a filtered list of test systems that can serve as the sender for the interaction.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Назначение этого элемента заключается в определении профиля для исходного элемента, используемого где-то в другом месте этого сценария. Средства тестирования могут затем использовать исходное отображение профиля для предоставления отфильтрованного списка тестовых систем, которые могут выступать в качестве отправителя для этого взаимодействия.<!-- The purpose of this element is to define the profile of an origin element used elsewhere in the script.  Test engines could then use the origin-profile mapping to offer a filtered list of test systems that can serve as the sender for the interaction. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1569,12 +1569,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The index of the abstract origin server starting at 1</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Индекс абстрактного сервера-источника, начиная с 1<!-- The index of the abstract origin server starting at 1 --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Abstract name given to an origin server in this test script.  The name is provided as a number starting at 1.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Абстрактное имя, данное серверу-источнику в этом сценарии тестирования. Имя указывается как число, начиная с 1.<!-- Abstract name given to an origin server in this test script.  The name is provided as a number starting at 1. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A given origin index (e.g. 1) can appear only once in the list (e.g. Origin 1 cannot be specified twice ... once as FormFiller and and again as FormProcessor within the same script as that could get confusing during test configuration). &#10;&#10;Different origin indices could play the same actor in the same test script (e.g. You could have two different test systems acting as Form-Filler).&#10;&#10;The origin indices provided elsewhere in the test script must be one of these origin indices.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Заданный индекс источника (например 1) может появиться только один раз в этом списке (например Источник 1 нельзя указать дважды: как FormFiller и как FormProcessor в рамках одного сценария, так как это может привести к путанице во время конфигурации теста). &#10;&#10;Различные индексы источников могут играть одну и ту же роль в одном сценарии тестирования (например у вас может быть две разных тестовых системы, действующих в качестве Form-Filler).&#10;&#10;Индексы источников, указанные где-то в другом месте текстового сценария, должны быть одними из этих индексов источников.<!-- A given origin index (e.g. 1) can appear only once in the list (e.g. Origin 1 cannot be specified twice ... once as FormFiller and and again as FormProcessor within the same script as that could get confusing during test configuration). &#10;&#10;Different origin indices could play the same actor in the same test script (e.g. You could have two different test systems acting as Form-Filler).&#10;&#10;The origin indices provided elsewhere in the test script must be one of these origin indices. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1605,10 +1605,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">FHIR-Client | FHIR-SDC-FormFiller</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of origin profile the test system supports.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип профиля источника, который поддерживает тестовая система.<!-- The type of origin profile the test system supports. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Must be a &quot;sender&quot;/&quot;client&quot; profile.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это должен быть профиль &quot;sender&quot;/&quot;client&quot;.<!-- Must be a &quot;sender&quot;/&quot;client&quot; profile. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1634,12 +1634,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">An abstract server representing a destination or receiver in a message exchange</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Абстрактный сервер, представляющий приёмника или получателя в обмене сообщениями<!-- An abstract server representing a destination or receiver in a message exchange --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">An abstract server used in operations within this test script in the destination element.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Абстрактный сервер, используемый в операциях в рамках этого сценария тестирования в качестве элемента-приёмника.<!-- An abstract server used in operations within this test script in the destination element. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The purpose of this element is to define the profile of an destination element used elsewhere in the script.  Test engines could then use the destination-profile mapping to offer a filtered list of test systems that can serve as the receiver for the interaction.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Назначение этого элемента заключается в определении профиля для элемента-приёмника, используемого где-то в другом месте этого сценария. Средства тестирования могут затем использовать отображение профиля приёмника для предоставления отфильтрованного списка тестовых систем, которые могут выступать в качестве получателя для этого взаимодействия.<!-- The purpose of this element is to define the profile of an destination element used elsewhere in the script.  Test engines could then use the destination-profile mapping to offer a filtered list of test systems that can serve as the receiver for the interaction. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1666,12 +1666,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The index of the abstract destination server starting at 1</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Индекс абстрактного сервера-приёмника, начиная с 1<!-- The index of the abstract destination server starting at 1 --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Abstract name given to a destination server in this test script.  The name is provided as a number starting at 1.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Абстрактное имя, данное серверу-приёмнику в этом сценарии тестирования. Имя указывается как число, начиная с 1.<!-- Abstract name given to a destination server in this test script.  The name is provided as a number starting at 1. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A given destination index (e.g. 1) can appear only once in the list (e.g. Destination 1 cannot be specified twice ... once as Form-Manager and and again as Form-Processor within the same script as that could get confusing during test configuration). &#10;&#10;Different destination indices could play the same actor in the same test script (e.g. You could have two different test systems acting as Form-Manager).&#10;&#10;The destination indices provided elsewhere in the test script must be one of these destination indices.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Заданный индекс приёмника (например 1) может появиться только один раз в этом списке (например Приёмник 1 нельзя указать дважды: как Form-Manager и как Form-Processor в рамках одного сценария, так как это может привести к путанице во время конфигурации теста). &#10;&#10;Различные индексы приёмников могут играть одну и ту же роль в одном сценарии тестирования (например у вас может быть две разных тестовых системы, действующих в качестве Form-Manager).&#10;&#10;Индексы приёмников, указанные где-то в другом месте текстового сценария, должны быть одними из этих индексов приёмников.<!-- A given destination index (e.g. 1) can appear only once in the list (e.g. Destination 1 cannot be specified twice ... once as Form-Manager and and again as Form-Processor within the same script as that could get confusing during test configuration). &#10;&#10;Different destination indices could play the same actor in the same test script (e.g. You could have two different test systems acting as Form-Manager).&#10;&#10;The destination indices provided elsewhere in the test script must be one of these destination indices. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1702,10 +1702,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">FHIR-Server | FHIR-SDC-FormManager | FHIR-SDC-FormReceiver | FHIR-SDC-FormProcessor</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of destination profile the test system supports.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип профиля приёмника, который поддерживает тестовая система.<!-- The type of destination profile the test system supports. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Must be a &quot;receiver&quot;/&quot;server&quot; profile.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это должен быть профиль &quot;receiver&quot;/&quot;server&quot;.<!-- Must be a &quot;receiver&quot;/&quot;server&quot; profile. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1794,9 +1794,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">URL to the specification</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">URL-адрес спецификации<!-- URL to the specification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">URL to a particular requirement or feature within the FHIR specification.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">URL-адрес конкретного требования или функциональности в рамках спецификации FHIR.<!-- URL to a particular requirement or feature within the FHIR specification. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1888,9 +1888,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Are the capabilities required?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Это обязательная функциональность?<!-- Are the capabilities required? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether or not the test execution will require the given capabilities of the server in order for this test script to execute.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Потребует или нет выполнение этого сценария тестирования наличия данной функциональности на сервере.<!-- Whether or not the test execution will require the given capabilities of the server in order for this test script to execute. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1920,9 +1920,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Are the capabilities validated?</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Проверяется ли эта функциональность?<!-- Are the capabilities validated? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether or not the test execution will validate the given capabilities of the server in order for this test script to execute.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Проверит или нет выполнение этого тестового сценария данную функциональность на сервере?<!-- Whether or not the test execution will validate the given capabilities of the server in order for this test script to execute. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1951,9 +1951,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The expected capabilities of the server</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ожидаемая функциональность сервера<!-- The expected capabilities of the server --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Description of the capabilities that this test script is requiring the server to support.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Описание функциональности, которую должен поддерживать сервер по этому сценарию тестирования.<!-- Description of the capabilities that this test script is requiring the server to support. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1982,9 +1982,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Which origin server these requirements apply to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">К какому серверу-источнику применяются эти требования<!-- Which origin server these requirements apply to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Which origin server these requirements apply to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">К какому серверу-источнику применяются эти требования<!-- Which origin server these requirements apply to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2013,9 +2013,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Which server these requirements apply to</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">К какому серверу применяются эти требования<!-- Which server these requirements apply to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Which server these requirements apply to.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">К какому серверу применяются эти требования.<!-- Which server these requirements apply to. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2046,7 +2046,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылки на спецификацию FHIR<!-- Links to the FHIR specification --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Links to the FHIR specification that describes this interaction and the resources involved in more detail.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылки на спецификацию FHIR, которая описывает это взаимодействие и задействованные ресурсы более детально.<!-- Links to the FHIR specification that describes this interaction and the resources involved in more detail. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2075,12 +2075,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Required Conformance</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Требуемое соответствие<!-- Required Conformance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Minimum conformance required of server for test script to execute successfully.   If server does not meet at a minimum the reference conformance definition, then all tests in this script are skipped.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Минимальные критерии соответствия, требуемые от сервера для успешного выполнения сценария тестирования. Если сервер не отвечает, как минимум, указанному определению соответствия, тогда все тесты в этом сценарии будут пропущены.<!-- Minimum conformance required of server for test script to execute successfully.   If server does not meet at a minimum the reference conformance definition, then all tests in this script are skipped. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The conformance statement of the server has to contain at a minimum the contents of the reference pointed to by this element. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Заявление о соответствии сервера должно содержать как минимум содержимое ссылки, на которую ведёт данный элемент.<!-- The conformance statement of the server has to contain at a minimum the contents of the reference pointed to by this element. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2106,9 +2106,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Fixture in the test script - by reference (uri)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Фикстура в сценарии тестирования - по ссылке (URI)<!-- Fixture in the test script - by reference (uri) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Фикстура в сценарии тестирования - по ссылке (URI). Все фикстуры, которые требуются для выполнения этого сценария тестирования.<!-- Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2139,9 +2139,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether or not to implicitly create the fixture during setup</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Нужна ли явная операция для создания этой фикстуры во время настройки<!-- Whether or not to implicitly create the fixture during setup --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether or not to implicitly create the fixture during setup. If true, the fixture is automatically created on each server being tested during setup, therefore no create operation is required for this fixture in the TestScript.setup section.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Нужна ли явная операция для создания этой фикстуры во время настройки. Если истинно, то эта фикстура автоматически создаётся на каждом тестируемом сервере во время настройки, следовательно для этой фикстуры не требуется операция создания в секции TestScript.setup.<!-- Whether or not to implicitly create the fixture during setup. If true, the fixture is automatically created on each server being tested during setup, therefore no create operation is required for this fixture in the TestScript.setup section. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2171,9 +2171,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether or not to implicitly delete the fixture during teardown</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Нужна ли явная операция для удаления этой фикстуры во время завершения<!-- Whether or not to implicitly delete the fixture during teardown --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Whether or not to implicitly delete the fixture during teardown If true, the fixture is automatically deleted on each server being tested during teardown, therefore no delete operation is required for this fixture in the TestScript.teardown section.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Нужна ли явная операция для удаления этой фикстуры во время завершения. Если истинно, то эта фикстура автоматически удаляется на каждом тестируемом сервере во время завершения, следовательно для этой фикстуры не требуется операция удаления в секции TestScript.teardown.<!-- Whether or not to implicitly delete the fixture during teardown If true, the fixture is automatically deleted on each server being tested during teardown, therefore no delete operation is required for this fixture in the TestScript.teardown section. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2202,12 +2202,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reference of the resource</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылка на ресурс<!-- Reference of the resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reference to the resource (containing the contents of the resource needed for operations)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс (содержащий данные, необходимые для выполнения операций)<!-- Reference to the resource (containing the contents of the resource needed for operations) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">See http://hl7-fhir.github.io/resourcelist.html for complete list of resource types. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">См. полный перечень типов ресурсов на странице http://hl7-fhir.github.io/resourcelist.html.<!-- See http://hl7-fhir.github.io/resourcelist.html for complete list of resource types.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2234,12 +2234,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reference of the validation profile</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылка на профиль валидации<!-- Reference of the validation profile --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reference to the profile to be used for validation.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на профиль, используемый для валидации.<!-- Reference to the profile to be used for validation. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">See http://hl7-fhir.github.io/resourcelist.html for complete list of resource types. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">См. полный перечень типов ресурсов на странице http://hl7-fhir.github.io/resourcelist.html.<!-- See http://hl7-fhir.github.io/resourcelist.html for complete list of resource types.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2265,12 +2265,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Placeholder for evaluated elements</Data><NamedCell
+    <Cell><Data ss:Type="String">Местозаполнитель для вычисляемых элементов<!-- Placeholder for evaluated elements --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Variable is set based either on element value in response body or on header field value in the response headers.</Data><NamedCell
+    <Cell><Data ss:Type="String">Переменная устанавливается на основе значения элемента в теле ответа или значения поля header в заголовках ответов.<!-- Variable is set based either on element value in response body or on header field value in the response headers. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Variables would be set based either on XPath/JsonPath expressions against fixtures (static and response), or headerField evaluations against response headers. If variable evaluates to nodelist or anything other than a primitive value, then test engine would report error.  Variables would be used to perform clean replacements in &quot;operation.params&quot;, &quot;operation.requestHeader.value&quot;, and &quot;operation.url&quot; element values during operation calls and in &quot;assert.value&quot; during assertion evaluations. This limits the places that test engines would need to look for placeholders &quot;${}&quot;.  Variables are scoped to the whole script. They are NOT evaluated at declaration. They are evaluated by test engine when used for substitutions in &quot;operation.params&quot;, &quot;operation.requestHeader.value&quot;, and &quot;operation.url&quot; element values during operation calls and in &quot;assert.value&quot; during assertion evaluations.  See example testscript-search.xml.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Переменные устанавливаются на основе XPath/JsonPath-выражений для фикстур (static и response) или вычислений элемента headerField для заголовков ответов. Если результатом вычисления переменной будет список узлов nodelist или ещё что-то, отличное от примитивного значения, тогда средство тестирования будет сообщать об ошибке. Переменные могут использоваться для выполнения чистых замен в значениях элементов &quot;operation.params&quot;, &quot;operation.requestHeader.value&quot; и &quot;operation.url&quot; во время вызовов операций и в &quot;assert.value&quot; во время вычислений утверждений. Это ограничивает места, которые средства тестирования должны будут просмотреть в поисках местозаполнителей &quot;${}&quot;. Областью действия переменных является весь сценарий целиком. Они НЕ вычисляются при объявлении. Они вычисляются средством тестирования, когда используются для подстановки в значениях элементов &quot;operation.params&quot;, &quot;operation.requestHeader.value&quot; и &quot;operation.url&quot; во время вызовов операций и в &quot;assert.value&quot; во время оценки утверждений. См. пример testscript-search.xml.<!-- Variables would be set based either on XPath/JsonPath expressions against fixtures (static and response), or headerField evaluations against response headers. If variable evaluates to nodelist or anything other than a primitive value, then test engine would report error.  Variables would be used to perform clean replacements in &quot;operation.params&quot;, &quot;operation.requestHeader.value&quot;, and &quot;operation.url&quot; element values during operation calls and in &quot;assert.value&quot; during assertion evaluations. This limits the places that test engines would need to look for placeholders &quot;${}&quot;.  Variables are scoped to the whole script. They are NOT evaluated at declaration. They are evaluated by test engine when used for substitutions in &quot;operation.params&quot;, &quot;operation.requestHeader.value&quot;, and &quot;operation.url&quot; element values during operation calls and in &quot;assert.value&quot; during assertion evaluations.  See example testscript-search.xml. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2298,12 +2298,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Descriptive name for this variable</Data><NamedCell
+    <Cell><Data ss:Type="String">Описательное имя для этой переменной<!-- Descriptive name for this variable --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Descriptive name for this variable</Data><NamedCell
+    <Cell><Data ss:Type="String">Описательное имя для этой переменной<!-- Descriptive name for this variable --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Placeholders would contain the variable name wrapped in ${} in &quot;operation.params&quot;, &quot;operation.requestHeader.value&quot;, and &quot;operation.url&quot; elements.  These placeholders would need to be replaced by the variable value before the operation is executed.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Местозаполнители будут содержать имя переменной в фигурных скобках ${} в элементах &quot;operation.params&quot;, &quot;operation.requestHeader.value&quot; и &quot;operation.url&quot;. Эти местозаполнители нужно будет заменить значением переменной до выполнения операции.<!-- Placeholders would contain the variable name wrapped in ${} in &quot;operation.params&quot;, &quot;operation.requestHeader.value&quot;, and &quot;operation.url&quot; elements.  These placeholders would need to be replaced by the variable value before the operation is executed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2330,12 +2330,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Default, hard-coded, or user-defined value for this variable</Data><NamedCell
+    <Cell><Data ss:Type="String">Значение по умолчанию, жёстко запрограммированное значение или пользовательское значение для этой переменной<!-- Default, hard-coded, or user-defined value for this variable --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">A default, hard-coded, or user-defined value for this variable</Data><NamedCell
+    <Cell><Data ss:Type="String">Дефолтное, жёстко запрограммированное или пользовательское значение для этой переменной<!-- A default, hard-coded, or user-defined value for this variable --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The purpose of this element is to allow for a pre-defined value that can be used as a default or as an override value. Test engines can optionally use this as a placeholder for user-defined execution time values.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Назначение этого элемента - дать возможность предустановить значение, которое можно будет использовать в качестве дефолтного или перезаписать его. Средства тестирования могут по желанию использовать этот местозаполнитель для определяемых пользователем значений времени выполнения.<!-- The purpose of this element is to allow for a pre-defined value that can be used as a default or as an override value. Test engines can optionally use this as a placeholder for user-defined execution time values. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2362,12 +2362,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">HTTP header field name for source</Data><NamedCell
+    <Cell><Data ss:Type="String">Имя поля HTTP-заголовка для источника<!-- HTTP header field name for source --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Will be used to grab the HTTP header field value from the headers that sourceId is pointing to.</Data><NamedCell
+    <Cell><Data ss:Type="String">Будет использовано для извлечения значения поля из HTTP-заголовков, на которые указывает sourceId.<!-- Will be used to grab the HTTP header field value from the headers that sourceId is pointing to. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If headerField is defined, then the variable will be evaluated against the headers that sourceId is pointing to.  If path is defined, then the variable will be evaluated against the fixture body that sourceId is pointing to.  It is an error to define both headerField and path.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если элемент headerField задан, тогда переменная будет вычисляться по заголовкам, на которые указывает sourceId. Если указан элемент path, тогда переменная будет вычисляться по телу фикстуры, на которую указывает sourceId. Будет ошибкой задать одновременно и headerField, и path.<!-- If headerField is defined, then the variable will be evaluated against the headers that sourceId is pointing to.  If path is defined, then the variable will be evaluated against the fixture body that sourceId is pointing to.  It is an error to define both headerField and path. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2394,12 +2394,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">XPath or JSONPath against the fixture body</Data><NamedCell
+    <Cell><Data ss:Type="String">XPath или JSONPath тела фикстуры<!-- XPath or JSONPath against the fixture body --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">XPath or JSONPath against the fixture body.  When variables are defined, either headerField must be specified or path, but not both.</Data><NamedCell
+    <Cell><Data ss:Type="String">XPath или JSONPath тела фикстуры. При определении переменных необходимо указать либо headerField, либо path, но не оба.<!-- XPath or JSONPath against the fixture body.  When variables are defined, either headerField must be specified or path, but not both. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If headerField is defined, then the variable will be evaluated against the headers that sourceId is pointing to.  If path is defined, then the variable will be evaluated against the fixture body that sourceId is pointing to.  It is an error to define both headerField and path.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если элемент headerField задан, тогда переменная будет вычисляться по заголовкам, на которые указывает sourceId. Если указан элемент path, тогда переменная будет вычисляться по телу фикстуры, на которую указывает sourceId. Будет ошибкой задать одновременно и headerField, и path.<!-- If headerField is defined, then the variable will be evaluated against the headers that sourceId is pointing to.  If path is defined, then the variable will be evaluated against the fixture body that sourceId is pointing to.  It is an error to define both headerField and path. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2426,12 +2426,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Fixture Id of source expression or headerField within this variable</Data><NamedCell
+    <Cell><Data ss:Type="String">Идентификатор фикстуры выражения для источника или headerField в этой переменной<!-- Fixture Id of source expression or headerField within this variable --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable.  </Data><NamedCell
+    <Cell><Data ss:Type="String">Фикстура для вычисления этого XPath/JSONPath-выражения или headerField этой переменной.<!-- Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable.   --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">This can be a statically defined fixture (at the top of the testscript) or a dynamically set fixture created by responseId of the action.operation element.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Это может быть статически заданная фикстура (в начале сценария тестирования) или динамически устанавливаемая фикстура, создаваемая с помощью responseId элемента action.operation.<!-- This can be a statically defined fixture (at the top of the testscript) or a dynamically set fixture created by responseId of the action.operation element. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2457,12 +2457,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Assert rule used within the test script</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Правило утверждения, используемое в рамках этого сценария тестирования<!-- Assert rule used within the test script --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Assert rule to be used in one or more asserts within the test script</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Правило утверждения для использования в одном или нескольких утверждениях в рамках этого сценария тестирования<!-- Assert rule to be used in one or more asserts within the test script --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Each rule should be treated by test engines as one assertion regardless of how many assertions are contained within the external rule template.  The impact of negative rule evaluation on test script execution is the same as an assertion failure which is descibed elsewhere in the TestScript resource.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Каждое правило должно обрабатываться средствами тестирования как одно утверждение вне зависимости от того, сколько утверждений содержится во внешнем шаблоне правила. Влияние негативного вычисления правила на выполнение тестового сценария будет таким же, как и сбой при оценки утверждения, которое описывается где-то в другом месте ресурса TestScript.<!-- Each rule should be treated by test engines as one assertion regardless of how many assertions are contained within the external rule template.  The impact of negative rule evaluation on test script execution is the same as an assertion failure which is descibed elsewhere in the TestScript resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2489,9 +2489,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Assert rule resource reference</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ссылка на ресурс с правилом утверждения<!-- Assert rule resource reference --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reference to the resource (containing the contents of the rule needed for assertions)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс (содержащий правила, необходимые для проверки утверждений)<!-- Reference to the resource (containing the contents of the rule needed for assertions) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2519,12 +2519,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Rule parameter template</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Шаблон параметра правила<!-- Rule parameter template --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Each rule template can take one or more parameters for rule evaluation</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Каждый шаблон правила может принимать один или несколько параметров для вычисления правила<!-- Each rule template can take one or more parameters for rule evaluation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The parameter value can be dynamic at runtime.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Значение параметра может вычисляться динамически во время выполнения.<!-- The parameter value can be dynamic at runtime. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2551,12 +2551,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Parameter name matching external assert rule parameter</Data><NamedCell
+    <Cell><Data ss:Type="String">Имя параметра, соответствующее внешнему параметру правила вычисления утверждения<!-- Parameter name matching external assert rule parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Descriptive name for this parameter that matches the external assert rule parameter name</Data><NamedCell
+    <Cell><Data ss:Type="String">Описательное имя для этого параметра, которое совпадает с именем внешнего параметра правила вычисления утверждения<!-- Descriptive name for this parameter that matches the external assert rule parameter name --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The external rule template would be looking for the parameter by this name.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Внешний шаблон правила будет искать этот параметр по данному имени.<!-- The external rule template would be looking for the parameter by this name. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
