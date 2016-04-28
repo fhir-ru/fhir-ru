@@ -83,7 +83,7 @@ public abstract class BuildToolScriptedPageProcessor extends ScriptedPageProcess
   }
 
   private String searchHeader(int level) {
-    return "<div id=\"hl7-nav\"><a id=\"hl7-logo\" no-external=\"true\" href=\"http://hl7.org/fhir/search.cfm\"><img alt=\"Search FHIR\" src=\"./assets/images/search.png\"/></a></div>";
+    return "<div id=\"hl7-nav\"><a id=\"hl7-logo\" no-external=\"true\" href=\"http://hl7.org/fhir/search.cfm\"><img alt=\"Поиск по FHIR\" src=\"./assets/images/search.png\"/></a></div>";
   }
 
   protected String makeHeaderTab(String tabName, String path, Boolean selected)

@@ -99,7 +99,7 @@ public class WebMaker {
   }
 
   private String googleSearch() {
-    return "<h3>Search the FHIR Specification:</h3>\r\n"+
+    return "<h3>Поиск по спецификации FHIR:</h3>\r\n"+
         "<a name=\"search\"/>\r\n"+
         "<div id=\"cse\" style=\"width: 100%;\">Loading</div>\r\n"+
         "<script src=\"http://www.google.com/jsapi\" type=\"text/javascript\"> </script>\r\n"+
@@ -121,7 +121,7 @@ public class WebMaker {
       lvl = lvl + "../";
 
     return "<div id=\"hl7-search\">\r\n"+
-        "  <a href=\""+lvl+"index.html#search\"><img src=\"assets/images/search.png\"/> Search</a>\r\n"+
+        "  <a href=\""+lvl+"index.html#search\"><img src=\"assets/images/search.png\"/> Поиск</a>\r\n"+
 			"</div>";
   }
   

@@ -4216,12 +4216,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   } 
 
   private String searchFooter(int level) {
-    return "<a style=\"color: #81BEF7\" href=\"http://hl7.org/fhir/search.cfm\">Search</a>";
+    return "<a style=\"color: #81BEF7\" href=\"http://hl7.org/fhir/search.cfm\">Поиск</a>";
   }
 
   private String searchHeader(int level) {
 
-    return "<div id=\"hl7-nav\"><a id=\"hl7-logo\" no-external=\"true\" href=\"http://hl7.org/fhir/search.cfm\"><img alt=\"Search FHIR\" src=\"./"+genlevel(level)+"assets/images/search.png\"/></a></div>";
+    return "<div id=\"hl7-nav\"><a id=\"hl7-logo\" no-external=\"true\" href=\"http://hl7.org/fhir/search.cfm\"><img alt=\"Поиск по FHIR\" src=\"./"+genlevel(level)+"assets/images/search.png\"/></a></div>";
   }
 
 
