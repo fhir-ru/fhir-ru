@@ -3,7 +3,7 @@
 <div>
 <a name="scope"> </a>
 <h2>Область применения и использование</h2>
-<p><b>Данный ресурс еще не прошел надлежащую проверку рабочей группой FM. В настоящее время его следует считать черновым.<!-- This resource has not yet undergone proper review by FM. At this time, it is to be considered as a draft. --></b></p>
+<p><b>Данный ресурс еще не прошел надлежащую проверку рабочей группой FM. В настоящее время его следует считать проектом ресурса.<!-- This resource has not yet undergone proper review by FM. At this time, it is to be considered as a draft. --></b></p>
 <p>
 Ресурс EligibilityRequest - это запрос на информацию о пациенте и страховом покрытии страховой компании, чтобы они ответили в форме Eligibility Response и сообщили, имеет ли силу и является ли действительным заявленное страховое покрытие, а также потенциальную сумму покрытия, которая может быть доступна любым классам услуг, перечисленных в этом запросе.
 <!-- The EligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an Eligibility Response,

@@ -1521,12 +1521,12 @@
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s257"><Data ss:Type="String">Finer grained claim type information</Data><NamedCell
+    <Cell ss:StyleID="s257"><Data ss:Type="String">Более детализированная информация о типе иска<!-- Finer grained claim type information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">A finer grained suite of claim subtype codes which may convey Inpatient vs Outpatient and/or a specialty service. In the US the BillType.</Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">Набор более детализированных кодов типа иска, передающих такую информацию, как тип пациента (стационарный или амбулаторный) и/или специализацию услуги. В США это будет BillType.<!-- A finer grained suite of claim subtype codes which may convey Inpatient vs Outpatient and/or a specialty service. In the US the BillType. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s259"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">This may contain the local bill type codes such as the US UB-04 bill type code.</Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">Может содержать коды локального типа выставления счёта, такие как UB-04-код типа выставления счёта США.<!-- This may contain the local bill type codes such as the US UB-04 bill type code. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s258"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s260"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1629,7 +1629,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Дата создания<!-- Creation date --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата создания отчёта EOB<!-- The date when the EOB was created --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата создания объяснения оплаты от страховой компании<!-- The date when the EOB was created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1765,7 +1765,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Responsible organization for the claim</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ответственная за иск организация<!-- Responsible organization for the claim --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, ответственная за этот иск.<!-- The provider which is responsible for the claim. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1868,12 +1868,12 @@
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s280"><Data ss:Type="String">Reference to the related claim</Data><NamedCell
+    <Cell ss:StyleID="s280"><Data ss:Type="String">Ссылка на связанный иск<!-- Reference to the related claim --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s97"><Data ss:Type="String">Другие иски, связанные с данным, например предыдущие версии иска или иски для связанных услуг.<!-- Other claims which are related to this claim such as prior claim versions or for related services. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s281"><Data ss:Type="String">Do we need a relationship code?</Data><NamedCell
+    <Cell ss:StyleID="s281"><Data ss:Type="String">Нужен ли тут код взаимосвязи?<!-- Do we need a relationship code? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s281"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><Data ss:Type="String">11.b</Data><NamedCell
@@ -1904,9 +1904,9 @@
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s280"><Data ss:Type="String">How the reference claim is related</Data><NamedCell
+    <Cell ss:StyleID="s280"><Data ss:Type="String">Каким образом связан указанный иск<!-- How the reference claim is related --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">For example prior or umbrella.</Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">Например предшествует или охватывает.<!-- For example prior or umbrella. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s259"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s283"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1938,9 +1938,9 @@
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s257"><Data ss:Type="String">Related file or case reference</Data><NamedCell
+    <Cell ss:StyleID="s257"><Data ss:Type="String">Ссылка на связанный файл или дело<!-- Related file or case reference --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">An alternate organizational reference to the case or file to which this particular claim pertains - eg Property/Casualy insurer claim # or Workers Compensation case # .</Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">Ссылка на дело или файл другой организации, к которому относится этот конкретный иск - например номер иска страховщика недвижимости/от несчастных случаев, либо номер дела о компенсации работникам.<!-- An alternate organizational reference to the case or file to which this particular claim pertains - eg Property/Casualy insurer claim # or Workers Compensation case # . --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s259"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s283"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1972,7 +1972,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Prescription</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Рецепт<!-- Prescription --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Рецепт на фармацевтические или продукты для коррекции зрения.<!-- Prescription to support the dispensing of Pharmacy or Vision products. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2071,7 +2071,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Payee</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Получатель платежа<!-- Payee --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Сторона, которой будет выплачено возмещение за услуги.<!-- The party to be reimbursed for the services. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2107,9 +2107,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s273"><Data ss:Type="String">Type of party: Subscriber, Provider, other</Data><NamedCell
+    <Cell ss:StyleID="s273"><Data ss:Type="String">Тип стороны: подписчик, поставщик, другое<!-- Type of party: Subscriber, Provider, other --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s254"><Data ss:Type="String">Type of Party to be reimbursed: Subscriber, provider, other.</Data><NamedCell
+    <Cell ss:StyleID="s254"><Data ss:Type="String">Тип стороны, которой возмещаются затраты: подписчик, поставщик, другое.<!-- Type of Party to be reimbursed: Subscriber, provider, other. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2142,7 +2142,7 @@
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s273"><Data ss:Type="String">Party to receive the payable</Data><NamedCell
+    <Cell ss:StyleID="s273"><Data ss:Type="String">Сторона, которая получит выплаты<!-- Party to receive the payable --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s254"><Data ss:Type="String">Сторона-получатель возмещения расходов: подписчик, поставщик услуг.<!-- Party to be reimbursed: Subscriber, provider, other. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2347,12 +2347,12 @@
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s257"><Data ss:Type="String">Occurrence Codes</Data><NamedCell
+    <Cell ss:StyleID="s257"><Data ss:Type="String">Коды наступления<!-- Occurrence Codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">**Insert definition of Occurrence codes</Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">**Вставить определение кодов наступления<!-- **Insert definition of Occurrence codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s259"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">This may contain the local bill type codes such as the US UB-04 bill type code.</Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">Может содержать коды локального типа выставления счёта, такие как UB-04-код типа выставления счёта США.<!-- This may contain the local bill type codes such as the US UB-04 bill type code. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s258"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s260"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2382,12 +2382,12 @@
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s257"><Data ss:Type="String">Occurrence Span Codes</Data><NamedCell
+    <Cell ss:StyleID="s257"><Data ss:Type="String">Коды продолжительности наступления<!-- Occurrence Span Codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">**Insert definition of Occurrence Span codes</Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">**Вставить определение кодов продолжительности наступления<!-- **Insert definition of Occurrence Span codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s259"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">This may contain the local bill type codes such as the US UB-04 bill type code.</Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">Может содержать коды локального типа выставления счёта, такие как UB-04-код типа выставления счёта США.<!-- This may contain the local bill type codes such as the US UB-04 bill type code. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s258"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s260"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2417,12 +2417,12 @@
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s257"><Data ss:Type="String">Value Codes</Data><NamedCell
+    <Cell ss:StyleID="s257"><Data ss:Type="String">Коды ценности<!-- Value Codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">**Insert definition of Value codes</Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">**Вставить определение кодов ценности<!-- **Insert definition of Value codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s259"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">This may contain the local bill type codes such as the US UB-04 bill type code.</Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">Может содержать коды локального типа выставления счёта, такие как UB-04-код типа выставления счёта США.<!-- This may contain the local bill type codes such as the US UB-04 bill type code. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s258"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s260"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2481,7 +2481,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Diagnosis</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Диагноз<!-- Diagnosis --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Пронумерованный список диагнозов пациента, которому предоставляется лечение.<!-- Ordered list of patient diagnosis for which care is sought.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2515,11 +2515,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s280"><Data ss:Type="String">Number to covey order of diagnosis</Data><NamedCell
+    <Cell ss:StyleID="s280"><Data ss:Type="String">Номер диагноза в списке<!-- Number to covey order of diagnosis --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Порядковый номер диагноза<!-- Sequence of diagnosis --> which serves to order and provide a link.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Последовательность диагнозов для установления их порядка и для ссылок.<!-- Sequence of diagnosis which serves to order and provide a link. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходим для упорядочивания списка диагнозов.<!-- Required to maintain order of the diagnoses. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Требуется для установления очерёдности диагнозов.<!-- Required to maintain order of the diagnoses. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2616,9 +2616,9 @@
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s257"><Data ss:Type="String">Procedures performed</Data><NamedCell
+    <Cell ss:StyleID="s257"><Data ss:Type="String">Выполненные процедуры<!-- Procedures performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">Ordered list of patient procedures performed to support the adjudication. </Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">Упорядоченный перечень процедур, выполненных пациенту, для поддержки вынесения решения.<!-- Ordered list of patient procedures performed to support the adjudication.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s259"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s258"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2650,11 +2650,11 @@
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s257"><Data ss:Type="String">Procedure sequence for reference</Data><NamedCell
+    <Cell ss:StyleID="s257"><Data ss:Type="String">Последовательность процедуры для ссылки<!-- Procedure sequence for reference --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">Sequence of procedures which serves to order and provide a link.</Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">Последовательность процедур для установления их порядка и для ссылок.<!-- Sequence of procedures which serves to order and provide a link. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s259"><Data ss:Type="String">Required to maintain order of the procudures.</Data><NamedCell
+    <Cell ss:StyleID="s259"><Data ss:Type="String">Необходимо для установления порядка процедур.<!-- Required to maintain order of the procudures. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s258"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s258"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2684,11 +2684,11 @@
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s257"><Data ss:Type="String">When the procedure was performed </Data><NamedCell
+    <Cell ss:StyleID="s257"><Data ss:Type="String">Когда была выполнена процедура<!-- When the procedure was performed --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">Date and optionally time the procedure was performed .</Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">Дата и, необязательно, время, когда была выполнена процедура.<!-- Date and optionally time the procedure was performed . --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s259"><Data ss:Type="String">Required to adjudicate services rendered.</Data><NamedCell
+    <Cell ss:StyleID="s259"><Data ss:Type="String">Необходимо для рассмотрения предоставленных услуг.<!-- Required to adjudicate services rendered. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s283"><Data ss:Type="String">SB DateTime??</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2721,11 +2721,11 @@
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s257"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s257"><Data ss:Type="String">Patient's list of procedures performed</Data><NamedCell
+    <Cell ss:StyleID="s257"><Data ss:Type="String">Перечень выполненных пациенту процедур<!-- Patient's list of procedures performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s258"><Data ss:Type="String">The procedure code.</Data><NamedCell
+    <Cell ss:StyleID="s258"><Data ss:Type="String">Код процедуры.<!-- The procedure code. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s259"><Data ss:Type="String">Required to adjudicate services rendered.</Data><NamedCell
+    <Cell ss:StyleID="s259"><Data ss:Type="String">Необходимо для рассмотрения предоставленных услуг.<!-- Required to adjudicate services rendered. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s258"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s258"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2787,9 +2787,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Список особых условий<!-- List of special Conditions --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень особых условий<!-- List of special Conditions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">List of special conditions relating to the setting, treatment or patient  for which care is sought which may influence the adjudication. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечень особых условий, связанных с окружающими условиями, лечением или пациентом, для которого запрашивается помощь, которые могут повлиять на вынесение решения.<!-- List of special conditions relating to the setting, treatment or patient  for which care is sought which may influence the adjudication. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2872,7 +2872,7 @@
     <Cell ss:StyleID="s92"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s86"><Data ss:Type="String">!Insurance Information</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">!Информация по страховке<!-- Insurance Information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3200,7 +3200,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s280"><Data ss:Type="String">When the accident occurred</Data><NamedCell
+    <Cell ss:StyleID="s280"><Data ss:Type="String">Когда несчастный случай произошёл<!-- When the accident occurred --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дата несчастного случая, в связи с которым оказываются данные услуги<!-- Date of an accident which these services are addressing. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -3234,7 +3234,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s280"><Data ss:Type="String">The nature of the accident</Data><NamedCell
+    <Cell ss:StyleID="s280"><Data ss:Type="String">Тип несчастного случая<!-- The nature of the accident --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Тип несчастного случая: производственный, автомобильная авария и т. д.<!-- Type of accident: work, auto, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -3304,11 +3304,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Intervention and exception code (Pharma)</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код вмешательств и исключений (Pharma)<!-- Intervention and exception code (Pharma) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A list of intervention and exception codes which may influence the adjudication of the claim.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечень кодов вмешательств и исключений, которые могут повлиять на вынесение решения по иску.<!-- A list of intervention and exception codes which may influence the adjudication of the claim. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Coverage may be modified based on exception information provided.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Страховое покрытие может быть изменено на основании предоставленной информации об исключениях.<!-- Coverage may be modified based on exception information provided. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="17" ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3368,9 +3368,9 @@
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s96"><Data ss:Type="String">Illness, injury or treatable condition date</Data><NamedCell
+    <Cell ss:StyleID="s96"><Data ss:Type="String">Дата болезни, травмы или клинического состояния<!-- Illness, injury or treatable condition date --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s97"><Data ss:Type="String">The start or start and end dates for the treatable condition.</Data><NamedCell
+    <Cell ss:StyleID="s97"><Data ss:Type="String">Дата начала или даты начала и окончания клинического состояния.<!-- The start or start and end dates for the treatable condition. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s97"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3404,9 +3404,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Condition related Onset related dates and codes</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Даты и коды наступления клинического состояния<!-- Condition related Onset related dates and codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Period, start and last dates of aspects of the Condition or related services</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период, дата начала и последние даты аспектов состояния или связанных с ним услуг<!-- Period, start and last dates of aspects of the Condition or related services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3438,9 +3438,9 @@
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s96"><Data ss:Type="String">Illness, injury or treatable condition date</Data><NamedCell
+    <Cell ss:StyleID="s96"><Data ss:Type="String">Дата болезни, травмы или клинического состояния<!-- Illness, injury or treatable condition date --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s97"><Data ss:Type="String">The start or start and end dates for the treatable condition.</Data><NamedCell
+    <Cell ss:StyleID="s97"><Data ss:Type="String">Дата начала или даты начала и окончания клинического состояния.<!-- The start or start and end dates for the treatable condition. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s97"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3472,9 +3472,9 @@
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s273"><Data ss:Type="String">Onset of what</Data><NamedCell
+    <Cell ss:StyleID="s273"><Data ss:Type="String">Наступление чего именно описывается<!-- Onset of what --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s254"><Data ss:Type="String">Onset typifications eg. Start of pregnancy, start of illnes, etc.</Data><NamedCell
+    <Cell ss:StyleID="s254"><Data ss:Type="String">Описание того, что наступило, например начало беременности, начало болезни и т. д.<!-- Onset typifications eg. Start of pregnancy, start of illnes, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s276"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s254"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3505,9 +3505,9 @@
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s96"><Data ss:Type="String">Period unable to work</Data><NamedCell
+    <Cell ss:StyleID="s96"><Data ss:Type="String">Период отгула от работы<!-- Period unable to work --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s97"><Data ss:Type="String">The start and optional end dates of when the patient was precluded from working due to the treatable condition(s)</Data><NamedCell
+    <Cell ss:StyleID="s97"><Data ss:Type="String">Даты начала и (необязательно) окончания периода отгула от работы пациента из-за клинического состояния<!-- The start and optional end dates of when the patient was precluded from working due to the treatable condition(s) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s97"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3540,9 +3540,9 @@
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s96"><Data ss:Type="String">Period in hospital</Data><NamedCell
+    <Cell ss:StyleID="s96"><Data ss:Type="String">Период госпитализации<!-- Period in hospital --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s97"><Data ss:Type="String">The start and optional end dates of when the patient was confined to a treatment center</Data><NamedCell
+    <Cell ss:StyleID="s97"><Data ss:Type="String">Даты начала и (необязательно) окончания периода нахождения пациента в лечебном центре<!-- The start and optional end dates of when the patient was confined to a treatment center --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s97"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3605,9 +3605,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Goods and Services</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Товары и услуги<!-- Goods and Services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">First tier of goods and services</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Первый уровень товаров и услуг<!-- First tier of goods and services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3639,9 +3639,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Service instance</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Экземпляр услуги<!-- Service instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A service line number.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Позиция услуги.<!-- A service line number. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3675,9 +3675,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Group or type of product or service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Группа или тип продукта или услуги<!-- Group or type of product or service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of product or service.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип продукта или услуги.<!-- The type of product or service. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="17" ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3736,9 +3736,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Identifier|Reference(Practitioner)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Supervising Practitioner</Data><NamedCell
+    <Cell ss:Index="13"><Data ss:Type="String">Контролирующий медицинский специалист<!-- Supervising Practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">The practitioner who is supervising the work of the servicing provider(s).</Data><NamedCell
+    <Cell><Data ss:Type="String">Медицинский специалист, который наблюдает за работой поставщиков обслуживания.<!-- The practitioner who is supervising the work of the servicing provider(s). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s288">
@@ -3758,9 +3758,9 @@
     <Cell ss:StyleID="s290"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s290"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s290"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s290"><Data ss:Type="String">Type, classification or Specialization</Data><NamedCell
+    <Cell ss:StyleID="s290"><Data ss:Type="String">Тип, классификация или специализация<!-- Type, classification or Specialization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s291"><Data ss:Type="String">The qualification which is applicable for this service.</Data><NamedCell
+    <Cell ss:StyleID="s291"><Data ss:Type="String">Квалификация, которая применима для данной услуги.<!-- The qualification which is applicable for this service. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s292"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s291"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3793,9 +3793,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s280"><Data ss:Type="String">Applicable diagnoses</Data><NamedCell
+    <Cell ss:StyleID="s280"><Data ss:Type="String">Применимые диагнозы<!-- Applicable diagnoses --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Diagnosis applicable for this service or product line.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Диагноз, применимый к данной услуге или линии продуктов.<!-- Diagnosis applicable for this service or product line. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3829,9 +3829,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Item Code</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код товара<!-- Item Code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If a grouping item then 'GROUP' otherwise it is a node therefore a code to indicate the Professional Service or Product supplied.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если это группа товара, тогда 'GROUP', иначе это узел, следовательно код для указания предоставляемой профессиональной услуги или продукта.<!-- If a grouping item then 'GROUP' otherwise it is a node therefore a code to indicate the Professional Service or Product supplied. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3866,11 +3866,11 @@
     <Cell ss:StyleID="s290"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s290"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s290"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s290"><Data ss:Type="String">Service/Product modifiers</Data><NamedCell
+    <Cell ss:StyleID="s290"><Data ss:Type="String">Модификаторы услуги/продукта<!-- Service/Product modifiers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s291"><Data ss:Type="String">Unusual circumstances which may influence adjudication.</Data><NamedCell
+    <Cell ss:StyleID="s291"><Data ss:Type="String">Необычные обстоятельства, которые могут повлиять на вынесение решения.<!-- Unusual circumstances which may influence adjudication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s292"><Data ss:Type="String">May impact on adjudication.</Data><NamedCell
+    <Cell ss:StyleID="s292"><Data ss:Type="String">Может повлиять на вынесение решения.<!-- May impact on adjudication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s291"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s291"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3903,11 +3903,11 @@
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s172"><Data ss:Type="String">Service/Product billing modifiers</Data><NamedCell
+    <Cell ss:StyleID="s172"><Data ss:Type="String">Модификаторы выставления счёта за услугу/продукт<!-- Service/Product billing modifiers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s189"><Data ss:Type="String">Item typification or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen.</Data><NamedCell
+    <Cell ss:StyleID="s189"><Data ss:Type="String">Коды типов пунктов или модификаторов, например для стоматологии, было ли лечение косметическим или связано с TMJ, или было ли утеряно или украдено приспособление.<!-- Item typification or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s222"><Data ss:Type="String">May impact on adjudication.</Data><NamedCell
+    <Cell ss:StyleID="s222"><Data ss:Type="String">Может повлиять на вынесение решения.<!-- May impact on adjudication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s189"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s179"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3941,9 +3941,9 @@
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s273"><Data ss:Type="String">Program specific reason for item inclusion</Data><NamedCell
+    <Cell ss:StyleID="s273"><Data ss:Type="String">Специфичное для программы обоснование включения товарной позиции<!-- Program specific reason for item inclusion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s254"><Data ss:Type="String">For programs which require reson codes for the inclusion, covering, of this billed item under the program or sub-program.</Data><NamedCell
+    <Cell ss:StyleID="s254"><Data ss:Type="String">Для программ, требующих указания кодов обоснования для включения (позиции), покрытия этой объявленной товарной позиции  программой или подпрограммой.<!-- For programs which require reson codes for the inclusion, covering, of this billed item under the program or sub-program. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s276"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s254"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3975,9 +3975,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Date or dates of Service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата или даты оказания услуг<!-- Date or dates of Service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date or dates when the enclosed suite of services were performed or completed.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата или даты, когда прилагаемый комплекс услуг был предоставлен или завершён.<!-- The date or dates when the enclosed suite of services were performed or completed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4012,9 +4012,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Place of service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Место указания услуги<!-- Place of service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Where the service was provided.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Где была оказана услуга.<!-- Where the service was provided. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4047,9 +4047,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Count of Products or Services</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество продуктов или услуг<!-- Count of Products or Services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The number of repetitions of a service or product.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Число повторений услуги или продукта.<!-- The number of repetitions of a service or product. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4081,9 +4081,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Fee, charge or cost per point</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Плата, комиссия или стоимость за единицу<!-- Fee, charge or cost per point --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the item is a node then this is the fee for the product or service, otherwise this is the total of the fees for the children of the group. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если этот пункт является конечным элементом, тогда это плата за продукт или услугу, иначе это общая сумма плат за все пункты из этой группы.<!-- If the item is a node then this is the fee for the product or service, otherwise this is the total of the fees for the children of the group. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4116,11 +4116,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Price scaling factor</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коэффициент масштабирования цены<!-- Price scaling factor --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Действительное число, которое представляет собой множитель, используемый при определении общей стоимости предоставляемых услуг и/или полученных товаров. Понятие "коэффициент" позволяет применять к денежной сумме множитель скидки или надбавки.<!-- A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If a fee is present the associated product/service code must be present</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если указана плата, то должен быть указан и код связанного с ней продукта/услуги<!-- If a fee is present the associated product/service code must be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4152,11 +4152,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Difficulty scaling factor</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коэффициент пересчёта сложности<!-- Difficulty scaling factor --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Величина, выражающая тяжесть (основанную на сложности, стоимости и/или интенсивности ресурсов), связанную с предоставляемым товаром или услугой. Идея элемента Points в присвоении значений point услугам и/или товарам, чтобы каждому point можно было назначить денежную сумму.<!-- An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If a fee is present the associated product/service code must be present</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если указана плата, то должен быть указан и код связанного с ней продукта/услуги<!-- If a fee is present the associated product/service code must be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4188,11 +4188,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Total item cost</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Общая стоимость позиции<!-- Total item cost --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The quantity times the unit price for an addittional service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Произведение количества на цену единицы дополнительной услуги, товара или комиссии. Например формула unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor и points считаются равными 1, если не указаны.<!-- The quantity times the unit price for an addittional service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If a fee is present the associated product/service code must be present</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если указана плата, то должен быть указан и код связанного с ней продукта/услуги<!-- If a fee is present the associated product/service code must be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4225,11 +4225,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Unique Device Identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный идентификатор устройства (UDI)<!-- Unique Device Identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">List of Unique Device Identifiers associated with this line item.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечень уникальных идентификаторов устройства, связанных с этой контрактной позицией.<!-- List of Unique Device Identifiers associated with this line item. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The UDI code and issuer if applicable for the supplied product.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код UDI и эмитент, если это уместно для поставляемой продукции.<!-- The UDI code and issuer if applicable for the supplied product. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4261,9 +4261,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Service Location</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Анатомическое расположение оказания услуги<!-- Service Location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Physical service site on the patient (limb, tooth, etc).</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Физическое расположение на пациенте места оказания услуги (конечность, зуб и т. п.).<!-- Physical service site on the patient (limb, tooth, etc). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4297,9 +4297,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Service Sub-location</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Более точное описание анатомического расположения оказания услуги<!-- Service Sub-location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A region or surface of the site, eg. limb region or tooth surface(s).</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Участок или поверхность тела, например область конечности или поверхности зуба.<!-- A region or surface of the site, eg. limb region or tooth surface(s). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4330,7 +4330,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Notes</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Примечания<!-- Notes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4362,9 +4362,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">List of note numbers which apply</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Список номеров примечаний, которые применяются<!-- List of note numbers which apply --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A list of note references to the notes provided below.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечень ссылок на примечания для заметок, приведенных ниже.<!-- A list of note references to the notes provided below. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4393,7 +4393,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Line item adjudication</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вынесение решения по товарной позиции<!-- Line item adjudication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4425,9 +4425,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Adjudication details</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Детали судебного решения<!-- Adjudication details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The adjudications results.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Результаты судебного решения.<!-- The adjudications results. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4460,9 +4460,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Adjudication category such as co-pay, eligible, benefit, etc.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Категория вынесения решения, такая как соплатёж, имеющий право, льгота и т. п<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код категории: соплатеж, франшиза, имеющий право, льгота, налог и др.<!-- Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4494,9 +4494,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Adjudication reason</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование вынесенного решения<!-- Adjudication reason --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Adjudication reason such as limit reached.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование вынесенного решения, например достижение лимита.<!-- Adjudication reason such as limit reached. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4527,9 +4527,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Monetary amount</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Денежная сумма<!-- Monetary amount --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Monitory amount associated with the code</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Денежная сумма, связанная с этим кодом<!-- Monitory amount associated with the code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4560,9 +4560,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Non-monitory value</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Не-денежное значение<!-- Non-monitory value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A non-monetary value for example a percentage. Mutually exclusive to the amount element above.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Не-денежное значение, например процент. Является взаимоисключающим элементом с "amount" выше.<!-- A non-monetary value for example a percentage. Mutually exclusive to the amount element above. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4623,9 +4623,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional items</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительные позиции<!-- Additional items --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Second tier of goods and services</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вторичные товары и услуги<!-- Second tier of goods and services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4657,9 +4657,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Service instance</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Экземпляр услуги<!-- Service instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A service line number.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Позиция услуги.<!-- A service line number. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4693,9 +4693,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Group or type of product or service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Группа или тип продукта или услуги<!-- Group or type of product or service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of product or service.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип продукта или услуги.<!-- The type of product or service. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">ItemType</Data><NamedCell
@@ -4729,9 +4729,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional item codes</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды дополнительной позиции<!-- Additional item codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If a grouping item then 'GROUP' otherwise it is a node therefore a code to indicate the Professional Service or Product supplied.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если это группа товара, тогда 'GROUP', иначе это узел, следовательно код для указания предоставляемой профессиональной услуги или продукта.<!-- If a grouping item then 'GROUP' otherwise it is a node therefore a code to indicate the Professional Service or Product supplied. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4765,9 +4765,9 @@
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s273"><Data ss:Type="String">Program specific reason for item inclusion</Data><NamedCell
+    <Cell ss:StyleID="s273"><Data ss:Type="String">Специфичное для программы обоснование включения товарной позиции<!-- Program specific reason for item inclusion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s254"><Data ss:Type="String">For programs which require reson codes for the inclusion, covering, of this billed item under the program or sub-program.</Data><NamedCell
+    <Cell ss:StyleID="s254"><Data ss:Type="String">Для программ, требующих указания кодов обоснования для включения (позиции), покрытия этой объявленной товарной позиции  программой или подпрограммой.<!-- For programs which require reson codes for the inclusion, covering, of this billed item under the program or sub-program. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s276"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s254"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4799,9 +4799,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Count of Products or Services</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество продуктов или услуг<!-- Count of Products or Services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The number of repetitions of a service or product.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Число повторений услуги или продукта.<!-- The number of repetitions of a service or product. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4833,11 +4833,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Fee, charge or cost per point</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Плата, комиссия или стоимость за единицу<!-- Fee, charge or cost per point --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If the item is a node then this is the fee for the product or service, otherwise this is the total of the fees for the children of the group. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если этот пункт является конечным элементом, тогда это плата за продукт или услугу, иначе это общая сумма плат за все пункты из этой группы.<!-- If the item is a node then this is the fee for the product or service, otherwise this is the total of the fees for the children of the group. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If a fee is present the associated product/service code must be present</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если указана плата, то должен быть указан и код связанного с ней продукта/услуги<!-- If a fee is present the associated product/service code must be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4869,11 +4869,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Price scaling factor</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коэффициент масштабирования цены<!-- Price scaling factor --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Действительное число, которое представляет собой множитель, используемый при определении общей стоимости предоставляемых услуг и/или полученных товаров. Понятие "коэффициент" позволяет применять к денежной сумме множитель скидки или надбавки.<!-- A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If a fee is present the associated product/service code must be present</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если указана плата, то должен быть указан и код связанного с ней продукта/услуги<!-- If a fee is present the associated product/service code must be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4905,11 +4905,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Difficulty scaling factor</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коэффициент пересчёта сложности<!-- Difficulty scaling factor --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Величина, выражающая тяжесть (основанную на сложности, стоимости и/или интенсивности ресурсов), связанную с предоставляемым товаром или услугой. Идея элемента Points в присвоении значений point услугам и/или товарам, чтобы каждому point можно было назначить денежную сумму.<!-- An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If a fee is present the associated product/service code must be present</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если указана плата, то должен быть указан и код связанного с ней продукта/услуги<!-- If a fee is present the associated product/service code must be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4941,11 +4941,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Total additional item cost</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Общая стоимость дополнительной позиции<!-- Total additional item cost --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The quantity times the unit price for an addittional service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Произведение количества на цену единицы дополнительной услуги, товара или комиссии. Например формула unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor и points считаются равными 1, если не указаны.<!-- The quantity times the unit price for an addittional service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If a fee is present the associated product/service code must be present</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если указана плата, то должен быть указан и код связанного с ней продукта/услуги<!-- If a fee is present the associated product/service code must be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4977,11 +4977,11 @@
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s172"><Data ss:Type="String">Unique Device Identifier</Data><NamedCell
+    <Cell ss:StyleID="s172"><Data ss:Type="String">Уникальный идентификатор устройства (UDI)<!-- Unique Device Identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s189"><Data ss:Type="String">List of Unique Device Identifiers associated with this line item.</Data><NamedCell
+    <Cell ss:StyleID="s189"><Data ss:Type="String">Перечень уникальных идентификаторов устройства, связанных с этой контрактной позицией.<!-- List of Unique Device Identifiers associated with this line item. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s222"><Data ss:Type="String">The UDI code and issuer if applicable for the supplied product.</Data><NamedCell
+    <Cell ss:StyleID="s222"><Data ss:Type="String">Код UDI и эмитент, если это уместно для поставляемой продукции.<!-- The UDI code and issuer if applicable for the supplied product. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s189"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s189"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5011,9 +5011,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Detail adjudication </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробности вынесения решения<!-- Detail adjudication  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The adjudications results.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Результаты вынесения решения.<!-- The adjudications results. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5046,9 +5046,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Adjudication category such as co-pay, eligible, benefit, etc.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Категория вынесения решения, такая как соплатёж, имеющий право, льгота и т. п<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код категории: соплатеж, франшиза, имеющий право, льгота, налог и др.<!-- Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5080,9 +5080,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Adjudication reason</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование вынесенного решения<!-- Adjudication reason --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Adjudication reason such as limit reached.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование вынесенного решения, например достижение лимита.<!-- Adjudication reason such as limit reached. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5113,9 +5113,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Monetary amount</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Денежная сумма<!-- Monetary amount --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Monitory amount associated with the code.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Денежная сумма, связанная с этим кодом.<!-- Monitory amount associated with the code. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5146,9 +5146,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Non-monitory value</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Не-денежное значение<!-- Non-monitory value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A non-monetary value for example a percentage. Mutually exclusive to the amount element above.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Не-денежное значение, например процент. Является взаимоисключающим элементом с "amount" выше.<!-- A non-monetary value for example a percentage. Mutually exclusive to the amount element above. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5209,9 +5209,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional items</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительные товарные позиции<!-- Additional items --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Third tier of goods and services</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Третий уровень товаров и услуг<!-- Third tier of goods and services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5243,9 +5243,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Service instance</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Экземпляр услуги<!-- Service instance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A service line number.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Позиция услуги.<!-- A service line number. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5279,9 +5279,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of product or service</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип продукта или услуги<!-- Type of product or service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of product or service.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип продукта или услуги.<!-- The type of product or service. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5314,9 +5314,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional item codes</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды дополнительной товарной позиции<!-- Additional item codes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The fee for an addittional service or product or charge.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Плата или комиссия за дополнительную услугу или продукт.<!-- The fee for an addittional service or product or charge. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5350,9 +5350,9 @@
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s273"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s273"><Data ss:Type="String">Program specific reason for item inclusion</Data><NamedCell
+    <Cell ss:StyleID="s273"><Data ss:Type="String">Специфичное для программы обоснование включения товарной позиции<!-- Program specific reason for item inclusion --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s254"><Data ss:Type="String">For programs which require reson codes for the inclusion, covering, of this billed item under the program or sub-program.</Data><NamedCell
+    <Cell ss:StyleID="s254"><Data ss:Type="String">Для программ, требующих указания кодов обоснования для включения (товарной позиции), покрытия этой объявленной товарной позиции  программой или подпрограммой.<!-- For programs which require reson codes for the inclusion, covering, of this billed item under the program or sub-program. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s276"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s254"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5384,9 +5384,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Count of Products or Services</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество продуктов или услуг<!-- Count of Products or Services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The number of repetitions of a service or product.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Число повторений услуги или продукта.<!-- The number of repetitions of a service or product. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5418,11 +5418,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Fee, charge or cost per point</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Плата, расходы или стоимость за единицу<!-- Fee, charge or cost per point --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The fee for an addittional service or product or charge.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Плата или комиссия за дополнительную услугу или продукт.<!-- The fee for an addittional service or product or charge. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If a fee is present the associated product/service code must be present</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если указана плата, то должен быть указан и код связанного с ней продукта/услуги<!-- If a fee is present the associated product/service code must be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5454,11 +5454,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Price scaling factor</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коэффициент масштабирования цены<!-- Price scaling factor --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Действительное число, которое представляет собой множитель, используемый при определении общей стоимости предоставляемых услуг и/или полученных товаров. Понятие "коэффициент" позволяет применять к денежной сумме множитель скидки или надбавки.<!-- A real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If a fee is present the associated product/service code must be present</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если указана плата, то должен быть указан и код связанного с ней продукта/услуги<!-- If a fee is present the associated product/service code must be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5490,11 +5490,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Difficulty scaling factor</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коэффициент пересчёта сложности<!-- Difficulty scaling factor --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Величина, выражающая тяжесть (основанную на сложности, стоимости и/или интенсивности ресурсов), связанную с предоставляемым товаром или услугой. Идея элемента Points в присвоении значений point услугам и/или товарам, чтобы каждому point можно было назначить денежную сумму.<!-- An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. The concept of Points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If a fee is present the associated product/service code must be present</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если указана плата, то должен быть указан и код связанного с ней продукта/услуги<!-- If a fee is present the associated product/service code must be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5526,11 +5526,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Net additional item cost</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Чистая стоимость дополнительной товарной позиции<!-- Net additional item cost --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The quantity times the unit price for an addittional service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Произведение количества на цену единицы дополнительной услуги, товара или комиссии. Например формула unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor и points считаются равными 1, если не указаны.<!-- The quantity times the unit price for an addittional service or product or charge. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If a fee is present the associated product/service code must be present</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если указана плата, то должен быть указан и код связанного с ней продукта/услуги<!-- If a fee is present the associated product/service code must be present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5562,11 +5562,11 @@
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s172"><Data ss:Type="String">Unique Device Identifier</Data><NamedCell
+    <Cell ss:StyleID="s172"><Data ss:Type="String">Уникальный идентификатор устройства (UDI)<!-- Unique Device Identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s189"><Data ss:Type="String">List of Unique Device Identifiers associated with this line item.</Data><NamedCell
+    <Cell ss:StyleID="s189"><Data ss:Type="String">Перечень уникальных идентификаторов устройства, связанных с этой контрактной позицией.<!-- List of Unique Device Identifiers associated with this line item. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s222"><Data ss:Type="String">The UDI code and issuer if applicable for the supplied product.</Data><NamedCell
+    <Cell ss:StyleID="s222"><Data ss:Type="String">Код UDI и эмитент, если это уместно для поставляемой продукции.<!-- The UDI code and issuer if applicable for the supplied product. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s189"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s189"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5596,9 +5596,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">SubDetail adjudication </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Детали вынесения решения<!-- SubDetail adjudication  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The adjudications results.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Результаты вынесения решения.<!-- The adjudications results. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5631,9 +5631,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Adjudication category such as co-pay, eligible, benefit, etc.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Категория вынесения решения, такая как соплатёж, имеющий право, льгота и т. п<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код категории: соплатеж, франшиза, имеющий право, льгота, налог и др.<!-- Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5665,9 +5665,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Adjudication reason </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование вынесенного решения<!-- Adjudication reason --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Adjudication reason such as limit reached.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование вынесенного решения, например достижение лимита.<!-- Adjudication reason such as limit reached. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5698,9 +5698,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Monetary amount</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Денежная сумма<!-- Monetary amount --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Monitory amount associated with the code.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Денежная сумма, связанная с этим кодом.<!-- Monitory amount associated with the code. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5731,9 +5731,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Non-monitory value</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Не-денежное значение<!-- Non-monitory value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A non-monetary value for example a percentage. Mutually exclusive to the amount element above.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Не-денежное значение, например процент. Является взаимоисключающим элементом с "amount" выше.<!-- A non-monetary value for example a percentage. Mutually exclusive to the amount element above. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5762,7 +5762,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Insurer added items</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Позиции, добавленные страховой компанией<!-- Insurer added items --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5794,9 +5794,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Insurer added line items</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Товарные позиции, добавленные страховой компанией<!-- Insurer added line items --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The first tier service adjudications for payor added services.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Судебные решения первого уровня по услугам для плательщика, добавившего услуги.<!-- The first tier service adjudications for payor added services. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5828,9 +5828,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Service instances</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Экземпляры услуг<!-- Service instances --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">List of input service items which this service line is intended to replace.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечень входных пунктов услуг, которые этот ряд услуг призван заменить.<!-- List of input service items which this service line is intended to replace. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5862,9 +5862,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Group, Service or Product</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Группа, услуга или продукт<!-- Group, Service or Product --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code to indicate the Professional Service or Product supplied.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код для обозначения поставляемых профессиональных услуг или продукции.<!-- A code to indicate the Professional Service or Product supplied. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5895,9 +5895,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Professional fee or Product charge</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Комиссия профессионалу или оплата товаров<!-- Professional fee or Product charge --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The fee charged for the professional service or product..</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Плата, взимаемая за профессиональную услугу или продукт.<!-- The fee charged for the professional service or product.. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5928,9 +5928,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">List of note numbers which apply</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Список номеров примечаний, которые применяются<!-- List of note numbers which apply --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A list of note references to the notes provided below.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечень ссылок на примечания для заметок, приведенных ниже.<!-- A list of note references to the notes provided below. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5961,9 +5961,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Added items adjudication</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вынесенное решение по добавленным пунктам<!-- Added items adjudication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The adjudications results.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Результаты вынесения решения.<!-- The adjudications results. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5996,9 +5996,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Adjudication category such as co-pay, eligible, benefit, etc.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Категория вынесения решения, такая как соплатёж, имеющий право, льгота и т. п<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код категории: соплатеж, франшиза, имеющий право, льгота, налог и др.<!-- Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6030,9 +6030,9 @@
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s172"><Data ss:Type="String">Adjudication reason</Data><NamedCell
+    <Cell ss:StyleID="s172"><Data ss:Type="String">Обоснование вынесенного решения<!-- Adjudication reason --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s172"><Data ss:Type="String">Adjudication reason such as limit reached.</Data><NamedCell
+    <Cell ss:StyleID="s172"><Data ss:Type="String">Обоснование вынесенного решения, например достижение лимита.<!-- Adjudication reason such as limit reached. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s222"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s189"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6063,9 +6063,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Monetary amount</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Денежная сумма<!-- Monetary amount --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Monitory amount associated with the code</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Денежная сумма, связанная с этим кодом<!-- Monitory amount associated with the code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6096,9 +6096,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Non-monitory value</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Не-денежное значение<!-- Non-monitory value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A non-monetary value for example a percentage. Mutually exclusive to the amount element above.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Не-денежное значение, например процент. Является взаимоисключающим элементом с "amount" выше.<!-- A non-monetary value for example a percentage. Mutually exclusive to the amount element above. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6129,9 +6129,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Added items details</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сведения по добавленным пунктам<!-- Added items details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The second tier service adjudications for payor added services.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Судебные решения второго уровня по услуге для представленных услуг.<!-- The second tier service adjudications for payor added services. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6164,9 +6164,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Service or Product</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Услуга или продукт<!-- Service or Product --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code to indicate the Professional Service or Product supplied.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код для обозначения поставляемых профессиональных услуг или продукции.<!-- A code to indicate the Professional Service or Product supplied. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6197,9 +6197,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Professional fee or Product charge</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Комиссия профессионалу или оплата товаров<!-- Professional fee or Product charge --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The fee charged for the professional service or product..</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Плата, взимаемая за профессиональную услугу или продукт.<!-- The fee charged for the professional service or product.. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6230,9 +6230,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Added items detail adjudication</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Судебное решение по добавленным пунктам<!-- Added items detail adjudication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The adjudications results.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Результаты судебного решения<!-- The adjudications results. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6265,9 +6265,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Adjudication category such as co-pay, eligible, benefit, etc.</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Категория вынесения решения, такая как соплатёж, имеющий право, льгота и т. п<!-- Adjudication category such as co-pay, eligible, benefit, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код категории: соплатеж, франшиза, имеющий право, льгота, налог и др.<!-- Code indicating: Co-Pay, deductable, elegible, benefit, tax, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6299,9 +6299,9 @@
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s172"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s172"><Data ss:Type="String">Adjudication reason</Data><NamedCell
+    <Cell ss:StyleID="s172"><Data ss:Type="String"><!-- Adjudication reason --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s172"><Data ss:Type="String">Adjudication reason such as limit reached.</Data><NamedCell
+    <Cell ss:StyleID="s172"><Data ss:Type="String">Обоснование вынесенного решения, например достижение лимита.<!-- Adjudication reason such as limit reached. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s222"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s189"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6332,7 +6332,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Monetary amount</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Денежная сумма<!-- Monetary amount --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Monitory amount associated with the code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6365,9 +6365,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Non-monitory value</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Не-денежное значение<!-- Non-monitory value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A non-monetary value for example a percentage. Mutually exclusive to the amount element above.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Не-денежное значение, например процент. Является взаимоисключающим элементом с "amount" выше.<!-- A non-monetary value for example a percentage. Mutually exclusive to the amount element above. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6398,9 +6398,9 @@
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s96"><Data ss:Type="String">Total claim cost</Data><NamedCell
+    <Cell ss:StyleID="s96"><Data ss:Type="String">Общая стоимость иска<!-- Total claim cost --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s97"><Data ss:Type="String">The total value of the claim.</Data><NamedCell
+    <Cell ss:StyleID="s97"><Data ss:Type="String">Общая стоимость иска.<!-- The total value of the claim. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s97"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6454,9 +6454,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">=Prosthesis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Prosthetic details</Data><NamedCell
+    <Cell ss:Index="13"><Data ss:Type="String">Информация о протезе<!-- Prosthetic details --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">The materials and placement date of prior fixed prosthesis. </Data><NamedCell
+    <Cell><Data ss:Type="String">Материал и дата установки предыдущего несъемного зубного протеза.<!-- The materials and placement date of prior fixed prosthesis. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="24"><Data ss:Type="String">300;770</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6468,11 +6468,11 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">boolean</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Is this the initial service</Data><NamedCell
+    <Cell ss:Index="13"><Data ss:Type="String">Первичное ли это оказание услуги<!-- Is this the initial service --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Indicates whether this is the initial placement of a fixed prosthesis.</Data><NamedCell
+    <Cell><Data ss:Type="String">Указывает, первичная ли это установка фиксированного протеза.<!-- Indicates whether this is the initial placement of a fixed prosthesis. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">May impact on adjudication.</Data><NamedCell
+    <Cell><Data ss:Type="String">Может повлиять на вынесение решения.<!-- May impact on adjudication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="22"><Data ss:Type="String">F15/F18 Only for Denture, Crown, Bridge</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6484,11 +6484,11 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">date</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Initial service Date</Data><NamedCell
+    <Cell ss:Index="13"><Data ss:Type="String">Дата первоначального оказания услуги<!-- Initial service Date --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Date of the initial placement.</Data><NamedCell
+    <Cell><Data ss:Type="String">Дата первоначальной установки.<!-- Date of the initial placement. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">May impact on adjudication.</Data><NamedCell
+    <Cell><Data ss:Type="String">Может повлиять на вынесение решения.<!-- May impact on adjudication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="22"><Data ss:Type="String">F04/F19</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6502,11 +6502,11 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">OralProsthoMaterial</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Prosthetic Material</Data><NamedCell
+    <Cell ss:Index="13"><Data ss:Type="String">Материал протеза<!-- Prosthetic Material --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Material of the prior denture or bridge prosthesis. (Oral)</Data><NamedCell
+    <Cell><Data ss:Type="String">Материал предыдущего зубного протеза или мостовидного протеза (стоматология)<!-- Material of the prior denture or bridge prosthesis. (Oral) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">May impact on adjudication.</Data><NamedCell
+    <Cell><Data ss:Type="String">Может повлиять на вынесение решения.<!-- May impact on adjudication. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="22"><Data ss:Type="String">F20/F21</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6557,11 +6557,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Only if type = oral</Data><NamedCell
+    <Cell><Data ss:Type="String">Только если тип = стоматология<!-- Only if type = oral --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A list of teeth which would be expected but are not found due to having been previously  extracted or for other reasons.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечень зубов, которые должны быть, но отсутствуют в силу того, что были ранее удалены, или по другим причинам.<!-- A list of teeth which would be expected but are not found due to having been previously  extracted or for other reasons. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The list of missing teeth may influence the adjudication of services for example with Bridges.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Список отсутствующих зубов может повлиять на вынесение решения по услугам, например в случае с мостовидными зубными протезами.<!-- The list of missing teeth may influence the adjudication of services for example with Bridges. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6593,11 +6593,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Tooth Code</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кодовое обозначение зуба<!-- Tooth Code --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The code identifying which tooth is missing.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код для указания, какой зуб отсутствует.<!-- The code identifying which tooth is missing. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Provides the tooth number of the missing tooth.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для указания номер отсутствующего зуба.<!-- Provides the tooth number of the missing tooth. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6630,11 +6630,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason for missing</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Причина отсутствия<!-- Reason for missing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Missing reason may be: E-extraction, O-other</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Причиной отсутствия может быть: E-удаление, O-другое<!-- Missing reason may be: E-extraction, O-other --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Provides the reason for the missing tooth.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для указания причины отсутствия зуба.<!-- Provides the reason for the missing tooth. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6666,11 +6666,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Date of Extraction</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата удаления<!-- Date of Extraction --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The date of the extraction either known from records or patient reported estimate.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата удаления либо задокументированная, либо приблизительная со слов пациента.<!-- The date of the extraction either known from records or patient reported estimate. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Some services and adjudications require this information.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для некоторых услуг и решений требуется эта информация.<!-- Some services and adjudications require this information. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6700,7 +6700,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Financial Information</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Финансовая информация<!-- Financial Information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6732,11 +6732,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Total Cost of service from the Claim</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Общая стоимость услуг по иску<!-- Total Cost of service from the Claim --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The total cost of the services reported.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Общая стоимость перечисленных услуг.<!-- The total cost of the services reported. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This is a check value that the receiver calculates and returns.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это контрольное число, которое подсчитывает и возвращает получатель.<!-- This is a check value that the receiver calculates and returns. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6766,9 +6766,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Unallocated deductable</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Нераспределённые франшизы<!-- Unallocated deductable --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The amount of deductable applied which was not allocated to any particular service line.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сумма применяемых вычетов, которая не была распределена никакой определенной позиции услуг.<!-- The amount of deductable applied which was not allocated to any particular service line. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6799,9 +6799,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Total benefit payable for the Claim</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Общая сумма льгот, подлежащих оплате за иск<!-- Total benefit payable for the Claim --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Total amount of benefit payable (Equal to sum of the Benefit amounts from all detail lines and additions less the Unallocated Deductable)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Общая сумма льгот, подлежащих оплате (равная сумме льгот всех позиций и дополнений минус нераспределенные вычеты)<!-- Total amount of benefit payable (Equal to sum of the Benefit amounts from all detail lines and additions less the Unallocated Deductable) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6832,9 +6832,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Payment adjustment for non-Claim issues</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Согласование платежей по не связанным с иском вопросам<!-- Payment adjustment for non-Claim issues --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Adjustment to the payment of this transaction which is not related to adjudication of this transaction.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Согласование платежа по этой транзакции, который не относится к судебному решению по этой транзакции.<!-- Adjustment to the payment of this transaction which is not related to adjudication of this transaction. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6866,9 +6866,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason for Payment adjustment</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Причина корректировки платежа<!-- Reason for Payment adjustment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reason for the payment adjustment.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Причина корректировки платежа.<!-- Reason for the payment adjustment. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6899,9 +6899,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Expected data of Payment</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ожидаемая дата платежа<!-- Expected data of Payment --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Estimated payment data</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Предположительная дата оплаты<!-- Estimated payment data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6932,9 +6932,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Payment amount</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сумма платежа<!-- Payment amount --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Payable less any payment adjustment.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Сумма, подлежащая оплате, меньшая, чем любая корректировка оплаты.<!-- Payable less any payment adjustment. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6965,9 +6965,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Payment identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор платежа<!-- Payment identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Payment identifer</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор платежа<!-- Payment identifer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6999,9 +6999,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Funds reserved status</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус зарезервированных денежных средств<!-- Funds reserved status --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Status of funds reservation (For provider, for Patient, None).</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус резервирования средств (для поставщика, для пациента).<!-- Status of funds reservation (For provider, for Patient, None). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -7033,9 +7033,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Printed Form Identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор формы, которую необходимо использовать для печати<!-- Printed Form Identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The form to be used for printing the content.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Форма, которую необходимо использовать для печати данного содержимого.<!-- The form to be used for printing the content. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -7066,9 +7066,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Processing notes</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Примечания к обработке<!-- Processing notes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Note text</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Текст примечания<!-- Note text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -7099,9 +7099,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Note Number for this note</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Номер примечания<!-- Note Number for this note --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An integer associated with each note which may be referred to from each service line item.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Целое число, ассоциированное с каждым примечанием, чтобы на него можно было ссылаться из каждой позиции услуги.<!-- An integer associated with each note which may be referred to from each service line item. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -7134,7 +7134,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">display | print | printoper</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The note purpose: Print/Display.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Назначение примечания: для печати/отображения.<!-- The note purpose: Print/Display. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -7164,9 +7164,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Note explanitory text</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Пояснительный текст примечания<!-- Note explanitory text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The note text.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Текст примечания.<!-- The note text. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -7226,9 +7226,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Balance by Benefit Category</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Баланс по категории льготы<!-- Balance by Benefit Category --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Balance by Benefit Category</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Баланс по категории льготы<!-- Balance by Benefit Category --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -7261,9 +7261,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Benefit Category</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Категория льготы<!-- Benefit Category --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Dental, Vision, Medical, Pharmacy, Rehab etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Стоматологическая, на коррекцию зрения, медицинская, фармацевтическая, реалибитационная и т. п.<!-- Dental, Vision, Medical, Pharmacy, Rehab etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -12411,7 +12411,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">ICD10</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">ICD10 Diagnostic codes</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Диагностические коды ICD10<!-- ICD10 Diagnostic codes --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/icd-10</Data></Cell>
@@ -12426,7 +12426,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">Conditions</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">List of special conditions relating to the setting, treatment or patient  for which care is sought which may influence the adjudication. </Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень особых условий, связанных с окружающими условиями, лечением или пациентом, для которого запрашивается помощь, которые могут повлиять на вынесение решения.<!-- List of special conditions relating to the setting, treatment or patient  for which care is sought which may influence the adjudication.  --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/fm-conditions</Data></Cell>
@@ -12456,7 +12456,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s163"><Data ss:Type="String">AccidentType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Type of accident: work place, auto, etc.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Тип несчастного случая: производственный, автомобильная авария и т. д.<!-- Type of accident: work place, auto, etc. --></Data></Cell>
     <Cell ss:StyleID="s129"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-ActIncidentCode</Data></Cell>
@@ -12471,7 +12471,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">ItemType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Service, Product, Rx Dispense, Rx Compound etc.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Услуга, продукт, выдача по рецепту, сложный рецепт и др.<!-- Service, Product, Rx Dispense, Rx Compound etc. --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-ActInvoiceGroupCode</Data></Cell>
@@ -12486,7 +12486,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">Intervention</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Intervention and exception codes (Pharm)</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды вмешательств и исключений (фармацевтика)<!-- Intervention and exception codes (Pharm) --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/intervention</Data></Cell>
@@ -12501,7 +12501,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">ServiceProduct</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Allowable service and product codes</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды допустимых услуг и продуктов.<!-- Allowable service and product codes --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/service-uscls</Data></Cell>
@@ -12546,7 +12546,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">OralSites</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The code for the teeth, quadrant, sextant and arch</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код зуба, квадрант, секстант и арка<!-- The code for the teeth, quadrant, sextant and arch --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/tooth</Data></Cell>
@@ -12561,7 +12561,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">Surface</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The code for the tooth surface and surface combinations</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код поверхности зуба и комбинаций поверхностей<!-- The code for the tooth surface and surface combinations --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/surface</Data></Cell>
@@ -12576,7 +12576,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">Modifiers</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Item type or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды типов пунктов или модификаторов, например для стоматологии, было ли лечение косметическим или связано с TMJ, или было ли утеряно или украдено приспособление.<!-- Item type or modifiers codes, eg for Oral whether the treatment is cosmetic or associated with TMJ, or an appliance was lost or stolen. --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/claim-modifiers</Data></Cell>
@@ -12591,7 +12591,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">Adjudication</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The adjudication codes.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды вынесенного решения.<!-- The adjudication codes. --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/adjudication</Data></Cell>
@@ -12621,7 +12621,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">PaymentAdjustmentReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Payment Adjustment reason codes.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды обоснования вынесенного решения по платежам.<!-- Payment Adjustment reason codes. --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/payment-adjustment-reason</Data></Cell>
@@ -12636,7 +12636,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">OralProsthoMaterial</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Material of the prior denture or bridge prosthesis. (Oral)</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Материал предыдущего зубного протеза или мостовидного протеза (стоматология)<!-- Material of the prior denture or bridge prosthesis. (Oral) --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/oral-prosthodontic-material</Data></Cell>
@@ -12651,7 +12651,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">Tooth</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The codes for the teeth, subset of OralSites</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды для зубов, подмножество OralSites<!-- The codes for the teeth, subset of OralSites --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/teeth</Data></Cell>
@@ -12666,7 +12666,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">MissingReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason codes for the missing teeth</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды причин отсутствия зубов<!-- Reason codes for the missing teeth --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/missing-tooth-reason</Data></Cell>
@@ -12681,7 +12681,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">BenefitCategory</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Benefit categories such as: oral, medical, vision etc.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Категория льготы: стоматологическая, медицинская, коррекция зрения и т. д.<!-- Benefit categories such as: oral, medical, vision etc. --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">valueset-benefit-category</Data></Cell>
@@ -12696,7 +12696,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">BenefitSubCategory</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Benefit subcategories such as: oral-basic, major, glasses</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подкатегория льготы: базовая стоматологическая, основная, на очки<!-- Benefit subcategories such as: oral-basic, major, glasses --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">valueset-benefit-subcategory</Data></Cell>
@@ -12771,7 +12771,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s257"><Data ss:Type="String">ClaimSubType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A more granulat claim typecode</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Более детализированный код типа иска<!-- A more granulat claim typecode --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">valueset-claim-subtype</Data></Cell>
@@ -12786,7 +12786,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s257"><Data ss:Type="String">RelatedClaimRelationship</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Relationship of this claim to a related Claim</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Взаимосвязь между этим иском и связанным иском<!-- Relationship of this claim to a related Claim --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">valueset-related-claim-relationship</Data></Cell>
@@ -12801,7 +12801,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s257"><Data ss:Type="String">OccurrenceCodes</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Occurrence codes</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды наступления<!-- Occurrence codes --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">valueset-occurrence-codes</Data></Cell>
@@ -12816,7 +12816,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s257"><Data ss:Type="String">OccurrenceSpanCodes</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Occurrence Span codes</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды продолжительности наступления<!-- Occurrence Span codes --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">valueset-occurrence-span-codes</Data></Cell>
@@ -12831,7 +12831,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s257"><Data ss:Type="String">ValueCodes</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Value code</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Код ценности<!-- Value code --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">valueset-value-codes</Data></Cell>
@@ -12846,7 +12846,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s257"><Data ss:Type="String">ProviderQualification</Data></Cell>
-    <Cell><Data ss:Type="String">Provider professional qualifications</Data></Cell>
+    <Cell><Data ss:Type="String">Профессиональная квалификация поставщика<!-- Provider professional qualifications --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">valueset-provider-qualification</Data></Cell>
@@ -12861,7 +12861,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s257"><Data ss:Type="String">ServiceModifiers</Data></Cell>
-    <Cell><Data ss:Type="String">Factors which may influce adjudication of services</Data></Cell>
+    <Cell><Data ss:Type="String">Факторы, которые могут влиять на вынесение решений по услугам<!-- Factors which may influce adjudication of services --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">valueset-service-modifiers</Data></Cell>
@@ -12890,7 +12890,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">ProgramCode</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Program specific reason codes</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды обоснований, специфичные для программ<!-- Program specific reason codes --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">valueset-ex-program-code</Data></Cell>
@@ -12905,7 +12905,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s161"><Data ss:Type="String">OnsetType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Condition related start, end  and period codes</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды, относящиеся к началу, окончанию и продолжительности клинического состояния<!-- Condition related start, end  and period codes --></Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s132"><Data ss:Type="String">valueset-ex-onsettype</Data></Cell>
