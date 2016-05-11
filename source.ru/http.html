@@ -341,14 +341,17 @@ the character encoding to UTF-8 using the <code>charset</code> parameter of the 
 Requests MAY also specify this <code>charset</code> parameter in the <code>Accept</code> header and/or use the <code>Accept-Charset</code> header. -->
 </p>
 <p>
-Note: the <code>_format</code> parameter does not override the <code>content-type</code> header.
+Примечание: параметр <code>_format</code> не перезаписывает заголовок <code>content-type</code>.
+<!-- Note: the <code>_format</code> parameter does not override the <code>content-type</code> header. -->
 </p>
 <p>
-The content types <code>application/x-www-form-urlencoded</code> is also accepted for posting <code>search</code> requests.
+Тип содержимого <code>application/x-www-form-urlencoded</code> также допустим для отправки <code>search</code>-запросов [командой POST].
+<!-- The content types <code>application/x-www-form-urlencoded</code> is also accepted for posting <code>search</code> requests. -->
 </p>
 <p>
-If neither the accept header nor the _format parameter are specified, the MIME-type 
-of the content returned by the server is undefined and may vary.
+Если ни accept-заголовок, ни параметр _format не указаны, то MIME-тип содержимого, возвращаемого сервером, считается неопределённым и может варьироваться.
+<!-- If neither the accept header nor the _format parameter are specified, the MIME-type 
+of the content returned by the server is undefined and may vary. -->
 </p>
 
 <a name="versioning"> </a>
@@ -370,9 +373,10 @@ versioning support. Systems declare their support for versioning
 in their <a href="conformance-definitions.html#Conformance.rest.resource.noVersion">conformance statement</a>. -->
 </p>
 <p>
-Server should always return the default timezone for <a href="search.html#date">date searches</a> 
+Сервер всегда должен возвращать дефолтную таймзону в HTTP-заголовке ответа Date при <a href="search.html#date">поиске по датам</a>. Примечание: Серверы не обязаны иметь дефолтную таймзону.
+<!-- Server should always return the default timezone for <a href="search.html#date">date searches</a> 
 in the HTTP Response headers using the Date header. Note: Servers are not required to have a 
-default timezone.
+default timezone. -->
 </p>
 
 <a name="read"> </a>
@@ -406,19 +410,25 @@ contention management when a resource is brought back to life.  -->
 </p>
 
 <p>
-In addition, the search parameter <code>_summary</code> can be used when reading a resource:
+Дополнительно при чтении ресурса можно использовать параметр поиска <code>_summary</code>:
+<!-- In addition, the search parameter <code>_summary</code> can be used when reading a resource: -->
 </p>
 <pre>
   GET [base]/[type]/[id] {?_summary=text}
 </pre>
 <p>
-This requests that only a subset of the resource content be returned,
+Это запрос 
+что только подмножество содержимого ресурса будет возвращено,
+как указано в параметре <code>_summary</code>, который может иметь значения 
+<a href="search.html#summary"><code>true</code>, <code>false</code>, <code>text</code> &amp; <code>data</code></a>.
+Отметьте, что ресурс, который содержит только подмножество данных, не подходит для использования в качестве основы для обновления ресурса и может не подходить для других целей. Серверам СЛЕДУЕТ использовать <a href="security-labels.html">метку уровня безопасности</a> <a href="v3/vs/SecurityIntegrityObservationValue/cs.html#SUBSETTED">SUBSETTED</a>, чтобы явным образом помечать такие ресурсы.
+<!-- This requests that only a subset of the resource content be returned,
 as specified in the <code>_summary</code> parameter, which can have the values 
 <a href="search.html#summary"><code>true</code>, <code>false</code>, <code>text</code> &amp; <code>data</code></a>.
 Note that a resource that only contains a subset of the data is 
 not suitable for use as a base to update the resource, and may not 
 be suitable for other uses. Servers SHOULD use the <a href="v3/vs/SecurityIntegrityObservationValue/cs.html#SUBSETTED">SUBSETTED</a> <a href="security-labels.html">Security Label</a>
-to explicitly mark such resources.
+to explicitly mark such resources. -->
 </p>
 
 <a name="vread"> </a>
@@ -432,9 +442,8 @@ is performed by an HTTP <code>GET</code> command as shown: -->
   GET [base]/[type]/[id]/_history/[vid] {?_format=[mime-type]}
 </pre>
 <p>
-Эта команда возвращает одиночный экземпляр с содержимым, указанным для этого типа ресурса для этой версии ресурса. 
-Возвращаемый ресурс ДОЛЖЕН иметь элемент <code>id</code> со значением [id] и элемент <code>meta.versionId</code> со значением [vid]. Servers SHOULD return an <code>ETag</code> header with the versionId and a <code>Content-Location</code> header with the response which is the full version
-specific url (see vread below) and a <code>Last-Modified</code> header.
+Эта команда возвращает одиночный экземпляр с содержимым, указанным для этого типа ресурса и этой версии ресурса. 
+Возвращаемый ресурс ДОЛЖЕН иметь элемент <code>id</code> со значением <code>[id]</code>, и элемент <code>meta.versionId</code> со значением <code>[vid]</code>. Серверам СЛЕДУЕТ возвращать <code>ETag</code>-заголовок с versionId (если версионирование поддержано) и заголовок <code>Last-Modified</code>.
 <!-- This returns a single instance with the content specified for the resource type for that
 version of the resource.
 The returned resource SHALL have an <code>id</code> element with a value that is the <code>[id]</code>, and a <code>meta.versionId</code>
@@ -473,8 +482,7 @@ The <code>update</code> interaction is performed by an HTTP <code>PUT</code> com
 Тело запроса ДОЛЖНО быть <a href="resource.html">ресурсом</a> с элементом id, имеющим идентичное значение, что и [id] в URL. 
 Если тело запроса содержит <a href="resource.html#meta">meta</a>, сервер ДОЛЖЕН 
 игнорировать предложенные значения <code>versionId</code> и <code>lastUpdated</code>. 
-Если сервер поддерживает версионирование, он ДОЛЖЕН заполнить <code>meta.versionId</code> и <code>meta.lastUpdated</code> новыми корректными значениями. Серверам разрешается проверять и изменять другие значения метаданных, но СЛЕДУЕТ воздерживаться от этого (см. более подробную информацию на странице <a href="resource.html#meta">описания метаданных</a>). Note that 
-there is no support for updating past versions - see notes on the <a href="#history">history</a> interaction.
+Если сервер поддерживает версионирование, он ДОЛЖЕН заполнить <code>meta.versionId</code> и <code>meta.lastUpdated</code> новыми корректными значениями. Серверам разрешается проверять и изменять другие значения метаданных, но СЛЕДУЕТ воздерживаться от этого (см. более подробную информацию на странице <a href="resource.html#meta">описания метаданных</a>). Отметьте, что нет поддержки обновления предыдущих версий - см. примечания к операции <a href="#history">history</a>.
 <!-- The request body SHALL be a <a href="resource.html">Resource</a> with an id element 
 that has an identical value to the <code>[id]</code> in the URL. If no <code>id</code> element is provided, or 
 the value is wrong, the server SHALL respond with a HTTP <code>400</code> error code, and SHOULD
@@ -498,13 +506,15 @@ around update behavior. -->
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>DSTU Note:</b>   The update operation updates the entire resource. Servers MAY apply some logic
+<b>Примечание к DSTU:</b> Операция update обновляет ресурс целиком. Серверы МОГУТ применять какую-то логику и сохранять какой-то существующий контент, основываясь на том, где такая модель поведения уместна. Скорее всего будет определена HTTP-функциональность <code>PATCH</code>, и мы будем ожидать отзывов от реализаторов по результатам их экспериментов.
+<!-- <b>DSTU Note:</b>   The update operation updates the entire resource. Servers MAY apply some logic
 and preserve some existing content based where this is known to be appropriate behavior. 
 HTTP <code>PATCH</code> functionality is likely to be defined, and feedback from outcomes of implementer
-experimentation is welcome. 
+experimentation is welcome.  -->
 </p>
 <p>
-Provide feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+Размещайте свои <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывы</a>.
+<!-- Provide feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>. -->
 </p>
 </blockquote>
 <p>
@@ -514,7 +524,8 @@ with a <code>Last-Modified</code> header, and an <code>ETag</code> header which 
 return a <code>Location</code> header (this is for HTTP conformance; it's not otherwise needed). -->
 </p>
 <p>
-Note: Servers MAY choose to preserve XML comments, instructions, and formatting or JSON whitespace when accepting updates, but are not required to do so. The impact of this on digital signatures may need to be considered.
+Примечание: серверы МОГУТ решить сохранять XML-комментарии, инструкции и форматирование или JSON-табуляцию, когда принимают операции обновления, однако не обязаны это делать. Может потребоваться учитывать влияние этого на электронные цифровые подписи.
+<!-- Note: Servers MAY choose to preserve XML comments, instructions, and formatting or JSON whitespace when accepting updates, but are not required to do so. The impact of this on digital signatures may need to be considered. -->
 </p>
 <p>
 Note that servers MAY choose to allow clients to <code>PUT</code> a resource to a location that 
