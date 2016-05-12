@@ -159,7 +159,7 @@ with the logical identity. It is not necessary to explicitly embed the patient i
 URL - implementations can associate an FHIR end-point with a particular patient or
 provider by using an OAuth login. See <a href="compartmentdefinition.htmls">Compartments</a> for the logical underpinning. -->
 </p>
-<p><b>Identity</b></p>
+<p><b>Идентификация<!-- Identity --></b></p>
 <p>
 Системы часто сталкиваются с задачей сравнения двух URL-адресов для определения того, ведут ли они на один и тот же адрес или нет.
 В рамках данной спецификации применяются следующие правила:
@@ -176,11 +176,8 @@ For the purposes of this specification, the following rules apply: -->
 </ul>
 <p>
 Например:
-<code>http://myserver.com/Patient/1</code> and <code>https://myserver.com/Patient/1</code> refer to the same underlying object, while <code>http://myserver.com:81/Patient/1</code> is a distinct entity from either of the above.
-This does not mean that the two addresses need to be treated the same, or that a server must serve both addresses, or that the content from the two addresses must be identical, but just that if these two 
-addresses have the same identity, and if both are served, they must both represent the same underlying object. Systems are not required to 
-check that this is true. Note: the identity comparison for protocols other than http:/https: is undefined.
-http://myserver.com/patient/1 и https://myserver.com/patient/1 являются одинаковыми, а http://myserver.com:80/patient/1 отличается от этих двух адресов.
+<code>http://myserver.com/Patient/1</code> и <code>https://myserver.com/Patient/1</code> ведут на один и тот же лежащий в их основе объект, а <code>http://myserver.com:81/Patient/1</code> - это отличная от этих двух адресов сущность.
+Это не означает, что эти два адреса необходимо считать одинаковыми, или что сервер должен обслуживать оба эти адреса, или что содержимое по этим двум адресам должно быть идентичным, а показывает только, что если эти два адреса тождественны и если оба они обслуживаются, они должны представлять собой один и тот же лежащий в их основе объект. Системы не обязаны проверять, что это верно. Примечание: сравнение идентичности для протоколов помимо http:/https: не определено.
 <!-- For example:
 <code>http://myserver.com/patient/1</code> and <code>https://myserver.com/patient/1</code> refer to the same underlying object, while <code>http://myserver.com:81/patient/1</code> is a distinct entity from either of the above.
 This does not mean that the two addresses need to be treated the same, or that a server must serve both addresses, or that the content from the two addresses must be identical, but just that if these two 
@@ -219,7 +216,8 @@ to <a href="https://en.wikipedia.org/wiki/Role-based_access_control">RBAC</a> an
 and some operations may depend on appropriate consent being granted. --> 
 </p>
 <p>
-See the <a href="security.html#AccessDenied">HTTP Security</a> guidance on how to handle access denial response.
+См. руководство <a href="security.html#AccessDenied">HTTP Security</a> о том, как обрабатывать ответ с отказом в доступе.
+<!-- See the <a href="security.html#AccessDenied">HTTP Security</a> guidance on how to handle access denial response. -->
 </p>
 <p>
 Примечание: для поддержки браузерных клиентских приложений сервер ДОЛЖЕН реализовывать <a href="http://enable-cors.org/">Кросс-доменный доступ к ресурсам</a>.
@@ -282,8 +280,7 @@ client). In the case of transactions this means returning a Bundle with just the
 and not the <code>Bundle.entry.resource</code> values. -->
 </p>
 <a name="prefer"> </a>
-<p>Клиент может указать, вернется ли ресурс целиком, с помощью <a href="https://tools.ietf.org/html/rfc7240#section-4.2">HTTP
-return preference</a>:
+<p>Клиент может указать, вернётся ли ресурс целиком, с помощью <a href="https://tools.ietf.org/html/rfc7240#section-4.2">предпочтения возврата HTTP</a>:
 <!-- The client can indicate whether the entire resource is
 returned using the <a href="https://tools.ietf.org/html/rfc7240#section-4.2">HTTP
 return preference</a>: -->
@@ -513,7 +510,7 @@ HTTP <code>PATCH</code> functionality is likely to be defined, and feedback from
 experimentation is welcome.  -->
 </p>
 <p>
-Размещайте свои <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывы</a>.
+Страничка для размещения ваших <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывов</a>.
 <!-- Provide feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>. -->
 </p>
 </blockquote>
@@ -528,25 +525,31 @@ return a <code>Location</code> header (this is for HTTP conformance; it's not ot
 <!-- Note: Servers MAY choose to preserve XML comments, instructions, and formatting or JSON whitespace when accepting updates, but are not required to do so. The impact of this on digital signatures may need to be considered. -->
 </p>
 <p>
-Note that servers MAY choose to allow clients to <code>PUT</code> a resource to a location that 
+Отметьте, что серверы МОГУТ по желанию разрешать клиентам размещать ресурс командой <code>PUT</code> по адресу, который ещё не существует на этом сервере - эффективно, позволяя клиенту задавать идентификатор этого ресурса. Выбор того, будет ли сервер позволять это делать, делается во время его инсталляции на основе характера взаимосвязи с клиентами. Хотя большинство серверов не позволяют клиентам задавать свои идентификаторы, есть несколько причин, почему это может оказаться необходимым в некоторых конфигурациях.
+<!-- Note that servers MAY choose to allow clients to <code>PUT</code> a resource to a location that 
 does not yet exist on the server - effectively, allowing the client to define the 
 id of the resource. Whether a server allows this is a deployment choice based 
 on the nature of its relationships with the clients. While many servers will 
 not allow clients to define their ids, there are several reasons why it may
-be necessary in some configurations:
+be necessary in some configurations: -->
 </p>
 <ul>
- <li>client is reproducing an existing data model on the server, and needs to keep original ids in order to retain ongoing integrity</li>
+ <li>клиент воспроизводит существующую модель данных на сервере, и ему необходимо сохранить оригинальные идентификаторы, чтобы сохранить непрерывную целостность</li>
+ <li>клиентом является сервер, выполняющий push на основе pub/sub (это особый случай первой причины)</li>
+ <li>несколько клиентов выполняют push в контексте согласованной модели данных, совместно используемой несколькими серверами, в которой идентификаторы расшарены между серверами</li>
+<!--  <li>client is reproducing an existing data model on the server, and needs to keep original ids in order to retain ongoing integrity</li>
  <li>client is a server doing push based pub/sub (this is a special case of the first reason)</li>
- <li>multiple clients doing push in the context of agreed data model shared across multiple servers where ids are shared across servers</li>
+ <li>multiple clients doing push in the context of agreed data model shared across multiple servers where ids are shared across servers</li> -->
 </ul>
 <p>
-Alternatively, clients may be sharing an agreed identification model (e.g. key server, scoped identifiers, or UUIDs)
-where clashes do not arise.
+В качестве альтернативы клиенты могут совместно использовать согласованную модель идентификации (например сервер ключей, идентификаторы с областью видимости, UUID), в которой не будут возникать конфликты.
+<!-- Alternatively, clients may be sharing an agreed identification model (e.g. key server, scoped identifiers, or UUIDs)
+where clashes do not arise. -->
 </p>
 <p>
-Servers can choose whether or not to support client defined ids, and indicate such to the clients 
-using <a href="conformance-definitions.html#Conformance.rest.resource.updateCreate">Conformance.rest.resource.updateCreate</a>.
+Серверы могут выбирать, поддерживать или нет задание идентификаторов клиентами, и сообщать об этом клиентам с помощью <a href="conformance-definitions.html#Conformance.rest.resource.updateCreate">Conformance.rest.resource.updateCreate</a>.
+<!-- Servers can choose whether or not to support client defined ids, and indicate such to the clients 
+using <a href="conformance-definitions.html#Conformance.rest.resource.updateCreate">Conformance.rest.resource.updateCreate</a>. -->
 </p>
 
 <h4>Отклонение обновлений<!-- Rejecting Updates --></h4>
@@ -612,9 +615,10 @@ For example, a client updating the status of a lab result from "preliminary" to 
 might submit the finalized result using <code>PUT path/Observation?identifier=http://my-lab-system|123</code> -->
 </p>
 <p>
-Note that transactions and conditional create/update/delete are complex interactions and it is 
+Отметьте, что транзакции и условные операции create/update/delete являются комплексными взаимодействиями, и не предполагается, что каждый сервер будет их реализовывать. Серверы, которые не поддерживают условное обновление, должны возвращать HTTP-код ошибки <code>400</code> и результат операции.
+<!-- Note that transactions and conditional create/update/delete are complex interactions and it is 
 not expected that every server will implement them. Servers that don't support the conditional 
-update should return an HTTP <code>400</code> error and an operation outcome.
+update should return an HTTP <code>400</code> error and an operation outcome. -->
 </p>
 
 
@@ -692,9 +696,8 @@ interactions. Upon successful deletion, or if the resource does not exist at all
 resource containing hints and warnings about the deletion; if one is sent it SHALL NOT include any errors. -->
 </p>
 <p>
-Whether to support delete at all, or for a particular resource type or a particular instance is at the 
-discretion of the server based on the business rules that apply in its context.
-Если сервер отказывает удалять ресурсы такого типа в соответствии с общей политикой безопасности, тогда он должен возвращать статус-код 405 Method not allowed. Если сервер отказывается удалять ресурс по причинам, специфичным для конкретного ресурса, например из-за вопросов целостности ссылок, он должен возвращать статус-код 409 Conflict. 
+Поддерживать ли операцию delete вообще или для определённого типа ресурсов или конкретного экземпляра - свободный выбор сервера на основе бизнес-правил, применяемых в данном контексте.
+Если сервер отказывается удалять ресурсы такого типа в соответствии с общей политикой безопасности, тогда он должен возвращать статус-код 405 Method not allowed. Если сервер отказывается удалять ресурс по причинам, специфичным для конкретного ресурса, например из-за вопросов целостности ссылок, он должен возвращать статус-код 409 Conflict. 
 Выполнение этого взаимодействия с ресурсом, который уже удален, не имеет эффекта, и сервер должен возвращать статус-код 204 или 200. 
 Ресурсы, которые были удалены, могут быть восстановлены с помощью последующего выполнения операции <a href="#href">update</a> с помощью HTTP <code>PUT</code>.
 <!-- Whether to support delete at all, or for a particular resource type or a particular instance is at the 
@@ -721,8 +724,9 @@ no content and is marked as deleted. Note that
 there is no support for deleting past versions - see notes on the <a href="#history">history</a> interaction. -->
 </p>
 <p>
-Since deleted resources may be brought back to life, servers MAY include an ETag on the delete response
-to allow version contention management when a resource is brought back to life. 
+Поскольку удалённые ресурсы могут быть восстановлены, серверы МОГУТ включать ETag в ответ на операцию удаления, чтобы избежать конфликтов версий, когда ресурс будет восстановлен.
+<!-- Since deleted resources may be brought back to life, servers MAY include an ETag on the delete response
+to allow version contention management when a resource is brought back to life.  -->
 </p>
 
 <h4>Условное удаление<!-- Conditional delete --></h4>
@@ -744,8 +748,7 @@ on how many matches are found: -->
  <li><b>Нет совпадений</b>: Сервер возвращает ошибку <code>404</code> Not found</li>
  <li><b>Одно совпадение</b>: Сервер выполняет обычную операцию <code>delete</code> над найденным ресурсом</li>
  <li><b>Несколько совпадений</b>: Сервер возвращает ошибку <code>412</code> Precondition Failed, означающую, что критерии клиента не были достаточно селективными.
-   A server indicates whether it can delete multiple resources in its <a href="conformance-definitions.html#Conformance.rest.resource.conditionalDelete">Conformance Statement (.rest.resource.conditionalDelete)</a>.
-   if there are multiple matches, either all must deleted, or the server SHALL return an error</li>
+ Сервер указывает, может ли он удалять сразу несколько ресурсов в своём <a href="conformance-definitions.html#Conformance.rest.resource.conditionalDelete">заявлении о соответствии (.rest.resource.conditionalDelete)</a>. Если есть несколько совпадений, то либо все должны быть удалены, либо сервер ДОЛЖЕН вернуть ошибку</li>
 <!--  <li><b>No matches</b>: The server returns <code>404</code> Not found</li>
  <li><b>One Match</b>: The server performs an ordinary <code>delete</code> on the matching resource</li>
  <li><b>Multiple matches</b>: Servers may choose to delete all the matching resources, or it may choose to return a <code>412</code> Precondition Failed error indicating the client's criteria were not selective enough.
@@ -759,9 +762,10 @@ a resource on a  server, without having to remember the logical ids that the ser
 For example, a client deleting a lab atomic result might delete the resource using <code>DELETE /Observation?identifier=http://my-lab-system|123</code>. -->
 </p>
 <p>
-Note that transactions and conditional create/update/delete are complex interactions and it is 
+Отметьте, что транзакции и условные операции create/update/delete являются комплексными взаимодействиями, и не предполагается, что каждый сервер будет их реализовывать. Серверы, которые не поддерживают условное обновление, должны возвращать HTTP-код ошибки <code>400</code> и результат операции.
+<!-- Note that transactions and conditional create/update/delete are complex interactions and it is 
 not expected that every server will implement them. Servers that don't support the conditional 
-delete should return an HTTP <code>400</code> error and an operation outcome.
+delete should return an HTTP <code>400</code> error and an operation outcome. -->
 </p>
 
 <a name="create"> </a>
@@ -856,7 +860,8 @@ a FHIR search query in an <code>If-None-Exist</code> header as shown: -->
   If-None-Exist: [search parameters]
 </pre>
 <p>
-The parameter just contains the search parameters (what would be in the URL  following the "?").
+Этот параметр просто содержит параметры поиска (которые будут в URL следовать за "?").
+<!-- The parameter just contains the search parameters (what would be in the URL  following the "?"). -->
 </p>
 <p>
 Когда сервер обрабатывает это обновление, он выполняет поиск, как указано, используя свои стандартные <a href="search.html">средства поиска</a> по типу ресурса. Следующее действие сервера зависит от того, сколько совпадений было найдено:
@@ -879,9 +884,10 @@ creating duplicate resources for the same record. For example, a client posting 
 <code>If-None-Exist: identifier=http://my-lab-system|123</code> to ensure it is does not create a duplicate record. -->
 </p>
 <p>
-Note that transactions and conditional create/update/delete are complex interactions and it is 
+Отметьте, что транзакции и условные операции create/update/delete являются комплексными взаимодействиями, и не ожидается, что они будут реализованы всеми серверами. Серверы, которые не поддерживают условное обновление, должны возвращать HTTP-код ошибки <code>400</code> и результат операции.
+<!-- Note that transactions and conditional create/update/delete are complex interactions and it is 
 not expected that every server will implement them. Servers that don't support the conditional 
-create should return an HTTP <code>412</code> error and an operation outcome.
+create should return an HTTP <code>412</code> error and an operation outcome. -->
 </p>
 
 
@@ -916,13 +922,15 @@ are a series of <code>name=value</code> pairs encoded in the URL (or as an <code
 </p>
 <blockquote>
 <p>
-Note: <code>application/x-www-form-urlencoded</code> is supported for <code>POST</code> so that invoking a search by <code>GET</code> or <code>POST</code> can be 
+Примечание: <code>application/x-www-form-urlencoded</code> поддерживается для команды <code>POST</code>, чтобы вызов поиска с помощью <code>GET</code> или <code>POST</code> можно было выполнять из HTML-форм в браузере (при этом может потребоваться существенное активное содержимое в браузере), хотя это и не является основным его применением.
+<!-- Note: <code>application/x-www-form-urlencoded</code> is supported for <code>POST</code> so that invoking a search by <code>GET</code> or <code>POST</code> can be 
 done from HTML forms in a browser (though considerable active content might be required in the browser), although
-this is not the main usage. 
+this is not the main usage.  -->
 </p>
 </blockquote>
 <p>
-Searches are processed as specified for the <a href="search.html">Search handling mechanism</a>.
+Операции поиска обрабатываются так, как указано для <a href="search.html">механизма обработки поиска</a>.
+<!-- Searches are processed as specified for the <a href="search.html">Search handling mechanism</a>. -->
 </p>
 <p>
 Если поиск не удается выполнить, возвращается код состояния вида 4xx или 5xx наряду с ресурсом <a href="operationoutcome.html">OperationOutcome</a>. 
@@ -941,7 +949,7 @@ mode</a> of <code>include</code>. -->
 <a name="vsearch"> </a>
 <h4>Variant Searches</h4>
 <p>
-Для поиска <a href="compartmentdefinition.htmls">логического модуля (compartment)</a> либо всех возможных ресурсов, либо только определенного типа, соответственно:
+Для поиска <a href="compartmentdefinition.htmls">логического модуля (compartment)</a> для всех возможных ресурсов либо только определённого типа, соответственно:
 <!-- To search a <a href="compartmentdefinition.htmls">compartment</a>, for either all possible resources or for a particular resource type, respectively: -->
 </p>
 <pre>
@@ -949,7 +957,7 @@ mode</a> of <code>include</code>. -->
   GET [base]/[Compartment]/[id]/[type]{?[parameters]{&amp;_format=[mime-type]}}
 </pre>
 <p>
-Например, чтобы получить все ресурсы observation для конкретного LOINC-кода, связанного с конкретным encounter:
+Например чтобы получить все ресурсы observation для конкретного LOINC-кода, связанного с конкретным случаем обслуживания:
 <!-- For example, to retrieve all the observation resources for a particular LOINC code associated with a particular encounter: -->
 </p>
 <pre>
@@ -1040,11 +1048,13 @@ a Provenance resource and its corresponding target resource, or, on document rep
 document index entry and its accompanying document). -->
 </p>
 <p>
-Note that transactions and conditional create/update/delete are complex interactions and it is 
-not expected that every server will implement them.
+Отметьте, что транзакции и условные операции create/update/delete являются комплексными взаимодействиями, и не ожидается, что они будут реализованы всеми серверами.
+<!-- Note that transactions and conditional create/update/delete are complex interactions and it is 
+not expected that every server will implement them. -->
 </p>
 <p>
-A <code>batch</code> or <code>transaction</code> interaction is performed by an HTTP <code>POST</code> command as shown:
+Операции <code>batch</code> и <code>transaction</code> выполняются HTTP-командой <code>POST</code>, как показано ниже:
+<!-- A <code>batch</code> or <code>transaction</code> interaction is performed by an HTTP <code>POST</code> command as shown: -->
 </p>
 <pre>
   POST [base] {?_format=[mime-type]}
@@ -1074,33 +1084,40 @@ and <a href="#transactional-integrity">transactional integrity</a>. -->
  <li><a href="bundle-response.html">Matching Response</a></li>
 </ul>
 
-<h4>Batch Processing Rules</h4>
+<h4>Правила обработки пакетов<!-- Batch Processing Rules --></h4>
 <p>
-For a <code>batch</code>, there SHALL be no interdependencies between the different entries
+Для <code>batch</code> НЕ ДОЛЖНО быть взаимных зависимостей между различными записями (entries) в Bundle. Успех или неудача одной записи НЕ ДОЛЖНЫ влиять на успех, неудачу или полученное в результате выполнения содержимое других записей. Серверы ДОЛЖНЫ подтверждать, что это именно так. Отметьте, что считается, что серверы выполняют пакетную обработку в том же порядке, как указано ниже для транзакций, хотя порядок выполнения не должен иметь значения, учитывая предыдущее правило.
+<!-- For a <code>batch</code>, there SHALL be no interdependencies between the different entries
 in the Bundle. The success or failure of one entry SHALL not alter the success or failure
 or resulting content of another. Servers SHALL validate that this is the case. 
 Note that it is considered that servers execute the batch in the same order as 
 that specified below for transactions, though the order of execution should not 
-matter given the previous rule.
+matter given the previous rule. -->
 </p>
-<h4>Transaction Processing Rules</h4>
+<h4>Правила обработки транзакций<!-- Transaction Processing Rules --></h4>
 <p>
-For a <code>transaction</code>, servers SHALL either accept all actions and return a <code>200</code> OK, along with a
+Для <code>transaction</code> серверы ДОЛЖНЫ либо принять все действия и вернуть HTTP-код <code>200</code> OK наряду с бандлом-ответом (см. ниже), либо отклонить все ресурсы и вернуть HTTP-тип ответа <code>400</code> или <code>500</code>. Не будет ошибкой, если поданный бандл не содержит в себе ресурсов. Результат обработки транзакции НЕ ДОЛЖЕН зависеть от порядка ресурсов в этой транзакции. Ресурс может появляться в транзакции только один раз (по идентичности).
+<!-- For a <code>transaction</code>, servers SHALL either accept all actions and return a <code>200</code> OK, along with a
 response bundle (see below), or reject all resources and return an HTTP <code>400</code> or <code>500</code> type
 response. It is not an error if the submitted bundle has no resources in it.
 The outcome of the processing the transaction SHALL NOT depend on the order
 of the resources in the transaction. A resource can only appear in a transaction
-once (by identity).
+once (by identity). -->
 </p>
 <p>
-Because of the rules that a transaction is atomic where all actions pass or fail
-together and the order of the entries doesn't matter, there is a particular order in which to process the actions:
+Из-за правила, что транзакция является атомарной операцией, в которой все действия либо проходят, либо падают, и порядок записей не имеет значения, имеется определённый порядок обработки этих действий:
+<!-- Because of the rules that a transaction is atomic where all actions pass or fail
+together and the order of the entries doesn't matter, there is a particular order in which to process the actions: -->
 </p>
 <ol>
- <li>Process any <code>DELETE</code> interactions</li>
+ <li>Обработать все операции <code>DELETE</code></li>
+ <li>Обработать все операции <code>POST</code></li>
+ <li>Обработать все операции <code>PUT</code></li>
+ <li>Обработать все операции <code>GET</code></li>
+<!--  <li>Process any <code>DELETE</code> interactions</li>
  <li>Process any <code>POST</code> interactions</li>
  <li>Process any <code>PUT</code> interactions</li>
- <li>Process any <code>GET</code> interactions</li>
+ <li>Process any <code>GET</code> interactions</li> -->
 </ol>
 <p>
 Если какие-либо идентификаторы ресурсов (в том числе установленные идентификаторы из условного обновления/удаления) перекрываются в этапах 1-3, то транзакция ДОЛЖНА упасть (не выполниться).
@@ -1110,18 +1127,19 @@ then the transaction SHALL fail.  -->
 <blockquote class="dstu-note">
 <a name="dstu-2"> </a>
 <p>
-<b>DSTU Note:</b>  clients are able to request that operations be executed as part of a transaction. 
+<b>Примечание к DSTU:</b> клиенты могут запрашивать выполнение операций в рамках транзакции. Некоторые транзакции могут вызывать побочные эффекты, например создание новых ресурсов или другие действия, которые может быть трудно вписать в фреймворк транзакции. Мы ожидаем входных данных касательно этой проблемы во время периода DSTU.
+<!-- <b>DSTU Note:</b>  clients are able to request that operations be executed as part of a transaction. 
 Some transactions can cause side effects, such as the creation of new resources or other 
 actions that may be difficult to fit into a transaction framework. Input regarding this 
-issue is sought during the DSTU period.
+issue is sought during the DSTU period. -->
 </p>
 <p>
-Provide feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+Страничка для размещения ваших <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывов</a>.
 </p>
 </blockquote>
  
 <p>
-Транзакция может содержать ссылки от одного ресурса на другой в комплекте, включая циклические ссылки, где ресурсы ссылаются друг на друга. Если сервер назначает новый идентификатор какому-то ресурсу в комплекте в рамках правил обработки, описанных выше, он ДОЛЖЕН также обновить все ссылки на этот ресурс в этом же комплекте, когда они будут обрабатываться. Ссылки на ресурсы, не являющиеся частью этого комплекта, остаются нетронутыми. Ссылки на конкретные версии должны остаться ссылками на конкретные версии после обновления ссылок. Серверы ДОЛЖНЫ заменить все соответствующие ссылки в комплекте, включая идентификаторы ресурсов, ссылки на ресурсы, URL-элементы и атрибуты тегов &lt;a href="" &amp; &lt;img src="" в описательной части.
+Транзакция может содержать ссылки из одного ресурса на другой в бандле, включая циклические ссылки, где ресурсы ссылаются друг на друга. Если сервер назначает новый идентификатор какому-то ресурсу в комплекте в рамках правил обработки, описанных выше, он ДОЛЖЕН также обновить все ссылки на этот ресурс в этом же бандле, когда они будут обрабатываться. Ссылки на ресурсы, не являющиеся частью этого комплекта, остаются нетронутыми. Ссылки на конкретные версии должны остаться ссылками на конкретные версии после обновления ссылок. Серверы ДОЛЖНЫ заменить все соответствующие ссылки в бандле, включая идентификаторы ресурсов, ссылки на ресурсы, URL-элементы и атрибуты тегов &lt;a href="" &amp; &lt;img src="" в описательной части.
 <!-- A transaction may include references from one resource to another in the bundle, including
 circular references where resources refer to each other. If the server assigns
 a new id to any resource in the bundle as part of the processing rules above,
@@ -1133,43 +1151,46 @@ Servers SHALL replace all matching links in the bundle, whether they are found i
 resource references, url elements, or <code>&lt;a href="" &amp; &lt;img src=""</code> in the narrative. -->
 </p>
 <p>
-When processing a "POST" (create), the full URL is treated as the id of the resource on the 
+При обработке команды "POST" (create) полный URL рассматривается в качестве идентификатора (id) ресурса в источнике и игнорируется; сервер генерирует идентификатор id для этого ресурса. Для операций обновления сервер выполняет мэппинг между указанным fullUrl и локальным URL, под которым серверу известен этот экземпляр, если это представляется возможным. Если у сервера нет соответствия для fullUrl, то сервер игнорирует базовый URL и пытается выполнить обновление, полагая, что базовый адрес совпадает с базовым адресом сервера. Это позволяет отправлять один и тот же бандл-транзакцию в несколько систем без необходимости изменения fullUrl для каждого адресата.
+<!-- When processing a "POST" (create), the full URL is treated as the id of the resource on the 
 source, and is ignored; the server generates an id for the resource. For updates, 
 the server performs a mapping between the fullUrl specified and the local URL the server 
 knows that instance as, if possible. If the server does not have a mapping for the fullUrl, 
 the server ignores the base URL and attempts an update assuming the base is the same 
 as the server base.  This allows the same transaction bundle to be sent to multiple systems 
-without changing the fullUrls for each target.
+without changing the fullUrls for each target. -->
 </p>
 <p>
-When processing a batch or transaction, a server MAY choose to honor existing 
+При обработке пакета или транзакции сервер МОЖЕТ по желанию учитывать существующие локальные идентификаторы (например <code>Observation/1234</code> остаётся <code>Observation/1234</code> на сервере), однако поскольку это <a href="#upsert">безопасно только в регулируемых обстоятельствах</a>, серверы по желанию могут присваивать новые идентификаторы всем подаваемым ресурсам независимо от любых заявленных логических <code>id</code> в ресурсе или <code>fullUrl</code> в записях в пакете/транзакции.
+<!-- When processing a batch or transaction, a server MAY choose to honor existing 
 logical ids (e.g. <code>Observation/1234</code> remains as <code>Observation/1234</code> on the server), but 
 since this is only <a href="#upsert">safe in controlled circumstances</a>, servers
 may choose to assign new ids to all submitted resources, irrespective of any claimed
-logical <code>id</code> in the resource, or <code>fullUrl</code> on entries in the batch/transaction.
+logical <code>id</code> in the resource, or <code>fullUrl</code> on entries in the batch/transaction. -->
 </p>
 <blockquote class="dstu-note">
 <a name="dstu-2a"> </a>
 <p>
-<b>Note:</b> this behavior is subject to verification based on implementation experience and may change.
+<b>Примечание:</b> эта модель поведения подлежит проверке на основе опыта реализации и может меняться.
+<!-- <b>Note:</b> this behavior is subject to verification based on implementation experience and may change. -->
 </p>
 </blockquote>
 
 
 
 <a name="transaction-response"> </a>
-<h4>Batch/Transaction Response</h4>
+<h4>Ответ на пакет/транзакцию<!-- Batch/Transaction Response --></h4>
 
 <p>
-For a batch, or a successful transaction, the response the server SHALL 
+Для пакета (batch) или успешной транзакции сервер в качестве ответа ДОЛЖЕН вернуть <a href="bundle.html">Bundle</a> с <a href="bundle-definitions.html#Bundle.type">типом</a> <code>batch-response</code> или <code>transaction-response</code>, который содержит по одной записи для каждой записи в запросе в том же самом порядке с результатом обработки этой записи. Для неудавшейся транзакции сервер возвращает один <a href="operationoutcome.html">OperationOutcome</a> вместо Bundle.
+<!-- For a batch, or a successful transaction, the response the server SHALL 
 return a <a href="bundle.html">Bundle</a> with <a href="bundle-definitions.html#Bundle.type">type</a> 
 set to <code>batch-response</code> or <code>transaction-response</code> that contains one entry for each entry in the
 request, in the same order, with the outcome of processing the entry. For a failed transaction,
-the server returns a single <a href="operationoutcome.html">OperationOutcome</a> instead of a Bundle.
+the server returns a single <a href="operationoutcome.html">OperationOutcome</a> instead of a Bundle. -->
 </p>
 <p>
-A client may use the return bundled to track the outcomes of processing the entry, 
-and the identities assigned to the resources by the server. Каждый элемент entry ДОЛЖЕН содержать элемент <code>transactionResponse</code>, который детализирует результат обработки этой записи - HTTP статус-код и значения заголовков location и <code>ETag</code>, которые используются для идентификации и версионирования ресурсов. Кроме того, в entry может быть включен ресурс.
+Клиент может использовать возвращённый бандл для отслеживания результатов обработки записи и идентификаторов, присвоенных ресурсам сервером. Каждый элемент entry ДОЛЖЕН содержать элемент <code>transactionResponse</code>, который детализирует результат обработки этой записи - HTTP статус-код и значения заголовков location и <code>ETag</code>, которые используются для идентификации и версионирования ресурсов. Кроме того, в entry может быть включен ресурс.
 <!-- A client may use the return bundled to track the outcomes of processing the entry, 
 and the identities assigned to the resources by the server. Each entry element SHALL 
 contain a <code>response</code> element which details the outcome of processing the 
@@ -1180,10 +1201,10 @@ may be included in the entry, as specified by the <a href="#prefer">Prefer</a> h
 
 
 <a name="other-bundles"> </a>
-<h4>Прием bundle других типов<!-- Accepting Other bundle types --></h4>
+<h4>Прием бандлов других типов<!-- Accepting Other bundle types --></h4>
 
 <p>
-Сервер может принимать и другие типы bundle, кроме <code>transaction</code>, в качестве транзакций.
+Сервер может принимать и другие типы бандлов помимо <code>transaction</code> в качестве транзакций.
 <!-- A server may choose to accept bundle types other than <code>batch</code> or <code>transaction</code> when <code>POST</code>ed to the [base] URL. -->
 </p>
 <p>
@@ -1221,8 +1242,11 @@ interaction are performed by HTTP <code>GET</code> command as shown: -->
   GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 </pre>
 <p>
-Возвращаемым содержимым будет <a href="bundle.html">Bundle</a> с <a href="bundle-definitions.html#Bundle.type">типом</a> <code>history</code>, содержащий указанную историю версий, сортированную таким образом, что старые версии идут последними, и включающую удаленные ресурсы.
-The return content is a <a href="bundle.html">Bundle</a> with
+Возвращаемым содержимым будет <a href="bundle.html">Bundle</a> с <a href="bundle-definitions.html#Bundle.type">типом</a> <code>history</code>, содержащий указанную историю версий, упорядоченную таким образом, что самые старые версии идут последними, и включающий удалённые ресурсы.
+Каждая запись ДОЛЖНА содержать как минимум <code>resource</code>, в котором лежит ресурс, полученный в результате этой операции, либо <code>request</code> с <code>entry.request.method</code>.
+<code>request</code> предоставляет информацию о произведённой операции, которая привела к созданию новой версии, и позволяет, к примеру, системе-подписчику различать операции create и update.
+Основная причина, по которой <code>resource</code> может отсутствовать, состоит в том, что ресурс был изменён каким-то другим каналом, а не через RESTful-интерфейс. Если в <code>entry.request.method</code> указан метод <code>PUT</code> или <code>POST</code>, то такая запись ДОЛЖНА содержать ресурс.
+<!-- The return content is a <a href="bundle.html">Bundle</a> with
 <a href="bundle-definitions.html#Bundle.type">type</a> set to <code>history</code> containing the 
 specified version history, sorted with oldest versions last, and including deleted resources.
 Each entry SHALL minimally contain either a <code>resource</code> which holds the resource as 
@@ -1232,21 +1256,20 @@ cause the new version, and allows, for instance, subscriber system to differenti
 create and update interactions. The principal reason a <code>resource</code> might be missing 
 is that the resource was changed by some other channel rather than via the RESTful interface. If 
 the <code>entry.request.method</code> is a <code>PUT</code> or a <code>POST</code>, the entry 
-SHALL contain a resource.
+SHALL contain a resource. -->
 </p>
 <p>
-Операции <a href="#create">create</a>, <a href="#update">update</a> и <a href="#delete">delete</a> создают записи в истории. Другие операции - нет (обратите внимание, что эти операции могут создавать побочные эффекты, такие как новые ресурсы AuditEvent; они представляются в виде операций create сами по себе).
-
-Операция create представляется в истории операций следующим образом:
-The interactions <a href="#create"><code>create</code></a>, <a href="#update"><code>update</code></a>, and <a href="#delete"><code>delete</code></a>
+Операции <a href="#create"><code>create</code></a>, <a href="#update"><code>update</code></a> и <a href="#delete"><code>delete</code></a> создают записи в истории. Другие операции - нет (обратите внимание, что эти операции могут создавать побочные эффекты, такие как новые ресурсы AuditEvent; они представляются в виде операций create сами по себе). Новые ресурсы или обновления существующих ресурсов, вызываемые операциями, также появляются в истории, как и обнволения ресурсов, которые являются результатом операций вне области действия RESTful-интерфейса.
+<!-- The interactions <a href="#create"><code>create</code></a>, <a href="#update"><code>update</code></a>, and <a href="#delete"><code>delete</code></a>
 create history entries. Other interactions do not (note that these operations may produce side-effects
 such as new AuditEvent resources; these are represented as create interactions in their own right).
 New resources or updates to existing resources that are triggered by operations also appear in the 
 history, as do updates to the resources that result from interactions outside the scope of the
-RESTful interface.
+RESTful interface. -->
 </p>
 <p>
-A create interaction is represented in a history interaction in the following way:
+Операция create представляется в истории операций следующим образом:
+<!-- A create interaction is represented in a history interaction in the following way: -->
 </p>
 <pre class="xml">
   &lt;entry&gt;
@@ -1276,9 +1299,10 @@ updates and deletes in a history list. -->
 <table class="list">
   <tr><td><code>_count</code> : <a href="datatypes.html#integer"><code>integer</code></a></td><td>single</td><td>Требуемое количество возвращаемых записей. Сервер не обязан вернуть именно столько записей, но не может вернуть большее количество</td></tr>
   <tr><td><code>_since</code> : <a href="datatypes.html#integer"><code>instant</code></a></td><td>single</td><td>Включить только те версии ресурсов, которые были созданы в или после указанного времени</td></tr>
+  <tr><td><code>_at</code> : <a href="datatypes.html#integer"><code>dateTime</code></a></td><td>single</td><td> Включить только те версии ресурсов, которые были текущими в некоторый момент времени в течение периода, указанного в значении даты/времени (периодов может быть больше одного)</td></tr>
 <!--   <tr><td><code>_count</code> : <a href="datatypes.html#integer"><code>integer</code></a></td><td>single</td><td>Number of return records requested. The server is not bound to return the number requested, but cannot return more</td></tr>
   <tr><td><code>_since</code> : <a href="datatypes.html#integer"><code>instant</code></a></td><td>single</td><td>Only include resource versions that were created at or after the given instant in time</td></tr> -->
-  <tr><td><code>_at</code> : <a href="datatypes.html#integer"><code>dateTime</code></a></td><td>single</td><td>Only include resource versions that were current at some point during the time period specified in the date time value (may be more than one)</td></tr>
+  <!-- <tr><td><code>_at</code> : <a href="datatypes.html#integer"><code>dateTime</code></a></td><td>single</td><td>Only include resource versions that were current at some point during the time period specified in the date time value (may be more than one)</td></tr> -->
 </table>
 <p>
 Список истории можно ограничить некоторым периодом с помощью параметра <code>_since</code>, который содержит полную дату/время с указанием часового пояса. Клиенты должны понимать, что из-за неточности времени они могут получать уведомления об обновлении ресурсов on the boundary instant больше одного раза. 
@@ -1299,14 +1323,20 @@ to another, so that resources are synchronized between them. Refer to the <a hre
 for an alternate means of system synchronization. -->
 </p>
 <p>
-Additional Notes about maintaining a history of resources:
+Дополнительные примечания, касающиеся поддержки истории ресурсов:
+<!-- Additional Notes about maintaining a history of resources: -->
 </p>
 <ul>
- <li>The history is a record version history on a per-resource basis. It is not intended to support concurrent versions, or multi-branch version history</li>
+ <li>history - это история версий записей на поресурсной основе. Она не предназначена для поддержки параллельных (совпадающих, concurrent) версий или разветвлённой истории версий</li>
+ <li>Таким образом нет способа обновить или удалить предыдущие версии записи за исключением того, что <a href="resource-operations.html">можно изменить метаданные</a> (в основном в целях контроля доступа)</li>
+ <li>Все предыдущие версии ресурса считаются заменёнными (замещёнными новой версией) и больше не являются активными, однако сохраняются в целях аудита/обеспечения целостности</li>
+ <li>В случае, когда предыдущая версия ресурса должна быть явно задокументирована как введённая по ошибке (<a href="lifecycle.html#error">'entered-in-error'</a>), используйте ресурс Provenance, указывающий на эту предыдущую версию ресурса</li>
+ <li>При отслеживании истории конкретного ресурса, приложениям следует извлекать все ресурсы Provenance, связанные с этим ресурсом или его предыдущими версиями</li>
+<!--  <li>The history is a record version history on a per-resource basis. It is not intended to support concurrent versions, or multi-branch version history</li>
  <li>Accordingly, there is no way to update or delete past versions of the record, except that the <a href="resource-operations.html">metadata can be modified</a> (mainly for access control purposes)</li>
  <li>All past versions of a resource are considered to be superceded, and no longer active, but retained for audit/integrity purposes</li>
  <li>In the case that a past version of a resource needs to be explicitly documented as <a href="lifecycle.html#error">'entered-in-error'</a>, use as provenance resource pointing to the past version of the resource</li>
- <li>When tracing the history of a specific resource, applications should retrieve any provenance resources relating to the resource or it's past versions</li>
+ <li>When tracing the history of a specific resource, applications should retrieve any provenance resources relating to the resource or it's past versions</li> -->
 </ul>
 
 <a name="transactional-integrity"> </a>
@@ -1404,7 +1434,7 @@ a server to determine whether the client omitted the information
 because it wasn't supported (perhaps in this case) or whether it
 wishes to delete the information. -->
 </p>
-<h4>Conformance</h4>
+<h4>Обеспечение соответствия<!-- Conformance --></h4>
 <p>
 И клиентским, и серверным системам СЛЕДУЕТ четко документировать, 
 каким образом обеспечивается целостность транзакции.
@@ -1421,7 +1451,7 @@ resource. Feedback during the Trial use period on what - if any - of this inform
 should be computable is welcome. -->
 </p>
 <p>
-Provide feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+Страничка для размещения ваших <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывов</a>.
 </p>
 </blockquote>
 
