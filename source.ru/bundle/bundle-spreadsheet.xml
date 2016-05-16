@@ -10,7 +10,7 @@
   <LastAuthor>Lloyd</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2015-09-14T23:59:23Z</LastSaved>
-  <Version>16.00</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
@@ -1474,9 +1474,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">URL для HTTP-эквивалента этой записи<!-- URL for HTTP equivalent of this entry --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">URL for HTTP equivalent of this entry</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">URL для этой записи относительно корня (адрес, по которому размещается запрос)<!-- The URL for this entry, relative to the root (the address to which the request is posted) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The URL for this entry, relative to the root (the address to which the request is posted)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Например для создания ресурса Patient метод будет &quot;POST&quot;, а URL будет &quot;Patient&quot;. Для обновления ресурса Patient метод будет PUT, а URL будет &quot;Patient/[id]&quot;<!-- E.g. for a Patient Create, the method would be &quot;POST&quot; and the URL would be &quot;Patient&quot;. For a Patient Update, the method would be PUT, and the URL would be &quot;Patient/[id]&quot; --></Data><NamedCell
@@ -1724,9 +1724,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Etag ресурса (если это уместно)<!-- The etag for the resource (if relevant) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The etag for the resource (if relevant)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Etag ресурса, если операция над записью привела к созданию версионированного ресурса<!-- The etag for the resource, it the operation for the entry produced a versioned resource --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The etag for the resource, it the operation for the entry produced a versioned resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Должен совпадать с version id в заголовке, если ресурс включён [в ответ]<!-- This has to match the version id in the header if a resource is included --></Data><NamedCell
@@ -3942,8 +3942,8 @@
    <Column ss:StyleID="s101" ss:Width="55.5"/>
    <Column ss:StyleID="s101" ss:Width="165"/>
    <Column ss:StyleID="s101" ss:AutoFitWidth="0" ss:Width="204.75"/>
-   <Column ss:StyleID="s101" ss:AutoFitWidth="0" ss:Width="198.75"/>
-   <Column ss:StyleID="s101" ss:AutoFitWidth="0" ss:Width="188.25"/>
+   <Column ss:StyleID="s101" ss:AutoFitWidth="0" ss:Width="297"/>
+   <Column ss:StyleID="s101" ss:AutoFitWidth="0" ss:Width="266.25"/>
    <Column ss:StyleID="s101" ss:AutoFitWidth="0" ss:Width="260.25"/>
    <Column ss:Index="11" ss:StyleID="s101" ss:AutoFitWidth="0" ss:Width="216.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75" ss:StyleID="s70">
@@ -3982,7 +3982,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">total</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">total только для бандлов типа поиск или история<!-- total only when a search or history --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">total only when a search or history</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">total.empty() or (type = 'searchset') or (type = 'history')</Data></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">not(f:total) or (f:type/@value = 'searchset') or (f:type/@value = 'history')</Data></Cell>
    </Row>
@@ -3992,7 +3992,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.search</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">entry.search только для бандлов типа поиск<!-- entry.search only when a search --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">entry.search only when a search</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.search.empty() or (type = 'searchset')</Data></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">not(f:entry/f:search) or (f:type/@value = 'searchset')</Data></Cell>
    </Row>
@@ -4002,7 +4002,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.request</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">entry.request только для некоторых типов бандлов<!-- entry.request only for some types of bundles --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">entry.request only for some types of bundles</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.request.empty() or type = 'batch' or type = 'transaction' or type = 'history'</Data></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">not(f:entry/f:request) or (f:type/@value = 'batch') or (f:type/@value = 'transaction') or (f:type/@value = 'history')</Data></Cell>
    </Row>
@@ -4012,7 +4012,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.response</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">entry.response только для некоторых типов бандлов<!-- entry.response only for some types of bundles --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">entry.response only for some types of bundles</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.response.empty() or type = 'batch-response' or type = 'transaction-response'</Data></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">not(f:entry/f:response) or (f:type/@value = 'batch-response') or (f:type/@value = 'transaction-response')</Data></Cell>
    </Row>
@@ -4023,8 +4023,8 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle.entry</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">должно быть ресурсом, если только это не запрос или ответ<!-- must be a resource unless there's a request or response --></Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">resource or request or response</Data></Cell>
-    <Cell ss:StyleID="s106"><Data ss:Type="String">f:resource or f:request or f:response</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">resource.exists() or request.exists() or response.exists()</Data></Cell>
+    <Cell ss:StyleID="s106"><Data ss:Type="String">exists(f:resource) or exists(f:request) or exists(f:response)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell ss:StyleID="s105"><Data ss:Type="Number">6</Data><NamedCell
@@ -4042,7 +4042,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">fullUrl must be unique except for versioning</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Bundle</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">FullUrl должен быть уникальным в бандле, в противном случае записи с одинаковыми fullUrl должны иметь различные meta.versionId<!-- FullUrl must be unique in a bundle, or else entries with the same fullUrl must have different meta.versionId --></Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">FullUrl must be unique in a bundle, or else entries with the same fullUrl must have different meta.versionId</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">entry.where(fullUrl).select(fullUrl&amp;resource.meta.versionId).isDistinct()</Data></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String">count(for $entry in f:entry[f:resource] return $entry[count(parent::f:Bundle/f:entry[f:fullUrl/@value=$entry/f:fullUrl/@value and ((not(f:resource/*/f:meta/f:versionId/@value) and not($entry/f:resource/*/f:meta/f:versionId/@value)) or f:resource/*/f:meta/f:versionId/@value=$entry/f:resource/*/f:meta/f:versionId/@value)])!=1])=0</Data></Cell>
    </Row>
@@ -4395,8 +4395,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -6554,7 +6553,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s149"><Data ss:Type="String">HTTPVerb</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">HTTP-методы (в командной строке HTTP).<!-- HTTP verbs (in the HTTP command line). --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">HTTP verbs (in the HTTP command line).</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#http-verb</Data></Cell>

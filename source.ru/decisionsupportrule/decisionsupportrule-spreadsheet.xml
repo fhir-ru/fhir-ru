@@ -11,7 +11,7 @@
   <LastAuthor>Bryn</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2016-02-17T16:57:03Z</LastSaved>
-  <Version>15.00</Version>
+  <Version>16.00</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <WorkbookGuid dt:dt="string">52714b8f-bb4c-43f9-add8-76ad4227964b</WorkbookGuid>
@@ -20,11 +20,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>7995</WindowHeight>
-  <WindowWidth>19245</WindowWidth>
+  <WindowHeight>14010</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>4</ActiveSheet>
+  <ActiveSheet>7</ActiveSheet>
   <FirstVisibleSheet>2</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
@@ -1066,7 +1066,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">&quot;Когда&quot; это правило должно вызываться<!-- &quot;when&quot; the rule should be invoked --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">&quot;when&quot; the rule should be invoked</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Элемент trigger определяет, когда это правило должно вызываться. Эта информация используется потребителями этого правила для определения, каким образом интегрировать это правило в конкретный рабочий процесс<!-- The trigger element defines when the rule should be invoked. This information is used by consumers of the rule to determine how to integrate the rule into a specific workflow --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1097,7 +1097,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">&quot;Если&quot; некоторое условие выполняется<!-- &quot;if&quot; some condition is true --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">&quot;if&quot; some condition is true</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Элемент condition описывает &quot;условную&quot;часть правила, которая определяет, должно или не должно &quot;сработать&quot;. правило. Условие должно быть именем выражения в исходной библиотеке.<!-- The condition element describes he &quot;if&quot; portion of the rule that determines whether or not the rule &quot;fires&quot;. The condition must be the name of an expression in a referenced library. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1128,7 +1128,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">&quot;Тогда&quot; выполнить эти действия<!-- &quot;then&quot; perform these actions --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">&quot;then&quot; perform these actions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Элемент action задаёт ту часть правила, которая определяет, какие действия должны быть выполнены, если вычисление условия даёт истину<!-- The action element defines the &quot;when&quot; portion of the rule that determines what actions should be performed if the condition evaluates to true --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4544,7 +4544,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -5218,8 +5217,9 @@
    <Column ss:StyleID="s137" ss:Width="27.75"/>
    <Column ss:StyleID="s137" ss:Width="327.75"/>
    <Column ss:StyleID="s137" ss:Width="57"/>
-   <Column ss:StyleID="s137" ss:Width="205.5" ss:Span="1"/>
-   <Column ss:Index="7" ss:StyleID="s137" ss:Width="39.75"/>
+   <Column ss:StyleID="s137" ss:AutoFitWidth="0" ss:Width="400.5"/>
+   <Column ss:StyleID="s137" ss:Width="205.5"/>
+   <Column ss:StyleID="s137" ss:Width="39.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s101"><Data ss:Type="String">Name</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -5265,7 +5265,7 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s141"><Data ss:Type="String">CMS9CDS01</Data></Cell>
+    <Cell ss:StyleID="s141"><Data ss:Type="String">!CMS9CDS01</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Exclusive Breastfeeding Intervention 01</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">decisionsupportrule-exclusive-breastfeeding-intervention-01</Data></Cell>
@@ -5274,7 +5274,7 @@
     <Cell ss:StyleID="s142"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s141"><Data ss:Type="String">CMS9CDS02</Data></Cell>
+    <Cell ss:StyleID="s141"><Data ss:Type="String">!CMS9CDS02</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Exclusive Breastfeeding Intervention 02</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">decisionsupportrule-exclusive-breastfeeding-intervention-02</Data></Cell>
@@ -5283,7 +5283,7 @@
     <Cell ss:StyleID="s142"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s141"><Data ss:Type="String">CMS9CDS03</Data></Cell>
+    <Cell ss:StyleID="s141"><Data ss:Type="String">!CMS9CDS03</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Exclusive Breastfeeding Intervention 03</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">decisionsupportrule-exclusive-breastfeeding-intervention-03</Data></Cell>
@@ -5292,7 +5292,7 @@
     <Cell ss:StyleID="s142"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s141"><Data ss:Type="String">CMS9CDS04</Data></Cell>
+    <Cell ss:StyleID="s141"><Data ss:Type="String">!CMS9CDS04</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Exclusive Breastfeeding Intervention 04</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">decisionsupportrule-exclusive-breastfeeding-intervention-04</Data></Cell>
@@ -5615,12 +5615,13 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>2</LeftColumnRightPane>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -5628,15 +5629,14 @@
     </Pane>
     <Pane>
      <Number>1</Number>
-     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

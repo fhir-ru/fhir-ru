@@ -10,7 +10,7 @@
   <LastAuthor>Lloyd</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2016-03-26T19:55:07Z</LastSaved>
-  <Version>16.00</Version>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
@@ -1507,7 +1507,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор, уникальный в пределах ресурса Questionnaire, позволяющий связывать эквивалентные пункты с ресурсом QuestionnaireResponse.<!-- An identifier that is unique within the Questionnaire allowing linkage to the equivalent item in a QuestionnaireResponse resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">[[[QuestionnaireResponse]]] не требует включать опущенные пункты и может иметь некоторые повторяющиеся элементы, поэтому связь на основе одной лишь позиции не является достаточной.<!-- [[[QuestionnaireResponse]]] does not require omitted items to be included and may have some items that repeat, so linkage based on position alone is not sufficient. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">[[[QuestionnaireResponse]]] does not require omitted items to be included and may have some items that repeat, so linkage based on position alone is not sufficient.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Может быть опущено, если не предполагается связывать ответы с вопросником. Это может быть значимым идентификатором (например LOINC-кодом), но не обязательно должно иметь какой-то смысл. Здесь подходит использовать GUID'ы и последовательную нумерацию.<!-- May be omitted if there is no expectation to link answers back to a Questionnaire.  This ''can'' be a meaningful identifier (e.g. a LOINC code) but is not intended to have any meaning.  GUIDs or sequential numbers are appropriate here. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1574,7 +1574,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Например &quot;1(a)&quot;, &quot;2.5.3&quot;<!-- E.g. &quot;1(a)&quot;, &quot;2.5.3&quot; --></Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">E.g. &quot;1(a)&quot;, &quot;2.5.3&quot;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Краткий заголовок конкретной группы, вопроса или текста для отображения в вопроснике<!-- A short label for a particular group, question or set of display text within the questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1676,7 +1676,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Данные разрешены только когда:<!-- Only allow data when: --></Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Only allow data when:</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Если присутствует, указывает на то, что этот пункт должен быть доступен (отображён/разрешен ввод ответов), только если заданное условие истинно<!-- If present, indicates that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4279,7 +4279,7 @@
     <Cell ss:StyleID="s92"/>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Questionnaire.item.enableWhen</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">enableWhen must contain either an 'answer' or an 'answered' element</Data></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">hasAnswer or answer</Data></Cell>
+    <Cell ss:StyleID="s92"><Data ss:Type="String">hasAnswer.exists() xor answer.exists()</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">count(*[starts-with(local-name(.), 'answer')]|answered) = 1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -4698,8 +4698,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

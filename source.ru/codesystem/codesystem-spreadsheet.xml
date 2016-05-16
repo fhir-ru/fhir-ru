@@ -16,12 +16,12 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6900</WindowHeight>
-  <WindowWidth>2910</WindowWidth>
+  <WindowHeight>4980</WindowHeight>
+  <WindowWidth>7470</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
   <TabRatio>893</TabRatio>
-  <ActiveSheet>2</ActiveSheet>
+  <ActiveSheet>7</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -1637,7 +1637,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Являются ли определения постоянными<!-- If definitions are not stable --> </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">If definitions are not stable </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Этот флаг используется для обозначения, что кодовая система не поддерживает определения, и при ссылке на эту кодовую систему необходимо указывать версию<!-- This flag is used to signify that the code system has not (or does not) maintain the definitions, and a version must be specified when referencing this code system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2007,7 +2007,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">code | Coding | string | integer | boolean | dateTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип значения свойства<!-- The type of the property value --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of the property value </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2204,7 +2204,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Естественный язык обозначения<!-- Human language of the designation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Язык, для которого определено это обозначение<!-- The language this designation is defined for --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The language this designation is defined for </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Если язык не указан, то применяется язык ресурса<!-- In the absence of a language, the resource language applies --></Data><NamedCell
@@ -2269,9 +2269,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Текстовое значение для этого обозначения<!-- The text value for this designation --> </Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The text value for this designation </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Текстовое значение для этого обозначения<!-- The text value for this designation --> </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The text value for this designation </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4873,7 +4873,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -5022,10 +5021,10 @@
     <Cell ss:StyleID="s121"><Data ss:Type="String">Язык, на котором даны обозначения<!-- A language in which a designation is provided --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">content</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s120"/>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">CodeSystem.content</Data></Cell>
     <Cell ss:StyleID="s121"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5407,7 +5406,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">Coding</Data></Cell>
     <Cell ss:StyleID="s120"/>
     <Cell ss:StyleID="s120"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A code that details how this designation would be used</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, описывающий, каким образом будет использоваться это обозначение<!-- A code that details how this designation would be used --></Data></Cell>
     <Cell ss:StyleID="s132"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -6614,11 +6613,11 @@
     <Cell ss:StyleID="s143"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell ss:StyleID="s142"><Data ss:Type="String">RESTful Interactions</Data></Cell>
+    <Cell ss:StyleID="s142"/>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The set of interactions defined by the RESTful part of the FHIR specification</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">restful-interaction</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">codesystem-restful-interaction.xml</Data></Cell>
+    <Cell ss:StyleID="s88"/>
+    <Cell ss:StyleID="s87"/>
+    <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s143"/>
    </Row>
@@ -6955,6 +6954,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -6975,7 +6975,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>3</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

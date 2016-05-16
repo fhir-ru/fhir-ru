@@ -1593,7 +1593,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Позволяет улавливать такие вещи, как &quot;none exist&quot; или &quot;not asked&quot;, что может быть важно для многих списков<!-- Allows capturing things like &quot;none exist&quot; or &quot;not asked&quot; which can be important for most lists --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Различные причины, почему список пустой, в значительной степени влияют на его интерпретацию. Обратите внимание, что этот код используется, когда весь список пустой, а не когда опущены отдельные пункты в нём - реализаторы могут рассмотреть для таких случаев вариант использования текстового примечания или флага для записи<!-- The various reasons for an empty list make a significant interpretation to its interpretation. Note that this code is for use when the entire list has been suppressed, and not for when individual items are omitted - implementers may consider using a text note or a flag on an entry in these cases --> </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The various reasons for an empty list make a significant interpretation to its interpretation. Note that this code is for use when the entire list has been suppressed, and not for when individual items are omitted - implementers may consider using a text note or a flag on an entry in these cases </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.inboundRelationship[typeCode=SUBJ,code&lt;{ListEmptyReason}].value[type=CD]</Data><NamedCell
@@ -4493,7 +4493,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">notes</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s88"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">List.note</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">List.note.text</Data></Cell>
     <Cell ss:StyleID="s120"/>
    </Row>
    <Row ss:AutoFitHeight="0">
