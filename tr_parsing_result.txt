@@ -1,0 +1,259 @@
+
+*** Parsing file claim-spreadsheet.xml
+Looking for claim, pre-determination or pre-authorization
+Looking for a provider issued list of services and products provided, or to be provided, to a patient which is provided to an insurer for payment recovery.
+Looking for the category of claim
+Looking for affects which fields and value sets are used
+Looking for the category of claim this is
+Looking for finer grained claim type information
+Looking for a finer grained suite of claim subtype codes which may convey inpatient vs outpatient and/or a specialty service. in the us the billtype.
+Looking for this may contain the local bill type codes such as the us ub-04 bill type code.
+Looking for claim number
+Looking for the business identifier for the instance: claim number, pre-determination or pre-authorization number.
+Looking for the business identifier for the instance: invoice number, claim number, pre-determination or pre-authorization number.
+Looking for current specification followed
+Looking for the version of the specification on which this instance relies.
+Looking for original specification followed
+Looking for the version of the specification from which the original instance was created.
+Looking for creation date
+Looking for the date when the enclosed suite of services were performed or completed
+Looking for period for charge submission
+Looking for the billable period for which charges are being submitted.
+Looking for insurer
+Looking for insurer identifier, typical bin number (6 digit).
+Looking for responsible provider
+Looking for the provider which is responsible for the bill, claim pre-determination, pre-authorization.
+Looking for responsible organization
+Looking for the organization which is responsible for the bill, claim pre-determination, pre-authorization.
+Looking for complete (bill or claim), proposed (pre-authorization), exploratory (pre-determination).
+Looking for desired processing priority
+Looking for immediate (stat), best effort (normal), deferred (defer)
+Looking for funds requested to be reserved
+Looking for in the case of a pre-determination/pre-authorization the provider may request that funds in the amount of the expected benefit be reserved ('patient' or 'provider') to pay for the benefits determined on the subsequent claim(s). 'none' explicitly indicates no funds reserving is requested.
+Looking for author
+Looking for person who created the invoice/claim/pre-determination or pre-authorization.
+Looking for servicing facility
+Looking for facility where the services were provided.
+Looking for related claims which may be revelant to processing this claimn
+Looking for other claims which are related to this claim such as prior claim versions or for related services.
+Looking for reference to the related claim
+Looking for do we need a relationship code?
+Looking for how the reference claim is related
+Looking for for example prior or umbrella.
+Looking for related file or case reference
+Looking for an alternate organizational reference to the case or file to which this particular claim pertains - eg property/casualy insurer claim # or workers compensation case # .
+Looking for prescription
+Looking for prescription to support the dispensing of pharmacy or vision products.
+Looking for for type=pharmacy and vision only.
+Looking for should we create a group to hold multiple prescriptions and add a sequence number and on the line items a link to the sequence. 
+Looking for original prescription
+Looking for original prescription which has been superceded by this prescription to support the dispensing of pharmacy services, medications or products.
+Looking for party to be paid any benefits payable
+Looking for the party to be reimbursed for the services.
+Looking for type of party: subscriber, provider, other
+Looking for type of party to be reimbursed: subscriber, provider, other.
+Looking for party to receive the payable
+Looking for party to be reimbursed: subscriber, provider, other.
+Looking for provider who is the payee
+Looking for the provider who is to be reimbursed for the claim (the party to whom any benefit is assigned)
+Looking for organization who is the payee
+Looking for the organization who is to be reimbursed for the claim (the party to whom any benefit is assigned)
+Looking for other person who is the payee
+Looking for the person other than the subscriber who is to be reimbursed for the claim (the party to whom any benefit is assigned)
+Looking for treatment referral
+Looking for the referral resource which lists the date, practitioner, reason and other supporting information.
+Looking for occurrence codes
+Looking for occurrence span codes
+Looking for value codes
+Looking for diagnosis
+Looking for ordered list of patient diagnosis for which care is sought. 
+Looking for number to covey order of diagnosis
+Looking for sequence of diagnosis which serves to order and provide a link.
+Looking for required to maintain order of the diagnoses.
+Looking for patient's list of diagnosis
+Looking for the diagnosis.
+Looking for required to adjudicate services rendered to condition presented.
+Looking for procedures performed
+Looking for ordered list of patient procedures performed to support the adjudication. 
+Looking for procedure sequence for reference
+Looking for sequence of procedures which serves to order and provide a link.
+Looking for required to maintain order of the procudures.
+Looking for date and optionally time the procedure was performed .
+Looking for required to adjudicate services rendered.
+Looking for patient's list of procedures performed
+Looking for the procedure code.
+Looking for list of special conditions
+Looking for list of special conditions relating to the setting, treatment or patient  for which care is sought which may influence the adjudication. 
+Looking for the subject of the products and services
+Looking for patient resource
+Looking for insurance or medical plan
+Looking for financial instrument by which payment information for health care
+Looking for health care programs and insurers are significant payors of health service costs
+Looking for service instance identifier
+Looking for a service line item.
+Looking for to maintain order of the coverages.
+Looking for is the focal coverage
+Looking for the instance number of the coverage which is the focus for adjudication. the coverage against which the claim is to be adjudicated.
+Looking for to identify which coverage is being adjudicated.
+Looking for insurance information
+Looking for reference to the program or plan identification, underwriter or payor.
+Looking for need to identify the issuer to target for processing and for coordination of benefit processing.
+Looking for business agreement 
+Looking for the contract number of a business agreement which describes the terms and conditions.
+Looking for patient relationship to subscriber
+Looking for the relationship of the patient to the subscriber
+Looking for to determine relationship between the patient and the subscriber
+Looking for pre-authorization/determination reference
+Looking for a list of references from the insurer to which these services pertain.
+Looking for to provide any pre=determination or prior authorization reference.
+Looking for adjudication results
+Looking for the coverages adjudication details.
+Looking for used by downstream payers to determine what balance remains and the net payable.
+Looking for original version
+There is partial match
+Original version
+OriginalBusinessVersion
+Исходная версия
+----------------------------
+Looking for the style (standard) and version of the original material which was converted into this resource.
+Looking for knowledge of the original version can inform the processing of this instance so that information which is processable by the originating system may be generated.
+Looking for eligibility exceptions
+Looking for factors which may influence the applicability of coverage.
+Looking for to determine extenuating circumstances for coverage 
+Looking for name of school
+Looking for often required for over-age dependents
+Looking for when the accident occurred
+Looking for date of an accident which these services are addressing.
+Looking for coverage may be dependant on accidents.
+Looking for the nature of the accident
+Looking for type of accident: work, auto, etc.
+Looking for coverage may be dependant on the type of accident.
+Looking for accident place
+Looking for intervention and exception code (pharma)
+Looking for a list of intervention and exception codes which may influence the adjudication of the claim.
+Looking for coverage may be modified based on exception information provided.
+Looking for condition related onset related dates and codes
+Looking for period, start and last dates of aspects of the condition or related services
+Looking for illness, injury or treatable condition date
+Looking for the start or start and end dates for the treatable condition.
+Looking for onset of what
+Looking for onset typifications eg. start of pregnancy, start of illnes, etc.
+Looking for date related to the condition or services for example last exam date.
+Looking for type of related event
+Looking for nature of the related event eg. last exam, service, xray etc.
+Looking for period unable to work
+Looking for the start and optional end dates of when the patient was precluded from working due to the treatable condition(s)
+Looking for period in hospital
+Looking for the start and optional end dates of when the patient was confined to a treatment center
+Looking for goods and services
+Looking for first tier of goods and services
+Looking for service instance
+Looking for a service line number.
+Looking for group or type of product or service
+Looking for the type of product or service.
+Looking for responsible practitioner
+Looking for the practitioner who is responsible for the services rendered to the patient
+Looking for supervising practitioner
+Looking for the practitioner who is supervising the work of the servicing provider(s).
+Looking for type, classification or specialization
+Looking for the qualification which is applicable for this service.
+Looking for applicable diagnoses
+Looking for diagnosis applicable for this service or product line.
+Looking for item code
+Looking for if a grouping item then 'group' otherwise it is a node therefore a code to indicate the professional service or product supplied.
+Looking for service/product modifiers
+Looking for unusual circumstances which may influence adjudication.
+Looking for may impact on adjudication.
+Looking for service/product billing modifiers
+Looking for item typification or modifiers codes, eg for oral whether the treatment is cosmetic or associated with tmj, or an appliance was lost or stolen.
+Looking for program specific reason for item inclusion
+Looking for for programs which require reson codes for the inclusion, covering, of this billed item under the program or sub-program.
+Looking for date or dates of service
+Looking for the date or dates when the enclosed suite of services were performed or completed
+Looking for place of service
+Looking for where the service was provided
+Looking for count of products or services
+Looking for the number of repetitions of a service or product.
+Looking for fee, charge or cost per point
+Looking for if the item is a node then this is the fee for the product or service, otherwise this is the total of the fees for the children of the group. 
+Looking for price scaling factor
+Looking for a real number that represents a multiplier used in determining the overall value of services delivered and/or goods received. the concept of a factor allows for a discount or surcharge multiplier to be applied to a monetary amount. 
+Looking for if a fee is present the associated product/service code must be present
+Looking for difficulty scaling factor
+Looking for an amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the good or service delivered. the concept of points allows for assignment of point values for services and/or goods, such that a monetary amount can be assigned to each point.
+Looking for total item cost
+Looking for the quantity times the unit price for an addittional service or product or charge. for example, the formula: unit quantity * unit price (cost per point) * factor number  * points = net amount. quantity, factor and points are assumed to be 1 if not supplied.
+Looking for unique device identifier
+Looking for list of unique device identifiers associated with this line item.
+Looking for the udi code and issuer if applicable for the supplied product.
+Looking for service location
+Looking for physical service site on the patient (limb, tooth, etc).
+Looking for service sub-location
+Looking for a region or surface of the site, eg. limb region or tooth surface(s).
+Looking for additional items
+Looking for second tier of goods and services
+Looking for additional item codes
+Looking for total additional item cost
+Looking for third tier of goods and services
+Looking for type of product or service
+Looking for the fee for an addittional service or product or charge.
+Looking for net additional item cost
+Looking for total claim cost
+Looking for the total value of the claim.
+Looking for prosthetic details
+Looking for is this the initial service
+Looking for indicates whether this is the initial placement of a fixed prosthesis.
+Looking for initial service date
+Looking for date of the initial placement.
+Looking for prosthetic material
+Looking for material of the prior denture or bridge prosthesis. (oral)
+Looking for additional supporting materials and documents
+Looking for code to indicate that xrays, images, emails, documents, models or attachments are being sent in support of this submission.
+Looking for the practitioner who is supervising the work of the serviceing provider(s).
+Looking for only if type = oral
+Looking for a list of teeth which would be expected but are not found due to having been previously  extracted or for other reasons.
+Looking for the list of missing teeth may influence the adjudication of services for example with bridges.
+Looking for tooth code
+Looking for the code identifying which tooth is missing.
+Looking for provides the tooth number of the missing tooth.
+Looking for indicates whether it was extracted or other reason
+Looking for missing reason may be: e-extraction, o-other
+Looking for provides the reason for the missing tooth.
+Looking for date tooth was extracted if known
+Looking for the date of the extraction either known from records or patient reported estimate.
+Looking for some services and adjudications require this information.
+Looking for the primary identifier of the financial resource
+Looking for the kind of financial resource
+Looking for processing priority requested
+Looking for patient receiving the services
+Looking for provider responsible for the claim
+Looking for the creation date for the claim
+Looking for the target payor/insurer for the claim
+Looking for the reference to the providing organization
+Looking for facility responsible for the goods and services
+Looking for type of accident: work place, auto, etc.
+Looking for the eligibility exception codes.
+Looking for icd10 diagnostic codes
+Looking for intervention and exception codes (pharm)
+Looking for reason codes for the missing teeth
+Looking for item type or modifiers codes, eg for oral whether the treatment is cosmetic or associated with tmj, or an appliance was lost or stolen.
+Looking for the code for the teeth, quadrant, sextant and arch
+Looking for a code for the party to be reimbursed.
+Looking for allowable service and product codes
+Looking for complete, proposed, exploratory, other
+Looking for the code for the tooth surface and surface combinations
+Looking for service, product, rx dispense, rx compound etc.
+Looking for group, service, product.
+Looking for the codes for the teeth, subset of oralsites
+Looking for the timeliness with which processing is required: stat, normal, deferred
+Looking for patient conditions and symptoms
+Looking for the type or discipline-style of the claim
+Looking for a more granulat claim typecode
+Looking for relationship of this claim to a related claim
+Looking for occurrence codes
+Looking for occurrence span codes
+Looking for value code
+Looking for provider professional qualifications
+Looking for factors which may influce adjudication of services
+Looking for program specific reason codes
+Looking for condition related start, end  and period codes
