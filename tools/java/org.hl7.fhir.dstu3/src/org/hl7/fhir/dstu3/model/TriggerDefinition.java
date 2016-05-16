@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -76,7 +76,7 @@ public class TriggerDefinition extends Type implements ICompositeType {
          */
         DATAACCESSENDED, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static TriggerType fromCode(String codeString) throws FHIRException {
@@ -96,7 +96,10 @@ public class TriggerDefinition extends Type implements ICompositeType {
           return DATAACCESSED;
         if ("data-access-ended".equals(codeString))
           return DATAACCESSENDED;
-        throw new FHIRException("Unknown TriggerType code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown TriggerType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -456,6 +459,38 @@ public class TriggerDefinition extends Type implements ICompositeType {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // Enumeration<TriggerType>
+        case 31228997: /*eventName*/ return this.eventName == null ? new Base[0] : new Base[] {this.eventName}; // StringType
+        case 125465476: /*eventTiming*/ return this.eventTiming == null ? new Base[0] : new Base[] {this.eventTiming}; // Type
+        case 30931300: /*eventData*/ return this.eventData == null ? new Base[0] : new Base[] {this.eventData}; // DataRequirement
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3575610: // type
+          this.type = new TriggerTypeEnumFactory().fromType(value); // Enumeration<TriggerType>
+          break;
+        case 31228997: // eventName
+          this.eventName = castToString(value); // StringType
+          break;
+        case 125465476: // eventTiming
+          this.eventTiming = (Type) value; // Type
+          break;
+        case 30931300: // eventData
+          this.eventData = castToDataRequirement(value); // DataRequirement
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("type"))
           this.type = new TriggerTypeEnumFactory().fromType(value); // Enumeration<TriggerType>
@@ -467,6 +502,18 @@ public class TriggerDefinition extends Type implements ICompositeType {
           this.eventData = castToDataRequirement(value); // DataRequirement
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3575610: throw new FHIRException("Cannot make property type as it is not a complex type"); // Enumeration<TriggerType>
+        case 31228997: throw new FHIRException("Cannot make property eventName as it is not a complex type"); // StringType
+        case 1120539260:  return getEventTiming(); // Type
+        case 30931300:  return getEventData(); // DataRequirement
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

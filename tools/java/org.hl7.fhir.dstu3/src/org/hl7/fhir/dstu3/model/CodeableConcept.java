@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -165,6 +165,30 @@ public class CodeableConcept extends Type implements ICompositeType {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -1355086998: /*coding*/ return this.coding == null ? new Base[0] : this.coding.toArray(new Base[this.coding.size()]); // Coding
+        case 3556653: /*text*/ return this.text == null ? new Base[0] : new Base[] {this.text}; // StringType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -1355086998: // coding
+          this.getCoding().add(castToCoding(value)); // Coding
+          break;
+        case 3556653: // text
+          this.text = castToString(value); // StringType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("coding"))
           this.getCoding().add(castToCoding(value));
@@ -172,6 +196,16 @@ public class CodeableConcept extends Type implements ICompositeType {
           this.text = castToString(value); // StringType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -1355086998:  return addCoding(); // Coding
+        case 3556653: throw new FHIRException("Cannot make property text as it is not a complex type"); // StringType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

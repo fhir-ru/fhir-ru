@@ -498,14 +498,14 @@
   Context = AuditEvent.entity
   English = Either an identifier or a reference, (or both)
   XPath = exists(f:identifier) or exists(f:reference)
-  Expression = identifier or reference
+  Expression = identifier.exists() or reference.exists()
 
  -- Row 3 -----------------------------------
   Id = !3
   Context = AuditEvent.agent
   English = Either a userId or a reference, (or both)
   XPath = exists(f:userId) or exists(f:reference)
-  Expression = userId or reference
+  Expression = userId.exists() or reference.exists()
 
 === Sheet Data Elements =====================================
 

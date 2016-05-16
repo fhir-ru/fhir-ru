@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -65,7 +65,7 @@ public class Narrative extends BaseNarrative implements INarrative {
          */
         EMPTY, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static NarrativeStatus fromCode(String codeString) throws FHIRException {
@@ -79,7 +79,10 @@ public class Narrative extends BaseNarrative implements INarrative {
           return ADDITIONAL;
         if ("empty".equals(codeString))
           return EMPTY;
-        throw new FHIRException("Unknown NarrativeStatus code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown NarrativeStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -273,11 +276,40 @@ public class Narrative extends BaseNarrative implements INarrative {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<NarrativeStatus>
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -892481550: // status
+          this.status = new NarrativeStatusEnumFactory().fromType(value); // Enumeration<NarrativeStatus>
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("status"))
           this.status = new NarrativeStatusEnumFactory().fromType(value); // Enumeration<NarrativeStatus>
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -892481550: throw new FHIRException("Cannot make property status as it is not a complex type"); // Enumeration<NarrativeStatus>
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -236,6 +236,38 @@ public class DecisionSupportServiceModule extends DomainResource {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 455891387: /*moduleMetadata*/ return this.moduleMetadata == null ? new Base[0] : new Base[] {this.moduleMetadata}; // ModuleMetadata
+        case -1059891784: /*trigger*/ return this.trigger == null ? new Base[0] : this.trigger.toArray(new Base[this.trigger.size()]); // TriggerDefinition
+        case 1954460585: /*parameter*/ return this.parameter == null ? new Base[0] : this.parameter.toArray(new Base[this.parameter.size()]); // ParameterDefinition
+        case 629147193: /*dataRequirement*/ return this.dataRequirement == null ? new Base[0] : this.dataRequirement.toArray(new Base[this.dataRequirement.size()]); // DataRequirement
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 455891387: // moduleMetadata
+          this.moduleMetadata = castToModuleMetadata(value); // ModuleMetadata
+          break;
+        case -1059891784: // trigger
+          this.getTrigger().add(castToTriggerDefinition(value)); // TriggerDefinition
+          break;
+        case 1954460585: // parameter
+          this.getParameter().add(castToParameterDefinition(value)); // ParameterDefinition
+          break;
+        case 629147193: // dataRequirement
+          this.getDataRequirement().add(castToDataRequirement(value)); // DataRequirement
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("moduleMetadata"))
           this.moduleMetadata = castToModuleMetadata(value); // ModuleMetadata
@@ -247,6 +279,18 @@ public class DecisionSupportServiceModule extends DomainResource {
           this.getDataRequirement().add(castToDataRequirement(value));
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 455891387:  return getModuleMetadata(); // ModuleMetadata
+        case -1059891784:  return addTrigger(); // TriggerDefinition
+        case 1954460585:  return addParameter(); // ParameterDefinition
+        case 629147193:  return addDataRequirement(); // DataRequirement
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

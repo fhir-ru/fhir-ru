@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -177,6 +177,30 @@ public class Binary extends BaseBinary implements IBaseBinary {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -389131437: /*contentType*/ return this.contentType == null ? new Base[0] : new Base[] {this.contentType}; // CodeType
+        case 951530617: /*content*/ return this.content == null ? new Base[0] : new Base[] {this.content}; // Base64BinaryType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -389131437: // contentType
+          this.contentType = castToCode(value); // CodeType
+          break;
+        case 951530617: // content
+          this.content = castToBase64Binary(value); // Base64BinaryType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("contentType"))
           this.contentType = castToCode(value); // CodeType
@@ -184,6 +208,16 @@ public class Binary extends BaseBinary implements IBaseBinary {
           this.content = castToBase64Binary(value); // Base64BinaryType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -389131437: throw new FHIRException("Cannot make property contentType as it is not a complex type"); // CodeType
+        case 951530617: throw new FHIRException("Cannot make property content as it is not a complex type"); // Base64BinaryType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

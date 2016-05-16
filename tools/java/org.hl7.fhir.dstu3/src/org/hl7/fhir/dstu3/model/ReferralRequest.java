@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -69,7 +69,7 @@ public class ReferralRequest extends DomainResource {
          */
         ENTEREDINERROR, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static ReferralStatus fromCode(String codeString) throws FHIRException {
@@ -85,7 +85,10 @@ public class ReferralRequest extends DomainResource {
           return COMPLETED;
         if ("entered-in-error".equals(codeString))
           return ENTEREDINERROR;
-        throw new FHIRException("Unknown ReferralStatus code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown ReferralStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -196,7 +199,7 @@ public class ReferralRequest extends DomainResource {
          */
         REQUEST, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static ReferralCategory fromCode(String codeString) throws FHIRException {
@@ -208,7 +211,10 @@ public class ReferralRequest extends DomainResource {
           return PLAN;
         if ("request".equals(codeString))
           return REQUEST;
-        throw new FHIRException("Unknown ReferralCategory code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown ReferralCategory code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -1163,6 +1169,94 @@ public class ReferralRequest extends DomainResource {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : this.identifier.toArray(new Base[this.identifier.size()]); // Identifier
+        case -332612366: /*basedOn*/ return this.basedOn == null ? new Base[0] : this.basedOn.toArray(new Base[this.basedOn.size()]); // Reference
+        case -995424086: /*parent*/ return this.parent == null ? new Base[0] : new Base[] {this.parent}; // Identifier
+        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<ReferralStatus>
+        case 50511102: /*category*/ return this.category == null ? new Base[0] : new Base[] {this.category}; // Enumeration<ReferralCategory>
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeableConcept
+        case -1165461084: /*priority*/ return this.priority == null ? new Base[0] : new Base[] {this.priority}; // CodeableConcept
+        case -791418107: /*patient*/ return this.patient == null ? new Base[0] : new Base[] {this.patient}; // Reference
+        case 951530927: /*context*/ return this.context == null ? new Base[0] : new Base[] {this.context}; // Reference
+        case 1098185163: /*fulfillmentTime*/ return this.fulfillmentTime == null ? new Base[0] : new Base[] {this.fulfillmentTime}; // Period
+        case 1433073514: /*authored*/ return this.authored == null ? new Base[0] : new Base[] {this.authored}; // DateTimeType
+        case 693933948: /*requester*/ return this.requester == null ? new Base[0] : new Base[] {this.requester}; // Reference
+        case -1694759682: /*specialty*/ return this.specialty == null ? new Base[0] : new Base[] {this.specialty}; // CodeableConcept
+        case 820081177: /*recipient*/ return this.recipient == null ? new Base[0] : this.recipient.toArray(new Base[this.recipient.size()]); // Reference
+        case -934964668: /*reason*/ return this.reason == null ? new Base[0] : new Base[] {this.reason}; // CodeableConcept
+        case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // StringType
+        case 190229561: /*serviceRequested*/ return this.serviceRequested == null ? new Base[0] : this.serviceRequested.toArray(new Base[this.serviceRequested.size()]); // CodeableConcept
+        case -1248768647: /*supportingInformation*/ return this.supportingInformation == null ? new Base[0] : this.supportingInformation.toArray(new Base[this.supportingInformation.size()]); // Reference
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -1618432855: // identifier
+          this.getIdentifier().add(castToIdentifier(value)); // Identifier
+          break;
+        case -332612366: // basedOn
+          this.getBasedOn().add(castToReference(value)); // Reference
+          break;
+        case -995424086: // parent
+          this.parent = castToIdentifier(value); // Identifier
+          break;
+        case -892481550: // status
+          this.status = new ReferralStatusEnumFactory().fromType(value); // Enumeration<ReferralStatus>
+          break;
+        case 50511102: // category
+          this.category = new ReferralCategoryEnumFactory().fromType(value); // Enumeration<ReferralCategory>
+          break;
+        case 3575610: // type
+          this.type = castToCodeableConcept(value); // CodeableConcept
+          break;
+        case -1165461084: // priority
+          this.priority = castToCodeableConcept(value); // CodeableConcept
+          break;
+        case -791418107: // patient
+          this.patient = castToReference(value); // Reference
+          break;
+        case 951530927: // context
+          this.context = castToReference(value); // Reference
+          break;
+        case 1098185163: // fulfillmentTime
+          this.fulfillmentTime = castToPeriod(value); // Period
+          break;
+        case 1433073514: // authored
+          this.authored = castToDateTime(value); // DateTimeType
+          break;
+        case 693933948: // requester
+          this.requester = castToReference(value); // Reference
+          break;
+        case -1694759682: // specialty
+          this.specialty = castToCodeableConcept(value); // CodeableConcept
+          break;
+        case 820081177: // recipient
+          this.getRecipient().add(castToReference(value)); // Reference
+          break;
+        case -934964668: // reason
+          this.reason = castToCodeableConcept(value); // CodeableConcept
+          break;
+        case -1724546052: // description
+          this.description = castToString(value); // StringType
+          break;
+        case 190229561: // serviceRequested
+          this.getServiceRequested().add(castToCodeableConcept(value)); // CodeableConcept
+          break;
+        case -1248768647: // supportingInformation
+          this.getSupportingInformation().add(castToReference(value)); // Reference
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("identifier"))
           this.getIdentifier().add(castToIdentifier(value));
@@ -1202,6 +1296,32 @@ public class ReferralRequest extends DomainResource {
           this.getSupportingInformation().add(castToReference(value));
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -1618432855:  return addIdentifier(); // Identifier
+        case -332612366:  return addBasedOn(); // Reference
+        case -995424086:  return getParent(); // Identifier
+        case -892481550: throw new FHIRException("Cannot make property status as it is not a complex type"); // Enumeration<ReferralStatus>
+        case 50511102: throw new FHIRException("Cannot make property category as it is not a complex type"); // Enumeration<ReferralCategory>
+        case 3575610:  return getType(); // CodeableConcept
+        case -1165461084:  return getPriority(); // CodeableConcept
+        case -791418107:  return getPatient(); // Reference
+        case 951530927:  return getContext(); // Reference
+        case 1098185163:  return getFulfillmentTime(); // Period
+        case 1433073514: throw new FHIRException("Cannot make property authored as it is not a complex type"); // DateTimeType
+        case 693933948:  return getRequester(); // Reference
+        case -1694759682:  return getSpecialty(); // CodeableConcept
+        case 820081177:  return addRecipient(); // Reference
+        case -934964668:  return getReason(); // CodeableConcept
+        case -1724546052: throw new FHIRException("Cannot make property description as it is not a complex type"); // StringType
+        case 190229561:  return addServiceRequested(); // CodeableConcept
+        case -1248768647:  return addSupportingInformation(); // Reference
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

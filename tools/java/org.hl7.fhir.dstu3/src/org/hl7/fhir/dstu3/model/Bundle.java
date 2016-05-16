@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -86,7 +86,7 @@ public class Bundle extends Resource implements IBaseBundle {
          */
         COLLECTION, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static BundleType fromCode(String codeString) throws FHIRException {
@@ -110,7 +110,10 @@ public class Bundle extends Resource implements IBaseBundle {
           return SEARCHSET;
         if ("collection".equals(codeString))
           return COLLECTION;
-        throw new FHIRException("Unknown BundleType code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown BundleType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -261,7 +264,7 @@ public class Bundle extends Resource implements IBaseBundle {
          */
         OUTCOME, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static SearchEntryMode fromCode(String codeString) throws FHIRException {
@@ -273,7 +276,10 @@ public class Bundle extends Resource implements IBaseBundle {
           return INCLUDE;
         if ("outcome".equals(codeString))
           return OUTCOME;
-        throw new FHIRException("Unknown SearchEntryMode code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown SearchEntryMode code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -368,7 +374,7 @@ public class Bundle extends Resource implements IBaseBundle {
          */
         DELETE, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static HTTPVerb fromCode(String codeString) throws FHIRException {
@@ -382,7 +388,10 @@ public class Bundle extends Resource implements IBaseBundle {
           return PUT;
         if ("DELETE".equals(codeString))
           return DELETE;
-        throw new FHIRException("Unknown HTTPVerb code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown HTTPVerb code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -600,6 +609,30 @@ public class Bundle extends Resource implements IBaseBundle {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -554436100: /*relation*/ return this.relation == null ? new Base[0] : new Base[] {this.relation}; // StringType
+        case 116079: /*url*/ return this.url == null ? new Base[0] : new Base[] {this.url}; // UriType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -554436100: // relation
+          this.relation = castToString(value); // StringType
+          break;
+        case 116079: // url
+          this.url = castToUri(value); // UriType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("relation"))
           this.relation = castToString(value); // StringType
@@ -607,6 +640,16 @@ public class Bundle extends Resource implements IBaseBundle {
           this.url = castToUri(value); // UriType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -554436100: throw new FHIRException("Cannot make property relation as it is not a complex type"); // StringType
+        case 116079: throw new FHIRException("Cannot make property url as it is not a complex type"); // UriType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -962,6 +1005,46 @@ public class Bundle extends Resource implements IBaseBundle {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3321850: /*link*/ return this.link == null ? new Base[0] : this.link.toArray(new Base[this.link.size()]); // BundleLinkComponent
+        case -511251360: /*fullUrl*/ return this.fullUrl == null ? new Base[0] : new Base[] {this.fullUrl}; // UriType
+        case -341064690: /*resource*/ return this.resource == null ? new Base[0] : new Base[] {this.resource}; // Resource
+        case -906336856: /*search*/ return this.search == null ? new Base[0] : new Base[] {this.search}; // BundleEntrySearchComponent
+        case 1095692943: /*request*/ return this.request == null ? new Base[0] : new Base[] {this.request}; // BundleEntryRequestComponent
+        case -340323263: /*response*/ return this.response == null ? new Base[0] : new Base[] {this.response}; // BundleEntryResponseComponent
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3321850: // link
+          this.getLink().add((BundleLinkComponent) value); // BundleLinkComponent
+          break;
+        case -511251360: // fullUrl
+          this.fullUrl = castToUri(value); // UriType
+          break;
+        case -341064690: // resource
+          this.resource = castToResource(value); // Resource
+          break;
+        case -906336856: // search
+          this.search = (BundleEntrySearchComponent) value; // BundleEntrySearchComponent
+          break;
+        case 1095692943: // request
+          this.request = (BundleEntryRequestComponent) value; // BundleEntryRequestComponent
+          break;
+        case -340323263: // response
+          this.response = (BundleEntryResponseComponent) value; // BundleEntryResponseComponent
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("link"))
           this.getLink().add((BundleLinkComponent) value);
@@ -977,6 +1060,20 @@ public class Bundle extends Resource implements IBaseBundle {
           this.response = (BundleEntryResponseComponent) value; // BundleEntryResponseComponent
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3321850:  return addLink(); // BundleLinkComponent
+        case -511251360: throw new FHIRException("Cannot make property fullUrl as it is not a complex type"); // UriType
+        case -341064690: throw new FHIRException("Cannot make property resource as it is not a complex type"); // Resource
+        case -906336856:  return getSearch(); // BundleEntrySearchComponent
+        case 1095692943:  return getRequest(); // BundleEntryRequestComponent
+        case -340323263:  return getResponse(); // BundleEntryResponseComponent
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -1205,6 +1302,30 @@ public class Bundle extends Resource implements IBaseBundle {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3357091: /*mode*/ return this.mode == null ? new Base[0] : new Base[] {this.mode}; // Enumeration<SearchEntryMode>
+        case 109264530: /*score*/ return this.score == null ? new Base[0] : new Base[] {this.score}; // DecimalType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3357091: // mode
+          this.mode = new SearchEntryModeEnumFactory().fromType(value); // Enumeration<SearchEntryMode>
+          break;
+        case 109264530: // score
+          this.score = castToDecimal(value); // DecimalType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("mode"))
           this.mode = new SearchEntryModeEnumFactory().fromType(value); // Enumeration<SearchEntryMode>
@@ -1212,6 +1333,16 @@ public class Bundle extends Resource implements IBaseBundle {
           this.score = castToDecimal(value); // DecimalType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3357091: throw new FHIRException("Cannot make property mode as it is not a complex type"); // Enumeration<SearchEntryMode>
+        case 109264530: throw new FHIRException("Cannot make property score as it is not a complex type"); // DecimalType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -1625,6 +1756,46 @@ public class Bundle extends Resource implements IBaseBundle {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -1077554975: /*method*/ return this.method == null ? new Base[0] : new Base[] {this.method}; // Enumeration<HTTPVerb>
+        case 116079: /*url*/ return this.url == null ? new Base[0] : new Base[] {this.url}; // UriType
+        case 171868368: /*ifNoneMatch*/ return this.ifNoneMatch == null ? new Base[0] : new Base[] {this.ifNoneMatch}; // StringType
+        case -2061602860: /*ifModifiedSince*/ return this.ifModifiedSince == null ? new Base[0] : new Base[] {this.ifModifiedSince}; // InstantType
+        case 1692894888: /*ifMatch*/ return this.ifMatch == null ? new Base[0] : new Base[] {this.ifMatch}; // StringType
+        case 165155330: /*ifNoneExist*/ return this.ifNoneExist == null ? new Base[0] : new Base[] {this.ifNoneExist}; // StringType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -1077554975: // method
+          this.method = new HTTPVerbEnumFactory().fromType(value); // Enumeration<HTTPVerb>
+          break;
+        case 116079: // url
+          this.url = castToUri(value); // UriType
+          break;
+        case 171868368: // ifNoneMatch
+          this.ifNoneMatch = castToString(value); // StringType
+          break;
+        case -2061602860: // ifModifiedSince
+          this.ifModifiedSince = castToInstant(value); // InstantType
+          break;
+        case 1692894888: // ifMatch
+          this.ifMatch = castToString(value); // StringType
+          break;
+        case 165155330: // ifNoneExist
+          this.ifNoneExist = castToString(value); // StringType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("method"))
           this.method = new HTTPVerbEnumFactory().fromType(value); // Enumeration<HTTPVerb>
@@ -1640,6 +1811,20 @@ public class Bundle extends Resource implements IBaseBundle {
           this.ifNoneExist = castToString(value); // StringType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -1077554975: throw new FHIRException("Cannot make property method as it is not a complex type"); // Enumeration<HTTPVerb>
+        case 116079: throw new FHIRException("Cannot make property url as it is not a complex type"); // UriType
+        case 171868368: throw new FHIRException("Cannot make property ifNoneMatch as it is not a complex type"); // StringType
+        case -2061602860: throw new FHIRException("Cannot make property ifModifiedSince as it is not a complex type"); // InstantType
+        case 1692894888: throw new FHIRException("Cannot make property ifMatch as it is not a complex type"); // StringType
+        case 165155330: throw new FHIRException("Cannot make property ifNoneExist as it is not a complex type"); // StringType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -1964,6 +2149,38 @@ public class Bundle extends Resource implements IBaseBundle {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // StringType
+        case 1901043637: /*location*/ return this.location == null ? new Base[0] : new Base[] {this.location}; // UriType
+        case 3123477: /*etag*/ return this.etag == null ? new Base[0] : new Base[] {this.etag}; // StringType
+        case 1959003007: /*lastModified*/ return this.lastModified == null ? new Base[0] : new Base[] {this.lastModified}; // InstantType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -892481550: // status
+          this.status = castToString(value); // StringType
+          break;
+        case 1901043637: // location
+          this.location = castToUri(value); // UriType
+          break;
+        case 3123477: // etag
+          this.etag = castToString(value); // StringType
+          break;
+        case 1959003007: // lastModified
+          this.lastModified = castToInstant(value); // InstantType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("status"))
           this.status = castToString(value); // StringType
@@ -1975,6 +2192,18 @@ public class Bundle extends Resource implements IBaseBundle {
           this.lastModified = castToInstant(value); // InstantType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -892481550: throw new FHIRException("Cannot make property status as it is not a complex type"); // StringType
+        case 1901043637: throw new FHIRException("Cannot make property location as it is not a complex type"); // UriType
+        case 3123477: throw new FHIRException("Cannot make property etag as it is not a complex type"); // StringType
+        case 1959003007: throw new FHIRException("Cannot make property lastModified as it is not a complex type"); // InstantType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -2342,6 +2571,42 @@ public class Bundle extends Resource implements IBaseBundle {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // Enumeration<BundleType>
+        case 110549828: /*total*/ return this.total == null ? new Base[0] : new Base[] {this.total}; // UnsignedIntType
+        case 3321850: /*link*/ return this.link == null ? new Base[0] : this.link.toArray(new Base[this.link.size()]); // BundleLinkComponent
+        case 96667762: /*entry*/ return this.entry == null ? new Base[0] : this.entry.toArray(new Base[this.entry.size()]); // BundleEntryComponent
+        case 1073584312: /*signature*/ return this.signature == null ? new Base[0] : new Base[] {this.signature}; // Signature
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3575610: // type
+          this.type = new BundleTypeEnumFactory().fromType(value); // Enumeration<BundleType>
+          break;
+        case 110549828: // total
+          this.total = castToUnsignedInt(value); // UnsignedIntType
+          break;
+        case 3321850: // link
+          this.getLink().add((BundleLinkComponent) value); // BundleLinkComponent
+          break;
+        case 96667762: // entry
+          this.getEntry().add((BundleEntryComponent) value); // BundleEntryComponent
+          break;
+        case 1073584312: // signature
+          this.signature = castToSignature(value); // Signature
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("type"))
           this.type = new BundleTypeEnumFactory().fromType(value); // Enumeration<BundleType>
@@ -2355,6 +2620,19 @@ public class Bundle extends Resource implements IBaseBundle {
           this.signature = castToSignature(value); // Signature
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3575610: throw new FHIRException("Cannot make property type as it is not a complex type"); // Enumeration<BundleType>
+        case 110549828: throw new FHIRException("Cannot make property total as it is not a complex type"); // UnsignedIntType
+        case 3321850:  return addLink(); // BundleLinkComponent
+        case 96667762:  return addEntry(); // BundleEntryComponent
+        case 1073584312:  return getSignature(); // Signature
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 
 import org.hl7.fhir.instance.model.api.*;
@@ -2302,6 +2302,10 @@ public class Enumerations {
          */
         CONFORMANCE, 
         /**
+         * A record of a healthcare consumer’s privacy policy, which is in accordance with governing jurisdictional and organization privacy policies that grant or withhold consent:.
+         */
+        CONSENT, 
+        /**
          * A formal agreement between parties regarding the conduct of business, exchange of information or other matters.
          */
         CONTRACT, 
@@ -2362,7 +2366,7 @@ public class Enumerations {
          */
         DOCUMENTREFERENCE, 
         /**
-         * --- Abstract Type! ---A resource that includes narrative, extensions, and contained resources.
+         * A resource that includes narrative, extensions, and contained resources.
          */
         DOMAINRESOURCE, 
         /**
@@ -2377,6 +2381,10 @@ public class Enumerations {
          * An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.
          */
         ENCOUNTER, 
+        /**
+         * The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.
+         */
+        ENDPOINT, 
         /**
          * This resource provides the insurance enrollment details to the insurer regarding a specified coverage.
          */
@@ -2606,7 +2614,7 @@ public class Enumerations {
          */
         RELATEDPERSON, 
         /**
-         * --- Abstract Type! ---This is the base resource type for everything.
+         * This is the base resource type for everything.
          */
         RESOURCE, 
         /**
@@ -2834,6 +2842,8 @@ public class Enumerations {
           return CONDITION;
         if ("Conformance".equals(codeString))
           return CONFORMANCE;
+        if ("Consent".equals(codeString))
+          return CONSENT;
         if ("Contract".equals(codeString))
           return CONTRACT;
         if ("Coverage".equals(codeString))
@@ -2872,6 +2882,8 @@ public class Enumerations {
           return ELIGIBILITYRESPONSE;
         if ("Encounter".equals(codeString))
           return ENCOUNTER;
+        if ("Endpoint".equals(codeString))
+          return ENDPOINT;
         if ("EnrollmentRequest".equals(codeString))
           return ENROLLMENTREQUEST;
         if ("EnrollmentResponse".equals(codeString))
@@ -3101,6 +3113,7 @@ public class Enumerations {
             case CONCEPTMAP: return "ConceptMap";
             case CONDITION: return "Condition";
             case CONFORMANCE: return "Conformance";
+            case CONSENT: return "Consent";
             case CONTRACT: return "Contract";
             case COVERAGE: return "Coverage";
             case DATAELEMENT: return "DataElement";
@@ -3120,6 +3133,7 @@ public class Enumerations {
             case ELIGIBILITYREQUEST: return "EligibilityRequest";
             case ELIGIBILITYRESPONSE: return "EligibilityResponse";
             case ENCOUNTER: return "Encounter";
+            case ENDPOINT: return "Endpoint";
             case ENROLLMENTREQUEST: return "EnrollmentRequest";
             case ENROLLMENTRESPONSE: return "EnrollmentResponse";
             case EPISODEOFCARE: return "EpisodeOfCare";
@@ -3274,6 +3288,7 @@ public class Enumerations {
             case CONCEPTMAP: return "http://hl7.org/fhir/resource-types";
             case CONDITION: return "http://hl7.org/fhir/resource-types";
             case CONFORMANCE: return "http://hl7.org/fhir/resource-types";
+            case CONSENT: return "http://hl7.org/fhir/resource-types";
             case CONTRACT: return "http://hl7.org/fhir/resource-types";
             case COVERAGE: return "http://hl7.org/fhir/resource-types";
             case DATAELEMENT: return "http://hl7.org/fhir/resource-types";
@@ -3293,6 +3308,7 @@ public class Enumerations {
             case ELIGIBILITYREQUEST: return "http://hl7.org/fhir/resource-types";
             case ELIGIBILITYRESPONSE: return "http://hl7.org/fhir/resource-types";
             case ENCOUNTER: return "http://hl7.org/fhir/resource-types";
+            case ENDPOINT: return "http://hl7.org/fhir/resource-types";
             case ENROLLMENTREQUEST: return "http://hl7.org/fhir/resource-types";
             case ENROLLMENTRESPONSE: return "http://hl7.org/fhir/resource-types";
             case EPISODEOFCARE: return "http://hl7.org/fhir/resource-types";
@@ -3447,6 +3463,7 @@ public class Enumerations {
             case CONCEPTMAP: return "A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models.";
             case CONDITION: return "Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary.";
             case CONFORMANCE: return "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.";
+            case CONSENT: return "A record of a healthcare consumer’s privacy policy, which is in accordance with governing jurisdictional and organization privacy policies that grant or withhold consent:.";
             case CONTRACT: return "A formal agreement between parties regarding the conduct of business, exchange of information or other matters.";
             case COVERAGE: return "Financial instrument which may be used to pay for or reimburse health care products and services.";
             case DATAELEMENT: return "The formal description of a single piece of information that can be gathered and reported.";
@@ -3462,10 +3479,11 @@ public class Enumerations {
             case DIAGNOSTICREPORT: return "The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.";
             case DOCUMENTMANIFEST: return "A manifest that defines a set of documents.";
             case DOCUMENTREFERENCE: return "A reference to a document .";
-            case DOMAINRESOURCE: return "--- Abstract Type! ---A resource that includes narrative, extensions, and contained resources.";
+            case DOMAINRESOURCE: return "A resource that includes narrative, extensions, and contained resources.";
             case ELIGIBILITYREQUEST: return "This resource provides the insurance eligibility details from the insurer regarding a specified coverage and optionally some class of service.";
             case ELIGIBILITYRESPONSE: return "This resource provides eligibility and plan details from the processing of an Eligibility resource.";
             case ENCOUNTER: return "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.";
+            case ENDPOINT: return "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.";
             case ENROLLMENTREQUEST: return "This resource provides the insurance enrollment details to the insurer regarding a specified coverage.";
             case ENROLLMENTRESPONSE: return "This resource provides enrollment and plan details from the processing of an Enrollment resource.";
             case EPISODEOFCARE: return "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.";
@@ -3523,7 +3541,7 @@ public class Enumerations {
             case QUESTIONNAIRERESPONSE: return "A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.";
             case REFERRALREQUEST: return "Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organization.";
             case RELATEDPERSON: return "Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.";
-            case RESOURCE: return "--- Abstract Type! ---This is the base resource type for everything.";
+            case RESOURCE: return "This is the base resource type for everything.";
             case RISKASSESSMENT: return "An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.";
             case SCHEDULE: return "A container for slot(s) of time that may be available for booking appointments.";
             case SEARCHPARAMETER: return "A search parameter that defines a named search item that can be used to search/filter on a resource.";
@@ -3620,6 +3638,7 @@ public class Enumerations {
             case CONCEPTMAP: return "ConceptMap";
             case CONDITION: return "Condition";
             case CONFORMANCE: return "Conformance";
+            case CONSENT: return "Consent";
             case CONTRACT: return "Contract";
             case COVERAGE: return "Coverage";
             case DATAELEMENT: return "DataElement";
@@ -3639,6 +3658,7 @@ public class Enumerations {
             case ELIGIBILITYREQUEST: return "EligibilityRequest";
             case ELIGIBILITYRESPONSE: return "EligibilityResponse";
             case ENCOUNTER: return "Encounter";
+            case ENDPOINT: return "Endpoint";
             case ENROLLMENTREQUEST: return "EnrollmentRequest";
             case ENROLLMENTRESPONSE: return "EnrollmentResponse";
             case EPISODEOFCARE: return "EpisodeOfCare";
@@ -3871,6 +3891,8 @@ public class Enumerations {
           return FHIRAllTypes.CONDITION;
         if ("Conformance".equals(codeString))
           return FHIRAllTypes.CONFORMANCE;
+        if ("Consent".equals(codeString))
+          return FHIRAllTypes.CONSENT;
         if ("Contract".equals(codeString))
           return FHIRAllTypes.CONTRACT;
         if ("Coverage".equals(codeString))
@@ -3909,6 +3931,8 @@ public class Enumerations {
           return FHIRAllTypes.ELIGIBILITYRESPONSE;
         if ("Encounter".equals(codeString))
           return FHIRAllTypes.ENCOUNTER;
+        if ("Endpoint".equals(codeString))
+          return FHIRAllTypes.ENDPOINT;
         if ("EnrollmentRequest".equals(codeString))
           return FHIRAllTypes.ENROLLMENTREQUEST;
         if ("EnrollmentResponse".equals(codeString))
@@ -4215,6 +4239,8 @@ public class Enumerations {
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.CONDITION);
         if ("Conformance".equals(codeString))
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.CONFORMANCE);
+        if ("Consent".equals(codeString))
+          return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.CONSENT);
         if ("Contract".equals(codeString))
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.CONTRACT);
         if ("Coverage".equals(codeString))
@@ -4253,6 +4279,8 @@ public class Enumerations {
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.ELIGIBILITYRESPONSE);
         if ("Encounter".equals(codeString))
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.ENCOUNTER);
+        if ("Endpoint".equals(codeString))
+          return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.ENDPOINT);
         if ("EnrollmentRequest".equals(codeString))
           return new Enumeration<FHIRAllTypes>(this, FHIRAllTypes.ENROLLMENTREQUEST);
         if ("EnrollmentResponse".equals(codeString))
@@ -4554,6 +4582,8 @@ public class Enumerations {
         return "Condition";
       if (code == FHIRAllTypes.CONFORMANCE)
         return "Conformance";
+      if (code == FHIRAllTypes.CONSENT)
+        return "Consent";
       if (code == FHIRAllTypes.CONTRACT)
         return "Contract";
       if (code == FHIRAllTypes.COVERAGE)
@@ -4592,6 +4622,8 @@ public class Enumerations {
         return "EligibilityResponse";
       if (code == FHIRAllTypes.ENCOUNTER)
         return "Encounter";
+      if (code == FHIRAllTypes.ENDPOINT)
+        return "Endpoint";
       if (code == FHIRAllTypes.ENROLLMENTREQUEST)
         return "EnrollmentRequest";
       if (code == FHIRAllTypes.ENROLLMENTRESPONSE)
@@ -5045,6 +5077,10 @@ public class Enumerations {
          */
         CONFORMANCE, 
         /**
+         * A record of a healthcare consumer’s privacy policy, which is in accordance with governing jurisdictional and organization privacy policies that grant or withhold consent:.
+         */
+        CONSENT, 
+        /**
          * A formal agreement between parties regarding the conduct of business, exchange of information or other matters.
          */
         CONTRACT, 
@@ -5105,7 +5141,7 @@ public class Enumerations {
          */
         DOCUMENTREFERENCE, 
         /**
-         * --- Abstract Type! ---A resource that includes narrative, extensions, and contained resources.
+         * A resource that includes narrative, extensions, and contained resources.
          */
         DOMAINRESOURCE, 
         /**
@@ -5120,6 +5156,10 @@ public class Enumerations {
          * An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.
          */
         ENCOUNTER, 
+        /**
+         * The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.
+         */
+        ENDPOINT, 
         /**
          * This resource provides the insurance enrollment details to the insurer regarding a specified coverage.
          */
@@ -5349,7 +5389,7 @@ public class Enumerations {
          */
         RELATEDPERSON, 
         /**
-         * --- Abstract Type! ---This is the base resource type for everything.
+         * This is the base resource type for everything.
          */
         RESOURCE, 
         /**
@@ -5569,6 +5609,8 @@ public class Enumerations {
           return CONDITION;
         if ("Conformance".equals(codeString))
           return CONFORMANCE;
+        if ("Consent".equals(codeString))
+          return CONSENT;
         if ("Contract".equals(codeString))
           return CONTRACT;
         if ("Coverage".equals(codeString))
@@ -5607,6 +5649,8 @@ public class Enumerations {
           return ELIGIBILITYRESPONSE;
         if ("Encounter".equals(codeString))
           return ENCOUNTER;
+        if ("Endpoint".equals(codeString))
+          return ENDPOINT;
         if ("EnrollmentRequest".equals(codeString))
           return ENROLLMENTREQUEST;
         if ("EnrollmentResponse".equals(codeString))
@@ -5832,6 +5876,7 @@ public class Enumerations {
             case CONCEPTMAP: return "ConceptMap";
             case CONDITION: return "Condition";
             case CONFORMANCE: return "Conformance";
+            case CONSENT: return "Consent";
             case CONTRACT: return "Contract";
             case COVERAGE: return "Coverage";
             case DATAELEMENT: return "DataElement";
@@ -5851,6 +5896,7 @@ public class Enumerations {
             case ELIGIBILITYREQUEST: return "EligibilityRequest";
             case ELIGIBILITYRESPONSE: return "EligibilityResponse";
             case ENCOUNTER: return "Encounter";
+            case ENDPOINT: return "Endpoint";
             case ENROLLMENTREQUEST: return "EnrollmentRequest";
             case ENROLLMENTRESPONSE: return "EnrollmentResponse";
             case EPISODEOFCARE: return "EpisodeOfCare";
@@ -6003,6 +6049,7 @@ public class Enumerations {
             case CONCEPTMAP: return "http://hl7.org/fhir/resource-types";
             case CONDITION: return "http://hl7.org/fhir/resource-types";
             case CONFORMANCE: return "http://hl7.org/fhir/resource-types";
+            case CONSENT: return "http://hl7.org/fhir/resource-types";
             case CONTRACT: return "http://hl7.org/fhir/resource-types";
             case COVERAGE: return "http://hl7.org/fhir/resource-types";
             case DATAELEMENT: return "http://hl7.org/fhir/resource-types";
@@ -6022,6 +6069,7 @@ public class Enumerations {
             case ELIGIBILITYREQUEST: return "http://hl7.org/fhir/resource-types";
             case ELIGIBILITYRESPONSE: return "http://hl7.org/fhir/resource-types";
             case ENCOUNTER: return "http://hl7.org/fhir/resource-types";
+            case ENDPOINT: return "http://hl7.org/fhir/resource-types";
             case ENROLLMENTREQUEST: return "http://hl7.org/fhir/resource-types";
             case ENROLLMENTRESPONSE: return "http://hl7.org/fhir/resource-types";
             case EPISODEOFCARE: return "http://hl7.org/fhir/resource-types";
@@ -6174,6 +6222,7 @@ public class Enumerations {
             case CONCEPTMAP: return "A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models.";
             case CONDITION: return "Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary.";
             case CONFORMANCE: return "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.";
+            case CONSENT: return "A record of a healthcare consumer’s privacy policy, which is in accordance with governing jurisdictional and organization privacy policies that grant or withhold consent:.";
             case CONTRACT: return "A formal agreement between parties regarding the conduct of business, exchange of information or other matters.";
             case COVERAGE: return "Financial instrument which may be used to pay for or reimburse health care products and services.";
             case DATAELEMENT: return "The formal description of a single piece of information that can be gathered and reported.";
@@ -6189,10 +6238,11 @@ public class Enumerations {
             case DIAGNOSTICREPORT: return "The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.";
             case DOCUMENTMANIFEST: return "A manifest that defines a set of documents.";
             case DOCUMENTREFERENCE: return "A reference to a document .";
-            case DOMAINRESOURCE: return "--- Abstract Type! ---A resource that includes narrative, extensions, and contained resources.";
+            case DOMAINRESOURCE: return "A resource that includes narrative, extensions, and contained resources.";
             case ELIGIBILITYREQUEST: return "This resource provides the insurance eligibility details from the insurer regarding a specified coverage and optionally some class of service.";
             case ELIGIBILITYRESPONSE: return "This resource provides eligibility and plan details from the processing of an Eligibility resource.";
             case ENCOUNTER: return "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.";
+            case ENDPOINT: return "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.";
             case ENROLLMENTREQUEST: return "This resource provides the insurance enrollment details to the insurer regarding a specified coverage.";
             case ENROLLMENTRESPONSE: return "This resource provides enrollment and plan details from the processing of an Enrollment resource.";
             case EPISODEOFCARE: return "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.";
@@ -6250,7 +6300,7 @@ public class Enumerations {
             case QUESTIONNAIRERESPONSE: return "A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.";
             case REFERRALREQUEST: return "Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organization.";
             case RELATEDPERSON: return "Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.";
-            case RESOURCE: return "--- Abstract Type! ---This is the base resource type for everything.";
+            case RESOURCE: return "This is the base resource type for everything.";
             case RISKASSESSMENT: return "An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.";
             case SCHEDULE: return "A container for slot(s) of time that may be available for booking appointments.";
             case SEARCHPARAMETER: return "A search parameter that defines a named search item that can be used to search/filter on a resource.";
@@ -6345,6 +6395,7 @@ public class Enumerations {
             case CONCEPTMAP: return "ConceptMap";
             case CONDITION: return "Condition";
             case CONFORMANCE: return "Conformance";
+            case CONSENT: return "Consent";
             case CONTRACT: return "Contract";
             case COVERAGE: return "Coverage";
             case DATAELEMENT: return "DataElement";
@@ -6364,6 +6415,7 @@ public class Enumerations {
             case ELIGIBILITYREQUEST: return "EligibilityRequest";
             case ELIGIBILITYRESPONSE: return "EligibilityResponse";
             case ENCOUNTER: return "Encounter";
+            case ENDPOINT: return "Endpoint";
             case ENROLLMENTREQUEST: return "EnrollmentRequest";
             case ENROLLMENTRESPONSE: return "EnrollmentResponse";
             case EPISODEOFCARE: return "EpisodeOfCare";
@@ -6594,6 +6646,8 @@ public class Enumerations {
           return FHIRDefinedType.CONDITION;
         if ("Conformance".equals(codeString))
           return FHIRDefinedType.CONFORMANCE;
+        if ("Consent".equals(codeString))
+          return FHIRDefinedType.CONSENT;
         if ("Contract".equals(codeString))
           return FHIRDefinedType.CONTRACT;
         if ("Coverage".equals(codeString))
@@ -6632,6 +6686,8 @@ public class Enumerations {
           return FHIRDefinedType.ELIGIBILITYRESPONSE;
         if ("Encounter".equals(codeString))
           return FHIRDefinedType.ENCOUNTER;
+        if ("Endpoint".equals(codeString))
+          return FHIRDefinedType.ENDPOINT;
         if ("EnrollmentRequest".equals(codeString))
           return FHIRDefinedType.ENROLLMENTREQUEST;
         if ("EnrollmentResponse".equals(codeString))
@@ -6934,6 +6990,8 @@ public class Enumerations {
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.CONDITION);
         if ("Conformance".equals(codeString))
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.CONFORMANCE);
+        if ("Consent".equals(codeString))
+          return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.CONSENT);
         if ("Contract".equals(codeString))
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.CONTRACT);
         if ("Coverage".equals(codeString))
@@ -6972,6 +7030,8 @@ public class Enumerations {
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.ELIGIBILITYRESPONSE);
         if ("Encounter".equals(codeString))
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.ENCOUNTER);
+        if ("Endpoint".equals(codeString))
+          return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.ENDPOINT);
         if ("EnrollmentRequest".equals(codeString))
           return new Enumeration<FHIRDefinedType>(this, FHIRDefinedType.ENROLLMENTREQUEST);
         if ("EnrollmentResponse".equals(codeString))
@@ -7269,6 +7329,8 @@ public class Enumerations {
         return "Condition";
       if (code == FHIRDefinedType.CONFORMANCE)
         return "Conformance";
+      if (code == FHIRDefinedType.CONSENT)
+        return "Consent";
       if (code == FHIRDefinedType.CONTRACT)
         return "Contract";
       if (code == FHIRDefinedType.COVERAGE)
@@ -7307,6 +7369,8 @@ public class Enumerations {
         return "EligibilityResponse";
       if (code == FHIRDefinedType.ENCOUNTER)
         return "Encounter";
+      if (code == FHIRDefinedType.ENDPOINT)
+        return "Endpoint";
       if (code == FHIRDefinedType.ENROLLMENTREQUEST)
         return "EnrollmentRequest";
       if (code == FHIRDefinedType.ENROLLMENTRESPONSE)
@@ -7973,6 +8037,10 @@ public class Enumerations {
          */
         CONFORMANCE, 
         /**
+         * A record of a healthcare consumer’s privacy policy, which is in accordance with governing jurisdictional and organization privacy policies that grant or withhold consent:.
+         */
+        CONSENT, 
+        /**
          * A formal agreement between parties regarding the conduct of business, exchange of information or other matters.
          */
         CONTRACT, 
@@ -8033,7 +8101,7 @@ public class Enumerations {
          */
         DOCUMENTREFERENCE, 
         /**
-         * --- Abstract Type! ---A resource that includes narrative, extensions, and contained resources.
+         * A resource that includes narrative, extensions, and contained resources.
          */
         DOMAINRESOURCE, 
         /**
@@ -8048,6 +8116,10 @@ public class Enumerations {
          * An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.
          */
         ENCOUNTER, 
+        /**
+         * The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.
+         */
+        ENDPOINT, 
         /**
          * This resource provides the insurance enrollment details to the insurer regarding a specified coverage.
          */
@@ -8277,7 +8349,7 @@ public class Enumerations {
          */
         RELATEDPERSON, 
         /**
-         * --- Abstract Type! ---This is the base resource type for everything.
+         * This is the base resource type for everything.
          */
         RESOURCE, 
         /**
@@ -8395,6 +8467,8 @@ public class Enumerations {
           return CONDITION;
         if ("Conformance".equals(codeString))
           return CONFORMANCE;
+        if ("Consent".equals(codeString))
+          return CONSENT;
         if ("Contract".equals(codeString))
           return CONTRACT;
         if ("Coverage".equals(codeString))
@@ -8433,6 +8507,8 @@ public class Enumerations {
           return ELIGIBILITYRESPONSE;
         if ("Encounter".equals(codeString))
           return ENCOUNTER;
+        if ("Endpoint".equals(codeString))
+          return ENDPOINT;
         if ("EnrollmentRequest".equals(codeString))
           return ENROLLMENTREQUEST;
         if ("EnrollmentResponse".equals(codeString))
@@ -8607,6 +8683,7 @@ public class Enumerations {
             case CONCEPTMAP: return "ConceptMap";
             case CONDITION: return "Condition";
             case CONFORMANCE: return "Conformance";
+            case CONSENT: return "Consent";
             case CONTRACT: return "Contract";
             case COVERAGE: return "Coverage";
             case DATAELEMENT: return "DataElement";
@@ -8626,6 +8703,7 @@ public class Enumerations {
             case ELIGIBILITYREQUEST: return "EligibilityRequest";
             case ELIGIBILITYRESPONSE: return "EligibilityResponse";
             case ENCOUNTER: return "Encounter";
+            case ENDPOINT: return "Endpoint";
             case ENROLLMENTREQUEST: return "EnrollmentRequest";
             case ENROLLMENTRESPONSE: return "EnrollmentResponse";
             case EPISODEOFCARE: return "EpisodeOfCare";
@@ -8727,6 +8805,7 @@ public class Enumerations {
             case CONCEPTMAP: return "http://hl7.org/fhir/resource-types";
             case CONDITION: return "http://hl7.org/fhir/resource-types";
             case CONFORMANCE: return "http://hl7.org/fhir/resource-types";
+            case CONSENT: return "http://hl7.org/fhir/resource-types";
             case CONTRACT: return "http://hl7.org/fhir/resource-types";
             case COVERAGE: return "http://hl7.org/fhir/resource-types";
             case DATAELEMENT: return "http://hl7.org/fhir/resource-types";
@@ -8746,6 +8825,7 @@ public class Enumerations {
             case ELIGIBILITYREQUEST: return "http://hl7.org/fhir/resource-types";
             case ELIGIBILITYRESPONSE: return "http://hl7.org/fhir/resource-types";
             case ENCOUNTER: return "http://hl7.org/fhir/resource-types";
+            case ENDPOINT: return "http://hl7.org/fhir/resource-types";
             case ENROLLMENTREQUEST: return "http://hl7.org/fhir/resource-types";
             case ENROLLMENTRESPONSE: return "http://hl7.org/fhir/resource-types";
             case EPISODEOFCARE: return "http://hl7.org/fhir/resource-types";
@@ -8847,6 +8927,7 @@ public class Enumerations {
             case CONCEPTMAP: return "A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models.";
             case CONDITION: return "Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary.";
             case CONFORMANCE: return "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.";
+            case CONSENT: return "A record of a healthcare consumer’s privacy policy, which is in accordance with governing jurisdictional and organization privacy policies that grant or withhold consent:.";
             case CONTRACT: return "A formal agreement between parties regarding the conduct of business, exchange of information or other matters.";
             case COVERAGE: return "Financial instrument which may be used to pay for or reimburse health care products and services.";
             case DATAELEMENT: return "The formal description of a single piece of information that can be gathered and reported.";
@@ -8862,10 +8943,11 @@ public class Enumerations {
             case DIAGNOSTICREPORT: return "The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports.";
             case DOCUMENTMANIFEST: return "A manifest that defines a set of documents.";
             case DOCUMENTREFERENCE: return "A reference to a document .";
-            case DOMAINRESOURCE: return "--- Abstract Type! ---A resource that includes narrative, extensions, and contained resources.";
+            case DOMAINRESOURCE: return "A resource that includes narrative, extensions, and contained resources.";
             case ELIGIBILITYREQUEST: return "This resource provides the insurance eligibility details from the insurer regarding a specified coverage and optionally some class of service.";
             case ELIGIBILITYRESPONSE: return "This resource provides eligibility and plan details from the processing of an Eligibility resource.";
             case ENCOUNTER: return "An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient.";
+            case ENDPOINT: return "The technical details of an endpoint that can be used for electronic services, such as for web services providing XDS.b or a REST endpoint for another FHIR server. This may include any security context information.";
             case ENROLLMENTREQUEST: return "This resource provides the insurance enrollment details to the insurer regarding a specified coverage.";
             case ENROLLMENTRESPONSE: return "This resource provides enrollment and plan details from the processing of an Enrollment resource.";
             case EPISODEOFCARE: return "An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.";
@@ -8923,7 +9005,7 @@ public class Enumerations {
             case QUESTIONNAIRERESPONSE: return "A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions.";
             case REFERRALREQUEST: return "Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organization.";
             case RELATEDPERSON: return "Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.";
-            case RESOURCE: return "--- Abstract Type! ---This is the base resource type for everything.";
+            case RESOURCE: return "This is the base resource type for everything.";
             case RISKASSESSMENT: return "An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.";
             case SCHEDULE: return "A container for slot(s) of time that may be available for booking appointments.";
             case SEARCHPARAMETER: return "A search parameter that defines a named search item that can be used to search/filter on a resource.";
@@ -8967,6 +9049,7 @@ public class Enumerations {
             case CONCEPTMAP: return "ConceptMap";
             case CONDITION: return "Condition";
             case CONFORMANCE: return "Conformance";
+            case CONSENT: return "Consent";
             case CONTRACT: return "Contract";
             case COVERAGE: return "Coverage";
             case DATAELEMENT: return "DataElement";
@@ -8986,6 +9069,7 @@ public class Enumerations {
             case ELIGIBILITYREQUEST: return "EligibilityRequest";
             case ELIGIBILITYRESPONSE: return "EligibilityResponse";
             case ENCOUNTER: return "Encounter";
+            case ENDPOINT: return "Endpoint";
             case ENROLLMENTREQUEST: return "EnrollmentRequest";
             case ENROLLMENTRESPONSE: return "EnrollmentResponse";
             case EPISODEOFCARE: return "EpisodeOfCare";
@@ -9114,6 +9198,8 @@ public class Enumerations {
           return ResourceType.CONDITION;
         if ("Conformance".equals(codeString))
           return ResourceType.CONFORMANCE;
+        if ("Consent".equals(codeString))
+          return ResourceType.CONSENT;
         if ("Contract".equals(codeString))
           return ResourceType.CONTRACT;
         if ("Coverage".equals(codeString))
@@ -9152,6 +9238,8 @@ public class Enumerations {
           return ResourceType.ELIGIBILITYRESPONSE;
         if ("Encounter".equals(codeString))
           return ResourceType.ENCOUNTER;
+        if ("Endpoint".equals(codeString))
+          return ResourceType.ENDPOINT;
         if ("EnrollmentRequest".equals(codeString))
           return ResourceType.ENROLLMENTREQUEST;
         if ("EnrollmentResponse".equals(codeString))
@@ -9352,6 +9440,8 @@ public class Enumerations {
           return new Enumeration<ResourceType>(this, ResourceType.CONDITION);
         if ("Conformance".equals(codeString))
           return new Enumeration<ResourceType>(this, ResourceType.CONFORMANCE);
+        if ("Consent".equals(codeString))
+          return new Enumeration<ResourceType>(this, ResourceType.CONSENT);
         if ("Contract".equals(codeString))
           return new Enumeration<ResourceType>(this, ResourceType.CONTRACT);
         if ("Coverage".equals(codeString))
@@ -9390,6 +9480,8 @@ public class Enumerations {
           return new Enumeration<ResourceType>(this, ResourceType.ELIGIBILITYRESPONSE);
         if ("Encounter".equals(codeString))
           return new Enumeration<ResourceType>(this, ResourceType.ENCOUNTER);
+        if ("Endpoint".equals(codeString))
+          return new Enumeration<ResourceType>(this, ResourceType.ENDPOINT);
         if ("EnrollmentRequest".equals(codeString))
           return new Enumeration<ResourceType>(this, ResourceType.ENROLLMENTREQUEST);
         if ("EnrollmentResponse".equals(codeString))
@@ -9585,6 +9677,8 @@ public class Enumerations {
         return "Condition";
       if (code == ResourceType.CONFORMANCE)
         return "Conformance";
+      if (code == ResourceType.CONSENT)
+        return "Consent";
       if (code == ResourceType.CONTRACT)
         return "Contract";
       if (code == ResourceType.COVERAGE)
@@ -9623,6 +9717,8 @@ public class Enumerations {
         return "EligibilityResponse";
       if (code == ResourceType.ENCOUNTER)
         return "Encounter";
+      if (code == ResourceType.ENDPOINT)
+        return "Endpoint";
       if (code == ResourceType.ENROLLMENTREQUEST)
         return "EnrollmentRequest";
       if (code == ResourceType.ENROLLMENTRESPONSE)

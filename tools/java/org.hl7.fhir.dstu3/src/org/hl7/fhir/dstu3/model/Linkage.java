@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -61,7 +61,7 @@ public class Linkage extends DomainResource {
          */
         HISTORICAL, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static LinkageType fromCode(String codeString) throws FHIRException {
@@ -73,7 +73,10 @@ public class Linkage extends DomainResource {
           return ALTERNATE;
         if ("historical".equals(codeString))
           return HISTORICAL;
-        throw new FHIRException("Unknown LinkageType code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown LinkageType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -260,6 +263,30 @@ public class Linkage extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // Enumeration<LinkageType>
+        case -341064690: /*resource*/ return this.resource == null ? new Base[0] : new Base[] {this.resource}; // Reference
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3575610: // type
+          this.type = new LinkageTypeEnumFactory().fromType(value); // Enumeration<LinkageType>
+          break;
+        case -341064690: // resource
+          this.resource = castToReference(value); // Reference
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("type"))
           this.type = new LinkageTypeEnumFactory().fromType(value); // Enumeration<LinkageType>
@@ -267,6 +294,16 @@ public class Linkage extends DomainResource {
           this.resource = castToReference(value); // Reference
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3575610: throw new FHIRException("Cannot make property type as it is not a complex type"); // Enumeration<LinkageType>
+        case -341064690:  return getResource(); // Reference
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -436,6 +473,30 @@ public class Linkage extends DomainResource {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -1406328437: /*author*/ return this.author == null ? new Base[0] : new Base[] {this.author}; // Reference
+        case 3242771: /*item*/ return this.item == null ? new Base[0] : this.item.toArray(new Base[this.item.size()]); // LinkageItemComponent
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -1406328437: // author
+          this.author = castToReference(value); // Reference
+          break;
+        case 3242771: // item
+          this.getItem().add((LinkageItemComponent) value); // LinkageItemComponent
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("author"))
           this.author = castToReference(value); // Reference
@@ -443,6 +504,16 @@ public class Linkage extends DomainResource {
           this.getItem().add((LinkageItemComponent) value);
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -1406328437:  return getAuthor(); // Reference
+        case 3242771:  return addItem(); // LinkageItemComponent
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

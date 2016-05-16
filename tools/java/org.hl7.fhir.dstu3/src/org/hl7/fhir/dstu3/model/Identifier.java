@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -65,7 +65,7 @@ public class Identifier extends Type implements ICompositeType {
          */
         SECONDARY, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static IdentifierUse fromCode(String codeString) throws FHIRException {
@@ -79,7 +79,10 @@ public class Identifier extends Type implements ICompositeType {
           return TEMP;
         if ("secondary".equals(codeString))
           return SECONDARY;
-        throw new FHIRException("Unknown IdentifierUse code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown IdentifierUse code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -472,6 +475,46 @@ public class Identifier extends Type implements ICompositeType {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 116103: /*use*/ return this.use == null ? new Base[0] : new Base[] {this.use}; // Enumeration<IdentifierUse>
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeableConcept
+        case -887328209: /*system*/ return this.system == null ? new Base[0] : new Base[] {this.system}; // UriType
+        case 111972721: /*value*/ return this.value == null ? new Base[0] : new Base[] {this.value}; // StringType
+        case -991726143: /*period*/ return this.period == null ? new Base[0] : new Base[] {this.period}; // Period
+        case -369881636: /*assigner*/ return this.assigner == null ? new Base[0] : new Base[] {this.assigner}; // Reference
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 116103: // use
+          this.use = new IdentifierUseEnumFactory().fromType(value); // Enumeration<IdentifierUse>
+          break;
+        case 3575610: // type
+          this.type = castToCodeableConcept(value); // CodeableConcept
+          break;
+        case -887328209: // system
+          this.system = castToUri(value); // UriType
+          break;
+        case 111972721: // value
+          this.value = castToString(value); // StringType
+          break;
+        case -991726143: // period
+          this.period = castToPeriod(value); // Period
+          break;
+        case -369881636: // assigner
+          this.assigner = castToReference(value); // Reference
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("use"))
           this.use = new IdentifierUseEnumFactory().fromType(value); // Enumeration<IdentifierUse>
@@ -487,6 +530,20 @@ public class Identifier extends Type implements ICompositeType {
           this.assigner = castToReference(value); // Reference
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 116103: throw new FHIRException("Cannot make property use as it is not a complex type"); // Enumeration<IdentifierUse>
+        case 3575610:  return getType(); // CodeableConcept
+        case -887328209: throw new FHIRException("Cannot make property system as it is not a complex type"); // UriType
+        case 111972721: throw new FHIRException("Cannot make property value as it is not a complex type"); // StringType
+        case -991726143:  return getPeriod(); // Period
+        case -369881636:  return getAssigner(); // Reference
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

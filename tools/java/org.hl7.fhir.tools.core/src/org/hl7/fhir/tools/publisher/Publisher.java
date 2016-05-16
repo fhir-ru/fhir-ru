@@ -49,6 +49,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -123,6 +124,7 @@ import org.hl7.fhir.dstu3.formats.JsonParser;
 import org.hl7.fhir.dstu3.formats.XmlParser;
 import org.hl7.fhir.dstu3.metamodel.Manager;
 import org.hl7.fhir.dstu3.metamodel.Manager.FhirFormat;
+import org.hl7.fhir.dstu3.metamodel.ParserBase.ValidationPolicy;
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.dstu3.model.Bundle.BundleType;
@@ -196,6 +198,8 @@ import org.hl7.fhir.dstu3.utils.ProfileComparer.ProfileComparison;
 import org.hl7.fhir.dstu3.utils.ProfileUtilities;
 import org.hl7.fhir.dstu3.utils.QuestionnaireBuilder;
 import org.hl7.fhir.dstu3.utils.ResourceUtilities;
+import org.hl7.fhir.dstu3.utils.ShExGenerator;
+import org.hl7.fhir.dstu3.utils.ShExGenerator.HTMLLinkPolicy;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 import org.hl7.fhir.dstu3.validation.BaseValidator;
 import org.hl7.fhir.dstu3.validation.IResourceValidator.BestPracticeWarningLevel;
@@ -205,6 +209,7 @@ import org.hl7.fhir.dstu3.validation.ProfileValidator;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
 import org.hl7.fhir.rdf.RDFValidator;
+import org.hl7.fhir.rdf.ShExValidator;
 import org.hl7.fhir.tools.converters.CDAGenerator;
 import org.hl7.fhir.tools.converters.ValueSetImporterV2;
 import org.hl7.fhir.tools.converters.ValueSetImporterV3;
@@ -213,6 +218,7 @@ import org.hl7.fhir.tools.implementations.csharp.CSharpGenerator;
 import org.hl7.fhir.tools.implementations.delphi.DelphiGenerator;
 import org.hl7.fhir.tools.implementations.java.JavaGenerator;
 import org.hl7.fhir.tools.implementations.javascript.JavaScriptGenerator;
+
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CloseProtectedZipInputStream;
@@ -1144,31 +1150,33 @@ public class Publisher implements URIResolver, SectionNumberer {
     Collections.sort(names);
     for (String n : names) {
       CodeSystem cs = page.getCodeSystems().get(n);
-      if (cs.hasName()) {
-        NamingSystem ns = new NamingSystem();
-        ns.setId(cs.getId());
-        ns.setName(cs.getName());
-        ns.setStatus(cs.getStatus());
-        if (!ns.hasStatus())
-          ns.setStatus(ConformanceResourceStatus.DRAFT);
-        ns.setKind(NamingSystemType.CODESYSTEM);
-        ns.setPublisher(cs.getPublisher());
-        for (CodeSystemContactComponent c : cs.getContact()) {
-          NamingSystemContactComponent nc = ns.addContact();
-          nc.setName(c.getName());
-          for (ContactPoint cc : c.getTelecom()) {
-            nc.getTelecom().add(cc);
+      if (cs != null) {
+        if (cs.hasName()) {
+          NamingSystem ns = new NamingSystem();
+          ns.setId(cs.getId());
+          ns.setName(cs.getName());
+          ns.setStatus(cs.getStatus());
+          if (!ns.hasStatus())
+            ns.setStatus(ConformanceResourceStatus.DRAFT);
+          ns.setKind(NamingSystemType.CODESYSTEM);
+          ns.setPublisher(cs.getPublisher());
+          for (CodeSystemContactComponent c : cs.getContact()) {
+            NamingSystemContactComponent nc = ns.addContact();
+            nc.setName(c.getName());
+            for (ContactPoint cc : c.getTelecom()) {
+              nc.getTelecom().add(cc);
+            }
           }
+          ns.setDate(cs.getDate());
+          if (!ns.hasDate())
+            ns.setDate(page.getGenDate().getTime());
+          ns.setDescription(cs.getDescription());
+          ns.addUniqueId().setType(NamingSystemIdentifierType.URI).setValue(cs.getUrl()).setPreferred(true);
+          if (ToolingExtensions.getOID(cs) != null)
+            ns.addUniqueId().setType(NamingSystemIdentifierType.OID).setValue(ToolingExtensions.getOID(cs).substring(8)).setPreferred(false);
+          ns.setUserData("path", cs.getUserData("path"));
+          bnd.addEntry().setResource(ns).setFullUrl(cs.getUrl().replace("ValueSet", "NamingSystem"));
         }
-        ns.setDate(cs.getDate());
-        if (!ns.hasDate())
-          ns.setDate(page.getGenDate().getTime());
-        ns.setDescription(cs.getDescription());
-        ns.addUniqueId().setType(NamingSystemIdentifierType.URI).setValue(cs.getUrl()).setPreferred(true);
-        if (ToolingExtensions.getOID(cs) != null)
-          ns.addUniqueId().setType(NamingSystemIdentifierType.OID).setValue(ToolingExtensions.getOID(cs).substring(8)).setPreferred(false);
-        ns.setUserData("path", cs.getUserData("path"));
-        bnd.addEntry().setResource(ns).setFullUrl(cs.getUrl().replace("ValueSet", "NamingSystem"));
       }
     }
     xml.compose(new FileOutputStream(Utilities.path(page.getFolders().dstDir, "namingsystem-terminologies.xml")), bnd);
@@ -1844,6 +1852,7 @@ public class Publisher implements URIResolver, SectionNumberer {
   // return result;
   // }
 
+
   private void produceSpecification() throws Exception {
     page.setNavigation(new Navigation());
     page.getNavigation().parse(page.getFolders().srcDir + "navigation.xml");
@@ -1853,10 +1862,17 @@ public class Publisher implements URIResolver, SectionNumberer {
 
       page.log("Produce Schemas", LogMessageType.Process);
       new SchemaGenerator().generate(page.getDefinitions(), page.getIni(), page.getFolders().tmpResDir, page.getFolders().xsdDir+"codegen"+File.separator, page.getFolders().dstDir,
-          page.getFolders().srcDir, page.getVersion(), Config.DATE_FORMAT().format(page.getGenDate().getTime()), true);
+          page.getFolders().srcDir, page.getVersion(), Config.DATE_FORMAT().format(page.getGenDate().getTime()), true, page.getWorkerContext());
       new SchemaGenerator().generate(page.getDefinitions(), page.getIni(), page.getFolders().tmpResDir, page.getFolders().xsdDir, page.getFolders().dstDir,
-          page.getFolders().srcDir, page.getVersion(), Config.DATE_FORMAT().format(page.getGenDate().getTime()), false);
+          page.getFolders().srcDir, page.getVersion(), Config.DATE_FORMAT().format(page.getGenDate().getTime()), false, page.getWorkerContext());
 
+      List<StructureDefinition> list = new ArrayList<StructureDefinition>();
+      for (StructureDefinition sd : page.getWorkerContext().allStructures()) {
+        if (sd.getDerivation() == TypeDerivationRule.SPECIALIZATION)
+          list.add(sd);
+      }
+      TextFile.stringToFile(new ShExGenerator(page.getWorkerContext()).generate(HTMLLinkPolicy.NONE, list), page.getFolders().dstDir+"fhir.shex", false);
+      
       if (buildFlags.get("all")) {
         for (PlatformGenerator gen : page.getReferenceImplementations()) {
           page.log("Produce " + gen.getName() + " Reference Implementation", LogMessageType.Process);
@@ -2239,7 +2255,7 @@ public class Publisher implements URIResolver, SectionNumberer {
         if (vs.getUrl().contains("/v2"))
           v2Valuesets.addEntry().setFullUrl(vs.getUrl()).setResource(vs);
       for (CodeSystem cs : page.getCodeSystems().values())
-        if (cs.getUrl().contains("/v2"))
+        if (cs!= null && cs.getUrl().contains("/v2"))
           v2Valuesets.addEntry().setFullUrl(cs.getUrl()).setResource(cs);
 
 
@@ -2260,7 +2276,7 @@ public class Publisher implements URIResolver, SectionNumberer {
         if (vs.getUrl().contains("/v3"))
           v3Valuesets.addEntry().setFullUrl(vs.getUrl()).setResource(vs);
       for (CodeSystem cs : page.getCodeSystems().values())
-        if (cs.getUrl().contains("/v3"))
+        if (cs != null && cs.getUrl().contains("/v3"))
           v3Valuesets.addEntry().setFullUrl(cs.getUrl()).setResource(cs);
       
       checkBundleURLs(v3Valuesets);
@@ -2303,6 +2319,7 @@ public class Publisher implements URIResolver, SectionNumberer {
 
       page.log("....validator", LogMessageType.Process);
       ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir + "validation.xml.zip");
+      zip.addFileName("fhir.css", page.getFolders().dstDir + "fhir.css", false);
       zip.addFileName("profiles-types.xml", page.getFolders().dstDir + "profiles-types.xml", false);
       zip.addFileName("profiles-resources.xml", page.getFolders().dstDir + "profiles-resources.xml", false);
       zip.addFileName("profiles-others.xml", page.getFolders().dstDir + "profiles-others.xml", false);
@@ -2320,6 +2337,7 @@ public class Publisher implements URIResolver, SectionNumberer {
       zip.close();
 
       zip = new ZipGenerator(page.getFolders().dstDir + "validation.json.zip");
+      zip.addFileName("fhir.css", page.getFolders().dstDir + "fhir.css", false);
       zip.addFileName("profiles-types.json", page.getFolders().dstDir + "profiles-types.json", false);
       zip.addFileName("profiles-resources.json", page.getFolders().dstDir + "profiles-resources.json", false);
       zip.addFileName("profiles-others.json", page.getFolders().dstDir + "profiles-others.json", false);
@@ -2996,6 +3014,9 @@ public class Publisher implements URIResolver, SectionNumberer {
     addToResourceFeed(rp, typeBundle, (fn));
     cloneToXhtml(pt.getName().toLowerCase() + ".profile", "StructureDefinition for " + pt.getName(), false, "profile-instance:type:" + pt.getName(), "Type");
     jsonToXhtml(pt.getName().toLowerCase() + ".profile", "StructureDefinition for " + pt.getName(), resource2Json(rp), "profile-instance:type:" + pt.getName(), "Type");
+    String shex = new ShExGenerator(page.getWorkerContext()).generate(HTMLLinkPolicy.NONE, rp);
+    TextFile.stringToFile(shex, Utilities.changeFileExt(page.getFolders().dstDir + fn, ".shex"));
+    shexToXhtml(pt.getName().toLowerCase(), "ShEx statement for " + pt.getName(), shex, "profile-instance:type:" + pt.getName(), "Type");
   }
 
   private void producePrimitiveTypeProfile(DefinedCode type) throws Exception {
@@ -3016,12 +3037,16 @@ public class Publisher implements URIResolver, SectionNumberer {
     new JsonParser().setOutputStyle(OutputStyle.CANONICAL).compose(s, rp);
     s.close();
 
+    String shex = new ShExGenerator(page.getWorkerContext()).generate(HTMLLinkPolicy.NONE, rp);
+    TextFile.stringToFile(shex, Utilities.changeFileExt(page.getFolders().dstDir + fn, ".shex"));
+    
     Utilities.copyFile(new CSFile(page.getFolders().dstDir + fn), new CSFile(Utilities.path(page.getFolders().dstDir, "examples", fn)));
     addToResourceFeed(rp, typeBundle, (fn));
     // saveAsPureHtml(rp, new FileOutputStream(page.getFolders().dstDir+ "html"
     // + File.separator + "datatypes.html"));
     cloneToXhtml(type.getCode().toLowerCase() + ".profile", "StructureDefinition for " + type.getCode(), false, "profile-instance:type:" + type.getCode(), "Type");
     jsonToXhtml(type.getCode().toLowerCase() + ".profile", "StructureDefinition for " + type.getCode(), resource2Json(rp), "profile-instance:type:" + type.getCode(), "Type");
+    shexToXhtml(type.getCode().toLowerCase(), "ShEx statement for " + type.getCode(), shex, "profile-instance:type:" + type.getCode(), "Type");
   }
 
   private void produceTypeProfile(TypeDefn type) throws Exception {
@@ -3061,6 +3086,9 @@ public class Publisher implements URIResolver, SectionNumberer {
     // + File.separator + "datatypes.html"));
     cloneToXhtml(type.getName().toLowerCase() + ".profile", "StructureDefinition for " + type.getName(), false, "profile-instance:type:" + type.getName(), "Type");
     jsonToXhtml(type.getName().toLowerCase() + ".profile", "StructureDefinition for " + type.getName(), resource2Json(rp), "profile-instance:type:" + type.getName(), "Type");
+    String shex = new ShExGenerator(page.getWorkerContext()).generate(HTMLLinkPolicy.NONE, rp);
+    TextFile.stringToFile(shex, Utilities.changeFileExt(page.getFolders().dstDir + fn, ".shex"));
+    shexToXhtml(type.getName().toLowerCase(), "ShEx statement for " + type.getName(), shex, "profile-instance:type:" + type.getName(), "Type");
   }
 
   protected XmlPullParser loadXml(InputStream stream) throws Exception {
@@ -3092,7 +3120,9 @@ public class Publisher implements URIResolver, SectionNumberer {
       String type = base.getAttribute("fragment");
       if (!page.getDefinitions().hasPrimitiveType(type)) {
         try {
-          new org.hl7.fhir.dstu3.metamodel.XmlParser(page.getWorkerContext(), true).parse(XMLUtil.getFirstChild(base), type);
+          org.hl7.fhir.dstu3.metamodel.XmlParser p = new org.hl7.fhir.dstu3.metamodel.XmlParser(page.getWorkerContext());
+          p.setupValidation(ValidationPolicy.QUICK, null);
+          p.parse(XMLUtil.getFirstChild(base), type);
         } catch (Exception e) {
           page.getValidationErrors().add(new ValidationMessage(Source.Publisher, IssueType.STRUCTURE, "Fragment Error in page " + f.getPage() + ": " + e.getMessage(), IssueSeverity.ERROR));
         }
@@ -3338,6 +3368,18 @@ public class Publisher implements URIResolver, SectionNumberer {
   }
 
   */
+  private void shexToXhtml(String n, String description, String shex, String pageType, String crumbTitle) throws Exception {
+    shexToXhtml(n, description, shex, pageType, crumbTitle, null);
+  }
+  
+  private void shexToXhtml(String n, String description, String shex, String pageType, String crumbTitle, ImplementationGuideDefn igd) throws Exception {
+    shex = "<div class=\"example\">\r\n<p>" + Utilities.escapeXml(description) + "</p>\r\n<pre class=\"shex\">\r\n" + Utilities.escapeXml(shex)+ "\r\n</pre>\r\n</div>\r\n";
+    String html = TextFile.fileToString(page.getFolders().srcDir + "template-example-shex.html").replace("<%example%>", shex);
+    html = page.processPageIncludes(n + ".shex.html", html, pageType, null, null, null, crumbTitle, igd);
+    TextFile.stringToFile(html, page.getFolders().dstDir + n + ".shex.html");
+    page.getEpub().registerExternal(n + ".shex.html");
+  }
+
   private void jsonToXhtml(String n, String description, String json, String pageType, String crumbTitle) throws Exception {
     jsonToXhtml(n, description, json, pageType, crumbTitle, null);
   }
@@ -3347,7 +3389,6 @@ public class Publisher implements URIResolver, SectionNumberer {
     String html = TextFile.fileToString(page.getFolders().srcDir + "template-example-json.html").replace("<%example%>", json);
     html = page.processPageIncludes(n + ".json.html", html, pageType, null, null, null, crumbTitle, igd);
     TextFile.stringToFile(html, page.getFolders().dstDir + n + ".json.html");
-    //    page.getEpub().registerFile(n + ".json.html", description, EPubManager.XHTML_TYPE);
     page.getEpub().registerExternal(n + ".json.html");
   }
 
@@ -3572,6 +3613,7 @@ public class Publisher implements URIResolver, SectionNumberer {
       cs.setUserData("filename", Utilities.changeFileExt(file.getName(), ""));
       cs.setUserData("committee", "fhir");
       cs.setUserData("path", prefix +n + ".html");
+      addToResourceFeed(cs, valueSetsFeed, file.getName());
       page.getCodeSystems().put(cs.getUrl(), cs);
     } else if (rt.equals("ConceptMap")) {
       ConceptMap cm = (ConceptMap) new XmlParser().parse(new FileInputStream(file));
@@ -3588,7 +3630,7 @@ public class Publisher implements URIResolver, SectionNumberer {
     e.setResourceName(resourceName);
     String canonical = "http://hl7.org/fhir/";
     
-    org.hl7.fhir.dstu3.metamodel.Element ex = Manager.parse(page.getWorkerContext(), new CSFileInputStream(page.getFolders().dstDir + prefix+n + ".xml"), FhirFormat.XML, true);
+    org.hl7.fhir.dstu3.metamodel.Element ex = Manager.parse(page.getWorkerContext(), new CSFileInputStream(page.getFolders().dstDir + prefix+n + ".xml"), FhirFormat.XML);
     Manager.compose(page.getWorkerContext(), ex, new FileOutputStream(page.getFolders().dstDir + prefix+n + ".json"), FhirFormat.JSON, OutputStyle.PRETTY, canonical); 
     Manager.compose(page.getWorkerContext(), ex, new FileOutputStream(page.getFolders().dstDir + prefix+n + ".jsonld"), FhirFormat.JSONLD, OutputStyle.PRETTY, canonical); 
 //    Manager.compose(page.getWorkerContext(), ex, new FileOutputStream(Utilities.changeFileExt(destName, ".canonical.json")), FhirFormat.JSON, OutputStyle.CANONICAL); 
@@ -3783,6 +3825,9 @@ public class Publisher implements URIResolver, SectionNumberer {
       saveAsPureHtml(rp, new FileOutputStream(page.getFolders().dstDir + "html" + File.separator + n + ".html"));
       cloneToXhtml(n + ".profile", "StructureDefinition for " + n, true, "profile-instance:resource:" + root.getName(), "Profile");
       jsonToXhtml(n + ".profile", "StructureDefinition for " + n, resource2Json(rp), "profile-instance:resource:" + root.getName(), "Profile");
+      String shex = new ShExGenerator(page.getWorkerContext()).generate(HTMLLinkPolicy.NONE, rp);
+      TextFile.stringToFile(shex, page.getFolders().dstDir + n+".shex");
+      shexToXhtml(n, "ShEx statement for " + n, shex, "profile-instance:type:" + root.getName(), "Type");
     }
     return rp;
   }
@@ -4029,6 +4074,9 @@ public class Publisher implements URIResolver, SectionNumberer {
     s = new FileOutputStream(page.getFolders().dstDir + prefix +title + ".profile.json");
     jcomp.setOutputStyle(OutputStyle.PRETTY).compose(s, profile.getResource());
     s.close();
+//    String shex = new ShExGenerator(page.getWorkerContext()).generate(HTMLLinkPolicy.NONE, profile.getResource());
+//    TextFile.stringToFile(shex, Utilities.changeFileExt(page.getFolders().dstDir + prefix +title + ".profile.shex", ".shex"));
+//    shexToXhtml(prefix +title + ".profile", "ShEx statement for " + prefix +title, shex, "profile-instance:type:" + title, "Type");
 
     TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp), page);
     tgen.generate(level == 0 ? "" : "../", profile);
@@ -4866,7 +4914,8 @@ public class Publisher implements URIResolver, SectionNumberer {
             n = ig.getCode()+File.separator+n;
           logError(" ...validate " + n, LogMessageType.Process);
           validateXmlFile(schema, n, validator, null);
-          validateJsonFile(schema, n, validator, null);
+          validateJsonFile(n, validator, null);
+//          validateTurtleFile(n, validator, null);
         }
         // todo-profile: how this works has to change (to use profile tag)
         for (Profile e : r.getConformancePackages()) {
@@ -5059,8 +5108,11 @@ public class Publisher implements URIResolver, SectionNumberer {
     // the build tool validation focuses on codes and identifiers
     List<ValidationMessage> issues = new ArrayList<ValidationMessage>();
     validator.validate(issues, root);
-    if (profile != null && VALIDATE_BY_PROFILE)
+//    System.out.println("  -x- "+validator.reportTimes());
+    if (profile != null && VALIDATE_BY_PROFILE) {
       validator.validate(issues, root, profile);
+      System.out.println("  -- "+validator.reportTimes());
+    }
     for (ValidationMessage m : issues) {
       if (!m.getLevel().equals(IssueSeverity.INFORMATION) && !m.getLevel().equals(IssueSeverity.WARNING)) {
         m.setMessage(n+":: "+m.getLocation()+": "+m.getMessage());
@@ -5075,13 +5127,14 @@ public class Publisher implements URIResolver, SectionNumberer {
     }
   }
 
-  private void validateJsonFile(Schema schema, String n, InstanceValidator validator, StructureDefinition profile) throws Exception {
+  private void validateJsonFile(String n, InstanceValidator validator, StructureDefinition profile) throws Exception {
     com.google.gson.JsonParser parser = new com.google.gson.JsonParser();
     JsonObject obj = parser.parse(TextFile.fileToString(Utilities.path(page.getFolders().dstDir, n + ".json"))).getAsJsonObject();
 
     // the build tool validation focuses on codes and identifiers
     List<ValidationMessage> issues = new ArrayList<ValidationMessage>();
     validator.validate(issues, obj);
+//    System.out.println("  -j- "+validator.reportTimes());
     // if (profile != null)
     // validator.validateInstanceByProfile(issues, root, profile);
     for (ValidationMessage m : issues) {
@@ -5095,6 +5148,39 @@ public class Publisher implements URIResolver, SectionNumberer {
       else
         errorCount++;
     }
+  }
+
+  private void validateTurtleFile(String n, InstanceValidator validator, StructureDefinition profile) throws Exception {
+//  first, ShEx validation
+    if (!(new File(Utilities.path(page.getFolders().dstDir, n + ".ttl")).exists()))
+      return;
+    
+    ShExValidator shexval = new ShExValidator();
+    
+    shexval.validate(Utilities.path(page.getFolders().dstDir, n + ".ttl"), Utilities.path(page.getFolders().dstDir, "fhir.shex"), "SHEXC");
+    
+ 
+//    
+//    com.google.gson.JsonParser parser = new com.google.gson.JsonParser();
+//    JsonObject obj = parser.parse(TextFile.fileToString()).getAsJsonObject();
+//
+//    // the build tool validation focuses on codes and identifiers
+//    List<ValidationMessage> issues = new ArrayList<ValidationMessage>();
+//    validator.validate(issues, obj);
+////    System.out.println("  -j- "+validator.reportTimes());
+//    // if (profile != null)
+//    // validator.validateInstanceByProfile(issues, root, profile);
+//    for (ValidationMessage m : issues) {
+//      if (!m.getLevel().equals(IssueSeverity.INFORMATION) && !m.getLevel().equals(IssueSeverity.WARNING))
+//        logError("  " + m.summary(), typeforSeverity(m.getLevel()));
+//
+//      if (m.getLevel() == IssueSeverity.WARNING)
+//        warningCount++;
+//      else if (m.getLevel() == IssueSeverity.INFORMATION)
+//        informationCount++;
+//      else
+//        errorCount++;
+//    }
   }
 
   private void validateBySchematron(String n, String sch) throws IOException, ParserConfigurationException, SAXException, FileNotFoundException {
@@ -5346,13 +5432,15 @@ public class Publisher implements URIResolver, SectionNumberer {
   private void generateCodeSystemsPart2() throws Exception {
 
     Set<String> urls = new HashSet<String>();
-    
+
     for (CodeSystem cs : page.getDefinitions().getCodeSystems().values()) {
-      if (cs.getUserData("example") == null && !cs.getUrl().contains("/v2/") && !cs.getUrl().contains("/v3/"))
-        if (!urls.contains(cs.getUrl())) {
-          urls.add(cs.getUrl());
-          generateCodeSystemPart2(cs);
-        }
+      if (cs != null) {
+        if (cs.getUserData("example") == null && !cs.getUrl().contains("/v2/") && !cs.getUrl().contains("/v3/"))
+          if (!urls.contains(cs.getUrl())) {
+            urls.add(cs.getUrl());
+            generateCodeSystemPart2(cs);
+          }
+      }
     }
   }
 
@@ -5533,16 +5621,18 @@ public class Publisher implements URIResolver, SectionNumberer {
   private void generateCodeSystemsPart1() throws Exception {
     page.log(" ...code systems", LogMessageType.Process);
     for (CodeSystem cs : page.getDefinitions().getCodeSystems().values()) {
-      if (!cs.hasText()) {
-        cs.setText(new Narrative());
-        cs.getText().setStatus(NarrativeStatus.EMPTY);
+      if (cs != null) {
+        if (!cs.hasText()) {
+          cs.setText(new Narrative());
+          cs.getText().setStatus(NarrativeStatus.EMPTY);
+        }
+        if (!cs.getText().hasDiv()) {
+          cs.getText().setDiv(new XhtmlNode(NodeType.Element));
+          cs.getText().getDiv().setName("div");
+        }
+        //      if (ToolingExtensions.getOID(cs) == null)
+        //        throw new Exception("No OID on code system "+cs.getUrl());
       }
-      if (!cs.getText().hasDiv()) {
-        cs.getText().setDiv(new XhtmlNode(NodeType.Element));
-        cs.getText().getDiv().setName("div");
-      }
-//      if (ToolingExtensions.getOID(cs) == null)
-//        throw new Exception("No OID on code system "+cs.getUrl());
     }
   }
 

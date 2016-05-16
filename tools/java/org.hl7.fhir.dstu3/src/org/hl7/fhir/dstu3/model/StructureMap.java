@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -46,7 +46,7 @@ import org.hl7.fhir.dstu3.exceptions.FHIRException;
  * A Map of relationships between 2 structures that can be used to transform data.
  */
 @ResourceDef(name="StructureMap", profile="http://hl7.org/fhir/Profile/StructureMap")
-public class StructureMap extends DomainResource {
+public class StructureMap extends BaseConformance {
 
     public enum StructureMapModelMode {
         /**
@@ -66,7 +66,7 @@ public class StructureMap extends DomainResource {
          */
         PRODUCED, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static StructureMapModelMode fromCode(String codeString) throws FHIRException {
@@ -80,7 +80,10 @@ public class StructureMap extends DomainResource {
           return TARGET;
         if ("produced".equals(codeString))
           return PRODUCED;
-        throw new FHIRException("Unknown StructureMapModelMode code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown StructureMapModelMode code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -177,7 +180,7 @@ public class StructureMap extends DomainResource {
          */
         TARGET, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static StructureMapInputMode fromCode(String codeString) throws FHIRException {
@@ -187,7 +190,10 @@ public class StructureMap extends DomainResource {
           return SOURCE;
         if ("target".equals(codeString))
           return TARGET;
-        throw new FHIRException("Unknown StructureMapInputMode code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown StructureMapInputMode code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -264,7 +270,7 @@ public class StructureMap extends DomainResource {
          */
         VARIABLE, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static StructureMapContextType fromCode(String codeString) throws FHIRException {
@@ -274,7 +280,10 @@ public class StructureMap extends DomainResource {
           return TYPE;
         if ("variable".equals(codeString))
           return VARIABLE;
-        throw new FHIRException("Unknown StructureMapContextType code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown StructureMapContextType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -355,7 +364,7 @@ public class StructureMap extends DomainResource {
          */
         LAST, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static StructureMapListMode fromCode(String codeString) throws FHIRException {
@@ -367,7 +376,10 @@ public class StructureMap extends DomainResource {
           return SHARE;
         if ("last".equals(codeString))
           return LAST;
-        throw new FHIRException("Unknown StructureMapListMode code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown StructureMapListMode code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -478,7 +490,23 @@ public class StructureMap extends DomainResource {
          */
         REFERENCE, 
         /**
-         * added to help the parsers
+         * something
+         */
+        DATEOP, 
+        /**
+         * something
+         */
+        UUID, 
+        /**
+         * something
+         */
+        POINTER, 
+        /**
+         * something
+         */
+        EVALUATE, 
+        /**
+         * added to help the parsers with the generic types
          */
         NULL;
         public static StructureMapTransform fromCode(String codeString) throws FHIRException {
@@ -500,7 +528,18 @@ public class StructureMap extends DomainResource {
           return TRANSLATE;
         if ("reference".equals(codeString))
           return REFERENCE;
-        throw new FHIRException("Unknown StructureMapTransform code '"+codeString+"'");
+        if ("dateOp".equals(codeString))
+          return DATEOP;
+        if ("uuid".equals(codeString))
+          return UUID;
+        if ("pointer".equals(codeString))
+          return POINTER;
+        if ("evaluate".equals(codeString))
+          return EVALUATE;
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown StructureMapTransform code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -512,6 +551,10 @@ public class StructureMap extends DomainResource {
             case APPEND: return "append";
             case TRANSLATE: return "translate";
             case REFERENCE: return "reference";
+            case DATEOP: return "dateOp";
+            case UUID: return "uuid";
+            case POINTER: return "pointer";
+            case EVALUATE: return "evaluate";
             default: return "?";
           }
         }
@@ -525,6 +568,10 @@ public class StructureMap extends DomainResource {
             case APPEND: return "http://hl7.org/fhir/map-transform";
             case TRANSLATE: return "http://hl7.org/fhir/map-transform";
             case REFERENCE: return "http://hl7.org/fhir/map-transform";
+            case DATEOP: return "http://hl7.org/fhir/map-transform";
+            case UUID: return "http://hl7.org/fhir/map-transform";
+            case POINTER: return "http://hl7.org/fhir/map-transform";
+            case EVALUATE: return "http://hl7.org/fhir/map-transform";
             default: return "?";
           }
         }
@@ -538,6 +585,10 @@ public class StructureMap extends DomainResource {
             case APPEND: return "append(source...) - source is element or string";
             case TRANSLATE: return "translate(source, uri_of_map) - use the translate operation";
             case REFERENCE: return "reference(source : object) - return a string that references the provided tree properly";
+            case DATEOP: return "something";
+            case UUID: return "something";
+            case POINTER: return "something";
+            case EVALUATE: return "something";
             default: return "?";
           }
         }
@@ -551,6 +602,10 @@ public class StructureMap extends DomainResource {
             case APPEND: return "append";
             case TRANSLATE: return "translate";
             case REFERENCE: return "reference";
+            case DATEOP: return "dateOp";
+            case UUID: return "uuid";
+            case POINTER: return "pointer";
+            case EVALUATE: return "evaluate";
             default: return "?";
           }
         }
@@ -577,6 +632,14 @@ public class StructureMap extends DomainResource {
           return StructureMapTransform.TRANSLATE;
         if ("reference".equals(codeString))
           return StructureMapTransform.REFERENCE;
+        if ("dateOp".equals(codeString))
+          return StructureMapTransform.DATEOP;
+        if ("uuid".equals(codeString))
+          return StructureMapTransform.UUID;
+        if ("pointer".equals(codeString))
+          return StructureMapTransform.POINTER;
+        if ("evaluate".equals(codeString))
+          return StructureMapTransform.EVALUATE;
         throw new IllegalArgumentException("Unknown StructureMapTransform code '"+codeString+"'");
         }
         public Enumeration<StructureMapTransform> fromType(Base code) throws FHIRException {
@@ -601,6 +664,14 @@ public class StructureMap extends DomainResource {
           return new Enumeration<StructureMapTransform>(this, StructureMapTransform.TRANSLATE);
         if ("reference".equals(codeString))
           return new Enumeration<StructureMapTransform>(this, StructureMapTransform.REFERENCE);
+        if ("dateOp".equals(codeString))
+          return new Enumeration<StructureMapTransform>(this, StructureMapTransform.DATEOP);
+        if ("uuid".equals(codeString))
+          return new Enumeration<StructureMapTransform>(this, StructureMapTransform.UUID);
+        if ("pointer".equals(codeString))
+          return new Enumeration<StructureMapTransform>(this, StructureMapTransform.POINTER);
+        if ("evaluate".equals(codeString))
+          return new Enumeration<StructureMapTransform>(this, StructureMapTransform.EVALUATE);
         throw new FHIRException("Unknown StructureMapTransform code '"+codeString+"'");
         }
     public String toCode(StructureMapTransform code) {
@@ -620,6 +691,14 @@ public class StructureMap extends DomainResource {
         return "translate";
       if (code == StructureMapTransform.REFERENCE)
         return "reference";
+      if (code == StructureMapTransform.DATEOP)
+        return "dateOp";
+      if (code == StructureMapTransform.UUID)
+        return "uuid";
+      if (code == StructureMapTransform.POINTER)
+        return "pointer";
+      if (code == StructureMapTransform.EVALUATE)
+        return "evaluate";
       return "?";
       }
     public String toSystem(StructureMapTransform code) {
@@ -748,6 +827,30 @@ public class StructureMap extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3373707: /*name*/ return this.name == null ? new Base[0] : new Base[] {this.name}; // StringType
+        case -1429363305: /*telecom*/ return this.telecom == null ? new Base[0] : this.telecom.toArray(new Base[this.telecom.size()]); // ContactPoint
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3373707: // name
+          this.name = castToString(value); // StringType
+          break;
+        case -1429363305: // telecom
+          this.getTelecom().add(castToContactPoint(value)); // ContactPoint
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("name"))
           this.name = castToString(value); // StringType
@@ -755,6 +858,16 @@ public class StructureMap extends DomainResource {
           this.getTelecom().add(castToContactPoint(value));
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3373707: throw new FHIRException("Cannot make property name as it is not a complex type"); // StringType
+        case -1429363305:  return addTelecom(); // ContactPoint
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -1001,6 +1114,34 @@ public class StructureMap extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 116079: /*url*/ return this.url == null ? new Base[0] : new Base[] {this.url}; // UriType
+        case 3357091: /*mode*/ return this.mode == null ? new Base[0] : new Base[] {this.mode}; // Enumeration<StructureMapModelMode>
+        case 1587405498: /*documentation*/ return this.documentation == null ? new Base[0] : new Base[] {this.documentation}; // StringType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 116079: // url
+          this.url = castToUri(value); // UriType
+          break;
+        case 3357091: // mode
+          this.mode = new StructureMapModelModeEnumFactory().fromType(value); // Enumeration<StructureMapModelMode>
+          break;
+        case 1587405498: // documentation
+          this.documentation = castToString(value); // StringType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("url"))
           this.url = castToUri(value); // UriType
@@ -1010,6 +1151,17 @@ public class StructureMap extends DomainResource {
           this.documentation = castToString(value); // StringType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 116079: throw new FHIRException("Cannot make property url as it is not a complex type"); // UriType
+        case 3357091: throw new FHIRException("Cannot make property mode as it is not a complex type"); // Enumeration<StructureMapModelMode>
+        case 1587405498: throw new FHIRException("Cannot make property documentation as it is not a complex type"); // StringType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -1357,6 +1509,42 @@ public class StructureMap extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3373707: /*name*/ return this.name == null ? new Base[0] : new Base[] {this.name}; // IdType
+        case -1305664359: /*extends*/ return this.extends_ == null ? new Base[0] : new Base[] {this.extends_}; // IdType
+        case 1587405498: /*documentation*/ return this.documentation == null ? new Base[0] : new Base[] {this.documentation}; // StringType
+        case 100358090: /*input*/ return this.input == null ? new Base[0] : this.input.toArray(new Base[this.input.size()]); // StructureMapGroupInputComponent
+        case 3512060: /*rule*/ return this.rule == null ? new Base[0] : this.rule.toArray(new Base[this.rule.size()]); // StructureMapGroupRuleComponent
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3373707: // name
+          this.name = castToId(value); // IdType
+          break;
+        case -1305664359: // extends
+          this.extends_ = castToId(value); // IdType
+          break;
+        case 1587405498: // documentation
+          this.documentation = castToString(value); // StringType
+          break;
+        case 100358090: // input
+          this.getInput().add((StructureMapGroupInputComponent) value); // StructureMapGroupInputComponent
+          break;
+        case 3512060: // rule
+          this.getRule().add((StructureMapGroupRuleComponent) value); // StructureMapGroupRuleComponent
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("name"))
           this.name = castToId(value); // IdType
@@ -1370,6 +1558,19 @@ public class StructureMap extends DomainResource {
           this.getRule().add((StructureMapGroupRuleComponent) value);
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3373707: throw new FHIRException("Cannot make property name as it is not a complex type"); // IdType
+        case -1305664359: throw new FHIRException("Cannot make property extends as it is not a complex type"); // IdType
+        case 1587405498: throw new FHIRException("Cannot make property documentation as it is not a complex type"); // StringType
+        case 100358090:  return addInput(); // StructureMapGroupInputComponent
+        case 3512060:  return addRule(); // StructureMapGroupRuleComponent
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -1692,6 +1893,38 @@ public class StructureMap extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3373707: /*name*/ return this.name == null ? new Base[0] : new Base[] {this.name}; // IdType
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // StringType
+        case 3357091: /*mode*/ return this.mode == null ? new Base[0] : new Base[] {this.mode}; // Enumeration<StructureMapInputMode>
+        case 1587405498: /*documentation*/ return this.documentation == null ? new Base[0] : new Base[] {this.documentation}; // StringType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3373707: // name
+          this.name = castToId(value); // IdType
+          break;
+        case 3575610: // type
+          this.type = castToString(value); // StringType
+          break;
+        case 3357091: // mode
+          this.mode = new StructureMapInputModeEnumFactory().fromType(value); // Enumeration<StructureMapInputMode>
+          break;
+        case 1587405498: // documentation
+          this.documentation = castToString(value); // StringType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("name"))
           this.name = castToId(value); // IdType
@@ -1703,6 +1936,18 @@ public class StructureMap extends DomainResource {
           this.documentation = castToString(value); // StringType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3373707: throw new FHIRException("Cannot make property name as it is not a complex type"); // IdType
+        case 3575610: throw new FHIRException("Cannot make property type as it is not a complex type"); // StringType
+        case 3357091: throw new FHIRException("Cannot make property mode as it is not a complex type"); // Enumeration<StructureMapInputMode>
+        case 1587405498: throw new FHIRException("Cannot make property documentation as it is not a complex type"); // StringType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -2094,6 +2339,46 @@ public class StructureMap extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3373707: /*name*/ return this.name == null ? new Base[0] : new Base[] {this.name}; // IdType
+        case -896505829: /*source*/ return this.source == null ? new Base[0] : this.source.toArray(new Base[this.source.size()]); // StructureMapGroupRuleSourceComponent
+        case -880905839: /*target*/ return this.target == null ? new Base[0] : this.target.toArray(new Base[this.target.size()]); // StructureMapGroupRuleTargetComponent
+        case 3512060: /*rule*/ return this.rule == null ? new Base[0] : this.rule.toArray(new Base[this.rule.size()]); // StructureMapGroupRuleComponent
+        case -1109226753: /*dependent*/ return this.dependent == null ? new Base[0] : this.dependent.toArray(new Base[this.dependent.size()]); // StructureMapGroupRuleDependentComponent
+        case 1587405498: /*documentation*/ return this.documentation == null ? new Base[0] : new Base[] {this.documentation}; // StringType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3373707: // name
+          this.name = castToId(value); // IdType
+          break;
+        case -896505829: // source
+          this.getSource().add((StructureMapGroupRuleSourceComponent) value); // StructureMapGroupRuleSourceComponent
+          break;
+        case -880905839: // target
+          this.getTarget().add((StructureMapGroupRuleTargetComponent) value); // StructureMapGroupRuleTargetComponent
+          break;
+        case 3512060: // rule
+          this.getRule().add((StructureMapGroupRuleComponent) value); // StructureMapGroupRuleComponent
+          break;
+        case -1109226753: // dependent
+          this.getDependent().add((StructureMapGroupRuleDependentComponent) value); // StructureMapGroupRuleDependentComponent
+          break;
+        case 1587405498: // documentation
+          this.documentation = castToString(value); // StringType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("name"))
           this.name = castToId(value); // IdType
@@ -2109,6 +2394,20 @@ public class StructureMap extends DomainResource {
           this.documentation = castToString(value); // StringType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3373707: throw new FHIRException("Cannot make property name as it is not a complex type"); // IdType
+        case -896505829:  return addSource(); // StructureMapGroupRuleSourceComponent
+        case -880905839:  return addTarget(); // StructureMapGroupRuleTargetComponent
+        case 3512060:  return addRule(); // StructureMapGroupRuleComponent
+        case -1109226753:  return addDependent(); // StructureMapGroupRuleDependentComponent
+        case 1587405498: throw new FHIRException("Cannot make property documentation as it is not a complex type"); // StringType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -2668,6 +2967,54 @@ public class StructureMap extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -393139297: /*required*/ return this.required == null ? new Base[0] : new Base[] {this.required}; // BooleanType
+        case 951530927: /*context*/ return this.context == null ? new Base[0] : new Base[] {this.context}; // IdType
+        case -102839927: /*contextType*/ return this.contextType == null ? new Base[0] : new Base[] {this.contextType}; // Enumeration<StructureMapContextType>
+        case -1662836996: /*element*/ return this.element == null ? new Base[0] : new Base[] {this.element}; // StringType
+        case 1345445729: /*listMode*/ return this.listMode == null ? new Base[0] : new Base[] {this.listMode}; // Enumeration<StructureMapListMode>
+        case -1249586564: /*variable*/ return this.variable == null ? new Base[0] : new Base[] {this.variable}; // IdType
+        case -861311717: /*condition*/ return this.condition == null ? new Base[0] : new Base[] {this.condition}; // StringType
+        case 94627080: /*check*/ return this.check == null ? new Base[0] : new Base[] {this.check}; // StringType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -393139297: // required
+          this.required = castToBoolean(value); // BooleanType
+          break;
+        case 951530927: // context
+          this.context = castToId(value); // IdType
+          break;
+        case -102839927: // contextType
+          this.contextType = new StructureMapContextTypeEnumFactory().fromType(value); // Enumeration<StructureMapContextType>
+          break;
+        case -1662836996: // element
+          this.element = castToString(value); // StringType
+          break;
+        case 1345445729: // listMode
+          this.listMode = new StructureMapListModeEnumFactory().fromType(value); // Enumeration<StructureMapListMode>
+          break;
+        case -1249586564: // variable
+          this.variable = castToId(value); // IdType
+          break;
+        case -861311717: // condition
+          this.condition = castToString(value); // StringType
+          break;
+        case 94627080: // check
+          this.check = castToString(value); // StringType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("required"))
           this.required = castToBoolean(value); // BooleanType
@@ -2687,6 +3034,22 @@ public class StructureMap extends DomainResource {
           this.check = castToString(value); // StringType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -393139297: throw new FHIRException("Cannot make property required as it is not a complex type"); // BooleanType
+        case 951530927: throw new FHIRException("Cannot make property context as it is not a complex type"); // IdType
+        case -102839927: throw new FHIRException("Cannot make property contextType as it is not a complex type"); // Enumeration<StructureMapContextType>
+        case -1662836996: throw new FHIRException("Cannot make property element as it is not a complex type"); // StringType
+        case 1345445729: throw new FHIRException("Cannot make property listMode as it is not a complex type"); // Enumeration<StructureMapListMode>
+        case -1249586564: throw new FHIRException("Cannot make property variable as it is not a complex type"); // IdType
+        case -861311717: throw new FHIRException("Cannot make property condition as it is not a complex type"); // StringType
+        case 94627080: throw new FHIRException("Cannot make property check as it is not a complex type"); // StringType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -3084,7 +3447,7 @@ public class StructureMap extends DomainResource {
           if (this.listMode == null)
             return false;
           for (Enumeration<StructureMapListMode> v : this.listMode)
-            if (v.equals(value)) // code
+            if (v.getValue().equals(value)) // code
               return true;
           return false;
         }
@@ -3240,6 +3603,54 @@ public class StructureMap extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 951530927: /*context*/ return this.context == null ? new Base[0] : new Base[] {this.context}; // IdType
+        case -102839927: /*contextType*/ return this.contextType == null ? new Base[0] : new Base[] {this.contextType}; // Enumeration<StructureMapContextType>
+        case -1662836996: /*element*/ return this.element == null ? new Base[0] : new Base[] {this.element}; // StringType
+        case -1249586564: /*variable*/ return this.variable == null ? new Base[0] : new Base[] {this.variable}; // IdType
+        case 1345445729: /*listMode*/ return this.listMode == null ? new Base[0] : this.listMode.toArray(new Base[this.listMode.size()]); // Enumeration<StructureMapListMode>
+        case 337117045: /*listRuleId*/ return this.listRuleId == null ? new Base[0] : new Base[] {this.listRuleId}; // IdType
+        case 1052666732: /*transform*/ return this.transform == null ? new Base[0] : new Base[] {this.transform}; // Enumeration<StructureMapTransform>
+        case 1954460585: /*parameter*/ return this.parameter == null ? new Base[0] : this.parameter.toArray(new Base[this.parameter.size()]); // StructureMapGroupRuleTargetParameterComponent
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 951530927: // context
+          this.context = castToId(value); // IdType
+          break;
+        case -102839927: // contextType
+          this.contextType = new StructureMapContextTypeEnumFactory().fromType(value); // Enumeration<StructureMapContextType>
+          break;
+        case -1662836996: // element
+          this.element = castToString(value); // StringType
+          break;
+        case -1249586564: // variable
+          this.variable = castToId(value); // IdType
+          break;
+        case 1345445729: // listMode
+          this.getListMode().add(new StructureMapListModeEnumFactory().fromType(value)); // Enumeration<StructureMapListMode>
+          break;
+        case 337117045: // listRuleId
+          this.listRuleId = castToId(value); // IdType
+          break;
+        case 1052666732: // transform
+          this.transform = new StructureMapTransformEnumFactory().fromType(value); // Enumeration<StructureMapTransform>
+          break;
+        case 1954460585: // parameter
+          this.getParameter().add((StructureMapGroupRuleTargetParameterComponent) value); // StructureMapGroupRuleTargetParameterComponent
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("context"))
           this.context = castToId(value); // IdType
@@ -3259,6 +3670,22 @@ public class StructureMap extends DomainResource {
           this.getParameter().add((StructureMapGroupRuleTargetParameterComponent) value);
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 951530927: throw new FHIRException("Cannot make property context as it is not a complex type"); // IdType
+        case -102839927: throw new FHIRException("Cannot make property contextType as it is not a complex type"); // Enumeration<StructureMapContextType>
+        case -1662836996: throw new FHIRException("Cannot make property element as it is not a complex type"); // StringType
+        case -1249586564: throw new FHIRException("Cannot make property variable as it is not a complex type"); // IdType
+        case 1345445729: throw new FHIRException("Cannot make property listMode as it is not a complex type"); // Enumeration<StructureMapListMode>
+        case 337117045: throw new FHIRException("Cannot make property listRuleId as it is not a complex type"); // IdType
+        case 1052666732: throw new FHIRException("Cannot make property transform as it is not a complex type"); // Enumeration<StructureMapTransform>
+        case 1954460585:  return addParameter(); // StructureMapGroupRuleTargetParameterComponent
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -3467,11 +3894,40 @@ public class StructureMap extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 111972721: /*value*/ return this.value == null ? new Base[0] : new Base[] {this.value}; // Type
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 111972721: // value
+          this.value = (Type) value; // Type
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("value[x]"))
           this.value = (Type) value; // Type
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -1410166417:  return getValue(); // Type
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -3677,6 +4133,30 @@ public class StructureMap extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3373707: /*name*/ return this.name == null ? new Base[0] : new Base[] {this.name}; // IdType
+        case -1249586564: /*variable*/ return this.variable == null ? new Base[0] : this.variable.toArray(new Base[this.variable.size()]); // StringType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3373707: // name
+          this.name = castToId(value); // IdType
+          break;
+        case -1249586564: // variable
+          this.getVariable().add(castToString(value)); // StringType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("name"))
           this.name = castToId(value); // IdType
@@ -3684,6 +4164,16 @@ public class StructureMap extends DomainResource {
           this.getVariable().add(castToString(value));
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3373707: throw new FHIRException("Cannot make property name as it is not a complex type"); // IdType
+        case -1249586564: throw new FHIRException("Cannot make property variable as it is not a complex type"); // StringType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -3743,118 +4233,69 @@ public class StructureMap extends DomainResource {
   }
 
     /**
-     * An absolute URL that is used to identify this structure map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this structure map is (or will be) published.
-     */
-    @Child(name = "url", type = {UriType.class}, order=0, min=1, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Absolute URL used to reference this StructureMap", formalDefinition="An absolute URL that is used to identify this structure map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this structure map is (or will be) published." )
-    protected UriType url;
-
-    /**
      * Formal identifier that is used to identify this StructureMap when it is represented in other formats, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI).
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Other identifiers for the StructureMap", formalDefinition="Formal identifier that is used to identify this StructureMap when it is represented in other formats, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI)." )
     protected List<Identifier> identifier;
 
     /**
-     * The identifier that is used to identify this version of the StructureMap when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the StructureMap author manually.
-     */
-    @Child(name = "version", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Logical id for this version of the StructureMap", formalDefinition="The identifier that is used to identify this version of the StructureMap when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the StructureMap author manually." )
-    protected StringType version;
-
-    /**
-     * A free text natural language name identifying the StructureMap.
-     */
-    @Child(name = "name", type = {StringType.class}, order=3, min=1, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Informal name for this StructureMap", formalDefinition="A free text natural language name identifying the StructureMap." )
-    protected StringType name;
-
-    /**
-     * The status of the StructureMap.
-     */
-    @Child(name = "status", type = {CodeType.class}, order=4, min=1, max=1, modifier=true, summary=true)
-    @Description(shortDefinition="draft | active | retired", formalDefinition="The status of the StructureMap." )
-    protected Enumeration<ConformanceResourceStatus> status;
-
-    /**
      * This StructureMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.
      */
-    @Child(name = "experimental", type = {BooleanType.class}, order=5, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "experimental", type = {BooleanType.class}, order=1, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="If for testing purposes, not real usage", formalDefinition="This StructureMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage." )
     protected BooleanType experimental;
 
     /**
      * The name of the individual or organization that published the structure map.
      */
-    @Child(name = "publisher", type = {StringType.class}, order=6, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "publisher", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Name of the publisher (Organization or individual)", formalDefinition="The name of the individual or organization that published the structure map." )
     protected StringType publisher;
 
     /**
      * Contacts to assist a user in finding and communicating with the publisher.
      */
-    @Child(name = "contact", type = {}, order=7, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "contact", type = {}, order=3, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Contact details of the publisher", formalDefinition="Contacts to assist a user in finding and communicating with the publisher." )
     protected List<StructureMapContactComponent> contact;
 
     /**
-     * The date this version of the structure map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the structure map changes.
-     */
-    @Child(name = "date", type = {DateTimeType.class}, order=8, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Date for this version of the StructureMap", formalDefinition="The date this version of the structure map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the structure map changes." )
-    protected DateTimeType date;
-
-    /**
      * A free text natural language description of the StructureMap and its use.
      */
-    @Child(name = "description", type = {StringType.class}, order=9, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "description", type = {StringType.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Natural language description of the StructureMap", formalDefinition="A free text natural language description of the StructureMap and its use." )
     protected StringType description;
 
     /**
-     * The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of structure maps.
-     */
-    @Child(name = "useContext", type = {CodeableConcept.class}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="Content intends to support these contexts", formalDefinition="The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of structure maps." )
-    protected List<CodeableConcept> useContext;
-
-    /**
      * Explains why this structure map is needed and why it's been designed as it has.
      */
-    @Child(name = "requirements", type = {StringType.class}, order=11, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "requirements", type = {StringType.class}, order=5, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Scope and Usage this structure map is for", formalDefinition="Explains why this structure map is needed and why it's been designed as it has." )
     protected StringType requirements;
 
     /**
-     * A copyright statement relating to the structure map and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings.
-     */
-    @Child(name = "copyright", type = {StringType.class}, order=12, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Use and/or publishing restrictions", formalDefinition="A copyright statement relating to the structure map and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings." )
-    protected StringType copyright;
-
-    /**
      * A structure definition used by this map. The structure definition may describe instances that are converted, or the instances that are produced.
      */
-    @Child(name = "structure", type = {}, order=13, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "structure", type = {}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Structure Definition used by this map", formalDefinition="A structure definition used by this map. The structure definition may describe instances that are converted, or the instances that are produced." )
     protected List<StructureMapStructureComponent> structure;
 
     /**
      * Other maps used by this map (canonical URLs).
      */
-    @Child(name = "import", type = {UriType.class}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "import", type = {UriType.class}, order=7, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Other maps used by this map (canonical URLs)", formalDefinition="Other maps used by this map (canonical URLs)." )
     protected List<UriType> import_;
 
     /**
      * Named sections for reader convenience.
      */
-    @Child(name = "group", type = {}, order=15, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "group", type = {}, order=8, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Named sections for reader convenience", formalDefinition="Named sections for reader convenience." )
     protected List<StructureMapGroupComponent> group;
 
-    private static final long serialVersionUID = 710892955L;
+    private static final long serialVersionUID = -1885780675L;
 
   /**
    * Constructor
@@ -3871,41 +4312,6 @@ public class StructureMap extends DomainResource {
       this.url = url;
       this.name = name;
       this.status = status;
-    }
-
-    /**
-     * @return {@link #url} (An absolute URL that is used to identify this structure map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this structure map is (or will be) published.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
-     */
-    public UriType getUrlElement() { 
-      if (this.url == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create StructureMap.url");
-        else if (Configuration.doAutoCreate())
-          this.url = new UriType(); // bb
-      return this.url;
-    }
-
-    public boolean hasUrlElement() { 
-      return this.url != null && !this.url.isEmpty();
-    }
-
-    public boolean hasUrl() { 
-      return this.url != null && !this.url.isEmpty();
-    }
-
-    /**
-     * @param value {@link #url} (An absolute URL that is used to identify this structure map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this structure map is (or will be) published.). This is the underlying object with id, value and extensions. The accessor "getUrl" gives direct access to the value
-     */
-    public StructureMap setUrlElement(UriType value) { 
-      this.url = value;
-      return this;
-    }
-
-    /**
-     * @return An absolute URL that is used to identify this structure map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this structure map is (or will be) published.
-     */
-    public String getUrl() { 
-      return this.url == null ? null : this.url.getValue();
     }
 
     /**
@@ -3959,41 +4365,6 @@ public class StructureMap extends DomainResource {
     }
 
     /**
-     * @return {@link #version} (The identifier that is used to identify this version of the StructureMap when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the StructureMap author manually.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
-     */
-    public StringType getVersionElement() { 
-      if (this.version == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create StructureMap.version");
-        else if (Configuration.doAutoCreate())
-          this.version = new StringType(); // bb
-      return this.version;
-    }
-
-    public boolean hasVersionElement() { 
-      return this.version != null && !this.version.isEmpty();
-    }
-
-    public boolean hasVersion() { 
-      return this.version != null && !this.version.isEmpty();
-    }
-
-    /**
-     * @param value {@link #version} (The identifier that is used to identify this version of the StructureMap when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the StructureMap author manually.). This is the underlying object with id, value and extensions. The accessor "getVersion" gives direct access to the value
-     */
-    public StructureMap setVersionElement(StringType value) { 
-      this.version = value;
-      return this;
-    }
-
-    /**
-     * @return The identifier that is used to identify this version of the StructureMap when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the StructureMap author manually.
-     */
-    public String getVersion() { 
-      return this.version == null ? null : this.version.getValue();
-    }
-
-    /**
      * @param value The identifier that is used to identify this version of the StructureMap when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the StructureMap author manually.
      */
     public StructureMap setVersion(String value) { 
@@ -4008,41 +4379,6 @@ public class StructureMap extends DomainResource {
     }
 
     /**
-     * @return {@link #name} (A free text natural language name identifying the StructureMap.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
-     */
-    public StringType getNameElement() { 
-      if (this.name == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create StructureMap.name");
-        else if (Configuration.doAutoCreate())
-          this.name = new StringType(); // bb
-      return this.name;
-    }
-
-    public boolean hasNameElement() { 
-      return this.name != null && !this.name.isEmpty();
-    }
-
-    public boolean hasName() { 
-      return this.name != null && !this.name.isEmpty();
-    }
-
-    /**
-     * @param value {@link #name} (A free text natural language name identifying the StructureMap.). This is the underlying object with id, value and extensions. The accessor "getName" gives direct access to the value
-     */
-    public StructureMap setNameElement(StringType value) { 
-      this.name = value;
-      return this;
-    }
-
-    /**
-     * @return A free text natural language name identifying the StructureMap.
-     */
-    public String getName() { 
-      return this.name == null ? null : this.name.getValue();
-    }
-
-    /**
      * @param value A free text natural language name identifying the StructureMap.
      */
     public StructureMap setName(String value) { 
@@ -4050,41 +4386,6 @@ public class StructureMap extends DomainResource {
           this.name = new StringType();
         this.name.setValue(value);
       return this;
-    }
-
-    /**
-     * @return {@link #status} (The status of the StructureMap.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
-     */
-    public Enumeration<ConformanceResourceStatus> getStatusElement() { 
-      if (this.status == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create StructureMap.status");
-        else if (Configuration.doAutoCreate())
-          this.status = new Enumeration<ConformanceResourceStatus>(new ConformanceResourceStatusEnumFactory()); // bb
-      return this.status;
-    }
-
-    public boolean hasStatusElement() { 
-      return this.status != null && !this.status.isEmpty();
-    }
-
-    public boolean hasStatus() { 
-      return this.status != null && !this.status.isEmpty();
-    }
-
-    /**
-     * @param value {@link #status} (The status of the StructureMap.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
-     */
-    public StructureMap setStatusElement(Enumeration<ConformanceResourceStatus> value) { 
-      this.status = value;
-      return this;
-    }
-
-    /**
-     * @return The status of the StructureMap.
-     */
-    public ConformanceResourceStatus getStatus() { 
-      return this.status == null ? null : this.status.getValue();
     }
 
     /**
@@ -4232,41 +4533,6 @@ public class StructureMap extends DomainResource {
     }
 
     /**
-     * @return {@link #date} (The date this version of the structure map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the structure map changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
-     */
-    public DateTimeType getDateElement() { 
-      if (this.date == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create StructureMap.date");
-        else if (Configuration.doAutoCreate())
-          this.date = new DateTimeType(); // bb
-      return this.date;
-    }
-
-    public boolean hasDateElement() { 
-      return this.date != null && !this.date.isEmpty();
-    }
-
-    public boolean hasDate() { 
-      return this.date != null && !this.date.isEmpty();
-    }
-
-    /**
-     * @param value {@link #date} (The date this version of the structure map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the structure map changes.). This is the underlying object with id, value and extensions. The accessor "getDate" gives direct access to the value
-     */
-    public StructureMap setDateElement(DateTimeType value) { 
-      this.date = value;
-      return this;
-    }
-
-    /**
-     * @return The date this version of the structure map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the structure map changes.
-     */
-    public Date getDate() { 
-      return this.date == null ? null : this.date.getValue();
-    }
-
-    /**
      * @param value The date this version of the structure map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the structure map changes.
      */
     public StructureMap setDate(Date value) { 
@@ -4330,46 +4596,6 @@ public class StructureMap extends DomainResource {
     }
 
     /**
-     * @return {@link #useContext} (The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of structure maps.)
-     */
-    public List<CodeableConcept> getUseContext() { 
-      if (this.useContext == null)
-        this.useContext = new ArrayList<CodeableConcept>();
-      return this.useContext;
-    }
-
-    public boolean hasUseContext() { 
-      if (this.useContext == null)
-        return false;
-      for (CodeableConcept item : this.useContext)
-        if (!item.isEmpty())
-          return true;
-      return false;
-    }
-
-    /**
-     * @return {@link #useContext} (The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of structure maps.)
-     */
-    // syntactic sugar
-    public CodeableConcept addUseContext() { //3
-      CodeableConcept t = new CodeableConcept();
-      if (this.useContext == null)
-        this.useContext = new ArrayList<CodeableConcept>();
-      this.useContext.add(t);
-      return t;
-    }
-
-    // syntactic sugar
-    public StructureMap addUseContext(CodeableConcept t) { //3
-      if (t == null)
-        return this;
-      if (this.useContext == null)
-        this.useContext = new ArrayList<CodeableConcept>();
-      this.useContext.add(t);
-      return this;
-    }
-
-    /**
      * @return {@link #requirements} (Explains why this structure map is needed and why it's been designed as it has.). This is the underlying object with id, value and extensions. The accessor "getRequirements" gives direct access to the value
      */
     public StringType getRequirementsElement() { 
@@ -4416,41 +4642,6 @@ public class StructureMap extends DomainResource {
         this.requirements.setValue(value);
       }
       return this;
-    }
-
-    /**
-     * @return {@link #copyright} (A copyright statement relating to the structure map and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings.). This is the underlying object with id, value and extensions. The accessor "getCopyright" gives direct access to the value
-     */
-    public StringType getCopyrightElement() { 
-      if (this.copyright == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create StructureMap.copyright");
-        else if (Configuration.doAutoCreate())
-          this.copyright = new StringType(); // bb
-      return this.copyright;
-    }
-
-    public boolean hasCopyrightElement() { 
-      return this.copyright != null && !this.copyright.isEmpty();
-    }
-
-    public boolean hasCopyright() { 
-      return this.copyright != null && !this.copyright.isEmpty();
-    }
-
-    /**
-     * @param value {@link #copyright} (A copyright statement relating to the structure map and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings.). This is the underlying object with id, value and extensions. The accessor "getCopyright" gives direct access to the value
-     */
-    public StructureMap setCopyrightElement(StringType value) { 
-      this.copyright = value;
-      return this;
-    }
-
-    /**
-     * @return A copyright statement relating to the structure map and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings.
-     */
-    public String getCopyright() { 
-      return this.copyright == null ? null : this.copyright.getValue();
     }
 
     /**
@@ -4603,22 +4794,95 @@ public class StructureMap extends DomainResource {
 
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
-        childrenList.add(new Property("url", "uri", "An absolute URL that is used to identify this structure map when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this structure map is (or will be) published.", 0, java.lang.Integer.MAX_VALUE, url));
         childrenList.add(new Property("identifier", "Identifier", "Formal identifier that is used to identify this StructureMap when it is represented in other formats, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI).", 0, java.lang.Integer.MAX_VALUE, identifier));
-        childrenList.add(new Property("version", "string", "The identifier that is used to identify this version of the StructureMap when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the StructureMap author manually.", 0, java.lang.Integer.MAX_VALUE, version));
-        childrenList.add(new Property("name", "string", "A free text natural language name identifying the StructureMap.", 0, java.lang.Integer.MAX_VALUE, name));
-        childrenList.add(new Property("status", "code", "The status of the StructureMap.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("experimental", "boolean", "This StructureMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.", 0, java.lang.Integer.MAX_VALUE, experimental));
         childrenList.add(new Property("publisher", "string", "The name of the individual or organization that published the structure map.", 0, java.lang.Integer.MAX_VALUE, publisher));
         childrenList.add(new Property("contact", "", "Contacts to assist a user in finding and communicating with the publisher.", 0, java.lang.Integer.MAX_VALUE, contact));
-        childrenList.add(new Property("date", "dateTime", "The date this version of the structure map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the structure map changes.", 0, java.lang.Integer.MAX_VALUE, date));
         childrenList.add(new Property("description", "string", "A free text natural language description of the StructureMap and its use.", 0, java.lang.Integer.MAX_VALUE, description));
-        childrenList.add(new Property("useContext", "CodeableConcept", "The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of structure maps.", 0, java.lang.Integer.MAX_VALUE, useContext));
         childrenList.add(new Property("requirements", "string", "Explains why this structure map is needed and why it's been designed as it has.", 0, java.lang.Integer.MAX_VALUE, requirements));
-        childrenList.add(new Property("copyright", "string", "A copyright statement relating to the structure map and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings.", 0, java.lang.Integer.MAX_VALUE, copyright));
         childrenList.add(new Property("structure", "", "A structure definition used by this map. The structure definition may describe instances that are converted, or the instances that are produced.", 0, java.lang.Integer.MAX_VALUE, structure));
         childrenList.add(new Property("import", "uri", "Other maps used by this map (canonical URLs).", 0, java.lang.Integer.MAX_VALUE, import_));
         childrenList.add(new Property("group", "", "Named sections for reader convenience.", 0, java.lang.Integer.MAX_VALUE, group));
+      }
+
+      @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 116079: /*url*/ return this.url == null ? new Base[0] : new Base[] {this.url}; // UriType
+        case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : this.identifier.toArray(new Base[this.identifier.size()]); // Identifier
+        case 351608024: /*version*/ return this.version == null ? new Base[0] : new Base[] {this.version}; // StringType
+        case 3373707: /*name*/ return this.name == null ? new Base[0] : new Base[] {this.name}; // StringType
+        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<ConformanceResourceStatus>
+        case -404562712: /*experimental*/ return this.experimental == null ? new Base[0] : new Base[] {this.experimental}; // BooleanType
+        case 1447404028: /*publisher*/ return this.publisher == null ? new Base[0] : new Base[] {this.publisher}; // StringType
+        case 951526432: /*contact*/ return this.contact == null ? new Base[0] : this.contact.toArray(new Base[this.contact.size()]); // StructureMapContactComponent
+        case 3076014: /*date*/ return this.date == null ? new Base[0] : new Base[] {this.date}; // DateTimeType
+        case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // StringType
+        case -669707736: /*useContext*/ return this.useContext == null ? new Base[0] : this.useContext.toArray(new Base[this.useContext.size()]); // CodeableConcept
+        case -1619874672: /*requirements*/ return this.requirements == null ? new Base[0] : new Base[] {this.requirements}; // StringType
+        case 1522889671: /*copyright*/ return this.copyright == null ? new Base[0] : new Base[] {this.copyright}; // StringType
+        case 144518515: /*structure*/ return this.structure == null ? new Base[0] : this.structure.toArray(new Base[this.structure.size()]); // StructureMapStructureComponent
+        case -1184795739: /*import*/ return this.import_ == null ? new Base[0] : this.import_.toArray(new Base[this.import_.size()]); // UriType
+        case 98629247: /*group*/ return this.group == null ? new Base[0] : this.group.toArray(new Base[this.group.size()]); // StructureMapGroupComponent
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 116079: // url
+          this.url = castToUri(value); // UriType
+          break;
+        case -1618432855: // identifier
+          this.getIdentifier().add(castToIdentifier(value)); // Identifier
+          break;
+        case 351608024: // version
+          this.version = castToString(value); // StringType
+          break;
+        case 3373707: // name
+          this.name = castToString(value); // StringType
+          break;
+        case -892481550: // status
+          this.status = new ConformanceResourceStatusEnumFactory().fromType(value); // Enumeration<ConformanceResourceStatus>
+          break;
+        case -404562712: // experimental
+          this.experimental = castToBoolean(value); // BooleanType
+          break;
+        case 1447404028: // publisher
+          this.publisher = castToString(value); // StringType
+          break;
+        case 951526432: // contact
+          this.getContact().add((StructureMapContactComponent) value); // StructureMapContactComponent
+          break;
+        case 3076014: // date
+          this.date = castToDateTime(value); // DateTimeType
+          break;
+        case -1724546052: // description
+          this.description = castToString(value); // StringType
+          break;
+        case -669707736: // useContext
+          this.getUseContext().add(castToCodeableConcept(value)); // CodeableConcept
+          break;
+        case -1619874672: // requirements
+          this.requirements = castToString(value); // StringType
+          break;
+        case 1522889671: // copyright
+          this.copyright = castToString(value); // StringType
+          break;
+        case 144518515: // structure
+          this.getStructure().add((StructureMapStructureComponent) value); // StructureMapStructureComponent
+          break;
+        case -1184795739: // import
+          this.getImport().add(castToUri(value)); // UriType
+          break;
+        case 98629247: // group
+          this.getGroup().add((StructureMapGroupComponent) value); // StructureMapGroupComponent
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
       }
 
       @Override
@@ -4657,6 +4921,30 @@ public class StructureMap extends DomainResource {
           this.getGroup().add((StructureMapGroupComponent) value);
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 116079: throw new FHIRException("Cannot make property url as it is not a complex type"); // UriType
+        case -1618432855:  return addIdentifier(); // Identifier
+        case 351608024: throw new FHIRException("Cannot make property version as it is not a complex type"); // StringType
+        case 3373707: throw new FHIRException("Cannot make property name as it is not a complex type"); // StringType
+        case -892481550: throw new FHIRException("Cannot make property status as it is not a complex type"); // Enumeration<ConformanceResourceStatus>
+        case -404562712: throw new FHIRException("Cannot make property experimental as it is not a complex type"); // BooleanType
+        case 1447404028: throw new FHIRException("Cannot make property publisher as it is not a complex type"); // StringType
+        case 951526432:  return addContact(); // StructureMapContactComponent
+        case 3076014: throw new FHIRException("Cannot make property date as it is not a complex type"); // DateTimeType
+        case -1724546052: throw new FHIRException("Cannot make property description as it is not a complex type"); // StringType
+        case -669707736:  return addUseContext(); // CodeableConcept
+        case -1619874672: throw new FHIRException("Cannot make property requirements as it is not a complex type"); // StringType
+        case 1522889671: throw new FHIRException("Cannot make property copyright as it is not a complex type"); // StringType
+        case 144518515:  return addStructure(); // StructureMapStructureComponent
+        case -1184795739: throw new FHIRException("Cannot make property import as it is not a complex type"); // UriType
+        case 98629247:  return addGroup(); // StructureMapGroupComponent
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -4775,13 +5063,10 @@ public class StructureMap extends DomainResource {
         if (!(other instanceof StructureMap))
           return false;
         StructureMap o = (StructureMap) other;
-        return compareDeep(url, o.url, true) && compareDeep(identifier, o.identifier, true) && compareDeep(version, o.version, true)
-           && compareDeep(name, o.name, true) && compareDeep(status, o.status, true) && compareDeep(experimental, o.experimental, true)
-           && compareDeep(publisher, o.publisher, true) && compareDeep(contact, o.contact, true) && compareDeep(date, o.date, true)
-           && compareDeep(description, o.description, true) && compareDeep(useContext, o.useContext, true)
-           && compareDeep(requirements, o.requirements, true) && compareDeep(copyright, o.copyright, true)
-           && compareDeep(structure, o.structure, true) && compareDeep(import_, o.import_, true) && compareDeep(group, o.group, true)
-          ;
+        return compareDeep(identifier, o.identifier, true) && compareDeep(experimental, o.experimental, true)
+           && compareDeep(publisher, o.publisher, true) && compareDeep(contact, o.contact, true) && compareDeep(description, o.description, true)
+           && compareDeep(requirements, o.requirements, true) && compareDeep(structure, o.structure, true)
+           && compareDeep(import_, o.import_, true) && compareDeep(group, o.group, true);
       }
 
       @Override
@@ -4791,19 +5076,15 @@ public class StructureMap extends DomainResource {
         if (!(other instanceof StructureMap))
           return false;
         StructureMap o = (StructureMap) other;
-        return compareValues(url, o.url, true) && compareValues(version, o.version, true) && compareValues(name, o.name, true)
-           && compareValues(status, o.status, true) && compareValues(experimental, o.experimental, true) && compareValues(publisher, o.publisher, true)
-           && compareValues(date, o.date, true) && compareValues(description, o.description, true) && compareValues(requirements, o.requirements, true)
-           && compareValues(copyright, o.copyright, true) && compareValues(import_, o.import_, true);
+        return compareValues(experimental, o.experimental, true) && compareValues(publisher, o.publisher, true)
+           && compareValues(description, o.description, true) && compareValues(requirements, o.requirements, true)
+           && compareValues(import_, o.import_, true);
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (url == null || url.isEmpty()) && (identifier == null || identifier.isEmpty())
-           && (version == null || version.isEmpty()) && (name == null || name.isEmpty()) && (status == null || status.isEmpty())
-           && (experimental == null || experimental.isEmpty()) && (publisher == null || publisher.isEmpty())
-           && (contact == null || contact.isEmpty()) && (date == null || date.isEmpty()) && (description == null || description.isEmpty())
-           && (useContext == null || useContext.isEmpty()) && (requirements == null || requirements.isEmpty())
-           && (copyright == null || copyright.isEmpty()) && (structure == null || structure.isEmpty())
+        return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (experimental == null || experimental.isEmpty())
+           && (publisher == null || publisher.isEmpty()) && (contact == null || contact.isEmpty()) && (description == null || description.isEmpty())
+           && (requirements == null || requirements.isEmpty()) && (structure == null || structure.isEmpty())
            && (import_ == null || import_.isEmpty()) && (group == null || group.isEmpty());
       }
 

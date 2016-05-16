@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -61,7 +61,7 @@ public class Device extends DomainResource {
          */
         ENTEREDINERROR, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static DeviceStatus fromCode(String codeString) throws FHIRException {
@@ -73,7 +73,10 @@ public class Device extends DomainResource {
           return NOTAVAILABLE;
         if ("entered-in-error".equals(codeString))
           return ENTEREDINERROR;
-        throw new FHIRException("Unknown DeviceStatus code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown DeviceStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -1007,6 +1010,86 @@ public class Device extends DomainResource {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : this.identifier.toArray(new Base[this.identifier.size()]); // Identifier
+        case -1343558178: /*udiCarrier*/ return this.udiCarrier == null ? new Base[0] : new Base[] {this.udiCarrier}; // Identifier
+        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<DeviceStatus>
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeableConcept
+        case 462547450: /*lotNumber*/ return this.lotNumber == null ? new Base[0] : new Base[] {this.lotNumber}; // StringType
+        case -1969347631: /*manufacturer*/ return this.manufacturer == null ? new Base[0] : new Base[] {this.manufacturer}; // StringType
+        case 416714767: /*manufactureDate*/ return this.manufactureDate == null ? new Base[0] : new Base[] {this.manufactureDate}; // DateTimeType
+        case -668811523: /*expirationDate*/ return this.expirationDate == null ? new Base[0] : new Base[] {this.expirationDate}; // DateTimeType
+        case 104069929: /*model*/ return this.model == null ? new Base[0] : new Base[] {this.model}; // StringType
+        case 351608024: /*version*/ return this.version == null ? new Base[0] : new Base[] {this.version}; // StringType
+        case -791418107: /*patient*/ return this.patient == null ? new Base[0] : new Base[] {this.patient}; // Reference
+        case 106164915: /*owner*/ return this.owner == null ? new Base[0] : new Base[] {this.owner}; // Reference
+        case 951526432: /*contact*/ return this.contact == null ? new Base[0] : this.contact.toArray(new Base[this.contact.size()]); // ContactPoint
+        case 1901043637: /*location*/ return this.location == null ? new Base[0] : new Base[] {this.location}; // Reference
+        case 116079: /*url*/ return this.url == null ? new Base[0] : new Base[] {this.url}; // UriType
+        case 3387378: /*note*/ return this.note == null ? new Base[0] : this.note.toArray(new Base[this.note.size()]); // Annotation
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -1618432855: // identifier
+          this.getIdentifier().add(castToIdentifier(value)); // Identifier
+          break;
+        case -1343558178: // udiCarrier
+          this.udiCarrier = castToIdentifier(value); // Identifier
+          break;
+        case -892481550: // status
+          this.status = new DeviceStatusEnumFactory().fromType(value); // Enumeration<DeviceStatus>
+          break;
+        case 3575610: // type
+          this.type = castToCodeableConcept(value); // CodeableConcept
+          break;
+        case 462547450: // lotNumber
+          this.lotNumber = castToString(value); // StringType
+          break;
+        case -1969347631: // manufacturer
+          this.manufacturer = castToString(value); // StringType
+          break;
+        case 416714767: // manufactureDate
+          this.manufactureDate = castToDateTime(value); // DateTimeType
+          break;
+        case -668811523: // expirationDate
+          this.expirationDate = castToDateTime(value); // DateTimeType
+          break;
+        case 104069929: // model
+          this.model = castToString(value); // StringType
+          break;
+        case 351608024: // version
+          this.version = castToString(value); // StringType
+          break;
+        case -791418107: // patient
+          this.patient = castToReference(value); // Reference
+          break;
+        case 106164915: // owner
+          this.owner = castToReference(value); // Reference
+          break;
+        case 951526432: // contact
+          this.getContact().add(castToContactPoint(value)); // ContactPoint
+          break;
+        case 1901043637: // location
+          this.location = castToReference(value); // Reference
+          break;
+        case 116079: // url
+          this.url = castToUri(value); // UriType
+          break;
+        case 3387378: // note
+          this.getNote().add(castToAnnotation(value)); // Annotation
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("identifier"))
           this.getIdentifier().add(castToIdentifier(value));
@@ -1042,6 +1125,30 @@ public class Device extends DomainResource {
           this.getNote().add(castToAnnotation(value));
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -1618432855:  return addIdentifier(); // Identifier
+        case -1343558178:  return getUdiCarrier(); // Identifier
+        case -892481550: throw new FHIRException("Cannot make property status as it is not a complex type"); // Enumeration<DeviceStatus>
+        case 3575610:  return getType(); // CodeableConcept
+        case 462547450: throw new FHIRException("Cannot make property lotNumber as it is not a complex type"); // StringType
+        case -1969347631: throw new FHIRException("Cannot make property manufacturer as it is not a complex type"); // StringType
+        case 416714767: throw new FHIRException("Cannot make property manufactureDate as it is not a complex type"); // DateTimeType
+        case -668811523: throw new FHIRException("Cannot make property expirationDate as it is not a complex type"); // DateTimeType
+        case 104069929: throw new FHIRException("Cannot make property model as it is not a complex type"); // StringType
+        case 351608024: throw new FHIRException("Cannot make property version as it is not a complex type"); // StringType
+        case -791418107:  return getPatient(); // Reference
+        case 106164915:  return getOwner(); // Reference
+        case 951526432:  return addContact(); // ContactPoint
+        case 1901043637:  return getLocation(); // Reference
+        case 116079: throw new FHIRException("Cannot make property url as it is not a complex type"); // UriType
+        case 3387378:  return addNote(); // Annotation
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

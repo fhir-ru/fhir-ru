@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -61,7 +61,7 @@ public class QuestionnaireResponse extends DomainResource {
          */
         AMENDED, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static QuestionnaireResponseStatus fromCode(String codeString) throws FHIRException {
@@ -73,7 +73,10 @@ public class QuestionnaireResponse extends DomainResource {
           return COMPLETED;
         if ("amended".equals(codeString))
           return AMENDED;
-        throw new FHIRException("Unknown QuestionnaireResponseStatus code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown QuestionnaireResponseStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -428,6 +431,42 @@ public class QuestionnaireResponse extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -1102667083: /*linkId*/ return this.linkId == null ? new Base[0] : new Base[] {this.linkId}; // StringType
+        case 3556653: /*text*/ return this.text == null ? new Base[0] : new Base[] {this.text}; // StringType
+        case -1867885268: /*subject*/ return this.subject == null ? new Base[0] : new Base[] {this.subject}; // Reference
+        case -1412808770: /*answer*/ return this.answer == null ? new Base[0] : this.answer.toArray(new Base[this.answer.size()]); // QuestionnaireResponseItemAnswerComponent
+        case 3242771: /*item*/ return this.item == null ? new Base[0] : this.item.toArray(new Base[this.item.size()]); // QuestionnaireResponseItemComponent
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -1102667083: // linkId
+          this.linkId = castToString(value); // StringType
+          break;
+        case 3556653: // text
+          this.text = castToString(value); // StringType
+          break;
+        case -1867885268: // subject
+          this.subject = castToReference(value); // Reference
+          break;
+        case -1412808770: // answer
+          this.getAnswer().add((QuestionnaireResponseItemAnswerComponent) value); // QuestionnaireResponseItemAnswerComponent
+          break;
+        case 3242771: // item
+          this.getItem().add((QuestionnaireResponseItemComponent) value); // QuestionnaireResponseItemComponent
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("linkId"))
           this.linkId = castToString(value); // StringType
@@ -441,6 +480,19 @@ public class QuestionnaireResponse extends DomainResource {
           this.getItem().add((QuestionnaireResponseItemComponent) value);
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -1102667083: throw new FHIRException("Cannot make property linkId as it is not a complex type"); // StringType
+        case 3556653: throw new FHIRException("Cannot make property text as it is not a complex type"); // StringType
+        case -1867885268:  return getSubject(); // Reference
+        case -1412808770:  return addAnswer(); // QuestionnaireResponseItemAnswerComponent
+        case 3242771:  return addItem(); // QuestionnaireResponseItemComponent
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -778,6 +830,30 @@ public class QuestionnaireResponse extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 111972721: /*value*/ return this.value == null ? new Base[0] : new Base[] {this.value}; // Type
+        case 3242771: /*item*/ return this.item == null ? new Base[0] : this.item.toArray(new Base[this.item.size()]); // QuestionnaireResponseItemComponent
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 111972721: // value
+          this.value = (Type) value; // Type
+          break;
+        case 3242771: // item
+          this.getItem().add((QuestionnaireResponseItemComponent) value); // QuestionnaireResponseItemComponent
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("value[x]"))
           this.value = (Type) value; // Type
@@ -785,6 +861,16 @@ public class QuestionnaireResponse extends DomainResource {
           this.getItem().add((QuestionnaireResponseItemComponent) value);
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -1410166417:  return getValue(); // Type
+        case 3242771:  return addItem(); // QuestionnaireResponseItemComponent
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -1374,6 +1460,58 @@ public class QuestionnaireResponse extends DomainResource {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : new Base[] {this.identifier}; // Identifier
+        case -1017049693: /*questionnaire*/ return this.questionnaire == null ? new Base[0] : new Base[] {this.questionnaire}; // Reference
+        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<QuestionnaireResponseStatus>
+        case -1867885268: /*subject*/ return this.subject == null ? new Base[0] : new Base[] {this.subject}; // Reference
+        case -1406328437: /*author*/ return this.author == null ? new Base[0] : new Base[] {this.author}; // Reference
+        case 1433073514: /*authored*/ return this.authored == null ? new Base[0] : new Base[] {this.authored}; // DateTimeType
+        case -896505829: /*source*/ return this.source == null ? new Base[0] : new Base[] {this.source}; // Reference
+        case 1524132147: /*encounter*/ return this.encounter == null ? new Base[0] : new Base[] {this.encounter}; // Reference
+        case 3242771: /*item*/ return this.item == null ? new Base[0] : this.item.toArray(new Base[this.item.size()]); // QuestionnaireResponseItemComponent
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -1618432855: // identifier
+          this.identifier = castToIdentifier(value); // Identifier
+          break;
+        case -1017049693: // questionnaire
+          this.questionnaire = castToReference(value); // Reference
+          break;
+        case -892481550: // status
+          this.status = new QuestionnaireResponseStatusEnumFactory().fromType(value); // Enumeration<QuestionnaireResponseStatus>
+          break;
+        case -1867885268: // subject
+          this.subject = castToReference(value); // Reference
+          break;
+        case -1406328437: // author
+          this.author = castToReference(value); // Reference
+          break;
+        case 1433073514: // authored
+          this.authored = castToDateTime(value); // DateTimeType
+          break;
+        case -896505829: // source
+          this.source = castToReference(value); // Reference
+          break;
+        case 1524132147: // encounter
+          this.encounter = castToReference(value); // Reference
+          break;
+        case 3242771: // item
+          this.getItem().add((QuestionnaireResponseItemComponent) value); // QuestionnaireResponseItemComponent
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("identifier"))
           this.identifier = castToIdentifier(value); // Identifier
@@ -1395,6 +1533,23 @@ public class QuestionnaireResponse extends DomainResource {
           this.getItem().add((QuestionnaireResponseItemComponent) value);
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -1618432855:  return getIdentifier(); // Identifier
+        case -1017049693:  return getQuestionnaire(); // Reference
+        case -892481550: throw new FHIRException("Cannot make property status as it is not a complex type"); // Enumeration<QuestionnaireResponseStatus>
+        case -1867885268:  return getSubject(); // Reference
+        case -1406328437:  return getAuthor(); // Reference
+        case 1433073514: throw new FHIRException("Cannot make property authored as it is not a complex type"); // DateTimeType
+        case -896505829:  return getSource(); // Reference
+        case 1524132147:  return getEncounter(); // Reference
+        case 3242771:  return addItem(); // QuestionnaireResponseItemComponent
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

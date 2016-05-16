@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -159,6 +159,30 @@ public class Immunization extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -934964668: /*reason*/ return this.reason == null ? new Base[0] : this.reason.toArray(new Base[this.reason.size()]); // CodeableConcept
+        case 2101123790: /*reasonNotGiven*/ return this.reasonNotGiven == null ? new Base[0] : this.reasonNotGiven.toArray(new Base[this.reasonNotGiven.size()]); // CodeableConcept
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -934964668: // reason
+          this.getReason().add(castToCodeableConcept(value)); // CodeableConcept
+          break;
+        case 2101123790: // reasonNotGiven
+          this.getReasonNotGiven().add(castToCodeableConcept(value)); // CodeableConcept
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("reason"))
           this.getReason().add(castToCodeableConcept(value));
@@ -166,6 +190,16 @@ public class Immunization extends DomainResource {
           this.getReasonNotGiven().add(castToCodeableConcept(value));
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -934964668:  return addReason(); // CodeableConcept
+        case 2101123790:  return addReasonNotGiven(); // CodeableConcept
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -412,6 +446,34 @@ public class Immunization extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3076014: /*date*/ return this.date == null ? new Base[0] : new Base[] {this.date}; // DateTimeType
+        case -1335224239: /*detail*/ return this.detail == null ? new Base[0] : new Base[] {this.detail}; // Reference
+        case -427039533: /*reported*/ return this.reported == null ? new Base[0] : new Base[] {this.reported}; // BooleanType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3076014: // date
+          this.date = castToDateTime(value); // DateTimeType
+          break;
+        case -1335224239: // detail
+          this.detail = castToReference(value); // Reference
+          break;
+        case -427039533: // reported
+          this.reported = castToBoolean(value); // BooleanType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("date"))
           this.date = castToDateTime(value); // DateTimeType
@@ -421,6 +483,17 @@ public class Immunization extends DomainResource {
           this.reported = castToBoolean(value); // BooleanType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3076014: throw new FHIRException("Cannot make property date as it is not a complex type"); // DateTimeType
+        case -1335224239:  return getDetail(); // Reference
+        case -427039533: throw new FHIRException("Cannot make property reported as it is not a complex type"); // BooleanType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -895,6 +968,54 @@ public class Immunization extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 550933246: /*doseSequence*/ return this.doseSequence == null ? new Base[0] : new Base[] {this.doseSequence}; // PositiveIntType
+        case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // StringType
+        case 1475610435: /*authority*/ return this.authority == null ? new Base[0] : new Base[] {this.authority}; // Reference
+        case -905838985: /*series*/ return this.series == null ? new Base[0] : new Base[] {this.series}; // StringType
+        case -1936727105: /*seriesDoses*/ return this.seriesDoses == null ? new Base[0] : new Base[] {this.seriesDoses}; // PositiveIntType
+        case -319593813: /*targetDisease*/ return this.targetDisease == null ? new Base[0] : this.targetDisease.toArray(new Base[this.targetDisease.size()]); // CodeableConcept
+        case -745826705: /*doseStatus*/ return this.doseStatus == null ? new Base[0] : new Base[] {this.doseStatus}; // CodeableConcept
+        case 662783379: /*doseStatusReason*/ return this.doseStatusReason == null ? new Base[0] : new Base[] {this.doseStatusReason}; // CodeableConcept
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 550933246: // doseSequence
+          this.doseSequence = castToPositiveInt(value); // PositiveIntType
+          break;
+        case -1724546052: // description
+          this.description = castToString(value); // StringType
+          break;
+        case 1475610435: // authority
+          this.authority = castToReference(value); // Reference
+          break;
+        case -905838985: // series
+          this.series = castToString(value); // StringType
+          break;
+        case -1936727105: // seriesDoses
+          this.seriesDoses = castToPositiveInt(value); // PositiveIntType
+          break;
+        case -319593813: // targetDisease
+          this.getTargetDisease().add(castToCodeableConcept(value)); // CodeableConcept
+          break;
+        case -745826705: // doseStatus
+          this.doseStatus = castToCodeableConcept(value); // CodeableConcept
+          break;
+        case 662783379: // doseStatusReason
+          this.doseStatusReason = castToCodeableConcept(value); // CodeableConcept
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("doseSequence"))
           this.doseSequence = castToPositiveInt(value); // PositiveIntType
@@ -914,6 +1035,22 @@ public class Immunization extends DomainResource {
           this.doseStatusReason = castToCodeableConcept(value); // CodeableConcept
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 550933246: throw new FHIRException("Cannot make property doseSequence as it is not a complex type"); // PositiveIntType
+        case -1724546052: throw new FHIRException("Cannot make property description as it is not a complex type"); // StringType
+        case 1475610435:  return getAuthority(); // Reference
+        case -905838985: throw new FHIRException("Cannot make property series as it is not a complex type"); // StringType
+        case -1936727105: throw new FHIRException("Cannot make property seriesDoses as it is not a complex type"); // PositiveIntType
+        case -319593813:  return addTargetDisease(); // CodeableConcept
+        case -745826705:  return getDoseStatus(); // CodeableConcept
+        case 662783379:  return getDoseStatusReason(); // CodeableConcept
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -2055,6 +2192,106 @@ public class Immunization extends DomainResource {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : this.identifier.toArray(new Base[this.identifier.size()]); // Identifier
+        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // CodeType
+        case 3076014: /*date*/ return this.date == null ? new Base[0] : new Base[] {this.date}; // DateTimeType
+        case 664556354: /*vaccineCode*/ return this.vaccineCode == null ? new Base[0] : new Base[] {this.vaccineCode}; // CodeableConcept
+        case -791418107: /*patient*/ return this.patient == null ? new Base[0] : new Base[] {this.patient}; // Reference
+        case -1050911117: /*wasNotGiven*/ return this.wasNotGiven == null ? new Base[0] : new Base[] {this.wasNotGiven}; // BooleanType
+        case -427039533: /*reported*/ return this.reported == null ? new Base[0] : new Base[] {this.reported}; // BooleanType
+        case 481140686: /*performer*/ return this.performer == null ? new Base[0] : new Base[] {this.performer}; // Reference
+        case 693933948: /*requester*/ return this.requester == null ? new Base[0] : new Base[] {this.requester}; // Reference
+        case 1524132147: /*encounter*/ return this.encounter == null ? new Base[0] : new Base[] {this.encounter}; // Reference
+        case -1969347631: /*manufacturer*/ return this.manufacturer == null ? new Base[0] : new Base[] {this.manufacturer}; // Reference
+        case 1901043637: /*location*/ return this.location == null ? new Base[0] : new Base[] {this.location}; // Reference
+        case 462547450: /*lotNumber*/ return this.lotNumber == null ? new Base[0] : new Base[] {this.lotNumber}; // StringType
+        case -668811523: /*expirationDate*/ return this.expirationDate == null ? new Base[0] : new Base[] {this.expirationDate}; // DateType
+        case 3530567: /*site*/ return this.site == null ? new Base[0] : new Base[] {this.site}; // CodeableConcept
+        case 108704329: /*route*/ return this.route == null ? new Base[0] : new Base[] {this.route}; // CodeableConcept
+        case -2083618872: /*doseQuantity*/ return this.doseQuantity == null ? new Base[0] : new Base[] {this.doseQuantity}; // SimpleQuantity
+        case 3387378: /*note*/ return this.note == null ? new Base[0] : this.note.toArray(new Base[this.note.size()]); // Annotation
+        case -1105867239: /*explanation*/ return this.explanation == null ? new Base[0] : new Base[] {this.explanation}; // ImmunizationExplanationComponent
+        case -867509719: /*reaction*/ return this.reaction == null ? new Base[0] : this.reaction.toArray(new Base[this.reaction.size()]); // ImmunizationReactionComponent
+        case -179633155: /*vaccinationProtocol*/ return this.vaccinationProtocol == null ? new Base[0] : this.vaccinationProtocol.toArray(new Base[this.vaccinationProtocol.size()]); // ImmunizationVaccinationProtocolComponent
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -1618432855: // identifier
+          this.getIdentifier().add(castToIdentifier(value)); // Identifier
+          break;
+        case -892481550: // status
+          this.status = castToCode(value); // CodeType
+          break;
+        case 3076014: // date
+          this.date = castToDateTime(value); // DateTimeType
+          break;
+        case 664556354: // vaccineCode
+          this.vaccineCode = castToCodeableConcept(value); // CodeableConcept
+          break;
+        case -791418107: // patient
+          this.patient = castToReference(value); // Reference
+          break;
+        case -1050911117: // wasNotGiven
+          this.wasNotGiven = castToBoolean(value); // BooleanType
+          break;
+        case -427039533: // reported
+          this.reported = castToBoolean(value); // BooleanType
+          break;
+        case 481140686: // performer
+          this.performer = castToReference(value); // Reference
+          break;
+        case 693933948: // requester
+          this.requester = castToReference(value); // Reference
+          break;
+        case 1524132147: // encounter
+          this.encounter = castToReference(value); // Reference
+          break;
+        case -1969347631: // manufacturer
+          this.manufacturer = castToReference(value); // Reference
+          break;
+        case 1901043637: // location
+          this.location = castToReference(value); // Reference
+          break;
+        case 462547450: // lotNumber
+          this.lotNumber = castToString(value); // StringType
+          break;
+        case -668811523: // expirationDate
+          this.expirationDate = castToDate(value); // DateType
+          break;
+        case 3530567: // site
+          this.site = castToCodeableConcept(value); // CodeableConcept
+          break;
+        case 108704329: // route
+          this.route = castToCodeableConcept(value); // CodeableConcept
+          break;
+        case -2083618872: // doseQuantity
+          this.doseQuantity = castToSimpleQuantity(value); // SimpleQuantity
+          break;
+        case 3387378: // note
+          this.getNote().add(castToAnnotation(value)); // Annotation
+          break;
+        case -1105867239: // explanation
+          this.explanation = (ImmunizationExplanationComponent) value; // ImmunizationExplanationComponent
+          break;
+        case -867509719: // reaction
+          this.getReaction().add((ImmunizationReactionComponent) value); // ImmunizationReactionComponent
+          break;
+        case -179633155: // vaccinationProtocol
+          this.getVaccinationProtocol().add((ImmunizationVaccinationProtocolComponent) value); // ImmunizationVaccinationProtocolComponent
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("identifier"))
           this.getIdentifier().add(castToIdentifier(value));
@@ -2100,6 +2337,35 @@ public class Immunization extends DomainResource {
           this.getVaccinationProtocol().add((ImmunizationVaccinationProtocolComponent) value);
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -1618432855:  return addIdentifier(); // Identifier
+        case -892481550: throw new FHIRException("Cannot make property status as it is not a complex type"); // CodeType
+        case 3076014: throw new FHIRException("Cannot make property date as it is not a complex type"); // DateTimeType
+        case 664556354:  return getVaccineCode(); // CodeableConcept
+        case -791418107:  return getPatient(); // Reference
+        case -1050911117: throw new FHIRException("Cannot make property wasNotGiven as it is not a complex type"); // BooleanType
+        case -427039533: throw new FHIRException("Cannot make property reported as it is not a complex type"); // BooleanType
+        case 481140686:  return getPerformer(); // Reference
+        case 693933948:  return getRequester(); // Reference
+        case 1524132147:  return getEncounter(); // Reference
+        case -1969347631:  return getManufacturer(); // Reference
+        case 1901043637:  return getLocation(); // Reference
+        case 462547450: throw new FHIRException("Cannot make property lotNumber as it is not a complex type"); // StringType
+        case -668811523: throw new FHIRException("Cannot make property expirationDate as it is not a complex type"); // DateType
+        case 3530567:  return getSite(); // CodeableConcept
+        case 108704329:  return getRoute(); // CodeableConcept
+        case -2083618872:  return getDoseQuantity(); // SimpleQuantity
+        case 3387378:  return addNote(); // Annotation
+        case -1105867239:  return getExplanation(); // ImmunizationExplanationComponent
+        case -867509719:  return addReaction(); // ImmunizationReactionComponent
+        case -179633155:  return addVaccinationProtocol(); // ImmunizationVaccinationProtocolComponent
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

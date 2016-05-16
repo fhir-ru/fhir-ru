@@ -16,11 +16,12 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>4980</WindowHeight>
-  <WindowWidth>7470</WindowWidth>
+  <WindowHeight>14010</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
+  <ActiveSheet>1</ActiveSheet>
+  <FirstVisibleSheet>1</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -815,11 +816,6 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s155">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Center" ss:Indent="1"
-    ss:WrapText="1"/>
-   <Font ss:FontName="Verdana" x:Family="Swiss" ss:Size="9" ss:Color="#333333"/>
-  </Style>
  </Styles>
  <Names>
   <NamedRange ss:Name="Invariantids" ss:RefersTo="=Invariants!R2C1:R50C1"/>
@@ -1517,7 +1513,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">QD | QOD | Q4H | Q6H | BID | TID | QID | AM | PM +</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">BID | TID | QID | AM | PM | QD | QOD | Q4H | Q6H +</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">A code for the timing pattern. Some codes such as BID are ubiquitous, but many institutions define their own additional codes. If a code is provided, the code is understood to be a complete statement of whatever is specified in the structured timing data, and either the code or the data may be used to interpret the Timing</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -3771,10 +3767,11 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>9</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -3787,11 +3784,12 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>17</ActiveRow>
+     <ActiveCol>12</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -3812,8 +3810,9 @@
    <Column ss:StyleID="s100" ss:Width="55.5"/>
    <Column ss:StyleID="s100" ss:Width="165"/>
    <Column ss:StyleID="s100" ss:AutoFitWidth="0" ss:Width="204.75"/>
-   <Column ss:StyleID="s100" ss:AutoFitWidth="0" ss:Width="198.75" ss:Span="1"/>
-   <Column ss:Index="8" ss:StyleID="s100" ss:AutoFitWidth="0" ss:Width="188.25"/>
+   <Column ss:StyleID="s100" ss:AutoFitWidth="0" ss:Width="198.75"/>
+   <Column ss:StyleID="s100" ss:AutoFitWidth="0" ss:Width="280.5"/>
+   <Column ss:StyleID="s100" ss:AutoFitWidth="0" ss:Width="188.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75" ss:StyleID="s70">
     <Cell ss:StyleID="s101"><Data ss:Type="String">Id</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -3857,7 +3856,7 @@
     <Cell ss:StyleID="s83"><Data ss:Type="String">if there's a duration, there needs to be duration units</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">duration.empty() or durationUnit</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">duration.empty() or durationUnit.exists()</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">not(exists(f:duration)) or exists(f:durationUnit)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -3870,7 +3869,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">if there's a period, there needs to be period units</Data></Cell>
     <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">period.empty() or periodUnit</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">period.empty() or periodUnit.exists()</Data></Cell>
     <Cell ss:StyleID="s106"><Data ss:Type="String">not(exists(f:period)) or exists(f:periodUnit)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -3914,7 +3913,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">If there's a periodMax, there must be a period</Data></Cell>
     <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">periodMax.empty() or period</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">periodMax.empty() or period.exists()</Data></Cell>
     <Cell ss:StyleID="s110"><Data ss:Type="String">not(exists(f:periodMax)) or exists(f:period)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -3925,7 +3924,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">If there's a durationMax, there must be a duration</Data></Cell>
     <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">durationMax.empty() or duration</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">durationMax.empty() or duration.exists()</Data></Cell>
     <Cell ss:StyleID="s110"><Data ss:Type="String">not(exists(f:durationMax)) or exists(f:duration)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -3936,7 +3935,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">If there's a countMax, there must be a count</Data></Cell>
     <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">countMax.empty() or count</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">countMax.empty() or count.exists()</Data></Cell>
     <Cell ss:StyleID="s110"><Data ss:Type="String">not(exists(f:countMax)) or exists(f:count)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -3947,7 +3946,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Timing.repeat</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">If there's an offset, there must be a when</Data></Cell>
     <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">offset.empty() or when</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">offset.empty() or when.exists()</Data></Cell>
     <Cell ss:StyleID="s110"><Data ss:Type="String">not(exists(f:offset)) or exists(f:when)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -4364,7 +4363,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -4384,8 +4382,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -8167,7 +8164,6 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -8231,7 +8227,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s141"><Data ss:Type="String">BID</Data></Cell>
     <Cell ss:StyleID="s130"/>
-    <Cell ss:StyleID="s155"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
     <Cell ss:StyleID="s152"/>
     <Cell ss:StyleID="s141"><Data ss:Type="String">BID</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Two times a day at institution specified time</Data></Cell>
@@ -8242,7 +8238,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s143"><Data ss:Type="String">TID</Data></Cell>
     <Cell ss:StyleID="s133"/>
-    <Cell ss:StyleID="s155"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
     <Cell ss:StyleID="s153"/>
     <Cell ss:StyleID="s143"><Data ss:Type="String">TID</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Three times a day at institution specified time</Data></Cell>
@@ -8253,7 +8249,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s143"><Data ss:Type="String">QID</Data></Cell>
     <Cell ss:StyleID="s133"/>
-    <Cell ss:StyleID="s155"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
     <Cell ss:StyleID="s153"/>
     <Cell ss:StyleID="s143"><Data ss:Type="String">QID</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Four times a day at institution specified time</Data></Cell>
@@ -8264,7 +8260,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s143"><Data ss:Type="String">AM</Data></Cell>
     <Cell ss:StyleID="s133"/>
-    <Cell ss:StyleID="s155"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
     <Cell ss:StyleID="s153"/>
     <Cell ss:StyleID="s143"><Data ss:Type="String">AM</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Every morning at institution specified times</Data></Cell>
@@ -8275,7 +8271,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s143"><Data ss:Type="String">PM</Data></Cell>
     <Cell ss:StyleID="s133"/>
-    <Cell ss:StyleID="s155"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
     <Cell ss:StyleID="s153"/>
     <Cell ss:StyleID="s143"><Data ss:Type="String">PM</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Every afternoon at institution specified times</Data></Cell>
@@ -8285,8 +8281,8 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s143"><Data ss:Type="String">QD</Data></Cell>
-    <Cell ss:StyleID="s133"><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s120"/>
+    <Cell ss:StyleID="s133"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
     <Cell ss:StyleID="s153"/>
     <Cell ss:StyleID="s143"><Data ss:Type="String">QD</Data></Cell>
     <Cell ss:StyleID="s153"><Data ss:Type="String">Every Day at institution specified times</Data></Cell>
@@ -8296,8 +8292,8 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s143"><Data ss:Type="String">QOD</Data></Cell>
-    <Cell ss:StyleID="s133"><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:StyleID="s120"/>
+    <Cell ss:StyleID="s133"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
     <Cell ss:StyleID="s153"/>
     <Cell ss:StyleID="s143"><Data ss:Type="String">QOD</Data></Cell>
     <Cell ss:StyleID="s153"><Data ss:Type="String">Every Other Day at institution specified times</Data></Cell>
@@ -8307,8 +8303,8 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s143"><Data ss:Type="String">Q4H</Data></Cell>
-    <Cell ss:StyleID="s133"><Data ss:Type="Number">3</Data></Cell>
-    <Cell ss:StyleID="s120"/>
+    <Cell ss:StyleID="s133"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
     <Cell ss:StyleID="s153"/>
     <Cell ss:StyleID="s143"><Data ss:Type="String">Q4H</Data></Cell>
     <Cell ss:StyleID="s153"><Data ss:Type="String">Every 4 hours at institution specified times</Data></Cell>
@@ -8318,8 +8314,8 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s143"><Data ss:Type="String">Q6H</Data></Cell>
-    <Cell ss:StyleID="s133"><Data ss:Type="Number">4</Data></Cell>
-    <Cell ss:StyleID="s120"/>
+    <Cell ss:StyleID="s133"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://hl7.org/fhir/v3/GTSAbbreviation</Data></Cell>
     <Cell ss:StyleID="s153"/>
     <Cell ss:StyleID="s143"><Data ss:Type="String">Q6H</Data></Cell>
     <Cell ss:StyleID="s153"><Data ss:Type="String">Every 6 Hours  at institution specified times</Data></Cell>
@@ -8330,7 +8326,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s143"/>
     <Cell ss:StyleID="s133"/>
-    <Cell ss:StyleID="s120"/>
+    <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="s153"/>
     <Cell ss:StyleID="s153"/>
     <Cell ss:StyleID="s153"/>
@@ -8802,6 +8798,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveCol>0</ActiveCol>
+     <RangeSelection>R2C1:R10C1</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

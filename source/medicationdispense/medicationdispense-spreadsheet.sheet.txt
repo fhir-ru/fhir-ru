@@ -39,8 +39,10 @@
 
  -- Row 6 -----------------------------------
   Binding Name = MedicationAsNeededReason
-  Binding = unbound
+  Binding = value set
+  Reference = http://hl7.org/fhir/ValueSet/medication-as-needed-reason
   Definition = A coded concept identifying the precondition that should be met or evaluated prior to consuming or administering a medication dose.  For example \"pain\", \"30 minutes prior to sexual intercourse\", \"on flare-up\" etc.
+  Conformance = example
 
  -- Row 7 -----------------------------------
   Binding Name = MedicationIntendedSubstitutionType
@@ -60,8 +62,17 @@
 
  -- Row 9 -----------------------------------
   Binding Name = AdditionalInstructions
-  Binding = unbound
+  Binding = value set
+  Reference = http://hl7.org/fhir/ValueSet/additional-instructions-codes
   Definition = Codes identifying additional instructions such as \"take with water\" or \"avoid operating heavy machinery\"
+  Conformance = example
+
+ -- Row 10 -----------------------------------
+  Binding Name = MedicationCode
+  Binding = value set
+  Reference = http://hl7.org/fhir/ValueSet/medication-codes
+  Definition = Codes identifying which substance or product can be dispensed
+  Conformance = example
 
 === Sheet medication-dispense-status =====================================
 
@@ -133,6 +144,7 @@
   Element = MedicationDispense.status
   Card. = 0..1
   Is Modifier = Y
+  Summary = y
   Type = code
   Binding = MedicationDispenseStatus
   Short Label = in-progress | on-hold | completed | entered-in-error | stopped
@@ -144,7 +156,9 @@
  -- Row 4 -----------------------------------
   Element = MedicationDispense.medication[x]
   Card. = 1..1
+  Summary = y
   Type = CodeableConcept|Reference(Medication)
+  Binding = MedicationCode
   Short Label = What medication was supplied
   Definition = Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
   Comments = If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the dispensed medication. When the only available information is a text description of the medication, Medication.code.text should be used
@@ -155,6 +169,7 @@
  -- Row 5 -----------------------------------
   Element = MedicationDispense.patient
   Card. = 0..1
+  Summary = y
   Type = Reference(Patient)
   Short Label = Who the dispense is for
   Definition = A link to a resource representing the person to whom the medication will be given.
@@ -211,6 +226,7 @@
  -- Row 11 -----------------------------------
   Element = MedicationDispense.whenPrepared
   Card. = 0..1
+  Summary = y
   Type = dateTime
   Short Label = Dispense processing time
   Definition = The time when the dispensed product was packaged and reviewed.
@@ -276,7 +292,7 @@
 
  -- Row 18 -----------------------------------
   Element = MedicationDispense.dosageInstruction.additionalInstructions
-  Card. = 0..1
+  Card. = 0..*
   Type = CodeableConcept
   Binding = AdditionalInstructions
   Short Label = E.g. \"Take with food\"

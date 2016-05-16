@@ -135,7 +135,7 @@
   Context = Composition.section
   English = A section must at least one of text, entries, or sub-sections
   XPath = exists(f:text) or exists(f:entry) or exists(f:section)
-  Expression = text or entry or section
+  Expression = text.exists() or entry.exists() or section.exists()
 
  -- Row 2 -----------------------------------
   Id = 2

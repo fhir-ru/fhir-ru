@@ -34,11 +34,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.hl7.fhir.dstu3.formats.XmlParser;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
+import org.hl7.fhir.dstu3.utils.Transformer;
 import org.hl7.fhir.utilities.Utilities;
 
 /**
@@ -56,27 +58,31 @@ public class Validator {
       System.out.println("FHIR Validation tool. ");
       System.out.println("");
       System.out.println("The FHIR validation tool validates a FHIR resource or bundle.");
-      System.out.println("Schema and schematron checking is performed, then some additional checks are performed");
+      System.out.println("The validation tool compares a resource against the base definitions and whatever");
+      System.out.println("profiles are declared in the resource or specificed on the command line");
+      System.out.println("For XML: Schema and schematron checking is also performed");
+      System.out.println("RDF/Json-LD are not supported at this time");
       System.out.println("");
-      System.out.println("JSON is not supported at this time");
-      System.out.println("");
-      System.out.println("Usage: org.hl7.fhir.validator.jar [source] (-defn [definitions]) (-folder [name])  (-profile [profile]) (-questionnaire [questionnaire]) (-output [output]) (-tsserver [server])  (-noxslt) where: ");
+      System.out.println("Usage: org.hl7.fhir.validator.jar [source] (-defn [definitions]) (-folder [name]) (-profile [profile]) (-questionnaire [questionnaire]) (-output [output]) (-tsserver [server]) where: ");
       System.out.println("* [source] is a file name or url of the resource or bundle feed to validate");
-      System.out.println("* [definitions] is the file name or url of the validation pack (validation.zip). Default: get it from inside the jar file");
-      System.out.println("* [folder] is the name of a folder containing additional structure definitions. No default value");
-      System.out.println("* [txserver] is the url of a FHIR terminology service. Default is http://fhir2.healthintersections.com.au/open");
+      System.out.println("* [definitions] is the file name or url of the validation pack (validation(-min).xml|json.zip)");
+      System.out.println("* [folder] is the name of a folder containing additional structure definitions. You can have multiple folder parameters");
+      System.out.println("* [txserver] is the url of a FHIR terminology service. Default is http://fhir3.healthintersections.com.au/open");
       System.out.println("* [profile] is an optional filename or URL for a specific profile to validate a resource");
       System.out.println("    against. In the absence of this parameter, the resource will be checked against the ");
-      System.out.println("    base specification using the definitions.");
-      System.out.println("* [logical] is an optional filename or URL for a logical model set (bundle) to use instead of a resource");
+      System.out.println("    base specification using the definitions specified.");
       System.out.println("* [questionnaire] is an optional filename or URL for a specific questionnaire to validate a ");
       System.out.println("    QuestionnaireResponse against, if it is nominated in the response");
       System.out.println("* [output] is a filename for the results (OperationOutcome). Default: results are sent to the std out.");
-      System.out.println("* -noxslt means not to run the schematrons (you really need to run these, but they need xslt2).");
       System.out.println("");
-      System.out.println("Or: java -jar org.hl7.fhir.validator.jar -profile-tests [registry] (-defn [definitions])");
+      System.out.println("Alternatively, you can use this to execute a transformation as described by a structure map.");
+      System.out.println("To do this, you must provide some additional parameters:");
       System.out.println("");
-      System.out.println("Master Source for the validation pack: "+ValidationEngine.MASTER_SOURCE);
+      System.out.println(" -transform -folder [folder] -map [map-file]");
+      System.out.println("");
+      System.out.println("* [map] the URI of the map that the transform starts with");
+      System.out.println("");
+      System.out.println("-transform requires the parameters -defn, -txserver, -folder (at least one with the map files), and -output");
     } else {
       if (args[0].equals("-profile-tests")) {
         String pack = null;
@@ -90,6 +96,25 @@ public class Validator {
         }
         ProfileValidatorTests tests = new ProfileValidatorTests(new File(pack), new File(registry));
         tests.execute();
+      } else if (hasTransformParam(args)) {
+        Transformer exe = new Transformer();
+        exe.setSource(args[0]);
+        for (int i = 1; i < args.length; i++) {
+          if (args[i].equals("-defn"))
+            exe.setDefinitions(args[i+1]);
+          if (args[i].equals("-output"))
+            exe.setOutput(args[i+1]);
+          if (args[i].equals("-txserver"))
+            exe.setTxServer(args[i+1]);
+          if (args[i].equals("-folder"))
+            exe.addFolder(args[i+1]);
+          if (args[i].equals("-map"))
+            exe.setMapUri(args[i+1]);
+        }
+        if (exe.process()) 
+          System.out.println(" ...success");
+        else
+          System.out.println(" ...failure: "+exe.getMessage());
       } else { 
         Validator exe = new Validator();
         exe.setSource(args[0]);
@@ -102,12 +127,10 @@ public class Validator {
             exe.setProfile(args[i+1]);
           if (args[i].equals("-questionnaire"))
             exe.setQuestionnaire(args[i+1]);
-          if (args[i].equals("-logical"))
-            exe.setLogical(args[i+1]);
           if (args[i].equals("-txserver"))
             exe.setTsServer(args[i+1]);
           if (args[i].equals("-folder"))
-            exe.setFolder(args[i+1]);
+            exe.addFolder(args[i+1]);
           if (args[i].equals("-noxslt"))
           	exe.engine.setNoSchematron(true);
         }
@@ -136,6 +159,15 @@ public class Validator {
   }
 
 
+	private static boolean hasTransformParam(String[] args) {
+		for (String s : args) {
+			if (s.equals("-transform"))
+				return true;
+		}
+		return false;
+	}
+
+
 	private String txServer;
 
 
@@ -154,17 +186,6 @@ public class Validator {
     this.questionnaire = questionnaire;
   }
   
-	public String getLogical() {
-    return logical;
-  }
-
-
-
-  public void setLogical(String logical) {
-    this.logical = logical;
-  }
-
-
 
 	private List<ValidationMessage> outputs() {
     return engine.getOutputs();
@@ -182,7 +203,7 @@ public class Validator {
   /**
    * Additional location to get structures from
    */
-  private String folder;
+  private List<String> folders = new ArrayList<String>();
   
   /**
    * A specific profile against which to validate the instance (optional)
@@ -190,7 +211,6 @@ public class Validator {
   private String profile;
 
   private String questionnaire;
-  private String logical;
 
   /**
    * The name of the resource/feed to validate. this can be the actual source as json or xml, a file name, a zip file, 
@@ -204,12 +224,11 @@ public class Validator {
 
   public void process() throws Exception {
     engine.readDefinitions(definitions);
-    if (!Utilities.noString(folder))
-      engine.loadFromFolder(folder);
-    engine.connectToTSServer(txServer == null ? "http://fhir2.healthintersections.com.au/open" : txServer);
+    for (String folder : folders)
+      engine.getContext().loadFromFolder(folder);
+    engine.connectToTSServer(txServer == null ? "http://fhir3.healthintersections.com.au/open" : txServer);
     engine.loadProfile(profile);
     engine.loadQuestionnaire(questionnaire);
-    engine.loadLogical(logical);
     engine.setSource(loadSource());
     engine.process();
   }
@@ -267,15 +286,14 @@ public class Validator {
 
 
 
-  public String getFolder() {
-    return folder;
+  public List<String> getFolders() {
+    return folders;
+  }
+
+  public void addFolder(String value) {
+    folders.add(value);
   }
 
 
-
-  public void setFolder(String folder) {
-    this.folder = folder;
-  }
-  
   
 }

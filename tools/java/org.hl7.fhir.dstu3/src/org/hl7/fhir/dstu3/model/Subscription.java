@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -65,7 +65,7 @@ public class Subscription extends DomainResource {
          */
         OFF, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static SubscriptionStatus fromCode(String codeString) throws FHIRException {
@@ -79,7 +79,10 @@ public class Subscription extends DomainResource {
           return ERROR;
         if ("off".equals(codeString))
           return OFF;
-        throw new FHIRException("Unknown SubscriptionStatus code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown SubscriptionStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -188,7 +191,7 @@ public class Subscription extends DomainResource {
          */
         MESSAGE, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static SubscriptionChannelType fromCode(String codeString) throws FHIRException {
@@ -204,7 +207,10 @@ public class Subscription extends DomainResource {
           return SMS;
         if ("message".equals(codeString))
           return MESSAGE;
-        throw new FHIRException("Unknown SubscriptionChannelType code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown SubscriptionChannelType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -546,6 +552,38 @@ public class Subscription extends DomainResource {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // Enumeration<SubscriptionChannelType>
+        case 1741102485: /*endpoint*/ return this.endpoint == null ? new Base[0] : new Base[] {this.endpoint}; // UriType
+        case -786701938: /*payload*/ return this.payload == null ? new Base[0] : new Base[] {this.payload}; // StringType
+        case -1221270899: /*header*/ return this.header == null ? new Base[0] : new Base[] {this.header}; // StringType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3575610: // type
+          this.type = new SubscriptionChannelTypeEnumFactory().fromType(value); // Enumeration<SubscriptionChannelType>
+          break;
+        case 1741102485: // endpoint
+          this.endpoint = castToUri(value); // UriType
+          break;
+        case -786701938: // payload
+          this.payload = castToString(value); // StringType
+          break;
+        case -1221270899: // header
+          this.header = castToString(value); // StringType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("type"))
           this.type = new SubscriptionChannelTypeEnumFactory().fromType(value); // Enumeration<SubscriptionChannelType>
@@ -557,6 +595,18 @@ public class Subscription extends DomainResource {
           this.header = castToString(value); // StringType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3575610: throw new FHIRException("Cannot make property type as it is not a complex type"); // Enumeration<SubscriptionChannelType>
+        case 1741102485: throw new FHIRException("Cannot make property endpoint as it is not a complex type"); // UriType
+        case -786701938: throw new FHIRException("Cannot make property payload as it is not a complex type"); // StringType
+        case -1221270899: throw new FHIRException("Cannot make property header as it is not a complex type"); // StringType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -1047,6 +1097,54 @@ public class Subscription extends DomainResource {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 1952046943: /*criteria*/ return this.criteria == null ? new Base[0] : new Base[] {this.criteria}; // StringType
+        case 951526432: /*contact*/ return this.contact == null ? new Base[0] : this.contact.toArray(new Base[this.contact.size()]); // ContactPoint
+        case -934964668: /*reason*/ return this.reason == null ? new Base[0] : new Base[] {this.reason}; // StringType
+        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<SubscriptionStatus>
+        case 96784904: /*error*/ return this.error == null ? new Base[0] : new Base[] {this.error}; // StringType
+        case 738950403: /*channel*/ return this.channel == null ? new Base[0] : new Base[] {this.channel}; // SubscriptionChannelComponent
+        case 100571: /*end*/ return this.end == null ? new Base[0] : new Base[] {this.end}; // InstantType
+        case 114586: /*tag*/ return this.tag == null ? new Base[0] : this.tag.toArray(new Base[this.tag.size()]); // Coding
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 1952046943: // criteria
+          this.criteria = castToString(value); // StringType
+          break;
+        case 951526432: // contact
+          this.getContact().add(castToContactPoint(value)); // ContactPoint
+          break;
+        case -934964668: // reason
+          this.reason = castToString(value); // StringType
+          break;
+        case -892481550: // status
+          this.status = new SubscriptionStatusEnumFactory().fromType(value); // Enumeration<SubscriptionStatus>
+          break;
+        case 96784904: // error
+          this.error = castToString(value); // StringType
+          break;
+        case 738950403: // channel
+          this.channel = (SubscriptionChannelComponent) value; // SubscriptionChannelComponent
+          break;
+        case 100571: // end
+          this.end = castToInstant(value); // InstantType
+          break;
+        case 114586: // tag
+          this.getTag().add(castToCoding(value)); // Coding
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("criteria"))
           this.criteria = castToString(value); // StringType
@@ -1066,6 +1164,22 @@ public class Subscription extends DomainResource {
           this.getTag().add(castToCoding(value));
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 1952046943: throw new FHIRException("Cannot make property criteria as it is not a complex type"); // StringType
+        case 951526432:  return addContact(); // ContactPoint
+        case -934964668: throw new FHIRException("Cannot make property reason as it is not a complex type"); // StringType
+        case -892481550: throw new FHIRException("Cannot make property status as it is not a complex type"); // Enumeration<SubscriptionStatus>
+        case 96784904: throw new FHIRException("Cannot make property error as it is not a complex type"); // StringType
+        case 738950403:  return getChannel(); // SubscriptionChannelComponent
+        case 100571: throw new FHIRException("Cannot make property end as it is not a complex type"); // InstantType
+        case 114586:  return addTag(); // Coding
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

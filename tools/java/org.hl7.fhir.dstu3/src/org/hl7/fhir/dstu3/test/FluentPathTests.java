@@ -39,7 +39,6 @@ import junit.framework.Assert;
 
 public class FluentPathTests {
 
-  static private SimpleWorkerContext context;
   static private Patient patient;
   static private Appointment appointment;
   static private Observation observation;
@@ -78,12 +77,12 @@ public class FluentPathTests {
 
   @SuppressWarnings("deprecation")
   private void test(Resource resource, String expression, int count, String... types) throws FileNotFoundException, IOException, FHIRException {
-    if (context == null)
-      context = SimpleWorkerContext.fromPack("C:\\work\\org.hl7.fhir\\build\\publish\\validation-min.xml.zip");
-    FHIRPathEngine fp = new FHIRPathEngine(context);
+    if (TestingUtilities.context == null)
+    	TestingUtilities.context = SimpleWorkerContext.fromPack("C:\\work\\org.hl7.fhir\\build\\publish\\validation-min.xml.zip");
+    FHIRPathEngine fp = new FHIRPathEngine(TestingUtilities.context);
 
-    fp.check(null, resource.getResourceType().toString(), resource.getResourceType().toString(), expression);
     ExpressionNode node = fp.parse(expression);
+    fp.check(null, resource.getResourceType().toString(), resource.getResourceType().toString(), node);
     List<Base> outcome = fp.evaluate(resource, node);
     if (fp.hasLog())
       System.out.println(fp.takeLog());
@@ -104,12 +103,12 @@ public class FluentPathTests {
 
   @SuppressWarnings("deprecation")
   private void testBoolean(Resource resource, String expression, boolean value) throws FileNotFoundException, IOException, FHIRException {
-    if (context == null)
-      context = SimpleWorkerContext.fromPack("C:\\work\\org.hl7.fhir\\build\\publish\\validation-min.xml.zip");
-    FHIRPathEngine fp = new FHIRPathEngine(context);
+    if (TestingUtilities.context == null)
+    	TestingUtilities.context = SimpleWorkerContext.fromPack("C:\\work\\org.hl7.fhir\\build\\publish\\validation-min.xml.zip");
+    FHIRPathEngine fp = new FHIRPathEngine(TestingUtilities.context);
 
-    fp.check(null, null, resource.getResourceType().toString(), expression);
     ExpressionNode node = fp.parse(expression);
+    fp.check(null, null, resource.getResourceType().toString(), node);
     List<Base> outcome = fp.evaluate(null, null, resource, node);
     if (fp.hasLog())
       System.out.println(fp.takeLog());
@@ -119,12 +118,12 @@ public class FluentPathTests {
 
   @SuppressWarnings("deprecation")
   private void testBoolean(Resource resource, Base focus, String focusType, String expression, boolean value) throws FileNotFoundException, IOException, FHIRException {
-    if (context == null)
-      context = SimpleWorkerContext.fromPack("C:\\work\\org.hl7.fhir\\build\\publish\\validation-min.xml.zip");
-    FHIRPathEngine fp = new FHIRPathEngine(context);
+    if (TestingUtilities.context == null)
+    	TestingUtilities.context = SimpleWorkerContext.fromPack("C:\\work\\org.hl7.fhir\\build\\publish\\validation-min.xml.zip");
+    FHIRPathEngine fp = new FHIRPathEngine(TestingUtilities.context);
 
-    fp.check(null, resource == null ? null : resource.getResourceType().toString(), focusType, expression);
     ExpressionNode node = fp.parse(expression);
+    fp.check(null, resource == null ? null : resource.getResourceType().toString(), focusType, node);
     List<Base> outcome = fp.evaluate(null, resource, focus, node);
     if (fp.hasLog())
       System.out.println(fp.takeLog());
@@ -133,13 +132,13 @@ public class FluentPathTests {
   }
 
   private void testWrong(Resource resource, String expression) throws FileNotFoundException, IOException, FHIRException {
-    if (context == null)
-      context = SimpleWorkerContext.fromPack("C:\\work\\org.hl7.fhir\\build\\publish\\validation-min.xml.zip");
-    FHIRPathEngine fp = new FHIRPathEngine(context);
+    if (TestingUtilities.context == null)
+    	TestingUtilities.context = SimpleWorkerContext.fromPack("C:\\work\\org.hl7.fhir\\build\\publish\\validation-min.xml.zip");
+    FHIRPathEngine fp = new FHIRPathEngine(TestingUtilities.context);
 
     try {
-      fp.check(null, null, resource.getResourceType().toString(), expression);
       ExpressionNode node = fp.parse(expression);
+      fp.check(null, null, resource.getResourceType().toString(), node);
       fp.evaluate(null, null, resource, node);
       if (fp.hasLog())
         System.out.println(fp.takeLog());
@@ -262,6 +261,10 @@ public class FluentPathTests {
     testBoolean(patient(), "Patient.name.given.count() = 3", true);
     testBoolean(patient(), "Patient.name.given.count() > -3", true);
     testBoolean(patient(), "Patient.name.given.count() != 0", true);
+    testBoolean(patient(), "1 < 2", true);
+    testBoolean(patient(), "1 < -2", false);
+    testBoolean(patient(), "+1 < +2", true);
+    testBoolean(patient(), "-1 < 2", true);
   }
 
   @Test
@@ -932,10 +935,13 @@ public class FluentPathTests {
   }
 
   private void testStructureDefinition(StructureDefinition sd) throws FileNotFoundException, IOException, FHIRException {
-    testBoolean(sd, sd, "StructureDefinition", "snapshot.element.tail().all(path.startsWith(%resource.snapshot.element.first().path&'.')) and differential.element.tail().all(path.startsWith(%resource.differential.element.first().path&'.'))", true);
-    
+    testBoolean(sd, sd, "StructureDefinition", "snapshot.element.tail().all(path.startsWith(%resource.snapshot.element.first().path&'.')) and differential.element.tail().all(path.startsWith(%resource.differential.element.first().path&'.'))", true); 
   }
 
+  @Test
+  public void testDoubleEntryPoint() throws FileNotFoundException, IOException, FHIRException {
+    testBoolean(patient(), "(Patient.name | Patient.address).count() = 3", true);
+  }
 
 }
 

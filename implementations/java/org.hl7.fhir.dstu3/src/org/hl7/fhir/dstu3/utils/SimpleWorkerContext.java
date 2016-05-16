@@ -1,6 +1,8 @@
 package org.hl7.fhir.dstu3.utils;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,9 +30,13 @@ import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.ConceptMap;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionBindingComponent;
+import org.hl7.fhir.dstu3.model.NamingSystem;
+import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemIdentifierType;
+import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemUniqueIdComponent;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.dstu3.model.Questionnaire;
 import org.hl7.fhir.dstu3.model.Resource;
+import org.hl7.fhir.dstu3.model.ResourceType;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.dstu3.model.ValueSet;
@@ -41,6 +47,7 @@ import org.hl7.fhir.dstu3.validation.IResourceValidator;
 import org.hl7.fhir.dstu3.validation.InstanceValidator;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.utilities.CSFileInputStream;
+import org.hl7.fhir.utilities.OIDUtils;
 import org.hl7.fhir.utilities.Utilities;
 
 /*
@@ -53,6 +60,7 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 
 	// all maps are to the full URI
 	private Map<String, StructureDefinition> structures = new HashMap<String, StructureDefinition>();
+	private List<NamingSystem> systems = new ArrayList<NamingSystem>();
 	private Questionnaire questionnaire;
 
 	// -- Initializations
@@ -75,7 +83,7 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 
 	public static SimpleWorkerContext fromClassPath() throws IOException, FHIRException {
 		SimpleWorkerContext res = new SimpleWorkerContext();
-		res.loadFromStream(SimpleWorkerContext.class.getResourceAsStream("validation.zip"));
+		res.loadFromStream(SimpleWorkerContext.class.getResourceAsStream("validation.json.zip"));
 		return res;
 	}
 
@@ -119,6 +127,8 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
       seeCodeSystem(url, (CodeSystem) r);
     else if (r instanceof ConceptMap)
       maps.put(((ConceptMap) r).getUrl(), (ConceptMap) r);
+    else if (r instanceof NamingSystem)
+    	systems.add((NamingSystem) r);
 	}
 	
 	private void seeValueSet(String url, ValueSet vs) throws DefinitionException {
@@ -249,8 +259,16 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 			} else if (class_ == ValueSet.class) {
 				if (valueSets.containsKey(uri))
 					return (T) valueSets.get(uri);
-				else if (codeSystems.containsKey(uri))
+				else
+					return null;      
+			} else if (class_ == CodeSystem.class) {
+				if (codeSystems.containsKey(uri))
 					return (T) codeSystems.get(uri);
+				else
+					return null;      
+			} else if (class_ == ConceptMap.class) {
+				if (maps.containsKey(uri))
+					return (T) maps.get(uri);
 				else
 					return null;      
 			}
@@ -349,6 +367,68 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
     return result;
   }
 
+	@Override
+	public String oid2Uri(String oid) {
+		String uri = OIDUtils.getUriForOid(oid);
+		if (uri != null)
+			return uri;
+		for (NamingSystem ns : systems) {
+			if (hasOid(ns, oid)) {
+				uri = getUri(ns);
+				if (uri != null)
+					return null;
+			}
+		}
+		return null;
+  }
 
+	private String getUri(NamingSystem ns) {
+		for (NamingSystemUniqueIdComponent id : ns.getUniqueId()) {
+			if (id.getType() == NamingSystemIdentifierType.URI)
+				return id.getValue();
+		}
+		return null;
+	}
+
+	private boolean hasOid(NamingSystem ns, String oid) {
+		for (NamingSystemUniqueIdComponent id : ns.getUniqueId()) {
+			if (id.getType() == NamingSystemIdentifierType.OID && id.getValue().equals(oid))
+				return true;
+		}
+		return false;
+	}
+
+
+
+
+  public void loadFromFolder(String folder) throws FileNotFoundException, Exception {
+    for (String n : new File(folder).list()) {
+      if (n.endsWith(".json")) 
+        loadFromFile(Utilities.path(folder, n), new JsonParser());
+      else if (n.endsWith(".xml")) 
+        loadFromFile(Utilities.path(folder, n), new XmlParser());
+    }
+  }
+  
+  private void loadFromFile(String filename, IParser p) throws FileNotFoundException, Exception {
+  	Resource r; 
+  	try {
+  		r = p.parse(new FileInputStream(filename));
+      if (r.getResourceType() == ResourceType.Bundle) {
+        for (BundleEntryComponent e : ((Bundle) r).getEntry()) {
+          seeResource(null, e.getResource());
+        }
+     } else {
+       seeResource(null, r);
+     }
+  	} catch (Exception e) {
+    	return;
+    }
+  }
+
+  public void dropResource(Resource r) throws Exception {
+   throw new Exception("NOt done yet");
+    
+  }
 
 }

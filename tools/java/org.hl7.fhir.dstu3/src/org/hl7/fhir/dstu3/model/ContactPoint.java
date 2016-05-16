@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -68,7 +68,7 @@ public class ContactPoint extends Type implements ICompositeType {
          */
         OTHER, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static ContactPointSystem fromCode(String codeString) throws FHIRException {
@@ -84,7 +84,10 @@ public class ContactPoint extends Type implements ICompositeType {
           return PAGER;
         if ("other".equals(codeString))
           return OTHER;
-        throw new FHIRException("Unknown ContactPointSystem code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown ContactPointSystem code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -203,7 +206,7 @@ public class ContactPoint extends Type implements ICompositeType {
          */
         MOBILE, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static ContactPointUse fromCode(String codeString) throws FHIRException {
@@ -219,7 +222,10 @@ public class ContactPoint extends Type implements ICompositeType {
           return OLD;
         if ("mobile".equals(codeString))
           return MOBILE;
-        throw new FHIRException("Unknown ContactPointUse code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown ContactPointUse code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -586,6 +592,42 @@ public class ContactPoint extends Type implements ICompositeType {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -887328209: /*system*/ return this.system == null ? new Base[0] : new Base[] {this.system}; // Enumeration<ContactPointSystem>
+        case 111972721: /*value*/ return this.value == null ? new Base[0] : new Base[] {this.value}; // StringType
+        case 116103: /*use*/ return this.use == null ? new Base[0] : new Base[] {this.use}; // Enumeration<ContactPointUse>
+        case 3492908: /*rank*/ return this.rank == null ? new Base[0] : new Base[] {this.rank}; // PositiveIntType
+        case -991726143: /*period*/ return this.period == null ? new Base[0] : new Base[] {this.period}; // Period
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -887328209: // system
+          this.system = new ContactPointSystemEnumFactory().fromType(value); // Enumeration<ContactPointSystem>
+          break;
+        case 111972721: // value
+          this.value = castToString(value); // StringType
+          break;
+        case 116103: // use
+          this.use = new ContactPointUseEnumFactory().fromType(value); // Enumeration<ContactPointUse>
+          break;
+        case 3492908: // rank
+          this.rank = castToPositiveInt(value); // PositiveIntType
+          break;
+        case -991726143: // period
+          this.period = castToPeriod(value); // Period
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("system"))
           this.system = new ContactPointSystemEnumFactory().fromType(value); // Enumeration<ContactPointSystem>
@@ -599,6 +641,19 @@ public class ContactPoint extends Type implements ICompositeType {
           this.period = castToPeriod(value); // Period
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -887328209: throw new FHIRException("Cannot make property system as it is not a complex type"); // Enumeration<ContactPointSystem>
+        case 111972721: throw new FHIRException("Cannot make property value as it is not a complex type"); // StringType
+        case 116103: throw new FHIRException("Cannot make property use as it is not a complex type"); // Enumeration<ContactPointUse>
+        case 3492908: throw new FHIRException("Cannot make property rank as it is not a complex type"); // PositiveIntType
+        case -991726143:  return getPeriod(); // Period
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

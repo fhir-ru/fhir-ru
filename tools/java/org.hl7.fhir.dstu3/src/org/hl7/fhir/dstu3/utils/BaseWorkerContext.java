@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.hl7.fhir.dstu3.model.BooleanType;
+import org.hl7.fhir.dstu3.model.Bundle;
+import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.CodeableConcept;
 import org.hl7.fhir.dstu3.model.Coding;
@@ -41,6 +43,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
 
   // all maps are to the full URI
   protected Map<String, CodeSystem> codeSystems = new HashMap<String, CodeSystem>();
+  protected Set<String> nonSupportedCodeSystems = new HashSet<String>();
   protected Map<String, ValueSet> valueSets = new HashMap<String, ValueSet>();
   protected Map<String, ConceptMap> maps = new HashMap<String, ConceptMap>();
   
@@ -52,6 +55,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   // private ValueSetExpansionCache expansionCache; //   
 
   protected FHIRToolingClient txServer;
+  private Bundle bndCodeSystems;
 
   @Override
   public CodeSystem fetchCodeSystem(String system) {
@@ -62,14 +66,28 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   public boolean supportsSystem(String system) {
     if (codeSystems.containsKey(system))
       return true;
+    else if (nonSupportedCodeSystems.contains(system))
+      return false;
+    else if (system.startsWith("http://example.org") || system.startsWith("http://acme.com") || system.startsWith("http://hl7.org/fhir/valueset-") || system.startsWith("urn:oid:"))
+      return false;
     else {
-      Conformance conf = txServer.getConformanceStatement();
-      for (Extension ex : ToolingExtensions.getExtensions(conf, "http://hl7.org/fhir/StructureDefinition/conformance-supported-system")) {
-        if (system.equals(((UriType) ex.getValue()).getValue())) {
+      System.out.println("check system "+system);
+      if (bndCodeSystems == null)
+        bndCodeSystems = txServer.fetchFeed(txServer.getAddress()+"/CodeSystem?content=not-present&_summary=true&_count=1000");
+      for (BundleEntryComponent be : bndCodeSystems.getEntry()) {
+      	CodeSystem cs = (CodeSystem) be.getResource();
+      	if (!codeSystems.containsKey(cs.getUrl())) {
+      		codeSystems.put(cs.getUrl(), null);
+      	}
+      }
+      for (BundleEntryComponent be : bndCodeSystems.getEntry()) {
+      	CodeSystem cs = (CodeSystem) be.getResource();
+        if (system.equals(cs.getUrl())) {
           return true;
         }
       }
     }
+    nonSupportedCodeSystems.add(system);
     return false;
   }
 
@@ -165,15 +183,18 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   }
   
   private ValidationResult verifyCodeExternal(ValueSet vs, Coding coding, boolean tryCache) {
-    ValidationResult res = handleByCache(vs, coding, tryCache);
+    ValidationResult res = vs == null ? null : handleByCache(vs, coding, tryCache);
     if (res != null)
       return res;
     Parameters pin = new Parameters();
     pin.addParameter().setName("coding").setValue(coding);
+    if (vs != null)
     pin.addParameter().setName("valueSet").setResource(vs);
     res = serverValidateCode(pin);
+    if (vs != null) {
     Map<String, ValidationResult> cache = validationCache.get(vs.getUrl());
     cache.put(cacheId(coding), res);
+    }
     return res;
   }
   
@@ -224,10 +245,10 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   @Override
   public ValidationResult validateCode(String system, String code, String display) {
     try {
-      if (codeSystems.containsKey(system)) 
+      if (codeSystems.containsKey(system) && codeSystems.get(system) != null)
         return verifyCodeInCodeSystem(codeSystems.get(system), system, code, display);
       else 
-        return verifyCodeExternal(null, new Coding().setSystem(system).setCode(code).setDisplay(display), true);
+        return verifyCodeExternal(null, new Coding().setSystem(system).setCode(code).setDisplay(display), false);
     } catch (Exception e) {
       return new ValidationResult(IssueSeverity.FATAL, "Error validating code \""+code+"\" in system \""+system+"\": "+e.getMessage());
     }
@@ -237,7 +258,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   @Override
   public ValidationResult validateCode(Coding code, ValueSet vs) {
     try {
-      if (codeSystems.containsKey(code.getSystem())) 
+      if (codeSystems.containsKey(code.getSystem()) && codeSystems.get(code.getSystem()) != null) 
         return verifyCodeInCodeSystem(codeSystems.get(code.getSystem()), code.getSystem(), code.getCode(), code.getDisplay());
       else if (vs.hasExpansion()) 
         return verifyCodeInternal(vs, code.getSystem(), code.getCode(), code.getDisplay());
@@ -264,9 +285,9 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   @Override
   public ValidationResult validateCode(String system, String code, String display, ValueSet vs) {
     try {
-//      if (system == null && vs.hasCodeSystem())
-//        return verifyCodeInternal(vs, vs.getCodeSystem().getSystem(), code, display);
-      if (codeSystems.containsKey(system) || vs.hasExpansion()) 
+      if (system == null && display == null)
+        return verifyCodeInternal(vs, code);
+      if ((codeSystems.containsKey(system)  && codeSystems.get(system) != null) || vs.hasExpansion()) 
         return verifyCodeInternal(vs, system, code, display);
       else 
         return verifyCodeExternal(vs, new Coding().setSystem(system).setCode(code).setDisplay(display), true);
@@ -278,7 +299,8 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   @Override
   public ValidationResult validateCode(String system, String code, String display, ConceptSetComponent vsi) {
     try {
-      ValueSet vs = new ValueSet().setUrl(Utilities.makeUuidUrn());
+      ValueSet vs = new ValueSet();
+      vs.setUrl(Utilities.makeUuidUrn());
       vs.getCompose().addInclude(vsi);
       return verifyCodeExternal(vs, new Coding().setSystem(system).setCode(code).setDisplay(display), true);
     } catch (Exception e) {
@@ -319,6 +341,15 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     }
   }
 
+  private ValidationResult verifyCodeInternal(ValueSet vs, String code) throws FileNotFoundException, ETooCostly, IOException {
+    if (vs.hasExpansion())
+      return verifyCodeInExpansion(vs, code);
+    else {
+      ValueSetExpansionOutcome vse = expansionCache.getExpander().expand(vs);
+      return verifyCodeInExpansion(vse.getValueset(), code);
+    }
+  }
+
   private ValidationResult verifyCodeInCodeSystem(CodeSystem cs, String system, String code, String display) {
     ConceptDefinitionComponent cc = findCodeInConcept(cs.getConcept(), code);
     if (cc == null)
@@ -354,6 +385,13 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     return null;
   }
 
+  private ValidationResult verifyCodeInExpansion(ValueSet vs, String code) {
+    ValueSetExpansionContainsComponent cc = findCode(vs.getExpansion().getContains(), code);
+    if (cc == null)
+      return new ValidationResult(IssueSeverity.ERROR, "Unknown Code "+code+" in "+vs.getUrl());
+    return null;
+  }
+
   private ValueSetExpansionContainsComponent findCode(List<ValueSetExpansionContainsComponent> contains, String code) {
     for (ValueSetExpansionContainsComponent cc : contains) {
       if (code.equals(cc.getCode()))
@@ -376,4 +414,9 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     return null;
   }
 
+  public Set<String> getNonSupportedCodeSystems() {
+    return nonSupportedCodeSystems;
+  }
+
+  
 }

@@ -79,6 +79,7 @@ import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpansionCache;
 import org.hl7.fhir.dstu3.utils.NarrativeGenerator;
 import org.hl7.fhir.dstu3.utils.SimpleWorkerContext;
+import org.hl7.fhir.dstu3.utils.XmlLocationAnnotator;
 import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
 import org.hl7.fhir.utilities.SchemaInputSource;
 import org.hl7.fhir.utilities.Utilities;
@@ -94,7 +95,6 @@ import org.xml.sax.XMLReader;
 import com.google.gson.JsonObject;
 
 public class ValidationEngine {
-	static final String MASTER_SOURCE = "http://hl7.org/documentcenter/public/standards/FHIR-Develop/validator.zip"; // fix after DSTU!!
 
 //  static final String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
 //  static final String W3C_XML_SCHEMA = "http://www.w3.org/2001/XMLSchema";
@@ -106,7 +106,6 @@ public class ValidationEngine {
   private OperationOutcome outcome;
 	private boolean noSchematron;
 	private StructureDefinition profile;
-  private Bundle logical;
 	private Questionnaire questionnaire;
 	private String profileURI;
 	private SimpleWorkerContext context;
@@ -125,20 +124,43 @@ public class ValidationEngine {
 		this.profileURI = profileURI;
 	}
 
-  public void process() throws FHIRException, ParserConfigurationException, TransformerException, SAXException, IOException {
+  public void process() throws Exception {
 		if (isXml())
 			processXml();
-		else
+		else if (isJson())
 			processJson();
+		else if (isTurtle()) 
+      processTurtle();
+		else
+		  throw new Exception("Unable to detemine format");
 	}
 	
   private boolean isXml() throws FHIRFormatError {
   	
 	  int x = position(source, '<'); 
 	  int j = position(source, '{');
-	  if (x == Integer.MAX_VALUE && j == Integer.MAX_VALUE)
-	  	throw new FHIRFormatError("Unable to interpret the content as either XML or JSON");
+    int t = position(source, '@');
+	  if (x == Integer.MAX_VALUE && j == Integer.MAX_VALUE || (t < j && t < x))
+	  	return false;
 	  return (x < j);
+  }
+
+  private boolean isJson() throws FHIRFormatError {  
+    int x = position(source, '<'); 
+    int j = position(source, '{');
+    int t = position(source, '@');
+    if (x == Integer.MAX_VALUE && j == Integer.MAX_VALUE || (t < j && t < x))
+      return false;
+    return (j < x);
+  }
+
+  private boolean isTurtle() throws FHIRFormatError {  
+    int x = position(source, '<'); 
+    int j = position(source, '{');
+    int t = position(source, '@');
+    if (x == Integer.MAX_VALUE && j == Integer.MAX_VALUE || (t > j) || (t > x))
+      return false;
+    return true;
   }
 
 	private int position(byte[] bytes, char target) {
@@ -150,7 +172,7 @@ public class ValidationEngine {
 	  
   }
 
-	public void processXml() throws ParserConfigurationException, TransformerException, SAXException, IOException, FHIRException {
+	public void processXml() throws Exception {
     outputs = new ArrayList<ValidationMessage>();
 
     // ok all loaded
@@ -161,7 +183,6 @@ public class ValidationEngine {
     factory.setNamespaceAware(true);
     Document doc;
     
-    if (logical == null) {
     factory.setValidating(false);
     factory.setSchema(schema);
     DocumentBuilder builder = factory.newDocumentBuilder();
@@ -176,7 +197,6 @@ public class ValidationEngine {
 			}
 			byte[] out = Utilities.saxonTransform(definitions, source, schCache);
     	processSchematronOutput(out);
-    }
     }
 
 		// 3. internal validation. reparse without schema to "help", and use a special parser that keeps location data for us
@@ -206,14 +226,15 @@ public class ValidationEngine {
 		validator.setAnyExtensionsAllowed(anyExtensionsAllowed);
 		validator.getExtensionDomains().addAll(extensionDomains);
 
-		if (logical != null)
-      outputs.addAll(validator.validateLogical(doc, logical));
-		else if (profile != null)
-      outputs.addAll(validator.validate(doc, profile));
+//		if (logical != null)
+//      validator.validateLogical(outputs, doc, logical));
+//		else
+		 if (profile != null)
+      validator.validate(outputs, doc, profile);
     else if (profileURI != null)
-      outputs.addAll(validator.validate(doc, profileURI));
+      validator.validate(outputs, doc, profileURI);
     else
-      outputs.addAll(validator.validate(doc));
+      validator.validate(outputs, doc);
     
 		try {
 		  context.newXmlParser().parse(new ByteArrayInputStream(source));
@@ -229,7 +250,11 @@ public class ValidationEngine {
     outcome = op;
   }
 
-  public void processJson() throws FHIRException, IOException {
+  public void processTurtle() throws Exception {
+    throw new Exception("Not done yet");
+  }
+  
+  public void processJson() throws Exception {
 		outputs = new ArrayList<ValidationMessage>();
 
 		// ok all loaded
@@ -245,11 +270,11 @@ public class ValidationEngine {
 		validator.getExtensionDomains().addAll(extensionDomains);
 
 		if (profile != null)
-			outputs.addAll(validator.validate(obj, profile));
+			validator.validate(outputs, obj, profile);
 		else if (profileURI != null)
-			outputs.addAll(validator.validate(obj, profileURI));
+			validator.validate(outputs, obj, profileURI);
 		else
-			outputs.addAll(validator.validate(obj));
+			validator.validate(outputs, obj);
 
 		try {
 		  new JsonParser().parse(new ByteArrayInputStream(source));
@@ -351,14 +376,6 @@ public class ValidationEngine {
     this.profile = profile;
   }
 
-  public Bundle getLogical() {
-    return logical;
-  }
-
-  public void setLogical(Bundle logical) {
-    this.logical = logical;
-  }
-
   public Questionnaire getQuestionnaire() {
     return questionnaire;
   }
@@ -375,27 +392,6 @@ public class ValidationEngine {
   public SimpleWorkerContext getContext() {
     return context;
 	}
-
-  public void loadFromFolder(String folder) throws FileNotFoundException, Exception {
-    System.out.println("  .. load additional definitions from "+folder);
-    for (String n : new File(folder).list()) {
-      if (n.endsWith(".json")) 
-        loadFromFile(Utilities.path(folder, n), new JsonParser());
-      else if (n.endsWith(".xml")) 
-        loadFromFile(Utilities.path(folder, n), new XmlParser());
-    }
-  }
-  
-  private void loadFromFile(String filename, IParser p) throws FileNotFoundException, Exception {
-    Resource r = p.parse(new FileInputStream(filename));
-    if (r.getResourceType() == ResourceType.Bundle) {
-       for (BundleEntryComponent e : ((Bundle) r).getEntry()) {
-         context.seeResource(null, e.getResource());
-       }
-    } else {
-      context.seeResource(null, r);
-    }
-  }
 
 
 	public void readDefinitions(byte[] defn) throws IOException, SAXException, FHIRException {
@@ -423,7 +419,7 @@ public class ValidationEngine {
     System.out.println("  .. load definitions from "+definitions);
 		byte[] defn;
 		if (Utilities.noString(definitions)) {
-			defn = loadFromUrl(MASTER_SOURCE);
+			throw new FHIRException("No definitions specified");
 		} else if (definitions.startsWith("https:") || definitions.startsWith("http:")) {
 			defn = loadFromUrl(definitions);
 		} else if (new File(definitions).exists()) {
@@ -457,13 +453,6 @@ public class ValidationEngine {
 				setProfile(readProfile(loadResourceCnt(profile, "profile")));
 		}
 	}
-
-  public void loadLogical(String logical) throws DefinitionException, Exception {
-    if (!Utilities.noString(logical)) { 
-      System.out.println("  .. load logical "+logical);
-      setLogical(readLogical(loadResourceCnt(logical, "logical")));
-    }
-  }
 
   public void loadQuestionnaire(String questionnaire) throws DefinitionException, Exception {
     if (!Utilities.noString(questionnaire)) { 

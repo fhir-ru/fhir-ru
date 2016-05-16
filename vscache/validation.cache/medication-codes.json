@@ -119,6 +119,17 @@
       "message": "The code provided is not  valid in the value set SNOMED CT Medication Codes"
     },
     {
+      "hash": "#|http://snomed.info/sct|null|66493003|null",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": null,
+        "definition": null,
+        "display": "Theophylline"
+      }
+    },
+    {
       "hash": "#|http://snomed.info/sct|null|96068000|Amoxicillin trihydrate",
       "severity": null,
       "message": null,
@@ -136,6 +147,11 @@
     },
     {
       "hash": "#|http://www.fda.gov/Drugs/InformationOnDrugs/ucm142438.htm|null|54569-2931|Amoxicillin Powder, for Suspension 250mg/5ml",
+      "severity": "error",
+      "message": "The code provided is not  valid in the value set SNOMED CT Medication Codes"
+    },
+    {
+      "hash": "#|http://www.nlm.nih.gov/research/umls/rxnorm|null|200371|null",
       "severity": "error",
       "message": "The code provided is not  valid in the value set SNOMED CT Medication Codes"
     },

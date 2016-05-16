@@ -28,20 +28,21 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 package org.hl7.fhir.utilities.xhtml;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//@DatatypeDef()
-public class XhtmlNode {
+import org.hl7.fhir.instance.model.api.IBaseXhtml;
+
+@ca.uhn.fhir.model.api.annotation.DatatypeDef(name="xhtml")
+public class XhtmlNode implements IBaseXhtml {
 
   public static final String NBSP = Character.toString((char)0xa0);
   
   private NodeType nodeType;
   private String name;
-  private Map<String, String> Attributes = new HashMap<String, String>();
+  private Map<String, String> attributes = new HashMap<String, String>();
   private List<XhtmlNode> childNodes = new ArrayList<XhtmlNode>();
   private String content;
 
@@ -49,6 +50,7 @@ public class XhtmlNode {
     super();
   }
 
+  
   public XhtmlNode(NodeType nodeType, String name) {
     super();
     this.nodeType = nodeType;
@@ -73,11 +75,12 @@ public class XhtmlNode {
   }
 
   public void setName(String name) {
+    assert name.contains(":") == false : "Name should not contain any : but was " + name;
     this.name = name;
   }
 
   public Map<String, String> getAttributes() {
-    return Attributes;
+    return attributes;
   }
 
   public List<XhtmlNode> getChildNodes() {
@@ -217,7 +220,7 @@ public class XhtmlNode {
       throw new Error("name is null");
     if (value == null)
       throw new Error("value is null");
-    Attributes.put(name, value);
+    attributes.put(name, value);
     return this;
   }
 
@@ -237,8 +240,8 @@ public class XhtmlNode {
   public XhtmlNode copy() {
   	XhtmlNode dst = new XhtmlNode(nodeType);
   	dst.name = name;
-  	for (String n : Attributes.keySet()) {
-  		dst.Attributes.put(n, Attributes.get(n));
+  	for (String n : attributes.keySet()) {
+  		dst.attributes.put(n, attributes.get(n));
   	}
     for (XhtmlNode n : childNodes)
     	dst.childNodes.add(n.copy());
@@ -256,10 +259,10 @@ public class XhtmlNode {
     XhtmlNode o = (XhtmlNode) other;
     if (!(nodeType == o.nodeType) || !compare(name, o.name) || !compare(content, o.content))
     	return false;
-    if (Attributes.size() != o.Attributes.size())
+    if (attributes.size() != o.attributes.size())
     	return false;
-    for (String an : Attributes.keySet())
-    	if (!Attributes.get(an).equals(o.Attributes.get(an)))
+    for (String an : attributes.keySet())
+    	if (!attributes.get(an).equals(o.attributes.get(an)))
     		return false;
     if (childNodes.size() != o.childNodes.size())
     	return false;
@@ -286,6 +289,15 @@ public class XhtmlNode {
 		return e1.equalsDeep(e2);
   }
 	
+  public String getNsDecl() {
+	 for (String an : attributes.keySet()) {
+		 if (an.equals("xmlns")) {
+			 return attributes.get(an);
+       }
+    }
+    return null;
+  }
+	
 	
 	public String getValueAsString() {
 		if (isEmpty()) {
@@ -300,7 +312,7 @@ public class XhtmlNode {
 	}
 
 	public void setValueAsString(String theValue) throws IllegalArgumentException {
-		this.Attributes = null;
+		this.attributes = null;
 		this.childNodes = null;
 		this.content = null;
 		this.name = null;
@@ -324,7 +336,7 @@ public class XhtmlNode {
 		try {
 			// TODO: this is ugly
 			XhtmlNode fragment = new XhtmlParser().parseFragment(val);
-			this.Attributes = fragment.Attributes;
+			this.attributes = fragment.attributes;
 			this.childNodes = fragment.childNodes;
 			this.content = fragment.content;
 			this.name = fragment.name;
@@ -347,5 +359,37 @@ public class XhtmlNode {
       }
     return null;
   }
+
+@Override
+public String getValue() {
+	return getValueAsString();
+}
+
+@Override
+public XhtmlNode setValue(String theValue) throws IllegalArgumentException {
+	setValueAsString(theValue);
+	return this;
+}
+
+/**
+ * Returns false
+ */
+public boolean hasFormatComment() {
+	return false;
+}
+
+/**
+ * NOT SUPPORTED - Throws {@link UnsupportedOperationException}
+ */
+public List<String> getFormatCommentsPre() {
+	throw new UnsupportedOperationException();
+}
+
+/**
+ * NOT SUPPORTED - Throws {@link UnsupportedOperationException}
+ */
+public List<String> getFormatCommentsPost() {
+	throw new UnsupportedOperationException();
+}
 
 }

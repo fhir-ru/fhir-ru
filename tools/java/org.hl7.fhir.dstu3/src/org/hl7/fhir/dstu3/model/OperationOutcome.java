@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -65,7 +65,7 @@ public class OperationOutcome extends DomainResource implements IBaseOperationOu
          */
         INFORMATION, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static IssueSeverity fromCode(String codeString) throws FHIRException {
@@ -79,7 +79,10 @@ public class OperationOutcome extends DomainResource implements IBaseOperationOu
           return WARNING;
         if ("information".equals(codeString))
           return INFORMATION;
-        throw new FHIRException("Unknown IssueSeverity code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown IssueSeverity code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -284,7 +287,7 @@ public class OperationOutcome extends DomainResource implements IBaseOperationOu
          */
         INFORMATIONAL, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static IssueType fromCode(String codeString) throws FHIRException {
@@ -348,7 +351,10 @@ public class OperationOutcome extends DomainResource implements IBaseOperationOu
           return THROTTLED;
         if ("informational".equals(codeString))
           return INFORMATIONAL;
-        throw new FHIRException("Unknown IssueType code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown IssueType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -1029,6 +1035,46 @@ public class OperationOutcome extends DomainResource implements IBaseOperationOu
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 1478300413: /*severity*/ return this.severity == null ? new Base[0] : new Base[] {this.severity}; // Enumeration<IssueSeverity>
+        case 3059181: /*code*/ return this.code == null ? new Base[0] : new Base[] {this.code}; // Enumeration<IssueType>
+        case 1557721666: /*details*/ return this.details == null ? new Base[0] : new Base[] {this.details}; // CodeableConcept
+        case -740386388: /*diagnostics*/ return this.diagnostics == null ? new Base[0] : new Base[] {this.diagnostics}; // StringType
+        case 1901043637: /*location*/ return this.location == null ? new Base[0] : this.location.toArray(new Base[this.location.size()]); // StringType
+        case -1795452264: /*expression*/ return this.expression == null ? new Base[0] : this.expression.toArray(new Base[this.expression.size()]); // StringType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 1478300413: // severity
+          this.severity = new IssueSeverityEnumFactory().fromType(value); // Enumeration<IssueSeverity>
+          break;
+        case 3059181: // code
+          this.code = new IssueTypeEnumFactory().fromType(value); // Enumeration<IssueType>
+          break;
+        case 1557721666: // details
+          this.details = castToCodeableConcept(value); // CodeableConcept
+          break;
+        case -740386388: // diagnostics
+          this.diagnostics = castToString(value); // StringType
+          break;
+        case 1901043637: // location
+          this.getLocation().add(castToString(value)); // StringType
+          break;
+        case -1795452264: // expression
+          this.getExpression().add(castToString(value)); // StringType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("severity"))
           this.severity = new IssueSeverityEnumFactory().fromType(value); // Enumeration<IssueSeverity>
@@ -1044,6 +1090,20 @@ public class OperationOutcome extends DomainResource implements IBaseOperationOu
           this.getExpression().add(castToString(value));
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 1478300413: throw new FHIRException("Cannot make property severity as it is not a complex type"); // Enumeration<IssueSeverity>
+        case 3059181: throw new FHIRException("Cannot make property code as it is not a complex type"); // Enumeration<IssueType>
+        case 1557721666:  return getDetails(); // CodeableConcept
+        case -740386388: throw new FHIRException("Cannot make property diagnostics as it is not a complex type"); // StringType
+        case 1901043637: throw new FHIRException("Cannot make property location as it is not a complex type"); // StringType
+        case -1795452264: throw new FHIRException("Cannot make property expression as it is not a complex type"); // StringType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -1190,11 +1250,40 @@ public class OperationOutcome extends DomainResource implements IBaseOperationOu
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 100509913: /*issue*/ return this.issue == null ? new Base[0] : this.issue.toArray(new Base[this.issue.size()]); // OperationOutcomeIssueComponent
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 100509913: // issue
+          this.getIssue().add((OperationOutcomeIssueComponent) value); // OperationOutcomeIssueComponent
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("issue"))
           this.getIssue().add((OperationOutcomeIssueComponent) value);
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 100509913:  return addIssue(); // OperationOutcomeIssueComponent
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -65,7 +65,7 @@ public class ElementDefinition extends Type implements ICompositeType {
          */
         CDATEXT, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static PropertyRepresentation fromCode(String codeString) throws FHIRException {
@@ -79,7 +79,10 @@ public class ElementDefinition extends Type implements ICompositeType {
           return TYPEATTR;
         if ("cdaText".equals(codeString))
           return CDATEXT;
-        throw new FHIRException("Unknown PropertyRepresentation code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown PropertyRepresentation code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -180,7 +183,7 @@ public class ElementDefinition extends Type implements ICompositeType {
          */
         OPENATEND, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static SlicingRules fromCode(String codeString) throws FHIRException {
@@ -192,7 +195,10 @@ public class ElementDefinition extends Type implements ICompositeType {
           return OPEN;
         if ("openAtEnd".equals(codeString))
           return OPENATEND;
-        throw new FHIRException("Unknown SlicingRules code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown SlicingRules code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -283,7 +289,7 @@ public class ElementDefinition extends Type implements ICompositeType {
          */
         BUNDLED, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static AggregationMode fromCode(String codeString) throws FHIRException {
@@ -295,7 +301,10 @@ public class ElementDefinition extends Type implements ICompositeType {
           return REFERENCED;
         if ("bundled".equals(codeString))
           return BUNDLED;
-        throw new FHIRException("Unknown AggregationMode code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown AggregationMode code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -386,7 +395,7 @@ public class ElementDefinition extends Type implements ICompositeType {
          */
         SPECIFIC, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static ReferenceVersionRules fromCode(String codeString) throws FHIRException {
@@ -398,7 +407,10 @@ public class ElementDefinition extends Type implements ICompositeType {
           return INDEPENDENT;
         if ("specific".equals(codeString))
           return SPECIFIC;
-        throw new FHIRException("Unknown ReferenceVersionRules code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown ReferenceVersionRules code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -485,7 +497,7 @@ public class ElementDefinition extends Type implements ICompositeType {
          */
         WARNING, 
         /**
-         * added to help the parsers
+         * added to help the parsers with the generic types
          */
         NULL;
         public static ConstraintSeverity fromCode(String codeString) throws FHIRException {
@@ -495,7 +507,10 @@ public class ElementDefinition extends Type implements ICompositeType {
           return ERROR;
         if ("warning".equals(codeString))
           return WARNING;
-        throw new FHIRException("Unknown ConstraintSeverity code '"+codeString+"'");
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown ConstraintSeverity code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -811,6 +826,38 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -1888270692: /*discriminator*/ return this.discriminator == null ? new Base[0] : this.discriminator.toArray(new Base[this.discriminator.size()]); // StringType
+        case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // StringType
+        case -1207109523: /*ordered*/ return this.ordered == null ? new Base[0] : new Base[] {this.ordered}; // BooleanType
+        case 108873975: /*rules*/ return this.rules == null ? new Base[0] : new Base[] {this.rules}; // Enumeration<SlicingRules>
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -1888270692: // discriminator
+          this.getDiscriminator().add(castToString(value)); // StringType
+          break;
+        case -1724546052: // description
+          this.description = castToString(value); // StringType
+          break;
+        case -1207109523: // ordered
+          this.ordered = castToBoolean(value); // BooleanType
+          break;
+        case 108873975: // rules
+          this.rules = new SlicingRulesEnumFactory().fromType(value); // Enumeration<SlicingRules>
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("discriminator"))
           this.getDiscriminator().add(castToString(value));
@@ -822,6 +869,18 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.rules = new SlicingRulesEnumFactory().fromType(value); // Enumeration<SlicingRules>
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -1888270692: throw new FHIRException("Cannot make property discriminator as it is not a complex type"); // StringType
+        case -1724546052: throw new FHIRException("Cannot make property description as it is not a complex type"); // StringType
+        case -1207109523: throw new FHIRException("Cannot make property ordered as it is not a complex type"); // BooleanType
+        case 108873975: throw new FHIRException("Cannot make property rules as it is not a complex type"); // Enumeration<SlicingRules>
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -1075,6 +1134,34 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3433509: /*path*/ return this.path == null ? new Base[0] : new Base[] {this.path}; // StringType
+        case 108114: /*min*/ return this.min == null ? new Base[0] : new Base[] {this.min}; // IntegerType
+        case 107876: /*max*/ return this.max == null ? new Base[0] : new Base[] {this.max}; // StringType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3433509: // path
+          this.path = castToString(value); // StringType
+          break;
+        case 108114: // min
+          this.min = castToInteger(value); // IntegerType
+          break;
+        case 107876: // max
+          this.max = castToString(value); // StringType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("path"))
           this.path = castToString(value); // StringType
@@ -1084,6 +1171,17 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.max = castToString(value); // StringType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3433509: throw new FHIRException("Cannot make property path as it is not a complex type"); // StringType
+        case 108114: throw new FHIRException("Cannot make property min as it is not a complex type"); // IntegerType
+        case 107876: throw new FHIRException("Cannot make property max as it is not a complex type"); // StringType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -1339,7 +1437,7 @@ public class ElementDefinition extends Type implements ICompositeType {
           if (this.aggregation == null)
             return false;
           for (Enumeration<AggregationMode> v : this.aggregation)
-            if (v.equals(value)) // code
+            if (v.getValue().equals(value)) // code
               return true;
           return false;
         }
@@ -1402,6 +1500,38 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3059181: /*code*/ return this.code == null ? new Base[0] : new Base[] {this.code}; // CodeType
+        case -309425751: /*profile*/ return this.profile == null ? new Base[0] : this.profile.toArray(new Base[this.profile.size()]); // UriType
+        case 841524962: /*aggregation*/ return this.aggregation == null ? new Base[0] : this.aggregation.toArray(new Base[this.aggregation.size()]); // Enumeration<AggregationMode>
+        case -670487542: /*versioning*/ return this.versioning == null ? new Base[0] : new Base[] {this.versioning}; // Enumeration<ReferenceVersionRules>
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3059181: // code
+          this.code = castToCode(value); // CodeType
+          break;
+        case -309425751: // profile
+          this.getProfile().add(castToUri(value)); // UriType
+          break;
+        case 841524962: // aggregation
+          this.getAggregation().add(new AggregationModeEnumFactory().fromType(value)); // Enumeration<AggregationMode>
+          break;
+        case -670487542: // versioning
+          this.versioning = new ReferenceVersionRulesEnumFactory().fromType(value); // Enumeration<ReferenceVersionRules>
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("code"))
           this.code = castToCode(value); // CodeType
@@ -1413,6 +1543,18 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.versioning = new ReferenceVersionRulesEnumFactory().fromType(value); // Enumeration<ReferenceVersionRules>
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3059181: throw new FHIRException("Cannot make property code as it is not a complex type"); // CodeType
+        case -309425751: throw new FHIRException("Cannot make property profile as it is not a complex type"); // UriType
+        case 841524962: throw new FHIRException("Cannot make property aggregation as it is not a complex type"); // Enumeration<AggregationMode>
+        case -670487542: throw new FHIRException("Cannot make property versioning as it is not a complex type"); // Enumeration<ReferenceVersionRules>
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -1839,6 +1981,46 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 106079: /*key*/ return this.key == null ? new Base[0] : new Base[] {this.key}; // IdType
+        case -1619874672: /*requirements*/ return this.requirements == null ? new Base[0] : new Base[] {this.requirements}; // StringType
+        case 1478300413: /*severity*/ return this.severity == null ? new Base[0] : new Base[] {this.severity}; // Enumeration<ConstraintSeverity>
+        case 99639597: /*human*/ return this.human == null ? new Base[0] : new Base[] {this.human}; // StringType
+        case -1795452264: /*expression*/ return this.expression == null ? new Base[0] : new Base[] {this.expression}; // StringType
+        case 114256029: /*xpath*/ return this.xpath == null ? new Base[0] : new Base[] {this.xpath}; // StringType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 106079: // key
+          this.key = castToId(value); // IdType
+          break;
+        case -1619874672: // requirements
+          this.requirements = castToString(value); // StringType
+          break;
+        case 1478300413: // severity
+          this.severity = new ConstraintSeverityEnumFactory().fromType(value); // Enumeration<ConstraintSeverity>
+          break;
+        case 99639597: // human
+          this.human = castToString(value); // StringType
+          break;
+        case -1795452264: // expression
+          this.expression = castToString(value); // StringType
+          break;
+        case 114256029: // xpath
+          this.xpath = castToString(value); // StringType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("key"))
           this.key = castToId(value); // IdType
@@ -1854,6 +2036,20 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.xpath = castToString(value); // StringType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 106079: throw new FHIRException("Cannot make property key as it is not a complex type"); // IdType
+        case -1619874672: throw new FHIRException("Cannot make property requirements as it is not a complex type"); // StringType
+        case 1478300413: throw new FHIRException("Cannot make property severity as it is not a complex type"); // Enumeration<ConstraintSeverity>
+        case 99639597: throw new FHIRException("Cannot make property human as it is not a complex type"); // StringType
+        case -1795452264: throw new FHIRException("Cannot make property expression as it is not a complex type"); // StringType
+        case 114256029: throw new FHIRException("Cannot make property xpath as it is not a complex type"); // StringType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -2116,6 +2312,34 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 1791316033: /*strength*/ return this.strength == null ? new Base[0] : new Base[] {this.strength}; // Enumeration<BindingStrength>
+        case -1724546052: /*description*/ return this.description == null ? new Base[0] : new Base[] {this.description}; // StringType
+        case -1410174671: /*valueSet*/ return this.valueSet == null ? new Base[0] : new Base[] {this.valueSet}; // Type
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 1791316033: // strength
+          this.strength = new BindingStrengthEnumFactory().fromType(value); // Enumeration<BindingStrength>
+          break;
+        case -1724546052: // description
+          this.description = castToString(value); // StringType
+          break;
+        case -1410174671: // valueSet
+          this.valueSet = (Type) value; // Type
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("strength"))
           this.strength = new BindingStrengthEnumFactory().fromType(value); // Enumeration<BindingStrength>
@@ -2125,6 +2349,17 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.valueSet = (Type) value; // Type
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 1791316033: throw new FHIRException("Cannot make property strength as it is not a complex type"); // Enumeration<BindingStrength>
+        case -1724546052: throw new FHIRException("Cannot make property description as it is not a complex type"); // StringType
+        case -1438410321:  return getValueSet(); // Type
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -2378,6 +2613,34 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -135761730: /*identity*/ return this.identity == null ? new Base[0] : new Base[] {this.identity}; // IdType
+        case -1613589672: /*language*/ return this.language == null ? new Base[0] : new Base[] {this.language}; // CodeType
+        case 107868: /*map*/ return this.map == null ? new Base[0] : new Base[] {this.map}; // StringType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -135761730: // identity
+          this.identity = castToId(value); // IdType
+          break;
+        case -1613589672: // language
+          this.language = castToCode(value); // CodeType
+          break;
+        case 107868: // map
+          this.map = castToString(value); // StringType
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("identity"))
           this.identity = castToId(value); // IdType
@@ -2387,6 +2650,17 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.map = castToString(value); // StringType
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -135761730: throw new FHIRException("Cannot make property identity as it is not a complex type"); // IdType
+        case -1613589672: throw new FHIRException("Cannot make property language as it is not a complex type"); // CodeType
+        case 107868: throw new FHIRException("Cannot make property map as it is not a complex type"); // StringType
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
@@ -3936,6 +4210,146 @@ public class ElementDefinition extends Type implements ICompositeType {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3433509: /*path*/ return this.path == null ? new Base[0] : new Base[] {this.path}; // StringType
+        case -671065907: /*representation*/ return this.representation == null ? new Base[0] : this.representation.toArray(new Base[this.representation.size()]); // Enumeration<PropertyRepresentation>
+        case 3373707: /*name*/ return this.name == null ? new Base[0] : new Base[] {this.name}; // StringType
+        case 102727412: /*label*/ return this.label == null ? new Base[0] : new Base[] {this.label}; // StringType
+        case 3059181: /*code*/ return this.code == null ? new Base[0] : this.code.toArray(new Base[this.code.size()]); // Coding
+        case -2119287345: /*slicing*/ return this.slicing == null ? new Base[0] : new Base[] {this.slicing}; // ElementDefinitionSlicingComponent
+        case 109413500: /*short*/ return this.short_ == null ? new Base[0] : new Base[] {this.short_}; // StringType
+        case -1014418093: /*definition*/ return this.definition == null ? new Base[0] : new Base[] {this.definition}; // MarkdownType
+        case -602415628: /*comments*/ return this.comments == null ? new Base[0] : new Base[] {this.comments}; // MarkdownType
+        case -1619874672: /*requirements*/ return this.requirements == null ? new Base[0] : new Base[] {this.requirements}; // MarkdownType
+        case 92902992: /*alias*/ return this.alias == null ? new Base[0] : this.alias.toArray(new Base[this.alias.size()]); // StringType
+        case 108114: /*min*/ return this.min == null ? new Base[0] : new Base[] {this.min}; // IntegerType
+        case 107876: /*max*/ return this.max == null ? new Base[0] : new Base[] {this.max}; // StringType
+        case 3016401: /*base*/ return this.base == null ? new Base[0] : new Base[] {this.base}; // ElementDefinitionBaseComponent
+        case 1193747154: /*contentReference*/ return this.contentReference == null ? new Base[0] : new Base[] {this.contentReference}; // UriType
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : this.type.toArray(new Base[this.type.size()]); // TypeRefComponent
+        case -659125328: /*defaultValue*/ return this.defaultValue == null ? new Base[0] : new Base[] {this.defaultValue}; // org.hl7.fhir.dstu3.model.Type
+        case 1857257103: /*meaningWhenMissing*/ return this.meaningWhenMissing == null ? new Base[0] : new Base[] {this.meaningWhenMissing}; // MarkdownType
+        case 97445748: /*fixed*/ return this.fixed == null ? new Base[0] : new Base[] {this.fixed}; // org.hl7.fhir.dstu3.model.Type
+        case -791090288: /*pattern*/ return this.pattern == null ? new Base[0] : new Base[] {this.pattern}; // org.hl7.fhir.dstu3.model.Type
+        case -1322970774: /*example*/ return this.example == null ? new Base[0] : new Base[] {this.example}; // org.hl7.fhir.dstu3.model.Type
+        case -1376969153: /*minValue*/ return this.minValue == null ? new Base[0] : new Base[] {this.minValue}; // org.hl7.fhir.dstu3.model.Type
+        case 399227501: /*maxValue*/ return this.maxValue == null ? new Base[0] : new Base[] {this.maxValue}; // org.hl7.fhir.dstu3.model.Type
+        case -791400086: /*maxLength*/ return this.maxLength == null ? new Base[0] : new Base[] {this.maxLength}; // IntegerType
+        case -861311717: /*condition*/ return this.condition == null ? new Base[0] : this.condition.toArray(new Base[this.condition.size()]); // IdType
+        case -190376483: /*constraint*/ return this.constraint == null ? new Base[0] : this.constraint.toArray(new Base[this.constraint.size()]); // ElementDefinitionConstraintComponent
+        case -1402857082: /*mustSupport*/ return this.mustSupport == null ? new Base[0] : new Base[] {this.mustSupport}; // BooleanType
+        case -1408783839: /*isModifier*/ return this.isModifier == null ? new Base[0] : new Base[] {this.isModifier}; // BooleanType
+        case 1857548060: /*isSummary*/ return this.isSummary == null ? new Base[0] : new Base[] {this.isSummary}; // BooleanType
+        case -108220795: /*binding*/ return this.binding == null ? new Base[0] : new Base[] {this.binding}; // ElementDefinitionBindingComponent
+        case 837556430: /*mapping*/ return this.mapping == null ? new Base[0] : this.mapping.toArray(new Base[this.mapping.size()]); // ElementDefinitionMappingComponent
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3433509: // path
+          this.path = castToString(value); // StringType
+          break;
+        case -671065907: // representation
+          this.getRepresentation().add(new PropertyRepresentationEnumFactory().fromType(value)); // Enumeration<PropertyRepresentation>
+          break;
+        case 3373707: // name
+          this.name = castToString(value); // StringType
+          break;
+        case 102727412: // label
+          this.label = castToString(value); // StringType
+          break;
+        case 3059181: // code
+          this.getCode().add(castToCoding(value)); // Coding
+          break;
+        case -2119287345: // slicing
+          this.slicing = (ElementDefinitionSlicingComponent) value; // ElementDefinitionSlicingComponent
+          break;
+        case 109413500: // short
+          this.short_ = castToString(value); // StringType
+          break;
+        case -1014418093: // definition
+          this.definition = castToMarkdown(value); // MarkdownType
+          break;
+        case -602415628: // comments
+          this.comments = castToMarkdown(value); // MarkdownType
+          break;
+        case -1619874672: // requirements
+          this.requirements = castToMarkdown(value); // MarkdownType
+          break;
+        case 92902992: // alias
+          this.getAlias().add(castToString(value)); // StringType
+          break;
+        case 108114: // min
+          this.min = castToInteger(value); // IntegerType
+          break;
+        case 107876: // max
+          this.max = castToString(value); // StringType
+          break;
+        case 3016401: // base
+          this.base = (ElementDefinitionBaseComponent) value; // ElementDefinitionBaseComponent
+          break;
+        case 1193747154: // contentReference
+          this.contentReference = castToUri(value); // UriType
+          break;
+        case 3575610: // type
+          this.getType().add((TypeRefComponent) value); // TypeRefComponent
+          break;
+        case -659125328: // defaultValue
+          this.defaultValue = (org.hl7.fhir.dstu3.model.Type) value; // org.hl7.fhir.dstu3.model.Type
+          break;
+        case 1857257103: // meaningWhenMissing
+          this.meaningWhenMissing = castToMarkdown(value); // MarkdownType
+          break;
+        case 97445748: // fixed
+          this.fixed = (org.hl7.fhir.dstu3.model.Type) value; // org.hl7.fhir.dstu3.model.Type
+          break;
+        case -791090288: // pattern
+          this.pattern = (org.hl7.fhir.dstu3.model.Type) value; // org.hl7.fhir.dstu3.model.Type
+          break;
+        case -1322970774: // example
+          this.example = (org.hl7.fhir.dstu3.model.Type) value; // org.hl7.fhir.dstu3.model.Type
+          break;
+        case -1376969153: // minValue
+          this.minValue = (org.hl7.fhir.dstu3.model.Type) value; // org.hl7.fhir.dstu3.model.Type
+          break;
+        case 399227501: // maxValue
+          this.maxValue = (org.hl7.fhir.dstu3.model.Type) value; // org.hl7.fhir.dstu3.model.Type
+          break;
+        case -791400086: // maxLength
+          this.maxLength = castToInteger(value); // IntegerType
+          break;
+        case -861311717: // condition
+          this.getCondition().add(castToId(value)); // IdType
+          break;
+        case -190376483: // constraint
+          this.getConstraint().add((ElementDefinitionConstraintComponent) value); // ElementDefinitionConstraintComponent
+          break;
+        case -1402857082: // mustSupport
+          this.mustSupport = castToBoolean(value); // BooleanType
+          break;
+        case -1408783839: // isModifier
+          this.isModifier = castToBoolean(value); // BooleanType
+          break;
+        case 1857548060: // isSummary
+          this.isSummary = castToBoolean(value); // BooleanType
+          break;
+        case -108220795: // binding
+          this.binding = (ElementDefinitionBindingComponent) value; // ElementDefinitionBindingComponent
+          break;
+        case 837556430: // mapping
+          this.getMapping().add((ElementDefinitionMappingComponent) value); // ElementDefinitionMappingComponent
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("path"))
           this.path = castToString(value); // StringType
@@ -4001,6 +4415,45 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.getMapping().add((ElementDefinitionMappingComponent) value);
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3433509: throw new FHIRException("Cannot make property path as it is not a complex type"); // StringType
+        case -671065907: throw new FHIRException("Cannot make property representation as it is not a complex type"); // Enumeration<PropertyRepresentation>
+        case 3373707: throw new FHIRException("Cannot make property name as it is not a complex type"); // StringType
+        case 102727412: throw new FHIRException("Cannot make property label as it is not a complex type"); // StringType
+        case 3059181:  return addCode(); // Coding
+        case -2119287345:  return getSlicing(); // ElementDefinitionSlicingComponent
+        case 109413500: throw new FHIRException("Cannot make property short as it is not a complex type"); // StringType
+        case -1014418093: throw new FHIRException("Cannot make property definition as it is not a complex type"); // MarkdownType
+        case -602415628: throw new FHIRException("Cannot make property comments as it is not a complex type"); // MarkdownType
+        case -1619874672: throw new FHIRException("Cannot make property requirements as it is not a complex type"); // MarkdownType
+        case 92902992: throw new FHIRException("Cannot make property alias as it is not a complex type"); // StringType
+        case 108114: throw new FHIRException("Cannot make property min as it is not a complex type"); // IntegerType
+        case 107876: throw new FHIRException("Cannot make property max as it is not a complex type"); // StringType
+        case 3016401:  return getBase(); // ElementDefinitionBaseComponent
+        case 1193747154: throw new FHIRException("Cannot make property contentReference as it is not a complex type"); // UriType
+        case 3575610:  return addType(); // TypeRefComponent
+        case 587922128:  return getDefaultValue(); // org.hl7.fhir.dstu3.model.Type
+        case 1857257103: throw new FHIRException("Cannot make property meaningWhenMissing as it is not a complex type"); // MarkdownType
+        case -391522164:  return getFixed(); // org.hl7.fhir.dstu3.model.Type
+        case -885125392:  return getPattern(); // org.hl7.fhir.dstu3.model.Type
+        case -2002328874:  return getExample(); // org.hl7.fhir.dstu3.model.Type
+        case -55301663:  return getMinValue(); // org.hl7.fhir.dstu3.model.Type
+        case 622130931:  return getMaxValue(); // org.hl7.fhir.dstu3.model.Type
+        case -791400086: throw new FHIRException("Cannot make property maxLength as it is not a complex type"); // IntegerType
+        case -861311717: throw new FHIRException("Cannot make property condition as it is not a complex type"); // IdType
+        case -190376483:  return addConstraint(); // ElementDefinitionConstraintComponent
+        case -1402857082: throw new FHIRException("Cannot make property mustSupport as it is not a complex type"); // BooleanType
+        case -1408783839: throw new FHIRException("Cannot make property isModifier as it is not a complex type"); // BooleanType
+        case 1857548060: throw new FHIRException("Cannot make property isSummary as it is not a complex type"); // BooleanType
+        case -108220795:  return getBinding(); // ElementDefinitionBindingComponent
+        case 837556430:  return addMapping(); // ElementDefinitionMappingComponent
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override

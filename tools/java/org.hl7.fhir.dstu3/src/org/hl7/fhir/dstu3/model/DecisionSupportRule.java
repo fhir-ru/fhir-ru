@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Mar 31, 2016 10:57+1100 for FHIR v1.4.0
+// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -320,6 +320,42 @@ public class DecisionSupportRule extends DomainResource {
       }
 
       @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 455891387: /*moduleMetadata*/ return this.moduleMetadata == null ? new Base[0] : new Base[] {this.moduleMetadata}; // ModuleMetadata
+        case 166208699: /*library*/ return this.library == null ? new Base[0] : this.library.toArray(new Base[this.library.size()]); // Reference
+        case -1059891784: /*trigger*/ return this.trigger == null ? new Base[0] : this.trigger.toArray(new Base[this.trigger.size()]); // TriggerDefinition
+        case -861311717: /*condition*/ return this.condition == null ? new Base[0] : new Base[] {this.condition}; // StringType
+        case -1422950858: /*action*/ return this.action == null ? new Base[0] : this.action.toArray(new Base[this.action.size()]); // ActionDefinition
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 455891387: // moduleMetadata
+          this.moduleMetadata = castToModuleMetadata(value); // ModuleMetadata
+          break;
+        case 166208699: // library
+          this.getLibrary().add(castToReference(value)); // Reference
+          break;
+        case -1059891784: // trigger
+          this.getTrigger().add(castToTriggerDefinition(value)); // TriggerDefinition
+          break;
+        case -861311717: // condition
+          this.condition = castToString(value); // StringType
+          break;
+        case -1422950858: // action
+          this.getAction().add(castToActionDefinition(value)); // ActionDefinition
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("moduleMetadata"))
           this.moduleMetadata = castToModuleMetadata(value); // ModuleMetadata
@@ -333,6 +369,19 @@ public class DecisionSupportRule extends DomainResource {
           this.getAction().add(castToActionDefinition(value));
         else
           super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 455891387:  return getModuleMetadata(); // ModuleMetadata
+        case 166208699:  return addLibrary(); // Reference
+        case -1059891784:  return addTrigger(); // TriggerDefinition
+        case -861311717: throw new FHIRException("Cannot make property condition as it is not a complex type"); // StringType
+        case -1422950858:  return addAction(); // ActionDefinition
+        default: return super.makeProperty(hash, name);
+        }
+
       }
 
       @Override
