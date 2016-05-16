@@ -19,12 +19,16 @@
 <h3>Сводные данные<!-- Summary --></h3>
 
 <table class="grid">
- <tr><td>Source</td><td>SNOMED CT создан под управлением <a href="http://www.ihtsdo.org/">IHTSDO</a>. 
-    IHTSDO - это международная организация по стандартизации, членами которой является множество разных стран, каждая из которых распространяет свой собственный вариант SNOMED CT</td></tr>
-<!--  <tr><td>Source</td><td>SNOMED CT is made managed by <a href="http://www.ihtsdo.org/">IHTSDO</a>. 
-    IHTSDO is an international standards organization with multiple different countries as members, each of which distribute their own variant of SNOMED CT</td></tr> -->
+ <tr><td>Source</td><td>SNOMED CT создан и администрируется <a href="http://www.ihtsdo.org/">IHTSDO</a>. 
+    IHTSDO - это международная организация, членами которой являются различные страны. IHTSDO публикует международный выпуск SNOMED CT (который используется в международных стандартах и ресурсах FHIR).
+Каждая из стран-членов IHTSDO может распространять свой собственный вариант SNOMED CT, содержащий международное издание плюс содержимое местных расширений и производных.<!--  SNOMED CT is made and managed by <a href="http://www.ihtsdo.org/">IHTSDO</a>. 
+     IHTSDO is an international organization with countries as members.
+     IHTSDO publishes the international release of SNOMED CT (which is used in FHIR international standards and resources).  
+     Each of the IHTSDO member countries may also distribute their own SNOMED CT edition, which contains the international release plus local extension content and derivatives. --></td></tr>
+
 	 <tr><td>System</td><td>Кодовую систему SNOMED CT идентифицирует следующий URI: <a href="http://snomed.info/sct">http://snomed.info/sct</a></td></tr>
- <tr><td>Version</td><td>Если указывается версия, она должна быть полным URI конкретной раздачи, соответствующим <a href="http://snomed.org/uristandard.pdf">спецификации SNOMED CT URI</a> (см. примечание ниже)</td></tr>
+ <tr><td>Version</td><td>Если указывается версия, она должна быть полным URI конкретной раздачи (Международный выпуск, или Национальный выпуск и версия), соответствующим <a href="http://snomed.org/uristandard.pdf">спецификации SNOMED CT URI</a> (см. примечание ниже)<!-- Where a version is used, it should be a full URI that represents the specific distribution  (International Release, or National Release and version), 
+ following the <a href="http://snomed.org/uristandard.pdf">SNOMED CT URI Specification</a> (see note below)  --></td></tr>
  <tr><td>Code</td><td>Для элемента <i>code</i> в пространстве имен http://snomed.info/sct допустимы следующие SNOMED CT-артефакты:
    <a href="http://www.snomed.org/gl?t=glsct_st_ConceptId">Concept IDs</a>, 
    <a href="http://www.snomed.org/gl?t=glsct_se_Expression">Expressions</a> (<a href="http://snomed.org/compgrammar.pdf">грамматика</a>) и
@@ -40,7 +44,7 @@
    <a href="http://www.snomed.org/gl?t=glsct_st_ConceptId">Concept IDs</a>, 
    <a href="http://www.snomed.org/gl?t=glsct_se_Expression">Expressions</a> (<a href="http://snomed.org/compgrammar.pdf">grammar</a>) and
    <a href="http://www.snomed.org/tig?t=tsg2_metadata_refset_legacy">SNOMED Legacy codes</a>.<br/><br/>
-     Description Ids are not valid, nor are other concepts associated with SNOMED CT Concepts using the RF2 identifier infrastructure. Expressions SHOULD NOT contain terms, only concept IDs </td></tr>
+     SNOMED CT Description Ids are not valid as codes in FHIR, nor are other alternate identifiers associated with SNOMED CT Concepts using the RF2 identifier infrastructure. Expressions SHOULD NOT contain terms, only concept IDs </td></tr>
  <tr><td>Display</td><td>The correct display for a SNOMED CT concept is one of the preferred terms for the concept. Preferred terms are case sensitive. The Fully Specified Name is not an appropriate choice. 
     The source of preferred name comes from a Language Reference Set.
     
@@ -58,11 +62,12 @@
 
 <h3>Вопросы версионирования<!-- Version Issues --></h3>
 <p>
-Единая дистрибуция, которая содержала бы все определенные в SNOMED CT коды во всех контекстах использования, отсутствует; вместо этого каждый национальный представитель размещает комплект версии определенной дистрибуции. Кроме того, могут быть указаны и другие органы власти, занимающиеся выпуском.
-<a href="http://snomed.org/uristandard.pdf">SNOMED CT URI Specification</a> описывает, как можно однозначным образом ссылаться на определенную версию дистрибуции:
-<!-- There is no single distribution that contains all defined SNOMED CT codes in all contexts of use; 
-instead, each national office distributes a set of version of a particular distribution. In 
-addition, other release authorities may be designated. 
+Единая раздача, которая содержала бы все определённые в SNOMED CT коды во всех контекстах использования, отсутствует. Вместо этого международный выпуск содержит все концепты,  совместно используемые и согласованные, чтобы быть международно значимыми и каждый национальный выпуск центр распространчет этот международный выпуск плюс дополнительное нациоальное содержимое (для расширения того международного набора). Кроме того, могут быть указаны и другие органы власти, занимающиеся выпуском.
+<a href="http://snomed.org/uristandard.pdf">Спецификация SNOMED CT URI</a> описывает, как можно однозначным образом ссылаться на определённую версию выпуска:
+<!-- There is no single distribution that contains all defined SNOMED CT codes in all contexts of use.
+Instead the international release contains all concepts shared and agreed to be internationally relevant and 
+each national release centre distributes this international release plus additional national content (to extend that international set). 
+In addition, other release authorities may be designated. 
 The <a href="http://snomed.org/uristandard.pdf">SNOMED CT URI Specification</a> describes
 how to unambiguously reference a particular version of a distribution:  -->
 </p>
@@ -77,27 +82,15 @@ simple using the date of release in the form YYYYMMDD (e.g. "20140531"),
 and assuming that the distribution is known. However this is not always
 safe, so implementations that populate the <i>version</i> element 
 SHOULD use the full URI form. 
-<!-- where [sctid] is the concept id of the SNOMED CT distribution (e.g. 32506021000036107 for Australia), and
-the tail is the date of release (by custom, this is usually the last
-day of the month). Note that many implementations are in the habit of 
-simple using the date of release in the form YYYYMMDD (e.g. "20140531"), 
-and assuming that the distribution is known. However this is not always
-safe, so implementations that populate the <i>version</i> element 
-SHOULD use the full URI form.  -->
 </p>
 
 <h3>Copyright/License Issues</h3>
 
 <p>
 The use of SNOMED CT codes, display names and value sets in this specification is subject to 
-<i>(basis to be confirmed)</i>. This does not convey the right to use SNOMED CT to 
+an MOU signed between HL7 International and IHTSDO. This does not convey the right to use SNOMED CT to 
 any users of this specification; implementers must acquire a license to use SNOMED CT in 
-their own right (from their national SNOMED CT authority, or elsewhere).
-</p>
-
-<p>
-Note that the US distribution of SNOMED CT is currently used as the underlying 
-system for the FHIR specification.
+their own right. See <a href="https://www.hl7.org/special/committees/termauth/docs.cfm">HL7 Policies and Guidance documents – Licensing</a>.
 </p>
 
 <h3>RDF</h3>
@@ -175,7 +168,10 @@ of the <a href="http://www.ihtsdo.org/fileadmin/user_upload/Docs_01/News/SNOMED_
 <p>
 Implicit value sets are those whose specification can be predicted based on the grammar of the 
 underlying code system, and the known structure of the URL that identifies them. SNOMED CT
-has two sets of implicit value sets: By Subsumption, and By Reference Set.
+has two common sets of implicit value sets defined: By Subsumption, and By Reference Set.
+These implicit value sets do not use complex queries. This allows a single URL to serve
+as a value set definition that defines a value set, and can serve as the basis for the
+<a href="valueset-operations.html#expand">$expansion</a> operation.
 </p>
 <p>
 If any value set resources exist with an identifier that conforms to the URL patterns specified below,
