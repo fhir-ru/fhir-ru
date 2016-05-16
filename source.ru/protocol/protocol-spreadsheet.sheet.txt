@@ -39,6 +39,11 @@
   Binding = unbound
   Definition = Code describing the timing of an activity; e.g. BID, QD
 
+ -- Row 8 -----------------------------------
+  Binding Name = PerformerProduct
+  Binding = unbound
+  Definition = Code describing the type of substance or medication
+
 === Sheet protocol-status =====================================
 
  -- Row 1 -----------------------------------
@@ -147,6 +152,7 @@
   Context = Protocol.step.precondition
   English = Only one of condition, intersection, union or exclude may be present
   XPath = (count(f:condition) + count(f:intersection[1]) + count(f:union[1]) + count(f:exclude[1])) <= 1
+  Expression = (condition.count() + intersection[0].count() + union[0].count() + exclude[0].count()) <= 1
 
 === Sheet Data Elements =====================================
 
@@ -439,9 +445,10 @@
   Requirements = Helps in planning of activity
 
  -- Row 37 -----------------------------------
-  Element = Protocol.step.activity.detail.product
+  Element = Protocol.step.activity.detail.product[x]
   Card. = 0..1
-  Type = Reference(Medication|Substance)
+  Type = Reference(Medication|Substance)|CodeableConcept
+  Binding = PerformerProduct
   Short Label = What\'s administered/supplied
   Definition = Identifies the food, drug or other product being consumed or supplied in the activity.
 

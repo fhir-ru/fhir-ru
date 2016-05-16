@@ -161,7 +161,7 @@
   Context = Observation.referenceRange
   English = Must have at least a low or a high or text
   XPath = (exists(f:low) or exists(f:high)or exists(f:text))
-  Expression = low or high or text
+  Expression = low.exists() or high.exists() or text.exists()
 
  -- Row 2 -----------------------------------
   Id = 6
@@ -175,7 +175,7 @@
   Context = Observation
   English = Component code SHALL not be same as observation code
   XPath = not(exists(f:component/f:code)) or count(for $coding in f:code/f:coding return parent::*/f:component/f:code/f:coding[f:code/@value=$coding/f:code/@value and f:system/@value=$coding/f:system/@value])=0
-  Expression = component.where(code = $this.code).empty()
+  Expression = component.where(code = %resource.code).empty()
 
 === Sheet Data Elements =====================================
 

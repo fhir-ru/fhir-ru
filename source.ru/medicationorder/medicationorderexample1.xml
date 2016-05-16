@@ -72,9 +72,6 @@
         </doseQuantity>
     </dosageInstruction>         
     <dispenseRequest>
-        <medicationReference>
-            <reference value="Medication/MedicationExample3"/>
-        </medicationReference>
         <validityPeriod>
             <start value="2015-01-15"/>
             <end value="2016-01-15"/>
@@ -94,13 +91,7 @@
         </expectedSupplyDuration>
     </dispenseRequest>   
     <substitution>
-        <type>
-            <coding>
-                <system value="http://hl7.org/fhir"/>
-                <code value="G"/>
-                <display value="Generic Composition"/>
-            </coding>
-        </type>
+        <allowed value = "true"/>
         <reason>
             <coding>
                 <system value="http://hl7.org/fhir"/>
