@@ -1055,15 +1055,15 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of team</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип команды<!-- Type of team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies what kind of team.  This is to support differentiation between multiple co-existing teams, such as care plan team, episode of care team, longitudinal care team</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет, какого типа эта команда. Это помогает различать одновременно существующие команды, такие как команда плана по уходу, команда по уходу для эпизода лечения, сквозная команда по уходу<!-- Identifies what kind of team.  This is to support differentiation between multiple co-existing teams, such as care plan team, episode of care team, longitudinal care team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Used for filtering what teams(s) are retrieved and displayed to different types of users</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Используется для фильтрации команд при извлечении и отображении различным типам пользователей<!-- Used for filtering what teams(s) are retrieved and displayed to different types of users --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">There may be multiple axis of categorization and one team may serve multiple purposes.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может быть несколько типов классификации, и одна команда может служить нескольким целям.<!-- There may be multiple axis of categorization and one team may serve multiple purposes. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Need a value set for this</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Здесь нужен набор значений<!-- Need a value set for this --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1090,9 +1090,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of the team, such as crisis assessment team</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Название команды, например команда по оценке кризиса<!-- Name of the team, such as crisis assessment team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Name of the care team</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Название команды по уходу<!-- Name of the care team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1121,11 +1121,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who care team is for</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Для кого предназначена эта команда по уходу<!-- Who care team is for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the patient or group whose intended care is handled by the team</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет пациента или группу, для ухода за которой предназначена данная команда<!-- Identifies the patient or group whose intended care is handled by the team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows the team to care for a group (e.g. marriage) therapy</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет команде оказывать уход группе (например супругам)<!-- Allows the team to care for a group (e.g. marriage) therapy --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1154,11 +1154,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Time period team covers</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Период времени, покрываемый командой<!-- Time period team covers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates when the team did (or is intended to) come into effect and end. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает, когда команда вступила в силу (или на когда это запланировано) и дата окончания [её полномочий].<!-- Indicates when the team did (or is intended to) come into effect and end.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows tracking what team(s) are in effect at a particular time.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет отслеживать, какие команды действовали в конкретный период.<!-- Allows tracking what team(s) are in effect at a particular time. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1185,9 +1185,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Members of the team</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Члены команды<!-- Members of the team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies all people and organizations who are expected to be involved in the care team.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описываются все люди и организации, которые, как ожидается, будут участвовать в команде по уходу.<!-- Identifies all people and organizations who are expected to be involved in the care team. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1219,12 +1219,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Type of involvement</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вид участия<!-- Type of involvement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates specific responsibility of an individual within the care team, such as &quot;Primary physician&quot;, &quot;Team coordinator&quot;, &quot;Caregiver&quot;, etc.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывается конкретный вид ответственности лица из команды по уходу, например "главный врач", "координатор команды", "лицо, осуществляющее уход" и др.<!-- Indicates specific responsibility of an individual within the care team, such as &quot;Primary physician&quot;, &quot;Team coordinator&quot;, &quot;Caregiver&quot;, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care team.  General relationships should be handled as properties of the Patient resource directly.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Иногда роли могут проистекать из типа медицинского специалиста. Это взаимосвязи, которые существуют только в контексте команды по уходу. Общие взаимосвязи должны обрабатываться напрямую как свойства ресурса Patient.<!-- Roles may sometimes be inferred by type of Practitioner.  These are relationships that hold only within the context of the care team.  General relationships should be handled as properties of the Patient resource directly. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.functionCode</Data><NamedCell
@@ -1253,12 +1253,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who is involved</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто в этом участвует<!-- Who is involved --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The specific person or organization who is participating/expected to participate in the care team.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Конкретная персона или организация, участвующая или от которой ожидается участие в команде по уходу.<!-- The specific person or organization who is participating/expected to participate in the care team. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Patient only needs to be listed if they have a role other than &quot;subject of care&quot;.&#10;&#10;Member is optional because some participants may be known only by their role, particularly in draft plans.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Пациента необходимо указывать здесь, только если у него будут другие роли, отличные от роли "объект ухода".&#10;&#10;Элемент member является необязательным, поскольку для некоторых участников может быть известна только их роль, в частности в черновых планах.<!-- Patient only needs to be listed if they have a role other than &quot;subject of care&quot;.&#10;&#10;Member is optional because some participants may be known only by their role, particularly in draft plans. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.role</Data><NamedCell
@@ -1287,9 +1287,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Time period of participant</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Временной период участника<!-- Time period of participant --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates when the specific member or organization did (or is intended to) come into effect and end. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывается, когда полномочия конкретного члена или организации команды вступили (или запланированы вступить) в силу и когда они заканчиваются.<!-- Indicates when the specific member or organization did (or is intended to) come into effect and end.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1318,9 +1318,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Organization responsible for the care team</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, ответственная за команду по уходу<!-- Organization responsible for the care team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The organization responsible for the care team</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, ответственная за команду по уходу<!-- The organization responsible for the care team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="16" ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -6110,7 +6110,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">CareTeamParticipantRole</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates specific responsibility of an individual within the care team, such as &quot;Primary physician&quot;, &quot;Team coordinator&quot;, &quot;Caregiver&quot;, etc.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Указывается конкретный вид ответственности лица из команды по уходу, например "главный врач", "координатор команды", "лицо, осуществляющее уход" и др.<!-- Indicates specific responsibility of an individual within the care team, such as &quot;Primary physician&quot;, &quot;Team coordinator&quot;, &quot;Caregiver&quot;, etc. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:Index="6" ss:StyleID="s118"><Data ss:Type="String">valueset-participant-role</Data></Cell>
