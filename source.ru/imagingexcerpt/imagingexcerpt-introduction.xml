@@ -3,34 +3,41 @@
 
 <div>
 <a name="scope"> </a>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
-This resource groups a set of imaging objects for some specified purpose, and provides references 
+
+Этот ресурс группирует ряд объектов радиологических исследований в некоторых целях и предоставляет ссылки туда, где эти изображения доступны через DICOM или доступные для просмотра форматы. Этот ресурс используется для доступа к информации касательно изображений и др., которые предназначены для обмена в других клинических контекстах, таких как диагностические отчёты, планы по уходу и др.
+<!-- This resource groups a set of imaging objects for some specified purpose, and provides references 
 to where the images are available using either DICOM or ready to view formats. 
 This resource is used to make available information concerning images etc. 
-that are intended to be exchanged into other clinical contexts such as diagnostic reports, Care Plans, etc. 
+that are intended to be exchanged into other clinical contexts such as diagnostic reports, Care Plans, etc.  -->
 </p>
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
-In distinction to ImagingStudy, this resource is a set of specifically selected objects, potentially from multiple studies on the same patient.  ImagingStudy is intended as the resource that identifies a single complete study in itself.
+В отличие от ImagingStudy, данный ресурс представляет собой ряд специально отобранных объектов, потенциально относящихся к разным исследованиям одного пациента. Ресурс ImagingStudy предназначен для идентификации отдельного исследования самого по себе в целом.
+<!-- In distinction to ImagingStudy, this resource is a set of specifically selected objects, potentially from multiple studies on the same patient.  ImagingStudy is intended as the resource that identifies a single complete study in itself. -->
 </p>
 </div>
 
 <div>
-<h2>Background and Context</h2>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
-This resource corresponds to the DICOM Key Object Selection (KOS) SOP Class, and may represent a FHIR access mechanism to the content of KOS SOP Instances. The content is closely based on the definitions of the equivalent DICOM constructs, and informed by usage patterns already established through DICOM implementation practices, including IHE KIN, TCE, and XDS-I profiles. However, it is not necessary to use DICOM infrastructure in order to use this resource.
+Этот ресурс соответствует SOP-классу выборки ключевых объектов DICOM и может представлять собой механизм доступа FHIR к содержимому KOS SOP-экземпляров. Его содержимое основано на определениях эквивалентных конструкций DICOM и использует шаблоны применения, уже установленные в практиках реализации DICOM, включая IHE KIN, TCE и профили XDS-I. Однако необходимости использовать инфраструктуру DICOM для использования этого ресурса нет.
+<!-- This resource corresponds to the DICOM Key Object Selection (KOS) SOP Class, and may represent a FHIR access mechanism to the content of KOS SOP Instances. The content is closely based on the definitions of the equivalent DICOM constructs, and informed by usage patterns already established through DICOM implementation practices, including IHE KIN, TCE, and XDS-I profiles. However, it is not necessary to use DICOM infrastructure in order to use this resource. -->
 </p>
 <p>
-The DICOM access methods provide access using the rich controls of the DICOM access methodology indicated. A DICOM client may use these access methods to gain full access to the DICOM objects and header.
+DICOM-методы доступа обеспечивают доступ с помощью богатых средств управления указанной методологии доступа DICOM. DICOM-клиент может применять эти методы доступа для получения полного доступа к DICOM-объектам и заголовку.
+<!-- The DICOM access methods provide access using the rich controls of the DICOM access methodology indicated. A DICOM client may use these access methods to gain full access to the DICOM objects and header. -->
 </p>
 <p> 
-The viewable access method provides access to a web rendered forms that can be directly pulled and displayed without knowing DICOM web protocols. 
-The viewable access method might provide thumnail formats, various perspectives, and various rendered formats. 
+Метод доступа viewable предоставляет доступ к веб-формам, которые могут пулиться и отображаться напрямую без знания веб-протоколов DICOM.
+Метод доступа viewable может предоставлять форматы "миниатюр", различные перспективы и форматы рендеринга (отрисовки).
+<!-- The viewable access method provides access to a web rendered forms that can be directly pulled and displayed without knowing DICOM web protocols. 
+The viewable access method might provide thumnail formats, various perspectives, and various rendered formats.  -->
 </p>
 </div>
 

@@ -2,10 +2,11 @@
 
 <!-- insert xhtml content here -->
 
-<h3>Use Case</h3>
-<h4>EHR access to imaging studies</h4>
+<h3>Сценарий использования<!-- Use Case --></h3>
+<h4>Доступ к результатам радиологических исследований из ЭМК<!-- EHR access to imaging studies --></h4>
 <p>
-Amy, a family physician, is accessing a cross-enterprise document registry that contains 
+Эми, семейный врач, обращается к реестру документов предприятия, содержащему результаты радиологических исследований (<a href="http://www.ihe.net">IHE Radiology XDS-I</a>), чтобы найти исследования её пациента Алекса. Её ЭМК-клиент выполняет FHIR-вызов всех доступных объектов <a href="imagingobjectselection.html">ImagingObjectSelection</a> для Алекса. В ответ она может получить идентификаторы исследований для каждого исследования, которое было опубликовано в этот реестр. В ответ предоставляется достаточно информации, чтобы получить эскиз через вызов WADO-RS или запустить просмотрщик с помощью вызова профиля <a href="http://www.ihe.net">IHE Radiology - Invoke Image Display (IID)</a>, используя элементы URL, находящиеся в <a href="imagingobjectselection.html">ImagingObjectSelection</a>. В каждом результате будет ссылка на FHIR-объект <a href="imagingstudy.html">ImagingStudy</a>, который может предоставить более подробную информацию о каждом исследовании.
+<!-- Amy, a family physician, is accessing a cross-enterprise document registry that contains 
 radiology objects (<a href="http://www.ihe.net">IHE Radiology XDS-I</a>), to discover studies for her patient, Alex. 
 Her EHR client makes a FHIR call for all <a href="imagingobjectselection.html">ImagingObjectSelection</a> objects available for 
 Alex. In the response, she is able to get study identifiers for each study that has 
@@ -14,31 +15,35 @@ There is enough information provided in the response to obtain a thumbnail via a
 call, or to launch a viewer using an <a href="http://www.ihe.net">IHE Radiology - Invoke Image Display (IID)</a> 
 profile call using the url elements found in the <a href="imagingobjectselection.html">ImagingObjectSelection</a>.
 In each result, there is a reference to 
-the <a href="imagingstudy.html">ImagingStudy</a> FHIR object which can provide more information about each study.
+the <a href="imagingstudy.html">ImagingStudy</a> FHIR object which can provide more information about each study. -->
 </p>
-<h4>Comprehensive Imaging Scheduled Workflow</h4>
+<h4>Всеобъемлющий плановый рабочий процесс работы с радиологическими изображениями<!-- Comprehensive Imaging Scheduled Workflow --></h4>
 <p>
-Joe Angina complains of shortness of breath and occasional chest pain to his primary care physician, Dr. Pat Down at 
+Джо Энджене жалуется на одышку и нерегулярную боль в груди своему основному лечащему врачу доктору Пату Дауну в местной поликлинике, который заказал для него стресс-эхокардиограмму; этот заказ создаётся в виде FHIR-ресурса <a href="order.html">Order</a> для управления рабочим процессом, со ссылкой на ресурс <a href="diagnosticorder.html">DiagnosticOrder</a> с деталями запроса. Заказ запланирован, и его исполнение назначено кардиологу доктору Арту Сканну, также работающему в этой поликлинике.
+<!-- Joe Angina complains of shortness of breath and occasional chest pain to his primary care physician, Dr. Pat Down at 
 Local MultiClinic, who orders a stress echocardiogram; the order is created as a FHIR <a href="order.html">Order</a> 
 resource to manage the workflow, with a link to a <a href="diagnosticorder.html">DiagnosticOrder</a> resource with 
-the details of the request.   The order is scheduled and assigned to cardiologist Dr. Art Skann, also at Local MultiClinic.   
+the details of the request.   The order is scheduled and assigned to cardiologist Dr. Art Skann, also at Local MultiClinic. -->
 </p>
 <p>
-On the scheduled day of the exam, Joe arrives at the echo lab to meet with Dr. Skann and have the study done.  
+В назначенный по расписанию день обследования Джо прибывает в лабораторию ультразвуковой эхографии для встречи с доктором Сканном и выполнения исследования. Рабочая станция доктора Сканна показывает ежедневный список <a href="order.html">Order</a>, и он переходит по ссылке для открытия заказа на диагностическое исследование (<a href="diagnosticorder.html">DiagnosticOrder</a>). Он может перейти по ссылкам из ресурса <a href="patient.html">Patient</a> для доступа к электронной истории болезни Джо, но в данном случае нас это не интересует.
+<!-- On the scheduled day of the exam, Joe arrives at the echo lab to meet with Dr. Skann and have the study done.  
 Dr. Skann’s workstation shows the daily list of <a href="order.html">Order</a>, and he follows the link to retrieve the 
 <a href="diagnosticorder.html">DiagnosticOrder</a>. (He may follow the links through the 
 referenced <a href="patient.html">Patient</a> resource to access Joe’s electronic 
-medical record, but that is not the concern of this storyboard.)  
+medical record, but that is not the concern of this storyboard.)   -->
 </p>
 <p>
-The <a href="order.html">Order</a> and <a href="diagnosticorder.html">DiagnosticOrder</a> has been transcoded to a DICOM Modality Worklist 
+<a href="order.html">Order</a> и <a href="diagnosticorder.html">DiagnosticOrder</a> были перекодированы в DICOM Modality Worklist Scheduled Procedure Step, а оборудование в лаборатории ультразвуковой эхографии скачало Modality Worklist. Исследование выполнено, и полученные изображения и предварительные измерения специалиста по ультразвуковой эхографии сохранены в локальной системе передачи и архивации изображений поликлиники (PACS). Система создаёт ресурс <a href="imagingstudy.html">ImagingStudy</a> для каждого проводимого исследования.
+<!-- The <a href="order.html">Order</a> and <a href="diagnosticorder.html">DiagnosticOrder</a> has been transcoded to a DICOM Modality Worklist 
 Scheduled Procedure Step, and in the echo lab the equipment has downloaded the Modality Worklist.  The 
 study is performed, and the acquired images and sonographer’s preliminary measurements are stored in the 
 Local MultiClinic Picture Archiving and Communication System (PACS).  The PACS creates 
-an <a href="imagingstudy.html">ImagingStudy</a> resource for each study it manages.
+an <a href="imagingstudy.html">ImagingStudy</a> resource for each study it manages. -->
 </p>
 <p>
-Dr. Skann interprets the study on a PACS workstation, and he selects two key image frames to be included 
+Доктор Сканн интерпретирует результаты исследования на рабочей станции системы PACS и выбирает два ключевых кадра изображения для включения в диагностический отчёт; эта выборка сохраняется в системе PACS в виде DICOM-выборки ключевых объектов под заголовком "Для приложения к отчёту", и PACS делает её доступной (перекодирует её) в виде FHIR-ресурса <a href="imagingobjectselection.html">ImagingObjectSelection</a>. Доктор Сканн диктует отчёт, используя программу написания отчётов структурированного ввода данных, включая рекомендацию катетеризации полостей сердца, и подписывает его. Программа написания отчётов оформляет документ в виде <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>-документа, извлекает ресурс <a href="imagingobjectselection.html">ImagingObjectSelection</a> и вставляет отмеченные ключевые изображения в этот отчёт.
+<!-- Dr. Skann interprets the study on a PACS workstation, and he selects two key image frames to be included 
 in the diagnostic report; this selection is stored back to the PACS as a DICOM Key Object Selection with 
 the title "For Report Attachment", and the PACS makes it available (transcodes it) as a 
 FHIR <a href="imagingobjectselection.html">ImagingObjectSelection</a> resource.  Dr. Skann dictates the 
@@ -46,28 +51,31 @@ report using a structured data entry report writing program, including a recomme
 catheterization procedure, and signs it.  The report writing program formats the report 
 as a <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> document, 
 retrieves the <a href="imagingobjectselection.html">ImagingObjectSelection</a> resource, and inserts the 
-referenced key images into the report.
+referenced key images into the report. -->
 </p>
 <p>
-Dr. Down meets again with Joe, and they review the results of the stress test.  Joe has a question about 
+Доктор Даун снова встречается с Джо, и они просматривают результаты стресс-теста. У Джо возникает вопрос относительно результатов исследования, которые не показаны на ключевых изображениях в отчёте, поэтому доктор Даун использует локальную информационную систему поликлиники и делает запрос к системе PACS на ресурс <a href="imagingstudy.html">ImagingStudy</a>, проходит по ссылкам для открытия изображений из этого исследования. Джо соглашается на процедуру катетеризации полостей сердца, и доктор Даун отправляет направление в отделение катетеризации больницы при Университете Джайномэс и указывает системе PACS дать совместный доступ к результатам эхографии через городскую систему обмена медицинской информацией.
+<!-- Dr. Down meets again with Joe, and they review the results of the stress test.  Joe has a question about 
 the findings that the key images in the report do not show, so Dr. Down uses the Local MultiClinic EMR 
 to query the PACS for the full <a href="imagingstudy.html">ImagingStudy</a> resource, and uses the references there to open an image 
 display for the full study.  Joe agrees to proceed to catheterization, and Dr. Down sends a referral to 
 the Ginormous University Hospital cath department, and triggers the PACS to share the echo study 
-through the Metropolitan Health Information Exchange.  
+through the Metropolitan Health Information Exchange.  --> 
 </p>
 <p>
-The PACS creates a manifest of the study as an <a href="imagingobjectselection.html">ImagingObjectSelection</a> 
+Система PACS создаёт манифест исследования в виде ресурса <a href="imagingobjectselection.html">ImagingObjectSelection</a>, в который входят все изображения, кроме предварительных измерений специалиста по ультразвуковой эхографии (которые в соответствии с политикой безопасности не доступны вне поликлиники). Этот манифест публикуется в городском реестре обмена медицинской информацией. В соответствии с <a href="http://www.ihe.net">IHE XDS-I</a>, эти изображения непосредственно не публикуются в этой системе обмена медицинской информацией, а становятся доступны по запросу к системе PACS.
+<!-- The PACS creates a manifest of the study as an <a href="imagingobjectselection.html">ImagingObjectSelection</a> 
 resource, which includes all the 
 images but excludes the sonographer’s preliminary measurements (which as a matter of policy are 
 not shared outside the Local MultiClinic). The manifest is published to the Metro HIE. (In 
 accordance with <a href="http://www.ihe.net">IHE XDS-I</a>, the images themselves are not directly 
-published to the HIE, but available for on-demand retrieval from the PACS.)
+published to the HIE, but available for on-demand retrieval from the PACS.) -->
 </p>
 <p>
-At Ginormous Hospital, Dr. Cora Plummer receives the cath referral, and looks up the study in the 
+В больнице Джайномэс докутор Кора Пламмер получает направление на катетеризацию и ищет то исследование в городской системе обмена медицинской информацией. Она извлекает манифест исследования <a href="imagingobjectselection.html">ImagingObjectSelection</a> и использует его для доступа к расшаренным изображениям для подготовки к процедуре катетеризации.
+<!-- At Ginormous Hospital, Dr. Cora Plummer receives the cath referral, and looks up the study in the 
 Metro HIE registry.  She retrieves the study manifest <a href="imagingobjectselection.html">ImagingObjectSelection</a>, 
-and uses it to access the shared images, which she uses to prepare for the cath procedure.
+and uses it to access the shared images, which she uses to prepare for the cath procedure. -->
 </p>
 
 

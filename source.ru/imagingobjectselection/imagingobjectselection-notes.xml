@@ -19,7 +19,7 @@ the <a href="imagingstudy.html">ImagingStudy</a> FHIR object which can provide m
 </p>
 <h4>Всеобъемлющий плановый рабочий процесс работы с радиологическими изображениями<!-- Comprehensive Imaging Scheduled Workflow --></h4>
 <p>
-Джо Энджене жалуется на одышку и нерегулярную боль в груди своему основному лечащему врачу доктору Пату Дауну в местной поликлинике, который заказал для него стресс-эхокардиограмму; этот заказ создаётся в виде FHIR-ресурса <a href="order.html">Order</a> для управления рабочим процессом, со ссылкой на ресурс <a href="diagnosticorder.html">DiagnosticOrder</a> с деталями запроса. Заказ запланирован, и его исполнение назначенено кардиологу доктору Арту Сканну, также работающему в этой поликлинике.
+Джо Энджене жалуется на одышку и нерегулярную боль в груди своему основному лечащему врачу доктору Пату Дауну в местной поликлинике, который заказал для него стресс-эхокардиограмму; этот заказ создаётся в виде FHIR-ресурса <a href="order.html">Order</a> для управления рабочим процессом, со ссылкой на ресурс <a href="diagnosticorder.html">DiagnosticOrder</a> с деталями запроса. Заказ запланирован, и его исполнение назначено кардиологу доктору Арту Сканну, также работающему в этой поликлинике.
 <!-- Joe Angina complains of shortness of breath and occasional chest pain to his primary care physician, Dr. Pat Down at 
 Local MultiClinic, who orders a stress echocardiogram; the order is created as a FHIR <a href="order.html">Order</a> 
 resource to manage the workflow, with a link to a <a href="diagnosticorder.html">DiagnosticOrder</a> resource with 
