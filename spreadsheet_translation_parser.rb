@@ -4,7 +4,7 @@
 # -*- coding: utf-8 -*-
 require 'colorize' # использовалось для отладки
 
-pattern = Regexp.new('\s+<Cell.*><Data ss:Type="String">([а-яА-Я]+.+)<!--\s+(.+)\s+--><\/Data>')
+pattern = Regexp.new('\s+<Cell.*><Data ss:Type="String">(.+[а-яА-Я]+.+)<!--\s+(.+)\s+--><\/Data>')
 
 # Источник - файл с ру переводом, откуда брать перевод
 # В источнике надо заменить в notepad++ "([а-яА-Я]+.+)<!--\s\r\n" на "$1<!-- " (без кавычек)
@@ -103,8 +103,8 @@ destination = ARGV[1]
                     # puts "diff = #{diff}"
                     # puts "identity = #{identity}%"                  
                   else
-                    # puts "There is partial match".yellow
-                    puts "There is partial match"
+                    puts "There is partial match".yellow
+                    # puts "There is partial match"
                     puts key
                     puts en_new
                     puts value
@@ -117,10 +117,10 @@ destination = ARGV[1]
           end          
         end
         unless flag
-            # puts "NOT FOUND---------------------------------------------------"
-            # puts "NOT FOUND---------------------------------------------------".red
-            # puts key
-            # puts value  
+            puts "NOT FOUND---------------------------------------------------"
+            puts "NOT FOUND---------------------------------------------------".red
+            puts key
+            puts value  
           end
         end
       end
