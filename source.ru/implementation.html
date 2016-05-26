@@ -27,9 +27,9 @@
   <li><a href="operations.html">Операции</a></li>
   <li><a href="documents.html">Клинические документы</a></li>
   <li><a href="messaging.html">Обмен сообщениями</a></li>
-  <li><a href="services.html">Services:</a>
+  <li><a href="services.html">Сервисы<!-- Services -->:</a>
    <ul>
-    <li><a href="terminology-service.html">Terminology Service</a></li>
+    <li><a href="terminology-service.html">Терминологический сервис<!-- Terminology Service --></a></li>
    </ul>
   </li>
 </ul>
@@ -39,16 +39,16 @@
 <ul>
   <li><a href="downloads.html">Скачать схемы, исходный код, инструменты</a></li>
  <li><a href="http://wiki.hl7.org/index.php?title=FHIR">FHIR Wiki</a></li>
-  <li><a href="validation.html">Validating Resources</a></li>
-  <li><a href="mapping-language.html">Mapping Language</a> (<a href="mapping-tutorial.html">tutorial</a>)</li>
-  <li><a href="security.html">Security</a> &amp;  <a href="security-labels.html">Security Labels</a></li>
-  <li><a href="updates.html">Variations between Submitted data and Retrieved data</a></li>
+  <li><a href="validation.html">Валидация ресурсов<!-- Validating Resources --></a></li>
+  <li><a href="mapping-language.html">Язык мэппинга<!-- Mapping Language --></a> (<a href="mapping-tutorial.html">инструкция<!-- tutorial --></a>)</li>
+  <li><a href="security.html">Безопасность<!-- Security --></a> и <a href="security-labels.html">Метки уровня безопасности<!-- Security Labels --></a></li>
+  <li><a href="updates.html">Вариации между подаваемыми и извлекаемыми данными<!-- Variations between Submitted data and Retrieved data --></a></li>
   <li><a href="managing.html">Управление идентификацией ресурса</a></li>
   <li><a href="pushpull.html">Методы обмена данными: Push и Pull</a></li>
   <li><a href="updates.html">Механизмы создания (Create) и обновления (Update)</a></li>
   <li><a href="support.html">Ссылки на дополнительные материалы </a></li>
   <li><a href="integrated-examples.html">Комплексные примеры</a></li>
-  <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Support_Page">Support Links (on FHIR Wiki)</a></li>
+  <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Support_Page">Ссылки на службы поддержки (на страничке FHIR Wiki) <!-- Support Links (on FHIR Wiki) --></a></li>
 </ul>
 </td><td style="border-left: 1px solid #eeeeee">
 <p><b>FHIR-профили и руководства по реализации</b></p>
@@ -86,20 +86,6 @@
  <li><input type="checkbox"/> My system checks that the right <a href="consentdirective.html">Patient consent</a> has been granted (where applicable)</li>
  <li><input type="checkbox"/> When other systems <a href="http.html#summary">return http errors from the RESTful API</a> and <a href="operations.html">Operations</a> (perhaps using <a href="operationoutcome.html">Operation Outcome</a>), my system checks for them and handles them appropriately</li>
  <li><input type="checkbox"/> My system publishes a <a href="conformance.html">conformance statement</a> with <a href="structuredefinition.html">StructureDefinitions</a>, <a href="valueset.html">ValueSets</a>, and <a href="operationdefinition.html">OperationDefinitions</a>, etc., so other implementers know how the system functions</li>
-<!--
- <li><input type="checkbox"/> Production exchange of patient or other sensitive data will always use some form of <a href="security.html#http">encryption on the wire</a></li>
- <li><input type="checkbox"/> For each resource that my system handles, I've reviewed the <a href="conformance-rules.html#isModifier">Modifier elements</a></li>
- <li><input type="checkbox"/> My system checks for <a href="extensibility.html#modifierExtension">modifierExtension</a> elements</li>
- <li><input type="checkbox"/> My system supports <a href="conformance-rules.html#mustSupport">elements labelled as "must-support"</a> in the <a href="profiling.html">profiles</a> that apply to my system</li>
- <li><input type="checkbox"/> For each resource that my system handles, my system handles the full <a href="lifecycle.html">Life cycle</a> (status codes, currency issues, and erroneous entry status)</li>
- <li><input type="checkbox"/> My system can <a href="narrative.html#css">render narratives properly</a> (where they are used)</li>
- <li><input type="checkbox"/> My system has documented how <a href="managing.html#distributed">distributed resource identification</a> works in its relevant contexts of use, and where (and why) <a href="references.html#contained">contained</a> resources are used</li>
- <li><input type="checkbox"/> My system manages lists of <a href="lifecycle.html#current">current resources</a> correctly</li> 
- <li><input type="checkbox"/> My system makes the right <a href="provenance.html">Provenance</a> statements and <a href="auditevent.html">AuditEvent</a> logs, and uses the right <a href="security-labels.html#core">security labels</a> where appropriate</li>
- <li><input type="checkbox"/> My system checks that the right <a href="consentdirective.html">Patient consent</a> has been granted (where applicable)</li>
- <li><input type="checkbox"/> When other systems <a href="http.html#summary">return http errors from the RESTful API</a> and <a href="operations.html">Operations</a> (perhaps using <a href="operationoutcome.html">Operation Outcome</a>), my system checks for them and handles them appropriately</li>
- <li><input type="checkbox"/> My system publishes a <a href="conformance.html">conformance statement</a> with <a href="structuredefinition.html">StructureDefinitions</a>, <a href="valueset.html">ValueSets</a>, and <a href="operationdefinition.html">OperationDefinitions</a>, etc., so other implementers know how the system functions</li>
--->
 </ol> 
 <p>
 Очевидно, что это лишь малая часть вопросов, которые должны включаться в вопросник для обеспечения безопасности приложения, при проверке уровня его защиты в соответствии с законодательно установленными правилами, принципами целостности внутренней структуры и т. д.

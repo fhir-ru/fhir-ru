@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-[%settitle Search (RESTful API) %]
+[%settitle Поиск (RESTful API) %]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -1598,12 +1598,13 @@ a complete resource.
 </p>
 
 <a name="score"> </a>
-<h4>Relevance</h4>
+<h4>Релевантность<!-- Relevance --></h4>
 <p>
-Where a search specifies a non-deterministic sort, the search algorithm
+Где поиск указывает неопределённую сортировку, поисковый алгоритм может создать некоторый вид рейтинговой оценки для обозначения, какие результаты удовлетворяют указанным критериям лучше, чем другие. Сервер может верннуть эту оценку в <a href="bundle-definitions.html#Bundle.entry.score">entry.score</a>:
+<!-- Where a search specifies a non-deterministic sort, the search algorithm
 may generate some kind of ranking score to indicate which resources meet
 the specified criteria better than others. The server can return this
-score in <a href="bundle-definitions.html#Bundle.entry.score">entry.score</a>:
+score in <a href="bundle-definitions.html#Bundle.entry.score">entry.score</a>: -->
 </p>
 <pre class="xml">
   &lt;entry&gt;
@@ -1614,23 +1615,26 @@ score in <a href="bundle-definitions.html#Bundle.entry.score">entry.score</a>:
   &lt;/entry&gt;
 </pre>
 <p>
-The score is a decimal number with a value between (and including) 0 and 1, where 1 is best match, and 0 is least match.
+Балл - это десятичное число со значением между (и включая) 0 и 1, где 1 - это наилучшее соответствие, а 0 - наименьшее соответствие.
+<!-- The score is a decimal number with a value between (and including) 0 and 1, where 1 is best match, and 0 is least match. -->
 </p>
 
 <a name="conformance" />
-<h3>Server Conformance</h3>
+<h3>Соответствие сервера<!-- Server Conformance --></h3>
 <p>
-In order to allow the client to be confident about what search parameters
+Для того, чтобы позволить клиенту быть уверенным о том, какие параметра поиска были использованы в качестве критериев сервером, сервер ДОЛЖЕН вернуть параметры, которые были фактически использованы при обработке поиска. Приложения, обрабатывающие результаты поиска, ДОЛЖНЫ проверить эти возвращённые значения, где это необходимо. Например, если сервер не поддерживает некоторые из фильтров, указанных в поиске, клиент мог бы вручную применить эти фильтры к полученному итоговому набору, показать предупреждающее сообщение пользователю или предпринять какое-то другое действие.
+<!-- In order to allow the client to be confident about what search parameters
 were used as criteria by the server, the server SHALL return the parameters
 that were actually used to process the search. Applications processing search
 results SHALL check these returned values where necessary. For example, if
 the server did not support some of the filters specified in the search, a
 client might manually apply those filters to the retrieved result set,
-display a warning message to the user or take some other action.
+display a warning message to the user or take some other action. -->
 </p>
 <p>
-In the case of a RESTful search, these parameters are encoded in the
-self link in the bundle that is returned:
+В случае RESTful-поиска эти параметры кодируются в ссылку типа "self" в бандле, который будет возвращён:
+<!-- In the case of a RESTful search, these parameters are encoded in the
+self link in the bundle that is returned: -->
 </p>
 <pre class="xml">
   &lt;link&gt;
@@ -1639,103 +1643,119 @@ self link in the bundle that is returned:
   &lt;/link&gt;
 </pre>
 <p>
-In other respects, servers have considerable discretion with regards
-to supporting search:
+В остальном, серверы обладают значительной свободой действий в отношении
+поддержки поиска:
+<!-- In other respects, servers have considerable discretion with regards
+to supporting search: -->
 </p>
 <ul>
- <li>Servers can choose which parameters to support (other than <code>_id</code> above).</li>
+ <li>Серверы могут выбирать, какие параметры поддерживать (за исключением <code>_id</code>, описанного выше).</li>
+ <li>Серверы могут выбирать, когда и где реализовывать цепочечные параметры, а также когда и где они будут поддерживать параметр <code>_include</code>.</li>
+ <li>Серверы могут декларировать дополнительные параметры в профилях, на которые ссылаются их заявления о соответствии. Серверы должны определять параметры поиска, начинающиеся с символа "-", чтобы гарантировать отсутствие конфликтов имён, которые они выберут, с будущими параметрами, определяемыми в рамках самой спецификации.</li>
+ <li>Серверам не требуется обеспечивать соблюдение чувствительности к регистру имён параметров, хотя эти имена и являются чувствительными к регистру (и URL-адреса, как правило, являются чувствительными к регистру).</li>
+ <li>Серверы могут выбирать, сколько результатов возвращать, хотя клиент может использовать <code>_count</code>, как описано выше.</li>
+ <li>Серверы могут выбирать, каким образом сортировать возвращаемые результаты, хотя они ДОЛЖНЫ учитывать параметр <code>_sort</code>.</li>
+<!--  <li>Servers can choose which parameters to support (other than <code>_id</code> above).</li>
  <li>Servers can choose when and where to implement parameter chaining, and when and where they support the <code>_include</code> parameter.</li>
  <li>Servers are able to declare additional parameters in the profiles referenced from their conformance statements. Servers should define search parameters
     starting with a "-" character to ensure that the names they choose do not clash with future parameters defined by this specification.</li>
  <li>Servers are not required to enforce case sensitivity on parameter names, though the names are case sensitive (and URLs are generally case-sensitive).</li>
  <li>Servers may choose how many results to return, though the client can use <code>_count</code> as above</li>
- <li>Servers can choose how to sort the return results, though they SHOULD honor the <code>_sort</code> parameter.</li>
+ <li>Servers can choose how to sort the return results, though they SHOULD honor the <code>_sort</code> parameter.</li> -->
 </ul>
 
 <hr/>
 <a name="advanced"> </a>
 <a name="query"> </a>
-<h3>Advanced Search</h3>
+<h3>Продвинутый поиск<!-- Advanced Search --></h3>
 <p>
-The search framework described above is a useful framework
+Система поиска, описанная выше - это полезный фреймворк для обеспечения простого поиска, основанного на индексируемых критериях, однако нужна возможность создания более сложных запросов для обработки точных запросов, сложных запросов на основе поддержки принятия решений и прямых запросов, интерпретируемых человеком.
+<!-- The search framework described above is a useful framework
 for providing a simple search based on indexed criteria,
 but more sophisticated query capability is needed to handle precise
 queries, complex decision support based requests, and
-direct queries that have human resolution.
+direct queries that have human resolution. -->
 </p>
 <p>
-More advanced search operations are specified by the
-<code>_query</code> parameter:
+Более сложные операции поиска задаются с помощью параметра <code>_query</code>:
+<!-- More advanced search operations are specified by the
+<code>_query</code> parameter: -->
 </p>
 <pre>
    GET [base]/Patient?_query=name&amp;parameters...
 </pre>
 <p>
-The <code>_query</code> parameter names a custom search profile that
+Параметр <code>_query</code> называет пользовательский профиль поиска, который описывает конкретную операцию запроса. Именованный запрос может задавать дополнительные именованные параметры, которые используются с определённым именованным запросом. Серверы могут определять свои собственные дополнительные именованные запросы для удовлетворения своих собственных нужд с помощью <a href="operationdefinition.html">OperationDefinition</a>.
+<!-- The <code>_query</code> parameter names a custom search profile that
 describes a specific query operation. The named query
 may define additional named parameters that are used with that
 particular named query. Servers can define their own additional
-named queries to meet their own uses using an <a href="operationdefinition.html">OperationDefinition</a>.
+named queries to meet their own uses using an <a href="operationdefinition.html">OperationDefinition</a>. -->
 </p>
 <p>
-There can only ever be one <code>_query</code> parameter in a set of search
+В наборе параметров поиска может быть только один параметр <code>_query</code>. Серверы обрабатывающие поисковые запросы, ДОЛЖНЫ отказывать обрабатывать поисковый запрос, если они не понимают значение параметра <code>_query</code>.
+<!-- There can only ever be one <code>_query</code> parameter in a set of search
 parameters. Servers processing search requests SHALL
 refuse to process a search request if they do not recognize
-the <code>_query</code> parameter value.
+the <code>_query</code> parameter value. -->
 </p>
 
 <a name="currency"> </a>
-<h3>Search Result Currency</h3>
+<h3>Устаревание результатов поиска<!-- Search Result Currency --></h3>
 
 <p>
-The results of a search operation are only guaranteed to be current
+Результаты операции поиска будут гарантированно текущими только на момент выполнения операции. После выполнения операции текущие действия над ресурсами, по которым выполнялся поиск, делают результаты всё более устаревшими. Значимость этого зависит от характера поиска, а также вида использования результатов.
+<!-- The results of a search operation are only guaranteed to be current
 at the moment the operation is executed. After the operation is executed,
 ongoing actions performed on the resources against which the search was
 executed will render the results increasingly stale. The significance
 of this depends on the nature of the search, and the kind of use that
-is being made of the results.
+is being made of the results. -->
 </p>
 <p>
-This is particularly relevant when the server is returning the results
+Особенно это имеет значение, когда сервер возвращает результаты в виде серии страниц. Способ обработки текущих обновлений ресурсов во время выполнения поиска остаётся на усмотрение поисковой системы.
+<!-- This is particularly relevant when the server is returning the results
 in a series of pages. It is at the discretion of the search engine of
 how to handle ongoing updates to the resources while the search
-is proceeding.
+is proceeding. -->
 </p>
 <p>
-Note: Performing a search operation does not change the set of
+Примечание: выполнение операции поиска не изменяет набор ресурсов на сервере, за исключением создания ресурсов <a href="auditevent.html">Audit Event</a> для ведения аудита самого поиска.
+<!-- Note: Performing a search operation does not change the set of
 resources on the server, with the exception of the creation
 of <a href="auditevent.html">Audit Event</a> resources
-auditing the search itself.
+auditing the search itself. -->
 </p>
 
 <a name="table"> </a>
-<h3>Summary Tables</h3>
+<h3>Итоговые таблицы<!-- Summary Tables --></h3>
 
 <table class="list">
-<tr><td colspan="4">Common Parameters defined for all resources:</td></tr>
-<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Paths</b></td></tr>
+<tr><td colspan="4">Общие параметры, определённые для всех ресурсов:<!-- Common Parameters defined for all resources: --></td></tr>
+<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Пути</b></td></tr>
 <tr><td><a href="#id"><code>_id</code></a></td><td><a href="#string">string</a></td><td>Resource id (not a full URL)</td><td>Resource.id</td></tr>
-<tr><td><a href="#lastUpdated"><code>_lastUpdated</code></a></td><td><a href="#date">date</a></td><td>Date last updated. Server has discretion on the boundary precision</td><td>Resource.meta.lastUpdated</td></tr>
-<tr><td><a href="#tag">_tag</a></td><td><a href="#token">token</a></td><td>Search by a resource tag</td><td>Resource.meta.tag</td></tr>
-<tr><td><a href="#profile"><code>_profile</code></a></td><td><a href="#uri">uri</a></td><td>Search for all resources tagged with a profile</td><td>Resource.meta.profile</td></tr>
-<tr><td><a href="#security"><code>_security</code></a></td><td><a href="#token">token</a></td><td>Search by a security label</td><td>Resource.meta.security</td></tr>
-<tr><td><a href="#text"><code>_text</code></a></td><td><a href="#string">string</a></td><td>Text search against the narrative</td><td></td></tr>
-<tr><td><a href="#content"><code>_content</code></a></td><td><a href="#string">string</a></td><td>Text search against the entire resource</td><td></td></tr>
-<tr><td><a href="#list"><code>_list</code></a></td><td><a href="#string">string</a></td><td>All resources in nominated list (by id, not a full URL)</td><td></td></tr>
+<tr><td><a href="#lastUpdated"><code>_lastUpdated</code></a></td><td><a href="#date">date</a></td><td>Дата последнего обновления. Сервер может по своему усмотрению устанавливать границы точности<!-- Date last updated. Server has discretion on the boundary precision --></td><td>Resource.meta.lastUpdated</td></tr>
+<tr><td><a href="#tag">_tag</a></td><td><a href="#token">token</a></td><td>Поиск по тегу ресурса<!-- Search by a resource tag --></td><td>Resource.meta.tag</td></tr>
+<tr><td><a href="#profile"><code>_profile</code></a></td><td><a href="#uri">uri</a></td><td>Поиск всех ресурсов, помеченных профилем<!-- Search for all resources tagged with a profile --></td><td>Resource.meta.profile</td></tr>
+<tr><td><a href="#security"><code>_security</code></a></td><td><a href="#token">token</a></td><td>Поиск по метке уровня безопасности<!-- Search by a security label --></td><td>Resource.meta.security</td></tr>
+<tr><td><a href="#text"><code>_text</code></a></td><td><a href="#string">string</a></td><td>Текстовый поиск по описательной части<!-- Text search against the narrative --></td><td></td></tr>
+<tr><td><a href="#content"><code>_content</code></a></td><td><a href="#string">string</a></td><td>Текстовый поиск по всему ресурсу целиком<!-- Text search against the entire resource --></td><td></td></tr>
+<tr><td><a href="#list"><code>_list</code></a></td><td><a href="#string">string</a></td><td>Все ресурсы в названном списке (по идентификатору, а не полному URL)<!-- All resources in nominated list (by id, not a full URL) --></td><td></td></tr>
 <tr><td><a href="#query">_query</a></td><td><a href="#string">string</a></td><td>Custom named query</td><td></td></tr>
 <tr><td colspan="4">Search Control Parameters:</td></tr>
-<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Allowable Content</b></td></tr>
-<tr><td><a href="#sort"><code>_sort</code></a></td><td><a href="#string">string</a></td><td>Order to sort results in (can repeat for inner sort orders)</td><td>Name of a valid search parameter</td></tr>
-<tr><td><a href="#count"><code>_count</code></a></td><td><a href="#number ">number </a></td><td>Number of results per page</td><td>Whole number</td></tr>
-<tr><td><a href="#include"><code>_include</code></a></td><td><a href="#string">string</a></td><td>Other resources to include in the search results that search matches point to</td><td>SourceType:searchParam(:targetType)</td></tr>
-<tr><td><a href="#revinclude"><code>_revinclude</code></a></td><td><a href="#string">string</a></td><td>Other resources to include in the search results when they refer to search matches</td><td>SourceType:searchParam(:targetType)</td></tr>
-<tr><td><a href="#summary"><code>_summary</code></a></td><td><a href="#string">string</a></td><td>Just return the summary elements (for resources where this is defined)</td><td><code>true</code> | <code>false</code> (<code>false</code> is default)</td></tr>
-<tr><td><a href="#contained"><code>_contained</code></a></td><td><a href="#string">string</a></td><td>Whether to return resources contained in other resources in the search matches</td><td><code>true</code> | <code>false</code> | <code>both</code> (<code>false</code> is default)</td></tr>
-<tr><td><a href="#containedType"><code>_containedType</code></a></td><td><a href="#string">string</a></td><td>If returning contained resources, whether to return the contained or container resources</td><td><code>container</code> | <code>contained</code></td></tr>
+<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Допустимое содержимое</b></td></tr>
+<tr><td><a href="#sort"><code>_sort</code></a></td><td><a href="#string">string</a></td><td>Порядок сортировки результатов (может повторяться для внутренних порядков сортировки)<!-- Order to sort results in (can repeat for inner sort orders) --></td><td>Имя допустимого параметра поиска<!-- Name of a valid search parameter --></td></tr>
+<tr><td><a href="#count"><code>_count</code></a></td><td><a href="#number ">number </a></td><td>Количество результатов на странице<!-- Number of results per page --></td><td>Общее количество<!-- Whole number --></td></tr>
+<tr><td><a href="#include"><code>_include</code></a></td><td><a href="#string">string</a></td><td>Другие ресурсы для включения в результаты поиска, на которые указывают найденные при поиске совпадения<!-- Other resources to include in the search results that search matches point to --></td><td>SourceType:searchParam(:targetType)</td></tr>
+<tr><td><a href="#revinclude"><code>_revinclude</code></a></td><td><a href="#string">string</a></td><td>Другие ресурсы для включения в результаты поиска, когда они ссылаются на найденные при поиске совпадения<!-- Other resources to include in the search results when they refer to search matches --></td><td>SourceType:searchParam(:targetType)</td></tr>
+<tr><td><a href="#summary"><code>_summary</code></a></td><td><a href="#string">string</a></td><td>Просто верните суммарные элементы (для ресурсов, где это определено)<!-- Just return the summary elements (for resources where this is defined) --></td><td><code>true</code> | <code>false</code> (<code>false</code> is default)</td></tr>
+<tr><td><a href="#contained"><code>_contained</code></a></td><td><a href="#string">string</a></td><td>Возвращать ли ресурсы, вложенные в другие ресурсы при поиске совпадений<!-- Whether to return resources contained in other resources in the search matches --></td><td><code>true</code> | <code>false</code> | <code>both</code> (<code>false</code> is default)</td></tr>
+<tr><td><a href="#containedType"><code>_containedType</code></a></td><td><a href="#string">string</a></td><td>Возвращать ли вложенные или родительские ресурсы при возвращении вложенных ресурсов<!-- If returning contained resources, whether to return the contained or container resources --></td><td><code>container</code> | <code>contained</code></td></tr>
 </table>
 
 <p>
-Cross-map between search parameter types and Data types:
+Перекрёстное отображение между типами параметров поиска и типами данных:
+<!-- Cross-map between search parameter types and Data types: -->
 </p>
 <table class="list">
  <tr>
@@ -1753,7 +1773,7 @@ Cross-map between search parameter types and Data types:
   <td><%xcm boolean:number%></td> <!-- number -->
   <td><%xcm boolean:date%></td> <!-- date -->
   <td><%xcm boolean:string%></td> <!-- string -->
-  <td><%xcm boolean:token%>. true|false (System = http://hl7.org/fhir/special-values but not usually needed)</td> <!-- token -->
+  <td><%xcm boolean:token%>. true|false (System = http://hl7.org/fhir/special-values, однако обычно не требуется<!-- but not usually needed -->)</td> <!-- token -->
   <td><%xcm boolean:reference%></td> <!-- reference -->
   <td><%xcm boolean:quantity%></td> <!-- quantity -->
   <td><%xcm boolean:uri%></td> <!-- uri -->
@@ -1763,7 +1783,7 @@ Cross-map between search parameter types and Data types:
   <td><%xcm code:number%></td> <!-- number -->
   <td><%xcm code:date%></td> <!-- date -->
   <td><%xcm code:string%></td> <!-- string -->
-  <td><%xcm code:token%>. (System, if desired, is defined in the underlying value set for eeach code)</td> <!-- token -->
+  <td><%xcm code:token%>. Система, при желании, определяется в лежащем в основе наборе значений для каждого кода<!-- (System, if desired, is defined in the underlying value set for eeach code) --></td> <!-- token -->
   <td><%xcm code:reference%></td> <!-- reference -->
   <td><%xcm code:quantity%></td> <!-- quantity -->
   <td><%xcm code:uri%></td> <!-- uri -->
@@ -1832,7 +1852,7 @@ Cross-map between search parameter types and Data types:
   <td><a href="datatypes.html#Address">Address</a></td>
   <td><%xcm Address:number%></td> <!-- number -->
   <td><%xcm Address:date%></td> <!-- date -->
-  <td><%xcm Address:string%> search on any elements in the address</td> <!-- string -->
+  <td><%xcm Address:string%> Поиск по любому элементу в адресе<!-- search on any elements in the address --></td> <!-- string -->
   <td><%xcm Address:token%></td> <!-- token -->
   <td><%xcm Address:reference%></td> <!-- reference -->
   <td><%xcm Address:quantity%></td> <!-- quantity -->
@@ -1892,7 +1912,7 @@ Cross-map between search parameter types and Data types:
   <td><a href="datatypes.html#HumanName">HumanName</a></td>
   <td><%xcm HumanName:number%></td> <!-- number -->
   <td><%xcm HumanName:date%></td> <!-- date -->
-  <td><%xcm HumanName:string%> Search on any element in the name</td> <!-- string -->
+  <td><%xcm HumanName:string%> Поиск по любому элементу в имени<!-- Search on any element in the name --></td> <!-- string -->
   <td><%xcm HumanName:token%></td> <!-- token -->
   <td><%xcm HumanName:reference%></td> <!-- reference -->
   <td><%xcm HumanName:quantity%></td> <!-- quantity -->
