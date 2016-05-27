@@ -4,28 +4,33 @@
 <a name="snu"></a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
-The <i>StructureMap</i> resource defines a detailed set of of rules that describe 
+Ресурс <i>StructureMap</i> задаёт детализированный набор правил, которые описывают, каким образом одна <a href="structuredefinition.html">структура</a> взаимосвязана с другой, и предоставляет достаточно деталей для автоматического преобразования экземпляров.
+<!-- The <i>StructureMap</i> resource defines a detailed set of of rules that describe 
 how one <a href="structuredefinition.html">Structure</a> is related to another,
-and provides sufficient detail to allow for autoamted conversion of instances. 
+and provides sufficient detail to allow for autoamted conversion of instances.  -->
 </p>
 <p>
-The intention of the structure map resource is to allow a specialist in a 
+Идея ресурса StructureMap состоит в том, чтобы позволить специалисту по форматам и интероперабельности указать все взаимосвязи между двумя структурами (например CDA-документом и FHIR-ресурсами), и затем множество различных систем - как тестовых, так и рабочих клинических систем - смогут эффективно использовать его для автоматического преобразования из одного формата в другой.
+<!-- The intention of the structure map resource is to allow a specialist in a 
 formats and interoperability to specify the full relationships between 
 two structures (e.g. a CDA document and a set of FHIR resources), and 
 then many different systems - both testing and production clinical systems - can
-leverage that to autoamtically transform from one format to the other. 
+leverage that to autoamtically transform from one format to the other.  -->
 </p>
 <p>
-Maps are uni-directional: they map from the source structure to the 
+Карты соответствия - однонаправленные: они отображают исходную структуру на целевую структуру, а обратное преобразование не предусматривается. Даже если отображение простое и без потерь, нельзя предполагать отсутствие условий, которые могли бы дополнительно применяться в обратном направлении.
+<!-- Maps are uni-directional: they map from the source structure to the 
 target structure, and no reverse map is implied. Even if the mapping
 is simple, and loss-less, it cannot be assumed that there are no conditions 
-that might additionally apply in the reverse direction. 
+that might additionally apply in the reverse direction.  -->
 </p>
 <p>
-The mapping language, along with a concrete syntax, is defined in detail in <a href="mapping-language.html">the
+Язык отображения и его реальный синтаксис детально описаны в разделе <a href="mapping-language.html">the
+FHIR Mappping Language</a>. Ресурс StructureMap представляет собой абстрактный синтаксис, а реальным синтаксисом является нарративное представление StructureMap. См. также <a href="mapping-tutorial.html">Обучение</a>.
+<!-- The mapping language, along with a concrete syntax, is defined in detail in <a href="mapping-language.html">the
 FHIR Mappping Language</a>, which defines a concrete syntax for the language. The StructureMap resource 
 represents the abstract syntax, and the concrete syntax is the recommended narrative representation for 
-a StructureMap. See also the <a href="mapping-tutorial.html">Tutorial</a>.
+a StructureMap. See also the <a href="mapping-tutorial.html">Tutorial</a>. -->
 </p>
 
 </div>
