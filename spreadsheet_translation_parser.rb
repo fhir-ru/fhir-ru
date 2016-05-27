@@ -59,7 +59,7 @@ destination = ARGV[1]
         en_new_pattern = Regexp.escape($1)     
         full_ru_en_new = '>' + value + "<!-- " + $1 + " -->" + '<'
         str2.gsub!(/>#{en_new_pattern}</, full_ru_en_new)
-        # puts "Found and replaced full match".green   
+        puts "Found and replaced full match".green   
         # иначе ищем частичное вхождение
       else
         if found_match = /#{partial}/.match(str2)
@@ -96,7 +96,7 @@ destination = ARGV[1]
                     en_new_pattern = Regexp.escape(en_new) 
                     full_ru_en_new = '>' + value + "<!-- " + en_new + " -->" + '<'
                     str2.gsub!(/>#{en_new_pattern}</, full_ru_en_new)
-                    # puts "replaced".green
+                    puts "replaced".green
                     # puts key
                     # puts en_new
                     # puts value  
