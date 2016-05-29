@@ -1101,7 +1101,8 @@ Typical implementations would use Lucene, an sql-based full text search,
 or some indexing service. 
 </p>
 <p>
-Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+Будем благодарны за ваши <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывы</a>.
+<!-- Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>. -->
 </p>
 </blockquote>
 
@@ -1367,24 +1368,27 @@ GET [base]/Observation?_include=Observation:related-target&amp;criteria...
 GET [base]/Observation?_include:recurse=Observation.related-target&amp;criteria...
 </pre>
 <p>
-Both <code>_include</code> and <code>_revInclude</code> use the wild card "*" for the search parameter
+В обоих параметрах <code>_include</code> и <code>_revInclude</code> можно использовать специальный символ "*" в качестве имени параметра поиска для обозначения, что любой поисковый параметр с типом reference будет включен. Хотя и клиентам, и серверам необходимо заботиться о том, чтобы не запрашивать или не возвращать слишком много ресурсов при выполнении таких запросов. В частности использование рекурсивных включений может привести к извлечению всей карты пациента и даже более того: ресурсы организованы в сопряжённую сеть и заданные в достаточно общем виде пути <code>_include</code> могут в итоге включить все возможные пути на сервере. Для серверов такие рекурсивные и со звёздочкой инклюды (<code>_include</code>) являются достаточно требовательными и могут существенно замедлить время ответа на поиск.
+<!-- Both <code>_include</code> and <code>_revInclude</code> use the wild card "*" for the search parameter
 name, indicating that any search parameter of type=reference be included.  Though 
 though both clients and servers need to take care not to request or return too many resources
 when doing this. Most notably, using recursive inclusions might lead to the retrieval of the 
 full patient's record, or even more: resources are organized into an interlinked network 
 and broad <code>_include</code> paths may eventually traverse all possible paths on the server. For 
 servers, these recursive and wildcard <code>_include</code>s are demanding and may slow the search 
-response time significantly. 
+response time significantly.  -->
 </p>
 <p>
-It is at the server's discretion how deep to recursively evaluate the inclusions. 
+На усмотрение сервера, насколько глубоко рекурсивно вычислять включения. Предполагается, что серверы будут ограничивать число итераций, выполняемых до уместного уровня, и что они не обязаны учитывать запросы на включение дополнительных ресурсов в результаты поиска.
+<!-- It is at the server's discretion how deep to recursively evaluate the inclusions. 
 Servers are expected to limit the number of iterations done to an appropriate level 
-and are not obliged to honor requests to include additional resources in the search results.
+and are not obliged to honor requests to include additional resources in the search results. -->
 </p>
 <p>
-When search results are paged, each page of search results should include 
+Когда результаты поиска разбиваются на страницы, каждая страница результатов поиска должна включать все соответствующие инклюды для ресурсов на каждой странице, чтобы каждая страница была отдельным связным пакетом.
+<!-- When search results are paged, each page of search results should include 
 the matching includes for the resources in each page, so that each page stands
-alone as a coherent package.
+alone as a coherent package. -->
 </p>
 
 
@@ -1392,50 +1396,61 @@ alone as a coherent package.
 <a name="containedType"> </a>
 
 
-<h4>Contained Resources</h4>
+<h4>Вложенные ресурсы<!-- Contained Resources --></h4>
 
 <p>
-By default, search results only include resources that are not contained in other resources. 
+По умолчанию результаты поиска включают только те ресурсы, которые не являются вложенными в другие ресурсы. Цепочечное условие будет вычисляться внутри вложенных ресурсов. Для иллюстрации этого рассмотрим ресурс MedicationOrder, который содержит вложенный ресурс Medication, описывающий пользовательскую рецептуру, где есть ингредиент со значением <code>Substance/x23</code>. В таком случае поисковый запрос:
+<!-- By default, search results only include resources that are not contained in other resources. 
 A chained condition will be evaluated inside contained resources. To illustrate this, consider
 a MedicationOrder resource that has a contained Medication resource specifying 
-a custom formulation that has ingredient that has a value <code>Substance/x23</code>. In this case, a search:
+a custom formulation that has ingredient that has a value <code>Substance/x23</code>. In this case, a search: -->
 </p>
 <pre>
 GET MedicationOrder?medication.ingredient=Substance/x23
 </pre>
 <p>
-  will include the MedicationOrder resource in the results. However, this search:
+ будет включать в результаты ресурс MedicationOrder. Однако следующий поисковый запрос:
+<!--   will include the MedicationOrder resource in the results. However, this search: -->
 </p>
 <pre>
 GET Medication?ingredient=Substance/x23
 </pre>
 <p>
-will not include the contained Medication resource in the results, since either the 
+не будет включать в результаты вложенный ресурс Medication, поскольку либо неправильный тип ресурса был бы возвращён, либо вложенный ресурс был бы возвращён без своего ресурса-контейнера, который обеспечивает контекст для вложенного ресурса.
+<!-- will not include the contained Medication resource in the results, since either the 
 wrong type of resource would be returned, or the contained resource would be returned
-without its container resource, which provides context to the contained resource.
+without its container resource, which provides context to the contained resource. -->
 </p>
 <p>
-Clients are able to modify this behavior using the <code>_contained</code> parameter, which
-can have one of the following values:
+Клиенты могут менять эту модель поведения с помощью параметра <code>_contained</code>, который может иметь одно из следующих значений:
+<!-- Clients are able to modify this behavior using the <code>_contained</code> parameter, which
+can have one of the following values: -->
 </p>
 <ul>
- <li>false (default): Do not return contained resources</li>
+ <li>false (по умолчанию): не возвращать вложенные ресурсы</li>
+ <li>true: вернуть только вложенные ресурсы</li>
+ <li>both: вернуть и вложенные, и не вложенные (обычные) ресурсы</li>
+<!--  <li>false (default): Do not return contained resources</li>
  <li>true: return only contained resources</li>
- <li>both: return both contained and non-contained (normal) resources</li>
+ <li>both: return both contained and non-contained (normal) resources</li> -->
 </ul>
 <p>
-When contained resources are being returned, the server 
+При возвращении вложенных ресурсов, сервер должен вернуть либо ресурс-контейнер, либо только вложенный ресурс отдельно. Клиент может указать способ через параметр <code>_containedType</code>, который может иметь одно из следующих значений:
+<!-- When contained resources are being returned, the server 
 should return either the container resource, or the contained resource alone. The 
 client can specify which by using the <code>_containedType</code> parameter, which can have one of the 
-following values:
+following values: -->
 </p>
 <ul>
- <li>container (default): Return the container resources</li>
- <li>contained: return only the contained resource</li>
+ <li>container (по умолчанию): вернуть ресурсы-контейнеры</li>
+ <li>contained: вернуть только вложенный ресурс</li>
+<!--  <li>container (default): Return the container resources</li>
+ <li>contained: return only the contained resource</li> -->
 </ul>
 <p>
-When returning a container resource, the server simply puts this in the 
-search results:
+При возвращении ресурса-контейнера, сервер просто помещает его в результаты поиска:
+<!-- When returning a container resource, the server simply puts this in the 
+search results: -->
 </p>
 <pre>
 &lt;Bundle&gt;
@@ -1461,10 +1476,11 @@ search results:
 &lt;/Bundle&gt;
 </pre>
 <p>
-In the case of returning container resources, the server SHALL populate the entry.search.mode
+В случае возвращения ресурсов-контейнеров, сервер ДОЛЖЕН заполнить элемент entry.search.mode так, чтобы клиент мог разделить совпадения и инклюды (стандартный подход сделать это исходя из типа может не сработать). Если типом результата является вложенный ресурс, это следует делать по-другому: 
+<!-- In the case of returning container resources, the server SHALL populate the entry.search.mode
 element so that the client can pick apart matches and includes (the usual approach of doing it
 by type may not work). If the return type is the contained resource, this must be done slightly 
-differently:
+differently: -->
 </p>
 <pre>
 &lt;Bundle&gt;
@@ -1484,23 +1500,26 @@ differently:
 &lt;/Bundle&gt;
 </pre>
 <p>
-In this case, the fullUrl informs the client that this is a contained resource,
-and the identity of the containing resource.
+В этом случае fullUrl сообщает клиенту о том, что это вложенный ресурс, а также идентификатор содержащего его ресурса.
+<!-- In this case, the fullUrl informs the client that this is a contained resource,
+and the identity of the containing resource. -->
 </p>
 
 <a name="external"> </a>
 
-<h4>External References</h4>
+<h4>Внешние ссылки<!-- External References --></h4>
 <p>
-If the <code>_include</code> path selects a reference that refers to a resource on another server,
+Если путь в параметре <code>_include</code> выбирает ссылку, которая ведёт на ресурс на другом сервере, то сервер может по своему выбору включить тот ресурс в результаты поиска для удобства клиента.
+<!-- If the <code>_include</code> path selects a reference that refers to a resource on another server,
 the server can elect to include that resource in the search results for the convenience
-of the client.
+of the client. -->
 </p>
 <p>
-If the <code>_include</code> path selects a reference that refers to an entity that is not a Resource, such as
+Если путь параметра <code>_include</code> выбирает ссылку, которая ведёт на сущность, не являющуюся ресурсом, например на вложение-картинку, сервер может также по своему выбору включать это в возвращаемые результаты в виде ресурса <a href="binary.html">Binary</a>. Например путь включения может указывать на вложение с помощью ссылки следующим образом:
+<!-- If the <code>_include</code> path selects a reference that refers to an entity that is not a Resource, such as
 an image attachment, the server may also elect to include this in the returned
 results as a <a href="binary.html">Binary</a> resource. For example, the include
-path may point to an attachment which is by reference, like this:
+path may point to an attachment which is by reference, like this: -->
 </p>
 <pre>
  &lt;content&gt;
@@ -1509,92 +1528,108 @@ path may point to an attachment which is by reference, like this:
  &lt;/content&gt;
 </pre>
 <p>
-The server can retrieve the target of this reference, and add it to the
-results for the convenience of the client.
+Сервер может извлекать целевой объект этой ссылки и добавлять его к результатам для удобства клиента.
+<!-- The server can retrieve the target of this reference, and add it to the
+results for the convenience of the client. -->
 </p>
 
 <blockquote class="dstu-note">
 <a name="dstu-2"> </a>
 <p>
-<b>DSTU Note:</b>  Should additional rules about how <code>_include</code> works be made?  
+<b>Примечание к DSTU:</b>  Есть ли необходимость во введении дополнительных правил работы параметра <code>_include</code>?  
+<!-- <b>DSTU Note:</b>  Should additional rules about how <code>_include</code> works be made?   -->
 </p>
 <p>
-Feedback based on implementation experience is sought <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+Будем благодарны за ваши <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывы</a>по опыту реализации.
+<!-- Feedback based on implementation experience is sought <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>. -->
 </p>
 </blockquote>
 
 
-<h4>Paging</h4>
+<h4>Разбивка на страницы<!-- Paging --></h4>
 <p>
-When returning paged results for a search with <code>_include</code> resources, all <code>_include</code> resources that are
+При возвращении разбитых на страницы результатов поиска с включением ресурсов через <code>_include</code>, все включенные ресурсы, связанные с главными ресурсами, возвращёнными на странице, ДОЛЖНЫ тоже возвращаться в рамках этой же самой страницы, даже если некоторые из экземпляров этих ресурсов ранее были возвращены на предыдущих страницах. Такой подход позволяет как отправителю, так и получателю избежать кеширования результатов других страниц.
+<!-- When returning paged results for a search with <code>_include</code> resources, all <code>_include</code> resources that are
 related to the primary resources returned for the page SHOULD also be returned as part of that
 same page, even if some of those resource instances have previously been returned on previous
-pages.  This approach allows both sender and receiver to avoid caching results of other pages.
+pages.  This approach allows both sender and receiver to avoid caching results of other pages. -->
 </p>
 
 <a name="summary"> </a>
-<h4>Summary</h4>
+<h4>Суммарность<!-- Summary --></h4>
 <p>
-The client can request the server to return a portion of the resources
-by using the parameter <code>_summary</code>:
+Клиент может запросить сервер вернуть часть ресурсов с помощью параметра <code>_summary</code>:
+<!-- The client can request the server to return a portion of the resources
+by using the parameter <code>_summary</code>: -->
 </p>
 <pre>
    GET [base]/ValueSet?_summary=true
 </pre>
 <p>
-The <code>_summary</code> parameter requests the server to return a subset of the 
-resource. It can contain one of the following values:
+Параметр <code>_summary</code> запрашивает сервер вернуть подмножество ресурса. Он может иметь одно из следующих значений:
+<!-- The <code>_summary</code> parameter requests the server to return a subset of the 
+resource. It can contain one of the following values: -->
 </p>
 <table class="codes">
- <tr><td><a href="#summary-true">true</a></td><td>Return only those elements marked as "summary" in the base definition of the resource(s)</td></tr>
+ <tr><td><a href="#summary-true">true</a></td><td>Вернуть только те элементы, которые помечены как "суммарные" в базовых определениях ресурсов</td></tr>
+ <tr><td><a href="#summary-text">text</a></td><td>Вернуть только элемент "text" и все обязательные элементы</td></tr>
+ <tr><td><a href="#summary-data">data</a></td><td>Убрать элемент "text"</td></tr>
+ <tr><td><a href="#summary-count">count</a></td><td>Только поиск: вернуть только количество соответствующих ресурсов, не возвращая сами совпадения</td></tr>
+ <tr><td><a href="#summary-false">false</a></td><td>Вернуть все части ресурсов</td></tr>
+<!--  <tr><td><a href="#summary-true">true</a></td><td>Return only those elements marked as "summary" in the base definition of the resource(s)</td></tr>
  <tr><td><a href="#summary-text">text</a></td><td>Return only the "text" element, and any mandatory elements</td></tr>
  <tr><td><a href="#summary-data">data</a></td><td>Remove the text element</td></tr>
  <tr><td><a href="#summary-count">count</a></td><td>Search only: just return a count of the matching resources, without returning the actual matches</td></tr>
- <tr><td><a href="#summary-false">false</a></td><td>Return all parts of the resource(s)</td></tr>
+ <tr><td><a href="#summary-false">false</a></td><td>Return all parts of the resource(s)</td></tr> -->
 </table>
 <p>
-The intent of the <code>_summary</code> parameter is to reduce the total processing load on
+Параметр <code>_summary</code> предназначен для уменьшения общей процессинговой загрузки сервера, клиента и ресурсов между ними, таких как сеть. Он наиболее полезен для больших ресурсов, в честности тех, что включают в себя изображения или элементы, которые могут повторяться много раз. Назначение суммарной формы в том, чтобы позволить клиенту быстро извлечь большой набор ресурсов и позволить пользователю выбрать подходящий. Свойство суммарности для элемента задаётся для того, чтобы позволить пользователю быстро сортировать и фильтровать ресурсы, как правило опуская важное содержимое на основании того, что весь ресурс целиком будет извлечён уже после того, как пользователь выберет ресурс.
+<!-- The intent of the <code>_summary</code> parameter is to reduce the total processing load on
 server, client, and resources between them such as the network. It is most useful for
 resources that are large, particularly ones that include images or elements that
 may repeat many times. The purpose of the summary form is to allow a client to quickly
 retrieve a large set of resources, and let a user pick the appropriate one. The
 summary for an element is defined to allow a user to quickly sort and filter the 
 resources, and typically omit important content on the basis that the entire 
-resource will be retrieved when the user selects a resource.
+resource will be retrieved when the user selects a resource. -->
 </p>
 <p>
-Servers are not obliged to return just a summary as requested. There are only 
+Серверы не обязаны возвращать всего лишь суммарные элементы по запросу. Имеется ограниченное количество суммарных форм, определённых для ресурсов, чтобы позволить серверам сохранять суммарные формы заранее. Серверы ДОЛЖНЫ помечать ресурсы тегом <a href="v3/SecurityIntegrityObservationValue/cs.html#SUBSETTED"><code>SUBSETTED</code></a> для гарантии того, что неполный ресурс не будет случайно использован для перезаписи полного ресурса.
+<!-- Servers are not obliged to return just a summary as requested. There are only 
 a limited number of summary forms defined for resources in order to allow servers 
 to store the summarized form(s) in advance. Servers SHOULD mark the resources with the 
 tag <a href="v3/SecurityIntegrityObservationValue/cs.html#SUBSETTED"><code>SUBSETTED</code></a> 
 to ensure that the incomplete resource is not acidentally used to overwrite 
-a complete resource.
+a complete resource. -->
 </p>
 
 <a name="elements"> </a>
-<h4>Elements</h4>
+<h4>Элементы<!-- Elements --></h4>
 <p>
-If one of the summary views defined above is not appropriate, a client can 
+Если одно из суммарных представлений, определённых выше, не подходит, клиент может запросить вернуть особый набор элементов как часть ресурса, используя параметр <code>_elements</code>:
+<!-- If one of the summary views defined above is not appropriate, a client can 
 request a specific set of elements be returned as part of a resource using
-the <code>_elements</code> parameter:
+the <code>_elements</code> parameter: -->
 </p>
 <pre>
    GET [base]/Patient?_elements=identifier,active,link
 </pre>
 <p>
-The <code>_elements</code> parameter consists of a comma separated list of base element
+Параметр <code>_elements</code> состоит из списка имён базовых элементов, разделённых запятыми, то есть элементов, определённых на корневом уровне в этом ресурсе. Только те элементы, которые перечислены, должны быть возвращены. Клиенты ДОЛЖНЫ перечислять все обязательные элементы в ресурсе в рамках этого списка элементов. Этот список элементов не применяется к <a href="#include">включенным ресурсам</a>.
+<!-- The <code>_elements</code> parameter consists of a comma separated list of base element
 names such as, elements defined at the root level in the resource. Only 
 elements that are listed are to be returned. Clients SHOULD list all mandatory
 elements in a resource as part of the list of elements. The list of elements
-does not apply to <a href="#include">included resources</a>.
+does not apply to <a href="#include">included resources</a>. -->
 </p>
 <p>
-Servers are not obliged to return just the requested elements. 
+Серверы не обязаны возвращать только лишь запрашиваемые элементы. Серверы ДОЛЖНЫ всегда возвращать обязательные элементы независимо от того, запрашивались они или нет. Серверы ДОЛЖНЫ помечать ресурсы тегом <a href="v3/SecurityIntegrityObservationValue/cs.html#SUBSETTED"><code>SUBSETTED</code></a> для гарантии того, что неполный ресурс не будет случайно использован для перезаписи полного ресурса.
+<!-- Servers are not obliged to return just the requested elements. 
 Servers SHOULD always return mandatory elements whether they are 
 requested or not. Servers SHOULD mark the resources with the 
 tag <a href="v3/SecurityIntegrityObservationValue/cs.html#SUBSETTED"><code>SUBSETTED</code></a> 
 to ensure that the incomplete resource is not actually used to overwrite 
-a complete resource.
+a complete resource. -->
 </p>
 
 <a name="score"> </a>
