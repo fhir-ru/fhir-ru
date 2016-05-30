@@ -653,7 +653,7 @@ the entire supplied parameter, including casing and accents. -->
  <tr><td><code>[base]/Patient?name:exact=Eve</code></td><td>Any patients with a name that is exactly "Eve". Note: This would not include patients with the name "eve" or "EVE".</td></tr> -->
 </table>
 <p>
- Дополнительный модификатор <code>:text</code> можно использовать для указания поиска с продвинутым управлением текста  (см. <a href="#text">ниже</a>), однако такую возможность предлагает только несколько серверов.
+ Дополнительный модификатор <code>:text</code> можно использовать для указания поиска с расширенными возможностями управления текста (см. <a href="#text">ниже</a>), однако такую возможность предлагает только несколько серверов.
 <!-- An additional modifier <code>:text</code>
 can be used to specify a search with advanced text handling (see <a href="#text">below</a>)
 though only a few servers are expected to offer this facility. -->
@@ -956,55 +956,63 @@ the search to a particular type: -->
 </p>
 
 <p>
-Advanced Search Note:
+Примечание к расширенным возможностям поиска:
+Когда цепочечный параметр ищет ссылку на ресурс, целевым объектом которой может быть более одного типа ресурса, цепочка параметров может оканчиваться ссылкой на поисковые параметры с тем же самым именем на более чем одном типе ресурса одновременно. Серверы ДОЛЖНЫ отклонять поиск, в котором логический идентификатор ведёт на более чем один совпадающий ресурс среди различных типов. Например клиент должен указать тип явным образом, используя синтаксис во втором примере выше. 
+<!-- Advanced Search Note:
 Where a chained parameter searches a resource reference that may have more than one
 type of resource as its target, the parameter chain may end up referring
 to search parameters with the same name on more than one kind of resource at once.
 Servers SHOULD reject a search where the logical id refers to more than one matching 
 resource across different types.  For example, the client has to specify the type explicitly 
-using the syntax in the second example above.
+using the syntax in the second example above. -->
 </p>
 
 <a name="composite" />
 <a name="combining" />
-<h4>Composite Search Parameters</h4>
+<h4>Составные параметры поиска<!-- Composite Search Parameters --></h4>
 <p>
-Composite search parameters supports joining single values with a <code>$</code>. For example, the result 
+Составные параметры поиска поддерживают объединение отдельных значений с помощью <code>$</code>. Например результатом операции поиска будет пересечение ресурсов, которые соответствуют критериям каждого поискового параметра по отдельности. Если параметр повторяется, например <code>/Patient?language=FR&amp;language=NL</code>, тогда это соответствует пациенту, который говорит на обоих языках. Этот параметр поиска называется "AND", поскольку предполагается, что сервер вернёт только те результаты, которые соответствуют обоим значениям.
+<!-- Composite search parameters supports joining single values with a <code>$</code>. For example, the result 
 of the search operation is the intersection of the resources that match the criteria specified by each
 individual search parameter. If a parameter repeats, such as <code>/Patient?language=FR&amp;language=NL</code>, then
 this matches a patient who speaks both languages. This is known as an AND search parameter, since the
-server is expected to respond only with results which match both values.
+server is expected to respond only with results which match both values. -->
 </p>
 <p>
-If, instead, the search is to find patients that speak either
+Если вместо этого поиск должен найти пациентов, которые говорят на одном из этих языков, тогда это будет один параметр с несколькими значениями, разделёнными запятой <code>,</code>. Например <code>/Patient?language=FR,NL</code>. Этот параметр поиска называется "OR", поскольку предполагается, что сервер вернёт результаты, которые соответствуют одному из значений.
+<!-- If, instead, the search is to find patients that speak either
 language, then this is a single parameter with multiple values, separated by a <code>,</code>.
 For example, <code>/Patient?language=FR,NL</code>. This is known as an OR search parameter,
-since the server is expected to respond with results which match either value.
+since the server is expected to respond with results which match either value. -->
 </p>
 <p>
-AND parameters and OR parameters may also be combined, for example:
+AND и OR параметры можно комбинировать, например <code>/Patient?language=FR,NL&amp;language=EN</code> относится к любому пациенту, который говорит по-английски, а также по-французски или по-голландски.
+<!-- AND parameters and OR parameters may also be combined, for example:
 <code>/Patient?language=FR,NL&amp;language=EN</code> would refer to any patient who speaks
-English, as well as either French or Dutch.
+English, as well as either French or Dutch. -->
 </p>
 <p>
-This approach allows for simple combinations of and/or values, but doesn't allow a search based on
+Такой подход позволяет использовать простые комбинации AND/OR-значений, но не даёт возможности поиска на основе пар значений, например все наблюдения со значением натрия >150 ммоль/л (особенно в качестве последнего критерия цепочечного поиска), или поиск по Group.characteristic, где вам нужно найти комбинацию ключ/значение, а не пересечение отдельных совпадений по ключу и значению. Другим примером будут пространственные координаты при выполнении географических поисков.
+<!-- This approach allows for simple combinations of and/or values, but doesn't allow a search based on
 a pair of values, such as all observations with a sodium value >150 mmol/L (particularly
 as the end criteria of a chained search), or searching on Group.characteristic where you need
 find a combination of key/value, not an intersection of separate matches on key and value.
-Another example is spatial coordinates when doing geographical searches.
+Another example is spatial coordinates when doing geographical searches. -->
 </p>
 <p>
-To allow these searches, a resource may also specify <i>composite</i> parameters
+Чтобы подобные поиски были возможны, ресурс может также указать <i>составные</i> параметры, которые принимают последовательности отдельных значений, которые соответствуют другим заданным параметрам в качестве аргумента. Соответствующий параметр каждого компонента в такой последовательности документируется в определении этого параметра. Эти последовательности формируются присоединением отдельных значений символом <code>$</code>. Примечание: эта последовательность является отдельным значением и сама может состоять из набора значений, чтобы, к примеру, несколько соответствующих параметров в состоянии на сегодняшнюю дату можно было указать как <code>state-on-date=new$2013-05-04,active$2013-05-05</code>.
+<!-- To allow these searches, a resource may also specify <i>composite</i> parameters
 that take sequences of single values that match other defined parameters as an
 argument. The matching parameter of each component in such a sequence
 is documented in the definition of the parameter. These sequences are formed by
 joining the single values with a <code>$</code>.  Note: This sequence is a single
 value and itself can be composed into a set of values, so that, for example,
 multiple matching state-on-date parameters can be specified as
-<code>state-on-date=new$2013-05-04,active$2013-05-05</code>.
+<code>state-on-date=new$2013-05-04,active$2013-05-05</code>. -->
 </p>
 <p>
-Note: Modifiers are not used on composite parameters.
+Примечание: модификаторы в составных параметрах не используются.
+<!-- Note: Modifiers are not used on composite parameters. -->
 <!--
 Future note: use \p and \m in search values? if we add a double = to parameter value for text, that would get rid 
 of <code>:exact</code>.
@@ -1014,19 +1022,24 @@ Other modifier is <code>:text</code> on token - use "~"? or ""?
 </p>
 
 <p>
-Examples of using composite parameters:
+Примеры использования составных параметров:
+<!-- Examples of using composite parameters: -->
 </p>
 
 <table>
- <tr><td width="50%"><b>Search</b></td><td><b>Description</b></td></tr>
+ <tr><td width="50%"><b>Запрос</b></td><td><b>Описание</b></td></tr>
+ <tr><td><pre> GET [base]/DiagnosticReport?result.code-value-quantity=http://loinc.org|2823-3$gt5.4|http://unitsofmeasure.org|mmol/L</pre></td><td>Поиск всех диагностических отчётов, которые содержат наблюдение со показателем калия >5.4 ммоль/л (UCUM)</td></tr>
+ <tr><td><pre> GET [base]/Observation?component-code-value-quantity=http://loinc.org|8480-6$lt60</pre></td><td>Поиск всех наблюдений с показателем систолического кровяного давления &lt; 60. Отметьте, что в этом случае единицы измерения предполагаются (все используют мм рт. ст.)</td></tr>
+ <tr><td><pre> GET [base]/Group?characteristic-value=gender$mixed</pre></td><td>Поиск всех групп с характеристикой "gender", имеющей текстовое значение "mixed"</td></tr>
+<!--  <tr><td width="50%"><b>Search</b></td><td><b>Description</b></td></tr>
  <tr><td><pre> GET [base]/DiagnosticReport?result.code-value-quantity=http://loinc.org|2823-3$gt5.4|http://unitsofmeasure.org|mmol/L</pre></td><td>Search for all diagnostic reports that contain on observation with a potassium value of >5.4 mmol/L (UCUM)</td></tr>
  <tr><td><pre> GET [base]/Observation?component-code-value-quantity=http://loinc.org|8480-6$lt60</pre></td><td>Search for all the observations with a systolic blood pressure &lt; 60. Note that in this case, the unit is assumed (everyone uses mmHg)</td></tr>
- <tr><td><pre> GET [base]/Group?characteristic-value=gender$mixed</pre></td><td>Search for all groups that have a characteristic "gender" with a text value of "mixed"</td></tr>
+ <tr><td><pre> GET [base]/Group?characteristic-value=gender$mixed</pre></td><td>Search for all groups that have a characteristic "gender" with a text value of "mixed"</td></tr> -->
 </table>
 
 
 <a name="escaping" />
-<h4>Escaping Search Parameters</h4>
+<h4>Экранирование параметров поиска<!-- Escaping Search Parameters --></h4>
 <p>
 In the rules described above, special rules are defined for the characters <code>$</code>, <code>,</code>, and <code>|</code>.
 As a consequence, if these characters appear in an actual parameter value,
@@ -1048,31 +1061,35 @@ reached the server and the query is parsed. Therefore:
 GET [base]/ValueSet?url=http://acme.org/fhir/ValueSet/123,http://acme.org/fhir/ValueSet/124%2CValueSet/125
 </pre>
 <p>
-uses url escaping to make sure the FHIR server received:
+использует URL-экранирование для гарантии того, что FHIR-сервер получит:
+<!-- uses url escaping to make sure the FHIR server received: -->
 </p>
 <pre>
 GET [base]/ValueSet?url=http://acme.org/fhir/ValueSet/123,http://acme.org/fhir/ValueSet/124,125
 </pre>
 <p>
-This request will compare the URL against three values: the last one being a relative and incorrect url, 
-which is likely not the actual intent. However:
+Этот запрос сравнит этот URL с тремя значениями: последнее является относительным и некорректным URL, что маловероятно является фактическим намерением. Однако:
+<!-- This request will compare the URL against three values: the last one being a relative and incorrect url, 
+which is likely not the actual intent. However: -->
 </p>
 <pre>
 GET [base]/ValueSet?url=http://acme.org/fhir/ValueSet/123,http://acme.org/fhir/ValueSet/124\,125
 </pre>
 <p>
-is equivalent to:
+эквивалентно:
+<!-- is equivalent to: -->
 </p>
 <pre>
 GET [base]/ValueSet?url=http://acme.org/fhir/ValueSet/123,http://acme.org/fhir/ValueSet/124\%2C125
 </pre>
 <p>
-which would mean: url = <code>http://.....123</code> OR  <code>http://....124,125</code>.
+что означает: url = <code>http://.....123</code> OR  <code>http://....124,125
+<!-- which would mean: url = <code>http://.....123</code> OR  <code>http://....124,125 --></code>.
 </p>
 
 <a name="text"> </a>
 <a name="content"> </a>
-<h4>Text Search Parameters</h4>
+<h4>Параметры поиска по тексту<!-- Text Search Parameters --></h4>
 <p>
 The special text search parameters, <code>_text</code> and <code>_content</code>, search
 on the narrative of the resource, and the entire content of the resource respectively.
@@ -1086,9 +1103,10 @@ such as AND, OR etc. For example:
  GET [base]/Condition?_text=(bone OR liver) and metastases
 </pre>
 <p>
-This request returns all Condition resources with the word "metastases" and either
+Этот запрос возвращает все ресурсы Condition со словом "metastases" и либо словом "bone", либо "liver" в описательной части. Сервер МОЖЕТ решить также искать родственные слова.
+<!-- This request returns all Condition resources with the word "metastases" and either
 "bone" or "liver" in the narrative. The server MAY choose to search
-for related words as well.
+for related words as well. -->
 </p>
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
@@ -1110,8 +1128,9 @@ or some indexing service.
 <h4>Searching by list</h4>
 
 <p>
-The <code>_list</code> parameter allows for the retrieval of resources that are referenced by a <a href="list.html">List</a>
-resource. 
+Параметр <code>_list</code> позволяет извлекать ресурсы, на которые ссылается ресурс <a href="list.html">List</a>.
+<!-- The <code>_list</code> parameter allows for the retrieval of resources that are referenced by a <a href="list.html">List</a>
+resource.  -->
 </p>
 <pre>
  GET [base]/Patient?_list=42
@@ -1144,7 +1163,7 @@ but may choose to do so.
 
 <a name="filter"> </a>
 <a name="_filter"> </a>
-<h4>Advanced filtering</h4>
+<h4>Расширенные возможности фильтрации<!-- Advanced filtering --></h4>
 
 <p>
 The search mechanism described above is flexible, and easy to implement
@@ -1153,35 +1172,40 @@ queries. To complement this mechanism, a the "_filter" search expression
 parameter can be used.
 </p>
 <p>
-For example, "Find all the
-observations for patient with a name including <code>peter</code> that have a LOINC code <code>1234-5</code>":
+Например "найти все наблюдения пациента с именем, включающим <code>peter</code>, где есть LOINC-код <code>1234-5</code>":
+<!-- For example, "Find all the
+observations for patient with a name including <code>peter</code> that have a LOINC code <code>1234-5</code>": -->
 </p>
 <pre>
 GET [base]/Observation?name=http://loinc.org|1234-5&amp;subject.name=peter
 </pre>
 <p>
-Using the <code>_filter</code> parameter, the search would be expressed like this:
+Используя параметр <code>_filter</code>, запрос может быть выражен так:
+<!-- Using the <code>_filter</code> parameter, the search would be expressed like this: -->
 </p>
 <pre>
 GET [base]/Observation?_filter=name eq http://loinc.org|1234-5 and subject.name co "peter"
 </pre>
 <p>
-The <code>_filter</code> parameter is described in detail on the <a href="search_filter.html">"_Filter Parameter" page</a>.
+Более подробно параметр <code>_filter</code> описан на странице <a href="search_filter.html">"Параметр _Filter"</a>.
+<!-- The <code>_filter</code> parameter is described in detail on the <a href="search_filter.html">"_Filter Parameter" page</a>. -->
 </p>
 
 <a name="type"> </a>
 <a name="_type"> </a>
-<h4>Specifying the type of Resource</h4>
+<h4>Указание типа ресурса<!-- Specifying the type of Resource --></h4>
 
 <p>
-Normally, a search is initiated against a known type of resource, e.g.
+Обычно поиск вызывается по известному типу ресурса, например:
+<!-- Normally, a search is initiated against a known type of resource, e.g. -->
 </p>
 <pre>
 GET [base]/Observation?params...
 </pre>
 <p>
-However in some circumstances, a search is executed where there is no fixed 
-type of resource:
+Однако в некоторых обстоятельствах поиск выполняется без фиксированного типа ресурса:
+<!-- However in some circumstances, a search is executed where there is no fixed 
+type of resource: -->
 </p>
 <ul>
  <li>Using search across all resource types (GET [base]?params...)</li>
@@ -1205,12 +1229,12 @@ these cases.
 </p>
 
 <a name="return"> </a>
-<h3>Managing Returned Resources</h3>
+<h3>Управление возвращаемыми ресурсами<!-- Managing Returned Resources --></h3>
 
 <a name="sort" />
 <a name="_sort" />
 
-<h4>Sorting</h4>
+<h4>Сортировка<!-- Sorting --></h4>
 <p>
 The client can indicate which order to return the results by
 using the parameter <code>_sort</code>, which can contains a 
@@ -1225,7 +1249,8 @@ optionally with a '-' prefix. The prefix indicates decreasing
 order; in it's absence, the parameter is applied in increasing order. 
 </p>
 <p>
-Notes:
+Примечания:
+<!-- Notes: -->
 </p>
 <ul>
  <li>When sorting, the actual sort value used is not returned explicitly by 
@@ -1247,7 +1272,7 @@ Notes:
 </ul>
 
 <a name="count"> </a>
-<h4>Page Count</h4>
+<h4>Количество страниц<!-- Page Count --></h4>
 
 <p>
 In order to keep the load on clients, servers and the network
@@ -1292,7 +1317,7 @@ but with no entries, and no prev/next/last links.
 
 <a name="include"> </a>
 <a name="revinclude"> </a>
-<h4>Including other resources in result (<code>_include</code> and <code>_revinclude</code>)</h4>
+<h4>Включение других ресурсов в результат (<code>_include</code> и <code>_revinclude</code>)<!-- Including other resources in result (<code>_include</code> and <code>_revinclude</code>) --></h4>
 <p>
 Clients may request that the engine return resources related to
 the search results, in order to reduce the overall network delay of repeated 
@@ -1702,7 +1727,7 @@ to supporting search: -->
 <hr/>
 <a name="advanced"> </a>
 <a name="query"> </a>
-<h3>Продвинутый поиск<!-- Advanced Search --></h3>
+<h3>Расширенные возможности поиска<!-- Advanced Search --></h3>
 <p>
 Система поиска, описанная выше - это полезный фреймворк для обеспечения простого поиска, основанного на индексируемых критериях, однако нужна возможность создания более сложных запросов для обработки точных запросов, сложных запросов на основе поддержки принятия решений и прямых запросов, интерпретируемых человеком.
 <!-- The search framework described above is a useful framework
@@ -1712,7 +1737,7 @@ queries, complex decision support based requests, and
 direct queries that have human resolution. -->
 </p>
 <p>
-Более сложные операции поиска задаются с помощью параметра <code>_query</code>:
+Более расширенные операции поиска задаются с помощью параметра <code>_query</code>:
 <!-- More advanced search operations are specified by the
 <code>_query</code> parameter: -->
 </p>
