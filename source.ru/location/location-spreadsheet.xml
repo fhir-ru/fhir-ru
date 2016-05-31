@@ -1036,11 +1036,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный код или число, идентифицируется местоположение для его пользователей<!-- Unique code or number identifying the location to its users --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный код или число, идентифицируется местонахождение для его пользователей<!-- Unique code or number identifying the location to its users --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный код или число, идентифицируется местоположение для его пользователей<!-- Unique code or number identifying the location to its users --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный код или число, идентифицируется местонахождение для его пользователей<!-- Unique code or number identifying the location to its users --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Организационные метки местоположений в реестрах, их необходимо отслеживать<!-- Organization label locations in registries, need to keep track of those --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Организационные метки местонахождений в реестрах, их необходимо отслеживать<!-- Organization label locations in registries, need to keep track of those --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1142,7 +1142,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Описание месторасположения, которое помогает при поиске этого места или для ссылок на него<!-- Description of the Location, which helps in finding or referencing the place --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Людям необходима дополнительная информация для подтверждения, что место было определено корректно<!-- Humans need additional information to verify a correct location has been identified --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Людям необходима дополнительная информация для подтверждения, что местонахождение было определено корректно<!-- Humans need additional information to verify a correct location has been identified --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1177,9 +1177,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">instance | kind</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает, представляет ли экземпляр ресурса определенное место или класс местоположений<!-- Indicates whether a resource instance represents a specific location or a class of locations --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает, представляет ли экземпляр ресурса определенное местонахождение или класс местонахождений<!-- Indicates whether a resource instance represents a specific location or a class of locations --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">При использовании ресурса Location для планирования или заказов, нам нужна возможность делать ссылку на класс местоположений, а не на конкретное местоположение<!-- When using a Location resource for scheduling or orders, we need to be able to refer to a class of Locations instead of a specific Location --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">При использовании ресурса Location для планирования или заказов, нам нужна возможность делать ссылку на класс местонахождений, а не на конкретное местонахождение<!-- When using a Location resource for scheduling or orders, we need to be able to refer to a class of Locations instead of a specific Location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1243,7 +1243,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактные сведения для местоположения<!-- Contact details of the location --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактные сведения для местонахождения<!-- Contact details of the location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Контактные сведения коммуникационных устройств, доступных в этом месте. Сюда могут входить номера телефонов, факсов, мобильных, адреса электронной почты и веб-сайты<!-- The contact details of communication devices available at the location. This can include phone numbers, fax numbers, mobile numbers, email addresses and web sites --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1275,10 +1275,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Физическое местоположение<!-- Physical location --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Физическое местонахождение<!-- Physical location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Если место можно посетить, нам необходимо отслеживать его адрес<!-- If locations can be visited, we need to keep track of their address --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если местонахождение можно посетить, нам необходимо отслеживать его адрес<!-- If locations can be visited, we need to keep track of their address --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Кардинальное множество 0..1, так как у адреса нет свойства "use", и нет возможности задать другие типы адресов<!-- This was kept as 0..1 as there is no use property on the address, so wouldn't be able to identify different address types --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1311,11 +1311,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Физическая форма местоположения<!-- Physical form of the location --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Физическая форма местонахождения<!-- Physical form of the location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Физическая форма местоположения, например здание, комната, машина, дорога<!-- Physical form of the location, e.g. building, room, vehicle, road --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Физическая форма местонахождения, например здание, комната, машина, дорога<!-- Physical form of the location, e.g. building, room, vehicle, road --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нам необходимо классифицировать местоположения для показа релевантных местоположений в запросах<!-- For purposes of showing relevant locations in queries, we need to categorize locations --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нам необходимо классифицировать местонахождения для показа релевантных местонахождений в запросах<!-- For purposes of showing relevant locations in queries, we need to categorize locations --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1478,7 +1478,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, которая несет ответственность за предоставление и содержание места<!-- The organization responsible for the provisioning and upkeep of the location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать, кто контролирует место<!-- Need to know who manages the location --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Необходимо знать, кто контролирует местонахождение<!-- Need to know who manages the location --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Также может использоваться в рамках иерархии организаций, в которой в этом месте оказываются услуги. Эти услуги могут быть определены с помощью ресурса HealthcareService.<!-- This can also be used as the part of the organization hierarchy where this location provides services. These services can be defined through the HealthcareService resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1512,7 +1512,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Другой ресурс Location, физической частью которого является данный Location<!-- Another Location which this Location is physically part of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Знание, в состав какого места входит данный Location, важно для определения местоположения, отображения и идентификации<!-- For purposes of location, display and identification, knowing which locations are located within other locations is important --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Знание, в состав какого места входит данный Location, важно для определения местонахождения, отображения и идентификации<!-- For purposes of location, display and identification, knowing which locations are located within other locations is important --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4316,7 +4316,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Location.type</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Код типа местоположения<!-- A code for the type of location --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Код типа местонахождения<!-- A code for the type of location --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address</Data></Cell>
@@ -4372,7 +4372,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Location.status</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Поиск по местоположениям с указанным видом статуса<!-- Searches for locations with a specific kind of status --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Поиск по местонахождениям с указанным видом статуса<!-- Searches for locations with a specific kind of status --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">partof</Data></Cell>
@@ -4380,7 +4380,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Location.partOf</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Местоположение, в состав которого входит данное местоположение<!-- The location of which this location is a part --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Местоположение, в состав которого входит данное местонахождение<!-- The location of which this location is a part --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s117"><Data ss:Type="String">near</Data></Cell>
@@ -4388,7 +4388,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Location.position</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">nearby</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Координаты, выраженные как [широта], [долгота] (в системе координат WGS84, см. примечания) для поиска ближайших местоположений (серверы могут искать с помощью квадрата, а не круга для эффективности)<!-- The coordinates expressed as [lat],[long] (using the WGS84 datum, see notes) to find locations near to (servers may search using a square rather than a circle for efficiency) --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Координаты, выраженные как [широта], [долгота] (в системе координат WGS84, см. примечания) для поиска ближайших местонахождений (серверы могут искать с помощью квадрата, а не круга для эффективности)<!-- The coordinates expressed as [lat],[long] (using the WGS84 datum, see notes) to find locations near to (servers may search using a square rather than a circle for efficiency) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s117"><Data ss:Type="String">near-distance</Data></Cell>
@@ -4396,7 +4396,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Location.position</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">distance</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Дистанция для ограничения поиска ближайших местоположений в пределах указанного расстояния<!-- A distance quantity to limit the near search to locations within a specific distance --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Дистанция для ограничения поиска ближайших местонахождений в пределах указанного расстояния<!-- A distance quantity to limit the near search to locations within a specific distance --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">organization</Data></Cell>
@@ -4404,7 +4404,7 @@
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Location.managingOrganization</Data></Cell>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Поиск местоположений, контролируемых указанной организацией<!-- Searches for locations that are managed by the provided organization --></Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Поиск местонахождений, контролируемых указанной организацией<!-- Searches for locations that are managed by the provided organization --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
@@ -6329,7 +6329,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">PhysicalType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Физическая форма местоположения<!-- Physical form of the location --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Физическая форма местонахождения<!-- Physical form of the location --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">valueset-location-physical-type</Data></Cell>
@@ -6359,7 +6359,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">LocationMode</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает, описывает ли экземпляр ресурса конкретное место или только его тип.<!-- Indicates whether a resource instance represents a specific location or a class of locations. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает, описывает ли экземпляр ресурса конкретное местонахождение или только его тип.<!-- Indicates whether a resource instance represents a specific location or a class of locations. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#location-mode</Data></Cell>
@@ -6374,7 +6374,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">LocationStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает, находится ли все еще это место в использовании<!-- Indicates whether the location is still in use --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает, находится ли все еще это местонахождение в использовании<!-- Indicates whether the location is still in use --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#location-status</Data></Cell>
