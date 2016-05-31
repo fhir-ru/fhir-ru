@@ -73,7 +73,7 @@ to make some resources with no direct link to a patient available to the client 
 substances, etc.). -->
 </p>
 <p>
-Отметьте, что ресурсы могут входить в несколько логических модулей или связывать их. Примером может быть <a href="diagnosticreport.html">Diagnostic Report</a>, когда он определяет один объект (пациента, группу, устройство или месторасположение), а <a href="observation.html">Observation</a>, на который он ссылается, определяет другой объект, или когда ресурс <a href="list.html">List</a> ссылается на элементы, которые идентифицируют другие объекты. Такое кросс-связывание может возникать по вполне законным причинам, включая:
+Отметьте, что ресурсы могут входить в несколько логических модулей или связывать их. Примером может быть <a href="diagnosticreport.html">Diagnostic Report</a>, когда он определяет один объект (пациента, группу, устройство или местонахождение), а <a href="observation.html">Observation</a>, на который он ссылается, определяет другой объект, или когда ресурс <a href="list.html">List</a> ссылается на элементы, которые идентифицируют другие объекты. Такое кросс-связывание может возникать по вполне законным причинам, включая:
 <!-- Note that resources may cross between compartments, or interlink them. Examples of 
 this would be where a <a href="diagnosticreport.html">Diagnostic Report</a> identifies  
 a subject, but an <a href="observation.html">Observation</a> it references identifies
