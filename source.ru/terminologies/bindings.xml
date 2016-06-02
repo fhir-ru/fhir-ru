@@ -2535,7 +2535,7 @@
     <Cell ss:StyleID="s79"/>
     <Cell ss:StyleID="s98"/>
     <Cell ss:StyleID="s98"><Data ss:Type="String">Number</Data></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Search parameter SHALL be a number (a whole number, or a decimal).</Data></Cell>
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Search parameter SHALL be a number (a whole number, or a decimal). Параметр поиска</Data></Cell>
     <Cell ss:StyleID="s96"/>
     <Cell ss:StyleID="s96"/>
     <Cell ss:StyleID="s99"/>
