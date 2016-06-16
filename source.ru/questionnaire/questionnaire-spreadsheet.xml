@@ -1574,7 +1574,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">E.g. &quot;1(a)&quot;, &quot;2.5.3&quot;</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Например &quot;1(a)&quot;, &quot;2.5.3&quot;<!-- E.g. &quot;1(a)&quot;, &quot;2.5.3&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Краткий заголовок конкретной группы, вопроса или текста для отображения в вопроснике<!-- A short label for a particular group, question or set of display text within the questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1676,7 +1676,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Only allow data when:</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Данные доступны только когда:<!-- Only allow data when: --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Если присутствует, указывает на то, что этот пункт должен быть доступен (отображён/разрешен ввод ответов), только если заданное условие истинно<!-- If present, indicates that this item should only be enabled (displayed/allow answers to be captured) when the specified condition is true --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1704,11 +1704,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Question that determines whether item is enabled</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Вопрос, определяющий доступность данного пункта<!-- Question that determines whether item is enabled --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The linkId for the question whose answer (or lack of answer) governs whether this item is enabled</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">linkId для вопроса, ответ (или отсутствие ответа) на который определяет, будет ли доступен данный пункт<!-- The linkId for the question whose answer (or lack of answer) governs whether this item is enabled --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="17" ss:StyleID="s90"><Data ss:Type="String">If multiple question occurrences are present for the same question (same linkId), then this refers to the nearest question occurrence reachable by tracing first the &quot;ancestor&quot; axis and then the &quot;preceding&quot; axis and then the &quot;following&quot; axis</Data><NamedCell
+    <Cell ss:Index="17" ss:StyleID="s90"><Data ss:Type="String">Если один вопрос появляется несколько раз (с тем же самым linkId), тогда этот элемент относится к ближайшему доступному появлению вопроса путём отслеживания оси первого предка (&quot;ancestor&quot;) затем предыдущей оси (&quot;preceding&quot;), а потом следующей оси (&quot;following&quot;).<!-- If multiple question occurrences are present for the same question (same linkId), then this refers to the nearest question occurrence reachable by tracing first the &quot;ancestor&quot; axis and then the &quot;preceding&quot; axis and then the &quot;following&quot; axis --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">N/A - MIF rather than RIM level</Data><NamedCell
@@ -1730,7 +1730,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Enable when answered or not</Data><NamedCell
+    <Cell ss:Index="14" ss:StyleID="s88"><Data ss:Type="String">Доступен, когда есть или нет ответа [на другой вопрос]<!-- Enable when answered or not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">If present, indicates that this item should be enabled only if the specified question is answered or not answered</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4278,7 +4278,7 @@
     <Cell ss:StyleID="s92"><Data ss:Type="String">Answered or answer</Data></Cell>
     <Cell ss:StyleID="s92"/>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Questionnaire.item.enableWhen</Data></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">enableWhen must contain either an 'answer' or an 'answered' element</Data></Cell>
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Элемент enableWhen должен содержать либо 'answer', либо 'hasAnswer'<!-- enableWhen must contain either an 'answer' or an 'answered' element --></Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">hasAnswer.exists() xor answer.exists()</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">count(*[starts-with(local-name(.), 'answer')]|answered) = 1</Data></Cell>
    </Row>
@@ -4288,7 +4288,7 @@
     <Cell ss:StyleID="s92"><Data ss:Type="String">Initial value only for questions</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Questionnaire.item</Data></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Default values can't be specified for groups or display items</Data></Cell>
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Значения по умолчанию не могут быть заданы для элементов типа 'group' и 'display'<!-- Default values can't be specified for groups or display items --></Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">(type!='group' and type!='display') or initial.empty()</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">not(f:type/@value=('group', 'display') and f:*[starts-with(local-name(.), 'initial')])</Data></Cell>
    </Row>
@@ -4298,7 +4298,7 @@
     <Cell ss:StyleID="s92"><Data ss:Type="String">No readonly display</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Questionnaire.item</Data></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Read-only can't be specified for &quot;display&quot; items</Data></Cell>
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Признак "только для чтения" не может быть указан для элементов типа &quot;display&quot;<!-- Read-only can't be specified for &quot;display&quot; items --></Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">type!='display' or readOnly.empty()</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">not(f:type/@value='display' and f:readOnly)</Data></Cell>
    </Row>
@@ -4308,7 +4308,7 @@
     <Cell ss:StyleID="s92"><Data ss:Type="String">Max length only for simple types</Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">error</Data></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Questionnaire.item</Data></Cell>
-    <Cell ss:StyleID="s92"><Data ss:Type="String">Maximum length can only be declared for simple question types</Data></Cell>
+    <Cell ss:StyleID="s92"><Data ss:Type="String">Максимальная длина может быть задана только для простых типов вопросов<!-- Maximum length can only be declared for simple question types --></Data></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">(type in ('boolean' | 'decimal' | 'integer' | 'string' | 'text' | 'url')) or maxLength.empty()</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">f:type/@value=('boolean', 'decimal', 'integer', 'open-choice', 'string', 'text', 'url') or not(f:maxLength)</Data></Cell>
    </Row>

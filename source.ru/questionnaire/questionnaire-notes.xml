@@ -176,12 +176,14 @@ Where the names are the same (ignoring case), the "answer" must use the specifie
 <code>item.option</code> element. -->
 </p>
 <p>
-The "choice" mechanism is simplest - all options are listed in-line with the question.  Maintenance of the set of permitted question answers involves maintenance of
-the questionnaire itself.
+Механизм "choice" очень прост: все опции перечисляются внутри вопроса. Поддержка набора разрешённых ответов на вопросы входит в поддержку самого вопросника.
+<!-- The "choice" mechanism is simplest - all options are listed in-line with the question.  Maintenance of the set of permitted question answers involves maintenance of
+the questionnaire itself. -->
 </p>
 <p>
-The "choices" mechanism is more sophisticated.  Rather than listing the choices directly, the choices element points to a <a href="valueset.html">ValueSet</a> resource.  This approach adds complexity for
-questionnaires having a simple list of strings as choices for a question, but provides several benefits:
+Механизм "choices" более сложный. Вместо прямого перечисления вариантов выбора, в элементе choices указывается ресурс <a href="valueset.html">ValueSet</a>. Такой подход усложняет вопросники с простыми списками строк в качестве вариантов выбора ответов на вопрос, однако предоставляет некоторые преимущества:
+<!-- The "choices" mechanism is more sophisticated.  Rather than listing the choices directly, the choices element points to a <a href="valueset.html">ValueSet</a> resource.  This approach adds complexity for
+questionnaires having a simple list of strings as choices for a question, but provides several benefits: -->
 </p>
 <ul>
   <li>Вопросники, которым необходимо использовать коды из внешних кодовых систем, получают такую возможность.</li>

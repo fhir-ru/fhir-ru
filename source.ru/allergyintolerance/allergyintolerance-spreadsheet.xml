@@ -1156,7 +1156,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">allergy | intolerance - Underlying mechanism (if known)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">allergy | intolerance - лежащий в основе реакции механизм (если известно)<!-- allergy | intolerance - Underlying mechanism (if known) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Определение лежащего в основе физиологического механизма реакции<!-- Identification of the underlying physiological mechanism for the reaction risk --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1194,7 +1194,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">food | medication | environment | other - Category of Substance</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">food | medication | environment | other - категория вещества<!-- food | medication | environment | other - Category of Substance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Категория указанного вещества<!-- Category of the identified Substance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1616,7 +1616,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">unlikely | likely | confirmed - clinical certainty about the specific substance</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">unlikely | likely | confirmed - клиническая уверенность насчёт конкретного вещества<!-- unlikely | likely | confirmed - clinical certainty about the specific substance --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Степень клинической уверенности в том, что конкретное вещество было причиной проявления этой реакции<!-- Statement about the degree of clinical certainty that the specific substance was the cause of the manifestation in this reaction event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1755,7 +1755,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">mild | moderate | severe (of event as a whole)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">mild | moderate | severe (всего события в целом)<!-- mild | moderate | severe (of event as a whole) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Клиническая оценка тяжести реакции в целом с потенциальным рассмотрением нескольких различных проявлений<!-- Clinical assessment of the severity of the reaction event as a whole, potentially considering multiple different manifestations --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
