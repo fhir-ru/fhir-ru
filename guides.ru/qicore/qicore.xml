@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ImplementationGuide xmlns="http://hl7.org/fhir">
+  <id value="qicore"/>
+  <url value="http://hl7.org/fhir/qicore"/>
+  <name value="QICore Implementation Guide"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <publisher value="ONC"/>
+  <dependency>
+    <type value="reference"/>
+    <uri value="http://hl7.org/fhir/daf"/>
+  </dependency>
+  <package>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="allergyintolerance-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="basic-adverseevent-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="bodysite-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="communication-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="communicationrequest-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="condition-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="device-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="deviceuserequest-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="deviceusestatement-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="diagnosticorder-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="diagnosticreport-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="encounter-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="familymemberhistory-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="flag-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="goal-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="imagingstudy-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="immunization-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="immunizationrecommendation-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="location-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="medication-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="medicationadministration-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="medicationdispense-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="medicationorder-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="medicationstatement-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="observation-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="organization-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="patient-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="practitioner-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="procedure-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="procedurerequest-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="referralrequest-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="relatedperson-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="specimen-profile-spreadsheet.xml"/>
+    </extension>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="substance-profile-spreadsheet.xml"/>
+    </extension>
+    <name value="base"/>
+	<resource>
+      <example value="true"/>
+      <name value="QICore AdverseEvent"/>
+      <description value="Example of QICore AdverseEvent"/>
+      <sourceUri value="basic-adverseevent-example.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-adverseevent"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore AllergyIntolerance"/>
+      <description value="Example of QICore AllergyIntolerance"/>
+      <sourceUri value="allergyintolerance-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-allergyintolerance"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore AllergyIntolerance Refuted"/>
+      <description value="Example of QICore AllergyIntolerance Refuted"/>
+      <sourceUri value="allergyintolerance-example-refuted.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-allergyintolerance"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore Communication"/>
+      <description value="Example of QICore Communication"/>
+      <sourceUri value="communication-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-communication"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore CommunicationRequest"/>
+      <description value="Example of QICore CommunicationRequest"/>
+      <sourceUri value="communicationrequest-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-communicationrequest"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore Condition"/>
+      <description value="Example of QICore Condition"/>
+      <sourceUri value="condition-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-condition"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore DeviceUseRequest"/>
+      <description value="Example of QICore DeviceUseRequest"/>
+      <sourceUri value="deviceuserequest-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-deviceuserequest"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore DiagnosticOrder"/>
+      <description value="Example of QICore DiagnosticOrder"/>
+      <sourceUri value="diagnosticorder-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-diagnosticorder"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore DiagnosticReport"/>
+      <description value="Example of QICore DiagnosticReport"/>
+      <sourceUri value="diagnosticreport-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-diagnosticreport"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore Encounter"/>
+      <description value="Example of QICore Encounter"/>
+      <sourceUri value="encounter-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-encounter"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore FamilyMemberHistory"/>
+      <description value="Example of QICore FamilyMemberHistory with condition did-not-have"/>
+      <sourceUri value="familymemberhistory-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-familymemberhistory"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore Flag"/>
+      <description value="Example of QICore Flag"/>
+      <sourceUri value="flag-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-flag"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore Goal"/>
+      <description value="Example of QICoreGoal"/>
+      <sourceUri value="goal-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-goal"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore ImagingStudy"/>
+      <description value="Example of QICore ImagingStudy"/>
+      <sourceUri value="imagingstudy-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-imagingstudy"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore MedicationDispense"/>
+      <description value="Example of QICore MedicationDispense"/>
+      <sourceUri value="medicationdispense-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-medicationdispense"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore MedicationOrder"/>
+      <description value="Example of QICore MedicationOrder"/>
+      <sourceUri value="medicationorder-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-medicationorder"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore MedicationStatement"/>
+      <description value="Example of QICore MedicationStatement"/>
+      <sourceUri value="medicationstatement-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-medicationstatement"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore Observation"/>
+      <description value="Example of QICore Observation"/>
+      <sourceUri value="observation-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-observation"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore Organization"/>
+      <description value="Example of QICore Organization"/>
+      <sourceUri value="organization-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-organization"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore Patient"/>
+      <description value="Example of QICore Patient"/>
+      <sourceUri value="patient-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-patient"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore Practitioner"/>
+      <description value="Example of QICore Practitioner"/>
+      <sourceUri value="practitioner-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-practitioner"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore Procedure"/>
+      <description value="Example of QICore Procedure"/>
+      <sourceUri value="procedure-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-procedure"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore ProcedureRequest"/>
+      <description value="Example of QICore ProcedureRequest"/>
+      <sourceUri value="procedurerequest-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-procedurerequest"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore ReferralRequest"/>
+      <description value="Example of QICore ReferralRequest"/>
+      <sourceUri value="referralrequest-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-referralrequest"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="QICore Specimen"/>
+      <description value="Example of QICore Specimen"/>
+      <sourceUri value="specimen-example-qicore.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/qicore-specimen"/>
+      </exampleFor>
+    </resource>
+  </package>
+  <page>
+    <source value="qicore.html"/>
+    <name value="Home Page"/>
+    <kind value="page"/>
+    <page>
+      <source value="registry.html"/>
+      <name value="Registry"/>
+      <kind value="list"/>
+      <type value="Conformance"/>
+      <type value="StructureDefinition"/>
+      <type value="ValueSet"/>
+      <type value="ConceptMap"/>
+    </page>
+    <page>
+      <source value="adverseevent.html"/>
+      <name value="Adverse Event"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-adverseevent.html"/>
+        <name value="Adverse Event Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="allergyintolerance-qicore.html"/>
+      <name value="Allergy Intolerance"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-allergyintolerance.html"/>
+        <name value="Allergy Intolerance Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="bodysite-qicore.html"/>
+      <name value="Body Site"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-bodysite.html"/>
+        <name value="Body Site Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="communication-qicore.html"/>
+      <name value="Communication"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-communication.html"/>
+        <name value="Communication Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="communicationrequest-qicore.html"/>
+      <name value="Communication Request"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-communicationrequest.html"/>
+        <name value="Communication Request Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="condition-qicore.html"/>
+      <name value="Condition"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-condition.html"/>
+        <name value="Condition Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="device-qicore.html"/>
+      <name value="Device"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-device.html"/>
+        <name value="Device Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="deviceuserequest-qicore.html"/>
+      <name value="Device Use Request"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-deviceuserequest.html"/>
+        <name value="Device Use Request Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="deviceusestatement-qicore.html"/>
+      <name value="Device Use Statement"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-deviceusestatement.html"/>
+        <name value="Device Use Statement Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="diagnosticorder-qicore.html"/>
+      <name value="Diagnostic Order"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-diagnosticorder.html"/>
+        <name value="Diagnostic Order Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="diagnosticreport-qicore.html"/>
+      <name value="Diagnostic Report"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-diagnosticreport.html"/>
+        <name value="Diagnostic Report Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="encounter-qicore.html"/>
+      <name value="Encounter"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-encounter.html"/>
+        <name value="Encounter Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="familymemberhistory-qicore.html"/>
+      <name value="Family Member History"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-familymemberhistory.html"/>
+        <name value="Family Member History Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="flag-qicore.html"/>
+      <name value="Flag"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-flag.html"/>
+        <name value="Flag Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="goal-qicore.html"/>
+      <name value="Goal"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-goal.html"/>
+        <name value="Goal Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="imagingstudy-qicore.html"/>
+      <name value="Imaging Study"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-imagingstudy.html"/>
+        <name value="Imaging Study Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="immunization-qicore.html"/>
+      <name value="Immunization"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-immunization.html"/>
+        <name value="Immunization Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="immunizationrecommendation-qicore.html"/>
+      <name value="Immunization Recommendation"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-immunizationrec.html"/>
+        <name value="Immunization Recommendation Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="location-qicore.html"/>
+      <name value="Location"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-location.html"/>
+        <name value="Location Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="medication-qicore.html"/>
+      <name value="Medication"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-medication.html"/>
+        <name value="Medication Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="medicationadministration-qicore.html"/>
+      <name value="Medication Administration"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-medicationadministration.html"/>
+        <name value="Medication Administration Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="medicationdispense-qicore.html"/>
+      <name value="Medication Dispense"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-medicationdispense.html"/>
+        <name value="Medication Dispense Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="medicationorder-qicore.html"/>
+      <name value="Medication Order"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-medicationorder.html"/>
+        <name value="Medication Order Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="medicationstatement-qicore.html"/>
+      <name value="Medication Statement"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-medicationstatement.html"/>
+        <name value="Medication Statement Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="observation-qicore.html"/>
+      <name value="Observation"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-observation.html"/>
+        <name value="Observation Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="organization-qicore.html"/>
+      <name value="Organization"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-organization.html"/>
+        <name value="Organization Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="patient-qicore.html"/>
+      <name value="Patient"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-patient.html"/>
+        <name value="Patient Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="practitioner-qicore.html"/>
+      <name value="Practitioner"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-practitioner.html"/>
+        <name value="Practitioner Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="procedure-qicore.html"/>
+      <name value="Procedure"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-procedure.html"/>
+        <name value="Procedure Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="procedurerequest-qicore.html"/>
+      <name value="Procedure Request"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-procedurerequest.html"/>
+        <name value="Procedure Request Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="referralrequest-qicore.html"/>
+      <name value="Referral Request"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-referralrequest.html"/>
+        <name value="Referral Request Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="relatedperson-qicore.html"/>
+      <name value="Related Person"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-relatedperson.html"/>
+        <name value="Related Person Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="specimen-qicore.html"/>
+      <name value="Specimen"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-specimen.html"/>
+        <name value="Specimen Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+    <page>
+      <source value="substance-qicore.html"/>
+      <name value="Substance"/>
+      <kind value="page"/>
+      <format value="generated"/>
+      <page>
+        <source value="qicore-substance.html"/>
+        <name value="Substance Details"/>
+        <kind value="resource"/>
+        <format value="generated"/>
+      </page>
+    </page>
+  </page>
+</ImplementationGuide>

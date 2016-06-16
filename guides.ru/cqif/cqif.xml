@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ImplementationGuide xmlns="http://hl7.org/fhir">
+  <id value="cqif"/>
+  <url value="http://hl7.org/fhir/cqif"/>
+  <version value="1"/>
+  <name value="Clinical Quality Improvement Framework"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <publisher value="Hl7 CDS"/>
+  <package>
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="basic-cqif-extensions-spreadsheet.xml"/>
+    </extension>
+    <!--extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="basic-knowledgemodule-cqif-profile-spreadsheet.xml"/>
+    </extension-->
+    <!--extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="basic-knowledgerequest-cqif-profile-spreadsheet.xml"/>
+    </extension-->
+    <!--extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="basic-knowledgeresponse-cqif-profile-spreadsheet.xml"/>
+    </extension-->
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="basic-cqif-guidance-extensions-spreadsheet.xml"/>
+    </extension>
+    <!--extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="basic-guidancerequest-cqif-profile-spreadsheet.xml"/>
+    </extension-->
+    <!--extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="basic-guidanceresponse-cqif-profile-spreadsheet.xml"/>
+    </extension-->
+    <!--extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="documentreference-evidence-cqif-profile-spreadsheet.xml"/>
+    </extension-->
+    <!--extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="basic-guidanceartifact-cqif-profile-spreadsheet.xml"/>
+    </extension-->
+    <extension url="http://hl7.org/fhir/tools-profile-spreadsheet">
+      <valueUri value="questionnaire-cqif-profile-spreadsheet.xml"/>
+    </extension>
+    <name value="base"/>
+    <!--resource>
+      <example value="true"/>
+      <name value="Knowledge Module - Stand-Alone Module"/>
+      <description value="KnowledgeModule used to define a Guideline Appropriate Ordering module"/>
+      <sourceUri value="knowledgemodule-example.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/cqif-knowledgemodule"/>
+      </exampleFor>
+    </resource-->
+    <!--resource>
+		<example value="true"/>
+		<name value="Knowledge Module - Library"/>
+		<description value="KnowledgeModule used to expose a CQL library as a knowledge module"/>
+		<sourceUri value="knowledgemodule-library-example.xml"/>
+		<exampleFor>
+			<reference value="StructureDefinition/cqif-knowledgemodule"/>
+		</exampleFor>
+    </resource-->
+	<!--resource>
+		<example value="true"/>
+		<name value="Guidance Artifact - HeD Reference"/>
+		<description value="GuidanceArtifact used to expose an existing HeD artifact as a knowledge module"/>
+		<sourceUri value="guidanceartifact-hedreference-example.xml"/>
+		<exampleFor>
+			<reference value="StructureDefinition/cqif-guidanceartifact"/>
+		</exampleFor>
+    </resource-->
+    <!--resource>
+		<example value="true"/>
+		<name value="Guidance Artifact - ECA Rule"/>
+		<description value="GuidanceArtifact used to define an ECA Rule"/>
+		<sourceUri value="guidanceartifact-ecarule-example.xml"/>
+		<exampleFor>
+			<reference value="StructureDefinition/cqif-guidanceartifact"/>
+		</exampleFor>
+    </resource-->
+    <!--resource>
+		<example value="true"/>
+		<name value="Guidance Artifact - Documentation Template"/>
+		<description value="GuidanceArtifact used to define a Documentation Template"/>
+		<sourceUri value="guidanceartifact-documentationtemplate-example.xml"/>
+		<exampleFor>
+			<reference value="StructureDefinition/cqif-guidanceartifact"/>
+		</exampleFor>
+    </resource-->
+    <!--resource>
+		<example value="true"/>
+		<name value="Guidance Artifact - Order Set"/>
+		<description value="GuidanceArtifact used to define an Order Set"/>
+		<sourceUri value="guidanceartifact-orderset-example.xml"/>
+		<exampleFor>
+			<reference value="StructureDefinition/cqif-guidanceartifact"/>
+		</exampleFor>
+    </resource-->
+    <!--resource>
+		<example value="true"/>
+		<name value="Guidance Artifact - Suicide Risk Order Set"/>
+		<description value="GuidanceArtifact used to define a suicide risk management Order Set"/>
+		<sourceUri value="mmi-suiciderisk-orderset-example.xml"/>
+		<exampleFor>
+			<reference value="StructureDefinition/cqif-guidanceartifact"/>
+		</exampleFor>
+    </resource-->
+    <resource>
+		<example value="true"/>
+		<name value="Questionnaire - PHQ-9"/>
+		<description value="Questionnaire used to define the questions involved in the PHQ-9 health questionnaire"/>
+		<sourceUri value="questionnaire-cqif-example.xml"/>
+		<exampleFor>
+			<reference value="StructureDefinition/cqif-questionnaire"/>
+		</exampleFor>
+    </resource>
+	<!--    
+    <resource>
+      <example value="true"/>
+      <name value="Guidance Request"/>
+      <description value="GuidanceRequest for a Guideline Appropriate Ordering module evaluation"/>
+      <sourceUri value="guidance-operation-request-example-v2.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/cqif-guidancerequest"/>
+      </exampleFor>
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="Guidance Response"/>
+      <description value="GuidanceResponse for a Guideline Appropriate Ordering module evaluation"/>
+      <sourceUri value="guidance-operation-response-example-v2.xml"/>
+      <exampleFor>
+        <reference value="StructureDefinition/cqif-guidanceresponse"/>
+      </exampleFor>
+    </resource> 
+	-->
+  </package>
+  <binary value="cqframework-components-diagram.jpg"/>
+  <binary value="cqif-integrating-decision-support-conversation.png"/>
+  <binary value="cqif-integrating-decision-support-radiology-request.png"/>
+  <binary value="cqif-integrating-decision-support-service-scenario.jpg"/>
+  <binary value="cqif-integrating-decision-support-simple-request.png"/>
+  <binary value="cqif-knowledge-artifact-components.png"/>
+  <binary value="cqif-knowledge-artifact-distribution.png"/>
+  <binary value="cqif-knowledge-artifact-types.png"/>
+  <binary value="cqif-measure-structure.png"/>
+  <binary value="cqif-measure-report-population.png"/>
+  <binary value="cqif-measure-report-patient-list.png"/>
+  <binary value="cqif-measure-report-individual.png"/>
+  <page>
+    <source value="cqif.html"/>
+    <name value="Home Page"/>
+    <kind value="page"/>
+    <page>
+      <source value="cqif-toc.html"/>
+      <name value="Table of Contents"/>
+      <kind value="toc"/>
+    </page>
+    <page>
+		<source value="cqif-knowledge-artifact-representation.html"/>
+		<name value="Representation Knowledge Artifacts"/>
+		<kind value="page"/>
+    </page>
+    <page>
+		<source value="cqif-integrating-decision-support.html"/>
+		<name value="Integration Decision Support in a Clinical Workflow"/>
+		<kind value="page"/>
+    </page>
+    <page>
+		<source value="cqif-documentation-templates.html"/>
+		<name value="Using a Documentation Template in a Clinical Workflow"/>
+		<kind value="page"/>
+    </page>
+    <page>
+		<source value="cqif-order-sets.html"/>
+		<name value="Using an Order Set in a Clinical Workflow"/>
+		<kind value="page"/>
+    </page>
+    <page>
+		<source value="cqif-knowledge-artifact-distribution.html"/>
+		<name value="Sharing Knowledge Artifacts"/>
+		<kind value="page"/>
+    </page>
+    <page>
+		<source value="cqif-quality-reporting.html"/>
+		<name value="Quality Reporting"/>
+		<kind value="page"/>
+    </page>
+    <!--page>
+      <source value="cqif-common.html"/>
+      <name value="Common Properties Page"/>
+      <kind value="page"/>
+      <page>
+		  <source value="knowledgemodule-cqif.html"/>
+		  <name value="Knowledge Module"/>
+		  <kind value="page"/>
+		  <format value="generated"/>
+		  <page>
+			  <source value="cqif-knowledgemodule.html"/>
+			  <name value="Knowledge Module - Details"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+		  <page>
+			  <source value="knowledgemodule-example.html"/>
+			  <name value="Knowledge Module - Stand Alone Example"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+		  <page>
+			  <source value="knowledgemodule-library-example.html"/>
+			  <name value="Knowledge Module - Library Example"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+      </page-->
+      <!--page>
+		  <source value="knowledgerequest-cqif.html"/>
+		  <name value="Knowledge Request"/>
+		  <kind value="page"/>
+		  <format value="generated"/>
+		  <page>
+			  <source value="cqif-knowledgerequest.html"/>
+			  <name value="Knowledge Request - Details"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+      </page-->
+      <!--page>
+		  <source value="knowledgeresponse-cqif.html"/>
+		  <name value="Knowledge Response"/>
+		  <kind value="page"/>
+		  <format value="generated"/>
+		  <page>
+			  <source value="cqif-knowledgeresponse.html"/>
+			  <name value="Knowledge Response - Details"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+      </page>
+    </page-->
+    <!--page>
+      <source value="cqif-cds-on-fhir.html"/>
+      <name value="Clinical Decision Support API"/>
+      <kind value="page"/>
+      <page>
+		  <source value="guidanceartifact-cqif.html"/>
+		  <name value="Guidance Artifact"/>
+		  <kind value="page"/>
+		  <format value="generated"/>
+		  <page>
+			  <source value="cqif-guidanceartifact.html"/>
+			  <name value="Guidance Artifact - Details"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+		  <page>
+			  <source value="guidanceartifact-hedreference-example.html"/>
+			  <name value="Guidance Artifact - HeD Reference Example"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+		  <page>
+			  <source value="guidanceartifact-ecarule-example.html"/>
+			  <name value="Guidance Artifact - ECA Rule Example"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+		  <page>
+			  <source value="guidanceartifact-documentationtemplate-example.html"/>
+			  <name value="Guidance Artifact - Documentation Template Example"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+		  <page>
+			  <source value="guidanceartifact-orderset-example.html"/>
+			  <name value="Guidance Artifact - Order Set Example"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+		  <page>
+			  <source value="mmi-suiciderisk-orderset-example.html"/>
+			  <name value="Guidance Artifact - Suicide Risk Order Set Example"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+      </page>
+      <page>
+		  <source value="guidancerequest-cqif.html"/>
+		  <name value="Guidance Request"/>
+		  <kind value="page"/>
+		  <format value="generated"/>
+		  <page>
+			  <source value="cqif-guidancerequest.html"/>
+			  <name value="Guidance Request - Details"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+		  <page>
+			  <source value="guidance-operation-request-example-v2.html"/>
+			  <name value="Guidance Request - Example"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+      </page>
+      <page>
+		  <source value="guidanceresponse-cqif.html"/>
+		  <name value="Guidance Response"/>
+		  <kind value="page"/>
+		  <format value="generated"/>
+		  <page>
+			  <source value="cqif-guidanceresponse.html"/>
+			  <name value="Guidance Response - Details"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+		  <page>
+			  <source value="guidance-operation-response-example-v2.html"/>
+			  <name value="Guidance Response - Example"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+      </page>
+      <page>
+  		  <source value="operation-guidancerequest-cqif-guidance.html"/>
+	  	  <name value="Guidance Operation"/>
+		    <kind value="page"/>
+		    <format value="generated"/>
+		  <page>
+			  <source value="guidance-operation-request-example-v2.html"/>
+			  <name value="Guidance Operation - Request Example"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+		  <page>
+			  <source value="guidance-operation-response-example-v2.html"/>
+			  <name value="Guidance Operation - Response Example"/>
+			  <kind value="page"/>
+			  <format value="generated"/>
+		  </page>
+      </page>
+      <page>
+  		  <source value="operation-guidancerequest-cqif-guidance-requirements.html"/>
+	  	  <name value="Guidance Operation (Requirements)"/>
+		    <kind value="page"/>
+		    <format value="generated"/>
+      </page>
+    </page-->
+  <page>
+	  <source value="questionnaire-cqif.html"/>
+	  <name value="Questionnaire"/>
+	  <kind value="page"/>
+	  <format value="generated"/>
+	  <page>
+		  <source value="cqif-questionnaire.html"/>
+		  <name value="Questionnaire - Details"/>
+		  <kind value="page"/>
+		  <format value="generated"/>
+	  </page>
+	  <page>
+		  <source value="questionnaire-cqif-example.html"/>
+		  <name value="Questionnaire - Example"/>
+		  <kind value="page"/>
+		  <format value="generated"/>
+	  </page>
+  </page>
+    <!--page>
+      <source value="cqif-evidence.html"/>
+      <name value="Evidence Profile"/>
+      <kind value="resource"/>
+      <format value="generated"/>
+    </page-->
+    <page>
+      <source value="registry.html"/>
+      <name value="Registry"/>
+      <kind value="list"/>
+      <type value="Conformance"/>
+      <type value="StructureDefinition"/>
+      <type value="ValueSet"/>
+      <type value="ConceptMap"/>
+    </page>
+  </page>
+</ImplementationGuide>
