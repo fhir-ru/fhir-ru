@@ -17,7 +17,7 @@ the second column maps the ONC 2014 Edition S&amp;CC data elements to DAF data e
 
 <div>
 	<a name="MU_data_element_mapping"> </a>
-	<h3>Meaningful Use Data Element Mapping</h3>
+	<h3>Мэппинг элементов данных, требуемых в соответствии с "Meaningful Use"<!-- Meaningful Use Data Element Mapping --></h3>
 <p>
 Соответствие профиля DAF-FamilyMemberHistory элементам данных программы "Meaningful Use" и ресурсам FHIR приведены ниже. Обзор того, каким образом профили и элементы данных DAF были выведены из ONC 2014 Edition S&amp;CC, см. в разделе мэппинга данных <a href="daf.html#DataMapping">DAF FHIR IG</a>.
 <!-- The DAF-FamilyMemberHistory profile mapping to Meaningful Use data elements and FHIR Resources are as shown below.For an overview of how the DAF profiles and data elements were derived from ONC 2014 Edition S&amp;CC please refer to <a href="daf.html#DataMapping">DAF FHIR IG</a> data mapping section. -->
