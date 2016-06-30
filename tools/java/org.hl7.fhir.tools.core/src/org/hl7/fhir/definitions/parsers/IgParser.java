@@ -17,12 +17,12 @@ import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.Example.ExampleType;
 import org.hl7.fhir.definitions.model.ImplementationGuideDefn;
 import org.hl7.fhir.definitions.model.LogicalModel;
-import org.hl7.fhir.definitions.model.MappingSpace;
 import org.hl7.fhir.definitions.model.Profile;
 import org.hl7.fhir.definitions.model.Profile.ConformancePackageSourceType;
 import org.hl7.fhir.dstu3.formats.XmlParser;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.DateTimeType;
+import org.hl7.fhir.dstu3.model.ElementDefinition;
 import org.hl7.fhir.dstu3.model.Extension;
 import org.hl7.fhir.dstu3.model.ImplementationGuide;
 import org.hl7.fhir.dstu3.model.ImplementationGuide.GuideDependencyType;
@@ -38,8 +38,11 @@ import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.utils.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.dstu3.utils.IWorkerContext;
+import org.hl7.fhir.dstu3.utils.ProfileUtilities;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
+import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
 import org.hl7.fhir.tools.converters.CodeSystemConvertor;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.utilities.CSFile;
@@ -170,6 +173,7 @@ public class IgParser {
         } else if (rt == ResourceType.StructureDefinition) {
           StructureDefinition sd;
           sd = (StructureDefinition) new XmlParser().parse(new CSFileInputStream(fn));
+          new ProfileUtilities(context, null, pkp).setIds(sd, sd.getId());
           if (sd.getKind() == StructureDefinitionKind.LOGICAL) {
             fn = new CSFile(Utilities.path(myRoot, r.getSourceUriType().asStringValue()));
             LogicalModel lm = new LogicalModel(sd);
@@ -177,10 +181,11 @@ public class IgParser {
             lm.setId(sd.getId());
             igd.getLogicalModels().add(lm);        
             
-          } else if ("extension".equals(sd.getBaseType())) {
+          } else if ("Extension".equals(sd.getBaseType())) {
             sd.setId(tail(sd.getUrl()));
             sd.setUserData(ToolResourceUtilities.NAME_RES_IG, igd.getCode());
             ToolResourceUtilities.updateUsage(sd, igd.getCode());
+            
             this.context.seeExtensionDefinition("http://hl7.org/fhir", sd);            
           } else {
             Profile pr = new Profile(igd.getCode());
@@ -188,7 +193,8 @@ public class IgParser {
             pr.setTitle(sd.getName());
             if (!sd.hasId())
               sd.setId(tail(sd.getUrl()));
-            sd.setUrl("http://hl7.org/fhir/StructureDefinition/"+sd.getId());
+//Lloyd: This causes issues for profiles & extensions defined outside of HL7
+//            sd.setUrl("http://hl7.org/fhir/StructureDefinition/"+sd.getId());
             pr.forceMetadata("id", sd.getId()+"-profile");
             pr.setSourceType(ConformancePackageSourceType.SturctureDefinition);
             ConstraintStructure cs = new ConstraintStructure(sd, igd);
@@ -199,7 +205,8 @@ public class IgParser {
           Dictionary d = new Dictionary(id, r.getName(), igd.getCode(), fn.getAbsolutePath(), igd);
           igd.getDictionaries().add(d);
         } else 
-          throw new Error("Not implemented yet - type = "+rt.toString());
+          logger.log("Implementation Guides do not yet support "+rt.toString(), LogMessageType.Process);
+//          throw new Error("Not implemented yet - type = "+rt.toString());
 
 
         //        if (r.hasExampleFor()) {

@@ -7,7 +7,7 @@
       "message": null,
       "definition": {
         "abstract": false,
-        "code": null,
+        "code": "CT",
         "definition": null,
         "display": "Computed Tomography"
       }

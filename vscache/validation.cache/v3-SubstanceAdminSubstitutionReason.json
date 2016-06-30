@@ -2,14 +2,14 @@
   "url": "http://hl7.org/fhir/ValueSet/v3-SubstanceAdminSubstitutionReason",
   "outcomes": [
     {
-      "hash": "#|http://hl7.org/fhir|null|FP|formulary policy",
+      "hash": "#|http://hl7.org/fhir/v3/ActReason|null|CT|Continuing therapy",
       "severity": null,
       "message": null,
       "definition": {
         "abstract": false,
-        "code": "FP",
+        "code": "CT",
         "definition": null,
-        "display": "formulary policy"
+        "display": "continuing therapy"
       }
     }
   ]

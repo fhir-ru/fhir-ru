@@ -1,6 +1,8 @@
 package org.hl7.fhir.dstu3.utils;
 
+import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,6 +27,7 @@ import org.hl7.fhir.dstu3.formats.IParser;
 import org.hl7.fhir.dstu3.formats.JsonParser;
 import org.hl7.fhir.dstu3.formats.ParserType;
 import org.hl7.fhir.dstu3.formats.XmlParser;
+import org.hl7.fhir.dstu3.model.BaseConformance;
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem;
@@ -39,6 +42,7 @@ import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.ResourceType;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
+import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpansionCache;
 import org.hl7.fhir.dstu3.utils.ProfileUtilities.ProfileKnowledgeProvider;
@@ -47,7 +51,9 @@ import org.hl7.fhir.dstu3.validation.IResourceValidator;
 import org.hl7.fhir.dstu3.validation.InstanceValidator;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.utilities.CSFileInputStream;
+import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.OIDUtils;
+import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 
 /*
@@ -62,6 +68,11 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 	private Map<String, StructureDefinition> structures = new HashMap<String, StructureDefinition>();
 	private List<NamingSystem> systems = new ArrayList<NamingSystem>();
 	private Questionnaire questionnaire;
+	private Map<String, byte[]> binaries = new HashMap<String, byte[]>();
+  private boolean allowLoadingDuplicates;
+  private String version;
+  private String revision;
+  private String date;
 
 	// -- Initializations
 	/**
@@ -86,6 +97,13 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 		res.loadFromStream(SimpleWorkerContext.class.getResourceAsStream("validation.json.zip"));
 		return res;
 	}
+
+	 public static SimpleWorkerContext fromClassPath(String name) throws IOException, FHIRException {
+	   InputStream s = SimpleWorkerContext.class.getResourceAsStream("/"+name);
+	    SimpleWorkerContext res = new SimpleWorkerContext();
+	   res.loadFromStream(s);
+	    return res;
+	  }
 
 	public static SimpleWorkerContext fromDefinitions(Map<String, byte[]> source) throws IOException, FHIRException {
 		SimpleWorkerContext res = new SimpleWorkerContext();
@@ -134,7 +152,7 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 	private void seeValueSet(String url, ValueSet vs) throws DefinitionException {
 	  if (Utilities.noString(url))
 	    url = vs.getUrl();
-		if (valueSets.containsKey(vs.getUrl()))
+		if (valueSets.containsKey(vs.getUrl()) && !allowLoadingDuplicates)
 			throw new DefinitionException("Duplicate Profile " + vs.getUrl());
 		valueSets.put(vs.getId(), vs);
 		valueSets.put(vs.getUrl(), vs);
@@ -149,6 +167,9 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 	private void seeProfile(String url, StructureDefinition p) throws FHIRException {
     if (Utilities.noString(url))
       url = p.getUrl();
+    if (p.getKind() == StructureDefinitionKind.LOGICAL)
+      return;
+    
     if (!p.hasSnapshot()) {
       if (!p.hasBaseDefinition())
         throw new DefinitionException("Profile "+p.getName()+" ("+p.getUrl()+") has no base and no snapshot");
@@ -166,7 +187,7 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
         throw new DefinitionException("Profile "+p.getName()+" ("+p.getUrl()+"). Error generating snapshot");
       pu = null;
     }
-		if (structures.containsKey(p.getUrl()))
+		if (structures.containsKey(p.getUrl()) && !allowLoadingDuplicates)
 			throw new DefinitionException("Duplicate structures " + p.getUrl());
 		structures.put(p.getId(), p);
 		structures.put(p.getUrl(), p);
@@ -185,12 +206,54 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 			if (ze.getName().endsWith(".xml")) {
 				String name = ze.getName();
 				loadFromFile(zip, name);
-			}
+			} else if (ze.getName().equals("version.info")) {
+			  readVersionInfo(ze, zip);
+			} else
+			  loadBytes(ze.getName(), ze, zip);
 			zip.closeEntry();
 		}
 		zip.close();
 	}
 
+  private void readVersionInfo(ZipEntry entry, ZipInputStream zip) throws IOException {
+    int size;
+    byte[] buffer = new byte[2048];
+
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    BufferedOutputStream bos = new BufferedOutputStream(bytes, buffer.length);
+
+    while ((size = zip.read(buffer, 0, buffer.length)) != -1) {
+      bos.write(buffer, 0, size);
+    }
+    bos.flush();
+    bos.close();
+    
+    String[] vi = new String(bytes.toByteArray()).split("\\r?\\n");
+    for (String s : vi) {
+      if (s.startsWith("version="))
+        version = s.substring(8);
+      if (s.startsWith("revision="))
+        revision = s.substring(9);
+      if (s.startsWith("date="))
+        date = s.substring(5);
+    }
+  }
+
+
+	private void loadBytes(String name, ZipEntry entry, ZipInputStream zip) throws IOException {
+    int size;
+    byte[] buffer = new byte[2048];
+
+    ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+    BufferedOutputStream bos = new BufferedOutputStream(bytes, buffer.length);
+
+    while ((size = zip.read(buffer, 0, buffer.length)) != -1) {
+      bos.write(buffer, 0, size);
+    }
+    bos.flush();
+    bos.close();
+	  binaries.put(name, bytes.toByteArray());
+  }
 
 	@Override
 	public IParser getParser(ParserType type) {
@@ -277,7 +340,7 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 			return null;      
 		}
 
-		throw new Error("not done yet");
+		throw new Error("fetching "+class_.getName()+" not done yet for URI "+uri);
 	}
 
 
@@ -294,7 +357,7 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
   public List<String> getResourceNames() {
     List<String> result = new ArrayList<String>();
     for (StructureDefinition sd : structures.values()) {
-      if (sd.getKind() == StructureDefinitionKind.RESOURCE && !sd.hasBaseType())
+      if (sd.getKind() == StructureDefinitionKind.RESOURCE && sd.getDerivation() == TypeDerivationRule.SPECIALIZATION)
         result.add(sd.getName());
     }
     Collections.sort(result);
@@ -333,7 +396,7 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
   }
 
   @Override
-  public String getLinkFor(String typeSimple) {
+  public String getLinkFor(String corePath, String typeSimple) {
     return null;
   }
 
@@ -364,6 +427,16 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
   public List<StructureDefinition> allStructures() {
     List<StructureDefinition> result = new ArrayList<StructureDefinition>();
     result.addAll(structures.values());
+    return result;
+  }
+
+	@Override
+  public List<BaseConformance> allConformanceResources() {
+    List<BaseConformance> result = new ArrayList<BaseConformance>();
+    result.addAll(structures.values());
+    result.addAll(codeSystems.values());
+    result.addAll(valueSets.values());
+    result.addAll(maps.values());
     return result;
   }
 
@@ -431,4 +504,31 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
     
   }
 
+  public Map<String, byte[]> getBinaries() {
+    return binaries;
+  }
+
+  public boolean isAllowLoadingDuplicates() {
+    return allowLoadingDuplicates;
+  }
+
+  public void setAllowLoadingDuplicates(boolean allowLoadingDuplicates) {
+    this.allowLoadingDuplicates = allowLoadingDuplicates;
+  }
+
+  @Override
+  public boolean prependLinks() {
+    return false;
+  }
+
+  @Override
+  public boolean hasCache() {
+    return false;
+  }
+
+  public String getVersionRevision() {
+    return version+"-"+revision;
+  }
+
+  
 }

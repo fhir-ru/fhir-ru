@@ -13,7 +13,7 @@
       <value value="http://hl7.org/fhir"/>
     </telecom>
   </contact>
-  <description value="This value set includes sample Service Modifier codes."/>
+  <description value="This value set includes example Onset Type (Reason) codes."/>
   <copyright value="This is an example set."/>
   <compose>
     <include>

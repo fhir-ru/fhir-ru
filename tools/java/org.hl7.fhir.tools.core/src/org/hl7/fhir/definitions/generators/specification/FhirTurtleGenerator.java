@@ -17,9 +17,7 @@ import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
-import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.model.W5Entry;
-import org.hl7.fhir.dstu3.formats.RdfGenerator;
 import org.hl7.fhir.dstu3.model.BooleanType;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
@@ -35,6 +33,8 @@ import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
+import org.hl7.fhir.rdf.RdfGenerator;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -349,7 +349,7 @@ public class FhirTurtleGenerator extends RdfGenerator {
     section.triple("fhir:"+t.getCode()+".value", "rdfs:domain", "fhir:"+t.getCode());
     if (t.getSchemaType().endsWith("+")) {
       section.triple("fhir:"+t.getCode()+".value", "rdfs:range", "xs:"+t.getSchemaType().substring(0, t.getSchemaType().length()-1));
-      section.triple("fhir:"+t.getCode()+".value", "owl:withRestriction", complex().predicate("xs:pattern", literal(t.getRegEx())));
+      section.triple("fhir:"+t.getCode()+".value", "owl:withRestriction", complex().predicate("xs:pattern", literal(t.getRegex())));
     } else if (t.getSchemaType().contains(",")) {
       section.triple("fhir:"+t.getCode()+".value", "rdfs:range", complex().predicate("a", "owl:Class").predicate("owl:unionOf", "("+t.getSchemaType().replace(",", "")+")"), "xs:union of "+t.getSchemaType());
     } else

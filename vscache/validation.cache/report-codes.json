@@ -44,6 +44,17 @@
       }
     },
     {
+      "hash": "#|http://loinc.org|null|47527-7|null",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": null,
+        "definition": null,
+        "display": "Cytology report of Cervical or vaginal smear or scraping Cyto stain.thin prep"
+      }
+    },
+    {
       "hash": "#|http://loinc.org|null|55233-1|Genetic analysis master panel",
       "severity": null,
       "message": null,

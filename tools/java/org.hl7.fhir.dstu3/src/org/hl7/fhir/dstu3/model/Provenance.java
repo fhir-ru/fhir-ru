@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
+// Generated on Wed, Jun 29, 2016 09:39+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -333,6 +333,14 @@ public class Provenance extends DomainResource {
           return this.relatedAgent;
         }
 
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public ProvenanceAgentComponent setRelatedAgent(List<ProvenanceAgentRelatedAgentComponent> theRelatedAgent) { 
+          this.relatedAgent = theRelatedAgent;
+          return this;
+        }
+
         public boolean hasRelatedAgent() { 
           if (this.relatedAgent == null)
             return false;
@@ -342,10 +350,6 @@ public class Provenance extends DomainResource {
           return false;
         }
 
-        /**
-         * @return {@link #relatedAgent} (A relationship between two the agents referenced in this resource. This is defined to allow for explicit description of the delegation between agents.  For example, this human author used this device, or one person acted on another's behest.)
-         */
-    // syntactic sugar
         public ProvenanceAgentRelatedAgentComponent addRelatedAgent() { //3
           ProvenanceAgentRelatedAgentComponent t = new ProvenanceAgentRelatedAgentComponent();
           if (this.relatedAgent == null)
@@ -354,7 +358,6 @@ public class Provenance extends DomainResource {
           return t;
         }
 
-    // syntactic sugar
         public ProvenanceAgentComponent addRelatedAgent(ProvenanceAgentRelatedAgentComponent t) { //3
           if (t == null)
             return this;
@@ -362,6 +365,16 @@ public class Provenance extends DomainResource {
             this.relatedAgent = new ArrayList<ProvenanceAgentRelatedAgentComponent>();
           this.relatedAgent.add(t);
           return this;
+        }
+
+        /**
+         * @return The first repetition of repeating field {@link #relatedAgent}, creating it if it does not already exist
+         */
+        public ProvenanceAgentRelatedAgentComponent getRelatedAgentFirstRep() { 
+          if (getRelatedAgent().isEmpty()) {
+            addRelatedAgent();
+          }
+          return getRelatedAgent().get(0);
         }
 
         protected void listChildren(List<Property> childrenList) {
@@ -487,9 +500,8 @@ public class Provenance extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (role == null || role.isEmpty()) && (actor == null || actor.isEmpty())
-           && (userId == null || userId.isEmpty()) && (relatedAgent == null || relatedAgent.isEmpty())
-          ;
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(role, actor, userId, relatedAgent
+          );
       }
 
   public String fhirType() {
@@ -694,8 +706,7 @@ public class Provenance extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (type == null || type.isEmpty()) && (target == null || target.isEmpty())
-          ;
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(type, target);
       }
 
   public String fhirType() {
@@ -738,11 +749,11 @@ public class Provenance extends DomainResource {
         /**
          * The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity.
          */
-        @Child(name = "agent", type = {ProvenanceAgentComponent.class}, order=5, min=0, max=1, modifier=false, summary=true)
+        @Child(name = "agent", type = {ProvenanceAgentComponent.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
         @Description(shortDefinition="Entity is attributed to this agent", formalDefinition="The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity." )
-        protected ProvenanceAgentComponent agent;
+        protected List<ProvenanceAgentComponent> agent;
 
-        private static final long serialVersionUID = 1533729633L;
+        private static final long serialVersionUID = 1066624051L;
 
     /**
      * Constructor
@@ -927,25 +938,54 @@ public class Provenance extends DomainResource {
         /**
          * @return {@link #agent} (The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity.)
          */
-        public ProvenanceAgentComponent getAgent() { 
+        public List<ProvenanceAgentComponent> getAgent() { 
           if (this.agent == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create ProvenanceEntityComponent.agent");
-            else if (Configuration.doAutoCreate())
-              this.agent = new ProvenanceAgentComponent(); // cc
+            this.agent = new ArrayList<ProvenanceAgentComponent>();
           return this.agent;
         }
 
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public ProvenanceEntityComponent setAgent(List<ProvenanceAgentComponent> theAgent) { 
+          this.agent = theAgent;
+          return this;
+        }
+
         public boolean hasAgent() { 
-          return this.agent != null && !this.agent.isEmpty();
+          if (this.agent == null)
+            return false;
+          for (ProvenanceAgentComponent item : this.agent)
+            if (!item.isEmpty())
+              return true;
+          return false;
+        }
+
+        public ProvenanceAgentComponent addAgent() { //3
+          ProvenanceAgentComponent t = new ProvenanceAgentComponent();
+          if (this.agent == null)
+            this.agent = new ArrayList<ProvenanceAgentComponent>();
+          this.agent.add(t);
+          return t;
+        }
+
+        public ProvenanceEntityComponent addAgent(ProvenanceAgentComponent t) { //3
+          if (t == null)
+            return this;
+          if (this.agent == null)
+            this.agent = new ArrayList<ProvenanceAgentComponent>();
+          this.agent.add(t);
+          return this;
         }
 
         /**
-         * @param value {@link #agent} (The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity.)
+         * @return The first repetition of repeating field {@link #agent}, creating it if it does not already exist
          */
-        public ProvenanceEntityComponent setAgent(ProvenanceAgentComponent value) { 
-          this.agent = value;
-          return this;
+        public ProvenanceAgentComponent getAgentFirstRep() { 
+          if (getAgent().isEmpty()) {
+            addAgent();
+          }
+          return getAgent().get(0);
         }
 
         protected void listChildren(List<Property> childrenList) {
@@ -964,7 +1004,7 @@ public class Provenance extends DomainResource {
         case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // Coding
         case -925155509: /*reference*/ return this.reference == null ? new Base[0] : new Base[] {this.reference}; // UriType
         case 1671764162: /*display*/ return this.display == null ? new Base[0] : new Base[] {this.display}; // StringType
-        case 92750597: /*agent*/ return this.agent == null ? new Base[0] : new Base[] {this.agent}; // ProvenanceAgentComponent
+        case 92750597: /*agent*/ return this.agent == null ? new Base[0] : this.agent.toArray(new Base[this.agent.size()]); // ProvenanceAgentComponent
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -986,7 +1026,7 @@ public class Provenance extends DomainResource {
           this.display = castToString(value); // StringType
           break;
         case 92750597: // agent
-          this.agent = (ProvenanceAgentComponent) value; // ProvenanceAgentComponent
+          this.getAgent().add((ProvenanceAgentComponent) value); // ProvenanceAgentComponent
           break;
         default: super.setProperty(hash, name, value);
         }
@@ -1004,7 +1044,7 @@ public class Provenance extends DomainResource {
         else if (name.equals("display"))
           this.display = castToString(value); // StringType
         else if (name.equals("agent"))
-          this.agent = (ProvenanceAgentComponent) value; // ProvenanceAgentComponent
+          this.getAgent().add((ProvenanceAgentComponent) value);
         else
           super.setProperty(name, value);
       }
@@ -1016,7 +1056,7 @@ public class Provenance extends DomainResource {
         case 3575610:  return getType(); // Coding
         case -925155509: throw new FHIRException("Cannot make property reference as it is not a complex type"); // UriType
         case 1671764162: throw new FHIRException("Cannot make property display as it is not a complex type"); // StringType
-        case 92750597:  return getAgent(); // ProvenanceAgentComponent
+        case 92750597:  return addAgent(); // ProvenanceAgentComponent
         default: return super.makeProperty(hash, name);
         }
 
@@ -1038,8 +1078,7 @@ public class Provenance extends DomainResource {
           throw new FHIRException("Cannot call addChild on a primitive type Provenance.display");
         }
         else if (name.equals("agent")) {
-          this.agent = new ProvenanceAgentComponent();
-          return this.agent;
+          return addAgent();
         }
         else
           return super.addChild(name);
@@ -1052,7 +1091,11 @@ public class Provenance extends DomainResource {
         dst.type = type == null ? null : type.copy();
         dst.reference = reference == null ? null : reference.copy();
         dst.display = display == null ? null : display.copy();
-        dst.agent = agent == null ? null : agent.copy();
+        if (agent != null) {
+          dst.agent = new ArrayList<ProvenanceAgentComponent>();
+          for (ProvenanceAgentComponent i : agent)
+            dst.agent.add(i.copy());
+        };
         return dst;
       }
 
@@ -1079,9 +1122,8 @@ public class Provenance extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (role == null || role.isEmpty()) && (type == null || type.isEmpty())
-           && (reference == null || reference.isEmpty()) && (display == null || display.isEmpty()) && (agent == null || agent.isEmpty())
-          ;
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(role, type, reference, display
+          , agent);
       }
 
   public String fhirType() {
@@ -1197,6 +1239,14 @@ public class Provenance extends DomainResource {
       return this.target;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Provenance setTarget(List<Reference> theTarget) { 
+      this.target = theTarget;
+      return this;
+    }
+
     public boolean hasTarget() { 
       if (this.target == null)
         return false;
@@ -1206,10 +1256,6 @@ public class Provenance extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #target} (The Reference(s) that were generated or updated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.)
-     */
-    // syntactic sugar
     public Reference addTarget() { //3
       Reference t = new Reference();
       if (this.target == null)
@@ -1218,7 +1264,6 @@ public class Provenance extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public Provenance addTarget(Reference t) { //3
       if (t == null)
         return this;
@@ -1229,8 +1274,19 @@ public class Provenance extends DomainResource {
     }
 
     /**
-     * @return {@link #target} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. The Reference(s) that were generated or updated by  the activity described in this resource. A provenance can point to more than one target if multiple resources were created/updated by the same activity.)
+     * @return The first repetition of repeating field {@link #target}, creating it if it does not already exist
      */
+    public Reference getTargetFirstRep() { 
+      if (getTarget().isEmpty()) {
+        addTarget();
+      }
+      return getTarget().get(0);
+    }
+
+    /**
+     * @deprecated Use Reference#setResource(IBaseResource) instead
+     */
+    @Deprecated
     public List<Resource> getTargetTarget() { 
       if (this.targetTarget == null)
         this.targetTarget = new ArrayList<Resource>();
@@ -1315,6 +1371,14 @@ public class Provenance extends DomainResource {
       return this.reason;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Provenance setReason(List<Coding> theReason) { 
+      this.reason = theReason;
+      return this;
+    }
+
     public boolean hasReason() { 
       if (this.reason == null)
         return false;
@@ -1324,10 +1388,6 @@ public class Provenance extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #reason} (The reason that the activity was taking place.)
-     */
-    // syntactic sugar
     public Coding addReason() { //3
       Coding t = new Coding();
       if (this.reason == null)
@@ -1336,7 +1396,6 @@ public class Provenance extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public Provenance addReason(Coding t) { //3
       if (t == null)
         return this;
@@ -1344,6 +1403,16 @@ public class Provenance extends DomainResource {
         this.reason = new ArrayList<Coding>();
       this.reason.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #reason}, creating it if it does not already exist
+     */
+    public Coding getReasonFirstRep() { 
+      if (getReason().isEmpty()) {
+        addReason();
+      }
+      return getReason().get(0);
     }
 
     /**
@@ -1423,6 +1492,14 @@ public class Provenance extends DomainResource {
       return this.policy;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Provenance setPolicy(List<UriType> thePolicy) { 
+      this.policy = thePolicy;
+      return this;
+    }
+
     public boolean hasPolicy() { 
       if (this.policy == null)
         return false;
@@ -1435,7 +1512,6 @@ public class Provenance extends DomainResource {
     /**
      * @return {@link #policy} (Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.)
      */
-    // syntactic sugar
     public UriType addPolicyElement() {//2 
       UriType t = new UriType();
       if (this.policy == null)
@@ -1477,6 +1553,14 @@ public class Provenance extends DomainResource {
       return this.agent;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Provenance setAgent(List<ProvenanceAgentComponent> theAgent) { 
+      this.agent = theAgent;
+      return this;
+    }
+
     public boolean hasAgent() { 
       if (this.agent == null)
         return false;
@@ -1486,10 +1570,6 @@ public class Provenance extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #agent} (An actor taking a role in an activity  for which it can be assigned some degree of responsibility for the activity taking place.)
-     */
-    // syntactic sugar
     public ProvenanceAgentComponent addAgent() { //3
       ProvenanceAgentComponent t = new ProvenanceAgentComponent();
       if (this.agent == null)
@@ -1498,7 +1578,6 @@ public class Provenance extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public Provenance addAgent(ProvenanceAgentComponent t) { //3
       if (t == null)
         return this;
@@ -1506,6 +1585,16 @@ public class Provenance extends DomainResource {
         this.agent = new ArrayList<ProvenanceAgentComponent>();
       this.agent.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #agent}, creating it if it does not already exist
+     */
+    public ProvenanceAgentComponent getAgentFirstRep() { 
+      if (getAgent().isEmpty()) {
+        addAgent();
+      }
+      return getAgent().get(0);
     }
 
     /**
@@ -1517,6 +1606,14 @@ public class Provenance extends DomainResource {
       return this.entity;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Provenance setEntity(List<ProvenanceEntityComponent> theEntity) { 
+      this.entity = theEntity;
+      return this;
+    }
+
     public boolean hasEntity() { 
       if (this.entity == null)
         return false;
@@ -1526,10 +1623,6 @@ public class Provenance extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #entity} (An entity used in this activity.)
-     */
-    // syntactic sugar
     public ProvenanceEntityComponent addEntity() { //3
       ProvenanceEntityComponent t = new ProvenanceEntityComponent();
       if (this.entity == null)
@@ -1538,7 +1631,6 @@ public class Provenance extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public Provenance addEntity(ProvenanceEntityComponent t) { //3
       if (t == null)
         return this;
@@ -1546,6 +1638,16 @@ public class Provenance extends DomainResource {
         this.entity = new ArrayList<ProvenanceEntityComponent>();
       this.entity.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #entity}, creating it if it does not already exist
+     */
+    public ProvenanceEntityComponent getEntityFirstRep() { 
+      if (getEntity().isEmpty()) {
+        addEntity();
+      }
+      return getEntity().get(0);
     }
 
     /**
@@ -1557,6 +1659,14 @@ public class Provenance extends DomainResource {
       return this.signature;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Provenance setSignature(List<Signature> theSignature) { 
+      this.signature = theSignature;
+      return this;
+    }
+
     public boolean hasSignature() { 
       if (this.signature == null)
         return false;
@@ -1566,10 +1676,6 @@ public class Provenance extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #signature} (A digital signature on the target Reference(s). The signer should match a Provenance.agent. The purpose of the signature is indicated.)
-     */
-    // syntactic sugar
     public Signature addSignature() { //3
       Signature t = new Signature();
       if (this.signature == null)
@@ -1578,7 +1684,6 @@ public class Provenance extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public Provenance addSignature(Signature t) { //3
       if (t == null)
         return this;
@@ -1586,6 +1691,16 @@ public class Provenance extends DomainResource {
         this.signature = new ArrayList<Signature>();
       this.signature.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #signature}, creating it if it does not already exist
+     */
+    public Signature getSignatureFirstRep() { 
+      if (getSignature().isEmpty()) {
+        addSignature();
+      }
+      return getSignature().get(0);
     }
 
       protected void listChildren(List<Property> childrenList) {
@@ -1814,10 +1929,8 @@ public class Provenance extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (target == null || target.isEmpty()) && (period == null || period.isEmpty())
-           && (recorded == null || recorded.isEmpty()) && (reason == null || reason.isEmpty()) && (activity == null || activity.isEmpty())
-           && (location == null || location.isEmpty()) && (policy == null || policy.isEmpty()) && (agent == null || agent.isEmpty())
-           && (entity == null || entity.isEmpty()) && (signature == null || signature.isEmpty());
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(target, period, recorded
+          , reason, activity, location, policy, agent, entity, signature);
       }
 
   @Override
@@ -1826,142 +1939,24 @@ public class Provenance extends DomainResource {
    }
 
  /**
-   * Search parameter: <b>patient</b>
+   * Search parameter: <b>sig</b>
    * <p>
-   * Description: <b>Target Reference(s) (usually version specific)</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Provenance.target</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="patient", path="Provenance.target", description="Target Reference(s) (usually version specific)", type="reference" )
-  public static final String SP_PATIENT = "patient";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>patient</b>
-   * <p>
-   * Description: <b>Target Reference(s) (usually version specific)</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Provenance.target</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PATIENT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PATIENT);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Provenance:patient</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_PATIENT = new ca.uhn.fhir.model.api.Include("Provenance:patient").toLocked();
-
- /**
-   * Search parameter: <b>location</b>
-   * <p>
-   * Description: <b>Where the activity occurred, if relevant</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Provenance.location</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="location", path="Provenance.location", description="Where the activity occurred, if relevant", type="reference" )
-  public static final String SP_LOCATION = "location";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>location</b>
-   * <p>
-   * Description: <b>Where the activity occurred, if relevant</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Provenance.location</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam LOCATION = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_LOCATION);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Provenance:location</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_LOCATION = new ca.uhn.fhir.model.api.Include("Provenance:location").toLocked();
-
- /**
-   * Search parameter: <b>start</b>
-   * <p>
-   * Description: <b>Starting time with inclusive boundary</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>Provenance.period.start</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="start", path="Provenance.period.start", description="Starting time with inclusive boundary", type="date" )
-  public static final String SP_START = "start";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>start</b>
-   * <p>
-   * Description: <b>Starting time with inclusive boundary</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>Provenance.period.start</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.DateClientParam START = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_START);
-
- /**
-   * Search parameter: <b>entity</b>
-   * <p>
-   * Description: <b>Identity of entity</b><br>
-   * Type: <b>uri</b><br>
-   * Path: <b>Provenance.entity.reference</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="entity", path="Provenance.entity.reference", description="Identity of entity", type="uri" )
-  public static final String SP_ENTITY = "entity";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>entity</b>
-   * <p>
-   * Description: <b>Identity of entity</b><br>
-   * Type: <b>uri</b><br>
-   * Path: <b>Provenance.entity.reference</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.UriClientParam ENTITY = new ca.uhn.fhir.rest.gclient.UriClientParam(SP_ENTITY);
-
- /**
-   * Search parameter: <b>userid</b>
-   * <p>
-   * Description: <b>Authorization-system identifier for the agent</b><br>
+   * Description: <b>Indication of the reason the entity signed the object(s)</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>Provenance.agent.userId</b><br>
+   * Path: <b>Provenance.signature.type</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="userid", path="Provenance.agent.userId", description="Authorization-system identifier for the agent", type="token" )
-  public static final String SP_USERID = "userid";
+  @SearchParamDefinition(name="sig", path="Provenance.signature.type", description="Indication of the reason the entity signed the object(s)", type="token" )
+  public static final String SP_SIG = "sig";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>userid</b>
+   * <b>Fluent Client</b> search parameter constant for <b>sig</b>
    * <p>
-   * Description: <b>Authorization-system identifier for the agent</b><br>
+   * Description: <b>Indication of the reason the entity signed the object(s)</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>Provenance.agent.userId</b><br>
+   * Path: <b>Provenance.signature.type</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam USERID = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_USERID);
-
- /**
-   * Search parameter: <b>target</b>
-   * <p>
-   * Description: <b>Target Reference(s) (usually version specific)</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Provenance.target</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="target", path="Provenance.target", description="Target Reference(s) (usually version specific)", type="reference" )
-  public static final String SP_TARGET = "target";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>target</b>
-   * <p>
-   * Description: <b>Target Reference(s) (usually version specific)</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Provenance.target</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam TARGET = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_TARGET);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Provenance:target</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_TARGET = new ca.uhn.fhir.model.api.Include("Provenance:target").toLocked();
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam SIG = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_SIG);
 
  /**
    * Search parameter: <b>entity-type</b>
@@ -2010,6 +2005,52 @@ public class Provenance extends DomainResource {
   public static final ca.uhn.fhir.model.api.Include INCLUDE_AGENT = new ca.uhn.fhir.model.api.Include("Provenance:agent").toLocked();
 
  /**
+   * Search parameter: <b>patient</b>
+   * <p>
+   * Description: <b>Target Reference(s) (usually version specific)</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Provenance.target</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="patient", path="Provenance.target", description="Target Reference(s) (usually version specific)", type="reference" )
+  public static final String SP_PATIENT = "patient";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>patient</b>
+   * <p>
+   * Description: <b>Target Reference(s) (usually version specific)</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Provenance.target</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PATIENT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PATIENT);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Provenance:patient</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_PATIENT = new ca.uhn.fhir.model.api.Include("Provenance:patient").toLocked();
+
+ /**
+   * Search parameter: <b>start</b>
+   * <p>
+   * Description: <b>Starting time with inclusive boundary</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>Provenance.period.start</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="start", path="Provenance.period.start", description="Starting time with inclusive boundary", type="date" )
+  public static final String SP_START = "start";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>start</b>
+   * <p>
+   * Description: <b>Starting time with inclusive boundary</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>Provenance.period.start</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.DateClientParam START = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_START);
+
+ /**
    * Search parameter: <b>end</b>
    * <p>
    * Description: <b>End time with inclusive boundary, if not ongoing</b><br>
@@ -2030,24 +2071,96 @@ public class Provenance extends DomainResource {
   public static final ca.uhn.fhir.rest.gclient.DateClientParam END = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_END);
 
  /**
-   * Search parameter: <b>sig</b>
+   * Search parameter: <b>location</b>
    * <p>
-   * Description: <b>Indication of the reason the entity signed the object(s)</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Provenance.signature.type</b><br>
+   * Description: <b>Where the activity occurred, if relevant</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Provenance.location</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="sig", path="Provenance.signature.type", description="Indication of the reason the entity signed the object(s)", type="token" )
-  public static final String SP_SIG = "sig";
+  @SearchParamDefinition(name="location", path="Provenance.location", description="Where the activity occurred, if relevant", type="reference" )
+  public static final String SP_LOCATION = "location";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>sig</b>
+   * <b>Fluent Client</b> search parameter constant for <b>location</b>
    * <p>
-   * Description: <b>Indication of the reason the entity signed the object(s)</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Provenance.signature.type</b><br>
+   * Description: <b>Where the activity occurred, if relevant</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Provenance.location</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam SIG = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_SIG);
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam LOCATION = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_LOCATION);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Provenance:location</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_LOCATION = new ca.uhn.fhir.model.api.Include("Provenance:location").toLocked();
+
+ /**
+   * Search parameter: <b>userid</b>
+   * <p>
+   * Description: <b>Authorization-system identifier for the agent</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Provenance.agent.userId</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="userid", path="Provenance.agent.userId", description="Authorization-system identifier for the agent", type="token" )
+  public static final String SP_USERID = "userid";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>userid</b>
+   * <p>
+   * Description: <b>Authorization-system identifier for the agent</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Provenance.agent.userId</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam USERID = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_USERID);
+
+ /**
+   * Search parameter: <b>entity</b>
+   * <p>
+   * Description: <b>Identity of entity</b><br>
+   * Type: <b>uri</b><br>
+   * Path: <b>Provenance.entity.reference</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="entity", path="Provenance.entity.reference", description="Identity of entity", type="uri" )
+  public static final String SP_ENTITY = "entity";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>entity</b>
+   * <p>
+   * Description: <b>Identity of entity</b><br>
+   * Type: <b>uri</b><br>
+   * Path: <b>Provenance.entity.reference</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.UriClientParam ENTITY = new ca.uhn.fhir.rest.gclient.UriClientParam(SP_ENTITY);
+
+ /**
+   * Search parameter: <b>target</b>
+   * <p>
+   * Description: <b>Target Reference(s) (usually version specific)</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Provenance.target</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="target", path="Provenance.target", description="Target Reference(s) (usually version specific)", type="reference" )
+  public static final String SP_TARGET = "target";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>target</b>
+   * <p>
+   * Description: <b>Target Reference(s) (usually version specific)</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Provenance.target</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam TARGET = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_TARGET);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Provenance:target</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_TARGET = new ca.uhn.fhir.model.api.Include("Provenance:target").toLocked();
 
 
 }

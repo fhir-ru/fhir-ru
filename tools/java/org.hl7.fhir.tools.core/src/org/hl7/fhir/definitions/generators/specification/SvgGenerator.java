@@ -16,8 +16,8 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
@@ -670,8 +670,15 @@ public class SvgGenerator extends BaseGenerator {
         ElementDefn fake = fakes.get(cn);
         ClassItem parent = classes.get(definitions.getElementDefn(cd.getBaseType()));
         links.add(new Link(parent, drawClass(xml, fake, false, null, true, null, null), null, null, PointKind.unknown, null, null));        
-      } else if (!onlyElement) 
-        links.add(new Link(item, drawClass(xml, definitions.getElementDefn(cn), false, null, true, cn, null), null, null, PointKind.unknown, null, null));        
+      } else if (!onlyElement) {
+        ElementDefn e = definitions.getElementDefn(cn);
+        ClassItem parent = item;
+        if (!(Utilities.noString(e.typeCode()) || e.typeCode().equals("Type") || e.typeCode().equals("Structure")))
+          parent = classes.get(definitions.getElementDefn(e.typeCode()));
+        if (parent == null)
+          parent = item;
+        links.add(new Link(parent, drawClass(xml, e, false, null, true, cn, null), null, null, PointKind.unknown, null, null));
+      }
     }
     xml.exit("g");
     return item;
@@ -691,9 +698,7 @@ public class SvgGenerator extends BaseGenerator {
     xml.attribute("width", Double.toString(item.width));
     xml.attribute("height", Double.toString(item.height));
     xml.attribute("filter", "url(#shadow"+id+")");
-    if (fakes.values().contains(e) && primitive == null)
-      xml.attribute("style", "fill:#f8ddf8;stroke:black;stroke-width:1");
-    else if (primitive instanceof DefinedStringPattern)
+    if (e.getName().equals("SimpleQuantity"))
       xml.attribute("style", "fill:#f8ddf8;stroke:black;stroke-width:1");
     else if (e.getName().equals("Element"))
       xml.attribute("style", "fill:#ffffff;stroke:black;stroke-width:1");

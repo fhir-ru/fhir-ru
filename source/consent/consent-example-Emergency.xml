@@ -4,85 +4,79 @@
 
   <text>
     <status value="generated"/>
-    <div xmlns="http://www.w3.org/1999/xhtml">The following scenario is based on existing jurisdictional policy and are realized in existing systems in Canada. 
-	The default policy is one of implied consent for the provision of care, so these scenarios all deal with withdrawal or withholding consent for that purpose. 
-	In other jurisdictions, where an express consent model is used (Opt-In), these would examples would contain the phrase "consent to" rather 
-	than "withhold" or "withdraw" consent for.
-    <p>
-	specific to use-case 0.b) Withhold Authorization for Treatment except for Emegency Treatment
+    <div xmlns="http://www.w3.org/1999/xhtml">
+	<p>
+	Withhold Authorization for Treatment except for Emegency Treatment
 	</p><p>
     Patient "P. van de Heuvel" wishes to have no data at the Good Health Psychiatric Hospital 
-   available except for Emegency treatment use.
+   available except for Emergency treatment use.
    </p>
    </div>
   </text>
 
   <status value="active"/>
-   
-  <!-- Opt-In is explicit authorization with explicit exceptions -->
-  <type>
-     <coding>
-	   <system value="http://hl7.org/fhir/consenttypecodes"/>
-	   <code value="Opt-Out"/>
-	   <display value="Authorization refused with explicit exceptions."/>
-	 </coding>
-  </type>
- 
-  <issued value="2016-05-11"/>
- <!-- not bound by a timeframe - consent.applies -->
+    
+  <dateTime value="2015-11-18"/>
+   <!-- not bound by a timeframe - Consent.period -->
  
   <patient>
     <reference value="Patient/f001"/>
     <display value="P. van de Heuvel"/>
   </patient>
 
-  <!-- I assume the example given is Canada Infoway wide???  AND I assume it is desired to state that in the consent.authority element -->
-  <authority>
-      <reference value="Organization/Infoway"/>
+  <!-- I assume the example given is Canada Infoway wide???  AND I assume it is desired to state that in the Consent.authority element -->
+  <organization>
+    <reference value="Organization/Infoway"/>
 	  <display value="Canada Infoway"/>
-   </authority>
+  </organization>
 	  
-   <!-- and/or would this [also] go into Consent.domain as a Jurisdiction?? (see the example on UK Pharamacy Juristiction) -->
-  <domain>
-      <reference value="Location/Infoway"/>
-	  <display value="Canada Infoway"/>
-   </domain>
-
- <!-- no special terms (exceptions) -->
-   <term>
-     <type>
-       <coding>
-	     <!-- made up code system -->
-	     <system value="http://hl7.org/fhir/consenttermtypecodes"/>
-	     <code value="Authorized-Action"/>
-		 <display value="Authorize a specified action."/>
-	   </coding>
-	 </type>
-	<action>
-	 <coding>
-      <system value="http://hl7.org/fhir/v3/ActReason"/>
-      <code value="ETREAT"/>
-      <display value="Emergency Treatment"/>
-	 </coding>
-    </action>
-
-	 <text value="Allow Emergency Treatment."/>
-   </term>
-
- 
-   <!-- the terms of the consent in friendly consumer speak -->
-   <friendly>
-     <contentAttachment>
-	   <title value="The terms of the consent in friendly consumer speak."/>
-	   <!-- likely use url pointer to common text -->
-	 </contentAttachment>
-   </friendly>
-   <!-- the legal terms of the consent in lawyer speak -->
-   <legal>
-     <contentAttachment>
+  <!-- the text terms of the consent in lawyer speak -->
+  <sourceAttachment>
 	   <title value="The terms of the consent in lawyer speak."/>
 	   <!-- likely use url pointer to common text -->
-	   <!-- I think some think that this should be the pointer to the law by which this consent is derived under. Such as http://lois-laws.justice.gc.ca/eng/acts/P-21/index.html -->
-	 </contentAttachment>
-   </legal>
+	</sourceAttachment>
+
+  <!-- 
+    this is opt-in - e.g. nothing approved unless otherwise stated.
+  -->
+  <policy value="http://hl7.org/fhir/ConsentPolicy/opt-in"/>
+
+  <except>
+    <type value="permit"/>
+        
+    <actor>
+      <role>
+        <coding>
+          <system value="http://hl7.org/fhir/v3/ParticipationType"/>
+          <code value="CST"/> 
+        </coding>
+      </role>
+      <reference>
+         <reference value="Organization/2.16.840.1.113883.19.6"/>
+         <display value="Good Health Psychiatric Hospital"/>
+      </reference>
+    </actor>
+    
+    <purpose>
+      <system value="http://hl7.org/fhir/v3/ActReason"/>
+      <code value="ETREAT"/> 
+    </purpose>
+  </except>
+  <!-- this except overrides the other one -->
+  <except>
+    <type value="deny"/>
+
+    <actor>
+      <role>
+        <coding>
+          <system value="http://hl7.org/fhir/v3/ParticipationType"/>
+          <code value="CST"/> 
+        </coding>
+      </role>
+      <reference>
+         <reference value="Organization/2.16.840.1.113883.19.6"/>
+         <display value="Good Health Psychiatric Hospital"/>
+      </reference>
+    </actor>  
+  </except>
 </Consent>

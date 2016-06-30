@@ -42,7 +42,7 @@ import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
 public class JavaParserRdfGenerator extends JavaBaseGenerator {
@@ -259,7 +259,7 @@ public class JavaParserRdfGenerator extends JavaBaseGenerator {
     write("import org.hl7.fhir.utilities.Utilities;\r\n");
     write("import org.hl7.fhir.dstu3.exceptions.FHIRFormatError;\r\n");
     write("import org.hl7.fhir.dstu3.exceptions.FHIRException;\r\n");
-    write("import org.hl7.fhir.dstu3.formats.RdfGenerator.Complex;\r\n");
+    write("import org.hl7.fhir.dstu3.utils.Turtle.Complex;\r\n");
     write("import java.io.IOException;\r\n");
     //  write("import java.util.*;\r\n");
     write("\r\n");
@@ -773,7 +773,7 @@ public class JavaParserRdfGenerator extends JavaBaseGenerator {
     write("    if (index > -1)\r\n");
     write("      t.predicate(\"fhir:index\", Integer.toString(index));\r\n");
     write("    if (element.hasIdElement())\r\n");
-    write("      composeId(t, \"Element\", \"id\", element.getIdElement(), -1);\r\n");
+    write("      composeString(t, \"Element\", \"id\", element.getIdElement(), -1);\r\n");
     write("    for (int i = 0; i < element.getExtension().size(); i++)\r\n");
     write("      composeExtension(t, \"Element\", \"extension\", element.getExtension().get(i), i);\r\n");
     write("  }\r\n");

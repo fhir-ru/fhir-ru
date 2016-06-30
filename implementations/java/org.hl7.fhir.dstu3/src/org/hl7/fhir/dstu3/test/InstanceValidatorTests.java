@@ -9,11 +9,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.dstu3.elementmodel.Element;
+import org.hl7.fhir.dstu3.elementmodel.XmlParser;
+import org.hl7.fhir.dstu3.elementmodel.Manager.FhirFormat;
 import org.hl7.fhir.dstu3.exceptions.FHIRException;
 import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
-import org.hl7.fhir.dstu3.metamodel.Element;
-import org.hl7.fhir.dstu3.metamodel.Manager.FhirFormat;
-import org.hl7.fhir.dstu3.metamodel.XmlParser;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.dstu3.utils.IWorkerContext;
 import org.hl7.fhir.dstu3.utils.JsonTrackingParser;
@@ -221,6 +221,12 @@ public class InstanceValidatorTests {
 		validate("build\\tests\\validation-examples\\group-choice-empty.xml", 1, false);
 	}
 
+  @Test
+  public void testParametersReference() throws Exception {
+    validate("build\\tests\\validation-examples\\params-reference.xml", 0, false);
+  }
+
+ // --- json --------------------------------------------------------------------------
 
 	@Test
 	public void testJsonListMinimal() throws Exception {

@@ -66,6 +66,13 @@
   Description = SNOMED CT Body site concepts
   Conformance = example
 
+ -- Row 10 -----------------------------------
+  Binding Name = ParamCode
+  Binding = code list
+  Reference = #observation-paramcode
+  Definition = The statistical operation parameter -\"params\" -  codes
+  Conformance = required
+
 === Sheet observation-status =====================================
 
  -- Row 1 -----------------------------------
@@ -84,13 +91,13 @@
   Id = 3
   Code = final
   Display = Final
-  Definition = The observation is complete and verified by an authorized person  (who may be the same person who entered the observation based on policy).
+  Definition = The observation is complete.
 
  -- Row 4 -----------------------------------
   Id = 4
   Code = amended
   Display = Amended
-  Definition = The observation has been modified subsequent to being Final, and is complete and verified by an authorized person.
+  Definition = The observation has been modified subsequent to being Final.
 
  -- Row 5 -----------------------------------
   Id = 5
@@ -154,6 +161,32 @@
   Definition = The value of the target observation interferes (degrades quality, or prevents valid observation) with the semantics of the source observation (e.g. a hemolysis measure target from a plasma potassium measure which has no value).
   v3 = =ActRrelationshipType.INTF
 
+=== Sheet observation-paramcode =====================================
+
+ -- Row 1 -----------------------------------
+  Id = 1
+  Code = average
+  Display = Average
+  Definition = The [mean](https://en.wikipedia.org/wiki/Arithmetic_mean)of N measurements over the stated period
+
+ -- Row 2 -----------------------------------
+  Id = 2
+  Code = max
+  Display = Maximum
+  Definition = The [maximum](https://en.wikipedia.org/wiki/Maximal_element) value of N measurements over the stated period
+
+ -- Row 3 -----------------------------------
+  Id = 3
+  Code = min
+  Display = Minimum
+  Definition = The [minimum](https://en.wikipedia.org/wiki/Minimal_element) value of N measurements over the stated period
+
+ -- Row 4 -----------------------------------
+  Id = 4
+  Code = count
+  Display = Count
+  Definition = The [number] of measurements over the stated period
+
 === Sheet Invariants =====================================
 
  -- Row 1 -----------------------------------
@@ -173,9 +206,9 @@
  -- Row 3 -----------------------------------
   Id = 7
   Context = Observation
-  English = Component code SHALL not be same as observation code
-  XPath = not(exists(f:component/f:code)) or count(for $coding in f:code/f:coding return parent::*/f:component/f:code/f:coding[f:code/@value=$coding/f:code/@value and f:system/@value=$coding/f:system/@value])=0
-  Expression = component.where(code = %resource.code).empty()
+  English = If code is the same as a component code then the value element associated with the code SHALL NOT be present
+  XPath = not(exists(f:value)) or not(count(for $coding in f:code/f:coding return parent::*/f:component/f:code/f:coding[f:code/@value=$coding/f:code/@value and f:system/@value=$coding/f:system/@value])=0)
+  Expression = value.empty() or code!=component.code
 
 === Sheet Data Elements =====================================
 
@@ -198,7 +231,7 @@
   Short Label = Unique Id for this particular observation
   Definition = A unique identifier for the simple observation instance.
   Requirements = Allows observations to be distinguished and referenced
-  v2 Mapping = OBX.21
+  v2 Mapping = OBX.21  For OBX segments from systems without OBX-21 support a combination of ORC/OBR and OBX must be negotiated between trading partners to uniquely identify the OBX segment. Depending on how V2 has been implemented each of these may be an option: 1) OBR-3 + OBX-3 + OBX-4 or 2) OBR-3 + OBR-4 + OBX-3 + OBX-4 or 2) some other way to uniquely ID the OBR/ORC + OBX-3 + OBX-4.
   RIM Mapping = id
   Committee Notes = 2/26/2015 EH: #5666
   w5 = id
@@ -220,12 +253,13 @@
 
  -- Row 4 -----------------------------------
   Element = Observation.category
-  Card. = 0..1
+  Card. = 0..*
   Type = CodeableConcept
   Binding = ObservationCategory
   Short Label = Classification of  type of observation
-  Definition = A code that classifies the general type of observation being made.  This is used  for searching, sorting and display purposes.
-  Comments = The level of granularity is defined by the category concepts in the value set.   More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in Observation.code.
+  Definition = A code that classifies the general type of observation being made.
+  Requirements = Used for filtering what observations are retreived and displayed.
+  Comments = There may be multiple axis of categoriization depending on the context or use case for retrieving or displaying the resource.  The level of granularity is defined by the category concepts in the value set.   More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in Observation.code.
   RIM Mapping = .outboundRelationship[typeCode=\"COMP].target[classCode=\"LIST\", moodCode=\"EVN\"].code
   Committee Notes = #7879
   w5 = class
@@ -311,6 +345,7 @@
   Element = Observation.value[x]
   Card. = 0..1
   Summary = Y
+  Inv. = 7
   Type = Quantity|CodeableConcept|string|Range|Ratio|SampledData|Attachment|time|dateTime|Period
   Short Label = Actual result
   Definition = The information determined as a result of making the observation, if the information has a simple value
@@ -318,7 +353,8 @@
   Comments = Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is \"\'value\' + the type name\" with a capital on the first letter of the type).\r\r\rIf the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These \"yes/no\" concepts can be mapped to the display name \"true/false\" or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.
   v2 Mapping = OBX.2, OBX.5, OBX.6
   RIM Mapping = value
-  Committee Notes = [#3125],[#3505],[#5853],8479
+  To Do = verify invariant
+  Committee Notes = [#3125],[#3505],[#5853],8479,{#9375]
 
  -- Row 12 -----------------------------------
   Element = Observation.dataAbsentReason
@@ -379,7 +415,7 @@
   Short Label = Observed body part
   Definition = Indicates the site on the subject\'s body where the observation was made (i.e. the target site).
   Requirements = Knowing where the observation is made is important for tracking if multiple sites are possible.
-  Comments = Only used if not implicit in code found in Observation.code.  If the use case requires BodySite to be handled as a separate resource instead of an inline coded element (e.g. to identify and track separately) then use the standard extension[ body-site-instance](extension-body-site-instance.html).
+  Comments = Only used if not implicit in code found in Observation.code.  In many systems, this may be represented as a related observation instead of an inline component.   If the use case requires BodySite to be handled as a separate resource (e.g. to identify and track separately) then use The standard extension[ body-site-instance](extension-body-site-instance.html).
   v2 Mapping = OBX-20
   RIM Mapping = targetSiteCode
   Committee Notes = Is this in the 80%?
@@ -462,15 +498,16 @@
 
  -- Row 24 -----------------------------------
   Element = Observation.referenceRange.meaning
-  Card. = 0..1
+  Card. = 0..*
   Type = CodeableConcept
   Binding = ObservationRangeMeaning
-  Short Label = Indicates the meaning/use of this range of this range
-  Definition = Code for the meaning of the reference range
-  Requirements = Need to be able to say what kind of reference range this is - normal, recommended, therapeutic, or perhaps what state this reference range applies to (i.e. age, hormonal cycles, etc.)
-  Comments = This SHOULD be populated if there is more than one range
+  Short Label = Reference range qualifier
+  Definition = Codes to indicate the the target population this reference range applies to.  For example, a reference range may be based on the normal population or a particular sex, race, therapeutic status, or endocrine or reproductive status.
+  Requirements = Need to be able to say what kind of reference range this is - normal, recommended, therapeutic, etc  - for proper interpretation.
+  Comments = This SHOULD be populated if there is more than one range.  If this element is not present then the norma population is assumed.
   v2 Mapping = OBX-10?
   RIM Mapping = interpretationCode
+  Committee Notes = [$8941]
 
  -- Row 25 -----------------------------------
   Element = Observation.referenceRange.age
@@ -504,7 +541,7 @@
   Element = Observation.related
   Card. = 0..*
   Summary = Y
-  UML = 400;300
+  UML = 400;310
   Short Label = Resource related to this observation
   Definition = A  reference to another resource (usually another Observation but could  also be a QuestionnaireAnswer) whose relationship is defined by the relationship type code.
   Requirements = Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and a set of related observations or sometimes QuestionnaireResponse  from which the measure is derived.
@@ -542,7 +579,7 @@
   Short Label = Component results
   Definition = Some observations have multiple component observations.  These component observations are expressed as separate code value pairs that share the same attributes.  Examples include systolic and diastolic component observations for blood pressure measurement and multiple component observations for genetics observations.
   Requirements = Component observations share the same attributes in the Observation resource as the primary observation and are always treated a part of a single observation (they are not separable).   However, the reference range for the primary observation value is not inherited by the component values and is required when appropriate for each component observation.
-  Comments = For a discussion on the ways Observations can assembled in groups together see [Notes below](observation.html#4.20.4).
+  Comments = For a discussion on the ways Observations can assembled in groups together see [Notes](observation.html#notes) below.
   v2 Mapping = containment by OBX-4?
   RIM Mapping = outBoundRelationship[typeCode=COMP]
   Committee Notes = 5/15/2015:#7517
@@ -551,7 +588,6 @@
   Element = Observation.component.code
   Card. = 1..1
   Summary = Y
-  Inv. = 7
   Type = CodeableConcept
   Binding = ObservationCode
   Short Label = Type of component observation (code / type)
@@ -589,6 +625,20 @@
   Committee Notes = [#3434], preapply [#5629]
 
  -- Row 35 -----------------------------------
+  Element = Observation.component.interpretation
+  Card. = 0..1
+  Aliases = Abnormal Flag
+  Type = CodeableConcept
+  Binding = ObservationInterpretation
+  Short Label = High, low, normal, etc.
+  Definition = The assessment made based on the result of the observation.  Intended as a simple compact code often placed adjacent to the result value in reports and flow sheets to signal the meaning/normalcy status of the result. Otherwise known as abnormal flag.
+  Requirements = For some results, particularly numeric results, an interpretation is necessary to fully understand the significance of a result.
+  Comments = The component interpretation is applies only to the indivual component value.  For an overall interpretation all components together use Observation.interpretation element.
+  v2 Mapping = OBX-8
+  RIM Mapping = interpretationCode
+  Committee Notes = #9676
+
+ -- Row 36 -----------------------------------
   Element = Observation.component.referenceRange
   Card. = 0..*
   Type = @Observation.referenceRange
@@ -604,11 +654,11 @@
  -- Row 1 -----------------------------------
   Name = code
   Type = token
-  Description = The code of the observation type
-  Path = Observation.code
+  Description = The code of the observation type or component type
+  Path = Observation.code|Observation.component.code
 
  -- Row 2 -----------------------------------
-  Name = component-code
+  Name = !component-code
   Type = token
   Description = The component code of the observation type
   Path = Observation.component.code
@@ -616,11 +666,11 @@
  -- Row 3 -----------------------------------
   Name = value-quantity
   Type = quantity
-  Description = The value of the observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)
-  Path = Observation.valueQuantity
+  Description = The value or component value of the observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)
+  Path = Observation.valueQuantity|Observation.component.valueQuantity
 
  -- Row 4 -----------------------------------
-  Name = component-value-quantity
+  Name = !component-value-quantity
   Type = quantity
   Description = The value of the component observation, if the value is a Quantity, or a SampledData (just search on the bounds of the values in sampled data)
   Path = Observation.component.valueQuantity
@@ -628,11 +678,11 @@
  -- Row 5 -----------------------------------
   Name = value-concept
   Type = token
-  Description = The value of the observation, if the value is a CodeableConcept
-  Path = Observation.valueCodeableConcept
+  Description = The value or component value of the observation, if the value is a CodeableConcept
+  Path = Observation.valueCodeableConcept|Observation.component.valueCodeableConcept
 
  -- Row 6 -----------------------------------
-  Name = component-value-concept
+  Name = !component-value-concept
   Type = token
   Description = The value of the component observation, if the value is a CodeableConcept
   Path = Observation.component.valueCodeableConcept
@@ -646,11 +696,11 @@
  -- Row 8 -----------------------------------
   Name = value-string
   Type = string
-  Description = The value of the observation, if the value is a string, and also searches in CodeableConcept.text
-  Path = Observation.valueString
+  Description = The value or component value of the observation, if the value is a string, and also searches in CodeableConcept.text
+  Path = Observation.valueString|Observation.component.valueString
 
  -- Row 9 -----------------------------------
-  Name = component-value-string
+  Name = !component-value-string
   Type = string
   Description = The value of the component observation, if the value is a string, and also searches in CodeableConcept.text
   Path = Observation.component.valueString
@@ -658,11 +708,11 @@
  -- Row 10 -----------------------------------
   Name = code-value-[x]
   Type = composite
-  Description = Both code and one of the value parameters
+  Description = Code and value parameter pair
   Path = code & value[x]
 
  -- Row 11 -----------------------------------
-  Name = component-code-value-[x]
+  Name = !component-code-value-[x]
   Type = composite
   Description = Both component code and one of the component value parameters
   Path = component-code & component-value[x]
@@ -728,10 +778,10 @@
   Name = data-absent-reason
   Type = token
   Description = The reason why the expected value in the element Observation.value[x] is missing.
-  Path = Observation.dataAbsentReason
+  Path = Observation.dataAbsentReason|Observation.component.dataAbsentReason
 
  -- Row 23 -----------------------------------
-  Name = component-data-absent-reason
+  Name = !component-data-absent-reason
   Type = token
   Description = The reason why the expected value in the element Observation.component.value[x] is missing.
   Path = Observation.component.dataAbsentReason
@@ -760,6 +810,12 @@
   Type = token
   Description = The classification of the type of observation
   Path = Observation.category
+
+ -- Row 28 -----------------------------------
+  Name = method
+  Type = token
+  Description = The method used for the observation
+  Path = Observation.method
 
 === Sheet Profiles =====================================
 
@@ -986,4 +1042,95 @@
   Description = Genetics example 5
   Filename = observation-example-genetics-5.xml
 
+ -- Row 26 -----------------------------------
+  Name = 1 minute Apgar Score
+  Identity = 1minute-apgar-score
+  Description = Example of a 1 minute Apgar score including the individual score components
+  Filename = observation-example-1minute-apgar-score.xml
+
+ -- Row 27 -----------------------------------
+  Name = 2 minute Apgar Score
+  Identity = 2minute-apgar-score
+  Description = Example of a 2 minute Apgar score including the individual score components
+  Filename = observation-example-2minute-apgar-score.xml
+
+ -- Row 28 -----------------------------------
+  Name = 5 minute Apgar Score
+  Identity = 5minute-apgar-score
+  Description = Example of a 5 minute Apgar score including the individual score components
+  Filename = observation-example-5minute-apgar-score.xml
+
+ -- Row 29 -----------------------------------
+  Name = 10 minute Apgar Score
+  Identity = 10minute-apgar-score
+  Description = Example of a 10 minute Apgar score including the individual score components
+  Filename = observation-example-10minute-apgar-score.xml
+
+ -- Row 30 -----------------------------------
+  Name = 20 minute Apgar Score
+  Identity = 20minute-apgar-score
+  Description = Example of a 20 minute Apgar score including the individual score components
+  Filename = observation-example-20minute-apgar-score.xml
+
+ -- Row 31 -----------------------------------
+  Name = Eye Color
+  Identity = eye-color
+  Description = Example of a very simple personal characteristic observation
+  Filename = observation-example-eye-color.xml
+
+ -- Row 32 -----------------------------------
+  Name = Bone Density Measurement
+  Identity = bmd
+  Description = Example of an encoded BMD measurements of left femur
+  Filename = observation-example-bmd.xml
+
 === Sheet Examples =====================================
+
+ -- Row 1 -----------------------------------
+  Name = stats
+  Use = Resource|Instance
+  Documentation = The Statistics operation performs a set of statistical calculations on a set of clinical measurements such as a blood pressure.  This operation is limited to [Observation](observation.html) resources with valueQuantity elements.\r\rThe set of Observations is defined by a the input parameters `patient`,`code` and `duration` and `params`. The set of statistical calculation depends upon the value of the `params` parameter:\r\r- **average** - for example if code = 55284-4 the mean of 55284-4 over the stated period from an operation\r- **max** - for example if code = 55284-4 the max of 55284-4 over the stated period from an operation\r- **min** - for example if code = 55284-4 the min of 55284-4 over the stated period from an operation\r- **count** - for example if code = 55284-4 the number of occurances of value x of 55284-4 over the stated period from an operation\r\rIf successful, the operation returns an Observation resource with the results of the statistical calculations as component value pairs where the component code = the params code. The Observation also contains the the input parameters `patient`,`code` and `duration` parameters. If unsuccessful, an [OperationOutcome](operationoutcome.html) with an error message will be returned.
+  Type = operation
+  Example.Request = $stats-request.txt
+  Example.Response = $stats-response.txt
+  Title = Observation Statistics
+
+ -- Row 2 -----------------------------------
+  Name = stats.patient
+  Use = in
+  Documentation = The FHIR Patient resource id of the relevant Observations. For example  The patient id  = \"123\"  in Observation.subject.reference = Patient/123.
+  Type = id
+  Min = 1
+  Max = 1
+
+ -- Row 3 -----------------------------------
+  Name = stats.code
+  Use = in
+  Documentation = The test code upon which the statistics are being performed.   For example, the code  = \"45667-2\"  will evaluate all relevant Observations with this code in Observation.code.
+  Type = string
+  Min = 1
+  Max = 1
+
+ -- Row 4 -----------------------------------
+  Name = stats.duration
+  Use = in
+  Documentation = The time period of interest given as hours.  For example, the duration = \"1\" is the last hour
+  Type = decimal
+  Min = 1
+  Max = 1
+
+ -- Row 5 -----------------------------------
+  Name = stats.params
+  Use = in
+  Documentation = average|max|min|count  The statistical operations to be performed on the relevant operations.   These codes are defined [here]()
+  Type = code
+  Min = 1
+  Max = 4
+
+ -- Row 6 -----------------------------------
+  Name = stats.obs
+  Use = out
+  Documentation = The Observation.component.code is relative to the Observation.code and cannot be interpreted independently.  The code input parameter is returned as the code element. The \'patient\' parameter is returned as the patient element.  The `period` input parameter is returned as the appliesPeriod element.  The status is fixed to `final`.
+  Type = Observation
+  Min = 1
+  Max = 2

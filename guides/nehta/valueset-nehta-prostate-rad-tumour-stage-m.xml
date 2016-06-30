@@ -46,24 +46,24 @@
         <display value="Not applicable"/>
       </concept>
       <concept>
-        <code value="30893008"/>
+        <code value="30893008"/>   <!-- to be updated -->
         <display value="M0 category"/>
       </concept>
       <concept>
-        <code value="55440008"/>
+        <code value="55440008"/>   <!-- to be updated -->
         <display value="M1 category"/>
       </concept>
       <concept>
-        <code value="370034007"/>
-        <display value="M1a: non-regional lymph node metastasis"/>
+        <code value="397213002"/>
+        <display value="pM1a: Distant metastasis to non-regional lymph node(s) (prostate)"/>
       </concept>
       <concept>
-        <code value="370043003"/>
-        <display value="M1b: Bone(s)"/>
+        <code value="397214008"/>
+        <display value="pM1b: Distant metastasis to bone(s) (prostate)"/>
       </concept>
       <concept>
-        <code value="370045005"/>
-        <display value="N1 M1c: Other site(s)"/>
+        <code value="397215009"/>
+        <display value="pM1c: Distant metastasis site other than bone or non-regional lymph node(s) (prostate)"/>
       </concept>
       
     </include>

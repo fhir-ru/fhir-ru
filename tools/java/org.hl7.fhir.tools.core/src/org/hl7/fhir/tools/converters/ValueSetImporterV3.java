@@ -99,7 +99,8 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
     String display;
     String definition;
     String textDefinition;
-    boolean deprecated;
+    boolean inactive;
+    DateTimeType deprecated;
 
     List<String> parents = new ArrayList<String>();
     List<CodeInfo> children = new ArrayList<CodeInfo>();
@@ -128,17 +129,19 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
           concept.setDefinition(concept.getDisplay());
         String d = "";
         if (!select) {
-          CodeSystemUtilities.setAbstract(cs, concept);
+          CodeSystemUtilities.setNotSelectable(cs, concept);
           d = d + " <b><i>Abstract</i></b>";
         }
-        if (deprecated) {
-          CodeSystemUtilities.setDeprecated(cs, concept);
+        if (inactive)
+          CodeSystemUtilities.setInactive(cs, concept);
+        if (deprecated != null) {
+          CodeSystemUtilities.setDeprecated(cs, concept, deprecated);
           d = d + " <b><i>Deprecated</i></b>";
         }
 
         list.add(concept);
 
-        s.append(" <tr" + (deprecated ? " style=\"background: #EFEFEF\"" : "") + "><td>" + Integer.toString(lvl) + "</td><td>");
+        s.append(" <tr" + (deprecated != null ? " style=\"background: #EFEFEF\"" : "") + "><td>" + Integer.toString(lvl) + "</td><td>");
         for (int i = 1; i < lvl; i++)
           s.append("&nbsp;&nbsp;");
         if (select) {
@@ -226,7 +229,13 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
         r = XMLUtil.getNamedChild(XMLUtil.getNamedChild(XMLUtil.getNamedChild(XMLUtil.getNamedChild(c, "annotations"), "documentation"), "definition"), "text");
         ci.definition = r == null ? null : nodeToString(r);
         ci.textDefinition = r == null ? null : nodeToText(r).trim();
-        ci.deprecated = (XMLUtil.getNamedChild(XMLUtil.getNamedChild(XMLUtil.getNamedChild(c, "annotations"), "appInfo"), "deprecationInfo") != null) || "retired".equals(XMLUtil.getNamedChild(c, "code").getAttribute("status"));
+        if ("retired".equals(XMLUtil.getNamedChild(c, "code").getAttribute("status")))
+          ci.inactive = true;
+        Element di = XMLUtil.getNamedChild(XMLUtil.getNamedChild(XMLUtil.getNamedChild(c, "annotations"), "appInfo"), "deprecationInfo");
+        if (di != null) {
+          String dd = di.getAttribute("deprecationEffectiveVersion");
+          ci.deprecated = DateTimeType.parseV3(dd.substring(dd.indexOf("-")+1));
+        }
         List<Element> pl = new ArrayList<Element>();
         XMLUtil.getNamedChildren(c, "conceptRelationship", pl);
         for (Element p : pl) {
@@ -324,16 +333,17 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
         String iniV = ini.getStringProperty("ValueSets", e.getAttribute("name"));
         if (iniV != null) {
           String id = e.getAttribute("name");
-          if (cslist.contains(id))
-            throw new Exception("Duplicate v3 name: "+id);
-          cslist.add(id);
           ValueSet vs;
-          if (iniV.equals("1"))
-            vs = buildV3ValueSet(id, dt, e, codesystems, ini);
-          else if (iniV.startsWith("->")) {
+          if (iniV.startsWith("->")) {
             vs = buildV3ValueSetAsCodeSystem(id, e, iniV.substring(2));
-          } else
-            throw new Exception("unhandled value set specifier in ini file");
+          } else { 
+            if (!iniV.equals("1"))
+              id = iniV;
+            vs = buildV3ValueSet(id, dt, e, codesystems, ini);
+          }
+          if (cslist.contains(vs.getId()))
+            throw new Exception("Duplicate v3 name: "+vs.getId());
+          cslist.add(vs.getId());
 
           vs.setUserData("path", "v3" + "/" + id + "/" + "vs.html");
           ToolingExtensions.setOID(vs, "urn:oid:"+e.getAttribute("id"));
@@ -566,8 +576,12 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
         }
       }
       if (e.getNodeName().equals("valueSet")) {
-        if (ini.getStringProperty("ValueSets", e.getAttribute("name")) != null) {
+        String iniV = ini.getStringProperty("ValueSets", e.getAttribute("name"));
+        if (iniV != null) {
           String id = e.getAttribute("name");
+          if (!(iniV.equals("1") || iniV.startsWith("->")))
+            id = iniV;
+
           Utilities.createDirectory(page.getFolders().dstDir + "v3" + File.separator + id);
           Utilities.clearDirectory(page.getFolders().dstDir + "v3" + File.separator + id);
           String src = TextFile.fileToString(page.getFolders().srcDir + "v3" + File.separator + "template-vs.html");

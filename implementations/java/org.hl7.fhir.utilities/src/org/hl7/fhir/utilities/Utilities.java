@@ -50,17 +50,16 @@ import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.SourceDataLine;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.URIResolver;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-import net.sf.saxon.TransformerFactoryImpl;
-
 import org.apache.commons.io.FileUtils;
 import org.hl7.fhir.exceptions.FHIRException;
+
+import net.sf.saxon.TransformerFactoryImpl;
 
 public class Utilities {
 
@@ -452,13 +451,21 @@ public class Utilities {
   }
 
 
+  public static String padRight(String src, char c, int len) {
+    StringBuilder s = new StringBuilder();
+    s.append(src);
+    for (int i = 0; i < len - src.length(); i++)
+      s.append(c);
+    return s.toString();
+  }
+
+
   public static String padLeft(String src, char c, int len) {
     StringBuilder s = new StringBuilder();
     for (int i = 0; i < len - src.length(); i++)
       s.append(c);
     s.append(src);
     return s.toString();
-    
   }
 
 
@@ -689,6 +696,11 @@ public class Utilities {
       if (value == i)
           return true;
     return false;
+  }
+
+
+  public static boolean charInRange(char ch, char a, char z) {
+    return ch >= a && ch <= z;
   }
 
   public static boolean existsInList(String value, String... array) {
@@ -958,6 +970,8 @@ public class Utilities {
     r = r.toLowerCase().trim(); // not that this should make any difference
     return l.startsWith(r) || r.startsWith(l);
   }
+
+
 
 
 }

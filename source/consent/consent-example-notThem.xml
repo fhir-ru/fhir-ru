@@ -21,17 +21,8 @@
 
   <status value="active"/>
    
-  <!-- Opt-In is explicit authorization with explicit exceptions -->
-  <type>
-     <coding>
-	   <system value="http://hl7.org/fhir/consenttypecodes"/>
-	   <code value="Opt-In"/>
-	   <display value="Authorization with exceptions."/>
-	 </coding>
-  </type>
-
-  <issued value="2015-11-18"/>
- <!-- not bound by a timeframe - Consent.applies -->
+  <dateTime value="2015-11-18"/>
+   <!-- not bound by a timeframe - Consent.period -->
  
   <patient>
     <reference value="Patient/f001"/>
@@ -39,45 +30,46 @@
   </patient>
 
   <!-- I assume the example given is Canada Infoway wide???  AND I assume it is desired to state that in the Consent.authority element -->
-  <authority>
-      <reference value="Organization/Infoway"/>
+  <organization>
+    <reference value="Organization/Infoway"/>
 	  <display value="Canada Infoway"/>
-   </authority>
+  </organization>
 	  
-   <!-- and/or would this [also] go into Consent.domain as a Jurisdiction?? (see the example on UK Pharamacy Juristiction) -->
-  <domain>
-      <reference value="Location/Infoway"/>
-	  <display value="Canada Infoway"/>
-   </domain>
-   
-  <term>
-     <type>
-       <coding>
-	     <system value="http://hl7.org/fhir/consenttermtypecodes"/>
-	     <code value="withhold-from"/>
-		 <display value="Withhold all data from specified actor entity."/>
-	   </coding>
-	 </type>
-	 <topic>
-    	   <reference value="Practitioner/f204"/>
-           <display value="Fictive Nurse"/>
-	 </topic>
-     
-	 <text value="Withhold this order and any results or related objects from specified nurse provider."/>
-   </term>
-   <!-- the terms of the consent in friendly consumer speak -->
-   <friendly>
-     <contentAttachment>
-	   <title value="The terms of the consent in friendly consumer speak."/>
-	   <!-- likely use url pointer to common text -->
-	 </contentAttachment>
-   </friendly>
-   <!-- the legal terms of the consent in lawyer speak -->
-   <legal>
-     <contentAttachment>
+  <!-- the text terms of the consent in lawyer speak -->
+  <sourceAttachment>
 	   <title value="The terms of the consent in lawyer speak."/>
 	   <!-- likely use url pointer to common text -->
-	   <!-- I think some think that this should be the pointer to the law by which this consent is derived under. Such as http://lois-laws.justice.gc.ca/eng/acts/P-21/index.html -->
-	 </contentAttachment>
-   </legal>
+	</sourceAttachment>
+
+  <!-- this is opt-out - e.g. everything approved unless otherwise stated -->
+  <policy value="http://hl7.org/fhir/ConsentPolicy/opt-out"/>
+ 
+  <except>
+    <!-- no read or write access for this individual -->
+    <type value="deny"/>
+    <actor>
+      <role>
+        <coding>
+          <system value="http://hl7.org/fhir/v3/ParticipationType"/>
+          <code value="PRCP"/> <!-- PRCP: recipient of the information -->
+        </coding>
+      </role>
+      <reference>
+        <reference value="Practitioner/f204"/>
+        <display value="Fictive Nurse"/>
+      </reference>
+	  </actor>
+    <action>
+      <coding>
+        <system value="http://hl7.org/fhir/consentaction"/>
+        <code value="read"/>
+      </coding>
+    </action> 
+    <action>
+      <coding>
+        <system value="http://hl7.org/fhir/consentaction"/>
+        <code value="write"/>
+      </coding>
+    </action> 
+  </except>  
 </Consent>

@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.NotImplementedException;
-import org.hl7.fhir.dstu3.exceptions.TerminologyServiceException;
+import org.hl7.fhir.exceptions.TerminologyServiceException;
 import org.hl7.fhir.dstu3.model.DateTimeType;
 import org.hl7.fhir.dstu3.model.Factory;
 import org.hl7.fhir.dstu3.model.PrimitiveType;
@@ -46,6 +46,7 @@ import org.hl7.fhir.dstu3.model.Type;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.model.CodeSystem;
+import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.ValueSet.ConceptReferenceComponent;
 import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
@@ -73,7 +74,7 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
     this.context = context;
     this.factory = factory;
   }
-  
+
   @Override
   public ValueSetExpansionOutcome expand(ValueSet source) {
 
@@ -89,7 +90,7 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
       for (ValueSetExpansionContainsComponent c : codes) {
         if (map.containsKey(key(c))) {
           focus.getExpansion().getContains().add(c);
-        }
+      }
       }
       return new ValueSetExpansionOutcome(focus, null);
     } catch (RuntimeException e) {
@@ -100,9 +101,9 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
       // well, we couldn't expand, so we'll return an interface to a checker that can check membership of the set
       // that might fail too, but it might not, later.
       return new ValueSetExpansionOutcome(new ValueSetCheckerSimple(source, factory, context), e.getMessage());
+      }
     }
-  }
-
+    
 	private void handleCompose(ValueSetComposeComponent compose, List<ValueSetExpansionParameterComponent> params) throws TerminologyServiceException, ETooCostly, FileNotFoundException, IOException {
   	for (UriType imp : compose.getImport()) 
   		importValueSet(imp.getValue(), params);
@@ -117,7 +118,7 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
 	  if (value == null)
 	  	throw new TerminologyServiceException("unable to find value set with no identity");
 	  ValueSet vs = context.fetchResource(ValueSet.class, value);
-	  if (vs == null)
+    if (vs == null) 
 			throw new TerminologyServiceException("Unable to find imported value set "+value);
 	  ValueSetExpansionOutcome vso = factory.getExpander().expand(vs);
 	  if (vso.getService() != null)
@@ -128,12 +129,12 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
     for (ValueSetExpansionParameterComponent p : vso.getValueset().getExpansion().getParameter()) {
       if (!existsInParams(params, p.getName(), p.getValue()))
           params.add(p);
-    }
-    
-	  for (ValueSetExpansionContainsComponent c : vso.getValueset().getExpansion().getContains()) {
-	  	addCode(c.getSystem(), c.getCode(), c.getDisplay());
-	  }	  
   }
+
+      for (ValueSetExpansionContainsComponent c : vso.getValueset().getExpansion().getContains()) {
+	  	addCode(c.getSystem(), c.getCode(), c.getDisplay());
+      }
+    }
 
 	private boolean existsInParams(List<ValueSetExpansionParameterComponent> params, String name, Type value) {
     for (ValueSetExpansionParameterComponent p : params) {
@@ -144,7 +145,8 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
   }
 
   private void includeCodes(ConceptSetComponent inc, List<ValueSetExpansionParameterComponent> params) throws TerminologyServiceException, ETooCostly {
-	  if (context.supportsSystem(inc.getSystem())) {
+    CodeSystem cs = context.fetchCodeSystem(inc.getSystem());
+	  if ((cs == null || cs.getContent() != CodeSystemContentMode.COMPLETE) && context.supportsSystem(inc.getSystem())) {
       try {
         int i = codes.size();
         addCodes(context.expandVS(inc), params);
@@ -154,10 +156,11 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
         // ok, we'll try locally
       }
 	  }
-	    
-	  CodeSystem cs = context.fetchCodeSystem(inc.getSystem());
-	  if (cs == null)
-	  	throw new TerminologyServiceException("unable to find code system "+inc.getSystem().toString());
+
+    if (cs == null)
+      throw new TerminologyServiceException("unable to find code system "+inc.getSystem().toString());
+    if (cs.getContent() != CodeSystemContentMode.COMPLETE)
+      throw new TerminologyServiceException("Code system "+inc.getSystem().toString()+" is incomplete");
 	  if (cs.hasVersion())
       if (!existsInParams(params, "version", new UriType(cs.getUrl()+"?version="+cs.getVersion())))
         params.add(new ValueSetExpansionParameterComponent().setName("version").setValue(new UriType(cs.getUrl()+"?version="+cs.getVersion())));
@@ -166,8 +169,8 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
 	    for (ConceptDefinitionComponent def : cs.getConcept()) {
         addCodeAndDescendents(cs, inc.getSystem(), def);
 	    }
-	  }
-	    
+      }
+      
 	  for (ConceptReferenceComponent c : inc.getConcept()) {
 	  	addCode(inc.getSystem(), c.getCode(), Utilities.noString(c.getDisplay()) ? getCodeDisplay(cs, c.getCode()) : c.getDisplay());
 	  }
@@ -183,8 +186,8 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
 	  		addCodeAndDescendents(cs, inc.getSystem(), def);
 	  	} else
 	  		throw new NotImplementedException("not done yet");
-	  }
-  }
+          }
+      }
 
 	private void addCodes(ValueSetExpansionComponent expand, List<ValueSetExpansionParameterComponent> params) throws ETooCostly {
 	  if (expand.getContains().size() > 500) 
@@ -192,8 +195,8 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
     for (ValueSetExpansionParameterComponent p : expand.getParameter()) {
       if (!existsInParams(params, p.getName(), p.getValue()))
           params.add(p);
-    }
-	  
+      }
+
     for (ValueSetExpansionContainsComponent c : expand.getContains()) {
       addCode(c.getSystem(), c.getCode(), c.getDisplay());
     }   
@@ -205,7 +208,7 @@ public class ValueSetExpanderSimple implements ValueSetExpander {
 				addCode(system, def.getCode(), def.getDisplay());
 			for (ConceptDefinitionComponent c : def.getConcept()) 
 				addCodeAndDescendents(cs, system, c);
-		}
+    }
   }
 
 	private void excludeCodes(ConceptSetComponent inc, List<ValueSetExpansionParameterComponent> params) throws TerminologyServiceException {

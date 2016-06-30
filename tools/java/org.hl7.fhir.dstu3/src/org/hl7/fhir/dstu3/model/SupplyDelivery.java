@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
+// Generated on Wed, Jun 29, 2016 09:39+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -194,16 +194,11 @@ public class SupplyDelivery extends DomainResource {
     protected SimpleQuantity quantity;
 
     /**
-     * Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.
+     * Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list.
      */
-    @Child(name = "suppliedItem", type = {Medication.class, Substance.class, Device.class}, order=5, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Medication, Substance, or Device supplied", formalDefinition="Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list." )
-    protected Reference suppliedItem;
-
-    /**
-     * The actual object that is the target of the reference (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
-     */
-    protected Resource suppliedItemTarget;
+    @Child(name = "suppliedItem", type = {CodeableConcept.class, Medication.class, Substance.class, Device.class}, order=5, min=0, max=1, modifier=false, summary=true)
+    @Description(shortDefinition="Medication, Substance, or Device supplied", formalDefinition="Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list." )
+    protected Type suppliedItem;
 
     /**
      * The individual responsible for dispensing the medication, supplier or device.
@@ -255,7 +250,7 @@ public class SupplyDelivery extends DomainResource {
     protected List<Practitioner> receiverTarget;
 
 
-    private static final long serialVersionUID = -1520129707L;
+    private static final long serialVersionUID = -1346518508L;
 
   /**
    * Constructor
@@ -430,15 +425,36 @@ public class SupplyDelivery extends DomainResource {
     }
 
     /**
-     * @return {@link #suppliedItem} (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
+     * @return {@link #suppliedItem} (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list.)
      */
-    public Reference getSuppliedItem() { 
-      if (this.suppliedItem == null)
-        if (Configuration.errorOnAutoCreate())
-          throw new Error("Attempt to auto-create SupplyDelivery.suppliedItem");
-        else if (Configuration.doAutoCreate())
-          this.suppliedItem = new Reference(); // cc
+    public Type getSuppliedItem() { 
       return this.suppliedItem;
+    }
+
+    /**
+     * @return {@link #suppliedItem} (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list.)
+     */
+    public CodeableConcept getSuppliedItemCodeableConcept() throws FHIRException { 
+      if (!(this.suppliedItem instanceof CodeableConcept))
+        throw new FHIRException("Type mismatch: the type CodeableConcept was expected, but "+this.suppliedItem.getClass().getName()+" was encountered");
+      return (CodeableConcept) this.suppliedItem;
+    }
+
+    public boolean hasSuppliedItemCodeableConcept() { 
+      return this.suppliedItem instanceof CodeableConcept;
+    }
+
+    /**
+     * @return {@link #suppliedItem} (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list.)
+     */
+    public Reference getSuppliedItemReference() throws FHIRException { 
+      if (!(this.suppliedItem instanceof Reference))
+        throw new FHIRException("Type mismatch: the type Reference was expected, but "+this.suppliedItem.getClass().getName()+" was encountered");
+      return (Reference) this.suppliedItem;
+    }
+
+    public boolean hasSuppliedItemReference() { 
+      return this.suppliedItem instanceof Reference;
     }
 
     public boolean hasSuppliedItem() { 
@@ -446,25 +462,10 @@ public class SupplyDelivery extends DomainResource {
     }
 
     /**
-     * @param value {@link #suppliedItem} (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
+     * @param value {@link #suppliedItem} (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list.)
      */
-    public SupplyDelivery setSuppliedItem(Reference value) { 
+    public SupplyDelivery setSuppliedItem(Type value) { 
       this.suppliedItem = value;
-      return this;
-    }
-
-    /**
-     * @return {@link #suppliedItem} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
-     */
-    public Resource getSuppliedItemTarget() { 
-      return this.suppliedItemTarget;
-    }
-
-    /**
-     * @param value {@link #suppliedItem} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.)
-     */
-    public SupplyDelivery setSuppliedItemTarget(Resource value) { 
-      this.suppliedItemTarget = value;
       return this;
     }
 
@@ -638,6 +639,14 @@ public class SupplyDelivery extends DomainResource {
       return this.receiver;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public SupplyDelivery setReceiver(List<Reference> theReceiver) { 
+      this.receiver = theReceiver;
+      return this;
+    }
+
     public boolean hasReceiver() { 
       if (this.receiver == null)
         return false;
@@ -647,10 +656,6 @@ public class SupplyDelivery extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #receiver} (Identifies the person who picked up the Supply.)
-     */
-    // syntactic sugar
     public Reference addReceiver() { //3
       Reference t = new Reference();
       if (this.receiver == null)
@@ -659,7 +664,6 @@ public class SupplyDelivery extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public SupplyDelivery addReceiver(Reference t) { //3
       if (t == null)
         return this;
@@ -670,18 +674,29 @@ public class SupplyDelivery extends DomainResource {
     }
 
     /**
-     * @return {@link #receiver} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Identifies the person who picked up the Supply.)
+     * @return The first repetition of repeating field {@link #receiver}, creating it if it does not already exist
      */
+    public Reference getReceiverFirstRep() { 
+      if (getReceiver().isEmpty()) {
+        addReceiver();
+      }
+      return getReceiver().get(0);
+    }
+
+    /**
+     * @deprecated Use Reference#setResource(IBaseResource) instead
+     */
+    @Deprecated
     public List<Practitioner> getReceiverTarget() { 
       if (this.receiverTarget == null)
         this.receiverTarget = new ArrayList<Practitioner>();
       return this.receiverTarget;
     }
 
-    // syntactic sugar
     /**
-     * @return {@link #receiver} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. Identifies the person who picked up the Supply.)
+     * @deprecated Use Reference#setResource(IBaseResource) instead
      */
+    @Deprecated
     public Practitioner addReceiverTarget() { 
       Practitioner r = new Practitioner();
       if (this.receiverTarget == null)
@@ -697,7 +712,7 @@ public class SupplyDelivery extends DomainResource {
         childrenList.add(new Property("patient", "Reference(Patient)", "A link to a resource representing the person whom the delivered item is for.", 0, java.lang.Integer.MAX_VALUE, patient));
         childrenList.add(new Property("type", "CodeableConcept", "Indicates the type of dispensing event that is performed. Examples include: Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.", 0, java.lang.Integer.MAX_VALUE, type));
         childrenList.add(new Property("quantity", "SimpleQuantity", "The amount of supply that has been dispensed. Includes unit of measure.", 0, java.lang.Integer.MAX_VALUE, quantity));
-        childrenList.add(new Property("suppliedItem", "Reference(Medication|Substance|Device)", "Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a simple attribute carrying a code that identifies the item from a known list.", 0, java.lang.Integer.MAX_VALUE, suppliedItem));
+        childrenList.add(new Property("suppliedItem[x]", "CodeableConcept|Reference(Medication|Substance|Device)", "Identifies the medication, substance or device being dispensed. This is either a link to a resource representing the details of the item or a code that identifies the item from a known list.", 0, java.lang.Integer.MAX_VALUE, suppliedItem));
         childrenList.add(new Property("supplier", "Reference(Practitioner)", "The individual responsible for dispensing the medication, supplier or device.", 0, java.lang.Integer.MAX_VALUE, supplier));
         childrenList.add(new Property("whenPrepared", "Period", "The time the dispense event occurred.", 0, java.lang.Integer.MAX_VALUE, whenPrepared));
         childrenList.add(new Property("time", "dateTime", "The time the dispensed item was sent or handed to the patient (or agent).", 0, java.lang.Integer.MAX_VALUE, time));
@@ -713,7 +728,7 @@ public class SupplyDelivery extends DomainResource {
         case -791418107: /*patient*/ return this.patient == null ? new Base[0] : new Base[] {this.patient}; // Reference
         case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeableConcept
         case -1285004149: /*quantity*/ return this.quantity == null ? new Base[0] : new Base[] {this.quantity}; // SimpleQuantity
-        case 1993333233: /*suppliedItem*/ return this.suppliedItem == null ? new Base[0] : new Base[] {this.suppliedItem}; // Reference
+        case 1993333233: /*suppliedItem*/ return this.suppliedItem == null ? new Base[0] : new Base[] {this.suppliedItem}; // Type
         case -1663305268: /*supplier*/ return this.supplier == null ? new Base[0] : new Base[] {this.supplier}; // Reference
         case -562837097: /*whenPrepared*/ return this.whenPrepared == null ? new Base[0] : new Base[] {this.whenPrepared}; // Period
         case 3560141: /*time*/ return this.time == null ? new Base[0] : new Base[] {this.time}; // DateTimeType
@@ -743,7 +758,7 @@ public class SupplyDelivery extends DomainResource {
           this.quantity = castToSimpleQuantity(value); // SimpleQuantity
           break;
         case 1993333233: // suppliedItem
-          this.suppliedItem = castToReference(value); // Reference
+          this.suppliedItem = (Type) value; // Type
           break;
         case -1663305268: // supplier
           this.supplier = castToReference(value); // Reference
@@ -777,8 +792,8 @@ public class SupplyDelivery extends DomainResource {
           this.type = castToCodeableConcept(value); // CodeableConcept
         else if (name.equals("quantity"))
           this.quantity = castToSimpleQuantity(value); // SimpleQuantity
-        else if (name.equals("suppliedItem"))
-          this.suppliedItem = castToReference(value); // Reference
+        else if (name.equals("suppliedItem[x]"))
+          this.suppliedItem = (Type) value; // Type
         else if (name.equals("supplier"))
           this.supplier = castToReference(value); // Reference
         else if (name.equals("whenPrepared"))
@@ -801,7 +816,7 @@ public class SupplyDelivery extends DomainResource {
         case -791418107:  return getPatient(); // Reference
         case 3575610:  return getType(); // CodeableConcept
         case -1285004149:  return getQuantity(); // SimpleQuantity
-        case 1993333233:  return getSuppliedItem(); // Reference
+        case 1172601071:  return getSuppliedItem(); // Type
         case -1663305268:  return getSupplier(); // Reference
         case -562837097:  return getWhenPrepared(); // Period
         case 3560141: throw new FHIRException("Cannot make property time as it is not a complex type"); // DateTimeType
@@ -833,7 +848,11 @@ public class SupplyDelivery extends DomainResource {
           this.quantity = new SimpleQuantity();
           return this.quantity;
         }
-        else if (name.equals("suppliedItem")) {
+        else if (name.equals("suppliedItemCodeableConcept")) {
+          this.suppliedItem = new CodeableConcept();
+          return this.suppliedItem;
+        }
+        else if (name.equals("suppliedItemReference")) {
           this.suppliedItem = new Reference();
           return this.suppliedItem;
         }
@@ -913,11 +932,9 @@ public class SupplyDelivery extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (status == null || status.isEmpty())
-           && (patient == null || patient.isEmpty()) && (type == null || type.isEmpty()) && (quantity == null || quantity.isEmpty())
-           && (suppliedItem == null || suppliedItem.isEmpty()) && (supplier == null || supplier.isEmpty())
-           && (whenPrepared == null || whenPrepared.isEmpty()) && (time == null || time.isEmpty()) && (destination == null || destination.isEmpty())
-           && (receiver == null || receiver.isEmpty());
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, status, patient
+          , type, quantity, suppliedItem, supplier, whenPrepared, time, destination, receiver
+          );
       }
 
   @Override
@@ -926,30 +943,24 @@ public class SupplyDelivery extends DomainResource {
    }
 
  /**
-   * Search parameter: <b>patient</b>
+   * Search parameter: <b>identifier</b>
    * <p>
-   * Description: <b>Patient for whom the item is supplied</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>SupplyDelivery.patient</b><br>
+   * Description: <b>External identifier</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>SupplyDelivery.identifier</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="patient", path="SupplyDelivery.patient", description="Patient for whom the item is supplied", type="reference" )
-  public static final String SP_PATIENT = "patient";
+  @SearchParamDefinition(name="identifier", path="SupplyDelivery.identifier", description="External identifier", type="token" )
+  public static final String SP_IDENTIFIER = "identifier";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>patient</b>
+   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
    * <p>
-   * Description: <b>Patient for whom the item is supplied</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>SupplyDelivery.patient</b><br>
+   * Description: <b>External identifier</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>SupplyDelivery.identifier</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PATIENT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PATIENT);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>SupplyDelivery:patient</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_PATIENT = new ca.uhn.fhir.model.api.Include("SupplyDelivery:patient").toLocked();
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
 
  /**
    * Search parameter: <b>receiver</b>
@@ -978,44 +989,30 @@ public class SupplyDelivery extends DomainResource {
   public static final ca.uhn.fhir.model.api.Include INCLUDE_RECEIVER = new ca.uhn.fhir.model.api.Include("SupplyDelivery:receiver").toLocked();
 
  /**
-   * Search parameter: <b>status</b>
+   * Search parameter: <b>patient</b>
    * <p>
-   * Description: <b>in-progress | completed | abandoned</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>SupplyDelivery.status</b><br>
+   * Description: <b>Patient for whom the item is supplied</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>SupplyDelivery.patient</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="status", path="SupplyDelivery.status", description="in-progress | completed | abandoned", type="token" )
-  public static final String SP_STATUS = "status";
+  @SearchParamDefinition(name="patient", path="SupplyDelivery.patient", description="Patient for whom the item is supplied", type="reference" )
+  public static final String SP_PATIENT = "patient";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>status</b>
+   * <b>Fluent Client</b> search parameter constant for <b>patient</b>
    * <p>
-   * Description: <b>in-progress | completed | abandoned</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>SupplyDelivery.status</b><br>
+   * Description: <b>Patient for whom the item is supplied</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>SupplyDelivery.patient</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_STATUS);
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PATIENT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PATIENT);
 
- /**
-   * Search parameter: <b>identifier</b>
-   * <p>
-   * Description: <b>External identifier</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>SupplyDelivery.identifier</b><br>
-   * </p>
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>SupplyDelivery:patient</b>".
    */
-  @SearchParamDefinition(name="identifier", path="SupplyDelivery.identifier", description="External identifier", type="token" )
-  public static final String SP_IDENTIFIER = "identifier";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
-   * <p>
-   * Description: <b>External identifier</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>SupplyDelivery.identifier</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_PATIENT = new ca.uhn.fhir.model.api.Include("SupplyDelivery:patient").toLocked();
 
  /**
    * Search parameter: <b>supplier</b>
@@ -1042,6 +1039,26 @@ public class SupplyDelivery extends DomainResource {
    * the path value of "<b>SupplyDelivery:supplier</b>".
    */
   public static final ca.uhn.fhir.model.api.Include INCLUDE_SUPPLIER = new ca.uhn.fhir.model.api.Include("SupplyDelivery:supplier").toLocked();
+
+ /**
+   * Search parameter: <b>status</b>
+   * <p>
+   * Description: <b>in-progress | completed | abandoned</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>SupplyDelivery.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="status", path="SupplyDelivery.status", description="in-progress | completed | abandoned", type="token" )
+  public static final String SP_STATUS = "status";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>status</b>
+   * <p>
+   * Description: <b>in-progress | completed | abandoned</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>SupplyDelivery.status</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_STATUS);
 
 
 }

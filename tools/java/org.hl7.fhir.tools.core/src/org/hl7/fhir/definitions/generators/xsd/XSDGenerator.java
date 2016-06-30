@@ -36,18 +36,18 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.Config;
+import org.hl7.fhir.definitions.generators.specification.ToolResourceUtilities;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
 import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.model.ValueSet.ConceptReferenceComponent;
-import org.hl7.fhir.dstu3.model.ValueSet.ConceptReferenceDesignationComponent;
-import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionContainsComponent;
+import org.hl7.fhir.igtools.spreadsheets.TypeParser;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -126,6 +126,7 @@ public class XSDGenerator  {
 		write("  <xs:simpleType name=\""+en+"-list\">\r\n");
 		write("    <xs:restriction base=\"xs:string\">\r\n");
 		ValueSet vs = enums.get(en);
+    vs.setUserData(ToolResourceUtilities.NAME_VS_USE_MARKER, true);
 		ValueSet ex = workerContext.expandVS(vs, true).getValueset();
       for (ValueSetExpansionContainsComponent cc : ex.getExpansion().getContains()) {
         genIncludedCode(cc);
@@ -154,9 +155,10 @@ public class XSDGenerator  {
 	  CodeSystem cs = workerContext.fetchCodeSystem(cc.getSystem());
 	  if (cs != null && cc.hasCode()) {
 	    ConceptDefinitionComponent c = getCodeDefinition(cc.getCode(), cs.getConcept());
-	    for (ConceptDefinitionDesignationComponent l : c.getDesignation())
-	      if (l.hasLanguage())
-	        write("          <xs:documentation xml:lang=\""+l.getLanguage()+"\">"+Utilities.escapeXml(l.getValue())+"</xs:documentation>\r\n");
+	    if (c != null)
+	      for (ConceptDefinitionDesignationComponent l : c.getDesignation())
+	        if (l.hasLanguage())
+	          write("          <xs:documentation xml:lang=\""+l.getLanguage()+"\">"+Utilities.escapeXml(l.getValue())+"</xs:documentation>\r\n");
 	  }
 	  write("        </xs:annotation>\r\n");
 	  write("      </xs:enumeration>\r\n");
@@ -235,11 +237,11 @@ public class XSDGenerator  {
 
 
 	private void generateAny(ElementDefn root, ElementDefn e, String prefix, String close) throws Exception {
-		for (TypeRef t : definitions.getKnownTypes()) {
-			if (!definitions.getInfrastructure().containsKey(t.getName()) && !definitions.getConstraints().containsKey(t.getName())) {
-			  String en = prefix != null ? prefix + upFirst(t.getName()) : t.getName();
+		for (String t : TypeParser.wildcardTypes()) {
+			if (!definitions.getInfrastructure().containsKey(t) && !definitions.getConstraints().containsKey(t)) {
+			  String en = prefix != null ? prefix + upFirst(t) : t;
 			  //write("       <xs:element name=\""+t.getName()+"\" type=\""+t.getName()+"\"/>\r\n");        
-  	    write("            <xs:element name=\""+en+"\" type=\""+t.getName()+"\""+close+"\r\n");
+  	    write("            <xs:element name=\""+en+"\" type=\""+t+"\""+close+"\r\n");
         if (forCodeGeneration) {
           write("              <xs:annotation>\r\n");
           if (e.hasDefinition()) {
@@ -381,7 +383,10 @@ public class XSDGenerator  {
 		} else if (!type.hasParams() || !params) {
 			if (type.getName().equals("Resource"))
 			  return "ResourceContainer";
-			else
+			else if (definitions.getConstraints().containsKey(type.getName())) {
+			  ProfiledType pt = definitions.getConstraints().get(type.getName());
+			  return pt.getBaseType();
+			} else
 			  return type.getName();
 		} else if (type.getParams().size() > 1)
 			throw new Exception("multiple type parameters are only supported on resource");

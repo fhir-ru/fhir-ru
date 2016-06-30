@@ -88,6 +88,11 @@
     <display value="Present"/>
     <display value="Positive (qualifier value)"/>
   </concept>
+  <concept id="108761006" display="Capecitabine (product)">
+    <display value="Capecitabine (product)"/>
+    <display value="Capecitabine"/>
+    <display value="Capecitabine (substance)"/>
+  </concept>
   <concept id="108806006" display="Docetaxel (product)">
     <display value="Docetaxel (product)"/>
     <display value="Docetaxel"/>
@@ -133,10 +138,20 @@
   <concept id="116175006" display="Proximal subtotal gastrectomy (procedure)">
     <display value="Proximal subtotal gastrectomy"/>
   </concept>
+  <concept id="116602009" display="Prednisone">
+    <display value="Prednisone"/>
+    <display value="Prednisone (substance)"/>
+  </concept>
   <concept id="118376009" display="Thermocouple device (physical object)">
     <display value="Thermocouple"/>
     <display value="Thermocouple device"/>
     <display value="Thermocouple device (physical object)"/>
+  </concept>
+  <concept id="11840006" display="Traveler&#39;s diarrhea">
+    <display value="Traveler&#39;s diarrhea"/>
+    <display value="Turista"/>
+    <display value="Traveler&#39;s diarrhoea"/>
+    <display value="Traveler&#39;s diarrhea (disorder)"/>
   </concept>
   <concept id="119295008" display="Specimen obtained by aspiration (specimen)">
     <display value="Specimen obtained by aspiration"/>
@@ -434,6 +449,10 @@
     <display value="Specimen unsatisfactory for evaluation"/>
     <display value="Specimen unsatisfactory for evaluation (finding)"/>
   </concept>
+  <concept id="126066007" display="White petroleum">
+    <display value="White petroleum"/>
+    <display value="White petroleum (substance)"/>
+  </concept>
   <concept id="127490009" display="Gastrostomy use">
     <display value="Gastrostomy use"/>
     <display value="Gastrostomy"/>
@@ -479,6 +498,10 @@
     <display value="Puncture - action"/>
     <display value="Puncture - action (qualifier value)"/>
   </concept>
+  <concept id="129472003" display="Alemtuzumab">
+    <display value="Alemtuzumab"/>
+    <display value="Alemtuzumab (substance)"/>
+  </concept>
   <concept id="130989002" display="Sleep deprivation (finding)">
     <display value="Sleep deprivation (finding)"/>
     <display value="Sleep deprivation"/>
@@ -495,6 +518,11 @@
     <display value="Structure of apex of heart"/>
     <display value="Cardiac apex"/>
     <display value="Structure of apex of heart (body structure)"/>
+  </concept>
+  <concept id="134622004" display="Capecitabine 500mg tablet (product)">
+    <display value="Capecitabine 500mg tablet (product)"/>
+    <display value="Capecitabine 500mg tablet"/>
+    <display value="Capecitabine 500mg tablet (substance)"/>
   </concept>
   <concept id="134623009" display="Capecitabine 150mg tablet (product)">
     <display value="Capecitabine 150mg tablet (product)"/>
@@ -735,6 +763,24 @@
     <display value="CT of thorax"/>
     <display value="CT of chest (procedure)"/>
   </concept>
+  <concept id="169895004" display="Apgar at 1 minute">
+    <display value="Apgar at 1 minute"/>
+    <display value="Apgar score at 1 minute (observable entity)"/>
+    <display value="Apgar score at 1 minute"/>
+    <display value="Apgar at 1 minute (observable entity)"/>
+  </concept>
+  <concept id="169909004" display="Apgar at 5 minutes">
+    <display value="Apgar at 5 minutes"/>
+    <display value="Apgar score at 5 minutes (observable entity)"/>
+    <display value="Apgar score at 5 minutes"/>
+    <display value="Apgar at 5 minutes (observable entity)"/>
+  </concept>
+  <concept id="169922007" display="Apgar at 10 minutes">
+    <display value="Apgar at 10 minutes"/>
+    <display value="Apgar score at 10 minutes (observable entity)"/>
+    <display value="Apgar score at 10 minutes"/>
+    <display value="Apgar at 10 minutes (observable entity)"/>
+  </concept>
   <concept id="17120007" display="Biofeedback, strain gage (regime/therapy)">
     <display value="Biofeedback, strain gage (regime/therapy)"/>
     <display value="Biofeedback, strain gage"/>
@@ -946,6 +992,11 @@
     <display value="Blush"/>
     <display value="Flush"/>
     <display value="Blushing (function)"/>
+  </concept>
+  <concept id="203082005" display="Fibromyalgia (disorder)">
+    <display value="Fibromyalgia (disorder)"/>
+    <display value="Fibromyalgia"/>
+    <display value="Fibromyalgia"/>
   </concept>
   <concept id="20428008" display="Oxygen tent, device (physical object)">
     <display value="Oxygen tent, device"/>
@@ -1172,6 +1223,11 @@
     <display value="Difficulty beathing"/>
     <display value="Respiration difficult"/>
   </concept>
+  <concept id="230456007" display="Status epilepticus (disorder)">
+    <display value="Status epilepticus (disorder)"/>
+    <display value="Status epilepticus"/>
+    <display value="Status epilepticus"/>
+  </concept>
   <concept id="23109009" display="Pseudosarcomatous carcinoma (morphologic abnormality)">
     <display value="Sarcomatoid carcinoma"/>
   </concept>
@@ -1289,6 +1345,27 @@
     <display value="Estimated date of conception"/>
     <display value="Estimated date of conception (observable entity)"/>
   </concept>
+  <concept id="249223000" display="Apgar heart rate score (observable entity)">
+    <display value="Apgar heart rate score"/>
+    <display value="Apgar heart rate score (observable entity)"/>
+  </concept>
+  <concept id="249224006" display="Apgar respiratory effort score (observable entity)">
+    <display value="Apgar respiratory effort score"/>
+    <display value="Apgar respiratory effort score (observable entity)"/>
+  </concept>
+  <concept id="249225007" display="Apgar muscle tone score (observable entity)">
+    <display value="Apgar muscle tone score"/>
+    <display value="Apgar muscle tone score (observable entity)"/>
+  </concept>
+  <concept id="249226008" display="Apgar response to stimulus score (observable entity)">
+    <display value="Apgar response to stimulus score"/>
+    <display value="Apgar response to stimulus score (observable entity)"/>
+  </concept>
+  <concept id="249227004" display="Apgar color score (observable entity)">
+    <display value="Apgar color score"/>
+    <display value="Apgar colour score"/>
+    <display value="Apgar color score (observable entity)"/>
+  </concept>
   <concept id="249943000:363698007=72098002,260868000=6934004" display="Weakness of distal arms and legs (finding) where Finding site (attribute) = Entire left upper arm (body structure), and Permanence (attribute) = Permanent (qualifier value)"/>
   <concept id="25062003" display="Feeding tube, device (physical object)">
     <display value="Feeding tube, device"/>
@@ -1305,6 +1382,9 @@
     <display value="Electrocardiogram waveform"/>
     <display value="ECG waveform"/>
     <display value="ECG waveform (observable entity)"/>
+  </concept>
+  <concept id="25173007" display="Recurrent tumour (finding)">
+    <display value="Recurrent tumour"/>
   </concept>
   <concept id="252275004" display="Hematology test (procedure)">
     <display value="Haematology - general"/>
@@ -1323,6 +1403,9 @@
     <display value="Insertion of electrode in heart"/>
     <display value="Implantation of cardiac electrode"/>
     <display value="Insertion of intracardiac pacemaker (procedure)"/>
+  </concept>
+  <concept id="254588001" display="Polyp of intestine (disorder)">
+    <display value="Polyp of intestine"/>
   </concept>
   <concept id="254626006" display="Adenocarcinoma of lung (disorder)">
     <display value="Adenocarcinoma of lung"/>
@@ -1457,6 +1540,9 @@
   <concept id="258157001" display="Rest (observable entity)">
     <display value="Rest (observable entity)"/>
     <display value="Rest"/>
+  </concept>
+  <concept id="258215001" display="Stage 1 (qualifier value)">
+    <display value="Stage 1"/>
   </concept>
   <concept id="258219007" display="Stage 2 (qualifier value)">
     <display value="Stage 2"/>
@@ -1738,6 +1824,33 @@
     <display value="Preliminary"/>
     <display value="Preliminary (qualifier value)"/>
   </concept>
+  <concept id="261613009" display="Stage 0 (qualifier value)">
+    <display value="Stage 0"/>
+  </concept>
+  <concept id="261614003" display="Stage 2A (qualifier value)">
+    <display value="Stage 2A"/>
+  </concept>
+  <concept id="261615002" display="Stage 2B (qualifier value)">
+    <display value="Stage 2B"/>
+  </concept>
+  <concept id="261637009" display="Stage 2C (qualifier value)">
+    <display value="Stage 2C"/>
+  </concept>
+  <concept id="261638004" display="Stage 3A (qualifier value)">
+    <display value="Stage 3A"/>
+  </concept>
+  <concept id="261639007" display="Stage 3B (qualifier value)">
+    <display value="Stage 3B"/>
+  </concept>
+  <concept id="261640009" display="Stage 3C (qualifier value)">
+    <display value="Stage 3C"/>
+  </concept>
+  <concept id="261642001" display="Stage 4A (qualifier value)">
+    <display value="Stage 4A"/>
+  </concept>
+  <concept id="261643006" display="Stage 4B (qualifier value)">
+    <display value="Stage 4B"/>
+  </concept>
   <concept id="261651009" display="Tumour stage T2a (finding)">
     <display value="Tumour stage T2a"/>
   </concept>
@@ -1790,6 +1903,9 @@
   </concept>
   <concept id="263796003" display="Lesser (qualifier value)">
     <display value="Lesser"/>
+  </concept>
+  <concept id="263922001" display="Unstable status (qualifier value)">
+    <display value="Unstable status"/>
   </concept>
   <concept id="264065008" display="Left anterior (qualifier value)">
     <display value="Left anterior"/>
@@ -1847,6 +1963,15 @@
     <display value="Per os"/>
     <display value="Oral route (qualifier value)"/>
     <display value="A digestive tract route that begins in the mouth."/>
+  </concept>
+  <concept id="266599000" display="Dysmenorrhea">
+    <display value="Menorrhalgia"/>
+    <display value="Period pain"/>
+    <display value="Menstrual cramps"/>
+    <display value="Painful menstruation"/>
+    <display value="Dysmenorrhea"/>
+    <display value="Dysmenorrhoea"/>
+    <display value="Dysmenorrhea (disorder)"/>
   </concept>
   <concept id="2667000" display="Absent (qualifier value)">
     <display value="Absent"/>
@@ -2080,6 +2205,9 @@
     <display value="Pulmonary vascular structure"/>
     <display value="Pulmonary vascular structure (body structure)"/>
   </concept>
+  <concept id="281266006" display="No sample received (finding)">
+    <display value="No sample received"/>
+  </concept>
   <concept id="281657000" display="Travel vaccinations (procedure)">
     <display value="Travel vaccinations"/>
     <display value="Travel vaccinations (procedure)"/>
@@ -2105,6 +2233,9 @@
   <concept id="28647000" display="Meat (substance)">
     <display value="Meat"/>
     <display value="Meat (substance)"/>
+  </concept>
+  <concept id="28899001" display="Squamous cell carcinoma (morphologic abnormality)">
+    <display value="Squamous cell carcinoma"/>
   </concept>
   <concept id="289169006" display="Exercising to lose weight (regime/therapy)">
     <display value="Exercising to lose weight (regime/therapy)"/>
@@ -2132,6 +2263,10 @@
     <display value="Toe, NOS"/>
     <display value="Hinddigit, NOS"/>
     <display value="Toe structure (body structure)"/>
+  </concept>
+  <concept id="297217002" display="Rib pain">
+    <display value="Rib pain"/>
+    <display value="Rib pain (finding)"/>
   </concept>
   <concept id="298225002" display="Lamina propria mucosae (body structure)">
     <display value="Lamina propria mucosae"/>
@@ -2362,6 +2497,15 @@
     <display value="Hyperlipidemia screening test"/>
     <display value="Hyperlipidemia screening test (procedure)"/>
   </concept>
+  <concept id="314592008" display="Low anterior resection of rectum">
+    <display value="Low anterior resection of rectum (procedure)"/>
+  </concept>
+  <concept id="314965007" display="Local recurrence of malignant tumour of colon (disorder)">
+    <display value="Local recurrence of malignant tumour of colon"/>
+  </concept>
+  <concept id="314966008" display="Local recurrence of malignant tumour of rectum (disorder)">
+    <display value="Local recurrence of malignant tumour of rectum"/>
+  </concept>
   <concept id="315619001" display="Family history of myocardial infarction in male relative of first degree, age known (situation)">
     <display value="Family history of myocardial infarction in male relative of first degree, age known (situation)"/>
     <display value="Family history of myocardial infarction in male relative of first degree, age known"/>
@@ -2376,6 +2520,17 @@
   <concept id="31628002" display="Hospital-based outpatient family medicine clinic (environment)">
     <display value="Hospital-based outpatient family medicine clinic"/>
     <display value="Hospital-based outpatient family medicine clinic (environment)"/>
+  </concept>
+  <concept id="317935006" display="Chlorthalidone 50mg tablet (product)">
+    <display value="Chlorthalidone 50mg tablet (product)"/>
+    <display value="Chlortalidone 50mg tablet"/>
+    <display value="Chlorthalidone 50mg tablet"/>
+    <display value="Chlortalidone 50mg tablet"/>
+    <display value="Chlorthalidone 50mg tablet"/>
+    <display value="Chlorthalidone 50mg"/>
+    <display value="Chlorthalidone 50mg tablet"/>
+    <display value="Chlortalidone 50mg tablet"/>
+    <display value="Chlorthalidone 50mg tablet (substance)"/>
   </concept>
   <concept id="318475005" display="Metoprolol tartrate 50mg tablet (product)">
     <display value="Metoprolol tartrate 50mg tablet (product)"/>
@@ -2449,12 +2604,34 @@
     <display value="Amoxycillin 250mg/5mL oral suspension"/>
     <display value="Amoxycillin 250mg/5mL oral suspension (substance)"/>
   </concept>
+  <concept id="324252006" display="Azithromycin 250mg capsule (product)">
+    <display value="Azithromycin 250mg capsule (product)"/>
+    <display value="Azithromycin dihydrate 250mg capsule"/>
+    <display value="Azithromycin 250mg capsule"/>
+    <display value="Azithromycin 250mg capsule (substance)"/>
+  </concept>
+  <concept id="324337001" display="Vancomycin 500mg powder for infusion solution vial (product)">
+    <display value="Vancomycin 500mg injection (pdr for recon) (product)"/>
+    <display value="Vancomycin 500mg powder for infusion solution vial (product)"/>
+    <display value="Vancomycin 500mg powder for infusion solution vial"/>
+    <display value="Vancomycin 500mg injection (pdr for recon)"/>
+    <display value="Vancomycin 500mg injection (pdr for recon) (substance)"/>
+  </concept>
+  <concept id="324689003" display="Nystatin 100,000units/mL oral suspension (product)">
+    <display value="Nystatin 100,000units/mL oral suspension (product)"/>
+    <display value="Nystatin 100,000units/mL oral suspension"/>
+    <display value="Nystatin 100,000units/mL oral suspension (substance)"/>
+  </concept>
   <concept id="32485007" display="Hospital admission (procedure)">
     <display value="Admission to hospital"/>
     <display value="Hospital admission"/>
     <display value="Hospital admission, NOS"/>
     <display value="Hospital admission (procedure)"/>
     <display value="Performance of the steps necessary to admit a patient to a hospital"/>
+  </concept>
+  <concept id="325072002" display="Insulin aspart">
+    <display value="Insulin aspart"/>
+    <display value="Insulin aspart (substance)"/>
   </concept>
   <concept id="325267004" display="Tolbutamide 500mg tablet">
     <display value="Tolbutamide 500mg tablet (product)"/>
@@ -2499,6 +2676,15 @@
     <display value="Oesophagus, NOS"/>
     <display value="Oesophagus"/>
     <display value="Esophageal structure (body structure)"/>
+  </concept>
+  <concept id="32913002" display="Medullary carcinoma (morphologic abnormality)">
+    <display value="Medullary carcinoma"/>
+  </concept>
+  <concept id="32914008" display="Restless legs">
+    <display value="Ekbom syndrome"/>
+    <display value="Restless legs"/>
+    <display value="Restless legs syndrome"/>
+    <display value="Restless legs (disorder)"/>
   </concept>
   <concept id="33022008" display="Hospital-based outpatient department (environment)">
     <display value="Hospital outpatients department"/>
@@ -2648,6 +2834,9 @@
     <display value="Depressive illness"/>
     <display value="Mood disorder of depressed type"/>
   </concept>
+  <concept id="35917007" display="Adenocarcinoma, no subtype (morphologic abnormality)">
+    <display value="Adenocarcinoma, no subtype"/>
+  </concept>
   <concept id="359615001" display="Partial lobectomy of lung (procedure)">
     <display value="Partial lobectomy of lung"/>
     <display value="Partial lobectomy of lung (procedure)"/>
@@ -2788,6 +2977,9 @@
     <display value="Left forearm"/>
     <display value="Entire left forearm (body structure)"/>
   </concept>
+  <concept id="369642003" display="Prostate, apical surgical margin, involved by tumor (finding)">
+    <display value="Prostate, apical surgical margin, involved by tumor"/>
+  </concept>
   <concept id="369690005" display="Large intestine, proximal surgical margin, involved by tumor (finding)">
     <display value="Large intestine, proximal surgical margin, involved by tumor"/>
   </concept>
@@ -2800,6 +2992,30 @@
   <concept id="369708000" display="Large intestine, distal surgical margin not involved by tumor (finding)">
     <display value="Large intestine, distal surgical margin not involved by tumor"/>
   </concept>
+  <concept id="369731000" display="Perineural invasion by tumour present (finding)">
+    <display value="Perineural invasion by tumour present"/>
+  </concept>
+  <concept id="369733002" display="Venous (large vessel) intramural invasion by tumour present (finding)">
+    <display value="Venous (large vessel) intramural invasion by tumour present"/>
+  </concept>
+  <concept id="369734008" display="Venous (large vessel) extramural invasion by tumour present (finding)">
+    <display value="Venous (large vessel) extramural invasion by tumour present"/>
+  </concept>
+  <concept id="369770006" display="Gleason Pattern 1 (finding)">
+    <display value="Gleason Pattern 1"/>
+  </concept>
+  <concept id="369771005" display="Gleason Pattern 2 (finding)">
+    <display value="Gleason Pattern 2"/>
+  </concept>
+  <concept id="369772003" display="Gleason Pattern 3 (finding)">
+    <display value="Gleason Pattern 3"/>
+  </concept>
+  <concept id="369773008" display="Gleason Pattern 4 (finding)">
+    <display value="Gleason Pattern 4"/>
+  </concept>
+  <concept id="369774002" display="Gleason Pattern 5 (finding)">
+    <display value="Gleason Pattern 5"/>
+  </concept>
   <concept id="36989005" display="Mumps (disorder)">
     <display value="Mumps"/>
     <display value="Mumps, NOS"/>
@@ -2807,6 +3023,9 @@
     <display value="Infectious parotitis"/>
     <display value="Mumps without mention of complication"/>
     <display value="Mumps (disorder)"/>
+  </concept>
+  <concept id="369993005" display="N2: Metastasis in 4 or more lymph nodes (finding)">
+    <display value="N2: Metastasis in 4 or more lymph nodes"/>
   </concept>
   <concept id="370034007" display="M1a: non-regional lymph node metastasis (finding)">
     <display value="M1a: non-regional lymph node metastasis"/>
@@ -2816,6 +3035,9 @@
   </concept>
   <concept id="370045005" display="M1c: Other site(s) (finding)">
     <display value="M1c: Other site(s)"/>
+  </concept>
+  <concept id="370109009" display="Surgical margin involved by tumor (finding)">
+    <display value="Surgical margin involved by tumor"/>
   </concept>
   <concept id="370140002" display="Muscularis mucosae (body structure)">
     <display value="Muscularis mucosae"/>
@@ -2842,6 +3064,18 @@
   <concept id="372306004" display="Extraprostatic extension of tumor present (finding)">
     <display value="Extraprostatic extension of tumor present"/>
   </concept>
+  <concept id="372443003" display="Anal, proximal surgical margin not involved by tumor (finding)">
+    <display value="Anal, proximal surgical margin not involved by tumor"/>
+  </concept>
+  <concept id="372444009" display="Anal, proximal surgical margin involved by tumor (finding)">
+    <display value="Anal, proximal surgical margin involved by tumor"/>
+  </concept>
+  <concept id="372445005" display="Anal, distal surgical margin not involved by tumor (finding)">
+    <display value="Anal, distal surgical margin not involved by tumor"/>
+  </concept>
+  <concept id="372446006" display="Anal, distal surgical margin involved by tumor (finding)">
+    <display value="Anal, distal surgical margin involved by tumor"/>
+  </concept>
   <concept id="372687004" display="Amoxicillin (substance)">
     <display value="Amoxicillin (substance)"/>
     <display value="Amoxicillin"/>
@@ -2860,8 +3094,16 @@
     <display value="No (qualifier value)"/>
     <display value="No"/>
   </concept>
+  <concept id="373121007" display="Test not done (qualifier value)">
+    <display value="Test not done"/>
+  </concept>
   <concept id="373200003" display="pT1: Tumor invades submucosa (colon/rectum) (finding)">
     <display value="pT1: Tumor invades submucosa (colon/rectum)"/>
+  </concept>
+  <concept id="373994007" display="Prednisone 5mg tablet (product)">
+    <display value="Prednisone 5mg tablet (product)"/>
+    <display value="Prednisone 5mg tablet"/>
+    <display value="Prednisone 5mg"/>
   </concept>
   <concept id="37546005" display="Hospital-based outpatient rehabilitation clinic (environment)">
     <display value="Hospital-based outpatient rehabilitation clinic"/>
@@ -2875,6 +3117,20 @@
     <display value="Pleural friction rub"/>
     <display value="Pleural rub"/>
     <display value="Pleural friction rub (finding)"/>
+  </concept>
+  <concept id="376877002" display="Timolol maleate 0.5% ophthalmic solution (product)">
+    <display value="Timolol maleate 0.5% solution (product)"/>
+    <display value="Timolol maleate 0.5% solution"/>
+    <display value="Timolol maleate 0.5% ophthalmic solution (product)"/>
+    <display value="Timolol maleate 0.5% ophthalmic solution"/>
+  </concept>
+  <concept id="376988009" display="Levothyroxine sodium 75micrograms tablet (product)">
+    <display value="Levothyroxine sodium 75mcg tablet (product)"/>
+    <display value="Laevothyroxine sodium 75mcg tablet"/>
+    <display value="Levothyroxine sodium 75mcg tablet"/>
+    <display value="Levothyroxine sodium 75micrograms tablet (product)"/>
+    <display value="Levothyroxine sodium 75micrograms tablet"/>
+    <display value="Laevothyroxine sodium 75micrograms tablet"/>
   </concept>
   <concept id="37931006" display="Auscultation (procedure)">
     <display value="Auscultation - examination"/>
@@ -2923,11 +3179,26 @@
     <display value="Hypertension"/>
     <display value="Raised blood pressure (disorder)"/>
   </concept>
-  <concept id="384612007" display="pT4a: Tumour penetrates visceral peritoneum (colon/rectum) (finding)">
-    <display value="pT4a: Tumour penetrates visceral peritoneum (colon/rectum) (colon/rectum)"/>
+  <concept id="384612007" display="pT4a: Tumour directly invades other organs or structures (colon/rectum)  (finding)">
+    <display value="pT4a: Tumour directly invades other organs or structures (colon/rectum)"/>
   </concept>
-  <concept id="384613002" display="pT4b:  Tumour directly invades other organs or structures (colon/rectum) (finding)">
-    <display value="pT4b: Tumour directly invades other organs or structures (colon/rectum)"/>
+  <concept id="384613002" display="pT4b: Tumour penetrates visceral peritoneum (colon/rectum) (finding)">
+    <display value="pT4b: Tumour penetrates visceral peritoneum (colon/rectum)"/>
+  </concept>
+  <concept id="384983005" display="pT2: Organ confined (prostate) (finding)">
+    <display value="pT2: Organ confined (prostate)"/>
+  </concept>
+  <concept id="384987006" display="pT3: Extraprostatic extension (prostate) (finding)">
+    <display value="pT3: Extraprostatic extension (prostate)"/>
+  </concept>
+  <concept id="384990000" display="pT4: Invasion of bladder AND/OR rectum (prostate) (finding)">
+    <display value="pT4: Invasion of bladder AND/OR rectum (prostate)"/>
+  </concept>
+  <concept id="385001000" display="Perineural invasion by tumour not identified (finding)">
+    <display value="Perineural invasion by tumour not identified"/>
+  </concept>
+  <concept id="385017006" display="Extraprostatic extension of tumor indeterminate (finding)">
+    <display value="Extraprostatic extension of tumor indeterminate"/>
   </concept>
   <concept id="385024007" display="Oral suspension (qualifier value)">
     <display value="Oral suspension (product)"/>
@@ -2950,6 +3221,21 @@
     <display value="Tablet dose form (qualifier value)"/>
     <display value="Tablet dose form"/>
   </concept>
+  <concept id="385057009" display="Film-coated tablet">
+    <display value="Film-coated tablet (product)"/>
+    <display value="Film-coated tablet"/>
+    <display value="Film-coated tablet (qualifier value)"/>
+  </concept>
+  <concept id="385101003" display="Ointment">
+    <display value="Ointment (product)"/>
+    <display value="Ointment"/>
+    <display value="Ointment (qualifier value)"/>
+  </concept>
+  <concept id="385157007" display="Nasal spray">
+    <display value="Nasal spray (product)"/>
+    <display value="Nasal spray"/>
+    <display value="Nasal spray (qualifier value)"/>
+  </concept>
   <concept id="385218009" display="Injection (qualifier value)">
     <display value="Injection (product)"/>
     <display value="Injection"/>
@@ -2960,6 +3246,12 @@
     <display value="Injection solution"/>
     <display value="Solution for injection"/>
     <display value="Injection solution (qualifier value)"/>
+  </concept>
+  <concept id="385221006" display="Injection emulsion">
+    <display value="Injection emulsion (product)"/>
+    <display value="Injection emulsion"/>
+    <display value="Emulsion for injection"/>
+    <display value="Injection emulsion (qualifier value)"/>
   </concept>
   <concept id="385432009" display="Not applicable (qualifier value)">
     <display value="Not applicable (qualifier value)"/>
@@ -3032,10 +3324,44 @@
     <display value="Pyrexia"/>
     <display value="Febrile"/>
   </concept>
+  <concept id="386906001" display="Capecitabine (substance)">
+    <display value="Capecitabine (substance)"/>
+    <display value="Capecitabine"/>
+  </concept>
+  <concept id="386983007" display="Alprazolam (substance)">
+    <display value="Alprazolam (substance)"/>
+    <display value="Alprazolam"/>
+  </concept>
+  <concept id="387048002" display="Nystatin (substance)">
+    <display value="Nystatin (substance)"/>
+    <display value="Nystatin"/>
+  </concept>
+  <concept id="387106007" display="Lorazepam (substance)">
+    <display value="Lorazepam (substance)"/>
+    <display value="Lorazepam"/>
+  </concept>
+  <concept id="387138002" display="Busulfan (substance)">
+    <display value="Busulfan (substance)"/>
+    <display value="Busulphan"/>
+    <display value="Busulfan"/>
+  </concept>
+  <concept id="387253001" display="Salicylic acid (substance)">
+    <display value="Salicylic acid (substance)"/>
+    <display value="Salicylic acid"/>
+  </concept>
+  <concept id="387324004" display="Chlorthalidone (substance)">
+    <display value="Chlorthalidone (substance)"/>
+    <display value="Chlorthalidone"/>
+    <display value="Chlortalidone"/>
+  </concept>
   <concept id="387517004" display="Acetaminophen (substance)">
     <display value="Acetaminophen (substance)"/>
     <display value="Acetaminophen"/>
     <display value="Paracetamol"/>
+  </concept>
+  <concept id="387531004" display="Azithromycin (substance)">
+    <display value="Azithromycin (substance)"/>
+    <display value="Azithromycin"/>
   </concept>
   <concept id="387544009" display="Floxacillin (substance)">
     <display value="Floxacillin (substance)"/>
@@ -3389,11 +3715,23 @@
   <concept id="395530002" display="High grade (poorly differentiated to undifferentiated) (finding)">
     <display value="High grade (poorly differentiated to undifferentiated)"/>
   </concept>
-  <concept id="395706002" display="pT1: Tumor invades submucosa (colon/rectum) (finding)">
-    <display value="pT1: Tumor invades submucosa (colon/rectum)"/>
+  <concept id="395706002" display="pT2: Tumour invades muscularis propria (colon/rectum) (finding)">
+    <display value="pT2: Tumour invades muscularis propria (colon/rectum) (colon/rectum)"/>
   </concept>
   <concept id="395707006" display="pT3: Tumor invades through the muscularis propria into the subserosa or into non-peritonealized pericolic or perirectal tissues (colon/rectum) (finding)">
     <display value="pT3: Tumor invades through the muscularis propria into the subserosa or into non-peritonealized pericolic or perirectal tissues (colon/rectum)"/>
+  </concept>
+  <concept id="395711000" display="pN1: Metastasis in 1 to 3 regional lymph nodes (colon/rectum)">
+    <display value="pN1: Metastasis in 1 to 3 regional lymph nodes (colon/rectum) (finding)"/>
+  </concept>
+  <concept id="395717001" display="Lymphatic (small vessel) invasion by tumour present (finding)">
+    <display value="Lymphatic (small vessel) invasion by tumour present"/>
+  </concept>
+  <concept id="395718006" display="Lymphatic (small vessel) intramural invasion by tumour present (finding)">
+    <display value="Lymphatic (small vessel) intramural invasion by tumour present"/>
+  </concept>
+  <concept id="395719003" display="Lymphatic (small vessel) extramural invasion by tumour present (finding)">
+    <display value="Lymphatic (small vessel) extramural invasion by tumour present"/>
   </concept>
   <concept id="39579001" display="Anaphylaxis (disorder)">
     <display value="Generalized anaphylaxis"/>
@@ -3416,10 +3754,27 @@
     <display value="Lung, NOS"/>
     <display value="Lung structure (body structure)"/>
   </concept>
+  <concept id="396458002" display="Hydrocortisone (substance)">
+    <display value="Hydrocortisone (substance)"/>
+    <display value="Hydrocortisone"/>
+    <display value="Cortisol"/>
+  </concept>
+  <concept id="396528005" display="Surgical margin involvement by tumor indeterminate (finding)">
+    <display value="Surgical margin involvement by tumor indeterminate"/>
+  </concept>
   <concept id="397158004" display="Perianal region structure (body structure)">
     <display value="Perianal region structure (body structure)"/>
     <display value="Perianal region structure"/>
     <display value="Perianal region"/>
+  </concept>
+  <concept id="397213002" display="pM1a: Distant metastasis to non-regional lymph node(s) (prostate) (finding)">
+    <display value="pM1a: Distant metastasis to non-regional lymph node(s) (prostate)"/>
+  </concept>
+  <concept id="397214008" display="pM1b: Distant metastasis to bone(s) (prostate) (finding)">
+    <display value="pM1b: Distant metastasis to bone(s) (prostate)"/>
+  </concept>
+  <concept id="397215009" display="pM1c: Distant metastasis site other than bone or non-regional lymph node(s) (prostate) (finding)">
+    <display value="pM1c: Distant metastasis site other than bone or non-regional lymph node(s) (prostate)"/>
   </concept>
   <concept id="397394009" display="Bronchoalveolar lavage (procedure)">
     <display value="Bronchoalveolar lavage (procedure)"/>
@@ -3475,10 +3830,19 @@
     <display value="Integument"/>
     <display value="Skin structure (body structure)"/>
   </concept>
+  <concept id="399409002" display="Distant metastasis present (finding)">
+    <display value="Distant metastasis present"/>
+  </concept>
+  <concept id="399415002" display="Low grade histologic differentiation (finding)">
+    <display value="Low grade histologic differentiation"/>
+  </concept>
   <concept id="39953003" display="Tobacco (substance)">
     <display value="Tobacco (substance)"/>
     <display value="Tobacco - substance"/>
     <display value="Tobacco"/>
+  </concept>
+  <concept id="399611001" display="High grade histologic differentiation (finding)">
+    <display value="High grade histologic differentiation"/>
   </concept>
   <concept id="399713008" display="Specimen from uterine cervix obtained by cone biopsy (specimen)">
     <display value="Specimen from uterine cervix obtained by cone biopsy (specimen)"/>
@@ -3496,6 +3860,14 @@
     <display value="Paclitaxel 6mg/mL injection"/>
     <display value="Paclitaxel 6mg/mL injection solution 5mL vial (product)"/>
     <display value="Paclitaxel 6mg/mL injection solution 5mL vial"/>
+  </concept>
+  <concept id="400621001" display="Lorazepam 2mg/mL injection solution 1mL vial (product)">
+    <display value="Lorazepam 2mg/mL injection solution 1mL vial (product)"/>
+    <display value="Lorazepam 2mg/mL injection solution 1mL vial"/>
+    <display value="Lorazepam 2mg/mL injection"/>
+  </concept>
+  <concept id="400988008" display="High anterior resection of rectum">
+    <display value="High anterior resection of rectum (procedure)"/>
   </concept>
   <concept id="40199007" display="Supine body position (finding)">
     <display value="Lying flat on back"/>
@@ -3701,6 +4073,10 @@
     <display value="Clinical immunology (qualifier value)"/>
     <display value="Clinical immunology"/>
   </concept>
+  <concept id="408596005" display="Alemtuzumab 30mg/3mL infusion concentrate (product)">
+    <display value="Alemtuzumab 30mg/3mL infusion concentrate (product)"/>
+    <display value="Alemtuzumab 30mg/3mL infusion concentrate"/>
+  </concept>
   <concept id="408654003" display="Specimen obtained by amputation (specimen)">
     <display value="Specimen obtained by amputation (specimen)"/>
     <display value="Specimen obtained by amputation"/>
@@ -3740,6 +4116,12 @@
     <display value="No Known Drug Allergies"/>
     <display value="No known history of drug allergy"/>
     <display value="No known medicine allergy"/>
+  </concept>
+  <concept id="40930008" display="Hypothyroidism">
+    <display value="Hypothyroid"/>
+    <display value="Hypothyroidism"/>
+    <display value="Hypothyroidism, NOS"/>
+    <display value="Hypothyroidism (disorder)"/>
   </concept>
   <concept id="409519008" display="Contained casualty setting (environment)">
     <display value="Contained casualty setting (environment)"/>
@@ -3906,6 +4288,14 @@
     <display value="Carbuncle"/>
     <display value="Carbuncle (morphologic abnormality)"/>
   </concept>
+  <concept id="415818006" display="Vial - unit of product usage (qualifier value)">
+    <display value="Vial (qualifier value)"/>
+    <display value="Vial"/>
+    <display value="Vials"/>
+    <display value="Vil"/>
+    <display value="Vial - unit of product usage (qualifier value)"/>
+    <display value="Vial - unit of product usage"/>
+  </concept>
   <concept id="416304004" display="Osteopathic manipulative medicine (qualifier value)">
     <display value="Osteopathic manipulative medicine (qualifier value)"/>
     <display value="Osteopathic manipulative medicine"/>
@@ -3972,6 +4362,10 @@
     <display value="Pediatric infectious diseases (qualifier value)"/>
     <display value="Pediatric infectious diseases"/>
     <display value="Paediatric infectious diseases"/>
+  </concept>
+  <concept id="418914006" display="Warning. May cause drowsiness. If affected do not drive or operate machinery. Avoid alcoholic drink (qualifier value)">
+    <display value="Warning. May cause drowsiness. If affected do not drive or operate machinery. Avoid alcoholic drink (qualifier value)"/>
+    <display value="Warning. May cause drowsiness. If affected do not drive or operate machinery. Avoid alcoholic drink"/>
   </concept>
   <concept id="418960008" display="Otolaryngology (qualifier value)">
     <display value="Otolaryngology (qualifier value)"/>
@@ -4084,23 +4478,55 @@
     <display value="Inhaler"/>
     <display value="Inhaler (qualifier value)"/>
   </concept>
+  <concept id="420366008" display="Extraprostatic extension of tumor present, focal (body structure)">
+    <display value="Extraprostatic extension of tumor present, focal"/>
+  </concept>
+  <concept id="420387003" display="Extraprostatic extension of tumor present, non-focal (finding)">
+    <display value="Extraprostatic extension of tumor present, non-focal"/>
+  </concept>
   <concept id="420548004" display="Specimen from mass lesion (specimen)">
     <display value="Specimen from mass lesion (specimen)"/>
     <display value="Specimen from mass"/>
     <display value="Specimen from mass lesion"/>
   </concept>
+  <concept id="420620005" display="Push - dosing instruction imperative (qualifier value)">
+    <display value="Push - dosing instruction imperative (qualifier value)"/>
+    <display value="Push"/>
+    <display value="Push - dosing instruction imperative"/>
+  </concept>
   <concept id="42108003" display="Congenital fusion of kidneys (disorder)">
     <display value="Congenital fusion of kidneys"/>
     <display value="Congenital fusion of kidneys (disorder)"/>
+  </concept>
+  <concept id="421521009" display="Swallow - dosing instruction imperative (qualifier value)">
+    <display value="Swallow - dosing instruction imperative (qualifier value)"/>
+    <display value="Swallow"/>
+    <display value="Swallow - dosing instruction imperative"/>
   </concept>
   <concept id="421606006" display="Aerosol spray (qualifier value)">
     <display value="Aerosol spray (product)"/>
     <display value="Aerosol spray"/>
     <display value="Aerosol spray (qualifier value)"/>
   </concept>
+  <concept id="421637006" display="Lyophilised powder for injectable solution">
+    <display value="Lyophilized powder for injectable solution (product)"/>
+    <display value="Lyophilised powder for injectable solution"/>
+    <display value="Lyophilized powder for injectable solution"/>
+    <display value="Lyophilized powder for injectable solution (qualifier value)"/>
+  </concept>
   <concept id="421661004" display="Blood banking and transfusion medicine (specialty) (qualifier value)">
     <display value="Blood banking and transfusion medicine (specialty) (qualifier value)"/>
     <display value="Blood banking and transfusion medicine (specialty)"/>
+  </concept>
+  <concept id="421984009" display="Until finished - dosing instruction fragment (qualifier value)">
+    <display value="Until finished - dosing instruction fragment (qualifier value)"/>
+    <display value="Until finished"/>
+    <display value="Until finished - dosing instruction fragment"/>
+  </concept>
+  <concept id="422145002" display="Inject - dosing instruction imperative (qualifier value)">
+    <display value="Inject - dosing instruction imperative (qualifier value)"/>
+    <display value="Inject"/>
+    <display value="Inject - dosing instruction imperative"/>
   </concept>
   <concept id="422191005" display="Ophthalmic surgery (qualifier value)">
     <display value="Ophthalmic surgery (qualifier value)"/>
@@ -4249,6 +4675,10 @@
   <concept id="429951000124103" display="Bacterial isolate specimen (specimen)">
     <display value="Bacterial isolate specimen (specimen)"/>
     <display value="Bacterial isolate specimen"/>
+  </concept>
+  <concept id="430127000" display="Oral form oxycodone (product)">
+    <display value="Oral form oxycodone (product)"/>
+    <display value="Oral form oxycodone"/>
   </concept>
   <concept id="430268003" display="Specimen from bone (specimen)">
     <display value="Specimen from bone (specimen)"/>
@@ -4604,6 +5034,10 @@
     <display value="Hydrolyzed protein formula"/>
     <display value="Liquid formula intended for enteral and/or oral method of delivery, formulated to provide protein hydrolyzed into peptides."/>
   </concept>
+  <concept id="443849008" display="Apgar score at 20 minutes (observable entity)">
+    <display value="Apgar score at 20 minutes (observable entity)"/>
+    <display value="Apgar score at 20 minutes"/>
+  </concept>
   <concept id="444321000124108" display="Standard pudding oral supplement (product)">
     <display value="Standard pudding oral supplement (product)"/>
     <display value="Standard pudding oral supplement"/>
@@ -4726,6 +5160,9 @@
     <display value="Cardiopulmonary exercise test (procedure)"/>
     <display value="Cardiopulmonary exercise test"/>
   </concept>
+  <concept id="448474003" display="Low anterior resection of rectum and total excision of mesorectum">
+    <display value="Low anterior resection of rectum and total excision of mesorectum (procedure)"/>
+  </concept>
   <concept id="449868002" display="Smokes tobacco daily (finding)">
     <display value="Smokes tobacco daily"/>
     <display value="Smokes tobacco daily (finding)"/>
@@ -4737,6 +5174,12 @@
     <display value="Ultrasonography of abdomen"/>
     <display value="Ultrasonography of abdomen, NOS"/>
     <display value="Ultrasonography of abdomen (procedure)"/>
+  </concept>
+  <concept id="450895005" display="Micropapillary carcinoma (morphologic abnormality)">
+    <display value="Micropapillary carcinoma"/>
+  </concept>
+  <concept id="450948005" display="Serrated adenocarcinoma (morphologic abnormality)">
+    <display value="Serrated adenocarcinoma"/>
   </concept>
   <concept id="45410002" display="Acinar cell carcinoma (morphologic abnormality)">
     <display value="Acinar cell carcinoma"/>
@@ -4862,6 +5305,10 @@
     <display value="Pustule, NOS"/>
     <display value="Pustule (morphologic abnormality)"/>
     <display value="A vesicle filled with leukocytes"/>
+  </concept>
+  <concept id="470037004" display="Intravenous fluid container, single-use">
+    <display value="Intravenous fluid container, single-use"/>
+    <display value="Intravenous fluid container, single-use (physical object)"/>
   </concept>
   <concept id="47505003" display="Posttraumatic stress disorder (disorder)">
     <display value="Traumatic neurosis"/>
@@ -5063,6 +5510,9 @@
     <display value="Cone biopsy of cervix, NOS"/>
     <display value="Conization of uterine cervix"/>
   </concept>
+  <concept id="55182004" display="Surgical margin uninvolved by tumor (finding)">
+    <display value="Surgical margin uninvolved by tumor"/>
+  </concept>
   <concept id="55235003" display="C-reactive protein measurement (procedure)">
     <display value="C-reactive protein level"/>
     <display value="CRP - C-reactive protein level"/>
@@ -5077,6 +5527,12 @@
   </concept>
   <concept id="55440008" display="M1 category (finding)">
     <display value="M1 category"/>
+  </concept>
+  <concept id="55452001" display="Oxycodone (substance)">
+    <display value="Oxycodone (substance)"/>
+    <display value="Oxycodone"/>
+    <display value="14-Hydroxydihydrocodeinone"/>
+    <display value="Dihydrohydroxycodeinone"/>
   </concept>
   <concept id="55561003" display="Active (qualifier value)">
     <display value="Active (qualifier value)"/>
@@ -5159,6 +5615,9 @@
     <display value="Golden retriever (organism)"/>
     <display value="Golden retriever"/>
   </concept>
+  <concept id="58158008" display="Stable (qualifier value)">
+    <display value="Stable"/>
+  </concept>
   <concept id="58482006" display="Hospital-based outpatient gastroenterology clinic (environment)">
     <display value="Hospital-based outpatient gastroenterology clinic (environment)"/>
     <display value="Hospital-based outpatient gastroenterology clinic"/>
@@ -5196,6 +5655,15 @@
     <display value="Potassium measurement (procedure)"/>
     <display value="Potassium measurement"/>
     <display value="Potassium measurement, NOS"/>
+  </concept>
+  <concept id="59621000" display="Essential hypertension (disorder)">
+    <display value="Essential hypertension (disorder)"/>
+    <display value="Essential hypertension"/>
+    <display value="Essential hypertension, NOS"/>
+    <display value="Idiopathic hypertension"/>
+    <display value="Primary hypertension, NOS"/>
+    <display value="Systemic primary arterial hypertension"/>
+    <display value="Primary hypertension"/>
   </concept>
   <concept id="59843005" display="Furuncle (morphologic abnormality)">
     <display value="Furuncle (morphologic abnormality)"/>
@@ -5329,6 +5797,9 @@
     <display value="Third finger"/>
     <display value="Middle finger structure"/>
     <display value="Middle finger structure (body structure)"/>
+  </concept>
+  <concept id="65692009" display="Spindle cell carcinoma (morphologic abnormality)">
+    <display value="Spindle cell carcinoma"/>
   </concept>
   <concept id="66051006" display="Pyloric antrum structure (body structure)">
     <display value="Pyloric antrum"/>
@@ -5554,6 +6025,14 @@
     <display value="Hospital-based outpatient endocrinology clinic"/>
     <display value="Hospital-based outpatient endocrinology clinic (environment)"/>
   </concept>
+  <concept id="73761001" display="Colonoscopy">
+    <display value="Colonoscopy"/>
+    <display value="Colonoscopy, NOS"/>
+    <display value="Endoscopy of colon, NOS"/>
+    <display value="Endoscopy of colon"/>
+    <display value="Endoscopic examination of colon"/>
+    <display value="Colonoscopy (procedure)"/>
+  </concept>
   <concept id="73770003" display="Hospital-based outpatient emergency care center (environment)">
     <display value="Hospital-based outpatient emergency care center"/>
     <display value="Hospital-based outpatient emergency room"/>
@@ -5591,6 +6070,10 @@
   <concept id="74964007" display="Other (qualifier value)">
     <display value="Other"/>
     <display value="Other (qualifier value)"/>
+  </concept>
+  <concept id="75359005" display="Timolol maleate">
+    <display value="Timolol maleate"/>
+    <display value="Timolol maleate (substance)"/>
   </concept>
   <concept id="75540009" display="High (qualifier value)">
     <display value="High"/>
@@ -5801,6 +6284,25 @@
     <display value="Tiredness"/>
     <display value="Weariness"/>
   </concept>
+  <concept id="84757009" display="Epilepsy">
+    <display value="Epilepsy"/>
+    <display value="Epilepsy, NOS"/>
+    <display value="Epileptic disorder, NOS"/>
+    <display value="Epileptic convulsions, NOS"/>
+    <display value="Epileptic fits, NOS"/>
+    <display value="Epileptic fits"/>
+    <display value="Epileptic seizures"/>
+    <display value="Epileptic attack"/>
+    <display value="Epilectic attack, NOS"/>
+    <display value="Epileptic seizures, NOS"/>
+    <display value="Epileptic attack, NOS"/>
+    <display value="Epileptic disorder"/>
+    <display value="Epileptic convulsions"/>
+    <display value="Epileptic"/>
+    <display value="EP - Epilepsy"/>
+    <display value="Epilepsy (disorder)"/>
+    <display value="A disorder characterized by recurrent seizures"/>
+  </concept>
   <concept id="8517006" display="Ex-smoker (finding)">
     <display value="Ex-smoker (finding)"/>
     <display value="Former smoker"/>
@@ -5871,6 +6373,9 @@
     <display value="Bacterial infection"/>
     <display value="Bacterial disease"/>
     <display value="Bacterial infectious disease (disorder)"/>
+  </concept>
+  <concept id="87737001" display="Signet ring cell carcinoma (morphologic abnormality)">
+    <display value="Signet ring cell carcinoma"/>
   </concept>
   <concept id="884001" display="Initial (qualifier value)">
     <display value="Initial"/>
@@ -5954,6 +6459,30 @@
     <display value="Hospital bed, device (physical object)"/>
     <display value="Hospital bed, device"/>
     <display value="Hospital bed"/>
+  </concept>
+  <concept id="92814006" display="Chronic lymphoid leukaemia, disease">
+    <display value="Chronic lymphoid leukaemia, disease"/>
+    <display value="CLL - Chronic lymphocytic leukaemia"/>
+    <display value="CLL - Chronic lymphocytic leukemia"/>
+    <display value="Chronic lymphoid leukemia"/>
+    <display value="Chronic lymphoid leukemia without mention of remission"/>
+    <display value="Chronic lymphoid leukaemia"/>
+    <display value="Chronic lymphoid leukemia, disease"/>
+    <display value="Chronic lymphoid leukemia, disease (disorder)"/>
+  </concept>
+  <concept id="92818009" display="Chronic myeloid leukemia">
+    <display value="CML - Chronic myeloid leukaemia"/>
+    <display value="CGL - Chronic granulocytic leukaemia"/>
+    <display value="CGL - Chronic granulocytic leukemia"/>
+    <display value="CML - Chronic myeloid leukemia"/>
+    <display value="Chronic myeloid leukemia"/>
+    <display value="Chronic myeloid leukemia without mention of remission"/>
+    <display value="Chronic myeloid leukaemia"/>
+    <display value="Chronic myeloid leukaemia, disease"/>
+    <display value="Chronic myeloid leukemia, disease"/>
+    <display value="Chronic myelocytic leukaemia"/>
+    <display value="Chronic myelocytic leukemia"/>
+    <display value="Chronic myeloid leukemia, disease (disorder)"/>
   </concept>
   <concept id="9454009" display="Structure of subclavian vein (body structure)">
     <display value="Subclavian vein"/>

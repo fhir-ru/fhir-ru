@@ -10,18 +10,18 @@
   <LastPrinted>2015-10-09T14:03:06Z</LastPrinted>
   <Created>2012-03-19T11:12:07Z</Created>
   <LastSaved>2015-11-05T16:54:27Z</LastSaved>
-  <Version>14.0</Version>
+  <Version>15.0</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>7660</WindowHeight>
-  <WindowWidth>29400</WindowWidth>
-  <WindowTopX>960</WindowTopX>
-  <WindowTopY>1980</WindowTopY>
+  <WindowHeight>16880</WindowHeight>
+  <WindowWidth>33600</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>460</WindowTopY>
   <TabRatio>788</TabRatio>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -921,7 +921,6 @@
     <VerticalResolution>600</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -1098,7 +1097,7 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s93"><Data ss:Type="String">OrderFprGenetics</Data><NamedCell
+    <Cell ss:StyleID="s93"><Data ss:Type="String">OrderForGenetics</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1581,6 +1580,7 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Zoom>130</Zoom>
    <PageLayoutZoom>0</PageLayoutZoom>
    <FreezePanes/>
    <FrozenNoSplit/>
@@ -1603,7 +1603,7 @@
     <Pane>
      <Number>0</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -5072,11 +5072,11 @@
     <Cell ss:StyleID="s106"><Data ss:Type="String">Code to indicate the item (test, panel or sequence variant) being ordered</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Item.sequence</Data></Cell>
+    <Cell><Data ss:Type="String">Item.geneticsObservation</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="8" ss:StyleID="s106"><Data ss:Type="String">Reference(Sequence)</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">Indicate the sequence variant ordered to be tested</Data></Cell>
-    <Cell><Data ss:Type="String">Indicate the sequence variant ordered to be tested</Data></Cell>
+    <Cell ss:Index="8" ss:StyleID="s106"><Data ss:Type="String">Reference(Observation)</Data></Cell>
+    <Cell ss:Index="14"><Data ss:Type="String">Indicate the genetic variant ordered to be tested</Data></Cell>
+    <Cell><Data ss:Type="String">Indicate the genetic variant ordered to be tested</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Item.specimen</Data></Cell>
@@ -5105,7 +5105,8 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <PageLayoutZoom>0</PageLayoutZoom>
+   <Zoom>125</Zoom>
+   <PageLayoutZoom>125</PageLayoutZoom>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -5125,8 +5126,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>13</ActiveCol>
-     <RangeSelection>R2C14:R2C15</RangeSelection>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>14</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -5254,6 +5255,7 @@
     <VerticalResolution>-4</VerticalResolution>
    </Print>
    <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>

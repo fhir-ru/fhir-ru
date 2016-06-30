@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
+// Generated on Wed, Jun 29, 2016 09:39+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -48,19 +48,141 @@ import org.hl7.fhir.dstu3.exceptions.FHIRException;
 @ResourceDef(name="ProcessResponse", profile="http://hl7.org/fhir/Profile/ProcessResponse")
 public class ProcessResponse extends DomainResource {
 
+    public enum ProcessResponseStatus {
+        /**
+         * The resource instance is currently in-force.
+         */
+        ACTIVE, 
+        /**
+         * The resource instance is withdrawn, rescinded or reversed.
+         */
+        CANCELLED, 
+        /**
+         * A new resource instance the contents of which is not complete.
+         */
+        DRAFT, 
+        /**
+         * The resource instance was entered in error.
+         */
+        ENTEREDINERROR, 
+        /**
+         * added to help the parsers with the generic types
+         */
+        NULL;
+        public static ProcessResponseStatus fromCode(String codeString) throws FHIRException {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("active".equals(codeString))
+          return ACTIVE;
+        if ("cancelled".equals(codeString))
+          return CANCELLED;
+        if ("draft".equals(codeString))
+          return DRAFT;
+        if ("entered-in-error".equals(codeString))
+          return ENTEREDINERROR;
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown ProcessResponseStatus code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case ACTIVE: return "active";
+            case CANCELLED: return "cancelled";
+            case DRAFT: return "draft";
+            case ENTEREDINERROR: return "entered-in-error";
+            default: return "?";
+          }
+        }
+        public String getSystem() {
+          switch (this) {
+            case ACTIVE: return "http://hl7.org/fhir/processresponse-status";
+            case CANCELLED: return "http://hl7.org/fhir/processresponse-status";
+            case DRAFT: return "http://hl7.org/fhir/processresponse-status";
+            case ENTEREDINERROR: return "http://hl7.org/fhir/processresponse-status";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case ACTIVE: return "The resource instance is currently in-force.";
+            case CANCELLED: return "The resource instance is withdrawn, rescinded or reversed.";
+            case DRAFT: return "A new resource instance the contents of which is not complete.";
+            case ENTEREDINERROR: return "The resource instance was entered in error.";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case ACTIVE: return "Active";
+            case CANCELLED: return "Cancelled";
+            case DRAFT: return "Draft";
+            case ENTEREDINERROR: return "Entered In Error";
+            default: return "?";
+          }
+        }
+    }
+
+  public static class ProcessResponseStatusEnumFactory implements EnumFactory<ProcessResponseStatus> {
+    public ProcessResponseStatus fromCode(String codeString) throws IllegalArgumentException {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("active".equals(codeString))
+          return ProcessResponseStatus.ACTIVE;
+        if ("cancelled".equals(codeString))
+          return ProcessResponseStatus.CANCELLED;
+        if ("draft".equals(codeString))
+          return ProcessResponseStatus.DRAFT;
+        if ("entered-in-error".equals(codeString))
+          return ProcessResponseStatus.ENTEREDINERROR;
+        throw new IllegalArgumentException("Unknown ProcessResponseStatus code '"+codeString+"'");
+        }
+        public Enumeration<ProcessResponseStatus> fromType(Base code) throws FHIRException {
+          if (code == null || code.isEmpty())
+            return null;
+          String codeString = ((PrimitiveType) code).asStringValue();
+          if (codeString == null || "".equals(codeString))
+            return null;
+        if ("active".equals(codeString))
+          return new Enumeration<ProcessResponseStatus>(this, ProcessResponseStatus.ACTIVE);
+        if ("cancelled".equals(codeString))
+          return new Enumeration<ProcessResponseStatus>(this, ProcessResponseStatus.CANCELLED);
+        if ("draft".equals(codeString))
+          return new Enumeration<ProcessResponseStatus>(this, ProcessResponseStatus.DRAFT);
+        if ("entered-in-error".equals(codeString))
+          return new Enumeration<ProcessResponseStatus>(this, ProcessResponseStatus.ENTEREDINERROR);
+        throw new FHIRException("Unknown ProcessResponseStatus code '"+codeString+"'");
+        }
+    public String toCode(ProcessResponseStatus code) {
+      if (code == ProcessResponseStatus.ACTIVE)
+        return "active";
+      if (code == ProcessResponseStatus.CANCELLED)
+        return "cancelled";
+      if (code == ProcessResponseStatus.DRAFT)
+        return "draft";
+      if (code == ProcessResponseStatus.ENTEREDINERROR)
+        return "entered-in-error";
+      return "?";
+      }
+    public String toSystem(ProcessResponseStatus code) {
+      return code.getSystem();
+      }
+    }
+
     @Block()
     public static class ProcessResponseNotesComponent extends BackboneElement implements IBaseBackboneElement {
         /**
          * The note purpose: Print/Display.
          */
-        @Child(name = "type", type = {Coding.class}, order=1, min=0, max=1, modifier=false, summary=true)
+        @Child(name = "type", type = {Coding.class}, order=1, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="display | print | printoper", formalDefinition="The note purpose: Print/Display." )
         protected Coding type;
 
         /**
          * The note text.
          */
-        @Child(name = "text", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=true)
+        @Child(name = "text", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Notes text", formalDefinition="The note text." )
         protected StringType text;
 
@@ -238,8 +360,7 @@ public class ProcessResponse extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (type == null || type.isEmpty()) && (text == null || text.isEmpty())
-          ;
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(type, text);
       }
 
   public String fhirType() {
@@ -252,101 +373,116 @@ public class ProcessResponse extends DomainResource {
     /**
      * The Response business identifier.
      */
-    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Business Identifier", formalDefinition="The Response business identifier." )
     protected List<Identifier> identifier;
 
     /**
+     * The status of the resource instance.
+     */
+    @Child(name = "status", type = {CodeType.class}, order=1, min=1, max=1, modifier=true, summary=true)
+    @Description(shortDefinition="active | cancelled | draft | entered-in-error", formalDefinition="The status of the resource instance." )
+    protected Enumeration<ProcessResponseStatus> status;
+
+    /**
      * Original request resource reference.
      */
-    @Child(name = "request", type = {Identifier.class}, order=1, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "request", type = {Identifier.class}, order=2, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Request reference", formalDefinition="Original request resource reference." )
     protected Type request;
 
     /**
      * Transaction status: error, complete, held.
      */
-    @Child(name = "outcome", type = {Coding.class}, order=2, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "outcome", type = {Coding.class}, order=3, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Processing outcome", formalDefinition="Transaction status: error, complete, held." )
     protected Coding outcome;
 
     /**
      * A description of the status of the adjudication or processing.
      */
-    @Child(name = "disposition", type = {StringType.class}, order=3, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "disposition", type = {StringType.class}, order=4, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Disposition Message", formalDefinition="A description of the status of the adjudication or processing." )
     protected StringType disposition;
 
     /**
      * The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources.
      */
-    @Child(name = "ruleset", type = {Coding.class}, order=4, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "ruleset", type = {Coding.class}, order=5, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Resource version", formalDefinition="The version of the style of resource contents. This should be mapped to the allowable profiles for this and supporting resources." )
     protected Coding ruleset;
 
     /**
      * The style (standard) and version of the original material which was converted into this resource.
      */
-    @Child(name = "originalRuleset", type = {Coding.class}, order=5, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "originalRuleset", type = {Coding.class}, order=6, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Original version", formalDefinition="The style (standard) and version of the original material which was converted into this resource." )
     protected Coding originalRuleset;
 
     /**
      * The date when the enclosed suite of services were performed or completed.
      */
-    @Child(name = "created", type = {DateTimeType.class}, order=6, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "created", type = {DateTimeType.class}, order=7, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Creation date", formalDefinition="The date when the enclosed suite of services were performed or completed." )
     protected DateTimeType created;
 
     /**
      * The organization who produced this adjudicated response.
      */
-    @Child(name = "organization", type = {Identifier.class, Organization.class}, order=7, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "organization", type = {Identifier.class, Organization.class}, order=8, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Authoring Organization", formalDefinition="The organization who produced this adjudicated response." )
     protected Type organization;
 
     /**
      * The practitioner who is responsible for the services rendered to the patient.
      */
-    @Child(name = "requestProvider", type = {Identifier.class, Practitioner.class}, order=8, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "requestProvider", type = {Identifier.class, Practitioner.class}, order=9, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Responsible Practitioner", formalDefinition="The practitioner who is responsible for the services rendered to the patient." )
     protected Type requestProvider;
 
     /**
      * The organization which is responsible for the services rendered to the patient.
      */
-    @Child(name = "requestOrganization", type = {Identifier.class, Organization.class}, order=9, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "requestOrganization", type = {Identifier.class, Organization.class}, order=10, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Responsible organization", formalDefinition="The organization which is responsible for the services rendered to the patient." )
     protected Type requestOrganization;
 
     /**
      * The form to be used for printing the content.
      */
-    @Child(name = "form", type = {Coding.class}, order=10, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "form", type = {Coding.class}, order=11, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Printed Form Identifier", formalDefinition="The form to be used for printing the content." )
     protected Coding form;
 
     /**
      * Suite of processing note or additional requirements is the processing has been held.
      */
-    @Child(name = "notes", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "notes", type = {}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Notes", formalDefinition="Suite of processing note or additional requirements is the processing has been held." )
     protected List<ProcessResponseNotesComponent> notes;
 
     /**
      * Processing errors.
      */
-    @Child(name = "error", type = {Coding.class}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+    @Child(name = "error", type = {Coding.class}, order=13, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Error code", formalDefinition="Processing errors." )
     protected List<Coding> error;
 
-    private static final long serialVersionUID = -501204073L;
+    private static final long serialVersionUID = 283876814L;
 
   /**
    * Constructor
    */
     public ProcessResponse() {
       super();
+    }
+
+  /**
+   * Constructor
+   */
+    public ProcessResponse(Enumeration<ProcessResponseStatus> status) {
+      super();
+      this.status = status;
     }
 
     /**
@@ -358,6 +494,14 @@ public class ProcessResponse extends DomainResource {
       return this.identifier;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public ProcessResponse setIdentifier(List<Identifier> theIdentifier) { 
+      this.identifier = theIdentifier;
+      return this;
+    }
+
     public boolean hasIdentifier() { 
       if (this.identifier == null)
         return false;
@@ -367,10 +511,6 @@ public class ProcessResponse extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #identifier} (The Response business identifier.)
-     */
-    // syntactic sugar
     public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       if (this.identifier == null)
@@ -379,13 +519,67 @@ public class ProcessResponse extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public ProcessResponse addIdentifier(Identifier t) { //3
       if (t == null)
         return this;
       if (this.identifier == null)
         this.identifier = new ArrayList<Identifier>();
       this.identifier.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #identifier}, creating it if it does not already exist
+     */
+    public Identifier getIdentifierFirstRep() { 
+      if (getIdentifier().isEmpty()) {
+        addIdentifier();
+      }
+      return getIdentifier().get(0);
+    }
+
+    /**
+     * @return {@link #status} (The status of the resource instance.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
+     */
+    public Enumeration<ProcessResponseStatus> getStatusElement() { 
+      if (this.status == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create ProcessResponse.status");
+        else if (Configuration.doAutoCreate())
+          this.status = new Enumeration<ProcessResponseStatus>(new ProcessResponseStatusEnumFactory()); // bb
+      return this.status;
+    }
+
+    public boolean hasStatusElement() { 
+      return this.status != null && !this.status.isEmpty();
+    }
+
+    public boolean hasStatus() { 
+      return this.status != null && !this.status.isEmpty();
+    }
+
+    /**
+     * @param value {@link #status} (The status of the resource instance.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
+     */
+    public ProcessResponse setStatusElement(Enumeration<ProcessResponseStatus> value) { 
+      this.status = value;
+      return this;
+    }
+
+    /**
+     * @return The status of the resource instance.
+     */
+    public ProcessResponseStatus getStatus() { 
+      return this.status == null ? null : this.status.getValue();
+    }
+
+    /**
+     * @param value The status of the resource instance.
+     */
+    public ProcessResponse setStatus(ProcessResponseStatus value) { 
+        if (this.status == null)
+          this.status = new Enumeration<ProcessResponseStatus>(new ProcessResponseStatusEnumFactory());
+        this.status.setValue(value);
       return this;
     }
 
@@ -772,6 +966,14 @@ public class ProcessResponse extends DomainResource {
       return this.notes;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public ProcessResponse setNotes(List<ProcessResponseNotesComponent> theNotes) { 
+      this.notes = theNotes;
+      return this;
+    }
+
     public boolean hasNotes() { 
       if (this.notes == null)
         return false;
@@ -781,10 +983,6 @@ public class ProcessResponse extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #notes} (Suite of processing note or additional requirements is the processing has been held.)
-     */
-    // syntactic sugar
     public ProcessResponseNotesComponent addNotes() { //3
       ProcessResponseNotesComponent t = new ProcessResponseNotesComponent();
       if (this.notes == null)
@@ -793,7 +991,6 @@ public class ProcessResponse extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public ProcessResponse addNotes(ProcessResponseNotesComponent t) { //3
       if (t == null)
         return this;
@@ -801,6 +998,16 @@ public class ProcessResponse extends DomainResource {
         this.notes = new ArrayList<ProcessResponseNotesComponent>();
       this.notes.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #notes}, creating it if it does not already exist
+     */
+    public ProcessResponseNotesComponent getNotesFirstRep() { 
+      if (getNotes().isEmpty()) {
+        addNotes();
+      }
+      return getNotes().get(0);
     }
 
     /**
@@ -812,6 +1019,14 @@ public class ProcessResponse extends DomainResource {
       return this.error;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public ProcessResponse setError(List<Coding> theError) { 
+      this.error = theError;
+      return this;
+    }
+
     public boolean hasError() { 
       if (this.error == null)
         return false;
@@ -821,10 +1036,6 @@ public class ProcessResponse extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #error} (Processing errors.)
-     */
-    // syntactic sugar
     public Coding addError() { //3
       Coding t = new Coding();
       if (this.error == null)
@@ -833,7 +1044,6 @@ public class ProcessResponse extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public ProcessResponse addError(Coding t) { //3
       if (t == null)
         return this;
@@ -843,9 +1053,20 @@ public class ProcessResponse extends DomainResource {
       return this;
     }
 
+    /**
+     * @return The first repetition of repeating field {@link #error}, creating it if it does not already exist
+     */
+    public Coding getErrorFirstRep() { 
+      if (getError().isEmpty()) {
+        addError();
+      }
+      return getError().get(0);
+    }
+
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "The Response business identifier.", 0, java.lang.Integer.MAX_VALUE, identifier));
+        childrenList.add(new Property("status", "code", "The status of the resource instance.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("request[x]", "Identifier|Reference(Any)", "Original request resource reference.", 0, java.lang.Integer.MAX_VALUE, request));
         childrenList.add(new Property("outcome", "Coding", "Transaction status: error, complete, held.", 0, java.lang.Integer.MAX_VALUE, outcome));
         childrenList.add(new Property("disposition", "string", "A description of the status of the adjudication or processing.", 0, java.lang.Integer.MAX_VALUE, disposition));
@@ -864,6 +1085,7 @@ public class ProcessResponse extends DomainResource {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : this.identifier.toArray(new Base[this.identifier.size()]); // Identifier
+        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<ProcessResponseStatus>
         case 1095692943: /*request*/ return this.request == null ? new Base[0] : new Base[] {this.request}; // Type
         case -1106507950: /*outcome*/ return this.outcome == null ? new Base[0] : new Base[] {this.outcome}; // Coding
         case 583380919: /*disposition*/ return this.disposition == null ? new Base[0] : new Base[] {this.disposition}; // StringType
@@ -886,6 +1108,9 @@ public class ProcessResponse extends DomainResource {
         switch (hash) {
         case -1618432855: // identifier
           this.getIdentifier().add(castToIdentifier(value)); // Identifier
+          break;
+        case -892481550: // status
+          this.status = new ProcessResponseStatusEnumFactory().fromType(value); // Enumeration<ProcessResponseStatus>
           break;
         case 1095692943: // request
           this.request = (Type) value; // Type
@@ -932,6 +1157,8 @@ public class ProcessResponse extends DomainResource {
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("identifier"))
           this.getIdentifier().add(castToIdentifier(value));
+        else if (name.equals("status"))
+          this.status = new ProcessResponseStatusEnumFactory().fromType(value); // Enumeration<ProcessResponseStatus>
         else if (name.equals("request[x]"))
           this.request = (Type) value; // Type
         else if (name.equals("outcome"))
@@ -964,6 +1191,7 @@ public class ProcessResponse extends DomainResource {
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case -1618432855:  return addIdentifier(); // Identifier
+        case -892481550: throw new FHIRException("Cannot make property status as it is not a complex type"); // Enumeration<ProcessResponseStatus>
         case 37106577:  return getRequest(); // Type
         case -1106507950:  return getOutcome(); // Coding
         case 583380919: throw new FHIRException("Cannot make property disposition as it is not a complex type"); // StringType
@@ -985,6 +1213,9 @@ public class ProcessResponse extends DomainResource {
       public Base addChild(String name) throws FHIRException {
         if (name.equals("identifier")) {
           return addIdentifier();
+        }
+        else if (name.equals("status")) {
+          throw new FHIRException("Cannot call addChild on a primitive type ProcessResponse.status");
         }
         else if (name.equals("requestIdentifier")) {
           this.request = new Identifier();
@@ -1063,6 +1294,7 @@ public class ProcessResponse extends DomainResource {
           for (Identifier i : identifier)
             dst.identifier.add(i.copy());
         };
+        dst.status = status == null ? null : status.copy();
         dst.request = request == null ? null : request.copy();
         dst.outcome = outcome == null ? null : outcome.copy();
         dst.disposition = disposition == null ? null : disposition.copy();
@@ -1097,9 +1329,10 @@ public class ProcessResponse extends DomainResource {
         if (!(other instanceof ProcessResponse))
           return false;
         ProcessResponse o = (ProcessResponse) other;
-        return compareDeep(identifier, o.identifier, true) && compareDeep(request, o.request, true) && compareDeep(outcome, o.outcome, true)
-           && compareDeep(disposition, o.disposition, true) && compareDeep(ruleset, o.ruleset, true) && compareDeep(originalRuleset, o.originalRuleset, true)
-           && compareDeep(created, o.created, true) && compareDeep(organization, o.organization, true) && compareDeep(requestProvider, o.requestProvider, true)
+        return compareDeep(identifier, o.identifier, true) && compareDeep(status, o.status, true) && compareDeep(request, o.request, true)
+           && compareDeep(outcome, o.outcome, true) && compareDeep(disposition, o.disposition, true) && compareDeep(ruleset, o.ruleset, true)
+           && compareDeep(originalRuleset, o.originalRuleset, true) && compareDeep(created, o.created, true)
+           && compareDeep(organization, o.organization, true) && compareDeep(requestProvider, o.requestProvider, true)
            && compareDeep(requestOrganization, o.requestOrganization, true) && compareDeep(form, o.form, true)
            && compareDeep(notes, o.notes, true) && compareDeep(error, o.error, true);
       }
@@ -1111,69 +1344,20 @@ public class ProcessResponse extends DomainResource {
         if (!(other instanceof ProcessResponse))
           return false;
         ProcessResponse o = (ProcessResponse) other;
-        return compareValues(disposition, o.disposition, true) && compareValues(created, o.created, true);
+        return compareValues(status, o.status, true) && compareValues(disposition, o.disposition, true) && compareValues(created, o.created, true)
+          ;
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (request == null || request.isEmpty())
-           && (outcome == null || outcome.isEmpty()) && (disposition == null || disposition.isEmpty())
-           && (ruleset == null || ruleset.isEmpty()) && (originalRuleset == null || originalRuleset.isEmpty())
-           && (created == null || created.isEmpty()) && (organization == null || organization.isEmpty())
-           && (requestProvider == null || requestProvider.isEmpty()) && (requestOrganization == null || requestOrganization.isEmpty())
-           && (form == null || form.isEmpty()) && (notes == null || notes.isEmpty()) && (error == null || error.isEmpty())
-          ;
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, status, request
+          , outcome, disposition, ruleset, originalRuleset, created, organization, requestProvider
+          , requestOrganization, form, notes, error);
       }
 
   @Override
   public ResourceType getResourceType() {
     return ResourceType.ProcessResponse;
    }
-
- /**
-   * Search parameter: <b>requestorganizationreference</b>
-   * <p>
-   * Description: <b>The Organization who is responsible the request transaction</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ProcessResponse.requestOrganizationReference</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="requestorganizationreference", path="ProcessResponse.requestOrganization.as(Reference)", description="The Organization who is responsible the request transaction", type="reference" )
-  public static final String SP_REQUESTORGANIZATIONREFERENCE = "requestorganizationreference";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>requestorganizationreference</b>
-   * <p>
-   * Description: <b>The Organization who is responsible the request transaction</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ProcessResponse.requestOrganizationReference</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam REQUESTORGANIZATIONREFERENCE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_REQUESTORGANIZATIONREFERENCE);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>ProcessResponse:requestorganizationreference</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_REQUESTORGANIZATIONREFERENCE = new ca.uhn.fhir.model.api.Include("ProcessResponse:requestorganizationreference").toLocked();
-
- /**
-   * Search parameter: <b>requestorganizationidentifier</b>
-   * <p>
-   * Description: <b>The Organization who is responsible the request transaction</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ProcessResponse.requestOrganizationIdentifier</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="requestorganizationidentifier", path="ProcessResponse.requestOrganization.as(Identifier)", description="The Organization who is responsible the request transaction", type="token" )
-  public static final String SP_REQUESTORGANIZATIONIDENTIFIER = "requestorganizationidentifier";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>requestorganizationidentifier</b>
-   * <p>
-   * Description: <b>The Organization who is responsible the request transaction</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ProcessResponse.requestOrganizationIdentifier</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam REQUESTORGANIZATIONIDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_REQUESTORGANIZATIONIDENTIFIER);
 
  /**
    * Search parameter: <b>requestprovideridentifier</b>
@@ -1196,50 +1380,44 @@ public class ProcessResponse extends DomainResource {
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam REQUESTPROVIDERIDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_REQUESTPROVIDERIDENTIFIER);
 
  /**
-   * Search parameter: <b>requestidentifier</b>
+   * Search parameter: <b>requestorganizationidentifier</b>
    * <p>
-   * Description: <b>The reference to the claim</b><br>
+   * Description: <b>The Organization who is responsible the request transaction</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>ProcessResponse.requestIdentifier</b><br>
+   * Path: <b>ProcessResponse.requestOrganizationIdentifier</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="requestidentifier", path="ProcessResponse.request.as(Identifier)", description="The reference to the claim", type="token" )
-  public static final String SP_REQUESTIDENTIFIER = "requestidentifier";
+  @SearchParamDefinition(name="requestorganizationidentifier", path="ProcessResponse.requestOrganization.as(Identifier)", description="The Organization who is responsible the request transaction", type="token" )
+  public static final String SP_REQUESTORGANIZATIONIDENTIFIER = "requestorganizationidentifier";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>requestidentifier</b>
+   * <b>Fluent Client</b> search parameter constant for <b>requestorganizationidentifier</b>
    * <p>
-   * Description: <b>The reference to the claim</b><br>
+   * Description: <b>The Organization who is responsible the request transaction</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>ProcessResponse.requestIdentifier</b><br>
+   * Path: <b>ProcessResponse.requestOrganizationIdentifier</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam REQUESTIDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_REQUESTIDENTIFIER);
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam REQUESTORGANIZATIONIDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_REQUESTORGANIZATIONIDENTIFIER);
 
  /**
-   * Search parameter: <b>requestreference</b>
+   * Search parameter: <b>identifier</b>
    * <p>
-   * Description: <b>The reference to the claim</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ProcessResponse.requestReference</b><br>
+   * Description: <b>The business identifier of the Explanation of Benefit</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>ProcessResponse.identifier</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="requestreference", path="ProcessResponse.request.as(Reference)", description="The reference to the claim", type="reference" )
-  public static final String SP_REQUESTREFERENCE = "requestreference";
+  @SearchParamDefinition(name="identifier", path="ProcessResponse.identifier", description="The business identifier of the Explanation of Benefit", type="token" )
+  public static final String SP_IDENTIFIER = "identifier";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>requestreference</b>
+   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
    * <p>
-   * Description: <b>The reference to the claim</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ProcessResponse.requestReference</b><br>
+   * Description: <b>The business identifier of the Explanation of Benefit</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>ProcessResponse.identifier</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam REQUESTREFERENCE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_REQUESTREFERENCE);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>ProcessResponse:requestreference</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_REQUESTREFERENCE = new ca.uhn.fhir.model.api.Include("ProcessResponse:requestreference").toLocked();
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
 
  /**
    * Search parameter: <b>organizationidentifier</b>
@@ -1262,30 +1440,24 @@ public class ProcessResponse extends DomainResource {
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam ORGANIZATIONIDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_ORGANIZATIONIDENTIFIER);
 
  /**
-   * Search parameter: <b>requestproviderreference</b>
+   * Search parameter: <b>requestidentifier</b>
    * <p>
-   * Description: <b>The Provider who is responsible the request transaction</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ProcessResponse.requestProviderReference</b><br>
+   * Description: <b>The reference to the claim</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>ProcessResponse.requestIdentifier</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="requestproviderreference", path="ProcessResponse.requestProvider.as(Reference)", description="The Provider who is responsible the request transaction", type="reference" )
-  public static final String SP_REQUESTPROVIDERREFERENCE = "requestproviderreference";
+  @SearchParamDefinition(name="requestidentifier", path="ProcessResponse.request.as(Identifier)", description="The reference to the claim", type="token" )
+  public static final String SP_REQUESTIDENTIFIER = "requestidentifier";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>requestproviderreference</b>
+   * <b>Fluent Client</b> search parameter constant for <b>requestidentifier</b>
    * <p>
-   * Description: <b>The Provider who is responsible the request transaction</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>ProcessResponse.requestProviderReference</b><br>
+   * Description: <b>The reference to the claim</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>ProcessResponse.requestIdentifier</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam REQUESTPROVIDERREFERENCE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_REQUESTPROVIDERREFERENCE);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>ProcessResponse:requestproviderreference</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_REQUESTPROVIDERREFERENCE = new ca.uhn.fhir.model.api.Include("ProcessResponse:requestproviderreference").toLocked();
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam REQUESTIDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_REQUESTIDENTIFIER);
 
  /**
    * Search parameter: <b>organizationreference</b>
@@ -1314,24 +1486,82 @@ public class ProcessResponse extends DomainResource {
   public static final ca.uhn.fhir.model.api.Include INCLUDE_ORGANIZATIONREFERENCE = new ca.uhn.fhir.model.api.Include("ProcessResponse:organizationreference").toLocked();
 
  /**
-   * Search parameter: <b>identifier</b>
+   * Search parameter: <b>requestproviderreference</b>
    * <p>
-   * Description: <b>The business identifier of the Explanation of Benefit</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ProcessResponse.identifier</b><br>
+   * Description: <b>The Provider who is responsible the request transaction</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>ProcessResponse.requestProviderReference</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="identifier", path="ProcessResponse.identifier", description="The business identifier of the Explanation of Benefit", type="token" )
-  public static final String SP_IDENTIFIER = "identifier";
+  @SearchParamDefinition(name="requestproviderreference", path="ProcessResponse.requestProvider.as(Reference)", description="The Provider who is responsible the request transaction", type="reference" )
+  public static final String SP_REQUESTPROVIDERREFERENCE = "requestproviderreference";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
+   * <b>Fluent Client</b> search parameter constant for <b>requestproviderreference</b>
    * <p>
-   * Description: <b>The business identifier of the Explanation of Benefit</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>ProcessResponse.identifier</b><br>
+   * Description: <b>The Provider who is responsible the request transaction</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>ProcessResponse.requestProviderReference</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam REQUESTPROVIDERREFERENCE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_REQUESTPROVIDERREFERENCE);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>ProcessResponse:requestproviderreference</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_REQUESTPROVIDERREFERENCE = new ca.uhn.fhir.model.api.Include("ProcessResponse:requestproviderreference").toLocked();
+
+ /**
+   * Search parameter: <b>requestorganizationreference</b>
+   * <p>
+   * Description: <b>The Organization who is responsible the request transaction</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>ProcessResponse.requestOrganizationReference</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="requestorganizationreference", path="ProcessResponse.requestOrganization.as(Reference)", description="The Organization who is responsible the request transaction", type="reference" )
+  public static final String SP_REQUESTORGANIZATIONREFERENCE = "requestorganizationreference";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>requestorganizationreference</b>
+   * <p>
+   * Description: <b>The Organization who is responsible the request transaction</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>ProcessResponse.requestOrganizationReference</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam REQUESTORGANIZATIONREFERENCE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_REQUESTORGANIZATIONREFERENCE);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>ProcessResponse:requestorganizationreference</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_REQUESTORGANIZATIONREFERENCE = new ca.uhn.fhir.model.api.Include("ProcessResponse:requestorganizationreference").toLocked();
+
+ /**
+   * Search parameter: <b>requestreference</b>
+   * <p>
+   * Description: <b>The reference to the claim</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>ProcessResponse.requestReference</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="requestreference", path="ProcessResponse.request.as(Reference)", description="The reference to the claim", type="reference" )
+  public static final String SP_REQUESTREFERENCE = "requestreference";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>requestreference</b>
+   * <p>
+   * Description: <b>The reference to the claim</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>ProcessResponse.requestReference</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam REQUESTREFERENCE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_REQUESTREFERENCE);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>ProcessResponse:requestreference</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_REQUESTREFERENCE = new ca.uhn.fhir.model.api.Include("ProcessResponse:requestreference").toLocked();
 
 
 }

@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
+// Generated on Wed, Jun 29, 2016 09:39+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -223,13 +223,13 @@ public class MedicationAdministration extends DomainResource {
         protected SimpleQuantity dose;
 
         /**
-         * Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
+         * Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.
          */
-        @Child(name = "rate", type = {Ratio.class}, order=6, min=0, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Dose quantity per unit of time", formalDefinition="Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours." )
-        protected Ratio rate;
+        @Child(name = "rate", type = {Ratio.class, SimpleQuantity.class}, order=6, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Dose quantity per unit of time", formalDefinition="Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours." )
+        protected Type rate;
 
-        private static final long serialVersionUID = -1651697850L;
+        private static final long serialVersionUID = -1359632689L;
 
     /**
      * Constructor
@@ -405,15 +405,36 @@ public class MedicationAdministration extends DomainResource {
         }
 
         /**
-         * @return {@link #rate} (Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.)
+         * @return {@link #rate} (Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.)
          */
-        public Ratio getRate() { 
-          if (this.rate == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create MedicationAdministrationDosageComponent.rate");
-            else if (Configuration.doAutoCreate())
-              this.rate = new Ratio(); // cc
+        public Type getRate() { 
           return this.rate;
+        }
+
+        /**
+         * @return {@link #rate} (Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.)
+         */
+        public Ratio getRateRatio() throws FHIRException { 
+          if (!(this.rate instanceof Ratio))
+            throw new FHIRException("Type mismatch: the type Ratio was expected, but "+this.rate.getClass().getName()+" was encountered");
+          return (Ratio) this.rate;
+        }
+
+        public boolean hasRateRatio() { 
+          return this.rate instanceof Ratio;
+        }
+
+        /**
+         * @return {@link #rate} (Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.)
+         */
+        public SimpleQuantity getRateSimpleQuantity() throws FHIRException { 
+          if (!(this.rate instanceof SimpleQuantity))
+            throw new FHIRException("Type mismatch: the type SimpleQuantity was expected, but "+this.rate.getClass().getName()+" was encountered");
+          return (SimpleQuantity) this.rate;
+        }
+
+        public boolean hasRateSimpleQuantity() { 
+          return this.rate instanceof SimpleQuantity;
         }
 
         public boolean hasRate() { 
@@ -421,9 +442,9 @@ public class MedicationAdministration extends DomainResource {
         }
 
         /**
-         * @param value {@link #rate} (Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.)
+         * @param value {@link #rate} (Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.)
          */
-        public MedicationAdministrationDosageComponent setRate(Ratio value) { 
+        public MedicationAdministrationDosageComponent setRate(Type value) { 
           this.rate = value;
           return this;
         }
@@ -435,7 +456,7 @@ public class MedicationAdministration extends DomainResource {
           childrenList.add(new Property("route", "CodeableConcept", "A code specifying the route or physiological path of administration of a therapeutic agent into or onto the patient.  For example, topical, intravenous, etc.", 0, java.lang.Integer.MAX_VALUE, route));
           childrenList.add(new Property("method", "CodeableConcept", "A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.", 0, java.lang.Integer.MAX_VALUE, method));
           childrenList.add(new Property("dose", "SimpleQuantity", "The amount of the medication given at one administration event.   Use this value when the administration is essentially an instantaneous event such as a swallowing a tablet or giving an injection.", 0, java.lang.Integer.MAX_VALUE, dose));
-          childrenList.add(new Property("rate", "Ratio", "Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Currently we do not specify a default of '1' in the denominator, but this is being discussed.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.", 0, java.lang.Integer.MAX_VALUE, rate));
+          childrenList.add(new Property("rate[x]", "Ratio|SimpleQuantity", "Identifies the speed with which the medication was or will be introduced into the patient.  Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.", 0, java.lang.Integer.MAX_VALUE, rate));
         }
 
       @Override
@@ -446,7 +467,7 @@ public class MedicationAdministration extends DomainResource {
         case 108704329: /*route*/ return this.route == null ? new Base[0] : new Base[] {this.route}; // CodeableConcept
         case -1077554975: /*method*/ return this.method == null ? new Base[0] : new Base[] {this.method}; // CodeableConcept
         case 3089437: /*dose*/ return this.dose == null ? new Base[0] : new Base[] {this.dose}; // SimpleQuantity
-        case 3493088: /*rate*/ return this.rate == null ? new Base[0] : new Base[] {this.rate}; // Ratio
+        case 3493088: /*rate*/ return this.rate == null ? new Base[0] : new Base[] {this.rate}; // Type
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -471,7 +492,7 @@ public class MedicationAdministration extends DomainResource {
           this.dose = castToSimpleQuantity(value); // SimpleQuantity
           break;
         case 3493088: // rate
-          this.rate = castToRatio(value); // Ratio
+          this.rate = (Type) value; // Type
           break;
         default: super.setProperty(hash, name, value);
         }
@@ -490,8 +511,8 @@ public class MedicationAdministration extends DomainResource {
           this.method = castToCodeableConcept(value); // CodeableConcept
         else if (name.equals("dose"))
           this.dose = castToSimpleQuantity(value); // SimpleQuantity
-        else if (name.equals("rate"))
-          this.rate = castToRatio(value); // Ratio
+        else if (name.equals("rate[x]"))
+          this.rate = (Type) value; // Type
         else
           super.setProperty(name, value);
       }
@@ -504,7 +525,7 @@ public class MedicationAdministration extends DomainResource {
         case 108704329:  return getRoute(); // CodeableConcept
         case -1077554975:  return getMethod(); // CodeableConcept
         case 3089437:  return getDose(); // SimpleQuantity
-        case 3493088:  return getRate(); // Ratio
+        case 983460768:  return getRate(); // Type
         default: return super.makeProperty(hash, name);
         }
 
@@ -535,8 +556,12 @@ public class MedicationAdministration extends DomainResource {
           this.dose = new SimpleQuantity();
           return this.dose;
         }
-        else if (name.equals("rate")) {
+        else if (name.equals("rateRatio")) {
           this.rate = new Ratio();
+          return this.rate;
+        }
+        else if (name.equals("rateSimpleQuantity")) {
+          this.rate = new SimpleQuantity();
           return this.rate;
         }
         else
@@ -578,13 +603,396 @@ public class MedicationAdministration extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (text == null || text.isEmpty()) && (site == null || site.isEmpty())
-           && (route == null || route.isEmpty()) && (method == null || method.isEmpty()) && (dose == null || dose.isEmpty())
-           && (rate == null || rate.isEmpty());
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(text, site, route, method
+          , dose, rate);
       }
 
   public String fhirType() {
     return "MedicationAdministration.dosage";
+
+  }
+
+  }
+
+    @Block()
+    public static class MedicationAdministrationEventHistoryComponent extends BackboneElement implements IBaseBackboneElement {
+        /**
+         * The status for the event.
+         */
+        @Child(name = "status", type = {CodeType.class}, order=1, min=1, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="in-progress | on-hold | completed | entered-in-error | stopped", formalDefinition="The status for the event." )
+        protected Enumeration<MedicationAdministrationStatus> status;
+
+        /**
+         * The action that was taken (e.g. verify).
+         */
+        @Child(name = "action", type = {CodeableConcept.class}, order=2, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Action taken (e.g. verify)", formalDefinition="The action that was taken (e.g. verify)." )
+        protected CodeableConcept action;
+
+        /**
+         * The date/time at which the event occurred.
+         */
+        @Child(name = "dateTime", type = {DateTimeType.class}, order=3, min=1, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="The date at which the event happened", formalDefinition="The date/time at which the event occurred." )
+        protected DateTimeType dateTime;
+
+        /**
+         * The person responsible for taking the action.
+         */
+        @Child(name = "actor", type = {Practitioner.class}, order=4, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Who took the action", formalDefinition="The person responsible for taking the action." )
+        protected Reference actor;
+
+        /**
+         * The actual object that is the target of the reference (The person responsible for taking the action.)
+         */
+        protected Practitioner actorTarget;
+
+        /**
+         * The reason why the action was taken.
+         */
+        @Child(name = "reason", type = {CodeableConcept.class}, order=5, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Reason the action was taken", formalDefinition="The reason why the action was taken." )
+        protected CodeableConcept reason;
+
+        private static final long serialVersionUID = 1371667422L;
+
+    /**
+     * Constructor
+     */
+      public MedicationAdministrationEventHistoryComponent() {
+        super();
+      }
+
+    /**
+     * Constructor
+     */
+      public MedicationAdministrationEventHistoryComponent(Enumeration<MedicationAdministrationStatus> status, DateTimeType dateTime) {
+        super();
+        this.status = status;
+        this.dateTime = dateTime;
+      }
+
+        /**
+         * @return {@link #status} (The status for the event.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
+         */
+        public Enumeration<MedicationAdministrationStatus> getStatusElement() { 
+          if (this.status == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create MedicationAdministrationEventHistoryComponent.status");
+            else if (Configuration.doAutoCreate())
+              this.status = new Enumeration<MedicationAdministrationStatus>(new MedicationAdministrationStatusEnumFactory()); // bb
+          return this.status;
+        }
+
+        public boolean hasStatusElement() { 
+          return this.status != null && !this.status.isEmpty();
+        }
+
+        public boolean hasStatus() { 
+          return this.status != null && !this.status.isEmpty();
+        }
+
+        /**
+         * @param value {@link #status} (The status for the event.). This is the underlying object with id, value and extensions. The accessor "getStatus" gives direct access to the value
+         */
+        public MedicationAdministrationEventHistoryComponent setStatusElement(Enumeration<MedicationAdministrationStatus> value) { 
+          this.status = value;
+          return this;
+        }
+
+        /**
+         * @return The status for the event.
+         */
+        public MedicationAdministrationStatus getStatus() { 
+          return this.status == null ? null : this.status.getValue();
+        }
+
+        /**
+         * @param value The status for the event.
+         */
+        public MedicationAdministrationEventHistoryComponent setStatus(MedicationAdministrationStatus value) { 
+            if (this.status == null)
+              this.status = new Enumeration<MedicationAdministrationStatus>(new MedicationAdministrationStatusEnumFactory());
+            this.status.setValue(value);
+          return this;
+        }
+
+        /**
+         * @return {@link #action} (The action that was taken (e.g. verify).)
+         */
+        public CodeableConcept getAction() { 
+          if (this.action == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create MedicationAdministrationEventHistoryComponent.action");
+            else if (Configuration.doAutoCreate())
+              this.action = new CodeableConcept(); // cc
+          return this.action;
+        }
+
+        public boolean hasAction() { 
+          return this.action != null && !this.action.isEmpty();
+        }
+
+        /**
+         * @param value {@link #action} (The action that was taken (e.g. verify).)
+         */
+        public MedicationAdministrationEventHistoryComponent setAction(CodeableConcept value) { 
+          this.action = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #dateTime} (The date/time at which the event occurred.). This is the underlying object with id, value and extensions. The accessor "getDateTime" gives direct access to the value
+         */
+        public DateTimeType getDateTimeElement() { 
+          if (this.dateTime == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create MedicationAdministrationEventHistoryComponent.dateTime");
+            else if (Configuration.doAutoCreate())
+              this.dateTime = new DateTimeType(); // bb
+          return this.dateTime;
+        }
+
+        public boolean hasDateTimeElement() { 
+          return this.dateTime != null && !this.dateTime.isEmpty();
+        }
+
+        public boolean hasDateTime() { 
+          return this.dateTime != null && !this.dateTime.isEmpty();
+        }
+
+        /**
+         * @param value {@link #dateTime} (The date/time at which the event occurred.). This is the underlying object with id, value and extensions. The accessor "getDateTime" gives direct access to the value
+         */
+        public MedicationAdministrationEventHistoryComponent setDateTimeElement(DateTimeType value) { 
+          this.dateTime = value;
+          return this;
+        }
+
+        /**
+         * @return The date/time at which the event occurred.
+         */
+        public Date getDateTime() { 
+          return this.dateTime == null ? null : this.dateTime.getValue();
+        }
+
+        /**
+         * @param value The date/time at which the event occurred.
+         */
+        public MedicationAdministrationEventHistoryComponent setDateTime(Date value) { 
+            if (this.dateTime == null)
+              this.dateTime = new DateTimeType();
+            this.dateTime.setValue(value);
+          return this;
+        }
+
+        /**
+         * @return {@link #actor} (The person responsible for taking the action.)
+         */
+        public Reference getActor() { 
+          if (this.actor == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create MedicationAdministrationEventHistoryComponent.actor");
+            else if (Configuration.doAutoCreate())
+              this.actor = new Reference(); // cc
+          return this.actor;
+        }
+
+        public boolean hasActor() { 
+          return this.actor != null && !this.actor.isEmpty();
+        }
+
+        /**
+         * @param value {@link #actor} (The person responsible for taking the action.)
+         */
+        public MedicationAdministrationEventHistoryComponent setActor(Reference value) { 
+          this.actor = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #actor} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The person responsible for taking the action.)
+         */
+        public Practitioner getActorTarget() { 
+          if (this.actorTarget == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create MedicationAdministrationEventHistoryComponent.actor");
+            else if (Configuration.doAutoCreate())
+              this.actorTarget = new Practitioner(); // aa
+          return this.actorTarget;
+        }
+
+        /**
+         * @param value {@link #actor} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The person responsible for taking the action.)
+         */
+        public MedicationAdministrationEventHistoryComponent setActorTarget(Practitioner value) { 
+          this.actorTarget = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #reason} (The reason why the action was taken.)
+         */
+        public CodeableConcept getReason() { 
+          if (this.reason == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create MedicationAdministrationEventHistoryComponent.reason");
+            else if (Configuration.doAutoCreate())
+              this.reason = new CodeableConcept(); // cc
+          return this.reason;
+        }
+
+        public boolean hasReason() { 
+          return this.reason != null && !this.reason.isEmpty();
+        }
+
+        /**
+         * @param value {@link #reason} (The reason why the action was taken.)
+         */
+        public MedicationAdministrationEventHistoryComponent setReason(CodeableConcept value) { 
+          this.reason = value;
+          return this;
+        }
+
+        protected void listChildren(List<Property> childrenList) {
+          super.listChildren(childrenList);
+          childrenList.add(new Property("status", "code", "The status for the event.", 0, java.lang.Integer.MAX_VALUE, status));
+          childrenList.add(new Property("action", "CodeableConcept", "The action that was taken (e.g. verify).", 0, java.lang.Integer.MAX_VALUE, action));
+          childrenList.add(new Property("dateTime", "dateTime", "The date/time at which the event occurred.", 0, java.lang.Integer.MAX_VALUE, dateTime));
+          childrenList.add(new Property("actor", "Reference(Practitioner)", "The person responsible for taking the action.", 0, java.lang.Integer.MAX_VALUE, actor));
+          childrenList.add(new Property("reason", "CodeableConcept", "The reason why the action was taken.", 0, java.lang.Integer.MAX_VALUE, reason));
+        }
+
+      @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<MedicationAdministrationStatus>
+        case -1422950858: /*action*/ return this.action == null ? new Base[0] : new Base[] {this.action}; // CodeableConcept
+        case 1792749467: /*dateTime*/ return this.dateTime == null ? new Base[0] : new Base[] {this.dateTime}; // DateTimeType
+        case 92645877: /*actor*/ return this.actor == null ? new Base[0] : new Base[] {this.actor}; // Reference
+        case -934964668: /*reason*/ return this.reason == null ? new Base[0] : new Base[] {this.reason}; // CodeableConcept
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public void setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case -892481550: // status
+          this.status = new MedicationAdministrationStatusEnumFactory().fromType(value); // Enumeration<MedicationAdministrationStatus>
+          break;
+        case -1422950858: // action
+          this.action = castToCodeableConcept(value); // CodeableConcept
+          break;
+        case 1792749467: // dateTime
+          this.dateTime = castToDateTime(value); // DateTimeType
+          break;
+        case 92645877: // actor
+          this.actor = castToReference(value); // Reference
+          break;
+        case -934964668: // reason
+          this.reason = castToCodeableConcept(value); // CodeableConcept
+          break;
+        default: super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
+      public void setProperty(String name, Base value) throws FHIRException {
+        if (name.equals("status"))
+          this.status = new MedicationAdministrationStatusEnumFactory().fromType(value); // Enumeration<MedicationAdministrationStatus>
+        else if (name.equals("action"))
+          this.action = castToCodeableConcept(value); // CodeableConcept
+        else if (name.equals("dateTime"))
+          this.dateTime = castToDateTime(value); // DateTimeType
+        else if (name.equals("actor"))
+          this.actor = castToReference(value); // Reference
+        else if (name.equals("reason"))
+          this.reason = castToCodeableConcept(value); // CodeableConcept
+        else
+          super.setProperty(name, value);
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case -892481550: throw new FHIRException("Cannot make property status as it is not a complex type"); // Enumeration<MedicationAdministrationStatus>
+        case -1422950858:  return getAction(); // CodeableConcept
+        case 1792749467: throw new FHIRException("Cannot make property dateTime as it is not a complex type"); // DateTimeType
+        case 92645877:  return getActor(); // Reference
+        case -934964668:  return getReason(); // CodeableConcept
+        default: return super.makeProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public Base addChild(String name) throws FHIRException {
+        if (name.equals("status")) {
+          throw new FHIRException("Cannot call addChild on a primitive type MedicationAdministration.status");
+        }
+        else if (name.equals("action")) {
+          this.action = new CodeableConcept();
+          return this.action;
+        }
+        else if (name.equals("dateTime")) {
+          throw new FHIRException("Cannot call addChild on a primitive type MedicationAdministration.dateTime");
+        }
+        else if (name.equals("actor")) {
+          this.actor = new Reference();
+          return this.actor;
+        }
+        else if (name.equals("reason")) {
+          this.reason = new CodeableConcept();
+          return this.reason;
+        }
+        else
+          return super.addChild(name);
+      }
+
+      public MedicationAdministrationEventHistoryComponent copy() {
+        MedicationAdministrationEventHistoryComponent dst = new MedicationAdministrationEventHistoryComponent();
+        copyValues(dst);
+        dst.status = status == null ? null : status.copy();
+        dst.action = action == null ? null : action.copy();
+        dst.dateTime = dateTime == null ? null : dateTime.copy();
+        dst.actor = actor == null ? null : actor.copy();
+        dst.reason = reason == null ? null : reason.copy();
+        return dst;
+      }
+
+      @Override
+      public boolean equalsDeep(Base other) {
+        if (!super.equalsDeep(other))
+          return false;
+        if (!(other instanceof MedicationAdministrationEventHistoryComponent))
+          return false;
+        MedicationAdministrationEventHistoryComponent o = (MedicationAdministrationEventHistoryComponent) other;
+        return compareDeep(status, o.status, true) && compareDeep(action, o.action, true) && compareDeep(dateTime, o.dateTime, true)
+           && compareDeep(actor, o.actor, true) && compareDeep(reason, o.reason, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other) {
+        if (!super.equalsShallow(other))
+          return false;
+        if (!(other instanceof MedicationAdministrationEventHistoryComponent))
+          return false;
+        MedicationAdministrationEventHistoryComponent o = (MedicationAdministrationEventHistoryComponent) other;
+        return compareValues(status, o.status, true) && compareValues(dateTime, o.dateTime, true);
+      }
+
+      public boolean isEmpty() {
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(status, action, dateTime
+          , actor, reason);
+      }
+
+  public String fhirType() {
+    return "MedicationAdministration.eventHistory";
 
   }
 
@@ -669,7 +1077,7 @@ public class MedicationAdministration extends DomainResource {
     /**
      * Set this to true if the record is saying that the medication was NOT administered.
      */
-    @Child(name = "wasNotGiven", type = {BooleanType.class}, order=8, min=0, max=1, modifier=true, summary=false)
+    @Child(name = "wasNotGiven", type = {BooleanType.class}, order=8, min=0, max=1, modifier=true, summary=true)
     @Description(shortDefinition="True if medication not administered", formalDefinition="Set this to true if the record is saying that the medication was NOT administered." )
     protected BooleanType wasNotGiven;
 
@@ -713,7 +1121,14 @@ public class MedicationAdministration extends DomainResource {
     @Description(shortDefinition="Details of how medication was taken", formalDefinition="Describes the medication dosage information details e.g. dose, rate, site, route, etc." )
     protected MedicationAdministrationDosageComponent dosage;
 
-    private static final long serialVersionUID = -1867867025L;
+    /**
+     * A summary of the events of interest that have occurred, such as when the administration was verified.
+     */
+    @Child(name = "eventHistory", type = {}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="A list of events of interest in the lifecycle", formalDefinition="A summary of the events of interest that have occurred, such as when the administration was verified." )
+    protected List<MedicationAdministrationEventHistoryComponent> eventHistory;
+
+    private static final long serialVersionUID = 1979568003L;
 
   /**
    * Constructor
@@ -742,6 +1157,14 @@ public class MedicationAdministration extends DomainResource {
       return this.identifier;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public MedicationAdministration setIdentifier(List<Identifier> theIdentifier) { 
+      this.identifier = theIdentifier;
+      return this;
+    }
+
     public boolean hasIdentifier() { 
       if (this.identifier == null)
         return false;
@@ -751,10 +1174,6 @@ public class MedicationAdministration extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #identifier} (External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.)
-     */
-    // syntactic sugar
     public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       if (this.identifier == null)
@@ -763,7 +1182,6 @@ public class MedicationAdministration extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public MedicationAdministration addIdentifier(Identifier t) { //3
       if (t == null)
         return this;
@@ -771,6 +1189,16 @@ public class MedicationAdministration extends DomainResource {
         this.identifier = new ArrayList<Identifier>();
       this.identifier.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #identifier}, creating it if it does not already exist
+     */
+    public Identifier getIdentifierFirstRep() { 
+      if (getIdentifier().isEmpty()) {
+        addIdentifier();
+      }
+      return getIdentifier().get(0);
     }
 
     /**
@@ -1133,6 +1561,14 @@ public class MedicationAdministration extends DomainResource {
       return this.reasonNotGiven;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public MedicationAdministration setReasonNotGiven(List<CodeableConcept> theReasonNotGiven) { 
+      this.reasonNotGiven = theReasonNotGiven;
+      return this;
+    }
+
     public boolean hasReasonNotGiven() { 
       if (this.reasonNotGiven == null)
         return false;
@@ -1142,10 +1578,6 @@ public class MedicationAdministration extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #reasonNotGiven} (A code indicating why the administration was not performed.)
-     */
-    // syntactic sugar
     public CodeableConcept addReasonNotGiven() { //3
       CodeableConcept t = new CodeableConcept();
       if (this.reasonNotGiven == null)
@@ -1154,7 +1586,6 @@ public class MedicationAdministration extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public MedicationAdministration addReasonNotGiven(CodeableConcept t) { //3
       if (t == null)
         return this;
@@ -1162,6 +1593,16 @@ public class MedicationAdministration extends DomainResource {
         this.reasonNotGiven = new ArrayList<CodeableConcept>();
       this.reasonNotGiven.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #reasonNotGiven}, creating it if it does not already exist
+     */
+    public CodeableConcept getReasonNotGivenFirstRep() { 
+      if (getReasonNotGiven().isEmpty()) {
+        addReasonNotGiven();
+      }
+      return getReasonNotGiven().get(0);
     }
 
     /**
@@ -1173,6 +1614,14 @@ public class MedicationAdministration extends DomainResource {
       return this.reasonGiven;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public MedicationAdministration setReasonGiven(List<CodeableConcept> theReasonGiven) { 
+      this.reasonGiven = theReasonGiven;
+      return this;
+    }
+
     public boolean hasReasonGiven() { 
       if (this.reasonGiven == null)
         return false;
@@ -1182,10 +1631,6 @@ public class MedicationAdministration extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #reasonGiven} (A code indicating why the medication was given.)
-     */
-    // syntactic sugar
     public CodeableConcept addReasonGiven() { //3
       CodeableConcept t = new CodeableConcept();
       if (this.reasonGiven == null)
@@ -1194,7 +1639,6 @@ public class MedicationAdministration extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public MedicationAdministration addReasonGiven(CodeableConcept t) { //3
       if (t == null)
         return this;
@@ -1202,6 +1646,16 @@ public class MedicationAdministration extends DomainResource {
         this.reasonGiven = new ArrayList<CodeableConcept>();
       this.reasonGiven.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #reasonGiven}, creating it if it does not already exist
+     */
+    public CodeableConcept getReasonGivenFirstRep() { 
+      if (getReasonGiven().isEmpty()) {
+        addReasonGiven();
+      }
+      return getReasonGiven().get(0);
     }
 
     /**
@@ -1213,6 +1667,14 @@ public class MedicationAdministration extends DomainResource {
       return this.device;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public MedicationAdministration setDevice(List<Reference> theDevice) { 
+      this.device = theDevice;
+      return this;
+    }
+
     public boolean hasDevice() { 
       if (this.device == null)
         return false;
@@ -1222,10 +1684,6 @@ public class MedicationAdministration extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #device} (The device used in administering the medication to the patient.  For example, a particular infusion pump.)
-     */
-    // syntactic sugar
     public Reference addDevice() { //3
       Reference t = new Reference();
       if (this.device == null)
@@ -1234,7 +1692,6 @@ public class MedicationAdministration extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public MedicationAdministration addDevice(Reference t) { //3
       if (t == null)
         return this;
@@ -1245,18 +1702,29 @@ public class MedicationAdministration extends DomainResource {
     }
 
     /**
-     * @return {@link #device} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. The device used in administering the medication to the patient.  For example, a particular infusion pump.)
+     * @return The first repetition of repeating field {@link #device}, creating it if it does not already exist
      */
+    public Reference getDeviceFirstRep() { 
+      if (getDevice().isEmpty()) {
+        addDevice();
+      }
+      return getDevice().get(0);
+    }
+
+    /**
+     * @deprecated Use Reference#setResource(IBaseResource) instead
+     */
+    @Deprecated
     public List<Device> getDeviceTarget() { 
       if (this.deviceTarget == null)
         this.deviceTarget = new ArrayList<Device>();
       return this.deviceTarget;
     }
 
-    // syntactic sugar
     /**
-     * @return {@link #device} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. The device used in administering the medication to the patient.  For example, a particular infusion pump.)
+     * @deprecated Use Reference#setResource(IBaseResource) instead
      */
+    @Deprecated
     public Device addDeviceTarget() { 
       Device r = new Device();
       if (this.deviceTarget == null)
@@ -1274,6 +1742,14 @@ public class MedicationAdministration extends DomainResource {
       return this.note;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public MedicationAdministration setNote(List<Annotation> theNote) { 
+      this.note = theNote;
+      return this;
+    }
+
     public boolean hasNote() { 
       if (this.note == null)
         return false;
@@ -1283,10 +1759,6 @@ public class MedicationAdministration extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #note} (Extra information about the medication administration that is not conveyed by the other attributes.)
-     */
-    // syntactic sugar
     public Annotation addNote() { //3
       Annotation t = new Annotation();
       if (this.note == null)
@@ -1295,7 +1767,6 @@ public class MedicationAdministration extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public MedicationAdministration addNote(Annotation t) { //3
       if (t == null)
         return this;
@@ -1303,6 +1774,16 @@ public class MedicationAdministration extends DomainResource {
         this.note = new ArrayList<Annotation>();
       this.note.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #note}, creating it if it does not already exist
+     */
+    public Annotation getNoteFirstRep() { 
+      if (getNote().isEmpty()) {
+        addNote();
+      }
+      return getNote().get(0);
     }
 
     /**
@@ -1329,6 +1810,59 @@ public class MedicationAdministration extends DomainResource {
       return this;
     }
 
+    /**
+     * @return {@link #eventHistory} (A summary of the events of interest that have occurred, such as when the administration was verified.)
+     */
+    public List<MedicationAdministrationEventHistoryComponent> getEventHistory() { 
+      if (this.eventHistory == null)
+        this.eventHistory = new ArrayList<MedicationAdministrationEventHistoryComponent>();
+      return this.eventHistory;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public MedicationAdministration setEventHistory(List<MedicationAdministrationEventHistoryComponent> theEventHistory) { 
+      this.eventHistory = theEventHistory;
+      return this;
+    }
+
+    public boolean hasEventHistory() { 
+      if (this.eventHistory == null)
+        return false;
+      for (MedicationAdministrationEventHistoryComponent item : this.eventHistory)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public MedicationAdministrationEventHistoryComponent addEventHistory() { //3
+      MedicationAdministrationEventHistoryComponent t = new MedicationAdministrationEventHistoryComponent();
+      if (this.eventHistory == null)
+        this.eventHistory = new ArrayList<MedicationAdministrationEventHistoryComponent>();
+      this.eventHistory.add(t);
+      return t;
+    }
+
+    public MedicationAdministration addEventHistory(MedicationAdministrationEventHistoryComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.eventHistory == null)
+        this.eventHistory = new ArrayList<MedicationAdministrationEventHistoryComponent>();
+      this.eventHistory.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #eventHistory}, creating it if it does not already exist
+     */
+    public MedicationAdministrationEventHistoryComponent getEventHistoryFirstRep() { 
+      if (getEventHistory().isEmpty()) {
+        addEventHistory();
+      }
+      return getEventHistory().get(0);
+    }
+
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.", 0, java.lang.Integer.MAX_VALUE, identifier));
@@ -1345,6 +1879,7 @@ public class MedicationAdministration extends DomainResource {
         childrenList.add(new Property("device", "Reference(Device)", "The device used in administering the medication to the patient.  For example, a particular infusion pump.", 0, java.lang.Integer.MAX_VALUE, device));
         childrenList.add(new Property("note", "Annotation", "Extra information about the medication administration that is not conveyed by the other attributes.", 0, java.lang.Integer.MAX_VALUE, note));
         childrenList.add(new Property("dosage", "", "Describes the medication dosage information details e.g. dose, rate, site, route, etc.", 0, java.lang.Integer.MAX_VALUE, dosage));
+        childrenList.add(new Property("eventHistory", "", "A summary of the events of interest that have occurred, such as when the administration was verified.", 0, java.lang.Integer.MAX_VALUE, eventHistory));
       }
 
       @Override
@@ -1364,6 +1899,7 @@ public class MedicationAdministration extends DomainResource {
         case -1335157162: /*device*/ return this.device == null ? new Base[0] : this.device.toArray(new Base[this.device.size()]); // Reference
         case 3387378: /*note*/ return this.note == null ? new Base[0] : this.note.toArray(new Base[this.note.size()]); // Annotation
         case -1326018889: /*dosage*/ return this.dosage == null ? new Base[0] : new Base[] {this.dosage}; // MedicationAdministrationDosageComponent
+        case 1835190426: /*eventHistory*/ return this.eventHistory == null ? new Base[0] : this.eventHistory.toArray(new Base[this.eventHistory.size()]); // MedicationAdministrationEventHistoryComponent
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -1414,6 +1950,9 @@ public class MedicationAdministration extends DomainResource {
         case -1326018889: // dosage
           this.dosage = (MedicationAdministrationDosageComponent) value; // MedicationAdministrationDosageComponent
           break;
+        case 1835190426: // eventHistory
+          this.getEventHistory().add((MedicationAdministrationEventHistoryComponent) value); // MedicationAdministrationEventHistoryComponent
+          break;
         default: super.setProperty(hash, name, value);
         }
 
@@ -1449,6 +1988,8 @@ public class MedicationAdministration extends DomainResource {
           this.getNote().add(castToAnnotation(value));
         else if (name.equals("dosage"))
           this.dosage = (MedicationAdministrationDosageComponent) value; // MedicationAdministrationDosageComponent
+        else if (name.equals("eventHistory"))
+          this.getEventHistory().add((MedicationAdministrationEventHistoryComponent) value);
         else
           super.setProperty(name, value);
       }
@@ -1470,6 +2011,7 @@ public class MedicationAdministration extends DomainResource {
         case -1335157162:  return addDevice(); // Reference
         case 3387378:  return addNote(); // Annotation
         case -1326018889:  return getDosage(); // MedicationAdministrationDosageComponent
+        case 1835190426:  return addEventHistory(); // MedicationAdministrationEventHistoryComponent
         default: return super.makeProperty(hash, name);
         }
 
@@ -1534,6 +2076,9 @@ public class MedicationAdministration extends DomainResource {
           this.dosage = new MedicationAdministrationDosageComponent();
           return this.dosage;
         }
+        else if (name.equals("eventHistory")) {
+          return addEventHistory();
+        }
         else
           return super.addChild(name);
       }
@@ -1580,6 +2125,11 @@ public class MedicationAdministration extends DomainResource {
             dst.note.add(i.copy());
         };
         dst.dosage = dosage == null ? null : dosage.copy();
+        if (eventHistory != null) {
+          dst.eventHistory = new ArrayList<MedicationAdministrationEventHistoryComponent>();
+          for (MedicationAdministrationEventHistoryComponent i : eventHistory)
+            dst.eventHistory.add(i.copy());
+        };
         return dst;
       }
 
@@ -1599,7 +2149,7 @@ public class MedicationAdministration extends DomainResource {
            && compareDeep(performer, o.performer, true) && compareDeep(prescription, o.prescription, true)
            && compareDeep(wasNotGiven, o.wasNotGiven, true) && compareDeep(reasonNotGiven, o.reasonNotGiven, true)
            && compareDeep(reasonGiven, o.reasonGiven, true) && compareDeep(device, o.device, true) && compareDeep(note, o.note, true)
-           && compareDeep(dosage, o.dosage, true);
+           && compareDeep(dosage, o.dosage, true) && compareDeep(eventHistory, o.eventHistory, true);
       }
 
       @Override
@@ -1613,13 +2163,9 @@ public class MedicationAdministration extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (status == null || status.isEmpty())
-           && (medication == null || medication.isEmpty()) && (patient == null || patient.isEmpty())
-           && (encounter == null || encounter.isEmpty()) && (effectiveTime == null || effectiveTime.isEmpty())
-           && (performer == null || performer.isEmpty()) && (prescription == null || prescription.isEmpty())
-           && (wasNotGiven == null || wasNotGiven.isEmpty()) && (reasonNotGiven == null || reasonNotGiven.isEmpty())
-           && (reasonGiven == null || reasonGiven.isEmpty()) && (device == null || device.isEmpty())
-           && (note == null || note.isEmpty()) && (dosage == null || dosage.isEmpty());
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, status, medication
+          , patient, encounter, effectiveTime, performer, prescription, wasNotGiven, reasonNotGiven
+          , reasonGiven, device, note, dosage, eventHistory);
       }
 
   @Override
@@ -1628,30 +2174,96 @@ public class MedicationAdministration extends DomainResource {
    }
 
  /**
-   * Search parameter: <b>medication</b>
+   * Search parameter: <b>identifier</b>
    * <p>
-   * Description: <b>Return administrations of this medication resource</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>MedicationAdministration.medicationReference</b><br>
+   * Description: <b>Return administrations with this external identifier</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>MedicationAdministration.identifier</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="medication", path="MedicationAdministration.medication.as(Reference)", description="Return administrations of this medication resource", type="reference" )
-  public static final String SP_MEDICATION = "medication";
+  @SearchParamDefinition(name="identifier", path="MedicationAdministration.identifier", description="Return administrations with this external identifier", type="token" )
+  public static final String SP_IDENTIFIER = "identifier";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>medication</b>
+   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
    * <p>
-   * Description: <b>Return administrations of this medication resource</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>MedicationAdministration.medicationReference</b><br>
+   * Description: <b>Return administrations with this external identifier</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>MedicationAdministration.identifier</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam MEDICATION = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_MEDICATION);
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
+
+ /**
+   * Search parameter: <b>code</b>
+   * <p>
+   * Description: <b>Return administrations of this medication code</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>MedicationAdministration.medicationCodeableConcept</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="code", path="MedicationAdministration.medication.as(CodeableConcept)", description="Return administrations of this medication code", type="token" )
+  public static final String SP_CODE = "code";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>code</b>
+   * <p>
+   * Description: <b>Return administrations of this medication code</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>MedicationAdministration.medicationCodeableConcept</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CODE);
+
+ /**
+   * Search parameter: <b>performer</b>
+   * <p>
+   * Description: <b>Who administered substance</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>MedicationAdministration.performer</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="performer", path="MedicationAdministration.performer", description="Who administered substance", type="reference" )
+  public static final String SP_PERFORMER = "performer";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>performer</b>
+   * <p>
+   * Description: <b>Who administered substance</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>MedicationAdministration.performer</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PERFORMER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PERFORMER);
 
 /**
    * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>MedicationAdministration:medication</b>".
+   * the path value of "<b>MedicationAdministration:performer</b>".
    */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_MEDICATION = new ca.uhn.fhir.model.api.Include("MedicationAdministration:medication").toLocked();
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_PERFORMER = new ca.uhn.fhir.model.api.Include("MedicationAdministration:performer").toLocked();
+
+ /**
+   * Search parameter: <b>prescription</b>
+   * <p>
+   * Description: <b>The identity of a prescription to list administrations from</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>MedicationAdministration.prescription</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="prescription", path="MedicationAdministration.prescription", description="The identity of a prescription to list administrations from", type="reference" )
+  public static final String SP_PRESCRIPTION = "prescription";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>prescription</b>
+   * <p>
+   * Description: <b>The identity of a prescription to list administrations from</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>MedicationAdministration.prescription</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PRESCRIPTION = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PRESCRIPTION);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>MedicationAdministration:prescription</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_PRESCRIPTION = new ca.uhn.fhir.model.api.Include("MedicationAdministration:prescription").toLocked();
 
  /**
    * Search parameter: <b>effectivetime</b>
@@ -1700,122 +2312,50 @@ public class MedicationAdministration extends DomainResource {
   public static final ca.uhn.fhir.model.api.Include INCLUDE_PATIENT = new ca.uhn.fhir.model.api.Include("MedicationAdministration:patient").toLocked();
 
  /**
-   * Search parameter: <b>status</b>
+   * Search parameter: <b>wasnotgiven</b>
    * <p>
-   * Description: <b>MedicationAdministration event status (for example one of active/paused/completed/nullified)</b><br>
+   * Description: <b>Administrations that were not made</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>MedicationAdministration.status</b><br>
+   * Path: <b>MedicationAdministration.wasNotGiven</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="status", path="MedicationAdministration.status", description="MedicationAdministration event status (for example one of active/paused/completed/nullified)", type="token" )
-  public static final String SP_STATUS = "status";
+  @SearchParamDefinition(name="wasnotgiven", path="MedicationAdministration.wasNotGiven", description="Administrations that were not made", type="token" )
+  public static final String SP_WASNOTGIVEN = "wasnotgiven";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>status</b>
+   * <b>Fluent Client</b> search parameter constant for <b>wasnotgiven</b>
    * <p>
-   * Description: <b>MedicationAdministration event status (for example one of active/paused/completed/nullified)</b><br>
+   * Description: <b>Administrations that were not made</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>MedicationAdministration.status</b><br>
+   * Path: <b>MedicationAdministration.wasNotGiven</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_STATUS);
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam WASNOTGIVEN = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_WASNOTGIVEN);
 
  /**
-   * Search parameter: <b>prescription</b>
+   * Search parameter: <b>medication</b>
    * <p>
-   * Description: <b>The identity of a prescription to list administrations from</b><br>
+   * Description: <b>Return administrations of this medication resource</b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>MedicationAdministration.prescription</b><br>
+   * Path: <b>MedicationAdministration.medicationReference</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="prescription", path="MedicationAdministration.prescription", description="The identity of a prescription to list administrations from", type="reference" )
-  public static final String SP_PRESCRIPTION = "prescription";
+  @SearchParamDefinition(name="medication", path="MedicationAdministration.medication.as(Reference)", description="Return administrations of this medication resource", type="reference" )
+  public static final String SP_MEDICATION = "medication";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>prescription</b>
+   * <b>Fluent Client</b> search parameter constant for <b>medication</b>
    * <p>
-   * Description: <b>The identity of a prescription to list administrations from</b><br>
+   * Description: <b>Return administrations of this medication resource</b><br>
    * Type: <b>reference</b><br>
-   * Path: <b>MedicationAdministration.prescription</b><br>
+   * Path: <b>MedicationAdministration.medicationReference</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PRESCRIPTION = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PRESCRIPTION);
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam MEDICATION = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_MEDICATION);
 
 /**
    * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>MedicationAdministration:prescription</b>".
+   * the path value of "<b>MedicationAdministration:medication</b>".
    */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_PRESCRIPTION = new ca.uhn.fhir.model.api.Include("MedicationAdministration:prescription").toLocked();
-
- /**
-   * Search parameter: <b>device</b>
-   * <p>
-   * Description: <b>Return administrations with this administration device identity</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>MedicationAdministration.device</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="device", path="MedicationAdministration.device", description="Return administrations with this administration device identity", type="reference" )
-  public static final String SP_DEVICE = "device";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>device</b>
-   * <p>
-   * Description: <b>Return administrations with this administration device identity</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>MedicationAdministration.device</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam DEVICE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_DEVICE);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>MedicationAdministration:device</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_DEVICE = new ca.uhn.fhir.model.api.Include("MedicationAdministration:device").toLocked();
-
- /**
-   * Search parameter: <b>performer</b>
-   * <p>
-   * Description: <b>Who administered substance</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>MedicationAdministration.performer</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="performer", path="MedicationAdministration.performer", description="Who administered substance", type="reference" )
-  public static final String SP_PERFORMER = "performer";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>performer</b>
-   * <p>
-   * Description: <b>Who administered substance</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>MedicationAdministration.performer</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PERFORMER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PERFORMER);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>MedicationAdministration:performer</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_PERFORMER = new ca.uhn.fhir.model.api.Include("MedicationAdministration:performer").toLocked();
-
- /**
-   * Search parameter: <b>code</b>
-   * <p>
-   * Description: <b>Return administrations of this medication code</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>MedicationAdministration.medicationCodeableConcept</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="code", path="MedicationAdministration.medication.as(CodeableConcept)", description="Return administrations of this medication code", type="token" )
-  public static final String SP_CODE = "code";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>code</b>
-   * <p>
-   * Description: <b>Return administrations of this medication code</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>MedicationAdministration.medicationCodeableConcept</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CODE);
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_MEDICATION = new ca.uhn.fhir.model.api.Include("MedicationAdministration:medication").toLocked();
 
  /**
    * Search parameter: <b>encounter</b>
@@ -1844,44 +2384,50 @@ public class MedicationAdministration extends DomainResource {
   public static final ca.uhn.fhir.model.api.Include INCLUDE_ENCOUNTER = new ca.uhn.fhir.model.api.Include("MedicationAdministration:encounter").toLocked();
 
  /**
-   * Search parameter: <b>identifier</b>
+   * Search parameter: <b>device</b>
    * <p>
-   * Description: <b>Return administrations with this external identifier</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>MedicationAdministration.identifier</b><br>
+   * Description: <b>Return administrations with this administration device identity</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>MedicationAdministration.device</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="identifier", path="MedicationAdministration.identifier", description="Return administrations with this external identifier", type="token" )
-  public static final String SP_IDENTIFIER = "identifier";
+  @SearchParamDefinition(name="device", path="MedicationAdministration.device", description="Return administrations with this administration device identity", type="reference" )
+  public static final String SP_DEVICE = "device";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
+   * <b>Fluent Client</b> search parameter constant for <b>device</b>
    * <p>
-   * Description: <b>Return administrations with this external identifier</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>MedicationAdministration.identifier</b><br>
+   * Description: <b>Return administrations with this administration device identity</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>MedicationAdministration.device</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam DEVICE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_DEVICE);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>MedicationAdministration:device</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_DEVICE = new ca.uhn.fhir.model.api.Include("MedicationAdministration:device").toLocked();
 
  /**
-   * Search parameter: <b>wasnotgiven</b>
+   * Search parameter: <b>status</b>
    * <p>
-   * Description: <b>Administrations that were not made</b><br>
+   * Description: <b>MedicationAdministration event status (for example one of active/paused/completed/nullified)</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>MedicationAdministration.wasNotGiven</b><br>
+   * Path: <b>MedicationAdministration.status</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="wasnotgiven", path="MedicationAdministration.wasNotGiven", description="Administrations that were not made", type="token" )
-  public static final String SP_WASNOTGIVEN = "wasnotgiven";
+  @SearchParamDefinition(name="status", path="MedicationAdministration.status", description="MedicationAdministration event status (for example one of active/paused/completed/nullified)", type="token" )
+  public static final String SP_STATUS = "status";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>wasnotgiven</b>
+   * <b>Fluent Client</b> search parameter constant for <b>status</b>
    * <p>
-   * Description: <b>Administrations that were not made</b><br>
+   * Description: <b>MedicationAdministration event status (for example one of active/paused/completed/nullified)</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>MedicationAdministration.wasNotGiven</b><br>
+   * Path: <b>MedicationAdministration.status</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam WASNOTGIVEN = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_WASNOTGIVEN);
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_STATUS);
 
 
 }

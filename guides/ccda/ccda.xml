@@ -149,6 +149,14 @@
       <sourceUri value="StructureDefinition/ccda-referral-note-composition.xml"/>
     </resource>
     <resource>
+	  <example value="false"/>
+      <name value="C-CDA on FHIR Transfer Summary"/>
+      <description
+        value="TBD"/>
+      <acronym value="ccda-transfer-summary-composition"/>
+      <sourceUri value="StructureDefinition/ccda-transfer-summary-composition.xml"/>
+    </resource>
+    <resource>
       <example value="false"/>
       <name value="HL7 BasicConfidentialityKind"/>
       <description
@@ -200,6 +208,16 @@
     </resource>
     <resource>
       <example value="true"/>
+      <name value="Example Care Plan"/>
+      <description value="Example Care Plan"/>
+      <acronym value="care-plan-example"/>
+      <sourceUri value="Example/care-plan-example.xml"/>
+      <!-- <exampleFor>
+            <reference value="http://hl7.org/fhir/StructureDefinition/ccda-care-plan-composition"/>
+          </exampleFor> -->
+    </resource>
+    <resource>
+      <example value="true"/>
       <name value="Example Consultation Note"/>
       <description value="Example Consultation Note"/>
       <acronym value="consultation-note-example"/>
@@ -226,6 +244,26 @@
       <sourceUri value="Example/history-and-physical-example.xml"/>
       <!-- <exampleFor>
             <reference value="http://hl7.org/fhir/StructureDefinition/ccda-history-and-physical-composition"/>
+          </exampleFor> -->
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="Example Operative Note"/>
+      <description value="Example Operative Note"/>
+      <acronym value="operative-note-example"/>
+      <sourceUri value="Example/operative-note-example.xml"/>
+      <!-- <exampleFor>
+            <reference value="http://hl7.org/fhir/StructureDefinition/ccda-operative-note-composition"/>
+          </exampleFor> -->
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="Example Procedure Note"/>
+      <description value="Example Procedure Note"/>
+      <acronym value="procedure-note-example"/>
+      <sourceUri value="Example/procedure-note-example.xml"/>
+      <!-- <exampleFor>
+            <reference value="http://hl7.org/fhir/StructureDefinition/ccda-procedure-note-composition"/>
           </exampleFor> -->
     </resource>
    <resource>

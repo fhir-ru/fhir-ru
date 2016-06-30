@@ -29,6 +29,8 @@ POSSIBILITY OF SUCH DAMAGE.
 package org.hl7.fhir.utilities;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -38,7 +40,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,6 +123,18 @@ public class TextFile {
     return  b.toString().replace("\uFEFF", ""); 
   }
 
+  public static byte[] streamToBytes(InputStream input) throws IOException  {
+    if (input== null) {
+      return null;
+    }
+    // Define a size if you have an idea of it.
+    ByteArrayOutputStream r = new ByteArrayOutputStream(2048);
+    byte[] read = new byte[512]; // Your buffer size.
+    for (int i; -1 != (i = input.read(read)); r.write(read, 0, i));
+    input.close();
+    return r.toByteArray();
+  }
+
   public static void bytesToFile(byte[] bytes, String path) throws IOException {
     File file = new CSFile(path);
     OutputStream sw = new FileOutputStream(file);
@@ -129,5 +142,13 @@ public class TextFile {
     sw.flush();
     sw.close();
     
+  }
+
+  public static byte[] fileToBytes(String srcFile) throws FileNotFoundException, IOException {
+    return streamToBytes(new FileInputStream(new CSFile(srcFile)));
+  }
+
+  public static String bytesToString(byte[] bs) throws IOException {
+    return streamToString(new ByteArrayInputStream(bs));
   }
 }

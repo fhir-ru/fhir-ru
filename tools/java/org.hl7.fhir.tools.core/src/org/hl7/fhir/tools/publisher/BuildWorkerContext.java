@@ -32,13 +32,14 @@ import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
 import org.hl7.fhir.dstu3.formats.JsonParser;
 import org.hl7.fhir.dstu3.formats.ParserType;
 import org.hl7.fhir.dstu3.formats.XmlParser;
+import org.hl7.fhir.dstu3.model.BaseConformance;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
 import org.hl7.fhir.dstu3.model.ConceptMap;
 import org.hl7.fhir.dstu3.model.DataElement;
-import org.hl7.fhir.dstu3.model.NamingSystem;
 import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
+import org.hl7.fhir.dstu3.model.NamingSystem;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemIdentifierType;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemUniqueIdComponent;
 import org.hl7.fhir.dstu3.model.OperationOutcome;
@@ -68,6 +69,7 @@ import org.hl7.fhir.dstu3.utils.client.EFhirClientException;
 import org.hl7.fhir.dstu3.utils.client.FHIRToolingClient;
 import org.hl7.fhir.dstu3.validation.IResourceValidator;
 import org.hl7.fhir.dstu3.validation.InstanceValidator;
+import org.hl7.fhir.exceptions.TerminologyServiceException;
 import org.hl7.fhir.exceptions.UcumException;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
@@ -125,9 +127,6 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   private Map<String, Concept> loincCodes = new HashMap<String, Concept>();
   private boolean triedServer = false;
   private boolean serverOk = false;
-  private String cache;
-  private String tsServer;
-  private String validationCachePath;
   
 
 
@@ -350,32 +349,8 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   }
 
   @Override
-  public boolean supportsSystem(String system) {
+  public boolean supportsSystem(String system) throws TerminologyServiceException {
     return "http://snomed.info/sct".equals(system) || "http://loinc.org".equals(system) || "http://unitsofmeasure.org".equals(system) || super.supportsSystem(system) ;
-  }
-  
-  @Override
-  public ValueSetExpansionOutcome expandVS(ValueSet vs, boolean cacheOk) {
-    try {
-      if (vs.hasExpansion()) {
-        return new ValueSetExpansionOutcome(vs.copy());
-      }
-      String cacheFn = Utilities.path(cache, determineCacheId(vs)+".json");
-      if (new File(cacheFn).exists())
-        return loadFromCache(vs.copy(), cacheFn);
-      if (cacheOk && vs.hasUrl()) {
-        ValueSetExpansionOutcome vse = expansionCache.getExpander().expand(vs);
-        if (vse.getValueset() != null) {
-          FileOutputStream s = new FileOutputStream(cacheFn);
-          newJsonParser().compose(new FileOutputStream(cacheFn), vse.getValueset());
-          s.close();
-          return vse;
-        }
-      }
-      return expandOnServer(vs, cacheFn);
-    } catch (Exception e) {
-      return new ValueSetExpansionOutcome(e.getMessage());
-    }
   }
   
   public static class Concept {
@@ -706,34 +681,6 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   public boolean verifiesSystem(String system) {
     return true;
   }
-
-
-  private String determineCacheId(ValueSet vs) throws Exception {
-    // just the content logical definition is hashed
-    ValueSet vsid = new ValueSet();
-    vsid.setCompose(vs.getCompose());
-    vsid.setLockedDate(vs.getLockedDate());
-    JsonParser parser = new JsonParser();
-    parser.setOutputStyle(OutputStyle.NORMAL);
-    ByteArrayOutputStream b = new  ByteArrayOutputStream();
-    parser.compose(b, vsid);
-    b.close();
-    String s = new String(b.toByteArray());
-    String r = Integer.toString(s.hashCode());
-//    TextFile.stringToFile(s, Utilities.path(cache, r+".id.json"));
-    return r;
-  }
-
-  private ValueSetExpansionOutcome loadFromCache(ValueSet vs, String cacheFn) throws FileNotFoundException, Exception {
-    JsonParser parser = new JsonParser();
-    Resource r = parser.parse(new FileInputStream(cacheFn));
-    if (r instanceof OperationOutcome)
-      return new ValueSetExpansionOutcome(((OperationOutcome) r).getIssue().get(0).getDetails().getText());
-    else {
-      vs.setExpansion(((ValueSet) r).getExpansion()); // because what is cached might be from a different value set
-      return new ValueSetExpansionOutcome(vs);
-    }
-  }
   
   private String lookupLoinc(String code) throws Exception {
     if (true) { //(!triedServer || serverOk) {
@@ -763,8 +710,8 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
       throw new Exception("Server is not available");
   }
 
-
-  private ValueSetExpansionOutcome expandOnServer(ValueSet vs, String cacheFn) throws Exception {
+  @Override
+  public ValueSetExpansionOutcome expandOnServer(ValueSet vs, String cacheFn) throws Exception {
     if (!triedServer || serverOk) {
       JsonParser parser = new JsonParser();
       try {
@@ -778,6 +725,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
         params.put("_limit", PageProcessor.CODE_LIMIT_EXPANSION);
         params.put("_incomplete", "true");
         params.put("profile", "http://www.healthintersections.com.au/fhir/expansion/no-details");
+        System.out.println("Use Tx Server from BWS for value set "+(vs.hasUrl() ? vs.getUrl() : "??")+" on "+systems(vs));
         ValueSet result = txServer.expandValueset(vs, params);
         serverOk = true;
         FileOutputStream s = new FileOutputStream(cacheFn);
@@ -801,6 +749,13 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
       }
     } else
       throw new Exception("Server is not available");
+  }
+
+  private String systems(ValueSet vs) {
+    CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
+    for (ConceptSetComponent inc : vs.getCompose().getInclude())
+      b.append(inc.getSystem());
+    return b.toString();
   }
 
   private OperationOutcome buildOO(String message) {
@@ -881,26 +836,18 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().getInclude().add(inc);
     ValueSetExpansionOutcome vse = expandVS(vs, true);
-    return vse.getValueset().getExpansion();
-  }
-
-  public void initTS(String path, String tsServer) throws Exception {
-    cache = path;
-    this.tsServer = tsServer;
-    expansionCache = new ValueSetExpansionCache(this, null);
-    validationCachePath = Utilities.path(path, "validation.cache");
-    try {
-      loadValidationCache();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    if (vse.getValueset() == null)
+      return null;
+    else
+      return vse.getValueset().getExpansion();
   }
 
   public void saveCache() throws IOException {
     saveValidationCache();
   }
 
-  private void loadValidationCache() throws JsonSyntaxException, Exception {
+  @Override
+  protected void loadValidationCache() throws JsonSyntaxException, Exception {
     File dir = new File(validationCachePath);
     if (!dir.exists())
       return;
@@ -934,7 +881,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
           def = new ConceptDefinitionComponent();
           o = (JsonObject) j;
           if (o.get("abstract").getAsBoolean())
-            CodeSystemUtilities.setAbstract(null, def);
+            CodeSystemUtilities.setNotSelectable(null, def);
           if (!(o.get("code") instanceof JsonNull))
             def.setCode(o.get("code").getAsString());
           if (!(o.get("definition") instanceof JsonNull))
@@ -950,6 +897,9 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   }
 
   private void saveValidationCache() throws IOException {
+    if (noTerminologyServer)
+      return;
+    
     File dir = new File(validationCachePath);
     if (dir.exists())
       Utilities.clearDirectory(validationCachePath);
@@ -1050,6 +1000,17 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   }
 
   @Override
+  public List<BaseConformance> allConformanceResources() {
+    List<BaseConformance> result = new ArrayList<BaseConformance>();
+    result.addAll(profiles.values());
+    result.addAll(valueSets.values());
+    result.addAll(codeSystems.values());
+    result.addAll(maps.values());
+    return result;
+  }
+
+
+  @Override
   public String oid2Uri(String oid) {
     String uri = OIDUtils.getUriForOid(oid);
     if (uri != null)
@@ -1078,6 +1039,11 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
         return true;
     }
     return false;
+  }
+
+  @Override
+  public boolean hasCache() {
+    return true;
   }
 
 

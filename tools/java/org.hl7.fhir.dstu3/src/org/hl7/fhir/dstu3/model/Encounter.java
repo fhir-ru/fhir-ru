@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
+// Generated on Wed, Jun 29, 2016 09:39+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -197,208 +197,6 @@ public class Encounter extends DomainResource {
       return "?";
       }
     public String toSystem(EncounterState code) {
-      return code.getSystem();
-      }
-    }
-
-    public enum EncounterClass {
-        /**
-         * An encounter during which the patient is hospitalized and stays overnight.
-         */
-        INPATIENT, 
-        /**
-         * An encounter during which the patient is not hospitalized overnight.
-         */
-        OUTPATIENT, 
-        /**
-         * An encounter where the patient visits the practitioner in his/her office, e.g. a G.P. visit.
-         */
-        AMBULATORY, 
-        /**
-         * An encounter in the Emergency Care Department.
-         */
-        EMERGENCY, 
-        /**
-         * An encounter where the practitioner visits the patient at his/her home.
-         */
-        HOME, 
-        /**
-         * An encounter taking place outside the regular environment for giving care.
-         */
-        FIELD, 
-        /**
-         * An encounter where the patient needs more prolonged treatment or investigations than outpatients, but who do not need to stay in the hospital overnight.
-         */
-        DAYTIME, 
-        /**
-         * An encounter that takes place where the patient and practitioner do not physically meet but use electronic means for contact.
-         */
-        VIRTUAL, 
-        /**
-         * Any other encounter type that is not described by one of the other values. Where this is used it is expected that an implementer will include an extension value to define what the actual other type is.
-         */
-        OTHER, 
-        /**
-         * added to help the parsers with the generic types
-         */
-        NULL;
-        public static EncounterClass fromCode(String codeString) throws FHIRException {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("inpatient".equals(codeString))
-          return INPATIENT;
-        if ("outpatient".equals(codeString))
-          return OUTPATIENT;
-        if ("ambulatory".equals(codeString))
-          return AMBULATORY;
-        if ("emergency".equals(codeString))
-          return EMERGENCY;
-        if ("home".equals(codeString))
-          return HOME;
-        if ("field".equals(codeString))
-          return FIELD;
-        if ("daytime".equals(codeString))
-          return DAYTIME;
-        if ("virtual".equals(codeString))
-          return VIRTUAL;
-        if ("other".equals(codeString))
-          return OTHER;
-        if (Configuration.isAcceptInvalidEnums())
-          return null;
-        else
-          throw new FHIRException("Unknown EncounterClass code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case INPATIENT: return "inpatient";
-            case OUTPATIENT: return "outpatient";
-            case AMBULATORY: return "ambulatory";
-            case EMERGENCY: return "emergency";
-            case HOME: return "home";
-            case FIELD: return "field";
-            case DAYTIME: return "daytime";
-            case VIRTUAL: return "virtual";
-            case OTHER: return "other";
-            default: return "?";
-          }
-        }
-        public String getSystem() {
-          switch (this) {
-            case INPATIENT: return "http://hl7.org/fhir/encounter-class";
-            case OUTPATIENT: return "http://hl7.org/fhir/encounter-class";
-            case AMBULATORY: return "http://hl7.org/fhir/encounter-class";
-            case EMERGENCY: return "http://hl7.org/fhir/encounter-class";
-            case HOME: return "http://hl7.org/fhir/encounter-class";
-            case FIELD: return "http://hl7.org/fhir/encounter-class";
-            case DAYTIME: return "http://hl7.org/fhir/encounter-class";
-            case VIRTUAL: return "http://hl7.org/fhir/encounter-class";
-            case OTHER: return "http://hl7.org/fhir/encounter-class";
-            default: return "?";
-          }
-        }
-        public String getDefinition() {
-          switch (this) {
-            case INPATIENT: return "An encounter during which the patient is hospitalized and stays overnight.";
-            case OUTPATIENT: return "An encounter during which the patient is not hospitalized overnight.";
-            case AMBULATORY: return "An encounter where the patient visits the practitioner in his/her office, e.g. a G.P. visit.";
-            case EMERGENCY: return "An encounter in the Emergency Care Department.";
-            case HOME: return "An encounter where the practitioner visits the patient at his/her home.";
-            case FIELD: return "An encounter taking place outside the regular environment for giving care.";
-            case DAYTIME: return "An encounter where the patient needs more prolonged treatment or investigations than outpatients, but who do not need to stay in the hospital overnight.";
-            case VIRTUAL: return "An encounter that takes place where the patient and practitioner do not physically meet but use electronic means for contact.";
-            case OTHER: return "Any other encounter type that is not described by one of the other values. Where this is used it is expected that an implementer will include an extension value to define what the actual other type is.";
-            default: return "?";
-          }
-        }
-        public String getDisplay() {
-          switch (this) {
-            case INPATIENT: return "Inpatient";
-            case OUTPATIENT: return "Outpatient";
-            case AMBULATORY: return "Ambulatory";
-            case EMERGENCY: return "Emergency";
-            case HOME: return "Home";
-            case FIELD: return "Field";
-            case DAYTIME: return "Daytime";
-            case VIRTUAL: return "Virtual";
-            case OTHER: return "Other";
-            default: return "?";
-          }
-        }
-    }
-
-  public static class EncounterClassEnumFactory implements EnumFactory<EncounterClass> {
-    public EncounterClass fromCode(String codeString) throws IllegalArgumentException {
-      if (codeString == null || "".equals(codeString))
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("inpatient".equals(codeString))
-          return EncounterClass.INPATIENT;
-        if ("outpatient".equals(codeString))
-          return EncounterClass.OUTPATIENT;
-        if ("ambulatory".equals(codeString))
-          return EncounterClass.AMBULATORY;
-        if ("emergency".equals(codeString))
-          return EncounterClass.EMERGENCY;
-        if ("home".equals(codeString))
-          return EncounterClass.HOME;
-        if ("field".equals(codeString))
-          return EncounterClass.FIELD;
-        if ("daytime".equals(codeString))
-          return EncounterClass.DAYTIME;
-        if ("virtual".equals(codeString))
-          return EncounterClass.VIRTUAL;
-        if ("other".equals(codeString))
-          return EncounterClass.OTHER;
-        throw new IllegalArgumentException("Unknown EncounterClass code '"+codeString+"'");
-        }
-        public Enumeration<EncounterClass> fromType(Base code) throws FHIRException {
-          if (code == null || code.isEmpty())
-            return null;
-          String codeString = ((PrimitiveType) code).asStringValue();
-          if (codeString == null || "".equals(codeString))
-            return null;
-        if ("inpatient".equals(codeString))
-          return new Enumeration<EncounterClass>(this, EncounterClass.INPATIENT);
-        if ("outpatient".equals(codeString))
-          return new Enumeration<EncounterClass>(this, EncounterClass.OUTPATIENT);
-        if ("ambulatory".equals(codeString))
-          return new Enumeration<EncounterClass>(this, EncounterClass.AMBULATORY);
-        if ("emergency".equals(codeString))
-          return new Enumeration<EncounterClass>(this, EncounterClass.EMERGENCY);
-        if ("home".equals(codeString))
-          return new Enumeration<EncounterClass>(this, EncounterClass.HOME);
-        if ("field".equals(codeString))
-          return new Enumeration<EncounterClass>(this, EncounterClass.FIELD);
-        if ("daytime".equals(codeString))
-          return new Enumeration<EncounterClass>(this, EncounterClass.DAYTIME);
-        if ("virtual".equals(codeString))
-          return new Enumeration<EncounterClass>(this, EncounterClass.VIRTUAL);
-        if ("other".equals(codeString))
-          return new Enumeration<EncounterClass>(this, EncounterClass.OTHER);
-        throw new FHIRException("Unknown EncounterClass code '"+codeString+"'");
-        }
-    public String toCode(EncounterClass code) {
-      if (code == EncounterClass.INPATIENT)
-        return "inpatient";
-      if (code == EncounterClass.OUTPATIENT)
-        return "outpatient";
-      if (code == EncounterClass.AMBULATORY)
-        return "ambulatory";
-      if (code == EncounterClass.EMERGENCY)
-        return "emergency";
-      if (code == EncounterClass.HOME)
-        return "home";
-      if (code == EncounterClass.FIELD)
-        return "field";
-      if (code == EncounterClass.DAYTIME)
-        return "daytime";
-      if (code == EncounterClass.VIRTUAL)
-        return "virtual";
-      if (code == EncounterClass.OTHER)
-        return "other";
-      return "?";
-      }
-    public String toSystem(EncounterClass code) {
       return code.getSystem();
       }
     }
@@ -724,8 +522,7 @@ Not to be used when the patient is currently at the location
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (status == null || status.isEmpty()) && (period == null || period.isEmpty())
-          ;
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(status, period);
       }
 
   public String fhirType() {
@@ -781,6 +578,14 @@ Not to be used when the patient is currently at the location
           return this.type;
         }
 
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public EncounterParticipantComponent setType(List<CodeableConcept> theType) { 
+          this.type = theType;
+          return this;
+        }
+
         public boolean hasType() { 
           if (this.type == null)
             return false;
@@ -790,10 +595,6 @@ Not to be used when the patient is currently at the location
           return false;
         }
 
-        /**
-         * @return {@link #type} (Role of participant in encounter.)
-         */
-    // syntactic sugar
         public CodeableConcept addType() { //3
           CodeableConcept t = new CodeableConcept();
           if (this.type == null)
@@ -802,7 +603,6 @@ Not to be used when the patient is currently at the location
           return t;
         }
 
-    // syntactic sugar
         public EncounterParticipantComponent addType(CodeableConcept t) { //3
           if (t == null)
             return this;
@@ -810,6 +610,16 @@ Not to be used when the patient is currently at the location
             this.type = new ArrayList<CodeableConcept>();
           this.type.add(t);
           return this;
+        }
+
+        /**
+         * @return The first repetition of repeating field {@link #type}, creating it if it does not already exist
+         */
+        public CodeableConcept getTypeFirstRep() { 
+          if (getType().isEmpty()) {
+            addType();
+          }
+          return getType().get(0);
         }
 
         /**
@@ -985,8 +795,8 @@ Not to be used when the patient is currently at the location
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (type == null || type.isEmpty()) && (period == null || period.isEmpty())
-           && (individual == null || individual.isEmpty());
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(type, period, individual
+          );
       }
 
   public String fhirType() {
@@ -1205,6 +1015,14 @@ Not to be used when the patient is currently at the location
           return this.admittingDiagnosis;
         }
 
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public EncounterHospitalizationComponent setAdmittingDiagnosis(List<Reference> theAdmittingDiagnosis) { 
+          this.admittingDiagnosis = theAdmittingDiagnosis;
+          return this;
+        }
+
         public boolean hasAdmittingDiagnosis() { 
           if (this.admittingDiagnosis == null)
             return false;
@@ -1214,10 +1032,6 @@ Not to be used when the patient is currently at the location
           return false;
         }
 
-        /**
-         * @return {@link #admittingDiagnosis} (The admitting diagnosis field is used to record the diagnosis codes as reported by admitting practitioner. This could be different or in addition to the conditions reported as reason-condition(s) for the encounter.)
-         */
-    // syntactic sugar
         public Reference addAdmittingDiagnosis() { //3
           Reference t = new Reference();
           if (this.admittingDiagnosis == null)
@@ -1226,7 +1040,6 @@ Not to be used when the patient is currently at the location
           return t;
         }
 
-    // syntactic sugar
         public EncounterHospitalizationComponent addAdmittingDiagnosis(Reference t) { //3
           if (t == null)
             return this;
@@ -1237,18 +1050,29 @@ Not to be used when the patient is currently at the location
         }
 
         /**
-         * @return {@link #admittingDiagnosis} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. The admitting diagnosis field is used to record the diagnosis codes as reported by admitting practitioner. This could be different or in addition to the conditions reported as reason-condition(s) for the encounter.)
+         * @return The first repetition of repeating field {@link #admittingDiagnosis}, creating it if it does not already exist
          */
+        public Reference getAdmittingDiagnosisFirstRep() { 
+          if (getAdmittingDiagnosis().isEmpty()) {
+            addAdmittingDiagnosis();
+          }
+          return getAdmittingDiagnosis().get(0);
+        }
+
+        /**
+         * @deprecated Use Reference#setResource(IBaseResource) instead
+         */
+        @Deprecated
         public List<Condition> getAdmittingDiagnosisTarget() { 
           if (this.admittingDiagnosisTarget == null)
             this.admittingDiagnosisTarget = new ArrayList<Condition>();
           return this.admittingDiagnosisTarget;
         }
 
-    // syntactic sugar
         /**
-         * @return {@link #admittingDiagnosis} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. The admitting diagnosis field is used to record the diagnosis codes as reported by admitting practitioner. This could be different or in addition to the conditions reported as reason-condition(s) for the encounter.)
+         * @deprecated Use Reference#setResource(IBaseResource) instead
          */
+        @Deprecated
         public Condition addAdmittingDiagnosisTarget() { 
           Condition r = new Condition();
           if (this.admittingDiagnosisTarget == null)
@@ -1290,6 +1114,14 @@ Not to be used when the patient is currently at the location
           return this.dietPreference;
         }
 
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public EncounterHospitalizationComponent setDietPreference(List<CodeableConcept> theDietPreference) { 
+          this.dietPreference = theDietPreference;
+          return this;
+        }
+
         public boolean hasDietPreference() { 
           if (this.dietPreference == null)
             return false;
@@ -1299,10 +1131,6 @@ Not to be used when the patient is currently at the location
           return false;
         }
 
-        /**
-         * @return {@link #dietPreference} (Diet preferences reported by the patient.)
-         */
-    // syntactic sugar
         public CodeableConcept addDietPreference() { //3
           CodeableConcept t = new CodeableConcept();
           if (this.dietPreference == null)
@@ -1311,7 +1139,6 @@ Not to be used when the patient is currently at the location
           return t;
         }
 
-    // syntactic sugar
         public EncounterHospitalizationComponent addDietPreference(CodeableConcept t) { //3
           if (t == null)
             return this;
@@ -1319,6 +1146,16 @@ Not to be used when the patient is currently at the location
             this.dietPreference = new ArrayList<CodeableConcept>();
           this.dietPreference.add(t);
           return this;
+        }
+
+        /**
+         * @return The first repetition of repeating field {@link #dietPreference}, creating it if it does not already exist
+         */
+        public CodeableConcept getDietPreferenceFirstRep() { 
+          if (getDietPreference().isEmpty()) {
+            addDietPreference();
+          }
+          return getDietPreference().get(0);
         }
 
         /**
@@ -1330,6 +1167,14 @@ Not to be used when the patient is currently at the location
           return this.specialCourtesy;
         }
 
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public EncounterHospitalizationComponent setSpecialCourtesy(List<CodeableConcept> theSpecialCourtesy) { 
+          this.specialCourtesy = theSpecialCourtesy;
+          return this;
+        }
+
         public boolean hasSpecialCourtesy() { 
           if (this.specialCourtesy == null)
             return false;
@@ -1339,10 +1184,6 @@ Not to be used when the patient is currently at the location
           return false;
         }
 
-        /**
-         * @return {@link #specialCourtesy} (Special courtesies (VIP, board member).)
-         */
-    // syntactic sugar
         public CodeableConcept addSpecialCourtesy() { //3
           CodeableConcept t = new CodeableConcept();
           if (this.specialCourtesy == null)
@@ -1351,7 +1192,6 @@ Not to be used when the patient is currently at the location
           return t;
         }
 
-    // syntactic sugar
         public EncounterHospitalizationComponent addSpecialCourtesy(CodeableConcept t) { //3
           if (t == null)
             return this;
@@ -1359,6 +1199,16 @@ Not to be used when the patient is currently at the location
             this.specialCourtesy = new ArrayList<CodeableConcept>();
           this.specialCourtesy.add(t);
           return this;
+        }
+
+        /**
+         * @return The first repetition of repeating field {@link #specialCourtesy}, creating it if it does not already exist
+         */
+        public CodeableConcept getSpecialCourtesyFirstRep() { 
+          if (getSpecialCourtesy().isEmpty()) {
+            addSpecialCourtesy();
+          }
+          return getSpecialCourtesy().get(0);
         }
 
         /**
@@ -1370,6 +1220,14 @@ Not to be used when the patient is currently at the location
           return this.specialArrangement;
         }
 
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public EncounterHospitalizationComponent setSpecialArrangement(List<CodeableConcept> theSpecialArrangement) { 
+          this.specialArrangement = theSpecialArrangement;
+          return this;
+        }
+
         public boolean hasSpecialArrangement() { 
           if (this.specialArrangement == null)
             return false;
@@ -1379,10 +1237,6 @@ Not to be used when the patient is currently at the location
           return false;
         }
 
-        /**
-         * @return {@link #specialArrangement} (Wheelchair, translator, stretcher, etc.)
-         */
-    // syntactic sugar
         public CodeableConcept addSpecialArrangement() { //3
           CodeableConcept t = new CodeableConcept();
           if (this.specialArrangement == null)
@@ -1391,7 +1245,6 @@ Not to be used when the patient is currently at the location
           return t;
         }
 
-    // syntactic sugar
         public EncounterHospitalizationComponent addSpecialArrangement(CodeableConcept t) { //3
           if (t == null)
             return this;
@@ -1399,6 +1252,16 @@ Not to be used when the patient is currently at the location
             this.specialArrangement = new ArrayList<CodeableConcept>();
           this.specialArrangement.add(t);
           return this;
+        }
+
+        /**
+         * @return The first repetition of repeating field {@link #specialArrangement}, creating it if it does not already exist
+         */
+        public CodeableConcept getSpecialArrangementFirstRep() { 
+          if (getSpecialArrangement().isEmpty()) {
+            addSpecialArrangement();
+          }
+          return getSpecialArrangement().get(0);
         }
 
         /**
@@ -1478,6 +1341,14 @@ Not to be used when the patient is currently at the location
           return this.dischargeDiagnosis;
         }
 
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public EncounterHospitalizationComponent setDischargeDiagnosis(List<Reference> theDischargeDiagnosis) { 
+          this.dischargeDiagnosis = theDischargeDiagnosis;
+          return this;
+        }
+
         public boolean hasDischargeDiagnosis() { 
           if (this.dischargeDiagnosis == null)
             return false;
@@ -1487,10 +1358,6 @@ Not to be used when the patient is currently at the location
           return false;
         }
 
-        /**
-         * @return {@link #dischargeDiagnosis} (The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete.)
-         */
-    // syntactic sugar
         public Reference addDischargeDiagnosis() { //3
           Reference t = new Reference();
           if (this.dischargeDiagnosis == null)
@@ -1499,7 +1366,6 @@ Not to be used when the patient is currently at the location
           return t;
         }
 
-    // syntactic sugar
         public EncounterHospitalizationComponent addDischargeDiagnosis(Reference t) { //3
           if (t == null)
             return this;
@@ -1510,18 +1376,29 @@ Not to be used when the patient is currently at the location
         }
 
         /**
-         * @return {@link #dischargeDiagnosis} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete.)
+         * @return The first repetition of repeating field {@link #dischargeDiagnosis}, creating it if it does not already exist
          */
+        public Reference getDischargeDiagnosisFirstRep() { 
+          if (getDischargeDiagnosis().isEmpty()) {
+            addDischargeDiagnosis();
+          }
+          return getDischargeDiagnosis().get(0);
+        }
+
+        /**
+         * @deprecated Use Reference#setResource(IBaseResource) instead
+         */
+        @Deprecated
         public List<Condition> getDischargeDiagnosisTarget() { 
           if (this.dischargeDiagnosisTarget == null)
             this.dischargeDiagnosisTarget = new ArrayList<Condition>();
           return this.dischargeDiagnosisTarget;
         }
 
-    // syntactic sugar
         /**
-         * @return {@link #dischargeDiagnosis} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete.)
+         * @deprecated Use Reference#setResource(IBaseResource) instead
          */
+        @Deprecated
         public Condition addDischargeDiagnosisTarget() { 
           Condition r = new Condition();
           if (this.dischargeDiagnosisTarget == null)
@@ -1760,13 +1637,9 @@ Not to be used when the patient is currently at the location
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (preAdmissionIdentifier == null || preAdmissionIdentifier.isEmpty())
-           && (origin == null || origin.isEmpty()) && (admitSource == null || admitSource.isEmpty())
-           && (admittingDiagnosis == null || admittingDiagnosis.isEmpty()) && (reAdmission == null || reAdmission.isEmpty())
-           && (dietPreference == null || dietPreference.isEmpty()) && (specialCourtesy == null || specialCourtesy.isEmpty())
-           && (specialArrangement == null || specialArrangement.isEmpty()) && (destination == null || destination.isEmpty())
-           && (dischargeDisposition == null || dischargeDisposition.isEmpty()) && (dischargeDiagnosis == null || dischargeDiagnosis.isEmpty())
-          ;
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(preAdmissionIdentifier, origin
+          , admitSource, admittingDiagnosis, reAdmission, dietPreference, specialCourtesy, specialArrangement
+          , destination, dischargeDisposition, dischargeDiagnosis);
       }
 
   public String fhirType() {
@@ -2044,8 +1917,8 @@ Not to be used when the patient is currently at the location
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (location == null || location.isEmpty()) && (status == null || status.isEmpty())
-           && (period == null || period.isEmpty());
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(location, status, period
+          );
       }
 
   public String fhirType() {
@@ -2079,9 +1952,9 @@ Not to be used when the patient is currently at the location
     /**
      * inpatient | outpatient | ambulatory | emergency +.
      */
-    @Child(name = "class", type = {CodeType.class}, order=3, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "class", type = {Coding.class}, order=3, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="inpatient | outpatient | ambulatory | emergency +", formalDefinition="inpatient | outpatient | ambulatory | emergency +." )
-    protected Enumeration<EncounterClass> class_;
+    protected Coding class_;
 
     /**
      * Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).
@@ -2223,7 +2096,7 @@ Not to be used when the patient is currently at the location
      */
     protected Encounter partOfTarget;
 
-    private static final long serialVersionUID = 929562300L;
+    private static final long serialVersionUID = 770948560L;
 
   /**
    * Constructor
@@ -2249,6 +2122,14 @@ Not to be used when the patient is currently at the location
       return this.identifier;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Encounter setIdentifier(List<Identifier> theIdentifier) { 
+      this.identifier = theIdentifier;
+      return this;
+    }
+
     public boolean hasIdentifier() { 
       if (this.identifier == null)
         return false;
@@ -2258,10 +2139,6 @@ Not to be used when the patient is currently at the location
       return false;
     }
 
-    /**
-     * @return {@link #identifier} (Identifier(s) by which this encounter is known.)
-     */
-    // syntactic sugar
     public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       if (this.identifier == null)
@@ -2270,7 +2147,6 @@ Not to be used when the patient is currently at the location
       return t;
     }
 
-    // syntactic sugar
     public Encounter addIdentifier(Identifier t) { //3
       if (t == null)
         return this;
@@ -2278,6 +2154,16 @@ Not to be used when the patient is currently at the location
         this.identifier = new ArrayList<Identifier>();
       this.identifier.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #identifier}, creating it if it does not already exist
+     */
+    public Identifier getIdentifierFirstRep() { 
+      if (getIdentifier().isEmpty()) {
+        addIdentifier();
+      }
+      return getIdentifier().get(0);
     }
 
     /**
@@ -2334,6 +2220,14 @@ Not to be used when the patient is currently at the location
       return this.statusHistory;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Encounter setStatusHistory(List<EncounterStatusHistoryComponent> theStatusHistory) { 
+      this.statusHistory = theStatusHistory;
+      return this;
+    }
+
     public boolean hasStatusHistory() { 
       if (this.statusHistory == null)
         return false;
@@ -2343,10 +2237,6 @@ Not to be used when the patient is currently at the location
       return false;
     }
 
-    /**
-     * @return {@link #statusHistory} (The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.)
-     */
-    // syntactic sugar
     public EncounterStatusHistoryComponent addStatusHistory() { //3
       EncounterStatusHistoryComponent t = new EncounterStatusHistoryComponent();
       if (this.statusHistory == null)
@@ -2355,7 +2245,6 @@ Not to be used when the patient is currently at the location
       return t;
     }
 
-    // syntactic sugar
     public Encounter addStatusHistory(EncounterStatusHistoryComponent t) { //3
       if (t == null)
         return this;
@@ -2366,19 +2255,25 @@ Not to be used when the patient is currently at the location
     }
 
     /**
-     * @return {@link #class_} (inpatient | outpatient | ambulatory | emergency +.). This is the underlying object with id, value and extensions. The accessor "getClass_" gives direct access to the value
+     * @return The first repetition of repeating field {@link #statusHistory}, creating it if it does not already exist
      */
-    public Enumeration<EncounterClass> getClass_Element() { 
+    public EncounterStatusHistoryComponent getStatusHistoryFirstRep() { 
+      if (getStatusHistory().isEmpty()) {
+        addStatusHistory();
+      }
+      return getStatusHistory().get(0);
+    }
+
+    /**
+     * @return {@link #class_} (inpatient | outpatient | ambulatory | emergency +.)
+     */
+    public Coding getClass_() { 
       if (this.class_ == null)
         if (Configuration.errorOnAutoCreate())
           throw new Error("Attempt to auto-create Encounter.class_");
         else if (Configuration.doAutoCreate())
-          this.class_ = new Enumeration<EncounterClass>(new EncounterClassEnumFactory()); // bb
+          this.class_ = new Coding(); // cc
       return this.class_;
-    }
-
-    public boolean hasClass_Element() { 
-      return this.class_ != null && !this.class_.isEmpty();
     }
 
     public boolean hasClass_() { 
@@ -2386,31 +2281,10 @@ Not to be used when the patient is currently at the location
     }
 
     /**
-     * @param value {@link #class_} (inpatient | outpatient | ambulatory | emergency +.). This is the underlying object with id, value and extensions. The accessor "getClass_" gives direct access to the value
+     * @param value {@link #class_} (inpatient | outpatient | ambulatory | emergency +.)
      */
-    public Encounter setClass_Element(Enumeration<EncounterClass> value) { 
+    public Encounter setClass_(Coding value) { 
       this.class_ = value;
-      return this;
-    }
-
-    /**
-     * @return inpatient | outpatient | ambulatory | emergency +.
-     */
-    public EncounterClass getClass_() { 
-      return this.class_ == null ? null : this.class_.getValue();
-    }
-
-    /**
-     * @param value inpatient | outpatient | ambulatory | emergency +.
-     */
-    public Encounter setClass_(EncounterClass value) { 
-      if (value == null)
-        this.class_ = null;
-      else {
-        if (this.class_ == null)
-          this.class_ = new Enumeration<EncounterClass>(new EncounterClassEnumFactory());
-        this.class_.setValue(value);
-      }
       return this;
     }
 
@@ -2423,6 +2297,14 @@ Not to be used when the patient is currently at the location
       return this.type;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Encounter setType(List<CodeableConcept> theType) { 
+      this.type = theType;
+      return this;
+    }
+
     public boolean hasType() { 
       if (this.type == null)
         return false;
@@ -2432,10 +2314,6 @@ Not to be used when the patient is currently at the location
       return false;
     }
 
-    /**
-     * @return {@link #type} (Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).)
-     */
-    // syntactic sugar
     public CodeableConcept addType() { //3
       CodeableConcept t = new CodeableConcept();
       if (this.type == null)
@@ -2444,7 +2322,6 @@ Not to be used when the patient is currently at the location
       return t;
     }
 
-    // syntactic sugar
     public Encounter addType(CodeableConcept t) { //3
       if (t == null)
         return this;
@@ -2452,6 +2329,16 @@ Not to be used when the patient is currently at the location
         this.type = new ArrayList<CodeableConcept>();
       this.type.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #type}, creating it if it does not already exist
+     */
+    public CodeableConcept getTypeFirstRep() { 
+      if (getType().isEmpty()) {
+        addType();
+      }
+      return getType().get(0);
     }
 
     /**
@@ -2531,6 +2418,14 @@ Not to be used when the patient is currently at the location
       return this.episodeOfCare;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Encounter setEpisodeOfCare(List<Reference> theEpisodeOfCare) { 
+      this.episodeOfCare = theEpisodeOfCare;
+      return this;
+    }
+
     public boolean hasEpisodeOfCare() { 
       if (this.episodeOfCare == null)
         return false;
@@ -2540,10 +2435,6 @@ Not to be used when the patient is currently at the location
       return false;
     }
 
-    /**
-     * @return {@link #episodeOfCare} (Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care, and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).)
-     */
-    // syntactic sugar
     public Reference addEpisodeOfCare() { //3
       Reference t = new Reference();
       if (this.episodeOfCare == null)
@@ -2552,7 +2443,6 @@ Not to be used when the patient is currently at the location
       return t;
     }
 
-    // syntactic sugar
     public Encounter addEpisodeOfCare(Reference t) { //3
       if (t == null)
         return this;
@@ -2563,18 +2453,29 @@ Not to be used when the patient is currently at the location
     }
 
     /**
-     * @return {@link #episodeOfCare} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care, and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).)
+     * @return The first repetition of repeating field {@link #episodeOfCare}, creating it if it does not already exist
      */
+    public Reference getEpisodeOfCareFirstRep() { 
+      if (getEpisodeOfCare().isEmpty()) {
+        addEpisodeOfCare();
+      }
+      return getEpisodeOfCare().get(0);
+    }
+
+    /**
+     * @deprecated Use Reference#setResource(IBaseResource) instead
+     */
+    @Deprecated
     public List<EpisodeOfCare> getEpisodeOfCareTarget() { 
       if (this.episodeOfCareTarget == null)
         this.episodeOfCareTarget = new ArrayList<EpisodeOfCare>();
       return this.episodeOfCareTarget;
     }
 
-    // syntactic sugar
     /**
-     * @return {@link #episodeOfCare} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care, and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years).)
+     * @deprecated Use Reference#setResource(IBaseResource) instead
      */
+    @Deprecated
     public EpisodeOfCare addEpisodeOfCareTarget() { 
       EpisodeOfCare r = new EpisodeOfCare();
       if (this.episodeOfCareTarget == null)
@@ -2592,6 +2493,14 @@ Not to be used when the patient is currently at the location
       return this.incomingReferral;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Encounter setIncomingReferral(List<Reference> theIncomingReferral) { 
+      this.incomingReferral = theIncomingReferral;
+      return this;
+    }
+
     public boolean hasIncomingReferral() { 
       if (this.incomingReferral == null)
         return false;
@@ -2601,10 +2510,6 @@ Not to be used when the patient is currently at the location
       return false;
     }
 
-    /**
-     * @return {@link #incomingReferral} (The referral request this encounter satisfies (incoming referral).)
-     */
-    // syntactic sugar
     public Reference addIncomingReferral() { //3
       Reference t = new Reference();
       if (this.incomingReferral == null)
@@ -2613,7 +2518,6 @@ Not to be used when the patient is currently at the location
       return t;
     }
 
-    // syntactic sugar
     public Encounter addIncomingReferral(Reference t) { //3
       if (t == null)
         return this;
@@ -2624,18 +2528,29 @@ Not to be used when the patient is currently at the location
     }
 
     /**
-     * @return {@link #incomingReferral} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. The referral request this encounter satisfies (incoming referral).)
+     * @return The first repetition of repeating field {@link #incomingReferral}, creating it if it does not already exist
      */
+    public Reference getIncomingReferralFirstRep() { 
+      if (getIncomingReferral().isEmpty()) {
+        addIncomingReferral();
+      }
+      return getIncomingReferral().get(0);
+    }
+
+    /**
+     * @deprecated Use Reference#setResource(IBaseResource) instead
+     */
+    @Deprecated
     public List<ReferralRequest> getIncomingReferralTarget() { 
       if (this.incomingReferralTarget == null)
         this.incomingReferralTarget = new ArrayList<ReferralRequest>();
       return this.incomingReferralTarget;
     }
 
-    // syntactic sugar
     /**
-     * @return {@link #incomingReferral} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. The referral request this encounter satisfies (incoming referral).)
+     * @deprecated Use Reference#setResource(IBaseResource) instead
      */
+    @Deprecated
     public ReferralRequest addIncomingReferralTarget() { 
       ReferralRequest r = new ReferralRequest();
       if (this.incomingReferralTarget == null)
@@ -2653,6 +2568,14 @@ Not to be used when the patient is currently at the location
       return this.participant;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Encounter setParticipant(List<EncounterParticipantComponent> theParticipant) { 
+      this.participant = theParticipant;
+      return this;
+    }
+
     public boolean hasParticipant() { 
       if (this.participant == null)
         return false;
@@ -2662,10 +2585,6 @@ Not to be used when the patient is currently at the location
       return false;
     }
 
-    /**
-     * @return {@link #participant} (The list of people responsible for providing the service.)
-     */
-    // syntactic sugar
     public EncounterParticipantComponent addParticipant() { //3
       EncounterParticipantComponent t = new EncounterParticipantComponent();
       if (this.participant == null)
@@ -2674,7 +2593,6 @@ Not to be used when the patient is currently at the location
       return t;
     }
 
-    // syntactic sugar
     public Encounter addParticipant(EncounterParticipantComponent t) { //3
       if (t == null)
         return this;
@@ -2682,6 +2600,16 @@ Not to be used when the patient is currently at the location
         this.participant = new ArrayList<EncounterParticipantComponent>();
       this.participant.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #participant}, creating it if it does not already exist
+     */
+    public EncounterParticipantComponent getParticipantFirstRep() { 
+      if (getParticipant().isEmpty()) {
+        addParticipant();
+      }
+      return getParticipant().get(0);
     }
 
     /**
@@ -2785,6 +2713,14 @@ Not to be used when the patient is currently at the location
       return this.reason;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Encounter setReason(List<CodeableConcept> theReason) { 
+      this.reason = theReason;
+      return this;
+    }
+
     public boolean hasReason() { 
       if (this.reason == null)
         return false;
@@ -2794,10 +2730,6 @@ Not to be used when the patient is currently at the location
       return false;
     }
 
-    /**
-     * @return {@link #reason} (Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis.)
-     */
-    // syntactic sugar
     public CodeableConcept addReason() { //3
       CodeableConcept t = new CodeableConcept();
       if (this.reason == null)
@@ -2806,7 +2738,6 @@ Not to be used when the patient is currently at the location
       return t;
     }
 
-    // syntactic sugar
     public Encounter addReason(CodeableConcept t) { //3
       if (t == null)
         return this;
@@ -2814,6 +2745,16 @@ Not to be used when the patient is currently at the location
         this.reason = new ArrayList<CodeableConcept>();
       this.reason.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #reason}, creating it if it does not already exist
+     */
+    public CodeableConcept getReasonFirstRep() { 
+      if (getReason().isEmpty()) {
+        addReason();
+      }
+      return getReason().get(0);
     }
 
     /**
@@ -2825,6 +2766,14 @@ Not to be used when the patient is currently at the location
       return this.indication;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Encounter setIndication(List<Reference> theIndication) { 
+      this.indication = theIndication;
+      return this;
+    }
+
     public boolean hasIndication() { 
       if (this.indication == null)
         return false;
@@ -2834,10 +2783,6 @@ Not to be used when the patient is currently at the location
       return false;
     }
 
-    /**
-     * @return {@link #indication} (Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.)
-     */
-    // syntactic sugar
     public Reference addIndication() { //3
       Reference t = new Reference();
       if (this.indication == null)
@@ -2846,7 +2791,6 @@ Not to be used when the patient is currently at the location
       return t;
     }
 
-    // syntactic sugar
     public Encounter addIndication(Reference t) { //3
       if (t == null)
         return this;
@@ -2857,8 +2801,19 @@ Not to be used when the patient is currently at the location
     }
 
     /**
-     * @return {@link #indication} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.)
+     * @return The first repetition of repeating field {@link #indication}, creating it if it does not already exist
      */
+    public Reference getIndicationFirstRep() { 
+      if (getIndication().isEmpty()) {
+        addIndication();
+      }
+      return getIndication().get(0);
+    }
+
+    /**
+     * @deprecated Use Reference#setResource(IBaseResource) instead
+     */
+    @Deprecated
     public List<Resource> getIndicationTarget() { 
       if (this.indicationTarget == null)
         this.indicationTarget = new ArrayList<Resource>();
@@ -2898,6 +2853,14 @@ Not to be used when the patient is currently at the location
       return this.location;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public Encounter setLocation(List<EncounterLocationComponent> theLocation) { 
+      this.location = theLocation;
+      return this;
+    }
+
     public boolean hasLocation() { 
       if (this.location == null)
         return false;
@@ -2907,10 +2870,6 @@ Not to be used when the patient is currently at the location
       return false;
     }
 
-    /**
-     * @return {@link #location} (List of locations where  the patient has been during this encounter.)
-     */
-    // syntactic sugar
     public EncounterLocationComponent addLocation() { //3
       EncounterLocationComponent t = new EncounterLocationComponent();
       if (this.location == null)
@@ -2919,7 +2878,6 @@ Not to be used when the patient is currently at the location
       return t;
     }
 
-    // syntactic sugar
     public Encounter addLocation(EncounterLocationComponent t) { //3
       if (t == null)
         return this;
@@ -2927,6 +2885,16 @@ Not to be used when the patient is currently at the location
         this.location = new ArrayList<EncounterLocationComponent>();
       this.location.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #location}, creating it if it does not already exist
+     */
+    public EncounterLocationComponent getLocationFirstRep() { 
+      if (getLocation().isEmpty()) {
+        addLocation();
+      }
+      return getLocation().get(0);
     }
 
     /**
@@ -3022,7 +2990,7 @@ Not to be used when the patient is currently at the location
         childrenList.add(new Property("identifier", "Identifier", "Identifier(s) by which this encounter is known.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("status", "code", "planned | arrived | in-progress | onleave | finished | cancelled.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("statusHistory", "", "The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them.", 0, java.lang.Integer.MAX_VALUE, statusHistory));
-        childrenList.add(new Property("class", "code", "inpatient | outpatient | ambulatory | emergency +.", 0, java.lang.Integer.MAX_VALUE, class_));
+        childrenList.add(new Property("class", "Coding", "inpatient | outpatient | ambulatory | emergency +.", 0, java.lang.Integer.MAX_VALUE, class_));
         childrenList.add(new Property("type", "CodeableConcept", "Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation).", 0, java.lang.Integer.MAX_VALUE, type));
         childrenList.add(new Property("priority", "CodeableConcept", "Indicates the urgency of the encounter.", 0, java.lang.Integer.MAX_VALUE, priority));
         childrenList.add(new Property("patient", "Reference(Patient)", "The patient present at the encounter.", 0, java.lang.Integer.MAX_VALUE, patient));
@@ -3046,7 +3014,7 @@ Not to be used when the patient is currently at the location
         case -1618432855: /*identifier*/ return this.identifier == null ? new Base[0] : this.identifier.toArray(new Base[this.identifier.size()]); // Identifier
         case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<EncounterState>
         case -986695614: /*statusHistory*/ return this.statusHistory == null ? new Base[0] : this.statusHistory.toArray(new Base[this.statusHistory.size()]); // EncounterStatusHistoryComponent
-        case 94742904: /*class*/ return this.class_ == null ? new Base[0] : new Base[] {this.class_}; // Enumeration<EncounterClass>
+        case 94742904: /*class*/ return this.class_ == null ? new Base[0] : new Base[] {this.class_}; // Coding
         case 3575610: /*type*/ return this.type == null ? new Base[0] : this.type.toArray(new Base[this.type.size()]); // CodeableConcept
         case -1165461084: /*priority*/ return this.priority == null ? new Base[0] : new Base[] {this.priority}; // CodeableConcept
         case -791418107: /*patient*/ return this.patient == null ? new Base[0] : new Base[] {this.patient}; // Reference
@@ -3080,7 +3048,7 @@ Not to be used when the patient is currently at the location
           this.getStatusHistory().add((EncounterStatusHistoryComponent) value); // EncounterStatusHistoryComponent
           break;
         case 94742904: // class
-          this.class_ = new EncounterClassEnumFactory().fromType(value); // Enumeration<EncounterClass>
+          this.class_ = castToCoding(value); // Coding
           break;
         case 3575610: // type
           this.getType().add(castToCodeableConcept(value)); // CodeableConcept
@@ -3141,7 +3109,7 @@ Not to be used when the patient is currently at the location
         else if (name.equals("statusHistory"))
           this.getStatusHistory().add((EncounterStatusHistoryComponent) value);
         else if (name.equals("class"))
-          this.class_ = new EncounterClassEnumFactory().fromType(value); // Enumeration<EncounterClass>
+          this.class_ = castToCoding(value); // Coding
         else if (name.equals("type"))
           this.getType().add(castToCodeableConcept(value));
         else if (name.equals("priority"))
@@ -3182,7 +3150,7 @@ Not to be used when the patient is currently at the location
         case -1618432855:  return addIdentifier(); // Identifier
         case -892481550: throw new FHIRException("Cannot make property status as it is not a complex type"); // Enumeration<EncounterState>
         case -986695614:  return addStatusHistory(); // EncounterStatusHistoryComponent
-        case 94742904: throw new FHIRException("Cannot make property class as it is not a complex type"); // Enumeration<EncounterClass>
+        case 94742904:  return getClass_(); // Coding
         case 3575610:  return addType(); // CodeableConcept
         case -1165461084:  return getPriority(); // CodeableConcept
         case -791418107:  return getPatient(); // Reference
@@ -3215,7 +3183,8 @@ Not to be used when the patient is currently at the location
           return addStatusHistory();
         }
         else if (name.equals("class")) {
-          throw new FHIRException("Cannot call addChild on a primitive type Encounter.class");
+          this.class_ = new Coding();
+          return this.class_;
         }
         else if (name.equals("type")) {
           return addType();
@@ -3368,19 +3337,14 @@ Not to be used when the patient is currently at the location
         if (!(other instanceof Encounter))
           return false;
         Encounter o = (Encounter) other;
-        return compareValues(status, o.status, true) && compareValues(class_, o.class_, true);
+        return compareValues(status, o.status, true);
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (status == null || status.isEmpty())
-           && (statusHistory == null || statusHistory.isEmpty()) && (class_ == null || class_.isEmpty())
-           && (type == null || type.isEmpty()) && (priority == null || priority.isEmpty()) && (patient == null || patient.isEmpty())
-           && (episodeOfCare == null || episodeOfCare.isEmpty()) && (incomingReferral == null || incomingReferral.isEmpty())
-           && (participant == null || participant.isEmpty()) && (appointment == null || appointment.isEmpty())
-           && (period == null || period.isEmpty()) && (length == null || length.isEmpty()) && (reason == null || reason.isEmpty())
-           && (indication == null || indication.isEmpty()) && (hospitalization == null || hospitalization.isEmpty())
-           && (location == null || location.isEmpty()) && (serviceProvider == null || serviceProvider.isEmpty())
-           && (partOf == null || partOf.isEmpty());
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, status, statusHistory
+          , class_, type, priority, patient, episodeOfCare, incomingReferral, participant
+          , appointment, period, length, reason, indication, hospitalization, location, serviceProvider
+          , partOf);
       }
 
   @Override
@@ -3389,24 +3353,64 @@ Not to be used when the patient is currently at the location
    }
 
  /**
-   * Search parameter: <b>participant-type</b>
+   * Search parameter: <b>date</b>
    * <p>
-   * Description: <b>Role of participant in encounter</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Encounter.participant.type</b><br>
+   * Description: <b>A date within the period the Encounter lasted</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>Encounter.period</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="participant-type", path="Encounter.participant.type", description="Role of participant in encounter", type="token" )
-  public static final String SP_PARTICIPANT_TYPE = "participant-type";
+  @SearchParamDefinition(name="date", path="Encounter.period", description="A date within the period the Encounter lasted", type="date" )
+  public static final String SP_DATE = "date";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>participant-type</b>
+   * <b>Fluent Client</b> search parameter constant for <b>date</b>
    * <p>
-   * Description: <b>Role of participant in encounter</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Encounter.participant.type</b><br>
+   * Description: <b>A date within the period the Encounter lasted</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>Encounter.period</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam PARTICIPANT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_PARTICIPANT_TYPE);
+  public static final ca.uhn.fhir.rest.gclient.DateClientParam DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_DATE);
+
+ /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>Identifier(s) by which this encounter is known</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Encounter.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="identifier", path="Encounter.identifier", description="Identifier(s) by which this encounter is known", type="token" )
+  public static final String SP_IDENTIFIER = "identifier";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
+   * <p>
+   * Description: <b>Identifier(s) by which this encounter is known</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Encounter.identifier</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
+
+ /**
+   * Search parameter: <b>reason</b>
+   * <p>
+   * Description: <b>Reason the encounter takes place (code)</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Encounter.reason</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="reason", path="Encounter.reason", description="Reason the encounter takes place (code)", type="token" )
+  public static final String SP_REASON = "reason";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>reason</b>
+   * <p>
+   * Description: <b>Reason the encounter takes place (code)</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Encounter.reason</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam REASON = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_REASON);
 
  /**
    * Search parameter: <b>episodeofcare</b>
@@ -3435,44 +3439,220 @@ Not to be used when the patient is currently at the location
   public static final ca.uhn.fhir.model.api.Include INCLUDE_EPISODEOFCARE = new ca.uhn.fhir.model.api.Include("Encounter:episodeofcare").toLocked();
 
  /**
-   * Search parameter: <b>status</b>
+   * Search parameter: <b>participant-type</b>
    * <p>
-   * Description: <b>planned | arrived | in-progress | onleave | finished | cancelled</b><br>
+   * Description: <b>Role of participant in encounter</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>Encounter.status</b><br>
+   * Path: <b>Encounter.participant.type</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="status", path="Encounter.status", description="planned | arrived | in-progress | onleave | finished | cancelled", type="token" )
-  public static final String SP_STATUS = "status";
+  @SearchParamDefinition(name="participant-type", path="Encounter.participant.type", description="Role of participant in encounter", type="token" )
+  public static final String SP_PARTICIPANT_TYPE = "participant-type";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>status</b>
+   * <b>Fluent Client</b> search parameter constant for <b>participant-type</b>
    * <p>
-   * Description: <b>planned | arrived | in-progress | onleave | finished | cancelled</b><br>
+   * Description: <b>Role of participant in encounter</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>Encounter.status</b><br>
+   * Path: <b>Encounter.participant.type</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_STATUS);
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam PARTICIPANT_TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_PARTICIPANT_TYPE);
 
  /**
-   * Search parameter: <b>reason</b>
+   * Search parameter: <b>incomingreferral</b>
    * <p>
-   * Description: <b>Reason the encounter takes place (code)</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Encounter.reason</b><br>
+   * Description: <b>The ReferralRequest that initiated this encounter</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.incomingReferral</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="reason", path="Encounter.reason", description="Reason the encounter takes place (code)", type="token" )
-  public static final String SP_REASON = "reason";
+  @SearchParamDefinition(name="incomingreferral", path="Encounter.incomingReferral", description="The ReferralRequest that initiated this encounter", type="reference" )
+  public static final String SP_INCOMINGREFERRAL = "incomingreferral";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>reason</b>
+   * <b>Fluent Client</b> search parameter constant for <b>incomingreferral</b>
    * <p>
-   * Description: <b>Reason the encounter takes place (code)</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Encounter.reason</b><br>
+   * Description: <b>The ReferralRequest that initiated this encounter</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.incomingReferral</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam REASON = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_REASON);
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam INCOMINGREFERRAL = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_INCOMINGREFERRAL);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Encounter:incomingreferral</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_INCOMINGREFERRAL = new ca.uhn.fhir.model.api.Include("Encounter:incomingreferral").toLocked();
+
+ /**
+   * Search parameter: <b>practitioner</b>
+   * <p>
+   * Description: <b>Persons involved in the encounter other than the patient</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.participant.individual</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="practitioner", path="Encounter.participant.individual", description="Persons involved in the encounter other than the patient", type="reference" )
+  public static final String SP_PRACTITIONER = "practitioner";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>practitioner</b>
+   * <p>
+   * Description: <b>Persons involved in the encounter other than the patient</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.participant.individual</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PRACTITIONER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PRACTITIONER);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Encounter:practitioner</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_PRACTITIONER = new ca.uhn.fhir.model.api.Include("Encounter:practitioner").toLocked();
+
+ /**
+   * Search parameter: <b>length</b>
+   * <p>
+   * Description: <b>Length of encounter in days</b><br>
+   * Type: <b>number</b><br>
+   * Path: <b>Encounter.length</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="length", path="Encounter.length", description="Length of encounter in days", type="number" )
+  public static final String SP_LENGTH = "length";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>length</b>
+   * <p>
+   * Description: <b>Length of encounter in days</b><br>
+   * Type: <b>number</b><br>
+   * Path: <b>Encounter.length</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.NumberClientParam LENGTH = new ca.uhn.fhir.rest.gclient.NumberClientParam(SP_LENGTH);
+
+ /**
+   * Search parameter: <b>appointment</b>
+   * <p>
+   * Description: <b>The appointment that scheduled this encounter</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.appointment</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="appointment", path="Encounter.appointment", description="The appointment that scheduled this encounter", type="reference" )
+  public static final String SP_APPOINTMENT = "appointment";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>appointment</b>
+   * <p>
+   * Description: <b>The appointment that scheduled this encounter</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.appointment</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam APPOINTMENT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_APPOINTMENT);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Encounter:appointment</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_APPOINTMENT = new ca.uhn.fhir.model.api.Include("Encounter:appointment").toLocked();
+
+ /**
+   * Search parameter: <b>part-of</b>
+   * <p>
+   * Description: <b>Another Encounter this encounter is part of</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.partOf</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="part-of", path="Encounter.partOf", description="Another Encounter this encounter is part of", type="reference" )
+  public static final String SP_PART_OF = "part-of";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>part-of</b>
+   * <p>
+   * Description: <b>Another Encounter this encounter is part of</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.partOf</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PART_OF = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PART_OF);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Encounter:part-of</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_PART_OF = new ca.uhn.fhir.model.api.Include("Encounter:part-of").toLocked();
+
+ /**
+   * Search parameter: <b>procedure</b>
+   * <p>
+   * Description: <b>Reason the encounter takes place (resource)</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.indication</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="procedure", path="Encounter.indication", description="Reason the encounter takes place (resource)", type="reference" )
+  public static final String SP_PROCEDURE = "procedure";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>procedure</b>
+   * <p>
+   * Description: <b>Reason the encounter takes place (resource)</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.indication</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PROCEDURE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PROCEDURE);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Encounter:procedure</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_PROCEDURE = new ca.uhn.fhir.model.api.Include("Encounter:procedure").toLocked();
+
+ /**
+   * Search parameter: <b>type</b>
+   * <p>
+   * Description: <b>Specific type of encounter</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Encounter.type</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="type", path="Encounter.type", description="Specific type of encounter", type="token" )
+  public static final String SP_TYPE = "type";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>type</b>
+   * <p>
+   * Description: <b>Specific type of encounter</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Encounter.type</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_TYPE);
+
+ /**
+   * Search parameter: <b>participant</b>
+   * <p>
+   * Description: <b>Persons involved in the encounter other than the patient</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.participant.individual</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="participant", path="Encounter.participant.individual", description="Persons involved in the encounter other than the patient", type="reference" )
+  public static final String SP_PARTICIPANT = "participant";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>participant</b>
+   * <p>
+   * Description: <b>Persons involved in the encounter other than the patient</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.participant.individual</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PARTICIPANT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PARTICIPANT);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Encounter:participant</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_PARTICIPANT = new ca.uhn.fhir.model.api.Include("Encounter:participant").toLocked();
 
  /**
    * Search parameter: <b>condition</b>
@@ -3499,6 +3679,52 @@ Not to be used when the patient is currently at the location
    * the path value of "<b>Encounter:condition</b>".
    */
   public static final ca.uhn.fhir.model.api.Include INCLUDE_CONDITION = new ca.uhn.fhir.model.api.Include("Encounter:condition").toLocked();
+
+ /**
+   * Search parameter: <b>patient</b>
+   * <p>
+   * Description: <b>The patient present at the encounter</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.patient</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="patient", path="Encounter.patient", description="The patient present at the encounter", type="reference" )
+  public static final String SP_PATIENT = "patient";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>patient</b>
+   * <p>
+   * Description: <b>The patient present at the encounter</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Encounter.patient</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PATIENT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PATIENT);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Encounter:patient</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_PATIENT = new ca.uhn.fhir.model.api.Include("Encounter:patient").toLocked();
+
+ /**
+   * Search parameter: <b>location-period</b>
+   * <p>
+   * Description: <b>Time period during which the patient was present at the location</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>Encounter.location.period</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="location-period", path="Encounter.location.period", description="Time period during which the patient was present at the location", type="date" )
+  public static final String SP_LOCATION_PERIOD = "location-period";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>location-period</b>
+   * <p>
+   * Description: <b>Time period during which the patient was present at the location</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>Encounter.location.period</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.DateClientParam LOCATION_PERIOD = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_LOCATION_PERIOD);
 
  /**
    * Search parameter: <b>location</b>
@@ -3553,46 +3779,6 @@ Not to be used when the patient is currently at the location
   public static final ca.uhn.fhir.model.api.Include INCLUDE_INDICATION = new ca.uhn.fhir.model.api.Include("Encounter:indication").toLocked();
 
  /**
-   * Search parameter: <b>type</b>
-   * <p>
-   * Description: <b>Specific type of encounter</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Encounter.type</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="type", path="Encounter.type", description="Specific type of encounter", type="token" )
-  public static final String SP_TYPE = "type";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>type</b>
-   * <p>
-   * Description: <b>Specific type of encounter</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>Encounter.type</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam TYPE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_TYPE);
-
- /**
-   * Search parameter: <b>date</b>
-   * <p>
-   * Description: <b>A date within the period the Encounter lasted</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>Encounter.period</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="date", path="Encounter.period", description="A date within the period the Encounter lasted", type="date" )
-  public static final String SP_DATE = "date";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>date</b>
-   * <p>
-   * Description: <b>A date within the period the Encounter lasted</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>Encounter.period</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.DateClientParam DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_DATE);
-
- /**
    * Search parameter: <b>special-arrangement</b>
    * <p>
    * Description: <b>Wheelchair, translator, stretcher, etc.</b><br>
@@ -3613,246 +3799,44 @@ Not to be used when the patient is currently at the location
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam SPECIAL_ARRANGEMENT = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_SPECIAL_ARRANGEMENT);
 
  /**
-   * Search parameter: <b>part-of</b>
+   * Search parameter: <b>class</b>
    * <p>
-   * Description: <b>Another Encounter this encounter is part of</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.partOf</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="part-of", path="Encounter.partOf", description="Another Encounter this encounter is part of", type="reference" )
-  public static final String SP_PART_OF = "part-of";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>part-of</b>
-   * <p>
-   * Description: <b>Another Encounter this encounter is part of</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.partOf</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PART_OF = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PART_OF);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Encounter:part-of</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_PART_OF = new ca.uhn.fhir.model.api.Include("Encounter:part-of").toLocked();
-
- /**
-   * Search parameter: <b>appointment</b>
-   * <p>
-   * Description: <b>The appointment that scheduled this encounter</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.appointment</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="appointment", path="Encounter.appointment", description="The appointment that scheduled this encounter", type="reference" )
-  public static final String SP_APPOINTMENT = "appointment";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>appointment</b>
-   * <p>
-   * Description: <b>The appointment that scheduled this encounter</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.appointment</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam APPOINTMENT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_APPOINTMENT);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Encounter:appointment</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_APPOINTMENT = new ca.uhn.fhir.model.api.Include("Encounter:appointment").toLocked();
-
- /**
-   * Search parameter: <b>patient</b>
-   * <p>
-   * Description: <b>The patient present at the encounter</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.patient</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="patient", path="Encounter.patient", description="The patient present at the encounter", type="reference" )
-  public static final String SP_PATIENT = "patient";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>patient</b>
-   * <p>
-   * Description: <b>The patient present at the encounter</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.patient</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PATIENT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PATIENT);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Encounter:patient</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_PATIENT = new ca.uhn.fhir.model.api.Include("Encounter:patient").toLocked();
-
- /**
-   * Search parameter: <b>practitioner</b>
-   * <p>
-   * Description: <b>Persons involved in the encounter other than the patient</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.participant.individual</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="practitioner", path="Encounter.participant.individual", description="Persons involved in the encounter other than the patient", type="reference" )
-  public static final String SP_PRACTITIONER = "practitioner";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>practitioner</b>
-   * <p>
-   * Description: <b>Persons involved in the encounter other than the patient</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.participant.individual</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PRACTITIONER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PRACTITIONER);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Encounter:practitioner</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_PRACTITIONER = new ca.uhn.fhir.model.api.Include("Encounter:practitioner").toLocked();
-
- /**
-   * Search parameter: <b>length</b>
-   * <p>
-   * Description: <b>Length of encounter in days</b><br>
-   * Type: <b>number</b><br>
-   * Path: <b>Encounter.length</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="length", path="Encounter.length", description="Length of encounter in days", type="number" )
-  public static final String SP_LENGTH = "length";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>length</b>
-   * <p>
-   * Description: <b>Length of encounter in days</b><br>
-   * Type: <b>number</b><br>
-   * Path: <b>Encounter.length</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.NumberClientParam LENGTH = new ca.uhn.fhir.rest.gclient.NumberClientParam(SP_LENGTH);
-
- /**
-   * Search parameter: <b>participant</b>
-   * <p>
-   * Description: <b>Persons involved in the encounter other than the patient</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.participant.individual</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="participant", path="Encounter.participant.individual", description="Persons involved in the encounter other than the patient", type="reference" )
-  public static final String SP_PARTICIPANT = "participant";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>participant</b>
-   * <p>
-   * Description: <b>Persons involved in the encounter other than the patient</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.participant.individual</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PARTICIPANT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PARTICIPANT);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Encounter:participant</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_PARTICIPANT = new ca.uhn.fhir.model.api.Include("Encounter:participant").toLocked();
-
- /**
-   * Search parameter: <b>incomingreferral</b>
-   * <p>
-   * Description: <b>The ReferralRequest that initiated this encounter</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.incomingReferral</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="incomingreferral", path="Encounter.incomingReferral", description="The ReferralRequest that initiated this encounter", type="reference" )
-  public static final String SP_INCOMINGREFERRAL = "incomingreferral";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>incomingreferral</b>
-   * <p>
-   * Description: <b>The ReferralRequest that initiated this encounter</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.incomingReferral</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam INCOMINGREFERRAL = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_INCOMINGREFERRAL);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Encounter:incomingreferral</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_INCOMINGREFERRAL = new ca.uhn.fhir.model.api.Include("Encounter:incomingreferral").toLocked();
-
- /**
-   * Search parameter: <b>identifier</b>
-   * <p>
-   * Description: <b>Identifier(s) by which this encounter is known</b><br>
+   * Description: <b>inpatient | outpatient | ambulatory | emergency +</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>Encounter.identifier</b><br>
+   * Path: <b>Encounter.class</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="identifier", path="Encounter.identifier", description="Identifier(s) by which this encounter is known", type="token" )
-  public static final String SP_IDENTIFIER = "identifier";
+  @SearchParamDefinition(name="class", path="Encounter.class", description="inpatient | outpatient | ambulatory | emergency +", type="token" )
+  public static final String SP_CLASS = "class";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
+   * <b>Fluent Client</b> search parameter constant for <b>class</b>
    * <p>
-   * Description: <b>Identifier(s) by which this encounter is known</b><br>
+   * Description: <b>inpatient | outpatient | ambulatory | emergency +</b><br>
    * Type: <b>token</b><br>
-   * Path: <b>Encounter.identifier</b><br>
+   * Path: <b>Encounter.class</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CLASS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CLASS);
 
  /**
-   * Search parameter: <b>procedure</b>
+   * Search parameter: <b>status</b>
    * <p>
-   * Description: <b>Reason the encounter takes place (resource)</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.indication</b><br>
+   * Description: <b>planned | arrived | in-progress | onleave | finished | cancelled</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Encounter.status</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="procedure", path="Encounter.indication", description="Reason the encounter takes place (resource)", type="reference" )
-  public static final String SP_PROCEDURE = "procedure";
+  @SearchParamDefinition(name="status", path="Encounter.status", description="planned | arrived | in-progress | onleave | finished | cancelled", type="token" )
+  public static final String SP_STATUS = "status";
  /**
-   * <b>Fluent Client</b> search parameter constant for <b>procedure</b>
+   * <b>Fluent Client</b> search parameter constant for <b>status</b>
    * <p>
-   * Description: <b>Reason the encounter takes place (resource)</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Encounter.indication</b><br>
+   * Description: <b>planned | arrived | in-progress | onleave | finished | cancelled</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Encounter.status</b><br>
    * </p>
    */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PROCEDURE = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PROCEDURE);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Encounter:procedure</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_PROCEDURE = new ca.uhn.fhir.model.api.Include("Encounter:procedure").toLocked();
-
- /**
-   * Search parameter: <b>location-period</b>
-   * <p>
-   * Description: <b>Time period during which the patient was present at the location</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>Encounter.location.period</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="location-period", path="Encounter.location.period", description="Time period during which the patient was present at the location", type="date" )
-  public static final String SP_LOCATION_PERIOD = "location-period";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>location-period</b>
-   * <p>
-   * Description: <b>Time period during which the patient was present at the location</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>Encounter.location.period</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.DateClientParam LOCATION_PERIOD = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_LOCATION_PERIOD);
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_STATUS);
 
 
 }

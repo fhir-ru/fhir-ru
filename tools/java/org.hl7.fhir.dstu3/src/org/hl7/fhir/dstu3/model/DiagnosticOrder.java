@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
+// Generated on Wed, Jun 29, 2016 09:39+1000 for FHIR v1.4.0
 
 import java.util.*;
 
@@ -775,8 +775,8 @@ public class DiagnosticOrder extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (status == null || status.isEmpty()) && (description == null || description.isEmpty())
-           && (dateTime == null || dateTime.isEmpty()) && (actor == null || actor.isEmpty());
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(status, description, dateTime
+          , actor);
       }
 
   public String fhirType() {
@@ -796,39 +796,27 @@ public class DiagnosticOrder extends DomainResource {
         protected CodeableConcept code;
 
         /**
-         * If the item is related to a specific specimen.
-         */
-        @Child(name = "specimen", type = {Specimen.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-        @Description(shortDefinition="If this item relates to specific specimens", formalDefinition="If the item is related to a specific specimen." )
-        protected List<Reference> specimen;
-        /**
-         * The actual objects that are the target of the reference (If the item is related to a specific specimen.)
-         */
-        protected List<Specimen> specimenTarget;
-
-
-        /**
          * Anatomical location where the request test should be performed.  This is the target site.
          */
-        @Child(name = "bodySite", type = {CodeableConcept.class}, order=3, min=0, max=1, modifier=false, summary=false)
+        @Child(name = "bodySite", type = {CodeableConcept.class}, order=2, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Location of requested test (if applicable)", formalDefinition="Anatomical location where the request test should be performed.  This is the target site." )
         protected CodeableConcept bodySite;
 
         /**
          * The status of this individual item within the order.
          */
-        @Child(name = "status", type = {CodeType.class}, order=4, min=0, max=1, modifier=false, summary=true)
+        @Child(name = "status", type = {CodeType.class}, order=3, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error", formalDefinition="The status of this individual item within the order." )
         protected Enumeration<DiagnosticOrderStatus> status;
 
         /**
          * A summary of the events of interest that have occurred as this item of the request is processed.
          */
-        @Child(name = "event", type = {DiagnosticOrderEventComponent.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+        @Child(name = "event", type = {DiagnosticOrderEventComponent.class}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
         @Description(shortDefinition="Events specific to this item", formalDefinition="A summary of the events of interest that have occurred as this item of the request is processed." )
         protected List<DiagnosticOrderEventComponent> event;
 
-        private static final long serialVersionUID = 381238192L;
+        private static final long serialVersionUID = -1049554732L;
 
     /**
      * Constructor
@@ -867,67 +855,6 @@ public class DiagnosticOrder extends DomainResource {
         public DiagnosticOrderItemComponent setCode(CodeableConcept value) { 
           this.code = value;
           return this;
-        }
-
-        /**
-         * @return {@link #specimen} (If the item is related to a specific specimen.)
-         */
-        public List<Reference> getSpecimen() { 
-          if (this.specimen == null)
-            this.specimen = new ArrayList<Reference>();
-          return this.specimen;
-        }
-
-        public boolean hasSpecimen() { 
-          if (this.specimen == null)
-            return false;
-          for (Reference item : this.specimen)
-            if (!item.isEmpty())
-              return true;
-          return false;
-        }
-
-        /**
-         * @return {@link #specimen} (If the item is related to a specific specimen.)
-         */
-    // syntactic sugar
-        public Reference addSpecimen() { //3
-          Reference t = new Reference();
-          if (this.specimen == null)
-            this.specimen = new ArrayList<Reference>();
-          this.specimen.add(t);
-          return t;
-        }
-
-    // syntactic sugar
-        public DiagnosticOrderItemComponent addSpecimen(Reference t) { //3
-          if (t == null)
-            return this;
-          if (this.specimen == null)
-            this.specimen = new ArrayList<Reference>();
-          this.specimen.add(t);
-          return this;
-        }
-
-        /**
-         * @return {@link #specimen} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. If the item is related to a specific specimen.)
-         */
-        public List<Specimen> getSpecimenTarget() { 
-          if (this.specimenTarget == null)
-            this.specimenTarget = new ArrayList<Specimen>();
-          return this.specimenTarget;
-        }
-
-    // syntactic sugar
-        /**
-         * @return {@link #specimen} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. If the item is related to a specific specimen.)
-         */
-        public Specimen addSpecimenTarget() { 
-          Specimen r = new Specimen();
-          if (this.specimenTarget == null)
-            this.specimenTarget = new ArrayList<Specimen>();
-          this.specimenTarget.add(r);
-          return r;
         }
 
         /**
@@ -1012,6 +939,14 @@ public class DiagnosticOrder extends DomainResource {
           return this.event;
         }
 
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public DiagnosticOrderItemComponent setEvent(List<DiagnosticOrderEventComponent> theEvent) { 
+          this.event = theEvent;
+          return this;
+        }
+
         public boolean hasEvent() { 
           if (this.event == null)
             return false;
@@ -1021,10 +956,6 @@ public class DiagnosticOrder extends DomainResource {
           return false;
         }
 
-        /**
-         * @return {@link #event} (A summary of the events of interest that have occurred as this item of the request is processed.)
-         */
-    // syntactic sugar
         public DiagnosticOrderEventComponent addEvent() { //3
           DiagnosticOrderEventComponent t = new DiagnosticOrderEventComponent();
           if (this.event == null)
@@ -1033,7 +964,6 @@ public class DiagnosticOrder extends DomainResource {
           return t;
         }
 
-    // syntactic sugar
         public DiagnosticOrderItemComponent addEvent(DiagnosticOrderEventComponent t) { //3
           if (t == null)
             return this;
@@ -1043,10 +973,19 @@ public class DiagnosticOrder extends DomainResource {
           return this;
         }
 
+        /**
+         * @return The first repetition of repeating field {@link #event}, creating it if it does not already exist
+         */
+        public DiagnosticOrderEventComponent getEventFirstRep() { 
+          if (getEvent().isEmpty()) {
+            addEvent();
+          }
+          return getEvent().get(0);
+        }
+
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("code", "CodeableConcept", "A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested.", 0, java.lang.Integer.MAX_VALUE, code));
-          childrenList.add(new Property("specimen", "Reference(Specimen)", "If the item is related to a specific specimen.", 0, java.lang.Integer.MAX_VALUE, specimen));
           childrenList.add(new Property("bodySite", "CodeableConcept", "Anatomical location where the request test should be performed.  This is the target site.", 0, java.lang.Integer.MAX_VALUE, bodySite));
           childrenList.add(new Property("status", "code", "The status of this individual item within the order.", 0, java.lang.Integer.MAX_VALUE, status));
           childrenList.add(new Property("event", "@DiagnosticOrder.event", "A summary of the events of interest that have occurred as this item of the request is processed.", 0, java.lang.Integer.MAX_VALUE, event));
@@ -1056,7 +995,6 @@ public class DiagnosticOrder extends DomainResource {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case 3059181: /*code*/ return this.code == null ? new Base[0] : new Base[] {this.code}; // CodeableConcept
-        case -2132868344: /*specimen*/ return this.specimen == null ? new Base[0] : this.specimen.toArray(new Base[this.specimen.size()]); // Reference
         case 1702620169: /*bodySite*/ return this.bodySite == null ? new Base[0] : new Base[] {this.bodySite}; // CodeableConcept
         case -892481550: /*status*/ return this.status == null ? new Base[0] : new Base[] {this.status}; // Enumeration<DiagnosticOrderStatus>
         case 96891546: /*event*/ return this.event == null ? new Base[0] : this.event.toArray(new Base[this.event.size()]); // DiagnosticOrderEventComponent
@@ -1070,9 +1008,6 @@ public class DiagnosticOrder extends DomainResource {
         switch (hash) {
         case 3059181: // code
           this.code = castToCodeableConcept(value); // CodeableConcept
-          break;
-        case -2132868344: // specimen
-          this.getSpecimen().add(castToReference(value)); // Reference
           break;
         case 1702620169: // bodySite
           this.bodySite = castToCodeableConcept(value); // CodeableConcept
@@ -1092,8 +1027,6 @@ public class DiagnosticOrder extends DomainResource {
       public void setProperty(String name, Base value) throws FHIRException {
         if (name.equals("code"))
           this.code = castToCodeableConcept(value); // CodeableConcept
-        else if (name.equals("specimen"))
-          this.getSpecimen().add(castToReference(value));
         else if (name.equals("bodySite"))
           this.bodySite = castToCodeableConcept(value); // CodeableConcept
         else if (name.equals("status"))
@@ -1108,7 +1041,6 @@ public class DiagnosticOrder extends DomainResource {
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case 3059181:  return getCode(); // CodeableConcept
-        case -2132868344:  return addSpecimen(); // Reference
         case 1702620169:  return getBodySite(); // CodeableConcept
         case -892481550: throw new FHIRException("Cannot make property status as it is not a complex type"); // Enumeration<DiagnosticOrderStatus>
         case 96891546:  return addEvent(); // DiagnosticOrderEventComponent
@@ -1122,9 +1054,6 @@ public class DiagnosticOrder extends DomainResource {
         if (name.equals("code")) {
           this.code = new CodeableConcept();
           return this.code;
-        }
-        else if (name.equals("specimen")) {
-          return addSpecimen();
         }
         else if (name.equals("bodySite")) {
           this.bodySite = new CodeableConcept();
@@ -1144,11 +1073,6 @@ public class DiagnosticOrder extends DomainResource {
         DiagnosticOrderItemComponent dst = new DiagnosticOrderItemComponent();
         copyValues(dst);
         dst.code = code == null ? null : code.copy();
-        if (specimen != null) {
-          dst.specimen = new ArrayList<Reference>();
-          for (Reference i : specimen)
-            dst.specimen.add(i.copy());
-        };
         dst.bodySite = bodySite == null ? null : bodySite.copy();
         dst.status = status == null ? null : status.copy();
         if (event != null) {
@@ -1166,8 +1090,8 @@ public class DiagnosticOrder extends DomainResource {
         if (!(other instanceof DiagnosticOrderItemComponent))
           return false;
         DiagnosticOrderItemComponent o = (DiagnosticOrderItemComponent) other;
-        return compareDeep(code, o.code, true) && compareDeep(specimen, o.specimen, true) && compareDeep(bodySite, o.bodySite, true)
-           && compareDeep(status, o.status, true) && compareDeep(event, o.event, true);
+        return compareDeep(code, o.code, true) && compareDeep(bodySite, o.bodySite, true) && compareDeep(status, o.status, true)
+           && compareDeep(event, o.event, true);
       }
 
       @Override
@@ -1181,9 +1105,8 @@ public class DiagnosticOrder extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (code == null || code.isEmpty()) && (specimen == null || specimen.isEmpty())
-           && (bodySite == null || bodySite.isEmpty()) && (status == null || status.isEmpty()) && (event == null || event.isEmpty())
-          ;
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(code, bodySite, status, event
+          );
       }
 
   public String fhirType() {
@@ -1270,39 +1193,27 @@ public class DiagnosticOrder extends DomainResource {
 
 
     /**
-     * One or more specimens that the diagnostic investigation is about.
-     */
-    @Child(name = "specimen", type = {Specimen.class}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="If the whole order relates to specific specimens", formalDefinition="One or more specimens that the diagnostic investigation is about." )
-    protected List<Reference> specimen;
-    /**
-     * The actual objects that are the target of the reference (One or more specimens that the diagnostic investigation is about.)
-     */
-    protected List<Specimen> specimenTarget;
-
-
-    /**
      * A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed.
      */
-    @Child(name = "event", type = {}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "event", type = {}, order=8, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="A list of events of interest in the lifecycle", formalDefinition="A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed." )
     protected List<DiagnosticOrderEventComponent> event;
 
     /**
      * The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested.
      */
-    @Child(name = "item", type = {}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "item", type = {}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="The items the orderer requested", formalDefinition="The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested." )
     protected List<DiagnosticOrderItemComponent> item;
 
     /**
      * Any other notes associated with this patient, specimen or order (e.g. "patient hates needles").
      */
-    @Child(name = "note", type = {Annotation.class}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "note", type = {Annotation.class}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Other notes and comments", formalDefinition="Any other notes associated with this patient, specimen or order (e.g. \"patient hates needles\")." )
     protected List<Annotation> note;
 
-    private static final long serialVersionUID = 1170289657L;
+    private static final long serialVersionUID = -112775275L;
 
   /**
    * Constructor
@@ -1328,6 +1239,14 @@ public class DiagnosticOrder extends DomainResource {
       return this.identifier;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public DiagnosticOrder setIdentifier(List<Identifier> theIdentifier) { 
+      this.identifier = theIdentifier;
+      return this;
+    }
+
     public boolean hasIdentifier() { 
       if (this.identifier == null)
         return false;
@@ -1337,10 +1256,6 @@ public class DiagnosticOrder extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #identifier} (Identifiers assigned to this order instance by the orderer and/or  the receiver and/or order fulfiller.)
-     */
-    // syntactic sugar
     public Identifier addIdentifier() { //3
       Identifier t = new Identifier();
       if (this.identifier == null)
@@ -1349,7 +1264,6 @@ public class DiagnosticOrder extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public DiagnosticOrder addIdentifier(Identifier t) { //3
       if (t == null)
         return this;
@@ -1357,6 +1271,16 @@ public class DiagnosticOrder extends DomainResource {
         this.identifier = new ArrayList<Identifier>();
       this.identifier.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #identifier}, creating it if it does not already exist
+     */
+    public Identifier getIdentifierFirstRep() { 
+      if (getIdentifier().isEmpty()) {
+        addIdentifier();
+      }
+      return getIdentifier().get(0);
     }
 
     /**
@@ -1593,6 +1517,14 @@ public class DiagnosticOrder extends DomainResource {
       return this.reason;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public DiagnosticOrder setReason(List<CodeableConcept> theReason) { 
+      this.reason = theReason;
+      return this;
+    }
+
     public boolean hasReason() { 
       if (this.reason == null)
         return false;
@@ -1602,10 +1534,6 @@ public class DiagnosticOrder extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #reason} (An explanation or justification for why this diagnostic investigation is being requested.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.)
-     */
-    // syntactic sugar
     public CodeableConcept addReason() { //3
       CodeableConcept t = new CodeableConcept();
       if (this.reason == null)
@@ -1614,7 +1542,6 @@ public class DiagnosticOrder extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public DiagnosticOrder addReason(CodeableConcept t) { //3
       if (t == null)
         return this;
@@ -1622,6 +1549,16 @@ public class DiagnosticOrder extends DomainResource {
         this.reason = new ArrayList<CodeableConcept>();
       this.reason.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #reason}, creating it if it does not already exist
+     */
+    public CodeableConcept getReasonFirstRep() { 
+      if (getReason().isEmpty()) {
+        addReason();
+      }
+      return getReason().get(0);
     }
 
     /**
@@ -1633,6 +1570,14 @@ public class DiagnosticOrder extends DomainResource {
       return this.supportingInformation;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public DiagnosticOrder setSupportingInformation(List<Reference> theSupportingInformation) { 
+      this.supportingInformation = theSupportingInformation;
+      return this;
+    }
+
     public boolean hasSupportingInformation() { 
       if (this.supportingInformation == null)
         return false;
@@ -1642,10 +1587,6 @@ public class DiagnosticOrder extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #supportingInformation} (Additional clinical information about the patient or specimen that may influence test interpretations.  This includes observations explicitly requested by the producer(filler) to provide context or supporting information needed to complete the order.)
-     */
-    // syntactic sugar
     public Reference addSupportingInformation() { //3
       Reference t = new Reference();
       if (this.supportingInformation == null)
@@ -1654,7 +1595,6 @@ public class DiagnosticOrder extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public DiagnosticOrder addSupportingInformation(Reference t) { //3
       if (t == null)
         return this;
@@ -1665,73 +1605,23 @@ public class DiagnosticOrder extends DomainResource {
     }
 
     /**
-     * @return {@link #supportingInformation} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. Additional clinical information about the patient or specimen that may influence test interpretations.  This includes observations explicitly requested by the producer(filler) to provide context or supporting information needed to complete the order.)
+     * @return The first repetition of repeating field {@link #supportingInformation}, creating it if it does not already exist
      */
+    public Reference getSupportingInformationFirstRep() { 
+      if (getSupportingInformation().isEmpty()) {
+        addSupportingInformation();
+      }
+      return getSupportingInformation().get(0);
+    }
+
+    /**
+     * @deprecated Use Reference#setResource(IBaseResource) instead
+     */
+    @Deprecated
     public List<Resource> getSupportingInformationTarget() { 
       if (this.supportingInformationTarget == null)
         this.supportingInformationTarget = new ArrayList<Resource>();
       return this.supportingInformationTarget;
-    }
-
-    /**
-     * @return {@link #specimen} (One or more specimens that the diagnostic investigation is about.)
-     */
-    public List<Reference> getSpecimen() { 
-      if (this.specimen == null)
-        this.specimen = new ArrayList<Reference>();
-      return this.specimen;
-    }
-
-    public boolean hasSpecimen() { 
-      if (this.specimen == null)
-        return false;
-      for (Reference item : this.specimen)
-        if (!item.isEmpty())
-          return true;
-      return false;
-    }
-
-    /**
-     * @return {@link #specimen} (One or more specimens that the diagnostic investigation is about.)
-     */
-    // syntactic sugar
-    public Reference addSpecimen() { //3
-      Reference t = new Reference();
-      if (this.specimen == null)
-        this.specimen = new ArrayList<Reference>();
-      this.specimen.add(t);
-      return t;
-    }
-
-    // syntactic sugar
-    public DiagnosticOrder addSpecimen(Reference t) { //3
-      if (t == null)
-        return this;
-      if (this.specimen == null)
-        this.specimen = new ArrayList<Reference>();
-      this.specimen.add(t);
-      return this;
-    }
-
-    /**
-     * @return {@link #specimen} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. One or more specimens that the diagnostic investigation is about.)
-     */
-    public List<Specimen> getSpecimenTarget() { 
-      if (this.specimenTarget == null)
-        this.specimenTarget = new ArrayList<Specimen>();
-      return this.specimenTarget;
-    }
-
-    // syntactic sugar
-    /**
-     * @return {@link #specimen} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. One or more specimens that the diagnostic investigation is about.)
-     */
-    public Specimen addSpecimenTarget() { 
-      Specimen r = new Specimen();
-      if (this.specimenTarget == null)
-        this.specimenTarget = new ArrayList<Specimen>();
-      this.specimenTarget.add(r);
-      return r;
     }
 
     /**
@@ -1743,6 +1633,14 @@ public class DiagnosticOrder extends DomainResource {
       return this.event;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public DiagnosticOrder setEvent(List<DiagnosticOrderEventComponent> theEvent) { 
+      this.event = theEvent;
+      return this;
+    }
+
     public boolean hasEvent() { 
       if (this.event == null)
         return false;
@@ -1752,10 +1650,6 @@ public class DiagnosticOrder extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #event} (A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed.)
-     */
-    // syntactic sugar
     public DiagnosticOrderEventComponent addEvent() { //3
       DiagnosticOrderEventComponent t = new DiagnosticOrderEventComponent();
       if (this.event == null)
@@ -1764,7 +1658,6 @@ public class DiagnosticOrder extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public DiagnosticOrder addEvent(DiagnosticOrderEventComponent t) { //3
       if (t == null)
         return this;
@@ -1772,6 +1665,16 @@ public class DiagnosticOrder extends DomainResource {
         this.event = new ArrayList<DiagnosticOrderEventComponent>();
       this.event.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #event}, creating it if it does not already exist
+     */
+    public DiagnosticOrderEventComponent getEventFirstRep() { 
+      if (getEvent().isEmpty()) {
+        addEvent();
+      }
+      return getEvent().get(0);
     }
 
     /**
@@ -1783,6 +1686,14 @@ public class DiagnosticOrder extends DomainResource {
       return this.item;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public DiagnosticOrder setItem(List<DiagnosticOrderItemComponent> theItem) { 
+      this.item = theItem;
+      return this;
+    }
+
     public boolean hasItem() { 
       if (this.item == null)
         return false;
@@ -1792,10 +1703,6 @@ public class DiagnosticOrder extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #item} (The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested.)
-     */
-    // syntactic sugar
     public DiagnosticOrderItemComponent addItem() { //3
       DiagnosticOrderItemComponent t = new DiagnosticOrderItemComponent();
       if (this.item == null)
@@ -1804,7 +1711,6 @@ public class DiagnosticOrder extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public DiagnosticOrder addItem(DiagnosticOrderItemComponent t) { //3
       if (t == null)
         return this;
@@ -1812,6 +1718,16 @@ public class DiagnosticOrder extends DomainResource {
         this.item = new ArrayList<DiagnosticOrderItemComponent>();
       this.item.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #item}, creating it if it does not already exist
+     */
+    public DiagnosticOrderItemComponent getItemFirstRep() { 
+      if (getItem().isEmpty()) {
+        addItem();
+      }
+      return getItem().get(0);
     }
 
     /**
@@ -1823,6 +1739,14 @@ public class DiagnosticOrder extends DomainResource {
       return this.note;
     }
 
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public DiagnosticOrder setNote(List<Annotation> theNote) { 
+      this.note = theNote;
+      return this;
+    }
+
     public boolean hasNote() { 
       if (this.note == null)
         return false;
@@ -1832,10 +1756,6 @@ public class DiagnosticOrder extends DomainResource {
       return false;
     }
 
-    /**
-     * @return {@link #note} (Any other notes associated with this patient, specimen or order (e.g. "patient hates needles").)
-     */
-    // syntactic sugar
     public Annotation addNote() { //3
       Annotation t = new Annotation();
       if (this.note == null)
@@ -1844,7 +1764,6 @@ public class DiagnosticOrder extends DomainResource {
       return t;
     }
 
-    // syntactic sugar
     public DiagnosticOrder addNote(Annotation t) { //3
       if (t == null)
         return this;
@@ -1852,6 +1771,16 @@ public class DiagnosticOrder extends DomainResource {
         this.note = new ArrayList<Annotation>();
       this.note.add(t);
       return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #note}, creating it if it does not already exist
+     */
+    public Annotation getNoteFirstRep() { 
+      if (getNote().isEmpty()) {
+        addNote();
+      }
+      return getNote().get(0);
     }
 
       protected void listChildren(List<Property> childrenList) {
@@ -1864,7 +1793,6 @@ public class DiagnosticOrder extends DomainResource {
         childrenList.add(new Property("orderer", "Reference(Practitioner)", "The practitioner that holds legal responsibility for ordering the investigation.", 0, java.lang.Integer.MAX_VALUE, orderer));
         childrenList.add(new Property("reason", "CodeableConcept", "An explanation or justification for why this diagnostic investigation is being requested.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.", 0, java.lang.Integer.MAX_VALUE, reason));
         childrenList.add(new Property("supportingInformation", "Reference(Observation|Condition|DocumentReference)", "Additional clinical information about the patient or specimen that may influence test interpretations.  This includes observations explicitly requested by the producer(filler) to provide context or supporting information needed to complete the order.", 0, java.lang.Integer.MAX_VALUE, supportingInformation));
-        childrenList.add(new Property("specimen", "Reference(Specimen)", "One or more specimens that the diagnostic investigation is about.", 0, java.lang.Integer.MAX_VALUE, specimen));
         childrenList.add(new Property("event", "", "A summary of the events of interest that have occurred as the request is processed; e.g. when the order was made, various processing steps (specimens received), when it was completed.", 0, java.lang.Integer.MAX_VALUE, event));
         childrenList.add(new Property("item", "", "The specific diagnostic investigations that are requested as part of this request. Sometimes, there can only be one item per request, but in most contexts, more than one investigation can be requested.", 0, java.lang.Integer.MAX_VALUE, item));
         childrenList.add(new Property("note", "Annotation", "Any other notes associated with this patient, specimen or order (e.g. \"patient hates needles\").", 0, java.lang.Integer.MAX_VALUE, note));
@@ -1881,7 +1809,6 @@ public class DiagnosticOrder extends DomainResource {
         case -1207109509: /*orderer*/ return this.orderer == null ? new Base[0] : new Base[] {this.orderer}; // Reference
         case -934964668: /*reason*/ return this.reason == null ? new Base[0] : this.reason.toArray(new Base[this.reason.size()]); // CodeableConcept
         case -1248768647: /*supportingInformation*/ return this.supportingInformation == null ? new Base[0] : this.supportingInformation.toArray(new Base[this.supportingInformation.size()]); // Reference
-        case -2132868344: /*specimen*/ return this.specimen == null ? new Base[0] : this.specimen.toArray(new Base[this.specimen.size()]); // Reference
         case 96891546: /*event*/ return this.event == null ? new Base[0] : this.event.toArray(new Base[this.event.size()]); // DiagnosticOrderEventComponent
         case 3242771: /*item*/ return this.item == null ? new Base[0] : this.item.toArray(new Base[this.item.size()]); // DiagnosticOrderItemComponent
         case 3387378: /*note*/ return this.note == null ? new Base[0] : this.note.toArray(new Base[this.note.size()]); // Annotation
@@ -1917,9 +1844,6 @@ public class DiagnosticOrder extends DomainResource {
         case -1248768647: // supportingInformation
           this.getSupportingInformation().add(castToReference(value)); // Reference
           break;
-        case -2132868344: // specimen
-          this.getSpecimen().add(castToReference(value)); // Reference
-          break;
         case 96891546: // event
           this.getEvent().add((DiagnosticOrderEventComponent) value); // DiagnosticOrderEventComponent
           break;
@@ -1952,8 +1876,6 @@ public class DiagnosticOrder extends DomainResource {
           this.getReason().add(castToCodeableConcept(value));
         else if (name.equals("supportingInformation"))
           this.getSupportingInformation().add(castToReference(value));
-        else if (name.equals("specimen"))
-          this.getSpecimen().add(castToReference(value));
         else if (name.equals("event"))
           this.getEvent().add((DiagnosticOrderEventComponent) value);
         else if (name.equals("item"))
@@ -1975,7 +1897,6 @@ public class DiagnosticOrder extends DomainResource {
         case -1207109509:  return getOrderer(); // Reference
         case -934964668:  return addReason(); // CodeableConcept
         case -1248768647:  return addSupportingInformation(); // Reference
-        case -2132868344:  return addSpecimen(); // Reference
         case 96891546:  return addEvent(); // DiagnosticOrderEventComponent
         case 3242771:  return addItem(); // DiagnosticOrderItemComponent
         case 3387378:  return addNote(); // Annotation
@@ -2012,9 +1933,6 @@ public class DiagnosticOrder extends DomainResource {
         }
         else if (name.equals("supportingInformation")) {
           return addSupportingInformation();
-        }
-        else if (name.equals("specimen")) {
-          return addSpecimen();
         }
         else if (name.equals("event")) {
           return addEvent();
@@ -2057,11 +1975,6 @@ public class DiagnosticOrder extends DomainResource {
           for (Reference i : supportingInformation)
             dst.supportingInformation.add(i.copy());
         };
-        if (specimen != null) {
-          dst.specimen = new ArrayList<Reference>();
-          for (Reference i : specimen)
-            dst.specimen.add(i.copy());
-        };
         if (event != null) {
           dst.event = new ArrayList<DiagnosticOrderEventComponent>();
           for (DiagnosticOrderEventComponent i : event)
@@ -2094,8 +2007,8 @@ public class DiagnosticOrder extends DomainResource {
         return compareDeep(identifier, o.identifier, true) && compareDeep(status, o.status, true) && compareDeep(priority, o.priority, true)
            && compareDeep(subject, o.subject, true) && compareDeep(encounter, o.encounter, true) && compareDeep(orderer, o.orderer, true)
            && compareDeep(reason, o.reason, true) && compareDeep(supportingInformation, o.supportingInformation, true)
-           && compareDeep(specimen, o.specimen, true) && compareDeep(event, o.event, true) && compareDeep(item, o.item, true)
-           && compareDeep(note, o.note, true);
+           && compareDeep(event, o.event, true) && compareDeep(item, o.item, true) && compareDeep(note, o.note, true)
+          ;
       }
 
       @Override
@@ -2109,17 +2022,319 @@ public class DiagnosticOrder extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && (identifier == null || identifier.isEmpty()) && (status == null || status.isEmpty())
-           && (priority == null || priority.isEmpty()) && (subject == null || subject.isEmpty()) && (encounter == null || encounter.isEmpty())
-           && (orderer == null || orderer.isEmpty()) && (reason == null || reason.isEmpty()) && (supportingInformation == null || supportingInformation.isEmpty())
-           && (specimen == null || specimen.isEmpty()) && (event == null || event.isEmpty()) && (item == null || item.isEmpty())
-           && (note == null || note.isEmpty());
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, status, priority
+          , subject, encounter, orderer, reason, supportingInformation, event, item, note
+          );
       }
 
   @Override
   public ResourceType getResourceType() {
     return ResourceType.DiagnosticOrder;
    }
+
+ /**
+   * Search parameter: <b>item-past-status</b>
+   * <p>
+   * Description: <b>proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DiagnosticOrder.item.event.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="item-past-status", path="DiagnosticOrder.item.event.status", description="proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error", type="token" )
+  public static final String SP_ITEM_PAST_STATUS = "item-past-status";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>item-past-status</b>
+   * <p>
+   * Description: <b>proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DiagnosticOrder.item.event.status</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam ITEM_PAST_STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_ITEM_PAST_STATUS);
+
+ /**
+   * Search parameter: <b>identifier</b>
+   * <p>
+   * Description: <b>Identifiers assigned to this order</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DiagnosticOrder.identifier</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="identifier", path="DiagnosticOrder.identifier", description="Identifiers assigned to this order", type="token" )
+  public static final String SP_IDENTIFIER = "identifier";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
+   * <p>
+   * Description: <b>Identifiers assigned to this order</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DiagnosticOrder.identifier</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
+
+ /**
+   * Search parameter: <b>bodysite</b>
+   * <p>
+   * Description: <b>Location of requested test (if applicable)</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DiagnosticOrder.item.bodySite</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="bodysite", path="DiagnosticOrder.item.bodySite", description="Location of requested test (if applicable)", type="token" )
+  public static final String SP_BODYSITE = "bodysite";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>bodysite</b>
+   * <p>
+   * Description: <b>Location of requested test (if applicable)</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DiagnosticOrder.item.bodySite</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam BODYSITE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_BODYSITE);
+
+ /**
+   * Search parameter: <b>code</b>
+   * <p>
+   * Description: <b>Code to indicate the item (test or panel) being ordered</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DiagnosticOrder.item.code</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="code", path="DiagnosticOrder.item.code", description="Code to indicate the item (test or panel) being ordered", type="token" )
+  public static final String SP_CODE = "code";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>code</b>
+   * <p>
+   * Description: <b>Code to indicate the item (test or panel) being ordered</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DiagnosticOrder.item.code</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CODE);
+
+ /**
+   * Search parameter: <b>event-date</b>
+   * <p>
+   * Description: <b>The date at which the event happened</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>DiagnosticOrder.event.dateTime</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="event-date", path="DiagnosticOrder.event.dateTime", description="The date at which the event happened", type="date" )
+  public static final String SP_EVENT_DATE = "event-date";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>event-date</b>
+   * <p>
+   * Description: <b>The date at which the event happened</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>DiagnosticOrder.event.dateTime</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.DateClientParam EVENT_DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_EVENT_DATE);
+
+ /**
+   * Search parameter: <b>event-status-date</b>
+   * <p>
+   * Description: <b>A combination of past-status and date</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="event-status-date", path="", description="A combination of past-status and date", type="composite", compositeOf={"event-status", "event-date"} )
+  public static final String SP_EVENT_STATUS_DATE = "event-status-date";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>event-status-date</b>
+   * <p>
+   * Description: <b>A combination of past-status and date</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.DateClientParam> EVENT_STATUS_DATE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.DateClientParam>(SP_EVENT_STATUS_DATE);
+
+ /**
+   * Search parameter: <b>subject</b>
+   * <p>
+   * Description: <b>Who and/or what test is about</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>DiagnosticOrder.subject</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="subject", path="DiagnosticOrder.subject", description="Who and/or what test is about", type="reference" )
+  public static final String SP_SUBJECT = "subject";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>subject</b>
+   * <p>
+   * Description: <b>Who and/or what test is about</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>DiagnosticOrder.subject</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam SUBJECT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_SUBJECT);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>DiagnosticOrder:subject</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_SUBJECT = new ca.uhn.fhir.model.api.Include("DiagnosticOrder:subject").toLocked();
+
+ /**
+   * Search parameter: <b>encounter</b>
+   * <p>
+   * Description: <b>The encounter that this diagnostic order is associated with</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>DiagnosticOrder.encounter</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="encounter", path="DiagnosticOrder.encounter", description="The encounter that this diagnostic order is associated with", type="reference" )
+  public static final String SP_ENCOUNTER = "encounter";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>encounter</b>
+   * <p>
+   * Description: <b>The encounter that this diagnostic order is associated with</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>DiagnosticOrder.encounter</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam ENCOUNTER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_ENCOUNTER);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>DiagnosticOrder:encounter</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_ENCOUNTER = new ca.uhn.fhir.model.api.Include("DiagnosticOrder:encounter").toLocked();
+
+ /**
+   * Search parameter: <b>actor</b>
+   * <p>
+   * Description: <b>Who recorded or did this</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>DiagnosticOrder.event.actor, DiagnosticOrder.item.event.actor</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="actor", path="DiagnosticOrder.event.actor | DiagnosticOrder.item.event.actor", description="Who recorded or did this", type="reference" )
+  public static final String SP_ACTOR = "actor";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>actor</b>
+   * <p>
+   * Description: <b>Who recorded or did this</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>DiagnosticOrder.event.actor, DiagnosticOrder.item.event.actor</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam ACTOR = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_ACTOR);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>DiagnosticOrder:actor</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_ACTOR = new ca.uhn.fhir.model.api.Include("DiagnosticOrder:actor").toLocked();
+
+ /**
+   * Search parameter: <b>item-date</b>
+   * <p>
+   * Description: <b>The date at which the event happened</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>DiagnosticOrder.item.event.dateTime</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="item-date", path="DiagnosticOrder.item.event.dateTime", description="The date at which the event happened", type="date" )
+  public static final String SP_ITEM_DATE = "item-date";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>item-date</b>
+   * <p>
+   * Description: <b>The date at which the event happened</b><br>
+   * Type: <b>date</b><br>
+   * Path: <b>DiagnosticOrder.item.event.dateTime</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.DateClientParam ITEM_DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_ITEM_DATE);
+
+ /**
+   * Search parameter: <b>item-status-date</b>
+   * <p>
+   * Description: <b>A combination of item-past-status and item-date</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="item-status-date", path="", description="A combination of item-past-status and item-date", type="composite", compositeOf={"item-past-status", "item-date"} )
+  public static final String SP_ITEM_STATUS_DATE = "item-status-date";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>item-status-date</b>
+   * <p>
+   * Description: <b>A combination of item-past-status and item-date</b><br>
+   * Type: <b>composite</b><br>
+   * Path: <b></b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.DateClientParam> ITEM_STATUS_DATE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.DateClientParam>(SP_ITEM_STATUS_DATE);
+
+ /**
+   * Search parameter: <b>event-status</b>
+   * <p>
+   * Description: <b>proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DiagnosticOrder.event.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="event-status", path="DiagnosticOrder.event.status", description="proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error", type="token" )
+  public static final String SP_EVENT_STATUS = "event-status";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>event-status</b>
+   * <p>
+   * Description: <b>proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DiagnosticOrder.event.status</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam EVENT_STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_EVENT_STATUS);
+
+ /**
+   * Search parameter: <b>item-status</b>
+   * <p>
+   * Description: <b>proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DiagnosticOrder.item.status</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="item-status", path="DiagnosticOrder.item.status", description="proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error", type="token" )
+  public static final String SP_ITEM_STATUS = "item-status";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>item-status</b>
+   * <p>
+   * Description: <b>proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>DiagnosticOrder.item.status</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam ITEM_STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_ITEM_STATUS);
+
+ /**
+   * Search parameter: <b>patient</b>
+   * <p>
+   * Description: <b>Who and/or what test is about</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>DiagnosticOrder.subject</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="patient", path="DiagnosticOrder.subject", description="Who and/or what test is about", type="reference" )
+  public static final String SP_PATIENT = "patient";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>patient</b>
+   * <p>
+   * Description: <b>Who and/or what test is about</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>DiagnosticOrder.subject</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PATIENT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PATIENT);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>DiagnosticOrder:patient</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_PATIENT = new ca.uhn.fhir.model.api.Include("DiagnosticOrder:patient").toLocked();
 
  /**
    * Search parameter: <b>orderer</b>
@@ -2166,336 +2381,6 @@ public class DiagnosticOrder extends DomainResource {
    * </p>
    */
   public static final ca.uhn.fhir.rest.gclient.TokenClientParam STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_STATUS);
-
- /**
-   * Search parameter: <b>subject</b>
-   * <p>
-   * Description: <b>Who and/or what test is about</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>DiagnosticOrder.subject</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="subject", path="DiagnosticOrder.subject", description="Who and/or what test is about", type="reference" )
-  public static final String SP_SUBJECT = "subject";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>subject</b>
-   * <p>
-   * Description: <b>Who and/or what test is about</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>DiagnosticOrder.subject</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam SUBJECT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_SUBJECT);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>DiagnosticOrder:subject</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_SUBJECT = new ca.uhn.fhir.model.api.Include("DiagnosticOrder:subject").toLocked();
-
- /**
-   * Search parameter: <b>item-status</b>
-   * <p>
-   * Description: <b>proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>DiagnosticOrder.item.status</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="item-status", path="DiagnosticOrder.item.status", description="proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error", type="token" )
-  public static final String SP_ITEM_STATUS = "item-status";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>item-status</b>
-   * <p>
-   * Description: <b>proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>DiagnosticOrder.item.status</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam ITEM_STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_ITEM_STATUS);
-
- /**
-   * Search parameter: <b>event-status</b>
-   * <p>
-   * Description: <b>proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>DiagnosticOrder.event.status</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="event-status", path="DiagnosticOrder.event.status", description="proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error", type="token" )
-  public static final String SP_EVENT_STATUS = "event-status";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>event-status</b>
-   * <p>
-   * Description: <b>proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>DiagnosticOrder.event.status</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam EVENT_STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_EVENT_STATUS);
-
- /**
-   * Search parameter: <b>actor</b>
-   * <p>
-   * Description: <b>Who recorded or did this</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>DiagnosticOrder.event.actor, DiagnosticOrder.item.event.actor</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="actor", path="DiagnosticOrder.event.actor | DiagnosticOrder.item.event.actor", description="Who recorded or did this", type="reference" )
-  public static final String SP_ACTOR = "actor";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>actor</b>
-   * <p>
-   * Description: <b>Who recorded or did this</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>DiagnosticOrder.event.actor, DiagnosticOrder.item.event.actor</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam ACTOR = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_ACTOR);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>DiagnosticOrder:actor</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_ACTOR = new ca.uhn.fhir.model.api.Include("DiagnosticOrder:actor").toLocked();
-
- /**
-   * Search parameter: <b>code</b>
-   * <p>
-   * Description: <b>Code to indicate the item (test or panel) being ordered</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>DiagnosticOrder.item.code</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="code", path="DiagnosticOrder.item.code", description="Code to indicate the item (test or panel) being ordered", type="token" )
-  public static final String SP_CODE = "code";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>code</b>
-   * <p>
-   * Description: <b>Code to indicate the item (test or panel) being ordered</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>DiagnosticOrder.item.code</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam CODE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_CODE);
-
- /**
-   * Search parameter: <b>encounter</b>
-   * <p>
-   * Description: <b>The encounter that this diagnostic order is associated with</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>DiagnosticOrder.encounter</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="encounter", path="DiagnosticOrder.encounter", description="The encounter that this diagnostic order is associated with", type="reference" )
-  public static final String SP_ENCOUNTER = "encounter";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>encounter</b>
-   * <p>
-   * Description: <b>The encounter that this diagnostic order is associated with</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>DiagnosticOrder.encounter</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam ENCOUNTER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_ENCOUNTER);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>DiagnosticOrder:encounter</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_ENCOUNTER = new ca.uhn.fhir.model.api.Include("DiagnosticOrder:encounter").toLocked();
-
- /**
-   * Search parameter: <b>item-past-status</b>
-   * <p>
-   * Description: <b>proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>DiagnosticOrder.item.event.status</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="item-past-status", path="DiagnosticOrder.item.event.status", description="proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error", type="token" )
-  public static final String SP_ITEM_PAST_STATUS = "item-past-status";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>item-past-status</b>
-   * <p>
-   * Description: <b>proposed | draft | planned | requested | received | accepted | in-progress | review | completed | cancelled | suspended | rejected | failed | entered-in-error</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>DiagnosticOrder.item.event.status</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam ITEM_PAST_STATUS = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_ITEM_PAST_STATUS);
-
- /**
-   * Search parameter: <b>patient</b>
-   * <p>
-   * Description: <b>Who and/or what test is about</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>DiagnosticOrder.subject</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="patient", path="DiagnosticOrder.subject", description="Who and/or what test is about", type="reference" )
-  public static final String SP_PATIENT = "patient";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>patient</b>
-   * <p>
-   * Description: <b>Who and/or what test is about</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>DiagnosticOrder.subject</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam PATIENT = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_PATIENT);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>DiagnosticOrder:patient</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_PATIENT = new ca.uhn.fhir.model.api.Include("DiagnosticOrder:patient").toLocked();
-
- /**
-   * Search parameter: <b>bodysite</b>
-   * <p>
-   * Description: <b>Location of requested test (if applicable)</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>DiagnosticOrder.item.bodySite</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="bodysite", path="DiagnosticOrder.item.bodySite", description="Location of requested test (if applicable)", type="token" )
-  public static final String SP_BODYSITE = "bodysite";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>bodysite</b>
-   * <p>
-   * Description: <b>Location of requested test (if applicable)</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>DiagnosticOrder.item.bodySite</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam BODYSITE = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_BODYSITE);
-
- /**
-   * Search parameter: <b>item-date</b>
-   * <p>
-   * Description: <b>The date at which the event happened</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>DiagnosticOrder.item.event.dateTime</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="item-date", path="DiagnosticOrder.item.event.dateTime", description="The date at which the event happened", type="date" )
-  public static final String SP_ITEM_DATE = "item-date";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>item-date</b>
-   * <p>
-   * Description: <b>The date at which the event happened</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>DiagnosticOrder.item.event.dateTime</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.DateClientParam ITEM_DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_ITEM_DATE);
-
- /**
-   * Search parameter: <b>specimen</b>
-   * <p>
-   * Description: <b>If the whole order relates to specific specimens</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>DiagnosticOrder.specimen, DiagnosticOrder.item.specimen</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="specimen", path="DiagnosticOrder.specimen | DiagnosticOrder.item.specimen", description="If the whole order relates to specific specimens", type="reference" )
-  public static final String SP_SPECIMEN = "specimen";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>specimen</b>
-   * <p>
-   * Description: <b>If the whole order relates to specific specimens</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>DiagnosticOrder.specimen, DiagnosticOrder.item.specimen</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam SPECIMEN = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_SPECIMEN);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>DiagnosticOrder:specimen</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_SPECIMEN = new ca.uhn.fhir.model.api.Include("DiagnosticOrder:specimen").toLocked();
-
- /**
-   * Search parameter: <b>event-status-date</b>
-   * <p>
-   * Description: <b>A combination of past-status and date</b><br>
-   * Type: <b>composite</b><br>
-   * Path: <b></b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="event-status-date", path="", description="A combination of past-status and date", type="composite", compositeOf={"event-status", "event-date"} )
-  public static final String SP_EVENT_STATUS_DATE = "event-status-date";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>event-status-date</b>
-   * <p>
-   * Description: <b>A combination of past-status and date</b><br>
-   * Type: <b>composite</b><br>
-   * Path: <b></b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.DateClientParam> EVENT_STATUS_DATE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.DateClientParam>(SP_EVENT_STATUS_DATE);
-
- /**
-   * Search parameter: <b>event-date</b>
-   * <p>
-   * Description: <b>The date at which the event happened</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>DiagnosticOrder.event.dateTime</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="event-date", path="DiagnosticOrder.event.dateTime", description="The date at which the event happened", type="date" )
-  public static final String SP_EVENT_DATE = "event-date";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>event-date</b>
-   * <p>
-   * Description: <b>The date at which the event happened</b><br>
-   * Type: <b>date</b><br>
-   * Path: <b>DiagnosticOrder.event.dateTime</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.DateClientParam EVENT_DATE = new ca.uhn.fhir.rest.gclient.DateClientParam(SP_EVENT_DATE);
-
- /**
-   * Search parameter: <b>identifier</b>
-   * <p>
-   * Description: <b>Identifiers assigned to this order</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>DiagnosticOrder.identifier</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="identifier", path="DiagnosticOrder.identifier", description="Identifiers assigned to this order", type="token" )
-  public static final String SP_IDENTIFIER = "identifier";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>identifier</b>
-   * <p>
-   * Description: <b>Identifiers assigned to this order</b><br>
-   * Type: <b>token</b><br>
-   * Path: <b>DiagnosticOrder.identifier</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.TokenClientParam IDENTIFIER = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_IDENTIFIER);
-
- /**
-   * Search parameter: <b>item-status-date</b>
-   * <p>
-   * Description: <b>A combination of item-past-status and item-date</b><br>
-   * Type: <b>composite</b><br>
-   * Path: <b></b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="item-status-date", path="", description="A combination of item-past-status and item-date", type="composite", compositeOf={"item-past-status", "item-date"} )
-  public static final String SP_ITEM_STATUS_DATE = "item-status-date";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>item-status-date</b>
-   * <p>
-   * Description: <b>A combination of item-past-status and item-date</b><br>
-   * Type: <b>composite</b><br>
-   * Path: <b></b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.DateClientParam> ITEM_STATUS_DATE = new ca.uhn.fhir.rest.gclient.CompositeClientParam<ca.uhn.fhir.rest.gclient.TokenClientParam, ca.uhn.fhir.rest.gclient.DateClientParam>(SP_ITEM_STATUS_DATE);
 
 
 }

@@ -37,17 +37,22 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.apache.commons.lang3.Validate;
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.Compartment;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfiledType;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn.SearchType;
-import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -60,7 +65,14 @@ changes for James
 */
 public class JavaResourceGenerator extends JavaBaseGenerator {
 
-	public enum JavaGenClass { Structure, Type, Resource, BackboneElement, Constraint }
+  /**
+   * This property should be committed with a value of false
+   * until HAPI 1.6 is released, at which point it will be 
+   * removed. Added by JA 2016-05-28
+   */
+	private static final boolean HAPI_16 = false;
+
+  public enum JavaGenClass { Structure, Type, Resource, BackboneElement, Constraint }
 	private JavaGenClass clss;
   private Map<String, ImpliedBaseType> impliedTypes;
 	
@@ -126,6 +138,9 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
         write("import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;\r\n");
       } 
       write("import ca.uhn.fhir.model.api.annotation.Child;\r\n");
+      if (HAPI_16) {
+        write("import ca.uhn.fhir.model.api.annotation.ChildOrder;\r\n");
+      }
       write("import ca.uhn.fhir.model.api.annotation.Description;\r\n");
     }
     if (clss != JavaGenClass.Resource) {
@@ -138,12 +153,35 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		jdoc("", root.getDefinition());
 		classname = upFirst(name);
 		String supertype = root.typeCode();
-		if (root.hasMapping("http://hl7.org/fhir/object-implementation"))
+		boolean hasImpliedBaseType = false;
+		
+		if (root.hasMapping("http://hl7.org/fhir/object-implementation")) {
 		  supertype = processImpliedBaseType(root.getMapping("http://hl7.org/fhir/object-implementation"), root);
+		  hasImpliedBaseType = true;
+		}
+		
     if (clss == JavaGenClass.Resource) {
 		  
 		  if (!isAbstract) {
 		    write("@ResourceDef(name=\""+upFirst(name).replace("ListResource", "List")+"\", profile=\"http://hl7.org/fhir/Profile/"+upFirst(name)+"\")\r\n");
+		  }
+		  
+		  if (HAPI_16) {
+		    if (hasImpliedBaseType) {
+	        write("@ChildOrder(names={");
+	        boolean first = true; 
+	        for (ElementDefn e : root.getElements()) {
+	          if (first) {
+	            first = false;
+	          } else {
+	            write(", ");
+	          }
+	          write("\"");
+            write(e.getName());
+            write("\"");
+	        }
+	        write("})\r\n");
+		    }
 		  }
 		  
 			String hierarchy;
@@ -205,7 +243,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
       write("public class "+upFirst(name)+" extends BaseReference implements IBaseReference, ICompositeType ");
 		} else {
       write("@DatatypeDef(name=\""+upFirst(name)+"\")\r\n");
-			write("public class "+upFirst(name)+" extends Type implements ICompositeType ");
+			write("public class "+upFirst(name)+" extends "+(root.typeCode().equals("Structure") ? "Type" : root.typeCode())+" implements ICompositeType ");
 		}
 		
 		write("{\r\n");
@@ -225,8 +263,9 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
       allfields = "";
       int i = 0;
 			for (ElementDefn e : root.getElements()) {
-			  if (processObjectImpl(e))
+			  if (processObjectImpl(e)) {
 				  generateField(root, e, "    ", i++);
+			  }
 			}
 	    write("    private static final long serialVersionUID = "+Long.toString(allfields.hashCode())+"L;\r\n\r\n");
 	    hashSum = hashSum + allfields.hashCode();
@@ -407,6 +446,37 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
       }
       write("}");
     }
+
+    Set<String> providesMembershipIn = new TreeSet<String>();
+    for (Compartment next : this.definitions.getCompartments()) {
+      for (Entry<ResourceDefn, String> nextEntry : next.getResources().entrySet()) {
+        if (nextEntry.getKey().getName().equals(upFirst(name))) {
+          String[] parts = nextEntry.getValue().split("\\|");
+          for (String nextPart : parts) {
+            if (nextPart.trim().equals(code)) {
+              providesMembershipIn.add(next.getName());
+            }
+          }
+        }
+      }
+    }
+
+    if (HAPI_16) {
+      if (providesMembershipIn.size() > 0) {
+        write(", providesMembershipIn={ ");
+        boolean first = true;
+        for (String next : providesMembershipIn) {
+          if (first) {
+            first = false;
+          } else {
+            write(", ");
+          }
+          write("@ca.uhn.fhir.model.api.annotation.Compartment(name=\"" + upFirst(next) + "\")");
+        }
+        write(" }");
+      }
+    }
+    
     write(" )\r\n");
     write("  public static final String SP_"+constName+" = \""+code+"\";\r\n");
 
@@ -943,7 +1013,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
           cn = "castTo"+upFirst(e.getTypes().get(0).getName())+"(value)";
         }
         if (e.unbounded()) {
-          write(indent+"      this.get"+upFirst(name)+"().add("+cn+");\r\n");
+          write(indent+"      this.get"+upFirst(getElementName(name, false))+"().add("+cn+");\r\n");
         } else {
           write(indent+"      this."+getElementName(name, true)+" = "+cn+"; // "+tn+"\r\n");
         }
@@ -1047,7 +1117,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     else if (isAbstract(e.typeCode()))
       write(indent+"      throw new FHIRException(\"Cannot call addChild on an abstract type "+parent+"."+e.getName()+"\");\r\n"); 
     else if (e.unbounded()) {
-      write(indent+"      return add"+upFirst(name)+"();\r\n");
+      write(indent+"      return add"+upFirst(getElementName(name, false))+"();\r\n");
     } else {
       write(indent+"      this."+getElementName(name, true)+" = new "+tn+"();\r\n");
       write(indent+"      return this."+getElementName(name, true)+";\r\n");
@@ -1492,29 +1562,29 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
   private void generateIsEmpty(ElementDefn e, String tn, boolean owner, boolean isAbstract) throws Exception {
     write("      public boolean isEmpty() {\r\n");
-    write("        return super.isEmpty() && ");
+    write("        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(");
+    int col = 70;
     boolean first = true;
-    int col = 34;
     for (ElementDefn c : e.getElements()) {
       if (processObjectImpl(c)) {
-        if (first)
+        if (first) {
           first = false;
-        else {
-          write(" && ");
-          col = col+4;
+        } else {
+          write(", ");
         }
+        col = col + 2;
         String name = getElementName(c.getName(), true);
         if (name.endsWith("[x]"))
           name = name.substring(0, name.length()-3);
-        write("("+name+" == null || "+name+".isEmpty())");
-        col = col+25 + name.length()*2;
+        write(name);
+        col = col + name.length() + 2;
         if (col > 100) {
           col = 10;
           write("\r\n          ");
         }
       }
     }
-      write(";\r\n");
+    write(");\r\n");
     write("      }\r\n\r\n");
   }
 
@@ -1786,18 +1856,35 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		String simpleType = getSimpleType(tn);
 		if (e.unbounded()) {
 		  if (!onlySetter) {
+		    
+		    /*
+		     * getXXX()for repeatable type
+		     */
 		    jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
+		    String listGenericType;
 		    if (tn == null && e.usesCompositeType()) {
-		      write(indent+"public List<"+root.getName()+"> get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
-		      write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
-		      write(indent+"    this."+getElementName(e.getName(), true)+" = new ArrayList<"+root.getName()+">();\r\n");
+		      listGenericType = root.getName();
 		    } else {
-		      write(indent+"public List<"+tn+"> get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
-		      write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
-		      write(indent+"    this."+getElementName(e.getName(), true)+" = new ArrayList<"+tn+">();\r\n");
+		      listGenericType = tn;
 		    }
+		    write(indent+"public List<"+listGenericType+"> get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
+        write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
+        write(indent+"    this."+getElementName(e.getName(), true)+" = new ArrayList<"+listGenericType+">();\r\n");
 		    write(indent+"  return this."+getElementName(e.getName(), true)+";\r\n");
 		    write(indent+"}\r\n\r\n");
+		    
+	      /*
+	       * setXXX(List<foo>) for repeating type
+	       */
+	      jdoc(indent, "@return Returns a reference to <code>this</code> for easy method chaining");
+	      write(indent+"public " + className + " set"+getTitle(getElementName(e.getName(), false))+"(" + "List<"+listGenericType+"> the" + getTitle(getElementName(e.getName(), false)) + ") { \r\n");
+	      write(indent+"  this."+getElementName(e.getName(), true)+" = the" + getTitle(getElementName(e.getName(), false)) + ";\r\n");
+	      write(indent+"  return this;\r\n");
+	      write(indent+"}\r\n\r\n");
+
+		    /*
+		     * hasXXX() for repeatable type
+		     */
 		    write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
 		    write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
 		    write(indent+"    return false;\r\n");
@@ -1808,9 +1895,11 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		    write(indent+"}\r\n");
 
 		    write("\r\n");
-		    jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
 		    if (e.getTypes().size() == 1 && (definitions.getPrimitives().containsKey(e.typeCode()) || e.typeCode().equals("xml:lang"))) {
-		      write("    // syntactic sugar\r\n");
+		      /*
+		       * addXXXElement() for repeatable primitive
+		       */
+		      jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
 		      write(indent+"public "+tn+" add"+getTitle(getElementName(e.getName(), false))+"Element() {//2 \r\n");
 		      write(indent+"  "+tn+" t = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+");\r\n");
 		      write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
@@ -1819,6 +1908,10 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		      write(indent+"  return t;\r\n");
 		      write(indent+"}\r\n");
 		      write("\r\n");
+		      
+		      /*
+		       * addXXX(foo) for repeatable primitive
+		       */
 		      jdoc(indent, "@param value {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
 		      write(indent+"public "+className+" add"+getTitle(getElementName(e.getName(), false))+"("+simpleType+" value) { //1\r\n");
 		      write(indent+"  "+tn+" t = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+");\r\n");
@@ -1829,6 +1922,10 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		      write(indent+"  return this;\r\n");
 		      write(indent+"}\r\n");
 		      write("\r\n");
+		      
+		      /*
+		       * hasXXX(foo) for repeatable primitive
+		       */
 		      jdoc(indent, "@param value {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
 		      write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"("+simpleType+" value) { \r\n");
 		      write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
@@ -1844,7 +1941,9 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		      write("\r\n");
 		    } else {
 		      if (!definitions.getBaseResources().containsKey(tn)) {
-		        write("    // syntactic sugar\r\n");
+		        /*
+		         * addXXX() for repeatable composite
+		         */
 		        write(indent+"public "+tn+" add"+getTitle(getElementName(e.getName(), false))+"() { //3\r\n");
 		        write(indent+"  "+tn+" t = new "+tn+"();\r\n");
 		        write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
@@ -1853,7 +1952,10 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		        write(indent+"  return t;\r\n");
 		        write(indent+"}\r\n");
 		        write("\r\n");
-		        write("    // syntactic sugar\r\n");
+
+            /*
+             * addXXX(foo) for repeatable composite
+             */
 		        write(indent+"public "+className+" add"+getTitle(getElementName(e.getName(), false))+"("+tn+" t) { //3\r\n");
 		        write(indent+"  if (t == null)\r\n");
 		        write(indent+"    return this;\r\n");
@@ -1864,7 +1966,9 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		        write(indent+"}\r\n");
 		        write("\r\n");
 		      } else {
-		        write("    // syntactic sugar\r\n");
+            /*
+             * addXXX(foo) for repeatable composite
+             */
 		        write(indent+"public "+className+" add"+getTitle(getElementName(e.getName(), false))+"("+tn+" t) { //3\r\n");
 		        write(indent+"  if (t == null)\r\n");
 		        write(indent+"    return this;\r\n");
@@ -1876,17 +1980,34 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		        write("\r\n");          
 		      }
 
+		      /*
+		       * getXXXFirstRep() for repeatable element
+		       */
+		      if (!"DomainResource".equals(className)) {
+  	        jdoc(indent, "@return The first repetition of repeating field {@link #"+getElementName(e.getName(), true)+"}, creating it if it does not already exist");
+  	        write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName(), false))+"FirstRep() { \r\n");
+  	        write(indent+"  if (get"+getTitle(getElementName(e.getName(), false))+"().isEmpty()) {\r\n");
+  	        if ((definitions.getPrimitives().containsKey(e.typeCode()))) {
+  	          write(indent+"    add" + getTitle(getElementName(e.getName(), false)) + "Element();\r\n");
+  	        } else {
+  	          write(indent+"    add" + getTitle(getElementName(e.getName(), false)) + "();\r\n");
+  	        }
+  	        write(indent+"  }\r\n");
+  	        write(indent+"  return get"+getTitle(getElementName(e.getName(), false))+"().get(0);\r\n");
+  	        write(indent+"}\r\n\r\n");
+		      }
+		      
+		      //TODO: remove this - Reference type has a field to hold these things too and 
+		      // that's cleaner. Deprecated by JA on 2016-05-28
 		      if (e.getTypes().size() == 1 && e.typeCode().startsWith("Reference(")) {
-
 		        List<String> params = e.getTypes().get(0).getParams();
 		        String rn = params.size() == 1 ? params.get(0) : "Resource";
 		        if (rn.equals("Any"))
 		          rn = "Resource";
 		        else if (rn.equals("List"))
 		          rn = "ListResource";
-
-
-		        jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} (The actual objects that are the target of the reference. The reference library doesn't populate this, but you can use this to hold the resources if you resolvethemt. "+e.getDefinition()+")");
+		        jdoc(indent, "@deprecated Use Reference#setResource(IBaseResource) instead");
+            write(indent+"@Deprecated\r\n");
 		        write(indent+"public List<"+rn+"> get"+getTitle(getElementName(e.getName(), false))+"Target() { \r\n");
 		        write(indent+"  if (this."+getElementName(e.getName(), true)+"Target == null)\r\n");
 		        write(indent+"    this."+getElementName(e.getName(), true)+"Target = new ArrayList<"+rn+">();\r\n");
@@ -1894,8 +2015,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		        write(indent+"}\r\n");
 		        write("\r\n");
 		        if (!rn.equals("Resource")) {
-		          write("    // syntactic sugar\r\n");
-		          jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} (Add an actual object that is the target of the reference. The reference library doesn't use these, but you can use this to hold the resources if you resolvethemt. "+e.getDefinition()+")");
+	            jdoc(indent, "@deprecated Use Reference#setResource(IBaseResource) instead");
+	            write(indent+"@Deprecated\r\n");
 		          write(indent+"public "+rn+" add"+getTitle(getElementName(e.getName(), false))+"Target() { \r\n");
 		          write(indent+"  "+rn+" r = new "+rn+"();\r\n");
 		          write(indent+"  if (this."+getElementName(e.getName(), true)+"Target == null)\r\n");
@@ -1905,7 +2026,9 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		          write(indent+"}\r\n");
 		          write("\r\n");
 		        }
-		      }  
+		      }
+		      
+		      
 		    }
 		  }
 		} else {
@@ -1968,6 +2091,28 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
           generateSetter(e, indent, className, tn, "long");
 	        generateSetter(e, indent, className, tn, "double");
 	      }
+//	      // code sugar methods
+//	      if (e.typeCode().equals("code")) {
+//          jdoc(indent, "@return a string code value for "+e.getDefinition());
+//          write(indent+"public "+simpleType+" get"+getTitle(getElementName(e.getName(), false))+"AsCode() { \r\n");
+//          write(indent+"  return this."+getElementName(e.getName(), true)+" == null ? null : this."+getElementName(e.getName(), true)+".getValue();\r\n");
+//          write(indent+"}\r\n");
+//          write("\r\n");
+//          
+//          jdoc(indent, "@param value String value for "+e.getDefinition());
+//          write(indent+"public "+className+" set"+getTitle(getElementName(e.getName(), false))+"AsCode(String value) throws FHIRException { \r\n");
+//          write(indent+"  if (!Utilities.noString(value)) \r\n");
+//          write(indent+"    this."+getElementName(e.getName(), true)+" = null;\r\n");
+//          write(indent+"  else {\r\n");
+//          write(indent+"    if (this."+getElementName(e.getName(), true)+" == null)\r\n");
+//          write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+");\r\n");
+//          write(indent+"    this."+getElementName(e.getName(), true)+".setValue("+(tn.startsWith("Enum") ? tn.substring(12, tn.length()-1)+".fromCode(value)" : "value")+");\r\n");
+//          write(indent+"  }\r\n");
+//          write(indent+"  return this;\r\n");
+//          write(indent+"}\r\n");
+//          write("\r\n");
+//          
+//        }
 	      
 			} else {
         if (!onlySetter) {

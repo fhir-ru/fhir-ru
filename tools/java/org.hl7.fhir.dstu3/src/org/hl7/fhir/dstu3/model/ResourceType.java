@@ -2,10 +2,11 @@ package org.hl7.fhir.dstu3.model;
 
 import org.hl7.fhir.dstu3.exceptions.FHIRException;
 
-// Generated on Sun, May 15, 2016 02:34+1000 for FHIR v1.4.0
+// Generated on Wed, Jun 29, 2016 09:39+1000 for FHIR v1.4.0
 
 public enum ResourceType {
     Account,
+    ActivityDefinition,
     AllergyIntolerance,
     Appointment,
     AppointmentResponse,
@@ -58,8 +59,7 @@ public enum ResourceType {
     Group,
     GuidanceResponse,
     HealthcareService,
-    ImagingExcerpt,
-    ImagingObjectSelection,
+    ImagingManifest,
     ImagingStudy,
     Immunization,
     ImmunizationRecommendation,
@@ -92,6 +92,7 @@ public enum ResourceType {
     PaymentNotice,
     PaymentReconciliation,
     Person,
+    PlanDefinition,
     Practitioner,
     PractitionerRole,
     Procedure,
@@ -126,6 +127,8 @@ public enum ResourceType {
       switch (this) {
     case Account:
       return "account";
+    case ActivityDefinition:
+      return "activitydefinition";
     case AllergyIntolerance:
       return "allergyintolerance";
     case Appointment:
@@ -230,10 +233,8 @@ public enum ResourceType {
       return "guidanceresponse";
     case HealthcareService:
       return "healthcareservice";
-    case ImagingExcerpt:
-      return "imagingexcerpt";
-    case ImagingObjectSelection:
-      return "imagingobjectselection";
+    case ImagingManifest:
+      return "imagingmanifest";
     case ImagingStudy:
       return "imagingstudy";
     case Immunization:
@@ -298,6 +299,8 @@ public enum ResourceType {
       return "paymentreconciliation";
     case Person:
       return "person";
+    case PlanDefinition:
+      return "plandefinition";
     case Practitioner:
       return "practitioner";
     case PractitionerRole:
@@ -362,6 +365,8 @@ public enum ResourceType {
     public static ResourceType fromCode(String code) throws FHIRException {;
     if ("Account".equals(code))
       return Account;
+    if ("ActivityDefinition".equals(code))
+      return ActivityDefinition;
     if ("AllergyIntolerance".equals(code))
       return AllergyIntolerance;
     if ("Appointment".equals(code))
@@ -466,10 +471,8 @@ public enum ResourceType {
       return GuidanceResponse;
     if ("HealthcareService".equals(code))
       return HealthcareService;
-    if ("ImagingExcerpt".equals(code))
-      return ImagingExcerpt;
-    if ("ImagingObjectSelection".equals(code))
-      return ImagingObjectSelection;
+    if ("ImagingManifest".equals(code))
+      return ImagingManifest;
     if ("ImagingStudy".equals(code))
       return ImagingStudy;
     if ("Immunization".equals(code))
@@ -534,6 +537,8 @@ public enum ResourceType {
       return PaymentReconciliation;
     if ("Person".equals(code))
       return Person;
+    if ("PlanDefinition".equals(code))
+      return PlanDefinition;
     if ("Practitioner".equals(code))
       return Practitioner;
     if ("PractitionerRole".equals(code))
