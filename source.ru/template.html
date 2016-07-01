@@ -43,6 +43,7 @@
     <li><a href="#tabs-uml">UML</a></li>
     <li><a href="#tabs-xml">XML</a></li>
     <li><a href="#tabs-json">JSON</a></li>
+    <li><a href="#tabs-ttl">Turtle</a></li>
     <li><a href="#tabs-all">Все</a></li>
   </ul>
   <div id="tabs-struc">
@@ -85,6 +86,16 @@
 </div>
 
   </div>
+  <div id="tabs-ttl">
+
+<div id="ttl">
+<p><b>Turtle Template</b></p>
+ <div id="json-inner">
+  <%ttl%>
+ </div>
+</div>
+
+  </div>
   <div id="tabs-all">
 
 <div id="tbl">
@@ -112,11 +123,19 @@
  </div>
 </div>
 
-<div id="json">
+<div id="json2">
 <a name="json"> </a>
 <p><b>JSON-шаблон</b></p>
  <div id="json-inner">
   <%json%>
+ </div>
+</div>
+  
+<div id="ttl2">
+<a name="ttl"> </a>
+<p><b>Turtle Template</b></p>
+ <div id="ttl-inner">
+  <%ttl%>
  </div>
 </div>
   
@@ -126,7 +145,7 @@
 <p>&nbsp;</p>  
 <p>Альтернативные определения: 
 Master Definition (<a href="<%name%>.profile.xml.html">XML</a>, <a href="<%name%>.profile.json.html">JSON</a>),
-<a href="<%name%>.xsd">Schema</a>/<a href="<%name%>.sch">Schematron</a> (for <a href="xml.html">XML</a>), <a href="<%name%>.shex.html">ShEx</a> (for <a href="rdf.html">Turtle</a>), 
+<a href="xml.html">XML</a> <a href="<%name%>.xsd">Schema</a>/<a href="<%name%>.sch">Schematron</a> (for ) + <a href="json.html">JSON</a> <a href="<%name%>.schema.json">Schema</a>, <a href="<%name%>.shex.html">ShEx</a> (for <a href="rdf.html">Turtle</a>), 
 <a href="<%name%>-questionnaire.html">Questionnaire</a></p>
 
 

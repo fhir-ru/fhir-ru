@@ -27,20 +27,25 @@
       </address>
     </Patient>
   </contained>
-  
-  <type value="oral"/>
-  
+   
   <identifier>
     <system value="http://happyvalley.com/claim"/>
     <value value="12347"/>
   </identifier>
   
+  <status value = "active"/>
+
+  <type>
+    <system value="http://hl7.org/fhir/ex-claimtype"/>
+    <code value="oral"/>
+  </type>
+
   <created value="2014-08-16"/>
   
-  <targetIdentifier>
+  <insurerIdentifier>
     <system value="http://www.jurisdiction.com/insurers"/>
     <value value="123456"/>
-  </targetIdentifier>
+  </insurerIdentifier>
   
   <organizationIdentifier>
     <system value="http://www.jurisdiction.com/careorganizations"/>
@@ -81,13 +86,15 @@
   
   <item>
     <sequence value="1"/>
-    <type>
+    <!--type>
       <code value="service"/>
-    </type>
+    </type-->
+   <careTeam>
     <providerIdentifier>
       <system value="http://www.jurisdiction.com/providerId"/>
       <value value="MD98765"/>
     </providerIdentifier>
+   </careTeam>
     <service>
       <code value="1200"/>
     </service>

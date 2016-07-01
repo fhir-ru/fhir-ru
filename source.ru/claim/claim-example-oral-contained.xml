@@ -60,6 +60,7 @@
   <contained>
     <Coverage>
       <id value="coverage-1"/>
+	  <status value="active"/>
       <issuerReference>
         <reference value="#organization-2"/>
       </issuerReference>
@@ -90,18 +91,23 @@
     </Coverage>
   </contained>
   
-  <type value="oral"/>
-  
   <identifier>
     <system value="http://happyvalley.com/claim"/>
     <value value="12347"/>
   </identifier>
   
+  <status value = "active"/>
+  
+  <type>
+    <system value="http://hl7.org/fhir/ex-claimtype"/>
+    <code value="oral"/>
+  </type>
+
   <created value="2014-08-16"/>
   
-  <targetReference>
+  <insurerReference>
     <reference value="#organization-2"/>
-  </targetReference>
+  </insurerReference>
   
   <organizationReference>
     <reference value="#organization-1"/>
@@ -140,12 +146,14 @@
   
   <item>
     <sequence value="1"/>
-    <type>
+    <!--type>
       <code value="service"/>
-    </type>
+    </type-->
+   <careTeam>
     <providerReference>
       <reference value="#practitioner-1"/>
     </providerReference>
+   </careTeam>
     <service>
       <code value="1200"/>
     </service>

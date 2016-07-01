@@ -94,40 +94,6 @@ versioning information included. -->
 <!-- Versioning and unique identification are not mandated for all systems that provide Resources, entities, and agents. 
 But, inclusion of Provenance requirements may introduce requirements for versioning and unique identification on those systems -->
 </p>
-<a name="TODO"> </a>
-<h3>Открытые вопросы и запрос на комментарии<!-- Open Issues and Request for Comments --></h3>
-<p>
-В настоящий момент ресурс Provenance имеет несколько областей, где положение вызывает озабоченность Рабочей группы по безопасности. Первое из них состоит в том, достаточно ли текущего набора значений ProvenanceEvent от HL7 для передачи состояний, в которые инициирующее событие может привести активность для передачи цели FHIR-ресурса Provenance из предыдущего состояния. Текущий набор значений будет обновлён после выхода DSTU2.
-<!-- At this juncture, Provenance has several areas of concern for the Security WG. The first concern is whether the current HL7 
-ProvenanceEvent value set is sufficient for conveying the states 
-to which a trigger event can cause an activity to transition the FHIR Resource target of the Provenance Resource from a previous state.  
-The current value set was will be updated post DSTU2. -->
-</p>
-<p>
-Хотя предназначенный для этого набор значений FHIR ProvenanceEvent содержит подмножества значений из нескольких источников, таких как W3C и HL7, он содержит дубликаты и конфликтующие определения, позитивный аспект чего в том, что существует больше действий, связанных с событием происхождения, чем в наборе значений HL7 ProvenanceEvent. Рабочие группы по безопасности, по совместному уходу на основе сообщества, и по электронным историям болезни находятся в процессе переработки и избавления от дубликатов этого набора значений в надежде заменить текущий набор значений в DSTU 2.1, если будет разрешено повторно опубликовать ресурс Provenance. В любом случае мы высоко ценим отзывы от бизнес-сообщества и реализаторов.
-<!-- While the intended FHIR ProvenanceEvent value set has sub-value sets from multiple sources such as W3C and HL7, there are 
-some duplicate and colliding definitions, the upside is that there are more provenance event related actions than in the 
-HL7 ProvenanceEvent value set.  The Security, Community Based Collaborative Care, and the EHR Work Groups are in 
-the process of refining and de-duplicating this value set in hopes of replacing the current one in DSTU 2.1 if the 
-Provenance Resource is permitted to be re-published.  In any case, feedback from business and implementer communities 
-would be very much appreciated. -->
-</p>
-<p>
-Другая область, вызывающая беспокойство, это есть ли вообще необходимость в элементе Provenance.entity.role, если имеется достаточно полный набор значений для активностей, и, если он полезен, нужны ли W3C-коды, показывающие, что сущность является  целевым объектом происхождения, например редакция или производная имеют смысл, когда сущность - это входные данные для целевого ресурса, который может быть редакцией или производной той сущности.
-<!-- Another area of concern is whether the Provenance.entity.role element is necessary at all if there is a sufficient 
-activity value set, and if it is useful, whether W3C codes indicating that the entity is the target of 
-provenance, e.g., derivation or revision, make sense where the entity is an input into a target resource which may 
-be a revision or derivation of that entity. -->
-</p>
-<p>
-Обратите внимание, что привязки к наборам значений ProvenanceEvent и Purpose of Use в текущий момент являются расширяемыми, а не примерными. Были выражены опасения об ограниченности выбора значений из словарей во время DSTU, особенно для других стран. Например за пределами США, чаще используется словарь ISO 13606 Назначение кодов.
-Рабочая группа по безопасности также хотела бы получить отзывы о том, следует ли сделать эти привязки примерными или расширяемыми.
-<!-- Note that the binding of the ProvenanceEvent and Purpose of Use value sets are currently set to extensible rather 
-than example.  Concerns have been raised about constraining vocabulary choices during DSTU especially for other 
-jurisdictions.  For example, outside of the US, ISO 13606 Purpose of Use codes are more likely used.  
-Security WG would also appreciate feedback on whether these bindings should be example or extensible. -->
-</p>
-
 </div>
 
 </div>

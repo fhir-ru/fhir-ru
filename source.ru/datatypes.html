@@ -1,7 +1,5 @@
 <!DOCTYPE HTML>
 
-
-      
 [%settitle Типы данных%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -12,18 +10,13 @@
 
 <div class="col-12">
 
-
-<!--
- no repeating primitives in datatypes? No id's on primitives in datatypes...No dar on primitives in datatypes. It would be worthwhile to document that and the reason for it.
--->
-
 <%dtheader base%>
 
 <h1>Типы данных</h1>
 <table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: 3</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
-В спецификации FHIR описаны типы данных, которые используются в элементах ресурсов. 
+В спецификации FHIR приводится набор типов данных, которые используются в элементах ресурсов. 
 Типы данных делятся на две категории: простые / примитивные типы, являющиеся отдельными элементами, и сложные типы, являющиеся повторно используемыми кластерами элементов. На этой странице приведены описания этих типов данных. Также см. страницы <a href="datatypes-examples.html">Примеры</a>, <a href="datatypes-definitions.html">Подробное описание</a> и 
 <a href="datatypes-mappings.html">Мэппинги</a>.
 </p>
@@ -37,8 +30,7 @@
 </table>
 
 <p>
-Белый = абстрактный тип. Голубой - типы. Розовый - профиль для типа.
-Типы данных также доступны в виде <a href="fhir-base.xsd">W3C Schema</a>.
+Белый = абстрактный тип. Голубой = конкретные типы. Розовый = профиль для типа.
 </p>
 
 <a name="primitive"></a>
@@ -55,7 +47,7 @@
 
 <table class="list">
  <tr>
-   <td colspan="3"><b>Примитивные типы<!-- Primitive Types --></b></td>
+   <td colspan="4"><b>Примитивные типы<!-- Primitive Types --></b></td>
  </tr>
  <tr>
    <th>Имя в FHIR<!-- FHIR Name --></th>
@@ -159,6 +151,62 @@
    <td style="border-top: 0px silver solid"></td>
    <td colspan="3" style="border-top: 0px silver solid">Regex: ([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]+)?</td>
  </tr>
+ <tr>
+   <td>code<a name="code"> </a></td>
+   <td>Indicates that the value is taken from a set of controlled strings defined elsewhere (see <a href="terminologies.html">Using codes</a> for further discussion). Technically, a code is restricted to a string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents</td>
+   <td>xs:token</td>
+   <td>JSON string</td>
+  </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: [^\s]+([\s]?[^\s]+)*</td>
+ </tr>
+ <tr>
+   <td>oid<a name="oid"> </a></td>
+   <td>An OID represented as a URI (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>); e.g. urn:oid:1.2.3.4.5</td>
+   <td>xs:anyURI</td>
+   <td>JSON string - uri</td>
+  </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: urn:oid:[0-2](\.[1-9]\d*)+</td>
+ </tr>
+ <tr>
+   <td>id<a name="id"> </a></td>
+   <td>Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.  (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.)</td>
+   <td>xs:string</td>
+   <td>JSON string</td>
+ </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: [%id_regex%]</td>
+ </tr>
+ <tr>
+   <td>markdown<a name="markdown"> </a></td>
+   <td>A string that may contain markdown syntax for optional processing by a markdown presentation engine</td>
+   <td>xs:string</td>
+   <td>JSON string</td>
+ </tr>
+ <tr>
+   <td>unsignedInt<a name="unsignedInt"> </a></td>
+   <td>Any non-negative integer (e.g. >= 0)</td>
+   <td>xs:nonNegativeInteger </td>
+   <td>JSON number</td>
+ </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: [0]|([1-9][0-9]*)</td>
+ </tr>
+ <tr>
+   <td>positiveInt<a name="positiveInt"> </a></td>
+   <td>Any positive integer (e.g. >= 1)</td>
+   <td>xs:positiveInteger</td>
+   <td>JSON number</td>
+ </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: [1-9][0-9]*</td>
+ </tr>
 </table>
 
 <p>
@@ -166,7 +214,7 @@
 <!-- Notes: -->
 </p>
 <ul>
- <li>Для всех типов их XML и JSON представления совпадают за исключением различий в экранировании символов в XML и JSON</li>
+ <li>Для всех типов их XML-, JSON- и Turtle-представления совпадают, за исключением различий в экранировании символов в XML и JSON</li>
 <li>Boolean values can also be represented using coded values (such as <a href="v2/0136/index.html">HL7 v2 Table 0136</a>). See <a href="observation.html#valuex">Observation</a> for one such use</li>
  <li>Приведенные регулярные выражения могут пропускать более широкий набор значений, чем фактически допустимый (например високосные года), поэтому требуется дополнительная валидация 
 </li>
@@ -183,106 +231,24 @@
 	  <!-- Note that there is no absolute limit to the magnitude of the value, though large and/or highly precise values are extremely rare in medicine. One element where highly precise decimals may be encountered is the <a href="location.html">Location</a> coordinates --></li>
     </ul>
  </li>
+ <li>About the id datatype:
+   <ul>
+     <li>Ids are case sensitive. UUIDs SHALL be sent using lowercase letters</li>
+     <li>The ID type includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232.</li>
+     <li>In a typical FHIR URL, like <code>http://example.com/fhir/Patient/<span style="color: maroon">1234</span></code>, the last part "1234" (highlighted in red) is the part that is an id datatype</li>
+     <li>A full UUID is a <code>uri</code>, not an <code>id</code>. UUIDs in URIs SHALL also be represented in lowercase (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b)</li>
+   </ul>
+ </li>
+ <li>About the markdown datatype:
+   <ul>
+     <li>Systems are not required to have markdown support, and there is considerable variation in markdown syntax, 
+       so the content of a string should be readable without markdown processing, per markdown philosophy</li>
+     <li>The preferred markdown syntax is described at <a href="http://daringfireball.net/projects/markdown/syntax">http://daringfireball.net/projects/markdown/syntax</a>
+       (see tests here: <a href="http://daringfireball.net/projects/downloads/MarkdownTest_1.0.zip">http://daringfireball.net/projects/downloads/MarkdownTest_1.0.zip</a>)</li> 
+     <li>Markdown content should not contain Unicode character points below 32, except for u0009 (horizontal tab), u0010 (carriage return) and u0013 (line feed). <i>Todo: is there any reason not to make this a SHALL?</i></li>
+    </ul>
+ </li>
 </ul>
-
-
-<h3>XML и JSON представления<!-- XML and JSON representations --></h3>
-
-<p>
-Все элементы, использующие эти примитивные типы, имеют некоторую комбинацию значения, как описано выше, внутренней сущности (например xml:id) и расширения. Значение представляется в XML как атрибут "value":
-<!-- All elements using these primitive types have some combination of value as described above, an internal identity (e.g. xml:id), and extensions. 
-The value is represented in XML as an attribute named "value": -->
-</p>
-<pre>
-  &lt;count value="2"/&gt;
-</pre>
-<p>
-и как значение свойства в JSON:
-<!--  and as the value of the property in JSON: -->
-</p>
-<pre>
-  "count" : 2
-</pre>
-<p>
-Дополнительную информацию включая представление внутренней сущности и расширений см. на страницах описания форматов <a href="xml.html">XML</a> и <a href="json.html">JSON</a>. Когда значение отсутствует, оно не обозначается в экземпляре; XML-атрибут value или JSON-свойство в этом случае не указываются вообще. This means that 
-in xml, attributes are never present with a length of 0 (value=""), and properties are never a 0 length string or null in JSON ("name" : "" is not valid). 
-(note: there is one specific <a href="json.html#null">use of the null</a> in the JSON representation).
-<!-- For additional details, including how the internal identity and extensions are represented, see the <a href="xml.html">XML</a> and <a href="json.html">JSON</a> formats. 
-When the value is missing, it is not represented in the instance; the XML value attribute or the JSON property are not represented at all. This means that 
-in xml, attributes are never present with a length of 0 (value=""), and properties are never a 0 length string or null in JSON ("name" : "" is not valid). 
-(note: there is one specific <a href="json.html#null">use of the null</a> in the JSON representation). -->
-</p>
-<p>
-В соответствии с XML-схемой пробелы в начале и в конце атрибута value игнорируются для типов boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid и uri. Обратите внимание, из этого следует, что библиотеки XML, следующие схеме, дают разные значения атрибутов по сравнению с библиотеками, не соответствующими схеме, во время чтения экземпляров XML. По этой причине атрибут value для этих типов НЕ ДОЛЖЕН иметь пробелы в начале и в конце. Строковые значения могут иметь пробелы в начале и в конце, если они являются частью содержимого их значения. В JSON пробелы в строковых значениях всегда являются значимыми. Примитивные типы за исключением string НЕ ДОЛЖНЫ содержать пробелы в начале и в конце.
-<!-- According to XML schema, leading and trailing whitespace in the value attribute is ignored for the types 
-boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid, and uri. Note that this means that the 
-schema aware XML libraries give different attribute values to non schema aware libraries when reading the 
-XML instances. For this reason, the value attribute for these types SHOULD not have leading and trailing spaces.
-String values should only have leading and trailing spaces if they are part of the content of the value. 
-In JSON, whitespace in string values is always significant. Primitive types other than string SHALL NOT have leading or trailing whitespace. -->
-</p>
-
-<h3>Простые ограничения<!-- Simple Restrictions --></h3>
-<p>
-Кроме базовых примитивных типов определено несколько дополнительных примитивных типов в виде ограничений над одним из других базовых типов.
-<!-- In addition to the base primitive types, a few additional primitive types are defined as restrictions on one of the other primitive types. -->
-</p>
-
-<a name="patterns"></a>
-<a name="code"> </a>
-<a name="oid"> </a>
-<a name="uuid"> </a>
-<a name="id"> </a>
-<a name="unsignedInt"> </a>
-<a name="positiveInt"> </a>
-<a name="markdown"> </a>
-
-<table class="list">
- <tr>
-   <th>Имя в FHIR<!-- FHIR Name --></th><th>Базовый FHIR-тип<!-- Base FHIR Type --></th><th>Описание<!-- Description --></th>
- </tr>
- <tr><td>code</td><td>string</td><td>Указывает, что значение взято из набора регулируемых строк, определенных в другом месте (см. подробную информацию в разделе <a href="terminologies.html">Использование кодов</a>). Техническое ограничение: код должен быть строкой, содержащей хотя бы один символ и не имеющей пробела в начале и в конце, внутри которой есть только одиночные пробелы<!-- Indicates that the value is taken from a set of controlled strings defined elsewhere (see <a href="terminologies.html">Using codes</a> for further discussion). Technically, a code is restricted to a string which has at least one character and no leading or trailing whitespace, and where there is no whitespace other than single spaces in the contents --> <br/>regex: [^\s]+([\s]?[^\s]+)*</td></tr>
- 
- 
- <tr><td>oid</td><td>uri</td><td>OID (идентификатор объекта), представленный в виде URI<!-- An OID represented as a URI --> (<a href="http://www.ietf.org/rfc/rfc3001.txt">RFC 3001</a>); например urn:oid:1.2.3.4.5  <br/>regex: urn:oid:[0-2](\.[1-9]\d*)+</td></tr>
-<!--
- <tr><td>uuid</td><td>uri</td><td>A UUID, represented as a URI (<a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>): urn:uuid:a5afddf4-e880-459b-876e-e4591b0acc11. Note the RFC comments about case: UUID values SHALL be represented in lower case, but systems SHOULD interpret them case insensitively</td></tr>
--->
- <tr><td>id</td><td>string</td><td>Любая комбинация ASCII-символов верхнего и нижнего регистра ('A'..'Z', 'a'..'z', цифры ('0'..'9'), '-' и '.' с ограничением по длине в 64 символа. (Это может быть целое число, OID без префиксов, UUID или любой другой паттерн идентификаторов, соответствующим этим ограничениям).
- <!-- Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.  (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.) -->
-   <br/>regex: [%id_regex%]</td></tr>
-
- <tr><td>markdown</td><td>string</td><td>A string that may contain markdown syntax for optional processing by a markdown presentation engine</td></tr>
- <tr><td>unsignedInt</td><td>int</td><td>Любое неотрицательное целое (т. е. >= 0)<br/>regex: [0-9]+</td></tr>
- <tr><td>positiveInt</td><td>int</td><td>Любое положительное целое (т. е. > 0)<br/>regex: [1-9][0-9]*</td></tr>
-</table>
- 
-<p>
-Некоторые дополнительные замечания по типу данных <code>id</code>:
-<!-- Some additional notes about the <code>id</code> datatype: -->
-</p>
-<ul>
- <li>Идентификаторы чувствительны к регистру. UUID-ы ДОЛЖНЫ передаваться с использованием строчных букв
- <!-- Ids are case sensitive. UUIDs SHALL be sent using lowercase letters --></li>
- <li>Тип ID включает в себя идентификаторы в соответствии с <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, но также включает и другие форматы идентификаторов, но не чувствителен к регистру, как ISO 18232.
- <!-- The ID type includes identifiers consistent with <a href="http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=38610">ISO 18232</a>, but also includes other identifier formats as well, and is not case insensitive like ISO 18232. --></li>
- <li>В типичном FHIR URL, наподобие <code>http://example.com/fhir/Patient/<span style="color: maroon">1234</span></code>, последняя часть "1234" (выделена красным цветом) имеет тип данных ID
- <!-- In a typical FHIR URL, like http://example.com/fhir/Patient/<span style="color: navy">1234</span>, the last part "1234" (highlighted in navy) is the part that is an id datatype --></li>
- <li>Полный UUID - это <code>uri</code>, а не <code>id</code>. UUID-ы в URI также ДОЛЖНЫ быть представлены в нижнем регистре (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b)
- <!-- A full UUID is a <code>uri</code>, not an <code>id</code>. UUIDs in URIs SHALL also be represented in lowercase (urn:uuid:59bf0ef4-e89c-4628-9b51-12ae3fdbe22b) --></li>
-</ul>
-
-<p>
-Some additional notes about the <code>markdown</code> datatype:
-</p>
-<ul>
- <li>Systems are not required to have markdown support, and there is considerable variation in markdown syntax, 
-   so the content of a string should be readable without markdown processing, per markdown philosophy</li>
- <li>The preferred markdown syntax is described at <a href="http://daringfireball.net/projects/markdown/syntax">http://daringfireball.net/projects/markdown/syntax</a>
-   (see tests here: <a href="http://daringfireball.net/projects/downloads/MarkdownTest_1.0.zip">http://daringfireball.net/projects/downloads/MarkdownTest_1.0.zip</a>)</li> 
- <li>Содержимое на языке разметки Markdown не должно содержать символы Unicode с кодом меньше 32, за исключением u0009 (горизонтальная табуляция), u0010 (возврат каретки) и u0013 (перевод строки)<!-- Markdown content should not contain Unicode character points below 32, except for u0009 (horizontal tab), u0010 (carriage return) and u0013 (line feed). --><i>Todo: is there any reason not to make this a SHALL?</i></li>
-</ul>
-
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
@@ -293,6 +259,92 @@ Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specificat
 </p>
 </blockquote>
 
+
+<h3>XML-, JSON- и Turtle-представления<!-- Representations in XML, JSON, and Turtle --></h3>
+
+<p>
+Все элементы, использующие данные примитивные типы, могут иметь одно или несколько значений, как описано выше, внутреннюю сущность (например xml:id) и расширения.
+Возьмём, к примеру, элемент с именем "count" и типом "integer".
+<!-- All elements using these primitive types may have one or more of a value as described above, an internal identity (e.g. xml:id), and extensions. 
+For an example, take an element of name "count" and type "integer". -->
+</p>
+<p><b>XML</b></p>
+<p>
+Значение представляется в XML с помощью атрибута "value":
+<!-- The value is represented in XML as an attribute named "value": -->
+</p>
+<pre class="xml">
+  &lt;count value="2"/&gt;
+</pre>
+<p>
+The full representation, with id, extensions and value:
+</p>
+<pre class="xml">
+  &lt;count id="a1" value="2"&gt;
+    &lt;extension url="..."&gt;
+      &lt;valueXX.../&gt;
+    &lt;/extension&gt;
+  &lt;/count&gt;
+</pre>
+<p><b>JSON</b></p>
+<p>
+In JSON, for convenience, the value is represented as the property itself:
+</p>
+<pre class="json">
+  "count" : 2
+</pre>
+<p>
+The full representation, with id, extensions and value, showing the id and extensions in the sibling property:
+</p>
+<pre class="json">
+  "count" : 2
+  "count_" : {
+    "id" : "a1",
+    "extension" : [{
+      "url" : "...",
+      "valueXXX" : "...."
+    }]
+  }
+</pre>
+<p><b>RDF</b></p>
+<p>
+The value is represented in RDF as an relationship with the URI "http://h;7.org/fhir/value". Using the normal prefix, this becomes:
+</p>
+<pre class="rdf">
+  fhir:Type.count [ fhir:value "2"^^xsd:integer ]
+</pre>
+<p>
+For the types date and DateTime, the type must be specified explicitly. 
+For all other types, it is optional. The full representation, with id, extensions and value:
+</p>
+<pre class="rdf">
+  fhir:Type.count [ 
+    Element.id "a1";
+    fhir:value "2"^^xsd:integer;
+    Element.extension [ 
+      fhir:Extension.url ".."; 
+      fhir:Extension.valueXX...
+    ]
+  ]
+</pre>
+<p>
+Дополнительную информацию см. на страницах описания форматов <a href="xml.html">XML</a>, <a href="json.html">JSON</a> и <a href="rdf.html">Turtle</a>. Когда значение отсутствует и нет расширений, элемент не указывается вообще. This means that 
+in xml, attributes are never present with a length of 0 (value=""), and properties are never a 0 length string or null in JSON ("name" : "" is not valid). 
+(note: there is one specific <a href="json.html#null">use of the null</a> in the JSON representation).
+</p>
+<p>
+В соответствии с XML-схемой пробелы в начале и в конце атрибута value игнорируются для типов boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid и uri. Обратите внимание, из этого следует, что библиотеки XML, следующие схеме, дают разные значения атрибутов по сравнению с библиотеками, не соответствующими схеме, во время чтения экземпляров XML. По этой причине атрибут value для этих типов НЕ ДОЛЖЕН иметь пробелы в начале и в конце. Строковые значения могут иметь пробелы в начале и в конце, если они являются частью содержимого их значения. В JSON и Turtle пробелы в строковых значениях всегда являются значимыми. Примитивные типы за исключением string НЕ ДОЛЖНЫ содержать пробелы в начале и в конце.
+<!-- According to XML schema, leading and trailing whitespace in the value attribute is ignored for the types 
+boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid, and uri. Note that this means that the 
+schema aware XML libraries give different attribute values to non schema aware libraries when reading the 
+XML instances. For this reason, the value attribute for these types SHOULD not have leading and trailing spaces.
+String values should only have leading and trailing spaces if they are part of the content of the value. 
+In JSON and Turtle whitespace in string values is always significant. Primitive types other than string SHALL NOT have leading or trailing whitespace. -->
+</p>
+
+
+ 
+ 
 <!-- 
 boolean: [%dtusage boolean%]
 integer: [%dtusage integer%]
@@ -575,9 +627,92 @@ Quantity используется в следующих местах: [%dtusage 
 Некоторые вариации типа Quantity
 </h3>
 <p>
-Они используются в качестве типов в модели содержимого ресурсов, но по сути это просто Quantity с некоторыми ограничениями:
+There are several additional data types that are specializations of Quantity 
+that only introduce new restrictions on the existing elements defined as part
+of the Quantity data type:
 </p>
-[%dt.restrictions Quantity%]
+
+<table class="list">
+ <tr>
+   <td><b>Type Name</b></td>
+   <td><b>Rules</b></td>
+   <td><b>Formal Definitions</b></td>
+ </tr>
+ 
+ <tr>
+   <td>Age</td>
+   <td>[%dt.constraints Age%]</td>
+   <td><a href="age.profile.xml.html">XML</a>, <a href="age.profile.json.html">JSON</a></td>
+ </tr>
+ <tr>
+   <td></td>
+   <td colspan="2">Usage: [%dtusage Age%]</td>
+ </tr>
+ 
+ <tr>
+   <td>Count</td>
+   <td>[%dt.constraints Count%]</td>
+   <td><a href="count.profile.xml.html">XML</a>, <a href="count.profile.json.html">JSON</a></td>
+ </tr>
+ <tr>
+   <td></td>
+   <td colspan="2">Usage: [%dtusage Count%]</td>
+ </tr>
+
+ <tr>
+   <td>Distance</td>
+   <td>[%dt.constraints Distance%]</td>
+   <td><a href="distance.profile.xml.html">XML</a>, <a href="distance.profile.json.html">JSON</a></td>
+ </tr>
+ <tr>
+   <td></td>
+   <td colspan="2">Usage: [%dtusage Distance%]</td>
+ </tr>
+ 
+ <tr>
+   <td>Duration</td>
+   <td>[%dt.constraints Duration%]</td>
+   <td><a href="duration.profile.xml.html">XML</a>, <a href="duration.profile.json.html">JSON</a></td>
+ </tr>
+ <tr>
+   <td></td>
+   <td colspan="2">Usage: [%dtusage Duration%]</td>
+ </tr>
+ 
+ <tr>
+   <td>Money</td>
+   <td>[%dt.constraints Money%]</td>
+   <td><a href="money.profile.xml.html">XML</a>, <a href="money.profile.json.html">JSON</a></td>
+ </tr>
+ <tr>
+   <td></td>
+   <td colspan="2">Usage: [%dtusage Money%]</td>
+ </tr>
+ <tr>
+  <td colspan="3"><hr/>In addition to the specializations, there is one profile on Quantity used in several resources:</td>
+ </tr>
+ <tr>
+   <td><b>Profile Name</b></td>
+   <td><b>Rules</b></td>
+   <td><b>Formal Definitions</b></td>
+ </tr>
+ <tr>
+   <td>Simple Quantity</td>
+   <td>[%dt.constraints SimpleQuantity%]</td>
+   <td><a href="simplequantity.profile.xml.html">XML</a>, <a href="simplequantity.profile.json.html">JSON</a></td>
+ </tr>
+ <tr>
+   <td></td>
+   <td colspan="2">Usage: [%dtusage SimpleQuantity%]</td>
+ </tr>
+</table>
+
+<p>
+Note that the profile is different from the other specializations because it is not a type,
+just rules applied where the Quantity type is used.
+</p>
+
+
 
 <a name="Range"></a>
 <a name="range"></a>

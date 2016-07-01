@@ -59,8 +59,8 @@ reported with it are final or amended. -->
 
 	<h3>Содержимое отчета<!-- Report Content --></h3>
 	<p>
-Ресурс предлагает 3 различных способа представления диагностического отчета:
-<!-- This resource provides for 3 different ways of presenting the Diagnostic Report: -->
+Как правило, отчет - это либо одни данные без описательной части (например основные лабораторные тесты) или сочетание данных с некоторым заключением (например структурированный патологический отчёт, плотность костей), либо полностью описательная часть (апример типичный радиологический отчёт, гистопатология). Данный ресурс обеспечивает эти 3 различных представления:
+<!-- Typically, a report is either:all data, no narrative (e.g. Core lab) or a mix of data with some concluding narrative (e.g. Structured Pathology Report, Bone Density), or all narrative (for example a typical imaging report, histopathology).  This resource provides for these 3 different presentations: -->
 </p>
 	<ul>
  <li>В виде атомарных элементов данных: иерархическое множество вложенных ссылок на ресурсы Observation, часто включающие интерпретацию патолога/рентгенолога, одно или несколько изображений, возможно, с заключением и/или одним или несколькими кодированными диагнозами<!-- 

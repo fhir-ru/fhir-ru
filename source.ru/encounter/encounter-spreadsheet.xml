@@ -1649,7 +1649,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Основание проведения случая обслуживания, выраженное в виде кода. Для госпитализации может использоваться в качестве кодированного диагноза при поступлении.<!-- Reason the encounter takes place, expressed as a code. For admissions, this can be used for a coded admission diagnosis --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis)</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для тех систем, которым нужно знать, какой из диагнозов является основным, они будут помечены с помощью стандартного расширения primaryDiagnosis (это будет не флаг, а последовательная нумерация диагнозов, где под номером 1 будет идти основной диагноз)<!-- For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.reasonCode</Data><NamedCell

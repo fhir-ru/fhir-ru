@@ -1423,7 +1423,7 @@
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Distance from landmark</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Расстояние от ориентира<!-- Distance from landmark --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s94"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4345,7 +4345,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">Именованное анатомическое расположение<!-- Named anatomical location  --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s118"><Data ss:Type="String">patient</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Пациент<!-- patient --></Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">BodySite.patient</Data></Cell>

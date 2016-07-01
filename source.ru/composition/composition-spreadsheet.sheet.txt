@@ -25,7 +25,7 @@
  -- Row 4 -----------------------------------
   Binding Name = DocumentConfidentiality
   Binding = value set
-  Reference = http://hl7.org/fhir/ValueSet/v3-Confidentiality
+  Reference = http://hl7.org/fhir/ValueSet/v3-ConfidentialityClassification
   Definition = Codes specifying the level of confidentiality of the composition.
   Conformance = required
 

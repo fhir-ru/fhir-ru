@@ -24,18 +24,18 @@
   Definition = Value of observation used as basis for conditional execution of one or more activities
 
  -- Row 5 -----------------------------------
-  Binding Name = ActivityDefinitionCategory
+  Binding Name = ProtocolActivityDefinitionCategory
   Binding = code list
-  Reference = #activity-definition-category
+  Reference = #protocol-activity-category
   Definition = High-level categorization of the type of activity in a protocol.
 
  -- Row 6 -----------------------------------
-  Binding Name = ActivityDefinitionType
+  Binding Name = ProtocolActivityDefinitionType
   Binding = unbound
   Definition = Detailed type of planned activity; e.g. CBC
 
  -- Row 7 -----------------------------------
-  Binding Name = ActivityTiming
+  Binding Name = ProtocolActivityTiming
   Binding = unbound
   Definition = Code describing the timing of an activity; e.g. BID, QD
 
@@ -108,40 +108,50 @@
   Display = Study
   Definition = The protocol describes the set of steps to occur for study subjects enrolled in an interventional study
 
-=== Sheet activity-definition-category =====================================
+=== Sheet protocol-activity-category =====================================
 
  -- Row 1 -----------------------------------
   Id = 1
-  Code = diet
-  Definition = To consume food of a specified nature
+  Code = communication
+  Definition = To communicate with a participant in some way
 
  -- Row 2 -----------------------------------
   Id = 2
-  Code = drug
-  Definition = To consume/receive a drug, vaccine or other product
+  Code = diet
+  Definition = To consume food of a specified nature
 
  -- Row 3 -----------------------------------
   Id = 3
-  Code = encounter
-  Definition = To meet or communicate with the patient (in-patient, out-patient, phone call, etc.)
+  Code = drug
+  Definition = To consume/receive a drug, vaccine or other product
 
  -- Row 4 -----------------------------------
   Id = 4
-  Code = observation
-  Definition = To capture information about a patient (vitals, labs, diagnostic images, etc.)
+  Code = encounter
+  Definition = To meet with the patient (in-patient, out-patient, etc.)
 
  -- Row 5 -----------------------------------
   Id = 5
-  Code = procedure
-  Definition = To modify the patient in some way (surgery, physiotherapy, education, counseling, etc.)
+  Code = observation
+  Definition = To capture information about a patient (vitals, labs, diagnostic images, etc.)
 
  -- Row 6 -----------------------------------
   Id = 6
-  Code = supply
-  Definition = To provide something to the patient (medication, medical supply, etc.)
+  Code = procedure
+  Definition = To modify the patient in some way (surgery, physiotherapy, education, counseling, etc.)
 
  -- Row 7 -----------------------------------
   Id = 7
+  Code = referral
+  Definition = To refer the patient to receive some service
+
+ -- Row 8 -----------------------------------
+  Id = 8
+  Code = supply
+  Definition = To provide something to the patient (medication, medical supply, etc.)
+
+ -- Row 9 -----------------------------------
+  Id = 9
   Code = other
   Definition = Some other form of action
 
@@ -397,8 +407,8 @@
   Element = Protocol.step.activity.detail.category
   Card. = 0..1
   Type = code
-  Binding = ActivityDefinitionCategory
-  Short Label = diet | drug | encounter | observation +
+  Binding = ProtocolActivityDefinitionCategory
+  Short Label = communication | diet | drug | encounter | observation | procedure | referral | supply | other
   Definition = High-level categorization of the type of activity.
   Requirements = May determine what types of extensions are permitted
   RIM Mapping = .classCode
@@ -408,7 +418,7 @@
   Element = Protocol.step.activity.detail.code
   Card. = 0..1
   Type = CodeableConcept
-  Binding = ActivityDefinitionType
+  Binding = ProtocolActivityDefinitionType
   Short Label = Detail type of activity
   Definition = Detailed description of the type of activity; e.g. What lab test, what procedure, what kind of encounter.
   Requirements = Allows matching performed to planned as well as validation against protocols
@@ -419,7 +429,7 @@
   Element = Protocol.step.activity.detail.timing[x]
   Card. = 0..1
   Type = CodeableConcept | Timing
-  Binding = ActivityTiming
+  Binding = ProtocolActivityTiming
   Short Label = When activity is to occur
   Definition = The period, timing or frequency upon which the described activity is to occur.
   Requirements = Allows prompting for activities and detection of missed planned activities.

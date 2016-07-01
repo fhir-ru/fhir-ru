@@ -14,20 +14,31 @@ provides a clinical or workflow context for a set of observations. --> </p>
 <p>Варианты использования ресурса Observation:<!-- Uses for the Observation resource include: -->
 </p>
 <ul>
-  <li>основные показатели состояния организма: температура, кровяное давление, частота дыхания<!-- Vital signs: temperature, blood pressure, respiration rate --></li>
-	<li>Данные лабораторных исследований<!-- Laboratory Data --></li>
-	<li>Радиологические результаты, например плотность костей или измерения плода<!-- Imaging results like bone density or fetal measurements --></li>
-	<li>Измерения, полученные с помощью приборов, например данные ЭКГ или данные пульсовой оксиметрии<!-- Devices Measurements such as EKG data or Pulse Oximetry data --></li>
-  <li>Инструменты клинической оценки, например APGAR<!-- Clinical assessment tools such as APGAR --></li>
-  <li>Личные характеристики: рост, вес, цвет глаз<!-- Personal characteristics: height, weight, eye-color --></li>
+  <li>Vital signs such as <a href="observation-example.html">body weight</a>,  <a href="observation-example-bloodpressure.html">blood pressure</a>, and <a href="observation-example-f202-temperature.html">temperature</a></li>
+	<li>Laboratory Data llike <a href="observation-example-f001-glucose.html">blood glucose</a>, or an <a href="observation-example-f205-egfr.html">estimated GFR</a></li>
+	<li>Imaging results like  <a href="observation-example-bmd.html">bone density</a> or  <a href="observation-example-fetal-measurement.html">fetal measurements</a></li>
+	<li>Devices Measurements such as  <a href="observation-example-sample-data.html">EKG data</a> or  <a href="observation-example-satO2.html">Pulse Oximetry data</a></li>
+  <li>Clinical assessment tools such as <a href="observation-example-5minute-apgar-score.html">APGAR</a> or a <a href="observation-example-glasgow.html">Glasgow Coma Score</a> </li>
+  <li>Personal characteristics: such as  <a href="observation-example-eye-color.html">eye-color</a></li>
+<!-- 
+  <li>основные показатели состояния организма: температура, кровяное давление, частота дыхания</li>
+	<li>Данные лабораторных исследований</li>
+	<li>Радиологические результаты, например плотность костей или измерения плода</li>
+	<li>Измерения, полученные с помощью приборов, например данные ЭКГ или данные пульсовой оксиметрии</li>
+  <li>Инструменты клинической оценки, например APGAR</li>
+  <li>Личные характеристики: рост, вес, цвет глаз</li>
+
+  <li>Социальный анамнез: употребление табака, семейная поддержка, когнитивный статус</li>
+  <li>Основные характеристики: состояние беременности, подтверждение смерти</li>
+-->
   <!--EH 12/7/2014 
   <li>Diagnoses (Note: trackable conditions, allergies, adverse reactions and more complex structures are handled elsewhere)</li>
   -->
-  <li>Социальный анамнез: употребление табака, семейная поддержка, когнитивный статус<!-- Social history: tobacco use, family supports, cognitive status --></li>
-  <li>Основные характеристики: состояние беременности, подтверждение смерти<!-- Core characteristics: pregnancy status, death assertion --></li>
+  <li>Social history like  <a href="observation-example-f001-glucose.html">tobacco use</a>,  <a href="observation-example-family-support.html">family support</a>, or <a href="observation-example-cognitive-status.html">cognitive status</a></li>
+  <li>Core characteristics like  <a href="observation-example-pregnancy.html">pregnancy status</a>, or a <a href="observation-example-death.html">death assertion</a></li>
 </ul>
 
-<p>Также для ресурса Observation были определены следующие основные <a href="profiling.html">профили</a>. <strong>Если реализации используют ресурс Observation, то они должны соответствовать этим профилям для этих конкретных сценариев использования:</strong> 
+<p>Также для ресурса Observation были определены следующие основные <a href="profiling.html">профили</a>. <strong>Если реализации используют ресурс Observation, то они должны соответствовать этим профилям при выражении концептов, специфичных для этих профилей, в виде структурированных данных:</strong> 
 <!-- The following core <a href="profiling.html">profiles</a> for the Observation resource have been defined as well. <strong>If implementations use the Observation Resource, they SHALL conform to these profiles when supporting these specific use cases. :</strong>  -->
 </p>
 <ul>
