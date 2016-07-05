@@ -1066,9 +1066,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Запрос на выполнение процедуры <!-- A request for a procedure to be performed --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">A request for a procedure to be performed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Запрос на выполнение процедуры. Может быть предложением или заказом. <!-- A request for a procedure to be performed. May be a proposal or an order. --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">A request for a procedure to be performed. May be a proposal or an order.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1100,9 +1100,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Уникальный идентификатор запроса<!-- Unique identifier for the request --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Unique identifier for the request</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификаторы, присвоенные этому заказу заказчиком или получателем.<!-- Identifiers assigned to this order by the order or by the receiver. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifiers assigned to this order by the order or by the receiver.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1134,9 +1134,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Над кем должна быть выполнена процедура<!-- Who the procedure should be done to --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Who the procedure should be done to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, животное или группа, над кем должна быть выполнена процедура.<!-- The person, animal or group that should receive the procedure. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The person, animal or group that should receive the procedure.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1169,9 +1169,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Какую процедуру необходимо выполнить<!-- What procedure to perform --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">What procedure to perform</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Конкретная процедура, которая заказывается. Используйте текст, если точный тип процедуры не закодировать.<!-- The specific procedure that is ordered. Use text if the exact nature of the procedure cannot be coded. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The specific procedure that is ordered. Use text if the exact nature of the procedure cannot be coded.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1203,13 +1203,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Над какой частью тела выполняется процедура<!-- What part of body to perform on --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">What part of body to perform on</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Анатомическое расположение на теле субъекта, где должна быть выполнена процедура (т. е. место назначения).<!-- Indicates the sites on the subject's body where the procedure should be performed (I.e. the target sites). --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the sites on the subject's body where the procedure should be performed (I.e. the target sites).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Знание того, где выполняется процедура, важно отслеживать, если возможны варианты.<!-- Knowing where the procedure is made is important for tracking if multiple sites are possible. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Knowing where the procedure is made is important for tracking if multiple sites are possible.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Используется только в том случае, если не ясно из ProcedureRequest.type<!-- Only used if not implicit in the code found in ProcedureRequest.type --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Only used if not implicit in the code found in ProcedureRequest.type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">targetSiteCode</Data><NamedCell
@@ -1240,13 +1240,13 @@
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s96"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s96"><Data ss:Type="String">Целевое место на теле<!-- Target body site --></Data><NamedCell
+    <Cell ss:StyleID="s96"><Data ss:Type="String">Target body site</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s97"><Data ss:Type="String">Показывает места на теле субъекта, где должна быть выполнена процедура (т. е. целевые места).<!-- Indicates the site on the subject's body where the procedure should be performed ( i.e. the target sites). --></Data><NamedCell
+    <Cell ss:StyleID="s97"><Data ss:Type="String">Indicates the site on the subject's body where the procedure should be performed ( i.e. the target sites).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Знание того, где выполняется процедура, важно отслеживать, если возможны варианты.<!-- Knowing where the procedure is made is important for tracking if multiple site are possible. --></Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Knowing where the procedure is made is important for tracking if multiple site are possible.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s97"><Data ss:Type="String">Используется, только если не ясно из кода в ProcedureRequest.type<!-- Only used if not implicit in code found in ProcedureRequest.type --></Data><NamedCell
+    <Cell ss:StyleID="s97"><Data ss:Type="String">Only used if not implicit in code found in ProcedureRequest.type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s99"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1275,9 +1275,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Почему необходима эта процедура<!-- Why procedure should occur --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Why procedure should occur</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Обоснование, почему процедура предложена или заказана. К примеру, запрос на процедуру может быть вызван состоянием.<!-- The reason why the procedure is being proposed or ordered. This procedure request may be motivated by a Condition for instance. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The reason why the procedure is being proposed or ordered. This procedure request may be motivated by a Condition for instance.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1309,9 +1309,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда должна произойти процедура<!-- When procedure should occur --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">When procedure should occur</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">График выполнения предложенной или заказанной процедуры. Тип данных Schedule позволяет задавать различные выражения, например &quot;каждые 8 часов&quot;; &quot;три раза в день&quot;; &quot;за полчаса до завтрака в течение 10 дней с 23-Dec 2011:&quot;;  &quot;15 Oct 2013, 17 Oct 2013 и 1 Nov 2013&quot;<!-- The timing schedule for the proposed or ordered procedure. The Schedule data type allows many different expressions.  E.g. &quot;Every 8 hours&quot;; &quot;Three times a day&quot;; &quot;1/2 an hour before breakfast for 10 days from 23-Dec 2011:&quot;; &quot;15 Oct 2013, 17 Oct 2013 and 1 Nov 2013&quot;. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The timing schedule for the proposed or ordered procedure. The Schedule data type allows many different expressions.  E.g. &quot;Every 8 hours&quot;; &quot;Three times a day&quot;; &quot;1/2 an hour before breakfast for 10 days from 23-Dec 2011:&quot;; &quot;15 Oct 2013, 17 Oct 2013 and 1 Nov 2013&quot;.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1343,9 +1343,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Случай обслуживания, во время которого был создан этот запрос<!-- Encounter request created during --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter request created during</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Случай обслуживания, в рамках которого было создано предложение или запрос на процедуру.<!-- The encounter within which the procedure proposal or request was created. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The encounter within which the procedure proposal or request was created.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1377,9 +1377,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто будет выполнять процедуру<!-- Who should perform the procedure --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Who should perform the procedure</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Например хирург, анестезиолог, эндоскопист и т. п.<!-- For example, the surgeon, anaethetist, endoscopist, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">For example, the surgeon, anaethetist, endoscopist, etc.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1414,7 +1414,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">proposed | draft | requested | received | accepted | in-progress | completed | suspended | rejected | aborted</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Статус заказа.<!-- The status of the order. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The status of the order.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1445,9 +1445,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная информация о требуемой процедуре<!-- Additional information about desired procedure --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional information about desired procedure</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Любые другие примечания, связанные с этим предложением или заказом - например указания провайдера.<!-- Any other notes associated with this proposal or order - e.g. provider instructions. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Any other notes associated with this proposal or order - e.g. provider instructions.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1479,9 +1479,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Предварительные условия для процедуры<!-- Preconditions for procedure --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Preconditions for procedure</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если здесь используется CodeableConcept, то он обозначает предусловие для выполнения процедуры.<!-- If a CodeableConcept is present, it indicates the pre-condition for performing the procedure. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">If a CodeableConcept is present, it indicates the pre-condition for performing the procedure.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1513,9 +1513,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда был создан запрос<!-- When request was created --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">When request was created</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Время, когда был сделан запрос.<!-- The time when the request was made. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The time when the request was made.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1547,9 +1547,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто сделал запрос<!-- Who made request --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Who made request</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Специалист по медицинскому обслуживанию, ответственный за предложение или заказ данной процедуры.<!-- The healthcare professional responsible for proposing or ordering the procedure. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The healthcare professional responsible for proposing or ordering the procedure.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1584,7 +1584,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">routine | urgent | stat | asap</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Клинический приоритет, присвоенный данному заказу.<!-- The clinical priority associated with this order. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The clinical priority associated with this order.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4452,20 +4452,20 @@
     <Cell ss:StyleID="s122"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="s123"><Data ss:Type="String">ProcedureRequest.identifier</Data></Cell>
-    <Cell ss:StyleID="s124"><Data ss:Type="String">Уникальный идентификатор запроса на процедуру<!-- A unique identifier of the Procedure Request --></Data></Cell>
+    <Cell ss:StyleID="s124"><Data ss:Type="String">A unique identifier of the Procedure Request</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s125"><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="s86"><Data ss:Type="String">ProcedureRequest.subject</Data></Cell>
-    <Cell ss:StyleID="s126"><Data ss:Type="String">Поиск по субъекту<!-- Search by subject --></Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Search by subject</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s122"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">ProcedureRequest.subject</Data></Cell>
-    <Cell ss:StyleID="s124"><Data ss:Type="String">Поиск по субъекту-пациенту<!-- Search by subject - a patient --></Data></Cell>
+    <Cell ss:StyleID="s124"><Data ss:Type="String">Search by subject - a patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s122"><Data ss:Type="String">orderer</Data></Cell>
@@ -6427,7 +6427,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s155"><Data ss:Type="String">ProcedureRequestStatus</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Статус запроса<!-- The status of the request --></Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">The status of the request.</Data></Cell>
     <Cell ss:StyleID="s136"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s136"/>
     <Cell ss:StyleID="s136"><Data ss:Type="String">#procedure-request-status</Data></Cell>
@@ -6442,7 +6442,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s156"><Data ss:Type="String">ProcedureRequestPriority</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Приоритет запроса<!-- The priority of the request --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">The priority of the request.</Data></Cell>
     <Cell ss:StyleID="s127"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"><Data ss:Type="String">#procedure-request-priority</Data></Cell>
@@ -6457,7 +6457,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s156"><Data ss:Type="String">ProcedureCode</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Код для идентификации конкретной процедуры.<!-- A code to identify a specific procedure . --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A code to identify a specific procedure .</Data></Cell>
     <Cell ss:StyleID="s127"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s127"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s157" ss:HRef="http://hl7.org/fhir/ValueSet/procedure-code"><Data
@@ -6473,7 +6473,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s156"><Data ss:Type="String">ProcedureAsNeededReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Закодированный концепт, определяющий предварительное условие, которое должно выполняться перед выполнением процедуры. Например &quot;боль&quot;, &quot;внезапное обострение болезни&quot; и т. п.<!-- A coded concept identifying the pre-condition that should hold prior to performing a procedure.  For example &quot;pain&quot;, &quot;on flare-up&quot;, etc. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A coded concept identifying the pre-condition that should hold prior to performing a procedure.  For example &quot;pain&quot;, &quot;on flare-up&quot;, etc.</Data></Cell>
     <Cell ss:StyleID="s127"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
@@ -6488,7 +6488,7 @@
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s156"><Data ss:Type="String">ProcedureReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Код обоснования для проведения процедуры.<!-- A code that explains the reason why a procedure is  required. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A code that explains the reason why a procedure is  required.</Data></Cell>
     <Cell ss:StyleID="s127"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s127"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s157" ss:HRef="http://hl7.org/fhir/ValueSet/procedure-reason"><Data
@@ -6504,7 +6504,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s156"><Data ss:Type="String">BodySite</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Код анатомического расположения.<!-- A code that identifies the anatomical location. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">A code that identifies the anatomical location.</Data></Cell>
     <Cell ss:StyleID="s127"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s127"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s157" ss:HRef="http://hl7.org/fhir/ValueSet/body-site"><Data

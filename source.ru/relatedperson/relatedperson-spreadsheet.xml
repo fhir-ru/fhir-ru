@@ -16,12 +16,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6756</WindowHeight>
-  <WindowWidth>22824</WindowWidth>
+  <WindowHeight>5868</WindowHeight>
+  <WindowWidth>21792</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>8</ActiveSheet>
-  <RefModeR1C1/>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -1003,11 +1002,11 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Человек, который имеет отношение к пациенту, но не является непосредственным объектом ухода<!-- An person that is related to a patient, but who is not a direct target of care --></Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">An person that is related to a patient, but who is not a direct target of care</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Информация о человеке, который участвует в уходе за пациентом, но не является объектом медицинской помощи и не имеет официальных обязанностей в процессе оказания помощи<!-- Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Information about a person that is involved in the care for a patient, but who is not the target of healthcare, nor has a formal responsibility in the care process.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">Необходимо отслеживать людей, связанных с пациентом или процессом здравоохранения.<!-- Need to track persons related to the patient or the healthcare process. --></Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Need to track persons related to the patient or the healthcare process.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1039,11 +1038,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор этой персоны, понятный человеку<!-- A human identifier for this person --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A human identifier for this person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор человека в пределах некоторой области действия.<!-- Identifier for a person within a particular scope. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifier for a person within a particular scope.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">У людей обычно несколько идентификаторов. Некоторые учреждения поддерживают несколько, и большинство собирает идентификаторы для обмена с другими организациями данными, касающимися этого человека. Примерами будут национальный идентификатор личности и локальный идентификатор<!-- People are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the patient. Examples are national person identifier and local identifier --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">People are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the patient. Examples are national person identifier and local identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1075,11 +1074,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Пациент, с которым связан этот родственник<!-- The patient this person is related to --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The patient this person is related to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Пациент, с которым связан этот родственник<!-- The patient this person is related to --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The patient this person is related to</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Мы должны знать, к какому пациенту относится эта родственная персона.<!-- We need to know which patient this RelatedPerson is related to. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">We need to know which patient this RelatedPerson is related to.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1113,11 +1112,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Характер отношений или родственной связи<!-- The nature of the relationship --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The nature of the relationship</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Характер отношений или родственной связи между пациентом и родственником<!-- The nature of the relationship between a patient and the related person --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The nature of the relationship between a patient and the related person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Мы должны знать тип взаимосвязи с пациентом, так как это влияет на интерпретацию информации, принадлежащей этому лицу.<!-- We need to know the relationship with the patient since it influences the interpretation of the information attributed to this person. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">We need to know the relationship with the patient since it influences the interpretation of the information attributed to this person.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1134,7 +1133,7 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">RelatedPerson.name</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">0..1</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">0..*</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">HumanName</Data><NamedCell
@@ -1148,11 +1147,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя, ассоциированное с этим человеком<!-- A name associated with the person --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A name associated with the person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя, ассоциированное с этим человеком<!-- A name associated with the person --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A name associated with the person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Родственных лиц необходимо идентифицировать по имени, однако подробные сведения о других именах этого лица обычно не требуются<!-- Related persons need to be identified by name, but it is uncommon to need details about multiple other names for that person --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Related persons need to be identified by name, but it is uncommon to need details about multiple other names for that person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1183,13 +1182,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактная информация этого человека<!-- A contact detail for the person --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A contact detail for the person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Контактная информация этого человека, например телефонный номер или адрес электронной почты.<!-- A contact detail for the person, e.g. a telephone number or an email address. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">A contact detail for the person, e.g. a telephone number or an email address.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">У людей есть (основные) способы связаться с ними некоторым образом, например по телефону, электронной почте.<!-- People have (primary) ways to contact them in some way such as phone, email. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">People have (primary) ways to contact them in some way such as phone, email.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">У человека может быть несколько способов связи с ним с различными видами использования или периодами применения. &#13;Могут потребоваться варианты для срочного контакта с человеком, а также чтобы помочь с идентификацией<!-- Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">telecom</Data><NamedCell
@@ -1222,9 +1221,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">male | female | other | unknown</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Административный пол - пол, который, считается, имеет этот человек для административных целей и ведения учета.<!-- Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.  --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Необходимо для идентификации человека в комбинации с (по крайней мере) именем и датой рождения.<!-- Needed for identification of the person, in combination with (at least) name and birth date.  --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Needed for identification of the person, in combination with (at least) name and birth date. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1255,7 +1254,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата рождения родственного лица<!-- The date on which the related person was born --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">The date on which the related person was born</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1286,11 +1285,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Адрес, по которому можно связаться с этим родственником или посетить его<!-- Address where the related person can be contacted or visited --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Address where the related person can be contacted or visited</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Адрес, по которому можно связаться с этим родственником или посетить его<!-- Address where the related person can be contacted or visited --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Address where the related person can be contacted or visited</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Необходимо отслеживать, по какому почтовому адресу можно связаться с этим родственником или посетить его<!-- Need to keep track where the related person can be contacted per postal mail or visited --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Need to keep track where the related person can be contacted per postal mail or visited</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1320,11 +1319,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Изображение человека<!-- Image of the person --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Image of the person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Изображение человека<!-- Image of the person --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Image of the person</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Большинство EHR-систем имеют возможность сохранять изображение пациента. Также это соответствует новому применению социальных средств массовой информации.<!-- Many EHR systems have the capability to capture an image of persons. Fits with newer social media usage too. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Many EHR systems have the capability to capture an image of persons. Fits with newer social media usage too.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1355,9 +1354,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Период времени, в течение которого данная взаимосвязь считается действительной<!-- Period of time that this relationship is considered valid --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Period of time that this relationship is considered valid</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Период времени, в течение которого данная взаимосвязь считается действительной. Если даты не указаны, это значит, что интервал не известен.<!-- The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3696,10 +3695,11 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>5</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -3712,10 +3712,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -4302,7 +4303,7 @@
     <Cell ss:StyleID="s116"><Data ss:Type="String">RelatedPerson.identifier</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"/>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Идентификатор пациента<!-- A patient Identifier --></Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">A patient Identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">name</Data></Cell>
@@ -4311,7 +4312,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.name</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Часть имени в любой части имени<!-- A portion of name in any name part --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">A portion of name in any name part</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">phonetic</Data></Cell>
@@ -4320,7 +4321,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.name</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">phonetic</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Часть имени, созданная с помощью какого-либо алгоритма фонетического сопоставления<!-- A portion of name using some kind of phonetic matching algorithm --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">A portion of name using some kind of phonetic matching algorithm</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">telecom</Data></Cell>
@@ -4329,7 +4330,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.telecom</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Контактные данные любого вида<!-- The value in any kind of contact --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The value in any kind of contact</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">phone</Data></Cell>
@@ -4338,7 +4339,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.telecom(system=phone)</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.telecom.where(system='phone')</Data></Cell>
     <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Номер телефона<!-- A value in a phone contact --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">A value in a phone contact</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">email</Data></Cell>
@@ -4347,7 +4348,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.telecom(system=email)</Data></Cell>
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.telecom.where(system='email')</Data></Cell>
     <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Адрес электронной почты<!-- A value in an email contact --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">A value in an email contact</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">address</Data></Cell>
@@ -4356,7 +4357,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.address</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Адрес в любом виде/составе<!-- An address in any kind of address/part --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">An address in any kind of address/part</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">address-city</Data></Cell>
@@ -4365,7 +4366,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.address.city</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Город, указанный в адресе<!-- A city specified in an address --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">A city specified in an address</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">address-state</Data></Cell>
@@ -4374,7 +4375,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.address.state</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Штат, указанный в адресе<!-- A state specified in an address --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">A state specified in an address</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">address-postalcode</Data></Cell>
@@ -4383,7 +4384,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.address.postalCode</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Почтовый индекс, указанный в адресе<!-- A postal code specified in an address --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">A postal code specified in an address</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">address-country</Data></Cell>
@@ -4392,7 +4393,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.address.country</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Страна, указанная в адресе<!-- A country specified in an address --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">A country specified in an address</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">address-use</Data></Cell>
@@ -4401,7 +4402,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.address.use</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Код типа использования, указанный в адресе<!-- A use code specified in an address --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">A use code specified in an address</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">birthdate</Data></Cell>
@@ -4410,7 +4411,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.birthDate</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Дата рождения родственника<!-- The Related Person's date of birth --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The Related Person's date of birth</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">gender</Data></Cell>
@@ -4419,7 +4420,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.gender</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Пол родственника<!-- Gender of the person --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">Gender of the person</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"><Data ss:Type="String">patient</Data></Cell>
@@ -4428,7 +4429,7 @@
     <Cell ss:StyleID="s119"><Data ss:Type="String">RelatedPerson.patient</Data></Cell>
     <Cell ss:StyleID="s119"/>
     <Cell ss:StyleID="s119"/>
-    <Cell ss:StyleID="s120"><Data ss:Type="String">Пациент, с которым связан этот родственник<!-- The patient this person is related to --></Data></Cell>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">The patient this person is related to</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s118"/>
@@ -6408,7 +6409,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">PatientRelationshipType</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Характер отношений или родственной связи между пациентом и родственником<!-- The nature of the relationship between a patient and the related person --></Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">The nature of the relationship between a patient and the related person</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">valueset-relatedperson-relationshiptype</Data></Cell>
@@ -6855,7 +6856,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>

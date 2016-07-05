@@ -2,19 +2,16 @@
 
 <div>
 <a name="bnc"> </a>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>
-<i>Данный ресурс - это техническое предложение для использования в рамках подхода к Клиническому Качеству в FHIR, задокументированное в составе <a href="cqif/cqif.html">Руководства по реализации Инфраструктуры для улучшения клинического качества</a>.<!-- This resource is a draft proposal for use as part of an approach to Clinical Quality within FHIR, and is documented as part of the <a href="cqif/cqif.html">Clinical Quality Improvement Framework Implementation Guide</a>. --></i>
+<i>This resource is a draft proposal for use as part of an approach to Clinical Quality within FHIR, and is documented as part of the <a href="cqif/cqif.html">Clinical Quality Improvement Framework Implementation Guide</a>.</i>
 </p>
 
-<p>Ресурс Library представляет собой совместно используемую библиотеку клинической логики, написанную на языке Clinical Quality Language (CQL). В дополнение к метаданным библиотеки, ресурс содержит элементы, которые описывают компоненты, заданные в рамках библиотеки, такие как ссылки на кодовые системы и наборы значений, именованные выражения и параметры.
-<!-- The Library resource represents a shareable library of clinical logic, written in Clinical Quality Language (CQL). In addition to representing the metadata of the library, the resource has elements that expose the components defined within the library such as code system and value set references, named expressions and parameters. --></p>
+<p>The Library resource represents a shareable library of clinical logic, written in Clinical Quality Language (CQL). In addition to representing the metadata of the library, the resource has elements that expose the components defined within the library such as code system and value set references, named expressions and parameters.</p>
 
-<p>Фактическое содержимое библиотеки представляется с помощью типа данных Attachment, на него можно ссылаться либо с помощью URL на некоторый CQL-репозиторий, либо это содержимое может быть встроено в виде строки в кодировке base-64. В любом случае это содержимое можно совместно использовать в виде текстового CQL-документа или, для вычислимого представления, в виде (Expression Logical Model) ELM XML- или JSON-документа.
-<!-- The actual content of the library is represented using the Attachment data type, and may either be referenced with a url to some CQL repository, or the content may be embedded as a base-64 encoded string. Either way, the content may be shared as a CQL text document, or, for a more computable representation, as an (Expression Logical Model) ELM XML or JSON document. --></p>
+<p>The actual content of the library is represented using the Attachment data type, and may either be referenced with a url to some CQL repository, or the content may be embedded as a base-64 encoded string. Either way, the content may be shared as a CQL text document, or, for a more computable representation, as an (Expression Logical Model) ELM XML or JSON document.</p>
 
-<p>Обратите внимание, что поскольку содержимое библиотеки может быть как встроено, так и извлекаться из CQL-репозитория через URL-вложения, существует возможность, что встроенное содержимое будет отличаться от содержимого в репозитории. При надлежащем версионировании и управлении этого не должно происходить, однако для минимизации потенциального влияния такой возможности реализаторам следует отдавать приоритет встроенному содержимому библиотеки, если оно присутствует.
-<!-- Note that because the library content may be embedded as well as retrievable from a CQL repository via the attachment URL, the possibility exists for the embedded content to be different from the content on the repository. With proper versioning and governance, this should never occur, but to minimize the potential impact of this possibility, implementers SHALL give precedence to the embedded content of a library when it is present. --></p>
+<p>Note that because the library content may be embedded as well as retrievable from a CQL repository via the attachment URL, the possibility exists for the embedded content to be different from the content on the repository. With proper versioning and governance, this should never occur, but to minimize the potential impact of this possibility, implementers SHALL give precedence to the embedded content of a library when it is present.</p>
 
 </div>
 

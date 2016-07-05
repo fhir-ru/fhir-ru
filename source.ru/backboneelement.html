@@ -8,7 +8,7 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-9">
 
 
 <!--
@@ -17,36 +17,32 @@
 
 <%elheader base%>
 <h1>BackboneElement</h1>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
-Базовое определение для элементов, заданных в рамках определения ресурса. Элементы-<a href="datatypes.html">типы данных</a> не используют этот тип.
-<!-- The base definition for elements defined as part of a resource definition. <a href="datatypes.html">Data Type</a> elements do not use this type. -->
-Например <a href="patient.html#resource">Patient.contact</a> - это элемент, определённые в рамках ресурса Patient, поэтому он автоматически имеет тип <code>BackboneElement</code>.
-<!-- For instance, <a href="patient.html#resource">Patient.contact</a> is an element that is defined as part of the patient resource, so it automatically 
-has the type <code>BackboneElement</code>. -->
+The base definition for elements defined as part of a resource definition. <a href="datatypes.html">Data Type</a> elements do not use this type.
+For instance, <a href="patient.html#resource">Patient.contact</a> is an element that is defined as part of the patient resource, so it automatically 
+has the type <code>BackboneElement</code>.
 </p>
 
 <p>
-Обратите внимание, что все типы-потомки элемента <code>BackboneElement</code> объявляются неявно в рамках определения ресурсов.
-<!-- Note that the descendent types of <code>BackboneElement</code> are all declared implicitly as 
-part of the definitions of the resources.  -->
+Note that the descendent types of <code>BackboneElement</code> are all declared implicitly as 
+part of the definitions of the resources. 
 </p>
 
 <a name="definition"></a>
 <h2 style="margin-bottom: 1px">
-Содержимое<!-- Content -->
+Content
 </h2>
 
 [%dt BackboneElement 1%]
 
 <a name="summary"> </a>
-<h2>Специализации<!-- Specializations --></h2>
+<h2>Specializations</h2>
 
 <p>
-В таблице ниже перечислены специализации элемента <code>BackboneElement</code> и пути, по которым расположены их определения.
-<!-- This table lists all the specializations of <code>BackboneElement</code> that are defined, and the 
-path at which they are defined.  -->
+This table lists all the specializations of <code>BackboneElement</code> that are defined, and the 
+path at which they are defined. 
 </p>
 
 <%backboneelementlist%>

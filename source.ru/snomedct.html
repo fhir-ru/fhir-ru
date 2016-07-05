@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
 
-[%settitle Применение SNOMED CT в FHIR%]
+[%settitle Using SNOMED CT with FHIR%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -9,37 +9,24 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-9">
 
 <%txheader%>
 
-<h2>Применение SNOMED CT в FHIR<!-- Using SNOMED CT with FHIR --></h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<h2>Using SNOMED CT with FHIR</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
-<h3>Сводные данные<!-- Summary --></h3>
+<h3>Summary</h3>
 
 <table class="grid">
- <tr><td>Source</td><td>SNOMED CT создан и администрируется <a href="http://www.ihtsdo.org/">IHTSDO</a>. 
-    IHTSDO - это международная организация, членами которой являются различные страны. IHTSDO публикует международный выпуск SNOMED CT (который используется в международных стандартах и ресурсах FHIR).
-Каждая из стран-членов IHTSDO может распространять свой собственный вариант SNOMED CT, содержащий международное издание плюс содержимое местных расширений и производных.<!--  SNOMED CT is made and managed by <a href="http://www.ihtsdo.org/">IHTSDO</a>. 
+ <tr><td>Source</td><td>SNOMED CT is made and managed by <a href="http://www.ihtsdo.org/">IHTSDO</a>. 
      IHTSDO is an international organization with countries as members.
      IHTSDO publishes the international release of SNOMED CT (which is used in FHIR international standards and resources).  
-     Each of the IHTSDO member countries may also distribute their own SNOMED CT edition, which contains the international release plus local extension content and derivatives. --></td></tr>
-
-	 <tr><td>System</td><td>Кодовую систему SNOMED CT идентифицирует следующий URI: <a href="http://snomed.info/sct">http://snomed.info/sct</a></td></tr>
- <tr><td>Version</td><td>Если указывается версия, она должна быть полным URI конкретной раздачи (Международный выпуск, или Национальный выпуск и версия), соответствующим <a href="http://snomed.org/uristandard.pdf">спецификации SNOMED CT URI</a> (см. примечание ниже)<!-- Where a version is used, it should be a full URI that represents the specific distribution  (International Release, or National Release and version), 
- following the <a href="http://snomed.org/uristandard.pdf">SNOMED CT URI Specification</a> (see note below)  --></td></tr>
- <tr><td>Code</td><td>Для элемента <i>code</i> в пространстве имен http://snomed.info/sct допустимы следующие SNOMED CT-артефакты:
-   <a href="http://www.snomed.org/gl?t=glsct_st_ConceptId">Concept IDs</a>, 
-   <a href="http://www.snomed.org/gl?t=glsct_se_Expression">Expressions</a> (<a href="http://snomed.org/compgrammar.pdf">грамматика</a>) и
-   <a href="http://www.snomed.org/tig?t=tsg2_metadata_refset_legacy">унаследованные коды (SNOMED Legacy codes)</a>.<br/><br/>
-   Description Ids не допустимы, как и другие концепты, ассоциированные с концептами SNOMED CT с помощью инфраструктуры идентификации RF2. Выражения НЕ ДОЛЖНЫ содержать термины, а только идентификаторы концептов</td></tr>
- <tr><td>Display</td><td>Корректным значением для отображения SNOMED CT-концепта является один из предпочтительных терминов для этого концепта. Предпочтительные термины чувствительны к регистру. Fully Specified Name не является подходящим выбором.
- Источник предпочтительного имени идет из Language Reference Set.    
-    SNOMED CT не определяет значения для отображения для выражений; если с выражением не ассоциировано ни одно значение для отображения (display) с помощью набора значений или другого механизма, тогда можно использовать полный синтаксис выражения со встроенными предпочтительными терминами</td></tr>
- <tr><td>Filter Properties</td><td>Определено несколько свойств, описанных ниже</td></tr>
-<!--  <tr><td>System</td><td>The URI <a href="http://snomed.info/sct">http://snomed.info/sct</a> identifies the SNOMED CT code system</td></tr>
- <tr><td>Version</td><td>Where a version is used, it should be a full URI that represents the specific distribution, following the <a href="http://snomed.org/uristandard.pdf">SNOMED CT URI Specification</a> (see note below)</td></tr>
+     Each of the IHTSDO member countries may also distribute their own SNOMED CT edition, which contains the international release plus local extension content and derivatives.
+    </td></tr>
+ <tr><td>System</td><td>The URI <a href="http://snomed.info/sct">http://snomed.info/sct</a> identifies the SNOMED CT code system</td></tr>
+ <tr><td>Version</td><td>Where a version is used, it should be a full URI that represents the specific distribution  (International Release, or National Release and version), 
+ following the <a href="http://snomed.org/uristandard.pdf">SNOMED CT URI Specification</a> (see note below)</td></tr>
  <tr><td>Code</td><td>The following SNOMED CT artifacts are valid in the <i>code</i> element for the http://snomed.info/sct namespace: 
    <a href="http://www.snomed.org/gl?t=glsct_st_ConceptId">Concept IDs</a>, 
    <a href="http://www.snomed.org/gl?t=glsct_se_Expression">Expressions</a> (<a href="http://snomed.org/compgrammar.pdf">grammar</a>) and
@@ -50,32 +37,29 @@
     
     SNOMED CT does not define displays for expressions; if no display has been associated with the expression
     through a value set or other mechanism, the full expression syntax with preferred terms embedded may be used</td></tr>
- <tr><td>Filter Properties</td><td>Several properties are defined as described below</td></tr> -->
+ <tr><td>Filter Properties</td><td>Several properties are defined as described below</td></tr>
 </table>
 
 <!-- add note about usage of SNOMED 3 legacy codes - should be replaced with SNOMED CT identifiers, may change in future versions of FHIR -->
 
 <p>
-Примечание: <a href="http://snomed.org/gl.pdf">Глоссарий IHTSDO</a> дает пояснения некоторым из этих специфичных терминов SNOMED CT.
-<!-- Note: The <a href="http://snomed.org/gl.pdf">IHTSDO glossary</a> explains some of these SNOMED CT specific terms.  -->
+Note: The <a href="http://snomed.org/gl.pdf">IHTSDO glossary</a> explains some of these SNOMED CT specific terms. 
 </p>
 
-<h3>Вопросы версионирования<!-- Version Issues --></h3>
+<h3>Version Issues</h3>
 <p>
-Единая раздача, которая содержала бы все определённые в SNOMED CT коды во всех контекстах использования, отсутствует. Вместо этого международный выпуск содержит все концепты,  совместно используемые и согласованные, чтобы быть международно значимыми и каждый национальный выпуск центр распространчет этот международный выпуск плюс дополнительное нациоальное содержимое (для расширения того международного набора). Кроме того, могут быть указаны и другие органы власти, занимающиеся выпуском.
-<a href="http://snomed.org/uristandard.pdf">Спецификация SNOMED CT URI</a> описывает, как можно однозначным образом ссылаться на определённую версию выпуска:
-<!-- There is no single distribution that contains all defined SNOMED CT codes in all contexts of use.
+There is no single distribution that contains all defined SNOMED CT codes in all contexts of use.
 Instead the international release contains all concepts shared and agreed to be internationally relevant and 
 each national release centre distributes this international release plus additional national content (to extend that international set). 
 In addition, other release authorities may be designated. 
 The <a href="http://snomed.org/uristandard.pdf">SNOMED CT URI Specification</a> describes
-how to unambiguously reference a particular version of a distribution:  -->
+how to unambiguously reference a particular version of a distribution: 
 </p>
 <pre>
   http://snomed.info/sct/[sctid]/version/[YYYYMMDD] 
 </pre>
 <p>
-где [sctid] - это идентификатор концепта дистрибуции SNOMED CT distribution (e.g. 32506021000036107 for Australia), and
+where [sctid] is the concept id of the SNOMED CT distribution (e.g. 32506021000036107 for Australia), and
 the tail is the date of release (by custom, this is usually the last
 day of the month). Note that many implementations are in the habit of 
 simple using the date of release in the form YYYYMMDD (e.g. "20140531"), 

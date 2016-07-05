@@ -1,15 +1,14 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>
-Данный ресурс охватывает любые предписания пациенту очков и контактных линз.
-<!-- This resource covers all prescriptions for glasses and contact lenses for a patient.   -->
+This resource covers all prescriptions for glasses and contact lenses for a patient.  
 </p>
 </div>
 
 <div>
-<h2>Границы и связи</h2>
+<h2>Boundaries and Relationships</h2>
 <!--
 <p>
 <b>The Vision domain includes a number of related resources</b>

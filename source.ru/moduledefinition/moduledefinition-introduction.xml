@@ -2,9 +2,9 @@
 
 <div>
 <a name="bnc"> </a>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>
-<i>Данный ресурс - это техническое предложение для использования в рамках подхода к Клиническому Качеству в FHIR, задокументированное в составе <a href="cqif/cqif.html">Руководства по реализации Инфраструктуры для улучшения клинического качества</a>. В дальнейшем обновления этого ресурса будут включать в себя документацию из этого руководства.<!-- This resource is a draft proposal for use as part of an approach to Clinical Quality within FHIR, and is documented as part of the <a href="cqif/cqif.html">Clinical Quality Improvement Framework Implementation Guide</a>. Future updates to this resource will incorporate documentation from that guide. --></i>
+<i>This resource is a draft proposal for use as part of an approach to Clinical Quality within FHIR, and is documented as part of the <a href="cqif/cqif.html">Clinical Quality Improvement Framework Implementation Guide</a>. Future updates to this resource will incorporate documentation from that guide.</i>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
 </p>
 </div>

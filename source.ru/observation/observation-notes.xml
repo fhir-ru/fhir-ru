@@ -1,49 +1,40 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 <a name="notes"> </a>
-	<h2>Примечания<!-- Notes -->:</h2>
+	<h2>Notes:</h2>
 	<p> 
-  В простейшем случае экземпляры ресурса могут состоять только из кода и значения, а также флага статуса. Уместность остальных свойств будет варьироваться в зависимости от типа наблюдения.
-<!--    At its simplest, a resource instances can consist of only a code and a value, and status flag.  
-    The relevance of other properties will vary based on the type of observation.   -->
+   At its simplest, a resource instances can consist of only a code and a value, and status flag.  
+    The relevance of other properties will vary based on the type of observation.  
 </p>
 	<p>
-Для предоставления руководства по вводу некоторых типов простых наблюдений будут созданы <a href="observation-profiles.html">профили</a>. Данный ресурс направлен на уровень детализации, используемый в большинстве систем. Однако любое "простое" наблюдение может быть легко разбито на многочисленные компоненты и субкомпоненты для предоставления дополнительной информации, имеющей значение в определённых обстоятельствах. Как и в случае других ресурсов, можно использовать <a href="extensibility.html">расширения</a> для введения этой дополнительной сложности.
-<!-- 		<a href="observation-profiles.html">Profiles</a> will be created to provide guidance on capturing certain types 
+		<a href="observation-profiles.html">Profiles</a> will be created to provide guidance on capturing certain types 
     of simple observations.  This resource focuses on the level of detail
     captured by most systems.  However, any "simple" observation can easily 
 	be broken into numerous components and sub-components to provide additional
-    information relevant in certain circumstances.  As with other resources, <a href="extensibility.html">extensions</a> can be used to introduce this additional complexity. --> </p>
-	<h3>Группировка наблюдений<!-- Grouping of Observations --></h3>
+    information relevant in certain circumstances.  As with other resources, <a href="extensibility.html">extensions</a> can be used to introduce this additional complexity. </p>
+	<h3>Grouping of Observations</h3>
 	<p>
-  Многие наблюдения обладают важной взаимосвязью с другими наблюдениями, и их необходимо собирать в группы (традиционно называемые в лабораториях "панелями" или "батареями"), которые можно использовать для представления взаимосвязей между отдельными элементами данных. Обычно это достигается ссылками на отдельные наблюдения в ресурсе <a href="diagnosticreport.html#4.21.2">DiagnosticReport</a>, где элемент DiagnosticReport.code содержит название панели и служит группирующим элементом. Вот несколько <a href="diagnosticreport-examples.html">примеров</a>, демонстрирующих группировку наблюдений с помощью ресурса DiagnosticReport.
-<!-- Many observations have important relationships to other observations and need to be assembled in groups together (traditionally referred to as "panels" or " batteries" by laboratories) that can be used to represent relationships between the individual data items.  Typically this is done by referencing the individual observations in the <a href="diagnosticreport.html#4.21.2">DiagnosticReport</a> resource where the DiagnosticReport.code names the panel and serves as the grouping element.  Several <a href="diagnosticreport-examples.html">examples</a> demonstrate observation grouping using DiagnosticReport as the grouper. -->
+Many observations have important relationships to other observations and need to be assembled in groups together (traditionally referred to as "panels" or " batteries" by laboratories) that can be used to represent relationships between the individual data items.  Typically this is done by referencing the individual observations in the <a href="diagnosticreport.html#4.21.2">DiagnosticReport</a> resource where the DiagnosticReport.code names the panel and serves as the grouping element.  Several <a href="diagnosticreport-examples.html">examples</a> demonstrate observation grouping using DiagnosticReport as the grouper.
  </p>
 	<p>
-  В ресурсе Observation есть две структуры для группировки наблюдений, которые обеспечивают группировку и даже сложное вложение результатов. Ресурс Observation может содержать простые наблюдения (например атомарные результаты), либо сам может представлять собой группы/панели других наблюдений.
-<!-- The Observation resource has two structures for grouping observations which allow for grouping and even complex nesting of results.  The Observation resource can contain a simple observations (e.g. atomic results) or can itself be a groups/panels of other observations. --> 
+The Observation resource has two structures for grouping observations which allow for grouping and even complex nesting of results.  The Observation resource can contain a simple observations (e.g. atomic results) or can itself be a groups/panels of other observations. 
  </p>
 <p>
-Во-первых, панели можно собирать как отдельные ресурсы и ссылаться на них с помощью элемента Observation.related, указав тип взаимосвязи. Этот подход используется, когда атрибуты в ресурсе для каждого наблюдения различаются и/или каждый результат в панели существует или должен обрабатываться как независимый FHIR-ресурс (т. е. они "автономные"). В этом случае элемент Observation.related задаёт группировку наблюдений в панель/батарею. Элемент Observation.code содержит название панели, однако обычно не имеет своего собственного Observation.value, а входящие в панель или батарею наблюдения перечисляются в элементе Observation.related. Эта структура также позволяет дальнейшее вкладывание групп (панели панелей). Например бактериальные культуры с тестированием на чувствительность могут использовать эту структуру для группировки, поскольку панель для тестов на чувствительность (по одной для каждой выявленной культуры) будет привязана как панель к наблюдению для каждого выявленного организма. Пример <a href="diagnosticreport-micro1.html">комплексный отчёт о выявленных микроорганизмах и результатах тестирования на чувствительность</a> демонстрирует это.
-<!--   First, panels can be assembled as separate resources referenced using the Observation.related element with a defined relationship type.  This approach should be used when the attributes within the resource for each observation are different and/or each panel result exists or needs to be processed as independent FHIR resource (i.e they "stand alone").  The Observation.related element defines the grouping of observations into a panel/battery in this case.  The Observation.code names the panel but typically does not have its own Observation.value and the set of member observations for a panel or battery are listed in the Observation.related element.  This structure also permits further nesting of groups (panel of panels).  For example, a bacterial cultures with susceptibility testing can use this structure for grouping, because a panel for susceptibility tests (one for each bacterium isolated) would be linked as panel to the observation about each organism isolated.  The example of a <a href="diagnosticreport-micro1.html">complex micro isolate and sensitivities report</a> demonstrates this. -->
+  First, panels can be assembled as separate resources referenced using the Observation.related element with a defined relationship type.  This approach should be used when the attributes within the resource for each observation are different and/or each panel result exists or needs to be processed as independent FHIR resource (i.e they "stand alone").  The Observation.related element defines the grouping of observations into a panel/battery in this case.  The Observation.code names the panel but typically does not have its own Observation.value and the set of member observations for a panel or battery are listed in the Observation.related element.  This structure also permits further nesting of groups (panel of panels).  For example, a bacterial cultures with susceptibility testing can use this structure for grouping, because a panel for susceptibility tests (one for each bacterium isolated) would be linked as panel to the observation about each organism isolated.  The example of a <a href="diagnosticreport-micro1.html">complex micro isolate and sensitivities report</a> demonstrates this.
 </p>
 	<p>
-  Средства оценивания, например шкала Апгар или Глазго, содержать и значение, и связанные наблюдения или ответы, по которым подсчитывается окончательная оценка или из которых вытекает значение, и могут группироваться в наборы наблюдений с помощью структуры Observation.related. Например <a href="observation-example-glasgow.html">шкала комы Глазго</a> структурируется, как панель с 3 связанными наблюдениями (тип связи = 'derived-from'), оценивающая данный аспект неврологического состояния пациента. Затем они складываются вместе для получения значения по шкале комы Глазго.
-<!-- Assessment tools such as an Apgar or Glasgow score have both a value and related observations or answers from which a final score or value is derived and may be grouped as a set of observations using the Observation.related structure.  For example, the <a href="observation-example-glasgow.html">Glasgow coma score example</a> is structured like a panel with 3 related observations (related type ='derived-from') that measure the status of a given aspect of the patients neurological status. These are added together to get Glasgow Coma Score value. -->
+Assessment tools such as an Apgar or Glasgow score have both a value and related observations or answers from which a final score or value is derived and may be grouped as a set of observations using the Observation.related structure.  For example, the <a href="observation-example-glasgow.html">Glasgow coma score example</a> is structured like a panel with 3 related observations (related type ='derived-from') that measure the status of a given aspect of the patients neurological status. These are added together to get Glasgow Coma Score value.
 </p>
 	<p>
-  Во-вторых, панели можно группировать с помощью структуры component, если члены панели имеют одинаковые атрибуты и не являются раздельными наблюдениями (т. е. они не "автономные"), либо нет необходимости их обрабатывать независимо, тогда можно использовать элемент Observation.component для их группировки в пределах отдельного ресурса. В большинстве случаев элемент Observation.component не предназначен служить просто механизмом группировки наблюдений и НЕ ДОЛЖЕН использоваться для группировки результатов, которые могут обоснованно интерпретироваться независимо. Как верно при использовании элемента Observation.related выше, наблюдение для панели, которая содержит компонент, обычно не имеет своего собственного Observation.value. Например кто-то может группировать систолическое и диастолическое кровяное давление в <a href="observation-example-bloodpressure.html">Blood Pressure Panel</a> с помощью элемента Observation.component, поскольку они почти всегда получаются вместе. Пример <a href="observation-example-f205-egfr.html">GFR</a> демонстрирует другую группировку наблюдений с помощью элемента Observation.component для связывания расчётов клубочковой фильтрации на основе измерения креатинина в сыворотке крови в зависимости от расы.
-<!-- Secondly panels can be grouped via the component structure, if the panel members share the same attributes and are not separable observations (i.e - they don't "stand alone") or don't need to be processed independently, then the Observation.component element may be used to group them within a single resource.  In most cases Observation.component is not intended as simply a mechanism for grouping observations and SHOULD NOT be used to group results that can be reasonably interpreted independently.  As is true when using Observation.related above, the observation for a panel that carries the component typically does not have its own Observation.value.  For example, one might group systolic and diastolic blood pressure within a <a href="observation-example-bloodpressure.html">Blood Pressure Panel</a> using Observation.component because the two are almost always produced together.   The <a href="observation-example-f205-egfr.html">GFR example</a> demonstrates another example grouping of observations using Observation.component to tie together the race based estimates of glomerular filtration based upon a serum creatinine measurement. -->
+Secondly panels can be grouped via the component structure, if the panel members share the same attributes and are not separable observations (i.e - they don't "stand alone") or don't need to be processed independently, then the Observation.component element may be used to group them within a single resource.  In most cases Observation.component is not intended as simply a mechanism for grouping observations and SHOULD NOT be used to group results that can be reasonably interpreted independently.  As is true when using Observation.related above, the observation for a panel that carries the component typically does not have its own Observation.value.  For example, one might group systolic and diastolic blood pressure within a <a href="observation-example-bloodpressure.html">Blood Pressure Panel</a> using Observation.component because the two are almost always produced together.   The <a href="observation-example-f205-egfr.html">GFR example</a> demonstrates another example grouping of observations using Observation.component to tie together the race based estimates of glomerular filtration based upon a serum creatinine measurement.
 </p>
 <p>
-Группировку с помощью компонентов следует использовать благоразумно, поскольку то, что доступно для группировки, может широко варьироваться в зависимости от источника, а представление о том, что нужно группировать, часто сильно зависит от контекста и точки зрения конечного пользователя.
-<!-- Grouping via components should be used judiciously because what is available to group can vary widely with the source and the idea of what to group together is often highly contextual and based upon the end user's point of view. -->
+Grouping via components should be used judiciously because what is available to group can vary widely with the source and the idea of what to group together is often highly contextual and based upon the end user's point of view.
 </p>
 <a name="valuex"> </a>
-	<h3>Value[x] и типы данных<!-- Value[x] and Datatypes --></h3>
+	<h3>Value[x] and Datatypes</h3>
 	<ul>
-  <li>
-  Элемент Observation.value[x] будет иметь разное имя в зависимости от следующего типа:
-    <!-- The element, Observation.value[x], has a variable name depending on the type as follows: -->
+		<li>
+    The element, Observation.value[x], has a variable name depending on the type as follows:
     <ul>
 				<li>valueQuantity</li>
 				<li>valueCodeableConcept</li>
@@ -55,11 +46,10 @@
 				<li>valueTime</li>
 				<li>valueDateTime</li>
 				<li>valuePeriod</li>
-    </ul>
-  </li>
-  <li>
-  Если элемент данных обычно закодирован, или если его тип, связанный с Observation.code, задаёт кодированное значение, используйте CodeableConcept вместо типа данных string, даже если значением является незакодированный текст. Например LOINC 43304-5 <i>Chlamydia trachomatis rRNA [Presence] in Unspecified specimen by Probe and target amplification method</i> обычно ассоциируется с кодируемыми понятиями присутствия/отсутствия. С использованием кодированного значения для 'negative' со стандартным переводом кода, Observation.valueCodeableConcept будет следующим:
-<!-- 		If the data element is usually coded or if the type associated with the Observation.code defines a coded value, use CodeableConcept instead of string data type even if the value is uncoded text.  For example the LOINC 43304-5 <i>Chlamydia trachomatis rRNA [Presence] in Unspecified specimen by Probe and target amplification method</i> is typically associated with coded presence/absence concepts. Using the coded value for 'negative' with a standard code translation, the Observation.valueCodeableConcept would be: -->
+			</ul>
+		</li>
+		<li>
+		If the data element is usually coded or if the type associated with the Observation.code defines a coded value, use CodeableConcept instead of string data type even if the value is uncoded text.  For example the LOINC 43304-5 <i>Chlamydia trachomatis rRNA [Presence] in Unspecified specimen by Probe and target amplification method</i> is typically associated with coded presence/absence concepts. Using the coded value for 'negative' with a standard code translation, the Observation.valueCodeableConcept would be:
 			<pre class="json">
 			"valueCodeableConcept": {
 			"coding": [
@@ -78,26 +68,22 @@
 			  }
 			</pre>
 	
-Используя только текст, Observation.valueCodeableConcept будет следующим:		
-<!-- 		Using text only, the Observation.valueCodeableConcept the would be: -->
+		
+		Using text only, the Observation.valueCodeableConcept the would be:
 				<pre class="json">
 			"valueCodeableConcept": {
 			"text": "Negative for Chlamydia Trachomatis rRNA"
 			  }
 			</pre>
-  </li>
-  <li>
-  Набор значений привязан к элементу ValueCodeableConcept. Например в профиле USLab Observation этот элемент привязан к <a href="uslab/valueset-uslab-obs-codedresults.html">USlab Coded Results</a>, который состоит из нескольких иерархий SNOMED CT. Исходная система может также предоставлять свои собственные (локальные) закодированные значения результатов. Поэтому закодированные результаты часто кодируются в нескольких наборах значений на основе различных кодовых систем, и между ними можно устанавливать соответствия с помощью ресурса ConceptMap и/или давать переводы непосредственно в самом элементе, как показано в примере выше.
-<!-- 		A value set is bound to the ValueCodeableConcept element. For example, in the USLab Observation Profile this element is bound to  <a href="uslab/valueset-uslab-obs-codedresults.html">USlab Coded Results</a>, which is composed of several SNOMED CT hierarchies. The source system may also provide their own ("local") coded result values as well. Hence coded results are often coded in multiple value sets based on different code systems and these may be mapped using the ConceptMap resource and/or given as translations directly in the element as shown in the example above. -->
-  </li>
-  <li>
-  Тип данных Boolean редко используется в элементе Observation.value[x], поскольку для большинства наблюдений полученные значения никогда не будут по-настоящему булевыми из-за опускаемых значений, таких как "unknown" (неизвестно). При необходимости используйте valueCodeableConcept для логических концептов и выбирайте коды из <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> <a href="v2/0136/index.html">Таблицы 0136</a>. Можно устанавливать соответствие между этими концептами "да/нет" и значениями для отображения "true/false" или другими взаимоисключающими понятиями, которые могут понадобиться.
-<!-- 		The Boolean data type is rarely used for Observation.value[x] because most observations result values are never truly Boolean due to exceptional values such as "unknown".   If needed, use valueCodeableConcept for a Boolean concept instead, and select codes from <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> <a href="v2/0136/index.html">Table 0136</a>. These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed. -->
-  </li>
-		<li>В типе данных SampledData могут использоваться особые значения: "E" (ошибка), "L" (ниже предела обнаружения) и "U" (выше предела обнаружения). Однако при использовании valueQuantity в наблюдении для значений "выше/ниже предела обнаружения", valueQuantity следует использовать для указания пределов вместе с компаратором (знаком сравнения). Кроме того, для ошибки необходимо использовать элемент dataAbsentReason с подходящим значением ('error' или "NaN"). Например если значение было ниже нижнего предела обнаружения &lt;2.0 mmol/L, то Observation.valueQuantity будет следующим:
-    
-    <!-- The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can be used are in the SampledData data type. However when using valueQuantity in an observation for above and below detection limit values, valueQuantity should be used by stating the limit along with the comparator.  In addition, when there is an error the dataAbsentReason element should be used with the appropriate value  ( 'error' or "NaN").
-		  For example if the value was below the lower limit of detection of  &lt;2.0 mmol/L the Observation.valueQuantity would be: -->
+		</li>
+		<li>
+		A value set is bound to the ValueCodeableConcept element. For example, in the USLab Observation Profile this element is bound to  <a href="uslab/valueset-uslab-obs-codedresults.html">USlab Coded Results</a>, which is composed of several SNOMED CT hierarchies. The source system may also provide their own ("local") coded result values as well. Hence coded results are often coded in multiple value sets based on different code systems and these may be mapped using the ConceptMap resource and/or given as translations directly in the element as shown in the example above.
+		</li>
+		<li>
+		The Boolean data type is rarely used for Observation.value[x] because most observations result values are never truly Boolean due to exceptional values such as "unknown".   If needed, use valueCodeableConcept for a Boolean concept instead, and select codes from <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> <a href="v2/0136/index.html">Table 0136</a>. These "yes/no" concepts can be mapped to the display name "true/false" or other mutually exclusive terms that may be needed.
+		  </li>
+		<li>The special values "E" (error), "L" (below detection limit) and "U" (above detection limit) can be used are in the SampledData data type. However when using valueQuantity in an observation for above and below detection limit values, valueQuantity should be used by stating the limit along with the comparator.  In addition, when there is an error the dataAbsentReason element should be used with the appropriate value  ( 'error' or "NaN").
+		  For example if the value was below the lower limit of detection of  &lt;2.0 mmol/L the Observation.valueQuantity would be:
 			<pre class="json">
 		"valueQuantity": {
     "value": 2.0,
@@ -107,8 +93,7 @@
     "code": "mmol/L"
      }
 			</pre>
-      Если значением было "NaN"  (т. е. ошибка), то Observation.valueCodeableConcept будет отсутствовать, а Observation.dataAbsentReason будет следующим:
-<!-- If the value was "NaN"  (i.e. an error)  the Observation.valueCodeableConcept would be absent and Observation.dataAbsentReason would be: -->
+If the value was "NaN"  (i.e. an error)  the Observation.valueCodeableConcept would be absent and Observation.dataAbsentReason would be:
 <pre class="json">
 "dataAbsentReason": {
     "coding": [
@@ -118,15 +103,13 @@
         "display": "Not a Number"
       }
       </pre>
- </li>
- <li>
- Поскольку в элементе <i>value</i> разрешено несколько типов данных, то для него определено несколько параметров поиска по значению. Для поиска значений типа Attachment или Ratio нет стандартных параметров.
-<!--    Because there are multiple types allowed for the <i>value</i> element, multiple value search parameters are defined. There is no standard parameter for searching values of type Attachment, or Ratio -->
+			</li>
+		<li>
+   Because there are multiple types allowed for the <i>value</i> element, multiple value search parameters are defined. There is no standard parameter for searching values of type Attachment, or Ratio
  </li>
 	</ul>
-	<h3>Физиологически значимое время наблюдения<!-- Physiologically Relevant Time of the Observation --></h3>
-	<p>effectiveDateTime или effectivePeriod - это непосредственно время наблюдения субъекта. Для биологических субъектов (например пациента-человека) это физиологически значимое время наблюдения. Если наблюдение производится над образцом для анализа, то это время начала и окончания взятия пробы для анализа (например анализ на натрий в суточной моче), однако если время сбора существенно мало, оно указывается как некоторый момент времени (например обычная венопункция). Если наблюдение производится непосредственно над субъектом (например кровяное давление, рентген грудной клетки), то это будет время начала и окончания процесса наблюдения, которое опять-таки часто сообщается как отдельный момент времени.  
-  <!--  The effectiveDateTime or effectivePeriod is the time that the observation is most 
+	<h3>Physiologically Relevant Time of the Observation</h3>
+	<p> The effectiveDateTime or effectivePeriod is the time that the observation is most 
     relevant as an observation of the subject. For a biological subject (e.g. a human patient), 
     this is the physiologically relevant time of the observation. 
 	In the case of an observation using a specimen, this represents the start and 
@@ -134,14 +117,11 @@
     sufficiently short, this is reported as a point in time value (e.g. normal venipuncture). 
     In the case of an observation obtained directly from a subject (e.g. BP, 
     Chest X-ray), this is the start and end time of the observation process, which again, is 
-    often reported as a single point in time. --></p>
-	<h3>Диапазон нормальных значений<!-- Reference Range --></h3>
+    often reported as a single point in time.</p>
+	<h3>Reference Range</h3>
 	<p>
-Чаще всего наблюдения имеют только один общий диапазон нормальных значений. Диапазоны нормальных значений могут быть полезны для лабораторных тестов и других измерений, например систолического кровяного давления, однако не имеют смысла для чего-то вроде "беременность". Системы МОГУТ вводить ограничения на указание только имеющих смысл диапазонов нормальных значений на основе знаний о пациенте (например конкретно для возраста, пола, веса пациента и других факторов), однако это не всегда возможно или целесообразно. Всякий раз, когда указывается больше одного диапазона нормальных значений, необходимо предоставлять различия между ними в свойствах диапазона нормальных значений и/или возраста.
-<!-- 		Most commonly observations will only have one generic reference range.  Reference ranges may be useful for lab tests and other measures like systolic blood pressure, but will have little 	relevance for something like "pregnancy status". Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties. -->
+		Most commonly observations will only have one generic reference range.  Reference ranges may be useful for lab tests and other measures like systolic blood pressure, but will have little 	relevance for something like "pregnancy status". Systems MAY choose to restrict to only supplying the relevant reference range based on knowledge about the patient (e.g. specific to the patient's age, gender, weight and other factors), but this may not be possible or appropriate. Whenever more than one reference range is supplied, the differences between them SHOULD be provided in the reference range and/or age properties.
 		</p>
-	<h3>Отменённые или прерванные наблюдения<!-- Canceled or Aborted Observations --></h3>
-	<p>
-  Если измерение или тест не могут быть завершены (например, если образец для анализа неудовлетворительный или поставщик отменил заказ), тогда значение статуса необходимо обновить до "canceled" и дать соответствующие пояснения - предпочтительно закодированные значения в элементе dataAbsentReason или valueCodeableConcept. Также можно указать дополнительную информацию в комментариях. <a href="observation-example-unsat.html">Пример отклонения образца для анализа</a> демонстрирует использование закодированного значения для неудовлетворительного образца для анализа в элементе dataAbsentReason.
-  <!-- If a measurement or test could not be completed (for example if the specimen is unsatisfactory or the provider cancelled the order), then the status value should be updated to "canceled" and the specific details given - preferably as coded  values in the dataAbsentReason or valueCodeableConcept element.  Additional information may provided in comments as well.  The <a href="observation-example-unsat.html">specimen reject example</a> demonstrates this using a coded value for unsatisfactory specimen in dataAbsentReason. --></p>
+	<h3>Canceled or Aborted Observations</h3>
+	<p>If a measurement or test could not be completed (for example if the specimen is unsatisfactory or the provider cancelled the order), then the status value should be updated to "canceled" and the specific details given - preferably as coded  values in the dataAbsentReason or valueCodeableConcept element.  Additional information may provided in comments as well.  The <a href="observation-example-unsat.html">specimen reject example</a> demonstrates this using a coded value for unsatisfactory specimen in dataAbsentReason.</p>
 </div>

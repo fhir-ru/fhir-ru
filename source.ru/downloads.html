@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
-
-[%settitle Детали реализации%]
+      
+[%settitle Implementation Details%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -8,15 +8,15 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-12">
+<div class="col-9">
 
 
-<h1>Материалы для скачивания</h1>
+<h1>Downloads</h1>
 
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <table class="lines">
- 
+
   <tr>
     <td colspan="2" style="background: #eeeeee"><b>Specification Downloads</b></td>
   </tr>
@@ -28,7 +28,7 @@
        <li><a href="definitions.xml.zip">XML</a></li>
        <li><a href="definitions.json.zip">JSON</a></li>
        <li><a href="definitions-r2.xml.zip">Forge</a>: Special version of definitions for <a href="http://fhir.furore.com/Forge">Forge</a> (temporary)</li>
-      </ul>
+      </ul>    
       These is the master set of definitions that should be the first choice whenever generating any implementation artefacts. All
       the other forms below include only subsets of the information available in these definition files, and do not contain all of the rules about what makes resources valid. Implementers 
       will still need to be familiar with the content of the specification and with any <a href="profiling.html">profiles that apply to the resources</a> in order to make a conformant implementation.   
@@ -41,11 +41,11 @@
   <tr>
     <td>XML</td>
     <td>
-    <ul>
+      <ul>
        <li><a href="examples.zip">Examples</a> - all the example resources in XML format</li>
        <li><a href="fhir-all-xsd.zip">Validation Schemas</a> (includes support schemas, resource schemas, modular &amp; combined schemas, and Schematrons)</li>
        <li><a href="fhir-codegen-xsd.zip">Code Generation Schemas</a> (See <a href="xml.html#schema-gen">notes about code-generation schemas</a>)</li>
-    </ul>
+      </ul>
     </td>
   </tr>
   <tr>
@@ -55,10 +55,10 @@
   <tr>
     <td>JSON</td>
     <td>
-    <ul>
+      <ul>
        <li><a href="examples-json.zip">Examples</a> - all the example resources in JSON format</li>
        <li><a href="fhir.schema.json.zip">JSON Schemas</a> (includes both modular and combined schema)</li>
-    </ul>
+      </ul>
     </td>
   </tr>
   <tr>
@@ -68,11 +68,11 @@
   <tr>
     <td>RDF</td>
     <td>
-     <ul>
+      <ul>
        <li><a href="examples-ttl.zip">Examples</a> - all the example resources in Turtle format</li>
        <li><a href="fhir.schema.shex.zip">ShEx Schemas</a> - <a href="https://www.w3.org/2001/sw/wiki/ShEx">ShEx</a> definitions for validating RDF resources</li>
        <li><a href="fhir.rdf.ttl.zip">Definitions</a> - the formal definitions that define the predicates and classes used in the RDF format (not up to date)</li>
-     </ul>
+      </ul>
     </td>
   </tr>
   <tr>
@@ -87,7 +87,7 @@
   <tr>
     <td colspan="2" style="background: #eeeeee"><b>Implementation Tools</b></td>
   </tr>
-
+ 
   <tr>
     <td>Validator</td>
     <td>The <a href="validator.zip">official FHIR validator</a> - a Java jar file that can be used to validate resources. See <a href="validation.html">Validation Tools</a> for further information</td>
@@ -100,34 +100,30 @@
 
   <tr>
     <td>Translation File</td>
-    <td><a href="translations.xml">Переводы общих названий и сообщений</a> в FHIR на различные языки (см. инструкции по добавлению переводов в <a href="http://wiki.hl7.org/index.php?title=FHIR_Implementation_Page">wiki-разделе</a>)
-    <!-- <a href="translations.xml">Translations of common FHIR names and messages</a> into multiple languages (see <a href="http://wiki.hl7.org/index.php?title=FHIR_Implementation_Page">wiki</a> for instructions on how to add to this) --></td>
+    <td><a href="translations.xml">Translations of common FHIR names and messages</a> into multiple languages (see <a href="http://wiki.hl7.org/index.php?title=FHIR_Implementation_Page">wiki</a> for instructions on how to add to this)</td>
   </tr>
 
   <tr>
-    <td>Пиктограмма<!-- Icon Pack --></td>
-    <td><a href="icon-pack.zip">Пиктограмма FHIR в различных разрешениях</a>. Любой реализации FHIR, созданной организацией, которая приняла участие в коннектатоне, разрешается использовать пиктограмму FHIR в связи со своим приложением (этот принцип будет пересмотрен в будущем)<!-- The <a href="icon-pack.zip">FHIR Icon at various resolutions</a>. Any FHIR Implementation created by an organization that has attended a connectathon is allowed to use the FHIR icon in association with the application (this policy will be reviewed in the future). --></td>
+    <td>Icon Pack</td>
+    <td>The <a href="icon-pack.zip">FHIR Icon at various resolutions</a>. Any FHIR Implementation created by an organization that has attended a connectathon is allowed to use the FHIR icon in association with the application (this policy will be reviewed in the future).</td>
   </tr>
 
   <tr>
-    <td colspan="2" style="background: #eeeeee"><b>Эталонные реализации<!-- Reference Implementations --></b><a name="refimpl"> </a></td>
+    <td colspan="2" style="background: #eeeeee"><b>Reference Implementations</b><a name="refimpl"> </a></td>
   </tr>
 
   <tr>
-    <td colspan="2">Эталонные реализации предоставлены в помощь разработчикам. 
-    Их можно использовать в реально действующих экземплярах, однако организация HL7 и её сотрудники не несут ответственность за их применение. Эти реализации предоставляются по стандартной, одобренной OSI лицензии (по большей части пункт 3 BSD).
-<!-- These reference implementations are provided for implementer interest and assistance. 
+    <td colspan="2">These reference implementations are provided for implementer interest and assistance. 
 They may be used in production instances, although HL7 and the contributors accept no liability for their 
-use.  These implementations are provided under a standard OSI-approved license (mostly BSD-3-Clause). -->
+use.  These implementations are provided under a standard OSI-approved license (mostly BSD-3-Clause).
 <br/> 
 <br/> 
-<span style="color: Maroon">Обратите внимание, что эталонные реализации предоставлены для помощи реализаторам в адаптации спецификации и поддерживаются командой проекта FHIR, но не являются частью спецификации, и от реализаций не требуется соответствовать им, также они не подлежат формальному развитию стандарта.
-<!-- Note that these reference implementations are provided to assist to 
+<span style="color: Maroon">Note that these reference implementations are provided to assist to 
 implementers to adopt the specification, and are maintained by the FHIR project team, but are not 
 part of the specification, and implementations are not required to conform to these, nor are they 
-subject to the formal standards process. --></span>
+subject to the formal standards process.</span>
 <br/> 
-<br/>     
+<br/> 
     </td>
   </tr>
 
@@ -135,23 +131,27 @@ subject to the formal standards process. --></span>
   
 </table>
 <p>
-Другие эталонные реализации, не распространяемые вместе со спецификацией:
-<!-- Other reference implementations not distributed with the specification: -->
+Other reference implementations not distributed with the specification:
 </p>
 <ul>
- <li><a href="https://github.com/smart-on-fhir/Swift-FHIR">Swift-FHIR</a> - эталонная реализация для <a href="https://developer.apple.com/swift/">Swift</a></li>
- <li><a href="http://jamesagnew.github.io/hapi-fhir/">HAPI-FHIR</a> - эталонная реализация для <a href="https://www.oracle.com/java/index.html">Java</a></li>
+ <li><a href="https://github.com/smart-on-fhir/Swift-FHIR">Swift-FHIR</a> - reference implementation for <a href="https://developer.apple.com/swift/">Swift</a></li>
+ <li><a href="http://jamesagnew.github.io/hapi-fhir/">HAPI-FHIR</a> - reference implementation for <a href="https://www.oracle.com/java/index.html">Java</a></li>
 </ul>
 <hr/>
 <p>
-Следует отметить, что эталонные реализации обычно ограничиваются визуальным представлением содержимого ресурсов в нативной форме, их парсингом и сериализацией в XML и JSON. Часть реализаций поддерживает построение с помощью определений ресурсов. В некоторые реализации входит клиентское приложение, которое поддерживает RESTful API.
+Note that the reference implementations are generally limited to code for representing the 
+resource contents in their native form and parsing and serializing them as 
+XML and JSON. Some of the implementations provide support for 
+building, using and reasoning with resource definitions. A few implementations include
+a client that conforms to the RESTful API.
 </p>
 <p>
-Полноценные открытые реализации FHIR, часть которых использует эталонные реализации, перечислены в
-<a href="http://wiki.hl7.org/index.php?title=Open_Source_FHIR_implementations">wiki-разделе сайта HL7</a>.
+Full blown open source implementations for FHIR, some of which use these reference implementations, are
+listed on the <a href="http://wiki.hl7.org/index.php?title=Open_Source_FHIR_implementations">HL7 wiki</a>.
 </p>
 <p>
-Для обеспечения соответствия не обязательно пользоваться этими конкретными реализациями. Разрешается применять любые подходы, включая генерацию кода из схем.
+It is not necessary to use these particular implementations in order to be conformant. Any other approach 
+may be used, including code generated from the schemas.
 </p>
 
 </div>

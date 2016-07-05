@@ -7,20 +7,20 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Moehrke, John (GE Healthcare)</LastAuthor>
+  <LastAuthor>John Moehrke</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2016-03-12T17:36:26Z</LastSaved>
-  <Version>14.00</Version>
+  <LastSaved>2016-06-29T13:25:01Z</LastSaved>
+  <Version>16.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>12975</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
+  <WindowHeight>8508</WindowHeight>
+  <WindowWidth>23040</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
+  <ActiveSheet>8</ActiveSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -878,30 +878,31 @@
   </Names>
   <Table ss:ExpandedColumnCount="27" ss:ExpandedRowCount="104" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s70" ss:Width="227.25"/>
+   <Column ss:StyleID="s70" ss:Width="227.39999999999998"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="90"/>
-   <Column ss:StyleID="s69" ss:Width="29.25"/>
-   <Column ss:StyleID="s69" ss:Width="34.5"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="119.25"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="28.5"/>
+   <Column ss:StyleID="s69" ss:Width="29.4"/>
+   <Column ss:StyleID="s69" ss:Width="34.799999999999997"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="119.4"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="28.8"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="27"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="129" ss:Span="1"/>
    <Column ss:Index="10" ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="81"/>
-   <Column ss:StyleID="s69" ss:Width="51.75" ss:Span="1"/>
-   <Column ss:Index="13" ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="80.25"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="120.75"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="161.25"/>
+   <Column ss:StyleID="s69" ss:Width="51.6" ss:Span="1"/>
+   <Column ss:Index="13" ss:StyleID="s69" ss:AutoFitWidth="0"
+    ss:Width="80.400000000000006"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="120.60000000000001"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="161.4"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="135"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="31.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="31.799999999999997"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="135"/>
-   <Column ss:Index="21" ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="144.75"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="103.5"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="133.5"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="103.5"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="50.25"/>
+   <Column ss:Index="21" ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="144.6"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="103.8"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="133.80000000000001"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="103.8"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="50.4"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="66"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="119.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="119.4"/>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s71">
     <Cell ss:StyleID="s72"><Data ss:Type="String">Element</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
@@ -1025,9 +1026,9 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Запись о событии, сделанная в целях безопасности<!-- Event record kept for security purposes --></Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Event record kept for security purposes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">Запись о событии, сделанная в целях ведения журнала безопасности. Типовое применение включает в себя обнаружение попыток внедрения и контроль неуместного использования<!-- A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage --></Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Based on ATNA (RFC 3881)</Data><NamedCell
@@ -1062,11 +1063,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Что было сделано<!-- What was done --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">What was done</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Определяет название, тип действия, время и место события для аудита<!-- Identifies the name, action type, time, and disposition of the audited event --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifies the name, action type, time, and disposition of the audited event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Необходимо определить событие<!-- The event must be identified --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">The event must be identified</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1104,11 +1105,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип/идентификатор события<!-- Type/identifier of event --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Type/identifier of event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Identifier for a family of the event.  For example, a menu item, program, rule, policy, function code, application name or URL. It identifies the performed function</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Определяет выполненную функцию. Для &quot;Execute&quot; Event Action Code отчетов определяет совершенную функцию приложения.<!-- This identifies the performed function. For &quot;Execute&quot; Event Action Code audit records, this identifies the application function performed. --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">This identifies the performed function. For &quot;Execute&quot; Event Action Code audit records, this identifies the application function performed.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1145,11 +1146,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Более конкретный тип/идентификатор события<!-- More specific type/id for the event --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">More specific type/id for the event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентификатор категории события<!-- Identifier for the category of event --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifier for the category of event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Это поле обеспечивает возможность делать запросы к сообщениям с помощью категорий событий, заданных при реализации<!-- This field enables queries of messages by implementation-defined event categories  --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">This field enables queries of messages by implementation-defined event categories </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1185,9 +1186,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип действия, совершенного во время события<!-- Type of action performed during the event --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Type of action performed during the event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Индикатор типа действия, совершенного во время события, которое сгенерировало отчет<!-- Indicator for type of action performed during the event that generated the audit --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Indicator for type of action performed during the event that generated the audit</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">This broadly indicates what kind of action was done on the AuditEvent.entity by the AuditEvent.agent</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1224,13 +1225,13 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Время, когда произошло событие в источнике<!-- Time when the event occurred on source --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Time when the event occurred on source</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Время, когда произошло событие в источнике<!-- The time when the event occurred on the source --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">The time when the event occurred on the source</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Привязывает событие к конкретной дате и времени. Аудит безопасности, как правило, требует согласованного отсчета времени, например UTC, для избежания проблем с часовыми поясами, возникающими при географической распределенности <!-- This ties an event to a specific date and time. Security audits typically require a consistent time base (e.g. UTC), to eliminate time-zone issues arising from geographical distribution --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">This ties an event to a specific date and time. Security audits typically require a consistent time base (e.g. UTC), to eliminate time-zone issues arising from geographical distribution</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Для распределенной системы хорошей практикой будет использование некоторого общего отсчета времени, например NTP [RFC1305] сервер<!-- In a distributed system, some sort of common time base (e.g. an NTP [RFC1305] server) is a good implementation tactic --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">In a distributed system, some sort of common time base (e.g. an NTP [RFC1305] server) is a good implementation tactic</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">.effectiveTime</Data><NamedCell
@@ -1267,12 +1268,12 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Было ли событие успешным или произошел сбой<!-- Whether the event succeeded or failed --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Whether the event succeeded or failed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Показывает, было ли событие успешным или произошел сбой<!-- Indicates whether the event succeeded or failed --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Indicates whether the event succeeded or failed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">В некоторых случаях "успех" может быть частичным, к примеру, неполная или прерванная передача радиологического исследования. В целях установления подотчетности эти различия не играют роли<!-- In some cases a &quot;success&quot; may be partial, for example, an incomplete or interrupted transfer of a radiological study. For the purpose of establishing accountability, these distinctions are not relevant --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">In some cases a &quot;success&quot; may be partial, for example, an incomplete or interrupted transfer of a radiological study. For the purpose of establishing accountability, these distinctions are not relevant</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">.actionNegationInd</Data><NamedCell
@@ -1306,9 +1307,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Описание результата события<!-- Description of the event outcome --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Description of the event outcome</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Произвольное текстовое описание результата события<!-- A free text description of the outcome of the event --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">A free text description of the outcome of the event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1345,12 +1346,12 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Назначение события<!-- The purposeOfUse of the event --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The purposeOfUse of the event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Цель использования (обоснование), которая была использована во время записи события.<!-- The purposeOfUse (reason) that was used during the event being recorded.  --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">The purposeOfUse (reason) that was used during the event being recorded. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Используйте AuditEvent.agent.purposeOfUse, когда вы знаете, что это специфично для агента, в ином случае используйте AuditEvent.purposeOfEvent. К примеру, во время передачи от машины машине может быть не очевидно для системы аудита, кто вызвал это событие, однако известно - почему.<!-- Use AuditEvent.agent.purposeOfUse when you know that is specific to the agent, otherwise use AuditEvent.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Use AuditEvent.agent.purposeOfUse when you know that is specific to the agent, otherwise use AuditEvent.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">* .reasonCode [ControlActReason when Act.class = CACT Control Act]&#10;*.outboundRelationship[typeCode=RSON].target</Data><NamedCell
@@ -1385,13 +1386,13 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Участник события<!-- Actor involved in the event --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Actor involved in the event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Действующее лицо, принимающее активное участие в протоколируемом событии или активности<!-- An actor taking an active role in the event or activity that is logged. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">An actor taking an active role in the event or activity that is logged.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Агентом может быть человек, организация, ПО, устройство и другие действующие лица, которым может быть приписана ответственность.<!-- An agent can be a person, an organization, software, device, or other actors that may be ascribed responsibility. --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">An agent can be a person, an organization, software, device, or other actors that may be ascribed responsibility.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">С событием или активностью может ассоциироваться несколько агентов (т. е. нести некоторую ответственность за активность).&#10;&#10;Например активность может быть инициирована одним пользователем для других пользователей, или задействовать более одного пользователя. Тем не менее, только один пользователь может быть инициатором/запросчиком для этой активности.&#10;&#10;&#10;&#10;<!-- Several agents may be associated (i.e. have some responsibility for an activity) with an event or activity.&#10;&#10;For example, an activity may be initiated by one user for other users or involve more than one user. However, only one user may be the initiator/requestor for the activity.&#10;&#10;&#10;&#10; --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Several agents may be associated (i.e. have some responsibility for an activity) with an event or activity.&#10;&#10;For example, an activity may be initiated by one user for other users or involve more than one user. However, only one user may be the initiator/requestor for the activity.&#10;&#10;&#10;&#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">.participation</Data><NamedCell
@@ -1428,11 +1429,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Роль агента в событии<!-- Agent role in the event --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Agent role in the event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Спецификация ролей пользователя при выполнении этого события. Коды, используемые в этом элементе, как правило, являются локальными кодами, заданными системой контроля доступа на основе ролей, используемыми в локальном контексте<!-- Specification of the role(s) the user plays when performing the event. Usually the codes used in this element are local codes defined by the access control security system (e.g. RBAC, ABAC) used in the local context --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Specification of the role(s) the user plays when performing the event. Additional may contain security role codes that come from local codes defined by the access control security system (e.g. RBAC, ABAC) used in the local context</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Это значение привязывает событие аудита к роли (ролям) пользователя. Это необязательное значение, которое может использоваться для группировки событий по категориям функциональной роли пользователя в целях анализа<!-- This value ties an audited event to a user's role(s). It is an optional value that might be used to group events for analysis by user functional role categories --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">This value ties an audited event to a user's role(s). It is an optional value that might be used to group events for analysis by user functional role categories</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">should be roles relevant to the event. Should  not be an exhaustive list of roles.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1470,11 +1471,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Прямая ссылка на ресурс<!-- Direct reference to resource --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Direct reference to resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Прямая ссылка на ресурс, определяющий участника<!-- Direct reference to a resource that identifies the agent --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Direct reference to a resource that identifies the agent</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Это поле привязывает событие аудита к конкретному ресурсу<!-- This field ties an audit event to a specific resource --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">This field ties an audit event to a specific resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1510,13 +1511,13 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Уникальный идентификатор пользователя<!-- Unique identifier for the user --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Unique identifier for the user</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Уникальный идентификатор пользователя, активно участвующего в событии<!-- Unique identifier for the user actively participating in the event --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Unique identifier for the user actively participating in the event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Это поле привязывает событие аудита к определенному пользователю<!-- This field ties an audit event to a specific user --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">This field ties an audit event to a specific user</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Уникальное значение в пределах Audit Source ID. Для узловой аутентификации  &#45;- когда идентифицируется только системное аппаратное обеспечение или процесс, но не человеческий пользователь &#45;- User ID будет название узла <!-- a unique value within the Audit Source ID. For node-based authentication &#45;- where only the system hardware or process, but not a human user, is identified &#45;- User ID would be the node name --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">a unique value within the Audit Source ID. For node-based authentication &#45;- where only the system hardware or process, but not a human user, is identified &#45;- User ID would be the node name</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">.id</Data><NamedCell
@@ -1551,11 +1552,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Альтернативный идентификатор пользователя, например аутентификация<!-- Alternative User id e.g. authentication --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Alternative User id e.g. authentication</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Alternative agent Identifier. For a human, this should be a user identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g. single sign-on), if available</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">В некоторых ситуациях человеческий пользователь может аутентифицироваться с одной сущностью, однако для доступа к определенной прикладной системе может использоваться синонимичное установление тождества. К примеру, так будут делать реализации с единым входом. Альтернативный идентификатор тогда будет оригинальным установлением тождества, используемым для аутентификации, а User ID будет тем, который известен и используется приложением<!-- In some situations a human user may authenticate with one identity but, to access a specific application system, may use a synonymous identify. For example, some &quot;single sign on&quot; implementations will do this. The alternative identifier would then be the original identify  used for authentication, and the User ID is the one known to and used by the application --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">In some situations a human user may authenticate with one identity but, to access a specific application system, may use a synonymous identify. For example, some &quot;single sign on&quot; implementations will do this. The alternative identifier would then be the original identify  used for authentication, and the User ID is the one known to and used by the application</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1590,11 +1591,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Значимое для человека имя агента<!-- Human-meaningful name for the agent --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Human-meaningful name for the agent</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Значимое для человека имя агента<!-- Human-meaningful name for the agent --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Human-meaningful name for the agent</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Идентификатор пользователя и Идентификатор авторизации пользователя могут быть внутренними или иным образом скрытыми значениями. Это поле помогает аудитору в идентификации фактического пользователя<!-- The User ID and Authorization User ID may be internal or otherwise obscure values. This field assists the auditor in identifying the actual user --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">The User ID and Authorization User ID may be internal or otherwise obscure values. This field assists the auditor in identifying the actual user</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1629,13 +1630,13 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Является ли пользователь инициатором<!-- Whether user is initiator --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Whether user is initiator</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Показывает, является ли пользователь или нет запрашивающим лицом, или инициатором, аудируемого события<!-- Indicator that the user is or is not the requestor, or initiator, for the event being audited. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Indicator that the user is or is not the requestor, or initiator, for the event being audited.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Это значение используется для различия между пользователями-запросчиками и пользователями-получателями. Например один человек может инициировать отправку результатов отчета другому пользователю<!-- This value is used to distinguish between requestor-users and recipient-users. For example, one person may initiate a report-output to be sent to another user  --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">This value is used to distinguish between requestor-users and recipient-users. For example, one person may initiate a report-output to be sent to another user </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Инициатор может быть только один. Если кто является инициатором не понятно, тогда не указывайте ни одного из участников в качестве инициатора<!-- There can only be one initiator. If the initiator is not clear, then do not choose any one agent as the initiator --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">There can only be one initiator. If the initiator is not clear, then do not choose any one agent as the initiator</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">If participation.typeCode was author, then true</Data><NamedCell
@@ -1662,7 +1663,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Где произошло событие<!-- where --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">where</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1670,7 +1671,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Where</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Где произошло событие<!-- Where the event occurred --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Where the event occurred</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1706,11 +1707,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Политика, в рамках которой было санкционировано событие<!-- Policy that authorized event --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Policy that authorized event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Политика или план,  в рамках которого было санкционировано записываемое действие. К одному действию может, как правило,  применяться несколько политик, например согласие пациента, финансирование поручителя и т. п. Политика будет также указывать на использованный маркер доступа.<!-- The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">The policy or plan that authorized the activity being recorded. Typically, a single activity may have multiple applicable policies, such as patient consent, guarantor funding, etc. The policy would also indicate the security token used.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Это значение используется для определения политики авторизации задним числом.<!-- This value is used retrospectively to determine the authorization policies. --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">This value is used retrospectively to determine the authorization policies.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String"> For example: Where an OAuth token authorizes, the unique identifier from the OAuth token is placed into the policy element Where a policy engine (e.g. XACML) holds policy logic, the unique policy identifier is placed into the policy element.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1741,17 +1742,17 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">DICOMMediaType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Где произошло событие<!-- where --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">where</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип медиа<!-- Type of media --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Type of media</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Тип участвующего медиасредства. Используется, когда событие связано с импортом/экспортом медиа<!-- Type of media involved. Used when the event is about exporting/importing onto media  --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Type of media involved. Used when the event is about exporting/importing onto media </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Обычно используется вместо указания сетевого адреса. Это поле не используется для Media Id (т. е. серийного номера CD) <!-- Usually, this is used instead of specifying a network address. This field is not used for Media Id (i.e. the serial number of a CD) --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Usually, this is used instead of specifying a network address. This field is not used for Media Id (i.e. the serial number of a CD)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1778,15 +1779,15 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Где произошло событие<!-- where --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">where</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Логическое сетевое местоположение действия приложения<!-- Logical network location for application activity --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Logical network location for application activity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Логическое сетевое местоположение действия приложения, если у этого действия имеется сетевой адрес<!-- Logical network location for application activity, if the activity has a network location --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Logical network location for application activity, if the activity has a network location</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1815,19 +1816,19 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Где произошло событие<!-- where --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">where</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор точки доступа к сети пользовательского устройства<!-- Identifier for the network access point of the user device --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifier for the network access point of the user device</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентификатор точки доступа к сети устройства пользователя для события аудита<!-- An identifier for the network access point of the user device for the audit event --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">An identifier for the network access point of the user device for the audit event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">This datum identifies the user's network access point, which may be distinct from the server that performed the action. It is an optional value that may be used to group events recorded on separate servers for analysis of a specific network access point's data access across all servers </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Это может быть идентификатор устройства, IP-адрес или другой идентификатор, ассоциированный с устройством<!-- This could be a device id, IP address or some other identifier associated with a device --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">This could be a device id, IP address or some other identifier associated with a device</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">pre-coordinated into URL</Data><NamedCell
@@ -1854,19 +1855,19 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">AuditEventParticipantNetworkType</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">AuditEventAgentNetworkType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Где произошло событие<!-- where --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">where</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип точки доступа сети<!-- The type of network access point --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The type of network access point</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентификатор типа точки доступа к сети, где произошло событие аудита<!-- An identifier for the type of network access point that originated the audit event --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">An identifier for the type of network access point that originated the audit event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Эта информация идентифицирует тип точки доступа к сети устройства пользователя для события аудита. Это необязательное значение, которое может использоваться для группировки событий, записанных на отдельных серверах, для анализа в соответствии с типом точки доступа к сети<!-- This datum identifies the type of network access point identifier of the user device for the audit event. It is an optional value that may be used to group events recorded on separate servers for analysis of access according to a network access point's type --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">This datum identifies the type of network access point identifier of the user device for the audit event. It is an optional value that may be used to group events recorded on separate servers for analysis of access according to a network access point's type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1901,12 +1902,12 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Обоснование, данное для этого пользователя<!-- Reason given for this user --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Reason given for this user</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Обоснование (назначения использования), специфичное для этого агента, которые было использовано во время записи события.<!-- The reason (purpose of use), specific to this agent, that was used during the event being recorded.  --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">The reason (purpose of use), specific to this agent, that was used during the event being recorded. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Используйте AuditEvent.agent.purposeOfUse, когда вы знаете, что это специфично для агента, в ином случае используйте AuditEvent.purposeOfEvent. К примеру, во время передачи от машины машине может быть не очевидно для системы аудита, кто вызвал это событие, однако известно - почему.<!-- Use AuditEvent.agent.purposeOfUse when you know that is specific to the agent, otherwise use AuditEvent.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Use AuditEvent.agent.purposeOfUse when you know that is specific to the agent, otherwise use AuditEvent.purposeOfEvent. For example, during a machine-to-machine transfer it might not be obvious to the audit system who caused the event, but it does know why.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">*.reasonCode [ActHealthInformationPurposeOfUseReason codes/v:PurposeOfUse&#10;(2.16.840.1.113883.1.11.20448)&#10;* .outboundRelationship[typeCode=RSON or SUBJ].target</Data><NamedCell
@@ -1938,12 +1939,13 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Прикладные системы и процессы<!-- Application systems and processes --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Audit Event Reporter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">О событии сообщается из одного источника<!-- The event is reported by one source --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">The system that is reporting the event. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Так как многоуровневые, распределенные или композитные приложения делают идентификацию источника неоднозначной, эта коллекция полей может повторяться для каждого приложения или процесса, активно участвующего в мероприятии. Например несколько наборов значений могут идентифицировать участие веб-серверов, прикладных процессов и потоков сервера базы данных в многоуровневом распределенном приложении. Пассивных участников мероприятия, например транспорт сети низкого уровня, не нужно идентифицировать<!-- Since multi-tier, distributed, or composite applications make source identification ambiguous, this collection of fields may repeat for each application or process actively involved in the event. For example, multiple value-sets can identify participating web servers, application processes, and database server threads in an n-tier distributed application. Passive event participants (e.g. low-level network transports) need not be identified --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">The event is reported by one source</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Since multi-tier, distributed, or composite applications make source identification ambiguous, this collection of fields may repeat for each application or process actively involved in the event. For example, multiple value-sets can identify participating web servers, application processes, and database server threads in an n-tier distributed application. Passive event participants (e.g. low-level network transports) need not be identified</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">.participation[typeCode=INF].role[classCode=ASSIGN].player[classCode=DEV, determinerCode=INSTANCE]</Data><NamedCell
@@ -2012,11 +2014,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Логическое расположение источника в пределах предприятия<!-- Logical source location within the enterprise --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Logical source location within the enterprise</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Logical source location within the healthcare enterprise network.  For example, a hospital or other provider location within a multi-entity provider group</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Это значение различается среди сайтов в многоместной информационной системе предприятия здравоохранения<!-- This value differentiates among the sites in a multi-site enterprise health information system --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">This value differentiates among the sites in a multi-site enterprise health information system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2051,11 +2053,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор источника, зафиксировавшего событие<!-- The identity of source detecting the event --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The identity of source detecting the event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентификатор источника, где произошло событие<!-- Identifier of the source where the event was detected --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifier of the source where the event was detected</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Это поле привязывает событие к определенной исходной системе. Он может использоваться для группировки событий для анализа в соответствии с местом, где произошло событие<!-- This field ties the event to a specific source system. It may be used to group events for analysis according to where the event was detected --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">This field ties the event to a specific source system. It may be used to group events for analysis according to where the event was detected</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2090,11 +2092,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип источника, где возникло событие<!-- The type of source where event originated --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The type of source where event originated</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Код, указывающий тип источника, где возникло событие<!-- Code specifying the type of source where event originated --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Code specifying the type of source where event originated</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Это поле указывает, какой тип источника определяется по Audit Source ID. Это необязательное значение, которое может использоваться для группировки событий для анализа в соответствии с типом источника, где произошло событие<!-- This field indicates which type of source is identified by the Audit Source ID. It is an optional value that may be used to group events for analysis according to the type of source where the event occurred --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">This field indicates which type of source is identified by the Audit Source ID. It is an optional value that may be used to group events for analysis according to the type of source where the event occurred</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2128,13 +2130,13 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Конкретные экземпляры данных или объектов, к которым осуществлялся доступ<!-- Specific instances of data or objects that have been accessed  --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Data or objects used </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Конкретные экземпляры данных или объектов, к которым осуществлялся доступ<!-- Specific instances of data or objects that have been accessed --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Specific instances of data or objects that have been accessed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">В событии могут быть задействованы и другие объекты<!-- The event may have other entities involved --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">The event may have other entities involved</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">требуется, если значений для идентификации события, идентификации активных участников и идентификации источника аудита не достаточно, чтобы задокументировать все аудируемое событие полностью. Поскольку события могут иметь больше одного объекта-участника, эта группа может быть повторяющимся набором значений.<!-- Required unless the values for event identification, agent identification, and audit source identification are sufficient to document the entire auditable event. Because events may have more than one entity, this group can be a repeating set of values. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Required unless the values for event identification, agent identification, and audit source identification are sufficient to document the entire auditable event. Because events may have more than one entity, this group can be a repeating set of values.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">.outboundRelationship[typeCode=SUBJ].target  or  .participation[typeCode=SBJ].role</Data><NamedCell
@@ -2171,9 +2173,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Конкретный экземпляр объекта (например версионированный)<!-- Specific instance of object (e.g. versioned) --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Specific instance of object </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентифицирует конкретный экземпляр объекта участия. Ссылка всегда должна быть с указанием версии<!-- Identifies a specific instance of the entity. The reference should always be version specific --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifies a specific instance of the entity. The reference should always be version specific</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Identifier detail depends on entity type</Data><NamedCell
@@ -2210,9 +2212,9 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Конкретный экземпляр ресурса (например версионированный)<!-- Specific instance of resource (e.g. versioned) --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Specific instance of resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентифицирует конкретный экземпляр объекта участия. Ссылка всегда должна быть с указанием версии<!-- Identifies a specific instance of the entity. The reference should always be version specific --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifies a specific instance of the entity. The reference should be version specific</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2248,7 +2250,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Описывает идентификатор<!-- Describes the identifier --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Describes the identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Describes the identifier that is contained in entity.identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2278,7 +2280,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">AuditEventObjectType</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">AuditEventEntityType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">what</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2286,13 +2288,13 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип объекта-участника<!-- Type of object involved --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Type of entity involved</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Тип объекта, который был вовлечен в это аудируемое событие.<!-- The type of the object that was involved in this audit event.  --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">The type of the object that was involved in this audit event. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Для описания объекта действия. В дополнение к запросам к субъекту действия в аудируемом событии, это также важно иметь возможность запросить тип объекта действия<!-- To describe the object being acted upon. In addition to queries on the subject of the action in an auditable event, it is also important to be able to query on the object type for the action  --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">To describe the object being acted upon. In addition to queries on the subject of the action in an auditable event, it is also important to be able to query on the object type for the action </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Это значение отличается от роли пользователя или любой взаимосвязи между пользователем и объектом участия<!-- This value is distinct from the user's role or any user relationship to the entity --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">This value is distinct from the user's role or any user relationship to the entity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">[self::Act].code or role.player.code</Data><NamedCell
@@ -2320,7 +2322,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">AuditEventObjectRole</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">AuditEventEntityRole</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">context</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2328,11 +2330,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Какую роль играет сущность<!-- What role the entity played  --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">What role the entity played </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Код роли, которую играет сущность в аудируемом событии<!-- Code representing the role the entity played in the event being audited --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Code representing the role the entity played in the event being audited</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Для какого-то детального анализа аудита может потребоваться указать более гранулярный тип участия, основанный на роли в приложении, которую он служит<!-- For some detailed audit analysis it may be necessary to indicate a more granular type of entity, based on the application role it serves --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">For some detailed audit analysis it may be necessary to indicate a more granular type of entity, based on the application role it serves</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2359,7 +2361,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">AuditEventObjectLifecycle</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">AuditEventEntityLifecycle</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">context</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2367,13 +2369,13 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Стадия жизненного цикла для этого объекта<!-- Life-cycle stage for the object --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Life-cycle stage for the entity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Идентификатор стадии жизненного цикла для этой сущности<!-- Identifier for the data life-cycle stage for the entity --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifier for the data life-cycle stage for the entity.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Политика конфиденциальности и безопасности учреждения может необязательно подпадать под различные правила ответственности на основе жизненного цикла данных. Это обеспечивает дифференцирующее значение для таких случаев<!-- Institutional policies for privacy and security may optionally fall under different accountability rules based on data life cycle. This provides a differentiating value for those cases --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Institutional policies for privacy and security may optionally fall under different accountability rules based on data life cycle. This provides a differentiating value for those cases</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Может использоваться для обеспечения аудита данных по прошествии времени прохождения через систему<!-- This can be used to provide an audit trail for data, over time, as it passes through the system --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">This can be used to provide an audit trail for data, over time, as it passes through the system</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">target of ObservationEvent[code=&quot;lifecycle&quot;].value</Data><NamedCell
@@ -2409,13 +2411,14 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Метки уровня безопасности, применённые к объекту<!-- Security labels applied to the object --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Security labels on the entity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Обозначает метки уровня безопасности для указанной сущности.<!-- Denotes security labels for the identified entity.  --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Denotes security labels for the identified entity. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Это поле показывает метки уровня безопасности для конкретного экземпляра объекта, например пациента, для отслеживания/обнаружения проблем безопасности и конфиденциальности<!-- This field identifies the security labels for a specific instance of an object, such as a patient, to detect/track privacy and security issues --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">This field identifies the security labels for a specific instance of an object, such as a patient, to detect/track privacy and security issues</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">copied from entity meta security tags</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">.confidentialityCode</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2449,13 +2452,13 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Дескриптор сущности<!-- Descriptor for entity --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Descriptor for entity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Имя сущности в аудируемом событии.<!-- A name of the entity in the audit event. --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">A name of the entity in the audit event.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Используйте только там, где сущность не может быть идентифицирована с помощью идентификатора.<!-- Use only where entity can't be identified with an identifier. --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Use only where entity can't be identified with an identifier.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Это поле можно использовать в запросе/отчете для идентификации аудируемых событий для конкретного человека, например когда используется несколько синонимичных идентификаторов объекта участника (номер пациента, номер медкарты, номер случая обслуживания и т. п.)<!-- This field may be used in a query/report to identify audit events for a specific person.  For example, where multiple synonymous entity identifers (patient number, medical record number, encounter number, etc.) have been used --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">This field may be used in a query/report to identify audit events for a specific person.  For example, where multiple synonymous entity identifers (patient number, medical record number, encounter number, etc.) have been used</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">.title</Data><NamedCell
@@ -2489,11 +2492,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Описание<!-- Descriptive text --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Descriptive text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Текст, описывающий сущность более подробно<!-- Text that describes the entity in more detail --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Text that describes the entity in more detail</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Используйте только там, где сущность не может быть идентифицирована с помощью идентификатора.<!-- Use only where entity can't be identified with an identifier. --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Use only where entity can't be identified with an identifier.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2529,11 +2532,11 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Параметры запроса<!-- Query parameters --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Query parameters</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Параметры запроса для сущностей типа "запрос"<!-- The query parameters for a query-type entities --></Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">The query parameters for a query-type entities</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Для событий типа query может возникнуть необходимость зафиксировать сам входной запрос для обработки запроса, чтобы идентифицировать определенное событие. Из-за различий между реализациями и кодированием данных для них, используется "блоб" в кодировке base64. Он может быть впоследствии декодирован или интерпретирован в процессе обработки нисходящего анализа аудита<!-- For query events it may be necessary to capture the actual query input to the query process in order to identify the specific event. Because of differences among query implementations and data encoding for them, this is a base 64 encoded data blob. It may be subsequently decoded or interpreted by downstream audit analysis processing --></Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">For query events it may be necessary to capture the actual query input to the query process in order to identify the specific event. Because of differences among query implementations and data encoding for them, this is a base 64 encoded data blob. It may be subsequently decoded or interpreted by downstream audit analysis processing</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2566,7 +2569,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Дополнительная информация о сущности<!-- Additional Information about the entity --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Additional Information about the entity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2603,7 +2606,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Название свойства<!-- Name of the property --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Name of the property</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2639,7 +2642,7 @@
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Значение свойства<!-- Property value --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Property value</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4444,7 +4447,7 @@
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>10</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>11</LeftColumnRightPane>
+   <LeftColumnRightPane>5</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -4460,7 +4463,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>15</ActiveCol>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -4478,11 +4482,11 @@
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s104" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:StyleID="s104" ss:AutoFitWidth="0" ss:Width="132"/>
-   <Column ss:StyleID="s104" ss:Width="55.5"/>
+   <Column ss:StyleID="s104" ss:Width="55.800000000000004"/>
    <Column ss:StyleID="s104" ss:Width="165"/>
-   <Column ss:StyleID="s104" ss:AutoFitWidth="0" ss:Width="233.25"/>
+   <Column ss:StyleID="s104" ss:AutoFitWidth="0" ss:Width="233.4"/>
    <Column ss:StyleID="s104" ss:AutoFitWidth="0" ss:Width="192"/>
-   <Column ss:StyleID="s104" ss:AutoFitWidth="0" ss:Width="246.75"/>
+   <Column ss:StyleID="s104" ss:AutoFitWidth="0" ss:Width="246.6"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75" ss:StyleID="s71">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Id</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -4521,7 +4525,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">AuditEvent.entity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Либо имя, либо запрос (но не оба)<!-- Either a name or a query (NOT both) --></Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Either a name or a query (NOT both)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">name.empty() or query.empty()</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4976,7 +4980,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -5012,11 +5015,11 @@
   </Names>
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="30" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s115" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="70.8"/>
    <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="57"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="109.5"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="364.5"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="109.8"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="364.79999999999995"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="382.79999999999995"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75" ss:StyleID="s116">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Name</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">Unique name for search parameter - required, lower-case, dash-delimited string    </ss:Data></Comment><NamedCell
@@ -5117,7 +5120,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s120"><Data ss:Type="String">address</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">token</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s89"/>
     <Cell ss:StyleID="s121"><Data ss:Type="String">AuditEvent.agent.network.address</Data></Cell>
     <Cell ss:StyleID="s122"/>
@@ -5158,17 +5161,17 @@
     <Cell ss:StyleID="s122"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s120"/>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">outcome</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s89"/>
-    <Cell ss:StyleID="s89"/>
-    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">AuditEvent.outcome</Data></Cell>
     <Cell ss:StyleID="s122"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s120"/>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">role</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s89"/>
-    <Cell ss:StyleID="s89"/>
-    <Cell ss:StyleID="s121"/>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">AuditEvent.entity.role</Data></Cell>
     <Cell ss:StyleID="s122"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -5262,8 +5265,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>13</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>19</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -5279,13 +5281,16 @@
   </Names>
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s115" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="130.5"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="124.5"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="130.80000000000001"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="124.80000000000001"/>
    <Column ss:StyleID="s115" ss:Width="24"/>
-   <Column ss:StyleID="s115" ss:Width="25.5"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="106.5" ss:Span="1"/>
-   <Column ss:Index="7" ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="222.75"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="253.5" ss:Span="1"/>
+   <Column ss:StyleID="s115" ss:Width="25.8"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="106.80000000000001"
+    ss:Span="1"/>
+   <Column ss:Index="7" ss:StyleID="s115" ss:AutoFitWidth="0"
+    ss:Width="222.60000000000002"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="253.79999999999998"
+    ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s128"><Data ss:Type="String">Name</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -5907,14 +5912,14 @@
   </Names>
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="21" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s115" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="82.5" ss:Span="1"/>
-   <Column ss:Index="3" ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="198.75"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="157.5"/>
-   <Column ss:StyleID="s115" ss:Width="106.5"/>
-   <Column ss:StyleID="s115" ss:Width="113.25"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="82.8" ss:Span="1"/>
+   <Column ss:Index="3" ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="198.6"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="157.80000000000001"/>
+   <Column ss:StyleID="s115" ss:Width="106.80000000000001"/>
+   <Column ss:StyleID="s115" ss:Width="113.39999999999999"/>
    <Column ss:StyleID="s115" ss:Width="120"/>
-   <Column ss:StyleID="s115" ss:Width="127.5"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="74.25"/>
+   <Column ss:StyleID="s115" ss:Width="127.8"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="74.400000000000006"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Event Code</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
@@ -6205,7 +6210,7 @@
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="40" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s115" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="114"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="281.25"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="281.39999999999998"/>
    <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="252"/>
    <Column ss:StyleID="s115" ss:Width="63"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
@@ -6228,10 +6233,11 @@
     <Cell><Data ss:Type="String">IG Name</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s120"/>
-    <Cell ss:StyleID="s121"/>
-    <Cell ss:StyleID="s121"/>
-    <Cell ss:StyleID="s122"/>
+    <Cell ss:StyleID="s120"><Data ss:Type="String">AuditEvent Extensions</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">auditevent-extensions.xml</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">auditevent-extensions-spreadsheet.xml</Data></Cell>
+    <Cell ss:StyleID="s122"><Data ss:Type="String">spreadsheet</Data></Cell>
+    <Cell><Data ss:Type="String">core</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s120"/>
@@ -6483,8 +6489,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveCol>0</ActiveCol>
-     <RangeSelection>R2</RangeSelection>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -6499,14 +6504,14 @@
     ss:Hidden="1"/>
   </Names>
   <Table ss:ExpandedColumnCount="7" ss:ExpandedRowCount="41" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s141" ss:DefaultColumnWidth="260.25"
+   x:FullRows="1" ss:StyleID="s141" ss:DefaultColumnWidth="260.39999999999998"
    ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s141" ss:Width="88.5"/>
-   <Column ss:StyleID="s141" ss:Width="27.75"/>
-   <Column ss:StyleID="s141" ss:Width="327.75"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="115.5"/>
-   <Column ss:StyleID="s141" ss:Width="205.5" ss:Span="1"/>
-   <Column ss:Index="7" ss:StyleID="s141" ss:Width="39.75"/>
+   <Column ss:StyleID="s141" ss:Width="88.800000000000011"/>
+   <Column ss:StyleID="s141" ss:Width="27.6"/>
+   <Column ss:StyleID="s141" ss:Width="327.59999999999997"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="115.80000000000001"/>
+   <Column ss:StyleID="s141" ss:Width="205.8" ss:Span="1"/>
+   <Column ss:Index="7" ss:StyleID="s141" ss:Width="39.6"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Name</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -6938,18 +6943,19 @@
   </Names>
   <Table ss:ExpandedColumnCount="13" ss:ExpandedRowCount="31" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s115" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="177.75"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="395.25"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="177.60000000000002"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="395.4"/>
    <Column ss:StyleID="s115" ss:Width="51"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="60.75"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="238.5"/>
-   <Column ss:StyleID="s115" ss:Width="172.5"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="97.5"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="88.5"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="60.6"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="238.8"/>
+   <Column ss:StyleID="s115" ss:Width="172.79999999999998"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="97.800000000000011"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="88.800000000000011"/>
    <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="114"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="548.25"/>
-   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="165.75" ss:Span="1"/>
-   <Column ss:Index="13" ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="106.5"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="548.4"/>
+   <Column ss:StyleID="s115" ss:AutoFitWidth="0" ss:Width="165.6" ss:Span="1"/>
+   <Column ss:Index="13" ss:StyleID="s115" ss:AutoFitWidth="0"
+    ss:Width="106.80000000000001"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Binding Name</Data><Comment
       ss:Author=""><ss:Data xmlns="http://www.w3.org/TR/REC-html40">        <Font
@@ -7019,7 +7025,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventAction</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Индикатор типа действия, совершенного во время события, которое сгенерировало отчет.<!-- Indicator for type of action performed during the event that generated the audit. --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicator for type of action performed during the event that generated the audit.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#audit-event-action</Data></Cell>
@@ -7035,7 +7041,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventOutcome</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Показывает, было ли событие успешным или произошел сбой<!-- Indicates whether the event succeeded or failed --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates whether the event succeeded or failed</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#audit-event-outcome</Data></Cell>
@@ -7050,8 +7056,8 @@
     <Cell ss:StyleID="s122"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventParticipantNetworkType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип точки доступа к сети этого участника в событии аудита<!-- The type of network access point of this participant in the audit event --></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventAgentNetworkType</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The type of network access point of this agent in the audit event</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#network-type</Data></Cell>
@@ -7066,12 +7072,12 @@
     <Cell ss:StyleID="s122"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventObjectType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Код типа объекта, участвующего в аудите<!-- Code for the object type involved audited --></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventEntityType</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Code for the entity type involved audited.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#object-type</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">DICOM Audit Event Object Type</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">DICOM Audit Event Entity Type</Data></Cell>
     <Cell ss:StyleID="s121"/>
     <Cell ss:StyleID="s62" ss:HRef="http://hl7-fhir.github.io/valueset-dicom-dcim.html"><Data
       ss:Type="String">http://nema.org/dicom/dicm</Data></Cell>
@@ -7082,12 +7088,12 @@
     <Cell ss:StyleID="s122"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventObjectRole</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Код роли объекта в событии<!-- Code representing the role the Object played in the event --></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventEntityRole</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Code representing the role the entity played in the event.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#object-role</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">DICOM Audit Event Object Role</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">DICOM Audit Event Entity Role</Data></Cell>
     <Cell ss:StyleID="s121"/>
     <Cell ss:StyleID="s62" ss:HRef="http://hl7-fhir.github.io/valueset-dicom-dcim.html"><Data
       ss:Type="String">http://nema.org/dicom/dicm</Data></Cell>
@@ -7098,12 +7104,12 @@
     <Cell ss:StyleID="s122"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventObjectLifecycle</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Идентификатор стадии жизненного цикла данных этого объекта<!-- Identifier for the data life-cycle stage for the object --></Data></Cell>
+    <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventEntityLifecycle</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifier for the data life-cycle stage for the entity.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">#object-lifecycle</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">DICOM Audit Event Object Lifecycle</Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">DICOM Audit Event Entity Lifecycle</Data></Cell>
     <Cell ss:StyleID="s121"/>
     <Cell ss:StyleID="s62" ss:HRef="http://hl7-fhir.github.io/valueset-dicom-dcim.html"><Data
       ss:Type="String">http://nema.org/dicom/dicm</Data></Cell>
@@ -7115,7 +7121,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип события<!-- Type of event --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Type of event.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-audit-event-type</Data></Cell>
@@ -7130,7 +7136,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventSubType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Подтип события<!-- Sub-type of event --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Sub-type of event.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-audit-event-sub-type</Data></Cell>
@@ -7145,7 +7151,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">DICOMRoleId</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Роли пользователя (из RBAC)<!-- Role(s) the user plays (from RBAC) --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">How the agent participated in the event. </Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-dicm-402-roleid</Data></Cell>
@@ -7160,7 +7166,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">DICOMMediaType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Используется, когда событие связано с импортом/экспортом медиа.<!-- Used when the event is about exporting/importing onto media. --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Used when the event is about exporting/importing onto media.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-dicm-405-mediatype</Data></Cell>
@@ -7175,7 +7181,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditEventSourceType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, указывающий тип системы, которая обнаружила и записала это событие<!-- Code specifying the type of system that detected and recorded the event --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Code specifying the type of system that detected and recorded the event.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-audit-source-type</Data></Cell>
@@ -7220,7 +7226,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s95"><Data ss:Type="String">!AuditEventObjectSensitivity</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Степень конфиденциальности объекта. Может также охватывать конфиденциальность и элементарный контроль доступа (например HCS)<!-- The sensitivity of an object. May also encompass confidentiality and rudimentary access control (e.g. HCS) --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The sensitivity of an object. May also encompass confidentiality and rudimentary access control (e.g. HCS).</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">valueset-audit-event-sensitivity</Data></Cell>
@@ -7235,7 +7241,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s95"><Data ss:Type="String">AuditPurposeOfUse</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Причина, по которой произошла активность.<!-- The reason the activity took place. --></Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The reason the activity took place.</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s121"><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s152"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/v3-PurposeOfUse</Data></Cell>
@@ -7457,6 +7463,7 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -7476,7 +7483,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>11</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -7493,13 +7500,15 @@
   </Names>
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s141" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s141" ss:Width="80.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.5"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.25" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="244.5"/>
+   <Column ss:StyleID="s141" ss:Width="80.400000000000006"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.799999999999997"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.39999999999998"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.400000000000006"
+    ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0"
+    ss:Width="244.79999999999998"/>
    <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="84" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.25"/>
+   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.4"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Code</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -8121,13 +8130,15 @@
   </Names>
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s141" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s141" ss:Width="80.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.5"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.25" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="244.5"/>
+   <Column ss:StyleID="s141" ss:Width="80.400000000000006"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.799999999999997"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.39999999999998"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.400000000000006"
+    ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0"
+    ss:Width="244.79999999999998"/>
    <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="84" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.25"/>
+   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.4"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Code</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -8749,13 +8760,15 @@
   </Names>
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s141" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s141" ss:Width="80.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.5"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.25" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="244.5"/>
+   <Column ss:StyleID="s141" ss:Width="80.400000000000006"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.799999999999997"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.39999999999998"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.400000000000006"
+    ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0"
+    ss:Width="244.79999999999998"/>
    <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="84" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.25"/>
+   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.4"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Code</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -9377,13 +9390,15 @@
   </Names>
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s141" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s141" ss:Width="80.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.5"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.25" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="244.5"/>
+   <Column ss:StyleID="s141" ss:Width="80.400000000000006"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.799999999999997"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.39999999999998"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.400000000000006"
+    ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0"
+    ss:Width="244.79999999999998"/>
    <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="84" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.25"/>
+   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.4"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Code</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -10005,13 +10020,15 @@
   </Names>
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s141" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s141" ss:Width="80.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.5"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.25" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="244.5"/>
+   <Column ss:StyleID="s141" ss:Width="80.400000000000006"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.799999999999997"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.39999999999998"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.400000000000006"
+    ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0"
+    ss:Width="244.79999999999998"/>
    <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="84" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.25"/>
+   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.4"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Code</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -10634,13 +10651,15 @@
   </Names>
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s141" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s141" ss:Width="80.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.5"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.25" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="244.5"/>
+   <Column ss:StyleID="s141" ss:Width="80.400000000000006"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.799999999999997"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.39999999999998"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.400000000000006"
+    ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0"
+    ss:Width="244.79999999999998"/>
    <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="84" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.25"/>
+   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.4"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Code</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -11263,14 +11282,14 @@
   </Names>
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s141" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s141" ss:Width="80.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.5"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="101.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="244.5"/>
+   <Column ss:StyleID="s141" ss:Width="80.400000000000006"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.799999999999997"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.39999999999998"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.400000000000006"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="101.4"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="244.79999999999998"/>
    <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="84" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.25"/>
+   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.4"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Code</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -11895,14 +11914,14 @@
   </Names>
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s141" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s141" ss:Width="80.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.5"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="142.5"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="244.5"/>
+   <Column ss:StyleID="s141" ss:Width="80.400000000000006"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.799999999999997"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.39999999999998"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.400000000000006"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="142.80000000000001"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="244.79999999999998"/>
    <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="84" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.25"/>
+   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.4"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Code</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -12525,13 +12544,15 @@
   </Names>
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s141" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s141" ss:Width="80.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.5"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.25" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="244.5"/>
+   <Column ss:StyleID="s141" ss:Width="80.400000000000006"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.799999999999997"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.39999999999998"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.400000000000006"
+    ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0"
+    ss:Width="244.79999999999998"/>
    <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="84" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.25"/>
+   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.4"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Code</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"
@@ -13154,13 +13175,15 @@
   </Names>
   <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="51" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s141" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s141" ss:Width="80.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.5"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.25"/>
-   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.25" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="244.5"/>
+   <Column ss:StyleID="s141" ss:Width="80.400000000000006"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="34.799999999999997"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="155.39999999999998"/>
+   <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="80.400000000000006"
+    ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s141" ss:AutoFitWidth="0"
+    ss:Width="244.79999999999998"/>
    <Column ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="84" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.25"/>
+   <Column ss:Index="9" ss:StyleID="s141" ss:AutoFitWidth="0" ss:Width="242.4"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s105"><Data ss:Type="String">Code</Data><Comment ss:Author=""><ss:Data
        xmlns="http://www.w3.org/TR/REC-html40">        <Font html:Face="Tahoma"

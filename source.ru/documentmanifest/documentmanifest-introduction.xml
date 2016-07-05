@@ -2,16 +2,14 @@
 
 <div>
 <a name="scope"> </a>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <p> 
-Манифест документов собирает набор ресурсов <a href="documentreference.html">DocumentReference</a> в единый пакет, который может быть субъектом таких рабочих процессов, как контроль доступа, аудит и адресная доставка.
-<!-- A document manifest gathers a set of <a href="documentreference.html">DocumentReference</a> resources 
+A document manifest gathers a set of <a href="documentreference.html">DocumentReference</a> resources 
 into a single package that may be the subject of workflow such as access control, auditing, and 
-targeted delivery.  -->
+targeted delivery. 
 </p>
 <p>
-Как правило, ресурсы DocumentManifest используются в системах индексирования документов, например IHE XDS (см. <a href="xds.html">XDS specific profile</a>).
-<!-- Typically, DocumentManifest resources are used in document indexing systems, such as <a href="http://wiki.ihe.net/index.php?title=Cross-Enterprise_Document_Sharing">IHE XDS</a> (see the <a href="xds.html">XDS specific profile</a>). -->
+Typically, DocumentManifest resources are used in document indexing systems, such as <a href="http://wiki.ihe.net/index.php?title=Cross-Enterprise_Document_Sharing">IHE XDS</a> (see the <a href="xds.html">XDS specific profile</a>).
 </p>
 </div>
 

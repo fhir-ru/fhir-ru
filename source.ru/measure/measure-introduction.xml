@@ -2,17 +2,15 @@
 
 <div>
 <a name="bnc"> </a>
-<h2>Область применения и использование</h2>
+<h2>Scope and Usage</h2>
 <p>
-<i>Данный ресурс - это техническое предложение для использования в рамках подхода к Клиническому Качеству в FHIR, задокументированное в составе <a href="cqif/cqif.html">Руководства по реализации Инфраструктуры для улучшения клинического качества</a>.<!-- This resource is a draft proposal for use as part of an approach to Clinical Quality within FHIR, and is documented as part of the <a href="cqif/cqif.html">Clinical Quality Improvement Framework Implementation Guide</a>. --></i>
+<i>This resource is a draft proposal for use as part of an approach to Clinical Quality within FHIR, and is documented as part of the <a href="cqif/cqif.html">Clinical Quality Improvement Framework Implementation Guide</a>.</i>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
 </p>
 
-<p>Ресурс Measure представляет собой структурированное вычислимое определение клинической меры качества. Мера качества - это количественный инструмент для оценки производительности человека или организации касательно конкретного процесса или результата через измерение действий, процессов или результатов клинического ухода. Меры качества часто берутся из клинических руководств и предназначены для определения, надлежащий ли уход был оказан, по заданному набору клинических критериев и базе фактических данных.
-<!-- The Measure resource represents a structured computable definition of a clinical quality measure. A quality measure is a quantitative tool to assess the performance of an individual or organization with respect to a specified process or outcome via the measurement of actions, processes, or outcomes of clinical care. Quality measures are often derived from clinical quidelines and are designed to determine whether the appropriate care has been provided given a set of clinical criteria and an evidence base. --></p>
+<p>The Measure resource represents a structured computable definition of a clinical quality measure. A quality measure is a quantitative tool to assess the performance of an individual or organization with respect to a specified process or outcome via the measurement of actions, processes, or outcomes of clinical care. Quality measures are often derived from clinical quidelines and are designed to determine whether the appropriate care has been provided given a set of clinical criteria and an evidence base.</p>
 
-<p>Обратите внимание, что сам по себе ресурс Measure не содержит никакой логики; вместо этого в нём есть ссылка на ресурс Library, который содержит логику, необходимую мере, и различные элементы выражений, такие как критерий популяции, ссылки на именованные выражения в рамках этой библиотеки (или библиотек). Кроме того, если ресурс Measure ссылается на несколько библиотек, тогда все ссылки на выражения в ресурсе должны уточняться названием библиотеки, которая содержит эти выражения.
-<!-- Note that the Measure itself does not contain any logic; rather a Library resource is referenced that contains the logic required by the measure, and the various expression elements, such as poulation criteria, reference named expressions within that library (or libraries). In addition, if the Measure references multiple libraries, then any expression references within the resource must be qualified with the name of the library that contains the referenced expression. --></p>
+<p>Note that the Measure itself does not contain any logic; rather a Library resource is referenced that contains the logic required by the measure, and the various expression elements, such as poulation criteria, reference named expressions within that library (or libraries). In addition, if the Measure references multiple libraries, then any expression references within the resource must be qualified with the name of the library that contains the referenced expression.</p>
 </div>
 
 <!-- (recommended): 

@@ -1,70 +1,56 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 	<div>
 <a name="scope"> </a>
-		<h2>Область применения и использование</h2>
+		<h2>Scope and Usage</h2>
 		<p>
-<i>Diagnostic Order</i> - это запись о запросе на выполнение набора диагностических исследований. Результатом исследования будет <a href="diagnosticreport.html">Diagnostic Report</a>, в котором сведены все результаты исследования, и который включает все полезные данные и/или изображения, которые имеют отношение к лечению/управлению субъектом. 
-<!-- A <i>Diagnostic Order</i> is a record of a request for a set of diagnostic investigations to be performed.
+A <i>Diagnostic Order</i> is a record of a request for a set of diagnostic investigations to be performed.
 The investigation will lead to a <a href="diagnosticreport.html">Diagnostic Report</a> that summarizes the
 outcome of the investigation, and includes any useful data and/or images that are relevant to the
-treatment/management of the subject. -->
+treatment/management of the subject.
 </p>
 		<p>
-Основным предназначением <i>Diagnostic Order</i> является поддержка заказов диагностических исследований пациентов (включая отличных от человека пациентов в ветеринарной медицине). Однако в большинстве контекстов процессы, связанные со здравоохранением, включают в себя выполнение диагностических исследований групп субъектов, устройств, вовлеченных в предоставление медицинской помощи, и даже окружающую среду, например воздуховоды, водоемы и т. п. <i>Diagnostic Order</i> поддерживает все эти варианты использования.
-<!-- The principal intention of the <i>Diagnostic Order</i> is to support ordering diagnostic investigations
+The principal intention of the <i>Diagnostic Order</i> is to support ordering diagnostic investigations
 on patients (which includes non-human patients in veterinary medicine). However in many contexts,
 healthcare related processes include performing diagnostic  investigations on groups of subjects,
 devices involved in the provision of healthcare, and even environmental locations such as ducts,
-bodies of water, etc. The <i>Diagnostic Order</i> supports all these usages. -->
+bodies of water, etc. The <i>Diagnostic Order</i> supports all these usages.
 </p>
 		<p>
-Основной рабочий процесс, который данный ресурс упрощает, это когда клиническая система создает диагностический заказ (diagnostic
-order). Диагностический заказ затем обменивается, возможно через посредников, с системой, которая представляет диагностический сервис, который может выполнить исследование по запросу. Диагностический сервис будет обновлять запрос по мере выполнения работы и затем выпустит окончательный отчет, который будет ссылаться на запросы, которые он выполняет. 
-<!-- The general work flow that this resource facilitates is that a clinical system creates a diagnostic
+The general work flow that this resource facilitates is that a clinical system creates a diagnostic
 order. The diagnostic order is then exchanged, perhaps via intermediaries, with a system that
 represents a diagnostic service that can perform the investigation as a request to do so.
 The diagnostic service will update the request as the work is performed, and then finally
-issue a report that references the requests that it fulfills. -->
+issue a report that references the requests that it fulfills.
 </p>
 	</div>
 	<div>
  <a name="bnr"> </a>
-
-		<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
-
+ 
+		<h2>Boundaries and Relationships</h2>
 		<p>
-Ресурс DiagnosticOrder тесно связан с другими ресурсами-запросами на что-либо (обычно содержат в названии слово "request"), в частности с <a href="referralrequest.html">ReferralRequest</a> и <a href="procedurerequest.html">ProcedureRequest</a>. Фактически, для запроса на выполнение некоторых услуг может подойти любой из этих ресурсов. Какой из них использовать - зависит от контекста и принятой в организации практики. Когда непонятно, какой использовать, могут помочь следующие принципы:
-<!-- DiagnosticOrder is closely related to other types of "request" resources, particularly <a href="referralrequest.html">ReferralRequest</a> and <a href="procedurerequest.html">ProcedureRequest</a>. In fact, for some services, it may be appropriate to use any one of these resources to request that the service be performed. Which one is used may be driven by organization practice and by context. When it is unclear which to use, the following principles may be helpful: -->
+DiagnosticOrder is closely related to other types of "request" resources, particularly <a href="referralrequest.html">ReferralRequest</a> and <a href="procedurerequest.html">ProcedureRequest</a>. In fact, for some services, it may be appropriate to use any one of these resources to request that the service be performed. Which one is used may be driven by organization practice and by context. When it is unclear which to use, the following principles may be helpful:
 
 <ul>
 				<li>
-        Ресурсы ProcedureRequest и DiagnosticOrder обычно используются, когда у запрашивающего врача есть полномочия (и экспертиза) для решения, какое именно действие должно быть выполнено.
-<!-- ProcedureRequest or DiagnosticOrder are typically used when the requesting clinician has and wishes to exercise the authority (and expertise) to decide exactly what action will be done. --> 
+ProcedureRequest or DiagnosticOrder are typically used when the requesting clinician has and wishes to exercise the authority (and expertise) to decide exactly what action will be done. 
 </li>
 				<li>
-        Ресурс ReferralRequest используется, когда запрашивающий врач хочет использовать экспертизу и/или полномочия другого врача или организации для определения, , какое именно действие должно быть выполнено.
-<!-- A ReferralRequest is used when the requesting practitioner is seeking another practitioner or organization to use their own expertise and/or authority to determine the specific action to take. --> 
+A ReferralRequest is used when the requesting practitioner is seeking another practitioner or organization to use their own expertise and/or authority to determine the specific action to take. 
 </li>
 				<li>
-        Решение о том, является ли заказываемая активность процедурой или диагностикой, обычно зависит от того, насколько инвазивным будет этот процесс. Более инвазивные процессы обычно оформляют ресурсом ProcedureRequest, хотя границы использования этих двух ресурсов для разных организаций могут варьироваться.
-<!-- Whether an activity is deemed to be a procedure or only a diagnostic order is typically driven by how invasive the diagnostic process is. More invasive processes are typically represented as procedures, though the dividing line will vary by organization. -->
+Whether an activity is deemed to be a procedure or only a diagnostic order is typically driven by how invasive the diagnostic process is. More invasive processes are typically represented as procedures, though the dividing line will vary by organization.
 </li>
 			</ul>
-      Вне зависимости от инструкций выше, системы должны быть готовы к некоторой степени пересечения этих ресурсов и готовы выполнять поиск по множеству ресурсов в случаях, когда их разграничение не может быть гарантировано. Также в некоторых рабочих процессах может создаваться более одного типа ресурса или даже все три; например после получения направления (ресурс ReferralRequest) врач может инициировать диагностику (ресурс DiagnosticOrder). Затем в рамках диагностики может быть инициирована процедура (ресурс ProcedureRequest).
-<!-- Irrespective of the guidance above, systems should be prepared for some degree of overlap between these resources and be prepared to execute searches against multiple resources in cases where differentiation cannot be guaranteed. As well, in some workflows more than one type of resource or even all three might exist; e.g. Upon receiving a ReferralRequest a practitioner might initiate a DiagnosticOrder. The diagnostic service might then initiate a ProcedureRequest. -->
+Irrespective of the guidance above, systems should be prepared for some degree of overlap between these resources and be prepared to execute searches against multiple resources in cases where differentiation cannot be guaranteed. As well, in some workflows more than one type of resource or even all three might exist; e.g. Upon receiving a ReferralRequest a practitioner might initiate a DiagnosticOrder. The diagnostic service might then initiate a ProcedureRequest.
 </p>
 		<p>
-    Ресурс DiagnosticOrder поддерживает ссылки на большое количество других ресурсов с данными о субъекте - заказчик, связанный визит, анатомическое расположение и другая вспомогательная информация. Например в этом ресурсе есть ссылки на <a href = "patient.html">Patient</a>, <a href = "practitioner.html">Practitioner</a> и <a href="condition.html">Condition</a>. Некоторые системы могут по желанию упаковывать ресурс DiagnosticOrder и связанные с ним ресурсы в документ для доставки получателю. При этом REST, обмен сообщениями и сервисы также являются допустимыми архитектурами для обработки направлений и могут быть уместны там, где требуется управление рабочим процессом.
-<!-- The DiagnosticOrder supports references to the numerous other resources that define information about the subject - the orderer, associated encounter, body site and other supporting information.   For example, <a href = "patient.html">Patient</a>, <a href = "practitioner.html">Practitioner</a> and <a href="condition.html">Condition</a> are all referenced in this resource.  Some systems may choose to bundle up a DiagnosticOrder and this referenced information into a Document for delivery to the recipient. However, REST, Messaging and Services are also valid architectures for managing referrals and may be more appropriate where active workflow management is needed. -->
+The DiagnosticOrder supports references to the numerous other resources that define information about the subject - the orderer, associated encounter, <!--specimen, -->body site and other supporting information.   For example, <a href = "patient.html">Patient</a>, <a href = "practitioner.html">Practitioner</a><!--, <a href="specimen.html">Specimen</a>--> and <a href="condition.html">Condition</a> are all referenced in this resource.  Some systems may choose to bundle up a DiagnosticOrder and this referenced information into a Document for delivery to the recipient. However, REST, Messaging and Services are also valid architectures for managing referrals and may be more appropriate where active workflow management is needed.
 </p>
 		<p>
-    Ресурс CarePlan может использоваться для описания более сложных запросов на комбинацию услуг, ссылаясь на ресурс DiagnosticOrder в рамках плана ухода. Аналогично, ресурс ClinicalImpression может ссылаться на DiagnosticOrder в рамках последующего наблюдения для планирования осмотра.
-<!-- The CarePlan resource can be used to describe more sophisticated requests for combinations of services and DiagnosticOrder may be referenced as part of a CarePlan.  Similarly ClinicalImpression resource can reference DiagnosticOrder as part of a follow up to plan to the assessment.  -->
+The CarePlan resource can be used to describe more sophisticated requests for combinations of services and DiagnosticOrder may be referenced as part of a CarePlan.  Similarly ClinicalImpression resource can reference DiagnosticOrder as part of a follow up to plan to the assessment. 
 </p>
 		<p>
-Обратите внимание, что сам по себе Diagnostic Order не является запросом на выполнение исследования - скорее это  запись о том, что запрос был сделан. 
-Чтобы действительно инициировать, требуется дополнительный рабочий процесс помимо просто существования Diagnostic Order. Это может быть достигнуто с помощью ресурса <a href="order.html">Order</a>, в котором элемент Order.details ссылается на Diagnostic Order, либо используя ресурс Diagnostic Order в контексте рабочего процесса обмена сообщениями или сервисов, где запрос может быть явным или неявным.
-<!-- Note that the Diagnostic Order itself is not a request to perform the investigation - but rather a record of the fact that a request was made. To actually initiate the workflow beyond simply the existence of a Diagnostic Order may required. This can be achieved by using an <a href="order.html">Order</a> resource, with the Diagnostic Order referenced from the Order.details, or by using the Diagnostic Order resource in the context of an messaging or service workflow where the request is explicit or implicit." -->
+Note that the Diagnostic Order itself is not a request to perform the investigation - but rather a record of the fact that a request was made. To actually initiate the workflow beyond simply the existence of a Diagnostic Order may be required. This can be achieved by using an <a href="order.html">Order</a> resource, with the Diagnostic Order referenced from the Order.details, or by using the Diagnostic Order resource in the context of an messaging or service workflow where the request is explicit or implicit."
 
 </p>
 	</div>

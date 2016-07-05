@@ -6585,7 +6585,7 @@
     <Cell ss:StyleID="s129"/>
     <Cell ss:StyleID="s151"/>
     <Cell ss:StyleID="s151"><Data ss:Type="String">Certain Match</Data></Cell>
-    <Cell ss:StyleID="s151"><Data ss:Type="String">Эта запись отвечает критериям MPI, чтобы автоматически считаться полным совпадением.<!-- This record meets the MPI criteria to be automatically considered as a full match. --></Data></Cell>
+    <Cell ss:StyleID="s151"><Data ss:Type="String">This record meets the MPI criteria to be automatically considered as a full match.</Data></Cell>
     <Cell ss:StyleID="s139"/>
     <Cell ss:StyleID="s139"/>
     <Cell ss:StyleID="s152"/>
@@ -6596,7 +6596,7 @@
     <Cell ss:StyleID="s125"/>
     <Cell ss:StyleID="s154"/>
     <Cell ss:StyleID="s154"><Data ss:Type="String">Probable Match</Data></Cell>
-    <Cell ss:StyleID="s151"><Data ss:Type="String">Эта запись является близким соответствием, но не полным совпадением. Может потребоваться дополнительная проверка (например человеком) перед её использованием в качестве совпадения.<!-- This record is a close match, but not a certain match. Additional review (e.g. by a human) may be required before using this as a match. --></Data></Cell>
+    <Cell ss:StyleID="s151"><Data ss:Type="String">This record is a close match, but not a certain match. Additional review (e.g. by a human) may be required before using this as a match.</Data></Cell>
     <Cell ss:StyleID="s142"/>
     <Cell ss:StyleID="s142"/>
     <Cell ss:StyleID="s155"/>
@@ -6607,7 +6607,7 @@
     <Cell ss:StyleID="s125"/>
     <Cell ss:StyleID="s154"/>
     <Cell ss:StyleID="s154"><Data ss:Type="String">Possible Match</Data></Cell>
-    <Cell ss:StyleID="s151"><Data ss:Type="String">Это возможное совпадение. Следует провести дополнительную проверку (например человеком) перед её использованием в качестве совпадения.<!-- This record may be a matching one. Additional review (e.g. by a human) SHOULD be performed before using this as a match. --></Data></Cell>
+    <Cell ss:StyleID="s151"><Data ss:Type="String">This record may be a matching one. Additional review (e.g. by a human) SHOULD be performed before using this as a match.</Data></Cell>
     <Cell ss:StyleID="s142"/>
     <Cell ss:StyleID="s142"/>
     <Cell ss:StyleID="s155"/>
@@ -6618,7 +6618,7 @@
     <Cell ss:StyleID="s125"/>
     <Cell ss:StyleID="s154"/>
     <Cell ss:StyleID="s154"><Data ss:Type="String">Certainly Not a Match</Data></Cell>
-    <Cell ss:StyleID="s154"><Data ss:Type="String">Эта запись заведомо не является совпадением. Обратите внимание, что обычно несовпадающие записи не возвращаются, однако в некоторых случаях записи, которые ранее считались или могут рассматриваться в качестве соответствия, могут специально возвращаться MPI-приложением с явным отрицанием.<!-- This record is known not to be a match. Note that usually non-matching records are not returned, but in some cases records previously or likely considered as a match may specifically be negated by the MPI. --></Data></Cell>
+    <Cell ss:StyleID="s154"><Data ss:Type="String">This record is known not to be a match. Note that usually non-matching records are not returned, but in some cases records previously or likely considered as a match may specifically be negated by the MPI.</Data></Cell>
     <Cell ss:StyleID="s142"/>
     <Cell ss:StyleID="s142"/>
     <Cell ss:StyleID="s155"/>
