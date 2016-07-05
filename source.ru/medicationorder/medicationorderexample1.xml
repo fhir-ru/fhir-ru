@@ -2,7 +2,7 @@
 <MedicationOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://hl7.org/fhir ../../../Desktop/FHIR%20Examples/schema/medicationorder.xsd"
  xmlns="http://hl7.org/fhir">
-    <id value="medrx001"/>
+    <id value="medrx0311"/>
     <contained>
       <Medication>
           <id value="med0316"/>
