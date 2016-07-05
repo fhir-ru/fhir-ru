@@ -2,7 +2,7 @@
 <Medication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://hl7.org/fhir ../../../Documents/fhir/trunk/build/schema/medication.xsd"
  xmlns="http://hl7.org/fhir">
-  <id value="medicationexample1"/>
+  <id value="medexample001"/>
 
   <!-- this example includes the code text element only -->
   
