@@ -4373,7 +4373,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">Именованное анатомическое расположение<!-- Named anatomical location  --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s121"><Data ss:Type="String">Пациент<!-- patient --></Data></Cell>
+    <Cell ss:StyleID="s121"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s122"><Data ss:Type="String">BodySite.patient</Data></Cell>
