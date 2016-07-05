@@ -50,8 +50,8 @@ ARGF.each do |file|
     end
     s1 = key.downcase
     words = s1.scan(/\w+/) # массив слов ключа
-    if (words.size < 2) and (s1 == "Identifier") # если ключ из 1 слова, то... надо проверить, что это не слово Identifier или что-то вроде этого - т.е. тип данных
-      
+    if (words.size < 2) and ((s1 == "Identifier") || (s1 == "where"))# если ключ из 1 слова, то... надо проверить, что это не слово Identifier или что-то вроде этого - т.е. тип данных
+      puts "Skipping: " + s1
     else
       # если нашли точное соответствие, то замена    
       if found_match = /#{full}/.match(str2)
