@@ -979,12 +979,12 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Search Parameter for a resource</Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Параметр поиска для ресурса<!-- Search Parameter for a resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">A search parameter that defines a named search item that can be used to search/filter on a resource.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Параметр поиска, определяющий именованный элемент поиска, который можно использовать для поиска/фильтрации по ресурсу<!-- A search parameter that defines a named search item that can be used to search/filter on a resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">In FHIR, search is not performed directly on a resource (by XML or JSON path), but on a named parameter that maps into the resource content </Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">В FHIR поиск выполняется не прямо по ресурсу (по XML- или JSON-пути), а по именованному параметру, имеющему установленное соответствие с содержимым ресурса<!-- In FHIR, search is not performed directly on a resource (by XML or JSON path), but on a named parameter that maps into the resource content  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">n/a</Data><NamedCell
@@ -1018,11 +1018,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Absolute URL used to reference this search parameter</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Абсолютная URL-ссылка на этот поисковый параметр<!-- Absolute URL used to reference this search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">An absolute URL that is used to identify this search parameter when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this search parameter is (or will be) published</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Абсолютная URL-ссылка на этот поисковый параметр, когда на него даётся ссылка в спецификации, модели, проекте или экземпляре. Это должен быть URL, он должен быть глобально уникальным и должен быть адресом, по которому этот поисковый параметр опубликован (или будет опубликован)<!-- An absolute URL that is used to identify this search parameter when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this search parameter is (or will be) published --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">To allow referencing and reusing search parameter definitions under other names on operational systems (in case of name clash)</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Обеспечить возможность ссылаться и повторно использовать определения параметров поиска под другими именами в операционных системах (в случае конфликта имен)<!-- To allow referencing and reusing search parameter definitions under other names on operational systems (in case of name clash) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1053,12 +1053,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Informal name for this search parameter</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Неформальное имя этого параметра поиска<!-- Informal name for this search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A free text natural language name identifying the search parameter</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Произвольное текстовое название параметра поиска на естественном языке<!-- A free text natural language name identifying the search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This is often the same as the code for the parameter, but does not need to be</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это часто совпадает с кодом параметра, но не обязательно<!-- This is often the same as the code for the parameter, but does not need to be --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1093,10 +1093,10 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">draft | active | retired </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The status of this search parameter definition</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Статус определения данного параметра поиска<!-- The status of this search parameter definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This is not intended for use with actual conformance statements, but where conformance statements are used to describe possible or desired systems</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Не предназначен для использования с реальными заявлениями о соответствии, а только с теми, которые описывают возможные или желаемые системы<!-- This is not intended for use with actual conformance statements, but where conformance statements are used to describe possible or desired systems --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1129,12 +1129,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If for testing purposes, not real usage</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если для тестирования, а не реального применения<!-- If for testing purposes, not real usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A flag to indicate that this search parameter definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Флаг, показывающий, что это определение параметра поиска создано в целях тестирования (или обучения/оценивания/маркетинга) и не предназначено для реального применения<!-- A flag to indicate that this search parameter definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows filtering of search parameter definitions that are appropriate for use vs. not</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет отфильтровывать определения параметров поиска, которые подходят для использования<!-- Allows filtering of search parameter definitions that are appropriate for use vs. not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1165,12 +1165,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Publication Date(/time)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата (/время) публикации<!-- Publication Date(/time) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The date  (and optionally time) when the search parameter definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата (и, необязательно, время) публикации этого определения параметра поиска. Дата должна меняться в случае изменения бизнес-версии или кода статуса. Кроме того, она должна меняться при внесении значительных изменений в содержимое определения параметра поиска<!-- The date  (and optionally time) when the search parameter definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Additional specific dates may be added as extensions</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дополнительные специфические даты можно добавить в расширениях<!-- Additional specific dates may be added as extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1203,13 +1203,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Name of the publisher (Organization or individual)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя издателя (организация или частное лицо)<!-- Name of the publisher (Organization or individual) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The name of the individual or organization that published the search parameter</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя лица или организации, опубликовавших этот параметр поиска<!-- The name of the individual or organization that published the search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Helps establish the &quot;authority/credibility&quot; of the search parameter.  May also allow for contact</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Помогает установить &quot;авторитет/надежность&quot; параметра поиска. Может также потребоваться для контакта<!-- Helps establish the &quot;authority/credibility&quot; of the search parameter.  May also allow for contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Обычно это организация, но может быть и физическое лицо. Этот элемент СЛЕДУЕТ заполнить, если только эта информация не доступна из контекста.<!-- Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1236,12 +1236,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Contact details of the publisher</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактные данные издателя<!-- Contact details of the publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Contacts to assist a user in finding and communicating with the publisher</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Контактные данные для помощи пользователю в поиске и коммуникации с издателем<!-- Contacts to assist a user in finding and communicating with the publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">May be a web site, an email address, a telephone number (tel:), etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Может быть веб-сайтом, адресом электронной почты, телефонным номером (tel:) и т. п.<!-- May be a web site, an email address, a telephone number (tel:), etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1271,12 +1271,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Name of an individual to contact</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя контактного лица<!-- Name of an individual to contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The name of an individual to contact regarding the search parameter</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя контактного лица для связи по поводу этого параметра поиска<!-- The name of an individual to contact regarding the search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If there is no named individual, the telecom is for the organization as a whole</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если нет выделенного контактного лица, то указываются контактные данные организации в целом<!-- If there is no named individual, the telecom is for the organization as a whole --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1305,9 +1305,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Contact details for individual or publisher</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактная информация физического лица или издателя<!-- Contact details for individual or publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Contact details for individual (if a name was provided) or the publisher</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактная информация физического лица (если было указано имя) или издателя<!-- Contact details for individual (if a name was provided) or the publisher --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1339,11 +1339,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Content intends to support these contexts</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержимое предназначено для поддержки следующих видов контекста<!-- Content intends to support these contexts --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of search parameters.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Содержимое разрабатывалось с фокусом на и поддержкой перечисленных видов контекста. Эти термины могут использоваться для индексации и поиска поисковых параметров.<!-- The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of search parameters. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Assist in searching for appropriate content</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Для поиска подходящего контента<!-- Assist in searching for appropriate content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1378,9 +1378,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Why this search parameter is defined</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Почему определен этот параметр поиска<!-- Why this search parameter is defined --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The Scope and Usage that this search parameter was created to meet</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Область действия и применение этого параметра поиска<!-- The Scope and Usage that this search parameter was created to meet --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1412,12 +1412,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code used in URL</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код, используемый в URL<!-- Code used in URL --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The code used in the URL or the parameter name in a parameters resource for this search parameter</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, используемый в URL, или имя параметра в ресурсе Parameters, для данного параметра поиска<!-- The code used in the URL or the parameter name in a parameters resource for this search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">For maximum compatibility, use only lowercase ASCII characters</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для максимальной совместимости используйте только символы ASCII в нижнем регистре<!-- For maximum compatibility, use only lowercase ASCII characters --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1446,9 +1446,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The resource type this search parameter applies to</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип ресурса, к которому применяется этот параметр поиска<!-- The resource type this search parameter applies to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The base resource type that this search parameter refers to </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип базового ресурса, к которому применяется этот параметр поиска<!-- The base resource type that this search parameter refers to  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1482,7 +1482,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">number | date | string | token | reference | composite | quantity | uri</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The type of value a search parameter refers to, and how the content is interpreted</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Тип значения, к которому относится параметр поиска, и как интерпретируется его содержимое<!-- The type of value a search parameter refers to, and how the content is interpreted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1513,9 +1513,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Documentation for  search parameter</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Документация для параметра поиска<!-- Documentation for  search parameter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A description of the search parameters and how it used</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Описание параметров поиска и их применения<!-- A description of the search parameters and how it used --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1551,7 +1551,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">A FluentPath expression that returns a set of elements for the search parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Note that the elements returned by the expression are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Отметьте, что элементы, возвращаемые этим выражением, иногда являются комплексными элементами, где требуется логика для определения того, как их обрабатывать; например элементы типа CodeableConcept могут содержать текст и/или несколько кодингов, где сами кодинги в свою очередь содержат код и систему<!-- Note that the elements returned by the expression are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1585,7 +1585,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">An XPath expression that returns a set of elements for the search parameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Note that the elements returned by the XPath are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Обратите внимание, что элементы, возвращаемые этим XPath, иногда являются комплексными элементами, и требуется логика для определения того, как их обрабатывать. Например CodeableConcepts могут содержать текст и/или несколько кодингов, где сами кодинги содержат код и систему<!-- Note that the elements returned by the XPath are sometimes complex elements where logic is required to determine quite how to handle them; e.g. CodeableConcepts may contain text and/or multiple codings, where the codings themselves contain a code and a system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1617,7 +1617,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">normal | phonetic | nearby | distance | other</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">How the search parameter relates to the set of elements returned by evaluating the xpath query</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Каким образом параметр поиска соотносится с набором элементов, возвращаемых при вычислении этого xpath-выражения<!-- How the search parameter relates to the set of elements returned by evaluating the xpath query --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1648,9 +1648,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Types of resource (if a resource reference)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Типы ресурса (если это ссылка на ресурс)<!-- Types of resource (if a resource reference) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Types of resource (if a resource is referenced)</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Типы ресурса (если это ссылка на ресурс)<!-- Types of resource (if a resource is referenced) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4151,7 +4151,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">SearchParameter</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">If an xpath is present, there SHALL be an xpathUsage</Data><NamedCell
+    <Cell ss:StyleID="s84"><Data ss:Type="String">Если указан xpath, то необходимо указать и xpathUsage<!-- If an xpath is present, there SHALL be an xpathUsage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">xpath.empty() or xpathUsage.exists()</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4719,7 +4719,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">SearchParameter.useContext</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A use context assigned to the search parameter</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Контекст применения, присвоенный этому параметру поиска<!-- A use context assigned to the search parameter --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
@@ -6656,7 +6656,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">XPathUsageType</Data></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">How a search parameter relates to the set of elements returned by evaluating its xpath query.</Data></Cell>
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Каким образом параметр поиска соотносится с набором элементов, возвращаемых при вычислении этого xpath-выражения.<!-- How a search parameter relates to the set of elements returned by evaluating its xpath query. --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">#search-xpath-usage</Data></Cell>

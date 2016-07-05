@@ -967,9 +967,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A quality measure</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Мера качества<!-- A quality measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The Measure resource provides the definition of a quality measure</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">В ресурсе Measure можно определить меру качества<!-- The Measure resource provides the definition of a quality measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -998,9 +998,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Metadata for the measure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Метаданные меры качества<!-- Metadata for the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The metadata for the measure, including publishing, life-cycle, version, documentation, and supporting evidence</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Метаданные меры качества, включая информацию о публикации, жизненный цикл, версию, документацию и подтверждающие данные<!-- The metadata for the measure, including publishing, life-cycle, version, documentation, and supporting evidence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1029,9 +1029,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Logic used by the measure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Логика, используемая мерой качества<!-- Logic used by the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A reference to a Library resource containing the formal logic used by the measure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на ресурс Library, содержащий формальную логику, используемую мерой качества<!-- A reference to a Library resource containing the formal logic used by the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1060,9 +1060,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Disclaimer for the measure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Отказ от ответственности для этой меры качества<!-- Disclaimer for the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A disclaimer for the use of the measure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Отказ от ответственности за использование этой меры качества<!-- A disclaimer for the use of the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1094,7 +1094,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">proportion | ratio | continuous-variable | cohort</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The measure scoring type, e.g. proportion, CV</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип подсчёта меры качества, например пропорция, продленная стоимость<!-- The measure scoring type, e.g. proportion, CV --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1126,7 +1126,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">process | outcome</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The measure type, e.g. process, outcome</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип меры качества, например процесс, результат<!-- The measure type, e.g. process, outcome --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1155,9 +1155,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">How is risk adjustment applied for this measure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Как для этой меры применяется корректировка рисков<!-- How is risk adjustment applied for this measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A description of the risk adjustment factors that may impact the resulting score for the measure and how they may be accounted for when computing and reporting measure results</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание факторов корректировки риска, которые могут повлиять на полученную оценку для этой меры, и как они могут быть учтены при расчете и сообщению результатов меры<!-- A description of the risk adjustment factors that may impact the resulting score for the measure and how they may be accounted for when computing and reporting measure results --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1186,9 +1186,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">How is rate aggregation performed for this measure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Как для этой меры выполняется агрегация величины<!-- How is rate aggregation performed for this measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A description of the rate aggregation for the measure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание агрегации величины для этой меры<!-- A description of the rate aggregation for the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1217,9 +1217,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Why does this measure exist</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Почему эта мера существует<!-- Why does this measure exist --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The rationale for the measure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обоснование меры<!-- The rationale for the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1248,9 +1248,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Clinical recommendation</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Клиническая рекомендация<!-- Clinical recommendation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The clinical recommendation statement for the measure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Заключение клинической рекомендации для этой меры<!-- The clinical recommendation statement for the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1279,9 +1279,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Improvement notation for the measure, e.g. higher score indicates better quality</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Улучшенное обозначение для меры, например более высокая оценка указывает на лучшее качество<!-- Improvement notation for the measure, e.g. higher score indicates better quality --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Improvement notation for the measure, e.g. higher score indicates better quality</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Улучшенное обозначение для меры, например более высокая оценка указывает на лучшее качество<!-- Improvement notation for the measure, e.g. higher score indicates better quality --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1310,9 +1310,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A natural language definition of the measure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определение меры качества на естественном языке<!-- A natural language definition of the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A narrative description of the complete measure calculation</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Текстовое описание полного вычисления меры<!-- A narrative description of the complete measure calculation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1341,9 +1341,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The guidance for the measure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Руководство по этой мере качества<!-- The guidance for the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Additional guidance for the measure including how it can be used in a clinical context, and the intent of the measure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительное руководство по этой мере качества, включая то, как её можно использовать в клиническом контексте, и предназначение этой меры<!-- Additional guidance for the measure including how it can be used in a clinical context, and the intent of the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1372,9 +1372,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The measure set, e.g. Preventive Care and Screening</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Совокупность меры, например профилактический уход и скрининг<!-- The measure set, e.g. Preventive Care and Screening --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The measure set, e.g. Preventive Care and Screening</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Совокупность меры, например профилактический уход и скрининг<!-- The measure set, e.g. Preventive Care and Screening --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1402,9 +1402,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Population criteria group</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Группа критериев популяции<!-- Population criteria group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A group of population criteria for the measure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Группа критериев популяции для этой меры<!-- A group of population criteria for the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1433,9 +1433,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Unique identifier</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор<!-- Unique identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A unique identifier for the group. This identifier will used to report data for the group in the measure report</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор группы. Этот идентификатор будет использоваться для сообщения данных для группы в отчёте по этой мере качества<!-- A unique identifier for the group. This identifier will used to report data for the group in the measure report --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1464,9 +1464,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Short name</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Краткое название<!-- Short name --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Optional name or short description of this group</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Необязательное название или краткое описание этой группы<!-- Optional name or short description of this group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1495,9 +1495,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Summary description</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Итоговое описание<!-- Summary description --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The human readable description of this population group</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое описание этой группы популяции<!-- The human readable description of this population group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1525,9 +1525,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Population criteria</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Критерии популяции<!-- Population criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A population criteria for the measure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Критерии популяции для этой меры<!-- A population criteria for the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1559,7 +1559,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">initial-population | numerator | numerator-exclusion | denominator | denominator-exclusion | denominator-exception | measure-population | measure-population-exclusion | measure-score</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The type of population criteria</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Тип критерия популяции<!-- The type of population criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1588,9 +1588,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Unique identifier</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор<!-- Unique identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A unique identifier for the population criteria. This identifier is used to report data against this criteria within the measure report</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор критерия популяции. Этот идентификатор используется для сообщения данных по этому критерию в рамках отчёта по мере качества<!-- A unique identifier for the population criteria. This identifier is used to report data against this criteria within the measure report --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1619,9 +1619,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Short name</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Краткое название<!-- Short name --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Optional name or short description of this population</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Необязательное название или краткое описание этой популяции<!-- Optional name or short description of this population --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1650,9 +1650,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The human readable description of this population criteria</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое описание этого критерия популяции<!-- The human readable description of this population criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The human readable description of this population criteria</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое описание этого критерия популяции<!-- The human readable description of this population criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1681,9 +1681,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of a valid referenced CQL expression (may be namespaced) that defines this population criteria</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя допустимого справочного CQL-выражения (может быть указано пространство имён), задающего этот критерий популяции<!-- The name of a valid referenced CQL expression (may be namespaced) that defines this population criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name of a valid referenced CQL expression (may be namespaced) that defines this population criteria</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Имя допустимого справочного CQL-выражения (может быть указано пространство имён), задающего этот критерий популяции<!-- The name of a valid referenced CQL expression (may be namespaced) that defines this population criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1711,9 +1711,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Stratifier criteria for the measure</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Критерии факторов стратификации меры<!-- Stratifier criteria for the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library, or a valid FHIR Resource Path</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Критерии факторов стратификации для отчёта по этой мере, указанные либо в виде названия допустимого CQL-выражения, заданного в рамках используемой библиотеки, либо в виде допустимого пути к FHIR-ресурсу<!-- The stratifier criteria for the measure report, specified as either the name of a valid CQL expression defined within a referenced library, or a valid FHIR Resource Path --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1742,9 +1742,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The identifier for the stratifier used to coordinate the reported data back to this stratifier</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор факторов стратификации используется для обратного согласования сообщённых данных с этими факторами стратификации<!-- The identifier for the stratifier used to coordinate the reported data back to this stratifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The identifier for the stratifier used to coordinate the reported data back to this stratifier</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор факторов стратификации используется для обратного согласования сообщённых данных с этими факторами стратификации<!-- The identifier for the stratifier used to coordinate the reported data back to this stratifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1773,9 +1773,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Stratifier criteria</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Критерии факторов стратификации<!-- Stratifier criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The criteria for the stratifier. This must be the name of an expression defined within a referenced library</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Критерии факторов стратификации. Это должно быть именем выражения, заданного в рамках используемой библиотеки по ссылке<!-- The criteria for the stratifier. This must be the name of an expression defined within a referenced library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1804,9 +1804,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Path to the stratifier</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Путь к фактору стратификации<!-- Path to the stratifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The path to an element that defines the stratifier, specified as a valid FHIR resource path</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Путь к элементу, который определяет факторы стратификации, указанный как допустимый путь к FHIR-ресурсу<!-- The path to an element that defines the stratifier, specified as a valid FHIR resource path --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1834,9 +1834,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Supplemental data</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительные данные<!-- Supplemental data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">The supplemental data criteria for the measure report, specified as either the name of a valid CQL expression within a referenced library, or a valid FHIR Resource Path</Data><NamedCell
+    <Cell><Data ss:Type="String">Критерии дополнительных данных для отчёта по мере качества, указанные либо как название допустимого CQL-выражения в рамках используемой библиотеки, либо как допустимый путь к FHIR-ресурсу<!-- The supplemental data criteria for the measure report, specified as either the name of a valid CQL expression within a referenced library, or a valid FHIR Resource Path --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1865,9 +1865,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Identifier, unique within the measure</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор, уникальный в рамках этой меры<!-- Identifier, unique within the measure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An identifier for the supplemental data</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор для дополнительных данных<!-- An identifier for the supplemental data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1899,7 +1899,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">supplemental-data | risk-adjustment-factor</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An indicator of the intended usage for the supplemental data element. Supplemental data indicates the data is additional information requested to augment the measure information. Risk adjustment factor indicates the data is additional information used to calculate risk adjustment factors when applying a risk model to the measure calculation</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показатель предполагаемого использования для дополнительного элемента данных. Дополнительные данные показывают, что данные являются дополнительной информацией, запрашиваемой дополнительно к информации о мере. Коэффициент корректировки рисков показывает, что данные являются дополнительной информацией, используемой для расчета коэффициентов корректировки рисков при применении модели риска к расчету меры<!-- An indicator of the intended usage for the supplemental data element. Supplemental data indicates the data is additional information requested to augment the measure information. Risk adjustment factor indicates the data is additional information used to calculate risk adjustment factors when applying a risk model to the measure calculation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1928,9 +1928,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Supplemental data criteria</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Критерии дополнительных данных<!-- Supplemental data criteria --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The criteria for the supplemental data. This must be the name of a valid expression defined within a referenced library, and defines the data to be returned for this element</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Критерии для дополнительных данных. Это должно быть имя допустимого выражения, определённого в рамках используемой библиотеки, и оно должно задавать данные, которые должны возвращаться для этого элемента<!-- The criteria for the supplemental data. This must be the name of a valid expression defined within a referenced library, and defines the data to be returned for this element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1959,9 +1959,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Path to the supplemental data element</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Путь к элементу дополнительных данных<!-- Path to the supplemental data element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The supplemental data to be supplied as part of the measure response, specified as a valid FHIR Resource Path</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вспомогательные данные для указания в рамках ответа измерения, выраженные в виде корректного пути к FHIR-ресурсу<!-- The supplemental data to be supplied as part of the measure response, specified as a valid FHIR Resource Path --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4793,49 +4793,49 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Measure.moduleMetadata.identifier</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Logical identifier for the module (e.g. CMS-143)</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Логический идентификатор модуля (например CMS-143)<!-- Logical identifier for the module (e.g. CMS-143) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">topic</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Measure.moduleMetadata.topic</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Topics associated with the module</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Темы, ассоциированные с модулем<!-- Topics associated with the module --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">title</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Measure.moduleMetadata.title</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Text search against the title</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по заголовку<!-- Text search against the title --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">description</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Measure.moduleMetadata.description</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Text search against the description</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по описанию<!-- Text search against the description --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">version</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Measure.moduleMetadata.version</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Version of the module (e.g. 1.0.0)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Версия модуля (например 1.0.0)<!-- Version of the module (e.g. 1.0.0) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Measure.moduleMetadata.status</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Status of the module</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Статус модуля<!-- Status of the module --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">!minScore</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">number</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Bundle/entry/search/score</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The minimum relevance score of any match that will be returned</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Минимальная оценка релевантности любого совпадения, которое будет возвращено<!-- The minimum relevance score of any match that will be returned --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6784,7 +6784,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">MeasurePopulationType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of population</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип популяции<!-- The type of population --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#measure-population</Data></Cell>
@@ -6799,7 +6799,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">MeasureScoring</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The scoring type of the measure</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип подсчёта меры<!-- The scoring type of the measure --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#measure-scoring</Data></Cell>
@@ -6814,7 +6814,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">MeasureType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The type of measure</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип меры<!-- The type of measure --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#measure-type</Data></Cell>
@@ -6829,7 +6829,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">MeasureDataUsage</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The intended usage for supplemental data elements in the measure</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Предполагаемое использование дополнительных элементов данных в мере<!-- The intended usage for supplemental data elements in the measure --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">#measure-data-usage</Data></Cell>
@@ -7948,7 +7948,7 @@
     <Cell ss:StyleID="s114"/>
     <Cell ss:StyleID="s148"/>
     <Cell ss:StyleID="s148"><Data ss:Type="String">Initial Population</Data></Cell>
-    <Cell ss:StyleID="s148"><Data ss:Type="String">The initial population for the measure</Data></Cell>
+    <Cell ss:StyleID="s148"><Data ss:Type="String">Начальная популяция для этого показателя<!-- The initial population for the measure --></Data></Cell>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s127"/>
     <Cell ss:StyleID="s139"/>
@@ -7959,7 +7959,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Numerator</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The numerator for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Числитель для этого показателя<!-- The numerator for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -7970,7 +7970,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Numerator Exclusion</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The numerator exclusion for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Исключение из числителя для этого показателя<!-- The numerator exclusion for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -7981,7 +7981,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Denominator</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The denominator for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Знаменатель для этого показателя<!-- The denominator for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -7992,7 +7992,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Denominator Exclusion</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The denominator exclusion for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Исключение из знаменателя для этого показателя<!-- The denominator exclusion for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -8003,7 +8003,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Denominator Exception</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The denominator exception for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Невключение для знаменателя этого показателя<!-- The denominator exception for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -8014,7 +8014,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Measure Population</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The measure population for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Популяция для измерения этого показателя<!-- The measure population for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -8025,7 +8025,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Measure Population Exclusion</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The measure population exclusion for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Исключение из популяции для измерения этого показателя<!-- The measure population exclusion for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>
@@ -8036,7 +8036,7 @@
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s149"/>
     <Cell ss:StyleID="s149"><Data ss:Type="String">Measure Score</Data></Cell>
-    <Cell ss:StyleID="s149"><Data ss:Type="String">The measure score for the measure</Data></Cell>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">Оценка измерения для этого показателя<!-- The measure score for the measure --></Data></Cell>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s130"/>
     <Cell ss:StyleID="s141"/>

@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 
 
-
-[%settitle Documentation Index%]
+      
+[%settitle Указатель документации%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -10,85 +10,84 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
-<h1>FHIR Documentation Index</h1>
+<h1>Указатель документации по стандарту FHIR</h1>
 
 <p>
-This page provides an index to the FHIR Documentation. In addition
-to this documentation, there are <a href="implementation.html">implementation
-assistance</a> (which has important information about how to use FHIR
-in practice), and the <a href="resourcelist.html">list of resources</a>.
+На данной странице вы найдете указатель документации по стандарту FHIR.
+Также вы можете посетить страницы <a href="implementation.html">Помощь в реализации</a> (на которой содержится важная информация о возможностях практического использования стандарта FHIR) и <a href="resourcelist.html">Перечень ресурсов</a>.
 </p>
 <table width="100%" style="table-layout: fixed">
  <tr>
  <td width="33%">
-<p><b>Administration</b></p>
-<p>Documentation Guidance / Background.</p>
+<p><b>Административный домен</b></p>
+<p>Путеводитель по документации / Общая информация</p>
 <ul>
-  <li><a href="toc.html">Full Table of Contents</a></li>
-  <li><a href="help.html">Documentation Guidance &amp; Glossary</a></li>
-  <li><a href="license.html">License and Legal Terms</a></li>
-  <li><a href="credits.html">Community &amp; Credits</a></li>
-  <li><a href="history.html">Version History</a></li>
-  <li><a href="todo.html">Outstanding Issues</a></li>
+  <li><a href="toc.html">Оглавление</a></li>
+  <li><a href="help.html">Руководство по документации и глоссарий<!-- Documentation Guidance &amp; Glossary --></a></li>
+  <li><a href="license.html">Лицензирование и условия использования</a></li>
+  <li><a href="credits.html">Наше сообщество и благодарности</a></li>
+  <li><a href="history.html">Журнал версий FHIR</a></li>
+  <li><a href="todo.html">Нерешённые вопросы</a></li>
 </ul>
 <hr/>
-<p><b>Overview</b></p>
-<p>Background and Tutorial Information.</p>
+<p><b>Обзор стандарта</b></p>
+<p>Вводная и обучающая информация</p>
 <ul>
-  <li><a href="summary.html">1 page Summary (Glossy)</a></li>
-  <li><a href="overview.html">Overview &amp; Roadmap</a></li>
-  <li><a href="overview-dev.html">Developer's Introduction</a></li>
-  <li><a href="overview-clinical.html">Clinical Introduction</a></li>
-  <li><a href="timelines.html"><b>FHIR Timelines</b></a></li>
-  <li><a href="compatibility.html">Inter-version Compatibility</a></li>
+  <li><a href="summary.html">Краткий обзор (+ pdf)</a></li>
+  <li><a href="overview.html">Обзор стандарта и план развития</a></li>
+  <li><a href="overview-dev.html">Введение для разработчиков</a></li>
+  <li><a href="overview-clinical.html">Введение для медицинских работников</a></li>
+  <li><a href="timelines.html"><b>Хронология развития FHIR</b></a></li>
+  <li><a href="compatibility.html">Межверсионная совместимость</a></li>
 </ul>
 </td><td style="border-left: 1px solid #eeeeee" width="33%">
-<p><b>Resources</b></p>
-<p>Underlying Definitions for Resources.</p>
+<p><b>Ресурсы</b></p>
+<p>Ключевые определения ресурса</p>
 <ul>
-  <li><a href="resource.html"><b>Base Resource</b></a></li>
-  <li><a href="conformance-rules.html">Conformance Rules</a></li>
-  <li><a href="lifecycle.html">Resource Life Cycles</a></li>
-  <li><a href="references.html">References between Resources</a></li>
-  <li><a href="compartmentdefinition.html">Compartments (Patient based access)</a></li>
-  <li><a href="narrative.html">Narrative</a></li>
-  <li><a href="extensibility.html">Extensibility</a> &amp; <a href="extensibility-registry.html">Extension Registry</a></li>
-  <li><a href="formats.html">Formats:</a>
+  <li><a href="resource.html"><b>Базовый ресурс</b></a></li>
+  <li><a href="conformance-rules.html">Правила обеспечения соответствия</a></li>
+  <li><a href="lifecycle.html">Жизненный цикл ресурсов</a></li>
+  <li><a href="references.html">Ссылки между ресурсами</a></li>
+  <li><a href="compartmentdefinition.html">Логические модули (доступ на основе пациента)</a></li>
+  <li><a href="narrative.html">Описательная часть (Narrative)</a></li>
+  
+  <li><a href="extensibility.html">Расширяемость</a> &amp; <a href="extensibility-registry.html">Реестр расширений<!-- Extension Registry --></a></li>
+  <li><a href="formats.html">Форматы:</a>
     <ul>
       <li><a href="xml.html">XML</a></li>
       <li><a href="json.html">JSON</a></li>
       <li><a href="rdf.html">RDF</a></li>
-    </ul>
+    </ul> 
   </li>
 <!--
-  <li><a href="bundle.html">Bundling resources</a></li>
-  <li><a href="binary.html">Transferring binary data</a></li>
+  <li><a href="bundle.html">Объединение ресурсов в бандлы</a></li>
+  <li><a href="binary.html">Передача бинарных данных</a></li>
   -->
-  <li><a href="datatypes.html">Data Types</a></li>
-  <li>Infrastructure Types:
+  <li><a href="datatypes.html">Типы данных</a></li>
+  <li>Инфраструктурные типы:
     <ul>
       <li><a href="domainresource.html">DomainResource</a></li>
       <li><a href="element.html">Element</a></li>
 	  <li><a href="backboneelement.html">BackboneElement</a></li>
       <li><a href="elementdefinition.html">ElementDefinition</a></li>
       <li><a href="modulemetadata.html">ModuleMetadata</a></li>
-    </ul>
+    </ul> 
   </li>
-  <li><a href="fluentpath.html">FluentPath</a></li>
-  <li><a href="ontology.html">Ontology</a></li>
+  <li><a href="fluentpath.html">FluentPath (наподобие XPath)</a></li>
+  <li><a href="ontology.html">Онтология<!-- Ontology --></a></li>
 </ul>
 </td><td width="33%" style="border-left: 1px solid #eeeeee">
-<p><b>Terminologies</b></p>
-<p>How codes, systems and value sets are used, and registries of known terminology resources</p>
+<p><b>Справочники</b></p>
+<p>Использование кодовых систем и наборов значений; реестр известных терминологических ресурсов</p>
 <ul>
-  <li><a href="terminologies.html">Using Codes in Resources</a></li>
-  <li><a href="terminologies-systems.html">Code Systems</a></li>
-  <li><a href="terminologies-valuesets.html">Value Set List</a></li>
-  <li><a href="terminologies-conceptmaps.html">Mappings between Value sets</a></li>
-  <li><a href="identifier-registry.html">Identifier Registry</a></li>
-  <li>+ see the <a href="terminology-service.html">Terminology Service</a> API</li>
+  <li><a href="terminologies.html">Использование кодовых значений в ресурсах</a></li>
+  <li><a href="terminologies-systems.html">Перечень кодовых систем</a></li>
+  <li><a href="terminologies-valuesets.html">Перечень наборов значений</a></li>
+  <li><a href="terminologies-conceptmaps.html">Мэппинги между наборами значений</a></li>
+  <li><a href="identifier-registry.html">Реестр идентификаторов<!-- Identifier Registry --></a></li>
+  <li>+ см. API <a href="terminology-service.html">Терминологического сервиса<!-- Terminology Service --></a></li>
 </ul>
 <hr/>
 <p><b>Testing FHIR Systems</b></p>
@@ -100,11 +99,11 @@ in practice), and the <a href="resourcelist.html">list of resources</a>.
 </td></tr>
 <tr>
 <td colspan="3" style="border-top: 1px solid #eeeeee" >
-<p>Appendices:</p>
+<p>Приложения:</p>
 <ul>
-  <li><a href="comparison.html">Comparison with other HL7 Specifications</a></li>
-  <li><a href="ehr-fm.html">How FHIR fits into an EHR</a></li>
-  <li><a href="change.html">Coming Challenges Driving Change</a></li>
+  <li><a href="comparison.html">Сравнение с другими спецификациями от HL7</a></li>
+  <li><a href="ehr-fm.html">Как FHIR вписывается в ЭМК (EHR)</a></li>
+  <li><a href="change.html">Новые горизонты здравоохранения благодаря информатизации</a></li>
 </ul>
 </td>
 </tr>
@@ -113,7 +112,7 @@ in practice), and the <a href="resourcelist.html">list of resources</a>.
 </div>
 
 [%file newfooter%]
-
-
+    
+    
 </body>
 </html>

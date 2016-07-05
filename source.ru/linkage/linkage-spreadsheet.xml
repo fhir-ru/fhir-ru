@@ -986,9 +986,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Links records for 'same' item</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Привязывает записи к одной сущности<!-- Links records for 'same' item --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Identifies two or more records (resource instances) that are referring to the same real-world &quot;occurrence&quot;</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Определяет две или больше записей (экземпляров ресурсов), которые относятся к одному и тому же реальному явлению <!-- Identifies two or more records (resource instances) that are referring to the same real-world &quot;occurrence&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1019,9 +1019,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who is responsible for linkages</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто ответственный за связывание<!-- Who is responsible for linkages --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies the user or organization responsible for asserting the linkages and who establishes the context for evaluating the nature of each linkage.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет пользователя или организацию, ответственную за утверждение связей и установление контекста для оценки характера каждой связи.<!-- Identifies the user or organization responsible for asserting the linkages and who establishes the context for evaluating the nature of each linkage. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">&quot;Primary&quot; for the same set of linked resources may be different from different user's/organization's perspectives</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1050,9 +1050,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Item to be linked</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Элемент для указания ресурса и типа связи<!-- Item to be linked --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items hould be evaluated within the collection of linked items.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Соответствует одному ресурсу, который, как предполагается, относится к одному и тому же реальному явлению, и типу оценки ресурса по отношению к другим связанным ресурсам в коллекции.<!-- Identifies one of the records that is considered to refer to the same real-world occurrence as well as how the items hould be evaluated within the collection of linked items. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1085,7 +1085,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">source | alternate | historical</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Distinguishes which item is &quot;source of truth&quot; (if any) and which items are no longer considered to be current representations</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Отмечает, какой ресурс является &quot;источником истины&quot; (если таковой имеется), и какие ресурсы больше не считаются текущими представлениями<!-- Distinguishes which item is &quot;source of truth&quot; (if any) and which items are no longer considered to be current representations --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1114,9 +1114,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Resource being linked</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Связываемый ресурс<!-- Resource being linked --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The resource instance being linked as part of the group</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Экземпляр ресурса, связываемый в группу<!-- The resource instance being linked as part of the group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4232,21 +4232,21 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Linkage.author</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Author of the Linkage</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Создатель связи<!-- Author of the Linkage --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">item</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Linkage.item.resource</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Matches on any item in the Linkage</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Соответствует любому элементу "item" в ресурсе Linkage<!-- Matches on any item in the Linkage --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">source</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Linkage.item.resource</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Matches on any item in the Linkage with a type of 'source'</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Соответствует любому элементу "item" в ресурсе Linkage с типом 'source'<!-- Matches on any item in the Linkage with a type of 'source' --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>
@@ -6202,7 +6202,7 @@
    </Row>
    <Row ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">LinkageType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Used to distinguish different roles a resource can play within a set of linked resources</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Используется для указания роли, которую ресурс может выполнять в рамках набора связанных ресурсов<!-- Used to distinguish different roles a resource can play within a set of linked resources --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#linkage-type</Data></Cell>

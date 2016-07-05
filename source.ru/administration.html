@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-[%settitle Administrative Resources%]
+[%settitle Административные ресурсы%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -8,44 +8,47 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 <a name="admin"> </a>
 
-<h2>Administrative Resources</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<h2>Административные ресурсы<!-- Administrative Resources --></h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
  
 	<table class="bare">
-
-  [%res-category Individuals|Track individuals involved in the provision of healthcare%]
-		<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+		[%res-category Люди| Отслеживание людей и организаций, участвующих в процессе оказания медицинских услуг%]
+		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item Patient%]
 		[%res-item Practitioner%]
     [%res-item PractitionerRole%]
 		[%res-item RelatedPerson%]
 
-		[%res-category Groups|Track grouping entities involved in the provision of healthcare%]
-		<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+		[%res-category Группы|Отслеживание групп сущностей, участвующих в процессе оказания медицинских услуг%]
+<!--     Groups|Track grouping entities involved in the provision of healthcare -->
+		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item Organization%]
 		[%res-item HealthcareService%]
 		[%res-item Group%]
 
-		[%res-category Entities|Track other kinds of entities used in the provision of healthcare%]
-		<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+		[%res-category Сущности|Отслеживание других видов сущностей,  участвующих в процессе оказания медицинских услуг%]
+<!--     Entities|Track other kinds of entities used in the provision of healthcare -->
+		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item Location%]
 		[%res-item Substance%]
 		[%res-item Person%]
 		[%res-item Contract%]
-    
-		[%res-category Devices|Devices and their capabilities%]
-		<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+
+
+		[%res-category Устройства|Устройства и их характеристики%]
+<!--     Devices|Devices and their capabilities -->
+		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item Device%]
 		[%res-item DeviceComponent%]
 		[%res-item DeviceMetric%]
 
-		[%res-category Patient Management|Tracking the status of patients and their appointments%]
- 		<tr><td colspan="3"><i><em>Note:</em> The PA work-group would appreciate contributions to enhance the appointment resource(s) to cover additional use-cases if required for implementations</i></td></tr>
-		<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+		[%res-category Ведение пациента|Отслеживание состояния пациентов и их условленных встреч%]
+<!--     Patient Management|Tracking the status of patients and their appointments-->
+		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item Encounter%]
 		[%res-item EpisodeOfCare%]
 		[%res-item Communication%]
@@ -55,8 +58,9 @@
 		[%res-item Schedule%]
 		[%res-item Slot%]
     
-		[%res-category Workflow|General healthcare provision workflow support%]
-		<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+		[%res-category Рабочий процесс|Общая поддержка рабочего процесса по предоставлению медицинской помощи%]
+<!--     Workflow|General healthcare provision workflow support -->
+		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item Task%]
 		[%res-item Order%]
 		[%res-item OrderResponse%]
@@ -68,8 +72,8 @@
 		[%res-item SupplyRequest%]
 		[%res-item SupplyDelivery%]
 
-		[%res-category Decision Support/Quality Measurement|Expressions for defining decision support and quality metrics %]
-		<tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+		[%res-category Поддержка принятия решений/Управление качеством|Выражения для определения правил поддержки принятия решений и показателей качества%]
+<!-- Decision Support/Quality Measurement|Expressions for defining decision support and quality metrics -->		<tr><td><b>Имя ресурса</b></td><td><b>Альтернативное имя</b></td><td><b>Описание</b></td></tr>
 		[%res-item DecisionSupportServiceModule%]
 		[%res-item DecisionSupportRule%]
 		[%res-item GuidanceResponse%]
@@ -81,10 +85,9 @@
 	</table>
 
 <p>
-Additional Resources will be added in the future. A list of hypothesized resources can be found on the 
-<a href="http://wiki.hl7.org/index.php?title=FHIR_Resource_Types">HL7 wiki</a>.  Feel free to add any you think are missing or engage with one 
-of the <a href="http://www.hl7.org/Special/committees/index.cfm">HL7 Work Groups</a> to submit a 
-<a href="http://wiki.hl7.org/index.php?title=Category:FHIR_Resource_Proposal">proposal</a> to define a resource of particular interest.
+В дальнейшем перечень ресурсов будет расширен. С ресурсами, которые, вероятно, будут добавлены в перечень базовых, можно ознакомиться в <a href="http://wiki.hl7.org/index.php?title=FHIR_Resource_Types">wiki-разделе сайта HL7</a>. Вы можете предложить собственный ресурс или связаться с одной из <a href="http://www.hl7.org/Special/committees/index.cfm">
+Рабочих групп HL7</a> для подачи <a href="http://wiki.hl7.org/index.php?title=Category:FHIR_Resource_Proposal">заявки</a>
+на создание ресурса конкретного назначения.
 </p>
 
 </div>

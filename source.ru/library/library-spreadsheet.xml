@@ -976,9 +976,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Represents a library of quality improvement components</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Библиотека компонентов улучшения качества<!-- Represents a library of quality improvement components --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The Library resource provides a representation container for knowledge artifact component definitions. It is effectively an exposure of the header information for a CQL/ELM library</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Ресурс Library представляет собой контейнер для определений компонентов артефактов знаний. По сути это раскрытие содержимого заголовка библиотеки CQL/ELM<!-- The Library resource provides a representation container for knowledge artifact component definitions. It is effectively an exposure of the header information for a CQL/ELM library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1007,9 +1007,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The metadata information for the library</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Метаданные библиотеки<!-- The metadata information for the library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The metadata for the library, including publishing, life-cycle, version, documentation, and supporting evidence</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Метаданные библиотеки, включая информацию о публикации, жизненный цикл, версию, документацию и подтверждающие данные<!-- The metadata for the library, including publishing, life-cycle, version, documentation, and supporting evidence --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1037,9 +1037,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A model used by the library</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Модель, используемая библиотекой<!-- A model used by the library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A model element describes the model and version used by the library</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Элемент model описывает модель и версию, используемую библиотекой<!-- A model element describes the model and version used by the library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1068,9 +1068,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of the model</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Название модели<!-- Name of the model --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name element defines the local name of the model as used within the library</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В элементе name задаётся локальное имя модели, используемое в рамках библиотеки<!-- The name element defines the local name of the model as used within the library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1099,9 +1099,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The identifier of the model</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор модели<!-- The identifier of the model --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The identifier element specifies the global, non-version-specific identifier for the model</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В элементе identifier задаётся глобальный, версионно-независимый идентификатор модели<!-- The identifier element specifies the global, non-version-specific identifier for the model --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1130,9 +1130,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The version of the model, if any</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Версия модуля, если есть<!-- The version of the model, if any --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The version element, if present, identifies the specific version of the model to be used. If no version is specified, the most recent published version of the model is implied</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В элементе version, если указан, задаётся конкретная версия применяемой модели. Если версия не указана, подразумевается самая последняя опубликованная версия этой модели<!-- The version element, if present, identifies the specific version of the model to be used. If no version is specified, the most recent published version of the model is implied --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1160,9 +1160,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A library referenced by this library</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Библиотека, на которую ссылается данный ресурс Library<!-- A library referenced by this library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A library element describes a library referenced by this library</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В элементе library описывается библиотека, на которую ссылается данный ресурс Library<!-- A library element describes a library referenced by this library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1191,9 +1191,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of the library</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Имя библиотеки<!-- Name of the library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The name element defines the local name of the referenced library</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В элементе name задаётся локальное имя используемой библиотеки<!-- The name element defines the local name of the referenced library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1222,9 +1222,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The identifier of the library</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор библиотеки<!-- The identifier of the library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The identifier element specifies the global, non-version-specific identifier for the library</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В элементе identifier задаётся глобальный, версионно-независимый идентификатор библиотеки<!-- The identifier element specifies the global, non-version-specific identifier for the library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1253,9 +1253,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The version of the library, if any</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Версия библиотеки, если есть<!-- The version of the library, if any --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The version element, if present, identifies the specific version of the library to be used. If no version is specified, the most recent published version of the library is implied</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В элементе version, если указан, задаётся конкретная версия применяемой библиотеки. Если версия не указана, подразумевается самая последняя опубликованная версия этой библиотеки<!-- The version element, if present, identifies the specific version of the library to be used. If no version is specified, the most recent published version of the library is implied --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1284,7 +1284,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The content of the library</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Содержимое библиотеки<!-- The content of the library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The content of the referenced library as an Attachment, or a reference to the Library resource. If the document is an attachment, it may be a reference to a url from which the library document may be retrieved, or it may be directly embedded as a base-64 string. Either way, the content is expected to be a CQL or ELM document</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1407,9 +1407,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The version of the code system, if any</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Версия кодовой системы, если есть<!-- The version of the code system, if any --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The version element, if present, identifies the specific version of the library to be used. If no code system is specified, the most recent published version of the code system is implied</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В элементе version, если указан, задаётся конкретная версия применяемой кодовой системы. Если кодовая система не указана, подразумевается самая последняя опубликованная версия этой кодовой системы<!-- The version element, if present, identifies the specific version of the library to be used. If no code system is specified, the most recent published version of the code system is implied --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1530,9 +1530,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The version of the value set</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Версия набора значений<!-- The version of the value set --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The version element, if present, determines the specific version of the value set definition that is used by the library. If no version is specified, the latest published version of the value set definition is implied</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В элементе version, если указан, задаётся конкретная версия определения применяемого набора значений. Если версия не указана, подразумевается самая последняя опубликованная версия определения этого набора значений<!-- The version element, if present, determines the specific version of the value set definition that is used by the library. If no version is specified, the latest published version of the value set definition is implied --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1561,9 +1561,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The code system binding for this value set definition</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Привязка к кодовой системе для этого определения набора значений<!-- The code system binding for this value set definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The codeSystem element determines which code system binding to use to compute the expansion of the value set definition. The codeSystem element specified here will correspond to a code system element, which is used to determine the code system version</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Элемент codeSystem определяет, какую привязку к кодовой системе использовать для вычисления развёртки этого определения набора значений. Элемент codeSystem, обозначенный здесь, будет соответствовать элементу codeSystem, который используется для определения версии кодовой системы<!-- The codeSystem element determines which code system binding to use to compute the expansion of the value set definition. The codeSystem element specified here will correspond to a code system element, which is used to determine the code system version --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1592,9 +1592,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Parameters defined by the library</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Параметры, определённые в библиотеке<!-- Parameters defined by the library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The parameter element defines parameters used by the library</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В элементе parameter задаются параметры, используемые библиотекой<!-- The parameter element defines parameters used by the library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1623,9 +1623,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Data requirements of the library</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Требования этой библиотеки к данным<!-- Data requirements of the library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The dataRequirement element specifies a data requirement used by some expression within the library</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В элементе dataRequirement задаются требования к данным, используемым в некоторых выражениях в рамках библиотеки<!-- The dataRequirement element specifies a data requirement used by some expression within the library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1654,9 +1654,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The content of the library</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Содержимое библиотеки<!-- The content of the library --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The content of the library as an Attachment. The content may be a reference to a url, or may be directly embedded as a base-64 string. Either way, the content is expected to be a CQL or ELM document</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержимое библиотеки в виде Вложения. Содержимое может быть URL-ссылкой или напрямую встроенной строкой в кодировке Base-64. В любом случае предполагается, что содержимое будет CQL- или ELM-документом<!-- The content of the library as an Attachment. The content may be a reference to a url, or may be directly embedded as a base-64 string. Either way, the content is expected to be a CQL or ELM document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4694,49 +4694,50 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">Library.moduleMetadata.identifier</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">Logical identifier for the module (e.g. CMS-143)</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Логический идентификатор<!-- Logical identifier --> for the module (e.g. CMS-143)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">topic</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Library.moduleMetadata.topic</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Topics associated with the module</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Темы, ассоциированные с модулем<!-- Topics associated with the module --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">title</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Library.moduleMetadata.title</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Text search against the title</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по заголовку<!-- Text search against the title --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">description</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Library.moduleMetadata.description</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Text search against the description</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Текстовый поиск по описанию<!-- Text search against the description --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">version</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Library.moduleMetadata.version</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Version of the module (e.g. 1.0.0)</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Версия модуля (напри
+     1.0.0)<!-- Version of the module (e.g. 1.0.0) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Library.moduleMetadata.status</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Status of the module</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Статус модуля<!-- Status of the module --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">!minScore</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">number</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">Bundle/entry/search/score</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The minimum relevance score of any match that will be returned</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Минимальная оценка релевантности любого совпадения, которое будет возвращено<!-- The minimum relevance score of any match that will be returned --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"/>

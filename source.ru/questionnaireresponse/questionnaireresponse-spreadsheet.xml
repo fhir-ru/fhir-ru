@@ -974,11 +974,11 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">A structured set of questions and their answers</Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Структурированный набор вопросов и ответов на них<!-- A structured set of questions and their answers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Структурированный набор вопросов и ответов на них. Ответы упорядочены и сгруппированы в логически последовательные подмножества, соответствующие структуре группировки лежащих в их основе вопросов<!-- A structured set of questions and their answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">To support structured, hierarchical registration of data gathered using digital forms and other questionnaires.</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Для поддержки структурированной, иерархической регистрации данных, собранных с помощью электронных форм и других вопросников.<!-- To support structured, hierarchical registration of data gathered using digital forms and other questionnaires. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1011,11 +1011,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Unique id for this set of answers</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор для этого набора ответов<!-- Unique id for this set of answers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A business identifier assigned to a particular completed (or partially completed) questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Бизнес-идентификатор, присвоенный конкретному заполненному (или частично заполненному) вопроснику<!-- A business identifier assigned to a particular completed (or partially completed) questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Used for tracking, registration and other business purposes</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Используется для отслеживания, регистрации и других бизнес-целей<!-- Used for tracking, registration and other business purposes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1047,11 +1047,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Form being answered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Форма, на которую отвечают<!-- Form being answered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates the Questionnaire resource that defines the form for which answers are being provided</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Указывает ресурс Questionnaire, определяющий форму, в которой предоставляются ответы<!-- Indicates the Questionnaire resource that defines the form for which answers are being provided --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Needed to allow editing of the questionnaire in a manner that enforces the constraints of the original form.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Необходимо позволить редактирование вопросника таким образом, чтобы при этом обеспечивалось соблюдение ограничений исходной формы.<!-- Needed to allow editing of the questionnaire in a manner that enforces the constraints of the original form. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1087,9 +1087,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">in-progress | completed | amended</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The lifecycle status of the questionnaire response as a whole.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Общий статус жизненного цикла QuestionnaireResponse.<!-- The lifecycle status of the questionnaire response as a whole. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The information on Questionnaire resources  may possibly be gathered during multiple sessions and altered after considered being finished. Questionnaire resources with just questions may serve as template forms, with the applicable publication statuses</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Информация по ресурсам Questionnaire будет, возможно, собираться в течение нескольких сеансов и изменяться после того, как будет считаться завершенной. Ресурсы Questionnaire просто с вопросами могут служить шаблонами форм, с соответствующими статусами публикации<!-- The information on questionnaires  may possibly be gathered during multiple sessions and altered after considered being finished. Questionnaire resources with just questions may serve as template forms, with the applicable publication statuses --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1122,11 +1122,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The subject of the questions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">О ком/чём эти вопросы<!-- The subject of the questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The subject of the questionnaire response.  This could be a patient, organization, practitioner, device, etc.  This is who/what the answers apply to, but is not necessarily the source of information</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">О ком/чём этот QuestionnaireAnswers. Это может быть пациент, организация, практикующий специалист, устройство и т. д. Это кто-то или что-то, к кому/чему относятся ответы, но не обязательно источник информации<!-- The subject of the questionnaire answers.  This could be a patient, organization, practitioner, device, etc.  This is who/what the answers apply to, but is not necessarily the source of information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The subject context must be known</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Необходимо знать контекст предмета вопросов<!-- The subject context must be known --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1159,13 +1159,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Person who received and recorded the answers</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, который получил и записал ответы<!-- Person who received and recorded the answers --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Person who received the answers to the questions in the QuestionnaireResponse and recorded them in the system</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Человек, который получил ответы на вопросы в ресурсе QuestionnaireResponse и записал их в систему<!-- Person who received the answers to the questions in the QuestionnaireResponse and recorded them in the system --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Need to know who interpreted the subject's answers to the questions in the questionnaire, and selected the appropriate options for answers.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Необходимо знать, кто интерпретировал ответы опрашиваемого на вопросы в анкете, и выбрал подходящие варианты ответов.<!-- Need to know who interpreted the subject's answers to the questions in the questionnaire, and selected the appropriate options for answers. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Mapping a subject's answers to multiple choice options and determining what to put in the textual answer is a matter of interpretation.  Authoring by device would indicate that some portion of the questionnaire had been auto-populated.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Мэппинг ответов опрашиваемого на варианты с несколькими опциями на выбор и решение, что поместить в текстовой ответ - это вопрос интерпретации. Если в качестве создателя указано устройство, это означает, что некоторая часть вопросника была заполнена автоматически.<!-- Mapping a subject's answers to multiple choice options and determining what to put in the textual answer is a matter of interpretation. Authoring by device would indicate that some portion of the questionnaire had been auto-populated. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.participation[typeCode=AUT].role</Data><NamedCell
@@ -1197,13 +1197,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Date this version was authored</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата создания этой версии<!-- Date this version was authored --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The date and/or time that this version of the questionnaire response was authored</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Дата и/или время, когда была создана эта версия ответа на вопросник<!-- The date and/or time that this version of the questionnaire response was authored --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Clinicians need to be able to check the date that the information in the questionnaire was collected, to derive the context of the answers.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Клиницисты должны иметь возможность проверить дату, когда была собрана информация в анкете, чтобы получить контекст ответов.<!-- Clinicians need to be able to check the date that the information in the questionnaire was collected, to derive the context of the answers. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">May be different from the update time of the resource itself, because that is the status of the collection and authoring.  This element is optional to allow for systems that may not know the value, however it SHOULD be populated if possible.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Может отличаться от времени обновления самого ресурса, потому что это статус сбора и составления. Это необязательный элемент, чтобы учитывать системы, которые могут не знать это значение, однако, он ДОЛЖЕН быть заполнен, если это возможно.<!-- May be different from the update time of the resource itself, because that is the status of the collection and authoring.  This element is optional to allow for systems that may not know the value, however it SHOULD be populated if possible. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.participation[typeCode=AUT].time</Data><NamedCell
@@ -1234,13 +1234,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The person who answered the questions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, который ответил на вопросы<!-- The person who answered the questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The person who answered the questions about the subject.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Человек, который ответил на вопросы о субъекте.<!-- The person who answered the questions about the subject. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">When answering questions about a subject that is minor, incapable of answering or an animal, another human source is used to answer the questions</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Отвечая на вопросы о субъекте, который является несовершеннолетним, не в состоянии ответить, либо животным, источником ответов на вопросы анкеты будет другой человек<!-- When answering questions about a subject that is minor, incapable of answering or an animal, another human source is used to answer the questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If not specified, no inference can be made about who provided the data</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если этот атрибут не задан, нельзя сделать вывод о том, кто предоставил эти данные<!-- If not specified, no inference can be made about who provided the data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.participation[typeCode=INF].role</Data><NamedCell
@@ -1271,11 +1271,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Primary encounter during which the answers were collected</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Первичный визит, во время которого были собраны ответы<!-- Primary encounter during which the answers were collected --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Encounter during which this set of questionnaire response were collected. When there were multiple encounters, this is the one considered most relevant to the context of the answers.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Случай обслуживания, во время которого были собраны эти ответы на вопросник. В случае множественного визита здесь указывается наиболее релевантный в контексте ответов.<!-- Encounter during which this set of questionnaire response were collected. When there were multiple encounters, this is the one considered most relevant to the context of the answers. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Some institutions track questionnaires under a specific encounter</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Некоторые учреждения отслеживают вопросники по конкретному encounter<!-- Some institutions track questionnaires under a specific encounter --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1305,9 +1305,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Groups and questions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Группы и вопросы<!-- Groups and questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Corresponds to a group or question item from the original questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Совпадает с группой или вопросом исходного вопросника<!-- Corresponds to a group or question item from the original questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1339,11 +1339,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Corresponding item within Questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Соответствующий пункт в Questionnaire<!-- Corresponding item within Questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifies the item from the Questionnaire that corresponds to this item in the QuestionnaireResponse resource.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет пункт в Questionnaire, который соответствует данному пункту в ресурсе QuestionnaireResponse.<!-- Identifies the item from the Questionnaire that corresponds to this item in the QuestionnaireResponse resource. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Items can repeat in the answers, so a direct 1..1 correspondence may not exist - requiring correspondence by identifier.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Пункты могут повторяться в ответах, поэтому прямое соответствие один ко одному может не существовать, требуя поиска соответствия по идентификатору.<!-- Items can repeat in the answers, so a direct 1..1 correspondence may not exist - requiring correspondence by identifier. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1373,11 +1373,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Name for group or question text</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Название группы или текст вопроса <!-- Name for group or question text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Text that is displayed above the contents of the group or as the text of the question being answered</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Текст, отображаемый над группой, либо текст вопроса, на который необходимо ответить <!-- Text that is displayed above the contents of the group or as the text of the question being answered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Allows the questionnaire response to be read without access to the questionnaire</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Позволяет читать ответы на вопросник без необходимости доступа к самому вопроснику <!-- Allows the questionnaire response to be read without access to the questionnaire --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1407,14 +1407,14 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The subject this group's answers are about</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Субъект, к которому относятся ответы на эту группу вопросов <!-- The subject this group's answers are about --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">More specific subject this section's answers are about, details the subject given in QuestionnaireResponse</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Более конкретное описание субъекта, к которому относятся ответы этого раздела, заданного в QuestionnaireResponse <!-- More specific subject this section's answers are about, details the subject given in QuestionnaireResponse --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Sometimes a group of answers is about a specific participant, artifact or piece of information in the patient's care or record, e.g. a specific Problem, RelatedPerson, Allergy etc.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Иногда группа ответов относится к конкретному участнику, артефакту или порции информации в медкарте пациента, например к конкретной проблеме, родственной персоне, аллергии и т. п. <!-- Sometimes a group of answers is about a specific participant, artifact or piece of information in the patient's care or record, e.g. a specific Problem, RelatedPerson, Allergy etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">How does the questionnaire indicate where this is appropriate/necessary?</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Как вопросник указывает, где это уместно/необходимо?<!-- How does the questionnaire indicate where this is appropriate/necessary? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.participation[typeCode=SBJ].role or .outboundRelationship[typeCode=SUBJ].target</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1441,12 +1441,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The response(s) to the question</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ответы на вопрос<!-- The response(s) to the question --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The respondent's answer(s) to the question</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Ответы респондента на вопрос <!-- The respondent's answer(s) to the question --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The value is nested because we cannot have a repeating structure that has variable type</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Это значение вложено, поскольку мы не можем иметь повторяющуюся структуру с переменным типом<!-- The value is nested because we cannot have a repeating structure that has variable type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.value[type=LIST_ANY]</Data><NamedCell
@@ -1477,13 +1477,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Single-valued answer to the question</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Однозначный ответ на вопрос<!-- Single-valued answer to the question --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The answer (or one of the answers) provided by the respondent to the question</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Ответ (или один из ответов), предоставленный респондентом на вопрос<!-- The answer (or one of the answers) provided by the respondent to the question --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Ability to retain a single-valued answer to a question</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Возможность сохранить однозначный ответ на вопрос<!-- Ability to retain a single-valued answer to a question --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Более сложные структуры (вложение, ресурс и величина) обычно ограничены электронными формами, которые могут использовать подходящий интерфейс пользователя для ввода компонентов и приводить в исполнение ограничивающие условия для сложных типов данных. Дополнительные сложные типы можно вводить с помощью расширений.<!-- More complex structures (Attachment, Resource and Quantity) will typically be limited to electronic forms that can expose an appropriate user interface to capture the components and enforce the constraints of a complex data type.  Additional complex types can be introduced through extensions. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.item</Data><NamedCell
@@ -1512,11 +1512,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Nested groups and questions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вложенные группы и вопросы<!-- Nested groups and questions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Nested groups and/or questions found within this particular answer</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Вложенные группы и/или вопросы, находящиеся внутри определённого ответа<!-- Nested groups and/or questions found within this particular answer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">It is useful to have &quot;sub-questions&quot;, questions which normally appear when certain answers are given and which collect additional details.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Удобно иметь &quot;подвопросы&quot;, вопросы, которые обычно появляются, когда даны определённые ответы, и которые собирают дополнительную информацию.<!-- It is useful to have &quot;sub-questions&quot;, questions which normally appear when certain answers are given and which collect additional details. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1546,11 +1546,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Nested questionnaire response items</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вложенные пункты ответов на вопросник<!-- Nested questionnaire response items --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Questions or sub-groups nested beneath a question or group</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Вопросы или подгруппы, вложенные в другой вопрос или группу<!-- Questions or sub-groups nested beneath a question or group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Reports can consist of complex nested groups</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Отчёты могут содержать сложные вложенные группы<!-- Reports can consist of complex nested groups --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4271,49 +4271,49 @@
     <Cell ss:StyleID="s79"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s79"/>
     <Cell ss:StyleID="s114"><Data ss:Type="String">QuestionnaireResponse.status</Data></Cell>
-    <Cell ss:StyleID="s115"><Data ss:Type="String">The status of the questionnaire response</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">Статус ответов на вопросник<!-- The status of the questionnaire response --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">authored</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">QuestionnaireResponse.authored</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">When the questionnaire was authored</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Когда был создан вопросник<!-- When the questionnaire was authored --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">QuestionnaireResponse.subject</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The subject of the questionnaire</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">О ком/чём этот вопросник<!-- The subject of the questionnaire --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">author</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">QuestionnaireResponse.author</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The author of the questionnaire</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Автор вопросника<!-- The author of the questionnaire --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s116"><Data ss:Type="String">questionnaire</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">QuestionnaireResponse.questionnaire</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The questionnaire the answers are provided for</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Вопросник, к которому относятся предоставленные ответы<!-- The questionnaire the answers are provided for --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">encounter</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s117"><Data ss:Type="String">QuestionnaireResponse.encounter</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Encounter during which questionnaire was authored</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Случай обслуживания, во время которого был заполнен вопросник<!-- Encounter during which questionnaire was authored --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">QuestionnaireResponse.subject</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">The patient that is the subject of the questionnaire</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Пациент, являющийся предметом этого вопросника<!-- The patient that is the subject of the questionnaire --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s116"><Data ss:Type="String">source</Data></Cell>
@@ -6230,7 +6230,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s145"><Data ss:Type="String">QuestionnaireResponseStatus</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Lifecycle status of the questionnaire response.</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Статус жизненного цикла QuestionnaireResponse.<!-- Lifecycle status of the questionnaire response. --></Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s114"><Data ss:Type="String">#questionnaire-answers-status</Data></Cell>
@@ -6245,7 +6245,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s146"><Data ss:Type="String">QuestionnaireAnswer</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Code indicating the response provided for a question.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Код ответа на вопрос.<!-- Code indicating the response provided for a question. --></Data></Cell>
     <Cell ss:StyleID="s117"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s117"/>
     <Cell ss:StyleID="s117"/>

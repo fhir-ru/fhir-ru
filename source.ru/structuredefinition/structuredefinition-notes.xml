@@ -2,26 +2,31 @@
 
 <a name="interpretation"> </a>
 
-<h2>Interpretation Notes:</h2>
+<h2>Примечания к трактовке:<!-- Interpretation Notes: --></h2>
 
 <ul>
 
-<li>A structure is represented as a flat list of elements. The <code>element.path</code> provides the overall structure.</li>
-<li><code>element.short</code>, <code>element.formal</code>, <code>element.comments</code> and <code>element.mapping</code> provide the specific definition for the field in a specific context.</li>
-<li><code>element.type</code> is used to specify which types may be used for this element. If there is more than one type, the element offers a choice of types and must have a name that terminates in "[x]". 
-When profiling a resource, and only one type is specified, the names of element is changed to include the type instead of '[x]'.</li>
-<li>When using xpath to make constraints about the relationship between the contents of the narrative and the contents of the data elements, the element against which the rule is expressed is the one against which the error or warning will be reported by a validator.</li>
-<li>When xpath constraints refer to elements that offer a choice of types, the statement must use the fully expanded name (including the actual type), not the name ending in "[x]".</li>
-<li>For xpath constraints, the prefix "f" should be used for "http://hl7.org/fhir", and "h" for "http://www.w3.org/1999/xhtml". XPath constraints are written against the XML representation, but the rules they describe SHALL be true in any other representation as well</li>
-<li>The condition element is used to assert that a constraint defined on another element affects the allowed cardinality of this element.</li>
+<li>Структура представляется в виде линейного списка элементов. В <code>element.path</code> хранится вся общая структура целиком.<!-- A structure is represented as a flat list of elements. The <code>element.path</code> provides the overall structure. --></li>
+<li>Элементы <code>element.short</code>, <code>element.formal</code>, <code>element.comments</code> и <code>element.mapping</code> содержат конкретное определение соответствующего поля для определенного контекста.<!-- <code>element.short</code>, <code>element.formal</code>, <code>element.comments</code> and <code>element.mapping</code> provide the specific definition for the field in a specific context. --></li>
+<li>В <code>element.type</code> перечисляются типы, которые могут использоваться для этого элемента. Если указано больше одного типа, значит в элементе предполагается выбор типа, и он должен иметь имя, заканчивающееся на "[x]". Окончание "[x]" сохраняется даже для тех имен элементов, максимальное число которых равно единице. <!-- <code>element.type</code> is used to specify which types may be used for this element. If there is more than one type, the element offers a choice of types and must have a name that terminates in "[x]". 
+Names of elements that are choices retain the "[x]" in the name, even if a constraint on such an element limits the number of allowed types down to one. --></li>
+<li>Когда для создания ограничений на взаимосвязи между содержимым описательной части и содержимым элементов данных используется xpath, то элемент, по отношению к которому выражено правило, и будет тем, о котором будет сообщаться в ошибке или предупреждении. 
+<!-- When using xpath to make constraints about the relationship between the contents of the narrative and the contents of the data elements, the element against which the rule is expressed is the one against which the error or warning will be reported by a validator. --></li>
+<li>Когда xpath-ограничения относятся к элементам, которые предлагают выбор типа, необходимо использовать полностью развернутое имя (включая фактический тип), а не имя, оканчивающееся на "[x]".
+<!-- When xpath constraints refer to elements that offer a choice of types, the statement must use the fully expanded name (including the actual type), not the name ending in "[x]". --></li>
+<li>Для xpath-ограничений префикс "f" должен использоваться для "http://hl7.org/fhir", и "h" для "http://www.w3.org/1999/xhtml". XPath-ограничения пишутся для XML-представления, однако правила, которые они описывают, ДОЛЖНЫ выполняться и для других представлений тоже.
+<!-- For xpath constraints, the prefix "f" should be used for "http://hl7.org/fhir", and "h" for "http://www.w3.org/1999/xhtml". XPath constraints are written against the XML representation, but the rules they describe SHALL be true in any other representation as well --></li>
+<li>Элемент condition используется для объявления о том, что ограничение, определенное на другом элементе, влияет на допустимое кардинальное число этого элемента.
+<!-- The condition element is used to assert that a constraint defined on another element affects the allowed cardinality of this element. --></li>
 </ul>
 
-<h3>Different uses for StructureDefinition</h3>
+<h3>Варианты использования ресурса StructureDefinition<!-- Different uses for StructureDefinition --></h3>
 <p>
-The base structure definition is used in a number of different ways to support
+Базовое структурное определение используется несколькими способами для поддержки спецификации FHIR. Варианты применения ресурса StructureDefinition настраиваются с помощью элементов <code>kind</code>, <code>constrainedType</code>, <code>base</code> и <code>url</code> по следующему основному шаблону:
+<!-- The base structure definition is used in a number of different ways to support
 the FHIR specification. The various uses of the StructureDefinition are 
 controlled by the elements <code>kind</code>, <code>constrainedType</code>, <code>base</code>, and <code>url</code>,
-using this basic pattern:
+using this basic pattern: -->
 </p>
 <pre class="json">
 {
@@ -32,10 +37,12 @@ using this basic pattern:
 }
 </pre>
 <p>
-This list shows a number of examples, with links to real examples for each:
+Ниже приводится несколько примеров со ссылками на реальные случаи применения:
+<!-- This list shows a number of examples, with links to real examples for each: -->
 </p>
 <ol>
- <li>Base definition of a data type (example: <a href="datatypes.html#Quantity">Quantity</a> - <a href="quantity.profile.xml.html">XML</a>, <a href="quantity.profile.json.html">JSON</a>):<br/>
+<li>Базовое определение типа данных (пример: <a href="datatypes.html#Quantity">Quantity</a> - <a href="quantity.profile.xml.html">XML</a>, <a href="quantity.profile.json.html">JSON</a>):
+<!--  Base definition of a data type (example: <a href="datatypes.html#Quantity">Quantity</a> - <a href="quantity.profile.xml.html">XML</a>, <a href="quantity.profile.json.html">JSON</a>): --><br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -47,7 +54,9 @@ This list shows a number of examples, with links to real examples for each:
 </pre>
  </li>
 
- <li>A constrained data type (example: <a href="datatypes.html#Money">Money</a>  - <a href="money.profile.xml.html">XML</a>, <a href="money.profile.json.html">JSON</a>):<br/>
+ <li>
+ Тип данных с ограничивающими условиями (пример: <a href="datatypes.html#Money">Money</a>  - <a href="money.profile.xml.html">XML</a>, <a href="money.profile.json.html">JSON</a>):
+ <!-- A constrained data type (example: <a href="datatypes.html#Money">Money</a>  - <a href="money.profile.xml.html">XML</a>, <a href="money.profile.json.html">JSON</a>): --><br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -60,7 +69,8 @@ This list shows a number of examples, with links to real examples for each:
 </pre>
 	</li>
 
- <li>Base definition of a resource (example: <a href="patient.html">Patient</a> - <a href="patient.profile.xml.html">XML</a>, <a href="patient.profile.json.html">JSON</a>): <br/>
+ <li>Базовое определение ресурса (пример: <a href="patient.html">Patient</a> - <a href="patient.profile.xml.html">XML</a>, <a href="patient.profile.json.html">JSON</a>):
+ <!-- Base definition of a resource (example: <a href="patient.html">Patient</a> - <a href="patient.profile.xml.html">XML</a>, <a href="patient.profile.json.html">JSON</a>): --> <br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -72,7 +82,8 @@ This list shows a number of examples, with links to real examples for each:
 </pre>
  </li>
 
- <li>Constraint on a resource (example: <a href="daf/daf-patient.html">DAF Patient</a> - <a href="daf/daf-patient.profile.xml.html">XML</a>, <a href="daf/daf-patient.profile.json.html">JSON</a>): <br/>
+ <li>Ограничивающее условие для ресурса (пример: <a href="daf/daf-patient.html">DAF Patient</a> - <a href="daf/daf-patient.profile.xml.html">XML</a>, <a href="daf/daf-patient.profile.json.html">JSON</a>): 
+ <!-- Constraint on a resource (example: <a href="daf/daf-patient.html">DAF Patient</a> - <a href="daf/daf-patient.profile.xml.html">XML</a>, <a href="daf/daf-patient.profile.json.html">JSON</a>):  --><br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -85,7 +96,8 @@ This list shows a number of examples, with links to real examples for each:
 </pre>
  </li>
 
- <li>Base Extension (a standard data type) (example: <a href="extensibility.html#Extension">Extension</a> - <a href="extension.profile.xml.html">XML</a>, <a href="extension.profile.json.html">JSON</a>): <br/>
+ <li>Базовое расширение (стандартный тип данных) (пример: <a href="extensibility.html#Extension">Extension</a> - <a href="extension.profile.xml.html">XML</a>, <a href="extension.profile.json.html">JSON</a>): 
+ <!-- Base Extension (a standard data type) (example: <a href="extensibility.html#Extension">Extension</a> - <a href="extension.profile.xml.html">XML</a>, <a href="extension.profile.json.html">JSON</a>):  --><br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -97,7 +109,8 @@ This list shows a number of examples, with links to real examples for each:
 </pre>
  </li>
 
- <li>A defined Extension  (example: <a href="extension-us-core-race.html">Extension</a>  - <a href="extension-us-core-race.xml.html">XML</a>, <a href="extension-us-core-race.json.html">JSON</a>): <br/>
+ <li>Заданное расширение (пример: <a href="extension-us-core-race.html">Extension</a>  - <a href="extension-us-core-race.xml.html">XML</a>, <a href="extension-us-core-race.json.html">JSON</a>):
+ <!-- A defined Extension  (example: <a href="extension-us-core-race.html">Extension</a>  - <a href="extension-us-core-race.xml.html">XML</a>, <a href="extension-us-core-race.json.html">JSON</a>): --> <br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -110,7 +123,8 @@ This list shows a number of examples, with links to real examples for each:
 </pre>
  </li>
  
- <li>A constraint on a defined extension (no examples currently defined): <br/>
+ <li>Ограничивающее условие для заданного расширения (пока нет примеров): 
+ <!-- A constraint on a defined extension (no examples currently defined):  --><br/>
 <pre class="json">
 {
   "resourceType": "StructureDefinition",
@@ -126,26 +140,33 @@ This list shows a number of examples, with links to real examples for each:
 </ol>
 
 <p>
-On this list, structure definitions of type 1, 3, and 5 can only be defined by the FHIR specification itself. The other kinds of structure definitions 
-are (or may be) created by the specification, but can also be defined by other implementers.
+Первое, третье и пятое структурные определения в этом списке может задать только сама спецификация FHIR. Другие виды структурных определений созданы спецификацией, но могут быть созданы и самими реализаторами.
+<!-- On this list, structure definitions of type 1, 3, and 5 can only be defined by the FHIR specification itself. The other kinds of structure definitions 
+are (or may be) created by the specification, but can also be defined by other implementers. -->
 </p>
 
-<h3>Rules for Constrained Types</h3>
+<h3>Правила для структур ограничивающего типа  (Constrained Types)<!-- Rules for Constrained Types --></h3>
 <p>
-When the structure is a constraint (constrainedType is not null), then the following rules apply:
+Когда структура является ограничением (constrainedType не "null"), применяются следующие правила:
+<!-- When the constraint (constrainedType is not null), then the following rules apply: -->
 </p>
 <ul>
- <li>The structure must nominate a base resource from which it is derived</li>
- <li>The structure definition cannot introduce any new elements or value domains that are not valid in the structure - e.g. the structure must be a true constraint, and anything that meets the description of this structure must also be valid following the description of the base structure</li>
- <li>In practice, this means that:
+ <li>В структуре обязательно необходимо указать базовый ресурс, на котором она построена
+ <!-- The structure must nominate a base resource from which it is derived --></li>
+ <li>Структурное определение не может вводить новые элементы или домены значений, которые не допустимы в этой структуре - например структура должна быть истинно ограничивающей и всё, что соответствует описанию этой структуры также должно быть допустимым в соответствии с описанием базовой структуры
+ <!-- The structure definition cannot introduce any new elements or value domains that are not valid in the structure - e.g. the structure must be a true constraint, and anything that meets the description of this structure must also be valid following the description of the base structure --></li>
+ <li>На практике это означает, что:<!-- In practice, this means that: -->
    <ul>
-     <li>no new paths may be introduced that are not found in the base structure</li> 
-     <li>the list of types for an element must be the same or a subset of the list of types for the same element in the base structure</li> 
-     <li>The definition can be changed in the derived structure, but it must still be logically consistent with the definition in the base; e.g. the base element may be defined as "Result value" and this structure could define it as "Plasma Cholesterol Test Value", but not "Result status".</li>
-     <li>The cardinality must be a subset of the allowable cardinality in the base structure i.e. the minimum must be >= the base minimum, and the maximum must be &lt;= the base maximum</li>
+     <li>не могут вводиться новые пути, которых нет в базовой структуре<!-- no new paths may be introduced that are not found in the base structure --></li> 
+     <li>список типов для элемента должен совпадать или быть подмножеством списка типов для этого же элемента в базовой структуре<!-- the list of types for an element must be the same or a subset of the list of types for the same element in the base structure --></li> 
+     <li>Определение может быть изменено в производной структуре, но должно оставаться логически непротиворечивым с определением в базовом, например базовый элемент может быть определен как "Result value", и эта структура может определить его как "Result value", а эта структура может определить его как "Plasma Cholesterol Test Value", но не как "Result status".
+	 <!-- The definition can be changed in the derived structure, but it must still be logically consistent with the definition in the base; e.g. the base element may be defined as "Result value" and this structure could define it as "Plasma Cholesterol Test Value", but not "Result status". --></li>
+     <li>Кардинальное число должно быть подмножеством разрешенного кардинального числа в базовой структуре, т. е. его минимум должен быть >=  базовому минимуму, а максимум должен быть &lt;= базовому максимуму
+	 <!-- The cardinality must be a subset of the allowable cardinality in the base structure i.e. the minimum must be >= the base minimum, and the maximum must be &lt;= the base maximum --></li>
    </ul>
   </li>
-  <li>Note that because of slicing, there can be more than one element for the same path. For details, see <a href="profiling.html">Profiling resources</a></li>
+  <li>Обратите внимание, что из-за нарезки одному пути может соответствовать больше одного элемента. Более подробную информацию см. в разделе <a href="profiling.html">Профилирование ресурсов</a>.
+  <!-- Note that because of slicing, there can be more than element for the same path. For details, see <a href="profiling.html">Profiling resources</a> --></li>
 </ul>
   
 <!-- 
@@ -160,22 +181,30 @@ though the maximum one still does.
   Each of these appears in the list with the order and cardinality specified. By this means, a list may be "sliced" into a series of different components.</li>
 --> 
   
-<h3>Common Mapping Targets</h3>
+<h3>Распространенные адресаты мэппинга<!-- Common Mapping Targets --></h3>
 <p>
-Structures are able to map elements to concepts in other definition systems. Generally these are used to 
+В структурах есть возможность отображать элементы на концепты в других системах определений. Они, как правило, используются для отображения элементов на локальные модели реализации, пути данных и концепты. Однако они также используются для отображения на другие стандарты и опубликованные справочники. Вот стандартные URI распространённых объектов отображения:
+<!-- Structures are able to map elements to concepts in other definition systems. Generally these are used to 
 map the elements to local implementation models, data paths, and concepts. However they are also used to map
 to other standards and published terminologies. These are the standard URIs used for common targets of the 
-mapping:
+mapping: -->
 </p>
 
 <table class="lines">
-  <tr><td>http://loinc.org</td><td>LOINC code for the element</td></tr>
+  <tr><td>http://loinc.org</td><td>LOINC-код для этого элемента</td></tr>
+  <tr><td>http://snomed.info</td><td>SNOMED CT-код для этого элемента</td></tr>
+  <tr><td>http://hl7.org/v3</td><td>Отображение на RIM</td></tr>
+  <tr><td>http://hl7.org/v2</td><td>Отображение на <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a></td></tr>
+  <tr><td>http://nema.org/dicom</td><td>Отображение на DICOM-тег</td></tr>
+  <tr><td>http://w3.org/vcard</td><td>Эквивалентное поле vCard</td></tr>
+  <tr><td>http://ihe.net/xds</td><td>Эквивалентные метаданные XDS</td></tr>
+<!--   <tr><td>http://loinc.org</td><td>LOINC code for the element</td></tr>
   <tr><td>http://snomed.info</td><td>SNOMED CT code for the element</td></tr>
   <tr><td>http://hl7.org/v3</td><td>RIM mapping</td></tr>
   <tr><td>http://hl7.org/v2</td><td><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> mapping</td></tr>
   <tr><td>http://nema.org/dicom</td><td>DICOM tag mapping</td></tr>
   <tr><td>http://w3.org/vcard</td><td>vCard equivalent field</td></tr>
-  <tr><td>http://ihe.net/xds</td><td>XDS metadata equivalent</td></tr>
+  <tr><td>http://ihe.net/xds</td><td>XDS metadata equivalent</td></tr> -->
 </table>
 
 <!--

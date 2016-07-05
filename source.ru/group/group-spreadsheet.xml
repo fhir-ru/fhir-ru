@@ -991,13 +991,13 @@
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Group of multiple entities</Data><NamedCell
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Группа из нескольких сущностей<!-- Group of multiple entities --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization.</Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Представляет собой заданную коллекцию сущностей, которые могут обсуждаться или подвергаться действию коллективно, однако не предполагается, что они будут действовать коллективно и будут признаны официально или юридически. Т. е. коллекция сущностей, которая не является организацией.<!-- Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s82"><Data ss:Type="String">We need determiner codes that indicate we're talking about a group even when we haven't specified a specific quantity</Data><NamedCell
+    <Cell ss:StyleID="s82"><Data ss:Type="String">Нам нужны определяющие коды, показывающие, что мы говорим о группе, даже когда мы не указываем определённого количества<!-- We need determiner codes that indicate we're talking about a group even when we haven't specified a specific quantity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">Entity[determinerCode=&quot;GRP&quot; or determinerCode=&quot;GRP_KIND&quot;]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1028,11 +1028,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Unique id</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор<!-- Unique id --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A unique business identifier for this group</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Уникальный бизнес-идентификатор этой группы<!-- A unique business identifier for this group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Allows the group to be referenced from external specifications</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Позволяет делать ссылки на группу из внешних спецификаций<!-- Allows the group to be referenced from external specifications --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1067,11 +1067,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">person | animal | practitioner | device | medication | substance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifies the broad classification of the kind of resources the group includes</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет широкую классификацию вида ресурсов, которые входят в группу<!-- Identifies the broad classification of the kind of resources the group includes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Identifies what type of resources the group is made up of</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Определяет, из каких типов ресурсов состоит группа<!-- Identifies what type of resources the group is made up of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Group members SHALL be of the appropriate resource type (Patient for person or animal; or Practitioner, Device, Medicaiton or Substance for the other types.)</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Членами группы должны быть ресурсы подходящего типа (ресурс Patient для людей и животных; либо Practitioner, Device, Medicaiton или Substance для других типов).<!-- Group members SHALL be of the appropriate resource type (Patient for person or animal; or Practitioner, Device, Medicaiton or Substance for the other types.) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">person: ./classCode=&quot;PSN&quot;  animal: ./classCode=&quot;ANM&quot;  device: ./classCode=&quot;DEV&quot;  medication: ./classCode=&quot;MMAT&quot; and ./playedRole[isNormalRole() and classCode=&quot;THER&quot;]  food: ./classCode=&quot;FOOD&quot;</Data><NamedCell
@@ -1104,11 +1104,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Descriptive or actual</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описательный или фактический<!-- Descriptive or actual --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если да, означает, что ресурс ссылается на конкретную группу реальных людей. Если нет, группа определяет ряд намеченных людей<!-- If true, indicates that the resource refers to a specific group of real individuals.  If false, the group defines a set of intended individuals --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">There are use-cases for groups that define specific collections of individuals, and other groups that define &quot;types&quot; of intended individuals.  The requirements for both kinds of groups are similar, so we use a single resource, distinguished by this flag.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Есть сценарии использования для групп, которые задают определенные совокупности людей, и для групп, которые задают "типы" намеченных людей. Требования для обоих видов групп остаются одинаковыми, поэтому мы используем для них один и тот же ресурс, но с разным значеним флага.<!-- There are use-cases for groups that define specific collections of individuals, and other groups that define &quot;types&quot; of intended individuals.  The requirements for both kinds of groups are similar, so we use a single resource, distinguished by this flag. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1141,11 +1141,11 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Whether this group's record is in active use</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Активен (используется) ли данный экземпляр ресурса Group<!-- Whether this group's record is in active use --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates whether the record for the group is available for use or is merely being retained for historical purposes</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Показывает, доступна ли данная запись о группе для использования или сохраняется только для истории<!-- Indicates whether the record for the group is available for use or is merely being retained for historical purposes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Need to be able to mark a group record as not to be used because it was created in error or is otherwise no longer available (e.g. a herd that no longer exists)</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Нужна возможность пометить запись о группе как непригодную для использования, потому что она была создана по ошибке или более не доступна (например стадо больше не существует)<!-- Need to be able to mark a group record as not to be used because it was created in error or is otherwise no longer available (e.g. a herd that no longer exists) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1178,12 +1178,12 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Kind of Group members</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вид членов группы<!-- Kind of Group members --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Provides a specific type of resource the group includes; e.g. &quot;cow&quot;, &quot;syringe&quot;, etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Указывается конкретный тип ресурса, который включает в себя группа. Например "корова", "шприц" и т. д.<!-- Provides a specific type of resource the group includes; e.g. &quot;cow&quot;, &quot;syringe&quot;, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This would generally be omitted for Person resources</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Как правило, этот пункт будет опущен для ресурсов Person<!-- This would generally be omitted for Person resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">./code</Data><NamedCell
@@ -1213,11 +1213,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Label for Group</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Название группы<!-- Label for Group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A label assigned to the group for human identification and communication</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Название, присвоенное группе в целях идентификации и сообщения человеком<!-- A label assigned to the group for human identification and communication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Used to identify the group in human communication</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Используется для идентификации группы в человеческом общении<!-- Used to identify the group in human communication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1248,13 +1248,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Number of members</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество членов группы<!-- Number of members --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A count of the number of resource instances that are part of the group</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Подсчет количества экземпляров ресурсов, которые входят в группу<!-- A count of the number of resource instances that are part of the group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Group size is a common defining characteristic</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Размер группы является общей определяющей характеристикой <!-- Group size is a common defining characteristic --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Note that the quantity may be less than the number of members if some of the members are not active </Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Заметим, что эта величина может быть меньше, чем число членов, если есть недействующие члены группы<!-- Note that the quantity may be less than the number of members if some of the members are not active  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">./quantity</Data><NamedCell
@@ -1282,13 +1282,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Trait of group members</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Признак членов группы<!-- Trait of group members --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifies the traits shared by members of the group</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет признак, присущий всем членам группы<!-- Identifies the traits shared by members of the group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Needs to be a generic mechanism for identifying what individuals can be part of a group</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Должен быть общий механизм для определения того, какие люди могут входить в группу<!-- Needs to be a generic mechanism for identifying what individuals can be part of a group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">All the identified characteristics must be true for an entity to a member of the group</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Все идентифицированные характеристики должны выполняться для членов группы<!-- All the identified characteristics must be true for an entity to a member of the group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">./playedRole[isNormalRole()]/participation[isNormalParticipation() and typeCode=&quot;SBJ&quot;]/act[isNormalAct and classCode=&quot;OBS&quot; and moodCode=&quot;EVN&quot;]</Data><NamedCell
@@ -1319,11 +1319,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Kind of characteristic</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вид характеристики<!-- Kind of characteristic --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A code that identifies the kind of trait being asserted</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Код типа утверждаемого признака <!-- A code that identifies the kind of trait being asserted --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Need a formal way of identifying the characteristic being described</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Нужен формальный способ определения описываемой характеристики<!-- Need a formal way of identifying the characteristic being described --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1354,13 +1354,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Value held by characteristic</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Значение, которое имеет характеристика<!-- Value held by characteristic --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The value of the trait that holds (or does not hold - see 'exclude') for members of the group</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Значение, которое содержит характеристика (или не содержит - см. "исключение") членов группы<!-- The value of the trait that holds (or does not hold - see 'exclude') for members of the group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The value of the characteristic is what determines group membership.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Значение характеристики - это то, что определяет членство в группе.<!-- The value of the characteristic is what determines group membership. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">For Range, it means members of the group have a value that falls somewhere within the specified range.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Для типа Range это означает, что члены группы имеют характеристику со значением, попадающим в указанный диапазон.<!-- For Range, it means members of the group have a value that falls somewhere within the specified range. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">./value</Data><NamedCell
@@ -1390,13 +1390,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Group includes or excludes</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Группа включает или исключает<!-- Group includes or excludes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">If true, indicates the characteristic is one that is NOT held by members of the group</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Если да, обозначает, что члены группы НЕ ИМЕЮТ данной характеристики<!-- If true, indicates the characteristic is one that is NOT held by members of the group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Sometimes group membership is determined by characteristics not possessed</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Иногда членство в группе определяется не обладанием какой-то характеристики, а ее отсутствием<!-- Sometimes group membership is determined by characteristics not possessed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This is labeled as &quot;Is Modifier&quot; because applications cannot wrongly include excluded members as included or vice versa</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Элемент отмечен как модификатор, поскольку приложения могут ошибочно принять исключение членов группы за включение и наоборот<!-- This is labeled as &quot;Is Modifier&quot; because applications cannot wrongly include excluded members as included or vice versa --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">./valueNegationInd</Data><NamedCell
@@ -1425,9 +1425,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Period over which characteristic is tested</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период, в течение которого проверяется данная характеристика<!-- Period over which characteristic is tested --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The period over which the characteristic is tested; e.g. the patient had an operation during the month of June</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Период, в течение которого проверяется данная характеристика; например пациент перенёс операцию в течение месяца июня<!-- The period over which the characteristic is tested; e.g. the patient had an operation during the month of June --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1456,11 +1456,11 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Who or what is in group</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кто или что входит в группу<!-- Who or what is in group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifies the resource instances that are members of the group.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Определяет экземпляры ресурсов, которые являются членами группы.<!-- Identifies the resource instances that are members of the group. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Often the only thing of interest about a group is &quot;who's in it&quot;</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Часто единственной вещью, представляющей интерес, будет "кто входит в группу"<!-- Often the only thing of interest about a group is &quot;who's in it&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1492,9 +1492,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reference to the group member</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на члена группы<!-- Reference to the group member --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A reference to the entity that is a member of the group. Must be consistent with Group.type</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Ссылка на сущность, описывающую члена группы. Не должна противоречить значению поля Group.type<!-- A reference to the entity that is a member of the group. Must be consistent with Group.type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1522,14 +1522,14 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The member is in the group at this time</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">В это время участник входил в состав группы<!-- The member is in the group at this time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Period member belonged to the group</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период времени, когда участник входил в состав группы<!-- Period member belonged to the group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The period that the member was in the group, if known</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Период времени, когда участник входил в состав группы (если известен)<!-- The period that the member was in the group, if known --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Need to track who was in a group at a  particular time</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Для отслеживания, кто в какое время входил в состав группы<!-- Need to track who was in a group at a  particular time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1559,11 +1559,11 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If member is no longer in group</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если участник больше не состоит в группе<!-- If member is no longer in group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A flag to indicate that the member is no longer in the group, but previously may have been a member</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Флаг того, что этот участник больше не входит в составл группы, однако раньше он мог быть её участником<!-- A flag to indicate that the member is no longer in the group, but previously may have been a member --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Sometimes you don't know when someone stopped being in a group, but not when</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Иногда вы не знаете, когда кто-то перестал входить в состав группы, но знаете, что перестал<!-- Sometimes you don't know when someone stopped being in a group, but not when --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3938,7 +3938,7 @@
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">Group</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">Can only have members if group is &quot;actual&quot;</Data><NamedCell
+    <Cell ss:StyleID="s84"><Data ss:Type="String">Может содержать членов, только если группа является актуальной<!-- Can only have members if group is &quot;actual&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">member.empty() or (actual = true)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4440,14 +4440,14 @@
     <Cell ss:StyleID="s79"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s79"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">Group.type</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">The type of resources the group contains</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Тип ресурсов, которые содержит группа<!-- The type of resources the group contains --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Group.code</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The kind of resources contained</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Вид вложенных ресурсов<!-- The kind of resources contained --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">actual</Data></Cell>
@@ -4496,7 +4496,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">composite</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">characteristic &amp; value</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A composite of both characteristic and value</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Комбинация характеристики и ее значения<!-- A composite of both characteristic and value --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
@@ -6403,7 +6403,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s146"><Data ss:Type="String">GroupKind</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">Kind of particular resource; e.g. cow, syringe, lake, etc.</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Вид определенного ресурса. Например корова, шприц, озеро и т. п.<!-- Kind of particular resource; e.g. cow, syringe, lake, etc. --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s115"/>
     <Cell ss:StyleID="s115"/>
@@ -6418,7 +6418,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">GroupCharacteristicKind</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">List of characteristics used to describe group members; e.g. gender, age, owner, location, etc.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Список характеристик, используемых для описания членов группы. Например пол, возраст, владелец, местоположение и т. д.<!-- List of characteristics used to describe group members; e.g. gender, age, owner, location, etc. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
@@ -6433,7 +6433,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">GroupCharacteristicValue</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Value of descriptive member characteristic; e.g. red, male, pneumonia, Caucasian, etc.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Значение описательной характеристики членов группы. Например красный, мужской, пневмония, кавказский и т. п.<!-- Value of descriptive member characteristic; e.g. red, male, pneumonia, Caucasian, etc. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">unbound</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
@@ -6448,7 +6448,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">GroupType</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Types of resources that are part of group</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Типы ресурсов, которые входят в группу<!-- Types of resources that are part of group --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">#group-type</Data></Cell>

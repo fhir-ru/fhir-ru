@@ -2,35 +2,45 @@
 
 <div>
 <a name="bnc"> </a>
-<h2>Scope and Usage</h2>
+<h2>Область применения и использование</h2>
 <p>
-<i>This resource is a draft proposal for use as part of an approach to Clinical Quality within FHIR, and is documented as part of the <a href="cqif/cqif.html">Clinical Quality Improvement Framework Implementation Guide</a>.</i>
+<i>Данный ресурс - это техническое предложение для использования в рамках подхода к Клиническому Качеству в FHIR, задокументированное в составе <a href="cqif/cqif.html">Руководства по реализации Инфраструктуры для улучшения клинического качества</a>.<!-- This resource is a draft proposal for use as part of an approach to Clinical Quality within FHIR, and is documented as part of the <a href="cqif/cqif.html">Clinical Quality Improvement Framework Implementation Guide</a>. --></i>
 </p>
 
-<p>The DecisionSupportServiceModule defines a module of clinical decision support functionality made available by a decision support service. For example, a service may provide immunization modules, drug-drug interaction checking, or appropriate use assessment.</p>
+<p>Ресурс DecisionSupportServiceModule определяет модуль функциональности поддержки принятия клинических решений, доступный для сервиса поддержки принятия решений. Например сервис может предоставлять модули по иммунизации, по проверке взаимодействия лекарств или по оценке надлежащего использования.
+<!-- The DecisionSupportServiceModule defines a module of clinical decision support functionality made available by a decision support service. For example, a service may provide immunization modules, drug-drug interaction checking, or appropriate use assessment. --></p>
 
-<p>Each module defines three main features related to its functionality:</p>
+<p>Каждый модуль задаёт три основные характеристики, связанные со своей функциональностью:
+<!-- Each module defines three main features related to its functionality: --></p>
 
 <ul>
-	<li>Input and output parameters</li>
+	<li>Входные и выходные параметры</li>
+	<li>Требования к данным</li>
+	<li>Триггеры</li>
+<!-- 	<li>Input and output parameters</li>
 	<li>Data requirements</li>
-	<li>Triggers</li>
+	<li>Triggers</li> -->
 </ul>
 
-<p>Input and output parameters are used to specify any named parameters used by the module. These are typically patient-independent configuration parameters such as an A1C threshold for a diabetes control module, but they may also be used to return calculations performed by the module.</p>
+<p>Входные и выходные параметры используются для определения именованных параметров, используемых модулем. Обычно это независимые от пациента параметры конфигурации, например порог A1C для модуля управления диабетом, однако их также можно использовать для возвращения результатов расчётов, выполняемых модулем.
+<!-- Input and output parameters are used to specify any named parameters used by the module. These are typically patient-independent configuration parameters such as an A1C threshold for a diabetes control module, but they may also be used to return calculations performed by the module. --></p>
 
-<p>Data requirements are used to specify the set of data that must be provided (or available) to the module in order to achieve a successful evaluation. For example, if the module requires A1C lab results within the last 6 months, or information on bilateral or both left and right amputation at or below the knee.</p>
+<p>Требования к данным используются для определения набора данных, которые должны быть предоставлены (или доступны) модулю для успешного оценивания. Например модулю требуются лабораторные результаты по A1C за последние 6 месяцев, или информация по двусторонней или и левой, и правой ампутации по или ниже колена. 
+<!-- Data requirements are used to specify the set of data that must be provided (or available) to the module in order to achieve a successful evaluation. For example, if the module requires A1C lab results within the last 6 months, or information on bilateral or both left and right amputation at or below the knee. --></p>
 
-<p>Triggers are used to advertise when the module should be invoked. On encountering a specific trigger, a clinical application can invoke the modules associated with the trigger using the <a href="decisionsupportservicemodule-operations.html#evaluate">$evaluate</a> operation. Any data required by the module can be sent as part of the request, and any suggested <i>actions</i> and other output data are returned via the <a href="GuidanceResponse.html">GuidanceResponse</a> resource.</p>
+<p>Триггеры используются для объявления, когда необходимо вызывать модуль. При срабатывании определённого триггера, клиническое приложение может вызвать модули, связанные с этим триггером, с помощью операции <a href="decisionsupportservicemodule-operations.html#evaluate">$evaluate</a>. Все данные, требуемые модулю, могут быть отправлены в рамках запроса, а все предложенные <i>действия</i> и другие выходные данные возвращаются с помощью ресурса <a href="GuidanceResponse.html">GuidanceResponse</a>.
+<!-- Triggers are used to advertise when the module should be invoked. On encountering a specific trigger, a clinical application can invoke the modules associated with the trigger using the <a href="decisionsupportservicemodule-operations.html#evaluate">$evaluate</a> operation. Any data required by the module can be sent as part of the request, and any suggested <i>actions</i> and other output data are returned via the <a href="GuidanceResponse.html">GuidanceResponse</a> resource. --></p>
 
-<p>For a more detailed discussion of the evaluation process, refer to the <a href="cqif/cqif-integrating-decision-support.html">Integrating Decision Support in a Clinical Workflow</a> topic in the CQIF IG.</p>
+<p>Для получения более подробной информации по процессу вычисления смотрите тему <a href="cqif/cqif-integration-decision-support.html">Интеграция поддержки принятия решений в клиническом рабочем процессе</a> в руководстве по реализации CQIF.
+<!-- For a more detailed discussion of the evaluation process, refer to the <a href="cqif/cqif-integrating-decision-support.html">Integrating Decision Support in a Clinical Workflow</a> topic in the CQIF IG. --></p>
 
 </div>
 
 <div>
-<h2>Boundaries and Relationships</h2>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
-The DecisionSupportServiceModule is similar in structure to the DecisionSupportRule, and supports an identical $evaluate operation. The difference between the two is that the DecisionSupportRule is designed to enable the sharing of the rule definition, as opposed to the DecisionSupportServiceModule, which only supports evaluation of the module; the internal functionality is opaque.
+По своей структуре DecisionSupportServiceModule аналогичен ресурсу DecisionSupportRule и поддерживает операцию $evaluate. Различие между двумя этими ресурсами в том, что DecisionSupportRule создан для обеспечения возможности совместного использования определений правил, в отличие от DecisionSupportServiceModule, который поддерживает только операцию вычисления модуля; внутренняя функциональность непрозрачна.
+<!-- The DecisionSupportServiceModule is similar in structure to the DecisionSupportRule, and supports an identical $evaluate operation. The difference between the two is that the DecisionSupportRule is designed to enable the sharing of the rule definition, as opposed to the DecisionSupportServiceModule, which only supports evaluation of the module; the internal functionality is opaque. -->
 </p>
 </div>
 

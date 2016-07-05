@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-[%settitle Narrative%]
+[%settitle Описательная часть%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -8,7 +8,7 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 
 <%narrheader base%>
@@ -17,35 +17,46 @@
 <a name="Narrative"> </a>
 <a name="narrative"> </a>
 <a name="xhtml"> </a>
-<h2>Narrative</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<h2>Описательная часть</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: 3</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 <p>
+Любой ресурс, являющийся <a href="domainresource.html">доменным ресурсом</a> (это почти все типы ресурсов) может содержать человекочитаемую описательную часть, которая содержит краткое изложение ресурса и может быть использована для представления содержимого ресурса человеку. Если описательная часть присутствует, она ДОЛЖНА отражать все содержимое, необходимое человеку для понимания важнейшей клинической и деловой информации, которая закодирована в ресурсе. Определения ресурса могут устанавливать, какие данные следует представлять в описательной части для гарантирования клинической безопасности.
+<!--
 Any resource that is a <a href="domainresource.html">domain resource</a> (almost all types 
 of resource) may include a human-readable narrative that contains a summary of the resource,
 and may be used to represent the content of the resource to a human.
 If narrative is present, it SHALL reflect all content needed for a human to understand the
 essential clinical and business information otherwise encoded within the resource.
 Resource definitions may define what content should be represented in the narrative to ensure clinical safety.
+-->
 </p>
 <p>
+Описательная часть ресурса может содержать дополнительную информацию, которой нет в структурированных данных, включая отредактированное человеком содержимое. Дополнительная информация ДОЛЖНА входить в область определения ресурса, хотя для описательной части характерно включать дополнительные данные, извлеченные из других упоминаемых ресурсов, на которые имеются ссылки.
+<!--
 The narrative for a resource is allowed to contain additional information that is not in
 the structured data, including human-edited content. Such additional information SHALL be
 in the scope of the definition of the resource, though it is common for the narrative to
 include additional descriptional information extracted from other referenced resources.
+-->
+Описательная часть ресурса должна включать сводную информацию по всем ресурсам, на которые даются ссылки, которая необходима потребителю этого ресурса для понимания ключевой, существенной информации о ресурсе без извлечения каких-либо дополнительных ресурсов. Например описательная часть ресурса MedicationOrder может включать в себя краткую суммарную информацию о пациенте, медицинском работнике, назначающем рецептурные препараты, и медикаменте, на которых даются ссылки. Некоторые ресурсы (например List, Composition) могут вводить дополнительные правила на содержимое, которое должно (или не должно) быть включено в описательную часть ресурса. Следует учитывать тот факт, что упомянутые ресурсы могут быть обновлены без обновления ресурсов по ссылкам; поэтому доля содержимого ссылочного ресурса, включаемого в ссылающийся ресурс, должна быть ограничена.
+<!-- 
 Narrative for a resource should include summary information about any referenced resources that would
 be required for a consumer of the resource to be able to understand the key, essential information 
 about a resource without retrieving any additional resources.  For example, the narrative for a 
-MedicationOrder might include brief summary information about the referenced patient, 
+MedicationOrder might include brief summary information about the referenced patient,
 prescriber and medication.  Some resources (e.g. List, Composition) may provide specific 
 rules about what content must (or must not) be included in the resource narrative.  Consideration 
 should be given to the fact that referenced resources may be updated without updating 
 referencing resources, so the proportion of content of a referenced resource included 
 in a referencing resource should be limited. 
+-->
 Systems MAY choose how narrative is generated, including how much de-referencing to 
 perform, but SHALL NOT assume that the resource is rendered in any particular context 
 when generating narrative, since resources will be used in multiple contexts.
 </p>
 <p>
+Ресурсы всегда ДОЛЖНЫ содержать описательную часть для поддержки использования человеком в качестве запасного варианта. Структурированные данные НЕ ДОЛЖНЫ обычно содержать информацию, представляющую интерес для просмотра человеком, которая опущена в описательной части. Создатели FHIR-ресурсов не должны предполагать, что системы будут отображать (или что люди увидят) данные, которых нет в описательной части. Тем не менее, в строго управляемых системах торговли, где все системы разделяют общую модель данных и дополнительный текст является излишним или даже несет в себе риск клинической безопасности, описательная часть может быть опущена. Реализаторы должны тщательно взвесить это решение, перед тем как принимать его, т. к. оно будет означать, что эти ресурсы смогут понять только в ограниченной торговой среде. Весьма вероятно, что закрытые торговые партнерские среды откроются в течение жизненного срока ресурсов, которые они определяют. К тому же, большинство шагов рабочего процесса, включая нахождение и агрегацию ресурсов, являются намного более сложными и трудоемкими, если используемые ресурсы не имеют собственного текста.
+<!--
 Resources SHOULD always contain narrative to support human-consumption
 as a fallback.  Structured data SHOULD NOT generally contain information of 
 importance to human readers that is omitted from the narrative. Creators of FHIR 
@@ -59,35 +70,30 @@ environments are very likely to open up during the lifetime of the resources
 they define. Also, many workflow steps involving finding and aggregating 
 resources are much more difficult or tedious if the resources involved do not have 
 their own text.
+-->
 </p>
 <p>
-Note that <a href="references.html#contained">contained</a> Resources SHALL NOT have a narrative
-of their own.
+Обратите внимание, что <a href="references.html#contained">вложенные</a> ресурсы НЕ ДОЛЖНЫ иметь собственной описательной части.
 </p>
 <p>
-The narrative is an XHTML fragment with a flag to indicate its relationship to the data:
+Описательная часть - это фрагмент XHTML с флагом для указания ее связи с данными:
 </p>
 [%dt Narrative 1%]
 <a name="security"> </a>
 <p>
-The contents of the <i>div</i> element are an XHTML fragment that SHALL contain only the basic HTML formatting elements described in
-chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href),
-images and internally contained style attributes.
-The XHTML content SHALL NOT contain
-a <code>head</code>, a <code>body</code> element, external stylesheet references, deprecated elements, scripts, forms, base/link/xlink, frames, iframes, objects or event related attributes (e.g. <code>onClick</code>).
-This is to ensure that the content of the narrative is contained within the resource and that there is no active content.  Such content would introduce
-<a href="security.html#narrative">security issues</a> and potentially safety issues with regard to extracting text from the XHTML.
+Содержимое элемента <i>div</i>  – это фрагмент XHTML, который ДОЛЖЕН содержать только базовые HTML-атрибуты форматирования, описанные в главах 7-11 (кроме раздела 4 главы 9) и 15 стандарта HTML 4.0 , элементы &lt;a&gt; (name либо href), изображения и внутренние атрибуты стилей. Содержимое XHTML НЕ ДОЛЖНО включать в себя элементы <code>head</code> и <code>body</code>, ссылки на внешние таблицы стилей, не рекомендуемые элементы, скрипты, формы, base/link/xlink, фреймы, iframes, объекты и атрибуты, связанные с событиями (например <code>onClick</code>). 
+Это гарантирует, что содержимое описательной части содержится внутри ресурса и в нем отсутствует активный контент. Такой контент ввел бы <a href="security.html#narrative">проблемы безопасности</a> и, потенциально, проблемы надежности касательно извлекаемого из XHTML текста.
 </p>
 <p>
-The div element SHALL have some non-whitespace content (text or an image).
+Элемент div ДОЛЖЕН иметь некоторое не пробельное содержимое (текст или изображение).
 </p>
 <div class="example">
 <pre class="xml" fragment="Narrative">
   &lt;narrative&gt;
-    &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;This is a simple
+    &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;This is a simple 
           example with only plain text&lt;/div&gt;
   &lt;/narrative&gt;
-
+   
    &lt;narrative&gt;
    &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;
      &lt;p&gt;
@@ -98,40 +104,37 @@ The div element SHALL have some non-whitespace content (text or an image).
 </pre>
 </div>
 <p>
-The inner portion of the <code>div</code> content is often used for the <i>innerHTML</i> property in a browser.
-In order to simplify this kind of processing, when the narrative is represented in JSON,
-it SHALL be encoded so that the characters between the first '&gt;' and the last
-'&lt;' delimiters is the content of the <code>&lt;div&gt;</code> element; e.g.
+Внутренняя часть содержимого элемента <code>div</code> часто берется для свойства <i>innerHTML</i> в браузере. 
+В целях упрощения этого вида обработки, когда описательная часть представлена в формате JSON, она ДОЛЖНА быть закодирована таким образом, чтобы символы между первым "&gt;" и последним 
+"&lt;" разделителями были только содержимым элемента <code>&lt;div&gt;</code>, например
 </p>
 <pre class="json">
   &quot;div&quot;: &quot;&lt;div&gt;text&lt;/div&gt;&quot;
 </pre>
 <p>
-is legal, but this is not:
+допустимо, но не:
 </p>
 <pre class="json">
   &quot;div&quot;: &quot;&lt;?xml ...&gt;&lt;div&gt;text&lt;/div&gt;&quot;
 </pre>
 <p>
-Note that the XHTML is contained in general XML so there is no support for HTML entities
-like <code>&amp;nbsp;</code> or <code>&amp;copy;</code> etc. Unicode characters SHALL be used instead. Unicode
-<code>&amp;#160;</code> substitutes for <code>&amp;nbsp;</code>.
+Обратите внимание, что XHTML-содержимое входит в общий XML, поэтому нет поддержки таких HTML-сущностей, как <code>&amp;nbsp;</code> или <code>&amp;copy;</code> и др. Вместо них СЛЕДУЕТ использовать символы Юникода. Символ Юникода 
+<code>&amp;#160;</code> заменяет <code>&amp;nbsp;</code>.
 </p>
 <p>
-The narrative content SHOULD be in the <a href="resource-definitions.html#Resource.language">language of the resource</a>, but
-there is no reason to expect that HTML type tooling would understand the resource <a href="resource.html#content">language</a> element. For this reason,
-a <code>lang</code> attribute on the <code>&lt;div&gt;</code> SHOULD also be used (see
-<a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#the-lang-and-xml:lang-attributes">the note in the HTML 5 specification about use of language</a>).
+Содержимое описательной части ДОЛЖНО быть на <a href="resource-definitions.html#Resource.language">языке ресурса</a>, но нет основания ожидать, что HTML-обработчик распознает элемент ресурса <a href="resource.html#content">language</a>. По этой причине СЛЕДУЕТ использовать атрибут <code>lang</code> элемента <code>&lt;div&gt;</code> (см. <a href="http://www.w3.org/html/wg/drafts/html/master/dom.html#the-lang-and-xml:lang-attributes">примечание в спецификации HTML 5 об использовании language</a>).
 </p>
 
 
 <a name="id"></a>
-<h3>Image References</h3>
+<h3>Ссылки на изображения<!-- Image References --></h3>
 
 <p>
-Image source data (the <code>src</code> attribute) may refer to an image found in the resource
+Исходные данные изображения (атрибут <code>src</code>) могут ссылаться на изображение, находящееся в ресурсе (как вложенный <a href="media.html">Media</a> или <a href="binary.html">Binary</a> ресурс)
+по его <i>id</i>:
+<!-- Image source data (the <code>src</code> attribute) may refer to an image found in the resource
 (as a contained <a href="media.html">Media</a> or <a href="binary.html">Binary</a> resource)
-by its <i>id</i>:
+by its <i>id</i>: -->
 </p>
 <div class="example">
 <pre class="xml">
@@ -148,139 +151,116 @@ by its <i>id</i>:
 </pre>
 </div>
 <p>
-References between the narrative and the resource data (in either direction)
+Ссылки между описательной частью и данными ресурса (в любом из направлений)
+опосредованы с помощью атрибутов XML <code>id</code>/<code>idref</code>. В JSON используется свойство "id", которое эквивалентно XML-атрибуту "id".
+<!-- References between the narrative and the resource data (in either direction)
 are mediated by the XML <code>id</code>/<code>idref</code> attributes. in JSON, the property "id" is
-used which is equivalent to the XML attribute "id".
+used which is equivalent to the XML attribute "id". -->
 </p>
 <p>
-The <code>id</code> attribute SHALL have a unique value <em>within the resource</em>
-with regard to any other id attributes: the uniqueness and resolution
-scope of these id references is within the resource that contains them.
-Contained resources are included in the id uniqueness scope of the
-resource that contains them.
+Атрибут <code>id</code> ДОЛЖЕН иметь уникальное значение <em>в пределах ресурса</em> 
+относительно любого другого атрибута "id": уникальность и область разрешения этих id-ссылок находится внутри ресурса, который их содержит. 
+Вложенные ресурсы включены в область уникальности id ресурса, который их содержит.
+<!-- The <code>id</code> attribute SHALL have a unique value <em>within the resource</em> 
+with regard to any other id attributes: the uniqueness and resolution 
+scope of these id references is within the resource that contains them. 
+Contained resources are included in the id uniqueness scope of the 
+resource that contains them.  -->
 </p>
 <p>
-If multiple resources are combined into a single combined document,
+Если несколько ресурсов скомбинированы в единый комбинированный документ, например <a href="bundle.html">bundle</a>, то среди ресурсов могут появиться значения-дубликаты атрибута id. Это ДОЛЖНО управляться приложениями для чтения ресурсов.
+<!-- If multiple resources are combined into a single combined document,
 such as a <a href="bundle.html">Bundle</a>, duplicate
 values of the <code>id</code> attribute may occur between resources.
-This SHALL be managed by applications reading the resources.
+This SHALL be managed by applications reading the resources. --> 
 </p>
 <p>
-Since images that are not contained in the resource cannot be guaranteed to be available
-when the resource is presented to a user, the source for any images that are an essential
-part of the narrative SHOULD always be embedded as a <a href="https://tools.ietf.org/html/rfc2397">data: url</a>,
-in an attachment or a contained resource.
+Поскольку изображения, которые не вложены в ресурс, нельзя гарантировать доступность при представлении ресурса пользователю, источник всех изображений, которые являются существенной частью описательной части, ДОЛЖНЫ всегда быть встроены в виде <a href="https://tools.ietf.org/html/rfc2397">data: url</a>, во вложении или вложенном ресурсе.
+<!-- Since images that are not contained in the resource cannot be guaranteed to be available
+when the resource is presented to a user, the source for any images that are an essential 
+part of the narrative SHOULD always be embedded as a <a href="https://tools.ietf.org/html/rfc2397">data: url</a>, 
+in an attachment or a contained resource. -->
 </p>
 
 <a name="css"></a>
-<h3>Styling the XHTML</h3>
+<h3>Стилевое оформление XHTML</h3>
 <p>
-The XHTML fragment in the narrative may be styled using cascading stylesheets with
-either external or internal styles. External styles are applied using the <i>class</i>
-and <i>id</i> attributes on the XHTML elements and internal styles are applied using
-a <i>style</i> attribute on the XHTML elements directly.
+XHTML-фрагмент в описательной части может быть оформлен с помощью каскадных таблиц с внешними или внутренними стилями. Внешние стили применяются с помощью атрибутов <i>class</i> 
+и <i>id</i> XHTML-элементов, внутренние стили применяются с помощью использования атрибута <i>style</i> прямо на элементах XHTML. 
 </p>
 <p>
-In order to minimise manageability and security issues, authoring systems cannot
-specify the CSS stylesheet to use directly. Instead, the application that displays
-the resource provides the stylesheets. This means that the rendering system
-chooses what styles can be used, but the authoring system must use them in advance.
-Authoring systems can use these classes, which SHALL be supported by all rendering systems:
+В целях минимизации проблем управляемости и безопасности, авторские системы не могут определять CSS для использования напрямую. Вместо этого таблицы стилей предоставляет приложение, отображающее ресурс. Это значит, что система визуализации выбирает, какие стили могут быть использованы, однако авторская система должна использовать их заранее. Авторские системы могут использовать следующие классы, которые ДОЛЖНЫ поддерживаться всеми системами отображения:
 </p>
 <table>
- <tr> <td>bold</td> <td>Bold</td> <td>{ font-weight: bold }</td> </tr>
- <tr> <td>italics</td> <td>Italics Text</td> <td>{ font-style: italic }</td> </tr>
- <tr> <td>underline</td> <td>Underlined Text</td> <td>{ text-decoration: underline }</td> </tr>
- <tr> <td>strikethrough</td> <td>Strikethrough Text</td> <td>{ text-decoration: line-through }</td> </tr>
- <tr> <td>left</td> <td>Left Aligned</td> <td>{ text-align : left }</td> </tr>
- <tr> <td>right</td> <td>Right Aligned</td> <td>{ text-align : right }</td> </tr>
- <tr> <td>center</td> <td>Center Aligned</td> <td>{ text-align : center }</td> </tr>
- <tr> <td>justify</td> <td>Justified</td> <td>{ text-align : justify }</td> </tr>
- <tr> <td>border-left</td> <td>Border on the left</td> <td>{ border-left: 1px solid grey }</td> </tr>
- <tr> <td>border-right</td> <td>Border on the right</td> <td>{ border-right: 1px solid grey }</td> </tr>
- <tr> <td>border-top</td> <td>Border on the top</td> <td>{ border-top: 1px solid grey }</td> </tr>
- <tr> <td>border-bottom</td> <td>Border on the bottom</td> <td>{ border-bottom: 1px solid grey }</td> </tr>
- <tr> <td>arabic</td> <td>List is ordered using Arabic numerals: 1, 2, 3</td> <td>{ list-style-type: decimal }</td> </tr>
- <tr> <td>little-roman</td> <td>List is ordered using little Roman numerals: i, ii, iii</td> <td>{ list-style-type: lower-roman }</td> </tr>
- <tr> <td>big-roman</td> <td>List is ordered using big Roman numerals: I, II, III</td> <td>{ list-style-type: upper-roman }</td> </tr>
- <tr> <td>little-alpha</td> <td>List is ordered using little alpha characters: a, b, c</td> <td>{ list-style-type: lower-alpha }</td> </tr>
- <tr> <td>big-alpha</td> <td>List is ordered using big alpha characters: A, B, C</td> <td>{ list-style-type: upper-alpha }</td> </tr>
- <tr> <td>disc</td> <td>List bullets are simple solid discs</td> <td>{ list-style-type: disc }</td> </tr>
- <tr> <td>circle</td> <td>List bullets are hollow discs</td> <td>{ list-style-type : circle }</td> </tr>
- <tr> <td>square</td> <td>List bullets are solid squares</td> <td>{ list-style-type: square }</td> </tr>
+ <tr> <td>bold</td> <td>Полужирный шрифт</td> <td>{ font-weight: bold }</td> </tr>
+ <tr> <td>italics</td> <td>Курсивный шрифт</td> <td>{ font-style: italic }</td> </tr>
+ <tr> <td>underline</td> <td>Подчеркнутый текст</td> <td>{ text-decoration: underline }</td> </tr>
+ <tr> <td>strikethrough</td> <td>Перечеркнутый текст</td> <td>{ text-decoration: line-through }</td> </tr>
+ <tr> <td>left</td> <td>Выравнивание по левому краю</td> <td>{ text-align : left }</td> </tr>
+ <tr> <td>right</td> <td>Выравнивание по правому краю</td> <td>{ text-align : right }</td> </tr>
+ <tr> <td>center</td> <td>Выравнивание по центру</td> <td>{ text-align : center }</td> </tr>
+ <tr> <td>justify</td> <td>Выравнивание по ширине</td> <td>{ text-align : justify }</td> </tr>
+ <tr> <td>border-left</td> <td>Граница слева</td> <td>{ border-left: 1px solid grey }</td> </tr>
+ <tr> <td>border-right</td> <td>Граница справа</td> <td>{ border-right: 1px solid grey }</td> </tr>
+ <tr> <td>border-top</td> <td>Граница сверху</td> <td>{ border-top: 1px solid grey }</td> </tr>
+ <tr> <td>border-bottom</td> <td>Граница снизу</td> <td>{ border-bottom: 1px solid grey }</td> </tr>
+ <tr> <td>arabic</td> <td>Нумерация списка арабскими цифрами: 1, 2, 3</td> <td>{ list-style-type: decimal }</td> </tr>
+ <tr> <td>little-roman</td> <td>Нумерация списка маленькими римскими цифрами: i, ii, iii</td> <td>{ list-style-type: lower-roman }</td> </tr>
+ <tr> <td>big-roman</td> <td>Нумерация списка большими римскими цифрами: I, II, III</td> <td>{ list-style-type: upper-roman }</td> </tr>
+ <tr> <td>little-alpha</td> <td>Нумерация списка маленькими символами латиницы: a, b, c</td> <td>{ list-style-type: lower-alpha }</td> </tr>
+ <tr> <td>big-alpha</td> <td>Нумерация списка большими символами латиницы: A, B, C</td> <td>{ list-style-type: upper-alpha }</td> </tr>
+ <tr> <td>disc</td> <td>Маркеры списка - простые закрашенные кружочки</td> <td>{ list-style-type: disc }</td> </tr>
+ <tr> <td>circle</td> <td>Маркеры списка - не закрашенные кружочки</td> <td>{ list-style-type : circle }</td> </tr>
+ <tr> <td>square</td> <td>Маркеры списка - закрашенные квадратики</td> <td>{ list-style-type: square }</td> </tr>
  <tr> <td>unlist</td> <td>List with no bullets</td> <td>{ list-style-type: none }</td> </tr>
 </table>
 <p>
-Note: for testing purposes, there is an <a href="basic-example-narrative.xml.html">example resource</a> that includes
-all of these styles. It is also available <a href="narrative-example.html">as XHTML</a> and a
-<a href="fhir-runtime.css">standard stylesheet</a> that includes all of these styles.  Use of styles
-not on this list will require an arrangement between producing and consuming systems.
+Примечание: для тестирования имеется <a href="basic-example-narrative.xml.html">пример ресурса</a> с использованием всех этих стилей. Также для этого ресурса доступно <a href="narrative-example.html">XHTML-представление</a> и 
+<a href="fhir-runtime.css">стандартная таблица стилей</a>, содержащая все эти стили. Использование стилей, не входящих в этот список, потребует договоренность между системой-производителем и системой-потребителем.
 </p>
 
 <p>
-Authoring systems may refer to additional classes, but cannot rely on the fact
-that they will be supported. If the additional classes are critical for safe
-rendering, trading partner agreements will be required.
+Авторские системы могут ссылаться на дополнительные классы, но не могут полагаться на тот факт, что они будут поддержаны. Если использование дополнительных классов критично для безопасного отображения, тогда потребуются соглашения торговых партнеров. 
 </p>
 <p>
-Authoring systems may also use internal styles using the <i>style</i> attribute. This
-has the advantage of not depending on external interpretation, but also has the
-side effect of making content more difficult to manage when rendering, so applications
-should use this approach with care.
+Кроме того, авторские системы могут использовать внутренние стили с помощью атрибута <i>style</i>. Этот подход имеет преимущество - независимость от внешней интерпретации, но также имеет побочный эффект, усложняя управление содержимым во время рендеринга, поэтому приложениям следует использовать этот подход с осторожностью. 
 </p>
 <p>
-Authoring systems may fix the following styling aspects of the content:
+
+Авторские системы могут устанавливать следующие аспекты оформления содержимого:
 </p>
 <ul>
-  <li>bold, italic, underline, strikethrough</li>
-  <li>font color, family and size</li>
-  <li>background color, text alignment</li>
-  <li>whitespace interpretation</li>
-  <li>ordered list number format (since it may be referred to in text)</li>
+  <li>полужирный, курсив, подчеркнутый, перечеркнутый</li>
+  <li>цвет, семейство и размер шрифта</li>
+  <li>цвет фона, выравнивание текста</li>
+  <li>интерпретация символов табуляции</li>
+  <li>формат нумерации упорядоченного списка (т. к. на него могут быть ссылки в тексте)</li>
 </ul>
 <p>
-These style properties are specified in-line using the <code>style</code> attribute. Rendering systems
-SHOULD respect any of these rendering styles when they are specified in the <code>style</code>
-attribute, although appropriate interpretation is allowed in certain contexts (e.g. a low-contrast display for dark
-rooms or a high-contrast display for the visually impaired may adjust colors accordingly).
+Эти свойства стиля указываются внутри элементов с помощью атрибута <code>style</code>. Отображающие системы ДОЛЖНЫ соблюдать все эти стили отображения, когда они указаны в атрибуте <code>style</code>, хотя в некоторых контекстах допустима подходящая интерпретация (например позволяется соответствующим образом настраивать цвета для вывода низкоконтрастного отображения в темной комнаты или высококонтрастного отображения для слабовидящих).
 </p>
 <p>
-Note that rendering systems are allowed to ignore or override any of the internal or
-external styles described above, but SHOULD be careful to ensure that this is only done
-in the context of well maintained trading partner agreements, as altering the presentation
-of the text may create clinical safety issues.
+Обратите внимание, что системам отображения допускается игнорировать или переписывать любой из внутренних или внешних стилей, описанных выше, но осторожно, чтобы гарантировать, что это делается только в случае хорошо поддерживаемых торговых партнерских соглашений, т. к. изменение отображения текста может создать проблемы клинической безопасности.
 </p>
 <p>
-Authors MAY specify additional styles and style properties as specified in the CSS specification,
-but these are extensions to this specification and renderers are not required to heed them.
-It SHOULD be safe to view the narrative without these additional styling features available.
+Авторы МОГУТ вводить дополнительные стили и свойства стилей, как описано в CSS-спецификации, однако они являются расширениями к данной спецификации, и от программ отображения не требуется учитывать их. Просмотр описательной части в случает недоступности этих дополнительные возможностей оформления ДОЛЖЕН быть безопасным.
 </p>
 <p>
-Note that there are additional rules around styling for <a href="documents.html#css">documents</a> presentation.
+Обратите внимание, что имеются дополнительные правила оформления представления <a href="documents.html#css">документов</a>.
 </p>
 
 <a name="safety"> </a>
-<h3>Clinical Safety Concerns</h3>
+<h3>Соображения клинической безопасности</h3>
 <p>
-Health care records are often associated with legislative and business requirements for very long retention
-times (up to a century), and extreme risk aversion with regards to inconsistent display across
-a variety of devices. Although the narrative is allowed to use the standard XHTML and CSS
-features as described above, implementations are encouraged to show restraint when using the
-features available. Even when trading partner arrangements limit the current requirements
-made on a system, experience shows that these trading arrangements will likely broaden
-over time.
+Документы здравоохранения часто связаны с законодательными и профессиональными требованиями к 
+очень продолжительному времени сохранения (до века) и крайним неприятием риска противоречивого отображения на различных устройствах. Несмотря на то, что в описательной части позволяется использовать стандарт XHTML и свойства CSS, как описано выше, разработчикам рекомендуется проявлять сдержанность при использовании доступных свойств. Даже когда торговые партнерские соглашения вводят ограничения поверх текущих требований к системе, опыт показывает большую вероятность того, что такие торговые соглашения будут расширяться с течением времени.
 </p>
 <p>
-In particular:
+В частности:
 </p>
 <ul>
- <li>complex layered layouts requiring careful testing of
-the match between the XHTML <code>div</code> and <code>span</code> elements and styles, and
-those that include nested tables (possibly with images) as well make rendering consistency
-difficult, and implementations SHOULD avoid these</li>
- <li>The use of styles e.g. bolding, italics and color; SHOULD NOT be sued as the
-   sole way to convey meaning or semantics, but should be used in conjunction with other
-   data elements to ensure consistent, long term interoperability. </li>
+ <li>Сложные многоуровневые разметки, требующие тщательного тестирования на соответствие между XHTML-элементами <code>div</code> и <code>span</code> и стилями, и те, что содержат вложенные таблицы (возможно, с изображениями) точно так же затрудняют последовательность отображения, и разработчикам СЛЕДУЕТ избегать их.</li>
+ <li>Использование стилей, например полужирный, курсив или цвет, НЕ ДОЛЖНО употребляться в качестве единственного способа передачи смысла или семантики, а должно применяться наряду с другими элементами данных для обеспечения последовательной долгосрочной совместимости.</li>
 </ul>
 </div>
 
@@ -291,22 +271,22 @@ difficult, and implementations SHOULD avoid these</li>
 <script>
  try {
    var currentTabIndex = sessionStorage.getItem('fhir-resource-tab-index');
- } catch(exception){
+ } catch(exception){ 
  }
  if (!currentTabIndex)
    currentTabIndex = '0';
 
 $( '#tabs-Narrative' ).tabs({ active: currentTabIndex, activate: function( event, ui ) { store(ui.newTab.index()); } });
-
-
+     
+     
 function store(currentTab) {
   document.activeElement.blur();
   try {
     sessionStorage.setItem('fhir-resource-tab-index', currentTab);
-  } catch(exception){
+  } catch(exception){ 
   }
   $( '#tabs-Narrative' ).tabs('option', 'active', currentTab);
-}
+}     
 </script>
 
 

@@ -995,9 +995,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Immunization event information</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Информация о событии иммунизации<!-- Immunization event information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed.</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Описывает событие введения пациенту вакцины или данные о вакцинации, сообщённые пациентом, медицинским специалистом или другой стороной, и может включать в себя информацию о реакции на вакцину и о протоколе вакцинации, которому при этом следовали.<!-- Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1031,9 +1031,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Business identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Бизнес-идентификатор<!-- Business identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A unique identifier assigned to this immunization record.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Уникальный идентификатор, присвоенный конкретно этой записи о рекомендации.<!-- A unique identifier assigned to this immunization record. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1072,10 +1072,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">in-progress | on-hold | completed | entered-in-error | stopped&#10;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the current status of the vaccination event</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает текущий статус события вакцинации<!-- Indicates the current status of the vaccination event --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Will generally be set to show that the immunization has been completed.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Как правило, это будет статус completed, показывающий, что иммунизация была проведена.<!-- Will generally be set to show that the immunization has been completed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">statusCode</Data><NamedCell
@@ -1107,12 +1107,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Vaccination administration date</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата вакцинации<!-- Vaccination administration date --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Date vaccine administered or was to be administered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата, когда вакцина была введена или должна была быть введена<!-- Date vaccine administered or was to be administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">When immunizations are given a specific date and time should always be known.   When immunizations are patient reported, a specific date might not be known. &#160;Although partial dates are allowed, an adult patient might not be able to recall the year a childhood immunization was given</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если это проведение иммунизации, то точные дата и время всегда должны быть известны. Если это пациент сообщает сведения об иммунизации, то точная дата может быть неизвестна. &#160;Частичные даты разрешены, так как взрослый пациент может быть не в состоянии вспомнить год иммунизации, проведённой в детстве<!-- When immunizations are given a specific date and time should always be known.   When immunizations are patient reported, a specific date might not be known. &#160;Although partial dates are allowed, an adult patient might not be able to recall the year a childhood immunization was given --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.effectiveTime</Data><NamedCell
@@ -1148,9 +1148,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Vaccine product administered</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Введенная вакцина<!-- Vaccine product administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Vaccine that was administered or was to be administered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вакцина, которая была введена или должна была быть введена<!-- Vaccine that was administered or was to be administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1187,9 +1187,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who was immunized</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кому ввели вакцину?<!-- Who was immunized --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The patient who either received or did not receive the immunization.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Пациент, который получил или не получил иммунизацию.<!-- The patient who either received or did not receive the immunization. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1225,9 +1225,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Flag for whether immunization was given</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Флаг, были ли проведена иммунизация<!-- Flag for whether immunization was given --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates if the vaccination was or was not given</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает, была или не была проведена вакцинация<!-- Indicates if the vaccination was or was not given --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1261,12 +1261,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates a self-reported record</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает, что это информация со слов пациента<!-- Indicates a self-reported record --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">True if this administration was reported rather than directly administered.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Да, если это информация об иммунизации со слов пациента, а не проведённой непосредственно.<!-- True if this administration was reported rather than directly administered. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">May need source of reported info (e.g. parent), but leave out for now.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может потребоваться указать источник сообщения (например родитель), но пока оставлено как есть.<!-- May need source of reported info (e.g. parent), but leave out for now. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.participation[typeCode=INF].role[classCode=PAT] (this syntax for self-reported=true)</Data><NamedCell
@@ -1298,9 +1298,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who administered vaccine</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто ввел вакцину?<!-- Who administered vaccine --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Clinician who administered the vaccine</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Клиницист, который ввел вакцину<!-- Clinician who administered the vaccine --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1336,12 +1336,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who ordered vaccination</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто заказал иммунизацию?<!-- Who ordered vaccination --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Clinician who ordered the vaccination</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Клиницист, который заказал вакцинацию<!-- Clinician who ordered the vaccination --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Other participants - delegate to Provenance resource</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Другие участники - делегировать ресурсу Provenance<!-- Other participants - delegate to Provenance resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">outboundRelationship.target[classCode=SBADM].participation[typeCode=AUT].COCT_MT090102UV</Data><NamedCell
@@ -1373,9 +1373,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter administered as part of</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Случай обслуживания, в рамках которого проведена иммунизация<!-- Encounter administered as part of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The visit or admission or other contact between patient and health care provider the immunization was performed as part of.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Визит, госпитализация или другой вид контакта пациента и поставщика медицинского обслуживания, в рамках которого проведена иммунизация.<!-- The visit or admission or other contact between patient and health care provider the immunization was performed as part of. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1409,9 +1409,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Vaccine manufacturer</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Производитель вакцины<!-- Vaccine manufacturer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Name of vaccine manufacturer</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Название производителя вакцины<!-- Name of vaccine manufacturer --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1447,9 +1447,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Where vaccination occurred</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Где происходила вакцинация<!-- Where vaccination occurred --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The service delivery location where the vaccine administration occurred.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Место оказания услуги, где произошла вакцинация.<!-- The service delivery location where the vaccine administration occurred. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1482,9 +1482,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Vaccine lot number</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Номер партии вакцины<!-- Vaccine lot number --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Lot number of the  vaccine product</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Номер партии вакцины<!-- Lot number of the  vaccine product --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1519,9 +1519,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Vaccine expiration date</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Срок истечения годности вакцины<!-- Vaccine expiration date --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Date vaccine batch expires</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата истечения годности вакцины<!-- Date vaccine batch expires --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1555,9 +1555,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Body site vaccine  was administered</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Место на теле, куда ввели вакцину<!-- Body site vaccine  was administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Body site where vaccine was administered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Место на теле, куда ввели вакцину<!-- Body site where vaccine was administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1592,9 +1592,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">How vaccine entered body</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Как вакцина попала в тело<!-- How vaccine entered body --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The path by which the vaccine product is taken into the body.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Пусть, который вакцинный продукт  прошел в теле<!-- The path by which the vaccine product is taken into the body. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1628,9 +1628,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Amount of vaccine administered</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Количество введенной вакцины<!-- Amount of vaccine administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The quantity of vaccine product that was administered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество вакцинного продукта, которое было введено<!-- The quantity of vaccine product that was administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1664,9 +1664,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Vaccination notes</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Примечания по вакцинации<!-- Vaccination notes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Extra information about the immunization that is not conveyed by the other attributes.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная информация об иммунизации, не передаваемая другими полями.<!-- Extra information about the immunization that is not conveyed by the other attributes. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1698,9 +1698,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Administration/non-administration reasons</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Основание для проведения или не-проведения вакцинации<!-- Administration/non-administration reasons --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reasons why a vaccine was or was not administered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Причины, по которым вакцина была или не была введена<!-- Reasons why a vaccine was or was not administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1734,9 +1734,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Why immunization occurred</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Почему произошла вакцинация<!-- Why immunization occurred --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reasons why a vaccine was administered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Причины, по которым была введена вакцина<!-- Reasons why a vaccine was administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1769,9 +1769,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Why immunization did not occur</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Почему не была проведена иммунизация<!-- Why immunization did not occur --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reason why a vaccine was not administered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Причина, по которой вакцина не была введена<!-- Reason why a vaccine was not administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1804,12 +1804,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Details of a reaction that follows immunization</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сведения о реакции, которая последовала за иммунизацией<!-- Details of a reaction that follows immunization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Categorical data indicating that an adverse event is associated in time to an immunization</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Категорийные данные, обозначающие, что нежелательное побочное событие по времени связано с иммунизацией<!-- Categorical data indicating that an adverse event is associated in time to an immunization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A reaction may be an indication of an allergy or intolerance and, if this is determined to be the case,  it should be recorded as a new [[[AllergyIntolerance]]] resource instance as most systems will not query against  past Immunization.reaction elements.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Реакция может быть признаком аллергии или непереносимости и, если выяснили, что это так и есть, то её следует  записать в виде отдельного экземпляра ресурса [[[AllergyIntolerance]]], поскольку многие системы не будут запрашивать архивные элементы Immunization.reaction.<!-- A reaction may be an indication of an allergy or intolerance and, if this is determined to be the case,  it should be recorded as a new [[[AllergyIntolerance]]] resource instance as most systems will not query against  past Immunization.reaction elements. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Observation[classCode=obs].code</Data><NamedCell
@@ -1843,9 +1843,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">When reaction started</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Когда началась реакция<!-- When reaction started --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Date of reaction to the immunization</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата реакции на иммунизацию<!-- Date of reaction to the immunization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1878,9 +1878,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Additional information on reaction</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дополнительная информация по реакции<!-- Additional information on reaction --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Details of the reaction</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Подробные сведения о реакции<!-- Details of the reaction --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1913,9 +1913,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates self-reported reaction</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает, что реакция записана со слов пациента<!-- Indicates self-reported reaction --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Self-reported indicator</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Флаг, что это реакция со слов пациента<!-- Self-reported indicator --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1947,9 +1947,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What protocol was followed</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Какому протоколу следовали<!-- What protocol was followed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Contains information about the protocol(s) under which the vaccine was administered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержит информацию о протоколах, в соответствии с которыми была введена вакцина<!-- Contains information about the protocol(s) under which the vaccine was administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1983,9 +1983,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Dose number within series</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Номер дозы в пределах серии<!-- Dose number within series --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Nominal position in a series</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Номинальная позиция в серии<!-- Nominal position in a series --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2017,9 +2017,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Details of vaccine protocol</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Сведения о вакцинном протоколе<!-- Details of vaccine protocol --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Contains the description about the protocol under which the vaccine was administered</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Содержит описание протокола, в соответствии с которым была введена вакцина<!-- Contains the description about the protocol under which the vaccine was administered --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2051,9 +2051,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Who is responsible for protocol</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Кто ответственен за протокол<!-- Who is responsible for protocol --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the authority who published the protocol.  E.g. ACIP</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает орган власти, опубликовавший протокол? Например ACIP<!-- Indicates the authority who published the protocol.  E.g. ACIP --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2085,9 +2085,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Name of vaccine series</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Название серии вакцинаций<!-- Name of vaccine series --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">One possible path to achieve presumed immunity against a disease - within the context of an authority</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Один из возможных путей достижения предполагаемого иммунитета к заболеванию - с контексте органа власти<!-- One possible path to achieve presumed immunity against a disease - within the context of an authority --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2119,9 +2119,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Recommended number of doses for immunity</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Рекомендуемое количество доз для достижения иммунитета<!-- Recommended number of doses for immunity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The recommended number of doses to achieve immunity.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Рекомендуемое количество доз для достижения иммунитета.<!-- The recommended number of doses to achieve immunity. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2154,9 +2154,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Disease immunized against</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Заболевание, от которого проводится иммунизация<!-- Disease immunized against --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The targeted disease</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Заболевание, от которого проводится иммунизация<!-- The targeted disease --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2189,12 +2189,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates if dose counts towards immunity</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Показывает, учитывает ли доза иммунитет<!-- Indicates if dose counts towards immunity --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates if the immunization event should &quot;count&quot; against  the protocol.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Обозначает, считается ли иммунизация соответствующей протоколу.<!-- Indicates if the immunization event should &quot;count&quot; against  the protocol. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">May need to differentiate between status declarations by a provider vs. a CDS engine</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может потребоваться различение между статусными декларациями провайдером в отличие от CDS-механизма<!-- May need to differentiate between status declarations by a provider vs. a CDS engine --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.participation[typeCode=CSM].role[classCode=INST].scopedRole.scoper[classCode=MMAT].playedRole[classCode=INGR].scopedRole.scoper[classCode=MMAT].playedRole[classCode=HLTHCHRT].participation[typeCode=SBJ].observation[classCode=OBS].value</Data><NamedCell
@@ -2225,9 +2225,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Why dose does (not) count</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Почему доза (не) рассчитывается по протоколу<!-- Why dose does (not) count --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Provides an explanation as to why an immunization event should or should not count against the protocol.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Приводится пояснение, почему событие иммунизации рассчитывается или не рассчитывается в соответствии с протоколом.<!-- Provides an explanation as to why an immunization event should or should not count against the protocol. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4216,7 +4216,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Immunization</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">If immunization was not administered (wasNotGiven=true) then there SHALL be no reaction nor explanation.reason present</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Если иммунизация не была проведена (wasNotGiven=true), тогда элементы reaction и explanation.reason не должны присутствовать<!-- If immunization was not administered (wasNotGiven=true) then there SHALL be no reaction nor explanation.reason present --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">(wasNotGiven = true).not() or (reaction.empty() and explanation.reason.empty())</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -4229,7 +4229,7 @@
     <Cell ss:StyleID="s90"><Data ss:Type="String">Given administration</Data></Cell>
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s91"><Data ss:Type="String">Immunization</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If immunization was administered (wasNotGiven=false) then explanation.reasonNotGiven SHALL be absent.</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Если иммунизация была проведена (wasNotGiven=false), тогда элемент explanation.reasonNotGiven должен отсутствовать.<!-- If immunization was administered (wasNotGiven=false) then explanation.reasonNotGiven SHALL be absent. --></Data></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">(wasNotGiven = true) or explanation.reasonNotGiven.empty()</Data></Cell>
     <Cell ss:StyleID="s107"><Data ss:Type="String">not(f:wasNotGiven/@value=false() and exists(f:explanation/f:reasonNotGiven))</Data></Cell>
    </Row>
@@ -4740,7 +4740,7 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">Immunization.date</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Vaccination  (non)-Administration Date</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">Дата введения (или невведения) вакцинации<!-- Vaccination  (non)-Administration Date --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s117"><Data ss:Type="String">dose-sequence</Data></Cell>
@@ -4761,28 +4761,28 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Immunization.location</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The service delivery location or facility in which the vaccine was / was to be administered</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Место оказания услуги или учреждение, в котором вводилась или будет вводиться вакцина<!-- The service delivery location or facility in which the vaccine was / was to be administered --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">lot-number</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Immunization.lotNumber</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Vaccine Lot Number</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Номер партии вакцины<!-- Vaccine Lot Number --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">manufacturer</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Immunization.manufacturer</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Vaccine Manufacturer</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Производитель вакцины<!-- Vaccine Manufacturer --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">performer</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Immunization.performer</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The practitioner who administered the vaccination</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Медицинский специалист, который провёл вакцинацию<!-- The practitioner who administered the vaccination --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">reaction</Data></Cell>
@@ -4810,42 +4810,42 @@
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Immunization.explanation.reasonNotGiven</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Explanation of reason vaccination was not administered</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Объяснение причины, по которой вакцинация не была проведена<!-- Explanation of reason vaccination was not administered --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">notgiven</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Immunization.wasNotGiven</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Administrations which were not given</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Непроведённые вакцинации<!-- Administrations which were not given --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">requester</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Immunization.requester</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The practitioner who ordered the vaccination</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Медицинский специалист, который постановил провести вакцинацию<!-- The practitioner who ordered the vaccination --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Immunization.patient</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">The patient for the vaccination record</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Пациент, для которого записывается вакцинация<!-- The patient for the vaccination record --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">vaccine-code</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Immunization.vaccineCode</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Vaccine Product Administered</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Введённый препарат вакцины<!-- Vaccine Product Administered --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">status</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Immunization.status</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Immunization event status</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Статус события иммунизации<!-- Immunization event status --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>
@@ -6690,7 +6690,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s146"><Data ss:Type="String">VaccineCode</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">The code for vaccine product administered</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Код введённого препарата вакцины<!-- The code for vaccine product administered --></Data></Cell>
     <Cell ss:StyleID="s115"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-vaccine-code</Data></Cell>
@@ -6705,7 +6705,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ImmunizationSite</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The site at which the vaccine was administered</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Место, куда вводилась вакцина<!-- The site at which the vaccine was administered --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-immunization-site</Data></Cell>
@@ -6720,7 +6720,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ImmunizationRoute</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The route by which the vaccine was administered</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Метод введения вакцины<!-- The route by which the vaccine was administered --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-immunization-route</Data></Cell>
@@ -6735,7 +6735,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">ImmunizationReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The reason why a vaccine was administered</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Причина, почему вакцина была введена<!-- The reason why a vaccine was administered --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-immunization-reason</Data></Cell>
@@ -6750,7 +6750,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">NoImmunizationReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The reason why a vaccine was not administered</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Причина, почему вакцина не была введена<!-- The reason why a vaccine was not administered --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-no-immunization-reason</Data></Cell>
@@ -6765,7 +6765,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">VaccinationProtocoltargetDisease</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The disease target of the vaccination protocol</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Заболевание, к которому относится протокол вакцинации<!-- The disease target of the vaccination protocol --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-vaccination-protocol-dose-target</Data></Cell>
@@ -6780,7 +6780,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">VaccinationProtocolDoseStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The status of the vaccination protocol (i.e. should this count)</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус протокола вакцинации (т. е. должен ли он учитываться)<!-- The status of the vaccination protocol (i.e. should this count) --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-vaccination-protocol-dose-status</Data></Cell>
@@ -6795,7 +6795,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s147"><Data ss:Type="String">VaccinationProtocolDoseStatusReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">The reason for the determining if a vaccination should count or why vaccination should not count.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование решения, должна ли вакцинация рассчитываться по протоколу или нет.<!-- The reason for the determining if a vaccination should count or why vaccination should not count. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">valueset-vaccination-protocol-dose-status-reason</Data></Cell>
@@ -6810,7 +6810,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">ImmunizationStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">A set of codes indicating the current status of an Immunization</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Ряд кодов, показывающих текущий статус иммунизации<!-- A set of codes indicating the current status of an Immunization --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/medication-admin-status</Data></Cell>
