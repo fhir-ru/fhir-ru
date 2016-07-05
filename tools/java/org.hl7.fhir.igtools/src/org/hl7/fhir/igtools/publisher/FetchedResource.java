@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.hl7.fhir.dstu3.elementmodel.Element;
 import org.hl7.fhir.dstu3.model.Resource;
-import org.hl7.fhir.dstu3.model.ResourceType;
 
 import com.google.gson.JsonObject;
 
@@ -16,7 +15,7 @@ public class FetchedResource {
   private Element element;
   private JsonObject config;
   private boolean validated;
-  private List<String> profiles = new ArrayList<String>(); 
+  private List<String> profiles = new ArrayList<String>();
 
   public Resource getResource() {
     return resource;

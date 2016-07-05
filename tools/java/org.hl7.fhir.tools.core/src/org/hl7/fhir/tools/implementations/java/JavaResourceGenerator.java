@@ -1,5 +1,6 @@
 package org.hl7.fhir.tools.implementations.java;
 import static org.apache.commons.lang3.StringUtils.defaultString;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 /*
 Copyright (c) 2011+, HL7, Inc
@@ -475,6 +476,23 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
         }
         write(" }");
       }
+      
+      Set<String> targets = sp.getWorkingTargets();
+      if (targets != null && !targets.isEmpty() && !targets.contains("Any")) {
+        write(", target={");
+        boolean first = true;
+        for (String nextTarget : new TreeSet<String>(targets)) {
+          if (first) {
+            first = false;
+          } else {
+            write(", ");
+          }
+          write(nextTarget);
+          write(".class");
+        }
+        write(" }");
+      }
+      
     }
     
     write(" )\r\n");
@@ -1774,6 +1792,15 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     write(childB.toString());
     
     write(indent+"@Description(shortDefinition=\""+Utilities.escapeJava(e.getShortDefn())+"\", formalDefinition=\""+Utilities.escapeJava(e.getDefinition())+"\" )\r\n");
+    
+    if (HAPI_16) {
+      if (e.getBinding() != null) {
+        if (e.getBinding().getValueSet() != null && isNotBlank(e.getBinding().getValueSet().getUrl())) {
+          write(indent+"@ca.uhn.fhir.model.api.annotation.Binding(valueSet=\"" + e.getBinding().getValueSet().getUrl() + "\")\r\n");
+        }
+      }
+    }
+    
   }
 
 

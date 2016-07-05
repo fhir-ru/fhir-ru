@@ -16,13 +16,13 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>12975</WindowHeight>
-  <WindowWidth>24000</WindowWidth>
-  <WindowTopX>0</WindowTopX>
-  <WindowTopY>0</WindowTopY>
+  <WindowHeight>5565</WindowHeight>
+  <WindowWidth>19260</WindowWidth>
+  <WindowTopX>-15</WindowTopX>
+  <WindowTopY>-15</WindowTopY>
   <TabRatio>814</TabRatio>
   <ActiveSheet>11</ActiveSheet>
-  <FirstVisibleSheet>3</FirstVisibleSheet>
+  <FirstVisibleSheet>4</FirstVisibleSheet>
   <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -1009,7 +1009,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s74"><Data ss:Type="String">extension.uri</Data></Cell>
-    <Cell ss:StyleID="s79"><Data ss:Type="String">http://hl7.org/fhir/StructureDefinition/uslab-</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">http://hl7.org/fhir/uslab/StructureDefinition/</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s80"><Data ss:Type="String">introduction</Data></Cell>
@@ -1053,7 +1053,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>8</ActiveRow>
+     <ActiveRow>28</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -3902,8 +3902,9 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>17</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>0</ActiveRow>
+     <ActiveCol>10</ActiveCol>
+     <RangeSelection>C11</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -15375,7 +15376,7 @@
   </Names>
   <Table ss:ExpandedColumnCount="13" ss:ExpandedRowCount="31" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s131" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s131" ss:Width="114.75"/>
+   <Column ss:StyleID="s131" ss:AutoFitWidth="0" ss:Width="234.75"/>
    <Column ss:StyleID="s131" ss:AutoFitWidth="0" ss:Width="274.5"/>
    <Column ss:StyleID="s131" ss:Width="51"/>
    <Column ss:StyleID="s131" ss:Width="67.5"/>
@@ -15446,7 +15447,7 @@
     <Cell ss:StyleID="s96"><Data ss:Type="String">SNOMED CT findings codes provided as adjunct diagnosis to the report</Data></Cell>
     <Cell ss:StyleID="s134"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s134"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">Valueset/valueset-clinical-findings</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">ValueSet/valueset-clinical-findings</Data></Cell>
     <Cell ss:StyleID="s134"/>
     <Cell ss:StyleID="s134"/>
     <Cell ss:StyleID="s134"/>
@@ -15461,7 +15462,7 @@
     <Cell ss:StyleID="s156"><Data ss:Type="String">LOINC codes</Data></Cell>
     <Cell ss:StyleID="s137"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s137"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">http://hl7.org/fhir/ValueSet/uslab-obs-codes</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">ValueSet/uslab-obs-codes</Data></Cell>
     <Cell ss:StyleID="s137"/>
     <Cell ss:StyleID="s137"/>
     <Cell ss:StyleID="s137"/>
@@ -15911,6 +15912,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>

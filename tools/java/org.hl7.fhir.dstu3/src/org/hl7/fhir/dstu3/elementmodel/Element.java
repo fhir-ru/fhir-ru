@@ -31,9 +31,9 @@ public class Element extends Base {
 		CONTAINED, BUNDLE_ENTRY, PARAMETER;
 
     public static SpecialElement fromProperty(Property property) {
-      if (property.getStructure().getId().equals("Parameters"))
+      if (property.getStructure().getIdElement().getIdPart().equals("Parameters"))
         return PARAMETER;
-      if (property.getStructure().getId().equals("Bundle"))
+      if (property.getStructure().getIdElement().getIdPart().equals("Bundle"))
         return BUNDLE_ENTRY;
       if (property.getName().equals("contained")) 
         return CONTAINED;
@@ -247,7 +247,7 @@ public class Element extends Base {
 	public boolean hasPrimitiveValue() {
 		return property.isPrimitive(name) || property.IsLogicalAndHasPrimitiveValue(name);
 	}
-	
+
 
 	@Override
 	public String primitiveValue() {
@@ -352,6 +352,23 @@ public class Element extends Base {
   public boolean hasElementProperty() {
     return elementProperty != null;
   }
+
+  public boolean hasChild(String name) {
+    return getNamedChild(name) != null;
+  }
+
+//  @Override
+//  public boolean equalsDeep(Base other) {
+//    if (!super.equalsDeep(other))
+//      return false;
+//    
+//  }
+//
+//  @Override
+//  public boolean equalsShallow(Base other) {
+//    if (!super.equalsShallow(other))
+//      return false;
+//  }
 
 
 }

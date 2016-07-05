@@ -442,17 +442,6 @@
       }
     },
     {
-      "hash": "#|http://loinc.org|null|26464-8|Leukocytes [#/volume] in Blood",
-      "severity": null,
-      "message": null,
-      "definition": {
-        "abstract": false,
-        "code": null,
-        "definition": null,
-        "display": "Leukocytes [#/volume] in Blood"
-      }
-    },
-    {
       "hash": "#|http://loinc.org|null|26515-7|Platelets [#/volume] in Blood",
       "severity": null,
       "message": null,
@@ -912,6 +901,17 @@
         "code": null,
         "definition": null,
         "display": "Glomerular filtration rate/1.73 sq M predicted among blacks [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)"
+      }
+    },
+    {
+      "hash": "#|http://loinc.org|null|49464-1|CD13 Ag [Presence] in Tissue by Immune stain",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": null,
+        "definition": null,
+        "display": "CD13 Ag [Presence] in Tissue by Immune stain"
       }
     },
     {

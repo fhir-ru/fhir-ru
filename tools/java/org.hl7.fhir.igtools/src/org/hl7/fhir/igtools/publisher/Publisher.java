@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,19 +19,18 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.UIManager;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.PumpStreamHandler;
 import org.apache.commons.lang3.SystemUtils;
 import org.hl7.fhir.dstu3.elementmodel.Element;
-import org.hl7.fhir.dstu3.elementmodel.ObjectConverter;
 import org.hl7.fhir.dstu3.elementmodel.Manager.FhirFormat;
+import org.hl7.fhir.dstu3.elementmodel.ObjectConverter;
 import org.hl7.fhir.dstu3.elementmodel.ParserBase.ValidationPolicy;
-import org.hl7.fhir.dstu3.exceptions.DefinitionException;
 import org.hl7.fhir.dstu3.exceptions.FHIRException;
-import org.hl7.fhir.dstu3.formats.FormatUtilities;
 import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
 import org.hl7.fhir.dstu3.formats.JsonParser;
 import org.hl7.fhir.dstu3.formats.XmlParser;
@@ -40,6 +40,7 @@ import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.ConceptMap;
 import org.hl7.fhir.dstu3.model.Constants;
+import org.hl7.fhir.dstu3.model.DomainResource;
 import org.hl7.fhir.dstu3.model.ElementDefinition;
 import org.hl7.fhir.dstu3.model.ImplementationGuide;
 import org.hl7.fhir.dstu3.model.ImplementationGuide.ImplementationGuidePackageComponent;
@@ -57,35 +58,32 @@ import org.hl7.fhir.dstu3.terminologies.ValueSetExpander.ValueSetExpansionOutcom
 import org.hl7.fhir.dstu3.utils.EOperationOutcome;
 import org.hl7.fhir.dstu3.utils.NarrativeGenerator;
 import org.hl7.fhir.dstu3.utils.ProfileUtilities;
-import org.hl7.fhir.dstu3.utils.ProfileUtilities.ProfileKnowledgeProvider;
 import org.hl7.fhir.dstu3.utils.SimpleWorkerContext;
 import org.hl7.fhir.dstu3.utils.Turtle;
 import org.hl7.fhir.dstu3.validation.InstanceValidator;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
-import org.hl7.fhir.igtools.publisher.Publisher.GenerationTool;
 import org.hl7.fhir.igtools.renderers.CodeSystemRenderer;
 import org.hl7.fhir.igtools.renderers.JsonXhtmlRenderer;
 import org.hl7.fhir.igtools.renderers.StructureDefinitionRenderer;
 import org.hl7.fhir.igtools.renderers.ValidationPresenter;
+import org.hl7.fhir.igtools.renderers.ValueSetRenderer;
 import org.hl7.fhir.igtools.renderers.XmlXHtmlRenderer;
 import org.hl7.fhir.igtools.spreadsheets.IgSpreadsheetParser;
 import org.hl7.fhir.igtools.ui.GraphicalPublisher;
-import org.hl7.fhir.igtools.renderers.ValueSetRenderer;
-import org.hl7.fhir.rdf.RdfGenerator;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.ZipGenerator;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
-import org.w3c.dom.Document;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Implementation Guide Publisher
@@ -123,6 +121,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Publisher implements IGLogger {
 
+  public static final boolean USE_COMMONS_EXEC = true;
+  
   public enum GenerationTool {
     Jekyll
   }
@@ -131,6 +131,7 @@ public class Publisher implements IGLogger {
 
   private String configFile;
   private String txServer = "http://fhir3.healthintersections.com.au/open";
+//  private String txServer = "http://local.healthintersections.com.au:960/open";
   private boolean watch;
 
   private GenerationTool tool;
@@ -141,9 +142,6 @@ public class Publisher implements IGLogger {
   private String outputDir;
   private String specPath;
   private String qaDir;
-  private String instanceTemplateFmt;
-  private String instanceTemplateBase;
-
   private String rubyExe;
   private String jekyllGem;
 
@@ -167,14 +165,16 @@ public class Publisher implements IGLogger {
   private List<ValidationMessage> errors = new ArrayList<ValidationMessage>();
   private JsonObject configuration;
   private Calendar execTime = Calendar.getInstance();
+  private Set<String> otherFilesStartup = new HashSet<String>();
+  private Set<String> otherFilesRun = new HashSet<String>();
 
   private long globalStart;
 
   private IGLogger logger = this;
 
-  public void execute() throws Exception {
+  public void execute(boolean clearCache) throws Exception {
     globalStart = System.nanoTime();
-    initialize();
+    initialize(clearCache);
     log("Load Implementation Guide");
     load();
 
@@ -213,20 +213,26 @@ public class Publisher implements IGLogger {
       log("Done");
   }
 
-  private void generateNarratives() throws IOException {
-//    NarrativeGenerator gen = new NarrativeGenerator("", "", context);
-//    for (FetchedFile f : fileList) {
-//      for (FetchedResource r : f.getResources()) {
-//        if (!hasNarrative(r.getElement())) {
-//          gen.generate(r.getElement(), true);
-//        }
-//      }
-//    }
+  private void generateNarratives() throws IOException, EOperationOutcome, FHIRException {
+    dlog("gen narratives");
+    NarrativeGenerator gen = new NarrativeGenerator("", "", context);
+    for (FetchedFile f : fileList) {
+      for (FetchedResource r : f.getResources()) {
+        dlog("narrative for "+f.getName()+" : "+r.getId());
+        if (r.getResource() != null) {
+          if (r.getResource() instanceof DomainResource && !((DomainResource) r.getResource()).getText().hasDiv())
+            gen.generate((DomainResource) r.getResource());
+        } else {
+          if ("http://hl7.org/fhir/StructureDefinition/DomainResource".equals(r.getElement().getProperty().getStructure().getBaseDefinition()) && !hasNarrative(r.getElement())) {
+            gen.generate(r.getElement(), true);
+          }
+        }
+      }
+    }
   }
 
   private boolean hasNarrative(Element element) {
-//    return element.hasChild("text") && element.getChildByName("text").hasChild("div");
-    return false;
+    return element.hasChild("text") && element.getNamedChild("text").hasChild("div");
   }
 
   private void clean() throws Exception {
@@ -360,7 +366,7 @@ public class Publisher implements IGLogger {
     return res;  
   }
 
-  private void initialize() throws Exception {
+  private void initialize(boolean clearCache) throws Exception {
     first = true;
     log("Load Configuration");
 
@@ -380,8 +386,6 @@ public class Publisher implements IGLogger {
     outputDir = Utilities.path(root, str(paths, "output", "output"));
     qaDir = Utilities.path(root, str(paths, "qa"));
     specPath = str(paths, "specification");
-    instanceTemplateBase = Utilities.path(root, str(paths, "instance-template-base"));
-    instanceTemplateFmt = Utilities.path(root, str(paths, "instance-template-format"));
 
     igName = Utilities.path(resourcesDir, configuration.get("source").getAsString());
 
@@ -395,8 +399,6 @@ public class Publisher implements IGLogger {
     forceDir(Utilities.path(tempDir, "data"));
     forceDir(outputDir);
     forceDir(qaDir);
-    checkFile(instanceTemplateBase);
-    checkFile(instanceTemplateFmt);
 
     log("Load Validation Pack (internal)");
     try {
@@ -413,6 +415,11 @@ public class Publisher implements IGLogger {
     Utilities.createDirectory(vsCache);
     context.initTS(vsCache, txServer);
     context.connectToTSServer(txServer);
+    if (clearCache) {
+      log("Terminology Cache is at "+vsCache+". Clearing now");
+      Utilities.clearDirectory(vsCache);
+    } else 
+      log("Terminology Cache is at "+vsCache);
     // ;
     validator = new InstanceValidator(context);
     validator.setAllowXsiLocation(true);
@@ -423,9 +430,13 @@ public class Publisher implements IGLogger {
     fetcher.setPkp(igpkp);
     for (String s : context.getBinaries().keySet())
       if (needFile(s)) {
-        checkMakeFile(context.getBinaries().get(s), Utilities.path(qaDir, s));    
-        checkMakeFile(context.getBinaries().get(s), Utilities.path(tempDir, s));
+        checkMakeFile(context.getBinaries().get(s), Utilities.path(qaDir, s), otherFilesStartup);    
+        checkMakeFile(context.getBinaries().get(s), Utilities.path(tempDir, s), otherFilesStartup);
       }
+    otherFilesStartup.add(Utilities.path(tempDir, "data"));
+    otherFilesStartup.add(Utilities.path(tempDir, "data", "fhir.json"));
+    otherFilesStartup.add(Utilities.path(tempDir, "_includes"));
+
   }
 
   private String getCurentDirectory() {
@@ -437,30 +448,32 @@ public class Publisher implements IGLogger {
   }
 
   private void findRubyExe() {
-    if (SystemUtils.IS_OS_WINDOWS) {
-      String[] paths = System.getenv("path").split(File.pathSeparator);
-      for (String s : paths) {
-        String[] files = new File(s).list();
-        if (files != null)
-          for (String file : files)
-            if (file.equals("ruby.exe")) {
-              rubyExe = Utilities.path(s, file);
-              jekyllGem = Utilities.path(s, "jekyll");
-              if (!(new File(jekyllGem).exists()))
-                throw new Error("Found Ruby, but unable to find Jekyll Gem");
-              log("Use Ruby at "+rubyExe);
-              return;
-            }
+    if (!USE_COMMONS_EXEC) {
+      if (SystemUtils.IS_OS_WINDOWS) {
+        String[] paths = System.getenv("path").split(File.pathSeparator);
+        for (String s : paths) {
+          String[] files = new File(s).list();
+          if (files != null)
+            for (String file : files)
+              if (file.equals("ruby.exe")) {
+                rubyExe = Utilities.path(s, file);
+                jekyllGem = Utilities.path(s, "jekyll");
+                if (!(new File(jekyllGem).exists()))
+                  throw new Error("Found Ruby, but unable to find Jekyll Gem");
+                log("Use Ruby at "+rubyExe);
+                return;
+              }
+        }
+      } else {
+        rubyExe = "/usr/bin/ruby";
+        if (!(new File(rubyExe).exists()))
+          throw new Error("Unable to find Ruby at "+rubyExe);
+        jekyllGem = "/usr/bin/jekyll";
+        if (!(new File(jekyllGem).exists()))
+          throw new Error("Found Ruby, but unable to find Jekyll at "+jekyllGem);
       }
-    } else {
-      rubyExe = "/usr/bin/ruby";
-      if (!(new File(jekyllGem).exists()))
-        throw new Error("Unable to find Ruby at "+rubyExe);
-      jekyllGem = "/usr/bin/jekyll";
-      if (!(new File(jekyllGem).exists()))
-        throw new Error("Found Ruby, but unable to find Jekyll at "+jekyllGem);
+      throw new Error("Unable to find Ruby Processor");
     }
-    throw new Error("Unable to find Ruby Processor");  
   }
 
   private void checkDir(String dir) throws Exception {
@@ -487,7 +500,8 @@ public class Publisher implements IGLogger {
       throw new Exception(String.format("Error: Output must be a folder (%s)", dir));
   }
 
-  private void checkMakeFile(byte[] bs, String path) throws IOException {
+  private void checkMakeFile(byte[] bs, String path, Set<String> outputTracker) throws IOException {
+    outputTracker.add(path);
     File f = new CSFile(path);
     byte[] existing = null;
     if (f.exists())
@@ -656,7 +670,7 @@ public class Publisher implements IGLogger {
         String url = fv.getResources().get(0).getElement().getChildValue("url");
         String id = fv.getResources().get(0).getId();
         if (!tail(url).equals(id)) 
-          throw new Exception("resource id/url mismatch: "+id+" vs "+url);
+          throw new Exception("resource id/url mismatch: "+id+" vs "+url+" for "+fv.getResources().get(0).getTitle()+" in "+fv.getName());
         //        if (!url.startsWith(igpkp.getCanonical())) 
         //          throw new Exception("base/ resource url mismatch: "+igpkp.getCanonical()+" vs "+url);
 
@@ -751,8 +765,10 @@ public class Publisher implements IGLogger {
   }
 
   private void load(String type) throws Exception {
+    dlog("process type: "+type);
     for (FetchedFile f : fileList) {
       for (FetchedResource r : f.getResources()) {
+        dlog("process res: "+r.getId());
         if (r.getElement().fhirType().equals(type)) {
           if (!r.isValidated()) 
             validate(f, r);
@@ -768,6 +784,10 @@ public class Publisher implements IGLogger {
         }
       }
     }
+  }
+
+  private void dlog(String string) {
+//    logMessage("   - "+string);
   }
 
   private void generateAdditionalExamples() throws Exception {
@@ -843,7 +863,7 @@ public class Publisher implements IGLogger {
   private void validate() throws Exception {
     for (FetchedFile f : fileList) {
       if (first)
-        log(" .. "+f.getName());
+        dlog(" .. "+f.getName());
       for (FetchedResource r : f.getResources()) {
         if (!r.isValidated()) {
           validate(f, r);
@@ -860,13 +880,91 @@ public class Publisher implements IGLogger {
   }
 
   private void generate() throws Exception {
+    otherFilesRun.clear();
     for (FetchedFile f : changeList) 
       generateOutputs(f);
 
     if (!changeList.isEmpty())
       generateSummaryOutputs();
 
-    runTool();
+    cleanOutput(tempDir);
+    
+    if (runTool()) 
+      if (!changeList.isEmpty())
+        generateZips();
+    
+  }
+
+  private void cleanOutput(String folder) throws IOException {
+    for (File f : new File(folder).listFiles()) {
+      if (!isValidFile(f.getAbsolutePath())) {
+        if (f.isDirectory()) 
+          Utilities.clearDirectory(f.getAbsolutePath());
+        f.delete();
+      }
+    }
+  }
+
+  private boolean isValidFile(String p) {
+    if (otherFilesStartup.contains(p))
+      return true;
+    if (otherFilesRun.contains(p))
+      return true;
+    for (FetchedFile f : fileList)
+      if (f.getOutputNames().contains(p))
+        return true;
+    for (FetchedFile f : altMap.values())
+      if (f.getOutputNames().contains(p))
+        return true;
+    return false;
+  }
+
+  private void generateZips() throws Exception {
+    if (generateExampleZip(FhirFormat.XML))
+      generateDefinitions(FhirFormat.XML);
+    if (generateExampleZip(FhirFormat.JSON))
+      generateDefinitions(FhirFormat.JSON);
+    if (generateExampleZip(FhirFormat.TURTLE))
+      generateDefinitions(FhirFormat.TURTLE);
+  }
+
+  private void generateDefinitions(FhirFormat fmt)  throws Exception {
+    Set<String> files = new HashSet<String>();
+    for (FetchedFile f : fileList) {
+      for (FetchedResource r : f.getResources()) {
+        if (r.getResource() != null && r.getResource() instanceof BaseConformance) {
+          String fn = Utilities.path(outputDir, r.getElement().fhirType()+"-"+r.getId()+"."+fmt.getExtension());
+          if (new File(fn).exists())
+            files.add(fn);
+        }
+      }
+    }
+    if (!files.isEmpty()) {
+      ZipGenerator zip = new ZipGenerator(Utilities.path(outputDir, "definitions."+fmt.getExtension()+".zip"));
+      for (String fn : files)
+        zip.addFileName(fn.substring(fn.lastIndexOf(File.separator)+1), fn, false);
+      zip.close();
+
+    }
+  }
+
+  private boolean generateExampleZip(FhirFormat fmt) throws Exception {
+    Set<String> files = new HashSet<String>();
+    for (FetchedFile f : fileList) {
+      for (FetchedResource r : f.getResources()) {
+        String fn = Utilities.path(outputDir, r.getElement().fhirType()+"-"+r.getId()+"."+fmt.getExtension());
+        if (new File(fn).exists())
+          files.add(fn);
+      }
+    }
+    if (!files.isEmpty()) {
+      ZipGenerator zip = new ZipGenerator(Utilities.path(outputDir, "examples."+fmt.getExtension()+".zip"));
+      for (String fn : files)
+        zip.addFileName(fn.substring(fn.lastIndexOf(File.separator)+1), fn, false);
+      zip.close();
+
+    }
+    return !files.isEmpty();
   }
 
   private boolean runTool() throws Exception {
@@ -877,40 +975,94 @@ public class Publisher implements IGLogger {
     }
   }
 
-  private boolean runJekyll() throws IOException, InterruptedException {
-    findRubyExe();
-    
-    // set up jekyll 
-    List<String> command = new ArrayList<String>();
-    command.add(rubyExe);
-    command.add(jekyllGem);
-    command.add("build");
-    command.add("--destination");
-    command.add(outputDir);
-    ProcessBuilder builder = new ProcessBuilder(command);
-    builder.directory(new File(tempDir));
+  public class MyFilterHandler extends OutputStream {
 
-    // run and capture the output
-    final Process process = builder.start();
-    BufferedReader stdError = new BufferedReader(new InputStreamReader(process.getInputStream()));
-    String s;
-    while ((s = stdError.readLine()) != null) {
-      if (passJekyllFilter(s))
-        log("Jekyll: "+s);
+    private byte[] buffer;
+    private int length;
+
+    public MyFilterHandler() {
+      buffer = new byte[256];
     }
-    process.waitFor();
-    return true;
+
+    private boolean passJekyllFilter(String s) {
+      if (Utilities.noString(s))
+        return false;
+      if (s.contains("Source:"))
+        return false;
+      if (s.contains("Destination:"))
+        return false;
+      if (s.contains("Configuration"))
+        return false;
+      if (s.contains("Incremental build:"))
+        return false;
+      if (s.contains("Auto-regeneration:"))
+        return false;
+      return true;
+    }
+
+    @Override
+    public void write(int b) throws IOException {
+      buffer[length] = (byte) b;
+      length++;
+      if (b == 10) { // eoln
+        String s = new String(buffer, 0, length);
+        if (passJekyllFilter(s))
+          log("Jekyll: "+s.trim());
+        length = 0;  
+      }
+    }
   }
 
   private boolean passJekyllFilter(String s) {
+    if (Utilities.noString(s))
+      return false;
     if (s.contains("Source:"))
       return false;
     if (s.contains("Destination:"))
+      return false;
+    if (s.contains("Configuration"))
       return false;
     if (s.contains("Incremental build:"))
       return false;
     if (s.contains("Auto-regeneration:"))
       return false;
+    return true;
+  }
+
+  private boolean runJekyll() throws IOException, InterruptedException {
+    if (USE_COMMONS_EXEC) {
+      DefaultExecutor exec = new DefaultExecutor();
+      exec.setExitValue(0);
+      PumpStreamHandler pump = new PumpStreamHandler(new MyFilterHandler());
+      exec.setStreamHandler(pump);
+      exec.setWorkingDirectory(new File(tempDir));
+      if (SystemUtils.IS_OS_WINDOWS) 
+        exec.execute(org.apache.commons.exec.CommandLine.parse("cmd /C jekyll build --destination "+outputDir));
+      else
+        exec.execute(org.apache.commons.exec.CommandLine.parse("jekyll build --destination "+outputDir));      
+    } else {
+      findRubyExe();
+
+      // set up jekyll 
+      List<String> command = new ArrayList<String>();
+      command.add(rubyExe);
+      command.add(jekyllGem);
+      command.add("build");
+      command.add("--destination");
+      command.add(outputDir);
+      ProcessBuilder builder = new ProcessBuilder(command);
+      builder.directory(new File(tempDir));
+
+      // run and capture the output
+      final Process process = builder.start();
+      BufferedReader stdError = new BufferedReader(new InputStreamReader(process.getInputStream()));
+      String s;
+      while ((s = stdError.readLine()) != null) {
+        if (passJekyllFilter(s))
+          log("Jekyll: "+s);
+      }
+      process.waitFor();
+    }
     return true;
   }
 
@@ -930,7 +1082,7 @@ public class Publisher implements IGLogger {
 
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     String json = gson.toJson(data);
-    TextFile.stringToFile(json, Utilities.path(tempDir, "data", "fhir.json"));    
+    TextFile.stringToFile(json, Utilities.path(tempDir, "data", "fhir.json"));
   }
 
   private void generateResourceReferences() throws IOException {
@@ -962,8 +1114,8 @@ public class Publisher implements IGLogger {
       }
     }
     if (found) {
-      fragment("list-"+Utilities.pluralizeMe(rt.toString().toLowerCase()), list.toString());
-      fragment("table-"+Utilities.pluralizeMe(rt.toString().toLowerCase()), table.toString());
+      fragment("list-"+Utilities.pluralizeMe(rt.toString().toLowerCase()), list.toString(), otherFilesRun);
+      fragment("table-"+Utilities.pluralizeMe(rt.toString().toLowerCase()), table.toString(), otherFilesRun);
     }
   }
 
@@ -1010,53 +1162,62 @@ public class Publisher implements IGLogger {
       logger.logMessage(s);
   }
 
-  private void generateOutputs(FetchedFile f) throws Exception {
-    log(" * "+f.getName());
+  private void generateOutputs(FetchedFile f) {
+//    log(" * "+f.getName());
 
     if (f.isNoProcess()) {
       String dst = tempDir + f.getPath().substring(pagesDir.length());
-      if (f.isFolder())
-        Utilities.createDirectory(dst);
-      else
-        checkMakeFile(f.getSource(), dst); 
+      try {
+        if (f.isFolder()) {
+          f.getOutputNames().add(dst);
+          Utilities.createDirectory(dst);
+        } else
+          checkMakeFile(f.getSource(), dst, f.getOutputNames());
+      } catch (IOException e) {
+        log("Exception generating page "+dst+": "+e.getMessage());
+      } 
     } else {
       for (FetchedResource r : f.getResources()) {
-        saveDirectResourceOutputs(r);
+        try {
+          saveDirectResourceOutputs(f, r);
 
-        // now, start generating resource type specific stuff 
-        if (r.getResource() != null) { // we only do this for conformance resources we've already loaded
-          switch (r.getResource().getResourceType()) {
-          case CodeSystem:
-            generateOutputsCodeSystem(r, (CodeSystem) r.getResource());
-            break;
-          case ValueSet:
-            generateOutputsValueSet(r, (ValueSet) r.getResource());
-            break;
-          case ConceptMap:
-            generateOutputsConceptMap(r, (ConceptMap) r.getResource());
-            break;
+          // now, start generating resource type specific stuff 
+          if (r.getResource() != null) { // we only do this for conformance resources we've already loaded
+            switch (r.getResource().getResourceType()) {
+            case CodeSystem:
+              generateOutputsCodeSystem(f, r, (CodeSystem) r.getResource());
+              break;
+            case ValueSet:
+              generateOutputsValueSet(f, r, (ValueSet) r.getResource());
+              break;
+            case ConceptMap:
+              generateOutputsConceptMap(f, r, (ConceptMap) r.getResource());
+              break;
 
-          case DataElement:
-            break;
-          case StructureDefinition:
-            generateOutputsStructureDefinition(r, (StructureDefinition) r.getResource());
-            break;
-          case StructureMap:
-            break;
-          default:
-            // nothing to do...    
-          }      
-        }
+            case DataElement:
+              break;
+            case StructureDefinition:
+              generateOutputsStructureDefinition(f, r, (StructureDefinition) r.getResource());
+              break;
+            case StructureMap:
+              break;
+            default:
+              // nothing to do...    
+            }      
+          }
+        } catch (Exception e) {
+          log("Exception generating resource "+f.getName()+"::"+r.getElement().fhirType()+"/"+r.getId()+": "+e.getMessage());
+        } 
       }
     }
   }
 
-  private boolean wantGen(FetchedResource f, String code) {
-    if (f.getConfig() != null && hasBoolean(f.getConfig(), code))
-      return getBoolean(f.getConfig(), code);
+  private boolean wantGen(FetchedResource r, String code) {
+    if (r.getConfig() != null && hasBoolean(r.getConfig(), code))
+      return getBoolean(r.getConfig(), code);
     JsonObject cfg = configuration.getAsJsonObject("defaults");
     if (cfg != null)
-      cfg = cfg.getAsJsonObject(f.getElement().fhirType());
+      cfg = cfg.getAsJsonObject(r.getElement().fhirType());
     if (cfg != null && hasBoolean(cfg, code))
       return getBoolean(cfg, code);
     cfg = configuration.getAsJsonObject("defaults");
@@ -1065,6 +1226,22 @@ public class Publisher implements IGLogger {
     if (cfg != null && hasBoolean(cfg, code))
       return getBoolean(cfg, code);
     return true;
+  }
+
+  private String getTemplate(FetchedResource r, String propertyName) {
+    if (r.getConfig() != null && hasString(r.getConfig(), propertyName))
+      return getString(r.getConfig(), propertyName);
+    JsonObject cfg = configuration.getAsJsonObject("defaults");
+    if (cfg != null)
+      cfg = cfg.getAsJsonObject(r.getElement().fhirType());
+    if (cfg != null && hasString(cfg, propertyName))
+      return getString(cfg, propertyName);
+    cfg = configuration.getAsJsonObject("defaults");
+    if (cfg != null)
+      cfg = cfg.getAsJsonObject("Any");
+    if (cfg != null && hasString(cfg, propertyName))
+      return getString(cfg, propertyName);
+    return null;
   }
 
 
@@ -1078,62 +1255,81 @@ public class Publisher implements IGLogger {
     return e != null && e instanceof JsonPrimitive && ((JsonPrimitive) e).getAsBoolean();
   }
 
+  private boolean hasString(JsonObject obj, String code) {
+    JsonElement e = obj.get(code);
+    return e != null && (e instanceof JsonPrimitive && ((JsonPrimitive) e).isString()) || e instanceof JsonNull;
+  }
+
+  private String getString(JsonObject obj, String code) {
+    JsonElement e = obj.get(code);
+    if (e instanceof JsonNull)
+      return null;
+    else 
+      return ((JsonPrimitive) e).getAsString();
+  }
+
   /**
    * saves the resource as XML, JSON, Turtle, 
    * then all 3 of those as html with embedded links to the definitions
    * then the narrative as html
    *  
-   * @param f
+   * @param r
    * @throws FileNotFoundException
    * @throws Exception
    */
-  private void saveDirectResourceOutputs(FetchedResource f) throws FileNotFoundException, Exception {
-    if (wantGen(f, "wrapper")) 
-      genWrapperBase(f);
+  private void saveDirectResourceOutputs(FetchedFile f, FetchedResource r) throws FileNotFoundException, Exception {
+    genWrapperBase(r, getTemplate(r, "template-base"), f.getOutputNames());
     
-    if (wantGen(f, "xml")) {
-      new org.hl7.fhir.dstu3.elementmodel.XmlParser(context).compose(f.getElement(), new FileOutputStream(Utilities.path(tempDir, f.getElement().fhirType()+"-"+f.getId()+".xml")), OutputStyle.PRETTY, "??");
+    String template = getTemplate(r, "template-format");
+    if (wantGen(r, "xml")) {
+      String path = Utilities.path(tempDir, r.getElement().fhirType()+"-"+r.getId()+".xml");
+      f.getOutputNames().add(path);
+      new org.hl7.fhir.dstu3.elementmodel.XmlParser(context).compose(r.getElement(), new FileOutputStream(path), OutputStyle.PRETTY, "??");
       if (tool == GenerationTool.Jekyll)
-        genWrapperFmt(f, "xml");  
+        genWrapperFmt(r, template, "xml", f.getOutputNames());  
     }
-    if (wantGen(f, "json")) {
-      new org.hl7.fhir.dstu3.elementmodel.JsonParser(context).compose(f.getElement(), new FileOutputStream(Utilities.path(tempDir, f.getElement().fhirType()+"-"+f.getId()+".json")), OutputStyle.PRETTY, "??");
+    if (wantGen(r, "json")) {
+      String path = Utilities.path(tempDir, r.getElement().fhirType()+"-"+r.getId()+".json");
+      f.getOutputNames().add(path);
+      new org.hl7.fhir.dstu3.elementmodel.JsonParser(context).compose(r.getElement(), new FileOutputStream(path), OutputStyle.PRETTY, "??");
       if (tool == GenerationTool.Jekyll)
-        genWrapperFmt(f, "json");  
+        genWrapperFmt(r, template, "json", f.getOutputNames());  
     }
-    if (wantGen(f, "ttl")) {
-      new org.hl7.fhir.dstu3.elementmodel.TurtleParser(context).compose(f.getElement(), new FileOutputStream(Utilities.path(tempDir, f.getElement().fhirType()+"-"+f.getId()+".ttl")), OutputStyle.PRETTY, "??");
+    if (wantGen(r, "ttl")) {
+      String path = Utilities.path(tempDir, r.getElement().fhirType()+"-"+r.getId()+".ttl");
+      f.getOutputNames().add(path);
+      new org.hl7.fhir.dstu3.elementmodel.TurtleParser(context).compose(r.getElement(), new FileOutputStream(path), OutputStyle.PRETTY, "??");
       if (tool == GenerationTool.Jekyll)
-        genWrapperFmt(f, "ttl");  
+        genWrapperFmt(r, template, "ttl", f.getOutputNames());  
     }
 
-    if (wantGen(f, "xml-html")) {
+    if (wantGen(r, "xml-html")) {
       XmlXHtmlRenderer x = new XmlXHtmlRenderer();
       org.hl7.fhir.dstu3.elementmodel.XmlParser xp = new org.hl7.fhir.dstu3.elementmodel.XmlParser(context);
       xp.setLinkResolver(igpkp);
-      xp.compose(f.getElement(), x);
-      fragment(f.getId()+"-xml-html", x.toString());
+      xp.compose(r.getElement(), x);
+      fragment(r.getElement().fhirType()+"-"+r.getId()+"-xml-html", x.toString(), f.getOutputNames());
     }
-    if (wantGen(f, "json-html")) {
+    if (wantGen(r, "json-html")) {
       JsonXhtmlRenderer j = new JsonXhtmlRenderer();
       org.hl7.fhir.dstu3.elementmodel.JsonParser jp = new org.hl7.fhir.dstu3.elementmodel.JsonParser(context);
       jp.setLinkResolver(igpkp);
-      jp.compose(f.getElement(), j);
-      fragment(f.getId()+"-json-html", j.toString());
+      jp.compose(r.getElement(), j);
+      fragment(r.getElement().fhirType()+"-"+r.getId()+"-json-html", j.toString(), f.getOutputNames());
     }
 
-    if (wantGen(f, "ttl-html")) {
+    if (wantGen(r, "ttl-html")) {
       org.hl7.fhir.dstu3.elementmodel.TurtleParser ttl = new org.hl7.fhir.dstu3.elementmodel.TurtleParser(context);
       ttl.setLinkResolver(igpkp);
       Turtle rdf = new Turtle();
-      ttl.compose(f.getElement(), rdf, "??");
-      fragment(f.getId()+"-ttl-html", rdf.asHtml());
+      ttl.compose(r.getElement(), rdf, "??");
+      fragment(r.getElement().fhirType()+"-"+r.getId()+"-ttl-html", rdf.asHtml(), f.getOutputNames());
     }
 
-    if (wantGen(f, "html")) {
-      XhtmlNode xhtml = getXhtml(f);
+    if (wantGen(r, "html")) {
+      XhtmlNode xhtml = getXhtml(r);
       String html = xhtml == null ? "" : new XhtmlComposer().compose(xhtml);
-      fragment(f.getId()+"-html", html);
+      fragment(r.getElement().fhirType()+"-"+r.getId()+"-html", html, f.getOutputNames());
     }
     //  NarrativeGenerator gen = new NarrativeGenerator(null, null, context);
     //  gen.generate(f.getElement(), false);
@@ -1142,18 +1338,30 @@ public class Publisher implements IGLogger {
     //  fragment(f.getId()+"-gen-html", html);
   }
 
-  private void genWrapperFmt(FetchedResource f, String format) throws FileNotFoundException, IOException {
-    String template = TextFile.fileToString(instanceTemplateFmt);
-    template = template.replace("{{[title]}}", f.getTitle());
-    template = template.replace("{{[name]}}", f.getId()+"-"+format+"-html");
-    TextFile.stringToFile(template, Utilities.path(tempDir, f.getElement().fhirType()+"-"+f.getId()+"."+format+".html"), false);
+  private void genWrapperFmt(FetchedResource r, String template, String format, Set<String> outputTracker) throws FileNotFoundException, IOException {
+    if (template != null) {
+      template = TextFile.fileToString(Utilities.path(Utilities.getDirectoryForFile(configFile), template));
+      template = template.replace("{{[title]}}", r.getTitle());
+      template = template.replace("{{[name]}}", r.getId()+"-"+format+"-html");
+      template = template.replace("{{[id]}}", r.getId());
+      template = template.replace("{{[type]}}", r.getElement().fhirType());
+      String path = Utilities.path(tempDir, r.getElement().fhirType()+"-"+r.getId()+"."+format+".html");
+      TextFile.stringToFile(template, path, false);
+      outputTracker.add(path);
+    }
   }
 
-  private void genWrapperBase(FetchedResource f) throws FileNotFoundException, IOException {
-    String template = TextFile.fileToString(instanceTemplateBase);
-    template = template.replace("{{[title]}}", f.getTitle());
-    template = template.replace("{{[name]}}", f.getId()+"-html");
-    TextFile.stringToFile(template, Utilities.path(tempDir, f.getElement().fhirType()+"-"+f.getId()+".html"), false);
+  private void genWrapperBase(FetchedResource r, String template, Set<String> outputTracker) throws FileNotFoundException, IOException {
+    if (template != null) {
+      template = TextFile.fileToString(Utilities.path(Utilities.getDirectoryForFile(configFile), template));
+      template = template.replace("{{[title]}}", r.getTitle());
+      template = template.replace("{{[type]}}", r.getElement().fhirType());
+      template = template.replace("{{[id]}}", r.getId());
+      template = template.replace("{{[name]}}", r.getId()+"-html");
+      String path = Utilities.path(tempDir, r.getElement().fhirType()+"-"+r.getId()+".html");
+      TextFile.stringToFile(template, path, false);
+      outputTracker.add(path);
+    }
   }
 
   /**
@@ -1165,15 +1373,16 @@ public class Publisher implements IGLogger {
    * @throws IOException 
    * @throws FHIRException 
    * @throws EOperationOutcome 
+   * @throws org.hl7.fhir.exceptions.FHIRException 
    */
-  private void generateOutputsCodeSystem(FetchedResource f, CodeSystem cs) throws IOException, EOperationOutcome, FHIRException {
+  private void generateOutputsCodeSystem(FetchedFile f, FetchedResource fr, CodeSystem cs) throws IOException, EOperationOutcome, FHIRException, org.hl7.fhir.exceptions.FHIRException {
     CodeSystemRenderer csr = new CodeSystemRenderer(context, specPath, cs, igpkp);
-    if (wantGen(f, "summary")) 
-      fragment(cs.getId()+"-cs-summary", csr.summary(wantGen(f, "xml"), wantGen(f, "json"), wantGen(f, "ttl")));
-    if (wantGen(f, "content")) 
-      fragment(cs.getId()+"-cs-content", csr.content());
-    if (wantGen(f, "xref")) 
-      fragment(cs.getId()+"-cs-xref", csr.xref());
+    if (wantGen(fr, "summary")) 
+      fragment(cs.getId()+"-cs-summary", csr.summary(wantGen(fr, "xml"), wantGen(fr, "json"), wantGen(fr, "ttl")), f.getOutputNames());
+    if (wantGen(fr, "content")) 
+      fragment(cs.getId()+"-cs-content", csr.content(), f.getOutputNames());
+    if (wantGen(fr, "xref")) 
+      fragment(cs.getId()+"-cs-xref", csr.xref(), f.getOutputNames());
   }
 
   /**
@@ -1186,21 +1395,22 @@ public class Publisher implements IGLogger {
    * @param vs
    * @throws IOException
    * @throws FHIRException 
+   * @throws org.hl7.fhir.exceptions.FHIRException 
    */
-  private void generateOutputsValueSet(FetchedResource f, ValueSet vs) throws IOException, FHIRException {
+  private void generateOutputsValueSet(FetchedFile f, FetchedResource r, ValueSet vs) throws IOException, FHIRException, org.hl7.fhir.exceptions.FHIRException {
     ValueSetRenderer vsr = new ValueSetRenderer(context, specPath, vs, igpkp);
-    if (wantGen(f, "summary")) 
-      fragment(vs.getId()+"-vs-summary", vsr.summary(wantGen(f, "xml"), wantGen(f, "json"), wantGen(f, "ttl")));
-    if (wantGen(f, "cld")) 
+    if (wantGen(r, "summary")) 
+      fragment(vs.getId()+"-vs-summary", vsr.summary(wantGen(r, "xml"), wantGen(r, "json"), wantGen(r, "ttl")), f.getOutputNames());
+    if (wantGen(r, "cld")) 
       try {
-        fragment(vs.getId()+"-vs-cld", vsr.cld());
+        fragment(vs.getId()+"-vs-cld", vsr.cld(), f.getOutputNames());
       } catch (Exception e) {
-        fragmentError(vs.getId()+"-vs-cld", e.getMessage());
+        fragmentError(vs.getId()+"-vs-cld", e.getMessage(), f.getOutputNames());
       }
 
-    if (wantGen(f, "xref")) 
-      fragment(vs.getId()+"-vs-xref", vsr.xref());
-    if (wantGen(f, "expansion")) { 
+    if (wantGen(r, "xref")) 
+      fragment(vs.getId()+"-vs-xref", vsr.xref(), f.getOutputNames());
+    if (wantGen(r, "expansion")) { 
       ValueSetExpansionOutcome exp = context.expandVS(vs, true);
       if (exp.getValueset() != null) {
         NarrativeGenerator gen = new NarrativeGenerator("", null, context);
@@ -1209,16 +1419,16 @@ public class Publisher implements IGLogger {
         exp.getValueset().setText(null);
         gen.generate(exp.getValueset(), false);
         String html = new XhtmlComposer().compose(exp.getValueset().getText().getDiv());
-        fragment(vs.getId()+"-expansion", html);
+        fragment(vs.getId()+"-expansion", html, f.getOutputNames());
       } else if (exp.getError() != null) 
-        fragmentError(vs.getId()+"-expansion", exp.getError());
+        fragmentError(vs.getId()+"-expansion", exp.getError(), f.getOutputNames());
       else 
-        fragmentError(vs.getId()+"-expansion", "Unknown Error");
+        fragmentError(vs.getId()+"-expansion", "Unknown Error", f.getOutputNames());
     }
   }
 
-  private void fragmentError(String name, String error) throws IOException {
-    fragment(name, "<p style=\"color: maroon; font-weight: bold\">"+Utilities.escapeXml(error)+"</p>\r\n");
+  private void fragmentError(String name, String error, Set<String> outputTracker) throws IOException {
+    fragment(name, "<p style=\"color: maroon; font-weight: bold\">"+Utilities.escapeXml(error)+"</p>\r\n", outputTracker);
   }
 
   /**
@@ -1229,62 +1439,69 @@ public class Publisher implements IGLogger {
    * @param resource
    * @throws IOException 
    */
-  private void generateOutputsConceptMap(FetchedResource f, ConceptMap cm) throws IOException {
-    if (wantGen(f, "summary")) 
-      fragmentError(cm.getId()+"-cm-summary", "yet to be done: concept map summary");
-    if (wantGen(f, "content")) 
-      fragmentError(cm.getId()+"-cm-content", "yet to be done: table presentation of the concept map");
-    if (wantGen(f, "xref")) 
-      fragmentError(cm.getId()+"-cm-xref", "yet to be done: list of all places where concept map is used");
+  private void generateOutputsConceptMap(FetchedFile f, FetchedResource r, ConceptMap cm) throws IOException {
+    if (wantGen(r, "summary")) 
+      fragmentError(cm.getId()+"-cm-summary", "yet to be done: concept map summary", f.getOutputNames());
+    if (wantGen(r, "content")) 
+      fragmentError(cm.getId()+"-cm-content", "yet to be done: table presentation of the concept map", f.getOutputNames());
+    if (wantGen(r, "xref")) 
+      fragmentError(cm.getId()+"-cm-xref", "yet to be done: list of all places where concept map is used", f.getOutputNames());
   }
 
-  private void generateOutputsStructureDefinition(FetchedResource f, StructureDefinition sd) throws Exception {
+  private void generateOutputsStructureDefinition(FetchedFile f, FetchedResource r, StructureDefinition sd) throws Exception {
     // todo : generate shex itself
-    if (wantGen(f, "shex")) 
-      fragmentError(sd.getId()+"-shex", "yet to be done: shex as html");
+    if (wantGen(r, "shex")) 
+      fragmentError(sd.getId()+"-shex", "yet to be done: shex as html", f.getOutputNames());
 
     // todo : generate schematron itself
-    if (wantGen(f, "sch")) 
-      fragmentError(sd.getId()+"-sch", "yet to be done: schematron as html");
+    if (wantGen(r, "sch")) 
+      fragmentError(sd.getId()+"-sch", "yet to be done: schematron as html", f.getOutputNames());
 
     // todo : generate json schema itself
-    if (wantGen(f, "json-schema")) 
-      fragmentError(sd.getId()+"-json-schema", "yet to be done: json schema as html");
+    if (wantGen(r, "json-schema")) 
+      fragmentError(sd.getId()+"-json-schema", "yet to be done: json schema as html", f.getOutputNames());
 
     StructureDefinitionRenderer sdr = new StructureDefinitionRenderer(context, specPath+"/", sd, Utilities.path(tempDir), igpkp, specDetails.getAsJsonObject("maps"));
-    if (wantGen(f, "summary")) 
-      fragment(sd.getId()+"-sd-summary", sdr.summary());
-    if (wantGen(f, "header")) 
-      fragment(sd.getId()+"-header", sdr.header());
-    if (wantGen(f, "diff")) 
-      fragment(sd.getId()+"-diff", sdr.diff(igpkp.getDefinitions(sd)));
-    if (wantGen(f, "snapshot")) 
-      fragment(sd.getId()+"-snapshot", sdr.snapshot(igpkp.getDefinitions(sd)));
-    if (wantGen(f, "template-xml")) 
-      fragmentError(sd.getId()+"-template-xml", "yet to be done: Xml template");
-    if (wantGen(f, "template-json")) 
-      fragmentError(sd.getId()+"-template-json", "yet to be done: Json template");
-    if (wantGen(f, "template-ttl")) 
-      fragmentError(sd.getId()+"-template-ttl", "yet to be done: Turtle template");
-    if (wantGen(f, "uml")) 
-      fragmentError(sd.getId()+"-uml", "yet to be done: UML as SVG");
-    if (wantGen(f, "tx")) 
-      fragment(sd.getId()+"-tx", sdr.tx());
-    if (wantGen(f, "inv")) 
-      fragment(sd.getId()+"-inv", sdr.inv());
-    if (wantGen(f, "dict")) 
-      fragment(sd.getId()+"-dict", sdr.dict());
-    if (wantGen(f, "maps")) 
-      fragment(sd.getId()+"-maps", sdr.mappings());
-    if (wantGen(f, "xref")) 
-      fragmentError(sd.getId()+"-sd-xref", "Yet to be done: xref");
+    if (wantGen(r, "summary")) 
+      fragment(sd.getId()+"-sd-summary", sdr.summary(), f.getOutputNames());
+    if (wantGen(r, "header")) 
+      fragment(sd.getId()+"-header", sdr.header(), f.getOutputNames());
+    if (wantGen(r, "diff")) 
+      fragment(sd.getId()+"-diff", sdr.diff(igpkp.getDefinitions(sd)), f.getOutputNames());
+    if (wantGen(r, "snapshot")) 
+      fragment(sd.getId()+"-snapshot", sdr.snapshot(igpkp.getDefinitions(sd)), f.getOutputNames());
+    if (wantGen(r, "template-xml")) 
+      fragmentError(sd.getId()+"-template-xml", "yet to be done: Xml template", f.getOutputNames());
+    if (wantGen(r, "template-json")) 
+      fragmentError(sd.getId()+"-template-json", "yet to be done: Json template", f.getOutputNames());
+    if (wantGen(r, "template-ttl")) 
+      fragmentError(sd.getId()+"-template-ttl", "yet to be done: Turtle template", f.getOutputNames());
+    if (wantGen(r, "uml")) 
+      fragmentError(sd.getId()+"-uml", "yet to be done: UML as SVG", f.getOutputNames());
+    if (wantGen(r, "tx")) 
+      fragment(sd.getId()+"-tx", sdr.tx(), f.getOutputNames());
+    if (wantGen(r, "inv")) 
+      fragment(sd.getId()+"-inv", sdr.inv(), f.getOutputNames());
+    if (wantGen(r, "dict")) 
+      fragment(sd.getId()+"-dict", sdr.dict(), f.getOutputNames());
+    if (wantGen(r, "maps")) 
+      fragment(sd.getId()+"-maps", sdr.mappings(), f.getOutputNames());
+    if (wantGen(r, "xref")) 
+      fragmentError(sd.getId()+"-sd-xref", "Yet to be done: xref", f.getOutputNames());
 
-    if (wantGen(f, "example-list")) 
-      fragment("example-list-"+sd.getId(), sdr.exampleList(fileList));
+    if (wantGen(r, "example-list")) 
+      fragment("example-list-"+sd.getId(), sdr.exampleList(fileList), f.getOutputNames());
   }
 
-  private XhtmlNode getXhtml(FetchedResource f) {
-    Element text = f.getElement().getNamedChild("text");
+  private XhtmlNode getXhtml(FetchedResource r) {
+    if (r.getResource() != null && r.getResource() instanceof DomainResource) {
+      DomainResource dr = (DomainResource) r.getResource();
+      if (dr.getText().hasDiv())
+        return dr.getText().getDiv();
+      else
+        return null;
+    }
+    Element text = r.getElement().getNamedChild("text");
     if (text == null)
       return null;
     Element div = text.getNamedChild("div");
@@ -1294,8 +1511,9 @@ public class Publisher implements IGLogger {
       return div.getXhtml();
   }
 
-  private void fragment(String name, String content) throws IOException {
+  private void fragment(String name, String content, Set<String> outputTracker) throws IOException {
     File f = new File(Utilities.path(tempDir, "_includes", name+".xhtml"));
+    outputTracker.add(f.getAbsolutePath());
     String s = f.exists() ? TextFile.fileToString(f.getAbsolutePath()) : "";
     if (!f.exists() || !s.equals(content)) { 
       TextFile.stringToFile(content, Utilities.path(tempDir, "_includes", name+".xhtml"), false);
@@ -1318,6 +1536,28 @@ public class Publisher implements IGLogger {
   public static void main(String[] args) throws Exception {
     if (hasParam(args, "-gui") || args.length == 0) {
       runGUI();
+    } else if (hasParam(args, "-multi")) {
+      for (String ig : TextFile.fileToString(getNamedParam(args, "-multi")).split("\\r?\\n")) {
+        if (!ig.startsWith(";")) {
+          System.out.println("=======================================================================================");
+          System.out.println("Publish IG "+ig);
+          Publisher self = new Publisher();
+          self.setConfigFile(ig);
+          self.setTxServer(getNamedParam(args, "-tx"));
+          try {
+            self.execute(hasParam(args, "-resetTx"));
+          } catch (Exception e) {
+            System.out.println("Publishing Implementation Guide Failed: "+e.getMessage());
+            System.out.println("");
+            System.out.println("Stack Dump (for debugging):");
+            e.printStackTrace();
+            break;
+          }
+          System.out.println("=======================================================================================");
+          System.out.println("");
+          System.out.println("");
+        }
+      }
     } else {
       System.out.println("FHIR Implementation Guide Publisher ("+Constants.VERSION+"-"+Constants.REVISION+")");
       Publisher self = new Publisher();
@@ -1347,7 +1587,7 @@ public class Publisher implements IGLogger {
         System.out.println("For additional information, see http://wiki.hl7.org/index.php?title=Proposed_new_FHIR_IG_build_Process");
       } else 
         try {
-          self.execute();
+          self.execute(hasParam(args, "-resetTx"));
         } catch (Exception e) {
           System.out.println("Publishing Implementation Guide Failed: "+e.getMessage());
           System.out.println("");
