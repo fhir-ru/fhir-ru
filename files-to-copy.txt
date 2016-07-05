@@ -1,2 +1,0 @@
-explanationofbenefit/explanationofbenefit-example.xml
-explanationofbenefit/explanationofbenefit-spreadsheet.sheet.txt
