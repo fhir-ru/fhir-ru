@@ -6443,7 +6443,7 @@
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Если это группа товара, тогда 'GROUP', иначе это узел, следовательно код для указания предоставляемой профессиональной услуги или продукта.<!-- If a grouping item then 'GROUP' otherwise it is a node therefore a code to indicate the Professional Service or Product supplied. --></Data></Cell>
+    <Cell><Data ss:Type="String">If a grouping item then 'GROUP' otherwise it is a node therefore a code to indicate the Professional Service or Product supplied.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s94">
     <Cell ss:StyleID="s86"><Data ss:Type="String">ExplanationOfBenefit.addItem.detail.category</Data><NamedCell
@@ -10790,7 +10790,7 @@
     <Cell ss:StyleID="s144"><Data ss:Type="String">Ссылка на пациента<!-- The reference to the patient --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s142"><Data ss:Type="String">claimindentifier</Data></Cell>
+    <Cell ss:StyleID="s142"><Data ss:Type="String">claimidentifier</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s143"><Data ss:Type="String">ExplanationOfBenefit.claimIdentifier</Data></Cell>

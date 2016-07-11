@@ -281,7 +281,7 @@
   Element = ElementDefinition.path
   Card. = 1..1
   Type = string
-  Short Label = The path of the element (see the Detailed Descriptions)
+  Short Label = Path of the element in the heirarchy of elements
   Definition = The path identifies the element and is expressed as a \".\"-separated list of ancestor elements, beginning with the name of the resource or extension
   v2 Mapping = N/A
   RIM Mapping = N/A
@@ -294,7 +294,7 @@
   Binding = PropertyRepresentation
   Short Label = xmlAttr | xmlText | typeAttr | cdaText | xhtml
   Definition = Codes that define how this element is represented in instances, when the deviation varies from the normal case
-  Comments = This is rarely used except for special cases where the representation deviates from the normal, which is done only very reluctantly, and can only be done in the base standard (and profiles must reproduce what the base standard does)
+  Comments = In resources, this is rarely used except for special cases where the representation deviates from the normal, and can only be done in the base standard (and profiles must reproduce what the base standard does). This element is used quite commonly in Logical models when the logical models represent a specific wire format (e.g. CDA, v2 etc)
   v2 Mapping = N/A
   RIM Mapping = N/A
   11179 Mapping = n/a
@@ -545,10 +545,10 @@
 
  -- Row 26 -----------------------------------
   Element = ElementDefinition.type.profile
-  Card. = 0..*
+  Card. = 0..1
   Type = uri
   Short Label = Profile (StructureDefinition) to apply (or IG)
-  Definition = Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide
+  Definition = Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide
   RIM Mapping = N/A (MIF territory)
   11179 Mapping = n/a
 
@@ -750,7 +750,7 @@
   Short Label = Include when _summary = true?
   Definition = Whether the element should be included if a client requests a search with the parameter _summary=true
   Requirements = Allow clients to search through large resources quickly
-  Comments = Some resources include a set of simple metadata, and some very large data. This element is used to reduce the quantity of data returned in searches. Note that servers may pre-cache summarized resources for optimal performance, so servers may not support per-profile use of the isSummary flag
+  Comments = Some resources include a set of simple metadata, and some very large data. This element is used to reduce the quantity of data returned in searches. Note that servers may pre-cache summarized resources for optimal performance, so servers may not support per-profile use of the isSummary flag. When a request is made with _summary=true, serailisers only include elements marked as \'isSummary = true\'. Other than Attachment.data, all data type properties are included in the summary form
   11179 Mapping = ??
   Default Value = False
 
@@ -796,7 +796,7 @@
   Inv. = 10,12
   Type = uri | Reference(ValueSet)
   Short Label = Source of value set
-  Definition = Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used
+  Definition = Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used. If the binding refers to an explicit value set - the normal case - then use a Reference(ValueSet) preferably containing the canonical URL for the value set. If the reference is to an implicit value set - usually, an IETF RFC that defines a grammar, such as mime types - then use a uri
   Comments = For value sets with a referenceResource, the display can contain the value set description.  The reference may be version-specific or not
   IHE DEX mapping = valueDomain.valueSet
   RIM Mapping = N/A (MIF territory)

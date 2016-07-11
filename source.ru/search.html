@@ -1346,25 +1346,21 @@ but with no entries, and no prev/next/last links. -->
 <h4>Включение других ресурсов в результат (<code>_include</code> и <code>_revinclude</code>)<!-- Including other resources in result (<code>_include</code> and <code>_revinclude</code>) --></h4>
 <p>
 Клиенты могут запросить, чтобы система вернула ресурсы, связанные с результатами поиска, чтобы уменьшить общую сетевую задержку повторяющихся извлечений связанных ресурсов. Это полезно, когда клиент ищет клинический ресурс, однако для каждого такого возвращаемого ресурса клиенту также требуется ресурс-субъект (пациент), к которому относится данный клинический ресурс. Клиент может использовать параметр <code>_include</code> для указания, что ресурсы-субъекты должны быть включены в результаты. Альтернативным сценарием может быть такой, когда клиент хочет извлечь конкретный ресурс и все ресурсы, которые ссылаются на него. Например клиент может пожелать извлечь MedicationOrder и все ресурсы Provenance, которые ссылаются на это предписание. Это называется обратным включением и указывается с помощью параметра <code>_revinclude</code>.
-<!-- Clients may request that the engine return resources related to
-the search results, in order to reduce the overall network delay of repeated 
-retrievals of related resources.
-This is useful when the client is searching on
-a clinical resource, but for every such resource returned,
-the client will also need the subject (patient) resource that the
-clinical resource refers to. The client can use the <code>_include</code> parameter 
-to indicate that the subject resources be included in the results. 
-An alternative scenario is where the client 
-wishes to fetch a particular resource, and any resources that refer
-to it. For example, the client may wish to fetch a MedicationOrder,
-and any provenance resources that refer to the prescription. This is known
-as a reverse include, and is specified by providing a <code>_revinclude</code> parameter. -->
+<!-- Clients may request that the engine return resources related to the search results, in order to reduce 
+the overall network delay of repeated retrievals of related resources. This is useful when the client 
+is searching on a clinical resource, but for every such resource returned, the client will also need 
+the subject (patient) resource that the clinical resource refers to. The client can use the 
+<code>_include</code> parameter to indicate that the subject resources be included in the results. 
+An alternative scenario is where the client wishes to fetch a particular resource, and any resources 
+that refer to it. For example, the client may wish to fetch a MedicationOrder, and any provenance 
+resources that refer to the prescription. This is known as a reverse include, and is specified by 
+providing a <code>_revinclude</code> parameter. -->
 </p>
 <p>  
 Оба параметра <code>_include</code> и <code>_revinclude</code> основываются на параметрах поиска, а не на путях в ресурсе, так как объединения, такие как <a href="#chaining">chaining</a>, уже сделаны параметром поиска.
-<!-- Both <code>_include</code> and <code>_revinclude</code> are based on search parameters, rather 
-than paths in the resource, since joins, such as <a href="#chaining">chaining</a>,
-are already done by search parameter. -->
+<!-- Both <code>_include</code> and <code>_revinclude</code> are based on search parameters, rather than 
+paths in the resource, since joins, such as <a href="#chaining">chaining</a>, are already done by 
+search parameter. -->
 </p> 
 <p>
 Каждый параметр <code>_include</code> описывает параметр поиска для объединения:
@@ -1376,7 +1372,7 @@ are already done by search parameter. -->
 </pre>
 <p>
 Первый поисковый запрос запрашивает все подходящие MedicationOrders, чтобы включить всех пациентов, к которым относятся предписания медикаментов в наборе результатов. Второй поисковый запрос запрашивает все подходящие рецепты (предписания) и возвращает все ресурсы  Provenance, которые к ним относятся.
-<!--   The first search requests all matching MedicationOrders, to include 
+<!-- The first search requests all matching MedicationOrders, to include 
 any patient that the medication prescriptions in the result set refer to. 
 The second search requests all matching prescriptions, return all 
 the provenance resources that refer to them.  -->
@@ -1416,7 +1412,7 @@ for the matching <a href="medicationdispense.html">Medication Dispense</a> resou
 </p>
 <pre>
 GET [base]/MedicationDispense?_include=MedicationDispense:authorizingPrescription
-    &amp;_include:recurse=MedicationOrder.prescriber&amp;criteria...
+    &amp;_include:recurse=MedicationOrder:prescriber&amp;criteria...
 </pre>
 <p>
 Этот способ также применяется к циркулярным [рекурсивным] взаимосвязям. Например первый из этих двух поисковых запросов включает все связанные с целевыми взаимосвязями наблюдения, но только с теми, что связаны напрямую. Второй запрос запрашивает <code>_include</code> на основе параметра <code>related</code>, который выполняется рекурсивно, таким образом он извлечёт наблюдения, которые имеют прямую связь, а также все наблюдения, связанные со всеми наблюдениями, включёнными через <code>_include</code>.
@@ -1429,7 +1425,7 @@ also any related observations to any other included observation. -->
 </p>
 <pre>
 GET [base]/Observation?_include=Observation:related-target&amp;criteria...
-GET [base]/Observation?_include:recurse=Observation.related-target&amp;criteria...
+GET [base]/Observation?_include:recurse=Observation:related-target&amp;criteria...
 </pre>
 <p>
 В обоих параметрах <code>_include</code> и <code>_revInclude</code> можно использовать специальный символ "*" в качестве имени параметра поиска для обозначения, что любой поисковый параметр с типом reference будет включен. Хотя и клиентам, и серверам необходимо заботиться о том, чтобы не запрашивать или не возвращать слишком много ресурсов при выполнении таких запросов. В частности использование рекурсивных включений может привести к извлечению всей карты пациента и даже более того: ресурсы организованы в сопряжённую сеть и заданные в достаточно общем виде пути <code>_include</code> могут в итоге включить все возможные пути на сервере. Для серверов такие рекурсивные и со звёздочкой инклюды (<code>_include</code>) являются достаточно требовательными и могут существенно замедлить время ответа на поиск.
@@ -1635,12 +1631,12 @@ by using the parameter <code>_summary</code>: -->
 resource. It can contain one of the following values: -->
 </p>
 <table class="codes">
- <tr><td><a href="#summary-true">true</a></td><td>Вернуть только те элементы, которые помечены как "суммарные" в базовых определениях ресурсов</td></tr>
+ <tr><td><a href="#summary-true">true</a></td><td>Вернуть только те элементы, которые помечены как "суммарные" в базовых определениях ресурсов (см. <a href="elementdefinition-definitions.html#ElementDefinition.isSummary">ElementDefinition.isSummary</a>)</td></tr>
  <tr><td><a href="#summary-text">text</a></td><td>Вернуть только элемент "text" и все обязательные элементы</td></tr>
  <tr><td><a href="#summary-data">data</a></td><td>Убрать элемент "text"</td></tr>
  <tr><td><a href="#summary-count">count</a></td><td>Только поиск: вернуть только количество соответствующих ресурсов, не возвращая сами совпадения</td></tr>
  <tr><td><a href="#summary-false">false</a></td><td>Вернуть все части ресурсов</td></tr>
-<!--  <tr><td><a href="#summary-true">true</a></td><td>Return only those elements marked as "summary" in the base definition of the resource(s)</td></tr>
+<!--  <tr><td><a href="#summary-true">true</a></td><td>Return only those elements marked as "summary" in the base definition of the resource(s) (see <a href="elementdefinition-definitions.html#ElementDefinition.isSummary">ElementDefinition.isSummary</a>)</td></tr>
  <tr><td><a href="#summary-text">text</a></td><td>Return only the "text" element, and any mandatory elements</td></tr>
  <tr><td><a href="#summary-data">data</a></td><td>Remove the text element</td></tr>
  <tr><td><a href="#summary-count">count</a></td><td>Search only: just return a count of the matching resources, without returning the actual matches</td></tr>

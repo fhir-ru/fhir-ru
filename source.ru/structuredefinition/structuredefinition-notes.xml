@@ -147,39 +147,9 @@ are (or may be) created by the specification, but can also be defined by other i
 
 <h3>Правила для структур ограничивающего типа  (Constrained Types)<!-- Rules for Constrained Types --></h3>
 <p>
-Когда структура является ограничением (constrainedType не "null"), применяются следующие правила:
-<!-- When the constraint (constrainedType is not null), then the following rules apply: -->
+Когда структура является ограничением (constrainedType не "null"), то применяются правила, описанные в разделе <a href="profiling.html#resources">Extending and Restricting Resources</a>:
+<!-- When the structure is a constraint (constrainedType is not null), see <a href="profiling.html#resources">Extending and Restricting Resources</a> for the rules that apply. -->
 </p>
-<ul>
- <li>В структуре обязательно необходимо указать базовый ресурс, на котором она построена
- <!-- The structure must nominate a base resource from which it is derived --></li>
- <li>Структурное определение не может вводить новые элементы или домены значений, которые не допустимы в этой структуре - например структура должна быть истинно ограничивающей и всё, что соответствует описанию этой структуры также должно быть допустимым в соответствии с описанием базовой структуры
- <!-- The structure definition cannot introduce any new elements or value domains that are not valid in the structure - e.g. the structure must be a true constraint, and anything that meets the description of this structure must also be valid following the description of the base structure --></li>
- <li>На практике это означает, что:<!-- In practice, this means that: -->
-   <ul>
-     <li>не могут вводиться новые пути, которых нет в базовой структуре<!-- no new paths may be introduced that are not found in the base structure --></li> 
-     <li>список типов для элемента должен совпадать или быть подмножеством списка типов для этого же элемента в базовой структуре<!-- the list of types for an element must be the same or a subset of the list of types for the same element in the base structure --></li> 
-     <li>Определение может быть изменено в производной структуре, но должно оставаться логически непротиворечивым с определением в базовом, например базовый элемент может быть определен как "Result value", и эта структура может определить его как "Result value", а эта структура может определить его как "Plasma Cholesterol Test Value", но не как "Result status".
-	 <!-- The definition can be changed in the derived structure, but it must still be logically consistent with the definition in the base; e.g. the base element may be defined as "Result value" and this structure could define it as "Plasma Cholesterol Test Value", but not "Result status". --></li>
-     <li>Кардинальное число должно быть подмножеством разрешенного кардинального числа в базовой структуре, т. е. его минимум должен быть >=  базовому минимуму, а максимум должен быть &lt;= базовому максимуму
-	 <!-- The cardinality must be a subset of the allowable cardinality in the base structure i.e. the minimum must be >= the base minimum, and the maximum must be &lt;= the base maximum --></li>
-   </ul>
-  </li>
-  <li>Обратите внимание, что из-за нарезки одному пути может соответствовать больше одного элемента. Более подробную информацию см. в разделе <a href="profiling.html">Профилирование ресурсов</a>.
-  <!-- Note that because of slicing, there can be more than element for the same path. For details, see <a href="profiling.html">Profiling resources</a> --></li>
-</ul>
-  
-<!-- 
-<li>For an extension definition, the cardinality constraints are limits on the constraints of any reference to the extension in a profile. 
-For example, if the minimum cardinality of an extension is 1 when it is defined, then any profile that includes that extension in the instance
-SHALL include it with a minimum cardinality of 1 and therefore any instance that conforms to the profile SHALL include the extension. Note, however,
-that if the extension is  directly referenced in an instance rather than applied through a profile, the minimum cardinality doesn't apply, 
-though the maximum one still does.
-</li>  
-<li>For an element with a maximum cardinality of 1, there can only be one entry in the value list, which is either a literal fixed type (with an element name matching the type of the fixed value) or a name,
-  which is a reference to a named constraint pattern. If the element has a maximum cardinality of &gt;1, then there can be multiple values - again, either fixed values with a type or a named constraint. 
-  Each of these appears in the list with the order and cardinality specified. By this means, a list may be "sliced" into a series of different components.</li>
---> 
   
 <h3>Распространенные адресаты мэппинга<!-- Common Mapping Targets --></h3>
 <p>
@@ -190,22 +160,7 @@ to other standards and published terminologies. These are the standard URIs used
 mapping: -->
 </p>
 
-<table class="lines">
-  <tr><td>http://loinc.org</td><td>LOINC-код для этого элемента</td></tr>
-  <tr><td>http://snomed.info</td><td>SNOMED CT-код для этого элемента</td></tr>
-  <tr><td>http://hl7.org/v3</td><td>Отображение на RIM</td></tr>
-  <tr><td>http://hl7.org/v2</td><td>Отображение на <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a></td></tr>
-  <tr><td>http://nema.org/dicom</td><td>Отображение на DICOM-тег</td></tr>
-  <tr><td>http://w3.org/vcard</td><td>Эквивалентное поле vCard</td></tr>
-  <tr><td>http://ihe.net/xds</td><td>Эквивалентные метаданные XDS</td></tr>
-<!--   <tr><td>http://loinc.org</td><td>LOINC code for the element</td></tr>
-  <tr><td>http://snomed.info</td><td>SNOMED CT code for the element</td></tr>
-  <tr><td>http://hl7.org/v3</td><td>RIM mapping</td></tr>
-  <tr><td>http://hl7.org/v2</td><td><a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> mapping</td></tr>
-  <tr><td>http://nema.org/dicom</td><td>DICOM tag mapping</td></tr>
-  <tr><td>http://w3.org/vcard</td><td>vCard equivalent field</td></tr>
-  <tr><td>http://ihe.net/xds</td><td>XDS metadata equivalent</td></tr> -->
-</table>
+[%mappings-table%]
 
 <!--
 <h2>Profiled FHIR</h2>

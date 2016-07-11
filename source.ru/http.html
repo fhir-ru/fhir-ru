@@ -256,10 +256,10 @@ to specify what kind of content to return. -->
 <a name="cread"> </a>
 <h4>conditional read</h4>
 <p>
-Клиенты могут использовать HTTP-заголовок <code>If-Modified-Since</code> или <code>If-None-Match</code> в запросе на <code>read</code>. В этом случае они ОБЯЗАНЫ принимать или 304 Not Modified в качестве допустимого кода состояния в ответе (который означает, что содержимое не менялось с этой даты), или содержимое целиком (либо содержимое не менялось, либо сервер не поддерживает условные запросы).
+Клиенты могут использовать HTTP-заголовок <code>If-Modified-Since</code> или <code>If-None-Match</code> в запросе на <code>read</code>. В этом случае они ОБЯЗАНЫ принимать или 304 Not Modified в качестве допустимого кода состояния в ответе (который означает, что содержимое не менялось с этой даты), или содержимое целиком (либо содержимое поменялось, либо сервер не поддерживает условные запросы).
 <!-- Clients may use the <code>If-Modified-Since</code>, or <code>If-None-Match</code> HTTP header on a <code>read</code> request.
 If so, they MUST accept either a <code>304</code> Not Modified as a valid status code on the response (which means that the
-content is unchanged since that date) or full content (either the content has not changed,
+content is unchanged since that date) or full content (either the content has changed,
 or the server does not support conditional request). -->
 </p>
 <p>
@@ -363,11 +363,11 @@ and to keep integrity in clinical records. However, many current operational sys
 do this, and cannot easily be re-engineered to do so. -->
 </p>
 <p>
-По этой причине серверам позволяется не предоставлять поддержку версионирования: этот API не навязывает того, чтобы они поддерживались. Клиенты могут выбрать взаимодействовать только с серверами, которые предоставляют полную поддержку версионирования. Системы объявляют о поддержке версионирования в своих <a href="conformance-definitions.html#Conformance.rest.resource.noVersion">заявлениях о соответствии</a>.
+По этой причине серверам позволяется не предоставлять поддержку версионирования: этот API не навязывает того, чтобы они поддерживались. Клиенты могут выбрать взаимодействовать только с серверами, которые предоставляют полную поддержку версионирования. Системы объявляют о поддержке версионирования в своих <a href="conformance-definitions.html#Conformance.rest.resource.versioning">заявлениях о соответствии</a>.
 <!-- For this reason, servers are allowed to not provide versioning support and this API does not enforce
 that versioning is supported. Clients may elect to only interact with servers that do provide full
 versioning support. Systems declare their support for versioning
-in their <a href="conformance-definitions.html#Conformance.rest.resource.noVersion">conformance statement</a>. -->
+in their <a href="conformance-definitions.html#Conformance.rest.resource.versioning">conformance statement</a>. -->
 </p>
 <p>
 Сервер всегда должен возвращать дефолтную таймзону в HTTP-заголовке ответа Date при <a href="search.html#date">поиске по датам</a>. Примечание: Серверы не обязаны иметь дефолтную таймзону.
@@ -524,6 +524,7 @@ return a <code>Location</code> header (this is for HTTP conformance; it's not ot
 Примечание: серверы МОГУТ решить сохранять XML-комментарии, инструкции и форматирование или JSON-табуляцию, когда принимают операции обновления, однако не обязаны это делать. Может потребоваться учитывать влияние этого на электронные цифровые подписи.
 <!-- Note: Servers MAY choose to preserve XML comments, instructions, and formatting or JSON whitespace when accepting updates, but are not required to do so. The impact of this on digital signatures may need to be considered. -->
 </p>
+<a name="upsert"> </a>
 <p>
 Отметьте, что серверы МОГУТ по желанию разрешать клиентам размещать ресурс командой <code>PUT</code> по адресу, который ещё не существует на этом сервере - эффективно, позволяя клиенту задавать идентификатор этого ресурса. Выбор того, будет ли сервер позволять это делать, делается во время его инсталляции на основе характера взаимосвязи с клиентами. Хотя большинство серверов не позволяют клиентам задавать свои идентификаторы, есть несколько причин, почему это может оказаться необходимым в некоторых конфигурациях.
 <!-- Note that servers MAY choose to allow clients to <code>PUT</code> a resource to a location that 
@@ -1630,8 +1631,8 @@ In this regard, FHIR functions as a Record Format Profile as described in that s
 <tr><td><code>delete</code></td>                     <td><code>/[type]/[id]</code></td>                   <td><code>DELETE</code></td>         <td>N/A</td>            <td>N/A</td>      <td>N/A</td>	         <td>N/A</td></tr>
 <tr><td><code>create</code></td>                     <td><code><code>/[type]</code></code></td>                        <td>POST</td>           <td>R</td>              <td>Resource</td> <td>O</td>         <td>O: <code>If-None-Exist</code></td></tr>
 <tr><td rowspan="2"><code>search</code></td>         <td><code>/[type]?</code></td>                       <td><code>GET</code></td>            <td>N/A</td>            <td>N/A</td>	  <td>N/A</td>			<td>N/A</td></tr>
-<tr>                                    <td><code>/[type]/_search?</code></td>               <td><code>POST</code></td>           <td><code>application/x-www-form-urlencoded</code></td>         <td>form data</td> <td>N/A</td>  <td>N/A</td></tr>
-<tr><td rowspan="2"><code>search-all</code></td>     <td><code>/_search?</code></td>                      <td><code>GET</code></td>            <td>N/A</td>            <td>N/A</td>              <td>N/A</td>  <td>N/A</td></tr>
+<tr><td><code>/[type]/_search?</code></td>               <td><code>POST</code></td>           <td><code>application/x-www-form-urlencoded</code></td>         <td>form data</td> <td>N/A</td>  <td>N/A</td></tr>
+<tr><td><code>search-all</code></td>     <td><code>/_search?</code></td>                      <td><code>GET</code></td>            <td>N/A</td>            <td>N/A</td>              <td>N/A</td>  <td>N/A</td></tr>
 <tr><td><code>conformance</code></td>                <td><code>/</code> or <code>/metadata</code></td>                 <td><code>OPTIONS</code> or <code>GET</code></td>  <td>N/A</td>           <td>N/A</td>	   <td>N/A</td>			   	<td>N/A</td></tr>
 <tr><td><code>transaction</code></td>                <td><code>/</code></td>                              <td><code>POST</code></td>           <td>R</td>              <td><code>Bundle</code></td>    <td>O</td>        <td>N/A</td></tr>
 <tr><td><code>history</code></td>                    <td><code>/[type]/[id]/_history</code></td>          <td><code>GET</code></td>            <td>N/A</td>            <td>N/A</td>       <td>N/A</td>         <td>N/A</td></tr>

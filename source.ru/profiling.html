@@ -35,7 +35,7 @@ contexts of use. Typically, these adaptations specify: -->
 <ul>
  <li>Правила о том, какие элементы ресурса использовать, какие не использовать, а также какие дополнительные элементы, которые не вошли в основную спецификацию,  добавлять<!-- Rules about which resource elements are or are not used, and what additional elements are added that are not part of the base specification --></li>
  <li>Правила о том, какие свойства интерфейса использовать и каким образом<!-- Rules about which API features are used, and how --></li>
- <li>Правила о том, какие справочники использовать в конкретных элементах<!-- Rules about which terminologies and used in particular elements --></li>
+ <li>Правила о том, какие справочники используются в конкретных элементах<!-- Rules about which terminologies and used in particular elements --></li>
  <li>Описание, каким образом элементы ресурса и свойства интерфейса сопоставляются с локальными требованиями и/или реализациями<!-- Descriptions of how the Resource elements and API features map to local requirements and/or implementations --></li>
 </ul>
 <p>
@@ -388,7 +388,7 @@ For instance, a sequence of the element paths like this: -->
 <pre class="xml">
  &lt;Root&gt;
    &lt;childA&gt;
-     &lt;grandChild/&gt;
+     &lt;grandChild1/&gt;
    &lt;/childA&gt;
    &lt;childB/&gt;
  &lt;/Root&gt;
@@ -412,7 +412,7 @@ statement or both. -->
 </p>
 <p>
 Differential statements описывают только те изменения, которые они задают по отношению к другому structure definition (которым чаще всего является базовый FHIR-ресурс или тип данных). Например профиль может делать один из элементов обязательным (кардинальное число 1..1). В этом случае дифференциальная структура будет содержать один элемент и его путь, сделанный обязательным, и кардинальное число.
-Больше ничего не заявляется - вся остальная структура подразумевается (примечание: это означает, что дифференциальный профиль может быть разреженным и указывать только те элементы, которые были изменены, без необходимости перечисления всей структуры).
+Больше ничего не заявляется - вся остальная структура подразумевается (примечание: это означает, что дифференциальный профиль может быть разреженным и указывать только те элементы, которые были изменены, без необходимости перечисления всей структуры. Это правило включает корневой элемент - в нём нет необходимости в разреженном дифференциале).
 <!-- 
 Differential statements describe only the differences that they make
 relative to another structure definition (which is most often the base FHIR resource or data type). 
@@ -422,7 +422,8 @@ with the path of the element being made mandatory, and a cardinality statement.
 Nothing else is stated - all the rest of the structural information is implied (note:
 this means that a differential profile can be sparse and only
 mention the elements that are changed, without having to list the
-full structure).
+full structure. This rule includes the root element - it is not needed in 
+a sparse differential).
  -->
 </p>
 <p>
@@ -528,18 +529,17 @@ This element is called the "discriminator".
 <a name="discriminator"> </a>
 <h3>Дискриминатор (Discriminator)</h3>
 <p>
-В общем случае, системы обработки ресурсов, использующие structure definition, который разбивает список, могут установить срез, соответствующий элементу в списке с помощью проверки, соответствует ли его содержимое правилам, указанным для этого среза. 
+В общем случае, системы обработки ресурсов, использующие structure definition, который разбивает список, могут установить срез, соответствующий элементу в списке с помощью проверки, соответствует ли содержимое этого элемента правилам, указанным для этого среза. 
 <!-- In the general case, systems processing resources using a structure definition
 that slices a list can determine the slice corresponding to an item in
-the list by checking whether its content meets the rules specified
+the list by checking whether the item's content meets the rules specified
 for the slice.  -->
-Это потребовало бы от обработчика возможности проверить все правила, применимые к этому срезу, и сделать это гипотетически в глубину. Ничто из этого не подходит для операционной системы, в частности для генерируемого кода. Таким образом, для обеспечения способа различения срезов, для нарезаемого элемента можно указать поле или набор полей, которые будут действовать как "дискриминатор", т. е. будут использоваться для разделения срезов друг от друга.
+Это потребовало бы от обработчика возможности проверить все правила, применимые к этому срезу, и сделать это гипотетически в глубину. Оба этих требования неуместно сложны для операционной систем и особенно для генерируемого кода. Таким образом, для обеспечения способа различения срезов, для нарезаемого элемента можно указать поле или набор полей, которые будут действовать как "дискриминатор", т. е. будут использоваться для разделения срезов друг от друга.
 <!-- This would require a processor to be able to check all the rules
 applied in the slice and to do so speculatively in a depth-first
-fashion. Neither of these is appropriate for an operational system,
-and particularly not for generated code. Thus, to provide a better way to distinguish 
-slices, a sliced element 
-can designate a field or set of fields that act as a "discriminator" - they
+fashion. Both of these requirements are inappropriately difficult for an operational system,
+and particularly for generated code. Thus, to provide a better way to distinguish 
+slices, a sliced element can designate a field or set of fields that act as a "discriminator" - they
 are used to tell the slices apart.  -->
 </p>
 <p>
@@ -553,12 +553,12 @@ statement. When slicing elements with a choice of types, the
 discriminator SHALL be "@type". -->
 </p>
 <p>
-Когда в constraining structure указан один или несколько дискриминаторов, для каждого дискриминатора каждого среза ДОЛЖНО быть зафиксировано значение элемента (через <a href="elementdefinition-definitions.html#ElementDefinition.fixed_x_">ElementDefinition.fixed[x]</a>), либо, если элемент имеет терминологическую привязку, он ДОЛЖЕН быть связан полной привязкой типа "required" с <a href="valueset.html#required">набором значений</a>, в котором перечислен список допустимых кодов.
+Когда в constraining structure указан один или несколько дискриминаторов, для каждого дискриминатора каждого среза ДОЛЖНО быть зафиксировано значение элемента (через <a href="elementdefinition-definitions.html#ElementDefinition.fixed_x_">ElementDefinition.fixed[x]</a>), либо, если элемент имеет терминологическую привязку, он ДОЛЖЕН быть связан обязательной привязкой с <a href="valueset.html#required">набором значений</a>, в котором перечислен список допустимых кодов.
 Структурное определение ДОЛЖНО гарантировать, что не произойдет частичного совпадения значений и/или кодов в наборах значений между срезами. Примечание: В настоящее время для нарезки следует использовать только фиксированное значение или обязательный набор значений; использование  в качестве основы для нарезки <a href="elementdefinition-definitions.html#ElementDefinition.pattern_x_">ElementDefinition.pattern[x]</a> не рекомендуется, пока проблемы, связанные с этим, исследуются во время периода пробного использования.
 <!-- When a constraining structure designates one or more discriminators, it SHALL
 fix the value of the element for each discriminator for each 
 slice (using <a href="elementdefinition-definitions.html#ElementDefinition.fixed_x_">ElementDefinition.fixed[x]</a>), 
-or if the element has a terminology binding, it SHALL be associated with a complete binding with a required 
+or if the element has a terminology binding, it SHALL be associated with a required binding with a 
 <a href="valueset.html#required">Value Set</a> that enumerates the list of possible codes in the value set.
 The structure definition SHALL ensure that there is no overlap between the 
 set of values and/or codes in the value sets between slices. Note: At present, 

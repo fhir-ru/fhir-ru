@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This example is a fully populated example where a care giver reports they are taking a certain medication and has the bottle  -->
 <MedicationStatement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://hl7.org/fhir ../../publish/medicationstatement.xsd"
+ xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationstatement.xsd"
  xmlns="http://hl7.org/fhir">
   <id value="example006"/>
-  <text>
-    <status value="generated"/>
-    <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>Amoxicillin 250mg/5mL - Taking 5mL every three hours</p>
-    </div>
-  </text>
   <status value="active" />
-  <medicationReference> <!-- Linked to a RESOURCE Medication -->
-    <reference value="Medication/MedicationExample4"/>
-  </medicationReference>  
+  <medicationCodeableConcept>
+      <coding>
+        <system value="http://snomed.info/sct"/>
+        <code value="27658006"/>
+        <display value="Amoxicillin (product)"/>
+      </coding>
+  </medicationCodeableConcept>  
   <patient>
-    <reference value="Patient/example"/>
+    <reference value="Patient/pat1"/>
+    <display value="Donald Duck"/> 
   </patient>
   <effectiveDateTime value="2014-02-01"></effectiveDateTime>
   <informationSource>
-    <reference value="Patient/pat1" />
+    <reference value="RelatedPerson/peter"/>
+    <display value="Peter Chalmers"/> 
   </informationSource>
   <dateAsserted value="2014-02-22"/>
   <wasNotTaken value="false"/>
@@ -38,6 +38,9 @@
     </route>
     <doseQuantity>
       <value value="5" />
+      <unit value="mL"/>
+      <system value="http://unitsofmeasure.org"/>
+      <code value="mL"/>
     </doseQuantity>
     <maxDosePerPeriod>
       <numerator>

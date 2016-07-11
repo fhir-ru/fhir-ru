@@ -1,2 +1,1 @@
-medication/medication-spreadsheet.xml
-medicationorder/medicationorder-spreadsheet.xml
+terminologies/bindings.xml
