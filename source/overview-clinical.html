@@ -37,7 +37,7 @@ define good or best clinical practices, nor does it provide guidance on user int
 in these areas may be useful, but it is outside of FHIR's scope.
 </p>
 <p>
-Because of FHIR's focus on implementation, many aspects of the specification deal with the technical underpinings of the
+Because of FHIR's focus on implementation, many aspects of the specification deal with the technical underpinnings of the
 exchange of clinical information between electronic systems.  This section provides an introduction to 
 what FHIR provides and tries to highlight those portions of the specification
 that are likely to be of most interest to the clinical community while skipping over some of the technical
@@ -54,8 +54,8 @@ The FHIR specification defines a generic "form template" for each type of clinic
 allergies, one for prescriptions, one for referrals, etc.
 </p>
 <p>
-FHIR data consists of repositories containing completed "forms" (resource instances).  The resource instances describe patient-related information such as
-demographics, health conditions and procedures) as well as administrative information such as practitioners, organizations and locations).  Some resources are infrastructure components used to 
+FHIR data consists of repositories containing completed "forms" (resource instances).  The resource instances describe patient-related information (such as
+demographics, health conditions and procedures) as well as administrative information (such as practitioners, organizations and locations).  Some resources are infrastructure components used to 
 support the technical exchange of information by describing what systems are able to do, defining allowed sets
 of codes, etc.  FHIR repositories might be elecronic health record (EHR) systems, pharmacy systems,
 hospital information systems (HISs), etc.  Some systems, such as clinical decision support engines, may
@@ -168,8 +168,8 @@ you can do the following:
 <li><i>create</i>: Add a new folder to the appropriate cabinet (with a new number)</li>
 <li><i>update</i>: Add a new page (version) to the contents of a specific folder</li>
 <li><i>delete</i>: Remove a folder from the cabinet (or more accurately, virtually remove it by putting a sticker on it saying "do not open")</li>
-<li><i>history</i>: Look at all the pages in a single folder, in a particular file cabinet or possibly in the whole room.  Such a broad request would be used primarily for administrative purposes rather than clinical purposes)</li>
-<li><i>transaction</i>: Give the server a multiple pieces of paper to place in distinct folders at the same time</li>
+<li><i>history</i>: Look at all the pages in a single folder, in a particular file cabinet or possibly in the whole room.  Such a broad request would be used primarily for administrative purposes rather than clinical purposes</li>
+<li><i>transaction</i>: Give the clerk a multiple pieces of paper to place in distinct folders at the same time</li>
 <li><i>operation</i>: Ask the clerk to perform an action or procedure on papers from one or more of the folders - for example, averaging numbers across patients, producing a summary record, or perform a complex search just by ticking a box on a requisition saying "do that one"</li>
 </ul>
 <p>

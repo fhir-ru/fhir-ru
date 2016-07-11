@@ -300,7 +300,7 @@ Note that the logical id "loinc" is not a reliable identifer across systems; eac
 logical ids to code system resources however it sees fit. A more reliable query is this:
 </p>
 <pre class="http">
-GET [base]/CodeSystem/$lookup?url=http://loinc.org&amp;code=1963-8&amp;properties=code,display,designations
+GET [base]/CodeSystem/$lookup?system=http://loinc.org&amp;code=1963-8&amp;property=code&amp;property=display&amp;property=designations
 </pre>
 <p>
 Lookup the code system using a Coding (this example in XML):
@@ -675,7 +675,7 @@ HTTP/1.1 200 OK
 <h3>Batch Translation</h3>
 
 <p>
-It is also possible to validate a set of concepts against their relevant value
+It is also possible to translate a set of concepts against their relevant value
 sets by using the <code>$translate</code> operation in a <a href="http.html#batch">Batch</a> 
 interaction.
 </p>
@@ -763,7 +763,7 @@ HTTP/1.1 200 OK
       "resourceType": "Parameters",
       "parameter": [{
         "name": "result",
-        "valueBoolean": "false"
+        "valueBoolean": "true"
       },
       {
         "name": "outcome",
@@ -977,74 +977,6 @@ Note that in real clinical systems, tables are usually far more structured than 
 example implies, and the query is correspondingly more complex. The closure table
 would usually be normalised - this example is kept simple to demonstrate the concept. 
 </p>
-
-
-
-<h3> Functional Operations </h3>
-
-<p>
-In order to support terminology operations in FHIR a minimal set of terminology operations would be necessary.  These operations are a sub set of the available terminology service operations defined in the [http://www.omg.org/spec/CTS2/1.0/ Common Terminology Services - Release 2 (CTS2) specification] and can be categorized as:
-</p>
-<ul>
- <li> Administrative Operations</li>
- <li> Search/Query Operations</li>
- <li> Authoring/Maintenance Operations</li>
-</ul>
-<p>
-Functional operations within these categories support the access and management of terminology objects such as Code Systems, Concepts, Value Sets and Concept Mappings. The functional operations necessary to support a FHIR terminology service are outlined here.
-</p>
-
-<h4> Administrative Operations </h4>
-<ul>
- <li> be able to load a standard or local code system</li>
-</ul>
-
-<h4> Search/Query Operations </h4>
-
-<p> Concepts </p>
-<ul>
- <li> retrieve the concept details (display name, qualifiers, associations, etc.) for a given code/code system</li>
- <li> return possible concept matches  based on search criteria </li>
- <li> validate whether a code is valid within a given code system (content)</li>
- <li> retrieve a list of codes (for example, to populate a user interface)</li>
- <li> return the decedents of a given concept</li>
-</ul>
-
-<p> Code System </p>
-<ul>
- <li> retrieve the metadata for a code system</li>
-</ul>
-
-<p> Value Set </p>
-<ul>
- <li> retrieve the metadata for a value set</li>
- <li> return a value set based on search criteria</li>
- <li> determine if a code is valid in a value set</li>
- <li> generate the Value set Expansion from the Value Set Definition.</li>
-</ul>
-
-<p> Mapping </p>
-<ul>
- <li> retrieve the metadata for map set</li>
- <li> retrieve a translation (mapping) of concept(s) from a given source code system to target concept(s) from a target code system</li>
-</ul>
-
-<h4> Authoring/Maintenance Operations </h4>
-<p>Concepts</p>
-<ul>
- <li> maintain a closure table</li>
-</ul>
-
-<p> Value Set </p>
-<ul>
- <li> create/editing a value set</li>
-</ul>
-
-<p> Mapping </p>
-<ul>
- <li> translate (map) from a source code system to a target code system</li>
-</ul>
-
 
 </div>
 

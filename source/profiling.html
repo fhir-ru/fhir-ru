@@ -32,7 +32,7 @@ contexts of use. Typically, these adaptations specify:
 <ul>
  <li>Rules about which resource elements are or are not used, and what additional elements are added that are not part of the base specification</li>
  <li>Rules about which API features are used, and how</li>
- <li>Rules about which terminologies and used in particular elements</li>
+ <li>Rules about which terminologies are used in particular elements</li>
  <li>Descriptions of how the Resource elements and API features map to local requirements and/or implementations</li>
 </ul>
 <p>
@@ -317,7 +317,7 @@ defines the following structure:
 <pre class="xml">
  &lt;Root&gt;
    &lt;childA&gt;
-     &lt;grandChild/&gt;
+     &lt;grandChild1/&gt;
    &lt;/childA&gt;
    &lt;childB/&gt;
  &lt;/Root&gt;
@@ -345,7 +345,8 @@ with the path of the element being made mandatory, and a cardinality statement.
 Nothing else is stated - all the rest of the structural information is implied (note:
 this means that a differential profile can be sparse and only
 mention the elements that are changed, without having to list the
-full structure).
+full structure. This rule includes the root element - it is not needed in 
+a sparse differential).
 </p>
 <p>
 Note that a differential can choose not to constrain elements. 
@@ -353,7 +354,7 @@ Doing so means that the profile will be more flexible in terms of compatibility
 with other profiles, but will require more work to support from implementing
 systems. Alternatively, a profile can constrain all optional elements to be not 
 present (max cardinality = 0) - this closes the content, which makes 
-implementation easier, but the reduces its usefulness. 
+implementation easier, but also reduces its usefulness. 
 </p>
 <p>
 In order to properly understand a differential structure, it must be
@@ -437,14 +438,13 @@ This element is called the "discriminator".
 <p>
 In the general case, systems processing resources using a structure definition
 that slices a list can determine the slice corresponding to an item in
-the list by checking whether its content meets the rules specified
+the list by checking whether the item's content meets the rules specified
 for the slice.
 This would require a processor to be able to check all the rules
 applied in the slice and to do so speculatively in a depth-first
-fashion. Neither of these is appropriate for an operational system,
-and particularly not for generated code. Thus, to provide a better way to distinguish 
-slices, a sliced element 
-can designate a field or set of fields that act as a "discriminator" - they
+fashion. Both of these requirements are inappropriately difficult for an operational system,
+and particularly for generated code. Thus, to provide a better way to distinguish 
+slices, a sliced element can designate a field or set of fields that act as a "discriminator" - they
 are used to tell the slices apart. 
 </p>
 <p>
@@ -460,12 +460,12 @@ discriminator SHALL be "@type".
 When a constraining structure designates one or more discriminators, it SHALL
 fix the value of the element for each discriminator for each
 slice (using <a href="elementdefinition-definitions.html#ElementDefinition.fixed_x_">ElementDefinition.fixed[x]</a>), 
-or if the element has a terminology binding, it SHALL be associated with a complete binding with a required 
+or if the element has a terminology binding, it SHALL be associated with a required binding with a 
 <a href="valueset.html#required">Value Set</a> that enumerates the list of possible codes in the value set.
 The structure definition SHALL ensure that there is no overlap between the
 set of values and/or codes in the value sets between slices. Note: At present, 
 only a fixed value or a required value set should be used for slicing; using 
-<a href="elementdefinition-definitions.html#ElementDefinition.pattern_x_">ElementDefinition.pattern[x]</a>)
+<a href="elementdefinition-definitions.html#ElementDefinition.pattern_x_">ElementDefinition.pattern[x]</a>
 is not recommended as a basis for slicing while issues related to this are investigated during the DSTU period.
 
 

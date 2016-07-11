@@ -490,7 +490,7 @@ public class SourceParser {
       Element e = XMLUtil.getFirstChild(doc.getDocumentElement());
       while (e != null) {
         MappingSpace m = new MappingSpace(XMLUtil.getNamedChild(e, "columnName").getTextContent(), XMLUtil.getNamedChild(e, "title").getTextContent(), 
-            XMLUtil.getNamedChild(e, "id").getTextContent(), Integer.parseInt(XMLUtil.getNamedChild(e, "sort").getTextContent()));
+            XMLUtil.getNamedChild(e, "id").getTextContent(), Integer.parseInt(XMLUtil.getNamedChild(e, "sort").getTextContent()), isTrue(XMLUtil.getNamedChild(e, "publish")));
         definitions.getMapTypes().put(XMLUtil.getNamedChild(e, "url").getTextContent(), m);
         Element p = XMLUtil.getNamedChild(e, "preamble");
         if (p != null)
@@ -504,6 +504,9 @@ public class SourceParser {
     }
   }
 
+  private boolean isTrue(Element c) {
+    return c != null &&  "true".equals(c.getTextContent());
+  }
 
   private void loadStatusCodes() throws FileNotFoundException, Exception {
     XLSXmlParser xml = new XLSXmlParser(new CSFileInputStream(srcDir+"status-codes.xml"), "Status Codes");
@@ -608,7 +611,7 @@ public class SourceParser {
       for (BundleEntryComponent ae : ((Bundle) rf).getEntry()) {
         if (ae.getResource() instanceof Composition)
           pack.loadFromComposition((Composition) ae.getResource(), file.getAbsolutePath());
-        else if (ae.getResource() instanceof StructureDefinition && !((StructureDefinition) ae.getResource()).getBaseType().equals("Extension")) {
+        else if (ae.getResource() instanceof StructureDefinition && !((StructureDefinition) ae.getResource()).getType().equals("Extension")) {
           StructureDefinition ed = (StructureDefinition) ae.getResource();
           for (StringType s : ed.getContext())
             definitions.checkContextValid(ed.getContextType(), s.getValue(), file.getName());

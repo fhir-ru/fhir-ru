@@ -1368,7 +1368,7 @@ public class SpreadsheetParser {
     if (sheet != null) {
       for (int row = 0; row < sheet.rows.size(); row++) {
         String uri = sheet.getNonEmptyColumn(row, "Uri");
-        MappingSpace ms = new MappingSpace(sheet.getNonEmptyColumn(row, "Column"), sheet.getNonEmptyColumn(row, "Title"), sheet.getNonEmptyColumn(row, "Id"), sheet.getIntColumn(row, "Sort Order"));
+        MappingSpace ms = new MappingSpace(sheet.getNonEmptyColumn(row, "Column"), sheet.getNonEmptyColumn(row, "Title"), sheet.getNonEmptyColumn(row, "Id"), sheet.getIntColumn(row, "Sort Order"), true);
         pack.getMappingSpaces().put(uri, ms);
       }
     }
@@ -1869,8 +1869,8 @@ public class SpreadsheetParser {
         type = definitions.getConstraints().get(type).getBaseType();
     } else {
       StructureDefinition sd = context.getProfiles().get("http://hl7.org/fhir/StructureDefinition/"+type);
-      if (sd != null && sd.hasBaseType() && sd.getDerivation() == TypeDerivationRule.CONSTRAINT)
-        type = sd.getBaseType();
+      if (sd != null) // not loaded yet?
+        type = sd.getType();
       if (type.equals("SimpleQuantity"))
         type = "Quantity";
     }
@@ -2002,7 +2002,7 @@ public class SpreadsheetParser {
     StructureDefinition ex = new StructureDefinition();
     ex.setUserData(ToolResourceUtilities.NAME_RES_IG, ig == null ? "core" : ig.getCode());
     ex.setKind(StructureDefinitionKind.COMPLEXTYPE);
-    ex.setBaseType("Extension");
+    ex.setType("Extension");
     ex.setBaseDefinition("http://hl7.org/fhir/StructureDefinition/Extension");
     ex.setDerivation(TypeDerivationRule.CONSTRAINT);
     ex.setAbstract(false);
@@ -2094,8 +2094,8 @@ public class SpreadsheetParser {
       }
       row++;
     }
-	  
     new ProfileGenerator(definitions, null, pkp, null, null, null, fpUsages).convertElements(exe, ex, null);
+    ex.getDifferential().getElementFirstRep().getType().clear();
     StructureDefinition base = definitions != null ? definitions.getSnapShotForType("Extension") : this.context.getProfiles().get("http://hl7.org/fhir/StructureDefinition/Extension");
     List<String> errors = new ArrayList<String>();
     new ProfileUtilities(this.context, issues, pkp).sortDifferential(base, ex, "extension "+ex.getUrl(), errors);

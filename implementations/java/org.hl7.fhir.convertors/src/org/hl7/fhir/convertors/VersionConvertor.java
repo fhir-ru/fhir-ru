@@ -1059,7 +1059,7 @@ public class VersionConvertor {
 		copyElement(src, tgt);
 		tgt.setCode(src.getCode());
 		for (org.hl7.fhir.dstu2.model.UriType t : src.getProfile())
-			tgt.addProfile(t.getValue());
+			tgt.setProfile(t.getValue());
 		for (org.hl7.fhir.dstu2.model.Enumeration<org.hl7.fhir.dstu2.model.ElementDefinition.AggregationMode> t : src.getAggregation())
 			tgt.addAggregation(convertAggregationMode(t.getValue()));
 		return tgt;
@@ -1071,8 +1071,8 @@ public class VersionConvertor {
 		org.hl7.fhir.dstu2.model.ElementDefinition.TypeRefComponent tgt = new org.hl7.fhir.dstu2.model.ElementDefinition.TypeRefComponent();
 		copyElement(src, tgt);
 		tgt.setCode(src.getCode());
-		for (org.hl7.fhir.dstu3.model.UriType t : src.getProfile())
-			tgt.addProfile(t.getValue());
+		if (src.hasProfile())
+			tgt.addProfile(src.getProfile());
 		for (org.hl7.fhir.dstu3.model.Enumeration<org.hl7.fhir.dstu3.model.ElementDefinition.AggregationMode> t : src.getAggregation())
 			tgt.addAggregation(convertAggregationMode(t.getValue()));
 		return tgt;
@@ -2006,7 +2006,7 @@ public class VersionConvertor {
 		tgt.setRecorder(convertReference(src.getRecorder()));
 		tgt.setReporter(convertReference(src.getReporter()));
 		tgt.setOnset(src.getOnset());
-		tgt.setLastOccurence(src.getLastOccurence());
+		tgt.setLastOccurrence(src.getLastOccurence());
 		if (src.hasNote())
 			tgt.addNote(convertAnnotation(src.getNote()));
 		for (org.hl7.fhir.dstu2.model.AllergyIntolerance.AllergyIntoleranceReactionComponent t : src.getReaction())
@@ -2031,7 +2031,7 @@ public class VersionConvertor {
 		tgt.setRecorder(convertReference(src.getRecorder()));
 		tgt.setReporter(convertReference(src.getReporter()));
 		tgt.setOnset(src.getOnset());
-		tgt.setLastOccurence(src.getLastOccurence());
+		tgt.setLastOccurence(src.getLastOccurrence());
 		for (org.hl7.fhir.dstu3.model.Annotation t : src.getNote())
 			tgt.setNote(convertAnnotation(t));
 		for (org.hl7.fhir.dstu3.model.AllergyIntolerance.AllergyIntoleranceReactionComponent t : src.getReaction())
@@ -7789,7 +7789,6 @@ public class VersionConvertor {
 			tgt.addOrder(convertReference(t));
 		tgt.setReferrer(convertReference(src.getReferrer()));
 		tgt.setInterpreter(convertReference(src.getInterpreter()));
-		tgt.setUrl(src.getUrl());
 		tgt.setNumberOfSeries(src.getNumberOfSeries());
 		tgt.setNumberOfInstances(src.getNumberOfInstances());
 		for (org.hl7.fhir.dstu2.model.Reference t : src.getProcedure())
@@ -7818,7 +7817,6 @@ public class VersionConvertor {
 			tgt.addOrder(convertReference(t));
 		tgt.setReferrer(convertReference(src.getReferrer()));
 		tgt.setInterpreter(convertReference(src.getInterpreter()));
-		tgt.setUrl(src.getUrl());
 		tgt.setNumberOfSeries(src.getNumberOfSeries());
 		tgt.setNumberOfInstances(src.getNumberOfInstances());
 		for (org.hl7.fhir.dstu3.model.Reference t : src.getProcedure())
@@ -7864,7 +7862,6 @@ public class VersionConvertor {
 		tgt.setDescription(src.getDescription());
 		tgt.setNumberOfInstances(src.getNumberOfInstances());
 		tgt.setAvailability(convertInstanceAvailability(src.getAvailability()));
-		tgt.setUrl(src.getUrl());
 		tgt.setBodySite(convertCoding(src.getBodySite()));
 		tgt.setLaterality(convertCoding(src.getLaterality()));
 		tgt.setStarted(src.getStarted());
@@ -7884,7 +7881,6 @@ public class VersionConvertor {
 		tgt.setDescription(src.getDescription());
 		tgt.setNumberOfInstances(src.getNumberOfInstances());
 		tgt.setAvailability(convertInstanceAvailability(src.getAvailability()));
-		tgt.setUrl(src.getUrl());
 		tgt.setBodySite(convertCoding(src.getBodySite()));
 		tgt.setLaterality(convertCoding(src.getLaterality()));
 		tgt.setStarted(src.getStarted());
@@ -7901,10 +7897,7 @@ public class VersionConvertor {
 		tgt.setUid(src.getUid());
 		tgt.setNumber(src.getNumber());
 		tgt.setSopClass(src.getSopClass());
-		tgt.setType(src.getType());
 		tgt.setTitle(src.getTitle());
-		for (org.hl7.fhir.dstu2.model.Attachment t : src.getContent())
-			tgt.addContent(convertAttachment(t));
 		return tgt;
 	}
 
@@ -7916,10 +7909,7 @@ public class VersionConvertor {
 		tgt.setUid(src.getUid());
 		tgt.setNumber(src.getNumber());
 		tgt.setSopClass(src.getSopClass());
-		tgt.setType(src.getType());
 		tgt.setTitle(src.getTitle());
-		for (org.hl7.fhir.dstu3.model.Attachment t : src.getContent())
-			tgt.addContent(convertAttachment(t));
 		return tgt;
 	}
 
@@ -12545,11 +12535,20 @@ public class VersionConvertor {
 		tgt.setContextType(convertExtensionContext(src.getContextType()));
 		for (org.hl7.fhir.dstu2.model.StringType t : src.getContext())
 			tgt.addContext(t.getValue());
-		tgt.setBaseType(src.getConstrainedType());
+		if (src.hasConstrainedType())
+		  tgt.setType(src.getConstrainedType());
+		else if (src.getSnapshot().hasElement())
+      tgt.setType(src.getSnapshot().getElement().get(0).getPath());
+	  else if (src.getDifferential().hasElement() && !src.getDifferential().getElement().get(0).getPath().contains("."))
+	    tgt.setType(src.getDifferential().getElement().get(0).getPath());
+	  else
+      tgt.setType(src.getDifferential().getElement().get(0).getPath().substring(0, src.getDifferential().getElement().get(0).getPath().indexOf(".")));
 		tgt.setBaseDefinition(src.getBase());
 		tgt.setDerivation(src.hasConstrainedType() ?  org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule.CONSTRAINT : org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule.SPECIALIZATION);
 		tgt.setSnapshot(convertStructureDefinitionSnapshotComponent(src.getSnapshot()));
 		tgt.setDifferential(convertStructureDefinitionDifferentialComponent(src.getDifferential()));
+		tgt.getSnapshot().getElementFirstRep().getType().clear();
+		tgt.getDifferential().getElementFirstRep().getType().clear();
 		return tgt;
 	}
 
@@ -12585,14 +12584,24 @@ public class VersionConvertor {
 		tgt.setContextType(convertExtensionContext(src.getContextType()));
 		for (org.hl7.fhir.dstu3.model.StringType t : src.getContext())
 			tgt.addContext(t.getValue());
-		tgt.setConstrainedType(src.getBaseType());
+		tgt.setConstrainedType(src.getType());
 		tgt.setBase(src.getBaseDefinition());
 		tgt.setSnapshot(convertStructureDefinitionSnapshotComponent(src.getSnapshot()));
 		tgt.setDifferential(convertStructureDefinitionDifferentialComponent(src.getDifferential()));
+		if (tgt.hasBase()) {
+		  if (tgt.hasDifferential()) 
+		    tgt.getDifferential().getElement().get(0).addType().setCode(tail(tgt.getBase()));
+		  if (tgt.hasSnapshot()) 
+		    tgt.getSnapshot().getElement().get(0).addType().setCode(tail(tgt.getBase()));
+		}
 		return tgt;
 	}
 
-	public org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind convertStructureDefinitionKind(org.hl7.fhir.dstu2.model.StructureDefinition.StructureDefinitionKind src) throws FHIRException {
+	private String tail(String base) {
+    return base.substring(base.lastIndexOf("/")+1);
+  }
+
+  public org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind convertStructureDefinitionKind(org.hl7.fhir.dstu2.model.StructureDefinition.StructureDefinitionKind src) throws FHIRException {
 		if (src == null)
 			return null;
 		switch (src) {

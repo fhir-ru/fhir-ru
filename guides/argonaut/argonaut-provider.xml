@@ -30,7 +30,7 @@
   </useContext>
   <requirements value="As agree by Argonaut project " />
   <copyright value="Licensed under Create Commons 0 (Public Domain)" />
-  <fhirVersion value="1.4.0" />
+  <fhirVersion value="1.5.0" />
   <mapping>
     <identity value="v2" />
     <uri value="http://hl7.org/v2" />
@@ -53,7 +53,7 @@
   </mapping>
   <kind value="resource" />
   <abstract value="false" />
-  <baseType value="Practitioner" />
+  <type value="Practitioner" />
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
     <derivation value="constraint"/>
   <differential>
@@ -64,9 +64,6 @@
       <comments value="Note that a cab driver no longer fits the bill. You probably would be interested in the organization rather than the individual?" />
       <min value="0" />
       <max value="*" />
-      <type>
-        <code value="Practitioner" />
-      </type>
       <mustSupport value="true" />
       <mapping>
         <identity value="v2" />

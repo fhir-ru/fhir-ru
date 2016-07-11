@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Sun, Jul 3, 2016 08:38+1000 for FHIR v1.4.0
+// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
 
 import java.util.*;
 
@@ -1274,11 +1274,11 @@ public class ElementDefinition extends Type implements ICompositeType {
         protected CodeType code;
 
         /**
-         * Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
+         * Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
          */
-        @Child(name = "profile", type = {UriType.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-        @Description(shortDefinition="Profile (StructureDefinition) to apply (or IG)", formalDefinition="Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide." )
-        protected List<UriType> profile;
+        @Child(name = "profile", type = {UriType.class}, order=2, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Profile (StructureDefinition) to apply (or IG)", formalDefinition="Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide." )
+        protected UriType profile;
 
         /**
          * If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.
@@ -1294,7 +1294,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         @Description(shortDefinition="either | independent | specific", formalDefinition="Whether this reference needs to be version specific or version independent, or whetehr either can be used." )
         protected Enumeration<ReferenceVersionRules> versioning;
 
-        private static final long serialVersionUID = -829583924L;
+        private static final long serialVersionUID = -808351652L;
 
     /**
      * Constructor
@@ -1357,64 +1357,52 @@ public class ElementDefinition extends Type implements ICompositeType {
         }
 
         /**
-         * @return {@link #profile} (Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.)
+         * @return {@link #profile} (Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.). This is the underlying object with id, value and extensions. The accessor "getProfile" gives direct access to the value
          */
-        public List<UriType> getProfile() { 
+        public UriType getProfileElement() { 
           if (this.profile == null)
-            this.profile = new ArrayList<UriType>();
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create TypeRefComponent.profile");
+            else if (Configuration.doAutoCreate())
+              this.profile = new UriType(); // bb
           return this.profile;
         }
 
-        /**
-         * @return Returns a reference to <code>this</code> for easy method chaining
-         */
-        public TypeRefComponent setProfile(List<UriType> theProfile) { 
-          this.profile = theProfile;
-          return this;
+        public boolean hasProfileElement() { 
+          return this.profile != null && !this.profile.isEmpty();
         }
 
         public boolean hasProfile() { 
-          if (this.profile == null)
-            return false;
-          for (UriType item : this.profile)
-            if (!item.isEmpty())
-              return true;
-          return false;
+          return this.profile != null && !this.profile.isEmpty();
         }
 
         /**
-         * @return {@link #profile} (Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.)
+         * @param value {@link #profile} (Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.). This is the underlying object with id, value and extensions. The accessor "getProfile" gives direct access to the value
          */
-        public UriType addProfileElement() {//2 
-          UriType t = new UriType();
-          if (this.profile == null)
-            this.profile = new ArrayList<UriType>();
-          this.profile.add(t);
-          return t;
-        }
-
-        /**
-         * @param value {@link #profile} (Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.)
-         */
-        public TypeRefComponent addProfile(String value) { //1
-          UriType t = new UriType();
-          t.setValue(value);
-          if (this.profile == null)
-            this.profile = new ArrayList<UriType>();
-          this.profile.add(t);
+        public TypeRefComponent setProfileElement(UriType value) { 
+          this.profile = value;
           return this;
         }
 
         /**
-         * @param value {@link #profile} (Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.)
+         * @return Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
          */
-        public boolean hasProfile(String value) { 
-          if (this.profile == null)
-            return false;
-          for (UriType v : this.profile)
-            if (v.equals(value)) // uri
-              return true;
-          return false;
+        public String getProfile() { 
+          return this.profile == null ? null : this.profile.getValue();
+        }
+
+        /**
+         * @param value Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.
+         */
+        public TypeRefComponent setProfile(String value) { 
+          if (Utilities.noString(value))
+            this.profile = null;
+          else {
+            if (this.profile == null)
+              this.profile = new UriType();
+            this.profile.setValue(value);
+          }
+          return this;
         }
 
         /**
@@ -1530,7 +1518,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("code", "code", "Name of Data type or Resource that is a(or the) type used for this element.", 0, java.lang.Integer.MAX_VALUE, code));
-          childrenList.add(new Property("profile", "uri", "Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When more than one profile is specified, the content must conform to all of them. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.", 0, java.lang.Integer.MAX_VALUE, profile));
+          childrenList.add(new Property("profile", "uri", "Identifies a profile structure or implementation Guide that SHALL hold for resources or datatypes referenced as the type of this element. Can be a local reference - to another structure in this profile, or a reference to a structure in another profile. When an implementation guide is specified, the resource SHALL conform to at least one profile defined in the implementation guide.", 0, java.lang.Integer.MAX_VALUE, profile));
           childrenList.add(new Property("aggregation", "code", "If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.", 0, java.lang.Integer.MAX_VALUE, aggregation));
           childrenList.add(new Property("versioning", "code", "Whether this reference needs to be version specific or version independent, or whetehr either can be used.", 0, java.lang.Integer.MAX_VALUE, versioning));
         }
@@ -1539,7 +1527,7 @@ public class ElementDefinition extends Type implements ICompositeType {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case 3059181: /*code*/ return this.code == null ? new Base[0] : new Base[] {this.code}; // CodeType
-        case -309425751: /*profile*/ return this.profile == null ? new Base[0] : this.profile.toArray(new Base[this.profile.size()]); // UriType
+        case -309425751: /*profile*/ return this.profile == null ? new Base[0] : new Base[] {this.profile}; // UriType
         case 841524962: /*aggregation*/ return this.aggregation == null ? new Base[0] : this.aggregation.toArray(new Base[this.aggregation.size()]); // Enumeration<AggregationMode>
         case -670487542: /*versioning*/ return this.versioning == null ? new Base[0] : new Base[] {this.versioning}; // Enumeration<ReferenceVersionRules>
         default: return super.getProperty(hash, name, checkValid);
@@ -1554,7 +1542,7 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.code = castToCode(value); // CodeType
           break;
         case -309425751: // profile
-          this.getProfile().add(castToUri(value)); // UriType
+          this.profile = castToUri(value); // UriType
           break;
         case 841524962: // aggregation
           this.getAggregation().add(new AggregationModeEnumFactory().fromType(value)); // Enumeration<AggregationMode>
@@ -1572,7 +1560,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         if (name.equals("code"))
           this.code = castToCode(value); // CodeType
         else if (name.equals("profile"))
-          this.getProfile().add(castToUri(value));
+          this.profile = castToUri(value); // UriType
         else if (name.equals("aggregation"))
           this.getAggregation().add(new AggregationModeEnumFactory().fromType(value));
         else if (name.equals("versioning"))
@@ -1615,11 +1603,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         TypeRefComponent dst = new TypeRefComponent();
         copyValues(dst);
         dst.code = code == null ? null : code.copy();
-        if (profile != null) {
-          dst.profile = new ArrayList<UriType>();
-          for (UriType i : profile)
-            dst.profile.add(i.copy());
-        };
+        dst.profile = profile == null ? null : profile.copy();
         if (aggregation != null) {
           dst.aggregation = new ArrayList<Enumeration<AggregationMode>>();
           for (Enumeration<AggregationMode> i : aggregation)
@@ -2759,7 +2743,7 @@ public class ElementDefinition extends Type implements ICompositeType {
      * The path identifies the element and is expressed as a "."-separated list of ancestor elements, beginning with the name of the resource or extension.
      */
     @Child(name = "path", type = {StringType.class}, order=0, min=1, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="The path of the element (see the Detailed Descriptions)", formalDefinition="The path identifies the element and is expressed as a \".\"-separated list of ancestor elements, beginning with the name of the resource or extension." )
+    @Description(shortDefinition="Path of the element in the heirarchy of elements", formalDefinition="The path identifies the element and is expressed as a \".\"-separated list of ancestor elements, beginning with the name of the resource or extension." )
     protected StringType path;
 
     /**
@@ -2847,10 +2831,10 @@ public class ElementDefinition extends Type implements ICompositeType {
     protected StringType max;
 
     /**
-     * Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.
+     * Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is provided when the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot.
      */
     @Child(name = "base", type = {}, order=13, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Base definition information for tools", formalDefinition="Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition." )
+    @Description(shortDefinition="Base definition information for tools", formalDefinition="Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is provided when the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot." )
     protected ElementDefinitionBaseComponent base;
 
     /**
@@ -2905,16 +2889,16 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
      */
-    @Child(name = "minValue", type = {}, order=21, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "minValue", type = {DateType.class, DateTimeType.class, InstantType.class, TimeType.class, DecimalType.class, IntegerType.class, PositiveIntType.class, UnsignedIntType.class, Quantity.class}, order=21, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Minimum Allowed Value (for some types)", formalDefinition="The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity." )
-    protected org.hl7.fhir.dstu3.model.Type minValue;
+    protected Type minValue;
 
     /**
      * The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.
      */
-    @Child(name = "maxValue", type = {}, order=22, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "maxValue", type = {DateType.class, DateTimeType.class, InstantType.class, TimeType.class, DecimalType.class, IntegerType.class, PositiveIntType.class, UnsignedIntType.class, Quantity.class}, order=22, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Maximum Allowed Value (for some types)", formalDefinition="The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity." )
-    protected org.hl7.fhir.dstu3.model.Type maxValue;
+    protected Type maxValue;
 
     /**
      * Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.
@@ -2972,7 +2956,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     @Description(shortDefinition="Map element to another set of definitions", formalDefinition="Identifies a concept from an external specification that roughly corresponds to this element." )
     protected List<ElementDefinitionMappingComponent> mapping;
 
-    private static final long serialVersionUID = -904637873L;
+    private static final long serialVersionUID = -1939038023L;
 
   /**
    * Constructor
@@ -3622,7 +3606,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @return {@link #base} (Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.)
+     * @return {@link #base} (Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is provided when the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot.)
      */
     public ElementDefinitionBaseComponent getBase() { 
       if (this.base == null)
@@ -3638,7 +3622,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     }
 
     /**
-     * @param value {@link #base} (Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.)
+     * @param value {@link #base} (Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is provided when the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot.)
      */
     public ElementDefinition setBase(ElementDefinitionBaseComponent value) { 
       this.base = value;
@@ -3875,8 +3859,125 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
-    public org.hl7.fhir.dstu3.model.Type getMinValue() { 
+    public Type getMinValue() { 
       return this.minValue;
+    }
+
+    /**
+     * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public DateType getMinValueDateType() throws FHIRException { 
+      if (!(this.minValue instanceof DateType))
+        throw new FHIRException("Type mismatch: the type DateType was expected, but "+this.minValue.getClass().getName()+" was encountered");
+      return (DateType) this.minValue;
+    }
+
+    public boolean hasMinValueDateType() { 
+      return this.minValue instanceof DateType;
+    }
+
+    /**
+     * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public DateTimeType getMinValueDateTimeType() throws FHIRException { 
+      if (!(this.minValue instanceof DateTimeType))
+        throw new FHIRException("Type mismatch: the type DateTimeType was expected, but "+this.minValue.getClass().getName()+" was encountered");
+      return (DateTimeType) this.minValue;
+    }
+
+    public boolean hasMinValueDateTimeType() { 
+      return this.minValue instanceof DateTimeType;
+    }
+
+    /**
+     * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public InstantType getMinValueInstantType() throws FHIRException { 
+      if (!(this.minValue instanceof InstantType))
+        throw new FHIRException("Type mismatch: the type InstantType was expected, but "+this.minValue.getClass().getName()+" was encountered");
+      return (InstantType) this.minValue;
+    }
+
+    public boolean hasMinValueInstantType() { 
+      return this.minValue instanceof InstantType;
+    }
+
+    /**
+     * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public TimeType getMinValueTimeType() throws FHIRException { 
+      if (!(this.minValue instanceof TimeType))
+        throw new FHIRException("Type mismatch: the type TimeType was expected, but "+this.minValue.getClass().getName()+" was encountered");
+      return (TimeType) this.minValue;
+    }
+
+    public boolean hasMinValueTimeType() { 
+      return this.minValue instanceof TimeType;
+    }
+
+    /**
+     * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public DecimalType getMinValueDecimalType() throws FHIRException { 
+      if (!(this.minValue instanceof DecimalType))
+        throw new FHIRException("Type mismatch: the type DecimalType was expected, but "+this.minValue.getClass().getName()+" was encountered");
+      return (DecimalType) this.minValue;
+    }
+
+    public boolean hasMinValueDecimalType() { 
+      return this.minValue instanceof DecimalType;
+    }
+
+    /**
+     * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public IntegerType getMinValueIntegerType() throws FHIRException { 
+      if (!(this.minValue instanceof IntegerType))
+        throw new FHIRException("Type mismatch: the type IntegerType was expected, but "+this.minValue.getClass().getName()+" was encountered");
+      return (IntegerType) this.minValue;
+    }
+
+    public boolean hasMinValueIntegerType() { 
+      return this.minValue instanceof IntegerType;
+    }
+
+    /**
+     * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public PositiveIntType getMinValuePositiveIntType() throws FHIRException { 
+      if (!(this.minValue instanceof PositiveIntType))
+        throw new FHIRException("Type mismatch: the type PositiveIntType was expected, but "+this.minValue.getClass().getName()+" was encountered");
+      return (PositiveIntType) this.minValue;
+    }
+
+    public boolean hasMinValuePositiveIntType() { 
+      return this.minValue instanceof PositiveIntType;
+    }
+
+    /**
+     * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public UnsignedIntType getMinValueUnsignedIntType() throws FHIRException { 
+      if (!(this.minValue instanceof UnsignedIntType))
+        throw new FHIRException("Type mismatch: the type UnsignedIntType was expected, but "+this.minValue.getClass().getName()+" was encountered");
+      return (UnsignedIntType) this.minValue;
+    }
+
+    public boolean hasMinValueUnsignedIntType() { 
+      return this.minValue instanceof UnsignedIntType;
+    }
+
+    /**
+     * @return {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public Quantity getMinValueQuantity() throws FHIRException { 
+      if (!(this.minValue instanceof Quantity))
+        throw new FHIRException("Type mismatch: the type Quantity was expected, but "+this.minValue.getClass().getName()+" was encountered");
+      return (Quantity) this.minValue;
+    }
+
+    public boolean hasMinValueQuantity() { 
+      return this.minValue instanceof Quantity;
     }
 
     public boolean hasMinValue() { 
@@ -3886,7 +3987,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * @param value {@link #minValue} (The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
-    public ElementDefinition setMinValue(org.hl7.fhir.dstu3.model.Type value) { 
+    public ElementDefinition setMinValue(Type value) { 
       this.minValue = value;
       return this;
     }
@@ -3894,8 +3995,125 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
-    public org.hl7.fhir.dstu3.model.Type getMaxValue() { 
+    public Type getMaxValue() { 
       return this.maxValue;
+    }
+
+    /**
+     * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public DateType getMaxValueDateType() throws FHIRException { 
+      if (!(this.maxValue instanceof DateType))
+        throw new FHIRException("Type mismatch: the type DateType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
+      return (DateType) this.maxValue;
+    }
+
+    public boolean hasMaxValueDateType() { 
+      return this.maxValue instanceof DateType;
+    }
+
+    /**
+     * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public DateTimeType getMaxValueDateTimeType() throws FHIRException { 
+      if (!(this.maxValue instanceof DateTimeType))
+        throw new FHIRException("Type mismatch: the type DateTimeType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
+      return (DateTimeType) this.maxValue;
+    }
+
+    public boolean hasMaxValueDateTimeType() { 
+      return this.maxValue instanceof DateTimeType;
+    }
+
+    /**
+     * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public InstantType getMaxValueInstantType() throws FHIRException { 
+      if (!(this.maxValue instanceof InstantType))
+        throw new FHIRException("Type mismatch: the type InstantType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
+      return (InstantType) this.maxValue;
+    }
+
+    public boolean hasMaxValueInstantType() { 
+      return this.maxValue instanceof InstantType;
+    }
+
+    /**
+     * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public TimeType getMaxValueTimeType() throws FHIRException { 
+      if (!(this.maxValue instanceof TimeType))
+        throw new FHIRException("Type mismatch: the type TimeType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
+      return (TimeType) this.maxValue;
+    }
+
+    public boolean hasMaxValueTimeType() { 
+      return this.maxValue instanceof TimeType;
+    }
+
+    /**
+     * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public DecimalType getMaxValueDecimalType() throws FHIRException { 
+      if (!(this.maxValue instanceof DecimalType))
+        throw new FHIRException("Type mismatch: the type DecimalType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
+      return (DecimalType) this.maxValue;
+    }
+
+    public boolean hasMaxValueDecimalType() { 
+      return this.maxValue instanceof DecimalType;
+    }
+
+    /**
+     * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public IntegerType getMaxValueIntegerType() throws FHIRException { 
+      if (!(this.maxValue instanceof IntegerType))
+        throw new FHIRException("Type mismatch: the type IntegerType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
+      return (IntegerType) this.maxValue;
+    }
+
+    public boolean hasMaxValueIntegerType() { 
+      return this.maxValue instanceof IntegerType;
+    }
+
+    /**
+     * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public PositiveIntType getMaxValuePositiveIntType() throws FHIRException { 
+      if (!(this.maxValue instanceof PositiveIntType))
+        throw new FHIRException("Type mismatch: the type PositiveIntType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
+      return (PositiveIntType) this.maxValue;
+    }
+
+    public boolean hasMaxValuePositiveIntType() { 
+      return this.maxValue instanceof PositiveIntType;
+    }
+
+    /**
+     * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public UnsignedIntType getMaxValueUnsignedIntType() throws FHIRException { 
+      if (!(this.maxValue instanceof UnsignedIntType))
+        throw new FHIRException("Type mismatch: the type UnsignedIntType was expected, but "+this.maxValue.getClass().getName()+" was encountered");
+      return (UnsignedIntType) this.maxValue;
+    }
+
+    public boolean hasMaxValueUnsignedIntType() { 
+      return this.maxValue instanceof UnsignedIntType;
+    }
+
+    /**
+     * @return {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
+     */
+    public Quantity getMaxValueQuantity() throws FHIRException { 
+      if (!(this.maxValue instanceof Quantity))
+        throw new FHIRException("Type mismatch: the type Quantity was expected, but "+this.maxValue.getClass().getName()+" was encountered");
+      return (Quantity) this.maxValue;
+    }
+
+    public boolean hasMaxValueQuantity() { 
+      return this.maxValue instanceof Quantity;
     }
 
     public boolean hasMaxValue() { 
@@ -3905,7 +4123,7 @@ public class ElementDefinition extends Type implements ICompositeType {
     /**
      * @param value {@link #maxValue} (The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.)
      */
-    public ElementDefinition setMaxValue(org.hl7.fhir.dstu3.model.Type value) { 
+    public ElementDefinition setMaxValue(Type value) { 
       this.maxValue = value;
       return this;
     }
@@ -4296,7 +4514,7 @@ public class ElementDefinition extends Type implements ICompositeType {
         childrenList.add(new Property("alias", "string", "Identifies additional names by which this element might also be known.", 0, java.lang.Integer.MAX_VALUE, alias));
         childrenList.add(new Property("min", "integer", "The minimum number of times this element SHALL appear in the instance.", 0, java.lang.Integer.MAX_VALUE, min));
         childrenList.add(new Property("max", "string", "The maximum number of times this element is permitted to appear in the instance.", 0, java.lang.Integer.MAX_VALUE, max));
-        childrenList.add(new Property("base", "", "Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is only provided where the element definition represents a constraint on another element definition, and must be present if there is a base element definition.", 0, java.lang.Integer.MAX_VALUE, base));
+        childrenList.add(new Property("base", "", "Information about the base definition of the element, provided to make it unnecessary for tools to trace the deviation of the element through the derived and related profiles. This information is provided when the element definition is not the original definition of an element - i.g. either in a constraint on another type, or for elements from a super type in a snap shot.", 0, java.lang.Integer.MAX_VALUE, base));
         childrenList.add(new Property("contentReference", "uri", "Identifies the identity of an element defined elsewhere in the profile whose content rules should be applied to the current element.", 0, java.lang.Integer.MAX_VALUE, contentReference));
         childrenList.add(new Property("type", "", "The data type or resource that the value of this element is permitted to be.", 0, java.lang.Integer.MAX_VALUE, type));
         childrenList.add(new Property("defaultValue[x]", "*", "The value that should be used if there is no value stated in the instance (e.g. 'if not otherwise specified, the abstract is false').", 0, java.lang.Integer.MAX_VALUE, defaultValue));
@@ -4304,8 +4522,8 @@ public class ElementDefinition extends Type implements ICompositeType {
         childrenList.add(new Property("fixed[x]", "*", "Specifies a value that SHALL be exactly the value  for this element in the instance. For purposes of comparison, non-significant whitespace is ignored, and all values must be an exact match (case and accent sensitive). Missing elements/attributes must also be missing.", 0, java.lang.Integer.MAX_VALUE, fixed));
         childrenList.add(new Property("pattern[x]", "*", "Specifies a value that the value in the instance SHALL follow - that is, any value in the pattern must be found in the instance. Other additional values may be found too. This is effectively constraint by example.  The values of elements present in the pattern must match exactly (case-sensitive, accent-sensitive, etc.).", 0, java.lang.Integer.MAX_VALUE, pattern));
         childrenList.add(new Property("example[x]", "*", "A sample value for this element demonstrating the type of information that would typically be captured.", 0, java.lang.Integer.MAX_VALUE, example));
-        childrenList.add(new Property("minValue[x]", "*", "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.", 0, java.lang.Integer.MAX_VALUE, minValue));
-        childrenList.add(new Property("maxValue[x]", "*", "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.", 0, java.lang.Integer.MAX_VALUE, maxValue));
+        childrenList.add(new Property("minValue[x]", "date|dateTime|instant|time|decimal|integer|positiveInt|unsignedInt|Quantity", "The minimum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.", 0, java.lang.Integer.MAX_VALUE, minValue));
+        childrenList.add(new Property("maxValue[x]", "date|dateTime|instant|time|decimal|integer|positiveInt|unsignedInt|Quantity", "The maximum allowed value for the element. The value is inclusive. This is allowed for the types date, dateTime, instant, time, decimal, integer, and Quantity.", 0, java.lang.Integer.MAX_VALUE, maxValue));
         childrenList.add(new Property("maxLength", "integer", "Indicates the maximum length in characters that is permitted to be present in conformant instances and which is expected to be supported by conformant consumers that support the element.", 0, java.lang.Integer.MAX_VALUE, maxLength));
         childrenList.add(new Property("condition", "id", "A reference to an invariant that may make additional statements about the cardinality or value in the instance.", 0, java.lang.Integer.MAX_VALUE, condition));
         childrenList.add(new Property("constraint", "", "Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.", 0, java.lang.Integer.MAX_VALUE, constraint));
@@ -4340,8 +4558,8 @@ public class ElementDefinition extends Type implements ICompositeType {
         case 97445748: /*fixed*/ return this.fixed == null ? new Base[0] : new Base[] {this.fixed}; // org.hl7.fhir.dstu3.model.Type
         case -791090288: /*pattern*/ return this.pattern == null ? new Base[0] : new Base[] {this.pattern}; // org.hl7.fhir.dstu3.model.Type
         case -1322970774: /*example*/ return this.example == null ? new Base[0] : new Base[] {this.example}; // org.hl7.fhir.dstu3.model.Type
-        case -1376969153: /*minValue*/ return this.minValue == null ? new Base[0] : new Base[] {this.minValue}; // org.hl7.fhir.dstu3.model.Type
-        case 399227501: /*maxValue*/ return this.maxValue == null ? new Base[0] : new Base[] {this.maxValue}; // org.hl7.fhir.dstu3.model.Type
+        case -1376969153: /*minValue*/ return this.minValue == null ? new Base[0] : new Base[] {this.minValue}; // Type
+        case 399227501: /*maxValue*/ return this.maxValue == null ? new Base[0] : new Base[] {this.maxValue}; // Type
         case -791400086: /*maxLength*/ return this.maxLength == null ? new Base[0] : new Base[] {this.maxLength}; // IntegerType
         case -861311717: /*condition*/ return this.condition == null ? new Base[0] : this.condition.toArray(new Base[this.condition.size()]); // IdType
         case -190376483: /*constraint*/ return this.constraint == null ? new Base[0] : this.constraint.toArray(new Base[this.constraint.size()]); // ElementDefinitionConstraintComponent
@@ -4422,10 +4640,10 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.example = (org.hl7.fhir.dstu3.model.Type) value; // org.hl7.fhir.dstu3.model.Type
           break;
         case -1376969153: // minValue
-          this.minValue = (org.hl7.fhir.dstu3.model.Type) value; // org.hl7.fhir.dstu3.model.Type
+          this.minValue = (Type) value; // Type
           break;
         case 399227501: // maxValue
-          this.maxValue = (org.hl7.fhir.dstu3.model.Type) value; // org.hl7.fhir.dstu3.model.Type
+          this.maxValue = (Type) value; // Type
           break;
         case -791400086: // maxLength
           this.maxLength = castToInteger(value); // IntegerType
@@ -4501,9 +4719,9 @@ public class ElementDefinition extends Type implements ICompositeType {
         else if (name.equals("example[x]"))
           this.example = (org.hl7.fhir.dstu3.model.Type) value; // org.hl7.fhir.dstu3.model.Type
         else if (name.equals("minValue[x]"))
-          this.minValue = (org.hl7.fhir.dstu3.model.Type) value; // org.hl7.fhir.dstu3.model.Type
+          this.minValue = (Type) value; // Type
         else if (name.equals("maxValue[x]"))
-          this.maxValue = (org.hl7.fhir.dstu3.model.Type) value; // org.hl7.fhir.dstu3.model.Type
+          this.maxValue = (Type) value; // Type
         else if (name.equals("maxLength"))
           this.maxLength = castToInteger(value); // IntegerType
         else if (name.equals("condition"))
@@ -4548,8 +4766,8 @@ public class ElementDefinition extends Type implements ICompositeType {
         case -391522164:  return getFixed(); // org.hl7.fhir.dstu3.model.Type
         case -885125392:  return getPattern(); // org.hl7.fhir.dstu3.model.Type
         case -2002328874:  return getExample(); // org.hl7.fhir.dstu3.model.Type
-        case -55301663:  return getMinValue(); // org.hl7.fhir.dstu3.model.Type
-        case 622130931:  return getMaxValue(); // org.hl7.fhir.dstu3.model.Type
+        case -55301663:  return getMinValue(); // Type
+        case 622130931:  return getMaxValue(); // Type
         case -791400086: throw new FHIRException("Cannot make property maxLength as it is not a complex type"); // IntegerType
         case -861311717: throw new FHIRException("Cannot make property condition as it is not a complex type"); // IdType
         case -190376483:  return addConstraint(); // ElementDefinitionConstraintComponent
@@ -5146,34 +5364,6 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.example = new Meta();
           return this.example;
         }
-        else if (name.equals("minValueBoolean")) {
-          this.minValue = new BooleanType();
-          return this.minValue;
-        }
-        else if (name.equals("minValueInteger")) {
-          this.minValue = new IntegerType();
-          return this.minValue;
-        }
-        else if (name.equals("minValueDecimal")) {
-          this.minValue = new DecimalType();
-          return this.minValue;
-        }
-        else if (name.equals("minValueBase64Binary")) {
-          this.minValue = new Base64BinaryType();
-          return this.minValue;
-        }
-        else if (name.equals("minValueInstant")) {
-          this.minValue = new InstantType();
-          return this.minValue;
-        }
-        else if (name.equals("minValueString")) {
-          this.minValue = new StringType();
-          return this.minValue;
-        }
-        else if (name.equals("minValueUri")) {
-          this.minValue = new UriType();
-          return this.minValue;
-        }
         else if (name.equals("minValueDate")) {
           this.minValue = new DateType();
           return this.minValue;
@@ -5182,129 +5372,33 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.minValue = new DateTimeType();
           return this.minValue;
         }
+        else if (name.equals("minValueInstant")) {
+          this.minValue = new InstantType();
+          return this.minValue;
+        }
         else if (name.equals("minValueTime")) {
           this.minValue = new TimeType();
           return this.minValue;
         }
-        else if (name.equals("minValueCode")) {
-          this.minValue = new CodeType();
+        else if (name.equals("minValueDecimal")) {
+          this.minValue = new DecimalType();
           return this.minValue;
         }
-        else if (name.equals("minValueOid")) {
-          this.minValue = new OidType();
-          return this.minValue;
-        }
-        else if (name.equals("minValueId")) {
-          this.minValue = new IdType();
-          return this.minValue;
-        }
-        else if (name.equals("minValueUnsignedInt")) {
-          this.minValue = new UnsignedIntType();
+        else if (name.equals("minValueInteger")) {
+          this.minValue = new IntegerType();
           return this.minValue;
         }
         else if (name.equals("minValuePositiveInt")) {
           this.minValue = new PositiveIntType();
           return this.minValue;
         }
-        else if (name.equals("minValueMarkdown")) {
-          this.minValue = new MarkdownType();
-          return this.minValue;
-        }
-        else if (name.equals("minValueAnnotation")) {
-          this.minValue = new Annotation();
-          return this.minValue;
-        }
-        else if (name.equals("minValueAttachment")) {
-          this.minValue = new Attachment();
-          return this.minValue;
-        }
-        else if (name.equals("minValueIdentifier")) {
-          this.minValue = new Identifier();
-          return this.minValue;
-        }
-        else if (name.equals("minValueCodeableConcept")) {
-          this.minValue = new CodeableConcept();
-          return this.minValue;
-        }
-        else if (name.equals("minValueCoding")) {
-          this.minValue = new Coding();
+        else if (name.equals("minValueUnsignedInt")) {
+          this.minValue = new UnsignedIntType();
           return this.minValue;
         }
         else if (name.equals("minValueQuantity")) {
           this.minValue = new Quantity();
           return this.minValue;
-        }
-        else if (name.equals("minValueRange")) {
-          this.minValue = new Range();
-          return this.minValue;
-        }
-        else if (name.equals("minValuePeriod")) {
-          this.minValue = new Period();
-          return this.minValue;
-        }
-        else if (name.equals("minValueRatio")) {
-          this.minValue = new Ratio();
-          return this.minValue;
-        }
-        else if (name.equals("minValueSampledData")) {
-          this.minValue = new SampledData();
-          return this.minValue;
-        }
-        else if (name.equals("minValueSignature")) {
-          this.minValue = new Signature();
-          return this.minValue;
-        }
-        else if (name.equals("minValueHumanName")) {
-          this.minValue = new HumanName();
-          return this.minValue;
-        }
-        else if (name.equals("minValueAddress")) {
-          this.minValue = new Address();
-          return this.minValue;
-        }
-        else if (name.equals("minValueContactPoint")) {
-          this.minValue = new ContactPoint();
-          return this.minValue;
-        }
-        else if (name.equals("minValueTiming")) {
-          this.minValue = new Timing();
-          return this.minValue;
-        }
-        else if (name.equals("minValueReference")) {
-          this.minValue = new Reference();
-          return this.minValue;
-        }
-        else if (name.equals("minValueMeta")) {
-          this.minValue = new Meta();
-          return this.minValue;
-        }
-        else if (name.equals("maxValueBoolean")) {
-          this.maxValue = new BooleanType();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueInteger")) {
-          this.maxValue = new IntegerType();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueDecimal")) {
-          this.maxValue = new DecimalType();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueBase64Binary")) {
-          this.maxValue = new Base64BinaryType();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueInstant")) {
-          this.maxValue = new InstantType();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueString")) {
-          this.maxValue = new StringType();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueUri")) {
-          this.maxValue = new UriType();
-          return this.maxValue;
         }
         else if (name.equals("maxValueDate")) {
           this.maxValue = new DateType();
@@ -5314,100 +5408,32 @@ public class ElementDefinition extends Type implements ICompositeType {
           this.maxValue = new DateTimeType();
           return this.maxValue;
         }
+        else if (name.equals("maxValueInstant")) {
+          this.maxValue = new InstantType();
+          return this.maxValue;
+        }
         else if (name.equals("maxValueTime")) {
           this.maxValue = new TimeType();
           return this.maxValue;
         }
-        else if (name.equals("maxValueCode")) {
-          this.maxValue = new CodeType();
+        else if (name.equals("maxValueDecimal")) {
+          this.maxValue = new DecimalType();
           return this.maxValue;
         }
-        else if (name.equals("maxValueOid")) {
-          this.maxValue = new OidType();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueId")) {
-          this.maxValue = new IdType();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueUnsignedInt")) {
-          this.maxValue = new UnsignedIntType();
+        else if (name.equals("maxValueInteger")) {
+          this.maxValue = new IntegerType();
           return this.maxValue;
         }
         else if (name.equals("maxValuePositiveInt")) {
           this.maxValue = new PositiveIntType();
           return this.maxValue;
         }
-        else if (name.equals("maxValueMarkdown")) {
-          this.maxValue = new MarkdownType();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueAnnotation")) {
-          this.maxValue = new Annotation();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueAttachment")) {
-          this.maxValue = new Attachment();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueIdentifier")) {
-          this.maxValue = new Identifier();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueCodeableConcept")) {
-          this.maxValue = new CodeableConcept();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueCoding")) {
-          this.maxValue = new Coding();
+        else if (name.equals("maxValueUnsignedInt")) {
+          this.maxValue = new UnsignedIntType();
           return this.maxValue;
         }
         else if (name.equals("maxValueQuantity")) {
           this.maxValue = new Quantity();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueRange")) {
-          this.maxValue = new Range();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValuePeriod")) {
-          this.maxValue = new Period();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueRatio")) {
-          this.maxValue = new Ratio();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueSampledData")) {
-          this.maxValue = new SampledData();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueSignature")) {
-          this.maxValue = new Signature();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueHumanName")) {
-          this.maxValue = new HumanName();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueAddress")) {
-          this.maxValue = new Address();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueContactPoint")) {
-          this.maxValue = new ContactPoint();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueTiming")) {
-          this.maxValue = new Timing();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueReference")) {
-          this.maxValue = new Reference();
-          return this.maxValue;
-        }
-        else if (name.equals("maxValueMeta")) {
-          this.maxValue = new Meta();
           return this.maxValue;
         }
         else if (name.equals("maxLength")) {

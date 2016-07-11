@@ -25,12 +25,12 @@
   <date value="2013-07-04"></date>
   <description value="Describes an orderable service being evaluated."></description>
   <requirements value="In order to evaluate an order, the service that may be ordered must be identified."></requirements>
-  <fhirVersion value="1.4.0"></fhirVersion>
+  <fhirVersion value="1.5.0"></fhirVersion>
   <kind value="complex-type"></kind>
   <abstract value="false"></abstract>
   <contextType value="resource"></contextType>
   <context value="Basic"></context>
-  <baseType value="Extension"/>
+  <type value="Extension"/>
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension"/>
     <derivation value="constraint"/>
   <differential>
@@ -40,9 +40,6 @@
       <definition value="A description of the service to be evaluated for appropriateness"></definition>
       <min value="0"></min>
       <max value="*"></max>
-      <type>
-        <code value="Extension"></code>
-      </type>
       
     </element>
     <element>

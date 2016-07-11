@@ -23,10 +23,10 @@
   </contact>
   <description value="The Transfer Summary standardizes critical information for exchange of information between providers of care when a patient moves between health care settings." />
   <requirements value="To support documents, and also to capture the EN13606 notion of an attested commit to the patient EHR, and to allow a set of disparate resources at the information/engineering level to be gathered into a clinical statement." />
-  <fhirVersion value="1.4.0" />
+  <fhirVersion value="1.5.0" />
   <kind value="resource" />
   <abstract value="false" />
-  <baseType value="Composition" />
+  <type value="Composition" />
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/ccda-us-realm-header-composition" />
   <derivation value="constraint"/>
   <differential>
@@ -42,9 +42,6 @@
         <min value="0" />
         <max value="*" />
       </base>
-      <type>
-        <code value="Composition" />
-      </type>
     </element>
     <element>
       <path value="Composition.identifier.type" />
@@ -689,7 +686,7 @@
       <type>
         <code value="string" />
       </type>
-      <exampleString value="History of hospitalizations+History of outpatient visits " />
+      <exampleString value="History of hospitalizations+History of outpatient visits" />
       <isSummary value="true" />
     </element>
     <element>
@@ -1455,7 +1452,7 @@
       <type>
         <code value="string" />
       </type>
-      <exampleString value="History of medication use " />
+      <exampleString value="History of medication use" />
       <isSummary value="true" />
     </element>
     <element>
@@ -1952,7 +1949,7 @@
       <type>
         <code value="string" />
       </type>
-      <exampleString value="History of procedures " />
+      <exampleString value="History of procedures" />
       <isSummary value="true" />
     </element>
     <element>
@@ -2562,7 +2559,7 @@
       <type>
         <code value="string" />
       </type>
-      <exampleString value="Physical findings" />
+      <exampleString value="Physical findings of General status" />
       <isSummary value="true" />
     </element>
     <element>
@@ -3410,7 +3407,7 @@
       <type>
         <code value="string" />
       </type>
-      <exampleString value="Evaluation note " />
+      <exampleString value="Evaluation note" />
       <isSummary value="true" />
     </element>
     <element>

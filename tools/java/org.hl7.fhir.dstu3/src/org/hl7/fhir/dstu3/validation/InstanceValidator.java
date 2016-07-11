@@ -275,7 +275,7 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     Element e = parser.parse(document);
     loadTime = System.nanoTime() - t;
     if (e != null) {
-    validate(errors, e, profile);
+      validate(errors, e, profile);
     }
     return e;
   }
@@ -412,30 +412,50 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
                   warning(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "No code provided, and a code should be provided from the value set " + describeReference(binding.getValueSet()) + " (" + valueset.getUrl());
               } else {
                 long t = System.nanoTime();
-                
-                boolean atLeastOneSystemIsSupported = false;
-                for (Coding nextCoding : cc.getCoding()) {
-                  String nextSystem = nextCoding.getSystem();
-                  if (isNotBlank(nextSystem) && context.supportsSystem(nextSystem)) {
-                     atLeastOneSystemIsSupported = true;
-                     break;
+
+                // Check whether the codes are appropriate for the type of binding we have
+                boolean bindingsOk = true;
+                if (binding.getStrength() != BindingStrength.EXAMPLE) {
+                  boolean atLeastOneSystemIsSupported = false;
+                  for (Coding nextCoding : cc.getCoding()) {
+                    String nextSystem = nextCoding.getSystem();
+                    if (isNotBlank(nextSystem) && context.supportsSystem(nextSystem)) {
+                      atLeastOneSystemIsSupported = true;
+                      break;
+                    }
                   }
+
+                  if (!atLeastOneSystemIsSupported && binding.getStrength() == BindingStrength.EXAMPLE) {
+                    // ignore this since we can't validate but it doesn't matter..
+                  } else {
+                    ValidationResult vr = context.validateCode(cc, valueset);
+                    txTime = txTime + (System.nanoTime() - t);
+                    if (!vr.isOk()) {
+                      bindingsOk = false;
+                      if (binding.getStrength() == BindingStrength.REQUIRED)
+                        rule(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "None of the codes provided are in the value set " + describeReference(binding.getValueSet()) + " (" + valueset.getUrl()+", and a code from this value set is required");
+                      else if (binding.getStrength() == BindingStrength.EXTENSIBLE)
+                        warning(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "None of the codes provided are in the value set " + describeReference(binding.getValueSet()) + " (" + valueset.getUrl() + ", and a code should come from this value set unless it has no suitable code");
+                      else if (binding.getStrength() == BindingStrength.PREFERRED)
+                        hint(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false,  "None of the codes provided are in the value set " + describeReference(binding.getValueSet()) + " (" + valueset.getUrl() + ", and a code is recommended to come from this value set");
+                    }
+                  }
+                  // Then, for any codes that are in code systems we are able
+                  // to validate, we'll validate that the codes actually exist
+                  if (bindingsOk) {
+                    for (Coding nextCoding : cc.getCoding()) {
+                      String nextCode = nextCoding.getCode();
+                      String nextSystem = nextCoding.getSystem();
+                      if (isNotBlank(nextCode) && isNotBlank(nextSystem) && context.supportsSystem(nextSystem)) {
+                        ValidationResult vr = context.validateCode(nextSystem, nextCode, null);
+                        if (!vr.isOk()) {
+                          warning(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "Code {0} is not a valid code in code system {1}", nextCode, nextSystem);
+                        }
+                      }
+                    }
+                  }
+                  txTime = txTime + (System.nanoTime() - t);
                 }
-                
-                if (!atLeastOneSystemIsSupported && binding.getStrength() == BindingStrength.EXAMPLE) {
-                  // ignore this since we can't validate but it doesn't matter..
-                } else {
-                ValidationResult vr = context.validateCode(cc, valueset);
-                txTime = txTime + (System.nanoTime() - t);
-                if (!vr.isOk()) {
-                  if (binding.getStrength() == BindingStrength.REQUIRED)
-                    rule(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "None of the codes provided are in the value set " + describeReference(binding.getValueSet()) + " (" + valueset.getUrl()+", and a code from this value set is required");
-                  else if (binding.getStrength() == BindingStrength.EXTENSIBLE)
-                    warning(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "None of the codes provided are in the value set " + describeReference(binding.getValueSet()) + " (" + valueset.getUrl() + ", and a code should come from this value set unless it has no suitable code");
-                  else if (binding.getStrength() == BindingStrength.PREFERRED)
-                    hint(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false,  "None of the codes provided are in the value set " + describeReference(binding.getValueSet()) + " (" + valueset.getUrl() + ", and a code is recommended to come from this value set");
-                }
-              }
               }
             } catch (Exception e) {
               warning(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "Error "+e.getMessage()+" validating CodeableConcept");
@@ -484,37 +504,37 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
 
     if (system != null && code != null) {
       try {
-      if (checkCode(errors, element, path, code, system, display))
-        if (theElementCntext != null && theElementCntext.getBinding() != null) {
-          ElementDefinitionBindingComponent binding = theElementCntext.getBinding();
-          if (warning(errors, IssueType.CODEINVALID, element.line(), element.col(), path, binding != null, "Binding for " + path + " missing")) {
-            if (binding.hasValueSet() && binding.getValueSet() instanceof Reference) {
-              ValueSet valueset = resolveBindingReference(profile, binding.getValueSet());
-              if (warning(errors, IssueType.CODEINVALID, element.line(), element.col(), path, valueset != null, "ValueSet " + describeReference(binding.getValueSet()) + " not found")) {
-                try {
-                  Coding c = readAsCoding(element);
-                  long t = System.nanoTime();
-                  ValidationResult vr = context.validateCode(c, valueset);
-                  txTime = txTime + (System.nanoTime() - t);
-                  if (!vr.isOk()) {
-                    if (binding.getStrength() == BindingStrength.REQUIRED)
-                      rule(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "The value provided is not in the value set " + describeReference(binding.getValueSet()) + " (" + valueset.getUrl() + ", and a code is required from this value set");
-                    else if (binding.getStrength() == BindingStrength.EXTENSIBLE)
-                      warning(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "The value provided is not in the value set " + describeReference(binding.getValueSet()) + " (" + valueset.getUrl() + ", and a code should come from this value set unless it has no suitable code");
-                    else if (binding.getStrength() == BindingStrength.PREFERRED)
-                      hint(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false,  "The value provided is not in the value set " + describeReference(binding.getValueSet()) + " (" + valueset.getUrl() + ", and a code is recommended to come from this value set");
+        if (checkCode(errors, element, path, code, system, display))
+          if (theElementCntext != null && theElementCntext.getBinding() != null) {
+            ElementDefinitionBindingComponent binding = theElementCntext.getBinding();
+            if (warning(errors, IssueType.CODEINVALID, element.line(), element.col(), path, binding != null, "Binding for " + path + " missing")) {
+              if (binding.hasValueSet() && binding.getValueSet() instanceof Reference) {
+                ValueSet valueset = resolveBindingReference(profile, binding.getValueSet());
+                if (warning(errors, IssueType.CODEINVALID, element.line(), element.col(), path, valueset != null, "ValueSet " + describeReference(binding.getValueSet()) + " not found")) {
+                  try {
+                    Coding c = readAsCoding(element);
+                    long t = System.nanoTime();
+                    ValidationResult vr = context.validateCode(c, valueset);
+                    txTime = txTime + (System.nanoTime() - t);
+                    if (!vr.isOk()) {
+                      if (binding.getStrength() == BindingStrength.REQUIRED)
+                        rule(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "The value provided is not in the value set " + describeReference(binding.getValueSet()) + " (" + valueset.getUrl() + ", and a code is required from this value set");
+                      else if (binding.getStrength() == BindingStrength.EXTENSIBLE)
+                        warning(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "The value provided is not in the value set " + describeReference(binding.getValueSet()) + " (" + valueset.getUrl() + ", and a code should come from this value set unless it has no suitable code");
+                      else if (binding.getStrength() == BindingStrength.PREFERRED)
+                        hint(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false,  "The value provided is not in the value set " + describeReference(binding.getValueSet()) + " (" + valueset.getUrl() + ", and a code is recommended to come from this value set");
+                    }
+                  } catch (Exception e) {
+                    warning(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "Error "+e.getMessage()+" validating CodeableConcept");
                   }
-                } catch (Exception e) {
-                  warning(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "Error "+e.getMessage()+" validating CodeableConcept");
                 }
+              } else if (binding.hasValueSet()) {
+                hint(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "Binding by URI reference cannot be checked");
+              } else if (!inCodeableConcept) {
+                hint(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "Binding for path " + path + " has no source, so can't be checked");
               }
-            } else if (binding.hasValueSet()) {
-              hint(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "Binding by URI reference cannot be checked");
-            } else if (!inCodeableConcept) {
-              hint(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "Binding for path " + path + " has no source, so can't be checked");
             }
           }
-        }
       } catch (Exception e) {
         rule(errors, IssueType.CODEINVALID, element.line(), element.col(), path, false, "Error "+e.getMessage()+" validating CodeableConcept");
       }
@@ -804,6 +824,9 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
   }
 
   private void checkPrimitive(List<ValidationMessage> errors, String path, String type, ElementDefinition context, Element e, StructureDefinition profile) {
+    if (isBlank(e.primitiveValue())) {
+      return;
+    }
     if (type.equals("boolean")) {
       rule(errors, IssueType.INVALID, e.line(), e.col(), path, "true".equals(e.primitiveValue()) || "false".equals(e.primitiveValue()), "boolean values must be 'true' or 'false'");
     }
@@ -970,10 +993,10 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
       for (TypeRefComponent type : container.getType()) {
         if (!ok && type.getCode().equals("Reference")) {
           // we validate as much as we can. First, can we infer a type from the profile?
-          if (!type.hasProfile() || type.getProfile().get(0).getValue().equals("http://hl7.org/fhir/StructureDefinition/Resource"))
+          if (!type.hasProfile() || type.getProfile().equals("http://hl7.org/fhir/StructureDefinition/Resource"))
             ok = true;
           else {
-            String pr = type.getProfile().get(0).getValue();
+            String pr = type.getProfile();
 
             String bt = getBaseType(profile, pr);
             if (rule(errors, IssueType.STRUCTURE, element.line(), element.col(), path, bt != null, "Unable to resolve the profile reference '" + pr + "'")) {
@@ -1087,18 +1110,11 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
   }  
 
   private String getBaseType(StructureDefinition profile, String pr)  {
-    // if (pr.startsWith("http://hl7.org/fhir/StructureDefinition/")) {
-    // // this just has to be a base type
-    // return pr.substring(40);
-    // } else {
     StructureDefinition p = resolveProfile(profile, pr);
     if (p == null)
       return null;
-    else if (p.getKind() == StructureDefinitionKind.RESOURCE)
-      return p.getSnapshot().getElement().get(0).getPath();
-    else
-      return p.getSnapshot().getElement().get(0).getType().get(0).getCode();
-    // }
+    else 
+      return p.getType();
   }
 
   @Override
@@ -1168,7 +1184,7 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
         if (ed.getType().get(0).getCode().equals("Reference"))
           discriminator = discriminator.substring(discriminator.indexOf(".")+1);
         long t = System.nanoTime();
-        type = context.fetchResource(StructureDefinition.class, ed.getType().get(0).getProfile().get(0).getValue());
+        type = context.fetchResource(StructureDefinition.class, ed.getType().get(0).getProfile());
         sdTime = sdTime + (System.nanoTime() - t);
       } else {
         long t = System.nanoTime();
@@ -1238,9 +1254,9 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     }
   }
 
-  private Element getValueForDiscriminator(Element element, String discriminator, ElementDefinition criteria) throws FHIRException {
-		throw new FHIRException("Validation of slices not done yet");
-		//throw new Error("validation of slices not done yet");
+  private Element getValueForDiscriminator(Element element, String discriminator, ElementDefinition criteria) {
+    //throw new Error("validation of slices not done yet");
+    return null;
   }
 
   private CodeSystem getCodeSystem(String system) {
@@ -2108,10 +2124,10 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     // for each definition, for each child, check whether it belongs in the slice
     ElementDefinition slice = null;
     boolean unsupportedSlicing = false;
-		ArrayList problematicPaths = new ArrayList();
-		for (int i = 0; i < childDefinitions.size(); i++) {
-			ElementDefinition ed = childDefinitions.get(i);
-			boolean childUnsupportedSlicing = false;
+    ArrayList problematicPaths = new ArrayList();
+    for (int i = 0; i < childDefinitions.size(); i++) {
+      ElementDefinition ed = childDefinitions.get(i);
+      boolean childUnsupportedSlicing = false;
       boolean process = true;
       // where are we with slicing
       if (ed.hasSlicing()) {
@@ -2129,38 +2145,38 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
             match = nameMatches(ei.name, tail(ed.getPath()));
           } else {
             if (nameMatches(ei.name, tail(ed.getPath())))
-							try {
-								match = sliceMatches(ei.element, ei.path, slice, ed, profile);
-							} catch (FHIRException e) {
-								unsupportedSlicing = true;
-								childUnsupportedSlicing = true;
-							}
-					}
-					if (match) {
-						if (rule(errors, IssueType.INVALID, ei.line(), ei.col(), ei.path, ei.definition == null, "Profile " + profile.getUrl() + ", Element matches more than one slice")) {
-							ei.definition = ed;
-							ei.index = i;
-						}
-					} else if (childUnsupportedSlicing) {
-						problematicPaths.add(ed.getPath());
-					}
-				}
-			}
-		}
-		int last = -1;
-		for (ElementInfo ei : children) {
-		    String sliceInfo = "";
-		    if (slice != null)
-		        sliceInfo = " (slice: " + slice.getPath()+")";
-			if (ei.path.endsWith(".extension"))
-				rule(errors, IssueType.INVALID, ei.line(), ei.col(), ei.path, ei.definition != null, "Element is unknown or does not match any slice (url=\"" + ei.element.getNamedChildValue("url") + "\")" + (profile==null ? "" : " for profile " + profile.getUrl()));
-			else if (!unsupportedSlicing)
-				rule(errors, IssueType.INVALID, ei.line(), ei.col(), ei.path, (ei.definition != null),
-						"Element is unknown or does not match any slice" + (profile==null ? "" : " for profile " + profile.getUrl()));
-			else
-				hint(errors, IssueType.NOTSUPPORTED, ei.line(), ei.col(), ei.path, (ei.definition != null),
-						"Could not verify slice for profile " + profile.getUrl());
-			rule(errors, IssueType.INVALID, ei.line(), ei.col(), ei.path, (ei.definition == null) || (ei.index >= last), "Profile " + profile.getUrl() + ", Element is out of order");
+              try {
+                match = sliceMatches(ei.element, ei.path, slice, ed, profile);
+              } catch (FHIRException e) {
+                unsupportedSlicing = true;
+                childUnsupportedSlicing = true;
+              }
+          }
+          if (match) {
+            if (rule(errors, IssueType.INVALID, ei.line(), ei.col(), ei.path, ei.definition == null, "Profile " + profile.getUrl() + ", Element matches more than one slice")) {
+              ei.definition = ed;
+              ei.index = i;
+            }
+          } else if (childUnsupportedSlicing) {
+            problematicPaths.add(ed.getPath());
+          }
+        }
+      }
+    }
+    int last = -1;
+    for (ElementInfo ei : children) {
+      String sliceInfo = "";
+      if (slice != null)
+        sliceInfo = " (slice: " + slice.getPath()+")";
+      if (ei.path.endsWith(".extension"))
+        rule(errors, IssueType.INVALID, ei.line(), ei.col(), ei.path, ei.definition != null, "Element is unknown or does not match any slice (url=\"" + ei.element.getNamedChildValue("url") + "\")" + (profile==null ? "" : " for profile " + profile.getUrl()));
+      else if (!unsupportedSlicing)
+        rule(errors, IssueType.INVALID, ei.line(), ei.col(), ei.path, (ei.definition != null),
+            "Element is unknown or does not match any slice" + (profile==null ? "" : " for profile " + profile.getUrl()));
+      else
+        hint(errors, IssueType.NOTSUPPORTED, ei.line(), ei.col(), ei.path, (ei.definition != null),
+            "Could not verify slice for profile " + profile.getUrl());
+      rule(errors, IssueType.INVALID, ei.line(), ei.col(), ei.path, (ei.definition == null) || (ei.index >= last), "Profile " + profile.getUrl() + ", Element is out of order");
       last = ei.index;
     }
 
@@ -2172,20 +2188,20 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
           if (ei.definition == ed)
             count++;
         if (ed.getMin() > 0) {
-					if (problematicPaths.contains(ed.getPath()))
-						hint(errors, IssueType.NOTSUPPORTED, element.line(), element.col(), stack.getLiteralPath(), count >= ed.getMin(),
-						"Profile " + profile.getUrl() + ", Element '" + stack.getLiteralPath() + "." + tail(ed.getPath()) + "': Unable to check minimum required (" + Integer.toString(ed.getMin()) + ") due to lack of slicing validation");
-					else
-						rule(errors, IssueType.STRUCTURE, element.line(), element.col(), stack.getLiteralPath(), count >= ed.getMin(),
-								"Profile " + profile.getUrl() + ", Element '" + stack.getLiteralPath() + "." + tail(ed.getPath()) + "': minimum required = " + Integer.toString(ed.getMin()) + ", but only found " + Integer.toString(count));
-				}
-				if (ed.hasMax() && !ed.getMax().equals("*")) {
-					if (problematicPaths.contains(ed.getPath()))
-						hint(errors, IssueType.NOTSUPPORTED, element.line(), element.col(), stack.getLiteralPath(), count <= Integer.parseInt(ed.getMax()),
-						"Profile " + profile.getUrl() + ", Element " + tail(ed.getPath()) + " @ " + stack.getLiteralPath() + ": Unable to check max allowed (" + ed.getMax() + ") due to lack of slicing validation");
-					else
-						rule(errors, IssueType.STRUCTURE, element.line(), element.col(), stack.getLiteralPath(), count <= Integer.parseInt(ed.getMax()),
-								"Profile " + profile.getUrl() + ", Element " + tail(ed.getPath()) + " @ " + stack.getLiteralPath() + ": max allowed = " + ed.getMax() + ", but found " + Integer.toString(count));
+          if (problematicPaths.contains(ed.getPath()))
+            hint(errors, IssueType.NOTSUPPORTED, element.line(), element.col(), stack.getLiteralPath(), count >= ed.getMin(),
+            "Profile " + profile.getUrl() + ", Element '" + stack.getLiteralPath() + "." + tail(ed.getPath()) + "': Unable to check minimum required (" + Integer.toString(ed.getMin()) + ") due to lack of slicing validation");
+          else
+            rule(errors, IssueType.STRUCTURE, element.line(), element.col(), stack.getLiteralPath(), count >= ed.getMin(),
+            "Profile " + profile.getUrl() + ", Element '" + stack.getLiteralPath() + "." + tail(ed.getPath()) + "': minimum required = " + Integer.toString(ed.getMin()) + ", but only found " + Integer.toString(count));
+        }
+        if (ed.hasMax() && !ed.getMax().equals("*")) {
+          if (problematicPaths.contains(ed.getPath()))
+            hint(errors, IssueType.NOTSUPPORTED, element.line(), element.col(), stack.getLiteralPath(), count <= Integer.parseInt(ed.getMax()),
+            "Profile " + profile.getUrl() + ", Element " + tail(ed.getPath()) + " @ " + stack.getLiteralPath() + ": Unable to check max allowed (" + ed.getMax() + ") due to lack of slicing validation");
+          else
+            rule(errors, IssueType.STRUCTURE, element.line(), element.col(), stack.getLiteralPath(), count <= Integer.parseInt(ed.getMax()),
+            "Profile " + profile.getUrl() + ", Element " + tail(ed.getPath()) + " @ " + stack.getLiteralPath() + ": max allowed = " + ed.getMax() + ", but found " + Integer.toString(count));
         }
       }
     }
@@ -2373,7 +2389,7 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
         sdTime = sdTime + (System.nanoTime() - t);
         ok = rule(errors, IssueType.INVALID, element.line(), element.col(), stack.addToLiteralPath(resourceName), profile != null, "No profile found for resource type '" + resourceName + "'");
       } else {
-        String type = profile.getKind() == StructureDefinitionKind.LOGICAL ? profile.getId() : profile.hasBaseType() && profile.getDerivation() == TypeDerivationRule.CONSTRAINT ? profile.getBaseType() : profile.getName();
+        String type = profile.getKind() == StructureDefinitionKind.LOGICAL ? profile.getId() : profile.getType();
         // special case: we have a bundle, and the profile is not for a bundle. We'll try the first entry instead 
         if (!type.equals(resourceName) && resourceName.equals("Bundle")) {
           Element first = getFirstEntry(element);
@@ -2421,9 +2437,9 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     }
   }
 
-	private boolean valueMatchesCriteria(Element value, ElementDefinition criteria) throws FHIRException {
-		throw new FHIRException("Validation of slices not done yet");
-		//return false;
+  private boolean valueMatchesCriteria(Element value, ElementDefinition criteria) {
+    // throw new Error("validation of slices not done yet");
+    return false;
   }
 
   private boolean yearIsValid(String v) {

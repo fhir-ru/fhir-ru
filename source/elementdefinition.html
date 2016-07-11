@@ -52,20 +52,49 @@ Content
 [%dt.constraints ElementDefinition%]
 </div>
 
-<a name="interpretation"> </a>
+<p>&nbsp;</p>
 
+<a name="path"> </a>
+<h2>Use of ElementDefinition.path</h2>
+
+<p>
+The <code>path</code> element is the most important property of the element definition. It both names the element, and locates the element 
+within a heirarchy of defined within a particular context. Within the FHIR specification, there is only one original
+definition for each path (that is, an element definition with no base element). This is the master definition to which all the 
+other definitions with the same path must conform. 
+</p>
+<p>
+StructureDefinitions of type constraint (e.g. Resource and Data Type profiles) are not allowed to include ElementDefinitions 
+with a new path not defined within the FHIR specification. However Logical Models and new custom resource definitions (see 
+<a href="http://wiki.hl7.org/index.php?title=FHIR_Custom_Resources">Custom Resource Policy</a>) are allowed to define 
+new elements. When new Elements are defined, the following rules apply:
+</p>
+<ul>
+ <li>Element names (the parts of a path delineated by the '.' character) SHALL not conain whitespace (i.e. unicode characters marked as whitespace)</li>
+ <li>Element names SHALL not contain the characters ,:;'"/|?|!@#$%^&amp;*()[]{}</li>
+ <li>Element names SHOULD not contain non-ASCII characters</li>
+ <li>Element paths SHALL not exceed 64 characters in length</li>
+ <li>Element paths cannot imply elements that are not explicitly defined i.e. a.b.c.d cannot be defined unless a.b.c is explicitly defined</li>
+ <li>By convention, the paths starts with an uppercase letter (type) but all the element names that follow this are lowercase (not type names). All resources and data types follow this convention, but logical models are not required to do so</li>
+</ul>
+
+<a name="interpretation"> </a>
 <h2>Interpretation of ElementDefinition in different contexts</h2>
 
 <p>The data type <code>ElementDefinition</code> is used both in <a href="structuredefinition.html">StructureDefinition</a> and <a href="dataelement.html">DataElement</a>, and within those resources, the way its elements are to be used and interpreted depend on the context where <code>ElementDefinition</code> used:</p>
 
 <table class="grid">
- <tr> <td><b>ElementDefinition field</b></td> <td><b>DataElement</b></td> <td><b>Base definition, first element</b></td> <td><b>Base definition, following elements</b></td> <td><b>Constraint Definition, first element</b></td> <td><b>Constraint Definition, following elements</b></td> </tr>
+ <tr> <td><b>ElementDefinition field</b></td> <td><b>DataElement</b></td> <td><b>Type definition, first element</b></td> <td><b>Type definition, following elements</b></td> <td><b>Constraint Definition, first element</b></td> <td><b>Constraint Definition, following elements</b></td> </tr>
  <tr> <td>name</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>optional, for profile re-use</td> </tr>
+ <tr> <td>label</td> <td>optional</td> <td>optional</td> <td>optional</td> <td>recommended</td> <td>recommended</td> </tr>
+ <tr> <td>code</td> <td>optional</td> <td>optional</td> <td>optional</td> <td>optional</td> <td>optional</td> </tr>
  <tr> <td>slicing</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>optional</td> </tr>
  <tr> <td>short/definition</td> <td>optional</td> <td>required</td> <td>required</td> <td>required<sup>‡</sup></td> <td>required<sup>‡</sup></td> </tr>
  <tr> <td>requirements/<br/>comments/alias</td> <td>optional</td> <td>prohibited</td> <td>optional</td> <td>prohibited<sup>‡</sup></td> <td>optional<sup>‡</sup></td> </tr>
  <tr> <td>base</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>required</td> <td>required</td> </tr>
+ <tr> <td>type</td> <td>required</td> <td>required</td> <td>required</td> <td>optional</td> <td>optional</td> </tr>
  <tr> <td>nameReference</td> <td>prohibited</td> <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional</td> </tr>
+ <tr> <td>min/max</td> <td>optional</td> <td>optional (irrelevant)</td> <td>required</td> <td>optional</td> <td>optional<sup>†</sup></td> </tr>
  <tr> <td>defaultValue[x]</td> <td>optional</td> <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional<sup>†</sup></td> </tr>
  <tr> <td>meaningWhenMissing</td> <td>optional</td> <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional<sup>†</sup></td> </tr>
  <tr> <td>fixed[x]</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>prohibited</td> <td>optional</td> </tr>
@@ -78,14 +107,16 @@ Content
  <tr> <td>isModifier</td> <td>prohibited</td>  <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional<sup>†</sup></td> </tr>
  <tr> <td>isSummary</td> <td>prohibited</td> <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional<sup>†</sup></td> </tr>
  <tr> <td>binding</td> <td>optional</td> <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional</td> </tr>
- <tr> <td>constraint/mapping</td> <td>optional</td> <td>prohibited</td> <td>optional</td> <td>optional<sup>∆</sup></td> <td>optional<sup>∆</sup></td> </tr>
+ <tr> <td>constraint</td> <td>optional</td> <td>optional</td> <td>optional</td> <td>optional<sup>∆</sup></td> <td>optional<sup>∆</sup></td> </tr>
+ <tr> <td>condition</td> <td>optional</td> <td>prohibited</td> <td>optional</td> <td>prohibited</td> <td>optional<sup>∆</sup></td> </tr>
+ <tr> <td>mapping</td> <td>optional</td> <td>optional</td> <td>optional</td> <td>optional<sup>∆</sup></td> <td>optional<sup>∆</sup></td> </tr>
 </table>
 <p>
 Notes:
 </p>
 <ul>
- <li>Base definition: A StructureDefinition without a <code>base</code> element - e.g. a definition of a structure that doesn't constrain another structure</li>
- <li>Constraint definition: A StructureDefinition with a <code>base</code> element - e.g. a definition of a structure that constrains another base structure</li>
+ <li>Type definition: A StructureDefinition without a <code>base</code> element, or where the derivation type is 'specialization'</li>
+ <li>Constraint definition: A StructureDefinition with a <code>base</code> element and a derivation of 'constraint' - e.g. a definition of a structure that constrains another base structure, referring to the differential portion</li>
  <li><sup>†</sup>: The element's presence, and value, must match the definition in the base structure</li>
  <li><sup>‡</sup>: The element content must be consistent with that matching element in the base structure</li>
  <li><sup>∆</sup>: Additional constraints and mappings can be defined, but they do not replace the ones in the base structure</li>
@@ -109,13 +140,13 @@ The use of Path and type depends more deeply on the context where the ElementDef
  <tr> <td>A defined Extension <br/>(example: <a href="extension-us-core-race.html">Extension</a>  - <a href="extension-us-core-race.xml.html">XML</a>, <a href="extension-us-core-race.json.html">JSON</a>)</td>
         <td><code>Extension</code></td> <td><code>Extension.value[x]</code> or <code>Extension.extension</code> (for complex extensions)</td> <td><code>Extension</code></td> </tr>
 </table>
-
 <p>
+There are additional notes about the use of <code>ElementDefinition</code> when defining Extensions on the <a href="defining-extensions.html#ed">Defining Extensions</a> page.
+</p>
 
 <a name="slicing"> </a>
 <h3>Rules about Slicing</h3>
 
-</p>
 <ul>
  <li>Slicing is only allowed when constraining an existing structure</li>
  <li><code>slicing</code> can only be used on the first repeat of an element, this element is considered the slicing entry</li>
@@ -189,6 +220,12 @@ Like default values, and for the same reasons, assigning a meaning when an eleme
 is something that is not done very often. Note that Profiles cannot change the default value
 or missing meaning of an element, since it can't be done in the base specification either.
 </p>
+<p>
+Here is a list of all elements with a default value or a missing meaning:
+</p>
+<ul>
+<%missing-element-list%>
+</ul>
 
 </div>
 

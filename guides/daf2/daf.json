@@ -18,27 +18,38 @@
 	"source": "daf.xml",
   "spreadsheets" : [  
     "allergyintolerance-daf-profile-spreadsheet.xml",
-	"allergyintolerance-daf-core-profile-spreadsheet.xml",
+  	"allergyintolerance-daf-core-profile-spreadsheet.xml",
     "condition-daf-profile-spreadsheet.xml",
+	"condition-daf-core-profile-spreadsheet.xml",
     "diagnosticorder-daf-profile-spreadsheet.xml",
     "diagnosticreport-daf-profile-spreadsheet.xml",
+	"diagnosticreport-daf-core-profile-spreadsheet.xml",
     "encounter-daf-profile-spreadsheet.xml",
     "familymemberhistory-daf-profile-spreadsheet.xml",
     "immunization-daf-profile-spreadsheet.xml",
+	"immunization-daf-core-profile-spreadsheet.xml",
     "list-daf-profile-spreadsheet.xml",
     "location-daf-profile-spreadsheet.xml",
     "medication-daf-profile-spreadsheet.xml",
+	"medication-daf-core-profile-spreadsheet.xml",
     "medicationadministration-daf-profile-spreadsheet.xml",
     "medicationdispense-daf-profile-spreadsheet.xml",
     "medicationorder-daf-profile-spreadsheet.xml",
-    "medicationstatement-daf-profile-spreadsheet.xml",
+    "medicationorder-daf-core-profile-spreadsheet.xml",
+	"medicationstatement-daf-profile-spreadsheet.xml",   
+    "medicationstatement-daf-core-profile-spreadsheet.xml",
     "observation-daf-vitalsigns-profile-spreadsheet.xml",
+	"observation-daf-core-vitalsigns-profile-spreadsheet.xml",
     "observation-daf-results-profile-spreadsheet.xml",
+	"observation-daf-core-results-profile-spreadsheet.xml",
     "observation-daf-smokingstatus-profile-spreadsheet.xml",
+	"observation-daf-core-smokingstatus-profile-spreadsheet.xml",
     "organization-daf-profile-spreadsheet.xml",
     "patient-daf-profile-spreadsheet.xml",
+	"patient-daf-core-profile-spreadsheet.xml",
     "practitioner-daf-profile-spreadsheet.xml",
     "procedure-daf-profile-spreadsheet.xml",
+	"procedure-daf-core-profile-spreadsheet.xml",
     "relatedperson-daf-profile-spreadsheet.xml",
     "spec-daf-profile-spreadsheet.xml",
     "substance-daf-profile-spreadsheet.xml"
@@ -60,6 +71,10 @@
 			"defns": "daf-condition-definitions.html",
 			"base": "daf-condition.html"
 		},
+		"StructureDefinition/daf-core-condition": {
+			"defns": "daf-core-condition-definitions.html",
+			"base": "daf-core-condition.html"
+		},
 		"StructureDefinition/daf-diagnosticorder": {
 			"defns": "daf-diagnosticorder-definitions.html",
 			"base": "daf-diagnosticorder.html"
@@ -67,6 +82,10 @@
 		"StructureDefinition/daf-diagnosticreport": {
 			"defns": "daf-diagnosticreport-definitions.html",
 			"base": "daf-diagnosticreport.html"
+		},
+		"StructureDefinition/daf-core-diagnosticreport": {
+			"defns": "daf-core-diagnosticreport-definitions.html",
+			"base": "daf-core-diagnosticreport.html"
 		},
 		"StructureDefinition/daf-encounter": {
 			"defns": "daf-encounter-definitions.html",
@@ -92,6 +111,10 @@
 			"defns": "daf-medication-definitions.html",
 			"base": "daf-medication.html"
 		},
+		"StructureDefinition/daf-core-medication": {
+			"defns": "daf-core-medication-definitions.html",
+			"base": "daf-core-medication.html"
+		},
 		"StructureDefinition/daf-medicationadministration": {
 			"defns": "daf-medicationadministration-definitions.html",
 			"base": "daf-medicationadministration.html"
@@ -104,6 +127,10 @@
 			"defns": "daf-medicationstatement-definitions.html",
 			"base": "daf-medicationstatement.html"
 		},
+		"StructureDefinition/daf-core-medicationstatement": {
+			"defns": "daf-medicationstatement-definitions.html",
+			"base": "daf-medicationstatement.html"
+		},
 		"StructureDefinition/daf-organization": {
 			"defns": "daf-organization-definitions.html",
 			"base": "daf-organization.html"
@@ -111,6 +138,10 @@
 		"StructureDefinition/daf-patient": {
 			"defns": "daf-patient-definitions.html",
 			"base": "daf-patient.html"
+		},
+		"StructureDefinition/daf-core-patient": {
+			"defns": "daf-core-patient-definitions.html",
+			"base": "daf-core-patient.html"
 		},
 		"StructureDefinition/daf-pract": {
 			"defns": "daf-pract-definitions.html",
@@ -124,6 +155,10 @@
 			"defns": "daf-procedure-definitions.html",
 			"base": "daf-procedure.html"
 		},
+		"StructureDefinition/daf-core-procedure": {
+			"defns": "daf-core-procedure-definitions.html",
+			"base": "daf-core-procedure.html"
+		},
 		"StructureDefinition/daf-relatedperson": {
 			"defns": "daf-relatedperson-definitions.html",
 			"base": "daf-relatedperson.html"
@@ -136,9 +171,17 @@
 			"defns": "daf-resultobs-definitions.html",
 			"base": "daf-resultobs.html"
 		},
+		"StructureDefinition/daf-core-resultobs": {
+			"defns": "daf-core-resultobs-definitions.html",
+			"base": "daf-core-resultobs.html"
+		},
 		"StructureDefinition/daf-smokingstatus": {
 			"defns": "daf-smokingstatus-definitions.html",
 			"base": "daf-smokingstatus.html"
+		},
+		"StructureDefinition/daf-core-smokingstatus": {
+			"defns": "daf-core-smokingstatus-definitions.html",
+			"base": "daf-core-smokingstatus.html"
 		},
 		"StructureDefinition/daf-spec": {
 			"defns": "daf-spec-definitions.html",
@@ -152,9 +195,17 @@
 			"defns": "daf-vitalsigns-definitions.html",
 			"base": "daf-vitalsigns.html"
 		},
+		"StructureDefinition/daf-core-vitalsigns": {
+			"defns": "daf-core-vitalsigns-definitions.html",
+			"base": "daf-core-vitalsigns.html"
+		},
 		"StructureDefinition/daf-immunization": {
 			"defns": "daf-immunization-definitions.html",
 			"base": "daf-immunization.html"
+		},
+		"StructureDefinition/daf-core-immunization": {
+			"defns": "daf-core-immunization-definitions.html",
+			"base": "daf-core-immunization.html"
 		},
 		"StructureDefinition/daf-medicationdispense": {
 			"defns": "daf-medicationdispense-definitions.html",
@@ -163,6 +214,10 @@
 		"StructureDefinition/daf-medicationorder": {
 			"defns": "daf-medicationorder-definitions.html",
 			"base": "daf-medicationorder.html"
+		},
+		"StructureDefinition/daf-core-medicationorder": {
+			"defns": "daf-core-medicationorder-definitions.html",
+			"base": "daf-core-medicationorder.html"
 		},
 		"StructureDefinition/daf-procedurelist": {
 			"defns": "daf-procedurelist-definitions.html",
@@ -282,6 +337,10 @@
 		},
 		"ValueSet/daf-problem": {
 			"base": "valueset-daf-problem.html",
+      "template-base" : null
+		},
+		"AllergyIntolerance/23": {
+			"base": "allergyintolerance-23.html",
       "template-base" : null
 		}
 	}

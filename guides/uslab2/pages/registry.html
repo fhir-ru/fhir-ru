@@ -1,13 +1,31 @@
+---
+# jekyll prompt
+---
 <!DOCTYPE HTML>
-
-
-[%settitle xtitle Conformance Registry%]
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-[%file newheader%]
+  <meta charset="UTF-8">
+  <title>USLAB/uslab - FHIR v1.5.0</title>
+
+  {% include header.html %}
+
 </head>
 <body>
-[%file newnavbar%]
+{% include navbar.html %}
+
+ {% include breadcrumb.html %}
+
+
+   </ul>
+  </div>  <!-- /container -->
+ </div>  <!-- /segment-breadcrumb -->
+
+ <div id="segment-content" class="segment">  <!-- segment-content -->
+ <div class="container">  <!-- container -->
+            <div class="row">
+             <div class="inner-wrapper">
+  <!-- CONTENT CONTENT -->
+  
 <div class="col-9">
 
 <h2>Conformance Resource Registry</h2>
@@ -20,7 +38,23 @@ defined as part of the <%ig.title%>:
 
 </div>
 
-[%file newfooter%]
+<p>Published by: HL7 Orders and Observations Workgroup</p>
 
+<p>Primary Author/Editor: Eric M Haas, Health eData Inc.</p>
+
+</div>
+
+<!-- END CONTENT -->
+
+
+    </div>  <!-- /inner-wrapper -->
+            </div>  <!-- /row -->
+        </div>  <!-- /container -->
+
+    </div>  <!-- /segment-content -->
+    
+
+
+{% include footer.html %}
 </body>
 </html>

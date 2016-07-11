@@ -18,12 +18,12 @@
   <date value="2015-09-22T20:02:49+10:00"></date>
   <description value="The result resource provides the result of the evaluation."></description>
   <requirements value="Enables the evaluation results to be reported."></requirements>
-  <fhirVersion value="1.4.0"></fhirVersion>
+  <fhirVersion value="1.5.0"></fhirVersion>
   
   
   <kind value="resource"></kind>
   <abstract value="false"></abstract>
-  <baseType value="Basic"/>
+  <type value="Basic"/>
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Basic"/>
     <derivation value="constraint"/>
 
@@ -37,9 +37,6 @@
       <alias value="Custom-resource"></alias>
       <min value="0"></min>
       <max value="*"></max>
-      <type>
-        <code value="Basic"></code>
-      </type>
       <isSummary value="true"></isSummary>
       
       
