@@ -13,9 +13,9 @@ it will be inadequate to satisfy the use-cases associated with this resource and
 opinions about which purposes they feel ProcessRequest and ProcessResponse should be retained for. -->
 </p>	
 <p>
-Ресурс ProcessRequest позволяет описать действие для выполнения над существующим ресурсом или ресурсами, и предоставляет дополнительную вспомогательную информацию для поддержки этого действия. На данный момент определены следующие действия: отменить, опросить, повторно обработать, получить статус (cancel, poll, 
+Ресурс ProcessRequest позволяет описать действие для выполнения над существующим ресурсом или ресурсами, и затем предоставляет дополнительную вспомогательную информацию для поддержки этого действия. На данный момент определены следующие действия: отменить, опросить, повторно обработать, получить статус (cancel, poll, 
 reprocess, status).
-<!-- The ProcessRequest resource allows for the specification of an action to be performed on an existing resporce or resources and the 
+<!-- The ProcessRequest resource allows for the specification of an action to be performed on an existing resource or resources and then 
 provides the additional supporting information to support that action. The actions currently defined are: cancel, poll, 
 reprocess, and status.  -->
 </p>

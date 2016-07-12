@@ -1,19 +1,8 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <!-- insert xhtml content here -->
-<h3>Примечания для реализаторов<!-- Implementation Notes --></h3>
-<ul>
- <li>Экземпляры могут быть изображениями, однако они также могут быть структурированными DICOM-документами или другими DICOM-классами.</li>
- <li>Данный ресурс придерживается практики DICOM в использовании OID вместо кодов в таких элементах, как тип экземпляра.</li>  
- <li>Каждый экземпляр содержит Attachment (вложение). Несколько вложений могут представлять одну и ту же информацию, но с помощью различных подходов. ImagingStudy.content.url может быть ссылкой на сервис WADO-RS, который делает доступным экземпляр. ImagingStudy.content.url может быть ссылкой на FHIR-ресурс (<a href="media.html">Media</a>, <a href="composition.html">Composition</a> и др.).</li>
- <li>Использование ImagingStudy.content.data не поощряется, предпочтительнее использовать url.</li>
-<!--  <li>Instances can be images, but they can also be DICOM structured documents or other DICOM classes.</li>
- <li>This resource follows DICOM practice in using OIDs for elements such as instance type rather than codes.</li>
- <li>Each instance has an Attachment. Multiple Attachments can represent the same information, but using different 
-   approaches. The ImagingStudy.content.url could be a reference to a WADO-RS service that makes the instance available. The ImagingStudy.content.url 
-   could be a reference to a FHIR resource (<a href="media.html">Media</a>, <a href="composition.html">Composition</a>, etc.).</li>
- <li>The use of ImagingStudy.content.data is discouraged with preference of url.</li>   -->
-</ul>
+<h3>Примечания для реализаторов</h3>
+Подробную информацию по использованию baseLocation см. в <a href="imagingmanifest.html#baseLocation">Примечаниях для реализаторов к ImagingManifest</a>.
 
 <h3>Сценарий использования<!-- Use Case --></h3>
 <h4>Доступ к результатам радиологических исследований из ЭМК<!-- EHR access to imaging studies --></h4>
