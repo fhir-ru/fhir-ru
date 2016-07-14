@@ -18,61 +18,45 @@
 <h1>Приветствуем на сайте FHIR&reg;</h1>
 
 <p>
-Для ознакомления с FHIR начните с <a href="summary.html">краткого обзора</a>, <a href="overview-dev.html">введения для разработчиков</a>, <a href="overview-clinical.html">введения для медицинских работников</a>, <a href="overview.html">обзора стандарта FHIR и плана его развития</a>. 
-См. также <a href="license.html">открытую лицензию</a>, <a href="toc.html">оглавление</a> и [%search-link%].
+Для ознакомления с FHIR начните с <a href="summary.html">Краткого обзора</a>, <a href="overview-dev.html">Введения для разработчиков</a>, <a href="overview-clinical.html">Введения для медицинских работников</a>, <a href="overview.html">Обзора стандарта FHIR и плана его развития</a>. 
+См. также <a href="license.html">Простая лицензия</a>, <a href="toc.html">Оглавление</a> и <a href="search.cfm">Поиск по спецификации</a>.
 </p>
 
-<p>
-<b><a href="history.html">Обновления DSTU<!-- DSTU updates --></a></b>:
-</p>
-<ul>
- <li><a href="history.html#v1.0.2">24 октября 2015</a>: Были внесены исправления инвариантов, генерируемых ресурсов обеспечения соответствия, кардинальных множеств для расширений, примеров.
- <!-- <a href="history.html#v1.0.2">Oct-24 2015</a>: Corrections to invariants, generated conformance resources, extension cardinalities, examples --></li>
-</ul>
-<p><b>Основные разделы:</b></p>
-<table class="bare">
- <tr>
-  <td align="middle" style="padding: 0px 40px 30px 40px;"><a href="documentation.html"><img src="icon-documentation.png" height="128" width="128"/><br/>Основная<br/>документация</a></td>
-  <td align="middle" style="padding: 0px 40px 30px 40px;"><a href="implementation.html"><img src="icon-implementation.png" height="128" width="128"/><br/>Реализация стандарта<br/>и обмен данными</a></td>
-  <td align="middle" style="padding: 0px 40px 30px 40px;"><a href="clinical.html"><img src="icon-clinical.png" height="128" width="128"/><br/>Клинические<br/>ресурсы</a></td>
-  <td align="middle" style="padding: 0px 40px 30px 40px;"><a href="administration.html"><img src="icon-administration.png" height="128" width="128"/><br/>Административные<br/>ресурсы</a></td>
-  <td align="middle" style="padding: 0px 40px 30px 40px;"><a href="infrastructure.html"><img src="icon-infrastructure.png" height="128" width="128"/><br/>Инфраструктурные<br/>ресурсы</a></td>
- </tr>
-</table>
+[%file modules-fragment%]
 
 <a name="links"> </a>
 <p><b>Полезные ссылки:</b></p>
 
-<table class="bare" width="100%"><tr>
+<table width="100%" class="bare"><tr>
  <td> <!-- Common internal links -->
 <p>Документация</p>
   <ul>  
-    <li><a href="resourcelist.html">Список ресурсов</a></li>  
-    <li><a href="toc.html">Оглавление</a></li>
-    <li><a href="json.html">JSON</a>, <a href="xml.html">XML</a> и <a href="rdf.html">RDF</a></li>
-    <li><a href="http.html">REST API</a> и <a href="search.html">поиск</a></li>
-    <li><a href="datatypes.html">Типы данных</a></li>
-    <li><a href="terminologies.html">Использование кодов</a></li>
-    <li><a href="extensibility.html">Расширяемость</a></li>
+    <li><a href="resourcelist.html">Список ресурсов</a></li>
+<!--    <li><a href="json.html">JSON</a>, <a href="xml.html">XML</a> &amp; <a href="rdf.html">RDF</a></li>
+    <li><a href="http.html">REST API</a> &amp; <a href="search.html">Search</a></li>
+    <li><a href="datatypes.html">Data Types</a></li>
+    <li><a href="terminologies.html">Using Terminologies</a></li>
+    <li><a href="extensibility.html">Extensions</a></li> -->
+    <li><a href="toc.html">Полное оглавление</a></li>
  </ul>
  </td><td>
   <p>Реализация</p>
   <ul>
-    <li><a href="downloads.html">Материалы для скачивания</a></li>
-    <li><a href="profiling.html">Адаптация FHIR для локального использования</a></li>
-    <li><a href="iglist.html">Руководства по реализации</a></li>
-    <li>Скачать <a href="fhir-all-xsd.zip">схемы и схематроны для FHIR</a></li>
-    <li>Скачать примеры: <a href="examples.zip">XML</a>, <a href="examples-json.zip">JSON</a></li>
-    <li>Скачать код: <a href="[%reflink java%]">Java</a>, <a href="[%reflink csharp%]">C#</a>, <a href="[%reflink pascal%]">Pascal</a>, <a href="https://github.com/smart-on-fhir/Swift-FHIR">iOS</a>, <a href="[%reflink javascript%]">JS</a>, <a href="[%reflink xmltools%]">XML</a></li>
+<!--    <li><a href="downloads.html">Downloads</a></li>
+    <li><a href="profiling.html">Adapting FHIR for local use</a></li>
+    <li><a href="iglist.html">Implementation Guides</a></li>
+    <li><a href="fhir-all-xsd.zip">FHIR Schemas &amp; Schematrons</a></li>
+    <li>Examples: <a href="examples.zip">XML</a>, <a href="examples-json.zip">JSON</a></li>
+    <li>Code: <a href="fhir-1.5.0-Java-1.0.zip">Java</a>, <a href="http://www.nuget.org/packages/Hl7.Fhir">C# <img src="external.png" style="text-align: baseline"/></a>, <a href="fhir-1.5.0-Pascal-0.80.zip">Pascal</a>, <a href="https://github.com/smart-on-fhir/Swift-FHIR">iOS <img src="external.png" style="text-align: baseline"/></a>, <a href="fhir-1.5.0-JavaScript-0.1.zip">JS</a>, <a href="fhir-1.5.0-XML Tools-0.01.zip">XML</a></li>-->
     <li><a href="usecases.html">Примеры типовых сценариев</a> и <a href="profilelist.html">профили</a></li>
     <li><a href="security.html">Вопросы безопасности FHIR</a></li>
  </ul>
  </td><td>
-  <p>Ссылки на внешние источники</p>
+  <p>Внешние ссылки</p>
   <ul>
     <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Support_Page">Ссылки на службы поддержки</a> (StackOverflow, Forum и др.)</li>
     <li><a href="http://wiki.hl7.org/index.php?title=Publicly_Available_FHIR_Servers_for_testing">Публичные тестовые серверы и программное обеспечение</a></li>
-    <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Methodology_Process">Как разрабатывается FHIR<!-- How FHIR is developed --></a></li>
+<!--    <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Methodology_Process">How FHIR is developed </a></li> -->
     <li><a href="http://wiki.hl7.org/index.php?title=FHIR">FHIR Wiki</a></li>
     <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Profiles_from_other_Organizations">Перечень руководств по реализации</a></li>
     <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Blogs">Блоги о FHIR</a></li>
@@ -84,6 +68,7 @@
  <p id="srch"> </p>
 
 <p>Примечание: для просмотра спецификации требуется браузер с поддержкой SVG (Microsoft Internet Explorer 10+, Firefox 3.0+, Chrome или Safari), используется локальное хранилище браузера для запоминания открытых вкладок.</p>
+ 
  
 </div>
 

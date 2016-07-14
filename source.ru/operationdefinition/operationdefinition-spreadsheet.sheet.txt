@@ -106,6 +106,7 @@
   Element = OperationDefinition.status
   Card. = 1..1
   Is Modifier = yes
+  Summary = y
   Type = code
   Binding = ConformanceResourceStatus
   Short Label = draft | active | retired
@@ -220,6 +221,7 @@
   Binding = !
   Short Label = Name used to invoke the operation
   Definition = The name used to invoke the operation
+  Comments = The code does not include the \'$\' prefix that is always included in the URL when the operation is invoked
 
  -- Row 18 -----------------------------------
   Element = OperationDefinition.comment
@@ -250,6 +252,7 @@
   Binding = ResourceType
   Short Label = Invoke at resource level for these type
   Definition = Indicates whether this operation or named query can be invoked at the resource type level for any given resource type level (e.g. without needing to choose a resource type for the context)
+  Comments = If the type is an abstract resource (\"Resource\" or \"DomainResource\") then the operation can be invoked on any concrete specialization
 
  -- Row 22 -----------------------------------
   Element = OperationDefinition.instance
@@ -313,7 +316,7 @@
   Binding = FHIRAllTypes
   Short Label = What type this parameter has
   Definition = The type for this parameter
-  Comments = if there is no stated parameter, then the parameter is a \"Tuple\" type and must have at least one part defined
+  Comments = if there is no stated parameter, then the parameter is a multi-part parameter; type and must have at least one part defined
 
  -- Row 30 -----------------------------------
   Element = OperationDefinition.parameter.searchType
@@ -362,8 +365,8 @@
   UML = right
   Inv. = 1
   Type = @OperationDefinition.parameter
-  Short Label = Parts of a Tuple Parameter
-  Definition = The parts of a Tuple Parameter
+  Short Label = Parts of a nested Parameter
+  Definition = The parts of a nested Parameter
   Comments = Query Definitions only have one output parameter, named \"result\". This may not be described, but can be to allow a profile to be defined
 
  -- Row 36 -----------------------------------

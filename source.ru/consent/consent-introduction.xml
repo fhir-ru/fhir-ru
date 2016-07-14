@@ -3,6 +3,7 @@
 <div>
 <a name="scope"> </a>
 <h2>Scope and Usage</h2>
+
 <a name="PCD"> Privacy Consent Directive (PCD) </a>
 
 <p>
@@ -16,7 +17,7 @@ uses for consent:
 </ul>
 <p>
 This resource is scoped to cover all 3 uses, but at this time, only the privacy use case
-is well investigated, and the scope of the resource may change when the other scopes are 
+is investigated, and the scope of the resource may change when the other possible scopes are 
 investigated and tested. 
 </p>
 <h3>Privacy and Consent</h3>
@@ -39,8 +40,8 @@ to delegate authority to a Substitute Decision Maker who may act on behalf of th
 <!-- Healthcare Consumer.  The individual establishing his/her personal consent (i.e. Consenter) -->
 
 Alternatively, a client may author/publish their privacy preferences as a self-declared Privacy Consent Directive.  
-<p>
 </p>
+<p>
 The Consent resource on FHIR provides support for alternative representations for expressing 
 health information privacy consent directives in a standard form for the exchange of privacy policies 
 that can be enforced by consuming systems (e.g., scanned documents, computable structured entries).
@@ -76,6 +77,12 @@ reference can be one of several things:
 The consent statements represent a chain that refers back to the original source consent
 agreement. Applications may be able to follow the chain back to the source, but should
 not generally assume that they are authoriszd to do this.
+</p>
+<p>
+Consent statements are often signed - either on paper, or digitally. Consent Signatures will
+be found in the <a href="provenance.html">Provenance</a> resource (example <a href="consent-example-signature.html">consent</a> and 
+<a href="provenance-consent-signature.html">signature</a>). Implementation Guides will generally 
+make rules about what signatures are required, and how they are to be shared and used.
 </p>
 </div>
 
