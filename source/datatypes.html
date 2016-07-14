@@ -920,7 +920,8 @@ others would appear on <a href="procedurerequest.html">ProcedureRequest</a> or <
 </p>
 <p>
 If the identifier itself is naturally globally unique (e.g. an OID, a UUID, or a URI with no trailing local part), 
-then the <code>system</code> SHALL be "urn:ietf:rfc:3986", and the URI is in the <code>value</code>.
+then the <code>system</code> SHALL be "urn:ietf:rfc:3986", and the URI is in the <code>value</code> 
+(OIDs and UUIDs using urn:oid: and urn:uuid: - see <a href="datatypes-examples.html#Identifier">examples</a>).
 In some cases, the system may not be known - only the value is known (e.g. a simple device that scans a barcode), 
 or the system is known implicitly (simple exchange in a limited context, often driven by barcode readers). 
 In this case, no useful matching may be performed using the value unless the system can be safely inferred by the 
@@ -936,7 +937,8 @@ used for codes that correspond 1..1 with the Identifier.system. Some identifiers
 categories due to variations in common usage.
 </p>
 <p>
-The <code>assigner</code> is used to indicate what registry/state/facility/etc. assigned the identifier. 
+The <code>assigner</code> is used to indicate what registry/state/facility/etc. assigned the identifier.
+As a <a href="reference.html">Reference</a>, the assigner can include just a text description in the <code>display</code>. 
 </p>  
 <p>
 Identifier is used in the following places: [%dtusage Identifier%]
