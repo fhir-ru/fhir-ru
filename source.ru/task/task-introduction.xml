@@ -1,11 +1,12 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
   <div>
     <a name="scope"> </a>
-    <h2>Scope and Usage</h2>
-    <p> An task resource describes an activity that can be performed, and tracks the state of
+    <h2>Область применения и использование</h2>
+    <p>Ресурс Task описывает активность, которая может быть выполнена, и отслеживает состояние выполнения этой активности. Это представление того, что активность должна быть или была инициирована и, в конечном счёте, показывает успешное или неуспешное завершение этой активности.
+    <!--  An task resource describes an activity that can be performed, and tracks the state of
       completion of that activity. It is a representation that an activity should be or has been
       initiated, and eventually, represents the successful or unsuccessful completion of that
-      activity. </p>
+      activity.  --></p>
     <p> Note that there are a variety of processes associated with making and processing orders.
       Some orders may be handled immediately by automated systems but most require real world
       actions by one or more humans. Some orders can only be processed when other real world actions

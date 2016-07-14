@@ -2,7 +2,7 @@
 
 
       
-[%settitle Updates%]
+[%settitle Обновления%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -12,43 +12,47 @@
 
 <div class="col-12">
 
-<h2>Variations between Submitted data and Retrieved data</h2>
+<h2>Отклонения между подаваемыми и извлекаемыми данными<!-- Variations between Submitted data and Retrieved data --></h2>
 <table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 <a name="community"> </a>
 
 <p>
-Some of the time when using a FHIR interface, requests to create or update resource instances will behave 
+Некоторое время при использовании интерфейса FHIR запросы на создание или обновление экземпляров ресурсов будут вести себя именно так, как запросил инициатор. Требуемые записи будут создаваться или исправляться в целевой системе и последующий запрос этих данных будет показывать точно такую же информацию, которая была подана. Однако не гарантируется, что FHIR-системы будут вести себя таким образом. Без каких-либо других соглашений между партнёрами по обмену данными, FHIR-системы не обязаны хранить и возвращать данные в том виде, в котором они были получены. В действительности, для некоторых парадигм взаимодействия, они не обязаны хранить какие-то данные вообще. На этой странице приведены некоторые соображения касательно поведения систем, включая различия в ожиданиях от систем, взаимодействующих с помощью REST, обмена сообщениями, документов и сервисов.
+<!-- Some of the time when using a FHIR interface, requests to create or update resource instances will behave 
 exactly as the initiator requested.  The desired record(s) will be created or revised within the target 
 system and a subsequent query of the data would show the exact same information as was submitted.  
 However, FHIR systems are not guaranteed to behave this way.  Without any other agreement between exchange 
 partners, FHIR systems are not obligated to store and return data as it was received.  In fact, for some 
 interoperability paradigms, they're not obligated to store any data at all.  This page discusses some of the 
 considerations around system behavior, including differences in expectations for systems interoperating using 
-REST, messaging, documents and services.
+REST, messaging, documents and services. -->
 </p>
 
-<h3>Data element support</h3>
+<h3>Поддержка элементов данных<!-- Data element support --></h3>
 <p>
-The most common reason for differences between what data is submitted to a system and what data can be extracted 
+Наиболее распространённая причина различий между тем, какие данные были поданы в систему и какие данные были из неё извлечены, состоит в том, что система не поддерживает все элементы данных, присутствующие в полученном экземпляре. В базовом ресурсе от систем не требуется поддерживать никакие определенные наборы расширений или даже какие-то конкретные подмножества основных элементов.
+<!-- The most common reason for differences between what data is submitted to a system and what data can be extracted 
 from it is that the system doesn't support all of the data elements present in the instance received.  In the 
 base resource, no systems are required to support any particular set of extensions or even any particular subset 
-of core elements.
+of core elements. -->
 </p>
 <p>
-For elements that are part of the resource, the expectation is that "most" systems will support the element.  
+Для элементов, являющихся частью ресурса, предполагается, что "большинство" систем будут поддерживать этот элемент. Т. е. большинство систем будут поддерживать ввод имени, пола и даты рожедния пациента. Однако "большинство" не означает "все". Можно быть полностью соответствующим FHIR и объявлять о поддержке ресурса Patient, но быть не в состоянии хранить любые из тех элементов данных. Есть сценарии, когда имена могут быть излишними (например сельскохозяйственные ветеринарные системы, анонимные отчёты и т. п.) и подобные сценарии для почти каждого элемента данных. Ни один элемент FHIR-ресурса не стартует с модификатором <a href="elementdefinition-definitions.html#ElementDefinition.mustSupport">mustSupport</a>, и очень мало элементов ресурсов стартуют с минимальным кардинальным множеством, отличным от "0".
+<!-- For elements that are part of the resource, the expectation is that "most" systems will support the element.  
 i.e. most systems will support capturing a patient's name, gender and date of birth.  But "most" does not mean 
 "all". It is possible to be fully FHIR conformant and claim to support the Patient resource, but be incapable 
 of storing any of those data elements.  There are use-cases where names may be unnecessary (e.g. agricultural 
 veterinary systems, anonymized reporting, etc.) and similar use-cases for almost every data element.  No FHIR 
 resource elements start off as <a href="elementdefinition-definitions.html#ElementDefinition.mustSupport">mustSupport</a> 
-and very few resource elements start off with a minimum cardinality other than "0".
+and very few resource elements start off with a minimum cardinality other than "0". -->
 </p>
 <p>
-In the case of extensions, the very nature of a concept being an extension means that the designers of the 
+В случае расширений, сама природа концепции расширения означает, что проектировщики спецификации ожидали, что менее чем "большинство" систем будут поддерживать этот элемент, хотя поддержка может сильно варьироваться от контекста. Расширение может использоваться 100% систем в какой-то стране, области и т. п. и не использоваться никакими системами в другом контексте. В любом случае нет гарантии, что произвольный получатель узнает и сможет сохранить любое заданное расширение.
+<!-- In the case of extensions, the very nature of a concept being an extension means that the designers of the 
 specification expected that fewer than "most" systems would support the element, though support might vary 
 widely by context.  An extension might be used by 100% of systems in some country, discipline, etc. and not 
 used by any systems in another context.  In any event, there is no guarantee that an arbitrary 
-receiver will recognize and be able to persist any given extension.
+receiver will recognize and be able to persist any given extension. -->
 </p>
 <p>
 In order to know whether a particular data element is likely to be stored by a given server, a client should 

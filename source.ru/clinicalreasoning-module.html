@@ -16,21 +16,23 @@ in order to support consistent definitions for schema and UML derived code.
 <div class="col-9">
 
 <a name="root"> </a>
-<h2>Clinical Reasoning Module</h2>
+<h2>Модуль клинического обоснования<!-- Clinical Reasoning Module --></h2>
 
-<p><i>This draft of the CQF IG is being balloted as FHIR-Based Clinical Quality Framework (CQF-on-FHIR) as an STU ballot for the September 2016 ballot cycle. In addition, this guidance will be used to support the CQF-on-FHIR and Payer Extract tracks in the September 2016 FHIR connect-a-thon.</i></p>
+<p><i>Этот проект руководства по реализации CQF в настоящее время выставлен на голосование в качестве клинической системы качества на базе FHIR (CQF-на-FHIR) в рамках цикла STU-голосования в сентябре 2016 года. Кроме того, данное руководство будет использоваться для поддержки CQF-на-FHIR и Payer Extract треков на FHIR Коннектатоне в сентябре 2016.<!-- This draft of the CQF IG is being balloted as FHIR-Based Clinical Quality Framework (CQF-on-FHIR) as an STU ballot for the September 2016 ballot cycle. In addition, this guidance will be used to support the CQF-on-FHIR and Payer Extract tracks in the September 2016 FHIR connect-a-thon. --></i></p>
 
-<p><i>The guidance in this module is prepared as a Universal Realm Specification with support from the <a href="http://cqframework.info">Clinical Quality Framework (CQF) initiative</a>, which is a public-private partnership sponsored by the Centers for Medicare &amp; Medicaid Services (CMS) and the U.S. Office of the National Coordinator for Health Information Technology (ONC) to identify, develop, and harmonize standards for clinical decision support and electronic clinical quality measurement.</i></p>
+<p><i>Руководство в этом модуле подготовлено в качестве универсальной спецификации с поддержкой от <a href="http://cqframework.info">инициативы Clinical Quality Framework (CQF)</a>, которая является партнерством государственного и частного секторов при поддержке Центров по Medicare и Medicaid Services (CMS) и Управлением Национального координатора по информационным технологиям здравоохранения (ОНК) в США, чтобы определить, разработать и согласовать стандарты поддержки принятия клинических решений и электронного измерения клинического качества.
+<!-- The guidance in this module is prepared as a Universal Realm Specification with support from the <a href="http://cqframework.info">Clinical Quality Framework (CQF) initiative</a>, which is a public-private partnership sponsored by the Centers for Medicare &amp; Medicaid Services (CMS) and the U.S. Office of the National Coordinator for Health Information Technology (ONC) to identify, develop, and harmonize standards for clinical decision support and electronic clinical quality measurement. --></i></p>
 
 <a name="intro"> </a>
-<h3>Introduction</h3>
-<p>The Clinical Reasoning module provides resources and operations to enable the representation, distribution, and evaluation of clinical knowledge assets such as decision support rules, quality measures, order sets, and protocols.</p>
+<h3>Введение<!-- Introduction --></h3>
+<p>Модуль клинического обоснования предоставляет ресурсы и операции для представления, распространения и вычисления таких клинических активов знаний, как правила поддержки принятия решений, мер качества, наборов заказов и протоколов.<!-- The Clinical Reasoning module provides resources and operations to enable the representation, distribution, and evaluation of clinical knowledge assets such as decision support rules, quality measures, order sets, and protocols. --></p>
 
-<p>The guidance in this module describes how the clinical reasoning components of the FHIR specification can be used to enable the use of a FHIR service in the following roles:</p>
+<p>Руководство в этом модуле описывает, как можно использовать компоненты клинического обоснования из спецификации FHIR для применения FHIR-сервиса в следующих ролях:<!-- The guidance in this module describes how the clinical reasoning components of the FHIR specification can be used to enable the use of a FHIR service in the following roles: --></p>
 
 <ol>
-	<li>Knowledge Repository - As a knowledge artifact repository for sharing and distributing knowledge artifact definitions</li>
-	<li>Knowledge Service - As a knowledge service providing for the evaluation of patient data and clinical context using knowledge artifacts such as decision support artifacts and quality measures.</li>
+	<li>Репозиторий знаний - в качестве репозитория артефактов знаний для совместного использования и распространения определений артефактов знаний<!-- Knowledge Repository - As a knowledge artifact repository for sharing and distributing knowledge artifact definitions --></li>
+	<li>Сервис знаний - в качестве сервиса знаний, обеспечивающего вычисление данных пациента и клинического контекста, используя такие артефакты знаний, как артефакты поддержки принятия решений и меры качества.
+  <!-- Knowledge Service - As a knowledge service providing for the evaluation of patient data and clinical context using knowledge artifacts such as decision support artifacts and quality measures. --></li>
 </ol>
 
 <p>From the perspective of a Knowledge Author, this module describes an approach to representing knowledge artifacts within FHIR.</p>
