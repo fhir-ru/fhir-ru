@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
+// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
 
 import java.util.*;
 
@@ -38,6 +38,7 @@ import org.hl7.fhir.utilities.Utilities;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
@@ -1172,6 +1173,7 @@ public class Bundle extends Resource implements IBaseBundle {
          */
         @Child(name = "mode", type = {CodeType.class}, order=1, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="match | include | outcome - why this is in the result set", formalDefinition="Why this entry is in the result set - whether it's included as a match or because of an _include requirement." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/search-entry-mode")
         protected Enumeration<SearchEntryMode> mode;
 
         /**
@@ -1414,6 +1416,7 @@ public class Bundle extends Resource implements IBaseBundle {
          */
         @Child(name = "method", type = {CodeType.class}, order=1, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="GET | POST | PUT | DELETE", formalDefinition="The HTTP verb for this entry in either a change history, or a transaction/ transaction response." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/http-verb")
         protected Enumeration<HTTPVerb> method;
 
         /**
@@ -1939,7 +1942,14 @@ public class Bundle extends Resource implements IBaseBundle {
         @Description(shortDefinition="Server's date time modified", formalDefinition="The date/time that the resource was modified on the server." )
         protected InstantType lastModified;
 
-        private static final long serialVersionUID = -1526413234L;
+        /**
+         * An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction.
+         */
+        @Child(name = "outcome", type = {Resource.class}, order=5, min=0, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="OperationOutcome with hints and warnings (for batch/transaction)", formalDefinition="An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction." )
+        protected Resource outcome;
+
+        private static final long serialVersionUID = 923278008L;
 
     /**
      * Constructor
@@ -2148,12 +2158,32 @@ public class Bundle extends Resource implements IBaseBundle {
           return this;
         }
 
+        /**
+         * @return {@link #outcome} (An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction.)
+         */
+        public Resource getOutcome() { 
+          return this.outcome;
+        }
+
+        public boolean hasOutcome() { 
+          return this.outcome != null && !this.outcome.isEmpty();
+        }
+
+        /**
+         * @param value {@link #outcome} (An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction.)
+         */
+        public BundleEntryResponseComponent setOutcome(Resource value) { 
+          this.outcome = value;
+          return this;
+        }
+
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
           childrenList.add(new Property("status", "string", "The status code returned by processing this entry. The status SHALL start with a 3 digit HTTP code (e.g. 404) and may contain the standard HTTP description associated with the status code.", 0, java.lang.Integer.MAX_VALUE, status));
           childrenList.add(new Property("location", "uri", "The location header created by processing this operation.", 0, java.lang.Integer.MAX_VALUE, location));
           childrenList.add(new Property("etag", "string", "The etag for the resource, it the operation for the entry produced a versioned resource.", 0, java.lang.Integer.MAX_VALUE, etag));
           childrenList.add(new Property("lastModified", "instant", "The date/time that the resource was modified on the server.", 0, java.lang.Integer.MAX_VALUE, lastModified));
+          childrenList.add(new Property("outcome", "Resource", "An OperationOutcome containing hints and warnings produced as part of processing this entry in a batch or transaction.", 0, java.lang.Integer.MAX_VALUE, outcome));
         }
 
       @Override
@@ -2163,6 +2193,7 @@ public class Bundle extends Resource implements IBaseBundle {
         case 1901043637: /*location*/ return this.location == null ? new Base[0] : new Base[] {this.location}; // UriType
         case 3123477: /*etag*/ return this.etag == null ? new Base[0] : new Base[] {this.etag}; // StringType
         case 1959003007: /*lastModified*/ return this.lastModified == null ? new Base[0] : new Base[] {this.lastModified}; // InstantType
+        case -1106507950: /*outcome*/ return this.outcome == null ? new Base[0] : new Base[] {this.outcome}; // Resource
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -2183,6 +2214,9 @@ public class Bundle extends Resource implements IBaseBundle {
         case 1959003007: // lastModified
           this.lastModified = castToInstant(value); // InstantType
           break;
+        case -1106507950: // outcome
+          this.outcome = castToResource(value); // Resource
+          break;
         default: super.setProperty(hash, name, value);
         }
 
@@ -2198,6 +2232,8 @@ public class Bundle extends Resource implements IBaseBundle {
           this.etag = castToString(value); // StringType
         else if (name.equals("lastModified"))
           this.lastModified = castToInstant(value); // InstantType
+        else if (name.equals("outcome"))
+          this.outcome = castToResource(value); // Resource
         else
           super.setProperty(name, value);
       }
@@ -2209,6 +2245,7 @@ public class Bundle extends Resource implements IBaseBundle {
         case 1901043637: throw new FHIRException("Cannot make property location as it is not a complex type"); // UriType
         case 3123477: throw new FHIRException("Cannot make property etag as it is not a complex type"); // StringType
         case 1959003007: throw new FHIRException("Cannot make property lastModified as it is not a complex type"); // InstantType
+        case -1106507950: throw new FHIRException("Cannot make property outcome as it is not a complex type"); // Resource
         default: return super.makeProperty(hash, name);
         }
 
@@ -2228,6 +2265,9 @@ public class Bundle extends Resource implements IBaseBundle {
         else if (name.equals("lastModified")) {
           throw new FHIRException("Cannot call addChild on a primitive type Bundle.lastModified");
         }
+        else if (name.equals("outcome")) {
+          throw new FHIRException("Cannot call addChild on an abstract type Bundle.outcome");
+        }
         else
           return super.addChild(name);
       }
@@ -2239,6 +2279,7 @@ public class Bundle extends Resource implements IBaseBundle {
         dst.location = location == null ? null : location.copy();
         dst.etag = etag == null ? null : etag.copy();
         dst.lastModified = lastModified == null ? null : lastModified.copy();
+        dst.outcome = outcome == null ? null : outcome.copy();
         return dst;
       }
 
@@ -2250,7 +2291,7 @@ public class Bundle extends Resource implements IBaseBundle {
           return false;
         BundleEntryResponseComponent o = (BundleEntryResponseComponent) other;
         return compareDeep(status, o.status, true) && compareDeep(location, o.location, true) && compareDeep(etag, o.etag, true)
-           && compareDeep(lastModified, o.lastModified, true);
+           && compareDeep(lastModified, o.lastModified, true) && compareDeep(outcome, o.outcome, true);
       }
 
       @Override
@@ -2266,7 +2307,7 @@ public class Bundle extends Resource implements IBaseBundle {
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(status, location, etag, lastModified
-          );
+          , outcome);
       }
 
   public String fhirType() {
@@ -2281,6 +2322,7 @@ public class Bundle extends Resource implements IBaseBundle {
      */
     @Child(name = "type", type = {CodeType.class}, order=0, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection", formalDefinition="Indicates the purpose of this bundle- how it was intended to be used." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/bundle-type")
     protected Enumeration<BundleType> type;
 
     /**
@@ -2758,7 +2800,7 @@ public class Bundle extends Resource implements IBaseBundle {
    * Path: <b>Bundle.entry.resource(0)</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="composition", path="Bundle.entry.resource[0]", description="The first resource in the bundle, if the bundle type is \"document\" - this is a composition, and this parameter provides access to searches its contents", type="reference" )
+  @SearchParamDefinition(name="composition", path="Bundle.entry.resource[0]", description="The first resource in the bundle, if the bundle type is \"document\" - this is a composition, and this parameter provides access to searches its contents", type="reference", target={Composition.class } )
   public static final String SP_COMPOSITION = "composition";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>composition</b>
@@ -2804,7 +2846,7 @@ public class Bundle extends Resource implements IBaseBundle {
    * Path: <b>Bundle.entry.resource(0)</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="message", path="Bundle.entry.resource[0]", description="The first resource in the bundle, if the bundle type is \"message\" - this is a message header, and this parameter provides access to search its contents", type="reference" )
+  @SearchParamDefinition(name="message", path="Bundle.entry.resource[0]", description="The first resource in the bundle, if the bundle type is \"message\" - this is a message header, and this parameter provides access to search its contents", type="reference", target={MessageHeader.class } )
   public static final String SP_MESSAGE = "message";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>message</b>

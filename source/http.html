@@ -261,6 +261,7 @@ The correct mime type SHALL be used by clients and servers:
 <ul>
  <li>XML: <code>application/xml+fhir</code></li>
  <li>JSON: <code>application/json+fhir</code></li>
+ <li>RDF: <code>text/turtle</code> (only the Turtle format is supported)</li>
 </ul>
 <p>
 Servers SHALL support server-driven content negotiation
@@ -273,8 +274,9 @@ support the optional <code>_format</code> parameter to specify alternative respo
 This parameter allows a client to override the <code>accept</code> header value when it is unable to set it correctly
 due to internal limitations (e.g. XSLT usage).
 For the <code>_format</code> parameter, the values <code>xml</code>, <code>text/xml</code>, <code>application/xml</code>, and <code>application/xml+fhir</code> SHALL be interpreted to mean
-the normative XML format defined by FHIR and <code>json</code>, <code>application/json</code> and <code>application/json+fhir</code> SHALL be interpreted to mean the
-informative JSON format. In addition, the values <code>html</code> and <code>text/html</code> are allowed.
+the <a href="xml.html">XML format</a>, the codes <code>json</code>, <code>application/json</code> and <code>application/json+fhir</code> SHALL be interpreted to mean the
+<a href="json.html">JSON format</a>, and the codes <code>ttl</code> and <code>text/turtle</code> SHALL be interpreted to mean the
+<a href="rdf.html">Turtle RDF format</a>. In addition, the values <code>html</code> and <code>text/html</code> are allowed.
 </p>
 <p>
 FHIR uses UTF-8 for all request and response bodies. Since the HTTP specification (section 3.7.1)
@@ -350,7 +352,9 @@ as specified in the <code>_summary</code> parameter, which can have the values
 <a href="search.html#summary"><code>true</code>, <code>false</code>, <code>text</code> &amp; <code>data</code></a>.
 Note that a resource that only contains a subset of the data is 
 not suitable for use as a base to update the resource, and may not 
-be suitable for other uses. Servers SHOULD use the <a href="v3/vs/SecurityIntegrityObservationValue/cs.html#SUBSETTED">SUBSETTED</a> <a href="security-labels.html">Security Label</a>
+be suitable for other uses. The same applies to the <a href="search.html#elements">_elements</a> parameter - both 
+that it should bs supported, and the subset implications. Servers SHOULD use 
+the <a href="v3/vs/SecurityIntegrityObservationValue/cs.html#SUBSETTED">SUBSETTED</a> <a href="security-labels.html">Security Label</a>
 to explicitly mark such resources.
 </p>
 
@@ -381,8 +385,9 @@ server should return a <code>410</code> status code.
 Servers are encouraged to support a version specific retrieval of the current version of the
 resource even if they do not provide access to previous versions. If a request
 is made for a previous version of a resource, and the server does not support accessing
-previous versions, it should return a <code>404</code> Not Found error, with an operation outcome
-explaining that history is not supported for the underlying resource type.
+previous versions (either generally, or for this particular resource), it should 
+return a <code>404</code> Not Found error, with an operation outcome explaining that 
+history is not supported for the underlying resource type or instance.
 </p>
 
 <a name="update"> </a>
@@ -467,7 +472,7 @@ Common HTTP Status codes returned on FHIR-related errors (in addition to normal 
 </p>
 <ul>
  <li><b><code>400</code> Bad Request</b> - resource could not be parsed or failed basic FHIR validation rules (or multiple matches were found for </li>
- <li><b><code>403</code> Not Authorized</b> - authorization is required for the interaction that was attempted</li>
+ <li><b><code>401</code> Not Authorized</b> - authorization is required for the interaction that was attempted</li>
  <li><b><code>404</code> Not Found</b> - resource type not supported, or not a FHIR end-point</li>
  <li><b><code>405</code> Method Not allowed</b> - the resource did not exist prior to the update, and the server does not allow client defined ids</li>
  <li><b><code>409</code>/<code>412</code></b> - version conflict management - see <a href="#concurrency">below</a></li>
@@ -695,7 +700,7 @@ For additional information on how systems may behave when processing updates, re
 <p>
 The conditional <code>create</code> interaction allows a client to create a new resource only if some equivalent resource
 does not already exist on the server. The client defines what equivalence means in this case by supplying
-a FHIR search query in an <code>If-None-Exist</code> header as shown:
+a FHIR search query using an HL7 defined extension header "<code>If-None-Exist</code>" as shown:
 </p>
 <pre>
   If-None-Exist: [search parameters]
@@ -820,6 +825,11 @@ the <code>OPTIONS</code> command are defined in the <a href="#hdata">OMG hData R
 </p>
 <p>
 The Conformance statement returned typically has an arbitrary id, and no meta element, though it is not prohibited.
+Conformance statements can become quite large; Servers are encouraged to support the 
+<a href="search.html#summary"><code>_summary</code></a> and <a href="search.html#elements"><code>_elements</code></a> 
+parameters on the conformance interaction, though this is not required. In addition, servers are encouraged to 
+implement the <a href="conformance-operations.html#subset">$subset</a> and <a href="conformance-operations.html#implements">$implements</a> 
+operations to make it easy for a client to check conformance.
 </p>
 <p>
 In addition to this <code>conformance</code> interaction, a server may also choose to provide the
@@ -884,13 +894,18 @@ Examples:
 
 <h4>Batch Processing Rules</h4>
 <p>
-For a <code>batch</code>, there SHALL be no interdependencies between the different entries
-in the Bundle. The success or failure of one entry SHALL not alter the success or failure
-or resulting content of another. Servers SHALL validate that this is the case. 
-Note that it is considered that servers execute the batch in the same order as 
-that specified below for transactions, though the order of execution should not 
-matter given the previous rule.
+For a <code>batch</code>, there SHALL be no interdependencies between the different entries 
+in the Bundle that cause change on the server. The success or failure of one change SHOULD 
+not alter the success or failure or resulting content of another change. Servers SHOULD 
+validate that this is the case. Note that it is considered that servers execute the batch 
+in the same order as that specified below for transactions, though the order of execution 
+should not matter given the previous rule.
 </p>
+<p>
+Static references within a Bundle.entry.resource another to Bundle.entry.resource that is being 
+created within the Batch are be non-conformant.
+</p>
+
 <h4>Transaction Processing Rules</h4>
 <p>
 For a <code>transaction</code>, servers SHALL either accept all actions and return a <code>200</code> OK, along with a
@@ -1095,6 +1110,7 @@ Additional Notes about maintaining a history of resources:
  <li>All past versions of a resource are considered to be superceded, and no longer active, but retained for audit/integrity purposes</li>
  <li>In the case that a past version of a resource needs to be explicitly documented as <a href="lifecycle.html#error">'entered-in-error'</a>, use as provenance resource pointing to the past version of the resource</li>
  <li>When tracing the history of a specific resource, applications should retrieve any provenance resources relating to the resource or it's past versions</li>
+ <li>If a request is made for a history that is not available (e.g. the system does not keep a history for the type, or the particular instance), the server should return a 404 Not Found along with an <a href="operationoutcome.html">OperationOutcome</a> explaining the problem</li>
 </ul>
 
 <a name="transactional-integrity"> </a>
@@ -1236,9 +1252,11 @@ The server need not use a stateful paging method as shown in this example - it i
 the discretion of the server how to best ensure that the continuation retains
 integrity in the context of ongoing changes to the resources. An alternative approach
 is to use version specific references to the records on the boundaries, but this is
-subject to continuity failures when records are updated.
+subject to continuity failures when records are updated. 
 </p>
 <p>
+A server MAY add additional state tracking parameters to the links, as shown in the example above.
+The client must use the server supplied links in order to traverse the pages.
 A server MAY inform the client of the total number of resources returned by the interaction for which the results are paged
 using  the <a href="bundle-definitions.html#Bundle.total">Bundle.total</a>.
 </p>
@@ -1339,8 +1357,8 @@ Notes:
 <tr><td><code>update</code></td>         <td>R if body</td>    <td>O: Resource (Prefer)</td>  <td>R on create</td>	<td>R: <code>ETag</code>, <code>Last-Modified</code></td>		<td><code>200</code>, <code>201</code>, <code>400</code>, <code>404</code>, <code>405</code>, <code>409</code>, <code>412</code>, <code>422</code></td></tr>
 <tr><td><code>delete</code></td>         <td>R if body</td><td>O: OperationOutcome</td>  <td>N/A</td>      	      <td>N/A</td>							<td><code>200</code>, <code>204</code>, <code>404</code>, <code>405</code>, <code>409</code>, <code>412</code></td></tr>
 <tr><td><code>create</code></td>         <td>R if body</td>    <td>O : Resource (Prefer)</td>  <td>R</td>			    <td>R: <code>ETag</code>, <code>Last-Modified</code></td>		<td><code>201</code>, <code>400</code>, <code>404</code>, <code>405</code>, <code>422</code></td></tr>
-<tr><td><code>search</code></td>         <td>R</td>            <td>R: Bundle</td>             <td>N/A</td>      	  <td>N/A</td>							<td><code>200</code>, <code>403</code>?</td></tr>
-<tr><td><code>search-all</code></td>     <td>R</td>            <td>R: Bundle</td>             <td>N/A</td>      	  <td>N/A</td>							<td><code>200</code>, <code>403</code>?</td></tr>
+<tr><td><code>search</code></td>         <td>R</td>            <td>R: Bundle</td>             <td>N/A</td>      	  <td>N/A</td>							<td><code>200</code>, <code>401</code>?</td></tr>
+<tr><td><code>search-all</code></td>     <td>R</td>            <td>R: Bundle</td>             <td>N/A</td>      	  <td>N/A</td>							<td><code>200</code>, <code>401</code>?</td></tr>
 <tr><td><code>conformance</code></td>    <td>R</td>            <td>R: Conformance</td>        <td>N/A</td>      	  <td>N/A</td>							<td><code>200</code>, <code>404</code></td></tr>
 <tr><td><code>transaction</code></td>    <td>R</td>            <td>R: Bundle</td>             <td>N/A</td>      	  <td>N/A</td>							<td><code>200</code>, <code>400</code>, <code>404</code>, <code>405</code>, <code>409</code>, <code>412</code>, <code>422</code></td></tr>
 <tr><td><code>history</code></td>        <td>R</td>            <td>R: Bundle</td>             <td>N/A</td>     		<td>N/A</td>							<td><code>200</code></td></tr>

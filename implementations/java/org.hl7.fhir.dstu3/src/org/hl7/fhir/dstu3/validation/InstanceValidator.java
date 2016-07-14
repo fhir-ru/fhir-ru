@@ -1302,6 +1302,11 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     return parts.length > 2 && parts[parts.length - 1].equals("resource") && pathEntryHasName(parts[parts.length - 2], "entry");
   }
 
+  private boolean isBundleOutcome(String path) {
+    String[] parts = path.split("\\.");
+    return parts.length > 2 && parts[parts.length - 1].equals("outcome") && pathEntryHasName(parts[parts.length - 2], "response");
+  }
+
 
   private static boolean pathEntryHasName(String thePathEntry, String theName) {
     if (thePathEntry.equals(theName)) {
@@ -2081,7 +2086,7 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     StructureDefinition profile = this.context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/" + resourceName);
     sdTime = sdTime + (System.nanoTime() - t);
     // special case: resource wrapper is reset if we're crossing a bundle boundary, but not otherwise
-    if (element.getSpecial() == SpecialElement.BUNDLE_ENTRY || element.getSpecial() == SpecialElement.PARAMETER ) 
+    if (element.getSpecial() == SpecialElement.BUNDLE_ENTRY || element.getSpecial() == SpecialElement.BUNDLE_OUTCOME || element.getSpecial() == SpecialElement.PARAMETER ) 
       resource = element;
     if (rule(errors, IssueType.INVALID, element.line(), element.col(), stack.getLiteralPath(), profile != null, "No profile found for contained resource of type '" + resourceName + "'"))
       validateResource(errors, resource, element, profile, idstatus, stack);
@@ -2323,7 +2328,7 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
         else // actually, we should never get to here; a bundle entry with method get/delete should not have a resource
           return IdStatus.OPTIONAL;					
       }
-    } else if (isParametersEntry(ei.path))
+    } else if (isParametersEntry(ei.path) || isBundleOutcome(ei.path))
       return IdStatus.OPTIONAL; 
     else
       return IdStatus.REQUIRED; 

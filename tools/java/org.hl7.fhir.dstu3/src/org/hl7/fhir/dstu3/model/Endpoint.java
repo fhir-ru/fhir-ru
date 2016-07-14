@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
+// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
 
 import java.util.*;
 
@@ -37,6 +37,7 @@ import org.hl7.fhir.utilities.Utilities;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
@@ -181,6 +182,7 @@ public class Endpoint extends DomainResource {
      */
     @Child(name = "status", type = {CodeType.class}, order=1, min=1, max=1, modifier=true, summary=true)
     @Description(shortDefinition="active | suspended | error | off", formalDefinition="active | suspended | error | off." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/endpoint-status")
     protected Enumeration<EndpointStatus> status;
 
     /**
@@ -191,14 +193,14 @@ public class Endpoint extends DomainResource {
     protected StringType name;
 
     /**
-     * The organization that exposes the endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).
+     * The organization that manages this endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).
      */
     @Child(name = "managingOrganization", type = {Organization.class}, order=3, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Organization that exposes the endpoint", formalDefinition="The organization that exposes the endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data)." )
+    @Description(shortDefinition="Organization that manages this endpoint (may not be the organization that exposes the endpoint)", formalDefinition="The organization that manages this endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data)." )
     protected Reference managingOrganization;
 
     /**
-     * The actual object that is the target of the reference (The organization that exposes the endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).)
+     * The actual object that is the target of the reference (The organization that manages this endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).)
      */
     protected Organization managingOrganizationTarget;
 
@@ -214,6 +216,7 @@ public class Endpoint extends DomainResource {
      */
     @Child(name = "connectionType", type = {Coding.class}, order=5, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="rest-hook | websocket | email | sms | message", formalDefinition="The type of channel to send notifications on." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/subscription-channel-type")
     protected Coding connectionType;
 
     /**
@@ -221,6 +224,7 @@ public class Endpoint extends DomainResource {
      */
     @Child(name = "method", type = {Coding.class}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="The http verb to be used when calling this endpoint", formalDefinition="The http verb to be used when calling this endpoint." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/http-verb")
     protected List<Coding> method;
 
     /**
@@ -249,6 +253,7 @@ public class Endpoint extends DomainResource {
      */
     @Child(name = "payloadType", type = {CodeableConcept.class}, order=10, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="The type of content that may be used at this endpoint (e.g. XDS Discharge summaries)", formalDefinition="The payload type describes the acceptable content that can be communicated on the endpoint." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/endpoint-payload-type")
     protected List<CodeableConcept> payloadType;
 
     /**
@@ -433,7 +438,7 @@ public class Endpoint extends DomainResource {
     }
 
     /**
-     * @return {@link #managingOrganization} (The organization that exposes the endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).)
+     * @return {@link #managingOrganization} (The organization that manages this endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).)
      */
     public Reference getManagingOrganization() { 
       if (this.managingOrganization == null)
@@ -449,7 +454,7 @@ public class Endpoint extends DomainResource {
     }
 
     /**
-     * @param value {@link #managingOrganization} (The organization that exposes the endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).)
+     * @param value {@link #managingOrganization} (The organization that manages this endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).)
      */
     public Endpoint setManagingOrganization(Reference value) { 
       this.managingOrganization = value;
@@ -457,7 +462,7 @@ public class Endpoint extends DomainResource {
     }
 
     /**
-     * @return {@link #managingOrganization} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The organization that exposes the endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).)
+     * @return {@link #managingOrganization} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The organization that manages this endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).)
      */
     public Organization getManagingOrganizationTarget() { 
       if (this.managingOrganizationTarget == null)
@@ -469,7 +474,7 @@ public class Endpoint extends DomainResource {
     }
 
     /**
-     * @param value {@link #managingOrganization} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The organization that exposes the endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).)
+     * @param value {@link #managingOrganization} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The organization that manages this endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).)
      */
     public Endpoint setManagingOrganizationTarget(Organization value) { 
       this.managingOrganizationTarget = value;
@@ -888,7 +893,7 @@ public class Endpoint extends DomainResource {
         childrenList.add(new Property("identifier", "Identifier", "Identifier for the organization that is used to identify the endpoint across multiple disparate systems.", 0, java.lang.Integer.MAX_VALUE, identifier));
         childrenList.add(new Property("status", "code", "active | suspended | error | off.", 0, java.lang.Integer.MAX_VALUE, status));
         childrenList.add(new Property("name", "string", "A friendly name that this endpoint can be referred to with.", 0, java.lang.Integer.MAX_VALUE, name));
-        childrenList.add(new Property("managingOrganization", "Reference(Organization)", "The organization that exposes the endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).", 0, java.lang.Integer.MAX_VALUE, managingOrganization));
+        childrenList.add(new Property("managingOrganization", "Reference(Organization)", "The organization that manages this endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data).", 0, java.lang.Integer.MAX_VALUE, managingOrganization));
         childrenList.add(new Property("contact", "ContactPoint", "Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting.", 0, java.lang.Integer.MAX_VALUE, contact));
         childrenList.add(new Property("connectionType", "Coding", "The type of channel to send notifications on.", 0, java.lang.Integer.MAX_VALUE, connectionType));
         childrenList.add(new Property("method", "Coding", "The http verb to be used when calling this endpoint.", 0, java.lang.Integer.MAX_VALUE, method));
@@ -1202,7 +1207,7 @@ public class Endpoint extends DomainResource {
    * Path: <b>Endpoint.managingOrganization</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="organization", path="Endpoint.managingOrganization", description="The organization that is exposing the endpoint", type="reference" )
+  @SearchParamDefinition(name="organization", path="Endpoint.managingOrganization", description="The organization that is exposing the endpoint", type="reference", target={Organization.class } )
   public static final String SP_ORGANIZATION = "organization";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>organization</b>

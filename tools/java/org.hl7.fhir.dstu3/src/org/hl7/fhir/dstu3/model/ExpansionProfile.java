@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
+// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
 
 import java.util.*;
 
@@ -38,6 +38,7 @@ import org.hl7.fhir.dstu3.model.Enumerations.*;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
@@ -46,6 +47,7 @@ import org.hl7.fhir.dstu3.exceptions.FHIRException;
  * Resource to define constraints on the Expansion of a FHIR ValueSet.
  */
 @ResourceDef(name="ExpansionProfile", profile="http://hl7.org/fhir/Profile/ExpansionProfile")
+@ChildOrder(names={"url", "identifier", "version", "name", "status", "experimental", "publisher", "contact", "date", "description", "codeSystem", "includeDesignations", "designation", "includeDefinition", "includeInactive", "excludeNested", "excludeNotForUI", "excludePostCoordinated", "displayLanguage", "limitedExpansion"})
 public class ExpansionProfile extends BaseConformance {
 
     @Block()
@@ -1587,6 +1589,7 @@ public class ExpansionProfile extends BaseConformance {
          */
         @Child(name = "language", type = {CodeType.class}, order=1, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Human language of the designation to be included", formalDefinition="The language this designation is defined for." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/languages")
         protected CodeType language;
 
         /**
@@ -1594,6 +1597,7 @@ public class ExpansionProfile extends BaseConformance {
          */
         @Child(name = "use", type = {Coding.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Designation use", formalDefinition="Designation uses for inclusion in the expansion." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/designation-use")
         protected Coding use;
 
         private static final long serialVersionUID = 242239292L;
@@ -1951,6 +1955,7 @@ public class ExpansionProfile extends BaseConformance {
          */
         @Child(name = "language", type = {CodeType.class}, order=1, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Human language of the designation to be excluded", formalDefinition="The language this designation is defined for." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/languages")
         protected CodeType language;
 
         /**
@@ -1958,6 +1963,7 @@ public class ExpansionProfile extends BaseConformance {
          */
         @Child(name = "use", type = {Coding.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="Designation use", formalDefinition="Designation uses for exclusion in the expansion." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/designation-use")
         protected Coding use;
 
         private static final long serialVersionUID = 242239292L;
@@ -2240,6 +2246,7 @@ public class ExpansionProfile extends BaseConformance {
      */
     @Child(name = "displayLanguage", type = {CodeType.class}, order=13, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Specify the language for the display element of codes in the value set expansion", formalDefinition="Specifies the language to be used for description in the expansions i.e. the language to be used for ValueSet.expansion.contains.display." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/languages")
     protected CodeType displayLanguage;
 
     /**

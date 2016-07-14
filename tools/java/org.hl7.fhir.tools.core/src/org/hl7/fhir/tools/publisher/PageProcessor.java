@@ -117,6 +117,7 @@ import org.hl7.fhir.dstu3.model.CodeType;
 import org.hl7.fhir.dstu3.model.CodeableConcept;
 import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.ConceptMap;
+import org.hl7.fhir.dstu3.model.ContactPoint;
 import org.hl7.fhir.dstu3.model.ContactPoint.ContactPointSystem;
 import org.hl7.fhir.dstu3.model.ElementDefinition;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionBindingComponent;
@@ -130,6 +131,7 @@ import org.hl7.fhir.dstu3.model.ImplementationGuide.ImplementationGuidePackageRe
 import org.hl7.fhir.dstu3.model.ImplementationGuide.ImplementationGuidePageComponent;
 import org.hl7.fhir.dstu3.model.IntegerType;
 import org.hl7.fhir.dstu3.model.NamingSystem;
+import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemContactComponent;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemIdentifierType;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemUniqueIdComponent;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
@@ -251,6 +253,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private Set<String> searchTypeUsage = new HashSet<String>();
   private ValueSetValidator vsValidator;
   boolean forPublication;
+  private String resourceCategory;
 
   public PageProcessor(String tsServer) throws URISyntaxException, UcumException {
     super();
@@ -586,6 +589,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1+resItem(com[1], even)+s3;
       } else if (com[0].equals("resdesc")) {
         src = s1+resDesc(com[1])+s3;
+      } else if (com[0].equals("rescat")) {
+        src = s1+resCat(com.length == 1 ? null : s2.substring(7))+s3;
       } else if (com[0].equals("sidebar"))
         src = s1+generateSideBar(com.length > 1 ? com[1] : "")+s3;
       else if (com[0].equals("svg"))
@@ -1110,11 +1115,15 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     StringBuilder b = new StringBuilder();
     for (NamingSystem ns : definitions.getNamingSystems()) {
       b.append("<tr>\r\n");
-      b.append("  <td>"+Utilities.escapeXml(ns.getName())+"</td>\r\n");
+      String url = getPublisherUrl(ns);
+      if (url != null)
+        b.append("  <td><a href=\""+url+"\">"+Utilities.escapeXml(ns.getName())+"</a></td>\r\n");
+      else
+        b.append("  <td>"+Utilities.escapeXml(ns.getName())+"</td>\r\n");
       String uri = getUri(ns);
       String oid = getOid(ns);
       b.append("  <td>"+Utilities.escapeXml(uri)+"</td>\r\n");
-      b.append("  <td>"+(oid == null ? "" : oid)+"</td>\r\n");
+      b.append("  <td style=\"color: DarkGrey\">"+(oid == null ? "" : oid)+"</td>\r\n");
       String country = getCountry(ns);
       country = country == null ? "" : " ("+country+")";
       if (ns.hasType()) {
@@ -1135,6 +1144,16 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       b.append("</tr>\r\n");
     }
     return b.toString();
+  }
+
+  private String getPublisherUrl(NamingSystem ns) {
+    for (NamingSystemContactComponent c : ns.getContact()) {
+      for (ContactPoint cp : c.getTelecom()) {
+        if ((cp.getSystem() == ContactPointSystem.OTHER || cp.getSystem() == null) && (cp.hasValue() && (cp.getValue().startsWith("http:") || cp.getValue().startsWith("https:"))))
+          return cp.getValue();
+      }
+    }
+    return null;
   }
 
   private String getCountry(NamingSystem ns) {
@@ -1392,7 +1411,11 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
 
   private String displayExtensionCardinality(StructureDefinition ed) {
     ElementDefinition e = ed.getSnapshot().getElementFirstRep();
-    return Integer.toString(e.getMin())+".."+e.getMax();
+    String m = "";
+    if (ed.getSnapshot().getElementFirstRep().getIsModifier())
+      m = " <b>M</b>";
+
+    return Integer.toString(e.getMin())+".."+e.getMax()+m;
   }
 
   private String determineExtensionType(StructureDefinition ed) throws Exception {
@@ -1456,7 +1479,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     b.append("\r\n");
     b.append(" <div id=\"tabs-"+name+"-uml\">\r\n");
     b.append("  <div id=\"uml\">\r\n");
-    b.append("   <p><b>UML Diagram</b></p>\r\n");
+    b.append("   <p><b>UML Diagram</b> (<a href=\"formats.html#uml\">Legend</a>)</p>\r\n");
     b.append("   <div id=\"uml-inner\">\r\n");
     b.append("    "+uml1+"\r\n");
     b.append("   </div>\r\n");
@@ -1501,7 +1524,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     b.append("\r\n");
     b.append("  <div id=\"umla\">\r\n");
     b.append("   <a name=\"uml-"+name+"\"> </a>\r\n");
-    b.append("   <p><b>UML Diagram</b></p>\r\n");
+    b.append("   <p><b>UML Diagram</b> (<a href=\"formats.html#uml\">Legend</a>)</p>\r\n");
     b.append("   <div id=\"uml-inner\">\r\n");
     b.append("    "+uml2+"\r\n");
     b.append("   </div>\r\n");
@@ -2171,9 +2194,16 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
 
   }
 
+  private String resCat(String name) throws Exception {
+    resourceCategory = name;
+    return "";
+  }
   private String resDesc(String name) throws Exception {
     if (definitions.hasResource(name)) {
       ResourceDefn r = definitions.getResourceByName(name);
+      if (resourceCategory != null && !ToolingExtensions.hasExtension(r.getProfile(), ToolingExtensions.EXT_RESOURCE_CATEGORY)) {
+        ToolingExtensions.setStringExtension(r.getProfile(), ToolingExtensions.EXT_RESOURCE_CATEGORY, resourceCategory);
+      }
       return Utilities.escapeXml(r.getDefinition());
     } else 
       return " ";
@@ -2482,6 +2512,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   private String getBindingTypeDesc(BindingSpecification binding, String prefix) {
+    if (binding.hasMax())
+      throw new Error("Max binding not handled yet");
     if (binding.getStrength() == null)
       return "";
     else
@@ -2497,6 +2529,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     path = path.equals("") ? e.getName() : path+"."+e.getName();
     if (e.hasBinding() && e.getBinding().getValueSet() == vs) {
       b.append(" <li><a href=\"").append(prefix+ref).append("\">").append(path).append("</a> ").append(getBSTypeDesc(e.getBinding(), prefix)).append("</li>\r\n");
+    }
+    if (e.hasBinding() && e.getBinding().getMaxValueSet() == vs) {
+      b.append(" <li>Max: <a href=\"").append(prefix+ref).append("\">").append(path).append("</a> ").append(getBSTypeDesc(e.getBinding(), prefix)).append("</li>\r\n");
     }
     for (ElementDefn c : e.getElements()) {
       scanForUsage(b, vs, c, path, ref, prefix);
@@ -3677,6 +3712,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1+resItem(com[1], even)+s3;
       } else if (com[0].equals("resdesc")) {
         src = s1+resDesc(com[1])+s3;
+      } else if (com[0].equals("rescat")) {
+        src = s1+resCat(com.length == 1 ? null : s2.substring(7))+s3;
       } else if (com[0].equals("sidebar"))
         src = s1+generateSideBar(com.length > 1 ? com[1] : "")+s3;
       else if (com[0].equals("w5"))
@@ -4098,6 +4135,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1+resItem(com[1], even)+s3;
       } else if (com[0].equals("resdesc")) {
         src = s1+resDesc(com[1])+s3;
+      } else if (com[0].equals("rescat")) {
+        src = s1+resCat(com.length == 1 ? null : s2.substring(7))+s3;
       } else if (com[0].equals("sidebar"))
         src = s1+s3;
       else if (com[0].equals("svg"))
@@ -4734,9 +4773,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       if (op.isSystem())
         b.append("<p>URL: [base]/$").append(op.getName()).append("</p>\r\n");
       if (op.isType())
-        b.append("<p>URL: [base]/").append(n).append("/$").append(op.getName()).append("</p>\r\n");
+        b.append("<p>URL: [base]/").append(checkWrap(n)).append("/$").append(op.getName()).append("</p>\r\n");
       if (op.isInstance())
-        b.append("<p>URL: [base]/").append(n).append("/[id]/$").append(op.getName()).append("</p>\r\n");
+        b.append("<p>URL: [base]/").append(checkWrap(n)).append("/[id]/$").append(op.getName()).append("</p>\r\n");
       if (!op.getParameters().isEmpty()) {
         b.append("<table class=\"grid\">\r\n");
         if (hasParameters(op.getParameters(), "In")) {
@@ -4764,6 +4803,13 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       b.append("<p>&nbsp;</p>");
     }
     return b.toString();
+  }
+
+  private String checkWrap(String n) {
+    if (n.equals("Resource"))
+      return "[Resource]";
+    else
+      return n;
   }
 
   private void renderExample(StringBuilder b, OperationExample ex, String type) throws Exception {
@@ -4922,6 +4968,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     b.append("</td><td>");
     if (p.getBs() != null && p.getBs().getBinding() != BindingMethod.Unbound) {
       b.append("<a href=\""+BaseGenerator.getBindingLink(prefix, p.getBs())+"\">"+(p.getBs().getValueSet() != null ? p.getBs().getValueSet().getName() : p.getBs().getName())+"</a>");
+      if (p.getBs().hasMax())
+        throw new Error("Max binding not handled yet");
+      
       b.append(" (<a href=\""+prefix+"terminologies.html#"+p.getBs().getStrength().toCode()+"\">"+p.getBs().getStrength().getDisplay()+"</a>)");
     }
     b.append("</td><td>");

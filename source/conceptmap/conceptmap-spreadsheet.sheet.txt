@@ -306,10 +306,11 @@
 
  -- Row 32 -----------------------------------
   Element = ConceptMap.group.element.target.dependsOn.system
-  Card. = 1..1
+  Card. = 0..1
   Type = uri
   Short Label = Code System (if necessary)
   Definition = An absolute URI that identifies the code system of the dependency code (if the source/dependency is a value set that crosses code systems)
+  Missing Meaning = The code is in the source (dependsOn) or target (product) system
 
  -- Row 33 -----------------------------------
   Element = ConceptMap.group.element.target.dependsOn.code
@@ -497,7 +498,7 @@
  -- Row 5 -----------------------------------
   Name = translate.source
   Use = in
-  Documentation = Identifies the value set used when the concept (system/code pair) was chosen. May be a logical id, or an absolute or relative location
+  Documentation = Identifies the value set used when the concept (system/code pair) was chosen. May be a logical id, or an absolute or relative location. The source value set is an optional parameter because in some cases, the client cannot know what the source value set is. However, without a source value set, the server may be unable to safely identify an applicable concept map, and would return an error. For this reason, a source value set SHOULD always be provided. Note that servers may be able to identify an appropriate concept map without a source value set if there is a full mapping for the entire code system in the concept map, or by manual intervention
   Type = uri
   Min = 0
   Max = 1
@@ -666,7 +667,7 @@
  -- Row 27 -----------------------------------
   Name = closure.return
   Use = out
-  Documentation = A list of new entries (code / system --> code/system) that the client should add to its closure table. The only kind of entry mapping equivalences that can be returned are equal, narrower, wider, and unmatched
+  Documentation = A list of new entries (code / system --> code/system) that the client should add to its closure table. The only kind of entry mapping equivalences that can be returned are equal, specializes, subsumes and unmatched
   Type = ConceptMap
   Min = 1
   Max = 1

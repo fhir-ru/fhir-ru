@@ -29,13 +29,14 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
+// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
 
 import java.util.*;
 
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.dstu3.model.Enumerations.*;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.DatatypeDef;
 import ca.uhn.fhir.model.api.annotation.Block;
@@ -59,6 +60,7 @@ public class Attachment extends Type implements ICompositeType {
      */
     @Child(name = "language", type = {CodeType.class}, order=1, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Human language of the content (BCP-47)", formalDefinition="The human language of the content. The value can be any valid value according to BCP 47." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/languages")
     protected CodeType language;
 
     /**

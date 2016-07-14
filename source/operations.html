@@ -49,7 +49,7 @@ Operations are executed using a URL derived from the FHIR endpoint, where the na
  POST http://fhir.someserver.org/fhir/Patient/1/$everything
 </pre>
 <p>
-When an operation is idempotent, and the parameters are all simple ones 
+When an operation is idempotent, and the parameters are all primitive data types with no extensions 
 (as is the case with the example above), it may be invoked using GET as well.
 </p>
 <p>
@@ -129,8 +129,7 @@ For each parameter, the following information is needed:
  <li>(Optional) Search Type - if the type is a string, and the parameter is being used like a search parameter, which kind of search type applies</li>
 </ul>
 <p>
-There is a special parameter type called "Tuple" which is a parameter type that has additional
-parts. Each part has the same information as a parameter, except for use, which is taken from
+Prameters may bes nested into multi-part parameteters. Each part has the same information as a parameter, except for use, which is taken from
 the parameter it is part of.
 </p>
 
@@ -205,13 +204,17 @@ which can be useful when testing an operation using HTML forms.
 <h4>Operation Response</h4>
 
 <p>
-If an operation succeeds, an HTTP Status code of 200 OK is returned. An
-HTTP status code of 4xx or 5xx indicates an error, and an
-<a href="operationoutcome.html">OperationOutcome</a> may be returned.
-User agents should note that servers may issue redirects, etc. to
-authenticate the client in response to an operation request.
+If an operation succeeds, an HTTP Status success code is returned. 
+This will usually be a 2xx code, though it may also be a 303 See Other.
+Other kinds of 3xx codes should be understood to indicate that the 
+operation did not proceed, and the client will need to re-issue the 
+operation if it can perform the redirection (e.g. may get redirected
+to an authentication step). User agents should note that servers 
+may issue redirects, etc. to authenticate the client in response to 
+an operation request. An HTTP status code of 4xx or 5xx indicates 
+an error, and an <a href="operationoutcome.html">OperationOutcome</a> 
+SHOULD be returned with details. 
 </p>
-
 <p>
 In general, an operation response uses the same
 <a href="parameters.html">Parameters</a> format whether there is only one or 

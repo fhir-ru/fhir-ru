@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
+// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
 
 import java.util.*;
 
@@ -38,6 +38,7 @@ import org.hl7.fhir.dstu3.model.Enumerations.*;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
@@ -161,6 +162,7 @@ public class Patient extends DomainResource {
          */
         @Child(name = "relationship", type = {CodeableConcept.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
         @Description(shortDefinition="The kind of relationship", formalDefinition="The nature of the relationship between the patient and the contact person." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/v2-0131")
         protected List<CodeableConcept> relationship;
 
         /**
@@ -189,6 +191,7 @@ public class Patient extends DomainResource {
          */
         @Child(name = "gender", type = {CodeType.class}, order=5, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="male | female | other | unknown", formalDefinition="Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/administrative-gender")
         protected Enumeration<AdministrativeGender> gender;
 
         /**
@@ -673,6 +676,7 @@ public class Patient extends DomainResource {
          */
         @Child(name = "species", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=true)
         @Description(shortDefinition="E.g. Dog, Cow", formalDefinition="Identifies the high level taxonomic categorization of the kind of animal." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/animal-species")
         protected CodeableConcept species;
 
         /**
@@ -680,6 +684,7 @@ public class Patient extends DomainResource {
          */
         @Child(name = "breed", type = {CodeableConcept.class}, order=2, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="E.g. Poodle, Angus", formalDefinition="Identifies the detailed categorization of the kind of animal." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/animal-breeds")
         protected CodeableConcept breed;
 
         /**
@@ -687,6 +692,7 @@ public class Patient extends DomainResource {
          */
         @Child(name = "genderStatus", type = {CodeableConcept.class}, order=3, min=0, max=1, modifier=false, summary=true)
         @Description(shortDefinition="E.g. Neutered, Intact", formalDefinition="Indicates the current state of the animal's reproductive organs." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/animal-genderstatus")
         protected CodeableConcept genderStatus;
 
         private static final long serialVersionUID = -549738382L;
@@ -903,6 +909,7 @@ public class Patient extends DomainResource {
          */
         @Child(name = "language", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="The language which can be used to communicate with the patient about his or her health", formalDefinition="The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. \"en\" for English, or \"en-US\" for American English versus \"en-EN\" for England English." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/languages")
         protected CodeableConcept language;
 
         /**
@@ -1105,23 +1112,24 @@ public class Patient extends DomainResource {
         /**
          * The other patient resource that the link refers to.
          */
-        @Child(name = "other", type = {Patient.class}, order=1, min=1, max=1, modifier=true, summary=false)
-        @Description(shortDefinition="The other patient resource that the link refers to", formalDefinition="The other patient resource that the link refers to." )
+        @Child(name = "other", type = {Patient.class, RelatedPerson.class}, order=1, min=1, max=1, modifier=true, summary=true)
+        @Description(shortDefinition="The other patient or related person resource that the link refers to", formalDefinition="The other patient resource that the link refers to." )
         protected Reference other;
 
         /**
          * The actual object that is the target of the reference (The other patient resource that the link refers to.)
          */
-        protected Patient otherTarget;
+        protected Resource otherTarget;
 
         /**
          * The type of link between this patient resource and another patient resource.
          */
-        @Child(name = "type", type = {CodeType.class}, order=2, min=1, max=1, modifier=true, summary=false)
+        @Child(name = "type", type = {CodeType.class}, order=2, min=1, max=1, modifier=true, summary=true)
         @Description(shortDefinition="replace | refer | seealso - type of link", formalDefinition="The type of link between this patient resource and another patient resource." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/link-type")
         protected Enumeration<LinkType> type;
 
-        private static final long serialVersionUID = -1942104050L;
+        private static final long serialVersionUID = 1083576633L;
 
     /**
      * Constructor
@@ -1166,19 +1174,14 @@ public class Patient extends DomainResource {
         /**
          * @return {@link #other} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The other patient resource that the link refers to.)
          */
-        public Patient getOtherTarget() { 
-          if (this.otherTarget == null)
-            if (Configuration.errorOnAutoCreate())
-              throw new Error("Attempt to auto-create PatientLinkComponent.other");
-            else if (Configuration.doAutoCreate())
-              this.otherTarget = new Patient(); // aa
+        public Resource getOtherTarget() { 
           return this.otherTarget;
         }
 
         /**
          * @param value {@link #other} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The other patient resource that the link refers to.)
          */
-        public PatientLinkComponent setOtherTarget(Patient value) { 
+        public PatientLinkComponent setOtherTarget(Resource value) { 
           this.otherTarget = value;
           return this;
         }
@@ -1230,7 +1233,7 @@ public class Patient extends DomainResource {
 
         protected void listChildren(List<Property> childrenList) {
           super.listChildren(childrenList);
-          childrenList.add(new Property("other", "Reference(Patient)", "The other patient resource that the link refers to.", 0, java.lang.Integer.MAX_VALUE, other));
+          childrenList.add(new Property("other", "Reference(Patient|RelatedPerson)", "The other patient resource that the link refers to.", 0, java.lang.Integer.MAX_VALUE, other));
           childrenList.add(new Property("type", "code", "The type of link between this patient resource and another patient resource.", 0, java.lang.Integer.MAX_VALUE, type));
         }
 
@@ -1363,6 +1366,7 @@ public class Patient extends DomainResource {
      */
     @Child(name = "gender", type = {CodeType.class}, order=4, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="male | female | other | unknown", formalDefinition="Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/administrative-gender")
     protected Enumeration<AdministrativeGender> gender;
 
     /**
@@ -1391,6 +1395,7 @@ public class Patient extends DomainResource {
      */
     @Child(name = "maritalStatus", type = {CodeableConcept.class}, order=8, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Marital (civil) status of a patient", formalDefinition="This field contains a patient's most recent marital (civil) status." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/marital-status")
     protected CodeableConcept maritalStatus;
 
     /**
@@ -1431,13 +1436,13 @@ public class Patient extends DomainResource {
     /**
      * Patient's nominated care provider.
      */
-    @Child(name = "careProvider", type = {Organization.class, Practitioner.class}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "generalPractitioner", type = {Organization.class, Practitioner.class}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Patient's nominated primary care provider", formalDefinition="Patient's nominated care provider." )
-    protected List<Reference> careProvider;
+    protected List<Reference> generalPractitioner;
     /**
      * The actual objects that are the target of the reference (Patient's nominated care provider.)
      */
-    protected List<Resource> careProviderTarget;
+    protected List<Resource> generalPractitionerTarget;
 
 
     /**
@@ -1455,11 +1460,11 @@ public class Patient extends DomainResource {
     /**
      * Link to another patient resource that concerns the same actual patient.
      */
-    @Child(name = "link", type = {}, order=16, min=0, max=Child.MAX_UNLIMITED, modifier=true, summary=false)
+    @Child(name = "link", type = {}, order=16, min=0, max=Child.MAX_UNLIMITED, modifier=true, summary=true)
     @Description(shortDefinition="Link to another patient resource that concerns the same actual person", formalDefinition="Link to another patient resource that concerns the same actual patient." )
     protected List<PatientLinkComponent> link;
 
-    private static final long serialVersionUID = 2019992554L;
+    private static final long serialVersionUID = -1985061666L;
 
   /**
    * Constructor
@@ -2121,66 +2126,66 @@ public class Patient extends DomainResource {
     }
 
     /**
-     * @return {@link #careProvider} (Patient's nominated care provider.)
+     * @return {@link #generalPractitioner} (Patient's nominated care provider.)
      */
-    public List<Reference> getCareProvider() { 
-      if (this.careProvider == null)
-        this.careProvider = new ArrayList<Reference>();
-      return this.careProvider;
+    public List<Reference> getGeneralPractitioner() { 
+      if (this.generalPractitioner == null)
+        this.generalPractitioner = new ArrayList<Reference>();
+      return this.generalPractitioner;
     }
 
     /**
      * @return Returns a reference to <code>this</code> for easy method chaining
      */
-    public Patient setCareProvider(List<Reference> theCareProvider) { 
-      this.careProvider = theCareProvider;
+    public Patient setGeneralPractitioner(List<Reference> theGeneralPractitioner) { 
+      this.generalPractitioner = theGeneralPractitioner;
       return this;
     }
 
-    public boolean hasCareProvider() { 
-      if (this.careProvider == null)
+    public boolean hasGeneralPractitioner() { 
+      if (this.generalPractitioner == null)
         return false;
-      for (Reference item : this.careProvider)
+      for (Reference item : this.generalPractitioner)
         if (!item.isEmpty())
           return true;
       return false;
     }
 
-    public Reference addCareProvider() { //3
+    public Reference addGeneralPractitioner() { //3
       Reference t = new Reference();
-      if (this.careProvider == null)
-        this.careProvider = new ArrayList<Reference>();
-      this.careProvider.add(t);
+      if (this.generalPractitioner == null)
+        this.generalPractitioner = new ArrayList<Reference>();
+      this.generalPractitioner.add(t);
       return t;
     }
 
-    public Patient addCareProvider(Reference t) { //3
+    public Patient addGeneralPractitioner(Reference t) { //3
       if (t == null)
         return this;
-      if (this.careProvider == null)
-        this.careProvider = new ArrayList<Reference>();
-      this.careProvider.add(t);
+      if (this.generalPractitioner == null)
+        this.generalPractitioner = new ArrayList<Reference>();
+      this.generalPractitioner.add(t);
       return this;
     }
 
     /**
-     * @return The first repetition of repeating field {@link #careProvider}, creating it if it does not already exist
+     * @return The first repetition of repeating field {@link #generalPractitioner}, creating it if it does not already exist
      */
-    public Reference getCareProviderFirstRep() { 
-      if (getCareProvider().isEmpty()) {
-        addCareProvider();
+    public Reference getGeneralPractitionerFirstRep() { 
+      if (getGeneralPractitioner().isEmpty()) {
+        addGeneralPractitioner();
       }
-      return getCareProvider().get(0);
+      return getGeneralPractitioner().get(0);
     }
 
     /**
      * @deprecated Use Reference#setResource(IBaseResource) instead
      */
     @Deprecated
-    public List<Resource> getCareProviderTarget() { 
-      if (this.careProviderTarget == null)
-        this.careProviderTarget = new ArrayList<Resource>();
-      return this.careProviderTarget;
+    public List<Resource> getGeneralPractitionerTarget() { 
+      if (this.generalPractitionerTarget == null)
+        this.generalPractitionerTarget = new ArrayList<Resource>();
+      return this.generalPractitionerTarget;
     }
 
     /**
@@ -2296,7 +2301,7 @@ public class Patient extends DomainResource {
         childrenList.add(new Property("contact", "", "A contact party (e.g. guardian, partner, friend) for the patient.", 0, java.lang.Integer.MAX_VALUE, contact));
         childrenList.add(new Property("animal", "", "This patient is known to be an animal.", 0, java.lang.Integer.MAX_VALUE, animal));
         childrenList.add(new Property("communication", "", "Languages which may be used to communicate with the patient about his or her health.", 0, java.lang.Integer.MAX_VALUE, communication));
-        childrenList.add(new Property("careProvider", "Reference(Organization|Practitioner)", "Patient's nominated care provider.", 0, java.lang.Integer.MAX_VALUE, careProvider));
+        childrenList.add(new Property("generalPractitioner", "Reference(Organization|Practitioner)", "Patient's nominated care provider.", 0, java.lang.Integer.MAX_VALUE, generalPractitioner));
         childrenList.add(new Property("managingOrganization", "Reference(Organization)", "Organization that is the custodian of the patient record.", 0, java.lang.Integer.MAX_VALUE, managingOrganization));
         childrenList.add(new Property("link", "", "Link to another patient resource that concerns the same actual patient.", 0, java.lang.Integer.MAX_VALUE, link));
       }
@@ -2318,7 +2323,7 @@ public class Patient extends DomainResource {
         case 951526432: /*contact*/ return this.contact == null ? new Base[0] : this.contact.toArray(new Base[this.contact.size()]); // ContactComponent
         case -1413116420: /*animal*/ return this.animal == null ? new Base[0] : new Base[] {this.animal}; // AnimalComponent
         case -1035284522: /*communication*/ return this.communication == null ? new Base[0] : this.communication.toArray(new Base[this.communication.size()]); // PatientCommunicationComponent
-        case 1963803682: /*careProvider*/ return this.careProvider == null ? new Base[0] : this.careProvider.toArray(new Base[this.careProvider.size()]); // Reference
+        case 1488292898: /*generalPractitioner*/ return this.generalPractitioner == null ? new Base[0] : this.generalPractitioner.toArray(new Base[this.generalPractitioner.size()]); // Reference
         case -2058947787: /*managingOrganization*/ return this.managingOrganization == null ? new Base[0] : new Base[] {this.managingOrganization}; // Reference
         case 3321850: /*link*/ return this.link == null ? new Base[0] : this.link.toArray(new Base[this.link.size()]); // PatientLinkComponent
         default: return super.getProperty(hash, name, checkValid);
@@ -2371,8 +2376,8 @@ public class Patient extends DomainResource {
         case -1035284522: // communication
           this.getCommunication().add((PatientCommunicationComponent) value); // PatientCommunicationComponent
           break;
-        case 1963803682: // careProvider
-          this.getCareProvider().add(castToReference(value)); // Reference
+        case 1488292898: // generalPractitioner
+          this.getGeneralPractitioner().add(castToReference(value)); // Reference
           break;
         case -2058947787: // managingOrganization
           this.managingOrganization = castToReference(value); // Reference
@@ -2415,8 +2420,8 @@ public class Patient extends DomainResource {
           this.animal = (AnimalComponent) value; // AnimalComponent
         else if (name.equals("communication"))
           this.getCommunication().add((PatientCommunicationComponent) value);
-        else if (name.equals("careProvider"))
-          this.getCareProvider().add(castToReference(value));
+        else if (name.equals("generalPractitioner"))
+          this.getGeneralPractitioner().add(castToReference(value));
         else if (name.equals("managingOrganization"))
           this.managingOrganization = castToReference(value); // Reference
         else if (name.equals("link"))
@@ -2442,7 +2447,7 @@ public class Patient extends DomainResource {
         case 951526432:  return addContact(); // ContactComponent
         case -1413116420:  return getAnimal(); // AnimalComponent
         case -1035284522:  return addCommunication(); // PatientCommunicationComponent
-        case 1963803682:  return addCareProvider(); // Reference
+        case 1488292898:  return addGeneralPractitioner(); // Reference
         case -2058947787:  return getManagingOrganization(); // Reference
         case 3321850:  return addLink(); // PatientLinkComponent
         default: return super.makeProperty(hash, name);
@@ -2506,8 +2511,8 @@ public class Patient extends DomainResource {
         else if (name.equals("communication")) {
           return addCommunication();
         }
-        else if (name.equals("careProvider")) {
-          return addCareProvider();
+        else if (name.equals("generalPractitioner")) {
+          return addGeneralPractitioner();
         }
         else if (name.equals("managingOrganization")) {
           this.managingOrganization = new Reference();
@@ -2570,10 +2575,10 @@ public class Patient extends DomainResource {
           for (PatientCommunicationComponent i : communication)
             dst.communication.add(i.copy());
         };
-        if (careProvider != null) {
-          dst.careProvider = new ArrayList<Reference>();
-          for (Reference i : careProvider)
-            dst.careProvider.add(i.copy());
+        if (generalPractitioner != null) {
+          dst.generalPractitioner = new ArrayList<Reference>();
+          for (Reference i : generalPractitioner)
+            dst.generalPractitioner.add(i.copy());
         };
         dst.managingOrganization = managingOrganization == null ? null : managingOrganization.copy();
         if (link != null) {
@@ -2599,7 +2604,7 @@ public class Patient extends DomainResource {
            && compareDeep(telecom, o.telecom, true) && compareDeep(gender, o.gender, true) && compareDeep(birthDate, o.birthDate, true)
            && compareDeep(deceased, o.deceased, true) && compareDeep(address, o.address, true) && compareDeep(maritalStatus, o.maritalStatus, true)
            && compareDeep(multipleBirth, o.multipleBirth, true) && compareDeep(photo, o.photo, true) && compareDeep(contact, o.contact, true)
-           && compareDeep(animal, o.animal, true) && compareDeep(communication, o.communication, true) && compareDeep(careProvider, o.careProvider, true)
+           && compareDeep(animal, o.animal, true) && compareDeep(communication, o.communication, true) && compareDeep(generalPractitioner, o.generalPractitioner, true)
            && compareDeep(managingOrganization, o.managingOrganization, true) && compareDeep(link, o.link, true)
           ;
       }
@@ -2618,8 +2623,8 @@ public class Patient extends DomainResource {
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, active, name
           , telecom, gender, birthDate, deceased, address, maritalStatus, multipleBirth
-          , photo, contact, animal, communication, careProvider, managingOrganization, link
-          );
+          , photo, contact, animal, communication, generalPractitioner, managingOrganization
+          , link);
       }
 
   @Override
@@ -2735,7 +2740,7 @@ public class Patient extends DomainResource {
    * Path: <b>Patient.link.other</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="link", path="Patient.link.other", description="All patients linked to the given patient", type="reference" )
+  @SearchParamDefinition(name="link", path="Patient.link.other", description="All patients linked to the given patient", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="RelatedPerson") }, target={Patient.class, RelatedPerson.class } )
   public static final String SP_LINK = "link";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>link</b>
@@ -2974,6 +2979,32 @@ public class Patient extends DomainResource {
   public static final ca.uhn.fhir.rest.gclient.StringClientParam ADDRESS = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_ADDRESS);
 
  /**
+   * Search parameter: <b>general-practitioner</b>
+   * <p>
+   * Description: <b>Patient's nominated general practitioner, not the organization that manages the record</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Patient.generalPractitioner</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="general-practitioner", path="Patient.generalPractitioner", description="Patient's nominated general practitioner, not the organization that manages the record", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Organization.class, Practitioner.class } )
+  public static final String SP_GENERAL_PRACTITIONER = "general-practitioner";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>general-practitioner</b>
+   * <p>
+   * Description: <b>Patient's nominated general practitioner, not the organization that manages the record</b><br>
+   * Type: <b>reference</b><br>
+   * Path: <b>Patient.generalPractitioner</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam GENERAL_PRACTITIONER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_GENERAL_PRACTITIONER);
+
+/**
+   * Constant for fluent queries to be used to add include statements. Specifies
+   * the path value of "<b>Patient:general-practitioner</b>".
+   */
+  public static final ca.uhn.fhir.model.api.Include INCLUDE_GENERAL_PRACTITIONER = new ca.uhn.fhir.model.api.Include("Patient:general-practitioner").toLocked();
+
+ /**
    * Search parameter: <b>active</b>
    * <p>
    * Description: <b>Whether the patient record is active</b><br>
@@ -3014,32 +3045,6 @@ public class Patient extends DomainResource {
   public static final ca.uhn.fhir.rest.gclient.StringClientParam ADDRESS_POSTALCODE = new ca.uhn.fhir.rest.gclient.StringClientParam(SP_ADDRESS_POSTALCODE);
 
  /**
-   * Search parameter: <b>careprovider</b>
-   * <p>
-   * Description: <b>Patient's nominated care provider, could be a care manager, not the organization that manages the record</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Patient.careProvider</b><br>
-   * </p>
-   */
-  @SearchParamDefinition(name="careprovider", path="Patient.careProvider", description="Patient's nominated care provider, could be a care manager, not the organization that manages the record", type="reference" )
-  public static final String SP_CAREPROVIDER = "careprovider";
- /**
-   * <b>Fluent Client</b> search parameter constant for <b>careprovider</b>
-   * <p>
-   * Description: <b>Patient's nominated care provider, could be a care manager, not the organization that manages the record</b><br>
-   * Type: <b>reference</b><br>
-   * Path: <b>Patient.careProvider</b><br>
-   * </p>
-   */
-  public static final ca.uhn.fhir.rest.gclient.ReferenceClientParam CAREPROVIDER = new ca.uhn.fhir.rest.gclient.ReferenceClientParam(SP_CAREPROVIDER);
-
-/**
-   * Constant for fluent queries to be used to add include statements. Specifies
-   * the path value of "<b>Patient:careprovider</b>".
-   */
-  public static final ca.uhn.fhir.model.api.Include INCLUDE_CAREPROVIDER = new ca.uhn.fhir.model.api.Include("Patient:careprovider").toLocked();
-
- /**
    * Search parameter: <b>phone</b>
    * <p>
    * Description: <b>A value in a phone contact</b><br>
@@ -3067,7 +3072,7 @@ public class Patient extends DomainResource {
    * Path: <b>Patient.managingOrganization</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="organization", path="Patient.managingOrganization", description="The organization at which this person is a patient", type="reference" )
+  @SearchParamDefinition(name="organization", path="Patient.managingOrganization", description="The organization at which this person is a patient", type="reference", target={Organization.class } )
   public static final String SP_ORGANIZATION = "organization";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>organization</b>

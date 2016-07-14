@@ -35,6 +35,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.PatternSyntaxException;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
@@ -132,7 +133,7 @@ public class ResourceValidator extends BaseValidator {
 
   public void checkStucture(List<ValidationMessage> errors, String name, ElementDefn structure) throws Exception {
     rule(errors, IssueType.STRUCTURE, structure.getName(), name.length() > 1 && Character.isUpperCase(name.charAt(0)), "Resource Name must start with an uppercase alpha character");
-    checkElement(errors, structure.getName(), structure, null, null, true, false, hasSummary(structure), new ArrayList<String>());
+    checkElement(errors, structure.getName(), structure, null, null, true, false, hasSummary(structure), new ArrayList<String>(), true);
   }
   
   private boolean hasSummary(ElementDefn structure) {
@@ -204,7 +205,7 @@ public class ResourceValidator extends BaseValidator {
       suppressedwarning(errors, IssueType.BUSINESSRULE, rd.getName()+".$"+op.getName(), hasOpExample(op.getExamples(), true), "Operation must have an example response");
     }
     List<String> vsWarns = new ArrayList<String>();
-    int vsWarnings = checkElement(errors, rd.getName(), rd.getRoot(), rd, null, s == null || !s.equalsIgnoreCase("n/a"), false, hasSummary(rd.getRoot()), vsWarns);
+    int vsWarnings = checkElement(errors, rd.getName(), rd.getRoot(), rd, null, s == null || !s.equalsIgnoreCase("n/a"), false, hasSummary(rd.getRoot()), vsWarns, true);
     
     if (!resourceIsTechnical(name)) { // these are exempt because identification is tightly managed
       ElementDefn id = rd.getRoot().getElementByName(definitions, "identifier", true, false);
@@ -458,7 +459,7 @@ public class ResourceValidator extends BaseValidator {
   
 	//todo: check that primitives *in datatypes* don't repeat
 	
-	private int checkElement(List<ValidationMessage> errors, String path, ElementDefn e, ResourceDefn parent, String parentName, boolean needsRimMapping, boolean optionalParent, boolean hasSummary, List<String> vsWarns) throws Exception {
+	private int checkElement(List<ValidationMessage> errors, String path, ElementDefn e, ResourceDefn parent, String parentName, boolean needsRimMapping, boolean optionalParent, boolean hasSummary, List<String> vsWarns, boolean parentInSummary) throws Exception {
 //	  for (TypeRef t : e.getTypes()) {
 //  	  if (!typeCounter.containsKey(t.getName()))
 //	      typeCounter.put(t.getName(), 1);
@@ -479,6 +480,9 @@ public class ResourceValidator extends BaseValidator {
 		
     if (!hasSummary)
       e.setSummaryItem(true);
+    else if (parentInSummary)
+      rule(errors, IssueType.STRUCTURE, path, hasSummary(e) || !e.isModifier(),  "A modifier element must be in the summary ("+path+")");
+      
     rule(errors, IssueType.STRUCTURE, path, optionalParent || e.isSummary() || !path.contains(".") || e.getMinCardinality() == 0,  "An element with a minimum cardinality = 1 must be in the summary ("+path+")");
     optionalParent = optionalParent || e.getMinCardinality() == 0;
     
@@ -606,7 +610,7 @@ public class ResourceValidator extends BaseValidator {
     }
     
     for (ElementDefn c : e.getElements()) {
-      vsWarnings = vsWarnings + checkElement(errors, path + "." + c.getName(), c, parent, e.getName(), needsRimMapping, optionalParent, hasSummary, vsWarns);
+      vsWarnings = vsWarnings + checkElement(errors, path + "." + c.getName(), c, parent, e.getName(), needsRimMapping, optionalParent, hasSummary, vsWarns, parentInSummary && hasSummary(e));
     }
 		return vsWarnings;
 	}
@@ -789,7 +793,7 @@ public class ResourceValidator extends BaseValidator {
     // now, rules for the source
     suppressedwarning(errors, IssueType.STRUCTURE, "Binding @ "+path, cd.getBinding() != BindingMethod.Unbound, "Need to provide a binding");
     rule(errors, IssueType.STRUCTURE, "Binding @ "+path, cd.getElementType() != ElementType.Simple || cd.getBinding() != BindingMethod.Unbound, "Need to provide a binding for code elements");
-    rule(errors, IssueType.STRUCTURE, "Binding @ "+path, (cd.getElementType() != ElementType.Simple || cd.getStrength() == BindingStrength.REQUIRED), "Must be a required binding if bound to a code instead of a Coding/CodeableConcept");
+    rule(errors, IssueType.STRUCTURE, "Binding @ "+path, (cd.getElementType() != ElementType.Simple || cd.getStrength() == BindingStrength.REQUIRED || cd.hasMax()), "Must be a required binding if bound to a code instead of a Coding/CodeableConcept");
     rule(errors, IssueType.STRUCTURE, "Binding @ "+path, Utilities.noString(cd.getDefinition())  || (cd.getDefinition().charAt(0) == cd.getDefinition().toUpperCase().charAt(0)), "Definition cannot start with a lowercase letter");
     if (cd.getBinding() == BindingMethod.CodeList) {
       if (path.toLowerCase().endsWith("status")) {
@@ -838,7 +842,7 @@ public class ResourceValidator extends BaseValidator {
       else
         cd.setElementType(ElementType.Simple);
     } else if (cd.getBinding() != BindingMethod.Reference)
-      if (isComplex)
+      if (isComplex && !cd.hasMax())
         rule(errors, IssueType.STRUCTURE, path, cd.getElementType() == ElementType.Complex, "Cannot use a binding from both code and Coding/CodeableConcept elements");
       else
         rule(errors, IssueType.STRUCTURE, path, cd.getElementType() == ElementType.Simple, "Cannot use a binding from both code and Coding/CodeableConcept elements");

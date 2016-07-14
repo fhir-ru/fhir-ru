@@ -139,81 +139,62 @@
 	<description value="..."/>
 	<publicationDate value="2015-08-15"/>
 	<coverage>
-		<focus><code value="patient-age-group"/></focus>
-		<value>
+		<patientAgeGroup>
 			<coding>
 				<!-- Error: Connection to http://localhost:960 refused -->
 				<!--<system value="http://snomed.info/sct"/>-->
 				<code value="133936004"/>
 				<display value="Adult"/>
 			</coding>
-		</value>
-	</coverage>
-	<coverage>
-		<focus><code value="clinical-focus"/></focus>
-		<value>
+		</patientAgeGroup>
+		<clinicalFocus>
 			<coding>
 				<!-- Error: Connection to http://localhost:960 refused -->
 				<!--<system value="http://snomed.info/sct"/>-->
 				<code value="87512008"/>
 				<display value="Mild major depression"/>
 			</coding>
-		</value>
-	</coverage>
-	<coverage>
-		<focus><code value="clinical-focus"/></focus>
-		<value>
+		</clinicalFocus>
+		<clinicalFocus>
 			<coding>
 				<!-- Error: Connection to http://localhost:960 refused -->
 				<!--<system value="http://snomed.info/sct"/>-->
 				<code value="40379007"/>
 				<display value="Major depression, recurrent, mild"/>
 			</coding>
-		</value>
-	</coverage>
-	<coverage>
-		<focus><code value="clinical-focus"/></focus>
-		<value>
+		</clinicalFocus>
+		<clinicalFocus>
 			<coding>
 				<!-- Error: Connection to http://localhost:960 refused -->
 				<!--<system value="http://snomed.info/sct"/>-->
 				<code value="394687007"/>
 				<display value="Low suicide risk"/>
 			</coding>
-		</value>
-	</coverage>
-	<coverage>
-		<focus><code value="clinical-focus"/></focus>
-		<value>
+		</clinicalFocus>
+		<clinicalFocus>
 			<coding>
 				<!-- Error: Connection to http://localhost:960 refused -->
 				<!--<system value="http://snomed.info/sct"/>-->
 				<code value="225337009"/>
 				<display value="Suicide risk assessment"/>
 			</coding>
-		</value>
-	</coverage>
-	<coverage>
-		<focus><code value="clinical-venue"/></focus>
-		<value>
-			<coding>
-				<!-- Error: Connection to http://localhost:960 refused -->
-				<!--<system value="http://snomed.info/sct"/>-->
-				<code value="440655000"/>
-				<display value="Outpatient environment"/>
-			</coding>
-		</value>
-	</coverage>
-	<coverage>
-		<focus><code value="target-user"/></focus>
-		<value>
+		</clinicalFocus>
+		<targetUser>
 			<coding>
 				<!-- Error: Connection to http://localhost:960 refused -->
 				<!--<system value="http://snomed.info/sct"/>-->
 				<code value="309343006"/>
 				<display value="Physician"/>
 			</coding>
-		</value>
+		</targetUser>
+		<clinicalVenue>
+			<coding>
+				<!-- Error: Connection to http://localhost:960 refused -->
+				<!--<system value="http://snomed.info/sct"/>-->
+				<code value="440655000"/>
+				<display value="Outpatient environment"/>
+			</coding>
+		</clinicalVenue>
 	</coverage>
 	<topic>
 		<text value="Chlamydia Screeening"/>
@@ -259,14 +240,8 @@
 		<!-- Consults and Referrals -->
 		<actionDefinition>
 			<title value="Consults and Referrals"/>
-			<behavior>
-				<type><code value="grouping-behavior"/></type>
-				<value><code value="logical-group"/></value>
-			</behavior>
-			<behavior>
-				<type><code value="selection-behavior"/></type>
-				<value><code value="any"/></value>
-			</behavior>
+			<groupingBehavior value="logical-group"/>
+			<selectionBehavior value="any"/>
 			<actionDefinition>
 				<!-- Refer to outpatient mental health program for evaluation and treatment of mental health conditions now -->
 				<textEquivalent value="Refer to outpatient mental health program for evaluation and treatment of mental health conditions now"/>
@@ -306,14 +281,8 @@
 		<!-- Medications -->
 		<actionDefinition>
 			<title value="Medications"/>
-			<behavior>
-				<type><code value="grouping-behavior"/></type>
-				<value><code value="logical-group"/></value>
-			</behavior>
-			<behavior>
-				<type><code value="selection-behavior"/></type>
-				<value><code value="at-most-one"/></value>
-			</behavior>
+			<groupingBehavior value="logical-group"/>
+			<selectionBehavior value="at-most-one"/>
 			<actionDefinition>
 
 				<!-- First-Line Antidepressants -->
@@ -323,14 +292,8 @@
 					<url value="http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"/>
 					<title value="Practice Guideline for the Treatment of Patients with Major Depressive Disorder"/>
 				</supportingEvidence>
-				<behavior>
-					<type><code value="grouping-behavior"/></type>
-					<value><code value="logical-group"/></value>
-				</behavior>
-				<behavior>
-					<type><code value="selection-behavior"/></type>
-					<value><code value="at-most-one"/></value>
-				</behavior>
+				<groupingBehavior value="logical-group"/>
+				<selectionBehavior value="at-most-one"/>
 				<actionDefinition>
 					<!-- Selective Serotonin Reuptake Inhibitors (Choose a maximum of one or document reasons for exception) -->
 					<title value="Selective Serotonin Reuptake Inhibitors (Choose a mazimum of one or document reasons for exception)"/>
@@ -339,14 +302,8 @@
 						<url value="http://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6daeb45c-451d-b135-bf8f-2d6dff4b6b01"/>
 						<title value="National Library of Medicine. DailyMed website. CITALOPRAM- citalopram hydrobromide tablet, film coated."/>
 					</documentation>
-					<behavior>
-						<type><code value="grouping-behavior"/></type>
-						<value><code value="logical-group"/></value>
-					</behavior>
-					<behavior>
-						<type><code value="selection-behavior"/></type>
-						<value><code value="at-most-one"/></value>
-					</behavior>
+					<groupingBehavior value="logical-group"/>
+					<selectionBehavior value="at-most-one"/>
 					<actionDefinition>
 						<!-- citalopram 20 mg tablet 1 tablet oral 1 time daily now (30 table; 3 refills) -->
 						<textEquivalent value="citalopram 20 mg tablet 1 tablet oral 1 time daily now (30 table; 3 refills)"/>

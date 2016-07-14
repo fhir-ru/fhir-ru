@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
+// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
 
 import java.util.*;
 
@@ -37,6 +37,7 @@ import org.hl7.fhir.utilities.Utilities;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
@@ -201,6 +202,128 @@ public class MedicationStatement extends DomainResource {
       }
     }
 
+    public enum MedicationStatementCategory {
+        /**
+         * Includes orders for medications to be administered or consumed in an inpatient or acute care setting
+         */
+        INPATIENT, 
+        /**
+         * Includes orders for medications to be administered or consumed in an outpatient setting (for example, Emergency Department, Outpatient Clinic, Outpatient Surgery, Doctor's office)
+         */
+        OUTPATIENT, 
+        /**
+         * Includes orders for medications to be administered or consumed by the patient in their home (this would include long term care or nursing homes, hospices, etc)
+         */
+        COMMUNITY, 
+        /**
+         * Includes statements about medication use, including over the counter medication, provided by the patient, agent or another provider
+         */
+        PATIENTSPECIFIED, 
+        /**
+         * added to help the parsers with the generic types
+         */
+        NULL;
+        public static MedicationStatementCategory fromCode(String codeString) throws FHIRException {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("inpatient".equals(codeString))
+          return INPATIENT;
+        if ("outpatient".equals(codeString))
+          return OUTPATIENT;
+        if ("community".equals(codeString))
+          return COMMUNITY;
+        if ("patientspecified".equals(codeString))
+          return PATIENTSPECIFIED;
+        if (Configuration.isAcceptInvalidEnums())
+          return null;
+        else
+          throw new FHIRException("Unknown MedicationStatementCategory code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case INPATIENT: return "inpatient";
+            case OUTPATIENT: return "outpatient";
+            case COMMUNITY: return "community";
+            case PATIENTSPECIFIED: return "patientspecified";
+            default: return "?";
+          }
+        }
+        public String getSystem() {
+          switch (this) {
+            case INPATIENT: return "http://hl7.org/fhir/medication-statement-category";
+            case OUTPATIENT: return "http://hl7.org/fhir/medication-statement-category";
+            case COMMUNITY: return "http://hl7.org/fhir/medication-statement-category";
+            case PATIENTSPECIFIED: return "http://hl7.org/fhir/medication-statement-category";
+            default: return "?";
+          }
+        }
+        public String getDefinition() {
+          switch (this) {
+            case INPATIENT: return "Includes orders for medications to be administered or consumed in an inpatient or acute care setting";
+            case OUTPATIENT: return "Includes orders for medications to be administered or consumed in an outpatient setting (for example, Emergency Department, Outpatient Clinic, Outpatient Surgery, Doctor's office)";
+            case COMMUNITY: return "Includes orders for medications to be administered or consumed by the patient in their home (this would include long term care or nursing homes, hospices, etc)";
+            case PATIENTSPECIFIED: return "Includes statements about medication use, including over the counter medication, provided by the patient, agent or another provider";
+            default: return "?";
+          }
+        }
+        public String getDisplay() {
+          switch (this) {
+            case INPATIENT: return "Inpatient";
+            case OUTPATIENT: return "Outpatient";
+            case COMMUNITY: return "Community";
+            case PATIENTSPECIFIED: return "Patient Specified";
+            default: return "?";
+          }
+        }
+    }
+
+  public static class MedicationStatementCategoryEnumFactory implements EnumFactory<MedicationStatementCategory> {
+    public MedicationStatementCategory fromCode(String codeString) throws IllegalArgumentException {
+      if (codeString == null || "".equals(codeString))
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("inpatient".equals(codeString))
+          return MedicationStatementCategory.INPATIENT;
+        if ("outpatient".equals(codeString))
+          return MedicationStatementCategory.OUTPATIENT;
+        if ("community".equals(codeString))
+          return MedicationStatementCategory.COMMUNITY;
+        if ("patientspecified".equals(codeString))
+          return MedicationStatementCategory.PATIENTSPECIFIED;
+        throw new IllegalArgumentException("Unknown MedicationStatementCategory code '"+codeString+"'");
+        }
+        public Enumeration<MedicationStatementCategory> fromType(Base code) throws FHIRException {
+          if (code == null || code.isEmpty())
+            return null;
+          String codeString = ((PrimitiveType) code).asStringValue();
+          if (codeString == null || "".equals(codeString))
+            return null;
+        if ("inpatient".equals(codeString))
+          return new Enumeration<MedicationStatementCategory>(this, MedicationStatementCategory.INPATIENT);
+        if ("outpatient".equals(codeString))
+          return new Enumeration<MedicationStatementCategory>(this, MedicationStatementCategory.OUTPATIENT);
+        if ("community".equals(codeString))
+          return new Enumeration<MedicationStatementCategory>(this, MedicationStatementCategory.COMMUNITY);
+        if ("patientspecified".equals(codeString))
+          return new Enumeration<MedicationStatementCategory>(this, MedicationStatementCategory.PATIENTSPECIFIED);
+        throw new FHIRException("Unknown MedicationStatementCategory code '"+codeString+"'");
+        }
+    public String toCode(MedicationStatementCategory code) {
+      if (code == MedicationStatementCategory.INPATIENT)
+        return "inpatient";
+      if (code == MedicationStatementCategory.OUTPATIENT)
+        return "outpatient";
+      if (code == MedicationStatementCategory.COMMUNITY)
+        return "community";
+      if (code == MedicationStatementCategory.PATIENTSPECIFIED)
+        return "patientspecified";
+      return "?";
+      }
+    public String toSystem(MedicationStatementCategory code) {
+      return code.getSystem();
+      }
+    }
+
     @Block()
     public static class MedicationStatementDosageComponent extends BackboneElement implements IBaseBackboneElement {
         /**
@@ -215,6 +338,7 @@ public class MedicationStatement extends DomainResource {
          */
         @Child(name = "additionalInstructions", type = {CodeableConcept.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
         @Description(shortDefinition="Supplemental instructions - e.g. \"with meals\"", formalDefinition="Additional instructions such as \"Swallow with plenty of water\" which may or may not be coded." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/additional-instructions-codes")
         protected List<CodeableConcept> additionalInstructions;
 
         /**
@@ -225,12 +349,11 @@ public class MedicationStatement extends DomainResource {
         protected Timing timing;
 
         /**
-         * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  
-
-Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
+         * Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.
          */
         @Child(name = "asNeeded", type = {BooleanType.class, CodeableConcept.class}, order=4, min=0, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Take \"as needed\" (for x)", formalDefinition="Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  \n\nSpecifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule." )
+        @Description(shortDefinition="Take \"as needed\" (for x)", formalDefinition="Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  \r\rSpecifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/medication-as-needed-reason")
         protected Type asNeeded;
 
         /**
@@ -238,6 +361,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
          */
         @Child(name = "site", type = {CodeableConcept.class, BodySite.class}, order=5, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Where (on body) medication is/was administered", formalDefinition="A coded specification of or a reference to the anatomic site where the medication first enters the body." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/approach-site-codes")
         protected Type site;
 
         /**
@@ -245,6 +369,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
          */
         @Child(name = "route", type = {CodeableConcept.class}, order=6, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="How the medication entered the body", formalDefinition="A code specifying the route or physiological path of administration of a therapeutic agent into or onto a subject." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/route-codes")
         protected CodeableConcept route;
 
         /**
@@ -252,6 +377,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
          */
         @Child(name = "method", type = {CodeableConcept.class}, order=7, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Technique used to administer medication", formalDefinition="A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/administration-method-codes")
         protected CodeableConcept method;
 
         /**
@@ -411,18 +537,14 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
         }
 
         /**
-         * @return {@link #asNeeded} (Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  
-
-Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.)
+         * @return {@link #asNeeded} (Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.)
          */
         public Type getAsNeeded() { 
           return this.asNeeded;
         }
 
         /**
-         * @return {@link #asNeeded} (Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  
-
-Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.)
+         * @return {@link #asNeeded} (Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.)
          */
         public BooleanType getAsNeededBooleanType() throws FHIRException { 
           if (!(this.asNeeded instanceof BooleanType))
@@ -435,9 +557,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
         }
 
         /**
-         * @return {@link #asNeeded} (Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  
-
-Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.)
+         * @return {@link #asNeeded} (Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.)
          */
         public CodeableConcept getAsNeededCodeableConcept() throws FHIRException { 
           if (!(this.asNeeded instanceof CodeableConcept))
@@ -454,9 +574,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
         }
 
         /**
-         * @param value {@link #asNeeded} (Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  
-
-Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.)
+         * @param value {@link #asNeeded} (Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.)
          */
         public MedicationStatementDosageComponent setAsNeeded(Type value) { 
           this.asNeeded = value;
@@ -688,7 +806,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
           childrenList.add(new Property("text", "string", "Free text dosage information as reported about a patient's medication use. When coded dosage information is present, the free text may still be present for display to humans.", 0, java.lang.Integer.MAX_VALUE, text));
           childrenList.add(new Property("additionalInstructions", "CodeableConcept", "Additional instructions such as \"Swallow with plenty of water\" which may or may not be coded.", 0, java.lang.Integer.MAX_VALUE, additionalInstructions));
           childrenList.add(new Property("timing", "Timing", "The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  \"Every  8 hours\"; \"Three times a day\"; \"1/2 an hour before breakfast for 10 days from 23-Dec 2011:\";  \"15 Oct 2013, 17 Oct 2013 and 1 Nov 2013\".  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn't imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period.", 0, java.lang.Integer.MAX_VALUE, timing));
-          childrenList.add(new Property("asNeeded[x]", "boolean|CodeableConcept", "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  \n\nSpecifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.", 0, java.lang.Integer.MAX_VALUE, asNeeded));
+          childrenList.add(new Property("asNeeded[x]", "boolean|CodeableConcept", "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  \r\rSpecifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.", 0, java.lang.Integer.MAX_VALUE, asNeeded));
           childrenList.add(new Property("site[x]", "CodeableConcept|Reference(BodySite)", "A coded specification of or a reference to the anatomic site where the medication first enters the body.", 0, java.lang.Integer.MAX_VALUE, site));
           childrenList.add(new Property("route", "CodeableConcept", "A code specifying the route or physiological path of administration of a therapeutic agent into or onto a subject.", 0, java.lang.Integer.MAX_VALUE, route));
           childrenList.add(new Property("method", "CodeableConcept", "A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.", 0, java.lang.Integer.MAX_VALUE, method));
@@ -928,6 +1046,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
      */
     @Child(name = "status", type = {CodeType.class}, order=1, min=1, max=1, modifier=true, summary=true)
     @Description(shortDefinition="active | completed | entered-in-error | intended | stopped | on-hold", formalDefinition="A code representing the patient or other source's judgment about the state of the medication used that this statement is about.  Generally this will be active or completed." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/medication-statement-status")
     protected Enumeration<MedicationStatementStatus> status;
 
     /**
@@ -935,6 +1054,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
      */
     @Child(name = "medication", type = {CodeableConcept.class, Medication.class}, order=2, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="What medication was taken", formalDefinition="Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/medication-codes")
     protected Type medication;
 
     /**
@@ -971,7 +1091,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
     /**
      * Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports or is used to derive the MedicationStatement.
      */
-    @Child(name = "supportingInformation", type = {}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "supportingInformation", type = {Reference.class}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Additional supporting information", formalDefinition="Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports or is used to derive the MedicationStatement." )
     protected List<Reference> supportingInformation;
     /**
@@ -1006,6 +1126,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
      */
     @Child(name = "reasonForUseCode", type = {CodeableConcept.class}, order=10, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Reason for why the medication is being/was taken", formalDefinition="A reason for why the medication is being/was taken." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/condition-code")
     protected List<CodeableConcept> reasonForUseCode;
 
     /**
@@ -1028,13 +1149,21 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
     protected List<Annotation> note;
 
     /**
+     * Indicates where type of medication statement and where the medication is expected to be consumed or administered.
+     */
+    @Child(name = "category", type = {CodeType.class}, order=13, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Type of medication usage", formalDefinition="Indicates where type of medication statement and where the medication is expected to be consumed or administered." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/medication-statement-category")
+    protected Enumeration<MedicationStatementCategory> category;
+
+    /**
      * Indicates how the medication is/was used by the patient.
      */
-    @Child(name = "dosage", type = {}, order=13, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "dosage", type = {}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Details of how medication was taken", formalDefinition="Indicates how the medication is/was used by the patient." )
     protected List<MedicationStatementDosageComponent> dosage;
 
-    private static final long serialVersionUID = -1877669139L;
+    private static final long serialVersionUID = -1033741586L;
 
   /**
    * Constructor
@@ -1716,6 +1845,55 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
     }
 
     /**
+     * @return {@link #category} (Indicates where type of medication statement and where the medication is expected to be consumed or administered.). This is the underlying object with id, value and extensions. The accessor "getCategory" gives direct access to the value
+     */
+    public Enumeration<MedicationStatementCategory> getCategoryElement() { 
+      if (this.category == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create MedicationStatement.category");
+        else if (Configuration.doAutoCreate())
+          this.category = new Enumeration<MedicationStatementCategory>(new MedicationStatementCategoryEnumFactory()); // bb
+      return this.category;
+    }
+
+    public boolean hasCategoryElement() { 
+      return this.category != null && !this.category.isEmpty();
+    }
+
+    public boolean hasCategory() { 
+      return this.category != null && !this.category.isEmpty();
+    }
+
+    /**
+     * @param value {@link #category} (Indicates where type of medication statement and where the medication is expected to be consumed or administered.). This is the underlying object with id, value and extensions. The accessor "getCategory" gives direct access to the value
+     */
+    public MedicationStatement setCategoryElement(Enumeration<MedicationStatementCategory> value) { 
+      this.category = value;
+      return this;
+    }
+
+    /**
+     * @return Indicates where type of medication statement and where the medication is expected to be consumed or administered.
+     */
+    public MedicationStatementCategory getCategory() { 
+      return this.category == null ? null : this.category.getValue();
+    }
+
+    /**
+     * @param value Indicates where type of medication statement and where the medication is expected to be consumed or administered.
+     */
+    public MedicationStatement setCategory(MedicationStatementCategory value) { 
+      if (value == null)
+        this.category = null;
+      else {
+        if (this.category == null)
+          this.category = new Enumeration<MedicationStatementCategory>(new MedicationStatementCategoryEnumFactory());
+        this.category.setValue(value);
+      }
+      return this;
+    }
+
+    /**
      * @return {@link #dosage} (Indicates how the medication is/was used by the patient.)
      */
     public List<MedicationStatementDosageComponent> getDosage() { 
@@ -1783,6 +1961,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
         childrenList.add(new Property("reasonForUseCode", "CodeableConcept", "A reason for why the medication is being/was taken.", 0, java.lang.Integer.MAX_VALUE, reasonForUseCode));
         childrenList.add(new Property("reasonForUseReference", "Reference(Condition)", "Condition that supports why the medication is being/was taken.", 0, java.lang.Integer.MAX_VALUE, reasonForUseReference));
         childrenList.add(new Property("note", "Annotation", "Provides extra information about the medication statement that is not conveyed by the other attributes.", 0, java.lang.Integer.MAX_VALUE, note));
+        childrenList.add(new Property("category", "code", "Indicates where type of medication statement and where the medication is expected to be consumed or administered.", 0, java.lang.Integer.MAX_VALUE, category));
         childrenList.add(new Property("dosage", "", "Indicates how the medication is/was used by the patient.", 0, java.lang.Integer.MAX_VALUE, dosage));
       }
 
@@ -1802,6 +1981,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
         case -1558446993: /*reasonForUseCode*/ return this.reasonForUseCode == null ? new Base[0] : this.reasonForUseCode.toArray(new Base[this.reasonForUseCode.size()]); // CodeableConcept
         case -370888183: /*reasonForUseReference*/ return this.reasonForUseReference == null ? new Base[0] : this.reasonForUseReference.toArray(new Base[this.reasonForUseReference.size()]); // Reference
         case 3387378: /*note*/ return this.note == null ? new Base[0] : this.note.toArray(new Base[this.note.size()]); // Annotation
+        case 50511102: /*category*/ return this.category == null ? new Base[0] : new Base[] {this.category}; // Enumeration<MedicationStatementCategory>
         case -1326018889: /*dosage*/ return this.dosage == null ? new Base[0] : this.dosage.toArray(new Base[this.dosage.size()]); // MedicationStatementDosageComponent
         default: return super.getProperty(hash, name, checkValid);
         }
@@ -1850,6 +2030,9 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
         case 3387378: // note
           this.getNote().add(castToAnnotation(value)); // Annotation
           break;
+        case 50511102: // category
+          this.category = new MedicationStatementCategoryEnumFactory().fromType(value); // Enumeration<MedicationStatementCategory>
+          break;
         case -1326018889: // dosage
           this.getDosage().add((MedicationStatementDosageComponent) value); // MedicationStatementDosageComponent
           break;
@@ -1886,6 +2069,8 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
           this.getReasonForUseReference().add(castToReference(value));
         else if (name.equals("note"))
           this.getNote().add(castToAnnotation(value));
+        else if (name.equals("category"))
+          this.category = new MedicationStatementCategoryEnumFactory().fromType(value); // Enumeration<MedicationStatementCategory>
         else if (name.equals("dosage"))
           this.getDosage().add((MedicationStatementDosageComponent) value);
         else
@@ -1908,6 +2093,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
         case -1558446993:  return addReasonForUseCode(); // CodeableConcept
         case -370888183:  return addReasonForUseReference(); // Reference
         case 3387378:  return addNote(); // Annotation
+        case 50511102: throw new FHIRException("Cannot make property category as it is not a complex type"); // Enumeration<MedicationStatementCategory>
         case -1326018889:  return addDosage(); // MedicationStatementDosageComponent
         default: return super.makeProperty(hash, name);
         }
@@ -1967,6 +2153,9 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
         else if (name.equals("note")) {
           return addNote();
         }
+        else if (name.equals("category")) {
+          throw new FHIRException("Cannot call addChild on a primitive type MedicationStatement.category");
+        }
         else if (name.equals("dosage")) {
           return addDosage();
         }
@@ -2019,6 +2208,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
           for (Annotation i : note)
             dst.note.add(i.copy());
         };
+        dst.category = category == null ? null : category.copy();
         if (dosage != null) {
           dst.dosage = new ArrayList<MedicationStatementDosageComponent>();
           for (MedicationStatementDosageComponent i : dosage)
@@ -2043,7 +2233,8 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
            && compareDeep(supportingInformation, o.supportingInformation, true) && compareDeep(dateAsserted, o.dateAsserted, true)
            && compareDeep(wasNotTaken, o.wasNotTaken, true) && compareDeep(reasonNotTaken, o.reasonNotTaken, true)
            && compareDeep(reasonForUseCode, o.reasonForUseCode, true) && compareDeep(reasonForUseReference, o.reasonForUseReference, true)
-           && compareDeep(note, o.note, true) && compareDeep(dosage, o.dosage, true);
+           && compareDeep(note, o.note, true) && compareDeep(category, o.category, true) && compareDeep(dosage, o.dosage, true)
+          ;
       }
 
       @Override
@@ -2054,13 +2245,14 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
           return false;
         MedicationStatement o = (MedicationStatement) other;
         return compareValues(status, o.status, true) && compareValues(dateAsserted, o.dateAsserted, true) && compareValues(wasNotTaken, o.wasNotTaken, true)
-          ;
+           && compareValues(category, o.category, true);
       }
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, status, medication
           , patient, effective, informationSource, supportingInformation, dateAsserted, wasNotTaken
-          , reasonNotTaken, reasonForUseCode, reasonForUseReference, note, dosage);
+          , reasonNotTaken, reasonForUseCode, reasonForUseReference, note, category, dosage
+          );
       }
 
   @Override
@@ -2136,7 +2328,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
    * Path: <b>MedicationStatement.patient</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="patient", path="MedicationStatement.patient", description="The identity of a patient to list statements  for", type="reference" )
+  @SearchParamDefinition(name="patient", path="MedicationStatement.patient", description="The identity of a patient to list statements  for", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient") }, target={Patient.class } )
   public static final String SP_PATIENT = "patient";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>patient</b>
@@ -2162,7 +2354,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
    * Path: <b>MedicationStatement.medicationReference</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="medication", path="MedicationStatement.medication.as(Reference)", description="Return administrations of this medication reference", type="reference" )
+  @SearchParamDefinition(name="medication", path="MedicationStatement.medication.as(Reference)", description="Return administrations of this medication reference", type="reference", target={Medication.class } )
   public static final String SP_MEDICATION = "medication";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>medication</b>
@@ -2188,7 +2380,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
    * Path: <b>MedicationStatement.informationSource</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="source", path="MedicationStatement.informationSource", description="Who the information in the statement came from", type="reference" )
+  @SearchParamDefinition(name="source", path="MedicationStatement.informationSource", description="Who the information in the statement came from", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner"), @ca.uhn.fhir.model.api.annotation.Compartment(name="RelatedPerson") }, target={Patient.class, Practitioner.class, RelatedPerson.class } )
   public static final String SP_SOURCE = "source";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>source</b>

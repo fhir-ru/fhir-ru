@@ -1,13 +1,51 @@
-# DAF-core Conformance(Conformance) Profile Page
+# U.S. Data Access Framework (DAF) [ID] Core Profile 
 
-This is the DAF-core Conformance(Conformance) profile page.  It contains links to:
+ 
+## Scope and Usage 
 
-1. DAF-core Conformance(Conformance) Profile Definition(s)
-   * [DAF-core AllergyIntolerance Profile Definition](daf-core-conformance.html)
-2. DAF-core Conformance(Conformance) Extension Definition(s)
-3. DAF-core Conformance(Conformance) ValueSet Definition(s)
-    * [DAF Substance-Reactant for Intolerance and Negation Codes](valueset-daf-substance.html)
-4. DAF-core Conformance(Conformance) Conformance Definition(s)
-    * [TODO]()
-5. DAF-core Conformance(Conformance) Examples(s)
-    * [TODO]()
+
+ 
+Mandatory Data Elements
+-----------------------
+
+
+
+**Each AllergyIntolerance must have:**
+
+1.  a patient
+
+**Profile specific implementation guidance:*
+
+
+ 
+
+### [Formal Profile Definition](daf-core-allergyintolerance.html)
+
+**Resource Example:**
+
+* [Example1]()
+
+ 
+## Search Parameters 
+
+The following search required search and read operations are required to conform to this profile:
+
+`GET /[Ressource]?patient=[id]`
+
+Support: Mandatory to support search by patient.
+
+Implementation Notes: Search for all [] for a patient. Fetches a bundle of all AllergyIntolerance resources for the specified patient (how to search by reference).
+
+Response Class:
+
+* (Status 200): successful operation
+
+* (Status 400): invalid parameter
+
+* (Status 401/4xx): unauthorized request
+
+* (Status 403): insufficient scope
+
+Example:
+
+

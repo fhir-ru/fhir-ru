@@ -29,13 +29,14 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
+// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
 
 import java.util.*;
 
 import java.math.*;
 import org.hl7.fhir.utilities.Utilities;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.DatatypeDef;
 import ca.uhn.fhir.model.api.annotation.Block;
@@ -181,6 +182,7 @@ public class Quantity extends Type implements ICompositeType {
      */
     @Child(name = "comparator", type = {CodeType.class}, order=1, min=0, max=1, modifier=true, summary=true)
     @Description(shortDefinition="< | <= | >= | > - how to understand the value", formalDefinition="How the value should be understood and represented - whether the actual value is greater or less than the stated value due to measurement issues; e.g. if the comparator is \"<\" , then the real value is < stated value." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/quantity-comparator")
     protected Enumeration<QuantityComparator> comparator;
 
     /**

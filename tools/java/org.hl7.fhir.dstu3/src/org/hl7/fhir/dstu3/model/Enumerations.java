@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
+// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
 
 
 import org.hl7.fhir.instance.model.api.*;
@@ -2298,7 +2298,7 @@ public class Enumerations {
          */
         ACCOUNT, 
         /**
-         * This resource allows for the definition of an order set as a sharable, consumable, and executable artifact in support of clinical decision support.
+         * This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.
          */
         ACTIVITYDEFINITION, 
         /**
@@ -2386,7 +2386,7 @@ public class Enumerations {
          */
         CONFORMANCE, 
         /**
-         * Information about a healthcare consumer’s consent - a series of statements regard their agreement (or lack thereof) to various health-related procedures, in accordance with governing jurisdictional and organizational, and patient authored  privacy policies that grant or withhold consent:.
+         * A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
          */
         CONSENT, 
         /**
@@ -3550,7 +3550,7 @@ public class Enumerations {
             case UUID: return "A UUID, represented as a URI";
             case XHTML: return "XHTML format, as defined by W3C, but restricted usage (mainly, no active content)";
             case ACCOUNT: return "A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centres, etc.";
-            case ACTIVITYDEFINITION: return "This resource allows for the definition of an order set as a sharable, consumable, and executable artifact in support of clinical decision support.";
+            case ACTIVITYDEFINITION: return "This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.";
             case ALLERGYINTOLERANCE: return "Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.";
             case APPOINTMENT: return "A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).";
             case APPOINTMENTRESPONSE: return "A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.";
@@ -3572,7 +3572,7 @@ public class Enumerations {
             case CONCEPTMAP: return "A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models.";
             case CONDITION: return "Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary.";
             case CONFORMANCE: return "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.";
-            case CONSENT: return "Information about a healthcare consumer’s consent - a series of statements regard their agreement (or lack thereof) to various health-related procedures, in accordance with governing jurisdictional and organizational, and patient authored  privacy policies that grant or withhold consent:.";
+            case CONSENT: return "A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.";
             case CONTRACT: return "A formal agreement between parties regarding the conduct of business, exchange of information or other matters.";
             case COVERAGE: return "Financial instrument which may be used to pay for or reimburse health care products and services.";
             case DATAELEMENT: return "The formal description of a single piece of information that can be gathered and reported.";
@@ -5153,7 +5153,7 @@ public class Enumerations {
          */
         ACCOUNT, 
         /**
-         * This resource allows for the definition of an order set as a sharable, consumable, and executable artifact in support of clinical decision support.
+         * This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.
          */
         ACTIVITYDEFINITION, 
         /**
@@ -5241,7 +5241,7 @@ public class Enumerations {
          */
         CONFORMANCE, 
         /**
-         * Information about a healthcare consumer’s consent - a series of statements regard their agreement (or lack thereof) to various health-related procedures, in accordance with governing jurisdictional and organizational, and patient authored  privacy policies that grant or withhold consent:.
+         * A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
          */
         CONSENT, 
         /**
@@ -6389,7 +6389,7 @@ public class Enumerations {
             case UUID: return "A UUID, represented as a URI";
             case XHTML: return "XHTML format, as defined by W3C, but restricted usage (mainly, no active content)";
             case ACCOUNT: return "A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centres, etc.";
-            case ACTIVITYDEFINITION: return "This resource allows for the definition of an order set as a sharable, consumable, and executable artifact in support of clinical decision support.";
+            case ACTIVITYDEFINITION: return "This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.";
             case ALLERGYINTOLERANCE: return "Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.";
             case APPOINTMENT: return "A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).";
             case APPOINTMENTRESPONSE: return "A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.";
@@ -6411,7 +6411,7 @@ public class Enumerations {
             case CONCEPTMAP: return "A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models.";
             case CONDITION: return "Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary.";
             case CONFORMANCE: return "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.";
-            case CONSENT: return "Information about a healthcare consumer’s consent - a series of statements regard their agreement (or lack thereof) to various health-related procedures, in accordance with governing jurisdictional and organizational, and patient authored  privacy policies that grant or withhold consent:.";
+            case CONSENT: return "A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.";
             case CONTRACT: return "A formal agreement between parties regarding the conduct of business, exchange of information or other matters.";
             case COVERAGE: return "Financial instrument which may be used to pay for or reimburse health care products and services.";
             case DATAELEMENT: return "The formal description of a single piece of information that can be gathered and reported.";
@@ -8193,7 +8193,7 @@ public class Enumerations {
          */
         ACCOUNT, 
         /**
-         * This resource allows for the definition of an order set as a sharable, consumable, and executable artifact in support of clinical decision support.
+         * This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.
          */
         ACTIVITYDEFINITION, 
         /**
@@ -8281,7 +8281,7 @@ public class Enumerations {
          */
         CONFORMANCE, 
         /**
-         * Information about a healthcare consumer’s consent - a series of statements regard their agreement (or lack thereof) to various health-related procedures, in accordance with governing jurisdictional and organizational, and patient authored  privacy policies that grant or withhold consent:.
+         * A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.
          */
         CONSENT, 
         /**
@@ -9154,7 +9154,7 @@ public class Enumerations {
         public String getDefinition() {
           switch (this) {
             case ACCOUNT: return "A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track charges for a patient, cost centres, etc.";
-            case ACTIVITYDEFINITION: return "This resource allows for the definition of an order set as a sharable, consumable, and executable artifact in support of clinical decision support.";
+            case ACTIVITYDEFINITION: return "This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.";
             case ALLERGYINTOLERANCE: return "Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.";
             case APPOINTMENT: return "A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).";
             case APPOINTMENTRESPONSE: return "A reply to an appointment request for a patient and/or practitioner(s), such as a confirmation or rejection.";
@@ -9176,7 +9176,7 @@ public class Enumerations {
             case CONCEPTMAP: return "A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models.";
             case CONDITION: return "Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary.";
             case CONFORMANCE: return "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.";
-            case CONSENT: return "Information about a healthcare consumer’s consent - a series of statements regard their agreement (or lack thereof) to various health-related procedures, in accordance with governing jurisdictional and organizational, and patient authored  privacy policies that grant or withhold consent:.";
+            case CONSENT: return "A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time.";
             case CONTRACT: return "A formal agreement between parties regarding the conduct of business, exchange of information or other matters.";
             case COVERAGE: return "Financial instrument which may be used to pay for or reimburse health care products and services.";
             case DATAELEMENT: return "The formal description of a single piece of information that can be gathered and reported.";

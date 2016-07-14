@@ -572,10 +572,11 @@ public class ProfileGenerator {
     p.setUserData("path", "datatypes.html#"+t.getName());
     assert !Utilities.noString(t.typeCode());
     String b = (t.typeCode().equals("Type") || t.typeCode().equals("Structure")) ? "Element" : t.typeCode();
-    if (!Utilities.noString(b))
-      p.setBaseDefinition("http://hl7.org/fhir/StructureDefinition/"+b); 
+    if (!Utilities.noString(b)) {
+      p.setBaseDefinition("http://hl7.org/fhir/StructureDefinition/"+b);
+      p.setDerivation(TypeDerivationRule.SPECIALIZATION);
+    }
     p.setType(t.getName());
-    p.setDerivation(TypeDerivationRule.SPECIALIZATION);
     p.setFhirVersion(version);
 
     ToolResourceUtilities.updateUsage(p, "core");
@@ -760,10 +761,11 @@ public class ProfileGenerator {
     p.setKind(StructureDefinitionKind.RESOURCE);
     p.setAbstract(r.isAbstract());
     assert !Utilities.noString(r.getRoot().typeCode());
-    if (!Utilities.noString(r.getRoot().typeCode()))
+    if (!Utilities.noString(r.getRoot().typeCode())) {
       p.setBaseDefinition("http://hl7.org/fhir/StructureDefinition/"+r.getRoot().typeCode());
+      p.setDerivation(TypeDerivationRule.SPECIALIZATION);
+    }
     p.setType(r.getRoot().getName());
-    p.setDerivation(TypeDerivationRule.SPECIALIZATION);
     p.setUserData("filename", r.getName().toLowerCase());
     p.setUserData("path", r.getName().toLowerCase()+".html");
     p.setDisplay(pack.metadata("display"));
@@ -976,6 +978,11 @@ public class ProfileGenerator {
       sp.setXpathUsage(spd.getxPathUsage());
     }
 
+    if (sp.getType() == SearchParamType.COMPOSITE) {
+      for (String cs : spd.getComposites()) {
+        sp.addComponent().setReference("http://hl7.org/fhir/SearchParameter/"+rn+"-"+cs);
+      }
+    }
     for(String target : spd.getWorkingTargets()) {
       if("Any".equals(target) == true) {   	  
         for(String resourceName : definitions.sortedResourceNames())
@@ -1014,14 +1021,17 @@ public class ProfileGenerator {
   private ElementDefinitionBindingComponent generateBinding(BindingSpecification src) throws Exception {
     if (src == null)
       return null;
-
     ElementDefinitionBindingComponent dst = new ElementDefinitionBindingComponent();
     dst.setDescription(src.getDefinition());
     if (src.getBinding() != BindingMethod.Unbound) {
       dst.setStrength(src.getStrength());    
-      dst.setValueSet(buildReference(src));    
-    } else
+      dst.setValueSet(buildReference(src));
+      if (src.hasMax()) {
+        dst.addExtension().setUrl("http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet").setValue(new Reference(src.getMaxReference() != null ? src.getMaxReference() : src.getMaxValueSet().getUrl()));
+      }
+    } else {
       dst.setStrength(BindingStrength.EXAMPLE);    
+    }
     return dst;
   }
 
@@ -1661,8 +1671,11 @@ public class ProfileGenerator {
     pp.setDocumentation(p.getDoc());
     pp.setMin(p.getMin());
     pp.setMax(p.getMax());
-    if (p.getBs() != null)
+    if (p.getBs() != null) {
+      if (p.getBs().hasMax())
+        throw new Error("Max binding not handled yet");
       pp.setBinding(new OperationDefinitionParameterBindingComponent().setStrength(p.getBs().getStrength()).setValueSet(buildReference(p.getBs())));
+    }
     Reference ref = new Reference();
     if (!Utilities.noString(p.getProfile())) {
       ref.setReference(p.getProfile());

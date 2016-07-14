@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.codec.binary.Base64;
+import org.hl7.fhir.dstu2.model.Conformance.TransactionMode;
 import org.hl7.fhir.dstu2.utils.ToolingExtensions;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.ConceptMap;
@@ -11,6 +12,7 @@ import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
 import org.hl7.fhir.dstu3.model.ConceptMap.ConceptMapGroupComponent;
 import org.hl7.fhir.dstu3.model.ConceptMap.SourceElementComponent;
+import org.hl7.fhir.dstu3.model.Conformance.SystemRestfulInteraction;
 import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.utilities.Utilities;
@@ -4351,7 +4353,8 @@ public class VersionConvertor {
 			tgt.addResource(convertConformanceRestResourceComponent(t));
 		for (org.hl7.fhir.dstu2.model.Conformance.SystemInteractionComponent t : src.getInteraction())
 			tgt.addInteraction(convertSystemInteractionComponent(t));
-		tgt.setTransactionMode(convertTransactionMode(src.getTransactionMode()));
+		if (src.getTransactionMode() == TransactionMode.BATCH || src.getTransactionMode() == TransactionMode.BOTH)
+      tgt.addInteraction().setCode(SystemRestfulInteraction.BATCH);
 		for (org.hl7.fhir.dstu2.model.Conformance.ConformanceRestResourceSearchParamComponent t : src.getSearchParam())
 			tgt.addSearchParam(convertConformanceRestResourceSearchParamComponent(t));
 		for (org.hl7.fhir.dstu2.model.Conformance.ConformanceRestOperationComponent t : src.getOperation())
@@ -4371,9 +4374,20 @@ public class VersionConvertor {
 		tgt.setSecurity(convertConformanceRestSecurityComponent(src.getSecurity()));
 		for (org.hl7.fhir.dstu3.model.Conformance.ConformanceRestResourceComponent t : src.getResource())
 			tgt.addResource(convertConformanceRestResourceComponent(t));
-		for (org.hl7.fhir.dstu3.model.Conformance.SystemInteractionComponent t : src.getInteraction())
-			tgt.addInteraction(convertSystemInteractionComponent(t));
-		tgt.setTransactionMode(convertTransactionMode(src.getTransactionMode()));
+		boolean batch = false;
+		boolean transaction = false;
+		for (org.hl7.fhir.dstu3.model.Conformance.SystemInteractionComponent t : src.getInteraction()) {
+		  if (t.getCode().equals(SystemRestfulInteraction.BATCH))
+		    batch = true;
+		  else
+		    tgt.addInteraction(convertSystemInteractionComponent(t));
+      if (t.getCode().equals(SystemRestfulInteraction.TRANSACTION))
+        transaction = true;
+		}
+		if (batch)
+  		tgt.setTransactionMode(transaction ? TransactionMode.BOTH : TransactionMode.BATCH);
+		else
+      tgt.setTransactionMode(transaction ? TransactionMode.TRANSACTION : TransactionMode.NOTSUPPORTED);
 		for (org.hl7.fhir.dstu3.model.Conformance.ConformanceRestResourceSearchParamComponent t : src.getSearchParam())
 			tgt.addSearchParam(convertConformanceRestResourceSearchParamComponent(t));
 		for (org.hl7.fhir.dstu3.model.Conformance.ConformanceRestOperationComponent t : src.getOperation())
@@ -4403,29 +4417,6 @@ public class VersionConvertor {
 		}
 	}
 
-	public org.hl7.fhir.dstu3.model.Conformance.TransactionMode convertTransactionMode(org.hl7.fhir.dstu2.model.Conformance.TransactionMode src) throws FHIRException {
-		if (src == null)
-			return null;
-		switch (src) {
-		case NOTSUPPORTED: return org.hl7.fhir.dstu3.model.Conformance.TransactionMode.NOTSUPPORTED;
-		case BATCH: return org.hl7.fhir.dstu3.model.Conformance.TransactionMode.BATCH;
-		case TRANSACTION: return org.hl7.fhir.dstu3.model.Conformance.TransactionMode.TRANSACTION;
-		case BOTH: return org.hl7.fhir.dstu3.model.Conformance.TransactionMode.BOTH;
-		default: return org.hl7.fhir.dstu3.model.Conformance.TransactionMode.NULL;
-		}
-	}
-
-	public org.hl7.fhir.dstu2.model.Conformance.TransactionMode convertTransactionMode(org.hl7.fhir.dstu3.model.Conformance.TransactionMode src) throws FHIRException {
-		if (src == null)
-			return null;
-		switch (src) {
-		case NOTSUPPORTED: return org.hl7.fhir.dstu2.model.Conformance.TransactionMode.NOTSUPPORTED;
-		case BATCH: return org.hl7.fhir.dstu2.model.Conformance.TransactionMode.BATCH;
-		case TRANSACTION: return org.hl7.fhir.dstu2.model.Conformance.TransactionMode.TRANSACTION;
-		case BOTH: return org.hl7.fhir.dstu2.model.Conformance.TransactionMode.BOTH;
-		default: return org.hl7.fhir.dstu2.model.Conformance.TransactionMode.NULL;
-		}
-	}
 
 	public org.hl7.fhir.dstu3.model.Conformance.ConformanceRestSecurityComponent convertConformanceRestSecurityComponent(org.hl7.fhir.dstu2.model.Conformance.ConformanceRestSecurityComponent src) throws FHIRException {
 		if (src == null)
@@ -6727,21 +6718,21 @@ public class VersionConvertor {
 		return tgt;
 	}
 
-	public org.hl7.fhir.dstu3.model.Encounter.EncounterState convertEncounterState(org.hl7.fhir.dstu2.model.Encounter.EncounterState src) throws FHIRException {
+	public org.hl7.fhir.dstu3.model.Encounter.EncounterStatus convertEncounterState(org.hl7.fhir.dstu2.model.Encounter.EncounterState src) throws FHIRException {
 		if (src == null)
 			return null;
 		switch (src) {
-		case PLANNED: return org.hl7.fhir.dstu3.model.Encounter.EncounterState.PLANNED;
-		case ARRIVED: return org.hl7.fhir.dstu3.model.Encounter.EncounterState.ARRIVED;
-		case INPROGRESS: return org.hl7.fhir.dstu3.model.Encounter.EncounterState.INPROGRESS;
-		case ONLEAVE: return org.hl7.fhir.dstu3.model.Encounter.EncounterState.ONLEAVE;
-		case FINISHED: return org.hl7.fhir.dstu3.model.Encounter.EncounterState.FINISHED;
-		case CANCELLED: return org.hl7.fhir.dstu3.model.Encounter.EncounterState.CANCELLED;
-		default: return org.hl7.fhir.dstu3.model.Encounter.EncounterState.NULL;
+		case PLANNED: return org.hl7.fhir.dstu3.model.Encounter.EncounterStatus.PLANNED;
+		case ARRIVED: return org.hl7.fhir.dstu3.model.Encounter.EncounterStatus.ARRIVED;
+		case INPROGRESS: return org.hl7.fhir.dstu3.model.Encounter.EncounterStatus.INPROGRESS;
+		case ONLEAVE: return org.hl7.fhir.dstu3.model.Encounter.EncounterStatus.ONLEAVE;
+		case FINISHED: return org.hl7.fhir.dstu3.model.Encounter.EncounterStatus.FINISHED;
+		case CANCELLED: return org.hl7.fhir.dstu3.model.Encounter.EncounterStatus.CANCELLED;
+		default: return org.hl7.fhir.dstu3.model.Encounter.EncounterStatus.NULL;
 		}
 	}
 
-	public org.hl7.fhir.dstu2.model.Encounter.EncounterState convertEncounterState(org.hl7.fhir.dstu3.model.Encounter.EncounterState src) throws FHIRException {
+	public org.hl7.fhir.dstu2.model.Encounter.EncounterState convertEncounterState(org.hl7.fhir.dstu3.model.Encounter.EncounterStatus src) throws FHIRException {
 		if (src == null)
 			return null;
 		switch (src) {
@@ -8370,7 +8361,7 @@ public class VersionConvertor {
 		org.hl7.fhir.dstu3.model.ImplementationGuide.ImplementationGuidePageComponent tgt = new org.hl7.fhir.dstu3.model.ImplementationGuide.ImplementationGuidePageComponent();
 		copyElement(src, tgt);
 		tgt.setSource(src.getSource());
-		tgt.setName(src.getName());
+		tgt.setTitle(src.getName());
 		tgt.setKind(convertGuidePageKind(src.getKind()));
 		for (org.hl7.fhir.dstu2.model.CodeType t : src.getType())
 			tgt.addType(t.getValue());
@@ -8388,7 +8379,7 @@ public class VersionConvertor {
 		org.hl7.fhir.dstu2.model.ImplementationGuide.ImplementationGuidePageComponent tgt = new org.hl7.fhir.dstu2.model.ImplementationGuide.ImplementationGuidePageComponent();
 		copyElement(src, tgt);
 		tgt.setSource(src.getSource());
-		tgt.setName(src.getName());
+		tgt.setName(src.getTitle());
 		tgt.setKind(convertGuidePageKind(src.getKind()));
 		for (org.hl7.fhir.dstu3.model.CodeType t : src.getType())
 			tgt.addType(t.getValue());
@@ -10553,7 +10544,7 @@ public class VersionConvertor {
 		for (org.hl7.fhir.dstu2.model.Patient.PatientCommunicationComponent t : src.getCommunication())
 			tgt.addCommunication(convertPatientCommunicationComponent(t));
 		for (org.hl7.fhir.dstu2.model.Reference t : src.getCareProvider())
-			tgt.addCareProvider(convertReference(t));
+			tgt.addGeneralPractitioner(convertReference(t));
 		tgt.setManagingOrganization(convertReference(src.getManagingOrganization()));
 		for (org.hl7.fhir.dstu2.model.Patient.PatientLinkComponent t : src.getLink())
 			tgt.addLink(convertPatientLinkComponent(t));
@@ -10586,7 +10577,7 @@ public class VersionConvertor {
 		tgt.setAnimal(convertAnimalComponent(src.getAnimal()));
 		for (org.hl7.fhir.dstu3.model.Patient.PatientCommunicationComponent t : src.getCommunication())
 			tgt.addCommunication(convertPatientCommunicationComponent(t));
-		for (org.hl7.fhir.dstu3.model.Reference t : src.getCareProvider())
+		for (org.hl7.fhir.dstu3.model.Reference t : src.getGeneralPractitioner())
 			tgt.addCareProvider(convertReference(t));
 		tgt.setManagingOrganization(convertReference(src.getManagingOrganization()));
 		for (org.hl7.fhir.dstu3.model.Patient.PatientLinkComponent t : src.getLink())
@@ -13684,7 +13675,7 @@ public org.hl7.fhir.dstu2.model.ValueSet.ConceptDefinitionDesignationComponent c
 		org.hl7.fhir.dstu3.model.ValueSet tgt = new org.hl7.fhir.dstu3.model.ValueSet();
 		copyDomainResource(src, tgt);
 		tgt.setUrl(src.getUrl());
-		tgt.setIdentifier(convertIdentifier(src.getIdentifier()));
+		tgt.addIdentifier(convertIdentifier(src.getIdentifier()));
 		tgt.setVersion(src.getVersion());
 		tgt.setName(src.getName());
 		tgt.setStatus(convertConformanceResourceStatus(src.getStatus()));
@@ -13712,7 +13703,8 @@ public org.hl7.fhir.dstu2.model.ValueSet.ConceptDefinitionDesignationComponent c
 		org.hl7.fhir.dstu2.model.ValueSet tgt = new org.hl7.fhir.dstu2.model.ValueSet();
 		copyDomainResource(src, tgt);
 		tgt.setUrl(src.getUrl());
-		tgt.setIdentifier(convertIdentifier(src.getIdentifier()));
+		for (org.hl7.fhir.dstu3.model.Identifier i : src.getIdentifier())
+			tgt.setIdentifier(convertIdentifier(i));
 		tgt.setVersion(src.getVersion());
 		tgt.setName(src.getName());
 		tgt.setStatus(convertConformanceResourceStatus(src.getStatus()));

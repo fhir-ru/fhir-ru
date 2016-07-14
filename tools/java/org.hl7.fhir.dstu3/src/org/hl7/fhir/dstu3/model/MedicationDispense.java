@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
+// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
 
 import java.util.*;
 
@@ -37,6 +37,7 @@ import org.hl7.fhir.utilities.Utilities;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
@@ -199,6 +200,7 @@ public class MedicationDispense extends DomainResource {
          */
         @Child(name = "additionalInstructions", type = {CodeableConcept.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
         @Description(shortDefinition="E.g. \"Take with food\"", formalDefinition="Additional instructions such as \"Swallow with plenty of water\" which may or may not be coded." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/additional-instructions-codes")
         protected List<CodeableConcept> additionalInstructions;
 
         /**
@@ -215,6 +217,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
          */
         @Child(name = "asNeeded", type = {BooleanType.class, CodeableConcept.class}, order=4, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Take \"as needed\" f(or x)", formalDefinition="Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  \n\nSpecifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/medication-as-needed-reason")
         protected Type asNeeded;
 
         /**
@@ -222,6 +225,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
          */
         @Child(name = "site", type = {CodeableConcept.class, BodySite.class}, order=5, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Body site to administer to", formalDefinition="A coded specification of the anatomic site where the medication first enters the body." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/approach-site-codes")
         protected Type site;
 
         /**
@@ -229,6 +233,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
          */
         @Child(name = "route", type = {CodeableConcept.class}, order=6, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="How drug should enter body", formalDefinition="A code specifying the route or physiological path of administration of a therapeutic agent into or onto a subject." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/route-codes")
         protected CodeableConcept route;
 
         /**
@@ -236,6 +241,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
          */
         @Child(name = "method", type = {CodeableConcept.class}, order=7, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Technique for administering medication", formalDefinition="A coded value indicating the method by which the medication is intended to be or was introduced into or on the body." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/administration-method-codes")
         protected CodeableConcept method;
 
         /**
@@ -907,6 +913,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
          */
         @Child(name = "type", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Code signifying whether a different drug was dispensed from what was prescribed", formalDefinition="A code signifying whether a different drug was dispensed from what was prescribed." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/v3-ActSubstanceAdminSubstitutionCode")
         protected CodeableConcept type;
 
         /**
@@ -914,6 +921,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
          */
         @Child(name = "reason", type = {CodeableConcept.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
         @Description(shortDefinition="Why was substitution made", formalDefinition="Indicates the reason for the substitution of (or lack of substitution) from what was prescribed." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/v3-SubstanceAdminSubstitutionReason")
         protected List<CodeableConcept> reason;
 
         /**
@@ -1228,6 +1236,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
          */
         @Child(name = "status", type = {CodeType.class}, order=1, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="in-progress | on-hold | completed | entered-in-error | stopped", formalDefinition="The status for the event." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/medication-dispense-status")
         protected Enumeration<MedicationDispenseStatus> status;
 
         /**
@@ -1617,6 +1626,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
      */
     @Child(name = "status", type = {CodeType.class}, order=1, min=0, max=1, modifier=true, summary=true)
     @Description(shortDefinition="in-progress | on-hold | completed | entered-in-error | stopped", formalDefinition="A code specifying the state of the set of dispense events." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/medication-dispense-status")
     protected Enumeration<MedicationDispenseStatus> status;
 
     /**
@@ -1624,6 +1634,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
      */
     @Child(name = "medication", type = {CodeableConcept.class, Medication.class}, order=2, min=1, max=1, modifier=false, summary=true)
     @Description(shortDefinition="What medication was supplied", formalDefinition="Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/medication-codes")
     protected Type medication;
 
     /**
@@ -1651,9 +1662,21 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
     protected Practitioner dispenserTarget;
 
     /**
+     * The organizaation responsible for the dispense of the medication.
+     */
+    @Child(name = "dispensingOrganization", type = {Organization.class}, order=5, min=0, max=1, modifier=false, summary=false)
+    @Description(shortDefinition="Organization responsible for the dispense of the medication", formalDefinition="The organizaation responsible for the dispense of the medication." )
+    protected Reference dispensingOrganization;
+
+    /**
+     * The actual object that is the target of the reference (The organizaation responsible for the dispense of the medication.)
+     */
+    protected Organization dispensingOrganizationTarget;
+
+    /**
      * Indicates the medication order that is being dispensed against.
      */
-    @Child(name = "authorizingPrescription", type = {MedicationOrder.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "authorizingPrescription", type = {MedicationOrder.class}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Medication order that authorizes the dispense", formalDefinition="Indicates the medication order that is being dispensed against." )
     protected List<Reference> authorizingPrescription;
     /**
@@ -1665,42 +1688,43 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
     /**
      * Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.
      */
-    @Child(name = "type", type = {CodeableConcept.class}, order=6, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "type", type = {CodeableConcept.class}, order=7, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Trial fill, partial fill, emergency fill, etc.", formalDefinition="Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType")
     protected CodeableConcept type;
 
     /**
      * The amount of medication that has been dispensed. Includes unit of measure.
      */
-    @Child(name = "quantity", type = {SimpleQuantity.class}, order=7, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "quantity", type = {SimpleQuantity.class}, order=8, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Amount dispensed", formalDefinition="The amount of medication that has been dispensed. Includes unit of measure." )
     protected SimpleQuantity quantity;
 
     /**
      * The amount of medication expressed as a timing amount.
      */
-    @Child(name = "daysSupply", type = {SimpleQuantity.class}, order=8, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "daysSupply", type = {SimpleQuantity.class}, order=9, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Amount of medication expressed as a timing amount", formalDefinition="The amount of medication expressed as a timing amount." )
     protected SimpleQuantity daysSupply;
 
     /**
      * The time when the dispensed product was packaged and reviewed.
      */
-    @Child(name = "whenPrepared", type = {DateTimeType.class}, order=9, min=0, max=1, modifier=false, summary=true)
+    @Child(name = "whenPrepared", type = {DateTimeType.class}, order=10, min=0, max=1, modifier=false, summary=true)
     @Description(shortDefinition="Dispense processing time", formalDefinition="The time when the dispensed product was packaged and reviewed." )
     protected DateTimeType whenPrepared;
 
     /**
      * The time the dispensed product was provided to the patient or their representative.
      */
-    @Child(name = "whenHandedOver", type = {DateTimeType.class}, order=10, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "whenHandedOver", type = {DateTimeType.class}, order=11, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="When product was given out", formalDefinition="The time the dispensed product was provided to the patient or their representative." )
     protected DateTimeType whenHandedOver;
 
     /**
      * Identification of the facility/location where the medication was shipped to, as part of the dispense event.
      */
-    @Child(name = "destination", type = {Location.class}, order=11, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "destination", type = {Location.class}, order=12, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Where the medication was sent", formalDefinition="Identification of the facility/location where the medication was shipped to, as part of the dispense event." )
     protected Reference destination;
 
@@ -1712,7 +1736,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
     /**
      * Identifies the person who picked up the medication.  This will usually be a patient or their caregiver, but some cases exist where it can be a healthcare professional.
      */
-    @Child(name = "receiver", type = {Patient.class, Practitioner.class}, order=12, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "receiver", type = {Patient.class, Practitioner.class}, order=13, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Who collected the medication", formalDefinition="Identifies the person who picked up the medication.  This will usually be a patient or their caregiver, but some cases exist where it can be a healthcare professional." )
     protected List<Reference> receiver;
     /**
@@ -1724,32 +1748,32 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
     /**
      * Extra information about the dispense that could not be conveyed in the other attributes.
      */
-    @Child(name = "note", type = {Annotation.class}, order=13, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "note", type = {Annotation.class}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Information about the dispense", formalDefinition="Extra information about the dispense that could not be conveyed in the other attributes." )
     protected List<Annotation> note;
 
     /**
      * Indicates how the medication is to be used by the patient.  The pharmacist reviews the medication order prior to dispense and updates the dosageInstruction based on the actual product being dispensed.
      */
-    @Child(name = "dosageInstruction", type = {}, order=14, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "dosageInstruction", type = {}, order=15, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="Medicine administration instructions to the patient/caregiver", formalDefinition="Indicates how the medication is to be used by the patient.  The pharmacist reviews the medication order prior to dispense and updates the dosageInstruction based on the actual product being dispensed." )
     protected List<MedicationDispenseDosageInstructionComponent> dosageInstruction;
 
     /**
      * Indicates whether or not substitution was made as part of the dispense.  In some cases substitution will be expected but does not happen, in other cases substitution is not expected but does happen.  This block explains what substitution did or did not happen and why.
      */
-    @Child(name = "substitution", type = {}, order=15, min=0, max=1, modifier=false, summary=false)
+    @Child(name = "substitution", type = {}, order=16, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="Deals with substitution of one medicine for another", formalDefinition="Indicates whether or not substitution was made as part of the dispense.  In some cases substitution will be expected but does not happen, in other cases substitution is not expected but does happen.  This block explains what substitution did or did not happen and why." )
     protected MedicationDispenseSubstitutionComponent substitution;
 
     /**
      * A summary of the events of interest that have occurred, such as when the dispense was verified.
      */
-    @Child(name = "eventHistory", type = {}, order=16, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Child(name = "eventHistory", type = {}, order=17, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="A list of events of interest in the lifecycle", formalDefinition="A summary of the events of interest that have occurred, such as when the dispense was verified." )
     protected List<MedicationDispenseEventHistoryComponent> eventHistory;
 
-    private static final long serialVersionUID = 1975791058L;
+    private static final long serialVersionUID = 1182509987L;
 
   /**
    * Constructor
@@ -1969,6 +1993,50 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
      */
     public MedicationDispense setDispenserTarget(Practitioner value) { 
       this.dispenserTarget = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #dispensingOrganization} (The organizaation responsible for the dispense of the medication.)
+     */
+    public Reference getDispensingOrganization() { 
+      if (this.dispensingOrganization == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create MedicationDispense.dispensingOrganization");
+        else if (Configuration.doAutoCreate())
+          this.dispensingOrganization = new Reference(); // cc
+      return this.dispensingOrganization;
+    }
+
+    public boolean hasDispensingOrganization() { 
+      return this.dispensingOrganization != null && !this.dispensingOrganization.isEmpty();
+    }
+
+    /**
+     * @param value {@link #dispensingOrganization} (The organizaation responsible for the dispense of the medication.)
+     */
+    public MedicationDispense setDispensingOrganization(Reference value) { 
+      this.dispensingOrganization = value;
+      return this;
+    }
+
+    /**
+     * @return {@link #dispensingOrganization} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The organizaation responsible for the dispense of the medication.)
+     */
+    public Organization getDispensingOrganizationTarget() { 
+      if (this.dispensingOrganizationTarget == null)
+        if (Configuration.errorOnAutoCreate())
+          throw new Error("Attempt to auto-create MedicationDispense.dispensingOrganization");
+        else if (Configuration.doAutoCreate())
+          this.dispensingOrganizationTarget = new Organization(); // aa
+      return this.dispensingOrganizationTarget;
+    }
+
+    /**
+     * @param value {@link #dispensingOrganization} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The organizaation responsible for the dispense of the medication.)
+     */
+    public MedicationDispense setDispensingOrganizationTarget(Organization value) { 
+      this.dispensingOrganizationTarget = value;
       return this;
     }
 
@@ -2514,6 +2582,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
         childrenList.add(new Property("medication[x]", "CodeableConcept|Reference(Medication)", "Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.", 0, java.lang.Integer.MAX_VALUE, medication));
         childrenList.add(new Property("patient", "Reference(Patient)", "A link to a resource representing the person to whom the medication will be given.", 0, java.lang.Integer.MAX_VALUE, patient));
         childrenList.add(new Property("dispenser", "Reference(Practitioner)", "The individual responsible for dispensing the medication.", 0, java.lang.Integer.MAX_VALUE, dispenser));
+        childrenList.add(new Property("dispensingOrganization", "Reference(Organization)", "The organizaation responsible for the dispense of the medication.", 0, java.lang.Integer.MAX_VALUE, dispensingOrganization));
         childrenList.add(new Property("authorizingPrescription", "Reference(MedicationOrder)", "Indicates the medication order that is being dispensed against.", 0, java.lang.Integer.MAX_VALUE, authorizingPrescription));
         childrenList.add(new Property("type", "CodeableConcept", "Indicates the type of dispensing event that is performed. For example, Trial Fill, Completion of Trial, Partial Fill, Emergency Fill, Samples, etc.", 0, java.lang.Integer.MAX_VALUE, type));
         childrenList.add(new Property("quantity", "SimpleQuantity", "The amount of medication that has been dispensed. Includes unit of measure.", 0, java.lang.Integer.MAX_VALUE, quantity));
@@ -2536,6 +2605,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
         case 1998965455: /*medication*/ return this.medication == null ? new Base[0] : new Base[] {this.medication}; // Type
         case -791418107: /*patient*/ return this.patient == null ? new Base[0] : new Base[] {this.patient}; // Reference
         case 241511093: /*dispenser*/ return this.dispenser == null ? new Base[0] : new Base[] {this.dispenser}; // Reference
+        case 2036139309: /*dispensingOrganization*/ return this.dispensingOrganization == null ? new Base[0] : new Base[] {this.dispensingOrganization}; // Reference
         case -1237557856: /*authorizingPrescription*/ return this.authorizingPrescription == null ? new Base[0] : this.authorizingPrescription.toArray(new Base[this.authorizingPrescription.size()]); // Reference
         case 3575610: /*type*/ return this.type == null ? new Base[0] : new Base[] {this.type}; // CodeableConcept
         case -1285004149: /*quantity*/ return this.quantity == null ? new Base[0] : new Base[] {this.quantity}; // SimpleQuantity
@@ -2570,6 +2640,9 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
           break;
         case 241511093: // dispenser
           this.dispenser = castToReference(value); // Reference
+          break;
+        case 2036139309: // dispensingOrganization
+          this.dispensingOrganization = castToReference(value); // Reference
           break;
         case -1237557856: // authorizingPrescription
           this.getAuthorizingPrescription().add(castToReference(value)); // Reference
@@ -2624,6 +2697,8 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
           this.patient = castToReference(value); // Reference
         else if (name.equals("dispenser"))
           this.dispenser = castToReference(value); // Reference
+        else if (name.equals("dispensingOrganization"))
+          this.dispensingOrganization = castToReference(value); // Reference
         else if (name.equals("authorizingPrescription"))
           this.getAuthorizingPrescription().add(castToReference(value));
         else if (name.equals("type"))
@@ -2660,6 +2735,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
         case 1458402129:  return getMedication(); // Type
         case -791418107:  return getPatient(); // Reference
         case 241511093:  return getDispenser(); // Reference
+        case 2036139309:  return getDispensingOrganization(); // Reference
         case -1237557856:  return addAuthorizingPrescription(); // Reference
         case 3575610:  return getType(); // CodeableConcept
         case -1285004149:  return getQuantity(); // SimpleQuantity
@@ -2701,6 +2777,10 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
         else if (name.equals("dispenser")) {
           this.dispenser = new Reference();
           return this.dispenser;
+        }
+        else if (name.equals("dispensingOrganization")) {
+          this.dispensingOrganization = new Reference();
+          return this.dispensingOrganization;
         }
         else if (name.equals("authorizingPrescription")) {
           return addAuthorizingPrescription();
@@ -2760,6 +2840,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
         dst.medication = medication == null ? null : medication.copy();
         dst.patient = patient == null ? null : patient.copy();
         dst.dispenser = dispenser == null ? null : dispenser.copy();
+        dst.dispensingOrganization = dispensingOrganization == null ? null : dispensingOrganization.copy();
         if (authorizingPrescription != null) {
           dst.authorizingPrescription = new ArrayList<Reference>();
           for (Reference i : authorizingPrescription)
@@ -2807,12 +2888,13 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
           return false;
         MedicationDispense o = (MedicationDispense) other;
         return compareDeep(identifier, o.identifier, true) && compareDeep(status, o.status, true) && compareDeep(medication, o.medication, true)
-           && compareDeep(patient, o.patient, true) && compareDeep(dispenser, o.dispenser, true) && compareDeep(authorizingPrescription, o.authorizingPrescription, true)
-           && compareDeep(type, o.type, true) && compareDeep(quantity, o.quantity, true) && compareDeep(daysSupply, o.daysSupply, true)
-           && compareDeep(whenPrepared, o.whenPrepared, true) && compareDeep(whenHandedOver, o.whenHandedOver, true)
-           && compareDeep(destination, o.destination, true) && compareDeep(receiver, o.receiver, true) && compareDeep(note, o.note, true)
-           && compareDeep(dosageInstruction, o.dosageInstruction, true) && compareDeep(substitution, o.substitution, true)
-           && compareDeep(eventHistory, o.eventHistory, true);
+           && compareDeep(patient, o.patient, true) && compareDeep(dispenser, o.dispenser, true) && compareDeep(dispensingOrganization, o.dispensingOrganization, true)
+           && compareDeep(authorizingPrescription, o.authorizingPrescription, true) && compareDeep(type, o.type, true)
+           && compareDeep(quantity, o.quantity, true) && compareDeep(daysSupply, o.daysSupply, true) && compareDeep(whenPrepared, o.whenPrepared, true)
+           && compareDeep(whenHandedOver, o.whenHandedOver, true) && compareDeep(destination, o.destination, true)
+           && compareDeep(receiver, o.receiver, true) && compareDeep(note, o.note, true) && compareDeep(dosageInstruction, o.dosageInstruction, true)
+           && compareDeep(substitution, o.substitution, true) && compareDeep(eventHistory, o.eventHistory, true)
+          ;
       }
 
       @Override
@@ -2828,9 +2910,9 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, status, medication
-          , patient, dispenser, authorizingPrescription, type, quantity, daysSupply, whenPrepared
-          , whenHandedOver, destination, receiver, note, dosageInstruction, substitution, eventHistory
-          );
+          , patient, dispenser, dispensingOrganization, authorizingPrescription, type, quantity
+          , daysSupply, whenPrepared, whenHandedOver, destination, receiver, note, dosageInstruction
+          , substitution, eventHistory);
       }
 
   @Override
@@ -2886,7 +2968,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
    * Path: <b>MedicationDispense.receiver</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="receiver", path="MedicationDispense.receiver", description="Who collected the medication", type="reference" )
+  @SearchParamDefinition(name="receiver", path="MedicationDispense.receiver", description="Who collected the medication", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Patient.class, Practitioner.class } )
   public static final String SP_RECEIVER = "receiver";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>receiver</b>
@@ -2912,7 +2994,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
    * Path: <b>MedicationDispense.destination</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="destination", path="MedicationDispense.destination", description="Return dispenses that should be sent to a specific destination", type="reference" )
+  @SearchParamDefinition(name="destination", path="MedicationDispense.destination", description="Return dispenses that should be sent to a specific destination", type="reference", target={Location.class } )
   public static final String SP_DESTINATION = "destination";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>destination</b>
@@ -2938,7 +3020,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
    * Path: <b>MedicationDispense.medicationReference</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="medication", path="MedicationDispense.medication.as(Reference)", description="Return dispenses of this medicine resource", type="reference" )
+  @SearchParamDefinition(name="medication", path="MedicationDispense.medication.as(Reference)", description="Return dispenses of this medicine resource", type="reference", target={Medication.class } )
   public static final String SP_MEDICATION = "medication";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>medication</b>
@@ -2964,7 +3046,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
    * Path: <b>MedicationDispense.substitution.responsibleParty</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="responsibleparty", path="MedicationDispense.substitution.responsibleParty", description="Return all dispenses with the specified responsible party", type="reference" )
+  @SearchParamDefinition(name="responsibleparty", path="MedicationDispense.substitution.responsibleParty", description="Return all dispenses with the specified responsible party", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Practitioner.class } )
   public static final String SP_RESPONSIBLEPARTY = "responsibleparty";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>responsibleparty</b>
@@ -3050,7 +3132,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
    * Path: <b>MedicationDispense.dispenser</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="dispenser", path="MedicationDispense.dispenser", description="Return all dispenses performed by a specific individual", type="reference" )
+  @SearchParamDefinition(name="dispenser", path="MedicationDispense.dispenser", description="Return all dispenses performed by a specific individual", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Practitioner.class } )
   public static final String SP_DISPENSER = "dispenser";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>dispenser</b>
@@ -3076,7 +3158,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
    * Path: <b>MedicationDispense.authorizingPrescription</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="prescription", path="MedicationDispense.authorizingPrescription", description="The identity of a prescription to list dispenses from", type="reference" )
+  @SearchParamDefinition(name="prescription", path="MedicationDispense.authorizingPrescription", description="The identity of a prescription to list dispenses from", type="reference", target={MedicationOrder.class } )
   public static final String SP_PRESCRIPTION = "prescription";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>prescription</b>
@@ -3102,7 +3184,7 @@ Specifically if 'boolean' datatype is selected, then the following logic applies
    * Path: <b>MedicationDispense.patient</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="patient", path="MedicationDispense.patient", description="The identity of a patient to list dispenses  for", type="reference" )
+  @SearchParamDefinition(name="patient", path="MedicationDispense.patient", description="The identity of a patient to list dispenses  for", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient") }, target={Patient.class } )
   public static final String SP_PATIENT = "patient";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>patient</b>

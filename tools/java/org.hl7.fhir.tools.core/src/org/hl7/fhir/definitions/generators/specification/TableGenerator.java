@@ -6,6 +6,7 @@ import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.ProfiledType;
+import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.HierarchicalTableGenerator;
@@ -69,6 +70,8 @@ public class TableGenerator extends BaseGenerator {
         row.setIcon("icon_element.gif", HierarchicalTableGenerator.TEXT_ICON_ELEMENT);
         if (mode == RenderMode.RESOURCE)
           row.getCells().add(gen.new Cell(null, prefix+"backboneelement.html", "BackboneElement", null, null));
+        else if (e.getName().equals("Element"))
+          row.getCells().add(gen.new Cell(null, null, "n/a", null, null)); 
         else
           row.getCells().add(gen.new Cell(null, prefix+"element.html", "Element", null, null));   
       } else if (e.getTypes().size() == 1) {
@@ -131,7 +134,13 @@ public class TableGenerator extends BaseGenerator {
             e.getBinding().getDefinition()));
       cc.getPieces().add(gen.new Piece(null, " (", null));
       BindingSpecification b = e.getBinding();
-      cc.getPieces().add(gen.new Piece(prefix+"terminologies.html#"+b.getStrength().toCode(), b.getStrength().getDisplay(),  b.getStrength().getDefinition()));
+      if (b.hasMax() ) {
+        cc.getPieces().add(gen.new Piece(prefix+"terminologies.html#"+b.getStrength().toCode(), b.getStrength().getDisplay(),  b.getStrength().getDefinition()));
+        cc.getPieces().add(gen.new Piece(null, " but limited to ", null));
+        ValueSet vs = b.getMaxValueSet();
+        cc.getPieces().add(gen.new Piece(vs.getUserString("path"), vs.getName(), null));
+      }  else
+        cc.getPieces().add(gen.new Piece(prefix+"terminologies.html#"+b.getStrength().toCode(), b.getStrength().getDisplay(),  b.getStrength().getDefinition()));
       cc.getPieces().add(gen.new Piece(null, ")", null));
     }
     for (String name : e.getInvariants().keySet()) {

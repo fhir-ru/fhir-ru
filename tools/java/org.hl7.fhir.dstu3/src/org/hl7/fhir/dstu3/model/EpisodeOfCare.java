@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
+// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
 
 import java.util.*;
 
@@ -37,6 +37,7 @@ import org.hl7.fhir.utilities.Utilities;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
@@ -208,6 +209,7 @@ public class EpisodeOfCare extends DomainResource {
          */
         @Child(name = "status", type = {CodeType.class}, order=1, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="planned | waitlist | active | onhold | finished | cancelled", formalDefinition="planned | waitlist | active | onhold | finished | cancelled." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/episode-of-care-status")
         protected Enumeration<EpisodeOfCareStatus> status;
 
         /**
@@ -418,6 +420,7 @@ public class EpisodeOfCare extends DomainResource {
      */
     @Child(name = "status", type = {CodeType.class}, order=1, min=1, max=1, modifier=true, summary=true)
     @Description(shortDefinition="planned | waitlist | active | onhold | finished | cancelled", formalDefinition="planned | waitlist | active | onhold | finished | cancelled." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/episode-of-care-status")
     protected Enumeration<EpisodeOfCareStatus> status;
 
     /**
@@ -513,7 +516,19 @@ public class EpisodeOfCare extends DomainResource {
     protected List<CareTeam> teamTarget;
 
 
-    private static final long serialVersionUID = 922419354L;
+    /**
+     * The set of accounts that may be used for billing for this EpisodeOfCare.
+     */
+    @Child(name = "account", type = {Account.class}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="The set of accounts that may be used for billing for this EpisodeOfCare", formalDefinition="The set of accounts that may be used for billing for this EpisodeOfCare." )
+    protected List<Reference> account;
+    /**
+     * The actual objects that are the target of the reference (The set of accounts that may be used for billing for this EpisodeOfCare.)
+     */
+    protected List<Account> accountTarget;
+
+
+    private static final long serialVersionUID = -1726118845L;
 
   /**
    * Constructor
@@ -1116,6 +1131,81 @@ public class EpisodeOfCare extends DomainResource {
       return r;
     }
 
+    /**
+     * @return {@link #account} (The set of accounts that may be used for billing for this EpisodeOfCare.)
+     */
+    public List<Reference> getAccount() { 
+      if (this.account == null)
+        this.account = new ArrayList<Reference>();
+      return this.account;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public EpisodeOfCare setAccount(List<Reference> theAccount) { 
+      this.account = theAccount;
+      return this;
+    }
+
+    public boolean hasAccount() { 
+      if (this.account == null)
+        return false;
+      for (Reference item : this.account)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public Reference addAccount() { //3
+      Reference t = new Reference();
+      if (this.account == null)
+        this.account = new ArrayList<Reference>();
+      this.account.add(t);
+      return t;
+    }
+
+    public EpisodeOfCare addAccount(Reference t) { //3
+      if (t == null)
+        return this;
+      if (this.account == null)
+        this.account = new ArrayList<Reference>();
+      this.account.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #account}, creating it if it does not already exist
+     */
+    public Reference getAccountFirstRep() { 
+      if (getAccount().isEmpty()) {
+        addAccount();
+      }
+      return getAccount().get(0);
+    }
+
+    /**
+     * @deprecated Use Reference#setResource(IBaseResource) instead
+     */
+    @Deprecated
+    public List<Account> getAccountTarget() { 
+      if (this.accountTarget == null)
+        this.accountTarget = new ArrayList<Account>();
+      return this.accountTarget;
+    }
+
+    /**
+     * @deprecated Use Reference#setResource(IBaseResource) instead
+     */
+    @Deprecated
+    public Account addAccountTarget() { 
+      Account r = new Account();
+      if (this.accountTarget == null)
+        this.accountTarget = new ArrayList<Account>();
+      this.accountTarget.add(r);
+      return r;
+    }
+
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "Identifier(s) by which this EpisodeOfCare is known.", 0, java.lang.Integer.MAX_VALUE, identifier));
@@ -1129,6 +1219,7 @@ public class EpisodeOfCare extends DomainResource {
         childrenList.add(new Property("referralRequest", "Reference(ReferralRequest)", "Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming referrals.", 0, java.lang.Integer.MAX_VALUE, referralRequest));
         childrenList.add(new Property("careManager", "Reference(Practitioner)", "The practitioner that is the care manager/care co-ordinator for this patient.", 0, java.lang.Integer.MAX_VALUE, careManager));
         childrenList.add(new Property("team", "Reference(CareTeam)", "The list of practitioners that may be facilitating this episode of care for specific purposes.", 0, java.lang.Integer.MAX_VALUE, team));
+        childrenList.add(new Property("account", "Reference(Account)", "The set of accounts that may be used for billing for this EpisodeOfCare.", 0, java.lang.Integer.MAX_VALUE, account));
       }
 
       @Override
@@ -1145,6 +1236,7 @@ public class EpisodeOfCare extends DomainResource {
         case -310299598: /*referralRequest*/ return this.referralRequest == null ? new Base[0] : this.referralRequest.toArray(new Base[this.referralRequest.size()]); // Reference
         case -1147746468: /*careManager*/ return this.careManager == null ? new Base[0] : new Base[] {this.careManager}; // Reference
         case 3555933: /*team*/ return this.team == null ? new Base[0] : this.team.toArray(new Base[this.team.size()]); // Reference
+        case -1177318867: /*account*/ return this.account == null ? new Base[0] : this.account.toArray(new Base[this.account.size()]); // Reference
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -1186,6 +1278,9 @@ public class EpisodeOfCare extends DomainResource {
         case 3555933: // team
           this.getTeam().add(castToReference(value)); // Reference
           break;
+        case -1177318867: // account
+          this.getAccount().add(castToReference(value)); // Reference
+          break;
         default: super.setProperty(hash, name, value);
         }
 
@@ -1215,6 +1310,8 @@ public class EpisodeOfCare extends DomainResource {
           this.careManager = castToReference(value); // Reference
         else if (name.equals("team"))
           this.getTeam().add(castToReference(value));
+        else if (name.equals("account"))
+          this.getAccount().add(castToReference(value));
         else
           super.setProperty(name, value);
       }
@@ -1233,6 +1330,7 @@ public class EpisodeOfCare extends DomainResource {
         case -310299598:  return addReferralRequest(); // Reference
         case -1147746468:  return getCareManager(); // Reference
         case 3555933:  return addTeam(); // Reference
+        case -1177318867:  return addAccount(); // Reference
         default: return super.makeProperty(hash, name);
         }
 
@@ -1276,6 +1374,9 @@ public class EpisodeOfCare extends DomainResource {
         }
         else if (name.equals("team")) {
           return addTeam();
+        }
+        else if (name.equals("account")) {
+          return addAccount();
         }
         else
           return super.addChild(name);
@@ -1324,6 +1425,11 @@ public class EpisodeOfCare extends DomainResource {
           for (Reference i : team)
             dst.team.add(i.copy());
         };
+        if (account != null) {
+          dst.account = new ArrayList<Reference>();
+          for (Reference i : account)
+            dst.account.add(i.copy());
+        };
         return dst;
       }
 
@@ -1342,7 +1448,7 @@ public class EpisodeOfCare extends DomainResource {
            && compareDeep(type, o.type, true) && compareDeep(condition, o.condition, true) && compareDeep(patient, o.patient, true)
            && compareDeep(managingOrganization, o.managingOrganization, true) && compareDeep(period, o.period, true)
            && compareDeep(referralRequest, o.referralRequest, true) && compareDeep(careManager, o.careManager, true)
-           && compareDeep(team, o.team, true);
+           && compareDeep(team, o.team, true) && compareDeep(account, o.account, true);
       }
 
       @Override
@@ -1358,7 +1464,7 @@ public class EpisodeOfCare extends DomainResource {
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, status, statusHistory
           , type, condition, patient, managingOrganization, period, referralRequest, careManager
-          , team);
+          , team, account);
       }
 
   @Override
@@ -1414,7 +1520,7 @@ public class EpisodeOfCare extends DomainResource {
    * Path: <b>EpisodeOfCare.condition</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="condition", path="EpisodeOfCare.condition", description="Conditions/problems/diagnoses this episode of care is for", type="reference" )
+  @SearchParamDefinition(name="condition", path="EpisodeOfCare.condition", description="Conditions/problems/diagnoses this episode of care is for", type="reference", target={Condition.class } )
   public static final String SP_CONDITION = "condition";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>condition</b>
@@ -1440,7 +1546,7 @@ public class EpisodeOfCare extends DomainResource {
    * Path: <b>EpisodeOfCare.referralRequest</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="incomingreferral", path="EpisodeOfCare.referralRequest", description="Incoming Referral Request", type="reference" )
+  @SearchParamDefinition(name="incomingreferral", path="EpisodeOfCare.referralRequest", description="Incoming Referral Request", type="reference", target={ReferralRequest.class } )
   public static final String SP_INCOMINGREFERRAL = "incomingreferral";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>incomingreferral</b>
@@ -1466,7 +1572,7 @@ public class EpisodeOfCare extends DomainResource {
    * Path: <b>EpisodeOfCare.patient</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="patient", path="EpisodeOfCare.patient", description="Patient for this episode of care", type="reference" )
+  @SearchParamDefinition(name="patient", path="EpisodeOfCare.patient", description="Patient for this episode of care", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient") }, target={Patient.class } )
   public static final String SP_PATIENT = "patient";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>patient</b>
@@ -1492,7 +1598,7 @@ public class EpisodeOfCare extends DomainResource {
    * Path: <b>EpisodeOfCare.managingOrganization</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="organization", path="EpisodeOfCare.managingOrganization", description="The organization that has assumed the specific responsibilities of this EpisodeOfCare", type="reference" )
+  @SearchParamDefinition(name="organization", path="EpisodeOfCare.managingOrganization", description="The organization that has assumed the specific responsibilities of this EpisodeOfCare", type="reference", target={Organization.class } )
   public static final String SP_ORGANIZATION = "organization";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>organization</b>
@@ -1538,7 +1644,7 @@ public class EpisodeOfCare extends DomainResource {
    * Path: <b>EpisodeOfCare.careManager</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="care-manager", path="EpisodeOfCare.careManager", description="Care manager/care co-ordinator for the patient", type="reference" )
+  @SearchParamDefinition(name="care-manager", path="EpisodeOfCare.careManager", description="Care manager/care co-ordinator for the patient", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Practitioner.class } )
   public static final String SP_CARE_MANAGER = "care-manager";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>care-manager</b>

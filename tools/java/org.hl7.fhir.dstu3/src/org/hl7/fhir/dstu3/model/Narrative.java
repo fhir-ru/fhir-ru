@@ -29,13 +29,14 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
+// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 
 import org.hl7.fhir.utilities.Utilities;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.DatatypeDef;
 import ca.uhn.fhir.model.api.annotation.Block;
@@ -57,7 +58,7 @@ public class Narrative extends BaseNarrative implements INarrative {
          */
         EXTENSIONS, 
         /**
-         * The contents of the narrative contain additional information not found in the structured data
+         * The contents of the narrative may contain additional information not found in the structured data. Note that there is no computable way to determine what the extra information is, other than by human inspection
          */
         ADDITIONAL, 
         /**
@@ -106,7 +107,7 @@ public class Narrative extends BaseNarrative implements INarrative {
           switch (this) {
             case GENERATED: return "The contents of the narrative are entirely generated from the structured data in the content.";
             case EXTENSIONS: return "The contents of the narrative are entirely generated from the structured data in the content and some of the content is generated from extensions";
-            case ADDITIONAL: return "The contents of the narrative contain additional information not found in the structured data";
+            case ADDITIONAL: return "The contents of the narrative may contain additional information not found in the structured data. Note that there is no computable way to determine what the extra information is, other than by human inspection";
             case EMPTY: return "The contents of the narrative are some equivalent of \"No human-readable text provided in this case\"";
             default: return "?";
           }
@@ -174,6 +175,7 @@ public class Narrative extends BaseNarrative implements INarrative {
      */
     @Child(name = "status", type = {CodeType.class}, order=0, min=1, max=1, modifier=false, summary=false)
     @Description(shortDefinition="generated | extensions | additional | empty", formalDefinition="The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/narrative-status")
     protected Enumeration<NarrativeStatus> status;
 
     /**

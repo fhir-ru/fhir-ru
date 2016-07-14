@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
+// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
 
 import java.util.*;
 
@@ -37,6 +37,7 @@ import org.hl7.fhir.utilities.Utilities;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
@@ -54,6 +55,7 @@ public class PractitionerRole extends DomainResource {
          */
         @Child(name = "daysOfWeek", type = {CodeType.class}, order=1, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
         @Description(shortDefinition="mon | tue | wed | thu | fri | sat | sun", formalDefinition="Indicates which days of the week are available between the start and end Times." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/days-of-week")
         protected List<CodeType> daysOfWeek;
 
         /**
@@ -669,6 +671,7 @@ public class PractitionerRole extends DomainResource {
      */
     @Child(name = "role", type = {CodeableConcept.class}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Roles which this practitioner may perform", formalDefinition="Roles which this practitioner is authorized to perform for the organization." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/practitioner-role")
     protected List<CodeableConcept> role;
 
     /**
@@ -676,6 +679,7 @@ public class PractitionerRole extends DomainResource {
      */
     @Child(name = "specialty", type = {CodeableConcept.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
     @Description(shortDefinition="Specific specialty of the practitioner", formalDefinition="Specific specialty of the practitioner." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/c80-practice-codes")
     protected List<CodeableConcept> specialty;
 
     /**
@@ -737,7 +741,19 @@ public class PractitionerRole extends DomainResource {
     @Description(shortDefinition="Description of availability exceptions", formalDefinition="A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times." )
     protected StringType availabilityExceptions;
 
-    private static final long serialVersionUID = -408504135L;
+    /**
+     * Technical endpoints providing access to services operated for the practitioner with this role.
+     */
+    @Child(name = "endpoint", type = {Endpoint.class}, order=13, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Technical endpoints providing access to services operated for the practitioner with this role", formalDefinition="Technical endpoints providing access to services operated for the practitioner with this role." )
+    protected List<Reference> endpoint;
+    /**
+     * The actual objects that are the target of the reference (Technical endpoints providing access to services operated for the practitioner with this role.)
+     */
+    protected List<Endpoint> endpointTarget;
+
+
+    private static final long serialVersionUID = 1307212024L;
 
   /**
    * Constructor
@@ -1420,6 +1436,81 @@ public class PractitionerRole extends DomainResource {
       return this;
     }
 
+    /**
+     * @return {@link #endpoint} (Technical endpoints providing access to services operated for the practitioner with this role.)
+     */
+    public List<Reference> getEndpoint() { 
+      if (this.endpoint == null)
+        this.endpoint = new ArrayList<Reference>();
+      return this.endpoint;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public PractitionerRole setEndpoint(List<Reference> theEndpoint) { 
+      this.endpoint = theEndpoint;
+      return this;
+    }
+
+    public boolean hasEndpoint() { 
+      if (this.endpoint == null)
+        return false;
+      for (Reference item : this.endpoint)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public Reference addEndpoint() { //3
+      Reference t = new Reference();
+      if (this.endpoint == null)
+        this.endpoint = new ArrayList<Reference>();
+      this.endpoint.add(t);
+      return t;
+    }
+
+    public PractitionerRole addEndpoint(Reference t) { //3
+      if (t == null)
+        return this;
+      if (this.endpoint == null)
+        this.endpoint = new ArrayList<Reference>();
+      this.endpoint.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #endpoint}, creating it if it does not already exist
+     */
+    public Reference getEndpointFirstRep() { 
+      if (getEndpoint().isEmpty()) {
+        addEndpoint();
+      }
+      return getEndpoint().get(0);
+    }
+
+    /**
+     * @deprecated Use Reference#setResource(IBaseResource) instead
+     */
+    @Deprecated
+    public List<Endpoint> getEndpointTarget() { 
+      if (this.endpointTarget == null)
+        this.endpointTarget = new ArrayList<Endpoint>();
+      return this.endpointTarget;
+    }
+
+    /**
+     * @deprecated Use Reference#setResource(IBaseResource) instead
+     */
+    @Deprecated
+    public Endpoint addEndpointTarget() { 
+      Endpoint r = new Endpoint();
+      if (this.endpointTarget == null)
+        this.endpointTarget = new ArrayList<Endpoint>();
+      this.endpointTarget.add(r);
+      return r;
+    }
+
       protected void listChildren(List<Property> childrenList) {
         super.listChildren(childrenList);
         childrenList.add(new Property("identifier", "Identifier", "Business Identifiers that are specific to a role/location.", 0, java.lang.Integer.MAX_VALUE, identifier));
@@ -1435,6 +1526,7 @@ public class PractitionerRole extends DomainResource {
         childrenList.add(new Property("availableTime", "", "A collection of times that the Service Site is available.", 0, java.lang.Integer.MAX_VALUE, availableTime));
         childrenList.add(new Property("notAvailable", "", "The HealthcareService is not available during this period of time due to the provided reason.", 0, java.lang.Integer.MAX_VALUE, notAvailable));
         childrenList.add(new Property("availabilityExceptions", "string", "A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times.", 0, java.lang.Integer.MAX_VALUE, availabilityExceptions));
+        childrenList.add(new Property("endpoint", "Reference(Endpoint)", "Technical endpoints providing access to services operated for the practitioner with this role.", 0, java.lang.Integer.MAX_VALUE, endpoint));
       }
 
       @Override
@@ -1453,6 +1545,7 @@ public class PractitionerRole extends DomainResource {
         case 1873069366: /*availableTime*/ return this.availableTime == null ? new Base[0] : this.availableTime.toArray(new Base[this.availableTime.size()]); // PractitionerRoleAvailableTimeComponent
         case -629572298: /*notAvailable*/ return this.notAvailable == null ? new Base[0] : this.notAvailable.toArray(new Base[this.notAvailable.size()]); // PractitionerRoleNotAvailableComponent
         case -1149143617: /*availabilityExceptions*/ return this.availabilityExceptions == null ? new Base[0] : new Base[] {this.availabilityExceptions}; // StringType
+        case 1741102485: /*endpoint*/ return this.endpoint == null ? new Base[0] : this.endpoint.toArray(new Base[this.endpoint.size()]); // Reference
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -1500,6 +1593,9 @@ public class PractitionerRole extends DomainResource {
         case -1149143617: // availabilityExceptions
           this.availabilityExceptions = castToString(value); // StringType
           break;
+        case 1741102485: // endpoint
+          this.getEndpoint().add(castToReference(value)); // Reference
+          break;
         default: super.setProperty(hash, name, value);
         }
 
@@ -1533,6 +1629,8 @@ public class PractitionerRole extends DomainResource {
           this.getNotAvailable().add((PractitionerRoleNotAvailableComponent) value);
         else if (name.equals("availabilityExceptions"))
           this.availabilityExceptions = castToString(value); // StringType
+        else if (name.equals("endpoint"))
+          this.getEndpoint().add(castToReference(value));
         else
           super.setProperty(name, value);
       }
@@ -1553,6 +1651,7 @@ public class PractitionerRole extends DomainResource {
         case 1873069366:  return addAvailableTime(); // PractitionerRoleAvailableTimeComponent
         case -629572298:  return addNotAvailable(); // PractitionerRoleNotAvailableComponent
         case -1149143617: throw new FHIRException("Cannot make property availabilityExceptions as it is not a complex type"); // StringType
+        case 1741102485:  return addEndpoint(); // Reference
         default: return super.makeProperty(hash, name);
         }
 
@@ -1601,6 +1700,9 @@ public class PractitionerRole extends DomainResource {
         }
         else if (name.equals("availabilityExceptions")) {
           throw new FHIRException("Cannot call addChild on a primitive type PractitionerRole.availabilityExceptions");
+        }
+        else if (name.equals("endpoint")) {
+          return addEndpoint();
         }
         else
           return super.addChild(name);
@@ -1659,6 +1761,11 @@ public class PractitionerRole extends DomainResource {
             dst.notAvailable.add(i.copy());
         };
         dst.availabilityExceptions = availabilityExceptions == null ? null : availabilityExceptions.copy();
+        if (endpoint != null) {
+          dst.endpoint = new ArrayList<Reference>();
+          for (Reference i : endpoint)
+            dst.endpoint.add(i.copy());
+        };
         return dst;
       }
 
@@ -1678,7 +1785,7 @@ public class PractitionerRole extends DomainResource {
            && compareDeep(location, o.location, true) && compareDeep(healthcareService, o.healthcareService, true)
            && compareDeep(telecom, o.telecom, true) && compareDeep(period, o.period, true) && compareDeep(availableTime, o.availableTime, true)
            && compareDeep(notAvailable, o.notAvailable, true) && compareDeep(availabilityExceptions, o.availabilityExceptions, true)
-          ;
+           && compareDeep(endpoint, o.endpoint, true);
       }
 
       @Override
@@ -1695,7 +1802,7 @@ public class PractitionerRole extends DomainResource {
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, active, practitioner
           , organization, role, specialty, location, healthcareService, telecom, period
-          , availableTime, notAvailable, availabilityExceptions);
+          , availableTime, notAvailable, availabilityExceptions, endpoint);
       }
 
   @Override
@@ -1771,7 +1878,7 @@ public class PractitionerRole extends DomainResource {
    * Path: <b>PractitionerRole.practitioner</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="practitioner", path="PractitionerRole.practitioner", description="Practitioner that is able to provide the defined services for the organation", type="reference" )
+  @SearchParamDefinition(name="practitioner", path="PractitionerRole.practitioner", description="Practitioner that is able to provide the defined services for the organation", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Practitioner.class } )
   public static final String SP_PRACTITIONER = "practitioner";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>practitioner</b>
@@ -1817,7 +1924,7 @@ public class PractitionerRole extends DomainResource {
    * Path: <b>PractitionerRole.organization</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="organization", path="PractitionerRole.organization", description="The identity of the organization the practitioner represents / acts on behalf of", type="reference" )
+  @SearchParamDefinition(name="organization", path="PractitionerRole.organization", description="The identity of the organization the practitioner represents / acts on behalf of", type="reference", target={Organization.class } )
   public static final String SP_ORGANIZATION = "organization";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>organization</b>
@@ -1863,7 +1970,7 @@ public class PractitionerRole extends DomainResource {
    * Path: <b>PractitionerRole.location</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="location", path="PractitionerRole.location", description="One of the locations at which this practitioner provides care", type="reference" )
+  @SearchParamDefinition(name="location", path="PractitionerRole.location", description="One of the locations at which this practitioner provides care", type="reference", target={Location.class } )
   public static final String SP_LOCATION = "location";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>location</b>

@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Jul 11, 2016 19:31+1000 for FHIR v1.5.0
+// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
 
 import java.util.*;
 
@@ -37,12 +37,13 @@ import org.hl7.fhir.utilities.Utilities;
 import ca.uhn.fhir.model.api.annotation.ResourceDef;
 import ca.uhn.fhir.model.api.annotation.SearchParamDefinition;
 import ca.uhn.fhir.model.api.annotation.Child;
+import ca.uhn.fhir.model.api.annotation.ChildOrder;
 import ca.uhn.fhir.model.api.annotation.Description;
 import ca.uhn.fhir.model.api.annotation.Block;
 import org.hl7.fhir.instance.model.api.*;
 import org.hl7.fhir.dstu3.exceptions.FHIRException;
 /**
- * This resource allows for the definition of an order set as a sharable, consumable, and executable artifact in support of clinical decision support.
+ * This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.
  */
 @ResourceDef(name="ActivityDefinition", profile="http://hl7.org/fhir/Profile/ActivityDefinition")
 public class ActivityDefinition extends DomainResource {
@@ -755,6 +756,7 @@ public class ActivityDefinition extends DomainResource {
      */
     @Child(name = "status", type = {CodeType.class}, order=5, min=1, max=1, modifier=true, summary=true)
     @Description(shortDefinition="draft | active | inactive", formalDefinition="The status of the module." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/module-metadata-status")
     protected CodeType status;
 
     /**
@@ -872,6 +874,7 @@ public class ActivityDefinition extends DomainResource {
      */
     @Child(name = "category", type = {CodeType.class}, order=21, min=0, max=1, modifier=false, summary=false)
     @Description(shortDefinition="communication | device | diagnostic | diet | drug | encounter | immunization | observation | procedure | referral | supply | vision | other", formalDefinition="High-level categorization of the type of activity." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/activity-definition-category")
     protected Enumeration<ActivityDefinitionCategory> category;
 
     /**
@@ -905,6 +908,7 @@ public class ActivityDefinition extends DomainResource {
      */
     @Child(name = "participantType", type = {CodeType.class}, order=25, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
     @Description(shortDefinition="patient | practitioner | related-person", formalDefinition="The type of participant in the action." )
+    @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/activity-participant-type")
     protected List<Enumeration<ActivityParticipantType>> participantType;
 
     /**
