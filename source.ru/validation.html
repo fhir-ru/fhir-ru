@@ -2,7 +2,7 @@
 
 
       
-[%settitle Validating Resources%]
+[%settitle Валидация ресурсов%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 [%file newheader%]
@@ -13,96 +13,111 @@
 <div class="col-12">
 
 
-<h2>Validating Resources</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<h2>Валидация ресурсов<!-- Validating Resources --></h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень зрелости</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
 
 <p>
-This page provides a quick overview of how the FHIR specification supports 
-validation of resources. 
+На этой странице приведён краткий обзор того, как спецификация FHIR поддерживает валидацию ресурсов.
+<!-- This page provides a quick overview of how the FHIR specification supports 
+validation of resources.  -->
 </p>
 
 <p>
-In principle, resources can be validated:
+В принципе, ресурсы можно валидировать:
+<!-- In principle, resources can be validated: -->
 </p>
 <ul>
- <li>Against the original specification</li>
- <li>Against an implementation guide</li>
- <li>Against a specific profile</li>
+ <li>на соответствие исходной спецификации;<!-- Against the original specification --></li>
+ <li>на соответствие руководству по реализации;<!-- Against an implementation guide --></li>
+ <li>на соответствие конкретному профилю.<!-- Against a specific profile --></li>
 </ul>
 
 <p>
-Resources can be tested for conformance by:
+Ресурсы можно тестировать на соответствие:
+<!-- Resources can be tested for conformance by: -->
 </p>
 <ul>
- <li><a href="#schema">Using the XML Schema</a> - for XML instances only</li>
+ <li><a href="#schema">с помощью XML Schema</a> - только для XML-экземпляров</li>
+ <li><a href="#jar">с помощью FHIR Validator</a> - java jar-файл, предоставляемый в рамках спецификации</li>
+ <li><a href="#op">запросить FHIR Server</a> - используя операцию $validate</li>
+ <li><a href="#web">через веб-интерфейс</a> - используя веб-форму на тестовом сервере</li>
+<!--  <li><a href="#schema">Using the XML Schema</a> - for XML instances only</li>
  <li><a href="#jar">Using the FHIR Validator</a> - a java jar provided as part of the specification</li>
  <li><a href="#op">Asking a FHIR Server</a> - using the $validate operation</li>
- <li><a href="#web">Via a web interface</a> - using a web form on a test server</li>
+ <li><a href="#web">Via a web interface</a> - using a web form on a test server</li> -->
 </ul>
 
 <p>
-Note that all these validation methods are incomplete; they 
+Отметьте, что все эти методы валидации не являются полными; они могут валидировать вычисляемые аспекты соответствия, однако всегда есть дополнительные правила, описанные текстом, которые они не могут проверить (например такое правило, как "Всё клинически важное содержимое в данных ДОЛЖНО быть представлено в описательной части", которое может быть введено в руководстве по реализации и не может быть проверено инструментами проверки на соответствие).
+<!-- Note that all these validation methods are incomplete; they 
 can only validate the computable aspects of conformance, but there are always 
 additional rules made in narrative that they are not able to check (e.g. a rule 
 such as "All the clinically important content in the data SHALL be in the 
 narrative", which might be made in an implementation guide, but could never be checked 
-by a conformance tool).
+by a conformance tool). -->
 </p>
 <p>
-In case of disagreement between these conformance methods, note that:
+В случает расхождения между этими методами проверки на соответствие, отметьте, что:
+<!-- In case of disagreement between these conformance methods, note that: -->
 </p>
 <ul>
- <li>The schema/schematron is the least capable - mainly because it is not connected to a terminology server</li>
- <li>The java validator is only as good as the underlying definitions, and in particular depends on whether the underlying terminology server supports all the relevant terminologies</li>
- <li>In general, the server validation operations use or derive from the java validation code, so have the same caveats</li>
- <li>The final arbiter is human inspection of the content of the resources, and the relevant implementation guides and base specification</li>
+ <li>Схема/схематрон - наименее действенный - в основном из-за того, что он не подключен к терминологическому серверу<!-- The schema/schematron is the least capable - mainly because it is not connected to a terminology server --></li>
+ <li>Java-валидатор хорош настолько же, как и лежащие в основе определения и, в частности, зависит от того, поддерживает ли лежащий в основе терминологический сервер все необходимые терминологии<!-- The java validator is only as good as the underlying definitions, and in particular depends on whether the underlying terminology server supports all the relevant terminologies --></li>
+ <li>В целом, операции валидации на сервере используют или являются производными от кода валидатора на java, поэтому имеют те же подводные камни<!-- In general, the server validation operations use or derive from the java validation code, so have the same caveats --></li>
+ <li>Последней инстанцией является проверка человеком содержимого ресурсов, а также релевантных руководств по реализации и базовой спецификации<!-- The final arbiter is human inspection of the content of the resources, and the relevant implementation guides and base specification --></li>
 </ul>
 
 <p>
-Also, note that static testing of resource content is not enough to
+Также обратите внимание, что статического тестирования содержимого ресурсов не достаточно для подтверждения соответствия спецификации. Дополнительную информацию см. в разделе <a href="http://fhir.org/conformance-testing">Тестирование на соответствие FHIR</a>.
+<!-- Also, note that static testing of resource content is not enough to
 prove conformance to the specification. For further information, see
-<a href="http://fhir.org/conformance-testing">FHIR Conformance Testing</a>.
+<a href="http://fhir.org/conformance-testing">FHIR Conformance Testing</a>. -->
 </p>
 
 <a name="schema"> </a>
-<h3>Using the XML schema</h3>
+<h3>Использование XML-схемы<!-- Using the XML schema --></h3>
 
 <p>
-The XML schema can be used to validate XML represenations of the resources. 
-When validating a resource, you can nominate one of the following schema: 
+Для валидации XML-представлений ресурсов можно использовать XML-схему. Для валидации ресурса вы можете использовать одну из следующих схем:
+<!-- The XML schema can be used to validate XML represenations of the resources. 
+When validating a resource, you can nominate one of the following schema:  -->
 </p>
 <ul>
- <li>fhir-all.xsd: links in all the individual modular schemas</li>
- <li>fhir-single.xsd: a single large file, mainly provided for schema processors that can't support circular references</li>
+ <li>fhir-all.xsd: объединяет все индивидуальные модульные схемы<!-- fhir-all.xsd: links in all the individual modular schemas --></li>
+ <li>fhir-single.xsd: единый большой файл, предоставляемый главным образом для процессоров схемы, которые не поддерживают циклические ссылки<!-- fhir-single.xsd: a single large file, mainly provided for schema processors that can't support circular references --></li>
 </ul>
 <p>
-In addition, the validation schema includes schematron
+Кроме того, валидационная схема включает в себя схематрон, который можно запустить с преобразованием "iso_svrl_for_xslt2.xsl", включённым в загрузку <a href="downloads.html#refimpl">XML-инструментов</a>. Отметьте, что для запуска схематронов требуется XSLT2.
+<!-- In addition, the validation schema includes schematron
 that can be initiated with transform "iso_svrl_for_xslt2.xsl" included in the 
 <a href="downloads.html#refimpl">XML Tools</a> download. Note that 
-XSLT2 is required to run the schematrons. 
+XSLT2 is required to run the schematrons.  -->
 </p>
 <p>
-When running the schematron, use the file "fhir-invariants.sch". This
+Запуская схематрон, используйте файл "fhir-invariants.sch". Он включает в себя все схематроны. Отдельные файлы схематронов для каждого ресурса приводятся, чтобы дать возможность реализаторам создавать их собственный комбинированный файл меньшего размера, покрывающий только требуемые им типы ресурсов.
+<!-- When running the schematron, use the file "fhir-invariants.sch". This
 includes all the schematrons. The individual schematron files for each
 resource are provided to allow implementers to build their own smaller
-combined file that covers the relevant resource types for them.
+combined file that covers the relevant resource types for them. -->
 </p>
 
 <a name="jar"> </a>
-<h3>Using the FHIR Validator</h3>
+<h3>Использование FHIR Validator<!-- Using the FHIR Validator --></h3>
 
 <p>
-The FHIR Validator is a Java jar that is provided as part of the specification, and that is used 
+FHIR Validator - это Java jar-файл, поставляемый в рамках спецификации и используемый во время процесса публикации для валидации всех публикуемых примеров. Для запуска FHIR-валидатора выполните следующие шаги:
+<!-- The FHIR Validator is a Java jar that is provided as part of the specification, and that is used 
 during the publication process to validate that all the published examples. To 
-execute the FHIR validator, follow the following steps:
+execute the FHIR validator, follow the following steps: -->
 </p>
 <ul>
- <li><a href="downloads.html">Download</a> the FHIR Validator</li>
- <li><a href="downloads.html">Download</a> One of the FHIR definitions (with or without text)</li>
- <li>Execute the validator, providing the path to the definitions, and a reference to the resource to validate</li>
+ <li><a href="downloads.html">Скачайте</a> FHIR Validator<!-- <a href="downloads.html">Download</a> the FHIR Validator --></li>
+ <li><a href="downloads.html">Скачайте</a> одно из определений FHIR (с или без текста)<!-- <a href="downloads.html">Download</a> One of the FHIR definitions (with or without text) --></li>
+ <li>Запустите валидатор, указав ему путь к определениям и ссылку на ресурс, который нужно провалидировать<!-- Execute the validator, providing the path to the definitions, and a reference to the resource to validate --></li>
 </ul>
 <p>
-Here is an example windows batch file that demonstrates the process (using the common utilities <a href="http://gnuwin32.sourceforge.net/packages/wget.htm">wget</a> and <a href="http://www.7-zip.org/">7z</a>:
+Вот пример исполняемого файла для Windows, который демонстрирует этот процесс (в помощью таких общих утилит, как <a href="http://gnuwin32.sourceforge.net/packages/wget.htm">wget</a> и <a href="http://www.7-zip.org/">7z</a>):
+<!-- Here is an example windows batch file that demonstrates the process (using the common utilities <a href="http://gnuwin32.sourceforge.net/packages/wget.htm">wget</a> and <a href="http://www.7-zip.org/">7z</a>: -->
 </p>
 <pre>
  @ECHO OFF
@@ -123,23 +138,26 @@ Here is an example windows batch file that demonstrates the process (using the c
  pause
 </pre>
 <p>
-Note that it is not necessary to download the resource first; the http address can be supplied directly:
+Обратите внимание, что не нужно предварительно скачивать сам ресурс; HTTP-адрес можно указать напрямую:
+<!-- Note that it is not necessary to download the resource first; the http address can be supplied directly: -->
 </p>
 <pre>
  java -jar org.hl7.fhir.validator.jar http://hl7.org/fhir/patient-example.html -defn validation-min.xml.zip -profile http://hl7.org/fhir/StructureDefinition/daf-patient
 </pre>
 <p>
-The validator requires an underlying terminology server.
-TODO: document this part. for now, hard coded to http://fhir-dev.healthintersections.com.au.
+Валидатору требуется лежащий в основе терминологический сервер. TODO: задокументировать эту часть. На текущий момент жёстко установлено в http://fhir-dev.healthintersections.com.au.
+<!-- The validator requires an underlying terminology server.
+TODO: document this part. for now, hard coded to http://fhir-dev.healthintersections.com.au. -->
 </p>
 
 <a name="op"> </a>
-<h3>Asking a FHIR Server</h3>
+<h3>Запросить FHIR-сервер<!-- Asking a FHIR Server --></h3>
 
 <p>
-The <a href="operations.html">operation</a> <a href="resource-operations.html#validate">validate</a> can 
+<a href="operations.html">Операцию</a> <a href="resource-operations.html#validate">validate</a> можно использовать для проверки, соответствует ли ресурс профилю. Простейший способ выполнить эту операцию - это запостить ресурс на сервер:
+<!-- The <a href="operations.html">operation</a> <a href="resource-operations.html#validate">validate</a> can 
 be used to check whether a resource conforms to a profile. The simplest way to execute this operation is
-to post the resource to a server:
+to post the resource to a server: -->
 </p>
 <pre>
  POST [base]/Patient/$validate?profile=http://hl7.org/fhir/StructureDefinition/daf-patient
@@ -148,24 +166,27 @@ to post the resource to a server:
  &lt;Patient&gt;.. resource to check as the body
 </pre>
 <p>
-The server will return an <a href="operationoutcome.html">OperationOutcome</a> resource listing issues found in the resource.
+Сервер вернёт ресурс <a href="operationoutcome.html">OperationOutcome</a> со списком всех ошибок, обнаруженных в ресурсе.
+<!-- The server will return an <a href="operationoutcome.html">OperationOutcome</a> resource listing issues found in the resource. -->
 </p>
 <p>
-There are several things to consider when using this operation:
+Есть несколько вещей, которые необходимо учитывать при использовании этой операции:
+<!-- There are several things to consider when using this operation: -->
 </p>
 <ul>
- <li>Not all servers support the $validate operation, though some of the public test servers do</li>
- <li>Servers support the $validate operation generally will only validate against profiles already registered with the server</li>
- <li>Servers may choose to support either XML, JSON, or both</li>
+ <li>Не все серверы поддерживают операцию $validate, хотя некоторые из публичных тестовых серверов поддерживают<!-- Not all servers support the $validate operation, though some of the public test servers do --></li>
+ <li>Серверы поддерживают операцию $validate в основном с валидацией на соответствие только профилям, уже зарегистрированным на сервере<!-- Servers support the $validate operation generally will only validate against profiles already registered with the server --></li>
+ <li>Серверы могут на выбор поддерживать XML, JSON или оба формата<!-- Servers may choose to support either XML, JSON, or both --></li>
 </ul>
 
 <a name="web"> </a>
-<h3>Via a web interface</h3>
+<h3>Через веб-интерфейс<!-- Via a web interface --></h3>
 
 <p>
-Some servers expose the $validate functionality 
+Некоторые серверы реализуют функциональность $validate через веб-страницу. Список известных опубликованных реализаций можно посмотреть в <a href="http://wiki.hl7.org/index.php?title=Public_FHIR_Validation_Services">wiki-разделе FHIR</a>
+<!-- Some servers expose the $validate functionality 
 though a web page. For known public implementations,
-see the <a href="http://wiki.hl7.org/index.php?title=Public_FHIR_Validation_Services">FHIR wiki</a>
+see the <a href="http://wiki.hl7.org/index.php?title=Public_FHIR_Validation_Services">FHIR wiki</a> -->
 </p>
 
 </div>
