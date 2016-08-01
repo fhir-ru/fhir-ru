@@ -139,6 +139,7 @@
   Type = DomainResource
   Short Label = Dispensing a medication to a named patient
   Definition = Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order.
+  Comments = The WG will be updating the MedicationDispense resource  to adjust each affected resource to align with the workflow pattern (see workflow.html).
   RIM Mapping = Supply[moodCode=EVN]
   Committee Notes = Need to add confidentiality
   w5 = clinical.medication
@@ -206,6 +207,7 @@
   Type = Reference(Organization)
   Short Label = Organization responsible for the dispense of the medication
   Definition = The organizaation responsible for the dispense of the medication.
+  RIM Mapping = .participation[typeCode=RESP].role[classCode=ASSIGNED]
   w5 = who.actor
 
  -- Row 8 -----------------------------------
@@ -242,6 +244,7 @@
   Type = SimpleQuantity
   Short Label = Amount of medication expressed as a timing amount
   Definition = The amount of medication expressed as a timing amount.
+  RIM Mapping = effectiveUseTime
 
  -- Row 12 -----------------------------------
   Element = MedicationDispense.whenPrepared

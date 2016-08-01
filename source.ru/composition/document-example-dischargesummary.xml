@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Bundle xmlns="http://hl7.org/fhir">
+<Bundle xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/bundle.xsd">
+
   <id value="father"/>
   <meta>
     <lastUpdated value="2013-05-28T22:12:21Z"/>
@@ -231,22 +232,22 @@
           <given value="Adam"/>
           <prefix value="Dr"/>
         </name>
-        <practitionerRole>
+        <role>
           <organization>
             <reference value="Organization/1"/>
           </organization>
         <!--     Referring Practitioner for the first 3 months of 2012     -->
-          <role>
+          <code>
             <coding>
               <system value="http://hl7.org/fhir/v2/0286"/>
               <code value="RP"/>
             </coding>
-          </role>
+          </code>
           <period>
             <start value="2012-01-01"/>
             <end value="2012-03-31"/>
           </period>
-        </practitionerRole>
+        </role>
       </Practitioner>
     </resource>
   </entry>
@@ -446,7 +447,7 @@
           <display value="Peter Patient"/>
         </patient>
         <dateAsserted value="2013-05-05T16:13:03Z"/>
-        <wasNotTaken value="true"/>
+        <notTaken value="true"/>
         <reasonNotTaken>
           <text value="Management of Asthma"/>
         </reasonNotTaken>
@@ -466,17 +467,17 @@
           <div xmlns="http://www.w3.org/1999/xhtml">Sensitivity to Doxycycline :
                         Hives</div>
         </text>
-        <status value="confirmed"/>
+        <status value="active-confirmed"/>
         <type value="allergy"/>
         <criticality value="high"/>
-        <substance>
+        <code>
           <text value="Doxycycline"/>
-        </substance>
+        </code>
         <patient>
           <reference value="http://fhir.healthintersections.com.au/open/Patient/d1"/>
           <display value="Eve Everywoman"/>
         </patient>
-        <recordedDate value="2012-09-17"/>
+        <attestedDate value="2012-09-17"/>
         <reaction>
           <manifestation>
             <coding>

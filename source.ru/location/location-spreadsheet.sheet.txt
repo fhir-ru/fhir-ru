@@ -114,6 +114,7 @@
   Short Label = A list of alternate names that the location is known as, or was known as in the past
   Requirements = Over time locations and organizations go through many changes and can be known by different names.\n\nFor searching knowing previous names that the location was known by can be very useful.
   Comments = There are no dates associated with the alias/historic names, as this is not intended to track when names were used, but to assist in searching so that older names can still result in identifying the location
+  RIM Mapping = .name
   Committee Notes = This is used in many registries, and is often very important in searching
 
  -- Row 6 -----------------------------------
@@ -238,6 +239,7 @@
   Type = Reference(Endpoint)
   Short Label = Technical endpoints providing access to services operated for the location
   Requirements = Organizations may have different systems at different locations that provide various services and need to be able to define the technical connection details for how to connect to them, and for what purpose.
+  RIM Mapping = n/a
 
 === Sheet Search =====================================
 
@@ -309,7 +311,7 @@
  -- Row 12 -----------------------------------
   Name = near
   Type = token
-  Description = The coordinates expressed as [lat],[long] (using the WGS84 datum, see notes) to find locations near to (servers may search using a square rather than a circle for efficiency). \n\nRequires the near-distance parameter to be provided also
+  Description = The coordinates expressed as [latitude]:[longitude] (using the WGS84 datum, see notes) to find locations near to (servers may search using a square rather than a circle for efficiency). \n\nRequires the near-distance parameter to be provided also
   Path = Location.position
   Path Usage = nearby
 

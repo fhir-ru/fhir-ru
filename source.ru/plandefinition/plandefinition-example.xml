@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PlanDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/plandefinition.xsd">
-  <id value="example"/>
-  <text>
-    <status value="generated" />
-    <div xmlns="http://www.w3.org/1999/xhtml">Low Suicide Risk Order Set...</div>
-  </text>
-
+	<id value="example"/>
+	<text>
+		<status value="generated"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">Low Suicide Risk Order Set...</div>
+	</text>
 	<!-- The referral request here is only partially specified, additional information will be provided from context, see the action definition below -->
 	<contained>
 		<ActivityDefinition>
@@ -20,19 +19,16 @@
 					<code value="306206005"/>
 				</coding>
 			</code>
-			<!-- Null reference exception due to no primitive value, fix pending...
 			<timingTiming>
 				<event>
-					<extension url="http://fhir.org/cql-expression">
+					<extension url="http://hl7.org/fhir/StructureDefinition/cqif-basic-cqlExpression">
 						<valueString value="Now()"/>
 					</extension>
 				</event>
 			</timingTiming>
-            -->
 			<participantType value="practitioner"/>
 		</ActivityDefinition>
 	</contained>
-
 	<contained>
 		<ActivityDefinition>
 			<id value="citalopramPrescription"/>
@@ -73,9 +69,40 @@
 				</quantity>
 			</dispenseRequest>
 			-->
+			<dynamicValue>
+				<path value="dosageInstruction.text"/>
+				<expression value="'1 tablet oral 1 time daily'"/>
+			</dynamicValue>
+			<dynamicValue>
+				<path value="dosageInstruction.timing.repeat.frequency"/>
+				<expression value="1"/>
+			</dynamicValue>
+			<dynamicValue>
+				<path value="dosageInstruction.timing.repeat.period"/>
+				<expression value="1"/>
+			</dynamicValue>
+			<dynamicValue>
+				<path value="dosageInstruction.timing.repeat.periodUnit"/>
+				<expression value="'d'"/>
+			</dynamicValue>
+			<dynamicValue>
+				<path value="dosageInstruction.route.coding"/>
+				<expression value="code '26643006' from &quot;http://snomed.info/sct&quot; display 'Oral route (qualifier value)'"/>
+			</dynamicValue>
+			<dynamicValue>
+				<path value="dosageInstruction.doseQuantity"/>
+				<expression value="1 '{tbl}'"/>
+			</dynamicValue>
+			<dynamicValue>
+				<path value="dispenseRequest.numberOfRepeatsAllowed"/>
+				<expression value="3"/>
+			</dynamicValue>
+			<dynamicValue>
+				<path value="dispenseRequest.quantity"/>
+				<expression value="30 '{tbl}'"/>
+			</dynamicValue>
 		</ActivityDefinition>
 	</contained>
-
 	<contained>
 		<Medication>
 			<id value="citalopramMedication"/>
@@ -128,10 +155,9 @@
 			</code>
 		</Substance>
 	</contained>
-	
 	<identifier>
-	  <use value="official"/>
-	  <value value="mmi:low-suicide-risk-order-set"/>
+		<use value="official"/>
+		<value value="mmi:low-suicide-risk-order-set"/>
 	</identifier>
 	<version value="1.0.0"/>
 	<title value="Low Suicide Risk Order Set"/>
@@ -197,7 +223,7 @@
 		</clinicalVenue>
 	</coverage>
 	<topic>
-		<text value="Chlamydia Screeening"/>
+		<text value="Suicide risk assessment"/>
 	</topic>
 	<contributor>
 		<type value="author"/>
@@ -214,7 +240,7 @@
 				<use value="work"/>
 			</telecom>
 		</contact>
-	</contributor> 
+	</contributor>
 	<publisher value="Motive Medical Intelligence"/>
 	<contact>
 		<telecom>
@@ -228,11 +254,9 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	
 	<library>
 		<reference value="Library/mmi-suiciderisk-orderset-logic"/>
 	</library>
-	
 	<!-- Actions -->
 	<!-- Suicide Risk Assessment and Outpatient Management -->
 	<actionDefinition>
@@ -284,30 +308,34 @@
 			<groupingBehavior value="logical-group"/>
 			<selectionBehavior value="at-most-one"/>
 			<actionDefinition>
-
 				<!-- First-Line Antidepressants -->
 				<title value="First-Line Antidepressants"/>
-				<supportingEvidence>
-					<contentType value="text/html"/>
-					<url value="http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"/>
-					<title value="Practice Guideline for the Treatment of Patients with Major Depressive Disorder"/>
-				</supportingEvidence>
+				<documentation>
+					<type value="justification"/>
+					<document>
+						<contentType value="text/html"/>
+						<url value="http://psychiatryonline.org/pb/assets/raw/sitewide/practice_guidelines/guidelines/mdd.pdf"/>
+						<title value="Practice Guideline for the Treatment of Patients with Major Depressive Disorder"/>
+					</document>
+				</documentation>
 				<groupingBehavior value="logical-group"/>
 				<selectionBehavior value="at-most-one"/>
 				<actionDefinition>
 					<!-- Selective Serotonin Reuptake Inhibitors (Choose a maximum of one or document reasons for exception) -->
 					<title value="Selective Serotonin Reuptake Inhibitors (Choose a mazimum of one or document reasons for exception)"/>
 					<documentation>
-						<contentType value="text/html"/>
-						<url value="http://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6daeb45c-451d-b135-bf8f-2d6dff4b6b01"/>
-						<title value="National Library of Medicine. DailyMed website. CITALOPRAM- citalopram hydrobromide tablet, film coated."/>
+						<type value="justification"/>
+						<document>
+							<contentType value="text/html"/>
+							<url value="http://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6daeb45c-451d-b135-bf8f-2d6dff4b6b01"/>
+							<title value="National Library of Medicine. DailyMed website. CITALOPRAM- citalopram hydrobromide tablet, film coated."/>
+						</document>
 					</documentation>
 					<groupingBehavior value="logical-group"/>
 					<selectionBehavior value="at-most-one"/>
 					<actionDefinition>
 						<!-- citalopram 20 mg tablet 1 tablet oral 1 time daily now (30 table; 3 refills) -->
 						<textEquivalent value="citalopram 20 mg tablet 1 tablet oral 1 time daily now (30 table; 3 refills)"/>
-
 						<activityDefinition>
 							<reference value="#citalopramPrescription"/>
 						</activityDefinition>
@@ -331,7 +359,6 @@
 							<path value="reasonReference"/>
 							<expression value="RiskAssessment"/>
 						</dynamicValue>
-
 					</actionDefinition>
 					<actionDefinition>
 						<!-- escitalopram 10 mg tablet 1 tablet oral 1 time daily now (30 tablet; 3 refills) -->

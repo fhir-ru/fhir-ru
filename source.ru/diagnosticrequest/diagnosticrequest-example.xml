@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiagnosticRequest xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/diagnosticreport.xsd">
+	<id value="example"/>
+	<text>
+		<status value="generated"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">[Put rendering here]</div>
+	</text>
+		<!-- insert contents here -->
+	<status value="active"/>
+	<stage>
+		<coding>
+			<code value="original-order"/>
+		</coding>
+	</stage>
+	<code>
+		<coding>
+			<code value="example"></code>
+		</coding>
+	</code>
+	<subject><reference value="Patient/example"></reference></subject>
+
+</DiagnosticRequest>

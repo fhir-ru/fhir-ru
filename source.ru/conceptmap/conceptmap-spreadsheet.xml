@@ -5131,7 +5131,7 @@
     <Cell ss:StyleID="s120"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s120"/>
     <Cell ss:StyleID="s120"/>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">Идентифицирует набор значений, используемый при выборе концепта (пары система/код)<!-- Identifies the value set used when the concept (system/code pair) was chosen. May be a logical id, or an absolute or relative location -->. The source value set is an optional parameter because in some cases, the client cannot know what the source value set is. However, without a source value set, the server may be unable to safely identify an applicable concept map, and would return an error. For this reason, a source value set SHOULD always be provided. Note that servers may be able to identify an appropriate concept map without a source value set if there is a full mapping for the entire code system in the concept map, or by manual intervention</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Identifies the value set used when the concept (system/code pair) was chosen. May be a logical id, or an absolute or relative location. The source value set is an optional parameter because in some cases, the client cannot know what the source value set is. However, without a source value set, the server may be unable to safely identify an applicable concept map, and would return an error. For this reason, a source value set SHOULD always be provided. Note that servers may be able to identify an appropriate concept map without a source value set if there is a full mapping for the entire code system in the concept map, or by manual intervention</Data></Cell>
     <Cell ss:StyleID="s135"/>
    </Row>
    <Row ss:AutoFitHeight="0">

@@ -92,12 +92,13 @@
     <SheetIndex>10</SheetIndex>
    </Xct>
   </SupBook>
-  <WindowHeight>9384</WindowHeight>
-  <WindowWidth>23040</WindowWidth>
+  <WindowHeight>14124</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
   <WindowTopX>0</WindowTopX>
   <WindowTopY>0</WindowTopY>
   <ActiveSheet>2</ActiveSheet>
   <FirstVisibleSheet>1</FirstVisibleSheet>
+  <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -4685,7 +4686,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Элемент element.base нельзя указывать, если не указан элемент base для структурного определения<!-- element.base cannot appear if there is no base on the structure definition --></Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">snapshot.element.base.exists() = baseDefinition.exists()</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">snapshot.exists() implies (snapshot.element.base.exists() = baseDefinition.exists())</Data></Cell>
     <Cell ss:StyleID="s109"><Data ss:Type="String">f:baseDefinition or not(exists(f:snapshot/f:element/f:base) or exists(f:differential/f:element/f:base))</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="28.8">
@@ -4695,7 +4696,7 @@
     <Cell ss:StyleID="s90"/>
     <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">All element definitions must have an id</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">snapshot.element.all(id) and differential.element.all(id)</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">snapshot.element.all(id.exists()) and differential.element.all(id.exists())</Data></Cell>
     <Cell ss:StyleID="s109"><Data ss:Type="String">count(*/f:element)=count(*/f:element/@id)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="57.45">
@@ -4719,22 +4720,24 @@
     <Cell ss:StyleID="s109"><Data ss:Type="String">not(f:element[1][not(contains(f:path/@value, '.'))]/f:type)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s108"><NamedCell ss:Name="Invariantids"/></Cell>
+    <Cell ss:StyleID="s108"><Data ss:Type="Number">16</Data><NamedCell
+      ss:Name="Invariantids"/></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">element ids need to be unique</Data></Cell>
     <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s109"/>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">All element definitions must have unique ids (snapshot)</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">snapshot.element.id.trace('ids').isDistinct()</Data></Cell>
+    <Cell ss:StyleID="s109"><Data ss:Type="String">count(*/f:element)=count(*/f:element/@id)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s108"><NamedCell ss:Name="Invariantids"/></Cell>
+    <Cell ss:StyleID="s108"><Data ss:Type="Number">17</Data><NamedCell
+      ss:Name="Invariantids"/></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">element ids need to be unique</Data></Cell>
     <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s90"/>
-    <Cell ss:StyleID="s109"/>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">StructureDefinition</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">All element definitions must have unique ids (diff)</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">differential.element.id.trace('ids').isDistinct()</Data></Cell>
+    <Cell ss:StyleID="s109"><Data ss:Type="String">count(*/f:element)=count(*/f:element/@id)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s108"><NamedCell ss:Name="Invariantids"/></Cell>
@@ -5015,9 +5018,9 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>6</TopRowBottomPane>
+   <TopRowBottomPane>7</TopRowBottomPane>
    <SplitVertical>2</SplitVertical>
-   <LeftColumnRightPane>6</LeftColumnRightPane>
+   <LeftColumnRightPane>5</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -5033,7 +5036,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>13</ActiveRow>
+     <ActiveRow>14</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

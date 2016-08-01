@@ -179,6 +179,14 @@
   Expression = entry.where(fullUrl).select(fullUrl&resource.meta.versionId).isDistinct()
   Severity = error
 
+ -- Row 8 -----------------------------------
+  Id = 8
+  Context = Bundle.entry
+  English = fullUrl cannot be a version specific reference
+  XPath = not(exists(f:fullUrl[contains(@value, \'/_history/\')]))
+  Expression = fullUrl.contains(\'/_history/\').not()
+  Severity = error
+
 === Sheet Data Elements =====================================
 
  -- Row 1 -----------------------------------
@@ -402,14 +410,14 @@
   Name = message
   Type = reference
   Description = The first resource in the bundle, if the bundle type is \"message\" - this is a message header, and this parameter provides access to search its contents
-  Path = Bundle.entry.resource(0)
+  Path = Bundle.entry(0).resource
   Target Types = MessageHeader
 
  -- Row 3 -----------------------------------
   Name = composition
   Type = reference
   Description = The first resource in the bundle, if the bundle type is \"document\" - this is a composition, and this parameter provides access to searches its contents
-  Path = Bundle.entry.resource(0)
+  Path = Bundle.entry(0).resource
   Target Types = Composition
 
 === Sheet Profiles =====================================

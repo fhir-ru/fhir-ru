@@ -12,11 +12,31 @@
 <div class="col-12">
 
 <%resheader profiles%>
-<h2>Ресурс <%title%> - Профили</h2>
+<h2>Ресурс <%title%> - Расширения &amp; Профили</h2>
+
+<p>
+В данной таблице перечислены профили и расширения для ресурса <%title%>. Исходную информацию можно посмотреть в разделах <a href="profiling#resources">Профилирование ресурсов</a> и <a href="extensibility">Расширяемость</a>.
+Дополнительные профили и ресурсы можно найти в опубликованных <a href="http://fhir.org/guides/registry">Руководствах по реализации</a> или в <a href="http://registry.fhir.org">Реестре ресурсов Conformance</a>.
+</p>
+
+<h3>Профили</h3>
 
 <table class="list">
-<%profiles%>
+<%profilelist%>
 </table>
+
+<h3>Расширения</h3>
+
+<table class="list">
+<%extensionlist%>
+</table>
+
+<h3>Поиск по расширениям</h3>
+
+<table class="list">
+<%searchextensionlist%>
+</table>
+
 
 </div>
 

@@ -31,11 +31,24 @@
   Definition = Identifier for a person within a particular scope.
   Requirements = People are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the patient. Examples are national person identifier and local identifier
   v2 Mapping = NK1-33
-  RIM Mapping = id
+  RIM Mapping = .id
   Committee Notes = Keeping RelatedPerson.id cardinality as a matter of safety in the same manner as Person Activate
   w5 = id
 
  -- Row 3 -----------------------------------
+  Element = RelatedPerson.active
+  Card. = 0..1
+  Is Modifier = y
+  Summary = y
+  Type = boolean
+  Short Label = Whether this related person\'s record is in active use
+  Definition = Whether this related person record is in active use
+  Requirements = Need to be able to mark a related person record as not to be used, such as if it was created in error
+  RIM Mapping = .statusCode
+  Default Value = True
+  w5 = status
+
+ -- Row 4 -----------------------------------
   Element = RelatedPerson.patient
   Card. = 1..1
   Summary = y
@@ -47,7 +60,7 @@
   RIM Mapping = scoper[classCode=PSN|ANM and determinerCode=\'INSTANCE\']/playedRole[classCode=\'PAT\']/id
   Committee Notes = This rather complicated HL7 v3 mapping traverses the same path that the Patient resource has for contact but in opposite direction
 
- -- Row 4 -----------------------------------
+ -- Row 5 -----------------------------------
   Element = RelatedPerson.relationship
   Card. = 0..1
   Summary = y
@@ -60,7 +73,7 @@
   RIM Mapping = code
   w5 = class
 
- -- Row 5 -----------------------------------
+ -- Row 6 -----------------------------------
   Element = RelatedPerson.name
   Card. = 0..*
   Summary = y
@@ -71,7 +84,7 @@
   v2 Mapping = NK1-2
   RIM Mapping = name
 
- -- Row 6 -----------------------------------
+ -- Row 7 -----------------------------------
   Element = RelatedPerson.telecom
   Card. = 0..*
   Summary = y
@@ -83,7 +96,7 @@
   v2 Mapping = NK1-5 / NK1-6 / NK1-40
   RIM Mapping = telecom
 
- -- Row 7 -----------------------------------
+ -- Row 8 -----------------------------------
   Element = RelatedPerson.gender
   Card. = 0..1
   Summary = y
@@ -95,14 +108,15 @@
   v2 Mapping = NK1-15
   RIM Mapping = administrativeGender
 
- -- Row 8 -----------------------------------
+ -- Row 9 -----------------------------------
   Element = RelatedPerson.birthDate
   Card. = 0..1
   Summary = Y
   Type = date
   Short Label = The date on which the related person was born
+  RIM Mapping = player.birthTime
 
- -- Row 9 -----------------------------------
+ -- Row 10 -----------------------------------
   Element = RelatedPerson.address
   Card. = 0..*
   Summary = y
@@ -113,7 +127,7 @@
   v2 Mapping = NK1-4
   RIM Mapping = addr
 
- -- Row 10 -----------------------------------
+ -- Row 11 -----------------------------------
   Element = RelatedPerson.photo
   Card. = 0..*
   Type = Attachment
@@ -123,12 +137,13 @@
   v2 Mapping = OBX-5 - needs a profile
   RIM Mapping = player[classCode=\'PSN\' and determinerCode=\'INSTANCE\']/desc
 
- -- Row 11 -----------------------------------
+ -- Row 12 -----------------------------------
   Element = RelatedPerson.period
   Card. = 0..1
   Type = Period
   Short Label = Period of time that this relationship is considered valid
   Definition = The period of time that this relationship is considered to be valid. If there are no dates defined, then the interval is unknown.
+  RIM Mapping = .effectiveTime
   w5 = when.done
 
 === Sheet Search =====================================
@@ -142,7 +157,7 @@
  -- Row 2 -----------------------------------
   Name = name
   Type = string
-  Description = A portion of name in any name part
+  Description = A server defined search that may match any of the string fields in the HumanName, including family, give, prefix, suffix, suffix, and/or text
   Path = RelatedPerson.name
 
  -- Row 3 -----------------------------------
@@ -173,7 +188,7 @@
  -- Row 7 -----------------------------------
   Name = address
   Type = string
-  Description = An address in any kind of address/part
+  Description = A server defined search that may match any of the string fields in the Address, including line, city, state, country, postalCode, and/or text
   Path = RelatedPerson.address
 
  -- Row 8 -----------------------------------
@@ -223,6 +238,12 @@
   Type = reference
   Description = The patient this person is related to
   Path = RelatedPerson.patient
+
+ -- Row 16 -----------------------------------
+  Name = active
+  Type = token
+  Description = Wheter the related person record is active
+  Path = RelatedPerson.active
 
 === Sheet Profiles =====================================
 

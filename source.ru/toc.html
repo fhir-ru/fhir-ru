@@ -12,53 +12,14 @@
 
 <div class="col-12">
 
-<h2>Оглавление</h2>
+<h2>Полное оглавление</h2>
 
-<div id="tabs">
-  <ul>
-    <li><a href="#tabs-1">Документация</a></li>
-    <li><a href="#tabs-2">Ресурсы</a></li>
-  </ul>
-  <div id="tabs-1">
+<%toc%>
 
-<%toc1 Documentation%>
-
-  </div>
-  <div id="tabs-2">
-<%toc2 Resources%>
-</div>
 
 </div>
-</div>
+
 [%file newfooter%]
-
-
-<script src="external/jquery/jquery.js"> </script>
-<script src="jquery-ui.min.js"> </script>
-<script>
-try {
-  var currentTabIndex = sessionStorage.getItem('fhir-toc-tab-index');
-}
-catch(exception){
-}
-
-if (!currentTabIndex)
-  currentTabIndex = '0';
-
-$( '#tabs' ).tabs({
-         active: currentTabIndex,
-         activate: function( event, ui ) {
-             var active = $('.selector').tabs('option', 'active');
-             currentTabIndex = ui.newTab.index();
-             document.activeElement.blur();
-             try {
-               sessionStorage.setItem('fhir-toc-tab-index', currentTabIndex);
-             }
-             catch(exception){
-             }
-         }
-     });
-</script>
 
 </body>
 </html>
