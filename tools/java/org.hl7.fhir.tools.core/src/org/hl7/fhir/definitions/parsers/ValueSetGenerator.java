@@ -18,6 +18,7 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
+import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemHierarchyMeaning;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
 import org.hl7.fhir.dstu3.model.ContactPoint.ContactPointSystem;
@@ -28,8 +29,8 @@ import org.hl7.fhir.dstu3.model.ValueSet.ValueSetComposeComponent;
 import org.hl7.fhir.dstu3.model.ValueSet.ValueSetContactComponent;
 import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
+import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
-import org.hl7.fhir.tools.converters.CodeSystemConvertor;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
@@ -256,6 +257,7 @@ public class ValueSetGenerator {
     DocumentBuilder builder = factory.newDocumentBuilder();
     Document doc = builder.parse(new File(Utilities.path(folder, "..", "..", "implementations", "translations.xml")));
     Element n = XMLUtil.getFirstChild(doc.getDocumentElement());
+    cs.setHierarchyMeaning(CodeSystemHierarchyMeaning.SUBSUMES);
     while (n != null) {
       if ("true".equals(n.getAttribute("ecode"))) {
         String code = n.getAttribute("id");

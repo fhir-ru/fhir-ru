@@ -23,6 +23,7 @@ import org.hl7.fhir.dstu3.utils.IWorkerContext;
 import org.hl7.fhir.dstu3.utils.ProfileUtilities.ProfileKnowledgeProvider;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
+import org.hl7.fhir.utilities.Utilities;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -31,7 +32,7 @@ import com.google.gson.JsonPrimitive;
 public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase.ILinkResolver {
 
   private IWorkerContext context;
-  private JsonObject specPaths;
+  private SpecMapManager specPaths;
   private Set<String> msgs = new HashSet<String>();
   private String pathToSpec;
   private String canonical;
@@ -42,6 +43,8 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
     super();
     this.context = context;
     this.pathToSpec = pathToSpec;
+    if (this.pathToSpec.endsWith("/"))
+      this.pathToSpec = this.pathToSpec.substring(0, this.pathToSpec.length()-1);
     this.errors = errors;
     loadPaths(igs);
   }
@@ -87,12 +90,12 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
     }
   }
 
-  public void loadSpecPaths(JsonObject paths) {
+  public void loadSpecPaths(SpecMapManager paths) throws Exception {
     this.specPaths = paths;
     for (BaseConformance bc : context.allConformanceResources()) {
-      JsonElement e = paths.get(bc.getUrl());
-      if (e != null)
-        bc.setUserData("path", specPath(e.getAsString()));
+      String s = paths.getPath(bc.getUrl());
+      if (s != null)
+        bc.setUserData("path", specPath(s));
     }    
   }
 
@@ -109,7 +112,7 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
   public void findConfiguration(FetchedFile f, FetchedResource r) {
     JsonObject e = resourceConfig.getAsJsonObject(r.getElement().fhirType()+"/"+r.getId());
     if (e == null)
-      error("no configuration found for "+r.getElement().fhirType()+"/"+r.getId()+" in "+f.getName());
+      hint("no configuration found for "+r.getElement().fhirType()+"/"+r.getId()+" in "+f.getName());
     else 
       r.setConfig(e);
   }
@@ -117,7 +120,7 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
   public void checkForPath(FetchedFile f, FetchedResource r, BaseConformance bc) {
     if (!bc.getUrl().endsWith("/"+bc.getId()))
       error("Resource id/url mismatch: "+bc.getId()+"/"+bc.getUrl());
-    if (!r.getId().equals("/"+bc.getId()))
+    if (!r.getId().equals(bc.getId()))
       error("Resource id/id mismatch: "+r.getId()+"/"+bc.getUrl());
     if (r.getConfig() == null)
       findConfiguration(f, r);
@@ -125,6 +128,8 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
     bc.setUserData("config", e);
     if (e != null) 
       bc.setUserData("path", e.get("base").getAsString());
+    else
+      bc.setUserData("path", r.getElement().fhirType()+"/"+r.getId()+".html");
   }
 
   private void error(String msg) {
@@ -134,8 +139,15 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
     }
   }
 
+  private void hint(String msg) {
+    if (!msgs.contains(msg)) {
+      msgs.add(msg);
+      errors.add(new ValidationMessage(Source.Publisher, IssueType.INVARIANT, msg, IssueSeverity.INFORMATION));
+    }
+  }
+
   private String makeCanonical(String ref) {
-    return canonical+"/"+ref;
+    return Utilities.pathReverse(canonical, ref);
   }
 
   private void brokenLinkWarning(String ref) {
@@ -147,7 +159,7 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
   }
 
   private String specPath(String path) {
-    return pathToSpec+"/"+path;
+    return Utilities.pathReverse(pathToSpec, path);
   }
 
   public String getDefinitions(StructureDefinition sd) {
@@ -192,7 +204,7 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
   }
 
   @Override
-  public BindingResolution resolveBinding(ElementDefinitionBindingComponent binding) {
+  public BindingResolution resolveBinding(StructureDefinition profile, ElementDefinitionBindingComponent binding) {
     BindingResolution br = new BindingResolution();
     if (!binding.hasValueSet()) {
       br.url = specPath("terminologies.html#unbound");
@@ -220,7 +232,7 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
           else if (ref.equals("http://www.iso.org/iso/country_codes.htm"))
             br.display = "ISO Country Codes";
           else
-            br.display = "????";
+            br.display = ref;
         }
       }
     } else {
@@ -253,9 +265,15 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
           br.url = specPath("v2/"+ref.substring(26)+"/index.html"); 
           br.display = ref.substring(26);
         } else {
-          brokenLinkWarning(ref);
-          br.url = ref;
-          br.display = "????";
+          ValueSet vs = context.fetchResource(ValueSet.class, ref);
+          if (vs == null) {
+            br.url = ref.substring(9)+".html"; // broken link, 
+            br.display = ref.substring(9);
+            brokenLinkWarning(ref);
+          } else {
+            br.url = vs.getUserString("path");
+            br.display = vs.getName(); 
+          }
         }
       }
     }

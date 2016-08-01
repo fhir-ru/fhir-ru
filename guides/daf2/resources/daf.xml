@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ImplementationGuide xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<id value="daf"/>
-	<url value="http://hl7.org/fhir/daf"/>
+	<url value="http://hl7.org/fhir/us/daf"/>
 	<version value="1"/>
 	<name value="Data Access Framework"/>
 	<status value="draft"/>
@@ -19,25 +19,7 @@
 	</dependency>
 	<package>
 		<name value="base"/>
-		<!--  value sets -->
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-procedure-type"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-product-form"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-race"/>
-			</sourceReference>
-		</resource>
+		<!--  value sets -->		
 		<resource>
 			<example value="false"/>
 			<sourceReference>
@@ -66,12 +48,6 @@
 			<example value="false"/>
 			<sourceReference>
 				<reference value="ValueSet/daf-substance-unii"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-ucum-vitals-common"/>
 			</sourceReference>
 		</resource>
 		<resource>
@@ -116,90 +92,6 @@
 				<reference value="ValueSet/concern-status"/>
 			</sourceReference>
 		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/cvx"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-bodysite"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-cvx"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-encounter-dischargedisposition"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-encounter-reason"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-encounter-type"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-ethnicity"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-list-MedListCode"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-manifestation-ccda-codes"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-medication-codes"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-medication-route"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-observation-ccdasmokingstatus"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-observation-CCDAVitalSignResult"/>
-			</sourceReference>
-		</resource>
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-problem"/>
-			</sourceReference>
-		</resource>
 		<!--  profiles -->
 		<resource>
 			<example value="false"/>
@@ -225,6 +117,21 @@
 				<reference value="StructureDefinition/daf-core-careplan"/>
 			</sourceReference>
 		</resource>
+		
+				<resource>
+			<example value="false"/>
+			<sourceReference>
+				<reference value="StructureDefinition/daf-core-careteam"/>
+			</sourceReference>
+		</resource>
+<!--
+		<resource>
+			<example value="false"/>
+			<sourceReference>
+				<reference value="StructureDefinition/daf-core-careteam"/>
+			</sourceReference>
+		</resource
+-->
 		<resource>
 			<example value="false"/>
 			<sourceReference>
@@ -240,13 +147,19 @@
 		<resource>
 			<example value="false"/>
 			<sourceReference>
+				<reference value="StructureDefinition/daf-conformance"/>
+			</sourceReference>
+		</resource>
+		<resource>
+			<example value="false"/>
+			<sourceReference>
 				<reference value="StructureDefinition/daf-core-device"/>
 			</sourceReference>
 		</resource>
 		<resource>
 			<example value="false"/>
 			<sourceReference>
-				<reference value="StructureDefinition/daf-diagnosticorder"/>
+				<reference value="StructureDefinition/daf-diagnosticrequest"/>
 			</sourceReference>
 		</resource>
 		<resource>
@@ -372,6 +285,12 @@
 		<resource>
 			<example value="false"/>
 			<sourceReference>
+				<reference value="StructureDefinition/daf-operationdefinition"/>
+			</sourceReference>
+		</resource>
+		<resource>
+			<example value="false"/>
+			<sourceReference>
 				<reference value="StructureDefinition/daf-organization"/>
 			</sourceReference>
 		</resource>
@@ -432,6 +351,12 @@
 		<resource>
 			<example value="false"/>
 			<sourceReference>
+				<reference value="StructureDefinition/daf-provenance"/>
+			</sourceReference>
+		</resource>
+		<resource>
+			<example value="false"/>
+			<sourceReference>
 				<reference value="StructureDefinition/daf-relatedperson"/>
 			</sourceReference>
 		</resource>
@@ -480,10 +405,28 @@
 		<resource>
 			<example value="false"/>
 			<sourceReference>
+				<reference value="StructureDefinition/daf-task"/>
+			</sourceReference>
+		</resource>
+		<resource>
+			<example value="false"/>
+			<sourceReference>
 				<reference value="StructureDefinition/daf-vitalsigns"/>
 			</sourceReference>
 		</resource>
 		<resource>
+			<example value="false"/>
+			<sourceReference>
+				<reference value="StructureDefinition/daf-queryresults"/>
+			</sourceReference>
+		</resource>
+		<resource>
+			<example value="false"/>
+			<sourceReference>
+				<reference value="StructureDefinition/us-core-birth-sex"/>
+			</sourceReference>
+		</resource>
+				<resource>
 			<example value="false"/>
 			<sourceReference>
 				<reference value="StructureDefinition/daf-core-vitalsigns"/>
@@ -519,30 +462,58 @@
 		</resource>
 		<resource>
 			<example value="true"/>
-			<name value="DAF Responder Basic"/>
+			<name value="DAF Responder Core"/>
 			<sourceReference>
-				<reference value="Conformance/conformance-daf-query-responder-core"/>
+				<reference value="Conformance/conformance-daf-core-query-responder"/>
+			</sourceReference>
+		</resource>
+		<resource>
+			<example value="true"/>
+			<name value="DAF Requestor"/>
+			<sourceReference>
+				<reference value="Conformance/conformance-daf-core-query-requestor"/>
+			</sourceReference>
+		</resource>
+		<resource>
+			<example value="true"/>
+			<name value="DAF-Research Data Source"/>
+			<sourceReference>
+				<reference value="Conformance/conformance-daf-datasource"/>
+			</sourceReference>
+		</resource>
+		<resource>
+			<example value="true"/>
+			<name value="DAF-Research Data Mart"/>
+			<sourceReference>
+				<reference value="Conformance/conformance-daf-datamart"/>
+			</sourceReference>
+		</resource>
+		<resource>
+			<example value="true"/>
+			<name value="DAF-Research Query Requester"/>
+			<sourceReference>
+				<reference value="Conformance/conformance-daf-research-queryrequester"/>
+			</sourceReference>
+		</resource>
+		<resource>
+			<example value="true"/>
+			<name value="DAF Research Query Responder"/>
+			<sourceReference>
+				<reference value="Conformance/conformance-daf-research-queryresponder"/>
 			</sourceReference>
 		</resource>
 		<!-- examples   -->
 		<resource>
 			<example value="true"/>
-			<name value="Allergy Intolerance Examples"/>
+			<name value="Allergy Intolerance Example"/>
 			<sourceReference>
-				<reference value="AllergyIntolerance/23"/>
+				<reference value="AllergyIntolerance/example"/>
 			</sourceReference>
 			<exampleFor>
 				<reference value="StructureDefinition/daf-core-allergyintolerance"/>
 			</exampleFor>
 		</resource>
-		
 		<!--daf-core-core valuesets-->
-		<resource>
-			<example value="false"/>
-			<sourceReference>
-				<reference value="ValueSet/daf-core-substance"/>
-			</sourceReference>
-		</resource>
 		<resource>
 			<example value="false"/>
 			<sourceReference>
@@ -567,15 +538,33 @@
 				<reference value="ValueSet/daf-core-substance-unii"/>
 			</sourceReference>
 		</resource>
-	
-	
+    
+		<!-- Operations -->
+		<resource>
+			<example value="false"/>
+			<sourceReference>
+				<reference value="OperationDefinition/daf-load-operation"/>
+			</sourceReference>
+		</resource>
+		<resource>
+			<example value="false"/>
+			<sourceReference>
+				<reference value="OperationDefinition/daf-extract-operation"/>
+			</sourceReference>
+		</resource>
+		<resource>
+			<example value="false"/>
+			<sourceReference>
+				<reference value="OperationDefinition/daf-execute-query"/>
+			</sourceReference>
+		</resource>
 	</package>
 	<!-- 
   <acronym target="daf-resultobsquantity" id="daf-qty"/>
   <acronym target="daf-resultobsratio" id="daf-rto"/>
   <acronym target="daf-resultobsother" id="daf-oth"/>
   <acronym target="daf-diagnosticreport" id="daf-dir"/>
-  <acronym target="daf-diagnosticorder" id="daf-dio"/>
+  <acronym target="daf-diagnosticrequest" id="daf-dio"/>
   <acronym target="daf-resultobservationcode" id="daf-cod"/>
  -->
 	<binary value="daf-actors-and-interactions.png"/>
@@ -624,6 +613,18 @@
 			</page>
 		</page>
 		<page>
+			<source value="conformance-daf.html"/>
+			<title value="Conformance"/>
+			<kind value="page"/>
+			<format value="generated"/>
+			<page>
+				<source value="daf-conformance.html"/>
+				<title value="Conformance Details"/>
+				<kind value="resource"/>
+				<format value="generated"/>
+			</page>
+		</page>
+		<page>
 			<source value="device-daf-core.html"/>
 			<title value="Device"/>
 			<kind value="page"/>
@@ -636,12 +637,12 @@
 			</page>
 		</page>
 		<page>
-			<source value="diagnosticorder-daf.html"/>
+			<source value="diagnosticrequest-daf.html"/>
 			<title value="Diagnostic Orders"/>
 			<kind value="page"/>
 			<format value="generated"/>
 			<page>
-				<source value="daf-diagnosticorder.html"/>
+				<source value="daf-diagnosticrequest.html"/>
 				<title value="Diagnostic Order Details"/>
 				<kind value="resource"/>
 				<format value="generated"/>
@@ -697,7 +698,7 @@
 		</page>
 		<page>
 			<source value="goal-daf-core.html"/>
-			<title value="Goals"/>
+			<title value="Goal"/>
 			<kind value="page"/>
 			<format value="generated"/>
 			<page>
@@ -857,6 +858,18 @@
 			</page>
 		</page>
 		<page>
+			<source value="operationdefinition-daf.html"/>
+			<title value="OperationDefinition Orders"/>
+			<kind value="page"/>
+			<format value="generated"/>
+			<page>
+				<source value="daf-operationdefinition.html"/>
+				<title value="OperationDefinition Details"/>
+				<kind value="resource"/>
+				<format value="generated"/>
+			</page>
+		</page>
+		<page>
 			<source value="patient-daf.html"/>
 			<title value="Patients"/>
 			<kind value="page"/>
@@ -941,6 +954,30 @@
 			</page>
 		</page>
 		<page>
+			<source value="provenance-daf.html"/>
+			<title value="Provenance"/>
+			<kind value="page"/>
+			<format value="generated"/>
+			<page>
+				<source value="daf-provenance.html"/>
+				<title value="Provenance Details"/>
+				<kind value="resource"/>
+				<format value="generated"/>
+			</page>
+		</page>
+		<page>
+			<source value="task-daf.html"/>
+			<title value="Task"/>
+			<kind value="page"/>
+			<format value="generated"/>
+			<page>
+				<source value="daf-task.html"/>
+				<title value="Task Details"/>
+				<kind value="resource"/>
+				<format value="generated"/>
+			</page>
+		</page>
+		<page>
 			<source value="observation-daf-smokingstatus.html"/>
 			<title value="Smoking Status"/>
 			<kind value="page"/>
@@ -984,6 +1021,18 @@
 			<page>
 				<source value="daf-core-vitalsigns.html"/>
 				<title value="Vital Signs Details"/>
+				<kind value="resource"/>
+				<format value="generated"/>
+			</page>
+		</page>
+		<page>
+			<source value="observation-daf-queryresults.html"/>
+			<title value="QueryResults"/>
+			<kind value="page"/>
+			<format value="generated"/>
+			<page>
+				<source value="daf-queryresults.html"/>
+				<title value="QueryResults Details"/>
 				<kind value="resource"/>
 				<format value="generated"/>
 			</page>

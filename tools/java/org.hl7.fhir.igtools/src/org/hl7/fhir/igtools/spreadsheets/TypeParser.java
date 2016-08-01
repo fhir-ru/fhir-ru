@@ -38,12 +38,19 @@ import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
 import org.hl7.fhir.dstu3.utils.BaseWorkerContext;
 import org.hl7.fhir.dstu3.utils.IWorkerContext;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
+import org.hl7.fhir.utilities.Utilities;
 
 public class TypeParser {
 
 
 	public List<TypeRef> parse(String n, boolean inProfile, String profileExtensionBase, BaseWorkerContext resolver, boolean allowElement) throws Exception {
+	  return parse(n, inProfile, profileExtensionBase, resolver, allowElement, null);
+	}
+
+		public List<TypeRef> parse(String n, boolean inProfile, String profileExtensionBase, BaseWorkerContext resolver, boolean allowElement, String sheetName) throws Exception {
 		ArrayList<TypeRef> a = new ArrayList<TypeRef>();
+		
+		String exceptionPrefix = sheetName==null ? "":"Error parsing sheet " + sheetName + " - ";
 
 		if (n == null || n.equals("") || n.startsWith("!"))
 			return a;
@@ -68,12 +75,12 @@ public class TypeParser {
 			String typeString = typeList[i];
 			if (typeString.contains("<")) {
 				if (!inProfile) {
-					throw new Exception("Can't specify aggregation mode for types unless defining a profile");
+					throw new Exception(exceptionPrefix + "Can't specify aggregation mode for types unless defining a profile: "+typeString);
 				}
 				int startPos = typeString.indexOf("<");
 				int endPos = typeString.indexOf(">");
 				if (endPos < startPos) {
-					throw new Exception("Missing '>' in data type definition: " + typeList[i]);
+					throw new Exception(exceptionPrefix + "Missing '>' in data type definition: " + typeList[i]);
 				}
 				t.getAggregations().addAll(Arrays.asList(typeString.substring(startPos + 1, endPos).trim().split(",")));
 					
@@ -82,23 +89,23 @@ public class TypeParser {
 			
 			if (typeString.contains("{")) {
 				if (!inProfile) {
-					throw new Exception("Can't specify profile for types unless defining a profile");
+					throw new Exception(exceptionPrefix + "Can't specify profile for types unless defining a profile");
 				}
 				int startPos = typeString.indexOf("{");
 				int endPos = typeString.indexOf("}");
 				if (endPos < startPos) {
-					throw new Exception("Missing '}' in data type definition: " + typeList[i]);
+				  throw new Exception(exceptionPrefix + "Missing '}' in data type definition: " + typeList[i]);
 				}
 				String pt = typeString.substring(startPos + 1, endPos).trim();
-        typeString = typeString.substring(0, startPos);
+				typeString = typeString.substring(0, startPos);
 				if (pt.startsWith("#")) {
 				  // what to do here depends on what it refers to 
 				  if (typeString.equals("Extension"))
 				    pt = profileExtensionBase + pt.substring(1);
 				  else if (typeString.startsWith("Reference"))
-            pt = pt.substring(1).toLowerCase();
+					pt = pt.substring(1).toLowerCase();
 				  else
-				    throw new Exception("Unhandled case");				    
+				    throw new Exception(exceptionPrefix + "Unhandled case");				    
 				}
 				t.setProfile(pt);
 			}
@@ -107,13 +114,13 @@ public class TypeParser {
 				int startPos = typeString.indexOf("(");
 				int endPos = typeString.indexOf(")");
 				if (endPos < startPos) {
-					throw new Exception("Missing ')' in data type definition: " + typeList[i]);
+					throw new Exception(exceptionPrefix + "Missing ')' in data type definition: " + typeList[i]);
 				}
 				String[] params = typeString.substring(startPos + 1, endPos).split(",");
 				for (int j=0;j<params.length;j++) {
 	        if (typeString.startsWith("Reference("))
 	          if (inProfile && !resolver.getResourceNames().contains(params[j].trim()) && !"Any".equals(params[j].trim()))
-	            throw new Exception("Unknown resource "+params[j].trim());
+	            throw new Exception(exceptionPrefix + "Unknown resource "+params[j].trim());
 					t.getParams().add(params[j].trim());
 				}
 				typeString = typeString.substring(0, startPos);
@@ -121,7 +128,7 @@ public class TypeParser {
 			
 			t.setName(typeString.trim());
 			if (t.getName().equals("Element") && !allowElement)
-			  throw new Exception("The type 'Element' is illegal in this context");
+			  throw new Exception(exceptionPrefix + "The type 'Element' is illegal in this context");
 			a.add(t);
 		}
 
@@ -139,16 +146,29 @@ public class TypeParser {
         if (t.getProfile() != null && t.getParams().size() !=1) {
           throw new Exception("Cannot declare profile on a resource reference declaring multiple resource types.  Path " + path);
         }
-        for(String param : t.getParams()) {
+        if (t.getProfile() != null) {
           TypeRefComponent childType = new TypeRefComponent();
           childType.setCode(t.getName());
-          childType.setProfile("http://hl7.org/fhir/StructureDefinition/"+param);
+          childType.setProfile(t.getProfile());
           list.add(childType);
-        }
+        } else          
+          for(String param : t.getParams()) {
+            TypeRefComponent childType = new TypeRefComponent();
+            childType.setCode(t.getName());
+            childType.setProfile("http://hl7.org/fhir/StructureDefinition/"+param);
+            list.add(childType);
+          }
       } else if (t.isWildcardType()) {
         // this list is filled out manually because it may be running before the types referred to have been loaded
         for (String n : wildcardTypes()) 
           list.add(new TypeRefComponent().setCode(n));
+      } else if (Utilities.noString(t.getName()) && t.getProfile() != null) {
+        TypeRefComponent tc = new TypeRefComponent();
+        tc.setProfile(t.getProfile());
+        StructureDefinition sd = context.fetchResource(StructureDefinition.class, t.getProfile());
+        if (sd != null)
+          tc.setCode(sd.getType());
+        list.add(tc);
       } else if (t.getName().startsWith("=")){
         if (resource)
           list.add(new TypeRefComponent().setCode("BackboneElement"));
@@ -158,17 +178,10 @@ public class TypeParser {
       } else {
         StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+t.getName());
         if (sd == null)
-          throw new Exception("Unknown type "+t.getName());
-        if (sd.getDerivation() == TypeDerivationRule.CONSTRAINT) {
-          TypeRefComponent tc = new TypeRefComponent().setCode(sd.getType());
-          list.add(tc);
-          tc.setProfile(sd.getUrl());
-        } else {
-          TypeRefComponent tc = new TypeRefComponent().setCode(t.getName());
-          list.add(tc);
-          if (t.hasProfile())
-            tc.setProfile(t.getProfile());
-        }
+          throw new Exception("Unknown type '"+t.getName()+"'");
+        TypeRefComponent tc = new TypeRefComponent().setCode(sd.getType());
+        list.add(tc);
+        tc.setProfile(t.getProfile());
       }
     }    
     return list;
@@ -176,43 +189,45 @@ public class TypeParser {
 
 public static List<String> wildcardTypes() {
   List<String> res = new ArrayList<String>();
-  res.add("boolean");
-  res.add("integer");
-  res.add("decimal");
   res.add("base64Binary");
-  res.add("instant");
-  res.add("string");
-  res.add("uri");
+  res.add("boolean");
+  res.add("code");
   res.add("date");
   res.add("dateTime");
-  res.add("time");
-  res.add("code");
-  res.add("oid");
+  res.add("decimal");
   res.add("id");
-  res.add("unsignedInt");
-  res.add("positiveInt");
+  res.add("instant");
+  res.add("integer");
   res.add("markdown");
+  res.add("oid");
+  res.add("positiveInt");
+  res.add("string");
+  res.add("time");
+  res.add("unsignedInt");
+  res.add("uri");
+
+  res.add("Address");
+  res.add("Age");
   res.add("Annotation");
   res.add("Attachment");
-  res.add("Identifier");
   res.add("CodeableConcept");
   res.add("Coding");
-  res.add("Quantity");
+  res.add("ContactPoint");
   res.add("Count");
-  res.add("Age");
-  res.add("Duration");
   res.add("Distance");
+  res.add("Duration");
+  res.add("HumanName");
+  res.add("Identifier");
   res.add("Money");
-  res.add("Range");
   res.add("Period");
+  res.add("Quantity");
+  res.add("Range");
   res.add("Ratio");
+  res.add("Reference");
   res.add("SampledData");
   res.add("Signature");
-  res.add("HumanName");
-  res.add("Address");
-  res.add("ContactPoint");
   res.add("Timing");
-  res.add("Reference");
+  
   res.add("Meta");
   return res;
 }

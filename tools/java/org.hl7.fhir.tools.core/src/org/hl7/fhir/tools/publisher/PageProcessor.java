@@ -69,6 +69,7 @@ import org.hl7.fhir.definitions.generators.specification.DataTypeTableGenerator;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.JsonSpecGenerator;
 import org.hl7.fhir.definitions.generators.specification.MappingsGenerator;
+import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
 import org.hl7.fhir.definitions.generators.specification.ResourceTableGenerator;
 import org.hl7.fhir.definitions.generators.specification.SvgGenerator;
 import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator;
@@ -143,12 +144,15 @@ import org.hl7.fhir.dstu3.model.SearchParameter;
 import org.hl7.fhir.dstu3.model.StringType;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.StructureDefinition.ExtensionContext;
+import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionMappingComponent;
 import org.hl7.fhir.dstu3.model.Type;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
+import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
 import org.hl7.fhir.dstu3.utils.NarrativeGenerator;
 import org.hl7.fhir.dstu3.utils.ProfileComparer;
 import org.hl7.fhir.dstu3.utils.ProfileComparer.ProfileComparison;
@@ -260,11 +264,11 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     this.tsServer = tsServer;
   }
 
-  public final static String DEF_TS_SERVER = "http://fhir3.healthintersections.com.au/open";
-//  public final static String DEF_TS_SERVER = "http://local.healthintersections.com.au:960/open";
+//  public final static String DEF_TS_SERVER = "http://fhir3.healthintersections.com.au/open";
+  public final static String DEF_TS_SERVER = "http://local.healthintersections.com.au:960/open";
   
   public final static String WEB_PUB_NAME = "DSTU2";
-  public final static String CI_PUB_NAME = "Копия спецификации на 14.07.2016";
+  public final static String CI_PUB_NAME = "Current Build";
   
   public final static String WEB_PUB_NOTICE =
       "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px;\">\r\n"+
@@ -273,7 +277,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   
   public final static String CI_PUB_NOTICE = 
       "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px;\">\r\n"+
-          "Это непрерывная интеграционная сборка FHIR (может быть некорректной время от времени). См. <a href=\"http://hl7.org/fhir/directory.html\">указатель опубликованных версий</a>\r\n"+
+          "This is the Continuous Integration Build of FHIR (will be incorrect/inconsistent at times). See the <a href=\"http://hl7.org/fhir/directory.html\">Directory of published versions</a>\r\n"+
           "</p>\r\n";
 
   public static final String CODE_LIMIT_EXPANSION = "10000";
@@ -566,10 +570,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1+codelist((CodeSystem) resource, com.length > 1 ? com[1] : null, false, false)+s3;
       else if (com[0].equals("linkcodelist"))
         src = s1+codelist((CodeSystem) resource, com.length > 1 ? com[1] : null, true, false)+s3;
-      else if (com[0].equals("toc1"))
-        src = s1 + generateToc(com[1], 1) + s3;
-      else if (com[0].equals("toc2"))
-        src = s1 + generateToc(com[1], 2) + s3;
+      else if (com[0].equals("toc"))
+        src = s1 + generateToc() + s3;
       else if (com[0].equals("codetoc"))
         src = s1+codetoc(com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("resheader")) {
@@ -795,9 +797,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("vsdesc"))
         src = s1 + (resource != null ? new XhtmlComposer().compose(((ValueSet) resource).getText().getDiv()) :  generateVSDesc(Utilities.fileTitle(file))) + s3;
       else if (com[0].equals("txusage"))
-        src = s1 + generateBSUsage((ValueSet) resource, genlevel(level)) + s3;
+        src = s1 + generateValueSetUsage((ValueSet) resource, genlevel(level)) + s3;
       else if (com[0].equals("vsusage"))
-        src = s1 + generateBSUsage((ValueSet) resource, genlevel(level)) + s3;
+        src = s1 + generateValueSetUsage((ValueSet) resource, genlevel(level)) + s3;
       else if (com[0].equals("csusage"))
         src = s1 + generateCSUsage((CodeSystem) resource, genlevel(level)) + s3;
       else if (com[0].equals("vssummary"))
@@ -848,7 +850,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("cs-content"))
         src = s1 + csContent(Utilities.fileTitle(file), ((CodeSystem) resource), genlevel(level)) + s3;
       else if (com[0].equals("vsexpansionig"))
-        src = s1 + expandValueSetIG((ValueSet) resource) + s3;
+        src = s1 + expandValueSetIG((ValueSet) resource, true) + s3;
       else if (com[0].equals("v3expansion"))
         src = s1 + expandV3ValueSet(name) + s3;
       else if (com[0].equals("level"))
@@ -929,6 +931,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1 + genCompModel(((ProfileComparison) object).getSuperset(), "union", file.substring(0, file.indexOf(".")), genlevel(level))+s3;
       else if (com[0].equals("identifierlist"))
         src = s1 + genIdentifierList()+s3;
+      else if (com[0].equals("allsearchparams"))
+        src = s1 + genAllSearchParams()+s3;
       else if (com[0].equals("internalsystemlist"))
         src = s1 + genCSList()+s3;
       else if (com[0].equals("example-usage"))
@@ -1038,7 +1042,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String buildIgRegistry(ImplementationGuideDefn ig, String types) throws Exception {
     StringBuilder b = new StringBuilder();
     b.append("<table class=\"codes\">\r\n");
-    b.append("<tr><td><b>Идентификатор</b></td><td><b>Имя</b></td><td><b>Описание</b></td></tr>\r\n");
+    b.append("<tr><td><b>Id</b></td><td><b>Name</b></td><td><b>Description</b></td></tr>\r\n");
     // examples second:
     boolean example = false;
     while (true) {
@@ -1443,9 +1447,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
 
   private String vsSource(ValueSet vs) {
     if (vs == null)
-      return "проектом FHIR";
+      return "by the FHIR project";
     if (vs == null || vs.getContact().isEmpty() || vs.getContact().get(0).getTelecom().isEmpty() || vs.getContact().get(0).getTelecom().get(0).getSystem() != ContactPointSystem.OTHER || vs.getContact().get(0).getTelecom().get(0).getValue().startsWith("http://hl7.org/fhir"))
-      return "проектом FHIR";
+      return "by the FHIR project";
     return " at <a href=\""+vs.getContact().get(0).getTelecom().get(0).getValue()+"\">"+vs.getContact().get(0).getTelecom().get(0).getValue()+"</a>";
   }
 
@@ -1698,12 +1702,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     StringBuilder b = new StringBuilder();
     b.append("<table class=\"grid\">\r\n");
     b.append("  <tr>\r\n");
-    b.append("    <td><b>Имя</b></td>\r\n");
-    b.append("    <td><b>Описание</b></td>\r\n");
+    b.append("    <td><b>Name</b></td>\r\n");
+    b.append("    <td><b>Description</b></td>\r\n");
     b.append("  </tr>\r\n");
     
     b.append("  <tr>\r\n");
-    b.append("    <td colspan=\"2\"><b>Общие</b></td>\r\n");
+    b.append("    <td colspan=\"2\"><b>General</b></td>\r\n");
     b.append("  </tr>\r\n");
     List<String> names = new ArrayList<String>();
     names.addAll(definitions.getPackMap().keySet());
@@ -1739,7 +1743,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   private String profileRef(String name) {
-    return "Альтернативные определения: ресурс StructureDefinition (<a href=\""+name+".profile.xml.html\">XML</a>, <a href=\""+name+".profile.json.html\">JSON</a>)";
+    return "Alternate definitions: Resource StructureDefinition (<a href=\""+name+".profile.xml.html\">XML</a>, <a href=\""+name+".profile.json.html\">JSON</a>)";
   }
 
   private String reflink(String name) {
@@ -1934,7 +1938,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String compartmentlist() {
     StringBuilder b = new StringBuilder();
     b.append("<table class=\"grid\">\r\n");
-    b.append(" <tr><td><b>Название</b></td><td><b>Описание</b></td><td><b>Сущность</b></td><td><b>Членство</b></td></tr>\r\n");
+    b.append(" <tr><td><b>Title</b></td><td><b>Description</b></td><td><b>Identity</b></td><td><b>Membership</b></td></tr>\r\n");
     for (Compartment c : definitions.getCompartments()) {
       b.append(" <tr><td><a href=\"compartmentdefinition-").append(c.getName().toLowerCase()).append(".html\">").append(c.getTitle()).append("</a></td><td>")
               .append(Utilities.escapeXml(c.getDescription())).append("</td>").append("<td>").append(Utilities.escapeXml(c.getIdentity())).append("</td><td>").append(Utilities.escapeXml(c.getMembership())).append("</td></tr>\r\n");
@@ -2070,7 +2074,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String genV3CSIndex() {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"grid\">\r\n");
-    s.append(" <tr><td><b>Имя (URI = http://hl7.org/fhir/v3/...)</b></td><td><b>Описание</b></td><td><b>OID</b></td></tr>\r\n");
+    s.append(" <tr><td><b>Name (URI = http://hl7.org/fhir/v3/...)</b></td><td><b>Description</b></td><td><b>OID</b></td></tr>\r\n");
     
     List<String> names = new ArrayList<String>();
     Map<String, CodeSystem> map = new HashMap<String, CodeSystem>();
@@ -2089,7 +2093,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     for (String n : names) {
       CodeSystem cs = map.get(n);
       String id = tail(cs.getUrl());
-      String oid = ToolingExtensions.getOID(cs);
+      String oid = CodeSystemUtilities.getOID(cs);
       if (oid != null)
         oid = oid.substring(8);
       s.append(" <tr><td><a href=\"v3/").append(id).append("/cs.html\">").append(Utilities.escapeXml(id))
@@ -2120,7 +2124,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     for (String n : names) {
       ValueSet vs = map.get(n);
       String id = tail(vs.getUrl()).substring(3);
-      String oid = ToolingExtensions.getOID(vs);
+      String oid = ValueSetUtilities.getOID(vs);
       if (oid != null)
         oid = oid.substring(8);
       String[] desc = vs.getDescription().split("\\(OID \\= ");
@@ -2259,7 +2263,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     
     String[] entries = mappings.split("\\|");
     StringBuilder b = new StringBuilder();
-    b.append("<div class=\"itoc\">\r\n<p>Мэппинги:</p>\r\n");
+    b.append("<div class=\"itoc\">\r\n<p>Mappings:</p>\r\n");
     for (String e : entries) {
       String[] p = e.split("#");
       if (p.length == 2)
@@ -2305,7 +2309,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     return new XhtmlComposer().compose(gen.generate(ig.genToc(gen), "../"));
   }
   
-  private String generateToc(String title, int part) throws Exception {
+  private String generateToc() throws Exception {
     // return breadCrumbManager.makeToc();
     StringBuilder b = new StringBuilder();
     b.append("<ul>\r\n");
@@ -2315,12 +2319,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     Set<String> pages = new HashSet<String>();
     HierarchicalTableGenerator gen = new HierarchicalTableGenerator(folders.dstDir, false);
     TableModel model = gen.new TableModel();
-    model.getTitles().add(gen.new Title(null, model.getDocoRef(), "Оглавление "+Integer.toString(part)+" : "+title, "Table of Contents", null, 0));
+    model.getTitles().add(gen.new Title(null, model.getDocoRef(), "Table of Contents", "Table of Contents", null, 0));
     Deque<TocItem> stack = new ArrayDeque<TocItem>();
     
     for (String s : entries) {
       TocEntry t = toc.get(s);
-      if (!t.isIg() && !s.startsWith("?") && ((part == 1 && rootInd(s) < 4) || (part == 2 && rootInd(s) >= 4))) {
+      if (!t.isIg() && !s.startsWith("?")) {
         String nd = s;
         while (nd.endsWith(".0"))
           nd = nd.substring(0, nd.length()-2);
@@ -2389,8 +2393,35 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "<p>\r\nThis Code system is used in the following value sets:\r\n</p>\r\n<ul>\r\n"+b.toString()+"</ul>\r\n";
   }
   
-  private String generateBSUsage(ValueSet vs, String prefix) throws Exception {        
+  private String generateValueSetUsage(ValueSet vs, String prefix) throws Exception {        
     StringBuilder b = new StringBuilder();
+    if (vs.hasUrl()) {
+      for (CodeSystem cs : getCodeSystems().values()) {
+        if (cs != null) {
+          if (vs.getUrl().equals(cs.getValueSet())) {
+            b.append(" <li>This value set is the designated 'entire code system' value set for <a href=\"").append(prefix+cs.getUserString("path")).append("\">").append(cs.getName()).append("</a> ").append("</li>\r\n");
+          }
+        }
+      }
+    }
+    
+    for (ConceptMap cm : getConceptMaps().values()) {
+      if (cm.hasSourceUriType() && cm.getSourceUriType().equals(vs.getUrl())) {
+        b.append(" <li>This value set has translations in the ConceptMap <a href=\"").append(prefix+cm.getUserString("path")).append("\">").append(cm.getName()).append("</a> ").append("</li>\r\n");
+      }
+      if (cm.hasSourceReference() && (cm.getSourceReference().getReference().equals(vs.getUrl()) || vs.getUrl().endsWith("/"+cm.getSourceReference().getReference()))) {
+        b.append(" <li>This value set has translations in the ConceptMap <a href=\"").append(prefix+cm.getUserString("path")).append("\">").append(cm.getName()).append("</a> ").append("</li>\r\n");
+      }
+    }
+    for (ConceptMap cm : getConceptMaps().values()) {
+      if (cm.hasTargetUriType() && cm.getTargetUriType().equals(vs.getUrl())) {
+        b.append(" <li>This value set is the target of translations in the ConceptMap <a href=\"").append(prefix+cm.getUserString("path")).append("\">").append(cm.getName()).append("</a> ").append("</li>\r\n");
+      }
+      if (cm.hasTargetReference() && (cm.getTargetReference().getReference().equals(vs.getUrl()) || vs.getUrl().endsWith("/"+cm.getTargetReference().getReference()))) {
+        b.append(" <li>This value set is the target of translations in the ConceptMap <a href=\"").append(prefix+cm.getUserString("path")).append("\">").append(cm.getName()).append("</a> ").append("</li>\r\n");
+      }
+    }
+    
     for (ResourceDefn r : definitions.getBaseResources().values()) {
       scanForUsage(b, vs, r.getRoot(), r.getName().toLowerCase()+".html#def", prefix);
       scanForOperationUsage(b, vs, r, r.getName().toLowerCase()+"-operations.html#", prefix);
@@ -2456,9 +2487,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       }
     }
     if (b.length() == 0)
-      return "<p>\r\nЭтот набор значений в настоящее время не используется\r\n</p>\r\n";
+      return "<p>\r\nThis value set is not currently used\r\n</p>\r\n";
     else
-      return "<p>\r\nЭтот набор значений используется в следующих местах:\r\n</p>\r\n<ul>\r\n"+b.toString()+"</ul>\r\n";
+      return "<p>\r\nThis value set is used in the following places:\r\n</p>\r\n<ul>\r\n"+b.toString()+"</ul>\r\n";
   }
 
   private void scanForUsage(StringBuilder b, ValueSet vs, StructureDefinition exd, String path, String prefix) {
@@ -2606,7 +2637,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       }
     }    
     if (b.length() > 0)
-      return "<p>Ограничивающие условия</p><ul>"+b+"</ul>";
+      return "<p>Constraints</p><ul>"+b+"</ul>";
     else
       return "";
   }
@@ -2622,7 +2653,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       }
     }    
     if (b.length() > 0)
-      return "<p>Ограничивающие условия</p><ul>"+b+"</ul>";
+      return "<p>Constraints</p><ul>"+b+"</ul>";
     else
       return "";
   }
@@ -2647,7 +2678,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       b.append(invs.get(n));
     }
     if (b.length() > 0)
-      return "<a name=\"invs\"> </a>\r\n<h3>Ограничивающие условия</h3><ul>"+b+"</ul>";
+      return "<a name=\"invs\"> </a>\r\n<h3>Constraints</h3><ul>"+b+"</ul>";
     else
       return "";
   }
@@ -2729,10 +2760,10 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String dtHeader(String mode) {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
-    b.append(makeHeaderTab("Типы данных", "datatypes.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Примеры", "datatypes-examples.html", mode==null || "examples".equals(mode)));
-    b.append(makeHeaderTab("Подробное описание", "datatypes-definitions.html", mode==null || "definitions".equals(mode)));
-    b.append(makeHeaderTab("Мэппинги", "datatypes-mappings.html", mode==null || "mappings".equals(mode)));
+    b.append(makeHeaderTab("Data Types", "datatypes.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Examples", "datatypes-examples.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Detailed Descriptions", "datatypes-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Mappings", "datatypes-mappings.html", mode==null || "mappings".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -2839,10 +2870,10 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String edHeader(String mode) {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
-    b.append(makeHeaderTab("Определение элемента", "elementdefinition.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Примеры", "elementdefinition-examples.html", mode==null || "examples".equals(mode)));
-    b.append(makeHeaderTab("Подробное описание", "elementdefinition-definitions.html", mode==null || "definitions".equals(mode)));
-    b.append(makeHeaderTab("Мэппинги", "elementdefinition-mappings.html", mode==null || "mappings".equals(mode)));
+    b.append(makeHeaderTab("Element Definition", "elementdefinition.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Examples", "elementdefinition-examples.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Detailed Descriptions", "elementdefinition-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Mappings", "elementdefinition-mappings.html", mode==null || "mappings".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -2850,8 +2881,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String elHeader(String mode) {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
-    b.append(makeHeaderTab("Элемент", "element.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Подробное описание", "element-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Element", "element.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Detailed Descriptions", "element-definitions.html", mode==null || "definitions".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -2859,11 +2890,11 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String extHeader(String mode) {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
-    b.append(makeHeaderTab("Расширяемость", "extensibility.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Определение расширений", "defining-extensions.html", mode==null || "defining".equals(mode)));
-    b.append(makeHeaderTab("Примеры", "extensibility-examples.html", mode==null || "examples".equals(mode)));
-    b.append(makeHeaderTab("Подробное описание", "extensibility-definitions.html", mode==null || "definitions".equals(mode)));
-    b.append(makeHeaderTab("Реестр", "extensibility-registry.html", mode==null || "registry".equals(mode)));
+    b.append(makeHeaderTab("Extensiblity", "extensibility.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Defining Extensions", "defining-extensions.html", mode==null || "defining".equals(mode)));
+    b.append(makeHeaderTab("Examples", "extensibility-examples.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Detailed Descriptions", "extensibility-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Registry", "extensibility-registry.html", mode==null || "registry".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -2872,8 +2903,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
     b.append(makeHeaderTab("Narrative", "narrative.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Примеры", "narrative-example.html", mode==null || "examples".equals(mode)));
-    b.append(makeHeaderTab("Подробное описание", "narrative-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Examples", "narrative-example.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Detailed Descriptions", "narrative-definitions.html", mode==null || "definitions".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -2881,8 +2912,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String profilesHeader(String mode) {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
-    b.append(makeHeaderTab("Профилирование FHIR", "profiling.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Примеры", "profiling-examples.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Profiling FHIR", "profiling.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Examples", "profiling-examples.html", mode==null || "examples".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -2890,9 +2921,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String resourcesHeader(String mode) {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
-    b.append(makeHeaderTab("Определение", "resource.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Примеры", "resources-examples.html", mode==null || "examples".equals(mode)));
-    b.append(makeHeaderTab("Подробное описание", "resources-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("Resource Definitions", "resource.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Examples", "resources-examples.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Detailed Descriptions", "resources-definitions.html", mode==null || "definitions".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -2900,8 +2931,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String refHeader(String mode) {
     StringBuilder b = new StringBuilder();
     b.append("<ul class=\"nav nav-tabs\">");
-    b.append(makeHeaderTab("Ссылки", "references.html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Подробное описание", "references-definitions.html", mode==null || "definitions".equals(mode)));
+    b.append(makeHeaderTab("References", "references.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Detailed Descriptions", "references-definitions.html", mode==null || "definitions".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -2957,12 +2988,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       n = n.substring(0, n.length()-4);
     
     b.append("<ul class=\"nav nav-tabs\">");
-
-    b.append(makeHeaderTab("Значение", n+".html", mode==null || "base".equals(mode)));
+    
+    b.append(makeHeaderTab("Content", n+".html", mode==null || "base".equals(mode)));
     if (hasExamples)
-      b.append(makeHeaderTab("Примеры", n+"-examples.html", mode==null || "examples".equals(mode)));
-    b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
-    b.append(makeHeaderTab("Таблицы соответствия", n+"-mappings.html", "mappings".equals(mode)));
+      b.append(makeHeaderTab("Examples", n+"-examples.html", mode==null || "examples".equals(mode)));
+    b.append(makeHeaderTab("Detailed Descriptions", n+"-definitions.html", "definitions".equals(mode)));
+    b.append(makeHeaderTab("Mappings", n+"-mappings.html", "mappings".equals(mode)));
 //    if (!isDict && !n.equals("elementdefinition-de")) // todo: do this properly
 //      b.append(makeHeaderTab("HTML Form", n+"-questionnaire.html", "questionnaire".equals(mode)));
     b.append(makeHeaderTab("XML", n+".profile.xml.html", "xml".equals(mode)));
@@ -2998,9 +3029,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     
     b.append("<ul class=\"nav nav-tabs\">");
     
-    b.append(makeHeaderTab("Значение", n+".html", mode==null || "base".equals(mode)));
-    b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
-    b.append(makeHeaderTab("Мэппинги", n+"-mappings.html", "mappings".equals(mode)));
+    b.append(makeHeaderTab("Content", n+".html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Detailed Descriptions", n+"-definitions.html", "definitions".equals(mode)));
+    b.append(makeHeaderTab("Mappings", n+"-mappings.html", "mappings".equals(mode)));
     b.append(makeHeaderTab("XML", n+".xml.html", "xml".equals(mode)));
     b.append(makeHeaderTab("JSON", n+".json.html", "json".equals(mode)));
 
@@ -3022,11 +3053,11 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       pfx = "../../../";
 
     b.append("<ul class=\"nav nav-tabs\">");    
-    b.append(makeHeaderTab("Использование кодов", pfx + "terminologies.html", mode==null || "content".equals(mode)));
-    b.append(makeHeaderTab("Кодовые системы", pfx + "terminologies-systems.html", "systems".equals(mode)));
-    b.append(makeHeaderTab("Наборы значений", pfx + "terminologies-valuesets.html", "valuesets".equals(mode)));
-    b.append(makeHeaderTab("Карты соответствия концептов", pfx + "terminologies-conceptmaps.html", "conceptmaps".equals(mode)));
-    b.append(makeHeaderTab("Системы идентификаторов", pfx + "identifier-registry.html", "idsystems".equals(mode)));
+    b.append(makeHeaderTab("Using Codes", pfx + "terminologies.html", mode==null || "content".equals(mode)));
+    b.append(makeHeaderTab("Code Systems", pfx + "terminologies-systems.html", "systems".equals(mode)));
+    b.append(makeHeaderTab("Value Sets", pfx + "terminologies-valuesets.html", "valuesets".equals(mode)));
+    b.append(makeHeaderTab("Concept Maps", pfx + "terminologies-conceptmaps.html", "conceptmaps".equals(mode)));
+    b.append(makeHeaderTab("Identifier Systems", pfx + "identifier-registry.html", "idsystems".equals(mode)));
     b.append("</ul>\r\n");
     return b.toString();
   }
@@ -3044,7 +3075,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       pfx = "../../../";
 
     b.append("<ul class=\"nav nav-tabs\">");    
-    b.append(makeHeaderTab("Форматы", pfx + "formats.html", mode==null || "base".equals(mode)));
+    b.append(makeHeaderTab("Formats", pfx + "formats.html", mode==null || "base".equals(mode)));
     b.append(makeHeaderTab("XML", pfx + "xml.html", "xml".equals(mode)));
     b.append(makeHeaderTab("JSON", pfx + "json.html", "json".equals(mode)));
     b.append(makeHeaderTab("RDF", pfx + "rdf.html", "rdf".equals(mode)));
@@ -3065,11 +3096,11 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       pfx = "../../../";
 
     b.append("<ul class=\"nav nav-tabs\">");    
-    b.append(makeHeaderTab("Приложение: сравнение", pfx + "comparison.html", mode==null || "content".equals(mode)));
-    b.append(makeHeaderTab("Обмен сообщениями V2", pfx + "comparison-v2.html", "v2".equals(mode)));
-    b.append(makeHeaderTab("Обмен сообщениями V3", pfx + "comparison-v3.html", "v3".equals(mode)));
+    b.append(makeHeaderTab("Comparison Appendix", pfx + "comparison.html", mode==null || "content".equals(mode)));
+    b.append(makeHeaderTab("V2 Messaging", pfx + "comparison-v2.html", "v2".equals(mode)));
+    b.append(makeHeaderTab("V3 (Messaging)", pfx + "comparison-v3.html", "v3".equals(mode)));
     b.append(makeHeaderTab("CDA", pfx + "comparison-cda.html", "cda".equals(mode)));
-    b.append(makeHeaderTab("Другое", pfx + "comparison-other.html", "misc".equals(mode)));
+    b.append(makeHeaderTab("Other", pfx + "comparison-other.html", "misc".equals(mode)));
     
     b.append("</ul>\r\n");
     return b.toString();
@@ -3173,18 +3204,18 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     boolean isAbstract = definitions.getResourceByName(title).isAbstract();
     b.append("<ul class=\"nav nav-tabs\">");
     
-    b.append(makeHeaderTab("Значение", n+".html", mode==null || "content".equals(mode)));
+    b.append(makeHeaderTab("Content", n+".html", mode==null || "content".equals(mode)));
     if (!isAbstract)
-      b.append(makeHeaderTab("Примеры", n+"-examples.html", "examples".equals(mode)));
-    b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
+      b.append(makeHeaderTab("Examples", n+"-examples.html", "examples".equals(mode)));
+    b.append(makeHeaderTab("Detailed Descriptions", n+"-definitions.html", "definitions".equals(mode)));
     if (!isAbstract)
-      b.append(makeHeaderTab("Мэппинг", n+"-mappings.html", "mappings".equals(mode)));
+      b.append(makeHeaderTab("Mappings", n+"-mappings.html", "mappings".equals(mode)));
     if (!isAbstract)
-      b.append(makeHeaderTab("Профили", n+"-profiles.html", "profiles".equals(mode)));
+      b.append(makeHeaderTab("Profiles &amp; Extensions", n+"-profiles.html", "profiles".equals(mode)));
 //    if (!isAbstract)
 //      b.append(makeHeaderTab("HTML Form", n+"-questionnaire.html", "questionnaire".equals(mode)));
     if (hasOps)
-      b.append(makeHeaderTab("Операции", n+"-operations.html", "operations".equals(mode)));
+      b.append(makeHeaderTab("Operations", n+"-operations.html", "operations".equals(mode)));
 
     b.append("</ul>\r\n");
 
@@ -3218,12 +3249,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     boolean hasExamples = !definitions.getResourceByName(title).getExamples().isEmpty();
     b.append("<ul class=\"nav nav-tabs\">");
     
-    b.append(makeHeaderTab("Значение", n+".html", mode==null || "content".equals(mode)));
-    b.append(makeHeaderTab("Подробное описание", n+"-definitions.html", "definitions".equals(mode)));
+    b.append(makeHeaderTab("Content", n+".html", mode==null || "content".equals(mode)));
+    b.append(makeHeaderTab("Detailed Descriptions", n+"-definitions.html", "definitions".equals(mode)));
     if (hasExamples)
-      b.append(makeHeaderTab("Примеры", n+"-examples.html", "operations".equals(mode)));
+      b.append(makeHeaderTab("Examples", n+"-examples.html", "operations".equals(mode)));
     if (hasOps)
-      b.append(makeHeaderTab("Операции", n+"-operations.html", "operations".equals(mode)));
+      b.append(makeHeaderTab("Operations", n+"-operations.html", "operations".equals(mode)));
 
     b.append("</ul>\r\n");
 
@@ -3265,7 +3296,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String genConceptMapsTable() throws Exception {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"codes\">\r\n");
-    s.append(" <tr><td><b>Имя</b></td><td><b>Источник</b></td><td><b>Целевой объект</b></td></tr>\r\n");
+    s.append(" <tr><td><b>Name</b></td><td><b>Source</b></td><td><b>Target</b></td></tr>\r\n");
     List<String> sorts = new ArrayList<String>();
     sorts.addAll(conceptMaps.keySet());
     Collections.sort(sorts);
@@ -3287,7 +3318,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String genIGValueSetsTable() throws Exception {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"codes\">\r\n");
-    s.append(" <tr><td><b>Имя</b></td><td><b>Определение</b></td><td><b>Источник</b></td><td></td></tr>\r\n");
+    s.append(" <tr><td><b>Name</b></td><td><b>Definition</b></td><td><b>Source</b></td><td></td></tr>\r\n");
     List<String> namespaces = new ArrayList<String>();
     Map<String, ValueSet> vslist = new HashMap<String, ValueSet>();
     for (String sn : igResources.keySet()) {
@@ -3308,7 +3339,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String genValueSetsTable(ImplementationGuideDefn ig) throws Exception {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"codes\">\r\n");
-    s.append(" <tr><td><b>Имя</b></td><td><b>Определение</b></td><td><b>Источник</b></td><td><b>Id</b></td></tr>\r\n");
+    s.append(" <tr><td><b>Name</b></td><td><b>Definition</b></td><td><b>Source</b></td><td><b>Id</b></td></tr>\r\n");
     List<String> namespaces = new ArrayList<String>();
     for (String sn : definitions.getValuesets().keySet()) {
       String n = getNamespace(sn);
@@ -3345,7 +3376,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
           String path = (String) ae.getUserData("path");
           s.append(" <tr><td><a href=\""+pathTail(Utilities.changeFileExt(path, ".html"))+"\">"+n+"</a></td><td>"+Utilities.escapeXml(vs.getDescription())+"</td><td>"+sourceSummary(vs)+"</td>");
           if (hasId)
-            s.append("<td>"+Utilities.oidTail(ToolingExtensions.getOID(ae))+"</td>");
+            s.append("<td>"+Utilities.oidTail(ValueSetUtilities.getOID(ae))+"</td>");
           s.append("</tr>\r\n");
         }
       }
@@ -3561,7 +3592,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     Collections.sort(codes);
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"grid\">\r\n");
-    s.append(" <tr><th>Код</th><th>Категория</th><th>Описание</th><th>Ресурсы-запросы</th><th>Ресурсы-ответы</th><th>Примечания</th></tr>\r\n");
+    s.append(" <tr><th>Code</th><th>Category</th><th>Description</th><th>Request Resources</th><th>Response Resources</th><th>Notes</th></tr>\r\n");
     for (String c : codes) {
       EventDefn e = definitions.getEvents().get(c);
       if (e.getUsages().size() == 1) {
@@ -3741,10 +3772,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1 + genDataTypeUsage(com[1]) + s3;
       else if (com[0].equals("othertabs"))
         src = s1 + genOtherTabs(com[1], tabs) + s3;
-      else if (com[0].equals("toc1"))
-        src = s1 + generateToc(com[1], 1) + s3;
-      else if (com[0].equals("toc2"))
-        src = s1 + generateToc(com[1], 2) + s3;
+      else if (com[0].equals("toc"))
+        src = s1 + generateToc() + s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("header"))
@@ -3827,9 +3856,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         else
           src = s1 + Utilities.escapeXml(((ValueSet) resource).getDescription()) + s3;
       else if (com[0].equals("txusage"))
-        src = s1 + generateBSUsage((ValueSet) resource, genlevel(0)) + s3;
+        src = s1 + generateValueSetUsage((ValueSet) resource, genlevel(0)) + s3;
       else if (com[0].equals("vsusage"))
-        src = s1 + generateBSUsage((ValueSet) resource, genlevel(0)) + s3;
+        src = s1 + generateValueSetUsage((ValueSet) resource, genlevel(0)) + s3;
       else if (com[0].equals("csusage"))
         src = s1 + generateCSUsage((CodeSystem) resource, genlevel(0)) + s3;
       else if (com[0].equals("vssummary"))
@@ -3841,7 +3870,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
 //      else if (com[0].equals("vsexpansion"))
 //        src = s1 + expandValueSet(Utilities.fileTitle(file), resource == null ? null : (ValueSet) resource) + s3;
       else if (com[0].equals("vsexpansionig"))
-        src = s1 + expandValueSetIG((ValueSet) resource) + s3;
+        src = s1 + expandValueSetIG((ValueSet) resource, true) + s3;
       else if (com[0].equals("pub-notice"))
         src = s1 + publicationNotice + s3;      
       else if (com[0].startsWith("!"))
@@ -3870,13 +3899,13 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private String generateOID(ValueSet vs) throws Exception {
     if (vs == null)
       return "";
-    return unUrn(ToolingExtensions.getOID(vs));
+    return unUrn(ValueSetUtilities.getOID(vs));
   }
 
   private String generateOID(CodeSystem cs) throws Exception {
     if (cs == null)
       return "";
-    return unUrn(ToolingExtensions.getOID(cs));
+    return unUrn(CodeSystemUtilities.getOID(cs));
   }
 
   private String unUrn(String oid) {
@@ -3924,11 +3953,11 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     return n;
   }
 
-  private String expandValueSetIG(ValueSet vs) throws Exception {
+  private String expandValueSetIG(ValueSet vs, boolean heirarchy) throws Exception {
     if (!hasDynamicContent(vs))
       return "";
     try {
-      ValueSetExpansionOutcome result = workerContext.expandVS(vs, true);
+      ValueSetExpansionOutcome result = workerContext.expandVS(vs, true, heirarchy);
       if (result.getError() != null)
         return "<hr/>\r\n"+VS_INC_START+"<!--1-->"+processExpansionError(result.getError())+VS_INC_END;
       ValueSet exp = result.getValueset();
@@ -4001,8 +4030,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     return expandVS(vs, "../../", "v3/"+name);
   }
   
-  public ValueSet expandValueSet(ValueSet vs) throws Exception {
-    ValueSetExpansionOutcome result = workerContext.expandVS(vs, true);
+  public ValueSet expandValueSet(ValueSet vs, boolean heirarchy) throws Exception {
+    ValueSetExpansionOutcome result = workerContext.expandVS(vs, true, heirarchy);
     if (result.getError() != null)
       return null;
     else
@@ -4168,10 +4197,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1+searchFooter(level)+s3;
       } else if (com[0].equals("search-header")) { 
           src = s1+searchHeader(level)+s3;
-      } else if (com[0].equals("toc1")) {
-        src = s1 + generateToc(com[1], 1) + s3;
-      } else if (com[0].equals("toc2")) {
-        src = s1 + generateToc(com[1], 2) + s3;
+      } else if (com[0].equals("toc")) {
+        src = s1 + generateToc() + s3;
       } else if (com[0].equals("igregistries")) {
           src = s1+igRegistryList(com[1], com[2])+s3;        
       } else if (com[0].equals("ig.registry")) {
@@ -4260,7 +4287,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("vsexpansion"))
         src = s1 + expandValueSet(Utilities.fileTitle(file), resource == null ? null : (ValueSet) resource, genlevel(level)) + s3;
       else if (com[0].equals("vsexpansionig"))
-        src = s1 + expandValueSetIG((ValueSet) resource) + s3;
+        src = s1 + expandValueSetIG((ValueSet) resource, true) + s3;
       else if (com[0].equals("vsdef"))
         if (resource instanceof CodeSystem)
           src = s1 + Utilities.escapeXml(((CodeSystem) resource).getDescription()) + s3;
@@ -4284,9 +4311,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       else if (com[0].equals("vsdesc"))
         src = s1 + (resource != null ? Utilities.escapeXml(((ValueSet) resource).getDescription()) :  generateVSDesc(Utilities.fileTitle(file))) + s3;
       else if (com[0].equals("txusage"))
-        src = s1 + generateBSUsage((ValueSet) resource, genlevel(level)) + s3;
+        src = s1 + generateValueSetUsage((ValueSet) resource, genlevel(level)) + s3;
       else if (com[0].equals("vsusage"))
-        src = s1 + generateBSUsage((ValueSet) resource, genlevel(level)) + s3;
+        src = s1 + generateValueSetUsage((ValueSet) resource, genlevel(level)) + s3;
       else if (com[0].equals("csusage"))
         src = s1 + generateCSUsage((CodeSystem) resource, genlevel(level)) + s3;
       else if (com[0].equals("v2Index"))
@@ -4360,6 +4387,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1 + s3;
       else if (com[0].equals("identifierlist"))
         src = s1 + genIdentifierList()+s3;
+      else if (com[0].equals("allsearchparams"))
+        src = s1 + genAllSearchParams()+s3;
       else if (com[0].equals("internalsystemlist"))
         src = s1 + genCSList()+s3;
       else if (com[0].equals("ig.title"))
@@ -4389,20 +4418,20 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   } 
 
   private String searchFooter(int level) {
-    return "<a style=\"color: #81BEF7\" href=\"http://hl7.org/fhir/search.cfm\">Поиск</a>";
+    return "<a style=\"color: #81BEF7\" href=\"http://hl7.org/fhir/search.cfm\">Search</a>";
   }
 
   private String searchHeader(int level) {
 
-    return "<div id=\"hl7-nav\"><a id=\"hl7-logo\" no-external=\"true\" href=\"http://hl7.org/fhir/search.cfm\"><img alt=\"Поиск по FHIR\" src=\"./"+genlevel(level)+"assets/images/search.png\"/></a></div>";
+    return "<div id=\"hl7-nav\"><a id=\"hl7-logo\" no-external=\"true\" href=\"http://hl7.org/fhir/search.cfm\"><img alt=\"Search FHIR\" src=\"./"+genlevel(level)+"assets/images/search.png\"/></a></div>";
   }
 
 
   private String searchLink(String s2) {
     if (s2.equals("search-link"))
-      return "<a href=\"search.cfm\">поиск по спецификации</a>";
+      return "<a href=\"search.cfm\">Search this specification</a>";
     else
-      return s2.substring(11)+" <a href=\"search.cfm\">поиск по спецификации</a>";
+      return s2.substring(11)+" <a href=\"search.cfm\">search this specification</a>";
   }
 
   private String igRegistryList(String purpose, String type) throws Exception {
@@ -4604,12 +4633,16 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         src = s1+loadXmlNotes(name, "notes", false, null, resource, tabs, null)+s3;
       else if (com[0].equals("examples")) 
         src = s1+produceExamples(resource)+s3;
-      else if (com[0].equals("profiles")) 
+      else if (com[0].equals("profilelist")) 
         src = s1+produceProfiles(resource)+s3;
+      else if (com[0].equals("extensionlist")) 
+        src = s1+produceExtensions(resource)+s3;
+      else if (com[0].equals("searchextensionlist")) 
+        src = s1+produceSearchExtensions(resource)+s3;
       else if (com[0].equals("wg")) 
-        src = s1+(resource.getWg() == null ?  "(Рабочая группа не назначена)" : "<a _target=\"blank\" href=\""+resource.getWg().getUrl()+"\">"+resource.getWg().getName()+"</a> Рабочая группа")+s3;
+        src = s1+(resource.getWg() == null ?  "(No assigned work group)" : "<a _target=\"blank\" href=\""+resource.getWg().getUrl()+"\">"+resource.getWg().getName()+"</a> Work Group")+s3;
       else if (com[0].equals("fmm")) 
-        src = s1+"<a href=\"resource.html#maturity\">Уровень готовности</a>: "+resource.getFmmLevel()+s3;
+        src = s1+"<a href=\"resource.html#maturity\">Maturity Level</a>: "+resource.getFmmLevel()+s3;
       else if (com[0].equals("complinks")) 
         src = s1+getCompLinks(resource)+s3;
       else if (com[0].equals("example-list")) 
@@ -4705,9 +4738,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
         names.add(comp.getName());
     }
     StringBuilder b = new StringBuilder();
-    b.append("<a href=\"compartments.html\">Логические модули (Compartments)</a>: ");
+    b.append("<a href=\"compartmentdefinition.html\">Compartments</a>: ");
     if (names.isEmpty())
-      b.append("Нет привязки к логическим модулям");
+      b.append("Not linked to any defined compartments");
     else {
       Collections.sort(names);
       boolean first = true;
@@ -4721,37 +4754,37 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     }
     return b.toString();
   }
-/* This resource is marked as a draft */
+
   private String getDraftNote(ResourceDefn resource) {
     if ("draft".equals(resource.getStatus()))
-      return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">Этот ресурс <a href=\"timelines.html#levels\">находится на стадии проекта (статус \"draft\")</a>.</p>";
+      return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">This resource is <a href=\"timelines.html#levels\">marked as a draft</a>.</p>";
     else
       return "";
   }
 
   public String getDraftNote(StructureDefinition definition) {
     if ("draft".equals(definition.getStatus().toCode()))
-      return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">Этот артефакт <a href=\"timelines.html#levels\">находится на стадии проекта (статус \"draft\")</a>.</p>";
+      return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">This artefact is <a href=\"timelines.html#levels\">marked as a draft</a>.</p>";
     else
       return "";
   }
 
   private String getDraftNote(Profile pack, String prefix) {
     if ("draft".equals(pack.metadata("publication.status")))
-      return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">Этот профиль <a href=\""+prefix+"timelines.html#levels\">находится на стадии проекта (статус \"draft\")</a>.</p>";
+      return "<p style=\"background-color: salmon; border:1px solid maroon; padding: 5px;\">This profile is <a href=\""+prefix+"timelines.html#levels\">marked as a draft</a>.</p>";
     else
       return "";
   }
 
   private String abstractResourceTitle(ResourceDefn resource) {
     if (resource.getName().equals("Resource"))
-      return "Базовые определения ресурса";
+      return "Base Resource Definitions";
     else 
-      return  "Ресурс " + resource.getName();
+      return resource.getName() + " Resource";
   }
 
   private String genOpCount(List<Operation> oplist) {
-    return Integer.toString(oplist.size()) + (oplist.size() == 1 ? " операция" : " операции(-ий)");
+    return Integer.toString(oplist.size()) + (oplist.size() == 1 ? " operation" : " operations");
   }
 
   private String genOperationsSummary(List<Operation> oplist) throws Exception {
@@ -4886,17 +4919,17 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   private void genParameterHeader(StringBuilder b, String mode) {
     b.append("<tr><td colspan=\"6\"><b>").append(mode).append(" Parameters:</b></td></tr>\r\n");
     b.append("<tr><td>");
-    b.append("<b>Имя</b>");
+    b.append("<b>Name</b>");
     b.append("</td><td>");
-    b.append("<b>Кардинальное множество</b>");
+    b.append("<b>Cardinality</b>");
     b.append("</td><td>");
-    b.append("<b>Тип</b>");
+    b.append("<b>Type</b>");
     b.append("</td><td>");
-    b.append("<b>Привязка</b>");
+    b.append("<b>Binding</b>");
     b.append("</td><td>");
-    b.append("<b>Профиль</b>");
+    b.append("<b>Profile</b>");
     b.append("</td><td>");
-    b.append("<b>Документация</b>");
+    b.append("<b>Documentation</b>");
     b.append("</td></tr>");
   }
 
@@ -4984,7 +5017,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     b.append("</td><td>");
     b.append(processMarkdown(resource, p.getDoc(), prefix));
     if (p.getName().equals("return") && isOnlyOutParameter(op.getParameters(), p) && definitions.hasResource(t))
-      b.append("<p>Примечание: поскольку это единственный выходной параметр, то он представляет собой ресурс с именем 'return', результат этой операции возвращается непосредственно в виде ресурса</p>");
+      b.append("<p>Note: as this the only out parameter, it is a resource, and it has the name 'return', the result of this operation is returned directly as a resource</p>");
     b.append("</td></tr>");
     if (p.getParts() != null)
       for (OperationParameter pp : p.getParts())
@@ -5010,9 +5043,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       }
     }
     if (refs.size() == 1)
-      return "<p>На этот ресурс ссылаются: <a href=\""+refs.get(0).toLowerCase()+".html\">"+refs.get(0).toLowerCase()+".</a></p>\r\n";
+      return "<p>This resource is referenced by <a href=\""+refs.get(0).toLowerCase()+".html\">"+refs.get(0).toLowerCase()+"</a></p>\r\n";
     else if (refs.size() > 1)
-      return "<p>На этот ресурс ссылаются: "+asLinks(refs)+".</p>\r\n";
+      return "<p>This resource is referenced by "+asLinks(refs)+"</p>\r\n";
     else
       return "";
   }
@@ -5021,7 +5054,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     StringBuilder b = new StringBuilder();
     for (int i = 0; i < refs.size(); i++) {
       if (i == refs.size() - 1)
-        b.append(" и ");
+        b.append(" and ");
       else if (i > 0)
         b.append(", ");
       b.append("<a href=\"").append(refs.get(i).toLowerCase()).append(".html\">").append(refs.get(i)).append("</a>");
@@ -5062,13 +5095,13 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "";
     else {
       StringBuilder b = new StringBuilder();
-      b.append("<h2>Параметры поиска</h2>\r\n");
+      b.append("<h2>Search Parameters</h2>\r\n");
       if (resource.getName().equals("Query"))
-        b.append("<p>Параметры поиска для этого ресурса. Также к нему применяются <a href=\"#all\">общие параметры</a>.</p>\r\n");
+        b.append("<p>Search parameters for this resource. The <a href=\"#all\">common parameters</a> also apply.</p>\r\n");
       else
-        b.append("<p>Параметры поиска для этого ресурса. Также к нему применяются <a href=\"search.html#all\">общие параметры</a>. Более подробную информацию о поиске в REST, обмене сообщениями и сервисах смотрите на странице <a href=\"search.html\">Поиск</a>.</p>\r\n");
+        b.append("<p>Search parameters for this resource. The <a href=\"search.html#all\">common parameters</a> also apply. See <a href=\"search.html\">Searching</a> for more information about searching in REST, messaging, and services.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Путь</b></td></tr>\r\n");
+      b.append("<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Paths</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       names.addAll(resource.getSearchParams().keySet());
       Collections.sort(names);
@@ -5087,10 +5120,10 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "";
     else {
       StringBuilder b = new StringBuilder();
-      b.append("<h2>Параметры поиска</h2>\r\n");
-      b.append("<p>Общие параметры поиска, применимые к этому ресурсу. Более подробную информацию о поиске в REST, обмене сообщениями и сервисах смотрите на странице <a href=\"search.html\">Поиск</a>.</p>\r\n");
+      b.append("<h2>Search Parameters</h2>\r\n");
+      b.append("<p>Common search parameters defined by this resource. See <a href=\"search.html\">Searching</a> for more information about searching in REST, messaging, and services.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Путь</b></td></tr>\r\n");
+      b.append("<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Paths</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       names.addAll(resource.getSearchParams().keySet());
       Collections.sort(names);
@@ -5109,10 +5142,10 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "";
     else {
       StringBuilder b = new StringBuilder();
-      b.append("<h2>Параметры поиска</h2>\r\n");       
-      b.append("<p>Параметры поиска, определенные этой структурой. Более подробную информацию о поиске в REST, обмене сообщениями и сервисах смотрите на странице <a href=\"search.html\">Поиск</a>.</p>\r\n");
+      b.append("<h2>Search Parameters</h2>\r\n");       
+      b.append("<p>Search parameters defined by this structure. See <a href=\"search.html\">Searching</a> for more information about searching in REST, messaging, and services.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Путь</b></td></tr>\r\n");
+      b.append("<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Paths</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       for (SearchParameter t : pack.getSearchParameters())
         names.add(t.getName());
@@ -5153,30 +5186,120 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     return s.toString();
   }
 
+  private class CSPair {
+    Profile p;
+    ConstraintStructure cs;
+    public CSPair(Profile p, ConstraintStructure cs) {
+      super();
+      this.p = p;
+      this.cs = cs;
+    }
+  }
+
   private String produceProfiles(ResourceDefn resource) {
-    StringBuilder s = new StringBuilder();
     int count = 0;
-    for (ImplementationGuideDefn ig : definitions.getSortedIgs()) {
-      boolean started = false;
-      for (Profile ap: resource.getConformancePackages()) {
-        if (ig.getCode().equals(ap.getCategory())) {
-          produceProfileLine(s, ig, started, ap);
-          started = true;
-          count++;
-        }
-      }
-      for (Profile ap: definitions.getPackList()) {
-        if (ig.getCode().equals(ap.getCategory()) && ap.coversResource(resource)) {
-          produceProfileLine(s, ig, started, ap);
-          started = true;
-          count++;
-        }
+    Map<String, CSPair> map = new HashMap<String, CSPair>();
+    for (Profile ap: resource.getConformancePackages()) {
+      for (ConstraintStructure cs : ap.getProfiles()) {
+        if (coversResource(cs, resource.getName()))
+          map.put(cs.getTitle(), new CSPair(ap, cs));
       }
     }
+    for (Profile ap: definitions.getPackList()) {
+      for (ConstraintStructure cs : ap.getProfiles()) {
+        if (coversResource(cs, resource.getName()))
+          map.put(cs.getTitle(), new CSPair(ap, cs));
+      }
+    }
+    
+    StringBuilder b = new StringBuilder();
+    for (String s : sorted(map.keySet())) {
+      CSPair cs = map.get(s);
+      ImplementationGuideDefn ig = definitions.getIgs().get(cs.p.getCategory());
+      count++;
+      b.append("  <tr>\r\n");
+      String ref = (ig.isCore() ? "" : ig.getCode()+File.separator)+cs.cs.getId()+".html";
+      b.append("    <td><a href=\"").append(ref).append("\">").append(Utilities.escapeXml(cs.cs.getTitle())).append("</a></td>\r\n");
+      b.append("    <td>").append(Utilities.escapeXml(cs.p.getDescription())).append("</td>\r\n");
+      ref = (ig.isCore() ? "" : ig.getCode()+File.separator)+cs.p.getId().toLowerCase()+".html";
+      b.append("    <td>for <a href=\"").append(ref).append("\">").append(Utilities.escapeXml(cs.p.getTitle())).append("</a></td>\r\n");
+      b.append(" </tr>\r\n");
+    }
     if (count == 0)
-      s.append("<tr><td colspan=\"2\">Для этого ресурса нет созданных профилей</td></tr>");
-    return s.toString();
+      b.append("<tr><td>No Profiles defined for this resource</td></tr>");
+    return b.toString();
   }
+
+  private String produceExtensions(ResourceDefn resource) {
+    int count = 0;
+    Map<String, StructureDefinition> map = new HashMap<String, StructureDefinition>();
+    for (StructureDefinition sd : workerContext.getExtensionDefinitions().values()) {
+      if (sd.getContextType() == ExtensionContext.RESOURCE) {
+        boolean inc = false;
+        for (StringType s : sd.getContext()) {
+          inc = inc || (s.getValue().equals(resource.getName()) || s.getValue().startsWith(resource.getName()+"."));
+        }
+        if (inc)
+          map.put(sd.getId(), sd);
+      }
+    }
+    
+    StringBuilder b = new StringBuilder();
+    for (String s : sorted(map.keySet())) {
+      StructureDefinition cs = map.get(s);
+      count++;
+      b.append("  <tr>\r\n");
+      String ref = cs.getUserString("path");
+      b.append("    <td><a href=\"").append(ref).append("\">").append(Utilities.escapeXml(cs.getId())).append("</a></td>\r\n");
+      b.append("    <td>").append(Utilities.escapeXml(cs.getName())).append("</td>\r\n");
+      Profile ap = (Profile) cs.getUserData("profile");
+      if (ap == null)
+        b.append("    <td></td>\r\n");
+      else
+        b.append("    <td>for <a href=\""+ap.getId()+".html\">"+Utilities.escapeXml(ap.getTitle())+"</a></td>\r\n");
+      b.append(" </tr>\r\n");
+    }
+    if (count == 0)
+      b.append("<tr><td>No Extensions defined for this resource</td></tr>");
+    
+    return b.toString();
+  }
+
+  private String produceSearchExtensions(ResourceDefn resource) {
+    int count = 0;
+    Map<String, SearchParameter> map = new HashMap<String, SearchParameter>();
+    
+    for (Profile cp : getDefinitions().getPackList()) {
+      addSearchParams(map, cp, resource.getName());
+    }    
+
+    StringBuilder b = new StringBuilder();
+    for (String s : sorted(map.keySet())) {
+      SearchParameter sp = map.get(s);
+      count++;
+      b.append("<tr><td>"+sp.getCode()+"</td><td><a href=\"search.html#"+sp.getType().toCode()+"\">"+sp.getType().toCode()+"</a></td><td>"+Utilities.escapeXml(sp.getDescription())+"</td><td>"+Utilities.escapeXml(sp.getExpression())+"</td></tr>\r\n");
+    }
+    if (count == 0)
+      b.append("<tr><td>No Search Extensions defined for this resource</td></tr>");
+    
+    return b.toString();
+  }
+
+  private boolean isExtension(ConstraintStructure item, String name) {
+    if (item.getDefn() != null && item.getDefn().getName().equals("Extension"))
+      return true;
+    if (item.getDefn() == null && item.getResource() != null && item.getResource().getType().equals("Extension"))
+      return true;
+    return false;
+  }
+
+  private boolean coversResource(ConstraintStructure item, String rn) {
+    if (item.getDefn() != null && item.getDefn().getName().equals(rn))
+      return true;
+    if (item.getDefn() == null && item.getResource() != null && item.getResource().getType().equals(rn))
+      return true;
+    return false;
+}
 
   private void produceProfileLine(StringBuilder s, ImplementationGuideDefn ig, boolean started, Profile ap) {
     if (!started) 
@@ -5195,7 +5318,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return produceStructureDefinitionExamples();
     } else {
       StringBuilder s = new StringBuilder();
-      s.append("<p>Указатель примеров:</p>\r\n<table class=\"list\">\r\n");
+      s.append("<p>Example List:</p>\r\n<table class=\"list\">\r\n");
       for (Example e: resource.getExamples()) {
         if (e.isRegistered())
           produceExampleListEntry(s, e, null, null);
@@ -5265,16 +5388,16 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     
     s.append("<div id=\"tabs\">\r\n");
     s.append("<ul>\r\n");
-    s.append("  <li><a href=\"#tabs-1\">Базовые типы</a></li>\r\n");
-    s.append("  <li><a href=\"#tabs-2\">Ресурсы</a></li>\r\n");
-    s.append("  <li><a href=\"#tabs-3\">Ограничивающие условия</a></li>\r\n");
-    s.append("  <li><a href=\"#tabs-4\">Расширения</a></li>\r\n");
+    s.append("  <li><a href=\"#tabs-1\">Base Types</a></li>\r\n");
+    s.append("  <li><a href=\"#tabs-2\">Resources</a></li>\r\n");
+    s.append("  <li><a href=\"#tabs-3\">Constraints</a></li>\r\n");
+    s.append("  <li><a href=\"#tabs-4\">Extensions</a></li>\r\n");
     s.append("</ul>\r\n");
     s.append("<div id=\"tabs-1\">\r\n");
 
     // base types
     s.append("<table class=\"list\">\r\n");
-    genStructureExampleCategory(s, "Абстрактные типы");
+    genStructureExampleCategory(s, "Abstract Types");
     genStructureExample(s, "element.html", "element.profile", "element", "Element");
     genStructureExample(s, "backboneelement.html", "backboneelement.profile", "backboneelement", "BackBoneElement");
     genStructureExample(s, "resource.html", "resource.profile", "resource", "Resource");
@@ -5289,7 +5412,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       genStructureExample(s, "datatypes.html#"+dc.getCode(), dc.getCode().toLowerCase()+".profile", dc.getCode().toLowerCase(), dc.getCode());
     }
 
-    genStructureExampleCategory(s, "Типы данных");
+    genStructureExampleCategory(s, "Data Types");
     names.clear();
     names.addAll(definitions.getTypes().keySet());
     names.addAll(definitions.getStructures().keySet());
@@ -5485,12 +5608,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
           } else {
             XhtmlNode fn = x.getFirstElement().getName().equals("h2") ? x.getFirstElement() : x.getElementByIndex(1);
             String s = fn.allText();
-            if (! ((s.equals("Scope and Usage")) || (s.equals("Boundaries and Relationships")) || (s.equals("Background and Context")) || (s.equals("Область применения и использование")) || (s.equals("Предпосылки и контекст")) || (s.equals("Границы и связи")) ) ) {
+            if (! ((s.equals("Scope and Usage")) || (s.equals("Boundaries and Relationships")) || (s.equals("Background and Context")) ) ) {
               log("file \""+filename+"\": div/div["+Integer.toString(doc.getChildNodes().indexOf(x))+"]/h2 must be either 'Scope and Usage', 'Boundaries and Relationships', or 'Background and Context'", LogMessageType.Error);
               return;
             } else { 
               if (scope == null) {
-                if ((s.equals("Scope and Usage")) || (s.equals("Область применения и использование"))) { 
+                if (s.equals("Scope and Usage")) { 
                   scope = x;
                   if (r != null) 
                     r.setRequirements(new XhtmlComposer().composePlainText(x));
@@ -5498,7 +5621,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
                   log("file \""+filename+"\": 'Scope and Usage' must come first", LogMessageType.Error);
                   return;
                 }
-                if ((s.equals("Boundaries and Relationships"))  || (s.equals("Границы и связи"))) {
+                if (s.equals("Boundaries and Relationships")) {
                   if (context != null) {
                     log("file \""+filename+"\": 'Boundaries and Relationships' must come first before 'Background and Context'", LogMessageType.Error);
                     return;
@@ -6151,7 +6274,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   private String describeExtensionContext(StructureDefinition ed) {
-    return "<p>Контекст использования: "+ProfileUtilities.describeExtensionContext(ed)+"</p>";
+    return "<p>Context of Use: "+ProfileUtilities.describeExtensionContext(ed)+"</p>";
   }
 
   private String generateExtensionTable(StructureDefinition ed, String filename, String full, String prefix) throws Exception {
@@ -6175,9 +6298,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "";
     else {
       StringBuilder b = new StringBuilder();
-      b.append("<h4>Терминологические привязки</h4>\r\n");       
+      b.append("<h4>Terminology Bindings</h4>\r\n");       
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Путь</b></td><td><b>Имя</b></td><td><b>Conformance</b></td><td><b>ValueSet</b></td></tr>\r\n");
+      b.append("<tr><td><b>Path</b></td><td><b>Name</b></td><td><b>Conformance</b></td><td><b>ValueSet</b></td></tr>\r\n");
       for (String path : txlist)  {
         ElementDefinitionBindingComponent tx = txmap.get(path);
         String vss = "";
@@ -6219,9 +6342,9 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       return "";
     else {
       StringBuilder b = new StringBuilder();
-      b.append("<h4>Ограничивающие условия</h4>\r\n");       
+      b.append("<h4>Constraints</h4>\r\n");       
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td width=\"60\"><b>Id</b></td><td><b>Path</b></td><td><b>Сведения</b></td><td><b>Требования</b></td></tr>\r\n");
+      b.append("<tr><td width=\"60\"><b>Id</b></td><td><b>Path</b></td><td><b>Details</b></td><td><b>Requirements</b></td></tr>\r\n");
       for (String path : txlist)  {
         List<ElementDefinitionConstraintComponent> invs = txmap.get(path);
         for (ElementDefinitionConstraintComponent inv : invs) {
@@ -6258,7 +6381,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       for (String n : names) {
         Example e = examples.get(n);
         if (!started)
-          s.append("<p>Указатель примеров:</p>\r\n<table class=\"list\">\r\n");
+          s.append("<p>Example Index:</p>\r\n<table class=\"list\">\r\n");
         started = true;
         if (e.getFileTitle().equals("conformance-base") || e.getFileTitle().equals("conformance-base2") || e.getFileTitle().equals("profiles-resources"))
           s.append("<tr><td>"+Utilities.escapeXml(e.getDescription())+"</td>");
@@ -6309,7 +6432,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     if (source.getMapping().size() < 2)
       return "";
     StringBuilder b = new StringBuilder();
-    b.append("<div class=\"itoc\">\r\n<p>Мэппинги:</p>\r\n");
+    b.append("<div class=\"itoc\">\r\n<p>Mappings:</p>\r\n");
     for (StructureDefinitionMappingComponent map : source.getMapping()) {
       b.append("<p class=\"link\"><a href=\"#").append(map.getIdentity()).append("\">").append(map.getName()).append("</a></p>");
     }
@@ -6660,6 +6783,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     text = text.replace("||", "\r\n\r\n");
     while (text.contains("[[[")) {
       String left = text.substring(0, text.indexOf("[[["));
+      if (text.indexOf("]]]") < 0)
+        throw new Error(location + ": Missing closing ]]] in markdown text: " + text);
       String linkText = text.substring(text.indexOf("[[[")+3, text.indexOf("]]]"));
       String right = text.substring(text.indexOf("]]]")+3);
       String url = "";
@@ -6667,7 +6792,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       if (parts[0].contains("/StructureDefinition/")) {
         StructureDefinition ed = workerContext.getExtensionStructure(null, parts[0]);
         if (ed == null)
-          throw new Error("Unable to find extension "+parts[0]);
+          throw new Error(location + ": Unable to find extension "+parts[0]);
         url = ed.getUserData("filename")+".html";
       } 
       if (Utilities.noString(url)) {
@@ -6689,7 +6814,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
           url = definitions.getPageTitles().get(linkText);
         } else {
 		      getValidationErrors().add(
-              new ValidationMessage(Source.Publisher, IssueType.BUSINESSRULE, -1, -1, location, "Unresolved logical URL "+linkText, IssueSeverity.WARNING));
+              new ValidationMessage(Source.Publisher, IssueType.BUSINESSRULE, -1, -1, location, "Unresolved logical URL '"+linkText+"'", IssueSeverity.WARNING));
           //        throw new Exception("Unresolved logical URL "+url);
         }
       }
@@ -6730,7 +6855,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
   }
 
   @Override
-  public BindingResolution resolveBinding(ElementDefinitionBindingComponent binding) {
+  public BindingResolution resolveBinding(StructureDefinition profile, ElementDefinitionBindingComponent binding) {
     BindingResolution br = new BindingResolution();
     if (!binding.hasValueSet()) {
       br.url = "terminologies.html#unbound";
@@ -6981,7 +7106,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"lines\">");
     if (pack.getProfiles().size() > 0) {
-      s.append("<tr><td colspan=\"2\"><b>Профили</b>: </td></tr>");
+      s.append("<tr><td colspan=\"2\"><b>Profiles</b>: </td></tr>");
       for (ConstraintStructure p : pack.getProfiles())
         s.append("<tr><td><a href=\"").append(p.getId()).append(".html\">").append(Utilities.escapeXml(p.getTitle()))
                 .append("</a></td><td>").append(Utilities.escapeXml(p.getResource().getDescription())).append("</td></tr>");
@@ -7004,10 +7129,10 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       // search parameters
       StringBuilder b = new StringBuilder();
       b.append("<a name=\"search\"> </a>\r\n");
-      b.append("<h3>Параметры поиска</h3>\r\n");//Search Parameters
-      b.append("<p>Параметры поиска, заданные в этом пакете. Более подробную информацию о поиске в REST, обмене сообщениями и сервисах смотрите на странице <a href=\""+prefix+"search.html\">Поиск</a>.</p>\r\n");//Search parameters defined by this package. See <a href=\""+prefix+"search.html\">Searching</a> for more information about searching in REST, messaging, and services.
+      b.append("<h3>Search Parameters</h3>\r\n");
+      b.append("<p>Search parameters defined by this package. See <a href=\""+prefix+"search.html\">Searching</a> for more information about searching in REST, messaging, and services.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
-      b.append("<tr><td><b>Имя</b></td><td><b>Тип</b></td><td><b>Описание</b></td><td><b>Путь</b></td><td><b>Источник</b></td></tr>\r\n");
+      b.append("<tr><td><b>Name</b></td><td><b>Type</b></td><td><b>Description</b></td><td><b>Paths</b></td><td><b>Source</b></td></tr>\r\n");
       List<String> names = new ArrayList<String>();
       for (SearchParameter sp : pack.getSearchParameters())
         names.add(sp.getName());
@@ -7169,7 +7294,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
 
   public String expandVS(ValueSet vs, String prefix, String base) {
     try {
-      ValueSetExpansionOutcome result = workerContext.expandVS(vs, true);
+      ValueSetExpansionOutcome result = workerContext.expandVS(vs, true, true);
       if (result.getError() != null)
         return "<hr/>\r\n"+VS_INC_START+"<!--3-->"+processExpansionError(result.getError())+VS_INC_END;
 
@@ -7253,7 +7378,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
           b.append("  <tr>\r\n");
           b.append("    <td><a href=\""+cs.getUserString("path")+"\">"+cs.getUrl().substring(20)+"</a></td>\r\n");
           b.append("    <td>"+cs.getName()+": "+Utilities.escapeXml(cs.getDescription())+"</td>\r\n");
-          String oid = ToolingExtensions.getOID(cs);
+          String oid = CodeSystemUtilities.getOID(cs);
           b.append("    <td>"+(oid == null ? "" : oid.substring(8))+"</td>\r\n");
           b.append("  </tr>\r\n");
         }
@@ -7366,7 +7491,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       }
     }
     for (Compartment t : definitions.getCompartments()) {
-      definitions.addNs(t.getUri(), t.getName(), "compartments.html#"+t.getName());      
+      definitions.addNs(t.getUri(), t.getName(), "compartmentdefinition.html#"+t.getName());      
     }
     
     List<String> list = new ArrayList<String>();
@@ -7465,5 +7590,60 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
     throw new Exception("unhandled default value");
   }
 
+  private String genAllSearchParams() {
+    List<SearchParameter> splist = new ArrayList<SearchParameter>();
+    
+    for (ResourceDefn rd : getDefinitions().getBaseResources().values())
+      addSearchParams(splist, rd);
+    for (ResourceDefn rd : getDefinitions().getResources().values())
+      addSearchParams(splist, rd);
+    for (Profile cp : getDefinitions().getPackList()) {
+      addSearchParams(splist, cp);
+    }
+    StringBuilder b = new StringBuilder();
+    genSearchParams(b, splist, "Resource");
+    genSearchParams(b, splist, "DomainResource");
+    for (String n : definitions.sortedResourceNames())
+      genSearchParams(b, splist, n);
+    return b.toString();
+  }
   
+  private void genSearchParams(StringBuilder b, List<SearchParameter> splist, String base) {
+    List<SearchParameter> list = new ArrayList<SearchParameter>();
+    for (SearchParameter sp : splist) {
+      if (sp.getBase().equals(base)) {
+        list.add(sp);
+      }
+    }
+    if (list.size() > 0) {
+      b.append("<tr><td colspan=\"4\" style=\"background-color: #dddddd\"><b><a href=\""+base.toLowerCase()+".html\">"+base+"</a></b></td></tr>\r\n");
+      for (SearchParameter sp : list) {
+        b.append("<tr><td>"+sp.getCode()+"</td><td><a href=\"search.html#"+sp.getType().toCode()+"\">"+sp.getType().toCode()+"</a></td><td>"+Utilities.escapeXml(sp.getDescription())+"</td><td>"+Utilities.escapeXml(sp.getExpression())+"</td></tr>\r\n");
+      }
+    }
+  }
+
+  private void addSearchParams(List<SearchParameter> splist, ResourceDefn rd) {
+    if (rd.getConformancePack() == null) {
+      for (SearchParameterDefn spd : rd.getSearchParams().values()) {
+        splist.add(spd.getResource());
+      }
+    } else
+      addSearchParams(splist, rd.getConformancePack());
+  }
+
+  private void addSearchParams(List<SearchParameter> splist, Profile conformancePack) {
+    for (SearchParameter sp : conformancePack.getSearchParameters()) {
+      splist.add(sp);
+    }
+  }
+
+  private void addSearchParams(Map<String, SearchParameter> spmap, Profile conformancePack, String rn) {
+    for (SearchParameter sp : conformancePack.getSearchParameters()) {
+      if (sp.getBase().equals(rn)) {
+        spmap.put(sp.getId(), sp);
+      }
+    }
+  }
+
 }

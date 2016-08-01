@@ -41,6 +41,11 @@
   Definition = Codes describing events that can trigger the initiation of a goal
   Conformance = example
 
+ -- Row 7 -----------------------------------
+  Binding Name = GoalDescription
+  Binding = unbound
+  Definition = Codes providing the details of a particular goal.  This will generally be system or implementation guide-specific.  In many systems, only the text element will be used.
+
 === Sheet goal-status =====================================
 
  -- Row 1 -----------------------------------
@@ -96,6 +101,24 @@
   Code = cancelled
   Display = Cancelled
   Definition = The goal is no longer being sought
+
+ -- Row 10 -----------------------------------
+  Id = 7
+  Code = on-target
+  Display = On Target
+  Definition = The goal is on scheduled for the planned timelines
+
+ -- Row 11 -----------------------------------
+  Id = 8
+  Code = ahead-of-target
+  Display = Ahead of Target
+  Definition = The goal is ahead of the planned timelines
+
+ -- Row 12 -----------------------------------
+  Id = 9
+  Code = behind-target
+  Display = Behind Target
+  Definition = The goal is behind the planned timelines
 
 === Sheet Invariants =====================================
 
@@ -166,10 +189,12 @@
   Element = Goal.description
   Card. = 1..1
   Summary = Y
-  Type = string
-  Short Label = What\'s the desired outcome?
-  Definition = Human-readable description of a specific desired objective of care.
+  Type = CodeableConcept
+  Binding = GoalDescription
+  Short Label = Code or text describing goal
+  Definition = Code and/or human-readable description of a specific desired objective of care.
   Requirements = Without a description of what\'s trying to be achieved, element has no purpose
+  Comments = If no code is available, use CodeableConcept.text.
   v2 Mapping = GOL-3.2-goal ID.text
   RIM Mapping = .text
 
@@ -180,7 +205,7 @@
   Summary = Y
   Type = code
   Binding = GoalStatus
-  Short Label = proposed | planned | accepted | rejected | in-progress | achieved | sustaining | on-hold | cancelled
+  Short Label = proposed | planned | accepted | rejected | in-progress | achieved | sustaining | on-hold | cancelled | on-target | ahead-of-target | behind-target
   Definition = Indicates whether the goal has been reached and is still considered relevant
   Requirements = Allows measuring outcome and whether goal needs to be further tracked.
   v2 Mapping = GOL-18-goal life cycle status
@@ -199,7 +224,7 @@
 
  -- Row 10 -----------------------------------
   Element = Goal.statusReason
-  Card. = 0..1
+  Card. = 0..*
   Type = CodeableConcept
   Binding = GoalStatusReason
   Short Label = Reason for current status
@@ -225,13 +250,13 @@
   Short Label = high | medium |low
   Definition = Identifies the mutually agreed level of importance associated with reaching/sustaining the goal
   Requirements = Used for sorting and presenting goals
-  Comments = Extensions are available to track priorities as established by each participant (i.e. Priority from the patient\'s perspective, different practitioners\' perspectives, family member\'s perspectives)\n\nThe ordinal extension on Coding can be used to convey a numerically comparable ranking to priority.  (Keep in mind that different coding systems may use a \"low value=important\"
+  Comments = Extensions are available to track priorities as established by each participant (i.e. Priority from the patient\'s perspective, different practitioners\' perspectives, family member\'s perspectives)\r\rThe ordinal extension on Coding can be used to convey a numerically comparable ranking to priority.  (Keep in mind that different coding systems may use a \"low value=important\"
   RIM Mapping = .priorityCode
 
  -- Row 13 -----------------------------------
   Element = Goal.addresses
   Card. = 0..*
-  Type = Reference(Condition | Observation | MedicationStatement | NutritionOrder | ProcedureRequest | RiskAssessment)
+  Type = Reference(Condition | Observation | MedicationStatement | NutritionRequest | ProcedureRequest | RiskAssessment)
   Short Label = Issues addressed by this goal
   Definition = The identified conditions and other health record elements that are intended to be addressed by the goal
   Requirements = Allows specific goals to explicitly linked to the concerns they\'re dealing with - makes the goal more understandable

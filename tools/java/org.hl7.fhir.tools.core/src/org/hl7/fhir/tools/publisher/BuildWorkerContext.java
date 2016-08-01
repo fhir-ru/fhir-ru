@@ -17,6 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -39,6 +40,7 @@ import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent
 import org.hl7.fhir.dstu3.model.ConceptMap;
 import org.hl7.fhir.dstu3.model.DataElement;
 import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
+import org.hl7.fhir.dstu3.model.ExpansionProfile;
 import org.hl7.fhir.dstu3.model.NamingSystem;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemIdentifierType;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemUniqueIdComponent;
@@ -139,6 +141,15 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     this.maps = maps;
     this.profiles = profiles;
     this.cacheValidation = true;
+    setExpansionProfile(buildExpansionProfile());
+  }
+
+  private ExpansionProfile buildExpansionProfile() {
+    ExpansionProfile res = new ExpansionProfile();
+    res.setUrl("urn:uuid:"+UUID.randomUUID().toString().toLowerCase());
+    res.setExcludeNested(false);
+    res.setIncludeDesignations(true);
+    return res;
   }
 
   public boolean hasClient() {
@@ -441,7 +452,6 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   private SnomedServerResponse queryForTerm(String code) throws Exception {
     if (!triedServer || serverOk) {
       triedServer = true;
-      serverOk = false;
       HttpClient httpclient = new DefaultHttpClient();
        HttpGet httpget = new HttpGet("http://fhir2.healthintersections.com.au/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20"));
 //      HttpGet httpget = new HttpGet("http://localhost:960/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20")); // don't like the url encoded this way
@@ -452,7 +462,6 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document xdoc = builder.parse(instream);
-        serverOk = true;
         // we always get back a version, and a type. What we do depends on the type 
         String t = xdoc.getDocumentElement().getAttribute("type");
         if (t.equals("error")) 
@@ -686,7 +695,6 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     if (true) { //(!triedServer || serverOk) {
       try {
         triedServer = true;
-        serverOk = false;
         // for this, we use the FHIR client
         if (txServer == null) {
           txServer = new FHIRToolingClient(tsServer);
@@ -695,13 +703,15 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
         params.put("code", code);
         params.put("system", "http://loinc.org");
         Parameters result = txServer.lookupCode(params);
-        serverOk = true;
 
         for (ParametersParameterComponent p : result.getParameter()) {
           if (p.getName().equals("display"))
             return ((StringType) p.getValue()).asStringValue();
         }
         throw new Exception("Did not find LOINC code in return values");
+      } catch (EFhirClientException e) {
+        serverOk = true;
+        throw e;
       } catch (Exception e) {
         serverOk = false;
         throw e;
@@ -831,11 +841,11 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   
   
   @Override
-  public ValueSetExpansionComponent expandVS(ConceptSetComponent inc) {
+  public ValueSetExpansionComponent expandVS(ConceptSetComponent inc, boolean heirarchy) {
     ValueSet vs = new ValueSet();
     vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().getInclude().add(inc);
-    ValueSetExpansionOutcome vse = expandVS(vs, true);
+    ValueSetExpansionOutcome vse = expandVS(vs, true, heirarchy);
     if (vse.getValueset() == null)
       return null;
     else

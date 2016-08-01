@@ -1,7 +1,7 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-  <meta charset="UTF-8">
+   <meta charset="UTF-8"/>
   <title>StructureDefinition: DAF-{{page.name}} - FHIR v1.5.0</title>
 
   {% include header.html %}
@@ -30,7 +30,7 @@
 
 <div class="col-9">
 
-<ul class="nav nav-tabs"><li class="active"><a href="#">Content</a></li><li><a href="daf-{{page.code}}-definitions.html">Detailed Descriptions</a></li><li><a href="daf-{{page.code}}-mappings.html">Mappings</a></li><li><a href="daf-{{page.code}}.profile.xml.html">XML</a></li><li><a href="daf-{{page.code}}.profile.json.html">JSON</a></li></ul>
+<ul class="nav nav-tabs"><li class="active"><a href="#">Content</a></li><li><a href="daf-{{page.code}}-definitions.html">Detailed Descriptions</a></li><li><a href="daf-{{page.code}}-mappings.html">Mappings</a></li><li><a href="StructureDefinition-{{page.id}}.xml.html">XML</a></li><li><a href="StructureDefinition-{{page.id}}.json.html">JSON</a></li></ul>
 
 <h3><span class="sectioncount">D.4.1<a name="D.4.1"> </a></span> StructureDefinition: DAF-{{page.code}} <a title="link to here" class="self-link" href="daf-{{page.code}}.html#D.4.1"><img src="target.png"/></a></h3>
 
@@ -44,7 +44,7 @@ Formal Views of Profile Content
  <a title="link to here" class="self-link" href="daf-{{page.code}}.html#profile"><img src="target.png"/></a></h4>
 
 <p>
-<a href="{{site.data.fhir.path}}/profiling.html#representation">Description of Profiles, Differentials, Snapshots, and how the XML and JSON presentations work</a>.
+<a href="{{site.data.fhir.path}}profiling.html#representation">Description of Profiles, Differentials, Snapshots, and how the XML and JSON presentations work</a>.
 </p>
 
 <div id="tabs">
@@ -59,7 +59,7 @@ Formal Views of Profile Content
 
  <div id="tabs-summ">
   <div id="tbl-summ">
-   <p>This structure is derived from <a href="{{site.data.fhir.path}}/{{page.code}}.html">{{page.tcode}}</a>.</p>
+   <p>This structure is derived from <a href="{{site.data.structuredefinitions[page.id].basepath}}">{{site.data.structuredefinitions[page.id].basename}}</a> </p>
    <div id="tbl-diff-inner">
      <a name="summary"> </a>
      
@@ -73,7 +73,7 @@ Formal Views of Profile Content
 
  <div id="tabs-diff">
   <div id="tbl-diff">
-   <p>This structure is derived from <a href="{{site.data.fhir.path}}/{{page.code}}.html">{{page.tcode}}</a>.</p>
+   <p>This structure is derived from <a href="{{site.data.structuredefinitions[page.id].basepath}}">{{site.data.structuredefinitions[page.id].basename}}</a> </p>
    <div id="tbl-diff-inner">
    {%include StructureDefinition-daf-{{page.code}}-diff.xhtml%}
    </div>
@@ -91,7 +91,7 @@ Formal Views of Profile Content
  <div id="tabs-xml">
   <div id="xml">
    <div id="xml-inner">
-   {%include StructureDefinition-daf-{{page.code}}-template-xml.xhtml%}
+   {%include StructureDefinition-daf-{{page.code}}-pseudo-xml.xhtml%}
    </div>
   </div>
  </div>
@@ -99,14 +99,14 @@ Formal Views of Profile Content
  <div id="tabs-json">
   <div id="json">
    <div id="json-inner">
-   {%include StructureDefinition-daf-{{page.code}}-template-json.xhtml%}
+   {%include StructureDefinition-daf-{{page.code}}-pseudo-json.xhtml%}
    </div>
   </div>
  </div>
 
  <div id="tabs-all">
   <div id="tbl-summ">
-   <p>This structure is derived from <a href="{{site.data.fhir.path}}/{{page.code}}.html">{{page.tcode}}</a>.</p>
+   <p>This structure is derived from <a href="{{site.data.fhir.path}}{{page.code}}.html">{{page.tcode}}</a>.</p>
    <div id="tbl-diff-inner">
      <a name="summary"> </a>
      {%include StructureDefinition-daf-{{page.code}}-summary.xhtml%}
@@ -115,7 +115,7 @@ Formal Views of Profile Content
 
  <div id="all-tbl-diff">
    <p><b>Differential View</b></p>
-   <p>This structure is derived from <a href="{{site.data.fhir.path}}/{{page.code}}.html">{{page.tcode}}</a>.</p>
+   <p>This structure is derived from <a href="{{site.data.fhir.path}}{{page.code}}.html">{{page.tcode}}</a>.</p>
    <div id="all-tbl-diff-inner">
    {%include StructureDefinition-daf-{{page.code}}-diff.xhtml%}
    </div>
@@ -129,20 +129,19 @@ Formal Views of Profile Content
   <div id="all-xml">
    <p><b>XML Template</b></p>
    <div id="all-xml-inner">
-   {%include StructureDefinition-daf-{{page.code}}-template-xml.xhtml%}
+   {%include StructureDefinition-daf-{{page.code}}-pseudo-xml.xhtml%}
    </div>
   </div>
   <div id="all-json">
    <p><b>JSON Template</b></p>
    <div id="all-json-inner">
-   {%include StructureDefinition-daf-{{page.code}}-template-json.xhtml%}
+   {%include StructureDefinition-daf-{{page.code}}-pseudo-json.xhtml%}
    </div>
   </div>
  </div>
 </div>
 
 <p>&nbsp;</p>
-<p>Other representations of profile: <a href="daf-{{page.code}}.sch">Schematron</a></p>
 
 <a name="tx"> </a>
 <h4><span class="sectioncount">D.4.1.2</span> Terminology Bindings <a title="link to here" class="self-link" href="daf-{{page.code}}.html#tx"><img src="target.png"/></a></h4>

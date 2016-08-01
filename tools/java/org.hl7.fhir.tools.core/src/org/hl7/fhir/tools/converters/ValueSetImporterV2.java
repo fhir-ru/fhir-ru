@@ -20,6 +20,7 @@ import org.hl7.fhir.dstu3.formats.FormatUtilities;
 import org.hl7.fhir.dstu3.model.BooleanType;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
+import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemHierarchyMeaning;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
 import org.hl7.fhir.dstu3.model.ContactPoint.ContactPointSystem;
@@ -35,6 +36,7 @@ import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
+import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.tools.publisher.SectionNumberer;
 import org.hl7.fhir.utilities.CSFile;
@@ -73,7 +75,7 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
       super();
       this.id = id;
       this.name = name;
-      this.oid = oid;
+      this.oid = oid.trim();
       this.code = code;
       this.ver = ver;
     }
@@ -578,12 +580,12 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
     // v2 versioning
     // information
     vs.getText().setDiv(new XhtmlParser().parse("<div>" + s.toString() + "</div>", "div").getElement("div"));
-    ValueSetUtilities.makeShareable(cs);
+    CodeSystemUtilities.makeShareable(cs);
     CodeSystemConvertor.populate(cs, vs);
     cs.setContent(CodeSystemContentMode.COMPLETE);
     OIDEntry oe = oids.get(id);
     if (oe != null)
-      ToolingExtensions.setOID(cs, "urn:oid:"+oe.getOid());
+      CodeSystemUtilities.setOID(cs, "urn:oid:"+oe.getOid());
     cs.setCaseSensitive(false);
     cs.setUrl("http://hl7.org/fhir/v2/" + id);
     cs.setId("v2-"+FormatUtilities.makeId(id));
@@ -650,14 +652,14 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
     vs.setDateElement(new DateTimeType(date)); 
     vs.setDescription("v2 table definition for "+vs.getName());
     CodeSystem cs = new CodeSystem();
-    ValueSetUtilities.makeShareable(cs);
+    CodeSystemUtilities.makeShareable(cs);
     CodeSystemConvertor.populate(cs, vs);
     cs.setUserData("spec.vs.cs", vs);
     cs.setContent(CodeSystemContentMode.COMPLETE);
 
     OIDEntry oe = oids.get(id+"-"+version);
     if (oe != null)
-      ToolingExtensions.setOID(cs, "urn:oid:"+oe.getOid());
+      CodeSystemUtilities.setOID(cs, "urn:oid:"+oe.getOid());
     cs.setCaseSensitive(true);
     cs.setUrl("http://hl7.org/fhir/v2/" + id + "/" + version);
     cs.setId("v2-"+FormatUtilities.makeId(version)+"-"+id);

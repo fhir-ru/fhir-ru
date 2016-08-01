@@ -23,12 +23,12 @@
 	</organization>
 
 	<!-- Referring Practitioner for the first 3 months of 2012 -->
-	<role>
+	<code>
 		<coding>
 			<system value="http://hl7.org/fhir/v2/0286"/>
 			<code value="RP"/>
 		</coding>
-	</role>
+	</code>
 
 	<location>
 		<reference value="Location/1"/>
@@ -46,4 +46,8 @@
 		<start value="2012-01-01"/>
 		<end value="2012-03-31"/>
 	</period>
+  <endpoint>
+    <!-- Endpoint that handles the v2 messaging for the external organization -->
+    <reference value="Endpoint/example"/>
+  </endpoint>
 </PractitionerRole>

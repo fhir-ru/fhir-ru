@@ -1,0 +1,405 @@
+﻿
+=== Sheet Bindings =====================================
+
+ -- Row 1 -----------------------------------
+  Binding Name = DiagnosticRequestStatus
+  Binding = value set
+  Reference = valueset-request-status
+  Definition = The status of a diagnostic order.
+  Conformance = required
+
+ -- Row 2 -----------------------------------
+  Binding Name = DiagnosticRequests
+  Binding = value set
+  Reference = valueset-diagnostic-requests
+  Definition = Codes for tests/services that can be performed by diagnostic services.
+  Description = LOINC Order Codes
+  Conformance = preferred
+
+ -- Row 3 -----------------------------------
+  Binding Name = DiagnosticRequestReason
+  Binding = value set
+  Reference = http://hl7.org/fhir/ValueSet/condition-code
+  Definition = Diagnosis or problem codes justifying the reason for requesting the diagnostic investigation.
+  Description = SNOMED CT Condition/Problem/Diagnosis Codes
+  Conformance = example
+
+ -- Row 4 -----------------------------------
+  Binding Name = DiagnosticRequestStage
+  Binding = value set
+  Reference = valueset-diagnostic-request-stage
+  Definition = The kind of diagnostic request
+  Conformance = extensible
+
+ -- Row 5 -----------------------------------
+  Binding Name = DiagnosticRequestParticipantRole
+  Binding = value set
+  Reference = http://hl7.org/fhir/ValueSet/participant-role
+  Definition = Indicates specific responsibility of an individual within the care team, such as \"Primary physician\", \"Team coordinator\", \"Caregiver\", etc.
+  Conformance = example
+
+=== Sheet Invariants =====================================
+
+=== Sheet Data Elements =====================================
+
+ -- Row 1 -----------------------------------
+  Element = DiagnosticRequest
+  Type = DomainResource
+  Short Label = A request for a diagnostic service
+  Definition = A record of a request for a diagnostic investigation service to be performed.
+  RIM Mapping = Observation[classCode=OBS, moodCode=RQO, code<\"diagnostic order\"]
+  Committee Notes = [#5279]
+  w5 = clinical.diagnostics
+
+ -- Row 2 -----------------------------------
+  Element = DiagnosticRequest.identifier
+  Card. = 0..*
+  Summary = Y
+  Type = Identifier
+  Short Label = Identifiers assigned to this order
+  Definition = Identifiers assigned to this order instance by the orderer and/or  the receiver and/or order fulfiller.
+  Comments = The identifier.type element is used to distinguish between the identifiers assigned by the orderer (known as the \'Placer\' in HL7 v2) and the producer of the observations in response to the order (known as the \'Filler\' in HL7 v2). For further discussion and examples see the [notes section](DiagnosticRequest.html#4.22.4) below.
+  RIM Mapping = .id
+  Committee Notes = 7331
+  w5 = id
+
+ -- Row 3 -----------------------------------
+  Element = DiagnosticRequest.definition
+  Card. = 0..*
+  Summary = Y
+  Type = Reference(Any)
+  Short Label = Protocol or definition
+  Definition = Protocol or definition followed by this request
+  Committee Notes = [#10296]
+
+ -- Row 4 -----------------------------------
+  Element = DiagnosticRequest.basedOn
+  Card. = 0..*
+  Summary = Y
+  Type = Reference(Any)
+  Short Label = What request fulfills
+  Definition = Plan/proposal/order fulfilled by this request
+  Committee Notes = [#10296]
+
+ -- Row 5 -----------------------------------
+  Element = DiagnosticRequest.replaces
+  Card. = 0..*
+  Summary = Y
+  Type = Reference(Any)
+  Short Label = What request replaces
+  Definition = The request takes the place of the referenced completed or terminated request(s)
+  Committee Notes = [#10296]
+
+ -- Row 6 -----------------------------------
+  Element = DiagnosticRequest.requisition
+  Card. = 0..1
+  Summary = Y
+  Type = Identifier
+  Short Label = Identifier of composite request
+  Definition = Composite request this is part of
+  Committee Notes = [#10296]
+
+ -- Row 7 -----------------------------------
+  Element = DiagnosticRequest.status
+  Card. = 0..1
+  Is Modifier = Y
+  Summary = Y
+  Type = code
+  Binding = DiagnosticRequestStatus
+  Short Label = draft | active | suspended | completed | entered-in-error | cancelled
+  Definition = The status of the order
+  Comments = Typically the system placing the order sets the status to \"requested\". Thereafter, the order is maintained by the receiver that updates the status as the request is handled
+  RIM Mapping = .statusCode also influenced by whether a ControlAct fulfillment requeste exists, whether a promise exists, status of the review component, whether a fulfilling observation exists, whether a refusal exists
+  Committee Notes = [#3720][#10296]
+  w5 = status
+
+ -- Row 8 -----------------------------------
+  Element = DiagnosticRequest.stage
+  Card. = 1..1
+  Is Modifier = Y
+  Summary = Y
+  Type = CodeableConcept
+  Binding = DiagnosticRequestStage
+  Short Label = proposal | plan | original-order | reflex-order
+  Definition = Whether the request is a proposal, plan, an original order or a reflex order.
+  Committee Notes = [#3720][#10296]
+  w5 = class
+
+ -- Row 9 -----------------------------------
+  Element = DiagnosticRequest.code
+  Card. = 1..1
+  Summary = Y
+  Type = CodeableConcept
+  Binding = DiagnosticRequests
+  Short Label = What’s being requested/ordered
+  Definition = A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested
+  Comments = Many laboratory tests and radiology tests embed the specimen/organ system in the test name, for example,  serum or serum/plasma glucose, or a chest xray. The specimen may not be recorded separately from the test code.
+  v2 Mapping = OBX-4
+  RIM Mapping = .code
+  Committee Notes = [#10296]
+  w5 = what
+
+ -- Row 10 -----------------------------------
+  Element = DiagnosticRequest.subject
+  Card. = 1..1
+  Summary = Y
+  Type = Reference(Patient|Group|Location|Device)
+  Short Label = Individual the test is ordered for
+  Definition = On whom or what the investigation is to be performed. This is usually a human patient, but diagnostic tests can also be requested on animals, groups of humans or animals, devices such as dialysis machines, or even locations (typically for environmental scans)
+  RIM Mapping = .participation[typeCode=SBJ].role
+  Committee Notes = [#10296]
+  w5 = who.focus
+
+ -- Row 11 -----------------------------------
+  Element = DiagnosticRequest.context
+  Card. = 0..1
+  Summary = Y
+  Type = Reference(Encounter|EpisodeOfCare)
+  Short Label = Encounter or Episode during which request was created
+  Definition = An encounter or episode of care that provides additional information about the healthcare context in which this request is made
+  RIM Mapping = .inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]
+  Committee Notes = [#10296]
+  w5 = context
+
+ -- Row 12 -----------------------------------
+  Element = DiagnosticRequest.occurrence[x]
+  Card. = 0..1
+  Summary = Y
+  Type = dateTime| Period| Timing
+  Short Label = When testing should occur
+  Definition = The date/time at which the diagnostic testing should occur.
+  RIM Mapping = .effectiveTime
+  Committee Notes = [#10296]
+  w5 = when.planned
+
+ -- Row 13 -----------------------------------
+  Element = DiagnosticRequest.authored
+  Card. = 0..1
+  Summary = Y
+  Type = dateTime
+  Short Label = Date request signed
+  Definition = When the request transitioned to being actionable
+  Committee Notes = [#10296]
+  w5 = when.recorded
+
+ -- Row 14 -----------------------------------
+  Element = DiagnosticRequest.requester
+  Card. = 0..1
+  Summary = Y
+  Type = Reference(Device|Practitioner|Organization)
+  Short Label = Who/what is requesting diagnostics
+  Definition = Who/what is requesting diagnostics.  The practitioner that holds legal responsibility for ordering the investigation.
+  Comments = This not the dispatcher, but rather who is authorizing
+  RIM Mapping = .participation[typeCode=AUT].role
+  Committee Notes = [#10296] originally proposed references: Reference(Device | Patient | Practitioner | RelatedPerson  | Organization?)  felt that patient and relatedPerson don’t request tests
+  w5 = who.author
+
+ -- Row 15 -----------------------------------
+  Element = DiagnosticRequest.performerType
+  Card. = 0..1
+  Summary = Y
+  Type = CodeableConcept
+  Binding = DiagnosticRequestParticipantRole
+  Short Label = Performer role
+  Definition = Desired type of performer for doing the diagnostic testing. (
+  Comments = this is a  role, not  aparticipation type.  I.e. doesn’t describe the task, describes the capacity.  Examples “compounding pharmacy” or “psychiatrist” or “internal referral”
+  Committee Notes = [#10296]
+  w5 = who.actor
+
+ -- Row 16 -----------------------------------
+  Element = DiagnosticRequest.performer
+  Card. = 0..1
+  Summary = Y
+  Type = Reference(Practitioner | Organization | Patient | Device | RelatedPerson)
+  Short Label = Requested perfomer
+  Definition = The desired perfomer for doing the diagnostic testing.
+  Comments = Use the standard [XXX extension]() for listing alternative  alternative performers and/or roles and/or preference.
+  RIM Mapping = .participation[AUT or PFM]
+  Committee Notes = [#10296]
+  w5 = who.actor
+
+ -- Row 17 -----------------------------------
+  Element = DiagnosticRequest.reason
+  Card. = 0..*
+  Summary = Y
+  Type = CodeableConcept
+  Binding = DiagnosticRequestReason
+  Short Label = Explanation/Justification for test
+  Definition = An explanation or justification for why this diagnostic investigation is being requested.   This is often for billing purposes.  May relate to the resources referred to in supportingInformation.
+  Comments = This may be used to decide how the diagnostic investigation will be performed, or even if it will be performed at all.   Use CodeableConcept text element if the data is free (uncoded) text as shown in the [CT Scan example](diagnosticrequest-example-di.html).
+  RIM Mapping = .reasonCode
+  Committee Notes = 7134. [#10296]  need to add reference as another inline element
+  w5 = why
+
+ -- Row 18 -----------------------------------
+  Element = DiagnosticRequest.supportingInformation
+  Card. = 0..*
+  Aliases = Ask at order entry question, AOE
+  Type = Reference(Any)
+  Short Label = Additional clinical information
+  Definition = Additional clinical information about the patient or specimen that may influence test interpretations.  This includes observations explicitly requested by the producer(filler) to provide context or supporting information needed to complete the order.
+  Comments = This information includes diagnosis, clinical findings and other observations.  In laboratory ordering these are typically referred to as \"ask at order entry questions (AOEs)\". Examples include reporting the amount of inspired oxygen for blood gasses, the point in the menstrual cycle for cervical pap tests, and other conditions that influence test interpretations.
+  v2 Mapping = OBR-13
+  RIM Mapping = outboundRelationship[typeCode=SPRT]/target[classCode=ACT, moodCode=EVN]
+  Committee Notes = [#3113][#3739][#10296]
+
+ -- Row 19 -----------------------------------
+  Element = DiagnosticRequest.note
+  Card. = 0..*
+  Type = Annotation
+  Short Label = Comments
+  Definition = Any other notes and comments made about the service request. (e.g. \"patient hates needles\")
+  RIM Mapping = .inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=\"annotation\"].value
+  Committee Notes = 7134,8147,[#10296]
+
+ -- Row 20 -----------------------------------
+  Element = DiagnosticRequest.relevantHistory
+  Card. = 0..*
+  Type = Reference(Provenance)
+  Short Label = Request provenance
+  Definition = Key events in the history of the request.
+  Comments = This may not include provenances for all versions of the request – only those deemed “relevant” or important.\nThis SHALL NOT include the Provenance associated with this current version of the resource.  (If that provenance is deemed to be a “relevant” change, it will need to be added as part of a later update.  Until then, it can be queried directly as the Provenance that points to this version using _revinclude\nAll Provenances should have some historical version of this Request as their subject.
+  Committee Notes = [#10296]
+
+=== Sheet Search =====================================
+
+ -- Row 1 -----------------------------------
+  Name = author-date
+  Type = date
+  Description = When the request transitioned to being actionable
+  Path = DiagnosticRequest.authored
+
+ -- Row 2 -----------------------------------
+  Name = based-on
+  Type = reference
+  Description = Plan/proposal/order fulfilled by this request
+  Path = DiagnosticRequest.basedOn
+
+ -- Row 3 -----------------------------------
+  Name = stage
+  Type = token
+  Description = proposal | plan | original-order |reflex-order
+  Path = DiagnosticRequest.stage
+
+ -- Row 4 -----------------------------------
+  Name = code
+  Type = token
+  Description = What’s being requested/ordered
+  Path = DiagnosticRequest.code
+
+ -- Row 5 -----------------------------------
+  Name = definition
+  Type = reference
+  Description = Protocol or definition followed by this request
+  Path = DiagnosticRequest.definition
+
+ -- Row 6 -----------------------------------
+  Name = encounter
+  Type = reference
+  Description = Encounter or Episode during which request was created
+  Path = DiagnosticRequest.context
+
+ -- Row 7 -----------------------------------
+  Name = event-date
+  Type = date
+  Description = When service should occur
+  Path = DiagnosticRequest.occurrenceDateTime | DiagnosticRequest.occurrencePeriod
+
+ -- Row 8 -----------------------------------
+  Name = identifier
+  Type = token
+  Description = Business identifier for request/order
+  Path = DiagnosticRequest.identifier
+
+ -- Row 9 -----------------------------------
+  Name = patient
+  Type = reference
+  Description = Individual the service is ordered for
+  Path = DiagnosticRequest.subject
+  Target Types = Patient
+
+ -- Row 10 -----------------------------------
+  Name = filler
+  Type = reference
+  Description = Desired performer for service
+  Path = DiagnosticRequest.performer
+
+ -- Row 11 -----------------------------------
+  Name = replaces
+  Type = reference
+  Description = Request takes the place of referenced completed or terminated requests
+  Path = DiagnosticRequest.replaces
+
+ -- Row 12 -----------------------------------
+  Name = requester
+  Type = reference
+  Description = Who/what is requesting service 
+  Path = DiagnosticRequest.requester
+
+ -- Row 13 -----------------------------------
+  Name = requisition
+  Type = token
+  Description = Composite request this is part of
+  Path = DiagnosticRequest.requisition
+
+ -- Row 14 -----------------------------------
+  Name = status
+  Type = token
+  Description = entered-in-error | draft | active |suspended | completed 
+  Path = DiagnosticRequest.status
+
+ -- Row 15 -----------------------------------
+  Name = subject
+  Type = reference
+  Description = Individual the service is ordered for
+  Path = DiagnosticRequest.subject
+
+=== Sheet Profiles =====================================
+
+ -- Row 1 -----------------------------------
+  Name = diagnosticrequest-extensions
+  IG Name = core
+  Filename = diagnosticrequest-extensions.xml
+  Type = spreadsheet
+
+ -- Row 2 -----------------------------------
+  Name = Diagnostic Request for Genetics
+  IG Name = core
+  Filename = diagnosticrequest-genetics-profile.xml
+  Type = spreadsheet
+
+=== Sheet Examples =====================================
+
+ -- Row 1 -----------------------------------
+  Name = Lipids
+  Identity = lipid
+  Description = Lipid Panel Order
+  Filename = diagnosticrequest-example-lipid.xml
+
+ -- Row 2 -----------------------------------
+  Name = DI Order
+  Identity = di
+  Description = CT Scan order
+  Filename = diagnosticrequest-example-di.xml
+
+ -- Row 3 -----------------------------------
+  Name = Free T4
+  Identity = ft4
+  Description = Free T4 Add on Order
+  Filename = diagnosticrequest-example-ft4.xml
+
+ -- Row 4 -----------------------------------
+  Name = Order-genetics-1
+  Identity = og-example1
+  Description = Order for ABCB4 gene mutation analysis
+  Filename = diagnosticrequest-genetics-example-1.xml
+  Profile = Diagnostic Request for Genetics
+
+ -- Row 5 -----------------------------------
+  Name = !Order-genetics-2
+  Identity = og-example2
+  Description = Order for a specific variant
+  Filename = diagnosticrequest-genetics-example-2.xml
+  Profile = Diagnostic Request for Genetics
+
+=== Sheet Examples =====================================

@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Thu, Jul 14, 2016 15:47+1000 for FHIR v1.5.0
+// Generated on Mon, Jul 25, 2016 11:14-0400 for FHIR v1.5.0
 
 import org.hl7.fhir.dstu3.exceptions.FHIRException;
 
@@ -78,8 +78,6 @@ public class ResourceFactory extends Factory {
             return new Practitioner();
         if ("ExpansionProfile".equals(name))
             return new ExpansionProfile();
-        if ("OrderSet".equals(name))
-            return new OrderSet();
         if ("Slot".equals(name))
             return new Slot();
         if ("Person".equals(name))
@@ -110,16 +108,12 @@ public class ResourceFactory extends Factory {
             return new Substance();
         if ("SearchParameter".equals(name))
             return new SearchParameter();
-        if ("Protocol".equals(name))
-            return new Protocol();
         if ("Communication".equals(name))
             return new Communication();
         if ("ActivityDefinition".equals(name))
             return new ActivityDefinition();
         if ("Linkage".equals(name))
             return new Linkage();
-        if ("OrderResponse".equals(name))
-            return new OrderResponse();
         if ("DeviceUseStatement".equals(name))
             return new DeviceUseStatement();
         if ("MessageHeader".equals(name))
@@ -158,8 +152,8 @@ public class ResourceFactory extends Factory {
             return new ValueSet();
         if ("OperationDefinition".equals(name))
             return new OperationDefinition();
-        if ("Order".equals(name))
-            return new Order();
+        if ("DiagnosticRequest".equals(name))
+            return new DiagnosticRequest();
         if ("Immunization".equals(name))
             return new Immunization();
         if ("Device".equals(name))
@@ -220,14 +214,12 @@ public class ResourceFactory extends Factory {
             return new HealthcareService();
         if ("DataElement".equals(name))
             return new DataElement();
-        if ("NutritionOrder".equals(name))
-            return new NutritionOrder();
+        if ("NutritionRequest".equals(name))
+            return new NutritionRequest();
         if ("AuditEvent".equals(name))
             return new AuditEvent();
         if ("MedicationOrder".equals(name))
             return new MedicationOrder();
-        if ("DecisionSupportRule".equals(name))
-            return new DecisionSupportRule();
         if ("PaymentReconciliation".equals(name))
             return new PaymentReconciliation();
         if ("Condition".equals(name))
@@ -240,8 +232,6 @@ public class ResourceFactory extends Factory {
             return new Bundle();
         if ("CompartmentDefinition".equals(name))
             return new CompartmentDefinition();
-        if ("DiagnosticOrder".equals(name))
-            return new DiagnosticOrder();
         if ("Patient".equals(name))
             return new Patient();
         if ("Coverage".equals(name))
@@ -250,8 +240,6 @@ public class ResourceFactory extends Factory {
             return new QuestionnaireResponse();
         if ("ProcessResponse".equals(name))
             return new ProcessResponse();
-        if ("ModuleDefinition".equals(name))
-            return new ModuleDefinition();
         if ("NamingSystem".equals(name))
             return new NamingSystem();
         if ("DecisionSupportServiceModule".equals(name))
@@ -287,8 +275,6 @@ public class ResourceFactory extends Factory {
             return new Count();
         if ("DataRequirement".equals(name))
             return new DataRequirement();
-        if ("ActionDefinition".equals(name))
-            return new ActionDefinition();
         if ("Money".equals(name))
             return new Money();
         if ("HumanName".equals(name))
@@ -317,8 +303,6 @@ public class ResourceFactory extends Factory {
             return new TriggerDefinition();
         if ("SimpleQuantity".equals(name))
             return new SimpleQuantity();
-        if ("ModuleMetadata".equals(name))
-            return new ModuleMetadata();
         if ("Quantity".equals(name))
             return new Quantity();
         if ("Period".equals(name))
@@ -390,8 +374,6 @@ public class ResourceFactory extends Factory {
             return new Practitioner();
         if ("ExpansionProfile".equals(name))
             return new ExpansionProfile();
-        if ("OrderSet".equals(name))
-            return new OrderSet();
         if ("Slot".equals(name))
             return new Slot();
         if ("Person".equals(name))
@@ -422,16 +404,12 @@ public class ResourceFactory extends Factory {
             return new Substance();
         if ("SearchParameter".equals(name))
             return new SearchParameter();
-        if ("Protocol".equals(name))
-            return new Protocol();
         if ("Communication".equals(name))
             return new Communication();
         if ("ActivityDefinition".equals(name))
             return new ActivityDefinition();
         if ("Linkage".equals(name))
             return new Linkage();
-        if ("OrderResponse".equals(name))
-            return new OrderResponse();
         if ("DeviceUseStatement".equals(name))
             return new DeviceUseStatement();
         if ("MessageHeader".equals(name))
@@ -470,8 +448,8 @@ public class ResourceFactory extends Factory {
             return new ValueSet();
         if ("OperationDefinition".equals(name))
             return new OperationDefinition();
-        if ("Order".equals(name))
-            return new Order();
+        if ("DiagnosticRequest".equals(name))
+            return new DiagnosticRequest();
         if ("Immunization".equals(name))
             return new Immunization();
         if ("Device".equals(name))
@@ -532,14 +510,12 @@ public class ResourceFactory extends Factory {
             return new HealthcareService();
         if ("DataElement".equals(name))
             return new DataElement();
-        if ("NutritionOrder".equals(name))
-            return new NutritionOrder();
+        if ("NutritionRequest".equals(name))
+            return new NutritionRequest();
         if ("AuditEvent".equals(name))
             return new AuditEvent();
         if ("MedicationOrder".equals(name))
             return new MedicationOrder();
-        if ("DecisionSupportRule".equals(name))
-            return new DecisionSupportRule();
         if ("PaymentReconciliation".equals(name))
             return new PaymentReconciliation();
         if ("Condition".equals(name))
@@ -552,8 +528,6 @@ public class ResourceFactory extends Factory {
             return new Bundle();
         if ("CompartmentDefinition".equals(name))
             return new CompartmentDefinition();
-        if ("DiagnosticOrder".equals(name))
-            return new DiagnosticOrder();
         if ("Patient".equals(name))
             return new Patient();
         if ("Coverage".equals(name))
@@ -562,8 +536,6 @@ public class ResourceFactory extends Factory {
             return new QuestionnaireResponse();
         if ("ProcessResponse".equals(name))
             return new ProcessResponse();
-        if ("ModuleDefinition".equals(name))
-            return new ModuleDefinition();
         if ("NamingSystem".equals(name))
             return new NamingSystem();
         if ("DecisionSupportServiceModule".equals(name))
@@ -594,8 +566,6 @@ public class ResourceFactory extends Factory {
             return new Count();
         if ("DataRequirement".equals(name))
             return new DataRequirement();
-        if ("ActionDefinition".equals(name))
-            return new ActionDefinition();
         if ("Money".equals(name))
             return new Money();
         if ("HumanName".equals(name))
@@ -624,8 +594,6 @@ public class ResourceFactory extends Factory {
             return new TriggerDefinition();
         if ("SimpleQuantity".equals(name))
             return new SimpleQuantity();
-        if ("ModuleMetadata".equals(name))
-            return new ModuleMetadata();
         if ("Quantity".equals(name))
             return new Quantity();
         if ("Period".equals(name))

@@ -8,14 +8,8 @@
     },
     {
       "hash": "#|http://loinc.org|null|34108-1|Outpatient Note",
-      "severity": null,
-      "message": null,
-      "definition": {
-        "abstract": false,
-        "code": "34108-1",
-        "definition": null,
-        "display": "Outpatient Note"
-      }
+      "severity": "error",
+      "message": "None of the codes are in the specified value set"
     }
   ]
 }

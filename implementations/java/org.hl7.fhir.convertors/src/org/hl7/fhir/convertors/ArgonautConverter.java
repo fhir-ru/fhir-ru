@@ -59,6 +59,7 @@ import org.hl7.fhir.dstu3.model.Encounter.EncounterHospitalizationComponent;
 import org.hl7.fhir.dstu3.model.Encounter.EncounterStatus;
 import org.hl7.fhir.dstu3.model.Enumerations.DocumentReferenceStatus;
 import org.hl7.fhir.dstu3.model.Immunization.ImmunizationExplanationComponent;
+import org.hl7.fhir.dstu3.model.Immunization.ImmunizationStatus;
 import org.hl7.fhir.dstu3.model.ListResource.ListMode;
 import org.hl7.fhir.dstu3.model.ListResource.ListStatus;
 import org.hl7.fhir.dstu3.model.MedicationStatement.MedicationStatementDosageComponent;
@@ -604,7 +605,7 @@ public class ArgonautConverter extends ConverterBase {
 
 		Element e = cda.getChild(ae, "representedOrganization");
 		if (e != null)
-			perf.addPractitionerRole().setOrganization(new Reference().setReference("Organization/"+processOrganization(e, cda, convert, context).getId()));
+			perf.addRole().setOrganization(new Reference().setReference("Organization/"+processOrganization(e, cda, convert, context).getId()));
 		perf.setUserData("display", b.toString());
 		return perf;
 	}
@@ -789,8 +790,8 @@ public class ArgonautConverter extends ConverterBase {
 			cond.setId(context.baseId+"-problem-"+Integer.toString(i));
 			cond.setUserData("profile", "http://hl7.org/fhir/StructureDefinition/condition-daf-dafcondition");
 			i++;
-			cond.setPatient(context.subjectRef);
-			cond.setEncounter(new Reference().setReference("Encounter/"+context.encounter.getId()));
+			cond.setSubject(context.subjectRef);
+			cond.setContext(new Reference().setReference("Encounter/"+context.encounter.getId()));
 			cond.setVerificationStatus(getVerificationStatusFromAct(cda.getChild(pca, "statusCode")));
 
 			cond.setDateRecordedElement(convert.makeDateFromTS(cda.getChild(cda.getChild(pca, "effectiveTime"), "low")));
@@ -856,7 +857,7 @@ public class ArgonautConverter extends ConverterBase {
 			i++;
 			ai.setPatient(context.subjectRef);
 
-			ai.setRecordedDateElement(convert.makeDateTimeFromTS(cda.getChild(cda.getChild(apa, "effectiveTime"), "low")));
+			ai.setAttestedDateElement(convert.makeDateTimeFromTS(cda.getChild(cda.getChild(apa, "effectiveTime"), "low")));
 			boolean found = false;
 			for (Element e : cda.getChildren(apa, "id")) {
 				Identifier id = convert.makeIdentifierFromII(e);
@@ -879,10 +880,10 @@ public class ArgonautConverter extends ConverterBase {
 					//				if (n.contains("No Known Drug Allergies") && reactions.isEmpty())
 					//					ai.setSubstance(new CodeableConcept().setText(n)); // todo: what do with this? 
 					//				else
-					ai.setSubstance(new CodeableConcept().setText(n));
+					ai.setCode(new CodeableConcept().setText(n));
 				} else
-					ai.setSubstance(inspectCode(convert.makeCodeableConceptFromCD(pec), null));
-				recordAllergyCode(ai.getSubstance());
+					ai.setCode(inspectCode(convert.makeCodeableConceptFromCD(pec), null));
+				recordAllergyCode(ai.getCode());
 				if (!reactions.isEmpty()) {
 					AllergyIntoleranceReactionComponent aie = ai.addReaction();
 					for (Element er : reactions) {
@@ -1293,10 +1294,10 @@ public class ArgonautConverter extends ConverterBase {
 		saveResource(list);
 	}
 
-	private String convertImmunizationStatus(Element child) {
+	private ImmunizationStatus convertImmunizationStatus(Element child) {
 		String s = child.getAttribute("code");
 		if (s.equals("completed"))
-  		return "completed"; 
+  		return ImmunizationStatus.COMPLETED; 
 		throw new Error("Unexpected status "+s); 
 	}
 

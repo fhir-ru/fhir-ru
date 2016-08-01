@@ -191,9 +191,12 @@ import org.hl7.fhir.dstu3.model.Type;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.model.ValueSet.ValueSetContactComponent;
+import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.dstu3.terminologies.LoincToDEConvertor;
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
-import org.hl7.fhir.dstu3.utils.FHIRPathEngine;
+import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
+import org.hl7.fhir.dstu3.utils.FluentPathEngine;
+import org.hl7.fhir.dstu3.utils.IWorkerContext;
 import org.hl7.fhir.dstu3.utils.LogicalModelUtilities;
 import org.hl7.fhir.dstu3.utils.NarrativeGenerator;
 import org.hl7.fhir.dstu3.utils.ProfileComparer;
@@ -211,6 +214,8 @@ import org.hl7.fhir.dstu3.validation.InstanceValidator;
 import org.hl7.fhir.dstu3.validation.ProfileValidator;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
+import org.hl7.fhir.dstu3.validation.XmlValidator;
+import org.hl7.fhir.igtools.publisher.SpecMapManager;
 import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
 import org.hl7.fhir.rdf.RDFValidator;
 import org.hl7.fhir.rdf.ShExValidator;
@@ -223,11 +228,13 @@ import org.hl7.fhir.tools.implementations.csharp.CSharpGenerator;
 import org.hl7.fhir.tools.implementations.delphi.DelphiGenerator;
 import org.hl7.fhir.tools.implementations.java.JavaGenerator;
 import org.hl7.fhir.tools.implementations.javascript.JavaScriptGenerator;
+import org.hl7.fhir.tools.publisher.ExampleInspector.EValidationFailed;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CloseProtectedZipInputStream;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.IniFile;
+import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Logger.LogMessageType;
 import org.hl7.fhir.utilities.SchemaInputSource;
 import org.hl7.fhir.utilities.TextFile;
@@ -277,16 +284,6 @@ import org.json.JSONTokener;
  *
  */
 public class Publisher implements URIResolver, SectionNumberer {
-
-  private static final boolean VALIDATE_BY_PROFILE = false;
-
-  public class EValidationFailed extends Exception {
-    private static final long serialVersionUID = 1L;
-    public EValidationFailed(String string) {
-      super(string);
-    }
-
-  }
 
   public class DocumentHolder {
 
@@ -426,9 +423,6 @@ public class Publisher implements URIResolver, SectionNumberer {
   private List<FHIRPathUsage> fpUsages = new ArrayList<FHIRPathUsage>();
 
   private boolean genRDF;
-  int errorCount = 0;
-  int warningCount = 0;
-  int informationCount = 0;
 
 
   public static void main(String[] args) throws Exception {
@@ -654,7 +648,7 @@ public class Publisher implements URIResolver, SectionNumberer {
           e.printStackTrace();
         }
       }
-      if (!buildFlags.get("all")) {
+      if (buildFlags.containsKey("all") && !buildFlags.get("all")) {
         page.log("This was a Partial Build", LogMessageType.Process);
         CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
         for (String n : buildFlags.keySet())
@@ -840,7 +834,7 @@ public class Publisher implements URIResolver, SectionNumberer {
     
     page.log(" ...Check FHIR Path Expressions", LogMessageType.Process);
     StringBuilder b = new StringBuilder();
-    FHIRPathEngine fp = new FHIRPathEngine(page.getWorkerContext());
+    FluentPathEngine fp = new FluentPathEngine(page.getWorkerContext());
     for (FHIRPathUsage p : fpUsages) {
       b.append(p.getResource() + " (" + p.getContext() + "): " + p.getExpression()+"\r\n");
       try {
@@ -1163,6 +1157,7 @@ public class Publisher implements URIResolver, SectionNumberer {
     }
     page.log(" ...value sets", LogMessageType.Process);
     generateValueSetsPart2();
+    generateConceptMaps();
     page.saveSnomed();
     if (isGenerate) {
       /// regenerate. TODO: this is silly - need to generate before so that xpaths are populated. but need to generate now to fill them properly
@@ -1217,8 +1212,8 @@ public class Publisher implements URIResolver, SectionNumberer {
             ns.setDate(page.getGenDate().getTime());
           ns.setDescription(cs.getDescription());
           ns.addUniqueId().setType(NamingSystemIdentifierType.URI).setValue(cs.getUrl()).setPreferred(true);
-          if (ToolingExtensions.getOID(cs) != null)
-            ns.addUniqueId().setType(NamingSystemIdentifierType.OID).setValue(ToolingExtensions.getOID(cs).substring(8)).setPreferred(false);
+          if (CodeSystemUtilities.getOID(cs) != null)
+            ns.addUniqueId().setType(NamingSystemIdentifierType.OID).setValue(CodeSystemUtilities.getOID(cs).substring(8)).setPreferred(false);
           ns.setUserData("path", cs.getUserData("path"));
           bnd.addEntry().setResource(ns).setFullUrl(cs.getUrl().replace("ValueSet", "NamingSystem"));
         }
@@ -1586,7 +1581,8 @@ public class Publisher implements URIResolver, SectionNumberer {
     }
     if (checkFile("translations", page.getFolders().rootDir + "implementations" + File.separator, "translations.xml", errors, null)) {
       // schema check
-      checkBySchema(page.getFolders().rootDir + "implementations" + File.separator + "translations.xml", new String[] {page.getFolders().rootDir + "implementations" + File.separator + "translations.xsd"});
+      XmlValidator xv = new XmlValidator(page.getValidationErrors(), page.getFolders().rootDir + "implementations", Utilities.path(page.getFolders().rootDir, "tools", "schematron"), new String[] {"translations.xsd"});
+      xv.checkBySchema(Utilities.path(page.getFolders().rootDir, "implementations", "translations.xml"), true);
       Utilities.copyFile(page.getFolders().rootDir + "implementations" + File.separator + "translations.xml", page.getFolders().dstDir + "translations.xml");
       page.getTranslations().setLang("en");
       page.getTranslations().load(page.getFolders().rootDir + "implementations" + File.separator + "translations.xml");
@@ -2063,7 +2059,7 @@ public class Publisher implements URIResolver, SectionNumberer {
   private void produceSpec() throws Exception {
     for (ImplementationGuideDefn ig : page.getDefinitions().getSortedIgs()) {
       for (LogicalModel lm : ig.getLogicalModels()) {
-        page.log(" ...ig logical model " + lm.getId(), LogMessageType.Process);
+        page.log(" ...logical model " + lm.getId(), LogMessageType.Process);
         produceLogicalModel(lm, ig);
       }
     }
@@ -2116,6 +2112,18 @@ public class Publisher implements URIResolver, SectionNumberer {
         produceCompartment(c);
       }
     }
+    Bundle searchParamsFeed = new Bundle();
+    searchParamsFeed.setId("searchParams");
+    searchParamsFeed.setType(BundleType.COLLECTION);
+    searchParamsFeed.setMeta(new Meta().setLastUpdated(resourceBundle.getMeta().getLastUpdated()));
+    for (ResourceDefn rd : page.getDefinitions().getBaseResources().values())
+      addSearchParams(searchParamsFeed, rd);
+    for (ResourceDefn rd : page.getDefinitions().getResources().values())
+      addSearchParams(searchParamsFeed, rd);
+    for (Profile cp : page.getDefinitions().getPackList()) {
+      addSearchParams(searchParamsFeed, cp);
+    }
+    checkBundleURLs(searchParamsFeed);
 
     for (String n : page.getIni().getPropertyNames("pages")) {
       if (buildFlags.get("all") || buildFlags.get("page-" + n.toLowerCase())) {
@@ -2223,18 +2231,6 @@ public class Publisher implements URIResolver, SectionNumberer {
       s.close();
       Utilities.copyFile(page.getFolders().dstDir + "extension-definitions.xml", page.getFolders().dstDir + "examples" + File.separator + "extension-definitions.xml");
 
-      Bundle searchParamsFeed = new Bundle();
-      searchParamsFeed.setId("searchParams");
-      searchParamsFeed.setType(BundleType.COLLECTION);
-      searchParamsFeed.setMeta(new Meta().setLastUpdated(resourceBundle.getMeta().getLastUpdated()));
-      for (ResourceDefn rd : page.getDefinitions().getBaseResources().values())
-        addSearchParams(searchParamsFeed, rd);
-      for (ResourceDefn rd : page.getDefinitions().getResources().values())
-        addSearchParams(searchParamsFeed, rd);
-      for (Profile cp : page.getDefinitions().getPackList()) {
-        addSearchParams(searchParamsFeed, cp);
-      }
-      checkBundleURLs(searchParamsFeed);
       s = new FileOutputStream(page.getFolders().dstDir + "search-parameters.xml");
       new XmlParser().setOutputStyle(OutputStyle.PRETTY).compose(s, searchParamsFeed);
       s.close();
@@ -2349,7 +2345,7 @@ public class Publisher implements URIResolver, SectionNumberer {
           + "do the expansions or find a terminology server that supports the same version of the value sets");
       for (ValueSet vs : page.getValueSets().values()) {
         if (vs.getUserData(ToolResourceUtilities.NAME_VS_USE_MARKER) != null) {
-          ValueSetExpansionOutcome vse = page.getWorkerContext().expandVS(vs, true);
+          ValueSetExpansionOutcome vse = page.getWorkerContext().expandVS(vs, true, false);
           if (vse.getValueset() != null) {
             ValueSet vsc = vs.copy();
             vsc.setText(null);
@@ -2381,6 +2377,7 @@ public class Publisher implements URIResolver, SectionNumberer {
       zip.addFileName("v3-codesystems.xml", page.getFolders().dstDir + "v3-codesystems.xml", false);
       zip.addFileName("conceptmaps.xml", page.getFolders().dstDir + "conceptmaps.xml", false);
       zip.addFileName("dataelements.xml", page.getFolders().dstDir + "dataelements.xml", false);
+      zip.addFileName("fhir-all-xsd.zip", page.getFolders().dstDir + "fhir-all-xsd.zip", false);
       zip.close();
 
       zip = new ZipGenerator(page.getFolders().dstDir + "definitions.json.zip");
@@ -2483,16 +2480,19 @@ public class Publisher implements URIResolver, SectionNumberer {
   }
 
   private void produceSpecMap() throws IOException {
-    JsonObject spec = new JsonObject();
-    spec.addProperty("version", page.getVersion());
-    spec.addProperty("build", page.getSvnRevision());
-    spec.addProperty("date", page.getGenDate().toString());
-    JsonObject paths = new JsonObject();
-    spec.add("paths", paths);
-    
+    SpecMapManager spm = new SpecMapManager(page.getVersion(), page.getSvnRevision(), page.getGenDate());
+        
     for (StructureDefinition sd : page.getWorkerContext().allStructures()) {
-      if (sd.hasUserData("path"))
-        paths.addProperty(sd.getUrl(), sd.getUserString("path").replace("\\", "/"));
+      if (sd.hasUserData("path")) {
+        spm.path(sd.getUrl(), sd.getUserString("path").replace("\\", "/"));
+        spm.target(sd.getUserString("path").replace("\\", "/"));
+      }
+    }
+    for (StructureDefinition sd : page.getWorkerContext().getExtensionDefinitions().values()) {
+      if (sd.hasUserData("path")) {
+        spm.path(sd.getUrl(), sd.getUserString("path").replace("\\", "/"));
+        spm.target(sd.getUserString("path").replace("\\", "/"));
+      }
     }
     for (String s : page.getCodeSystems().keySet()) {
       CodeSystem cs = page.getCodeSystems().get(s);
@@ -2500,26 +2500,48 @@ public class Publisher implements URIResolver, SectionNumberer {
         System.out.println("No code system for "+s);
     }
     for (CodeSystem cs : page.getCodeSystems().values()) {
-      if (cs != null && cs.hasUserData("path"))
-        paths.addProperty(cs.getUrl(), cs.getUserString("path").replace("\\", "/"));
+      if (cs != null && cs.hasUserData("path")) {
+        spm.path(cs.getUrl(), cs.getUserString("path").replace("\\", "/"));
+        spm.target(cs.getUserString("path").replace("\\", "/"));      
+      }
     }
     for (ValueSet vs : page.getValueSets().values()) {
-      if (vs.hasUserData("path"))
-        paths.addProperty(vs.getUrl(), vs.getUserString("path").replace("\\", "/"));
+      if (vs.hasUserData("path")) {
+        spm.path(vs.getUrl(), vs.getUserString("path").replace("\\", "/"));
+        spm.target(vs.getUserString("path").replace("\\", "/"));      
+      }
     }
     for (ConceptMap cm : page.getConceptMaps().values()) {
-      if (cm.hasUserData("path"))
-        paths.addProperty(cm.getUrl(), cm.getUserString("path").replace("\\", "/"));
+      if (cm.hasUserData("path")) {
+        spm.path(cm.getUrl(), cm.getUserString("path").replace("\\", "/"));
+        spm.target(cm.getUserString("path").replace("\\", "/"));      
+      }
+    }
+    for (String s : page.getDefinitions().getPageTitles().keySet()) {
+      spm.page(s, page.getDefinitions().getPageTitles().get(s));      
+    }
+    for (String n : page.getIni().getPropertyNames("pages")) {
+      spm.target(n);      
+    }
+    for (ResourceDefn rd : page.getDefinitions().getResources().values()) {
+      spm.target(rd.getName().toLowerCase()+".html");
+      spm.target(rd.getName().toLowerCase()+"-definitions.html");
+      spm.target(rd.getName().toLowerCase()+"-mappings.html");
+      spm.target(rd.getName().toLowerCase()+"-examples.html");
+      spm.target(rd.getName().toLowerCase()+"-profiles.html");
+      if (!rd.getOperations().isEmpty())
+        spm.target(rd.getName().toLowerCase()+"-operations.html");
+      for (Example ex : rd.getExamples()) {
+        ImplementationGuideDefn ig = ex.getIg() == null ? null : page.getDefinitions().getIgs().get(ex.getIg());
+        String prefix = (ig == null || ig.isCore()) ? "" : ig.getCode() + "/";
+        spm.target(prefix+ex.getTitle()+".html");
+      }
     }
 
-    JsonObject maps = new JsonObject();
-    spec.add("maps", maps);      
-    for (String url : page.getDefinitions().getMapTypes().keySet()) {
-      maps.addProperty(url, page.getDefinitions().getMapTypes().get(url).getPreamble());
-    }
-    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    String json = gson.toJson(spec);
-    TextFile.stringToFile(json, page.getFolders().dstDir + "spec.internals");
+//    for (String url : page.getDefinitions().getMapTypes().keySet()) {
+//      spm.map(url, page.getDefinitions().getMapTypes().get(url).getPreamble());
+//    }
+    spm.save(page.getFolders().dstDir + "spec.internals");
   }
 
   private void checkStructureDefinitions(Bundle bnd) {
@@ -2658,9 +2680,9 @@ public class Publisher implements URIResolver, SectionNumberer {
   }
 
   private void produceComparisons() throws Exception {
-    for (String n : page.getIni().getPropertyNames("comparisons")) {
-      produceComparison(n);
-    }
+//    for (String n : page.getIni().getPropertyNames("comparisons")) {
+//      produceComparison(n);
+//    }
   }
 
   private void produceComparison(String n) throws Exception {
@@ -2892,14 +2914,18 @@ public class Publisher implements URIResolver, SectionNumberer {
   private void addSearchParams(Bundle bundle, ResourceDefn rd) throws Exception {
     if (rd.getConformancePack() == null) {
       for (SearchParameterDefn spd : rd.getSearchParams().values()) {
-        StructureDefinition p = new StructureDefinition();
-        p.setFhirVersion(page.getVersion());
-        p.setKind(StructureDefinitionKind.RESOURCE);
-        p.setAbstract(true);
-        p.setPublisher("Health Level Seven International (" + rd.getWg() + ")");
-        p.setName(rd.getName());
-        p.addContact().addTelecom().setSystem(ContactPointSystem.OTHER).setValue("http://hl7.org/fhir");
-        SearchParameter sp = new ProfileGenerator(page.getDefinitions(), page.getWorkerContext(), page, page.getGenDate(), page.getVersion(), dataElements, fpUsages).makeSearchParam(p, rd.getName()+"-"+spd.getCode(), rd.getName(), spd);
+        if (spd.getResource() == null) {
+          StructureDefinition p = new StructureDefinition();
+          p.setFhirVersion(page.getVersion());
+          p.setKind(StructureDefinitionKind.RESOURCE);
+          p.setAbstract(true);
+          p.setPublisher("Health Level Seven International (" + rd.getWg() + ")");
+          p.setName(rd.getName());
+          p.addContact().addTelecom().setSystem(ContactPointSystem.OTHER).setValue("http://hl7.org/fhir");
+          SearchParameter sp = new ProfileGenerator(page.getDefinitions(), page.getWorkerContext(), page, page.getGenDate(), page.getVersion(), dataElements, fpUsages).makeSearchParam(p, rd.getName()+"-"+spd.getCode(), rd.getName(), spd);
+          spd.setResource(sp);
+        }
+        SearchParameter sp = spd.getResource();
         bundle.addEntry().setResource(sp).setFullUrl(sp.getUrl());
       }
     } else
@@ -4557,7 +4583,7 @@ public class Publisher implements URIResolver, SectionNumberer {
     String mappingsList = mgen.getMappingsList();
 
     SvgGenerator svg = new SvgGenerator(page, "../");
-    String fn = ig.getCode()+File.separator+n;
+    String fn = ig.getPrefix()+File.separator+n;
     if (lm.hasResource())
       svg.generate(lm.getResource(), page.getFolders().dstDir + fn+".svg", "2");
     else
@@ -4949,135 +4975,16 @@ public class Publisher implements URIResolver, SectionNumberer {
     }
   }
 
-  public static class MyErrorHandler implements ErrorHandler {
-
-    private boolean trackErrors;
-    private List<String> errors = new ArrayList<String>();
-    private Publisher pub;
-    private List<ValidationMessage> list;
-    private String path;
-
-    public MyErrorHandler(boolean trackErrors, Publisher pub, List<ValidationMessage> list, String path) {
-      this.trackErrors = trackErrors;
-      this.pub = pub;
-      this.list = list;
-      this.path = path;
-    }
-
-    @Override
-    public void error(SAXParseException arg0) throws SAXException {
-      if (trackErrors) {
-        list.add(new ValidationMessage(Source.InstanceValidator, IssueType.STRUCTURE, arg0.getLineNumber(), arg0.getColumnNumber(), path == null ? arg0.getSystemId() : path, arg0.getMessage(), IssueSeverity.ERROR));
-        pub.logError("error: " + arg0.toString(), LogMessageType.Error);
-        errors.add(arg0.toString());
-      }
-
-    }
-
-    @Override
-    public void fatalError(SAXParseException arg0) throws SAXException {
-      list.add(new ValidationMessage(Source.InstanceValidator, IssueType.STRUCTURE, arg0.getLineNumber(), arg0.getColumnNumber(), path == null ? arg0.getSystemId() : path, arg0.getMessage(), IssueSeverity.FATAL));
-      pub.logError("fatal error: " + arg0.toString(), LogMessageType.Error);
-    }
-
-    @Override
-    public void warning(SAXParseException arg0) throws SAXException {
-      list.add(new ValidationMessage(Source.InstanceValidator, IssueType.STRUCTURE, arg0.getLineNumber(), arg0.getColumnNumber(), path == null ? arg0.getSystemId() : path, arg0.getMessage(), IssueSeverity.WARNING));
-      // System.out.println("warning: " + arg0.toString());
-
-    }
-
-    public List<String> getErrors() {
-      return errors;
-    }
-
-    public String getPath() {
-      return path;
-    }
-
-    public void setPath(String path) {
-      this.path = path;
-    }
-
-
-  }
-
-  public static class MyResourceResolver implements LSResourceResolver {
-
-    private String dir;
-
-    public MyResourceResolver(String dir) {
-      this.dir = dir;
-    }
-
-    @Override
-    public LSInput resolveResource(final String type, final String namespaceURI, final String publicId, String systemId, final String baseURI) {
-      // System.out.println(type+", "+namespaceURI+", "+publicId+", "+systemId+", "+baseURI);
-      try {
-        if (!new CSFile(dir + systemId).exists())
-          return null;
-        return new SchemaInputSource(new CSFileInputStream(new CSFile(dir + systemId)), publicId, systemId, namespaceURI);
-      } catch (Exception e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-        return null;
-      }
-    }
-  }
-
-  static final String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
-  static final String W3C_XML_SCHEMA = "http://www.w3.org/2001/XMLSchema";
-  static final String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";
-
-
-  private void checkBySchema(String fileToCheck, String[] schemaSource) throws Exception {
-    StreamSource[] sources = new StreamSource[schemaSource.length];
-    int i = 0;
-    for (String s : schemaSource) {
-      sources[i] = new StreamSource(new CSFileInputStream(s));
-      i++;
-    }
-    SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-    schemaFactory.setErrorHandler(new MyErrorHandler(false, this, page.getValidationErrors(), null));
-    schemaFactory.setResourceResolver(new MyResourceResolver(page.getFolders().dstDir));
-    Schema schema = schemaFactory.newSchema(sources);
-
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    factory.setNamespaceAware(true);
-    factory.setValidating(false);
-    factory.setSchema(schema);
-    DocumentBuilder builder = factory.newDocumentBuilder();
-    MyErrorHandler err = new MyErrorHandler(true, this, page.getValidationErrors(), fileToCheck);
-    builder.setErrorHandler(err);
-    builder.parse(new CSFileInputStream(new CSFile(fileToCheck)));
-    if (err.getErrors().size() > 0)
-      throw new Exception("File " + fileToCheck + " failed schema validation");
-  }
-
-
   private void validationProcess() throws Exception {
-    validateXml();
-    miscValidation();
-  }
-
-  private void validateXml() throws Exception {
     if (buildFlags.get("all") && isGenerate)
       produceCoverageWarnings();
-    page.clean();
-    page.log("Validating XML", LogMessageType.Process);
-    page.log(".. Loading schemas", LogMessageType.Process);
-    StreamSource[] sources = new StreamSource[1];
-    sources[0] = new StreamSource(new CSFileInputStream(page.getFolders().dstDir + "fhir-all.xsd"));
-    SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-    schemaFactory.setErrorHandler(new MyErrorHandler(false, this, page.getValidationErrors(), null));
-    schemaFactory.setResourceResolver(new MyResourceResolver(page.getFolders().dstDir));
-    Schema schema = schemaFactory.newSchema(sources);
-    InstanceValidator validator = new InstanceValidator(page.getWorkerContext());
-    validator.setSuppressLoincSnomedMessages(true);
-    validator.setResourceIdRule(IdStatus.REQUIRED);
-    validator.setBestPracticeWarningLevel(BestPracticeWarningLevel.Warning);
-    page.log(".... done", LogMessageType.Process);
 
+    page.clean();
+    page.log("Validating Examples", LogMessageType.Process);
+    ExampleInspector ei = new ExampleInspector(page.getWorkerContext(), page, page.getFolders().dstDir, Utilities.path(page.getFolders().rootDir, "tools", "schematron"), page.getValidationErrors(), page.getDefinitions().getResources());
+    page.log(".. Loading", LogMessageType.Process);
+    ei.prepare();
+    
     for (String rname : page.getDefinitions().sortedResourceNames()) {
       ResourceDefn r = page.getDefinitions().getResources().get(rname);
       if (wantBuild(rname)) {
@@ -5086,19 +4993,15 @@ public class Publisher implements URIResolver, SectionNumberer {
           ImplementationGuideDefn ig = e.getIg() == null ? null : page.getDefinitions().getIgs().get(e.getIg());
           if (ig != null)
             n = ig.getCode()+File.separator+n;
-          logError(" ...validate " + n, LogMessageType.Process);
-          validateXmlFile(schema, n, validator, null);
-          validateJsonFile(n, validator, null);
-          validateTurtleFile(n, validator, null);
+          ei.validate(n);
         }
-        // todo-profile: how this works has to change (to use profile tag)
+
         for (Profile e : r.getConformancePackages()) {
           for (Example en : e.getExamples()) {
             ImplementationGuideDefn ig = en.getIg() == null ? null : page.getDefinitions().getIgs().get(en.getIg());
             String prefix = (ig == null || ig.isCore()) ? "" : ig.getCode()+File.separator;
             String n = prefix+Utilities.changeFileExt(en.getTitle(), "");
-            page.log(" ...validate " + n+" ("+e.getTitle()+")", LogMessageType.Process);
-            validateXmlFile(schema, n, validator, e.getProfiles().get(0).getResource()); // validates the example against it's base definitions
+            ei.validate(n, e.getProfiles().get(0).getResource());
           }
         }
       }
@@ -5108,59 +5011,33 @@ public class Publisher implements URIResolver, SectionNumberer {
       String prefix = (ig == null || ig.isCore()) ? "" : ig.getCode()+File.separator;
       for (Example ex : ig.getExamples()) {
         String n = ex.getTitle();
-        logError(" ...validate " + prefix+n, LogMessageType.Process);
-        validateXmlFile(schema, prefix+n, validator, null);
+        ei.validate(prefix+n);
       }
       for (Profile pck : ig.getProfiles()) {
         for (Example en : pck.getExamples()) {
-          page.log(" ...validate " + prefix+en.getTitle()+" ("+pck.getTitle()+")", LogMessageType.Process);
-          validateXmlFile(schema, prefix+Utilities.changeFileExt(en.getTitle(), ""), validator, pck.getProfiles().get(0).getResource()); // validates the example against it's base definitions
+          ei.validate(prefix+Utilities.changeFileExt(en.getTitle(), ""), pck.getProfiles().get(0).getResource());
         }
       }
     }
 
     if (buildFlags.get("all")) {
-      // todo-profile: how this works has to change (to use profile tag)
-//      for (String n : page.getDefinitions().getProfiles().keySet()) {
-//        page.log(" ...profile " + n, LogMessageType.Process);
-//        validateXmlFile(schema, n + ".profile", validator, null);
-//      }
-
-      logError(" ...validate " + "profiles-resources", LogMessageType.Process);
-      validateXmlFile(schema, "profiles-resources", validator, null);
-
-      logError(" ...validate " + "profiles-types", LogMessageType.Process);
-      validateXmlFile(schema, "profiles-types", validator, null);
-
-      logError(" ...validate " + "profiles-others", LogMessageType.Process);
-      validateXmlFile(schema, "profiles-others", validator, null);
-
-      logError(" ...validate " + "search-parameters", LogMessageType.Process);
-      validateXmlFile(schema, "search-parameters", validator, null);
-
-      logError(" ...validate " + "extension-definitions", LogMessageType.Process);
-      validateXmlFile(schema, "extension-definitions", validator, null);
-
-      logError(" ...validate " + "valuesets", LogMessageType.Process);
-      validateXmlFile(schema, "valuesets", validator, null);
-
-      logError(" ...validate " + "dataelements", LogMessageType.Process);
-      validateXmlFile(schema, "dataelements", validator, null);
-
-      logError(" ...validate " + "conceptmaps", LogMessageType.Process);
-      validateXmlFile(schema, "conceptmaps", validator, null);
-
-      logError(" ...validate " + "v2-tables", LogMessageType.Process);
-      validateXmlFile(schema, "v2-tables", validator, null);
-      logError(" ...validate " + "v3-codesystems", LogMessageType.Process);
-      validateXmlFile(schema, "v3-codesystems", validator, null);
+      ei.validate("profiles-resources");
+      ei.validate("profiles-types");
+      ei.validate("profiles-others");
+      ei.validate("search-parameters");
+      ei.validate("extension-definitions");
+      ei.validate("valuesets");
+      ei.validate("dataelements");
+      ei.validate("conceptmaps");
+      ei.validate("v2-tables");
+      ei.validate("v3-codesystems");
     }
+    
     page.saveSnomed();
     page.getWorkerContext().saveCache();
 
-    logError("Summary: Errors="+Integer.toString(errorCount)+", Warnings="+Integer.toString(warningCount)+", Hints="+Integer.toString(informationCount), LogMessageType.Error);
-    if (errorCount > 0)
-      throw new EValidationFailed("Resource Examples failed instance validation");
+    ei.summarise();
+    miscValidation();
   }
 
   private void miscValidation() throws Exception {
@@ -5176,62 +5053,6 @@ public class Publisher implements URIResolver, SectionNumberer {
           //              LogMessageType.Warning);
           page.getValidationErrors().add(
               new ValidationMessage(Source.Publisher, IssueType.INFORMATIONAL, -1, -1, rn + "." + sp.getCode(), "Search Parameter '" + rn + "." + sp.getCode() + "' had no found values in any example. Consider reviewing the path (" + sp.getXPath() + ")", IssueSeverity.INFORMATION/*WARNING*/));
-        }
-      }
-    }
-  }
-
-  private void listCollections1(List<String> list) {
-    list.add("profiles-types");
-    list.add("profiles-resources");
-    list.add("profiles-others");
-    list.add("extension-definitions");
-  }
-  private void listCollections2(List<String> list) {
-    list.add("search-parameters");
-    list.add("v2-tables");
-    list.add("v3-codesystems");
-    list.add("conceptmaps");
-  }
-
-  private void listCollections3(List<String> list) {
-    list.add("valuesets");
-  }
-
-  private void listExamples(List<String> list) {
-    for (String rname : page.getDefinitions().sortedResourceNames()) {
-      ResourceDefn r = page.getDefinitions().getResources().get(rname);
-      if (wantBuild(rname)) {
-        for (Example e : r.getExamples()) {
-          String n = e.getTitle();
-          ImplementationGuideDefn ig = e.getIg() == null ? null : page.getDefinitions().getIgs().get(e.getIg());
-          if (ig != null)
-            n = ig.getCode()+File.separator+n;
-          list.add(n);
-        }
-        // todo-profile: how this works has to change (to use profile tag)
-        for (Profile e : r.getConformancePackages()) {
-          for (Example en : e.getExamples()) {
-            ImplementationGuideDefn ig = en.getIg() == null ? null : page.getDefinitions().getIgs().get(en.getIg());
-            String prefix = (ig == null || ig.isCore()) ? "" : ig.getCode()+File.separator;
-            String n = prefix+Utilities.changeFileExt(en.getTitle(), "");
-            list.add(n);
-          }
-        }
-      }
-    }
-
-    for (ImplementationGuideDefn ig : page.getDefinitions().getSortedIgs()) {
-      String prefix = (ig == null || ig.isCore()) ? "" : ig.getCode()+File.separator;
-      for (Example ex : ig.getExamples()) {
-        String n = ex.getTitle();
-        logError(" ...validate " + prefix+n, LogMessageType.Process);
-        list.add(prefix+n);
-      }
-      for (Profile pck : ig.getProfiles()) {
-        for (Example en : pck.getExamples()) {
-          page.log(" ...validate " + prefix+en.getTitle()+" ("+pck.getTitle()+")", LogMessageType.Process);
-          list.add(prefix+Utilities.changeFileExt(en.getTitle(), ""));
         }
       }
     }
@@ -5258,223 +5079,7 @@ public class Publisher implements URIResolver, SectionNumberer {
     }
   }
 
-  private void validateXmlFile(Schema schema, String n, InstanceValidator validator, StructureDefinition profile) throws Exception {
-    char sc = File.separatorChar;
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    factory.setNamespaceAware(true);
-    factory.setValidating(false);
-    factory.setSchema(schema);
-    DocumentBuilder builder = factory.newDocumentBuilder();
-    MyErrorHandler err = new MyErrorHandler(true, this, page.getValidationErrors(), n);
-    builder.setErrorHandler(err);
-    Document doc = builder.parse(new CSFileInputStream(new CSFile(page.getFolders().dstDir + n + ".xml")));
-    Element root = doc.getDocumentElement();
-    errorCount = errorCount + err.getErrors().size();
 
-    String sch = "fhir-invariants.sch";
-
-    validateBySchematron(n, sch);
-    if (profile != null && new File(Utilities.path(page.getFolders().dstDir, profile.getId()+".sch")).exists()) {
-      validateBySchematron(n, profile.getId()+".sch");
-    }
-
-    // now, finally, we validate the resource ourselves.
-    // the build tool validation focuses on codes and identifiers
-    List<ValidationMessage> issues = new ArrayList<ValidationMessage>();
-    validator.validate(issues, root);
-//    System.out.println("  -x- "+validator.reportTimes());
-    if (profile != null && VALIDATE_BY_PROFILE) {
-      validator.validate(issues, root, profile);
-      System.out.println("  -- "+validator.reportTimes());
-    }
-    for (ValidationMessage m : issues) {
-      if (!m.getLevel().equals(IssueSeverity.INFORMATION) && !m.getLevel().equals(IssueSeverity.WARNING)) {
-        m.setMessage(n+":: "+m.getLocation()+": "+m.getMessage());
-        page.getValidationErrors().add(m);
-      }
-      if (m.getLevel() == IssueSeverity.WARNING)
-        warningCount++;
-      else if (m.getLevel() == IssueSeverity.INFORMATION)
-        informationCount++;
-      else
-        errorCount++;
-    }
-  }
-
-  private void validateJsonFile(String n, InstanceValidator validator, StructureDefinition profile) throws Exception {
-    List<ValidationMessage> issues = new ArrayList<ValidationMessage>();
-
-//    String source = TextFile.fileToString(Utilities.path(page.getFolders().dstDir, "fhir.schema.json"));
-//    JSONObject rawSchema = new JSONObject(new JSONTokener(source));
-//    try {
-//  org.everit.json.schema.Schema schema = SchemaLoader.load(rawSchema);
-//      schema.validate(new FileInputStream(Utilities.path(page.getFolders().dstDir, n+".json")));
-//    } catch (Exception e) {
-//      issues.add(new ValidationMessage(Source.Schema, IssueType.INVALID, "#", e.getMessage(), IssueSeverity.ERROR));
-//    }
-
-    validator.validate(issues, new FileInputStream(Utilities.path(page.getFolders().dstDir, n+".json")), FhirFormat.JSON);
-    if (profile != null)
-      validator.validate(issues, new FileInputStream(Utilities.path(page.getFolders().dstDir, n+".json")), FhirFormat.JSON, profile);
-    
-    for (ValidationMessage m : issues) {
-      if (!m.getLevel().equals(IssueSeverity.INFORMATION) && !m.getLevel().equals(IssueSeverity.WARNING))
-        logError("  " + m.summary(), typeforSeverity(m.getLevel()));
-
-      if (m.getLevel() == IssueSeverity.WARNING)
-        warningCount++;
-      else if (m.getLevel() == IssueSeverity.INFORMATION)
-        informationCount++;
-      else
-        errorCount++;
-    }
-  }
-
-  private void validateTurtleFile(String n, InstanceValidator validator, StructureDefinition profile) throws Exception {
-    // instance validator
-    File f = new File(Utilities.path(page.getFolders().dstDir, n + ".ttl"));
-    if (!f.exists())
-      return;
-
-//  first, ShEx validation
-    ShExValidator shexval = new ShExValidator();
-    shexval.validate(Utilities.path(page.getFolders().dstDir, n + ".ttl"), Utilities.path(page.getFolders().dstDir, "fhir.shex"));
-    
-    List<ValidationMessage> issues = new ArrayList<ValidationMessage>();
-    validator.validate(issues, new FileInputStream(f), FhirFormat.TURTLE);
-    
-//    
- 
-//    
-//    com.google.gson.JsonParser parser = new com.google.gson.JsonParser();
-//    JsonObject obj = parser.parse(TextFile.fileToString()).getAsJsonObject();
-//
-//    // the build tool validation focuses on codes and identifiers
-//    List<ValidationMessage> issues = new ArrayList<ValidationMessage>();
-//    validator.validate(issues, obj);
-////    System.out.println("  -j- "+validator.reportTimes());
-//    // if (profile != null)
-//    // validator.validateInstanceByProfile(issues, root, profile);
-//    for (ValidationMessage m : issues) {
-//      if (!m.getLevel().equals(IssueSeverity.INFORMATION) && !m.getLevel().equals(IssueSeverity.WARNING))
-//        logError("  " + m.summary(), typeforSeverity(m.getLevel()));
-//
-//      if (m.getLevel() == IssueSeverity.WARNING)
-//        warningCount++;
-//      else if (m.getLevel() == IssueSeverity.INFORMATION)
-//        informationCount++;
-//      else
-//        errorCount++;
-//    }
-  }
-
-  private void validateBySchematron(String n, String sch) throws IOException, ParserConfigurationException, SAXException, FileNotFoundException {
-    DocumentBuilderFactory factory;
-    DocumentBuilder builder;
-    Document doc;
-    File tmpTransform = Utilities.createTempFile("tmp", ".xslt");
-    File tmpOutput = Utilities.createTempFile("tmp", ".xml");
-    try {
-      Utilities.saxonTransform(Utilities.path(page.getFolders().rootDir, "tools", "schematron"), Utilities.path(page.getFolders().dstDir, sch),
-          Utilities.path(page.getFolders().rootDir, "tools", "schematron", "iso_svrl_for_xslt2.xsl"), tmpTransform.getAbsolutePath(), null);
-      Utilities.saxonTransform(Utilities.path(page.getFolders().rootDir, "tools", "schematron"), Utilities.path(page.getFolders().dstDir, n + ".xml"),
-          tmpTransform.getAbsolutePath(), tmpOutput.getAbsolutePath(), null);
-    } catch (Throwable t) {
-      //      throw new Exception("Error validating " + page.getFolders().dstDir + n + ".xml with schematrons", t);
-    }
-
-    factory = DocumentBuilderFactory.newInstance();
-    factory.setNamespaceAware(true);
-    builder = factory.newDocumentBuilder();
-    doc = builder.parse(new CSFileInputStream(tmpOutput.getAbsolutePath()));
-    NodeList nl = doc.getDocumentElement().getElementsByTagNameNS("http://purl.oclc.org/dsdl/svrl", "failed-assert");
-    if (nl.getLength() > 0) {
-      logError("Schematron Validation Failed for " + n + ".xml:", LogMessageType.Error);
-      for (int i = 0; i < nl.getLength(); i++) {
-        Element e = (Element) nl.item(i);
-        logError("  @" + e.getAttribute("location") + ": " + e.getTextContent(), LogMessageType.Error);
-        page.getValidationErrors().add(new ValidationMessage(Source.InstanceValidator, IssueType.STRUCTURE, -1, -1, n+":"+e.getAttribute("location"), e.getTextContent(), IssueSeverity.ERROR));
-        errorCount++;
-      }
-    }
-  }
-
-  StringBuilder vallog = new StringBuilder();
-
-  private void logError(String string, LogMessageType typeforSeverity) {
-    page.log(string, typeforSeverity);
-    vallog.append(string+"\r\n");
-    try {
-      TextFile.stringToFileNoPrefix(vallog.toString(), "validation.log");
-    } catch (Exception e) {
-    }
-  }
-
-  private LogMessageType typeforSeverity(IssueSeverity level) {
-    switch (level) {
-    case ERROR:
-      return LogMessageType.Error;
-    case FATAL:
-      return LogMessageType.Error;
-    case INFORMATION:
-      return LogMessageType.Hint;
-    case WARNING:
-      return LogMessageType.Warning;
-    default:
-      return LogMessageType.Error;
-    }
-  }
-
-  private void testSearchParameters(String filename) throws Exception {
-    // load the xml
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    factory.setNamespaceAware(true);
-    DocumentBuilder builder = factory.newDocumentBuilder();
-    Document xml = builder.parse(new CSFileInputStream(new CSFile(filename)));
-
-    if (xml.getDocumentElement().getNodeName().equals("Bundle")) {
-      // iterating the entries running xpaths takes too long. What we're going to do
-      // is list all the resources, and then evaluate all the paths...
-      Set<String> names = new HashSet<String>();
-      Element child = XMLUtil.getFirstChild(xml.getDocumentElement());
-      while (child != null) {
-        if (child.getNodeName().equals("entry")) {
-          Element grandchild = XMLUtil.getFirstChild(child);
-          while (grandchild != null) {
-            if (grandchild.getNodeName().equals("resource"))
-              names.add(XMLUtil.getFirstChild(grandchild).getNodeName());
-            grandchild = XMLUtil.getNextSibling(grandchild);
-          }
-        }
-        child = XMLUtil.getNextSibling(child);
-      }
-      for (String name : names)
-        testSearchParameters(xml.getDocumentElement(), name, true);
-    } else {
-      testSearchParameters(xml.getDocumentElement(), xml.getDocumentElement().getNodeName(), false);
-    }
-  }
-
-  private void testSearchParameters(Element e, String name, boolean inBundle) throws Exception {
-    ResourceDefn r = page.getDefinitions().getResourceByName(name);
-    for (SearchParameterDefn sp : r.getSearchParams().values()) {
-      if (sp.getXPath() != null) {
-        try {
-          NamespaceContext context = new NamespaceContextMap("f", "http://hl7.org/fhir", "h", "http://www.w3.org/1999/xhtml");
-          XPathFactory factory = XPathFactory.newInstance();
-          XPath xpath = factory.newXPath();
-          xpath.setNamespaceContext(context);
-          XPathExpression expression;
-          expression = inBundle ? xpath.compile("/f:Bundle/f:entry/f:resource/"+sp.getXPath()) : xpath.compile("/"+sp.getXPath());
-          NodeList resultNodes = (NodeList) expression.evaluate(e, XPathConstants.NODESET);
-          if (resultNodes.getLength() > 0)
-            sp.setWorks(true);
-        } catch (Exception e1) {
-          page.log("Xpath \"" + sp.getXPath() + "\" execution failed: " + e1.getMessage(), LogMessageType.Error);
-        }
-      }
-    }
-  }
 
   private void compareXml(String t, String n, String fn1, String fn2) throws Exception {
     char sc = File.separatorChar;
@@ -5670,7 +5275,7 @@ public class Publisher implements URIResolver, SectionNumberer {
       } catch (Exception e) {
         throw new Exception("Error processing "+n+".html: "+e.getMessage(), e);
       }
-      sf = addSectionNumbers(n + ".html", "template-valueset", sf, Utilities.oidTail(ToolingExtensions.getOID(vs)), ig == null ? 0 : 1, null, ig);
+      sf = addSectionNumbers(n + ".html", "template-valueset", sf, Utilities.oidTail(ValueSetUtilities.getOID(vs)), ig == null ? 0 : 1, null, ig);
 
       TextFile.stringToFile(sf, page.getFolders().dstDir + n + ".html");
       try {
@@ -5736,7 +5341,7 @@ public class Publisher implements URIResolver, SectionNumberer {
       } catch (Exception e) {
         throw new Exception("Error processing "+n+".html: "+e.getMessage(), e);
       }
-      sf = addSectionNumbers(n + ".html", "template-codesystem", sf, Utilities.oidTail(ToolingExtensions.getOID(cs)), ig == null ? 0 : 1, null, ig);
+      sf = addSectionNumbers(n + ".html", "template-codesystem", sf, Utilities.oidTail(CodeSystemUtilities.getOID(cs)), ig == null ? 0 : 1, null, ig);
 
       TextFile.stringToFile(sf, page.getFolders().dstDir + n + ".html");
       try {
@@ -5790,12 +5395,11 @@ public class Publisher implements URIResolver, SectionNumberer {
         vs.getText().setDiv(new XhtmlNode(NodeType.Element));
         vs.getText().getDiv().setName("div");
       }
-      if (ToolingExtensions.getOID(vs) == null)
+      if (ValueSetUtilities.getOID(vs) == null)
         throw new Exception("No OID on value set "+vs.getUrl());
 
       page.getValueSets().put(vs.getUrl(), vs);
       page.getDefinitions().getValuesets().put(vs.getUrl(), vs);
-
     }
     for (ValueSet vs : page.getDefinitions().getBoundValueSets().values()) {
       page.getVsValidator().validate(page.getValidationErrors(), vs.getUserString("filename"), vs, true, false);
@@ -5820,39 +5424,16 @@ public class Publisher implements URIResolver, SectionNumberer {
     }
   }
 
-  private void generateConceptMapV2(ValueSet vs, String filename, String src, String srcCS) throws Exception {
-    ConceptMap cm = new ConceptMap();
-    cm.setId("v2-"+FormatUtilities.makeId(Utilities.fileTitle(filename)));
-    cm.setUrl("http://hl7.org/fhir/ConceptMap/v2-" + Utilities.fileTitle(filename));
-    // no version?? vs.setVersion(...
-    cm.setName("v2 map for " + vs.getName());
-    cm.setPublisher("HL7 (FHIR Project)");
-    for (ValueSetContactComponent cs : vs.getContact()) {
-      ConceptMapContactComponent cd = cm.addContact();
-      cd.setName(cs.getName());
-      for (ContactPoint ccs : cs.getTelecom())
-        cd.addTelecom(ccs.copy());
+  private void generateConceptMaps() throws Exception {
+    for (ConceptMap cm : page.getConceptMaps().values()) {
+      if (cm.hasUserData("generate")) {
+        generateConceptMap(cm);
+      }
     }
-    cm.setCopyright(vs.getCopyright());
-
-    Set<String> tbls = new HashSet<String>();
-    cm.setStatus(ConformanceResourceStatus.DRAFT); // until we publish
-    // DSTU, then .review
-    cm.setDate(page.getGenDate().getTime());
-    cm.setSource(Factory.makeReference(src));
-    cm.setTarget(Factory.makeReference(vs.getUserString("v2map")));
-//    for (ConceptDefinitionComponent c : vs.getCodeSystem().getConcept()) {
-//      genV2MapItems(vs, srcCS, cm, tbls, c);
-//    }
-    StringBuilder b = new StringBuilder();
-    boolean first = false;
-    for (String s : tbls) {
-      if (first)
-        b.append(", ");
-      first = true;
-      b.append(s);
-    }
-    cm.setDescription("v2 Map (" + b.toString() + ")");
+    
+  }
+  private void generateConceptMap(ConceptMap cm) throws Exception {
+    String filename = cm.getUserString("path");
     NarrativeGenerator gen = new NarrativeGenerator("", "", page.getWorkerContext()).setTooCostlyNote(PageProcessor.TOO_MANY_CODES_TEXT);
     gen.generate(cm);
 
@@ -5888,210 +5469,6 @@ public class Publisher implements URIResolver, SectionNumberer {
     page.getEpub().registerFile(n + ".html", cm.getName(), EPubManager.XHTML_TYPE, false);
   }
 
-  private ConceptMapGroupComponent getGroup(ConceptMap map, String srcs, String tgts) {
-    for (ConceptMapGroupComponent grp : map.getGroup()) {
-      if (grp.getSource().equals(srcs) && grp.getTarget().equals(tgts))
-        return grp;
-    }
-    ConceptMapGroupComponent grp = map.addGroup(); 
-    grp.setSource(srcs);
-    grp.setTarget(tgts);
-    return grp;
-  }
-
-  private void genV2MapItems(ValueSet vs, String srcCS, ConceptMap cm, Set<String> tbls, ConceptDefinitionComponent c) throws Exception {
-    if (!Utilities.noString(c.getUserString("v2"))) {
-      for (String m : c.getUserString("v2").split(",")) {
-        SourceElementComponent cc = new ConceptMap.SourceElementComponent();
-        cc.setCode(c.getCode());
-        TargetElementComponent map = new ConceptMap.TargetElementComponent();
-        cc.getTarget().add(map);
-        String[] n = m.split("\\(");
-        getGroup(cm, srcCS, "http://hl7.org/fhir/v2/" + n[0].substring(1)).getElement().add(cc);
-        if (n.length > 1)
-          map.setComments(n[1].substring(0, n[1].length() - 1));
-        n = n[0].split("\\.");
-        tbls.add(n[0].substring(1));
-        map.setCode(n[1].trim());
-        if (n[0].charAt(0) == '=')
-          map.setEquivalence(ConceptMapEquivalence.EQUAL);
-        if (n[0].charAt(0) == '~')
-          map.setEquivalence(ConceptMapEquivalence.EQUIVALENT);
-        if (n[0].charAt(0) == '>')
-          map.setEquivalence(ConceptMapEquivalence.WIDER);
-        if (n[0].charAt(0) == '<') {
-          map.setEquivalence(ConceptMapEquivalence.NARROWER);
-          if (!map.hasComments())
-            throw new Exception("Missing comments for narrower match on "+vs.getName()+"/"+c.getCode());
-        }
-      }
-    }
-    for (ConceptDefinitionComponent cc : c.getConcept()) {
-      genV2MapItems(vs, srcCS, cm, tbls, cc);
-    }
-  }
-
-  private void generateConceptMapV3(ValueSet vs, String filename, String src, String srcCS) throws Exception {
-    ConceptMap cm = new ConceptMap();
-    cm.setId("v3-"+FormatUtilities.makeId(Utilities.fileTitle(filename)));
-    cm.setUrl("http://hl7.org/fhir/ConceptMap/v3-" + Utilities.fileTitle(filename));
-    // no version?? vs.setVersion(...
-    cm.setName("v3 map for " + vs.getName());
-    cm.setPublisher("HL7 (FHIR Project)");
-    for (ValueSetContactComponent cs : vs.getContact()) {
-      ConceptMapContactComponent cd = cm.addContact();
-      cd.setName(cs.getName());
-      for (ContactPoint ccs : cs.getTelecom())
-        cd.addTelecom(ccs.copy());
-    }
-    cm.setCopyright(vs.getCopyright());
-
-    Set<String> tbls = new HashSet<String>();
-    cm.setStatus(ConformanceResourceStatus.DRAFT); // until we publish
-    // DSTU, then .review
-    cm.setDate(page.getGenDate().getTime());
-    cm.setSource(Factory.makeReference(src));
-    cm.setTarget(Factory.makeReference("http://hl7.org/fhir/ValueSet/v3-"+vs.getUserString("v3map")));
-//    for (ConceptDefinitionComponent c : vs.getCodeSystem().getConcept()) {
-//      genV3MapItems(vs, srcCS, cm, tbls, c);
-//    }
-    StringBuilder b = new StringBuilder();
-    boolean first = false;
-    for (String s : tbls) {
-      if (first)
-        b.append(", ");
-      first = true;
-      b.append(s);
-    }
-    cm.setDescription("v3 Map (" + b.toString() + ")");
-    NarrativeGenerator gen = new NarrativeGenerator("", "", page.getWorkerContext()).setTooCostlyNote(PageProcessor.TOO_MANY_CODES_TEXT);
-    gen.generate(cm);
-    IParser json = new JsonParser().setOutputStyle(OutputStyle.PRETTY);
-    FileOutputStream s = new FileOutputStream(page.getFolders().dstDir + Utilities.changeFileExt(filename, "-map-v3.json"));
-    json.compose(s, cm);
-    s.close();
-    json = new JsonParser().setOutputStyle(OutputStyle.CANONICAL);
-    s = new FileOutputStream(page.getFolders().dstDir + Utilities.changeFileExt(filename, "-map-v3.canonical.json"));
-    json.compose(s, cm);
-    s.close();
-    String n = Utilities.changeFileExt(filename, "-map-v3");
-    jsonToXhtml(n, cm.getName(), resource2Json(cm), "conceptmap-instance", "Concept Map");
-    IParser xml = new XmlParser().setOutputStyle(OutputStyle.PRETTY);
-    s = new FileOutputStream(page.getFolders().dstDir + Utilities.changeFileExt(filename, "-map-v3.xml"));
-    xml.compose(s, cm);
-    s.close();
-    xml = new XmlParser().setOutputStyle(OutputStyle.CANONICAL);
-    s = new FileOutputStream(page.getFolders().dstDir + Utilities.changeFileExt(filename, "-map-v3.canonical.xml"));
-    xml.compose(s, cm);
-    s.close();
-    cloneToXhtml(n, cm.getName(), false, "conceptmap-instance", "Concept Map");
-
-    // now, we create an html page from the narrative
-    String narrative = new XhtmlComposer().setXmlOnly(true).compose(cm.getText().getDiv());
-    String html = TextFile.fileToString(page.getFolders().srcDir + "template-example.html").replace("<%example%>", narrative);
-    html = page.processPageIncludes(Utilities.changeFileExt(filename, "-map-v3.html"), html, "conceptmap-instance", null, null, null, "Concept Map", null);
-    TextFile.stringToFile(html, page.getFolders().dstDir + Utilities.changeFileExt(filename, "-map-v3.html"));
-
-    cm.setUserData("path", Utilities.changeFileExt(filename, "-map-v3.html"));
-    conceptMapsFeed.getEntry().add(new BundleEntryComponent().setResource(cm).setFullUrl(cm.getUrl()));
-    page.getConceptMaps().put(cm.getUrl(), cm);
-    page.getEpub().registerFile(n + ".html", cm.getName(), EPubManager.XHTML_TYPE, false);
-  }
-
-  private void genV3MapItems(ValueSet vs, String srcCS, ConceptMap cm, Set<String> tbls, ConceptDefinitionComponent c) throws Exception {
-    if (!Utilities.noString(c.getUserString("v3"))) {
-      for (String m : c.getUserString("v3").split(",")) {
-        SourceElementComponent cc = new SourceElementComponent();
-        cc.setCode(c.getCode());
-        TargetElementComponent map = new TargetElementComponent();
-        cc.getTarget().add(map);
-        String[] n = m.split("\\(");
-        if (n.length > 1)
-          map.setComments(n[1].substring(0, n[1].length() - 1));
-        n = n[0].split("\\.");
-        if (n.length != 2)
-          throw new Exception("Error processing v3 map value for "+vs.getName()+"."+c.getCode()+" '"+m+"' - format should be CodeSystem.code (comment) - the comment bit is optional");
-        String codesystem = n[0].substring(1);
-        getGroup(cm, srcCS, "http://hl7.org/fhir/v3/" + codesystem).getElement().add(cc);
-        if (n[0].charAt(0) == '=')
-          map.setEquivalence(ConceptMapEquivalence.EQUAL);
-        else if (n[0].charAt(0) == '~')
-          map.setEquivalence(ConceptMapEquivalence.EQUIVALENT);
-        else if (n[0].charAt(0) == '>') {
-          map.setEquivalence(ConceptMapEquivalence.NARROWER);
-          if (!map.hasComments())
-            throw new Exception("Missing comments for narrower match on "+vs.getName()+"/"+c.getCode());
-
-        } else if (n[0].charAt(0) == '<')
-          map.setEquivalence(ConceptMapEquivalence.WIDER);
-        else {
-          map.setEquivalence(ConceptMapEquivalence.EQUAL);
-          codesystem = n[0];
-        }
-        tbls.add(codesystem);
-        map.setCode(n[1]);
-      }
-    }
-    for (ConceptDefinitionComponent cc : c.getConcept()) {
-      genV3MapItems(vs, srcCS, cm, tbls, cc);
-    }
-  }
-
-  private void generateCodeSystemPart2(ValueSet vs) throws Exception {
-
-    if (!Utilities.noString(vs.getUserString("v2map")))
-      generateConceptMapV2(vs, vs.getId(), vs.getUrl(), "http://hl7.org/fhir/" + vs.getId());
-    if (!Utilities.noString(vs.getUserString("v3map")))
-      generateConceptMapV3(vs, vs.getId(), vs.getUrl(), "http://hl7.org/fhir/" + vs.getId());
-
-//    new NarrativeGenerator("", page.getWorkerContext()).generate(vs);
-//
-//      addToResourceFeed(vs, valueSetsFeed, vs.getId());
-//
-//      String sf;
-//      if (cd.hasInternalCodes() && cd.getReferredValueSet() != null)
-//        sf = page.processPageIncludes(filename, TextFile.fileToString(page.getFolders().srcDir + "template-tx.html"), "codeSystem", null, null, null, "Value Set");
-//      else {
-//        cd.getReferredValueSet().setUserData("filename", filename);
-//        sf = page.processPageIncludes(filename, TextFile.fileToString(page.getFolders().srcDir + "template-vs.html"), "codeSystem", null, cd.getReferredValueSet(), null, "Value Set");
-//      }
-//      if (cd.getVsOid() == null)
-//        throw new Error("no oid for value set "+vs.getName()+" ("+vs.getUrl()+")");
-//      sf = addSectionNumbers(filename + ".html", "template-valueset", sf, Utilities.oidTail(cd.getVsOid()));
-//      TextFile.stringToFile(sf, page.getFolders().dstDir + filename);
-//      String src = page.processPageIncludesForBook(filename, TextFile.fileToString(page.getFolders().srcDir + "template-tx-book.html"), "codeSystem", null);
-//      cachePage(filename, src, "Code System " + vs.getName());
-//
-//      IParser json = new JsonParser().setOutputStyle(OutputStyle.PRETTY);
-//      FileOutputStream s = new FileOutputStream(page.getFolders().dstDir + Utilities.changeFileExt(filename, ".json"));
-//      json.compose(s, vs);
-//      s.close();
-//      IParser xml = new XmlParser().setOutputStyle(OutputStyle.PRETTY);
-//      s = new FileOutputStream(page.getFolders().dstDir + Utilities.changeFileExt(filename, ".xml"));
-//      xml.compose(s, vs);
-//      s.close();
-//      cloneToXhtml(Utilities.fileTitle(filename), "Definition for Value Set" + vs.getName(), false, "valueset-instance", "Value Set");
-//      jsonToXhtml(Utilities.fileTitle(filename), "Definition for Value Set" + vs.getName(), resource2Json(vs), "valueset-instance", "Value Set");
-  }
-
-//  private void addCode(ValueSet vs, List<ConceptDefinitionComponent> list, DefinedCode c) {
-//    ConceptDefinitionComponent d = new ValueSet.ConceptDefinitionComponent();
-//    list.add(d);
-//    d.setCode(c.getCode());
-//    if (!Utilities.noString(c.getDisplay()))
-//      d.setDisplay(c.getDisplay());
-//    if (!Utilities.noString(c.getDefinition()))
-//      d.setDefinition(c.getDefinition());
-//    for (DefinedCode g : c.getChildCodes()) {
-//      addCode(vs, d.getConcept(), g);
-//    }
-//    for (String n : c.getLangs().keySet()) {
-//      ConceptDefinitionDesignationComponent designation = d.addDesignation();
-//      designation.setLanguage(n);
-//      designation.setValue(c.getLangs().get(n));
-//    }
-//  }
-
   public static Map<String, String> splitQuery(URL url) throws UnsupportedEncodingException {
     Map<String, String> query_pairs = new LinkedHashMap<String, String>();
     String query = url.getQuery();
@@ -6114,7 +5491,7 @@ public class Publisher implements URIResolver, SectionNumberer {
         page.log("unable to resolve "+params.get("identifier"), LogMessageType.Process);
         return null;
       }
-      vs = page.expandValueSet(vs);
+      vs = page.expandValueSet(vs, true);
       if (vs == null) {
         page.log("unable to expand "+params.get("identifier"), LogMessageType.Process);
         return null;

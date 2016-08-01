@@ -32,24 +32,28 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
-import org.hl7.fhir.dstu3.exceptions.FHIRFormatError;
+import org.hl7.fhir.dstu2.exceptions.FHIRFormatError;
 import org.hl7.fhir.dstu3.formats.IParser;
 import org.hl7.fhir.dstu3.formats.JsonParser;
 import org.hl7.fhir.dstu3.formats.XmlParser;
 import org.hl7.fhir.dstu3.model.CodeSystem;
+import org.hl7.fhir.dstu3.model.ConceptMap;
+import org.hl7.fhir.dstu3.model.DateTimeType;
 import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
 import org.hl7.fhir.dstu3.model.Enumerations.ConformanceResourceStatus;
 import org.hl7.fhir.dstu3.model.ValueSet;
+import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
+import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
 import org.hl7.fhir.igtools.spreadsheets.TabDelimitedSpreadSheet;
-import org.hl7.fhir.tools.converters.CodeSystemConvertor;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
@@ -64,14 +68,19 @@ public class BindingsParser {
   private BindingNameRegistry registry;
   private TabDelimitedSpreadSheet tabfmt;
   private Map<String, CodeSystem> codeSystems;
+  private Map<String, ConceptMap> maps;
+  private Calendar genDate;
 
-  public BindingsParser(InputStream file, String filename, String root, BindingNameRegistry registry, String version, Map<String, CodeSystem> codeSystems) {
+  public BindingsParser(InputStream file, String filename, String root, BindingNameRegistry registry, String version, Map<String, CodeSystem> codeSystems, Map<String, ConceptMap> maps, Calendar genDate) {
     this.file = file;
     this.filename = filename;
     this.root = root;
     this.registry = registry;
     this.version = version;
     this.codeSystems = codeSystems;
+    this.maps = maps;
+    this.genDate = genDate;
+    
     tabfmt = new TabDelimitedSpreadSheet();
     tabfmt.setFileName(filename, Utilities.changeFileExt(filename, ".sheet.txt"));
   }
@@ -146,6 +155,7 @@ public class BindingsParser {
         cd.getValueSet().setUserData("filename", "valueset-"+cd.getValueSet().getId());
         cd.getValueSet().setUserData("path", "valueset-"+cd.getValueSet().getId()+".html");
         cd.getValueSet().setName(cd.getName());
+        cd.getValueSet().setDateElement(new DateTimeType(genDate));
         cd.getValueSet().setStatus(ConformanceResourceStatus.DRAFT);
         cd.getValueSet().setDescription(sheet.getColumn(row, "Description"));
         if (!cd.getValueSet().hasDescription())
@@ -156,7 +166,7 @@ public class BindingsParser {
         if (cs == null)
           throw new Exception("Error parsing binding "+cd.getName()+": code list reference '"+ref+"' not resolved");
         tabfmt.sheet(ref.substring(1));
-        new CodeListToValueSetParser(cs, ref.substring(1), cd.getValueSet(), version, tabfmt, codeSystems).execute();
+        new CodeListToValueSetParser(cs, ref.substring(1), cd.getValueSet(), version, tabfmt, codeSystems, maps).execute(sheet.getColumn(row, "v2"), sheet.getColumn(row, "v3"));
       } else if (cd.getBinding() == BindingMethod.ValueSet) {
         if (ref.startsWith("http:")) {
           cd.setReference(sheet.getColumn(row, "Reference")); // will sort this out later
@@ -209,9 +219,9 @@ public class BindingsParser {
   private void touchVS(ValueSet vs) throws FHIRFormatError, URISyntaxException {
     ValueSetUtilities.makeShareable(vs);
 
-    ToolingExtensions.setOID(vs, "urn:oid:"+BindingSpecification.DEFAULT_OID_VS + vs.getId());
+    ValueSetUtilities.setOID(vs, "urn:oid:"+BindingSpecification.DEFAULT_OID_VS + vs.getId());
     if (vs.getUserData("cs") != null)
-      ToolingExtensions.setOID((CodeSystem) vs.getUserData("cs"), "urn:oid:"+BindingSpecification.DEFAULT_OID_CS + vs.getId());
+      CodeSystemUtilities.setOID((CodeSystem) vs.getUserData("cs"), "urn:oid:"+BindingSpecification.DEFAULT_OID_CS + vs.getId());
   }
 
   private ValueSet loadValueSet(String ref, String committee) throws Exception {

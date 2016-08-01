@@ -209,7 +209,7 @@ notes: do not list revision in the version
          <li><a href="conformance.html">Conformance</a></li>
          <li><a href="contract.html">Contract</a></li>
          <li><a href="device.html">Device</a></li>
-         <li><a href="diagnosticorder.html">DiagnosticOrder</a></li>
+         <li><a href="diagnosticrequest.html">DiagnosticRequest</a></li>
          <li><a href="eligibilityrequest.html">EligibilityRequest</a></li>
          <li><a href="eligibilityresponse.html">EligibilityResponse</a></li>
          <li><a href="explanationofbenefit.html">ExplanationOfBenefit</a></li>
@@ -423,7 +423,7 @@ notes: do not list revision in the version
         <li><a href="device.html">Device</a> - add status, manufactureDate</li>
         <li><a href="devicemetric.html">DeviceMetric</a> - rename operationalState to operationalStatus, add measurementMode, rename calibrationInfo to calibration, change color to an enumerations</li>
         <li><a href="deviceuserequest.html">DeviceUseRequest</a>/<a href="deviceusestatement.html">DeviceUseStatement</a> - change to bodySite = code or Reference(BodySite)</li>
-        <li><a href="diagnosticorder.html">DiagnosticOrder</a> - change to bodySite = code or Reference(BodySite)</li>
+        <li><a href="diagnosticrequest.html">DiagnosticRequest</a> - change to bodySite = code or Reference(BodySite)</li>
         <li><a href="diagnosticreport.html">DiagnosticReport</a> - add encounter</li>
         <li><a href="documentmanifest.html">DocumentManifest</a> - add options for how content is referred to </li>
         <li><a href="documentreference.html">DocumentReference</a> - add format, remove policyManager, make content : Attachment, and remove several related attributes, remove service reference and add context.practiceSetting, sourcePatientInfo, and related</li>
@@ -445,7 +445,7 @@ notes: do not list revision in the version
         <li><a href="medicationorder.html">MedicationOrder</a> - add note, change quantity to allow range, </li>
         <li><a href="medicationstatement.html">MedicationStatement</a> - add informationSource, status, dateAsserted, replace whenGiven with effective[x], remove device, add dosage.text</li>
         <li><a href="namingsystem.html">NamingSystem</a> - add date, publisher, </li>
-        <li><a href="nutritionorder.html">NutritionOrder</a> - extensive rewrite</li>
+        <li><a href="nutritionrequest.html">NutritionRequest</a> - extensive rewrite</li>
         <li><a href="observation.html">Observation</a> - change name to code, allow more types of value[x], change type of dataAbsentReason, change to bodySite = code or Reference(BodySite), allow identifier to repeat, add device, </li>
         <li><a href="operationdefinition.html">OperationDefinition</a> - change identifier to url, add useContext, change telecom to contact, change name to title, add reuqirements, idempotent, </li>
         <li><a href="operationoutcome.html">OperationOutcome</a> - change type of .issue.type</li>
@@ -538,7 +538,7 @@ notes: do not list revision in the version
         <li><a href="imagingobjectselection.html">ImagingObjectSelection</a></li>
         <li><a href="claim.html">InstitutionalClaim</a></li>
         <li><a href="namingsystem.html">NamingSystem</a></li>
-        <li><a href="nutritionorder.html">NutritionOrder</a></li>
+        <li><a href="nutritionrequest.html">NutritionRequest</a></li>
         <li><a href="operationdefinition.html">OperationDefinition</a></li>
         <li><a href="claim.html">OralHealthClaim</a></li>
         <li><a href="paymentnotice.html">PaymentNotice</a></li>
@@ -586,7 +586,7 @@ notes: do not list revision in the version
        <li>Significant rework for <a href="conceptmap.html">ConceptMap</a> so it can be used to map between structures as well as value sets</li>
        <li>Add <a href="detectedissue.html">Contraindication</a> and <a href="riskassessment.html">Risk Assessment</a> and added examples to other resources in support of these</li>
        <li>Add <a href="referralrequest.html">Referral Request</a></li>
-       <li>Add supportingInformation to <a href="diagnosticorder.html">DiagnosticOrder</a></li>
+       <li>Add supportingInformation to <a href="diagnosticrequest.html">DiagnosticRequest</a></li>
        <li>Add fulfills to <a href="encounter.html">Encounter</a></li>
        <li>Add date and age[x] to <a href="familymemberhistory.html">FamilyHistory</a></li>
        <li>Change cardinality of <a href="location.html">Location</a>.identifier to 0..*</li>

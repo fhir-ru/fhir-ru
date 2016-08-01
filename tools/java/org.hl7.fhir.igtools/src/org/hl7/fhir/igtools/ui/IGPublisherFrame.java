@@ -21,9 +21,9 @@ import javax.swing.SwingWorker;
 
 import org.hl7.fhir.dstu3.model.Constants;
 import org.hl7.fhir.dstu3.utils.SimpleWorkerContext;
+import org.hl7.fhir.dstu3.utils.IWorkerContext.ILoggingService;
 import org.hl7.fhir.dstu3.validation.InstanceValidator;
 import org.hl7.fhir.igtools.publisher.IGKnowledgeProvider;
-import org.hl7.fhir.igtools.publisher.IGLogger;
 import org.hl7.fhir.igtools.publisher.Publisher;
 import org.hl7.fhir.igtools.publisher.Publisher.GenerationTool;
 import org.hl7.fhir.utilities.IniFile;
@@ -54,7 +54,6 @@ public class IGPublisherFrame extends javax.swing.JFrame {
   private IniFile ini;
 
   private BackgroundPublisherTask task;
-  private WebView webView;
   private StringBuilder fullLog = new StringBuilder();
   private String qa;
   
@@ -244,7 +243,7 @@ public class IGPublisherFrame extends javax.swing.JFrame {
 
   // ------ Execcution ------------------------------------------------------------------------------------------
 
-  public class BackgroundPublisherTask extends SwingWorker<String, String> implements IGLogger  {
+  public class BackgroundPublisherTask extends SwingWorker<String, String> implements ILoggingService  {
 
     
     @Override
@@ -294,7 +293,8 @@ public class IGPublisherFrame extends javax.swing.JFrame {
       btnGetHelp.setEnabled(true);      
       btnExecute.setLabel("Execute");
       Platform.runLater( () -> { // FX components need to be managed by JavaFX
-        webView = new WebView();
+        
+        WebView webView = new WebView();
         webView.getEngine().load("file:"+qa);
         txtValidation.setScene( new Scene( webView ) );
      });
@@ -312,6 +312,7 @@ public class IGPublisherFrame extends javax.swing.JFrame {
     txtLog.setText("");
     fullLog.setLength(0);
     Platform.runLater( () -> { // FX components need to be managed by JavaFX
+      WebView webView = new WebView();
       webView.getEngine().loadContent( "<html> Publication in Process!" );
       txtValidation.setScene( new Scene( webView ) );
    });
@@ -321,51 +322,8 @@ public class IGPublisherFrame extends javax.swing.JFrame {
 
   protected void btnGetHelpClick(ActionEvent evt) {
     try {
-      StringBuilder b = new StringBuilder();
-      b.append("= Log =\r\n");
-      b.append(fullLog);
-      b.append("\r\n\r\n");
-      b.append("= System =\r\n");
-
-      b.append("ig: ");
-      b.append((String) cbxIGName.getSelectedItem());
-      b.append("\r\n");
-
-      b.append("current.dir: ");
-      b.append(getCurentDirectory());
-      b.append("\r\n");
-
-      b.append("user.dir: ");
-      b.append(System.getProperty("user.home"));
-      b.append("\r\n");
-
-      b.append("tx.server: ");
-      b.append("http://fhir3.healthintersections.com.au/open");
-      b.append("\r\n");
-
-      b.append("tx.cache: ");
-      b.append(Utilities.path(System.getProperty("user.home"), "fhircache"));
-      b.append("\r\n");
-
-      b.append("\r\n");
-
-      b.append("= Validation =\r\n");
-      b.append(TextFile.fileToString(Utilities.changeFileExt(qa, ".txt")));
-
-      b.append("\r\n");
-      b.append("\r\n");
-      
-      b.append("= IG =\r\n");
-      b.append(TextFile.fileToString((String) cbxIGName.getSelectedItem()));
-
-      b.append("\r\n");
-      b.append("\r\n");
-      b.append("= VS.cache =\r\n");
-      for (String s : new File(Utilities.path(System.getProperty("user.home"), "fhircache")).list()) {
-        b.append(s);
-        b.append("\r\n");
-      }
-      StringSelection stringSelection = new StringSelection(b.toString());
+      String text = Publisher.buildReport((String) cbxIGName.getSelectedItem(), fullLog.toString(), Utilities.changeFileExt(qa, ".txt"));
+      StringSelection stringSelection = new StringSelection(text);
       Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
       clpbrd.setContents(stringSelection, null);
       JOptionPane.showMessageDialog(this, "Report copied to clipboard. Now paste it into an email to grahame@hl7.org");
@@ -375,11 +333,5 @@ public class IGPublisherFrame extends javax.swing.JFrame {
     }
   }
 
-  private String getCurentDirectory() {
-    String currentDirectory;
-    File file = new File(".");
-    currentDirectory = file.getAbsolutePath();
-    return currentDirectory;
-  }
 
 }

@@ -259,28 +259,31 @@ always return a body that contains an <a href="operationoutcome.html">OperationO
 <a name="mime-type"> </a>
 <h3>Content Types and encodings</h3>
 <p>
-The formal MIME-type for FHIR resources is <code>application/xml+fhir</code> or <code>application/json+fhir</code>.
+The formal MIME-type for FHIR resources is <code>application/fhir+xml</code> or <code>application/fhir+json</code>.
 The correct mime type SHALL be used by clients and servers:
 </p>
 <ul>
- <li>XML: <code>application/xml+fhir</code></li>
- <li>JSON: <code>application/json+fhir</code></li>
+ <li>XML: <code>application/fhir+xml</code></li>
+ <li>JSON: <code>application/fhir+json</code></li>
  <li>RDF: <code>text/turtle</code> (only the Turtle format is supported)</li>
 </ul>
 <p>
-Servers SHALL support server-driven content negotiation
-as described in <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html#sec12">section 12</a>
+Servers SHALL support server-driven content negotiation as described in <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html#sec12">section 12</a>
 of the HTTP specification. 
 </p>
 <p>
-However in order to support various implementation limitations, servers SHOULD
-support the optional <code>_format</code> parameter to specify alternative response formats by their MIME-types.
-This parameter allows a client to override the <code>accept</code> header value when it is unable to set it correctly
-due to internal limitations (e.g. XSLT usage).
-For the <code>_format</code> parameter, the values <code>xml</code>, <code>text/xml</code>, <code>application/xml</code>, and <code>application/xml+fhir</code> SHALL be interpreted to mean
-the <a href="xml.html">XML format</a>, the codes <code>json</code>, <code>application/json</code> and <code>application/json+fhir</code> SHALL be interpreted to mean the
-<a href="json.html">JSON format</a>, and the codes <code>ttl</code> and <code>text/turtle</code> SHALL be interpreted to mean the
-<a href="rdf.html">Turtle RDF format</a>. In addition, the values <code>html</code> and <code>text/html</code> are allowed.
+Note: between FHIR DSTU2 and STU3, the correct mime type was changed from application/xml+fhir and application/json+fhir to application/fhir+xml and application/fhir+json.
+Servers MAY also support the older mime types, and are encouraged to do so to smooth the transtion process.
+</p>
+<p>
+In order to support various implementation limitations, servers SHOULD support the optional <code>_format</code> parameter to 
+specify alternative response formats by their MIME-types. This parameter allows a client to override the <code>accept</code> 
+header value when it is unable to set it correctly due to internal limitations (e.g. XSLT usage). For the <code>_format</code> 
+parameter, the values <code>xml</code>, <code>text/xml</code>, <code>application/xml</code>, and <code>application/fhir+xml</code> 
+SHALL be interpreted to mean the <a href="xml.html">XML format</a>, the codes <code>json</code>, <code>application/json</code> and 
+<code>application/fhir+json</code> SHALL be interpreted to mean the <a href="json.html">JSON format</a>, and the codes <code>ttl</code> 
+and <code>text/turtle</code> SHALL be interpreted to mean the <a href="rdf.html">Turtle RDF format</a>. In addition, the values 
+<code>html</code> and <code>text/html</code> are allowed.
 </p>
 <p>
 FHIR uses UTF-8 for all request and response bodies. Since the HTTP specification (section 3.7.1)
@@ -297,6 +300,13 @@ The content types <code>application/x-www-form-urlencoded</code> is also accepte
 <p>
 If neither the accept header nor the _format parameter are specified, the MIME-type 
 of the content returned by the server is undefined and may vary.
+</p>
+<p>
+Implementation Note: If a client provides a generic mime type in the Accept header
+(application/xml, text/json, or application/json), the server SHOULD respond with
+the requested mime type, using the XML or JSON formats described in this specification 
+as the best representation for the named mime type (though see the <a href="binary.html#rest">note on the 
+Binary resource</a>.
 </p>
 
 <a name="versioning"> </a>
@@ -538,7 +548,7 @@ HTTP 200 OK
 Date: Sat, 09 Feb 2013 16:09:50 GMT
 Last-Modified: Sat, 02 Feb 2013 12:02:47 GMT
 ETag: W/"23"
-Content-Type: application/json+fhir
+Content-Type: application/fhir+json
 </pre>
 <p>
 If provided, the value of the ETag SHALL match the value of the version id for the resource. Servers
@@ -622,8 +632,7 @@ When the server processes this delete, it performs a search as specified using t
 on how many matches are found:
 </p>
 <ul>
- <li><b>No matches</b>: The server returns <code>404</code> Not found</li>
- <li><b>One Match</b>: The server performs an ordinary <code>delete</code> on the matching resource</li>
+ <li><b>No matches</b> or <b>One Match</b>: The server performs an ordinary <code>delete</code> on the matching resource</li>
  <li><b>Multiple matches</b>: Servers may choose to delete all the matching resources, or it may choose to return a <code>412</code> Precondition Failed error indicating the client's criteria were not selective enough.
    A server indicates whether it can delete multiple resources in its <a href="conformance-definitions.html#Conformance.rest.resource.conditionalDelete">Conformance Statement (.rest.resource.conditionalDelete)</a>.
    if there are multiple matches, either all must deleted, or the server SHALL return an error</li>
@@ -650,19 +659,16 @@ interaction instead. The <code>create</code> interaction is performed by an HTTP
   POST [base]/[type] {?_format=[mime-type]}
 </pre>
 <p>
-The request body SHALL be a FHIR Resource without an id element (this is the
-only case where a resource exists without an id element). If an ID element is provided, the 
-server SHALL respond with a HTTP <code>400</code> error code, and SHOULD provide an operation outcome 
-identifying the issue.
-If the request body includes a <a href="resource.html#meta">meta</a>, the server SHALL
+The request body SHALL be a FHIR Resource. The resource does not need to have an <code>id</code> element (this is the
+one of the few case where a resource exists without an id element). If an <code>id</code> is provided, the 
+server SHALL ignore it. If the request body includes a <a href="resource.html#meta">meta</a>, the server SHALL
 ignore the existing <code>versionId</code> and <code>lastUpdated</code> values.
-The server SHALL populate the <code>meta.versionId</code> and <code>meta.lastUpdated</code>
-with the new correct values.
-Servers are allowed to review and alter the other metadata values, but SHOULD refrain
-from doing so (see <a href="resource.html#meta">metadata description</a>  for further information).
+The server SHALL populate the <code>id</code>, <code>meta.versionId</code> and <code>meta.lastUpdated</code>
+with the new correct values. Servers are allowed to review and alter the other metadata values, but SHOULD 
+refrain from doing so (see <a href="resource.html#meta">metadata description</a>  for further information).
 </p>
 <p>
-A server SHOULD accept the resource as submitted when it accepts the create, and return the same
+A server SHOULD otherwise accept the resource as submitted when it accepts the create, and return the same
 content when it is subsequently read. However some systems may not be able to do this; see
 the note on <a href="#transactional-integrity">transactional integrity</a> for discussion.
 </p>
@@ -989,6 +995,53 @@ logical <code>id</code> in the resource, or <code>fullUrl</code> on entries in t
 </p>
 </blockquote>
 
+<p><b>Conditional References</b></p>
+<p>
+When constructing the batch, the client may not know the logical id of a resource, but it may 
+know identifying information - e.g. an identifier. This situations arises commonly when building
+transactions from v2 messages. The client could resolve that identifier to a logical id using
+a search, but that would mean that the resolution to a logical id does not occur within the 
+same transaction as the commit (as well as significantly complicating the client). Because
+of this, in a transaction (and only in a trasaction), references to resources may be replaced
+by a search URI that describes how to find the correct reference: 
+</p>
+<div class="example">
+<pre class="xml">
+ &lt;Bundle xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+   &lt;id value=&quot;20160113160203&quot; /&gt;
+   &lt;type value=&quot;transaction&quot; /&gt;
+   &lt;entry&gt;
+     &lt;fullUrl value=&quot;urn:uuid:c72aa430-2ddc-456e-7a09-dea8264671d8&quot; /&gt;
+     &lt;resource&gt;
+       &lt;Observation&gt;
+         &lt;subject&gt;
+            &lt;reference value=&quot;Patient?identifier=12345&quot;/&gt;
+         &lt;/subject&gt;
+         &lt;--! rest of resource omitted --&gt;
+       &lt;/Observation&gt;
+     &lt;/resource&gt;
+     &lt;request&gt;
+       &lt;method value=&quot;POST&quot; /&gt;
+     &lt;/request&gt;
+   &lt;/entry&gt;
+ &lt;Bundle&gt;
+</pre>
+</div>
+<p>
+The search URI is relative to the servers [base] path, and always starts with
+a resource type: <code>[type]:?parameters...</code>. Only filtering parameters
+are allowed; none of the parameters that control the return of resources 
+are relevant.
+</p>
+<p>
+When processing transactions, servers SHALL:
+</p>
+<ul>
+ <li>check all references for search URIs</li>
+ <li>For search URIs, use the search to locate matching resources</li>
+ <li>if there are no matches, or multiple matches, the transaction fails, and an error is returned to the user</li>
+ <li>if there is a single match, the server replaces the search URI wth a reference to the matching resource</li>
+</ul>
 
 
 <a name="transaction-response"> </a>

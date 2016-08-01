@@ -86,7 +86,7 @@ public class StructureMapUtilities {
 	}
 
 	private IWorkerContext worker;
-	private FHIRPathEngine fpe;
+	private FluentPathEngine fpe;
 	private Map<String, StructureMap> library;
 	private ITransformerServices services;
 
@@ -95,7 +95,7 @@ public class StructureMapUtilities {
 		this.worker = worker;
 		this.library = library;
 		this.services = services;
-		fpe = new FHIRPathEngine(worker);
+		fpe = new FluentPathEngine(worker);
 	}
 
 
@@ -727,7 +727,6 @@ public class StructureMapUtilities {
 		public Base getObject() {
 			return object;
 		}
-
 	}
 
 	public class Variables {
@@ -1450,7 +1449,7 @@ public class StructureMapUtilities {
         return null;
     // we build this by text. Any element that has a mapping, we put it's mappings inside it....
     StringBuilder b = new StringBuilder();
-    b.append("map \""+sd.getUrl()+"-map\" = \"Map for "+sd.getId()+"\"\r\n");
+    b.append("map \""+sd.getUrl().replace("StructureDefinition", "StructureMap")+"-map\" = \"Map for "+sd.getId()+"\"\r\n");
     b.append("\r\n");
     b.append("uses \""+sd.getUrl()+"\" as source\r\n\r\n");
     ElementDefinition root = sd.getSnapshot().getElementFirstRep();

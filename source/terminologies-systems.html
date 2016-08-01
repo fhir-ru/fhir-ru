@@ -242,12 +242,34 @@ and they are not registered in the HL7 OID registry, the default URN for the cod
    <td>1.2.840.10008.2.16.4</td>
  </tr> 
  <tr> 
-   <td>http://hl7.org/fhir/sid/ca-hc-din <a name="http://hl7.org/fhir/sid/ca-hc-din"> </a></td>
+   <td>http://hl7.org/fhir/sid/ca-hc-din <a name="http://hl7.org/fhir/NamingSystem/ca-hc-din"> </a></td>
    <td><a href="http://www.hc-sc.gc.ca/dhp-mps/prodpharma/activit/fs-fi/dinfs_fd-eng.php">Health Canada Drug Identification Number</a></td>
-   <td>A computer-generated eight digit number assigned by Health Canada to a drug product prior to being marketed in Canada</td>
+   <td>
+     <p>A computer-generated eight digit number assigned by Health Canada to a drug product prior to being marketed in Canada. 
+     It uniquely identifies all drug products sold in a dosage form in Canada and is located on the label of prescription and 
+     over-the-counter drug products that have been evaluated and authorized for sale in Canada. A DIN uniquely identifies the 
+     following product characteristics: manufacturer; product name; active ingredient(s); strength(s) of active ingredient(s); 
+     pharmaceutical form; route of administration.
+     </p>
+     <p>
+       <a href="http://www.hc-sc.gc.ca/dhp-mps/prodpharma/databasdon/index-eng.php">Canada Health Drug Product Database</a> contains 
+       product specific information on drugs approved for use in Canada. The database is managed by Health Canada and includes human 
+       pharmaceutical and biological drugs, veterinary drugs, radiopharmaceutical drugs and disinfectant products. It contains 
+       approximately 47,000 products that are currently approved, marketed or cancelled. Updates to the database are ongoing. 
+       If a <code>version</code> is needed, the correct version is YYYYMMDD for the date of download.
+      </p>
+    </td>
    <td style="color : DarkGrey">2.16.840.1.113883.5.1105</td>
  </tr> 
-
+ <tr> 
+   <td>http://nucc.org/provider-taxonomy <a name="http://nucc.org/provider-taxonomy"> </a></td>
+   <td><a href="http://www.nucc.org/index.php/code-sets-mainmenu-41/provider-taxonomy-mainmenu-40/csv-mainmenu-57">NUCC Provider Taxonomy</a></td>
+   <td>
+     <p>The Health Care Provider Taxonomy code is a unique alphanumeric code, ten characters in length. The code set is structured into 
+     three distinct "Levels" including Provider Type, Classification, and Area of Specialization.</p>
+   </td>
+   <td style="color : DarkGrey">2.16.840.1.113883.6.101</td>
+ </tr> 
  <tr>
    <td colspan="4" style="background: #EFEFEF"><b>Code Systems for Genetics</b> <a name="genetics"> </a></td>
  </tr>  

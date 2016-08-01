@@ -6,8 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.hl7.fhir.dstu3.exceptions.FHIRException;
 import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
@@ -40,6 +42,7 @@ import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 import org.hl7.fhir.igtools.publisher.FetchedFile;
 import org.hl7.fhir.igtools.publisher.FetchedResource;
 import org.hl7.fhir.igtools.publisher.IGKnowledgeProvider;
+import org.hl7.fhir.igtools.publisher.SpecMapManager;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
@@ -55,14 +58,13 @@ public class StructureDefinitionRenderer extends BaseRenderer {
   ProfileUtilities utils;
   private StructureDefinition sd;
   private String destDir;
-  private JsonObject preambles;
 
-  public StructureDefinitionRenderer(IWorkerContext context, String prefix, StructureDefinition sd, String destDir, IGKnowledgeProvider igp, JsonObject preambles) {
-    super(context, prefix, igp);
+  public StructureDefinitionRenderer(IWorkerContext context, String prefix, StructureDefinition sd, String destDir, IGKnowledgeProvider igp, List<SpecMapManager> maps) {
+    super(context, prefix, igp, maps);
     this.sd = sd;
     this.destDir = destDir;
-    this.preambles = preambles;
     utils = new ProfileUtilities(context, null, igp);
+    utils.setIgmode(true);
   }
 
   public String summary() {
@@ -229,9 +231,9 @@ public class StructureDefinitionRenderer extends BaseRenderer {
     if (ed == null)
       return "<li>unable to summarise extension "+url+" (no extension found)</li>";
     if (ed.getUserData("path") == null)
-      return "<li><a href=\""+prefix+"extension-"+ed.getId().toLowerCase()+".html\">"+url+"</a>"+(modifier ? " (<b>Modifier</b>) " : "")+"</li>\r\n";    
+      return "<li><a href=\""+"extension-"+ed.getId().toLowerCase()+".html\">"+url+"</a>"+(modifier ? " (<b>Modifier</b>) " : "")+"</li>\r\n";    
     else
-      return "<li><a href=\""+prefix+ed.getUserString("path")+"\">"+url+"</a>"+(modifier ? " (<b>Modifier</b>) " : "")+"</li>\r\n";    
+      return "<li><a href=\""+ed.getUserString("path")+"\">"+url+"</a>"+(modifier ? " (<b>Modifier</b>) " : "")+"</li>\r\n";    
   }
 
   private String describeProfile(String url, String prefix) throws Exception {
@@ -241,7 +243,7 @@ public class StructureDefinitionRenderer extends BaseRenderer {
     StructureDefinition ed = context.fetchResource(StructureDefinition.class, url);
     if (ed == null)
       return "<li>unable to summarise profile "+url+" (no profile found)</li>";
-    return "<li><a href=\""+prefix+ed.getUserString("path")+"\">"+url+"</a></li>\r\n";    
+    return "<li><a href=\""+ed.getUserString("path")+"\">"+url+"</a></li>\r\n";    
   }
 
   private String describeReference(ElementDefinitionBindingComponent binding) {
@@ -351,7 +353,13 @@ public class StructureDefinitionRenderer extends BaseRenderer {
             if (vs == null)
               vss = "<a href=\""+prefix+uri+"\">"+Utilities.escapeXml(uri)+"</a>";
             else { 
-              vss = "<a href=\""+prefix+vs.getUserData("path")+"\">"+Utilities.escapeXml(vs.getName())+"</a>";
+              String p = vs.getUserString("path");
+              if (p == null)
+                vss = "<a href=\"??\">"+Utilities.escapeXml(vs.getName())+" (missing link)</a>";
+              else if (p.startsWith("http:"))
+                vss = "<a href=\""+p+"\">"+Utilities.escapeXml(vs.getName())+"</a>";
+              else
+                vss = "<a href=\""+p+"\">"+Utilities.escapeXml(vs.getName())+"</a>";
               vsn = vs.getName();
             }
           }
@@ -409,16 +417,38 @@ public class StructureDefinitionRenderer extends BaseRenderer {
           b.append("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a><b>"+title+"</b></td></tr>\r\n");
           generateElementInner(b, sd,  ec, 1, null);
         } else {
-          String title = ec.getPath() + " (<a href=\""+prefix+(extDefn.hasUserData("path") ? extDefn.getUserData("path") : "extension-"+extDefn.getId().toLowerCase()+".html")+
+          String title = ec.getPath() + " (<a href=\""+(extDefn.hasUserData("path") ? extDefn.getUserData("path") : "extension-"+extDefn.getId().toLowerCase()+".html")+
               "\">"+(ec.getType().get(0).getProfile().startsWith("#") ? sd.getUrl() : "")+ec.getType().get(0).getProfile()+"</a>)";
-          b.append("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a><b>"+title+"</b></td></tr>\r\n");
+          b.append("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a>");
+          if (name.endsWith("[x]")) {
+            Set<String> tl = new HashSet<String>();
+            for (TypeRefComponent tr : ec.getType()) {
+              String tc = tr.getCode();
+              if (!tl.contains(tc)) {
+                tl.add(tc);
+                b.append("<a name=\""+name.replace("[x]", Utilities.capitalize(tc))+"\"> </a>");
+              }
+            }
+          }
+          b.append("<b>"+title+"</b></td></tr>\r\n");
           ElementDefinition valueDefn = getExtensionValueDefinition(extDefn);
           generateElementInner(b, extDefn, extDefn.getSnapshot().getElement().get(0), valueDefn == null ? 2 : 3, valueDefn);
         }
       } else {
         String name = sd.getId()+"."+ makePathLink(ec);
         String title = ec.getPath() + (!ec.hasName() ? "" : "(" +ec.getName() +")");
-        b.append("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a><b>"+title+"</b></td></tr>\r\n");
+        b.append("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a>");
+        if (name.endsWith("[x]")) {
+          Set<String> tl = new HashSet<String>();
+          for (TypeRefComponent tr : ec.getType()) {
+            String tc = tr.getCode();
+            if (!tl.contains(tc)) {
+              tl.add(tc);
+              b.append("<a name=\""+name.replace("[x]", Utilities.capitalize(tc))+"\"> </a>");
+            }
+          }
+        }
+        b.append("<b>"+title+"</b></td></tr>\r\n");
         generateElementInner(b, sd, ec, 1, null);
         if (ec.hasSlicing())
           generateSlicing(sd, ec.getSlicing());
@@ -595,14 +625,18 @@ public class StructureDefinitionRenderer extends BaseRenderer {
       b.append(t.getCode());
     } else {
       b.append("<a href=\"");
-      b.append(prefix);         
-      b.append(igp.getLinkFor("", t.getCode()));
-      b.append(".html#");
-      String type = t.getCode();
-      if (type.equals("*"))
-        b.append("open");
-      else 
-        b.append(t.getCode());
+      String s = igp.getLinkFor("", t.getCode());
+      if (!s.startsWith("http:") && !s.startsWith("https:"))
+        b.append(prefix);         
+      b.append(s);
+      if (!s.contains(".html")) {
+ //     b.append(".html#");
+ //     String type = t.getCode();
+ //     if (type.equals("*"))
+ //       b.append("open");
+ //     else 
+ //       b.append(t.getCode());
+      }
       b.append("\">");
       b.append(t.getCode());
       b.append("</a>");
@@ -613,12 +647,8 @@ public class StructureDefinitionRenderer extends BaseRenderer {
       if (p == null)
         b.append(t.getProfile());
       else {
-        if (p.hasBaseDefinition() )
-          b.append("<a href=\""+prefix+p.getUserString("path")+"\" title=\""+t.getProfile()+"\">");
-        else if (p.getKind() == StructureDefinitionKind.COMPLEXTYPE || p.getKind() == StructureDefinitionKind.PRIMITIVETYPE)
-          b.append("<a href=\""+prefix+igp.getLinkFor("", p.getName())+ ".html#" + p.getName()+"\" title=\""+p.getName()+"\">");
-        else // if (p.getKind() == StructureDefinitionType.RESOURCE)
-          b.append("<a href=\""+prefix+p.getName().toLowerCase()+".html\">");
+        String pth = p.getUserString("path");
+        b.append("<a href=\""+pth+"\" title=\""+t.getProfile()+"\">");
         b.append(p.getName());
         b.append("</a>");
       }
@@ -689,8 +719,10 @@ public class StructureDefinitionRenderer extends BaseRenderer {
         String pp = (String) vs.getUserData("path");
         if (pp == null) {
           return null;
-        } else 
-          return def.getDescription()+"<br/>"+conf(def)+ "<a href=\""+prefix+pp.replace(File.separatorChar, '/')+"\">"+vs.getName()+"</a>"+confTail(def);
+        } else if (pp.startsWith("http:") || pp.startsWith("https:"))
+          return def.getDescription()+"<br/>"+conf(def)+ "<a href=\""+pp+"\">"+vs.getName()+"</a>"+confTail(def);
+        else
+          return def.getDescription()+"<br/>"+conf(def)+ "<a href=\""+pp.replace(File.separatorChar, '/')+"\">"+vs.getName()+"</a>"+confTail(def);
       }
       if (ref.startsWith("http:") || ref.startsWith("https:"))
         return def.getDescription()+"<br/>"+conf(def)+" <a href=\""+ref+"\">"+ref+"</a>"+confTail(def);
@@ -776,8 +808,8 @@ public class StructureDefinitionRenderer extends BaseRenderer {
         s.append("<a name=\""+map.getIdentity() +"\"> </a><h3>Mappings for "+map.getName()+" ("+map.getUri()+")</h3>");
         if (map.hasComments())
           s.append("<p>"+Utilities.escapeXml(map.getComments())+"</p>");
-        else if (preambles.has(map.getUri()))   
-          s.append(preambles.get(map.getUri()).getAsString());
+//        else if (specmaps != null && preambles.has(map.getUri()))   
+//          s.append(preambles.get(map.getUri()).getAsString());
 
         s.append("<table class=\"grid\">\r\n");
 

@@ -157,8 +157,7 @@ private Map<String, Object> userData;
   		listChildren(children);
   		List<Base> result = new ArrayList<Base>();
   		for (Property c : children)
-  			if (name.equals("*") || c.getName().equals(name) || (c.getName().endsWith("[x]") && c.getName().startsWith(name)))
-  				result.addAll(c.getValues());
+				result.addAll(c.getValues());
   		return result.toArray(new Base[result.size()]);
   	}
   	else
@@ -580,20 +579,6 @@ private Map<String, Object> userData;
 			throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a ElementDefinition");
 	}
 
-	public ModuleMetadata castToModuleMetadata(Base b) throws FHIRException {
-		if (b instanceof ModuleMetadata)
-			return (ModuleMetadata) b;
-		else
-			throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a ModuleMetadata");
-	}
-
-	public ActionDefinition castToActionDefinition(Base b) throws FHIRException {
-		if (b instanceof ActionDefinition)
-			return (ActionDefinition) b;
-		else
-			throw new FHIRException("Unable to convert a "+b.getClass().getName()+" to a ActionDefinition");
-	}
-
 	public DataRequirement castToDataRequirement(Base b) throws FHIRException {
 		if (b instanceof DataRequirement)
 			return (DataRequirement) b;
@@ -641,6 +626,10 @@ private Map<String, Object> userData;
   	else
   		return v1.equals(v2);
 	}
+
+  public boolean isResource() {
+    return false;
+  }
 	
 
 }

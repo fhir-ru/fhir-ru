@@ -167,11 +167,15 @@ public class HierarchicalTableGenerator  {
       for (Piece p : pieces)
         p.addToHint(text);            
     }
-    public Piece addImage(String src, String hint, String alt) {
-      if (pieces.size() > 0 && pieces.get(0).tag == null)
-        pieces.get(0).text += " ";
+    public Piece addImage(String src, String hint, String alt, String fgColor, String bgColor) {
 //      Piece img = new Piece("img");
       Piece img = new Piece(null, alt, hint);
+      img.addStyle("padding: 3px");
+      if (fgColor != null) {
+        img.addStyle("color: "+fgColor);
+        img.addStyle("background-color: "+bgColor);
+      }
+        
 //      img.attributes = new HashMap<String, String>();
 //      img.attributes.put("src", src);
 //      img.attributes.put("alt", alt);
@@ -185,6 +189,12 @@ public class HierarchicalTableGenerator  {
         b.append(p.text);
       return b.toString();
     }
+    @Override
+    public String toString() {
+      return text();
+    }
+    
+    
   }
 
   public class Title extends Cell {
@@ -467,7 +477,7 @@ public class HierarchicalTableGenerator  {
 
 
   private void check(Row r, String string, int size, String path) throws FHIRException  {    
-    check(r.getCells().size() == size, "All rows must have the same number of columns ("+Integer.toString(size)+") as the titles but row "+path+" doesn't ("+r.getCells().get(0).text()+")");
+    check(r.getCells().size() == size, "All rows must have the same number of columns ("+Integer.toString(size)+") as the titles but row "+path+" doesn't ("+r.getCells().get(0).text()+"): "+r.getCells());
     int i = 0;
     for (Row c : r.getSubRows()) {
       check(c, "rows", size, path+"."+Integer.toString(i));

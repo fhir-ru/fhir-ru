@@ -14,6 +14,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.hl7.fhir.dstu3.formats.FormatUtilities;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
+import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemHierarchyMeaning;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.ContactPoint.ContactPointSystem;
 import org.hl7.fhir.dstu3.model.DateTimeType;
@@ -32,6 +33,7 @@ import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
 import org.hl7.fhir.dstu3.utils.NarrativeGenerator;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
+import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.tools.publisher.SectionNumberer;
 import org.hl7.fhir.utilities.CSFile;
@@ -188,7 +190,7 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
 //      s.append("<p>OID for code system: " + csOid + "</p>\r\n");
     if (vsOid != null) {
 //      s.append("<p>OID for value set: " + vsOid + " (this is the value set that includes the entire code system)</p>\r\n");
-      ToolingExtensions.setOID(vs, "urn:oid:"+vsOid);
+      ValueSetUtilities.setOID(vs, "urn:oid:"+vsOid);
       
     }
     r = XMLUtil.getNamedChild(XMLUtil.getNamedChild(XMLUtil.getNamedChild(XMLUtil.getNamedChild(e, "annotations"), "documentation"), "description"), "text");
@@ -205,7 +207,7 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
     CodeSystem cs = new CodeSystem();
     cs.setUrl("http://hl7.org/fhir/v3/" + id);
     cs.setId("v3-"+FormatUtilities.makeId(id));
-    ToolingExtensions.setOID(cs, "urn:oid:"+csOid);
+    CodeSystemUtilities.setOID(cs, "urn:oid:"+csOid);
     CodeSystemConvertor.populate(cs, vs);
     cs.setUserData("path", "v3" + "/" + id + "/" + "cs.html");
     cs.setUserData("filename", "v3" + "/" + id + "/" + "cs.html");
@@ -214,6 +216,10 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
     cs.setCaseSensitive(true);
     cs.setContent(CodeSystemContentMode.COMPLETE);
     cs.setValueSet(vs.getUrl());
+    if (Utilities.existsInList(cs.getId(), "v3-AddressPartType"))
+      cs.setHierarchyMeaning(CodeSystemHierarchyMeaning.PARTOF);
+    else
+      cs.setHierarchyMeaning(CodeSystemHierarchyMeaning.SUBSUMES);
 
     List<CodeInfo> codes = new ArrayList<CodeInfo>();
     // first, collate all the codes
@@ -346,7 +352,7 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
           cslist.add(vs.getId());
 
           vs.setUserData("path", "v3" + "/" + id + "/" + "vs.html");
-          ToolingExtensions.setOID(vs, "urn:oid:"+e.getAttribute("id"));
+          ValueSetUtilities.setOID(vs, "urn:oid:"+e.getAttribute("id"));
           if (vs.hasDate())
             vs.getMeta().setLastUpdatedElement(new InstantType(vs.getDate()));
           else

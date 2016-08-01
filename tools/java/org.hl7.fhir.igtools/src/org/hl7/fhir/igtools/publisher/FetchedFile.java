@@ -2,16 +2,23 @@ package org.hl7.fhir.igtools.publisher;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
 
 public class FetchedFile {
+  public final static int PROCESS_RESOURCE = 0;
+  public final static int PROCESS_XSLT = 1;
+  public final static int PROCESS_NONE = 2;
+  
   private String path;
   private String name;
+  private String title;
   
   private byte[] source;
   private long hash;
@@ -21,10 +28,10 @@ public class FetchedFile {
   private List<FetchedResource> resources = new ArrayList<FetchedResource>();
   private List<ValidationMessage> errors = new ArrayList<ValidationMessage>();
   private Bundle bundle;
-  private List<String> valuesetsToLoad = new ArrayList<String>();
+  private Map<String, String> valuesetsToLoad = new HashMap<String, String>();
   private boolean folder;
   private List<String> files; // if it's a folder
-  private boolean noProcess;
+  private int processMode;
   private Set<String> outputNames = new HashSet<String>();
 
   public String getPath() {
@@ -95,7 +102,7 @@ public class FetchedFile {
   public void setBundle(Bundle bundle) {
     this.bundle = bundle;
   }
-  public List<String> getValuesetsToLoad() {
+  public Map<String, String> getValuesetsToLoad() {
     return valuesetsToLoad;
   }
   public boolean isFolder() {
@@ -109,15 +116,22 @@ public class FetchedFile {
       files = new ArrayList<String>();
     return files;
   }
-  public boolean isNoProcess() {
-    return noProcess;
-  }
-  public void setNoProcess(boolean noProcess) {
-    this.noProcess = noProcess;
-  }
-  
+
   public Set<String> getOutputNames() {
     return outputNames;
   }
- 
+  public int getProcessMode() {
+    return processMode;
+  }
+  public void setProcessMode(int processMode) {
+    this.processMode = processMode;
+  }
+  public String getTitle() {
+    return title == null ? name : title;
+  }
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  
 }

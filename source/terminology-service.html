@@ -17,9 +17,20 @@ This specification includes support for the provision of a terminology service -
 service that lets healthcare applications make use of codes and value sets without having to become
 experts in the fine details of the code system, value set and concept map resources, and the underlying 
 code systems and terminological principles. A server that supports all the functionality described here 
-can be described as a "FHIR Terminology Service", and SHALL conform to <a href="conformance-terminology-server.html">this 
-conformance statement</a>.
+can be described as a "FHIR Terminology Service", and SHALL conform to the <a href="conformance-terminology-server.html">
+terminology server conformance statement</a>. Note that servers can declare that they provide 
+terminology services in their conformance statement:
 </p>
+<div class="example">
+<pre class="xml">
+&lt;Conformance xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+  &lt;!-- snip --&gt;
+  &lt;instantiates value=&quot;http://hl7.org/fhir/Conformance/terminology-server&quot;/&gt;  
+  &lt;!-- snip --&gt;
+&lt;/Conformance&gt;
+</pre>
+</div>
+
 
 <h3>Security</h3>
 <p>
@@ -523,7 +534,7 @@ If the concepts can be compared, then the server returns an outcome code:
 Test whether a SNOMED CT Concept 399211009 (History of myocardial infarction) is subsumed by 22298006 (Myocardial infarction):
 </p>
 <pre class="http">
-GET [base]/CodeSystem/$subsumes?system=http://snomed.info/sct&amp;codeSub=3738000&amp;codeSuper=235856003
+GET [base]/CodeSystem/$subsumes?system=http://snomed.info/sct&amp;codeA=3738000&amp;codeB=235856003
 </pre>
 <p>
 Or using Codings:
@@ -545,14 +556,14 @@ POST [base]/CodeSystem/$subsumes
     &lt;valuString value=&quot;http://snomed.info/sct/32506021000036107/version/20160430&quot;/&gt;
   &lt;/parameter&gt;
   &lt;parameter&gt;
-    &lt;name value=&quot;codingSub&quot;/&gt;
+    &lt;name value=&quot;codingA&quot;/&gt;
     &lt;valueCoding&gt;
       &lt;system value=&quot;http://snomed.info/sct&quot;/&gt;
       &lt;code value=&quot;3738000&quot;/&gt;
     &lt;/valueCoding&gt;
   &lt;/parameter&gt;
   &lt;parameter&gt;
-    &lt;name value=&quot;codingSuper&quot;/&gt;
+    &lt;name value=&quot;codingB&quot;/&gt;
     &lt;valueCoding&gt;
       &lt;system value=&quot;http://snomed.info/sct&quot;/&gt;
       &lt;code value=&quot;235856003&quot;/&gt;
@@ -602,13 +613,13 @@ POST [base]
   "entry": [{
     "request": {
       "method": "Get",
-      "url": "ValueSet?system=http://loinc.org&amp;code=2324-4&amp;uri=urn:oid:1.2.3.4.6"
+      "url": "ValueSet/$validate-code?system=http://loinc.org&amp;code=2324-4&amp;uri=urn:oid:1.2.3.4.6"
     }
   },
   {
     "request": {
       "method": "GET",
-      "url": "ValueSet?system=http://snomed.info/sct&amp;codes=22298006&amp;uri=urn:oid:1.2.3.4.7"
+      "url": "ValueSet/$validate-code?system=http://snomed.info/sct&amp;codes=22298006&amp;uri=urn:oid:1.2.3.4.7"
     }
   }]
 }

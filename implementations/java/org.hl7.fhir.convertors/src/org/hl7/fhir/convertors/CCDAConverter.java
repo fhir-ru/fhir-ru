@@ -37,6 +37,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.hl7.fhir.dstu2.exceptions.FHIRException;
 import org.hl7.fhir.dstu3.model.AllergyIntolerance;
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.CodeableConcept;
@@ -71,6 +72,7 @@ import org.hl7.fhir.dstu3.model.AllergyIntolerance.AllergyIntoleranceType;
 import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.dstu3.model.Composition.CompositionAttestationMode;
 import org.hl7.fhir.dstu3.model.Composition.CompositionAttesterComponent;
+import org.hl7.fhir.dstu3.model.Composition.DocumentConfidentiality;
 import org.hl7.fhir.dstu3.model.Composition.SectionComponent;
 import org.hl7.fhir.dstu3.model.ListResource.ListEntryComponent;
 import org.hl7.fhir.dstu3.model.Narrative.NarrativeStatus;
@@ -280,9 +282,9 @@ public class CCDAConverter {
 		// main todo: fill out the narrative, but before we can do that, we have to convert everything else
 	}
 
-	protected String convertConfidentiality(Element child) {
+	protected DocumentConfidentiality convertConfidentiality(Element child) throws FHIRException, org.hl7.fhir.dstu3.exceptions.FHIRException {
 		// TODO Auto-generated method stub
-		return child.getAttribute("code");
+		return DocumentConfidentiality.fromCode(child.getAttribute("code"));
 	}
 
 
@@ -547,7 +549,7 @@ public class CCDAConverter {
 				p.getExtension().add(n);
 			} else if (cda.hasTemplateId(a, "2.16.840.1.113883.10.20.22.4.19")) {
 				// MAY contain zero or more [0..*] entryRelationship (CONF:7779) such that it SHALL contain exactly one [1..1] Indication (templateId:2.16.840.1.113883.10.20.22.4.19) (CONF:7781).
-				p.setReason(processIndication(a));
+				p.addReasonCode(processIndication(a));
 			} else if (cda.hasTemplateId(cda.getlastChild(e), "2.16.840.1.113883.10.20.22.4.16")) {
 				//  MAY contain zero or one [0..1] entryRelationship (CONF:7886) such that it SHALL contain exactly one [1..1] Medication Activity (templateId:2.16.840.1.113883.10.20.22.4.16) (CONF:7888).
 				// todo
@@ -643,7 +645,7 @@ public class CCDAConverter {
 			}
 		}
 		// ref and p are both sorted. now we fill out p as much as we can (remembering it might already be populated)
-		p.addPractitionerRole().setRole(convert.makeCodeableConceptFromCD(cda.getChild(assignedEntity, "code")));
+		p.addRole().setCode(convert.makeCodeableConceptFromCD(cda.getChild(assignedEntity, "code")));
 		for (Element e : cda.getChildren(assignedEntity, "id")) 
 			addToIdList(p.getIdentifier(), convert.makeIdentifierFromII(e));
 		for (Element e : cda.getChildren(assignedEntity, "addr")) 
@@ -780,7 +782,7 @@ public class CCDAConverter {
 
 			// SHOULD contain zero or one [0..1] participant (CONF:7402) such that it
 			// ......This playingEntity SHALL contain exactly one [1..1] code			
-			ai.setSubstance(convert.makeCodeableConceptFromCD(cda.getDescendent(obs, "participant/participantRole/playingEntity/code"))); 
+			ai.setCode(convert.makeCodeableConceptFromCD(cda.getDescendent(obs, "participant/participantRole/playingEntity/code"))); 
 
 			//  MAY contain zero or one [0..1] entryRelationship (CONF:7440) such that it SHALL contain exactly one [1..1]  Alert Status Observation
 			//  SHOULD contain zero or more [0..*] entryRelationship (CONF:7447) such that it SHALL contain exactly one [1..1] Reaction Observation (templateId:2.16.840.1.113883.10.20.22.4.9) (CONF:7450).
@@ -793,7 +795,7 @@ public class CCDAConverter {
 					// 413322009  SNOMED CT  Resolved
 					String sc = cda.getChild(child, "value").getAttribute("code");
 					if (sc.equals("55561003"))
-						ai.setStatus(AllergyIntoleranceStatus.CONFIRMED);
+						ai.setStatus(AllergyIntoleranceStatus.ACTIVECONFIRMED);
 					else
 						ai.setStatus(AllergyIntoleranceStatus.RESOLVED);
 				} else if (cda.hasTemplateId(child, "2.16.840.1.113883.10.20.22.4.9")) {
