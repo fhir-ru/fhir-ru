@@ -239,7 +239,7 @@ public class BreadCrumbManager {
   public String makelist(String name, String type, String prefix, String title) throws Exception {
     StringBuilder b = new StringBuilder();
     if (name.equals("index")) {
-      b.append("        <li><b>Home</b></li>\r\n");      
+      b.append("        <li><b>Главная</b></li>\r\n");      
     } else {
       //b.append("        <li><a href=\""+prefix+"index.html\">"+translations.getMessage("HOME", "Home")+"</a></li>\r\n");
       if (!name.endsWith(".html"))
@@ -495,12 +495,12 @@ public class BreadCrumbManager {
     if (p.getType() == PageType.resource) {
         addLink(b, p.getReference().toLowerCase()+".html", p.getReference(), path, level);
 //        if (p.hasExamples())
-          addLink(b, p.getReference().toLowerCase()+"-examples.html", p.getReference()+" Examples", path+".1", level+1);
-        addLink(b, p.getReference().toLowerCase()+"-definitions.html", p.getReference()+" Definitions", path+".2", level+1);
+          addLink(b, p.getReference().toLowerCase()+"-examples.html", p.getReference()+" Примеры", path+".1", level+1);
+        addLink(b, p.getReference().toLowerCase()+"-definitions.html", p.getReference()+" Определения", path+".2", level+1);
 //        if (p.hasMappings())
-          addLink(b, p.getReference().toLowerCase()+"-mappings.html", p.getReference()+" Mappings", path+".3", level+1);
+          addLink(b, p.getReference().toLowerCase()+"-mappings.html", p.getReference()+" Мэппинги", path+".3", level+1);
 //        if (p.hasProfiles())
-          addLink(b, p.getReference().toLowerCase()+"-profiles.html", p.getReference()+" Profiles", path+".4", level+1);
+          addLink(b, p.getReference().toLowerCase()+"-profiles.html", p.getReference()+" Профили", path+".4", level+1);
 //        if (p.hasOperations())
 //          addLink(b, p.getReference().toLowerCase()+"-operations.html", p.getReference()+" Operations", path+".5", level+1);
     } else {
@@ -555,9 +555,9 @@ public class BreadCrumbManager {
   private void writePage(XhtmlNode node, Page p, int level, String path) {
     if (p.getType() == PageType.resource) {
       addLink(node, p.getReference().toLowerCase()+".html", p.getReference(), path, level);
-      addLink(node, p.getReference().toLowerCase()+"-examples.html", p.getReference()+" Examples", path+".1", level+1);
-      addLink(node, p.getReference().toLowerCase()+"-definitions.html", p.getReference()+" Definitions", path+".2", level+1);
-      addLink(node, p.getReference().toLowerCase()+"-mappings.html", p.getReference()+" Mappings", path+".3", level+1);
+      addLink(node, p.getReference().toLowerCase()+"-examples.html", p.getReference()+" Примеры", path+".1", level+1);
+      addLink(node, p.getReference().toLowerCase()+"-definitions.html", p.getReference()+" Определения", path+".2", level+1);
+      addLink(node, p.getReference().toLowerCase()+"-mappings.html", p.getReference()+" Мэппинг", path+".3", level+1);
     } else {
       addLink(node, p.getFilename(), p.getTitle(), path, level);
       for (Node n : p.getChildren()) {
