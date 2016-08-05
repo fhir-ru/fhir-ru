@@ -5260,7 +5260,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider  {
       b.append(" </tr>\r\n");
     }
     if (count == 0)
-      s.append("<tr><td colspan=\"2\">У этого ресурса нет расширений</td></tr>");
+      b.append("<tr><td colspan=\"2\">У этого ресурса нет расширений</td></tr>");
     
     return b.toString();
   }
