@@ -126,7 +126,7 @@ of the <a href="http://www.ihtsdo.org/fileadmin/user_upload/Docs_01/News/SNOMED_
  <tr><td>Values Allowed</td><td>[concept id]</td></tr>
  <tr><td>Comments</td><td>Includes all concept ids that have a transitive is-a relationship with the concept Id provided as the value</td></tr>
  <tr><td>Example</td><td><a href="valueset-administration-method-codes.html">Administation Methods</a></td></tr>
- <tr><td>SCT QL</td><td><pre>DescendentsAndSelf([concept])</pre></td></tr>
+ <tr><td><a href="http://snomed.org/expressionconstraints.pdf">SCT ECL</a></td><td><pre>&lt;&lt; [concept] (or the long form: descendantOrSelfOf [concept])</pre></td></tr>
 </table>
 
 <h4>By Reference Set</h4>
@@ -137,17 +137,38 @@ of the <a href="http://www.ihtsdo.org/fileadmin/user_upload/Docs_01/News/SNOMED_
  <tr><td>Operations Allowed</td><td>in</td></tr>
  <tr><td>Values Allowed</td><td>[concept id]</td></tr>
  <tr><td>Comments</td><td>Includes all concept ids that are active members of the reference set identified by the concept Id provided as the value</td></tr>
- <tr><td>SCT QL</td><td><pre>MembersOf([concept])</pre></td></tr>
+ <tr><td><a href="http://snomed.org/expressionconstraints.pdf">SCT ECL</a></td><td><pre>^ [concept] (or the long form: memberOf [concept])</pre></td></tr>
 </table>
 
 <h4>By Snomed Query Expression</h4>
 
 <table class="grid">
  <tr><td>Description</td><td>Select a set of concepts based on a formal expression statement</td></tr>
- <tr><td>Property Name</td><td>expression</td></tr>
+ <tr><td>Property Name</td><td>constraint</td></tr>
  <tr><td>Operations Allowed</td><td>=</td></tr>
  <tr><td>Values Allowed</td><td>[expression]</td></tr>
- <tr><td>Comments</td><td>The result of the filter is the result of executing the given SNOMED CT expression. note: the query statement is under current development</td></tr>
+ <tr><td>Comments</td><td>
+   The result of the filter is the result of executing the given <a href="http://snomed.org/expressionconstraints.pdf">SNOMED CT Expression (Expression Constraint Language)</a>.
+   <br/>
+   Example:
+   <pre class="json">
+ "compose": {
+  "include": [
+    {
+      "system": "http://snomed.info/sct",
+      "filter": [
+        {
+          "property": "constraint",
+          "op": "=",
+          "value": "&lt;&lt; 30506011000036107 |Australian product|: 700000101000036108 |hasTP| = 17311000168105 |Panadol|"
+        }
+      ]
+    }
+  ]
+}
+
+   </pre>
+   </td></tr>
 </table>
 
 <h4>By whether post-coordination is allowed</h4>
@@ -159,7 +180,7 @@ of the <a href="http://www.ihtsdo.org/fileadmin/user_upload/Docs_01/News/SNOMED_
  <tr><td>Values Allowed</td><td>true or false</td></tr>
  <tr><td>Comments</td><td>Expressions, if allowed, are subject to the same rules as pre-coordinated concepts. Note: reference sets do not include expressions.</td></tr>
  <tr><td>Example</td><td><a href="valueset-administration-method-codes.html">Administation Methods</a></td></tr>
- <tr><td>SCT QL</td><td><pre>n/a</pre></td></tr>
+ <tr><td><a href="http://snomed.org/expressionconstraints.pdf">SCT ECL</a></td><td><pre>n/a</pre></td></tr>
 </table>
 
 <a name="implicit"> </a>
@@ -188,7 +209,8 @@ A SNOMED CT implicit value set URL has two parts:
 </ul>
 <p>
 "http://snomed.info/sct" should be understood to mean an unspecified edition/version. This defines an incomplete value set whose
-actual membership will depend on the particular edition used when it is expanded. 
+actual membership will depend on the particular edition used when it is expanded. If no version or edition is specified, the terminology
+service SHALL use the latest version available for it's default edition (or the international edition, if no other edition is the default).
 </p>
 <p>
 For the second part of the URL (the query part), the 4 possible values are:

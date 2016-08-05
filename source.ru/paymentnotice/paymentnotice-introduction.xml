@@ -4,22 +4,20 @@
 <a name="scope"> </a>
 <h2>Область применения и использование</h2>
 <p>
-Ресурс PaymentNotice (платежное извещение) обозначает ресурс, для которого был засвидетельствован платеж, и сообщает текущую статусную информацию по этому платежу. Платежное извещение может использоваться плательщиком для извещения поставщика или государственных регулирующих органов о платеже (чек, отправленный по почте/EFT, наличный расчет, отмена платежа), работодатели или биржи могут использовать этот ресурс для извещения плательщиков о выплате страховой суммы.
+Ресурс PaymentNotice (платежное извещение) обозначает ресурс, для которого был засвидетельствован платеж, и сообщает текущую статусную информацию по этому платежу. Платежное извещение может использоваться поставщиками и плательщиками для извещения поставщика или государственных регулирующих органов о платеже (чек, отправленный по почте/EFT, наличный расчет, отмена платежа). Работодатели или страховые биржи могут использовать этот ресурс для извещения плательщиков о выплате страховой суммы.
 <!-- The PaymentNotice resource indicates the resource for which the payment has been indicated and 
-reports the current status information of that payment. The payment notice may be used by Payor 
+reports the current status information of that payment. The payment notice may be used by Providers and Payors 
 to advise the Provider or Regulatory bodies of the state of a payment (cheque in the mail/EFT sent, 
-payment cashed, payment cancelled), Employers or Exchanges may use this to advise Payors of 
+payment cashed, payment cancelled). Employers or Insurance Exchanges may use this to advise Payors of 
 premium payment. -->
 </p>
 <p>
-Плательщикам требуется извещать поставщиков и/или регулирующие органы в странах, где они поддерживаются, о статусе урегулирования претензий и завершения платежа. Этот же ресурс может быть использован работодателями и страховыми биржами для извещения плательщиков о том, что страховые суммы были выданы и урегулированы.
-<!-- Payors have the need to advise Providers and/or regulators, in jurisdictions where these 
-are supported, of the status of Claim settlement and payment completion. This same resource may 
-be used by employers and insurance exchanges to advise Payors that premium payments have been 
+Плательщикам и/или поставщикам требуется извещать поставщиков и/или регулирующие органы о статусе урегулирования исков и выполнения платежей. Этот же ресурс может быть использован работодателями и страховыми биржами для извещения плательщиков о том, что страховые суммы были выданы и урегулированы.
+<!-- Payors and /or Providers may have the need to advise Providers and/or regulators of the status of Claim settlement and payment completion.
+This same resource may be used by employers and insurance exchanges to advise Payors that premium payments have been 
 issued and settled. -->
 </p>
 <p>
-Todo
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
 </p>
 </div>

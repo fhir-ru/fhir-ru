@@ -85,6 +85,14 @@ LOINC code betrays its origin.
 Таблица приложения - это единый набор значений (набор кодированных пар Code Pairs), включающий в себя коды из каждого из этих двух пространств имён. Самому набору значений назначается свой собственный URL в качестве идентификатора (например "http://example.com/fhir/ValueSet/test-codes)") - он идентифицирует набор кодированных пар (Code Pairs), но никогда не используется в качестве пространства имён в самой кодированной паре или экземпляре.
 В FHIR кодированные пары (Code Pairs) всегда представляются в виде пары "code" и "system", за исключением простого <a href="datatypes.html#code">типа данных "code"</a>, в котором пространство имён (например элемент/свойство system) фиксировано в схеме и не представляется явно.
 </p>
+<p>
+Note that for some code systems, there is a single correct machanism by which to represent
+codes defined by the system as a single URL. These single URLs are used in the context of
+the <a href="rdf.html#concept">RDF</a> format to enable ontological reasoning. The URL is
+often a direct reference to a web source that can provide additional definitional material
+about the concept. Where the mechanism is known and defined by the code system, it is 
+described in this specification.
+</p>
 
 <a name="system"> </a>
 <h2>Выбор системы<!-- Choosing a system --></h2>
@@ -377,16 +385,22 @@ can interpret it with confidence. Generally, this is used for elements with type
 <a href="http://tools.ietf.org/html/bcp47">Language Codes</a>, <a href="http://unitsofmeasure.org">UCUM</a>, etc.) --></li>
 </ul> 
 <p>
-Другое место, где это используется, это при <a href="profiling.html">профилировании ресурсов</a>, и когда есть соглашение для конкретного контекста использования, что конкретный набор кодов являются единственными, которые могут быть использованы. В этих случаях тип данных  должен содержать одно из значений из набора значений. Если тип данных <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, то одно из значений <i>coding</i> должно быть из указанного набора значений. Также может быть предоставлен <i>Text</i>, что всегда рекомендуется, но не является приемлемой заменой необходимого кода.
+Другое место, где это используется, это при <a href="profiling.html">профилировании ресурсов</a>, и когда есть соглашение для конкретного контекста использования, что конкретный набор кодов являются единственными, которые могут быть использованы. В этих случаях тип данных  должен содержать одно из значений из набора значений.
 <!-- The other place where this is used is when <a href="profiling.html">profiling resources</a>, and there is agreement within a particular context of use
 that a particular set of codes are the only ones that can be used. In these cases, the data type SHALL contain one of the 
-values in the value set. If the data type is <a href="datatypes.html#CodeableConcept">CodeableConcept</a>, then one of 
-the <i>coding</i> values SHALL be from the specified value set. <i>Text</i> can be provided as well, and is always 
-recommended, but is not an acceptable substitute for the required code. -->
+values in the value set. -->
 </p>
 <p>
-Обратите внимание на дополнительные правила относительно обязательных привязок при использовании с типом данных <a href="datatypes.html#code">code</a>:
-<!-- Note the following additional rules about required bindings when used with the <a href="datatypes.html#code">code</a> data type: -->
+The following rules apply when required bindings are used with the <a href="datatypes.html#CodeableConcept">CodeableConcept</a> data type:
+</p>
+<ul>
+ <li>at least one Coding element SHALL be present</li>
+ <li>one of the Coding values SHALL be from the specified value set</li>
+ <li><code>text</code> can be provided as well, and is always recommended, but is not an acceptable substitute for the required code</li>
+</ul>
+<p>
+Следующие правила применяются, когда используются обязательные привязки с типом данных <a href="datatypes.html#code">code</a>:
+<!-- The following  rules apply when required bindings are used with the <a href="datatypes.html#code">code</a> data type: -->
 </p>
 <ul>
  <li>Там, где набор значений определен стандартом FHIR, список допустимых кодов будет зафиксирован  в XML-схеме</li>

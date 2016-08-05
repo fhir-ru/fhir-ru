@@ -15,6 +15,7 @@ using the Location.partOf element.</li>
 see <a href="http://www.opengeospatial.org/standards/kml">Google/OGS's KML</a>.</li> -->
 </ul>
 
+<a name="loc-mode"> </a>
 <h3>Вид местонахождения<!-- Location Mode --></h3>
 <p>В элементе Location.mode указывается тип местонахождения, представляет ли ресурс Location определенное (потенциально идентифицируемое) местонахождение ('экземпляр')
 или класс местонахождения ('вид'). Особенно ресурсы для ввода заказов, для планирования ресурсов, планы и определения могут использовать ресурс Location в режиме 'kind'.
@@ -114,15 +115,21 @@ Mobile Services (kind)
 		<i>Примечание: палаты/отделения не являются частью этой структуры - они входят в организационную иерархию.
 		<!-- Note: Wards/departments are not part of this structure - these would form part of the Organizational Hierarchy. --></i>
 	</p>
+  
+<a name="positional"> </a>
    <h3>Positional Searching</h3>
     <p>
         Searching for locations often require that a facility is within a specified distance of a particilar point.
         For example, to locate healthcare facilities within 2kms of a clients home, or the current geo-coded
         position of a practitioner travelling between patients (read from a mobile phone or device).
     </p>
-    <pre>
-        GET [base]/Location?near=-83.694810,42.256500&amp;near-distance=11.20||km
-    </pre>
+<pre>
+ GET [base]/Location?near=-83.694810:42.256500&amp;near-distance=11.20||km...
+</pre>
+    <p>
+        Note: The near search parameters are not able to be used with multiples thus the multiple 
+        seperator <code> , </code> should not be used with near or near-distance.
+    </p>
     <p>
         The distance between the location and the provided point is often used as one of the 
         determining factors for selection of the location. So this value is included in the results.<br/>
@@ -130,21 +137,22 @@ Mobile Services (kind)
         point of reference in the search. So the distance between is included in the search section
         of the bundle entry.
     </p>
-    <pre>
-    &lt;entry&gt; 
+<pre>
+&lt;entry&gt; 
         &lt;resource&gt;
             &lt;Location&gt;
                 &lt;!-- location details --&gt;
             &lt;/Location&gt;
         &lt;/resource&gt;
         &lt;search&gt;
-            &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/patient-mpi-match&quot;&gt;
+        &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/location-distance&quot;&gt;
                 &lt;valueDistance &gt;
+                &lt;!-- The distance that this location resource is from the provided point in the query --&lt;
                     &lt;/value value=&quot;10.5&quot;/&gt;
                     &lt;/unit value=&quot;km&quot;/&gt;
                 &lt;/valueDistance&gt;
             &lt;/extension&gt;
         &lt;/search&gt;
-    &lt;/entry&gt; 
-    </pre>
+&lt;/entry&gt; 
+</pre>
 </div>

@@ -461,7 +461,9 @@ Choosing the correct system is important; for more information about the code sy
 URI, read <a href="terminologies.html#system">Managing Terminology System URIs</a>.
 The system URI SHALL NOT contain a reference to a value set (e.g. ValueSet.url). 
 If the code is taken from a CodeSystem resource, <code>CodeSystem.url</code>
-is the correct value for the system uri. -->
+is the correct value for the system uri. --> Resolvable URLs are generally preferred by 
+implementers over non-resolvable URNs, particularly opaque URNs such as OIDs (urn:oid:) 
+or UUIDs (urn:uuid:).
 </p>
 <p>
 Также может быть указана версия кодовой системы. Если значение кодов в кодовой системе остается постоянным в разных версиях, то это не обязательно. 
@@ -881,14 +883,15 @@ avoid collisions and to manage that space (and the resolvability of URLs) over t
 Note that the scope of a given identifier system may extend beyond identifiers that might be captured 
 by a single resource.  For example, some systems might draw all "order" identifiers from a single 
 namespace, though some might be used on <a href="medicationorder.html">MedicationOrder</a> while 
-others would appear on <a href="procedurerequest.html">ProcedureRequest</a> or <a href="diagnosticorder.html">DiagnosticOrder</a>.
+others would appear on <a href="procedurerequest.html">ProcedureRequest</a> or <a href="diagnosticrequest.html">DiagnosticRequest</a>.
 </p>
 <p>
-Если идентификатор сам по себе является глобально уникальным (например OID, UUID или URI без локального окончания), тогда значением системы <code>system</code> ДОЛЖНО быть "urn:ietf:rfc:3986", а в  <code>value</code> должен быть указан сам URI.
+Если идентификатор сам по себе является глобально уникальным (например OID, UUID или URI без локального окончания), тогда значением системы <code>system</code> ДОЛЖНО быть "urn:ietf:rfc:3986", а в  <code>value</code> должен быть указан сам URI (OIDs и UUIDs с помощью urn:oid: и urn:uuid: - см. <a href="datatypes-examples.html#Identifier">примеры</a>).
 В некоторых случаях система может быть не известна - известно только значение (например простое устройство, сканирующее штрих-коды), или система понимается неявно (простой обмен в ограниченном контексте, зачастую обусловленный считывателями штрих-кодов). В этом случае невозможно выполнить полезное сопоставление значения, если только система не может быть с уверенностью выведена из контекста.
 Подобную практику следует по возможности избегать, так как со временем растет вероятность совместного использования информации в более широком контексте, а значения без системы по своей природе ограничены в использовании.
 <!-- If the identifier itself is naturally globally unique (e.g. an OID, a UUID, or a URI with no trailing local part), 
 then the <code>system</code> SHALL be "urn:ietf:rfc:3986", and the URI is in the <code>value</code>.
+(OIDs and UUIDs using urn:oid: and urn:uuid: - see <a href="datatypes-examples.html#Identifier">examples</a>).
 In some cases, the system may not be known - only the value is known (e.g. a simple device that scans a barcode), 
 or the system is known implicitly (simple exchange in a limited context, often driven by barcode readers). 
 In this case, no useful matching may be performed using the value unless the system can be safely inferred by the 
@@ -904,8 +907,9 @@ used for codes that correspond 1..1 with the Identifier.system. Some identifiers
 categories due to variations in common usage.
 </p>
 <p>
-Элемент <code>assigner</code> используется для указания, какой реестр/государство/учреждение/пр. назначили идентификатор.
-<!-- The <code>assigner</code> is used to indicate what registry/state/facility/etc. assigned the identifier. -->
+Элемент <code>assigner</code> используется для указания, какой реестр/государство/учреждение/пр. назначили идентификатор. В качестве <a href="reference.html">Reference</a> можно указать просто текстовое описание в элементе <code>display</code>. 
+<!-- The <code>assigner</code> is used to indicate what registry/state/facility/etc. assigned the identifier.
+As a <a href="reference.html">Reference</a>, the assigner can include just a text description in the <code>display</code>.  -->
 </p>  
 <p>
 Identifier используется в следующих местах: [%dtusage Identifier%]

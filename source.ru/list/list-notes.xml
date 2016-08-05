@@ -152,9 +152,9 @@ possible approaches to work around this issue: -->
 <!-- The information to populate the list wasn't gathered - i.e. "Not asked" --></li>
 </ul>
 <p>
-Учитывая эти возможности и общий и важный первый случай, исходные системы ДОЛЖНЫ предоставлять причину в случае пустого списка. Из-за важности этого случая необходимо использовать особое значение <a href="valueset-list-empty-reason.html">"nil-known"</a>, когда нет (существенных) записей в этом контексте медицинской помощи. Обратите внимание, что это понятие иногда описывается по-разному, например "пациент отрицает прием медикаментов" или "пациент не был в состоянии указать какую-либо значимую историю болезни".
+Учитывая эти возможности и общий и важный первый случай, исходные системы ДОЛЖНЫ предоставлять причину, если список пустой, для многих видов списков. Из-за важности этого случая необходимо использовать особое значение <a href="valueset-list-empty-reason.html">"nil-known"</a>, когда нет (существенных) записей в этом контексте медицинской помощи. Обратите внимание, что это понятие иногда описывается по-разному, например "пациент отрицает прием медикаментов" или "пациент не был в состоянии указать какую-либо значимую историю болезни".
 <!-- Given these possibilities, and the common and significant first case, source systems SHOULD 
-provide an empty reason if the list is empty. Because of the importance of this case, the 
+provide an empty reason if the list is empty for many kinds of lists. Because of the importance of this case, the 
 <a href="valueset-list-empty-reason.html">special value "nil-known"</a> should be used when 
 there are no (significant) entries in this context of care. Note that this concept is 
 sometimes described differently, such as "patient denies taking medications", or 
@@ -170,6 +170,10 @@ unless the "nil-known" code is present. -->
 <p>
 Если список пустой, описательная часть должна содержать текст, эквивалентный указанной причине в элементе empty.
 <!-- If the list is empty, the narrative should contain text equivalent to the empty reason. -->
+</p>
+<p>
+Note that ther are many kinds of lists that can be just empty with no need for any
+empty reason (<a href="example-simple-empty.html">example</a>)
 </p>
 
 </div>

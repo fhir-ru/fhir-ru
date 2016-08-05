@@ -19,6 +19,7 @@
 Заявление о медикаменте не является частью последовательности предписание -> выдача [по рецепту] -> введение, это сообщение пациентом, родственником или медицинским работником о том, что произошло одно или несколько действий предписания, выдачи по рецепту или введения, которое привело к убеждению, что этот пациент использовал, использует или будет использовать конкретный медикамент.
 <!-- A medication statement is not a part of the prescribe -> dispense -> administer sequence, but is a report by a patient, significant other or a clinician that one or more of the prescribe, dispense or administer actions has occurred, resulting is a belief that the patient is, has, or will be using a particular medication. -->
 </p>
+<p>С точки зрения рабочего процесса FHIR, MedicationStatement - ресурс-событие. См. <a href="workflow.html#event">Событие в рабочем процессе</a>.<!-- MedicationStatement is an event resource from a FHIR workflow perspective - see <a href="workflow.html#event">Workflow Event</a> --></p>
 </div>
 
 <div>

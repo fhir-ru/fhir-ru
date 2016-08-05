@@ -19,11 +19,9 @@ does not provide full details.
  -->
 </p>
 <p>
-Ресурс Medication позволяет классифицировать лекарственное средство либо как продукт, либо упаковку; такая классификация важна, так как она влияет на интерпретацию предписанного количества. Например, выписано ли лекарство в количестве 20 таблеток или 20 упаковок по 50 таблеток каждая? Однако элемент <i>kind</i> не является обязательным, поскольку не всякий контекст использования включает в себя предписание лекарства (например medication statements). Однако профили, описывающие использование ресурса Medication в случае предписания лекарства, как правило, делают элемент <i>kind</i> обязательным.
+Ресурс Medication позволяет классифицировать лекарственное средство либо как продукт, либо как упаковку, либо и то, и другое. Продукт будет включать в себя ингредиент(ы) и их силу, а для упаковки можно указывать количество (к примеру, количество таблеток, объём и т. п.), которое содержится в конкретном контейнере (к примеру, 100 капсул аоксициллина 500 мг в бутылочке).
 <!-- 
-The Medication resource allows for medications to be characterized as either a product or a package; this classification is important 
-because it affects the interpretation of a prescribed amount. For instance, is the prescribed amount 20 tablets, or 20 packages of
-50 tablets each?
+The Medication resource allows for medications to be characterized as either a product or a package or both. The product will include the ingredient(s) and their strength(s) and the package can include the amount (for example, number of tablets, volume, etc) that is contained in a particular container (for example, 100 capsules of Amoxicillin 500mg per bottle).
  -->
 </p>
 <p>

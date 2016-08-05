@@ -3,6 +3,8 @@
 <div>
 <a name="scope"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
+<p><strong>This resource is an <em>event</em> resource from a FHIR workflow perspective - see <a href="workflow.html">Workflow</a>.   It is the intent of the Orders and Observation Workgroup to align this resource with  the workflow pattern for <a href="workflow.html#event"><em>event</em> resources</a>.</strong></p>
+
 <p>
 Observations (наблюдения) являются центральным элементом в здравоохранении, используемыми для подтверждения диагнозов, мониторинга прогресса, определения базисных линий и шаблонов, и даже для ввода демографических показателей. Большинство наблюдений представляют собой утверждения в виде простых пар имя/значение с некоторыми метаданными, однако же другие наблюдения группируют другие наблюдения вместе логически, или даже являются многокомпонентными наблюдениями. 
 Обратите внимание, что ресурс <a href="diagnosticreport.html">DiagnosticReport</a> обеспечивает клинический контекст для целого ряда наблюдений.
@@ -38,8 +40,8 @@ provides a clinical or workflow context for a set of observations. --> </p>
   <li>Core characteristics like  <a href="observation-example-pregnancy.html">pregnancy status</a>, or a <a href="observation-example-death.html">death assertion</a></li>
 </ul>
 
-<p>Также для ресурса Observation были определены следующие основные <a href="profiling.html">профили</a>. <strong>Если реализации используют ресурс Observation, то они должны соответствовать этим профилям при выражении концептов, специфичных для этих профилей, в виде структурированных данных:</strong> 
-<!-- The following core <a href="profiling.html">profiles</a> for the Observation resource have been defined as well. <strong>If implementations use the Observation Resource, they SHALL conform to these profiles when supporting these specific use cases. :</strong>  -->
+<p>Также для ресурса Observation были определены следующие основные <a href="profiling.html">профили</a>. <b>Если реализации используют ресурс Observation, то они должны соответствовать этим профилям при выражении концептов, специфичных для этих профилей, в виде структурированных данных:</b> 
+<!-- The following core <a href="profiling.html">profiles</a> for the Observation resource have been defined as well. <b>If implementations use the Observation Resource, they SHALL conform to these profiles when expressing the profile-specific concepts as structured data:</b>  -->
 </p>
 <ul>
   <li><a href="observation-vitalsigns.html">Основные показатели состояния организма:</a> температура, кровяное давление, частота дыхания<!-- <a href="observation-vitalsigns.html">Vital signs:</a> temperature, blood pressure, respiration rate --></li>

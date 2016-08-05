@@ -31,16 +31,16 @@ on a patient's clinical record and context of care. Planned procedures reference
 <a name="bnr"> </a>
 <h2>Границы и связи</h2>
 <p>
-ProcedureRequest тесно связан с другими типами ресурсов-запросов, в частности с <a href="diagnosticorder.html">DiagnosticOrder</a> и <a href="referralrequest.html">ReferralRequest</a>. На самом деле для некоторых услуг может подойти использование любого из этих ресурсов для запроса на выполнение процедуры. Какой из них использовать - может определяться принятой в организации практикой, и контекстом. Когда неясно, какой из них использовать, могут помочь следующие правила:
-<!-- ProcedureRequest is closely related to other types of "request" resources, particularly <a href="diagnosticorder.html">DiagnosticOrder</a>
+ProcedureRequest тесно связан с другими типами ресурсов-запросов, в частности с <a href="diagnosticrequest.html">DiagnosticRequest</a> и <a href="referralrequest.html">ReferralRequest</a>. На самом деле для некоторых услуг может подойти использование любого из этих ресурсов для запроса на выполнение процедуры. Какой из них использовать - может определяться принятой в организации практикой, и контекстом. Когда неясно, какой из них использовать, могут помочь следующие правила:
+<!-- ProcedureRequest is closely related to other types of "request" resources, particularly <a href="diagnosticrequest.html">DiagnosticRequest</a>
 and <a href="referralrequest.html">ReferralRequest</a>.  In fact, for some services, it may be appropriate to use any one of these
 resources to request that the procedure be performed.  Which one is used may be driven by organization practice and by context.  When
 it is unclear which to use, the following principles may be helpful: -->
 </p>
 <ul>
 <li>
-ProcedureRequest или DiagnosticOrder обычно используются, когда запрашивающий врач имеет полномочия (и компетентность) и желает воспользоваться ими, чтобы принять решение о том, какое именно действие следует выполнить.
-<!-- ProcedureRequest or DiagnosticOrder are typically used when the requesting clinician has and wishes to exercise the authority 
+ProcedureRequest или DiagnosticRequest обычно используются, когда запрашивающий врач имеет полномочия (и компетентность) и желает воспользоваться ими, чтобы принять решение о том, какое именно действие следует выполнить.
+<!-- ProcedureRequest or DiagnosticRequest are typically used when the requesting clinician has and wishes to exercise the authority 
 (and expertise) to decide exactly what action will be done. -->
 </li>
 <li>
@@ -50,16 +50,16 @@ and/or authority to determine the specific action to take. -->
 </li>
 <li>
 Выбор между процедурой и диагностическим обследованием обычно обусловлен тем, насколько инвазивным будет это мероприятие. Многие инвазивные обследования оформляют, как правило, в виде процедур, хотя грань между ними может варьироваться в зависимости от организации.
-<!-- Whether an activity is deemed to be a procedure or only a diagnostic order is typically driven by how invasive the diagnostic process
+<!-- Whether an activity is deemed to be a procedure or only a diagnostic request is typically driven by how invasive the diagnostic process
 is.  More invasive processes are typically represented as procedures, though the dividing line may vary by organization. -->
 </li>
 </ul>
 <p>
-Независимо от приведенных выше инструкций, системы должны быть готовы к частичному пересечению этих ресурсов и быть готовы выполнять поиск по нескольким ресурсам в тех случаях, когда разграничение гарантировать невозможно. Кроме того, в некоторых рабочих процессах может участвовать больше одного типа ресурсов или даже все три. Например после получения ReferralRequest врач может инициировать DiagnosticOrder. Затем служба диагностики может инициировать ProcedureRequest.
+Независимо от приведенных выше инструкций, системы должны быть готовы к частичному пересечению этих ресурсов и быть готовы выполнять поиск по нескольким ресурсам в тех случаях, когда разграничение гарантировать невозможно. Кроме того, в некоторых рабочих процессах может участвовать больше одного типа ресурсов или даже все три. Например после получения ReferralRequest врач может инициировать DiagnosticRequest. Затем служба диагностики может инициировать ProcedureRequest.
 <!-- Irrespective of the guidance above, systems should be prepared for some degree of overlap between these resources and be
 prepared to execute searches against multiple resources in cases where differentiation cannot be guaranteed.  As well, in some workflows
 more than one type of resource or even all three might exist; e.g. Upon receiving a ReferralRequest a practitioner might initiate a 
-DiagnosticOrder.  The diagnostic service might then initiate a ProcedureRequest. -->
+DiagnosticRequest.  The diagnostic service might then initiate a ProcedureRequest. -->
 </p>
 <p>
 Понятия ProcedureRequest и <a href="communicationrequest.html">CommunicationRequest</a> также тесно связаны. 

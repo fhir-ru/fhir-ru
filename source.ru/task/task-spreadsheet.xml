@@ -969,9 +969,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A task to be performed</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Задача, подлежащая выполнению<!-- A task to be performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A task to be performed</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Задача, подлежащая выполнению<!-- A task to be performed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1002,9 +1002,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Task Instance Identifier</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор экземпляра задачи<!-- Task Instance Identifier --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The business identifier for this task.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Бизнес-идентификатор этой задачи.<!-- The business identifier for this task. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1035,9 +1035,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Request fulfilled by this task</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Запрос, выполняемый этой задачей<!-- Request fulfilled by this task --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies a plan, proposal or order that this task has been created in fulfillment of</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентифицирует план, предложение или заказ, в рамках выполнения которого была создана эта задача<!-- Identifies a plan, proposal or order that this task has been created in fulfillment of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1068,11 +1068,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Requisition or grouper id</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор заявки или группировки<!-- Requisition or grouper id --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An identifier that links together multiple tasks and other requests that were created in the same context</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, связывающий несколько задач и другие запросы, которые были созданы в одном и том же контексте<!-- An identifier that links together multiple tasks and other requests that were created in the same context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Billing and/or reporting can be linked to whether multiple requests were created as a single unit.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Выставление счетов и/или составление отчётов могут быть привязаны к нескольким запросам, созданным в виде единого блока.<!-- Billing and/or reporting can be linked to whether multiple requests were created as a single unit. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1102,11 +1102,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Composite task</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Составная задача<!-- Composite task --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Task that this particular task is part of</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Задача, частью которой является данная задача<!-- Task that this particular task is part of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Allows tasks to be broken down into sub-steps (and this division can occur independent of the original task)</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет разбивать задачи на подзадачи (и это разделение может происходить независимо от исходной задачи)<!-- Allows tasks to be broken down into sub-steps (and this division can occur independent of the original task) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">This should usually be 0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1141,9 +1141,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">draft | requested | received | accepted | +</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The current status of the task.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Текущий статус задачи.<!-- The current status of the task. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">These states enable coordination of task status with off-the-shelf workflow solutions that support automation of tasks.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Эти состояния позволяют координировать статус задачи в имеющихся в наличии решениях рабочих процессов, которые поддерживают автоматизацию задач.<!-- These states enable coordination of task status with off-the-shelf workflow solutions that support automation of tasks. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1173,12 +1173,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Reason for current status</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Обоснование текущего статуса<!-- Reason for current status --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">An explanation as to why this task is held, failed, was refused, etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Пояснение, почему данная задача приостановлена, провалена, отклонена и т. п.<!-- An explanation as to why this task is held, failed, was refused, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This applies to the current status.  Look at the history of the task to see reasons for past statuses</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Относится к текущему статусу. См. историю задачи, чтобы увидеть причины предыдущих статусов<!-- This applies to the current status.  Look at the history of the task to see reasons for past statuses --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.inboundRelationship[typeCode=SUBJ].source[classCode=CACT, moodCode=EVN, code=&quot;status change&quot;].reasonCode</Data><NamedCell
@@ -1208,11 +1208,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">E.g. &quot;Specimen collected&quot;, &quot;IV prepped&quot;</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Например "Проба для анализа взята", "Внутривенная игла подготовлена"<!-- E.g. &quot;Specimen collected&quot;, &quot;IV prepped&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Contains business-specific nuances of the business state.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Содержит бизнес-специфические нюансы данного бизнес-состояния.<!-- Contains business-specific nuances of the business state. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">There's often a need to track substates of a task - this is often variable by specific workflow implementation</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Часто возникает необходимость отслеживать подсостояния задачи - это часто зависит от конкретной реализации рабочего процесса<!-- There's often a need to track substates of a task - this is often variable by specific workflow implementation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1246,10 +1246,10 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">proposed | planned | actionable +</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Indicates the &quot;level&quot; of actionability associated with the Task.  I.e. Is this a proposed task, a planned task, an actionable task, etc.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Показывает "уровень" возможности к действию, ассоциированный с данной задачей. Т. е. является ли эта задача предложенной, запланированной, применимой и т. п.<!-- Indicates the &quot;level&quot; of actionability associated with the Task.  I.e. Is this a proposed task, a planned task, an actionable task, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">This element is immutable.  Proposed tasks, planned tasks, etc. must be distinct instances.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String"><!-- This element is immutable.  Proposed tasks, planned tasks, etc. must be distinct instances. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.moodCode</Data><NamedCell
@@ -1279,9 +1279,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Task Type</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип задачи<!-- Task Type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">A name or code (or both) briefly describing what the task involves.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя или код (или и то, и другое), кратко описывающие, что содержит в себе задача.<!-- A name or code (or both) briefly describing what the task involves. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1311,14 +1311,14 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">If missing, this task should be performed with normal priority</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Если опущено, данную задачу следует выполнять с обычным приоритетом<!-- If missing, this task should be performed with normal priority --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">low | normal | high</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The priority of the task among other tasks of the same type</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Приоритет задачи по сравнению с другими задачами такого же типа<!-- The priority of the task among other tasks of the same type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Used to identify the service level expected while performing a task.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Используется для идентификации ожидаемого уровня обслуживания во время выполнения задачи.<!-- Used to identify the service level expected while performing a task. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1348,9 +1348,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Human-readable explanation of task</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Человекочитаемое пояснение задачи<!-- Human-readable explanation of task --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A free-text description of what is to be performed.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Произвольное текстовое описание того, что должно быть выполнено.<!-- A free-text description of what is to be performed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1382,13 +1382,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">What task is acting on</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String"><!-- What task is acting on --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The request being actioned or the resource being manipulated by this task</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String"><!-- The request being actioned or the resource being manipulated by this task --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Used to identify the thing to be done</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String"><!-- Used to identify the thing to be done --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">If multiple resources need to be manipulated, use sub-tasks.  (This ensures that status can be tracked independently for each referenced resource.)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String"><!-- If multiple resources need to be manipulated, use sub-tasks.  (This ensures that status can be tracked independently for each referenced resource.) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.outboundRelationship[typeCode=SUBJ].target</Data><NamedCell

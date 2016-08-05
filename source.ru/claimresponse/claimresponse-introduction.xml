@@ -4,9 +4,9 @@
 <a name="scope"> </a>
 <h2>Область применения и использование</h2>
 <p>
-Ресурс ClaimResponse содержит либо ошибку прикладного уровня, либо результаты судебного решения, которые являются результатом обработки предъявленного disciplineClaim, которое является функциональным следствием иска, предварительного определения или предварительного санкционирования.
+Ресурс ClaimResponse содержит либо ошибку прикладного уровня, либо результаты судебного решения, которые являются результатом обработки предъявленного ресурса Claim, где Claim может быть функциональным следствием иска, предварительного определения или предварительного санкционирования.
 <!-- The ClaimResponse resource provides application level error or application level adjudication results
- which are the result of processing a submitted disciplineClaim which is the functional corollary of 
+ which are the result of processing a submitted  Claim resource where that Claim may be which is the functional corollary of 
  a Claim, Pre-Determination or a Pre-Authorization. -->
  </p>
  <p>
@@ -18,12 +18,11 @@
  submitted later. Only an actual claim may be expected to result in actual payment. -->
  </p>
 <p>
-Ресурс ClaimResponse является ответом на предъявление: OralHealthClaim, VisionClaim и т. п., и Reversals.
-<!-- The ClaimResponse resource is the response for the submission of: OralHealthClaim, VisionClaim etc. 
+Ресурс ClaimResponse является ответом на предъявление: Claim, Re-adjudication и Reversals.
+<!-- The ClaimResponse resource is the response for the submission of: Claim, Re-adjudication 
 and Reversals. -->
 </p>
 <p>
-Todo
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
 </p>
 </div>

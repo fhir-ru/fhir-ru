@@ -26,6 +26,7 @@ with various security protocols defined elsewhere. This section gathers all info
 in one section. A summary: -->
 </p>
 <ul class="dense">
+ <li>Time Keeping - all clocks should be synchronised using NTP/SNTP, and the design of the system should be robust against a system clock with the wrong value</li>
  <li>Защита коммуникации (Communications Security) - обмен рабочей информацией должен быть защищен с помощью протоколов TLS/SSL (например https)</li>
  <li>Аутентификация (Authentication) - возможна любая форма аутентификации пользователей / клиентов. Для решений, основанных на веб, рекомендуется использовать OAuth</li>
  <li>Контроль авторизации / доступа (Authorization/Access Control) - стандарт FHIR определяет инфраструктуру для различных уровней безопасности (Security Label infrastructure) в целях обеспечения контроля доступа. FHIR также может определять набор ресурсов для управления доступом к информации, однако, на настоящий момент такие ресурсы не были определены. <!-- FHIR defines a Security Label infrastructure to support access control management.  FHIR may also define a set of resources to administer access control management, but does not define any at present --> </li>
@@ -52,6 +53,8 @@ list</a> for prompt consideration. -->
 <!-- Implementers should track the developing IHE IUA Profile for additional security considerations. -->
 </p>
 
+<a name="general"> </a>
+<h2>General Considerations</h2>
 <p>
 Системе, построенной на стандарте FHIR, потребуется подсистема контроля безопасности и пользовательского доступа, 
 обеспечивающая аутентификацию и авторизацию пользователей. Вопрос соответствия системы архитектуре развертывания
@@ -215,6 +218,27 @@ as much as it is true for a server returning resources on a GET. The presumption
 proper authorization, to the satisfaction of the data holder, the data does not get communicated. -->
 </p>
 <p>
+Two of the classic Access Control models are: Role-Based Access Control (RBAC), and Attribute-Based Access Control (ABAC). 
+</p>
+<p>
+In Role-Based Access Control (RBAC), permissions are operations on an object that a user wishes to access. 
+Permissions are grouped into roles. A role characterizes the functions a user is allowed to perform. Roles 
+are assigned to users. If the user’s role has the appropriate permissions to access an object, then that 
+user is granted access to the object. FHIR readily enables RBAC, as FHIR Resources are object types and 
+the CRUDE events (the FHIR equivalent to permissions in the RBAC scheme) are operations on those objects. 
+</p>
+<p>
+In Attribute-Based Access Control (ABAC), a user requests to perform operations on objects. That user's 
+access request is granted or denied based on a set of access control policies that are specified in terms 
+of attributes and conditions. FHIR readily enables ABAC, as instances of a Resource in FHIR (again, 
+Resources are object types) can have attributes associated with them. These attributes include security 
+tags, environment conditions, and a host of user and object characteristics, which are the same 
+attributes as those used in ABAC. Attributes help define the access control policies that determine 
+the operations a user may perform on a Resource (in FHIR) or object (in ABAC). 
+For example, a tag (or attribute) may specify that the identified Resource (object) is not to be 
+further disclosed without explicit consent from the patient.
+</p>
+<p>
 Правила, на которых основываются решения по предоставлению доступа часто очень сложны, и могут зависеть от информации, источником которой является:
 <!-- The rules behind the access control decision are often very complex, and potentially depends on information sourced from: -->
 </p>
@@ -304,17 +328,14 @@ still contain a rich set of information about the clinical records.
  -->
 </p>
 
-
 <a name="signatures"> </a>
 <h2>
 Цифровые подписи (Digital Signatures)
 </h2>
 <p>
-Спецификация FHIR рекомендует использовать <a href="http://www.w3.org/TR/xmldsig-core/">цифровые подписи консорциума W3C</a>
-для подписи [ресурсов].
+Спецификация FHIR рекомендует использовать <a href="http://www.w3.org/TR/xmldsig-core/">цифровые подписи консорциума W3C</a> для подписи [ресурсов].
 <!--
-This specification recommends the use of <a href="http://www.w3.org/TR/xmldsig-core/">W3C Digital Signatures</a> 
-for signatures. -->
+This specification recommends the use of <a href="http://www.w3.org/TR/xmldsig-core/">W3C Digital Signatures</a> for signatures. -->
 Ресурсы могут быть подписаны с помощью ресурсов типа <a href="provenance.html">Provenance (происхождение)</a>, 
 несущих <a href="http://www.w3.org/TR/xmldsig-core/#def-SignatureDetached">отделенную цифровую подпись 
 (detached digital signature)</a>. 

@@ -2,8 +2,37 @@
 
 <!-- insert xhtml content here -->
 <h3>Примечания для реализаторов</h3>
+<p>
+A referenced DICOM SOP instance could be: 
+<ul>
+<li>A single- or multi-frame, still or video image captured by a variety of imaging modalities, such as X-ray, MR, and ultrasound;</li>
+<li>A set of various presentation parameters, including annotation and markup;</li>
+<li>A set of measurements or a report, including radiation dose report and CAD analysis;</li>
+<li>An encapsulated PDF or CDA document;</li>
+<li>A list of instances, such as key “of interest” images, or instances to be “deleted”; or </li>
+<li>Other DICOM content. </li>
+</ul>
+</p>
+<p>
+UID values follow the FHIR convention of expressing UIDs as URNs. For example, the DICOM Study Instance UID 
+of <code>1.2.250.1.59.40211.12345678.678910</code> is expressed as <code>“urn:oid:1.2.250.1.59.40211.12345678.678910”</code>. 
+</p>
+<p>  
+ImagingStudy.baseLocation and ImagingStudy.series.baseLocation can each list multiple methods to retrieve 
+the study, series or instances. If a study-level <a href="imagingmanifest.html#baseLocation">baseLocation</a> of a particular 
+type is present, it shall be applicable to all listed series and instances in the study, unless overridden by a 
+series-level <a href="imagingmanifest.html#baseLocation">baseLocation</a> of that type. (Series-level 
+locations can be provided because all series of a study are not guaranteed to be on the same server. For the identified 
+retrieval mechanisms, the services supporting instance-level retrieval do not differ from the series-level services, 
+thus instance-level baseLocation is not defined.) 
+</p>
+<p>
+The form, requirements, and necessary manipulation of the baseLocation.url depend on service identified in baseLocation.type:
+</p>
+<p>
 Подробную информацию по использованию baseLocation см. в <a href="imagingmanifest.html#baseLocation">Примечаниях для реализаторов к ImagingManifest</a>.
-
+See <a href="imagingmanifest.html#baseLocation">ImagingManifest Implementation Notes</a> for details on use of baseLocation
+</p>
 <h3>Сценарий использования<!-- Use Case --></h3>
 <h4>Доступ к результатам радиологических исследований из ЭМК<!-- EHR access to imaging studies --></h4>
 <p>
@@ -17,23 +46,23 @@ profile call using the url elements found in the <a href="imagingstudy.html">Ima
 </p>
 <h4>Всеобъемлющий плановый рабочий процесс работы с радиологическими изображениями<!-- Comprehensive Imaging Scheduled Workflow --></h4>
 <p>
-Джо Энджене жалуется на одышку и нерегулярную боль в груди своему основному лечащему врачу доктору Пату Дауну в местной поликлинике, который заказал для него стресс-эхокардиограмму; этот заказ создаётся в виде FHIR-ресурса <a href="order.html">Order</a> для управления рабочим процессом, со ссылкой на ресурс <a href="diagnosticorder.html">DiagnosticOrder</a> с деталями запроса. Заказ запланирован, и его исполнение назначенено кардиологу доктору Арту Сканну, также работающему в этой поликлинике.
+Джо Энджене жалуется на одышку и нерегулярную боль в груди своему основному лечащему врачу доктору Пату Дауну в местной поликлинике, который заказал для него стресс-эхокардиограмму; этот заказ создаётся в виде FHIR-ресурса <a href="task.html">Task</a> для управления рабочим процессом, со ссылкой на ресурс <a href="diagnosticrequest.html">DiagnosticRequest</a> с деталями запроса. Заказ запланирован, и его исполнение назначенено кардиологу доктору Арту Сканну, также работающему в этой поликлинике.
 <!-- Joe Angina complains of shortness of breath and occasional chest pain to his primary care physician, Dr. Pat Down at 
-Local MultiClinic, who orders a stress echocardiogram; the order is created as a FHIR <a href="order.html">Order</a> 
-resource to manage the workflow, with a link to a <a href="diagnosticorder.html">DiagnosticOrder</a> resource with 
+Local MultiClinic, who orders a stress echocardiogram; the order is created as a FHIR <a href="task.html">Task</a> 
+resource to manage the workflow, with a link to a <a href="diagnosticrequest.html">DiagnosticRequest</a> resource with 
 the details of the request.   The order is scheduled and assigned to cardiologist Dr. Art Skann, also at Local MultiClinic. -->
 </p>
 <p>
-В назначенный по расписанию день обследования Джо прибывает в лабораторию ультразвуковой эхографии для встречи с доктором Сканном и выполнения исследования. Рабочая станция доктора Сканна показывает ежедневный список <a href="order.html">Order</a>, и он переходит по ссылке для открытия заказа на диагностическое исследование (<a href="diagnosticorder.html">DiagnosticOrder</a>). Он может перейти по ссылкам из ресурса <a href="patient.html">Patient</a> для доступа к электронной истории болезни Джо, но в данном случае нас это не интересует.
+В назначенный по расписанию день обследования Джо прибывает в лабораторию ультразвуковой эхографии для встречи с доктором Сканном и выполнения исследования. Рабочая станция доктора Сканна показывает ежедневный список <a href="task.html">Task</a>, и он переходит по ссылке для открытия заказа на диагностическое исследование (<a href="diagnosticrequest.html">DiagnosticRequest</a>). Он может перейти по ссылкам из ресурса <a href="patient.html">Patient</a> для доступа к электронной истории болезни Джо, но в данном случае нас это не интересует.
 <!-- On the scheduled day of the exam, Joe arrives at the echo lab to meet with Dr. Skann and have the study done.  
-Dr. Skann’s workstation shows the daily list of <a href="order.html">Order</a>, and he follows the link to retrieve the 
-<a href="diagnosticorder.html">DiagnosticOrder</a>. (He may follow the links through the 
+Dr. Skann’s workstation shows the daily list of <a href="task.html">Task</a>, and he follows the link to retrieve the 
+<a href="diagnosticrequest.html">DiagnosticRequest</a>. (He may follow the links through the 
 referenced <a href="patient.html">Patient</a> resource to access Joe’s electronic 
 medical record, but that is not the concern of this storyboard.)   -->
 </p>
 <p>
-<a href="order.html">Order</a> и <a href="diagnosticorder.html">DiagnosticOrder</a> были перекодированы в DICOM Modality Worklist Scheduled Procedure Step, а оборудование в лаборатории ультразвуковой эхографии скачало Modality Worklist. Исследование выполнено, и полученные изображения и предварительные измерения специалиста по ультразвуковой эхографии сохранены в локальной системе передачи и архивации изображений поликлиники (PACS). Система создаёт ресурс <a href="imagingstudy.html">ImagingStudy</a> для каждого проводимого исследования.
-<!-- The <a href="order.html">Order</a> and <a href="diagnosticorder.html">DiagnosticOrder</a> has been transcoded to a DICOM Modality Worklist 
+<a href="task.html">Task</a> и <a href="diagnosticrequest.html">DiagnosticRequest</a> были перекодированы в DICOM Modality Worklist Scheduled Procedure Step, а оборудование в лаборатории ультразвуковой эхографии скачало Modality Worklist. Исследование выполнено, и полученные изображения и предварительные измерения специалиста по ультразвуковой эхографии сохранены в локальной системе передачи и архивации изображений поликлиники (PACS). Система создаёт ресурс <a href="imagingstudy.html">ImagingStudy</a> для каждого проводимого исследования.
+<!-- The <a href="task.html">Task</a> and <a href="diagnosticrequest.html">DiagnosticRequest</a> has been transcoded to a DICOM Modality Worklist 
 Scheduled Procedure Step, and in the echo lab the equipment has downloaded the Modality Worklist.  The 
 study is performed, and the acquired images and sonographer’s preliminary measurements are stored in the 
 Local MultiClinic Picture Archiving and Communication System (PACS).  The PACS creates 

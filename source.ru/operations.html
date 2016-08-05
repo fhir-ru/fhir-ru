@@ -40,7 +40,7 @@ Operations are executed using a URL derived from the FHIR endpoint, where the na
  POST http://fhir.someserver.org/fhir/Patient/1/$everything
 </pre>
 <p>
-When an operation is idempotent, and the parameters are all simple ones 
+When an operation is idempotent, and the parameters are all primitive data types with no extensions 
 (as is the case with the example above), it may be invoked using GET as well.
 </p>
 <p>
@@ -71,18 +71,12 @@ In this case, the response is simply the resource that is the return value, with
 <a name="defined"> </a>
 <h3>Операции, определенные FHIR</h3>
 <p>
-Данная спецификация дает определение нескольких операций:
-</p>
-<%operationslist%>
 <p>
-Notes:
+See <a href="operationslist.html">the list of defined operations</a>.
 </p>
-<ul>
- <li>The special operations on the <code>meta</code> element also operate on previous versions of a resource (/_history/).  They are the only operations that can manipulate versions other than the "current" version.</li>
-</ul>
 
 <a name="extensibility"> </a>
-<h3>Implementations Defined Operations</h3>
+<h3>Implementation Defined Operations</h3>
 <p>
 Реализации имеют возможность определять свои собственные операции в дополнение к тем, что описаны здесь. Конфликты имен между операциями, определенными различными реализаторами, можно разрешать с помощью <a href="conformance.html">заявления о соответствии</a> сервера.
 </p>
@@ -112,12 +106,13 @@ defined here.
  <li>Имя - имя параметра. Для удобства разработчиков имя должно быть допустимым токеном (см. ниже)</li>
  <li>Использование - In | Out | Both</li>
  <li>Тип - тип данных или тип ресурса</li>
+ <li>Search Type - for string search parameters, what kind of search parameter they are (&amp; and what kind of modifiers they have)</li>
  <li>Profile - <a href="structuredefinition.html">StructureDefinition</a>, который применяет дополнительные ограничения к ресурсу</li>
  <li>Документация - описание применения параметра</li>
  <li>(Optional) Search Type - if the type is a string, and the parameter is being used like a search parameter, which kind of search type applies</li>
 </ul>
 <p>
-Имеется специальный тип параметра "Tuple", у которого есть дополнительные части. Каждая часть содержит ту же самую  информацию, что и сам параметр, кроме использования, которое берется из параметра, частью которого оно является.
+Параметры могут быть вложенными в составные параметры. Каждая часть содержит ту же самую информацию, что и сам параметр, кроме использования, которое берется из параметра, частью которого она является.
 </p>
 
 <p>
@@ -163,7 +158,9 @@ URL-адрес точки взаимодействия операции зави
 Как правило, операция вызывается выполнением HTTP POST-запроса к точке взаимодействия операции.
 Форматом отправляемого содержимого будет специальный формат <a href="parameters.html">Parameters</a> (входные, "in"-параметры) - это список именованных параметров. В качестве примера см. <a href="op-example-request.html">запрос на развертывание (expansion) набора значений</a>.
 <!-- An operation is generally invoked by performing an HTTP POST to the operation's end-point.
-The submitted content is the special <a href="parameters.html">Parameters</a> format (the "in" parameters) - a list of named parameters. For an example, see <a href="op-example-request.html">the value set expansion request example</a>. -->
+The submitted content is the special <a href="parameters.html">Parameters</a> format (the "in" parameters) - a list of named parameters. 
+For an example, see <a href="op-example-request.html">the value set expansion request example</a>. -->
+Note that when parameters have a search type, the search modifiers are available, and are used on the parameter name in the Parameters resource (e.g. "code:in").
 </p>
 <p>
 Обратите внимание, что к <a href="http.html#mime-type">типам контента</a> применяются те же самые соглашения, что и к RESTful-интерфейсу.
@@ -172,20 +169,23 @@ with respect to <a href="http.html#mime-type">content types</a>. -->
 </p>
 <p>
 Если все параметры операции являются <a href="datatypes.html#primitive">примитивными типами</a>, и эта операция является идемпотентной (см. <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">определение термина <i>идемпотентный</i> в спецификации HTTP</a>), операцию можно вызывать выполнением операции HTTP GET, где все значения параметров добавляются к URL-адресу в его поисковую часть (например после символа '?'). Серверы ДОЛЖНЫ поддерживать этот метод вызова.
-<!-- If there are all the parameters for the operation are <a href="datatypes.html#primitive">primitive types</a>, and the operation
+<!-- If all the parameters for the operation are <a href="datatypes.html#primitive">primitive types</a>, and the operation
 is <i>idempotent</i> (see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP specification 
 definition of idempotent</a>), the operation may be invoked by performing an HTTP GET operation where 
 all of the values of the parameters are appended to the URL in the search portion of the URL (e.g. after the '?' character).
-Servers SHALL support this method of invocation. -->
+Servers SHALL support this method of invocation. E.g. -->
 </p>
+<pre>
+GET [base]/ValueSet/$expand?identifier=http://hl7.org/fhir/ValueSet/body-sit&amp;filter=abdo
+</pre>
 <p>
 If the only parameter to the operation is a resource, then the operation can also executed 
 by a POST with that parameter as the body of the request.
 </p>
 
 <p>
-Серверы МОГУТ также поддерживать метод отправки параметров с полей формы <i>multi-part/form-data</i>, который может быть полезен при тестировании операции с помощью HTML-форм.
-<!-- Servers MAY choose to support submission of the parameters <i>multi-part/form-data</i> method as well,
+Также серверы МОГУТ также поддерживать метод отправки параметров, представленный в формате <a href="https://www.ietf.org/rfc/rfc2388.txt">multi-part/form-data</a>, который может быть полезен при тестировании операции с помощью HTML-форм.
+<!-- Servers MAY choose to support submission of the parameters represented in <a href="https://www.ietf.org/rfc/rfc2388.txt">multi-part/form-data</a> format as well,
 which can be useful when testing an operation using HTML forms. -->
 </p>
 
@@ -194,13 +194,23 @@ which can be useful when testing an operation using HTML forms. -->
 <h4>Ответ на операцию</h4>
 
 <p>
-Если операция выполняется успешно, возвращается HTTP статус-код 200 ОК. HTTP статус-код вида 4xx или 5xx говорит об ошибке, при этом может быть возвращен <a href="operationoutcome.html">OperationOutcome</a>. 
-Пользовательским агентам следует отметить, что серверы могут переадресовывать клиента для аутентификации в ответ на запрос операции.
-<!-- If an operation succeeds, an HTTP Status code of 200 OK is returned. An
-HTTP status code of 4xx or 5xx indicates an error, and an
-<a href="operationoutcome.html">OperationOutcome</a> may be returned.
-User agents should note that servers may issue redirects, etc. to
-authenticate the client in response to an operation request.  -->
+Если операция выполняется успешно, возвращается HTTP статус код успешного выполнения. This will usually be a 2xx code, though it may also be a 303 See Other.
+Other kinds of 3xx codes should be understood to indicate that the 
+operation did not proceed, and the client will need to re-issue the 
+operation if it can perform the redirection (e.g. may get redirected
+to an authentication step). User agents should note that servers 
+may issue redirects, etc. to authenticate the client in response to 
+an operation request. HTTP статус-код вида 4xx или 5xx говорит об ошибке, при этом ДОЛЖЕН быть возвращен <a href="operationoutcome.html">OperationOutcome</a> с подробностями ошибки. 
+<!-- If an operation succeeds, an HTTP Status success code is returned. 
+This will usually be a 2xx code, though it may also be a 303 See Other.
+Other kinds of 3xx codes should be understood to indicate that the 
+operation did not proceed, and the client will need to re-issue the 
+operation if it can perform the redirection (e.g. may get redirected
+to an authentication step). User agents should note that servers 
+may issue redirects, etc. to authenticate the client in response to 
+an operation request. An HTTP status code of 4xx or 5xx indicates 
+an error, and an <a href="operationoutcome.html">OperationOutcome</a> 
+SHOULD be returned with details.  -->
 </p>
 
 <p>

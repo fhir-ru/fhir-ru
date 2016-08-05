@@ -7,6 +7,7 @@
 Данный ресурс охватывает поставку всех лекарственных средств пациенту. Примеры включают в себя распределение и сбор из амбулаторной или общественной аптеки, выдачи лекарственных средств конкретным пациентам из аптеки при стационаре в палату, а также выдачи разовой дозы из склада при палате пациенту для употребления. Выдача лекарственного средства является результатом ответа аптечной системы на заказ медикамента.
 <!-- This resource covers the supply of all medications to a patient.  Examples include dispensing and pick-up from an out-patient or community pharmacy, dispensing patient-specific medications from in-patient pharmacy to ward, as well as issuing a single dose from ward stock to a patient for consumption. The medication dispense is the result of a pharmacy system responding to a medication order. -->
 </p>
+    <p>С точки зрения рабочего процесса FHIR, MedicationDispense - ресурс-событие. См. <a href="workflow.html#event">Событие в рабочем процессе</a>.<!-- MedicationDispense is an event resource from a FHIR workflow perspective - see <a href="workflow.html#event">Workflow Event</a> --></p>
 </div>
 
 <div>

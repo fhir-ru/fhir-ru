@@ -4,13 +4,13 @@
 <a name="scope"> </a>
 <h2>Область применения и использование</h2>
 <p>
-OralHealthClaim - один из набора аналогичных ресурсов (OralHealthClaim, VisionClaim, PharmacyClaim, ProfessionalClaim, InstitutionalClaim), которые используются поставщиками для обмена финансовой информацией, а также для поддержки клинической информации в отношении предоставления услуг здравоохранения. Основными видами использования этого ресурса является поддержка eClaims, обмен данными о текущих или предлагаемых услугах c плательщиками пособий (benefit payors), страховщиками и национальными программами здравоохранения для планирования оплаты лечения и компенсации.
-<!-- The OralHealthClaim  is one of a suite of similar resources (VisionClaim, PharmacyClaim, ProfessionalClaim, InstitutionalClaim) which are used by providers to 
-exchange the financial information, and supporting clinical information, regarding the provision of healthcare services. The primary uses of this resource is to support eClaims, 
+Claim используется поставщиками и плательщиками, страховыми компаниями для обмена финансовой информацией, а также для поддержки клинической информации в отношении предоставления услуг здравоохранения плательщикам и фирм, которые проводят анализ данных. Основными видами использования этого ресурса является поддержка eClaims, обмен данными о текущих или предлагаемых услугах c плательщиками пособий (benefit payors), страховщиками и национальными программами здравоохранения для планирования оплаты лечения и компенсации.
+<!-- The Claim is used by providers and payors, insurers, to exchange the financial information, and supporting clinical information, regarding the provision
+ of healthcare services with payors an firms which provide data analytics. The primary uses of this resource is to support eClaims, 
 the exchange of proposed or actual services to benefit payors, insurers and national health programs, for treatment payment planning and reimbursement. -->
 </p>
 <p>
-Ресурс вида Claim предназначен для поддержки:
+Ресурс Claim предназначен для поддержки:
 <!-- The Claim is intended to support: -->
 <ul>
 <li>страховых требований (Claims) - для случаев, где предоставление товаров и услуг <b>завершено</b> и требуется компенсация.</li>
@@ -35,7 +35,7 @@ the exchange of proposed or actual services to benefit payors, insurers and nati
 </ul>
 </p>
 <p> 
-Todo
+
 </p>
 </div>
 

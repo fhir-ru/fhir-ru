@@ -3,7 +3,9 @@
 <div>
 <a name="scope"> </a>
 <h2>Область применения и использование</h2>
-<p><b>Данный ресурс еще не прошел надлежащую проверку рабочей группой FM. В настоящее время его следует считать проектом ресурса.<!-- This resource has not yet undergone proper review by FM. At this time, it is to be considered as a draft. --></b></p>
+<p><b>Примечание для участвующих в голосовании: имя данного ресурса используется в регулирующих органах в некоторых странах, поэтому для избежания путаницы или проблем, возможно, будет уместно переименовать его, к примеру, в ClaimSummary. Пожалуйста, обратитесь к Рабочей группе по управлению финансами, если это именно тот случай для вашей страны и предложите свою рекомендацию по наименованию этого ресурса.<!-- Notice to ballotors: The name of this resource is referred to in regulations in some jurisdictions and therefor to reduce confusion
+ or issues it may be appropriate to rename this resource, for example to ClaimSummary. Please advise the Financial Managemet Work Group
+ if this is the case for your jurisdaiction and provide a new name recommendation. --></b></p>
 <p>
 Ресурс ExplanationOfBenefit сочетает в себе ключевую информацию из Claim, ClaimResponse и, необязательно, Account для информирования пациента о товарах и услугах, оказанных поставщиком, и погашении, выполненном в соответствии со страховым покрытием пациента относительного этого Claim.
 <!-- The ExplanationOfBenefit resource combines key information from a Claim, a ClaimResponse and optional Account information to inform 

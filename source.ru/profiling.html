@@ -121,8 +121,8 @@ resources are known as the conformance resources. These conformance resources al
       <li>Определять расширения для использования в ресурсах или типах данных <!-- Define extensions that can be used in resources or data types --> </li>
     </ul>
  </li>
- <li>Смешивать пользовательские и стандартные справочники и выбирать, какие коды из них использовать в конкретных случаях (ресурсы <a href="valueset.html">Value Set</a> и StructureDefinition)
-<!-- Mix custom and standard terminologies and choose which codes from these to use for a particular (<a href="valueset.html">Value Set</a> and StructureDefinition Resources) --></li>
+ <li>Смешивать пользовательские и стандартные справочники и выбирать, какие коды из них использовать в конкретном кодированном элементе (ресурсы <a href="valueset.html">Value Set</a> и StructureDefinition)
+<!-- Mix custom and standard terminologies and choose which codes from these to use for a particular coded element (<a href="valueset.html">Value Set</a> and StructureDefinition Resources) --></li>
  <li>Устанавливать соответствие между локальными и стандартными справочниками или моделями содержания (ресурс <a href="conceptmap.html">Concept Map</a>)<!-- Map between local and standard terminologies or content models (<a href="conceptmap.html">Concept Map</a> Resource) --></li>
  <li>Регистрировать пространства имен систем для идентификаторов и справочников (ресурс <a href="namingsystem.html">NamingSystem</a>)<!-- Register system namespaces for identifiers and terminologies (<a href="namingsystem.html">NamingSystem</a> Resource) --></li>
  <li>Регистрировать и описывать в Словаре данных особые элементы данных, которые используются в различных системах (ресурс <a href="dataelement.html">DataElement</a> )<!-- Describe and register in a Data Dictionary specific Data Elements that are used across systems (<a href="dataelement.html">DataElement</a> Resource) --></li>
@@ -353,7 +353,7 @@ series of <a href="elementdefinition.html">Element Definitions</a>: -->
  <li>Ограничение доступных типов данных для элемента, в котором допустимы несколько типов<!-- Restricting the types for an element that allows multiple types --></li>
  <li>Требование к типизированному элементу или целевому объекту ссылки ресурса соответствовать другому структурному профилю (объявленному в этом же профиле либо в другом месте)<!-- Requiring a typed element or the target of a resource reference to conform to another structure profile (declared in the same profile, or elsewhere) --></li>
  <li>Указание привязки к другому терминологическому набору значений (см. ниже)<!-- Specifying a binding to a different terminology value set (see below) --></li>
- <li>Предоставление альтернативных определений, комментариев/примечаний к использованию и примеров для элементов, заданных в ресурсе, для объяснения, каким образом они используются в контексте этого профиля<!-- Providing alternative definitions, comments/usage notes for the elements defined in a Resource to explain how they are used in the context of the Profile --></li>
+ <li>Предоставление уточнённых определений, комментариев/примечаний к использованию и примеров для элементов, заданных в ресурсе, для отражения их использования в контексте этого профиля<!-- Providing alternative definitions, comments/usage notes for the elements defined in a Resource to explain how they are used in the context of the Profile --></li>
  <li>Предоставление более конкретных или дополнительных таблиц соответствия (например с <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> или <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>) для ресурса при использовании в определенном контексте<!-- Providing more specific or additional mappings (e.g. to <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> or <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>) for the resource when used in a particular context --></li>
  <li>Объявление, что один или несколько элементов в структуре должны быть 'поддержаны' (см. ниже)<!-- Declaring that one or more elements in the structure must be 'supported' (see below) --></li>
 </ul>
@@ -534,11 +534,12 @@ This element is called the "discriminator".
 that slices a list can determine the slice corresponding to an item in
 the list by checking whether the item's content meets the rules specified
 for the slice.  -->
-Это потребовало бы от обработчика возможности проверить все правила, применимые к этому срезу, и сделать это гипотетически в глубину. Оба этих требования неуместно сложны для операционной систем и особенно для генерируемого кода. Таким образом, для обеспечения способа различения срезов, для нарезаемого элемента можно указать поле или набор полей, которые будут действовать как "дискриминатор", т. е. будут использоваться для разделения срезов друг от друга.
+Это потребовало бы от обработчика возможности проверить все правила, применимые к этому срезу, и сделать это гипотетически в глубину. Оба этих требования неуместно сложны для операционной систем и особенно для генерируемого кода (например ПО, автоматически созданное на основе StructureDefinition). Таким образом, для обеспечения способа различения срезов, для нарезаемого элемента можно указать поле или набор полей, которые будут действовать как "дискриминатор", т. е. будут использоваться для разделения срезов друг от друга.
 <!-- This would require a processor to be able to check all the rules
 applied in the slice and to do so speculatively in a depth-first
 fashion. Both of these requirements are inappropriately difficult for an operational system,
-and particularly for generated code. Thus, to provide a better way to distinguish 
+and particularly for generated code (e.g. software that is automatically produced based on 
+the StructureDefinition). Thus, to provide a better way to distinguish 
 slices, a sliced element can designate a field or set of fields that act as a "discriminator" - they
 are used to tell the slices apart.  -->
 </p>
@@ -645,13 +646,16 @@ There are two special names: @type, and @profile. Here are some example discrimi
  <tr>  <td>List.entry</td> <td>item.reference.name</td> <td>Записи различаются элементами name в целевом ресурсе - возможно observation, которое может быть определено по другой информации в профиле<!-- Entries are differentiated by the name element on the target resource - probably an observation, which could be determined by other information in the profile --></td> </tr>
  <tr>  <td>List.entry</td> <td>item.reference.@type</td> <td>Записи различаются по типу целевого элемента, на который указывает ссылка<!-- Entries are differentiated by the type of the target element that the reference points to --></td> </tr>
  <tr>  <td>List.entry</td> <td>item.reference.@profile</td> <td>Записи различаются по профильному тегу целевого объекта ссылки, как указано в structure definition (TODO: как это сделать?)<!-- Entries are differentiated by a profile tag on the target of the reference, as specified by a structure definition (todo: how to do that?) --></td> </tr>
- <tr>  <td>List.entry</td> <td>item.extension["http://acme.org/extensions/test"].code</td> <td>Записи различаются по значению элемента code в расширении с указанным URL<!-- Entries are differentiated by the value of the code element in the extension with the designated URL --></td> </tr>
+ <tr>  <td>List.entry</td> <td>item.extension("http://acme.org/extensions/test").code</td> <td>Записи различаются по значению элемента code в расширении с указанным URL<!-- Entries are differentiated by the value of the code element in the extension with the designated URL --></td> </tr>
  <tr>  <td>List.entry.extension</td> <td>url</td> <td>Расширения различаются по значению их свойства url (обычно как разбиваются расширения)<!-- Extensions are differentiated by the value of their url property (usually how extensions are sliced) --></td> </tr>
  <tr>  <td>List.entry</td> <td>item.reference.@type, item.reference.code</td> <td>Расширения различаются сочетанием типа ссылаемого ресурса и, если есть, элементом code этого ресурса. Этот способ подходит тогда, когда List может состоять из Condition и набора наблюдейний, где каждое различается по своему имени - condition не имеет имени, так что считается null в этом наборе дискриминаторов<!-- Extensions are differentiated by the combination of type of the referenced resource, and, if it has one, the code element of that resource. This would be
    appropriate for where a List might be composed of a Condition, and set of observations, each differentiated by its name - the condition has no name, so that is evaluated as a null in the discriminator set --></td> </tr>
  <tr>  <td>Observation.value[x]</td> <td>@type</td> <td>Различные ограничивающие условия (например "должен поддерживаться", примечания к использованию, словарные привязки и т. п.) утверждены для различных поддерживаемых типов для элемента с выбором типа Observation.value[x]<!-- Different constraints (e.g. "must support", usage notes, vocabulary bindings, etc.) are asserted for different supported types for the multi-typed element Observation.value[x] --></td> </tr>
 </table>
-
+<p>
+Note that @type and @profile can also be used where a repeating element contains a resource directly (e.g. 
+<a href="domainresource.contained-definitions.html#DomainResource.contained">DomainResource.contained</a>, <a href="bundle-definitions.html#Bundle.entry">Bundle.entry</a>, <a href="parameters-definitions.html#Parameters.parameter.resource">Parameters.parameter.resource</a>).
+</p>
 <p>
 <a href="profiling-examples.html">Примеры нарезок и дискриминаторов</a> показывают, как именно представлены в профилях этот и другие типичные случаи использования нарезки.
 <!-- The <a href="profiling-examples.html">examples of slicing and discriminators</a> show exactly how this and other typical uses of slicing are represented in profiles. -->

@@ -1,6 +1,6 @@
 ﻿<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h3>Примечания<!-- Notes --></h3>
+<h3>Примечания к ресурсу Bundle<!-- Notes about Bundle --></h3>
 <ul>
 <li>
 Концептуально связка (bundle) - это список ресурсов с некоторым контекстом (называемый связями, и статус для записей) 
@@ -8,6 +8,7 @@
 <li>
 Поскольку Bundle сам по себе является <a href="resource.html">ресурсом</a>, он имеет те же общие метаданные, что и все ресурсы, включая декларирование профилей, теги и метки уровня безопасности
 <!-- Since a Bundle is itself a <a href="resource.html">Resource</a> it has the same common metadata as all resources, including profile assertions, tags, and security labels --></li>
+<li>Although there are not extensions on the Bundle itself, <code>link</code>, <code>entry</code>, and <code>search</code>/<code>request</code>/<code>response</code> can all have extensions. See <a href="patient.html#match">Patient</a> and <a href="location.html#positional">Location</a> for examples on search</li>
 <li>И Bundle.link, и Bundle.entry.link определены для поддержки обеспечения дополнительного контекста при использовании бандлов (например <a href="http://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a>). 
 Bundle.entry.link соответствует ссылкам, находящимся в HTTP-заголовке, если ресурс в записи (entry) был <a href="http.html#read">read</a> непосредственно. 
 Данная спецификация определяет некоторые специфические применения Bundle.link для <a href="search.html#conformance">searching</a> и <a href="http.html#paging">paging</a>, однако нет для Bundle.entry.link, и нет определенной функции в транзакции - значение зависит от реализации
@@ -276,8 +277,8 @@ by its identity in the bundle first before trying to access it by its URL. -->
 <ol>
  <li>Если ссылка не абсолютная, то сконвертировать её<!-- If the reference is not an absolute reference, convert it -->
   <ul>
-    <li>если в fullUrl указан URI, тогда (вы попали!) Что делать в этом случае?<!-- if the fullUrl is a uri, then (you're stuffed!) What to do in this case?  --></li>
-    <li>если fullUrl ресурса содержит RESTful-ссылку (см. <a href="references.html#regex">регулярное выражение для RESTful URL</a>), извлечь <a href="http.html#base">[base]</a>, и добавить к нему эту ссылку<!-- if the fullUrl of the resource that contains the reference is a RESTful one (see the <a href="references.html#regex">RESTful URL regex</a>), extract the <a href="http.html#base">[base]</a>, and append the reference to it --></li>
+    <li>если fullUrl начинается с urn:uuid: или urn:oid:, тогда добавить этот id к базовому URL и попытаться разрешить ссылку внутри бандла как для RESTful URL-ссылки. Если разрешение ссылки невозможно, тогда эта ссылка не имеет смысла в рамках данной спецификации<!-- If the fullUrl starts with urn:uuid: or urn:oid:, then treat then append the id to the base URL and try to resolve within the bundle as for a RESTful URL reference.  If no resolution is possible, then the reference has no defined meaning within this specification  --></li>
+    <li>если fullUrl ресурса содержит RESTful-ссылку (см. <a href="references.html#regex">регулярное выражение для RESTful URL</a>), извлечь <a href="http.html#root">[root]</a>, и добавить к нему эту ссылку<!-- if the fullUrl of the resource that contains the reference is a RESTful one (see the <a href="references.html#regex">RESTful URL regex</a>), extract the <a href="http.html#root">[root]</a>, and append the reference to it --></li>
     <li>иначе работать с fullUrl как с обычной URL-ссылкой по стандартному методу <a href="https://tools.ietf.org/html/rfc2396#section-5.2">Приведение относительных ссылок к абсолютной форме</a><!-- otherwise, treat the fullUrl as a normal URL, and follow the normal method for <a href="https://tools.ietf.org/html/rfc2396#section-5.2">Resolving Relative References to Absolute Form</a> --></li>
   </ul>
  </li>
@@ -328,8 +329,8 @@ URL before matching fullUrl, and then match the version based on <code>Resource.
       &lt;Observation&gt;
          &lt;id value=&quot;123&quot;/&gt;
          &lt;subject&gt;
-           &lt;!-- это ссылка на ресурс выше --&gt;
-           &lt;reference value=&quot;Patient/1&quot;/&gt;
+           &lt;!-- это ссылка на первый ресурс выше --&gt;
+           &lt;reference value=&quot;Patient/23&quot;/&gt;
          &lt;/subject&gt;
       &lt;/Organization&gt;
     &lt;/resource&gt;
@@ -356,7 +357,7 @@ URL before matching fullUrl, and then match the version based on <code>Resource.
       &lt;Observation&gt;
          &lt;id value=&quot;12&quot;/&gt;
          &lt;subject&gt;
-           &lt;!-- ссылка на пациента выше --&gt;
+           &lt;!-- ссылка на второго пациента выше --&gt;
            &lt;reference value=&quot;urn:uuid:04121321-4af5-424c-a0e1-ed3aab1c349d&quot;/&gt;
          &lt;/subject&gt;
       &lt;/Observation&gt;

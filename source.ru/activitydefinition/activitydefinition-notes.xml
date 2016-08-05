@@ -13,8 +13,8 @@
 	<tbody>
 		<tr><td>коммуникация<!-- communication --></td><td>CommunicationRequest</td></tr>
 		<tr><td>устройство<!-- device --></td><td>DeviceUseRequest</td></tr>
-		<tr><td>диагностика<!-- diagnostic --></td><td>DiagnosticOrder</td></tr>
-		<tr><td>диета<!-- diet --></td><td>NutritionOrder</td></tr>
+		<tr><td>диагностика<!-- diagnostic --></td><td>DiagnosticRequest</td></tr>
+		<tr><td>диета<!-- diet --></td><td>NutritionRequest</td></tr>
 		<tr><td>лекарственное средство<!-- drug --></td><td>MedicationOrder</td></tr>
 		<tr><td>случай обслуживания<!-- encounter --></td><td>Appointment</td></tr>
 		<tr><td>иммунизация<!-- immunization --></td><td>ImmunizationRecommendation</td></tr>

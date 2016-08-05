@@ -3,16 +3,15 @@
 <div>
 <a name="scope"> </a>
 <h2>Область применения и использование</h2>
-<p><b>Данный ресурс еще не прошел надлежащую проверку рабочей группой FM. В настоящее время его следует считать проектом ресурса.<!-- This resource has not yet undergone proper review by FM. At this time, it is to be considered as a draft. --></b></p>
+<p><b>Данный ресурс еще не прошел надлежащую проверку рабочей группой FM. В настоящее время представляет собой незавершённую "заглушку", его следует считать проектом ресурса.
+<!-- This resource has not yet undergone proper review by FM. At this time it is a 'stub', is known to be incomplete, and is to be considered as a draft. --></b></p>
 <p>
-Ресурс EnrollmentResponse предоставляет сведения о регистрации и плане, полученные в результате обработки ресурса Enrollment. Он комбинирует ключевую информацию от плательщика, как, например, действует ли страховка или полис, и, необязательно, природу сведений о полисе.
+Ресурс EnrollmentResponse предоставляет сведения о регистрации и плане, полученные в результате обработки ресурса Enrollment.
 <!-- The EnrollmentResponse resource provides enrollment and plan details from the processing of an 
-Enrollment resource. It combines key information from a payor as to whether a Coverage or Policy is 
-in-force, and optionally the nature of the Policy details. -->
+Enrollment resource. -->
 </p>
 
 <p>
-Todo
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->
 </p>
 </div>

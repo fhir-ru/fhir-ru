@@ -3,6 +3,7 @@
 <div>
 <a name="scope"> </a>
 <h2>Область применения и использование</h2>
+<p><strong>This resource is an <em>event</em> resource from a FHIR workflow perspective - see <a href="workflow.html">Workflow</a>.   It is the intent of the Orders and Observation Workgroup to align this resource with  the workflow pattern for <a href="workflow.html#event"><em>event</em> resources</a>.</strong></p>
 <p>
 Сфера действия ресурса supply охватывает поставку расходных материалов, используемых в процессе здравоохранения. Сюда входят расходные материалы, используемые непосредственно при лечении пациентов, а также движение поставок в учреждении (транспортировка набора расходных материалов из управления поставкой материалов в пункт обслуживания (пост медицинской сестры)). Этот ресурс не включает в себя предоставление услуг транспортировки.
 <!-- The scope of the supply resource is for supplies used in the healthcare process.  This includes supplies specifically

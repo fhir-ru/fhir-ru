@@ -3,6 +3,7 @@
 <a name="typical"> </a>
 	<h2>Примеры типичных переходов статусов<!-- Typical Status Transition Examples -->:</h2>
 
+<a name="status-flow"> </a>
 	<h3>Типичная смена статусов для Appointment:</h3>
 	<table  class="grid">
 		<tr>
@@ -162,6 +163,7 @@
 		</tr>
 	</table>
 
+<a name="reject-flow"> </a>
 	<h3>Смена статусов при отклонении/отмене условленной встречи</h3>
 	<table  class="grid">
 		<tr>
@@ -243,6 +245,7 @@
 		</tr>
 	</table>
 
+<a name="negotiate-flow"> </a>
 	<h3>Схема для повторного согласования:</h3>
 	<table  class="grid">
 		<tr>
@@ -365,6 +368,7 @@
 		</tr>
 	</table>
 
+<a name="noshow-flow"> </a>
 	<h3>Смена статусов, если пациент не появился на условленной встрече:</h3>
 	<table  class="grid">
 		<tr>

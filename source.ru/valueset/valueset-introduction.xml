@@ -2,134 +2,92 @@
 
 <div>
 <a name="scope"> </a>
-<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<h2>Scope and Usage</h2>
 <p>
-Терминология спецификации FHIR основывается на двух ключевых понятиях, первоначально введенных в <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a>:
+The FHIR terminology specification is based two key concepts, originally defined in <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a>:
 </p>
 <ul>
-<li> <b>кодовая система (code system)</b> - определяет набор кодов со значениями (также известна как перечисление, терминология, классификация и/или онтология)</li>
-<li> <b>набор значений (value set)</b> - выборка кодов из тех, что определены в одной или нескольких кодовых системах</li>
+<li> <code><a href="codesystem.html">CodeSystem</a></code> - defines a set of codes with meanings (also known as enumeration, terminology, classification, and/or ontology) - e.g. define which codes (symbols and/or expressions) exist, and how they are understood</li>
+<li> <code>ValueSet</code> - selects a set of codes from those defined by one or more code systems to specify which codes can be used in a particular context</li>
 </ul>
 <p>
-Кодовые системы определяют, какие коды (символы и/или выражения) существуют, и как их следует понимать. Наборы значений выбирают множество кодов из одной или нескольких кодовых систем для задания того, какие коды могут быть использованы в определенном контексте.
-</p>
-<p>
-Наборы значений создаются двумя способами:
+Value sets have 2 aspects:
 </p>
 <ul>
- <li>Набор значений может содержать встроенную <i>кодовую систему</i> и/или</li>
- <li>Набор значений может быть <i>составлен</i> из кодов, определенных в других кодовых системах либо перечислением этих кодов, либо предоставлением критериев их отбора</li>
+ <li><code>.compose</code>: A definition of what codes are in intended to be in the value set ("intension")</li>
+ <li><code>.expansion</code>: The list of codes that are actually in the value set under a given set of conditions ("extension")</li>
 </ul>
 <p>
-Также набор значений может быть "расширен", если он превращен в простую коллекцию пронумерованных кодов.
-Эта операция выполняется для создании коллекции кодов, готовых к использованию при вводе данных или валидации. Кроме того, расширенный набор значений может содержать и первоначальное определение.
-</p>
-<p>
-Наборы значений, которые содержат инлайновые кодовые системы, предназначены для маленьких, простых кодовых систем, которые можно найти повсеместно по всему контексту реализации (например списки слов, коды состояния, перечни). 
-Определение встроенной кодовой системы не предназначено для отображения больших публичных справочников, таких как LOINC и т. п. - такие справочники имеют собственные форматы распространения.
-<!-- 
-Value sets that contain inline code systems are intended for small, simple code systems that are 
-found throughout the implementation context (e.g., lists of words, status codes, enumerations). 
-The inline code system definition is not intended to represent large publically defined terminologies 
-such as LOINC, etc. - these terminologies have their own distribution formats.
- -->
+The <code>ValueSet</code> resource can carry either the <code>.compose</code> or the <code>.expansion</code>,
+or both. There is an <a href="valueset-operations.html#expand">"$expand" operation</a> which can be used to ask a server to generation 
+an expansion given the composition rules. 
 </p>
 </div>
+
 <div>
 <a name="relationships"> </a>
-<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<h2>Boundaries and Relationships</h2>
 <ul>
- <li>Наборы значений используются в рсурсах <a href="structuredefinition.html">StructureDefinition</a> и <a href="questionnaire.html">Questionnaire</a> для задания кодированным элементам допустимого содержимого<!-- 
-Value sets are used in <a href="structuredefinition.html">StructureDefinition</a>and <a href="questionnaire.html">Questionnaire</a> resources to specify the allowable contents for coded elements
- --></li>
- <li>Кроме того, особый <a href="datatypes.html#Coding">Coding</a> может ссылаться на набор значений, из которого он был взят<!-- 
-In addition, a specific <a href="datatypes.html#Coding">Coding</a> can reference the value set it was picked from 
---></li>
- <li><a href="conceptmap.html">Таблицы соответствия</a> описывают мэппинги между наборами значений<!-- 
-<a href="conceptmap.html">Concept Maps</a> describe mappings between value sets 
---></li>
- <li>Ресурс ValueSet разработан на основе функциональности, описанной в спецификации <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a>, along 
- with metadata in the HL7 Value Set Definition specification. Ресурсы ValueSet можно  конвертировать в ресурсы наборов значений CTS2 и кодовых систем.<!-- 
-The ValueSet resource design is based on the functionality described in the <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a> specification, along 
+ <li>Value sets use <a href="codesystem.html">CodeSystem</a> resources by referring to them via their canonical URLs</li>
+ <li>Value sets are used in <a href="elementdefinition.html">ElementDefinition</a> and <a href="questionnaire.html">Questionnaire</a> resources to specify the allowable contents for coded elements</li>
+ <li><a href="conceptmap.html">Concept Maps</a> describe mappings between value sets</li>
+ <li>The ValueSet resource design is based on the functionality described in the <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a> specification, along 
  with metadata in the HL7 Value Set Definition specification. Value set resources can be converted to CTS2 
-value set and code system resources. 
---></li>
- <li>Ресурс ValueSet соответствует <a href="http://wiki.hl7.org/index.php?title=Value_Set_Definition_Standard_Project">определению набора значений</a> из проекта VSD. Не все элементы, определённые в проекте VSD, вошли в состав базового ресурса - некоторые были заданы в виде <a href="valueset-extensions.html">расширений ресурса ValueSet</a>. К логическому определению содержимого проекта VSD в ресурсе ValueSet относятся элементы<code>lockedDate</code>, <code>compose</code> и <code>codeSystem</code>.</li>
-<!--  <li>The value set resource is aligned with the <a href="http://wiki.hl7.org/index.php?title=Value_Set_Definition_Standard_Project">Value Set Definition</a> (VSD) project. 
+ value set and code system resources.</li>
+ <li>The value set resource is aligned with the <a href="http://wiki.hl7.org/index.php?title=Value_Set_Definition_Standard_Project">Value Set Definition</a> (VSD) project. 
  Not all of the elements defined by the VSD are part of the base resource - some are defined as part of the <a href="valueset-extensions.html">ValueSet Extensions</a>.
- In the ValueSet resource, the <code>lockedDate</code>, <code>compose</code> and <code>codeSystem</code> elements make up the VSD Content Logical definition.</li> -->
+ In the ValueSet resource, the <code>lockedDate</code>, <code>compose</code> and <code>codeSystem</code> elements make up the VSD "Content Logical definition".</li>
 </ul>
 </div>
 
 <div>
 <a name="context"> </a>
-<h2>Предпосылки и контекст<!-- Background and Context --></h2>
+<h2>Background and Context</h2>
 
 <p>
-При работе с наборами значений важно четко понимать разницу между кодовой системой и набором значений.
-Это очень распространенная область, где на практике возникают значительные риски клинической безопасности. Разработчикам следует ознакомиться с <a href="terminologies.html">использованием кодов в ресурсах</a>.
-<!-- 
 When using value sets, proper differentiation between a code system and a value set is important. 
 This is one very common area where significant clinical safety risks occur in practice. Implementers
 should be familiar with the content in <a href="terminologies.html">Using Codes in resources</a>.
--->
 </p>
+
+<h3>ValueSet Identification</h3>
 <p>
-Каждый набор значений имеет 2 разных URL-адреса, которые могут использоваться как ссылки на него, это его логический идентификатор и адрес.<!-- 
-Each value set has 2 different URLs that can be used to reference it - its logical identifier, and 
-its location. 
--->
+A value set has 3 identifiers:
 </p>
+<ul>
+ <li><code>ValueSet.id</code>: the <a href="resource.html#id">logical id</a> on the system that holds the value set - this changes as it moves from server to server (this id, with the server address prepended, is called the 'literal identity' of the resource)</li>
+ <li><code>ValueSet.url</code>: the canonical url that never changes for this value set - it is the same in every copy. Ideally, the URL should also be the location of the master version of the value set, though this is not always possible</li>
+ <li><code>ValueSet.identifier</code>: A system/value pair that is used to identify the value set in other contexts (such as an OID in an <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> specification)</li>
+</ul>
 <p>
-Местоположение набора значений - это URL-адрес, по которому его можно получить, обычно с FHIR-сервера, и, часто, это относительная ссылка на набор значений на этом же сервере.
-Логический идентификатор хранится в самом наборе значений, в <a href="valueset-definitions.html#ValueSet.url">ValueSet.url</a>. Это логическая сущность (иногда называемая каноническим URL), которая ссылается на этот набор значений во всех системах. В идеале, этот URL должен указывать на мастер-версию набора значений, хотя это и не всегда возможно.
-<!-- 
-The location of the value set is a URL by which it may be retrieved, usually from a FHIR 
-server, and is often a relative reference to a value set on the same server. 
-The logical identifier is in the value set itself, in 
-<a href="valueset-definitions.html#ValueSet.url">ValueSet.url</a>. This 
-is the logical identity (sometimes called the canonical URL) that refers to this 
-value set across all systems. Ideally, the URL should also be the location of the 
-master version of the value set, though this is not always possible. 
--->
+For further information regarding resource identification, see <a href="resource.html#id">Resource Identity</a>.
+</p>
+
+<p>
+This means that each value set has 2 different URLs that can be used to reference it - 
+its canonical <code>url</code>, and its local location from which it may be retrieved. 
+Because it is common practice to copy (cache) value sets locally, most references to 
+value sets use the canonical URL. 
 </p>
 <blockquote>
 <p>
-Например все наборы значений, опубликованные в рамках FHIR, имеют логический URL,  по которому они доступны и в самой спецификации FHIR. Однако наряду с тем, что готовится новая версия спецификации FHIR, наборы значений, опубликованные в черновых версиях, могут не находиться в текущей спецификации FHIR.
-<!-- 
-For example, the value sets published as part of FHIR all have a logical URL
+For example, the value sets published as part of FHIR all have a canonical URL
 which is also a location by which they may be accessed in the FHIR specification
-itself. However, while a new version of the FHIR Specification is being prepared,
-value sets that are published in the drafts will not be found in the current FHIR
-specification. 
-  -->
+itself. Note, though, that while a new version of the FHIR Specification is being prepared,
+value sets that are published in the drafts will not be found in the published FHIR
+specification at their canonical URL. 
 </p>
-<p>
-Поскольку локальное копирование (кеширование) наборов значений является обычной практикой, большинство ссылок на наборы значений будут либо логическими, либо буквальными URL-адресами.<!-- 
-Because it is common practice to copy (cache) value sets locally, most 
-references to value sets can be either a logical or a literal URL. 
-  -->
-</p>
-
 </blockquote>
 
-<h3>Идентификация наборов значений<!-- ValueSet Identification --></h3>
 <p>
-У набора значений есть 3 идентификатора:
-<!-- A value set has 3 identifiers: -->
+Alternatively, the <code>identifier</code> and <code>version</code> elements may be used to reference this value set in a 
+design, a profile, a <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> template 
+or <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> message (in the CD data 
+type valueSet and valueSetVersion properties). These different contexts may make additional restrictions on the 
+possible values of these elements.  The <code>identifier</code> is generally not needed when using value sets in
+a FHIR context, where the canonical URL is always the focus.
 </p>
-<ul>
- <li>ValueSet.id: локальный идентификатор системы, которая его хранит - меняется при перемещении между серверами (этот идентификатор вместе с присоединённым спереди адресом сервера называется "буквальным идентификатором" ресурса)</li>
- <li>ValueSet.url: главный идентификатор, который никогда не меняется для данного набора значений - он будет одинаковым для всех копий (он называется "логическим идентификатором" ресурса)</li>
- <li>ValueSet.identifier: пара система/значение, которая используется для идентификации набора значений в других контекстах (таких как OID в спецификации <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>)</li>
-<!--  <li>ValueSet.id: the local identifier on the system that holds it - this changes as it moves from server to server (this id, with the server address prepended, is called the 'literal identity' of the resource)</li>
- <li>ValueSet.url: the master identifier that never changes for this value set - it is the same in every copy (this is called the 'logical identity' of the resource)</li>
- <li>ValueSet.identifier: A system/value pair that is used to identify the value set in other contexts (such as an OID in an <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> specification)</li> -->
-</ul>
-<p>
-Более подробную информацию можно найти в разделе <a href="resource.html#id">Идентификация ресурса</a>.
-<!-- For further information, see <a href="resource.html#id">Resource Identity</a>. -->
-</p>
+
 </div>
 
 </div>

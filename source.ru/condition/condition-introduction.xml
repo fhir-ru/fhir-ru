@@ -34,9 +34,9 @@ captured as problems/diagnoses. -->
 <h2>Границы и связи</h2>
 <p>
 Другие ресурсы могут ссылаться на ресурс condition в качестве "основания" для действия (например <a href="medicationorder.html">MedicationOrder</a>,
-<a href="procedure.html">Procedure</a>, <a href="diagnosticorder.html">DiagnosticOrder</a> и др.)
+<a href="procedure.html">Procedure</a>, <a href="diagnosticrequest.html">DiagnosticRequest</a> и др.)
 <!-- The condition resource may be referenced by other resources as "reasons" for an action (e.g. <a href="medicationorder.html">MedicationOrder</a>,
-<a href="procedure.html">Procedure</a>, <a href="diagnosticorder.html">DiagnosticOrder</a>, etc.) -->
+<a href="procedure.html">Procedure</a>, <a href="diagnosticrequest.html">DiagnosticRequest</a>, etc.) -->
 </p>
 <p>
 Этот ресурс не предназначен для записи объективной и субъективной информации о, которая может привести к записи Condition. Например признаки и симптомы, которые обычно вводятся с использованием ресурса <a href="observation.html">Observation</a>; несмотря на то, что в некоторых случаях постоянный симптом, например жар, головная боль могут вводиться как condition, пока клиницист не установит окончательный диагноз.
@@ -45,9 +45,27 @@ Such signs and symptoms that are typically captured using the <a href="observati
 although in some cases a persistent symptom, e.g. fever, headache may be captured as a condition before a definitive diagnosis can be discerned by a clinician. -->
 </p>
 <p>
-Также ресурс condition специально исключает <a href="allergyintolerance.html">AllergyIntoelrance</a>, так как для этого есть отдельный ресурс.
-<!-- The condition resource also specifically excludes <a href="allergyintolerance.html">AllergyIntoelrance</a> as those are handled with their own resource. -->
+Также ресурс condition специально исключает <a href="allergyintolerance.html">AllergyIntolerance</a>, так как для этого есть отдельный ресурс.
+<!-- The condition resource also specifically excludes <a href="allergyintolerance.html">AllergyIntolerance</a> as those are handled with their own resource. -->
 </p>
+
+<blockquote class="dstu-note">
+<p>
+<b>STU Note:</b> The Condition resource data type <code>Condition.category</code> has a <code>CodeableConcept</code> element with a list of four category codes:  
+<code>complaint | symptom | finding | diagnosis</code> that are not associated with a specific terminology.  This is a <a href="terminologies.html#preferred">preferred</a> 
+binding vs. a <a href="terminologies.html#required">required</a> binding.  In <a href="gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemEdit&amp;tracker_item_id=10091">GFORGE # 10091</a>, 
+the conformance requirements for code vs. CodeableConcept (4a) note that a CodeableConcept should use a standard terminology such as SNOMED CT.  The Patient Care WG has 
+recommended that <code>Condition.category</code> be changed to a Code data element type with the use of the four code terms: <code>complaint | symptom | finding | diagnosis</code> with a required binding.
+</p>
+<p>
+Questions:
+</p>
+<ol>
+ <li>Is <code>CodeableConcept</code> needed for Condition.category?  If so, what are the discrete values that could be used from SNOMED CT for this constrained value set?  How would this impact searching by category?</li> 
+ <li>If Condition.category is changed to a <code>code</code> type data element, is the use of the current four terms adequate for condition classification, or are additional terms needed?  If so, what would these be?  Note the recommendation to make this a required, not a preferred binding.  Please comment on the impact of high level categories vs. more granular categories.</li>   
+</ol>
+</blockquote>
+
 </div>
 
 </div>

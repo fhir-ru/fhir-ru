@@ -24,6 +24,9 @@ ongoing process of care, and the patient will be re-assessed repeatedly. For thi
 impression can explicit reference both care plans (preceeding and resulting) and reference a previous
 impression that this impression follows on from. -->
 </p>
+ <p>Клиническое наблюдение - это подведение итога клинической информации и/или сформировавшееся мнение, являющееся результатом процесса клинической оценки. ClinicalImpression может привести к появлению утверждения о налиии некоторого состояния Condition у пациента.<!-- An impression is a clinical summation of information and/or an opinion formed, which is the outcome of the clinical assessment process.  The ClinicalImpression may lead to a statement of a Condition about a patient. --></p>
+  
+  <p>В FHIR клиническая оценка - это обычно инструмент или средство, используемое для сбора информации о пациенте.<!-- In FHIR, an assessment is typically an instrument or tool used to collect information about a patient. --></p>
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>

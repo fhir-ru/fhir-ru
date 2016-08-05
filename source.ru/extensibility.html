@@ -51,7 +51,8 @@
 Примечания:
 </p>
 <ul>
- <li><i>url</i> - это обязательный атрибут / свойство, который используется как идентификатор извлекаемого <a href="structuredefinition.html">extension definition</a>, применяемого по отношению к данному ресурсу и определяющего содержимое и семантику элемента расширения.</li>
+ <li><code>url</code> - это обязательный атрибут / свойство, который используется как идентификатор извлекаемого <a href="structuredefinition.html">extension definition</a>, применяемого по отношению к данному ресурсу и определяющего содержимое и семантику элемента расширения</li>
+ <li>The <code>url</code> SHALL be a URL, not a URN (e.g. not an OID or a UUID), and it SHALL be the canonical URL of a StructureDefinition that defines the extension. Except for child extensions defined within a complex extensions, the URL SHALL be an absolute URL). The StructureDefinition the defines the extension SHOULD be available at the identified location so that resource processors can access the definition from the URL</li>
  <li>Расширение ДОЛЖНО иметь либо значение (т. е. элемент value[x]), либо вложенные расширения, но не и то, и другое. Если присутствует, элемент value[x] ДОЛЖЕН иметь содерижмое (атрибует value или другие элементы)</li>
  <li>Если для приложения, обрабатывающего содержимое ресурса, не безопасно игнорировать расширение, это должно быть представлено по-другому (см. <a href="#modifier">ниже</a>)</li>
  <li>Фактическим именем элемента <i>value[x]</i> является слово "value", к которому добавляется с большой буквы имя одного из следующих определенных типов, а его содержимым будет то, которое определено для этого типа:
