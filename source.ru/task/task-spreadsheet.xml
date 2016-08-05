@@ -1382,13 +1382,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String"><!-- What task is acting on --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Над чем происходит действие в рамках задачи<!-- What task is acting on --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String"><!-- The request being actioned or the resource being manipulated by this task --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Выполняемый запрос или ресурс, над которым выполняется эта задача<!-- The request being actioned or the resource being manipulated by this task --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String"><!-- Used to identify the thing to be done --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Используется для определения того, что должно быть сделано<!-- Used to identify the thing to be done --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String"><!-- If multiple resources need to be manipulated, use sub-tasks.  (This ensures that status can be tracked independently for each referenced resource.) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Если необходимо задействовать несколько ресурсов, то используйте подзадачи. (Это гарантирует, что статусы можно будет отслеживать независимо для каждого используемого ресурса).<!-- If multiple resources need to be manipulated, use sub-tasks.  (This ensures that status can be tracked independently for each referenced resource.) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">.outboundRelationship[typeCode=SUBJ].target</Data><NamedCell
