@@ -1119,11 +1119,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Time window that transactions may be posted to this account</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Период времени, в течение которого могут быть произведены транзакции на этот счёт<!-- Time window that transactions may be posted to this account --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Период времени, в течение которого счёт действителен<!-- Indicates the period of time over which the account is allowed --> to have transactions posted to it.&#10;This period may be different to the coveragePeriod which is the duration of time that services may occur.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает период времени, в течение которого допускается проводить транзакции на данный счёт.&#10;Этот период может отличаться от указанного в элементе coveragePeriod, который представляет собой период времени, в течение которого могут оказываться услуги.<!-- Indicates the period of time over which the account is allowed to have transactions posted to it.&#10;This period may be different to the coveragePeriod which is the duration of time that services may occur. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Accounts are able to be active only during a specific period, and the dates to which charges should be able to be applied.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Счета могут быть активными только во время определённого периода, и необходимо указывать даты, к которым можно будет привязать расходы.<!-- Accounts are able to be active only during a specific period, and the dates to which charges should be able to be applied. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
