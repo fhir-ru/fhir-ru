@@ -21,13 +21,13 @@
   <date value="2015-09-22T20:02:49+10:00"></date>
   <description value="The Order resource references the request being evaluated (for diagnostic tests, medications, procedures, referrals)."></description>
   <requirements value="This resource is profiled to link the order details to the reason(s), date, patient and provider placing the order. "></requirements>
-  <fhirVersion value="1.4.0"></fhirVersion>
+  <fhirVersion value="1.5.0"></fhirVersion>
   
   
   
   <kind value="resource"></kind>
   <abstract value="false"></abstract>
-  <baseType value="Order"/>
+  <type value="Order"/>
   <baseDefinition value="http://hl7.org/fhir/StructureDefinition/Order"/>
     <derivation value="constraint"/>
   <differential>
@@ -38,9 +38,6 @@
       <alias value="Request"></alias>
       <min value="0"></min>
       <max value="*"></max>
-      <type>
-        <code value="Order"></code>
-      </type>
       <isSummary value="true"></isSummary>
       
       
