@@ -920,9 +920,9 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A Map of relationships between 2 structures that can be used to transform data</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Карта взаимосвязей между двумя структурами, которую можно использовать для трансформации данных<!-- A Map of relationships between 2 structures that can be used to transform data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">A Map of relationships between 2 structures that can be used to transform data</Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Карта взаимосвязей между двумя структурами, которую можно использовать для трансформации данных<!-- A Map of relationships between 2 structures that can be used to transform data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="16" ss:StyleID="s80"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
