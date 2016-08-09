@@ -991,7 +991,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">Другие идентификаторы для этой StructureMap<!-- Other identifiers for the StructureMap --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Formal identifier that is used to identify this StructureMap when it is represented in other formats, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI)</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Формальный идентификатор, используемый для идентификации этой StructureMap, когда она представлена в других форматах, или на нее ссылаются в спецификации, модели, проекте или примере (должен быть глобально уникальным OID, UUID или URI), (если невозможно использовать литеральный URI)<!-- Formal identifier that is used to identify this StructureMap when it is represented in other formats, or referenced in a specification, model, design or an instance  (should be globally unique OID, UUID, or URI), (if it's not possible to use the literal URI) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="16" ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1093,7 +1093,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">Статус карты соответствия структур<!-- The status of the StructureMap --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="16" ss:StyleID="s87"><Data ss:Type="String">Allows filtering of StructureMaps that are appropriate for use vs. not</Data><NamedCell
+    <Cell ss:Index="16" ss:StyleID="s87"><Data ss:Type="String">Позволяет отфильтровывать подходящие для использования ресурсы StructureMaps от неподходящих<!-- Allows filtering of StructureMaps that are appropriate for use vs. not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1127,7 +1127,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">Эта карта соответствия структур была создана в целях тестирования (или обучения/оценки/маркетинга) и не предназначена для реального использования<!-- This StructureMap was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="16" ss:StyleID="s87"><Data ss:Type="String">Allows filtering of StructureMaps that are appropriate for use vs. not</Data><NamedCell
+    <Cell ss:Index="16" ss:StyleID="s87"><Data ss:Type="String">Позволяет отфильтровывать подходящие для использования ресурсы StructureMaps от неподходящих<!-- Allows filtering of StructureMaps that are appropriate for use vs. not --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1159,7 +1159,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">Имя лица или организации, опубликовавших эту карту соответствия структур<!-- The name of the individual or organization that published the structure map --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="16" ss:StyleID="s87"><Data ss:Type="String">Helps establish the &quot;authority/credibility&quot; of the structure map.  May also allow for contact</Data><NamedCell
+    <Cell ss:Index="16" ss:StyleID="s87"><Data ss:Type="String">Помогает установить &quot;авторитет/надежность&quot; StructureMap. Может также потребоваться для установления контакта<!-- Helps establish the &quot;authority/credibility&quot; of the structure map.  May also allow for contact --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">Обычно это организация, но может быть и физическое лицо. Этот элемент СЛЕДУЕТ заполнить, если только эта информация не доступна из контекста.<!-- Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1285,12 +1285,12 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Date for this version of the StructureMap</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Дата этой версии StructureMap<!-- Date for this version of the StructureMap --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">Дата публикации этой версии карты соответствия структур. Дата должна меняться в случае изменения бизнес-версии или статуса. Кроме того, она должна меняться при внесении значительных изменений в содержимое карты соответствия структур<!-- The date this version of the structure map was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the structure map changes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="16" ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Additional specific dates may be added as extensions</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Дополнительные специфичные даты можно добавить в расширениях<!-- Additional specific dates may be added as extensions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1383,7 +1383,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Scope and Usage this structure map is for</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Область применения и предназначение данной StructureMap<!-- Scope and Usage this structure map is for --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">Объясняет, зачем нужна данная карта соответствия структур и почему она имеет текущие ограничения<!-- Explains why this structure map is needed and why it's been designed as it has --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1414,9 +1414,9 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Use and/or publishing restrictions </Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Ограничения на использование и/или публикацию<!-- Use and/or publishing restrictions  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">A copyright statement relating to the structure map and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Информация об авторских правах относительно этой карты соответствия структур и/или её содержимого. Заявления об авторских правах - это, как правило, юридические ограничения на использование и публикацию деталей ограничивающих условий и мэппингов<!-- A copyright statement relating to the structure map and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="16" ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1445,9 +1445,9 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Structure Definition used by this map</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Структурное определение, используемое этой картой<!-- Structure Definition used by this map --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">A structure definition used by this map. The structure definition may describe instances that are converted, or the instances that are produced</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Структурное определение, используемое этой картой. Структурное определение может описывать экземпляры, которые конвертируются, или экземпляры, которые создаются [в процессе конвертации]<!-- A structure definition used by this map. The structure definition may describe instances that are converted, or the instances that are produced --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><Data ss:Type="String">It is not necessary for a structure map to identify any dependent structures, though not losting them may restrict it's usefulness</Data><NamedCell
@@ -1479,9 +1479,9 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Canonical URL for structure definition</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Каноничный URL структурного определения<!-- Canonical URL for structure definition --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">The canonical URL that identifies the structure</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Каноничный URL, идентифицирующий эту структуру<!-- The canonical URL that identifies the structure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1514,7 +1514,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">source | queried | target | produced</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">How the referenced structure is used in this mapping</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Каким образом упомянутая структура используется в данном мэппинге<!-- How the referenced structure is used in this mapping --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1543,9 +1543,9 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Documentation on use of structure</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Документация по использованию структуры<!-- Documentation on use of structure --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Documentation that describes how the structure is used in the mapping</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Документация, которая описывает, как данная структура используется в этом мэппинге<!-- Documentation that describes how the structure is used in the mapping --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1575,9 +1575,9 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Other maps used by this map (canonical URLs)</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Другие карты, используемые данной картой (канонические URLs)<!-- Other maps used by this map (canonical URLs) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Other maps used by this map (canonical URLs)</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Другие карты, используемые данной картой (канонические URLs)<!-- Other maps used by this map (canonical URLs) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1606,7 +1606,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Named sections for reader convenience</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Именованные секции для удобства чтения<!-- Named sections for reader convenience --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1638,7 +1638,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Descriptive name for a user</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Описательное имя пользователя<!-- Descriptive name for a user --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1669,7 +1669,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Another group that this group adds rules to</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Другая группа, к которой данная группа добавляет правила<!-- Another group that this group adds rules to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1700,7 +1700,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Documentation for this group</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Документация для этой группы<!-- Documentation for this group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1730,12 +1730,12 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Named instance provided when invoking the map</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Именованный экземпляр, предоставляемый при вызове карты<!-- Named instance provided when invoking the map --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">A name assigned to an instance of data. The instance must be provided when the mapping is invoked</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Имя, назначенное экземпляру данных. Этот экземпляр должен предоставляться, когда вызывается данный мэппинг<!-- A name assigned to an instance of data. The instance must be provided when the mapping is invoked --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">If no inputs are named, then the entry mappings are type based</Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Если входные данные не названы, тогда мэппинги для этой записи основываются на типе<!-- If no inputs are named, then the entry mappings are type based --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1764,7 +1764,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Name for this instance of data</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Имя для этого экземпляра данных<!-- Name for this instance of data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1795,7 +1795,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Type for this instance of data</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Тип этого экземпляра данных<!-- Type for this instance of data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1829,7 +1829,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">source | target</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Mode for this instance of data</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Режим для этого экземпляра данных<!-- Mode for this instance of data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1858,7 +1858,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Documentation for this instance of data</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Документация для этого экземпляра данных<!-- Documentation for this instance of data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1888,7 +1888,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Transform Rule from source to target</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Правило трансформации из источника в целевой объект<!-- Transform Rule from source to target --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1920,7 +1920,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Name of the rule for internal references</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Имя правила для внутренних ссылок<!-- Name of the rule for internal references --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1949,7 +1949,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Source inputs to the mapping</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Исходные входные данные для мэппинга<!-- Source inputs to the mapping --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1981,7 +1981,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Whether this rule applies if the source isn't found</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Должно ли применяться это правило, если источник не найден<!-- Whether this rule applies if the source isn't found --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2012,9 +2012,9 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Type or variable this rule applies to </Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Тип или переменная, к которым применяется данное правило<!-- Type or variable this rule applies to  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Type or variable this rule applies to </Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Тип или переменная, к которым применяется данное правило<!-- Type or variable this rule applies to  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2047,7 +2047,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">type | variable</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">How to interpret the context</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Как интерпретировать контекст<!-- How to interpret the context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2077,7 +2077,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Optional field for this source</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Необязательное поле для этого источника<!-- Optional field for this source --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2111,7 +2111,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">first | share | last</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">How to handle the list mode for this element</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Как обрабатывать режим списка для этого элемента<!-- How to handle the list mode for this element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2141,7 +2141,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Named context for field, if a field is specified</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Именованный контектс для поля, если поле не указано<!-- Named context for field, if a field is specified --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2172,7 +2172,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">FluentPath expression  - must be true or the rule does not apply</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Выражение FluentPath - должно быть истинным, иначе данное правило не применяется<!-- FluentPath expression  - must be true or the rule does not apply --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2203,7 +2203,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">FluentPath expression  - must be true or the mapping engine throws an error instead of completing</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Выражение FluentPath - должно быть истинным, иначе движок мэппинга выдаст ошибку вместо выполнения<!-- FluentPath expression  - must be true or the mapping engine throws an error instead of completing --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2233,7 +2233,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Content to create because of this mapping rule</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Содержимое, которое будет создано в соответствии с даннным правилом мэппинга<!-- Content to create because of this mapping rule --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2265,9 +2265,9 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Type or variable this rule applies to </Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Тип или переменная, к которым применяется данное правило<!-- Type or variable this rule applies to  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Type or variable this rule applies to </Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Тип или переменная, к которым применяется данное правило<!-- Type or variable this rule applies to  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2300,7 +2300,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">type | variable</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">How to interpret the context</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Как интерпретировать контекст<!-- How to interpret the context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2330,7 +2330,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Field to create in the context</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Поле, которое будет создано в этом контексте<!-- Field to create in the context --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2361,7 +2361,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Named context for field, if desired, and a field is specified</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Именованный контекст для поля, если необходимо, и поля указано<!-- Named context for field, if desired, and a field is specified --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2395,7 +2395,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">first | share | last</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">If field is a list, how to manage the list</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Если поле является списком, как управлять этим списком<!-- If field is a list, how to manage the list --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2425,7 +2425,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Internal rule reference for shared list items</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Внутренняя ссылка на правило для общих пунктов списка<!-- Internal rule reference for shared list items --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2459,7 +2459,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><Data ss:Type="String">create | copy +</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">How the data is copied / created</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Как данные копируются / создаются<!-- How the data is copied / created --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2488,7 +2488,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Parameters to the transform</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Параметры трансформации<!-- Parameters to the transform --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2519,7 +2519,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Parameter value - variable or literal</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Значение параметра - переменная или литерал<!-- Parameter value - variable or literal --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2550,7 +2550,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Rules contained in this rule</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Правила, входящие в данное правило<!-- Rules contained in this rule --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2580,7 +2580,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Which other rules to apply in the context of this rule</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Какие ещё правила необходимо применить в контексте данного правила<!-- Which other rules to apply in the context of this rule --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2612,7 +2612,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Name of a rule or group to apply</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Имя правила или группы, которое необходимо применить<!-- Name of a rule or group to apply --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2643,7 +2643,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Names of variables to pass to the rule or group</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Имена переменных для передачи правилу или группе<!-- Names of variables to pass to the rule or group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2673,7 +2673,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Documentation for this instance of data</Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Документация к этому экземпляру данных<!-- Documentation for this instance of data --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
