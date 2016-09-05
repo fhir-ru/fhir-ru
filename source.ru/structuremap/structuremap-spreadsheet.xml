@@ -2361,7 +2361,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s85"><Data ss:Type="String">Именованный контекст для поля, если необходимо, и поля указано<!-- Named context for field, if desired, and a field is specified --></Data><NamedCell
+    <Cell ss:StyleID="s85"><Data ss:Type="String">Именованный контекст для поля, если необходимо, и поле указано<!-- Named context for field, if desired, and a field is specified --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3693,9 +3693,9 @@
     <Cell ss:StyleID="s112"><Data ss:Type="String">operation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s112"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s112"><Data ss:Type="String">Model Instance Transformation</Data><NamedCell
+    <Cell ss:StyleID="s112"><Data ss:Type="String">Трансформация экземпляра модели<!-- Model Instance Transformation --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s123"><Data ss:Type="String">The definition of a value set is used to create a simple collection of codes suitable for use for data entry or validation.   If the operation is not called at the instance level, one of the in parameters identifier, context or valueset must be provided.  An expanded value set will be returned, or an OperationOutcome with an error message. </Data><NamedCell
+    <Cell ss:StyleID="s123"><Data ss:Type="String">Определение набора значений valueset используется для создания простой коллекции кодов, подходящих для использования для ввода данных или валидации. Если операция вызывается не на уровне экземпляра, то необходимо указать один из входных параметров identifier, context или valueset. Будет возвращён либо развёрнутый набор значений, либо OperationOutcome с сообщением об ошибке.<!-- The definition of a value set is used to create a simple collection of codes suitable for use for data entry or validation.   If the operation is not called at the instance level, one of the in parameters identifier, context or valueset must be provided.  An expanded value set will be returned, or an OperationOutcome with an error message.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s124"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
@@ -3707,7 +3707,7 @@
     <Cell ss:StyleID="s109"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:StyleID="s109"/>
     <Cell ss:StyleID="s109"/>
-    <Cell ss:StyleID="s126"><Data ss:Type="String">A logical value set resource uri</Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Логический URI ресурса value set<!-- A logical value set resource uri --></Data></Cell>
     <Cell ss:StyleID="s127"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -3718,7 +3718,7 @@
     <Cell ss:StyleID="s109"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s109"/>
     <Cell ss:StyleID="s109"/>
-    <Cell ss:StyleID="s126"><Data ss:Type="String">The logical content to transform</Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Логическое содержимое для преобразования<!-- The logical content to transform --></Data></Cell>
     <Cell ss:StyleID="s127"/>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -3729,7 +3729,7 @@
     <Cell ss:StyleID="s109"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s109"/>
     <Cell ss:StyleID="s109"/>
-    <Cell ss:StyleID="s126"><Data ss:Type="String">The result of the transform</Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Результат преобразования<!-- The result of the transform --></Data></Cell>
     <Cell ss:StyleID="s127"/>
    </Row>
    <Row ss:AutoFitHeight="0">
