@@ -4,7 +4,7 @@
 <a name="bnc"> </a>
 <h2>Область применения и использование</h2>
 <p>
-<i>Данный ресурс - это техническое предложение для использования в рамках подхода к Клиническому Качеству в FHIR, задокументированное в составе модуля <a href="clinicalreasoning-module.html">Клиническое обоснование/a>.<!-- This resource is a draft proposal for use as part of an approach to Clinical Quality within FHIR, and is documented as part of the <a href="clinicalreasoning-module.html">Clinical Reasoning</a> module. --></i>
+<i>Данный ресурс - это техническое предложение для использования в рамках подхода к Клиническому качеству в FHIR, задокументированное в составе модуля <a href="clinicalreasoning-module.html">Клиническое обоснование</a>.<!-- This resource is a draft proposal for use as part of an approach to Clinical Quality within FHIR, and is documented as part of the <a href="clinicalreasoning-module.html">Clinical Reasoning</a> module. --></i>
 </p>
 
 <p>A plan definition is a pre-defined group of actions to be taken in particular circumstances, often including conditions, options, and other decision points. The resource is flexible enough to be used to represent a variety of clinical decision support and quality improvement assets, including order sets, protocols, and decision support rules.</p>
