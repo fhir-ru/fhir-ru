@@ -21,7 +21,7 @@ code { counter-increment: listing; }
 
 
 <h2>Введение в FHIR для медицинских работников</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 
 <p>
 FHIR (<i>Fast Health Interoperability Resources</i>) предназначен для обмена информацией, связанной со здравоохранением. К ней относятся клинические данные, а также относящиеся к здравоохранению административно-хозяйственные данные, данные общественного здравоохранения и исследований. Стандарт охватывает как человеческую, так и ветеринарную медицину, и предназначен для повсеместного использования в самых разнообразных контекстах, включая стационар, долгосрочную медицинскую помощь, амбулаторную реабилитацию инвалидов, вспомогательную немедицинскую помощь и т. д.
@@ -271,7 +271,16 @@ X for patient Y?</i>" or "<i>What's the recommended care plan for a patient with
   <li>как вы можете искать информацию<!-- how you can search for information --></li>
 </ul>
 <p>
-Эту информацию можно найти на страницах с описаниями ресурсов. Ресурсы, которые скорее всего будут представлять интерес, можно найти на страницах  <a href="clinical.html">Clinical (Клинические)</a> и <a href="administration.html">Administrative (Административные)</a>. Инструкции о том, как интерпретировать информацию на страницах ресурсов, можно найти <a href="formats.html">здесь</a>. Скорее всего, понять их будет проще в виде <i>логической таблицы</i> и <i>UML-диаграммы</i>. Не забудьте зайти на вкладку с примерами для ознакомления с тем, какого рода информация может быть выражена с помощью ресурса. Увидеть, как элементы используются для передачи реальных данных часто оказывается более полезно, чем просто смотреть на определения. Также зайдите на вкладку профилей, чтобы увидеть примеры того, как можно ограничить различные ресурсы для использования в определенных контекстах.
+Эту информацию можно найти на страницах с описаниями ресурсов. Ресурсы, которые скорее всего будут представлять интерес, можно найти в следующих модулях:
+</p>
+<ul>
+ <li><a href="clinicalsummary-module.html">Clinical Summary &amp; Care provision</a></li>
+ <li><a href="diagnostics-module.html">Diagnostics</a></li>
+ <li><a href="medications-module.html">Medications</a></li>
+ <li><a href="administration-module.html">Administrative</a></li>
+</ul>
+<p>
+Инструкции о том, как интерпретировать информацию на страницах ресурсов, можно найти <a href="formats.html">здесь</a>. Скорее всего, понять их будет проще в виде <i>логической таблицы</i> и <i>UML-диаграммы</i>. Не забудьте зайти на вкладку с примерами для ознакомления с тем, какого рода информация может быть выражена с помощью ресурса. Увидеть, как элементы используются для передачи реальных данных часто оказывается более полезно, чем просто смотреть на определения. Также зайдите на вкладку профилей, чтобы увидеть примеры того, как можно ограничить различные ресурсы для использования в определенных контекстах.
 <!-- This information can all be found in the resource definition pages.  The resources most likely to be of interest can be
 found on the <a href="clinical.html">Clinical</a> and <a href="administration.html">Administrative</a> pages.  Instructions
 on how to interpret the information found on the resource pages can be found <a href="formats.html">here</a>.  The

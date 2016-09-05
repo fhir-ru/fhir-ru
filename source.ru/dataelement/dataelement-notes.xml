@@ -48,11 +48,11 @@ on the code or by specifying the "primary mapping" ISO 11179 extension. -->
     </p>
 	<p>
 	Можно создавать экземпляры, которые "соответствуют" или даже "строго соответствуют" спецификации 11179. Однако это потребует использования расширений, чтобы передать определенные свойства, которые не являются частью основного ресурса и типов данных. 
-	Изначальный <a href="dataelement-11179.html">ISO 11179 профиль</a> входит в спецификации FHIR. Он определяет расширения, которые имеют отношение к профилю <a href="sdc/dataelement-sdc.html">SDC DataElement</a>. При наличии достаточного интереса существующий набор для начала работы может быть расширен в будущих версиях этой спецификации включением в него полного набора расширений и всей спецификации 11179.
+	Изначальный <a href="dataelement-11179.html">ISO 11179 профиль</a> входит в спецификации FHIR. Он определяет расширения, которые имеют отношение к профилю <a href="http://hl7.org/fhir/us/sdc/dataelement-sdc.html">SDC DataElement</a>. При наличии достаточного интереса существующий набор для начала работы может быть расширен в будущих версиях этой спецификации включением в него полного набора расширений и всей спецификации 11179.
 <!-- It is possible to create instances that are "conforming", or even "strictly conforming" to the 11179 specification. However, doing
 so will require the use of extensions to convey certain properties that are not part of the core resource and data types.  An initial
 starter <a href="dataelement-11179.html">ISO 11179 profile</a> is included in the FHIR specification.  It defines extensions that are relevant to the 
-<a href="sdc/dataelement-sdc.html">SDC DataElement</a> profile.  If there is sufficient interest, the existing starter set may be
+<a href="http://hl7.org/fhir/us/sdc/dataelement-sdc.html">SDC DataElement</a> profile.  If there is sufficient interest, the existing starter set may be
 enhanced to contain a complete set of extensions and a full 11179 in a future release of the specification. -->
 </p>
 	<h3>Сравнение кодов и элементов данных<!-- Data Elements vs. Codes --></h3>

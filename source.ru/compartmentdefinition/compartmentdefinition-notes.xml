@@ -50,8 +50,8 @@ and direct searches with parameters. Consider this search: -->
   GET [base]/Patient/[id]/Communication
 </pre>
 <p>
-Поскольку определение <a href="compartment-patient.html">логического модуля "пациент"</a> для ресурса <a href="communication.html">Communication</a> говорит о том, что ресурс Communication входит в логический модуль "пациент", если объектом, отправителем или получателем является пациент, то поиск по логическому модулю фактически совпадает с объединением следующих трёх поисковых запросов:
-<!-- Because the definition of the <a href="compartment-patient.html">patient compartment</a> for 
+Поскольку определение <a href="compartmentdefinition-patient.html">логического модуля "пациент"</a> для ресурса <a href="communication.html">Communication</a> говорит о том, что ресурс Communication входит в логический модуль "пациент", если объектом, отправителем или получателем является пациент, то поиск по логическому модулю фактически совпадает с объединением следующих трёх поисковых запросов:
+<!-- Because the definition of the <a href="compartmentdefinition-patient.html">patient compartment</a> for 
 <a href="communication.html">Communication </a> says that a Communication resource is in the 
 patient compartment if the subject, sender, or recipient is the patient, the compartment
 search is actually the same as the union of these 3 searches: -->

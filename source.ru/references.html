@@ -19,7 +19,7 @@
 <a name="references"> </a>
 <a name="Identification"> </a>
 <h2>Ссылки между ресурсами</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: 3</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: 3</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 
 <p>
 Большинство определенных в ресурсе элементов являются ссылками на другие ресурсы. С помощью этих ссылок ресурсы комбинируются для построения сети информации о здравоохранении. 
@@ -72,7 +72,7 @@
    </ul>
  </li>
  <a name="regex"> </a>
- <li>Использование абсолютных URL адресов обеспечивает стабильный, масштабируемый подход, подходящий для облачного/веб окружения, в то время как использование относительных/логических ссылок обеспечивает гибкий подход, подходящий для использования при торговле через границы закрытых экосистем (см. <a href="implementation.html#identity">проблемы реализации</a> для дальнейшего обсуждения)</li>
+ <li>Использование абсолютных URL адресов обеспечивает стабильный, масштабируемый подход, подходящий для облачного/веб окружения, в то время как использование относительных/логических ссылок обеспечивает гибкий подход, подходящий для использования при торговле через границы закрытых экосистем (см. <a href="managing.html">"Управление идентификацией ресурсов"</a> для дальнейшего обсуждения)</li>
  <li>Абсолютные URL-адреса не обязательно должны указывать на  <a href="http.html">FHIR RESTful сервер</a>, хотя это и предпочтительный подход. Ведет ли ссылка на FHIR RESTful сервер или нет, она ДОЛЖНА указывать на Ресурс как определено в данной спецификации.
 	<br/>Примечание: данное регулярное выражение будет выполняться, если ссылка на ресурс соответствует FHIR API: 
 	<!-- Note: This regex is true if the reference to a resource is consistent with a FHIR API: -->
@@ -262,7 +262,7 @@ is clear, and that there is no confusion as to its significance.
 </p>
     
 <blockquote class="dstu-note">
-<a name="dstu"> </a>
+<a name="dstu2"> </a>
 <p>
 <b>DSTU Note:</b> There are some identified use cases where it would be useful to include resources that refer
 to the contained resource rather than the container referring to the contained resource, but this 

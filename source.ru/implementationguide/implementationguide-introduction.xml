@@ -24,9 +24,9 @@ at once, but this requires that the implementation guides are compatible (see <a
 <!-- Implementation Guides contain two different types of resource references: . -->
 </p>
 <ul>
- <li>Содержимое: набор логических утверждений, которые должны выполняться реализациями. Это почти всегда ресурсы <a href="infrastructure.html#conformance">Conformance</a></li>
+ <li>Содержимое: набор логических утверждений, которые должны выполняться реализациями. Это почти всегда ресурсы <a href="conformance-module.html">обеспечения соответствия</a></li>
  <li>Примеры: примеры, иллюстрирующие назначение профилей, заданных в руководстве по реализации. Это могут быть любые виды ресурсов</li>
-<!--  <li>Contents: A set of logical statements which implementations must conformn to. These are almost always <a href="infrastructure.html#conformance">conformance resources</a></li>
+<!--  <li>Contents: A set of logical statements which implementations must conformn to. These are almost always <a href="conformance-module.html">conformance resources</a></li>
  <li>Examples: Examples that illustrate the intent of the profiles defined in the implementation guide. These can be any kind of resource</li> -->
 </ul>
 <p>

@@ -42,12 +42,11 @@ and reconciled. --></p>
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>Примечание к STU<!-- STU Note -->:</b> Есть два способа указания значения "Нет известных аллергий" в текущей спецификации: с помощью CodeableConcept, как описано выше, и с помощью ресурса <a href="list.html">List</a> с элементом emptyReason. Во время периода пробного использования этого DSTU, не рекомендуется использовать ресурс <a href="list.html">List</a> в целях указания значения "Нет известных аллергий".<!-- There are two primary ways (at least) of reporting "No Known Allergies" in the current specification: using the CodeableConcept,
-as described above, or using the <a href="list.html">List</a> resource with emptyReason. During the trial use period for this STU, it is not recommended to use the <a href="list.html">List</a> resource for "No Known Allergies" reporting purposes. The principal reason for this is to allow all allergy or intolerance data to be found and to be consistently queryable in the single location of the AllergyIntolerance resource. -->
-</p>
-<p>
-Ждем ваших озывов <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">здесь</a>.
-<!-- Feedback is sought <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>. -->
+<b>Примечание к STU</b> Есть (по крайней мере) два способа указания значения "Нет известных аллергий" в текущей спецификации: с помощью CodeableConcept, как описано выше, и с помощью ресурса <a href="list.html">List</a> с элементом emptyReason. Во время периода пробного использования этого STU, не рекомендуется использовать ресурс <a href="list.html">List</a> в целях указания значения "Нет известных аллергий". Главная причина этого - дать возможность находить и запрашивать все данные по аллергиям и непереносимостям через один ресурс AllergyIntolerance.<!-- 
+<b>STU Note:</b>There are two primary ways of reporting "no known allergies" in the current specification: using the CodeableConcept,
+as described above, or using the <a href="list.html">List</a> resource with emptyReason. The third available option is using the substanceExposureRisk extension.  During the STU period, it is not recommended to use the <a href="list.html">List</a> resource for "no known allergies" reporting purposes. The principal reason for this is to allow all allergy or intolerance data to be found and to be consistently queryable from the single location of the AllergyIntolerance resource.  <a href="http://gforge.hl7.org/gf/project/fhir/tracker/">Feedback</a> is sought regarding the preferred approach. -->
+
+
 </p>
 </blockquote>
   

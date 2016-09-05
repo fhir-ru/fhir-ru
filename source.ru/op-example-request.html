@@ -14,7 +14,7 @@
 <a name="SOA"> </a>
 <a name="soa"> </a>
 <h2>Operation Request Example</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 <pre>
 POST [base]/ValueSet/$expand HTTP/1.1
 Content-Type: application/fhir+xml
@@ -47,7 +47,7 @@ Content-Type: application/fhir+xml
          with an is-a relationship with 91723000: Anatomical structure)&quot;/&gt;
         &lt;status value=&quot;draft&quot;/&gt;
         &lt;compose&gt;
-          &lt;include&gt;&lt;!--   all the descendents of clinical finding, not include itself   --&gt;
+          &lt;include&gt;&lt;!--   all the descendants of clinical finding, not include itself   --&gt;
             &lt;system value=&quot;http://snomed.info/sct&quot;/&gt;
             &lt;filter&gt;&lt;!--   todo: work this over. what this means is any concepts where they have is-a with 91723000.
                how should this be done?   --&gt;

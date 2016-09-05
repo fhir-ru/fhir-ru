@@ -14,7 +14,7 @@
 
 <a name="conformance"> </a>
 <h2>Соответствие</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 
 <p>
 The FHIR specification describes a set of <a href="resource.html">resources</a>,
@@ -262,19 +262,9 @@ Constraints defined on an element have the following properties:
  <tr><td><b>Requirements</b></td><td>An explanation of why the constraint has been applied - what harmful conditions are being avoided</td></tr>
  <tr><td><b>Severity</b></td><td>Whether the constraint is an error, or a warning. The exact difference in meaning of these depends on context, but an error is associated with "SHALL" and systems rejecting content, where as a warning might not be</td></tr>
  <tr><td><b>Human Description</b></td><td>A human description of the rule intended to be show as the explanation for a message when the constraint is not met</td></tr>
- <tr><td><b>XPath Expression</b></td><td>An XPath expression that must evaluate to true when run on the element in the XML representation. To use the constraint in JSON, the resource must be converted to XML</td></tr>
+ <tr><td><b>Expression</b></td><td>An <a href="http://hl7.org/fluentpath">FluentPath</a> expression that must evaluate to true when run on the element</td></tr>
+ <tr><td><b>XPath</b></td><td>An XPath expression that must evaluate to true when run on the element in the XML representation</td></tr>
 </table>
-<blockquote class="dstu-note">
-<a name="dstu"> </a>
-<p>
-<b>DSTU Note:</b>  Alternatives to XPath are being sought. Not only are XPath expressions XML specific, 
-but the expressions defined in the specification require XSLT2, which is not well supported. 
-The ideal solution will apply to either XML or JSON, and be widely supported in off the shelf tools. 
-</p>
-<p>
-Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
-</p>
-</blockquote>
 <p>
 Many constraints are defined in the base specification. In addition, additional 
 constraints may be defined in <a href="profiling.html">profiles</a> that apply 

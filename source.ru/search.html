@@ -12,7 +12,7 @@
 
 <a name="base"> </a>
 <h2>Поиск</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 
 <p>
 Поиск ресурсов является основополагающим в механике FHIR.
@@ -100,10 +100,10 @@ parameter works for search <a href="http.html#mime-type">like for other interact
 </p>
 <ul>
  <li>Определенный тип ресурса: <code>GET [base]/[type]?parameter(s)</code></li>
- <li>Определенный <a href="compartmentdefinition.htmls">модуль</a>, возможно с указанием типа ресурса в этом модуле: <code>GET [base]/Patient/[id]/[type]?parameter(s)</code></li>
+ <li>Определенный <a href="compartmentdefinition.html">модуль</a>, возможно с указанием типа ресурса в этом модуле: <code>GET [base]/Patient/[id]/[type]?parameter(s)</code></li>
  <li>Все ресурсы: <code>GET [base]/_search?parameter(s)</code> (только параметры, общие для всех типов)</li>
 <!--  <li>A specified resource type: <code>GET [base]/[type]?parameter(s)</code></li>
- <li>A specified <a href="compartmentdefinition.htmls">compartment</a>, perhaps with a specified resource type in that compartment: <code>GET [base]/Patient/[id]/[type]?parameter(s)</code></li>
+ <li>A specified <a href="compartmentdefinition.html">compartment</a>, perhaps with a specified resource type in that compartment: <code>GET [base]/Patient/[id]/[type]?parameter(s)</code></li>
  <li>All resource types: <code>GET [base]/_search?parameter(s)</code> (parameters common to all types only)</li> -->
 </ul>
 <p>
@@ -863,7 +863,7 @@ Servers may elect to consider concept mappings when testing for subsumption rela
  <tr><td><pre> GET [base]/Condition?code=http://acme.org/conditions/codes|ha125</pre></td><td>Search for any condition with a code "ha125" in the code system "http://acme.org/conditions/codes"</td></tr>
  <tr><td><pre> GET [base]/Condition?code=ha125</pre></td><td>Search for any condition with a code "ha125". Note that there is not often any useful overlap in literal symbols between code systems, so the previous example is generally preferred </td></tr>
  <tr><td><pre> GET [base]/Condition?code:text=headache</pre></td><td>Search for any Condition with a code that has a text "headache" associated with it (either in the text, or a display)</td></tr>
- <tr><td><pre> GET [base]/Condition?code:in=http%3A%2F%2Fsnomed.info%2Fsct%3Ffhir_vs%3Disa%2F126851005</pre></td><td>Search for any condition in the SNOMED CT value set "http://snomed.info/sct?fhir_vs=isa/126851005" that includes all descendents of "Neoplasm of liver"</td></tr>
+ <tr><td><pre> GET [base]/Condition?code:in=http%3A%2F%2Fsnomed.info%2Fsct%3Ffhir_vs%3Disa%2F126851005</pre></td><td>Search for any condition in the SNOMED CT value set "http://snomed.info/sct?fhir_vs=isa/126851005" that includes all descendants of "Neoplasm of liver"</td></tr>
  <tr><td><pre> GET [base]/Condition?code:below=126851005</pre></td><td>Search for any condition that is subsumed by the SNOMED CT Code "Neoplasm of liver". Note: This is the same outcome as the previous search</td></tr>
  <tr><td><pre> GET [base]/Condition?code:in=http://acme.org/fhir/ValueSet/cardiac-conditions</pre></td><td>Search for any condition that is in the institutions list of cardiac conditions</td></tr>
 </table>
@@ -1212,7 +1212,7 @@ such as AND, OR etc. For example: -->
 for related words as well. -->
 </p>
 <blockquote class="dstu-note">
-<a name="dstu"> </a>
+<a name="dstu2"> </a>
 <p>
 <b>Примечание к DSTU:</b>  проблемы, связанные со стандартизацией текстового поиска, решены не полностью. Во время периода пробного использования данной спецификации, мы рекомендуем системам использовать правила, описанные <a href="http://docs.oasis-open.org/odata/odata/v4.0/cs01/part1-protocol/odata-v4.0-cs01-part1-protocol.html#_The_$search_System">
 спецификацией OData для параметра $<code>search</code></a>. Типичные реализации могут использовать Lucene - полнотекстовый поиск на основе SQL, или какую-нибудь службу индексирования. 
@@ -1270,7 +1270,7 @@ but may choose to do so. -->
 </p>
 
 <blockquote class="dstu-note">
-<a name="dstu"> </a>
+<a name="dstu3"> </a>
 <p>
 <b>STU Note:</b> the <a href="#has">_has</a> search parameter documented above is a new 
 addition that has generated significant discussion. if adopted, it may
@@ -1712,7 +1712,7 @@ results for the convenience of the client. -->
 </p>
 
 <blockquote class="dstu-note">
-<a name="dstu-2"> </a>
+<a name="dstu4"> </a>
 <p>
 <b>Примечание к DSTU:</b>  Есть ли необходимость во введении дополнительных правил работы параметра <code>_include</code>?  
 <!-- <b>DSTU Note:</b>  Should additional rules about how <code>_include</code> works be made?   -->

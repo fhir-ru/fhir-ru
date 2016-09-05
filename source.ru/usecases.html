@@ -13,7 +13,7 @@
   
 <a name="root"> </a>
 <h1>Примеры типовых сценариев в FHIR</h1>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 
 <p>
 FHIR представляет собой стандартизованную методологию, определяющую единый способ решения проблем в здравоохранении c
@@ -60,15 +60,12 @@ In this scenario, the PHR provider: -->
 по отношению к следующим ресурсам: 
 </p>
 <ol>
- <li><a href="patient.html">Patient</a> - для просмотра демографической информации о пациенте. 
- Когда с клиентской стороны отправляется запрос без каких-либо критериев поиска, сервер предоставляет перечень всех
+ <li><a href="patient.html">Patient</a> - для просмотра демографической информации о пациенте. Когда с клиентской стороны отправляется запрос без каких-либо критериев поиска, сервер предоставляет перечень всех
  пациентов, информация о которых доступна конкретному пользователю.</li>
- <li>
- <a href="documentreference.html"> Document Reference (ссылка на документ)</a> - для предоставления доступа к 
- неспециализированным медицинским документам в формате pdf или др. (формат pdf предпочтительный)
+ <li><a href="http.html#search">search</a> и <a href="http.html#read">read</a> над ресурсом <a href="documentreference.html">DocumentReference (ссылка на документ)</a> - для предоставления доступа к 
+ неспециализированным документам пациента в формате PDF или др. (Формат PDF предпочтительный.)
  </li>
- <li> 
- <a href="clinical.html">другим клиническим ресурсам (clinical resources)</a></li> 
+ <li><a href="http.html#search">search</a> и <a href="http.html#read">read</a> над рядом <a href="clinicalsummary-module.html">клинических ресурсов</a></li> 
 </ol>
 <p>
 

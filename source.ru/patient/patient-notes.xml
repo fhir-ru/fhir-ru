@@ -114,7 +114,7 @@ This is due to the when it is recorded and the purpose for which it is recorded:
 		<li>To relate the encounter of a mother and her baby for a maternity encounter,
 		for administrative and billing purposes: use the <a href="encounter-definitions.html#Encounter.partOf">encounter.partof</a> property</li>
 		<li>To collect information about the patient's relatives that might be relevant
-		to the patient's medical condition: use the <a href="familmemberhistory.html">FamilMemberHistory</a> resource</li>
+		to the patient's medical condition: use the <a href="familymemberhistory.html">FamilyMemberHistory</a> resource</li>
 	</ul>
 <p>
 During a maternity encounter, the Patient and Encounter resources for the mother will be present.
@@ -219,13 +219,13 @@ in the patient set.  -->
 </pre>
 <p>
 Ответом на "mpi"-запрос будет набор записей пациентов, упорядоченный по релевантности. Если совпадений не найдено,  MPI-приложение должно вернуть пустой результат без ошибок, но который может содержать  <a href="operationoutcome.html">результат операции</a> с дальнейшими инструкциями. Все записи пациентов должны иметь оценку от 0 до 1, где 1 - это наиболее точное соответствие, наряду с <a href="extensibility.html">расширением</a>
-<a href="extension-patient-mpi-match.html">"patient-mpi-match"</a>, показывающим позицию MPI по степени совпадения:
+<a href="extension-match-grade.html">"match-grade"</a>, показывающим позицию MPI по степени совпадения:
 <!-- The response from an "mpi" query is a set of patient records, ordered from most
 likely to least likely. If there are not patient matches, the MPI SHALL return 
 an empty search set with no error, but may include an <a href="operationoutcome.html">operation outcome</a> with 
 further advice. All patient records SHALL have a score from 0 to 1, where
 1 is the most certain match, along with an <a href="extensibility.html">extension</a>
-<a href="extension-patient-mpi-match.html">"patient-mpi-match"</a> that indicates the MPI's position on the match quality: -->
+<a href="extension-match-grade.html">"match-grade"</a> that indicates the MPI's position on the match quality: -->
 </p>
 <pre>
   &lt;entry&gt; 

@@ -14,7 +14,7 @@
 [%profilesheader base%]
 
 <h2>Профилирование FHIR</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 
 <p>
 Основная спецификация FHIR (данная спецификация) описывает набор базовых ресурсов, механизмов и интерфейсов, которые используются в различных контекстах в сфере здравоохранения. Однако имеются разногласия между юрисдикциями и экосистемой здравоохранения насчет методов, требований, норм, образования и того, какие действия являются выполнимыми и/или выгодными.
@@ -53,42 +53,42 @@ overlapping sets of adaptations - by healthcare domain, by country, by instituti
  <tr>
   <td><b>Артефакт</b></td>
   <td><b>Описание</b></td>
-  <td><b><a href="daf/daf.html">DAF</a>-пример</b></td>
+  <td><b><a href="http://hl7.org/fhir/daf">DAF</a>-пример</b></td>
  </tr>
  <tr>
   <td>Руководство по реализации (IG)</td>
   <td>Согласованный и связанный набор адаптаций, которые опубликованы единым целым. Валидация происходит в контексте руководства по реализации</td>
-  <td><a href="daf/daf.html">DAF IG</a></td>
+  <td><a href="http://hl7.org/fhir/daf">DAF IG</a></td>
  </tr>
  <tr>
   <td>Package (пакет)</td>
   <td>Группа связанных адаптаций, которые опубликованы в виде группы внутри руководства по реализации</td>
-  <td><a href="daf/daf-medicationusage.html">DAF Medication Usage</a></td>
+  <td><a href="http://hl7.org/fhir/daf/daf-medicationusage.html">DAF Medication Usage</a></td>
  </tr>
  <tr>
   <td>Conformance Resource</td>
   <td>Отдельный ресурс в пакете, который вводит правила о том, как работает реализация. Они описаны ниже</td>
-   <td><a href="daf/medicationorder-daf.html">DAF Prescription</a></td>
+   <td><a href="http://hl7.org/fhir/daf/medicationorder-daf.html">DAF Prescription</a></td>
  </tr>
 <!--  <tr>
   <td><b>Artifact</b></td>
   <td><b>Description</b></td>
-  <td><b><a href="daf/daf.html">DAF</a> example</b></td>
+  <td><b><a href="http://hl7.org/fhir/daf">DAF</a> example</b></td>
  </tr>
  <tr>
   <td>Implementation Guide (IG)</td>
   <td>A coherent and bounded set of adaptations that are published as a single unit. Validation occurs within the context of the Implementation Guide</td>
-  <td><a href="daf/daf.html">DAF IG</a></td>
+  <td><a href="http://hl7.org/fhir/daf">DAF IG</a></td>
  </tr>
  <tr>
   <td>Package</td>
   <td>A group of related adaptations that are published as a group within an Implementation Guide</td>
-  <td><a href="daf/daf-medicationusage.html">DAF Medication Usage</a></td>
+  <td><a href="http://hl7.org/fhir/daf/daf-medicationusage.html">DAF Medication Usage</a></td>
  </tr>
  <tr>
   <td>Conformance Resource</td>
   <td>A single resource in a package that makes rules about how an implementation works. These are described below</td>
-   <td><a href="daf/medicationorder-daf.html">DAF Prescription</a></td>
+   <td><a href="http://hl7.org/fhir/daf/medicationorder-daf.html">DAF Prescription</a></td>
  </tr> -->
 </table>
 <p>
@@ -654,7 +654,7 @@ There are two special names: @type, and @profile. Here are some example discrimi
 </table>
 <p>
 Note that @type and @profile can also be used where a repeating element contains a resource directly (e.g. 
-<a href="domainresource.contained-definitions.html#DomainResource.contained">DomainResource.contained</a>, <a href="bundle-definitions.html#Bundle.entry">Bundle.entry</a>, <a href="parameters-definitions.html#Parameters.parameter.resource">Parameters.parameter.resource</a>).
+<a href="domainresource-definitions.html#DomainResource.contained">DomainResource.contained</a>, <a href="bundle-definitions.html#Bundle.entry">Bundle.entry</a>, <a href="parameters-definitions.html#Parameters.parameter.resource">Parameters.parameter.resource</a>).
 </p>
 <p>
 <a href="profiling-examples.html">Примеры нарезок и дискриминаторов</a> показывают, как именно представлены в профилях этот и другие типичные случаи использования нарезки.
@@ -776,11 +776,11 @@ set of codes. See <a href="terminologies.html#strength">Binding Strength</a>. --
 <a name="tx"> </a>
 <h3>Смешение пользовательских и стандартных терминологий<!-- Mixing Custom and Standard Terminologies --></h3>
 <p>
-В ресурсах <a href="valueset.html">Value Set</a> можно определять локальные кодовые системы (<a href="valueset-example-inline.html">Пример</a>) и
+В ресурсах <a href="codesystem.html">CodeSystem</a> можно определять локальные коды (<a href="codesystem-example.html">пример</a>), а <a href="valueset.html">ValueSets</a> могут
 использовать смешанные комбинации локальных и стандартных кодов (примеры: LOINC, SNOMED), или просто
-выбирать определенный набор стандартных кодов (например: LOINC, SNOMED, RxNorm).
-Профили могут привязываться к этим наборам значений вместо тех, которые определены в базовой спецификации, следуя этим правилам:<!-- resources can be used to carry definitions of local code systems (<a href="valueset-example-inline.html">Example</a>) and 
-to mix a combination of local codes and standard codes (e.g. LOINC, SNOMED), or just
+выбирать определенный набор стандартных кодов (например LOINC, SNOMED, RxNorm).
+Профили могут привязываться к этим наборам значений вместо тех, которые определены в базовой спецификации, следуя этим правилам:<!-- <a href="codesystem.html">CodeSystem</a> resources can be used to carry definitions of local codes (<a href="codesystem-example.html">Example</a>) and 
+can mix a combination of local codes and standard codes (e.g. LOINC, SNOMED), or just
 to choose a particular set of standard codes (examples: LOINC, SNOMED, RxNorm). 
 Profiles can bind to these value sets instead of the ones defined in the base
 specification, following these rules: -->
@@ -909,10 +909,10 @@ When this specification describes a profile,, the profile is presented in 5 diff
 <h3>Поддержка нескольких профилей<!-- Supporting Multiple Profiles --></h3>
 
 <p>
-Может возникнуть ситуация, когда приложению необходимо поддерживать больше одного профиля одновременно. Типичный пример такой ситуации - приложение системы ЭМК, которое должно поддерживать профиль совместного использования данных общего назначения (например <a href="daf/daf.html">DAF</a>), а также поддерживать специфические профили для системы поддержки принятия решений, использующей тот же самый интерфейс.
+Может возникнуть ситуация, когда приложению необходимо поддерживать больше одного профиля одновременно. Типичный пример такой ситуации - приложение системы ЭМК, которое должно поддерживать профиль совместного использования данных общего назначения (например <a href="http://hl7.org/fhir/daf">DAF</a>), а также поддерживать специфические профили для системы поддержки принятия решений, использующей тот же самый интерфейс.
 <!-- Applications may be required to support more than one profile at a time. 
 A typical example might be an EHR application that is required to support
-a general purpose data sharing profile (such as <a href="daf/daf.html">DAF</a>),
+a general purpose data sharing profile (such as <a href="http://hl7.org/fhir/daf">DAF</a>),
 and also must support specific profiles for decision support using the same 
 interface.  -->
 </p>
@@ -950,12 +950,12 @@ Each profile can be thought of in terms of the set of instances that conform to 
  <li>identical sets: all resources that conform to A also conform to B and any resources that don't conform to B, don't conform to A</li> -->
 </ol>
 <p>
-Профили можно сравнивать для определения их совместимости. Одно <a href="daf-cqi.html">такое сравнение </a> можно найти между <a href="daf/daf.html">DAF</a> и <a href="qicore/qicore.html">QICore</a>. Обратите внимание, что их разработка продолжается, а это сгенерированое инструментарием сравнение приведено исключительно для демонстрации концепции сравнения профилей.
+Профили можно сравнивать для определения их совместимости. Одно такое сравнение можно найти (no - todo: bring this into the build) между <a href="http://hl7.org/fhir/daf">DAF</a> и <a href="http://hl7.org/fhir/qicore">QICore</a>. Обратите внимание, что это сравнение сгенерировано инструментарием, находящимся в разработке, и является полностью черновым содержимым для демонстрации концепции сравнения профилей.
 <!-- Profiles can be compared to determine their compatibility. 
-One <a href="daf-cqi.html">such comparison</a> can be found between <a href="daf/daf.html">DAF</a>
-and <a href="qicore/qicore.html">QICore</a>. Note that this comparison is 
-generated by tooling under ongoing development, and is purely draft content to
-demonstrate the idea of profile comparison. -->
+One such comparison can be found (no - todo: bring this into the build) 
+between <a href="http://hl7.org/fhir/daf">DAF</a> and <a href="http://hl7.org/fhir/qicore">QICore</a>. 
+Note that this comparison is generated by tooling under ongoing development, and is purely draft 
+content to demonstrate the idea of profile comparison. -->
 </p>
 
 </div>

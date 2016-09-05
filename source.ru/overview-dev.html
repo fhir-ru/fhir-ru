@@ -20,7 +20,7 @@ code { counter-increment: listing; }
 
 
 <h2>Введение в FHIR для разработчиков</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 
 <p>
 FHIR (<i>Fast Health Interoperability Resources</i>) предназначен для обеспечения информационного обмена, поддерживающего предоставление медицинской помощи разного назначения. Спецификация базируется на и адаптирует современные, широко используемые RESTful-методы для предоставления комплексной медицинской помощи в широком диапазоне команд и организаций.
@@ -406,7 +406,7 @@ https://example.com/base/MedicationOrder?patient=347
   <li><b>total</b> (строка 13) - общее число совпадений в результатах поиска. Это не количество совпадений в этом конкретном комплекте, которое может быть <a href="http.html#search">разбитым на страницы представлением в результатах (a paged view into the results)</a></li>
   <li><b>link</b> (строка 14) - набор именованных ссылок, которые дают связанных контексты этому комплекту. Имена, определенные в данном спецификации: <a href="http.html#search">first</a>, <a href="http.html#search">prev</a>, <a href="http.html#search">next</a>, <a href="http.html#search">last</a>, <a href="http.html#search">self</a></li>
   <li><b>entry</b> (строка 23) - фактические ресурсы в этом наборе результатов</li>
-	<li><b>entry.resource.id</b> (line 27) - Note that in some bundles, the <code>entry.resource.id</code>must be <a href="bundle.html-unique">unique in the bundle</a></li>
+	<li><b>entry.resource.id</b> (line 27) - Note that in some bundles, the <code>entry.resource.id</code>must be <a href="bundle.html#bundle-unique">unique in the bundle</a></li>
   <li>Операция поиска может также <a href="search.html#include">вернуть дополнительные связанные ресурсы</a></li>
 </ul>
 
@@ -533,9 +533,9 @@ Here is an example of updating a patient:
 Want more information? 
 </p>
 <ul>
+ <li><a href="modules.html">Getting Started</a></li>
  <li><a href="resourcelist.html">Resource Index</a></li>
  <li><a href="resourceguide.html">Resource Guide</a></li>
- <li><a href="implementation.html">Implementation Home</a></li>
  <li><a href="documentation.html">Documentation Index</a></li>
  <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Support_Page">Support Links</a></li>
 </ul>

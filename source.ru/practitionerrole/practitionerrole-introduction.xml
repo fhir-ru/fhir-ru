@@ -19,10 +19,11 @@ single service and the list of locations it is available. Both are acceptable op
 <div>
 <a name="bnr"> </a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
-<p>
-BackboneElement PractitionerRole ресурса Practitioner будет убран, если данный ресурс будет принят.
-<!-- The PractitionerRole BackboneElement on the Practitioner is to be deprecated if this resource is accepted. -->
+<blockquote class="dstu-note">
+<p><a name="dstu"> </a>
+<b>DSTU Note:</b>   The Role BackboneElement on the Practitioner is to be deprecated if this resource is accepted.
 </p>
+</blockquote>
 <p>
 Информация о квалификации не входит в PractitionerRole, поскольку хоть она и может подходить для роли, однако является атрибутом специалиста (Practitioner), а не роли, которую он может выполнять для некоторой организации.
 <!-- 	The Qualifications are not a part of the PractitionerRole, as they may be appropriate for the role,

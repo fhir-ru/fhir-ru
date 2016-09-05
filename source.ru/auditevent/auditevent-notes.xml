@@ -28,9 +28,9 @@ additional codes may be proposed / requested using the community input link abov
 </p>
 <table class="grid">
   <tr><td><b>Сценарий</b></td><td><b>Тип</b></td><td><b>Подтип</b></td><td><b>Действие</b></td><td><b></b>Другое</td></tr>
-  <tr><td>Вход пользователя в систему (<a href="auditevent-examples.html">пример</a>)</td><td><a href="valueset-dicom-dcim.html#110114">110114</a> Аутентификация пользователя</td><td><a href="valueset-dicom-dcim.html#110122">110122</a> User Authentication</td>
+  <tr><td>Вход пользователя в систему (<a href="auditevent-examples.html">пример</a>)</td><td><a href="codesystem-dicom-dcim.html#110114">110114</a> Аутентификация пользователя</td><td><a href="codesystem-dicom-dcim.html#110122">110122</a> User Authentication</td>
      <td><a href="valueset-audit-event-action.html">E</a> Execute</td><td>Один участник, который содержит сведения о залогиненном пользователе.</td></tr>
-  <tr><td>User Logout (<a href="auditevent-examples.html">пример</a>)</td><td><a href="valueset-dicom-dcim.html#110114">110114</a> User Authentication</td><td><a href="valueset-dicom-dcim.html#110123">110123</a> Выход пользователя из системы</td>
+  <tr><td>User Logout (<a href="auditevent-examples.html">пример</a>)</td><td><a href="codesystem-dicom-dcim.html#110114">110114</a> User Authentication</td><td><a href="codesystem-dicom-dcim.html#110123">110123</a> Выход пользователя из системы</td>
      <td><a href="valueset-audit-event-action.html">E</a> Execute</td><td>Oдин участник, который содержит сведения о разлогиненном пользователе.</td></tr>
   <tr><td>REST operation logged on server (<a href="auditevent-examples.html">пример</a>)</td><td><a href="valueset-audit-event-type.html">rest</a> RESTful-операция</td><td><a href="valueset-type-restful-interaction.html">[код]</a>, определённый для операции</td>
      <td><a href="valueset-audit-event-action.html">*</a> (см. ниже)</td><td>Участник для залогиненного пользователя, если доступно, и один объект со ссылкой, если хотя бы тип известен как часть операции. Необходимо указать Reference.url для известного уровня гранулярности.</td></tr>

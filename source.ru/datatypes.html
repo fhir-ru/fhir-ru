@@ -13,7 +13,7 @@
 <%dtheader base%>
 
 <h1>Типы данных</h1>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: 3</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: 3</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 
 <p>
 В спецификации FHIR приводится набор типов данных, которые используются в элементах ресурсов. 
@@ -625,6 +625,7 @@ Quantity (Количество)
 Quantity используется в следующих местах: [%dtusage Quantity%]
 </p>
 
+<a name="QuantityVariations"> </a>
 <h3>
 Некоторые вариации типа Quantity
 </h3>
@@ -642,7 +643,7 @@ of the Quantity data type:
  </tr>
  
  <tr>
-   <td>Age</td>
+   <td>Age<a name="Age"> </a></td>
    <td>[%dt.constraints Age%]</td>
    <td><a href="age.profile.xml.html">XML</a>, <a href="age.profile.json.html">JSON</a></td>
  </tr>
@@ -652,7 +653,7 @@ of the Quantity data type:
  </tr>
  
  <tr>
-   <td>Count</td>
+   <td>Count<a name="Count"> </a></td>
    <td>[%dt.constraints Count%]</td>
    <td><a href="count.profile.xml.html">XML</a>, <a href="count.profile.json.html">JSON</a></td>
  </tr>
@@ -662,7 +663,7 @@ of the Quantity data type:
  </tr>
 
  <tr>
-   <td>Distance</td>
+   <td>Distance<a name="Distance"> </a></td>
    <td>[%dt.constraints Distance%]</td>
    <td><a href="distance.profile.xml.html">XML</a>, <a href="distance.profile.json.html">JSON</a></td>
  </tr>
@@ -672,7 +673,7 @@ of the Quantity data type:
  </tr>
  
  <tr>
-   <td>Duration</td>
+   <td>Duration<a name="Duration"> </a></td>
    <td>[%dt.constraints Duration%]</td>
    <td><a href="duration.profile.xml.html">XML</a>, <a href="duration.profile.json.html">JSON</a></td>
  </tr>
@@ -682,7 +683,7 @@ of the Quantity data type:
  </tr>
  
  <tr>
-   <td>Money</td>
+   <td>Money<a name="Money"> </a></td>
    <td>[%dt.constraints Money%]</td>
    <td><a href="money.profile.xml.html">XML</a>, <a href="money.profile.json.html">JSON</a></td>
  </tr>
@@ -699,7 +700,7 @@ of the Quantity data type:
    <td><b>Formal Definitions</b></td>
  </tr>
  <tr>
-   <td>Simple Quantity</td>
+   <td>Simple Quantity<a name="SimpleQuantity"> </a></td>
    <td>[%dt.constraints SimpleQuantity%]</td>
    <td><a href="simplequantity.profile.xml.html">XML</a>, <a href="simplequantity.profile.json.html">JSON</a></td>
  </tr>
@@ -907,9 +908,9 @@ used for codes that correspond 1..1 with the Identifier.system. Some identifiers
 categories due to variations in common usage.
 </p>
 <p>
-Элемент <code>assigner</code> используется для указания, какой реестр/государство/учреждение/пр. назначили идентификатор. В качестве <a href="reference.html">Reference</a> можно указать просто текстовое описание в элементе <code>display</code>. 
+Элемент <code>assigner</code> используется для указания, какой реестр/государство/учреждение/пр. назначили идентификатор. В качестве <a href="references.html">Reference</a> можно указать просто текстовое описание в элементе <code>display</code>. 
 <!-- The <code>assigner</code> is used to indicate what registry/state/facility/etc. assigned the identifier.
-As a <a href="reference.html">Reference</a>, the assigner can include just a text description in the <code>display</code>.  -->
+As a <a href="references.html">Reference</a>, the assigner can include just a text description in the <code>display</code>.  -->
 </p>  
 <p>
 Identifier используется в следующих местах: [%dtusage Identifier%]

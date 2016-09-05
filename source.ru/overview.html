@@ -14,7 +14,7 @@
 
 <a name="root"> </a>
 <h2>Обзор стандарта FHIR и план его дальнейшего развития</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 
 
 <p>
@@ -105,14 +105,11 @@ case specific requirements. Two special kinds of resources are used to describe 
 
 <h3>Спецификация</h3>
 <p>
-Спецификация FHIR разбита на 3 части: 
+Спецификация FHIR разбита на <a href="modules.html#modules">несколько модулей</a>: 
 </p>
-<ul>
- <li>Общая <a href="documentation.html">документация</a> по <a href="resource.html">ресурсам</a> 
-  и справочные материалы по <a href="datatypes.html">типам данных</a>, <a href="terminologies.html">кодам</a>, а также по <a href="xml.html">XML</a> и <a href="json.html">JSON </a>форматам</li>
- <li><a href="implementation.html">Реализация</a> – как использовать ресурсы с помощью <a href="http.html">REST</a>, <a href="messaging.html">Messaging</a>, в качестве <a href="documents.html">клинических документов</a> или в <a href="services.html">сервисной архитектуре</a></li>
- <li><a href="resourcelist.html">Список ресурсов</a> – список всех ресурсов, определенных FHIR. Также имеются отдельные списки для <a href="clinical.html">клинических</a>, <a href="administration.html">административных</a> и <a href="infrastructure.html">инфраструктурных</a> ресурсов</li>
-</ul>
+[%file modules-list%]
+
+
 <p>
 Ресурсы имеют широкий спектр применения: от чисто клинической информации, например <a href="careplan.html">планы ухода</a> и <a href="diagnosticreport.html">диагностические отчеты</a>, до инфраструктурной, например <a href="messageheader.html">заголовки сообщений</a> и <a href="conformance.html">заявления соответствия</a>. Все они имеют общие технические характеристики (см. ниже формализованные определения), но  используются совершенно различным образом.
 Обратите внимание, что вам нет необходимости в REST для использования ресурсов.

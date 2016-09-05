@@ -12,7 +12,7 @@
 <div class="col-12">
 
 <h2>RESTful API</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 
 <p>
 В FHIR описан определенный набор взаимодействий, с использованием которого можно  достаточно тонко 
@@ -148,7 +148,7 @@ is known, the address of other resources may be determined. -->
 <!-- Note: All URLs (and ids that form part of the URL) defined by this specification are case sensitive. --></p>
 <p>
 Обратите внимание, что сервер может использовать пути типа "http://server/...[xx]...", где [xx] - это некоторая переменная часть, идентифицирующая конкретный экземпляр реализации FHIR API. Обычно это идентификатор пациента или пользователя, и его присутствие означает, что вся информация относится к данному пациенту/пользователю либо персонализирована для него.  
-Так, в случае пользователя это означает, что именно ему предоставлен явный доступ к операции. Не обязательно всегда включать идентификатор пациента в URL - реализации могут связывать точку взаимодействия FHIR с конкретным пациентом или провайдером с помощью OAuth. Логическое обоснование можно посмотреть в <a href="compartmentdefinition.htmls">Compartments</a>.
+Так, в случае пользователя это означает, что именно ему предоставлен явный доступ к операции. Не обязательно всегда включать идентификатор пациента в URL - реализации могут связывать точку взаимодействия FHIR с конкретным пациентом или провайдером с помощью OAuth. Логическое обоснование можно посмотреть в <a href="compartmentdefinition.html">Compartments</a>.
 <!-- Note that a server may use a path of the form <code>http://server/...[xx]...</code> where the <code>[xx]</code> is some variable
 portion that identifies a particular instantiation of the FHIR API. Typically, the variable id
 identifies a patient or a user, and the underlying information is completely compartmented
@@ -157,7 +157,7 @@ patient or user centric view of a record, where authentication/authorization is
 explicitly granted to the URL, on the grounds that some identifiable user is associated
 with the logical identity. It is not necessary to explicitly embed the patient id in the
 URL - implementations can associate an FHIR end-point with a particular patient or
-provider by using an OAuth login. See <a href="compartmentdefinition.htmls">Compartments</a> for the logical underpinning. -->
+provider by using an OAuth login. See <a href="compartmentdefinition.html">Compartments</a> for the logical underpinning. -->
 </p>
 <p><b>Идентификация<!-- Identity --></b></p>
 <p>
@@ -961,8 +961,8 @@ mode</a> of <code>include</code>. -->
 <a name="vsearch"> </a>
 <h4>Variant Searches</h4>
 <p>
-Для поиска <a href="compartmentdefinition.htmls">логического модуля (compartment)</a> для всех возможных ресурсов либо только определённого типа, соответственно:
-<!-- To search a <a href="compartmentdefinition.htmls">compartment</a>, for either all possible resources or for a particular resource type, respectively: -->
+Для поиска <a href="compartmentdefinition.html">логического модуля (compartment)</a> для всех возможных ресурсов либо только определённого типа, соответственно:
+<!-- To search a <a href="compartmentdefinition.html">compartment</a>, for either all possible resources or for a particular resource type, respectively: -->
 </p>
 <pre>
   GET [base]/[Compartment]/[id]/{*?[parameters]{&amp;_format=[mime-type]}}
@@ -1200,7 +1200,7 @@ may choose to assign new ids to all submitted resources, irrespective of any cla
 logical <code>id</code> in the resource, or <code>fullUrl</code> on entries in the batch/transaction. -->
 </p>
 <blockquote class="dstu-note">
-<a name="dstu-2a"> </a>
+<a name="dstu-3"> </a>
 <p>
 <b>Примечание:</b> эта модель поведения подлежит проверке на основе опыта реализации и может меняться.
 <!-- <b>Note:</b> this behavior is subject to verification based on implementation experience and may change. -->
@@ -1521,7 +1521,7 @@ wishes to delete the information. -->
 integrity is handled. -->
 </p>
 <blockquote class="dstu-note">
-<a name="dstu-3"> </a>
+<a name="dstu-4"> </a>
 <p>
 <b>Примечание к DSTU<!-- DSTU Note -->:</b>  На данный момент единственный способ документировать, каким образом обеспечивается целостность транзакций - это текст в описательной части ресурса <a href="conformance.html">Conformance</a>. Будем благодарны за ваши отзывы во время периода пробного использования по вопросу, какие из этих данных должны быть вычисляемыми (если вообще должны).
 <!-- For now, the only way to document how transaction integrity
@@ -1680,12 +1680,12 @@ system troubleshooting. -->
 In this regard, FHIR functions as a Record Format Profile as described in that specification. Note the following significant factors to be aware of: -->
 </p>
 <ul>
- <li>FHIR устанавливает соответствие между hData-разделами и типами ресурсов, и hData-документами и экземплярами ресурсов. Подразделы отсутствуют, а клиентские системы не могут создавать новые секции, хотя <a href="compartmentdefinition.htmls">compartments</a> ведут себя в некоторой степени наподобие разделов</li>
+ <li>FHIR устанавливает соответствие между hData-разделами и типами ресурсов, и hData-документами и экземплярами ресурсов. Подразделы отсутствуют, а клиентские системы не могут создавать новые секции, хотя <a href="compartmentdefinition.html">compartments</a> ведут себя в некоторой степени наподобие разделов</li>
  <li>Так как клиенты не могут создавать новые секции (<code>POST</code> на URL сервиса), <code>POST</code> на URL сервиса использован для взаимодействия <a href="#transaction">transaction</a> (различие проходит проверку)</li>
  <li>FHIR не определяет (пока что) корневой документ. Когда определен, он будет содержать информацию о том, что FHIR-сервер сделал (в противоположность заявлению о соответствии, которое описывает, что он может сделать)</li>
  <li>Обратите внимание, что данная спецификация не приводит повторно правила из hData RESTful Transport, относящиеся к команде <code>OPTIONS</code> в URL сервиса, однако эти правила (дополнительные заголовки и пр.) по-прежнему применяются</li>
 <!--  <li>FHIR maps the hData sections to resource types, and hData documents to resource instances. There are no subsections, and client systems are not able to create new sections,
- though <a href="compartmentdefinition.htmls">compartments</a> behave somewhat like sections</li>
+ though <a href="compartmentdefinition.html">compartments</a> behave somewhat like sections</li>
  <li>Because clients cannot submit new sections (<code>POST</code> to service URL), <code>POST</code> to the service URL has been re-used for <a href="#transaction">the transaction
  interaction</a> (difference under review)</li>
  <li>FHIR does not (yet) define a root document. When defined, it will contain information about what the FHIR server has done (as opposed to a conformance statement, which describes what it is capable of doing)</li>
