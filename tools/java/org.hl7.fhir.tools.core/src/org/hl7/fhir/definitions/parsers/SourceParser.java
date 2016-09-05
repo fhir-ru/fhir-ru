@@ -402,7 +402,7 @@ public class SourceParser {
   }
 
 
-  private void loadDictionaries() {
+  private void loadDictionaries() throws IOException {
     String[] dicts = ini.getPropertyNames("dictionaries");
     if (dicts != null) {
       for (String dict : dicts) {
@@ -434,7 +434,7 @@ public class SourceParser {
     }
   }
 
-  private boolean isRuledOutLocally(String code) {
+  private boolean isRuledOutLocally(String code) throws IOException {
     String inifile = Utilities.path(rootDir, "local.ini");
     if (!new File(inifile).exists())
       return false;
@@ -443,7 +443,7 @@ public class SourceParser {
     return ok;
   }
 
-  private boolean isOkLocally(String code) {
+  private boolean isOkLocally(String code) throws IOException {
     if (forPublication)
       return false;
     String inifile = Utilities.path(rootDir, "local.ini");
@@ -462,7 +462,7 @@ public class SourceParser {
     }        
   }
 
-  private void loadW5s() {
+  private void loadW5s() throws IOException {
     if (new File(Utilities.path(srcDir, "w5.ini")).exists()) {
       IniFile w5 = new IniFile(Utilities.path(srcDir, "w5.ini"));
       for (String n : w5.getPropertyNames("names")) {
@@ -579,6 +579,8 @@ public class SourceParser {
     CodeSystem cs = (CodeSystem) xml.parse(new CSFileInputStream(srcDir+ini.getStringProperty("codesystems", n).replace('\\', File.separatorChar)));
     if (!cs.hasId())  
       cs.setId(FormatUtilities.makeId(n));
+    cs.setUserData("path", "codesystem-"+cs.getId()+".html");
+    cs.setUserData("filename", "codesystem-"+cs.getId());
     definitions.getCodeSystems().put(cs.getUrl(), cs);
   }
 
@@ -589,6 +591,8 @@ public class SourceParser {
     new CodeSystemConvertor(definitions.getCodeSystems()).convert(xml, vs, srcDir+ini.getStringProperty("valuesets", n).replace('\\', File.separatorChar));
     vs.setId(FormatUtilities.makeId(n));
     vs.setUrl("http://hl7.org/fhir/ValueSet/"+vs.getId());
+    vs.setUserData("path", "valueset-"+vs.getId()+".html");
+    vs.setUserData("filename", "valueset-"+vs.getId());
     definitions.getExtraValuesets().put(n, vs);
   }
 
@@ -931,4 +935,13 @@ public class SourceParser {
   public BindingNameRegistry getRegistry() {
     return registry;
   }
+
+
+
+
+  public IniFile getIni() {
+    return ini;
+  }
+  
+  
 }

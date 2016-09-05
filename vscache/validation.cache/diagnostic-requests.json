@@ -1,10 +1,4 @@
 ﻿{
   "url": "http://hl7.org/fhir/ValueSet/diagnostic-requests",
-  "outcomes": [
-    {
-      "hash": "#|null|null|example|null",
-      "severity": "error",
-      "message": "None of the codes are in the specified value set"
-    }
-  ]
+  "outcomes": []
 }

@@ -3,12 +3,15 @@
 
 ##### Scope and Usage
 
-This profile sets minimum expectations for use of the [AllergyIntolerance] resource to record allergies/adverse events associated with a patient within the DAF FHIR IG. It identifies which core elements, extensions, vocabularies and value sets must be Supported by clients and servers. For the definition of Supported please refer to DAF FHIR IG. The data elements identified by the profile are based on ONC 2015 Edition Common Clinical Data Set(CCDS).
+This profile sets minimum expectations for the [AllergyIntolerance] resource to record, search and fetch allergies/adverse events associated with a patient.  It identifies the mandatory core elements, extensions, vocabularies and value sets which **SHALL** be present in the AllergyIntolerance resource when using this profile.
 
-suggested update to:
+**Example Usage Scenarios:**
 
-This profile sets minimum expectations for use of the [AllergyIntolerance] resource to record, search and fetch allergies/adverse events associated with a patient. The data elements identified by the profile are based on [ONC 2015 Edition Common Clinical Data Set (CCDS)].  It identifies the mandatory core elements, extensions, vocabularies and value sets which **SHALL** be present in the AllergyIntolerance resource when using this profile.
+The following are example usage scenarios for the DAF-Core AllergyIntolerance
+profile:
 
+-   Query for allergies belonging to a Patient
+-   Query for all patients who have a specific allergy
 
 
 ##### Mandatory Data Elements and Terminology
@@ -18,15 +21,25 @@ The following data-elements are mandatory (i.e data MUST be present). These are 
 
 **Each AllergyIntolerance must have:**
 
-1.  a patient
-2.  a code which tells you what the patient is allergic to. 
-3.  a status of the allergy. 
+1.  a status of the allergy
+2.  a code which tells you what the patient is allergic to 
+3.  a patient
 
 **Profile specific implementation guidance:**
 
 * Representing No Known Allergies: No Known Allergies will be represented using the DAF-AllergyIntolerance profile with appropriate negation code in AllergyIntolerence.code.
-* Additional elements from [DAF AllergyIntolerance Profile](daf-allergyintolerance.html) may be present.
 
-[ONC 2015 Edition Common Clinical Data Set (CCDS)]: https://www.healthit.gov/sites/default/files/2015Ed_CCG_CCDS.pdf
+####  Example Usage Scenarios
+
+The following are example usage scenarios for the DAF-AllergyIntolerance
+profile:
+
+-   Query for allergies belonging to a Patient
+-   Query for all patients who have had a specific allergy category
+-   Query for allergies experienced during a time period
+-   Query for allergies for a patient for a specific category
+-   Query for allergies based on reaction and severity
+
+
 [AllergyIntolerance]: http://hl7-fhir.github.io/allergyintolerance.html
 

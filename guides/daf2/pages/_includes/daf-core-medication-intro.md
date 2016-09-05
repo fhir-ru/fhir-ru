@@ -1,5 +1,12 @@
-When referring to medications, The [MedicationStatement] and [MedicationOrder] resources can either use a code or refer to a Medication resource.  This profile sets minimum expectations for use of the Medication resource to record search and fetch medications associated with a patient within the DAF FHIR IG. It identifies which core elements, extensions, vocabularies and value sets must be Supported by clients and servers. For the definition of Supported please refer to DAF FHIR IG. The data elements identified by the profile are based on ONC 2015 Edition Common Clinical Data Set(CCDS).
+When referring to medications, The [MedicationStatement] and [MedicationOrder] resources can either use a code or refer to a [Medication] resource.  This profile sets minimum expectations for the Medication resource to record search and fetch medications associated with a patient. It identifies which core elements, extensions, vocabularies and value sets **SHALL** be present in the resource when using this profile.
 
+**Example Usage Scenarios:**
+
+Queries on Medication resource are expected to be within the context of
+a MedicationStatement,  MedicationOrder resource query. The following are
+example usage scenarios for the DAF-Medication profile:
+
+-   Query for Medications with a particular code
 
 ##### Mandatory Data Elements and Terminology
 
@@ -8,12 +15,13 @@ The following data-elements are mandatory (i.e data MUST be present). These are 
 
 **Each Medication must have:**
 
-1.  A medication code or a list of ingredients that comprise the medication
+1.  A medication code
 
 
 **Profile specific implementation guidance:**
  
-* Additional elements from [DAF Medication Profile](daf-Medication.html) may be present.
+* none
 
-[MedicationStatement]:daf-core-medicationstatement.html
- [MedicationOrder]: daf-core-medicationorder.html
+[MedicationStatement]: http://hl7-fhir.github.io/medicationstatement.html
+ [MedicationOrder]: http://hl7-fhir.github.io/medicationorder.html
+ [Medication]: http://hl7-fhir.github.io/medication.html

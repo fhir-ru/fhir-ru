@@ -146,6 +146,8 @@ public abstract class BaseWorkerContext implements IWorkerContext {
           return loadFromCache(vs.copy(), cacheFn);
       }
       if (cacheOk && vs.hasUrl()) {
+        if (expProfile == null)
+          throw new Exception("No ExpansionProfile provided");
         ValueSetExpansionOutcome vse = expansionCache.getExpander().expand(vs, expProfile.setExcludeNested(!heirarchical));
         if (vse.getValueset() != null) {
           if (cache != null) {
@@ -153,20 +155,21 @@ public abstract class BaseWorkerContext implements IWorkerContext {
             newJsonParser().compose(new FileOutputStream(cacheFn), vse.getValueset());
             s.close();
           }
-          return vse;
         }
-      }
-      ValueSetExpansionOutcome res = expandOnServer(vs, cacheFn);
-      if (cacheFn != null) {
-        if (res.getValueset() != null) {
-          saveToCache(vs, cacheFn);
-        } else { 
-          OperationOutcome oo = new OperationOutcome();
-          oo.addIssue().getDetails().setText(res.getError());
-          saveToCache(oo, cacheFn);
+        return vse;
+      } else {
+        ValueSetExpansionOutcome res = expandOnServer(vs, cacheFn);
+        if (cacheFn != null) {
+          if (res.getValueset() != null) {
+            saveToCache(vs, cacheFn);
+          } else { 
+            OperationOutcome oo = new OperationOutcome();
+            oo.addIssue().getDetails().setText(res.getError());
+            saveToCache(oo, cacheFn);
+          }
         }
+        return res;
       }
-      return res;
     } catch (Exception e) {
       return new ValueSetExpansionOutcome(e.getMessage() == null ? e.getClass().getName() : e.getMessage());
     }

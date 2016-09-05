@@ -131,6 +131,7 @@ import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionContainsComponent;
 import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
 import org.hl7.fhir.dstu3.utils.IWorkerContext.ValidationResult;
+import org.hl7.fhir.dstu3.utils.NarrativeGenerator.IReferenceResolver;
 import org.hl7.fhir.exceptions.TerminologyServiceException;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
@@ -145,6 +146,12 @@ import org.w3c.dom.Element;
 import com.github.rjeschke.txtmark.Processor;
 
 public class NarrativeGenerator implements INarrativeGenerator {
+
+  public interface IReferenceResolver {
+
+    ResourceWithReference resolve(String url);
+
+  }
 
   public void generate(DomainResource r) throws EOperationOutcome, FHIRException, IOException {
     if (r instanceof ConceptMap) {
@@ -369,6 +376,8 @@ public class NarrativeGenerator implements INarrativeGenerator {
       if (type == null || type.equals("Resource") || type.equals("BackboneElement") || type.equals("Element"))
         return null;
 
+      if (element.hasElementProperty())
+        return null;
       ByteArrayOutputStream xml = new ByteArrayOutputStream();
       try {
         new org.hl7.fhir.dstu3.elementmodel.XmlParser(context).compose(element, xml, OutputStyle.PRETTY, null);
@@ -739,7 +748,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
     }
   }
 
-  public class ResourceWithReference {
+  public static class ResourceWithReference {
 
     private String reference;
     private ResourceWrapper resource;
@@ -761,8 +770,9 @@ public class NarrativeGenerator implements INarrativeGenerator {
   private String prefix;
   private IWorkerContext context;
   private String basePath;
-  private String tooCostlyNote;
-
+  private String tooCostlyNoteEmpty;
+  private String tooCostlyNoteNotEmpty;
+  private IReferenceResolver resolver;
 
   public NarrativeGenerator(String prefix, String basePath, IWorkerContext context) {
     super();
@@ -771,14 +781,33 @@ public class NarrativeGenerator implements INarrativeGenerator {
     this.basePath = basePath;
   }
 
-
-  public String getTooCostlyNote() {
-    return tooCostlyNote;
+  public NarrativeGenerator(String prefix, String basePath, IWorkerContext context, IReferenceResolver resolver) {
+    super();
+    this.prefix = prefix;
+    this.context = context;
+    this.basePath = basePath;
+    this.resolver = resolver;
   }
 
 
-  public NarrativeGenerator setTooCostlyNote(String tooCostlyNote) {
-    this.tooCostlyNote = tooCostlyNote;
+  public String getTooCostlyNoteEmpty() {
+    return tooCostlyNoteEmpty;
+  }
+
+
+  public NarrativeGenerator setTooCostlyNoteEmpty(String tooCostlyNoteEmpty) {
+    this.tooCostlyNoteEmpty = tooCostlyNoteEmpty;
+    return this;
+  }
+
+
+  public String getTooCostlyNoteNotEmpty() {
+    return tooCostlyNoteNotEmpty;
+  }
+
+
+  public NarrativeGenerator setTooCostlyNoteNotEmpty(String tooCostlyNoteNotEmpty) {
+    this.tooCostlyNoteNotEmpty = tooCostlyNoteNotEmpty;
     return this;
   }
 
@@ -847,7 +876,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
 
   private void generateByProfile(ResourceWrapper res, StructureDefinition profile, BaseWrapper e, List<ElementDefinition> allElements, ElementDefinition defn, List<ElementDefinition> children,  XhtmlNode x, String path, boolean showCodeDetails) throws FHIRException, UnsupportedEncodingException, IOException {
     if (children.isEmpty()) {
-      renderLeaf(res, e, defn, x, false, showCodeDetails, readDisplayHints(defn));
+      renderLeaf(res, e, defn, x, false, showCodeDetails, readDisplayHints(defn), path);
     } else {
       for (PropertyWrapper p : splitExtensions(profile, e.children())) {
         if (p.hasValues()) {
@@ -869,7 +898,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
                     if (renderAsList(child) && p.getValues().size() > 1) {
                       XhtmlNode list = x.addTag("ul");
                       for (BaseWrapper v : p.getValues())
-                        renderLeaf(res, v, child, list.addTag("li"), false, showCodeDetails, displayHints);
+                        renderLeaf(res, v, child, list.addTag("li"), false, showCodeDetails, displayHints, path);
                     } else {
                       boolean first = true;
                       for (BaseWrapper v : p.getValues()) {
@@ -877,7 +906,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
                           first = false;
                         else
                           para.addText(", ");
-                        renderLeaf(res, v, child, para, false, showCodeDetails, displayHints);
+                        renderLeaf(res, v, child, para, false, showCodeDetails, displayHints, path);
                       }
                     }
                   }
@@ -891,7 +920,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
                     if (v != null) {
                       tr = tbl.addTag("tr");
                       tr.addTag("td").addText("*"); // work around problem with empty table rows
-                      addColumnValues(res, tr, grandChildren, v, showCodeDetails, displayHints);
+                      addColumnValues(res, tr, grandChildren, v, showCodeDetails, displayHints, path);
                     }
                   }
                 } else {
@@ -1002,13 +1031,13 @@ public class NarrativeGenerator implements INarrativeGenerator {
       tr.addTag("td").addTag("b").addText(Utilities.capitalize(tail(e.getPath())));
   }
 
-  private void addColumnValues(ResourceWrapper res, XhtmlNode tr, List<ElementDefinition> grandChildren, BaseWrapper v, boolean showCodeDetails, Map<String, String> displayHints) throws FHIRException, UnsupportedEncodingException, IOException {
+  private void addColumnValues(ResourceWrapper res, XhtmlNode tr, List<ElementDefinition> grandChildren, BaseWrapper v, boolean showCodeDetails, Map<String, String> displayHints, String path) throws FHIRException, UnsupportedEncodingException, IOException {
     for (ElementDefinition e : grandChildren) {
       PropertyWrapper p = v.getChildByName(e.getPath().substring(e.getPath().lastIndexOf(".")+1));
       if (p == null || p.getValues().size() == 0 || p.getValues().get(0) == null)
         tr.addTag("td").addText(" ");
       else
-        renderLeaf(res, p.getValues().get(0), e, tr.addTag("td"), false, showCodeDetails, displayHints);
+        renderLeaf(res, p.getValues().get(0), e, tr.addTag("td"), false, showCodeDetails, displayHints, path);
     }
   }
 
@@ -1064,10 +1093,11 @@ public class NarrativeGenerator implements INarrativeGenerator {
     return null;
   }
 
-  private void renderLeaf(ResourceWrapper res, BaseWrapper ew, ElementDefinition defn, XhtmlNode x, boolean title, boolean showCodeDetails, Map<String, String> displayHints) throws FHIRException, UnsupportedEncodingException, IOException {
+  private void renderLeaf(ResourceWrapper res, BaseWrapper ew, ElementDefinition defn, XhtmlNode x, boolean title, boolean showCodeDetails, Map<String, String> displayHints, String path) throws FHIRException, UnsupportedEncodingException, IOException {
     if (ew == null)
       return;
 
+    
     Base e = ew.getBase();
 
     if (e instanceof StringType)
@@ -1144,11 +1174,11 @@ public class NarrativeGenerator implements INarrativeGenerator {
       // what to display: if text is provided, then that. if the reference was resolved, then show the generated narrative
       if (r.hasDisplayElement()) {
         c.addText(r.getDisplay());
-        if (tr != null) {
+        if (tr != null && tr.getResource() != null) {
           c.addText(". Generated Summary: ");
           generateResourceSummary(c, tr.getResource(), true, r.getReference().startsWith("#"));
         }
-      } else if (tr != null) {
+      } else if (tr != null && tr.getResource() != null) {
         generateResourceSummary(c, tr.getResource(), r.getReference().startsWith("#"), r.getReference().startsWith("#"));
       } else {
         c.addText(r.getReference());
@@ -1157,8 +1187,14 @@ public class NarrativeGenerator implements INarrativeGenerator {
       return;
     } else if (e instanceof ElementDefinition) {
       x.addText("todo-bundle");
-    } else if (e != null && !(e instanceof Attachment) && !(e instanceof Narrative) && !(e instanceof Meta))
-      throw new NotImplementedException("type "+e.getClass().getName()+" not handled yet");
+    } else if (e != null && !(e instanceof Attachment) && !(e instanceof Narrative) && !(e instanceof Meta)) {
+      StructureDefinition sd = context.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+e.fhirType());
+      if (sd == null)
+        throw new NotImplementedException("type "+e.getClass().getName()+" not handled yet, and no structure found");
+      else
+        generateByProfile(res, sd, ew, sd.getSnapshot().getElement(), sd.getSnapshot().getElementFirstRep(), 
+            getChildrenForPath(sd.getSnapshot().getElement(), sd.getSnapshot().getElementFirstRep().getPath()), x, path, showCodeDetails);
+    }
   }
 
   private boolean displayLeaf(ResourceWrapper res, BaseWrapper ew, ElementDefinition defn, XhtmlNode x, String name, boolean showCodeDetails) throws FHIRException, UnsupportedEncodingException, IOException {
@@ -1358,10 +1394,12 @@ public class NarrativeGenerator implements INarrativeGenerator {
     }
 
     Resource ae = context.fetchResource(null, url);
-    if (ae == null)
-      return null;
-    else
+    if (ae != null)
       return new ResourceWithReference(url, new ResourceWrapperDirect(ae));
+    else if (resolver != null) {
+      return resolver.resolve(url);
+    } else
+      return null;
   }
 
   private void renderCodeableConcept(CodeableConcept cc, XhtmlNode x, boolean showCodeDetails) {
@@ -2031,6 +2069,8 @@ public class NarrativeGenerator implements INarrativeGenerator {
 
 
   private void inject(DomainResource r, XhtmlNode x, NarrativeStatus status) {
+    if (!x.hasAttribute("xmlns"))
+      x.setAttribute("xmlns", "http://www.w3.org/1999/xhtml");
     if (!r.hasText() || !r.getText().hasDiv() || r.getText().getDiv().getChildNodes().isEmpty()) {
       r.setText(new Narrative());
       r.getText().setDiv(x);
@@ -2051,6 +2091,8 @@ public class NarrativeGenerator implements INarrativeGenerator {
 
 
   private void inject(Element er, XhtmlNode x, NarrativeStatus status) {
+    if (!x.hasAttribute("xmlns"))
+      x.setAttribute("xmlns", "http://www.w3.org/1999/xhtml");
     Element txt = XMLUtil.getNamedChild(er, "text");
     if (txt == null) {
       txt = er.getOwnerDocument().createElementNS(FormatUtilities.FHIR_NS, "text");
@@ -2084,6 +2126,8 @@ public class NarrativeGenerator implements INarrativeGenerator {
   }
 
   private void inject(org.hl7.fhir.dstu3.elementmodel.Element er, XhtmlNode x, NarrativeStatus status) throws DefinitionException, IOException {
+    if (!x.hasAttribute("xmlns"))
+      x.setAttribute("xmlns", "http://www.w3.org/1999/xhtml");
     org.hl7.fhir.dstu3.elementmodel.Element txt = er.getNamedChild("text");
     if (txt == null) {
       txt = new org.hl7.fhir.dstu3.elementmodel.Element("text", er.getProperty().getChild(null, "text"));
@@ -2345,7 +2389,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
         generateCopyright(x, vs);
     }
     if (ToolingExtensions.hasExtension(vs.getExpansion(), "http://hl7.org/fhir/StructureDefinition/valueset-toocostly"))
-      x.addTag("p").setAttribute("style", "border: maroon 1px solid; background-color: #FFCCCC; font-weight: bold; padding: 8px").addText(tooCostlyNote);
+      x.addTag("p").setAttribute("style", "border: maroon 1px solid; background-color: #FFCCCC; font-weight: bold; padding: 8px").addText(vs.getExpansion().getContains().isEmpty() ? tooCostlyNoteEmpty : tooCostlyNoteNotEmpty );
     else {
       Integer count = countMembership(vs);
       if (count == null)
@@ -2368,7 +2412,7 @@ public class NarrativeGenerator implements INarrativeGenerator {
       if (ref == null) 
       p.addTag("code").addText(vs.getExpansion().getContains().get(0).getSystem());
       else
-        p.addTag("a").setAttribute("href", ref).addTag("code").addText(vs.getExpansion().getContains().get(0).getSystem());
+        p.addTag("a").setAttribute("href", prefix+ref).addTag("code").addText(vs.getExpansion().getContains().get(0).getSystem());
     }
     XhtmlNode t = x.addTag("table").setAttribute("class", "codes");
     XhtmlNode tr = t.addTag("tr");

@@ -12,7 +12,7 @@
 
 <a name="base"> </a>
 <h2>Search</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 
 <p>
 Searching for resources is fundamental to the mechanics of FHIR.
@@ -91,7 +91,7 @@ parameter works for search <a href="http.html#mime-type">like for other interact
 </p>
 <ul>
  <li>A specified resource type: <code>GET [base]/[type]?parameter(s)</code></li>
- <li>A specified <a href="compartmentdefinition.htmls">compartment</a>, perhaps with a specified resource type in that compartment: <code>GET [base]/Patient/[id]/[type]?parameter(s)</code></li>
+ <li>A specified <a href="compartmentdefinition.html">compartment</a>, perhaps with a specified resource type in that compartment: <code>GET [base]/Patient/[id]/[type]?parameter(s)</code></li>
  <li>All resource types: <code>GET [base]/_search?parameter(s)</code> (parameters common to all types only)</li>
 </ul>
 <p>
@@ -670,7 +670,7 @@ Example searches:
  <tr><td><pre> GET [base]/Condition?code=http://acme.org/conditions/codes|ha125</pre></td><td>Search for any condition with a code "ha125" in the code system "http://acme.org/conditions/codes"</td></tr>
  <tr><td><pre> GET [base]/Condition?code=ha125</pre></td><td>Search for any condition with a code "ha125". Note that there is not often any useful overlap in literal symbols between code systems, so the previous example is generally preferred </td></tr>
  <tr><td><pre> GET [base]/Condition?code:text=headache</pre></td><td>Search for any Condition with a code that has a text "headache" associated with it (either in the text, or a display)</td></tr>
- <tr><td><pre> GET [base]/Condition?code:in=http%3A%2F%2Fsnomed.info%2Fsct%3Ffhir_vs%3Disa%2F126851005</pre></td><td>Search for any condition in the SNOMED CT value set "http://snomed.info/sct?fhir_vs=isa/126851005" that includes all descendents of "Neoplasm of liver"</td></tr>
+ <tr><td><pre> GET [base]/Condition?code:in=http%3A%2F%2Fsnomed.info%2Fsct%3Ffhir_vs%3Disa%2F126851005</pre></td><td>Search for any condition in the SNOMED CT value set "http://snomed.info/sct?fhir_vs=isa/126851005" that includes all descendants of "Neoplasm of liver"</td></tr>
  <tr><td><pre> GET [base]/Condition?code:below=126851005</pre></td><td>Search for any condition that is subsumed by the SNOMED CT Code "Neoplasm of liver". Note: This is the same outcome as the previous search</td></tr>
  <tr><td><pre> GET [base]/Condition?code:in=http://acme.org/fhir/ValueSet/cardiac-conditions</pre></td><td>Search for any condition that is in the institutions list of cardiac conditions</td></tr>
 </table>
@@ -982,7 +982,7 @@ This request returns all Condition resources with the word "metastases" and eith
 for related words as well.
 </p>
 <blockquote class="dstu-note">
-<a name="dstu"> </a>
+<a name="dstu2"> </a>
 <p>
 <b>DSTU Note:</b>  The issues around standardizing text search are not fully resolved.
 During the trial use period for this specification, we recommend that systems use
@@ -1033,7 +1033,7 @@ but may choose to do so.
 </p>
 
 <blockquote class="dstu-note">
-<a name="dstu"> </a>
+<a name="dstu3"> </a>
 <p>
 <b>STU Note:</b> the <a href="#has">_has</a> search parameter documented above is a new 
 addition that has generated significant discussion. if adopted, it may
@@ -1419,7 +1419,7 @@ results for the convenience of the client.
 </p>
 
 <blockquote class="dstu-note">
-<a name="dstu-2"> </a>
+<a name="dstu4"> </a>
 <p>
 <b>DSTU Note:</b>  Should additional rules about how <code>_include</code> works be made?  
 </p>

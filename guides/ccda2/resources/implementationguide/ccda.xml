@@ -130,10 +130,26 @@
     </resource>
     <resource>
       <example value="false"/>
+      <name value="C-CDA on FHIR Operative Note"/>
+      <acronym value="ccda-operative-note-composition"/>
+      <sourceReference>
+        <reference value="StructureDefinition/ccda-operative-note-composition"/>
+      </sourceReference>
+    </resource>
+    <resource>
+      <example value="false"/>
       <name value="C-CDA on FHIR Procedure Note"/>
       <acronym value="ccda-procedure-note-composition"/>
       <sourceReference>
         <reference value="StructureDefinition/ccda-procedure-note-composition"/>
+      </sourceReference>
+    </resource>
+    <resource>
+      <example value="false"/>
+      <name value="C-CDA on FHIR Progress Note"/>
+      <acronym value="ccda-progress-note-composition"/>
+      <sourceReference>
+        <reference value="StructureDefinition/ccda-progress-note-composition"/>
       </sourceReference>
     </resource>
     <resource>
@@ -154,6 +170,54 @@
     </resource>
 
     <!-- value sets -->
+    <resource>
+      <example value="false"/>
+      <name value="DischargeSummaryDocumentTypeCode"/>
+      <acronym value="discharge-summary-document-type-code" />
+      <sourceReference>
+        <reference value="ValueSet/2.16.840.1.113883.11.20.4.1"/>
+      </sourceReference>
+    </resource>
+    <resource>
+      <example value="false"/>
+      <name value="TransferDocumentType"/>
+      <acronym value="transfer-document-type" />
+      <sourceReference>
+        <reference value="ValueSet/2.16.840.1.113883.1.11.20.2.4"/>
+      </sourceReference>
+    </resource>
+    <resource>
+      <example value="false"/>
+      <name value="ProgressNoteDocumentTypeCode"/>
+      <acronym value="progress-note-document-type-code" />
+      <sourceReference>
+        <reference value="ValueSet/2.16.840.1.113883.11.20.8.1"/>
+      </sourceReference>
+    </resource>
+    <resource>
+      <example value="false"/>
+      <name value="SurgicalOperationNoteDocumentTypeCode"/>
+      <acronym value="surgical-operation-note-document-type-code"/>
+      <sourceReference>
+        <reference value="ValueSet/2.16.840.1.113883.11.20.1.1"/>
+      </sourceReference>
+    </resource>
+    <resource>
+      <example value="false"/>
+      <name value="DIRSectionTypeCodes"/>
+      <acronym value="dir-section-type"/>
+      <sourceReference>
+        <reference value="ValueSet/2.16.840.1.113883.11.20.9.59"/>
+      </sourceReference>
+    </resource>
+    <resource>
+      <example value="false"/>
+      <name value="ConsultDocumentType"/>
+      <acronym value="consult-document_type"/>
+      <sourceReference>
+        <reference value="ValueSet/2.16.840.1.113883.11.20.9.31"/>
+      </sourceReference>
+    </resource>
     <resource>
       <example value="false"/>
       <name value="HL7 BasicConfidentialityKind"/>
@@ -198,27 +262,27 @@
     <!-- examples -->
     <resource>
       <example value="true"/>
-      <name value="Example CCD"/>
-      <description value="Example CCD"/>
-      <acronym value="ccd-example"/>
-      <sourceReference>
-        <reference value="Composition/ccd-example"/>
-      </sourceReference>
-      <!-- <exampleFor>
-            <reference value="http://hl7.org/fhir/StructureDefinition/ccda-ccd-composition"/>
-          </exampleFor> -->
-    </resource>
-    <resource>
-      <example value="true"/>
       <name value="Example Care Plan"/>
       <description value="Example Care Plan"/>
       <acronym value="care-plan-example"/>
       <sourceReference>
-        <reference value="Composition/care-plan-example"/>
-      </sourceReference>
-      <!-- <exampleFor>
-            <reference value="http://hl7.org/fhir/StructureDefinition/ccda-care-plan-composition"/>
-          </exampleFor> -->
+        <reference value="Composition/ccda-care-plan-composition-example"/>
+      </sourceReference>       
+      <exampleFor>
+            <reference value="StructureDefinition/ccda-care-plan-composition"/>
+          </exampleFor> 
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="Example CCD"/>
+      <description value="Example CCD"/>
+      <acronym value="ccd-example"/>
+      <sourceReference>
+        <reference value="Composition/ccda-ccd-composition-example"/>
+      </sourceReference>   
+      <exampleFor>
+        <reference value="StructureDefinition/ccda-ccd-composition"/>
+      </exampleFor> 
     </resource>
     <resource>
       <example value="true"/>
@@ -226,11 +290,23 @@
       <description value="Example Consultation Note"/>
       <acronym value="consultation-note-example"/>
       <sourceReference>
-        <reference value="Composition/consultation-note-example"/>
+        <reference value="Composition/ccda-consultation-note-composition-example"/>
       </sourceReference>
-      <!-- <exampleFor>
-            <reference value="http://hl7.org/fhir/StructureDefinition/ccda-consultation-note-composition"/>
-          </exampleFor> -->
+       <exampleFor>
+            <reference value="StructureDefinition/ccda-consultation-note-composition"/>
+          </exampleFor> 
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="Example Diagnostic Imaging Report"/>
+      <description value="Example Diagnostic Imaging Report"/>
+      <acronym value="diagnostic-imaging-example"/>
+      <sourceReference>
+        <reference value="Composition/ccda-diagnostic-imaging-composition-example"/>
+      </sourceReference>
+      <exampleFor>
+        <reference value="StructureDefinition/ccda-diagnostic-imaging-composition"/>
+      </exampleFor> 
     </resource>
     <resource>
       <example value="true"/>
@@ -238,11 +314,11 @@
       <description value="Example Discharge Summary"/>
       <acronym value="discharge-summary-example"/>
       <sourceReference>
-        <reference value="Composition/discharge-summary-example"/>
+        <reference value="Composition/ccda-discharge-summary-composition-example"/>
       </sourceReference>
-      <!-- <exampleFor>
-            <reference value="http://hl7.org/fhir/StructureDefinition/ccda-discharge-summary-composition"/>
-          </exampleFor> -->
+       <exampleFor>
+            <reference value="StructureDefinition/ccda-discharge-summary-composition"/>
+          </exampleFor> 
     </resource>
     <resource>
       <example value="true"/>
@@ -250,11 +326,11 @@
       <description value="Example History and Physical"/>
       <acronym value="history-and-physical-example"/>
       <sourceReference>
-        <reference value="Composition/history-and-physical-example"/>
+        <reference value="Composition/ccda-history-and-physical-composition-example"/>
       </sourceReference>
-      <!-- <exampleFor>
-            <reference value="http://hl7.org/fhir/StructureDefinition/ccda-history-and-physical-composition"/>
-          </exampleFor> -->
+       <exampleFor>
+            <reference value="StructureDefinition/ccda-history-and-physical-composition"/>
+          </exampleFor> 
     </resource>
     <resource>
       <example value="true"/>
@@ -262,11 +338,23 @@
       <description value="Example Operative Note"/>
       <acronym value="operative-note-example"/>
       <sourceReference>
-        <reference value="Composition/operative-note-example"/>
+        <reference value="Composition/ccda-operative-note-composition-example"/>
       </sourceReference>
-      <!-- <exampleFor>
-            <reference value="http://hl7.org/fhir/StructureDefinition/ccda-operative-note-composition"/>
-          </exampleFor> -->
+       <exampleFor>
+            <reference value="StructureDefinition/ccda-operative-note-composition"/>
+          </exampleFor> 
+    </resource>
+    <resource>
+      <example value="true"/>
+      <name value="Example Progress Note"/>
+      <description value="Example Progress Note"/>
+      <acronym value="progress-note-example"/>
+      <sourceReference>
+        <reference value="Composition/ccda-progress-note-composition-example"/>
+      </sourceReference>
+       <exampleFor>
+            <reference value="StructureDefinition/ccda-progress-note-composition"/>
+          </exampleFor>
     </resource>
     <resource>
       <example value="true"/>
@@ -274,15 +362,29 @@
       <description value="Example Procedure Note"/>
       <acronym value="procedure-note-example"/>
       <sourceReference>
-        <reference value="Composition/procedure-note-example"/>
+        <reference value="Composition/ccda-procedure-note-composition-example"/>
       </sourceReference>
-      <!-- <exampleFor>
-            <reference value="http://hl7.org/fhir/StructureDefinition/ccda-procedure-note-composition"/>
-          </exampleFor> -->
+       <exampleFor>
+            <reference value="StructureDefinition/ccda-procedure-note-composition"/>
+          </exampleFor> 
     </resource>
-
-    <!-- CDA logical models
     <resource>
+      <example value="true"/>
+      <name value="Example Referral Note"/>
+      <description value="Example Referral Note"/>
+      <acronym value="referral-note-example"/>
+      <sourceReference>
+        <reference value="Composition/ccda-referral-note-composition-example"/>
+      </sourceReference>
+      <exampleFor>
+        <reference value="StructureDefinition/ccda-referral-note-composition"/>
+      </exampleFor> 
+    </resource>
+    
+    
+  
+    <!-- CDA logical models -->
+    <!--<resource>
       <name value="V3 Data type ANY (DataValue)"/>
       <sourceReference>
         <reference value="StructureDefinition/ANY"/>
@@ -384,12 +486,13 @@
         <reference value="StructureDefinition/REAL"/>
       </sourceReference>
     </resource>
-    <resource>
+    <!-\- Publishing tool doesn't like this name - think it's the _-\->
+    <!-\-<resource>
       <name value="V3 Data type RTO_PQ_PQ (Ratio)"/>
       <sourceReference>
         <reference value="StructureDefinition/RTO_PQ_PQ"/>
       </sourceReference>
-    </resource>
+    </resource>-\->
     <resource>
       <name value="V3 Data type PQ (PhysicalQuantity)"/>
       <sourceReference>
@@ -414,48 +517,48 @@
         <reference value="StructureDefinition/TS"/>
       </sourceReference>
     </resource>
-    <resource>
+    <!-\-<resource>
       <name value="V3 Data type IVL_TS (Interval)"/>
       <sourceReference>
         <reference value="StructureDefinition/IVL_TS"/>
       </sourceReference>
-    </resource>
-    <resource>
+    </resource>-\->
+    <!-\-<resource>
       <name value="V3 Data type IVL_PQ (Interval)"/>
       <sourceReference>
         <reference value="StructureDefinition/IVL_PQ"/>
       </sourceReference>
-    </resource>
-    <resource>
+    </resource>-\->
+    <!-\-<resource>
       <name value="V3 Data type IVL_INT (Interval)"/>
       <sourceReference>
         <reference value="StructureDefinition/IVL_INT"/>
       </sourceReference>
-    </resource>
-    <resource>
+    </resource>-\->
+    <!-\-<resource>
       <name value="V3 Data type PIVL_TS (PeriodicIntervalOfTime)"/>
       <sourceReference>
         <reference value="StructureDefinition/PIVL_TS"/>
       </sourceReference>
-    </resource>
-    <resource>
+    </resource>-\->
+    <!-\-<resource>
       <name value="V3 Data type EIVL_TS (EventRelatedPeriodicInterval)"/>
       <sourceReference>
         <reference value="StructureDefinition/EIVL_TS"/>
       </sourceReference>
-    </resource>
-    <resource>
+    </resource>-\->
+    <!-\-<resource>
       <name value="V3 Data type SXCM_TS (GeneralTimingSpecification)"/>
       <sourceReference>
         <reference value="StructureDefinition/SXCM_TS"/>
       </sourceReference>
-    </resource>
-    <resource>
+    </resource>-\->
+    <!-\-<resource>
       <name value="V3 Data type SXPR_TS (A set-component that is itself made up of set-components that are evaluated as one value)"/>
       <sourceReference>
         <reference value="StructureDefinition/SXPR_TS"/>
       </sourceReference>
-    </resource>
+    </resource>-\->
     <resource>
       <name value="Base Type for all classes in the CDA structure"/>
       <sourceReference>
@@ -467,8 +570,8 @@
       <sourceReference>
         <reference value="StructureDefinition/ClinicalDocument"/>
       </sourceReference>
-    </resource>
-    -->
+    </resource>-->
+    
     
   </package>
   <!--

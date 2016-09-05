@@ -429,7 +429,7 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
       }
     }
 
-    NarrativeGenerator gen = new NarrativeGenerator("../../", "v3/"+id, page.getWorkerContext()).setTooCostlyNote(PageProcessor.TOO_MANY_CODES_TEXT);
+    NarrativeGenerator gen = new NarrativeGenerator("../../", "v3/"+id, page.getWorkerContext()).setTooCostlyNoteEmpty(PageProcessor.TOO_MANY_CODES_TEXT_EMPTY).setTooCostlyNoteNotEmpty(PageProcessor.TOO_MANY_CODES_TEXT_NOT_EMPTY);
     gen.generate(vs);
     page.getVsValidator().validate(page.getValidationErrors(), "v3 value set as code system "+id, vs, false, true);
     return vs;
@@ -537,7 +537,7 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
           }
       }
     }
-    NarrativeGenerator gen = new NarrativeGenerator("../../", "v3/"+id, page.getWorkerContext()).setTooCostlyNote(PageProcessor.TOO_MANY_CODES_TEXT);
+    NarrativeGenerator gen = new NarrativeGenerator("../../", "v3/"+id, page.getWorkerContext()).setTooCostlyNoteEmpty(PageProcessor.TOO_MANY_CODES_TEXT_EMPTY).setTooCostlyNoteNotEmpty(PageProcessor.TOO_MANY_CODES_TEXT_NOT_EMPTY);
     gen.generate(vs);
     page.getVsValidator().validate(page.getValidationErrors(), "v3 valueset "+id, vs, false, true);
     return vs;
@@ -571,13 +571,13 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
             String sf = page.processPageIncludes(id + ".html", src, "v3Vocab", null, "v3" + File.separator + id + File.separator + "cs.html", cs, null, null, "V3 CodeSystem", null);
             sf = sects.addSectionNumbers(Utilities.path("v3", id, "cs.html"), "template-v3", sf, Utilities.oidTail(e.getAttribute("codeSystemId")), 2, null, null);
             TextFile.stringToFile(sf, page.getFolders().dstDir + "v3" + File.separator + id + File.separator + "cs.html");
-            page.getEpub().registerExternal("v3" + File.separator + id + File.separator + "cs.html");
+            page.getHTMLChecker().registerExternal("v3" + File.separator + id + File.separator + "cs.html");
 
             src = TextFile.fileToString(page.getFolders().srcDir + "v3" + File.separator + "template-vs.html");
             sf = page.processPageIncludes(id + ".html", src, "v3Vocab", null, "v3" + File.separator + id + File.separator + "vs.html", vs, null, null, "V3 ValueSet", null);
             sf = sects.addSectionNumbers(Utilities.path("v3", id, "vs.html"), "template-v3", sf, Utilities.oidTail(e.getAttribute("codeSystemId")), 2, null, null);
             TextFile.stringToFile(sf, page.getFolders().dstDir + "v3" + File.separator + id + File.separator + "vs.html");
-            page.getEpub().registerExternal("v3" + File.separator + id + File.separator + "vs.html");
+            page.getHTMLChecker().registerExternal("v3" + File.separator + id + File.separator + "vs.html");
           }
         }
       }
@@ -595,7 +595,7 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
           String sf = page.processPageIncludes(id + ".html", src, "v3Vocab", null, "v3" + File.separator + id + File.separator + "vs.html", vs, null, "V3 ValueSet", null);
           sf = sects.addSectionNumbers(Utilities.path("v3", id, "vs.html"), "template-v3", sf, Utilities.oidTail(e.getAttribute("id")), 2, null, null);
           TextFile.stringToFile(sf, page.getFolders().dstDir + "v3" + File.separator + id + File.separator + "vs.html");
-          page.getEpub().registerExternal("v3" + File.separator + id + File.separator + "vs.html");
+          page.getHTMLChecker().registerExternal("v3" + File.separator + id + File.separator + "vs.html");
         }
       }
       e = XMLUtil.getNextSibling(e);

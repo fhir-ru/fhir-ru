@@ -1,5 +1,14 @@
-Both the [MedicationOrder] and MedicationStatement resources can be used to record a patient's medication.  For more information about the context for their usages, refer to the medication domains's [boundaries section].  This profile sets minimum expectations for use of the MedicationStatement resource to record, search and fetch medications associated with a patient within the DAF FHIR IG. It identifies which core elements, extensions, vocabularies and value sets must be Supported by clients and servers. For the definition of Supported please refer to DAF FHIR IG. The data elements identified by the profile are based on ONC 2015 Edition Common Clinical Data Set(CCDS).
+Both the [MedicationOrder] and [MedicationStatement] resources can be used to record a patient's medication.  For more information about the context for their usages, refer to the medication domains's [boundaries section].  This profile sets minimum expectations for the MedicationStatement resource to record, search and fetch medications associated with a patient. It identifies which core elements, extensions, vocabularies and value sets **SHALL** be present in the resource when using this profile.
 
+**Example Usage Scenarios:**
+
+The following are example usage scenarios for the
+DAF-MedicationStatement profile:
+
+-   Query for active medications being taken by a patient
+-   Query for all patients who are taking a particular medication
+-   Query for all patients who are/were taking a particular medication
+    within a particular time period
 
 ##### Mandatory Data Elements and Terminology
 
@@ -8,27 +17,25 @@ The following data-elements are mandatory (i.e data MUST be present). These are 
 
 **Each MedicationStatement must have:**
 
-1.  a patient
 1.  a status
-1.  a date or date range
 1.  a medication
+1.  a patient
+1.  a date or date range
+
 
 
 **Profile specific implementation guidance:**
 
-*  The MedicationStatement and MedicationOrder resources can represent a medication, using either a code or refer to a [Medication] resource.  The server application can choose one way or both methods,  but the client application must support both methods.  More specific guidance is provided in the [Conformance] resource for this profile
+*  The MedicationStatement and MedicationOrder resources can represent a medication, using either a code or refer to a [Medication] resource.  The server application can choose one way or both methods,  but the client application must support both methods.  More specific guidance is provided in the [conformance](conformance.html) resource for this profile
 
-* Additional elements from [DAF MedicationStatement Profile](daf-MedicationStatement.html) may be present.
 
- [DAF MedicationStatement Profile]: http://hl7.org/fhir/us/daf/medicationstatement-daf.html
-  [DAF MedicationOrder Profile]: http://hl7.org/fhir/us/daf/medicationorder-daf.html
   [Medication Clinical Drug (RxNorm)]: valueset-daf-medication-codes.html
   [MedicationOrderStatus]: http://hl7.org/fhir/us/daf/valueset-medication-order-status.html
 [MedicationStatementStatus]: http://hl7.org/fhir/us/daf/valueset-medication-statement-status.html
-[MedicationStatement]:daf-core-medicationstatement.html
- [MedicationOrder]: daf-core-medicationorder.html
- [Medication]:daf-core-medication.html
+[MedicationStatement]:http://hl7-fhir.github.io/medicationstatement.html
+ [MedicationOrder]: http://hl7-fhir.github.io/medicationorder.html
+ [Medication]:http://hl7-fhir.github.io/medication.html
  [Conformance]: daf-core-medicationstatement-conformance.html
-  [boundaries section]: http://hl7-fhir.github.io/medicationorder.html#bnr
+ [boundaries section]: http://hl7-fhir.github.io/medicationorder.html#bnr
 
  

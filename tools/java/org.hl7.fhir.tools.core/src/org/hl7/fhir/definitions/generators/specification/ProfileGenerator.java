@@ -343,7 +343,7 @@ public class ProfileGenerator {
     p.setKind(StructureDefinitionKind.PRIMITIVETYPE);
     p.setAbstract(false);
     p.setUserData("filename", "xhtml");
-    p.setUserData("path", "narrrative.html#xhtml");
+    p.setUserData("path", "narrative.html#xhtml");
     p.setBaseDefinition("http://hl7.org/fhir/StructureDefinition/Element");
     p.setType("xhtml");
     p.setDerivation(TypeDerivationRule.SPECIALIZATION);
@@ -1112,7 +1112,7 @@ public class ProfileGenerator {
       ce.setName(e.getProfileName());
     }
 
-    if (!Utilities.noString(inheritedType)) {
+    if (!Utilities.noString(inheritedType) && snapshot != SnapShotMode.None) {
       ElementDefn inh = definitions.getElementDefn(inheritedType);
       buildDefinitionFromElement(path, ce, inh, ap, p);
     }

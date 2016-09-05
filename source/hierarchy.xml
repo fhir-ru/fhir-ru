@@ -24,26 +24,29 @@ signatures.html
       <page title="Operations" filename="operationslist.html"/>
       <page title="Services" filename="servicelist.html"/>
       <page title="Namespace List" filename="ns.html"/>
+      <page title="Ballot Introduction" filename="ballot-intro.html"/>
     </page>
 
     <!-- foundation - quite a lot of documentation -->
     <page title="Foundation" filename="foundation-module.html" icon="foundation.png">
       <!--			<page title="Ballot Intro" filename="ballot-intro.html"/> -->
       <page title="Summary" filename="summary.html"/>
-      <page title="Introduction" filename="overview.html">
-        <page title="Developer Introduction" filename="overview-dev.html"/>
-        <page title="Clinical Introduction" filename="overview-clinical.html"/>
-      </page>
-      <page title="Modules" filename="modules.html"/>
+      <page title="Introduction" filename="overview.html"/>
+      <page title="Developer Introduction" filename="overview-dev.html"/>
+      <page title="Clinical Introduction" filename="overview-clinical.html"/>
+      <page title="Architect's Introduction" filename="overview-arch.html"/>
+      <page title="Getting Started" filename="modules.html"/>
       <page title="Documentation Guidance and Glossary" filename="help.html"/>
       <page title="License and Legal Terms" filename="license.html"/>
       <page title="Community and Credits" filename="credits.html"/>
       <page title="Version History" filename="history.html"/>
+      <page title="Differences from DSTU Release 2" filename="diff.html"/>
       <page title="Outstanding Issues" filename="todo.html"/>
       <page title="FHIR Timelines" filename="timelines.html"/>
-      <page title="FluentPath" filename="fluentpath.html"/>
+      <page title="FluentPath" filename="http://hl7.org/fluentpath"/>
       <page title="Conformance" filename="conformance-rules.html"/>
       <page title="Life Cycle" filename="lifecycle.html"/>
+      <page title="Resource Guide" filename="resourceguide.html"/>
       <page title="References" filename="references.html">
         <page title="Definitions" filename="references-definitions.html"/>
       </page>
@@ -101,6 +104,7 @@ signatures.html
       <page title="RESTful API" filename="http.html">
         <page title="Search" filename="search.html"/>
         <page title="_filter Parameter" filename="search_filter.html"/>
+        <page title="Search Parameter Registry" filename="searchparameter-registry.html"/>
       </page>
       <page title="Operations" filename="operations.html">
         <page title="Example" filename="op-example-request.html"/>
@@ -118,29 +122,29 @@ signatures.html
     </page>
 
     <page title="Terminology" filename="terminology-module.html" icon="terminology.png">
-      <page title="Using Codes" filename="terminologies.html">
-        <page title="Systems" filename="terminologies-systems.html">
-          <page title="SNOMED CT" filename="snomedct.html"/>
-          <page title="RxNorm" filename="rxnorm.html"/>
-          <page title="LOINC" filename="loinc.html"/>
-          <page title="UCUM" filename="ucum.html"/>
-          <page title="NCI Metothesuaras" filename="ncimeta.html"/>
-          <page title="NDFRT" filename="ndfrt.html"/>
-          <page title="UNII" filename="unii.html"/>
-          <page title="CVX" filename="cvx.html"/>
-          <page title="CPT" filename="cpt.html"/>
-          <page title="NDC" filename="ndc.html"/>
-          <pages type="codesystem" filename="template-codesystem.html"/>
-          <pages type="v2-table" filename="template-v2.html"/>
-        </page>
-        <page title="Value Sets" filename="terminologies-valuesets.html">
-          <pages type="valueset" filename="template-valueset.html"/>
-          <pages type="v3-vocab" filename="template-v3.html"/>
-        </page>
-        <page title="Concept Maps" filename="terminologies-conceptmaps.html"/>
-        <page title="identifier Registry" filename="identifier-registry.html"/>
-        <page title="TerminologyService" filename="terminology-service.html"/>
+      <page title="Using Codes" filename="terminologies.html"/>
+      <page title="Code Systems" filename="terminologies-systems.html">
+        <page title="SNOMED CT" filename="snomedct.html"/>
+        <page title="RxNorm" filename="rxnorm.html"/>
+        <page title="LOINC" filename="loinc.html"/>
+        <page title="UCUM" filename="ucum.html"/>
+        <page title="NCI Metothesuaras" filename="ncimeta.html"/>
+        <page title="NDFRT" filename="ndfrt.html"/>
+        <page title="UNII" filename="unii.html"/>
+        <page title="CVX" filename="cvx.html"/>
+        <page title="CPT" filename="cpt.html"/>
+        <page title="NDC" filename="ndc.html"/>
+        <pages type="codesystem" filename="template-codesystem.html"/>
+        <pages type="v2-table" filename="template-v2.html"/>
+        <page title="Code Systems" filename="terminologies-v3.html"/>
       </page>
+      <page title="Value Sets" filename="terminologies-valuesets.html">
+        <pages type="valueset" filename="template-valueset.html"/>
+        <pages type="v3-vocab" filename="template-v3.html"/>
+      </page>
+      <page title="Concept Maps" filename="terminologies-conceptmaps.html"/>
+      <page title="identifier Registry" filename="identifier-registry.html"/>
+      <page title="TerminologyService" filename="terminology-service.html"/>
       <page type="resource" resource="ValueSet"/>
       <page type="resource" resource="ExpansionProfile"/>
       <page type="resource" resource="NamingSystem"/>
@@ -173,7 +177,6 @@ signatures.html
     </page>
 
     <page title="Implementation Support" filename="implsupport-module.html" icon="implsupport.png">
-      <page title="Resource Guide" filename="resourceguide.html"/>
       <page title="Clinical Safety" filename="safety.html"/>
       <page title="Inter-version Compatibility" filename="compatibility.html"/>
       <page title="Testing FHIR" filename="testing.html"/>
@@ -244,6 +247,7 @@ signatures.html
       <page type="resource" resource="BodySite"/>
       <page type="resource" resource="ImagingStudy"/>
       <page type="resource" resource="ImagingManifest"/>
+      <page title="Genomics Implementer Guidance" filename="genomics.html"/>
     </page>
 
     <page title="Medications" filename="medications-module.html" icon="medication.png">
@@ -257,6 +261,10 @@ signatures.html
     </page>
 
     <page title="Workflow" filename="workflow-module.html" icon="workflow.png">
+      <page title="Workflow Description" filename="workflow.html"/>
+      <page title="Definition Pattern" filename="definition.html"/>
+      <page title="Request Pattern" filename="request.html"/>
+      <page title="Event Pattern" filename="event.html"/>
       <page type="resource" resource="VisionPrescription"/>
       <page type="resource" resource="ProcessRequest"/>
       <page type="resource" resource="ProcessResponse"/>

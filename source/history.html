@@ -135,6 +135,22 @@ Additional notes:
 
 <a name="history"> </a>
 <h3>Version History since DSTU #1</h3>
+<a name="pubs"> </a>
+<p>
+Major Milestones:
+</p>
+<table class="grid">
+  <tr>
+    <td><a href="http://hl7.org/fhir/DSTU2/index.html">Oct 24, 2015</a></td>
+    <td>1.0.2</td>
+    <td>DSTU2 (Second Draft Standard for Trial Use)</td>
+  </tr>
+  <tr>
+    <td><a href="http://hl7.org/fhir/DSTU2/index.html">Sept 30, 2014</a></td>
+    <td>0.0.82</td>
+    <td>DSTU1 (First Draft Standard for Trial Use)</td>
+  </tr>
+</table>
 
 <p>
 This table lists substantive changes only.
@@ -159,6 +175,36 @@ template:
 notes: do not list revision in the version
 -->
 
+	<tr>
+		<td>1.6.0</td>
+		<td>
+      <p><b>FHIR STU3 ballot, Aug 11, 2016</b><a name="v1.6.0"> </a></p>
+      <p>
+      STU 3 ballot version, and also the basis for the <a href="http://wiki.hl7.org/index.php?title=FHIR_Connectathon_13">Baltimore Sept 2016 Connectathon</a>
+      </p>
+      <p><b>Publication Changes:</b></p>
+      <ul>
+       <li>Move the US Realm implementation guides out of the specification (see <a href="http://www.fhir.org/guides/registry">http://www.fhir.org/guides/registry</a>)</li>
+       <li>Rework the home page, and introduce modules as a way to navigate the specification + add significant new implementer advice (e.g. "<a href="modules.html">Getting Started</a>")</li>  
+       <li>Change the Navigation menu to focus on indexes to the content in the specification</li>
+       <li>Move FluentPath expression language to it's <a href="http://hl7.org/fluentpath">long term home</a></li>
+      </ul>
+      <p><b>Technical Changes:</b></p>
+      <ul>
+        <li>RESTful API
+          <ul>
+           <li>Change the <a href="http.html#mime-type">FHIR mime type</a> to application/fhir+xml|json instead of application/xml|json+fhir (<b>breaking change</b>, for conformance to W3C+IETF rules)</li>
+           <li>Add new uses for the Prefer header (return OperationOutcome, and manage behavior related to unknown / unsupported search parameters</li>
+           <li>Deprecate use of the OPTIONS command to retrieve the conformance statement</li>
+           <li>Add support for conditional references to the transaction interaction</li>
+           <li>Add reverse chaining</li>
+          </ul>
+        </li>
+        <li>Formats: No change to XML + JSON formats. Add <a href="rdf.html">Turtle Format</a>, and related validation tools</li>
+        <li>For Data Types and Resources, there is <a href="diff.html">formal difference</a> analysis from DSTU2 (also found throughout the specification)</li>
+      </ul>
+    </td>
+	</tr>
 	<tr>
 		<td>1.5.0</td>
 		<td>
@@ -193,7 +239,7 @@ notes: do not list revision in the version
        Conformance resources with significant breaking changes and behavior:
         <ul>
          <li><a href="structuredefinition.html">StructureDefinition</a> - Type Handling: Changes to how the structure definition types work: <b>baseType</b> <i>replaces</i> <b>constrainedType</b> &amp; <b>baseDefinition</b> <i>replaces</i> <b>base</b></li>
-         <li><a href="CodeSystem.html">CodeSystem</a> now separated out from <a href="valueset.html">ValueSet</a>: CodeSystem is now a first class resource type in order to support use throughout the FHIR eco-system, such as to support value set expansion and validation. It is intended to be used for distributing the smaller ad-hoc code systems that are ubiqutiously encountered through out the healthcare process.</li>
+         <li><a href="codesystem.html">CodeSystem</a> now separated out from <a href="valueset.html">ValueSet</a>: CodeSystem is now a first class resource type in order to support use throughout the FHIR eco-system, such as to support value set expansion and validation. It is intended to be used for distributing the smaller ad-hoc code systems that are ubiqutiously encountered through out the healthcare process.</li>
         </ul>
        </li>
        <li>
@@ -248,7 +294,7 @@ notes: do not list revision in the version
          <li><a href="linkage.html">Linkage</a></li>
          <li><a href="measurereport.html">MeasureReport</a></li>
          <li><a href="practitionerrole.html">PractitionerRole</a></li>
-         <li><a href="protocol.html">Protocol</a></li>
+         <li>Protocol</li>
          <li><a href="structuremap.html">StructureMap</a></li>
          <li><a href="task.html">Task</a></li>
         </ul>
@@ -278,12 +324,12 @@ notes: do not list revision in the version
 		<td>
       <p><b>GAO Ballot + technical corrections, Dec 2 2015</b><a name="v1.1.0"> </a></p>
       <p>
-      A ballot publication for the <a href="gao/gao.html">GAO Ballot</a> that also includes:
+      A ballot publication for the <code>GAO Ballot</code> that also includes:
       </p>
       <ul>
        <li>Various technical corrections to the generated snapshots</li>
        <li>Populate FHIRPath expressions in extensions for all search parameters and invariants</li>
-       <li>Add new <b>draft</b> resources: <a href="guidancerequest.html">GuidanceRequest</a>,  <a href="guidanceresponse.html">GuidanceResponse</a>,  <a href="modulemetadata.html">ModuleMetadata</a>,  <a href="moduledefinition.html">ModuleDefinition</a>,  <a href="library.html">library</a>,  <a href="decisionsupportservicemodule.html">DecisionSupportServiceModule</a>,  <a href="decisionsupportrule.html">DecisionSupportRule</a>,  <a href="orderset.html">OrderSet</a>,  <a href="measure.html">Measure</a></li>
+       <li>Add new <b>draft</b> resources: <code>GuidanceRequest</code>,  <a href="guidanceresponse.html">GuidanceResponse</a>,  <code>ModuleMetadata</code>,  <code>ModuleDefinition</code>,  <a href="library.html">library</a>,  <a href="decisionsupportservicemodule.html">DecisionSupportServiceModule</a>,  <code>DecisionSupportRule</code>,  <code>OrderSet</code>,  <a href="measure.html">Measure</a></li>
        <li>Major restructure of <a href="questionnaire.html">Questionnaire</a></li>
       </ul>
     </td>
@@ -432,7 +478,7 @@ notes: do not list revision in the version
         <li><a href="flag.html">Flag</a> - rename subject to patient, change from note to code</li>
         <li><a href="goal.html">Goal</a> - add targetDate, statusDate, author, priority</li>
         <li><a href="healthcareservice.html">HealthcareService</a> - extensive rewrite</li>
-        <li><a href="imagingobjectselection.html">ImagingObjectSelection</a> - remove retrieveAETitle, rename retrieveUrl to url, add frames</li>
+        <li><code>ImagingObjectSelection</code> - remove retrieveAETitle, rename retrieveUrl to url, add frames</li>
         <li><a href="imagingstudy.html">ImagingStudy</a> - add laterality, change url to attachment</li>
         <li><a href="immunization.html">Immunization</a> - add encounter, rename subject to patient, rename refusedIndicator to wasNotGiven, rename refusalReason to reasonNotGiven</li>
         <li><a href="immunizationrecommendation.html">ImmunizationRecommendation</a> - rename subject to patient</li>
@@ -449,7 +495,7 @@ notes: do not list revision in the version
         <li><a href="observation.html">Observation</a> - change name to code, allow more types of value[x], change type of dataAbsentReason, change to bodySite = code or Reference(BodySite), allow identifier to repeat, add device, </li>
         <li><a href="operationdefinition.html">OperationDefinition</a> - change identifier to url, add useContext, change telecom to contact, change name to title, add reuqirements, idempotent, </li>
         <li><a href="operationoutcome.html">OperationOutcome</a> - change type of .issue.type</li>
-        <li><a href="orderresponse.html">OrderResponse</a> - rename code to orderStatus</li>
+        <li><code>OrderResponse</code> - rename code to orderStatus</li>
         <li><a href="organization.html">Organization</a> - remove location and contact.gender</li>
         <li><a href="patient.html">Patient</a> - communication to allow 'preferred'</li>
         <li><a href="person.html">Person</a> - rename other to target</li>
@@ -535,7 +581,7 @@ notes: do not list revision in the version
         <li><a href="structuredefinition.html">StructureDefinition</a></li>
         <li><a href="goal.html">Goal</a> </li>
         <li><a href="healthcareservice.html">HealthcareService</a></li>
-        <li><a href="imagingobjectselection.html">ImagingObjectSelection</a></li>
+        <li><code>ImagingObjectSelection</code></li>
         <li><a href="claim.html">InstitutionalClaim</a></li>
         <li><a href="namingsystem.html">NamingSystem</a></li>
         <li><a href="nutritionrequest.html">NutritionRequest</a></li>
@@ -558,12 +604,12 @@ notes: do not list revision in the version
         <li><a href="claim.html">VisionClaim</a></li>
         <li><a href="visionprescription.html">VisionPrescription</a></li>
       </ul>
-      <p>New Implementation Guides (see <a href="iglist.html">discussion of status</a>)</p>
+      <p>New Implementation Guides (see <code>discussion of status</code>)</p>
       <ul>
-        <li><a href="argonaut/argonaut.html">Argonaut Project</a></li>
-        <li><a href="daf/daf.html">Data Access Framework</a></li>
-        <li><a href="sdc/sdc.html">Structured Data Capture</a> &amp; <a href="sdcde/sdcde.html">Structured Data Capture - Data Element Exchange</a></li>
-				<li>US Laboratory <a href="uslab/uslaborder.html">Order</a>, <a href="uslab/uslabreport.html">Report</a> &amp; <a href="uslab/uslabphreport.html">Report to Public Health</a></li>
+        <li><code>Argonaut Project</code></li>
+        <li><code>Data Access Framework</code></li>
+        <li><code>Structured Data Capture</code> &amp; <code>Structured Data Capture - Data Element Exchange</code></li>
+				<li>US Laboratory <code>Order</code>, <code>Report</code> &amp; <code>Report to Public Health</code></li>
         <li><a href="ehrsrle/ehrsrle.html">EHRS Functional model - Record Lifecycle Events</a></li>
 			</ul>
 		</td>
@@ -592,7 +638,7 @@ notes: do not list revision in the version
        <li>Change cardinality of <a href="location.html">Location</a>.identifier to 0..*</li>
        <li>Change cardinality of <a href="practitioner.html">Practitioner</a>.address to 0..*</li>
        <li>Add <a href="observation.html">Observation</a>.encounter to 0..*</li>
-       <li>Temporarily added content for the <a href="sdc/sdc.html">Structured Data Capture implementation guide</a>, including profiles on several resources, conformance instances, etc.
+       <li>Temporarily added content for the <a href="http://hl7.org/fhir/us/sdc/index.html">Structured Data Capture implementation guide</a>, including profiles on several resources, conformance instances, etc.
        This content will be moved to an external specification once the necessary tooling is in place to support that form of publication.</li>
      </ul>
    </td>

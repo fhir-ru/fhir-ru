@@ -1,5 +1,12 @@
-This profile sets minimum expectations for use of the Immunization resource to record, fetch and search immunization history associated with a patient within the DAF FHIR IG. It identifies which core elements, extensions, vocabularies and value sets must be Supported by clients and servers. For the definition of Supported please refer to DAF FHIR IG. The data elements identified by the profile are based on ONC 2015 Edition Common Clinical Data Set(CCDS).
+his profile sets minimum expectations for the [Immunization] resource to record, fetch and search immunization history associated with a patient. It identifies which core elements, extensions, vocabularies and value sets **SHALL** be present in the resource when using this profile.
 
+**Example Usage Scenarios:**
+
+The following are example usage scenarios for the DAF-Core Immunization
+profile:
+
+-   Query for immunizations belonging to a Patient
+-   Query for all patients who have had a specific vaccine administered
 
 ##### Mandatory Data Elements and Terminology
 
@@ -19,12 +26,10 @@ The following data-elements are mandatory (i.e data MUST be present). These are 
 **Profile specific implementation guidance:**
 
 * **NDC codes as a translational data element**: 
-Based upon the 2015 Edition Certification Requirements, the [NDC vaccine codes] SHOULD be supported as   [translations] to the CVX vaccine codes. A [NDC to CVX concept map] is provided and the translation is illustrated in the example below.
+Based upon the 2015 Edition Certification Requirements, [CVX vaccine codes] are required and the [NDC vaccine codes] SHOULD be supported as translations to them.  A NDC to [CVX crosswalk table] is also provided by the CDC.
 
-* Additional elements from [DAF Immunization Profile](daf-Immunization.html) may be present.
 
-  [CVX code set]: http://hl7.org/fhir/us/daf/valueset-daf-cvx.html
-  [DAF Immunization Profile]: http://hl7.org/fhir/us/daf/daf-immunization.html
-  [NDC vaccine codes]: NDC_vaccine_codes "wikilink"
-  [translations]: Implementation_Guide#Definitions "wikilink"
-  [NDC to CVX concept map]: NDC_to_CVX_concept_map "wikilink"
+  [CVX vaccine codes]: http://www2a.cdc.gov/vaccines/iis/iisstandards/vaccines.asp?rpt=cvx
+  [NDC vaccine codes]: http://www2a.cdc.gov/vaccines/iis/iisstandards/ndc_crosswalk.asp
+  [CVX crosswalk table]: http://www2a.cdc.gov/vaccines/iis/iisstandards/ndc_crosswalk.asp
+[Immunization]:  http://hl7-fhir.github.io/immunization.html

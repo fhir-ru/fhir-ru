@@ -20,7 +20,7 @@ code { counter-increment: listing; }
 
 
 <h2>FHIR Overview - Clinicians</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">DSTU 2</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 
 <p>
 FHIR (<i>Fast Health Interoperability Resources</i>) is designed to enable the exchange of healthcare-related information.
@@ -229,8 +229,16 @@ A FHIR-based system's capabilities are defined by what the Resources can say and
 </ul>
 <p>
 This information can all be found in the resource definition pages.  The resources most likely to be of interest can be
-found on the <a href="clinical.html">Clinical</a> and <a href="administration.html">Administrative</a> pages.  Instructions
-on how to interpret the information found on the resource pages can be found <a href="formats.html">here</a>.  The
+found on the following modules:
+</p>
+<ul>
+ <li><a href="clinicalsummary-module.html">Clinical Summary &amp; Care provision</a></li>
+ <li><a href="diagnostics-module.html">Diagnostics</a></li>
+ <li><a href="medications-module.html">Medications</a></li>
+ <li><a href="administration-module.html">Administrative</a></li>
+</ul>
+<p>
+Instructions on how to interpret the information found on the resource pages can be found <a href="formats.html">here</a>.  The
 <i>Logical table</i> or the <i>UML</i> views are likely to be easiest to understand.  Don't forget to look at the examples
 tab for an idea of what kind of information can be expressed.  Seeing how elements are used to convey real data is often more
 useful than just looking at definitions.  Also, look at the Profiles tab to see examples of how different resources can be

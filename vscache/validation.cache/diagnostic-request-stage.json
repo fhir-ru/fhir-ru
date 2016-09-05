@@ -2,9 +2,26 @@
   "url": "http://hl7.org/fhir/ValueSet/diagnostic-request-stage",
   "outcomes": [
     {
-      "hash": "#|null|null|original-order|null",
-      "severity": "error",
-      "message": "None of the codes are in the specified value set"
+      "hash": "#|http://hl7.org/fhir/request-stage|null|original-order|null",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": "original-order",
+        "definition": null,
+        "display": "Original Order"
+      }
+    },
+    {
+      "hash": "#|http://hl7.org/fhir/request-stage|null|reflex-order|null",
+      "severity": null,
+      "message": null,
+      "definition": {
+        "abstract": false,
+        "code": "reflex-order",
+        "definition": null,
+        "display": "Reflex Order"
+      }
     }
   ]
 }

@@ -2,6 +2,7 @@ package org.hl7.fhir.igtools.publisher;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +64,7 @@ public class SimpleFetcher implements IFetchFile {
     if (!f.exists())
       f = new File(path+".json");
     if (!f.exists())
-      throw new Exception("Unable to find file "+path+".xml/json");
+      throw new Exception("Unable to find file "+path+".xml or "+path+".json");
     FetchedFile ff = new FetchedFile();
     ff.setPath(path);
     ff.setName(fileTitle(path));
@@ -150,7 +151,7 @@ public class SimpleFetcher implements IFetchFile {
     }
   }
 
-  private String findFile(List<String> dirs, String name) {
+  private String findFile(List<String> dirs, String name) throws IOException {
     for (String dir : dirs) {
       String fn = Utilities.path(dir, name);
       if (new File(fn).exists())

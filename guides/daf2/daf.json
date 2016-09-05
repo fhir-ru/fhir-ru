@@ -6,6 +6,7 @@
 		"temp": "temp",
 		"output": "output",
 		"qa": "qa",
+		"txCache": "txCache",
 		"specification": "http://hl7-fhir.github.io/"
 	},
 	"defaults": {
@@ -16,57 +17,8 @@
 	},
 	"canonicalBase": "http://hl7.org/fhir/us/daf",
 	"source": "daf.xml",
-
-"spreadsheets": [
-	"allergyintolerance-daf-core-profile-spreadsheet.xml",
-	"careplan-daf-core-profile-spreadsheet.xml",
-	"careteam-daf-core-profile-spreadsheet.xml",
-	"condition-daf-core-profile-spreadsheet.xml",
-	"conformance-daf-profile-spreadsheet.xml",
-	"diagnosticreport-daf-core-profile-spreadsheet.xml",
-	"device-daf-core-profile-spreadsheet.xml",
-	"goal-daf-core-profile-spreadsheet.xml",
-	"immunization-daf-core-profile-spreadsheet.xml",
-	"location-daf-core-profile-spreadsheet.xml",
-	"medication-daf-core-profile-spreadsheet.xml",
-	"medicationorder-daf-core-profile-spreadsheet.xml",
-	"medicationstatement-daf-core-profile-spreadsheet.xml",
-	"observation-daf-core-vitalsigns-profile-spreadsheet.xml",
-	"observation-daf-core-results-profile-spreadsheet.xml",
-	"observation-daf-core-smokingstatus-profile-spreadsheet.xml",
-	"operationdefinition-daf-profile-spreadsheet.xml",
-	"organization-daf-core-profile-spreadsheet.xml",
-	"patient-daf-core-profile-spreadsheet.xml",
-	"practitioner-daf-core-profile-spreadsheet.xml",
-	"procedure-daf-core-profile-spreadsheet.xml",
-	"allergyintolerance-daf-profile-spreadsheet.xml",
-	"condition-daf-profile-spreadsheet.xml",
-	"diagnosticrequest-daf-profile-spreadsheet.xml",
-	"diagnosticreport-daf-profile-spreadsheet.xml",
-	"encounter-daf-profile-spreadsheet.xml",
-	"familymemberhistory-daf-profile-spreadsheet.xml",
-	"immunization-daf-profile-spreadsheet.xml",
-	"list-daf-profile-spreadsheet.xml",
-	"location-daf-profile-spreadsheet.xml",
-	"medication-daf-profile-spreadsheet.xml",
-	"medicationadministration-daf-profile-spreadsheet.xml",
-	"medicationdispense-daf-profile-spreadsheet.xml",
-	"medicationorder-daf-profile-spreadsheet.xml",
-	"medicationstatement-daf-profile-spreadsheet.xml",
-	"observation-daf-queryresults-profile-spreadsheet.xml",
-	"observation-daf-vitalsigns-profile-spreadsheet.xml",
-	"observation-daf-results-profile-spreadsheet.xml",
-	"observation-daf-smokingstatus-profile-spreadsheet.xml",
-	"organization-daf-profile-spreadsheet.xml",
-	"patient-daf-profile-spreadsheet.xml",
-	"practitioner-daf-profile-spreadsheet.xml",
-	"procedure-daf-profile-spreadsheet.xml",
-	"provenance-daf-profile-spreadsheet.xml",
-	"relatedperson-daf-profile-spreadsheet.xml",
-	"spec-daf-profile-spreadsheet.xml",
-	"task-daf-profile-spreadsheet.xml",
-	"substance-daf-profile-spreadsheet.xml"
-
+	"spreadsheets": [
+		"allergyintolerance-daf-core-profile-spreadsheet.xml", "careplan-daf-core-profile-spreadsheet.xml", "careteam-daf-core-profile-spreadsheet.xml", "condition-daf-core-profile-spreadsheet.xml", "conformance-daf-profile-spreadsheet.xml", "diagnosticreport-daf-core-profile-spreadsheet.xml", "device-daf-core-profile-spreadsheet.xml", "goal-daf-core-profile-spreadsheet.xml", "immunization-daf-core-profile-spreadsheet.xml", "location-daf-core-profile-spreadsheet.xml", "medication-daf-core-profile-spreadsheet.xml", "medicationorder-daf-core-profile-spreadsheet.xml", "medicationstatement-daf-core-profile-spreadsheet.xml", "observation-daf-core-vitalsigns-profile-spreadsheet.xml", "observation-daf-core-results-profile-spreadsheet.xml", "observation-daf-core-smokingstatus-profile-spreadsheet.xml", "operationdefinition-daf-profile-spreadsheet.xml", "organization-daf-core-profile-spreadsheet.xml", "patient-daf-core-profile-spreadsheet.xml", "practitioner-daf-core-profile-spreadsheet.xml", "procedure-daf-core-profile-spreadsheet.xml", "allergyintolerance-daf-profile-spreadsheet.xml", "condition-daf-profile-spreadsheet.xml", "diagnosticrequest-daf-profile-spreadsheet.xml", "diagnosticreport-daf-profile-spreadsheet.xml", "encounter-daf-profile-spreadsheet.xml", "familymemberhistory-daf-profile-spreadsheet.xml", "immunization-daf-profile-spreadsheet.xml", "list-daf-profile-spreadsheet.xml", "location-daf-profile-spreadsheet.xml", "medication-daf-profile-spreadsheet.xml", "medicationadministration-daf-profile-spreadsheet.xml", "medicationdispense-daf-profile-spreadsheet.xml", "medicationorder-daf-profile-spreadsheet.xml", "medicationstatement-daf-profile-spreadsheet.xml", "observation-daf-queryresults-profile-spreadsheet.xml", "observation-daf-vitalsigns-profile-spreadsheet.xml", "observation-daf-results-profile-spreadsheet.xml", "observation-daf-smokingstatus-profile-spreadsheet.xml", "organization-daf-profile-spreadsheet.xml", "patient-daf-profile-spreadsheet.xml", "practitioner-daf-profile-spreadsheet.xml", "procedure-daf-profile-spreadsheet.xml", "provenance-daf-profile-spreadsheet.xml", "relatedperson-daf-profile-spreadsheet.xml", "spec-daf-profile-spreadsheet.xml", "task-daf-profile-spreadsheet.xml", "substance-daf-profile-spreadsheet.xml"
 	],
 	"resources": {
 		"StructureDefinition/daf-core-allergyintolerance": {
@@ -85,13 +37,10 @@
 			"defns": "daf-core-careplan-definitions.html",
 			"base": "daf-core-careplan.html"
 		},
-		
 		"StructureDefinition/daf-core-careteam": {
 			"defns": "daf-core-careteam-definitions.html",
 			"base": "daf-core-careteam.html"
-		},		
-		
-		
+		},
 		"StructureDefinition/daf-condition": {
 			"defns": "daf-condition-definitions.html",
 			"base": "daf-condition.html"
@@ -292,10 +241,6 @@
 			"defns": "daf-procedurelist-definitions.html",
 			"base": "daf-procedurelist.html"
 		},
-		"StructureDefinition/us-core-birth-sex": {
-			"defns": "us-core-birth-sex-definitions.html",
-			"base": "us-core-birth-sex.html"
-		},
 		"StructureDefinition/daf-research-data-models": {
 			"defns": "daf-research-data-models-definitions.html",
 			"base": "daf-research-data-models.html"
@@ -305,11 +250,7 @@
 			"base": "daf-data-models.html"
 		},
 		"StructureDefinition/daf-query-formats": {
-			"defns": "daf-research-query-formats-definitions.html",
-			"base": "daf-research-query-formats.html"
-		},
-		"StructureDefinition/daf-query-formats": {
-			"defns": "daf-research-query-formats-definitions.html",
+			"defns": "daf-research-query-formats-definitions.htmrl",
 			"base": "daf-research-query-formats.html"
 		},
 		"ValueSet/daf-procedure-type": {
@@ -448,10 +389,6 @@
 			"base": "valueset-daf-problem.html",
 			"template-base": null
 		},
-		"ValueSet/us-core-birth-sex": {
-			"base": "valueset-us-core-birth-sex",
-			"template-base": null
-		},
 		"ValueSet/daf-research-data-models": {
 			"base": "valueset-daf-research-data-models.html",
 			"template-base": null
@@ -480,9 +417,62 @@
 			"base": "valueset-daf-core-narrative-status.html",
 			"template-base": null
 		},
+		"ValueSet/daf-careteam-status": {
+			"base": "valueset-daf-careteam-status.html",
+			"template-base": null
+		},
+		"ValueSet/daf-procedure-icd10pcs": {
+			"base": "valueset-daf-procedure-icd10pcs.html",
+			"template-base": null
+		},
+		"ValueSet/daf-provider-role": {
+			"base": "valueset-daf-provider-role.html",
+			"template-base": null
+		},
+		"ValueSet/daf-provider-specialty": {
+			"base": "valueset-daf-provider-specialty.html",
+			"template-base": null
+		},
+		"ValueSet/daf-ucum": {
+			"base": "valueset-daf-ucum.html",
+			"template-base": null
+		},
+		"ValueSet/daf-observation-value-codes": {
+			"base": "valueset-daf-observation-value-codes.html",
+			"template-base": null
+		},
+		"ValueSet/daf-ndc-vaccine-codes": {
+			"base": "valueset-daf-ndc-vaccine-codes.html",
+			"template-base": null
+		},
+		"ValueSet/daf-condition-category": {
+			"base": "valueset-daf-condition-category.html",
+			"template-base": null
+		},
+		"CodeSystem/daf-careteam-status": {
+			"base": "codesystem-daf-careteam-status.html",
+			"template-base": null
+		},
 		"AllergyIntolerance/example": {
 			"base": "allergyintolerance-example.html",
 			"template-base": null
+		},
+		"Patient/example": {
+			"base": "patient-example.html",
+			"template-base": null
+		},
+		"CarePlan/example": {
+			"base": "careplan-example.html",
+			"template-base": null
+		},
+		"CareTeam/example": {
+			"base": "careteam-example.html",
+			"template-base": null
+		},
+				"Condition/example": {
+			"base": "condition-example.html",
+			"template-base": null
 		}
+
 	}
 }

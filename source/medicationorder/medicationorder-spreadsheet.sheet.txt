@@ -34,7 +34,7 @@
   Binding Name = MedicationOrderStatus
   Binding = code list
   Reference = #medication-order-status
-  Definition = A code specifying the state of the prescribing event. Describes the lifecycle of the prescription.
+  Definition = A coded concept specifying the state of the prescribing event. Describes the lifecycle of the prescription.
   Conformance = required
   v3 = ActStatus
 
@@ -49,21 +49,21 @@
   Binding Name = OrderReason
   Binding = value set
   Reference = http://hl7.org/fhir/ValueSet/condition-code
-  Definition = Codes indicating why the medication was ordered.
+  Definition = A coded concept indicating why the medication was ordered.
   Conformance = example
 
  -- Row 8 -----------------------------------
   Binding Name = MedicationCode
   Binding = value set
   Reference = http://hl7.org/fhir/ValueSet/medication-codes
-  Definition = Codes identifying substance or product that can be ordered.
+  Definition = A coded concept identifying substance or product that can be ordered.
   Conformance = example
 
  -- Row 9 -----------------------------------
   Binding Name = AdditionalInstructions
   Binding = value set
   Reference = valueset-additional-instructions-codes
-  Definition = Codes identifying additional instructions such as \"take with water\" or \"avoid operating heavy machinery\".
+  Definition = A coded concept identifying additional instructions such as \"take with water\" or \"avoid operating heavy machinery\".
   Conformance = example
 
  -- Row 10 -----------------------------------
@@ -80,7 +80,7 @@
   Binding Name = MedicationOrderCategory
   Binding = code list
   Reference = #medication-order-category
-  Definition = Codes identifying where the medication ordered is expected to be consumed or administered
+  Definition = A coded concept identifying where the medication ordered is expected to be consumed or administered
   Conformance = example
 
 === Sheet medication-order-status =====================================
@@ -290,6 +290,7 @@
   Short Label = Type of medication usage
   Definition = Indicates where type of medication order and where the medication is expected to be consumed or administered
   SCRIPT 10.6 Mapping = Message/Body/NewRx/MedicationPrescribed/Directions\n\nor \n\nMessage/Body/NewRx/MedicationPrescribed/StructuredSIG
+  RIM Mapping = not mapped
 
  -- Row 13 -----------------------------------
   Element = MedicationOrder.dosageInstruction
@@ -431,7 +432,7 @@
  -- Row 26 -----------------------------------
   Element = MedicationOrder.dispenseRequest
   Card. = 0..1
-  UML = 400;240
+  UML = 250;300
   Short Label = Medication supply authorization
   Definition = Indicates the specific details for the dispense or medication supply part of a medication order (also known as a Medication Prescription).  Note that this information is NOT always sent with the order.  There may be in some settings (e.g. hospitals) institutional or system support for completing the dispense details in the pharmacy department.
   SCRIPT 10.6 Mapping = Message/Body/NewRx/MedicationPrescribed/ExpirationDate
@@ -482,7 +483,7 @@
  -- Row 31 -----------------------------------
   Element = MedicationOrder.substitution
   Card. = 0..1
-  UML = 0;260
+  UML = -60;260
   Short Label = Any restrictions on medication substitution
   Definition = Indicates whether or not substitution can or should be part of the dispense. In some cases substitution must happen, in other cases substitution must not happen, and in others it does not matter. This block explains the prescriber\'s intent. If nothing is specified substitution may be done.
   SCRIPT 10.6 Mapping = specific values within Message/Body/NewRx/MedicationPrescribed/Substitutions
@@ -521,6 +522,7 @@
  -- Row 35 -----------------------------------
   Element = MedicationOrder.eventHistory
   Card. = 0..*
+  UML = 450;280
   Short Label = A list of events of interest in the lifecycle
   Definition = A summary of the events of interest that have occurred as the request is processed; e.g. when the order was verified or when it was completed
   Comments = This is not the same as an audit trail. It is a view of the important things that happened in the past. Typically, there would only be one entry for any given status, and systems may not record all the status events
@@ -572,6 +574,7 @@
   Binding = MedicationOrderActionReason
   Short Label = Reason the action was taken
   Definition = The reason why the action was taken
+  RIM Mapping = not mapped
 
 === Sheet Search =====================================
 
@@ -596,13 +599,13 @@
  -- Row 4 -----------------------------------
   Name = medication
   Type = reference
-  Description = Return administrations of this medication reference
+  Description = Return prescriptions of this medication reference
   Path = MedicationOrder.medicationReference
 
  -- Row 5 -----------------------------------
   Name = code
   Type = token
-  Description = Return administrations of this medication code
+  Description = Return prescriptions of this medication code
   Path = MedicationOrder.medicationCodeableConcept
 
  -- Row 6 -----------------------------------
@@ -620,6 +623,7 @@
  -- Row 8 -----------------------------------
   Name = prescriber
   Type = reference
+  Description = Returns prescriptions prescribed by this prescriber
   Path = MedicationOrder.prescriber
 
 === Sheet Profiles =====================================

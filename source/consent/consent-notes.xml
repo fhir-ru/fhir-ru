@@ -73,7 +73,7 @@ consent has been rejected, and consent approved.
 	  <li>Opt-in with restrictions: Default is that no patient health information is made available, but the patient may allow a subset of select data to be included.</li>
 	  </ol>
 	  <p>
-	  A common exception is to explicitly exclude or explicitly include <a href="consent-example-notTIme.html">a period of time</a>.
+	  A common exception is to explicitly exclude or explicitly include <a href="consent-example-notTime.html">a period of time</a>.
 	  </p>
  <h3>Canada Realm sample Use-Cases</h3>
 	  <p>
@@ -88,7 +88,7 @@ consent has been rejected, and consent approved.
 		<li>Withhold or withdraw <a href="consent-example-notThis.html">consent for disclosure of a specific record</a> (e.g. Lab Order/Result) </li>
 		<li>Withhold or withdraw <a href="consent-example-notOrg.html">consent for disclosure to a specific provider organization</a> </li>
 		<li>Withhold or withdraw <a href="consent-example-notThem.html">consent for disclosure to a specific provider agent</a> (an individual within an organization) </li>
-		<li>Withhold or withdraw <a href="consent-example-notAutor.html">consent for disclosure of records that were authored by a specific organization</a> (or service delivery location). </li>
+		<li>Withhold or withdraw <a href="consent-example-notAuthor.html">consent for disclosure of records that were authored by a specific organization</a> (or service delivery location). </li>
 		<li>Combinations of the above </li>
 	  </ol>
  <h3>Non Treatment Use-Cases</h3>

@@ -59,8 +59,9 @@ public class IGPublisherFrame extends javax.swing.JFrame {
   
   /**
    * Creates new form IGPublisherFrame
+   * @throws IOException 
    */
-  public IGPublisherFrame() {
+  public IGPublisherFrame() throws IOException {
     ini = new IniFile(Utilities.path(System.getProperty("user.home"), "fhir-ig.ini"));
     initComponents();
   }
@@ -248,6 +249,7 @@ public class IGPublisherFrame extends javax.swing.JFrame {
     
     @Override
     public String doInBackground() {
+      qa = null;
       Publisher pu = new Publisher();
       pu.setConfigFile((String) cbxIGName.getSelectedItem());
       pu.setLogger(this);
@@ -322,7 +324,7 @@ public class IGPublisherFrame extends javax.swing.JFrame {
 
   protected void btnGetHelpClick(ActionEvent evt) {
     try {
-      String text = Publisher.buildReport((String) cbxIGName.getSelectedItem(), fullLog.toString(), Utilities.changeFileExt(qa, ".txt"));
+      String text = Publisher.buildReport((String) cbxIGName.getSelectedItem(), fullLog.toString(), qa == null ? null : Utilities.changeFileExt(qa, ".txt"));
       StringSelection stringSelection = new StringSelection(text);
       Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
       clpbrd.setContents(stringSelection, null);
