@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Observation xmlns="http://hl7.org/fhir">
-  <id value="example-observation-genetics-5"/>
+  <id value="example-genetics-5"/>
   <status value="final"/>
   <code>
     <text value="PCR validation"/>
   </code>
   <subject>
-    <reference value="Patient/example-genetics-somatic"/>
+    <reference value="Patient/example"/>
     <display value="Molecular Lab Patient ID: HOSP-23456"/>
   </subject>
   <issued value="2013-04-03T15:30:10+01:00"/>
@@ -25,7 +25,7 @@
   <related>
     <type value="sequel-to"/>
     <target>
-      <reference value="Observation/example-observation-genetics-1"/>
+      <reference value="Observation/example-genetics-1"/>
       <display value="ObservationForGenetics profile example 1"/>
     </target>
   </related>

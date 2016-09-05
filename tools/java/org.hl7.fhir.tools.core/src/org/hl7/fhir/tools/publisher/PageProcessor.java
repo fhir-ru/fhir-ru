@@ -281,8 +281,8 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider, IReferen
   public final static String DEF_TS_SERVER = "http://fhir3.healthintersections.com.au/open";
 //  public final static String DEF_TS_SERVER = "http://local.healthintersections.com.au:960/open";
   
-  public final static String WEB_PUB_NAME = "DSTU2";
-  public final static String CI_PUB_NAME = "Копия спецификации на 01.08.2016";
+  public final static String WEB_PUB_NAME = "STU3";
+  public final static String CI_PUB_NAME = "STU 3 Ballot";
   
   public final static String WEB_PUB_NOTICE =
       "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px;\">\r\n"+
@@ -291,7 +291,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider, IReferen
   
   public final static String CI_PUB_NOTICE = 
       "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px;\">\r\n"+
-          "Это непрерывная интеграционная сборка FHIR (может быть некорректной время от времени). См. <a href=\"http://hl7.org/fhir/directory.html\">указатель опубликованных версий</a>\r\n"+
+          "Это предварительный выпуск будущей версии FHIR (предположительно STU 3). Это версия STU 3 для голосования, а также для Коннектатона в Балтиморе. Текущей версией FHIR является <a href=\"http://hl7.org/fhir/index.html\">DSTU 2</a>. См. также <a href=\"http://hl7.org/fhir/directory.html\">Список всех доступных версий</a>.\r\n"+
           "</p>\r\n";
 
   public static final String CODE_LIMIT_EXPANSION = "10000";
