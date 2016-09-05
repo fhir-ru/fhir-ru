@@ -63,7 +63,7 @@ resources are supported. -->
   <tr><td><a href="#search">search</a></td><td>Поиск по ресурсам всех типов по разным критериям</td></tr>
 </table>
 <p>
-Кроме этих взаимодействий, имеется <a href="operations.htm">operations framework</a>, который включает в себя точки взаимодействия для <a href="operation-resource-validate.html">валидации</a>, <a href="messaging.html#mailbox">отправки сообщений</a> и <a href="documents.html#bundle">документов</a>.
+Кроме этих взаимодействий, имеется <a href="operations.html">operations framework</a>, который включает в себя точки взаимодействия для <a href="operation-resource-validate.html">валидации</a>, <a href="messaging.html#mailbox">отправки сообщений</a> и <a href="documents.html#bundle">документов</a>.
 <!-- In addition to these interactions, there is an <a href="operations.html">operations framework</a>, which includes endpoints
 for <a href="operation-resource-validate.html">validation</a>, <a href="messaging.html#mailbox">messaging</a> and <a href="documents.html#bundle">Documents</a>. --></p>
 
@@ -946,7 +946,7 @@ this is not the main usage.  -->
 </p>
 <p>
 Если поиск не удается выполнить, возвращается код состояния вида 4xx или 5xx наряду с ресурсом <a href="operationoutcome.html">OperationOutcome</a>. 
-Если поиск выполняется успешно, возвращается <a href="bundle.html">комплект (Bundle)</a> с <a href="bundle-definitions.html#Bundle.type">типом</a> = <code>searchset</code>, содержащий результаты поиска в виде перечня ресурсов в определенном порядке. Результирующий список может быть длинным, поэтому серверы могут использовать разбиение на страницы. Если он делают это, они ДОЛЖНЫ использовать метод, <a href="#paging">описанный ниже</a>, адаптированный из <a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed Paging and Archiving</a>), для разбиения списка на страницы, когда это необходимо. Сервер МОЖЕТ также возвращать ресурс OperationOutcome с дополнительной информацией о поиске; в этом случае он НЕ ДОЛЖЕН содержать никаких ошибок и должен быть помечен <a href="search-entry-mode.html">entry
+Если поиск выполняется успешно, возвращается <a href="bundle.html">комплект (Bundle)</a> с <a href="bundle-definitions.html#Bundle.type">типом</a> = <code>searchset</code>, содержащий результаты поиска в виде перечня ресурсов в определенном порядке. Результирующий список может быть длинным, поэтому серверы могут использовать разбиение на страницы. Если он делают это, они ДОЛЖНЫ использовать метод, <a href="#paging">описанный ниже</a>, адаптированный из <a href="https://tools.ietf.org/html/rfc5005">RFC 5005 (Feed Paging and Archiving</a>), для разбиения списка на страницы, когда это необходимо. Сервер МОЖЕТ также возвращать ресурс OperationOutcome с дополнительной информацией о поиске; в этом случае он НЕ ДОЛЖЕН содержать никаких ошибок и должен быть помечен <a href="valueset-search-entry-mode.html">entry
 mode</a> = <code>include</code>.
 <!-- If the search fails (cannot be executed, not that there is no matches), the return value is 
 a status code 4xx or 5xx with an <a href="operationoutcome.html">OperationOutcome</a>.
@@ -1086,7 +1086,7 @@ not expected that every server will implement them. -->
   POST [base] {?_format=[mime-type]}
 </pre>
 <p>
-Содержимое тела post-запроса - это <a href="bundle.html">Bundle</a> с <a href="bundle-definitions.html#Bundle.type">Bundle.type</a> = <code><a href="bundle-type.html#transaction">transaction</a></code>.
+Содержимое тела post-запроса - это <a href="bundle.html">Bundle</a> с <a href="bundle-definitions.html#Bundle.type">Bundle.type</a> = <code><a href="valueset-bundle-type.html#batch">batch</a></code> или <code><a href="valueset-bundle-type.html#transaction">transaction</a></code>.
 Каждый элемент entry содержит элемент <code>transaction</code> (<a href="bundle-definitions.html#Bundle.entry.transaction">Bundle.entry.transaction</a>) , в котором указываются HTTP-детали операции для того, чтобы проинформировать систему, обрабатывающую транзакцию, о том, что необходимо сделать с каждым entry (примечание: <code>request</code> является <a href="bundle.html#transaction">необязательным</a>, однако ДОЛЖЕН присутствовать). Если указана HTTP-операция <code>PUT</code> или <code>POST</code>, тогда entry ДОЛЖНА содержать ресурс, выступающий телом операции.
 как будто это отдельные операции, описанные на этой странице или для <a href="operations.html">Extended 
 Operations</a>. Эти операции подлежат обычной обработке для каждого, включая <a href="resource.html#meta">элемент meta</a>, верификацию и версионные обновления, а также <a href="#transactional-integrity">транзакционную целостность</a>).
