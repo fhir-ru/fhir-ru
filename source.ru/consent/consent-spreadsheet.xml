@@ -1839,7 +1839,7 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Например тип ресурса, профиль или CDA, и т. д.<!-- e.g. Resource Type, Profile, or CDA etc --></Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Например тип ресурса, профиль или CDA, и т. д<!-- e.g. Resource Type, Profile, or CDA etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><Data ss:Type="String">Класс информации, охватываемый этим исключением. Тип может быть типом FHIR-ресурса, профилем на тип, или CDA-документом, или каким-либо другим типом, который говорит о том, к какому виду информации относится согласие/разрешение<!-- The class of information covered by this exception. The type can be a FHIR resource type, a profile on a type, or a CDA document, or some other type that indicates what sort of information the consent relates to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
