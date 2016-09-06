@@ -1,38 +1,44 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h2>Policies</h2>
+<h2>Политики<!-- Policies --></h2>
 
 <p>
-This speciifcation defines 2 magic values for consent policies:
+Данная спецификация определяет 2 магических значения для политики согласия:
+<!-- This speciifcation defines 2 magic values for consent policies: -->
 </p>
 <table class="grid">
  <tr>
   <td><b>URI</b></td>
-  <td><b>Description</b></td>
+  <td><b>Описание</b></td>
  </tr>
  <tr>
   <td>http://hl7.org/fhir/ConsentPolicy/opt-in</td>
-  <td>The basic policy is to grant no authority. No actions are approved, unless they are explicitly detailed in the exceptions</td>
+  <td>Базовая политика - не давать никаких полномочий. Никакие действия не санкционированы, если только они не указаны явным образом в исключениях<!-- The basic policy is to grant no authority. No actions are approved, unless they are explicitly detailed in the exceptions --></td>
  </tr>
  <tr>
   <td>http://hl7.org/fhir/ConsentPolicy/opt-out</td>
-  <td>The basic policy is to grant all authority. All actions are approved, unless they are explicitly detailed in the exceptions</td>
+  <td>Базовая политика - давать все полномочия. Все действия санкционированы, если только они не указаны явным образом в исключениях<!-- The basic policy is to grant all authority. All actions are approved, unless they are explicitly detailed in the exceptions --></td>
  </tr>
 </table>
 <p>
-Other jurisdictions (e.g. HL7 Affiliates) may define their additional lists of consent policy URI values that represent consent policies established by law or regulation
+Другие юрисдикции (например филиалы HL7) могут определять свои дополнительные списки значений URI политик согласия, которые представляют собой политики согласия, установленные законом или правилами.
+<!-- Other jurisdictions (e.g. HL7 Affiliates) may define their additional lists of consent policy URI values that represent consent policies established by law or regulation -->
 </p>
 <p>
-The Consent resource has a reference to a single <code>policy</code>. Many organizations will work in a context where multiple different consent regulations and policies apply. 
+Ресурс Consent содержит ссылку на одну <code>политику</code>. Большинство организаций будут работать в контексте, когда применяется несколько различных правила согласия и политик.
+В таких случаях одна ссылка на политику ссылается на документ политики, которая разрешается и согласовывает различные политики, и представляет собой единую политику для согласия пациента. Если всё ещё остаётся необходимость в отслеживании, к какой из нижележащих политик относится исключение, можно использовать <a href="extension-consent-basis.html">расширение</a>.
+<!-- The Consent resource has a reference to a single <code>policy</code>. Many organizations will work in a context where multiple different consent regulations and policies apply. 
 In these cases, the single policy reference refers to a policy document that resolves and reconciles the various policies, and presents a single policy for patient
-consent. If it is still necessary to track which of the underlying policies an exception is make in regard to, an <a href="extension-consent-basis.html">extension</a> may be used.
+consent. If it is still necessary to track which of the underlying policies an exception is make in regard to, an <a href="extension-consent-basis.html">extension</a> may be used. -->
 </p>
-<h2>General Model</h2>
+<h2>Общая модель<!-- General Model --></h2>
 <p>
-The following is the general model of Privacy Consent Directives.
+Ниже описана общая модель Распоряжений о согласии на политику конфиденциальности.
+<!-- The following is the general model of Privacy Consent Directives. -->
 </p>
 <p>
-There are context setting parameters:
+Параметры, устанавливающие контекст:
+<!-- There are context setting parameters: -->
 </p>
 <ol>
 <li>Who - The <td><b>patient</b></td></li>
@@ -44,10 +50,11 @@ There are context setting parameters:
 <li>Whom - The <td><b>recipient</b></td> are grantees by the consent. </li>
 </ol>
 <p>
-A Privacy Consent may transition through many states including: that no consent has been sought, consent has been proposed, 
-consent has been rejected, and consent approved.
+Согласие на политику конфиденциальности может переходить между различными состояниями, включая: что согласие не было запрошено, было предложено согласие, согласие было отклонено, и согласие было одобрено.
+<!-- A Privacy Consent may transition through many states including: that no consent has been sought, consent has been proposed, 
+consent has been rejected, and consent approved. -->
 </p>
-<p>There are set of patterns.</p>
+<p>Имеется ряд шаблонов.<!-- There are set of patterns. --></p>
 	  <ol>
 	  <li>No consent: All settings need a policy for when no consent has been captured. Often this allows treatment only.;</li>
 	  <li>Opt-out: <a href="consent-example-Out.html">No sharing allowed for the specified domain, location, actions, and purposes</a>;</li>
@@ -58,22 +65,24 @@ consent has been rejected, and consent approved.
       <p>For each of these patterns (positive or negative pattern), there can be exceptions. 
 	  These exceptions are explicitly recorded in the <td><b>except</b></td> element. 
       </p>	
-<h2>Realm specifics</h2>
- <h3>US Realm sample Use-Cases</h3>
+<h2>Специфичные для стран сценарии<!-- Realm specifics --></h2>
+ <h3>Примеры сценариев использования для США<!-- US Realm sample Use-Cases --></h3>
 	  <p>
-		Five categories of Privacy Consent Directives are described in the Office of the National Coordinator for 
+    Пять категорий Распоряжений о согласии на политику конфиденциальности описаны в документе Распоряжения о согласии Национального координатора информации в сфере здравоохранения (ONC), выпущенном 31 марта 2010 года, и включают следующие, специфичные для США, "Основные варианты согласия" для электронного обмена:
+<!-- 		Five categories of Privacy Consent Directives are described in the Office of the National Coordinator for 
 		Health Information (ONC) Consent Directives Document released March 31, 2010, and include the following 
-		US-specific “Core consent options” for electronic exchange:
+		US-specific “Core consent options” for electronic exchange: -->
 	  </p>
 	  <ol>
-	  <li>No consent: Health information of patients is automatically included—patients cannot opt out;</li>
-	  <li>Opt-out: Default is for health information of patients to be included automatically, but the patient can <a href="consent-example-Out.html">opt out completely</a>;</li>
-	  <li>Opt-out with exceptions: Default is for health information of patients to be included, but the patient can opt out completely or allow only select data to be included;</li>
-	  <li>Opt-in: Default is that no patient health information is included; patients must actively <a href="consent-example.html">express consent</a> to be included, but if they do so then their information must be all in or all out; and</li>
-	  <li>Opt-in with restrictions: Default is that no patient health information is made available, but the patient may allow a subset of select data to be included.</li>
+	  <li>Нет согласия: медицинская информация о пациентах автоматически включена - пациенты не могут отказаться от участия<!-- No consent: Health information of patients is automatically included—patients cannot opt out -->;</li>
+	  <li>Отказ от участия: по умолчанию медицинская информация о пациентах будет включена автоматически, однако пациенты могут <a href="consent-example-Out.html">полностью отказаться от участия</a><!-- Opt-out: Default is for health information of patients to be included automatically, but the patient can <a href="consent-example-Out.html">opt out completely</a> -->;</li>
+	  <li>Отказ от участия с исключениями: по умолчанию медицинская информация о пациентах будет включена автоматически, однако пациенты могут отказаться от участия полностью или разрешить включить только выборочные данные<!-- Opt-out with exceptions: Default is for health information of patients to be included, but the patient can opt out completely or allow only select data to be included -->;</li>
+	  <li>Согласие на участие: по умолчанию никакая медицинская информация о пациентах не включена; пациенты должны явным образом <a href="consent-example.html">выразить согласие</a> на включение, однако в этом случае будет включена либо вся информация, либо никакая её часть; и<!-- Opt-in: Default is that no patient health information is included; patients must actively <a href="consent-example.html">express consent</a> to be included, but if they do so then their information must be all in or all out; and --></li>
+	  <li>Согласие на участие с ограничениями: по умолчанию никакая медицинская информация о пациентах не доступна, однако пациенты могут разрешить включить выбранное подмножество данных.<!-- Opt-in with restrictions: Default is that no patient health information is made available, but the patient may allow a subset of select data to be included. --></li>
 	  </ol>
 	  <p>
-	  A common exception is to explicitly exclude or explicitly include <a href="consent-example-notTime.html">a period of time</a>.
+    Распространённым исключением является явное исключение или явное включение <a href="consent-example-notTime.html">периода времени</a>. 
+	  <!-- A common exception is to explicitly exclude or explicitly include <a href="consent-example-notTime.html">a period of time</a>. -->
 	  </p>
  <h3>Canada Realm sample Use-Cases</h3>
 	  <p>
@@ -91,7 +100,7 @@ consent has been rejected, and consent approved.
 		<li>Withhold or withdraw <a href="consent-example-notAuthor.html">consent for disclosure of records that were authored by a specific organization</a> (or service delivery location). </li>
 		<li>Combinations of the above </li>
 	  </ol>
- <h3>Non Treatment Use-Cases</h3>
+ <h3>Не относящиеся к лечению сценарии использования<!-- Non Treatment Use-Cases --></h3>
 	  <p>
 	  Also shown is an example where a <a href="consent-example-grantor.html">Patient has authorized disclosure to a specific individual for purposes directed by the patient</a> (possibly not a treatment case).
 	  </p>
