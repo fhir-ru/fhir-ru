@@ -1093,14 +1093,14 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A healthcare consumer’s policy choices to permits or denies recipients or roles to perform actions for specific purposes and periods of time</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Выбор потребителем медобеспечения политики разрешений или отказов получателям или ролям в выполнении действий конкретного назначения и в определённые периоды времени<!-- A healthcare consumer’s policy choices to permits or denies recipients or roles to perform actions for specific purposes and periods of time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Запись выбранных потребителем медобеспечения решений, которые позволяют или запрещают указанным получателям или ролям получателей (указаний) выполнять одно или несколько действий в рамках данного контекста поведения, в определённых целях и периодах времени<!-- A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">infrastructure.information</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Broadly, there are 3 key areas of consent for patients: Consent around sharing information (aka Privacy Consent Directive - Authorization to Collect, Use, or Disclose information), consent for specific treatment, or kinds of treatment, and general advance care directives</Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">В широком смысле, есть 3 ключевых области, где может потребоваться согласие пациента: Согласие на обмен информацией (так называемая Privacy Consent Directive - Разрешение на сбор, использование или раскрытие информации), согласие на определённое лечение или виды лечения, а также предварительные медицинские указания общего вида<!-- Broadly, there are 3 key areas of consent for patients: Consent around sharing information (aka Privacy Consent Directive - Authorization to Collect, Use, or Disclose information), consent for specific treatment, or kinds of treatment, and general advance care directives --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">FinancialConsent</Data><NamedCell
@@ -1129,14 +1129,14 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifier for this record (external references)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор этой записи (внешние ссылки)<!-- Identifier for this record (external references) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Unique identifier for this copy of the Consent Statement</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Уникальный идентификатор этой копии заявления о согласии<!-- Unique identifier for this copy of the Consent Statement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">id</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">This identifier is identifies this copy of the consent. Where this identifier is also used elsewhere as the identifier for a consent record (e.g. a CDA consent document) then the consent details are expected to be the same</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Данный идентификатор идентифицирует данную копию согласия. Если этот идентификатор используется также где-то ещё в качестве идентификатора записи о согласии (например в CDA-документе о согласии), то детали согласия в этих документах должны совпадать<!-- This identifier is identifies this copy of the consent. Where this identifier is also used elsewhere as the identifier for a consent record (e.g. a CDA consent document) then the consent details are expected to be the same --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">.id</Data><NamedCell
@@ -1168,13 +1168,13 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><Data ss:Type="String">draft | proposed | active | rejected | inactive | entered-in-error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Indicates the current state of this consent</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Текущий статус данного согласия<!-- Indicates the current state of this consent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s101"><Data ss:Type="String">The Consent Directive that is pointed to might be in various lifecycle states, e.g., a revoked Consent Directive</Data><NamedCell
+    <Cell ss:StyleID="s101"><Data ss:Type="String">Распоряжение о согласии, на которое приводится ссылка, может находиться в различных стадиях жизненного цикла, например отозванное распоряжение о согласии<!-- The Consent Directive that is pointed to might be in various lifecycle states, e.g., a revoked Consent Directive --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><Data ss:Type="String">status</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">This is the status of this consent at the time it was issued / created / indexed</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Это статус данного согласия на момент его выпуска / создания / индексации<!-- This is the status of this consent at the time it was issued / created / indexed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s103"><Data ss:Type="String">.statusCode</Data><NamedCell
@@ -1204,9 +1204,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Classification of the consent statement - for indexing/retrieval</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Классификация заявления о согласии - для индексации/извлечения<!-- Classification of the consent statement - for indexing/retrieval --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">A classification of the type of consents found in the statement. This element supports indexing and retrieval of consent statements</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Классификация типа согласий, находящихся в этом заявлении. Этот элемент поддерживает индексацию и извлечение заявлений о согласии<!-- A classification of the type of consents found in the statement. This element supports indexing and retrieval of consent statements --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">class</Data><NamedCell
@@ -1238,14 +1238,14 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">When this Consent was created or indexed</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда этот Consent был создан или проиндексирован<!-- When this Consent was created or indexed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">When this  Consent was issued / created / indexed</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Когда этот Consent был выпущен / создан / проиндексирован<!-- When this  Consent was issued / created / indexed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">when.recorded</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">This is not the time of the original consent, but the time that this statement was made or derived</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Это не время исходного согласия, это время, когда было сделано или выведено это утверждение<!-- This is not the time of the original consent, but the time that this statement was made or derived --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">FinancialConsent effectiveTime</Data><NamedCell
@@ -1274,14 +1274,14 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">all date ranges included</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Period that this consent applies</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период времени, к которому применимо это согласие<!-- Period that this consent applies --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">Relevant time or time-period when this Consent is applicable</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Релевантное время или период времени, когда данный Consent применим<!-- Relevant time or time-period when this Consent is applicable --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">when.done</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">This can be a subset of the period of the original statement</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Это может быть подмножество периода первоначального заявления<!-- This can be a subset of the period of the original statement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">FinancialConsent activityTime</Data><NamedCell
@@ -1309,13 +1309,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Who the consent applies to</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">К кому применяется это согласие<!-- Who the consent applies to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The patient/healthcare consumer to whom this consent applies.</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Пациент/потребитель медобеспечения, к которому применяется это согласие<!-- The patient/healthcare consumer to whom this consent applies. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="16" ss:StyleID="s91"><Data ss:Type="String">who.focus</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Commonly, the patient the consent pertains to is the author, but for young and old people, it may be some other person</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Обычно пациент, которому принадлежит согласие, является его автором, однако для юных или людей в возрасте это может быть другой человек<!-- Commonly, the patient the consent pertains to is the author, but for young and old people, it may be some other person --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><Data ss:Type="String">Role</Data><NamedCell
@@ -1343,13 +1343,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Who is agreeing to the policy and exceptions</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Кто соглашается с политикой решений и исключениями из неё<!-- Who is agreeing to the policy and exceptions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The patient/consumer that is responsible for agreeing to the consent represented by this resource. This is the person (usually) that agreed to the policy, along with the exceptions, e.g. the persion who takes responsibility for the agreement. In the signature this corresponds to the role &quot;Consent Signature&quot;</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Пациент/потребитель, ответственный за соглашение с согласием, представленным с помощью этого ресурса. Это тот человек (обычно), который соглашается с политикой, наряду с исключениями, например человек, берущий на себя ответственность за это соглашение. В элементе подпись (signature) это соответствует роли &quot;Consent Signature&quot;<!-- The patient/consumer that is responsible for agreeing to the consent represented by this resource. This is the person (usually) that agreed to the policy, along with the exceptions, e.g. the persion who takes responsibility for the agreement. In the signature this corresponds to the role &quot;Consent Signature&quot; --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="16" ss:StyleID="s91"><Data ss:Type="String">who.actor</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Commonly, the patient the consent pertains to is the consentor, but particularly for young and old people, it may be some other person - e.g. a legal guardian</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">Как правило, пациент, которому принадлежит это согласие/разрешение, является consentor, однако в частности для юных или людей в возрасте это может быть и другой человек - например опекун по завещанию<!-- Commonly, the patient the consent pertains to is the consentor, but particularly for young and old people, it may be some other person - e.g. a legal guardian --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1377,9 +1377,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Organization that manages the consent</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String"><!-- Organization that manages the consent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">The organization that manages the consent, and the framework within which it is executed</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Организация, которая управляет согласием/разрешением, и структура, в рамках которой оно выполняется<!-- The organization that manages the consent, and the framework within which it is executed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">who.witness</Data><NamedCell
@@ -1409,13 +1409,13 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Source from which this consent is taken</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Источник, из которого взято это согласие/разрешение<!-- Source from which this consent is taken --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Источник, на котором основано это утверждение согласия/разрешения. Источником может быть отсканированная оригинальная бумажная форма, или ссылка на согласие/разрешение, которая ведёт на этот источник, ссылка на хранилище документов (например XDS), где хранится оригинал документа о согласии/разрешении<!-- The source on which this consent statement is based. The source might be a scanned original paper form, or a reference to a consent that links back to such a source, a reference to a document repository (e.g. XDS) that stores the original consent document --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">The source can be contained inline (Attachment), referenced directly (Consent), referenced in a consent repository (DocumentReference), or simply by an identifier (Identifier), e.g. a CDA document id</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Источник может быть встроенным вложением (Attachment), прямой ссылкой (на ресурс Consent), ссылкой на документ в хранилище согласий/разрешений (DocumentReference), или просто идентификатором (Identifier), например ID CDA-документа<!-- The source can be contained inline (Attachment), referenced directly (Consent), referenced in a consent repository (DocumentReference), or simply by an identifier (Identifier), e.g. a CDA document id --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1442,13 +1442,13 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Policy that this consents to</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Правила/политики, на которые даётся согласие<!-- Policy that this consents to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A reference to the policy that this consents to. Policies may be organizational, but are often defined jurisdictionally, or in law</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ссылка на правила/политики, на которые даётся согласие. Правила/политики могут быть организационные, однако чаще они определяются юрисдикциями или законами<!-- A reference to the policy that this consents to. Policies may be organizational, but are often defined jurisdictionally, or in law --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">If the policy reference is not known, the resource cannot be processed. Where the reference is absent, there is no particular policy other than what is expressed directly in the consent resource</Data><NamedCell
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Если ссылка на правила/политики не известна, такой ресурс невозможно обработать. Там, где эта ссылка отсутствует, нет никакого определённого правила/политики, кроме той, что выражена непосредственно в ресурсе Consent<!-- If the policy reference is not known, the resource cannot be processed. Where the reference is absent, there is no particular policy other than what is expressed directly in the consent resource --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1473,16 +1473,16 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">There is no specific actor who is the focus of the consent</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Конкретное действующее лицо, находящееся в центре внимания согласия/разрешения, отсутствует<!-- There is no specific actor who is the focus of the consent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Whose access is controlled by the policy</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Чей доступ управляется политикой<!-- Whose access is controlled by the policy --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Actor whose access is controlled by this consent under the terms of the policy and exceptions</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Действующее лицо, чей доступ контролируется этим согласием/разрешением в соответствии с условиями политики и исключениями<!-- Actor whose access is controlled by this consent under the terms of the policy and exceptions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="16" ss:StyleID="s102"><Data ss:Type="String">who.actor</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s102"><Data ss:Type="String">The Consent recipient is the person/organization who is being granted or denied permission according to the stated policy</Data><NamedCell
+    <Cell ss:StyleID="s102"><Data ss:Type="String">Получателем согласия/разрешения является лицо/организация, которому в настоящее время предоставляется или отказывается в разрешении в соответствии с заявленной политикой<!-- The Consent recipient is the person/organization who is being granted or denied permission according to the stated policy --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1510,13 +1510,13 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Context of activities for which the agreement is made</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Контекст действий, на которые заключается соглашение<!-- Context of activities for which the agreement is made --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">The context of the activities a user is taking - why the user is accessing the data - that are controlled by this consent.</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Контекст действий, которые принимает пользователь - почему пользователь получает доступ к данным - которые контролируются данным согласием/разрешением.<!-- The context of the activities a user is taking - why the user is accessing the data - that are controlled by this consent. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">This element is for discoverability / documentation, and does not modify or qualify the policy (e.g. the policy itself describes the purposes for which it applies)</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Этот элемент предназначен для понятности/документации и не меняет или уточняет правило/политику (например сама политика описывает намерения, к которым она относится)<!-- This element is for discoverability / documentation, and does not modify or qualify the policy (e.g. the policy itself describes the purposes for which it applies) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1543,9 +1543,9 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Additional rule -  addition or removal of permissions</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Дополнительное правило - добавление или удаление разрешений<!-- Additional rule -  addition or removal of permissions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">An exception to the base policy of this consent. An exception can be an addition or removal of access permissions.</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Исключение из базовой политики этого согласия/разрешения. Исключение может быть добавлением или удалением прав доступа.<!-- An exception to the base policy of this consent. An exception can be an addition or removal of access permissions. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1578,7 +1578,7 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><Data ss:Type="String">deny | permit</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Action  to take - permit or deny - when the exception conditions are met</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Действие, которое будет предпринято - разрешить или отказать - когда условия исключения будут выполнены<!-- Action  to take - permit or deny - when the exception conditions are met --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1608,13 +1608,13 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Timeframe for data controlled by this exception</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Временные рамки для данных, управляемых этим исключением<!-- Timeframe for data controlled by this exception --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">The timeframe in which data is controlled by this exception</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Временные рамки, в которых данные контролируются этим исключением<!-- The timeframe in which data is controlled by this exception --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">This has a different sense to the Consent.period - that is when the consent agreement holds. This is the time period of the data that is controlled by the agreement</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Этот элемент по смыслу отличается от Consent.period - время, когда соглашение имеет силу. Это период времени данных, которые контролируются этим соглашением<!-- This has a different sense to the Consent.period - that is when the consent agreement holds. This is the time period of the data that is controlled by the agreement --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1638,12 +1638,12 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">There is no specific actor associated with the exception</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Конкретное действующее лицо, связанное с этим исключением, отсутствует<!-- There is no specific actor associated with the exception --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Who|what controlled by this exception (or group, by role)</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Кто|что контролируется этим исключением (или группа, по роли)<!-- Who|what controlled by this exception (or group, by role) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Who or what is controlled by this Exception. Use group to identify a set of actors by some property they share (e.g. 'admitting officers')</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Кто или что находится под контролем данного исключения. Используйте группу для определения набора действующих лиц по некоторому свойству, которое они разделяют (например "принимающие должностные лица")<!-- Who or what is controlled by this Exception. Use group to identify a set of actors by some property they share (e.g. 'admitting officers') --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1674,9 +1674,9 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">How the actor is/was involved</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Каким образом действующее лицо было/будет вовлечено<!-- How the actor is/was involved --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">How the individual is or was involved in the resourcescontent that is described in the exception</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Каким образом данное лицо было или будет вовлечено в содержимое ресурса, которое описано в исключении<!-- How the individual is or was involved in the resourcescontent that is described in the exception --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="16" ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1704,9 +1704,9 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Resource for the actor (or group, by role)</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String"><!-- Resource for the actor (or group, by role) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">The resource that identifies the actor. To identify a actors by type, use group to identify a set of actors by some property they share (e.g. 'admitting officers')</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Ресурс, который идентифицирует действующее лицо. Для того, чтобы идентифицировать действующих лиц по типу, используйте группу, чтобы идентифицировать ряд действующих лиц по некоторому свойству, которое они разделяют (например, "принимающие должностные лица")<!-- The resource that identifies the actor. To identify a actors by type, use group to identify a set of actors by some property they share (e.g. 'admitting officers') --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="16" ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1737,13 +1737,13 @@
     <Cell ss:StyleID="s98"><Data ss:Type="String">all actions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Actions controlled by this exception</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Действия, контролируемые этим исключением<!-- Actions controlled by this exception --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Actions controlled by this Exception</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Действия, контролируемые этим исключением<!-- Actions controlled by this Exception --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Note that this is the direct action (not the grounds for the action covered in the purpose element). At present, the only action in the understood and tested scope of this resource is 'read'</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Обратите внимание, что это прямое действие (а не основания для этого действия, покрываемые в элементе purpose). В настоящее время 'read' - единственное действие в понятной и испытанной области действия данного ресурса<!-- Note that this is the direct action (not the grounds for the action covered in the purpose element). At present, the only action in the understood and tested scope of this resource is 'read' --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1771,13 +1771,13 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Security Labels that define affected resources</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Метки уровня безопасности, которые определяют, какие затрагиваются ресурсы<!-- Security Labels that define affected resources --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">A set of security labels that define which resources are controlled by this exception. If more than one label is specified, all resources must have all the specified labels</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Ряд меток уровня безопасности, которые определяют, какие ресурсы контролируются этим исключением. Если указано более одной метки, все ресурсы должны иметь все указанные метки<!-- A set of security labels that define which resources are controlled by this exception. If more than one label is specified, all resources must have all the specified labels --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">If the consent specifies a security label of &quot;R&quot; then it applies to all resources that are labelled &quot;R&quot; or lower. E.g. for Confidentiality, it's a high water mark. For other kinds of security labels, subsumption logic applies. Not all of the security labels make sense for use in this element (may define a narrower value set?)</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Если в согласии/разрешении указана метка уровня безопасности &quot;R&quot; то оно относится ко всем ресурсам, которые помечены меткой &quot;R&quot; или ниже. Например для обеспечения конфиденциальности, это водяные знаки. Для других видов меток уровня безопасности применима логика категоризации. Не для всех меток уровня безопасности имеется смысл в использовании в этом элементе (можно определить более узкий набор значений?)<!-- If the consent specifies a security label of &quot;R&quot; then it applies to all resources that are labelled &quot;R&quot; or lower. E.g. for Confidentiality, it's a high water mark. For other kinds of security labels, subsumption logic applies. Not all of the security labels make sense for use in this element (may define a narrower value set?) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1805,13 +1805,13 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Context of activities covered by this exception</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Контекст действий, охватываемых этим исключением<!-- Context of activities covered by this exception --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">The context of the activities a user is taking - why the user is accessing the data - that are controlled by this exception</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Контекст действий, которые предпринимает пользователь - почему пользователь получает доступ к данным - которые контролируются этим исключением<!-- The context of the activities a user is taking - why the user is accessing the data - that are controlled by this exception --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">E.g. if the purpose is 'research', then the operational context must be research, in order for the consent to apply. Not all of the security labels make sense for use in this element (may define a narrower value set?)</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Например, если целью является «исследование» (research), то контекстом операции должно быть исследование, для того чтобы согласие/разрешение применилось. Не для всех меток уровня безопасности имеется смысл в использовании в этом элементе (можно определить более узкий набор значений?)<!-- E.g. if the purpose is 'research', then the operational context must be research, in order for the consent to apply. Not all of the security labels make sense for use in this element (may define a narrower value set?) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1839,13 +1839,13 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">e.g. Resource Type, Profile, or CDA etc</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Например тип ресурса, профиль или CDA, и т. д.<!-- e.g. Resource Type, Profile, or CDA etc --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">The class of information covered by this exception. The type can be a FHIR resource type, a profile on a type, or a CDA document, or some other type that indicates what sort of information the consent relates to</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Класс информации, охватываемый этим исключением. Тип может быть типом FHIR-ресурса, профилем на тип, или CDA-документом, или каким-либо другим типом, который говорит о том, к какому виду информации относится согласие/разрешение<!-- The class of information covered by this exception. The type can be a FHIR resource type, a profile on a type, or a CDA document, or some other type that indicates what sort of information the consent relates to --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Multiple types are or'ed together. The intention of the contentType element is that the codes refer to profiles or document types defined in a standard or an implementation guide somewhere </Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Несколько типов применяются с оператором ИЛИ. Назначением элемента contentType является то, что коды относятся к профилям или типам документов, определенных в стандарте или руководстве по реализации где-то в другом месте<!-- Multiple types are or'ed together. The intention of the contentType element is that the codes refer to profiles or document types defined in a standard or an implementation guide somewhere  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1873,13 +1873,13 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">e.g. LOINC or SNOMED CT code, etc in the content</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Например LOINC- или SNOMED CT-код, и т. д. в содержимом<!-- e.g. LOINC or SNOMED CT code, etc in the content --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">If this code is found in an instance, then the exception applies. TODO: where do you not have to look? This is a problematic element</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Если этот код находится в экземпляре, то применяется исключение. TODO: где вы не должны смотреть? Это проблематичный элемент<!-- If this code is found in an instance, then the exception applies. TODO: where do you not have to look? This is a problematic element --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">Typical use of this is a Document code with class = CDA</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Типичное использование - код документа с классом = CDA<!-- Typical use of this is a Document code with class = CDA --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s103"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1906,9 +1906,9 @@
     <Cell ss:StyleID="s98"><Data ss:Type="String">all data</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">Data controlled by this exception</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Данные, контролируемые этим исключением<!-- Data controlled by this exception --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">The resources controlled by this exception, if specific resources are referenced</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Ресурсы, контролируемые этим исключением, если упоминаются конкретные ресурсы<!-- The resources controlled by this exception, if specific resources are referenced --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1943,7 +1943,7 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><Data ss:Type="String">instance | related | dependents</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">How the resource reference is interpreted when testing consent restrictions</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Как интерпретируется ссылка на ресурс при проверке ограничений согласия/разрешения<!-- How the resource reference is interpreted when testing consent restrictions --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1973,9 +1973,9 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String">The actual data reference</Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Ссылка на сами данные<!-- The actual data reference --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">A reference to a specific resource that defines which resources are covered by this consent</Data><NamedCell
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Ссылка на определенный ресурс, который определяет, какие ресурсы покрываются этим согласием/разрешением<!-- A reference to a specific resource that defines which resources are covered by this consent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s102"><NamedCell ss:Name="_FilterDatabase"/></Cell>
