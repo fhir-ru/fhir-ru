@@ -1377,7 +1377,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String"><!-- Organization that manages the consent --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, управляющая согласием/разрешением<!-- Organization that manages the consent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">Организация, которая управляет согласием/разрешением, и структура, в рамках которой оно выполняется<!-- The organization that manages the consent, and the framework within which it is executed --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1704,7 +1704,7 @@
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s98"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s98"><Data ss:Type="String"><!-- Resource for the actor (or group, by role) --></Data><NamedCell
+    <Cell ss:StyleID="s98"><Data ss:Type="String">Ресурс, описывающий действующее лицо (или группа, по роли)<!-- Resource for the actor (or group, by role) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s100"><Data ss:Type="String">Ресурс, который идентифицирует действующее лицо. Для того, чтобы идентифицировать действующих лиц по типу, используйте группу, чтобы идентифицировать ряд действующих лиц по некоторому свойству, которое они разделяют (например, "принимающие должностные лица")<!-- The resource that identifies the actor. To identify a actors by type, use group to identify a set of actors by some property they share (e.g. 'admitting officers') --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
