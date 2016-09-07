@@ -1093,7 +1093,7 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Выбор потребителем медобеспечения политики разрешений или отказов получателям или ролям в выполнении действий конкретного назначения и в определённые периоды времени<!-- A healthcare consumer’s policy choices to permits or denies recipients or roles to perform actions for specific purposes and periods of time --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Выбор потребителем медицинского обеспечения политики разрешений или отказов получателям или ролям в выполнении действий конкретного назначения и в определённые периоды времени<!-- A healthcare consumer’s policy choices to permits or denies recipients or roles to perform actions for specific purposes and periods of time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Запись выбранных потребителем медобеспечения решений, которые позволяют или запрещают указанным получателям или ролям получателей (указаний) выполнять одно или несколько действий в рамках данного контекста поведения, в определённых целях и периодах времени<!-- A record of a healthcare consumer’s policy choices, which permits or denies identified recipient(s) or recipient role(s) to perform one or more actions within a given policy context, for specific purposes and periods of time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -5621,7 +5621,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">ConsentCategory</Data></Cell>
-    <Cell ss:StyleID="s90"><Data ss:Type="String">A classification of the type of consents found in a consent statement</Data></Cell>
+    <Cell ss:StyleID="s90"><Data ss:Type="String">Классификация согласий/разрешений, находящихся в заявлении о согласии, по типу<!-- A classification of the type of consents found in a consent statement --></Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">valueset-consent-category</Data></Cell>
@@ -5630,7 +5630,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">ConsentAction</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Detailed codes for the consent action.</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Детализированные коды для действия из этого согласия/разрешения.<!-- Detailed codes for the consent action. --></Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">valueset-consent-action</Data></Cell>
@@ -5639,7 +5639,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s159"><Data ss:Type="String">ConsentStatus</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the status of the consent</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает статус данного согласия/разрешения<!-- Indicates the status of the consent --></Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">#consent-status</Data></Cell>
@@ -5648,7 +5648,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s98"><Data ss:Type="String">ConsentExceptType</Data></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">How an exception is statement is applied, as adding additional consent, or removing consent</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Каким образом применяется исключение из заявления, как добавление дополнительного согласия/разрешения или удаление согласия/разрешения<!-- How an exception is statement is applied, as adding additional consent, or removing consent --></Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">#consent-except-type</Data></Cell>
@@ -5657,35 +5657,35 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s98"><Data ss:Type="String">ConsentActorRole</Data></Cell>
-    <Cell><Data ss:Type="String">How an actor is involved in the consent considerations</Data></Cell>
+    <Cell><Data ss:Type="String">Каким образом действующее лицо вовлечено в данное согласие/разрешение<!-- How an actor is involved in the consent considerations --></Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">valueset-consent-actor-role</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s98"><Data ss:Type="String">ConsentDataMeaning</Data></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">How a resource reference is interpreted when testing consent restrictions</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Каким образом трактуется ссылка на ресурс при проверке ограничений согласия/разрешения<!-- How a resource reference is interpreted when testing consent restrictions --></Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">#consent-data-meaning</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">ConsentContentClass</Data></Cell>
-    <Cell><Data ss:Type="String">The class (type) of information a consent rule covers</Data></Cell>
+    <Cell><Data ss:Type="String">Класс (тип) информации, охватываемой правилами согласия/разрешения<!-- The class (type) of information a consent rule covers --></Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">valueset-consent-content-class</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s88"><Data ss:Type="String">ConsentContentCode</Data></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">If this code is found in an instance, then the exception applies</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Если этот код указан в экземпляре, то данное исключение применяется<!-- If this code is found in an instance, then the exception applies --></Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">valueset-consent-content-code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">PurposeOfUse</Data></Cell>
-    <Cell ss:StyleID="s100"><Data ss:Type="String">What purposes of use are controlled by this exception. If more than one label is specified, operations must have all the specified labels</Data></Cell>
+    <Cell ss:StyleID="s100"><Data ss:Type="String">Какие цели использования контролируются данным исключением. Если указано более одной метки, операции должны иметь все указанные метки<!-- What purposes of use are controlled by this exception. If more than one label is specified, operations must have all the specified labels --></Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">extensible</Data></Cell>
     <Cell ss:StyleID="s160" ss:HRef="http://hl7.org/fhir/ValueSet/v3-PurposeOfUse"><Data
