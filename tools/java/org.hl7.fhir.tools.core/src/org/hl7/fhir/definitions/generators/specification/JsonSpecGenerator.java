@@ -16,7 +16,6 @@ import org.hl7.fhir.dstu3.model.ElementDefinition;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionConstraintComponent;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionSlicingComponent;
 import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
-import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.dstu3.model.PrimitiveType;
 import org.hl7.fhir.dstu3.model.Reference;
 import org.hl7.fhir.dstu3.model.StringType;
@@ -24,6 +23,7 @@ import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.Type;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
@@ -529,6 +529,18 @@ public class JsonSpecGenerator extends OutputStreamWriter {
             write("("+t+")");
         } else
           write("("+type.getProfile()+")");
+      }
+      if (type.hasTargetProfile()) {
+        if (type.getTargetProfile().startsWith("http://hl7.org/fhir/StructureDefinition/")) {
+          String t = type.getTargetProfile().substring(40);
+          if (definitions.hasType(t))
+            write("(<span style=\"color: darkgreen\"><a href=\"" + prefix+(dtRoot + definitions.getSrcFile(t)+ ".html#" + t) + "\">" + t+ "</a></span>)");
+          else if (definitions.hasResource(t))
+            write("(<span style=\"color: darkgreen\"><a href=\"" + prefix+dtRoot + t.toLowerCase()+ ".html\">" + t+ "</a></span>)");
+          else
+            write("("+t+")");
+        } else
+          write("("+type.getTargetProfile()+")");
       }
       write(" }");
     } 

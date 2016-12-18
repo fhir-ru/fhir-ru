@@ -8,7 +8,7 @@
   <publisher value="FHIR Project"/>
   <description value="The set of interactions defined by the RESTful part of the FHIR specification."/>
   <valueSet value="http://hl7.org/fhir/ValueSet/restful-interaction"/>
-  <hierarchyMeaning value="subsumes"/>
+  <hierarchyMeaning value="is-a"/>
   <caseSensitive value="true"/>
   <content value="complete"/>
   <concept>
@@ -27,6 +27,11 @@
     <definition value="Update an existing resource by its id (or create it if it is new)."/>
   </concept>
   <concept>
+    <code value="patch"/>
+    <display value="patch"/>
+    <definition value="Update an existing resource by posting a set of changes to it."/>
+  </concept>
+  <concept>
     <code value="delete"/>
     <display value="delete"/>
     <definition value="Delete a resource."/>
@@ -43,7 +48,7 @@
     <concept>
       <code value="history-type"/>
       <display value="history-type"/>
-      <definition value="Retrieve the change history for a all resources of a particular type."/>
+      <definition value="Retrieve the change history for all resources of a particular type."/>
     </concept>
     <concept>
       <code value="history-system"/>
@@ -72,9 +77,9 @@
     </concept>
   </concept>
   <concept>
-    <code value="conformance"/>
-    <display value="conformance"/>
-    <definition value="Get a conformance statement for the system."/>
+    <code value="capabilities"/>
+    <display value="capabilities"/>
+    <definition value="Get a Capability Statement for the system."/>
   </concept>
   <concept>
     <code value="transaction"/>

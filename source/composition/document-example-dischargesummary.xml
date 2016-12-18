@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Bundle xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/bundle.xsd">
+<Bundle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/bundle.xsd http://hl7.org/fhir ../../schema/medicationrequest.xsd"
+ xmlns="http://hl7.org/fhir">
 
   <id value="father"/>
   <meta>
     <lastUpdated value="2013-05-28T22:12:21Z"/>
   </meta>
   <type value="document"/>
+  <identifier>
+    <system value="urn:ietf:rfc:3986"/>
+    <value value="urn:uuid:0c3151bd-1cbf-4d64-b04d-cd9187a4c6e0"/>
+  </identifier>
 <!--   The Composition resource   -->
   <entry>
     <fullUrl value="http://fhir.healthintersections.com.au/open/Composition/180f219f-97a8-486d-99d9-ed631fe4fc57"/>
@@ -143,7 +149,7 @@
             </div>
           </text>
           <mode value="working"/>
-          <!--   This is an entry that refers to a MedicationOrder resource in this document.
+          <!--   This is an entry that refers to a MedicationRequest resource in this document.
                 It is a new medication (as indicated by the flag)  -->
           <entry>
             <reference value="urn:uuid:124a6916-5d84-4b8c-b250-10cefb8e6e86"/>
@@ -354,7 +360,7 @@
   <entry>
     <fullUrl value="urn:uuid:124a6916-5d84-4b8c-b250-10cefb8e6e86"/>
     <resource>
-      <MedicationOrder>
+      <MedicationRequest>
         <meta>
           <lastUpdated value="2013-05-05T16:13:03Z"/>
         </meta>
@@ -369,7 +375,12 @@
         </text>
       <!--   The patient details will generally be in the Document resource in the Document bundle, but could just as easily
         point to a patient resource on a server  -->
-      <medicationCodeableConcept>
+        <stage>
+          <coding>
+            <code value="original-order"/>
+          </coding>
+        </stage>
+        <medicationCodeableConcept>
           <coding>
             <system value="http://snomed.info/sct"/>
             <code value="66493003"/>
@@ -381,10 +392,10 @@
           <display value="Peter Patient"/>
         </patient>
       <!--   The prescriber details could also be within the bundle, but has the same options as patient  -->
-        <prescriber>
+        <requester>
           <reference value="Practitioner/example"/>
           <display value="Peter Practitioner"/>
-        </prescriber>
+        </requester>
         <reasonCode>
           <text value="Management of Asthma"/>
         </reasonCode>
@@ -417,7 +428,7 @@
             <code value="tbl"/>
           </doseQuantity>
         </dosageInstruction>
-      </MedicationOrder>
+      </MedicationRequest>
     </resource>
   </entry>
 <!--   The second medication in the medications list   -->
@@ -442,12 +453,12 @@
         <medicationCodeableConcept>
           <text value="Ventolin Inhaler"/>
         </medicationCodeableConcept>
-	<patient>
+	<subject>
           <reference value="http://fhir.healthintersections.com.au/open/Patient/d1"/>
           <display value="Peter Patient"/>
-        </patient>
+        </subject>
         <dateAsserted value="2013-05-05T16:13:03Z"/>
-        <notTaken value="true"/>
+        <notTaken value="y"/>
         <reasonNotTaken>
           <text value="Management of Asthma"/>
         </reasonNotTaken>
@@ -467,7 +478,8 @@
           <div xmlns="http://www.w3.org/1999/xhtml">Sensitivity to Doxycycline :
                         Hives</div>
         </text>
-        <status value="active-confirmed"/>
+        <clinicalStatus value="active"/>
+		<verificationStatus value="confirmed"/>
         <type value="allergy"/>
         <criticality value="high"/>
         <code>
@@ -477,7 +489,7 @@
           <reference value="http://fhir.healthintersections.com.au/open/Patient/d1"/>
           <display value="Eve Everywoman"/>
         </patient>
-        <attestedDate value="2012-09-17"/>
+        <assertedDate value="2012-09-17"/>
         <reaction>
           <manifestation>
             <coding>

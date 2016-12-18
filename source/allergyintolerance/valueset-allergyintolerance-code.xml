@@ -6,14 +6,16 @@
   <publisher value="FHIR Project team"/>
   <contact>
     <telecom>
-      <system value="other"/>
+      <system value="url"/>
       <value value="http://hl7.org/fhir"/>
     </telecom>
   </contact>
   <description value="This value set includes concept codes for specific substances/pharmaceutical products, allergy or intolerance conditions, and negation/exclusion codes to specify the absence of specific types of allergies or intolerances."/>
   <copyright value="This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement."/>
   <compose>
-    <import value="http://hl7.org/fhir/ValueSet/substance-code"/>
+    <include>
+      <valueSet value="http://hl7.org/fhir/ValueSet/substance-code"/>
+    </include>
     <include>
       <system value="http://snomed.info/sct"/>
       <filter>
@@ -67,7 +69,7 @@
       <filter>
         <property value="concept"/>
         <op value="is-a"/>
-        <value value="160244002"/> <!-- No known allergies (situation) -->
+        <value value="716186003"/> <!-- No known allergies (situation) -->
       </filter>
     </include>
   </compose>

@@ -10,17 +10,18 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang3.NotImplementedException;
+import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
 import org.hl7.fhir.dstu3.formats.JsonCreator;
 import org.hl7.fhir.dstu3.formats.JsonCreatorCanonical;
 import org.hl7.fhir.dstu3.formats.JsonCreatorGson;
-import org.hl7.fhir.dstu3.utils.IWorkerContext;
 import org.hl7.fhir.utilities.Utilities;
 
 public class JsonLDParser extends ParserBase {
 
 	private JsonCreator json;
   private String base;
+  private String jsonLDBase = "http://build.fhir.org/";
 
 	public JsonLDParser(IWorkerContext context) {
 		super(context);
@@ -69,8 +70,14 @@ public class JsonLDParser extends ParserBase {
 			json = new JsonCreatorGson(osw);
 		json.setIndent(style == OutputStyle.PRETTY ? "  " : "");
 		json.beginObject();
-    prop("@context", "http://hl7.org/fhir/jsonld/"+e.getType());
-		prop("resourceType", e.getType());
+    prop("@context", jsonLDBase+e.getType()+".jsonld");
+    String id = e.getChildValue("id");
+    if (base != null && id != null) {
+       if (base.endsWith("#"))
+         prop("@context", base + e.getType() + "-" + id + ">");
+      else
+        prop("@context", Utilities.pathReverse(base, e.getType(), id));
+    }
 		Set<String> done = new HashSet<String>();
 		for (Element child : e.getChildren()) {
 			compose(e.getName(), e, done, child);
@@ -81,7 +88,7 @@ public class JsonLDParser extends ParserBase {
 	}
 
 	private void compose(String path, Element e, Set<String> done, Element child) throws IOException {
-		if (!child.getProperty().isList()) {
+		if (!child.isList()) {
 			compose(path, child);
 		} else if (!done.contains(child.getName())) {
 			done.add(child.getName());
@@ -92,7 +99,9 @@ public class JsonLDParser extends ParserBase {
 
 	private void composeList(String path, List<Element> list) throws IOException {
 		// there will be at least one element
-    String en = list.get(0).getProperty().getDefinition().getBase().getPath();
+    String en = null;
+    if (list.get(0).getProperty().getDefinition().hasBase())
+      list.get(0).getProperty().getDefinition().getBase().getPath();
     if (en == null) 
       en = list.get(0).getProperty().getDefinition().getPath();
     boolean doType = false;
@@ -120,7 +129,7 @@ public class JsonLDParser extends ParserBase {
 	}
 
 	private void primitiveValue(Element item) throws IOException {
-		json.name("value");
+		json.name(item.fhirType()+".value");
 	  String type = item.getType();
 	  if (Utilities.existsInList(type, "boolean"))
 	  	json.value(item.getValue().equals("true") ? new Boolean(true) : new Boolean(false));
@@ -133,9 +142,12 @@ public class JsonLDParser extends ParserBase {
 	}
 
 	private void compose(String path, Element element) throws IOException {
-    String en = element.getProperty().getDefinition().getBase().getPath();
+	  Property p = element.hasElementProperty() ? element.getElementProperty() : element.getProperty();
+    String en = null;
+    if (p.getDefinition().hasBase())
+      en = p.getDefinition().getBase().getPath();
     if (en == null) 
-      en = element.getProperty().getDefinition().getPath();
+      en = p.getDefinition().getPath();
     boolean doType = false;
     if (en.endsWith("[x]")) {
       en = en.substring(0, en.length()-3);
@@ -146,15 +158,15 @@ public class JsonLDParser extends ParserBase {
 
     if (element.hasChildren() || element.hasComments() || element.hasValue()) {
 			open(en);
-			  
+      if (element.getProperty().isResource()) {
+	      prop("@context", jsonLDBase+element.getType()+".jsonld");
+//        element = element.getChildren().get(0);
+      }
 	    if (element.isPrimitive() || isPrimitive(element.getType())) {
 	      if (element.hasValue())
 	        primitiveValue(element);
 	    }
-			if (element.getProperty().isResource()) {
-		    prop("resourceType", element.getType());
-				element = element.getChildren().get(0);
-			}
+	    
 			Set<String> done = new HashSet<String>();
 			for (Element child : element.getChildren()) {
 				compose(path+"."+element.getName(), element, done, child);
@@ -173,10 +185,10 @@ public class JsonLDParser extends ParserBase {
   private void decorateReference(Element element) throws IOException {
     String ref = element.getChildValue("reference");
     if (ref != null && (ref.startsWith("http://") || ref.startsWith("https://"))) {
-      json.name("reference");
+      json.name("Resource.reference");
       json.value(ref);
     } else if (base != null && ref != null && ref.contains("/")) {
-      json.name("reference");
+      json.name("Resource.reference");
       json.value(base+"/"+ref);
     }
   }
@@ -188,10 +200,10 @@ public class JsonLDParser extends ParserBase {
     if (system == null)
       return;
     if ("http://snomed.info/sct".equals(system)) {
-      json.name("concept");
+      json.name("Resource.concept");
       json.value("http://snomed.info/sct#"+code);
     } else if ("http://loinc.org".equals(system)) {
-      json.name("concept");
+      json.name("Resource.concept");
       json.value("http://loinc.org/owl#"+code);
     }  
   }

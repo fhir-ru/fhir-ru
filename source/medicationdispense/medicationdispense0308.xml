@@ -30,7 +30,7 @@
         <display value="Rob van den Berk"/>
     </dispenser>
     <authorizingPrescription>
-        <reference value="MedicationOrder/medrx0330"/>
+        <reference value="MedicationRequest/medrx0330"/>
     </authorizingPrescription>
     <type>
         <coding>
@@ -54,6 +54,7 @@
     <whenPrepared value="2015-06-25T07:13:00+05:00"/>
     <whenHandedOver value="2015-06-26T07:13:00+05:00"/>
     <dosageInstruction>
+        <sequence value="1"/>
         <text value="Instil one drop in each eye twice daily" />
         <timing>
             <repeat>

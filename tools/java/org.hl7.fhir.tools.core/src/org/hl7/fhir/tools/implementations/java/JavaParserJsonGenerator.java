@@ -227,8 +227,8 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
     write("import org.hl7.fhir.dstu3.model.*;\r\n");
     write("import org.hl7.fhir.utilities.Utilities;\r\n");
     write("import org.hl7.fhir.utilities.xhtml.XhtmlNode;\r\n");
-    write("import org.hl7.fhir.dstu3.exceptions.FHIRFormatError;\r\n");
-    write("import org.hl7.fhir.dstu3.exceptions.FHIRException;\r\n");
+    write("import org.hl7.fhir.exceptions.FHIRFormatError;\r\n");
+    write("import org.hl7.fhir.exceptions.FHIRException;\r\n");
     write("import com.google.gson.JsonObject;\r\n");
     write("import com.google.gson.JsonArray;\r\n");
     write("import java.io.IOException;\r\n");
@@ -641,9 +641,19 @@ public class JavaParserJsonGenerator extends JavaBaseGenerator {
     }
 
     for (ElementDefn n : definitions.getTypes().values()) {
-      generateComposer(n, JavaGenClass.Type);
-      regtn.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
-      regti.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"Inner(("+n.getName()+") type);\r\n");
+      if (!(n.typeCode().equals("Element") || n.typeCode().equals("Type") || n.typeCode().equals("Structure"))) {
+        generateComposer(n, JavaGenClass.Type);
+        regtn.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
+        regti.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"Inner(("+n.getName()+") type);\r\n");
+      }
+    }
+
+    for (ElementDefn n : definitions.getTypes().values()) {
+      if (n.typeCode().equals("Element") || n.typeCode().equals("Type") || n.typeCode().equals("Structure")) {
+        generateComposer(n, JavaGenClass.Type);
+        regtn.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
+        regti.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"Inner(("+n.getName()+") type);\r\n");
+      }
     }
 
     for (ProfiledType n : definitions.getConstraints().values()) {

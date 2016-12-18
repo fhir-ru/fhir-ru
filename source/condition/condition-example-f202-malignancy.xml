@@ -6,7 +6,7 @@
   <category>
     <coding>
       <system value="http://hl7.org/fhir/condition-category"/>
-      <code value="diagnosis"/>
+      <code value="encounter-diagnosis"/>
     </coding>
   </category>
   <severity>
@@ -43,7 +43,7 @@
     <system value="http://unitsofmeasure.org"/>
     <code value="a"/>
   </onsetAge>
-  <dateRecorded value="2012-12-01"/>
+  <assertedDate value="2012-12-01"/>
   <evidence>
     <!--Problem is confirmed in diagnostic report-->
     <detail>

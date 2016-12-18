@@ -1,36 +1,28 @@
 package org.hl7.fhir.tools.converters;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
-import org.hl7.fhir.convertors.VersionConvertor;
-import org.hl7.fhir.convertors.VersionConvertor.VersionConvertorAdvisor;
-import org.hl7.fhir.dstu2.exceptions.FHIRFormatError;
+import org.hl7.fhir.convertors.VersionConvertorAdvisor;
+import org.hl7.fhir.convertors.VersionConvertor_10_20;
 import org.hl7.fhir.dstu2.formats.IParser.OutputStyle;
 import org.hl7.fhir.dstu2.model.Resource;
-import org.hl7.fhir.dstu2.model.ValueSet.ValueSetCodeSystemComponent;
-import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.dstu3.formats.XmlParser;
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem;
-import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
-import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
 import org.hl7.fhir.dstu3.model.CompartmentDefinition;
+import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.exceptions.FHIRException;
 
 public class DSTU2ValidationConvertor implements VersionConvertorAdvisor {
 
   private Bundle source;
-  private VersionConvertor vc;
+  private VersionConvertor_10_20 vc;
   
   public void convert(String bundleSource, String bundleTarget) throws Exception {
     System.out.println("Convert "+bundleSource);
-    vc = new VersionConvertor(this);
+    vc = new VersionConvertor_10_20(this);
     
     try {
       source = (Bundle) new XmlParser().parse(new FileInputStream(bundleSource));
@@ -66,7 +58,7 @@ public class DSTU2ValidationConvertor implements VersionConvertorAdvisor {
   public Resource convert(org.hl7.fhir.dstu3.model.Resource resource) throws FHIRException {
     if (resource instanceof ValueSet) {
       ValueSet vs = (ValueSet) resource;
-      if (vs.hasCompose() && vs.getCompose().getExclude().isEmpty() && vs.getCompose().getImport().isEmpty() && vs.getCompose().getInclude().size() == 1) {
+      if (vs.hasCompose() && vs.getCompose().getExclude().isEmpty() && vs.getCompose().getInclude().size() == 1 && !vs.getCompose().getInclude().get(0).hasValueSet()) {
         String url = vs.getCompose().getInclude().get(0).getSystem();
         CodeSystem cs = findCodeSystem(url);
         if (cs != null) {
@@ -89,6 +81,17 @@ public class DSTU2ValidationConvertor implements VersionConvertorAdvisor {
           return cs;
       }
     }
+    return null;
+  }
+
+  @Override
+  public void handleCodeSystem(CodeSystem tgtcs, ValueSet vs) {
+   throw new Error("not done yet");
+    
+  }
+
+  @Override
+  public CodeSystem getCodeSystem(ValueSet src) {
     return null;
   }
 

@@ -23,7 +23,7 @@
   <contact>
     <name value="HL7 Australia FHIR Team"/>
     <telecom>
-      <system value="other"/>
+      <system value="url"/>
       <value value="http://hl7-australia.wikispaces.com/FHIR+Australia"/>
     </telecom>
   </contact> 
@@ -37,12 +37,12 @@
     <text value="IHI"/> 
   </type>  
   <description value="Australian HI Identifier as established by relevant regulations etc"/>
-  <useContext>
+  <jurisdiction>
     <coding>
       <system value="urn:iso:std:iso:3166"/>
       <code value="AU"/>
     </coding>
-  </useContext>
+  </jurisdiction>
   <usage value="Used in Australia for identifying patients"/>
   <uniqueId>
     <type value="oid"/>

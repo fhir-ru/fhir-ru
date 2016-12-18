@@ -29,8 +29,11 @@ package org.hl7.fhir.dstu3.validation;
 
  */
 
+import java.util.Comparator;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.hl7.fhir.dstu3.model.CodeableConcept;
 import org.hl7.fhir.dstu3.model.OperationOutcome;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.dstu3.model.OperationOutcome.OperationOutcomeIssueComponent;
@@ -38,7 +41,7 @@ import org.hl7.fhir.dstu3.model.StringType;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 import org.hl7.fhir.utilities.Utilities;
 
-public class ValidationMessage 
+public class ValidationMessage implements Comparator<ValidationMessage>, Comparable<ValidationMessage>
 {
   public enum Source {
     ExampleValidator, 
@@ -75,6 +78,8 @@ public class ValidationMessage
     this.line = -1;
     this.col = -1;
     this.location = path;
+    if (message == null)
+      throw new Error("message is null");
     this.message = message;
     this.html = Utilities.escapeXml(message);
     this.level = level;
@@ -107,6 +112,8 @@ public class ValidationMessage
     this.line = -1;
     this.col = -1;
     this.location = path;
+    if (message == null)
+      throw new Error("message is null");
     this.message = message;
     this.html = html;
     this.level = level;
@@ -123,6 +130,8 @@ public class ValidationMessage
     this.line = line;
     this.col = col;
     this.location = path;
+    if (message == null)
+      throw new Error("message is null");
     this.message = message;
     this.html = html;
     this.level = level;
@@ -138,6 +147,8 @@ public class ValidationMessage
     super();
     this.line = -1;
     this.col = -1;
+    if (message == null)
+      throw new Error("message is null");
     this.message = message;
     this.level = level;
     this.source = source;
@@ -254,7 +265,9 @@ public class ValidationMessage
       issue.getLocation().add(s);
     }
     issue.setSeverity(level);
-    issue.getDetails().setText(message);
+    CodeableConcept c = new CodeableConcept();
+    c.setText(message);
+    issue.setDetails(c);
     if (source != null) {
       issue.getExtension().add(ToolingExtensions.makeIssueSource(source));
     }
@@ -284,6 +297,21 @@ public class ValidationMessage
     return b.build();
   }
 
+  @Override
+  public boolean equals(Object o) {
+    return (this.getMessage() != null && this.getMessage().equals(((ValidationMessage)o).getMessage())) && (this.getLocation() != null && this.getLocation().equals(((ValidationMessage)o).getLocation()));
+  }
   
+  @Override
+  public int compare(ValidationMessage x, ValidationMessage y) {
+    String sx = x.getLevel().getDisplay() + x.getType().getDisplay() + String.format("%06d", x.getLine()) + x.getMessage();
+    String sy = y.getLevel().getDisplay() + y.getType().getDisplay() + String.format("%06d", y.getLine()) + y.getMessage();
+    return sx.compareTo(sy);
+  }  
+  
+  @Override
+  public int compareTo(ValidationMessage y) {
+    return compare(this, y);
+  }
   
 }

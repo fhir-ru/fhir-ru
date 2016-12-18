@@ -7,24 +7,24 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.elementmodel.Element.SpecialElement;
-import org.hl7.fhir.dstu3.exceptions.DefinitionException;
-import org.hl7.fhir.dstu3.exceptions.FHIRFormatError;
 import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
-import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
-import org.hl7.fhir.dstu3.utils.IWorkerContext;
-import org.hl7.fhir.dstu3.utils.Turtle;
-import org.hl7.fhir.dstu3.utils.Turtle.Complex;
-import org.hl7.fhir.dstu3.utils.Turtle.Section;
-import org.hl7.fhir.dstu3.utils.Turtle.Subject;
-import org.hl7.fhir.dstu3.utils.Turtle.TTLComplex;
-import org.hl7.fhir.dstu3.utils.Turtle.TTLList;
-import org.hl7.fhir.dstu3.utils.Turtle.TTLLiteral;
-import org.hl7.fhir.dstu3.utils.Turtle.TTLObject;
-import org.hl7.fhir.dstu3.utils.Turtle.TTLURL;
+import org.hl7.fhir.dstu3.model.StructureDefinition;
+import org.hl7.fhir.dstu3.utils.formats.Turtle;
+import org.hl7.fhir.dstu3.utils.formats.Turtle.Complex;
+import org.hl7.fhir.dstu3.utils.formats.Turtle.Section;
+import org.hl7.fhir.dstu3.utils.formats.Turtle.Subject;
+import org.hl7.fhir.dstu3.utils.formats.Turtle.TTLComplex;
+import org.hl7.fhir.dstu3.utils.formats.Turtle.TTLList;
+import org.hl7.fhir.dstu3.utils.formats.Turtle.TTLLiteral;
+import org.hl7.fhir.dstu3.utils.formats.Turtle.TTLObject;
+import org.hl7.fhir.dstu3.utils.formats.Turtle.TTLURL;
+import org.hl7.fhir.exceptions.DefinitionException;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -287,14 +287,6 @@ public class TurtleParser extends ParserBase {
 
 		for (Element child : e.getChildren()) {
 			composeElement(section, subject, child, null);
-      if("Reference".equals(child.getType())) {
-        String refURI = getReferenceURI(child.getChildValue("reference"));
-        if (refURI != null) {
-          String uriType = getURIType(refURI);
-          if(uriType != null)
-            section.triple(refURI, "a", "fhir:" + uriType);
-        }
-      }
 		}
   }
   
@@ -370,6 +362,15 @@ public class TurtleParser extends ParserBase {
     if ("Reference".equals(element.getType()))
       decorateReference(t, element);
 	  		
+    if("Reference".equals(element.getType())) {
+      String refURI = getReferenceURI(element.getChildValue("reference"));
+      if (refURI != null) {
+        String uriType = getURIType(refURI);
+        if(uriType != null)
+          section.triple(refURI, "a", "fhir:" + uriType);
+      }
+    }
+
 		for (Element child : element.getChildren()) {
       if ("xhtml".equals(child.getType())) {
         String childfn = getFormalName(child);
@@ -380,9 +381,11 @@ public class TurtleParser extends ParserBase {
 	}
 
   private String getFormalName(Element element) {
-    String en;
-    if (element.getSpecial() == null)
-      en = element.getProperty().getDefinition().getBase().getPath();
+    String en = null;
+    if (element.getSpecial() == null) {
+      if (element.getProperty().getDefinition().hasBase())
+        en = element.getProperty().getDefinition().getBase().getPath();
+    }
     else if (element.getSpecial() == SpecialElement.BUNDLE_ENTRY)
       en = "Bundle.entry.resource";
     else if (element.getSpecial() == SpecialElement.BUNDLE_OUTCOME)

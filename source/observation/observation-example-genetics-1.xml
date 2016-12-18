@@ -2,8 +2,10 @@
 
 <Observation xmlns="http://hl7.org/fhir">
   <id value="example-genetics-1"/>
-  <extension url="http://hl7.org/fhir/StructureDefinition/observation-geneticsDNASequenceVariant" >
-    <valueString value="NG_007726.3:g.146252T&gt;G" />
+  <extension url="http://hl7.org/fhir/StructureDefinition/observation-geneticsDNASequenceVariantName" >
+    <valueCodeableConcept> 
+      <text value="NG_007726.3:g.146252T&gt;G" />
+    </valueCodeableConcept>
   </extension>
   <extension url="http://hl7.org/fhir/StructureDefinition/observation-geneticsGene" >
     <valueCodeableConcept>
@@ -20,7 +22,7 @@
   <extension url="http://hl7.org/fhir/StructureDefinition/observation-geneticsGenomicSourceClass" >
     <valueCodeableConcept>
       <coding>
-        <system value="http://hl7.org/fhir/LOINC-48002-0-answerlist" />
+        <system value="http://loinc.org" />
         <code value="LA6684-0" />
         <display value="somatic" />
       </coding>
@@ -31,7 +33,7 @@
     <coding>
       <system value="http://loinc.org"/>
       <code value="55233-1"/>
-      <display value="Genetic analysis master panel"/>
+      <display value="Genetic analysis master panel-- This is the parent OBR for the panel holding all of the associated observations that can be reported with a molecular genetics analysis result."/>
     </coding>
   </code>
   <subject>

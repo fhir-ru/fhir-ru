@@ -2,7 +2,7 @@
 <Claim xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/coverage.xsd">
  <id value="860150"/>
 
- <text>
+  <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Claim</div>
   </text>
@@ -10,69 +10,79 @@
   <identifier>
     <system value="http://happypdocs.com/claim"/>
     <value value="8612345"/>
- </identifier>
+  </identifier>
  
   <status value = "active"/>
 
   <type>
+   <coding>
     <system value="http://hl7.org/fhir/ex-claimtype"/>
     <code value="professional"/>
+   </coding>	
   </type>
   
+  <use value="complete"/>
+
+  <patient>
+    <reference value="Patient/1"/>
+  </patient>
+ 
   <created value="2014-08-16"/>
 
- <insurerReference>
-  <reference value="Organization/2"/>
- </insurerReference>
+  <insurer>
+    <reference value="Organization/2"/>
+  </insurer>
 
- <organizationReference>
+  <organization>
     <reference value="Organization/1"/>
- </organizationReference>
+  </organization>
 
- <use value="complete"/>
-
- <priority>
+  <priority>
+   <coding>
     <code value="normal"/>
- </priority>
+   </coding>
+  </priority>
 
- <payee>
-   <type>
-     <code value="provider"/>
-   </type>
- </payee>
- 
+  <payee>
+    <type>
+	 <coding>
+      <code value="provider"/>
+	 </coding>
+    </type>
+  </payee>
+
+   <careTeam>
+     <sequence value="1"/>
+     <provider>
+       <reference value="Practitioner/example"/>
+     </provider>
+   </careTeam>
+  
   <diagnosis>
     <sequence value="1"/>
-	<diagnosis>
+	<diagnosisCodeableConcept>
+	 <coding>
 	  <code value="654456"/>
-	  </diagnosis>
+	 </coding>
+	</diagnosisCodeableConcept>
   </diagnosis>
  
- <patientReference>
-   <reference value="Patient/1"/>
- </patientReference>
- 
- <coverage>
+  <insurance>
    <sequence value="1"/>
    <focal value="true"/>
-   <coverageReference>
+   <coverage>
      <reference value="Coverage/9876B1"/>
-   </coverageReference>
- </coverage>
+   </coverage>
+  </insurance>
   
- <item>
+  <item>
    <sequence value="1"/>
-   <!--type>
-     <code value="service"/>
-   </type-->
-   <careTeam>
-     <providerReference>
-       <reference value="Practitioner/example"/>
-     </providerReference>
-   </careTeam>
+   <careTeamLinkId value="1"/>
    <service>
+    <coding>
      <system value="http://hl7.org/fhir/ex-serviceproduct"/>
      <code value="exam"/> 
+    </coding>
    </service>
    <servicedDate value="2014-08-16"/>
    <unitPrice>

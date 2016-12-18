@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.hl7.fhir.dstu3.exceptions.FHIRException;
+import org.hl7.fhir.dstu3.conformance.ProfileUtilities;
+import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
 import org.hl7.fhir.dstu3.formats.XmlParser;
 import org.hl7.fhir.dstu3.model.CodeSystem;
@@ -20,6 +21,7 @@ import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.ElementDefinition;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionBindingComponent;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionConstraintComponent;
+import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionExampleComponent;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionMappingComponent;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionSlicingComponent;
 import org.hl7.fhir.dstu3.model.ElementDefinition.SlicingRules;
@@ -31,14 +33,13 @@ import org.hl7.fhir.dstu3.model.Quantity;
 import org.hl7.fhir.dstu3.model.Reference;
 import org.hl7.fhir.dstu3.model.StringType;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
-import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionMappingComponent;
+import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
 import org.hl7.fhir.dstu3.model.Type;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.utils.IWorkerContext;
-import org.hl7.fhir.dstu3.utils.ProfileUtilities;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
+import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.igtools.publisher.FetchedFile;
 import org.hl7.fhir.igtools.publisher.FetchedResource;
 import org.hl7.fhir.igtools.publisher.IGKnowledgeProvider;
@@ -46,8 +47,6 @@ import org.hl7.fhir.igtools.publisher.SpecMapManager;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
-
-import com.google.gson.JsonObject;
 
 public class StructureDefinitionRenderer extends BaseRenderer {
   public static final String RIM_MAPPING = "http://hl7.org/v3";
@@ -107,7 +106,10 @@ public class StructureDefinitionRenderer extends BaseRenderer {
                 tryAdd(ext, summariseExtension(t.getProfile(), true, prefix));
               else
                 tryAdd(refs, describeProfile(t.getProfile(), prefix));
-            }
+            } 
+            if (t.hasTargetProfile()) {
+              tryAdd(refs, describeProfile(t.getTargetProfile(), prefix));
+            } 
           }
 
           if (ed.hasSlicing() && !ed.getPath().endsWith(".extension") && !ed.getPath().endsWith(".modifierExtension"))
@@ -311,14 +313,21 @@ public class StructureDefinitionRenderer extends BaseRenderer {
     if (sd.getDifferential().getElement().isEmpty())
       return "";
     else
-      return new XhtmlComposer().compose(utils.generateTable(defnFile, sd, true, destDir, false, sd.getId(), false, prefix, "", false));
+      return new XhtmlComposer().compose(utils.generateTable(defnFile, sd, true, destDir, false, sd.getId(), false, prefix, "", false, false));
   }
 
   public String snapshot(String defnFile) throws IOException, FHIRException, org.hl7.fhir.exceptions.FHIRException {
     if (sd.getSnapshot().getElement().isEmpty())
       return "";
     else
-      return new XhtmlComposer().compose(utils.generateTable(defnFile, sd, false, destDir, false, sd.getId(), true, prefix, "", false));
+      return new XhtmlComposer().compose(utils.generateTable(defnFile, sd, false, destDir, false, sd.getId(), true, prefix, "", false, false));
+  }
+
+  public String grid(String defnFile) throws IOException, FHIRException, org.hl7.fhir.exceptions.FHIRException {
+    if (sd.getSnapshot().getElement().isEmpty())
+      return "";
+    else
+      return new XhtmlComposer().compose(utils.generateGrid(defnFile, sd, destDir, false, sd.getId(), prefix, ""));
   }
 
   public String tx() {
@@ -403,30 +412,44 @@ public class StructureDefinitionRenderer extends BaseRenderer {
     }
   }
 
+  public class StringPair {
+
+    private String match;
+    private String replace;
+
+    public StringPair(String match, String replace) {
+      this.match = match;
+      this.replace = replace;
+    }
+
+  }
+
   public String dict() throws Exception {
     int i = 1;
     StringBuilder b = new StringBuilder();
     b.append("<table class=\"dict\">\r\n");
 
+    List<StringPair> replacements = new ArrayList<StringPair>();
     for (ElementDefinition ec : sd.getSnapshot().getElement()) {
       if (isProfiledExtension(ec)) {
-        String name = sd.getId()+"."+ makePathLink(ec);
         StructureDefinition extDefn = context.fetchResource(StructureDefinition.class, ec.getType().get(0).getProfile());
         if (extDefn == null) {
           String title = ec.getPath() + " ("+(ec.getType().get(0).getProfile().startsWith("#") ? sd.getUrl() : "")+ec.getType().get(0).getProfile()+")";
-          b.append("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a><b>"+title+"</b></td></tr>\r\n");
+          b.append("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+ec.getId()+"\"> </a><b>"+title+"</b></td></tr>\r\n");
           generateElementInner(b, sd,  ec, 1, null);
         } else {
           String title = ec.getPath() + " (<a href=\""+(extDefn.hasUserData("path") ? extDefn.getUserData("path") : "extension-"+extDefn.getId().toLowerCase()+".html")+
               "\">"+(ec.getType().get(0).getProfile().startsWith("#") ? sd.getUrl() : "")+ec.getType().get(0).getProfile()+"</a>)";
-          b.append("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a>");
-          if (name.endsWith("[x]")) {
+          b.append("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+ec.getId()+"\"> </a>");
+          if (ec.getId().endsWith("[x]")) {
             Set<String> tl = new HashSet<String>();
             for (TypeRefComponent tr : ec.getType()) {
               String tc = tr.getCode();
               if (!tl.contains(tc)) {
                 tl.add(tc);
-                b.append("<a name=\""+name.replace("[x]", Utilities.capitalize(tc))+"\"> </a>");
+                String s = ec.getId().replace("[x]", Utilities.capitalize(tc));
+                b.append("<a name=\""+s+"\"> </a>");
+                replacements.add(new StringPair(ec.getId(), s));
               }
             }
           }
@@ -435,24 +458,29 @@ public class StructureDefinitionRenderer extends BaseRenderer {
           generateElementInner(b, extDefn, extDefn.getSnapshot().getElement().get(0), valueDefn == null ? 2 : 3, valueDefn);
         }
       } else {
-        String name = sd.getId()+"."+ makePathLink(ec);
-        String title = ec.getPath() + (!ec.hasName() ? "" : "(" +ec.getName() +")");
-        b.append("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+name+"\"> </a>");
-        if (name.endsWith("[x]")) {
+        String title = ec.getPath() + (!ec.hasSliceName() ? "" : "(" +ec.getSliceName() +")");
+        b.append("  <tr><td colspan=\"2\" class=\"structure\"><a name=\""+ec.getId()+"\"> </a>");
+        if (ec.getId().endsWith("[x]")) {
           Set<String> tl = new HashSet<String>();
           for (TypeRefComponent tr : ec.getType()) {
             String tc = tr.getCode();
             if (!tl.contains(tc)) {
               tl.add(tc);
-              b.append("<a name=\""+name.replace("[x]", Utilities.capitalize(tc))+"\"> </a>");
+              String s = ec.getId().replace("[x]", Utilities.capitalize(tc));
+              b.append("<a name=\""+s+"\"> </a>");
+              replacements.add(new StringPair(ec.getId(), s));
             }
           }
+        } else if (ec.hasBase() && ec.getBase().getPath().endsWith("[x]")) {
+          String s = nottail(ec.getId())+"."+tail(ec.getBase().getPath());
+          replacements.add(new StringPair(ec.getId(), s));
+          b.append("<a name=\""+s+"\"> </a>");
+        } else if (!ec.getId().equals(ec.getPath())) {
+          b.append("<a name=\""+ec.getPath()+"\"> </a>");
         }
-        if (ec.hasBase() && ec.getBase().getPath().endsWith("[x]") && !ec.getPath().endsWith("[x]")) {
-          String bt = tail(ec.getBase().getPath());
-          String th = nottail(name);
-          b.append("<a name=\""+th+"."+bt+"\"> </a>");
-        }
+        for (StringPair s : replacements)
+          if (ec.getId().startsWith(s.match))
+            b.append("<a name=\""+s.replace+ec.getId().substring(s.match.length())+"\"> </a>");
         b.append("<b>"+title+"</b></td></tr>\r\n");
         generateElementInner(b, sd, ec, 1, null);
         if (ec.hasSlicing())
@@ -470,11 +498,7 @@ public class StructureDefinitionRenderer extends BaseRenderer {
 
 
   private String makePathLink(ElementDefinition element) {
-    if (!element.hasName())
-      return element.getPath();
-    if (!element.getPath().contains("."))
-      return element.getName();
-    return element.getPath().substring(0, element.getPath().lastIndexOf("."))+"."+element.getName();
+    return element.getId();
   }
 
   private ElementDefinition getExtensionValueDefinition(StructureDefinition extDefn) {
@@ -507,7 +531,7 @@ public class StructureDefinitionRenderer extends BaseRenderer {
     tableRowNE(b, "Meaning if Missing", null, d.getMeaningWhenMissing());
     tableRowNE(b, "Fixed Value", null, encodeValue(d.getFixed()));
     tableRowNE(b, "Pattern Value", null, encodeValue(d.getPattern()));
-    tableRow(b, "Example", null, encodeValue(d.getExample()));
+    tableRowNE(b, "Example", null, encodeValues(d.getExample()));
     tableRowNE(b, "Invariants", null, invariants(d.getConstraint()));
     tableRow(b, "LOINC Code", null, getMapping(profile, d, LOINC_MAPPING));
     tableRow(b, "SNOMED-CT Code", null, getMapping(profile, d, SNOMED_MAPPING));
@@ -673,6 +697,19 @@ public class StructureDefinitionRenderer extends BaseRenderer {
       }
       b.append(")");
     }
+    if (t.hasTargetProfile()) {
+      b.append("(");
+      StructureDefinition p = context.fetchResource(StructureDefinition.class, t.getTargetProfile());
+      if (p == null)
+        b.append(t.getTargetProfile());
+      else {
+        String pth = p.getUserString("path");
+        b.append("<a href=\""+pth+"\" title=\""+t.getTargetProfile()+"\">");
+        b.append(p.getName());
+        b.append("</a>");
+      }
+      b.append(")");
+    }
   }
 
   private String processSecondary(int mode, ElementDefinition value) throws Exception {
@@ -699,7 +736,7 @@ public class StructureDefinitionRenderer extends BaseRenderer {
       s.append("<b>Defined on this element</b><br/>\r\n");
       List<String> ids = new ArrayList<String>();
       for (ElementDefinitionConstraintComponent id : constraints)
-        ids.add(id.getKey());
+        ids.add(id.hasKey() ? id.getKey() : id.toString());
       Collections.sort(ids);
       boolean b = false;
       for (String id : ids) {
@@ -716,9 +753,12 @@ public class StructureDefinitionRenderer extends BaseRenderer {
   }
 
   private ElementDefinitionConstraintComponent getConstraint(List<ElementDefinitionConstraintComponent> constraints, String id) {
-    for (ElementDefinitionConstraintComponent c : constraints)
-      if (c.getKey().equals(id))
+    for (ElementDefinitionConstraintComponent c : constraints) {
+      if (c.hasKey() && c.getKey().equals(id))
         return c;
+      if (!c.hasKey() && c.toString().equals(id))
+        return c;
+    } 
     return null;
   }
 
@@ -773,6 +813,19 @@ public class StructureDefinitionRenderer extends BaseRenderer {
     }
   }
 
+  private String encodeValues(List<ElementDefinitionExampleComponent> examples) throws Exception {
+    StringBuilder b = new StringBuilder();
+    boolean first = false;
+    for (ElementDefinitionExampleComponent ex : examples) {
+      if (first)
+        first = false;
+      else
+        b.append("<br/>");
+      b.append("<b>"+Utilities.escapeXml(ex.getLabel())+"</b>:"+encodeValue(ex.getValue())+"\r\n");
+    }
+    return b.toString();
+    
+  }
   private String encodeValue(Type value) throws Exception {
     if (value == null || value.isEmpty())
       return null;
@@ -863,7 +916,7 @@ public class StructureDefinitionRenderer extends BaseRenderer {
       s.append(e.getPath());
     else
       s.append(tail(e.getPath()));
-    s.append("</td><td>"+Utilities.escapeXml(e.getName())+"</td>");
+    s.append("</td><td>"+Utilities.escapeXml(e.getSliceName())+"</td>");
     ElementDefinitionMappingComponent m = getMap(e, id);
     if (m == null)
       s.append("<td></td>");
@@ -890,6 +943,15 @@ public class StructureDefinitionRenderer extends BaseRenderer {
     b.append("<p>\r\n");
     b.append(processMarkdown("description", sd.getDescription()));
     b.append("</p>\r\n");
+    if (sd.getDerivation() == TypeDerivationRule.CONSTRAINT) {
+      b.append("<p>\r\n");
+      StructureDefinition sdb = context.fetchResource(StructureDefinition.class, sd.getBaseDefinition());
+      if (sdb != null)
+        b.append("This profile builds on <a href=\""+sdb.getUserString("path")+"\">"+sdb.getName()+"</a>.");
+      else
+        b.append("This profile builds on "+sd.getBaseDefinition()+".");
+      b.append("</p>\r\n");
+    }
     b.append("<p>\r\n");
     b.append("This profile was published on "+sd.getDate().toString()+" as a "+sd.getStatus().toCode()+" by "+sd.getPublisher()+".\r\n");
     b.append("</p>\r\n");
@@ -905,13 +967,17 @@ public class StructureDefinitionRenderer extends BaseRenderer {
             String name = r.getTitle();
             if (Utilities.noString(name))
               name = "example";
-            String ref = igp.getLinkFor(f, r);
+            String ref = igp.getLinkFor(r);
             b.append(" <li><a href=\""+ref+"\">"+Utilities.escapeXml(name)+"</a></li>\r\n");
           }
         }
       }
     }
     return b.toString();
+  }
+
+  public String span(boolean onlyConstraints, String canonical) throws IOException, FHIRException {
+    return new XhtmlComposer().compose(utils.generateSpanningTable(sd, destDir, onlyConstraints, canonical));
   }
 
 }

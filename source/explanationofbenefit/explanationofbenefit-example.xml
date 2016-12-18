@@ -12,54 +12,62 @@
   </identifier>
 
   <status value="active"/>
-	
-  <claimReference>
-    <reference value="Claim/100150"/>
-  </claimReference>
 
-<!--  
-  <claimResponseReference>
-    <reference value="ClaimResponse/R3500"/>
-  </claimResponseReference> -->
-<!--  <type value="oral"/> -->
   <type>
+   <coding>
     <system value="http://hl7.org/fhir/ex-claimtype"/>
     <code value="oral"/>
+   </coding>
   </type>
+
+  <patient>
+    <reference value="Patient/pat1"/>
+  </patient>
+
   <created value="2014-08-16"/>
+
+  <organization>
+    <reference value="Organization/2"/>
+  </organization>
+
+  <claim>
+    <reference value="Claim/100150"/>
+  </claim>
+  
+  <claimResponse>
+    <reference value="ClaimResponse/R3500"/>
+  </claimResponse> 
+
   <outcome>
+   <coding>
     <system value="http://hl7.org/fhir/remittance-outcome" />
 	<code value="complete" />
+   </coding>
   </outcome>
+
   <disposition value="Claim settled as per contract."/>
  
-  <organizationReference>
-    <reference value="Organization/2"/>
-  </organizationReference>
-
-  <patientReference>
-    <reference value="Patient/pat1"/>
-  </patientReference>
+  <careTeam>
+    <sequence value="1"/>
+    <provider>
+      <reference value="Practitioner/example"/>
+    </provider>
+  </careTeam>
  
-  <coverage>
-    <coverageReference>
+  <insurance>
+    <coverage>
       <reference value="Coverage/9876B1"/>
-    </coverageReference>
-  </coverage>
+    </coverage>
+  </insurance>
  
  <item>
    <sequence value="1"/>
-   <!--type>
-     <code value="service"/>
-   </type-->
-   <careTeam>
-     <providerReference>
-       <reference value="Practitioner/example"/>
-     </providerReference>
-   </careTeam>
+   <careTeamLinkId value="1"/>
    <service>
+    <coding>
      <system value="http://hl7.org/fhir/service-uscls"/>
      <code value="1200"/>
+    </coding>
    </service>
    <servicedDate value="2014-08-16"/>
    <unitPrice>
@@ -74,7 +82,9 @@
    </net> 
    <adjudication>
 	<category>
+	 <coding>
 	  <code value="eligible"/>
+	 </coding>
 	</category>
 	<amount>
       <value value="120.00"/>
@@ -84,13 +94,17 @@
    </adjudication>
    <adjudication>
 	<category>
+	 <coding>
 	  <code value="eligpercent"/>
+	 </coding>
 	</category>
 	<value value="0.80"/>
    </adjudication>
    <adjudication>
 	<category>
+	 <coding>
 	  <code value="benefit"/>
+	 </coding>
 	</category>
 	<amount>
       <value value="96.00"/>
@@ -99,7 +113,6 @@
 	</amount> 
    </adjudication>
   </item>
-
 
   <totalCost>
     <value value="135.57"/>

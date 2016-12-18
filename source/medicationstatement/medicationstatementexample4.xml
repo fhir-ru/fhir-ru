@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This example is a fully populated example where a patient reports they took this in the past but are not taking it now  -->
 <MedicationStatement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationstatement.xsd"
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationstatement.xsd"
  xmlns="http://hl7.org/fhir">
   <id value="example004"/>
   <status value="completed" />  
@@ -12,24 +12,24 @@
       <display value="Amoxicillin (product)"/>
     </coding>
   </medicationCodeableConcept>
-  <patient>
+  <subject>
     <reference value="Patient/pat1"/>
     <display value="Donald Duck"/> 
-  </patient>
+  </subject>
   <effectiveDateTime value="2014-01-23"></effectiveDateTime>
   <informationSource>
     <reference value="Patient/pat1"/>
     <display value="Donald Duck"/> 
   </informationSource>
   <dateAsserted value="2015-02-22"/>
-  <notTaken value="false"/>
-  <reasonForUseCode>
+  <notTaken value="n"/>
+  <reasonForUseCodeableConcept>
     <coding>
       <system value="http://snomed.info/sct"/>
       <code value="65363002"/>
       <display value="Otitis Media"/>
     </coding>
-  </reasonForUseCode>
+  </reasonForUseCodeableConcept>
   <note>
     <text value="Patient indicates they miss the occasional dose" />
   </note>

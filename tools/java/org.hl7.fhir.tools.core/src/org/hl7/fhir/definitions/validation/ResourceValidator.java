@@ -35,7 +35,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.PatternSyntaxException;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingMethod;
@@ -74,6 +73,13 @@ import org.hl7.fhir.utilities.Utilities;
  */
 public class ResourceValidator extends BaseValidator {
 
+  public static class SearchParameterGroup {
+    private String name;
+    private String type;
+    private List<String> resources = new ArrayList<String>();
+     
+  }
+  
   public static class Usage {
     public Set<SearchParameterDefn.SearchType> usage = new HashSet<SearchParameterDefn.SearchType>();
   }
@@ -86,6 +92,7 @@ public class ResourceValidator extends BaseValidator {
   private final Map<String, Usage> usages = new HashMap<String, Usage>();
   private final Map<String, Integer> names = new HashMap<String, Integer>();
   private final Map<SearchType, UsageT> usagest = new HashMap<SearchType, UsageT>();
+  private final Map<String, SearchParameterGroup> spgroups = new HashMap<String, SearchParameterGroup>();
   private Translations translations;
   private final Map<String, CodeSystem> codeSystems;
   private SpellChecker speller;
@@ -232,6 +239,14 @@ public class ResourceValidator extends BaseValidator {
       usages.get(p.getCode()).usage.add(p.getType());
       if (!usagest.containsKey(p.getType()))
         usagest.put(p.getType(), new UsageT());
+      String spgn = p.getCode()+"||"+p.getType().toString();
+      if (!spgroups.containsKey(spgn)) {
+        SearchParameterGroup spg = new SearchParameterGroup();
+        spg.name = p.getCode();
+        spg.type = p.getType().toString();
+        spgroups.put(spgn, spg);
+      }
+      spgroups.get(spgn).resources.add(rd.getName());
       rule(errors, IssueType.STRUCTURE, rd.getName(), !p.getCode().equals("filter"), "Search Parameter Name cannot be 'filter')");
       rule(errors, IssueType.STRUCTURE, rd.getName(), !p.getCode().contains("."), "Search Parameter Names cannot contain a '.' (\""+p.getCode()+"\")");
       rule(errors, IssueType.STRUCTURE, rd.getName(), !p.getCode().equalsIgnoreCase("id"), "Search Parameter Names cannot be named 'id' (\""+p.getCode()+"\")");
@@ -436,7 +451,7 @@ public class ResourceValidator extends BaseValidator {
         name.equals("Binary") || 
         name.equals("Bundle") || 
         name.equals("ConceptMap") || 
-        name.equals("Conformance") || 
+        name.equals("CapabilityStatement") || 
         name.equals("MessageHeader") || 
         name.equals("Subscription") || 
         name.equals("ImplementationGuide") ||
@@ -862,7 +877,7 @@ public class ResourceValidator extends BaseValidator {
   private boolean hasInternalReference(ValueSet vs) {
 	  for (ConceptSetComponent inc : vs.getCompose().getInclude()) {
 	    String url = inc.getSystem();
-	    if (url.startsWith("http://hl7.org/fhir") && !url.contains("/v2/") && !url.contains("/v3/"))
+	    if (!Utilities.noString(url) && url.startsWith("http://hl7.org/fhir") && !url.contains("/v2/") && !url.contains("/v3/"))
 	      return false;
 	  }
 	  return false;
@@ -903,5 +918,21 @@ public class ResourceValidator extends BaseValidator {
 
   public void close() throws Exception {
     speller.close();
+  }
+
+  public String searchParamGroups() {
+    StringBuilder b = new StringBuilder();
+    for (SearchParameterGroup spg : spgroups.values()) {
+      if (spg.resources.size() > 1) {
+        b.append(spg.name);
+        b.append(" : ");
+        b.append(spg.type);
+        b.append(" = ");
+        b.append(spg.resources.toString());
+        b.append("\r\n");
+      }
+    }
+    
+    return b.toString();
   }
 }

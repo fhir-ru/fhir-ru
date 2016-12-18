@@ -49,8 +49,10 @@
 		  "format": "valueset-{{[id]}}.{{[fmt]}}.html"
 		}
 	},
+  "sct-edition" : "http://snomed.info/sct/900000000000207008",
+  "no-inactive-codes" : "true",
 	"canonicalBase": "</xsl:text>
-    <xsl:value-of select="url/@value"/>
+    <xsl:value-of select="substring-before(url/@value, '/ImplementationGuide')"/>
     <xsl:text>",&#xa;	</xsl:text>
     <xsl:for-each select="dependency[type/@value='reference']/uri/@value">
       <xsl:variable name="code" select="tokenize(., '/')[last()]"/>

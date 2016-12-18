@@ -260,8 +260,8 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
     write("import org.hl7.fhir.dstu3.model.*;\r\n");
     write("import org.xmlpull.v1.*;\r\n");
     write("import org.hl7.fhir.utilities.Utilities;\r\n");
-    write("import org.hl7.fhir.dstu3.exceptions.FHIRFormatError;\r\n");
-    write("import org.hl7.fhir.dstu3.exceptions.FHIRException;\r\n");
+    write("import org.hl7.fhir.exceptions.FHIRFormatError;\r\n");
+    write("import org.hl7.fhir.exceptions.FHIRException;\r\n");
     write("import java.io.IOException;\r\n");
   //  write("import java.util.*;\r\n");
     write("\r\n");
@@ -767,17 +767,25 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
         generateComposer(n, JavaGenClass.Structure);
       }
     }
-    
-    for (ElementDefn n : definitions.getTypes().values()) {
-      if (n.getTypes().size() > 0 && n.getTypes().get(0).getName().equals("GenericType")) {
 
-        throw new Error("not supported anymore");
-      } else {
+    // first, any with specializations
+    for (ElementDefn n : definitions.getTypes().values()) {
+      if (!(n.typeCode().equals("Element") || n.typeCode().equals("Type") || n.typeCode().equals("Structure"))) {
         generateComposer(n, JavaGenClass.Type);
         String nn = javaClassName(n.getName());
         regtn.append("    else if (type instanceof "+nn+")\r\n       compose"+nn+"(prefix+\""+n.getName()+"\", ("+nn+") type);\r\n");
-//        regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
       }
+      //        regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
+    }
+
+    // then the base
+    for (ElementDefn n : definitions.getTypes().values()) {
+      if (n.typeCode().equals("Element") || n.typeCode().equals("Type") || n.typeCode().equals("Structure")) {
+        generateComposer(n, JavaGenClass.Type);
+        String nn = javaClassName(n.getName());
+        regtn.append("    else if (type instanceof "+nn+")\r\n       compose"+nn+"(prefix+\""+n.getName()+"\", ("+nn+") type);\r\n");
+      }
+      //        regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
 
     for (ProfiledType n : definitions.getConstraints().values()) {

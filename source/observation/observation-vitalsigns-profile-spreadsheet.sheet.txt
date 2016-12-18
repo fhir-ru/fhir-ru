@@ -2,15 +2,30 @@
 === Sheet Bindings =====================================
 
  -- Row 1 -----------------------------------
-  Binding Name = VitalSigns
+  Binding Name = Status
   Binding = value set
-  Reference = valueset-observation-vitalsignresult
-  Definition = This identifies the vital sign result type.
+  Reference = http://hl7.org/fhir/ValueSet/observation-status
   Description = This identifies the vital sign result type. Original source C-CDA R1.1 ,  HITSP Vital Sign Result Type.
   Conformance = required
   Oid = 2.16.840.1.113883.3.88.12.80.62
 
  -- Row 2 -----------------------------------
+  Binding Name = DAR
+  Binding = value set
+  Reference = http://hl7.org/fhir/ValueSet/observation-valueabsentreason
+  Description = Commonly encountered UCUM units for recording Vital Signs.
+  Conformance = extensible
+
+ -- Row 3 -----------------------------------
+  Binding Name = VitalSigns
+  Binding = value set
+  Reference = valueset-observation-vitalsignresult
+  Definition = This identifies the vital sign result type.
+  Description = This identifies the vital sign result type. Original source C-CDA R1.1 ,  HITSP Vital Sign Result Type.
+  Conformance = extensible
+  Oid = 2.16.840.1.113883.3.88.12.80.62
+
+ -- Row 4 -----------------------------------
   Binding Name = VitalSignsUnits
   Binding = value set
   Reference = valueset-ucum-vitals-common
@@ -18,7 +33,7 @@
   Description = Commonly encountered UCUM units for recording Vital Signs.
   Conformance = required
 
- -- Row 3 -----------------------------------
+ -- Row 5 -----------------------------------
   Binding Name = BodyWeightUnits
   Binding = value set
   Reference = valueset-ucum-bodyweight
@@ -26,7 +41,7 @@
   Description = g | kg  | [lb_av]
   Conformance = required
 
- -- Row 4 -----------------------------------
+ -- Row 6 -----------------------------------
   Binding Name = BodyTempUnits
   Binding = value set
   Reference = valueset-ucum-bodytemp
@@ -34,7 +49,7 @@
   Description = Cel | [degF]
   Conformance = required
 
- -- Row 5 -----------------------------------
+ -- Row 7 -----------------------------------
   Binding Name = BodyLengthUnits
   Binding = value set
   Reference = valueset-ucum-bodylength
@@ -42,188 +57,196 @@
   Description = cm | [in_i]
   Conformance = required
 
+=== Sheet VitalSigns-Inv =====================================
+
+ -- Row 1 -----------------------------------
+  Id = vs-1
+  Context = Observation.effective[x]
+  English = Datetime must be at least to day.
+  XPath = f:matches(effectiveDateTime,/\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d([+-][0-2]\\d:[0-5]\\d|Z)/)
+  Expression = length() >= 8
+  Severity = error
+
+ -- Row 2 -----------------------------------
+  Id = vs-2
+  Context = Observation
+  English = If there is no component or related element then either a value[x] or a data absent reason must be present
+  XPath = exists(f:component) or exists(f:related) or exists(f:*[starts-with(local-name(.), \'value)]) or exists(f:dataAbsentReason)
+  Expression = component.value.exists() or dataAbsentReason.exists()
+  Severity = error
+
+ -- Row 3 -----------------------------------
+  Id = vs-3
+  Context = Observation.component
+  English = If there is no a value a data absent reason must be present
+  XPath = exists(f:*[starts-with(local-name(.), \'value)]) or exists(f:dataAbsentReason)
+  Expression = value.exists() or dataAbsentReason.exists()
+  Severity = error
+
 === Sheet VitalSigns =====================================
 
  -- Row 1 -----------------------------------
   Element = Observation
-  Profile Name = DAFVitalSigns
+  Profile Name = CoreVitalSigns
   Aliases = Vital Signs, Measurement, Results, Tests
   Type = Resource
+  Short Name = FHIR Vital Signs Profile
+  Definition = The FHIR Vitals Signs profile sets a minimum expectations for the Observation Resource to record, search and fetch the vital signs associated with a patient.
 
  -- Row 2 -----------------------------------
-  Element = Observation.category
-
- -- Row 3 -----------------------------------
-  Element = Observation.category.coding
-  Card. = 1..*
-  Must Support = Y
-
- -- Row 4 -----------------------------------
-  Element = Observation.category.coding.system
-  Card. = 1..1
-  Must Support = Y
-  Type = uri
-  Value = http://hl7.org/fhir/observation-category
-
- -- Row 5 -----------------------------------
-  Element = Observation.category.coding.code
+  Element = Observation.status
   Card. = 1..1
   Must Support = Y
   Type = code
-  Value = vital-signs
+  Binding = Status
+
+ -- Row 3 -----------------------------------
+  Element = Observation.category
+  Card. = 1..1
+  Must Support = Y
+  Type = CodeableConcept
+  Pattern = <valueCodeableConcept><coding><system value=\"http://hl7.org/fhir/observation-category\"/><code value=\"vital-signs\"/></coding></valueCodeableConcept>
+
+ -- Row 4 -----------------------------------
+  Element = Observation.code
+  Card. = 1..1
+  Must Support = Y
+  Type = CodeableConcept
+  Binding = VitalSigns
+  Short Name = Coded Responses from C-CDA Vital Sign Results
+  Requirements = 5. SHALL contain exactly one [1..1] code, where the @code SHOULD be selected from ValueSet HITSP Vital Sign Result Type 2.16.840.1.113883.3.88.12.80.62 DYNAMIC (CONF:7301).
+
+ -- Row 5 -----------------------------------
+  Element = Observation.subject
+  Card. = 1..1
+  Must Support = Y
+  Type = Reference(Patient)
 
  -- Row 6 -----------------------------------
-  Element = Observation.code
+  Element = Observation.effective[x]
+  Card. = 1..1
   Must Support = Y
-  Binding = VitalSigns
-  Short Label = Coded Responses from C-CDA Vital Sign Results
+  Inv. = vs-1
+  Type = dateTime | Period
+  Short Name = Often just a dateTime for Vital Signs
 
  -- Row 7 -----------------------------------
-  Element = Observation.code.coding
-  Card. = 1..*
-  Must Support = Y
-
- -- Row 8 -----------------------------------
-  Element = Observation.code.coding.system
-  Card. = 1..1
-  Must Support = Y
-
- -- Row 9 -----------------------------------
-  Element = Observation.code.coding.code
-  Card. = 1..1
-  Must Support = Y
-
- -- Row 10 -----------------------------------
-  Element = Observation.code.coding.display
-  Must Support = Y
-
- -- Row 11 -----------------------------------
   Element = Observation.valueQuantity
+  Card. = 0..1
   Must Support = Y
+  Inv. = vs-2
   Type = Quantity
   Binding = VitalSignsUnits
-  Short Label = Vital Sign Value recorded with UCUM
+  Short Name = Vital Sign Value recorded with UCUM
+  Requirements = 9. SHALL contain exactly one [1..1] value with @xsi:type=\"PQ\" (CONF:7305).
 
- -- Row 12 -----------------------------------
+ -- Row 8 -----------------------------------
   Element = Observation.valueQuantity.value
   Card. = 1..1
   Must Support = Y
+  Type = decimal
 
- -- Row 13 -----------------------------------
+ -- Row 9 -----------------------------------
   Element = Observation.valueQuantity.unit
+  Card. = 1..1
   Must Support = Y
+  Type = string
 
- -- Row 14 -----------------------------------
+ -- Row 10 -----------------------------------
   Element = Observation.valueQuantity.system
   Card. = 1..1
   Must Support = Y
   Type = uri
   Value = http://unitsofmeasure.org
 
- -- Row 15 -----------------------------------
+ -- Row 11 -----------------------------------
   Element = Observation.valueQuantity.code
   Card. = 1..1
   Must Support = Y
-  Short Label = Coded responses from the common UCUM units for vital signs value set.
+  Type = code
+  Short Name = Coded responses from the common UCUM units for vital signs value set.
+
+ -- Row 12 -----------------------------------
+  Element = Observation.dataAbsentReason
+  Card. = 0..1
+  Must Support = Y
+  Inv. = vs-2
+  Type = CodeableConcept
+  Binding = DAR
+
+ -- Row 13 -----------------------------------
+  Element = Observation.related
+  Must Support = Y
+  Short Name = Used when reporting systolic and diastolic blood pressure.
+
+ -- Row 14 -----------------------------------
+  Element = Observation.related.type
+  Card. = 1..1
+  Must Support = Y
+  Type = code
+  Value = has-member
+
+ -- Row 15 -----------------------------------
+  Element = Observation.related.target
+  Card. = 1..1
+  Must Support = Y
+  Type = Reference(Observation){http://hl7.org/fhir/StructureDefinition/vitalsigns}
 
  -- Row 16 -----------------------------------
-  Element = Observation.dataAbsentReason
+  Element = Observation.component
   Must Support = Y
-  Comments = If there is no numeric result then you have to supply a reason
+  Short Name = Used when reporting systolic and diastolic blood pressure.
 
  -- Row 17 -----------------------------------
-  Element = Observation.effective[x]
+  Element = Observation.component.code
   Card. = 1..1
-  Must Support = Y
-  Short Label = Often just a dateTime for Vital Signs
-
- -- Row 18 -----------------------------------
-  Element = Observation.status
-  Must Support = Y
-
- -- Row 19 -----------------------------------
-  Element = Observation.subject
-  Card. = 1..1
-  Must Support = Y
-
- -- Row 20 -----------------------------------
-  Element = Observation.referenceRange
-  Card. = 0..1
-  Must Support = Y
-
- -- Row 21 -----------------------------------
-  Element = Observation.referenceRange.low
-  Card. = 0..1
-  Must Support = Y
-  Type = SimpleQuantity
-
- -- Row 22 -----------------------------------
-  Element = Observation.referenceRange.low.value
-  Card. = 0..1
-  Must Support = Y
-  Type = decimal
-
- -- Row 23 -----------------------------------
-  Element = Observation.referenceRange.low.unit
-  Card. = 0..1
-  Must Support = Y
-  Type = string
-
- -- Row 24 -----------------------------------
-  Element = Observation.referenceRange.low.system
-  Card. = 0..1
-  Must Support = Y
-  Type = uri
-  Value = http://unitsofmeasure.org
-
- -- Row 25 -----------------------------------
-  Element = Observation.referenceRange.low.code
-  Card. = 0..1
-  Must Support = Y
-  Type = code
-
- -- Row 26 -----------------------------------
-  Element = Observation.referenceRange.high
-  Card. = 0..1
-  Must Support = Y
-  Type = SimpleQuantity
-
- -- Row 27 -----------------------------------
-  Element = Observation.referenceRange.high.value
-  Card. = 0..1
-  Must Support = Y
-  Type = decimal
-
- -- Row 28 -----------------------------------
-  Element = Observation.referenceRange.high.unit
-  Card. = 0..1
-  Must Support = Y
-  Type = string
-
- -- Row 29 -----------------------------------
-  Element = Observation.referenceRange.high.system
-  Card. = 0..1
-  Must Support = Y
-  Type = uri
-  Value = http://unitsofmeasure.org
-
- -- Row 30 -----------------------------------
-  Element = Observation.referenceRange.high.code
-  Card. = 0..1
-  Must Support = Y
-  Type = code
-
- -- Row 31 -----------------------------------
-  Element = Observation.referenceRange.meaning
-  Card. = 0..1
   Must Support = Y
   Type = CodeableConcept
+  Binding = VitalSigns
 
- -- Row 32 -----------------------------------
-  Element = Observation.referenceRange.text
+ -- Row 18 -----------------------------------
+  Element = Observation.component.valueQuantity
   Card. = 0..1
   Must Support = Y
+  Inv. = vs-3
+  Type = Quantity
+  Binding = VitalSignsUnits
+  Short Name = Vital Sign Value recorded with UCUM
+  Requirements = 9. SHALL contain exactly one [1..1] value with @xsi:type=\"PQ\" (CONF:7305).
+
+ -- Row 19 -----------------------------------
+  Element = Observation.component.valueQuantity.value
+  Card. = 1..1
+  Must Support = Y
+  Type = decimal
+
+ -- Row 20 -----------------------------------
+  Element = Observation.component.valueQuantity.unit
+  Card. = 1..1
+  Must Support = Y
   Type = string
+
+ -- Row 21 -----------------------------------
+  Element = Observation.component.valueQuantity.system
+  Card. = 1..1
+  Must Support = Y
+  Type = uri
+  Value = http://unitsofmeasure.org
+
+ -- Row 22 -----------------------------------
+  Element = Observation.component.valueQuantity.code
+  Card. = 1..1
+  Must Support = Y
+  Type = code
+  Short Name = Coded responses from the common UCUM units for vital signs value set.
+
+ -- Row 23 -----------------------------------
+  Element = Observation.component.dataAbsentReason
+  Card. = 0..1
+  Must Support = Y
+  Inv. = vs-3
+  Type = CodeableConcept
+  Binding = DAR
 
 === Sheet BodyWeight =====================================
 
@@ -231,13 +254,13 @@
   Element = Observation
   Profile Name = BodyWeight
   Type = {http://hl7.org/fhir/StructureDefinition/vitalsigns}
-  Short Label = FHIR Body Weight Profile
+  Short Name = FHIR Body Weight Profile
   Definition = This profile defines  how to represent body weight observations in FHIR using a standard LOINC code and UCUM units of measure
 
  -- Row 2 -----------------------------------
   Element = Observation.code
   Aliases = Test, Name,
-  Short Label = Body Weight
+  Short Name = Body Weight
   Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
 
  -- Row 3 -----------------------------------
@@ -268,13 +291,13 @@
   Element = Observation
   Profile Name = RespiratoryRate
   Type = {http://hl7.org/fhir/StructureDefinition/vitalsigns}
-  Short Label = FHIR Respiratory Rate Profile
+  Short Name = FHIR Respiratory Rate Profile
   Definition = This profile defines  how to represent Respiratory Rate observations in FHIR using a standard LOINC code and UCUM units of measure
 
  -- Row 2 -----------------------------------
   Element = Observation.code
   Aliases = Test, Name,
-  Short Label = Respiratory Rate
+  Short Name = Respiratory Rate
   Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
 
  -- Row 3 -----------------------------------
@@ -306,13 +329,13 @@
   Element = Observation
   Profile Name = HeartRate
   Type = {http://hl7.org/fhir/StructureDefinition/vitalsigns}
-  Short Label = FHIR Heart Rate Profile
+  Short Name = FHIR Heart Rate Profile
   Definition = This profile defines how to represent heart rate observations in FHIR using a standard LOINC code and UCUM units of measure
 
  -- Row 2 -----------------------------------
   Element = Observation.code
   Aliases = Test, Name,
-  Short Label = Heart Rate
+  Short Name = Heart Rate
   Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
 
  -- Row 3 -----------------------------------
@@ -344,13 +367,13 @@
   Element = Observation
   Profile Name = BodyTemperature
   Type = {http://hl7.org/fhir/StructureDefinition/vitalsigns}
-  Short Label = FHIR Body Temperature Profile
+  Short Name = FHIR Body Temperature Profile
   Definition = This profile defines  how to represent Body Temperature observations in FHIR using a standard LOINC code and UCUM units of measure
 
  -- Row 2 -----------------------------------
   Element = Observation.code
   Aliases = Test, Name,
-  Short Label = Body Temperature
+  Short Name = Body Temperature
   Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
 
  -- Row 3 -----------------------------------
@@ -381,13 +404,13 @@
   Element = Observation
   Profile Name = BodyHeight
   Type = {http://hl7.org/fhir/StructureDefinition/vitalsigns}
-  Short Label = FHIR Body Height Profile
+  Short Name = FHIR Body Height Profile
   Definition = This profile defines  how to represent Body Height observations in FHIR using a standard LOINC code and UCUM units of measure
 
  -- Row 2 -----------------------------------
   Element = Observation.code
   Aliases = Test, Name,
-  Short Label = Body Height
+  Short Name = Body Height
   Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
 
  -- Row 3 -----------------------------------
@@ -412,19 +435,56 @@
   Element = Observation.valueQuantity.code
   Binding = BodyLengthUnits
 
+=== Sheet BodyLength =====================================
+
+ -- Row 1 -----------------------------------
+  Element = Observation
+  Profile Name = BodyLength
+  Type = {http://hl7.org/fhir/StructureDefinition/vitalsigns}
+  Short Name = FHIR Body Length Profile
+  Definition = This profile defines  how to represent Body Length observations in FHIR using a standard LOINC code and UCUM units of measure
+
+ -- Row 2 -----------------------------------
+  Element = Observation.code
+  Aliases = Test, Name,
+  Short Name = Body Length
+  Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
+
+ -- Row 3 -----------------------------------
+  Element = Observation.code.coding
+  Profile Name = BodyLengthCode
+  Discriminator = code|unordered|open
+
+ -- Row 4 -----------------------------------
+  Element = Observation.code.coding.system
+  Type = uri
+  Value = http://loinc.org
+
+ -- Row 5 -----------------------------------
+  Element = Observation.code.coding.code
+  Type = code
+  Value = 8306-3
+
+ -- Row 6 -----------------------------------
+  Element = Observation.valueQuantity
+
+ -- Row 7 -----------------------------------
+  Element = Observation.valueQuantity.code
+  Binding = BodyLengthUnits
+
 === Sheet HeadCircum =====================================
 
  -- Row 1 -----------------------------------
   Element = Observation
   Profile Name = HeadCircumference
   Type = {http://hl7.org/fhir/StructureDefinition/vitalsigns}
-  Short Label = FHIR Head Circumference Profile
+  Short Name = FHIR Head Circumference Profile
   Definition = This profile defines  how to represent Head Circumference observations in FHIR using a standard LOINC code and UCUM units of measure
 
  -- Row 2 -----------------------------------
   Element = Observation.code
   Aliases = Test, Name,
-  Short Label = Head Circumference
+  Short Name = Head Circumference
   Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
 
  -- Row 3 -----------------------------------
@@ -440,7 +500,7 @@
  -- Row 5 -----------------------------------
   Element = Observation.code.coding.code
   Type = code
-  Value = 9843-4
+  Value = 8287-5
 
  -- Row 6 -----------------------------------
   Element = Observation.valueQuantity
@@ -455,13 +515,13 @@
   Element = Observation
   Profile Name = OxygenSaturation
   Type = {http://hl7.org/fhir/StructureDefinition/vitalsigns}
-  Short Label = FHIR Oxygen Saturation Profile
+  Short Name = FHIR Oxygen Saturation Profile
   Definition = This profile defines  how to represent Oxygen Saturation observations in FHIR using a standard LOINC code and UCUM units of measure
 
  -- Row 2 -----------------------------------
   Element = Observation.code
   Aliases = Test, Name,
-  Short Label = Oxygen Saturation
+  Short Name = Oxygen Saturation
   Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
 
  -- Row 3 -----------------------------------
@@ -493,13 +553,13 @@
   Element = Observation
   Profile Name = BodyMassIndex
   Type = {http://hl7.org/fhir/StructureDefinition/vitalsigns}
-  Short Label = FHIR Body Mass Index (BMI) Profile
+  Short Name = FHIR Body Mass Index (BMI) Profile
   Definition = This profile defines  how to represent Body Mass Index (BMI) observations in FHIR using a standard LOINC code and UCUM units of measure
 
  -- Row 2 -----------------------------------
   Element = Observation.code
   Aliases = Test, Name,
-  Short Label = Body Mass Index (BMI)
+  Short Name = Body Mass Index (BMI)
   Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
 
  -- Row 3 -----------------------------------
@@ -531,13 +591,13 @@
   Element = Observation
   Profile Name = MeanBloodPressure
   Type = {http://hl7.org/fhir/StructureDefinition/vitalsigns}
-  Short Label = FHIR Mean Blood Pressure Profile
+  Short Name = FHIR Mean Blood Pressure Profile
   Definition = This profile defines  how to represent Mean Blood Pressure observations in FHIR using a standard LOINC code and UCUM units of measure.  Mean blood Pressure is defined as Mean Arterial Pressure or MAP = 2/3 diastolic blood pressure + 1/2 systolic blood pressure.
 
  -- Row 2 -----------------------------------
   Element = Observation.code
   Aliases = Test, Name,
-  Short Label = Mean Blood Pressure
+  Short Name = Mean Blood Pressure
   Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
 
  -- Row 3 -----------------------------------
@@ -569,13 +629,13 @@
   Element = Observation
   Profile Name = BloodPressure
   Type = {http://hl7.org/fhir/StructureDefinition/vitalsigns}
-  Short Label = FHIR Blood Pressure Profile
+  Short Name = FHIR Blood Pressure Profile
   Definition = This profile defines  how to represent Blood Pressure observations in FHIR using a standard LOINC code and UCUM units of measure.  This is a grouping structure. It has no value in Observation.valueQuantity but contains at least one component (systolic and/or diastolic).
 
  -- Row 2 -----------------------------------
   Element = Observation.code
   Aliases = Test, Name,
-  Short Label = Blood Pressure
+  Short Name = Blood Pressure
   Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
 
  -- Row 3 -----------------------------------
@@ -594,72 +654,114 @@
   Value = 55284-4
 
  -- Row 6 -----------------------------------
+  Element = Observation.value[x]
+  Card. = 0..0
+
+ -- Row 7 -----------------------------------
   Element = Observation.component
   Profile Name = SystolicBP
   Discriminator = code.coding.code | unordered
 
- -- Row 7 -----------------------------------
+ -- Row 8 -----------------------------------
   Element = Observation.component.code
   Aliases = Component Test, Component Name,
   Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
 
- -- Row 8 -----------------------------------
+ -- Row 9 -----------------------------------
   Element = Observation.component.code.coding
   Profile Name = SBPCode
   Discriminator = code|unordered|open
-  Short Label = Systolic Blood Pressure
+  Short Name = Systolic Blood Pressure
 
- -- Row 9 -----------------------------------
+ -- Row 10 -----------------------------------
   Element = Observation.component.code.coding.system
   Type = uri
   Value = http://loinc.org
 
- -- Row 10 -----------------------------------
+ -- Row 11 -----------------------------------
   Element = Observation.component.code.coding.code
   Type = code
   Value = 8480-6
 
- -- Row 11 -----------------------------------
+ -- Row 12 -----------------------------------
   Element = Observation.component.valueQuantity
   Type = Quantity
 
- -- Row 12 -----------------------------------
+ -- Row 13 -----------------------------------
   Element = Observation.component.valueQuantity.code
   Type = code
   Value = mm[Hg]
 
- -- Row 13 -----------------------------------
+ -- Row 14 -----------------------------------
   Element = Observation.component
   Profile Name = DiastolicBP
   Discriminator = code.coding.code | unordered
 
- -- Row 14 -----------------------------------
+ -- Row 15 -----------------------------------
   Element = Observation.component.code
   Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
 
- -- Row 15 -----------------------------------
+ -- Row 16 -----------------------------------
   Element = Observation.component.code.coding
   Profile Name = DBPCode
   Discriminator = code|unordered|open
-  Short Label = Diastolic Blood Pressure
+  Short Name = Diastolic Blood Pressure
 
- -- Row 16 -----------------------------------
+ -- Row 17 -----------------------------------
   Element = Observation.component.code.coding.system
   Type = uri
   Value = http://loinc.org
 
- -- Row 17 -----------------------------------
+ -- Row 18 -----------------------------------
   Element = Observation.component.code.coding.code
   Type = code
   Value = 8462-4
 
- -- Row 18 -----------------------------------
+ -- Row 19 -----------------------------------
   Element = Observation.component.valueQuantity
   Type = Quantity
 
- -- Row 19 -----------------------------------
+ -- Row 20 -----------------------------------
   Element = Observation.component.valueQuantity.code
   Type = code
   Value = mm[Hg]
+
+=== Sheet VitalsPanel =====================================
+
+ -- Row 1 -----------------------------------
+  Element = Observation
+  Profile Name = DAFVitalsPanel
+  Type = {http://hl7.org/fhir/StructureDefinition/vitalsigns}
+  Short Name = FHIR Vital Signs Panel Profile
+  Definition = This profile defines the top-level grouping structure for a set of vital signs. It has no value in Observation.valueQuantity ; instead, it just includes related links (with type=has-member) to the Observations in this set (e.g. respiratory rate, heart rate, BP)
+
+ -- Row 2 -----------------------------------
+  Element = Observation.code
+  Aliases = Panel Name, Panel Code
+  Short Name = Vital Signs Panel
+  Comments = additional codes that translate or map to this code are allowed.  For example a more granular LOINC code or code that is used locally in a system.
+
+ -- Row 3 -----------------------------------
+  Element = Observation.code.coding
+  Profile Name = BodyWeightCode
+  Discriminator = code|unordered|open
+
+ -- Row 4 -----------------------------------
+  Element = Observation.code.coding.system
+  Type = uri
+  Value = http://loinc.org
+
+ -- Row 5 -----------------------------------
+  Element = Observation.code.coding.code
+  Type = code
+  Value = 8716-3
+
+ -- Row 6 -----------------------------------
+  Element = Observation.value[x]
+  Card. = 0..0
+
+ -- Row 7 -----------------------------------
+  Element = Observation.related
+  Card. = 1..*
 
 === Sheet Search =====================================

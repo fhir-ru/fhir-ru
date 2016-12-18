@@ -48,7 +48,7 @@
     <li>
       <a href="#workflow">Workflow</a> describes the primary workflow associated with the SDC implementation guide</li>
     <li>
-      <a href="#conformance">Conformance Statements</a> describes the different roles systems wishing to conform to this implementation guide can take on and summarizes how 
+      <a href="#capabilitystatement">Capability Statements</a> describes the different roles systems wishing to conform to this implementation guide can take on and summarizes how 
         those roles interact.</li>
     <li>
       <a href="#resources">Resources</a> describes the resources used as part of this implementation guide, including profiles placed on those resources to constrain and 
@@ -132,45 +132,45 @@
   </p>
   <p>
     The fundamental workflow in FHIR is to complete (and potentially submit) a completed questionnaire response.  The driver of this workflow is the
-    <a href="conformance-sdc-form-filler.html">Form Filler</a> system.  It retrieves a form (Questionnaire) from the
-    <a href="conformance-sdc-form-manager.html">Form Manager</a>.  It may also request that the Form Manager generate an initial QuestionnaireResponse,
+    <a href="capabilitystatement-sdc-form-filler.html">Form Filler</a> system.  It retrieves a form (Questionnaire) from the
+    <a href="capabilitystatement-sdc-form-manager.html">Form Manager</a>.  It may also request that the Form Manager generate an initial QuestionnaireResponse,
     potentially partially populated with information known by the Form Manager or supplied by the Form Filler.  The Form Filler could generate the
     QuestionnaireResponse itself without the assistance of the Form Manager and in either case could partially fill in the response based on information
     known by the form filler.  When as much of the questionnaire response as possible has been filled in by automated means, the form is displayed to
     an end-user who reviews and edits the automatically populated content as well as completing those portions of the form that were not populated
     automatically.  Finally, the form filler submits the form to one or more target repositories 
-    (<a href="conformance-sdc-form-receiver.html">Form Receiver</a> allows the completed form to be subsequently retrieved,
-    <a href="conformance-sdc-form-archiver.html">Form Archiver</a> does not) and/or stores the completed form itself.
+    (<a href="capabilitystatement-sdc-form-receiver.html">Form Receiver</a> allows the completed form to be subsequently retrieved,
+    <a href="capabilitystatement-sdc-form-archiver.html">Form Archiver</a> does not) and/or stores the completed form itself.
   </p>
   <p>
     The pre-population process (done by the Form Manager) and the auto-population process (done by the Form Filler itself) can be done by
     a variety of means.  If using data elements referenced directly within the questionnaire or mapped via <a href="{{site.data.fhir.path}}conceptmap.html">ConceptMap</a>,
-    those may need to be retrieved from a <a href="{{site.data.refs.sdcde}}/conformance-sdc-de-registry.html"> Data Element Registry</a> in order to look
+    those may need to be retrieved from a <a href="{{site.data.refs.sdcde}}/capabilitystatement-sdc-de-registry.html"> Data Element Registry</a> in order to look
     up what mappings the data element has to other resources.
   </p>
   <h3>SDC Specification</h3>
   <p>The following sections describe the artifacts that set expectations for systems wishing to be conformant to the FHIR SDC implementation guide.</p>
-  <a name="conformance"> </a>
-  <h4>Conformance Statements</h4>
+  <a name="capabilitystatement"> </a>
+  <h4>Capability Statements</h4>
   <p>
-    FHIR Conformance statements define the expectations for particular system "roles" within an SDC environment.  To be considered SDC-conformant, a system 
+    FHIR Capability statements define the expectations for particular system "roles" within an SDC environment.  To be considered SDC-conformant, a system 
     must adhere to the requirements defined by at least one of these statements.  Some systems might choose to comply with more than one.
   </p>
   <ul>
     <li>
-      <a href="conformance-sdc-form-designer.html">SDC Form Designer</a> - System responsible for creating and editing form designs</li>
+      <a href="capabilitystatement-sdc-form-designer.html">SDC Form Designer</a> - System responsible for creating and editing form designs</li>
     <li>
-      <a href="conformance-sdc-form-filler.html">SDC Form Filler</a> - System responsible for capturing user form input to produce partially or fully completed forms</li>
+      <a href="capabilitystatement-sdc-form-filler.html">SDC Form Filler</a> - System responsible for capturing user form input to produce partially or fully completed forms</li>
     <li>
-      <a href="conformance-sdc-form-manager.html">SDC Form Manager</a> - Repository for form definitions.  May also perform pre-population</li>
+      <a href="capabilitystatement-sdc-form-manager.html">SDC Form Manager</a> - Repository for form definitions.  May also perform pre-population</li>
     <li>
-      <a href="conformance-sdc-form-receiver.html">SDC Form Receiver</a> - Repository for completed forms which support their subsequent retrieval</li>
+      <a href="capabilitystatement-sdc-form-receiver.html">SDC Form Receiver</a> - Repository for completed forms which support their subsequent retrieval</li>
     <li>
-      <a href="conformance-sdc-form-archiver.html">SDC Form Archiver</a> - System responsible for archiving and retrieving of completed forms</li>
+      <a href="capabilitystatement-sdc-form-archiver.html">SDC Form Archiver</a> - System responsible for archiving and retrieving of completed forms</li>
   </ul>
   <p>
     In addition to the above, there's another relevant role:<br/>
-    When looking up data elements, the <i>SDC Form Designer</i> will communicate use of the <a href="{{site.data.refs.sdcde}}/conformance-sdc-de-registry.html">SDC Data Element 
+    When looking up data elements, the <i>SDC Form Designer</i> will communicate use of the <a href="{{site.data.refs.sdcde}}/capabilitystatement-sdc-de-registry">SDC Data Element 
     Registry</a>, which is defined in the <a href="{{site.data.refs.sdcde}}/sdcde.html">SDC Data Element Exchange</a> implementation guide.
   </p>
   <p>
@@ -182,12 +182,12 @@
   <p>
     <img alt="Diagram showing interaction between Form Designer, Form Manager and Data Element Registry" src="sdc-form-curation.png"/>
   </p>
-  <br/>
   <p>
+    <br/>
     <b>Figure 3: Form Population</b>
   </p>
   <p>
-    <img alt="Diagram showing interaction between Form Filler, Form Manager, Form Receiver, Form Archiver and Data Element Registry" src="sdc-form-population.png"/>
+   <img alt="Diagram showing interaction between Form Filler, Form Manager, Form Receiver, Form Archiver and Data Element Registry" src="sdc-form-population.png"/>
   </p>
   <br/>
   <a name="resources"> </a>
@@ -271,9 +271,9 @@
   <p>
     The <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a> resource defines a set of custom operations to support generation of completed questionnaires,
     possibly automatically filling in some of the answers using existing system information.  This could be information passed to the system on which the operation is 
-    invoked (as a CDA document, FHIR bundle or other recognized source) or using data the system already has locally.  The three operations are as follows:
+    invoked (as a CDA document, FHIR bundle or other recognized source) or using data the system already has locally. The three operations are as follows:
   </p>
-  <table>
+  <table cellpadding="5">
     <tbody>
       <tr>
         <th>Operation</th>
@@ -286,9 +286,10 @@
         <td>
           This operation supports generating a <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> instance based on a specified
           <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>.  If matching data is available for any of the questions and the server supports 
-          the pre-population capability, the answers for those questions will be filled in in the QuestionnaireResponse instance.
-          answers will 
+          the pre-population capability, the answers for those questions will be filled in the QuestionnaireResponse instance.
         </td>
+	  </tr>
+	  <tr>
         <td>
           <a href="{{site.data.fhir.path}}questionnaire-operations.html#populatehtml">populatehtml</a>
         </td>
@@ -298,6 +299,12 @@
           generated the form and/or the recipient(s) designated by the <a href="{{site.data.fhir.path}}questionnaire.html">Questionnaire</a>.  If matching data is available 
           for any of the questions and the server supports the pre-population capability, the form will initially render with the answers for those questions filled in.
         </td>
+	  </tr>
+	  <tr>
+		<td>
+		</td>
+	  </tr>
+	  <tr>
         <td>
           <a href="{{site.data.fhir.path}}questionnaire-operations.html#populatelink">populatelink</a>
         </td>
@@ -312,7 +319,7 @@
   </table>
   <p>
     For SDC purposes, server systems claiming to support roles that require support for the <code>populate</code>, <code>populatehtml</code> or <code>populatelink</code>
-    operations (<a href="conformance-sdc-form-manager.html">SDC Form Manager</a>) SHALL, at minimum:
+    operations (<a href="capabilitystatement-sdc-form-manager.html">SDC Form Manager</a>) SHALL, at minimum:
   </p>
   <ul>
     <li>Handle the input parameters <code>identifier</code>, <code>questionnaire</code>, <code>questionnaireRef</code>, <code>subject</code> and <code>content</code>
@@ -323,13 +330,15 @@
   </ul>
   <p>
     Similarly, client systems claiming to support the <code>populate</code>, <code>populatehtml</code> and/or <code>populatelink</code> operations
-    (<a href="conformance-sdc-form-filler.html">SDC Form Filler</a>) SHALL, at a minimum:
+    (<a href="capabilitystatement-sdc-form-filler.html">SDC Form Filler</a>) SHALL, at a minimum:
   </p>
   <ul>
     <li>Be capable of invoking the operation(s) on a selected questionnaire both directly (<code>Questionnaire/[identifier]/$populate</code>)
       as well as indirectly either by <code>identifier</code> or <code>questionnaire</code>
     </li>
     <li>Support passing a single C-CDA* document as a <a href="{{site.data.fhir.path}}http.html#binary">Binary</a> resource using the <code>content</code> parameter</li>
+    <li>Be able to accept an incoming partially-populated <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a> and render it as if they had retrieved a saved partially-completed <a href="{{site.data.fhir.path}}questionnaireresponse.html">QuestionnaireResponse</a></li>
+    <li> It is the responsibility of the <a href="capabilitystatement-sdc-form-filler.html">SDC Form Filler</a> to ensure the form is valid after a human has reviewed and edited the form.</li>
   </ul>
   <p>
     * While C-CDA is the focus for compliance with this release of the SDC specification, systems are encouraged to support additional formats.  Candidates

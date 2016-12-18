@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.NotImplementedException;
-import org.hl7.fhir.dstu3.exceptions.DefinitionException;
-import org.hl7.fhir.dstu3.exceptions.FHIRException;
+import org.hl7.fhir.dstu3.conformance.ProfileUtilities;
+import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.model.Base;
 import org.hl7.fhir.dstu3.model.BooleanType;
 import org.hl7.fhir.dstu3.model.Coding;
@@ -20,7 +20,7 @@ import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionBindingCompon
 import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.dstu3.model.Enumeration;
 import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
-import org.hl7.fhir.dstu3.model.Enumerations.ConformanceResourceStatus;
+import org.hl7.fhir.dstu3.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.dstu3.model.Factory;
 import org.hl7.fhir.dstu3.model.InstantType;
 import org.hl7.fhir.dstu3.model.IntegerType;
@@ -32,11 +32,11 @@ import org.hl7.fhir.dstu3.model.Questionnaire.QuestionnaireStatus;
 import org.hl7.fhir.dstu3.model.QuestionnaireResponse;
 import org.hl7.fhir.dstu3.model.QuestionnaireResponse.QuestionnaireResponseItemAnswerComponent;
 import org.hl7.fhir.dstu3.model.QuestionnaireResponse.QuestionnaireResponseStatus;
-import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.dstu3.model.Reference;
 import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.StringType;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
+import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.dstu3.model.TimeType;
 import org.hl7.fhir.dstu3.model.Type;
 import org.hl7.fhir.dstu3.model.UriType;
@@ -44,6 +44,8 @@ import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionComponent;
 import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionContainsComponent;
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpander;
+import org.hl7.fhir.exceptions.DefinitionException;
+import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.utilities.Utilities;
 
 
@@ -221,7 +223,7 @@ public class QuestionnaireBuilder {
       questionnaire.setPublisher(profile.getPublisher());
       Questionnaire.QuestionnaireItemComponent item = new Questionnaire.QuestionnaireItemComponent();
       questionnaire.addItem(item);
-      item.getConcept().addAll(profile.getCode());
+      item.getConcept().addAll(profile.getKeyword());
       questionnaire.setId(nextId("qs"));
     }
 
@@ -237,7 +239,7 @@ public class QuestionnaireBuilder {
 
   }
 
-  private QuestionnaireStatus convertStatus(ConformanceResourceStatus status) {
+  private QuestionnaireStatus convertStatus(PublicationStatus status) {
     switch (status) {
 		case ACTIVE: return QuestionnaireStatus.PUBLISHED;
 		case DRAFT: return QuestionnaireStatus.DRAFT;
@@ -293,6 +295,8 @@ public class QuestionnaireBuilder {
         // it will have children of its own
         if (child.getType().isEmpty() || isAbstractType(child.getType())) 
           buildGroup(childGroup, profile, child, nparents, nResponse);
+        else if (isInlineDataType(child.getType()))
+          buildGroup(childGroup, profile, child, nparents, nResponse); // todo: get the right children for this one...
         else
           buildQuestion(childGroup, profile, child, child.getPath(), nResponse);
       }
@@ -301,6 +305,10 @@ public class QuestionnaireBuilder {
 
   private boolean isAbstractType(List<TypeRefComponent> type) {
     return type.size() == 1 && (type.get(0).getCode().equals("Element") || type.get(0).getCode().equals("BackboneElement"));
+  }
+
+  private boolean isInlineDataType(List<TypeRefComponent> type) {
+    return type.size() == 1 && (type.get(0).getCode().equals("ContactDetail") || type.get(0).getCode().equals("UsageContext"));
   }
 
   private boolean isExempt(ElementDefinition element, ElementDefinition child) {
@@ -420,24 +428,26 @@ public class QuestionnaireBuilder {
     ValueSet vs = new ValueSet();
     vs.setName("Type options for "+path);
     vs.setDescription(vs.getName());
-	  vs.setStatus(ConformanceResourceStatus.ACTIVE);
+	  vs.setStatus(PublicationStatus.ACTIVE);
     vs.setExpansion(new ValueSetExpansionComponent());
     vs.getExpansion().setIdentifier(Factory.createUUID());
     vs.getExpansion().setTimestampElement(DateTimeType.now());
     for (TypeRefComponent t : types) {
       ValueSetExpansionContainsComponent cc = vs.getExpansion().addContains();
-	    if (t.getCode().equals("Reference") && (t.hasProfile() && t.getProfile().startsWith("http://hl7.org/fhir/StructureDefinition/"))) { 
-	      cc.setCode(t.getProfile().substring(40));
+	    if (t.getCode().equals("Reference") && (t.hasTargetProfile() && t.getTargetProfile().startsWith("http://hl7.org/fhir/StructureDefinition/"))) { 
+	      cc.setCode(t.getTargetProfile().substring(40));
         cc.setSystem("http://hl7.org/fhir/resource-types");
 	      cc.setDisplay(cc.getCode());
       } else {
         ProfileUtilities pu = new ProfileUtilities(context, null, null);
         StructureDefinition ps = null;
-	      if (t.hasProfile()) 
+        if (t.hasTargetProfile()) 
+          ps = pu.getProfile(profile, t.getTargetProfile());
+        else if (t.hasProfile()) 
           ps = pu.getProfile(profile, t.getProfile());
         
         if (ps != null) {
-	        cc.setCode(t.getProfile());
+	        cc.setCode(t.getTargetProfile());
           cc.setDisplay(ps.getType());
           cc.setSystem("http://hl7.org/fhir/resource-types");
         } else {
@@ -446,7 +456,7 @@ public class QuestionnaireBuilder {
           cc.setSystem("http://hl7.org/fhir/data-types");
         }
       }
-      t.setUserData("text", cc.getCode());
+	    t.setUserData("text", cc.getCode());
     }
 
     return vs;
@@ -470,13 +480,15 @@ public class QuestionnaireBuilder {
       Coding cc = new Coding();
       QuestionnaireResponseItemAnswerComponent a = q.addAnswer();
       a.setValue(cc);
-      if (t.getCode().equals("Reference") && t.hasProfile() && t.getProfile().startsWith("http://hl7.org/fhir/StructureDefinition/")) {
-        cc.setCode(t.getProfile().substring(40));
+      if (t.getCode().equals("Reference") && t.hasTargetProfile() && t.getTargetProfile().startsWith("http://hl7.org/fhir/StructureDefinition/")) {
+        cc.setCode(t.getTargetProfile().substring(40));
         cc.setSystem("http://hl7.org/fhir/resource-types");
       } else {
         ProfileUtilities pu = new ProfileUtilities(context, null, null);
         StructureDefinition ps = null;
-        if (t.hasProfile())
+        if (t.hasTargetProfile())
+          ps = pu.getProfile(profile, t.getTargetProfile());
+        else if (t.hasProfile())
           ps = pu.getProfile(profile, t.getProfile());
 
         if (ps != null) {
@@ -715,7 +727,7 @@ public class QuestionnaireBuilder {
     else if (t.getCode().equals("Money"))
       addMoneyQuestions(group, element, path, answerGroups);
     else if (t.getCode().equals("Reference"))
-      addReferenceQuestions(group, element, path, t.hasProfile() ? t.getProfile() : null, answerGroups);
+      addReferenceQuestions(group, element, path, t.hasTargetProfile() ? t.getTargetProfile() : null, answerGroups);
     else if (t.getCode().equals("Duration"))
       addDurationQuestions(group, element, path, answerGroups);
     else if (t.getCode().equals("base64Binary"))
@@ -735,7 +747,9 @@ public class QuestionnaireBuilder {
     else if (t.getCode().equals("Extension")) {
       if (t.hasProfile())
         addExtensionQuestions(profile, group, element, path, t.getProfile(), answerGroups);
-    } else if (!t.getCode().equals("Narrative") && !t.getCode().equals("Resource") && !t.getCode().equals("ElementDefinition")&& !t.getCode().equals("Meta")&& !t.getCode().equals("Signature"))
+    } else if (t.getCode().equals("SampledData"))
+      addSampledDataQuestions(group, element, path, answerGroups);
+    else if (!t.getCode().equals("Narrative") && !t.getCode().equals("Resource") && !t.getCode().equals("ElementDefinition")&& !t.getCode().equals("Meta")&& !t.getCode().equals("Signature"))
       throw new NotImplementedException("Unhandled Data Type: "+t.getCode()+" on element "+element.getPath());
   }
 

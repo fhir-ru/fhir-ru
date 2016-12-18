@@ -4,10 +4,12 @@
   <id value="example-extension"/>
   <url value="http://hl7.org/fhir/SearchParameter/example-extension"/>
   <name value="Example Search Parameter on an extension"/>
+  <status value="draft"/>
+  <experimental value="true"/>
   <publisher value="Health Level Seven International (FHIR Infrastructure)"/>
   <contact>
     <telecom>
-      <system value="other"/>
+      <system value="url"/>
       <value value="http://hl7.org/fhir"/>
     </telecom>
   </contact>
@@ -15,6 +17,7 @@
   <base value="Patient"/>
   <type value="reference"/>
   <description value="Search by url for a participation agreement, which is stored in a DocumentReference"/>
+  <expression value="DocumentReference.extension('http://example.org/fhir/StructureDefinition/participation-agreement')"/>
   <xpath value="f:DocumentReference/f:extension[@url='http://example.org/fhir/StructureDefinition/participation-agreement']"/>
   <xpathUsage value="normal"/>
   <target value="DocumentReference"/>

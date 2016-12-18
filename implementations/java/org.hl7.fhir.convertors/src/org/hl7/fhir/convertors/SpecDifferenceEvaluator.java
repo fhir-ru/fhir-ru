@@ -1,27 +1,28 @@
 package org.hl7.fhir.convertors;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
+import org.hl7.fhir.dstu3.formats.XmlParser;
+import org.hl7.fhir.dstu3.model.Base;
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.dstu3.model.ElementDefinition;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionBindingComponent;
 import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
-import org.hl7.fhir.dstu3.model.Reference;
-import org.hl7.fhir.dstu3.model.ElementDefinition;
-import org.hl7.fhir.dstu3.model.Base;
 import org.hl7.fhir.dstu3.model.PrimitiveType;
-import org.hl7.fhir.dstu3.exceptions.FHIRFormatError;
-import org.hl7.fhir.dstu3.formats.XmlParser;
+import org.hl7.fhir.dstu3.model.Reference;
+import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.dstu3.model.Type;
@@ -29,10 +30,12 @@ import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionContainsComponent;
 import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.ZipGenerator;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -40,12 +43,12 @@ import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 public class SpecDifferenceEvaluator {
 
   public class SpecPackage {
-//    private Map<String, ValueSet> valuesets = new HashMap<String, ValueSet>();
+    private Map<String, ValueSet> valuesets = new HashMap<String, ValueSet>();
     private Map<String, ValueSet> expansions = new HashMap<String, ValueSet>();
     private Map<String, StructureDefinition> types = new HashMap<String, StructureDefinition>();
     private Map<String, StructureDefinition> resources = new HashMap<String, StructureDefinition>();
-//    private Map<String, StructureDefinition> extensions = new HashMap<String, StructureDefinition>();
-//    private Map<String, StructureDefinition> profiles = new HashMap<String, StructureDefinition>();
+    private Map<String, StructureDefinition> extensions = new HashMap<String, StructureDefinition>();
+    private Map<String, StructureDefinition> profiles = new HashMap<String, StructureDefinition>();
     public Map<String, StructureDefinition> getTypes() {
       return types;
     }
@@ -55,6 +58,16 @@ public class SpecDifferenceEvaluator {
     public Map<String, ValueSet> getExpansions() {
       return expansions;
     }
+    public Map<String, ValueSet> getValuesets() {
+      return valuesets;
+    }
+    public Map<String, StructureDefinition> getExtensions() {
+      return extensions;
+    }
+    public Map<String, StructureDefinition> getProfiles() {
+      return profiles;
+    }
+    
   }
   
   private SpecPackage original = new SpecPackage();
@@ -111,7 +124,7 @@ public class SpecDifferenceEvaluator {
     for (org.hl7.fhir.dstu2.model.Bundle.BundleEntryComponent be : bundle.getEntry()) {
       if (be.getResource() instanceof org.hl7.fhir.dstu2.model.StructureDefinition) {
         org.hl7.fhir.dstu2.model.StructureDefinition sd = (org.hl7.fhir.dstu2.model.StructureDefinition) be.getResource();
-        map.put(sd.getName(), new VersionConvertor(null).convertStructureDefinition(sd));
+        map.put(sd.getName(), new VersionConvertor_10_20(null).convertStructureDefinition(sd));
       }
     }
     
@@ -131,7 +144,7 @@ public class SpecDifferenceEvaluator {
     for (org.hl7.fhir.dstu2.model.Bundle.BundleEntryComponent be : bundle.getEntry()) {
       if (be.getResource() instanceof org.hl7.fhir.dstu2.model.ValueSet) {
         org.hl7.fhir.dstu2.model.ValueSet sd = (org.hl7.fhir.dstu2.model.ValueSet) be.getResource();
-        map.put(sd.getName(), new VersionConvertor(null).convertValueSet(sd));
+        map.put(sd.getName(), new VersionConvertor_10_20(null).convertValueSet(sd));
       }
     }    
   }
@@ -168,7 +181,7 @@ public class SpecDifferenceEvaluator {
       StructureDefinition orig = original.types.get(s);
       StructureDefinition rev = revision.types.get(s);
       if (orig == null) {
-        markNew(rev.getName(), true);
+        markNew(rev.getName(), true, false);
       } else if (rev.getKind() == StructureDefinitionKind.PRIMITIVETYPE) {
         markNoChanges(rev.getName(), true);
       } else if (rev.hasDerivation() && orig.hasDerivation() && rev.getDerivation() != orig.getDerivation()) {
@@ -189,7 +202,7 @@ public class SpecDifferenceEvaluator {
       StructureDefinition orig = original.resources.get(checkRename(s));
       StructureDefinition rev = revision.resources.get(s);
       if (orig == null) {
-        markNew(rev.getName(), true);
+        markNew(rev.getName(), true, true);
       } else {
         compare(orig, rev);
       }
@@ -251,12 +264,12 @@ public class SpecDifferenceEvaluator {
     right.addText("deleted");
   }
   
-  private void markNew(String name, boolean item) {
+  private void markNew(String name, boolean item, boolean res) {
     XhtmlNode tr = tbl.addTag("tr").setAttribute("class", item ? "diff-new-item" : "diff-new");
     XhtmlNode left = tr.addTag("td").setAttribute("class", "diff-left");
     XhtmlNode right = tr.addTag("td").setAttribute("class", "diff-right");
     left.addText(name);
-    right.addText("added");    
+    right.addText(res ? "added Resource" : "added Element");    
   }
 
   private void compare(StructureDefinition orig, StructureDefinition rev) {
@@ -283,7 +296,7 @@ public class SpecDifferenceEvaluator {
       ElementDefinition oed = (ElementDefinition) ed.getUserData("match");
       if (oed == null) {
         changed = true;
-        markNew(ed.getPath(), false);        
+        markNew(ed.getPath(), false, false);        
       } else 
         changed = compareElement(ed, oed) || changed;
     }
@@ -532,19 +545,43 @@ public class SpecDifferenceEvaluator {
   private boolean hasType(List<TypeRefComponent> types, TypeRefComponent tr) {
     for (TypeRefComponent t : types) {
       if (t.getCode().equals(tr.getCode())) {
-        if ((!t.hasProfile() && !tr.hasProfile()) || (t.getProfile().equals(tr.getProfile())))
+        if (((!t.hasProfile() && !tr.hasProfile()) || (t.getProfile().equals(tr.getProfile()))) &&
+            ((!t.hasTargetProfile() && !tr.hasTargetProfile()) || (t.getTargetProfile().equals(tr.getTargetProfile()))))
           return true;
       }
     }
     return false;
   }
   private String describeType(TypeRefComponent tr) {
-    if (!tr.hasProfile()) 
+    if (!tr.hasProfile() && !tr.hasTargetProfile()) 
       return tr.getCode();
-    else if (tr.getCode().equals("Reference") && tr.getProfile().startsWith("http://hl7.org/fhir/StructureDefinition/"))
-      return tr.getCode()+"("+tr.getProfile().substring(40)+")";
+    else if (tr.getCode().equals("Reference") && tr.getTargetProfile().startsWith("http://hl7.org/fhir/StructureDefinition/"))
+      return tr.getCode()+"("+tr.getTargetProfile().substring(40)+")";
+    else if (tr.hasTargetProfile())
+      return tr.getCode()+"{"+tr.getTargetProfile()+"}";
     else
       return tr.getCode()+"{"+tr.getProfile()+"}";
+  }
+
+  public void saveR2AsR3(ZipGenerator zip) throws IOException {
+    for (StructureDefinition t : original.types.values()) 
+      saveResource(zip, t);
+    for (StructureDefinition t : original.resources.values()) 
+      saveResource(zip, t);
+    for (StructureDefinition t : original.profiles.values()) 
+      saveResource(zip, t);
+    for (StructureDefinition t : original.extensions.values()) 
+      saveResource(zip, t);
+    for (ValueSet t : original.valuesets.values()) 
+      saveResource(zip, t);
+    for (ValueSet t : original.expansions.values()) 
+      saveResource(zip, t);
+  }
+
+  private void saveResource(ZipGenerator zip, Resource t) throws IOException {
+    ByteArrayOutputStream bs = new ByteArrayOutputStream();
+    new XmlParser().setOutputStyle(OutputStyle.PRETTY).compose(bs, t);
+    zip.addBytes(t.fhirType()+"-"+t.getId()+".xml", bs.toByteArray(), true);
   }
  
 }

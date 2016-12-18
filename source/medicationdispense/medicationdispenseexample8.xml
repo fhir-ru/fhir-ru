@@ -28,9 +28,10 @@
 		<display value="Rob van den Berk"/>
 	</dispenser>
 	<authorizingPrescription>
-		<reference value="MedicationOrder/medrx0309"/>
+		<reference value="MedicationRequest/medrx0309"/>
 	</authorizingPrescription>
 		<dosageInstruction>
+			<sequence value="1"/>
 		<timing>
 			<repeat>
 				<frequency value="2"/>

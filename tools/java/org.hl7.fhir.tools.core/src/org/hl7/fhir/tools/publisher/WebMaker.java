@@ -87,11 +87,15 @@ public class WebMaker {
         String link = parent.getChildNodes().get(i).getAttribute("name");
         parent.getChildNodes().get(i).addText(" ");
         node.addText(" ");
+        if (node.hasAttribute("class"))
+          throw new Error("test");
+        else
+          node.setAttribute("class", "self-link-parent");
         XhtmlNode a = node.addTag("a");
         a.setAttribute("href", pagename+"#"+link);
         a.setAttribute("title", "link to here");
         XhtmlNode img = a.addTag("img");
-        img.attribute("src", "target.png");
+        img.attribute("src", "assets/images/link.svg").attribute("height", "20").attribute("width", "20").attribute("class", "selflink");
       }
     }
     for (XhtmlNode child : node.getChildNodes()) 

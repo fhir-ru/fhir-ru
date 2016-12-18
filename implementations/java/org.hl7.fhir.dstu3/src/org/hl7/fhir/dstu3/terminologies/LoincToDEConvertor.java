@@ -9,21 +9,21 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.hl7.fhir.dstu3.exceptions.FHIRFormatError;
 import org.hl7.fhir.dstu3.formats.XmlParser;
 import org.hl7.fhir.dstu3.model.Bundle;
+import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.dstu3.model.Bundle.BundleType;
 import org.hl7.fhir.dstu3.model.CodeableConcept;
 import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.DataElement;
 import org.hl7.fhir.dstu3.model.DateTimeType;
 import org.hl7.fhir.dstu3.model.ElementDefinition;
+import org.hl7.fhir.dstu3.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.dstu3.model.Identifier;
 import org.hl7.fhir.dstu3.model.InstantType;
 import org.hl7.fhir.dstu3.model.Meta;
-import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
-import org.hl7.fhir.dstu3.model.Bundle.BundleType;
-import org.hl7.fhir.dstu3.model.Enumerations.ConformanceResourceStatus;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
@@ -168,9 +168,9 @@ public class LoincToDEConvertor {
 				de.addIdentifier(id);
 				de.setPublisher("Regenstrief + FHIR Project Team");
 				if (!col(row, "STATUS").equals("ACTIVE"))
-	 				de.setStatus(ConformanceResourceStatus.DRAFT); // till we get good at this
+	 				de.setStatus(PublicationStatus.DRAFT); // till we get good at this
 				else
-					de.setStatus(ConformanceResourceStatus.RETIRED);
+					de.setStatus(PublicationStatus.RETIRED);
 				de.setDateElement(DateTimeType.now());
 				de.setName(comp);
 				ElementDefinition dee = de.addElement();

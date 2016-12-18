@@ -1,4 +1,4 @@
-<PaymentNotice xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\remittance.xsd">
+<PaymentNotice xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/remittance.xsd">
  <id value="77654"/>
 
  <text>
@@ -13,19 +13,21 @@
  
   <status value="active"/>
  
+  <request>
+    <reference value="http://benefitsinc.com/fhir/claim/12345"/>
+  </request>
+
   <created value="2014-08-16"/>
 
-  <organizationReference>
+  <organization>
     <reference value="Organization/1"/>
-  </organizationReference>
+  </organization>
   
-  <requestReference>
-    <reference value="http://benefitsinc.com/fhir/oralhealthclaim/12345"/>
-  </requestReference>
-
-	<paymentStatus>
-		<system value="http://hl7.org/fhir/paymentstatus"/>
-		<code value="paid"/>
-	</paymentStatus>
+  <paymentStatus>
+   <coding>
+	<system value="http://hl7.org/fhir/paymentstatus"/>
+	<code value="paid"/>
+   </coding>
+  </paymentStatus>
 
  </PaymentNotice>

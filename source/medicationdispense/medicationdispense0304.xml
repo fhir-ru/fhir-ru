@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MedicationDispense xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationdispense.xsd"
-    xmlns="http://hl7.org/fhir">
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationdispense.xsd"
+ xmlns="http://hl7.org/fhir">
     <id value="meddisp0304"/>
     <contained>
         <Medication>
@@ -30,7 +30,7 @@
         <display value="Rob van den Berk"/>
     </dispenser>
     <authorizingPrescription>
-        <reference value="MedicationOrder/medrx0319"/>
+        <reference value="MedicationRequest/medrx0319"/>
     </authorizingPrescription>
     <type>
         <coding>
@@ -53,6 +53,7 @@
     <whenPrepared value="2015-06-25T07:13:00+05:00"/>
     <whenHandedOver value="2015-06-26T07:13:00+05:00"/>
     <dosageInstruction>
+        <sequence value="1"/>
         <text value="4.5 grams in D5W 250 ml. IV every 6 hours. Infuse over 30 min at 8L/min"/>
         <timing>
             <repeat>
@@ -61,13 +62,13 @@
                 <periodUnit value="h"/>	
             </repeat>
         </timing>
-        <siteCodeableConcept>
+        <site>
             <coding>
                 <system value="http://snomed.info/sct"/>
                 <code value="255560000"/>
                 <display value="Intravenous route (qualifier value)"/>
             </coding>
-        </siteCodeableConcept>
+        </site>
         <route>
             <coding>
                 <system value="http://snomed.info/sct"/>

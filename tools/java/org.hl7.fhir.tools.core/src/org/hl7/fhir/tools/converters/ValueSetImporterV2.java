@@ -17,21 +17,20 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.hl7.fhir.dstu3.formats.FormatUtilities;
-import org.hl7.fhir.dstu3.model.BooleanType;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
-import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemHierarchyMeaning;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
 import org.hl7.fhir.dstu3.model.ContactPoint.ContactPointSystem;
 import org.hl7.fhir.dstu3.model.DateTimeType;
-import org.hl7.fhir.dstu3.model.Enumerations.ConformanceResourceStatus;
+import org.hl7.fhir.dstu3.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.dstu3.model.Factory;
 import org.hl7.fhir.dstu3.model.Narrative;
 import org.hl7.fhir.dstu3.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.model.ValueSet.ConceptReferenceComponent;
 import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
+import org.hl7.fhir.dstu3.model.ValueSet.ValueSetComposeComponent;
 import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
@@ -352,8 +351,8 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
     vs.setName("v2 table " + id);
     vs.setPublisher("HL7, Inc");
     vs.setVersion(MAX_VER);
-    vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.OTHER, "http://hl7.org"));
-    vs.setStatus(ConformanceResourceStatus.ACTIVE);
+    vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org"));
+    vs.setStatus(PublicationStatus.ACTIVE);
     vs.setExperimental(true);
     vs.setDateElement(new DateTimeType(date)); 
     StringBuilder s = new StringBuilder();
@@ -456,6 +455,8 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
       if (definesCode(cs.getConcept(), cd)) {
         if (cset != null)
           throw new Exception("Multiple possible matches for "+cd+" in "+sources.toString());
+        if (!vs.hasCompose())
+          vs.setCompose(new ValueSetComposeComponent());
         for (ConceptSetComponent cc : vs.getCompose().getInclude()) {
           if (cc.getSystem().equals(system)) 
             cset = cc;
@@ -487,8 +488,8 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
     vs.setName("v2 table " + id);
     vs.setPublisher("HL7, Inc");
     vs.setVersion(MAX_VER);
-    vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.OTHER, "http://hl7.org"));
-    vs.setStatus(ConformanceResourceStatus.ACTIVE);
+    vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org"));
+    vs.setStatus(PublicationStatus.ACTIVE);
     vs.setExperimental(true);
     vs.setDateElement(new DateTimeType(date)); 
     
@@ -565,13 +566,12 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
       // consideration
       if (!(MAX_VER.equals(max)) || comment.equalsIgnoreCase("deprecated")) {
         CodeSystemUtilities.setDeprecated(cs, concept, dateForVersion(Utilities.noString(commentVer) ? max : commentVer));
-        concept.addProperty().setCode("deprecated").setValue(new BooleanType(true));
         if (Utilities.noString(comment))
           comment = "deprecated";
       }
       cs.getConcept().add(concept);
-      String nm = Utilities.nmtokenize(cd);
-      s.append("<tr><td>" + Utilities.escapeXml(cd) + "<a name=\"" + Utilities.escapeXml(nm) + "\"> </a></td><td>" + Utilities.escapeXml(codes.get(cd))
+      String nm = Utilities.nmtokenize(concept.getCode());
+      s.append("<tr><td>" + Utilities.escapeXml(concept.getCode()) + "<a name=\"" + Utilities.escapeXml(nm) + "\"> </a></td><td>" + Utilities.escapeXml(codes.get(cd))
          + "</td><td>" + Utilities.escapeXml(comment) + "</td><td>" + ver + "</td></tr>");
     }
     s.append("</table>\r\n");
@@ -590,6 +590,8 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
     cs.setUrl("http://hl7.org/fhir/v2/" + id);
     cs.setId("v2-"+FormatUtilities.makeId(id));
     cs.setUserData("filename", Utilities.path("v2", id, "index.html"));
+    if (!vs.hasCompose())
+      vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().addInclude().setSystem(cs.getUrl());
     vp.vs = vs;
     vp.cs = cs;
@@ -645,8 +647,8 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
     vs.setUrl("http://hl7.org/fhir/ValueSet/"+vs.getId());
     vs.setName("v2 table " + id + ", Version " + version);
     vs.setPublisher("HL7, Inc");
-    vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.OTHER, "http://hl7.org"));
-    vs.setStatus(ConformanceResourceStatus.ACTIVE);
+    vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org"));
+    vs.setStatus(PublicationStatus.ACTIVE);
     vs.setExperimental(false);
     vs.setVersion(id);
     vs.setDateElement(new DateTimeType(date)); 
@@ -664,6 +666,8 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
     cs.setUrl("http://hl7.org/fhir/v2/" + id + "/" + version);
     cs.setId("v2-"+FormatUtilities.makeId(version)+"-"+id);
     cs.setUserData("filename", Utilities.path("v2", id, version, "index.html"));
+    if (!vs.hasCompose())
+      vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().addInclude().setSystem(cs.getUrl());
 
     String desc = "";
@@ -735,6 +739,7 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
       concept.setDisplay(codes.get(cd)); // we deem the v2 description to
       if (comments.containsKey(cd))
         ToolingExtensions.addComment(concept, comments.get(cd));
+      
       
       // be display name, not
       // definition. Open for

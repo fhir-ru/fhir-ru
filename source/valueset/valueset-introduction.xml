@@ -14,12 +14,12 @@ The FHIR terminology specification is based two key concepts, originally defined
 Value sets have 2 aspects:
 </p>
 <ul>
- <li><code>.compose</code>: A definition of what codes are in intended to be in the value set ("intension")</li>
+ <li><code>.compose</code>: A definition of which codes are intended to be in the value set ("intension")</li>
  <li><code>.expansion</code>: The list of codes that are actually in the value set under a given set of conditions ("extension")</li>
 </ul>
 <p>
 The <code>ValueSet</code> resource can carry either the <code>.compose</code> or the <code>.expansion</code>,
-or both. There is an <a href="valueset-operations.html#expand">"$expand" operation</a> which can be used to ask a server to generation 
+or both. There is a <a href="valueset-operations.html#expand">"$expand" operation</a> which can be used to ask a server to generate
 an expansion given the composition rules. 
 </p>
 </div>
@@ -36,7 +36,7 @@ an expansion given the composition rules.
  value set and code system resources.</li>
  <li>The value set resource is aligned with the <a href="http://wiki.hl7.org/index.php?title=Value_Set_Definition_Standard_Project">Value Set Definition</a> (VSD) project. 
  Not all of the elements defined by the VSD are part of the base resource - some are defined as part of the <a href="valueset-extensions.html">ValueSet Extensions</a>.
- In the ValueSet resource, the <code>lockedDate</code>, <code>compose</code> and <code>codeSystem</code> elements make up the VSD "Content Logical definition".</li>
+ In the ValueSet resource, the <code>compose</code> element is the VSD "Content Logical definition".</li>
 </ul>
 </div>
 

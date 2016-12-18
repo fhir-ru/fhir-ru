@@ -13,68 +13,67 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
+import org.hl7.fhir.dstu3.context.SimpleWorkerContext;
+import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
 import org.hl7.fhir.dstu3.formats.JsonParser;
 import org.hl7.fhir.dstu3.formats.XmlParser;
-import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
 import org.hl7.fhir.dstu3.model.Address;
 import org.hl7.fhir.dstu3.model.AllergyIntolerance;
+import org.hl7.fhir.dstu3.model.AllergyIntolerance.AllergyIntoleranceReactionComponent;
 import org.hl7.fhir.dstu3.model.Base;
 import org.hl7.fhir.dstu3.model.Binary;
 import org.hl7.fhir.dstu3.model.BooleanType;
 import org.hl7.fhir.dstu3.model.CodeableConcept;
 import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.Condition;
+import org.hl7.fhir.dstu3.model.Condition.ConditionVerificationStatus;
 import org.hl7.fhir.dstu3.model.ContactPoint;
 import org.hl7.fhir.dstu3.model.DateTimeType;
 import org.hl7.fhir.dstu3.model.DocumentReference;
+import org.hl7.fhir.dstu3.model.DocumentReference.DocumentReferenceContentComponent;
+import org.hl7.fhir.dstu3.model.DocumentReference.DocumentReferenceContextComponent;
 import org.hl7.fhir.dstu3.model.DomainResource;
+import org.hl7.fhir.dstu3.model.DosageInstruction;
 import org.hl7.fhir.dstu3.model.Encounter;
+import org.hl7.fhir.dstu3.model.Encounter.EncounterHospitalizationComponent;
+import org.hl7.fhir.dstu3.model.Encounter.EncounterStatus;
+import org.hl7.fhir.dstu3.model.Enumerations.DocumentReferenceStatus;
 import org.hl7.fhir.dstu3.model.Extension;
 import org.hl7.fhir.dstu3.model.Factory;
 import org.hl7.fhir.dstu3.model.HumanName;
 import org.hl7.fhir.dstu3.model.Identifier;
 import org.hl7.fhir.dstu3.model.Immunization;
+import org.hl7.fhir.dstu3.model.Immunization.ImmunizationExplanationComponent;
+import org.hl7.fhir.dstu3.model.Immunization.ImmunizationStatus;
 import org.hl7.fhir.dstu3.model.InstantType;
 import org.hl7.fhir.dstu3.model.ListResource;
+import org.hl7.fhir.dstu3.model.ListResource.ListMode;
+import org.hl7.fhir.dstu3.model.ListResource.ListStatus;
 import org.hl7.fhir.dstu3.model.Location;
 import org.hl7.fhir.dstu3.model.Medication;
 import org.hl7.fhir.dstu3.model.MedicationStatement;
+import org.hl7.fhir.dstu3.model.MedicationStatement.MedicationStatementStatus;
 import org.hl7.fhir.dstu3.model.Narrative;
+import org.hl7.fhir.dstu3.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.dstu3.model.Observation;
+import org.hl7.fhir.dstu3.model.Observation.ObservationRelationshipType;
+import org.hl7.fhir.dstu3.model.Observation.ObservationStatus;
+import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.dstu3.model.Organization;
 import org.hl7.fhir.dstu3.model.Patient;
 import org.hl7.fhir.dstu3.model.Period;
 import org.hl7.fhir.dstu3.model.Practitioner;
 import org.hl7.fhir.dstu3.model.Procedure;
+import org.hl7.fhir.dstu3.model.Procedure.ProcedurePerformerComponent;
+import org.hl7.fhir.dstu3.model.Procedure.ProcedureStatus;
 import org.hl7.fhir.dstu3.model.Reference;
 import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.StringType;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.Timing;
 import org.hl7.fhir.dstu3.model.Type;
-import org.hl7.fhir.dstu3.model.AllergyIntolerance.AllergyIntoleranceReactionComponent;
-import org.hl7.fhir.dstu3.model.Condition.ConditionVerificationStatus;
-import org.hl7.fhir.dstu3.model.DocumentReference.DocumentReferenceContentComponent;
-import org.hl7.fhir.dstu3.model.DocumentReference.DocumentReferenceContextComponent;
-import org.hl7.fhir.dstu3.model.Encounter.EncounterHospitalizationComponent;
-import org.hl7.fhir.dstu3.model.Encounter.EncounterStatus;
-import org.hl7.fhir.dstu3.model.Enumerations.DocumentReferenceStatus;
-import org.hl7.fhir.dstu3.model.Immunization.ImmunizationExplanationComponent;
-import org.hl7.fhir.dstu3.model.Immunization.ImmunizationStatus;
-import org.hl7.fhir.dstu3.model.ListResource.ListMode;
-import org.hl7.fhir.dstu3.model.ListResource.ListStatus;
-import org.hl7.fhir.dstu3.model.MedicationStatement.MedicationStatementDosageComponent;
-import org.hl7.fhir.dstu3.model.MedicationStatement.MedicationStatementStatus;
-import org.hl7.fhir.dstu3.model.Narrative.NarrativeStatus;
-import org.hl7.fhir.dstu3.model.Observation.ObservationRelationshipType;
-import org.hl7.fhir.dstu3.model.Observation.ObservationStatus;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.dstu3.model.Procedure.ProcedurePerformerComponent;
-import org.hl7.fhir.dstu3.model.Procedure.ProcedureStatus;
-import org.hl7.fhir.dstu3.terminologies.ITerminologyServices;
 import org.hl7.fhir.dstu3.utils.NarrativeGenerator;
 import org.hl7.fhir.dstu3.utils.ResourceUtilities;
-import org.hl7.fhir.dstu3.validation.ValidationEngine;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
@@ -131,7 +130,8 @@ public class ArgonautConverter extends ConverterBase {
 	}
 
 	private UcumService ucumSvc;
-	private ValidationEngine validator;
+//	private ValidationEngine validator;
+	private SimpleWorkerContext context;
 	private Map<String, Map<String, Integer>> sections = new HashMap<String, Map<String,Integer>>();
 	private Map<String, Practitioner> practitionerCache = new HashMap<String, Practitioner>();
 	public int perfCount;
@@ -148,9 +148,10 @@ public class ArgonautConverter extends ConverterBase {
 	public ArgonautConverter(UcumService ucumSvc, String path) throws Exception {
 		super();
 		this.ucumSvc = ucumSvc;
-		validator = new ValidationEngine();
-		validator.readDefinitions(path);
-		validator.setAnyExtensionsAllowed(true);
+		context = SimpleWorkerContext.fromPack(path);
+//		validator = new ValidationEngine();
+//		validator.readDefinitions(path);
+//		validator.setAnyExtensionsAllowed(true);
 	}
 
 	public int getErrors() {
@@ -342,7 +343,7 @@ public class ArgonautConverter extends ConverterBase {
 		if (resource instanceof DomainResource) {
 			dr = (DomainResource) resource;
 			if (!dr.hasText()) {
-				NarrativeGenerator generator = new NarrativeGenerator("", "", validator.getContext());
+				NarrativeGenerator generator = new NarrativeGenerator("", "", context);
 				generator.generate(dr);
 			}
 		}
@@ -385,15 +386,15 @@ public class ArgonautConverter extends ConverterBase {
 			return;
 		if (url == null)
 			url = "http://hl7.org/fhir/StructureDefinition/"+resource.getResourceType().toString();
-		StructureDefinition def = validator.getContext().fetchResource(StructureDefinition.class, url);
+		StructureDefinition def = context.fetchResource(StructureDefinition.class, url);
 		if (def == null)
 			throw new Exception("Unable to find Structure Definition "+url);
 
-		validator.reset();
-		validator.setProfile(def);
-		validator.setSource(src);
-		validator.process();
-		List<ValidationMessage> msgs = validator.getOutputs();
+//		validator.reset();
+//		validator.setProfile(def);
+//		validator.setSource(src);
+//		validator.process();
+		List<ValidationMessage> msgs = null; // validator.getOutputs();
 		boolean ok = false;
 		boolean first = true;
 		for (ValidationMessage m : msgs) {
@@ -795,7 +796,7 @@ public class ArgonautConverter extends ConverterBase {
 			cond.setContext(new Reference().setReference("Encounter/"+context.encounter.getId()));
 			cond.setVerificationStatus(getVerificationStatusFromAct(cda.getChild(pca, "statusCode")));
 
-			cond.setDateRecordedElement(convert.makeDateFromTS(cda.getChild(cda.getChild(pca, "effectiveTime"), "low")));
+			cond.setAssertedDateElement(convert.makeDateFromTS(cda.getChild(cda.getChild(pca, "effectiveTime"), "low")));
 
 			boolean found = false;
 			for (Element e : cda.getChildren(pca, "id")) {
@@ -858,7 +859,7 @@ public class ArgonautConverter extends ConverterBase {
 			i++;
 			ai.setPatient(context.subjectRef);
 
-			ai.setAttestedDateElement(convert.makeDateTimeFromTS(cda.getChild(cda.getChild(apa, "effectiveTime"), "low")));
+			ai.setAssertedDateElement(convert.makeDateTimeFromTS(cda.getChild(cda.getChild(apa, "effectiveTime"), "low")));
 			boolean found = false;
 			for (Element e : cda.getChildren(apa, "id")) {
 				Identifier id = convert.makeIdentifierFromII(e);
@@ -1100,7 +1101,7 @@ public class ArgonautConverter extends ConverterBase {
 			ms.setId(context.baseId+"-medication-"+Integer.toString(i));
 			ms.setUserData("profile", "http://hl7.org/fhir/StructureDefinition/medicationstatement-daf-dafmedicationstatement");
 			i++;
-			ms.setPatient(context.subjectRef);
+			ms.setSubject(context.subjectRef);
 
 			boolean found = false;
 			for (Element e : cda.getChildren(sa, "id")) {
@@ -1117,7 +1118,7 @@ public class ArgonautConverter extends ConverterBase {
 				med.setId("med");
 				med.setCode(inspectCode(convert.makeCodeableConceptFromCD(cda.getChild(mm, "code")), null));
 				ms.getContained().add(med);
-				MedicationStatementDosageComponent dosage = ms.addDosage();
+				DosageInstruction dosage = ms.addDosage();
 				Element qty = cda.getChild(sa, "doseQuantity"); // allergy observation
 				try {
 					if (cda.getChild(qty, "low") != null) {
@@ -1288,7 +1289,7 @@ public class ArgonautConverter extends ConverterBase {
 					Reference ref = new Reference().setReference("Practitioner/"+p.getId()).setDisplay(p.getUserString("display"));
 					imm.setPerformer(ref);
 				}
-				imm.setReported(!imm.hasPerformer());
+				imm.setPrimarySource(!imm.hasPerformer());
 				saveResource(imm);
 			}
 		}

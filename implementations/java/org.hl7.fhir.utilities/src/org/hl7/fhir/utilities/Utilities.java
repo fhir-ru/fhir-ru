@@ -955,7 +955,7 @@ public class Utilities {
 
 
   public static boolean isAbsoluteUrl(String ref) {
-    return ref.startsWith("http:") || ref.startsWith("https:") || ref.startsWith("urn:uuid:") || ref.startsWith("urn:oid:") ;
+    return ref != null && ref.startsWith("http:") || ref.startsWith("https:") || ref.startsWith("urn:uuid:") || ref.startsWith("urn:oid:") ;
   }
 
 
@@ -976,6 +976,40 @@ public class Utilities {
     l = l.toLowerCase().trim();
     r = r.toLowerCase().trim(); // not that this should make any difference
     return l.startsWith(r) || r.startsWith(l);
+  }
+
+
+  public static String getFileExtension(String fn) {
+    return fn.contains(".") ? fn.substring(fn.lastIndexOf(".")+1) : "";
+  }
+
+
+  public static String unCamelCase(String name) {
+    StringBuilder b = new StringBuilder();
+    boolean first = true;
+    for (char c : name.toCharArray()) {
+      if (Character.isUpperCase(c)) {
+        if (!first)
+          b.append(" ");
+        b.append(Character.toLowerCase(c));
+      } else 
+        b.append(c);
+      first = false;        
+    }
+    return b.toString();
+  }
+
+
+  public static boolean isAbsoluteFileName(String source) {
+    if (isWindows())
+      return (source.length() > 2 && source.charAt(1) == ':') || source.startsWith("\\\\");
+    else
+      return source.startsWith("//");
+  }
+
+
+  private static boolean isWindows() {
+    return System.getProperty("os.name").startsWith("Windows");
   }
 
 

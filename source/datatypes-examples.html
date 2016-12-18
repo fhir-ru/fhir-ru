@@ -25,7 +25,7 @@
 </table>
 
 
-<a name="primitive"></a>
+<a name="primitive"> </a>
 <h3>Primitive Types</h3>
 <a name="boolean"> </a>
 <a name="integer"> </a>
@@ -39,7 +39,7 @@
 <a name="dateTime"> </a>
 <a name="datetime"> </a>
 <a name="time"> </a>
-<a name="patterns"></a>
+<a name="patterns"> </a>
 <a name="code"> </a>
 <a name="oid"> </a>
 <a name="uuid"> </a>
@@ -61,7 +61,7 @@
   <p>2:35pm in the afternoon:</p><pre class="xml" fragment="time">&lt;time value="14:35" /&gt;</pre>
 </div>
 
-<a name="strings"></a>
+<a name="strings"> </a>
 <h3>String Patterns</h3>
 
 <div class="example">
@@ -73,8 +73,8 @@
 	<p>An alphanumeric id:</p><pre class="xml" fragment="code">&lt;id value="alpha-gamma-14" /&gt;</pre>
 </div>
 
-<a name="Attachment"></a>
-<a name="attachment"></a>
+<a name="Attachment"> </a>
+<a name="attachment"> </a>
 <h3 style="margin-bottom: 1px">
 Attachment
 </h3>
@@ -112,8 +112,8 @@ Since the JSON examples have the same structure as the XML, only XML is shown fo
 </pre>
 </div>
 
-<a name="Identifier"></a>
-<a name="identifier"></a>
+<a name="Identifier"> </a>
+<a name="identifier"> </a>
 <h3 style="margin-bottom: 1px">
 Identifier
 </h3>
@@ -204,8 +204,8 @@ to some organization to further sub-allocate):</p>
 </div>
 
 
-<a name="Coding"></a>
-<a name="coding"></a>
+<a name="Coding"> </a>
+<a name="coding"> </a>
 <h3 style="margin-bottom: 1px">Coding</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
 See also <a href="datatypes.html#Coding">Base Definition</a>, <a href="datatypes-definitions.html#Coding">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Coding">Mappings</a>.
@@ -231,8 +231,8 @@ See also <a href="datatypes.html#Coding">Base Definition</a>, <a href="datatypes
 
 
 
-<a name="CodeableConcept"></a>
-<a name="codeableconcept"></a>
+<a name="CodeableConcept"> </a>
+<a name="codeableconcept"> </a>
 <h3 style="margin-bottom: 1px">
 CodeableConcept
 </h3>
@@ -340,15 +340,15 @@ And where the value set would be something like this:
   &lt;/ValueSet&gt;
 </pre>
 </div>
-<a name="Quantity"></a>
-<a name="quantity"></a>
-<a name="SimpleQuantity"></a>
-<a name="simplequantity"></a>
-<a name="age"></a>
-<a name="distance"></a>
-<a name="duration"></a>
-<a name="count"></a>
-<a name="money"></a>
+<a name="Quantity"> </a>
+<a name="quantity"> </a>
+<a name="SimpleQuantity"> </a>
+<a name="simplequantity"> </a>
+<a name="age"> </a>
+<a name="distance"> </a>
+<a name="duration"> </a>
+<a name="count"> </a>
+<a name="money"> </a>
 <h3 style="margin-bottom: 1px">
 Quantity
 </h3>
@@ -397,8 +397,8 @@ See also <a href="datatypes.html#Quantity">Base Definition</a>, <a href="datatyp
 </pre>
 </div>
 
-<a name="Range"></a>
-<a name="range"></a>
+<a name="Range"> </a>
+<a name="range"> </a>
 <h3 style="margin-bottom: 1px">
 Range
 </h3>
@@ -421,8 +421,8 @@ See also <a href="datatypes.html#Range">Base Definition</a>, <a href="datatypes-
   &lt;/estimate&gt;
 </pre>
 </div>
-<a name="Ratio"></a>
-<a name="ratio"></a>
+<a name="Ratio"> </a>
+<a name="ratio"> </a>
 <h3 style="margin-bottom: 1px">
 Ratio
 </h3>
@@ -460,8 +460,8 @@ See also <a href="datatypes.html#Ratio">Base Definition</a>, <a href="datatypes-
   &lt;/charge&gt;
 </pre>
 </div>
-<a name="Period"></a>
-<a name="period"></a>
+<a name="Period"> </a>
+<a name="period"> </a>
 <h3 style="margin-bottom: 1px">
 Period
 </h3>
@@ -480,8 +480,8 @@ See also <a href="datatypes.html#Period">Base Definition</a>, <a href="datatypes
 </pre>
 </div>
 
-<a name="SampledData"></a>
-<a name="sampleddata"></a>
+<a name="SampledData"> </a>
+<a name="sampleddata"> </a>
 <h3 style="margin-bottom: 1px">
 SampledData
 </h3>
@@ -506,8 +506,8 @@ See also <a href="datatypes.html#SampledData">Base Definition</a>, <a href="data
  &lt;/sampledData&gt;
 </pre>
 </div>
-<a name="HumanName"></a>
-<a name="humanname"></a>
+<a name="HumanName"> </a>
+<a name="humanname"> </a>
 <h3 style="margin-bottom: 1px">
 HumanName
 </h3>
@@ -578,40 +578,41 @@ Karen van Hentenryck is of Dutch origin, and the "van" is a voorvoegsel.
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use value=&quot;official&quot; /&gt;
-  &lt;family value=&quot;van&quot;&gt;
-    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier&quot; &gt;
-	   &lt;valueCode value=&quot;VV&quot; /&gt;
+  &lt;family value=&quot;van Hentenryck&quot; &gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/humanname-own-prefix&quot; &gt;
+	   &lt;valueString value=&quot;van&quot; /&gt;
+    &lt;/extension&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/humanname-own-name&quot;&gt;
+      &lt;valueString value=&quot;Hentenryck&quot; /&gt;
     &lt;/extension&gt;
   &lt;/family&gt;
-  &lt;family value=&quot;Hentenryck&quot; /&gt;
   &lt;given value=&quot;Karen&quot; /&gt;
 &lt;/name&gt;
 </pre>
 <p>
-See <a href="extensibility-examples.html">the Extensibility Example for more information</a>.
-Note that this name has multiple family name parts. Systems that do not support as many name parts
-as are provided in an instance they are processing may wish to append parts together using spaces,
-so that this becomes "van Hentenryck".
+See <a href="extensibility-examples.html">the Extensibility Example for more information</a> about the use of extensions.
 </p>
 </div>
 
 
 <div class="example">
-<p>Complex example from Germany: Dr.phil. Regina Johanna Maria Gräfin Hochheim-Weilenfels, NCFSA. This example shows extensive use of
+<p>Complex example from Germany: Dr.phil. Regina Johanna Maria von Hochheim-Weilenfels, NCFSA. This example shows extensive use of
 multiple given names, prefixes, suffixes, for academic degrees, nobility titles, and professional designations.
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
   &lt;use value=&quot;official&quot; /&gt;
-  &lt;family value=&quot;Hochheim-Weilenfels&quot; /&gt;
+  &lt;family value=&quot;von Hochheim-Weilenfels&quot;&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/humanname-own-prefix&quot; &gt;
+      &lt;valueString value=&quot;von&quot; /&gt;
+    &lt;/extension&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/humanname-own-name&quot;&gt;
+      &lt;valueString value="Hochheim-Weilenfels" /&gt;
+    &lt;/extension&gt;    
+  &lt;/family&gt;
   &lt;given value=&quot;Regina&quot; /&gt;
   &lt;given value=&quot;Johanna&quot; /&gt;
   &lt;given value=&quot;Maria&quot; /&gt;
-  &lt;prefix value=&quot;Gräfin&quot;&gt;
-    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier&quot; &gt;
-      &lt;valueCode value=&quot;NB&quot; /&gt;
-    &lt;/extension&gt;
-  &lt;/prefix&gt;
   &lt;prefix value=&quot;Dr. phil.&quot;&gt;
     &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier&quot; &gt;
       &lt;valueCode value=&quot;AC&quot; /&gt;
@@ -625,7 +626,7 @@ multiple given names, prefixes, suffixes, for academic degrees, nobility titles,
 &lt;/name&gt;
 </pre>
 <p>
-This example makes use of the ISO 21090 extensions to carry the rare ISO 21090 qualifier attributes "AC" and "NB".
+This example makes use of the ISO 21090 extensions to carry the rarely used ISO 21090 qualifier attribute "AC".
 </p>
 </div>
 
@@ -633,20 +634,31 @@ This example makes use of the ISO 21090 extensions to carry the rare ISO 21090 q
 <p>Japanese example in the three forms: ideographic (Kanji), syllabic (Hiragana) and alphabetic (Romaji).</p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;family value="??" /&gt;
-  &lt;given value="??" /&gt;
+  &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation&quot;&gt;
+      &lt;valueCode value=&quot;IDE&quot; /&gt;
+  &lt;/extension&gt;
+  &lt;family value="木村" /&gt;
+  &lt;given value="通男" /&gt;
   &lt;/name&gt;
 &lt;name&gt;
- &lt;family value="???" /&gt;
- &lt;given value="???" /&gt;
+  &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation&quot;&gt;
+      &lt;valueCode value=&quot;SYL&quot; /&gt;
+  &lt;/extension&gt;
+ &lt;family value="きむら" /&gt;
+ &lt;given value="みちお" /&gt;
 &lt;/name&gt;
 &lt;name&gt;
+  &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-EN-representation&quot;&gt;
+      &lt;valueCode value=&quot;ABC&quot; /&gt;
+  &lt;/extension&gt;
   &lt;family value="KIMURA" /&gt;
   &lt;given value="MICHIO" /&gt;
 &lt;/name&gt;
 </pre>
 <p>
-The three forms are differentiated by the character subset each contains.
+The three forms may be differentiated by the character subset each contains, but some systems
+require the differentiation to be made manually, which can be done using the ED representation
+extension.
 </p>
 </div>
 
@@ -654,9 +666,9 @@ The three forms are differentiated by the character subset each contains.
 <p>Russian example in the two forms: cyrillic, and latin:</p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;family value="??????" /&gt;
-  &lt;given value="????" /&gt;
-  &lt;given value="????????????" /&gt;
+  &lt;family value="ЕМЕЛИН" /&gt;
+  &lt;given value="ИВАН" /&gt;
+  &lt;given value="ВЛАДИМИРОВИЧ" /&gt;
 &lt;/name&gt;
 &lt;name&gt;
   &lt;family value="EMELIN" /&gt;
@@ -665,8 +677,8 @@ The three forms are differentiated by the character subset each contains.
 &lt;/name&gt;
 </pre>
 <p>
-In  Russian  usage, these names are known as
-the domestic and foreign names respectively. The two forms are differentiated by the character subset each contains.
+In  Russian  usage, these names are known as the domestic and foreign names respectively. 
+The two forms are differentiated by the character subset each contains.
 </p>
 </div>
 
@@ -793,9 +805,6 @@ A patronymic with a "son/daughter of" appellation:
   &lt;given value=&quot;Isa&quot;/&gt;
 &lt;/name&gt;
 </pre>
-<p>
-Note: The family name may also be given as two different family names.
-</p>
 
 <p>
 A Chinese name with a generational name:
@@ -832,27 +841,67 @@ Additional Western name (see also example above):
 </pre>
 
 <p>
-Multiple Family names:
+Composite Family name:
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;family value="Carreño" /&gt;
-  &lt;family value="Quiñones" /&gt;
+  &lt;family value="Carreño Quiñones" &gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/humanname-fathers&quot;&gt;
+        &lt;valueString value=&quot;Carreño&quot; /&gt;
+    &lt;/extension&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/humanname-mothers&quot;&gt;
+        &lt;valueString value=&quot;Quiñones&quot; /&gt;
+    &lt;/extension&gt;
+  &lt;/family&gt;
   &lt;given value="María-Jose" /&gt;
 &lt;/name&gt;
 </pre>
-
 <p>
-Brazilian Example:
+Note that it is optional whether to break down the family name to mother's and father's parts,
+and not always of value, as in this Brazilian Example:
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;family value="Eduardo" /&gt;
-  &lt;family value="Santos" /&gt;
-  &lt;family value="Tavares" /&gt;
-  &lt;family value="Melo" /&gt;
-  &lt;family value="Silva" /&gt;
+  &lt;family value="Santos Tavares Melo Silva" /&gt;
   &lt;given value="José" /&gt;
+  &lt;given value="Eduardo" /&gt;
+&lt;/name&gt;
+</pre>
+<p>
+Note that this naming pattern can become quite 
+extreme ("Pedro de Alcântara João Carlos Leopoldo Salvador Bibiano Francisco Xavier de Paula Leocádio Miguel Gabriel Rafael Gonzaga").
+A more practical example is 
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;family value="Costa Teixeira" &gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/humanname-fathers&quot;&gt;
+        &lt;valueString value=&quot;Costa&quot; /&gt;
+    &lt;/extension&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/humanname-mothers&quot;&gt;
+        &lt;valueString value=&quot;Teixeira&quot; /&gt;
+    &lt;/extension&gt;
+  &lt;/family&gt;
+  &lt;given value="Manuel" /&gt;
+&lt;/name&gt;
+</pre>
+<p>
+After marriage, this may change to 
+</p>
+<pre class="xml" fragment="HumanName">
+&lt;name&gt;
+  &lt;family value="Costa Teixeira Sanches" &gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/humanname-fathers&quot;&gt;
+        &lt;valueString value=&quot;Costa&quot; /&gt;
+    &lt;/extension&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/humanname-mothers&quot;&gt;
+        &lt;valueString value=&quot;Teixeira&quot; /&gt;
+    &lt;/extension&gt;
+    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/humanname-partners-name&quot;&gt;
+        &lt;valueString value=&quot;Sanches&quot; /&gt;
+    &lt;/extension&gt;
+  &lt;/family&gt;
+  &lt;given value="Manuel" /&gt;
 &lt;/name&gt;
 </pre>
 
@@ -861,14 +910,15 @@ Russian Examples (using Cyrillic):
 </p>
 <pre class="xml" fragment="HumanName">
 &lt;name&gt;
-  &lt;family value="??????????" /&gt;
-  &lt;family value="??????" /&gt;
-  &lt;given value="?????" /&gt;
+  &lt;family value="Ельцин" /&gt;
+  &lt;given value="Борис" /&gt;
+  &lt;given value="Николаевич" /&gt;
 &lt;/name&gt;
+
 &lt;name&gt;
-  &lt;family value="?????????" /&gt;
-  &lt;family value="???????" /&gt;
-  &lt;given value="?????" /&gt;
+  &lt;family value="Ельцина" /&gt;
+  &lt;given value="Наина" /&gt;
+  &lt;given value="Иосифовна" /&gt;
 &lt;/name&gt;
 </pre>
 
@@ -915,8 +965,7 @@ Other Examples:
 &lt;/name&gt;
 &lt;name&gt;
   &lt;text value="Abu Karim Muhammad al-Jamil ibn Nidal ibn Abdulaziz al-Filistini"/&gt;
-  &lt;family value="ibn Nidal" /&gt;
-  &lt;family value="ibn Abdulaziz" /&gt;
+  &lt;family value="ibn Nidal ibn Abdulaziz" /&gt;
   &lt;given value="Muhammad" /&gt;
   &lt;given value="al-Jamil" /&gt;
   &lt;prefix value="Abu Karim" /&gt;
@@ -933,8 +982,8 @@ fidelity of the name parts is not critical.
 
 
 
-<a name="Address"></a>
-<a name="address"></a>
+<a name="Address"> </a>
+<a name="address"> </a>
 <h3 style="margin-bottom: 1px">
 Address
 </h3>
@@ -1107,8 +1156,8 @@ postal union</a> examples.
 </div>
 
 
-<a name="ContactPoint"></a>
-<a name="contactpoint"></a>
+<a name="ContactPoint"> </a>
+<a name="contactpoint"> </a>
 <h3 style="margin-bottom: 1px">
 ContactPoint
 </h3>
@@ -1149,8 +1198,8 @@ the base FHIR type does not require the phone number to be conformant. A ISO 210
 </pre>
 </div>
 
-<a name="Timing"></a>
-<a name="timing"></a>
+<a name="Timing"> </a>
+<a name="timing"> </a>
 <h3>
 Timing
 </h3>
@@ -1226,8 +1275,8 @@ Note that the end date is inclusive like the end date of a Period.
 </pre>
 </div>
 
-<a name="Signature"></a>
-<a name="signature"></a>
+<a name="Signature"> </a>
+<a name="signature"> </a>
 <h3>
 Signature
 </h3>
@@ -1246,8 +1295,8 @@ See also <a href="datatypes.html#Signature">Base Definition</a>, <a href="dataty
 
 </div>
 
-<a name="Annotation"></a>
-<a name="annotation"></a>
+<a name="Annotation"> </a>
+<a name="annotation"> </a>
 <h3>
 Annotation
 </h3>

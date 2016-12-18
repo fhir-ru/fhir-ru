@@ -6,27 +6,24 @@
     <div xmlns="http://www.w3.org/1999/xhtml"/>
   </text>
   <status value="draft"/>
-  <stage>
-    <coding>
-      <system value="http://hl7.org/fhir/task-stage"/>
-      <code value="actionable"/>
-    </coding>
-  </stage>
+  <intent value="order"/>
   <code>
     <text value="Refill Request"/>
   </code>
   <focus>
-    <reference value="MedicationOrder/medrx001"/>
+    <reference value="MedicationRequest/medrx002"/>
   </focus>
   <for>
     <reference value="Patient/f001"/>
   </for>
-  <created value="2016-03-10T22:39:32-04:00"/>
+  <authoredOn value="2016-03-10T22:39:32-04:00"/>
   <lastModified value="2016-03-10T22:39:32-04:00"/>
   <requester>
-    <reference value="Patient/Keith"/>
+    <agent>
+      <reference value="Patient/example"/>
+    </agent>
   </requester>
   <owner>
-    <reference value="Practitioner/MyDoc"/>
+    <reference value="Practitioner/example"/>
   </owner>
 </Task>

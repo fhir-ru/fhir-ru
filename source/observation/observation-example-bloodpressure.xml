@@ -1,40 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- This is an example of a standard blood pressure measurement.
-
- Blood Pressure is a regarded as a single observation, and
- presented that way in plain text: 120/80. Also, it is usually
- interpreted as a single value, though intepretation can also
- be offered to the parts individually
-
- Technically, though, a blood pressure is a pair of component
- observations. LOINC code 55284-4 notes say:
-   This term is intended as a section header for various
-   blood pressure measurements (e.g. systolic, diastolic).
-   LOINC discourages the reporting of two numbers, such as
-   systolic and diastolic blood pressure (e.g. 120/80),
-   in one observation. They should be reported as two
-   separate variables, systolic (LOINC 8480-6) and
-   diastolic (LOINC 8462-4)
-
- This example shows the standard way to represent blood pressure - a
- single resource, with a narrative in the standard form, and two
- component observations for the actual values
-
-
-
--->
-<Observation xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/Users/Eric/Documents/HL7/FHIR/BUILD_EDIT_FILES/fhir-all-xsd/observation.xsd">
+<Observation xmlns="http://hl7.org/fhir">
 	<id value="blood-pressure"/>
-	<meta>
-		<lastUpdated value="2014-01-30T22:35:23+11:00"/>
-	</meta>
-	<!--	EH  Narrative created by build
-	<text>
-		<status value="generated"/>
-		<div xmlns="http://www.w3.org/1999/xhtml">Sept 17, 2012: Systolic Blood pressure 107/60 mmHg (low)</div>
-	</text>
--->
 	<identifier>
 		<system value="urn:ietf:rfc:3986"/>
 		<value value="urn:uuid:187e0c12-8dd2-67e2-99b2-bf273c878281"/>
@@ -61,10 +27,10 @@
 	<performer>
 		<reference value="Practitioner/example"/>
 	</performer>
-	<!-- an interpretation offered to the combination observation
+	<!--   an interpretation offered to the combination observation
         generally, it would only be appropriate to offer an interpretation
         of an observation that has no value if it has "COMP" (component)
-        observations -->
+        observations   -->
 	<interpretation>
 		<coding>
 			<system value="http://hl7.org/fhir/v2/0078"/>
@@ -73,6 +39,7 @@
 		</coding>
 		<text value="Below low normal"/>
 	</interpretation>
+	<!--The BodySite can be captured in a LOINC code but am showing it here to demonstrate populating the element -->
 	<bodySite>
 		<coding>
 			<system value="http://snomed.info/sct"/>
@@ -81,45 +48,44 @@
 		</coding>
 	</bodySite>
 	<component>
-		<!--
+		<!--  
            Observations are often coded in multiple code systems.
            - LOINC provides a very specific code (though not more specific in this particular case)
            - snomed provides a clinically relevant code that is usually less granular than LOINC
            - the source system provides its own code, which may be less or more granular than LOINC
 
 this is shown here to demonstrate  the concept of translations within the codeableConcept datatype. The diastolic code below only has a LOINC code 
-         -->
+           -->
 		<code>
-			<!-- LOINC -code -->
+			<!--   LOINC -code   -->
 			<coding>
 				<system value="http://loinc.org"/>
 				<code value="8480-6"/>
 				<display value="Systolic blood pressure"/>
 			</coding>
-			<!-- SNOMED CT Codes -->
+			<!--   SNOMED CT Codes   -->
 			<coding>
 				<system value="http://snomed.info/sct"/>
 				<code value="271649006"/>
 				<display value="Systolic blood pressure"/>
 			</coding>
-			<!-- Also, a local code specific to the source system -->
+			<!--   Also, a local code specific to the source system   -->
 			<coding>
 				<system value="http://acme.org/devices/clinical-codes"/>
 				<code value="bp-s"/>
 				<display value="Systolic Blood pressure"/>
 			</coding>
-			
 		</code>
 		<valueQuantity>
 			<value value="107"/>
 			<unit value="mmHg"/>
 			<system value="http://unitsofmeasure.org"/>
-			<code value="mm[Hg]"></code>
+			<code value="mm[Hg]"/>
 		</valueQuantity>
-<!--	Should have a refrange as well-->
+		<!--  	Should have a refrange as well  -->
 	</component>
 	<component>
-	<!-- this codes only has a LOINC code -->
+		<!--   this codes only has a LOINC code   -->
 		<code>
 			<coding>
 				<system value="http://loinc.org"/>
@@ -127,14 +93,12 @@ this is shown here to demonstrate  the concept of translations within the codeab
 				<display value="Diastolic blood pressure"/>
 			</coding>
 		</code>
-	
 		<valueQuantity>
 			<value value="60"/>
 			<unit value="mmHg"/>
 			<system value="http://unitsofmeasure.org"/>
-			<code value="mm[Hg]"></code>
+			<code value="mm[Hg]"/>
 		</valueQuantity>
-		<!--	Should have a refrange as well-->
+		<!--  	Should have a refrange as well  -->
 	</component>
-	
 </Observation>

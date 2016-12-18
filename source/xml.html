@@ -43,7 +43,7 @@ Using this format:
    as described by the cardinality, type rules and content description found in the comment in each element</li>
  <li>Resource and Element names are case-sensitive (though duplicates that differ only in case are never defined)</li>
  <li>Elements must always appear in the order documented</li>
- <li>When an element is allowed to repeat, the elements are ordered, and implementations must preserve order (note: the meaning of the order may not be known)</li>
+ <li>When an element is allowed to repeat, the elements are ordered, and the technical infrastructure needs to be able to access the items in the right order (see also <a href="conformance-rules.html#cardinality">Cardinality Rules</a> for a further description of elements with cardinality &gt; 1)</li>
  <li>A few properties are represented as attributes: values of primitive types in a <code>value</code> attribute, extension URLs in the <code>url</code> attribute on an extension, and the <code>id</code> property on elements (but not on resources, where the resource id is an element)</li>
  <li>Any of the XML elements may have an id attribute to serve as <a href="references.html#id">the target of an internal reference</a>. The id attribute is not shown in this format</li>
  <li>FHIR elements are always in the namespace <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>.  This is usually specified as the default namespace on the root element. 
@@ -59,6 +59,7 @@ Using this format:
  <li>Implementers SHOULD trim leading and trailing whitespace before writing and SHOULD trim leading and trailing whitespace when reading attribute values</li>
  <li>The lock icon (<img alt="??" src="lock.png"/>) denotes that an element defines or is affected by <a href="conformance-rules.html#constraints">additional rules</a> that control its presence and/or content</li>
  <li>XML comments, processing instructions and formatting are not part of the contents of a resource</li>
+ <li>There SHALL be no DTD references in FHIR resources (because of <a href="https://en.wikipedia.org/wiki/XML_external_entity_attack">XXE security exploit</a>)</li>
  <li>XML resources SHALL be exchanged using UTF-8 encoding. Specifying the character encoding using a <code>&lt;?xml encoding="UTF-8" ?&gt;</code> processing instruction is optional but recommended</li>
  <li>Other processing instructions SHOULD not be included, and SHALL NOT be required in order to properly understand and/or present the data or narrative of the resource. 
   Applications MAY preserve processing instructions when handling resources, but are not required to do so</li>
@@ -97,7 +98,7 @@ starts trading with other appplications that conform to later versions of this s
 unknown XML elements may be encountered. Applications MAY choose to ignore unknown elements
 in order to foster forwards compatibility in this regard, but may also choose not to - which 
 would be the normal behavior for schema generated applications. Applications declare 
-their behavior with regard to unknown elements using <a href="conformance-definitions.html#Conformance.acceptUnknown">Conformance.acceptUnknown</a>.
+their behavior with regard to unknown elements using <a href="capabilitystatement-definitions.html#CapabilityStatement.acceptUnknown">CapabilityStatement.acceptUnknown</a>.
 </p>
 
 <a name="schema-gen"> </a>
@@ -191,6 +192,10 @@ following additional canonicalization URLS are also defined:
  <tr>
   <td>http://hl7.org/fhir/canonicalization/xml#narrative</td>
   <td>The method only covers the <code>Resource.id</code> and Narrative is retained</td>
+ </tr>
+ <tr>
+  <td>http://hl7.org/fhir/canonicalization/xml#document</td>
+  <td>The signs everything in a Bundle, except for the Bundle.id and Bundle.metadata on the root Bundle (allows for a document to copied from server to server)</td>
  </tr>
 </table>
 <p>

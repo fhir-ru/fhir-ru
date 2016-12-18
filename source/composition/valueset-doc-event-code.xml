@@ -6,7 +6,7 @@
   <publisher value="IHE"/>
   <contact>
     <telecom>
-      <system value="other"/>
+      <system value="url"/>
       <value value="http://ihe.net"/>
     </telecom>
   </contact>
@@ -57,7 +57,9 @@
     </concept>
   </codeSystem>
   <compose>
-    <import value="http://hl7.org/fhir/ValueSet/dicom-cid29"/>
+    <include>
+      <valueSet value="http://hl7.org/fhir/ValueSet/dicom-cid29"/>
+    </include>
     <include>
       <system value="http://snomed.info/sct"/>
       <concept>

@@ -2,12 +2,13 @@
 
 <h3>Notes about Bundle</h3>
 <ul>
-<li>Conceptually, a bundle is a list of resources with some context (named links, and status on the entries)</li>
-<li>Since a Bundle is itself a <a href="resource.html">Resource</a> it has the same common metadata as all resources, including profile assertions, tags, and security labels</li>
-<li>Although there are not extensions on the Bundle itself, <code>link</code>, <code>entry</code>, and <code>search</code>/<code>request</code>/<code>response</code> can all have extensions. See <a href="patient.html#match">Patient</a> and <a href="location.html#positional">Location</a> for examples on search</li>
-<li>Both Bundle.link and Bundle.entry.link are defined to support providing additional context when bundles are used (e.g. <a href="http://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a>). 
-  Bundle.entry.link corresponds to links found in the HTTP header if the resource in the entry was <a href="http.html#read">read</a> directly.
-  This specification defines some specific uses of Bundle.link for <a href="search.html#conformance">searching</a> and <a href="http.html#paging">paging</a>, but no specific uses for Bundle.entry.link, and no defined function in a transaction - meaning is implementation specific</li>
+  <li>Conceptually, a bundle is a list of resources with some context (named links, and status on the entries)</li>
+  <li>Since a Bundle is itself a <a href="resource.html">Resource</a> it has the same common metadata as all resources, including profile assertions, tags, and security labels</li>
+  <li>Although there are no extensions on the Bundle itself, <code>link</code>, <code>entry</code>, and <code>search</code>/<code>request</code>/<code>response</code> can all have extensions. See <a href="patient.html#match">Patient</a> and <a href="location.html#positional">Location</a> for examples on search</li>
+  <li>Both Bundle.link and Bundle.entry.link are defined to support providing additional context when bundles are used (e.g. <a href="http://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a>). 
+    Bundle.entry.link corresponds to links found in the HTTP header if the resource in the entry was <a href="http.html#read">read</a> directly.
+    This specification defines some specific uses of Bundle.link for <a href="search.html#conformance">searching</a> and <a href="http.html#paging">paging</a>, but no specific uses for Bundle.entry.link, and no defined function in a transaction - meaning is implementation specific</li>
+  <li>Bundles have both .id and .identifier - see <a href="resource.html#id">Resource Identities</a> for further information</li>  
 </ul>
 
 <a name="using"> </a>
@@ -129,10 +130,15 @@ Each entry element SHALL contain a resource.
 <h2>Resource URL &amp; Uniqueness rules in a bundle</h2>
 
 <p>
-Each entry in a batch must have a full Url which is the identity of the resource in
-the entry. Note that this is not a versioned reference to the resource, but its 
+Except for transactions and batches, Each entry in a <code>Bundle</code> must have a <code>fullUrl</code> 
+which is the identity of the resource in the entry. Note that this is not a versioned reference to the resource, but its 
 identity. Where a resource is not assigned a persistent identity that can be used
 in the bundle, a UUID should be used (urn:uuid:...).
+</p>
+<p>
+For transactions and batches, entries may not have fullURLs when the entry.request.method = POST, 
+and the resource has no identity. Note that even in this case, there may still be a fullURL in a 
+transaction on a POST so that relationships between resources can be represented (see <a href="http.html#transaction">Transactions</a>).
 </p>
 <p>
 In some bundles, a given resource can only appear once:
@@ -144,11 +150,11 @@ In some bundles, a given resource can only appear once:
  </tr>
  <tr>
   <td>document</td>
-  <td>no duplicates (weird edge cases - change tracking?)</td>
+  <td>no duplicates</td>
  </tr>
  <tr>
   <td>message</td>
-  <td>no duplicates (well, messaging deltas?)</td>
+  <td>no duplicates (generally not, unless noted explicitly in the event definition e.g. for messaging deltas?)</td>
  </tr>
  <tr>
   <td>transaction</td>
@@ -209,7 +215,7 @@ How to resolve a reference in a bundle:
 <ol>
  <li>If the reference is not an absolute reference, convert it
   <ul>
-    <li>If the fullUrl starts with urn:uuid: or urn:oid:, then treat then append the id to the base URL and try to resolve within the bundle as for a RESTful URL reference.  If no resolution is possible, then the reference has no defined meaning within this specification</li>
+    <li>If the fullUrl starts with urn:uuid: or urn:oid:, then append the id to the base URL and try to resolve within the bundle as for a RESTful URL reference.  If no resolution is possible, then the reference has no defined meaning within this specification</li>
     <li>if the fullUrl of the resource that contains the reference is a RESTful one (see the <a href="references.html#regex">RESTful URL regex</a>), extract the <a href="http.html#root">[root]</a>, and append the reference to it</li>
     <li>otherwise, treat the fullUrl as a normal URL, and follow the normal method for <a href="https://tools.ietf.org/html/rfc2396#section-5.2">Resolving Relative References to Absolute Form</a></li>
   </ul>
@@ -224,12 +230,14 @@ How to resolve a reference in a bundle:
 <p>
 If the reference is version specific (either relative or absolute), then remove the version from the 
 URL before matching fullUrl, and then match the version based on <code>Resource.meta.versionId</code>.
+Note that the rules for resolving references in contained resources are the same as those for 
+resolving resources in the resource that contains the contained resource.
 </p>
 <p>
 Here is an example Bundle the demonstrates these rules:
 </p>
 <div class="example">
-<pre class="xml">
+<pre class="xml" fragment="Bundle">
 &lt;Bundle xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;type value=&quot;collection&quot;/&gt;
 
@@ -241,7 +249,7 @@ Here is an example Bundle the demonstrates these rules:
          &lt;id value=&quot;23&quot;/&gt;
       &lt;/Patient&gt;
     &lt;/resource&gt;
-  &lt;entry&gt;
+  &lt;/entry&gt;
   
   &lt;!-- A patient that doesn't have a persistent home - but it does have 
       a UUID assigned for this bundle "locally identified" --&gt;
@@ -251,7 +259,7 @@ Here is an example Bundle the demonstrates these rules:
       &lt;Patient&gt;
       &lt;/Patient&gt;
     &lt;/resource&gt;
-  &lt;entry&gt;
+  &lt;/entry&gt;
   
   &lt;!-- a relative resource reference --&gt;
   &lt;entry&gt;
@@ -263,23 +271,23 @@ Here is an example Bundle the demonstrates these rules:
            &lt;!-- this is reference to the first resource above --&gt;
            &lt;reference value=&quot;Patient/23&quot;/&gt;
          &lt;/subject&gt;
-      &lt;/Organization&gt;
+      &lt;/Observation&gt;
     &lt;/resource&gt;
-  &lt;entry&gt;
+  &lt;/entry&gt;
 
   &lt;!-- an absolute reference --&gt;
   &lt;entry&gt;
-    &lt;fullUrl value=&quot;http://example.org/fhir/Observation/123&quot;/&gt;
+    &lt;fullUrl value=&quot;http://example.org/fhir/Observation/124&quot;/&gt;
     &lt;resource&gt;
       &lt;Observation&gt;
-         &lt;id value=&quot;123&quot;/&gt;
+         &lt;id value=&quot;124&quot;/&gt;
          &lt;subject&gt;
            &lt;!-- this is reference to the first resource above --&gt;
            &lt;reference value=&quot;http://example.org/fhir/Patient/23&quot;/&gt;
          &lt;/subject&gt;
-      &lt;/Organization&gt;
+      &lt;/Observation&gt;
     &lt;/resource&gt;
-  &lt;entry&gt;
+  &lt;/entry&gt;
 
   &lt;!-- reference to a locally identified resource --&gt;
   &lt;entry&gt;
@@ -293,21 +301,21 @@ Here is an example Bundle the demonstrates these rules:
          &lt;/subject&gt;
       &lt;/Observation&gt;
     &lt;/resource&gt;
-  &lt;entry&gt;
+  &lt;/entry&gt;
   
   &lt;!-- reference that doesn't resolve in this bundle --&gt;
   &lt;entry&gt;
-    &lt;fullUrl value=&quot;http://example.org/fhir/Observation/12&quot;/&gt;
+    &lt;fullUrl value=&quot;http://example.org/fhir/Observation/14&quot;/&gt;
     &lt;resource&gt;
       &lt;Observation&gt;
-         &lt;id value=&quot;12&quot;/&gt;
+         &lt;id value=&quot;14&quot;/&gt;
          &lt;subject&gt;
            &lt;!-- reference to a patient not found in this bundle --&gt;
            &lt;reference value=&quot;http://example.org/fhir-2/Patient/1&quot;/&gt;
          &lt;/subject&gt;
       &lt;/Observation&gt;
     &lt;/resource&gt;
-  &lt;entry&gt;
+  &lt;/entry&gt;
   
 &lt;/Bundle&gt;
 </pre>
@@ -355,13 +363,13 @@ if these do not match, the resource is not in the bundle. <i>todo-bundle: how to
 Note that the application SHOULD not assume that the base
 service root is actually resolvable. In some circumstances, it will.
 If the bundle has just been received from a server as a result of
-a search or a history operation, the service root URL SHOULD match
+a search or a history operation, the service Base URL SHOULD match
 the URL that the client used (it is allowed not to in order to
 cater for proxies of various kinds). However in other
 circumstances, where the bundle itself has been exchanged onwards
 from the point of origin, and/or stored as an entity in its own
 right (e.g. a <a href="documents.html">clinical document</a>) the
-service root URL is merely a logical construct that holds within the
+service Base URL is merely a logical construct that holds within the
 bundle when resolving resources, and will have no meaning outside
 the bundle.
 </p>

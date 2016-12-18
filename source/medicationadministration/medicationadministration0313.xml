@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MedicationAdministration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationadministration.xsd"
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationadministration.xsd"
  xmlns="http://hl7.org/fhir"> 
   <id value="medadmin0313"/>
   <status value="completed" />
@@ -15,16 +15,16 @@
    <reference value="Patient/pat1"/>
    <display value="Donald Duck"/> 
   </patient>
- <effectiveTimePeriod>
+ <effectivePeriod>
   <start value="2015-01-15T22:03:00+01:00"/>
    <end value="2015-01-16T02:03:00+01:00"/>
-</effectiveTimePeriod>
+</effectivePeriod>
   <performer>
     <reference value="Practitioner/f007"/>
     <display value="Patrick Pump"/>
   </performer>
   <prescription>
-    <reference value="MedicationOrder/medrx0324"/>
+    <reference value="MedicationRequest/medrx0324"/>
   </prescription>
   <reasonGiven>
     <coding>
@@ -35,13 +35,13 @@
   </reasonGiven>
   <dosage>
     <text value="Insert one suppository rectally twice daily as needed for fever to a maximim of 3 per day"/>
-    <siteCodeableConcept>
+    <site>
       <coding>
         <system value="http://snomed.info/sct"/>
         <code value="34402009"/>
         <display value="Rectum structure"/>
       </coding>
-    </siteCodeableConcept>
+    </site>
     <dose>
       <value value="240"/>
       <unit value="mg"/>

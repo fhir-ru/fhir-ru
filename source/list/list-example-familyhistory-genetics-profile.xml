@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <List xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://hl7.org/fhir" xsi:schemaLocation="http://hl7.org/fhir ../../schema/list.xsd">
   <id value="genetic"/>
-  <text>
+  <!--text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml">To do</div>
-  </text>
+  </text-->
   <contained>
     <FamilyMemberHistory>
       <id value="1"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="parent.type">
+        <extension url="type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -18,8 +18,11 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="parent.identifier">
-          <valueUri value="#2"/>
+        <extension url="reference">
+          <valueReference>
+            <reference value="#2"/>
+            <display value="maternal grandfather"/>
+          </valueReference>
         </extension>
       </extension>
       <patient>
@@ -48,8 +51,8 @@
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
-          <code value="GRFTH"/>
-          <display value="grandfather"/>
+          <code value="MGRFTH"/>
+          <display value="maternal grandfather"/>
         </coding>
       </relationship>
     </FamilyMemberHistory>
@@ -58,17 +61,20 @@
     <FamilyMemberHistory>
       <id value="3"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="parent.type">
+        <extension url="type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
-              <code value="FTH"/>
-              <display value="father"/>
+              <code value="MTH"/>
+              <display value="mother"/>
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="parent.identifier">
-          <valueUri value="#2"/>
+        <extension url="reference">
+          <valueReference>
+            <reference value="#2"/>
+            <display value="maternal grandfather"/>
+          </valueReference>
         </extension>
       </extension>
       <patient>
@@ -79,8 +85,8 @@
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
-          <code value="PUNCLE"/>
-          <display value="paternal uncle"/>
+          <code value="MTH"/>
+          <display value="mother"/>
         </coding>
       </relationship>
     </FamilyMemberHistory>
@@ -88,20 +94,6 @@
   <contained>
     <FamilyMemberHistory>
       <id value="4"/>
-      <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="parent.type">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/v3/RoleCode"/>
-              <code value="FTH"/>
-              <display value="father"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <extension url="parent.identifier">
-          <valueUri value="#2"/>
-        </extension>
-      </extension>
       <patient>
         <reference value="Patient/example"/>
         <display value="Peter Patient"/>
@@ -110,8 +102,8 @@
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
-          <code value="PUNCLE"/>
-          <display value="paternal uncle"/>
+          <code value="PGRMTH"/>
+          <display value="paternal grandmother"/>
         </coding>
       </relationship>
     </FamilyMemberHistory>
@@ -119,26 +111,19 @@
   <contained>
     <FamilyMemberHistory>
       <id value="5"/>
-      <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="parent.type">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/v3/RoleCode"/>
-              <code value="FTH"/>
-              <display value="father"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <extension url="parent.identifier">
-          <valueUri value="#2"/>
-        </extension>
-      </extension>
       <patient>
         <reference value="Patient/example"/>
         <display value="Peter Patient"/>
       </patient>
       <status value="completed"/>
       <name value="Eve"/>
+      <!--relationship>
+        <coding>
+          <system value="http://hl7.org/fhir/v3/RoleCode"/>
+          <code value="38048003"/>
+          <display value="maternal uncle"/>
+        </coding>
+      </relationship-->
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -151,20 +136,6 @@
   <contained>
     <FamilyMemberHistory>
       <id value="6"/>
-      <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="parent.type">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/v3/RoleCode"/>
-              <code value="FTH"/>
-              <display value="father"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <extension url="parent.identifier">
-          <valueUri value="#2"/>
-        </extension>
-      </extension>
       <patient>
         <reference value="Patient/example"/>
         <display value="Peter Patient"/>
@@ -173,8 +144,8 @@
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
-          <code value="PAUNT"/>
-          <display value="paternal aunt"/>
+          <code value="MUNCLE"/>
+          <display value="maternal uncle"/>
         </coding>
       </relationship>
     </FamilyMemberHistory>
@@ -182,20 +153,6 @@
   <contained>
     <FamilyMemberHistory>
       <id value="7"/>
-      <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="parent.type">
-          <valueCodeableConcept>
-            <coding>
-              <system value="http://hl7.org/fhir/v3/RoleCode"/>
-              <code value="FTH"/>
-              <display value="father"/>
-            </coding>
-          </valueCodeableConcept>
-        </extension>
-        <extension url="parent.identifier">
-          <valueUri value="#2"/>
-        </extension>
-      </extension>
       <patient>
         <reference value="Patient/example"/>
         <display value="Peter Patient"/>
@@ -204,8 +161,8 @@
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
-          <code value="PAUNT"/>
-          <display value="paternal aunt"/>
+          <code value="NSIS"/>
+          <display value="natural sister"/>
         </coding>
       </relationship>
     </FamilyMemberHistory>
@@ -214,7 +171,7 @@
     <FamilyMemberHistory>
       <id value="8"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/family-member-history-genetics-parent">
-        <extension url="parent.type">
+        <extension url="type">
           <valueCodeableConcept>
             <coding>
               <system value="http://hl7.org/fhir/v3/RoleCode"/>
@@ -223,8 +180,11 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="parent.identifier">
-          <valueUri value="#5"/>
+        <extension url="reference">
+          <valueReference>
+            <reference value="#2"/>
+            <display value="maternal grandfather"/>
+          </valueReference>
         </extension>
       </extension>
       <patient>
@@ -236,8 +196,8 @@
       <relationship>
         <coding>
           <system value="http://hl7.org/fhir/v3/RoleCode"/>
-          <code value="PCOUSN"/>
-          <display value="paternal cousin"/>
+          <code value="MCOUSN"/>
+          <display value="maternal cousin"/>
         </coding>
       </relationship>
     </FamilyMemberHistory>

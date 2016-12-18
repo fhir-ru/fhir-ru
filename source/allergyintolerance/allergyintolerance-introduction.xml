@@ -68,9 +68,9 @@ In clinical practice distinguishing between allergy and intolerance is difficult
 The sensitivity in the case of either an allergy or intolerance is unique to the individual, and is distinguished from those reactions that are a property of the circumstance, such as toxicity of a food or drug, overdose, drug-drug, drug-food, or drug-disease interaction (which are reactions that would be expected to occur for any individual given the same circumstances). </p>
 		<p>
 The risk of an adverse reaction event or manifestation should not be recorded without identifying a proposed causative 
-substance (including pharmaceutical products) or class of substance. If there is uncertainty that a specific substance is the cause, this uncertainty can be recorded using the 'status' data element. If there are multiple possible substances that may have caused a reaction/manifestation, each substance should be recorded using a separate instance of this resource with the 
-'status' set to an initial state of 'unconfirmed' so that adverse reaction checking can be supported in clinical systems. 
-If a substance, agent or class is later proven not to be the cause for a given reaction then the 'status' can be modified 
+substance (including pharmaceutical products) or class of substance. If there is uncertainty that a specific substance is the cause, this uncertainty can be recorded using the 'verificationStatus' data element. If there are multiple possible substances that may have caused a reaction/manifestation, each substance should be recorded using a separate instance of this resource with the 
+'verificationStatus' set to an initial state of 'unconfirmed' so that adverse reaction checking can be supported in clinical systems. 
+If a substance, agent or class is later proven not to be the cause for a given reaction then the 'verificationStatus' can be modified 
 to 'refuted'.
 </p>
 		<p>
@@ -130,13 +130,12 @@ AllergyIntolerance describes a specific type of risk - propensity to reaction to
 		</p>
 		<ul>
 			<li>The allergy/intolerance list exists as a patient safety tool to inform decision support around ordering of medications and nutrition and to guide clinical treatment.  Other reactions triggered by physical stimuli -- light, heat, cold, pressure, vibration, which may mimic allergic or intolerance reactions, should be recorded as <a href="condition.html">Condition</a> on the problem list, not using AllergyIntolerance.</li>
-			<li>Not to be used to record adverse events, including failures of clinical process, interventions or products. For example, abnormal use or mistakes/errors made in maladministration of an agent or substance, incorrect dosage, mislabelling, harm or injury caused by an intervention or procedure, overdose/poisoning, etc.</li>
+			<li>Not to be used to record adverse events, including failures of clinical process, interventions or products. For example, abnormal use or mistakes/errors made in maladministration of an agent or substance, incorrect dosage, mislabeling, harm or injury caused by an intervention or procedure, overdose/poisoning, etc.</li>
 			<li>Not to be used as a proxy for an adverse event report. See above for how it may be used as one component of an adverse event report.</li>
 			<li>Not to be used for recording alerts. Alerts are handled using <a href="flag.html">Flag</a> or - where event-specific, <a href="detectedissue.html">DetectedIssue</a>.
 			</li>
 			<li>Not to be used for recording failed therapy.</li>
 		</ul>
-	</div>
 	<!-- (optional):
 <div>
 <h2>Background and Context</h2>
@@ -145,11 +144,12 @@ Provides additional detail on exactly how the resource is to be used
 </p>
 </div>
 -->
-<blockquote class="dstu-note">
 <a name="dstu0"> </a>
+<blockquote class="dstu-note">
 <p>
-<b>STU Note:</b>Requests have been received (GF#10369) to add codes to the AllergyIntolerance.reaction.certainty value set (reaction-event-certainty), which is a required binding.  The requested codes include "unknown", "ruled out" and "possible".  The Patient Care WG has voted to add "unknown" to the value set, but recommends that if other terms (including "ruled out" and "possible") are desired for use in a specific setting, an extension or profile should be used.  During the STU period <a href="http://gforge.hl7.org/gf/project/fhir/tracker/">feedback</a> is solicited regarding (1) the need and desirability of adding the code "unknown" to the value set, vs. omitting the element if the certainly is not known; and (2) whether or not additional codes besides "unknown" should be added to the value set for the core specification, or whether additional codes, if needed, should be added in an extension/profile.
+<b>STU Note:</b>Requests have been received (GF#10369) to add codes to the AllergyIntolerance.reaction.certainty value set (reaction-event-certainty), which is a required binding.  The requested codes include "unknown", "ruled out" and "possible".  The Patient Care WG has voted to add "unknown" to the value set, but recommends that if other terms (including "ruled out" and "possible") are desired for use in a specific setting, an extension or profile should be used.  During the STU period <a href="http://gforge.hl7.org/gf/project/fhir/tracker/">feedback</a> is solicited regarding (1) the need and desirability of adding the code "unknown" to the value set, vs. omitting the element if the certainty is not known; and (2) whether or not additional codes besides "unknown" should be added to the value set for the core specification, or whether additional codes, if needed, should be added in an extension/profile.
 </p>
 </blockquote>
+</div>
 
 </div>

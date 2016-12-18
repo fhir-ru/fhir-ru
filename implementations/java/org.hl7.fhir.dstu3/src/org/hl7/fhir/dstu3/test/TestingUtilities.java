@@ -1,8 +1,8 @@
 package org.hl7.fhir.dstu3.test;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,17 +10,9 @@ import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMResult;
-import javax.xml.transform.sax.SAXSource;
 
 import org.apache.commons.codec.binary.Base64;
-import org.hl7.fhir.dstu3.elementmodel.ParserBase.ValidationPolicy;
-import org.hl7.fhir.dstu3.utils.SimpleWorkerContext;
-import org.hl7.fhir.dstu3.utils.XmlLocationAnnotator;
+import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
@@ -28,9 +20,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -42,8 +31,23 @@ import com.google.gson.JsonSyntaxException;
 public class TestingUtilities {
   private static final boolean SHOW_DIFF = true;
   
-	static public SimpleWorkerContext context;
+	static public IWorkerContext context;
+	static public boolean silent;
 
+	static public String fixedpath;
+
+  public static String home() {
+    if (fixedpath != null)
+     return fixedpath;
+    String s = System.getenv("FHIR_HOME");
+    if (!Utilities.noString(s))
+      return s;
+    s = "C:\\work\\org.hl7.fhir\\build";
+    if (new File(s).exists())
+      return s;
+    throw new Error("FHIR Home directory not configured");
+  }
+	
 	public static String checkXMLIsSame(String f1, String f2) throws Exception {
 		String result = compareXml(f1, f2);
 		if (result != null && SHOW_DIFF) {
@@ -253,5 +257,6 @@ public class TestingUtilities {
 	    return "unhandled property "+n1.getClass().getName();
 		return null;
 	}
+
 
 }

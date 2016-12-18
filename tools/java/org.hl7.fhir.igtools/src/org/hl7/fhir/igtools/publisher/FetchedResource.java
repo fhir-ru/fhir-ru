@@ -1,6 +1,7 @@
 package org.hl7.fhir.igtools.publisher;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.hl7.fhir.dstu3.elementmodel.Element;
@@ -17,6 +18,9 @@ public class FetchedResource {
   private boolean validated;
   private List<String> profiles = new ArrayList<String>();
   private boolean snapshotted;
+  private String exampleUri;
+  private boolean ValidateByUserData;
+  private HashSet<FetchedResource> examples = new HashSet<FetchedResource>();
 
   public Resource getResource() {
     return resource;
@@ -77,5 +81,28 @@ public class FetchedResource {
     return element.fhirType()+"/"+id;
   }
 
+  public String getExampleUri() {
+    return exampleUri;
+  }  
+
+  public void setExampleUri(String exampleUri) {
+    this.exampleUri = exampleUri;
+  }  
+
+  public HashSet<FetchedResource> getExamples() {
+    return examples;
+  }  
+
+  public void addExample(FetchedResource r) {
+    this.examples.add(r);
+  }
+  
+  public boolean isValidateByUserData() {
+    return ValidateByUserData;
+  }
+  public void setValidateByUserData(boolean validateByUserData) {
+    ValidateByUserData = validateByUserData;
+  }
+  
   
 }

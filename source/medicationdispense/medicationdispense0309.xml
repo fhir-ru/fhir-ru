@@ -30,7 +30,7 @@
         <display value="Rob van den Berk"/>
     </dispenser>
     <authorizingPrescription>
-        <reference value="MedicationOrder/medrx0319"/>
+        <reference value="MedicationRequest/medrx0319"/>
     </authorizingPrescription>
     <type>
         <coding>
@@ -54,6 +54,7 @@
     <whenPrepared value="2015-01-15"/>
     <whenHandedOver value="2016-01-15"/>
     <dosageInstruction>
+        <sequence value="1"/>
         <text value="10 drops four times daily - apply in mouth using cotton swab or finger"/>
         <timing>
             <repeat>

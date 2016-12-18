@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -8,10 +7,10 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Eric Haas</LastAuthor>
+  <LastAuthor>Bryn</LastAuthor>
   <Created>2013-07-04T21:40:46Z</Created>
-  <LastSaved>2016-07-21T04:30:04Z</LastSaved>
-  <Version>15.00</Version>
+  <LastSaved>2016-09-19T18:59:02Z</LastSaved>
+  <Version>15.0</Version>
  </DocumentProperties>
  <CustomDocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <WorkbookGuid dt:dt="string">747a3dc3-14ba-4528-94a7-b06f9d606003</WorkbookGuid>
@@ -20,12 +19,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>8640</WindowHeight>
-  <WindowWidth>23250</WindowWidth>
-  <WindowTopX>0</WindowTopX>
-  <WindowTopY>0</WindowTopY>
+  <WindowHeight>15960</WindowHeight>
+  <WindowWidth>28160</WindowWidth>
+  <WindowTopX>640</WindowTopX>
+  <WindowTopY>460</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
-  <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -67,12 +65,12 @@
  </Styles>
  <Worksheet ss:Name="compartments">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="65.25"
+   x:FullRows="1" ss:StyleID="s62" ss:DefaultColumnWidth="65"
    ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="108.75" ss:Span="1"/>
-   <Column ss:Index="3" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="129.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="207.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="254.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="109" ss:Span="1"/>
+   <Column ss:Index="3" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="130"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="208"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="254"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s63">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Title</Data></Cell>
@@ -92,7 +90,7 @@
     <Cell><Data ss:Type="String">Encounter</Data></Cell>
     <Cell><Data ss:Type="String">The set of resources associated with a particular encounter</Data></Cell>
     <Cell><Data ss:Type="String">There is an instance of the encounter compartment for each encounter resource, and the identity of the compartment is the same as the encounter</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">The encounter compartment includes any resources where the resource has an explicitly nominated encounter, and some other resources that them selves link  to resources in the encounter compartment. Note that for many resources, the exact nature of the link to encounter can be ambiguous (e.g. for a DiagnosticReport, is it the encounter when it was initiated, or when it was reported?)</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">The encounter compartment includes any resources where the resource has an explicitly nominated encounter, and some other resources that themselves link  to resources in the encounter compartment. Note that for many resources, the exact nature of the link to encounter can be ambiguous (e.g. for a DiagnosticReport, is it the encounter when it was initiated, or when it was reported?)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">relatedPerson</Data></Cell>
@@ -123,6 +121,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -131,16 +130,15 @@
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="resources">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="117" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="156.75"/>
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="118" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="157"/>
    <Column ss:AutoFitWidth="0" ss:Width="198"/>
-   <Column ss:Width="53.25"/>
-   <Column ss:Width="147.75"/>
+   <Column ss:Width="53"/>
+   <Column ss:Width="148"/>
    <Column ss:Width="198"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Resource</Data></Cell>
@@ -152,9 +150,9 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AllergyIntolerance</Data></Cell>
-    <Cell><Data ss:Type="String">patient | recorder | reporter</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">reporter</Data></Cell>
-    <Cell><Data ss:Type="String">recorder | reporter</Data></Cell>
+    <Cell><Data ss:Type="String">patient | recorder | asserter</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">asserter</Data></Cell>
+    <Cell><Data ss:Type="String">recorder | asserter</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Account</Data></Cell>
@@ -212,8 +210,6 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Claim</Data></Cell>
-    <Cell><Data ss:Type="String">patient-identifier | patient-reference</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">provider-identifier | provider-reference</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ClaimResponse</Data></Cell>
@@ -238,7 +234,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">CommunicationRequest</Data></Cell>
     <Cell><Data ss:Type="String">subject | sender | recipient | requester</Data></Cell>
-    <Cell><Data ss:Type="String">encounter</Data></Cell>
+    <Cell><Data ss:Type="String">context</Data></Cell>
     <Cell><Data ss:Type="String">sender | recipient | requester</Data></Cell>
     <Cell><Data ss:Type="String">sender | recipient | requester</Data></Cell>
     <Cell><Data ss:Type="String">sender | recipient</Data></Cell>
@@ -263,12 +259,13 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Condition</Data></Cell>
-    <Cell><Data ss:Type="String">patient</Data></Cell>
+    <Cell><Data ss:Type="String">patient | asserter</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">context</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">asserter</Data></Cell>
+    <Cell><Data ss:Type="String">asserter</Data></Cell>
+    <Cell><Data ss:Type="String">asserter</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Conformance</Data></Cell>
+    <Cell><Data ss:Type="String">CapabilityStatement</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">DetectedIssue</Data></Cell>
@@ -355,7 +352,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">EnrollmentRequest</Data></Cell>
-    <Cell><Data ss:Type="String">subject-reference</Data></Cell>
+    <Cell><Data ss:Type="String">subject</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">EnrollmentResponse</Data></Cell>
@@ -454,16 +451,19 @@
     <Cell ss:Index="5"><Data ss:Type="String">dispenser | receiver | responsibleparty</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">MedicationOrder</Data></Cell>
+    <Cell><Data ss:Type="String">MedicationRequest</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
-    <Cell><Data ss:Type="String">encounter</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">prescriber</Data></Cell>
+    <Cell><Data ss:Type="String">context</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">requester</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MedicationStatement</Data></Cell>
-    <Cell><Data ss:Type="String">patient | source</Data></Cell>
+    <Cell><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">source</Data></Cell>
     <Cell><Data ss:Type="String">source</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">MessageDefinition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MessageHeader</Data></Cell>
@@ -551,11 +551,11 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ProcessRequest</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">provider-reference</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">provider</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ProcessResponse</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">request-provider-reference</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">request-provider</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">!Protocol</Data></Cell>
@@ -588,6 +588,14 @@
     <Cell><Data ss:Type="String">RelatedPerson</Data></Cell>
     <Cell><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">{def}</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ResearchStudy</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">principalinvestigator</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ResearchSubject</Data></Cell>
+    <Cell><Data ss:Type="String">individual</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">RiskAssessment</Data></Cell>
@@ -639,6 +647,9 @@
     <Cell><Data ss:Type="String">TestScript</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">TestReport</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ValueSet</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -651,22 +662,7 @@
     <Cell><Data ss:Type="String">GuidanceResponse</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">!ModuleMetadata</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">!ModuleDefinition</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Library</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">DecisionSupportServiceModule</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">!DecisionSupportRule</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">!OrderSet</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Measure</Data></Cell>
@@ -687,6 +683,17 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">PlanDefinition</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ServiceDefinition</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">RequestGroup</Data></Cell>
+    <Cell><Data ss:Type="String">subject | participant</Data></Cell>
+    <Cell><Data ss:Type="String">encounter</Data></Cell>
+    <Cell><Data ss:Type="String">participant</Data></Cell>
+    <Cell><Data ss:Type="String">participant | author</Data></Cell>
+    <Cell><Data ss:Type="String">author</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -701,11 +708,12 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>70</TopRowBottomPane>
+   <TopRowBottomPane>42</TopRowBottomPane>
    <ActivePane>2</ActivePane>
    <Panes>
     <Pane>
@@ -713,13 +721,12 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>86</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>64</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
-   <x:PageLayoutZoom>0</x:PageLayoutZoom>
   </WorksheetOptions>
  </Worksheet>
 </Workbook>

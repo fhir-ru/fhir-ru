@@ -1,4 +1,4 @@
-<PaymentReconciliation xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\remittance.xsd">
+<PaymentReconciliation xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/remittance.xsd">
  <id value="ER2500"/>
 
  <text>
@@ -13,34 +13,39 @@
   
   <status value="active"/>
 
-  <requestReference>
+  <created value="2014-08-16"/>
+
+  <organization>
+    <reference value="Organization/2"/>
+  </organization>
+
+  <request>
 	<reference value="http://www.BenefitsInc.com/fhir/eligibility/225476332402"/>
-  </requestReference>
+  </request>
   
-  <outcome value="complete"/>
+  <outcome>
+   <coding>
+    <system value="http://hl7.org/fhir/remittance-outcome" />
+	<code value="complete" />
+   </coding>
+  </outcome>
   
   <disposition value="2014 August mid-month settlement."/>
  
-  <created value="2014-08-16"/>
-
-  <organizationReference>
-    <reference value="Organization/2"/>
-  </organizationReference>
-
-  <!--
-  <requestOrganizationReference>
+  <requestOrganization>
     <reference value="Organization/1"/>
-  </requestOrganizationReference>
-  -->
+  </requestOrganization>
  
   <detail>
 	<type>
+	  <coding>
 	   <system value="http://hl7.org/fhir/paymenttype"/>
 	   <code value="payment"/>
+	 </coding>
 	</type>
-	<requestReference>
+	<request>
 		<reference value="http://www.BenefitsInc.com/fhir/oralhealthclaim/225476332402"/>
-	</requestReference>
+	</request>
 	<date value="2014-08-16"/>
 	<amount>
 		<value value="1000.00"/>
@@ -51,12 +56,14 @@
  
   <detail>
 	<type>
+	  <coding>
 	   <system value="http://hl7.org/fhir/paymenttype"/>
 	   <code value="payment"/>
+	 </coding>
 	</type>
-	<requestReference>
+	<request>
 		<reference value="http://www.BenefitsInc.com/fhir/oralhealthclaim/225476332699"/>
-	</requestReference>
+	</request>
 	<date value="2014-08-12"/>
 	<amount>
 		<value value="4000.00"/>
@@ -67,8 +74,10 @@
  
   <detail>
 	<type>
+	  <coding>
 	   <system value="http://hl7.org/fhir/paymenttype"/>
 	   <code value="advance"/>
+	 </coding>
 	</type>
 	<date value="2014-08-16"/>
 	<amount>

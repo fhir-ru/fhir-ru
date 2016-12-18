@@ -39,19 +39,19 @@ import java.util.Map;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.hl7.fhir.dstu3.model.Bundle;
+import org.hl7.fhir.dstu3.model.CapabilityStatement;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.ConceptMap;
-import org.hl7.fhir.dstu3.model.Conformance;
+import org.hl7.fhir.dstu3.model.ExpansionProfile;
 import org.hl7.fhir.dstu3.model.OperationOutcome;
 import org.hl7.fhir.dstu3.model.Parameters;
+import org.hl7.fhir.dstu3.model.Parameters.ParametersParameterComponent;
 import org.hl7.fhir.dstu3.model.PrimitiveType;
 import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.StringType;
 import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.model.Parameters.ParametersParameterComponent;
 import org.hl7.fhir.utilities.Utilities;
-import org.stringtemplate.v4.compiler.StringTable;
 
 /**
  * Very Simple RESTful client. This is purely for use in the standalone 
@@ -91,7 +91,7 @@ public class FHIRToolingClient {
 	private ResourceFormat preferredResourceFormat;
 	private HttpHost proxy;
 	private int maxResultSetSize = -1;//_count
-	private Conformance conf;
+	private CapabilityStatement capabilities;
 	
 	//Pass enpoint for client - URI
 	public FHIRToolingClient(String baseServiceUrl) throws URISyntaxException {
@@ -130,7 +130,7 @@ public class FHIRToolingClient {
 	
 	private void checkConformance() {
 	  try {
-      conf = getConformanceStatementQuick();
+      capabilities = getConformanceStatementQuick();
 	  } catch (Throwable e) {
 	  }
    }
@@ -151,39 +151,29 @@ public class FHIRToolingClient {
 		this.maxResultSetSize = maxResultSetSize;
 	}
 	
-	public Conformance getConformanceStatement() throws EFhirClientException {
-		if (conf != null)
-			return conf;
-		return getConformanceStatement(false);
-	}
-	
-	public Conformance getConformanceStatement(boolean useOptionsVerb) {
-		Conformance conformance = null;
+	public CapabilityStatement getConformanceStatement() {
+	  CapabilityStatement conformance = null;
 		try {
-			if(useOptionsVerb) {
-				conformance = (Conformance)ClientUtils.issueOptionsRequest(resourceAddress.getBaseServiceUri(), getPreferredResourceFormat(), proxy).getReference();//TODO fix this
-			} else {
-				conformance = (Conformance)ClientUtils.issueGetResourceRequest(resourceAddress.resolveMetadataUri(false), getPreferredResourceFormat(), proxy).getReference();
-			}
+  		conformance = (CapabilityStatement)ClientUtils.issueGetResourceRequest(resourceAddress.resolveMetadataUri(false), getPreferredResourceFormat(), proxy).getReference();
 		} catch(Exception e) {
 			handleException("An error has occurred while trying to fetch the server's conformance statement", e);
 		}
 		return conformance;
 	}
 	
-  public Conformance getConformanceStatementQuick() throws EFhirClientException {
-    if (conf != null)
-      return conf;
-    return getConformanceStatementQuick(false);
+  public CapabilityStatement getConformanceStatementQuick() throws EFhirClientException {
+    if (capabilities != null)
+      return capabilities;
+    return getConformanceStatementQuick();
   }
   
-  public Conformance getConformanceStatementQuick(boolean useOptionsVerb) {
-    Conformance conformance = null;
+  public CapabilityStatement getConformanceStatementQuick(boolean useOptionsVerb) {
+    CapabilityStatement conformance = null;
     try {
       if(useOptionsVerb) {
-        conformance = (Conformance)ClientUtils.issueOptionsRequest(resourceAddress.getBaseServiceUri(), getPreferredResourceFormat(), proxy).getReference();//TODO fix this
+        conformance = (CapabilityStatement)ClientUtils.issueOptionsRequest(resourceAddress.getBaseServiceUri(), getPreferredResourceFormat(), proxy).getReference();//TODO fix this
       } else {
-        conformance = (Conformance)ClientUtils.issueGetResourceRequest(resourceAddress.resolveMetadataUri(true), getPreferredResourceFormat(), proxy).getReference();
+        conformance = (CapabilityStatement)ClientUtils.issueGetResourceRequest(resourceAddress.resolveMetadataUri(true), getPreferredResourceFormat(), proxy).getReference();
       }
     } catch(Exception e) {
       handleException("An error has occurred while trying to fetch the server's conformance statement", e);
@@ -637,10 +627,14 @@ public class FHIRToolingClient {
 		return feed;
   }
   
-  public ValueSet expandValueset(ValueSet source) {
+  public ValueSet expandValueset(ValueSet source, ExpansionProfile profile) {
     List<Header> headers = null;
+    Parameters p = new Parameters();
+    p.addParameter().setName("valueSet").setResource(source);
+    if (profile != null)
+      p.addParameter().setName("profile").setResource(profile);
     ResourceRequest<Resource> result = ClientUtils.issuePostRequest(resourceAddress.resolveOperationUri(ValueSet.class, "expand"), 
-        ClientUtils.getResourceAsByteArray(source, false, isJson(getPreferredResourceFormat())), getPreferredResourceFormat(), headers, proxy);
+        ClientUtils.getResourceAsByteArray(p, false, isJson(getPreferredResourceFormat())), getPreferredResourceFormat(), headers, proxy);
     result.addErrorStatus(410);//gone
     result.addErrorStatus(404);//unknown
     result.addErrorStatus(405);
@@ -667,10 +661,16 @@ public class FHIRToolingClient {
     }
     return (Parameters) result.getPayload();
   }
-  public ValueSet expandValueset(ValueSet source, Map<String, String> params) {
+  public ValueSet expandValueset(ValueSet source, ExpansionProfile profile, Map<String, String> params) {
     List<Header> headers = null;
+    Parameters p = new Parameters();
+    p.addParameter().setName("valueSet").setResource(source);
+    if (profile != null)
+      p.addParameter().setName("profile").setResource(profile);
+    for (String n : params.keySet())
+      p.addParameter().setName(n).setValue(new StringType(params.get(n)));
     ResourceRequest<Resource> result = ClientUtils.issuePostRequest(resourceAddress.resolveOperationUri(ValueSet.class, "expand", params), 
-        ClientUtils.getResourceAsByteArray(source, false, isJson(getPreferredResourceFormat())), getPreferredResourceFormat(), headers, proxy);
+        ClientUtils.getResourceAsByteArray(p, false, isJson(getPreferredResourceFormat())), getPreferredResourceFormat(), headers, proxy);
     result.addErrorStatus(410);//gone
     result.addErrorStatus(404);//unknown
     result.addErrorStatus(405);
@@ -682,6 +682,22 @@ public class FHIRToolingClient {
     }
     return (ValueSet) result.getPayload();
   }
+  
+//  public ValueSet expandValueset(ValueSet source, ExpansionProfile profile, Map<String, String> params) {
+//    List<Header> headers = null;
+//    ResourceRequest<Resource> result = ClientUtils.issuePostRequest(resourceAddress.resolveOperationUri(ValueSet.class, "expand", params), 
+//        ClientUtils.getResourceAsByteArray(source, false, isJson(getPreferredResourceFormat())), getPreferredResourceFormat(), headers, proxy);
+//    result.addErrorStatus(410);//gone
+//    result.addErrorStatus(404);//unknown
+//    result.addErrorStatus(405);
+//    result.addErrorStatus(422);//Unprocessable Entity
+//    result.addSuccessStatus(200);
+//    result.addSuccessStatus(201);
+//    if(result.isUnsuccessfulRequest()) {
+//      throw new EFhirClientException("Server returned error code " + result.getHttpStatus(), (OperationOutcome)result.getPayload());
+//    }
+//    return (ValueSet) result.getPayload();
+//  }
   
   
   public String getAddress() {

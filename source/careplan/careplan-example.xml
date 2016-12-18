@@ -15,7 +15,8 @@
   <contained>
     <Condition>
       <id value="p1"/>
-      <verificationStatus value="confirmed"/>
+      <clinicalStatus value="active"/>
+	  <verificationStatus value="confirmed"/>
       <code>
         <text value="Obesity"/>
       </code>
@@ -29,7 +30,7 @@
     <Goal>
       <id value="goal"/>
       <extension url="http://hl7.org/fhir/StructureDefinition/goal-target">
-        <extension url="goal-target.measure">
+        <extension url="measure">
           <valueCodeableConcept>
             <coding>
               <system value="http://loinc.org"/>
@@ -38,7 +39,7 @@
             </coding>
           </valueCodeableConcept>
         </extension>
-        <extension url="goal-target.detail">
+        <extension url="detail">
           <valueQuantity>
             <value value="80"/>
             <system value="http://units-of-measure.org"/>
@@ -46,31 +47,31 @@
           </valueQuantity>
         </extension>
       </extension>
+      <status value="planned"/>
+      <description>
+        <text value="Target weight is 80 kg"/>
+      </description>
       <subject>
         <reference value="Patient/example"/>
         <display value="Peter James Chalmers"/>
       </subject>
-      <description>
-        <text value="Target weight is 80 kg"/>
-      </description>
-      <status value="planned"/>
     </Goal>
   </contained>
+  <status value="active"/>
   <subject>
     <reference value="Patient/example"/>
     <display value="Peter James Chalmers"/>
   </subject>
-  <status value="active"/>
   <period>
     <end value="2013-01-01"/>
   </period>
+  <careTeam>
+    <reference value="CareTeam/example"/>
+  </careTeam>
   <addresses>
     <reference value="#p1"/>
     <display value="obesity"/>
   </addresses>
-  <careTeam>
-    <reference value="CareTeam/example"/>
-  </careTeam>
   <goal>
     <reference value="#goal"/>
   </goal>
@@ -85,6 +86,7 @@
       <code>
         <text value="a code for weight measurement"/>
       </code>
+	  <status value="completed"/>
       <prohibited value="false"/>
       <scheduledTiming>
         <repeat>

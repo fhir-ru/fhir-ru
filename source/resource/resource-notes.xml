@@ -6,7 +6,7 @@
 <p>
 Each resource has an "id" element which contains the logical identity of the resource 
 assigned by the server responsible for storing it. Resources always have a known identity
-except for the special case when a new resources is being sent to a server to assign
+except for the special case when a new resource is being sent to a server to assign
 an identity (<a href="http.html#create">create interaction</a>). 
 The logical identity is unique within the space of all resources of the same type on 
 the same server. Once assigned, the identity is never changed. Note that if the
@@ -57,7 +57,7 @@ purpose, but is constrained to be a literal URL for implementation reasons.
 </p>
 <p>
 All resources that have an <code>identifier</code> element support searching
-by the identifier, so that records can located by that method. So if 
+by the identifier, so that records can be located by that method. So if 
 an <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> message has the following OBR:
 </p>
 <pre>
@@ -80,7 +80,7 @@ master server.
 
 <a name="metadata"> </a>
 <a name="meta"> </a>
-<a name="Meta"></a>
+<a name="Meta"> </a>
 
 <h3 style="margin-bottom: 1px">
 Resource Metadata
@@ -89,7 +89,7 @@ Resource Metadata
 <p>
 Each resource contains an element "meta", of type "Meta", which is a set of 
 metadata that provides technical and workflow context to the resource. The 
-metadata items are all optional, though some of all of them may be required 
+metadata items are all optional, though some or all of them may be required 
 in particular implementations or contexts of use.
 </p>
 
@@ -330,7 +330,7 @@ Many trading partner agreements will make rules about what claims can be made
 and when they must be tested, which will make the profile assertion more reliable. 
 </p>
 <p>
-The list of profiles on a resource is a set, where each profile is unique based the <code>value</code> of the URI.
+The list of profiles on a resource is a set, where each profile is unique based on the <code>value</code> of the URI.
 </p>
 
 <a name="security-labels"> </a>
@@ -371,7 +371,7 @@ The FMM level can be used by implementers to judge how advanced - and therefore 
  <li>the resource or profile (artifact) has been published on the current build.  This level is synonymous with Draft.</li>
  <li>PLUS the artifact produces no warnings during the build process and the responsible WG has indicated that they consider the artifact substantially complete and ready for implementation</li>
  <li>PLUS the artifact has been tested and successfully exchanged between at least three independently developed systems leveraging at least 80% of the core data elements using semi-realistic data and scenarios based on at least one of the declared scopes of the resource (e.g. at a connectathon).  These interoperability results must have been reported to and accepted by the FMG</li>
- <li>PLUS the artifact has been verified by the work group as meeting the <a href="http://wiki.hl7.org/index.php?title=DSTU_2_QA_guidelines">DSTU Quality Guidelines</a> and has been subject to a 
+ <li>PLUS the artifact has been verified by the work group as meeting the <a href="http://wiki.hl7.org/index.php?title=DSTU_2_QA_guidelines">STU Quality Guidelines</a> and has been subject to a 
  round of formal balloting; has at least 10 implementer comments recorded in the tracker drawn from at least 3 organizations resulting in at least one substantive change</li>
  <li>PLUS the artifact has been tested across its scope (see below), published in a formal publication (e.g. STU), and implemented in multiple prototype projects. As well, the responsible 
  work group agrees the resource is sufficiently stable to require implementer consultation for subsequent non-backward compatible changes.</li>

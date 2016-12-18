@@ -17,17 +17,17 @@ This specification includes support for the provision of a terminology service -
 service that lets healthcare applications make use of codes and value sets without having to become
 experts in the fine details of the code system, value set and concept map resources, and the underlying 
 code systems and terminological principles. A server that supports all the functionality described here 
-can be described as a "FHIR Terminology Service", and SHALL conform to the <a href="conformance-terminology-server.html">
-terminology server conformance statement</a>. Note that servers can declare that they provide 
-terminology services in their conformance statement:
+can be described as a "FHIR Terminology Service", and SHALL conform to the <a href="capabilitystatement-terminology-server.html">
+terminology server Capability statement</a>. Note that servers can declare that they provide 
+terminology services in their Capability statement:
 </p>
 <div class="example">
 <pre class="xml">
-&lt;Conformance xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+&lt;CapabilityStatement xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;!-- snip --&gt;
-  &lt;instantiates value=&quot;http://hl7.org/fhir/Conformance/terminology-server&quot;/&gt;  
+  &lt;instantiates value=&quot;http://hl7.org/fhir/CapabilityStatement/terminology-server&quot;/&gt;  
   &lt;!-- snip --&gt;
-&lt;/Conformance&gt;
+&lt;/CapabilityStatement&gt;
 </pre>
 </div>
 
@@ -36,7 +36,7 @@ terminology services in their conformance statement:
 <p>
 Generally, SSL SHOULD be used for all production health care data exchange.
 Even though terminology servers do not generally handle patient information directly,
-hackers may still be able to infer information about patients by observing
+observers may still be able to infer information about patients by observing
 the codes and concepts that the terminology service is asked about, so
 encryption is still recommended.
 </p>
@@ -91,20 +91,20 @@ content of these code systems are externally known to the terminology server.
 Most useful terminology servers will make one or more of these external code systems available for use
 within the value sets that they manage. The list of additional terminologies that a terminology server supports
 beyond those defined in its value sets is published to clients by referencing code system resources in 
-the server's <a href="conformance.html">Conformance Statement</a>.
+the server's <a href="capabilitystatement.html">Capability Statement</a>.
 </p>
 <pre class="json">
 {
- "resourceType" : "Conformance",
+ "resourceType" : "CapabilityStatement",
  "extension" : [
    { 
-     "url" : "http://hl7.org/fhir/StructureDefinition/conformance-supported-system",
+     "url" : "http://hl7.org/fhir/StructureDefinition/capabilitystatement-supported-system",
      "valueUri" : "http://loinc.org" 
    }]  
 }
 </pre>
 <p>
-This extension is added to the root <a href="conformance.html">Conformance Statement</a>.
+This extension is added to the root <a href="capabilitystatement.html">Capability Statement</a>.
 </p>
 
 <h4>Implementation Note</h4>
@@ -147,8 +147,9 @@ http://hl7.org/fhir/ValueSet/@all
 </pre>
 <p>
 Technically, this value set automatically imports all the existing value sets on the server.
-Note that this URL has no fixed meaning - its interpretation is server specific. This URL 
-can only be used as a parameter to the operations described on this page. 
+Note that this URL has no fixed meaning - its interpretation is server specific (e.g. whether 
+it includes all versions of all value sets). This URL can only be used as a parameter to the 
+operations described on this page. 
 </p>
 
 <h4>Terminology Maintenance</h4>
@@ -225,7 +226,7 @@ GET [base]/ValueSet/23/$expand?filter=abdo
 Expanding a value set that is specified by the client (using JSON):
 </p>
 <pre class="http">
-POST [base]/ValueSet/23/$expand
+POST [base]/ValueSet/$expand
 [other headers]
 
 {
@@ -266,7 +267,7 @@ HTTP/1.1 200 OK
 </pre>
 </div>
 
-<h3>Concept Lookup</h3>
+<h3>Concept Lookup / Decomposition</h3>
 <p>
 A system can ask a terminology server to return a set of information about a particular system/code
 combination using <a href="codesystem-operations.html#lookup">the lookup operation</a>. The server returns information for both display and processing
@@ -284,18 +285,20 @@ The server returns some or all of the following information:
 <ul>
  <li> a human description of the system</li>
  <li> a recommended display for the code </li>
- <li> properties of the code</li>
+ <li> properties of the code (e.g. status) </li>
  <li> other designations for the code (a value, optionally with language and/or a use code)</li>
- <li> relationships between this code and other codes (parent/child properties)</li>
+ <li> relationships between this code and other codes (parent/child properties, etc)</li>
+ <li> Component properties of the specified code (e.g. to support reasoning) (e.g. decomposition)</li>
 </ul>
 <p>
-The recommended display for the code is a text representation of the code
-that the terminology server recommends as the default choice to show
-to the user, though a  client may choose out of the other designations if it has reason to.
+The recommended display for the code is a text representation of the code that the 
+terminology server recommends as the default choice to show to the user, though a
+client may choose out of the other designations if it has reason to.
 </p>
 <p>
 If the client does not ask for any particular properties to be returned, it is at the discretion
-of the server to decide which properties to return.
+of the server to decide which properties to return (though note that the "version" property is always 
+returned if the code system has a version).
 </p>
 
 
@@ -347,7 +350,7 @@ HTTP/1.1 200 OK
   },
   {
     "name" : "version",
-    "valueString" : "2.48"
+    "valueString" : "2.56"
   },
   {
     "name" : "display",
@@ -360,9 +363,12 @@ HTTP/1.1 200 OK
   ]
 }
 </pre>
+</div>
 
+<a name="standard-props"> </a>
+<h4>Standard Properties</h4>
 <p>
-The following properties are defined:
+The following properties are defined for all code systems:
 </p>
 <table class="grid">
  <tr>
@@ -403,10 +409,9 @@ The following properties are defined:
  </tr>
 </table>
 <p>
-In addition, any property codes defined by the code system (CodeSysem.property.code) can be used.
+In addition, any property codes defined by the code system (CodeSysem.property.code) can be used (and see the definitions for <a href="snomedct.html#props">SNOMED CT</a>, <a href="loinc.html#props">LOINC</a>, and <a href="rxnorm.html#props">RxNorm</a>).
 </p>
 
-</div>
 
 <h3>Value Set Validation</h3>
 <p>
@@ -507,6 +512,7 @@ HTTP/1.1 200 OK
 <h3>Subsumption testing</h3>
 <p>
 To test whether <i>code A</i> subsumes <i>code B</i>, perform a $subsumes operation.
+Subsumption testing is based on <a href="codesystem.html#subsumption">the CodeSystem definition of subsumption</a>.
 The client passes the server the following information:
 </p>
 <ul>
@@ -516,7 +522,7 @@ The client passes the server the following information:
 </ul>
 <p>
 If the client passes Codings, it is allowed to use system values that are different from the system in which subsumption testing is to be performed.
-In this case, the server SHALL return an error unless the relationships between the code systems is well defined.
+In this case, the server SHALL return an error unless the relationships between the various code systems is well defined.
 </p>
 <p>
 If the concepts can be compared, then the server returns an outcome code:
@@ -534,7 +540,7 @@ If the concepts can be compared, then the server returns an outcome code:
 Test whether a SNOMED CT Concept 399211009 (History of myocardial infarction) is subsumed by 22298006 (Myocardial infarction):
 </p>
 <pre class="http">
-GET [base]/CodeSystem/$subsumes?system=http://snomed.info/sct&amp;codeA=3738000&amp;codeB=235856003
+GET [base]/CodeSystem/$subsumes?system=http://snomed.info/sct&amp;codeA=235856003&amp;codeB=3738000
 </pre>
 <p>
 Or using Codings:
@@ -548,25 +554,25 @@ POST [base]/CodeSystem/$subsumes
   &lt;!-- Subsumption testing - use SNOMED CT rules --&gt;
   &lt;parameter&gt;
     &lt;name value=&quot;system&quot;/&gt;
-    &lt;valuUri value=&quot;http://snomed.info/sct&quot;/&gt;
+    &lt;valueUri value=&quot;http://snomed.info/sct&quot;/&gt;
   &lt;/parameter&gt;
   &lt;!-- Australian distribution --&gt;
   &lt;parameter&gt;
     &lt;name value=&quot;version&quot;/&gt;
-    &lt;valuString value=&quot;http://snomed.info/sct/32506021000036107/version/20160430&quot;/&gt;
+    &lt;valueString value=&quot;http://snomed.info/sct/32506021000036107/version/20160430&quot;/&gt;
   &lt;/parameter&gt;
   &lt;parameter&gt;
     &lt;name value=&quot;codingA&quot;/&gt;
     &lt;valueCoding&gt;
       &lt;system value=&quot;http://snomed.info/sct&quot;/&gt;
-      &lt;code value=&quot;3738000&quot;/&gt;
+      &lt;code value=&quot;235856003&quot;/&gt;
     &lt;/valueCoding&gt;
   &lt;/parameter&gt;
   &lt;parameter&gt;
     &lt;name value=&quot;codingB&quot;/&gt;
     &lt;valueCoding&gt;
       &lt;system value=&quot;http://snomed.info/sct&quot;/&gt;
-      &lt;code value=&quot;235856003&quot;/&gt;
+      &lt;code value=&quot;3738000&quot;/&gt;
     &lt;/valueCoding&gt;
   &lt;/parameter&gt;
 &lt;/Parameters&gt;
@@ -701,7 +707,7 @@ Translate from FHIR Composition status to <a href="https://www.hl7.org/implement
 </p>
 <pre class="http">
 GET [base]/ConceptMap/$translate?system=http://hl7.org/fhir/composition-status
-  &amp;code=preliminary&amp;valueSet= http://hl7.org/fhir/ValueSet/composition-status
+  &amp;code=preliminary&amp;source= http://hl7.org/fhir/ValueSet/composition-status
   &amp;target=http://hl7.org/fhir/ValueSet/v3-ActStatus
 </pre>
 <p>
@@ -844,7 +850,7 @@ HTTP/1.1 200 OK
 <h3>Maintaining a Closure Table</h3>
 
 <p>
-The 5 operations Expand, Lookup, Validate, subsumes, and Translate account for most operational requirements
+The 5 operations Expand, Lookup, Validate, Subsumes, and Translate account for most operational requirements
 associated with terminology use. However there is one difficult but important use case that
 they do not address, which is integrating terminologically based logic into application searches.
 </p>
@@ -870,8 +876,8 @@ the search could generate expansions, and then search for these expansions. This
   <li> the expansion of the subsumption might not be closed, and so the search operation cannot be correct </li>
 </ul>
 <p>
-An alternative approach is to generate a subsumption <a href="http://karwin.blogspot.com.au/2010/03/rendering-trees-with-closure-tables.html">closure table</a>,
-which lists all the possible relationships, and allows for rapid execution of these kind of queries. However this has other problems:
+An alternative approach is to generate a <a href="https://en.wikipedia.org/wiki/Transitive_closure#In_graph_theory">transitive closure table</a> 
+which lists all the possible transitive subsumption relationships, and <a href="http://karwin.blogspot.com.au/2010/03/rendering-trees-with-closure-tables.html">allows for rapid execution of these kind of queries</a> . However this has other problems:
 </p>
 <ul>
   <li> the subsumption table can be very large (&gt;500000 records for SNOMED CT), even though very few of the codes are used</li>
@@ -909,6 +915,7 @@ The <a href="conceptmap-operations.html#closure">$closure operation</a> takes 2 
 </ul>
 <p>
 The operation returns a concept map which has a list of mappings that represent new entries to make in the closure table.
+The subsumption testing performed when building a closure table is the same as for the <code>$subsumes</code> operation, and is based on <a href="codesystem.html#subsumption">the CodeSystem definition of subsumption</a>.
 </p>
 <p>
 The closure table can be resynchronized by passing an additional "version" parameter, which is a value taken from the

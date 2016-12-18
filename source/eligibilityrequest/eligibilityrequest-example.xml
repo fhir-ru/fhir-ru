@@ -1,4 +1,4 @@
-<EligibilityRequest xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\remittance.xsd">
+<EligibilityRequest xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/remittance.xsd">
   <id value="52345"/>
 
   <text>
@@ -13,26 +13,28 @@
  
   <status value="active"/>
  
-  <created value="2014-08-16"/>
-
-  <insurerReference>
-    <reference value="Organization/2"/>
-  </insurerReference>
-
-  <organizationReference>
-    <reference value="Organization/1"/>
-  </organizationReference>
-
   <priority>
+   <coding>
     <code value="normal"/>
+   </coding>
   </priority>
 
-  <patientReference>
+  <patient>
     <reference value="Patient/pat1"/>
-  </patientReference>
+  </patient>
  
-  <coverageReference>
+  <created value="2014-08-16"/>
+
+  <organization>
+    <reference value="Organization/1"/>
+  </organization>
+
+  <insurer>
+    <reference value="Organization/2"/>
+  </insurer>
+
+  <coverage>
       <reference value="Coverage/9876B1"/>
-  </coverageReference>
+  </coverage>
 
  </EligibilityRequest>

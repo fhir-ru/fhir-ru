@@ -15,74 +15,88 @@
   <status value = "active"/>
 
   <type>
+   <coding>
     <system value="http://hl7.org/fhir/ex-claimtype"/>
     <code value="institutional"/>
+   </coding>
   </type>
  
-  <created value="2014-08-16"/>
-
- <insurerReference>
-  <reference value="Organization/2"/>
-</insurerReference>
-
- <organizationReference>
-    <reference value="Organization/1"/>
- </organizationReference>
-
  <use value="complete"/>
 
- <priority>
-    <code value="normal"/>
- </priority>
+ <patient>
+   <reference value="Patient/1"/>
+ </patient>
+ 
+ <created value="2014-08-16"/>
 
- <entererIdentifier>
+ <enterer>
+   <identifier>
     <system value="http://jurisdiction.org/facilities/HOSP1234/users"/>
     <value value="UC1234"/>
-</entererIdentifier>
+   </identifier>
+</enterer>
 
- <facilityIdentifier>
-    <system value="http://jurisdiction.org/facilities"/>
-    <value value="HOSP1234"/>
-</facilityIdentifier>
- 
+ <insurer>
+  <reference value="Organization/2"/>
+</insurer>
+
+ <organization>
+    <reference value="Organization/1"/>
+ </organization>
+
+ <priority>
+  <coding>
+    <code value="normal"/>
+  </coding>
+ </priority>
+
  <payee>
    <type>
+    <coding>
      <code value="provider"/>
+	</coding>
    </type>
  </payee>
  
-  <diagnosis>
+ <facility>
+  <identifier>
+    <system value="http://jurisdiction.org/facilities"/>
+    <value value="HOSP1234"/>
+  </identifier>
+ </facility>
+ 
+   <careTeam>
+     <sequence value="1"/>
+     <provider>
+       <reference value="Practitioner/example"/>
+     </provider>
+   </careTeam>
+
+   <diagnosis>
     <sequence value="1"/>
-	<diagnosis>
+	<diagnosisCodeableConcept>
+	 <coding>
 	  <code value="654456"/>
-	  </diagnosis>
+	 </coding>
+	</diagnosisCodeableConcept>
   </diagnosis>
  
- <patientReference>
-   <reference value="Patient/1"/>
- </patientReference>
- 
- <coverage>
+ <insurance>
    <sequence value="1"/>
    <focal value="true"/>
-   <coverageReference>
+   <coverage>
      <reference value="Coverage/9876B1"/>
-   </coverageReference>
- </coverage>
+   </coverage>
+ </insurance>
   
  <item>
    <sequence value="1"/>
-   <!--type>
-     <code value="service"/>
-   </type-->
-   <careTeam>
-     <providerReference>
-       <reference value="Practitioner/example"/>
-     </providerReference>
-   </careTeam>
+   <careTeamLinkId value="1"/>
    <service>
+    <coding>
      <system value="http://hl7.org/fhir/ex-serviceproduct"/>
      <code value="exam"/> 
+	</coding>
    </service>
    <servicedDate value="2014-08-16"/>
    <unitPrice>

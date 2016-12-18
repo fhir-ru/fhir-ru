@@ -110,9 +110,9 @@
 
  -- Row 2 -----------------------------------
   Id = 2
-  Code = subsumes
-  Display = Subsumes
-  Definition = A hierarchy where the child concepts are \"a kind of\" the parent (typically an IS-A relationship.)
+  Code = is-a
+  Display = Is-A
+  Definition = A hierarchy where the child concepts have an IS-A relationship with the parents - that is, all the properties of the parent are also true for it\'s child concepts
 
  -- Row 3 -----------------------------------
   Id = 3
@@ -140,181 +140,71 @@
  -- Row 1 -----------------------------------
   Element = CodeSystem
   UML = 0;0
-  Type = DomainResource
-  Short Label = A set of codes drawn from one or more code systems
+  Type = MetadataResource
+  Short Name = A set of codes drawn from one or more code systems
   Definition = A code system resource specifies a set of codes drawn from one or more code systems.
   RIM Mapping = N/A
-  Object Impl = BaseConformance
   w5 = conformance.terminology
 
  -- Row 2 -----------------------------------
   Element = CodeSystem.url
-  Card. = 0..1
-  Summary = y
-  Type = uri
-  Short Label = Globally unique logical identifier for  code system (Coding.system)
-  Definition = An absolute URL that is used to identify this code system when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this code system is (or will be) published. This is used in [Coding]{datatypes.html#Coding}.system
-  RIM Mapping = N/A
-  Object Impl = BaseConformance.url
-  w5 = id
+  Short Name = & (Coding.system)
+  Definition = & This is used in [Coding]{datatypes.html#Coding}.system
 
  -- Row 3 -----------------------------------
   Element = CodeSystem.identifier
   Card. = 0..1
-  Summary = y
-  Type = Identifier
-  Short Label = Additional identifier for the code system (e.g. HL7 v2 / CDA)
-  Definition = Formal identifier that is used to identify this code system when it is represented in other formats, or referenced in a specification, model, design or an instance.
-  Comments = Typically, this is used for values that can go in an HL7 v3 II data type
-  CDISC Define.xml 2.0 Mapping = Identifier part
-  w5 = id
 
  -- Row 4 -----------------------------------
   Element = CodeSystem.version
-  Card. = 0..1
-  Summary = y
-  Type = string
-  Short Label = Logical identifier for this version (Coding.version)
-  Definition = Used to identify this version of the code system when it is referenced in a specification, model, design or instance (e.g. Coding.version). This is an arbitrary value managed by the profile author manually and the value should be a timestamp. This is used in [Coding]{datatypes.html#Coding}.version
-  Comments = There may be multiple resource versions of the code system that have the same identifier
-  RIM Mapping = N/A
-  Object Impl = BaseConformance.version
-  w5 = id.version
+  Short Name = & (Coding.version)
+  Definition = & This is used in [Coding]{datatypes.html#Coding}.version
 
  -- Row 5 -----------------------------------
   Element = CodeSystem.name
-  Card. = 0..1
-  Summary = y
-  Type = string
-  Short Label = Informal name for this code system
-  Definition = A free text natural language name describing the code system
-  Requirements = Support human navigation
-  Comments = The name is not expected to be unique. A name should be provided unless the code system is a contained resource (e.g. an anonymous code system in a profile). Most registries will require a name
-  RIM Mapping = N/A
-  Object Impl = BaseConformance.name
 
  -- Row 6 -----------------------------------
-  Element = CodeSystem.status
-  Card. = 1..1
-  Is Modifier = Yes
-  Summary = y
-  Type = code
-  Binding = ConformanceResourceStatus
-  Short Label = draft | active | retired
-  Definition = The status of the code system
-  Requirements = Identify when/if the code system should be used.
-  Comments = Allows filtering of code system instances that are appropriate (or not) for use
-  RIM Mapping = N/A
-  Object Impl = BaseConformance.status
-  w5 = status
+  Element = CodeSystem.title
 
  -- Row 7 -----------------------------------
-  Element = CodeSystem.experimental
-  Card. = 0..1
-  Summary = y
-  Type = boolean
-  Short Label = If for testing purposes, not real usage
-  Definition = This CodeSystem was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage
-  Comments = Allows filtering of code systems that are appropriate for use vs. not
-  w5 = class
+  Element = CodeSystem.status
 
  -- Row 8 -----------------------------------
-  Element = CodeSystem.publisher
-  Card. = 0..1
-  Summary = y
-  Type = string
-  Short Label = Name of the publisher (organization or individual)
-  Definition = The name of the individual or organization that published the code system
-  Requirements = Helps establish the \"authority/credibility\" of the code system.  May also allow for contact
-  Comments = Usually an organization, but may be an individual. This item SHOULD be populated unless the information is available from context.
-  w5 = who.witness
+  Element = CodeSystem.experimental
 
  -- Row 9 -----------------------------------
-  Element = CodeSystem.contact
-  Card. = 0..*
-  Summary = y
-  UML = 0;400
-  Short Label = Contact details of the publisher
-  Definition = Contacts to assist a user in finding and communicating with the publisher
-  Comments = May be a web site, an email address, a telephone number, etc.
+  Element = CodeSystem.publisher
 
  -- Row 10 -----------------------------------
-  Element = CodeSystem.contact.name
-  Card. = 0..1
-  Summary = Y
-  Type = string
-  Short Label = Name of an individual to contact
-  Definition = The name of an individual to contact regarding the code system
-  Comments = If there is no named individual, the telecom is for the organization as a whole
+  Element = CodeSystem.contact
 
  -- Row 11 -----------------------------------
-  Element = CodeSystem.contact.telecom
-  Card. = 0..*
-  Summary = Y
-  Type = ContactPoint
-  Short Label = Contact details for individual or publisher
-  Definition = Contact details for individual (if a name was provided) or the publisher
+  Element = CodeSystem.date
 
  -- Row 12 -----------------------------------
-  Element = CodeSystem.date
-  Card. = 0..1
-  Summary = y
-  Type = dateTime
-  Short Label = Date for given status
-  Definition = The date that the code system status was last changed. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the implementation guide changes (e.g. the \'content logical definition\')
-  Requirements = Need to know when a code system was first legal for use or became withdrawn or replaced.
-  Comments = Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the code system. Additional specific dates may be added as extensions
+  Element = CodeSystem.description
+  Aliases = Scope; Purpose
   RIM Mapping = N/A
-  Object Impl = BaseConformance.date
-  w5 = when.recorded
 
  -- Row 13 -----------------------------------
-  Element = CodeSystem.description
-  Card. = 0..1
-  Aliases = Scope; Purpose
-  Summary = y
-  Type = markdown
-  Short Label = Human language description of the code system
-  Definition = A free text natural language description of the use of the code system - reason for definition, \"the semantic space\" to be included in the code system, conditions of use, etc. The description may include a list of expected usages for the code system and can also describe the approach taken to build the code system.
-  Requirements = Human understandability
-  Comments = The description is not intended to describe the semantics of the Code System - there are no intrinsic semantics separate from the codes contained in its expansion. The description should capture its intended use, which is needed for ensuring integrity for its use in models across future changes. A description should be provided unless the code system is a contained resource (e.g. an anonymous code system in a profile). Most registries will require a description
-  RIM Mapping = N/A
+  Element = CodeSystem.useContext
 
  -- Row 14 -----------------------------------
-  Element = CodeSystem.useContext
-  Card. = 0..*
-  Summary = y
-  Type = CodeableConcept
-  Binding = ConformanceUseContext
-  Short Label = Content intends to support these contexts
-  Definition = The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of code system definitions.
-  Requirements = Assist in searching for appropriate content
-  CDISC Define.xml 2.0 Mapping = COMPONENT, PROPERTY, TIME_ASPCT, SYSTEM, SCALE_TYP, METHOD_TYP, CLASS, CLASSTYPE, ORDER_OBS, DOCUMENT_SECTION, HL7_ATTACHMENT_STRUCTURE
-  Object Impl = BaseConformance.useContext
+  Element = CodeSystem.jurisdiction
 
  -- Row 15 -----------------------------------
-  Element = CodeSystem.requirements
-  Card. = 0..1
-  Type = markdown
-  Short Label = Why needed
-  Definition = Explains why this code system is needed and why it has been constrained as it has
-  Comments = This element does not describe the usage of the code system (that is done in comments), rather it\'s for traceability of \'\'why\'\' the element is either needed or \'\'why\'\' the constraints exist as they do.  This may be used to point to source materials or specifications that drove the structure of this data element
+  Element = CodeSystem.purpose
 
  -- Row 16 -----------------------------------
   Element = CodeSystem.copyright
-  Card. = 0..1
-  Aliases = License,Restrictions
-  Type = string
-  Short Label = Use and/or publishing restrictions
-  Definition = A copyright statement relating to the code system and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the code system
-  Comments = Frequently, the copyright differs between the code system and the codes that are included. The copyright statement should clearly differentiate between these when required
+  Comments = & Sometimes, the copyright differs between the code system and the codes that are included. The copyright statement should clearly differentiate between these when required
 
  -- Row 17 -----------------------------------
   Element = CodeSystem.caseSensitive
   Card. = 0..1
   Summary = y
   Type = boolean
-  Short Label = If code comparison is case sensitive
+  Short Name = If code comparison is case sensitive
   Definition = If code comparison is case sensitive when codes within this system are compared to each other
   Comments = If this value is missing, then it is not specified whether a code system is case sensitive or not. When the rule is not known, Postel\'s law should be followed: produce codes with the correct case, and accept codes in any case. This element is primarily provided to support validation software
 
@@ -323,8 +213,9 @@
   Card. = 0..1
   Summary = y
   Type = uri
-  Short Label = Canonical URL for value set with entire code system
+  Short Name = Canonical URL for value set with entire code system
   Definition = Canonical URL of value set that contains the entire code system
+  Comments = Thedefinition of the value set SHALL include all codes from this code system, and it SHALL be immutable
 
  -- Row 19 -----------------------------------
   Element = CodeSystem.hierarchyMeaning
@@ -332,7 +223,7 @@
   Summary = y
   Type = code
   Binding = CodeSystemHierarchyMeaning
-  Short Label = grouped-by | subsumes | part-of | classified-with
+  Short Name = grouped-by | is-a | part-of | classified-with
   Definition = The meaning of the heirarchy of concepts
 
  -- Row 20 -----------------------------------
@@ -341,7 +232,7 @@
   Aliases = grammar
   Summary = Y
   Type = boolean
-  Short Label = If code system defines a post-composition grammar
+  Short Name = If code system defines a post-composition grammar
   Definition = True If code system defines a post-composition grammar
   Comments = Note that the code system resource does not define what the compositional grammar is, only whether or not there is one
 
@@ -350,7 +241,7 @@
   Card. = 0..1
   Summary = y
   Type = boolean
-  Short Label = If definitions are not stable
+  Short Name = If definitions are not stable
   Definition = This flag is used to signify that the code system has not (or does not) maintain the definitions, and a version must be specified when referencing this code system
   Comments = Best practice is that code systems do not redefine concepts, or that if concepts are redefined, a new code system definition is created. But this is not always possible, so some code systems may be defined as \'versionNeeded\'
 
@@ -360,7 +251,7 @@
   Summary = y
   Type = code
   Binding = CodeSystemContentMode
-  Short Label = not-present | examplar | fragment | complete
+  Short Name = not-present | examplar | fragment | complete
   Definition = How much of the content of the code system - the concepts and codes it defines - are represented in this resource
 
  -- Row 23 -----------------------------------
@@ -368,7 +259,7 @@
   Card. = 0..1
   Summary = Y
   Type = unsignedInt
-  Short Label = Total concepts in the code system
+  Short Name = Total concepts in the code system
   Definition = The total number of concepts defined by the code system. Where the code system has a compositional grammar, the count refers to the number of base (primitive) concepts
   Comments = The count of concepts defined in this resource cannot be more than this value, but may be less for several reasons - see the content value
 
@@ -377,7 +268,7 @@
   Card. = 0..*
   Summary = Y
   UML = 200;400
-  Short Label = Filter that can be used in a value set
+  Short Name = Filter that can be used in a value set
   Definition = A filter that can be used in a value set compose statement when selecting concepts using a filter
 
  -- Row 25 -----------------------------------
@@ -386,7 +277,7 @@
   Summary = y
   Type = code
   Binding = !
-  Short Label = Code that identifies the filter
+  Short Name = Code that identifies the filter
   Definition = The code that identifies this filter when it is used in the instance
 
  -- Row 26 -----------------------------------
@@ -394,7 +285,7 @@
   Card. = 0..1
   Summary = y
   Type = string
-  Short Label = How or why the filter is used
+  Short Name = How or why the filter is used
   Definition = A description of how or why the filter is used
 
  -- Row 27 -----------------------------------
@@ -403,7 +294,7 @@
   Summary = y
   Type = code
   Binding = FilterOperator
-  Short Label = Operators that can be used with filter
+  Short Name = Operators that can be used with filter
   Definition = A list of operators that can be used with the filter
 
  -- Row 28 -----------------------------------
@@ -411,7 +302,7 @@
   Card. = 1..1
   Summary = y
   Type = string
-  Short Label = What to use for the value
+  Short Name = What to use for the value
   Definition = A description of what the value for the filter should be
 
  -- Row 29 -----------------------------------
@@ -420,7 +311,7 @@
   Summary = y
   UML = 400;400
   Type = =Property
-  Short Label = Additional information supplied about each concept
+  Short Name = Additional information supplied about each concept
   Definition = A property defines an additional slot through which additional information can be provided about a concept
 
  -- Row 30 -----------------------------------
@@ -429,7 +320,7 @@
   Summary = y
   Type = code
   Binding = !
-  Short Label = Identifies the property on the concepts, and when referred to in operations
+  Short Name = Identifies the property on the concepts, and when referred to in operations
   Definition = A code that is used to identify the property. The code is used internally (in CodeSystem.concept.property.code) and also externally, such as in property filters
 
  -- Row 31 -----------------------------------
@@ -437,7 +328,7 @@
   Card. = 0..1
   Summary = y
   Type = uri
-  Short Label = Formal identifier for the property
+  Short Name = Formal identifier for the property
   Definition = Reference to the formal meaning of the property. One possible source of meaning is the [Concept Properties](codesystem-concept-properties.html) code system
 
  -- Row 32 -----------------------------------
@@ -445,7 +336,7 @@
   Card. = 0..1
   Summary = y
   Type = string
-  Short Label = Why the property is defined, and/or what it conveys
+  Short Name = Why the property is defined, and/or what it conveys
   Definition = A description of the property- why it is defined, and how it\'s value might be used
 
  -- Row 33 -----------------------------------
@@ -454,7 +345,7 @@
   Summary = y
   Type = code
   Binding = PropertyType
-  Short Label = code | Coding | string | integer | boolean | dateTime
+  Short Name = code | Coding | string | integer | boolean | dateTime
   Definition = The type of the property value. Properties of type \"code\" contain a code defined by the code system (e.g. a reference to anotherr defined concept)
 
  -- Row 34 -----------------------------------
@@ -462,7 +353,7 @@
   Card. = 0..*
   UML = right
   Type = =ConceptDefinition
-  Short Label = Concepts in the code system
+  Short Name = Concepts in the code system
   Definition = Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions must be consulted to determine what the meaning of the hierarchical relationships are
   Comments = If this is empty, it means that the code system resource does not represent the content of the code system
 
@@ -471,28 +362,28 @@
   Card. = 1..1
   Type = code
   Binding = !
-  Short Label = Code that identifies concept
+  Short Name = Code that identifies concept
   Definition = A code - a text symbol - that uniquely identifies the concept within the code system
 
  -- Row 36 -----------------------------------
   Element = CodeSystem.concept.display
   Card. = 0..1
   Type = string
-  Short Label = Text to display to the user
+  Short Name = Text to display to the user
   Definition = A human readable string that is the recommended default way to present this concept to a user
 
  -- Row 37 -----------------------------------
   Element = CodeSystem.concept.definition
   Card. = 0..1
   Type = string
-  Short Label = Formal definition
+  Short Name = Formal definition
   Definition = The formal definition of the concept. The code system resource does not make formal definitions required, because of the prevalence of legacy systems. However, they are highly recommended, as without them there is no formal meaning associated with the concept
 
  -- Row 38 -----------------------------------
   Element = CodeSystem.concept.designation
   Card. = 0..*
   UML = up
-  Short Label = Additional representations for the concept
+  Short Name = Additional representations for the concept
   Definition = Additional representations for the concept - other languages, aliases, specialized purposes, used for particular purposes, etc.
   Requirements = Many concept definition systems support multiple representations, in multiple languages, and for multiple purposes
 
@@ -501,7 +392,7 @@
   Card. = 0..1
   Type = code
   Binding = Language
-  Short Label = Human language of the designation
+  Short Name = Human language of the designation
   Definition = The language this designation is defined for
   Comments = In the absence of a language, the resource language applies
 
@@ -510,7 +401,7 @@
   Card. = 0..1
   Type = Coding
   Binding = ConceptDesignationUse
-  Short Label = Details how this designation would be used
+  Short Name = Details how this designation would be used
   Definition = A code that details how this designation would be used
   Comments = If no use is provided, the designation can be assumed to be suitable for general display to a human user
 
@@ -518,7 +409,7 @@
   Element = CodeSystem.concept.designation.value
   Card. = 1..1
   Type = string
-  Short Label = The text value for this designation
+  Short Name = The text value for this designation
   Definition = The text value for this designation
 
  -- Row 42 -----------------------------------
@@ -526,7 +417,7 @@
   Card. = 0..*
   UML = 400;240
   Type = =ConceptProperty
-  Short Label = Property value for the concept
+  Short Name = Property value for the concept
   Definition = A property value for this concept
 
  -- Row 43 -----------------------------------
@@ -534,98 +425,44 @@
   Card. = 1..1
   Type = code
   Binding = !
-  Short Label = Reference to CodeSystem.property.code
+  Short Name = Reference to CodeSystem.property.code
   Definition = A code that is a reference to CodeSystem.property.code
 
  -- Row 44 -----------------------------------
   Element = CodeSystem.concept.property.value[x]
   Card. = 1..1
   Type = code | Coding | string | integer | boolean | dateTime
-  Short Label = Value of the property for this concept
+  Short Name = Value of the property for this concept
   Definition = The value of this property
 
  -- Row 45 -----------------------------------
   Element = CodeSystem.concept.concept
   Card. = 0..*
   Type = @CodeSystem.concept
-  Short Label = Child Concepts (is-a/contains/categorizes)
-  Definition = Defines children of a concept to produce a hierarchy of concepts. The nature of the relationships is variable (is-a/contains/categorizes) and can only be determined by examining the definitions of the concepts
+  Short Name = Child Concepts (is-a/contains/categorizes)
+  Definition = Defines children of a concept to produce a hierarchy of concepts. The nature of the relationships is variable (is-a/contains/categorizes) - see hierarchyMeaning
 
 === Sheet Search =====================================
 
  -- Row 1 -----------------------------------
-  Name = url
-  Type = uri
-  Description = The logical URL for the code system
-  Path = CodeSystem.url
-
- -- Row 2 -----------------------------------
-  Name = identifier
-  Type = token
-  Description = The identifier for the code system
-  Path = CodeSystem.identifier
-
- -- Row 3 -----------------------------------
-  Name = version
-  Type = token
-  Description = The version identifier of the code system
-  Path = CodeSystem.version
-
- -- Row 4 -----------------------------------
-  Name = name
-  Type = string
-  Description = The name of the code system
-  Path = CodeSystem.name
-
- -- Row 5 -----------------------------------
-  Name = publisher
-  Type = string
-  Description = Name of the publisher of the code system
-  Path = CodeSystem.publisher
-
- -- Row 6 -----------------------------------
-  Name = description
-  Type = string
-  Description = Text search in the description of the code system
-  Path = CodeSystem.description
-
- -- Row 7 -----------------------------------
-  Name = status
-  Type = token
-  Description = The status of the code system
-  Path = CodeSystem.status
-
- -- Row 8 -----------------------------------
-  Name = date
-  Type = date
-  Description = The code system publication date
-  Path = CodeSystem.date
-
- -- Row 9 -----------------------------------
   Name = system
   Type = uri
   Description = The system for any codes defined by this code system (same as \'url\')
   Path = CodeSystem.url
 
- -- Row 10 -----------------------------------
+ -- Row 2 -----------------------------------
   Name = code
   Type = token
   Description = A code defined in the code system
   Path = CodeSystem.concept.code
 
- -- Row 11 -----------------------------------
-  Name = context
-  Type = token
-  Description = A use context assigned to the code system
-  Path = CodeSystem.useContext
-
- -- Row 12 -----------------------------------
+ -- Row 3 -----------------------------------
   Name = language
   Type = token
   Description = A language in which a designation is provided
   Path = CodeSystem.concept.designation.language
 
- -- Row 13 -----------------------------------
+ -- Row 4 -----------------------------------
   Name = content
   Type = token
   Path = CodeSystem.content
@@ -664,22 +501,28 @@
   Description = NHIN Purpose of Use
   Filename = codesystem-nhin-purposeofuse.xml
 
+ -- Row 4 -----------------------------------
+  Name = SNOMED CT
+  Identity = snomedct
+  Description = Canonical Definition for SNOMED CT
+  Filename = codesystem-snomedct.xml
+
 === Sheet Examples =====================================
 
  -- Row 1 -----------------------------------
   Name = lookup
   Use = Resource
-  Documentation = Given a code/system, or a Coding, get additional details about the concept
+  Documentation = Given a code/system, or a Coding, get additional details about the concept, including definition, status, designations, and properties. One of the products of this operation is a full decomposition of a code from a structure terminology
   Type = operation
   Example.Request = $lookup-request.txt
   Example.Response = $lookup-response.txt
-  Title = Concept Look Up
-  Footer = Note that the $lookup operation is more than just a code system search  - the server finds the concept, and gathers the return information from the value set and the underlying code system definitions.
+  Title = Concept Look Up & Decomposition
+  Footer = Note that the $lookup operation is more than just a code system search  - the server finds the concept, and gathers the return information from the underlying code system definitions.
 
  -- Row 2 -----------------------------------
   Name = lookup.code
   Use = in
-  Documentation = The code that is to be validated. If a code is provided, a system must be provided
+  Documentation = The code that is to be located. If a code is provided, a system must be provided
   Type = code
   Min = 0
   Max = 1
@@ -687,7 +530,7 @@
  -- Row 3 -----------------------------------
   Name = lookup.system
   Use = in
-  Documentation = The system for the code that is to be validated
+  Documentation = The system for the code that is to be located
   Type = uri
   Min = 0
   Max = 1
@@ -717,6 +560,14 @@
   Max = 1
 
  -- Row 7 -----------------------------------
+  Name = lookup.displayLanguage
+  Use = in
+  Documentation = The requested language for display (see ExpansionProfile.displayLanguage)
+  Type = code
+  Min = 0
+  Max = 1
+
+ -- Row 8 -----------------------------------
   Name = lookup.property
   Use = in
   Documentation = A property that the client wishes to be returned in the output. If no properties are specified, the server chooses what to return. The following properties are defined for all code systems: system, version, display, definition, designation, parent, child, and lang.X where X is a language code in a designation. These properties refer to the directly return parameters documented for the operation
@@ -724,7 +575,7 @@
   Min = 0
   Max = *
 
- -- Row 8 -----------------------------------
+ -- Row 9 -----------------------------------
   Name = lookup.name
   Use = out
   Documentation = A display name for the code system
@@ -732,7 +583,7 @@
   Min = 1
   Max = 1
 
- -- Row 9 -----------------------------------
+ -- Row 10 -----------------------------------
   Name = lookup.version
   Use = out
   Documentation = The version that these details are based on
@@ -740,7 +591,7 @@
   Min = 0
   Max = 1
 
- -- Row 10 -----------------------------------
+ -- Row 11 -----------------------------------
   Name = lookup.display
   Use = out
   Documentation = The preferred display for this concept
@@ -748,33 +599,7 @@
   Min = 1
   Max = 1
 
- -- Row 11 -----------------------------------
-  Name = lookup.property
-  Use = out
-  Type = Tuple
-  Min = 0
-  Max = *
-
  -- Row 12 -----------------------------------
-  Name = lookup.property.code
-  Type = code
-  Min = 0
-  Max = 1
-
- -- Row 13 -----------------------------------
-  Name = lookup.property.value
-  Type = string
-  Min = 1
-  Max = 1
-
- -- Row 14 -----------------------------------
-  Name = lookup.property.description
-  Documentation = Human Readable representation of the propery value
-  Type = string
-  Min = 0
-  Max = 1
-
- -- Row 15 -----------------------------------
   Name = lookup.designation
   Use = out
   Documentation = Additional representations for this concept
@@ -782,37 +607,94 @@
   Min = 0
   Max = *
 
- -- Row 16 -----------------------------------
+ -- Row 13 -----------------------------------
   Name = lookup.designation.language
   Documentation = The language this designation is defined for
   Type = code
   Min = 0
   Max = 1
 
- -- Row 17 -----------------------------------
+ -- Row 14 -----------------------------------
   Name = lookup.designation.use
   Documentation = A code that details how this designation would be used
   Type = Coding
   Min = 0
   Max = 1
 
- -- Row 18 -----------------------------------
+ -- Row 15 -----------------------------------
   Name = lookup.designation.value
   Documentation = The text value for this designation
   Type = string
   Min = 1
   Max = 1
 
+ -- Row 16 -----------------------------------
+  Name = lookup.property
+  Use = out
+  Documentation = One or more properties that contain additional information about the code, including status. For complex terminologies (e.g. SNOMED CT, LOINC, medications), these properties serve to decompose the code
+  Type = Tuple
+  Min = 0
+  Max = *
+
+ -- Row 17 -----------------------------------
+  Name = lookup.property.code
+  Documentation = Identifies the property returned
+  Type = code
+  Min = 1
+  Max = 1
+
+ -- Row 18 -----------------------------------
+  Name = lookup.property.value
+  Documentation = The value of the property returned
+  Type = code | Coding | string | integer | boolean | dateTime
+  Min = 1
+  Max = 1
+
  -- Row 19 -----------------------------------
+  Name = lookup.property.description
+  Documentation = Human Readable representation of the property value (e.g. display for a code)
+  Type = string
+  Min = 0
+  Max = 1
+
+ -- Row 20 -----------------------------------
+  Name = lookup.property.subproperty
+  Documentation = Nested Properties (mainly used for SNOMED CT decomposition, for relationship Groups)
+  Type = Tuple
+  Min = 0
+  Max = *
+
+ -- Row 21 -----------------------------------
+  Name = lookup.property.subproperty.code
+  Documentation = Identifies the sub-property returned
+  Type = code
+  Min = 1
+  Max = 1
+
+ -- Row 22 -----------------------------------
+  Name = lookup.property.subproperty.value
+  Documentation = The value of the sub-property returned
+  Type = code | Coding | string | integer | boolean | dateTime
+  Min = 1
+  Max = 1
+
+ -- Row 23 -----------------------------------
+  Name = lookup.property.subproperty.description
+  Documentation = Human Readable representation of the property value (e.g. display for a code)
+  Type = string
+  Min = 0
+  Max = 1
+
+ -- Row 24 -----------------------------------
   Name = subsumes
   Use = Resource | Instance
-  Documentation = Test whether code \"sub\" is subsumed by code \"super\" given the semantics of subsumption in the underlying code system
+  Documentation = Test whether code \"sub\" is subsumed by code \"super\" given the semantics of subsumption in the underlying code system (see hierarchyMeaning)
   Type = operation
   Example.Request = $subsumes-request.txt
   Example.Response = $subsumes-response.txt
   Title = Subsumption Testing
 
- -- Row 20 -----------------------------------
+ -- Row 25 -----------------------------------
   Name = subsumes.codeA
   Use = in
   Documentation = The \"sub\" code that is to be tested. If a code is provided, a system must be provided
@@ -820,7 +702,7 @@
   Min = 0
   Max = 1
 
- -- Row 21 -----------------------------------
+ -- Row 26 -----------------------------------
   Name = subsumes.codeB
   Use = in
   Documentation = The \"super\" code that is to be validated. If a code is provided, a system must be provided
@@ -828,7 +710,7 @@
   Min = 0
   Max = 1
 
- -- Row 22 -----------------------------------
+ -- Row 27 -----------------------------------
   Name = subsumes.system
   Use = in
   Documentation = The system in which subsumption testing is to be performed. This must be provided unless the operation is invoked on a code system instance
@@ -836,7 +718,7 @@
   Min = 0
   Max = 1
 
- -- Row 23 -----------------------------------
+ -- Row 28 -----------------------------------
   Name = subsumes.version
   Use = in
   Documentation = The version of the system, if one was provided in the source data
@@ -844,23 +726,23 @@
   Min = 0
   Max = 1
 
- -- Row 24 -----------------------------------
+ -- Row 29 -----------------------------------
   Name = subsumes.codingA
   Use = in
-  Documentation = The \"sub\" coding to test. If the coding system does not have to match the specified subsumption system, but the relationships between the systems must be well established
+  Documentation = The \"sub\" coding to test. The coding system does not have to match the specified subsumption system, but the relationships between the systems must be well established
   Type = Coding
   Min = 0
   Max = 1
 
- -- Row 25 -----------------------------------
+ -- Row 30 -----------------------------------
   Name = subsumes.codingB
   Use = in
-  Documentation = The \"super\" coding to test. If the coding system does not have to match the specified subsumption system, but the relationships between the systems must be well established
+  Documentation = The \"super\" coding to test. The coding system does not have to match the specified subsumption system, but the relationships between the systems must be well established
   Type = Coding
   Min = 0
   Max = 1
 
- -- Row 26 -----------------------------------
+ -- Row 31 -----------------------------------
   Name = subsumes.outcome
   Use = out
   Documentation = Whether \"sub\" is subsumed by \"super\". There are 4 possible codes to be returned: equivalent, subsumes, subsumed-by, and not-subsumed. If the server is unable to determine the relationship between the codes, then it returns an error (i.e. an OperationOutcome)
@@ -868,94 +750,150 @@
   Min = 1
   Max = 1
 
- -- Row 27 -----------------------------------
-  Name = infer
+ -- Row 32 -----------------------------------
+  Name = compose
   Use = Resource | Instance
-  Documentation = Given a set of property/concept pairs, return a set of concepts for requested properties. \n\nTypically, this operation is used to perform composition - given one or more properties, see if there is a common single code for all of them - or decomposition - given a code or expression, find out what it implies about the value of a specific property. It is defined a single operation, though, because it may be necessary to provide multiple inputs and outputs for both cases. \n\nTo use this operation, a client provides a set of property / concept pairs. One (or more) of the properties may be be labeled with the special property name $main which indicates that is a full code. In addition, the client provides one or more \"request\" parameter listing the properties it wishes returned, which may include $main. The server determines what of the request properties it is able to return, and returns a set of property/concept pairs as requested. In addition, the server can return a message with information about the inferencing it was able to perform. If the server cannot process the request at all, it should return an OperationOutcome with one or more errors.
+  Documentation = Given a set of properties, return one or more possible matching codes\n\nThis operation takes a set of properties, and examines the code system looking for codes in the code system that match a set of known properties. \n\nWhen looking for matches, there are 3 possible types of match:\n* a complete match - a code that represents all the provided properties correctly\n* a partial match - a code that represents some of the provided properties correctly, and not others \n* a possible match - a code that may represent the provided properties closely, but may capture less or more precise informationfor some of the properties\n\nThe $compose operation can be called in one of 2 modes:\n* By a human, looking for the best match for a set of properties. In this mode, the server returns a list of complete, possible or partial matches (possibly with comments), so that the user can choose (or not) the most appropriate code\n* By a machine (typically in a system interface performing a transformation). In this mode, the server returns only a list of complete and partial matches, but no possible matches. The machine can choose a code from the list (or not) based on what properties are not coded\n\nThe compose operation is still preliminary. The interface can be expected to change as more experience is gained from implementations.
   Type = operation
-  Example.Request = $infer-request.txt
-  Example.Response = $infer-response.txt
-  Title = Performing inferencing based on a set of codes - e.g. a mix of composition and decomposition
+  Example.Request = $compose-request.txt
+  Example.Response = $compose-response.txt
+  Title = Code Composition based on supplied properties
 
- -- Row 28 -----------------------------------
-  Name = infer.system
+ -- Row 33 -----------------------------------
+  Name = compose.system
   Use = in
-  Documentation = The system in which inferencing is to be performed. This must be provided unless the operation is invoked on a code system instance
+  Documentation = The system in which composition is to be performed. This must be provided unless the operation is invoked on a code system instance
   Type = uri
   Min = 0
   Max = 1
 
- -- Row 29 -----------------------------------
-  Name = infer.version
+ -- Row 34 -----------------------------------
+  Name = compose.version
   Use = in
   Documentation = The version of the system for the inferencing to be performed
   Type = string
   Min = 0
   Max = 1
 
- -- Row 30 -----------------------------------
-  Name = infer.concept
-  Use = in
-  Documentation = Concepts provided by the client on which inferencing is to be performed
-  Type = Tuple
-  Min = 1
-  Max = *
-
- -- Row 31 -----------------------------------
-  Name = infer.concept.property
-  Documentation = The property that this concept represents, or $main if it doesn\'t represent a particular property
-  Type = code
-  Min = 1
-  Max = 1
-
- -- Row 32 -----------------------------------
-  Name = infer.concept.code
-  Documentation = The code or expression for the property
-  Type = code
-  Min = 1
-  Max = 1
-
- -- Row 33 -----------------------------------
-  Name = infer.property
-  Use = in
-  Documentation = A property that is requested to be returned
-  Type = code
-  Min = 0
-  Max = *
-
- -- Row 34 -----------------------------------
-  Name = infer.message
-  Use = out
-  Documentation = Information from the server about the request. Note that if there is an error processing the request, an operation outcome will be returned instead. The message may be used when the operation is partially successful
-  Type = string
-  Min = 0
-  Max = 1
-
  -- Row 35 -----------------------------------
-  Name = infer.output
+  Name = compose.property
+  Use = in
+  Documentation = One or more properties that contain information to be composed into the code
+  Type = Tuple
+  Min = 0
+  Max = *
+
+ -- Row 36 -----------------------------------
+  Name = compose.property.code
+  Documentation = Identifies the property provided
+  Type = code
+  Min = 1
+  Max = 1
+
+ -- Row 37 -----------------------------------
+  Name = compose.property.value
+  Documentation = The value of the property provided
+  Type = code | Coding | string | integer | boolean | dateTime
+  Min = 1
+  Max = 1
+
+ -- Row 38 -----------------------------------
+  Name = compose.property.subproperty
+  Documentation = Nested Properties (mainly used for SNOMED CT composition, for relationship Groups)
+  Type = Tuple
+  Min = 0
+  Max = *
+
+ -- Row 39 -----------------------------------
+  Name = compose.property.subproperty.code
+  Documentation = Identifies the sub-property provided
+  Type = code
+  Min = 1
+  Max = 1
+
+ -- Row 40 -----------------------------------
+  Name = compose.property.subproperty.value
+  Documentation = The value of the sub-property provided
+  Type = code | Coding | string | integer | boolean | dateTime
+  Min = 1
+  Max = 1
+
+ -- Row 41 -----------------------------------
+  Name = compose.mode
+  Use = in
+  Documentation = Whether the operation is being used by a human, or a machine. If the operation is being used by a human, the terminology server can return a list of possible matches, with commentary. For a machine, the server returns sure matches, or none at all
+  Type = code
+  Min = 1
+  Max = 1
+
+ -- Row 42 -----------------------------------
+  Name = compose.compositional
+  Use = in
+  Documentation = Post-coordinated expressions are allowed to be returned in the matching codes (mainly for SNOMED CT). Default = false
+  Type = boolean
+  Min = 0
+  Max = 1
+
+ -- Row 43 -----------------------------------
+  Name = compose.match
   Use = out
   Documentation = Concepts returned by the server as a result of the inferencing operation
   Type = Tuple
   Min = 0
   Max = *
 
- -- Row 36 -----------------------------------
-  Name = infer.output.property
-  Documentation = The property that this concept represents, or $main if it doesn\'t represent a particular property
+ -- Row 44 -----------------------------------
+  Name = compose.match.code
+  Documentation = A code that matches the properties provided
+  Type = Coding
+  Min = 1
+  Max = 1
+
+ -- Row 45 -----------------------------------
+  Name = compose.match.unmatched
+  Documentation = One or more properties that contain properties that could not be matched into the code
+  Type = Tuple
+  Min = 1
+  Max = 1
+
+ -- Row 46 -----------------------------------
+  Name = compose.match.unmatched.code
+  Documentation = Identifies the property provided
   Type = code
   Min = 1
   Max = 1
 
- -- Row 37 -----------------------------------
-  Name = infer.output.code
-  Documentation = The code or expression for the property
+ -- Row 47 -----------------------------------
+  Name = compose.match.unmatched.value
+  Documentation = The value of the property provided
+  Type = code | Coding | string | integer | boolean | dateTime
+  Min = 1
+  Max = 1
+
+ -- Row 48 -----------------------------------
+  Name = compose.match.unmatched.property
+  Documentation = Nested Properties (mainly used for SNOMED CT composition, for relationship Groups)
+  Type = Tuple
+  Min = 0
+  Max = *
+
+ -- Row 49 -----------------------------------
+  Name = compose.match.unmatched.property.code
+  Documentation = Identifies the sub-property provided
   Type = code
   Min = 1
   Max = 1
 
- -- Row 38 -----------------------------------
-  Name = infer.output.display
-  Documentation = Display for the returned code, to save the client from performing a $lookup immediately (recommended)
+ -- Row 50 -----------------------------------
+  Name = compose.match.unmatched.property.value
+  Documentation = The value of the sub-property provided
+  Type = code | Coding | string | integer | boolean | dateTime
+  Min = 1
+  Max = 1
+
+ -- Row 51 -----------------------------------
+  Name = compose.match.comment
+  Documentation = Information about the quality of the match, if operation is for a human
   Type = string
   Min = 0
   Max = 1

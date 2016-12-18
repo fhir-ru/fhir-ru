@@ -6,22 +6,21 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.hl7.fhir.dstu3.conformance.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.elementmodel.ParserBase;
 import org.hl7.fhir.dstu3.elementmodel.Property;
 import org.hl7.fhir.dstu3.formats.FormatUtilities;
-import org.hl7.fhir.dstu3.model.BaseConformance;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionBindingComponent;
+import org.hl7.fhir.dstu3.model.MetadataResource;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
 import org.hl7.fhir.dstu3.model.Reference;
-import org.hl7.fhir.dstu3.model.ResourceType;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.utils.IWorkerContext;
-import org.hl7.fhir.dstu3.utils.ProfileUtilities.ProfileKnowledgeProvider;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
 import org.hl7.fhir.utilities.Utilities;
@@ -65,16 +64,13 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
       if (!pp.getKey().startsWith("_")) {
         String s = pp.getKey();
         if (!s.contains("/"))
-          throw new Exception("Bad Resource Identity - should have the format [Type]/[id]");
+          throw new Exception("Bad Resource Identity - should have the format [Type]/[id]:" + s);
         String type = s.substring(0,  s.indexOf("/"));
         String id = s.substring(s.indexOf("/")+1); 
-        try {
-          ResourceType.fromCode(type);
-        } catch (Exception ex) {
-          throw new Exception("Bad Resource Identity - should have the format [Type]/[id] where Type is a valid resource type");
-        }
+        if (!context.hasResource(StructureDefinition.class , "http://hl7.org/fhir/StructureDefinition/"+type))
+          throw new Exception("Bad Resource Identity - should have the format [Type]/[id] where Type is a valid resource type:" + s);
         if (!id.matches(FormatUtilities.ID_REGEX))
-          throw new Exception("Bad Resource Identity - should have the format [Type]/[id] where id is a valid FHIR id type");
+          throw new Exception("Bad Resource Identity - should have the format [Type]/[id] where id is a valid FHIR id type:" + s);
 
         if (!(pp.getValue() instanceof JsonObject))
           throw new Exception("Unexpected type in resource list - must be an object");
@@ -118,6 +114,8 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
   }
 
   public String doReplacements(String s, FetchedResource r, Map<String, String> vars, String format) {
+    if (Utilities.noString(s))
+      return s;
     s = s.replace("{{[title]}}", r.getTitle() == null ? "?title?" : r.getTitle());
     s = s.replace("{{[name]}}", r.getId()+(format==null? "": "-"+format)+"-html");
     s = s.replace("{{[id]}}", r.getId());
@@ -167,7 +165,7 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
 
   public void loadSpecPaths(SpecMapManager paths) throws Exception {
     this.specPaths = paths;
-    for (BaseConformance bc : context.allConformanceResources()) {
+    for (MetadataResource bc : context.allConformanceResources()) {
       String s = paths.getPath(bc.getUrl());
       if (s != null)
         bc.setUserData("path", specPath(s));
@@ -186,14 +184,14 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
 
   public void findConfiguration(FetchedFile f, FetchedResource r) {
     JsonObject e = resourceConfig.getAsJsonObject(r.getElement().fhirType()+"/"+r.getId());
-    if (e == null)
-      hint("no configuration found for "+r.getElement().fhirType()+"/"+r.getId()+" in "+f.getName());
-    else 
+    if (e != null)
       r.setConfig(e);
   }
   
-  public void checkForPath(FetchedFile f, FetchedResource r, BaseConformance bc) {
-    if (!bc.getUrl().endsWith("/"+bc.getId()))
+  public void checkForPath(FetchedFile f, FetchedResource r, MetadataResource bc) {
+    if (!bc.hasUrl())
+      error("Resource has no url: "+bc.getId());
+    else if (!bc.getUrl().endsWith("/"+bc.getId()))
       error("Resource id/url mismatch: "+bc.getId()+"/"+bc.getUrl());
     if (!r.getId().equals(bc.getId()))
       error("Resource id/id mismatch: "+r.getId()+"/"+bc.getUrl());
@@ -267,7 +265,7 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
   }
 
   @Override
-  public BindingResolution resolveBinding(StructureDefinition profile, ElementDefinitionBindingComponent binding) {
+  public BindingResolution resolveBinding(StructureDefinition profile, ElementDefinitionBindingComponent binding, String path) {
     BindingResolution br = new BindingResolution();
     if (!binding.hasValueSet()) {
       br.url = specPath("terminologies.html#unbound");
@@ -378,10 +376,14 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
     return canonical;
   }
 
-  public String getLinkFor(FetchedFile f, FetchedResource r) {
+  public String getLinkFor(FetchedResource r) {
 	String base = getProperty(r, "base");
 	if (base!=null)
 	  return base;
     return r.getElement().fhirType()+"-"+r.getId()+".html";
+  }
+
+  public IWorkerContext getContext() {
+    return context;
   }
 }

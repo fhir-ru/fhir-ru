@@ -76,12 +76,12 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
   public enum JavaGenClass { Structure, Type, Resource, BackboneElement, Constraint }
 	private JavaGenClass clss;
-  private Map<String, ImpliedBaseType> impliedTypes;
+  private Map<String, String> adornments;
 	
-	public JavaResourceGenerator(OutputStream out, Definitions definitions, Map<String, ImpliedBaseType> impliedTypes) throws UnsupportedEncodingException {
+	public JavaResourceGenerator(OutputStream out, Definitions definitions, Map<String, String> adornments) throws UnsupportedEncodingException {
 		super(out);
 		this.definitions = definitions;
-		this.impliedTypes = impliedTypes;
+		this.adornments = adornments; 
 	}
 
 	private Map<ElementDefn, String> typeNames = new HashMap<ElementDefn, String>();
@@ -99,7 +99,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		return typeNames;
 	}
 
-	public void generate(ElementDefn root, String name, JavaGenClass clss, ProfiledType cd, Date genDate, String version, boolean isAbstract, Map<String, SearchParameterDefn> nameToSearchParamDef) throws Exception {
+	public void generate(ElementDefn root, String name, JavaGenClass clss, ProfiledType cd, Date genDate, String version, boolean isAbstract, Map<String, SearchParameterDefn> nameToSearchParamDef, ElementDefn template) throws Exception {
 		typeNames.clear();
 		typeNameStrings.clear();
 		enums.clear();
@@ -150,17 +150,19 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     }
     write("import ca.uhn.fhir.model.api.annotation.Block;\r\n");
     write("import org.hl7.fhir.instance.model.api.*;\r\n");
-    write("import org.hl7.fhir.dstu3.exceptions.FHIRException;\r\n");
+    write("import org.hl7.fhir.exceptions.FHIRException;\r\n");
     
+    classname = upFirst(name);
+    if (adornments.containsKey(classname+".imports")) {
+      write("// added from java-adornments.txt:\r\n");
+      write(adornments.get(classname+".imports")+"\r\n");
+      write("// end addition\r\n");
+    }
 		jdoc("", root.getDefinition());
-		classname = upFirst(name);
 		String supertype = root.typeCode();
-		boolean hasImpliedBaseType = false;
 		
-		if (root.hasMapping("http://hl7.org/fhir/object-implementation")) {
-		  supertype = processImpliedBaseType(root.getMapping("http://hl7.org/fhir/object-implementation"), root);
-		  hasImpliedBaseType = true;
-		}
+		if (template != null)
+		  supertype = template.getName();
 		
     if (clss == JavaGenClass.Resource) {
 		  
@@ -169,7 +171,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		  }
 		  
 		  if (HAPI_16) {
-		    if (hasImpliedBaseType) {
+		    if (template != null) {
 	        write("@ChildOrder(names={");
 	        boolean first = true; 
 	        for (ElementDefn e : root.getElements()) {
@@ -197,7 +199,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
         hierarchy = supertype + " implements IBaseHasExtensions, IBaseHasModifierExtensions, IDomainResource";        
       } else if ("Binary".equals(upFirst(name))) {
         hierarchy = "BaseBinary implements IBaseBinary";
-      } else if ("Conformance".equals(upFirst(name))) {
+      } else if ("CapabilityStatement".equals(upFirst(name))) {
         hierarchy = supertype + " implements IBaseConformance";
       } else if ("OperationOutcome".equals(upFirst(name))) {
         hierarchy = supertype + " implements IBaseOperationOutcome";
@@ -206,7 +208,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
       }
       write("public "+(isAbstract? "abstract " : "")+"class "+upFirst(name)+" extends "+hierarchy+" ");
     } else if (clss == JavaGenClass.Structure && upFirst(name).equals("Element")) {
-      write("public abstract class "+upFirst(name)+" extends Base implements IBaseHasExtensions ");
+      write("public abstract class "+upFirst(name)+" extends Base implements IBaseHasExtensions, IBaseElement ");
       isAbstract = true;
 		} else if (clss == JavaGenClass.Structure) {
       write("@DatatypeDef(name=\""+upFirst(name)+"\")\r\n");
@@ -265,7 +267,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
       allfields = "";
       int i = 0;
 			for (ElementDefn e : root.getElements()) {
-			  if (processObjectImpl(e)) {
+			  if (doGenerateField(e)) {
 				  generateField(root, e, "    ", i++);
 			  }
 			}
@@ -275,7 +277,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			List<ElementDefn> mandatory = new ArrayList<ElementDefn>();
 			generateConstructor(upFirst(name), mandatory, "  ");      
 			for (ElementDefn e : root.getElements()) {
-        if (e.isMandatory())
+        if (doGenerateAccessors(e) && e.isMandatory())
           mandatory.add(e);
       }
 	    if (mandatory.size() > 0)
@@ -284,7 +286,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	    generateTypeSpecificConstructors(upFirst(name));
 	    
 			for (ElementDefn e : root.getElements()) {
-    		generateAccessors(root, e, "    ", upFirst(name), !processObjectImpl(e));
+			  if (doGenerateAccessors(e))
+			    generateAccessors(root, e, "    ", upFirst(name));
 			}
 			
 			generateTypeSpecificAccessors(name);
@@ -311,9 +314,28 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		  write("   }\r\n");
 		  write("\r\n"); 
 		} else if (isAbstract && Utilities.noString(supertype) && clss != JavaGenClass.Structure) {
+      write("\r\n"); 
+      write("  @Override\r\n"); 
+      write("  public String getIdBase() {\r\n"); 
+      write("    return getId();\r\n"); 
+      write("  }\r\n"); 
+      write("  \r\n");
+      write("  @Override\r\n");
+      write("  public void setIdBase(String value) {\r\n");
+      write("    setId(value);\r\n");
+      write("  }\r\n");
 		  write("  public abstract ResourceType getResourceType();\r\n");
-		}
-		
+		} else if (isAbstract && Utilities.noString(supertype) && clss == JavaGenClass.Structure) {
+      write("  @Override\r\n"); 
+      write("  public String getIdBase() {\r\n"); 
+      write("    return getId();\r\n"); 
+      write("  }\r\n"); 
+      write("  \r\n");
+      write("  @Override\r\n");
+      write("  public void setIdBase(String value) {\r\n");
+      write("    setId(value);\r\n");
+      write("  }\r\n");
+		}		
 		// Write resource fields which can be used as constants in client code
 		// to refer to standard search params
 		if (nameToSearchParamDef != null) {
@@ -350,8 +372,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
               }
             }
           } else {
-            String code0 = sp.getComposites().get(0);
-            String code1 = sp.getComposites().get(1);
+            String code0 = sp.getComposites().get(0).getDefinition();
+            String code1 = sp.getComposites().get(1).getDefinition();
             SearchParameterDefn comp0 = nameToSearchParamDef.get(code0);
             SearchParameterDefn comp1 = nameToSearchParamDef.get(code1);
             Validate.notNull(comp0, "Couldn't find composite component " + code0 + " - Values are: " + nameToSearchParamDef.keySet());
@@ -373,54 +395,41 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		  }
 		}
 		
+		if (adornments.containsKey(classname)) {
+      write("// added from java-adornments.txt:\r\n");
+		  write(adornments.get(classname)+"\r\n");
+      write("// end addition\r\n");
+		}
 		write("\r\n");
 		write("}\r\n");
 		write("\r\n");
 		flush();
 	}
 
-  private boolean processObjectImpl(ElementDefn e) throws Exception {
-    if (e.hasMapping("http://hl7.org/fhir/object-implementation")) {
-      String[] path = e.getMapping("http://hl7.org/fhir/object-implementation").split("\\.");
-      ImpliedBaseType bt = impliedTypes.get(path[0]);
-      ElementDefn found = null;
-      for (ElementDefn c : bt.getRoot().getElements()) {
-        if (c.getName().equals(path[1])) {
-          found = c;
-          break;
-        }
-      }
-      if (found != null) {
-        if (!found.getName().equals(e.getName()))
-          throw new Exception("name mismatch on "+found.getName()+": "+found.getMaxCardinality().toString()+"/"+e.getMaxCardinality().toString()+" for "+e.getPath());
-        if (!found.getMaxCardinality().equals(e.getMaxCardinality()))
-          throw new Exception("cardinality mismatch on "+found.getName()+": "+found.getMaxCardinality().toString()+"/"+e.getMaxCardinality().toString()+" for "+e.getPath());
-        if (!found.typeCode().equals(e.typeCode()))
-          throw new Exception("type mismatch");
-      } else {
-        ElementDefn newe = new ElementDefn(e);
-        newe.getMappings().clear();
-        bt.getRoot().getElements().add(newe);
-      }
-      return false;
+  private boolean doGenerateField(ElementDefn e) throws Exception {
+    String gen = e.getMapping("http://hl7.org/fhir/object-implementation");
+    if (!e.isFromTemplate()) {
+      if (gen == null)
+        return true;
+      else
+        return !"no-gen-base".equals(gen);
+    } else {
+      if (gen == null)
+        return false;
+      else
+        return "no-gen-base".equals(gen);
     }
-    else 
-      return true;
   }
 
-  private String processImpliedBaseType(String name, ElementDefn root) throws Exception {
-    ImpliedBaseType bt = impliedTypes.get(name);
-    if (bt == null) {
-      ElementDefn newRoot = new ElementDefn();
-      newRoot.getTypes().addAll(root.getTypes());
-      newRoot.setName(name);
-      bt = new ImpliedBaseType(name, newRoot);
-      impliedTypes.put(name,  bt);
-    } else {
-      if (!root.typeCode().equals(bt.getRoot().typeCode()))
-        throw new Exception("Crossed parent types on impled type "+name);
-    }
-    return name;
+  private boolean doGenerateAccessors(ElementDefn e) throws Exception {
+    String gen = e.getMapping("http://hl7.org/fhir/object-implementation");
+    if (!e.isFromTemplate()) {
+      if (gen == null)
+        return true;
+      else
+        return !"no-gen-base".equals(gen);
+    } else 
+      return true;
   }
 
   private void writeSearchParameterField(String name, JavaGenClass clss, boolean isAbstract, SearchParameterDefn sp, String code, String[] theCompositeOf, Map<String, SearchParameterDefn> theNameToSearchParamDef) throws IOException {
@@ -764,14 +773,6 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		}
     if (upFirst(name).equals("HumanName")) {
       write(" /**\r\n"); 
-          write("   * Returns all repetitions of {@link #getFamily() family name} as a space separated string\r\n"); 
-          write("   * \r\n"); 
-          write("   * @see DatatypeUtil#joinStringsSpaceSeparated(List)\r\n"); 
-          write("   */\r\n"); 
-          write("  public String getFamilyAsSingleString() {\r\n"); 
-          write("    return joinStringsSpaceSeparated(getFamily());\r\n"); 
-          write("  }\r\n"); 
-          write("\r\n"); 
           write("  /**\r\n"); 
           write("   * Returns all repetitions of {@link #getGiven() given name} as a space separated string\r\n"); 
           write("   * \r\n"); 
@@ -810,7 +811,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
           write("    List<StringType> nameParts = new ArrayList<StringType>();\r\n"); 
           write("    nameParts.addAll(getPrefix());\r\n"); 
           write("    nameParts.addAll(getGiven());\r\n"); 
-          write("    nameParts.addAll(getFamily());\r\n"); 
+          write("    nameParts.add(getFamilyElement());\r\n"); 
           write("    nameParts.addAll(getSuffix());\r\n"); 
           write("    if (nameParts.size() > 0) {\r\n"); 
           write("      return joinStringsSpaceSeparated(nameParts);\r\n"); 
@@ -982,7 +983,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	  if (!isAbstract)
 	    write(indent+"    super.listChildren(childrenList);\r\n");
 	  for (ElementDefn e : p.getElements()) {
-      if (processObjectImpl(e) && !e.typeCode().equals("xhtml"))
+      if (doGenerateAccessors(e) && !e.typeCode().equals("xhtml"))
 	      write(indent+"    childrenList.add(new Property(\""+e.getName()+"\", \""+e.typeCode()+"\", \""+Utilities.escapeJava(e.getDefinition())+"\", 0, java.lang.Integer.MAX_VALUE, "+getElementName(e.getName(), true)+"));\r\n");    
 	  }
 	  write(indent+"  }\r\n\r\n");  
@@ -993,16 +994,18 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     write(indent+"  public Base makeProperty(int hash, String name) throws FHIRException {\r\n");
     write(indent+"    switch (hash) {\r\n");
     for (ElementDefn e : p.getElements()) {
-      String tn = typeNames.get(e);
-      if (!e.typeCode().equals("xhtml")) {
-        write(indent+"    case "+propId(e.getName())+": ");
-        String name = e.getName().replace("[x]", "");
-        if (isPrimitive(e.typeCode()) || e.typeCode().equals("Resource") || e.typeCode().equals("DomainResource")) {
-          write("throw new FHIRException(\"Cannot make property "+e.getName()+" as it is not a complex type\"); // "+tn+"\r\n");
-        } else if (e.unbounded()) {
-          write(" return add"+upFirst(getElementName(name, false))+"(); // "+tn+"\r\n");
-        } else  {
-          write(" return get"+upFirst(getElementName(name, false))+"(); // "+tn+"\r\n");
+      if (doGenerateAccessors(e)) { 
+        String tn = typeNames.get(e);
+        if (!e.typeCode().equals("xhtml")) {
+          write(indent+"    case "+propId(e.getName())+": ");
+          String name = e.getName().replace("[x]", "");
+          if (isPrimitive(e.typeCode()) || e.typeCode().equals("Resource") || e.typeCode().equals("DomainResource")) {
+            write("throw new FHIRException(\"Cannot make property "+e.getName()+" as it is not a complex type\"); // "+tn+"\r\n");
+          } else if (e.unbounded()) {
+            write(" return add"+upFirst(getElementName(name, false))+"(); // "+tn+"\r\n");
+          } else  {
+            write(" return get"+upFirst(getElementName(name, false))+"(); // "+tn+"\r\n");
+          }
         }
       }
     }
@@ -1016,25 +1019,29 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     write(indent+"  public void setProperty(String name, Base value) throws FHIRException {\r\n");
     boolean first = true;
     for (ElementDefn e : p.getElements()) {
-      String tn = typeNames.get(e);
-      if (!e.typeCode().equals("xhtml")) {
-        if (first) 
-          write(indent+"    ");
-        else
-          write(indent+"    else ");
-        first = false;
-        write(           "if (name.equals(\""+e.getName()+"\"))\r\n");
-        String name = e.getName().replace("[x]", "");
-        String cn = "("+tn+") value";
-        if (tn.contains("Enumeration<")) { // enumeration
-          cn = "new "+tn.substring(tn.indexOf("<")+1, tn.length()-1)+"EnumFactory().fromType(value)";
-        } else if (e.getTypes().size() == 1 && !e.typeCode().equals("*") && !e.getTypes().get(0).getName().startsWith("@")) { 
-          cn = "castTo"+upFirst(e.getTypes().get(0).getName())+"(value)";
-        }
-        if (e.unbounded()) {
-          write(indent+"      this.get"+upFirst(getElementName(name, false))+"().add("+cn+");\r\n");
-        } else {
-          write(indent+"      this."+getElementName(name, true)+" = "+cn+"; // "+tn+"\r\n");
+      if (doGenerateAccessors(e)) { 
+        String tn = typeNames.get(e);
+        if (!e.typeCode().equals("xhtml")) {
+          if (first) 
+            write(indent+"    ");
+          else
+            write(indent+"    else ");
+          first = false;
+          write(           "if (name.equals(\""+e.getName()+"\"))\r\n");
+          String name = e.getName().replace("[x]", "");
+          String cn = "("+tn+") value";
+          if (tn.contains("Enumeration<")) { // enumeration
+            cn = "new "+tn.substring(tn.indexOf("<")+1, tn.length()-1)+"EnumFactory().fromType(value)";
+          } else if (e.getTypes().size() == 1 && !e.typeCode().equals("*") && !e.getTypes().get(0).getName().startsWith("@")) { 
+            cn = "castTo"+upFirst(e.getTypes().get(0).getName())+"(value)";
+          } else if (e.getTypes().size() > 0 && !e.getTypes().get(0).getName().startsWith("@")) { 
+            cn = "castToType(value)";
+          }
+          if (e.unbounded()) {
+            write(indent+"      this.get"+upFirst(getElementName(name, false))+"().add("+cn+");\r\n");
+          } else {
+            write(indent+"      this."+getElementName(name, true)+" = "+cn+"; // "+tn+"\r\n");
+          }
         }
       }
     }
@@ -1049,22 +1056,26 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     write(indent+"  public void setProperty(int hash, String name, Base value) throws FHIRException {\r\n");
     write(indent+"    switch (hash) {\r\n");
     for (ElementDefn e : p.getElements()) {
-      String tn = typeNames.get(e);
-      if (!e.typeCode().equals("xhtml")) {
-        String name = e.getName().replace("[x]", "");
-        write(indent+"    case "+propId(name)+": // "+name+"\r\n");
-        String cn = "("+tn+") value";
-        if (tn.contains("Enumeration<")) { // enumeration
-          cn = "new "+tn.substring(tn.indexOf("<")+1, tn.length()-1)+"EnumFactory().fromType(value)";
-        } else if (e.getTypes().size() == 1 && !e.typeCode().equals("*") && !e.getTypes().get(0).getName().startsWith("@")) { 
-          cn = "castTo"+upFirst(e.getTypes().get(0).getName())+"(value)";
+      if (doGenerateAccessors(e)) { 
+        String tn = typeNames.get(e);
+        if (!e.typeCode().equals("xhtml")) {
+          String name = e.getName().replace("[x]", "");
+          write(indent+"    case "+propId(name)+": // "+name+"\r\n");
+          String cn = "("+tn+") value";
+          if (tn.contains("Enumeration<")) { // enumeration
+            cn = "new "+tn.substring(tn.indexOf("<")+1, tn.length()-1)+"EnumFactory().fromType(value)";
+          } else if (e.getTypes().size() == 1 && !e.typeCode().equals("*") && !e.getTypes().get(0).getName().startsWith("@")) { 
+            cn = "castTo"+upFirst(e.getTypes().get(0).getName())+"(value)";
+          } else if (e.getTypes().size() > 0 && !e.getTypes().get(0).getName().startsWith("@")) { 
+            cn = "castToType(value)";
+          }
+          if (e.unbounded()) {
+            write(indent+"      this.get"+upFirst(getElementName(name, false))+"().add("+cn+"); // "+tn+"\r\n");
+          } else {
+            write(indent+"      this."+getElementName(name, true)+" = "+cn+"; // "+tn+"\r\n");
+          }
+          write(indent+"      break;\r\n");
         }
-        if (e.unbounded()) {
-          write(indent+"      this.get"+upFirst(getElementName(name, false))+"().add("+cn+"); // "+tn+"\r\n");
-        } else {
-          write(indent+"      this."+getElementName(name, true)+" = "+cn+"; // "+tn+"\r\n");
-        }
-        write(indent+"      break;\r\n");
       }
     }
     write(indent+"    default: super.setProperty(hash, name, value);\r\n");
@@ -1077,14 +1088,16 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     write(indent+"  public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {\r\n");
     write(indent+"    switch (hash) {\r\n");
     for (ElementDefn e : p.getElements()) {
-      String tn = typeNames.get(e);
-      if (!e.typeCode().equals("xhtml")) {
-        String name = e.getName().replace("[x]", "");
-        write(indent+"    case "+propId(name)+": /*"+name+"*/ ");
-        if (e.unbounded()) {
-          write("return this."+getElementName(name, true)+" == null ? new Base[0] : this."+getElementName(name, true)+".toArray(new Base[this."+getElementName(name, true)+".size()]); // "+tn+"\r\n");
-        } else {
-          write("return this."+getElementName(name, true)+" == null ? new Base[0] : new Base[] {this."+getElementName(name, true)+"}; // "+tn+"\r\n");
+      if (doGenerateAccessors(e)) { 
+        String tn = typeNames.get(e);
+        if (!e.typeCode().equals("xhtml")) {
+          String name = e.getName().replace("[x]", "");
+          write(indent+"    case "+propId(name)+": /*"+name+"*/ ");
+          if (e.unbounded()) {
+            write("return this."+getElementName(name, true)+" == null ? new Base[0] : this."+getElementName(name, true)+".toArray(new Base[this."+getElementName(name, true)+".size()]); // "+tn+"\r\n");
+          } else {
+            write("return this."+getElementName(name, true)+" == null ? new Base[0] : new Base[] {this."+getElementName(name, true)+"}; // "+tn+"\r\n");
+          }
         }
       }
     }
@@ -1102,20 +1115,22 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     write(indent+"  public Base addChild(String name) throws FHIRException {\r\n");
     boolean first = true;
     for (ElementDefn e : p.getElements()) {
-      if (!e.typeCode().equals("xhtml")) { 
-      if (e.getTypes().size() <= 1 && !e.typeCode().equals("*")) {
-        String tn = typeNames.get(e);
-        String name = e.getName();
-        String namet = e.getName();
-        first = generateChildAddItem(indent, parent, first, e, tn, name, namet);
-      } else {
-        for (TypeRef t : getTypes(e.getTypes())) {
-          String tn = getTypename(t);
-          String name = e.getName().replace("[x]", "");
-          String namet = e.getName().replace("[x]", upFirst(t.getName()));
-          first = generateChildAddItem(indent, parent, first, e, tn, name, namet);
+      if (doGenerateAccessors(e)) { 
+        if (!e.typeCode().equals("xhtml")) { 
+          if (e.getTypes().size() <= 1 && !e.typeCode().equals("*")) {
+            String tn = typeNames.get(e);
+            String name = e.getName();
+            String namet = e.getName();
+            first = generateChildAddItem(indent, parent, first, e, tn, name, namet);
+          } else {
+            for (TypeRef t : getTypes(e.getTypes())) {
+              String tn = getTypename(t);
+              String name = e.getName().replace("[x]", "");
+              String namet = e.getName().replace("[x]", upFirst(t.getName()));
+              first = generateChildAddItem(indent, parent, first, e, tn, name, namet);
+            }
+          }
         }
-      }
       }
     }
     if (!first)
@@ -1454,7 +1469,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
       generateConstructor(tn, mandatory, "    ");
 		
 		for (ElementDefn c : e.getElements()) {
-			generateAccessors(e, c, "        ", tn, false);
+			generateAccessors(e, c, "        ", tn);
 		}
 		generateTypeSpecificAccessors(tn);
     generateChildrenRegister(e, "      ", false);
@@ -1467,6 +1482,11 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     generateEquals(e, tn, true, false);
     generateIsEmpty(e, tn, true, false);
     generateFhirType(e.getPath());
+    if (adornments.containsKey(tn)) {
+      write("// added from java-adornments.txt:\r\n");
+      write(adornments.get(tn)+"\r\n");
+      write("// end addition\r\n");
+    }
     write("  }\r\n");
 		write("\r\n");
 
@@ -1485,7 +1505,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     boolean first = true;
     int col = 18;
     for (ElementDefn c : e.getElements()) {
-      if (processObjectImpl(c)) {
+      if (doGenerateField(c)) {
         if (first)
           first = false;
         else {
@@ -1518,7 +1538,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     first = true;
     col = 18;
     for (ElementDefn c : e.getElements()) {
-      if (processObjectImpl(c)) {
+      if (doGenerateField(c)) {
         if (isJavaPrimitive(c)) {
           if (first)
             first = false;
@@ -1544,30 +1564,33 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     write("      }\r\n\r\n");  
   }
   
-	private void generateCopy(ElementDefn e, String tn, boolean owner, boolean isAbstract) throws IOException {
+	private void generateCopy(ElementDefn e, String tn, boolean owner, boolean isAbstract) throws Exception {
 	  if (isAbstract) {
       write("      public abstract "+tn+" copy();\r\n\r\n");
       write("      public void copyValues("+tn+" dst) {\r\n");
+      if (!e.getName().equals("Element") && !e.getName().equals("Resource"))
+        write("        super.copyValues(dst);\r\n");
 	  } else {
       write("      public "+tn+" copy() {\r\n");
       write("        "+tn+" dst = new "+tn+"();\r\n");
       write("        copyValues(dst);\r\n");
 	  }
-    for (ElementDefn c : e.getElements()) {
-      String params = "";
-      String name = getElementName(c.getName(), true);
-      if (c.unbounded()) {
-        write("        if ("+name+" != null) {\r\n");
-        write("          dst."+name+" = new ArrayList<"+typeNames.get(c)+">();\r\n");
-        write("          for ("+typeNames.get(c)+" i : "+name+")\r\n");
-        write("            dst."+name+".add(i.copy());\r\n");
-        write("        };\r\n");
-      } else {
-        if (name.endsWith("[x]"))
-          name = name.substring(0, name.length()-3);
-        write("        dst."+name+" = "+name+" == null ? null : "+name+".copy();\r\n");
-      }
-    }
+	  for (ElementDefn c : e.getElements()) {
+	    if (doGenerateAccessors(c)) { 
+	      String name = getElementName(c.getName(), true);
+	      if (c.unbounded()) {
+	        write("        if ("+name+" != null) {\r\n");
+	        write("          dst."+name+" = new ArrayList<"+typeNames.get(c)+">();\r\n");
+	        write("          for ("+typeNames.get(c)+" i : "+name+")\r\n");
+	        write("            dst."+name+".add(i.copy());\r\n");
+	        write("        };\r\n");
+	      } else {
+	        if (name.endsWith("[x]"))
+	          name = name.substring(0, name.length()-3);
+	        write("        dst."+name+" = "+name+" == null ? null : "+name+".copy();\r\n");
+	      }
+	    }
+	  }
     if (!isAbstract) 
       write("        return dst;\r\n");
     write("      }\r\n\r\n");
@@ -1585,7 +1608,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     int col = 70;
     boolean first = true;
     for (ElementDefn c : e.getElements()) {
-      if (processObjectImpl(c)) {
+      if (doGenerateField(c)) {
         if (first) {
           first = false;
         } else {
@@ -1886,242 +1909,235 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
     
     return "??";
   }
-	private void generateAccessors(ElementDefn root, ElementDefn e, String indent, String className, boolean onlySetter) throws Exception {
+	private void generateAccessors(ElementDefn root, ElementDefn e, String indent, String className) throws Exception {
 		String tn = typeNames.get(e);
 
 		boolean isReferenceRefField = (root.getName().equals("Reference") && e.getName().equals("reference"));
 		
 		String simpleType = getSimpleType(tn);
 		if (e.unbounded()) {
-		  if (!onlySetter) {
-		    
+		  /*
+		   * getXXX()for repeatable type
+		   */
+		  jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
+		  String listGenericType;
+		  if (tn == null && e.usesCompositeType()) {
+		    listGenericType = root.getName();
+		  } else {
+		    listGenericType = tn;
+		  }
+		  write(indent+"public List<"+listGenericType+"> get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
+		  write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
+		  write(indent+"    this."+getElementName(e.getName(), true)+" = new ArrayList<"+listGenericType+">();\r\n");
+		  write(indent+"  return this."+getElementName(e.getName(), true)+";\r\n");
+		  write(indent+"}\r\n\r\n");
+
+		  /*
+		   * setXXX(List<foo>) for repeating type
+		   */
+		  jdoc(indent, "@return Returns a reference to <code>this</code> for easy method chaining");
+		  write(indent+"public " + className + " set"+getTitle(getElementName(e.getName(), false))+"(" + "List<"+listGenericType+"> the" + getTitle(getElementName(e.getName(), false)) + ") { \r\n");
+		  write(indent+"  this."+getElementName(e.getName(), true)+" = the" + getTitle(getElementName(e.getName(), false)) + ";\r\n");
+		  write(indent+"  return this;\r\n");
+		  write(indent+"}\r\n\r\n");
+
+		  /*
+		   * hasXXX() for repeatable type
+		   */
+		  write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
+		  write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
+		  write(indent+"    return false;\r\n");
+		  write(indent+"  for ("+tn+" item : this."+getElementName(e.getName(), true)+")\r\n");
+		  write(indent+"    if (!item.isEmpty())\r\n");
+		  write(indent+"      return true;\r\n");
+		  write(indent+"  return false;\r\n");
+		  write(indent+"}\r\n");
+
+		  write("\r\n");
+		  if (e.getTypes().size() == 1 && (definitions.getPrimitives().containsKey(e.typeCode()) || e.typeCode().equals("xml:lang"))) {
 		    /*
-		     * getXXX()for repeatable type
+		     * addXXXElement() for repeatable primitive
 		     */
 		    jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
-		    String listGenericType;
-		    if (tn == null && e.usesCompositeType()) {
-		      listGenericType = root.getName();
-		    } else {
-		      listGenericType = tn;
-		    }
-		    write(indent+"public List<"+listGenericType+"> get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
-        write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
-        write(indent+"    this."+getElementName(e.getName(), true)+" = new ArrayList<"+listGenericType+">();\r\n");
-		    write(indent+"  return this."+getElementName(e.getName(), true)+";\r\n");
-		    write(indent+"}\r\n\r\n");
-		    
-	      /*
-	       * setXXX(List<foo>) for repeating type
-	       */
-	      jdoc(indent, "@return Returns a reference to <code>this</code> for easy method chaining");
-	      write(indent+"public " + className + " set"+getTitle(getElementName(e.getName(), false))+"(" + "List<"+listGenericType+"> the" + getTitle(getElementName(e.getName(), false)) + ") { \r\n");
-	      write(indent+"  this."+getElementName(e.getName(), true)+" = the" + getTitle(getElementName(e.getName(), false)) + ";\r\n");
-	      write(indent+"  return this;\r\n");
-	      write(indent+"}\r\n\r\n");
+		    write(indent+"public "+tn+" add"+getTitle(getElementName(e.getName(), false))+"Element() {//2 \r\n");
+		    write(indent+"  "+tn+" t = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+");\r\n");
+		    write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
+		    write(indent+"    this."+getElementName(e.getName(), true)+" = new ArrayList<"+tn+">();\r\n");
+		    write(indent+"  this."+getElementName(e.getName(), true)+".add(t);\r\n");
+		    write(indent+"  return t;\r\n");
+		    write(indent+"}\r\n");
+		    write("\r\n");
 
 		    /*
-		     * hasXXX() for repeatable type
+		     * addXXX(foo) for repeatable primitive
 		     */
-		    write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
+		    jdoc(indent, "@param value {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
+		    write(indent+"public "+className+" add"+getTitle(getElementName(e.getName(), false))+"("+simpleType+" value) { //1\r\n");
+		    write(indent+"  "+tn+" t = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+");\r\n");
+		    write(indent+"  t.setValue(value);\r\n");
+		    write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
+		    write(indent+"    this."+getElementName(e.getName(), true)+" = new ArrayList<"+tn+">();\r\n");
+		    write(indent+"  this."+getElementName(e.getName(), true)+".add(t);\r\n");
+		    write(indent+"  return this;\r\n");
+		    write(indent+"}\r\n");
+		    write("\r\n");
+
+		    /*
+		     * hasXXX(foo) for repeatable primitive
+		     */
+		    jdoc(indent, "@param value {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
+		    write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"("+simpleType+" value) { \r\n");
 		    write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
 		    write(indent+"    return false;\r\n");
-		    write(indent+"  for ("+tn+" item : this."+getElementName(e.getName(), true)+")\r\n");
-		    write(indent+"    if (!item.isEmpty())\r\n");
+		    write(indent+"  for ("+tn+" v : this."+getElementName(e.getName(), true)+")\r\n");
+		    if (isJavaPrimitive(e) && !tn.startsWith("Enum")) 
+		      write(indent+"    if (v.equals(value)) // "+e.typeCode()+"\r\n");
+		    else
+		      write(indent+"    if (v.getValue().equals(value)) // "+e.typeCode()+"\r\n");
 		    write(indent+"      return true;\r\n");
 		    write(indent+"  return false;\r\n");
 		    write(indent+"}\r\n");
-
 		    write("\r\n");
-		    if (e.getTypes().size() == 1 && (definitions.getPrimitives().containsKey(e.typeCode()) || e.typeCode().equals("xml:lang"))) {
+		  } else {
+		    if (!definitions.getBaseResources().containsKey(tn)) {
 		      /*
-		       * addXXXElement() for repeatable primitive
+		       * addXXX() for repeatable composite
 		       */
-		      jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
-		      write(indent+"public "+tn+" add"+getTitle(getElementName(e.getName(), false))+"Element() {//2 \r\n");
-		      write(indent+"  "+tn+" t = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+");\r\n");
+		      write(indent+"public "+tn+" add"+getTitle(getElementName(e.getName(), false))+"() { //3\r\n");
+		      write(indent+"  "+tn+" t = new "+tn+"();\r\n");
 		      write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
 		      write(indent+"    this."+getElementName(e.getName(), true)+" = new ArrayList<"+tn+">();\r\n");
 		      write(indent+"  this."+getElementName(e.getName(), true)+".add(t);\r\n");
 		      write(indent+"  return t;\r\n");
 		      write(indent+"}\r\n");
 		      write("\r\n");
-		      
+
 		      /*
-		       * addXXX(foo) for repeatable primitive
+		       * addXXX(foo) for repeatable composite
 		       */
-		      jdoc(indent, "@param value {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
-		      write(indent+"public "+className+" add"+getTitle(getElementName(e.getName(), false))+"("+simpleType+" value) { //1\r\n");
-		      write(indent+"  "+tn+" t = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+");\r\n");
-		      write(indent+"  t.setValue(value);\r\n");
+		      write(indent+"public "+className+" add"+getTitle(getElementName(e.getName(), false))+"("+tn+" t) { //3\r\n");
+		      write(indent+"  if (t == null)\r\n");
+		      write(indent+"    return this;\r\n");
 		      write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
 		      write(indent+"    this."+getElementName(e.getName(), true)+" = new ArrayList<"+tn+">();\r\n");
 		      write(indent+"  this."+getElementName(e.getName(), true)+".add(t);\r\n");
 		      write(indent+"  return this;\r\n");
 		      write(indent+"}\r\n");
 		      write("\r\n");
-		      
+		    } else {
 		      /*
-		       * hasXXX(foo) for repeatable primitive
+		       * addXXX(foo) for repeatable composite
 		       */
-		      jdoc(indent, "@param value {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
-		      write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"("+simpleType+" value) { \r\n");
+		      write(indent+"public "+className+" add"+getTitle(getElementName(e.getName(), false))+"("+tn+" t) { //3\r\n");
+		      write(indent+"  if (t == null)\r\n");
+		      write(indent+"    return this;\r\n");
 		      write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
-		      write(indent+"    return false;\r\n");
-		      write(indent+"  for ("+tn+" v : this."+getElementName(e.getName(), true)+")\r\n");
-		      if (isJavaPrimitive(e) && !tn.startsWith("Enum")) 
-		        write(indent+"    if (v.equals(value)) // "+e.typeCode()+"\r\n");
-		      else
-		        write(indent+"    if (v.getValue().equals(value)) // "+e.typeCode()+"\r\n");
-		      write(indent+"      return true;\r\n");
-		      write(indent+"  return false;\r\n");
+		      write(indent+"    this."+getElementName(e.getName(), true)+" = new ArrayList<"+tn+">();\r\n");
+		      write(indent+"  this."+getElementName(e.getName(), true)+".add(t);\r\n");
+		      write(indent+"  return this;\r\n");
+		      write(indent+"}\r\n");
+		      write("\r\n");          
+		    }
+
+		    /*
+		     * getXXXFirstRep() for repeatable element
+		     */
+		    if (!"DomainResource".equals(className)) {
+		      jdoc(indent, "@return The first repetition of repeating field {@link #"+getElementName(e.getName(), true)+"}, creating it if it does not already exist");
+		      write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName(), false))+"FirstRep() { \r\n");
+		      write(indent+"  if (get"+getTitle(getElementName(e.getName(), false))+"().isEmpty()) {\r\n");
+		      if ((definitions.getPrimitives().containsKey(e.typeCode()))) {
+		        write(indent+"    add" + getTitle(getElementName(e.getName(), false)) + "Element();\r\n");
+		      } else {
+		        write(indent+"    add" + getTitle(getElementName(e.getName(), false)) + "();\r\n");
+		      }
+		      write(indent+"  }\r\n");
+		      write(indent+"  return get"+getTitle(getElementName(e.getName(), false))+"().get(0);\r\n");
+		      write(indent+"}\r\n\r\n");
+		    }
+
+		    //TODO: remove this - Reference type has a field to hold these things too and 
+		    // that's cleaner. Deprecated by JA on 2016-05-28
+		    if (e.getTypes().size() == 1 && e.typeCode().startsWith("Reference(")) {
+		      List<String> params = e.getTypes().get(0).getParams();
+		      String rn = params.size() == 1 ? params.get(0) : "Resource";
+		      if (rn.equals("Any"))
+		        rn = "Resource";
+		      else if (rn.equals("List"))
+		        rn = "ListResource";
+		      jdoc(indent, "@deprecated Use Reference#setResource(IBaseResource) instead");
+		      write(indent+"@Deprecated\r\n");
+		      write(indent+"public List<"+rn+"> get"+getTitle(getElementName(e.getName(), false))+"Target() { \r\n");
+		      write(indent+"  if (this."+getElementName(e.getName(), true)+"Target == null)\r\n");
+		      write(indent+"    this."+getElementName(e.getName(), true)+"Target = new ArrayList<"+rn+">();\r\n");
+		      write(indent+"  return this."+getElementName(e.getName(), true)+"Target;\r\n");
 		      write(indent+"}\r\n");
 		      write("\r\n");
-		    } else {
-		      if (!definitions.getBaseResources().containsKey(tn)) {
-		        /*
-		         * addXXX() for repeatable composite
-		         */
-		        write(indent+"public "+tn+" add"+getTitle(getElementName(e.getName(), false))+"() { //3\r\n");
-		        write(indent+"  "+tn+" t = new "+tn+"();\r\n");
-		        write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
-		        write(indent+"    this."+getElementName(e.getName(), true)+" = new ArrayList<"+tn+">();\r\n");
-		        write(indent+"  this."+getElementName(e.getName(), true)+".add(t);\r\n");
-		        write(indent+"  return t;\r\n");
-		        write(indent+"}\r\n");
-		        write("\r\n");
-
-            /*
-             * addXXX(foo) for repeatable composite
-             */
-		        write(indent+"public "+className+" add"+getTitle(getElementName(e.getName(), false))+"("+tn+" t) { //3\r\n");
-		        write(indent+"  if (t == null)\r\n");
-		        write(indent+"    return this;\r\n");
-		        write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
-		        write(indent+"    this."+getElementName(e.getName(), true)+" = new ArrayList<"+tn+">();\r\n");
-		        write(indent+"  this."+getElementName(e.getName(), true)+".add(t);\r\n");
-		        write(indent+"  return this;\r\n");
-		        write(indent+"}\r\n");
-		        write("\r\n");
-		      } else {
-            /*
-             * addXXX(foo) for repeatable composite
-             */
-		        write(indent+"public "+className+" add"+getTitle(getElementName(e.getName(), false))+"("+tn+" t) { //3\r\n");
-		        write(indent+"  if (t == null)\r\n");
-		        write(indent+"    return this;\r\n");
-		        write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
-		        write(indent+"    this."+getElementName(e.getName(), true)+" = new ArrayList<"+tn+">();\r\n");
-		        write(indent+"  this."+getElementName(e.getName(), true)+".add(t);\r\n");
-		        write(indent+"  return this;\r\n");
-		        write(indent+"}\r\n");
-		        write("\r\n");          
-		      }
-
-		      /*
-		       * getXXXFirstRep() for repeatable element
-		       */
-		      if (!"DomainResource".equals(className)) {
-  	        jdoc(indent, "@return The first repetition of repeating field {@link #"+getElementName(e.getName(), true)+"}, creating it if it does not already exist");
-  	        write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName(), false))+"FirstRep() { \r\n");
-  	        write(indent+"  if (get"+getTitle(getElementName(e.getName(), false))+"().isEmpty()) {\r\n");
-  	        if ((definitions.getPrimitives().containsKey(e.typeCode()))) {
-  	          write(indent+"    add" + getTitle(getElementName(e.getName(), false)) + "Element();\r\n");
-  	        } else {
-  	          write(indent+"    add" + getTitle(getElementName(e.getName(), false)) + "();\r\n");
-  	        }
-  	        write(indent+"  }\r\n");
-  	        write(indent+"  return get"+getTitle(getElementName(e.getName(), false))+"().get(0);\r\n");
-  	        write(indent+"}\r\n\r\n");
-		      }
-		      
-		      //TODO: remove this - Reference type has a field to hold these things too and 
-		      // that's cleaner. Deprecated by JA on 2016-05-28
-		      if (e.getTypes().size() == 1 && e.typeCode().startsWith("Reference(")) {
-		        List<String> params = e.getTypes().get(0).getParams();
-		        String rn = params.size() == 1 ? params.get(0) : "Resource";
-		        if (rn.equals("Any"))
-		          rn = "Resource";
-		        else if (rn.equals("List"))
-		          rn = "ListResource";
+		      if (!rn.equals("Resource")) {
 		        jdoc(indent, "@deprecated Use Reference#setResource(IBaseResource) instead");
-            write(indent+"@Deprecated\r\n");
-		        write(indent+"public List<"+rn+"> get"+getTitle(getElementName(e.getName(), false))+"Target() { \r\n");
+		        write(indent+"@Deprecated\r\n");
+		        write(indent+"public "+rn+" add"+getTitle(getElementName(e.getName(), false))+"Target() { \r\n");
+		        write(indent+"  "+rn+" r = new "+rn+"();\r\n");
 		        write(indent+"  if (this."+getElementName(e.getName(), true)+"Target == null)\r\n");
 		        write(indent+"    this."+getElementName(e.getName(), true)+"Target = new ArrayList<"+rn+">();\r\n");
-		        write(indent+"  return this."+getElementName(e.getName(), true)+"Target;\r\n");
+		        write(indent+"  this."+getElementName(e.getName(), true)+"Target.add(r);\r\n");
+		        write(indent+"  return r;\r\n");
 		        write(indent+"}\r\n");
 		        write("\r\n");
-		        if (!rn.equals("Resource")) {
-	            jdoc(indent, "@deprecated Use Reference#setResource(IBaseResource) instead");
-	            write(indent+"@Deprecated\r\n");
-		          write(indent+"public "+rn+" add"+getTitle(getElementName(e.getName(), false))+"Target() { \r\n");
-		          write(indent+"  "+rn+" r = new "+rn+"();\r\n");
-		          write(indent+"  if (this."+getElementName(e.getName(), true)+"Target == null)\r\n");
-		          write(indent+"    this."+getElementName(e.getName(), true)+"Target = new ArrayList<"+rn+">();\r\n");
-		          write(indent+"  this."+getElementName(e.getName(), true)+"Target.add(r);\r\n");
-		          write(indent+"  return r;\r\n");
-		          write(indent+"}\r\n");
-		          write("\r\n");
-		        }
 		      }
-		      
-		      
 		    }
 		  }
 		} else {
       if (isJavaPrimitive(e)) {
-        if (!onlySetter) {
-          jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+"). This is the underlying object with id, value and extensions. The accessor \"get"+getTitle(getElementName(e.getName(), false))+"\" gives direct access to the value");
-          if (isReferenceRefField) {
-            /*
-             * Reference#getReferenceElement is defined differently in BaseReference.java?
-             */
-            write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName(), false))+"Element_() { \r\n");
-            write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
-            write(indent+"    if (Configuration.errorOnAutoCreate())\r\n");
-            write(indent+"      throw new Error(\"Attempt to auto-create "+className+"."+getElementName(e.getName(), true)+"\");\r\n");
-            write(indent+"    else if (Configuration.doAutoCreate())\r\n");
-            write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+"); // bb\r\n");
-            write(indent+"  return this."+getElementName(e.getName(), true)+";\r\n");
-            write(indent+"}\r\n");
-          } else { 
-            write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName(), false))+"Element() { \r\n");
-            write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
-            write(indent+"    if (Configuration.errorOnAutoCreate())\r\n");
-            write(indent+"      throw new Error(\"Attempt to auto-create "+className+"."+getElementName(e.getName(), true)+"\");\r\n");
-            write(indent+"    else if (Configuration.doAutoCreate())\r\n");
-            write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+"); // bb\r\n");
-            write(indent+"  return this."+getElementName(e.getName(), true)+";\r\n");
-            write(indent+"}\r\n");
-          }
-          write("\r\n");
-
-          write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"Element() { \r\n");
-          write(indent+"  return this."+getElementName(e.getName(), true)+" != null && !this."+getElementName(e.getName(), true)+".isEmpty();\r\n");
+        jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+"). This is the underlying object with id, value and extensions. The accessor \"get"+getTitle(getElementName(e.getName(), false))+"\" gives direct access to the value");
+        if (isReferenceRefField) {
+          /*
+           * Reference#getReferenceElement is defined differently in BaseReference.java?
+           */
+          write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName(), false))+"Element_() { \r\n");
+          write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
+          write(indent+"    if (Configuration.errorOnAutoCreate())\r\n");
+          write(indent+"      throw new Error(\"Attempt to auto-create "+className+"."+getElementName(e.getName(), true)+"\");\r\n");
+          write(indent+"    else if (Configuration.doAutoCreate())\r\n");
+          write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+"); // bb\r\n");
+          write(indent+"  return this."+getElementName(e.getName(), true)+";\r\n");
           write(indent+"}\r\n");
-          write("\r\n");
-          write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
-          write(indent+"  return this."+getElementName(e.getName(), true)+" != null && !this."+getElementName(e.getName(), true)+".isEmpty();\r\n");
+        } else { 
+          write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName(), false))+"Element() { \r\n");
+          write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
+          write(indent+"    if (Configuration.errorOnAutoCreate())\r\n");
+          write(indent+"      throw new Error(\"Attempt to auto-create "+className+"."+getElementName(e.getName(), true)+"\");\r\n");
+          write(indent+"    else if (Configuration.doAutoCreate())\r\n");
+          write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"("+( tn.startsWith("Enum") ? "new "+tn.substring(12, tn.length()-1)+"EnumFactory()" : "")+"); // bb\r\n");
+          write(indent+"  return this."+getElementName(e.getName(), true)+";\r\n");
           write(indent+"}\r\n");
-          write("\r\n");
-          jdoc(indent, "@param value {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+"). This is the underlying object with id, value and extensions. The accessor \"get"+getTitle(getElementName(e.getName(), false))+"\" gives direct access to the value");
-          write(indent+"public "+className+" set"+getTitle(getElementName(e.getName(), false))+"Element("+tn+" value) { \r\n");
-          write(indent+"  this."+getElementName(e.getName(), true)+" = value;\r\n");
-          write(indent+"  return this;\r\n");
-          write(indent+"}\r\n");
-          write("\r\n");
-          jdoc(indent, "@return "+e.getDefinition());
-          write(indent+"public "+simpleType+" get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
-          if (e.typeCode().equals("boolean"))
-            write(indent+"  return this."+getElementName(e.getName(), true)+" == null || this."+getElementName(e.getName(), true)+".isEmpty() ? false : this."+getElementName(e.getName(), true)+".getValue();\r\n");
-          else if (e.typeCode().equals("integer") || e.typeCode().equals("unsignedInt") || e.typeCode().equals("positiveInt"))
-            write(indent+"  return this."+getElementName(e.getName(), true)+" == null || this."+getElementName(e.getName(), true)+".isEmpty() ? 0 : this."+getElementName(e.getName(), true)+".getValue();\r\n");
-          else
-            write(indent+"  return this."+getElementName(e.getName(), true)+" == null ? null : this."+getElementName(e.getName(), true)+".getValue();\r\n");
-          write(indent+"}\r\n");
-          write("\r\n");
         }
+        write("\r\n");
+
+        write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"Element() { \r\n");
+        write(indent+"  return this."+getElementName(e.getName(), true)+" != null && !this."+getElementName(e.getName(), true)+".isEmpty();\r\n");
+        write(indent+"}\r\n");
+        write("\r\n");
+        write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
+        write(indent+"  return this."+getElementName(e.getName(), true)+" != null && !this."+getElementName(e.getName(), true)+".isEmpty();\r\n");
+        write(indent+"}\r\n");
+        write("\r\n");
+        jdoc(indent, "@param value {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+"). This is the underlying object with id, value and extensions. The accessor \"get"+getTitle(getElementName(e.getName(), false))+"\" gives direct access to the value");
+        write(indent+"public "+className+" set"+getTitle(getElementName(e.getName(), false))+"Element("+tn+" value) { \r\n");
+        write(indent+"  this."+getElementName(e.getName(), true)+" = value;\r\n");
+        write(indent+"  return this;\r\n");
+        write(indent+"}\r\n");
+        write("\r\n");
+        jdoc(indent, "@return "+e.getDefinition());
+        write(indent+"public "+simpleType+" get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
+        if (e.typeCode().equals("boolean"))
+          write(indent+"  return this."+getElementName(e.getName(), true)+" == null || this."+getElementName(e.getName(), true)+".isEmpty() ? false : this."+getElementName(e.getName(), true)+".getValue();\r\n");
+        else if (e.typeCode().equals("integer") || e.typeCode().equals("unsignedInt") || e.typeCode().equals("positiveInt"))
+          write(indent+"  return this."+getElementName(e.getName(), true)+" == null || this."+getElementName(e.getName(), true)+".isEmpty() ? 0 : this."+getElementName(e.getName(), true)+".getValue();\r\n");
+        else
+          write(indent+"  return this."+getElementName(e.getName(), true)+" == null ? null : this."+getElementName(e.getName(), true)+".getValue();\r\n");
+        write(indent+"}\r\n");
+        write("\r\n");
 	      generateSetter(e, indent, className, tn, simpleType);
 
 	      // BigDecimal sugar methods 
@@ -2152,41 +2168,39 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 //          
 //        }
 	      
-			} else {
-        if (!onlySetter) {
-          jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
-          write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
-          if (!tn.equals("Resource") && !tn.equals("Type") && !tn.endsWith(".Type")) {
-            write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
-            write(indent+"    if (Configuration.errorOnAutoCreate())\r\n");
-            write(indent+"      throw new Error(\"Attempt to auto-create "+className+"."+getElementName(e.getName(), true)+"\");\r\n");
-            write(indent+"    else if (Configuration.doAutoCreate())\r\n");
-            write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"(); // cc\r\n");
-          }
-          write(indent+"  return this."+getElementName(e.getName(), true)+";\r\n");
-          write(indent+"}\r\n");
-          write("\r\n");
-          if (e.getTypes().size() > 1 && (tn.equals("Type") || !tn.endsWith(".Type"))) {
-            for (TypeRef t : e.getTypes()) {
-              jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
-              String ttn = getTypename(t);
-              write(indent+"public "+ttn+" get"+getTitle(getElementName(e.getName(), false))+ttn+"() throws FHIRException { \r\n");
-              write(indent+"  if (!(this."+getElementName(e.getName(), true)+" instanceof "+ttn+"))\r\n");
-              write(indent+"    throw new FHIRException(\"Type mismatch: the type "+ttn+" was expected, but \"+this."+getElementName(e.getName(), true)+".getClass().getName()+\" was encountered\");\r\n");
-              write(indent+"  return ("+ttn+") this."+getElementName(e.getName(), true)+";\r\n");
-              write(indent+"}\r\n");
-              write("\r\n");
-              write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+ttn+"() { \r\n");
-              write(indent+"  return this."+getElementName(e.getName(), true)+" instanceof "+ttn+";\r\n");
-              write(indent+"}\r\n");
-              write("\r\n");
-            }
-          }
-          write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
-          write(indent+"  return this."+getElementName(e.getName(), true)+" != null && !this."+getElementName(e.getName(), true)+".isEmpty();\r\n");
-          write(indent+"}\r\n");
-          write("\r\n");
+      } else {
+        jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
+        write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
+        if (!tn.equals("Resource") && !tn.equals("Type") && !tn.endsWith(".Type")) {
+          write(indent+"  if (this."+getElementName(e.getName(), true)+" == null)\r\n");
+          write(indent+"    if (Configuration.errorOnAutoCreate())\r\n");
+          write(indent+"      throw new Error(\"Attempt to auto-create "+className+"."+getElementName(e.getName(), true)+"\");\r\n");
+          write(indent+"    else if (Configuration.doAutoCreate())\r\n");
+          write(indent+"      this."+getElementName(e.getName(), true)+" = new "+tn+"(); // cc\r\n");
         }
+        write(indent+"  return this."+getElementName(e.getName(), true)+";\r\n");
+        write(indent+"}\r\n");
+        write("\r\n");
+        if (e.getTypes().size() > 1 && (tn.equals("Type") || !tn.endsWith(".Type"))) {
+          for (TypeRef t : e.getTypes()) {
+            jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
+            String ttn = getTypename(t);
+            write(indent+"public "+ttn+" get"+getTitle(getElementName(e.getName(), false))+ttn+"() throws FHIRException { \r\n");
+            write(indent+"  if (!(this."+getElementName(e.getName(), true)+" instanceof "+ttn+"))\r\n");
+            write(indent+"    throw new FHIRException(\"Type mismatch: the type "+ttn+" was expected, but \"+this."+getElementName(e.getName(), true)+".getClass().getName()+\" was encountered\");\r\n");
+            write(indent+"  return ("+ttn+") this."+getElementName(e.getName(), true)+";\r\n");
+            write(indent+"}\r\n");
+            write("\r\n");
+            write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+ttn+"() { \r\n");
+            write(indent+"  return this."+getElementName(e.getName(), true)+" instanceof "+ttn+";\r\n");
+            write(indent+"}\r\n");
+            write("\r\n");
+          }
+        }
+        write(indent+"public boolean has"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
+        write(indent+"  return this."+getElementName(e.getName(), true)+" != null && !this."+getElementName(e.getName(), true)+".isEmpty();\r\n");
+        write(indent+"}\r\n");
+        write("\r\n");
         jdoc(indent, "@param value {@link #"+getElementName(e.getName(), true)+"} ("+e.getDefinition()+")");
         write(indent+"public "+className+" set"+getTitle(getElementName(e.getName(), false))+"("+tn+" value) { \r\n");
         write(indent+"  this."+getElementName(e.getName(), true)+" = value;\r\n");
@@ -2200,20 +2214,18 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
             rn = "Resource";
           else if (rn.equals("List"))
             rn = "ListResource";
-          if (!onlySetter) {
-            jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. ("+e.getDefinition()+")");
-            write(indent+"public "+rn+" get"+getTitle(getElementName(e.getName(), false))+"Target() { \r\n");
-            if (!rn.equals("Resource")) {
-              write(indent+"  if (this."+getElementName(e.getName(), true)+"Target == null)\r\n");
-              write(indent+"    if (Configuration.errorOnAutoCreate())\r\n");
-              write(indent+"      throw new Error(\"Attempt to auto-create "+className+"."+getElementName(e.getName(), true)+"\");\r\n");
-              write(indent+"    else if (Configuration.doAutoCreate())\r\n");
-              write(indent+"      this."+getElementName(e.getName(), true)+"Target = new "+rn+"(); // aa\r\n");
-            }
-            write(indent+"  return this."+getElementName(e.getName(), true)+"Target;\r\n");
-            write(indent+"}\r\n");
-            write("\r\n");
+          jdoc(indent, "@return {@link #"+getElementName(e.getName(), true)+"} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. ("+e.getDefinition()+")");
+          write(indent+"public "+rn+" get"+getTitle(getElementName(e.getName(), false))+"Target() { \r\n");
+          if (!rn.equals("Resource")) {
+            write(indent+"  if (this."+getElementName(e.getName(), true)+"Target == null)\r\n");
+            write(indent+"    if (Configuration.errorOnAutoCreate())\r\n");
+            write(indent+"      throw new Error(\"Attempt to auto-create "+className+"."+getElementName(e.getName(), true)+"\");\r\n");
+            write(indent+"    else if (Configuration.doAutoCreate())\r\n");
+            write(indent+"      this."+getElementName(e.getName(), true)+"Target = new "+rn+"(); // aa\r\n");
           }
+          write(indent+"  return this."+getElementName(e.getName(), true)+"Target;\r\n");
+          write(indent+"}\r\n");
+          write("\r\n");
 			    jdoc(indent, "@param value {@link #"+getElementName(e.getName(), true)+"} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. ("+e.getDefinition()+")");
 			    write(indent+"public "+className+" set"+getTitle(getElementName(e.getName(), false))+"Target("+rn+" value) { \r\n");
 			    write(indent+"  this."+getElementName(e.getName(), true)+"Target = value;\r\n");

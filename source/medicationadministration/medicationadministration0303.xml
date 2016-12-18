@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MedicationAdministration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationadministration.xsd"
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationadministration.xsd"
  xmlns="http://hl7.org/fhir"> 
   <id value="medadmin0303"/>
   <contained>
@@ -27,16 +27,16 @@
     <reference value="Encounter/f001"/>
     <display value="encounter who leads to this prescription"/>
   </encounter>
- <effectiveTimePeriod>
+ <effectivePeriod>
   <start value="2015-01-15T04:30:00+01:00"/>
    <end value="2015-01-15T14:30:00+01:00"/>
-</effectiveTimePeriod>
+</effectivePeriod>
   <performer>
     <reference value="Practitioner/f007"/>
     <display value="Patrick Pump"/>
   </performer>
   <prescription>
-    <reference value="MedicationOrder/medrx0319"/>
+    <reference value="MedicationRequest/medrx0319"/>
   </prescription>
   <dosage>
     <text value="4.5 grams in D5W 250 ml. IV every 6 hours. Infuse over 30 min at 8L/min " />

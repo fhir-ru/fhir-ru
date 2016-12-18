@@ -41,7 +41,7 @@ Most of the comments and guidance provided here will apply to those solutions as
 of the HL7 v3 methodology and it is front and center in the specification and the wire 
 format.  All data elements in HL7 v3 instances are derived from either the RIM or the ISO 
 data types.  In FHIR, this is true of most resources and data type elements, but not all.  
-Some resources (<a href="structuredefinition.html">StructureDefinition</a>, <a href="conformance.html">Conformance</a>, 
+Some resources (<a href="structuredefinition.html">StructureDefinition</a>, <a href="capabilitystatement.html">CapabilityStatement</a>, 
 <a href="valueset.html">ValueSet</a>, etc.) deal with content that is outside the RIM's scope.  And in a few circumstances, adjustments have been made in 
 the FHIR data types that are not yet supported in the HL7 v3 data types model.  The expectation 
 is that these changes will be supported in the next version of the v3 data types model.  The 
@@ -60,7 +60,7 @@ data type.  However, these are generally limited to attributes with business mea
 <p>Both FHIR and v3 make use of value sets to define the sets of codes that can be used for 
 attributes in particular contexts.  However, in FHIR, a <a href="valueset.html">ValueSet</a> 
 is just another type of resource, meaning it can be sent as part of an instance just like any
- other piece of data.  (The same is true of <a href="structuredefinition.html">StructureDefinition</a>, <a href="conformance.html">Conformance</a> 
+ other piece of data.  (The same is true of <a href="structuredefinition.html">StructureDefinition</a>, <a href="capabilitystatement.html">CapabilityStatement</a> 
  and other meta-level resources.)</p>
 <p>
 <b>Granularity &amp; referencing:</b> HL7 v3 models are broken into 3 main types - wrappers, 
@@ -170,7 +170,7 @@ the v3 methodology does support the introduction of an "updateMode" property to 
 for all or part of an instance.  Each element repetition is flagged with an updateMode to indicate whether the 
 element is to be added, removed, updated, etc.  Additional updateModes allow further control over updates.  As 
 with the <a href="comparison-v2.html#V2-updateMode">V2 discussion</a> above, implementers will need to generate a full snapshot of 
-each resource or will need to introduce modifier extensions to allow similar behavior to v3.
+each resource or or consider using the <a href="http.html#patch">Patch Operation</a> instead.
 </p>
 <p>
 <b>Additional considerations:</b> Most of the implementation considerations for interoperating between FHIR and 

@@ -2,7 +2,8 @@
 <AllergyIntolerance xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/allergyintolerance.xsd">
   <id value="medication"/>
   
-  <status value="active"/>
+  <clinicalStatus value="active"/>
+  <verificationStatus value="unconfirmed"/>
 
   <category value="medication"/>
   
@@ -12,8 +13,8 @@
   <code>
     <coding>
       <system value="http://www.nlm.nih.gov/research/umls/rxnorm"/>
-      <code value="314422"/>
-      <display value="ALLERGENIC EXTRACT, PENICILLIN"/>
+      <code value="7980"/>
+      <display value="Penicillin G"/>
     </coding>
   </code>
  
@@ -23,7 +24,7 @@
   </patient>
 
   <!-- the date that this entry was recorded -->  
-  <attestedDate value="2010-03-01"/>
+  <assertedDate value="2010-03-01"/>
   
   <!-- who made the record / last updated it -->
   <recorder>

@@ -16,11 +16,14 @@ import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
 import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemHierarchyMeaning;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
+import org.hl7.fhir.dstu3.model.CodeSystem.PropertyType;
+import org.hl7.fhir.dstu3.model.CodeType;
 import org.hl7.fhir.dstu3.model.ContactPoint.ContactPointSystem;
 import org.hl7.fhir.dstu3.model.DateTimeType;
-import org.hl7.fhir.dstu3.model.Enumerations.ConformanceResourceStatus;
+import org.hl7.fhir.dstu3.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.dstu3.model.Factory;
 import org.hl7.fhir.dstu3.model.InstantType;
+import org.hl7.fhir.dstu3.model.Meta;
 import org.hl7.fhir.dstu3.model.Narrative;
 import org.hl7.fhir.dstu3.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.dstu3.model.ValueSet;
@@ -101,6 +104,7 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
     String display;
     String definition;
     String textDefinition;
+    String partOf;
     boolean inactive;
     DateTimeType deprecated;
 
@@ -108,7 +112,7 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
     List<CodeInfo> children = new ArrayList<CodeInfo>();
 
     public void write(int lvl, StringBuilder s, ValueSet vs, List<ConceptDefinitionComponent> list, ConceptDefinitionComponent owner,
-        Map<String, ConceptDefinitionComponent> handled, CodeSystem cs) throws Exception {
+        Map<String, ConceptDefinitionComponent> handled, CodeSystem cs, boolean doPart) throws Exception {
       if (!select && children.size() == 0)
         return;
 
@@ -127,6 +131,8 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
         concept.setCode(code);
         concept.setDisplay(display);
         concept.setDefinition(textDefinition);
+        if (doPart && partOf != null)
+          concept.addProperty().setCode("partOf").setValue(new CodeType(partOf));
         if (!concept.hasDefinition())
           concept.setDefinition(concept.getDisplay());
         String d = "";
@@ -154,9 +160,15 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
               + Utilities.escapeXml(Utilities.nmtokenize(code)) + "\">&nbsp;</a></td><td>");
         if (definition != null)
           s.append(definition);
+        if (doPart) {
+          if (doPart && partOf != null)
+            s.append("</td><td>"+partOf);
+          else
+            s.append("</td><td>");
+        }
         s.append("</td></tr>\r\n");
         for (CodeInfo child : children) {
-          child.write(lvl + 1, s, vs, concept.getConcept(), concept, handled, cs);
+          child.write(lvl + 1, s, vs, concept.getConcept(), concept, handled, cs, doPart);
         }
       }
     }
@@ -171,8 +183,8 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
     vs.setUrl("http://hl7.org/fhir/ValueSet/" + vs.getId());
     vs.setName("v3 Code System " + id);
     vs.setPublisher("HL7, Inc");
-    vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.OTHER, "http://hl7.org"));
-    vs.setStatus(ConformanceResourceStatus.ACTIVE);
+    vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org"));
+    vs.setStatus(PublicationStatus.ACTIVE);
     
     vs.setId("v3-" + FormatUtilities.makeId(id));
     vs.setUserData("path", "v3" + "/" + id + "/" + "vs.html");
@@ -211,15 +223,20 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
     CodeSystemConvertor.populate(cs, vs);
     cs.setUserData("path", "v3" + "/" + id + "/" + "cs.html");
     cs.setUserData("filename", "v3" + "/" + id + "/" + "cs.html");
+    if (!vs.hasCompose())
+      vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().addInclude().setSystem(cs.getUrl());
     vs.setExperimental(false);
     cs.setCaseSensitive(true);
     cs.setContent(CodeSystemContentMode.COMPLETE);
     cs.setValueSet(vs.getUrl());
-    if (Utilities.existsInList(cs.getId(), "v3-AddressPartType"))
-      cs.setHierarchyMeaning(CodeSystemHierarchyMeaning.PARTOF);
-    else
-      cs.setHierarchyMeaning(CodeSystemHierarchyMeaning.SUBSUMES);
+    vs.setImmutable(true);
+    cs.setHierarchyMeaning(CodeSystemHierarchyMeaning.ISA);
+    
+    String partOfName = getRelationship(e, "ComponentOf");  
+    if (partOfName != null) {
+      cs.addProperty().setCode("partOf").setDescription("This relationship indicates that the source concept is a component of the target concept").setType(PropertyType.CODE).setUri("http://hl7.org/fhir/codesystem-hierarchy-meaning#part-of");
+    }
 
     List<CodeInfo> codes = new ArrayList<CodeInfo>();
     // first, collate all the codes
@@ -235,6 +252,8 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
         r = XMLUtil.getNamedChild(XMLUtil.getNamedChild(XMLUtil.getNamedChild(XMLUtil.getNamedChild(c, "annotations"), "documentation"), "definition"), "text");
         ci.definition = r == null ? null : nodeToString(r);
         ci.textDefinition = r == null ? null : nodeToText(r).trim();
+        if (partOfName != null)
+         ci.partOf = getRelationshipValue(c, partOfName);  
         if ("retired".equals(XMLUtil.getNamedChild(c, "code").getAttribute("status")))
           ci.inactive = true;
         Element di = XMLUtil.getNamedChild(XMLUtil.getNamedChild(XMLUtil.getNamedChild(c, "annotations"), "appInfo"), "deprecationInfo");
@@ -267,11 +286,14 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
     }
 
     s.append("<table class=\"grid\">\r\n");
-    s.append(" <tr><td><b>Level</b></td><td><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr>\r\n");
+    if (partOfName != null)
+      s.append(" <tr><td><b>Level</b></td><td><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td><td><b>PartOf</b></td></tr>\r\n");
+    else
+      s.append(" <tr><td><b>Level</b></td><td><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr>\r\n");
     Map<String, ConceptDefinitionComponent> handled = new HashMap<String, ConceptDefinitionComponent>();
     for (CodeInfo ci : codes) {
       if (ci.parents.size() == 0) {
-        ci.write(1, s, vs, cs.getConcept(), null, handled, cs);
+        ci.write(1, s, vs, cs.getConcept(), null, handled, cs, partOfName != null);
       }
     }
     s.append("</table>\r\n");
@@ -291,6 +313,29 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
     page.getVsValidator().validate(page.getValidationErrors(), "v3 valueset "+id, vs, false, true);
     page.getValueSets().put(vp.vs.getUrl(), vp.vs);
 
+  }
+
+  private String getRelationshipValue(Element e, String partOfName) {
+    List<Element> rl = new ArrayList<Element>();
+    XMLUtil.getNamedChildren(e, "conceptRelationship", rl);
+    for (Element r : rl) {
+      if (partOfName.equals(r.getAttribute("relationshipName")))
+        return XMLUtil.getNamedChildAttribute(r, "targetConcept", "code"); 
+    }
+    return null;
+  }
+
+  private String getRelationship(Element e, String string) {
+    Element rv = XMLUtil.getNamedChild(e, "releasedVersion");
+    if (rv == null)
+      return null;
+    List<Element> rl = new ArrayList<Element>();
+    XMLUtil.getNamedChildren(rv, "supportedConceptRelationship", rl);
+    for (Element r : rl) {
+      if ("ComponentOf".equals(r.getAttribute("relationshipKind")))
+        return r.getAttribute("name");
+    }
+    return null;
   }
 
   public void execute() throws Exception {
@@ -328,6 +373,8 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
               vp.vs.getMeta().setLastUpdatedElement(new InstantType(vp.vs.getDate()));
             else
               vp.vs.getMeta().setLastUpdated(page.getGenDate().getTime());
+            if (!vp.cs.hasMeta())
+              vp.cs.setMeta(new Meta());
             vp.cs.getMeta().setLastUpdated(vp.vs.getMeta().getLastUpdated());
             codesystems.put(e.getAttribute("codeSystemId"), vp.cs);
           } // else if (r == null)
@@ -404,8 +451,8 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
       vs.setDescription("No Description Provided");
     }
     vs.setPublisher("HL7 v3");
-    vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.OTHER, "http://www.hl7.org"));
-    vs.setStatus(ConformanceResourceStatus.ACTIVE);
+    vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://www.hl7.org"));
+    vs.setStatus(PublicationStatus.ACTIVE);
     vs.setExperimental(false);
 
     r = XMLUtil.getNamedChild(e, "version");
@@ -451,8 +498,8 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
       vs.setDescription("No Description Provided");
     }
     vs.setPublisher("HL7 v3");
-    vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.OTHER, "http://www.hl7.org"));
-    vs.setStatus(ConformanceResourceStatus.ACTIVE);
+    vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://www.hl7.org"));
+    vs.setStatus(PublicationStatus.ACTIVE);
     vs.setExperimental(false);
 
     r = XMLUtil.getNamedChild(e, "version");
@@ -482,7 +529,7 @@ public class ValueSetImporterV3 extends ValueSetImporterBase {
         Element part = XMLUtil.getFirstChild(XMLUtil.getNamedChild(content, "combinedContent"));
         while (part != null) {
           if (part.getNodeName().equals("unionWithContent"))
-            compose.addImport("http://hl7.org/fhir/ValueSet/v3-" + XMLUtil.getNamedChild(part, "valueSetRef").getAttribute("name"));
+            compose.addInclude().addValueSet("http://hl7.org/fhir/ValueSet/v3-" + XMLUtil.getNamedChild(part, "valueSetRef").getAttribute("name"));
           else
             throw new Exception("unknown value set construction method");
           part = XMLUtil.getNextSibling(part);

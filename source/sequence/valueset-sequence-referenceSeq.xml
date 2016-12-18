@@ -6,7 +6,7 @@
   <publisher value="FHIR Project team"/>
   <contact>
     <telecom>
-      <system value="other"/>
+      <system value="url"/>
       <value value="http://hl7.org/fhir"/>
     </telecom>
   </contact>
@@ -14,6 +14,9 @@
   <compose>
     <include>
       <system value="http://www.ensembl.org"/>
+    </include>
+    <include>
+      <system value="http://www.ncbi.nlm.nih.gov/nuccore"/>
     </include>
   </compose>
 </ValueSet>

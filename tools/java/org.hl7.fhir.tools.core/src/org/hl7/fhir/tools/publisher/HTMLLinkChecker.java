@@ -4,26 +4,19 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
-import org.hl7.fhir.tools.publisher.BreadCrumbManager.Page;
 import org.hl7.fhir.utilities.FileNotifier;
-import org.hl7.fhir.utilities.Logger.LogMessageType;
 import org.hl7.fhir.utilities.Utilities;
-import org.hl7.fhir.utilities.ZipGenerator;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlDocument;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
-import org.hl7.fhir.utilities.xml.XMLWriter;
 
 /**
  * This class started out in life as a pbulisher for epubs, but 
@@ -178,6 +171,10 @@ public class HTMLLinkChecker implements FileNotifier {
     if ("a".equals(node.getName())) {
       if (node.getAttributes().containsKey("name")) {
         e.anchors.add(node.getAttribute("name"));
+        if (Utilities.noString(node.allText())) { 
+          String msg = "Invalid \"a\" link in "+e.filename+" - name "+node.getAttribute("name")+" has no text)";
+          reportError(e.filename, msg);      
+        }
       }
       else if (node.getAttributes().containsKey("href") || node.getAttributes().containsKey("xlink:href") ) {
       }
@@ -249,7 +246,7 @@ public class HTMLLinkChecker implements FileNotifier {
       if ("self-link".equals(node.getAttribute("class")))
         return; 
       String target = collapse(base, path, source);
-      if (target.endsWith(".xml") || target.endsWith(".json") || target.endsWith(".xsd") || target.endsWith(".txt") || target.endsWith(".sch") || target.endsWith(".pdf") || target.endsWith(".epub")) {
+      if (target.endsWith(".xml") || target.endsWith(".json") || target.endsWith(".jsonld") || target.endsWith(".xsd") || target.endsWith(".shex") || target.endsWith(".txt") || target.endsWith(".sch") || target.endsWith(".pdf") || target.endsWith(".epub")) {
         if (!(new File(Utilities.path(page.getFolders().dstDir, target)).exists()))
           reportError(base, "Broken Link (1) in "+base+": '"+href+"' not found at \""+Utilities.path(page.getFolders().dstDir, target)+"\" ("+node.allText()+")");
         node.setAttribute("href", webPath+"/"+target.replace(File.separatorChar, '/'));

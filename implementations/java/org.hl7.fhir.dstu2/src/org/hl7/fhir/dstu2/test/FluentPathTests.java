@@ -1,8 +1,5 @@
 package org.hl7.fhir.dstu2.test;
 
-import static org.junit.Assert.*;
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,25 +8,22 @@ import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.hl7.fhir.dstu2.exceptions.DefinitionException;
-import org.hl7.fhir.dstu2.exceptions.PathEngineException;
 import org.hl7.fhir.dstu2.formats.XmlParser;
 import org.hl7.fhir.dstu2.model.Base;
 import org.hl7.fhir.dstu2.model.BooleanType;
+import org.hl7.fhir.dstu2.model.ElementDefinition;
+import org.hl7.fhir.dstu2.model.ElementDefinition.ElementDefinitionConstraintComponent;
 import org.hl7.fhir.dstu2.model.ExpressionNode;
 import org.hl7.fhir.dstu2.model.PrimitiveType;
 import org.hl7.fhir.dstu2.model.Resource;
-import org.hl7.fhir.dstu2.test.TestingUtilities;
-import org.hl7.fhir.dstu2.utils.FHIRLexer.FHIRLexerException;
+import org.hl7.fhir.dstu2.model.StructureDefinition;
 import org.hl7.fhir.dstu2.utils.FHIRPathEngine;
 import org.hl7.fhir.dstu2.utils.SimpleWorkerContext;
+import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRException;
-import org.hl7.fhir.exceptions.FHIRFormatError;
-import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
+import org.hl7.fhir.exceptions.PathEngineException;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -48,7 +42,7 @@ public class FluentPathTests {
 
   @Parameters(name = "{index}: file {0}")
   public static Iterable<Object[]> data() throws ParserConfigurationException, SAXException, IOException {
-    Document dom = XMLUtil.parseFileToDom("C:\\work\\fluentpath\\spec\\tests-fhir-r2.xml");
+    Document dom = XMLUtil.parseFileToDom("C:\\work\\fluentpath\\tests\\dstu2\\tests-fhir-r2.xml");
     
     List<Element> list = new ArrayList<Element>();
     List<Element> groups = new ArrayList<Element>();
@@ -140,6 +134,38 @@ public class FluentPathTests {
         Assert.assertTrue(String.format("Outcome %d: Value should be a primitive type but was %s", i, outcome.get(i).fhirType()), outcome.get(i) instanceof PrimitiveType);
         Assert.assertTrue(String.format("Outcome %d: Value should be %s but was %s", i, v, outcome.get(i).toString()), v.equals(((PrimitiveType)outcome.get(i)).asStringValue()));
       } 
+    }
+  }
+
+  @Test
+  public void testDefinitions() throws FileNotFoundException, IOException, FHIRException {
+    if (TestingUtilities.context == null)
+      TestingUtilities.context = SimpleWorkerContext.fromPack("C:\\work\\org.hl7.fhir.dstu2\\build\\publish\\validation-min.xml.zip");
+    if (fp == null)
+      fp = new FHIRPathEngine(TestingUtilities.context);
+    for (StructureDefinition sd : TestingUtilities.context.allStructures()) {
+      for (ElementDefinition ed : sd.getSnapshot().getElement()) {
+        for (ElementDefinitionConstraintComponent inv : ed.getConstraint()) {
+          if (inv.hasExtension("http://hl7.org/fhir/StructureDefinition/structuredefinition-expression")) {
+            testExpression(sd, ed, inv);
+          }
+        }
+      }
+    }
+    Assert.assertTrue(false);
+  }
+
+  private void testExpression(StructureDefinition sd, ElementDefinition ed, ElementDefinitionConstraintComponent inv) throws FHIRException {
+    String expr = inv.getExtensionString("http://hl7.org/fhir/StructureDefinition/structuredefinition-expression");
+    try {
+      ExpressionNode n = (ExpressionNode) inv.getUserData("validator.expression.cache");
+      if (n == null) {
+        n = fp.parse(expr);
+        inv.setUserData("validator.expression.cache", n);
+      }
+      fp.check(null, sd.getKind() == org.hl7.fhir.dstu2.model.StructureDefinition.StructureDefinitionKind.RESOURCE ?  sd.getId() : "DomainResource", ed.getPath(), n);
+    } catch (Exception e) {
+      System.out.println("FluentPath Error on "+sd.getUrl()+":"+ed.getPath()+":"+inv.getKey()+" ('"+expr+"'): "+e.getMessage());
     }
   }
 

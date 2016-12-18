@@ -4,15 +4,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.hl7.fhir.dstu3.exceptions.DefinitionException;
-import org.hl7.fhir.dstu3.exceptions.FHIRFormatError;
+import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
-import org.hl7.fhir.dstu3.utils.IWorkerContext;
+import org.hl7.fhir.dstu3.model.StructureDefinition;
+import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 
 public class Manager {
 
-  public enum FhirFormat { XML, JSON, JSONLD, TURTLE ;
+  public enum FhirFormat { XML, JSON, JSONLD, TURTLE, TEXT, VBAR;
 
     public String getExtension() {
       switch (this) {
@@ -24,6 +25,10 @@ public class Manager {
         return "ttl";
       case XML:
         return "xml";
+      case TEXT:
+        return "txt";
+      case VBAR:
+        return "hl7";
       }
       return null;
     }
@@ -43,8 +48,16 @@ public class Manager {
     case JSONLD : return new JsonLDParser(context);
     case XML : return new XmlParser(context);
     case TURTLE : return new TurtleParser(context);
+    case VBAR : return new VerticalBarParser(context);
+    case TEXT : throw new Error("Programming logic error: do not call makeParser for a text resource");
     }
     return null;
   }
   
+  public static Element build(IWorkerContext context, StructureDefinition sd) {
+    Property p = new Property(context, sd.getSnapshot().getElementFirstRep(), sd);
+    Element e = new Element(null, p);
+    return e;
+  }
+
 }

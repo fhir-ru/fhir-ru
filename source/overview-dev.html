@@ -41,21 +41,25 @@ variety of architectures and scenarios.
 <h3>Framework</h3>
 <p>
 FHIR is based on "Resources" which are the common building blocks
-for all exchanges.  All resources have the following features in <a href="resource.html">common</a>:
+for all exchanges. Resources are an instance-level representation of some kind of healthcare entity.
+All resources have the following features in <a href="resource.html">common</a>:
 </p>
 <ul>
- <li>A URL that identifies it</li>
+ <li>A URL that identifies the resource</li>
  <li>Common metadata</li>
  <li>A <a href="narrative.html">human-readable XHTML summary</a></li>
- <li>A set of defined common data elements</li>
+ <li>A set of defined data elements - a different set for each type of resource </li>
  <li>An <a href="extensibility.html">extensibility framework</a> to support variation in healthcare</li>
 </ul>
 <p>
-Resources are represented as either <a href="xml.html">XML</a> or <a href="json.html">JSON</a> and there are currently <%resourcecount%>
+Resource instances are represented as either <a href="xml.html">XML</a>, <a href="json.html">JSON</a> or <a href="rdf.html">RDF</a> and there are currently <%resourcecount%>
 different <a href="resourcelist.html">resource types defined</a> in the FHIR specification.
 </p>
-
-<h3>Example Resource</h3>
+<p>
+This specification describes a set of resources - that is, a set of resource types that describe the set of resource instances that 
+can actually be exchanged. The term 'Resource' is sometimes used without clarifying whether it specically refers to types or instances - the context of sue makes this clear.
+</p>
+<h3>Example Resource Instance</h3>
 <p>
 This is an example of how a <a href="patient.html">patient</a> is represented as a FHIR object in <a href="json.html">JSON</a>. An <a href="xml.html">XML encoding</a> is also defined in the specification.
 </p>
@@ -110,15 +114,15 @@ This is an example of how a <a href="patient.html">patient</a> is represented as
 </div>
 
 <p>
-Each resource consists of:
+Each instance of a resource consists of:
 </p>
 <ul>
   <li><b>resourceType</b> (line 2) - Required: FHIR defines many different types of resources. See <a href="resourcelist.html">the full index</a></li>
-  <li><b>id</b> (line 3) - The id of the resource. Always present when a resource is exchanged, except during the create operation (below)</li>
+  <li><b>id</b> (line 3) - The id of this resource. Always present when a resource is exchanged, except during the create operation (below)</li>
   <li><b>meta</b> (lines 4 - 7) - Usually Present: <a href="resource.html#meta">Common use/context data to all resources</a> and managed by the infrastructure. Missing if there is no metadata</li>
   <li><b>text</b> (lines 8 - 11) - Recommended: XHTML that provides a <a href="narrative.html">human readable representation</a> for the resource</li>
   <li><b>extension</b> (lines 12 - 17) - Optional: <a href="extensibility.html">Extensions</a> defined by the extensibility framework</li>
-  <li><b>data</b> (lines 18 - 43) - Optional: data elements defined for each type of resource</li>
+  <li><b>data</b> (lines 18 - 43) - Optional: data elements - a different set, defined for each type of resource</li>
 </ul>
 <p>
 Note that although this specification always shows the JSON properties in the order that they are defined, many JSON libraries order properties by other criteria.
@@ -160,16 +164,31 @@ detail, granularity and nesting by various parties across the system.
 For example, in some cases a blood pressure measurement may be just a simple observation, a 
 vital sign measure, while in other cases can be a rich set of highly defined 
 data that includes things like controlled vocabularies for posture, exercise, etc. 
-The <a href="resourcelist.html">resources</a> defined in this specification 
+The <a href="resourcelist.html">resource types</a> defined in this specification 
 focus on the general, common use cases. Richer and more specific content 
 can be supported and standardized by <a href="profiling.html">defining "profiles"</a> on 
-the base resources. 
+the base resource types. 
 </p>
 
-
+<a name="versions"> </a>
+<h3>Managing Versions</h3>
+<p>
+FHIR Servers do not have to support versioning, though they are strongly encouraged to do so. 
+There are three different levels of versioning support for FHIR servers:
+</p>
+<ul>
+ <li>Versioning and .meta.version are not supported (and usually, .meta.lastUpdated is not supported either)</li>
+ <li>Versioning and the	VersionId meta-property are supported, but a history of old versions is not kept</li>
+ <li>Versioning and the	VersionId meta-property are supported, and a history of old versions is available</li>
+</ul>
+<p>
+In addition, servers may require that <a href="http.html#concurrency">version</a> aware updates are used, to prevent over-writing changes, 
+but this is not described on this page.
+</p>
+ 
 <h3>Creating a resource</h3>
 <p>
-To <a href="http.html#create">create a resource</a>, send an HTTP POST request to the resource's respective end
+To <a href="http.html#create">create a resource</a>, send an HTTP POST request to the resource type's respective end
 point. 
 </p>
 <pre> 
@@ -189,7 +208,7 @@ In the example below we see the creation of a Patient.
 <code> </code>
 <code>{</code>
 <code>  "resourceType": "Patient",</code>
-<code>  ...</code>
+<code>  ...(properties)</code>
 <code>}</code>
 </pre>
 </div>
@@ -204,8 +223,8 @@ Notes:
   <li><b>/Patient</b> (line 1) - the manager for all patients - use the name of the type of resource</li>
   <li><b>Authorization</b> (line 2) - see <a href="security.html">Security for FHIR</a></li>
   <li><b>Accept, Content-Type</b> (lines 3-4) - the content type for all FHIR resources as represented in JSON (or application/fhir+xml for the XML version). FHIR resources are always represented in UTF-8</li>
-  <li><b>id</b> (line 9) - No id for a resource that is being created - the server will assign one</li>
-  <li>Resource Content, lines 8+ - There's no meta property at this point. The rest of the resource is the same content as above</li>
+  <li><b>id</b> - The client does not need to provide an id for a resource that is being created - the server will assign one. If the client assigns one, the server will overwrite it</li>
+  <li>Resource Content, lines 8+ - There's no meta property at this point. The rest of the resource is the same content as shown above</li>
 </ul>
 
 
@@ -241,8 +260,8 @@ do so.
 Notes:
 </p>
 <ul>
-  <li><b>HTTP/1.1 201</b> (line 1) - the operation was successful. Note that HTTP/1.1 is strongly recommended but not required</li>
-  <li><b>ETag</b> (line 5) - used in the <a href="http.html#update">version aware update</a> pattern</li>
+  <li><b>HTTP/1.1 201</b> (line 1) - the operation was successful. Note that use of <a href="https://www.w3.org/Protocols/rfc2616/rfc2616.html">HTTP v 1.1</a> is strongly recommended but not required</li>
+  <li><b>ETag</b> (line 5) - used in the <a href="http.html#update">version aware update</a> pattern (if the server supports versioning)</li>
   <li><b>Location</b> (line 6) - the id the server assigned to the resource. The id in the URL must match the id in the resource when the resource is subsequently returned</li>
   <li><b>operationOutcome</b> (line 9) - OperationOutcome resources in this context have no id or meta element (they have no managed identity)</li>
 </ul>
@@ -284,7 +303,7 @@ Notes:
 
 <h3>Read Request</h3>
 <p>
-<a href="http.html#read">Reading a resource</a> is done by sending HTTP GET requests to the desired Resource
+<a href="http.html#read">Reading a resource</a> is done by sending HTTP GET requests to the desired Resource Type
 end-point.
 </p>
 <pre> 
@@ -342,7 +361,7 @@ Notes:
 </p>
 <ul>
   <li><b>id</b> (line 9) - The id of the resource. This must match the id in the read request</li>
-  <li><b>versionId</b> (line 11) - The current version id of the resource. Best practice is that this value matches the ETag (see <a href="http.html#update">version aware update</a>), but clients must never assume this. Note that some servers do not track the version of the resource</li>
+  <li><b>versionId</b> (line 11) - The current version id of the resource (if the server supports versioning). Best practice is that this value matches the ETag (see <a href="http.html#update">version aware update</a>), but clients must never assume this</li>
   <li>Note that servers are not required to support versioning, but are strongly encouraged to do so</li>
   <li><b>lastUpdated</b> (line 12) - if present, this must match the value in the HTTP header</li>
 </ul>
@@ -350,7 +369,7 @@ Notes:
 <h3>Search Request</h3>
 <p>
 In addition to getting single known resources it's possible to find a collection of resources by
-<a href="http.html#search">searching the resource end-point</a> with a <a href="search.html">set of
+<a href="http.html#search">searching the resource type end-point</a> with a <a href="search.html">set of
 criteria</a> describing the set of resources that should be retrieved, and their order. The
 general pattern is:
 </p>
@@ -365,7 +384,7 @@ The criteria is a set of HTTP parameters that specify which resources to return.
 
 <div class="example">
 <pre class="http">
-https://example.com/base/MedicationOrder?patient=347
+https://example.com/base/MedicationRequest?patient=347
 </pre>
 </div>
 <p>
@@ -395,16 +414,16 @@ The response to a search request is a <a href="bundle.html">Bundle</a>: a list o
 <code>  "link": [</code>
 <code>    {</code>
 <code>      "relation" : "next",</code>
-<code>      "url" : "https://example.com/base/MedicationOrder?patient=347&amp;searchId=ff15fd40-ff71-4b48-b366-09c706bed9d0&amp;page=2"</code>
+<code>      "url" : "https://example.com/base/MedicationRequest?patient=347&amp;searchId=ff15fd40-ff71-4b48-b366-09c706bed9d0&amp;page=2"</code>
 <code>    }, {</code>
 <code>      "relation" : "self",</code>
-<code>      "url" : "https://example.com/base/MedicationOrder?patient=347"</code>
+<code>      "url" : "https://example.com/base/MedicationRequest?patient=347"</code>
 <code>    }</code>
 <code>  ],</code>
 <code>  "entry": [</code>
 <code>    {</code>
 <code>      "resource" : {</code>
-<code>        "resourceType": "MedicationOrder",</code>
+<code>        "resourceType": "MedicationRequest",</code>
 <code>        "id" : "3123",</code>
 <code>        "meta" : {</code>
 <code>          "versionId" : "1",</code>
@@ -425,7 +444,7 @@ Notes:
 <ul>
   <li><b>resourceType/type</b> (line 7/8) - the result of a search is always a bundle of type "searchset"</li>
   <li><b>id</b> (line 9) - An identifier assigned to this particular bundle. The server should assign a unique id to this bundle that it will not be re-used</li>
-  <li><b>meta.lastUpdated</b> (line 11) - This should match the HTTP header, and should be the date the search was executed, or more recent, depending on how the <a href="search.html#currency">server handles ongoing updates</a>. The lastUpdated data SHALL be the same or more recent than the most recent resource in the results</li>
+  <li><b>meta.lastUpdated</b> (line 11) - (if the server supports versioning) This should match the HTTP header, and should be the date the search was executed, or more recent, depending on how the <a href="search.html#currency">server handles ongoing updates</a>. The lastUpdated data SHALL be the same or more recent than the most recent resource in the results</li>
   <li><b>total</b> (line 13) - The total number of matches in the search results. Not the number of matches in this particular bundle, which may be a <a href="http.html#search">paged view into the results</a></li>
   <li><b>link</b> (line 14) - A set of named links that give related contexts to this bundle. Names defined in this specification: <a href="http.html#search">first</a>, <a href="http.html#search">prev</a>, <a href="http.html#search">next</a>, <a href="http.html#search">last</a>, <a href="http.html#search">self</a></li>
   <li><b>entry</b> (line 23) - Actual resources in this set of results</li>
@@ -473,7 +492,7 @@ Notes:
   <li><b>resourceType</b> (line 1) - "Patient" in the URL must match the resource type in the resource (line 9)</li>
   <li><b>resource id</b> (line 1, "347") - This must match the id in the resource (line 10)</li>
   <li><b>If-Match</b> (line 6) - if this is provided, it must match the value in meta.versionId (line 12), and the server must check the version integrity, or return 412 if it doesn't support versions</li>
-  <li><b>meta.lastUpdated</b> (line 10) - This value is ignored, and will be updated by the server</li>
+  <li><b>meta.lastUpdated</b> (line 10) - This value is ignored, and will be updated by the server (sometimes, if the server supports versioning)</li>
   <li><b>resource content</b> (line 14) - Not shown here, the same as Patient above</li>
 </ul>
 
@@ -489,6 +508,7 @@ The response to an update request has metadata / status, and optionally an Opera
 <code>Content-Type: application/fhir+json</code>
 <code>Date: Mon, 18 Aug 2014 01:43:30 GMT</code>
 <code>ETag: "2"</code>
+<code>Location: https://example.com/Patient/347/_history/2</code>
 <code> </code>
 <code>{</code>
 <code>  &quot;resourceType&quot;: &quot;OperationOutcome&quot;,</code>
@@ -505,7 +525,7 @@ The response to an update request has metadata / status, and optionally an Opera
 Notes:
 </p>
 <ul>
-  <li><b>ETag</b> (line 5) - This is the versionId of the new version, and is also found as a fixed URL in line 6</li>
+  <li><b>ETag</b> (line 5) - This is the versionId of the new version, and is also found in the location header (line 6) (if the server supports versioning)</li>
 </ul>
 
 <h3>Base Resource Content</h3>
@@ -551,6 +571,10 @@ Implementers notes:
   <li><b>implicitRules</b> (line 17) - indicates that there is a <a href="profiling.html#agreement">custom agreement</a> about how the resources are used that must be understood in order to safely process the resource. Use of this is discouraged because it restricts sharing, but sometimes necessary</li>
   <li><b>language</b> (line 18) - The <a href="narrative.html#language">base language of the resource</a>. The resource is allowed to have content from other languages; this is just the base, but should be the main language of the resource</li>
 </ul>
+
+<p>
+The base properties of all resources are defined on the resource types <a href="resource.html">Resource</a> and <a href="domainresource.html">DomainResource</a>.
+</p>
 
 <p>
 Want more information? 

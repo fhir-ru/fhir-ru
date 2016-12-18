@@ -12,17 +12,17 @@
       <display value="Amoxicillin (product)"/>
     </coding>
   </medicationCodeableConcept>
-  <patient>
+  <subject>
     <reference value="Patient/pat1"/>
     <display value="Donald Duck"/> 
-  </patient>
+  </subject>
   <effectiveDateTime value="2014-01-23"></effectiveDateTime>
   <informationSource>
     <reference value="Patient/pat1"/>
     <display value="Donald Duck"/> 
   </informationSource>
   <dateAsserted value="2015-02-22"/>
-  <notTaken value="false"/>
+  <notTaken value="y"/>
   <note>
     <text value="Patient indicated that they thought it was Amoxicillin they were taking but it was really Erythromycin" />
   </note>

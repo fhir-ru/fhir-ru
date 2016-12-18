@@ -40,12 +40,12 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.hl7.fhir.dstu3.exceptions.FHIRException;
-import org.hl7.fhir.dstu3.exceptions.FHIRFormatError;
+import org.hl7.fhir.dstu3.context.SimpleWorkerContext;
 import org.hl7.fhir.dstu3.formats.XmlParser;
 import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
-import org.hl7.fhir.dstu3.utils.SimpleWorkerContext;
+import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
@@ -103,7 +103,7 @@ public class ProfileValidatorTests {
 	  Element r = parseXml(dir+XMLUtil.getNamedChildValue(test, "instance")+".xml").getDocumentElement();
 	  StructureDefinition p = (StructureDefinition) parseReference(dir+XMLUtil.getNamedChildValue(test, "profile")+".xml");
 	  List<ValidationMessage> errors = new ArrayList<ValidationMessage>();
-	  v.validate(errors, r, p);
+	  v.validate(null, errors, r, p);
 	  String outcome = XMLUtil.getNamedChildValue(test, "outcome");
 	  boolean ok;
 	  if ("ok".equals(outcome)) {

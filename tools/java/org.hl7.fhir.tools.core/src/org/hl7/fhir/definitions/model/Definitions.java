@@ -41,9 +41,9 @@ import org.hl7.fhir.dstu3.model.ConceptMap;
 import org.hl7.fhir.dstu3.model.NamingSystem;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.StructureDefinition.ExtensionContext;
+import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
-import org.hl7.fhir.dstu3.model.ValueSet;
 
 /**
  * This class is the root to all the definitions in FHIR. There are the
@@ -140,6 +140,7 @@ public class Definitions {
 	private Map<String, TypeDefn> infrastructure = new HashMap<String, TypeDefn>();
   private Map<String, ResourceDefn> baseResources = new HashMap<String, ResourceDefn>();
   private Map<String, ResourceDefn> resources = new HashMap<String, ResourceDefn>();
+  private Map<String, ResourceDefn> resourceTemplates = new HashMap<String, ResourceDefn>();
   private Map<String, WorkGroup> workgroups = new HashMap<String, WorkGroup>();
 
 	// profiles not owned by a particular resource
@@ -177,6 +178,7 @@ public class Definitions {
   private Map<String, String> typePages = new HashMap<String, String>();
   private Map<String, String> pageTitles = new HashMap<String, String>();
   private Map<String, Set<String>> searchRules = new HashMap<String, Set<String>>();
+  private Map<String, CommonSearchParameter> commonSearchParameters = new HashMap<String, CommonSearchParameter>();
   private Map<String, NamespacePair> redirectList = new HashMap<String, NamespacePair>();
   
   
@@ -267,11 +269,16 @@ public class Definitions {
 		return aggregationEndpoints;
 	}
 
-	// List of resources, excluding future resources
-	public Map<String, ResourceDefn> getResources() {
-		return resources;
-	}
-	
+  // List of resources, excluding future resources
+  public Map<String, ResourceDefn> getResources() {
+    return resources;
+  }
+  
+  // List of resources, excluding future resources
+  public Map<String, ResourceDefn> getResourceTemplates() {
+    return resourceTemplates;
+  }
+  
 
 	public ResourceDefn getResourceByName(String name) throws Exception {
 		ResourceDefn root = null;
@@ -740,6 +747,10 @@ public class Definitions {
 
   public ConstraintStructure findProfile(String id) {
     return profileIds.get(id);
+  }
+
+  public Map<String, CommonSearchParameter> getCommonSearchParameters() {
+    return commonSearchParameters;
   }
 
 }

@@ -7,9 +7,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.formats.FormatUtilities;
 import org.hl7.fhir.dstu3.model.Reference;
-import org.hl7.fhir.dstu3.model.ResourceType;
+import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.Type;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.utilities.Utilities;
@@ -109,11 +110,8 @@ public class SimpleFetcher implements IFetchFile {
         throw new Exception("Bad Source Reference '"+s+"' - should have the format [Type]/[id]");
       String type = s.substring(0,  s.indexOf("/"));
       String id = s.substring(s.indexOf("/")+1); 
-      try {
-        ResourceType rt = ResourceType.fromCode(type);
-      } catch (Exception e) {
-        throw new Exception("Bad Source Reference '"+s+"' - should have the format [Type]/[id] where Type is a valid resource type");
-      }
+      if (!pkp.getContext().hasResource(StructureDefinition.class , "http://hl7.org/fhir/StructureDefinition/"+type))
+        throw new Exception("Bad Resource Identity - should have the format [Type]/[id] where Type is a valid resource type:" + s);
       if (!id.matches(FormatUtilities.ID_REGEX))
         throw new Exception("Bad Source Reference '"+s+"' - should have the format [Type]/[id] where id is a valid FHIR id type");
       String fn = pkp.getSourceFor(type+"/"+id);
@@ -162,6 +160,61 @@ public class SimpleFetcher implements IFetchFile {
 
   private boolean exists(String fn) {
     return new File(fn).exists();
+  }
+
+  
+  @Override
+  public List<FetchedFile> scan(String sourceDir, IWorkerContext context) {
+    List<FetchedFile> res = new ArrayList<>();
+    for (File f : new File(sourceDir).listFiles()) {
+      if (!f.isDirectory()) {
+        String fn = f.getAbsolutePath();
+        String ext = Utilities.getFileExtension(fn);
+        boolean ok = false;
+        if (!Utilities.existsInList(ext, "json", "ttl", "html", "txt"))
+          try {
+            org.hl7.fhir.dstu3.elementmodel.Element e = new org.hl7.fhir.dstu3.elementmodel.XmlParser(context).parse(new FileInputStream(f));
+            addFile(res, f, "application/fhir+xml");
+            ok = true;
+          } catch (Exception e) {
+            System.out.println(e.getMessage());
+          }
+        if (!ok && !Utilities.existsInList(ext, "xml", "ttl", "html", "txt")) {
+          try {
+            org.hl7.fhir.dstu3.elementmodel.Element e = new org.hl7.fhir.dstu3.elementmodel.JsonParser(context).parse(new FileInputStream(fn));
+            addFile(res, f, "application/fhir+json");
+            ok = true;
+          } catch (Exception e) {
+            System.out.println(e.getMessage());
+          }
+        }
+        if (!ok && !Utilities.existsInList(ext, "json", "xml", "html", "txt")) {
+          try {
+            org.hl7.fhir.dstu3.elementmodel.Element e = new org.hl7.fhir.dstu3.elementmodel.TurtleParser(context).parse(new FileInputStream(fn));
+            addFile(res, f, "text/turtle");
+            ok = true;
+          } catch (Exception e) {
+            System.out.println(e.getMessage());
+          }
+        }
+      }
+    }
+    return res;
+  }
+
+  private void addFile(List<FetchedFile> res, File f, String cnt) throws IOException {
+    FetchedFile ff = new FetchedFile();
+    ff.setPath(f.getAbsolutePath());
+    ff.setName(fileTitle(f.getAbsolutePath()));
+    ff.setTime(f.lastModified());
+    ff.setFolder(false);   
+    ff.setContentType(cnt);
+    InputStream ss = new FileInputStream(f);
+    byte[] b = new byte[ss.available()];
+    ss.read(b, 0, ss.available());
+    ff.setSource(b);
+    ss.close();
+    res.add(ff);    
   }
 
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.hl7.fhir.dstu2.exceptions.PathEngineException;
 import org.hl7.fhir.dstu2.formats.FormatUtilities;
 import org.hl7.fhir.dstu2.model.Address;
 import org.hl7.fhir.dstu2.model.Attachment;
@@ -13,9 +12,16 @@ import org.hl7.fhir.dstu2.model.CodeableConcept;
 import org.hl7.fhir.dstu2.model.Coding;
 import org.hl7.fhir.dstu2.model.ContactPoint;
 import org.hl7.fhir.dstu2.model.ElementDefinition;
+import org.hl7.fhir.dstu2.model.ElementDefinition.ConstraintSeverity;
+import org.hl7.fhir.dstu2.model.ElementDefinition.ElementDefinitionBindingComponent;
+import org.hl7.fhir.dstu2.model.ElementDefinition.ElementDefinitionConstraintComponent;
+import org.hl7.fhir.dstu2.model.ElementDefinition.TypeRefComponent;
+import org.hl7.fhir.dstu2.model.Enumerations.BindingStrength;
 import org.hl7.fhir.dstu2.model.Extension;
 import org.hl7.fhir.dstu2.model.HumanName;
 import org.hl7.fhir.dstu2.model.Identifier;
+import org.hl7.fhir.dstu2.model.OperationOutcome.IssueSeverity;
+import org.hl7.fhir.dstu2.model.OperationOutcome.IssueType;
 import org.hl7.fhir.dstu2.model.Period;
 import org.hl7.fhir.dstu2.model.Property;
 import org.hl7.fhir.dstu2.model.Quantity;
@@ -27,37 +33,25 @@ import org.hl7.fhir.dstu2.model.ResourceType;
 import org.hl7.fhir.dstu2.model.SampledData;
 import org.hl7.fhir.dstu2.model.StringType;
 import org.hl7.fhir.dstu2.model.StructureDefinition;
+import org.hl7.fhir.dstu2.model.StructureDefinition.ExtensionContext;
+import org.hl7.fhir.dstu2.model.StructureDefinition.StructureDefinitionKind;
+import org.hl7.fhir.dstu2.model.StructureDefinition.StructureDefinitionSnapshotComponent;
 import org.hl7.fhir.dstu2.model.Timing;
 import org.hl7.fhir.dstu2.model.Type;
 import org.hl7.fhir.dstu2.model.UriType;
 import org.hl7.fhir.dstu2.model.ValueSet;
-import org.hl7.fhir.dstu2.model.ElementDefinition.ConstraintSeverity;
-import org.hl7.fhir.dstu2.model.ElementDefinition.ElementDefinitionBindingComponent;
-import org.hl7.fhir.dstu2.model.ElementDefinition.ElementDefinitionConstraintComponent;
-import org.hl7.fhir.dstu2.model.ElementDefinition.TypeRefComponent;
-import org.hl7.fhir.dstu2.model.Enumerations.BindingStrength;
-import org.hl7.fhir.dstu2.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.dstu2.model.OperationOutcome.IssueType;
-import org.hl7.fhir.dstu2.model.StructureDefinition.ExtensionContext;
-import org.hl7.fhir.dstu2.model.StructureDefinition.StructureDefinitionKind;
-import org.hl7.fhir.dstu2.model.StructureDefinition.StructureDefinitionSnapshotComponent;
 import org.hl7.fhir.dstu2.model.ValueSet.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu2.model.ValueSet.ValueSetExpansionContainsComponent;
-import org.hl7.fhir.dstu2.terminologies.ValueSetExpanderFactory;
-import org.hl7.fhir.dstu2.terminologies.ValueSetExpansionCache;
-import org.hl7.fhir.dstu2.terminologies.ValueSetExpander.ETooCostly;
-import org.hl7.fhir.dstu2.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
-import org.hl7.fhir.dstu2.utils.EOperationOutcome;
 import org.hl7.fhir.dstu2.utils.FHIRPathEngine;
 import org.hl7.fhir.dstu2.utils.IWorkerContext;
-import org.hl7.fhir.dstu2.utils.ProfileUtilities;
 import org.hl7.fhir.dstu2.utils.IWorkerContext.ValidationResult;
-import org.hl7.fhir.dstu2.validation.InstanceValidator.ResourceOnWrapper;
+import org.hl7.fhir.dstu2.utils.ProfileUtilities;
 import org.hl7.fhir.dstu2.validation.ValidationMessage.Source;
-import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
-import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRException;
+import org.hl7.fhir.exceptions.PathEngineException;
+import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
+import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -864,10 +858,9 @@ public class InstanceValidator extends BaseValidator implements IResourceValidat
     }
     if (type.equals("dateTime")) {
       rule(errors, IssueType.INVALID, e.line(), e.col(), path, yearIsValid(e.getAttribute("value")), "The value '" + e.getAttribute("value") + "' does not have a valid year");
-      rule(errors, IssueType.INVALID, e.line(), e.col(), path,
-          e.getAttribute("value")
-          .matches("-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?)?)?)?"),
-          "Not a valid date time");
+      boolean ok = e.getAttribute("value").matches("-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?)?)?)?");
+      if (!ok)
+        rule(errors, IssueType.INVALID, e.line(), e.col(), path,ok, "'"+e.getAttribute("value")+"' is not a valid date time");
       rule(errors, IssueType.INVALID, e.line(), e.col(), path, !hasTime(e.getAttribute("value")) || hasTimeZone(e.getAttribute("value")), "if a date has a time, it must have a timezone");
 
     }

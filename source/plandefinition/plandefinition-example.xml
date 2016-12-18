@@ -37,7 +37,6 @@
       <productReference>
         <reference value="#citalopramMedication"/>
       </productReference>
-      <!-- Need a DosageInstruction type
       <dosageInstruction>
         <text value="1 tablet oral 1 time daily"/>
         <timing>
@@ -59,7 +58,6 @@
           <unit value="{tbl}"/>
         </doseQuantity>
       </dosageInstruction>
-      -->
       <!-- Need a DispenseRequest type
       <dispenseRequest>
         <numberOfRepeatsAllowed value="3"/>
@@ -69,30 +67,6 @@
         </quantity>
       </dispenseRequest>
       -->
-      <dynamicValue>
-        <path value="dosageInstruction.text"/>
-        <expression value="'1 tablet oral 1 time daily'"/>
-      </dynamicValue>
-      <dynamicValue>
-        <path value="dosageInstruction.timing.repeat.frequency"/>
-        <expression value="1"/>
-      </dynamicValue>
-      <dynamicValue>
-        <path value="dosageInstruction.timing.repeat.period"/>
-        <expression value="1"/>
-      </dynamicValue>
-      <dynamicValue>
-        <path value="dosageInstruction.timing.repeat.periodUnit"/>
-        <expression value="'d'"/>
-      </dynamicValue>
-      <dynamicValue>
-        <path value="dosageInstruction.route.coding"/>
-        <expression value="code '26643006' from &quot;http://snomed.info/sct&quot; display 'Oral route (qualifier value)'"/>
-      </dynamicValue>
-      <dynamicValue>
-        <path value="dosageInstruction.doseQuantity"/>
-        <expression value="1 '{tbl}'"/>
-      </dynamicValue>
       <dynamicValue>
         <path value="dispenseRequest.numberOfRepeatsAllowed"/>
         <expression value="3"/>
@@ -162,66 +136,99 @@
   <version value="1.0.0"/>
   <title value="Low Suicide Risk Order Set"/>
   <status value="draft"/>
+  <date value="2015-08-15"/>
   <description value="..."/>
-  <publicationDate value="2015-08-15"/>
-  <coverage>
-    <patientAgeGroup>
+  <useContext>
+    <code>
+      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <code value="gender"/>
+    </code>
+    <valueCodeableConcept>
       <coding>
-        <!-- Error: Connection to http://localhost:960 refused -->
-        <!--<system value="http://snomed.info/sct"/>-->
+        <system value="http://snomed.info/sct"/>
         <code value="133936004"/>
         <display value="Adult"/>
       </coding>
-    </patientAgeGroup>
-    <clinicalFocus>
+    </valueCodeableConcept>
+  </useContext>
+  <useContext>
+    <code>
+      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <code value="focus"/>
+    </code>
+    <valueCodeableConcept>
       <coding>
-        <!-- Error: Connection to http://localhost:960 refused -->
-        <!--<system value="http://snomed.info/sct"/>-->
+        <system value="http://snomed.info/sct"/>
         <code value="87512008"/>
         <display value="Mild major depression"/>
       </coding>
-    </clinicalFocus>
-    <clinicalFocus>
+    </valueCodeableConcept>
+  </useContext>
+  <useContext>
+    <code>
+      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <code value="focus"/>
+    </code>
+    <valueCodeableConcept>
       <coding>
-        <!-- Error: Connection to http://localhost:960 refused -->
-        <!--<system value="http://snomed.info/sct"/>-->
+        <system value="http://snomed.info/sct"/>
         <code value="40379007"/>
         <display value="Major depression, recurrent, mild"/>
       </coding>
-    </clinicalFocus>
-    <clinicalFocus>
+    </valueCodeableConcept>
+  </useContext>
+  <useContext>
+    <code>
+      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <code value="focus"/>
+    </code>
+    <valueCodeableConcept>
       <coding>
-        <!-- Error: Connection to http://localhost:960 refused -->
-        <!--<system value="http://snomed.info/sct"/>-->
+        <system value="http://snomed.info/sct"/>
         <code value="394687007"/>
         <display value="Low suicide risk"/>
       </coding>
-    </clinicalFocus>
-    <clinicalFocus>
+    </valueCodeableConcept>
+  </useContext>
+  <useContext>
+    <code>
+      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <code value="focus"/>
+    </code>
+    <valueCodeableConcept>
       <coding>
-        <!-- Error: Connection to http://localhost:960 refused -->
-        <!--<system value="http://snomed.info/sct"/>-->
+        <system value="http://snomed.info/sct"/>
         <code value="225337009"/>
         <display value="Suicide risk assessment"/>
       </coding>
-    </clinicalFocus>
-    <targetUser>
+    </valueCodeableConcept>
+  </useContext>
+  <useContext>
+    <code>
+      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <code value="user"/>
+    </code>
+    <valueCodeableConcept>
       <coding>
-        <!-- Error: Connection to http://localhost:960 refused -->
-        <!--<system value="http://snomed.info/sct"/>-->
+        <system value="http://snomed.info/sct"/>
         <code value="309343006"/>
         <display value="Physician"/>
       </coding>
-    </targetUser>
-    <clinicalVenue>
+    </valueCodeableConcept>
+  </useContext>
+  <useContext>
+    <code>
+      <system value="http://hl7.org/fhir/usage-context-type"/>
+      <code value="venue"/>
+    </code>
+    <valueCodeableConcept>
       <coding>
-        <!-- Error: Connection to http://localhost:960 refused -->
-        <!--<system value="http://snomed.info/sct"/>-->
+        <system value="http://snomed.info/sct"/>
         <code value="440655000"/>
         <display value="Outpatient environment"/>
       </coding>
-    </clinicalVenue>
-  </coverage>
+    </valueCodeableConcept>
+  </useContext>
   <topic>
     <text value="Suicide risk assessment"/>
   </topic>

@@ -1,30 +1,24 @@
 package org.hl7.fhir.convertors;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.text.AttributeSet.CharacterAttribute;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.commons.lang3.CharUtils;
-import org.hl7.fhir.convertors.ADLImporter.Cardinality;
-import org.hl7.fhir.convertors.ADLImporter.TextSet;
-import org.hl7.fhir.dstu3.formats.XmlParser;
 import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
+import org.hl7.fhir.dstu3.formats.XmlParser;
 import org.hl7.fhir.dstu3.model.ElementDefinition;
+import org.hl7.fhir.dstu3.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
-import org.hl7.fhir.dstu3.model.Enumerations.ConformanceResourceStatus;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Element;
-import org.xml.sax.SAXException;
 
 public class ADLImporter {
 
@@ -133,14 +127,14 @@ public class ADLImporter {
 		Element details = XMLUtil.getNamedChild(description, "details");
 		sd.setDescription(XMLUtil.getNamedChild(details, "purpose").getTextContent());
 		sd.setCopyright(XMLUtil.getNamedChild(details, "copyright").getTextContent());
-		sd.setRequirements("Use:\r\n"+XMLUtil.getNamedChild(details, "use").getTextContent()+"\r\n\r\nMisuse:\r\n"+XMLUtil.getNamedChild(details, "misuse").getTextContent());
+		sd.setPurpose("Use:\r\n"+XMLUtil.getNamedChild(details, "use").getTextContent()+"\r\n\r\nMisuse:\r\n"+XMLUtil.getNamedChild(details, "misuse").getTextContent());
 		List<Element> set = new ArrayList<Element>();
 		XMLUtil.getNamedChildren(details, "keywords", set);
 		for (Element e : set) 
-			sd.addCode().setDisplay(e.getTextContent());
+			sd.addKeyword().setDisplay(e.getTextContent());
 		String status = XMLUtil.getNamedChild(description, "lifecycle_state").getTextContent();
 		if ("CommitteeDraft".equals(status) || "AuthorDraft".equals(status))
-			sd.setStatus(ConformanceResourceStatus.DRAFT);
+			sd.setStatus(PublicationStatus.DRAFT);
 		else
 			throw new Exception("Unknown life cycle state "+XMLUtil.getNamedChild(description, "lifecycle_state").getTextContent());
 

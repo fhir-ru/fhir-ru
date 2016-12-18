@@ -4,14 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.xml.namespace.NamespaceContext;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
@@ -21,32 +18,29 @@ import javax.xml.xpath.XPathFactory;
 import org.everit.json.schema.loader.SchemaLoader;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameterDefn;
+import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.elementmodel.Element;
 import org.hl7.fhir.dstu3.elementmodel.Manager;
 import org.hl7.fhir.dstu3.elementmodel.Manager.FhirFormat;
-import org.hl7.fhir.dstu3.exceptions.FHIRException;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
-import org.hl7.fhir.dstu3.utils.FluentPathEngine;
-import org.hl7.fhir.dstu3.utils.IWorkerContext;
+import org.hl7.fhir.dstu3.utils.FHIRPathEngine;
 import org.hl7.fhir.dstu3.validation.IResourceValidator.BestPracticeWarningLevel;
 import org.hl7.fhir.dstu3.validation.IResourceValidator.IdStatus;
 import org.hl7.fhir.dstu3.validation.InstanceValidator;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
 import org.hl7.fhir.dstu3.validation.XmlValidator;
-import org.hl7.fhir.utilities.CSFile;
+import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Logger.LogMessageType;
-import org.hl7.fhir.utilities.xml.NamespaceContextMap;
-import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.xml.NamespaceContextMap;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -59,7 +53,7 @@ public class ExampleInspector {
     }
   }
 
-  private static final boolean VALIDATE_BY_PROFILE = false;
+  private static final boolean VALIDATE_BY_PROFILE = true;
   private static final boolean VALIDATE_BY_SCHEMATRON = false;
   private static final boolean VALIDATE_BY_JSON_SCHEMA = false;
   
@@ -90,15 +84,16 @@ public class ExampleInspector {
   private int informationCount = 0;
 
   private org.everit.json.schema.Schema jschema;
-  private FluentPathEngine fpe;
+  private FHIRPathEngine fpe;
   
   public void prepare() throws FileNotFoundException, IOException, SAXException {
     validator = new InstanceValidator(context);
     validator.setSuppressLoincSnomedMessages(true);
     validator.setResourceIdRule(IdStatus.REQUIRED);
-    validator.setBestPracticeWarningLevel(BestPracticeWarningLevel.Warning);    
+    validator.setBestPracticeWarningLevel(BestPracticeWarningLevel.Warning);
+    validator.getExtensionDomains().add("http://hl7.org/fhir/StructureDefinition/us-core-");
 
-    xml = new XmlValidator(errorsInt, rootDir, xsltDir, new String[] {"fhir-all.xsd"});
+    xml = new XmlValidator(errorsInt, loadSchemas(), loadTransforms());
 
     if (VALIDATE_BY_JSON_SCHEMA) {
       String source = TextFile.fileToString(Utilities.path(rootDir, "fhir.schema.json"));
@@ -106,7 +101,28 @@ public class ExampleInspector {
       jschema = SchemaLoader.load(rawSchema);
     }
     
-    fpe = new FluentPathEngine(context);
+    fpe = new FHIRPathEngine(context);
+  }
+
+  private Map<String, byte[]> loadTransforms() throws FileNotFoundException, IOException {
+    Map<String, byte[]> res = new HashMap<String, byte[]>();
+    for (String s : new File(xsltDir).list()) {
+      if (s.endsWith(".xslt"))
+        res.put(s, TextFile.fileToBytes(Utilities.path(xsltDir, s)));
+    }
+    return res;
+  }
+
+  private Map<String, byte[]> loadSchemas() throws FileNotFoundException, IOException {
+    Map<String, byte[]> res = new HashMap<String, byte[]>();
+    res.put("fhir-single.xsd", TextFile.fileToBytes(Utilities.path(rootDir, "fhir-single.xsd")));
+    res.put("fhir-xhtml.xsd", TextFile.fileToBytes(Utilities.path(rootDir, "fhir-xhtml.xsd")));
+    res.put("xml.xsd", TextFile.fileToBytes(Utilities.path(rootDir, "xml.xsd")));
+    for (String s : new File(rootDir).list()) {
+      if (s.endsWith(".sch"))
+        res.put(s, TextFile.fileToBytes(Utilities.path(rootDir, s)));
+    }
+    return res;
   }
 
 //  static final String JAXP_SCHEMA_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
@@ -135,6 +151,7 @@ public class ExampleInspector {
       
       checkSearchParameters(xe, e);
     } catch (Exception e) {
+      e.printStackTrace();
       errorsInt.add(new ValidationMessage(Source.InstanceValidator, IssueType.STRUCTURE, -1, -1, n, e.getMessage(), IssueSeverity.ERROR));
     }
     
@@ -156,9 +173,9 @@ public class ExampleInspector {
   private Element validateLogical(String f, StructureDefinition profile, FhirFormat fmt) throws Exception {
     Element e = Manager.parse(context, new CSFileInputStream(f), fmt);
     new DefinitionsUsageTracker(definitions).updateUsage(e);
-    validator.validate(errorsInt, e);
+    validator.validate(null, errorsInt, e);
     if (profile != null) {
-      validator.validate(errorsInt, e, profile);
+      validator.validate(null, errorsInt, e, profile);
     }
     return e;
   }

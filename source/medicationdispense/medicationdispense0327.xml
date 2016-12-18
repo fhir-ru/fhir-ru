@@ -20,7 +20,7 @@
         <display value="Rob van den Berk"/>
     </dispenser>
     <authorizingPrescription>
-        <reference value="MedicationOrder/medrx0321"/>
+        <reference value="MedicationRequest/medrx0321"/>
     </authorizingPrescription>
     <type>
         <coding>
@@ -43,6 +43,7 @@
     <whenPrepared value="2015-01-15T10:20:00Z"/>
     <whenHandedOver value="2015-01-15T16:20:00Z"/>
     <dosageInstruction>
+        <sequence value="1"/>
         <text value="Use two sprays twice daily"/>
         <additionalInstructions>
             <text value="Shake Well"/>

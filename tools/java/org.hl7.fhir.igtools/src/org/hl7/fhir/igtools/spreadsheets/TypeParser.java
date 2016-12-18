@@ -31,12 +31,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.hl7.fhir.dstu3.context.BaseWorkerContext;
+import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.model.ElementDefinition;
 import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
-import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
-import org.hl7.fhir.dstu3.utils.BaseWorkerContext;
-import org.hl7.fhir.dstu3.utils.IWorkerContext;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -149,13 +148,19 @@ public class TypeParser {
         if (t.getProfile() != null) {
           TypeRefComponent childType = new TypeRefComponent();
           childType.setCode(t.getName());
-          childType.setProfile(t.getProfile());
+          if (t.getName().equals("Reference"))
+            childType.setTargetProfile(t.getProfile());
+          else
+            childType.setProfile(t.getProfile());
           list.add(childType);
         } else          
           for(String param : t.getParams()) {
             TypeRefComponent childType = new TypeRefComponent();
             childType.setCode(t.getName());
-            childType.setProfile("http://hl7.org/fhir/StructureDefinition/"+param);
+            if (t.getName().equals("Reference"))
+              childType.setTargetProfile("http://hl7.org/fhir/StructureDefinition/"+param);
+            else
+              childType.setProfile("http://hl7.org/fhir/StructureDefinition/"+param);
             list.add(childType);
           }
       } else if (t.isWildcardType()) {
@@ -164,7 +169,10 @@ public class TypeParser {
           list.add(new TypeRefComponent().setCode(n));
       } else if (Utilities.noString(t.getName()) && t.getProfile() != null) {
         TypeRefComponent tc = new TypeRefComponent();
-        tc.setProfile(t.getProfile());
+        if (t.getName().equals("Reference"))
+          tc.setTargetProfile(t.getProfile());
+        else  
+          tc.setProfile(t.getProfile());
         StructureDefinition sd = context.fetchResource(StructureDefinition.class, t.getProfile());
         if (sd != null)
           tc.setCode(sd.getType());
@@ -181,7 +189,10 @@ public class TypeParser {
           throw new Exception("Unknown type '"+t.getName()+"'");
         TypeRefComponent tc = new TypeRefComponent().setCode(sd.getType());
         list.add(tc);
-        tc.setProfile(t.getProfile());
+        if (t.getName().equals("Reference"))
+          tc.setTargetProfile(t.getProfile());
+        else  
+          tc.setProfile(t.getProfile());
       }
     }    
     return list;

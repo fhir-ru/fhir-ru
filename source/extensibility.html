@@ -50,8 +50,8 @@ strict governance applied to the definition and use of extensions. Though
 any implementer is allowed to define and use extensions, there is a set of requirements
 that must be met as part of their use and definition.
 </p>
-<a name="Extension"></a>
-<a name="extension"></a>
+<a name="Extension"> </a>
+<a name="extension"> </a>
 <h2>Extension Element</h2>
 <p>
 Every element in a resource or data type includes an optional "extension" child element that may 
@@ -63,9 +63,9 @@ Notes:
 </p>
 <ul>
  <li>The <code>url</code> is a mandatory attribute / property and identifies a retrievable <a href="structuredefinition.html">extension definition</a> that defines the content and meaning of the extension</li>
- <li>The <code>url</code> SHALL be a URL, not a URN (e.g. not an OID or a UUID), and it SHALL be the canonical URL of a StructureDefinition that defines the extension. Except for child extensions defined within a complex extensions, the URL SHALL be an absolute URL). The StructureDefinition the defines the extension SHOULD be available at the identified location so that resource processors can access the definition from the URL</li>
+ <li>The <code>url</code> SHALL be a URL, not a URN (e.g. not an OID or a UUID), and it SHALL be the canonical URL of a StructureDefinition that defines the extension. Except for child extensions defined within a complex extensions, the URL SHALL be an absolute URL). The StructureDefinition that defines the extension SHOULD be available at the identified location so that resource processors can access the definition from the URL</li>
  <li>An extension SHALL have either a value (i.e. a value[x] element) or sub-extensions, but not both. If present, the value[x] element SHALL have content (value attribute or other elements)</li>
- <li>If it is not safe for an application processing the content of the resource to ignore the extension it must be represented diffferently, using <a href="#isModifier">a Modifier Extension</a></li>
+ <li>If it is not safe for an application processing the content of the resource to ignore the extension it must be represented differently, using <a href="#isModifier">a Modifier Extension</a></li>
  <li>The <i>value[x]</i> element has an actual name of "value" and then the TitleCased name of one of these defined types, and its contents are those as defined for that type:
   <ul class="dense">
    <li>valueInteger : <a href="datatypes.html#integer">integer</a></li>
@@ -127,13 +127,13 @@ practice).
 In JSON, extensions are represented similarly:
 </p>
 <pre class="json" fragment="HumanName">
-  "name" : {
-    "extension" : [{
-      "url" : "http://hl7.org/fhir/StructureDefinition/iso-21090-name-use",
-      "valueCode" : "I"
-    }],
-   "text" : "Chief Red Cloud"
-  }
+{
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/iso-21090-name-use",
+    "valueCode" : "I"
+  }],
+  "text" : "Chief Red Cloud"
+}   
 </pre>
 </div>
 <p>
@@ -202,14 +202,13 @@ Or in JSON:
     },  {
       "url" : "reason",
       "valueCodeableConcept" : {
-          "coding" : {
+          "coding" : [{
              "system" : "http://acme.org/codes/general",
-             "code" : "tt14j",
-          }
+             "code" : "tt14j"
+          }]
        }
     }]
   }]
-  ... other data for patient ...
 }
 </pre>
 </div>
@@ -258,33 +257,35 @@ or in JSON:
 </p>
 <pre class="json" fragment="Patient">
 {
-  "resourceType" : "Patient",
-  "extension" : [{
-    "url" : "http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial",
-    "extension" : [{
-      "url" : "NCT",
-      "valueString" : "123456789"
-    }, {
-      "url" : "period", 
-      "valuePeriod" : {
-         "start" : "2009-03-14" 
-      }   
-    },  {
-      "url" : "reason",
-      "valueCodeableConcept" : {
-          "coding" : {
-             "system" : "http://acme.org/codes/general",
-             "code" : "tt14j",
-          }
-       }
-    },{
-      "url" : "http://acme.org/fhir/StructureDefinition/registrar", 
-      "valueReference" : {
-         "reference" : "Practitioner/example" 
-      }   
-    }]
-  }]
-  ... other data for patient ...
+	"resourceType": "Patient",
+	"extension": [{
+		"url": "http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial",
+		"extension": [{
+			"url": "NCT",
+			"valueString": "123456789"
+		},
+		{
+			"url": "period",
+			"valuePeriod": {
+				"start": "2009-03-14"
+			}
+		},
+		{
+			"url": "reason",
+			"valueCodeableConcept": {
+				"coding": [{
+					"system": "http://acme.org/codes/general",
+					"code": "tt14j"			
+				}]
+			}
+		},
+		{
+			"url": "http://acme.org/fhir/StructureDefinition/registrar",
+			"valueReference": {
+				"reference": "Practitioner/example"
+			}
+		}]
+	}]
 }
 </pre>
 </div>
@@ -328,7 +329,7 @@ defined outside an extension cannot be placed in another extension.
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>DSTU Note:</b> Is this a problem? Input from implementers identiying places where modifier 
+<b>STU Note:</b> Is this a problem? Input from implementers identiying places where modifier 
 extensions might be needed inside other extensions is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
 </p>
 </blockquote>
@@ -339,26 +340,26 @@ In XML, these modifier elements are represented using an element named "modifier
 </p>
 <div class="example">
 <p>
-  Example: There's no element on <a href="medicationorder.html">MedicationOrder</a> 
+  Example: There's no element on <a href="medicationrequest.html">MedicationRequest</a> 
 to write an "anti-prescription" - an instruction not to take a medication for a particular time.
 Classical clinical recording systems do not record this as a prescription - but one particular
 system does, and these "anti-prescription" records need to be shared within the institution 
 where this happens, as they are an important part of the workflow.  Hence, applications are allowed to extend a resource with data like this: 
 </p>
 <pre class="xml">
-&lt;MedicationOrder&gt;
+&lt;MedicationRequest&gt;
   &lt;modifierExtension url=&quot;http://example.org/fhir/StructureDefinition/anti-prescription&quot;&gt;
     &lt;valueBoolean value="true"/&gt;
   &lt;/modifierExtension&gt;
   &lt;!-- ... other content ... --&gt;
-&lt;/MedicationOrder&gt;
+&lt;/MedicationRequest&gt;
 </pre>
 <p>
 Or in JSON:
 </p>
 <pre class="json">
 {
-  "resourceType" : "MedicationOrder",
+  "resourceType" : "MedicationRequest",
   "modifierExtension" : [{
     "url" : "http://example.org/fhir/StructureDefinition/anti-prescription",
     "valueBoolean" : "true"
@@ -431,7 +432,7 @@ offer the user the choice to see the original narrative.
 Here is the prescription example from above with narrative:
 </p>
 <pre class="xml">
-&lt;MedicationOrder xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+&lt;MedicationRequest xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;text&gt;
     &lt;status value=&quot;generated&quot;/&gt;
     &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
@@ -444,7 +445,7 @@ Here is the prescription example from above with narrative:
     &lt;valueBoolean value="true"/&gt;
   &lt;/modifierExtension&gt;
   &lt;!-- ...data... --&gt;
-&lt;/MedicationOrder&gt;
+&lt;/MedicationRequest&gt;
 </pre>
 </div>
 <p>

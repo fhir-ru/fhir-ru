@@ -30,16 +30,16 @@
   <medicationReference> <!-- Linked to a RESOURCE Medication -->
     <reference value="#med0315"/>
   </medicationReference>
-  <patient>
+  <subject>
     <reference value="Patient/pat1"/>
     <display value="Donald Duck"/> 
-  </patient>
+  </subject>
   <informationSource>
     <reference value="Patient/pat1"/>
     <display value="Donald Duck"/> 
   </informationSource>
   <dateAsserted value="2015-02-22"/>
-  <notTaken value="true"/>
+  <notTaken value="y"/>
   <note>
     <text value="patient plans to start using for seasonal allergies in the Spring when pollen is in the air"/>
   </note>

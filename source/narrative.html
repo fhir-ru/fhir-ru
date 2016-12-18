@@ -1,5 +1,4 @@
 <!DOCTYPE HTML>
-<!DOCTYPE HTML>
 
 [%settitle Narrative%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -26,7 +25,7 @@ of resource) may include a human-readable narrative that contains a summary of t
 and may be used to represent the content of the resource to a human.
 </p>
 <p>
-If narrative is present with a status other than 'none', it SHALL reflect all content 
+If narrative is present with a status other than 'empty', it SHALL reflect all content 
 needed for a human to understand the essential clinical and business information for 
 the resource.  I.e. It must be safe to render only the narrative of the resource without 
 displaying any of the resource's discrete/encoded information.  Resource definitions and/or
@@ -44,7 +43,7 @@ be able to understand the key, essential information about a resource without re
 any additional resources.
 </p>
 <p>
-For example, the narrative for a MedicationOrder might include brief summary information 
+For example, the narrative for a MedicationRequest might include brief summary information 
 about the referenced patient, prescriber and medication.  Some resources (e.g. List, Composition) 
 may provide specific rules about what content must (or must not) be included in the resource narrative.  
 Consideration  should be given to the fact that referenced resources may be updated without updating 
@@ -140,7 +139,7 @@ a <code>lang</code> attribute on the <code>&lt;div&gt;</code> SHOULD also be use
 </p>
 
 
-<a name="id"></a>
+<a name="id"> </a>
 <h3>Image References</h3>
 
 <p>
@@ -187,7 +186,7 @@ part of the narrative SHOULD always be embedded as a <a href="https://tools.ietf
 in an attachment or a contained resource.
 </p>
 
-<a name="css"></a>
+<a name="css"> </a>
 <h3>Styling the XHTML</h3>
 <p>
 The XHTML fragment in the narrative may be styled using cascading stylesheets with

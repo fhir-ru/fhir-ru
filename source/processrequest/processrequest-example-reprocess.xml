@@ -1,4 +1,4 @@
-<ProcessRequest xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\remittance.xsd">
+<ProcessRequest xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/remittance.xsd">
  <id value="44654"/>
 
  <text>
@@ -17,13 +17,13 @@
 
   <created value="2014-08-16"/>
 
-  <organizationReference>
+  <organization>
     <reference value="Organization/1"/>
-  </organizationReference>
+  </organization>
   
-  <requestReference>
-    <reference value="http://BenefitsInc.com/fhir/oralhealthclaim/12345"/>
-  </requestReference>
+  <request>
+    <reference value="http://BenefitsInc.com/fhir/claim/12345"/>
+  </request>
 
   <reference value="ABC12345G"/>
  

@@ -30,7 +30,7 @@
         <display value="Rob van den Berk"/>
     </dispenser>
     <authorizingPrescription>
-        <reference value="MedicationOrder/medrx0310"/>
+        <reference value="MedicationRequest/medrx0310"/>
     </authorizingPrescription>
     <type>
         <coding>
@@ -53,6 +53,7 @@
     <whenPrepared value="2015-01-15T10:20:00Z"/>
     <whenHandedOver value="2015-01-15T16:20:00Z"/>
     <dosageInstruction>
+        <sequence value="1"/>
         <text value="Take 1-2 tablets once daily at bedtime as needed for restless legs" />
         <additionalInstructions>
             <text value="Take at bedtime"/>
@@ -93,10 +94,6 @@
             </high>
         </doseRange>
     </dosageInstruction>
-    <eventHistory>
-        <status value="completed"></status>
-        <dateTime value="2015-01-15T16:20:00Z"></dateTime>
-    </eventHistory>
 </MedicationDispense>
 
 

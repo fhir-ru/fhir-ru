@@ -12,7 +12,7 @@
     </coding>
     <coding>
       <system value="http://hl7.org/fhir/condition-category"/>
-      <code value="finding"/>
+      <code value="problem-list-item"/>
     </coding>
   </category>
   <severity>
@@ -47,7 +47,7 @@
   </context>
   <onsetDateTime value="2013-03-11"/>
   <abatementDateTime value="2013-03-20"/>
-  <dateRecorded value="2013-03-11"/>
+  <assertedDate value="2013-03-11"/>
   <asserter>
     <reference value="Practitioner/f201"/>
   </asserter>

@@ -35,8 +35,7 @@ import org.hl7.fhir.definitions.generators.specification.ToolResourceUtilities;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
-import org.hl7.fhir.dstu3.model.Enumerations.ConformanceResourceStatus;
-import org.hl7.fhir.dstu3.model.UriType;
+import org.hl7.fhir.dstu3.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.model.ValueSet.ConceptReferenceComponent;
 import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
@@ -105,7 +104,7 @@ public class BindingSpecification {
   private String csOid;
   private String vsOid;
 //  private List<DefinedCode> childCodes;
-  private ConformanceResourceStatus status;
+  private PublicationStatus status;
   private List<DefinedCode> allCodes;
   
 
@@ -354,11 +353,11 @@ public class BindingSpecification {
     this.vsOid = vsOid;
   }
 
-  public ConformanceResourceStatus getStatus() {
+  public PublicationStatus getStatus() {
     return status;
   }
 
-  public void setStatus(ConformanceResourceStatus status) {
+  public void setStatus(PublicationStatus status) {
     this.status = status;
   }
 
@@ -384,19 +383,11 @@ public class BindingSpecification {
 
   private void getAllCodesForValueSet(Map<String, CodeSystem> codeSystems, Map<String, ValueSet> valueSets, boolean wantComplete, ValueSet vs) throws Exception {
     if (vs.hasCompose()) {
-      for (UriType ci : vs.getCompose().getImport()) {
-        if (valueSets != null) {
-          ValueSet vs1 = valueSets.get(ci.getValue());
-          if (vs1 != null) {
-            getAllCodesForValueSet(codeSystems, valueSets, wantComplete, vs1);
-          } else if (wantComplete)
-            throw new Exception("Unable to resolve valueset "+ci.asStringValue());
-        } else if (wantComplete)
-          throw new Exception("Unable to expand value set "); 
-      }
       for (ConceptSetComponent cc : vs.getCompose().getInclude()) {
         if (cc.hasFilter() && wantComplete)
           throw new Exception("Filters are not supported in this context (getting all codes for code generation");
+        if (cc.hasValueSet() && wantComplete)
+          throw new Exception("Value Sets are not supported in this context (getting all codes for code generation");
         if (!cc.hasConcept()) {
           if (codeSystems != null) {
             CodeSystem cs1 = codeSystems.get(cc.getSystem());
@@ -434,7 +425,7 @@ public class BindingSpecification {
     code.setDefinition(c.getDefinition());
     code.setParent(parent);
     code.setSystem(system);
-    code.setAbstract(CodeSystemUtilities.isAbstract(cs, c));
+    code.setAbstract(CodeSystemUtilities.isNotSelectable(cs, c));
     allCodes.add(code);
     for (ConceptDefinitionComponent cc : c.getConcept())
       processCode(cs, cc, system, c.getCode());

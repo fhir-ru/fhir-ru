@@ -1,9 +1,6 @@
 package org.hl7.fhir.tools.publisher;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,12 +25,12 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.hl7.fhir.definitions.model.Definitions;
+import org.hl7.fhir.dstu3.context.BaseWorkerContext;
+import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.formats.IParser;
-import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
 import org.hl7.fhir.dstu3.formats.JsonParser;
 import org.hl7.fhir.dstu3.formats.ParserType;
 import org.hl7.fhir.dstu3.formats.XmlParser;
-import org.hl7.fhir.dstu3.model.BaseConformance;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
@@ -41,6 +38,8 @@ import org.hl7.fhir.dstu3.model.ConceptMap;
 import org.hl7.fhir.dstu3.model.DataElement;
 import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.dstu3.model.ExpansionProfile;
+import org.hl7.fhir.dstu3.model.ExpansionProfile.SystemVersionProcessingMode;
+import org.hl7.fhir.dstu3.model.MetadataResource;
 import org.hl7.fhir.dstu3.model.NamingSystem;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemIdentifierType;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemUniqueIdComponent;
@@ -62,17 +61,13 @@ import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionComponent;
 import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionContainsComponent;
 import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
-import org.hl7.fhir.dstu3.terminologies.ValueSetExpansionCache;
-import org.hl7.fhir.dstu3.utils.BaseWorkerContext;
 import org.hl7.fhir.dstu3.utils.INarrativeGenerator;
-import org.hl7.fhir.dstu3.utils.IWorkerContext;
 import org.hl7.fhir.dstu3.utils.NarrativeGenerator;
-import org.hl7.fhir.dstu3.utils.NarrativeGenerator.IReferenceResolver;
-import org.hl7.fhir.dstu3.utils.NarrativeGenerator.ResourceWithReference;
 import org.hl7.fhir.dstu3.utils.client.EFhirClientException;
 import org.hl7.fhir.dstu3.utils.client.FHIRToolingClient;
 import org.hl7.fhir.dstu3.validation.IResourceValidator;
 import org.hl7.fhir.dstu3.validation.InstanceValidator;
+import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.TerminologyServiceException;
 import org.hl7.fhir.exceptions.UcumException;
 import org.hl7.fhir.utilities.CSFileInputStream;
@@ -115,7 +110,10 @@ import com.google.gson.stream.JsonWriter;
  */
 public class BuildWorkerContext extends BaseWorkerContext implements IWorkerContext {
 
-//  private Map<String, ValueSet> codeSystems = new HashMap<String, ValueSet>();
+  private static final String SNOMED_EDITION = "900000000000207008"; // international
+//  private static final String SNOMED_EDITION = "731000124108"; // us edition
+
+  //  private Map<String, ValueSet> codeSystems = new HashMap<String, ValueSet>();
 //  private Map<String, ValueSet> valueSets = new HashMap<String, ValueSet>();
 //  private Map<String, ConceptMap> maps = new HashMap<String, ConceptMap>();
   private Map<String, DataElement> dataElements = new HashMap<String, DataElement>();
@@ -151,6 +149,8 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     res.setUrl("urn:uuid:"+UUID.randomUUID().toString().toLowerCase());
     res.setExcludeNested(false);
     res.setIncludeDesignations(true);
+    // res.setActiveOnly(true);
+    res.addFixedVersion().setSystem("http://snomed.info/sct").setVersion("http://snomed.info/sct/"+SNOMED_EDITION).setMode(SystemVersionProcessingMode.DEFAULT); // value sets are allowed to override this. for now
     return res;
   }
 
@@ -299,9 +299,17 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     return new XmlParser();
   }
 
+  public <T extends Resource> T fetchResource(Class<T> class_, String uri) {
+    try {
+      return fetchResourceWithException(class_, uri);
+    } catch (FHIRException e) {
+      throw new Error(e);
+    }
+  }
+  
   @SuppressWarnings("unchecked")
   @Override
-  public <T extends Resource> T fetchResource(Class<T> class_, String uri) {
+  public <T extends Resource> T fetchResourceWithException(Class<T> class_, String uri) throws FHIRException {
     if (class_ == StructureDefinition.class && !uri.contains("/"))
       uri = "http://hl7.org/fhir/StructureDefinition/"+uri;
     
@@ -330,7 +338,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
       
     if (class_ == Questionnaire.class)
       return null;
-    throw new Error("not done yet: can't fetch "+uri);
+    throw new FHIRException("not done yet: can't fetch "+uri);
   }
 
   @Override
@@ -411,7 +419,9 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
       try {
         return locateLoinc(code);
       } catch (Exception e) {
-      }        
+      }     
+    if (codeSystems.containsKey(system))
+      return findCodeInConcept(codeSystems.get(system).getConcept(), code);
     return null;
   }
 
@@ -455,8 +465,8 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     if (!triedServer || serverOk) {
       triedServer = true;
       HttpClient httpclient = new DefaultHttpClient();
-       HttpGet httpget = new HttpGet("http://fhir2.healthintersections.com.au/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20"));
-//      HttpGet httpget = new HttpGet("http://localhost:960/snomed/tool/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20")); // don't like the url encoded this way
+       HttpGet httpget = new HttpGet("http://fhir3.healthintersections.com.au/snomed/tool/"+SNOMED_EDITION+"/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20"));
+//      HttpGet httpget = new HttpGet("http://local.healthintersections.com.au:960/snomed/tool/"+SNOMED_EDITION+"/"+URLEncoder.encode(code, "UTF-8").replace("+", "%20")); // don't like the url encoded this way
       HttpResponse response = httpclient.execute(httpget);
       HttpEntity entity = response.getEntity();
       InputStream instream = entity.getContent();
@@ -466,6 +476,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
         Document xdoc = builder.parse(instream);
         // we always get back a version, and a type. What we do depends on the type 
         String t = xdoc.getDocumentElement().getAttribute("type");
+        serverOk = true;
         if (t.equals("error")) 
           throw new Exception(xdoc.getDocumentElement().getAttribute("message"));
         if (t.equals("description"))
@@ -573,6 +584,10 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     try {
       if (system.equals("http://snomed.info/sct"))
         return verifySnomed(code, display);
+    } catch (Exception e) {
+      return new ValidationResult(IssueSeverity.WARNING, "Error validating snomed code \""+code+"\": "+e.getMessage());
+    }
+    try {
       if (system.equals("http://loinc.org"))
         return verifyLoinc(code, display);
       if (system.equals("http://unitsofmeasure.org"))
@@ -736,9 +751,8 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
         Map<String, String> params = new HashMap<String, String>();
         params.put("_limit", PageProcessor.CODE_LIMIT_EXPANSION);
         params.put("_incomplete", "true");
-        params.put("profile", "http://www.healthintersections.com.au/fhir/expansion/no-details");
         System.out.println("Use Tx Server from BWS for value set "+(vs.hasUrl() ? vs.getUrl() : "??")+" on "+systems(vs));
-        ValueSet result = txServer.expandValueset(vs, params);
+        ValueSet result = txServer.expandValueset(vs, expProfile.setIncludeDefinition(false), params);
         serverOk = true;
         FileOutputStream s = new FileOutputStream(cacheFn);
         parser.compose(s, result);
@@ -953,7 +967,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
           gson.name("definition");
           gson.beginObject();
           gson.name("abstract");
-          gson.value(CodeSystemUtilities.isAbstract(null, vr.asConceptDefinition()));
+          gson.value(CodeSystemUtilities.isNotSelectable(null, vr.asConceptDefinition()));
           gson.name("code");
           gson.value(vr.asConceptDefinition().getCode());
           gson.name("definition");
@@ -1012,12 +1026,13 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   }
 
   @Override
-  public List<BaseConformance> allConformanceResources() {
-    List<BaseConformance> result = new ArrayList<BaseConformance>();
+  public List<MetadataResource> allConformanceResources() {
+    List<MetadataResource> result = new ArrayList<MetadataResource>();
     result.addAll(profiles.values());
     result.addAll(valueSets.values());
     result.addAll(codeSystems.values());
     result.addAll(maps.values());
+    result.addAll(transforms.values());
     return result;
   }
 

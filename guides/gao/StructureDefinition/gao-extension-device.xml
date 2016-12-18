@@ -19,7 +19,7 @@
   <date value="2015-09-22T20:02:49+10:00"></date>
   <description value="Identifies the device performing the evaluation of the order"></description>
   <requirements value="A reference to the Device resource describing the Decision Support Service Actor SHALL be provided unless the evaluation was issued manually, in which case it is optional. This SHALL be a reference to one of the Devices specified in the dss parameter."></requirements>
-  <fhirVersion value="1.6.0"></fhirVersion>
+  <fhirVersion value="1.8.0"></fhirVersion>
   <kind value="complex-type"></kind>
   <abstract value="false"></abstract>
   <contextType value="resource"></contextType>
@@ -57,8 +57,8 @@
       <min value="0"></min>
       <max value="1"></max>
       <type>
-        <code value="Reference"></code>
-        <profile value="http://hl7.org/fhir/StructureDefinition/Device"></profile>
+        <code value="Reference" />
+         <targetProfile value="http://hl7.org/fhir/StructureDefinition/Device"/>
       </type>
       
     </element>

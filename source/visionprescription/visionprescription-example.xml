@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <VisionPrescription xmlns="http://hl7.org/fhir"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\visionprescription.xsd">
+  xsi:schemaLocation="http://hl7.org/fhir ../../schema/visionprescription.xsd">
   <id value="33123"/>
 
   <text>
@@ -17,39 +17,61 @@
 	<value value="15013"/>
   </identifier>
   
-  <dateWritten value="2014-06-15"/>
+  <status value="active"/>
   
   <patient>
     <reference value="Patient/example"/>
   </patient>
 
+  <dateWritten value="2014-06-15"/>
+  
   <prescriber>
     <reference value="Practitioner/example"/>
   </prescriber>
 
   <dispense>
     <product>
+	 <coding>
 	  <system value="http://hl7.org/fhir/ex-visionprescriptionproduct"/>
 	  <code value="lens"/>
+	 </coding>
 	</product>
-    <eye value="right"/>
+    <eye>
+      <coding>
+	    <code value="right"/>
+      </coding>
+	</eye>  
     <sphere value="-2.00"/>
 	<prism value="0.5"/>
-	<base value="down"/>
+	<base>
+      <coding>
+	    <code value="down"/>
+      </coding>
+	</base>
 	<add value="2.00"/>
   </dispense>
 
   <dispense>
     <product>
+	 <coding>
 	  <system value="http://hl7.org/fhir/ex-visionprescriptionproduct"/>
 	  <code value="lens"/>
+	 </coding>
 	</product>
-    <eye value="left"/>
+    <eye>
+      <coding>
+	    <code value="left"/>
+      </coding>
+	</eye>  
     <sphere value="-1.00"/>
     <cylinder value="-0.50"/>
     <axis value="180"/>
 	<prism value="0.5"/>
-	<base value="up"/>
+    <base>
+      <coding>
+	    <code value="up"/>
+      </coding>
+	</base>  
 	<add value="2.00"/>
   </dispense>
 

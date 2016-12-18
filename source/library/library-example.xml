@@ -18,18 +18,18 @@
     </coding>
   </type>
   <status value="draft"/>
+  <date value="2015-07-22"/>
   <description value="Common Logic for adherence to Chlamydia Screening guidelines"/>
-  <publicationDate value="2015-07-22"/>
   <topic>
     <text value="Chlamydia Screening"/>
   </topic>
   
-  <relatedResource>
+  <relatedArtifact>
     <type value="depends-on"/>
     <resource>
       <reference value="Library/library-quick-model-definition"/>
     </resource>
-  </relatedResource>
+  </relatedArtifact>
 
   <!--valueSet>
     <name value="Female Administrative Sex"/>

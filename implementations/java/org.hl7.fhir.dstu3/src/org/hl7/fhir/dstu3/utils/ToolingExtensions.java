@@ -1,7 +1,5 @@
 package org.hl7.fhir.dstu3.utils;
 
-import java.net.URISyntaxException;
-
 /*
 Copyright (c) 2011+, HL7, Inc
 All rights reserved.
@@ -36,9 +34,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.hl7.fhir.dstu3.exceptions.FHIRFormatError;
 import org.hl7.fhir.dstu3.model.BooleanType;
-import org.hl7.fhir.dstu3.model.CodeSystem;
+import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.CodeType;
 import org.hl7.fhir.dstu3.model.CodeableConcept;
 import org.hl7.fhir.dstu3.model.Coding;
@@ -58,8 +55,6 @@ import org.hl7.fhir.dstu3.model.Questionnaire.QuestionnaireItemType;
 import org.hl7.fhir.dstu3.model.StringType;
 import org.hl7.fhir.dstu3.model.Type;
 import org.hl7.fhir.dstu3.model.UriType;
-import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
 
 
@@ -85,8 +80,11 @@ public class ToolingExtensions {
   public static final String EXT_MAXOCCURS = "http://hl7.org/fhir/StructureDefinition/questionnaire-maxOccurs";
   public static final String EXT_ALLOWEDRESOURCE = "http://hl7.org/fhir/StructureDefinition/questionnaire-allowedResource";
   public static final String EXT_REFERENCEFILTER = "http://hl7.org/fhir/StructureDefinition/questionnaire-referenceFilter";
+  public static final String EXT_CODE_GENERATION_PARENT = "http://hl7.org/fhir/StructureDefinition/structuredefinition-codegen-super";
 
   // unregistered?
+  public static final String EXT_MAPPING_PREFIX = "http://hl7.org/fhir/tools/StructureDefinition/logical-mapping-prefix";
+  public static final String EXT_MAPPING_SUFFIX = "http://hl7.org/fhir/tools/StructureDefinition/logical-mapping-suffix";
 
 //  public static final String EXT_FLYOVER = "http://hl7.org/fhir/Profile/questionnaire-extensions#flyover";
 //  private static final String EXT_QTYPE = "http://www.healthintersections.com.au/fhir/Profile/metadata#type";
@@ -101,7 +99,9 @@ public class ToolingExtensions {
   public static final String EXT_FMM_LEVEL = "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm";
   public static final String EXT_RESOURCE_CATEGORY = "http://hl7.org/fhir/StructureDefinition/structuredefinition-category";
   public static final String EXT_TABLE_NAME = "http://hl7.org/fhir/StructureDefinition/structuredefinition-table-name";
-;
+  public static final String EXT_OO_FILE = "http://hl7.org/fhir/StructureDefinition/operationoutcome-file";
+  public static final String EXT_WORKGROUP = "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg";
+
 
 
   // specific extension helpers
@@ -154,6 +154,16 @@ public class ToolingExtensions {
     }
   }
 
+  public static void addStringExtension(DomainResource e, String url, String content) {
+    if (!StringUtils.isBlank(content)) {
+      Extension ex = getExtension(e, url);
+      if (ex != null)
+        ex.setValue(new StringType(content));
+      else
+        e.getExtension().add(Factory.newExtension(url, new StringType(content), true));   
+    }
+  }
+
   public static void addIntegerExtension(DomainResource dr, String url, int value) {
     Extension ex = getExtension(dr, url);
     if (ex != null)
@@ -195,6 +205,12 @@ public class ToolingExtensions {
       return null;
     if (ex.getValue() instanceof UriType)
       return ((UriType) ex.getValue()).getValue();
+    if (ex.getValue() instanceof CodeType)
+      return ((CodeType) ex.getValue()).getValue();
+    if (ex.getValue() instanceof IntegerType)
+      return ((IntegerType) ex.getValue()).asStringValue();
+    if ((ex.getValue() instanceof MarkdownType))
+      return ((MarkdownType) ex.getValue()).getValue();
     if (!(ex.getValue() instanceof StringType))
       return null;
     return ((StringType) ex.getValue()).getValue();
@@ -208,6 +224,10 @@ public class ToolingExtensions {
       return ((StringType) ex.getValue()).getValue();
     if ((ex.getValue() instanceof UriType))
       return ((UriType) ex.getValue()).getValue();
+    if (ex.getValue() instanceof CodeType)
+      return ((CodeType) ex.getValue()).getValue();
+    if (ex.getValue() instanceof IntegerType)
+      return ((IntegerType) ex.getValue()).asStringValue();
     if ((ex.getValue() instanceof MarkdownType))
       return ((MarkdownType) ex.getValue()).getValue();
     return null;
@@ -345,6 +365,14 @@ public class ToolingExtensions {
       ext.setValue(new StringType(value));
     else
       resource.getExtension().add(new Extension(new UriType(uri)).setValue(new StringType(value)));
+  }
+
+  public static void setCodeExtension(DomainResource resource, String uri, String value) {
+    Extension ext = getExtension(resource, uri);
+    if (ext != null)
+      ext.setValue(new CodeType(value));
+    else
+      resource.getExtension().add(new Extension(new UriType(uri)).setValue(new CodeType(value)));
   }
 
 //  public static String getOID(CodeSystem define) {

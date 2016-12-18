@@ -1,0 +1,108 @@
+// entries in this file get added to the generated class. "Class" in the line above is just the plain Class name e.g. BaseConformance
+// whatever is between -- [Class] --------- and ---- will be added to the generated class without modification
+
+-- Element --
+  public void addExtension(String url, Type value) {
+    Extension ex = new Extension();
+    ex.setUrl(url);
+    ex.setValue(value);
+    getExtension().add(ex);    
+  }
+
+----
+
+-- BaseConformance --
+
+  @Override
+  public String toString() {
+    return getUrl();
+  }
+  
+----
+
+// todo: should this be .getId()> 
+-- ElementDefinition --
+  
+  public String toString() {
+    if (hasId())
+      return getId();
+    if (hasSliceName())
+      return getPath()+":"+getSliceName();
+    else
+      return getPath();
+  }
+    
+  public void makeBase(String path, int min, String max) {
+    ElementDefinitionBaseComponent self = getBase();
+    self.setPath(path);
+    self.setMin(min);
+    self.setMax(max);
+  }
+  
+----
+
+
+-- StructureMap.imports --
+import org.hl7.fhir.dstu3.utils.StructureMapUtilities;
+----
+  
+-- StructureMap --
+
+  public String toString() {
+    return StructureMapUtilities.render(this);
+  }
+
+----
+
+-- StructureMapGroupComponent --
+
+  public String toString() {
+    return StructureMapUtilities.groupToString(this);
+  }
+
+----
+
+-- StructureMapGroupRuleComponent --
+
+  public String toString() {
+    return StructureMapUtilities.ruleToString(this);
+  }
+
+----
+
+-- StructureMapGroupRuleSourceComponent --
+
+  public String toString() {
+    return StructureMapUtilities.sourceToString(this);
+  }
+
+----
+
+-- StructureMapGroupRuleTargetComponent --
+
+  public String toString() {
+    return StructureMapUtilities.targetToString(this);
+  }
+
+----
+
+
+-- StructureMapGroupRuleTargetParameterComponent --
+
+  public String toString() {
+    return StructureMapUtilities.paramToString(this);
+  }
+
+----
+
+
+
+-- StructureMapGroupRuleTargetParameterComponent --
+
+      public String toString() {
+        return value == null ? "null!" : value.toString();
+      }
+
+
+----
+

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.hl7.fhir.dstu3.model.CodeSystem;
+import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
@@ -197,17 +198,17 @@ public class ValueSetValidator extends BaseValidator {
       int i = 0;
       for (ConceptSetComponent inc : vs.getCompose().getInclude()) {
         i++;
-        if (!context.getCodeSystems().containsKey(inc.getSystem()))
+        if (inc.hasSystem() && !context.getCodeSystems().containsKey(inc.getSystem()))
           rule(errors, IssueType.BUSINESSRULE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"].compose.include["+Integer.toString(i)+"]", isKnownCodeSystem(inc.getSystem()), "The system '"+inc.getSystem()+"' is not valid");
         
-        if (canValidate(inc.getSystem())) {
+        if (inc.hasSystem() && canValidate(inc.getSystem())) {
           for (ConceptReferenceComponent cc : inc.getConcept()) {
             if (inc.getSystem().equals("http://nema.org/dicom/dicm"))
               suppressedwarning(errors, IssueType.BUSINESSRULE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"].compose.include["+Integer.toString(i)+"]", isValidCode(cc.getCode(), inc.getSystem()), 
                   "The code '"+cc.getCode()+"' is not valid in the system "+inc.getSystem()+" (1)",
                   "<a href=\""+vs.getUserString("path")+"\">Value set "+nameForErrors+" ("+vs.getName()+")</a>: The code '"+cc.getCode()+"' is not valid in the system "+inc.getSystem()+" (1)");             
-            else
-              rule(errors, IssueType.BUSINESSRULE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"].compose.include["+Integer.toString(i)+"]", isValidCode(cc.getCode(), inc.getSystem()), 
+            else if (!isValidCode(cc.getCode(), inc.getSystem()))
+              rule(errors, IssueType.BUSINESSRULE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"].compose.include["+Integer.toString(i)+"]", false, 
                 "The code '"+cc.getCode()+"' is not valid in the system "+inc.getSystem()+" (2)");
             
           }
@@ -332,7 +333,7 @@ public class ValueSetValidator extends BaseValidator {
 
   private boolean isValidCode(String code, String system) {
     CodeSystem cs = context.getCodeSystems().get(system);
-    if (cs == null) 
+    if (cs == null || cs.getContent() != CodeSystemContentMode.COMPLETE) 
       return context.validateCode(system, code, null).isOk();
     else {
       if (hasCode(code, cs.getConcept()))
@@ -351,8 +352,13 @@ public class ValueSetValidator extends BaseValidator {
     return false;
   }
 
-  private boolean canValidate(String system) throws TerminologyServiceException {
-    return context.getCodeSystems().containsKey(system) || context.supportsSystem(system);
+  private boolean canValidate(String system) {
+    try {
+      return context.getCodeSystems().containsKey(system) || context.supportsSystem(system);
+    } catch (TerminologyServiceException e) {
+      //If there are problems accessing the terminology server, fail gracefully
+      return false;
+    }
   }
 
   private void fixup(CodeSystem cs) {
@@ -382,7 +388,7 @@ public class ValueSetValidator extends BaseValidator {
     int i = 0;
     for (ConceptDefinitionComponent cc : concept) {
       String p = path +"["+Integer.toString(i)+"]";
-      if (!suppressedwarning(errors, IssueType.BUSINESSRULE, p, !CodeSystemUtilities.isAbstract(cs, cc) || !cc.hasCode() || cc.hasDisplay(), "Code System '"+cs.getUrl()+"' has a code without a display ('"+cc.getCode()+"')",
+      if (!suppressedwarning(errors, IssueType.BUSINESSRULE, p, !CodeSystemUtilities.isNotSelectable(cs, cc) || !cc.hasCode() || cc.hasDisplay(), "Code System '"+cs.getUrl()+"' has a code without a display ('"+cc.getCode()+"')",
         "<a href=\""+cs.getUserString("path")+"\">Value set "+nameForErrors+" ("+cs.getName()+")</a>: Code System '"+cs.getUrl()+"' has a code without a display ('"+cc.getCode()+"')"))
         return;
       if (!suppressedwarning(errors, IssueType.BUSINESSRULE, p, cc.hasDefinition() && (!cc.getDefinition().toLowerCase().equals("todo") || cc.getDefinition().toLowerCase().equals("to do")), "Code System '"+cs.getUrl()+"' has a code without a definition ('"+cc.getCode()+"')",
@@ -409,9 +415,11 @@ public class ValueSetValidator extends BaseValidator {
     Set<String> sources = new HashSet<String>();
     if (vs.hasCompose()) {
       for (ConceptSetComponent imp : vs.getCompose().getInclude()) 
-        sources.add(imp.getSystem());
+        if (imp.hasSystem())
+          sources.add(imp.getSystem());
       for (ConceptSetComponent imp : vs.getCompose().getExclude()) 
-        sources.add(imp.getSystem());
+        if (imp.hasSystem())
+          sources.add(imp.getSystem());
     }
     return sources;
   }

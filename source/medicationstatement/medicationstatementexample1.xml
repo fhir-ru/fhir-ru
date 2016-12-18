@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This example is a fully populated example where a patient reports they are taking a certain medication and has the bottle  -->
 <MedicationStatement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationstatement.xsd"
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationstatement.xsd"
  xmlns="http://hl7.org/fhir">
   <id value="example001"/>
   <contained>
@@ -72,32 +72,43 @@
     </product>
     </Medication>
   </contained>
+  <identifier>
+    <use value="official"/>
+    <system value="http://www.bmc.nl/portal/medstatements"/>
+    <value value="12345689"/>
+  </identifier>
   <status value="active" />  
   <medicationReference> <!-- Linked to a RESOURCE Medication -->
     <reference value="#med0309"/>
   </medicationReference> 
-  <patient>
+  <subject>
     <reference value="Patient/pat1"/>
     <display value="Donald Duck"/> 
-  </patient>
+  </subject>
   <effectiveDateTime value="2015-01-23"></effectiveDateTime>
   <informationSource>
     <reference value="Patient/pat1"/>
     <display value="Donald Duck"/> 
   </informationSource>
+  <derivedFrom>
+    <reference value="MedicationRequest/medrx002"></reference>
+  </derivedFrom>
   <dateAsserted value="2015-02-22"/>
-  <notTaken value="false"/>
-  <reasonForUseCode>
+  <notTaken value="n"/>
+  <reasonForUseCodeableConcept>
     <coding>
       <system value="http://snomed.info/sct"/>
       <code value="32914008"/>
       <display value="Restless Legs"/>
     </coding>
-  </reasonForUseCode>
+  </reasonForUseCodeableConcept>
   <note>
     <text value="Patient indicates they miss the occasional dose" />
   </note>
+  <category value="community">
+  </category>
   <dosage>
+    <sequence value="1"/>
     <text value="1-2 tablets once daily at bedtime as needed for restless legs" />
     <additionalInstructions>
       <text value="Taking at bedtime"/>

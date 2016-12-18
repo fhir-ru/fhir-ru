@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MedicationAdministration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationadministration.xsd"
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationadministration.xsd"
  xmlns="http://hl7.org/fhir"> 
   <id value="medadmin0308"/>
   <status value="completed" />
@@ -15,16 +15,16 @@
    <reference value="Patient/pat1"/>
    <display value="Donald Duck"/> 
   </patient>
- <effectiveTimePeriod>
+ <effectivePeriod>
   <start value="2015-01-15T04:30:00+01:00"/>
    <end value="2015-01-15T14:30:00+01:00"/>
-</effectiveTimePeriod>
+</effectivePeriod>
   <performer>
     <reference value="Practitioner/f007"/>
     <display value="Patrick Pump"/>
   </performer>
   <prescription>
-    <reference value="MedicationOrder/medrx0320"/>
+    <reference value="MedicationRequest/medrx0320"/>
   </prescription>
   <dosage>
     <text value="20 Units SC before breakfast" />

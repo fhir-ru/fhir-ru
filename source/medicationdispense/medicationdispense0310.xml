@@ -30,7 +30,7 @@
         <display value="Rob van den Berk"/>
     </dispenser>
     <authorizingPrescription>
-        <reference value="MedicationOrder/medrx0307"/>
+        <reference value="MedicationRequest/medrx0307"/>
     </authorizingPrescription>
     <type>
         <coding>
@@ -53,6 +53,7 @@
     </daysSupply>
     <whenPrepared value="2015-01-15T10:20:00Z"/>
     <dosageInstruction>
+        <sequence value="1"/>
         <text value="1 tablet every four hours as needed for pain" />
         <additionalInstructions>
             <coding>

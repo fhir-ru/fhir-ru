@@ -21,12 +21,12 @@ import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
 import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemHierarchyMeaning;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
+import org.hl7.fhir.dstu3.model.ContactDetail;
 import org.hl7.fhir.dstu3.model.ContactPoint.ContactPointSystem;
-import org.hl7.fhir.dstu3.model.Enumerations.ConformanceResourceStatus;
+import org.hl7.fhir.dstu3.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.dstu3.model.Factory;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.model.ValueSet.ValueSetComposeComponent;
-import org.hl7.fhir.dstu3.model.ValueSet.ValueSetContactComponent;
 import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
@@ -68,6 +68,8 @@ public class ValueSetGenerator {
   }
 
   private void genDataTypes(ValueSet vs) throws Exception {
+    if (!vs.hasCompose())
+      vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/data-types");
     vs.setUserData("filename", "valueset-"+vs.getId());
     vs.setUserData("committee", "fhir");
@@ -104,6 +106,8 @@ public class ValueSetGenerator {
   }
 
   private void genResourceTypes(ValueSet vs) {
+    if (!vs.hasCompose())
+      vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/resource-types");
     vs.setUserData("filename", "valueset-"+vs.getId());
     vs.setUserData("committee", "fhir");
@@ -138,6 +142,8 @@ public class ValueSetGenerator {
   }
 
   private void genAbstractTypes(ValueSet vs) {
+    if (!vs.hasCompose())
+      vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/abstract-types");
     vs.setUserData("filename", "valueset-"+vs.getId());
     vs.setUserData("committee", "fhir");
@@ -170,6 +176,8 @@ public class ValueSetGenerator {
   }
 
   private void genMessageEvents(ValueSet vs) {
+    if (!vs.hasCompose())
+      vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/message-events");
     vs.setUserData("filename", "valueset-"+vs.getId());
     vs.setUserData("committee", "fhir");
@@ -212,7 +220,7 @@ public class ValueSetGenerator {
     if (!vs.hasPublisher())
       vs.setPublisher("HL7 (FHIR Project)");
     if (!vs.hasContact()) {
-      vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.OTHER, Utilities.noString(bs.getWebSite()) ? "http://hl7.org/fhir" : bs.getWebSite()));
+      vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, Utilities.noString(bs.getWebSite()) ? "http://hl7.org/fhir" : bs.getWebSite()));
       vs.getContact().get(0).getTelecom().add(Factory.newContactPoint(ContactPointSystem.EMAIL, Utilities.noString(bs.getEmail()) ? "fhir@lists.hl7.org" : bs.getEmail()));
     }
     if (!vs.hasDescription())
@@ -221,7 +229,7 @@ public class ValueSetGenerator {
       vs.setCopyright(bs.getCopyright());
 
     if (!vs.hasStatus())
-      vs.setStatus(bs.getStatus() != null ? bs.getStatus() : ConformanceResourceStatus.DRAFT); // until we publish DSTU, then .review
+      vs.setStatus(bs.getStatus() != null ? bs.getStatus() : PublicationStatus.DRAFT); // until we publish DSTU, then .review
     if (!vs.hasDate())
       vs.setDate(genDate.getTime());
     if (!Utilities.noString(bs.getV2Map()))
@@ -251,11 +259,13 @@ public class ValueSetGenerator {
     vs.setUserData("committee", "fhir");
     vs.setUserData("path", "valueset-"+vs.getId()+".html");
     
-    ValueSetContactComponent c = vs.addContact();
-    c.addTelecom().setSystem(ContactPointSystem.OTHER).setValue("http://hl7.org/fhir");
+    ContactDetail c = vs.addContact();
+    c.addTelecom().setSystem(ContactPointSystem.URL).setValue("http://hl7.org/fhir");
     c.addTelecom().setSystem(ContactPointSystem.EMAIL).setValue("fhir@lists.hl7.org");
     vs.setDescription("Operation Outcome codes used by FHIR test servers (see Implementation file translations.xml)");
-    vs.setStatus(ConformanceResourceStatus.DRAFT);
+    vs.setStatus(PublicationStatus.DRAFT);
+    if (!vs.hasCompose())
+      vs.setCompose(new ValueSetComposeComponent());
     vs.getCompose().addInclude().setSystem("http://hl7.org/fhir/operation-outcome");
 
     CodeSystem cs = new CodeSystem();
@@ -264,7 +274,7 @@ public class ValueSetGenerator {
     DocumentBuilder builder = factory.newDocumentBuilder();
     Document doc = builder.parse(new File(Utilities.path(folder, "..", "..", "implementations", "translations.xml")));
     Element n = XMLUtil.getFirstChild(doc.getDocumentElement());
-    cs.setHierarchyMeaning(CodeSystemHierarchyMeaning.SUBSUMES);
+    cs.setHierarchyMeaning(CodeSystemHierarchyMeaning.ISA);
     while (n != null) {
       if ("true".equals(n.getAttribute("ecode"))) {
         String code = n.getAttribute("id");

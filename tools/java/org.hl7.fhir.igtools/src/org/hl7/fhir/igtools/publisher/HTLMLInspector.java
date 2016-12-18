@@ -2,26 +2,19 @@ package org.hl7.fhir.igtools.publisher;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
 import org.hl7.fhir.exceptions.FHIRFormatError;
-import org.hl7.fhir.igtools.publisher.HTLMLInspector.HtmlChangeListenerContext;
-import org.hl7.fhir.igtools.publisher.HTLMLInspector.LoadedFile;
-import org.hl7.fhir.igtools.publisher.HTLMLInspector.StringPair;
-import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -145,8 +138,10 @@ public class HTLMLInspector {
         checkLinks(s, "", lf.getXhtml(), messages);
     }
 
+ 
     // check other links:
     for (StringPair sp : otherlinks) {
+      sp = sp;
       checkResolveLink(sp.source, null, null, sp.link, messages);
     }
     
@@ -185,6 +180,10 @@ public class HTLMLInspector {
     boolean htmlName = f.getName().endsWith(".html") || f.getName().endsWith(".xhtml");
     try {
       x = new XhtmlParser().setMustBeWellFormed(strict).parse(new FileInputStream(f), null);
+      if (x.getElement("html")==null && !htmlName) {
+        // We don't want resources being treated as HTML.  We'll check the HTML of the narrative in the page representation
+        x = null;
+      }
     } catch (FHIRFormatError | IOException e) {
       x = null;
       if (htmlName || !(e.getMessage().startsWith("Unable to Parse HTML - does not start with tag.") || e.getMessage().startsWith("Malformed XHTML")))
@@ -192,7 +191,7 @@ public class HTLMLInspector {
     }
     LoadedFile lf = new LoadedFile(f.lastModified(), x, iteration);
     cache.put(s, lf);
-    if (x != null && (htmlName || (x.getFirstElement()!=null && x.getFirstElement().equals("html")))) {
+    if (x != null) {
       checkHtmlStructure(s, x, messages);
       listTargets(x, lf.getTargets());
     }
@@ -270,7 +269,7 @@ public class HTLMLInspector {
       resolved = manual.contains(ref);
     if (!resolved && specs != null){
       for (SpecMapManager spec : specs) {
-        resolved = resolved || spec.getBase().equals(ref) || (spec.getBase()+"/").equals(ref) || spec.hasTarget(ref); 
+        resolved = resolved || spec.getBase().equals(ref) || (spec.getBase()).equals(ref+"/") || spec.hasTarget(ref); 
       }
     }
     if (!resolved) {

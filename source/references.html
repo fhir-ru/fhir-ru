@@ -34,11 +34,12 @@ Resources contain two types of references:
 </ul>
 <p>
 References are always defined and represented in one particular direction - from one resource (source) to another (target).
-References are provided as a URL, which may either be absolute or relative. Resolving the references is discussed below.
+References are either provided as a literal URL, which may either be absolute or relative, or as a logical identifier. 
+Resolving the references is discussed below.
 </p>
 <p>
 The corresponding reverse relationship from the target to the source exists in a logical sense, but is
-not represented explicitly in the resource. For external references, navigating these reverse relationships requires some
+not represented explicitly in the target resource. For external references, navigating these reverse relationships requires some
 external infrastructure to track the relationship between resources (the <a href="http.html">REST API</a> provides one such
 infrastructure by providing the ability to <a href="http.html#search">search</a> the reverse relationship by naming
 search parameters for the references, and by providing support for <a href="search.html#revinclude">reverse includes</a>).
@@ -54,36 +55,45 @@ is not "inherited", nor does it "conduct" along the relationship to procedure.
 The only exception to this is the case of contained resources (see below). Note that in
 practice, the relationships need to describe a logical and coherent record, and in the
 case of the Condition and Procedure described here, they would usually be required to have
-the same patient for their subjects.
+the same patient for their subjects, and profiles may make rules about this.
 </p>
 
 <p>
-In a resource, references are represented with a reference and a text description.
-The <i>reference</i> is the key element - resources are identified and addressed by their URL.
-The actual reference looks like this:
+In a resource, references are represented with a <code>reference</code> (literal reference), 
+an <code>identifier</code> (logical reference), and a <code>display</code> (text description of target).
 </p>
 
 [%dt Reference 1%]
 
 <p>&nbsp;</p>
 
+
 <div class="use">
 <p><b>Constraints</b></p>
 <p>
+At least one of <code>reference</code>, <code>identifier</code> and <code>display</code> SHALL be present (unless an extension is provided).
+</p>
+<p>
 [%dt.constraints Reference%]
 </p>
-
 </div>
 
-<p>Notes:</p>
+<a name="literal"> </a>
+<h3>Literal References</h3>
+
+<p>
+The <code>reference</code> is the key element - resources are identified and addressed by their URL. It  
+contains a url that is either
+</p>
 <ul>
- <li>The <code>reference</code> element contains a url that is either
-   <ul>
-     <li>an absolute URL</li>
-     <li>a relative URL, which is relative to the <a href="http.html#root">Service Base URL</a>, or, in a bundle, the <code>Bundle.entry.fullUrl</code> (see <a href="bundle.html#references">Resolving References in Bundles</a>)</li>
-     <li>an internal fragment reference (see "Contained Resources" below)</li>
-   </ul>
- </li>
+  <li>an absolute URL</li>
+  <li>a relative URL, which is relative to the <a href="http.html#root">Service Base URL</a>, or, in a bundle, the <code>Bundle.entry.fullUrl</code> (see <a href="bundle.html#references">Resolving References in Bundles</a>)</li>
+  <li>an internal fragment reference (see "Contained Resources" below)</li>
+</ul>
+<p>
+Notes:
+</p>
+<ul>
  <a name="regex"> </a>
  <li>Using absolute URLs provides a stable, scalable approach suitable for a cloud/web context, while using relative/logical references provides a
    flexible approach suitable for use when trading across closed ecosystem boundaries. (see <a href="managing.html">"Managing Resource Identity"</a> for further discussion)</li>
@@ -91,22 +101,20 @@ The actual reference looks like this:
    Whether or not the reference is to a FHIR RESTful server, the reference SHALL point to a Resource as defined by this specification. 
    <br/>Note: This regex is true if the reference to a resource is consistent with a FHIR API:
    <pre>
-   ((http|https)://([A-Za-z0-9\\\/\.\:\%\$])*)?([%piperesources%])\/[%id_regex%](\/_history\/[%id_regex%])?
+   ((http|https)://([A-Za-z0-9\\\.\:\%\$]\/)*)?([%piperesources%])\/[%id_regex%](\/_history\/[%id_regex%])?
    </pre>
    <br/>
    However conformance with this regex is no guarantee that the end-point is a FHIR server
    </li>
  <li>URLs are always considered to be case-sensitive</li>
- <li>In general, the <code>display</code>, if populated, does not have identical content to the Resource.text of the referenced resource.  The purpose is to
-   identify what's being referenced, not to more fully describe it</li>
+ <li>References SHALL be a reference to an actual FHIR resource, and SHALL be resolveable (allowing for access control, temporary unavailability, etc). Resolution can be either by retrieval from the URL, or, where applicable by resource type, by treating an absolute reference as a canonical URL (<a href="#canonical">see below</a>) and looking it up in a local registry/repository</li>
 </ul>
-
 <div class="example">
 <p>A relative reference to the <a href="patient.html">Patient</a> "034AB16" in an element named <code>context</code> on a FHIR RESTful server:</p>
 <pre class="xml" fragment="Reference">
-  &lt;context&gt;
+  &lt;patient&gt;
     &lt;reference value="Patient/034AB16" /&gt;
-  &lt;/context&gt;
+  &lt;/patient&gt;
 </pre>
 <p>An absolute reference to a <a href="structuredefinition.html">Structure Definition</a> in an element named <code>profile</code>:</p>
 <pre class="xml" fragment="Reference">
@@ -114,10 +122,75 @@ The actual reference looks like this:
     &lt;reference value="http://fhir.hl7.org/svc/StructureDefinition/c8973a22-2b5b-4e76-9c66-00639c99e61b" /&gt;
   &lt;/profile&gt;
 </pre>
-<p><i>Note that HL7 has not yet actually created a profile registry, nor decided on a URL for it</i>.</p>
+</div>
+
+<a name="logical"> </a>
+<h3>Logical References</h3>
+
 <p>
-A short display text that provides a human-readable identification of the resource may be provided:
+In many contexts where FHIR is used, applications building a resource may know an identifier for the target 
+of the reference, but there is no way for the application to convert this to a literal reference that 
+directly references an actual resource. This situation may arise for several reasons:
 </p>
+<ul>
+ <li>There is no server exposing any such resource. This is often the case with national identifiers (e.g. US SSN or NPI), and such identifiers are widely used</li>
+ <li>The server that exposes the resource is not available to the source application, so it has no way to resolve an identifier to a reference</li>
+ <li>The application is not in a RESTful environment - it is creating a message or a document</li>
+</ul>
+<p>
+In this cases, the source application may provide the identifier as a logical reference to the 
+entity that the target resource would describe. 
+</p>
+
+<div class="example">
+<p>A logical reference to the <a href="patient.html">Patient</a> with an SSN of 000111111:</p>
+<pre class="xml" fragment="Reference">
+  &lt;patient&gt;
+    &lt;identifier&gt;
+      &lt;system value=&quot;http://hl7.org/fhir/sid/us-ssn&quot; /&gt;
+      &lt;value value=&quot;000111111&quot; /&gt;
+    &lt;/identifier&gt;
+  &lt;/patient&gt;
+</pre>
+</div>
+
+<p>
+When processing a resource, an application 
+may be able to use the identifier directly, on the grounds that all it needs is the identifier, 
+or it may be able to resolve the identifier directly. Alternatively, it may be able to use
+a server to resolve the logical reference to a literal reference to a resource. 
+</p>
+<p>
+Irrespective of how the resolution occurs, any system processing a logical reference will only be 
+able to resolve the identifier to a reference if it understands the business context in which the 
+identifier is used. Sometimes this is global (e.g. a national identifier) but often it is not. 
+</p>
+<p>
+For this reason, none of the useful mechanisms described for working with references (e.g. 
+<a href="search.html#chaining">chaining</a>, <a href="search.html#include">includes</a>) are 
+possible, nor should servers be expected to be able to automatically resolve the reference. 
+Servers may accept an identifier based reference untouched, resolve it, and/or reject it - see 
+<a href="capabilitystatement-definitions.html#CapabilityStatement.rest.resource.referencePolicy">CapabilityStatement.rest.resource.referencePolicy</a>. 
+</p>
+<p>
+When both an identifier and a literal reference are provided, the literal reference is preferred. 
+Applications processing the resource are allowed - but not required - to check that the identifier 
+matches the literal reference, if they understand how to resolve the logical reference.
+</p>
+<p>
+Applications converting a logical reference to a literal reference may choose to leave the 
+logical reference present, or remove it.
+</p>
+
+<a name="display"> </a>
+<h3>Reference Description</h3>
+
+<p>
+Irrespective of whether a literal and/or logical reference is provided, or neither, the
+<code>display</code> element may be used to provide a very short description of the 
+target resource. 
+</p>
+<div class="example">
 <pre class="xml" fragment="Reference">
   &lt;custodian&gt;
     &lt;reference value="Organization/123" /&gt;
@@ -125,17 +198,19 @@ A short display text that provides a human-readable identification of the resour
   &lt;/custodian&gt;
 </pre>
 <p>
-This text can be used by a system that is unable to resolve the reference to an actual resource.
+This text can be used by any application that cannot resolve the reference 
+to fill out the text portion of a hyperlink referring to the target resource, for instance.
+It can also save time fetching a target resource, and determining how to convert it to
+a very short textual description. 
 </p>
 </div>
-
 <p>
-Note that some elements have the type <a href="datatypes.html#uri"><code>uri</code></a> instead of <code>Reference</code>.
-URIs may point to resources, to elements inside a resource by their <code>id</code> property, or (most often)
-to some other content that is not a resource. The Reference type is only used to refer to resources
-directly, by their logical id.
+In general, the <code>display</code>, if populated, does not have identical content 
+to the Resource.text of the referenced resource.  The purpose is to identify what's 
+being referenced, not to more fully describe it.
 </p>
 
+<a name="canonical"> </a>
 <h3>Canonical URLs</h3>
 <p>
 Many resource types have a defined element "url" which is the canonical URL that always identifies the 
@@ -150,12 +225,38 @@ way to reference a conformance or knowledge resource</b>. The canonical URL is a
 the artifact is found. 
 </p>
 <p>
+References to these resource may use the <code>Reference</code> type described above, 
+but they can also be referenced using a <a href="datatypes.html#uri"><code>uri</code></a>.
+</p>
+<p>
+When the type of the canonical reference is a <code>uri</code>, the URL may include a 
+version, in order be precise about which version of the resource is being referred to.
+To do this, append the version to the canonical url with a '|' like this:
+</p>
+<pre>
+&lt;valueSetUri value=&quot;http://hl7.org/fhir/StructureDefinition/my-profile|0.8&quot;/&gt;
+</pre>
+<p>
+This is a version specific reference to a profile. Note that this is the <code>StructureDefinition.version</code>
+not the <code>StructureDefinition.meta.versionId</code>. Searching for this on a FHIR server would look like this:
+</p>
+<pre>
+GET fhir/ValueSet?url=http://hl7.org/fhir/ValueSet/clinical-findings&amp;version=0.8
+</pre>
+<p>
+Note that if a canonical reference does not have a version, and the server finds multiple
+versions for the value set, the system using the reference should pick the latest version
+of the target resource and use that. Servers SHOULD support version specific searching for canonical
+URLs but automatically detecting the presence of a |[version] and performing the appropriate
+search.
+</p>
+<p>
 Systems resolving references to resources that might have cannonical URLs SHOULD first
 try to resolve the reference using the cannonical URL, and then fall back to direct 
-resolution against the URL if a local version of the canonical resource cannot be found.
-This approach is safe because the local version cannot be a different artifact that the 
-master copy, though implementations will need to make appropriate arrangements regarding
-the currency of their local copy of the artifact.
+resolution using the URL as a literal reference if a local version of the canonical 
+resource cannot be found. This approach is safe because the local version cannot be 
+a different artifact than the master copy, though implementations will need to make 
+appropriate arrangements regarding the currency of their local copy of the artifact.
 </p>
 
 
@@ -174,7 +275,7 @@ refers to it.
 <p>
 For example, consider a situation where an interface engine is creating a <a href="condition.html">Condition</a>
 record on a patient from an <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a> message, and the only information about the primary surgeon is her
-first name and last name (REL-7.2 &amp; RES-7.3). In the absence of a controlled practitioner directory,
+first name and last name (REL-7.2 &amp; REL-7.3). In the absence of a controlled practitioner directory,
 this is not enough information to create an identified <a href="practitioner.html">Practitioner</a>
 resource since more than one practitioner might have the same name.
 </p>
@@ -187,44 +288,41 @@ done when the content can be identified properly, as once the identification is 
 <p>
 An example of a contained resource:
 </p>
-<pre class="xml"> <!-- Can't fragment test this - too incomplete -->
- &lt;Composition xmlns="http://hl7.org/fhir"&gt;
-  &lt;extension&gt;...&lt;/extension&gt;
-  &lt;text&gt;...&lt;/text&gt;
+<pre class="xml" fragment="Condition">
+ &lt;Condition xmlns="http://hl7.org/fhir"&gt;
   &lt;contained&gt;
-    &lt;Organization&gt;
-      &lt;id value=&quot;org1&quot;/&gt;
-      &lt;!-- whatever information is available --&gt;
-    &lt;/Organization&gt;
+    &lt;Practitioner&gt;
+      &lt;id value=&quot;p1&quot;/&gt;
+      &lt;name&gt;
+        &lt;family value=&quot;Person&quot;/&gt;
+        &lt;given value=&quot;Patricia&quot;/&gt;
+      &lt;/name&gt;
+    &lt;/Practitioner&gt;
   &lt;/contained&gt;
-  &lt;information&gt;
-    &lt;!-- other attributes --&gt;
-    &lt;custodian&gt;
-      &lt;reference value="#org1" /&gt;
-    &lt;/custodian&gt;
-    &lt;!-- other attributes --&gt;
-  &lt;information&gt;
- &lt;/Composition&gt;
+  &lt;!-- other attributes --&gt;
+  &lt;asserter&gt;
+    &lt;reference value="#p1" /&gt;
+  &lt;/asserter&gt;
+  &lt;!-- other attributes --&gt;
+ &lt;/Condition&gt;
 </pre>
 <p>
 The same example in JSON:
 </p>
-<pre class="json">
-{ "resourceType" : "Composition",
-  "extension" : { ... },
-  "text" : { .. },
-  "contained: [
+<pre class="json" fragment="Condition">
+{
+  "resourceType" : "Condition",
+  "contained": [
     {
-      "resourceType" : "Organization",
-      "id" : "org1",
-      .. whatever information is available ...
-	}  ]
-  "information: {
-    ... other attributes ...
-    "custodian" : {
-      "reference" : "#org1"
-	}
-    ... other attributes ...
+      "resourceType" : "Practitioner",
+      "id" : "p1",
+      "name" : [{
+        "family" : "Person",
+        "given" : ["Patricia"]
+      }]
+	  }],
+   "asserter" : {
+     "reference" : "#p1"
   }
 }
 </pre>
@@ -252,7 +350,7 @@ Some notes about use and interpretation of contained resources:
 <ul>
   <li>The <code>contained</code> element SHALL NOT have extensions on it (though contained resources can still contain extensions)</li>
   <li>Contained resources share the same internal id resolution space as the parent resource (for id attributes, see below)</li>
-  <li>When resolving references, refences are resolved by looking through the 'container' resource - the one that contains the other resources. Since there 
+  <li>When resolving references, references are resolved by looking through the 'container' resource - the one that contains the other resources. Since there 
      are no nested contained resources, there is only one container resource</li>
   <li>References to contained resources are never resolved outside the container resource. Specifically, resolution stops at the elements Bundle.entry.resource and Parameters.parameter.resource, but not at DomainResource.contained</li>
   <li>Contained resources SHALL NOT contain additional contained resources</li>
@@ -263,7 +361,7 @@ Some notes about use and interpretation of contained resources:
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>DSTU Note:</b>  
+<b>STU Note:</b>  
 It might be necessary to allow for the reverse (that is, for a contained resource to reference the container). 
 However this would cause many difficult consequences on the API. 
 Feedback on this issue is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
@@ -285,7 +383,7 @@ is clear, and that there is no confusion as to its significance.
 <blockquote class="dstu-note">
 <a name="dstu2"> </a>
 <p>
-<b>DSTU Note:</b> There are some identified use cases where it would be useful to include resources that refer
+<b>STU Note:</b> There are some identified use cases where it would be useful to include resources that refer
 to the contained resource rather than the container referring to the contained resource, but this 
 has a series of structural ramifications for the API. Whether these can be resolved is an open 
 issue for investigation during the period of trial use.

@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.hl7.fhir.dstu2.exceptions.DefinitionException;
-import org.hl7.fhir.dstu2.exceptions.PathEngineException;
 import org.hl7.fhir.dstu2.model.Base;
 import org.hl7.fhir.dstu2.model.BooleanType;
 import org.hl7.fhir.dstu2.model.DateTimeType;
@@ -30,16 +28,16 @@ import org.hl7.fhir.dstu2.model.IntegerType;
 import org.hl7.fhir.dstu2.model.Resource;
 import org.hl7.fhir.dstu2.model.StringType;
 import org.hl7.fhir.dstu2.model.StructureDefinition;
-import org.hl7.fhir.dstu2.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.dstu2.model.TemporalPrecisionEnum;
 import org.hl7.fhir.dstu2.model.TimeType;
 import org.hl7.fhir.dstu2.model.Type;
 import org.hl7.fhir.dstu2.utils.FHIRLexer.FHIRLexerException;
 import org.hl7.fhir.dstu2.utils.FHIRPathEngine.IEvaluationContext.FunctionDetails;
+import org.hl7.fhir.exceptions.DefinitionException;
+import org.hl7.fhir.exceptions.PathEngineException;
 import org.hl7.fhir.exceptions.UcumException;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ucum.Decimal;
-import ca.uhn.fhir.util.ElementUtil;
 
 
 /**
@@ -153,7 +151,7 @@ public class FHIRPathEngine {
    *  - a simple name (which may be the base of a name with [] e.g. value[x])
 	 *  - a name with a type replacement e.g. valueCodeableConcept
 	 *  - * which means all children
-	 *  - ** which means all descendents
+	 *  - ** which means all descendants
 	 *  
 	 * @param item
 	 * @param name
@@ -229,7 +227,7 @@ public class FHIRPathEngine {
 	    throw new PathEngineException("Unknown context element "+context);
 	  if (ed.fixedType != null) 
 	    types = new TypeDetails(CollectionStatus.SINGLETON, ed.fixedType);
-	  else if (ed.getDefinition().getType().isEmpty() || isAbstractType(ed.getDefinition().getType())) 
+	  else if (ed.getDefinition().getType().isEmpty() || ( isAbstractType(ed.getDefinition().getType()))) 
 	    types = new TypeDetails(CollectionStatus.SINGLETON, context);
 	  else {
 	    types = new TypeDetails(CollectionStatus.SINGLETON);
@@ -238,7 +236,7 @@ public class FHIRPathEngine {
 	  }
 	}
 
-    return executeType(new ExecutionTypeContext(appContext, resourceType, types), types, expr, true);
+    return executeType(new ExecutionTypeContext(appContext, resourceType, context, types), types, expr, true);
   }
 
   public TypeDetails check(Object appContext, String resourceType, String context, String expr) throws FHIRLexerException, PathEngineException, DefinitionException {
@@ -260,7 +258,7 @@ public class FHIRPathEngine {
 		if (base != null)
 			list.add(base);
 		log = new StringBuilder();
-		return execute(new ExecutionContext(null, null, base), list, ExpressionNode, true);
+		return execute(new ExecutionContext(null, null, base, base), list, ExpressionNode, true);
 	}
 
 	/**
@@ -280,7 +278,7 @@ public class FHIRPathEngine {
 		if (base != null)
 			list.add(base);
 		log = new StringBuilder();
-		return execute(new ExecutionContext(null, null, base), list, exp, true);
+		return execute(new ExecutionContext(null, null, base, base), list, exp, true);
 	}
 
 	/**
@@ -298,7 +296,7 @@ public class FHIRPathEngine {
     if (base != null)
       list.add(base);
     log = new StringBuilder();
-    return execute(new ExecutionContext(appContext, resource, base), list, ExpressionNode, true);
+    return execute(new ExecutionContext(appContext, resource, base, base), list, ExpressionNode, true);
   }
 
   /**
@@ -316,7 +314,7 @@ public class FHIRPathEngine {
 		if (base != null)
 			list.add(base);
 		log = new StringBuilder();
-		return execute(new ExecutionContext(appContext, resource, base), list, ExpressionNode, true);
+		return execute(new ExecutionContext(appContext, resource, base, base), list, ExpressionNode, true);
 	}
 
 	/**
@@ -336,7 +334,7 @@ public class FHIRPathEngine {
 		if (base != null)
 			list.add(base);
 		log = new StringBuilder();
-		return execute(new ExecutionContext(appContext, resource, base), list, exp, true);
+		return execute(new ExecutionContext(appContext, resource, base, base), list, exp, true);
 	}
 
 	/**
@@ -467,10 +465,12 @@ public class FHIRPathEngine {
 	private class ExecutionContext {
 		private Object appInfo;
     private Base resource;
+    private Base context;
     private Base thisItem;
-    public ExecutionContext(Object appInfo, Base resource, Base thisItem) {
+    public ExecutionContext(Object appInfo, Base resource, Base context, Base thisItem) {
 			this.appInfo = appInfo;
 			this.resource = resource; 
+			this.context = context;
       this.thisItem = thisItem;
 		}
     public Base getResource() {
@@ -484,20 +484,22 @@ public class FHIRPathEngine {
 	private class ExecutionTypeContext {
 		private Object appInfo; 
 		private String resource;
-    private TypeDetails context;
+		private String context;
+    private TypeDetails thisItem;
 
 
-    public ExecutionTypeContext(Object appInfo, String resource, TypeDetails context) {
+    public ExecutionTypeContext(Object appInfo, String resource, String context, TypeDetails thisItem) {
 			super();
 			this.appInfo = appInfo;
 			this.resource = resource;
-			this.context = context;
+      this.context = context;
+      this.thisItem = thisItem;
 		}
 		public String getResource() {
 			return resource;
 		}
-    public TypeDetails getContext() {
-			return context;
+    public TypeDetails getThisItem() {
+			return thisItem;
 		}
 	}
 
@@ -541,7 +543,7 @@ public class FHIRPathEngine {
 				Function f = Function.fromCode(result.getName());  
         FunctionDetails details = null;
         if (f == null) {
-          details = hostServices.resolveFunction(result.getName());
+          details = hostServices != null ? hostServices.resolveFunction(result.getName()) : null;
           if (details == null)
 					throw lexer.error("The name "+result.getName()+" is not a valid function name");
           f = Function.Custom;
@@ -772,7 +774,7 @@ public class FHIRPathEngine {
     case Replace: return checkParamCount(lexer, location, exp, 2);
     case Length: return checkParamCount(lexer, location, exp, 0);
     case Children: return checkParamCount(lexer, location, exp, 0);
-    case Descendents: return checkParamCount(lexer, location, exp, 0);
+    case Descendants: return checkParamCount(lexer, location, exp, 0);
     case MemberOf: return checkParamCount(lexer, location, exp, 1);
     case Trace: return checkParamCount(lexer, location, exp, 1);
     case Today: return checkParamCount(lexer, location, exp, 0);
@@ -785,7 +787,7 @@ public class FHIRPathEngine {
 	}
 
 	private List<Base> execute(ExecutionContext context, List<Base> focus, ExpressionNode exp, boolean atEntry) throws PathEngineException  {
-    System.out.println("Evaluate {'"+exp.toString()+"'} on "+focus.toString());
+//    System.out.println("Evaluate {'"+exp.toString()+"'} on "+focus.toString());
 		List<Base> work = new ArrayList<Base>();
 		switch (exp.getKind()) {
 		case Name:
@@ -829,13 +831,13 @@ public class FHIRPathEngine {
         } else {
           work2 = execute(context, focus, next, true);
           work = operate(work, last.getOperation(), work2);
-          System.out.println("Result of {'"+last.toString()+" "+last.getOperation().toCode()+" "+next.toString()+"'}: "+focus.toString());
+//          System.out.println("Result of {'"+last.toString()+" "+last.getOperation().toCode()+" "+next.toString()+"'}: "+focus.toString());
 				}
 					last = next;
 					next = next.getOpNext();
 				}
 			}
-    System.out.println("Result of {'"+exp.toString()+"'}: "+work.toString());
+//    System.out.println("Result of {'"+exp.toString()+"'}: "+work.toString());
 		return work;
 	}
 
@@ -870,11 +872,12 @@ public class FHIRPathEngine {
   }
 
   private TypeDetails executeType(ExecutionTypeContext context, TypeDetails focus, ExpressionNode exp, boolean atEntry) throws PathEngineException, DefinitionException {
+//    System.out.println("Evaluate {'"+exp.toString()+"'} on "+focus.toString());
     TypeDetails result = new TypeDetails(null);
 		switch (exp.getKind()) {
 		case Name:
       if (atEntry && exp.getName().equals("$this"))
-        result.update(context.getContext());
+        result.update(context.getThisItem());
       else {
         for (String s : focus.getTypes()) {
           result.update(executeType(s, exp, atEntry));
@@ -964,6 +967,8 @@ public class FHIRPathEngine {
       return new StringType("http://loinc.org");
 		else if (s.equals("%ucum"))
       return new StringType("http://unitsofmeasure.org");
+    else if (s.equals("%context")) 
+      return context.context;
     else if (s.equals("%resource")) {
       if (context.resource == null)
         throw new PathEngineException("Cannot use %resource in this context");
@@ -1010,7 +1015,7 @@ public class FHIRPathEngine {
           b.append('\\');
           break;
         case '/': 
-          b.append('\\');
+          b.append('/');
           break;
         case 'u':
           i++;
@@ -1655,6 +1660,8 @@ public class FHIRPathEngine {
 			return "string";
 		else if (s.equals("%ucum"))
 			return "string";
+    else if (s.equals("%context"))
+      return context.context;
     else if (s.equals("%resource")) {
       if (context.resource == null)
         throw new PathEngineException("%resource cannot be used in this context");
@@ -1834,7 +1841,7 @@ public class FHIRPathEngine {
     }
     case Children : 
       return childTypes(focus, "*");
-    case Descendents : 
+    case Descendants : 
       return childTypes(focus, "**");
     case MemberOf : {
       checkContextCoded(focus, "memberOf");
@@ -1961,7 +1968,7 @@ public class FHIRPathEngine {
     case Replace : return funcReplace(context, focus, exp);
     case Length : return funcLength(context, focus, exp);
     case Children : return funcChildren(context, focus, exp);
-    case Descendents : return funcDescendents(context, focus, exp);
+    case Descendants : return funcDescendants(context, focus, exp);
     case MemberOf : return funcMemberOf(context, focus, exp);
     case Trace : return funcTrace(context, focus, exp);
     case Today : return funcToday(context, focus, exp);
@@ -2015,11 +2022,11 @@ public class FHIRPathEngine {
 
 
   private ExecutionContext changeThis(ExecutionContext context, Base newThis) {
-    return new ExecutionContext(context.appInfo, context.resource, newThis);
+    return new ExecutionContext(context.appInfo, context.resource, context.context, newThis);
   }
 
   private ExecutionTypeContext changeThis(ExecutionTypeContext context, TypeDetails newThis) {
-    return new ExecutionTypeContext(context.appInfo, context.resource, newThis);
+    return new ExecutionTypeContext(context.appInfo, context.resource, context.context, newThis);
   }
 
 
@@ -2042,7 +2049,7 @@ public class FHIRPathEngine {
 	}
 
 
-  private List<Base> funcDescendents(ExecutionContext context, List<Base> focus, ExpressionNode exp)  {
+  private List<Base> funcDescendants(ExecutionContext context, List<Base> focus, ExpressionNode exp)  {
 		List<Base> result = new ArrayList<Base>();
     List<Base> current = new ArrayList<Base>();
     current.addAll(focus);
@@ -2591,7 +2598,7 @@ public class FHIRPathEngine {
 		for (ElementDefinition ed : sd.getSnapshot().getElement()) {
 			if (ed.getPath().equals(path)) {
         if (ed.hasNameReference()) {
-          return getElementDefinitionById(sd, ed.getNameReference());
+          return getElementDefinitionByName(sd, ed.getNameReference());
 				} else
 					return new ElementDefinitionMatch(ed, null);
 			}
@@ -2611,10 +2618,10 @@ public class FHIRPathEngine {
         StructureDefinition nsd = worker.fetchResource(StructureDefinition.class, "http://hl7.org/fhir/StructureDefinition/"+ed.getType().get(0).getCode());
   	    if (nsd == null) 
   	      throw new PathEngineException("Unknown type "+ed.getType().get(0).getCode());
-        return getElementDefinition(sd, sd.getId()+path.substring(ed.getPath().length()), allowTypedName);
+        return getElementDefinition(nsd, nsd.getId()+path.substring(ed.getPath().length()), allowTypedName);
       }
       if (ed.hasNameReference() && path.startsWith(ed.getPath()+".")) {
-        ElementDefinitionMatch m = getElementDefinitionById(sd, ed.getNameReference());
+        ElementDefinitionMatch m = getElementDefinitionByName(sd, ed.getNameReference());
         return getElementDefinition(sd, m.definition.getPath()+path.substring(ed.getPath().length()), allowTypedName);
 			}
 		}
@@ -2622,7 +2629,7 @@ public class FHIRPathEngine {
 	}
 
   private boolean isAbstractType(List<TypeRefComponent> list) {
-	return list.size() != 1 ? true : Utilities.existsInList(list.get(0).getCode(), "Element", "BackboneElement", "Resource", "DomainResource");
+	return list.size() != 1 ? false : Utilities.existsInList(list.get(0).getCode(), "Element", "BackboneElement", "Resource", "DomainResource");
 }
 
 
@@ -2637,9 +2644,9 @@ public class FHIRPathEngine {
 		return ed.hasType() && !(ed.getType().get(0).getCode().equals("Element") || ed.getType().get(0).getCode().equals("BackboneElement"));
 	}
 
-  private ElementDefinitionMatch getElementDefinitionById(StructureDefinition sd, String ref) {
+  private ElementDefinitionMatch getElementDefinitionByName(StructureDefinition sd, String ref) {
 		for (ElementDefinition ed : sd.getSnapshot().getElement()) {
-      if (ref.equals("#"+ed.getId())) 
+      if (ref.equals(ed.getName())) 
 				return new ElementDefinitionMatch(ed, null);
 		}
 		return null;

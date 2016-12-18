@@ -3,7 +3,7 @@
 	<id value="gcs"/>
 	<questionnaire>
 		<reference value="Questionnaire/gcs"/>
-	</questionnaire>
+	</questionnaire>	
 	<status value="completed"/>
 	<subject>
 		<reference value="Patient/example"/>

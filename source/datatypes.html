@@ -10,16 +10,23 @@
 
 <div class="col-9">
 
-<%dtheader base%>
+<%dtheader base%>  
 
 <h1>Data Types</h1>
 <table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
 
 <p>
 The FHIR specification defines a set of data types that are used for the 
-resource elements. There are two categories of data types: simple / primitive types, which are single elements, and complex types, which are re-usable clusters of elements.
-This page describes the common reusable data types. See also the <a href="datatypes-examples.html">Examples</a>, <a href="datatypes-definitions.html">Detailed Descriptions</a> and 
-<a href="datatypes-mappings.html">Mappings</a>.
+resource elements. There are four categories of data types: 
+</p>
+<ol>
+  <li>Simple / primitive types, which are single elements with a primitive value (<a href="#primitive">below</a>)</li>
+  <li>General purpose complex types, which are re-usable clusters of elements (<a href="#xomplex">below</a>)</li>
+  <li><a href="metadatatypes.html">Complex data types for metadata</a></li>
+  <li>Special purpose data types: <a href="references.html#Reference">Reference</a>, <a href="narrative.html#Narrative">Narrative</a>, <a href="extensibility.html#Extension">Extension</a>, <a href="resource.html#Meta">Meta</a>, and <a href="dosageinstruction.html#DosageInstruction">DosageInstruction</a></li>
+</ol>  
+<p>
+This page describes the general purpose data types. 
 </p>
 
 <p><b>Table of Contents</b></p>
@@ -34,7 +41,7 @@ This page describes the common reusable data types. See also the <a href="dataty
 Legend: White = abstract type. Light blue = concrete types. Light Pink = Profile on Type.
 </p>
 
-<a name="primitive"></a>
+<a name="primitive"> </a>
 <h2>Primitive Types</h2>
 
 
@@ -43,7 +50,7 @@ Legend: White = abstract type. Light blue = concrete types. Light Pink = Profile
 <a name="imports"> </a>
 <p>
 The following table describes the primitive types that are used in this specification. Primitive types are those with only a value, and no additional elements as children (though, like 
-all types, they have <a href="extensibility.html">extensions</a>).
+all types, they have <a href="extensibility.html">extensions</a>). See also the <a href="datatypes-examples.html#primitives">Examples</a>.
 </p>
 
 
@@ -246,7 +253,7 @@ Notes:
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>DSTU Note:</b>  <a href="http://commonmark.org/">CommonMark</a> is a new arrival but may gain sufficient impetus to be preferred in a future version. 
+<b>STU Note:</b>  <a href="http://commonmark.org/">CommonMark</a> is a new arrival but may gain sufficient impetus to be preferred in a future version. 
 </p>
 <p>
 Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
@@ -374,8 +381,8 @@ values are.
 
 [%diagram datatypes/types2.diagram 5a%]
 
-<a name="Attachment"></a>
-<a name="attachment"></a>
+<a name="Attachment"> </a>
+<a name="attachment"> </a>
 <h2 style="margin-bottom: 1px">
 Attachment
 </h2>
@@ -406,7 +413,8 @@ then the correct course of action is undefined, though some media types may defi
 character set and/or the correct character set may be able to be determined by inspection of the content.
 </p>
 <p>
-The <code>hash</code> is included so that applications can verify that the content returned by the URL has not changed. 
+The <code>hash</code> is included so that applications can verify that the content returned by the URL has not changed. The <code>hash</code> and <code>size</code>
+relate to the data before it is represented in base64 form.
 </p>
 <p>
 In many cases where Attachment is used, the cardinality is &gt;1. A valid use of repeats is to convey the same content in different mime types and languages.
@@ -550,8 +558,8 @@ in extensions, which are usually intended to be defined for a well-controlled co
 </p>
 </blockquote>
 
-<a name="CodeableConcept"></a>
-<a name="codeableconcept"></a>
+<a name="CodeableConcept"> </a>
+<a name="codeableconcept"> </a>
 <h2 style="margin-bottom: 1px">
 CodeableConcept
 </h2>
@@ -594,8 +602,8 @@ particular context by <a href="terminologies.html">binding</a> the element to a 
 CodeableConcept is used in the following places: [%dtusage CodeableConcept%]
 </p>
 
-<a name="Quantity"></a>
-<a name="quantity"></a>
+<a name="Quantity"> </a>
+<a name="quantity"> </a>
 <h2 style="margin-bottom: 1px">
 Quantity
 </h2>
@@ -730,8 +738,8 @@ just rules applied where the Quantity type is used.
 
 
 
-<a name="Range"></a>
-<a name="range"></a>
+<a name="Range"> </a>
+<a name="range"> </a>
 <h2 style="margin-bottom: 1px">
 Range
 </h2>
@@ -767,8 +775,8 @@ includes 1.50, and 2.50 but not 1.49 or 2.51.
 Range is used in the following places: [%dtusage Range%]
 </p>
 
-<a name="Ratio"></a>
-<a name="ratio"></a>
+<a name="Ratio"> </a>
+<a name="ratio"> </a>
 <h2 style="margin-bottom: 1px">
 Ratio
 </h2>
@@ -805,8 +813,8 @@ Ratio is used in the following places: [%dtusage Ratio%]
 </p>
 
 
-<a name="Period"></a>
-<a name="period"></a>
+<a name="Period"> </a>
+<a name="period"> </a>
 <h2 style="margin-bottom: 1px">
 Period
 </h2>
@@ -844,8 +852,8 @@ the end of the 27th of May.
 Period is used in the following places: [%dtusage Period%]
 </p>
 
-<a name="SampledData"></a>
-<a name="sampleddata"></a>
+<a name="SampledData"> </a>
+<a name="sampleddata"> </a>
 <h2 style="margin-bottom: 1px">
 SampledData
 </h2>
@@ -874,8 +882,8 @@ SampledData is used in the following places: [%dtusage SampledData%]
 </p>
 
 
-<a name="Identifier"></a>
-<a name="identifier"></a>
+<a name="Identifier"> </a>
+<a name="identifier"> </a>
 <h2 style="margin-bottom: 1px">
 Identifier
 </h2>
@@ -916,13 +924,15 @@ avoid collisions and to manage that space (and the resolvability of URLs) over t
 <p>
 Note that the scope of a given identifier system may extend beyond identifiers that might be captured 
 by a single resource.  For example, some systems might draw all "order" identifiers from a single 
-namespace, though some might be used on <a href="medicationorder.html">MedicationOrder</a> while 
+namespace, though some might be used on <a href="medicationrequest.html">MedicationRequest</a> while 
 others would appear on <a href="procedurerequest.html">ProcedureRequest</a> or <a href="diagnosticrequest.html">DiagnosticRequest</a>.
 </p>
 <p>
-If the identifier itself is naturally globally unique (e.g. an OID, a UUID, or a URI with no trailing local part), 
+If the identifier value itself is naturally a globally unique URI (e.g. an OID, a UUID, or a URI with no trailing local part), 
 then the <code>system</code> SHALL be "urn:ietf:rfc:3986", and the URI is in the <code>value</code> 
 (OIDs and UUIDs using urn:oid: and urn:uuid: - see <a href="datatypes-examples.html#Identifier">examples</a>).
+</p>
+<p>
 In some cases, the system may not be known - only the value is known (e.g. a simple device that scans a barcode), 
 or the system is known implicitly (simple exchange in a limited context, often driven by barcode readers). 
 In this case, no useful matching may be performed using the value unless the system can be safely inferred by the 
@@ -945,8 +955,8 @@ As a <a href="references.html">Reference</a>, the assigner can include just a te
 Identifier is used in the following places: [%dtusage Identifier%]
 </p>
 
-<a name="HumanName"></a>
-<a name="humanname"></a>
+<a name="HumanName"> </a>
+<a name="humanname"> </a>
 <h2 style="margin-bottom: 1px">
 HumanName
 </h2>
@@ -976,42 +986,54 @@ This table summarizes where common parts of a person's name are found.
  <tr><td>Title</td><td>Mr</td><td>Prefix</td></tr>
  <tr><td>Middle Name</td><td>Samuel</td><td>Subsequent Given Names</td></tr>
  <tr><td>Patronymic</td><td>bin Osman</td><td>Family Name</td></tr>
- <tr><td>Multiple family names</td><td>Carreño Quiñones</td><td>Family Name. See note below about repeats</td></tr>
+ <tr><td>Multiple family names</td><td>Carreño Quiñones</td><td>Family Name. See note below about decomposition of family name</td></tr>
  <tr><td>Initials</td><td>Q.</td><td>Given Name as initial ("." recommended)</td></tr>
  <tr><td>Nick Name</td><td>Jock</td><td>Given name, with Use = common</td></tr>
  <tr><td>Qualifications</td><td>PhD</td><td>Suffix</td></tr>
  <tr><td>Honorifics</td><td>Senior</td><td>Suffix</td></tr>
+ <tr><td>Voorvoegsel / Nobility</td><td>van Beethoven</td><td>Family Name. See note below about decomposition of family name</td></tr>
 </table>
 <p>
 For further information, including all <a href="http://www.w3.org/International/questions/qa-personal-names">W3C International Examples</a>, 
-consult the <a href="datatypes-examples.html#HumanName">examples</a>.
+consult the <a href="datatypes-examples.html#HumanName">examples</a>. <b>Note: Implementers should read the name examples for a full
+understanding of how name works.</b>
 </p>
 <p>
-The multiple given and family name parts combine to form a single name. Multiple given and family names are for
-when a person's name has multiple given names (relatively common across cultures) and multiple surnames (less common).
-Where a person has alternate names that may be used in place of each other, these are different
-instances of <code>HumanName</code>.
+The multiple given parts and family name combine to form a single name. 
+Where a person has alternate names that may be used in place of each other (e.g. Nicknames, Aliases), 
+these are different instances of <code>HumanName</code>.
 </p>
 <p>
 The <code>text</code> element specifies the entire name as it should be represented. This
 may be provided instead of or as well as specific parts, and can be built from the parts, though
 the correct order of assembly is culture dependent: the order of the  parts within a given part type has 
-significance and SHALL be observed. The appropriate order between 
-family name and given names depends on culture and context of use.
+significance and SHALL be observed. The appropriate order between family name and given names depends on culture and context of use.
+Note that there is an <a href="extension-humanname-assembly-order.html">extension</a> for the few times name 
+assembly order is not fixed by the culture.
 </p>
 <p>
-The parts of a name SHOULD NOT contain whitespace. For family name, hyphenated  names such as "Smith-Jones" are a 
-single name, but names with spaces such as "Smith Jones" are broken into multiple parts. 
-For given names, initials may be used in place of the full name if that is all that is recorded. 
-Systems that operate across cultures should generally rely on the text form for presentation, and 
-use the parts for index/search functionality. For this reasons, applications SHOULD populate the 
-text element for future robustness.
+The given name parts may contain whitespace, though generally don't. Initials may be used in place of 
+the full name if that is all that is recorded. Systems that operate across cultures should 
+generally rely on the text form for presentation, and use the parts for index/search functionality. 
+For this reasons, applications SHOULD populate the text element for future robustness.
 </p>
 <p>
-Applications updating a name SHALL ensure either that the text and the parts 
-are in agreement, or that only one of the two is present. Systems that do not 
-support as many name parts as are provided in an instance may wish to append 
-some of the parts together using spaces
+In some cultures (e.g. German, Dutch, Spanish, Portuguese), family names are complex and composed of 
+various parts that may need to be managed separately, e.g. they have differing significance 
+for searching. In these cases, the full family name is populated in <code>family</code>,
+and a decomposition of the name can be provided using the <code>family</code> extensions
+<a href="extension-humanname-own-name.html">own-name</a>, 
+<a href="extension-humanname-own-prefix.html">own-prefix</a>, 
+<a href="extension-humanname-partner-name.html">partner-name</a>, 
+<a href="extension-humanname-partner-prefix.html">partner-prefix</a>, 
+<a href="extension-humanname-fathers-family.html">fathers-family</a> and
+<a href="extension-humanname-mothers-family.html">mothers-family</a>.
+</p>
+<p>
+For robust search, servers should search the parts of a family name independently.
+E.g. Searching either Carreno or Quinones should match a family name of "Carreño Quiñones".
+HL7 affiliates may make more specific recommendations about how search should work 
+in their specific culture.
 </p>
 <p>
 HumanName is used in the following places: [%dtusage HumanName%]
@@ -1023,8 +1045,8 @@ HumanName is used in the following places: [%dtusage HumanName%]
 </div>
 -->
 
-<a name="Address"></a>
-<a name="address"></a>
+<a name="Address"> </a>
+<a name="address"> </a>
 <h2 style="margin-bottom: 1px">
 Address
 </h2>
@@ -1057,8 +1079,8 @@ Address is used in the following places: [%dtusage Address%]
 </p>
 
 
-<a name="ContactPoint"></a>
-<a name="contactpoint"></a>
+<a name="ContactPoint"> </a>
+<a name="contactpoint"> </a>
 <h2 style="margin-bottom: 1px">
 ContactPoint
 </h2>
@@ -1093,8 +1115,8 @@ follow the order in which the contacts are represented in the instance.
 ContactPoint is used in the following places: [%dtusage ContactPoint%]
 </p>
 
-<a name="Timing"></a>
-<a name="timing"></a>
+<a name="Timing"> </a>
+<a name="timing"> </a>
 <h2 style="margin-bottom: 1px">
 Timing
 </h2>
@@ -1113,23 +1135,25 @@ the specified duration or in relation to some real world event. If no end condit
 the schedule will terminate on some criteria that are expressed elsewhere. 
 </p>
 <p>
-This table summarises some common uses of the Timing Data Type criteria.
+This table summarizes some common uses of the Timing Data Type criteria.
 </p>
 <table class="grid">
- <tr><td><b>description</b></td> <td><b>duration</b></td> <td><b>durationUnit</b></td> <td><b>frequency</b></td> <td><b>frequencyMax</b></td> <td><b>period</b></td> <td><b>periodUnit</b></td> <td><b>periodMax</b></td> <td><b>when</b></td> <td><b>offset</b></td>  <td><b>bounds[x]</b></td></tr>
- <tr><td>Every 8 hours</td>      <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>8</td>             <td>h</td>                  <td></td>                 <td></td>          <td></td>               <td></td></tr>
- <tr><td>Every 7 days</td>       <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>7</td>             <td>d</td>                  <td></td>                 <td></td>          <td></td>               <td></td></tr>
- <tr><td>3 times a day</td>      <td></td>                <td></td>                     <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td></td>          <td></td>               <td></td></tr>
- <tr><td>3-4 times a day</td>    <td></td>                <td></td>                     <td>3</td>                <td>4</td>                   <td>1</td>             <td>d</td>                  <td></td>                 <td></td>          <td></td>               <td></td></tr>
- <tr><td>Every 4-6 hours</td>    <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>4</td>             <td>h</td>                  <td>6</td>                <td></td>          <td></td>               <td></td></tr>
- <tr><td>Every 21 days for 1 hour</td> <td>1</td>         <td>hr</td>                   <td>1</td>                <td></td>                    <td>21</td>            <td>d</td>                  <td></td>                 <td></td>          <td></td>               <td></td></tr>
- <tr><td>Three times a week for ½ hour</td> <td>0.5</td>  <td>hr</td>                   <td>3</td>                <td></td>                    <td>1</td>             <td>wk</td>                 <td></td>                 <td></td>          <td></td>               <td></td></tr>
- <tr><td>With breakfast</td>     <td></td>                <td></td>                     <td></td>                 <td></td>                    <td></td>              <td></td>                   <td></td>                 <td>CM</td>        <td></td>               <td></td></tr>
- <tr><td>For 5 minutes, 10 minutes before meals</td> <td>5</td>     <td>min</td>        <td></td>                 <td></td>                    <td></td>              <td></td>                   <td></td>                 <td>AC</td>        <td>10</td>             <td></td></tr>
- <tr><td>1 tablet 3 times daily, 30 minutes before meals</td> <td></td>  <td></td>      <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td>AC</td>        <td>30</td>             <td></td></tr>
- <tr><td>BID, 30 mins before meal, for next 10 days</td> <td></td>  <td></td>            <td>2</td>               <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td>AC</td>        <td>30</td>             <td>Duration = 10 days</td></tr>
- <tr><td>TID, for 14 days</td>   <td></td>                <td></td>                     <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td></td>          <td></td>               <td>Duration = 14 days</td></tr>
- <tr><td>BID, start on 7/1/2015 at 1:00 PM</td> <td></td> <td></td>                     <td>2</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td></td>          <td></td>               <td>Period, low = 2015-07-01T13:00:00</td></tr>
+ <tr><td><b>description</b></td> <td><b>duration</b></td> <td><b>durationUnit</b></td> <td><b>frequency</b></td> <td><b>frequencyMax</b></td> <td><b>period</b></td> <td><b>periodUnit</b></td> <td><b>periodMax</b></td> <td><b>Day of Week</b></td> <td><b>Time Of Day</b></td> <td><b>when</b></td> <td><b>offset</b></td>  <td><b>bounds[x]</b></td></tr>
+ <tr><td>Every 8 hours</td>      <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>8</td>             <td>h</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
+ <tr><td>Every 7 days</td>       <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>7</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
+ <tr><td>3 times a day</td>      <td></td>                <td></td>                     <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
+ <tr><td>3-4 times a day</td>    <td></td>                <td></td>                     <td>3</td>                <td>4</td>                   <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
+ <tr><td>Every 4-6 hours</td>    <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>4</td>             <td>h</td>                  <td>6</td>              <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
+ <tr><td>Every 21 days for 1 hour</td> <td>1</td>         <td>hr</td>                   <td>1</td>                <td></td>                    <td>21</td>            <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
+ <tr><td>Three times a week for ½ hour</td> <td>0.5</td>  <td>hr</td>                   <td>3</td>                <td></td>                    <td>1</td>             <td>wk</td>                 <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
+ <tr><td>With breakfast</td>     <td></td>                <td></td>                     <td></td>                 <td></td>                    <td></td>              <td></td>                   <td></td>               <td></td>                   <td></td>                   <td>CM</td>        <td></td>               <td></td></tr>
+ <tr><td>For 5 minutes, 10 minutes before meals</td> <td>5</td>     <td>min</td>        <td></td>                 <td></td>                    <td></td>              <td></td>                   <td></td>               <td></td>                   <td></td>                   <td>AC</td>        <td>10</td>             <td></td></tr>
+ <tr><td>1 tablet 3 times daily, 30 minutes before meals</td> <td></td>  <td></td>      <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td>AC</td>        <td>30</td>             <td></td></tr>
+ <tr><td>BID, 30 mins before meal, for next 10 days</td> <td></td>  <td></td>            <td>2</td>               <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td>AC</td>        <td>30</td>             <td>Duration = 10 days</td></tr>
+ <tr><td>TID, for 14 days</td>   <td></td>                <td></td>                     <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td>Duration = 14 days</td></tr>
+ <tr><td>BID, start on 7/1/2015 at 1:00 PM</td> <td></td> <td></td>                     <td>2</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td>Period, low = 2015-07-01T13:00:00</td></tr>
+ <tr><td>Mon, Wed, Fri Morning</td> <td></td>             <td></td>                     <td>2</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td>mon | wed | fri</td>    <td></td>                   <td>MORN</td>      <td></td>               <td>Period, low = 2015-07-01T13:00:00</td></tr>
+ <tr><td>Every day at 10am</td>  <td></td>                <td></td>                     <td>2</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td>10:00</td>              <td></td>          <td></td>               <td>Period, low = 2015-07-01T13:00:00</td></tr>
 </table>
 
 <p>
@@ -1153,25 +1177,14 @@ part of the base specification</a>, and the structured data portions of the Timi
  <tr><td>QID</td>                <td></td>                <td></td>                     <td>4</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td></td>            <td></td></tr>
  <tr><td>Q4H</td>                <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>4</td>             <td>h</td>                  <td></td>                 <td></td>            <td></td></tr>
  <tr><td>Q6H</td>                <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>6</td>             <td>h</td>                  <td></td>                 <td></td>            <td></td></tr>
- <tr><td>AM</td>                 <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td></td>            <td></td></tr>
- <tr><td>PM</td>                 <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td></td>            <td></td></tr>
+ <tr><td>AM</td>                 <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td>MORN</td>        <td></td></tr>
+ <tr><td>PM</td>                 <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td>AFT or EVE</td>  <td></td></tr>
 </table>
 <p>
-These codes SHALL be understood as having the formal meanings documented in this table.
+These codes SHALL be understood as having the formal meanings documented in this table. Note that BID etc are defined as 'at institutionally specified times'. 
+For example, an institution may choose that BID is "always at 7am and 6pm".  If it is inappropriate for this choice to be made, the code BID 
+should not be used. Instead, a distinct organization-specific code should be used in place of the HL7-defined BID code and/or the a structured representation should be used (in this case, <code>timeOfDay</code>). 
 </p>
-<p>
-Additional Notes:
-</p>
-<ul>
-  <li>To Do: there's no way to indicate the time of day at which AM or PM occur. Add to events?</li>
-  <li>
-    BID etc are defined as 'at institutionally specified times'. For example, an institution may choose that BID is 
-    "always at 7am and 6pm".  If it is inappropriate for this choice to be made, the code BID 
-    should not be used. Instead, a distinct organization-specific code should be used in place of the HL7-defined 
-    BID code and/or the a structured representation should be used (in this case, specifying the two event times). <!-- gg: errr, how? -->
-  </li>
-</ul>
-
 
 <div class="use">
 <p><b>Constraints</b></p>
@@ -1184,8 +1197,8 @@ Timing is used in the following places: [%dtusage Timing%]
 
 
 
-<a name="Signature"></a>
-<a name="signature"></a>
+<a name="Signature"> </a>
+<a name="signature"> </a>
 <h2 style="margin-bottom: 1px">
 Signature
 </h2>
@@ -1242,8 +1255,8 @@ For example some environments may choose a different XAdES profile, hashing algo
 Signature is used in the following places: [%dtusage Signature%]
 </p>
 
-<a name="Annotation"></a>
-<a name="annotation"></a>
+<a name="Annotation"> </a>
+<a name="annotation"> </a>
 <h2 style="margin-bottom: 1px">
 Annotation
 </h2>

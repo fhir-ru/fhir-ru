@@ -8,8 +8,7 @@ Performing a clinical assessment is a fundamental part of a clinician's workflow
 In spite of this - or perhaps, because of it - there is wide variance in how clinical impressions are recorded. 
 Some clinical assessments simply result in an impression recorded as a single text note in the patient 'record' (e.g. "Progress satisfactory, 
 continue with treatment"), while others are associated with careful, detailed record keeping of the 
-evidence gathered, the reasoning leading to a differential diagnosis, and the actions taken during or planned
-as a result of the clinical assessment, and there is a continuum between these. This resource is intended to be 
+evidence gathered and the reasoning leading to a differential diagnosis, and there is a continuum between these. This resource is intended to be 
 used to cover all these use cases.
 </p>
 <p>
@@ -25,7 +24,7 @@ impression that this impression follows on from.
 <a name="dstu"> </a>
 <blockquote class="dstu-note">
 <p>
-<b>DSTU Note:</b> Unlike many other resources, there is little prior art with regard to exchanging records of 
+<b>STU Note:</b> Unlike many other resources, there is little prior art with regard to exchanging records of 
 clinical assessments. For this reason, this resource should be regarded as particularly 
 prone to ongoing revision. In terms of scope and usage, the Patient Care workgroup wishes to
 draw the attention of reviewers and implementers to the following issues: 
@@ -69,7 +68,7 @@ the storyboards there drove the design of the resource, and will be the basis fo
 <b>PLANNED CHANGE:</b>
 </p>
 <p>
-<b>Communication</b> is one of the <a href="workflow.html#event">Event</a> resources in the FHIR <a href="workflow.html">Workflow</a> specification.  As such, it
+<b>ClinicalImpression</b> is one of the <a href="workflow.html#event">Event</a> resources in the FHIR <a href="workflow.html">Workflow</a> specification.  As such, it
 is expected to be adjusted to align with the <a href="event.html">Event</a> workflow pattern which will involve adding a number of additional data elements and potentially
 renaming a few elements.  Any concerns about performing such alignment are welcome as ballot comments and/or tracker items.
 </p>

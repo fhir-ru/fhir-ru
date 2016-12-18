@@ -48,6 +48,7 @@ import org.hl7.fhir.definitions.generators.specification.DataTypeTableGenerator;
 import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
 import org.hl7.fhir.definitions.generators.specification.ToolResourceUtilities;
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.CommonSearchParameter;
 import org.hl7.fhir.definitions.model.Compartment;
 import org.hl7.fhir.definitions.model.ConstraintStructure;
 import org.hl7.fhir.definitions.model.DefinedCode;
@@ -71,20 +72,22 @@ import org.hl7.fhir.definitions.model.W5Entry;
 import org.hl7.fhir.definitions.model.WorkGroup;
 import org.hl7.fhir.definitions.validation.FHIRPathUsage;
 import org.hl7.fhir.dstu3.formats.FormatUtilities;
+import org.hl7.fhir.dstu3.formats.JsonParser;
 import org.hl7.fhir.dstu3.formats.XmlParser;
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.dstu3.model.Bundle.BundleType;
 import org.hl7.fhir.dstu3.model.CodeSystem;
-import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemHierarchyMeaning;
+import org.hl7.fhir.dstu3.model.CodeType;
 import org.hl7.fhir.dstu3.model.Composition;
-import org.hl7.fhir.dstu3.model.ConceptMap;
 import org.hl7.fhir.dstu3.model.Resource;
+import org.hl7.fhir.dstu3.model.SearchParameter;
 import org.hl7.fhir.dstu3.model.StringType;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.validation.ValidationMessage;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
 import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
 import org.hl7.fhir.igtools.spreadsheets.TypeParser;
@@ -102,6 +105,7 @@ import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
+import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -179,6 +183,7 @@ public class SourceParser {
     loadDictionaries();
     loadStyleExemptions();
 
+    loadCommonSearchParameters();
     loadPrimitives();
 
     for (String id : ini.getPropertyNames("search-rules"))
@@ -211,16 +216,20 @@ public class SourceParser {
 
     // basic infrastructure
     for (String n : ini.getPropertyNames("resource-infrastructure")) {
-      ResourceDefn r = loadResource(n, null, true);
+      ResourceDefn r = loadResource(n, null, true, false);
       String[] parts = ini.getStringProperty("resource-infrastructure", n).split("\\,");
       if (parts[0].equals("abstract"))
         r.setAbstract(true);
       definitions.getBaseResources().put(parts[1], r);
     }
 
+    logger.log("Load Resource Templates", LogMessageType.Process);
+    for (String n : ini.getPropertyNames("resource-templates"))
+      loadResource(n, definitions.getResourceTemplates(), false, true);
+    
     logger.log("Load Resources", LogMessageType.Process);
     for (String n : ini.getPropertyNames("resources"))
-      loadResource(n, definitions.getResources(), false);
+      loadResource(n, definitions.getResources(), false, false);
 
     processSearchExpressions();
     processContainerExamples();
@@ -252,6 +261,10 @@ public class SourceParser {
       loadConformancePackages(n, issues);
     }
 
+    for (ResourceDefn r : definitions.getBaseResources().values()) {
+      for (Profile p : r.getConformancePackages()) 
+        loadConformancePackage(p, r.getWg().getCode(), issues);
+    }
     for (ResourceDefn r : definitions.getResources().values()) {
       for (Profile p : r.getConformancePackages()) 
         loadConformancePackage(p, r.getWg().getCode(), issues);
@@ -260,25 +273,89 @@ public class SourceParser {
     
     for (ImplementationGuideDefn ig : definitions.getSortedIgs()) {
       if (!Utilities.noString(ig.getSource())) {
-        new IgParser(page, page.getWorkerContext(), page.getGenDate(), page, definitions.getCommonBindings(), ig.getCommittee(), definitions.getMapTypes(), definitions.getProfileIds(), definitions.getCodeSystems(), registry, page.getConceptMaps()).load(rootDir, ig, issues, igNames);
-        // register what needs registering
-        for (ValueSet vs : ig.getValueSets()) {
-          definitions.getExtraValuesets().put(vs.getId(), vs);
-          context.getValueSets().put(vs.getUrl(), vs);
+        try {
+          new IgParser(page, page.getWorkerContext(), page.getGenDate(), page, definitions.getCommonBindings(), ig.getCommittee(), definitions.getMapTypes(), definitions.getProfileIds(), definitions.getCodeSystems(), registry, page.getConceptMaps()).load(rootDir, ig, issues, igNames);
+          // register what needs registering
+          for (ValueSet vs : ig.getValueSets()) {
+            definitions.getExtraValuesets().put(vs.getId(), vs);
+            context.getValueSets().put(vs.getUrl(), vs);
+          }
+          for (Example ex : ig.getExamples())
+            definitions.getResourceByName(ex.getResourceName()).getExamples().add(ex);
+          for (Profile p : ig.getProfiles()) {
+            if (definitions.getPackMap().containsKey(p.getId()))
+              throw new Exception("Duplicate Pack id "+p.getId());
+            definitions.getPackList().add(p);
+            definitions.getPackMap().put(p.getId(), p);
+          }
+          for (Dictionary d : ig.getDictionaries())
+            definitions.getDictionaries().put(d.getId(), d);
+        } catch (Exception e) {
+          throw new Exception("Error reading IG "+ig.getSource()+": "+e.getMessage(), e);
         }
-        for (Example ex : ig.getExamples())
-          definitions.getResourceByName(ex.getResourceName()).getExamples().add(ex);
-        for (Profile p : ig.getProfiles()) {
-          if (definitions.getPackMap().containsKey(p.getId()))
-            throw new Exception("Duplicate Pack id "+p.getId());
-          definitions.getPackList().add(p);
-          definitions.getPackMap().put(p.getId(), p);
-        }
-        for (Dictionary d : ig.getDictionaries())
-          definitions.getDictionaries().put(d.getId(), d);
+      }        
+    }
+    closeTemplates();
+  }
+
+  private void loadCommonSearchParameters() throws FHIRFormatError, FileNotFoundException, IOException {
+    Bundle bnd = (Bundle) new XmlParser().parse(new CSFileInputStream(Utilities.path(srcDir, "searchparameter", "common-search-parameters.xml")));
+    for (BundleEntryComponent be : bnd.getEntry()) {
+      SearchParameter sp = (SearchParameter) be.getResource();
+      CommonSearchParameter csp = new CommonSearchParameter();
+      csp.setId(sp.getId());
+      csp.setCode(sp.getCode());
+      for (CodeType ct : sp.getBase()) {
+        csp.getResources().add(ct.asStringValue());
+        definitions.getCommonSearchParameters().put(ct.asStringValue()+"::"+sp.getCode(), csp);
       }
     }
   }
+
+  private void closeTemplates() throws Exception {
+    for (ResourceDefn r : definitions.getResourceTemplates().values()) 
+      closeTemplate(r.getRoot(), Utilities.unCamelCase(r.getName()), 0);
+  }
+
+  private void closeTemplate(ElementDefn element, String title, int level) throws Exception {
+    if (element.getShortDefn() != null)
+      element.setShortDefn(element.getShortDefn().replace("{{title}}", title));
+    if (element.getDefinition() != null)
+      element.setDefinition(element.getDefinition().replace("{{title}}", title));
+    if (element.getComments() != null)
+      element.setComments(element.getComments().replace("{{title}}", title));
+    if (element.getCommitteeNotes() != null)
+      element.setCommitteeNotes(element.getCommitteeNotes().replace("{{title}}", title));
+    if (element.getRequirements() != null)
+      element.setRequirements(element.getRequirements().replace("{{title}}", title));
+    if (element.getTodo() != null)
+      element.setTodo(element.getTodo().replace("{{title}}", title));
+    if (level == 0) {
+      // we're preparing this for code generation now; we want to ditch any labelled as 'no-gen'
+      List<ElementDefn> delete = new ArrayList<ElementDefn>();
+      for (ElementDefn child : element.getElements()) 
+        if (wantToGenerate(child))
+          closeTemplate(child, title, level+1);
+        else
+          delete.add(child);
+      element.getElements().removeAll(delete);   
+    } else 
+      if (!element.getElements().isEmpty()) {
+        throw new Exception("No complex elements in a template - found "+element.getName()+"."+element.getElements().get(0).getName()); 
+      }
+  }
+
+
+  private boolean wantToGenerate(ElementDefn child) {
+    String gen = child.getMapping("http://hl7.org/fhir/object-implementation");
+    if (gen == null)
+      return true;
+    else
+      return !"no-gen-base".equals(gen);
+  }
+
+
+
 
   private LogicalModel loadLogicalModel(String n) throws Exception {
     File spreadsheet = new CSFile(Utilities.path(srcDir, n, n+"-spreadsheet.xml"));    
@@ -517,7 +594,7 @@ public class SourceParser {
         definitions.getMapTypes().put(XMLUtil.getNamedChild(e, "url").getTextContent(), m);
         Element p = XMLUtil.getNamedChild(e, "preamble");
         if (p != null)
-          m.setPreamble(XMLUtil.elementToString(XMLUtil.getFirstChild(p)));
+          m.setPreamble(new XhtmlParser().parseHtmlNode(p).setName("div"));
         e = XMLUtil.getNextSibling(e);
       }
     } catch (Exception e) {
@@ -815,7 +892,7 @@ public class SourceParser {
     }
   }
 
-  private ResourceDefn loadResource(String n, Map<String, ResourceDefn> map, boolean isAbstract) throws Exception {
+  private ResourceDefn loadResource(String n, Map<String, ResourceDefn> map, boolean isAbstract, boolean isTemplate) throws Exception {
     String folder = n;
     File spreadsheet = new CSFile((srcDir) + folder + File.separatorChar + n + "-spreadsheet.xml");
 
@@ -828,7 +905,7 @@ public class SourceParser {
         spreadsheet), spreadsheet.getName(), definitions, srcDir, logger, registry, version, context, genDate, isAbstract, extensionDefinitions, page, false, ini, wg.getCode(), definitions.getProfileIds(), fpUsages, page.getConceptMaps());
     ResourceDefn root;
     try {
-      root = sparser.parseResource();
+      root = sparser.parseResource(isTemplate);
     } catch (Exception e) {
       throw new Exception("Error Parsing Resource "+n+": "+e.getMessage(), e);
     }
@@ -838,14 +915,16 @@ public class SourceParser {
     for (EventDefn e : sparser.getEvents())
       processEvent(e, root.getRoot());
 
-    definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getRoot().getDefinition(), n));
-        if (map != null) {
-      map.put(root.getName(), root);
-    }
     root.setStatus(ini.getStringProperty("status", n));
     if (Utilities.noString(root.getStatus()) && ini.getBooleanProperty("draft-resources", root.getName()))
       root.setStatus("draft");
-    context.getResourceNames().add(root.getName());
+    if (map != null) {
+      map.put(root.getName(), root);
+    }
+    if (!isTemplate) {
+      definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getRoot().getDefinition(), n));
+      context.getResourceNames().add(root.getName());
+    }
     return root;
   }
 

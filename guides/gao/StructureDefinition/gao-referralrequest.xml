@@ -18,7 +18,7 @@
   <date value="2015-09-22T20:02:49+10:00"></date>
   <description value="Profiles the referral to ensure that the services ordered can be identified and evaluated for appropraiteness"></description>
   <requirements value="The referral request resource is required to identify the referral service or services that were ordered, and to provide additional details that may be necessary to evaluate the order for appropriateness."></requirements>
-  <fhirVersion value="1.6.0"></fhirVersion>
+  <fhirVersion value="1.8.0"></fhirVersion>
   
   
   
@@ -89,8 +89,8 @@
       <min value="1"></min>
       <max value="*"></max>
       <type>
-        <code value="Reference"></code>
-        <profile value="http://hl7.org/fhir/StructureDefinition/Resource"></profile>
+        <code value="Reference" />
+         <targetProfile value="http://hl7.org/fhir/StructureDefinition/Resource"/>
       </type>
       <isModifier value="false"></isModifier>
       <isSummary value="true"></isSummary>

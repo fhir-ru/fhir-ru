@@ -37,7 +37,7 @@ roughly correspond to FHIR's idea of <a href="resource.html">resources</a>.  How
 segments can't be independently manipulated.  Additionally, not all segments have the characteristics 
 of independent identity held by FHIR resources.  Due to differences in scope and approach to 
 extensibility, HL7 v2 segments and data types are frequently cluttered with data elements that are not 
-used by (or even understood by) the majority of implementations
+used by (or even understood by) the majority of implementations.
 </p>
 <p>
 Segments can be composed into repeating and/or optional collections called "groups" to represent 
@@ -57,9 +57,9 @@ The HL7 v2 approach to granularity emphasizes re-use of "patterns" of informatio
 route information are not useful on their own, but they are useful in many circumstances.  Due to the 
 3-level nesting limit, separate segments are also required for data structures that would otherwise nest 
 too deeply.  FHIR takes a different approach to reusability, focusing on objects that can be maintained 
-independently.  The <a href="medicationorder.html">MedicationOrder</a> resource encompasses 
+independently.  The <a href="medicationrequest.html">MedicationRequest</a> resource encompasses 
 all of the aspects of the above segments, with the exception of some of the workflow aspects of ORC which 
-is handled by the <a href="task.html">Task</a> resource.  The <a href="medicationorder.html">MedicationOrder</a> 
+is handled by the <a href="task.html">Task</a> resource.  The <a href="medicationrequest.html">MedicationRequest</a> 
 resource is itself complex, having nested structures for dosage instructions, dispensing instructions, etc. 
 that are not simple data types.
 </p>
@@ -79,7 +79,7 @@ systems won't collide. (This can be an issue with Z-segments.)
 compatibility.  Content can only be added to the end of existing fields, components, etc.  Applications are 
 expected to ignore unexpected content or repetitions.  FHIR promises similar compatibility rules.  The path 
 to an element within a FHIR instance will remain unchanged in future versions.  Specific rules on handling 
-"new" elements (ignoring, checking for "must understand" indicators, etc. will be developed during the DSTU 
+"new" elements (ignoring, checking for "must understand" indicators, etc. will be developed during the STU 
 period.
 </p>
 <p>
@@ -192,8 +192,8 @@ whether particular segments represent information to be added, updated or delete
 populated with "null" (two consecutive double-quotes with no other characters) to note a field is 
 to be deleted.  An omitted element or repetition is generally interpreted as "retain existing data 
 unchanged".  This contrasts with the FHIR approach of requiring all data to be present as a snapshot.  
-Systems will either need to build in logic to generate a full snapshot of each resource or will need 
-to introduce modifier extensions to allow similar behavior to HL7 v2.
+Systems will either need to build in logic to generate a full snapshot of each resource or consider
+using the <a href="http.html#patch">Patch Operation</a> instead.
 </p>
 
 </div>

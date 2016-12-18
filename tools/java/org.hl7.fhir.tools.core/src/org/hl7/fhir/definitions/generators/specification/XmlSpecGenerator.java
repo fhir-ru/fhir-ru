@@ -48,7 +48,6 @@ import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionConstraintCom
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionSlicingComponent;
 import org.hl7.fhir.dstu3.model.ElementDefinition.PropertyRepresentation;
 import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
-import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.dstu3.model.Enumeration;
 import org.hl7.fhir.dstu3.model.Reference;
 import org.hl7.fhir.dstu3.model.StringType;
@@ -56,6 +55,7 @@ import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.Type;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
@@ -120,7 +120,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
       write("<span title=\"" + Utilities.escapeXml(root.getDefinition())
           + "\"><b>");
     else
-      write("<a href=\"" + (defPage + "#" + root.getName()) + "\" title=\""
+      write("<a href=\"" + (defPage + "#" + root.getSliceName()) + "\" title=\""
           + Utilities.escapeXml(root.getDefinition())
           + "\" class=\"dict\"><b>");
     write(rn);
@@ -808,9 +808,9 @@ public class XmlSpecGenerator extends OutputStreamWriter {
         write("<a href=\"" + prefix+(dtRoot + definitions.getSrcFile(t.getCode())
             + ".html#" + t.getCode() + "\">" + t.getCode())
             + "</a>");
-        if (t.getCode().equals("Reference") && t.hasProfile()) {
+        if (t.getCode().equals("Reference") && t.hasTargetProfile()) {
           write("(");
-          String pt = t.getProfile();
+          String pt = t.getTargetProfile();
           if (pt.startsWith("http://hl7.org/fhir/StructureDefinition/") && definitions.hasResource(pt.substring(40))) {
             write("<a href=\"" + prefix+pt.substring(40).toLowerCase() + ".html\">" + pt.substring(40) + "</a>");
           } else {
