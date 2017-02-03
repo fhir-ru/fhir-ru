@@ -14,6 +14,7 @@ in order to support consistent definitions for schema and UML derived code.
 [%file newnavbar%]
 
 <div class="col-9">
+<table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> </td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">n/a</a></td></tr></table>
 
 <a name="root"> </a>
 <h2>Модуль рабочего процесса<!-- Workflow Module --></h2>
@@ -36,10 +37,10 @@ Workflows can be performed using the <a href="task.html">Task</a> resource, <a h
 includes a <a href="workflow.html">workflow</a> page that describes a number of different communication and architectural <a href="workflow.html#commpatterns">workflow patterns</a>.
 </p>
 <p>
-This specification defines two logical models - <a href="request.html">Request</a> and <a href="event.html">Event</a> that define the patterns for resources that are typically
-involved in workflow.  These patterns include elements defining relationships between requests, between events across requests and events.  These relationships are summarized
-on the <a href="workflow.html#relationships">workflow</a> page, along with a complete <a href="workflow.html#list">list</a> of resources that follow (or are hoped to soon follow)
-the request and event patterns.
+This specification defines three logical models - <a href="definition.html">Definition</a>, <a href="request.html">Request</a> and <a href="event.html">Event</a> that define the
+patterns for resources that are typically involved in workflow.  These patterns include elements defining relationships between requests, between events across requests and events.
+These relationships are summarized on the <a href="workflow.html#relationships">workflow</a> page, along with a complete <a href="workflow.html#list">list</a> of resources that follow
+(or are hoped to soon follow) the request and event patterns.
 </p>
 <p>Finally the <a href="plandefinition.html">PlanDefinition</a> and <a href="activitydefinition.html">ActivityDefinition</a> resources combine to support the creation of protocols,
 orders sets, guidelines and other workflow definitions.</p>
@@ -50,7 +51,7 @@ orders sets, guidelines and other workflow definitions.</p>
 Workflow manifests in many places in the healthcare environment:
 </p>
 <ul>
-  <li>Creating a <a href="diagnosticrequest.html">lab order</a>, <a href="medicationorder.html">drug prescription</a>, <a href="referralrequest.html">referral</a> or other 
+  <li>Creating a <a href="diagnosticrequest.html">lab order</a>, <a href="medicationrequest.html">drug prescription</a>, <a href="referralrequest.html">referral</a> or other
   order clinical order or a <a href="claim.html">insurance claim</a>, <a href="enrollmentrequest.html">EnrollmentRequest</a> or similar administrative request and asking 
   for it to be actioned by a specific organization or practitioner</li>
   <li>Negotiating a fulfillment process, such as requesting further information before accepting a claim or referral or proposing an alternative therapy when processing an

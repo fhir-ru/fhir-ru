@@ -22,7 +22,7 @@
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>Примечание к DSTU:<!-- DSTU Note: --></b> Приветствуются отзывы по двум вопросам, связанным с ресурсом Composition:<!-- Feedback is welcome on two issues related to Composition: -->
+<b>Примечание к STU:<!-- DSTU Note: --></b> Приветствуются отзывы по двум вопросам, связанным с ресурсом Composition:<!-- Feedback is welcome on two issues related to Composition: -->
 </p>
 <ul>
  <li>Для многих композиций заголовок совпадает с текстом или именем для отображения элемента Composition.type (например "consultation" или "progress note"). Обратите внимание, что <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> не делает элемент "title" обязательным, однако нет известных сценариев, где было бы полезно опустить заголовок, поэтому на период пробного использования этот элемент сделан обязательным.

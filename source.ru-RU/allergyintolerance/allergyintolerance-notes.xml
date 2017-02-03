@@ -1,0 +1,203 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<h3>Отрицание наличия аллергий и непереносимостей<!-- Negated Allergies and Intolerances --></h3>
+
+<p>Важно различать утвердительное заявление о том, что у пациента нет известных аллергий, от невключения аллергий в медкарту (например эпизодический документ, где аллергии не считаются относящимися к этому документу) и утверждения о том, что аллергии не были проверены и не известны.
+<!-- It is important to differentiate between affirmatively stating that a patient has no known allergies versus either
+not including allergies in the record (for example an episodic document where the allergies are not considered 
+relevant to the document); or asserting that allergies were not reviewed and are unknown. --></p>
+
+<p>Аллергии со статусом "введено по ошибке (entered-in-error)" считаются недействующими аллергиями.<!-- Allergies with the status "entered-in-error" are considered to be inactive allergies. --></p>
+<p>Аллергии со статусом "опровергнуто (refuted)" обязательно должны отображаться для указания того, что реакция на вещество была исключена с высоким уровнем клинической уверенности (например дополнительным тестированием, повторной стимуляцией).<!-- Allergies with the status "refuted" must be displayed to indicate that a reaction to a substance has been ruled out
+with the high level of clinical certainty (e.g. additional testing, rechallenging).  --></p>
+<p>Перед тем как добавлять новую аллергию/непереносимость, следует проверить и согласовать список существующих отрицаемых или опровергнутых аллергий.<!-- Prior to adding a new allergy/intolerance, a list of existing negated and refuted reactions should be reviewed
+and reconciled. --></p>
+  
+  <p>
+    <b>Аллергии не проверены, вопрос о них не задан<!-- Allergies Not Reviewed, Not Asked --></b>
+  </p>
+  <p>Когда у отправляющей системы нет никакой информации о том, были ли проверены аллергии, либо есть утверждение о том, что вопрос про аллергии ещё не был задан, тогда следует использовать ресурс <a href="list.html">List</a> для указания значения List.emptyReason.code="notasked".<!-- When a sending system does not have any information about allergies being reviewed or the statement is about allergies not being asked yet, then the <a href="list.html">List</a> resource should be used to indicate the List.emptyReason.code="notasked". -->
+  </p>
+ 
+<p>  
+<b>Аллергии проверены, ни одна не выявлена<!-- Allergies Reviewed, None Identified --></b>
+</p>
+
+  <p>
+  Если делается утверждение, касающееся всего списка целиком (т. е. у пациента нет известных аллергий или непереносимостей любого типа), то системы могут использовать элемент List.emptyReason. Однако обычно предпочитают использовать код для утверждения "Нет известных аллергий" (например SNOMED CT: 160244002 |No known allergies (situation)|), чтобы все связанные с аллергиями аднные были доступны и можно было их запросить из экземпляров ресурса AllergyIntolerance. Экземпляры AllergyIntolerance с отрицанием наличия аллергий обычно используются в тех случаях, когда запись структурирована более тонко (например идет перечисление: нет лекарственных аллергий, нет пищевых аллергий, нет аллергии на орехи и т. п.).
+    <!-- Systems may use the List.emptyReason when a statement is about the full scope of the list (i.e. the patient has no known allergies or intolerances of any type). However, it is generally preferred to use a code for "No known allergies" (e.g., SNOMED CT: 160244002 |No known allergies (situation)|), so that all allergy data will be available and queryable from AllergyIntolerance resource instances.  Negated AllergyIntolerance instances are also typically used when the record is more fine-grained (e.g. no drug allergies, no food allergies, no nut allergies, etc.). -->
+  </p>  
+  <p>
+  Однако есть возможность включать отрицательные утверждения, которые будут работать на уровне всего списка целиком, также есть возможность иметь отдельные списки для таких вещей, как лекарственные аллергии в противоположность пищевым аллергиям, где это уместно по структуре.
+  Также обратите внимание, что необходимо быть внимательными при добавлении к списку новых AllergyIntolerances и проверять, что все негативные утвреждения, которые аннулируются добавлением новой записи, удалены из списка.
+  Например, если список содержит запись "нет известных пищевых аллергий", и вы добавляете запись "непереносимость винограда", то вам следует убедиться, что вы удалили запись "нет известных пищевых аллергий".
+    <!-- However, it is possible to include negation statements that apply at the level of the whole list and it is also possible to have separate lists for things like medication allergies vs. food allergies,  where that is appropriate to the architecture. Also note that care should be used when adding new AllergyIntolerances to a list to ensure that any negation statements that are voided by the addition of a new record are removed from the list. E.g. If the list contains a "no known food allergies" record and you add an "intolerance to grape flavor" record, then be sure you remove the "no known food allergies" record. -->
+  </p>
+
+<p>
+Также доступно расширение substanceExposureRisk для использования в качестве более завершённой структуры и гибкой альернативы элементу 'code' для представления положительных и отрицательных утверждений об аллергиях и непереносимостях (можно использовать либо элемент 'code', либо расширение substanceExposureRisk, но не оба).
+<!-- The substanceExposureRisk extension is also available for use as a more completely structured and flexible alternative to the 'code' element for representing positive and negative allergy and intolerance statements (either the 'code' element or the substanceExposureRisk extension may be used, but not both). -->
+</p>
+
+<blockquote class="dstu-note">
+<a name="dstu"> </a>
+<p>
+<b>Примечание к STU</b> Есть (по крайней мере) два способа указания значения "Нет известных аллергий" в текущей спецификации: с помощью CodeableConcept, как описано выше, и с помощью ресурса <a href="list.html">List</a> с элементом emptyReason. Во время периода пробного использования этого STU, не рекомендуется использовать ресурс <a href="list.html">List</a> в целях указания значения "Нет известных аллергий". Главная причина этого - дать возможность находить и запрашивать все данные по аллергиям и непереносимостям через один ресурс AllergyIntolerance.<!-- 
+<b>STU Note:</b>There are two primary ways of reporting "no known allergies" in the current specification: using the CodeableConcept,
+as described above, or using the <a href="list.html">List</a> resource with emptyReason. The third available option is using the substanceExposureRisk extension.  During the STU period, it is not recommended to use the <a href="list.html">List</a> resource for "no known allergies" reporting purposes. The principal reason for this is to allow all allergy or intolerance data to be found and to be consistently queryable from the single location of the AllergyIntolerance resource.  <a href="http://gforge.hl7.org/gf/project/fhir/tracker/">Feedback</a> is sought regarding the preferred approach. -->
+
+
+</p>
+</blockquote>
+  
+<div class="example">
+  <p>Указание значения "Нет известных аллергий" с помощью <a href="list.html">List</a>.emptyReason (не рекомендуется)<!-- No Known Allergies, using <a href="list.html">List</a>.emptyReason (discouraged) --></p>
+<pre>
+  &lt;List xmlns=&quot;http://hl7.org/fhir&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://hl7.org/fhir ..\..\schema\list.xsd&quot;&gt;
+ &lt;id value=&quot;example-empty-allergy&quot;/&gt;
+  &lt;text&gt;
+    &lt;status value=&quot;generated&quot;/&gt;
+    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+      &lt;p&gt; The patient is not aware of any allergies.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/text&gt;
+&lt;code&gt;
+    &lt;coding&gt;
+      &lt;system value=&quot;http://loinc.org&quot;/&gt;
+      &lt;code value=&quot;52472-8&quot;/&gt;
+      &lt;display value=&quot;Allergies and Adverse Drug Reactions&quot;/&gt;
+    &lt;/coding&gt;
+    &lt;text value=&quot;Current Allergy List&quot;/&gt;
+  &lt;/code&gt;
+  &lt;source&gt;
+    &lt;reference value=&quot;Patient/example&quot;/&gt;
+  &lt;/source&gt;
+  &lt;status value=&quot;current&quot;/&gt;
+  &lt;date value=&quot;2012-11-26T07:30:23+11:00&quot;/&gt;
+  &lt;mode value=&quot;snapshot&quot;/&gt;
+  &lt;emptyReason&gt;
+    &lt;coding&gt;
+      &lt;system value=&quot;http://hl7.org/fhir/special-values&quot;/&gt;
+      &lt;code value=&quot;nil-known&quot;/&gt;
+      &lt;display value=&quot;Nil Known&quot;/&gt;
+    &lt;/coding&gt;
+    &lt;text value=&quot;The patient is not aware of any allergies.&quot;/&gt;
+  &lt;/emptyReason&gt;
+&lt;/List&gt;
+</pre>
+ <p>"Нет известных пищевых аллергий" и Список лекарственных аллергий<!--  No Known Food Allergies and Medication Allergy List --></p>
+  <pre>
+  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;List xmlns=&quot;http://hl7.org/fhir&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://hl7.org/fhir ..\..\schema\list.xsd&quot;&gt;
+  &lt;id value=&quot;current-allergies&quot;/&gt;
+  &lt;text&gt;
+    &lt;status value=&quot;generated&quot;/&gt;
+    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+      &lt;p&gt;Patient Peter Chalmers, DOB = Dec 25, 1974, MRN = 12345 (Acme Healthcare) has the following allergies&lt;/p&gt;
+      &lt;ul&gt;
+        &lt;li&gt;No known food allergies&lt;/li&gt;
+        &lt;li&gt;Allergenic extract, penicillin (high)&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/text&gt;
+  &lt;code&gt;
+    &lt;coding&gt;
+      &lt;system value=&quot;http://loinc.org&quot;/&gt;
+      &lt;code value=&quot;52472-8&quot;/&gt;
+      &lt;display value=&quot;Allergies and Adverse Drug Reactions&quot;/&gt;
+    &lt;/coding&gt;
+    &lt;text value=&quot;Current Allergy List&quot;/&gt;
+  &lt;/code&gt;
+  &lt;source&gt;
+    &lt;reference value=&quot;Patient/example&quot;/&gt;
+  &lt;/source&gt;
+  &lt;status value=&quot;current&quot;/&gt;
+  &lt;date value=&quot;2015-07-14T23:10:23+11:00&quot;/&gt;
+  &lt;mode value=&quot;snapshot&quot;/&gt;
+  &lt;entry&gt;
+    &lt;item&gt; 
+      &lt;reference value=&quot;AllergyIntolerance/nofoodallergies&quot;/&gt;
+    &lt;/item&gt;
+  &lt;/entry&gt;
+  &lt;entry&gt;
+    &lt;item&gt; 
+      &lt;reference value=&quot;AllergyIntolerance/penicillin&quot;/&gt;
+    &lt;/item&gt;
+  &lt;/entry&gt;  
+&lt;/List&gt;
+</pre>
+</div>
+
+<p>При выявлении новой аллергии, статус записи отрицания аллергий должен быть изменен на "опровергнуто (refuted)" для гарантии того, что системы, ссылающиеся на эту запись, узнали, что это больше не верно.<!-- If a new allergy is discovered, the negated allergy record must be updated with the "refuted" status - 
+to ensure that systems referring to this record are aware that this is no longer true. --></p>
+
+<h3>Использование элемента AllergyIntolerance.criticality<!-- Use of AllergyIntolerance.criticality --></h3>
+<p>
+Системы, поддерживающие только одно понятие, должны будут определить, является ли то, что они хранят, критичностью или серьезностью, и замапить на соответствующее место. Критичность относится к вероятности того, что аллергия/непереносимость нанесет существенный вред. Серьезность относится к степени проявления признаков реакции. Умеренное затруднение дыхания может иметь высокую критичность, в то время как серьезная сыпь будет иметь низкую критичность. Серьезность специфична для конкретного прохождения реакции.
+<!-- Systems that only support one notion will have to determine whether what they're capturing is criticality or severity and 
+map to the appropriate place.  Criticality refers to the likelihood the allergy/intolerance could result in significant 
+harm.  Severity refers to the degree of manifestation of the reaction symptom.  Moderate breathing difficulty would have 
+high criticality while a severe rash would have low criticality. Severity is specific to a particular reaction occurrence. -->
+</p>
+<p>
+Для систем, которые отслеживают только общие характеристики реакции, а не специфические реакции, будет предложено руководство по использованию структуры "реакция", и они просто не будут указывать дату.
+<!-- For systems that only track generic reaction characteristics rather than a specific reaction will provide guidance to use 
+the "reaction" structure and simply provide no date. -->
+</p>
+
+
+
+<h3>Ссылки<!-- References --></h3>
+
+<ul>
+<li>
+Adverse Reaction, draft archetype, National eHealth Transition Authority [Internet]. NEHTA Clinical Knowledge Manager. Authored: 08 Nov 2010. Available at: <a href="http://dcm.nehta.org.au/ckm/OKM.html#showarchetype_1013.1.868_7">http://dcm.nehta.org.au/ckm/OKM.html#showarchetype_1013.1.868_7</a> (accessed Jan 16, 2012).
+</li>
+<li>
+Allergy and Intolerance Domain Analysis Model, Release 1, HL7 [Internet]. Publication pending, expected August 2014; Available at <a href="http://wiki.hl7.org/images/1/1b/Allergy_and_Intolerance_INFORM_2013_MAY.pdf">http://wiki.hl7.org/images/1/1b/Allergy_and_Intolerance_INFORM_2013_MAY.pdf</a> (accessed 06 July 2014). 
+</li>
+<li>
+Allergy, clinical element model, GE/Intermountain Healthcare. Clinical Element Model Search. Available at: <a href="http://intermountainhealthcare.org/cem/Pages/Detail.aspx?NCID=520861661&amp;k=allergy">http://intermountainhealthcare.org/cem/Pages/Detail.aspx?NCID=520861661&amp;k=allergy</a> (accessed Jan 16, 2012).
+</li>
+<li>
+Edwards IR, Aronson JK. Adverse drug reactions: definitions, diagnosis, and management. Lancet. 2000 Oct 7;356(9237):1255-9. PubMed PMID: 11072960. 
+</li>
+<li>
+Horsfield P, Sibeko S. Representation in Electronic Patient Records of Allergic Reactions, Adverse Reactions, and Intolerance of Pharmaceutical Products [Internet]. London, UK: National Health Service; 2006 Sep 07 [cited 2011 Jun 21]; Available at <a href="https://svn.connectingforhealth.nhs.uk/svn/public/nhscontentmodels/TRUNK/ref/NPfIT/Allergy_ADR_Intolerance%20v%201.2Final.doc">https://svn.connectingforhealth.nhs.uk/svn/public/nhscontentmodels/TRUNK/ref/NPfIT/Allergy_ADR_Intolerance%20v%201.2Final.doc</a>.
+</li>
+<li>
+Long R, Bentley S. SCG Guidance on the Representation of Allergies and Adverse Reaction Information Using NHS Message Templates [Internet]. London, UK: National Health Service; 2008 Apr 30 [cited 2011 Jun 21]; Available at <a href="http://www.connectingforhealth.nhs.uk/systemsandservices/data/scg/scg0001.pdf">http://www.connectingforhealth.nhs.uk/systemsandservices/data/scg/scg0001.pdf</a>.
+</li>
+<li>
+Microsoft. Design Guidance: Displaying Adverse Drug Reaction Risks [Internet]. 2009 January 28 [cited 2011 Jun 21]; Available at <a href="http://www.mscui.net/DesignGuide/DisplayingAllergies.aspx">www.mscui.net/DesignGuide/DisplayingAllergies.aspx</a>.
+</li>
+<li>
+Microsoft. Design Guidance: Recording Adverse Drug Reaction Risks [Internet]. 2009 March 27 [cited 2011 Jun 21]; Available at <a href="http://www.mscui.net/DesignGuide/RecordingAllergies.aspx">www.mscui.net/DesignGuide/RecordingAllergies.aspx</a>.
+</li>
+<li>
+Mosby. Mosby's Pocket Dictionary of Medicine, Nursing and Health Professions. 6th Edition. USA: Mosby Elsevier; 2010
+</li>
+<li>
+National E-Health Transition Authority. Adverse Reactions (Data Specifications) Version 1.1 [Internet]. Sydney, Australia: NEHTA; 2008 Feb 29 [cited 2011 Jun 21]; Available at <a href="http://www.nehta.gov.au/component/docman/doc_download/453-adverse-reaction-data-specification-v11">http://www.nehta.gov.au/component/docman/doc_download/453-adverse-reaction-data-specification-v11</a>
+</li>
+<li>
+Riedl MA, Casillas AM. Adverse drug reactions: types and treatment options. Am Fam Physician. 2003 Nov 1;68(9):1781-90. Review. PubMed PMID: 14620598.
+</li>
+<li>
+Royal Australian College of General Practitioners. Fact Sheet: Allergies &amp; Adverse Reactions (Draft). 2010.
+</li>
+<li>
+Thien FC. Drug hypersensitivity. Med J Aust. 2006 Sep 18;185(6):333-8. Review. PubMed PMID: 16999678.
+</li>
+<li>
+Uppsala Monitoring Centre (WHO): <a href="http://www.who-umc.org/">http://www.who-umc.org/</a>
+</li>
+<li>
+European Medicines Agency: <a href="http://www.ema.europa.eu/ema/">http://www.ema.europa.eu/ema/</a>
+</li>
+<li>
+DIRECTIVE 2010/84/EU OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL, of 15 December 2010, amending, as regards pharmacovigilance, Directive 2001/83/EC on the Community code relating to medicinal products for human use: <a href="http://ec.europa.eu/health/files/eudralex/vol-1/dir_2010_84/dir_2010_84_en.pdf">http://ec.europa.eu/health/files/eudralex/vol-1/dir_2010_84/dir_2010_84_en.pdf</a>
+</li>
+</ul>
+
+</div>

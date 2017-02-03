@@ -42,6 +42,13 @@ this case the <i>status</i> element is set to 'planned'. -->
 This is always expected to be the same period as the encounter itself, where this is different then another encounter is entered which captures this information which is a partOf this encounter instance. -->
 </p>
 
+<p>
+The Procedure and encounter have references to each other, and these should be to different procedures;
+one for the procedure that was performed during the encounter (stored in Prodecure.encounter), and another for cases
+where an encounter is a result of another procedure (stored in Encounter.indication) such as a followup encounter to
+resolve complications from an earlier procedure.
+</p>
+
 <h3>Status Management</h3>
 <p>
 Во время жизненного цикла encounter получает разные статусы. Как правило, они назначаются в порядке или процессе организации: запланирован, в процессе, закончен/отменен (planned, in-progress, finished/cancelled).

@@ -39,13 +39,13 @@ Most of the comments and guidance provided here will apply to those solutions as
 
 <h3>Сходства и различия с v3<!-- v3 Similarities and Differences --></h3>
 <p>
-<b>Эталонная модель:</b> Использование HL7 RIM - основа методологии HL7 v3, это важнейшая часть спецификации и проводного формата. Все элементы данных в экземплярах HL7 v3 выведены либо из RIM, либо из типов данных ИСО. В FHIR это справедливо для большинства элементов ресурсов и типов данных, но не для всех. Некоторые ресурсы (<a href="structuredefinition.html">StructureDefinition</a>, <a href="conformance.html">Conformance</a>, 
+<b>Эталонная модель:</b> Использование HL7 RIM - основа методологии HL7 v3, это важнейшая часть спецификации и проводного формата. Все элементы данных в экземплярах HL7 v3 выведены либо из RIM, либо из типов данных ИСО. В FHIR это справедливо для большинства элементов ресурсов и типов данных, но не для всех. Некоторые ресурсы (<a href="structuredefinition.html">StructureDefinition</a>, <a href="capabilitystatement.html">CapabilityStatement</a>, 
 <a href="valueset.html">ValueSet</a> и др.) имеют дело с содержимым, находящимся вне области действия RIM. Также в некоторых случаях были внесены исправления в типы данных FHIR, которые ещё не поддержаны в модели типов данных HL7 v3. Ожидается, что эти изменения будут поддержаны в следующей версии модели типов данных v3. Основное отличие состоит в том, что проводной формат FHIR достигается не за счёт установления соответствия с RIM. В результате получаются значительно более лаконичные и интуитивно понятные экземпляры. Можно реализовать FHIR, абсолютно не зная HL7 RIM.
 <!-- <b>Reference model:</b> The use of the HL7 RIM is a core aspect 
 of the HL7 v3 methodology and it is front and center in the specification and the wire 
 format. All data elements in HL7 v3 instances are derived from either the RIM or the ISO 
 data types. In FHIR, this is true of most resources and data type elements, but not all. 
-Some resources (<a href="structuredefinition.html">StructureDefinition</a>, <a href="conformance.html">Conformance</a>, 
+Some resources (<a href="structuredefinition.html">StructureDefinition</a>, <a href="capabilitystatement.html">CapabilityStatement</a>, 
 <a href="valueset.html">ValueSet</a>, etc.) deal with content that is outside the RIM's scope. And in a few circumstances, adjustments have been made in 
 the FHIR data types that are not yet supported in the HL7 v3 data types model. The expectation 
 is that these changes will be supported in the next version of the v3 data types model. The 
@@ -62,11 +62,11 @@ The allowed codes for these attributes are strictly controlled by HL7. FHIR also
 that are limited to codes defined in the FHIR specification - those using the <a href="datatypes.html#code">code</a> 
 data type. However, these are generally limited to attributes with business meaning - status, contact types, etc. -->
 </p>
-<p>И FHIR, и v3 используют наборы значений для определения кодов, которые можно использовать в атрибутах в определённом контексте. Однако в FHIR набор значений <a href="valueset.html">ValueSet</a> - это всего лишь один из типов ресурсов, что означает, что его можно пересылать как любой другой фрагмент данных. (То же самое верно и для <a href="structuredefinition.html">StructureDefinition</a>, <a href="conformance.html">Conformance</a> и других ресурсов метауровня.)
+<p>И FHIR, и v3 используют наборы значений для определения кодов, которые можно использовать в атрибутах в определённом контексте. Однако в FHIR набор значений <a href="valueset.html">ValueSet</a> - это всего лишь один из типов ресурсов, что означает, что его можно пересылать как любой другой фрагмент данных. (То же самое верно и для <a href="structuredefinition.html">StructureDefinition</a>, <a href="capabilitystatement.html">CapabilityStatement</a> и других ресурсов метауровня.)
  <!-- Both FHIR and v3 make use of value sets to define the sets of codes that can be used for 
 attributes in particular contexts. However, in FHIR, a <a href="valueset.html">ValueSet</a> 
 is just another type of resource, meaning it can be sent as part of an instance just like any
- other piece of data. (The same is true of <a href="structuredefinition.html">StructureDefinition</a>, <a href="conformance.html">Conformance</a> 
+ other piece of data. (The same is true of <a href="structuredefinition.html">StructureDefinition</a>, <a href="capabilitystatement.html">CapabilityStatement</a> 
  and other meta-level resources.) --></p>
 <p>
 <b>Степень детализации и ссылки:</b> модели HL7 v3 разбиты на 3 основных типа - обёртки, полезная нагрузка и общие типы элементов сообщений (CMET). Они комбинируются для определения содержимого, которое можно отправить по проводам за один раз. В некоторых случаях степень детализации каждой их этих моделей будет равняться степени детализации FHIR-ресурсов, но не всегда. Модели v3 подразделяются на основе ожидания их повторного использования. Модели FHIR подразделяются на основе автономности объектов, которые они представляют. В HL7 v3 многочисленные модели могут существовать для представления одной и той же существенной лежащей в основе медицинской информации конструкции. Например на уровне HL7 International есть 10 различных общих типов элементов сообщений для понятия "Пациент". Кроме того, некоторые модели из группы полезной нагрузки представляют пациента напрямую, без использования этих элементов. Дальнейшие вариации моделей v3 создаются филиалами HL7 и другими реализаторами v3. Каждый из этих различных элементов имеет свою собственную схему и может использовать различные имена элементов, различные уровни вложенности и различные ограничивающие условия. В FHIR же есть только один ресурс <a href="patient.html">Patient</a>. Для этого ресурса можно создать множество профилей, однако все они будут использовать одну и ту же схему и поддерживать один и тот же проводной формат.
@@ -180,14 +180,14 @@ is quite possible. -->
 explicitly controlled. When converting to FHIR, the context will need to be propagated into each resource. -->
 </p>
 <p>
-<b>Режим обновления:</b> Для экземпляров HL7 v3 обновления обычно обрабатываются в режиме моментального снимка, похожено на подход в FHIR - если какая-то информация меняется, отправляется вся запись, включая изменённые элементы данных. Однако методология v3 не поддерживает введение свойства "updateMode", которое позволило бы отправлять только изменения для всего или части экземпляра. Каждое повторение элемента помечается свойством updateMode для указания, что с этим элементом необходимо сделать: добавить, удалить, обновить и т. п. Другие значения свойства updateMode дают дополнительный контроль над обновлениями. Как и для <a href="comparison-v2.html#V2-updateMode">V2</a> выше, реализаторам потребуется сгенерировать полный снимок каждого ресурса или вводить расширения-модификаторы, чтобы повторить подобное v3 поведение.
+<b>Режим обновления:</b> Для экземпляров HL7 v3 обновления обычно обрабатываются в режиме моментального снимка, похожено на подход в FHIR - если какая-то информация меняется, отправляется вся запись, включая изменённые элементы данных. Однако методология v3 не поддерживает введение свойства "updateMode", которое позволило бы отправлять только изменения для всего или части экземпляра. Каждое повторение элемента помечается свойством updateMode для указания, что с этим элементом необходимо сделать: добавить, удалить, обновить и т. п. Другие значения свойства updateMode дают дополнительный контроль над обновлениями. Как и для <a href="comparison-v2.html#V2-updateMode">V2</a> выше, реализаторам потребуется сгенерировать полный снимок каждого ресурса or consider using the <a href="http.html#patch">Patch Operation</a> instead.
 <!-- <b>Update mode:</b> In HL7 v3 instances, updates are generally handled in snapshot mode, similar to the FHIR 
 approach - if any information changes, the entire record is sent, including the modified data elements. However, 
 the v3 methodology does support the introduction of an "updateMode" property to allow only the changes to be sent 
 for all or part of an instance. Each element repetition is flagged with an updateMode to indicate whether the 
 element is to be added, removed, updated, etc. Additional updateModes allow further control over updates. As 
 with the <a href="comparison-v2.html#V2-updateMode">V2 discussion</a> above, implementers will need to generate a full snapshot of 
-each resource or will need to introduce modifier extensions to allow similar behavior to v3. -->
+each resource or consider using the <a href="http.html#patch">Patch Operation</a> instead. -->
 </p>
 <p>
 <b>Дополнительные соображения:</b> Большинство соображений по реализации соответствия между FHIR и <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>, также верны и для v3. В частности: <a href="comparison-v2.html#V2-extensions">Расширения</a>, <a href="comparison-v2.html#V2-contained">Независимые и вложенные ресурсы</a>, <a href="comparison-v2.html#V2-identification">Идентификация ресурсов</a>, <a href="comparison-v2.html#V2-merging">Объединение ссылок и ресурсов</a> и <a href="comparison-v2.html#V2-humanReadable">Генерация человекочитаемого содержимого</a>.

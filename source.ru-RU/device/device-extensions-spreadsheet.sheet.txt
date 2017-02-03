@@ -1,0 +1,10 @@
+﻿
+=== Sheet Bindings =====================================
+
+=== Sheet Search =====================================
+
+ -- Row 1 -----------------------------------
+  Name = din
+  Type = token
+  Description = The donation identification number (DIN)
+  Path = Device.extension(http://hl7.org/fhir/SearchParameter/device-extensions-Device-din)

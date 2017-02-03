@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+
+<!--
+These elements SHALL always appear in this order. These basic elements shared by all resources come first
+in order to support consistent definitions for schema and UML derived code. 
+-->
+[%settitle Административный модуль%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    [%file newheader%]
+</head>
+<body>
+    [%file newnavbar%]
+
+    <div class="col-9">
+
+        <a name="root"> </a>
+        <h2>Административный модуль</h2>
+        <a name="intro"> </a>
+        <h3>Введение</h3>
+        <p>
+            The Administrative module covers the base data that is then linked into
+            the other modules for clinical content, finance/billing, workflow, etc.<br />
+            This of course is built on the FHIR technology platform modules.
+        </p>
+        <p>
+            Before any clinical data can be recorded, the basic information on the patient
+            must be recorded, and then often the basis of the interaction (such as an encounter)
+        </p>
+
+        <a name="index"> </a>
+        <h3>Index</h3>
+        <table class="bare">
+            [%res-category Patient Registers|Track people involved in receiving healthcare, the basics nearly everything else references back to%]
+            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            [%res-item Patient%]
+            [%res-item RelatedPerson%]
+            [%res-item Person%]
+            [%res-item Group%]
+        </table>
+        <div>
+            <img src="administration-module-person.png" alt="Image showing the relationship between resources representing people" width="584px" />
+        </div>
+        <p>
+            <blockquote>
+                <em>Note:</em> <a href="patient.html#links">Patient linking</a> should also be considered when evaluating
+                searches with references to other resources. e.g. Searching for conditions for a patient.<br />
+                At present the specification does not define if the links should be also followed to include
+                conditions that reference the linked patients too. We are currently seeking feedback on this.
+            </blockquote>
+            <blockquote>
+                <em>Note:</em> The Person resource may be used as a centralized register of people that may
+                eventually be involved in healthcare, and could be used as the central coe demographics register.<br/>
+                However the fields/values in Person are duplicated in the other resources, and in many cases the
+                Person resource will be hosted on external systems.
+            </blockquote>
+        </p>
+
+        <table class="bare">
+            [%res-category Clinical Categorization Resources|Most clinical actitivies occur grouped in some way. Long term care is typically covered by an EpisodeOfCare, where short term care by encounters. Account associates the tracking of transactions back to a Patient (or other resource). Flag is just used to highlight a warning or other notification about a patient (or other resource)%]
+            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            [%res-item EpisodeOfCare%]
+            [%res-item Encounter%]
+            [%res-item Account%]
+            [%res-item Flag%]
+        </table>
+        <div>
+            <img src="administration-module-interactions.png" alt="Image showing the administration interactions" width="600px" />
+        </div>
+        <p>
+            <blockquote>
+                <em>Note:</em> The Billable Item resource does not exist at the moment, but is proposed to be the link between the
+                encounters and the billing/climing systems.
+            </blockquote>
+        </p>
+
+        <table class="bare">
+            [%res-category Service Provider Directory Resources|Service Directory resources are usually stored in the administration section of applications, and may even be synchronized from external systems. %]
+            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            [%res-item Organization%]
+            [%res-item Location%]
+            [%res-item Practitioner%]
+            [%res-item HealthcareService%]
+            [%res-item Endpoint%]
+            [%res-item PractitionerRole%]
+        </table>
+        <div>
+            <img src="administration-module-prov-dir.png" alt="Image showing the provider directory resources" width="513px" />
+        </div>
+        <p>
+            <blockquote>
+                <em>Note:</em> The PractitionerRole resource is a draft concept to experiment with the
+                extraction from within the practitioner resource. It will be the subject of a Provider Directory Connectathon,
+                and the Baltimore WGM Connectathon in September 2016<br />
+                If this is approved, then the Role component in Practitioner would likely be removed.
+            </blockquote>
+        </p>
+
+        <table class="bare">
+            [%res-category Devices and Substances|Other assets are often registered in the administration system, and maintained as master files. %]
+            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            [%res-item Device%]
+            [%res-item DeviceComponent%]
+            [%res-item DeviceMetric%]
+            [%res-item Substance%]
+        </table>
+
+
+        <a name="secpriv"> </a>
+        <h3>Security and Privacy</h3>
+        <p>
+            Patient privacy is handled with security labels and tags in the Resource <a href="resource.html#Meta">Meta</a> property.
+            This is the standard way that the FHIR specification provides this supporting information
+            to a sub-system that implements it (which is not defined by FHIR).
+        </p>
+        <p>
+            One of the more common use cases is for marking a patient as being a <a href="security-labels.html">celebrity</a>.
+        </p>
+        <p>
+            For more general considerations, see <a href="secpriv-module.html">the Security and Privacy module</a>.
+        </p>
+
+        <a name="uses"> </a>
+        <h3>Common use Cases</h3>
+        <p>
+            All systems require access to administrative resources, such as for:
+        </p>
+        <ul>
+            <li>Maintaining master file lists of patients, practitioners, organizations, locations, etc.</li>
+            <li>Synchronizing/interrogating content from an external registry. Such as a Services Directory or centralized Person register</li>
+            <li></li>
+        </ul>
+
+        <a name="roadmap"> </a>
+        <h3>Developmental Roadmap</h3>
+        <p>
+            The Patient Administration is currently working through resources that support:
+        </p>
+        <ul>
+            <li>Encounters and Scheduling <i>(enhance maturity of encounters and further develop in/outpatient scheduling)</i></li>
+            <li>Service Provider Directory <i>(in co-ordination with the Argonaut Provider Directory group)</i></li>
+            <li>Financial Management interactions <i>(account/coverage, then billable item, which links administration to billing)</i></li>
+        </ul>
+        <p>
+            Many of the administrative resources are part of the core resources that most systems
+            use first and have formed the basis for most people's first experiences with FHIR.<br />
+            However this limitted exposure has still to be proven in all contexts, such as veterinary.
+        </p>
+    </div>
+
+    [%file newfooter%]
+</body>
+</html>

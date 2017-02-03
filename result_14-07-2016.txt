@@ -1,0 +1,81 @@
+
+*** Parsing file datatypes/extension.xml
+
+*** Parsing file datatypes/elementdefinition.xml
+
+*** Parsing file terminologies/bindings.xml
+
+*** Parsing file valueset/valueset-spreadsheet.xml
+
+*** Parsing file subscription/subscription-spreadsheet.xml
+
+*** Parsing file structuredefinition/structuredefinition-spreadsheet.xml
+
+*** Parsing file sequence/sequence-spreadsheet.xml
+
+*** Parsing file searchparameter/searchparameter-spreadsheet.xml
+
+*** Parsing file resource/resource-spreadsheet.xml
+
+*** Parsing file questionnaire/questionnaire-spreadsheet.xml
+
+*** Parsing file procedure/procedure-spreadsheet.xml
+
+*** Parsing file practitionerrole/practitionerrole-spreadsheet.xml
+
+*** Parsing file practitioner/practitioner-spreadsheet.xml
+
+*** Parsing file plandefinition/plandefinition-spreadsheet.xml
+
+*** Parsing file patient/patient-spreadsheet.xml
+
+*** Parsing file parameters/parameters-spreadsheet.xml
+There is partial match
+Only one level of Tuples is allowed
+Only one level of nested parameters is allowed
+Допустим только один уровень таплов
+----------------------------
+
+*** Parsing file operationdefinition/operationdefinition-spreadsheet.xml
+
+*** Parsing file namingsystem/namingsystem-spreadsheet.xml
+There is partial match
+If the value is a URI intended for use as FHIR system identifier, the URI should not contain &quot;>If the value is a URI intended for use as FHIR system identifier, the URI should not contain &quot;\&quot; or &quot;?&quot; or &quot;,&quot; since this makes escaping very difficult<quot; or &quot;?&quot; or &quot;,&quot; since this makes escaping very difficult
+If the value is a URI intended for use as FHIR system identifier, the URI should not contain &quot;\&quot; or &quot;?&quot; or &quot;,&quot; since this makes escaping very difficult
+Если значением является URI для использования в качестве системного идентификатора FHIR, то этот URI не должен содержать символы "\", "?" и ",", поскольку это сильно затрудняет экранирование
+----------------------------
+
+*** Parsing file medicationstatement/medicationstatement-spreadsheet.xml
+
+*** Parsing file medicationorder/medicationorder-spreadsheet.xml
+
+*** Parsing file medicationdispense/medicationdispense-spreadsheet.xml
+
+*** Parsing file medicationadministration/medicationadministration-spreadsheet.xml
+There is partial match
+Free text dosage instructions can be used for cases where the instructions are too complex to code. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication.
+Free text dosage can be used for cases where the dosage administered is too complex to code. When coded dosage is present, the free text dosage may still be present for display to humans.&#13;&#13;The dosage instructions should reflect the dosage of the medication that was administered.&#13;
+Произвольные текстовые инструкции по дозировке могут указываться в случае, когда они слишком сложные, чтобы их закодировать. Если присутствуют кодированные инструкции, произвольные текстовые инструкции могут также прилагаться для отображения людям, принимающим или вводящим этот медикамент.
+----------------------------
+
+*** Parsing file list/list-spreadsheet.xml
+
+*** Parsing file library/library-spreadsheet.xml
+
+*** Parsing file implementationguide/implementationguide-spreadsheet.xml
+
+*** Parsing file immunization/immunization-spreadsheet.xml
+
+*** Parsing file episodeofcare/episodeofcare-spreadsheet.xml
+
+*** Parsing file encounter/encounter-spreadsheet.xml
+
+*** Parsing file domainresource/domainresource-spreadsheet.xml
+
+*** Parsing file conformance/conformance-spreadsheet.xml
+
+*** Parsing file conceptmap/conceptmap-spreadsheet.xml
+
+*** Parsing file codesystem/codesystem-spreadsheet.xml
+
+*** Parsing file bundle/bundle-spreadsheet.xml

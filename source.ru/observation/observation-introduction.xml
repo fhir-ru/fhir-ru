@@ -39,7 +39,7 @@ provides a clinical or workflow context for a set of observations. --> </p>
   <li>Social history like tobacco use,  family support, or cognitive status</li>
   <li>Core characteristics like pregnancy status, or a death assertion</li>
 </ul>
-
+<h3>Core Profiles for Observation</h3>
 <p>Также для ресурса Observation были определены следующие основные <a href="profiling.html">профили</a>. <b>Если реализации используют ресурс Observation, то они должны соответствовать этим профилям при выражении концептов, специфичных для этих профилей, в виде структурированных данных:</b> 
 <!-- The following core <a href="profiling.html">profiles</a> for the Observation resource have been defined as well. <b>If implementations use the Observation Resource, they SHALL conform to these profiles when expressing the profile-specific concepts as structured data:</b>  -->
 </p>

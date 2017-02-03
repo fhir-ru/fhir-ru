@@ -41,7 +41,7 @@ XML-представление для ресурса описано с помо�
  <li>Для создания допустимого XML-экземпляра ресурса просто замените содержимое элементов и атрибутов допустимыми значениями в соответствии с кардинальным множеством, типовыми правилами и комментариями к каждому элементу</li>
  <li>Имена ресурсов и элементов являются регистрозависимыми (тем не менее дубликаты, различающиеся только регистром, никогда не вводились)</li>
  <li>Элементы должны всегда появляться в том порядке, в котором они описаны</li>
- <li>Когда повторение элемента разрешено, элементы упорядочены, и реализации должны сохранять этот порядок (примечание: смысл такого упорядочения может быть не известен)<!-- When an element is allowed to repeat, the elements are ordered, and implementations must preserve order (note: the meaning of the order may not be known) --></li>
+ <li>Когда повторение элемента разрешено, элементы упорядочены, и техническая инфраструктура должна иметь возможность доступа к элементам в правильном порядке (см. также раздел <a href="conformance-rules.html#cardinality">Cardinality Rules</a> с описанием элементов с кардинальным множеством &gt; 1)<!-- When an element is allowed to repeat, the elements are ordered, and the technical infrastructure needs to be able to access the items in the right order (see also <a href="conformance-rules.html#cardinality">Cardinality Rules</a> for a further description of elements with cardinality &gt; 1) --></li>
  <li>Некоторые свойства представлены в виде атрибутов: значения примитивных типов в атрибуте <code>value</code>, URL-адреса расширений в атрибуте <code>url</code> в расширениях, и свойство <code>id</code> в элементах (но не в ресурсах, где идентификатор ресурса - это элемент)<!-- A few properties are represented as attributes: values of primitive types in a <code>value</code> attribute, extension URLs in the <code>url</code> attribute on an extension, and the <code>id</code> property on elements (but not on resources, where the resource id is an element) --></li>
  <li>Любой из XML-элементов может иметь атрибут "id", служащий в качестве <a href="references.html#id">цели внутренней ссылки</a>. Атрибут "id" не показывается в этом формате</li>
  <li>FHIR-элементы всегда принадлежат пространству имен <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>. Обычно оно указывается в корневом элементе в качестве пространства имен по умолчанию.
@@ -57,6 +57,7 @@ XML-представление для ресурса описано с помо�
  <li>Реализаторы ДОЛЖНЫ обрезать начальные и конечные пробелы перед операцией записи и ДОЛЖНЫ обрезать начальные и конечные пробелы при чтении значений атрибутов<!-- Implementers SHOULD trim leading and trailing whitespace before writing and SHOULD trim leading and trailing whitespace when reading attribute values --></li>
  <li>Иконка замочка (<img alt="??" src="lock.png"/>) означает, что элемент вводит или зависит от <a href="conformance-rules.html#constraints">дополнительных правил</a>, которые регулируют его присутствие и/или содержимое</li>
  <li>XML-комментарии, команды обработки и форматирования не являются частью содержимого ресурса</li>
+ <li>There SHALL be no DTD references in FHIR resources (because of <a href="https://en.wikipedia.org/wiki/XML_external_entity_attack">XXE security exploit</a>)</li>
  <li>XML-ресурсы должны обмениваться в кодировке UTF-8. Указание схемы кодирования символов с помощью команды обработки <code>&lt;?xml encoding="UTF-8" ?&gt;</code> не обязательно, но рекомендуется</li>
  <li>Другие команды обработки НЕ ДОЛЖНЫ быть включены и НЕ ДОЛЖНЫ требоваться в целях правильного понимания и/или представления данных ресурса или его описательной части. 
 Приложения МОГУТ сохранять команды обработки при оперировании ресурсами, но это не является обязательным</li>
@@ -81,14 +82,14 @@ XML-представление для ресурса описано с помо�
 </p>
 <p>
 Учитывая то, как работают <a href="extensibility.html">расширения</a>, приложения, читающие XML-ресурсы, никогда не встретят неизвестные элементы. Однако как только приложение начнёт работать с другими приложениями, которые соответствуют последним версиям данной спецификации, могут начать встречаться неизвестные XML-элементы. Приложения МОГУТ выбирать, игнорировать неизвестные элементы, чтобы благоприятствовать будущей совместимости в этом отношении, однако могут также выбрать не делать этого - что будет нормальным поведением для приложений, сгенерированных из схемы. 
-Приложения объявляют свою модель поведения относительно неизвестных элементов с помощью <a href="conformance-definitions.html#Conformance.acceptUnknown">Conformance.acceptUnknown</a>.
+Приложения объявляют свою модель поведения относительно неизвестных элементов с помощью <a href="capabilitystatement-definitions.html#CapabilityStatement.acceptUnknown">CapabilityStatement.acceptUnknown</a>.
 <!-- Given the way <a href="extensibility.html">extensions</a> work, applications reading
 XML resources will never encounter unknown elements. However once an application 
 starts trading with other appplications that conform to later versions of this specification,
 unknown XML elements may be encountered. Applications MAY choose to ignore unknown elements
 in order to foster forwards compatibility in this regard, but may also choose not to - which 
 would be the normal behavior for schema generated applications. Applications declare 
-their behavior with regard to unknown elements using <a href="conformance-definitions.html#Conformance.acceptUnknown">Conformance.acceptUnknown</a>. -->
+their behavior with regard to unknown elements using <a href="capabilitystatement-definitions.html#CapabilityStatement.acceptUnknown">CapabilityStatement.acceptUnknown</a>. -->
 </p>
 
 <a name="schema-gen"> </a>
@@ -182,6 +183,10 @@ following additional canonicalization URLS are also defined:
  <tr>
   <td>http://hl7.org/fhir/canonicalization/xml#narrative</td>
   <td>The method only covers the <code>Resource.id</code> and Narrative is retained</td>
+ </tr>
+ <tr>
+  <td>http://hl7.org/fhir/canonicalization/xml#document</td>
+  <td>The signs everything in a Bundle, except for the Bundle.id and Bundle.metadata on the root Bundle (allows for a document to copied from server to server)</td>
  </tr>
 </table>
 <p>

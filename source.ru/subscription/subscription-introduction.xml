@@ -1,27 +1,27 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-
 <a name="scope"> </a>
 <h2>Область применения и использование</h2>
-
 <p>
-Ресурс Subscription используется для определения подписки на основе метода push
-с сервера в другую систему. После регистрации подписки на сервере,
-сервер начинает проверять каждый ресурс, который создается или обновляется, и
-если этот ресурс соответствует заданным критериям, он посылает сообщение
-в определённый "канал", чтобы другая система могла
-предпринять соответствующее действие. Сервер может отправлять
-уведомления без какой-либо информации о совпадении
-ресурса или включать в них ресурс целиком.
-<!-- The subscription resource is used to define a push based subscription 
-from a server to another system. Once a subscription is registered with the server, 
-the server checks every resource that is created or updated, and 
-if the resource matches the given criteria, it sends a message
-on the defined "channel" so that another system is able 
-to take an appropriate action. The server is able to send 
-notifications without any information about the matching
-resource, or with the entire resource. -->
+После создания ресурса subscription любые создаваемые или обновляемые ресурсы, 
+которые отвечают критериям в этом ресурсе, вызывают отправку уведомления в указанный канал.
+Критерии <a href="search.html">поиска</a> являются строками, 
+которые интерпретируются таким же образом, как если бы они добавлялись к базовому URL и отправлялись через REST API. 
+Обратите внимание, что критерии поиска применяются к новому значению ресурса.
+Из этого можно сделать вывод, что уведомление не высылается на удаление ресурса, или когда
+ресурс обновляется таким образом, что он больше не удовлетворяет этим критериям.
+<!-- Once a subscription is created, any newly created or updated resources 
+that meet the criteria in the resource cause a notification to be sent using the 
+provided channel. The criteria are <a href="search.html">Search</a> strings
+that have the same interpretation as if they were appended to the base 
+URL and submitted using the REST API. Note that the search criteria 
+are applied to the new value of the resource. The consequence of this 
+is that there is no notification when a resource is deleted, or when 
+a resource is updated so that it no longer meets the criteria.  -->
+</p>
+<p>
+The server is able to send notifications without any information about the matching resource, or with the entire resource.
 </p>
 <p>
 Поддерживается несколько типов каналов:
@@ -43,28 +43,18 @@ resource, or with the entire resource. -->
 <!-- See below for further discussion of the various channels. Note that sending
 the entire resource creates security concerns that must be managed by the server. -->
 </p>
+<p>
+Subscriptions - это активные ресурсы; сервер может принять подписку,  только если он будет посылать уведомления в указанный канал для всех ресурсов, полученных впоследствии. Подписка перестает быть активной, как только удаляется с сервера.<!-- Subscriptions are active resources; a server can only accept a subscription
+if it will execute the specified channel for any resources subsequently 
+received. The subscription is no longer active once it is deleted from 
+the server. -->
+</p>
 </div>
 
 <div>
 <a name="bnr"> </a>
 <h2>Границы и связи</h2>
-<p>
-После создания ресурса subscription любые создаваемые или обновляемые ресурсы, 
-которые отвечают критериям в этом ресурсе, вызывают отправку уведомления в указанный канал.
-Критерии <a href="search.html">поиска</a> являются строками, 
-которые интерпретируются таким же образом, как если бы они добавлялись к базовому URL и отправлялись через REST API. 
-Обратите внимание, что критерии поиска применяются к новому значению ресурса.
-Из этого можно сделать вывод, что уведомление не высылается на удаление ресурса, или когда
-ресурс обновляется таким образом, что он больше не удовлетворяет этим критериям.
-<!-- Once a subscription is created, any newly created or updated resources 
-that meet the criteria in the resource cause a notification to be sent using the 
-provided channel. The criteria are <a href="search.html">Search</a> strings
-that have the same interpretation as if they were appended to the base 
-URL and submitted using the REST API. Note that the search criteria 
-are applied to the new value of the resource. The consequence of this 
-is that there is no notification when a resource is deleted, or when 
-a resource is updated so that it no longer meets the criteria.  -->
-</p>
+
 <p>
 В качестве альтернативы ресурсу subscriptions, RESTful API описывает подписку на основе метода опрашивания, использующий <a href="bundle.html">bundles</a> и операцию <a href="http.html#history">history</a>. Этот метод опрашивания позволяет устанавливать намного более тесную взаимосвязь между клиентом и сервером, которая не предполагает упущения обновлений и/или удалений.
 <!-- As an alternative to subscriptions, the RESTful API describes a 
@@ -73,14 +63,6 @@ and the <a href="http.html#history">history operation</a>. This method
 of polling allows for a much tighter relationship between the client and 
 the server that doesn't involve missing updates and/or deletes.  -->
 </p>
-<p>
-Subscriptions - это активные ресурсы; сервер может принять подписку,  только если он будет посылать уведомления в указанный канал для всех ресурсов, полученных впоследствии. Подписка перестает быть активной, как только удаляется с сервера.
-<!-- Subscriptions are active resources; a server can only accept a subscription
-if it will execute the specified channel for any resources subsequently 
-received. The subscription is no longer active once it is deleted from 
-the server. -->
-</p>
-
 </div>
 
 </div>

@@ -103,7 +103,7 @@ describes: -->
  <li>CommunicationRequest.status:  <%sclist CommunicationRequest.status%></li>
  <li>DeviceUseRequest.status: <%sclist DeviceUseRequest.status%></li>
  <li>DiagnosticRequest.status: <%sclist DiagnosticRequest.status%></li>
- <li>MedicationOrder.status: <%sclist MedicationOrder.status%></li>
+ <li>MedicationRequest.status: <%sclist MedicationRequest.status%></li>
  <li>ProcedureRequest.status: <%sclist ProcedureRequest.status%></li>
  <li>ReferralRequest.status: <%sclist ReferralRequest.status%></li>
 </ul>
@@ -126,7 +126,7 @@ describes: -->
  <li>DiagnosticReport.status: <%sclist DiagnosticReport.status%></li>
  <li>MedicationStatement.status: <%sclist MedicationStatement.status%>. (note: in-progress and completed are states reflecting the administration of the medication)</li>
  <li>DocumentManifest.status: <%sclist DocumentManifest.status%></li>
- <li>Conformance.status: <%sclist Conformance.status%></li>
+ <li>CapabilityStatement.status: <%sclist CapabilityStatement.status%></li>
  <li>StructureDefinition.status: <%sclist StructureDefinition.status%></li>
  <li>DataElement: <%sclist DataElement.status%></li>
  <li>Questionnaire.status: <%sclist Questionnaire.status%></li>
@@ -145,7 +145,7 @@ describes: -->
 <p>Клинический статус несколько отличается от предыдущих значений статусов, так как он не имеет отношения к рабочему процессу или жизненному циклу. Вместо этого он показывает, как данные влияют на клиническую интерпретацию. Вот два примера:
 <!-- Clinical status is somewhat different than the previous status values, since it does not deal with workflow or lifecycle. Instead, it indicates how evidence is affecting a clinical interpretation. Here are two examples: --></p>
 <ul>
-	<li>AllergyIntolerance.status: <%sclist AllergyIntolerance.status%></li>
+	<li>AllergyIntolerance.clinicalStatus: <%sclist AllergyIntolerance.clinicalStatus%></li>
 	<li>Condition.clinicalStatus: <%sclist Condition.clinicalStatus%></li>
 
 </ul>
@@ -183,9 +183,9 @@ might be published on the RESTful interface for the following reasons: -->
  <li>the resources were received from another system as part of a referral package, and were current for that system when they were received</li> -->
 </ul>
 <p>
-В ресурсе Condition нет элемента, который мог бы передавать разницу между этими использованиями. В частности, может не быть способа различать текущие ресурсы и ресурсы, которые были текущими в прошлом, без необходимости ретроспективного изменения ресурсов, что было бы проблематично с точки зрения целостности и электронных цифровых подписей.
+В ресурсе Condition нет элемента, который мог бы передавать разницу между этими использованиями. В частности, может не быть способа различать текущие и прошлые ресурсы, без необходимости ретроспективного изменения ресурсов, что было бы проблематично с точки зрения целостности и электронных цифровых подписей.
 <!-- There is no element on the Condition resource than can convey the difference between these usages. In particular, there can be 
-no way to differentiate between current and past current resources without having to retrospectively alter resources, which is 
+no way to differentiate between current and past resources without having to retrospectively alter resources, which is 
 problematic with regard to intergrity and digital signatures.  -->
 </p>
 <p>
@@ -239,10 +239,10 @@ FHIR определяет следующие имена функциональн
  </tr>
  <tr>
   <td>$current-medications</td>
-  <td><a href="medicationstatement.html">MedicationStatement</a>/ <a href="medicationorder.html">MedicationOrder</a></td>
+  <td><a href="medicationstatement.html">MedicationStatement</a>/ <a href="medicationrequest.html">MedicationRequest</a></td>
   <td>A list of all medications that the patient is taking. The 'current medications list' 
-	  sometimes may in clude a mix of prescribed and over-the-counter medications - or only some of them. The list may 
-	  contain a mix of <a href="medicationorder.html">prescriptions</a> and more general <a href="medicationstatement.html">statements</a>, or only one of the two. 
+	  sometimes may include a mix of prescribed and over-the-counter medications - or only some of them. The list may 
+	  contain a mix of <a href="medicationrequest.html">prescriptions</a> and more general <a href="medicationstatement.html">statements</a>, or only one of the two. 
 		The list may also correspond to a formal reconciled medication administration schedule, but more often does not</td>
   <td>57828-6	(Prescription list), 10160-0 (History of medication)</td>
  </tr>
@@ -274,7 +274,7 @@ but can be associated with the Request/Order and the Entity Availability life cy
 
 <p>
 Таблица ниже суммирует информацию о том, какие действия ожидаются для каждого ресурса, если впоследствии обнаружится, что он содержит ошибочные данные.
-<!-- This table summarises what is expected to happen for each resource in the case 
+<!-- This table summarizes what is expected to happen for each resource in the case 
 that the data it contains is subsequently found to be an erroneous entry. -->
 </p>
 

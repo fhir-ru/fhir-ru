@@ -24,7 +24,7 @@ Observations to model Questionnaires. Such use cases should now utilize the Ques
 <!-- The order of questions within groups, groups within groups and groups within questions is relevant and must be retained for display and capture. --></li>
 </ul>
 
-<a name="qversusr" />
+<a name="qversusr"> </a>
 <h3>Использование вопросников по сравнению с использованием других ресурсов<!-- Using Questionnaires versus using Resources --></h3>
 <p>
 Имеется значительное совпадение между информацией, охватываемой <b>Questionnaires</b> и другими ресурсами (в частности <a href="familymemberhistory.html">FamilyMemberHistory</a>,
@@ -91,13 +91,13 @@ are expected to be introduced as extensions. --></li>
 purposes: --></p>
 <ul>
   <li><b>identifier</b> используется, чтобы ссылаться на весь вопросник в целом в условиях деловой деятельности. Это номер, напечатанный наверху формы или рядом с ней, когда делается выбор между альтернативными формами.</li>
-  <li>Атрибут <b>id</b>, поддерживаемый для каждого элемента, используется для ссылок в пределах ресурса, например для связывания описательной части с соответствующим дискретным элементом.</li>
-  <li>Элемент <b>linkId</b> в вопросах и группах устанавливает связь между элементами в <a href="questionnaireresponse.html">QuestionnaireAnsers</a> и их определениями в Questionnaire. Это <i>единственный</i> способ связи между группами и вопросами в Questionnaire и QuestionnaireResponse.</li>
+  <li>Атрибут <b>id</b>, поддерживаемый для каждого элемента, используется для ссылок в пределах ресурса, например для связывания описательной части с соответствующим дискретным элементом. Ids are not generally displayed to end users</li>
+  <li>Элемент <b>linkId</b> в вопросах и группах устанавливает связь между элементами в <a href="questionnaireresponse.html">QuestionnaireResponse</a> и их определениями в Questionnaire. Это <i>единственный</i> способ связи между группами и вопросами в Questionnaire и QuestionnaireResponse. These are also not displayed to end users</li>
 <!--   <li><b>identifier</b> is used to reference the overall questionnaire in business terms.  It is the number printed across the top of the form or listed beside the form
   when making a choice between alternate forms.</li>
-  <li>The <b>id</b> attribute supported on each element is used for references within a resource, for example linking narrative to discrete elements</li>
-  <li>The <b>linkId</b> element on questions and groups establishes a link between elements in a <a href="questionnaireresponse.html">QuestionnaireAnsers</a> and their
-  definition inside a Questionnaire.  This is the <i>only</i> way to link between the groups and questions in a Questionnaire and QuestionnaireResponse</li> -->
+  <li>The <b>id</b> attribute supported on each element is used for references within a resource, for example linking narrative to discrete elements.  Ids are not generally displayed to end users</li>
+  <li>The <b>linkId</b> element on questions and groups establishes a link between elements in a <a href="questionnaireresponse.html">QuestionnaireResponse</a> and their
+  definition inside a Questionnaire.  This is the <i>only</i> way to link between the groups and questions in a Questionnaire and QuestionnaireResponse.  These are also not displayed to end users</li> -->
 </ul>
 
 <h3>Определения вопросов<!-- Question Definitions --></h3>
@@ -105,32 +105,47 @@ purposes: --></p>
 Вопросники можно наполнить любыми вопросами, которые задумает автор, сформулированными в любой подходящей или удобной форме. Однако стандартизация вопросов и введение ограничений, действующих на прилагаемые ответы, увеличивает возможность сравнения данных, собранных через вопросники. Есть два механизма, определённые в спецификации, для связывания вопроса (или группы) со стандартным определением:
 <!-- Questionnaires can be crafted using any questions the author can conceive phrased in whatever manner is appropriate or convenient.  However, standardization of
 questions and the constraints enforced on the accompanying answers increases the ability to compare data gathered across questionnaires.  There are two
-mechanisms defined in the specification for linking a Question (or Group) to a standardized definition: -->
+mechanisms defined in the specification for linking a Question (or Group) to a standardized definition:
 </p>
 <ul>
   <li>Элемент <code>concept</code> как в Group, так и в Question позволяет связывать отдельный вопрос, группу вопросов или даже целый вопросник с заранее определенным справочником вопросов и групп вопросов, таким как LOINC.</li>
   <li>Расширение <a href="questionnaire-extensions.html#deReference">deReference</a> позволяет связывать вопрос или группу с ресурсом <a href="dataelement.html">DataElement</a> (DE), который формально задает этот элемент данных.</li>
-<!--   <li>The <code>concept</code> element on both Group and Question allows an individual question, a group of questions or even the questionnaire as a whole to be associated
+<li>The <code>concept</code> element on both Group and Question allows an individual question, a group of questions or even the questionnaire as a whole to be associated
   with a pre-defined terminology of questions and question groups such as LOINC</li>
   <li>The <a href="questionnaire-extensions.html#deReference">deReference</a> extension allows a question or group to be associated with the
-  <a href="dataelement.html">DataElement</a> (DE) resource that formally defines the data element.</li> -->
+  <a href="dataelement.html">DataElement</a> (DE) resource that formally defines the data element.</li>
+</ul>
+ -->
+Items can be directly linked to an <a href="elementdefinition.html">ElementDefinition</a> using <code>Questionnaire.item.definition</code>
+which provides details for the item. If a definition is provided, then the following element values can be derived from the definition: 
+</p>
+<ul>
+<li>concept (from ElementDefinition.code)</li>
+<li>type (from ElementDefinition.type)</li>
+<li>required (from ElementDefinition.min)</li>
+<li>repeats (from ElementDefinition.max)</li>
+<li>maxLength (from ElementDefinition.maxLength)</li>
+<li>options (from ElementDefinition.binding)</li>
 </ul>
 <p>
-Привязка к официальным определениям вопроса позволяет сравнивать данные, введенные в различные вопросники. Если у систем есть необходимые мэппинги на официальные определения, такие связи с официальными определениями также могут использоваться для автоматического предзаполнения или извлечения данных из соответствующего ресурса <a href="questionnaireresponse.html">QuestionnaireResponse</a>.
-<!-- Linking to formal definitions of a question allows data captured by distinct questionnaires to be compared.  If systems have the necessary mappings to the
-formal definition, linkages to formal definitions may also be used to automatically pre-populate or extract data from a corresponding 
-<a href="questionnaireresponse.html">QuestionnaireResponse</a> resource. -->
+Any information provided in these elements overrides the information from the definition.
+The ElementDefinition must be in a <a href="structuredefinition.html">StructureDefinition</a> or a <a href="dataelement.html">DataElement</a>, 
+and must have a fragment identifier that identifies the specific data element by it's id (<a href="element.html">Element</a>.id). 
+E.g. http://hl7.org/fhir/StructureDefinition/Observation#Observation.value[x]
 </p>
 <p>
-ПРИМЕЧАНИЕ: даже если дается ссылка на стандартные определения вопросов с помощью расширения <code>concept</code> или <code>deReference</code>, такую информацию, как текст вопроса, тип данных и набор значений все равно СЛЕДУЕТ объявлять для вопроса. Системы, выполняющие обработку вопросника, могут не иметь доступа или поддержки возможности поиска определений вопросов во внешних источниках. Если информация не содержится внутри вопросника, другие системы могут быть не в состоянии отобразить или использовать такой вопросник.
-<!-- NOTE: Even if standard question definitions are referenced using <code>concept</code> or the <code>deReference</code> extension, information such as the question text,
+The definitions may also be used to automatically pre-populate answers, or extract data from a corresponding <a href="questionnaireresponse.html">QuestionnaireResponse</a> resource.
+</p>
+<p>
+ПРИМЕЧАНИЕ: даже если дается ссылка на стандартные определения вопроса, такую информацию, как текст вопроса, тип данных и набор значений все равно СЛЕДУЕТ объявлять для вопроса. Системы, выполняющие обработку вопросника, могут не иметь доступа или поддержки возможности поиска определений вопросов во внешних источниках. Если информация не содержится внутри вопросника, другие системы могут быть не в состоянии отобразить или использовать такой вопросник.
+<!-- NOTE: Even if a standard question definition is provided, information such as the question text,
 data type and value set SHOULD still be declared for the question.  Systems processing the questionnaire may not have access to or support the ability to look
 up the question definitions from external sources.  If the information is not included in-line within the questionnaire, other systems may not be able to to render
 or use the Questionnaire. -->
 </p>
 <p>
-Если внешняя ссылка (<code>concept</code> или <code>deReference</code> расширение) включена наряду с информацией о вопросе, такой как текст вопроса, тип данных или набор значений, ожидается, что содержимое вопроса и определение, на которое дается ссылка, будут согласованы между собой. Однако FHIR не диктует требований к степени согласованности. Например должен ли текст вопроса точно совпадать? Обоснованно ли ограничивать набор допустимых значений возможных ответов на вопрос? Эти правила будет необходимо устанавливать непосредственно в среде реализации.
-<!-- If an external reference (<code>concept</code> or <code>deReference</code> extension) is included along with question information such as question text, data type or
+Если внешнее определение включено наряду с информацией о вопросе, такой как текст вопроса, тип данных или набор значений, ожидается, что содержимое вопроса и определение, на которое дается ссылка, будут согласованы между собой. Однако FHIR не диктует требований к степени согласованности. Например должен ли текст вопроса точно совпадать? Обоснованно ли ограничивать набор допустимых значений возможных ответов на вопрос? Эти правила будет необходимо устанавливать непосредственно в среде реализации.
+<!-- If an external definition is included along with question information such as question text, data type or
 value set, it is expected that the content for the question and the referenced definition would be in alignment.  However, FHIR does not dictate what degree of
 alignment is required; e.g. Does the question text need to match exactly?  Is it legitimate for a question to constrain the allowed value set of possible answers?
 These rules will need to be established within implementation environments. -->
@@ -168,7 +183,7 @@ Where the names are the same (ignoring case), the "answer" must use the specifie
   </tbody>
 </table>
 
-<a name="choices"/>
+<a name="choices"> </a>
 <h3>Разрешённые значения ответов на вопросы<!-- Permitted values for questions --></h3>
 <p>
 Многие вопросники ставят ограничения на перечень допустимых значений на приведённый вопрос. FHIR поддерживает эту возможность с помощью элемента <code>item.options</code> или

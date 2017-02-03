@@ -1,0 +1,8 @@
+[diagram]
+classes=Extension,Narrative,Reference
+element-attributes=true
+
+[directions]
+Extension=right
+Narrative=left
+Reference=down

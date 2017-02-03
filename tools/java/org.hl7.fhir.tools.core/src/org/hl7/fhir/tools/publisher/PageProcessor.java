@@ -332,12 +332,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider, IReferen
   
   public final static String WEB_PUB_NOTICE =
       "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px;\">\r\n"+
-       " This is the Current officially released version of FHIR, which is <a href=\"timelines.html\">DSTU 2</a>. <br/>For a full list of available versions, see the <a href=\"http://hl7.org/fhir/directory.html\">Directory of published versions</a>.\r\n"+
+       " Это текущая, официально выпущенная версия FHIR, которая является <a href=\"timelines.html\">DSTU 2</a>. <br/>Полный список всех доступных версий см. в <a href=\"http://hl7.org/fhir/directory.html\">Указателе опубликованных версий</a>.\r\n"+
       "</p>\r\n";
   
   public final static String CI_PUB_NOTICE = 
       "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px;\">\r\n"+
-          "This is the Continuous Integration Build of FHIR (will be incorrect/inconsistent at times). See the <a href=\"http://hl7.org/fhir/directory.html\">Directory of published versions</a>\r\n"+
+          "Это непрерывная интеграционная сборка FHIR (может быть некорректной время от времени). См. <a href=\"http://hl7.org/fhir/directory.html\">Указатель опубликованных версий</a>\r\n"+
           "</p>\r\n";
 
   public static final String CODE_LIMIT_EXPANSION = "10000";

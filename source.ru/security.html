@@ -145,7 +145,7 @@ some other kind of profiled REST interface.
 <p>
 Правила безопасности HTTP распространяются на <a href="http.html">RESTful API</a>. 
 Please follow the <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec15.html"> HTTP specification Security Considerations section 15</a>.  
-<a href="http.html#root">Service Root URL</a> определяет необходимость использования SSL. 
+<a href="http.html#root">Service Base URL</a> определяет необходимость использования SSL. 
 Сервер может затребовать аутентификацию клиента и, возможно, сертификат (client certificate).
 </p>
 <p>
@@ -162,23 +162,19 @@ so as to prevent inappropriate risks (e.g. audit logging of the GET parameters i
 <!-- To support browser-based client applications, servers SHOULD 
 implement <a href="http://enable-cors.org/">cross-origin resource sharing</a> for the <a href="http.html">REST operations</a>. -->
 </p>
-<p>При реализации цепочечного поиска необходимо соблюдать ограничения по пользователю в цепочечном поиске, и будет приемлемо просто опустить ресурсы из поиска, если пользователь не авторизован, однако сервер может поддерживать добавление operationOutcome для сообщения, что при использовании других токенов доступа могут стать доступными дополнительные ресурсы (например break the glass) (<a href="operationoutcome-example-break-the-glass.html">example</a>).
-<!-- Chained search implementations need to observe the restrictions on a user in the chained 
-search, and that it would be normal to simply omit resources from the search if the user is not 
-authorized, but a server may elect to add an OperationOutcome to indicate that additional 
-resources may be available if other access tokens are used (e.g. break the glass) (<a href="operationoutcome-example-break-the-glass.html">example</a>).  -->
-</p>
+
 <a name="authentication"> </a>
 <h2>Аутентификация (Authentication)</h2>
 <p>
 FHIR-серверы, не являющиеся тестовыми, должны проводить аутентификацию клиентов (clients). Сервер может проводить
 аутентификацию отдельной клиентской системы и внести ее в список доверенных, либо аутентифицировать каждого пользователя
-в отдельности в соответствии с целым рядом различных способов. Для решений, основанных на веб, рекомендуется использовать 
-<a href="http://oauth.net/">OAuth</a> для аутентификации и авторизации пользователей.
+в отдельности в соответствии с целым рядом различных способов. Для решений, основанных на веб, можно использовать <a href="http://openid.net/connect/">OpenID Connect</a> для аутентификации пользователей и 
+<a href="http://oauth.net/">OAuth</a> можно использовать для аутентификации и авторизации пользователей.
 Профиль для OAuth <a href="http://docs.smarthealthit.org/">Smart-On-FHIR</a> полностью интегрирован в FHIR и является предпочтительным методом использования OAuth.
 <!-- Other than testing systems, FHIR servers should authenticate the clients. 
 The server may choose to authenticate the client system and trust it, or to authenticate
 the individual user by a variety of techniques. For web-centric use, 
+<a href="http://openid.net/connect/">OpenID Connect</a> may be used to authenticate users and
 <a href="http://oauth.net/">OAuth</a> may be used to authenticate and/or authorize 
 the users. The <a href="http://docs.smarthealthit.org/">Smart-On-FHIR</a> profile 
 on OAuth is tightly integrated with FHIR and is the preferred method for using OAuth. -->
@@ -225,7 +221,7 @@ In Role-Based Access Control (RBAC), permissions are operations on an object tha
 Permissions are grouped into roles. A role characterizes the functions a user is allowed to perform. Roles 
 are assigned to users. If the user’s role has the appropriate permissions to access an object, then that 
 user is granted access to the object. FHIR readily enables RBAC, as FHIR Resources are object types and 
-the CRUDE events (the FHIR equivalent to permissions in the RBAC scheme) are operations on those objects. 
+the CRUDE (Create, Read, Update, Delete, Execute) events (the FHIR equivalent to permissions in the RBAC scheme) are operations on those objects. 
 </p>
 <p>
 In Attribute-Based Access Control (ABAC), a user requests to perform operations on objects. That user's 
@@ -268,6 +264,22 @@ Access control constraints may result in data returned in a read or search being
 redacted or otherwise restricted. See <a href="updates.html">Variations between 
 Submitted data and Retrieved data</a>.
 </p>
+<h3>
+Access Control Considerations
+</h3>
+The FHIR RESTful API provides a number of ways that a client may request or create information. 
+When designing a system to authorize access to information, all potential access methods must be considered. 
+They include the following:
+<ul>
+<li>The basic CRUD methods on resources. A security implementation must evaluate whether a client can read, update create or delete a given resource.</li>
+<li>Chained search provides the ability to disclose information on related resources. A security implementation must consider whether a client has the permission to access the resource being searched on, as well as the chained resource(s)</li>
+<li>_include and _revinclude search parameters allow client to request related resources. A security implementation must determine if the client has access to the included resources.</li>
+<li><a href="security-labels.html">security labels</a></li>
+<li>Several resources, including Bundle, Composition, Group and List, are designed to contain other resources. A security implementation should consider whether access to an individual resource, such as a Bundle, should permit access to all resources contained within the resource.</li>
+<li>FHIR defines several operations that may be supported by a server. Security implementations must evaluate whether a client has the ability to invoke these operations and what information should be returned from them. Fetch Encounter Record, Evaluate Measure, Observation Statistics, Find patient matches using MPI based logic and Fetch Patient Record specifically provide the ability to disclose patient information.</li>
+<li>Batch and transaction processing provide ways for clients to create and update information in bulk. Security implementations should consider whether a client has the ability to initiate one of these interactions and make authorization decisions on each action in the batch/transaction.</li>
+<li>Security implementations must be aware of the <a href="security-labels.html#break-the-glass">Break the Glass protocol</a> (e.g. break the glass) (<a href="operationoutcome-example-break-the-glass.html">example</a>). </li>
+</ul>
 
 <a name="AccessDenied"> </a>
 <h3>
@@ -318,12 +330,12 @@ ATNA log events can be automatically converted to AuditEvent resources, and from
 client applications are able to search the audit events, or subscribe to them. -->
 </p>
 <p>
-Что касается HTTP-логов, реализаторам необходимо учитывать последствия выделения доступа журналам аудита. HTTP-журналы аудита, включая те, которые содержат только непосредственно URL-адреса, следует считать такими же конфиденциальными, как и сами ресурсы. Даже если сам PHI хранится отдельно от журнала аудита посредством тщательного избегания параметров поиска (например с помощью GET), журнал всё ещё будет содержать достаточно информации об историях болезни.
+Что касается HTTP-логов, реализаторам необходимо учитывать последствия выделения доступа журналам аудита. HTTP-журналы аудита, включая те, которые содержат только непосредственно URL-адреса, следует считать такими же конфиденциальными, как и сами ресурсы. Даже если сам PHI хранится отдельно от журнала аудита посредством тщательного избегания параметров поиска (например с помощью POST), журнал всё ещё будет содержать достаточно информации об историях болезни.
 <!-- 
 With regard to HTTP logs, implementers need to consider the implications of distributing
-access to the logs. HTTP logs, including those that only cotain the URL itself, should be 
+access to the logs. HTTP logs, including those that only contain the URL itself, should be 
 regarded as being as sensitive as the resources themselves.  Even if direct PHI is kept out of
-the logs by careful avoidance of search parameters (e.g. by using GET), the logs will
+the logs by careful avoidance of search parameters (e.g. by using POST), the logs will
 still contain a rich set of information about the clinical records. 
  -->
 </p>
@@ -362,7 +374,7 @@ the <a href="http://wiki.ihe.net/index.php?title=Document_Digital_Signature">IHE
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>Примечание к DSTU:</b> использование электронных цифровых подписей в RESTful-интерфейсах - пока ещё малоизученная область, и мы приветствуем сообщения об опыте подобных реализаций. 
+<b>Примечание к STU:</b> использование электронных цифровых подписей в RESTful-интерфейсах - пока ещё малоизученная область, и мы приветствуем сообщения об опыте подобных реализаций. 
 </p>
 <p>
 Оставляйте свои отзывы <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">здесь</a>.

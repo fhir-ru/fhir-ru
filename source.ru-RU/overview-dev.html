@@ -1,0 +1,550 @@
+<!DOCTYPE HTML>
+      
+[%settitle Введение в FHIR для разработчиков%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+[%file newheader%]
+
+</head>
+<style>
+.code { counter-reset: listing }
+code { counter-increment: listing; }
+.code i:before { content: counter(listing) ". "; color: gray; }
+.code i { float: left; clear: both; min-width: 2.5em; }
+.code code:before { content: counter(listing) ". "; color: gray; display: inline-block; min-width: 2.5em; }
+</style>
+<body>
+[%file newnavbar%]
+
+<div class="col-12">
+
+
+<h2>Введение в FHIR для разработчиков</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+
+<p>
+FHIR (<i>Fast Health Interoperability Resources</i>) предназначен для обеспечения информационного обмена, поддерживающего предоставление медицинской помощи разного назначения. Спецификация базируется на и адаптирует современные, широко используемые RESTful-методы для предоставления комплексной медицинской помощи в широком диапазоне команд и организаций.
+</p>
+
+<p>
+Планируемая область применения FHIR обширна и покрывает человеческие и ветеринарные аспекты, медицинское обслуживание, публичную медицину, клинические исследования, административный и финансовый аспекты. Стандарт предназначен для глобального использования и широкого разнообразия архитектур и сценариев.
+<!-- The intended scope of FHIR is broad, covering human and veterinary,
+clinical care, public health, clinical trials, administration and
+financial aspects.  The standard is intended for global use and in a wide
+variety of architectures and scenarios. -->
+</p>
+
+<h3>Framework</h3>
+<p>
+В основе FHIR лежат "ресурсы" -  общие строительные блоки для любого обмена данными. Все ресурсы обладают следующими <a href="resource.html">общими характеристиками</a>:
+</p>
+<ul>
+ <li>URL, который его идентифицирует</li>
+ <li>Общие метаданные</li>
+ <li><a href="narrative.html">Человекочитаемое резюме (summary) в формате XHTML</a></li>
+ <li>Набор установленных общих элементов данных</li>
+ <li><a href="extensibility.html">Система расширений (extensibility framework)</a> для поддержки изменений в здравоохранении</li>
+</ul>
+<p>
+Ресурсы представляются либо в <a href="xml.html">XML</a>, либо в <a href="json.html">JSON</a>-формате, и на данный момент в спецификации FHIR определено <%resourcecount%> 
+различных <a href="resourcelist.html">типов ресурсов</a>.
+</p>
+
+<h3>Пример ресурса</h3>
+<p>
+Это пример представления ресурса <a href="patient.html">patient</a> в виде FHIR-объекта в формате <a href="json.html">JSON</a>. Формат <a href="xml.html">XML</a> также определен в спецификации.
+</p>
+
+<div class="example">
+<pre class="json linecounter">
+<code>{</code>
+<code>  "resourceType": "Patient",</code>
+<code>  "id" : "23434",</code>
+<code>  "meta" : {</code>
+<code>    "versionId" : "12",</code>
+<code>    "lastUpdated" : "2014-08-18T15:43:30Z"</code>
+<code>  }</code>
+<code>  "text": {</code>
+<code>    "status": "generated",</code>
+<code>    "div": "&lt;!-- Snipped for Brevity -->"</code>
+<code>  },</code>
+<code>  "extension": [</code>
+<code>    {</code>
+<code>      "url": "http://example.org/consent#trials",</code>
+<code>      "valueCode": "renal"</code>
+<code>    }</code>
+<code>  ],</code>
+<code>  "identifier": [</code>
+<code>    {</code>
+<code>      "use": "usual",</code>
+<code>      "label": "MRN",</code>
+<code>      "system": "http://www.goodhealth.org/identifiers/mrn",</code>
+<code>      "value": "123456"</code>
+<code>    }</code>
+<code>  ],</code>
+<code>  "name": [</code>
+<code>    {</code>
+<code>      "family": [</code>
+<code>        "Levin"</code>
+<code>      ],</code>
+<code>      "given": [</code>
+<code>        "Henry"</code>
+<code>      ],</code>
+<code>      "suffix": [</code>
+<code>        "The 7th"</code>
+<code>      ]</code>
+<code>    }</code>
+<code>  ],</code>
+<code>  "gender": {</code>
+<code>    "text": "Male"</code>
+<code>  },</code>
+<code>  "birthDate": "1932-09-24",</code>
+<code>  "active": true</code>
+<code>}</code>
+</pre>
+</div>
+
+<p>
+Каждый ресурс состоит из:  
+</p>
+<ul>
+  <li><b>resourceType</b> (строка 2) - Обязательный: FHIR определяет много различных типов ресурсов. См. <a href="resourcelist.html">полный индекс</a></li>
+  <li><b>id</b> (строка 3) - Идентификатор ресурса. Всегда присутствует при обмене ресурсом, за исключением момента выполнения операции создания (ниже)</li>
+  <li><b>meta</b> (строки 4 - 7) - Обычно присутствует: <a href="resource.html#meta">Common use/context data to all resources</a> и контролируется инфраструктурой. Отсутствует, если нет метаданных</li>
+  <li><b>text</b> (строки 8 - 11) - Рекомендуется: XHTML, описывающий <a href="narrative.html">человекочитаемое представление</a> ресурса</li>
+  <li><b>extension</b> (строки 12 - 17) - Необязательный: <a href="extensibility.html">Расширения</a> задаются с помощью системы расширений</li>
+  <li><b>data</b> (строки 18 - 43) - Необязательный: элементы данных, определенные для каждого типа ресурса</li>
+</ul>
+<p>
+Обратите внимание: хотя в данной спецификации JSON-свойства всегда идут в том порядке, в котором они были определены, большинство JSON-библиотек располагают свойства по другим критериям.
+<!-- Note that although this specification always shows the JSON properties in the order that they are defined, many JSON libraries order properties by other criteria. -->
+</p>
+
+<h3>Взаимодействия</h3>
+<p>
+Для оперирования ресурсами FHIR  предоставляет <a href="http.html">REST API</a> с богатым набором простых операций:
+</p>
+<ul>
+<li><a href="http.html#create">Create</a> = POST https://example.com/path/{resourceType}</li>
+<li><a href="http.html#read">Read</a> = GET https://example.com/path/{resourceType}/{id}</li>
+<li><a href="http.html#update">Update</a> = PUT https://example.com/path/{resourceType}/{id}</li>
+<li><a href="http.html#delete">Delete</a> = DELETE https://example.com/path/{resourceType}/{id}</li>
+<li><a href="http.html#search">Search</a> = GET https://example.com/path/{resourceType}?search parameters...</li>
+<li><a href="http.html#history">History</a> = GET https://example.com/path/{resourceType}/{id}/_history</li>
+<li><a href="http.html#transaction">Transaction</a> = POST https://example.com/path/ <i>(POST a transaction bundle to the system)</i></li>
+<li><a href="operations.html">Operation</a> = GET https://example.com/path/{resourceType}/{id}/${opname}</li>
+</ul>
+<p>
+FHIR-спецификация описывает и другие виды обмена, лежащими за пределами этого простого  RESTful API, 
+включая обмен группами ресурсов в виде <a href="documents.html">документов</a>, 
+<a href="messaging.html">сообщений</a> и с использованием различных типов <a href="services.html">сервисов</a>. 
+</p>
+
+<h3>Managing Variability</h3>
+<p>
+Различные геополитические юрисдикции и сегменты индустрии здравоохранения сильно разнятся между собой, при этом центральная власть для навязывания общих бизнес-практик отсутствует. Вследствие этого спецификация FHIR вводит <a href="extensibility.html">систему расширений</a> и определяет <a href="profiling.html">фреймворк для управления этой вариабельностью</a>.
+</p>
+<p>
+Another key aspect of the variability encountered in healthcare is that the
+same information may be represented differently and with different levels of 
+detail, granularity and nesting by various parties across the system. 
+For example, in some cases a blood pressure measurement may be just a simple observation, a 
+vital sign measure, while in other cases can be a rich set of highly defined 
+data that includes things like controlled vocabularies for posture, exercise, etc. 
+The <a href="resourcelist.html">resources</a> defined in this specification 
+focus on the general, common use cases. Richer and more specific content 
+can be supported and standardized by <a href="profiling.html">defining "profiles"</a> on 
+the base resources. 
+</p>
+
+<h3>Создание ресурса</h3>
+<p>
+Для <a href="http.html#create">создания ресурса</a> отправьте HTTP POST-запрос в соответствующую точку взаимодействия ресурса.
+</p>
+<pre> 
+  POST https://example.com/path/{resourceType}
+</pre>
+<p>
+В примере ниже мы видим создание ресурса "пациент".
+</p>
+
+<div class="example">
+<pre class="http linecounter">
+<code>POST {some base path}/Patient HTTP/1.1</code>
+<code>Authorization: Bearer 37CC0B0E-C15B-4578-9AC1-D83DCED2B2F9</code>
+<code>Accept: application/fhir+json</code>
+<code>Content-Type: application/fhir+json</code>
+<code>Content-Length: 1198</code>
+<code> </code>
+<code>{</code>
+<code>  "resourceType": "Patient",</code>
+<code>  ...</code>
+<code>}</code>
+</pre>
+</div>
+
+<p>
+Отправьте нового пациента на сервер и скажите ему сохранить пациента с id на его выбор.
+</p>
+<ul>
+  <li><b>/Patient</b> (строка 1) - управление всеми пациентами - используйте имя типа ресурса</li>
+  <li><b>Authorization</b> (строка 2) - см. <a href="security.html">Security for FHIR</a></li>
+  <li><b>Accept, Content-Type</b> (строки 3-4) - тип содержимого для всех FHIR-ресурсов, который описан в JSON (либо application/fhir+xml для XML-версии). FHIR-ресурсы всегда используют кодировку UTF-8</li>
+  <li><b>id</b> (строка 9) - У ресурса, который создается, еще пока нет идентификатора - его ему назначит сервер</li>
+  <li>Resource Content, строки 8+ - На этом этапе свойство meta отсутствует. Остальное содержимое ресурса совпадает с указанным выше</li>
+</ul>
+
+
+<h3>Create Response</h3>
+<p>
+Ответ будет содержать HTTP-код 201, указывающий, что ресурс был создан успешно. Заголовок location указывает, где ресурс может быть получен в последующих запросах. Сервер может вернуть ресурс <a href="operationoutcome.html">OperationOutcome</a>, но не обязан этого делать.
+</p>
+
+<div class="example">
+<pre class="http linecounter">
+<code>HTTP/1.1 201 Created</code>
+<code>Content-Length: 161</code>
+<code>Content-Type: application/fhir+json</code>
+<code>Date: Mon, 18 Aug 2014 01:43:30 GMT</code>
+<code>ETag: "1"</code>
+<code>Location: http://example.com/Patient/347</code>
+<code> </code>
+<code>{</code>
+<code>  &quot;resourceType&quot;: &quot;OperationOutcome&quot;,</code>
+<code>  &quot;text&quot;: {</code>
+<code>    &quot;status&quot;: &quot;generated&quot;,</code>
+<code>    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;The operation was successful&lt;/div&gt;&quot;</code>
+<code>  }</code>
+<code>}</code>
+</pre>
+</div>
+
+<p>
+Примечания:
+</p>
+<ul>
+  <li><b>HTTP/1.1 201</b> (строка 1) - операция прошла успешно. Обратите внимание, что использование HTTP/1.1 настоятельно рекомендуется, но не обязательно</li>
+  <li><b>ETag</b> (строка 5) - используется в модели <a href="http.html#update">version aware update</a></li>
+  <li><b>Location</b> (строка 6) - id, который сервер присвоил ресурсу. Этот id в URL должен соответствовать id в ресурсе, когда этот ресурс впоследствии будет возвращен</li>
+  <li><b>operationOutcome</b> (строка 9) - ресурсы OperationOutcome в данном контексте не имеют id или элемента meta (они не имеют управляемого обозначения)</li>
+</ul>
+
+<h4>Возвращение ошибки</h4>
+
+<p>
+По множеству причин серверам может потребоваться вернуть ошибку. Клиенты должны быть готовы к ответам, связанным с аутентификацией, однако ошибки, связанные с FHIR-содержимым, должны возвращаться с помощью соответствующего кода HTTP-статуса вместе с ресурсом <a href="operationoutcome.html">OperationOutcome</a> для предоставления дополнительной информации.
+Вот пример отклонения сервером ресурса из-за бизнес-правил, установленных сервером:
+</p>
+
+<div class="example">
+<pre class="http linecounter">
+<code>HTTP/1.1 422 Unprocessable Entity</code>
+<code>Content-Length: 161</code>
+<code>Content-Type: application/fhir+json</code>
+<code>Date: Mon, 18 Aug 2014 01:43:30 GMT</code>
+<code> </code>
+<code>{</code>
+<code>  &quot;resourceType&quot;: &quot;OperationOutcome&quot;,</code>
+<code>  &quot;text&quot;: {</code>
+<code>    &quot;status&quot;: &quot;generated&quot;,</code>
+<code>    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;MRN conflict</code>
+<code>   - the MRN 123456 is already assigned to a different patient&lt;/div&gt;&quot;</code>
+<code>  },</code>
+<code>}</code>
+</pre>
+</div>
+
+<p>
+Примечания:
+</p>
+<ul>
+  <li>Сервер может вернуть дополнительную структурированную информацию, используя элементы <a href="operationoutcome.html">OperationOutcome</a></li>
+</ul>
+
+
+<h3>Запрос на чтение</h3>
+<p>
+<a href="http.html#read">Чтение ресурса</a> выполняется отправкой HTTP GET-запросов в требуемую точку взаимодействия ресурса.
+</p>
+<pre> 
+  GET https://example.com/path/{resourceType}/{id}
+</pre>
+<p>
+Пример: 
+</p>
+<div class="example">
+<pre class="http linecounter">
+<code>GET /Patient/347?_format=xml HTTP/1.1</code>
+<code>Host: example.com</code>
+<code>Accept: application/fhir+xml</code>
+<code>Cache-Control: no-cache</code>
+</pre>
+</div>
+
+<p>
+Примечания:
+</p>
+<ul>
+  <li><b>347</b> (строка 1) - id извлекаемого ресурса</li>
+  <li><b>_format=xml</b> (строка 1) - это еще один способ клиентам указать желаемый формат ответа в дополнение к заголовку accept, который полезен клиентам, у которых нет доступа к HTTP-заголовкам (например XSLT-преобразования) (см. <a href="http.html#mimetypes">MIME-типы</a>)</li>
+  <li><b>cache control</b> (строка 4) - Контроль взаимосовместимости важен, хотя в самом FHIR ничего не говорится об этом - см. <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</a> или <a href="https://www.mnot.net/cache_docs/">https://www.mnot.net/cache_docs/</a></li>
+</ul>
+
+
+<h3>Ответ на запрос на чтение</h3>
+<p>
+Ответ на GET-запрос содержит сам ресурс. 
+</p>
+
+<div class="example">
+<pre class="http linecounter">
+<code>HTTP/1.1 200 OK</code>
+<code>Content-Length: 729</code>
+<code>Content-Type: application/fhir+xml</code>
+<code>Last-Modified: Sun, 17 Aug 2014 15:43:30 GMT</code>
+<code>ETag: "1"</code>
+<code> </code>
+<code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</code>
+<code>&lt;Patient xmlns=&quot;http://hl7.org/fhir&quot;&gt;</code>
+<code>  &lt;id value=&quot;347&quot;/&gt;</code>
+<code>  &lt;meta&gt;</code>
+<code>    &lt;versionId value=&quot;1&quot;/&gt;</code>
+<code>    &lt;lastUpdated value=&quot;2014-08-17T15:43:30Z&quot;/&gt;</code>
+<code>  &lt;/meta&gt;</code>
+<code>  &lt;!-- content as shown above for patient --&gt;  </code>
+<code>&lt;/Patient&gt;</code>
+</pre>
+</div>
+
+<p>
+Примечания:
+</p>
+<ul>
+  <li><b>id</b> (строка 9) - id ресурса. Должен совпадать с id в запросе на чтение</li>
+  <li><b>versionId</b> (строка 11) - id текущей версии ресурса. Наилучшее решение, когда это значение совпадает с ETag (см. <a href="http.html#update">версионные обновления (version aware update)</a>), но клиенты никогда не должны полагаться на это. Следует отметить, что некоторые серверы не отслеживают версию ресурса</li>
+  <li>Обратите внимание, что серверам не требуется поддерживать версионирование, но настоятельно рекомендуется делать это</li>
+  <li><b>lastUpdated</b> (строка 12) - если имеется, должно совпадать со значением в HTTP-заголовке</li>
+</ul>
+
+<h3>Запрос на поиск</h3>
+<p>
+Кроме получения отедльного известного ресурса, есть возможность найти коллекцию ресурсов с помощью 
+<a href="http.html#search">поиска в точке взаимодействия ресурса</a> по <a href="search.html">набору критериев</a>, описывающих набор ресурсов, который должен быть получен, и их порядок сортировки. Общий шаблон запроса следующий:
+</p>
+<div class="example">
+<pre class="http">
+  GET https://example.com/path/{resourceType}?criteria
+</pre>
+</div>
+<p>
+Критерии - это набор HTTP-параметров, определяющих, какие ресурсы возвращать. Операция поиска
+</p>
+
+<div class="example">
+<pre class="http">
+https://example.com/base/MedicationOrder?patient=347
+</pre>
+</div>
+<p>
+возвращает все prescriptions пациента, созданного [в примере] выше.
+</p>
+
+<h3>Ответ на запрос на поиск</h3>
+<p>
+Ответом на поисковый запрос будет <a href="bundle.html">Bundle</a>: список соответствующих запросу ресурсов с некоторыми метаданными:
+</p>
+
+<div class="example">
+<pre class="json linecounter">
+<code>HTTP/1.1 200 OK</code>
+<code>Content-Length: 14523</code>
+<code>Content-Type: application/fhir+xml</code>
+<code>Last-Modified: Sun, 17 Aug 2014 15:49:30 GMT</code>
+<code> </code>
+<code>{</code>
+<code>  "resourceType": "Bundle",</code>
+<code>  "type": "searchset",</code>
+<code>  "id" : "eceb4882-5c7e-4ca4-af62-995dfb8cef01"</code>
+<code>  "meta" : {</code>
+<code>    "lastUpdated" : "2014-08-19T15:49:30Z"</code>
+<code>  },</code>
+<code>  "total": "3",</code>
+<code>  "link": [</code>
+<code>    {</code>
+<code>      "relation" : "next",</code>
+<code>      "url" : "https://example.com/base/MedicationOrder?patient=347&amp;searchId=ff15fd40-ff71-4b48-b366-09c706bed9d0&amp;page=2"</code>
+<code>    }, {</code>
+<code>      "relation" : "self",</code>
+<code>      "url" : "https://example.com/base/MedicationOrder?patient=347"</code>
+<code>    }</code>
+<code>  ],</code>
+<code>  "entry": [</code>
+<code>    {</code>
+<code>      "resource" : {</code>
+<code>        "resourceType": "MedicationOrder",</code>
+<code>      "id" : "3123",</code>
+<code>      "meta" : {</code>
+<code>        "versionId" : "1",</code>
+<code>        "lastUpdated" : "2014-08-16T05:31:17Z"</code>
+<code>      }, </code>
+<code>      ... content of resource ...</code>
+<code>    }, </code>
+<code>    }, </code>
+<code>    ... 2 additional resources ....</code>
+<code>  ]</code>
+<code>}</code>
+</pre>
+</div>
+
+<p>
+Примечания:
+</p>
+<ul>
+  <li><b>resourceType/type</b> (строка 7/8) - результат поиска - это всегда бандл типа "searchset"</li>
+  <li><b>id</b> (строка 9) - Идентификатор, присвоенный этому конкретному комплекту. Сервер должен присвоить уникальный идентификатор этому комплекту, который не будет использован повторно.</li>
+  <li><b>meta.lastUpdated</b> (строка 11) - должно соответствовать HTTP-заголовку и представлять собой дату выполнения поиска или более позднюю дату в зависимости от того, как <a href="search.html#currency">сервер обрабатывает обновления, происходящие в настоящее время (ongoing updates)</a>. Дата lastUpdated ДОЛЖНА совпадать или быть более поздней, чем самая свежая дата ресурса в результатах</li>
+  <li><b>total</b> (строка 13) - общее число совпадений в результатах поиска. Это не количество совпадений в этом конкретном комплекте, которое может быть <a href="http.html#search">разбитым на страницы представлением в результатах (a paged view into the results)</a></li>
+  <li><b>link</b> (строка 14) - набор именованных ссылок, которые дают связанных контексты этому комплекту. Имена, определенные в данном спецификации: <a href="http.html#search">first</a>, <a href="http.html#search">prev</a>, <a href="http.html#search">next</a>, <a href="http.html#search">last</a>, <a href="http.html#search">self</a></li>
+  <li><b>entry</b> (строка 23) - фактические ресурсы в этом наборе результатов</li>
+	<li><b>entry.resource.id</b> (line 27) - Note that in some bundles, the <code>entry.resource.id</code>must be <a href="bundle.html#bundle-unique">unique in the bundle</a></li>
+  <li>Операция поиска может также <a href="search.html#include">вернуть дополнительные связанные ресурсы</a></li>
+</ul>
+
+<h3>Update Request</h3>
+<p>
+Клиент отправляет на сервер новую версию ресурса для замены существующей версии - он помещает его командой PUT на место существующего ресурса:
+</p>
+<pre> 
+  PUT https://example.com/path/{resourceType}/{id}
+</pre>
+<p>
+Note that there does not need to be a resource already existing at {id} - the server may elect to automatically create the resource at the specified address. 
+Here is an example of updating a patient:
+</p>
+
+<div class="example">
+<pre class="http linecounter">
+<code>PUT /Patient/347 HTTP/1.1</code>
+<code>Host: example.com</code>
+<code>Content-Type: application/fhir+json</code>
+<code>Content-Length: 1435</code>
+<code>Accept: application/fhir+json</code>
+<code>If-Match: 1</code>
+<code> </code>
+<code>{</code>
+<code>  "resourceType": "Patient",</code>
+<code>  "id" : "347",</code>
+<code>  "meta" : {</code>
+<code>    "versionId" : "1",</code>
+<code>    "lastUpdated" : "2014-08-18T15:43:30Z"    </code>
+<code>  },</code>
+<code>  ...</code>
+<code>}</code>
+</pre>
+</div>
+
+ <p>
+Примечания:
+</p>
+<ul>
+  <li><b>resourceType</b> (строка 1) - "Patient" в url должен совпадать с типом ресурса в ресурсе (строка 9)</li>
+  <li><b>resource id</b> (строка 1, "347") - должен совпадать с id в ресурсе (строка 10)</li>
+  <li><b>If-Match</b> (строка 6) - если указано, должно совпадать со значением в meta.versionId (строка 12), а сервер должен проверять целостность версии или возвращать ошибку 412, если он не поддерживает версионирование</li>
+  <li><b>meta.lastUpdated</b> (строка 10) - это значение игнорируется и будет обновляться сервером</li>
+  <li><b>resource content</b> (строка 14) - не отображено здесь, совпадает с ресурсом Patient выше</li>
+</ul>
+
+<h3>Update Response</h3>
+<p>
+Ответ на запрос на обновление содержит metadata / status и, необязательно, OperationOutcome:
+</p>
+
+<div class="example">
+<pre class="http linecounter">
+<code>HTTP/1.1 200 OK</code>
+<code>Content-Length: 161</code>
+<code>Content-Type: application/fhir+json</code>
+<code>Date: Mon, 18 Aug 2014 01:43:30 GMT</code>
+<code>ETag: "2"</code>
+<code> </code>
+<code>{</code>
+<code>  &quot;resourceType&quot;: &quot;OperationOutcome&quot;,</code>
+<code>  &quot;text&quot;: {</code>
+<code>    &quot;status&quot;: &quot;generated&quot;,</code>
+<code>    &quot;div&quot;: &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;The operation was succesful&lt;/div&gt;&quot;</code>
+<code>  }</code>
+<code>}</code>
+</pre>
+</div>
+
+
+<p>
+Примечания:
+</p>
+<ul>
+  <li><b>ETag</b> (строка 5) - это versionId новой версии</li>
+</ul>
+
+<h3>Базовое содержимое ресурса</h3>
+<p>
+Ниже идет пример, демонстрирующий всю информацию, которую можно найти во всех ресурсах, полностью заполненную:
+</p>
+
+<div class="example">
+<pre class="json linecounter">
+<code>{</code>
+<code>  "resourceType" : "X",</code>
+<code>  "id" : "12",</code>
+<code>  "meta" : {</code>
+<code>    "versionId" : "12",</code>
+<code>    "lastUpdated" : "2014-08-18T01:43:30Z",</code>
+<code>    "profile" : ["http://example-consortium.org/fhir/profile/patient"],</code>
+<code>    "security" : [{</code>
+<code>      "system" : "http://hl7.org/fhir/v3/ActCode",</code>
+<code>      "code" : "EMP"</code>
+<code>    }],</code>
+<code>    "tag" : [{</code>
+<code>      "system" : "http://example.com/codes/workflow",</code>
+<code>      "code" : "needs-review"</code>
+<code>    }]</code>
+<code>  },</code>
+<code>  "implicitRules" : "http://example-consortium.org/fhir/ehr-plugins",</code>
+<code>  "language" : "X"</code>
+<code>}</code>
+</pre>
+</div>
+
+<p>
+Примечания для реализаторов:
+</p>
+<ul>
+  <li><b>resourceType</b> (строка 2) - всегда можно найти в каждом ресурсе. В XML это имя корневого элемента ресурса</li>
+  <li><b>id</b> (строка 3) - задается при создании ресурса. Отсутствует только когда ресурс создается впервые</li>
+  <li><b>meta.versionId</b> (строка 5) - изменяется каждый раз при любом изменении содержимого ресурса (за исключением последних 3 элементов в meta - <code>profile</code>, <code>security</code> и <code>tag</code>)</li>
+  <li><b>meta.lastUpdated</b> (строка 6) - изменяется при смене versionId. Системы, не поддерживающие версионирование, обычно не отслеживают и lastUpdated</li>
+  <li><b>meta.profile</b> (строка 7) - утверждение, что содержимое соответствует профилю. См. <a href="profiling.html#resources">Extending and Restricting Resources</a> для дальнейшего обсуждения. Может меняться при изменении профилей или наборов значений или когда система проводит повторную проверку на соответствие</li>
+  <li><b>meta.security</b> (строки 8 - 11) - <a href="security-labels.html">Метки уровня безопасности</a>, применимые к этому ресурсу. Эти теги связывают ресурсы определенным образом с общей политикой безопасности и инфраструктурой. Теги безопасности могут быть обновлены при изменениях ресурса или всякий раз, когда подсистема безопасности решит</li>
+  <li><b>meta.tag</b> (строки 12 - 16) - <a href="resource.html#Meta">Теги</a>, применимые к этому ресурсу. Теги используются для связи ресурсов с обработкой и рабочим процессом. Приложения не обязаны учитывать теги во время интерпретации смыслового значения ресурса. Теги могут <a href="http.html#tags">обновляться</a> без изменения версии ресурса</li>
+  <li><b>implicitRules</b> (строка 17) - показывает, что имеется <a href="profiling.html#agreement">пользовательское соглашение</a> о том, каким образом используются ресурсы, которое необходимо понимать для безопасной обработки ресурса. Использование этого не поощряется, так как оно ограничивает совместное использование, но иногда оно необходимо</li>
+  <li><b>language</b> (строка 18) - <a href="narrative.html#language">базовый язык ресурса</a>. Позволяется иметь в ресурсе содержимое и на других языках; этот язык всего лишь базовый, но он должен быть главным языком ресурса</li>
+</ul>
+
+<p>
+Want more information? 
+</p>
+<ul>
+ <li><a href="modules.html">Getting Started</a></li>
+ <li><a href="resourcelist.html">Resource Index</a></li>
+ <li><a href="resourceguide.html">Resource Guide</a></li>
+ <li><a href="documentation.html">Documentation Index</a></li>
+ <li><a href="http://wiki.hl7.org/index.php?title=FHIR_Support_Page">Support Links</a></li>
+</ul>
+
+</div>
+
+[%file newfooter%]
+    
+    
+</body>
+</html>
+

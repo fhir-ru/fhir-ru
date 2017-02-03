@@ -142,7 +142,7 @@ defining the correct URI to use: -->
  <li>HTTP addresses should be permalinks which may re-direct to the current correct content</li>
  <li>A scope of the code system URI and the correct usage of codes and displays in its namespace SHOULD be clearly defined. 
    See examples for <a href="snomedct.html">SNOMED CT</a>, <a href="rxnorm.html">RxNorm</a>, <a href="loinc.html">LOINC</a>, <a href="ndc.html">NDC</a></li>
- <li>Generally, allocation of URLs is hierarchical, and most care is required in choosing the root URL. Once sub-URL policies are clearly defined, URIs can often be automatically assigned</li>
+ <li>Generally, allocation of URLs is hierarchical, and most care is required in choosing the Base URL. Once sub-URL policies are clearly defined, URIs can often be automatically assigned</li>
 </ul> 
 <p>
 Примечание: если кодовая система упакована и доступна внутри ресурса <a href="valueset.html">ValueSet</a>, корректным URL для значения <code>system</code> будет <i>ValueSet.codeSystem.system</i>, а не <i>ValueSet.uri</i>.
@@ -260,8 +260,8 @@ resolve a value set with that URL as its identity. -->
 &lt;/StructureDefinition&gt;
 </pre>
 <p>
-Здесь указывается, что элемент привязан к набору значений с Value.url = <a href="http://hl7.org/fhir/ValueSet/clinical-findings">http://hl7.org/fhir/ValueSet/clinical-findings</a>. Один из способов получить доступ к этому набору значений - это попытаться выполнить запрос GET http://hl7.org/fhir/ValueSet/clinical-findings, который работает, для этого набора значений - http://hl7.org/fhir/ValueSet/clinical-findings вернет официальный набора значений для этого URL.
-<!-- This specifies that the element is bound to the value set with a Value.url of
+Здесь указывается, что элемент привязан к набору значений с ValueSet.url = <a href="http://hl7.org/fhir/ValueSet/clinical-findings">http://hl7.org/fhir/ValueSet/clinical-findings</a>. Один из способов получить доступ к этому набору значений - это попытаться выполнить запрос GET http://hl7.org/fhir/ValueSet/clinical-findings, который работает, для этого набора значений - http://hl7.org/fhir/ValueSet/clinical-findings вернет официальный набора значений для этого URL.
+<!-- This specifies that the element is bound to the value set with a ValueSet.url of
 <a href="http://hl7.org/fhir/ValueSet/clinical-findings">http://hl7.org/fhir/ValueSet/clinical-findings</a>. One way to accees this value set is 
 to try GET http://hl7.org/fhir/ValueSet/clinical-findings - which works, for this value set - http://hl7.org/fhir/ValueSet/clinical-findings 
 returns the authoritative value set for this URL.  -->
@@ -309,12 +309,12 @@ the version. A terminology server may have multiple value sets for the same
 ValueSet.url with different versions.  -->
 </p>
 <p>
-Для уточнения, на какую версию набора значений идет ссылка, добавьте версию к логическому URL следующим образом:
+Для уточнения, на какую версию набора значений идет ссылка, добавьте версию к каноничному URL с '|' следующим образом:
 <!-- To be precise about which version of a value set is being referred to in 
-a value set reference, append the version to the logical url like this: -->
+a value set reference, append the version to the canonical url with a '|' like this: -->
 </p>
 <pre>
-&lt;valueSetUri value=&quot;http://hl7.org/fhir/ValueSet/clinical-findings?version=0.8&quot;/&gt;
+&lt;valueSetUri value=&quot;http://hl7.org/fhir/ValueSet/clinical-findings|0.8&quot;/&gt;
 </pre>
 <p>
 Это ссылка на конкретную версию набора значений. Поиск такого набора значений на терминологическом сервере будет выглядеть следующим образом:
@@ -325,10 +325,10 @@ for this on a terminology server would look like this: -->
 GET fhir/ValueSet?url=http://hl7.org/fhir/ValueSet/clinical-findings&amp;version=0.8
 </pre>
 <p>
-Заметим, что если ссылка на набор значений не имеет версии, и сервер находит несколько версий для набора значений, система, использующая этот набор значений, должна выбрать последнюю версию этого набора значений и использовать его.
+Заметим, что если ссылка на набор значений не имеет версии, и сервер находит несколько версий для набора значений, система, использующая этот набор значений, должна выбрать последнюю версию этого набора значений и использовать его. Note that this applies to all <a href="references.html#canonical">conformance resources</a>.
 <!-- Note that if a value set reference does not have a version, and the server finds multiple
 versions for the value set, the system using the value set should pick the latest version
-of the value set and use that. -->
+of the value set and use that. Note that this applies to all <a href="references.html#canonical">conformance resources</a>. -->
 </p>
 
 <a name="unbound"> </a>
@@ -349,7 +349,7 @@ are associated with various degrees of flexibility as to how closely the value s
 followed: -->
 </p>
 <table class="grid">
- <tr><td>required</td><td>Для совместимости экземпляры этого элемента ДОЛЖНЫ включать код из заданного набора значений<!-- To be conformant, instances of this element SHALL include a code from the specified value set --></td></tr>
+ <tr><td>required</td><td>Для совместимости коды в этом элементе ДОЛЖНЫ быть из заданного набора значений<!-- To be conformant, codes in this element SHALL be from the specified value set --></td></tr>
  <tr><td>extensible</td><td>Для совместимости экземпляры этого элемента должны включать код из указанного набора значений, если есть подходящий код в этом наборе значений для передаваемого концепта. Если набор значений не содержит подходящего для этого концепта кода (с точки зрения человека), то вместо него могут быть включены альтернативные кодинги (из различных кодовых систем, включая локальные) или (data type allowing) текст.<!-- To be conformant, instances of this element must include a code from the specified value set if any of the codes within the value set can apply to the concept being communicated.  If the value set does not cover the concept (based on human review), alternate codings (from different code systems, including local ones) or (data type allowing) text) may be included instead. --></td></tr>
  <tr><td>preferred</td><td>Поощряется в экземплярах использовать указанные коды в целях совместимости, но не обязательно делать это, чтобы они считались совместимыми<!-- Instances are encouraged, to draw from the specified codes for interoperability purposes but are not required to do so to be considered conformant --></td></tr>
  <tr><td>example</td><td>Не ожидается и даже не поощряется в экземплярах использовать указанный набор значений. Такой набор значений просто показывает примеры типов концептов, предназначенных для использования <!-- Instances are not expected or even encouraged to draw from the specified value set.  The value set merely provides examples of the types of concepts intended to be included --></td></tr>
@@ -368,8 +368,8 @@ will work together to choose actual working value sets.  -->
 <a name="code"> </a>
 <h3>Тип Required (обязательная привязка)<!-- Required --></h3>
 <p>
-<i>Чтобы считаться совместимыми, экземпляры этого элемента ДОЛЖНЫ включать код из указанного набора значений.
-<!-- To be conformant, instances of this element SHALL include a code from the specified value set. --></i>.
+<i>Чтобы считаться совместимыми, коды в этом элементе ДОЛЖНЫ быть из указанного набора значений.
+<!-- To be conformant, codes in this element SHALL be from the specified value set. --></i>.
 </p>
 <p>
 В стандарте она, как правило, используется для элементов, где значение должно строго контролироваться, чтобы все могли интерпретировать его с уверенностью. Обычно такой тип используется для элементов с типом <a href="datatypes.html#code">code</a>:
@@ -416,8 +416,8 @@ may state rules on which codes can be used, but cannot select new or additional 
 <a name="extensible"> </a>
 <h3>Тип Extensible (расширяемая привязка)<!-- Extensible --></h3>
 <p>
-<i>Чтобы считаться совместимыми, экземпляры этого элемента ДОЛЖНЫ включать код из указанного набора значений, если хоть один из кодов в наборе значений подходит к передаваемому концепту. Если набор значений не покрывает этот концепт (с точки зрения человека), вместо него можно использовать альтернативный system.code.
-<!-- To be conformant, instances of this element SHALL include a code from the specified value set if any of the codes within the value set 
+<i>Чтобы считаться совместимыми, коды в этом элементе ДОЛЖНЫ быть из указанного набора значений, если хоть один из кодов в наборе значений подходит к передаваемому концепту. Если набор значений не покрывает этот концепт (с точки зрения человека), вместо него можно использовать альтернативный system.code.
+<!-- To be conformant, codes in this element SHALL be from the specified value set if any of the codes within the value set
 can apply to the concept being communicated.  If the value set does not cover the concept (based on human review), an alternate 
 system.code may be used instead. --></i>
 </p>
@@ -437,8 +437,8 @@ set in order to improve interoperability in the future.
 <p>
 Расширяемые привязки используются, когда имеется соглашение на уровне спецификации или профилировании о кодированных значениях, которые следует использовать, но невозможно создать ограниченный список кодов, который покроет все возможные случаи использования, в том числе те, что ещё возникают.
 <!-- Extensible bindings are used when there is consensus at the specification or profiling level about the coded values
-that should be used, but it is impossible to create a bounded list of codes that a known to cover all 
-use cases, including one that are yet to arise.   -->
+that should be used, but it is impossible to create a bounded list of codes that are known to cover all 
+use cases, including ones that are yet to arise.   -->
 </p>
 <p>
 Когда элемент привязан к расширяемому набору значений, <a href="profiling.html">производные профили</a> могут устанавливать правила использования этих кодов, но не могут определять новые или дополнительные коды для этих элементов, если только в базовом наборе значений не отсутствуют коды с подходящим значением.

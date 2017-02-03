@@ -1,7 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <div>
-<a name="snu"></a>
+<a name="snu"> </a>
 <h2>Область применения и использование<!-- Scope and Usage --></h2>
 <p>
 Ресурс <i>StructureMap</i> задаёт детализированный набор правил, которые описывают, каким образом одна <a href="structuredefinition.html">структура</a> взаимосвязана с другой, и предоставляет достаточно деталей для автоматического преобразования экземпляров.
@@ -15,7 +15,7 @@ and provides sufficient detail to allow for autoamted conversion of instances.  
 formats and interoperability to specify the full relationships between 
 two structures (e.g. a CDA document and a set of FHIR resources), and 
 then many different systems - both testing and production clinical systems - can
-leverage that to autoamtically transform from one format to the other.  -->
+leverage that to automatically transform from one format to the other.  -->
 </p>
 <p>
 Карты соответствия - однонаправленные: они отображают исходную структуру на целевую структуру, а обратное преобразование не предусматривается. Даже если отображение простое и без потерь, нельзя предполагать отсутствие условий, которые могли бы дополнительно применяться в обратном направлении.
@@ -36,7 +36,7 @@ a StructureMap. See also the <a href="mapping-tutorial.html">Tutorial</a>. -->
 </div>
 
 <div>
-<a name="bnr"></a>
+<a name="bnr"> </a>
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 Отметьте, что большинство мэппингов между моделями устанавливают только концептуальные эквиваленты между структурами. Эти модели полезны, поскольку они быстро передают, как эти структуры связаны с людьми, несмотря на то, что мэппинги с достаточным количеством деталей для поддержки конвертации экземпляров обязательно полны тонкостей, которые могут затмить концептуальные взаимосвязи. Ресурс <a href="conceptmap.html">ConceptMap</a> подходит для представления высокоуровневых взаимосвязей между моделями, в то время как данный ресурс <i>StructureMap</i> направлен на описание всех тех деталей, которые необходимо понимать, чтобы конвертировать экземпляр данных из одной структуры в другую.
@@ -71,7 +71,7 @@ parts of the mapping language cannot be used in these cases. -->
 </div>
 
 <div>
-<a name="bnc"></a>
+<a name="bnc"> </a>
 <h2>Предпосылки и контекст<!-- Background and Context --></h2>
 <p>
 Каждая карта соответствия структур содержит в дополнение к стандартным метаданным, которые содержат все ресурсы обеспечения соответствия, следующую информацию:

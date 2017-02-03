@@ -3,23 +3,16 @@
 <a name="open"> </a>
 <h2>Открытые вопросы<!-- Open Issues --></h2>
 
-<blockquote>
-</blockquote>
-<!-- <ul>
-  <li></li>
-</ul> -->
 <!-- insert xhtml content here -->
 
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>Примечание к DSTU:<!-- DSTU Note: --></b>  Во время периода пробного использования приветствуются отзывы по двум вопросам:<!-- During the Trial use period, feedback is welcome on two issues: -->
+<b>Примечание к STU:<!-- STU Note: --></b>  Во время периода пробного использования приветствуются отзывы по следующему вопросу:<!-- During the Trial use period, feedback is welcome on the following issue: -->
 </p>
-<ul>
- <li>Этот ресурс сочетает в себе такие понятия, как "план по уходу" и "команда по уходу". Уместно ли это?</li>
+<ul> 
  <li>В настоящее время элемент "patient" сделан необязательным для экспериментов с шаблонами плана по уходу, хотя ресурс не предназначен для такого применения</li>
-<!--  <li>This resource combines the concepts of "Care Plan" and "Care Team" into a single resource.  Is this appropriate?</li>
- <li>At present, the patient element is optional to allow experimentation with care plan templates, though the resource was not designed for this use</li> -->
+<!-- <li>At present, the patient element is optional to allow experimentation with care plan templates, though the resource was not designed for this use</li> -->
 </ul>
 <p>
 Оставляйте ваши отзывы <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">здесь</a>.

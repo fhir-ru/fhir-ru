@@ -18,11 +18,11 @@ services. -->
 <h2>Границы и связи</h2>
 <p>
 Этот ресурс частично совпадает с другими ресурсами, например <a href="device.html">Device</a> и <a href="medication.html">Medication</a>.
-Ресурс <b>Supply</b> может использоваться для описания лекарственных средств и медицинских изделий, ссылаясь на них в общем (как в любой другой поставке). Например при массовой обработке заказов. Однако когда важно само лекарственное средство, медицинское изделие или другие аспекты этого ресурса (например в <a href="medicationorder.html">MedicationOrder</a> или при указании устройства в качестве исполнителя), необходимо использовать предназначенный для этого соответствующий ресурс. 
+Ресурс <b>Supply</b> может использоваться для описания лекарственных средств и медицинских изделий, ссылаясь на них в общем (как в любой другой поставке). Например при массовой обработке заказов. Однако когда важно само лекарственное средство, медицинское изделие или другие аспекты этого ресурса (например в <a href="medicationrequest.html">MedicationRequest</a> или при указании устройства в качестве исполнителя), необходимо использовать предназначенный для этого соответствующий ресурс. 
 <!-- This resource overlaps with others such as <a href="device.html">Device</a> and <a href="medication.html">Medication</a>.
 The <b>Supply</b> resource may be used to describe medications and devices when handling them generically (as any other supply).  For
 example, when processing bulk orders, etc.  However, when the medication, device or other aspects of the resource are important,
-(e.g. in a <a href="medicationorder.html">MedicationOrder</a> or when identifying a device as a performer), the
+(e.g. in a <a href="medicationrequest.html">MedicationRequest</a> or when identifying a device as a performer), the
 more detailed resource must be used. -->
 </p>
 </div>

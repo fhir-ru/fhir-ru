@@ -16,6 +16,7 @@ Bundle.entry.link соответствует ссылкам, находящим�
   Bundle.entry.link corresponds to links found in the HTTP header if the resource in the entry was <a href="http.html#read">read</a> directly.
   This specification defines some specific uses of Bundle.link for <a href="search.html#conformance">searching</a> and <a href="http.html#paging">paging</a>, but no specific uses for Bundle.entry.link, and no defined function in a transaction - meaning is implementation specific -->
   </li>
+  <li>Bundles have both .id and .identifier - see <a href="resource.html#id">Resource Identities</a> for further information</li>  
 </ul>
 
 <a name="using"> </a>
@@ -152,14 +153,18 @@ Each entry element SHALL contain a resource. -->
 
 <p>
 Каждая запись в пакете должна иметь полный URL, являющийся идентификатором ресурса в записи. Обратите внимание, что это не версионная ссылка на ресурс, а его идентификатор. Если ресурсу не назначен постоянный идентификатор, который может быть использован в бандле, следует использовать UUID (urn:uuid:...).
-<!-- Each entry in a batch must have a full Url which is the identity of the resource in
-the entry. Note that this is not a versioned reference to the resource, but its 
+Except for transactions and batches, Each entry in a <code>Bundle</code> must have a <code>fullUrl</code> 
+which is the identity of the resource in the entry. Note that this is not a versioned reference to the resource, but its 
 identity. Where a resource is not assigned a persistent identity that can be used
-in the bundle, a UUID should be used (urn:uuid:...). -->
+in the bundle, a UUID should be used (urn:uuid:...).
 </p>
 <p>
-В некоторых бандлах заданный ресурс может появляться только один раз:
-<!-- In some bundles, a given resource can only appear once: -->
+For transactions and batches, entries may not have fullURLs when the entry.request.method = POST, 
+and the resource has no identity. Note that even in this case, there may still be a fullURL in a 
+transaction on a POST so that relationships between resources can be represented (see <a href="http.html#transaction">Transactions</a>).
+</p>
+<p>
+In some bundles, a given resource can only appear once:
 </p>
 <table class="grid">
  <tr>
@@ -208,11 +213,11 @@ in the bundle, a UUID should be used (urn:uuid:...). -->
  </tr>
  <tr>
   <td>document</td>
-  <td>no duplicates (weird edge cases - change tracking?)</td>
+  <td>no duplicates</td>
  </tr>
  <tr>
   <td>message</td>
-  <td>no duplicates (well, messaging deltas?)</td>
+  <td>no duplicates (generally not, unless noted explicitly in the event definition e.g. for messaging deltas?)</td>
  </tr>
  <tr>
   <td>transaction</td>
@@ -277,7 +282,7 @@ by its identity in the bundle first before trying to access it by its URL. -->
 <ol>
  <li>Если ссылка не абсолютная, то сконвертировать её<!-- If the reference is not an absolute reference, convert it -->
   <ul>
-    <li>если fullUrl начинается с urn:uuid: или urn:oid:, тогда добавить этот id к базовому URL и попытаться разрешить ссылку внутри бандла как для RESTful URL-ссылки. Если разрешение ссылки невозможно, тогда эта ссылка не имеет смысла в рамках данной спецификации<!-- If the fullUrl starts with urn:uuid: or urn:oid:, then treat then append the id to the base URL and try to resolve within the bundle as for a RESTful URL reference.  If no resolution is possible, then the reference has no defined meaning within this specification  --></li>
+    <li>если fullUrl начинается с urn:uuid: или urn:oid:, тогда добавить этот id к базовому URL и попытаться разрешить ссылку внутри бандла как для RESTful URL-ссылки. Если разрешение ссылки невозможно, тогда эта ссылка не имеет смысла в рамках данной спецификации<!-- If the fullUrl starts with urn:uuid: or urn:oid:, then append the id to the base URL and try to resolve within the bundle as for a RESTful URL reference.  If no resolution is possible, then the reference has no defined meaning within this specification  --></li>
     <li>если fullUrl ресурса содержит RESTful-ссылку (см. <a href="references.html#regex">регулярное выражение для RESTful URL</a>), извлечь <a href="http.html#root">[root]</a>, и добавить к нему эту ссылку<!-- if the fullUrl of the resource that contains the reference is a RESTful one (see the <a href="references.html#regex">RESTful URL regex</a>), extract the <a href="http.html#root">[root]</a>, and append the reference to it --></li>
     <li>иначе работать с fullUrl как с обычной URL-ссылкой по стандартному методу <a href="https://tools.ietf.org/html/rfc2396#section-5.2">Приведение относительных ссылок к абсолютной форме</a><!-- otherwise, treat the fullUrl as a normal URL, and follow the normal method for <a href="https://tools.ietf.org/html/rfc2396#section-5.2">Resolving Relative References to Absolute Form</a> --></li>
   </ul>
@@ -293,13 +298,15 @@ by its identity in the bundle first before trying to access it by its URL. -->
 Если ссылка является версионной (относительной или абсолютной), то удалить версию из URL перед поиском соответствия с fullUrl, а затем найти соответствующую версию по <code>Resource.meta.versionId</code>.
 <!-- If the reference is version specific (either relative or absolute), then remove the version from the 
 URL before matching fullUrl, and then match the version based on <code>Resource.meta.versionId</code>. -->
+Note that the rules for resolving references in contained resources are the same as those for 
+resolving resources in the resource that contains the contained resource.
 </p>
 <p>
 Вот пример ресурса Bundle, в котором демонстрируются эти правила:
 <!-- Here is an example Bundle the demonstrates these rules: -->
 </p>
 <div class="example">
-<pre class="xml">
+<pre class="xml" fragment="Bundle">
 &lt;Bundle xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;type value=&quot;collection&quot;/&gt;
 
@@ -311,7 +318,7 @@ URL before matching fullUrl, and then match the version based on <code>Resource.
          &lt;id value=&quot;23&quot;/&gt;
       &lt;/Patient&gt;
     &lt;/resource&gt;
-  &lt;entry&gt;
+  &lt;/entry&gt;
   
   &lt;!-- Ресурс Пациент, у которого нет постоянного адреса, но есть UUID, присвоенный для локального использования в этом бандле --&gt;
   &lt;entry&gt;
@@ -320,7 +327,7 @@ URL before matching fullUrl, and then match the version based on <code>Resource.
       &lt;Patient&gt;
       &lt;/Patient&gt;
     &lt;/resource&gt;
-  &lt;entry&gt;
+  &lt;/entry&gt;
   
   &lt;!-- относительная ссылка на ресурс --&gt;
   &lt;entry&gt;
@@ -332,23 +339,23 @@ URL before matching fullUrl, and then match the version based on <code>Resource.
            &lt;!-- это ссылка на первый ресурс выше --&gt;
            &lt;reference value=&quot;Patient/23&quot;/&gt;
          &lt;/subject&gt;
-      &lt;/Organization&gt;
+      &lt;/Observation&gt;
     &lt;/resource&gt;
-  &lt;entry&gt;
+  &lt;/entry&gt;
 
   &lt;!-- абсолютная ссылка --&gt;
   &lt;entry&gt;
-    &lt;fullUrl value=&quot;http://example.org/fhir/Observation/123&quot;/&gt;
+    &lt;fullUrl value=&quot;http://example.org/fhir/Observation/124&quot;/&gt;
     &lt;resource&gt;
       &lt;Observation&gt;
-         &lt;id value=&quot;123&quot;/&gt;
+         &lt;id value=&quot;124&quot;/&gt;
          &lt;subject&gt;
            &lt;!-- это ссылка на ресурс выше --&gt;
-           &lt;reference value=&quot;http://example.org/fhir/Patient/1&quot;/&gt;
+           &lt;reference value=&quot;http://example.org/fhir/Patient/23&quot;/&gt;
          &lt;/subject&gt;
-      &lt;/Organization&gt;
+      &lt;/Observation&gt;
     &lt;/resource&gt;
-  &lt;entry&gt;
+  &lt;/entry&gt;
 
   &lt;!-- ссылка на локально идентифицированный ресурс --&gt;
   &lt;entry&gt;
@@ -362,21 +369,21 @@ URL before matching fullUrl, and then match the version based on <code>Resource.
          &lt;/subject&gt;
       &lt;/Observation&gt;
     &lt;/resource&gt;
-  &lt;entry&gt;
+  &lt;/entry&gt;
   
   &lt;!-- ссылка, которая не разрешается в этом бандле --&gt;
   &lt;entry&gt;
-    &lt;fullUrl value=&quot;http://example.org/fhir/Observation/12&quot;/&gt;
+    &lt;fullUrl value=&quot;http://example.org/fhir/Observation/14&quot;/&gt;
     &lt;resource&gt;
       &lt;Observation&gt;
-         &lt;id value=&quot;12&quot;/&gt;
+         &lt;id value=&quot;14&quot;/&gt;
          &lt;subject&gt;
-           &lt;!-- ссылка на пациента, которого нет в этом бандле --&gt;
+           &lt;!-- reference to a patient not found in this bundle --&gt;
            &lt;reference value=&quot;http://example.org/fhir-2/Patient/1&quot;/&gt;
          &lt;/subject&gt;
       &lt;/Observation&gt;
     &lt;/resource&gt;
-  &lt;entry&gt;
+  &lt;/entry&gt;
   
 &lt;/Bundle&gt;
 </pre>
@@ -424,13 +431,13 @@ if these do not match, the resource is not in the bundle. <i>todo-bundle: how to
 Note that the application SHOULD not assume that the base
 service root is actually resolvable. In some circumstances, it will.
 If the bundle has just been received from a server as a result of
-a search or a history operation, the service root URL SHOULD match
+a search or a history operation, the service Base URL SHOULD match
 the URL that the client used (it is allowed not to in order to
 cater for proxies of various kinds). However in other
 circumstances, where the bundle itself has been exchanged onwards
 from the point of origin, and/or stored as an entity in its own
 right (e.g. a <a href="documents.html">clinical document</a>) the
-service root URL is merely a logical construct that holds within the
+service Base URL is merely a logical construct that holds within the
 bundle when resolving resources, and will have no meaning outside
 the bundle.
 </p>

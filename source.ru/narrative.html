@@ -27,8 +27,8 @@ of resource) may include a human-readable narrative that contains a summary of t
 and may be used to represent the content of the resource to a human. -->
 </p>
 <p>
-Если описательная часть присутствует со статусом, отличным от 'none', она ДОЛЖНА отражать всё содержимое, необходимое человеку для понимания значимой клинической и административной информации в данном ресурсе. Т.е. показ только описательной части ресурса без отображения какой-либо дискретной/закодированной части информации ресурса должен быть безопасным. Определения ресурсов и/или профили ресурсов могут устанавливать, какие данные следует представлять в описательной части для обеспечения клинической безопасности.
-<!-- If narrative is present with a status other than 'none', it SHALL reflect all content 
+Если описательная часть присутствует со статусом, отличным от 'empty', она ДОЛЖНА отражать всё содержимое, необходимое человеку для понимания значимой клинической и административной информации в данном ресурсе. Т.е. показ только описательной части ресурса без отображения какой-либо дискретной/закодированной части информации ресурса должен быть безопасным. Определения ресурсов и/или профили ресурсов могут устанавливать, какие данные следует представлять в описательной части для обеспечения клинической безопасности.
+<!-- If narrative is present with a status other than 'empty', it SHALL reflect all content 
 needed for a human to understand the essential clinical and business information for 
 the resource.  I.e. It must be safe to render only the narrative of the resource without 
 displaying any of the resource's discrete/encoded information.  Resource definitions and/or
@@ -50,8 +50,8 @@ any additional resources.
 -->
 </p>
 <p>
-Например описательная часть ресурса MedicationOrder может включать в себя краткую суммарную информацию о пациенте, медицинском работнике, назначающем рецептурные препараты, и медикаменте, на которых даются ссылки. Некоторые ресурсы (например List, Composition) могут вводить дополнительные правила на содержимое, которое должно (или не должно) быть включено в описательную часть ресурса. Следует учитывать тот факт, что упомянутые ресурсы могут быть обновлены без обновления ресурсов по ссылкам; поэтому доля содержимого ссылочного ресурса, включаемого в ссылающийся ресурс, должна быть ограничена.
-<!-- For example, the narrative for a MedicationOrder might include brief summary information 
+Например описательная часть ресурса MedicationRequest может включать в себя краткую суммарную информацию о пациенте, медицинском работнике, назначающем рецептурные препараты, и медикаменте, на которых даются ссылки. Некоторые ресурсы (например List, Composition) могут вводить дополнительные правила на содержимое, которое должно (или не должно) быть включено в описательную часть ресурса. Следует учитывать тот факт, что упомянутые ресурсы могут быть обновлены без обновления ресурсов по ссылкам; поэтому доля содержимого ссылочного ресурса, включаемого в ссылающийся ресурс, должна быть ограничена.
+<!-- For example, the narrative for a MedicationRequest might include brief summary information 
 about the referenced patient, prescriber and medication.  Some resources (e.g. List, Composition) 
 may provide specific rules about what content must (or must not) be included in the resource narrative.  
 Consideration should be given to the fact that referenced resources may be updated without updating 
@@ -140,7 +140,7 @@ entered raw or narrated and encoded in formation is added later.
 </p>
 
 
-<a name="id"></a>
+<a name="id"> </a>
 <h3>Ссылки на изображения<!-- Image References --></h3>
 
 <p>
@@ -196,7 +196,7 @@ part of the narrative SHOULD always be embedded as a <a href="https://tools.ietf
 in an attachment or a contained resource. -->
 </p>
 
-<a name="css"></a>
+<a name="css"> </a>
 <h3>Стилевое оформление XHTML</h3>
 <p>
 XHTML-фрагмент в описательной части может быть оформлен с помощью каскадных таблиц с внешними или внутренними стилями. Внешние стили применяются с помощью атрибутов <i>class</i> 

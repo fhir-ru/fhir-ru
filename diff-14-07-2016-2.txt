@@ -1,0 +1,7 @@
+M	source/conformance-rules.html
+M	source/datatypes.html
+M	source/documents.html
+M	source/http.html
+M	source/references.html
+A	source/terminologies/valueset-all-languages.xml
+A	source/terminologies/valueset-languages.xml

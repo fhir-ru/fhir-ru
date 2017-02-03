@@ -13,9 +13,9 @@ Equally, sometimes the person can be identified ('my aunt Agatha') and sometimes
 </p>
 <p>
 Этот ресурс представляет собой простую структуру, используемую для фиксирования "элементарного" семейного анамнеза для конкретного члена семьи. Тем не менее, он также может быть основой для
-ввода более строгого анамнеза, полезного для генетического и другого анализа - в качестве примера см. профиль <a href="list-example-familyhistory-genetics-profile.html">Генетическая родословная</a>.
+ввода более строгого анамнеза, полезного для генетического и другого анализа - в качестве примера см. профиль <a href="familymemberhistory-genetic.html">Генетическая родословная</a>.
 <!-- This resource represents a simple structure used to capture an 'elementary' family history for a particular family member.  However, it can also be the basis for
-capturing a more rigorous history useful for genetic and other analysis - refer to the <a href="list-example-familyhistory-genetics-profile.html">Genetic Pedigree</a> profile
+capturing a more rigorous history useful for genetic and other analysis - refer to the <a href="familymemberhistory-genetic.html">Genetic Pedigree</a> profile
 for an example. --></p>
 <p>
 Полный семейный анамнез человека может быть представлен объединением ссылок на экземпляры <b>FamilyMemberHistory</b> в экземпляре ресурса <a href="list.html">List</a>.
@@ -25,7 +25,7 @@ for an example. --></p>
 <b>PLANNED CHANGE:</b>
 </p>
 <p>
-<b>Communication</b> is one of the <a href="workflow.html#event">Event</a> resources in the FHIR <a href="workflow.html">Workflow</a> specification.  As such, it
+<b>FamilyMemberHistory</b> is one of the <a href="workflow.html#event">Event</a> resources in the FHIR <a href="workflow.html">Workflow</a> specification.  As such, it
 is expected to be adjusted to align with the <a href="event.html">Event</a> workflow pattern which will involve adding a number of additional data elements and potentially
 renaming a few elements.  Any concerns about performing such alignment are welcome as ballot comments and/or tracker items.
 </p>

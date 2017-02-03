@@ -1,0 +1,15 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+<a name="notes"> </a>
+<h2>
+Примечания:
+<!-- Notes: -->
+</h2>
+  <ul>
+  <li>
+  У ресурса PractitionerRole нет адреса, поскольку место (location), задаваемое здесь, содержит адрес.<br/> 
+  Это предотвращает дублирование значений адреса в ресурсах.
+<!--   There is no address on the PractitionerRole as the location that is defined here contains the address.<br/>
+  This prevents having to duplicate the address values across multiple resources. -->
+  </li>
+  </ul>
+</div>

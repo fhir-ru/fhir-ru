@@ -25,6 +25,8 @@
  <tr><td>Version</td><td>В указании версии нет необходимости. (Используйте дату релиза UMLS вместо версии NDF-RT, если в ней есть необходимость.)</td></tr>
  <tr><td>Code</td><td>NUI используется в качестве значения кода для NDF-RT-концепта</td></tr>
  <tr><td>Display</td><td>??</td></tr>
+ <tr><td>Inactive</td><td>Todo: Describe how it is determined which concepts are inactive</td></tr>
+ <tr><td>Subsumption</td><td>Subsumption testing is based in the Is-a relationship defined by NDFRT</td></tr>
  <tr><td>Filter Properties</td><td>Пока что не определены</td></tr>
 <!--  
  <tr><td>Source</td><td>the National Drug File - Reference Terminology - prepared by <a href="http://www.va.gov/health/">Veterans Health Administration</a>, 
@@ -33,6 +35,8 @@
  <tr><td>Version</td><td>A version is not needed. (Use the date of the UMLS release for the version of NDF-RT if a version is desired.)</td></tr>
  <tr><td>Code</td><td>The NUI is used for the code value for an NDF-RT concept</td></tr>
  <tr><td>Display</td><td>??</td></tr>
+ <tr><td>Inactive</td><td>Todo: Describe how it is determined which concepts are inactive</td></tr>
+ <tr><td>Subsumption</td><td>Subsumption testing is based in the Is-a relationship defined by NDFRT</td></tr>
  <tr><td>Filter Properties</td><td>None are described yet</td></tr> -->
 </table>
 
@@ -56,6 +60,7 @@ NDF-RT не требует подтверждения авторских пра�
 <!-- NDF-RT has no copyright acknowledgement required. However, users must adhere to the UMLS license. -->
 </p>
 
+<a name="filters"> </a>
 <h3>Свойства фильтра NDF-RT<!-- NDF-RT Filter Properties --></h3>
 
 
@@ -73,12 +78,12 @@ code system in value set composition statements. -->
  <tr><td>Имя свойства</td><td>concept</td></tr>
  <tr><td>Допустимые операции</td><td>is-a</td></tr>
  <tr><td>Допустимые значения</td><td>NUI</td></tr>
- <tr><td>Комментарии</td><td>Включает в себя все концепты, имеющие транзитивную взаимосвязь is-a с концептом, идентификатор которого указан в качестве значения NUI</td></tr>
+ <tr><td>Комментарии</td><td>Включает в себя все концепты, имеющие транзитивную взаимосвязь is-a с концептом, идентификатор которого указан в качестве значения NUI (including the concept itself)</td></tr>
 <!--  <tr><td>Description</td><td>Select a set of concepts based on subsumption testing</td></tr>
  <tr><td>Property Name</td><td>concept</td></tr>
  <tr><td>Operations Allowed</td><td>is-a</td></tr>
  <tr><td>Values Allowed</td><td>NUI</td></tr>
- <tr><td>Comments</td><td>Includes all concepts that have a transitive is-a relationship with the concept Id provided in the value as an NUI</td></tr> -->
+ <tr><td>Comments</td><td>Includes all concepts that have a transitive is-a relationship with the concept Id provided in the value as an NUI (including the concept itself)</td></tr> -->
 </table>
 
 <p>

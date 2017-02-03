@@ -20,6 +20,7 @@ It is intended for use to record information about a disease/illness identified 
 pathophysiologic findings (diagnosis), or identification of health issues/situations that require ongoing monitoring and/or management (health issue/concern), 
 or identification of health issues/situations considered harmful, potentially harmful and required to be investigated and managed (problems). -->
 </p>
+<p>The condition resource may be used to record a condition following a procedure, such as the condition of Amputee-BKA following an amputation procedure.</p>
 <p>
 Ресурс condition можно также использовать для записи конкретного состояния здоровья пациента, которое, как правило, не имеет негативного исхода (пока не прогнозируются или не обнаруживаются осложнения), например беременность. Примеры осложнений беременности включают: гиперемезис беременных, эклампсизм (поздний токсикоз беременных), эклампсия (тяжелая форма позднего токсикоза беременных) - которые вводятся в качестве проблем/диагнозов.
 <!-- 
@@ -33,16 +34,21 @@ captured as problems/diagnoses. -->
 <a name="bnr"> </a>
 <h2>Границы и связи</h2>
 <p>
-Другие ресурсы могут ссылаться на ресурс condition в качестве "основания" для действия (например <a href="medicationorder.html">MedicationOrder</a>,
+Другие ресурсы могут ссылаться на ресурс condition в качестве "основания" для действия (например <a href="medicationrequest.html">MedicationRequest</a>,
 <a href="procedure.html">Procedure</a>, <a href="diagnosticrequest.html">DiagnosticRequest</a> и др.)
-<!-- The condition resource may be referenced by other resources as "reasons" for an action (e.g. <a href="medicationorder.html">MedicationOrder</a>,
+<!-- The condition resource may be referenced by other resources as "reasons" for an action (e.g. <a href="medicationrequest.html">MedicationRequest</a>,
 <a href="procedure.html">Procedure</a>, <a href="diagnosticrequest.html">DiagnosticRequest</a>, etc.) -->
 </p>
 <p>
 Этот ресурс не предназначен для записи объективной и субъективной информации о, которая может привести к записи Condition. Например признаки и симптомы, которые обычно вводятся с использованием ресурса <a href="observation.html">Observation</a>; несмотря на то, что в некоторых случаях постоянный симптом, например жар, головная боль могут вводиться как condition, пока клиницист не установит окончательный диагноз.
-<!-- This resource is not to be used to record information about subjective and objective information that might lead to the recording of a Condition.
-Such signs and symptoms that are typically captured using the <a href="observation.html">Observation</a> resource; 
+<!-- This resource is not to be used to record information about subjective and objective information that might lead to the recording of a Condition. Such signs and symptoms that are typically captured using the <a href="observation.html">Observation</a> resource; 
 although in some cases a persistent symptom, e.g. fever, headache may be captured as a condition before a definitive diagnosis can be discerned by a clinician. -->
+</p>
+<p>
+Use the <a href="observation.html">Observation</a> resource when a symptom is resolved without long term management, tracking, or when a symptom contributes to the establishment of a condition.
+</p>
+<p>
+Use Condition when a symptom requires long term management, tracking, or is used as a proxy for a diagnosis or problem that is not yet determined.
 </p>
 <p>
 Также ресурс condition специально исключает <a href="allergyintolerance.html">AllergyIntolerance</a>, так как для этого есть отдельный ресурс.
@@ -69,7 +75,7 @@ the conformance requirements for code vs. CodeableConcept (4a) note that a Codea
 <b>PLANNED CHANGE:</b>
 </p>
 <p>
-<b>Communication</b> is one of the <a href="workflow.html#event">Event</a> resources in the FHIR <a href="workflow.html">Workflow</a> specification.  As such, it
+<b>Condition</b> is one of the <a href="workflow.html#event">Event</a> resources in the FHIR <a href="workflow.html">Workflow</a> specification.  As such, it
 is expected to be adjusted to align with the <a href="event.html">Event</a> workflow pattern which will involve adding a number of additional data elements and potentially
 renaming a few elements.  Any concerns about performing such alignment are welcome as ballot comments and/or tracker items.
 </p>

@@ -1,0 +1,40 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- insert xhtml content here -->
+
+<h3>Category Mapping</h3>
+
+<p>В таблице ниже приведены отображения категорий ActivityDefinition на соответствующий <i>целевой</i> ресурс:<!-- The following table defines the mapping from ActivityDefinition categories to the appropriate <i>intent</i> resource: --></p>
+
+<table>
+	<thead>
+		<tr><th>Код категории</th><th>Ресурс</th></tr>
+	</thead>
+	<tbody>
+		<tr><td>коммуникация<!-- communication --></td><td>CommunicationRequest</td></tr>
+		<tr><td>устройство<!-- device --></td><td>DeviceUseRequest</td></tr>
+		<tr><td>диагностика<!-- diagnostic --></td><td>DiagnosticRequest</td></tr>
+		<tr><td>диета<!-- diet --></td><td>NutritionRequest</td></tr>
+		<tr><td>лекарственное средство<!-- drug --></td><td>MedicationOrder</td></tr>
+		<tr><td>случай обслуживания<!-- encounter --></td><td>Appointment</td></tr>
+		<tr><td>иммунизация<!-- immunization --></td><td>ImmunizationRecommendation</td></tr>
+		<tr><td>наблюдение<!-- observation --></td><td>Observation</td></tr>
+		<tr><td>процедура<!-- procedure --></td><td>ProcedureRequest</td></tr>
+		<tr><td>направление<!-- referral --></td><td>ReferralRequest</td></tr>
+		<tr><td>поставка<!-- supply --></td><td>SupplyRequest</td></tr>
+		<tr><td>зрение<!-- vision --></td><td>VisionPrescription</td></tr>
+		<tr><td>другое<!-- other --></td><td>N/A</td></tr>
+	</tbody>
+</table>
+
+<h3>Реализация ActivityDefinition<!-- Realizing an ActivityDefinition --></h3>
+
+<p>Ресурс ActivityDefinition предоставляет описание, или шаблон действия для выполнения. Эти действия могут быть чисто текстовыми описаниями действия для выполнения, которые может интерпретировать только пользователь-человек, либо они могут быть структурированными определениями с информацией, достаточной для построения ресурса для отображения запроса напрямую. Этот процесс преобразования ActivityDefinition в конкретный целевой ресурс в конкретном контексте выполняется с помощью операции $apply.<!-- An ActivityDefinition resource provides a description, or template, of an action to performed. These actions can be purely text-based descriptions of the action to be performed, only interpretable by a human user, or they can be structured definitions with enough information to construct a resource to represent the request directly. This process of converting the ActivityDefinition into a specific intent resource in a particular context is performed with the $apply operation. --></p>
+
+<p>В простейшем случае этот процесс отображает элементы, указанные в ActivityDefinition, на соответствующие элементы в целевом ресурсе соответствующего типа на основе категории определения, как описано в таблице мэппинга категорий выше.<!-- In the simplest case, the process maps the elements specified in the ActivityDefinition to the corresponding elements on the intent resource of the appropriate type, based on the category of the definition as described in the category mapping table above. --></p>
+
+<p>Более динамические сценарии можно реализовывать одним из двух способов: либо через указание dynamicValue выражений, либо через указание StructureMap для преобразования определения в соответствующий целевой ресурс.<!-- More dynamic scenarios can be achieved in one of two ways, either by providing dynamicValue expressions, or by specifying a StructureMap that transforms the definition into the appropriate intent resource. --></p>
+
+<p>Отметьте, что системы вероятно будут широко варьироваться по степени поддержки операции $apply. В частности, тот факт, что система поддерживает применение определений одной категории не подразумевает, что она поддерживает применение определений для всех категорий. К примеру сервис, направленный на ордерсеты медикаментов, может иметь сложную поддержку категории "лекарственное средство", но не поддерживать категорию "случай обслуживания" вообще.<!-- Note that systems will likely vary widely in the degree of support they provide for the $apply operation. In particular, the fact that a system supports applying definitions of one category, does not imply that it supports applying definitions for all categories. For example, a service focused on medication order sets may have sophisticated supported for the medication category, but no support at all for the encounter category. --></p>
+
+</div>

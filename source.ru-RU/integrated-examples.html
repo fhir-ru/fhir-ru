@@ -1,0 +1,433 @@
+<!DOCTYPE HTML>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+      
+[%settitle Комплексные примеры%]
+<head>
+[%file newheader%]
+</head>
+<body>
+[%file newnavbar%]
+
+<div class="col-12">
+
+
+<h2>Комплексные примеры</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+
+<p>
+Следующие комплексные примеры являются результатом выбора нескольких реальных медицинских записей из Голландского института здравоохранения и представления их с помощью FHIR-ресурсов. Они опубликованы здесь по нескольким причинам:
+</p>
+<ul>
+ <li>Проверить с помощью реальных случаев, что ресурсы подходят по назначению</li>
+ <li>Для того чтобы доступные примеры ресурсов включали реальные случаи</li>
+ <li>Для того чтобы у приложений были реальные примеры для использования при разработке и прототипировании</li>
+</ul>
+
+
+<h3>Пациент №1</h3>
+
+<p>
+69-летний Питер фон ден Хёфел перенес несколько серьезных заболеваний за последние несколько лет. Весной и летом 2011 года у Питера были жалобы на утомление, одышку и даже обморок.
+После посещения врача Питер был направлен к кардиологу на обследование. В госпитале ему диагностировали неисправность сердечного клапана, который в конечном итоге был заменен. Питер хорошо восстановился за последующие 2 месяца, но, вероятно, ему придется всю жизнь принимать лекарственные средства по снижению кровяного давления.
+Летом 2012 года Питер снова посетил врача с травмой грудной клетки после того как он упал с лестницы. По случайному стечению обстоятельств врач заметил подозрительное пятно на рентгеновском снимке грудной клетки, и Питеру провели несколько дополнительных исследований. По результатам Питеру диагностировали раннюю стадию немелкоклеточного рака легкого. К счастью, опухоль не распространилась на другие части тела. Тип и расположение опухоли дали возможность выполнить частичную лобэктомию в правом легком. После выздоровления Питера добавили в контрольную группу высокого риска для ежегодной проверки.
+</p>
+<p>
+В 2013 году Питер страдал увеличивающейся припухлостью шеи, ригидностью затылочных мышц и затрудненным глотанием. Из-за проблем с дыханием Питер был срочно госпитализирован. Инфекция верхних дыхательных путей вызвала ретрофарингеальный абсцесс в задней части горла. Для удаления абсцесса была необходима операция. Хирурги рекомендовали трахеотомию на время операции, чтобы было меньше осложнений во время удаления абсцесса. Трахеотомию провели перед операцией. После удаления ретрофарингеального абсцесса, когда опухоль спала, трахеотомическая трубка была извлечена и нормальное дыхание восстановилось.
+</p>
+
+<h4>Демографические данные пациента</h4>
+
+<pre>
+Имя пациента: <a href="patient-example-f001-pieter.html">Питер фон ден Хёфел</a>
+Номер пациента: 0108173
+Дата рождения: 17-11-1944
+Пол: мужской
+</pre>
+
+<h4>Контактные данные пациента</h4>
+<pre>
+Адрес: van Egmondkade 23
+Индекс: 1024 RJ
+Город: Амстердам
+Телефон: +31648352638
+Email: p.heuvel@gmail.com
+</pre>
+<p>
+<table border="1">
+<caption>Приём внутрь (Intakes)</caption>
+<tr>
+  <th>дата приёма</th>
+  <th>дата операции</th>
+  <th>врач</th>
+  <th>специализация</th>
+  <th>диагноз</th>
+  <th>процедура</th>
+  <th>план ухода</th>
+  <th>код операции</th>
+  <th>SNOMED CT-код</th>
+  <th>связанный визит</th>
+</tr>
+<tr>
+  <td>26-6-2011</td>
+  <td>27-6-2011</td>
+  <td><a href="practitioner-example-f002-pv.html">P. Voigt</a></td>
+  <td><a href="organization-example-f002-burgers-card.html">CTC (Cardio-thoracale Chirurgie)</a></td>
+  <td><a href="condition-example-f001-heart.html">Heart valve disorder</a></td>
+  <td><a href="procedure-example-f001-heart.html">Heart valve replacement</a></td>
+  <td><a href="careplan-example-f001-heart.html">CP2903</a></td>
+  <td>1000263502</td>
+  <td>64915003</td>
+  <td><a href="encounter-example-f001-heart.html">v1451</a></td>
+</tr>
+<tr>
+  <td>6-7-2012</td>
+  <td>7-7-2012</td>
+  <td><a href="practitioner-example-f003-mv.html">M.I.M. Versteegh</a></td>
+  <td><a href="organization-example-f002-burgers-card.html">CTC (Cardio-thoracale Chirurgie)</a></td>
+  <td><a href="condition-example-f002-lung.html">NSCLC - Non-small cell lung cancer</a></td>
+  <td><a href="procedure-example-f002-lung.html">partial lobectomy</a></td>
+  <td><a href="careplan-example-f002-lung.html">CP2934</a></td>
+  <td>1000263813</td>
+  <td>173171007</td>
+  <td><a href="encounter-example-f002-lung.html">v3251</a></td>
+</tr>
+<tr>
+  <td>22-3-2013</td>
+  <td>22-3-2013</td>
+  <td><a href="practitioner-example-f005-al.html">A.P.M. Langeveld</a></td>
+  <td><a href="organization-example-f003-burgers-ENT.html">ENT</a></td>
+  <td><a href="condition-example-f003-abscess.html">Retropharyngeal abscess</a></td>
+  <td><a href="procedure-example-f003-abscess.html">Trachea-tracheotomy</a></td>
+  <td>CP2938</td>
+  <td>1000050465</td>
+  <td>48387007</td>
+  <td><a href="encounter-example-f003-abscess.html">v6751</a></td>
+</tr>
+<tr>
+  <td>24-3-2013</td>
+  <td>24-3-2013</td>
+  <td><a href="practitioner-example-f001-evdb.html">E.M.J.M. van den broek</a></td>
+  <td><a href="organization-example-f003-burgers-ENT.html">ENT</a></td>
+  <td><a href="condition-example-f003-abscess.html">Retropharyngeal abscess</a></td>
+  <td><a href="procedure-example-f003-abscess.html">retropharyngeal abscess</a></td>
+  <td><a href="careplan-example-f003-pharynx.html">CP3953</a></td>
+  <td>1000049161</td>
+  <td>172960003</td>
+  <td><a href="encounter-example-f003-abscess.html">v6751</a></td>
+</tr>
+<tr>
+  <td>27-3-2013</td>
+  <td>27-3-2013</td>
+  <td><a href="practitioner-example-f004-rb.html">R.J.P. Briet</a></td>
+  <td><a href="organization-example-f003-burgers-ENT.html">ENT</a></td>
+  <td><a href="condition-example-f003-abscess.html">Retropharyngeal abscess</a></td>
+  <td>Trachea-extubatie</td>
+  <td>CP1283</td>
+  <td>1000050159</td>
+  <td>309812005</td>
+  <td><a href="encounter-example-f003-abscess.html">v6751</a></td>
+</tr>
+</table>
+</p>
+<p>
+<table border="1">
+<caption>Устройство (Device)</caption>
+<tr>
+  <th>device</th>
+  <th>hopital/home</th>
+  <th>dose</th>
+  <th>admission route</th>
+  <th>start date</th>
+  <th>presciber</th>
+  <th>SNOMED CT code</th>
+</tr>
+<tr>
+  <td><a href="device-example-f001-feedingtube.html">Питательная трубка</a></td>
+  <td>hospital</td>
+  <td>N.A.</td>
+  <td>tube</td>
+  <td>10-4-2013</td>
+  <td>R.A. van den Berk</td>
+  <td>61420007</td>
+</tr>
+</table>
+</p>
+<table border="1">
+<caption>Результаты лабораторных исследований (Lab results)</caption>
+<td>diagnostic blood report</td>
+<tr>
+  <th>date</th>
+  <th>substance</th>
+  <th>value</th>
+  <th>status</th>
+</tr>
+<tr>
+  <td>2013-04-02</td>
+  <td><a href="observation-example-f001-glucose.html">glucose</a></td>
+  <td>6,3 mmol/l</td>
+  <td>abnormal</td>
+</tr>
+<tr>
+  <td>2013-04-02</td>
+  <td><a href="observation-example-f001-glucose.html">base excess</a></td>
+  <td>12,6 mmol/l</td>
+  <td>abnormal</td>
+</tr>
+<tr>
+  <td>2013-04-02</td>
+  <td><a href="observation-example-f001-glucose.html">carbon dioxide</a></td>
+  <td>6,2 mm[Hg]</td>
+  <td>abnormal</td>
+</tr>
+<tr>
+  <td>2013-04-02</td>
+  <td><a href="observation-example-f001-glucose.html">erytrocyten</a></td>
+  <td>18,7 g/dl</td>
+  <td>abnormal</td>
+</tr>
+<tr>
+  <td>2013-04-02</td>
+  <td><a href="observation-example-f001-glucose.html">Hemoglobin</a></td>
+  <td>7,5 g/dl</td>
+  <td>abnormal</td>
+</tr>
+</table>
+
+<h4>Анамнез</h4>
+<i><b>date: 8-6-2012</b></i>
+Бронхоскопия; несколько образцов биопсии были взяты из патологической слизистой оболочки, образец основной части правого бронха отправлен на гистологический анализ.
+Бронхоскопия проведена по причине спадения правого легкого.
+
+Рентгенография органов грудной клетки; рост спадения легкого и плевральной жидкости.
+
+Бронхоскопия:
+<br/>-жидкости, взятые из основной части правого бронха
+<br/>-патологическая слизистая оболочка правого бронха с легким кровотечением
+<br/>-левая бронхиальная система открыта
+<br/>
+
+<i><b>date: 18-3-2013</b></i>
+Курс антибиотиков при ретрофарингеальном абсцессе с выпадением в средостение. Без возможности хирургическим путем полностью дренировать средостение.
+
+<h4>Физический осмотр (Physical investigation)</h4>
+
+<i><b>date: 18-3-2013</b></i>
+Шея: припухлость и предтрахеальное покраснение, распространяющееся на грудь. Без флуктуации, однако присутствует уплотнение.
+Отек задней части глотки, также присутствует в заперстневидной области. Слабый свистящий звук при дыхании. В целом состояние хорошее. Ложка: маленький надгортанный отек, голосовые связки не подлежат суждению.
+
+<h4>Дополнительные исследования (Additional research)</h4>
+КТ грудной клетки: нет медиастинального/ретрофарингеального collering скопления жидкостей. Диффузный ретро/парафарингеальный отек и медиастинит.
+Предоперационная проба культур показывает: пиогенный стрептококк с чувствительностью к пенициллину и Enterobacter cloacae с чувствительностью к ванкомицину.
+
+<h4>Курс лечения (Policy)</h4>
+Прекратить предписание ванкомицина. Продолжить давать пенициллин и начать добавку ванкомицина. Общее время лечения - приблизительно 6 недель.
+По согласованию с IC/anesthesia: интубация. Анализ нижних дыхательных путей. 
+Stop vancomycin  prescription. Continue penicilin and start vancomycin supplementation. Total treatment time is approximatly 6 weeks.
+In consultation with the IC/anesthesia; intubation. Analyse lower respiratory tract.
+<h4>Заключение (Conclusion)</h4>
+Экстубация в операционной. Голос нормальный, нет свястящего дыхания. Однако гипоксичен при непроходимости нижних дыхательных путей с 84% O2 и учащенное дыхание.
+
+<h3>Пациент №2</h3>
+
+
+<pre>
+Имя пациента: <a href="patient-example-f201-roel.html">Roel Bor</a>
+Номер пациента: 123456789
+Дата рождения: 1960-03-13
+Пол: мужской
+</pre>
+
+<h4>Контактные данные пациента</h4>
+<pre>
+Адрес: Bos en Lommerplein 280
+Индекс: 1055 RW
+Город: Амстердам
+Телефон: +31612345678
+</pre>
+Рулу Бору уже за пятьдесят, он работает в IT-компании, у него двое здоровых детей и жена. Его дядя, к сожалению, был не так здоров и умер от рака.
+В конце 2012 года Рулу диагностировали опухоль в медицинском центре Эразма. Его опухоль расположена в области головы-шеи. Стандартное лечение - TPF-химиотерапия.
+Опухоль не излечима полностью из-за своего расположения, однако была оптимально минимизирована терапией в AUMC. За лечением последовали два тяжелых осложнения, а именно: бактериальный сепсис (золотистый стафилококк) и почечная недостаточность. Оба были стабилизированы в течение короткого периода с помощью медикаментов (см. план ухода). У Рула впоследствии были взлеты и падения с последним известным состоянием тяжелой лихорадки, по которому он получил наряду с другим лечением парацетамол. В качестве заметки и итогового заявления: пациент страдает от аллергии на домашнюю пыль.
+
+<p>
+<table border="1">
+<caption>Intakes</caption>
+<tr>
+  <th>practitioner</th>
+  <th>organization</th>
+  <th>careplan</th>
+  <th>start date</th>
+  <th>substance</th>
+  <th>condition</th>
+  <th>other participant</th>
+  <th>procedure</th>
+  <th>encounter ID</th>
+  <th>surgery code</th>
+  <th>SNOMED CT code</th>
+</tr>
+<tr>
+  <td><a href="practitioner-example-f201-ab.html">A. Bronsig</a></td>
+  <td><a href="organization-example-f201-aumc.html">Artis University Medical Center</a></td>
+  <td><a href="careplan-example-f201-renal.html">CP3928</a></td>
+  <td>2013-03-11</td>
+  <td><a href="substance-example-f203-potassium.html">potassium</a></td>
+  <td><a href="condition-example-f201-fever.html">fever</a></td>
+  <td><a href="practitioner-example-f204-ce.html">Carla Espinosa</a></td>
+  <td></td>
+  <td><a href="encounter-example-f201-20130404.html">20130404</a></td>
+  <td>100028475</td>
+  <td>64915003</td>
+</tr>
+<tr>
+  <td><a href="practitioner-example-f201-ab.html">A. Bronsig</a></td>
+  <td><a href="organization-example-f201-aumc.html">Artis University Medical Center</a></td>
+  <td><a href="careplan-example-f202-malignancy.html">CP7364</a></td>
+  <td></td>
+  <td></td>
+  <td><a href="condition-example-f202-malignancy.html">malignant tumor</a></td>
+  <td></td>
+  <td><a href="procedure-example-f201-tpf.html">chemotherapy</a></td>
+  <td><a href="encounter-example-f202-20130128.html">20130128</a></td>
+  <td>100028475</td>
+  <td>363346000</td>
+</tr>
+<tr>
+  <td><a href="practitioner-example-f201-ab.html">A. Bronsig</a></td>
+  <td><a href="organization-example-f201-aumc.html">Artis University Medical Center</a></td>
+  <td><a href="careplan-example-f203-sepsis.html">CP8766</a></td>
+  <td>2013-03-11</td>
+  <td></td>
+  <td><a href="condition-example-f203-sepsis.html">Bacterial sepsis</a></td>
+  <td><a href="practitioner-example-f202-lm.html">Luigi Maas</a></td>
+  <td>observation</td>
+  <td><a href="encounter-example-f203-20130311.html">20130311</a></td>
+  <td>100028475</td>
+  <td>363346000</td>
+</tr>
+</table>
+</p>
+<p>
+<table border="1">
+<caption>Diagnoses</caption>
+<tr>
+  <th>practitioner</th>
+  <th>date</th>
+  <th>encounter</th>
+  <th>reason</th>
+  <th>condition</th>
+  <th>medication</th>
+  <th>medication prescription</th>
+  <th>procedure</th>
+  <th>diagnostic report</th>
+  <th>issued by</th>
+</tr>
+<tr>
+  <td><a href="practitioner-example-f201-ab.html">A. Bronsig</a></td>
+  <td>28-1-2013</td>
+  <td><a href="encounter-example-f202-20130128.html">20130128</a></td>
+  <td>chemotherapy</td>
+  <td><a href="condition-example-f202-malignancy.html">malignant tumor</a></td>
+  <td></td>
+  <td></td>
+  <td><a href="procedure-example-f201-tpf.html">chemotherapy</a></td>
+  <td><a href="organization-example-f203-bumc.html">BUMC</a></td>
+</tr>
+<tr>
+  <td><a href="practitioner-example-f201-ab.html">A. Bronsig</a></td>
+  <td>4-3-2013</td>
+  <td><a href="encounter-example-f201-20130404.html">20130404</a></td>
+  <td>fever</td>
+  <td><a href="condition-example-f201-fever.html">fever</a></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td><a href="practitioner-example-f201-ab.html">A. Bronsig</a></td>
+  <td>11-3-2013</td>
+  <td><a href="encounter-example-f203-20130311.html">20130311</a></td>
+  <td>sepsis</td>
+  <td><a href="condition-example-f203-sepsis.html">Bacterial sepsis</a></td>
+  <td></td>
+  <td><a href="organization-example-f201-aumc.html">AUMC</a></td>
+</tr>
+<tr>
+  <td><a href="practitioner-example-f201-ab.html">A. Bronsig</a></td>
+  <td>11-3-2013</td>
+  <td><a href="encounter-example-f203-20130311.html">20130311</a></td>
+  <td>renal</td>
+  <td><a href="condition-example-f204-renal.html">Renal insufficiency</a></td>
+  <td></td>
+  <td><a href="organization-example-f201-aumc.html">AUMC</a></td>
+</tr>
+</table>
+</p>
+<p>
+<table border="1">
+<caption>Observations</caption>
+<tr>
+  <th>practitioner</th>
+  <th>date</th>
+  <th>observation</th>
+  <th>value</th>
+  <th>status</th>
+  <th>SNOMED CT code</th>
+</tr>
+<tr>
+  <td><a href="practitioner-example-f202-lm.html">Luigi Maas</a></td>
+  <td>11-3-2013</td>
+  <td><a href="observation-example-f206-staphylococcus.html">Blood culture for bacteria</a></td>
+  <td>Gram-positive bacteria</td>
+  <td>positive</td>
+  <td>8745002</td>
+</tr>
+<!-- this BMI is excluded, and I'm not sure why. (GG 2015-07-020)
+<tr>
+  <td><a href="practitioner-example-f201-ab.html">A. Bronsig</a></td>
+  <td>4-4-2013</td>
+  <td><a href="observation-example-f201-bmi.html">BMI</a></td>
+  <td>31.31</td>
+  <td>high</td>
+  <td>60621009</td>
+</tr>
+-->
+<tr>
+  <td><a href="practitioner-example-f201-ab.html">A. Bronsig</a></td>
+  <td>4-4-2013</td>
+  <td><a href="observation-example-f202-temperature.html">temperature taken</a></td>
+  <td>39 degrees Celsius1</td>
+  <td>high</td>
+  <td>89003005</td>
+</tr>
+<tr>
+  <td><a href="practitioner-example-f201-ab.html">A. Bronsig</a></td>
+  <td>4-4-2013</td>
+  <td><a href="observation-example-f203-bicarbonate.html">Serum bicarbonate measurement</a></td>
+  <td>28mmol/L</td>
+  <td>normal</td>
+  <td>271239003</td>
+</tr>
+<tr>
+  <td><a href="practitioner-example-f202-lm.html">Luigi Maas</a></td>
+  <td>4-4-2013</td>
+  <td><a href="observation-example-f204-creatinine.html">Serum creatinine raised</a></td>
+  <td>122 umol/L</td>
+  <td>high</td>
+  <td>166717003</td>
+</tr>
+<tr>
+  <td><a href="practitioner-example-f202-lm.html">Luigi Maas</a></td>
+  <td>4-4-2013</td>
+  <td><a href="observation-example-f205-egfr.html">Epidermal Growth Factor Receptor</a></td>
+  <td>Negative for EGF receptor expression (Non-small cell lung cancer)</td>
+  <td>negative</td>
+  <td>427038005</td>
+</tr>
+</table>
+</p>
+
+</div>
+[%file newfooter%]
+</body>
+</html>

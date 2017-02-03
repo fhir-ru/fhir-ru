@@ -101,6 +101,26 @@ resource should be used. --><br/>
 <!-- It is not expected that these records will be used for recording the primary care provider; this information should be stored in
 the Patient.generalPractitioner field. --></p>
 
+<a name="gender"> </a>
+<h2>Patient Gender</h2>
+
+<p>
+Tracking a patient's gender presents a number of challenges due to biological variations, differing cultural expectations and legal restrictions, and the availability of various kinds of gender re-assignment. 
+The basic gender included in <code>Patient.gender</code> has a limited use, that of the <i>administrative</i> gender: the gender that the patient is considered to have for administration and record keeping purposes.
+In addition, to this gender, other kinds of gender may be represented:
+</p>
+<ul>
+ <li>Birth Sex - the sex assigned at birth / on the birth registration. Some countries allow variations such as not yet determined, unknown, or undifferentiated, while others do not. The US realm defines a US Specific extension for this for Meaningful Use</li>
+ <li>Clinical Gender - an observation about the patient, typically using the <a href="loinc.html">LOINC</a> code <a href="http://loinc.org/76691-5">76691-5</a>). 
+     LOINC also provides a <a href="http://r.details.loinc.org/AnswerList/LL3322-6.html">set of possible codes</a>, or SNOMED CT has the descendents of <a href="http://www.snomedbrowser.com/Codes/Details/285116001">285116001</a>: Gender identity finding</li>
+</ul>
+<p>
+Other related Observations may describe the Karyotypic/Genetic, Gonadal, Ductal, Phenotypic status of a patient.
+</p>
+<p>
+For veterinary use the animal component also includes the genderStatus which indicates sterility information.
+</p>
+
 <a name="maternity"> </a>
 <h2>Mother and newborn relationships</h2>
 <p>
@@ -180,11 +200,11 @@ does not mandate that FHIR servers migrate information between such records on f
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>Примечание к DSTU:</b> Мы ожидаем от сообщества реализации данных о том, как связывание/слияние/разъединение записей должно влиять на другую функциональность, такую как операция GET (где результат - старая версия ресурса Patient), поиск, обратные включения и т. д.; например, следует ли возвращать все ресурсы Observation из связанных/объединённых записей пациентов в ответ на запрос одного из них?
+<b>Примечание к STU:</b> Мы ожидаем от сообщества реализации данных о том, как связывание/слияние/разъединение записей должно влиять на другую функциональность, такую как операция GET (где результат - старая версия ресурса Patient), поиск, обратные включения и т. д.; например, следует ли возвращать все ресурсы Observation из связанных/объединённых записей пациентов в ответ на запрос одного из них?
 <br/>
 Каким должен быть механизм разъединения записей? (Полагая, что данные не были перераспределены в рамках слияния). 
 Эти предлагаемые обновленные модели поведения могут быть предметом будущего коннектатона.
-<!-- <b>DSTU Note:</b>   We are seeking input from the implementer community on what effect linking/merging/unlinking should have on 
+<!-- <b>STU Note:</b>   We are seeking input from the implementer community on what effect linking/merging/unlinking should have on 
 other functionality such as the GET operation (where the result is the old version of the Patient), searching, reverse includes, etc.; e.g., should observation resources from all linked/merged patients be returned when querying for one of them?<br/>
 How should an unlink behavior be done? (Assuming that no data was "re-allocated" as part of merge)
 These suggested updated behaviors could be the subject of a future connectathon. -->
@@ -267,8 +287,8 @@ a deployment choice. -->
 <blockquote class="dstu-note">
 <a name="dstu-2"> </a>
 <p>
-<b>Примечание к DSTU:</b> Это первый вариант использования такого подхода, выработанный во время тестирования на коннектатоне.
-<!-- <b>DSTU Note:</b>  This is the first draft of this approach, as a result of 
+<b>Примечание к STU:</b> Это первый вариант использования такого подхода, выработанный во время тестирования на коннектатоне.
+<!-- <b>STU Note:</b>  This is the first draft of this approach, as a result of 
 connectathon testing. -->
 </p>
 <p>

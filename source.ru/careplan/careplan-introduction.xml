@@ -6,7 +6,7 @@
 <p> 
 Планы медицинского обслуживания применяются во многих областях здравоохранения.
 Они могут быть как очень простыми, например терапевт ведёт учет, когда его пациенту необходима следующая иммунизация от столбняка, так и очень детализированными, например план для онкологического больного, охватывающий диету, химиотерапию, облучение, лабораторные анализы и консультирование с подробным графиком, предварительными условиями и целями. Они могут использоваться в ветеринарии или медицинских исследованиях для описания лечения стада или других групп животных. Для публичного здравоохранения они могут описывать кампании по обучению или иммунизации.
-<!-- Care Plans are used in many of areas of healthcare with a variety of scopes.
+<!-- Care Plans are used in many areas of healthcare with a variety of scopes.
 They can be as simple as a general practitioner keeping track of when their 
 patient is next due for a tetanus immunization through to a detailed plan for
 an oncology patient covering diet, chemotherapy, radiation, lab work and
@@ -44,23 +44,11 @@ plan, etc.) -->
 diabetes plan, falls prevention, etc.) -->
 </li>
 <li>
-Определение и управление бригадами медицинской помощи, включая роли, ассоциированные с определённым состоянием или рядом состояний [пациента].
-<!-- Definition and management of a care team, including roles associated with a particular condition 
-or set of conditions. -->
-</li>
-<li>
 Самостоятельно поддерживаемые [пациентом] планы, составленные пациентом или лицом, осуществляющим за ним уход, отображающие их цели и общее понимание действий, которые должны быть предприняты.
 <!-- Self-maintained patient or care-giver authored plans identifying their goals and an integrated
 understanding of actions to be taken -->
 </li>
 </ul>
-<p>
-Обратите внимание, что этот ресурс представляет собой конкретный экземпляр плана для определённого пациента или группы. Он не предназначен для описания общих планов или протоколов, существующих независимо от конкретного человека или группы. Т. е. это конкретное намерение, а не общее определение. Протоколы и наборы заказов описываются другими ресурсами.
-<!-- Note that this resource represents a specific plan instance for a particular patient or group.
-It is not intended to be used to define generic plans or protocols that are independent of a
-specific individual or group.  I.e. It represents a specific intent, not a general definition.
-Protocols and order sets will be supported through future resources. -->
-</p>
 <p>
 Этот ресурс можно использовать для описания как предполагаемых планов (например рекомендации, полученные от системы поддержки принятия решений или описанные в заключении к консультации), так и действующих. Соответствующий тип плана передаётся с помощью статуса. Некоторые системы могут фильтровать планы по уходу по этому статусу, чтобы показывать в пользовательском интерфейсе только подходящие.
 <!-- This resource can be used to represent both proposed plans (for example, recommendations from
@@ -93,6 +81,10 @@ or the care delivered by a particular practitioner or group of practitioners. --
 <!-- An <a href="immunizationrecommendation.html">ImmunizationRecommendation</a> can be interpreted as a narrow
 type of Care Plan dealing only with immunization events.  Where such information could appear in either
 resource, the immunization-specific resource is preferred. -->
+</p>
+<p>
+CarePlans represent a specific plan instance for a particular patient or group.  It is not intended to be used to define generic plans or protocols that are independent of a
+specific individual or group.  CarePlan represents a specific intent, not a general definition.  Protocols and order sets are supported through <a href="plandefinition.html">PlanDefinition</a>.
 </p>
 <p>
 <b>PLANNED CHANGE:</b>

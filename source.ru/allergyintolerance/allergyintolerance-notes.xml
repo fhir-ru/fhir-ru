@@ -7,8 +7,8 @@
 not including allergies in the record (for example an episodic document where the allergies are not considered 
 relevant to the document); or asserting that allergies were not reviewed and are unknown. --></p>
 
-<p>Аллергии со статусом "введено по ошибке (entered-in-error)" считаются недействующими аллергиями.<!-- Allergies with the status "entered-in-error" are considered to be inactive allergies. --></p>
-<p>Аллергии со статусом "опровергнуто (refuted)" обязательно должны отображаться для указания того, что реакция на вещество была исключена с высоким уровнем клинической уверенности (например дополнительным тестированием, повторной стимуляцией).<!-- Allergies with the status "refuted" must be displayed to indicate that a reaction to a substance has been ruled out
+<p>Аллергии со статусом (verificationStatus) "введено по ошибке (entered-in-error)" считаются введёнными по ошибке и, следовательно, недействительными.<!-- Allergies with the verificationStatus "entered-in-error" indicates that the allergy or intolerance statement is entered by mistake and hence invalid. --></p>
+<p>Аллергии со статусом (verificationStatus) "опровергнуто (refuted)" обязательно должны отображаться для указания того, что реакция на вещество была исключена с высоким уровнем клинической уверенности (например дополнительным тестированием, повторной стимуляцией).<!-- Allergies with the verificationStatus "refuted" must be displayed to indicate that a reaction to a substance has been ruled out
 with the high level of clinical certainty (e.g. additional testing, rechallenging).  --></p>
 <p>Перед тем как добавлять новую аллергию/непереносимость, следует проверить и согласовать список существующих отрицаемых или опровергнутых аллергий.<!-- Prior to adding a new allergy/intolerance, a list of existing negated and refuted reactions should be reviewed
 and reconciled. --></p>
@@ -24,8 +24,8 @@ and reconciled. --></p>
 </p>
 
   <p>
-  Если делается утверждение, касающееся всего списка целиком (т. е. у пациента нет известных аллергий или непереносимостей любого типа), то системы могут использовать элемент List.emptyReason. Однако обычно предпочитают использовать код для утверждения "Нет известных аллергий" (например SNOMED CT: 160244002 |No known allergies (situation)|), чтобы все связанные с аллергиями аднные были доступны и можно было их запросить из экземпляров ресурса AllergyIntolerance. Экземпляры AllergyIntolerance с отрицанием наличия аллергий обычно используются в тех случаях, когда запись структурирована более тонко (например идет перечисление: нет лекарственных аллергий, нет пищевых аллергий, нет аллергии на орехи и т. п.).
-    <!-- Systems may use the List.emptyReason when a statement is about the full scope of the list (i.e. the patient has no known allergies or intolerances of any type). However, it is generally preferred to use a code for "No known allergies" (e.g., SNOMED CT: 160244002 |No known allergies (situation)|), so that all allergy data will be available and queryable from AllergyIntolerance resource instances.  Negated AllergyIntolerance instances are also typically used when the record is more fine-grained (e.g. no drug allergies, no food allergies, no nut allergies, etc.). -->
+  Если делается утверждение, касающееся всего списка целиком (т. е. у пациента нет известных аллергий или непереносимостей любого типа), то системы могут использовать элемент List.emptyReason. Однако обычно предпочитают использовать код для утверждения "Нет известных аллергий" (например SNOMED CT: SNOMED CT: 716186003 |No known allergy (situation)|), чтобы все связанные с аллергиями аднные были доступны и можно было их запросить из экземпляров ресурса AllergyIntolerance. Экземпляры AllergyIntolerance с отрицанием наличия аллергий обычно используются в тех случаях, когда запись структурирована более тонко (например идет перечисление: нет лекарственных аллергий, нет пищевых аллергий, нет аллергии на орехи и т. п.).
+    <!-- Systems may use the List.emptyReason when a statement is about the full scope of the list (i.e. the patient has no known allergies or intolerances of any type). However, it is generally preferred to use a code for "No known allergies" (e.g., SNOMED CT: 716186003 |No known allergy (situation)|), so that all allergy data will be available and queryable from AllergyIntolerance resource instances.  Negated AllergyIntolerance instances are also typically used when the record is more fine-grained (e.g. no drug allergies, no food allergies, no nut allergies, etc.). -->
   </p>  
   <p>
   Однако есть возможность включать отрицательные утверждения, которые будут работать на уровне всего списка целиком, также есть возможность иметь отдельные списки для таких вещей, как лекарственные аллергии в противоположность пищевым аллергиям, где это уместно по структуре.
@@ -128,7 +128,7 @@ as described above, or using the <a href="list.html">List</a> resource with empt
 </pre>
 </div>
 
-<p>При выявлении новой аллергии, статус записи отрицания аллергий должен быть изменен на "опровергнуто (refuted)" для гарантии того, что системы, ссылающиеся на эту запись, узнали, что это больше не верно.<!-- If a new allergy is discovered, the negated allergy record must be updated with the "refuted" status - 
+<p>При выявлении новой аллергии, статус (verificationStatus) записи отрицания аллергий должен быть изменен на "опровергнуто (refuted)" для гарантии того, что системы, ссылающиеся на эту запись, узнали, что это больше не верно.<!-- If a new allergy is discovered, the negated allergy record must be updated with the "refuted" verificationStatus - 
 to ensure that systems referring to this record are aware that this is no longer true. --></p>
 
 <h3>Использование элемента AllergyIntolerance.criticality<!-- Use of AllergyIntolerance.criticality --></h3>

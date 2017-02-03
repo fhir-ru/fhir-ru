@@ -23,29 +23,132 @@ validation of resources.  -->
 </p>
 
 <p>
-В принципе, ресурсы можно валидировать:
-<!-- In principle, resources can be validated: -->
+Validating a resource means, checking that the the following aspects of the resource are valid:
 </p>
 <ul>
- <li>на соответствие исходной спецификации;<!-- Against the original specification --></li>
- <li>на соответствие руководству по реализации;<!-- Against an implementation guide --></li>
- <li>на соответствие конкретному профилю.<!-- Against a specific profile --></li>
+<li><b>Structure</b>: Check that all the content in the resource is described by the specification, and nothing extra is present</li>
+<li><b>Cardinality</b>: Check that the cardinality of all properties is correct (min &amp; max)</li>
+<li><b>Value Domains</b>: Check that the values of all properties conform to the rules for the specified types (including checking that enumerated codes are valid)</li>
+<li><b>Coding/CodeableConcept bindings</b>: Check that codes/displays provided in the <a href="datatypes.html#Coding">Coding</a>/<a href="datatypes.html#CodeableConcept">CodeableConcept</a> types are valid</li>
+<li><b>Invariants</b>: Check that the <a href="conformance-rules.html#constraints">invariants</a> (co-occurance rules, etc) have been followed correctly</li>
+<li><b>Profiles</b>: Check that any rules in <a href="profiling.html">profiles have been followed</a> (including those listed in the 
+  <a href="resource.html#Meta">Resource.meta.profile</a>, or in <a href="profiling.html#profile-uses">CapabilityStatement</a>, or 
+  in an <a href="implementationguide.html">ImplementationGuide</a>, or otherwise required by context)</li>
+<li><b>Questionnaires</b>: Check that a <a href="questionnaireresponse.html">QuestionnaireResponse</a> is valid against it's matching <a href="questionnaire.html">Questionnaire</a></li>
 </ul>
 
 <p>
-Ресурсы можно тестировать на соответствие:
-<!-- Resources can be tested for conformance by: -->
+There are multiple ways to validate resources. This table summarizes the options
+described in this specification, and which of the aspects above they can validate:
 </p>
-<ul>
- <li><a href="#schema">с помощью XML Schema</a> - только для XML-экземпляров</li>
- <li><a href="#jar">с помощью FHIR Validator</a> - java jar-файл, предоставляемый в рамках спецификации</li>
- <li><a href="#op">запросить FHIR Server</a> - используя операцию $validate</li>
- <li><a href="#web">через веб-интерфейс</a> - используя веб-форму на тестовом сервере</li>
-<!--  <li><a href="#schema">Using the XML Schema</a> - for XML instances only</li>
- <li><a href="#jar">Using the FHIR Validator</a> - a java jar provided as part of the specification</li>
- <li><a href="#op">Asking a FHIR Server</a> - using the $validate operation</li>
- <li><a href="#web">Via a web interface</a> - using a web form on a test server</li> -->
-</ul>
+
+<table class="grid">
+ <tr>
+  <td><b>Method</b></td>
+  <td><b>XML</b></td>
+  <td><b>JSON</b></td>
+  <td><b>RDF</b></td>
+  <td><b>Structure</b></td>
+  <td><b>Cardinality</b></td>
+  <td><b>Values</b></td>
+  <td><b>Bindings</b></td>
+  <td><b>Invariants</b></td>
+  <td><b>Profiles</b></td>
+  <td><b>Questionnaires</b></td>
+ </tr>
+
+ <tr>
+  <td><a href="#schema">XML Schema</a></td>
+  <td><img src="assets/images/tick.png"/></td> <!-- XML -->
+  <td></td> <!-- JSON -->
+  <td></td> <!-- RDF -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Structure -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Cardinality -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Values -->
+  <td></td> <!-- Bindings -->
+  <td></td> <!-- Invariants -->
+  <td></td> <!-- Profiles -->
+  <td></td> <!-- Questionnaires -->
+ </tr>
+
+ <tr>
+  <td><a href="#schema">XML Schema + Schematron</a></td>
+  <td><img src="assets/images/tick.png"/></td> <!-- XML -->
+  <td></td> <!-- JSON -->
+  <td></td> <!-- RDF -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Structure -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Cardinality -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Values -->
+  <td></td> <!-- Bindings -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Invariants -->
+  <td><img src="assets/images/tick.png"/><sup><b>1</b></sup></td> <!-- Profiles -->
+  <td></td> <!-- Questionnaires -->
+ </tr>
+ 
+ <tr>
+  <td><a href="#json-schema">JSON Schema</a></td>
+  <td></td> <!-- XML -->
+  <td><img src="assets/images/tick.png"/></td> <!-- JSON -->
+  <td></td> <!-- RDF -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Structure -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Cardinality -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Values -->
+  <td></td> <!-- Bindings -->
+  <td></td> <!-- Invariants -->
+  <td><img src="assets/images/tick.png"/><sup><b>2</b></sup></td> <!-- Profiles -->
+  <td></td> <!-- Questionnaires -->
+ </tr>
+
+ <tr>
+  <td><a href="rdf.html#schema">ShEx</a></td>
+  <td></td> <!-- XML -->
+  <td></td> <!-- JSON -->
+  <td><img src="assets/images/tick.png"/></td> <!-- RDF -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Structure -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Cardinality -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Values -->
+  <td><img src="assets/images/tick.png"/><sup><b>3</b></sup></td> <!-- Bindings -->
+  <td></td> <!-- Invariants -->
+  <td></td> <!-- Profiles -->
+  <td></td> <!-- Questionnaires -->
+ </tr>
+ <tr>
+  <td><a href="#jar">Validator</a></td>
+  <td><img src="assets/images/tick.png"/></td> <!-- XML -->
+  <td><img src="assets/images/tick.png"/></td> <!-- JSON -->
+  <td><img src="assets/images/tick.png"/></td> <!-- RDF -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Structure -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Cardinality -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Values -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Bindings -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Invariants -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Profiles -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Questionnaires -->
+ </tr>
+ <tr>
+  <td><a href="#op">Validation Operation</a><sup><b>4</b></sup></td>
+  <td><img src="assets/images/tick.png"/></td> <!-- XML -->
+  <td><img src="assets/images/tick.png"/></td> <!-- JSON -->
+  <td><img src="assets/images/tick.png"/></td> <!-- RDF -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Structure -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Cardinality -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Values -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Bindings -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Invariants -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Profiles -->
+  <td><img src="assets/images/tick.png"/></td> <!-- Questionnaires -->
+ </tr>
+</table>
+<p>
+Notes:
+</p>
+<ol>
+ <li>Schematron generated for a profile can test cardinality and invariants, but not bindings, and slicing is not really supported well</li>
+ <li>JSON schema generated for a profile can test cardinality, and slicing is partially supported</li>
+ <li>ShEx can enforce some bindings for well understood terminologies, but this is an ongoing area of development</li>
+ <li>It is at the discretion of the server how much validation to perform, but most servers use the validation jar, 
+   or code derived from it, and offer the same services. Some servers also offer <a href="#web">a web interface</a></li>
+</ol>
 
 <p>
 Отметьте, что все эти методы валидации не являются полными; они могут валидировать вычисляемые аспекты соответствия, однако всегда есть дополнительные правила, описанные текстом, которые они не могут проверить (например такое правило, как "Всё клинически важное содержимое в данных ДОЛЖНО быть представлено в описательной части", которое может быть введено в руководстве по реализации и не может быть проверено инструментами проверки на соответствие).
@@ -79,7 +182,7 @@ prove conformance to the specification. For further information, see
 
 <p>
 Для валидации XML-представлений ресурсов можно использовать XML-схему. Для валидации ресурса вы можете использовать одну из следующих схем:
-<!-- The XML schema can be used to validate XML represenations of the resources. 
+<!-- The XML schema can be used to validate XML representations of the resources. 
 When validating a resource, you can nominate one of the following schema:  -->
 </p>
 <ul>
@@ -100,6 +203,18 @@ includes all the schematrons. The individual schematron files for each
 resource are provided to allow implementers to build their own smaller
 combined file that covers the relevant resource types for them. -->
 </p>
+
+<a name="json-schema"> </a>
+<h3>Using the JSON schema</h3>
+<p>
+The JSON schema can be used with JSON schema validation software. 
+Links:
+</p>
+<ul>
+ <li><a href="fhir.schema.json.zip">JSON Schema</a></li>
+ <li><a href="http://json-schema.org/implementations">JSON Validation Software</a></li>
+</ul>
+
 
 <a name="jar"> </a>
 <h3>Использование FHIR Validator<!-- Using the FHIR Validator --></h3>
@@ -123,17 +238,17 @@ execute the FHIR validator, follow the following steps: -->
  @ECHO OFF
 
  ECHO get the validator and unzip it 
- wget http://hl7.org/fhir/validator.zip
+ wget http://build.fhir.org/fhir/validator.zip
  7z.exe x validator.zip
 
  ECHO Get the validation source file (dictionary)
- wget http://hl7.org/fhir/validation-min.xml.zip
+ wget http://hl7.org/fhir/igpack.zip
 
  ECHO get an example to validate
  wget http://hl7.org/fhir/patient-example.xml -O pat-ex.xml
 
  ECHO validate it. The DAF profile will be loaded out of the definitions in validation-min.zip
- java -jar org.hl7.fhir.validator.jar pat-ex.xml -defn validation-min.xml.zip -profile http://hl7.org/fhir/StructureDefinition/daf-patient
+ java -jar org.hl7.fhir.validator.jar pat-ex.xml -defn igpack.zip -profile http://hl7.org/fhir/StructureDefinition/daf-patient
 
  pause
 </pre>
@@ -163,7 +278,7 @@ to post the resource to a server: -->
  POST [base]/Patient/$validate?profile=http://hl7.org/fhir/StructureDefinition/daf-patient
  [other HTTP headers]
  
- &lt;Patient&gt;.. resource to check as the body
+ &lt;Patient&gt;... resource to check as the body
 </pre>
 <p>
 Сервер вернёт ресурс <a href="operationoutcome.html">OperationOutcome</a> со списком всех ошибок, обнаруженных в ресурсе.

@@ -36,7 +36,9 @@
    Description Ids не допустимы, как и другие концепты, ассоциированные с концептами SNOMED CT с помощью инфраструктуры идентификации RF2. Выражения НЕ ДОЛЖНЫ содержать термины, а только идентификаторы концептов</td></tr>
  <tr><td>Display</td><td>Корректным значением для отображения SNOMED CT-концепта является один из предпочтительных терминов для этого концепта. Предпочтительные термины чувствительны к регистру. Fully Specified Name не является подходящим выбором.
  Источник предпочтительного имени идет из Language Reference Set.    
-    SNOMED CT не определяет значения для отображения для выражений; если с выражением не ассоциировано ни одно значение для отображения (display) с помощью набора значений или другого механизма, тогда можно использовать полный синтаксис выражения со встроенными предпочтительными терминами</td></tr>
+    SNOMED CT не определяет значения для отображения для выражений; если с выражением не ассоциировано ни одно значение для отображения (display) с помощью набора значений или другого механизма, тогда можно использовать полный синтаксис выражения со встроенными предпочтительными терминами(note that when SNOMED CT Description Ids must be exchanged, use the <a href="extension-coding-sctdescid.html">Description Id Extension</a></td></tr>
+ <tr><td>Inactive</td><td>Inactive codes a identiifed using the 'iactive' property (see below)</td></tr>
+ <tr><td>Subsumption</td><td>SNOMED CT Subsumption testing is based in the Is-a relationship defined by SNOMED CT</td></tr>
  <tr><td>Filter Properties</td><td>Определено несколько свойств, описанных ниже</td></tr>
 <!--  <tr><td>System</td><td>The URI <a href="http://snomed.info/sct">http://snomed.info/sct</a> identifies the SNOMED CT code system</td></tr>
  <tr><td>Version</td><td>Where a version is used, it should be a full URI that represents the specific distribution, following the <a href="http://snomed.org/uristandard.pdf">SNOMED CT URI Specification</a> (see note below)</td></tr>
@@ -44,15 +46,20 @@
    <a href="http://www.snomed.org/gl?t=glsct_st_ConceptId">Concept IDs</a>, 
    <a href="http://www.snomed.org/gl?t=glsct_se_Expression">Expressions</a> (<a href="http://snomed.org/compgrammar.pdf">grammar</a>) and
    <a href="http://www.snomed.org/tig?t=tsg2_metadata_refset_legacy">SNOMED Legacy codes</a>.<br/><br/>
-     SNOMED CT Description Ids are not valid as codes in FHIR, nor are other alternate identifiers associated with SNOMED CT Concepts using the RF2 identifier infrastructure. Expressions SHOULD NOT contain terms, only concept IDs </td></tr>
+     SNOMED CT Description Ids are not valid as codes in FHIR, nor are other alternate identifiers associated with SNOMED CT Concepts using the RF2 identifier infrastructure. Expressions SHOULD NOT contain terms, only concept IDs (note that when SNOMED CT Description Ids must be exchanged, use the <a href="extension-coding-sctdescid.html">Description Id Extension</a></td></tr>
  <tr><td>Display</td><td>The correct display for a SNOMED CT concept is one of the preferred terms for the concept. Preferred terms are case sensitive. The Fully Specified Name is not an appropriate choice. 
     The source of preferred name comes from a Language Reference Set.
     
     SNOMED CT does not define displays for expressions; if no display has been associated with the expression
     through a value set or other mechanism, the full expression syntax with preferred terms embedded may be used</td></tr>
+ <tr><td>Inactive</td><td>Inactive codes a identiifed using the 'iactive' property (see below)</td></tr>
+ <tr><td>Subsumption</td><td>SNOMED CT Subsumption testing is based in the Is-a relationship defined by SNOMED CT</td></tr>
  <tr><td>Filter Properties</td><td>Several properties are defined as described below</td></tr> -->
 </table>
-
+<p>
+This specification publishes a <a href="codesystem-snomedct.html">canonical SNOMED CT</a> <a href="codesystem.html">code system</a> 
+resource. See also the <a href="snomedct-usage.html">SNOMED CT Usage Summary</a>.
+</p>
 <!-- add note about usage of SNOMED 3 legacy codes - should be replaced with SNOMED CT identifiers, may change in future versions of FHIR -->
 
 <p>
@@ -104,7 +111,33 @@ http://snomed.info/id/[concept-id]. Expressions are represented the same way, ex
 that for this use, expressions SHALL not contain whitespace, terms, or comments.
 </p>
 
-<h3>SNOMED CT Filter Properties</h3>
+<a name="props"> </a>
+<h3>SNOMED CT Properties</h3>
+<p>
+In addition to the <a href="terminology-service.html#standard-props">standard properties</a>, the following properties are defined for SNOMED CT:
+</p>
+<table class="grid">
+<tr><td>inactive</td><td>boolean</td><td>Whether the code is active or not (defaults to false). This is derived from the active column in the Concept file of the RF2 Distribution (by inverting the value) </td></tr>
+<tr><td>sufficientlyDefined</td><td>boolean</td><td>True if the description logic definition of the concept includes sufficient conditions (i.e., if the concept is not primitive).</td></tr>
+<tr><td>moduleId</td><td>code</td><td>The SNOMED CT concept id of the module that the concept belongs to.</td></tr>
+<tr><td>normalForm</td><td>string</td><td>Generated Normal form expression for the provided code or expression, with terms</td></tr>
+<tr><td>normalFormTerse</td><td>string</td><td>Generated Normal form expression for the provided code or expression, conceptIds only</td></tr>
+</table>
+<p>
+In addition, any SNOMED CT relationships where the relationship type is subsumed by Attribute (246061005)
+automatically become properties. For example, laterality:
+</p>
+<table class="grid">
+<tr><td>Laterality</td><td>code</td><td>In this case, the URI (See the <a href="codesystem-snomedct.html">code system definition</a>) is <code>http://snomed.info/id/272741003</code>, which can be used to unambiguously map to the underlying concept</td></tr>
+</table>
+<p>
+Note that when a <a href="codesystem-operations.html#lookup">$lookup</a> operation is performed on a SNOMED CT concept, 
+servers SHALL return the full URI for the edition and version being used (see above) in the <code>version</code> property. 
+Other properties are at the discretion of the server and the client.
+</p>
+
+<a name="filters"> </a>
+<h3>SNOMED CT Filters</h3>
 
 <p>
 This section documents the property filters that can be used with the SNOMED CT
@@ -124,7 +157,7 @@ of the <a href="http://www.ihtsdo.org/fileadmin/user_upload/Docs_01/News/SNOMED_
  <tr><td>Property Name</td><td>concept</td></tr>
  <tr><td>Operations Allowed</td><td>is-a</td></tr>
  <tr><td>Values Allowed</td><td>[concept id]</td></tr>
- <tr><td>Comments</td><td>Includes all concept ids that have a transitive is-a relationship with the concept Id provided as the value</td></tr>
+ <tr><td>Comments</td><td>Includes all concept ids that have a transitive is-a relationship with the concept Id provided as the value (including the concept itself)</td></tr>
  <tr><td>Example</td><td><a href="valueset-administration-method-codes.html">Administation Methods</a></td></tr>
  <tr><td><a href="http://snomed.org/expressionconstraints.pdf">SCT ECL</a></td><td><pre>&lt;&lt; [concept] (or the long form: descendantOrSelfOf [concept])</pre></td></tr>
 </table>
@@ -182,6 +215,8 @@ of the <a href="http://www.ihtsdo.org/fileadmin/user_upload/Docs_01/News/SNOMED_
  <tr><td>Example</td><td><a href="valueset-administration-method-codes.html">Administation Methods</a></td></tr>
  <tr><td><a href="http://snomed.org/expressionconstraints.pdf">SCT ECL</a></td><td><pre>n/a</pre></td></tr>
 </table>
+
+
 
 <a name="implicit"> </a>
 <h3>Implicit Value Sets</h3>
@@ -274,7 +309,7 @@ The value set with a url that follows the pattern "[edition/version]?fhir_vs=ref
       &lt;system value=&quot;http://snomed.info/sct&quot;/&gt;
       &lt;!-- repeat: one concept element with a code for each concept that has an associated reference set --&gt;
       &lt;concept&gt;
-        &lt;code value=&quot;[concept]&quot;/&gt;
+        &lt;code value=&quot;[sctid]&quot;/&gt;
       &lt;/concept&gt;
       &lt;-- end repeat --&gt;
     &lt;/include&gt;
@@ -286,7 +321,7 @@ For each concept that is associated with a reference set, there will be one conc
 contained code that contains the concept id.
 </p>
 <p>
-A value set with a url that follows the pattern "[edition/version]?fhir_vs=refset/[sctid]" follows this template:
+A value set with a url that follows the pattern "[edition/version]?fhir_vs=refset/[conceptid]" follows this template:
 </p>
 <pre>
 &lt;ValueSet xmlns=&quot;http://hl7.org/fhir&quot;&gt;
@@ -314,6 +349,102 @@ A value set with a url that follows the pattern "[edition/version]?fhir_vs=refse
   &lt;/compose&gt;
 &lt;/ValueSet&gt;
 </pre>
+
+<a name="implicit-cm"> </a>
+<h3>Implicit Concept Maps</h3>
+
+<p>
+Implicit concept maps are those whose specification can be predicted based on the grammar and/or content of the 
+underlying code system, and the known structure of the URL that identifies them. This allows a single URL to serve
+as a concept map definition that defines a mapping between two sets of concepts, and which can serve as the basis for the
+<a href="conceptmap-operations.html#translate">$translate</a> operation. SNOMED CT has two common sets of implicit 
+concept maps defined: 
+</p>
+<ul>
+ <li>Association Reference Sets</li>
+ <li>Simple Map Reference Sets</li>
+</ul>
+<p>
+<a href="https://confluence.ihtsdotools.org/display/DOCRELFMT/4.2.5.+Association+Reference+Set">Association Reference Sets</a> 
+are part of the core SNOMED CT distribution. The following standard Association Reference sets are mapped to implicit 
+Concept Maps:
+</p>
+<table class="grid">
+ <tr><td><b>Name</b></td><td><b>Concept Id</b></td><td><b>Relatioship</b></td></tr>
+ <tr><td>POSSIBLY EQUIVALENT TO</td><td>900000000000523009</td><td>inexact</td></tr>
+ <tr><td>REPLACED BY</td><td>900000000000526001</td><td>equivalent</td></tr>
+ <tr><td>SAME AS</td><td>900000000000527005</td><td>equal</td></tr>
+ <tr><td>ALTERNATIVE</td><td>900000000000530003</td><td>inexact</td></tr>
+</table>
+<p>
+If any concept map resources exist with an identifier that conforms to the URL pattern
+specified below, the content of the resource must conform to the template provided. 
+Canonical references to concept maps are allowed to reference these concept maps directly by referring to their URI.
+</p>
+<p>
+A SNOMED CT implicit concept map URL has two parts:
+</p>
+<ul>
+  <li>the base URL is either "http://snomed.info/sct", or the URI for the edition version, in the format specified by the IHTSDO the <a href="http://snomed.org/uristandard.pdf">SNOMED CT URI Specification</a></li>
+  <li>a query portion that specifies the scope of the content</li>
+</ul>
+<p>
+"http://snomed.info/sct" should be understood to mean an unspecified edition/version. This defines an incomplete concept map whose
+actual membership will depend on the particular edition used when it is expanded. If no version or edition is specified, the terminology
+service SHALL use the latest version available for it's default edition (or the international edition, if no other edition is the default).
+</p>
+<p>
+For the second part of the URL (the query part), there is only one possible value:
+</p>
+<ul>
+  <li>?fhir_cm=[sctid] - where [sctid] is a value from the table above</li>
+</ul>
+
+<p>
+A concept map with a URL that follows the pattern "[edition/version]?fhir_cm=[sctid]" follows this template, where [name], [sctid] and [relationship] are taken from the table above:
+</p>
+<pre>
+&lt;ConceptMap xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+  &lt;text&gt;
+    &lt;status value=&quot;generated&quot;/&gt;
+    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+     [Some HTML that describes this concept map]
+    &lt;/div&gt;
+  &lt;/text&gt;
+  &lt;url value=&quot;[edition/version]?fhir_cm=[sctid]&quot;/&gt;
+  &lt;version value=&quot;[edition/version]&quot;/&gt;
+  &lt;name value=&quot;SNOMED CT [name] Concept Map&quot;/&gt;
+  &lt;description value=&quot;The concept map implicitly defined by the [name] Association Reference Set&quot;/&gt;
+  &lt;copyright value="This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement"/&gt;
+  &lt;status value=&quot;active&quot;/&gt;
+  
+  &lt;sourceUri value=&quot;[edition/version]?fhir_vs&quot;/&gt;
+  &lt;targetUri value=&quot;[edition/version]?fhir_vs&quot;/&gt;
+  &lt;group&gt;  &lt;!-- 0..* Same source and target systems --&gt;
+    &lt;source value=&quot;http://snomed.info/sct&quot;/&gt;
+    &lt;sourceVersion value=&quot;[edition/version]&quot;/&gt;
+    &lt;target value=&quot;http://snomed.info/sct&quot;/&gt;
+    &lt;targetVersion value=&quot;[edition/version]&quot;/&gt;
+    
+    &lt;!-- a mapping for each member of the reference set --&gt;
+    &lt;element&gt;  
+      &lt;code value=&quot;[member]&quot;/&gt;
+      &lt;target&gt;
+        &lt;code value=&quot;[reference set value]&quot;/&gt;
+        &lt;equivalence value=&quot;[relationship]&quot;/&gt;
+      &lt;/target&gt;
+    &lt;/element&gt;
+  &lt;/group&gt;
+&lt;/ConceptMap&gt;
+</pre>
+
+<p>
+<a href="https://confluence.ihtsdotools.org/display/DOCRELFMT/4.2.8.+Simple+Map+Reference+Set">Simple Map Reference Sets</a> 
+(reference sets which are descendants of 900000000000496009 "Simple map") also define an implicit concept map. However
+at this time, these cannot be converted to Concept Maps because there is no source for the target code system. Another
+reference set has been proposed to IHTSDO, and this section will be revisited sonce it is adopted.
+</p>
+
 
 </div>
 

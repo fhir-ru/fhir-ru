@@ -123,9 +123,9 @@ Other representations are allowed, but are not described by this specification. 
 <ul>
  <li><img title="Resource" style="background-color: white;" alt="." class="hierarchy" src="icon_resource.png"/>: Базовый элемент ресурса (см. <a href="resource.html">Resources</a>)</li>
  <li><img title="Element" style="background-color: white;" alt="." class="hierarchy" src="icon_element.gif"/>: Элемент, являющийся частью ресурса и содержащий другие элементы, определенные в этом же ресурсе или профиле</li>
- <li><img title="Choice of Types" style="background-color: white;" alt="." class="heirarchy" src="icon_choice.gif"/>: Элемент, который может иметь один из нескольких типов (см. ниже)</li>
- <li><img title="Primitive Data Type" style="background-color: white;" alt="." class="hierarchy" src="icon_primitive.png"/>: Примитивный тип данных элемента, который имеет атрибут/свойство <code>value</code></li>
- <li><img title="Data Type" style="background-color: white;" alt="." class="hierarchy" src="icon_datatype.gif"/>: Сложный тип данных элемента, который содержит другие элементы</li>
+ <li><img title="Choice of Types" style="background-color: white;" alt="." class="hierarchy" src="icon_choice.gif"/>: Элемент, который может иметь один из нескольких типов (см. ниже)</li>
+ <li><img title="Primitive Data Type" style="background-color: white;" alt="." class="hierarchy" src="icon_primitive.png"/>: Элемент типа данных, который описывает элемент, который имеет атрибут/свойство <code>value</code></li>
+ <li><img title="Data Type" style="background-color: white;" alt="." class="hierarchy" src="icon_datatype.gif"/>: Элемент типа данных, который описывает элемент, который содержит другие элементы</li>
  <li><img title="Reference to another Resource" style="background-color: white;" alt="." class="hierarchy" src="icon_reference.png"/>: Элемент, который содержит ссылку на другой ресурс (см. <a href="references.html">references</a>)</li>
  <li><img title="Reference to another Element" style="background-color: white;" alt="." class="hierarchy" src="icon_reuse.png"/>: Этот элемент имеет такое же содержимое, что и другой элемент, описанный в этом ресурсе или профиле</li>
  <li><img title="Slice Definition" style="background-color: white;" alt="." class="hierarchy" src="icon_slice.png"/>: Введение множества срезов (Introduction of a set of slices) (см. <a href="profiling.html#slicing">Slicing</a>)</li>
@@ -275,14 +275,14 @@ set name, and a symbol that denotes the strength of the binding:
 
 <p>
 Клиенты и серверы могут выбирать, какой синтаксис реализовывать. В интересах совместимости серверам СЛЕДУЕТ поддерживать все форматы (хотя с поддержкой RDF лучше подождать, пока она не будет разработана более полно). 
-Системы ДОЛЖНЫ объявлять, какой формат(ы) они поддерживают в своих <a href="conformance.html">Заявлениях о соответствии (Conformance Statement)</a>. 
-Если сервер получает запрос на свое заявление о соответствии в формате, который он не поддерживает, он ДОЛЖЕН вернуть ошибку <code>415</code> Unsupported Media Type.
+Системы ДОЛЖНЫ объявлять, какой формат(ы) они поддерживают в своих <a href="capabilitystatement.html">Capability Statement</a>. 
+Если сервер получает запрос на свое заявление о возможностях в формате, который он не поддерживает, он ДОЛЖЕН вернуть ошибку <code>415</code> Unsupported Media Type.
 <!--
 Clients and servers can choose what syntax(s) to implement. In 
 the interests of interoperability, servers SHOULD support all formats (though support for RDF
 should best wait until it is more fully developed).
-Systems SHALL declare which format(s) they support in their <a href="conformance.html">Conformance Statement</a>. 
-If a server receives a request for its conformance statement in
+Systems SHALL declare which format(s) they support in their <a href="capabilitystatement.html">Capability Statement</a>. 
+If a server receives a request for its Capability Statement in
 a format it does not otherwise support, it SHALL return a <code>415</code> Unsupported Media Type.
 -->
 </p>

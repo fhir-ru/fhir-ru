@@ -6,21 +6,22 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>lloyd</LastAuthor>
+  <LastAuthor>Melva Peters</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2016-07-18T05:52:22Z</LastSaved>
+  <LastSaved>2016-11-24T15:14:40Z</LastSaved>
   <Version>15.0</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>16680</WindowHeight>
-  <WindowWidth>28800</WindowWidth>
-  <WindowTopX>0</WindowTopX>
+  <WindowHeight>15960</WindowHeight>
+  <WindowWidth>28160</WindowWidth>
+  <WindowTopX>1280</WindowTopX>
   <WindowTopY>460</WindowTopY>
   <TabRatio>739</TabRatio>
   <ActiveSheet>1</ActiveSheet>
+  <FirstVisibleSheet>1</FirstVisibleSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -883,10 +884,10 @@
  </Worksheet>
  <Worksheet ss:Name="Data Elements">
   <Names>
-   <NamedRange ss:Name="_FilterDatabase"
-    ss:RefersTo="='Data Elements'!R1C1:R109C24" ss:Hidden="1"/>
+   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="='Data Elements'!R1C1:R99C24"
+    ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="24" ss:ExpandedRowCount="109" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="24" ss:ExpandedRowCount="99" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s69" ss:DefaultColumnWidth="65"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s70" ss:Width="228"/>
@@ -904,7 +905,7 @@
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="171"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="162"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="114"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="135"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="258"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="120"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="135"/>
    <Column ss:Index="21" ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="104"/>
@@ -970,7 +971,7 @@
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000"
         xmlns="http://www.w3.org/TR/REC-html40">Indicates a regular expression that the value of this element must meet.  Only allowed for simple data types.</Font>       </Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">Short Label</Data><Comment
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Short Name</Data><Comment
       ss:Author=""><Data>        <Font html:Face="Tahoma" x:Family="Swiss"
         html:Size="8" html:Color="#000000"
         xmlns="http://www.w3.org/TR/REC-html40">Short description or code1 | code2 | code3 +</Font>       </Data></Comment><NamedCell
@@ -1046,7 +1047,7 @@
     <Cell ss:StyleID="s81"><Data ss:Type="String">Запись о том, что лекарственное средство было употреблено пациентом. MedicationStatement может указывать на то, что пациент может принимать медикамент в текущее время, или принял медикамент в прошлом, или примет медикамент в будущем. Источником этой информации может выступать пациент, кто-то значимый для него (член семьи или супруг) или клиницист. Распространённым сценарием, когда вводится такая информация, является процесс сбора анамнеза пациента во время его визита или пребывания. Информация о медикаменте может сообщаться пациентом по памяти, быть взята из предписания на бутылочке с лекарством или из списка медикаментов, поддерживаемого пациентом, клиницистом или другой стороной &#13;&#13;Основное различие между заявлением о медикаменте и введением медикамента в том, что введение медикамента содержит полную информацию о введении и основывается на реальной информации о введении от человека, который ввёл этот медикамент. Заявление о медикаменте часто, если не всегда, будет менее точным. В нём нет обязательного указания даты/времени, когда медикамент был введён, на деле мы знаем только, что источник сообщил о том, что пациент принимает этот медикамент, и такие детали, как время, количество, скорость или даже название медицинского препарата могут быть неполными, неточными или отсутствовать. Как указано выше, информация для заявления о медикаменте может идти из памяти пациента, из предписания на бутылочке или из списка медикаментов, поддерживаемого пациентом, клиницистом или другой стороной. Введение медикамента является более официальным, и в нём нет отсутствующих деталей информации.<!-- A record of a medication that is being consumed by a patient.   A MedicationStatement may indicate that the patient may be taking the medication now, or has taken the medication in the past or will be taking the medication in the future.  The source of this information can be the patient, significant other (such as a family member or spouse), or a clinician.  A common scenario where this information is captured is during the history taking process during a patient visit or stay.   The medication information may come from e.g. the patient's memory, from a prescription bottle,  or from a list of medications the patient, clinician or other party maintains &#13;&#13;The primary difference between a medication statement and a medication administration is that the medication administration has complete administration information and is based on actual administration information from the person who administered the medication.  A medication statement is often, if not always, less specific.  There is no required date/time when the medication was administered, in fact we only know that a source has reported the patient is taking this medication, where details such as time, quantity, or rate or even medication product may be incomplete or missing or less precise.  As stated earlier, the medication statement information may come from the patient's memory, from a prescription bottle or from a list of medications the patient, clinician or other party maintains.  Medication administration is more formal and is not missing detailed information. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">The WG will be updating the MedicationStatement resource  to adjust each affected resource to align with the workflow pattern (see workflow.html).  </Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">When interpreting a medicationStatement, the value of the status and NotTaken needed to be considered:&#13;MedicationStatement.status + MedicationStatement.wasNotTaken&#13;Status=Active + NotTaken=T = Not currently taking&#13;Status=Completed + NotTaken=T = Not taken in the past&#13;Status=Intended + NotTaken=T = No intention of taking&#13;Status=Active + NotTaken=F = Taking, but not as prescribed&#13;Status=Active + NotTaken=F = Taking&#13;Status=Intended +NotTaken= F = Will be taking (not started)&#13;Status=Completed + NotTaken=F = Taken in past&#13;Status=In Error + NotTaken=N/A = In Error</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">SubstanceAdministration</Data><NamedCell
@@ -1116,7 +1117,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">Код, представляющий собой суждение пациента или другого источника о статусе использованного медикамента, о котором сделано заявление. Как правило, это будет статус active или completed.<!-- A code representing the patient or other source's judgment about the state of the medication used that this statement is about.  Generally this will be active or completed. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">MedicationStatement is a statement at a point in time.  The status is only representative at the point when it was asserted.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">MedicationStatement is a statement at a point in time.  The status is only representative at the point when it was asserted.  The value set for MedicationStatement.status contains codes that assert the status of the use of the medication by the patient (for example, stopped or on hold) as well as codes that assert the status of the medication statement itself (for example, entered in error).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.statusCode</Data><NamedCell
@@ -1164,13 +1165,13 @@
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.patient</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.subject</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">1..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reference(Patient)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Reference(Patient | Group)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">y</Data><NamedCell
@@ -1184,7 +1185,7 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Кто принимал/принимает этот медикамент<!-- Who is/was taking  the medication --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Человек или животное, кто принял/принимает лекарственное средство.<!-- The person or animal who is/was taking the medication. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The person, animal or group who is/was taking the medication.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1240,7 +1241,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reference(Patient | Practitioner | RelatedPerson)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Reference(Patient | Practitioner | RelatedPerson |Organization)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1251,9 +1252,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек, предоставивший информацию о принятии этого медикамента<!-- Person who provided the information about the taking of this medication --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Person or organization that provided the information about the taking of this medication</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Лицо, предоставивший информацию о принятии этого медикамента. Примечание: из supportingInformation можно получить MedicationStatement, например иски или medicationOrder.<!-- The person who provided the information about the taking of this medication.  Note:  A MedicationStatement may be derived from supportingInformation e.g claims or medicationOrder. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">The person or organization that provided the information about the taking of this medication. Note: Use derivedFrom when a MedicationStatement is derived from other resources, e.g Claim or MedicationRequest.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1267,7 +1268,7 @@
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.supportingInformation</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.derivedFrom</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">0..*</Data><NamedCell
@@ -1285,10 +1286,10 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Дополнительная вспомогательная информация<!-- Additional supporting information --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет связывать MedicationStatement с лежащим в его основе MedicationOrder или с другой информацией, вспомогательной или используемой для вывода MedicationStatement.<!-- Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports or is used to derive the MedicationStatement. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Позволяет связывать MedicationStatement с лежащим в его основе MedicationOrder или с другой информацией, вспомогательной или используемой для вывода MedicationStatement.<!-- Allows linking the MedicationStatement to the underlying MedicationRequest, or to other information that supports or is used to derive the MedicationStatement. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Вероятными ссылками будут ссылки на ресурсы MedicationOrder, MedicationDispense, Claim, Observation или QuestionnaireAnswers.<!-- Likely references would be to MedicationOrder, MedicationDispense, Claim, Observation or QuestionnaireAnswers. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Вероятными ссылками будут ссылки на ресурсы MedicationOrder, MedicationDispense, Claim, Observation или QuestionnaireAnswers.<!-- Likely references would be to MedicationRequest, MedicationDispense, Claim, Observation or QuestionnaireAnswers. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.outboundRelationship[typeCode=SPRT]/target[classCode=ACT,moodCode=EVN]</Data><NamedCell
@@ -1339,27 +1340,26 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">0..1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">boolean</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Y</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">y</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">y</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">MedicationStatementNotTaken</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="10" ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Если этот элемент отсутствует, значит медикамент был принят<!-- If this is missing, then the medication was taken --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Истинно, если медикамент не был принят/не принимается<!-- True if medication is/was not being taken --></Data><NamedCell
+    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">y | n | unk</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Установите в истину, если запись говорит о том, что лекарственное средство НЕ БЫЛО принято.<!-- Set this to true if the record is saying that the medication was NOT taken. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicator of the certainty of whether the medication was taken by the patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">SubstanceAdministration.actionNegationInd</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1378,7 +1378,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">MedicationAdministrationNegationReason</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">MedicationStatementNotTakenReason</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1401,7 +1401,7 @@
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.reasonForUseCode</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.reasonForUseCodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">0..*</Data><NamedCell
@@ -1441,7 +1441,7 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">0..*</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Reference(Condition)</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Reference(Condition | Observation)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1451,9 +1451,9 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Клиническое состояние, подтверждающее необходимость принятия этого медикамента<!-- Condition that supports why the medication is being/was taken --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Condition or observation that supports why the medication is being/was taken</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Клиническое состояние, подтверждающее необходимость принятия этого медикамента.<!-- Condition that supports why the medication is being/was taken. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Condition or observation that supports why the medication is being/was taken.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Это ссылка на ресурс Condition, являющийся обоснованием для принятия этого медикамента. Если имеется только код, используйте reasonForUseCode.&#10;<!-- This is a reference to a condition that is the reason why the medication is being/was taken.  If only a code exists, use reasonForUseCode.&#13; --></Data><NamedCell
@@ -1539,7 +1539,8 @@
     <Cell ss:StyleID="s88"><Data ss:Type="String">0..*</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">DosageInstruction</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1564,332 +1565,6 @@
     <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s93"><Data ss:Type="String">The RMIM has priority code on the act relationship.  How do we handle this?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.dosage.text</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">0..1</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">string</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Инструкции по дозировке в свободной текстовой форме, сообщённые источником информации<!-- Free text dosage instructions as reported by the information source --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Произвольная текстовая информация о дозировке, сообщённая об использовании медикамента пациентом. Если присутствует закодированная информация, тода произвольный текст тоже может присутствовать для отображения людям.<!-- Free text dosage information as reported about a patient's medication use. When coded dosage information is present, the free text may still be present for display to humans. --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">.text</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.dosage.additionalInstructions</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">0..*</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">CodeableConcept</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">AdditionalInstructions</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Supplemental instructions - e.g. &quot;with meals&quot;</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Additional instructions such as &quot;Swallow with plenty of water&quot; which may or may not be coded.</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">.text</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="150">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.dosage.timing</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">0..1</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Timing</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Когда/как часто принимался медикамент?<!-- When/how often was medication taken --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  &quot;Every  8 hours&quot;; &quot;Three times a day&quot;; &quot;1/2 an hour before breakfast for 10 days from 23-Dec 2011:&quot;;  &quot;15 Oct 2013, 17 Oct 2013 and 1 Nov 2013&quot;.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn't imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period.</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">.effectiveTime</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="225">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.dosage.asNeeded[x]</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">0..1</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">boolean | CodeableConcept</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">MedicationAsNeededReason</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Принимать по мере надобности (при х)<!-- Take &quot;as needed&quot; (for x) --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Показывает, что это лекарственное средство принимать только при необходимости по указанному графику дозировки (тип Boolean), либо здесь задаётся условие, по которому этот медикамент будет приниматься (тип CodeableConcept). &#10;&#10;Если выбран тип данных 'boolean', тогда применяется следующая логика: если значение истина, это означает, что этот медикамент будет приниматься только при необходимости по указанному расписанию.&#10;<!-- Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).  &#13;&#13;Specifically if 'boolean' datatype is selected, then the following logic applies:  If set to True, this indicates that the medication is only taken when needed, within the specified schedule.&#13; --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">boolean: .outboundRelationship[typeCode=PRCN].negationInd (inversed - so negationInd = true means asNeeded=false  CodeableConcept: .outboundRelationship[typCode=PRCN].target[classCode=OBS, moodCode=EVN, isCriterionInd=true, code=&quot;Assertion&quot;].value</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.dosage.site[x]</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">0..1</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">CodeableConcept | Reference(BodySite)</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">MedicationAdministrationSite</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Где (на теле) медикамент был введён или вводится<!-- Where (on body) medication is/was administered --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Закодированное описание или ссылка на анатомическое расположение, где медикамент изначально попадает в тело<!-- A coded specification of or a reference to the anatomic site where the medication first enters the body --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">.approachSiteCode</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.dosage.route</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">0..1</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">CodeableConcept</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">RouteOfAdministration</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Каким образом медикамент попадает в тело<!-- How the medication entered the body --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Код, обозначающий способ или физиологический путь ввода терапевтического средства в или на субъект.<!-- A code specifying the route or physiological path of administration of a therapeutic agent into or onto a subject.  --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">.routeCode</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="360">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.dosage.method</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">0..1</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">CodeableConcept</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">MedicationAdministrationMethod</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Метод, используемый для ввода медикамента<!-- Technique used to administer medication --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Закодированное значение, обозначающее метод введения лекарственного средства в или на тело. Чаще всего этот атрибут заполняться не будет. Используется в основном для инъекций. Например медленное внутривенное вливание, глубокое внутримышечное вливание.<!-- A coded value indicating the method by which the medication is intended to be or was introduced into or on the body.  This attribute will most often NOT be populated.  It is most commonly used for injections.  For example, Slow Push, Deep IV.   --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Одна из причин, почему этот атрибут нечасто используется, состоит в том, что метод часто указывается вместе с местом и/или формой введения. Это означает, что коды, используемые для указания места или формы введения, могут одновременно устанавливать и метод. Решение реализаторов, какую кодовую систему использовать для указания пути или формы введения, будет определять, насколько часто будет заполняться код метода, например, если код пути или формы устанавливает код метода, тогда этот атрибут будет заполняться нечасто; если не устанавливает, тогда код метода будет указываться часто.<!-- One of the reasons this attribute is not used often, is that the method is often pre-coordinated with the route and/or form of administration.  This means the codes used in route or form may pre-coordinate the method in the route code or the form code.  The implementation decision about what coding system to use for route or form code will determine how frequently the method code will be populated e.g. if route or form code pre-coordinate method code, then this attribute will not be populated often; if there is no pre-coordination then method code may  be used frequently. --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">.methodCode</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.dosage.dose[x]</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">0..1</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">SimpleQuantity | Range</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Amount of medication per dose</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Количество терапевтического или другого вещества, выданного при введении.<!-- The amount of therapeutic or other substance given at one administration event.  --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">.doseQuantity</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="195">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.dosage.rate[x]</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">0..1</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ratio|Range| SimpleQuantity</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Количество дозы в единицу времени<!-- Dose quantity per unit of time --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn't imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period.</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">.rateQuantity</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell ss:StyleID="s87"><Data ss:Type="String">MedicationStatement.dosage.maxDosePerPeriod</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">0..1</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Ratio</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Максимальная доза, потребленная за единицу времени<!-- Maximum dose that was consumed per unit of time --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Максимальное общее количество терапевтического вещества, которое может быть введено субъекту в течение периода времени. Например 1000 мг в течение 24 часов.<!-- The maximum total quantity of a therapeutic substance that may be administered to a subject over the period of time.  For example, 1000mg in 24 hours. --></Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">.maxDoseQuantity</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s92"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4043,9 +3718,9 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>10</TopRowBottomPane>
+   <TopRowBottomPane>9</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>11</LeftColumnRightPane>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -4053,7 +3728,6 @@
     </Pane>
     <Pane>
      <Number>1</Number>
-     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
@@ -4061,14 +3735,14 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>15</ActiveRow>
-     <ActiveCol>18</ActiveCol>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>14</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
-  <AutoFilter x:Range="R1C1:R109C24"
+  <AutoFilter x:Range="R1C1:R99C24"
    xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
  </Worksheet>
@@ -4129,32 +3803,30 @@
     <Cell ss:StyleID="s84"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s84"><Data ss:Type="String">MedicationStatement</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s84"><Data ss:Type="String">Причина, почему не было принято, разрешена, только если wasNotTaken имеет значение истина<!-- Reason not taken is only permitted if notTaken is true --></Data><NamedCell
+    <Cell ss:StyleID="s84"><Data ss:Type="String">Причина, почему не было принято, разрешена, только если wasNotTaken имеет значение истина<!-- Reason not taken is only permitted if notTaken is Yes --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">reasonNotTaken.empty() or notTaken = true</Data><NamedCell
+    <Cell ss:StyleID="s91"><Data ss:Type="String">reasonNotTaken.empty() or notTaken='y'</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s106"><Data ss:Type="String">not(exists(f:reasonNotTaken) and f:notTaken/@value=false())</Data><NamedCell
+    <Cell ss:StyleID="s106"><Data ss:Type="String">not(exists(f:reasonNotTaken) and (f:notTaken/@value='n' or f:notTaken/@value='unk'))</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="28">
-    <Cell ss:StyleID="s107"><Data ss:Type="Number">2</Data><NamedCell
-      ss:Name="Invariantids"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Reason for use code</Data></Cell>
+    <Cell ss:StyleID="s107"><NamedCell ss:Name="Invariantids"/></Cell>
     <Cell ss:StyleID="s91"/>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">MedicationStatement</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Обоснование для употребления разрешена, только если wasNotTaken имеет значение ложь<!-- Reason for use code is only permitted if notTaken is false --></Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">reasonForUseCode.empty() or notTaken = false</Data></Cell>
-    <Cell ss:StyleID="s108"><Data ss:Type="String">not(exists(*[starts-with(local-name(.), 'reasonForUseCode')]) and f:notTaken/@value=true())</Data></Cell>
+    <Cell ss:StyleID="s91"/>
+    <Cell ss:StyleID="s91"/>
+    <Cell ss:StyleID="s91"/>
+    <Cell ss:StyleID="s91"/>
+    <Cell ss:StyleID="s108"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s107"><Data ss:Type="Number">3</Data><NamedCell
-      ss:Name="Invariantids"/></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Reason for use reference</Data></Cell>
+    <Cell ss:StyleID="s107"><NamedCell ss:Name="Invariantids"/></Cell>
     <Cell ss:StyleID="s91"/>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">MedicationStatement</Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">Элемент reasonForUseReference разрешён только в том случае, если wasNotTaken имеет значение ложь<!-- Reason for use reference is only permitted if notTaken is false --></Data></Cell>
-    <Cell ss:StyleID="s91"><Data ss:Type="String">reasonForUseReference.empty() or notTaken = false</Data></Cell>
-    <Cell ss:StyleID="s108"><Data ss:Type="String">not(exists(*[starts-with(local-name(.), 'reasonForUseReference')]) and f:notTaken/@value=true())</Data></Cell>
+    <Cell ss:StyleID="s91"/>
+    <Cell ss:StyleID="s91"/>
+    <Cell ss:StyleID="s91"/>
+    <Cell ss:StyleID="s91"/>
+    <Cell ss:StyleID="s108"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s107"><NamedCell ss:Name="Invariantids"/></Cell>
@@ -4590,7 +4262,7 @@
    <SplitHorizontal>1</SplitHorizontal>
    <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>2</SplitVertical>
-   <LeftColumnRightPane>3</LeftColumnRightPane>
+   <LeftColumnRightPane>5</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -4671,11 +4343,11 @@
     <Cell ss:StyleID="s117"><Data ss:Type="String">Return statements of this medication code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s115"><Data ss:Type="String">patient</Data></Cell>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.patient</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Ссылка на пациента, для которого будут перечислены заявления<!-- The identity of a patient to list statements  for --></Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.subject</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">The identity of a patient, animal or group to list statements for</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"><Data ss:Type="String">effective</Data></Cell>
@@ -4696,14 +4368,14 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s119"><Data ss:Type="String">MedicationStatement.informationSource</Data></Cell>
-    <Cell ss:StyleID="s117"><Data ss:Type="String">Кто сообщил информацию для заявления<!-- Who the information in the statement came from --></Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Who or where the information in the statement came from</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s115"/>
+    <Cell ss:StyleID="s115"><Data ss:Type="String">category</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
-    <Cell ss:StyleID="s88"/>
-    <Cell ss:StyleID="s116"/>
-    <Cell ss:StyleID="s117"/>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">MedicationStatement.category</Data></Cell>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">Returns statements of this category of medicationstatement</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s115"/>
@@ -4886,8 +4558,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -5535,6 +5207,32 @@
    <x:Print>    </x:Print>
    <x:Print>    </x:Print>
    <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
   </WorksheetOptions>
   <AutoFilter x:Range="R1C1:R2C9" xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
@@ -6130,6 +5828,32 @@
    <x:Print>    </x:Print>
    <x:Print>    </x:Print>
    <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
   </WorksheetOptions>
   <AutoFilter x:Range="R1C1:R1C4" xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
@@ -6712,12 +6436,12 @@
     <Cell ss:StyleID="s117"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s149"><Data ss:Type="String">MedicationAdministrationNegationReason</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept indicating the reason why the MedicationStatement is negated.</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="s116"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">MedicationStatementNotTakenReason</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept indicating the reason why the medication was not taken</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">example</Data></Cell>
+    <Cell ss:StyleID="s151"><Data ss:Type="String">valueset-reason-medication-not-taken-codes</Data></Cell>
+    <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"/>
@@ -6775,7 +6499,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s149"><Data ss:Type="String">MedicationStatementCategory</Data></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept identifying where the medication included in the is expected to be consumed or administered</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept identifying where the medication included in the medicationstatement is expected to be consumed or administered</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s116"><Data ss:Type="String">#medication-statement-category</Data></Cell>
@@ -6789,11 +6513,11 @@
     <Cell ss:StyleID="s117"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s149"/>
-    <Cell ss:StyleID="s88"/>
-    <Cell ss:StyleID="s116"/>
-    <Cell ss:StyleID="s116"/>
-    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s149"><Data ss:Type="String">MedicationStatementNotTaken</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">A coded concept identifying level of certainty if patient has taken or has not taken the medication</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">#medication-statement-nottaken</Data></Cell>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"/>
     <Cell ss:StyleID="s116"/>
@@ -7091,7 +6815,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>4</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -7104,11 +6828,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>10</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -7808,8 +7532,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <RangeSelection>R1C1:R5C9</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -7818,6 +7541,173 @@
    <x:Print>    </x:Print>
    <x:Print>    </x:Print>
    <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="medication-statement-nottaken">
+  <Table ss:ExpandedColumnCount="9" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:Width="15"/>
+   <Column ss:Width="40"/>
+   <Column ss:Width="37"/>
+   <Column ss:Width="58"/>
+   <Column ss:Width="604"/>
+   <Column ss:Width="17" ss:Span="1"/>
+   <Column ss:Index="9" ss:Width="58"/>
+   <Row ss:AutoFitHeight="0" ss:Height="31">
+    <Cell ss:StyleID="s102"><Data ss:Type="String">Code</Data><Comment ss:Author=""><Data>        <Font
+        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000"
+        xmlns="http://www.w3.org/TR/REC-html40">The code to be sent over the wire</Font>       </Data></Comment></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Id</Data><Comment ss:Author=""><Data>        <Font
+        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000"
+        xmlns="http://www.w3.org/TR/REC-html40">Unique number for the code.  Required when System is not specified, not permitted otherwise</Font>       </Data></Comment></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">System</Data><Comment
+      ss:Author=""><Data>        <Font html:Face="Tahoma" x:Family="Swiss"
+        html:Size="8" html:Color="#000000"
+        xmlns="http://www.w3.org/TR/REC-html40">The URL of the external code system from which the list is selected.  Must be the same for all codes if specified.</Font>       </Data></Comment></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Parent</Data><Comment
+      ss:Author=""><Data>        <Font html:Face="Tahoma" x:Family="Swiss"
+        html:Size="8" html:Color="#000000"
+        xmlns="http://www.w3.org/TR/REC-html40">The code this code is a specialization of (if any).  Content should be &quot;#&quot; + the Id of the parent code</Font>       </Data></Comment></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Display</Data><Comment
+      ss:Author=""><Data>        <Font html:Face="Tahoma" x:Family="Swiss"
+        html:Size="8" html:Color="#000000"
+        xmlns="http://www.w3.org/TR/REC-html40">Display value for code.  Omit if the code *is* the display value (as for internal codes)</Font>       </Data></Comment></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">Definition</Data><Comment
+      ss:Author=""><Data>        <Font html:Face="Tahoma" x:Family="Swiss"
+        html:Size="8" html:Color="#000000"
+        xmlns="http://www.w3.org/TR/REC-html40">Meaning of the code.  Include unless meaning obvious to all users.  Required if display not</Font>       </Data></Comment></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">v2</Data><Comment ss:Author=""><Data>        <Font
+        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000"
+        xmlns="http://www.w3.org/TR/REC-html40">Mappings to v2 codes - See wiki for syntax</Font>       </Data></Comment></Cell>
+    <Cell ss:StyleID="s103"><Data ss:Type="String">v3</Data><Comment ss:Author=""><Data>        <Font
+        html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000"
+        xmlns="http://www.w3.org/TR/REC-html40">Mappings to v3 codes - See wiki for syntax</Font>       </Data></Comment></Cell>
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Committee Notes</Data><Comment
+      ss:Author=""><Data>        <Font html:Face="Tahoma" x:Family="Swiss"
+        html:Size="8" html:Color="#000000"
+        xmlns="http://www.w3.org/TR/REC-html40">Additional notes about the code.  Not published</Font>       </Data></Comment></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s155"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s130"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s129"/>
+    <Cell ss:StyleID="s157"/>
+    <Cell ss:StyleID="s157"><Data ss:Type="String">Yes</Data></Cell>
+    <Cell ss:StyleID="s157"><Data ss:Type="String">Positive assertion that patient has taken medication</Data></Cell>
+    <Cell ss:StyleID="s130"/>
+    <Cell ss:StyleID="s130"/>
+    <Cell ss:StyleID="s142"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s144"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="s133"><Data ss:Type="Number">2</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s158"/>
+    <Cell ss:StyleID="s158"><Data ss:Type="String">No</Data></Cell>
+    <Cell ss:StyleID="s158"><Data ss:Type="String">Negative assertion that patient has not taken medication</Data></Cell>
+    <Cell ss:StyleID="s133"/>
+    <Cell ss:StyleID="s133"/>
+    <Cell ss:StyleID="s143"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s144"><Data ss:Type="String">unk</Data></Cell>
+    <Cell ss:StyleID="s133"><Data ss:Type="Number">3</Data></Cell>
+    <Cell ss:StyleID="s116"/>
+    <Cell ss:StyleID="s158"/>
+    <Cell ss:StyleID="s158"><Data ss:Type="String">Unknown</Data></Cell>
+    <Cell ss:StyleID="s158"><Data ss:Type="String">Unknown assertion if patient has taken medication</Data></Cell>
+    <Cell ss:StyleID="s133"/>
+    <Cell ss:StyleID="s133"/>
+    <Cell ss:StyleID="s143"/>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+   <x:Print>    </x:Print>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Sheet13">
+  <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="14.5">
+   <Row ss:AutoFitHeight="0" ss:Height="14"/>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
    <x:Print>    </x:Print>
    <x:Print>    </x:Print>
   </WorksheetOptions>

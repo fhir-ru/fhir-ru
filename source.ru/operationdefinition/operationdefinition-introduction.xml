@@ -33,7 +33,7 @@ IHE, national programs, jurisdictions and vendors are able to publish additional
 <!-- OperationDefinition resources are referred to from two different places: -->
 </p>
 <ul>
- <li>Из <a href="conformance.html">Conformance Statement</a> для объявления, какие операции система осуществляет или должна осуществлять<!-- From a <a href="conformance.html">Conformance Statement</a>, to declare what operations a system does or should implement --></li>
+ <li>Из <a href="capabilitystatement.html">Capability Statement</a> для объявления, какие операции система осуществляет или должна осуществлять<!-- From a <a href="capabilitystatement.html">Capability Statement</a>, to declare what operations a system does or should implement --></li>
  <li>Из другого ресурса OperationDefinition. Это позволяет серверу описывать ограничения реализации стандартной операции, либо отслеживать, нужно ли серверу переименовать операцию из-за конфликта имен <!-- From another OperationDefinition resource. This allows for a server to describe a limited implementation of a standard operation, or to allow traceability if the server has to rename the operation due to a name clash --></li>
 </ul>
 </div>

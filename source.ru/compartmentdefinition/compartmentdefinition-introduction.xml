@@ -32,7 +32,7 @@ required to. Systems may publish <code>CompartmentDefinition</code> resources so
 other systems may make use of compartments properly. -->
 </p>
 <ul>
- <li>Ресурсы CompartmentDefinition используются в экземплярах ресурса <a href="conformance.html">Conformance</a> для описания доступа к ресурсам.<!-- CompartmentDefinitions are used by <a href="conformance.html">Conformance</a> instances for specifying how resources are accessed --></li>
+ <li>Ресурсы CompartmentDefinition используются в экземплярах ресурса <a href="capabilitystatement.html">CapabilityStatement</a> для описания доступа к ресурсам.<!-- CompartmentDefinitions are used by <a href="capabilitystatement.html">CapabilityStatement</a> instances for specifying how resources are accessed --></li>
 </ul>
 
 </div> 

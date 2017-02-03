@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+
+[%settitle Связь между FHIR и CDA%]
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+[%file newheader%]
+</head>
+<body>
+[%file newnavbar%]
+
+
+<div class="col-12">
+
+[%cmpheader cda%]
+
+<h2>Архитектура клинического документа (CDA)<!-- Clinical Document Architecture (CDA) --></h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<a name="cda"> </a>
+<p>
+<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> - это наиболее широко используемый стандарт семейства <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>. Он описывает стандартизированный заголовок, содержащий метаданные документа, и предоставляет возможность передавать большое разнообразие клинического содержимого, структурированного в различные разделы. Содержимое документа может быть как незакодированным, например PDF, так и полностью закодированным экземпляром HL7 v3.
+<!-- <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> is HL7's most widely adopted <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> standard. It provides both a standardized 
+header containing metadata about the document as well as the ability to convey 
+a wide variety of clinical content organized into various sections. The document 
+content can be un-encoded, such as a PDF through to a fully encoded HL7 v3 instance. -->
+</p>
+<p>
+ПРИМЕЧАНИЕ: Хотя FHIR можно использовать для создания <a href="documents.html">документов</a> с помощью ресурса <a href="composition.html">Composition</a>, FHIR также можно использовать и для передачи традиционных документов CDA R2 с помощью ресурса <a href="documentreference.html">DocumentReference</a>, и работать с самим CDA-документом как с двоичным вложением (как в XDS).
+<!-- NOTE: While FHIR can be used to create <a href="documents.html">documents</a> using 
+the <a href="composition.html">Composition Resource</a>, FHIR can also be used to 
+exchange traditional CDA R2 documents making use of the <a href="documentreference.html">DocumentReference</a> 
+resource, and handling the CDA document itself as a binary attachment (as XDS does). -->
+</p>
+
+<h3>Сходства и различия с CDA<!-- CDA Similarities and Differences --></h3>
+<p>
+<b>Clinical document focus:</b> Как следует из названия, Архитектура клинического документа ограничена "клиническими" сценариями использования. Модель CDA не поддерживает обмен содержимым, не имеющим клинического значения, например финансовой информацией, и ограничен теми документами, которые относятся к пациентам. (В некоторых случаях, например для стандарта HL7 Structured Product Labeling, созданы не ориентированные на пациентов подобные CDA спецификации, чтобы обойти это ограничение). FHIR-документы не имеют ограничений на своё содержимое, и их субъектами могут выступать не только пациенты.
+<!-- <b>Clinical document focus:</b> As its name implies, Clinical Document Architecture 
+is limited to "clinical" use cases. The CDA model does not support exchange of content 
+not deemed to have clinical relevance, such as financial information and is limited to 
+documents that deal with patients. (In some cases, such as the HL7 Structured Product 
+Labeling standard, non-patient-specific CDA-like specifications are created to get 
+around this limitation.) FHIR documents have no limitation on their content and can 
+have subjects other than patients. -->
+</p>
+<p>
+<b>Подход к читаемости человеком:</b> И CDA, и FHIR требуют, чтобы содержимое было человекочитаемым, и вводят правила представления человекочитаемых текстов.
+<!-- <b>Human readability approach:</b> CDA and FHIR both require that content be 
+human-readable and define specific rules for how the human readable text is presented. -->
+</p>
+<p>
+<b>Клинический отчёт и ресурсы:</b> В CDA "содержимое" документа описывается с помощью сложной и чрезвычайно абстрактной модели, основанной на проекте HL7 "Клинический отчёт". Его назначение - позволить реализаторам выражать почти любое клиническое понятие с любой степенью строгости и детализации. (На практике имеются ограничения, лежащие в основе модели CDA, которые затрудняют выражение некоторых клинических понятий). Эта модель даёт большие возможности, но в ней имеются и сложности. Первая состоит в том, что для выражения любой конкретной части клинической информации требуется опыт моделирования RIM. Не очевидно, как представлять такие сущности, как аллергии, операции или кровяное давление "прямо из коробки". Для поддержки совместимости нужны шаблоны. Вторая - в том, что распространённые клинические понятия могут (и часто моделируются) моделироваться по-разному в различных ситуациях. В FHIR всё клиническое (и не-клиническое) содержимое в сообщении обрабатывается с помощью ссылок на существующие определения ресурсов. Эти ресурсы чётко определяют, как представлять общие структуры наподобие аллергий и кровяного давления "прямо из коробки" и гарантируют, что имеется только один путь представления ключевого содержимого. Однако это выливается в следующее ограничение: для совместного использования содержимого уже должен быть определён соответствующий подходящий ресурс. На первых стадиях разработки FHIR могла возникать необходимость в использовании ресурса <a href="basic.html">Basic</a>, если подходящий стандартный ресурс ещё не был определён.
+<!-- <b>Clinical Statement vs. resources:</b> In CDA, the "content" of the document is expressed 
+using a complex and extremely abstract model based on HL7's "Clinical Statement" project. 
+Its purpose is to allow implementers to express pretty much any clinical concept in any degree 
+of rigor and granularity. (In practice, there are limitations built into the CDA model that 
+make the expression of certain clinical concepts challenging). This model provides significant 
+power, but also presents challenges. The first is that RIM modeling expertise is required in 
+order to express any particular piece of clinical information. It isn't obvious how to 
+represent things like allergies or surgery or blood pressure "out of the box". Templates are 
+required to support interoperability. The second is that common clinical concepts can be (and 
+frequently are) modeled differently in different circumstances. With FHIR, all clinical (and 
+non-clinical) content in a message is handled by referencing existing resource definitions. 
+These resources make it clear how to represent common structures like allergies and blood 
+pressure "out of the box" and ensure that there's only one way for core content to be 
+represented. It does however create the limitation that an appropriate resource must have 
+been defined in order to share content. In the early stages of FHIR development, it may be 
+necessary to make use of the <a href="basic.html">Basic</a> resource if an appropriate standard 
+resource has not yet been defined. -->
+</p>
+<p>
+<b>Шаблоны и профили:</b> Как уже упоминалось выше, CDA полагается на шаблоны при интерпретации значения экземпляров. Хотя смысловое значение, теоретически, можно определить, рассматривая атрибуты и коды RIM, в действительности это часто оказывается небезопасным или недостаточным. По существу, почти каждый экземпляр CDA для задания смыслового значения содержит значения атрибута <i>templateId</i>, разбросанные по всему экземпляру. В FHIR смысл задаётся ресурсом. <a href="profiling.html">Профили</a> можно использовать для определения расширений, однако они никогда не уточняют смысл основных элементов. При этом профили, использованные при создании конкретного экземпляра, можно объявлять в экземпляре с помощью <a href="resource.html#tag">тегов</a>. Однако такое объявление не обязательно.
+<!-- <b>Templates and Profiles:</b> As discussed above, CDA relies on the presence of templates in 
+order to understand the meaning of instances. While the meaning can theoretically be determined 
+by looking at RIM attributes and codes, the reality is that this is often not safe or sufficient. 
+As such, pretty much every CDA instance includes <i>templateId</i> attribute values scattered 
+throughout the instance to define meaning. With FHIR, meaning is defined by the resource. 
+<a href="profiling.html">Profiles</a> can be used to define extensions, but they never refine the 
+meaning of core elements. While the profiles used in constructing a particular instance can be 
+declared within the instance via <a href="resource.html#tag">tags</a>. However, such declaration 
+is not required. -->
+</p>
+<p>
+<b>Язык разметки:</b> У CDA свой собственный XML-синтаксис для текстового содержимого, отчасти основывающийся на HTML. FHIR использует ограниченный набор XHTML, который несколько более выразительный, чем разметка CDA. Преобразование из FHIR в CDA потребует принимать в расчёт эти ограничения (или, в качестве альтернативы, предоставлять полностью отображаемую версию документа).
+<!-- <b>Mark-up language:</b> CDA defines its own XML syntax for narrative content, loosely based on 
+HTML. FHIR makes use of a constrained set of XHTML which is somewhat more expressive than the CDA 
+markup. Conversions from FHIR to CDA will need to take these constraints into account (or 
+alternatively provide a fully rendered version of the document). -->
+</p>
+
+<h3>Соображения совместимости CDA<!-- CDA Interoperability Considerations --></h3>
+<p>CDA относится к семейству спецификаций <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>. Следовательно все <a href="comparison-v3.html#V3-interoperability">соображения</a>, применимые к обмену сообщениями v3, также относятся и к CDA. Кроме того, следующие темы специфичны для реализаций CDA.
+<!-- CDA is a type of <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> specification. Therefore, all <a href="comparison-v3.html#V3-interoperability">considerations</a> 
+that apply to v3 messaging also apply to CDA. In addition, the following topics are specific to CDA 
+implementations. --></p>
+<p>
+<b>Что мапить:</b> Правая часть модели CDA (клиническое содержимое), <a href="comparison-v3.html#V3-abstractModels">как упоминалось выше</a>, является абстрактной моделью. Хотя 
+имеются основания для отображения CDA-заголовка на HL7-ресурс <a href="composition.html">Composition</a> и связанные с ним другие ресурсы, отображение FHIR на CDA следует выполнять на уровне шаблонов, а не на уровне самой спецификации CDA.
+<!-- <b>What to map:</b> The right-hand side (clinical content) portion of the CDA model qualifies as an 
+abstract model <a href="comparison-v3.html#V3-abstractModels">as discussed above</a>. While the CDA header can reasonably 
+be mapped to the HL7 <a href="composition.html">Composition</a> resource and related resources, mappings 
+between FHIR and CDA should be done at the template level rather than the CDA specification itself. -->
+</p>
+<p>
+<b>Степень детализации человекочитаемого содержимого:</b> В FHIR описательная часть существует только в корневом элементе каждого раздела ресурса. В CDA описательная часть существует для каждого раздела. В большинстве случаев это означает, что описательные части в CDA и FHIR совпадают. Однако в некоторых случаях раздел содержит подразделы. В CDA такие разделы могут иметь описательную часть, а в FHIR - не могут. Приложениям придётся найти какой-то способ учитывать это при выполнении преобразований.
+<!-- <b>Human readable granularity:</b> With FHIR, narrative only exists for the resources at the root of 
+each section. With CDA, narrative exists for each section. Usually this means the narrative in CDA 
+and FHIR will correspond. However, in some cases, a section will contain other sub-sections. In CDA, 
+these "container" sections can have narrative. In FHIR, they cannot. Applications will need to have some 
+way of managing this if converting. -->
+</p>
+<p>
+<b>Связывание дискретного и человекочитаемого содержимого:</b> Для обеспечения семантической прослеживаемости, и FHIR, и CDA позволяют устанавливать связи между текстом в описательной части и конкретными дискретными элементами в закодированной части документа. При выполнении преобразования между FHIR и CDA, эти связи также будет необходимо конвертировать. Однако это усложняет тот факт, что уровень детализации, на котором могут появляться такие связи, различается для двух спецификаций. В CDA связи могут возинкать только на уровне раздела или одной из пар типов записей. В FHIR связи могут возникать вообще на любом уровне, включая отдельные компоненты типов данных и даже расширения. Преобразование из CDA в FHIR будет прямолинейным, однако при обратном преобразовании возможна потеря информации.
+<!-- <b>Discrete to human-readable linkages:</b> To ensure semantic traceability, both FHIR and CDA allow 
+establishing linkages between text in the narrative and specific discrete elements in the encoded part 
+of a document. If converting between FHIR and CDA, these linkages need to be converted as well. However, 
+this is complicated by the fact that the granularity at which linkages can occur is different between the 
+two specifications. In CDA, linkages can only occur at the level of a section or one of a couple of the 
+entry types. With FHIR, linkages can occur at any level at all, including individual data type components 
+or even portions of extensions. Converting from CDA to FHIR will be straight-forward, however there will 
+be information loss when converting the other way. -->
+</p>
+
+
+</div>
+
+[%file newfooter%]
+
+ 
+ 
+</body>
+</html>

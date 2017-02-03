@@ -40,8 +40,8 @@
 использования. Хотя разработчики могут самостоятельно давать определения и использовать расширения, существует набор 
 требований, соблюдение которых обязательно.
 </p>
-<a name="Extension"></a>
-<a name="extension"></a>
+<a name="Extension"> </a>
+<a name="extension"> </a>
 <h2>Элемент "extension"</h2>
 <p>
 Все элементы в ресурсе или типы данных могут иметь неограниченное число необязательных элементов-потомков "extension". Ниже представлена модель содержимого расширения, применимая ко всем ресурсам:
@@ -52,7 +52,7 @@
 </p>
 <ul>
  <li><code>url</code> - это обязательный атрибут / свойство, который используется как идентификатор извлекаемого <a href="structuredefinition.html">extension definition</a>, применяемого по отношению к данному ресурсу и определяющего содержимое и семантику элемента расширения</li>
- <li>The <code>url</code> SHALL be a URL, not a URN (e.g. not an OID or a UUID), and it SHALL be the canonical URL of a StructureDefinition that defines the extension. Except for child extensions defined within a complex extensions, the URL SHALL be an absolute URL). The StructureDefinition the defines the extension SHOULD be available at the identified location so that resource processors can access the definition from the URL</li>
+ <li>The <code>url</code> SHALL be a URL, not a URN (e.g. not an OID or a UUID), and it SHALL be the canonical URL of a StructureDefinition that defines the extension. Except for child extensions defined within a complex extensions, the URL SHALL be an absolute URL). The StructureDefinition that defines the extension SHOULD be available at the identified location so that resource processors can access the definition from the URL</li>
  <li>Расширение ДОЛЖНО иметь либо значение (т. е. элемент value[x]), либо вложенные расширения, но не и то, и другое. Если присутствует, элемент value[x] ДОЛЖЕН иметь содерижмое (атрибует value или другие элементы)</li>
  <li>Если для приложения, обрабатывающего содержимое ресурса, не безопасно игнорировать расширение, это должно быть представлено по-другому (см. <a href="#modifier">ниже</a>)</li>
  <li>Фактическим именем элемента <i>value[x]</i> является слово "value", к которому добавляется с большой буквы имя одного из следующих определенных типов, а его содержимым будет то, которое определено для этого типа:
@@ -117,13 +117,13 @@ practice). -->
 В JSON-формате расширения описываются точно также:
 </p>
 <pre class="json" fragment="HumanName">
-  "name" : {
+{
     "extension" : [{
       "url" : "http://hl7.org/fhir/StructureDefinition/iso-21090-name-use",
         "valueCode" : "I"
      }],
      "text" : "Chief Red Cloud"
-  }
+}   
 </pre>
 </div>
 <p>
@@ -186,14 +186,13 @@ differently. See <a href="json.html#primitive">Representing primitive types in J
     },  {
       "url" : "reason",
       "valueCodeableConcept" : {
-          "coding" : {
+          "coding" : [{
              "system" : "http://acme.org/codes/general",
-             "code" : "tt14j",
-          }
+             "code" : "tt14j"
+          }]
       }
     }]
   }]
-  ... другие данные пациента ...
 }
 </pre>
 </div>
@@ -242,33 +241,35 @@ differently. See <a href="json.html#primitive">Representing primitive types in J
 </p>
 <pre class="json" fragment="Patient">
 {
-  "resourceType" : "Patient",
-  "extension" : [{
-    "url" : "http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial",
-    "extension" : [{
-      "url" : "NCT",
-      "valueString" : "123456789"
-    }, {
-      "url" : "period", 
-      "valuePeriod" : {
-         "start" : "2009-03-14" 
-      }   
-    }, {
-      "url" : "reason",
-      "valueCodeableConcept" : {
-          "coding" : {
-             "system" : "http://acme.org/codes/general",
-             "code" : "tt14j",
+	"resourceType": "Patient",
+	"extension": [{
+		"url": "http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial",
+		"extension": [{
+			"url": "NCT",
+			"valueString": "123456789"
+		},
+		{
+			"url": "period",
+			"valuePeriod": {
+				"start": "2009-03-14"
           }
+		},
+		{
+			"url": "reason",
+			"valueCodeableConcept": {
+				"coding": [{
+					"system": "http://acme.org/codes/general",
+					"code": "tt14j"			
+				}]
        }
-    },{
-      "url" : "http://acme.org/fhir/StructureDefinition/registrar",
-      "valueReference" : {
-      "reference" : "Practitioner/example"
+		},
+		{
+			"url": "http://acme.org/fhir/StructureDefinition/registrar",
+			"valueReference": {
+				"reference": "Practitioner/example"
       }
     }]
   }]
-  ... другие данные пациента ...
 }
 </pre>
 </div>
@@ -310,7 +311,7 @@ defined outside an extension cannot be placed in another extension. -->
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>DSTU Note:</b> Is this a problem? Input from implementers identiying places where modifier 
+<b>STU Note:</b> Is this a problem? Input from implementers identiying places where modifier 
 extensions might be needed inside other extensions is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
 </p>
 </blockquote>
@@ -320,22 +321,22 @@ extensions might be needed inside other extensions is welcome <a href="http://wi
 </p>
 <div class="example">
 <p>
-Пример: у ресурса <a href="medicationorder.html">MedicationOrder</a> нет элемента, чтобы сделать "антипредписание" - инструкцию не принимать медикамент некоторое время. Классические системы медицинских записей не записывают это как предписание, а какая-то одна система записывает, и эти "антипредписания" необходимо совместно использовать в учреждении, где это происходит, так как они являются важной частью рабочего процесса. Поэтому приложениям разрешается расширять ресурс такими данными, как:
+Пример: у ресурса <a href="medicationrequest.html">MedicationRequest</a> нет элемента, чтобы сделать "антипредписание" - инструкцию не принимать медикамент некоторое время. Классические системы медицинских записей не записывают это как предписание, а какая-то одна система записывает, и эти "антипредписания" необходимо совместно использовать в учреждении, где это происходит, так как они являются важной частью рабочего процесса. Поэтому приложениям разрешается расширять ресурс такими данными, как:
 </p>
 <pre class="xml">
-&lt;MedicationOrder&gt;
+&lt;MedicationRequest&gt;
   &lt;modifierExtension url=&quot;http://example.org/fhir/StructureDefinition/anti-prescription&quot;&gt;
     &lt;valueBoolean value="true"/&gt;
   &lt;/modifierExtension&gt;
   &lt;!-- ... other content ... --&gt;
-&lt;/MedicationOrder&gt;
+&lt;/MedicationRequest&gt;
 </pre>
 <p>
 Или в JSON:
 </p>
 <pre class="json">
 {
-  "resourceType" : "MedicationOrder",
+  "resourceType" : "MedicationRequest",
   "modifierExtension" : [{ 
     "url" : "http://example.org/fhir/StructureDefinition/anti-prescription",
     "valueBoolean" : "true"
@@ -383,7 +384,7 @@ PUTs or POSTs a modifier extension it does not know. Приложения мог
 Вот пример предписания, приведенного выше, с описательной частью:
 </p>
 <pre class="xml">
-&lt;MedicationOrder xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+&lt;MedicationRequest xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;text&gt;
     &lt;status value=&quot;generated&quot;/&gt;
     &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
@@ -396,7 +397,7 @@ PUTs or POSTs a modifier extension it does not know. Приложения мог
     &lt;valueBoolean value="true"/&gt;
     &lt;/modifierExtension&gt;
   &lt;!-- ...data... --&gt;
-&lt;/MedicationOrder&gt;
+&lt;/MedicationRequest&gt;
 </pre>
 </div>
 <p>

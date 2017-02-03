@@ -23,6 +23,8 @@ DICOM (see <a href="http://medical.nema.org/medical/dicom/current/output/html/pa
 <li>NIST SP800-92 – Shows how to do audit log management and reporting – consistent with our model</li>
 <li>HL7 PASS – Defined an Audit Service with responsibilities and a query interface for reporting use</li>
 <li>ISO 27789 – Defined the subset of audit events that an EHR would need </li> -->
+<li>ISO/HL7 10781 EHR System Functional Model Release 2</li>
+<li>ISO 21089 Trusted End-to-End Information Flows</li>
 </ul>
 <p>
 Этот ресурс разрабатывается совместно организациями HL7, DICOM и IHE.
@@ -33,7 +35,8 @@ DICOM (see <a href="http://medical.nema.org/medical/dicom/current/output/html/pa
 <!-- The primary purpose of this resource is the maintenance of security audit log information.  However, 
 it can also be used for any audit logging needs and simple event-based notification. -->
 </p>
-
+</div>
+<div>
 <a name="bnc"> </a>
 <h2>Предпосылки и контекст</h2>
 <p>

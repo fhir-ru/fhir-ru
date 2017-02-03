@@ -21,7 +21,7 @@ at once, but this requires that the implementation guides are compatible (see <a
 <h2>Границы и связи<!-- Boundaries and Relationships --></h2>
 <p>
 Руководства по реализации содержат два различных типа ссылок на ресурсы:
-<!-- Implementation Guides contain two different types of resource references: . -->
+<!-- Implementation Guides contain two different types of resource references: -->
 </p>
 <ul>
  <li>Содержимое: набор логических утверждений, которые должны выполняться реализациями. Это почти всегда ресурсы <a href="conformance-module.html">обеспечения соответствия</a></li>
@@ -30,8 +30,8 @@ at once, but this requires that the implementation guides are compatible (see <a
  <li>Examples: Examples that illustrate the intent of the profiles defined in the implementation guide. These can be any kind of resource</li> -->
 </ul>
 <p>
-<a href="conformance.html">Заявление о соответствии</a> может указывать на одно или несколько руководств по реализации, которым соответствует приложение.
-<!-- An applications <a href="conformance.html">Conformance Statement</a> may identify one or more implementation guides that an application conforms to. -->
+<a href="capabilitystatement.html">Заявление о возможностях</a> может указывать на одно или несколько руководств по реализации, которым соответствует приложение.
+<!-- An applications <a href="capabilitystatement.html">Capability Statement</a> may identify one or more implementation guides that an application conforms to. -->
 </p>
 </div>
 

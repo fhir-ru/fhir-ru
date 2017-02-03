@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bundle xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://hl7.org/fhir ../../schema/bundle.xsd">
+  <id value="b0a5e4277-83c4-4adb-87e2-e3efe3369b6f"/>
+  <meta>
+    <lastUpdated value="2012-05-29T23:45:32Z"/> 
+  </meta> 
+  <type value="collection"/> [%loop count=70%]
+  <entry>
+    <fullUrl value="http://hl7.org/fhir/Patient/[%count%]"/>
+    <resource>
+      <Patient>
+        <id value="[%count%]"/>
+        <meta>
+          <lastUpdated value="2012-06-03T23:45:32Z"/>
+        </meta>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml">[%last name%], [%first name%]. MRN:
+          [%patient_id%]</div>
+        </text>
+        <identifier>
+          <type>
+            <coding>
+              <system value="http://hl7.org/fhir/v2/0203"/>
+              <code value="SS"/>
+            </coding>
+          </type>
+          <system value="https://github.com/projectcypress/cypress/patient"/>
+          <value value="[%patient_id%]"/>
+        </identifier>
+        <active value="true"/>
+        <name>
+          <use value="official"/>
+          <family value="[%last name%]"/>
+          <given value="[%first name%]"/>
+        </name>
+        <gender value="[%gender%]" />
+        <birthDate value="[%birthdate%]"/>
+        <managingOrganization>
+          <reference value="Organization/[%organization%]"/>
+        </managingOrganization>
+      </Patient>
+    </resource>
+  </entry> [%endloop%] 
+</Bundle>

@@ -74,20 +74,18 @@ deletes it at the specified time. -->
 <h3>REST Hook</h3>
 
 <p>
-В этом методе используется пустое сообщение POST для оповещения клиента о том, что доступны новые результаты.
+В этом методе используется пустое сообщение POST для оповещения клиента о том, что доступны новые результаты - POST to [base]/Subscription:
 <!-- This uses an empty POST message to alert the client that new results 
-are available. -->
+are available - POST to [base]/Subscription: -->
 </p>
-<pre class="json">
-POST /Subscription
-
+<pre class="json" fragment="Subscription">
 {
   "resourceType": "Subscription",
   "criteria": "/Observation?name=http://loinc.org|1975-2&amp;_format=json",
   "channel": {
     "type": "rest-hook",
-    "url": "https://biliwatch.com/customers/mount-auburn-miu/on-result",
-    "header": ["Authorization: Bearer secret-token-abc-123"]
+    "endpoint": "https://biliwatch.com/customers/mount-auburn-miu/on-result",
+    "header": "Authorization: Bearer secret-token-abc-123"
   }
 }
 </pre>
@@ -118,12 +116,14 @@ for defining routing rules within a managed eco-system such
 as a healthcare institution.  -->
 </p>
 
-<pre class="json">
+<pre class="json" fragment="Subscription">
+{
   "channel": {
     "type": "rest-hook",
-    "url": "https://internal.acme.com/research/saturn",
+    "endpoint": "https://internal.acme.com/research/saturn",
     "payload": "application/fhir+json"
   }
+}
 </pre>
 
 <p>
@@ -157,20 +157,22 @@ operation. This can be accomplished using a websocket notification channel. -->
 <!-- A client can declare its intention to listen via Web Sockets: -->
 </p>
 
-<pre class="json">
+<pre class="json" fragment="Subscription">
+{
   "channel": {
     "type": "websocket"
   }
+}
 </pre>
 
 <p>
-Затем клиент инициирует соединение веб-сокета к серверу по URL-адресу, объявленному в заявлении о соответствии FHIR-сервера (subscriptions/webSocketUrl (todo)). Для прослушивания уведомлений используется простой протокол:
+Затем клиент инициирует соединение веб-сокета к серверу по URL-адресу, объявленному в заявлении о возможностях FHIR-сервера (subscriptions/webSocketUrl (todo)). Для прослушивания уведомлений используется простой протокол:
 <!-- The client would then initiate a Web Socket connection to the server, at a URL advertised 
-in the FHIR server's conformance statement (subscriptions/webSocketUrl (todo)). A simple 
+in the FHIR server's Capability statement (subscriptions/webSocketUrl (todo)). A simple 
 protocol is used to listen for notifications: -->
 </p>
 <ul>
- <li>Клиент подключается к безопасному веб-сокету по webSocketUrl больницы.</li>
+ <li>Клиент подключается по безопасному веб-сокету к webSocketUrl сервера. Client connects a secure Web Socket to the servers's webSocketUrl (see <a href="extension-capabilitystatement-websocket.html">websocket extension</a> in the server's <a href="capabilitystatement.html">CapabilityStatement</a>).</li>
  <li>Клиент устанавливает подлинность сервера, используя указанный сервером протокол веб-сокета (например представление носителя маркера OAuth).</li>
  <li>Клиент отправляет bind :id сообщение через сокет (используя логический идентификатор подписки). Например клиент может отправить bind 123).</li>
  <li>Сервер отвечает  сообщением "bound :id" для подтверждения приема.</li>
@@ -190,12 +192,14 @@ protocol is used to listen for notifications: -->
 email: -->
 </p>
 
-<pre class="json">
+<pre class="json" fragment="Subscription">
+{
   "channel": {
     "type": "email",
-    "url": "mailto:mt-auburn-results@direct.biliwatch.com",
+    "endpoint": "mailto:mt-auburn-results@direct.biliwatch.com",
     "header": "A new bilirubin result has arrived!"
   }
+}
 </pre>
 
 <p>
@@ -211,11 +215,13 @@ by the rules of the applicable jurisdictions. -->
 <p>SMS работает очень похожим образом:
 <!-- SMS works very similarly: --></p>
 
-<pre class="json">
+<pre class="json" fragment="Subscription">
+{
   "channel": {
     "type": "sms",
-    "url": "tel:+1555-345-5555"
+    "endpoint": "tel:+1555-345-5555"
   }
+}
 </pre>
 
 <p>
@@ -233,11 +239,13 @@ reasons.  -->
 <!-- A client can register for its user to receive notifications by <a href="messaging.html">messaging</a>: -->
 </p>
 
-<pre class="json">
+<pre class="json" fragment="Subscription">
+{
   "channel": {
     "type": "message",
-    "url": "http://ehr.example.org/fhir/$process-message"
+    "endpoint": "http://ehr.example.org/fhir/$process-message"
   }
+}
 </pre>
 <p>
 Для каждого соответствующего ресурса сервер будет отправлять сообщение на указанную точку взаимодействия. Большинству серверов потребуется, чтобы эта точка взаимодействия была добавлена в "белый" список, чтобы позволить такой вид подписки.
@@ -248,7 +256,7 @@ is white-listed prior to allowing these kinds of subscriptions.  -->
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>Примечание к DSTU:<!-- DSTU Note: --></b> Детали сообщения - в основном это код события - необходимо будет уточнить во время периода пробного использования. <!-- The details of the message - mainly the event code - are 
+<b>Примечание к STU:<!-- STU Note: --></b> Детали сообщения - в основном это код события - необходимо будет уточнить во время периода пробного использования. <!-- The details of the message - mainly the event code - are 
 still to be resolved during the trial use period. -->
 </p>
 <p>

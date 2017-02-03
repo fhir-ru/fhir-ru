@@ -1,0 +1,453 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<a name="typical"> </a>
+	<h2>Примеры типичных переходов статусов<!-- Typical Status Transition Examples -->:</h2>
+
+<a name="status-flow"> </a>
+	<h3>Типичная смена статусов для Appointment:</h3>
+	<table  class="grid">
+		<tr>
+			<th>Activity Description</th>
+			<th>Slot</th>
+			<th>Appointment</th>
+			<th>Appointment Response</th>
+			<th>Encounter</th>
+		</tr>
+		<tr>
+			<td>
+        Расписание создано/опубликовано <br/>(Роль: Расписание)
+				<!-- The Schedule is created/published <br/>(Role: Scheduler) -->
+			</td>
+			<!-- Activity Description -->
+			<td>freeBusyType = FREE</td>
+			<!-- Slot -->
+			<td></td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+			<td></td>
+			<!-- Encounter -->
+		</tr>
+		<tr>
+			<td>
+        Запрос на условленную встречу создан после обнаружения доступного слота <br />(Роль: Запрашивающий)
+				<!-- An appointment request is created after locating an available slot <br />(Role: Requester) -->
+			</td>
+			<!-- Activity Description -->
+			<td></td>
+			<!-- Slot -->
+			<td>
+				status = pending<br />
+				participant.status = needs-action
+			</td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+			<td></td>
+			<!-- Encounter -->
+		</tr>
+		<tr>
+			<td>
+        Запрос на условленную встречу обработан, статус слота обновлён <br />(Роль: Расписание)
+				<!-- The appointment request is processed and the slot status updated<br />(Role: Scheduler) -->
+			</td>
+			<!-- Activity Description -->
+			<td>freeBusyType = BUSY-TENTATIVE</td>
+			<!-- Slot -->
+			<td></td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+			<td></td>
+			<!-- Encounter -->
+		</tr>
+		<tr>
+			<td>
+        Запрос на условленную встречу принят, как описано - всеми участниками <br />(Роль: Участник(и))
+				<!-- The appointment is accepted as described – by all participants <br />(Role: Participant(s)) -->
+			</td>
+			<!-- Activity Description -->
+			<td></td>
+			<!-- Slot -->
+			<td></td>
+			<!-- Appointment -->
+			<td>participantStatus = accepted</td>
+			<!-- Appointment Response -->
+			<td></td>
+			<!-- Encounter -->
+		</tr>
+		<tr>
+			<td>
+        Условленная встреча подтверждена как принятая всеми участниками<br />(Роль: Расписание)
+				<!-- The appointment is confirmed as accepted by all participants<br />(Role: Scheduler) -->
+			</td>
+			<!-- Activity Description -->
+			<td>freeBusyType = BUSY</td>
+			<!-- Slot -->
+			<td>
+				status = booked<br/>participant.status = accepted
+			</td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+			<td></td>
+			<!-- Encounter -->
+		</tr>
+		<tr>
+			<td>
+				<i>
+          Необязательно: Начинается подготовка к условленной встрече - это может быть подготовка помещения для условленной встречи и т. п.<br />(Роль: Участники/Администратор)
+					<!-- Optional: Preparation for the appointment begins – could be preparing a room for the appointment etc.<br />(Role: Participants/Admin) -->
+				</i>
+			</td>
+			<!-- Activity Description -->
+			<td></td>
+			<!-- Slot -->
+			<td></td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+			<td>
+				status = planned (optional)<br />
+				location.status = planned
+			</td>
+			<!-- Encounter -->
+		</tr>
+		<tr>
+			<td>
+        Пациент прибывает на условленную встречу, часто в этот момент пациент находится в комнате ожидания<br />(Роль: Администратор)
+				<!-- The patient arrives for the appointment, often sitting in a waiting room<br />(Role: Admin) -->
+			</td>
+			<!-- Activity Description -->
+			<td></td>
+			<!-- Slot -->
+			<td>status = arrived</td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+			<td>
+				status = arrived<br />
+				location.status = present
+			</td>
+			<!-- Encounter -->
+		</tr>
+		<tr>
+			<td>
+        Медицинский специалист и пациент встречаются, и начинается оказание медицинских услуг, условленная встреча с этого момента завершена <br />(Роль: Расписание/Участник(и)/Администратор)
+				<!-- The practitioner and the patient meet and the provision of the service begins, appointment is finished with now <br />(Role: Scheduler/Participant(s)/Admin) -->
+			</td>
+			<!-- Activity Description -->
+			<td></td>
+			<!-- Slot -->
+			<td>status = fulfilled</td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+			<td>status = in-progress</td>
+			<!-- Encounter -->
+		</tr>
+		<tr>
+			<td>
+        Случай обслуживания завершается<br />(Роль: Расписание/Участник(и)/Администратор)
+				<!-- The encounter concludes<br />(Role: Scheduler/Participant(s)/Admin) -->
+			</td>
+			<!-- Activity Description -->
+			<td></td>
+			<!-- Slot -->
+			<td></td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+			<td>status = finished</td>
+			<!-- Encounter -->
+		</tr>
+	</table>
+
+<a name="reject-flow"> </a>
+	<h3>Смена статусов при отклонении/отмене условленной встречи</h3>
+	<table  class="grid">
+		<tr>
+			<th>Activity Description</th>
+			<th>Slot</th>
+			<th>Appointment</th>
+			<th>Appointment Response</th>
+		</tr>
+		<tr>
+			<td>
+        Расписание создано/опубликовано <br/>(Роль: Расписание)
+				<!-- The Schedule is created/published <br/>(Role: Scheduler) -->
+			</td>
+			<!-- Activity Description -->
+			<td>freeBusyType = FREE</td>
+			<!-- Slot -->
+			<td></td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+          Запрос на условленную встречу создан <br />(Роль: Запрашивающий)
+				 <!-- Appointment Request is created<br/>(Role: Requester) -->
+			</td>
+			<!-- Activity Description -->
+			<td></td>
+			<!-- Slot -->
+			<td>
+				status = pending<br/>
+				participant.status = needs-action
+			</td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+        Запрос на условленную встречу обработан, статус слота обновлён <br />(Роль: Расписание)
+				<!-- The appointment request is processed and the slot status updated<br/>(Role: Scheduler) -->
+			</td>
+			<!-- Activity Description -->
+			<td>freeBusyType = BUSY-TENTATIVE</td>
+			<!-- Slot -->
+			<td></td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+        Участник отклоняет запрос на условленную встречу<br/>(Роль: Участник)
+				<!-- Participant Declines the Appointment<br/>(Role: Participant) -->
+			</td>
+			<!-- Activity Description -->
+			<td></td>
+			<!-- Slot -->
+			<td></td>
+			<!-- Appointment -->
+			<td>participantStatus = declined</td>
+			<!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+        Условленная встреча отменена<br/>(Роль: Расписание)
+				<!-- The appointment is cancelled<br/>(Role: Scheduler) -->
+			</td>
+			<!-- Activity Description -->
+			<td>freeBusyType = FREE</td>
+			<!-- Slot -->
+			<td>
+				status = cancelled<br/>
+				participant.status = declined
+			</td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+		</tr>
+	</table>
+
+<a name="negotiate-flow"> </a>
+	<h3>Схема для повторного согласования:</h3>
+	<table  class="grid">
+		<tr>
+			<th>Activity Description</th>
+			<th>Slot</th>
+			<th>Appointment</th>
+			<th>Appointment Response</th>
+		</tr>
+		<tr>
+			<td>
+				Расписание создано/опубликовано <br/>(Роль: Расписание)
+			</td> <!-- Activity Description -->
+			<td>freeBusyType = FREE</td> <!-- Slot -->
+			<td></td> <!-- Appointment -->
+			<td></td> <!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+        Сделан запрос на условленную встречу с Брайаном и Питером<br/>(Роль: Запрашивающий)
+				<!-- An appointment is requested with Brian and Peter<br/>(Role: Requester) -->
+			</td> <!-- Activity Description -->
+			<td></td> <!-- Slot -->
+			<td>
+				status = proposed<br/>
+				participant(Brian).status = needs-action<br/>
+				participant(Peter).status = needs-action
+			</td> <!-- Appointment -->
+			<td></td> <!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+        Расписание обновлено, чтобы проинформировать остальных, заинтересованных в этом слоте<br/>(Роль: Расписание)
+				<!-- The Schedule is updated to inform others of interest in the slot<br/>(Role: Scheduler) -->
+			</td> <!-- Activity Description -->
+			<td>freeBusyType = BUSY-TENTATIVE</td> <!-- Slot -->
+			<td></td> <!-- Appointment -->
+			<td></td> <!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+        Брайан принимает приглашение на условленную встречу<br/>(Роль: Участник-Брайан)
+				<!-- Brian accepts the appointment<br/>(Role: Participant-Brian) -->
+			</td> <!-- Activity Description -->
+			<td></td> <!-- Slot -->
+			<td></td> <!-- Appointment -->
+			<td>(Brian).participantStatus = accepted</td> <!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+        В ресурсе Appointment обновляется статус Брайана<br/>(Роль: Расписание)
+				<!-- Appointment is updated with Brian's status<br/>(Role: Scheduler) -->
+			</td> <!-- Activity Description -->
+			<td></td> <!-- Slot -->
+			<td>
+				status = pending<br/>
+				participant(Brian).status = accepted
+			</td> <!-- Appointment -->
+			<td></td> <!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+        Питер предлагает перенести условленную встречу на другое время<br/>(Роль: Участник-Питер)
+				<!-- Peter suggests a new time<br/>(Role: Participant-Peter) -->
+			</td> <!-- Activity Description -->
+			<td></td> <!-- Slot -->
+			<td></td> <!-- Appointment -->
+			<td>(Peter).participantStatus = tentative<br/><i>(with new time)</i></td> <!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+        Ресурс Appointment обновляется новым временем и показывает, что обоим участникам необходимо выполнить действие<br/>(Роль: Расписание)
+				<!-- Appointment is updated with new time, and indicates that action is needed by both participants<br/>(Role: Scheduler) -->
+			</td> <!-- Activity Description -->
+			<td></td> <!-- Slot -->
+			<td>
+				<i>(new time details updated)</i><br/>
+				participant(Brian).status = needs-action<br/>
+				participant(Peter).status = needs-action
+			</td> <!-- Appointment -->
+			<td></td> <!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+        Брайан принимает приглашение на условленную встречу<br/>(Роль: Участник-Брайан)
+				<!-- Brian accepts the appointment<br/>(Role: Participant-Brian) -->
+			</td> <!-- Activity Description -->
+			<td></td> <!-- Slot -->
+			<td></td> <!-- Appointment -->
+			<td>(Brian).participantStatus = accepted</td> <!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+        Ресурс Appointment обновлён<br/>(Роль: Расписание)
+				<!-- Appointment updated<br/>(Role: Scheduler) -->
+			</td> <!-- Activity Description -->
+			<td></td> <!-- Slot -->
+			<td>participant(Brian).status = accepted</td> <!-- Appointment -->
+			<td></td> <!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+        Питер принимает приглашение на условленную встречу<br/>(Роль: Участник-Питер)
+				<!-- Peter accepts the appointment<br/>(Role: Participant-Peter) -->
+			</td> <!-- Activity Description -->
+			<td></td> <!-- Slot -->
+			<td></td> <!-- Appointment -->
+			<td>(Peter).participantStatus = accepted</td> <!-- Appointment Response -->
+		</tr>
+		<tr>
+			<td>
+        Ресурс Appointment обновлён<br/>(Роль: Расписание)
+				<!-- Appointment updated<br/>(Role: Scheduler) -->
+			</td> <!-- Activity Description -->
+			<td>freeBusyType = BUSY</td> <!-- Slot -->
+			<td>
+				status = booked<br/>
+				participant(Peter).status = accepted
+			</td> <!-- Appointment -->
+			<td></td> <!-- Appointment Response -->
+		</tr>
+	</table>
+
+<a name="noshow-flow"> </a>
+	<h3>Смена статусов, если пациент не появился на условленной встрече:</h3>
+	<table  class="grid">
+		<tr>
+			<th>Activity Description</th>
+			<th>Slot</th>
+			<th>Appointment</th>
+			<th>Appointment Response</th>
+			<th>Encounter</th>
+		</tr>
+		<tr>
+			<td>
+				<i>(из стандартного процесса смены статусов)<!-- (from typical status flow) --></i>
+			</td>
+			<!-- Activity Description -->
+			<td>freeBusyType = BUSY</td>
+			<!-- Slot -->
+			<td>
+				status = booked<br/>
+				participant.status = accepted
+			</td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+			<td></td>
+			<!-- Encounter -->
+		</tr>
+		<tr>
+			<td>
+        Ресурс Appointment обновлён информацией о неявке<br/>(Роль: Расписание/Администратор)
+				<!-- Appointment is updated as a noshow<br/>(Role: Scheduler/Admin) -->
+			</td>
+			<!-- Activity Description -->
+			<td></td>
+			<!-- Slot -->
+			<td>status = noshow</td>
+			<!-- Appointment -->
+			<td></td>
+			<!-- Appointment Response -->
+			<td><i>(no encounter created)</i></td>
+			<!-- Encounter -->
+		</tr>
+	</table>	
+
+<a name="notes"> </a>	
+	<h2>Примечания<!-- Notes: --></h2>
+	<ul>
+		<li>Placer (заказчик)/Filler (исполнитель) (<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>)<!-- Placer/Filler (<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>) --></li>
+		<p>
+		Информация об условленной встрече для заказчика и исполнителя, фактически, одна и та же, и учитывая характер данного FHIR-ресурса, для обеих целей имеется всего один ресурс. Placer - это действующее лицо, которое выполняет операцию PUT или POST над ресурсом, а Filler - это действующее лицо, которое получает эти сообщения-ресурсы и обрабатывает информацию и принимает решение о том, может ли быть использован этот Appointment.
+			<!-- The appointment information is effectively the same between the filler and placer, and given the nature of the
+			fhir resource, there is only a single resource for both purposes. The Placer is the actor that performs the
+			PUT or POST operation on the resource, and the filler is the actor that receives these resource messages and
+			processes the information and makes a decision if the appointment can be used. -->
+		</p>
+		<li>Взаимодействие с другими стандартами<!-- Interaction with other Standards --></li>
+		<p>
+		Настойчиво рекомендуется, чтобы реализаторы этого ресурса рассмотрели возможность использования его в формате iCalendar в качестве альтернативного представления. Многие сторонние приложения и провайдеры компонентов имеют парсеры и элементы управления пользовательским интерфейсом для отображения такой информации.
+		Это может понизить точку входа для интеграции за пределами специфичных для здравоохранения приложений, и войти в пространство потребителя. Это позволило бы более простое создание мобильного приложения для создания условленных встреч во встроенных календарях мобильных устройств.
+			<!-- The strong desire is that implementers of this resource should consider providing this resource
+			in the iCalendar format as an alternative representation. Many 3rd party applications and component providers
+			have parsers and user interface controls to display this information.
+			This may lower the entry point to integrate outside the health-care specific applications, and into the
+			consumer space. This would permit the easier creation of a mobile application that creates appointments
+			in the devices native calendar. --><br/>
+			<!-- The iCalendar specification can be found at <a href="http://www.ietf.org/rfc/rfc2445.txt">http://www.ietf.org/rfc/rfc2445.txt</a>. -->
+			Спецификация iCalendar расположена по адресу <a href="http://www.ietf.org/rfc/rfc2445.txt">http://www.ietf.org/rfc/rfc2445.txt</a>.
+		</p>
+	</ul>
+<blockquote class="dstu-note">
+<a name="dstu"> </a>
+<p>
+<b>Примечание к DSTU:<!-- DSTU Note: --></b> Приветствуем отзывы реализаторов по значениям атрибута Appointment.priority и насколько они способны к взаимодействию. Использование расширения для записи кодированного понятия для именованных значений можно будет протестировать на будущем коннектатоне. <!-- Implementer feedback on is sought on the values for Appointment.priority and how interoperable they are.
+Using an extension to record a codeableconcept for named values may be tested at a future connectathon. -->
+</p>
+<p>
+Отзывы <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">здесь</a>.
+<!-- Feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>. -->
+</p>
+
+</blockquote>
+  
+</div>

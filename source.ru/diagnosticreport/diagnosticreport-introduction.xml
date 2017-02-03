@@ -100,10 +100,10 @@ The results are assembled in "groups" which are nested structures of Observation
 Если у вас очень структурированный отчёт, тогда используйте DiagnosticReport - в нём есть поддержка данных и рабочего процесса. Сведения о запросе на диагностическое исследование фиксируются в различных ресурсах-запросах (например ресурс <a href="diagnosticrequest.html">DiagnosticRequest</a>) и позволяют связывать отчёт с клиническим рабочим процессом. Для более описательных отчётов с меньшим рабочим процессом (гистология/морг и др.) может больше подойти ресурс <a href="composition.html">Composition</a>.
 <!-- If you have a highly structured report, then use DiagnosticReport - it has data and workflow support.  Details about the request for a diagnostic investigation are captured in the various "request" resources (e.g., the <a href="diagnosticrequest.html">DiagnosticRequest</a>) resource and allow the report to connect to clinical workflows. For more narrative driven reports with less work flow (histology/mortuary, etc.), the <a href="composition.html">Composition</a> resource would be more appropriate. -->
 </p>
-<blockquote class="dstu-note">
 <a name="dstu"> </a>
+<blockquote class="dstu-note">
 <p>
-<b>Примечание к DSTU<!-- DSTU Note -->:</b> Взаимосвязь этих двух ресурсов будет оцениваться в течение периода пробного использования.
+<b>Примечание к STU<!-- DSTU Note -->:</b> Взаимосвязь этих двух ресурсов будет оцениваться в течение периода пробного использования.
 <!-- The relationship between the two resources is subject to ongoing evaluation during the trial use period. -->
 </p>
 <p>

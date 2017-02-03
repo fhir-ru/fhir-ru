@@ -146,12 +146,12 @@ fragment identifier. -->
   &lt;extension url=&quot;http://example.org/phr/documents/fhir/extensions/participation-agreement&quot; &gt;
     &lt;valueUri value=&quot;http://example.org/phr/documents/patient/general/v1&quot; /&gt;
   &lt;/extension&gt;
-  <!-- ... -->
+  &lt;!-- ... --&gt;
 &lt;/Patient&gt;
-
 </pre>
-<a name="sliceextensions"></a>
-<h4>Добавление его к StructureDefinition ресурса Patient<!-- Adding it to Patient StructureDefinition --></h4>
+
+<a name="sliceextensions"> </a>
+<h4>Using it in a Patient Profile</h4>
 <p>
 Определение профиля выше просто определяет расширение "participation-agreement" и говорит, что оно используется в ресурсе patient. Однако профиль выше не говорит, что сервер действительно использует его. Чтобы PHR-провайдеру указать, что все ресурсы patient будут использовать этот ресурс, применяется StructureDefinition ресурса patient:
 <!-- The profile definition above simply defines the extension "participation-agreement", and 
@@ -178,7 +178,6 @@ will use this resource, a StructureDefinition on the patient resource is used: -
       with changes for slicing  --&gt;
     &lt;element&gt;
       &lt;path value=&quot;Patient.extension&quot;/&gt;
-      &lt;name value=&quot;base extension&quot;/&gt;
       &lt;!-- we're going to slice the extension element, and 
         one of the extensions is one we have defined --&gt;
       &lt;slicing&gt;
@@ -195,6 +194,7 @@ will use this resource, a StructureDefinition on the patient resource is used: -
     &lt;!-- now, the slice that contains our extension --&gt;    
     &lt;element&gt;
       &lt;path value=&quot;Patient.extension&quot;/&gt;
+      &lt;sliceName value=&quot;base-extension&quot;/&gt;
       &lt;!-- clone information from the extension definition. 
         duplicative, but this duplication makes it over all simpler --&gt;
       &lt;short value=&quot;Agreed agreement/policy&quot;/&gt;
@@ -296,7 +296,8 @@ and their associated bindings. In this case, the definition looks like this: -->
 <pre class="xml" fragment="StructureDefinition">
 &lt;StructureDefinition xmlns="http://hl7.org/fhir">
   &lt;url value="http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier" /&gt;
-  &lt;name value="iso-21090 Name Qualifier" /&gt;
+  &lt;name value="Iso21090NameQualifier" /&gt;
+  &lt;title value="iso-21090 Name Qualifier" /&gt;
   &lt;!-- snip other metadata, including definition of RIM Mapping -->
   &lt;kind value="datatype" /&gt;
   &lt;contextType value="datatype" /&gt;
@@ -406,7 +407,8 @@ Here's the relevant parts of the definition of this extension:
 &lt;StructureDefinition xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;!-- metadata - setting up the base definition --&gt;
   &lt;url value=&quot;http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial&quot;/&gt;
-  &lt;name value=&quot;The patient's participation in clinical trials&quot;/&gt;
+  &lt;name value=&quot;ClinicalTrialParticipation&quot;/&gt;
+  &lt;title value=&quot;The patient's participation in clinical trials&quot;/&gt;
   &lt;contextType value=&quot;resource&quot;/&gt;
   &lt;context value=&quot;Patient&quot;/&gt;
   &lt;type value="Extension" /&gt;
@@ -431,7 +433,7 @@ Here's the relevant parts of the definition of this extension:
     &lt;!-- first slice, NCT --&gt;
     &lt;element&gt;
       &lt;path value=&quot;Extension.extension&quot;/&gt;
-      &lt;name value=&quot;NCT&quot;/&gt;
+      &lt;sliceName value=&quot;NCT&quot;/&gt;
       &lt;short value=&quot;National Clinical Trial number&quot;/&gt;
       &lt;min value=&quot;1&quot;/&gt;
       &lt;max value=&quot;1&quot;/&gt;
@@ -459,7 +461,7 @@ Here's the relevant parts of the definition of this extension:
     &lt;!-- second slice, period --&gt;
     &lt;element&gt;
       &lt;path value=&quot;Extension.extension&quot;/&gt;
-      &lt;name value=&quot;period&quot;/&gt;
+      &lt;sliceName value=&quot;period&quot;/&gt;
       &lt;short value=&quot;The period of participation in the clinical trial&quot;/&gt;
       &lt;min value=&quot;0&quot;/&gt;
       &lt;max value=&quot;1&quot;/&gt;
@@ -485,7 +487,7 @@ Here's the relevant parts of the definition of this extension:
     &lt;!-- third slice, reason --&gt;
     &lt;element&gt;
       &lt;path value=&quot;Extension.extension&quot;/&gt;
-      &lt;name value=&quot;reason&quot;/&gt;
+      &lt;sliceName value=&quot;reason&quot;/&gt;
       &lt;short value=&quot;The reason for participation in the clinical trial&quot;/&gt;
       &lt;min value=&quot;0&quot;/&gt;
       &lt;max value=&quot;1&quot;/&gt;
@@ -520,6 +522,88 @@ Here's the relevant parts of the definition of this extension:
     &lt;/element&gt;
   &lt;/snapshot&gt;
 &lt;/StructureDefinition&gt;
+</pre>
+
+<h4>Use it in the instance</h4>
+<p>
+With complex extensions, only the first URL is an absolute URL:
+</p>
+<pre class="xml" fragment="Patient">
+&lt;Patient xmlns="http://hl7.org/fhir"&gt;
+  &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial&quot; &gt;
+    &lt;extension url=&quot;NCT&quot; &gt;
+      &lt;valueString value=&quot;NCT00000419&quot; /&gt;
+    &lt;/extension&gt;
+    &lt;extension url=&quot;period&quot; &gt;
+      &lt;valuePeriod&gt;
+        &lt;start value=&quot;200140105&quot; /&gt;
+        &lt;end value=&quot;20120105&quot; /&gt;
+      &lt;/valuePeriod&gt;
+    &lt;/extension&gt;
+    &lt;extension url=&quot;reason&quot; &gt;
+      &lt;valueCodeableConcept&gt;
+        &lt;text value=&quot;NCT00000419&quot; /&gt;
+      &lt;/valueCodeableConcept&gt;
+    &lt;/extension&gt;
+  &lt;/extension&gt;
+  &lt;!-- ... --&gt;
+&lt;/Patient&gt;
+</pre>
+
+<a name="sliceextensions2"> </a>
+<h4>Using it in a Patient Profile</h4>
+<p>
+This is the same as for a simple extension:
+</p>
+
+<pre class="xml" fragment="StructureDefinition">
+&lt;StructureDefinition xmlns="http://hl7.org/fhir">
+  &lt;id value="patient-profile" /&gt;
+  &lt;!-- snip other metadata, narrative -->
+  &lt;differential&gt;
+
+    &lt;!-- first, the patient root element 
+      - can be copy/paste from the base patient profile --&gt;    
+    &lt;element&gt;
+      &lt;path value=&quot;Patient&quot;/&gt;
+      &lt;!-- snip definition --&gt;
+    &lt;/element&gt;
+    
+    &lt;!-- now, the general definition for extensions
+      - can be copy/paste from the base patient profile,
+      with changes for slicing  --&gt;
+    &lt;element&gt;
+      &lt;path value=&quot;Patient.extension&quot;/&gt;
+      &lt;!-- we're going to slice the extension element, and 
+        one of the extensions is one we have defined --&gt;
+      &lt;slicing&gt;
+        &lt;!-- extension is always sliced on url --&gt;
+        &lt;discriminator value=&quot;url&quot;/&gt; 
+        &lt;!-- we don't care what the order of any extensions is --&gt;
+        &lt;ordered value=&quot;false&quot;/&gt;
+        &lt;!-- Other extensions are allowed in addition to this one --&gt;
+        &lt;rules value=&quot;open&quot;/&gt;
+      &lt;/slicing&gt;
+      &lt;!-- snip definition --&gt;
+    &lt;/element&gt;
+    
+    &lt;!-- now, the slice that contains our extension --&gt;    
+    &lt;element&gt;
+      &lt;max value=&quot;1&quot;/&gt;
+      &lt;type&gt;
+        &lt;!-- obviously it has to be an extension --&gt;
+        &lt;code value=&quot;Extension&quot;/&gt;
+        &lt;!-- and here is the link to the extension definition:
+          this extension has to conform to the rules laid down in its definition --&gt;
+        &lt;profile value=&quot;http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial&quot;/&gt;
+      &lt;/type&gt;
+    &lt;/element&gt;
+    
+  &lt;!-- snip the rest of the profile -->
+
+  &lt;/differential&gt;
+&lt;/StructureDefinition>
+
 </pre>
 
 </div>

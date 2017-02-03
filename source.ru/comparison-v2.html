@@ -40,7 +40,7 @@ roughly correspond to FHIR's idea of <a href="resource.html">resources</a>. Howe
 segments can't be independently manipulated. Additionally, not all segments have the characteristics 
 of independent identity held by FHIR resources. Due to differences in scope and approach to 
 extensibility, HL7 v2 segments and data types are frequently cluttered with data elements that are not 
-used by (or even understood by) the majority of implementations -->
+used by (or even understood by) the majority of implementations. -->
 </p>
 <p>
 Сегменты можно компоновать в повторяющиеся и/или необязательные коллекции, называемые "группами" для отражения полных бизнес-объектов здравоохранения. Например, компонент "Order" сообщения OMP (Pharmacy/Treatment Order Message) состоит из:
@@ -63,14 +63,14 @@ Order Message) includes: -->
  <li>etc.</li> -->
 </ul> 
 <p>
-Подход к степени детализации, используемый в HL7 v2, придаёт особое значение повторному использованию "шаблонов" информации. Например распределение по срокам и информация о способе применения будут бесполезны сами по себе, однако нужны во многих обстоятельствах. Из-за трехуровнего ограничения вложенности отдельные сегменты также требуются для структур данных, которые в противном случае имели бы слишком глубокую вложенность. У FHIR другой подход к повторному применению, направленный на объекты, которые можно поддерживать независимо. Ресурс <a href="medicationorder.html">MedicationOrder</a> охватывает все аспекты приведенных выше сегментов, за исключением некоторых аспектов рабочего процесса ORC, которые регулируются ресурсом <a href="task.html">Task</a>. Ресурс <a href="medicationorder.html">MedicationOrder</a> сам по себе является комплексным, содержащим вложенные структуры для указаний по дозировке, инструкций по выдаче и т. п., которые не являются простыми типами данных.
+Подход к степени детализации, используемый в HL7 v2, придаёт особое значение повторному использованию "шаблонов" информации. Например распределение по срокам и информация о способе применения будут бесполезны сами по себе, однако нужны во многих обстоятельствах. Из-за трехуровнего ограничения вложенности отдельные сегменты также требуются для структур данных, которые в противном случае имели бы слишком глубокую вложенность. У FHIR другой подход к повторному применению, направленный на объекты, которые можно поддерживать независимо. Ресурс <a href="medicationrequest.html">MedicationRequest</a> охватывает все аспекты приведенных выше сегментов, за исключением некоторых аспектов рабочего процесса ORC, которые регулируются ресурсом <a href="task.html">Task</a>. Ресурс <a href="medicationrequest.html">MedicationRequest</a> сам по себе является комплексным, содержащим вложенные структуры для указаний по дозировке, инструкций по выдаче и т. п., которые не являются простыми типами данных.
 <!-- The HL7 v2 approach to granularity emphasizes re-use of "patterns" of information. For example, timing and 
 route information are not useful on their own, but they are useful in many circumstances. Due to the 
 3-level nesting limit, separate segments are also required for data structures that would otherwise nest 
 too deeply. FHIR takes a different approach to reusability, focusing on objects that can be maintained 
-independently. The <a href="medicationorder.html">MedicationOrder</a> resource encompasses 
+independently. The <a href="medicationrequest.html">MedicationRequest</a> resource encompasses 
 all of the aspects of the above segments, with the exception of some of the workflow aspects of ORC which 
-is handled by the <a href="task.html">Task</a> resource. The <a href="medicationorder.html">MedicationOrder</a> 
+is handled by the <a href="task.html">Task</a> resource. The <a href="medicationrequest.html">MedicationRequest</a> 
 resource is itself complex, having nested structures for dosage instructions, dispensing instructions, etc. 
 that are not simple data types. -->
 </p>
@@ -88,12 +88,12 @@ the URI that defines the extension. The URI approach also ensures that extension
 systems won't collide. (This can be an issue with Z-segments.) -->
 </p>
 <p>
-<b>Межверсионная совместимость:</b> HL7 version 2 имеет строгие процессы поддержки прямой и обратной совместимости. Содержимое может добавляться только в конец существующих полей, компонентов и т. п. Ожидается, что приложения будут игнорировать неожиданное содержимое или повторы. FHIR сулит аналогичные правила совместимости. Путь к элементу в FHIR-экземпляре остается неизменным в следующих версиях. Особые правила обработки "новых" элементов (игнорирование, проверка на наличие индикаторов "must understand" и т. п. будут разработаны в течение периода DSTU.
+<b>Межверсионная совместимость:</b> HL7 version 2 имеет строгие процессы поддержки прямой и обратной совместимости. Содержимое может добавляться только в конец существующих полей, компонентов и т. п. Ожидается, что приложения будут игнорировать неожиданное содержимое или повторы. FHIR сулит аналогичные правила совместимости. Путь к элементу в FHIR-экземпляре остается неизменным в следующих версиях. Особые правила обработки "новых" элементов (игнорирование, проверка на наличие индикаторов "must understand" и т. п. будут разработаны в течение периода STU.
 <!-- <b>Inter-version compatibility:</b> HL7 version 2 has strict processes for maintaining forward and backward 
 compatibility. Content can only be added to the end of existing fields, components, etc. Applications are 
 expected to ignore unexpected content or repetitions. FHIR promises similar compatibility rules. The path 
 to an element within a FHIR instance will remain unchanged in future versions. Specific rules on handling 
-"new" elements (ignoring, checking for "must understand" indicators, etc. will be developed during the DSTU 
+"new" elements (ignoring, checking for "must understand" indicators, etc. will be developed during the STU 
 period. -->
 </p>
 <p>
@@ -222,14 +222,15 @@ to generate this content. -->
 </p>
 <p>
 <b>Отсутствие информации и режимы обновления:</b><a name="HL7 v2-updateMode"> </a>В HL7 v2 коды "действия" могут определить, 
-определённые сегменты содержать информацию для добавления, обновления или удаления. ПОля могут быть заполнены "нулями" (две последовательных двойных кавычки без других символов) для обозначения поля, подлежащего удалению. Опущенный элемент или повторение интерпретируются, как правило, как "оставить существующие данные неизменёнными". Это противоположно FHIR-подходу, требующему присутствия всех данных в виде снапшота. Системам потребуется либо логика для генерации полного снимка каждого ресурса или потребуется ввести расширения-модификаторы для обеспечения аналогичного HL7 v2 поведения.
+определённые сегменты содержать информацию для добавления, обновления или удаления. ПОля могут быть заполнены "нулями" (две последовательных двойных кавычки без других символов) для обозначения поля, подлежащего удалению. Опущенный элемент или повторение интерпретируются, как правило, как "оставить существующие данные неизменёнными". Это противоположно FHIR-подходу, требующему присутствия всех данных в виде снапшота. Системам потребуется либо логика для генерации полного снимка каждого ресурса или consider
+using the <a href="http.html#patch">Patch Operation</a> instead.
 <!-- Nulls and update modes:</b><a name="HL7 v2-updateMode"> </a>In HL7 v2, "action" codes can determine 
 whether particular segments represent information to be added, updated or deleted. Fields can be 
 populated with "null" (two consecutive double-quotes with no other characters) to note a field is 
 to be deleted. An omitted element or repetition is generally interpreted as "retain existing data 
 unchanged". This contrasts with the FHIR approach of requiring all data to be present as a snapshot. 
-Systems will either need to build in logic to generate a full snapshot of each resource or will need 
-to introduce modifier extensions to allow similar behavior to HL7 v2. -->
+Systems will either need to build in logic to generate a full snapshot of each resource or consider
+using the <a href="http.html#patch">Patch Operation</a> instead. -->
 </p>
 
 </div>

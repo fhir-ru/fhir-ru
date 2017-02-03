@@ -1,0 +1,77 @@
+
+*** Parsing file auditevent/auditevent-spreadsheet.xml
+
+*** Parsing file careplan/careplan-spreadsheet.xml
+
+*** Parsing file codesystem/codesystem-spreadsheet.xml
+
+*** Parsing file communication/communication-spreadsheet.xml
+
+*** Parsing file communicationrequest/communicationrequest-spreadsheet.xml
+
+*** Parsing file compartmentdefinition/compartmentdefinition-spreadsheet.xml
+
+*** Parsing file conceptmap/conceptmap-spreadsheet.xml
+
+*** Parsing file conformance/conformance-spreadsheet.xml
+
+*** Parsing file datatypes/elementdefinition.xml
+
+*** Parsing file decisionsupportservicemodule/decisionsupportservicemodule-spreadsheet.xml
+
+*** Parsing file diagnosticreport/diagnosticreport-spreadsheet.xml
+
+*** Parsing file domainresource/domainresource-spreadsheet.xml
+
+*** Parsing file encounter/encounter-spreadsheet.xml
+
+*** Parsing file expansionprofile/expansionprofile-spreadsheet.xml
+
+*** Parsing file flag/flag-spreadsheet.xml
+
+*** Parsing file guidanceresponse/guidanceresponse-spreadsheet.xml
+
+*** Parsing file imagingstudy/imagingstudy-spreadsheet.xml
+
+*** Parsing file measure/measure-spreadsheet.xml
+
+*** Parsing file medication/medication-spreadsheet.xml
+
+*** Parsing file medicationadministration/medicationadministration-spreadsheet.xml
+
+*** Parsing file medicationdispense/medicationdispense-spreadsheet.xml
+
+*** Parsing file medicationorder/medicationorder-spreadsheet.xml
+
+*** Parsing file medicationstatement/medicationstatement-spreadsheet.xml
+
+*** Parsing file observation/observation-spreadsheet.xml
+
+*** Parsing file operationdefinition/operationdefinition-spreadsheet.xml
+
+*** Parsing file patient/patient-spreadsheet.xml
+
+*** Parsing file plandefinition/plandefinition-spreadsheet.xml
+
+*** Parsing file practitioner/practitioner-spreadsheet.xml
+
+*** Parsing file practitionerrole/practitionerrole-spreadsheet.xml
+
+*** Parsing file processrequest/processrequest-spreadsheet.xml
+Skipping: period
+
+*** Parsing file questionnaire/questionnaire-spreadsheet.xml
+
+*** Parsing file schedule/schedule-spreadsheet.xml
+
+*** Parsing file sequence/sequence-spreadsheet.xml
+
+*** Parsing file slot/slot-spreadsheet.xml
+
+*** Parsing file structuredefinition/structuredefinition-spreadsheet.xml
+
+*** Parsing file structuremap/structuremap-spreadsheet.xml
+
+*** Parsing file task/task-spreadsheet.xml
+
+*** Parsing file visionprescription/visionprescription-spreadsheet.xml

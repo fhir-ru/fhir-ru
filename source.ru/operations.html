@@ -77,7 +77,7 @@ See <a href="operationslist.html">the list of defined operations</a>.
 <a name="extensibility"> </a>
 <h3>Implementation Defined Operations</h3>
 <p>
-Реализации имеют возможность определять свои собственные операции в дополнение к тем, что описаны здесь. Конфликты имен между операциями, определенными различными реализаторами, можно разрешать с помощью <a href="conformance.html">заявления о соответствии</a> сервера.
+Реализации имеют возможность определять свои собственные операции в дополнение к тем, что описаны здесь. Конфликты имен между операциями, определенными различными реализаторами, можно разрешать с помощью <a href="capabilitystatement.html">Capability Statement</a> сервера.
 </p>
 <p>
 Also, the definition of these or additional run time operations does not
@@ -175,11 +175,11 @@ all of the values of the parameters are appended to the URL in the search portio
 Servers SHALL support this method of invocation. E.g. -->
 </p>
 <pre>
-GET [base]/ValueSet/$expand?identifier=http://hl7.org/fhir/ValueSet/body-sit&amp;filter=abdo
+GET [base]/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/body-sit&amp;filter=abdo
 </pre>
 <p>
-If the only parameter to the operation is a resource, then the operation can also executed 
-by a POST with that parameter as the body of the request.
+If the only parameter to a specific invocation of the operation is a resource, then the operation
+can also be executed by a POST with that resource as the body of the request.
 </p>
 
 <p>
@@ -236,7 +236,7 @@ not used, and the response is simply the resource itself. -->
 <blockquote class="dstu-note">
 <a name="dstu"> </a>
 <p>
-<b>DSTU Note:</b> there is presently no mechanism to execute
+<b>STU Note:</b> there is presently no mechanism to execute
 operations asynchronously in a RESTful manner. However, the <a href="messaging.html#operations">messaging page</a>
 describes a way to execute operations asynchronously using messages.
 </p>

@@ -979,7 +979,7 @@
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000"
         xmlns="http://www.w3.org/TR/REC-html40">Indicates a regular expression that the value of this element must meet.  Only allowed for simple data types.</Font>       </Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Short Label</Data><Comment
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Short Name</Data><Comment
       ss:Author=""><Data>        <Font html:Face="Tahoma" x:Family="Swiss"
         html:Size="8" html:Color="#000000"
         xmlns="http://www.w3.org/TR/REC-html40">Short description or code1 | code2 | code3 +</Font>       </Data></Comment><NamedCell
@@ -1128,7 +1128,7 @@
     <Cell ss:Index="11" ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="16" ss:StyleID="s86"><Data ss:Type="String">Protocol or definition</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Protocol or definition followed by this request. For example: Предложенное действие необходимо выполнять только в случае выполнения указанных условий, например при одышке, SpO2 меньше x%. <!-- The proposed act must be performed if the indicated conditions occur, e.g.., shortness of breath, SpO2 less than x%. --></Data><NamedCell
+    <Cell ss:StyleID="Default"><Data ss:Type="String">Protocol or definition followed by this request. For example: The proposed act must be performed if the indicated conditions occur, e.g.., shortness of breath, SpO2 less than x%.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="27" ss:StyleID="s69"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
@@ -1409,7 +1409,7 @@
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Desired time or График применения<!-- schedule for use --></Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Desired time or schedule for use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">График времени использования этого изделия. Тип данных Schedule позволяет задавать различные выражения, например &quot;каждые 8 часов&quot;; &quot;три раза в день&quot;; &quot;за полчаса до завтрака в течение 10 дней с 23-Dec 2011:&quot;;  &quot;15 Oct 2013, 17 Oct 2013 и 1 Nov 2013&quot;<!-- The timing schedule for the use of the device. The Schedule data type allows many different expressions, for example. &quot;Every 8 hours&quot;; &quot;Three times a day&quot;; &quot;1/2 an hour before breakfast for 10 days from 23-Dec 2011:&quot;; &quot;15 Oct 2013, 17 Oct 2013 and 1 Nov 2013&quot;. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1563,7 +1563,7 @@
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s86"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Coded Обоснование запроса<!-- Reason for request --></Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Coded Reason for request</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Причина или обоснование для использования этого устройства.<!-- Reason or justification for the use of this device.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>

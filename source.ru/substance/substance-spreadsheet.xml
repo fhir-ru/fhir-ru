@@ -939,7 +939,7 @@
         html:Face="Tahoma" x:Family="Swiss" html:Size="8" html:Color="#000000"
         xmlns="http://www.w3.org/TR/REC-html40">Indicates a regular expression that the value of this element must meet.  Only allowed for simple data types.</Font>       </Data></Comment><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s73"><Data ss:Type="String">Short Label</Data><Comment
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Short Name</Data><Comment
       ss:Author=""><Data>        <Font html:Face="Tahoma" x:Family="Swiss"
         html:Size="8" html:Color="#000000"
         xmlns="http://www.w3.org/TR/REC-html40">Short description or code1 | code2 | code3 +</Font>       </Data></Comment><NamedCell
@@ -1096,10 +1096,10 @@
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Что это за класс/тип вещества<!-- What class/type of substance this is --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String"> Код классификации основного типа вещества. Используется при поиске, сортировке и отображении.<!-- A code that classifies the general type of substance.  This is used  for searching, sorting and display purposes. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String"> A code that classifies the general type of substance.  This is used  for searching, sorting and display purposes.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String"> Степень детализации определяется концептами категории из набора значений. Более детализированная фильтрация выполняется с помощью метаданных и/или терминологической иерархии в элементе Substance.code.<!-- The level of granularity is defined by the category concepts in the value set.   More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in Substance.code.  --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String"> The level of granularity is defined by the category concepts in the value set.   More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in Substance.code. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s91"><Data ss:Type="String">.code</Data><NamedCell
@@ -4531,7 +4531,7 @@
     <Cell ss:StyleID="s79"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s79"/>
     <Cell ss:StyleID="s115"><Data ss:Type="String">Substance.code|Substance.ingredient.substanceCodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s116"><Data ss:Type="String">Код вещества<!-- The code of the substance --> or ingredient</Data></Cell>
+    <Cell ss:StyleID="s116"><Data ss:Type="String">The code of the substance or ingredient</Data></Cell>
     <Cell><Data ss:Type="String">[#9233]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">

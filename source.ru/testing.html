@@ -70,14 +70,14 @@ systems adhere to the specification.
 <h4 id="workflow">Workflow</h4>
 <p><b>Pre-Processing</b></p>
 <p>
-  The TestScript execution workflow begins by determining if the test suite is appropriate for the server under test.  This can be determined by evaluating if the interactions listed in the TestScript metadata "capabilities" section are supported by the server's conformance resource.  If the capabilities are supported by the server, then the TestScript can be executed.  Otherwise, the TestScript as a whole or a specific test within the test script may be skipped depending on where the capabilities section is defined. See <a href="#howToSpecifiyCapabilities">How to specify metadata capabilities</a>.
+  The TestScript execution workflow begins by determining if the test suite is appropriate for the server under test. This can be determined by evaluating if the interactions listed in the TestScript metadata "capabilities" section are supported by the server's conformance resource. If the capabilities are supported by the server, then the TestScript can be executed. Otherwise, the TestScript as a whole, meaning all test within the test script, are skipped. See <a href="#howToSpecifiyCapabilities">How to specify metadata capabilities</a>.
 </p>
 <p>
   If the server supports the requirements of the TestScript instance, any specified fixtures are loaded or retrieved. If the fixtures are marked as 'autocreate' then they are automatically created on the server(s) under test using 'create' operations. If any of the autocreate operations fail, then the tests in the TestScript are skipped.
 </p>
 <p><b>Setup Execution</b></p>
 <p>
-  After the fixtures are loaded and autocreates are executed, then the setup section is executed to establish the test suite environment.  The purpose of the setup section is typically to pre-load data (if it was not autocreated) required for the execution of the tests into the FHIR server under test.  The setup operations are executed once before all the tests are run (see <a href="#operation-execution">Operation Execution</a>). All operations in a setup section (including assertions) must complete successfully for the tests to be executed. If an assertion operation in the setup section fails, then execution and evaluation of the tests in the TestScript should be skipped. Technically, any operation (see the <a href="#operations-table">operations table</a> for a complete listing) can be included in the setup section, but typical operations will be create, update, read, and vread.
+  After the fixtures are loaded and autocreates are executed, then the setup section is executed to establish the testing environment. The purpose of the setup section is typically to pre-load data (if it was not autocreated) or delete data required for the execution of the tests against the FHIR system(s) under test. The setup operations are executed once before all the tests are run (see <a href="#operation-execution">Operation Execution</a>). All operations in a setup section (including assertions) must complete successfully for the subsequent tests to be executed. If an assertion operation in the setup section fails, then execution and evaluation of the tests in the TestScript should be skipped. Technically, any operation (see the <a href="#operations-table">operations table</a> for a complete listing) can be included in the setup section, but typical operations will be create, update, read, and vread.
 </p>
 <p>
   Due to the possibility that the setup actions are not required on the server under test, the TestScript execution workflow MAY provide the capability of skipping or ignoring the setup section of the TestScript.
@@ -106,6 +106,14 @@ systems adhere to the specification.
   Using the optional "autocreate" and "autodelete" elements (missing values default to false), fixtures can be configured to automatically be created during TestScript setup and automatically deleted during TestScript teardown. This means that additional "create" and "delete" operations in the TestScript.setup and TestScript.teardown sections are unnecessary.
 </p>
 
+<h4 id="profiles">Profiles</h4>
+<p>
+  The profiles section of the TestScript defines a set of FHIR profiles (see <a href="structuredefinition.html">StructureDefinition</a> resource) that will be used as part of the setup or test sections during TestScript execution. Each profile defines a StructureDefinition instance by URI, and must be identified by an ID. The URI MUST reference a known FHIR profile corresponding to the FHIR specification version being tested. As with Fixtures, the ID on the profile is considered the "source" identifier of the profile. Operations reference the ID of a profile to uniquely identify the profile instance the operation is using ("validateProfileId").
+</p>
+<p>
+  See <a href="#howToUseProfiles">Use Profiles</a> for more information.
+</p>
+
 <h4 id="variables">Variables</h4>
 <p>
   The variables section of the TestScript defines a set of expressions whose evaluations will be used in substitutions.  These substitutions are performed in operation request headers and URL paths as well as assertion values.
@@ -117,7 +125,7 @@ systems adhere to the specification.
   Using variables allows for the same test scripts to be executed against the same servers by different clients at the same time.  Each client would change the fixture data (external to the test script) to make the data unique to that client.  This ensures that the same delete/create/read operations executed concurrently by one client does not interfere with those of a another client.  That can be important within the context of a testing event such as a Connectathon.  It can be very useful in year-round testing against public servers as well.
 </p>
 <p>
-  See <a href="#howToUseVariables">Use variables</a> for more information.
+  See <a href="#howToUseVariables">Use Variables</a> for more information.
 </p>
 
 <h4 id="operation-execution">Operation Execution</h4>
@@ -170,7 +178,10 @@ The "assertion" evaluates the results of previous operations to determine if the
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="create" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="create"/>
+    </type>
     <sourceId value="example-patient"/>
   </operation>
 </action>
@@ -209,7 +220,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="search" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="search"/>
+    </type>
     <resource value="Patient" />
     <contentType value="json" />
     <params value="?given=John&amp;family=Doe" />
@@ -299,7 +313,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="delete" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="delete"/>
+    </type>
     <resource value="Patient" />
     <params value="?given=John&amp;family=Doe" />
   </operation>
@@ -312,7 +329,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="create" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="create"/>
+    </type>
     <responseId value="create-response"/>
     <sourceId value="example-patient"/>
   </operation>
@@ -323,7 +343,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="delete" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="delete"/>
+    </type>
     <targetId value="create-response"/>
   </operation>
 </action>
@@ -346,7 +369,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="delete" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="delete"/>
+    </type>
     <resource value="Patient" />
     <params value="?family=Doe&amp;given=Joe"/>
   </operation>
@@ -360,7 +386,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="create" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="create"/>
+    </type>
     <sourceId value="example-patient"/>
   </operation>
 </action>
@@ -370,7 +399,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="delete" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="delete"/>
+    </type>
     <resource value="Patient" />
     <params value="?family=Doe&amp;given=Joe"/>
   </operation>
@@ -392,7 +424,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="search" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="search"/>
+    </type>
     <resource value="Patient" />
     <params value="?given=John&amp;family=Doe" />
   </operation>
@@ -412,7 +447,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="create" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="create"/>
+    </type>
     <requestHeader>
       <field value="If-None-Exist" />
       <value value="Patient?given=John&amp;Doe&amp;birthdate=1974-12-31" />
@@ -443,7 +481,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="create" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="create"/>
+    </type>
     <responseId value="create-response" />
     <sourceId value="example-patient"/>
   </operation>
@@ -453,7 +494,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="update" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="update"/>
+    </type>
     <resource value="Patient"/>
     <responseId value="R3" />
     <sourceId value="john-doe-update"/>
@@ -472,7 +516,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="create" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="create"/>
+    </type>
     <responseId value="R1"/>
     <sourceId value="john-doe-patient"/>  <!-- Fixture must be defined at the top of the script -->
   </operation>
@@ -482,7 +529,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="search" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="search"/>
+    </type>
     <resource value="Patient"/>
     <params value="?family=Doe&amp;given=Joe"/>
     <responseId value="R2" />
@@ -493,7 +543,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="update" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="update"/>
+    </type>
     <resource value="Patient"/>
     <responseId value="R3" />
     <sourceId value="john-doe-update"/>
@@ -508,7 +561,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="search" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="search"/>
+    </type>
     <resource value="Patient"/>
     <params value="?family=Doe&amp;given=Joe"/>
     <responseId value="R4" />
@@ -533,7 +589,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="update" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="update"/>
+    </type>
     <resource value="Patient"/>
     <params value="?family=Doe&amp;given=Joe"/>
     <responseId value="R3" />
@@ -546,7 +605,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="search" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="search"/>
+    </type>
     <resource value="Patient"/>
     <params value="?family=Doe&amp;given=Joe"/>
     <responseId value="R4" />
@@ -568,7 +630,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="create" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="create"/>
+    </type>
     <responseId value="create-response"/>
     <sourceId value="example-patient"/>
   </operation>
@@ -579,7 +644,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="read" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="read"/>
+    </type>
     <targetId value="create-response"/>
   </operation>
 </action>
@@ -595,7 +663,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="create" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="create"/>
+    </type>
     <responseId value="create-response"/>
     <sourceId value="example-patient"/>
   </operation>
@@ -606,7 +677,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="vread" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="vread"/>
+    </type>
     <targetId value="create-response"/>
   </operation>
 </action>
@@ -626,7 +700,10 @@ See <a href="valueset-assert-response-code-types.html">response codes</a> for co
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="history" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="history"/>
+    </type>
     <targetId value="create-response"/>  <!-- or search-response or update-response-->
   </operation>
 </action>
@@ -647,7 +724,10 @@ GET [base]/[type]/_history{?[parameters]&amp;_format=[mime-type]}
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="history" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="history"/>
+    </type>
     <resource value="Patient"/>
     <params value="?family=Doe&amp;given=Joe"/>
   </operation>
@@ -660,7 +740,10 @@ GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="history" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="history"/>
+    </type>
     <params value="?_count=50"/>
   </operation>
 </action>
@@ -678,7 +761,10 @@ GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="read" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="read"/>
+    </type>
     <accept value="json" />
     <targetId value="F1" />
   </operation>
@@ -691,7 +777,10 @@ GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="read" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="read"/>
+    </type>
     <requestHeader>
       <field value="Accept" />
       <value value="application/fhir+json" />
@@ -714,7 +803,10 @@ GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="create" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="create"/>
+    </type>
     <contentType value="json" />
     <targetId value="F1" />
   </operation>
@@ -727,7 +819,10 @@ GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="create" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="create"/>
+    </type>
     <requestHeader>
       <field value="Content-Type" />
       <value value="application/fhir+json" />
@@ -769,8 +864,44 @@ GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 <p>Note that test engines will not verify contentType in response if assertions for contentType are missing.</p>
 </li>
 </ol>
+
 <hr/><!-- =========================================================================================================================================================== -->
-<h4 id="howToUseVariables">Use variables</h4>
+<h4 id="howToUseProfiles">Use Profiles</h4>
+<p><a href="#profiles">Profiles</a> are defined against known FHIR profiles (see <a href="structuredefinition.html">StructureDefinition</a> resource) corresponding to the FHIR specification version being tested. They are used in the "assert.validateProfileId" and, when present in an assert, will invoke validation of the FHIR resource payload in either the request or response message.</p>
+
+<p>Profiles would be defined at the top of the script.</p>
+
+<p>Below is a profile that is defined against the FHIR Patient resource type and referenced by "P1":</p>
+<div class="xmlCode"><xmp>
+<profile id="P1">
+  <reference value="http://hl7.org/fhir/StructureDefinition/Patient" />
+</profile>
+</xmp></div>
+
+<p>Test engines will not evaluate this at this point. They will store the profile reference in "P1" and will look for "P1" in an "assert.validateProfileId" element values during operation calls.</p>
+
+<p>Here is a read operation for a Patient with a resource id of "example" followed by an assert that performs a FHIR validation using the base FHIR profile for the Patient resource type referenced by the "P1" profile. The validation will be performed against the response payload by default if the "assert.direction" is not present. If the validation returns any "fatal" or "error" messages, then this assert will be failed. Otherwise, if the validation returns any "warning" messages, then this assert will pass but with warnings. Finally, if the validation returns only "information" messages or no messages, then this assert will pass.</p>
+<div class="xmlCode"><xmp>
+<action>
+  <operation>
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="read"/>
+    </type>
+    <resource value="Patient"/>
+    <accept value="xml"/>
+    <params value="/example"/>
+  </operation>
+</action>
+<action>
+  <assert>
+    <validateProfileId value="P1"/>
+  </assert>
+</action>
+</xmp></div>
+
+<hr/><!-- =========================================================================================================================================================== -->
+<h4 id="howToUseVariables">Use Variables</h4>
 <p><a href="#variables">Variables</a> can be defined against static fixtures and dynamic operation responses.  They can be used in "operation.params", "operation.requestHeader.value", "operation.url", and "assert.value" element values.  As such they allow for the data used in operations and assertions to be externally defined.  The data could be unique to each client involved in interactions with a server or could be unique to a given server database instance.  This allows for multiple clients to execute the same test scripts concurrently against the same server.</p>
 
 <p>Variables would be defined at the top of the script.</p>
@@ -783,13 +914,17 @@ GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
   <sourceId value="R1" />
 </variable>
 </xmp></div>
+
 <p>Test engines will not evaluate this at this point.  They will store the expresssion in "V1" and will look for "${}" in "operation.params", "operation.requestHeader.value", and "operation.url" element values during operation calls. </p>
 
 <p>Here is a read operation that will use the V1 variable.  The variable expression was "Location against R1 response" (defined above).  If a prior operation has not set R1 to be the responseId of the operation, then test engine will error out.  Otherwise, V1 will be set to the Location header value of R1 response and that value will be substituted for ${V1} below.  In other words, the read will be performed against the Location header value of R1 response.</p>
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="read" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="read"/>
+    </type>
     <accept value="json" />
     <responseId value="R2" />
     <url value="${V1}" />
@@ -822,7 +957,10 @@ GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="create" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="create"/>
+    </type>
     <requestHeader>
       <field value="If-None-Exist" />
       <value value="Patient?given=${PatientGivenName}&amp;${PatientFamilyName}&amp;birthdate=${PatientDOB}" />
@@ -836,7 +974,10 @@ GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="search" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="search"/>
+    </type>
     <resource value="Patient" />
     <accept value="json" />
     <params value="?given=${PatientGivenName}&amp;family=${PatientFamilyName}&amp;birthdate=${PatientDOB}" />
@@ -875,7 +1016,10 @@ GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 <div class="xmlCode"><xmp>
 <action>
   <operation>
-    <type value="search" />
+    <type>
+      <system value="http://hl7.org/fhir/testscript-operation-codes"/>
+      <code value="search"/>
+    </type>
     <resource value="Patient"/>
     <params value="?family=Doe&amp;given=Joe&amp;_format=application/fhir+json"/>
     <responseId value="R1" />
@@ -911,7 +1055,7 @@ GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 </metadata>
 </xmp></div>
 
-<p>The contents of PatientCreateDelete.xml would be a minimal conformance statement to indicate what sections need to be present in server conformance statement:</p>
+<p>The contents of PatientCreateDelete.xml would be a minimal capability statement to indicate what sections need to be present in server capability statement:</p>
 <div class="xmlCode"><xmp>
 <Conformance xmlns="http://hl7.org/fhir">
   <rest>
@@ -929,9 +1073,7 @@ GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 </Conformance>
 </xmp></div>
 
-<p>When the metadata capabilities section is defined at <a href="testscript-definitions.html#TestScript.metadata">TestScript.metadata</a> or at <a href="testscript-definitions.html#TestScript.setup.metadata">TestScript.setup.metadata</a>, and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then all the tests in the TestScript are skipped.</p>
-
-<p>When the metadata capabilities section is defined at <a href="testscript-definitions.html#TestScript.test.metadata">TestScript.test.metadata</a> and the server's conformance statement does not contain the elements defined in the minimal conformance statement, then only that test is skipped.</p>
+<p>When the metadata capabilities section is defined at <a href="testscript-definitions.html#TestScript.metadata">TestScript.metadata</a> and the server's capability statement does not contain the elements defined in the minimal capability statement, then all the tests in the TestScript are skipped.</p>
 
 <p>The "metadata.capabilities.required" and "metadata.capabilities.validated" elements only indicate whether the capabilities are the primary focus of the test script or not.  The do not impact the skipping logic.  Capabilities whose "metadata.capabilities.validated" flag is true are the primary focus of the test script.</p>
 
@@ -942,7 +1084,7 @@ GET [base]/_history{?[parameters]&amp;_format=[mime-type]}
 
 <p>This table presents a summary of the constraints applicable to TestScript.setup.action.operation, TestScript.test.action.operation,
 and TestScript.teardown.action.operation elements. The operation elements should be configured consistently with the
-<a href="http.html#2.1.0.22">FHIR RESTful API summary</a>.</p>
+<a href="http.html">FHIR RESTful API summary</a>.</p>
 
 <table class="grid">
   <tr>
@@ -959,6 +1101,36 @@ and TestScript.teardown.action.operation elements. The operation elements should
   </tr>
 
   <tr>
+    <th>resource</th>
+    <td colspan="4">The <a href="testscript-definitions.html#TestScript.setup.action.operation.resource">resource</a> element is required to specify the resource ([type]) in the request URL when <a href="testscript-definitions.html#TestScript.setup.action.operation.params">params</a> element is used. Will be ignored if <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a> or <a href="testscript-definitions.html#TestScript.setup.action.operation.url">url</a> are specified. In the case of <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a>, the resource type will be extracted from the fixture.</td>
+    <td colspan="2">If <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a> is specified, then [type] for request URL will be determined from targetId's fixture and <a href="testscript-definitions.html#TestScript.setup.action.operation.resource">resource</a> element will be ignored. Otherwise, resource type will be extracted from <a href="testscript-definitions.html#TestScript.setup.action.operation.sourceId">sourceId</a>'s fixture if specified. For <a href="http.html#2.1.0.10.1">conditional updates</a>, <a href="testscript-definitions.html#TestScript.setup.action.operation.resource">resource</a> is required.</td>
+    <td>N/A</td>
+    <td>N/A</td>
+    <td>If <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a> is specified, then [type] for request URL will be determined from <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a> and <a href="testscript-definitions.html#TestScript.setup.action.operation.resource">resource</a> element will be ignored. For <a href="http.html#2.1.0.12.1">conditional deletes</a>, <a href="testscript-definitions.html#TestScript.setup.action.operation.resource">resource</a> is required.</td>
+  </tr>
+  <tr>
+    <th>accept</th>
+    <td colspan="8">The <a href="testscript-definitions.html#TestScript.setup.action.operation.accept">accept</a> element can be used to specify the "Accept" header in the outgoing HTTP request. If "json" is specified, then "Accept" value of "application/fhir+json" will be set in the request header. If "xml" is specified, then "application/fhir+xml" will be used.</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <th>contentType</th>
+    <td colspan="8">The <a href="testscript-definitions.html#TestScript.setup.action.operation.contentType">contentType</a> element can be used to specify the "Content-Type" header in the outgoing HTTP request. If "json" is specified, then "Content-Type" value of "application/fhir+json" will be set in the request header. If "xml" is specified, then "application/fhir+xml" will be used.</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <th>destination</th>
+    <td colspan="9">If the TestScript is testing more than one FHIR server simultaneously, the <a href="testscript-definitions.html#TestScript.setup.action.operation.destination">destination</a> identifies which test system the operation will receive this request message using zero-based indexing. The destination value MUST be equal to a defined <a href="testscript-definitions.html#TestScript.destination">TestScript.destination"</a>.</td>
+  </tr>
+  <tr>
+    <th>encodeRequestUrl</th>
+    <td colspan="9">The <a href="testscript-definitions.html#TestScript.setup.action.operation.encodeRequestUrl">encodeRequestUrl</a> element, if "true", can be used to specify that the destination test system will receive this request message URL query parameters in HTML (Percent) encoded UTF-8 format. The default value for this element if not present is "false".</td>
+  </tr>
+  <tr>
+    <th>origin</th>
+    <td colspan="9">If the TestScript is testing more than one FHIR server simultaneously, the <a href="testscript-definitions.html#TestScript.setup.action.operation.origin">origin</a> identifies which test system the operation will send this request message using zero-based indexing. The destination value MUST be equal to a defined <a href="testscript-definitions.html#TestScript.origin">TestScript.origin"</a>.</td>
+  </tr>
+  <tr>
     <th>params</th>
     <td>The <a href="testscript-definitions.html#TestScript.setup.action.operation.params">params</a> element can be used to specify the [id] using variable substitutions and the rest of the highlighted portion in the request URL:<br/><br/>[base]/[type]<span style="font-weight:bold">/[id] {?_format=[mime-type]}</span><br/><br/>If used, then <a href="testscript-definitions.html#TestScript.setup.action.operation.resource">resource</a> is required and <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a> and <a href="testscript-definitions.html#TestScript.setup.action.operation.url">url</a> must not be specified.</td>
     <td>The <a href="testscript-definitions.html#TestScript.setup.action.operation.params">params</a> element can be used to specify the [id] and [vid] using variable substitutions and the rest of the highlighted portion in the request URL:<br/><br/>[base]/[type]<span style="font-weight:bold">/[id]/_history/[vid] {?_format=[mime-type]}</span><br/><br/>If used, then <a href="testscript-definitions.html#TestScript.setup.action.operation.resource">resource</a> is required and <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a> and <a href="testscript-definitions.html#TestScript.setup.action.operation.url">url</a> must not be specified.</td>
@@ -971,12 +1143,31 @@ and TestScript.teardown.action.operation elements. The operation elements should
     <td>The <a href="testscript-definitions.html#TestScript.setup.action.operation.params">params</a> element can be used to specify the [id] using variable substitutions in the request URL:<br/><br/>[base]/[type]<span style="font-weight:bold">/[id]</span><br/><br/>If used, then <a href="testscript-definitions.html#TestScript.setup.action.operation.resource">resource</a> is required and <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a> and <a href="testscript-definitions.html#TestScript.setup.action.operation.url">url</a> must not be specified.</td>
   </tr>
   <tr>
-    <th>resource</th>
-    <td colspan="4">The <a href="testscript-definitions.html#TestScript.setup.action.operation.resource">resource</a> element is required to specify the resource ([type]) in the request URL when <a href="testscript-definitions.html#TestScript.setup.action.operation.params">params</a> element is used. Will be ignored if <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a> or <a href="testscript-definitions.html#TestScript.setup.action.operation.url">url</a> are specified.  In the case of <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a>, the resource type will be extracted from the fixture.</td>
-    <td colspan="2">If <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a> is specified, then [type] for request URL will be determined from targetId's fixture and <a href="testscript-definitions.html#TestScript.setup.action.operation.resource">resource</a> element will be ignored. Otherwise, resource type will be extracted from <a href="testscript-definitions.html#TestScript.setup.action.operation.sourceId">sourceId</a>'s fixture if specified.  For <a href="http.html#2.1.0.10.1">conditional updates</a>, <a href="testscript-definitions.html#TestScript.setup.action.operation.resource">resource</a> is required.</td>
+    <th>requestHeader</th>
+    <td colspan="9">The <a href="testscript-definitions.html#TestScript.setup.action.operation.requestHeader">requestHeader</a> element allows for request headers to be specified <span style="font-weight: bold;">explicitly</span>. Test engines will take values specified for <a href="testscript-definitions.html#TestScript.setup.action.operation.requestHeader">requestHeader</a> "as-is" and not transform them. This allows for testing using:
+		<ul>
+		<li>"If-Modified-Since" and "If-None-Match" headers. See <a href="http.html#2.1.0.5.1">Conditional read</a>.</li>
+		<li>"If-Match" header. See <a href="http.html#2.1.0.11">Managing resource contention</a>.</li>
+		<li>Conditional Create using "If-None-Exist". See <a href="http.html#2.1.0.13.1">Conditional Create</a>.</li>
+		<li>Invalid "Content-Type" header for negative testing.</li>
+		<li>etc.</li>
+		</ul>
+	</td>
+  </tr>
+  <tr>
+    <th>requestId</th>
     <td>N/A</td>
     <td>N/A</td>
-    <td>If <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a> is specified, then [type] for request URL will be determined from <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a> and <a href="testscript-definitions.html#TestScript.setup.action.operation.resource">resource</a> element will be ignored. For <a href="http.html#2.1.0.12.1">conditional deletes</a>, <a href="testscript-definitions.html#TestScript.setup.action.operation.resource">resource</a> is required.</td>
+    <td>N/A</td>
+    <td>N/A</td>
+    <td colspan="3">The <a href="testscript-definitions.html#TestScript.setup.action.operation.requestId">requestId</a> element can be used to reference the operation request containing response body and headers. If specified, the value can later be used in assertion <a href="testscript-definitions.html#TestScript.setup.action.operation.sourceId">sourceId</a> to evaluate <a href="testscript-definitions.html#TestScript.setup.action.assert.path">path</a> (XPath/JSONPath) and <a href="testscript-definitions.html#TestScript.setup.action.assert.headerField">headerFields</a> against the request sent for an operation.</td>
+    <td>N/A</td>
+    <td>N/A</td>
+  </tr>
+  <tr>
+    <th>responseId</th>
+    <td colspan="8">The <a href="testscript-definitions.html#TestScript.setup.action.operation.responseId">responseId</a> element can be used to reference the operation response containing response body and headers. If specified, the value can later be used in assertion <a href="testscript-definitions.html#TestScript.setup.action.operation.sourceId">sourceId</a> to evaluate <a href="testscript-definitions.html#TestScript.setup.action.assert.path">path</a> (XPath/JSONPath) and <a href="testscript-definitions.html#TestScript.setup.action.assert.headerField">headerFields</a> against the response received for an operation.</td>
+    <td>N/A</td>
   </tr>
   <tr>
     <th>sourceId</th>
@@ -1003,39 +1194,8 @@ and TestScript.teardown.action.operation elements. The operation elements should
 	<td>The <a href="testscript-definitions.html#TestScript.setup.action.operation.targetId">targetId</a> element can be used to specify the [type] and [id] in the request URL.<br/><br/>If used, then <a href="testscript-definitions.html#TestScript.setup.action.operation.params">params</a> and <a href="testscript-definitions.html#TestScript.setup.action.operation.url">url</a> must not be specified.<br/><br/>The targetId value has to correspond to the responseId of an operation executed upstream in the test script.  The response body must contain a reosurce with a resource id.  The targetId fixture cannot be statically defined because the id cannot be relied upon.</td>
   </tr>
   <tr>
-    <th>responseId</th>
-    <td colspan="8">The <a href="testscript-definitions.html#TestScript.setup.action.operation.responseId">responseId</a> element can be used to reference the operation response containing response body and headers.  If specified, the value can later be used in assertion <a href="testscript-definitions.html#TestScript.setup.action.operation.sourceId">sourceId</a> to evaluate <a href="testscript-definitions.html#TestScript.setup.action.assert.path">path</a> (XPath/JSONPath) and <a href="testscript-definitions.html#TestScript.setup.action.assert.headerField">headerFields</a> against the response received for an operation.</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <th>accept</th>
-    <td colspan="8">The <a href="testscript-definitions.html#TestScript.setup.action.operation.accept">accept</a> element can be used to specify the "Accept" header in the outgoing HTTP request. If "json" is specified, then "Accept" value of "application/fhir+json" will be set in the request header. If "xml" is specified, then "application/fhir+xml" will be used.</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <th>contentType</th>
-    <td colspan="8">The <a href="testscript-definitions.html#TestScript.setup.action.operation.contentType">contentType</a> element can be used to specify the "Content-Type" header in the outgoing HTTP request. If "json" is specified, then "Content-Type" value of "application/fhir+json" will be set in the request header. If "xml" is specified, then "application/fhir+xml" will be used.</td>
-    <td>N/A</td>
-  </tr>
-  <tr>
-    <th>requestHeader</th>
-    <td colspan="9">The <a href="testscript-definitions.html#TestScript.setup.action.operation.requestHeader">requestHeader</a> element allows for request headers to be specified <span style="font-weight: bold;">explicitly</span>.  Test engines will take values specified for <a href="testscript-definitions.html#TestScript.setup.action.operation.requestHeader">requestHeader</a> "as-is" and not transform them.  This allows for testing using:
-		<ul>
-		<li>"If-Modified-Since" and "If-None-Match" headers. See <a href="http.html#2.1.0.5.1">Conditional read</a>.</li>
-		<li>"If-Match" header. See <a href="http.html#2.1.0.11">Managing resource contention</a>.</li>
-		<li>Conditional Create using "If-None-Exist". See <a href="http.html#2.1.0.13.1">Conditional Create</a>.</li>
-		<li>Invalid "Content-Type" header for negative testing.</li>
-		<li>etc.</li>
-		</ul>
-	</td>
-  </tr>
-  <tr>
-    <th>destination</th>
-    <td colspan="9">If the TestScript is testing more than one FHIR server simultaneously, the <a href="testscript-definitions.html#TestScript.setup.action.operation.destination">destination</a> identifies which server the operation applies to using zero-based indexing.</td>
-  </tr>
-  <tr>
     <th>url</th>
-    <td colspan="9">The <a href="testscript-definitions.html#TestScript.setup.action.operation.url">url</a> element will contain the full HTTP URL for the operation. This should rarely be used in test scripts.  One possible application would be to test if the Location header returned in a response is pointing to an expected resource.  See <a href="testscript-search.xml.html">testscript-search example</a>.</td>
+    <td colspan="9">The <a href="testscript-definitions.html#TestScript.setup.action.operation.url">url</a> element will contain the full HTTP URL for the operation. This should rarely be used in test scripts. One possible application would be to test if the Location header returned in a response is pointing to an expected resource. See <a href="testscript-example-search.xml.html">testscript-example-search example</a>.</td>
   </tr>
 </table>
 
@@ -1047,6 +1207,11 @@ and TestScript.teardown.action.operation elements. The operation elements should
   	<th>Assertion</th>
     <th>Valid operator values</th>
     <th>Description</th>
+  </tr>
+  <tr>
+  	<td>compareToSourcePath</td>
+    <td>equals | notEquals</td>
+    <td>Asserts that <a href="testscript-definitions.html#TestScript.setup.action.assert.compareToSourcePath">compareToSourcePath</a> against the response body of <a href="testscript-definitions.html#TestScript.setup.action.assert.compareToSourceId">compareToSourceId</a> fixture evaluates to a value that is equal or notEqual to the evaluated value of <a href="testscript-definitions.html#TestScript.setup.action.assert.path">path</a> which must be present also.</td>
   </tr>
   <tr>
   	<td>contentType</td>
@@ -1072,11 +1237,6 @@ and TestScript.teardown.action.operation elements. The operation elements should
   	<td>path</td>
     <td>equals | notEquals | in | notIn | greaterThan | lessThan | empty | notEmpty | contains | notContains</td>
     <td>Asserts that <a href="testscript-definitions.html#TestScript.setup.action.assert.path">path</a> against the response body evaluates to a value that contains, not contains, is equal, not equal, in, not in, greater than, or less than the value specified for <a href="testscript-definitions.html#TestScript.setup.action.assert.value">value</a> element if present.<br/>If the <a href="testscript-definitions.html#TestScript.setup.action.assert.operator">operator</a> is "empty" or "notEmpty" then <a href="testscript-definitions.html#TestScript.setup.action.assert.value">value</a> will be ignored.<br/>If <a href="testscript-definitions.html#TestScript.setup.action.assert.sourceId">sourceId</a> is not specified, then <a href="testscript-definitions.html#TestScript.setup.action.assert.path">path</a> will be evaluated against the last operation's response body.</td>
-  </tr>
-  <tr>
-  	<td>compareToSourcePath</td>
-    <td>equals | notEquals</td>
-    <td>Asserts that <a href="testscript-definitions.html#TestScript.setup.action.assert.compareToSourcePath">compareToSourcePath</a> against the response body of <a href="testscript-definitions.html#TestScript.setup.action.assert.compareToSourceId">compareToSourceId</a> fixture evaluates to a value that is equal or notEqual to the evaluated value of <a href="testscript-definitions.html#TestScript.setup.action.assert.path">path</a> which must be present also.</td>
   </tr>
   <tr>
   	<td>resource</td>
