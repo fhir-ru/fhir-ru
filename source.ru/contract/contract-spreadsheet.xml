@@ -1337,7 +1337,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Предмет озабоченности в контексте данного соглашения<!-- The matter of concern in the context of this agreement. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">В контексте договора тема - это рассматриваемый вопрос относительно того, какие конкретно права, привилегии, обязанности, ограничения и запреты являются обязательными для любых сторон концедента и грантозаявителя от исполнения договора. &#10;Учитывая широкий круг тем договоров, исполнители должны быть осведомлены о бизнес-прецеденте, для которого они разрабатывают FHIR-ресурс Contract, и узко указать тему, представленную относительно Contract.type и любого специализирующего Contract.subtype. &#10;Эта же тема, например актив - товар или услуга, или недвижимое имущество, медицинское снабжение, страхование, информация, процедура или работа по найму, или манера поведения, соблюдение конфиденциальности, доверия или политики безопасности, может быть темой нескольких видов договоров. &#10;Один из способов определения Contract.topic является ответ на вопрос: "Что является предметом переговоров?". &#10;Ответ: Contract.topic, который может быть описан более подробно в [0..*]Contract.valuedItem @ [0..1] Contract.valuedItem.entity[x] Определение: конкретный тип ценного пункта договора, который может быть оценен. CodeableConcept|Reference(Any)&#10;Contract.topic - это "то", чем обменивается лицо, предоставляющее право, с лицом, которому предоставляется право в обмен на какую-либо выгоду.&#10;Contract.topic - это "то", к чему применяется любой Contract.action по оговоренной причине Contract.action.reason. &#10;Contract.topic - это "то", что регулируется исполнением договора, на что распространяются права, привилегии, обязанности, ограничения и запреты всех сторон.In the context of a contract, the topic is the matter under consideration in regards to which specific rights, privileges, obligations, restrictions, and prohibitions are binding on any grantor and grantee parties upon the execution of the contract. &#10;Given the wide range of contract topics, implementers need to be cognizant of the business use case for which they are designing a FHIR Contract, and narrowly specify the topic being represented with respect to the Contract.type and any specializing Contract.subtype. &#10;The same topic, e.g., an asset such as a good or service, such as a real property, medical supply, insurance, information, a procedure or employment, or a manner of conduct, such adherence to a privacy, trust, or security policy, may be the topic of multiple types of contracts. &#10;One way to determine the Contract.topic is to answer the question: “What is the object of negotiation?”&#10;Answer: The Contract.topic, which may be described with more detail in the [0..*]Contract.valuedItem @ [0..1] Contract.valuedItem.entity[x] Definition: Specific type of Contract Valued Item that may be priced. CodeableConcept|Reference(Any)&#10;Contract.topic is “the what” that a grantor is exchanging with a grantee in return for some benefit. &#10;Contract.topic is “the what” to which any Contract.action is being applied for any stipulated Contract.action.reason. &#10;AContract.topic is “the what” governed by the execution of the contract to which any party’s rights, privileges, obligations, restrictions, and prohibitions apply.</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">В контексте договора тема - это рассматриваемый вопрос относительно того, какие конкретно права, привилегии, обязанности, ограничения и запреты являются обязательными для любых сторон концедента и грантозаявителя от исполнения договора. &#10;Учитывая широкий круг тем договоров, исполнители должны быть осведомлены о бизнес-прецеденте, для которого они разрабатывают FHIR-ресурс Contract, и узко указать тему, представленную относительно Contract.type и любого специализирующего Contract.subtype. &#10;Эта же тема, например актив - товар или услуга, или недвижимое имущество, медицинское снабжение, страхование, информация, процедура или работа по найму, или манера поведения, соблюдение конфиденциальности, доверия или политики безопасности, может быть темой нескольких видов договоров. &#10;Один из способов определения Contract.topic является ответ на вопрос: "Что является предметом переговоров?". &#10;Ответ: Contract.topic, который может быть описан более подробно в [0..*]Contract.valuedItem @ [0..1] Contract.valuedItem.entity[x] Определение: конкретный тип ценного пункта договора, который может быть оценен. CodeableConcept|Reference(Any)&#10;Contract.topic - это "то", чем обменивается лицо, предоставляющее право, с лицом, которому предоставляется право в обмен на какую-либо выгоду.&#10;Contract.topic - это "то", к чему применяется любой Contract.action по оговоренной причине Contract.action.reason. &#10;Contract.topic - это "то", что регулируется исполнением договора, на что распространяются права, привилегии, обязанности, ограничения и запреты всех сторон.<!-- In the context of a contract, the topic is the matter under consideration in regards to which specific rights, privileges, obligations, restrictions, and prohibitions are binding on any grantor and grantee parties upon the execution of the contract. &#10;Given the wide range of contract topics, implementers need to be cognizant of the business use case for which they are designing a FHIR Contract, and narrowly specify the topic being represented with respect to the Contract.type and any specializing Contract.subtype. &#10;The same topic, e.g., an asset such as a good or service, such as a real property, medical supply, insurance, information, a procedure or employment, or a manner of conduct, such adherence to a privacy, trust, or security policy, may be the topic of multiple types of contracts. &#10;One way to determine the Contract.topic is to answer the question: “What is the object of negotiation?”&#10;Answer: The Contract.topic, which may be described with more detail in the [0..*]Contract.valuedItem @ [0..1] Contract.valuedItem.entity[x] Definition: Specific type of Contract Valued Item that may be priced. CodeableConcept|Reference(Any)&#10;Contract.topic is “the what” that a grantor is exchanging with a grantee in return for some benefit. &#10;Contract.topic is “the what” to which any Contract.action is being applied for any stipulated Contract.action.reason. &#10;AContract.topic is “the what” governed by the execution of the contract to which any party’s rights, privileges, obligations, restrictions, and prohibitions apply. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">The Contract.topic may be an application for or offer of a policy or service (e.g., uri to a consent directive form or a health insurance policy), which becomes the Contract once accepted by both the grantor and grantee. &#10;The Contract Resource may function simply as the computable representation of the executed contract, which may be the attached to the Contract Resource as the “binding” or as the “friendly” electronic form.  For example, a Contract Resource may be automatically populated with the values expressed in a related QuestionnaireResponse. &#10;However, the Contract Resource may be considered the legally binding contract if it is the only “executed” form of this contract, and includes the signatures as *The Contract Resource may function as the computable representation of an application or offer in a pre-executed Contract if the grantor has not entered any values.  In this case, it is populated with values in a “legal” form of the application or offer or by the values in an associated Questionnaire.  If the grantor has filled in the legal form or the associated Questionnaire Response, then these values are used to populate a pre-executed Contract Resource.&#10;If the Contract.topic is considered an application or offer, then the policy is often required to be attached as the “legal” basis for the application to ensure “informed consent” to the contract, and that any discrepancy between the application and the policy are interpreted against the policy.  Implementers should check organizational and jurisdictional policies to determine the relationship among multiple representations of a contract pre- and post-execution.</Data><NamedCell
@@ -1669,7 +1669,7 @@
     <Cell ss:StyleID="s89"><Data ss:Type="String">The Contract.signer applies a signature to the Contract.binding referenced resource, which is the documentation that is the legal &quot;source of truth&quot;. The Contract.signer may delegate, such as a legally recognized personal representative, or have a delegate assigned e.g., by a court of law, to actually sign the Contract, such as a trustee in the case of incompetence.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Подписывающие лица, которые являются основными сторонами договора, ограничены Contract.activity, связанной с Contract.topic, и условия Contract.term, которые либо расширяют, либо ограничивают общее действие на эту тему, например оговаривая конкретную политику или обязательства, ограничивающие действия, причину действий, или агентов относительно некоторых или всех тем.&#10;Например определяя, каким образом политика или обязательства должны ограничивать действия и причины действий, разрешённые или запрещённые для всех или подмножества тем Contract.topic (например всё или часть имущества, передаваемого по договору), агентов (например кто может перепродать , назначить проценты или переделывать имущество, передаваемое по договору), действий и причин действий; или касательно условий Contract.terms, оговаривающих, расширяющих или ограничивающих период Contract.period применимости или оценки пунктов, находящихся на рассмотрении. Signers who are principal parties to the contract are bound by the Contract.activity related to the Contract.topic, and the Contract.term(s), which either extend or restrict the overall action on the topic by, for example, stipulating specific policies or obligations constraining actions, action reason, or agents with respect to some or all of the topic.&#10;For example, specifying how policies or obligations shall constrain actions and action reasons permitted or denied on all or a subset of the Contract.topic (e.g., all or a portion of property being transferred by the contract), agents (e.g., who can resell, assign interests, or alter the property being transferred by the contract), actions, and action reasons; or with respect to Contract.terms, stipulating, extending, or limiting the Contract.period of applicability or valuation of items under consideration.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String"> Подписывающие лица, которые являются основными сторонами договора, ограничены Contract.activity, связанной с Contract.topic, и условия Contract.term, которые либо расширяют, либо ограничивают общее действие на эту тему, например оговаривая конкретную политику или обязательства, ограничивающие действия, причину действий, или агентов относительно некоторых или всех тем.&#10;Например определяя, каким образом политика или обязательства должны ограничивать действия и причины действий, разрешённые или запрещённые для всех или подмножества тем Contract.topic (например всё или часть имущества, передаваемого по договору), агентов (например кто может перепродать , назначить проценты или переделывать имущество, передаваемое по договору), действий и причин действий; или касательно условий Contract.terms, оговаривающих, расширяющих или ограничивающих период Contract.period применимости или оценки пунктов, находящихся на рассмотрении.<!-- Signers who are principal parties to the contract are bound by the Contract.activity related to the Contract.topic, and the Contract.term(s), which either extend or restrict the overall action on the topic by, for example, stipulating specific policies or obligations constraining actions, action reason, or agents with respect to some or all of the topic.&#10;For example, specifying how policies or obligations shall constrain actions and action reasons permitted or denied on all or a subset of the Contract.topic (e.g., all or a portion of property being transferred by the contract), agents (e.g., who can resell, assign interests, or alter the property being transferred by the contract), actions, and action reasons; or with respect to Contract.terms, stipulating, extending, or limiting the Contract.period of applicability or valuation of items under consideration. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2478,9 +2478,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract Term Agent Role</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Роль агента условия договора<!-- Contract Term Agent Role --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Role played by the agent assigned this role in the execution of this Contract Provision.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Роль, которую играет сторона при выполнении данного положения договора.<!-- Role played by the agent assigned this role in the execution of this Contract Provision. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2509,9 +2509,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Human readable Contract term text</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Человекочитаемый текст условия договора<!-- Human readable Contract term text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Human readable form of this Contract Provision.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемая форма настоящего положения договора.<!-- Human readable form of this Contract Provision. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2542,7 +2542,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String"> Contract Term Valued Item</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Contract Provision Valued Item List</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Список позиций положения договора<!-- Contract Provision Valued Item List --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2573,9 +2573,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String"> Contract Term Valued Item Type</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String"> Тип позиции условия договора<!-- Contract Term Valued Item Type --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Specific type of Contract Provision Valued Item that may be priced.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Конкретный тип позиции положения договора, которая может быть оценена.<!-- Specific type of Contract Provision Valued Item that may be priced. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2607,7 +2607,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String"> Contract Term Valued Item Identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Identifies a Contract Provision Valued Item instance.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Идентифицирует экземпляр позиции положения договора.<!-- Identifies a Contract Provision Valued Item instance. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2637,9 +2637,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract Term Valued Item Effective Tiem</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Срок действия позиции положения договора<!-- Contract Term Valued Item Effective Tiem --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Indicates the time during which this Contract Term ValuedItem information is effective. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Показывает время, в течение которого данная информация по позиции положения договора действительна.<!-- Indicates the time during which this Contract Term ValuedItem information is effective.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2669,9 +2669,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract Term Valued Item Count</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подсчёт позиции условия договора<!-- Contract Term Valued Item Count --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Specifies the units by which the Contract Provision Valued Item is measured or counted, and quantifies the countable or measurable Contract Term Valued Item instances.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Указывает единицы, в которых измеряется или подсчитывается позиция положения договора, и определяется количество счётные или измеримые экземпляры позиций условия договора.<!-- Specifies the units by which the Contract Provision Valued Item is measured or counted, and quantifies the countable or measurable Contract Term Valued Item instances. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2701,9 +2701,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract Term Valued Item fee, charge, or cost</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Комиссия, сбор или стоимость позиции условия договора<!-- Contract Term Valued Item fee, charge, or cost --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A Contract Provision Valued Item unit valuation measure.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Единица измерения оценки позиции положения договора.<!-- A Contract Provision Valued Item unit valuation measure. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2733,9 +2733,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract Term Valued Item Price Scaling Factor</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коэффициент пересчёта цены позиции условия договора<!-- Contract Term Valued Item Price Scaling Factor --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A real number that represents a multiplier used in determining the overall value of the Contract Provision Valued Item delivered. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Действительное число, которое представляет собой множитель, используемый при определении общей стоимости предоставляемой позиции положения договора. Понятие коэффициента позволяет применять множитель скидки или надбавки к денежной сумме.<!-- A real number that represents a multiplier used in determining the overall value of the Contract Provision Valued Item delivered. The concept of a Factor allows for a discount or surcharge multiplier to be applied to a monetary amount.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2765,9 +2765,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract Term Valued Item Difficulty Scaling Factor</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коэффициент пересчёта сложности позиции условия договора<!-- Contract Term Valued Item Difficulty Scaling Factor --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the Contract Provision Valued Item delivered. The concept of Points allows for assignment of point values for a Contract ProvisionValued Item, such that a monetary amount can be assigned to each point.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Величина, выражающая тяжесть (основанную на сложности, стоимости и/или интенсивности ресурсов), связанную с поставляемой позицией положения договора. Идея элемента Points состоит в присвоении значений point позиции положения договора, чтобы каждому point можно было назначить денежную сумму.<!-- An amount that expresses the weighting (based on difficulty, cost and/or resource intensiveness) associated with the Contract Provision Valued Item delivered. The concept of Points allows for assignment of point values for a Contract ProvisionValued Item, such that a monetary amount can be assigned to each point. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2797,9 +2797,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Total Contract Term Valued Item Value</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Общая стоимость позиции условия договора<!-- Total Contract Term Valued Item Value --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Expresses the product of the Contract Provision Valued Item unitQuantity and the unitPriceAmt. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Выражает произведение unitQuantity и unitPriceAmt позиции положения договора. Например формула: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor и points считаются равными 1, если не указаны.<!-- Expresses the product of the Contract Provision Valued Item unitQuantity and the unitPriceAmt. For example, the formula: unit Quantity * unit Price (Cost per Point) * factor Number  * points = net Amount. Quantity, factor and points are assumed to be 1 if not supplied. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2832,9 +2832,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Nested Contract Term Group</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вложенная группа условий договора<!-- Nested Contract Term Group --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Nested group of Contract Provisions.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Вложенная группа положений договора.<!-- Nested group of Contract Provisions. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2863,9 +2863,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Binding Contract</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Юридически обязательный договор<!-- Binding Contract --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Legally binding Contract: This is the signed and legally recognized representation of the Contract, which is considered the &quot;source of truth&quot; and which would be the basis for legal action related to enforcement of this Contract.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Договор, имеющий обязательную силу: это подписанное и юридически признанное представление договора, который считается &quot;источником истины&quot; и который будет являться основой для юридических действий, связанных с исполнением настоящего договора.<!-- Legally binding Contract: This is the signed and legally recognized representation of the Contract, which is considered the &quot;source of truth&quot; and which would be the basis for legal action related to enforcement of this Contract. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2894,9 +2894,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Binding Contract legally effective date time</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата и время вступления юридически обязательного договора в законную силу<!-- Binding Contract legally effective date time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Date and time at which the legally binding Contract became effective.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время, когда юридически обязательный договор вступил в законную силу.<!-- Date and time at which the legally binding Contract became effective. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2925,9 +2925,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract Friendly Language</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Понятный человеку текст договора<!-- Contract Friendly Language --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The &quot;patient friendly language&quot; versionof the Contract in whole or in parts. &quot;Patient friendly language&quot; means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Версия договора на языке, дружественном пациенту, целиком или по частям. Язык, дружественный пациенту, означает легкодоступное и понятное неспециалисту представление договора и его положений в соответствии с лучшими практиками стилей общения, которые гарантируют, что те, кто согласился на или подписал договор, понимают роли, действия, обязательства, ответственность и смысл соглашения.<!-- The &quot;patient friendly language&quot; versionof the Contract in whole or in parts. &quot;Patient friendly language&quot; means the representation of the Contract and Contract Provisions in a manner that is readily accessible and understandable by a layperson in accordance with best practices for communication styles that ensure that those agreeing to or signing the Contract understand the roles, actions, obligations, responsibilities, and implication of the agreement. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2957,9 +2957,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Easily comprehended representation of this Contract</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Легковоспринимаемое представление данного договора<!-- Easily comprehended representation of this Contract --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человекочитаемое отображение этого договора в формате и представлении, предназначенном для повышения степени понимания и обеспечения понятности.<!-- Human readable rendering of this Contract in a format and representation intended to enhance comprehension and ensure understandability.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -2988,9 +2988,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Easily comprehended representation of this Contract creation date/time</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата/время создания легковоспринимаемого представления данного договора<!-- Easily comprehended representation of this Contract creation date/time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Creation date and time of the human readable rendering of this Consent Directive in a format and representation intended to enhance comprehension and ensure understandability. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время создания человекочитаемого представления данной Директивы согласия (Consent Directive) в формате и представлении, предназначенном для повышения степени понимания и обеспечения понятности.<!-- Creation date and time of the human readable rendering of this Consent Directive in a format and representation intended to enhance comprehension and ensure understandability.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3019,9 +3019,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract Legal Language</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Договор на юридическом языке<!-- Contract Legal Language --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">List of Legal expressions or representations of this Contract.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечень юридических выражений или представлений настоящего договора.<!-- List of Legal expressions or representations of this Contract. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3051,9 +3051,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract Legal Text</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Юридический текст договора<!-- Contract Legal Text --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Contract legal text in human renderable form. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Юридический текст договора в форме, пригодной для отображения человеку.<!-- Contract legal text in human renderable form.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3082,9 +3082,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Contract Legal Text creation date time</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата/время создания юридического текста договора<!-- Contract Legal Text creation date time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Creation date and time of this Contract  legal text in human renderable form. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время создания юридического текста договора в форме, пригодной для отображения человеку.<!-- Creation date and time of this Contract  legal text in human renderable form.  --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3113,9 +3113,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Computable Contract Language</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Договор на вычислительном языке<!-- Computable Contract Language --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">List of Computable Policy Rule Language Representations of this Contract.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Перечень представлений данного договора на языке вычислительных правил.<!-- List of Computable Policy Rule Language Representations of this Contract. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3145,9 +3145,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Computable Contract Rules</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Вычислительные правила договора<!-- Computable Contract Rules --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Computable Contract conveyed using a policy rule language (e.g. XACML, DKAL, SecPal).</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Договор на вычислительном языке, переданный с помощью языка правил политики (например XACML, DKAL, SecPal).<!-- Computable Contract conveyed using a policy rule language (e.g. XACML, DKAL, SecPal). --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3176,9 +3176,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Computable Contract Rules creation date time</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Дата/время создания вычислительных правил договора<!-- Computable Contract Rules creation date time --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Creation data and time of the computable rule representation of this Contract.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Дата и время создания представления данного договора в виде вычислительных правил.<!-- Creation data and time of the computable rule representation of this Contract. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -5541,70 +5541,70 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s78"/>
     <Cell ss:StyleID="s130"><Data ss:Type="String">Contract.topic</Data></Cell>
-    <Cell ss:StyleID="s131"><Data ss:Type="String">The identity of the topic of the contract</Data></Cell>
+    <Cell ss:StyleID="s131"><Data ss:Type="String">Идентификатор объекта договора<!-- The identity of the topic of the contract --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s132"><Data ss:Type="String">patient</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Patient</Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">Contract.subject</Data></Cell>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">The identity of the subject of the contract (if a patient)</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Идентификатор объекта договора (если это пациент)<!-- The identity of the subject of the contract (if a patient) --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s132"><Data ss:Type="String">subject</Data></Cell>
     <Cell ss:StyleID="s78"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s133"><Data ss:Type="String">Contract.subject</Data></Cell>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">The identity of the subject of the contract</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Идентификатор объекта договора<!-- The identity of the subject of the contract --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s132"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s133"><Data ss:Type="String">Contract.identifier</Data></Cell>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">The identity of the contract</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Идентификатор договора<!-- The identity of the contract --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s132"><Data ss:Type="String">agent</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s135"><Data ss:Type="String">Contract.agent.actor</Data></Cell>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">Agent to the Contact</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Агент договора<!-- Agent to the Contact --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s132"><Data ss:Type="String">signer</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s136"><Data ss:Type="String">Contract.signer.party</Data></Cell>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">Contract Signatory Party</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Сторона, подписавшая договор<!-- Contract Signatory Party --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s132"><Data ss:Type="String">authority</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s133"><Data ss:Type="String">Contract.authority</Data></Cell>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">The authority of the contract</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Полномочия договора<!-- The authority of the contract --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s132"><Data ss:Type="String">domain</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s133"><Data ss:Type="String">Contract.domain</Data></Cell>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">The domain of the contract</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Область применения договора<!-- The domain of the contract --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s132"><Data ss:Type="String">issued</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s133"><Data ss:Type="String">Contract.issued</Data></Cell>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">The date/time the contract was issued</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Дата/время выпуска договора<!-- The date/time the contract was issued --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s132"><Data ss:Type="String">ttopic</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s133"><Data ss:Type="String">Contract.term.topic</Data></Cell>
-    <Cell ss:StyleID="s134"><Data ss:Type="String">The identity of the topic of the contract terms</Data></Cell>
+    <Cell ss:StyleID="s134"><Data ss:Type="String">Тема условий договора<!-- The identity of the topic of the contract terms --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s132"/>
@@ -7558,7 +7558,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s165"><Data ss:Type="String">ContractType</Data></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">List of overall contract codes.</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Список общих кодов типа договора.<!-- List of overall contract codes. --></Data></Cell>
     <Cell ss:StyleID="s130"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s130"><Data ss:Type="String">valueset-contract-type</Data></Cell>
@@ -7573,7 +7573,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s166"><Data ss:Type="String">ContractSubtype</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Detailed codes within the above.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Коды более подробных типов договора.<!-- Detailed codes within the above. --></Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">valueset-contract-subtype</Data></Cell>
@@ -7588,7 +7588,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s166"><Data ss:Type="String">ContractTermType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Detailed codes for the types of contract provisions.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Детализированные коды типов положений договора.<!-- Detailed codes for the types of contract provisions. --></Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">valueset-contract-term-type</Data></Cell>
@@ -7603,7 +7603,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s166"><Data ss:Type="String">ContractTermSubType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Detailed codes for the subtypes of contract provisions.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Детализированные коды подтипов положений договора.<!-- Detailed codes for the subtypes of contract provisions. --></Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">valueset-contract-term-subtype</Data></Cell>
@@ -7618,7 +7618,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s166"><Data ss:Type="String">ContractSignerType</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">List of parties who may be signing.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень сторон, которые могут подписать договор.<!-- List of parties who may be signing. --></Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">valueset-contract-signer-type</Data></Cell>
@@ -7633,7 +7633,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">ContractAction</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Detailed codes for the contract action.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробные коды действия по договору.<!-- Detailed codes for the contract action. --></Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">valueset-contract-action</Data></Cell>
@@ -7648,7 +7648,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s87"><Data ss:Type="String">ContractActionReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Detailed codes for the contract action reason.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробные коды обоснования действия по договору.<!-- Detailed codes for the contract action reason. --></Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s167" ss:HRef="http://hl7.org/fhir/ValueSet/v3-PurposeOfUse"><Data
@@ -7665,7 +7665,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">ContractActorRole</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Detailed codes for the contract actor role.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Подробные коды роли действующего лица договора.<!-- Detailed codes for the contract actor role. --></Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s133"><Data ss:Type="String">valueset-contract-actorrole</Data></Cell>
