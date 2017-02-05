@@ -1,4 +1,0 @@
-
-*** Parsing file datatypes/elementdefinition.xml
-
-*** Parsing file datatypes/timing.xml

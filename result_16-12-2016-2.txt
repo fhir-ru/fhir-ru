@@ -1,2 +1,0 @@
-
-*** Parsing file terminologies/bindings.xml
