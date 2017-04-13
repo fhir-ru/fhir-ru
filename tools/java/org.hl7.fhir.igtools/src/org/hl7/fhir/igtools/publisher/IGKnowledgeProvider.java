@@ -11,19 +11,21 @@ import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.elementmodel.ParserBase;
 import org.hl7.fhir.dstu3.elementmodel.Property;
 import org.hl7.fhir.dstu3.formats.FormatUtilities;
+import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionBindingComponent;
 import org.hl7.fhir.dstu3.model.MetadataResource;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
 import org.hl7.fhir.dstu3.model.Reference;
+import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.validation.ValidationMessage;
-import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.validation.ValidationMessage;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueType;
+import org.hl7.fhir.utilities.validation.ValidationMessage.Source;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonNull;
@@ -130,6 +132,23 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
     return s;
   }
 
+  public String doReplacements(String s, Resource r, Map<String, String> vars, String format) {
+    if (Utilities.noString(s))
+      return s;
+    s = s.replace("{{[title]}}", "?title?");
+    s = s.replace("{{[name]}}", r.getId()+(format==null? "": "-"+format)+"-html");
+    s = s.replace("{{[id]}}", r.getId());
+    if (format!=null)
+      s = s.replace("{{[fmt]}}", format);
+//    s = s.replace("{{[type]}}", r.getElement().fhirType());
+//    s = s.replace("{{[uid]}}", r.getElement().fhirType()+"="+r.getId());
+    if (vars != null) {
+      for (String n : vars.keySet())
+        s = s.replace("{{["+n+"]}}", vars.get(n));
+    }
+    return s;
+  }
+
   public boolean wantGen(FetchedResource r, String code) {
     if (r.getConfig() != null && hasBoolean(r.getConfig(), code))
       return getBoolean(r.getConfig(), code);
@@ -167,8 +186,13 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
     this.specPaths = paths;
     for (MetadataResource bc : context.allConformanceResources()) {
       String s = paths.getPath(bc.getUrl());
+      if (s == null && bc instanceof CodeSystem) { // work around for an R2 issue) 
+        CodeSystem cs = (CodeSystem) bc;
+        s = paths.getPath(cs.getValueSet());
+      }
       if (s != null)
         bc.setUserData("path", specPath(s));
+      
     }    
   }
 
@@ -191,7 +215,7 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
   public void checkForPath(FetchedFile f, FetchedResource r, MetadataResource bc) {
     if (!bc.hasUrl())
       error("Resource has no url: "+bc.getId());
-    else if (!bc.getUrl().endsWith("/"+bc.getId()))
+    else if (bc.getUrl().startsWith(canonical) && !bc.getUrl().endsWith("/"+bc.getId()))
       error("Resource id/url mismatch: "+bc.getId()+"/"+bc.getUrl());
     if (!r.getId().equals(bc.getId()))
       error("Resource id/id mismatch: "+r.getId()+"/"+bc.getUrl());
@@ -328,8 +352,8 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
         } else {
           ValueSet vs = context.fetchResource(ValueSet.class, ref);
           if (vs == null) {
-            br.url = ref.substring(9)+".html"; // broken link, 
-            br.display = ref.substring(9);
+            br.url = ref+".html"; // broken link, 
+            br.display = ref;
             brokenLinkWarning(ref);
           } else {
             br.url = vs.getUserString("path");
@@ -386,4 +410,5 @@ public class IGKnowledgeProvider implements ProfileKnowledgeProvider, ParserBase
   public IWorkerContext getContext() {
     return context;
   }
+
 }

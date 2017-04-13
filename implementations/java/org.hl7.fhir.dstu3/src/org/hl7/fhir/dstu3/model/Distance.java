@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Dec 5, 2016 23:44+1100 for FHIR v1.8.0
+// Generated on Thu, Mar 16, 2017 17:23+1100 for FHIR v3.0.0
 
 import java.util.*;
 
@@ -68,22 +68,30 @@ public class Distance extends Quantity implements ICompositeType {
       }
 
       @Override
-      public void setProperty(int hash, String name, Base value) throws FHIRException {
+      public Base setProperty(int hash, String name, Base value) throws FHIRException {
         switch (hash) {
-        default: super.setProperty(hash, name, value);
+        default: return super.setProperty(hash, name, value);
         }
 
       }
 
       @Override
-      public void setProperty(String name, Base value) throws FHIRException {
-          super.setProperty(name, value);
+      public Base setProperty(String name, Base value) throws FHIRException {
+          return super.setProperty(name, value);
       }
 
       @Override
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         default: return super.makeProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public String[] getTypesForProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        default: return super.getTypesForProperty(hash, name);
         }
 
       }

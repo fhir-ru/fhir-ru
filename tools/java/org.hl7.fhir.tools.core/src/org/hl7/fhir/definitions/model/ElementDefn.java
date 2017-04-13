@@ -90,6 +90,8 @@ public class ElementDefn {
 	private String displayHint; // hits for generated narrative
 	private String w5;
 	private boolean noBindingAllowed; // note to validator 
+	private boolean translatable;
+	private String orderMeaning;
 	
 	public ElementDefn() {
 		super();
@@ -273,6 +275,10 @@ public class ElementDefn {
       ElementDefn e = focus.elements.get(i);
       if (nameMatches(n, e, throughChoice, definitions))
         return t == null ? e : e.getElementByName(definitions, t, throughChoice, followType);
+    }
+    if (followType && focus.types.size() == 1 && !focus.getElements().isEmpty()) {
+      ElementDefn parent = definitions.getElementDefn("Type".equals(focus.typeCode()) || "Structure".equals(focus.typeCode())  ? "Element" : focus.typeCode());
+      return parent.getElementByName(definitions, name, throughChoice, followType);
     }
     return null;
   }
@@ -649,18 +655,11 @@ public class ElementDefn {
 			    return invariants;
 	   }
 	   
-	   private List<String> acceptableGenericTypes = new ArrayList<String>();
-
     private String sliceDescription;
 
     private String path;
 
     private boolean fromTemplate;
-
-	   public List<String> getAcceptableGenericTypes()
-	   {
-		   return acceptableGenericTypes;
-	   }
 
     public boolean hasComments() {
       return comments != null && !"".equals(comments);
@@ -942,6 +941,26 @@ public class ElementDefn {
 
   public boolean isFromTemplate() {
     return fromTemplate;
+  }
+
+  public boolean isTranslatable() {
+    return translatable;
+  }
+
+  public void setTranslatable(boolean translatable) {
+    this.translatable = translatable;
+  }
+
+  public String getOrderMeaning() {
+    return orderMeaning;
+  }
+
+  public void setOrderMeaning(String orderMeaning) {
+    this.orderMeaning = orderMeaning;
+  }
+
+  public boolean hasDescriminator() {
+    return !discriminator.isEmpty();
   }	
   
 }

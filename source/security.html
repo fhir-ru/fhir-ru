@@ -13,7 +13,7 @@
 <div class="col-9">
 
 <h1>FHIR Security</h1>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 4</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
 Fast Healthcare Interoperability Resources (FHIR) is not a security protocol, nor does it define any security
@@ -42,7 +42,7 @@ list</a> for prompt consideration.
 </p>
 
 <p>
-Implementers should track the developing IHE IUA Profile for additional security considerations.
+Implementers should track the developing IHE <a href="http://wiki.ihe.net/index.php/Internet_User_Authorization">IUA Profile</a> for additional security considerations.
 </p>
 
 <a name="general"> </a>
@@ -193,7 +193,7 @@ For example, a tag (or attribute) may specify that the identified Resource (obje
 further disclosed without explicit consent from the patient.
 </p>
 <p>
-The rules behind the access control decision are often very complex, and potentially depends on information sourced from:
+The rules behind the access control decision are often very complex, and potentially depend on information sourced from:
 </p>
 <ul>
  <li>Client, such as user identity, user role, location, level of assurance</li>
@@ -218,7 +218,7 @@ The FHIR RESTful API provides a number of ways that a client may request or crea
 When designing a system to authorize access to information, all potential access methods must be considered. 
 They include the following:
 <ul>
-<li>The basic CRUD methods on resources. A security implementation must evaluate whether a client can read, update create or delete a given resource.</li>
+<li>The basic CRUD methods on resources. A security implementation must evaluate whether a client is allowed to read, update create or delete a given resource.</li>
 <li>Chained search provides the ability to disclose information on related resources. A security implementation must consider whether a client has the permission to access the resource being searched on, as well as the chained resource(s)</li>
 <li>_include and _revinclude search parameters allow client to request related resources. A security implementation must determine if the client has access to the included resources.</li>
 <li><a href="security-labels.html">security labels</a></li>
@@ -295,13 +295,14 @@ the <a href="http://wiki.ihe.net/index.php?title=Document_Digital_Signature">IHE
 <p>
 Neither of these definitions prohibits the use of other ways of using digital signatures.
 </p>
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu"> </a>
 <p>
 <b>STU Note:</b> the use of signatures with RESTful interfaces is a poorly understood area, and we would welcome reports of implementation experience. 
+See <a href="http://wiki.hl7.org/index.php?title=FHIR_Digital_Signature_Working_Page">discussion on use of Digital Signature in FHIR</a>
 </p>
 <p>
-Feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">here</a>.
 </p>
 </blockquote>
 

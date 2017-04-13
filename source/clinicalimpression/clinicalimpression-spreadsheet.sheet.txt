@@ -93,12 +93,14 @@
   Binding = ClinicalImpressionStatus
   Short Name = draft | completed | entered-in-error
   Definition = Identifies the workflow status of the assessment
+  Comments = This element is labeled as a modifier because the status contains the code entered-in-error that marks the clinical impression as not currently valid
   v2 Mapping = PRB-14
   w5 = status
 
  -- Row 4 -----------------------------------
   Element = ClinicalImpression.code
   Card. = 0..1
+  Aliases = type
   Summary = Y
   Type = CodeableConcept
   Binding = ClinicalImpressionCode
@@ -113,7 +115,7 @@
   Summary = Y
   Type = string
   Short Name = Why/how the assessment was performed
-  Definition = A summary of the context and/or cause of the assessment - why / where was it peformed, and what patient events/status prompted it
+  Definition = A summary of the context and/or cause of the assessment - why / where was it performed, and what patient events/status prompted it
 
  -- Row 6 -----------------------------------
   Element = ClinicalImpression.subject
@@ -127,25 +129,16 @@
   w5 = who.focus
 
  -- Row 7 -----------------------------------
-  Element = ClinicalImpression.assessor
+  Element = ClinicalImpression.context
   Card. = 0..1
+  Aliases = encounter
   Summary = Y
-  Type = Reference(Practitioner)
-  Short Name = The clinician performing the assessment
-  Definition = The clinician performing the assessment
-  v2 Mapping = ROL-4
-  w5 = who.author
+  Type = Reference(Encounter|EpisodeOfCare)
+  Short Name = Encounter or Episode created from
+  Definition = The encounter or episode of care this impression was created as part of.
+  w5 = context
 
  -- Row 8 -----------------------------------
-  Element = ClinicalImpression.date
-  Card. = 0..1
-  Summary = Y
-  Type = dateTime
-  Short Name = When the assessment was documented
-  Definition = Indicates when the documentation of the assessment was complete
-  w5 = when.recorded
-
- -- Row 9 -----------------------------------
   Element = ClinicalImpression.effective[x]
   Card. = 0..1
   Summary = Y
@@ -156,13 +149,24 @@
   v2 Mapping = PRB-2
   w5 = when.done
 
- -- Row 10 -----------------------------------
-  Element = ClinicalImpression.context
+ -- Row 9 -----------------------------------
+  Element = ClinicalImpression.date
   Card. = 0..1
   Summary = Y
-  Type = Reference(Encounter|EpisodeOfCare)
-  Short Name = Encounter or Episode created from
-  Definition = The encounter or episode of care this impression was created as part of.
+  Type = dateTime
+  Short Name = When the assessment was documented
+  Definition = Indicates when the documentation of the assessment was complete
+  w5 = when.recorded
+
+ -- Row 10 -----------------------------------
+  Element = ClinicalImpression.assessor
+  Card. = 0..1
+  Summary = Y
+  Type = Reference(Practitioner)
+  Short Name = The clinician performing the assessment
+  Definition = The clinician performing the assessment
+  v2 Mapping = ROL-4
+  w5 = who.author
 
  -- Row 11 -----------------------------------
   Element = ClinicalImpression.previous
@@ -264,7 +268,7 @@
  -- Row 23 -----------------------------------
   Element = !ClinicalImpression.plan
   Card. = 0..*
-  Type = Reference(CarePlan|Appointment|CommunicationRequest|DeviceUseRequest|DiagnosticRequest|MedicationRequest|NutritionRequest|ProcedureRequest|ProcessRequest|ReferralRequest|VisionPrescription)
+  Type = Reference(CarePlan|Appointment|CommunicationRequest|DeviceRequest|MedicationRequest|NutritionOrder|ProcedureRequest|ProcessRequest|ReferralRequest|VisionPrescription)
   Short Name = Plan of action after assessment
   Definition = Plan of action after assessment
   Committee Notes = Removed per GF#11167
@@ -272,7 +276,7 @@
  -- Row 24 -----------------------------------
   Element = ClinicalImpression.action
   Card. = 0..*
-  Type = Reference(ReferralRequest | ProcedureRequest | Procedure | MedicationRequest | DiagnosticRequest | Appointment)
+  Type = Reference(ReferralRequest | ProcedureRequest | Procedure | MedicationRequest | Appointment)
   Short Name = Action taken as part of assessment procedure
   Definition = Action taken as part of assessment procedure
   Comments = Actions recommended as a result of the impression should not be captured using the \'action\' element.
@@ -306,11 +310,15 @@
   Name = finding-code
   Type = token
   Path = ClinicalImpression.finding.item[x]
+  Expression = ClinicalImpression.finding.item.as(CodeableConcept)
+  XPath = f:ClinicalImpression/f:finding/f:itemCodeableConcept
 
  -- Row 5 -----------------------------------
   Name = finding-ref
   Type = reference
   Path = ClinicalImpression.finding.item[x]
+  Expression = ClinicalImpression.finding.item.as(Reference)
+  XPath = f:ClinicalImpression/f:finding/f:itemReference
 
  -- Row 6 -----------------------------------
   Name = action
@@ -347,6 +355,11 @@
   Name = subject
   Type = reference
   Path = ClinicalImpression.subject
+
+ -- Row 13 -----------------------------------
+  Name = identifier
+  Type = token
+  Path = ClinicalImpression.identifier
 
 === Sheet Profiles =====================================
 

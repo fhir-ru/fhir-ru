@@ -11,28 +11,30 @@
       <display value="Paracetamol 240mg suppository (product)"/>
     </coding>
   </medicationCodeableConcept>
- <patient>
+ <subject>
    <reference value="Patient/pat1"/>
    <display value="Donald Duck"/> 
-  </patient>
+  </subject>
  <effectivePeriod>
   <start value="2015-01-15T22:03:00+01:00"/>
    <end value="2015-01-16T02:03:00+01:00"/>
 </effectivePeriod>
   <performer>
-    <reference value="Practitioner/f007"/>
-    <display value="Patrick Pump"/>
+    <actor>
+      <reference value="Practitioner/f007"/>
+      <display value="Patrick Pump"/>
+    </actor>
   </performer>
-  <prescription>
-    <reference value="MedicationRequest/medrx0324"/>
-  </prescription>
-  <reasonGiven>
+  <reasonCode>
     <coding>
       <system value="http://hl7.org/fhir/reason-medication-given"/>
       <code value="c"/>
       <display value="Emergency"/>
     </coding>
-  </reasonGiven>
+  </reasonCode>
+  <prescription>
+    <reference value="MedicationRequest/medrx0324"/>
+  </prescription>
   <dosage>
     <text value="Insert one suppository rectally twice daily as needed for fever to a maximim of 3 per day"/>
     <site>

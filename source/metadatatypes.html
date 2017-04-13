@@ -13,7 +13,7 @@
 <%mdtheader base%>  
 
 <h1>MetaData Types</h1>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 4</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 
 <p>
@@ -24,7 +24,7 @@ resource elements. There are four categories of data types:
   <li><a href="datatypes.html#primitive">simple / primitive types, which are single elements with a primitive value</a></li>
   <li><a href="datatypes.html#complex">General purpose complex types, which are re-usable clusters of elements</a></li>
   <li>Complex data types for metadata</li>
-  <li>Special purpose data types: <a href="references.html#Reference">Reference</a>, <a href="narrative.html#Narrative">Narrative</a>, <a href="extensibility.html#Extension">Extension</a>, <a href="resource.html#Meta">Meta</a>, and <a href="dosageinstruction.html#DosageInstruction">DosageInstruction</a></li>
+  <li>Special purpose data types: <a href="references.html#Reference">Reference</a>, <a href="narrative.html#Narrative">Narrative</a>, <a href="extensibility.html#Extension">Extension</a>, <a href="resource.html#Meta">Meta</a>, and <a href="dosage.html#Dosage">Dosage</a></li>
 </ol>  
 <p>
 This page describes the metadata types. 
@@ -147,6 +147,32 @@ See also <a href="metadatatypes-examples.html#DataRequirement">Examples</a>, <a 
 &lt;/dataRequirement&gt;
 </code></pre>
 
+<p>If a resource type has multiple date attributes, then it may be necessary to include multiple date criteria. For instance, in the example above the Procedure resource is using the performedPeriod date attribute. However, the Procedure resource also provides a performedDateTime (specific date and/or time when procedure was performed) attribute. Therefore, if the date criteria for the Procedure in the example was recorded using the performedDateTime attribute, the date criteria would be incomplete.  To account for this additional date attribute, the example could be expanded as follows:</p>
+
+<pre><code>define "Total Colectomy Procedures":
+  [Procedure: "Total Colectomy Value Set"] P
+    where exists (P.performedPeriod during "Measurement Period")
+	  or exists (P.performedDateTime during "Measurement Period")
+</code></pre>
+
+<p>The data requirement for the expanded criteria:</p>
+
+<pre><code>&lt;dataRequirement&gt;
+	&lt;type value=&quot;Procedure&quot;/&gt;
+	&lt;codeFilter&gt;
+		&lt;path value=&quot;code&quot;/&gt;
+		&lt;valueSetString value=&quot;Total Colectomy Value Set&quot;/&gt;
+	&lt;/codeFilter&gt;
+	&lt;dateFilter&gt;
+		&lt;path value=&quot;performedPeriod&quot;/&gt;
+		&lt;path value=&quot;performedDateTime&quot;/&gt;
+	&lt;/dateFilter&gt;
+&lt;/dataRequirement&gt;
+</code></pre>
+
+<p>
+DataRequirement is used in the following places: [%dtusage DataRequirement%]
+</p>
 <p>
 &nbsp;
 </p>

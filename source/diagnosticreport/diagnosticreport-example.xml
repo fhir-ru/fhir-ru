@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<DiagnosticReport xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/Users/Eric/Documents/HL7/FHIR/BUILD_EDIT_FILES/schema/diagnosticreport.xsd">
+<DiagnosticReport xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/fhir-single.xsd">
 	<id value="101"/>
+	<meta>
+    <tag>
+      <system value="http://example.org/fhir/CodeSystem/workflow-codes"/>
+      <code value="01"/>
+      <display value="Needs Review"/>
+    </tag>
+	</meta>
 	<text>
 		<status value="generated"/>
 		<div xmlns="http://www.w3.org/1999/xhtml">
@@ -30,7 +37,7 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
 	</text>
 	<contained>
 		<Observation>
-			<!--  
+			<!--
   all the data items (= Observations) are contained
   in this diagnostic report. It would be equally
     valid - and normal - for them to be separate trackable
@@ -716,15 +723,17 @@ Basophils             x10*9/L     0.92+++     &lt;0.21
 	<subject>
 		<reference value="Patient/pat2"/>
 	</subject>
-	<encounter>
+	<context>
 		<reference value="Encounter/example"/>
-	</encounter>
+	</context>
 	<effectiveDateTime value="2011-03-04T08:30:00+11:00"/>
 	<!--    all this report is final    -->
 	<issued value="2011-03-04T11:45:33+11:00"/>
 	<performer>
-		<reference value="Organization/1832473e-2fe0-452d-abe9-3cdb9879522f"/>
-		<display value="Acme Laboratory, Inc"/>
+		<actor>
+			<reference value="Organization/1832473e-2fe0-452d-abe9-3cdb9879522f"/>
+			<display value="Acme Laboratory, Inc"/>
+		</actor>
 	</performer>
 	<!--    now the atomic results    -->
 	<result>

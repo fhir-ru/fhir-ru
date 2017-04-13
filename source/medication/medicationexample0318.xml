@@ -3,7 +3,6 @@
  xmlns="http://hl7.org/fhir">
    <id value="med0318"/>
   <isBrand value="false"/>
-  <product>
     <form>
       <coding>
         <system value="http://snomed.info/sct"/>
@@ -38,11 +37,8 @@
         </coding>
       </itemCodeableConcept>
     </ingredient>
-    <batch>
-      <lotNumber value="123455"/>
-      <expirationDate value="2016-07-09"/>
-    </batch>
-  </product>
+
+  
   <package>
     <container>
       <coding>
@@ -51,5 +47,9 @@
         <display value="Intravenous Fluid container, single-use"/>
       </coding>
     </container>
+    <batch>
+      <lotNumber value="123455"/>
+      <expirationDate value="2016-07-09"/>
+    </batch>
   </package>
 </Medication>

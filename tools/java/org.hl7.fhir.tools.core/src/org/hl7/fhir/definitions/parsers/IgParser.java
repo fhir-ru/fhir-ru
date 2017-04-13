@@ -18,6 +18,7 @@ import org.hl7.fhir.definitions.model.Example.ExampleType;
 import org.hl7.fhir.definitions.model.ImplementationGuideDefn;
 import org.hl7.fhir.definitions.model.LogicalModel;
 import org.hl7.fhir.definitions.model.Profile;
+import org.hl7.fhir.definitions.model.WorkGroup;
 import org.hl7.fhir.definitions.model.Profile.ConformancePackageSourceType;
 import org.hl7.fhir.dstu3.conformance.ProfileUtilities;
 import org.hl7.fhir.dstu3.conformance.ProfileUtilities.ProfileKnowledgeProvider;
@@ -40,7 +41,6 @@ import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
-import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
 import org.hl7.fhir.igtools.spreadsheets.MappingSpace;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
@@ -49,6 +49,7 @@ import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Logger.LogMessageType;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.validation.ValidationMessage;
 
 public class IgParser {
 
@@ -58,14 +59,15 @@ public class IgParser {
   private ProfileKnowledgeProvider pkp;
   private Map<String, BindingSpecification> commonBindings;
   private Map<String, MappingSpace> mappings;
-  private String committee;
+  private WorkGroup committee;
   private Map<String, ConstraintStructure> profileIds;
   private Map<String, CodeSystem> codeSystems;
-  private BindingNameRegistry registry;
+  private OIDRegistry registry;
   private Map<String, ConceptMap> maps;
+  private Map<String, WorkGroup> workgroups;
 
 
-  public IgParser(Logger logger, BuildWorkerContext context, Calendar genDate, ProfileKnowledgeProvider pkp, Map<String, BindingSpecification> commonBindings, String committee, Map<String, MappingSpace> mappings, Map<String, ConstraintStructure> profileIds, Map<String, CodeSystem> codeSystems, BindingNameRegistry registry, Map<String, ConceptMap> maps) {
+  public IgParser(Logger logger, BuildWorkerContext context, Calendar genDate, ProfileKnowledgeProvider pkp, Map<String, BindingSpecification> commonBindings, WorkGroup committee, Map<String, MappingSpace> mappings, Map<String, ConstraintStructure> profileIds, Map<String, CodeSystem> codeSystems, OIDRegistry registry, Map<String, ConceptMap> maps, Map<String, WorkGroup> workgroups) {
     super();
     this.logger = logger;
     this.context = context;
@@ -78,6 +80,7 @@ public class IgParser {
     this.codeSystems = codeSystems;
     this.registry = registry;
     this.maps = maps;
+    this.workgroups = workgroups;
   }
 
   public void load(String rootDir, ImplementationGuideDefn igd, List<ValidationMessage> issues, Set<String> loadedIgs) throws Exception {
@@ -200,8 +203,8 @@ public class IgParser {
 //Lloyd: This causes issues for profiles & extensions defined outside of HL7
 //            sd.setUrl("http://hl7.org/fhir/StructureDefinition/"+sd.getId());
             pr.forceMetadata("id", sd.getId()+"-profile");
-            pr.setSourceType(ConformancePackageSourceType.SturctureDefinition);
-            ConstraintStructure cs = new ConstraintStructure(sd, igd);
+            pr.setSourceType(ConformancePackageSourceType.StructureDefinition);
+            ConstraintStructure cs = new ConstraintStructure(sd, igd, wg(sd), fmm(sd), sd.getExperimental());
             pr.getProfiles().add(cs);
             igd.getProfiles().add(pr);
           }
@@ -231,10 +234,10 @@ public class IgParser {
           pr.setSource(fn.getAbsolutePath());
           pr.setSourceType(ConformancePackageSourceType.Spreadsheet);
           SpreadsheetParser sparser = new SpreadsheetParser(pr.getCategory(), new CSFileInputStream(pr.getSource()), Utilities.noString(pr.getId()) ? pr.getSource() : pr.getId(), igd, 
-                rootDir, logger, registry, context.getVersion(), context, genDate, false, igd.getExtensions(), pkp, false, committee, mappings, profileIds, codeSystems, maps);
+                rootDir, logger, registry, context.getVersion(), context, genDate, false, igd.getExtensions(), pkp, false, committee, mappings, profileIds, codeSystems, maps, workgroups);
           sparser.getBindings().putAll(commonBindings);
           sparser.setFolder(Utilities.getDirectoryForFile(pr.getSource()));
-          sparser.parseConformancePackage(pr, null, Utilities.getDirectoryForFile(pr.getSource()), pr.getCategory(), issues);
+          sparser.parseConformancePackage(pr, null, Utilities.getDirectoryForFile(pr.getSource()), pr.getCategory(), issues, null);
 //          System.out.println("load "+pr.getId()+" from "+s);
           igd.getProfiles().add(pr);
           // what remains to be done now is to update the package with the loaded resources, but we need to wait for all the profiles to generated, so we'll do that later
@@ -263,7 +266,7 @@ public class IgParser {
           if (s.endsWith("-spreadsheet.xml"))
             s = s.substring(0, s.length()-16);
           String id = igd.getCode()+"-"+s;
-          SpreadsheetParser sparser = new SpreadsheetParser(igd.getCode(), new CSFileInputStream(fn), id, igd, rootDir, logger, registry, context.getVersion(), context, genDate, false, igd.getExtensions(), pkp, false, committee, mappings, profileIds, codeSystems, maps);
+          SpreadsheetParser sparser = new SpreadsheetParser(igd.getCode(), new CSFileInputStream(fn), id, igd, rootDir, logger, registry, context.getVersion(), context, genDate, false, igd.getExtensions(), pkp, false, committee, mappings, profileIds, codeSystems, maps, workgroups);
           sparser.getBindings().putAll(commonBindings);
           sparser.setFolder(Utilities.getDirectoryForFile(fn.getAbsolutePath()));
           LogicalModel lm = sparser.parseLogicalModel();
@@ -423,5 +426,15 @@ public class IgParser {
     
   }
   
-  
+
+  private String fmm(StructureDefinition ed) {
+    return Integer.toString(ToolingExtensions.readIntegerExtension(ed, ToolingExtensions.EXT_FMM_LEVEL, 1)); // default fmm level
+  }
+
+
+
+
+  private WorkGroup wg(StructureDefinition ed) {
+    return workgroups.get(ToolingExtensions.readStringExtension(ed, ToolingExtensions.EXT_WORKGROUP));
+  }
 }

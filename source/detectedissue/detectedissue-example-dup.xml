@@ -7,7 +7,7 @@
       <p>Similar test was performed within the past 14 days</p>
       <ul>
         <li>
-          <a href="DiagnosticRequest/id">Chest CT - ordered May 8, 2013 by Dr. Adam Careful</a>
+          <a href="ProcedureRequest/id">Chest CT - ordered May 8, 2013 by Dr. Adam Careful</a>
         </li>
         <li>
           <a href="ImagingStudy/example">Image 1 from Series 3: CT Images on Patient MINT (MINT1234) taken at 1-Jan 2011 01:20 AM</a>
@@ -15,7 +15,12 @@
       </ul>
     </div>
   </text>
-  <!-- test 1 -->
+  <identifier>
+    <use value="official"/>
+    <system value="http://example.org"/>
+    <value value="12345"/>
+  </identifier>
+  <status value="final"/>
   <category>
     <coding>
       <system value="http://hl7.org/fhir/v3/ActCode"/>
@@ -23,8 +28,16 @@
       <display value="Duplicate Therapy Alert"/>
     </coding>
   </category>
+  <patient>
+    <reference value="Patient/dicom"/>
+  </patient>
+  <date value="2013-05-08"/>
+  <author>
+    <reference value="Device/software"/>
+  </author>
+  <!-- test 1 -->
   <implicated>
-    <reference value="DiagnosticRequest/di"/>
+    <reference value="ProcedureRequest/di"/>
     <display value="Chest CT - ordered May 8, 2013 by Dr. Adam Careful"/>
   </implicated>
   <!-- test 2 -->
@@ -33,8 +46,5 @@
     <display value="Image 1 from Series 3: CT Images on Patient MINT (MINT1234) taken at 1-Jan 2011 01:20 AM"/>
   </implicated>
   <detail value="Similar test was performed within the past 14 days"/>
-  <date value="2013-05-08"/>
-  <author>
-    <reference value="Device/dsp"/>
-  </author>
+  <reference value="http://www.tmhp.com/RadiologyClinicalDecisionSupport/2011/CHEST%20IMAGING%20GUIDELINES%202011.pdf"/>
 </DetectedIssue>

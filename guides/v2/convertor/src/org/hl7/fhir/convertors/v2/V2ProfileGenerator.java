@@ -22,20 +22,19 @@ import org.hl7.fhir.dstu3.model.DateTimeType;
 import org.hl7.fhir.dstu3.model.ElementDefinition;
 import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
 import org.hl7.fhir.dstu3.model.Enumerations.PublicationStatus;
-import org.hl7.fhir.dstu3.model.IntegerType;
 import org.hl7.fhir.dstu3.model.StringType;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
+import org.hl7.fhir.dstu3.model.ElementDefinition.DiscriminatorType;
 import org.hl7.fhir.dstu3.model.ValueSet.ConceptReferenceComponent;
 import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.dstu3.utils.EOperationOutcome;
 import org.hl7.fhir.dstu3.utils.NarrativeGenerator;
 import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRException;
-import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.Utilities;
 
 import com.healthmarketscience.jackcess.Database;
@@ -254,7 +253,7 @@ public class V2ProfileGenerator {
     ed.setPath("Component.text");
     ed.setMax("0");
 
-    sd.getDifferential().addElement().setPath("Component:"+dt.code+".component").getSlicing().setOrdered(true).addDiscriminator("index");
+    sd.getDifferential().addElement().setPath("Component:"+dt.code+".component").getSlicing().setOrdered(true).addDiscriminator().setType(DiscriminatorType.VALUE).setPath("index");
 
     int i = 0;
     for (Component comp : dt.components) {
@@ -324,7 +323,7 @@ public class V2ProfileGenerator {
     sd.setDerivation(TypeDerivationRule.CONSTRAINT);
     
     int i = 0;
-    sd.getDifferential().addElement().setPath("Segment:"+segment.code+".element").getSlicing().setOrdered(true).addDiscriminator("index");
+    sd.getDifferential().addElement().setPath("Segment:"+segment.code+".element").getSlicing().setOrdered(true).addDiscriminator().setType(DiscriminatorType.VALUE).setPath("index");
     for (SegmentDataElement sde : segment.elements) {
       i++;
       ElementDefinition ed = sd.getDifferential().addElement();

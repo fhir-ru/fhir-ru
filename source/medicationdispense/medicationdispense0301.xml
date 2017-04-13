@@ -15,40 +15,76 @@
             </code>
         </Medication>
     </contained>
+    <contained>
+        <Provenance>
+            <id value="signature"/>
+            <target>
+                <reference value="ProcedureRequest/physiotherapy"/>
+            </target>
+            <recorded value="2017-02-01T17:23:07Z"/>
+            <agent>
+                <role>
+                    <coding>
+                        <system value="http://hl7.org/fhir/v3/ParticipationType"/>
+                        <code value="AUT"/>
+                    </coding>
+                </role>
+                <whoReference>
+                    <reference value="Practitioner/example"/>
+                    <display value="Dr Adam Careful"/>
+                </whoReference>
+            </agent>
+            <signature>
+                <type>
+                    <system value="urn:iso-astm:E1762-95:2013"/>
+                    <code value="1.2.840.10065.1.12.1.1"/>
+                    <display value="Author's Signature"/>
+                </type>
+                <when value="2017-02-01T17:23:07Z"/>
+                <whoReference>
+                    <reference value="Practitioner/example"/>
+                    <display value="Dr Adam Careful"/>
+                </whoReference>
+                <contentType value="application/signature+xml"/>
+                <blob value="dGhpcyBibG9iIGlzIHNuaXBwZWQ="/>
+            </signature>
+        </Provenance>
+    </contained>
     <status value="in-progress"/>
     <medicationReference>
         <!-- Linked to a RESOURCE Medication -->
         <reference value="#med0301"/>
         <display value="Vancomycin Hydrochloride"></display>
     </medicationReference>
-    <patient>
+    <subject>
         <reference value="Patient/pat1"/>
         <display value="Donald Duck"/> 
-    </patient>
+    </subject>
     <supportingInformation>
         <reference value="Condition/f203"></reference>
     </supportingInformation>
-    <dispenser>
-        <reference value="Practitioner/f006"/>
-        <display value="Rob van den Berk"/>
-    </dispenser>
-    <dispensingOrganization>
-        <reference value="Organization/f201"></reference>
-    </dispensingOrganization>
+    <performer>
+        <actor>
+            <reference value="Practitioner/f006"/>
+        </actor>
+        <onBehalfOf>
+            <reference value="Organization/2.16.840.1.113883.19.5"></reference>
+        </onBehalfOf>
+    </performer>
     <authorizingPrescription>
         <reference value="MedicationRequest/medrx0318"/>
     </authorizingPrescription>
     <type>
         <coding>
-            <system value="http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType"/>
-            <code value="EF"/>
-            <display value="emergency Fill"/>
+            <system value="http://hl7.org/fhir/v3/ActCode"/>
+            <code value="EM"/>
+            <display value="Emergency Supply"/>
         </coding>
     </type>
     <quantity>
         <value value="12"/>
         <unit value="Vial"/>
-        <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+        <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
         <code value="Vial"/> 
     </quantity>
     <daysSupply>
@@ -96,6 +132,10 @@
             <code value="mg"/>
         </doseQuantity>
     </dosageInstruction>
+    <eventHistory>
+        <reference value="#signature"/>
+        <display value="Author's Signature"/>
+    </eventHistory>
 </MedicationDispense>
 
 

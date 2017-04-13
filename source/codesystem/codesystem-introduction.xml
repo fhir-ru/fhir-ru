@@ -4,7 +4,7 @@
 <a name="scope"> </a>
 <h2>Scope and Usage</h2>
 <p>
-The FHIR terminology specification is based two key concepts, originally defined in <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a>:
+The FHIR terminology specification is based on two key concepts, originally defined in <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a>:
 </p>
 <ul>
 <li> <b>code system</b> - defines a set of codes with meanings (also known as enumeration, terminology, classification, and/or ontology)</li>
@@ -15,7 +15,7 @@ Code systems define which codes (symbols and/or expressions) exist, and how they
 select a set of codes from one or more code systems to specify which codes can be used in a particular context.
 </p>
 <p>
-The CodeSystem resource is used to declare the existence of a code system, and it's key properties:
+The CodeSystem resource is used to declare the existence of a code system, and its key properties:
 </p>
 <ul>
  <li>Identifying URL and version</li>
@@ -50,7 +50,7 @@ ubiqutiously encountered through out the healthcare process.
 </ul>
 
 <p>
-The <code>CodeSystem</code> resource defines the content of a code system, and also it's preferred identifier.
+The <code>CodeSystem</code> resource defines the content of a code system, and also its preferred identifier.
 The <code>NamingSystem</code> resource identifies the existence of a code or identifier system, and its possible and preferred identifiers. 
 The key difference between the resources is who creates and manages them - <code>CodeSystem</code> resources are managed
 by the owner of the code system resource, who can properly define the features and content of the code system.
@@ -105,7 +105,7 @@ A code system has 3 identifiers:
 </p>
 <ul>
  <li><code>CodeSystem.id</code>: the <a href="resource.html#id">logical id</a> on the system that holds the code system - this changes as it moves from server to server (this id, with the server address prepended, is called the 'literal identity' of the resource)</li>
- <li><code>CodeSystem.url</code>: the canonical url that never changes for this code system - it is the same in every copy. Ideally, the URL should also be the location of the master version of the code system, though this is not always possible</li>
+ <li><code>CodeSystem.url</code>: the canonical URL that never changes for this code system - it is the same in every copy. Ideally, the URL should also be the location of the master version of the code system, though this is not always possible</li>
  <li><code>CodeSystem.identifier</code>: A system/value pair that is used to identify the code system in other contexts (such as an OID in an <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> specification)</li>
 </ul>
 <p>

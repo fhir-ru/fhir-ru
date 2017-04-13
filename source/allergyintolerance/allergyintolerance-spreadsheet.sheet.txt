@@ -37,41 +37,34 @@
   Conformance = required
 
  -- Row 6 -----------------------------------
-  Binding Name = AllergyIntoleranceCertainty
-  Binding = code list
-  Reference = #reaction-event-certainty
-  Definition = Statement about the degree of clinical certainty that a specific substance was the cause of the manifestation in an reaction event.
-  Conformance = required
-
- -- Row 7 -----------------------------------
   Binding Name = Manifestation
   Binding = value set
-  Reference = valueset-manifestation-codes
+  Reference = http://hl7.org/fhir/ValueSet/clinical-findings
   Definition = Clinical symptoms and/or signs that are observed or associated with an Adverse Reaction Event.
   Conformance = example
 
- -- Row 8 -----------------------------------
+ -- Row 7 -----------------------------------
   Binding Name = AllergyIntoleranceSeverity
   Binding = code list
   Reference = #reaction-event-severity
   Definition = Clinical assessment of the severity of a reaction event as a whole, potentially considering multiple different manifestations.
   Conformance = required
 
- -- Row 9 -----------------------------------
+ -- Row 8 -----------------------------------
   Binding Name = AllergyIntoleranceCode
   Binding = value set
   Reference = valueset-allergyintolerance-code
   Definition = Type of the substance/product, allergy or intolerance condition, or negation/exclusion codes for reporting no known allergies.
   Conformance = example
 
- -- Row 10 -----------------------------------
+ -- Row 9 -----------------------------------
   Binding Name = RouteOfAdministration
   Binding = value set
   Reference = http://hl7.org/fhir/ValueSet/route-codes
   Definition = A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject.
   Conformance = example
 
- -- Row 11 -----------------------------------
+ -- Row 10 -----------------------------------
   Binding Name = SubstanceCode
   Binding = value set
   Reference = http://hl7.org/fhir/ValueSet/substance-code
@@ -187,34 +180,7 @@
   Id = 4
   Code = biologic
   Display = Biologic
-  Definition = A preparation that is synthesized from living organisms or their products, especially a human or animal protein, such as a hormone or antitoxin, that is used as a diagnostic, preventive, or therapeutic agent. Also called biological drug. Examples of biologic medications include: vaccines; allergenic extracts, which are used for both diagnosis and treatment (for example, allergy shots); gene therapies; cellular therapies.  There are other biologic products, such as tissues, that are not typically associated with allergies.
-  Parent = medication
-
-=== Sheet reaction-event-certainty =====================================
-
- -- Row 1 -----------------------------------
-  Id = 1
-  Code = unlikely
-  Display = Unlikely
-  Definition = There is a low level of clinical certainty that the reaction was caused by the identified substance.
-
- -- Row 2 -----------------------------------
-  Id = 2
-  Code = likely
-  Display = Likely
-  Definition = There is a high level of clinical certainty that the reaction was caused by the identified substance.
-
- -- Row 3 -----------------------------------
-  Id = 3
-  Code = confirmed
-  Display = Confirmed
-  Definition = There is a very high level of clinical certainty that the reaction was due to the identified substance, which may include clinical evidence by testing or rechallenge.
-
- -- Row 4 -----------------------------------
-  Id = 4
-  Code = unknown
-  Display = Unknown
-  Definition = The clinical certainty that the reaction was caused by the identified substance is unknown.  It is an explicit assertion that certainty is not known.
+  Definition = A preparation that is synthesized from living organisms or their products, especially a human or animal protein, such as a hormone or antitoxin, that is used as a diagnostic, preventive, or therapeutic agent. Examples of biologic medications include: vaccines; allergenic extracts, which are used for both diagnosis and treatment (for example, allergy shots); gene therapies; cellular therapies.  There are other biologic products, such as tissues, that are not typically associated with allergies.
 
 === Sheet reaction-event-severity =====================================
 
@@ -281,10 +247,13 @@
   Card. = 0..1
   Is Modifier = y
   Summary = Y
+  Inv. = 1,2
   Type = code
   Binding = AllergyIntoleranceClinicalStatus
   Short Name = active | inactive | resolved
   Definition = The clinical status of the allergy or intolerance.
+  Comments = This element is labeled as a modifier because the status contains the codes inactive and resolved that mark the AllergyIntolerance as not currently valid
+  RIM Mapping = Observation ACT\n.inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\"clinicalStatus\", moodCode=EVN].value
   Committee Notes = GF# 10642, 11151, 11920
   w5 = status
 
@@ -293,11 +262,13 @@
   Card. = 1..1
   Is Modifier = y
   Summary = Y
+  Inv. = 1,2
   Type = code
   Binding = AllergyIntoleranceVerificationStatus
   Short Name = unconfirmed | confirmed | refuted | entered-in-error
   Definition = Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified substance (including pharmaceutical product)
-  Comments = Decision support would typically raise alerts for \'confirmed\' and \'unconfirmed\' and ignore a \'refuted\' reaction. In particular, \'refuted\' may be useful for reconciliation of the Adverse Reaction List.
+  Comments = This element is labeled as a modifier because the status contains the codes refuted and entered-in-error that mark the AllergyIntolerance as not currently valid
+  RIM Mapping = Observation ACT\n.inboundRelationship[typeCode=COMP].source[classCode=OBS, code=\"verificationStatus\", moodCode=EVN].value
   Committee Notes = GF# 10642, 11151, 11920
   w5 = status
 
@@ -322,9 +293,9 @@
   Summary = Y
   Type = code
   Binding = AllergyIntoleranceCategory
-  Short Name = food | medication | biologic | environment
+  Short Name = food | medication | environment | biologic
   Definition = Category of the identified substance
-  Comments = This data element has been included because it is currently being captured in some clinical systems. This data can be derived from the substance where coding systems are used, and is effectively redundant in that situation.  When searching on category, consider the implications of AllergyIntolerance resources without a category.  For example, when searching on category = medication, medication allergies that don\'t have a category valued will not be returned.  Refer to [search](search.html) for more information on how to search category with a :missing modifier to get allergies that don\'t have a category.
+  Comments = This data element has been included because it is currently being captured in some clinical systems. This data can be derived from the substance where coding systems are used, and is effectively redundant in that situation.  When searching on category, consider the implications of AllergyIntolerance resources without a category.  For example, when searching on category = medication, medication allergies that don\'t have a category valued will not be returned.  Refer to [search](search.html) for more information on how to search category with a :missing modifier to get allergies that don\'t have a category.  Additionally, category should be used with caution because category can be subjective based on the sender.
   v2 Mapping = AL1-2
   RIM Mapping = value < IntoleranceValue (Agent)
   Committee Notes = GF#11352 - to address examples like bee pollen that may fit into multiple categories;  GF#12136 - search usage note
@@ -339,9 +310,10 @@
   Binding = AllergyIntoleranceCriticality
   Short Name = low | high | unable-to-assess
   Definition = Estimate of the potential clinical harm, or seriousness, of the reaction to the identified substance
-  Comments = The default criticality value for any propensity to an adverse reaction should be \'Low Risk\', indicating at the very least a relative contraindication to deliberate or voluntary exposure to the substance. \'High Risk\' is flagged if the clinician has identified a propensity for a more serious or potentially life-threatening reaction, such as anaphylaxis, and implies an absolute contraindication to deliberate or voluntary exposure to the substance. If this element is missing, the criticality is unknown (though it may be known elsewhere)
+  Comments = The default criticality value for any propensity to an adverse reaction should be \'Low Risk\', indicating at the very least a relative contraindication to deliberate or voluntary exposure to the substance. \'High Risk\' is flagged if the clinician has identified a propensity for a more serious or potentially life-threatening reaction, such as anaphylaxis, and implies an absolute contraindication to deliberate or voluntary exposure to the substance. If this element is missing, the criticality is unknown (though it may be known elsewhere).\n\nSystems that capture a severity at the condition level are actually representing the concept of criticality whereas the severity documented at the reaction level is representing the true reaction severity.  Existing systems that are capturing both condition criticality and reaction severity may use the term \"severity\" to represent both.  Criticality is the worst it could be in the future (i.e. situation-agnostic) whereas severity is situation-dependent.
   v2 Mapping = AL1-4
   RIM Mapping = inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=SEV, value <= SeverityObservation (Severity Level)]
+  Committee Notes = GF#12177
   w5 = grade
 
  -- Row 8 -----------------------------------
@@ -351,7 +323,7 @@
   Summary = Y
   Type = CodeableConcept
   Binding = AllergyIntoleranceCode
-  Short Name = Allergy or intolerance code
+  Short Name = Code that identifies the allergy or intolerance
   Definition = Code for an allergy or intolerance statement (either a positive or a negated/excluded statement).  This may be a code for a substance or pharmaceutical product that is considered to be responsible for the adverse reaction risk (e.g., \"Latex\"), an allergy or intolerance condition (e.g., \"Latex allergy\"), or a negated/excluded code for a specific substance or class (e.g., \"No latex allergy\") or a general or categorical negated statement (e.g.,  \"No known allergy\", \"No known drug allergies\").
   Comments = It is strongly recommended that this element be populated using a terminology, where possible. For example, some terminologies used include RxNorm, SNOMED CT, DM+D, NDFRT, ICD-9, IDC-10, UNI, ATC and CPT. Plain text should only be used if there is no appropriate terminology available. Additional details can be specified in the text.\r\rWhen a substance or product code is specified for the \'code\' element, the \"default\" semantic context is that this is a positive statement of an allergy or intolerance (depending on the value of the \'type\' element, if present) condition to the specified substance/product.  In the corresponding SNOMED CT allergy model, the specified substance/product is the target (destination) of the \"Causative agent\" relationship.\r\rThe \'substanceExposureRisk\' extension is available as a structured and more flexible alternative to the \'code\' element for making positive or negative allergy or intolerance statements.  This extension provides the capability to make \"no known allergy\" (or \"no risk of adverse reaction\") statements regarding any coded substance/product (including cases when a pre-coordinated \"no allergy to x\" concept for that substance/product does not exist).  If the \'substanceExposureRisk\' extension is present, the AllergyIntolerance.code element SHALL be omitted.
   v2 Mapping = AL1-3 / IAM-3
@@ -452,7 +424,7 @@
   RIM Mapping = outBoundRelationship[typeCode=SAS].target[classCode=SBADM, code <= ExposureCode].participation[typeCode=CSM].role[classCode=ADMM].player[classCode=MAT, determinerCode=KIND, code <= ExposureAgentEntityType]
 
  -- Row 18 -----------------------------------
-  Element = AllergyIntolerance.reaction.certainty
+  Element = !AllergyIntolerance.reaction.certainty
   Card. = 0..1
   Aliases = Cause;
   Type = code
@@ -461,7 +433,7 @@
   Definition = Statement about the degree of clinical certainty that the specific substance was the cause of the manifestation in this reaction event
   Comments = When certainty is missing, it means no information exists (although it could be in narrative).  By contrast, the unknown code is used when there is an explicit assertion that certainty is not known, such as when a patient eats a meal and it is unknown which food caused the reaction.
   RIM Mapping = uncertaintyCode
-  Committee Notes = GF#11022
+  Committee Notes = GF#11022; GF#11020 - moved to extension
 
  -- Row 19 -----------------------------------
   Element = AllergyIntolerance.reaction.manifestation

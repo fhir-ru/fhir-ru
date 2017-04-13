@@ -32,6 +32,7 @@ import org.hl7.fhir.dstu3.model.DateTimeType;
 import org.hl7.fhir.dstu3.model.DateType;
 import org.hl7.fhir.dstu3.model.DecimalType;
 import org.hl7.fhir.dstu3.model.ElementDefinition;
+import org.hl7.fhir.dstu3.model.ElementDefinition.ConstraintSeverity;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionBindingComponent;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionConstraintComponent;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionMappingComponent;
@@ -51,8 +52,6 @@ import org.hl7.fhir.dstu3.model.MetadataResource;
 import org.hl7.fhir.dstu3.model.OidType;
 import org.hl7.fhir.dstu3.model.OperationDefinition;
 import org.hl7.fhir.dstu3.model.OperationDefinition.OperationDefinitionParameterComponent;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
 import org.hl7.fhir.dstu3.model.Period;
 import org.hl7.fhir.dstu3.model.PositiveIntType;
 import org.hl7.fhir.dstu3.model.Quantity;
@@ -78,13 +77,15 @@ import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
 import org.hl7.fhir.dstu3.utils.FHIRPathEngine;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
-import org.hl7.fhir.dstu3.validation.ValidationMessage;
-import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.igtools.publisher.FetchedFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
+import org.hl7.fhir.utilities.validation.ValidationMessage;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueType;
+import org.hl7.fhir.utilities.validation.ValidationMessage.Source;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
@@ -169,6 +170,11 @@ public class IgSpreadsheetParser {
       if (hasMetadata("published.structure")) {
         for (String n : metadata.get("published.structure")) {
           if (!Utilities.noString(n)) {
+            supplementMappings(n);
+          }
+        }
+        for (String n : metadata.get("published.structure")) {
+          if (!Utilities.noString(n)) {
             StructureDefinition sd = parseProfileSheet(n, namedSheets, f.getErrors(), false);
             if (first == null)
               first = sd;
@@ -201,6 +207,22 @@ public class IgSpreadsheetParser {
     return bundle;
   }
 
+  private void supplementMappings(String name) {
+    sheet = loadSheet(name);
+    List<String> mappingNames = sheet.getColumnNamesBySuffix(" Mapping");
+    List<String> loadedMappings = new ArrayList<String>();
+    for (MappingSpace m : mappings.values()) {
+      loadedMappings.add(m.getColumnName());
+    }
+    mappingNames.removeAll(loadedMappings);
+    int i = 0 - mappingNames.size();
+    for (String column : mappingNames) {
+      i++;
+      String mapname = column.substring(0, column.length() - 8);
+      MappingSpace m = new MappingSpace(column, mapname, mapname.toLowerCase().replace(' ',  '-'), i, true);
+      mappings.put("http://unknown.org/" + mapname, m);
+    }    
+  }
   private void processMetadata(StructureDefinition first) {
     if (hasMetadata("logical-mapping-prefix"))
       ToolingExtensions.addStringExtension(first, ToolingExtensions.EXT_MAPPING_PREFIX, metadata("logical-mapping-prefix"));
@@ -271,7 +293,7 @@ public class IgSpreadsheetParser {
         sd.setBaseDefinition(sd.getDifferential().getElementFirstRep().getType().get(0).getTargetProfile());
       else
         sd.setBaseDefinition("http://hl7.org/fhir/StructureDefinition/"+sd.getType());
-      if (!context.getResourceNames().contains(sd.getType()))
+      if (!context.getResourceNames().contains(sd.getType()) && !context.getTypeNames().contains(sd.getType()))
         throw new Exception("Unknown Resource "+sd.getType());
     }
     sd.getDifferential().getElementFirstRep().getType().clear();
@@ -312,7 +334,10 @@ public class IgSpreadsheetParser {
       }
     }
 
-    sd.setName(sd.getDifferential().getElementFirstRep().getShort());
+    if (hasMetadata("name"))
+      sd.setName(metadata("name"));
+    else
+      sd.setName(sd.getDifferential().getElementFirstRep().getShort());
     if (!sd.hasName())
       sd.setName("Profile "+sd.getId());
     sd.setPublisher(metadata("author.name"));
@@ -323,12 +348,15 @@ public class IgSpreadsheetParser {
     else
       sd.setDate(genDate.getTime());
 
+    if (hasMetadata("version")) 
+      sd.setVersion(metadata("version"));
     if (hasMetadata("status")) 
       sd.setStatus(PublicationStatus.fromCode(metadata("status")));
     else
       sd.setStatus(PublicationStatus.DRAFT);
 
-    new ProfileUtilities(context, null, null).setIds(sd, false);
+    ProfileUtilities utils = new ProfileUtilities(this.context, issues, null);
+    utils.setIds(sd, false);
     return sd;
   }
 
@@ -446,6 +474,9 @@ public class IgSpreadsheetParser {
       bs.setDescription(sheet.getColumn(row, "Definition"));
       bs.setStrength(readBindingStrength(sheet.getColumn(row, "Conformance"), row));
 
+      if (sheet.hasColumn("max-valueset") && !Utilities.noString(sheet.getColumn(row, "max-valueset"))) {
+        bs.addExtension().setUrl("http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet").setValue(new Reference().setReference(sheet.getColumn(row, "max-valueset")));
+      }
       String type = sheet.getColumn(row, "Binding");
       if (type == null || "".equals(type) || "unbound".equals(type)) {
         // nothing
@@ -456,6 +487,7 @@ public class IgSpreadsheetParser {
         ValueSet vs = ValueSetUtilities.makeShareable(new ValueSet());
         vs.setId(ref.substring(1));
         vs.setUrl(base+"/ValueSet/"+ref.substring(1));
+        bs.setValueSet(new Reference("ValueSet/"+ref.substring(1)));
         bundle.addEntry().setResource(vs).setFullUrl(vs.getUrl());
         vs.setName(bindingName);
         String oid = sheet.getColumn(row, "Oid");
@@ -534,7 +566,7 @@ public class IgSpreadsheetParser {
             cc.setDisplay(Utilities.humanize(cc.getCode()));
           cc.setDefinition(sheet.getColumn(row, "Definition"));
           if (!Utilities.noString(sheet.getColumn(row, "Comment")))
-            ToolingExtensions.addComment(cc, sheet.getColumn(row, "Comment"));
+            ToolingExtensions.addCSComment(cc, sheet.getColumn(row, "Comment"));
 //          cc.setUserData("v2", sheet.getColumn(row, "v2"));
 //          cc.setUserData("v3", sheet.getColumn(row, "v3"));
           for (String ct : sheet.columns) 
@@ -573,7 +605,7 @@ public class IgSpreadsheetParser {
         if (!Utilities.noString(sheet.getColumn(row, "Definition")))
           ToolingExtensions.addDefinition(cc, sheet.getColumn(row, "Definition"));
         if (!Utilities.noString(sheet.getColumn(row, "Comment")))
-          ToolingExtensions.addComment(cc, sheet.getColumn(row, "Comment"));
+          ToolingExtensions.addVSComment(cc, sheet.getColumn(row, "Comment"));
         cc.setUserDataINN("v2", sheet.getColumn(row, "v2"));
         cc.setUserDataINN("v3", sheet.getColumn(row, "v3"));
         for (String ct : sheet.columns) 
@@ -608,7 +640,12 @@ public class IgSpreadsheetParser {
       if (!s.startsWith("!")) {
         inv.setKey(s);
         inv.setRequirements(sheet.getColumn(row, "Requirements"));
-        inv.getSeverityElement().setValueAsString(sheet.getColumn(row, "Severity"));
+        String sev = sheet.getColumn(row, "Severity");
+        if ("bp".equals(sev)) {
+          inv.setSeverity(ConstraintSeverity.WARNING);
+          inv.addExtension().setUrl("http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice").setValue(new BooleanType(true));
+        } else
+          inv.getSeverityElement().setValueAsString(sev);
         inv.setHuman(sheet.getColumn(row, "English"));
         inv.setExpression(sheet.getColumn(row, "Expression"));
         inv.setXpath(sheet.getColumn(row, "XPath"));
@@ -668,7 +705,7 @@ public class IgSpreadsheetParser {
       e.getSlicing().setRules(SlicingRules.OPEN);
       for (String d : discriminator.split("\\,"))
         if (!Utilities.noString(d))
-          e.getSlicing().addDiscriminator(d);
+          e.getSlicing().addDiscriminator(ProfileUtilities.interpretR2Discriminator(d));
     }
     doAliases(sheet, row, e);
 
@@ -678,7 +715,8 @@ public class IgSpreadsheetParser {
       e.setIsModifier(true);
     e.setMustSupport(parseBoolean(sheet.getColumn(row, "Must Support"), row, false));
 
-    e.setIsSummary(parseBoolean(sheet.getColumn(row, "Summary"), row, false));
+    if (sheet.hasColumn(row, "Summary"))
+      e.setIsSummary(parseBoolean(sheet.getColumn(row, "Summary"), row, false));
 
     String uml = sheet.getColumn(row, "UML");
     if (!Utilities.noString(uml)) {
@@ -738,7 +776,7 @@ public class IgSpreadsheetParser {
     if (!Utilities.noString(sheet.getColumn(row, "Max Length")))
       e.setMaxLength(Integer.parseInt(sheet.getColumn(row, "Max Length")));
     e.setRequirements(Utilities.appendPeriod(sheet.getColumn(row, "Requirements")));
-    e.setComments(Utilities.appendPeriod(sheet.getColumn(row, "Comments")));
+    e.setComment(Utilities.appendPeriod(sheet.getColumn(row, "Comments")));
     for (String n : mappings.keySet()) {
       MappingSpace m = mappings.get(n);
       String sm = sheet.getColumn(row, mappings.get(n).getColumnName());
@@ -1005,8 +1043,8 @@ public class IgSpreadsheetParser {
       String cc = sheet.getColumn(row, "Context");
       if (!Utilities.noString(cc))
         for (String c : cc.split("\\;")) {
-          checkContextValid(ex.getContextType(), c, this.name);
-          ex.addContext(c);
+          checkContextValid(ex.getContextType(), c.trim(), this.name);
+          ex.addContext(c.trim());
         }
     }
     ex.setTitle(sheet.getColumn(row, "Display"));
@@ -1057,6 +1095,9 @@ public class IgSpreadsheetParser {
       ElementDefinition child = ex.getDifferential().addElement();
       child.setPath("Extension.extension");
       child.setSliceName(n.substring(n.lastIndexOf(".")+1));
+      exu = ex.getDifferential().addElement();
+      exu.setPath("Extension.extension.url");
+      exu.setFixed(new UriType(child.getSliceName()));
       parseExtensionElement(sheet, row, ex, child, true);
       if (invariants != null) {
         for (ElementDefinitionConstraintComponent inv : invariants.values()) {
@@ -1158,7 +1199,7 @@ public class IgSpreadsheetParser {
       exe.addCondition(s);
     exe.setDefinition(Utilities.appendPeriod(processDefinition(sheet.getColumn(row, "Definition"))));
     exe.setRequirements(Utilities.appendPeriod(sheet.getColumn(row, "Requirements")));
-    exe.setComments(Utilities.appendPeriod(sheet.getColumn(row, "Comments")));
+    exe.setComment(Utilities.appendPeriod(sheet.getColumn(row, "Comments")));
     doAliases(sheet, row, exe);
     for (String n : mappings.keySet()) {
       MappingSpace m = mappings.get(n);
@@ -1179,7 +1220,27 @@ public class IgSpreadsheetParser {
     // things that go on Extension.value
     if (!Utilities.noString(sheet.getColumn(row, "Type"))) {
       ElementDefinition exv = new ElementDefinition();
-      exv.setPath(exe.getPath()+".value[x]");
+      TypeParser tp = new TypeParser();
+      List<TypeRef> types = tp.parse(sheet.getColumn(row, "Type"), true, metadata("extension.uri"), context, false);
+      exv.getType().addAll(tp.convert(context, exv.getPath(), types, false, exv));
+      if (exv.getType().size()>1) {
+        exv.setPath(exe.getPath()+".valueReference");
+        for (TypeRefComponent t : exv.getType()) {
+          if (!t.getCode().equals("Reference")) {
+            exv.setPath(exe.getPath()+".value[x]");
+            break;
+          }
+        }
+      } else {
+        TypeRefComponent type = exv.getType().get(0);
+/*        if (type.getCode().equals("*") || type.get.getParams().size()>1)
+          exv.setName("value[x]");
+        else {*/
+          String name = type.getCode();
+          exv.setPath(exe.getPath()+".value" + name.substring(0,1).toUpperCase() + name.substring(1));
+//        }
+      }
+      
       sd.getDifferential().getElement().add(exv);
       String bindingName = sheet.getColumn(row, "Binding");
       if (!Utilities.noString(bindingName)) {
@@ -1192,9 +1253,6 @@ public class IgSpreadsheetParser {
       s = sheet.getColumn(row, "Max Length");
       if (!Utilities.noString(s))
         exv.setMaxLength(Integer.parseInt(s));
-      TypeParser tp = new TypeParser();
-      List<TypeRef> types = tp.parse(sheet.getColumn(row, "Type"), true, metadata("extension.uri"), context, false);
-      exv.getType().addAll(tp.convert(context, exv.getPath(), types, false, exv));
       if (!Utilities.noString(sheet.getColumn(row, "Example"))) 
         exv.addExample().setLabel("General").setValue(processValue(sheet, row, "Example", sheet.getColumn(row, "Example"), exv));
     }

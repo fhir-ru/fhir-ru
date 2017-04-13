@@ -7,34 +7,24 @@
 			<p> A simple care goal for a patient to lose weight due to obesity.</p>
 		</div>
 	</text>
-	<extension url="http://hl7.org/fhir/StructureDefinition/goal-target">
-		<extension url="measure">
-			<valueCodeableConcept>
-				<coding>
-					<system value="http://loinc.org"/>
-					<code value="3141-9"/>
-					<display value="Weight Measured"/>
-				</coding>
-			</valueCodeableConcept>
-		</extension>
-		<extension url="detail">
-			<valueRange>
-				<low>
-					<value value="160"/>
-					<unit value="lbs"/>
-					<system value="http://unitsofmeasure.org"/>
-					<code value="[lb_av]"/>
-				</low>
-				<high>
-					<value value="180"/>
-					<unit value="lbs"/>
-					<system value="http://unitsofmeasure.org"/>
-					<code value="[lb_av]"/>
-				</high>
-			</valueRange>
-		</extension>
-	</extension>
-	<status value="in-progress"/>
+	<identifier>
+		<value value="123"/>
+	</identifier>
+	<status value="on-hold"/>
+	<category>
+		<coding>
+			<system value="http://hl7.org/fhir/goal-category"/>
+			<code value="dietary"/>
+		</coding>
+	</category>
+	<priority>
+		<coding>
+			<system value="http://hl7.org/fhir/goal-priority" />
+			<code value="high-priority" />
+			<display value="High Priority" />
+		</coding>
+		<text value="high" />
+	</priority>
 	<description>
     		<text value="Target weight is 160 to 180 lbs."/>
 	</description>
@@ -42,8 +32,42 @@
 		<reference value="Patient/example"/>
 		<display value="Peter James Chalmers"/>
 	</subject>
+	<startDate value="2015-04-05" />
+	<target>
+		<measure>
+			<coding>
+				<system value="http://loinc.org"/>
+				<code value="3141-9"/>
+				<display value="Weight Measured"/>
+			</coding>
+		</measure>
+		<detailRange>
+			<low>
+				<value value="160"/>
+				<unit value="lbs"/>
+				<system value="http://unitsofmeasure.org"/>
+				<code value="[lb_av]"/>
+			</low>
+			<high>
+				<value value="180"/>
+				<unit value="lbs"/>
+				<system value="http://unitsofmeasure.org"/>
+				<code value="[lb_av]"/>
+			</high>
+		</detailRange>
+		<dueDate value="2016-04-05" />
+	</target>
+	<statusDate value="2016-02-14" />
+	<statusReason value="Patient wants to defer weight loss until after honeymoon."/>
+	<expressedBy>
+		<reference value="Patient/example"/>
+		<display value="Peter James Chalmers"/>
+	</expressedBy>
 	<addresses>
-		<reference value="Condition/12345"/>
-		<display value="obesity"/>
+		<display value="obesity condition"/>
 	</addresses>
+	<outcomeReference>
+		<reference value="Observation/example"/>
+		<display value="Body Weight Measured"/>
+	</outcomeReference>
 </Goal>

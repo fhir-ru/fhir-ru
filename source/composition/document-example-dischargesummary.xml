@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Bundle xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://hl7.org/fhir ../../schema/bundle.xsd http://hl7.org/fhir ../../schema/medicationrequest.xsd"
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/bundle.xsd"
  xmlns="http://hl7.org/fhir">
 
   <id value="father"/>
   <meta>
     <lastUpdated value="2013-05-28T22:12:21Z"/>
   </meta>
-  <type value="document"/>
   <identifier>
     <system value="urn:ietf:rfc:3986"/>
     <value value="urn:uuid:0c3151bd-1cbf-4d64-b04d-cd9187a4c6e0"/>
   </identifier>
+  <type value="document"/>
 <!--   The Composition resource   -->
   <entry>
     <fullUrl value="http://fhir.healthintersections.com.au/open/Composition/180f219f-97a8-486d-99d9-ed631fe4fc57"/>
@@ -22,7 +22,7 @@
         <meta>
           <lastUpdated value="2013-05-28T22:12:21Z"/>
         </meta>
-        <date value="2013-02-01T12:30:02Z"/>
+        <status value="final"/>
         <type>
           <coding>
             <system value="http://loinc.org"/>
@@ -30,21 +30,21 @@
           </coding>
           <text value="Discharge Summary from Responsible Clinician"/>
         </type>
-        <title value="Discharge Summary"/>
-        <status value="final"/>
-        <confidentiality value="N"/>
         <subject>
           <reference value="http://fhir.healthintersections.com.au/open/Patient/d1"/>
           <display value="Eve Everywoman"/>
         </subject>
-        <author>
-          <reference value="Practitioner/example"/>
-          <display value="Doctor Dave"/>
-        </author>
       <!--   The Encounter resource. Points directly to an Encounter resource. Contains the dates of admission, specialtyu etc.   -->
         <encounter>
           <reference value="http://fhir.healthintersections.com.au/open/Encounter/doc-example"/>
         </encounter>
+        <date value="2013-02-01T12:30:02Z"/>
+        <author>
+          <reference value="Practitioner/example"/>
+          <display value="Doctor Dave"/>
+        </author>
+        <title value="Discharge Summary"/>
+        <confidentiality value="N"/>
         <section>
           <title value="Reason for admission"/>
           <code>
@@ -92,7 +92,7 @@
             <reference value="urn:uuid:541a72a8-df75-4484-ac89-ac4923f03b81"/>
           </entry>
         </section>
-      <!--   Points to the list that groups the medications on discharge   -->
+      <!--   Points to the  medications on discharge   -->
         <section>
           <title value="Medications on Discharge"/>
           <code>
@@ -158,7 +158,7 @@
             <reference value="urn:uuid:673f8db5-0ffd-4395-9657-6da00420bbc1"/>
           </entry>
         </section>
-      <!--   Points to the list that groups the allergies   -->
+      <!--   Points to the  allergies   -->
         <section>
           <title value="Known allergies"/>
           <code>
@@ -224,8 +224,7 @@
           <status value="generated"/>
           <div xmlns="http://www.w3.org/1999/xhtml">
 						
-            <p>Dr Adam Careful is a Referring Practitioner for Acme Hospital from 1-Jan 2012 to 31-Mar
-              2012</p>
+            <p>Dr Adam Careful</p>
 					
           </div>
         </text>
@@ -238,22 +237,6 @@
           <given value="Adam"/>
           <prefix value="Dr"/>
         </name>
-        <role>
-          <organization>
-            <reference value="Organization/1"/>
-          </organization>
-        <!--     Referring Practitioner for the first 3 months of 2012     -->
-          <code>
-            <coding>
-              <system value="http://hl7.org/fhir/v2/0286"/>
-              <code value="RP"/>
-            </coding>
-          </code>
-          <period>
-            <start value="2012-01-01"/>
-            <end value="2012-03-31"/>
-          </period>
-        </role>
       </Practitioner>
     </resource>
   </entry>
@@ -317,9 +300,9 @@
         <type>
           <text value="Orthopedic Admission"/>
         </type>
-        <patient>
+        <subject>
           <reference value="Patient/d1"/>
-        </patient>
+        </subject>
         <period>
           <start value="2013-01-20T12:30:02Z"/>
           <end value="2013-02-01T12:30:02Z"/>
@@ -352,6 +335,13 @@
           </coding>
           <text value="Reason for admission"/>
         </code>
+        <subject>
+          <reference value="http://fhir.healthintersections.com.au/open/Patient/d1"/>
+          <display value="Eve Everywoman"/>
+        </subject>
+        <context>
+          <reference value="http://fhir.healthintersections.com.au/open/Encounter/doc-example"/>
+        </context>
         <valueString value="Acute Asthmatic attack. Was wheezing for days prior to admission."/>
       </Observation>
     </resource>
@@ -375,11 +365,8 @@
         </text>
       <!--   The patient details will generally be in the Document resource in the Document bundle, but could just as easily
         point to a patient resource on a server  -->
-        <stage>
-          <coding>
-            <code value="original-order"/>
-          </coding>
-        </stage>
+        <intent value="order">
+        </intent>
         <medicationCodeableConcept>
           <coding>
             <system value="http://snomed.info/sct"/>
@@ -387,14 +374,19 @@
           </coding>
           <text value="Theophylline 200mg"/>
         </medicationCodeableConcept>
-     <patient>
+     <subject>
           <reference value="http://fhir.healthintersections.com.au/open/Patient/d1"/>
           <display value="Peter Patient"/>
-        </patient>
+        </subject>
       <!--   The prescriber details could also be within the bundle, but has the same options as patient  -->
         <requester>
-          <reference value="Practitioner/example"/>
-          <display value="Peter Practitioner"/>
+          <agent>
+            <reference value="Practitioner/example"/>
+            <display value="Peter Practitioner"/>
+          </agent>
+        <onBehalfOf>
+          <reference value="Organization/f002"></reference>
+        </onBehalfOf>
         </requester>
         <reasonCode>
           <text value="Management of Asthma"/>
@@ -402,9 +394,9 @@
       <!--   a reference to the medication being prescribed. As described earlier, this could be contained (as is the example here), separately
         within the document bundle or simply a reference to a remote server. See comment in the contained resource  -->
              <dosageInstruction>
-          <additionalInstructions>
+          <additionalInstruction>
             <text value="Take with Food"/>
-          </additionalInstructions>
+          </additionalInstruction>
         <!--   twice a day   -->
           <timing>
             <repeat>
@@ -453,12 +445,13 @@
         <medicationCodeableConcept>
           <text value="Ventolin Inhaler"/>
         </medicationCodeableConcept>
+        <dateAsserted value="2013-05-05T16:13:03Z"/>
 	<subject>
           <reference value="http://fhir.healthintersections.com.au/open/Patient/d1"/>
           <display value="Peter Patient"/>
         </subject>
-        <dateAsserted value="2013-05-05T16:13:03Z"/>
-        <notTaken value="y"/>
+        
+        <taken value="n"/>
         <reasonNotTaken>
           <text value="Management of Asthma"/>
         </reasonNotTaken>
@@ -505,7 +498,7 @@
   </entry>
   <signature>
     <type>
-      <system value="http://hl7.org/fhir/valueset-signature-type"/>
+      <system value="urn:iso-astm:E1762-95:2013"/>
       <code value="1.2.840.10065.1.12.1.1"/>
       <display value="Author's Signature"/>
     </type>
@@ -513,6 +506,9 @@
     <whoReference>
       <reference value="Device/software"/>
     </whoReference>
+    <onBehalfOfReference>
+      <reference value="Organization/example"/>
+    </onBehalfOfReference>
     <!-- a real document would typically have an digital signature, but 
       the publishing tools are not yet setup to produce a valid digital 
       signature. For now, an image of a signature -->

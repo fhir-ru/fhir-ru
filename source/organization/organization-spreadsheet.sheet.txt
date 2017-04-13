@@ -78,7 +78,7 @@
   Short Name = Whether the organization\'s record is still in active use
   Definition = Whether the organization\'s record is still in active use
   Requirements = Need a flag to indicate a record is no longer to be used and should generally be hidden for the user in the UI.
-  Comments = Default is true.\n\nThis active flag is not intended to be used to mark an organizations as temporarily closed or under construction. Instead the Location(s) within the Organization should have the suspended status. If further details of the reason for the suspension are required, then an extension on this element should be used.
+  Comments = Default is true.\n\nThis active flag is not intended to be used to mark an organizations as temporarily closed or under construction. Instead the Location(s) within the Organization should have the suspended status. If further details of the reason for the suspension are required, then an extension on this element should be used.\n\nThis element is labeled as a modifier because it may be used to mark that the resource was created in error
   v2 Mapping = No equivalent in HL7 v2
   RIM Mapping = .status
   ServD Mapping = ./Status (however this concept in ServD more covers why the organization is active or not, could be delisted, deregistered, not operational yet) this could alternatively be derived from ./StartDate and ./EndDate and given a context date.
@@ -88,14 +88,14 @@
 
  -- Row 4 -----------------------------------
   Element = Organization.type
-  Card. = 0..1
+  Card. = 0..*
   Summary = Y
   Type = CodeableConcept
   Binding = OrganizationType
   Short Name = Kind of organization
-  Definition = The kind of organization that this is
+  Definition = The kind(s) of organization that this is
   Requirements = Need to be able to track the kind of organization that this is - different organization types have different uses
-  Comments = Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes
+  Comments = Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes\n\nWhen considering if multiple types are appropriate, you should evaluate if child organizations would be a more appropriate use of the concept, as different types likely are in different sub-areas of the organization. This is most likely to be used where type values have orthogonal values, such as a religious, academic and medical center.\n\nWe expect that some jurisdictions will profile this optionality to be a single cardinality.
   v2 Mapping = No equivalent in v2
   RIM Mapping = .code
   ServD Mapping = n/a
@@ -121,7 +121,7 @@
   Card. = 0..*
   Type = string
   Short Name = A list of alternate names that the organization is known as, or was known as in the past
-  Requirements = Over time locations and organizations go through many changes and can be known by different names.\n\nFor searching knowing previous names that the location was known by can be very useful.
+  Requirements = Over time locations and organizations go through many changes and can be known by different names.\n\nFor searching knowing previous names that the organization was known by can be very useful.
   Comments = There are no dates associated with the alias/historic names, as this is not intended to track when names were used, but to assist in searching so that older names can still result in identifying the organization
   RIM Mapping = .name
   Committee Notes = This is used in many registries, and is often very important in searching
@@ -297,8 +297,9 @@
  -- Row 1 -----------------------------------
   Name = name
   Type = string
-  Description = A portion of the organization\'s name, or alias
+  Description = A portion of the organization\'s name or alias
   Path = Organization.name | Organization.alias
+  Expression = Organization.name | Organization.alias
 
  -- Row 2 -----------------------------------
   Name = phonetic
@@ -328,7 +329,7 @@
  -- Row 6 -----------------------------------
   Name = partof
   Type = reference
-  Description = Search all organizations that are part of the given organization
+  Description = An organization of which this organization forms a part
   Path = Organization.partOf
 
  -- Row 7 -----------------------------------
@@ -340,7 +341,7 @@
  -- Row 8 -----------------------------------
   Name = address
   Type = string
-  Description = A (part of the) address of the Organization
+  Description = A (part of the) address of the organization
   Path = Organization.address
 
  -- Row 9 -----------------------------------

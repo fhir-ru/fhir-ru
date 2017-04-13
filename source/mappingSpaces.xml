@@ -1,5 +1,5 @@
 <mappingSpaces>
-	<!-- 
+	<!--
   <space>
     <url>[the formal URL - should also resolve to a useful document if possible]</url>
     <columnName>The name for the mapping in the spreadsheet</columnName>
@@ -32,14 +32,14 @@
 		<id>sct-attr</id>
 		<preamble>
 			<p>
-      Attribute bindings link coded data elements in FHIR resources to a corresponding attribute in the SNOMED CT concept model. These bindings help to support: 
+      Attribute bindings link coded data elements in FHIR resources to a corresponding attribute in the SNOMED CT concept model. These bindings help to support:
       </p>
       <ul>
         <li>clarifying the intended meaning of the data element</li>
         <li>Quality checking the alignment between FHIR resource design and any coresponding SNOMED CT concept model</li>
         <li>Composition and decomposition of data instances by indicating the SNOMED CT concept model attribute whose value may be used to decompose a precoordinated concept into this data element</li>
       </ul>
-		</preamble>    
+		</preamble>
 		<sort>3</sort>
     <publish>true</publish>
 	</space>
@@ -50,7 +50,7 @@
 		<id>sct-concept</id>
 		<preamble>
 			<p>
-      Concept domain bindings link a resource or an element to a set of SNOMED CT concepts that represent the intended semantics of the instances (whether or not SNOMED CT is used to encode that data element). 
+      Concept domain bindings link a resource or an element to a set of SNOMED CT concepts that represent the intended semantics of the instances (whether or not SNOMED CT is used to encode that data element).
       This set of concepts is represented using a SNOMED CT expression constraint. Note that the 'Concept domain binding' may be a superset of the 'value set binding'. These bindings help to support:
       </p>
       <ul>
@@ -109,12 +109,12 @@
 		<preamble>
 			<p>
       The provenance resource is based on known practices in the
-      HL7 implementation space, particularly those found in the 
-      v2 EVN segment, the v3 ControlAct Wrapper, the CDA header, and 
+      HL7 implementation space, particularly those found in the
+      v2 EVN segment, the v3 ControlAct Wrapper, the CDA header, and
       IHE ATNA.
       The conceptual model underlying the design is the <a href="http://www.w3.org/2011/prov/wiki/Main_Page">W3C
       provenance Specification</a>. Though the content and format
-      of the resource is designed to meet specific requirements for FHIR, 
+      of the resource is designed to meet specific requirements for FHIR,
       all the parts of the resource are formally mapped to the PROV-O
       specification, and FHIR resources can be transformed to their W3C
       PROV equivalent.
@@ -129,6 +129,7 @@
 		<title>iCalendar</title>
 		<id>ical</id>
 		<sort>11</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://www.omg.org/spec/ServD/1.0/</url>
@@ -136,6 +137,7 @@
 		<title>ServD</title>
 		<id>servd</id>
 		<sort>12</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://metadata-standards.org/11179/</url>
@@ -156,6 +158,7 @@
 		<title>IHE Data Element Exchange (DEX)</title>
 		<id>dex</id>
 		<sort>14</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://openehr.org</url>
@@ -171,6 +174,7 @@
 		<title>IHE Structured Data Capture</title>
 		<id>ihesdc</id>
 		<sort>16</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://wiki.siframework.org/CQF</url>
@@ -178,6 +182,7 @@
 		<title>Quality Improvement and Clinical Knowledge (QUICK)</title>
 		<id>quick</id>
 		<sort>17</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://www.cdisc.org/define-xml</url>
@@ -185,6 +190,7 @@
 		<title>CDISC Define XML 2.0 metadata standard</title>
 		<id>define.xml2.0</id>
 		<sort>18</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://www.cdisc.org/define-xml</url>
@@ -192,6 +198,7 @@
 		<title>CDISC Define XML 2.0 metadata standard</title>
 		<id>define.xml2.0</id>
 		<sort>19</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://www.cda-adc.ca/en/services/cdanet/</url>
@@ -199,6 +206,7 @@
 		<title>Canadian Dental Association eclaims standard</title>
 		<id>cdanetv4</id>
 		<sort>20</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://www.pharmacists.ca/</url>
@@ -206,6 +214,7 @@
 		<title>Canadian Pharmacy Associaiton eclaims standard</title>
 		<id>cpha3pharm</id>
 		<sort>21</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://www.healthit.gov/quality-data-model</url>
@@ -213,6 +222,7 @@
 		<title>Quality Data Model</title>
 		<id>qdm</id>
 		<sort>22</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://hl7.org/orim</url>
@@ -220,6 +230,7 @@
 		<title>Ontological RIM Mapping</title>
 		<id>orim</id>
 		<sort>23</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://hl7.org/fhir/w5</url>
@@ -234,6 +245,7 @@
 		<title>Logical Mapping</title>
 		<id>logical</id>
 		<sort>25</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://hl7.org/fhir/auditevent</url>
@@ -241,6 +253,7 @@
 		<title>FHIR AuditEvent</title>
 		<id>fhirauditevent</id>
 		<sort>26</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://hl7.org/fhir/provenance</url>
@@ -248,6 +261,7 @@
 		<title>FHIR Provenance</title>
 		<id>fhirprovenance</id>
 		<sort>27</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://www.hl7.org/implement/standards/product_brief.cfm?product_id=378</url>
@@ -255,6 +269,7 @@
 		<title>Quality Improvement Domain Analysis Model</title>
 		<id>qidam</id>
 		<sort>28</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://cap.org/ecc</url>
@@ -262,6 +277,7 @@
 		<title>CAP Code</title>
 		<id>cap</id>
 		<sort>29</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/UniqueDeviceIdentification/default.htm</url>
@@ -269,13 +285,14 @@
 		<title>UDI Mapping</title>
 		<id>udi</id>
 		<preamble>
-			<p>UDI is a unique numeric or alphanumeric code that consists of two parts:			
+			<p>UDI is a unique numeric or alphanumeric code that consists of two parts:
 			 (1) a device identifier (DI), a mandatory, fixed portion of a UDI that identifies the labeler and the specific version or model of a device, and (2)
-		a production identifier (PI), a conditional, variable portion of a UDI that identifies one or more of the following when included on the label of a device: 
+		a production identifier (PI), a conditional, variable portion of a UDI that identifies one or more of the following when included on the label of a device:
 		 (2a) the lot or batch number within which a device was manufactured; (2b) the serial number of a specific device; (2c) the expiration date of a specific device; (2d) the date a specific device was manufactured; (2e) the distinct identification code required by §1271.290(c) for a human cell, tissue, or cellular and tissue-based product (HCT/P) regulated as a device.
 	</p>
 		</preamble>
 		<sort>30</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://hl7.org/fhir/object-implementation</url>
@@ -306,6 +323,7 @@
 		<title>Workflow Mapping</title>
 		<id>workflow</id>
 		<sort>34</sort>
+		<publish>true</publish>
 	</space>
 	<space>
 		<url>http://clinicaltrials.gov</url>
@@ -313,5 +331,6 @@
 		<title>ClinicalTrials.gov Mapping</title>
 		<id>clinicaltrials-gov</id>
 		<sort>35</sort>
+		<publish>true</publish>
 	</space>
 </mappingSpaces>

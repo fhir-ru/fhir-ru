@@ -49,6 +49,7 @@ import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionConstraintCom
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionExampleComponent;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionMappingComponent;
 import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionSlicingComponent;
+import org.hl7.fhir.dstu3.model.ElementDefinition.ElementDefinitionSlicingDiscriminatorComponent;
 import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.dstu3.model.Enumeration;
 import org.hl7.fhir.dstu3.model.IdType;
@@ -161,12 +162,12 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     if (!slicing.getDiscriminator().isEmpty()) {
       b.append("<li>discriminators: ");
       boolean first = true;
-      for (StringType s : slicing.getDiscriminator()) {
+      for (ElementDefinitionSlicingDiscriminatorComponent s : slicing.getDiscriminator()) {
         if (first)
           first = false;
         else
           b.append(", ");
-        b.append(s.asStringValue());
+        b.append(s.getType().toCode()+":"+s.getPath());
       }
       b.append("</li>");
     }
@@ -196,10 +197,11 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
     tableRow("Must Support", "conformance-rules.html#mustSupport", displayBoolean(d.getMustSupport()));
     tableRowNE("Requirements",  null, page.processMarkdown(profile.getName(), d.getRequirements(), prefix));
     tableRowHint("Alternate Names", "Other names by which this resource/element may be known", null, describeAliases(d.getAlias()));
-    tableRowNE("Comments",  null, page.processMarkdown(profile.getName(), d.getComments(), prefix));
+    tableRowNE("Comments",  null, page.processMarkdown(profile.getName(), d.getComment(), prefix));
     tableRow("Max Length", null, !d.hasMaxLengthElement() ? null : Integer.toString(d.getMaxLength()));
     tableRowNE("Default Value", null, encodeValue(d.getDefaultValue()));
     tableRowNE("Meaning if Missing", null, d.getMeaningWhenMissing());
+    tableRowNE("Element Order Meaning", null, d.getOrderMeaning());
     tableRowNE("Fixed Value", null, encodeValue(d.getFixed()));
     tableRowNE("Pattern Value", null, encodeValue(d.getPattern()));
     tableRowNE("Example", null, encodeValues(d.getExample()));
@@ -460,8 +462,9 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 		tableRow("Is Modifier", "conformance-rules.html#ismodifier", displayBoolean(e.isModifier()));
     tableRowNE("Default Value", null, encodeValue(e.getDefaultValue()));
     tableRowNE("Meaning if Missing", null, e.getMeaningWhenMissing());
+    tableRowNE("Element Order Meaning", null, e.getOrderMeaning());
 
-		tableRowNE("Requirements", null, page.processMarkdown(path, e.getRequirements(), prefix));
+    tableRowNE("Requirements", null, page.processMarkdown(path, e.getRequirements(), prefix));
 		tableRowHint("Alternate Names", "Other names by which this resource/element may be known", null, toSeperatedString(e.getAliases()));
     if (e.hasSummaryItem())
       tableRow("Summary", "search.html#summary", Boolean.toString(e.isSummaryItem()));

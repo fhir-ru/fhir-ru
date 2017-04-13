@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MedicationDispense xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationdispense.xsd"
-    xmlns="http://hl7.org/fhir">
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationdispense.xsd"
+ xmlns="http://hl7.org/fhir">
     <id value="meddisp0310"/>
     <contained>
         <Medication>
@@ -21,28 +21,32 @@
         <reference value="#med0308"/>
         <display value="Percocet"/>
     </medicationReference>
-    <patient>
+    <subject>
         <reference value="Patient/pat1"/>
         <display value="Donald Duck "/> 
-    </patient>
-    <dispenser>
-        <reference value="Practitioner/f006"/>
-        <display value="Rob van den Berk"/>
-    </dispenser>
+    </subject>
+    <performer>
+        <actor>
+            <reference value="Practitioner/f006"/>
+        </actor>
+        <onBehalfOf>
+            <reference value="Organization/2.16.840.1.113883.19.5"></reference>
+        </onBehalfOf>
+    </performer>
     <authorizingPrescription>
         <reference value="MedicationRequest/medrx0307"/>
     </authorizingPrescription>
     <type>
         <coding>
             <system value="http:hl7.org/fhir"/>
-            <code value="EF"/>
-            <display value="emergency Fill"/>
+            <code value="EM"/>
+            <display value="Emergency Supply"/>
         </coding>
     </type>
     <quantity>
         <value value="30"/>
         <unit value="TAB"/>
-        <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+        <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
         <code value="TAB"/> 
     </quantity>
     <daysSupply>
@@ -55,13 +59,13 @@
     <dosageInstruction>
         <sequence value="1"/>
         <text value="1 tablet every four hours as needed for pain" />
-        <additionalInstructions>
+        <additionalInstruction>
             <coding>
                 <system value="http://snomed.info/sct"/>
                 <code value="418914006"/>
                 <display value="Warning. May cause drowsiness. If affected do not drive or operate machinery. Avoid alcoholic drink (qualifier value)"/>
             </coding>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <frequency value="1"/>
@@ -86,7 +90,7 @@
         <doseQuantity>
             <value value="1"/>
             <unit value="TAB"/>
-            <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+            <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
             <code value="TAB"/> 
         </doseQuantity>
     </dosageInstruction>

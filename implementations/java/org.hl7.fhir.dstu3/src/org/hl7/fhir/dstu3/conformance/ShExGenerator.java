@@ -46,14 +46,14 @@ public class ShExGenerator {
   private static String HEADER_TEMPLATE =
           "PREFIX fhir: <$fhir$> \n" +
                   "PREFIX fhirvs: <$fhirvs$>\n" +
-          "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n" +
-          "BASE <http://hl7.org/fhir/shape/>\n$start$";
+                  "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n" +
+                  "BASE <http://hl7.org/fhir/shape/>\n$start$";
 
   // Start template for single (open) entry
   private static String START_TEMPLATE = "\n\nstart=@<$id$> AND {fhir:nodeRole [fhir:treeRoot]}\n";
 
   // Start template for complete (closed) model
-  private static String ALL_START_TEMPLATE = "\n\nstart=<All>\n";
+  private static String ALL_START_TEMPLATE = "\n\nstart=@<All>\n";
 
   private static String ALL_TEMPLATE = "\n<All> $all_entries$\n";
 
@@ -67,22 +67,22 @@ public class ShExGenerator {
   //      an optional index element (for appearances inside ordered lists)
   private static String SHAPE_DEFINITION_TEMPLATE =
           "$comment$\n<$id$> CLOSED {\n    $resourceDecl$" +
-          "\n    $elements$" +
+                  "\n    $elements$" +
                   "\n    fhir:index xsd:integer?                 # Relative position in a list\n}\n";
 
   // Resource Definition
   //      an open shape of type Resource.  Used when completeModel = false.
   private static String RESOURCE_SHAPE_TEMPLATE =
           "$comment$\n<Resource> {a .+;" +
-          "\n    $elements$" +
-          "\n    fhir:index xsd:integer?" +
-          "\n}\n";
+                  "\n    $elements$" +
+                  "\n    fhir:index xsd:integer?" +
+                  "\n}\n";
 
   // If we have knowledge of all of the possible resources available to us (completeModel = true), we can build
   // a model of all possible resources.
   private static String COMPLETE_RESOURCE_TEMPLATE =
-          "<Resource> CLOSED {@<$resources$>" +
-                  "\n}\n";
+          "<Resource>  @<$resources$>" +
+                  "\n\n";
 
   // Resource Declaration
   //      a type node
@@ -133,28 +133,29 @@ public class ShExGenerator {
   private static String XHTML_TYPE_TEMPLATE = "xsd:string";
 
   // Additional type for Coding
-  private static String CONCEPT_REFERENCE_TEMPLATE = "fhir:concept IRI?;";
+  private static String CONCEPT_REFERENCE_TEMPLATE = "a NONLITERAL?;";
 
-  // Additional type for CodedConcept -- still under debate
-  private static String CONCEPT_REFERENCES_TEMPLATE = "fhir:concept IRI*;";
+  // Additional type for CodedConcept
+  private static String CONCEPT_REFERENCES_TEMPLATE = "a NONLITERAL*;";
 
   // Untyped resource has the extra link entry
   private static String RESOURCE_LINK_TEMPLATE = "fhir:link IRI?;";
 
   // Extension template
-  private static String EXTENSION_TEMPLATE = "<Extension> {fhir:extension @<Extension>*;" +
-          "\n    fhir:index xsd:integer?" +
-          "\n}\n";
+  // No longer used -- we emit the actual definition
+//  private static String EXTENSION_TEMPLATE = "<Extension> {fhir:extension @<Extension>*;" +
+//          "\n    fhir:index xsd:integer?" +
+//          "\n}\n";
 
   // A typed reference -- a fhir:uri with an optional type and the possibility of a resolvable shape
   private static String TYPED_REFERENCE_TEMPLATE = "\n<$refType$Reference> CLOSED {" +
-                                                   "\n    fhir:Element.id @<id>?;" +
-                                                   "\n    fhir:extension @<Extension>*;" +
-          "\n    fhir:link @<$refType$> OR CLOSED {a fhir:$refType$}?;" +
-                                                   "\n    fhir:Reference.reference @<string>?;" +
-                                                   "\n    fhir:Reference.display @<string>?;" +
-                                                   "\n    fhir:index xsd:integer?" +
-                                                   "\n}";
+          "\n    fhir:Element.id @<id>?;" +
+          "\n    fhir:Element.extension @<Extension>*;" +
+          "\n    fhir:link @<$refType$> OR CLOSED {a [fhir:$refType$]}?;" +
+          "\n    fhir:Reference.reference @<string>?;" +
+          "\n    fhir:Reference.display @<string>?;" +
+          "\n    fhir:index xsd:integer?" +
+          "\n}";
 
   private static String TARGET_REFERENCE_TEMPLATE = "\n<$refType$> {" +
           "\n    a [fhir:$refType$];" +
@@ -180,13 +181,13 @@ public class ShExGenerator {
    */
   private HashSet<Pair<StructureDefinition, ElementDefinition>> innerTypes, emittedInnerTypes;
   private HashSet<String> datatypes, emittedDatatypes;
-    private HashSet<String> references;
+  private HashSet<String> references;
   private LinkedList<StructureDefinition> uniq_structures;
   private HashSet<String> uniq_structure_urls;
   private HashSet<ValueSet> required_value_sets;
   private HashSet<String> known_resources;          // Used when generating a full definition
 
-    public ShExGenerator(IWorkerContext context) {
+  public ShExGenerator(IWorkerContext context) {
     super();
     this.context = context;
     innerTypes = new HashSet<Pair<StructureDefinition, ElementDefinition>>();
@@ -197,7 +198,7 @@ public class ShExGenerator {
     required_value_sets = new HashSet<ValueSet>();
     known_resources = new HashSet<String>();
   }
-  
+
   public String generate(HTMLLinkPolicy links, StructureDefinition structure) {
     List<StructureDefinition> list = new ArrayList<StructureDefinition>();
     list.add(structure);
@@ -210,7 +211,7 @@ public class ShExGenerator {
     known_resources.clear();
     return generate(links, list);
   }
-  
+
   public class SortById implements Comparator<StructureDefinition> {
 
     @Override
@@ -236,7 +237,8 @@ public class ShExGenerator {
 
     ST shex_def = tmplt(SHEX_TEMPLATE);
     String start_cmd;
-    if(completeModel || structures.get(0).getKind().name().equals("RESOURCE"))
+    if(completeModel || structures.get(0).getKind().equals(StructureDefinition.StructureDefinitionKind.RESOURCE))
+//            || structures.get(0).getKind().equals(StructureDefinition.StructureDefinitionKind.COMPLEXTYPE))
       start_cmd = completeModel? tmplt(ALL_START_TEMPLATE).render() :
               tmplt(START_TEMPLATE).add("id", structures.get(0).getId()).render();
     else
@@ -278,7 +280,7 @@ public class ShExGenerator {
     shapeDefinitions.append("\n#---------------------- Reference Types -------------------\n");
     for(String r: references) {
       shapeDefinitions.append("\n").append(tmplt(TYPED_REFERENCE_TEMPLATE).add("refType", r).render()).append("\n");
-      if (!"Resource".equals(r))
+      if (!"Resource".equals(r) && !known_resources.contains(r))
         shapeDefinitions.append("\n").append(tmplt(TARGET_REFERENCE_TEMPLATE).add("refType", r).render()).append("\n");
     }
     shex_def.add("shapeDefinitions", shapeDefinitions);
@@ -318,7 +320,8 @@ public class ShExGenerator {
       known_resources.add(sd.getName());
     } else {
       shape_defn = tmplt(SHAPE_DEFINITION_TEMPLATE).add("id", sd.getId());
-      if (sd.getKind().name().equals("RESOURCE")) {
+      if (sd.getKind().equals(StructureDefinition.StructureDefinitionKind.RESOURCE)) {
+//              || sd.getKind().equals(StructureDefinition.StructureDefinitionKind.COMPLEXTYPE)) {
         known_resources.add(sd.getName());
         ST resource_decl = tmplt(RESOURCE_DECL_TEMPLATE).
                 add("id", sd.getId()).
@@ -341,8 +344,8 @@ public class ShExGenerator {
       elements.add(tmplt(CONCEPT_REFERENCES_TEMPLATE).render());
     else if (sdn.equals("Reference"))
       elements.add(tmplt(RESOURCE_LINK_TEMPLATE).render());
-    else if (sdn.equals("Extension"))
-      return tmplt(EXTENSION_TEMPLATE).render();
+//    else if (sdn.equals("Extension"))
+//      return tmplt(EXTENSION_TEMPLATE).render();
 
     String root_comment = null;
     for (ElementDefinition ed : sd.getSnapshot().getElement()) {
@@ -462,10 +465,9 @@ public class ShExGenerator {
       element_def.add("id", "");
     } else {
       element_def = tmplt(ELEMENT_TEMPLATE);
-      element_def.add("id", "fhir:" + (id.charAt(0) == id.toLowerCase().charAt(0) ||
-              (ed.hasType() && "Extension".equals(ed.getType().get(0).getCode()))? shortId : id) + " ");
+      element_def.add("id", "fhir:" + (id.charAt(0) == id.toLowerCase().charAt(0)? shortId : id) + " ");
     }
-    
+
     List<ElementDefinition> children = ProfileUtilities.getChildList(sd, ed);
     if (children.size() > 0) {
       innerTypes.add(new ImmutablePair<StructureDefinition, ElementDefinition>(sd, ed));
@@ -497,8 +499,7 @@ public class ShExGenerator {
     } else {
       // TODO: Refactoring required here
       element_def = genAlternativeTypes(ed, id, shortId);
-      element_def.add("id", id.charAt(0) == id.toLowerCase().charAt(0) ||
-              (ed.hasType() && "Extension".equals(ed.getType().get(0).getCode()))? shortId : id);
+      element_def.add("id", id.charAt(0) == id.toLowerCase().charAt(0)? shortId : id);
       element_def.add("card", card);
       addComment(element_def, ed);
       return element_def.render();
@@ -518,14 +519,12 @@ public class ShExGenerator {
    */
   private String simpleElement(StructureDefinition sd, ElementDefinition ed, String typ) {
     String addldef = "";
-    if (ed.hasBinding()) {
-      ElementDefinition.ElementDefinitionBindingComponent binding = ed.getBinding();
-      if(binding.hasStrength() && binding.getStrength() == Enumerations.BindingStrength.REQUIRED) {
-        ValueSet vs = resolveBindingReference(sd, binding.getValueSet());
-        if (vs != null) {
-          addldef = tmplt(VALUESET_DEFN_TEMPLATE).add("vsn", vsprefix(vs.getUrl())).render();
-          required_value_sets.add(vs);
-        }
+    ElementDefinition.ElementDefinitionBindingComponent binding = ed.getBinding();
+    if(binding.hasStrength() && binding.getStrength() == Enumerations.BindingStrength.REQUIRED && "code".equals(typ)) {
+      ValueSet vs = resolveBindingReference(sd, binding.getValueSet());
+      if (vs != null) {
+        addldef = tmplt(VALUESET_DEFN_TEMPLATE).add("vsn", vsprefix(vs.getUrl())).render();
+        required_value_sets.add(vs);
       }
     }
     // TODO: check whether value sets and fixed are mutually exclusive
@@ -573,7 +572,9 @@ public class ShExGenerator {
         e.printStackTrace();
       }
       // TODO: Remove the next line when the type of token gets switched to string
-      ST td_entry = tmplt(PRIMITIVE_ELEMENT_DEFN_TEMPLATE).add("typ", xt.replace("xsd:token", "xsd:string"));
+      // TODO: Add a rdf-type entry for valueInteger to xsd:integer (instead of int)
+      ST td_entry = tmplt(PRIMITIVE_ELEMENT_DEFN_TEMPLATE).add("typ",
+              xt.replace("xsd:token", "xsd:string").replace("xsd:int", "xsd:integer"));
       StringBuilder facets =  new StringBuilder();
       if(ed.hasMinValue()) {
         Type mv = ed.getMinValue();
@@ -594,13 +595,13 @@ public class ShExGenerator {
       td_entry.add("facets", facets.toString());
       return td_entry.render();
 
-      } else if (typ.getCode() == null) {
+    } else if (typ.getCode() == null) {
       ST primitive_entry = tmplt(PRIMITIVE_ELEMENT_DEFN_TEMPLATE);
       primitive_entry.add("typ", "xsd:string");
-        return primitive_entry.render();
+      return primitive_entry.render();
 
     } else if(typ.getCode().equals("xhtml")) {
-        return tmplt(XHTML_TYPE_TEMPLATE).render();
+      return tmplt(XHTML_TYPE_TEMPLATE).render();
     } else {
       datatypes.add(typ.getCode());
       return simpleElement(sd, ed, typ.getCode());
@@ -713,11 +714,11 @@ public class ShExGenerator {
     return shex_ref.render();
   }
 
-	/**
-     * Return the type name for typ
-     * @param typ type to get name for
-     * @return name
-     */
+  /**
+   * Return the type name for typ
+   * @param typ type to get name for
+   * @return name
+   */
   private String getTypeName(ElementDefinition.TypeRefComponent typ) {
     // TODO: This is brittle. There has to be a utility to do this...
     if (typ.hasTargetProfile()) {
@@ -735,7 +736,10 @@ public class ShExGenerator {
     ST vsd = tmplt(VALUE_SET_DEFINITION).add("vsuri", vsprefix(vs.getUrl())).add("comment", vs.getDescription());
     ValueSetExpander.ValueSetExpansionOutcome vse = context.expandVS(vs, true, false);
     List<String> valid_codes = new ArrayList<String>();
-    if(vse != null && vse.getValueset() != null && vse.getValueset().hasExpansion() && vse.getValueset().getExpansion().hasContains()) {
+    if(vse != null &&
+            vse.getValueset() != null &&
+            vse.getValueset().hasExpansion() &&
+            vse.getValueset().getExpansion().hasContains()) {
       for(ValueSet.ValueSetExpansionContainsComponent vsec : vse.getValueset().getExpansion().getContains())
         valid_codes.add("\"" + vsec.getCode() + "\"");
     }

@@ -444,7 +444,8 @@ public class Utilities {
 
   public static boolean isPlural(String word) {
     word = word.toLowerCase();
-    if ("restricts".equals(word) || "contains".equals(word) || "data".equals(word) || "specimen".equals(word))
+    if ("restricts".equals(word) || "contains".equals(word) || "data".equals(word) || "specimen".equals(word) || "replaces".equals(word) || "addresses".equals(word) 
+        || "supplementalData".equals(word) || "instantiates".equals(word))
       return false;
     Inflector inf = new Inflector();
     return !inf.singularize(word).equals(word);
@@ -1010,6 +1011,31 @@ public class Utilities {
 
   private static boolean isWindows() {
     return System.getProperty("os.name").startsWith("Windows");
+  }
+
+
+  public static String splitLineForLength(String line, int prefixLength, int indent, int allowedLength) {
+    List<String> list = new ArrayList<String>();
+    while (prefixLength + line.length() > allowedLength) {
+      int i = allowedLength - (list.size() == 0 ? prefixLength : indent);
+      while (i > 0 && line.charAt(i) != ' ')
+        i--;
+      if (i == 0)
+        break;
+      list.add(line.substring(0, i));
+      line = line.substring(i+1);
+    }
+    list.add(line);
+    StringBuilder b = new StringBuilder();
+    boolean first = true;
+    for (String s : list) {
+      if (first)
+        first = false;
+      else
+        b.append("\r\n"+padLeft("", ' ', indent));
+      b.append(s);
+    }
+    return b.toString();
   }
 
 

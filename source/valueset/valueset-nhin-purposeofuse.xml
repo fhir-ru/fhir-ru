@@ -70,7 +70,7 @@
           <target>
             <code value="HMARKT"/>
             <equivalence value="narrower"/>
-            <comments value="Not clear how much difference there is between &#39;marketing&#39; and &#39;healthcare marketing&#39;"/>
+            <comment value="Not clear how much difference there is between &#39;marketing&#39; and &#39;healthcare marketing&#39;"/>
           </target>
         </element>
         <element>
@@ -116,7 +116,7 @@
           <target>
             <code value="HRESCH"/>
             <equivalence value="narrower"/>
-            <comments value="Not clear how much difference there is between &#39;research&#39; and &#39;healthcare research&#39;"/>
+            <comment value="Not clear how much difference there is between &#39;research&#39; and &#39;healthcare research&#39;"/>
           </target>
         </element>
         <element>
@@ -157,6 +157,7 @@
   <name value="NHIN PurposeOfUse"/>
   <status value="active"/>
   <experimental value="false"/>
+  <date value="2010-01-29"/>
   <publisher value="Nationwide Health Information Network (NHIN)"/>
   <contact>
     <telecom>
@@ -164,7 +165,6 @@
       <value value="https://www.healthit.gov/sites/default/files/nhin-authorization-framework-production-specification-v2.0-1.pdf"/>
     </telecom>
   </contact>
-  <date value="2010-01-29"/>
   <description value="This value set is suitable for use with the provenance resource. It is derived from, but not compatible with, the HL7 v3 Purpose of use Code system."/>
   <compose>
     <include>

@@ -10,8 +10,10 @@
 
  -- Row 2 -----------------------------------
   Binding Name = EpisodeOfCareType
-  Binding = unbound
+  Binding = value set
+  Reference = valueset-episodeofcare-type
   Definition = The type of the episode of care
+  Conformance = example
 
  -- Row 3 -----------------------------------
   Binding Name = EpisodeOfCareTeamRole
@@ -26,7 +28,7 @@
   Id = 1
   Code = planned
   Display = Planned
-  Definition = This episode of care is planned to start at the date specified in the period.start. During this status an organization may perform assessments to determine if they are eligible to receive services, or be organizing to make resources available to provide care services.
+  Definition = This episode of care is planned to start at the date specified in the period.start. During this status, an organization may perform assessments to determine if the patient is eligible to receive services, or be organizing to make resources available to provide care services.
 
  -- Row 2 -----------------------------------
   Id = 2
@@ -50,7 +52,7 @@
   Id = 5
   Code = finished
   Display = Finished
-  Definition = This episode of care is finished at the organization is not expecting to be providing care to the patient. Can also be known as \"closed\", \"completed\" or other similar terms.
+  Definition = This episode of care is finished and the organization is not expecting to be providing further care to the patient. Can also be known as \"closed\", \"completed\" or other similar terms.
 
  -- Row 6 -----------------------------------
   Id = 6
@@ -72,7 +74,7 @@
  -- Row 1 -----------------------------------
   Element = EpisodeOfCare
   Aliases = Case Program Problem
-  UML = 200;0
+  UML = 0;0
   Type = DomainResource
   Short Name = An association of a Patient with an Organization and  Healthcare Provider(s) for a period of time that the Organization assumes some level of responsibility
   Definition = An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time.
@@ -83,8 +85,8 @@
   Element = EpisodeOfCare.identifier
   Card. = 0..*
   Type = Identifier
-  Short Name = Identifier(s) for the EpisodeOfCare
-  Definition = Identifier(s) by which this EpisodeOfCare is known
+  Short Name = Business Identifier(s) relevant for this EpisodeOfCare
+  Definition = The EpisodeOfCare may be known by different identifiers for different contexts of use, such as when an external agency is tracking the Episode for funding purposes.
   w5 = id
 
  -- Row 3 -----------------------------------
@@ -96,13 +98,14 @@
   Binding = EpisodeOfCareStatus
   Short Name = planned | waitlist | active | onhold | finished | cancelled | entered-in-error
   Definition = planned | waitlist | active | onhold | finished | cancelled
+  Comments = This element is labeled as a modifier because the status contains codes that mark the episode as not currently valid
   w5 = status
 
  -- Row 4 -----------------------------------
   Element = EpisodeOfCare.statusHistory
   Card. = 0..*
-  UML = 0;220
-  Short Name = Past list of status codes
+  UML = down
+  Short Name = Past list of status codes (the current status may be included to cover the start date of the status)
   Definition = The history of statuses that the EpisodeOfCare has been through (without requiring processing the history of the resource)
 
  -- Row 5 -----------------------------------
@@ -117,7 +120,7 @@
   Element = EpisodeOfCare.statusHistory.period
   Card. = 1..1
   Type = Period
-  Short Name = Period for the status
+  Short Name = Duration the EpisodeOfCare was in the specified status
   Definition = The period during this EpisodeOfCare that the specific status applied
 
  -- Row 7 -----------------------------------
@@ -132,23 +135,45 @@
   w5 = class
 
  -- Row 8 -----------------------------------
-  Element = EpisodeOfCare.condition
+  Element = EpisodeOfCare.diagnosis
   Card. = 0..*
+  Summary = y
+  Type = =Diagnosis
+  Short Name = The list of diagnosis relevant to this episode of care
+
+ -- Row 9 -----------------------------------
+  Element = EpisodeOfCare.diagnosis.condition
+  Card. = 1..1
+  Summary = y
   Type = Reference(Condition)
   Short Name = Conditions/problems/diagnoses this episode of care is for
   Definition = A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for
   w5 = what
 
- -- Row 9 -----------------------------------
+ -- Row 10 -----------------------------------
+  Element = EpisodeOfCare.diagnosis.role
+  Card. = 0..1
+  Summary = y
+  Type = CodeableConcept
+  Binding = DiagnosisRole
+  Short Name = Role that this diagnosis has within the episode of care (e.g. admission, billing, discharge …)
+
+ -- Row 11 -----------------------------------
+  Element = EpisodeOfCare.diagnosis.rank
+  Card. = 0..1
+  Summary = y
+  Type = positiveInt
+  Short Name = Ranking of the diagnosis (for each role type)
+
+ -- Row 12 -----------------------------------
   Element = EpisodeOfCare.patient
   Card. = 1..1
   Summary = Y
   Type = Reference(Patient)
-  Short Name = Patient for this episode of care
-  Definition = The patient that this EpisodeOfCare applies to
+  Short Name = The patient who is the focus of this episode of care
   w5 = who.focus
 
- -- Row 10 -----------------------------------
+ -- Row 13 -----------------------------------
   Element = EpisodeOfCare.managingOrganization
   Card. = 0..1
   Summary = Y
@@ -157,7 +182,7 @@
   Definition = The organization that has assumed the specific responsibilities for the specified duration
   Committee Notes = This was left as 0..1 to permit small systems having an implied Organization
 
- -- Row 11 -----------------------------------
+ -- Row 14 -----------------------------------
   Element = EpisodeOfCare.period
   Card. = 0..1
   Summary = Y
@@ -166,30 +191,30 @@
   Definition = The interval during which the managing organization assumes the defined responsibility
   w5 = when.init
 
- -- Row 12 -----------------------------------
+ -- Row 15 -----------------------------------
   Element = EpisodeOfCare.referralRequest
   Card. = 0..*
   Type = Reference(ReferralRequest)
   Short Name = Originating Referral Request(s)
   Definition = Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming referrals
 
- -- Row 13 -----------------------------------
+ -- Row 16 -----------------------------------
   Element = EpisodeOfCare.careManager
   Card. = 0..1
   Type = Reference(Practitioner)
   Short Name = Care manager/care co-ordinator for the patient
   Definition = The practitioner that is the care manager/care co-ordinator for this patient
 
- -- Row 14 -----------------------------------
+ -- Row 17 -----------------------------------
   Element = EpisodeOfCare.team
   Card. = 0..*
   Aliases = CareTeam
-  UML = 420;220
+  UML = right
   Type = Reference(CareTeam)
   Short Name = Other practitioners facilitating this episode of care
   Definition = The list of practitioners that may be facilitating this episode of care for specific purposes
 
- -- Row 15 -----------------------------------
+ -- Row 18 -----------------------------------
   Element = !EpisodeOfCare.careTeam.role
   Card. = 0..*
   Type = CodeableConcept
@@ -197,14 +222,14 @@
   Short Name = Role taken by this team member
   Definition = The role this team member is taking within this episode of care
 
- -- Row 16 -----------------------------------
+ -- Row 19 -----------------------------------
   Element = !EpisodeOfCare.careTeam.period
   Card. = 0..1
   Type = Period
   Short Name = Period of time for this role
   Definition = The period of time this practitioner is performing some role within the episode of care
 
- -- Row 17 -----------------------------------
+ -- Row 20 -----------------------------------
   Element = !EpisodeOfCare.careTeam.member
   Card. = 0..1
   Type = Reference(Practitioner|Organization)
@@ -213,7 +238,7 @@
   Comments = Where an Organization is included in the CareTeam, it is really providing some form of services to the EpisodeOfCare (e.g. Jim\'s Mowing Services) the details of the services would be included on a CarePlan
   w5 = who
 
- -- Row 18 -----------------------------------
+ -- Row 21 -----------------------------------
   Element = EpisodeOfCare.account
   Card. = 0..*
   Type = Reference(Account)
@@ -260,7 +285,7 @@
  -- Row 7 -----------------------------------
   Name = condition
   Type = reference
-  Path = EpisodeOfCare.condition
+  Path = EpisodeOfCare.diagnosis.condition
   Target Types = Condition
 
  -- Row 8 -----------------------------------
@@ -275,12 +300,6 @@
   Type = reference
   Path = EpisodeOfCare.careManager
   Target Types = Practitioner
-
- -- Row 10 -----------------------------------
-  Name = !team-member
-  Type = reference
-  Description = A Practitioner or Organization allocated to the care team for this EpisodeOfCare
-  Path = EpisodeOfCare.careTeam.member
 
 === Sheet Profiles =====================================
 

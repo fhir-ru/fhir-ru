@@ -11,7 +11,7 @@
   
   <subtype>
     <coding>
-      <system value="http://hl7.org/fhir/media-method"/>
+      <system value="http://hl7.org/fhir/media-subtype"/>
       <code value="diagram"/>
     </coding>
   </subtype>
@@ -23,7 +23,9 @@
     <reference value="Practitioner/xcda-author"/>
   </operator>
   
-  <deviceName value="Acme Camera"/>
+  <device>
+    <display value="Acme Camera"/>
+  </device>
   <height value="145"/>
   <width value="126"/>
   <!-- frames - 1 is the default value, but it can still be specified -->

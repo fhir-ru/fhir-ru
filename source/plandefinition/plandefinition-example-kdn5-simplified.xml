@@ -80,17 +80,9 @@
         </coding>
         <text value="gemcitabine" />
       </productCodeableConcept>
-      <dosageInstruction>
-        <text value="1250 mg/m² IV over 30 minutes on days 1 and 8" />
+      <dosage>
+        <text value="1250 mg/m² IV over 30 minutes" />
         <timing>
-          <extension url="http://example.org/fhir/daysOfCycle">
-            <extension url="day">
-              <valueInteger value="1" />
-            </extension>
-            <extension url="day">
-              <valueInteger value="8" />
-            </extension>
-          </extension>
           <repeat>
             <duration value="30" />
             <durationUnit value="min" />
@@ -103,7 +95,7 @@
           <value value="1250" />
           <unit value="mg/m²" />
         </doseQuantity>
-      </dosageInstruction>
+      </dosage>
     </ActivityDefinition>
   </contained>
   <contained>
@@ -118,14 +110,9 @@
         </coding>
         <text value="CARBOplatin" />
       </productCodeableConcept>
-      <dosageInstruction>
-        <text value="AUC 5 IV over 30 minutes on Day 1" />
+      <dosage>
+        <text value="AUC 5 IV over 30 minutes" />
         <timing>
-          <extension url="http://example.org/fhir/daysOfCycle">
-            <extension url="day">
-              <valueInteger value="1" />
-            </extension>
-          </extension>
           <repeat>
             <duration value="30" />
             <durationUnit value="min" />
@@ -144,7 +131,7 @@
           <system value="http://snomed.info/sct" />
           <code value="413573002" /> -->
         </doseQuantity>
-      </dosageInstruction>
+      </dosage>
     </ActivityDefinition>
   </contained>
 
@@ -159,6 +146,7 @@
   </type>
   <status value="draft" />
   <experimental value="true" />
+  <publisher value="National Comprehensive Cancer Network, Inc." />
   <approvalDate value="2016-07-27" />
   <lastReviewDate value="2016-07-27" />
   <!-- Indications -->
@@ -238,7 +226,6 @@
     <type value="author" />
     <name value="Lee Surprenant" />
   </contributor>
-  <publisher value="National Comprehensive Cancer Network, Inc." />
   <copyright value="All rights reserved." />
   <!-- list of references for the order template -->
   <relatedArtifact>
@@ -256,21 +243,17 @@
     <url value="http://www.ncbi.nlm.nih.gov/pubmed/17437788" />
   </relatedArtifact>
 
-  <actionDefinition>
+  <action>
     <!-- list of regimen options. in this case only one -->
     <selectionBehavior value="exactly-one"/>
-    <actionDefinition>
+    <action>
       <!-- list of regimen parts. in this case only one -->
       <selectionBehavior value="all"/>
-      <actionDefinition>
+      <action>
         <!-- list of cycle definitions. in this case only one -->
         <groupingBehavior value="sentence-group" />
         <selectionBehavior value="exactly-one"/>
-        <actionDefinition>
-          <actionIdentifier>
-            <system value="http://example.org/ordertemplates/KDN5" />
-            <value value="cycle-definition-1" />
-          </actionIdentifier>
+        <action id="cycle-definition-1">
           <textEquivalent value="21-day cycle for 6 cycles" />
 
           <timingTiming>
@@ -284,20 +267,37 @@
           <!-- list of regimen entry references for this regimen part -->
           <!-- references would duplicated in each cycle definition option
           (see http://build.fhir.org/codesystem-action-grouping-behavior.html#sentence-group)-->
-          <actionDefinition>
+          <action id="action-1">
+            <extension url="http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle">
+              <extension url="day">
+                <valueInteger value="1" />
+              </extension>
+              <extension url="day">
+                <valueInteger value="8" />
+              </extension>
+            </extension>
             <textEquivalent value="Gemcitabine 1250 mg/m² IV over 30 minutes on days 1 and 8" />
-            <activityDefinition>
+            <definition>
               <reference value="#1111"/>
-            </activityDefinition>
-          </actionDefinition>
-          <actionDefinition>
+            </definition>
+          </action>
+          <action id="action-2">
+            <extension url="http://hl7.org/fhir/StructureDefinition/timing-daysOfCycle">
+              <extension url="day">
+                <valueInteger value="1" />
+              </extension>
+            </extension>
             <textEquivalent value="CARBOplatin AUC 5 IV over 30 minutes on Day 1" />
-            <activityDefinition>
+            <relatedAction>
+              <actionId value="action-1"/>
+              <relationship value="concurrent-with-start"/>
+            </relatedAction>
+            <definition>
               <reference value="#2222"/>
-            </activityDefinition>
-          </actionDefinition> <!-- end of regimen entries -->
-        </actionDefinition> <!-- end of cycle definitions -->
-      </actionDefinition> <!-- end of regimen parts -->
-    </actionDefinition> <!-- end of regimen options -->
-  </actionDefinition>
+            </definition>
+          </action> <!-- end of regimen entries -->
+        </action> <!-- end of cycle definitions -->
+      </action> <!-- end of regimen parts -->
+    </action> <!-- end of regimen options -->
+  </action>
 </PlanDefinition>

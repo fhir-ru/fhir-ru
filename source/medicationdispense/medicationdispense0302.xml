@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MedicationDispense xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationdispense.xsd"
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationdispense.xsd"
  xmlns="http://hl7.org/fhir">
     <id value="meddisp0302"/>
     <contained>
@@ -14,7 +14,6 @@
             </coding>
         </code>
         <isBrand value="true"/>
-        <product>
             <form>
                 <coding>
                     <system value="http://snomed.info/sct"/>
@@ -43,11 +42,8 @@
                     </denominator>
                 </amount>
             </ingredient>
-            <batch>
-                <lotNumber value="12345"/>
-                <expirationDate value="2019-10-31"/>
-            </batch>
-        </product>
+
+        
         <package>
             <container>
                 <coding>
@@ -70,6 +66,10 @@
                     <code value="mL"/>
                 </amount>
             </content>
+            <batch>
+                <lotNumber value="12345"/>
+                <expirationDate value="2019-10-31"/>
+            </batch>
         </package>
         </Medication>
     </contained>
@@ -78,22 +78,26 @@
         <reference value="#med0360"/>
         <display value="Novolog 100u/ml"/>
     </medicationReference>
-    <patient>
+    <subject>
         <reference value="Patient/pat1"/>
         <display value="Donald Duck"/>
-    </patient>
-    <dispenser>
-        <reference value="Practitioner/f006"/>
-        <display value="Rob van den Berk"/>
-    </dispenser>
+    </subject>
+    <performer>
+        <actor>
+            <reference value="Practitioner/f006"/>
+        </actor>
+        <onBehalfOf>
+            <reference value="Organization/2.16.840.1.113883.19.5"></reference>
+        </onBehalfOf>
+    </performer>
     <authorizingPrescription>
         <reference value="MedicationRequest/medrx0321"/>
     </authorizingPrescription>
     <type>
         <coding>
-            <system value="http://hl7.org/fhir/v3/ActPharmacySupplyType"/>
-            <code value="PF"/>
-            <display value="partial Fill"/>
+            <system value="http://hl7.org/fhir/v3/ActCode"/>
+            <code value="RFP"/>
+            <display value="Refill - Part Fill"/>
         </coding>
     </type>
     <quantity>
@@ -112,9 +116,9 @@
     <dosageInstruction>
         <sequence value="1"/>
         <text value="Before Breakfast"/>
-        <additionalInstructions>
+        <additionalInstruction>
             <text value="Check sugar level before taking Novolog"/>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <frequency value="1"/>
@@ -132,9 +136,9 @@
     <dosageInstruction>
         <sequence value="1"/>
         <text value="15 units before lunch"/>
-        <additionalInstructions>
+        <additionalInstruction>
             <text value="Check sugar level before taking Novolog"/>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <frequency value="1"/>
@@ -152,9 +156,9 @@
     <dosageInstruction>
         <sequence value="1"/>
         <text value="20 units before dinner"/>
-        <additionalInstructions>
+        <additionalInstruction>
             <text value="Check sugar level before taking Novolog"/>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <frequency value="1"/>

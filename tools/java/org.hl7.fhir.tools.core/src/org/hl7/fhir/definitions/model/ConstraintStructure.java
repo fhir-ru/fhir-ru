@@ -12,23 +12,32 @@ public class ConstraintStructure {
   private ImplementationGuideDefn usage;
   private String owner; // id of the AP that owns this
   private ImplementationGuidePackageResourceComponent resourceInfo;
+  private WorkGroup wg;
+  private String fmm;
+  private boolean experimental;
     
-  public ConstraintStructure(StructureDefinition resource, ImplementationGuideDefn usage) {
+  public ConstraintStructure(StructureDefinition resource, ImplementationGuideDefn usage, WorkGroup wg, String fmm, boolean experimental) {
     this.id = resource.getId();
     this.title = resource.getName();
     this.resource = resource;
     if (usage == null)
       throw new Error("No usage on profile on "+resource.getName());
     this.usage = usage;
+    this.wg = wg;
+    this.fmm = fmm;
+    this.experimental = experimental;
   }
 
-  public ConstraintStructure(String id, String title, ResourceDefn defn, ImplementationGuideDefn usage) {
+  public ConstraintStructure(String id, String title, ResourceDefn defn, ImplementationGuideDefn usage, WorkGroup wg, String fmm, boolean experimental) {
     this.id = id;
     this.title = title;
     this.defn = defn;
     this.usage = usage;
     if (usage == null)
       throw new Error("No usage on profile "+id+" ("+title+"):");
+    this.wg = wg;
+    this.fmm = fmm;
+    this.experimental = experimental;
   }
 
   public String getTitle() {
@@ -86,6 +95,22 @@ public class ConstraintStructure {
 
   public ImplementationGuidePackageResourceComponent getResourceInfo() {
     return resourceInfo;
+  }
+
+  public WorkGroup getWg() {
+    return wg;
+  }
+
+  public void setWg(WorkGroup wg) {
+    this.wg = wg;
+  }
+
+  public String getFmm() {
+    return fmm;
+  }
+
+  public void setFmm(String fmm) {
+    this.fmm = fmm;
   }
 
   

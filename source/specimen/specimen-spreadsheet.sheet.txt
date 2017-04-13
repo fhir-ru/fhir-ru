@@ -23,9 +23,9 @@
   Conformance = example
 
  -- Row 4 -----------------------------------
-  Binding Name = SpecimenTreatmentProcedure
+  Binding Name = SpecimenProcessingProcedure
   Binding = value set
-  Reference = valueset-specimen-treatment-procedure
+  Reference = valueset-specimen-processing-procedure
   Definition = Type indicating the technique used to process the specimen
   Conformance = example
 
@@ -125,6 +125,7 @@
   Binding = SpecimenStatus
   Short Name = available | unavailable | unsatisfactory | entered-in-error
   Definition = The availability of the specimen
+  Comments = This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid
   v2 Mapping = SPM-20
   RIM Mapping = status
   Committee Notes = [#5829}
@@ -195,10 +196,10 @@
  -- Row 11 -----------------------------------
   Element = Specimen.request
   Card. = 0..*
-  Type = Reference(DiagnosticRequest|ProcedureRequest)
+  Type = Reference(ProcedureRequest)
   Short Name = Why the specimen was collected
   Definition = Details concerning a test or procedure request that required a specimen to be collected.
-  Comments = The request may be explicit or implied such with a DiagnosticRequest that requires a blood draw.
+  Comments = The request may be explicit or implied such with a ProcedureRequest that requires a blood draw.
   v2 Mapping = ORC? OBR-2/3?
   RIM Mapping = outboundRelationship[typeCode=FLFS].target
   Committee Notes = [#9663]
@@ -276,31 +277,31 @@
   Committee Notes = #6253
 
  -- Row 19 -----------------------------------
-  Element = Specimen.treatment
+  Element = Specimen.processing
   Card. = 0..*
   UML = down
-  Short Name = Treatment and processing step details
-  Definition = Details concerning treatment and processing steps for the specimen
+  Short Name = Processing and processing step details
+  Definition = Details concerning processing and processing steps for the specimen
   RIM Mapping = .participation[typeCode=SBJ].act[code=SPCTRT, moodCode=EVN]
 
  -- Row 20 -----------------------------------
-  Element = Specimen.treatment.description
+  Element = Specimen.processing.description
   Card. = 0..1
   Type = string
   Short Name = Textual description of procedure
   RIM Mapping = .text
 
  -- Row 21 -----------------------------------
-  Element = Specimen.treatment.procedure
+  Element = Specimen.processing.procedure
   Card. = 0..1
   Type = CodeableConcept
-  Binding = SpecimenTreatmentProcedure
-  Short Name = Indicates the treatment or processing step  applied to the specimen
+  Binding = SpecimenProcessingProcedure
+  Short Name = Indicates the treatment step  applied to the specimen
   Definition = A coded value specifying the procedure used to process the specimen
   RIM Mapping = .code
 
  -- Row 22 -----------------------------------
-  Element = Specimen.treatment.additive
+  Element = Specimen.processing.additive
   Card. = 0..*
   Type = Reference(Substance)
   Short Name = Material used in the processing step
@@ -308,11 +309,12 @@
   RIM Mapping = .participation[typeCode=CSM].role[classCode=ADTV].code
 
  -- Row 23 -----------------------------------
-  Element = Specimen.treatment.time[x]
+  Element = Specimen.processing.time[x]
   Card. = 0..1
   Type = dateTime|Period
-  Short Name = Date and time of specimen treatment
-  Definition = A record of the time or period when the specimen treatment occurred.  For example the time of sample fixation or the period of time the sample was in formalin.
+  Short Name = Date and time of specimen processing
+  Definition = A record of the time or period when the specimen processing occurred.  For example the time of sample fixation or the period of time the sample was in formalin.
+  RIM Mapping = .effectiveTime
 
  -- Row 24 -----------------------------------
   Element = Specimen.container
@@ -455,6 +457,11 @@
   Type = token
   Description = The kind of specimen container
   Path = Specimen.container.type
+
+ -- Row 12 -----------------------------------
+  Name = status
+  Type = token
+  Path = Specimen.status
 
 === Sheet Profiles =====================================
 

@@ -13,8 +13,8 @@ in order to support consistent definitions for schema and UML derived code.
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
-<table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a><a _target="blank" href="[%wg aid%]">[%wgt aid%]</a> </td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">n/a</a></td></tr></table>
+<div class="col-12">
+<table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> &amp; <a _target="blank" href="[%wg aid%]">[%wgt aid%]</a> </td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <a name="root"> </a>
 <h2>Implementation Support Module</h2>
@@ -22,7 +22,7 @@ in order to support consistent definitions for schema and UML derived code.
 <a name="intro"> </a>
 <h3>Introduction</h3>
 <p>
-This section provides information which will be useful for FHIR implementors,
+This section provides information which will be useful for FHIR implementers,
 including information about available libraries, tools, and other similar
 resources, as well as where to seek help.
 </p>
@@ -45,9 +45,9 @@ encountered by developers:
     <ul>
      <li><a href="testing.html">Testing FHIR</a> + <a href="testscript.html">TestScript</a> + <a href="testreport.html">TestReport</a></li>
      <li><a href="validation.html">Validating Resources</a></li>
-     <li><a href="mapping-language.html">Mapping Language</a> (<a href="mapping-tutorial.html">Tutorial</a>)</li>
+     <li><a href="mapping-language.html">Mapping Language</a> (<a href="mapping-tutorial.html">Tutorial</a> &amp; <a href="structuremap.html">StructureMap</a>)</li>
      <li><a href="usecases.html">Common Usages</a></li>
-     <li><a href="compatibility.html">Inter-version Compatibility</a></li>
+     <li><a href="versions.html">Version Management Policy</a></li>
     </ul>
   </td>
   <td>
@@ -83,15 +83,14 @@ For more general considerations, see <a href="secpriv-module.html">the Security 
 </p>
 
 <a name="uses"> </a>
-<h3>Common use Cases</h3>
+<h3>Common Use Cases</h3>
 
 <h4>For Client Developers and Testers: Reference Servers</h4>
 <p>
-	The following reference servers have been created by the FHIR team, and
-	are provided made available to help implemeters to test their code. While
-	the reference servers are not considered to be a normative part of the FHIR
-	specification, the maintainers make every effort to ensure that they are
-	fully compliant.
+	The following reference servers have been created by the FHIR team and
+	made available to help implementers test their code. While the reference
+	servers are not considered to be a normative part of the FHIR specification,
+	the maintainers make every effort to ensure that they are fully compliant.
 </p>
 <p>
 	Note that there are a large number of servers available for testing that
@@ -106,7 +105,7 @@ For more general considerations, see <a href="secpriv-module.html">the Security 
 		<tr><td>Healthintersections</td><td>Grahame Grieve</td><td><a href="http://fhir3.healthintersections.com.au/">http://fhir3.healthintersections.com.au/</a></td></tr>
 		<tr><td>Spark</td><td>Furore Informatica</td><td><a href="http://spark.furore.com/">http://spark.furore.com/</a></td></tr>
 		<tr><td>HAPI</td><td>University Health Network / James Agnew</td><td><a href="http://fhirtest.uhn.ca/">http://fhirtest.uhn.ca/</a></td></tr>
-		<tr><td>HealthConnex</td><td>HealthConnex / Brian Postlethwaite</td><td><a href="http://sqlonfhir-may.azurewebsites.net/fhir">http://sqlonfhir-may.azurewebsites.net/fhir</a></td></tr>
+		<tr><td>sqlonfhir</td><td>Telstra Health / Brian Postlethwaite</td><td><a href="http://sqlonfhir-stu3.azurewebsites.net/fhir">http://sqlonfhir-stu3.azurewebsites.net/fhir</a></td></tr>
 	</tbody>
 </table>
 
@@ -133,36 +132,22 @@ For more general considerations, see <a href="secpriv-module.html">the Security 
 <a name="for_profilers"> </a>
 <h4>For Profilers</h4>
 <p>
-	The following tools are available to profilers wishing to create
-	profiles for use in their implementations. See the
+	A number of tools are available to profilers wishing to create
+	profiles for use in their implementations. A current list of tools can be found
+	<a href="http://wiki.hl7.org/index.php?title=Profile_Tooling#Editing_.2F_Authoring_Profiles">here</a>
+	on the HL7 wiki.  (See the
 	<a href="./conformance-module.html">conformance module</a> for
-	information on profiling.
+	information on profiling.)
 </p>
-<table class="grid">
-	<thead>
-		<tr><th>Tool</th><th>Link</th></tr>
-	</thead>
-	<tbody>
-		<tr><th>Forge</th><th><a href="http://fhir.furore.com/Forge">http://fhir.furore.com/Forge</a></th></tr>
-	</tbody>
-</table>
 
-<a name="for_profilers"> </a>
+<a name="for_testers"> </a>
 <h4>For Testers</h4>
 <p>
-	The following tools are available to solution testers who
+	A number of tools are available to solution testers who
 	want to test FHIR implementations for conformance to the
-	FHIR specification.
+	FHIR specification.  A current list of such tools can be found
+	<a href="http://wiki.hl7.org/index.php?title=FHIR_Testing_Platforms">here</a>.
 </p>
-<table class="grid">
-	<thead>
-		<tr><th>Tool</th><th>Link</th></tr>
-	</thead>
-	<tbody>
-		<tr><td>Touchstone</td><td><a href="http://www.aegis.net/touchstone.html">http://www.aegis.net/touchstone.html</a></td></tr>
-		<tr><td>Crucible</td><td><a href="https://projectcrucible.org/">https://projectcrucible.org/</a></td></tr>
-	</tbody>
-</table>
 
 <a name="help"> </a>
 <h3>Getting Help</h3>
@@ -171,8 +156,8 @@ For more general considerations, see <a href="secpriv-module.html">the Security 
 	as they work with FHIR:
 </p>
 <ul>
-  <li><a href="http://community.fhir.org/">FHIR Community Forum</a> (maintained by fhir.org)</li>
   <li><a href="http://chat.fhir.org/">FHIR Chat Channel / Zulip</a> (maintained by fhir.org)</li>
+  <li><a href="http://community.fhir.org/">FHIR Community Forum</a> (maintained by fhir.org)</li>
   <li><a href="http://stackoverflow.com/questions/tagged/hl7_fhir">StackOverflow</a> (General tech community, use the tag <code>hl7_fhir</code>)</li>
 </ul>
 
@@ -186,7 +171,7 @@ endpoints available for testing which conform to a very recent build.
 </p>
 <p>
 Efforts are now underway to create a curated collection of quality test data which
-can be used by FHIR implementers to help test their applcations. This collection will
+can be used by FHIR implementers to help test their applications. This collection will
 be made available when it is ready.
 </p>
 

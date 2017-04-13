@@ -15,35 +15,72 @@
       </code>
     </Medication>
   </contained>
+  <contained>
+    <Provenance>
+      <id value="signature"/>
+      <target>
+        <reference value="ProcedureRequest/physiotherapy"/>
+      </target>
+      <recorded value="2017-02-01T17:23:07Z"/>
+      <agent>
+        <role>
+          <coding>
+            <system value="http://hl7.org/fhir/v3/ParticipationType"/>
+            <code value="AUT"/>
+          </coding>
+        </role>
+        <whoReference>
+          <reference value="Practitioner/example"/>
+          <display value="Dr Adam Careful"/>
+        </whoReference>
+      </agent>
+      <signature>
+        <type>
+          <system value="urn:iso-astm:E1762-95:2013"/>
+          <code value="1.2.840.10065.1.12.1.1"/>
+          <display value="Author's Signature"/>
+        </type>
+        <when value="2017-02-01T17:23:07Z"/>
+        <whoReference>
+          <reference value="Practitioner/example"/>
+          <display value="Dr Adam Careful"/>
+        </whoReference>
+        <contentType value="application/signature+xml"/>
+        <blob value="dGhpcyBibG9iIGlzIHNuaXBwZWQ="/>
+      </signature>
+    </Provenance>
+  </contained>
   <status value="in-progress" />
   <medicationReference>
     <reference value="#med0301"/> 
   </medicationReference>
- <patient>
+ <subject>
    <reference value="Patient/pat1"/>
    <display value="Donald Duck"/> 
-  </patient>
-  <encounter> 
+  </subject>
+  <context> 
     <reference value="Encounter/f001"/>
     <display value="encounter who leads to this prescription"/>
-  </encounter>
+  </context>
  <effectivePeriod>
   <start value="2015-01-15T14:30:00+01:00"/>
 </effectivePeriod>
   <performer>
-    <reference value="Practitioner/f007"/>
-    <display value="Patrick Pump"/>
+    <actor>
+      <reference value="Practitioner/f007"/>
+      <display value="Patrick Pump"/>
+    </actor>
   </performer>
-  <prescription>
-    <reference value="MedicationRequest/medrx0318"/>
-  </prescription>
-  <reasonGiven>
+  <reasonCode>
     <coding>
       <system value="http://hl7.org/fhir/reason-medication-given"/>
       <code value="b"/>
       <display value="Given as Ordered"/>
     </coding>
-  </reasonGiven>
+  </reasonCode>
+  <prescription>
+    <reference value="MedicationRequest/medrx0318"/>
+  </prescription>
   <dosage>
     <text value="500mg IV q6h x 3 days" />
     <route>
@@ -63,4 +100,8 @@
       <code value="mg"/>
     </dose>
   </dosage>
+  <eventHistory>
+    <reference value="#signature"/>
+    <display value="Author's Signature"/>
+  </eventHistory>
 </MedicationAdministration>

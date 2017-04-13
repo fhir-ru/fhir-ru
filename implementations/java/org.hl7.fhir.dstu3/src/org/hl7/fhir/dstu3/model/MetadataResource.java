@@ -29,7 +29,7 @@ package org.hl7.fhir.dstu3.model;
   
 */
 
-// Generated on Mon, Dec 5, 2016 23:44+1100 for FHIR v1.8.0
+// Generated on Thu, Mar 16, 2017 17:23+1100 for FHIR v3.0.0
 
 import java.util.*;
 
@@ -66,21 +66,21 @@ public abstract class MetadataResource extends DomainResource {
      * A natural language name identifying the metadata resource. This name should be usable as an identifier for the module by machine processing applications such as code generation.
      */
     @Child(name = "name", type = {StringType.class}, order=2, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Name for this metadata resource (Computer friendly)", formalDefinition="A natural language name identifying the metadata resource. This name should be usable as an identifier for the module by machine processing applications such as code generation." )
+    @Description(shortDefinition="Name for this metadata resource (computer friendly)", formalDefinition="A natural language name identifying the metadata resource. This name should be usable as an identifier for the module by machine processing applications such as code generation." )
     protected StringType name;
 
     /**
      * A short, descriptive, user-friendly title for the metadata resource.
      */
     @Child(name = "title", type = {StringType.class}, order=3, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Name for this metadata resource (Human friendly)", formalDefinition="A short, descriptive, user-friendly title for the metadata resource." )
+    @Description(shortDefinition="Name for this metadata resource (human friendly)", formalDefinition="A short, descriptive, user-friendly title for the metadata resource." )
     protected StringType title;
 
     /**
      * The status of this metadata resource. Enables tracking the life-cycle of the content.
      */
     @Child(name = "status", type = {CodeType.class}, order=4, min=1, max=1, modifier=true, summary=true)
-    @Description(shortDefinition="draft | active | retired", formalDefinition="The status of this metadata resource. Enables tracking the life-cycle of the content." )
+    @Description(shortDefinition="draft | active | retired | unknown", formalDefinition="The status of this metadata resource. Enables tracking the life-cycle of the content." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/publication-status")
     protected Enumeration<PublicationStatus> status;
 
@@ -102,7 +102,7 @@ public abstract class MetadataResource extends DomainResource {
      * The name of the individual or organization that published the metadata resource.
      */
     @Child(name = "publisher", type = {StringType.class}, order=7, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Name of the publisher (Organization or individual)", formalDefinition="The name of the individual or organization that published the metadata resource." )
+    @Description(shortDefinition="Name of the publisher (organization or individual)", formalDefinition="The name of the individual or organization that published the metadata resource." )
     protected StringType publisher;
 
     /**
@@ -779,95 +779,118 @@ public abstract class MetadataResource extends DomainResource {
       }
 
       @Override
-      public void setProperty(int hash, String name, Base value) throws FHIRException {
+      public Base setProperty(int hash, String name, Base value) throws FHIRException {
         switch (hash) {
         case 116079: // url
           this.url = castToUri(value); // UriType
-          break;
+          return value;
         case 351608024: // version
           this.version = castToString(value); // StringType
-          break;
+          return value;
         case 3373707: // name
           this.name = castToString(value); // StringType
-          break;
+          return value;
         case 110371416: // title
           this.title = castToString(value); // StringType
-          break;
+          return value;
         case -892481550: // status
-          this.status = new PublicationStatusEnumFactory().fromType(value); // Enumeration<PublicationStatus>
-          break;
+          value = new PublicationStatusEnumFactory().fromType(castToCode(value));
+          this.status = (Enumeration) value; // Enumeration<PublicationStatus>
+          return value;
         case -404562712: // experimental
           this.experimental = castToBoolean(value); // BooleanType
-          break;
+          return value;
         case 3076014: // date
           this.date = castToDateTime(value); // DateTimeType
-          break;
+          return value;
         case 1447404028: // publisher
           this.publisher = castToString(value); // StringType
-          break;
+          return value;
         case 951526432: // contact
           this.getContact().add(castToContactDetail(value)); // ContactDetail
-          break;
+          return value;
         case -669707736: // useContext
           this.getUseContext().add(castToUsageContext(value)); // UsageContext
-          break;
+          return value;
         case -507075711: // jurisdiction
           this.getJurisdiction().add(castToCodeableConcept(value)); // CodeableConcept
-          break;
+          return value;
         case -1724546052: // description
           this.description = castToMarkdown(value); // MarkdownType
-          break;
-        default: super.setProperty(hash, name, value);
+          return value;
+        default: return super.setProperty(hash, name, value);
         }
 
       }
 
       @Override
-      public void setProperty(String name, Base value) throws FHIRException {
-        if (name.equals("url"))
+      public Base setProperty(String name, Base value) throws FHIRException {
+        if (name.equals("url")) {
           this.url = castToUri(value); // UriType
-        else if (name.equals("version"))
+        } else if (name.equals("version")) {
           this.version = castToString(value); // StringType
-        else if (name.equals("name"))
+        } else if (name.equals("name")) {
           this.name = castToString(value); // StringType
-        else if (name.equals("title"))
+        } else if (name.equals("title")) {
           this.title = castToString(value); // StringType
-        else if (name.equals("status"))
-          this.status = new PublicationStatusEnumFactory().fromType(value); // Enumeration<PublicationStatus>
-        else if (name.equals("experimental"))
+        } else if (name.equals("status")) {
+          value = new PublicationStatusEnumFactory().fromType(castToCode(value));
+          this.status = (Enumeration) value; // Enumeration<PublicationStatus>
+        } else if (name.equals("experimental")) {
           this.experimental = castToBoolean(value); // BooleanType
-        else if (name.equals("date"))
+        } else if (name.equals("date")) {
           this.date = castToDateTime(value); // DateTimeType
-        else if (name.equals("publisher"))
+        } else if (name.equals("publisher")) {
           this.publisher = castToString(value); // StringType
-        else if (name.equals("contact"))
+        } else if (name.equals("contact")) {
           this.getContact().add(castToContactDetail(value));
-        else if (name.equals("useContext"))
+        } else if (name.equals("useContext")) {
           this.getUseContext().add(castToUsageContext(value));
-        else if (name.equals("jurisdiction"))
+        } else if (name.equals("jurisdiction")) {
           this.getJurisdiction().add(castToCodeableConcept(value));
-        else if (name.equals("description"))
+        } else if (name.equals("description")) {
           this.description = castToMarkdown(value); // MarkdownType
-        else
-          super.setProperty(name, value);
+        } else
+          return super.setProperty(name, value);
+        return value;
       }
 
       @Override
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
-        case 116079: throw new FHIRException("Cannot make property url as it is not a complex type"); // UriType
-        case 351608024: throw new FHIRException("Cannot make property version as it is not a complex type"); // StringType
-        case 3373707: throw new FHIRException("Cannot make property name as it is not a complex type"); // StringType
-        case 110371416: throw new FHIRException("Cannot make property title as it is not a complex type"); // StringType
-        case -892481550: throw new FHIRException("Cannot make property status as it is not a complex type"); // Enumeration<PublicationStatus>
-        case -404562712: throw new FHIRException("Cannot make property experimental as it is not a complex type"); // BooleanType
-        case 3076014: throw new FHIRException("Cannot make property date as it is not a complex type"); // DateTimeType
-        case 1447404028: throw new FHIRException("Cannot make property publisher as it is not a complex type"); // StringType
-        case 951526432:  return addContact(); // ContactDetail
-        case -669707736:  return addUseContext(); // UsageContext
-        case -507075711:  return addJurisdiction(); // CodeableConcept
-        case -1724546052: throw new FHIRException("Cannot make property description as it is not a complex type"); // MarkdownType
+        case 116079:  return getUrlElement();
+        case 351608024:  return getVersionElement();
+        case 3373707:  return getNameElement();
+        case 110371416:  return getTitleElement();
+        case -892481550:  return getStatusElement();
+        case -404562712:  return getExperimentalElement();
+        case 3076014:  return getDateElement();
+        case 1447404028:  return getPublisherElement();
+        case 951526432:  return addContact(); 
+        case -669707736:  return addUseContext(); 
+        case -507075711:  return addJurisdiction(); 
+        case -1724546052:  return getDescriptionElement();
         default: return super.makeProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public String[] getTypesForProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 116079: /*url*/ return new String[] {"uri"};
+        case 351608024: /*version*/ return new String[] {"string"};
+        case 3373707: /*name*/ return new String[] {"string"};
+        case 110371416: /*title*/ return new String[] {"string"};
+        case -892481550: /*status*/ return new String[] {"code"};
+        case -404562712: /*experimental*/ return new String[] {"boolean"};
+        case 3076014: /*date*/ return new String[] {"dateTime"};
+        case 1447404028: /*publisher*/ return new String[] {"string"};
+        case 951526432: /*contact*/ return new String[] {"ContactDetail"};
+        case -669707736: /*useContext*/ return new String[] {"UsageContext"};
+        case -507075711: /*jurisdiction*/ return new String[] {"CodeableConcept"};
+        case -1724546052: /*description*/ return new String[] {"markdown"};
+        default: return super.getTypesForProperty(hash, name);
         }
 
       }

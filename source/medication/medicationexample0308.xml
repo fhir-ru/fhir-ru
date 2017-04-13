@@ -5,7 +5,6 @@
     <Medication>
       <id value="med500"></id>
       <isBrand value="false"></isBrand>
-      <product>
       <ingredient>
         <itemCodeableConcept>
           <coding>
@@ -15,7 +14,7 @@
           </coding>
         </itemCodeableConcept>
       </ingredient>
-      </product>
+      
     </Medication>
   </contained>
   <contained>
@@ -35,7 +34,6 @@
   <manufacturer>
     <reference value="#org1"/>
   </manufacturer>
-  <product>
     <form>
       <coding>
         <system value="http://snomed.info/sct"/>
@@ -59,7 +57,7 @@
         </numerator>
         <denominator>
           <value value="1"/>
-          <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+          <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
           <code value="TAB"/>
         </denominator>
       </amount>
@@ -80,16 +78,13 @@
         </numerator>
         <denominator>
           <value value="1"/>
-          <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+          <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
           <code value="TAB"/>
         </denominator>
       </amount>
     </ingredient>
-    <batch>
-      <lotNumber value="658484"/>
-      <expirationDate value="2020-07-31"/>
-    </batch>
-  </product>
+
+  
   <package>
     <container>
       <coding>
@@ -104,9 +99,13 @@
       </itemReference>
       <amount>
         <value value="100"/>
-        <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+        <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
         <code value="TAB"/>
       </amount>
     </content>
+    <batch>
+      <lotNumber value="658484"/>
+      <expirationDate value="2020-07-31"/>
+    </batch>
   </package>
 </Medication>

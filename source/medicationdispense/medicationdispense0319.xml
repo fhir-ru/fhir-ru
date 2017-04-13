@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MedicationDispense xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationdispense.xsd"
-    xmlns="http://hl7.org/fhir">
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationdispense.xsd"
+ xmlns="http://hl7.org/fhir">
     <id value="meddisp0319"/>
     <contained>
         <Medication>
@@ -20,20 +20,24 @@
         <reference value="#med0320"></reference>
         <display value="Azithromycin 250mg capsule (product)"/>
     </medicationReference>
-    <patient>
+    <subject>
         <reference value="Patient/pat1"/>
         <display value="Donald Duck"/>
-    </patient>
-    <dispenser>
-        <reference value="Practitioner/f006"/>
-        <display value="Rob van den Berk"/>
-    </dispenser>
+    </subject>
+    <performer>
+        <actor>
+            <reference value="Practitioner/f006"/>
+        </actor>
+        <onBehalfOf>
+            <reference value="Organization/2.16.840.1.113883.19.5"></reference>
+        </onBehalfOf>
+    </performer>
     <authorizingPrescription>
         <reference value="MedicationRequest/medrx0302"/>
     </authorizingPrescription>
     <type>
         <coding>
-            <system value="http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType"/>
+            <system value="http://hl7.org/fhir/v3/ActCode"/>
             <code value="FFC"/>
             <display value="First Fill - Complete"/>
         </coding>
@@ -57,13 +61,13 @@
     <dosageInstruction>
         <sequence value="1"/>
         <text value="Two tablets at once" />
-        <additionalInstructions>
+        <additionalInstruction>
             <coding>
                 <system value="http://snomed.info/sct"/>
                 <code value="311504000"/>
                 <display value="With or after food"/>
             </coding>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <frequency value="1"/>
@@ -88,20 +92,20 @@
         <doseQuantity>
             <value value="2"/>
             <unit value="TAB"/>
-            <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+            <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
             <code value="TAB"/>
         </doseQuantity>
     </dosageInstruction>
     <dosageInstruction>
         <sequence value="2"/>
         <text value="One tablet daily for 4 days" />
-        <additionalInstructions>
+        <additionalInstruction>
             <coding>
                 <system value="http://snomed.info/sct"/>
                 <code value="311504000"/>
                 <display value="With or after food"/>
             </coding>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <frequency value="4"/>
@@ -119,7 +123,7 @@
         <doseQuantity>
             <value value="1"/>
             <unit value="TAB"/>
-            <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+            <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
             <code value="TAB"/>
         </doseQuantity>
     </dosageInstruction>   

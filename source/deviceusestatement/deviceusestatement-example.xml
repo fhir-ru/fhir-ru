@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DeviceUseStatement xmlns="http://hl7.org/fhir">
-  <id value="example"/>
-  <text>
-    <status value="generated" />
-    <div xmlns="http://www.w3.org/1999/xhtml">To be filled out at a later time</div>
-  </text>
-  
-  <!-- insert contents here -->
-  <device>
-    <reference value="Device/example"/>
-  </device>
-  
-  <subject>
-    <reference value="Patient/example"/>
-  </subject>
+	<id value="example"/>
+	<identifier>
+		<system value="http:goodhealth.org/identifiers"/>
+		<value value="51ebb7a9-4e3a-4360-9a05-0cc2d869086f"/>
+	</identifier>
+	<status value="active"/>
+	<subject>
+		<reference value="Patient/example"/>
+	</subject>
+	<device>
+		<reference value="Device/example"/>
+	</device>
 </DeviceUseStatement>

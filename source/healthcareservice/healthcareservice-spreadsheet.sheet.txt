@@ -77,7 +77,7 @@
   Id = 4
   Code = semail
   Display = Secure Email
-  Definition = Referrals may be accepted via a secure email. To send please enrypt with the services public key.
+  Definition = Referrals may be accepted via a secure email. To send please encrypt with the services public key.
 
  -- Row 5 -----------------------------------
   Id = 5
@@ -180,6 +180,7 @@
   Type = boolean
   Short Name = Whether this healthcareservice is in active use
   Definition = Whether this healthcareservice record is in active use
+  Comments = This element is labeled as a modifier because it may be used to mark that the resource was created in error
   RIM Mapping = .statusCode
   Default Value = True
   w5 = status
@@ -196,8 +197,9 @@
   Committee Notes = Most questions on this resource have been about who is the organization that provides this service. So the inclusion of this property removes this ambiguity (especially with the removal of locations on the Organization)
 
  -- Row 5 -----------------------------------
-  Element = HealthcareService.serviceCategory
+  Element = HealthcareService.category
   Card. = 0..1
+  Aliases = service category
   Summary = Y
   Type = CodeableConcept
   Binding = service-category
@@ -218,8 +220,9 @@
   RIM Mapping = .actrelationship[typeCode=COMP.act[classCode=ACT][moodCode=DEF].code
 
  -- Row 7 -----------------------------------
-  Element = HealthcareService.serviceType
+  Element = HealthcareService.type
   Card. = 0..*
+  Aliases = service type
   Summary = Y
   Type = CodeableConcept
   Binding = service-type
@@ -248,7 +251,7 @@
   w5 = where
 
  -- Row 10 -----------------------------------
-  Element = HealthcareService.serviceName
+  Element = HealthcareService.name
   Card. = 0..1
   Summary = Y
   Type = string
@@ -310,6 +313,7 @@
   Definition = The code(s) that detail the conditions under which the healthcare service is available/offered
   Comments = The provision means being commissioned by, contractually obliged or financially sourced. Types of costings that may apply to this healthcare service, such if the service may be available for free, some discounts available, or fees apply.
   RIM Mapping = .actrelationship[typeCode=PRCN].observation[moodCode=EVN.CRT]
+  Committee Notes = The name \"Service Provision Code\" is how this is known and should be permitted to have the name overlap (Provision Code doesn\'t have the same meaning) - This was the same in Australia and the UK
 
  -- Row 17 -----------------------------------
   Element = HealthcareService.eligibility
@@ -358,13 +362,14 @@
   RIM Mapping = .actrelationship[typeCode=PERT].observation
 
  -- Row 22 -----------------------------------
-  Element = HealthcareService.publicKey
+  Element = !HealthcareService.publicKey
   Card. = 0..1
   Type = string
   Short Name = PKI Public keys to support secure communications
   Definition = The public part of the \'keys\' allocated to an Organization by an accredited body to support secure exchange of data over the internet. To be provided by the Organization, where available
   Comments = Note: This is a base64 encoded digital certificate.
   RIM Mapping = .certificateText
+  Committee Notes = The Public Key has been commented out and left for extensions in STU3, to be consistent with the Endpoint resource that also had this property.
 
  -- Row 23 -----------------------------------
   Element = HealthcareService.appointmentRequired
@@ -498,6 +503,7 @@
   Short Name = Technical endpoints providing access to services operated for the location
   Definition = Technical endpoints providing access to services operated for the specific healthcare services defined at this resource
   Requirements = Organizations may have different systems covering different services at the different locations and need to be able to define the technical connection details for how to connect to them, and for what purpose
+  RIM Mapping = n/a
 
 === Sheet Search =====================================
 
@@ -507,16 +513,16 @@
   Path = HealthcareService.identifier
 
  -- Row 2 -----------------------------------
-  Name = servicecategory
+  Name = category
   Type = token
   Description = Service Category of the Healthcare Service
-  Path = HealthcareService.serviceCategory
+  Path = HealthcareService.category
 
  -- Row 3 -----------------------------------
-  Name = servicetype
+  Name = type
   Type = token
   Description = The type of service provided by this healthcare service
-  Path = HealthcareService.serviceType
+  Path = HealthcareService.type
 
  -- Row 4 -----------------------------------
   Name = !availability
@@ -528,7 +534,7 @@
   Name = name
   Type = string
   Description = A portion of the Healthcare service name
-  Path = HealthcareService.serviceName
+  Path = HealthcareService.name
 
  -- Row 6 -----------------------------------
   Name = location

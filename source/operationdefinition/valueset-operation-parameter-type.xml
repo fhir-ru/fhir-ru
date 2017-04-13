@@ -2,14 +2,14 @@
 
 <ValueSet xmlns="http://hl7.org/fhir">
   <meta>
-    <profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
   </meta>
   <url value="http://hl7.org/fhir/ValueSet/operation-definition-parameter-type"/>
   <name value="Parameter Types used in Operation Definitions"/>
   <status value="draft"/>
   <experimental value="false"/>
-  <publisher value="HL7, Inc. FHIR project"/>
   <date value="2014-07-22"/>
+  <publisher value="HL7, Inc. FHIR project"/>
   <description value="Parameter Types used in Operation Definitions"/>
   <extensible value="false"/>
   <compose>

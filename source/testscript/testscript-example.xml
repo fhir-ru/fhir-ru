@@ -11,6 +11,7 @@
 	<name value="TestScript Example"/>
 	<status value="draft"/>
 	<experimental value="true"/>
+	<date value="2017-01-18"/>
 	<publisher value="HL7"/>
 	<contact>
 		<name value="Support"/>
@@ -20,8 +21,19 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<date value="2016-09-26"/>
 	<description value="TestScript example resource with setup to delete if present and create a new instance of a Patient; and single test definition to read the created Patient with various asserts."/>
+	<useContext>
+		<code>
+			<system value="http://hl7.org/fhir/usage-context-type"/>
+			<code value="focus"/>
+		</code>
+		<valueCodeableConcept>
+			<coding>
+				<system value="http://hl7.org/fhir/variant-state"/>
+				<code value="positive"/>
+			</coding>
+		</valueCodeableConcept>
+	</useContext>
 	<jurisdiction>
 		<coding>
 			<system value="urn:iso:std:iso:3166"/>
@@ -33,13 +45,16 @@
 	<copyright value="© HL7.org 2011+"/>
 
 	<metadata>
+		<link>
+			<url value="http://hl7.org/fhir/patient.html"/>
+			<description value="Demographics and other administrative information about an individual or animal receiving care or other health-related services."/>
+		</link>
 		<capability>
 			<required value="true"/>
 			<description value="Patient Update, Read and Delete Operations"/>
 			<link value="http://hl7.org/fhir/http.html#delete"/>
 			<link value="http://hl7.org/fhir/http.html#read"/>
 			<link value="http://hl7.org/fhir/http.html#update"/>
-			<link value="http://hl7.org/fhir/patient.html"/>
 			<capabilities>
 				<reference value="CapabilityStatement/example" />
 			</capabilities>
@@ -117,6 +132,33 @@
 				<description value="Confirm that the returned HTTP status is 201(Created)."/>
 				<direction value="response"/>
 				<responseCode value="201"/>
+			</assert>
+		</action>
+
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes"/>
+					<code value="read"/>
+				</type>
+				<resource value="Patient"/>
+				<description value="Read the created patient resource on the test server using the id from fixture-patient-create. Verify contents."/>
+				<targetId value="fixture-patient-create"/>
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)."/>
+				<direction value="response"/>
+				<response value="okay"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Patient contains the expected family name 'Chalmers'. Uses explicit compareToSourceId reference to fixture-patient-create used to create the Patient."/>
+				<compareToSourceId value="fixture-patient-create"/>
+				<compareToSourceExpression value="Patient.name.first().family"/>
+				<operator value="equals"/>
 			</assert>
 		</action>
 	</setup>

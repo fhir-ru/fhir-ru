@@ -12,7 +12,7 @@
 
 <a name="base"> </a>
 <h2>Extended Operations on the RESTful API</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
 The <a href="http.html">RESTful API</a> defines a set of common interactions (read, update, search, etc.)
@@ -32,7 +32,7 @@ Operations have the following general properties:
 <ul>
  <li>Each operation has a name</li>
  <li>Each operation has a list of 'in' and 'out' parameters</li>
- <li>Parameters are either resources, data types or search parameters</li>
+ <li>Parameters are either resources, data types, or search parameters</li>
  <li>Operations are subject to the same security constraints and requirements as the RESTful API</li>
  <li>The URIs for the operation end-points are based on the existing RESTful API address scheme</li>
  <li>Operations may make use of the existing repository of resources in their definitions</li>
@@ -189,6 +189,13 @@ Servers SHALL support this method of invocation. E.g.
 GET [base]/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/body-sit&amp;filter=abdo
 </pre>
 <p>
+When using the HTTP GET operation, if there is a repeating parameter for the extended operation the values for that parameter
+are repeated by repeating the named parameter. E.g. Observation $stats statistic parameter
+</p>
+<pre>
+GET [base]/Observation/$stats?subject=Patient/123&amp;code=55284-4&amp;system=http://loinc.org&amp;duration=1&amp;statistic=average&amp;statistic=min&amp;statistic=max&amp;statistic=count
+</pre>
+<p>
 If the only parameter to a specific invocation of the operation is a resource, then the operation
 can also be executed by a POST with that resource as the body of the request.
 </p>
@@ -237,7 +244,7 @@ they will have no <code>id</code> property.
 
 <h3>Executing an Operation Asynchronously</h3>
 
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu"> </a>
 <p>
 <b>STU Note:</b> there is presently no mechanism to execute

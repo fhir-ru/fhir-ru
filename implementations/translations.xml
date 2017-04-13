@@ -4,21 +4,21 @@
      There is no obligation for any implementer to use the messages contained in this file, but
      all implementers are welcome to do so. The reference platforms use these messages.
      Any implementer is welcome to add additional items or translations
-    
+
      When proposing changes, the following people have an interest in the language:
-    
+
        english: grahame@healthintersections.com.au
        dutch: Ewout, Alexander
        italian: origama
        chinese: niehongchao (at com dot foxmail)
        polish : radomski (at iehr in eu)
        french : Frederic (dot) Laurent (at gmail dot com)
-       
-    
+
+
        MSG_UNKNOWN_COMPARTMENT
-       
-    Language codes in this file are defined as ll[-CC], where ll is the lowercase ISO 639-1 alpha 2 
-    language code and CC is the uppercase ISO 3166-1 alpha 2 country code. The country code is 
+
+    Language codes in this file are defined as ll[-CC], where ll is the lowercase ISO 639-1 alpha 2
+    language code and CC is the uppercase ISO 3166-1 alpha 2 country code. The country code is
     optional so legal codes are for example:
       de-DE  :  German German
       de-CH  :  Swiss German
@@ -26,7 +26,7 @@
       en-US  :  US American English
       en     :  English
       fr     :  French
-    
+
     NOTE: while translations on Resources are provided they should be used for rendering purposes
           only, and not in the URI, as XML node name, or JSON label.
     -->
@@ -43,7 +43,9 @@
   <item id="DecisionSupportServiceModule">
  		<translation lang="en">DecisionSupportServiceModule</translation>
 	</item>
-  
+    <item id="AdverseEvent">
+         <translation lang="en">AdverseEvent</translation>
+    </item>
     <item id="AdverseReaction">
         <translation lang="en">AdverseReaction</translation>
         <translation lang="zh">不良反应</translation>
@@ -102,6 +104,13 @@
     </item>
     <item id="CareTeam">
         <translation lang="en">CareTeam</translation>
+    </item>
+    <item id="Catalog">
+        <translation lang="en">Catalog</translation>
+    </item>
+
+	    <item id="ChargeItem">
+        <translation lang="en">ChargeItem</translation>
     </item>
     <item id="Claim">
         <translation lang="en">Claim</translation>
@@ -185,8 +194,8 @@
         <translation lang="es">Dispositivo</translation>
         <translation lang="fr">Dispositif</translation>
     </item>
-    <item id="DeviceUseRequest">
-        <translation lang="en">DeviceUseRequest</translation>
+    <item id="DeviceRequest">
+        <translation lang="en">DeviceRequest</translation>
         <translation lang="fr">DemandeUtilisationDispositif</translation>
     </item>
     <item id="DeviceUseStatement">
@@ -205,12 +214,6 @@
     <item id="DeviceMetric">
         <translation lang="en">DeviceMetric</translation>
         <translation lang="fr">MétriqueDispositif</translation>
-    </item>
-    <item id="DiagnosticRequest">
-        <translation lang="en">DiagnosticRequest</translation>
-        <translation lang="zh">诊断医嘱</translation>
-        <translation lang="es">OrdenDiagnostica</translation>
-        <translation lang="fr">OrdreDiagnostique</translation>
     </item>
     <item id="DiagnosticReport">
         <translation lang="en">DiagnosticReport</translation>
@@ -278,6 +281,9 @@
     <item id="Goal">
         <translation lang="en">Goal</translation>
         <translation lang="fr">But</translation>
+    </item>
+    <item id="GraphDefinition">
+        <translation lang="en">GraphDefinition</translation>
     </item>
 	<item id="Endpoint">
 		<translation lang="en">Endpoint</translation>
@@ -432,8 +438,8 @@
         <translation lang="en">NamingSystem</translation>
         <translation lang="fr">SystèmeDeNommage</translation>
     </item>
-    <item id="NutritionRequest">
-        <translation lang="en">NutritionRequest</translation>
+    <item id="NutritionOrder">
+        <translation lang="en">NutritionOrder</translation>
         <translation lang="zh">为了营养</translation>
         <translation lang="es">OrdenNutrición</translation>
         <translation lang="fr">OrdreNutrition</translation>

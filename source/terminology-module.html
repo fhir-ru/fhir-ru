@@ -2,9 +2,9 @@
 
 <!--
 These elements SHALL always appear in this order. These basic elements shared by all resources come first
-in order to support consistent definitions for schema and UML derived code. 
+in order to support consistent definitions for schema and UML derived code.
 -->
-      
+
 [%settitle Terminology Module%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -13,8 +13,8 @@ in order to support consistent definitions for schema and UML derived code.
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
-<table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> </td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">n/a</a></td></tr></table>
+<div class="col-12">
+<table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg vocab%]">[%wgt vocab%]</a> </td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <a name="root"> </a>
 <h2>Terminology Module</h2>
@@ -22,7 +22,7 @@ in order to support consistent definitions for schema and UML derived code.
 <a name="intro"> </a>
 <h3>Introduction</h3>
 <p>
-The Terminology Module provides an overview and guide to the FHIR resources, operations, coded data types and externally-defined standard and FHIR-defined terminologies that are used for representing and communicating coded, structured data in the FHIR core specification and profiles.  Collectively, these capabilities are used to provide the terminology service functionality required for supporting the use of coded data in FHIR resources throughout the specification as described in the other modules. 
+The Terminology Module provides an overview and guide to the FHIR resources, operations, coded data types and externally-defined standard and FHIR-defined terminologies that are used for representing and communicating coded, structured data in the FHIR core specification and profiles.  Collectively, these capabilities are used to provide the terminology service functionality required for supporting the use of coded data in FHIR resources throughout the specification as described in the other modules.
 
 <p>The terminology resources and their relationships are shown below:</p>
 <table class="none"><tr><td>
@@ -56,7 +56,7 @@ The Terminology Module covers the following:
 </p>
 <table class="none">
  <tr>
- <td><ul> 
+ <td><ul>
  <li><a href="terminology-service.html">Terminology Service Documentation</a></li>
  </ul></td>
  </tr>
@@ -136,29 +136,29 @@ For security considerations for terminology services, see the <a href="terminolo
 <li>Translate a code from one value set to another</li>
 <li>Maintain a client-side <a href="https://en.wikipedia.org/wiki/Transitive_closure#In_graph_theory">transitive closure table</a> on subsumption relationships</li>
 <li>Test subsumption between concepts</li>
-<li>For a set of property/concept pairs return the set of concepts for the requested properties</li>
+<li>For a set of property/concept pairs, return the set of concepts for the requested properties</li>
 </ul>
 </p>
 
 <a name="roadmap"> </a>
 <h3>Developmental Roadmap</h3>
-    <p>A subset of the terminology resources have been tested and are being used in production tooling, and as
+    <p>A subset of the terminology resources has been tested and are being used in production tooling, and as
         such have reached a maturity level where changes become less likely. These are:
 	</p>
     <ul>
-        <li><a href="valueset.html" title="A value set specifies a set of codes drawn from one or more code systems.">ValueSet</a>&nbsp;<a style="color: maroon; hover: maroon; visited; maroon; opacity: 0.7" href="resource.html#maturity" title="Maturity Level">3</a></li>
-		<li><a href="conceptmap.html" title="A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models.">ConceptMap</a>&nbsp;<a style="color: maroon; hover: maroon; visited; maroon; opacity: 0.7" href="resource.html#maturity" title="Maturity Level">2</a></li>
+        <li><a href="valueset.html" title="A value set specifies a set of codes drawn from one or more code systems.">ValueSet</a>&nbsp;<a style="color: maroon; hover: maroon; visited; maroon; opacity: 0.7" href="versions.html#maturity" title="Maturity Level">3</a></li>
+		<li><a href="conceptmap.html" title="A statement of relationships from one set of concepts to one or more other concepts - either code systems or data elements, or classes in class models.">ConceptMap</a>&nbsp;<a style="color: maroon; hover: maroon; visited; maroon; opacity: 0.7" href="versions.html#maturity" title="Maturity Level">2</a></li>
     </ul>
 
     <p>Other resources are still under development:</p>
     <ul>
-		<li><a href="namingsystem.html" title="A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a &quot;System&quot; used within the Identifier and Coding data types.">NamingSystem</a>&nbsp;<a style="color: maroon; hover: maroon; visited; maroon; opacity: 0.7" href="resource.html#maturity" title="Maturity Level">1</a></li>         
-		<li><a href="codesystem.html" title="A code system resource specifies a set of codes drawn from one or more code systems.">CodeSystem</a>&nbsp;<a style="color: maroon; hover: maroon; visited; maroon; opacity: 0.7" href="resource.html#maturity" title="Maturity Level">0</a></li>
-		<li><a href="expansionprofile.html" title="Resource to define constraints on the Expansion of a FHIR ValueSet.">ExpansionProfile</a>&nbsp;<a style="color: maroon; hover: maroon; visited; maroon; opacity: 0.7" href="resource.html#maturity" title="Maturity Level">0</a></li>
+		<li><a href="namingsystem.html" title="A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a &quot;System&quot; used within the Identifier and Coding data types.">NamingSystem</a>&nbsp;<a style="color: maroon; hover: maroon; visited; maroon; opacity: 0.7" href="versions.html#maturity" title="Maturity Level">1</a></li>
+		<li><a href="codesystem.html" title="A code system resource specifies a set of codes drawn from one or more code systems.">CodeSystem</a>&nbsp;<a style="color: maroon; hover: maroon; visited; maroon; opacity: 0.7" href="versions.html#maturity" title="Maturity Level">0</a></li>
+		<li><a href="expansionprofile.html" title="Resource to define constraints on the Expansion of a FHIR ValueSet.">ExpansionProfile</a>&nbsp;<a style="color: maroon; hover: maroon; visited; maroon; opacity: 0.7" href="versions.html#maturity" title="Maturity Level">0</a></li>
     </ul>
 	<p>
-	Over the next 18 months, we will continue to advance the resources through the <a href="resource.html#maturity">Maturity Levels</a> 
-	through further development and testing. We anticipate more widespread implementation of NamingSystem, CodeSystem and ExpansionProfile and testing in Connectathons and with implementation experience.  
+	Over the next 18 months, we will continue to advance the resources through the <a href="versions.html#maturity">Maturity Levels</a>
+	through further development and testing. We anticipate more widespread implementation of NamingSystem, CodeSystem and ExpansionProfile and testing in Connectathons and with implementation experience.
 	</p>
 
 </div>

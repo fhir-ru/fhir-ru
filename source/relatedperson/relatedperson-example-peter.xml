@@ -31,8 +31,8 @@
   
   <relationship>
     <coding>
-      <system value="http://hl7.org/fhir/patient-contact-relationship" />
-      <code value="owner" />
+      <system value="http://hl7.org/fhir/v2/0131" />
+      <code value="C" />
     </coding>
   </relationship>
   

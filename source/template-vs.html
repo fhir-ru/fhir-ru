@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-
+<!-- template-vs.html -->
       
 [%settitle Value Set {vsurl}%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -10,12 +10,16 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 <%txheader0 vs%>
 
 <a name="vs"> </a>
 <h1>Value Set <%vsurl%></h1>
+<table class="<%fmm-style%>">
+ <tr><td><a href="<%wg%>"><%wgt%></a> Work Group</td><td><%fmm%></td><td><%sstatus%></td><td><%profile-context%></td></tr>
+</table>
+
 <p>
 This is a value set defined <%vssource%><%vsxref%>
 </p>

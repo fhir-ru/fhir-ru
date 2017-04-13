@@ -2,12 +2,12 @@
 
 <Sequence>
     <id value="graphic-example-4"/>
-    <type value="DNA"/>
+    <type value="dna"/>
     <coordinateSystem value="0"/>
     <referenceSeq>
         <chromosome>
             <coding>
-                <system value="http://hl7.org/fhir/ValueSet/chromosome-human"/>
+                <system value="http://hl7.org/fhir/chromosome-human"/>
                 <code value="2"/>
                 <display value="chromosome 2"/>
             </coding>

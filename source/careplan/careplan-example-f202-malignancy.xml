@@ -43,7 +43,6 @@
       <code>
         <text value="TPF"/>
       </code>
-      <product>
         <ingredient>
           <itemReference>
             <reference value="#doce"/>
@@ -59,7 +58,7 @@
             <reference value="#fluo"/>
           </itemReference>
         </ingredient>
-      </product>
+      
     </Medication>
   </contained>
   <contained>
@@ -94,6 +93,7 @@
     </Goal>
   </contained>
   <status value="active"/>
+  <intent value="plan"/>
   <subject>
     <!--It entails Roel's careplan-->
     <reference value="Patient/f201"/>
@@ -110,10 +110,10 @@
     <reference value="#goal"/>
   </goal>
   <activity>
-    <actionResulting>
-      <reference value="Procedure/f201"/>
-      <display value="Roel's Chemotherapy"/>
-    </actionResulting>
+    <outcomeReference>
+        <reference value="Procedure/f201"/>
+        <display value="Roel's Chemotherapy"/>
+    </outcomeReference>
     <detail>
       <category><coding><system value="http://hl7.org/fhir/care-plan-activity-category"/><code value="procedure"/></coding></category>
       <code>

@@ -104,51 +104,11 @@
   Binding = EndpointStatus
   Short Name = active | suspended | error | off | entered-in-error | test
   Definition = active | suspended | error | off | test
+  Comments = This element is labeled as a modifier because the status contains codes that mark the endpoint as not currently valid
   RIM Mapping = n/a
   w5 = status
 
  -- Row 4 -----------------------------------
-  Element = Endpoint.name
-  Card. = 0..1
-  Summary = Y
-  Type = string
-  Short Name = A name that this endpoint can be identified by
-  Definition = A friendly name that this endpoint can be referred to with
-  RIM Mapping = n/a
-
- -- Row 5 -----------------------------------
-  Element = Endpoint.managingOrganization
-  Card. = 0..1
-  Summary = Y
-  Type = Reference(Organization)
-  Short Name = Organization that manages this endpoint (may not be the organization that exposes the endpoint)
-  Definition = The organization that manages this endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data)
-  Comments = This property is not typically used when searching for Endpoint resources for usage. The typical usage is via the reference from an aplicable Organization/Location/Practitioner resource, which is where the context is provided. Multiple Locations may reference a single endpoint, and don\'t have to be within the same organization resource, but most likely within the same organizational heirarchy
-  RIM Mapping = n/a
-  Committee Notes = This was left as 0..1 to permit small systems having an implied Organization
-
- -- Row 6 -----------------------------------
-  Element = Endpoint.contact
-  Card. = 0..*
-  Type = ContactPoint
-  Short Name = Contact details for source (e.g. troubleshooting)
-  Definition = Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting
-  RIM Mapping = n/a
-
- -- Row 7 -----------------------------------
-  Element = Endpoint.period
-  Card. = 0..1
-  Summary = Y
-  Type = Period
-  Short Name = Interval the endpoint is expected to be operational
-  Definition = The interval during which the endpoint is expected to be operational
-  RIM Mapping = n/a
-  w5 = when.init
-
- -- Row 8 -----------------------------------
-  Element = !
-
- -- Row 9 -----------------------------------
   Element = Endpoint.connectionType
   Card. = 1..1
   Summary = Y
@@ -160,7 +120,46 @@
   RIM Mapping = n/a
   w5 = class
 
- -- Row 10 -----------------------------------
+ -- Row 5 -----------------------------------
+  Element = Endpoint.name
+  Card. = 0..1
+  Summary = Y
+  Type = string
+  Short Name = A name that this endpoint can be identified by
+  Definition = A friendly name that this endpoint can be referred to with
+  RIM Mapping = n/a
+  w5 = what
+
+ -- Row 6 -----------------------------------
+  Element = Endpoint.managingOrganization
+  Card. = 0..1
+  Summary = Y
+  Type = Reference(Organization)
+  Short Name = Organization that manages this endpoint (may not be the organization that exposes the endpoint)
+  Definition = The organization that manages this endpoint (even if technically another organisation is hosting this in the cloud, it is the organisation associated with the data)
+  Comments = This property is not typically used when searching for Endpoint resources for usage. The typical usage is via the reference from an aplicable Organization/Location/Practitioner resource, which is where the context is provided. Multiple Locations may reference a single endpoint, and don\'t have to be within the same organization resource, but most likely within the same organizational hierarchy
+  RIM Mapping = n/a
+  Committee Notes = This was left as 0..1 to permit small systems having an implied Organization
+
+ -- Row 7 -----------------------------------
+  Element = Endpoint.contact
+  Card. = 0..*
+  Type = ContactPoint
+  Short Name = Contact details for source (e.g. troubleshooting)
+  Definition = Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting
+  RIM Mapping = n/a
+
+ -- Row 8 -----------------------------------
+  Element = Endpoint.period
+  Card. = 0..1
+  Summary = Y
+  Type = Period
+  Short Name = Interval the endpoint is expected to be operational
+  Definition = The interval during which the endpoint is expected to be operational
+  RIM Mapping = n/a
+  w5 = when.done
+
+ -- Row 9 -----------------------------------
   Element = !Endpoint.method
   Card. = 0..*
   Summary = Y
@@ -170,10 +169,10 @@
   Comments = This is the HTTP method that must be used when using the connection
   RIM Mapping = n/a
 
- -- Row 11 -----------------------------------
+ -- Row 10 -----------------------------------
   Element = !
 
- -- Row 12 -----------------------------------
+ -- Row 11 -----------------------------------
   Element = Endpoint.payloadType
   Card. = 1..*
   Summary = Y
@@ -181,10 +180,10 @@
   Binding = PayloadType
   Short Name = The type of content that may be used at this endpoint (e.g. XDS Discharge summaries)
   Definition = The payload type describes the acceptable content that can be communicated on the endpoint
-  Comments = The payloadFormat describes the wire format of the data, where the payloadType indicates the specific document/schema that is being transferred. E.g. DischargeSummary or CarePlan
+  Comments = The payloadFormat describes the serialization format of the data, where the payloadType indicates the specific document/schema that is being transferred; e.g. DischargeSummary or CarePlan.
   RIM Mapping = n/a
 
- -- Row 13 -----------------------------------
+ -- Row 12 -----------------------------------
   Element = Endpoint.payloadMimeType
   Card. = 0..*
   Summary = Y
@@ -195,7 +194,7 @@
   Comments = Sending the payload has obvious security consequences. The server is responsible for ensuring that the content is appropriately secured
   RIM Mapping = n/a
 
- -- Row 14 -----------------------------------
+ -- Row 13 -----------------------------------
   Element = !Endpoint.payloadSubType
   Card. = 0..*
   Summary = Y
@@ -203,17 +202,17 @@
   Short Name = The subtypes of content that can be used on this endpoint (e.g. DischargeSummary)
   RIM Mapping = n/a
 
- -- Row 15 -----------------------------------
+ -- Row 14 -----------------------------------
   Element = Endpoint.address
   Card. = 1..1
   Summary = y
   Type = uri
-  Short Name = The technical address for conneccting to this endpoint
-  Definition = The uri that describes the actual end-point to send messages to
-  Comments = For rest-hook, and websocket, the end-point must be an http: or https: URL; for email, a mailto: url, for sms, a tel: url, and for message the endpoint can be in any form of url the server understands (usually, http: or mllp:). The URI is allowed to be relative; in which case, it is relative to the server end-point (since their may be more than one, clients should avoid using relative URIs)
+  Short Name = The technical base address for connecting to this endpoint
+  Definition = The uri that describes the actual end-point to connect to
+  Comments = For rest-hook, and websocket, the end-point must be an http: or https: URL; for email, a mailto: url, for sms, a tel: url, and for message the endpoint can be in any form of url the server understands (usually, http: or mllp:). The URI is allowed to be relative; in which case, it is relative to the server end-point (since their may be more than one, clients should avoid using relative URIs)\n\nThis address will be to the service base, without any parameters, or sub-services or resources tacked on.\n\nE.g. for a WADO-RS endpoint, the url should be \"https://pacs.hospital.org/wado-rs\"\n\nand not \"https://pacs.hospital.org/wado-rs/studies/1.2.250.1.59.40211.12345678.678910/series/1.2.250.1.59.40211.789001276.14556172.67789/instances/...\"
   RIM Mapping = n/a
 
- -- Row 16 -----------------------------------
+ -- Row 15 -----------------------------------
   Element = Endpoint.header
   Card. = 0..*
   Summary = n
@@ -222,8 +221,8 @@
   Definition = Additional headers / information to send as part of the notification
   Comments = Exactly what these mean depend on the channel type. The can convey additional information to the recipient and/or meet security requirements
 
- -- Row 17 -----------------------------------
-  Element = Endpoint.publicKey
+ -- Row 16 -----------------------------------
+  Element = !Endpoint.publicKey
   Card. = 0..1
   Type = string
   Short Name = PKI Public keys to support secure communications
@@ -281,5 +280,17 @@
   Description = Collection of endpoint examples
   Filename = endpoint-examples-general-template.xml
   Type = csv
+
+ -- Row 3 -----------------------------------
+  Name = ihe-iid
+  Identity = example-iid
+  Description = Example of IHE-IID endpoint
+  Filename = endpoint-example-iid.xml
+
+ -- Row 4 -----------------------------------
+  Name = dicom-rs
+  Identity = example-wadors
+  Description = Example of DICOM WADO-RS endpoint
+  Filename = endpoint-example-wadors.xml
 
 === Sheet Examples =====================================

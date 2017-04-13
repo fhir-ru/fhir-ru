@@ -8,21 +8,25 @@
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
+<div class="col-12">
 
 <%dtheader examples%>
 <h2>Data Type Examples</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>This page includes additional examples of the data types, based on common usages and questions</p>
 
 <p><b>Table of Contents</b></p>
-<table class="grid">
+<div class="row">
+    <div class="col-6" style="width: auto"><b>Primitive Types</b><br />[%diagram datatypes/allprimitivetypes.diagram 1%]</div>
+    <div class="col-6" style="width: auto; padding-right: 0px; margin-right: -25px;"><b>Complex Types</b><br />[%diagram datatypes/alltypes.diagram 2%]</div>
+</div>
+<!--<table class="grid">
  <tr>
   <td><b>Primitive Types</b><br/>[%diagram datatypes/allprimitivetypes.diagram 1%]</td>
   <td><b>Complex Types</b><br/>[%diagram datatypes/alltypes.diagram 2%]</td>
  </tr>
-</table>
+</table>-->
 
 
 <a name="primitive"> </a>
@@ -79,7 +83,7 @@
 Attachment
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#Attachment">Base Definition</a>, <a href="datatypes-definitions.html#Attachment">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Attachment">Mappings</a>.
+See also <a href="datatypes.html#Attachment">Base Definition</a>, <a href="datatypes-definitions.html#Attachment">Detailed Descriptions</a>, <a href="datatypes-mappings.html#Attachment">Mappings</a>, <a href="datatypes-extras.html#Attachment">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#Attachment">R2 Conversions</a>.
 </p>
 <div class="example">
 <p>A PDF document:</p>
@@ -118,7 +122,7 @@ Since the JSON examples have the same structure as the XML, only XML is shown fo
 Identifier
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#Identifier">Base Definition</a>, <a href="datatypes-definitions.html#Identifier">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Identifier">Mappings</a>.
+See also <a href="datatypes.html#Identifier">Base Definition</a>, <a href="datatypes-definitions.html#Identifier">Detailed Descriptions</a>, <a href="datatypes-mappings.html#Identifier">Mappings</a>, <a href="datatypes-extras.html#Identifier">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#Identifier">R2 Conversions</a>.
 </p>
 <div class="example">
 <p><b>Examples</b></p>
@@ -208,7 +212,7 @@ to some organization to further sub-allocate):</p>
 <a name="coding"> </a>
 <h3 style="margin-bottom: 1px">Coding</h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#Coding">Base Definition</a>, <a href="datatypes-definitions.html#Coding">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Coding">Mappings</a>.
+See also <a href="datatypes.html#Coding">Base Definition</a>, <a href="datatypes-definitions.html#Coding">Detailed Descriptions</a>, <a href="datatypes-mappings.html#Coding">Mappings</a>, <a href="datatypes-extras.html#Coding">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#Coding">R2 Conversions</a>.
 </p>
 <div class="example">
 <p><b>Examples</b></p>
@@ -237,7 +241,7 @@ See also <a href="datatypes.html#Coding">Base Definition</a>, <a href="datatypes
 CodeableConcept
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#CodeableConcept">Base Definition</a>, <a href="datatypes-definitions.html#CodeableConcept">Detailed Descriptions</a> and <a href="datatypes-mappings.html#CodeableConcept">Mappings</a>.
+See also <a href="datatypes.html#CodeableConcept">Base Definition</a>, <a href="datatypes-definitions.html#CodeableConcept">Detailed Descriptions</a>, <a href="datatypes-mappings.html#CodeableConcept">Mappings</a>, <a href="datatypes-extras.html#CodeableConcept">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#CodeableConcept">R2 Conversions</a>.
 </p>
 
 <div class="example">
@@ -296,7 +300,7 @@ In this case, there is no display element, because no display is defined for SNO
 <p>
 And where the value set would be something like this:
 </p>
-<pre>
+<pre class="xml" fragment="ValueSet">
   &lt;ValueSet xmlns=&quot;http://hl7.org/fhir&quot;&gt;
     &lt;text&gt;
       &lt;status value=&quot;generated&quot;/&gt;
@@ -304,39 +308,43 @@ And where the value set would be something like this:
         &lt;p&gt;Possible Clinistix codes: neg, trace, +, ++, and +++&lt;/p&gt;
       &lt;/div&gt;
     &lt;/text&gt;
-    &lt;identifier value=&quot;http://hl7.org/fhir/ValueSet/clinistix&quot;/&gt;
+    &lt;url value=&quot;http://hl7.org/fhir/ValueSet/clinistix&quot;/&gt;
     &lt;name value=&quot;Codes for Clinistix&quot;/&gt;
     &lt;publisher value=&quot;HL7&quot;/&gt;
-    &lt;telecom&gt;
-      &lt;system value=&quot;url&quot;/&gt;
-      &lt;value value=&quot;http://hl7.org/fhir&quot;/&gt;
-    &lt;/telecom&gt;
+    &lt;contact&gt;
+        &lt;name value=&quot;FHIR project team&quot;/&gt;
+        &lt;telecom&gt;
+          &lt;system value=&quot;url&quot;/&gt;
+          &lt;value value=&quot;http://hl7.org/fhir&quot;/&gt;
+        &lt;/telecom&gt;
+    &lt;/contact&gt;
     &lt;description value=&quot;Clinistix Codes&quot;/&gt;
     &lt;status value=&quot;draft&quot;/&gt;
     &lt;experimental value=&quot;true&quot;/&gt;
     &lt;date value=&quot;2013-10-01&quot;/&gt;
-    &lt;codeSystem&gt;
-      &lt;system value=&quot;http://example.org/codes/simple-grades&quot;/&gt;
-      &lt;caseSensitive value=&quot;false&quot;/&gt;
-      &lt;concept&gt;
-        &lt;code value=&quot;neg&quot;/&gt;
-      &lt;/concept&gt;
-      &lt;concept&gt;
-        &lt;code value=&quot;trace&quot;/&gt;
-      &lt;/concept&gt;
-      &lt;concept&gt;
-        &lt;code value=&quot;+&quot;/&gt;
-      &lt;/concept&gt;
-      &lt;concept&gt;
-        &lt;code value=&quot;+&quot;/&gt;
-      &lt;/concept&gt;
-      &lt;concept&gt;
-        &lt;code value=&quot;++&quot;/&gt;
-      &lt;/concept&gt;
-      &lt;concept&gt;
-        &lt;code value=&quot;+++&quot;/&gt;
-      &lt;/concept&gt;
-    &lt;/codeSystem&gt;
+    &lt;compose&gt;
+      &lt;include&gt;
+        &lt;system value=&quot;http://example.org/codes/simple-grades&quot;/&gt;
+        &lt;concept&gt;
+          &lt;code value=&quot;neg&quot;/&gt;
+        &lt;/concept&gt;
+        &lt;concept&gt;
+          &lt;code value=&quot;trace&quot;/&gt;
+        &lt;/concept&gt;
+        &lt;concept&gt;
+          &lt;code value=&quot;+&quot;/&gt;
+        &lt;/concept&gt;
+        &lt;concept&gt;
+          &lt;code value=&quot;+&quot;/&gt;
+        &lt;/concept&gt;
+        &lt;concept&gt;
+          &lt;code value=&quot;++&quot;/&gt;
+        &lt;/concept&gt;
+        &lt;concept&gt;
+          &lt;code value=&quot;+++&quot;/&gt;
+        &lt;/concept&gt;
+      &lt;/include&gt;
+    &lt;/compose&gt;
   &lt;/ValueSet&gt;
 </pre>
 </div>
@@ -353,7 +361,7 @@ And where the value set would be something like this:
 Quantity
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#Quantity">Base Definition</a>, <a href="datatypes-definitions.html#Quantity">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Quantity">Mappings</a>.
+See also <a href="datatypes.html#Quantity">Base Definition</a>, <a href="datatypes-definitions.html#Quantity">Detailed Descriptions</a>, <a href="datatypes-mappings.html#Quantity">Mappings</a>, <a href="datatypes-extras.html#Quantity">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#Quantity">R2 Conversions</a>.
 </p>
 
 <div class="example">
@@ -403,7 +411,7 @@ See also <a href="datatypes.html#Quantity">Base Definition</a>, <a href="datatyp
 Range
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#Range">Base Definition</a>, <a href="datatypes-definitions.html#Range">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Range">Mappings</a>.
+See also <a href="datatypes.html#Range">Base Definition</a>, <a href="datatypes-definitions.html#Range">Detailed Descriptions</a>, <a href="datatypes-mappings.html#Range">Mappings</a>, <a href="datatypes-extras.html#Range">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#Range">R2 Conversions</a>.
 </p>
 <div class="example">
 <p><b>Examples</b></p>
@@ -427,7 +435,7 @@ See also <a href="datatypes.html#Range">Base Definition</a>, <a href="datatypes-
 Ratio
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#Ratio">Base Definition</a>, <a href="datatypes-definitions.html#Ratio">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Ratio">Mappings</a>.
+See also <a href="datatypes.html#Ratio">Base Definition</a>, <a href="datatypes-definitions.html#Ratio">Detailed Descriptions</a>, <a href="datatypes-mappings.html#Ratio">Mappings</a>, <a href="datatypes-extras.html#Ratio">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#Ratio">R2 Conversions</a>.
 </p>
 <div class="example">
 <p><b>Examples</b></p>
@@ -466,7 +474,7 @@ See also <a href="datatypes.html#Ratio">Base Definition</a>, <a href="datatypes-
 Period
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#Period">Base Definition</a>, <a href="datatypes-definitions.html#Period">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Period">Mappings</a>.
+See also <a href="datatypes.html#Period">Base Definition</a>, <a href="datatypes-definitions.html#Period">Detailed Descriptions</a>, <a href="datatypes-mappings.html#Period">Mappings</a>, <a href="datatypes-extras.html#Period">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#Period">R2 Conversions</a>.
 </p>
 
 <div class="example">
@@ -486,7 +494,7 @@ See also <a href="datatypes.html#Period">Base Definition</a>, <a href="datatypes
 SampledData
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#SampledData">Base Definition</a>, <a href="datatypes-definitions.html#SampledData">Detailed Descriptions</a> and <a href="datatypes-mappings.html#SampledData">Mappings</a>.
+See also <a href="datatypes.html#SampledData">Base Definition</a>, <a href="datatypes-definitions.html#SampledData">Detailed Descriptions</a>, <a href="datatypes-mappings.html#SampledData">Mappings</a>, <a href="datatypes-extras.html#SampledData">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#SampledData">R2 Conversions</a>.
 </p>
 <div class="example">
 <p><b>Example</b></p>
@@ -512,7 +520,7 @@ See also <a href="datatypes.html#SampledData">Base Definition</a>, <a href="data
 HumanName
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#HumanName">Base Definition</a>, <a href="datatypes-definitions.html#HumanName">Detailed Descriptions</a> and <a href="datatypes-mappings.html#HumanName">Mappings</a>.
+See also <a href="datatypes.html#HumanName">Base Definition</a>, <a href="datatypes-definitions.html#HumanName">Detailed Descriptions</a>, <a href="datatypes-mappings.html#HumanName">Mappings</a>, <a href="datatypes-extras.html#HumanName">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#HumanName">R2 Conversions</a>.
 </p>
 
 <div class="example">
@@ -784,6 +792,7 @@ These examples are taken from the <a href="http://www.w3.org/International/quest
 which should be consulted for further information.
 </p>
 
+<div class="example">
 <p>
 A patronymic is "The part of a name that links to the genealogy":
 </p>
@@ -978,7 +987,7 @@ Note that collecting and storing the <i>text</i> element makes the
 primary purpose of the structured parts for index/searching, and
 fidelity of the name parts is not critical.
 </p>
-
+</div>
 
 
 
@@ -988,7 +997,7 @@ fidelity of the name parts is not critical.
 Address
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#Address">Base Definition</a>, <a href="datatypes-definitions.html#Address">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Address">Mappings</a>.
+See also <a href="datatypes.html#Address">Base Definition</a>, <a href="datatypes-definitions.html#Address">Detailed Descriptions</a>, <a href="datatypes-mappings.html#Address">Mappings</a>, <a href="datatypes-extras.html#Address">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#Address">R2 Conversions</a>.
 </p>
 
 <p>
@@ -1025,12 +1034,11 @@ on the structured data elements of the address.
   &lt;/address&gt;
 </pre>
 
-<p>A Postal address - i.e. an address that it doesn't make sense to try and visit.</p>
+<p>A temporary postal address - i.e. an address that it doesn't make sense to try and visit.</p>
 <pre class="xml" fragment="Address">
   &lt;address&gt;
-    &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/iso21090-AD-use&quot;&gt; 
-      &lt;valueCode value=&quot;PST&quot;/&gt;
-    &lt;/extension&gt;
+    &lt;use value=&quot;temp&quot;/&gt; 
+    &lt;type value=&quot;postal&quot;/&gt;
     &lt;line value=&quot;PO Box 31445&quot;/&gt;
     &lt;city value=&quot;Erewhon&quot;/&gt;
     &lt;postalCode value=&quot;0001&quot;/&gt;
@@ -1162,7 +1170,7 @@ postal union</a> examples.
 ContactPoint
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#ContactPoint">Base Definition</a>, <a href="datatypes-definitions.html#ContactPoint">Detailed Descriptions</a> and <a href="datatypes-mappings.html#ContactPoint">Mappings</a>.
+See also <a href="datatypes.html#ContactPoint">Base Definition</a>, <a href="datatypes-definitions.html#ContactPoint">Detailed Descriptions</a>, <a href="datatypes-mappings.html#ContactPoint">Mappings</a>, <a href="datatypes-extras.html#ContactPoint">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#ContactPoint">R2 Conversions</a>.
 </p>
 
 <div class="example">
@@ -1204,7 +1212,7 @@ the base FHIR type does not require the phone number to be conformant. A ISO 210
 Timing
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#Timing">Base Definition</a>, <a href="datatypes-definitions.html#Timing">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Timing">Mappings</a>.
+See also <a href="datatypes.html#Timing">Base Definition</a>, <a href="datatypes-definitions.html#Timing">Detailed Descriptions</a>, <a href="datatypes-mappings.html#Timing">Mappings</a>, <a href="datatypes-extras.html#Timing">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#Timing">R2 Conversions</a>.
 </p>
 
 <div class="example">
@@ -1236,8 +1244,7 @@ See also <a href="datatypes.html#Timing">Base Definition</a>, <a href="datatypes
         &lt;end value="2012-01-02" /&gt;
       &lt;/boundsPeriod&gt;
       &lt;when value="ACM" /&gt;
-      &lt;period value="30" /&gt;
-      &lt;periodUnit value="min" /&gt;
+      &lt;offset value="30" /&gt;
     &lt;/repeat&gt;
   &lt;/schedule&gt;
 </pre>
@@ -1252,7 +1259,7 @@ Note that the end date is inclusive like the end date of a Period.
         &lt;value value="14" /&gt;
         &lt;unit value="d" /&gt;
         &lt;system value="http://unitsofmeasure.org" /&gt;
-        &lt;unit value="d" /&gt;
+        &lt;code value="d" /&gt;
       &lt;/boundsDuration&gt;
       &lt;frequency value="3" /&gt;
       &lt;period value="1" /&gt;
@@ -1273,6 +1280,14 @@ Note that the end date is inclusive like the end date of a Period.
     &lt;/repeat&gt;
   &lt;/schedule&gt;
 </pre>
+<p>Take just once, with no specified time</p>
+<pre class="xml" fragment="Timing">
+  &lt;schedule&gt;
+    &lt;repeat&gt;
+      &lt;count value="1" /&gt;
+    &lt;/repeat&gt;
+  &lt;/schedule&gt;
+</pre>
 </div>
 
 <a name="Signature"> </a>
@@ -1281,7 +1296,7 @@ Note that the end date is inclusive like the end date of a Period.
 Signature
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#Signature">Base Definition</a>, <a href="datatypes-definitions.html#Signature">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Signature">Mappings</a>.
+See also <a href="datatypes.html#Signature">Base Definition</a>, <a href="datatypes-definitions.html#Signature">Detailed Descriptions</a>, <a href="datatypes-mappings.html#Signature">Mappings</a>, <a href="datatypes-extras.html#Signature">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#Signature">R2 Conversions</a>.
 </p>
 
 <div class="example">
@@ -1301,7 +1316,7 @@ See also <a href="datatypes.html#Signature">Base Definition</a>, <a href="dataty
 Annotation
 </h3>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes.html#Annotation">Base Definition</a>, <a href="datatypes-definitions.html#Annotation">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Annotation">Mappings</a>.
+See also <a href="datatypes.html#Annotation">Base Definition</a>, <a href="datatypes-definitions.html#Annotation">Detailed Descriptions</a>, <a href="datatypes-mappings.html#Annotation">Mappings</a>, <a href="datatypes-extras.html#Annotation">Profiles &amp; Extensions</a> and <a href="datatypes-version-maps.html#Annotation">R2 Conversions</a>.
 </p>
 
 <div class="example">

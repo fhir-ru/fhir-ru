@@ -43,7 +43,7 @@
   Id = 2
   Code = inactive
   Display = Inactive
-  Definition = The condition inactive but not resolved.
+  Definition = The condition is inactive, but not resolved.
 
  -- Row 3 -----------------------------------
   Id = 3
@@ -57,10 +57,16 @@
   Name = based-on
   Type = reference
   Description = Matches on the basedon extension value
-  Path = Condition.extension{http://hl7.org/fhir/StructureDefinition/condition-basedon}
+  Path = Condition.extension{http://hl7.org/fhir/StructureDefinition/condition-basedOn}
 
  -- Row 2 -----------------------------------
-  Name = parent
+  Name = part-of
   Type = reference
-  Description = Matches on the parent extension value
-  Path = Condition.extension{http://hl7.org/fhir/StructureDefinition/condition-parent}
+  Description = Matches on the partOf extension value
+  Path = Condition.extension{http://hl7.org/fhir/StructureDefinition/condition-partOf}
+
+ -- Row 3 -----------------------------------
+  Name = definition
+  Type = reference
+  Description = Matches on the definition extension value
+  Path = Condition.extension{http://hl7.org/fhir/StructureDefinition/condition-definition}

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<DiagnosticReport xmlns="http://hl7.org/fhir">
-	<id value="f202"/>
+<DiagnosticReport xmlns="http://hl7.org/fhir"><!-- No identifier was available --><id value="f202"/>
 	<contained>
-		<DiagnosticRequest>
+		<ProcedureRequest>
 			<id value="req"/>
 			<status value="active"/>
 			<intent value="original-order"/>
@@ -19,14 +18,19 @@
 			</subject>
 			<context>
 				<reference value="Encounter/f203"/>
-				<display value="Roel&apos;s encounter on March eleventh 2013"/>
+				<display value="Roel's encounter on March eleventh 2013"/>
 			</context>
 			<requester>
-				<reference value="Practitioner/f201"/>
-				<display value="Dokter Bronsig"/>
+				<agent>
+					<reference value="Practitioner/f201"/>
+					<display value="Dokter Bronsig"/>
+				</agent>
 			</requester>
-		</DiagnosticRequest>
+		</ProcedureRequest>
 	</contained>
+	<basedOn>
+		<reference value="#req"/>
+	</basedOn>
 	<status value="final"/>
 	<category>
 		<!-- Lab test -->
@@ -51,16 +55,13 @@
 		<reference value="Patient/f201"/>
 		<display value="Roel"/>
 	</subject>
-	<effectiveDateTime value="2013-03-11T03:45:00+01:00"/>
 	<issued value="2013-03-11T10:28:00+01:00"/>
 	<performer>
-		<reference value="Organization/f201"/>
-		<display value="AUMC"/>
+		<actor>
+			<reference value="Organization/f201"/>
+			<display value="AUMC"/>
+		</actor>
 	</performer>
-	<!-- No identifier was available -->
-	<request>
-		<reference value="#req"/>
-	</request>
 	<result>
 		<reference value="Observation/f206"/>
 		<display value="Results for staphylococcus analysis on Roel's blood culture"/>

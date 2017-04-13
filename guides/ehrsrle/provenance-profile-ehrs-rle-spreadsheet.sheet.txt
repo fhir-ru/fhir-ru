@@ -1,14 +1,7 @@
 ﻿
 === Sheet Bindings =====================================
 
- -- Row 1 -----------------------------------
-  Binding Name = EventPurposeOfUse
-  Binding = value set
-  Reference = http://hl7.org/fhir/ValueSet/v3-PurposeOfUse
-  Definition = Indicates the why the event occurred
-  Conformance = extensible
-
-=== Sheet EHRSRLE-Provenance =====================================
+=== Sheet ehrsrle-provenance =====================================
 
  -- Row 1 -----------------------------------
   Element = Provenance
@@ -33,7 +26,6 @@
   Element = Provenance.reason
   Card. = !0..*
   Must Support = Y
-  Binding = EventPurposeOfUse
 
  -- Row 6 -----------------------------------
   Element = Provenance.activity
@@ -56,12 +48,12 @@
   Must Support = Y
 
  -- Row 10 -----------------------------------
-  Element = Provenance.agent.actor
+  Element = Provenance.agent.who[x]
   Card. = !0..1
   Must Support = Y
 
  -- Row 11 -----------------------------------
-  Element = Provenance.agent.userId
+  Element = Provenance.agent.onBehalfOf[x]
   Card. = !0..1
   Must Support = Y
 

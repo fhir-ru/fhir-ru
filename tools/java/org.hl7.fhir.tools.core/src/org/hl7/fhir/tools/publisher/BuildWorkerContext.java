@@ -43,9 +43,8 @@ import org.hl7.fhir.dstu3.model.MetadataResource;
 import org.hl7.fhir.dstu3.model.NamingSystem;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemIdentifierType;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemUniqueIdComponent;
+import org.hl7.fhir.dstu3.model.OperationDefinition;
 import org.hl7.fhir.dstu3.model.OperationOutcome;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
 import org.hl7.fhir.dstu3.model.Parameters;
 import org.hl7.fhir.dstu3.model.Parameters.ParametersParameterComponent;
 import org.hl7.fhir.dstu3.model.Questionnaire;
@@ -62,14 +61,15 @@ import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionContainsComponent;
 import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
 import org.hl7.fhir.dstu3.utils.INarrativeGenerator;
+import org.hl7.fhir.dstu3.utils.IResourceValidator;
 import org.hl7.fhir.dstu3.utils.NarrativeGenerator;
 import org.hl7.fhir.dstu3.utils.client.EFhirClientException;
 import org.hl7.fhir.dstu3.utils.client.FHIRToolingClient;
-import org.hl7.fhir.dstu3.validation.IResourceValidator;
 import org.hl7.fhir.dstu3.validation.InstanceValidator;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.TerminologyServiceException;
 import org.hl7.fhir.exceptions.UcumException;
+import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.OIDUtils;
@@ -77,6 +77,7 @@ import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ucum.UcumEssenceService;
 import org.hl7.fhir.utilities.ucum.UcumService;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.xml.XMLWriter;
 import org.w3c.dom.Document;
@@ -113,17 +114,10 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   private static final String SNOMED_EDITION = "900000000000207008"; // international
 //  private static final String SNOMED_EDITION = "731000124108"; // us edition
 
-  //  private Map<String, ValueSet> codeSystems = new HashMap<String, ValueSet>();
-//  private Map<String, ValueSet> valueSets = new HashMap<String, ValueSet>();
-//  private Map<String, ConceptMap> maps = new HashMap<String, ConceptMap>();
-  private Map<String, DataElement> dataElements = new HashMap<String, DataElement>();
-  private Map<String, StructureDefinition> profiles = new HashMap<String, StructureDefinition>();
-  private Map<String, SearchParameter> searchParameters = new HashMap<String, SearchParameter>();
-  private Map<String, StructureDefinition> extensionDefinitions = new HashMap<String, StructureDefinition>();
+  
   private UcumService ucum;
   private String version;
   private List<String> resourceNames = new ArrayList<String>();
-  private Map<String, Questionnaire> questionnaires = new HashMap<String, Questionnaire>();
   private Definitions definitions;
   private Map<String, Concept> snomedCodes = new HashMap<String, Concept>();
   private Map<String, Concept> loincCodes = new HashMap<String, Concept>();
@@ -160,66 +154,6 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
 
   public FHIRToolingClient getClient() {
     return txServer;
-  }
-
-  public Map<String, CodeSystem> getCodeSystems() {
-    return codeSystems;
-  }
-
-  public Map<String, DataElement> getDataElements() {
-    return dataElements;
-  }
-
-  public Map<String, ValueSet> getValueSets() {
-    return valueSets;
-  }
-
-  public Map<String, ConceptMap> getMaps() {
-    return maps;
-  }
-
-  public Map<String, StructureDefinition> getProfiles() {
-    return profiles;
-  }
-
-  public Map<String, StructureDefinition> getExtensionDefinitions() {
-    return extensionDefinitions;
-  }
-
-  public Map<String, Questionnaire> getQuestionnaires() {
-    return questionnaires;
-  }
-
-  public void seeExtensionDefinition(String url, StructureDefinition ed) throws Exception {
-    if (extensionDefinitions.get(ed.getUrl()) != null)
-      throw new Exception("duplicate extension definition: " + ed.getUrl());
-    extensionDefinitions.put(ed.getId(), ed);
-    extensionDefinitions.put(url, ed);
-    extensionDefinitions.put(ed.getUrl(), ed);
-  }
-
-  public void seeQuestionnaire(String url, Questionnaire theQuestionnaire) throws Exception {
-    if (questionnaires.get(theQuestionnaire.getId()) != null)
-      throw new Exception("duplicate extension definition: "+theQuestionnaire.getId());
-    questionnaires.put(theQuestionnaire.getId(), theQuestionnaire);
-    questionnaires.put(url, theQuestionnaire);
-  }
-
-  public void seeValueSet(String url, ValueSet vs) throws Exception {
-    if (valueSets.containsKey(vs.getUrl()))
-      throw new Exception("Duplicate value set "+vs.getUrl());
-    valueSets.put(vs.getId(), vs);
-    valueSets.put(url, vs);
-    valueSets.put(vs.getUrl(), vs);
-    throw new Error("this is not used");
-  }
-
-  public void seeProfile(String url, StructureDefinition p) throws Exception {
-    if (profiles.containsKey(p.getUrl()))
-      throw new Exception("Duplicate Profile "+p.getUrl());
-    profiles.put(p.getId(), p);
-    profiles.put(url, p);
-    profiles.put(p.getUrl(), p);
   }
 
   public StructureDefinition getExtensionStructure(StructureDefinition context, String url) throws Exception {
@@ -312,6 +246,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   public <T extends Resource> T fetchResourceWithException(Class<T> class_, String uri) throws FHIRException {
     if (class_ == StructureDefinition.class && !uri.contains("/"))
       uri = "http://hl7.org/fhir/StructureDefinition/"+uri;
+
     
     if (uri.startsWith("http:")) {
       if (uri.contains("#"))
@@ -330,6 +265,29 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
           return (T) codeSystems.get(uri);
         else
           return null;      
+      } else if (class_ == OperationDefinition.class) {
+        OperationDefinition od = operations.get(uri);
+        if (od == null)
+          System.out.println("Unable to resolve OperationDefinition "+uri);
+        return (T) od;
+      } else if (class_ == SearchParameter.class) {
+        SearchParameter res = searchParameters.get(uri);
+        if (res == null) {
+          StringBuilder b = new StringBuilder();
+          for (String s : searchParameters.keySet()) {
+            b.append(s);
+            b.append("\r\n");
+          }
+          try {
+            TextFile.stringToFile(b.toString(), "c:\\temp\\sp.txt");
+          } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          }
+        }
+        
+          
+        return (T) res;
       }
     }
     if (class_ == null && uri.contains("/")) {
@@ -357,7 +315,8 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
 
   @Override
   public IResourceValidator newValidator() {
-    return new InstanceValidator(this);
+    throw new Error("check this");
+//    return new InstanceValidator(this, null);
   }
 
   @Override
@@ -600,7 +559,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     } catch (Exception e) {
       return new ValidationResult(IssueSeverity.ERROR, "Error validating code \""+code+"\" in system \""+system+"\": "+e.getMessage());
     }
-    return new ValidationResult(IssueSeverity.WARNING, "Unknown code system "+system);
+     return new ValidationResult(IssueSeverity.WARNING, "Unknown code system "+system);
   }
 
   
@@ -622,14 +581,16 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
     Document xdoc = builder.parse(new CSFileInputStream(filename));
     Element code = XMLUtil.getFirstChild(xdoc.getDocumentElement());
     while (code != null) {
-      Concept c = new Concept();
-      c.display = code.getAttribute("display");
-      Element child = XMLUtil.getFirstChild(code);
-      while (child != null) {
-        c.displays.add(child.getAttribute("value"));
-        child = XMLUtil.getNextSibling(child);
+      if (Utilities.noString(code.getAttribute("no"))) {
+        Concept c = new Concept();
+        c.display = code.getAttribute("display");
+        Element child = XMLUtil.getFirstChild(code);
+        while (child != null) {
+          c.displays.add(child.getAttribute("value"));
+          child = XMLUtil.getNextSibling(child);
+        }
+        snomedCodes.put(code.getAttribute("id"), c);
       }
-      snomedCodes.put(code.getAttribute("id"), c);
       code = XMLUtil.getNextSibling(code);
     }
   }
@@ -786,7 +747,7 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
 
   private OperationOutcome buildOO(String message) {
     OperationOutcome oo = new OperationOutcome();
-    oo.addIssue().setSeverity(IssueSeverity.ERROR).setCode(IssueType.EXCEPTION).getDetails().setText(message);
+    oo.addIssue().setSeverity(OperationOutcome.IssueSeverity.ERROR).setCode(OperationOutcome.IssueType.EXCEPTION).getDetails().setText(message);
     return oo;
   }
 
@@ -1071,6 +1032,14 @@ public class BuildWorkerContext extends BaseWorkerContext implements IWorkerCont
   @Override
   public boolean hasCache() {
     return true;
+  }
+
+  @Override
+  public List<String> getTypeNames() {
+    List<String> names = new ArrayList<String>();
+    for (TypeRef tr : definitions.getKnownTypes())
+      names.add(tr.getName());
+    return names;
   }
 
 

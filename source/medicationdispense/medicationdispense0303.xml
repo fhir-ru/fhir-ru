@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MedicationDispense xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationdispense.xsd"
-    xmlns="http://hl7.org/fhir">
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationdispense.xsd"
+ xmlns="http://hl7.org/fhir">
     <id value="meddisp0303"/>
     <contained>
         <Medication>
@@ -15,32 +15,49 @@
             </code>
         </Medication>
     </contained>
+    <partOf>
+        <reference value="Procedure/biopsy"></reference>
+    </partOf>
     <status value="on-hold"/>
+    <category>
+        <coding>
+            <system value="http://hl7.org/fhir/medication-dispense-category"/>
+            <code value="outpatient"/>
+            <display value="Outpatient"/>
+        </coding>
+    </category>
     <medicationReference>
         <!-- Linked to a RESOURCE Medication -->
         <reference value="#med0310"/>
     </medicationReference>
-    <patient>
+    <subject>
         <reference value="Patient/pat1"/>
         <display value="Donald Duck"/>  
-    </patient>
-    <dispenser>
-        <reference value="Practitioner/f006"/>
-        <display value="Rob van den Berk"/>
-    </dispenser>
+    </subject>
+    <context>
+        <reference value="Encounter/f001"></reference>
+    </context>
+    <performer>
+        <actor>
+            <reference value="Practitioner/f006"/>
+        </actor>
+        <onBehalfOf>
+            <reference value="Organization/2.16.840.1.113883.19.5"></reference>
+        </onBehalfOf>
+    </performer>
     <authorizingPrescription>
         <reference value="MedicationRequest/medrx0310"/>
     </authorizingPrescription>
     <type>
         <coding>
-            <system value="http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType"/>
-            <code value="EF"/>
-            <display value="emergency Fill"/>
+            <system value="http://hl7.org/fhir/v3/ActCode"/>
+            <code value="EM"/>
+            <display value="Emergency Supply"/>
         </coding>
     </type>
     <quantity>
         <value value="30"/>
-        <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+        <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
         <code value="TAB"/>
     </quantity>
     <daysSupply>
@@ -50,17 +67,16 @@
         <code value="d"/>
     </daysSupply>
     <whenPrepared value="2016-04-15T07:14:00+05:00"/>
-    <whenHandedOver value="2016-04-15T07:14:00+05:00"/>
     <dosageInstruction>
         <sequence value="1"/>
         <text value="one to two tablets every 4-6 hours as needed for rib pain" />
-        <additionalInstructions>
+        <additionalInstruction>
             <coding>
                 <system value="http://snomed.info/sct"/>
                 <code value="418914006"/>
                 <display value="Warning. May cause drowsiness. If affected do not drive or operate machinery. Avoid alcoholic drink (qualifier value)"/>
             </coding>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <frequency value="1"/>
@@ -91,6 +107,13 @@
             </coding>
         </method>
     </dosageInstruction>
+    <detectedIssue>
+        <reference value="DetectedIssue/allergy"></reference>
+    </detectedIssue>
+    <notDone value="true"></notDone>
+    <notDoneReasonReference>
+        <reference value="DetectedIssue/allergy"></reference>
+    </notDoneReasonReference>
 </MedicationDispense>
 
 

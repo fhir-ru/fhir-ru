@@ -2,11 +2,12 @@
 
 <ValueSet xmlns="http://hl7.org/fhir">
   <meta>
-    <profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
   </meta>
   <url value="http://hl7.org/fhir/ValueSet/provenance-participant-type"/>
   <name value="ProvenanceParticipantType"/>
   <status value="draft"/>
+  <date value="2023-05-12"/>
   <publisher value="HL7 (FHIR Project)"/>
   <contact>
     <telecom>
@@ -20,8 +21,7 @@
       <value value="fhir@lists.hl7.org"/>
     </telecom>
   </contact>
-  <date value="2023-05-12"/>
-  <description value="The type of a provenance participant. Use either a defined FHIR resource type, or, if the reference is not to a resource, one of the defined codes, or some other code if none of the defined codes are appropriate."/>
+  <description value="The type of participation a provenance participant."/>
   <compose>
     <include>
       <system value="http://hl7.org/fhir/provenance-participant-type"/>

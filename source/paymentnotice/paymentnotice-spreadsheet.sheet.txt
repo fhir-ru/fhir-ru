@@ -31,6 +31,7 @@
   Type = DomainResource
   Short Name = PaymentNotice request
   Definition = This resource provides the status of the payment for goods and services rendered, and the request and response resource references.
+  Workflow Mapping = Event
   RIM Mapping = n/a
   w5 = financial.payment
 
@@ -43,6 +44,7 @@
   Type = Identifier
   Short Name = Business Identifier
   Definition = The notice business identifier
+  Workflow Mapping = Event.identifier
   RIM Mapping = n/a
   w5 = id
 
@@ -76,6 +78,8 @@
   Binding = PaymentNoticeStatus
   Short Name = active | cancelled | draft | entered-in-error
   Definition = The status of the resource instance.
+  Comments = This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid
+  Workflow Mapping = Event.status
   RIM Mapping = n/a
   w5 = status
 
@@ -85,6 +89,7 @@
   Type = Reference(Any)
   Short Name = Request reference
   Definition = Reference of resource for which payment is being made.
+  Workflow Mapping = Event.basedOn
   w5 = who.focus
 
  -- Row 8 -----------------------------------
@@ -111,6 +116,7 @@
   Type = dateTime
   Short Name = Creation date
   Definition = The date when this resource was created.
+  Workflow Mapping = Event.occurrence
   RIM Mapping = n/a
   w5 = when.recorded
 
@@ -128,6 +134,7 @@
   Type = Reference(Practitioner)
   Short Name = Responsible practitioner
   Definition = The practitioner who is responsible for the services rendered to the patient.
+  Workflow Mapping = Event.performer.actor
   CDAnet v4 Mapping = B01
   v2 Mapping = B01
   RIM Mapping = n/a
@@ -139,6 +146,7 @@
   Type = Reference(Organization)
   Short Name = Responsible organization
   Definition = The organization which is responsible for the services rendered to the patient.
+  Workflow Mapping = Event.performer.onBehalfOf
   CDAnet v4 Mapping = B02
   v2 Mapping = B02
   RIM Mapping = n/a
@@ -149,7 +157,7 @@
   Card. = 0..1
   Type = CodeableConcept
   Binding = PaymentStatus
-  Short Name = Status of the payment
+  Short Name = Whether payment has been sent or cleared
   Definition = The payment status, typically paid: payment sent, cleared: payment received.
   RIM Mapping = n/a
 

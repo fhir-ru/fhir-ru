@@ -18,8 +18,10 @@
     redundant, but many systems collect this field anyway, since it's either 
     useful when the substance is not coded, or it's quicker to sort/filter on
     than using terminology based reasoning -->
-  <category value="food"/>
+
   
+  <category value="food"/>
+     
   <!-- there is no question that the allergy is real and serious --> 
   <criticality value="high"/>
   
@@ -82,7 +84,6 @@
         <display value="cashew nut allergenic extract Injectable Product"/>
       </coding>  
     </substance>
-    <certainty value="confirmed"/>
     <manifestation>
       <coding>
         <system value="http://snomed.info/sct"/>
@@ -104,7 +105,6 @@
 
   <!-- this was the first occurrence -->
   <reaction> 
-    <certainty value="likely"/>
     <manifestation>
       <coding>
         <system value="http://snomed.info/sct"/>

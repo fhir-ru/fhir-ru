@@ -11,13 +11,13 @@
 [%file newnavbar%]
 
 
-<div class="col-9">
+<div class="col-12">
 
 <%extheader defining%>
 
 <a name="root"> </a>
 <h2>Defining Extensions</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
 All extensions used in resources require a formal published definition which can be used
@@ -33,31 +33,31 @@ be <a href="profiling.html">profiled</a> to specify where particular extensions 
 Whenever resources containing extensions are exchanged, the definitions of the extensions
 SHALL be available to all the parties that share the resources. Each extension contains a
 URI that references the source of the definitions as a <a href="structuredefinition.html">StructureDefinition</a>. The source SHOULD
-be a literal reference, such as an http: url that refers to an end-point that responds with
+be a literal reference, such as an http: URL that refers to an end-point that responds with
 the contents of the definitions - preferably a <a href="http.html">FHIR RESTful server</a>
 supporting the Resources Profile, or a logical reference (e.g. using a urn:) - for instance,
 to a national published standard.
 Extensions may be defined by any project or jurisdiction, up to and including international standards organizations such as HL7 itself.
 </p>
 <p>
-Before defining a new extension, attempt to reuse existing extensions defined in one of the <a href="#registration">shared registries described below</a>.  As well, some concepts may be appropriate
-to adding as part of the core specification.
+Before defining a new extension, attempt to reuse existing extensions defined in one of the <a href="#registration">shared registries described below</a>.  Also consider that some concepts may be appropriate
+to add as part of the core specification.
 </p>
 
 <a name="core"> </a>
 <h3>Core Elements</h3>
 <p>
 Elements are included as part of FHIR resources and data types principally on the basis of
-current world-wide usage patterns.  Policy is that if a significant majority of systems 
-throughout the world that would use a resource or data type would use an element, then 
-that element will be included as part of the resource/data type.  If not, it will be left 
-to an extension.  This holds even if the element is very common or even mandatory in one 
+current world-wide usage patterns.  Policy is that if a significant majority of systems
+throughout the world that would use a resource or data type would use an element, then
+that element will be included as part of the resource/data type.  If not, it will be left
+to an extension.  This holds even if the element is very common or even mandatory in one
 or two specific jurisdictions.
 </p>
 <p>
 <a href="http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemBrowse&amp;tracker_id=677">Proposals</a>
 suggesting a new core element can be raised by anyone.  (Free registration is required.)  However, given
-the <a href="timelines.html">timelines</a> for new FHIR releases as well as the uncertainties associated
+the <a href="versions.html">timelines</a> for new FHIR releases as well as the uncertainties associated
 with vetting the specification through a ballot process, it may still be necessary to define extensions
 even for elements that are likely to be supported as part of the core specification in a future release.
 </p>
@@ -95,9 +95,9 @@ that they may be used to extend. The following are possible contexts for an exte
  </tr>
 </table>
 <p>
-Note: For type 'resource' and 'datatype', if the context is an element that can have multiple types, 
-then use the [x] qualified name (e.g. Observation.value[x]) if the extension works on all choice types, 
-or otherwise an enumeration of explicitly named elements if not (e.g. Observation.valueQuantity)
+Note: For type 'resource' and 'datatype', if the context is an element that can have multiple types,
+then use either the [x] qualified name (e.g. Observation.value[x]) if the extension works on all choice types,
+or an enumeration of explicitly named elements if not (e.g. Observation.valueQuantity)
 </p>
 <p>
 In addition, the extension definition might apply additional constraints with
@@ -108,38 +108,38 @@ Extensions SHALL only be used on a target for which they are defined.
 <a name="cardinality"> </a>
 <h3>Cardinality</h3>
 <p>
-The cardinality constraints asserted by the extension definition itself 
+The cardinality constraints asserted by the extension definition itself
 apply to any contexts where the extension is used.
 </p>
 <p><b>Minimum Cardinality</b></p>
 <p>
-If the Extension minimum cardinality is 0, then the extension is 
-optional anywhere it appears. A <a href="profiling.html#resource">profile</a> that 
-defines the use of an extension may make the minimum cardinality any number up 
-to maximum cardinality of the extension itself. Example: Example: 
+If the Extension minimum cardinality is 0, then the extension is
+optional anywhere it appears. A <a href="profiling.html#resource">profile</a> that
+defines the use of an extension may make the minimum cardinality any number up
+to the maximum cardinality of the extension itself. Example: Example:
 <a href="extension-birthplace.html">Patient birthplace</a>.
 </p>
 <p>
-If the Extension minimum cardinality is &gt; 1, then the extension must have a 
-minimum cardinality of at least the minimum cardinality in any <a href="profiling.html#resource">profile</a> 
-that defines the use of an extension. The the minimum cardinality may be any number up 
-to maximum cardinality of the extension. Even with a minimum cardinality &gt;0, the 
-extension is only required to be present in instances if the inatances explicitly
-or implicitly conform to a profile that defines the use of the extension. Example: 
-<a href="extension-capabilitystatement-expectation.html">Conformance Expection</a>.
+If the Extension minimum cardinality is &gt; 1, then the extension must have a
+minimum cardinality of at least the minimum cardinality in any <a href="profiling.html#resource">profile</a>
+that defines the use of the extension. The minimum cardinality may be any number up
+to the maximum cardinality of the extension. Even with a minimum cardinality &gt; 0, the
+extension is only required to be present in instances if the instances explicitly
+or implicitly conform to a profile that defines the use of the extension. Example:
+<a href="extension-capabilitystatement-expectation.html">CapabilityStatement Expectation</a>.
 </p>
 <p><b>Maximum Cardinality</b></p>
 <p>
-If the Extension maximum cardinality is 1, then the extension is only allowed once on 
-any element on which it appears. A <a href="profiling.html#resource">profile</a> that 
-defines the use of an extension can only make the maximum cardinality 1 (or zero if 
+If the Extension maximum cardinality is 1, then the extension is only allowed once on
+any element on which it appears. A <a href="profiling.html#resource">profile</a> that
+defines the use of an extension can only make the maximum cardinality 1 (or zero if
 the minimum cardinality is 0, and the profile constrains another profile that allows
-the extension). Example: <a href="extension-patient-mothersmaidenname.html">Mother's Maiden Name</a>. 
+the extension). Example: <a href="extension-patient-mothersmaidenname.html">Mother's Maiden Name</a>.
 </p>
 <p>
-If the Extension maximum cardinality is &gt;1, then the extension is allowed up to 
-the specified number of times on any element on which it appears. 
-A <a href="profiling.html#resource">profile</a> that defines the use of an 
+If the Extension maximum cardinality is &gt;1, then the extension is allowed up to
+the specified number of times on any element on which it appears.
+A <a href="profiling.html#resource">profile</a> that defines the use of an
 extension may make the maximum cardinality any value up to the specified maximum.
 Example: <a href="extension-patient-disability.html">Patient Disability</a>.
 </p>
@@ -147,9 +147,9 @@ Example: <a href="extension-patient-disability.html">Patient Disability</a>.
 <a name="ed"> </a>
 <h3>Use of ElementDefinition in Extension Definitions</h3>
 <p>
-An extension is a wrapper for url and a value or other extensions. As such,
+An extension is a wrapper for an identifying url and either a value or other extensions. As such,
 some of the properties of the extension are defined on the extension
-itself, while others are defined on the Extension.value. This 
+itself, while others are defined on the <code>Extension.value</code>. This
 list provides guidance for the correct usage:
 </p>
 <ul>
@@ -178,16 +178,20 @@ list provides guidance for the correct usage:
   </ul>
  </li>
 </ul>
+<p>
+Note: Extensions are always sliced by their <code>url</code> property. Re-slicing extensions by
+additional properties is allowed (see <a href="profiling.html#slicing">Profiling/Slicing</a>).
+</p>
 
 <a name="registration"> </a>
 <h3>Publishing Extension Definitions</h3>
 <p>
 As well as defining the base element structure for resources, HL7 also publishes extensions, including as <a href="extensibility-registry.html">part of this specification</a>.
 HL7 publishes such data definitions as extensions rather than as part of the base resource structure
-in order to keep the base resource structure simple and concise, and to allow implementers not to
+to keep the base resource structure simple and concise, and to allow implementers freedom from needing to
 engage with an entire world's worth of functionality up front. Note that HL7 does not generally define
 "modifier" extensions - if HL7 publishes an element that modifies the meaning of other elements, it
-will mostly be part of the resource content itself, since everyone has to understand the extension anyway.
+will generally be part of the resource content itself, since everyone has to understand the extension anyway.
 </p>
 <p>
 Before extensions can be used in instances, their definition SHALL be published.
@@ -219,7 +223,7 @@ HL7-defined extensions published to represent equivalent data in the interest of
 <p>
 To minimize complexity for implementers, HL7 will not elevate widely adopted extensions (defined by HL7 or other organizations) to be content defined
 in a core resource in future versions of the resource unless there is widespread endorsement of such a migration from the implementer community.  This
-policy ensures that widespread adoption of an extension does not result in a forced migration to a core element. Extensions labeled as draft
+policy ensures that widespread adoption of an extension does not result in a forced migration to a core element. Extensions labelled as draft
 may be moved in either direction, but after extensions are finalised as normative they won't be moved.
 </p>
 <p>

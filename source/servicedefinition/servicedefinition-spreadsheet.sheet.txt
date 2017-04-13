@@ -1,6 +1,13 @@
 ﻿
 === Sheet Bindings =====================================
 
+ -- Row 1 -----------------------------------
+  Binding Name = DefinitionTopic
+  Binding = value set
+  Reference = http://hl7.org/fhir/ValueSet/definition-topic
+  Definition = High-level categorization of the definition, used for searching, sorting, and filtering
+  Conformance = example
+
 === Sheet Invariants =====================================
 
 === Sheet Data Elements =====================================
@@ -10,73 +17,91 @@
   Type = MetadataResource
   Short Name = A description of decision support service functionality
   Definition = The ServiceDefinition describes a unit of decision support functionality that is made available as a service, such as immunization modules or drug-drug interaction checking
+  Workflow Mapping = Definition
   w5 = clinical.general
 
  -- Row 2 -----------------------------------
   Element = ServiceDefinition.url
+  Workflow Mapping = Definition.url
 
  -- Row 3 -----------------------------------
   Element = ServiceDefinition.identifier
   Card. = 0..*
   Definition = & This is used for CMS or NQF identifiers for a measure artifact. Note that at least one identifier is required for non-experimental active artifacts
-  To Do = Add constraint to require an identifier for non-experimental active artifacts
+  Workflow Mapping = Definition.identifier
 
  -- Row 4 -----------------------------------
   Element = ServiceDefinition.version
-  To Do = Add constraint to require a version for non-experimental active artifacts
+  Workflow Mapping = Definition.version
 
  -- Row 5 -----------------------------------
   Element = ServiceDefinition.name
 
  -- Row 6 -----------------------------------
   Element = ServiceDefinition.title
+  Workflow Mapping = Definition.title
 
  -- Row 7 -----------------------------------
   Element = ServiceDefinition.status
+  Workflow Mapping = Definition.status
 
  -- Row 8 -----------------------------------
   Element = ServiceDefinition.experimental
+  Workflow Mapping = Definition.experimental
 
  -- Row 9 -----------------------------------
   Element = ServiceDefinition.date
+  Workflow Mapping = Definition.date
 
  -- Row 10 -----------------------------------
-  Element = ServiceDefinition.description
+  Element = ServiceDefinition.publisher
+  Workflow Mapping = Definition.publisher
 
  -- Row 11 -----------------------------------
-  Element = ServiceDefinition.purpose
+  Element = ServiceDefinition.description
+  Workflow Mapping = Definition.description
 
  -- Row 12 -----------------------------------
+  Element = ServiceDefinition.purpose
+  Workflow Mapping = Definition.purpose
+
+ -- Row 13 -----------------------------------
   Element = ServiceDefinition.usage
   Card. = 0..1
   Type = string
   Short Name = Describes the clinical usage of the module
   Definition = A detailed description of how the module is used from a clinical perspective
 
- -- Row 13 -----------------------------------
-  Element = ServiceDefinition.approvalDate
-
  -- Row 14 -----------------------------------
-  Element = ServiceDefinition.lastReviewDate
+  Element = ServiceDefinition.approvalDate
+  Workflow Mapping = Definition.approvalDate
 
  -- Row 15 -----------------------------------
-  Element = ServiceDefinition.effectivePeriod
+  Element = ServiceDefinition.lastReviewDate
+  Workflow Mapping = Definition.lastReviewDate
 
  -- Row 16 -----------------------------------
-  Element = ServiceDefinition.useContext
+  Element = ServiceDefinition.effectivePeriod
+  Workflow Mapping = Definition.effectivePeriod
 
  -- Row 17 -----------------------------------
-  Element = ServiceDefinition.jurisdiction
+  Element = ServiceDefinition.useContext
+  Workflow Mapping = Definition.useContext
 
  -- Row 18 -----------------------------------
+  Element = ServiceDefinition.jurisdiction
+  Workflow Mapping = Definition.jurisdiction
+
+ -- Row 19 -----------------------------------
   Element = ServiceDefinition.topic
   Card. = 0..*
   Type = CodeableConcept
-  Short Name = Descriptional topics for the module
-  Definition = Clinical topics related to the content of the module
+  Binding = DefinitionTopic
+  Short Name = E.g. Education, Treatment, Assessment, etc
+  Definition = Descriptive topics related to the module. Topics provide a high-level categorization of the module that can be useful for filtering and searching
   Requirements = Repositories must be able to determine how to categorize the module so that it can be found by topical searches
 
- -- Row 19 -----------------------------------
+ -- Row 20 -----------------------------------
   Element = ServiceDefinition.contributor
   Card. = 0..*
   Type = Contributor
@@ -84,21 +109,19 @@
   Definition = A contributor to the content of the module, including authors, editors, reviewers, and endorsers
   Requirements = Consumers of the content must be able to quickly determine who contributed to the content of the knowledge module
 
- -- Row 20 -----------------------------------
-  Element = ServiceDefinition.publisher
-  To Do = Add constraint to require a publisher for non-experimental active artifacts
-
  -- Row 21 -----------------------------------
   Element = ServiceDefinition.contact
+  Workflow Mapping = Definition.contact
 
  -- Row 22 -----------------------------------
   Element = ServiceDefinition.copyright
+  Workflow Mapping = Definition.copyright
 
  -- Row 23 -----------------------------------
   Element = ServiceDefinition.relatedArtifact
   Card. = 0..*
   Type = RelatedArtifact
-  Short Name = Related resources for the module
+  Short Name = Additional documentation, citations, etc
   Definition = Related resources such as additional documentation, justification, or bibliographic references
   Requirements = Modules must be able to provide enough information for consumers of the content (and/or interventions or results produced by the content) to be able to determine and understand the justification for and evidence in support of the content
   Comments = Each related resource is either an attachment, or a reference to another resource, but not both
@@ -114,7 +137,7 @@
   Element = ServiceDefinition.dataRequirement
   Card. = 0..*
   Type = DataRequirement
-  Short Name = Data requirements for the module
+  Short Name = What data is used by the module
   Definition = Data requirements are a machine processable description of the data required by the module in order to perform a successful evaluation
 
  -- Row 26 -----------------------------------
@@ -137,6 +160,41 @@
   Type = number
   Description = The minimum relevance score of any match that will be returned
   Path = Bundle/entry/search/score
+
+ -- Row 3 -----------------------------------
+  Name = depends-on
+  Type = reference
+  Path = ServiceDefinition.relatedArtifact.resource
+  Expression = ServiceDefinition.relatedArtifact.where(type=\'depends-on\').resource
+  XPath = f:ServiceDefinition/f:relatedArtifact[f:type/@value=\'depends-on\']/f:resource
+
+ -- Row 4 -----------------------------------
+  Name = derived-from
+  Type = reference
+  Path = ServiceDefinition.relatedArtifact.resource
+  Expression = ServiceDefinition.relatedArtifact.where(type=\'derived-from\').resource
+  XPath = f:ServiceDefinition/f:relatedArtifact[f:type/@value=\'derived-from\']/f:resource
+
+ -- Row 5 -----------------------------------
+  Name = successor
+  Type = reference
+  Path = ServiceDefinition.relatedArtifact.resource
+  Expression = ServiceDefinition.relatedArtifact.where(type=\'successor\').resource
+  XPath = f:ServiceDefinition/f:relatedArtifact[f:type/@value=\'successor\']/f:resource
+
+ -- Row 6 -----------------------------------
+  Name = predecessor
+  Type = reference
+  Path = ServiceDefinition.relatedArtifact.resource
+  Expression = ServiceDefinition.relatedArtifact.where(type=\'predecessor\').resource
+  XPath = f:ServiceDefinition/f:relatedArtifact[f:type/@value=\'predecessor\']/f:resource
+
+ -- Row 7 -----------------------------------
+  Name = composed-of
+  Type = reference
+  Path = ServiceDefinition.relatedArtifact.resource
+  Expression = ServiceDefinition.relatedArtifact.where(type=\'composed-of\').resource
+  XPath = f:ServiceDefinition/f:relatedArtifact[f:type/@value=\'composed-of\']/f:resource
 
 === Sheet Profiles =====================================
 
@@ -347,9 +405,8 @@
  -- Row 22 -----------------------------------
   Name = data-requirements.return
   Use = out
-  Documentation = The result of the requirements gathering
+  Documentation = The result of the requirements gathering is a module-definition Library that describes the aggregate parameters, data requirements, and dependencies of the service.
   Type = Library
   Title = Return
-  Footer = A module-definition Library that describes the aggregate parameters, data requirements, and dependencies of the target.
   Min = 1
   Max = 1

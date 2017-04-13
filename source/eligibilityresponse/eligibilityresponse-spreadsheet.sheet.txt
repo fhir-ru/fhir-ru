@@ -66,6 +66,7 @@
   Type = DomainResource
   Short Name = EligibilityResponse resource
   Definition = This resource provides eligibility and plan details from the processing of an Eligibility resource.
+  Workflow Mapping = Event
   w5 = financial.support
 
  -- Row 2 -----------------------------------
@@ -77,6 +78,7 @@
   Type = Identifier
   Short Name = Business Identifier
   Definition = The Response business identifier
+  Workflow Mapping = Event.identifier
   w5 = id
 
  -- Row 4 -----------------------------------
@@ -106,6 +108,8 @@
   Binding = EligibilityResponseStatus
   Short Name = active | cancelled | draft | entered-in-error
   Definition = The status of the resource instance.
+  Comments = This element is labeled as a modifier because the status contains codes that mark the response as not currently valid
+  Workflow Mapping = Event.status
   w5 = status
 
  -- Row 7 -----------------------------------
@@ -131,6 +135,7 @@
   Type = Reference(Organization)
   Short Name = Responsible organization
   Definition = The organization which is responsible for the services rendered to the patient.
+  Workflow Mapping = Event.performer.onBehalfOf
   w5 = who.source
 
  -- Row 10 -----------------------------------
@@ -139,6 +144,7 @@
   Type = Reference(EligibilityRequest)
   Short Name = Eligibility reference
   Definition = Original request resource reference
+  Workflow Mapping = Event.basedOn
   CDAnet v4 Mapping = A02|G01
   w5 = why
 
@@ -156,19 +162,20 @@
   Type = string
   Short Name = Disposition Message
   Definition = A description of the status of the adjudication.
+  Workflow Mapping = Event.note
 
  -- Row 13 -----------------------------------
   Element = EligibilityResponse.insurer
   Card. = 0..1
   Type = Reference(Organization)
-  Short Name = Insurer
+  Short Name = Insurer issuing the coverage
   Definition = The Insurer who produced this adjudicated response.
 
  -- Row 14 -----------------------------------
   Element = EligibilityResponse.inforce
   Card. = 0..1
   Type = boolean
-  Short Name = Coverage inforce
+  Short Name = Coverage inforce indicator
   Definition = Flag indicating if the coverage provided is inforce currently  if no service date(s) specified or for the whole duration of the service dates.
 
  -- Row 15 -----------------------------------
@@ -212,7 +219,7 @@
   Card. = 1..1
   Type = CodeableConcept
   Binding = BenefitCategory
-  Short Name = Benefit Category
+  Short Name = Type of services covered
   Definition = Dental, Vision, Medical, Pharmacy, Rehab etc.
 
  -- Row 22 -----------------------------------
@@ -220,7 +227,7 @@
   Card. = 0..1
   Type = CodeableConcept
   Binding = BenefitSubCategory
-  Short Name = Benefit SubCategory
+  Short Name = Detailed services covered within the type
   Definition = Dental: basic, major, ortho; Vision exam, glasses, contacts; etc
 
  -- Row 23 -----------------------------------
@@ -241,7 +248,7 @@
   Element = EligibilityResponse.insurance.benefitBalance.description
   Card. = 0..1
   Type = string
-  Short Name = Description of the benefit
+  Short Name = Description of the benefit or services covered
   Definition = A richer description of the benefit, for example \'DENT2 covers 100% of basic, 50% of major but exclused Ortho, Implants and Costmetic services\'.
 
  -- Row 26 -----------------------------------
@@ -285,14 +292,14 @@
   Definition = Deductable, visits, benefit amount.
 
  -- Row 31 -----------------------------------
-  Element = EligibilityResponse.insurance.benefitBalance.financial.benefit[x]
+  Element = EligibilityResponse.insurance.benefitBalance.financial.allowed[x]
   Card. = 0..1
   Type = unsignedInt|string|Money
   Short Name = Benefits allowed
   Definition = Benefits allowed
 
  -- Row 32 -----------------------------------
-  Element = EligibilityResponse.insurance.benefitBalance.financial.benefitUsed[x]
+  Element = EligibilityResponse.insurance.benefitBalance.financial.used[x]
   Card. = 0..1
   Type = unsignedInt|Money
   Short Name = Benefits used
@@ -437,8 +444,20 @@
 
  -- Row 2 -----------------------------------
   Name = General-Primary-B1
-  Identity = E2500
+  Identity = E2501
   Description = General Person Primary Coverage  with Benefit Details
   Filename = eligibilityresponse-example-benefits.xml
+
+ -- Row 3 -----------------------------------
+  Name = General-Primary-B2
+  Identity = E2502
+  Description = General Person Primary Coverage  with Benefit Details  and new insurance
+  Filename = eligibilityresponse-example-benefits-2.xml
+
+ -- Row 4 -----------------------------------
+  Name = General-Primary-B3
+  Identity = E2503
+  Description = General Person Primary Coverage  with error
+  Filename = eligibilityresponse-example-error.xml
 
 === Sheet Examples =====================================

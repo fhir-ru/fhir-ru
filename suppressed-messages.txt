@@ -1,16 +1,48 @@
-INFORMATION @ AuditEvent.event: Name of child (event) overlaps with name of parent (AuditEvent) (src = ResourceValidator)
-INFORMATION @ DataElement.element: Name of child (element) overlaps with name of parent (DataElement) (src = ResourceValidator)
-INFORMATION @ ElementDefinition.definition: Name of child (definition) overlaps with name of parent (ElementDefinition) (src = ResourceValidator)
-INFORMATION @ ImmunizationRecommendation.recommendation: Name of child (recommendation) overlaps with name of parent (ImmunizationRecommendation) (src = ResourceValidator)
-INFORMATION @ MedicationDispense.dispense: Name of child (dispense) overlaps with name of parent (MedicationDispense) (src = ResourceValidator)
-INFORMATION @ ResourceReference.reference: Name of child (reference) overlaps with name of parent (ResourceReference) (src = ResourceValidator)
-INFORMATION @ SampledData.data: Name of child (data) overlaps with name of parent (SampledData) (src = ResourceValidator)
-WARNING @ AuditEvent: All resources should have an identifier (src = ResourceValidator)
-WARNING @ Basic: A resource must have an 'entered in error' status
-WARNING @ Conformance: RIM Mapping is required (src = ResourceValidator)
-WARNING @ Medication: All resources should have an identifier (src = ResourceValidator)
-WARNING @ Namespace: All resources should have an identifier (src = ResourceValidator)
-WARNING @ Profile: RIM Mapping is required (src = ResourceValidator)
-WARNING @ Provenance: All resources should have an identifier (src = ResourceValidator)
-WARNING @ Substance: All resources should have an identifier (src = ResourceValidator)
-INFORMATION:EpisodeOfCare.careManager Name of child (careManager) overlaps with name of parent (EpisodeOfCare)
+INFORMATION: CodeSystem.concept.property.value[x]: An element of type CodeableConcept or Coding must have a binding
+INFORMATION: DataElement.element: Name of child (element) overlaps with name of parent (DataElement)
+INFORMATION: ElementDefinition.definition: Name of child (definition) overlaps with name of parent (ElementDefinition)
+INFORMATION: EpisodeOfCare.careManager: Name of child (careManager) overlaps with name of parent (EpisodeOfCare)
+INFORMATION: ImmunizationRecommendation.recommendation: Name of child (recommendation) overlaps with name of parent (ImmunizationRecommendation)
+INFORMATION: Reference.reference: Name of child (reference) overlaps with name of parent (Reference)
+INFORMATION: SampledData.data: Name of child (data) overlaps with name of parent (SampledData)
+WARNING: Attachment.contentType: Unable to resolve value set on 'code' Binding
+WARNING: AuditEvent: Resource elements are out of order. The correct order is '[type(=what), subtype(=what), action(=what), outcome(=what), outcomeDesc(=what), entity(=what), recorded(=when.recorded), source(=who.witness), agent(=who), purposeOfEvent(=why)]' but the actual order is '[type(=what), subtype(=what), action(=what), recorded(=when.recorded), outcome(=what), outcomeDesc(=what), purposeOfEvent(=why), agent(=who), source(=who.witness), entity(=what)]'
+WARNING: CapabilityStatement.format: Unable to resolve value set on 'code' Binding
+WARNING: CapabilityStatement.patchFormat: Unable to resolve value set on 'code' Binding
+WARNING: CapabilityStatement.rest.security.certificate.type: Unable to resolve value set on 'code' Binding
+WARNING: CompartmentDefinition: All resources should have an identifier
+WARNING: ConceptMap.group.element.target.comment: MnM must have confirmed this should not be an Annotation
+WARNING: ConceptMap.group.element.target.comment: MnM must have confirmed this should not be an Annotation
+WARNING: DataElement.mapping.comment: MnM must have confirmed this should not be an Annotation
+WARNING: DiagnosticReport.image.comment: MnM must have confirmed this should not be an Annotation
+WARNING: ElementDefinition.comment: MnM must have confirmed this should not be an Annotation
+WARNING: ElementDefinition.comment: The type of 'comment' must be 'string'
+WARNING: ElementDefinition.mapping.language: Unable to resolve value set on 'code' Binding
+WARNING: ElementDefinition.mapping.comment: MnM must have confirmed this should not be an Annotation
+WARNING: Endpoint.payloadMimeType: Unable to resolve value set on 'code' Binding
+WARNING: ImplementationGuide.page.format: Unable to resolve value set on 'code' Binding
+WARNING: Linkage: All resources should have an identifier
+WARNING: Measure.supplementalData: Element names should be singular
+WARNING: Medication: All resources should have an identifier
+WARNING: NamingSystem.uniqueId.comment: MnM must have confirmed this should not be an Annotation
+WARNING: Observation.comment: MnM must have confirmed this should not be an Annotation
+WARNING: OperationDefinition.comment: MnM must have confirmed this should not be an Annotation
+WARNING: OperationDefinition.overload.comment: MnM must have confirmed this should not be an Annotation
+WARNING: Parameters: All resources should have an identifier
+WARNING: Provenance: Resource elements are out of order. The correct order is '[target(=what), period(=when.done), recorded(=when.recorded), agent(=who), location(=where), reason(=why), activity(=why)]' but the actual order is '[target(=what), period(=when.done), recorded(=when.recorded), location(=where), reason(=why), activity(=why), agent(=who)]'
+WARNING: Signature.contentType: Unable to resolve value set on 'code' Binding
+WARNING: StructureDefinition.mapping.comment: MnM must have confirmed this should not be an Annotation
+WARNING: pa:ValueSetComparison: Duplicate Valueset Names: v2/0002/index.html (v2 Marital Status) & valueset-marital-status.html (Marital Status Codes) (name: [statuses, maritals] / [statuses, maritals]))
+WARNING: pa:ValueSetComparison: Duplicate Valueset Names: v2/0267/index.html (v2 Days of the Week) & valueset-days-of-week.html (DaysOfWeek) (name: [weeks, days] / [weeks, days]))
+WARNING: sd:ValueSetComparison: Duplicate Valueset Names: v2-0270 (v2 Document Type) & c80-doc-typecodes (Document Type Value Set) (name: [types, documents] / [types, documents]))
+WARNING: sd:ValueSetComparison: Duplicate Valueset Names: v2-0331 (v2 Facility Type) & c80-facilitycodes (Facility Type Code Value Set) (name: [types, facilities] / [types, facilities]))
+;temporary
+INFORMATION: Appointment.appointmentType: Name of child (appointmentType) overlaps with name of parent (Appointment)
+WARNING: CompartmentDefinition.jurisdiction: Search Parameter 'CompartmentDefinition.jurisdiction' had no found values in any example. Consider reviewing the expression (CompartmentDefinition.jurisdiction)
+WARNING: CompartmentDefinition.title: Search Parameter 'CompartmentDefinition.title' had no found values in any example. Consider reviewing the expression (CompartmentDefinition.title)
+WARNING: RiskAssessment.comment: MnM must have confirmed this should not be an Annotation
+WARNING: SearchParameter.component: Search Parameter 'SearchParameter.component' had no found values in any example. Consider reviewing the expression (SearchParameter.component.definition)
+WARNING: StructureDefinition.context-type: Search Parameter 'StructureDefinition.context-type' had no found values in any example. Consider reviewing the expression (StructureDefinition.contextType)
+WARNING: StructureDefinition.ext-context: Search Parameter 'StructureDefinition.ext-context' had no found values in any example. Consider reviewing the expression (StructureDefinition.context)
+WARNING: DataElement.stringency: Search Parameter 'DataElement.stringency' had no found values in any example. Consider reviewing the expression (DataElement.stringency)
+WARNING: DataElement.url: Search Parameter 'DataElement.url' had no found values in any example. Consider reviewing the expression (DataElement.url)

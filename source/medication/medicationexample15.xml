@@ -30,7 +30,6 @@
   <manufacturer>
       <reference value="#org2"/>
   </manufacturer>
-  <product>
     <form>
       <coding>
         <system value="http://snomed.info/sct"/>
@@ -55,11 +54,8 @@
         </denominator>
       </amount>
     </ingredient>
-    <batch>
-      <lotNumber value="9494788"/>
-      <expirationDate value="2017-05-22"/>
-    </batch>
-  </product>
+
+  
   <package>
     <container>
       <coding>
@@ -78,5 +74,9 @@
         </coding>
       </itemCodeableConcept>
     </content>
+    <batch>
+      <lotNumber value="9494788"/>
+      <expirationDate value="2017-05-22"/>
+    </batch>
   </package>
 </Medication>

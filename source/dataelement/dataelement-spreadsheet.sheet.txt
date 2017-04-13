@@ -67,6 +67,14 @@
   Expression = slicing.empty()
   Severity = error
 
+ -- Row 3 -----------------------------------
+  Id = 3
+  Context = DataElement.mapping
+  English = At least one of  name or uri SHALL be present
+  XPath = exists(f:uri) or exists(f:name)
+  Expression = uri.exists() or name.exists()
+  Severity = error
+
 === Sheet Data Elements =====================================
 
  -- Row 1 -----------------------------------
@@ -117,20 +125,20 @@
   RIM Mapping = ./inboundRelationship[typeCode=SUBJ]/source[classCode=OBS,moodCode=EVN,code=\"experimental\"].value[type=BL]
 
  -- Row 7 -----------------------------------
-  Element = DataElement.publisher
-  IHE DEX mapping = registrationAuthority
-  v2 Mapping = OM1.16
-  RIM Mapping = ./participation[typeCode=AUT]/role[classCode=ASSIGN]/scoper[classCode=ORG,determinerCode=INSTANCE]/name
-  11179 Mapping = (Administered_Item).stewardship_record.organization.name
-  LOINC Code = Fixed to Regenstrief or SOURCE
-
- -- Row 8 -----------------------------------
   Element = DataElement.date
   IHE DEX mapping = revisionDate
   v2 Mapping = OM1.21
   RIM Mapping = ./participation[typeCode=AUT]/time
   11179 Mapping = (Administered_item).last_change_date
   LOINC Code = DATE_LAST_CHANGED
+
+ -- Row 8 -----------------------------------
+  Element = DataElement.publisher
+  IHE DEX mapping = registrationAuthority
+  v2 Mapping = OM1.16
+  RIM Mapping = ./participation[typeCode=AUT]/role[classCode=ASSIGN]/scoper[classCode=ORG,determinerCode=INSTANCE]/name
+  11179 Mapping = (Administered_Item).stewardship_record.organization.name
+  LOINC Code = Fixed to Regenstrief or SOURCE
 
  -- Row 9 -----------------------------------
   Element = DataElement.name
@@ -176,12 +184,12 @@
   Requirements = Allows determining the degree of comparability of data element instances. Less granular data elements result in data that is less comparable (or at least requires more work to compare)
   v2 Mapping = N/A
   RIM Mapping = ./target[typeCode=SUBJ]/source[classCode=OBS, moodCode=EVN, code=\"granularity\"]/value
-  To Do = Should this be an extension?
 
  -- Row 16 -----------------------------------
   Element = DataElement.mapping
   Card. = 0..*
   UML = 400;140
+  Inv. = 3
   Short Name = External specification mapped to
   Definition = Identifies a specification (other than a terminology) that the elements which make up the DataElement have some correspondence with
   IHE DEX mapping = 100;0
@@ -217,7 +225,7 @@
   Element = DataElement.mapping.comment
   Card. = 0..1
   Type = string
-  Short Name = Versions, Issues, Scope limitations etc.
+  Short Name = Versions, issues, scope limitations, etc.
   Definition = Comments about this mapping, including version notes, issues, scope limitations, and other important notes for usage
   RIM Mapping = N/A (MIF)
 
@@ -228,10 +236,8 @@
   Type = ElementDefinition
   Short Name = Definition of element
   Definition = Defines the structure, type, allowed values and other constraining characteristics of the data element
-  Requirements = 1
   Comments = For simple data types there will only be one repetition.  For complex data types, multiple repetitions will be present defining a nested structure using the \"path\" element
   RIM Mapping = N/A (MIF)
-  To Do = Type should have {http://hl7.org/fhir/StructureDefinition/elementdefinition-de}
 
 === Sheet Search =====================================
 

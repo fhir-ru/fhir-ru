@@ -2,6 +2,7 @@ package org.hl7.fhir.igtools.publisher;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,16 +10,22 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
-import org.hl7.fhir.dstu3.validation.ValidationMessage;
-import org.hl7.fhir.dstu3.validation.ValidationMessage.Source;
+import org.hl7.fhir.dstu3.context.IWorkerContext.ILoggingService;
+import org.hl7.fhir.dstu3.context.IWorkerContext.ILoggingService.LogCategory;
 import org.hl7.fhir.exceptions.FHIRFormatError;
+import org.hl7.fhir.igtools.publisher.HTLMLInspector.NodeChangeType;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.validation.ValidationMessage;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueType;
+import org.hl7.fhir.utilities.validation.ValidationMessage.Source;
 import org.hl7.fhir.utilities.xhtml.NodeType;
+import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode.Location;
+import org.omg.CosNaming.NamingContextExtOperations;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 
 //import org.owasp.html.Handler;
@@ -32,6 +39,11 @@ import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 
 public class HTLMLInspector {
 
+  
+  public enum NodeChangeType {
+    NONE, SELF, CHILD
+  }
+
   public class HtmlChangeListenerContext {
 
     private List<ValidationMessage> messages;
@@ -41,7 +53,6 @@ public class HTLMLInspector {
       this.messages = messages;
       this.source = source;
     }
-
   }
 
 //  public class HtmlSanitizerObserver implements HtmlChangeListener<HtmlChangeListenerContext> {
@@ -68,12 +79,14 @@ public class HTLMLInspector {
   }
 
   public class LoadedFile {
+    private String filename;
     private long lastModified;
     private XhtmlNode xhtml;
     private int iteration;
     private Set<String> targets = new HashSet<String>();
 
-    public LoadedFile(long lastModified, XhtmlNode xhtml, int iteration) {
+    public LoadedFile(String filename, long lastModified, XhtmlNode xhtml, int iteration) {
+      this.filename = filename;
       this.lastModified = lastModified;
       this.xhtml = xhtml;
       this.iteration = iteration;
@@ -98,6 +111,11 @@ public class HTLMLInspector {
     public Set<String> getTargets() {
       return targets;
     }
+
+    public String getFilename() {
+      return filename;
+    }
+    
   }
 
   private boolean strict;
@@ -108,10 +126,12 @@ public class HTLMLInspector {
   private List<StringPair> otherlinks = new ArrayList<StringPair>();
   private int links;
   private List<String> manual = new ArrayList<String>(); // pages that will be provided manually when published, so allowed to be broken links
+  private ILoggingService log;
 
-  public HTLMLInspector(String rootFolder, List<SpecMapManager> specs) {
+  public HTLMLInspector(String rootFolder, List<SpecMapManager> specs, ILoggingService log) {
     this.rootFolder = rootFolder.replace("/", File.separator);
     this.specs = specs;
+    this.log = log;
   }
 
   public List<ValidationMessage> check() throws IOException {
@@ -119,35 +139,49 @@ public class HTLMLInspector {
 
     List<ValidationMessage> messages = new ArrayList<ValidationMessage>();
 
+    log.logDebugMessage(LogCategory.HTML, "CheckHTML: List files");
     // list new or updated files
     List<String> loadList = new ArrayList<>();
     listFiles(rootFolder, loadList);
+    log.logMessage("found "+Integer.toString(loadList.size())+" files");
 
     checkGoneFiles();
 
+    log.logDebugMessage(LogCategory.HTML, "Loading Files");
     // load files
     for (String s : loadList)
       loadFile(s, messages);
 
 
+    log.logDebugMessage(LogCategory.HTML, "Checking Files");
     links = 0;
     // check links
     for (String s : cache.keySet()) {
       LoadedFile lf = cache.get(s);
       if (lf.getXhtml() != null)
-        checkLinks(s, "", lf.getXhtml(), messages);
+        if (checkLinks(s, "", lf.getXhtml(), null, messages) != NodeChangeType.NONE) // returns true if changed
+          saveFile(lf);
     }
-
  
+    log.logDebugMessage(LogCategory.HTML, "Checking Other Links");
     // check other links:
     for (StringPair sp : otherlinks) {
       sp = sp;
-      checkResolveLink(sp.source, null, null, sp.link, messages);
+      checkResolveLink(sp.source, null, null, sp.link, messages, null);
     }
+    
+    log.logDebugMessage(LogCategory.HTML, "Done checking");
     
     return messages;
   }
 
+
+  private void saveFile(LoadedFile lf) throws IOException {
+    new File(lf.getFilename()).delete();
+    FileOutputStream f = new FileOutputStream(lf.getFilename());
+    new XhtmlComposer().composeDocument(f, lf.getXhtml());
+    f.close();
+  }
 
   private void checkGoneFiles() {
     List<String> td = new ArrayList<String>();
@@ -189,7 +223,7 @@ public class HTLMLInspector {
       if (htmlName || !(e.getMessage().startsWith("Unable to Parse HTML - does not start with tag.") || e.getMessage().startsWith("Malformed XHTML")))
     	messages.add(new ValidationMessage(Source.Publisher, IssueType.STRUCTURE, s, e.getMessage(), IssueSeverity.ERROR));    	
     }
-    LoadedFile lf = new LoadedFile(f.lastModified(), x, iteration);
+    LoadedFile lf = new LoadedFile(s, f.lastModified(), x, iteration);
     cache.put(s, lf);
     if (x != null) {
       checkHtmlStructure(s, x, messages);
@@ -235,19 +269,43 @@ public class HTLMLInspector {
       listTargets(c, targets);
   }
 
-  private void checkLinks(String s, String path, XhtmlNode x, List<ValidationMessage> messages) throws IOException {
+  private NodeChangeType checkLinks(String s, String path, XhtmlNode x, String uuid, List<ValidationMessage> messages) throws IOException {
+    boolean changed = false;
     if (x.getName() != null)
       path = path + "/"+ x.getName();
+    if ("title".equals(x.getName()) && Utilities.noString(x.allText()))
+      x.addText("??");
     if ("a".equals(x.getName()) && x.hasAttribute("href"))
-      checkResolveLink(s, x.getLocation(), path, x.getAttribute("href"), messages);
+      changed = checkResolveLink(s, x.getLocation(), path, x.getAttribute("href"), messages, uuid);
     if ("img".equals(x.getName()) && x.hasAttribute("src"))
-      checkResolveImageLink(s, x.getLocation(), path, x.getAttribute("src"), messages);
+      changed = checkResolveImageLink(s, x.getLocation(), path, x.getAttribute("src"), messages, uuid) || changed;
     if ("link".equals(x.getName()))
-      checkLinkElement(s, x.getLocation(), path, x.getAttribute("href"), messages);
+      changed = checkLinkElement(s, x.getLocation(), path, x.getAttribute("href"), messages, uuid) || changed;
     if ("script".equals(x.getName()))
       checkScriptElement(s, x.getLocation(), path, x, messages);
-    for (XhtmlNode c : x.getChildNodes())
-      checkLinks(s, path, c, messages);
+    String nuid = UUID.randomUUID().toString().toLowerCase();
+    boolean nchanged = false;
+    boolean nSelfChanged = false;
+    for (XhtmlNode c : x.getChildNodes()) { 
+      NodeChangeType ct = checkLinks(s, path, c, nuid, messages);
+      if (ct == NodeChangeType.SELF) {
+        nSelfChanged = true;
+        nchanged = true;
+      } else if (ct == NodeChangeType.CHILD) {
+        nchanged = true;
+      }      
+    }
+    if (nSelfChanged) {
+      XhtmlNode a = new XhtmlNode(NodeType.Element);
+      a.setName("a").setAttribute("name", nuid).addText(" ");
+      x.getChildNodes().add(0, a);
+    } 
+    if (changed)
+      return NodeChangeType.SELF;
+    else if (nchanged)
+      return NodeChangeType.CHILD;
+    else
+      return NodeChangeType.NONE;
   }
 
   private void checkScriptElement(String filename, Location loc, String path, XhtmlNode x, List<ValidationMessage> messages) {
@@ -256,33 +314,41 @@ public class HTLMLInspector {
       messages.add(new ValidationMessage(Source.Publisher, IssueType.NOTFOUND, filename+(loc == null ? "" : " at "+loc.toString()), "The <script> src '"+src+"' is llegal", IssueSeverity.FATAL));    
   }
 
-  private void checkLinkElement(String filename, Location loc, String path, String href, List<ValidationMessage> messages) {
-    if (Utilities.isAbsoluteUrl(href) && !href.startsWith("http://hl7.org/"))
-      messages.add(new ValidationMessage(Source.Publisher, IssueType.NOTFOUND, filename+(loc == null ? "" : " at "+loc.toString()), "The <link> href '"+href+"' is llegal", IssueSeverity.FATAL));    
+  private boolean checkLinkElement(String filename, Location loc, String path, String href, List<ValidationMessage> messages, String uuid) {
+    if (Utilities.isAbsoluteUrl(href) && !href.startsWith("http://hl7.org/")) {
+      messages.add(new ValidationMessage(Source.Publisher, IssueType.NOTFOUND, filename+(loc == null ? "" : " at "+loc.toString()), "The <link> href '"+href+"' is llegal", IssueSeverity.FATAL).setLocationLink(uuid == null ? null : filename+"#"+uuid));
+      return true;        
+    } else
+      return false;
   }
 
-  private void checkResolveLink(String filename, Location loc, String path, String ref, List<ValidationMessage> messages) throws IOException {
+  private boolean checkResolveLink(String filename, Location loc, String path, String ref, List<ValidationMessage> messages, String uuid) throws IOException {
     links++;
+    String rref = ref;
+    if ((rref.startsWith("http:") || rref.startsWith("https:") ) && (rref.endsWith(".sch") || rref.endsWith(".xsd") || rref.endsWith(".shex"))) { // work around for the fact that spec.internals does not track all these minor things 
+      rref = Utilities.changeFileExt(ref, ".html");
+    }
     String tgtList = "";
-    boolean resolved = Utilities.existsInList(ref, "qa.html", "http://hl7.org/fhir", "http://hl7.org", "http://www.hl7.org", "http://hl7.org/fhir/search.cfm") || ref.startsWith("http://gforge.hl7.org/gf/project/fhir/tracker/");
+    boolean resolved = Utilities.existsInList(ref, "qa.html", "http://hl7.org/fhir", "http://hl7.org", "http://www.hl7.org", "http://hl7.org/fhir/search.cfm") || ref.startsWith("http://gforge.hl7.org/gf/project/fhir/tracker/") || ref.startsWith("mailto:");
     if (!resolved)
-      resolved = manual.contains(ref);
+      resolved = manual.contains(rref);
     if (!resolved && specs != null){
       for (SpecMapManager spec : specs) {
-        resolved = resolved || spec.getBase().equals(ref) || (spec.getBase()).equals(ref+"/") || spec.hasTarget(ref); 
+        resolved = resolved || spec.getBase().equals(rref) || (spec.getBase()).equals(rref+"/") || spec.hasTarget(rref); 
       }
     }
+      
     if (!resolved) {
-      if (ref.startsWith("http://") || ref.startsWith("https://")) {
+      if (rref.startsWith("http://") || rref.startsWith("https://")) {
         resolved = true;
         if (specs != null) {
           for (SpecMapManager spec : specs) {
-            if (ref.startsWith(spec.getBase()))
+            if (rref.startsWith(spec.getBase()))
               resolved = false;
           }
         }
       } else { 
-        String page = ref;
+        String page = rref;
         String name = null;
         if (page.startsWith("#")) {
           name = page.substring(1);
@@ -306,11 +372,15 @@ public class HTLMLInspector {
       }
     }
       
-    if (!resolved)
-      messages.add(new ValidationMessage(Source.Publisher, IssueType.NOTFOUND, filename+(path == null ? "" : "#"+path+(loc == null ? "" : " at "+loc.toString())), "The link '"+ref+"' cannot be resolved"+tgtList, IssueSeverity.ERROR));
+    if (resolved) {
+      return false;
+    } else {
+      messages.add(new ValidationMessage(Source.Publisher, IssueType.NOTFOUND, filename+(path == null ? "" : "#"+path+(loc == null ? "" : " at "+loc.toString())), "The link '"+ref+"' cannot be resolved"+tgtList, IssueSeverity.ERROR).setLocationLink(uuid == null ? null : filename+"#"+uuid));
+      return true;
+    } 
   }
 
-  private void checkResolveImageLink(String filename, Location loc, String path, String ref, List<ValidationMessage> messages) throws IOException {
+  private boolean checkResolveImageLink(String filename, Location loc, String path, String ref, List<ValidationMessage> messages, String uuid) throws IOException {
     links++;
     String tgtList = "";
     boolean resolved = Utilities.existsInList(ref);
@@ -337,8 +407,12 @@ public class HTLMLInspector {
       }
     }
       
-    if (!resolved)
-      messages.add(new ValidationMessage(Source.Publisher, IssueType.NOTFOUND, filename+(path == null ? "" : "#"+path+(loc == null ? "" : " at "+loc.toString())), "The image source '"+ref+"' cannot be resolved"+tgtList, IssueSeverity.ERROR));
+    if (resolved)
+      return false;
+    else {
+      messages.add(new ValidationMessage(Source.Publisher, IssueType.NOTFOUND, filename+(path == null ? "" : "#"+path+(loc == null ? "" : " at "+loc.toString())), "The image source '"+ref+"' cannot be resolved"+tgtList, IssueSeverity.ERROR).setLocationLink(uuid == null ? null : filename+"#"+uuid));
+      return true;
+    } 
   }
 
   public void addLinkToCheck(String source, String link) {
@@ -355,7 +429,7 @@ public class HTLMLInspector {
   }
 
   public static void main(String[] args) throws Exception {
-    HTLMLInspector inspector = new HTLMLInspector(args[0], null);
+    HTLMLInspector inspector = new HTLMLInspector(args[0], null, null);
     inspector.setStrict(false);
     List<ValidationMessage> linkmsgs = inspector.check();
     int bl = 0;

@@ -24,12 +24,14 @@
       <code value="AU"/>
       <display value="authenticated"/>
   </activity>
-  
+ 
   <!-- signer = Harold Hippocrates -->
   <agent>
     <role>
-      <system value="http://hl7.org/fhir/provenance-participant-role"/>
-      <code value="verifier"/>
+      <coding>
+        <system value="http://www.hl7.org/fhir/contractsignertypecodes"/>
+        <code value="VERF"/>
+      </coding>
     </role>
 
     <!-- very often, the user won't have a known system - these aren't available 
@@ -37,10 +39,10 @@
       Most of the time the userId is fully qualfied such as an email address	  -->
     <whoUri value="mailto://hhd@ssa.gov"/>
   </agent>
-  <signature>
+   <signature>
   <!-- verification signature -->
     <type>
-		<system value="http://hl7.org/fhir/valueset-signature-type"/>
+		<system value="urn:iso-astm:E1762-95:2013"/>
 		<code value="1.2.840.10065.1.12.1.5"/>
 		<display value="Verification Signature"/>
 	</type>

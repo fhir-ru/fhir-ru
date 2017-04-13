@@ -7,7 +7,6 @@
         <Medication>
             <id value="med0319"/>
         <isBrand value="false"/>
-        <product>
             <form>
                 <coding>
                     <system value="http://snomed.info/sct"/>
@@ -79,29 +78,33 @@
                     </denominator>
                 </amount>
             </ingredient>
-        </product>
+        
         </Medication>
     </contained>
     <status value="completed"/>
     <medicationReference>
         <reference value="#med0319"/>
     </medicationReference>
-    <patient>
+    <subject>
         <reference value="Patient/pat1"/>
         <display value="Donald Duck"/>
-    </patient>
-    <dispenser>
-        <reference value="Practitioner/f006"/>
-        <display value="Rob van den Berk"/>
-    </dispenser>
+    </subject>
+    <performer>
+        <actor>
+            <reference value="Practitioner/f006"/>
+        </actor>
+        <onBehalfOf>
+            <reference value="Organization/2.16.840.1.113883.19.5"></reference>
+        </onBehalfOf>
+    </performer>
     <authorizingPrescription>
         <reference value="MedicationRequest/medrx0329"/>
     </authorizingPrescription>
     <type>
         <coding>
-            <system value="http://hl7.org/fhir/v3/ActPharmacySupplyType"/>
-            <code value="PF"/>
-            <display value="partial Fill"/>
+            <system value="http://hl7.org/fhir/v3/ActCode"/>
+            <code value="RFP"/>
+            <display value="Refill - Part Fill"/>
         </coding>
     </type>
     <quantity>
@@ -120,9 +123,9 @@
     <dosageInstruction>
         <sequence value="1"/>
         <text value="Apply twice daily to affected area on left arm"/>
-        <additionalInstructions>
+        <additionalInstruction>
             <text value="Apply sparingly"></text>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <frequency value="2"/>

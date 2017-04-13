@@ -43,8 +43,9 @@
  -- Row 1 -----------------------------------
   Element = EligibilityRequest
   Type = DomainResource
-  Short Name = Eligibility request
-  Definition = This resource provides the details  from the insurer to identify a specified coverage and optionally some class of service.
+  Short Name = Determine insurance validity and scope of coverage
+  Definition = The EligibilityRequest provides patient and insurance coverage information to an insurer for them to respond, in the form of an EligibilityResponse, with information regarding whether the stated coverage is valid and in-force and optionally to provide the insurance details of the policy.
+  Workflow Mapping = Request
   w5 = financial.support
 
  -- Row 2 -----------------------------------
@@ -55,7 +56,8 @@
   Card. = 0..*
   Type = Identifier
   Short Name = Business Identifier
-  Definition = The Response business identifier
+  Definition = The Response business identifier.
+  Workflow Mapping = Request.identifier
   w5 = id
 
  -- Row 4 -----------------------------------
@@ -85,6 +87,8 @@
   Binding = EligibilityRequestStatus
   Short Name = active | cancelled | draft | entered-in-error
   Definition = The status of the resource instance.
+  Requirements = This element is labeled as a modifier because the status contains codes that mark the request as not currently valid
+  Workflow Mapping = Request.status
   w5 = status
 
  -- Row 7 -----------------------------------
@@ -94,6 +98,7 @@
   Binding = ProcessPriority
   Short Name = Desired processing priority
   Definition = Immediate (STAT), best effort (NORMAL), deferred (DEFER)
+  Workflow Mapping = Request.priority
   w5 = class
 
  -- Row 8 -----------------------------------
@@ -106,6 +111,7 @@
   Short Name = The subject of the Products and Services
   Definition = Patient Resource
   Comments = 1..1
+  Workflow Mapping = Request.subject
   CDAnet v4 Mapping = C06,C07,C08, C05, C04
   w5 = who.focus
 
@@ -124,6 +130,7 @@
   Type = dateTime
   Short Name = Creation date
   Definition = The date when this resource was created.
+  Workflow Mapping = Request.authoredOn
   w5 = when.recorded
 
  -- Row 12 -----------------------------------
@@ -140,6 +147,7 @@
   Type = Reference(Practitioner)
   Short Name = Responsible practitioner
   Definition = The practitioner who is responsible for the services rendered to the patient.
+  Workflow Mapping = Request.requester.agent
   CDAnet v4 Mapping = B01
   w5 = who.source
 
@@ -149,6 +157,7 @@
   Type = Reference(Organization)
   Short Name = Responsible organization
   Definition = The organization which is responsible for the services rendered to the patient.
+  Workflow Mapping = Request.requester.onBehalfOf
   w5 = who.source
 
  -- Row 15 -----------------------------------
@@ -157,6 +166,7 @@
   Type = Reference(Organization)
   Short Name = Target
   Definition = The Insurer who is target  of the request.
+  Workflow Mapping = Request.performer
   w5 = who
 
  -- Row 16 -----------------------------------
@@ -191,7 +201,7 @@
   Card. = 0..1
   Type = CodeableConcept
   Binding = BenefitCategory
-  Short Name = Benefit Category
+  Short Name = Type of services covered
   Definition = Dental, Vision, Medical, Pharmacy, Rehab etc.
 
  -- Row 21 -----------------------------------
@@ -199,7 +209,7 @@
   Card. = 0..1
   Type = CodeableConcept
   Binding = BenefitSubCategory
-  Short Name = Benefit SubCategory
+  Short Name = Detailed services covered within the type
   Definition = Dental: basic, major, ortho; Vision exam, glasses, contacts; etc
 
 === Sheet Search =====================================
@@ -288,6 +298,12 @@
   Description = Facility responsible for the goods and services
   Path = EligibilityRequest.facilityidentifier
 
+ -- Row 15 -----------------------------------
+  Name = enterer
+  Type = reference
+  Description = The party who is responsible for the request
+  Path = EligibilityRequest.enterer
+
 === Sheet Profiles =====================================
 
 === Sheet Examples =====================================
@@ -297,5 +313,11 @@
   Identity = 52345
   Description = General Person Primary Coverage Example
   Filename = eligibilityrequest-example.xml
+
+ -- Row 2 -----------------------------------
+  Name = Detailed-Primary
+  Identity = 52346
+  Description = Primary Coverage specifying Benefit Example
+  Filename = eligibilityrequest-example-2.xml
 
 === Sheet Examples =====================================

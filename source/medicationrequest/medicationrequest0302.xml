@@ -21,26 +21,28 @@
         <value value="12345689"/>
     </identifier>
     <status value="active"/>
-    <stage>
-        <coding>
-            <code value="original-order"/>
-        </coding>
-    </stage>
+    <intent value="order">
+    </intent>
     <medicationReference> <!-- Linked to a RESOURCE Medication -->
            <reference value="#med0320"/>
     </medicationReference> 
-    <patient> <!-- Linked to the resource patient who needs the medication -->
+    <subject> <!-- Linked to the resource patient who needs the medication -->
         <reference value="Patient/pat1"/>
         <display value="Donald Duck"/>         
-    </patient>
+    </subject>
     <context> <!-- Linked to a resource Encounter between patient and practitioner-->
         <reference value="Encounter/f001"/>
         <display value="encounter who leads to this prescription"/>
     </context>
-    <dateWritten value="2015-01-15"/>
-    <requester> 
-        <reference value="Practitioner/f007"/>
-        <display value="Patrick Pump"/>
+    <authoredOn value="2015-01-15"/>
+    <requester>
+        <agent>
+            <reference value="Practitioner/f007"/>
+            <display value="Patrick Pump"/>
+        </agent>
+        <onBehalfOf>
+            <reference value="Organization/f002"/>
+        </onBehalfOf>
     </requester>
     <reasonCode>
         <coding>
@@ -55,13 +57,13 @@
     <dosageInstruction>
         <sequence value="1"/>
         <text value="Two tablets at once" />
-        <additionalInstructions>
+        <additionalInstruction>
             <coding>
                 <system value="http://snomed.info/sct"/>
                 <code value="311504000"/>
                 <display value="With or after food"/>
             </coding>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <frequency value="1"/>
@@ -86,20 +88,20 @@
         <doseQuantity>
             <value value="2"/>
             <unit value="TAB"/>
-            <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+            <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
             <code value="TAB"/>
         </doseQuantity>
     </dosageInstruction>
     <dosageInstruction>
         <sequence value="2"/>
         <text value="One tablet daily for 4 days" />
-        <additionalInstructions>
+        <additionalInstruction>
             <coding>
                 <system value="http://snomed.info/sct"/>
                 <code value="311504000"/>
                 <display value="With or after food"/>
             </coding>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <frequency value="4"/>
@@ -117,7 +119,7 @@
         <doseQuantity>
             <value value="1"/>
             <unit value="TAB"/>
-            <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+            <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
             <code value="TAB"/>
         </doseQuantity>
     </dosageInstruction>   
@@ -130,7 +132,7 @@
         <quantity>
             <value value="6"/>
             <unit value="TAB"/>
-            <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+            <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
             <code value="TAB"/> 
         </quantity>
         <expectedSupplyDuration>
@@ -144,7 +146,7 @@
         <allowed value="true"></allowed>
         <reason>
             <coding>
-                <system value="http://hl7.org/fhir"/>
+                <system value="http://hl7.org/fhir/v3/ActReason"/>
                 <code value="FP"/>
                 <display value="formulary policy"/>             
             </coding>

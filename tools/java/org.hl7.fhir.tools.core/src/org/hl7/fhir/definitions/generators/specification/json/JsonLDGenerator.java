@@ -31,14 +31,21 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import org.hl7.fhir.definitions.model.DefinedCode;
+import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.PrimitiveType;
+import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.igtools.spreadsheets.TypeRef;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
+import org.hl7.fhir.utilities.Utilities;
 
 import com.google.gson.JsonObject;
 
@@ -59,113 +66,39 @@ public class JsonLDGenerator  {
 		datatypes.addAll(types);
 	}
   
-	public JsonObject generate(ElementDefn root, String version, String genDate) throws Exception {
+	public void generate(JsonObject context, ElementDefn root, String version, String genDate) throws Exception {
 		enums.clear();
 		enumDefs.clear();
+		scanTypes(root, root);		
+		generateType(context, root, root.getName(), root, true, context, new HashSet<String>());
+		for (ElementDefn e : types.keySet()) {
+	    generateType(context, root, types.get(e), e, true, context, new HashSet<String>());
 
-		JsonObject schema = new JsonObject();
-		JsonObject context = new JsonObject();
-    schema.add("@context", context);
-    schema.addProperty("@id", "http://hl7.org/fhir/"+root.getName());
-    
-		scanTypes(root, root);
-		
-		generateType(root, root.getName(), root, true, context);
-//		for (ElementDefn e : structures) {
-//			generateType(root, types.get(e), e, false, context);
-//		}
-
-		return schema;
-	}
-
-  private void generateType(ElementDefn root, String name, ElementDefn struc, boolean isResource, JsonObject base) throws IOException, Exception {
-//    String parent = isResource ? root.typeCode() : "BackboneElement"; 
-//
-//    JsonObject r = new JsonObject();
-//	
-//	name = name.replace(".",  "_");
-//    base.add(name, r);
-//	
-//    JsonArray ao = new JsonArray();
-//    r.add("allOf", ao);
-//	// If a root element, do not include reference
-//	if(!name.equals("Element")) {
-//		JsonObject sup = new JsonObject();
-//		ao.add(sup);
-//		// The Element is Type, Structure or blank, then it is Element
-//		if( (parent == null) || (parent.isEmpty()) || (parent.equals("Type")) || (parent.equals("Structure")))
-//			parent="Element";
-//		sup.addProperty("$ref", (relative ? "#" : parent.replace(".",  "_")+".schema.json#") +"/definitions/"+parent.replace(".",  "_"));
-//	}
-//    JsonObject self = new JsonObject();
-//    ao.add(self);
-//    self.addProperty("description", root.getDefinition());
-//    Set<String> required = new HashSet<String>();
-//    JsonObject props = new JsonObject();
-//    self.add("properties", props);
-//
-//    if (isResource && definitions.hasResource(root.getName())) {
-//      JsonObject rt = new JsonObject();
-//      props.add("resourceType", rt);
-//      rt.addProperty("description", "This is a "+root.getName()+" resource");
-//      rt.addProperty("type", "string");
-//      JsonArray enums = new JsonArray();
-//      enums.add(new JsonPrimitive(root.getName()));
-//      rt.add("enum", enums);
-//      required.add("resourceType");
-//    }
-//    
-		for (ElementDefn e : struc.getElements()) {
-//			if (e.getName().equals("[type]"))
-//				generateAny(root, e, "", props, relative);
-//			else 
-				generateElement(root, name, e, base);
 		}
-//		if (required.size() > 0) {
-//		  JsonArray req = new JsonArray();
-//		  self.add("required", req);
-//		  for (String s : required) {
-//		    req.add(new JsonPrimitive(s));
-//		  }
-//		}
-//		return props;
 	}
 
-	private void generateAny(ElementDefn root, ElementDefn e, String prefix, JsonObject props, boolean relative) throws Exception {
-//		for (TypeRef t : datatypes) {
-//			JsonObject property = new JsonObject();
-//			JsonObject property_ = null;
-//			String en = e.getName().replace("[x]",  "");
-//			props.add(en+upFirst(t.getName()), property);
-//			property.addProperty("description", e.getDefinition());
-//			String tref = null;
-//			String type = null;
-//			String pattern = null;
-//			if (definitions.getPrimitives().containsKey(t.getName())) {
-//				DefinedCode def = definitions.getPrimitives().get(t.getName());
-//				type = def.getJsonType();
-//				pattern = def.getRegex();
-//				if (!Utilities.noString(pattern))
-//					property.addProperty("pattern", pattern);
-//				
-//				property.addProperty("type", type);
-//				property_ = new JsonObject();
-//				props.add("_"+en+upFirst(t.getName()), property_);
-//				property_.addProperty("description", "Extensions for "+en+upFirst(t.getName()));
-//				tref = (relative ? "#" : "Element.schema.json#") +"/definitions/Element";
-//				property_.addProperty("$ref", tref);
-//			} else {
-//				String tn = encodeType(e, t, true);
-//				tref = (relative ? "#" : tn.replace(".",  "_")+".schema.json#") +"/definitions/"+tn.replace(".",  "_");
-//				property.addProperty("$ref", tref);
-//			}
-//		}
+  private void generateType(JsonObject context, ElementDefn root, String name, ElementDefn struc, boolean isResource, JsonObject base, Set<String> types) throws IOException, Exception {
+		for (ElementDefn e : struc.getElements()) {
+				generateElement(root, name, e, context, types);
+		}
 	}
 
-	private void generateElement(ElementDefn root, String name, ElementDefn e, JsonObject base) throws Exception {
-		if (e.getTypes().size() > 1 || (e.getTypes().size() == 1 && e.getTypes().get(0).isWildcardType())) {
-//			if (!e.getName().contains("[x]"))
-//				throw new Exception("Element "+e.getName()+" in "+root.getName()+" has multiple types as a choice doesn't have a [x] in the element name");
+
+	private void generateElement(ElementDefn root, String name, ElementDefn e, JsonObject base, Set<String> types) throws Exception {
+		if ((e.getTypes().size() == 1 && e.getTypes().get(0).isWildcardType())) {
+			if (!e.getName().contains("[x]"))
+				throw new Exception("Element "+e.getName()+" in "+root.getName()+" has multiple types as a choice doesn't have a [x] in the element name");
+      for (TypeRef tr : datatypes) {
+        String tn = tr.getName();
+        if (tn.equals("SimpleQuantity"))
+          tn = "Quantity";
+        else
+          tn = Utilities.capitalize(tn);
+        String en = e.getName().substring(0, e.getName().length()-3)+tn;
+        JsonObject property = new JsonObject();
+        base.add(name+"."+en, property);
+        property.addProperty("@id", "http://hl7.org/fhir/"+name+"."+en);
+      }
 //			if (e.getTypes().size() == 1)
 //				generateAny(root, e, e.getName().replace("[x]", ""), props, relative);
 //			else {
@@ -198,12 +131,31 @@ public class JsonLDGenerator  {
 //					}
 //				}
 //			}
+    } else if (e.getName().endsWith("[x]")) {
+      for (TypeRef tr : e.getTypes()) {
+        String tn = tr.getName();
+        if (tn.equals("SimpleQuantity"))
+          tn = "Quantity";
+        else
+          tn = Utilities.capitalize(tn);
+        String en = e.getName().substring(0, e.getName().length()-3)+tn;
+        JsonObject property = new JsonObject();
+        base.add(name+"."+en, property);
+        property.addProperty("@id", "http://hl7.org/fhir/"+name+"."+en);
+      }
 		} else {
 			JsonObject property = new JsonObject();
 			base.add(name+"."+e.getName(), property);
-      property.addProperty("@id", "http://hl7.org/fhir/"+e.getPath());
-      property.addProperty("@type", "http://hl7.org/fhir/"+e.typeCode());
-//			property.addProperty("description", e.getDefinition());
+			if (e.getPath() == null)
+	      property.addProperty("@id", "http://hl7.org/fhir/"+name+"."+e.getName());
+			else
+			  property.addProperty("@id", "http://hl7.org/fhir/"+e.getPath());
+//			if we're using lists:
+//			if (e.unbounded())
+//        property.addProperty("@container", "@list");
+			
+			
+//      property.addProperty("fhir-@type", "http://hl7.org/fhir/"+e.typeCode());
 //			String tref = null;
 //			String type = null;
 //			String pattern = null;
@@ -299,12 +251,7 @@ public class JsonLDGenerator  {
   private void scanTypes(ElementDefn root, ElementDefn focus) {
 	  for (ElementDefn e : focus.getElements()) {
 	    if (e.getTypes().size() == 0 && e.getElements().size() > 0) {
-        int i = 0;
-        String tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
-        while (typenames.contains(tn)) {
-          i++;
-          tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
-        }
+        String tn = e.getPath();
         structures.add(e);
         typenames.add(tn);
         types.put(e, tn);

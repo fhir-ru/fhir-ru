@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ValueSet xmlns="http://hl7.org/fhir">
-  <name value="Coverage Type Codes"/>
+  <name value="Coverage Type and Self-Pay Codes"/>
   <status value="draft"/>
   <publisher value="Financial Management"/>
   <contact>
@@ -14,10 +14,10 @@
   <copyright value="HL7 International."/>
   <compose>
     <include>
-	  <system value="http://hl7.org/fhir/coverage-selfpay"/>
-	</include>
+	    <system value="http://hl7.org/fhir/coverage-selfpay"/>
+	  </include>
     <include>
-      <system value="http://hl7.org/fhir/ValueSet/v3-ActCoverageTypeCode"/>
+      <valueSet value="http://hl7.org/fhir/ValueSet/v3-ActCoverageTypeCode"/>
     </include>
   </compose>
 </ValueSet>

@@ -7,11 +7,14 @@ import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.elementmodel.Element;
 import org.hl7.fhir.dstu3.elementmodel.ObjectConverter;
 import org.hl7.fhir.dstu3.model.CodeSystem;
+import org.hl7.fhir.dstu3.model.OperationDefinition;
 import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.ValueSet;
-import org.hl7.fhir.dstu3.validation.IResourceValidator.IValidatorResourceFetcher;
+import org.hl7.fhir.dstu3.utils.IResourceValidator.IValidatorResourceFetcher;
+import org.hl7.fhir.dstu3.utils.IResourceValidator.ReferenceValidationPolicy;
 import org.hl7.fhir.exceptions.DefinitionException;
+import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -34,8 +37,13 @@ public class ValidationServices implements IValidatorResourceFetcher {
   public Element fetch(Object appContext, String url) throws FHIRFormatError, DefinitionException, IOException {
     String turl = (!Utilities.isAbsoluteUrl(url)) ? Utilities.pathReverse(ipg.getCanonical(), url) : url;
     Resource res = context.fetchResource(getResourceType(turl), turl);
-    if (res != null)
-      return new ObjectConverter(context).convert(res);
+    if (res != null) {
+      Element e = (Element)res.getUserData("element");
+      if (e!=null)
+        return e;
+      else
+        return new ObjectConverter(context).convert(res);
+    }
    
     String[] parts = url.split("\\/");
     
@@ -73,7 +81,22 @@ public class ValidationServices implements IValidatorResourceFetcher {
       return StructureDefinition.class;
     if (url.contains("/CodeSystem/"))
       return CodeSystem.class;
+    if (url.contains("/OperationDefinition/"))
+      return OperationDefinition.class;
     return null;
+  }
+
+
+  @Override
+  public ReferenceValidationPolicy validationPolicy(Object appContext, String path, String url) {
+    return ReferenceValidationPolicy.CHECK_EXISTS_AND_TYPE;
+  }
+
+
+  @Override
+  public boolean resolveURL(Object appContext, String path, String url) throws IOException, FHIRException {
+    // todo: what to do here?
+    return true;
   }
 
 }

@@ -1197,7 +1197,7 @@
         <ns4:element name="dateEnded" type="FHIR.dateTime"/>
         <ns4:element name="reasonEnded" type="FHIR.CodeableConcept"/>
         <ns4:element name="note" type="list&lt;FHIR.Annotation&gt;"/>
-        <ns4:element name="dosageInstruction" type="list&lt;FHIR.MedicationOrder.DosageInstruction&gt;"/>
+        <ns4:element name="dosageInstruction" type="list&lt;FHIR.MedicationOrder.Dosage&gt;"/>
         <ns4:element name="dispenseRequest" type="FHIR.MedicationOrder.DispenseRequest"/>
         <ns4:element name="substitution" type="FHIR.MedicationOrder.Substitution"/>
         <ns4:element name="priorPrescription" type="FHIR.Reference"/>
@@ -1441,7 +1441,7 @@
         <ns4:element name="party" type="FHIR.Reference"/>
         <ns4:element name="signature" type="list&lt;FHIR.Signature&gt;"/>
     </ns4:typeInfo>
-    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.DeviceUseRequestPriority" retrievable="false" baseType="FHIR.Element">
+    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.DeviceRequestPriority" retrievable="false" baseType="FHIR.Element">
         <ns4:element name="value" type="System.String"/>
     </ns4:typeInfo>
     <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.ProcessResponse" retrievable="true" baseType="FHIR.DomainResource">
@@ -1547,7 +1547,7 @@
         <ns4:element name="referralIdentifier" type="FHIR.Identifier"/>
         <ns4:element name="referralReference" type="FHIR.Reference"/>
         <ns4:element name="occurrenceCode" type="list&lt;FHIR.Coding&gt;"/>
-        <ns4:element name="occurenceSpanCode" type="list&lt;FHIR.Coding&gt;"/>
+        <ns4:element name="occurrenceSpanCode" type="list&lt;FHIR.Coding&gt;"/>
         <ns4:element name="valueCode" type="list&lt;FHIR.Coding&gt;"/>
         <ns4:element name="diagnosis" type="list&lt;FHIR.ExplanationOfBenefit.Diagnosis&gt;"/>
         <ns4:element name="procedure" type="list&lt;FHIR.ExplanationOfBenefit.Procedure&gt;"/>
@@ -2226,7 +2226,7 @@
         <ns4:element name="recorder" type="FHIR.Reference"/>
         <ns4:element name="reporter" type="FHIR.Reference"/>
         <ns4:element name="onset" type="FHIR.dateTime"/>
-        <ns4:element name="lastOccurence" type="FHIR.dateTime"/>
+        <ns4:element name="lastoccurrence" type="FHIR.dateTime"/>
         <ns4:element name="note" type="list&lt;FHIR.Annotation&gt;"/>
         <ns4:element name="reaction" type="list&lt;FHIR.AllergyIntolerance.Reaction&gt;"/>
     </ns4:typeInfo>
@@ -2989,7 +2989,7 @@
         <ns4:element name="destination" type="FHIR.Reference"/>
         <ns4:element name="receiver" type="list&lt;FHIR.Reference&gt;"/>
         <ns4:element name="note" type="list&lt;FHIR.Annotation&gt;"/>
-        <ns4:element name="dosageInstruction" type="list&lt;FHIR.MedicationDispense.DosageInstruction&gt;"/>
+        <ns4:element name="dosageInstruction" type="list&lt;FHIR.MedicationDispense.Dosage&gt;"/>
         <ns4:element name="substitution" type="FHIR.MedicationDispense.Substitution"/>
     </ns4:typeInfo>
     <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.ProcedureRequestStatus" retrievable="false" baseType="FHIR.Element">
@@ -3318,7 +3318,7 @@
         <ns4:element name="description" type="FHIR.string"/>
         <ns4:element name="certificate" type="list&lt;FHIR.Conformance.Certificate&gt;"/>
     </ns4:typeInfo>
-    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.DeviceUseRequestStatus" retrievable="false" baseType="FHIR.Element">
+    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.DeviceRequestStatus" retrievable="false" baseType="FHIR.Element">
         <ns4:element name="value" type="System.String"/>
     </ns4:typeInfo>
     <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.CompositionStatus" retrievable="false" baseType="FHIR.Element">
@@ -3531,7 +3531,7 @@
         <ns4:element name="Device" type="FHIR.Device"/>
         <ns4:element name="DeviceComponent" type="FHIR.DeviceComponent"/>
         <ns4:element name="DeviceMetric" type="FHIR.DeviceMetric"/>
-        <ns4:element name="DeviceUseRequest" type="FHIR.DeviceUseRequest"/>
+        <ns4:element name="DeviceRequest" type="FHIR.DeviceRequest"/>
         <ns4:element name="DeviceUseStatement" type="FHIR.DeviceUseStatement"/>
         <ns4:element name="DiagnosticOrder" type="FHIR.DiagnosticOrder"/>
         <ns4:element name="DiagnosticReport" type="FHIR.DiagnosticReport"/>
@@ -4177,7 +4177,7 @@
     <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.ConditionalDeleteStatus" retrievable="false" baseType="FHIR.Element">
         <ns4:element name="value" type="System.String"/>
     </ns4:typeInfo>
-    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.MedicationOrder.DosageInstruction" retrievable="false" baseType="FHIR.BackboneElement">
+    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.MedicationOrder.Dosage" retrievable="false" baseType="FHIR.BackboneElement">
         <ns4:element name="text" type="FHIR.string"/>
         <ns4:element name="additionalInstructions" type="FHIR.CodeableConcept"/>
         <ns4:element name="timing" type="FHIR.Timing"/>
@@ -4466,7 +4466,7 @@
     <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.SubscriptionStatus" retrievable="false" baseType="FHIR.Element">
         <ns4:element name="value" type="System.String"/>
     </ns4:typeInfo>
-    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.MedicationDispense.DosageInstruction" retrievable="false" baseType="FHIR.BackboneElement">
+    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.MedicationDispense.Dosage" retrievable="false" baseType="FHIR.BackboneElement">
         <ns4:element name="text" type="FHIR.string"/>
         <ns4:element name="additionalInstructions" type="FHIR.CodeableConcept"/>
         <ns4:element name="timing" type="FHIR.Timing"/>
@@ -4665,7 +4665,7 @@
         <ns4:element name="referralIdentifier" type="FHIR.Identifier"/>
         <ns4:element name="referralReference" type="FHIR.Reference"/>
         <ns4:element name="occurrenceCode" type="list&lt;FHIR.Coding&gt;"/>
-        <ns4:element name="occurenceSpanCode" type="list&lt;FHIR.Coding&gt;"/>
+        <ns4:element name="occurrenceSpanCode" type="list&lt;FHIR.Coding&gt;"/>
         <ns4:element name="valueCode" type="list&lt;FHIR.Coding&gt;"/>
         <ns4:element name="diagnosis" type="list&lt;FHIR.Claim.Diagnosis&gt;"/>
         <ns4:element name="procedure" type="list&lt;FHIR.Claim.Procedure&gt;"/>
@@ -4903,10 +4903,10 @@
         <ns4:element name="type" type="FHIR.Coding"/>
         <ns4:element name="value" type="FHIR.Coding"/>
     </ns4:typeInfo>
-    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.DeviceUseRequest" retrievable="true" baseType="FHIR.DomainResource">
+    <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.DeviceRequest" retrievable="true" baseType="FHIR.DomainResource">
         <ns4:element name="bodySiteCodeableConcept" type="FHIR.CodeableConcept"/>
         <ns4:element name="bodySiteReference" type="FHIR.Reference"/>
-        <ns4:element name="status" type="FHIR.DeviceUseRequestStatus"/>
+        <ns4:element name="status" type="FHIR.DeviceRequestStatus"/>
         <ns4:element name="device" type="FHIR.Reference"/>
         <ns4:element name="encounter" type="FHIR.Reference"/>
         <ns4:element name="identifier" type="list&lt;FHIR.Identifier&gt;"/>
@@ -4919,7 +4919,7 @@
         <ns4:element name="timingTiming" type="FHIR.Timing"/>
         <ns4:element name="timingPeriod" type="FHIR.Period"/>
         <ns4:element name="timingDateTime" type="FHIR.dateTime"/>
-        <ns4:element name="priority" type="FHIR.DeviceUseRequestPriority"/>
+        <ns4:element name="priority" type="FHIR.DeviceRequestPriority"/>
     </ns4:typeInfo>
     <ns4:typeInfo xsi:type="ns4:ClassInfo" name="FHIR.GuidanceResponseStatus" retrievable="false" baseType="FHIR.Element">
         <ns4:element name="value" type="System.String"/>

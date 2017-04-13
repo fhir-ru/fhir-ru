@@ -26,7 +26,7 @@
   Binding Name = TypeDerivationRule
   Binding = code list
   Reference = #type-derivation-rule
-  Definition = How a type relates to it\'s baseDefinition.
+  Definition = How a type relates to its baseDefinition.
   Conformance = required
 
  -- Row 5 -----------------------------------
@@ -43,13 +43,13 @@
   Id = 4
   Code = primitive-type
   Display = Primitive Data Type
-  Definition = A data type, which is a primitive type that has a value and an extension. These can be used throughout Resource and extension definitions. Only tbe base specification can define primitive types.
+  Definition = A primitive type that has a value and an extension. These can be used throughout Resource and extension definitions. Only the base specification can define primitive types.
 
  -- Row 2 -----------------------------------
   Id = 1
   Code = complex-type
   Display = Complex Data Type
-  Definition = A data type - either a complex structure that defines a set of data elements. These can be used throughout Resource and extension definitions, and in logical models.
+  Definition = A  complex structure that defines a set of data elements. These can be used throughout Resource and extension definitions, and in logical models.
 
  -- Row 3 -----------------------------------
   Id = 2
@@ -61,7 +61,7 @@
   Id = 3
   Code = logical
   Display = Logical Model
-  Definition = A logical model - a conceptual package of data that will be mapped to resources for implementation.
+  Definition = A conceptual package of data that will be mapped to resources for implementation.
 
 === Sheet extension-context =====================================
 
@@ -146,7 +146,7 @@
   Id = 7
   Context = StructureDefinition
   English = If the structure describes a base Resource or Type, the URL has to start with \"http://hl7.org/fhir/StructureDefinition/\" and the tail must match the id
-  XPath = (f:derivation/@value = \'constraint\') or (f:derivation/@value = \'logical\') or (f:url/@value=concat(\'http://hl7.org/fhir/StructureDefinition/\', f:id/@value))
+  XPath = (f:derivation/@value = \'constraint\') or (f:kind/@value = \'logical\') or (f:url/@value=concat(\'http://hl7.org/fhir/StructureDefinition/\', f:id/@value))
   Expression = (derivation = \'constraint\') or (kind = \'logical\') or (url = \'http://hl7.org/fhir/StructureDefinition/\'+id)
 
  -- Row 8 -----------------------------------
@@ -240,7 +240,7 @@
   Requirements = custom types only in logical models
   Context = StructureDefinition
   English = Custom types can only be used in logical models
-  XPath = (f:kind/@value = \'logical\') or (true)
+  XPath = f:kind/@value = \'logical\' or count(f:differential/f:element/f:type/f:code[@value and not(matches(@value, \'^[a-zA-Z0-9]+$\'))]|f:snapshot/f:element/f:type/f:code[@value and not(matches(@value, \'^[a-zA-Z0-9]+$\'))]) =0
   Expression = kind = \'logical\' or (differential.element.type.code.all(hasValue() implies matches(\'^[a-zA-Z0-9]+$\')) and snapshot.element.type.code.all(hasValue() implies matches(\'^[a-zA-Z0-9]+$\')))
 
  -- Row 20 -----------------------------------
@@ -259,7 +259,7 @@
   UML = 0;0
   Type = MetadataResource
   Short Name = Structural Definition
-  Definition = A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions, and constraints on resources and data types.
+  Definition = A definition of a FHIR structure. This resource is used to describe the underlying resources, data types defined in FHIR, and also for describing extensions and constraints on resources and data types.
   RIM Mapping = n/a
   w5 = conformance.content
 
@@ -296,15 +296,15 @@
   11179 Mapping = Registration status
 
  -- Row 9 -----------------------------------
+  Element = StructureDefinition.date
+
+ -- Row 10 -----------------------------------
   Element = StructureDefinition.publisher
   11179 Mapping = Registration Authority
 
- -- Row 10 -----------------------------------
+ -- Row 11 -----------------------------------
   Element = StructureDefinition.contact
   UML = 400;0
-
- -- Row 11 -----------------------------------
-  Element = StructureDefinition.date
 
  -- Row 12 -----------------------------------
   Element = StructureDefinition.description
@@ -374,7 +374,7 @@
   Definition = A name for the specification that is being mapped to
 
  -- Row 23 -----------------------------------
-  Element = StructureDefinition.mapping.comments
+  Element = StructureDefinition.mapping.comment
   Card. = 0..1
   Type = string
   Short Name = Versions, Issues, Scope limitations etc.
@@ -424,8 +424,8 @@
   Summary = y
   Inv. = 18
   Type = string
-  Short Name = FluentPath invariants - when the extension can be used
-  Definition = A set of rules as Fluent Invariants about when the extension can be used (e.g. co-occurance variants for the extension)
+  Short Name = FHIRPath invariants - when the extension can be used
+  Definition = A set of rules as Fluent Invariants about when the extension can be used (e.g. co-occurrence variants for the extension)
   Comments = All the rules must be true. When evaluating the invariant, the fluentpath focus is the element that holds the extension, and %extension refers to the extension itself
 
  -- Row 29 -----------------------------------
@@ -436,7 +436,7 @@
   Type = code
   Binding = FHIRDefinedTypeExt
   Short Name = Type defined or constrained by this structure
-  Definition = The type this structure is describes. If the derivation kind is \'specialization\' then this is the master definition for a type, and there is always one of these (a data type, an extension, a resource, including abstract ones). Otherwise the structure definition is a constraint on the stated type (and in this case, the type cannot be an abstract type)
+  Definition = The type this structure describes. If the derivation kind is \'specialization\' then this is the master definition for a type, and there is always one of these (a data type, an extension, a resource, including abstract ones). Otherwise the structure definition is a constraint on the stated type (and in this case, the type cannot be an abstract type)
   Comments = Note that in the case of constraints, the type could be determined by chasing through the baseDefinition references until a concrete structure (derivation = specialization) is reached, or by looking at the path of the first element in the snapshot - if present - but providing the type directly makes for simpler tooling and indexing
 
  -- Row 30 -----------------------------------
@@ -627,6 +627,7 @@
   Example.Response = $questionnaire-response.txt
   Title = Build Questionnaire
   Footer = **Open Issue**: Ideally, extensions should be populated in the generated [[[Questionnaire]]] that will support taking [[[QuestionnaireResponse]]] resources generated from the Questionnaire and turning them back into the appropriate resources.
+  Idempotent = True
 
  -- Row 2 -----------------------------------
   Name = questionnaire.identifier

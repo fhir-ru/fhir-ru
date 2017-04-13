@@ -1,24 +1,30 @@
 package org.hl7.fhir.definitions.validation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import org.hl7.fhir.definitions.model.ResourceDefn.StandardsStatus;
+import org.hl7.fhir.dstu2.model.Identifier;
 import org.hl7.fhir.dstu3.model.CodeSystem;
+import org.hl7.fhir.dstu3.model.MetadataResource;
 import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.model.ValueSet.ConceptReferenceComponent;
 import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
+import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
 import org.hl7.fhir.dstu3.validation.BaseValidator;
-import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.exceptions.TerminologyServiceException;
 import org.hl7.fhir.tools.publisher.BuildWorkerContext;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.validation.ValidationMessage;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueType;
 
 public class ValueSetValidator extends BaseValidator {
 
@@ -55,8 +61,9 @@ public class ValueSetValidator extends BaseValidator {
 
   private BuildWorkerContext context;
   private List<String> fixups;
-  private Set<ValueSet> handled = new HashSet<ValueSet>();
+  private Set<String> handled = new HashSet<String>();
   private List<VSDuplicateList> duplicateList = new ArrayList<ValueSetValidator.VSDuplicateList>();
+  private Map<String, MetadataResource> oids = new HashMap<String, MetadataResource>();
   private Set<String> styleExemptions;
   private Set<String> valueSets = new HashSet<String>();
   private Set<String> codeSystems = new HashSet<String>();
@@ -125,9 +132,10 @@ public class ValueSetValidator extends BaseValidator {
  
   
   public void validate(List<ValidationMessage> errors, String nameForErrors, CodeSystem cs, boolean internal, boolean exemptFromCopyrightRule) {
+    CodeSystemUtilities.markStatus(cs, null, StandardsStatus.INFORMATIVE.toDisplay(), "0");
     if (Utilities.noString(cs.getCopyright()) && !exemptFromCopyrightRule) {
       String s = cs.getUrl();
-      suppressedwarning(errors, IssueType.BUSINESSRULE, cs.getUserString("committee")+":CodeSystem["+cs.getId()+"].copyright", s.startsWith("http://hl7.org") || s.startsWith("urn:iso") || s.startsWith("urn:ietf") || s.startsWith("http://need.a.uri.org")
+      warning(errors, IssueType.BUSINESSRULE, cs.getUserString("committee")+":CodeSystem["+cs.getId()+"].copyright", s.startsWith("http://hl7.org") || s.startsWith("urn:iso") || s.startsWith("urn:ietf") || s.startsWith("http://need.a.uri.org")
             || s.contains("cdc.gov") || s.startsWith("urn:oid:"),
            "Value set "+nameForErrors+" ("+cs.getName()+"): A copyright statement should be present for any value set that includes non-HL7 sourced codes ("+s+")",
            "<a href=\""+cs.getUserString("path")+"\">Value set "+nameForErrors+" ("+cs.getName()+")</a>: A copyright statement should be present for any code system that defines non-HL7 sourced codes ("+s+")");
@@ -138,7 +146,13 @@ public class ValueSetValidator extends BaseValidator {
     if (rule(errors, IssueType.BUSINESSRULE, cs.getUserString("committee")+":CodeSystem["+cs.getId()+"].codeSystem", !codeSystems.contains(cs.getUrl()), "Duplicate Code System definition for "+cs.getUrl()))
       codeSystems.add(cs.getUrl());
     
-      
+    String oid = getOid(cs);
+    if (oid != null) {
+      if (!oids.containsKey(oid)) {
+        oids.put(oid, cs);
+      } else 
+        rule(errors, IssueType.DUPLICATE, cs.getUserString("committee")+":CodeSystem["+cs.getId()+"]", oids.get(oid).getUrl().equals(cs.getUrl()), "Duplicate OID for "+oid+" on "+oids.get(oid).getUrl()+" and "+cs.getUrl());  
+    } 
     rule(errors, IssueType.BUSINESSRULE, cs.getUserString("committee")+":CodeSystem["+cs.getId()+"].codeSystem", cs.getUrl().startsWith("http://") || 
         cs.getUrl().startsWith("urn:") , "Unacceptable code system url "+cs.getUrl());
     
@@ -167,15 +181,24 @@ public class ValueSetValidator extends BaseValidator {
   }
   
   public void validate(List<ValidationMessage> errors, String nameForErrors, ValueSet vs, boolean internal, boolean exemptFromCopyrightRule) throws TerminologyServiceException {
+    ValueSetUtilities.markStatus(vs, null, StandardsStatus.INFORMATIVE.toDisplay(), "0");
     int o_warnings = 0;
     for (ValidationMessage em : errors) {
       if (em.getLevel() == IssueSeverity.WARNING)
         o_warnings++;
     }
-    if (!handled.contains(vs)) {
-      handled.add(vs);
+    if (!handled.contains(vs.getId())) {
+      handled.add(vs.getId());
       duplicateList.add(new VSDuplicateList(vs));
     }
+    String oid = getOid(vs);
+    if (oid != null) {
+      if (!oids.containsKey(oid)) {
+        oids.put(oid, vs);
+      } else 
+        rule(errors, IssueType.DUPLICATE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"]", oids.get(oid).getUrl().equals(vs.getUrl()), "Duplicate OID for "+oid+" on "+oids.get(oid).getUrl()+" and "+vs.getUrl());  
+    }
+    
     rule(errors, IssueType.BUSINESSRULE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"]", vs.hasDescription(), "Value Sets in the build must have a description");
     
     if (Utilities.noString(vs.getCopyright()) && !exemptFromCopyrightRule) {
@@ -184,7 +207,7 @@ public class ValueSetValidator extends BaseValidator {
         rule(errors, IssueType.BUSINESSRULE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"].copyright", !s.equals("http://snomed.info/sct") && !s.equals("http://loinc.org"), 
            "Value set "+nameForErrors+" ("+vs.getName()+"): A copyright statement is required for any value set that includes Snomed or Loinc codes",
            "<a href=\""+vs.getUserString("path")+"\">Value set "+nameForErrors+" ("+vs.getName()+")</a>: A copyright statement is required for any value set that includes Snomed or Loinc codes");
-        suppressedwarning(errors, IssueType.BUSINESSRULE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"].copyright", s.startsWith("http://hl7.org") || s.startsWith("urn:iso") || s.startsWith("urn:ietf") || s.startsWith("http://need.a.uri.org")
+        warning(errors, IssueType.BUSINESSRULE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"].copyright", s.startsWith("http://hl7.org") || s.startsWith("urn:iso") || s.startsWith("urn:ietf") || s.startsWith("http://need.a.uri.org")
             || s.contains("cdc.gov") || s.startsWith("urn:oid:"),
            "Value set "+nameForErrors+" ("+vs.getName()+"): A copyright statement should be present for any value set that includes non-HL7 sourced codes ("+s+")",
            "<a href=\""+vs.getUserString("path")+"\">Value set "+nameForErrors+" ("+vs.getName()+")</a>: A copyright statement should be present for any value set that includes non-HL7 sourced codes ("+s+")");
@@ -203,10 +226,10 @@ public class ValueSetValidator extends BaseValidator {
         
         if (inc.hasSystem() && canValidate(inc.getSystem())) {
           for (ConceptReferenceComponent cc : inc.getConcept()) {
-            if (inc.getSystem().equals("http://nema.org/dicom/dicm"))
-              suppressedwarning(errors, IssueType.BUSINESSRULE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"].compose.include["+Integer.toString(i)+"]", isValidCode(cc.getCode(), inc.getSystem()), 
+            if (inc.getSystem().equals("http://dicom.nema.org/resources/ontology/DCM"))
+              warning(errors, IssueType.BUSINESSRULE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"].compose.include["+Integer.toString(i)+"]", isValidCode(cc.getCode(), inc.getSystem()), 
                   "The code '"+cc.getCode()+"' is not valid in the system "+inc.getSystem()+" (1)",
-                  "<a href=\""+vs.getUserString("path")+"\">Value set "+nameForErrors+" ("+vs.getName()+")</a>: The code '"+cc.getCode()+"' is not valid in the system "+inc.getSystem()+" (1)");             
+                  "<a href=\""+vs.getUserString("path")+"\">Value set "+nameForErrors+" ("+vs.getName()+")</a>: The code '"+cc.getCode()+"' is not valid in the system "+inc.getSystem()+" (1a)");             
             else if (!isValidCode(cc.getCode(), inc.getSystem()))
               rule(errors, IssueType.BUSINESSRULE, vs.getUserString("committee")+":ValueSet["+vs.getId()+"].compose.include["+Integer.toString(i)+"]", false, 
                 "The code '"+cc.getCode()+"' is not valid in the system "+inc.getSystem()+" (2)");
@@ -223,6 +246,22 @@ public class ValueSetValidator extends BaseValidator {
     vs.setUserData("warnings", o_warnings - warnings);
   }
 
+  private String getOid(ValueSet vs) {
+    for (org.hl7.fhir.dstu3.model.Identifier id : vs.getIdentifier()) {
+      if (id.getSystem().equals("urn:ietf:rfc:3986") && id.getValue().startsWith("urn:oid:")) {
+        return id.getValue().substring(8);
+      }
+    }
+    return null;
+  }
+
+  private String getOid(CodeSystem cs) {
+    if (cs.hasIdentifier() && cs.getIdentifier().getSystem().equals("urn:ietf:rfc:3986") && cs.getIdentifier().getValue().startsWith("urn:oid:")) {
+      return cs.getIdentifier().getValue().substring(8);
+    }
+    return null;
+  }
+
   private boolean exemptFromStyleChecking(String system) {
     return styleExemptions.contains(system);
   }
@@ -230,7 +269,7 @@ public class ValueSetValidator extends BaseValidator {
   private boolean exemptFromCodeRules(String system) {
     if (system.equals("http://www.abs.gov.au/ausstats/abs@.nsf/mf/1220.0"))
       return true;
-    if (system.equals("http://nema.org/dicom/dicm"))
+    if (system.equals("http://dicom.nema.org/resources/ontology/DCM"))
       return true;
     return false;
     
@@ -279,6 +318,7 @@ public class ValueSetValidator extends BaseValidator {
     		system.equals("http://hl7.org/fhir/sid/icpc2") ||
     		system.equals("http://hl7.org/fhir/sid/ndc") ||
     		system.equals("http://loinc.org") ||
+    		system.equals("https://precision.fda.gov/") ||
     		system.equals("http://www.lrg-sequence.org") ||
         system.equals("http://ncimeta.nci.nih.gov") ||
         system.equals("http://sequenceontology.org") ||
@@ -305,15 +345,17 @@ public class ValueSetValidator extends BaseValidator {
         system.equals("urn:ietf:rfc:3986") ||
         system.equals("urn:iso:std:iso:11073:10101") ||
         system.equals("urn:iso:std:iso:3166") ||
+        system.equals("http://nucc.org/provider-taxonomy") ||
         system.startsWith("http://example.com") ||
-        system.startsWith("http://example.org")
+        system.startsWith("http://example.org") ||
+        system.startsWith("https://precision.fda.gov")
     	 )
       return true;
     
     // todo: why do these need to be listed here?
     if (system.equals("http://hl7.org/fhir/data-types") ||
         system.equals("http://hl7.org/fhir/restful-interaction") ||
-        system.equals("http://nema.org/dicom/dicm") ||
+        system.equals("http://dicom.nema.org/resources/ontology/DCM") ||
         system.equals("http://unstats.un.org/unsd/methods/m49/m49.htm") ||
         system.equals("http://www.cms.gov/Medicare/Coding/ICD9ProviderDiagnosticCodes/codes.html") ||
         system.equals("http://www.cms.gov/Medicare/Coding/ICD10/index.html") ||
@@ -434,9 +476,9 @@ public class ValueSetValidator extends BaseValidator {
           if (rule(errors, IssueType.BUSINESSRULE, committee+":ValueSetComparison", !vd1.id.equals(vd2.id), "Duplicate Value Set ids : "+vd1.id+"("+vd1.vs.getName()+") & "+vd2.id+"("+vd2.vs.getName()+") (id)") &&
               rule(errors, IssueType.BUSINESSRULE, committee+":ValueSetComparison", !vd1.url.equals(vd2.url), "Duplicate Value Set URLs: "+vd1.id+"("+vd1.vs.getName()+") & "+vd2.id+"("+vd2.vs.getName()+") (url)")) {
             if (isInternal(vd1.url) || isInternal(vd2.url)) {
-              suppressedwarning(errors, IssueType.BUSINESSRULE, committee+":ValueSetComparison", areDisjoint(vd1.name, vd2.name), "Duplicate Valueset Names: "+vd1.vs.getUserString("path")+" ("+vd1.vs.getName()+") & "+vd2.vs.getUserString("path")+" ("+vd2.vs.getName()+") (name: "+vd1.name.toString()+" / "+vd2.name.toString()+"))", 
+              warning(errors, IssueType.BUSINESSRULE, committee+":ValueSetComparison", areDisjoint(vd1.name, vd2.name), "Duplicate Valueset Names: "+vd1.vs.getUserString("path")+" ("+vd1.vs.getName()+") & "+vd2.vs.getUserString("path")+" ("+vd2.vs.getName()+") (name: "+vd1.name.toString()+" / "+vd2.name.toString()+"))", 
                   "Duplicate Valueset Names: <a href=\""+vd1.vs.getUserString("path")+"\">"+vd1.id+"</a> ("+vd1.vs.getName()+") &amp; <a href=\""+vd2.vs.getUserString("path")+"\">"+vd2.id+"</a> ("+vd2.vs.getName()+") (name: "+vd1.name.toString()+" / "+vd2.name.toString()+"))");
-              suppressedwarning(errors, IssueType.BUSINESSRULE, committee+":ValueSetComparison", areDisjoint(vd1.description, vd2.description), "Duplicate Valueset Definitions: "+vd1.vs.getUserString("path")+" ("+vd1.vs.getName()+") & "+vd2.vs.getUserString("path")+" ("+vd2.vs.getName()+") (description: "+vd1.description.toString()+" / "+vd2.description.toString()+")",
+              warning(errors, IssueType.BUSINESSRULE, committee+":ValueSetComparison", areDisjoint(vd1.description, vd2.description), "Duplicate Valueset Definitions: "+vd1.vs.getUserString("path")+" ("+vd1.vs.getName()+") & "+vd2.vs.getUserString("path")+" ("+vd2.vs.getName()+") (description: "+vd1.description.toString()+" / "+vd2.description.toString()+")",
                   "Duplicate Valueset descriptions: <a href=\""+vd1.vs.getUserString("path")+"\">"+vd1.id+"</a> ("+vd1.vs.getName()+") &amp; <a href=\""+vd2.vs.getUserString("path")+"\">"+vd2.id+"</a> ("+vd2.vs.getName()+") (description: "+vd1.description.toString()+" / "+vd2.description.toString()+"))");
             }
           }

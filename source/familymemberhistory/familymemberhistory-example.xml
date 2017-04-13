@@ -5,20 +5,29 @@
     <status value="generated" />
     <div xmlns="http://www.w3.org/1999/xhtml">Father died of a heart attack aged 74</div>
   </text>
-
+  <identifier>
+	<value value="12345"/>
+  </identifier>
+  <definition>
+    <display value="Family Member History Questionnaire"/>
+  </definition>
+  <status value="completed"/>
+  <notDone value="false"/>
   <patient>
     <reference value="Patient/example"/>
     <display value="Peter Patient"/>
   </patient>
-  
+
   <date value="2011-03-18"/>
-  <status value="completed"/>
+  
   <relationship>
     <coding>
-      <system value="http://hl7.org/fhir/familial-relationship"/>
-      <code value="father"/>
+      <system value="http://hl7.org/fhir/v3/RoleCode"/>
+      <code value="FTH"/>
+      <display value="father"/>
     </coding>
   </relationship>
+  <gender value="male"/>
   <condition>
     <code>
     <coding>

@@ -21,6 +21,7 @@ import java.util.zip.ZipInputStream;
 import org.apache.commons.io.IOUtils;
 import org.hl7.fhir.dstu3.conformance.ProfileUtilities;
 import org.hl7.fhir.dstu3.conformance.ProfileUtilities.ProfileKnowledgeProvider;
+import org.hl7.fhir.dstu3.context.IWorkerContext.ILoggingService.LogCategory;
 import org.hl7.fhir.dstu3.formats.IParser;
 import org.hl7.fhir.dstu3.formats.JsonParser;
 import org.hl7.fhir.dstu3.formats.ParserType;
@@ -34,10 +35,12 @@ import org.hl7.fhir.dstu3.model.MetadataResource;
 import org.hl7.fhir.dstu3.model.NamingSystem;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemIdentifierType;
 import org.hl7.fhir.dstu3.model.NamingSystem.NamingSystemUniqueIdComponent;
+import org.hl7.fhir.dstu3.model.OperationDefinition;
 import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
 import org.hl7.fhir.dstu3.model.Questionnaire;
 import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.ResourceType;
+import org.hl7.fhir.dstu3.model.SearchParameter;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.StructureDefinition.StructureDefinitionKind;
 import org.hl7.fhir.dstu3.model.StructureDefinition.TypeDerivationRule;
@@ -47,17 +50,18 @@ import org.hl7.fhir.dstu3.model.StructureMap.StructureMapStructureComponent;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpansionCache;
 import org.hl7.fhir.dstu3.utils.INarrativeGenerator;
+import org.hl7.fhir.dstu3.utils.IResourceValidator;
 import org.hl7.fhir.dstu3.utils.NarrativeGenerator;
 import org.hl7.fhir.dstu3.utils.client.FHIRToolingClient;
-import org.hl7.fhir.dstu3.validation.IResourceValidator;
-import org.hl7.fhir.dstu3.validation.InstanceValidator;
-import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.OIDUtils;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.validation.ValidationMessage;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueType;
+import org.hl7.fhir.utilities.validation.ValidationMessage.Source;
 
 import ca.uhn.fhir.parser.DataFormatException;
 
@@ -69,8 +73,12 @@ import ca.uhn.fhir.parser.DataFormatException;
 
 public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerContext, ProfileKnowledgeProvider {
 
-	public interface IContextResourceLoader {
+  public interface IContextResourceLoader {
     Bundle loadBundle(InputStream stream, boolean isJson) throws FHIRException, IOException;
+  }
+
+  public interface IValidatorFactory {
+    IResourceValidator makeValidator(IWorkerContext ctxts) throws FHIRException;
   }
 
   // all maps are to the full URI
@@ -82,7 +90,8 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
   private String version;
   private String revision;
   private String date;
-
+  private IValidatorFactory validatorFactory;
+  
 	// -- Initializations
 	/**
 	 * Load the working context from the validation pack
@@ -168,7 +177,7 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 		  Bundle bnd = (Bundle) f;
 		  for (BundleEntryComponent e : bnd.getEntry()) {
 		    if (e.getFullUrl() == null) {
-		      System.out.println("unidentified resource in " + name+" (no fullUrl)");
+		      logger.logDebugMessage(LogCategory.CONTEXT, "unidentified resource in " + name+" (no fullUrl)");
 		    }
 		    seeResource(e.getFullUrl(), e.getResource());
 		  }
@@ -193,7 +202,7 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
     for (BundleEntryComponent e : f.getEntry()) {
 
       if (e.getFullUrl() == null) {
-        System.out.println("unidentified resource in " + name+" (no fullUrl)");
+        logger.logDebugMessage(LogCategory.CONTEXT, "unidentified resource in " + name+" (no fullUrl)");
       }
       seeResource(e.getFullUrl(), e.getResource());
     }
@@ -206,6 +215,8 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
       seeValueSet(url, (ValueSet) r);
     else if (r instanceof CodeSystem)
       seeCodeSystem(url, (CodeSystem) r);
+    else if (r instanceof OperationDefinition)
+      seeOperationDefinition(url, (OperationDefinition) r);
     else if (r instanceof ConceptMap)
       maps.put(((ConceptMap) r).getUrl(), (ConceptMap) r);
     else if (r instanceof StructureMap)
@@ -214,7 +225,11 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
     	systems.add((NamingSystem) r);
 	}
 	
-	private void seeValueSet(String url, ValueSet vs) throws DefinitionException {
+	private void seeOperationDefinition(String url, OperationDefinition r) {
+    operations.put(r.getUrl(), r);
+  }
+
+  public void seeValueSet(String url, ValueSet vs) throws DefinitionException {
 	  if (Utilities.noString(url))
 	    url = vs.getUrl();
 		if (valueSets.containsKey(vs.getUrl()) && !allowLoadingDuplicates)
@@ -229,7 +244,7 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 		codeSystems.put(cs.getUrl(), cs);
 	}
 
-	private void seeProfile(String url, StructureDefinition p) throws FHIRException {
+	public void seeProfile(String url, StructureDefinition p) throws FHIRException {
     if (Utilities.noString(url))
       url = p.getUrl();
     
@@ -240,10 +255,14 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
       if (sd == null)
         throw new DefinitionException("Profile "+p.getName()+" ("+p.getUrl()+") base "+p.getBaseDefinition()+" could not be resolved");
       List<ValidationMessage> msgs = new ArrayList<ValidationMessage>();
+      List<String> errors = new ArrayList<String>();
       ProfileUtilities pu = new ProfileUtilities(this, msgs, this);
+      pu.sortDifferential(sd, p, url, errors);
+      for (String err : errors)
+        msgs.add(new ValidationMessage(Source.ProfileValidator, IssueType.EXCEPTION, "Error sorting Differential: "+err, ValidationMessage.IssueSeverity.ERROR));
       pu.generateSnapshot(sd, p, p.getUrl(), p.getName());
       for (ValidationMessage msg : msgs) {
-        if (msg.getLevel() == IssueSeverity.ERROR || msg.getLevel() == IssueSeverity.FATAL)
+        if (msg.getLevel() == ValidationMessage.IssueSeverity.ERROR || msg.getLevel() == ValidationMessage.IssueSeverity.FATAL)
           throw new DefinitionException("Profile "+p.getName()+" ("+p.getUrl()+"). Error generating snapshot: "+msg.getMessage());
       }
       if (!p.hasSnapshot())
@@ -343,8 +362,10 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 	}
 
 	@Override
-	public IResourceValidator newValidator() {
-		return new InstanceValidator(this);
+	public IResourceValidator newValidator() throws FHIRException {
+	  if (validatorFactory == null)
+	    throw new Error("No validator configured");
+	  return validatorFactory.makeValidator(this);
 	}
 
   @Override
@@ -386,6 +407,12 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
 					return (T) codeSystems.get(uri);
 				else
 					return null;      
+      } else if (class_ == OperationDefinition.class) {
+        OperationDefinition od = operations.get(uri);
+        return (T) od;
+      } else if (class_ == SearchParameter.class) {
+        SearchParameter od = searchParameters.get(uri);
+        return (T) od;
 			} else if (class_ == ConceptMap.class) {
 				if (maps.containsKey(uri))
 					return (T) maps.get(uri);
@@ -417,6 +444,17 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
     List<String> result = new ArrayList<String>();
     for (StructureDefinition sd : structures.values()) {
       if (sd.getKind() == StructureDefinitionKind.RESOURCE && sd.getDerivation() == TypeDerivationRule.SPECIALIZATION)
+        result.add(sd.getName());
+    }
+    Collections.sort(result);
+    return result;
+  }
+
+  @Override
+  public List<String> getTypeNames() {
+    List<String> result = new ArrayList<String>();
+    for (StructureDefinition sd : structures.values()) {
+      if (sd.getKind() != StructureDefinitionKind.LOGICAL && sd.getDerivation() == TypeDerivationRule.SPECIALIZATION)
         result.add(sd.getName());
     }
     Collections.sort(result);
@@ -485,7 +523,13 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
   @Override
   public List<StructureDefinition> allStructures() {
     List<StructureDefinition> result = new ArrayList<StructureDefinition>();
-    result.addAll(structures.values());
+    Set<StructureDefinition> set = new HashSet<StructureDefinition>();
+    for (StructureDefinition sd : structures.values()) {
+      if (!set.contains(sd)) {
+        result.add(sd);
+        set.add(sd);
+      }
+    }
     return result;
   }
 
@@ -559,8 +603,8 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
     }
   }
 
-  public void dropResource(Resource r) throws Exception {
-   throw new Exception("NOt done yet");
+  public void dropResource(Resource r) throws FHIRException {
+   throw new FHIRException("Not done yet");
     
   }
 
@@ -611,4 +655,14 @@ public class SimpleWorkerContext extends BaseWorkerContext implements IWorkerCon
     }
     return res;
   }
+
+  public IValidatorFactory getValidatorFactory() {
+    return validatorFactory;
+  }
+
+  public void setValidatorFactory(IValidatorFactory validatorFactory) {
+    this.validatorFactory = validatorFactory;
+  }
+  
+  
 }

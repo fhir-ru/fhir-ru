@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MedicationDispense xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationdispense.xsd"
-    xmlns="http://hl7.org/fhir">
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationdispense.xsd"
+ xmlns="http://hl7.org/fhir">
     <id value="meddisp0312"/>
     <contained>
         <Medication>
@@ -21,27 +21,31 @@
         <reference value="#med0309"/>
         <display value="Tylenol PM"/>
     </medicationReference>
-    <patient>
+    <subject>
         <reference value="Patient/pat1"/>
         <display value="Donald Duck"></display>
-    </patient>
-    <dispenser>
-        <reference value="Practitioner/f006"/>
-        <display value="Rob van den Berk"/>
-    </dispenser>
+    </subject>
+    <performer>
+        <actor>
+            <reference value="Practitioner/f006"/>
+        </actor>
+        <onBehalfOf>
+            <reference value="Organization/2.16.840.1.113883.19.5"></reference>
+        </onBehalfOf>
+    </performer>
     <authorizingPrescription>
         <reference value="MedicationRequest/medrx0310"/>
     </authorizingPrescription>
     <type>
         <coding>
-            <system value="http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType"/>
+            <system value="http://hl7.org/fhir/v3/ActCode"/>
             <code value="FF"/>
             <display value="First Fill"/>
         </coding>
     </type>
     <quantity>
         <value value="100"/>
-        <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm/"/>
+        <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
         <code value="TAB"/>
     </quantity>
     <daysSupply>
@@ -55,9 +59,9 @@
     <dosageInstruction>
         <sequence value="1"/>
         <text value="Take 1-2 tablets once daily at bedtime as needed for restless legs" />
-        <additionalInstructions>
+        <additionalInstruction>
             <text value="Take at bedtime"/>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <frequency value="1"/>
@@ -83,13 +87,13 @@
             <low>
                 <value value="1"/>
                 <unit value="TAB"/>
-                <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+                <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
                 <code value="TAB"/>
             </low>
             <high>
                 <value value="2"/>
                 <unit value="TAB"/>
-                <system value="http://hl7.org/fhir/ValueSet/v3-orderableDrugForm"/>
+                <system value="http://hl7.org/fhir/v3/orderableDrugForm"/>
                 <code value="TAB"/>
             </high>
         </doseRange>

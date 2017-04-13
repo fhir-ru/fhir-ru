@@ -16,7 +16,7 @@
   Conformance = preferred
 
  -- Row 3 -----------------------------------
-  Binding Name = Exception
+  Binding Name = !Exception
   Binding = value set
   Reference = valueset-coverage-exception
   Definition = The eligibility exception codes.
@@ -84,10 +84,12 @@
 
  -- Row 1 -----------------------------------
   Element = Coverage
+  UML = 0;0
   Type = DomainResource
   Short Name = Insurance or medical plan or a payment agreement
-  Definition = Financial instrument which may be used to pay for or reimburse health care products and services.
+  Definition = Financial instrument which may be used to reimburse or pay for health care products and services.
   Requirements = Health care programs and insurers are significant payors of health service costs
+  Workflow Mapping = Event
   RIM Mapping = Coverage
   w5 = financial.support
 
@@ -99,6 +101,7 @@
   Short Name = The primary coverage ID
   Definition = The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Certificate number, Personal Health Number or Case ID. May be constructed as the concatination of the Coverage.SubscriberID and the Coverage.dependant
   Requirements = This value may uniquely identify the coverage or it may be used in conjunction with the additional identifiers below.
+  Workflow Mapping = Event.identifier
   CDAnet v4 Mapping = C02
   v2 Mapping = IN1-2
   CPhA3 (Pharmacy) Mapping = C.32, C.33, C.39
@@ -113,6 +116,8 @@
   Binding = CoverageStatus
   Short Name = active | cancelled | draft | entered-in-error
   Definition = The status of the resource instance.
+  Comments = This element is labeled as a modifier because the status contains the code entered-in-error that marks the coverage as not currently valid
+  Workflow Mapping = Event.status
   w5 = status
 
  -- Row 4 -----------------------------------
@@ -138,7 +143,7 @@
   Summary = Y
   Type = CodeableConcept
   Binding = CoverageType
-  Short Name = Type of coverage
+  Short Name = Type of coverage such as medical or accident
   Definition = The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organization.
   Requirements = The order of application of coverages is dependent on the types of coverage.
   v2 Mapping = IN1-15
@@ -190,6 +195,7 @@
   Type = Reference(Patient)
   Short Name = Plan Beneficiary
   Definition = The party who benefits from the insurance coverage., the patient when services are provided.
+  Workflow Mapping = Event.subject
   CDAnet v4 Mapping = D01 through D09
   v2 Mapping = IN1-16, 18,  19-name of insured, address, date of birth
   CPhA3 (Pharmacy) Mapping = C.35
@@ -213,6 +219,7 @@
   Type = Period
   Short Name = Coverage start and end dates
   Definition = Time period during which the coverage is in force. A missing start date indicates the start date isn\'t known, a missing end date means the coverage is continuing to be in force.
+  Workflow Mapping = Event.occurrence
   v2 Mapping = IN1-12 / IN1-13
   w5 = when.done
 
@@ -239,14 +246,15 @@
   Definition = A suite of underwrite specific classifiers, for example may be used to identify a class of coverage or employer group, Policy, Plan.
 
  -- Row 15 -----------------------------------
-  Element = Coverage.group
+  Element = Coverage.grouping
   Card. = 0..1
+  UML = 360;0
   Type = =Group
   Short Name = Additional coverage classifications
   Definition = A suite of underwrite specific classifiers, for example may be used to identify a class of coverage or employer group, Policy, Plan.
 
  -- Row 16 -----------------------------------
-  Element = Coverage.group.group
+  Element = Coverage.grouping.group
   Card. = 0..1
   Summary = Y
   Type = string
@@ -257,7 +265,7 @@
   CPhA3 (Pharmacy) Mapping = C.31
 
  -- Row 17 -----------------------------------
-  Element = Coverage.group.groupDisplay
+  Element = Coverage.grouping.groupDisplay
   Card. = 0..1
   Summary = Y
   Type = string
@@ -268,7 +276,7 @@
   CPhA3 (Pharmacy) Mapping = C.31
 
  -- Row 18 -----------------------------------
-  Element = Coverage.group.subGroup
+  Element = Coverage.grouping.subGroup
   Card. = 0..1
   Summary = Y
   Type = string
@@ -277,7 +285,7 @@
   v2 Mapping = IN1-8
 
  -- Row 19 -----------------------------------
-  Element = Coverage.group.subGroupDisplay
+  Element = Coverage.grouping.subGroupDisplay
   Card. = 0..1
   Summary = Y
   Type = string
@@ -286,7 +294,7 @@
   v2 Mapping = IN1-8
 
  -- Row 20 -----------------------------------
-  Element = Coverage.group.plan
+  Element = Coverage.grouping.plan
   Card. = 0..1
   Summary = Y
   Type = string
@@ -296,7 +304,7 @@
   v2 Mapping = IN1-35
 
  -- Row 21 -----------------------------------
-  Element = Coverage.group.planDisplay
+  Element = Coverage.grouping.planDisplay
   Card. = 0..1
   Summary = Y
   Type = string
@@ -306,7 +314,7 @@
   v2 Mapping = IN1-35
 
  -- Row 22 -----------------------------------
-  Element = Coverage.group.subPlan
+  Element = Coverage.grouping.subPlan
   Card. = 0..1
   Summary = Y
   Type = string
@@ -315,7 +323,7 @@
   v2 Mapping = IN1-10
 
  -- Row 23 -----------------------------------
-  Element = Coverage.group.subPlanDisplay
+  Element = Coverage.grouping.subPlanDisplay
   Card. = 0..1
   Summary = Y
   Type = string
@@ -324,17 +332,17 @@
   v2 Mapping = IN1-10
 
  -- Row 24 -----------------------------------
-  Element = Coverage.group.class
+  Element = Coverage.grouping.class
   Card. = 0..1
   Summary = Y
   Type = string
   Short Name = An identifier for the class
-  Definition = Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group.
+  Definition = Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage such as a level of deductables or co-payment.
   CDAnet v4 Mapping = C01
   v2 Mapping = IN1-35
 
  -- Row 25 -----------------------------------
-  Element = Coverage.group.classDisplay
+  Element = Coverage.grouping.classDisplay
   Card. = 0..1
   Summary = Y
   Type = string
@@ -344,17 +352,17 @@
   v2 Mapping = IN1-35
 
  -- Row 26 -----------------------------------
-  Element = Coverage.group.subClass
+  Element = Coverage.grouping.subClass
   Card. = 0..1
   Summary = Y
   Type = string
   Short Name = An identifier for the subsection of the class
-  Definition = Identifies a sub-style or sub-collective of coverage issues by the underwriter, for example may be used to identify a subclass of coverage or employer group.
+  Definition = Identifies a sub-style or sub-collective of coverage issues by the underwriter, for example may be used to identify a subclass of coverage such as a sub-level of deductables or co-payment.
   CDAnet v4 Mapping = C01
   v2 Mapping = IN1-35
 
  -- Row 27 -----------------------------------
-  Element = Coverage.group.subClassDisplay
+  Element = Coverage.grouping.subClassDisplay
   Card. = 0..1
   Summary = Y
   Type = string
@@ -456,37 +464,37 @@
   Name = plan
   Type = string
   Description = A plan or policy identifier
-  Path = Coverage.group.plan
+  Path = Coverage.grouping.plan
 
  -- Row 8 -----------------------------------
   Name = subplan
   Type = string
   Description = Sub-plan identifier
-  Path = Coverage.group.subPlan
+  Path = Coverage.grouping.subPlan
 
  -- Row 9 -----------------------------------
   Name = group
   Type = string
   Description = Group identifier
-  Path = Coverage.group.group
+  Path = Coverage.grouping.group
 
  -- Row 10 -----------------------------------
   Name = subgroup
   Type = string
   Description = Sub-group identifier
-  Path = Coverage.group.subGroup
+  Path = Coverage.grouping.subGroup
 
  -- Row 11 -----------------------------------
   Name = class
   Type = string
   Description = Class identifier
-  Path = Coverage.group.class
+  Path = Coverage.grouping.class
 
  -- Row 12 -----------------------------------
   Name = subclass
   Type = string
   Description = Sub-class identifier
-  Path = Coverage.group.subClass
+  Path = Coverage.grouping.subClass
 
  -- Row 13 -----------------------------------
   Name = dependent
@@ -531,7 +539,7 @@
   Path = Coverage.beneficiaryReference
 
  -- Row 20 -----------------------------------
-  Name = policyholder
+  Name = policy-holder
   Type = reference
   Description = Reference to the policyholder
   Path = Coverage.policyHolder

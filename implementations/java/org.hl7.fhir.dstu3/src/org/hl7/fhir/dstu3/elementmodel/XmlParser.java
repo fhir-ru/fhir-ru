@@ -3,7 +3,10 @@ package org.hl7.fhir.dstu3.elementmodel;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,8 +24,6 @@ import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
 import org.hl7.fhir.dstu3.model.DateTimeType;
 import org.hl7.fhir.dstu3.model.ElementDefinition.PropertyRepresentation;
 import org.hl7.fhir.dstu3.model.Enumeration;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 import org.hl7.fhir.dstu3.utils.formats.XmlLocationAnnotator;
@@ -31,6 +32,8 @@ import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
@@ -238,7 +241,7 @@ public class XmlParser extends ParserBase {
 	    		else
 	    	    context.getChildren().add(new Element(property.getName(), property, property.getType(), av).markLocation(line(node), col(node)));
         } else if (!allowXsiLocation || !attr.getNodeName().endsWith(":schemaLocation") ) {
-          logError(line(node), col(node), path, IssueType.STRUCTURE, "Undefined attribute '@"+attr.getNodeName()+"'", IssueSeverity.ERROR);      		
+          logError(line(node), col(node), path, IssueType.STRUCTURE, "Undefined attribute '@"+attr.getNodeName()+"' on "+node.getNodeName(), IssueSeverity.ERROR);      		
       	}
     	}
     }
@@ -290,7 +293,16 @@ public class XmlParser extends ParserBase {
   }
 
   private Property getElementProp(List<Property> properties, String nodeName) {
-  	for (Property p : properties)
+		List<Property> propsSortedByLongestFirst = new ArrayList<Property>(properties);
+		// sort properties according to their name longest first, so .requestOrganizationReference comes first before .request[x]
+		// and therefore the longer property names get evaluated first
+		Collections.sort(propsSortedByLongestFirst, new Comparator<Property>() {
+			@Override
+			public int compare(Property o1, Property o2) {
+				return o2.getName().length() - o1.getName().length();
+			}
+		});
+  	for (Property p : propsSortedByLongestFirst)
   		if (!p.getDefinition().hasRepresentation(PropertyRepresentation.XMLATTR) && !p.getDefinition().hasRepresentation(PropertyRepresentation.XMLTEXT)) {
   		  if (p.getName().equals(nodeName)) 
 				  return p;

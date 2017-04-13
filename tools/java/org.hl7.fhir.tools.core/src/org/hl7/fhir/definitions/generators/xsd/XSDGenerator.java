@@ -32,8 +32,10 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.ToolResourceUtilities;
@@ -44,6 +46,7 @@ import org.hl7.fhir.definitions.model.ProfiledType;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent;
+import org.hl7.fhir.dstu3.model.Enumerations.BindingStrength;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionContainsComponent;
 import org.hl7.fhir.igtools.spreadsheets.TypeParser;
@@ -63,12 +66,15 @@ public class XSDGenerator  {
 	private Map<String, ValueSet> enums = new HashMap<String, ValueSet>();
 	private Map<String, String> enumDefs = new HashMap<String, String>();
   private BuildWorkerContext workerContext;
+  private Set<String> allenums = new HashSet<String>();
 
-	public XSDGenerator(OutputStreamWriter out, Definitions definitions, boolean forCodeGeneration, BuildWorkerContext workerContext) throws UnsupportedEncodingException {
+	public XSDGenerator(OutputStreamWriter out, Definitions definitions, boolean forCodeGeneration, BuildWorkerContext workerContext, Set<String> allenums) throws UnsupportedEncodingException {
     writer = out;
 		this.definitions = definitions;
 		this.forCodeGeneration = forCodeGeneration;
 		this.workerContext = workerContext;
+		if (allenums != null)
+	    this.allenums = allenums;
 	}
 
   private void write(String s) throws IOException {
@@ -123,29 +129,32 @@ public class XSDGenerator  {
 	}
 
 	private void generateEnum(String en) throws IOException {
-		write("  <xs:simpleType name=\""+en+"-list\">\r\n");
-		write("    <xs:restriction base=\"code-primitive\">\r\n");
-		ValueSet vs = enums.get(en);
-    vs.setUserData(ToolResourceUtilities.NAME_VS_USE_MARKER, true);
-		ValueSet ex = workerContext.expandVS(vs, true, false).getValueset();
-      for (ValueSetExpansionContainsComponent cc : ex.getExpansion().getContains()) {
-        genIncludedCode(cc);
-      }
-		
-		write("    </xs:restriction>\r\n");
-		write("  </xs:simpleType>\r\n");
+	  if (allenums.contains(en)) 
+	    return;
+	  allenums.add(en);
+	  write("  <xs:simpleType name=\""+en+"-list\">\r\n");
+	  write("    <xs:restriction base=\"code-primitive\">\r\n");
+	  ValueSet vs = enums.get(en);
+	  vs.setUserData(ToolResourceUtilities.NAME_VS_USE_MARKER, true);
+	  ValueSet ex = workerContext.expandVS(vs, true, false).getValueset();
+	  for (ValueSetExpansionContainsComponent cc : ex.getExpansion().getContains()) {
+	    genIncludedCode(cc);
+	  }
 
-		write("  <xs:complexType name=\""+en+"\">\r\n");
-		write("    <xs:annotation>\r\n");
-		write("      <xs:documentation xml:lang=\"en\">"+Utilities.escapeXml(enumDefs.get(en))+"</xs:documentation>\r\n");
-		write("      <xs:documentation xml:lang=\"en\">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>\r\n");
-		write("    </xs:annotation>\r\n");
-		write("    <xs:complexContent>\r\n");
-		write("      <xs:extension base=\"Element\">\r\n");
-		write("        <xs:attribute name=\"value\" type=\""+en + "-list\" use=\"optional\"/>\r\n");
-		write("      </xs:extension>\r\n");
-		write("    </xs:complexContent>\r\n");
-		write("  </xs:complexType>\r\n");
+	  write("    </xs:restriction>\r\n");
+	  write("  </xs:simpleType>\r\n");
+
+	  write("  <xs:complexType name=\""+en+"\">\r\n");
+	  write("    <xs:annotation>\r\n");
+	  write("      <xs:documentation xml:lang=\"en\">"+Utilities.escapeXml(enumDefs.get(en))+"</xs:documentation>\r\n");
+	  write("      <xs:documentation xml:lang=\"en\">If the element is present, it must have either a @value, an @id, or extensions</xs:documentation>\r\n");
+	  write("    </xs:annotation>\r\n");
+	  write("    <xs:complexContent>\r\n");
+	  write("      <xs:extension base=\"Element\">\r\n");
+	  write("        <xs:attribute name=\"value\" type=\""+en + "-list\" use=\"optional\"/>\r\n");
+	  write("      </xs:extension>\r\n");
+	  write("    </xs:complexContent>\r\n");
+	  write("  </xs:complexType>\r\n");
 	}
 
 	private void genIncludedCode(ValueSetExpansionContainsComponent cc) throws IOException {
@@ -321,8 +330,9 @@ public class XSDGenerator  {
 			else
 				write(" maxOccurs=\"1\"");
 
-			if (tn != null && !(tn.equals("Narrative") && e.getName().equals("text") && root.getElements().contains(e))) 
+			if (tn != null && !(tn.equals("Narrative") && e.getName().equals("text") && root.getElements().contains(e))) { 
 				write(" type=\""+tn+"\"");
+			}
 
 			write(">\r\n");
 			if (e.hasDefinition()) {
@@ -331,6 +341,12 @@ public class XSDGenerator  {
 				write("           </xs:annotation>\r\n");
 			}
 			write("          </xs:element>\r\n");
+			if (tn != null && !(tn.equals("Narrative") && e.getName().equals("text") && root.getElements().contains(e))) { 
+			  if (tn.equals("FHIRDefinedType")) 
+			    enums.put("FHIRDefinedType", definitions.getValuesets().get("http://hl7.org/fhir/ValueSet/defined-types"));
+			  else if  (tn.equals("FHIRAllTypes")) 
+          enums.put("FHIRAllTypes", definitions.getValuesets().get("http://hl7.org/fhir/ValueSet/all-types"));
+			}
 		}
 	}
 
@@ -369,8 +385,8 @@ public class XSDGenerator  {
 			String en = null;
 			if (e.hasBinding()) {
 				BindingSpecification cd = e.getBinding();
-				if (cd != null && cd.getBinding() == BindingSpecification.BindingMethod.CodeList) {
-					en = cd.getValueSet().getName();
+				if (cd != null && cd.getStrength() == BindingStrength.REQUIRED && cd.getValueSet() != null) {
+					en = namify(cd.getValueSet().getName());
 					if (!cd.isShared()) {
 					  enums.put(en, cd.getValueSet());
 					  enumDefs.put(en, cd.getDefinition());
@@ -393,6 +409,22 @@ public class XSDGenerator  {
 		else  
 			return type.getName()+"_"+upFirst(type.getParams().get(0));
 	}
+
+  private String namify(String name) {
+    StringBuilder b = new StringBuilder();
+    boolean ws = false;
+    for (char c : name.toCharArray()) {
+      if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+        if (ws) {
+          ws = false;
+          b.append(Character.toUpperCase(c));
+        } else 
+          b.append(c);          
+      } else 
+        ws = true;        
+    }
+    return b.toString();
+  }
 
   public OutputStreamWriter getWriter() {
     return writer;

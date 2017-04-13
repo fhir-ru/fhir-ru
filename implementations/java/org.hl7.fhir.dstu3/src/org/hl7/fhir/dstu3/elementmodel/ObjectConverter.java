@@ -18,6 +18,7 @@ import org.hl7.fhir.dstu3.model.Type;
 import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.FHIRFormatError;
+import org.hl7.fhir.utilities.TextFile;
 
 
 public class ObjectConverter  {
@@ -29,6 +30,8 @@ public class ObjectConverter  {
   }
 
   public Element convert(Resource ig) throws IOException, FHIRFormatError, DefinitionException {
+    if (ig == null)
+      return null;
     ByteArrayOutputStream bs = new ByteArrayOutputStream();
     org.hl7.fhir.dstu3.formats.JsonParser jp = new org.hl7.fhir.dstu3.formats.JsonParser();
     jp.compose(bs, ig);

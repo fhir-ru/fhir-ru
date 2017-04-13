@@ -13,15 +13,17 @@ import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.dstu3.model.Constants;
 import org.hl7.fhir.dstu3.model.OperationOutcome;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
+import org.hl7.fhir.dstu3.utils.OperationOutcomeUtilities;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
-import org.hl7.fhir.dstu3.validation.ValidationMessage;
+import org.hl7.fhir.dstu3.utils.TranslatingUtilities;
 import org.hl7.fhir.igtools.publisher.FetchedFile;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.validation.ValidationMessage;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
 import org.stringtemplate.v4.ST;
 
-public class ValidationPresenter implements Comparator<FetchedFile> {
+public class ValidationPresenter extends TranslatingUtilities implements Comparator<FetchedFile> {
 
   private static final String INTERNAL_LINK = "internal";
 
@@ -62,7 +64,7 @@ public class ValidationPresenter implements Comparator<FetchedFile> {
     OperationOutcome oo = new OperationOutcome();
     validationBundle.addEntry(new BundleEntryComponent().setResource(oo));
     for (ValidationMessage vm : linkErrors) {
-      oo.getIssue().add(vm.asIssue(oo));
+      oo.getIssue().add(OperationOutcomeUtilities.convertToIssue(vm, oo));
     }
     for (FetchedFile f : files) {
       if (!f.getErrors().isEmpty()) {
@@ -70,7 +72,7 @@ public class ValidationPresenter implements Comparator<FetchedFile> {
         validationBundle.addEntry(new BundleEntryComponent().setResource(oo));
         ToolingExtensions.addStringExtension(oo, ToolingExtensions.EXT_OO_FILE, f.getName());
         for (ValidationMessage vm : removeDupMessages(f.getErrors())) {
-          oo.getIssue().add(vm.asIssue(oo));
+          oo.getIssue().add(OperationOutcomeUtilities.convertToIssue(vm, oo));
         }
       }
     }
@@ -123,7 +125,7 @@ public class ValidationPresenter implements Comparator<FetchedFile> {
       " <p>Generated $time$. FHIR version $version$</p>\r\n"+
       " <table class=\"grid\">\r\n"+
       "   <tr>\r\n"+
-      "     <td><b>Filename</b></td><td><b>Errors</b></td><td><b>Hints &amp; Warnings</b></td>\r\n"+
+      "     <td><b>Filename</b></td><td><b>Errors</b></td><td><b>Information messages &amp; Warnings</b></td>\r\n"+
       "   </tr>\r\n";
   
   private final String summaryTemplate = 
@@ -146,6 +148,11 @@ public class ValidationPresenter implements Comparator<FetchedFile> {
   private final String detailsTemplate = 
       "   <tr style=\"background-color: $color$\">\r\n"+
       "     <td><b>$path$</b></td><td><b>$level$</b></td><td><b>$msg$</b></td>\r\n"+
+      "   </tr>\r\n";
+  
+  private final String detailsTemplateWithLink = 
+      "   <tr style=\"background-color: $color$\">\r\n"+
+      "     <td><b><a href=\"$pathlink$\">$path$</a></b></td><td><b>$level$</b></td><td><b>$msg$</b></td>\r\n"+
       "   </tr>\r\n";
   
   private final String footerTemplate = 
@@ -331,8 +338,9 @@ public class ValidationPresenter implements Comparator<FetchedFile> {
     return t.render();
   }
   private String genDetails(ValidationMessage vm) {
-    ST t = template(detailsTemplate);
+    ST t = template(vm.getLocationLink() != null ? detailsTemplateWithLink : detailsTemplate);
     t.add("path", vm.getLocation());
+    t.add("pathlink", vm.getLocationLink());
     t.add("level", vm.getLevel().toCode());
     t.add("color", colorForLevel(vm.getLevel()));
     t.add("msg", vm.getHtml());

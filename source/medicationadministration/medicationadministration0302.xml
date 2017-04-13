@@ -6,7 +6,6 @@
   <contained>
     <Medication>
       <id value="med0317"/>
-      <product>
         <form>
           <coding>
             <system value="http://snomed.info/sct"/>
@@ -56,40 +55,57 @@
               <code value="mL"/>
             </denominator>
           </amount>
-        </ingredient>
-      </product>
+        </ingredient>   
     </Medication>
   </contained>
+  <definition>
+    <reference value="PlanDefinition/KDN5"></reference>
+  </definition>
+  <partOf>
+    <reference value="Procedure/biopsy"></reference>
+  </partOf>
   <status value="completed" />
+  <category>
+    <coding>
+      <system value="http://hl7.org/fhir/medication-admin-category"/>
+      <code value="inpatient"/>
+      <display value="Inpatient"/>
+    </coding>
+  </category>
   <medicationReference>
     <reference value="#med0317"/> 
   </medicationReference>
- <patient>
+ <subject>
    <reference value="Patient/pat1"/>
    <display value="Donald Duck"/> 
-  </patient>
-  <encounter> 
+  </subject>
+  <context> 
     <reference value="Encounter/f001"/>
     <display value="encounter who leads to this prescription"/>
-  </encounter>
+  </context>
  <effectivePeriod>
   <start value="2015-01-15T04:30:00+01:00"/>
    <end value="2015-01-15T14:30:00+01:00"/>
 </effectivePeriod>
   <performer>
+    <actor>
     <reference value="Practitioner/f007"/>
     <display value="Patrick Pump"/>
+    </actor>
+    <onBehalfOf>
+      <reference value="Organization/f002"></reference>
+    </onBehalfOf>
   </performer>
-  <prescription>
-    <reference value="MedicationRequest/medrx0322"/>
-  </prescription>
-  <reasonGiven>
+  <reasonCode>
     <coding>
       <system value="http://hl7.org/fhir/reason-medication-given"/>
       <code value="b"/>
       <display value="Given as Ordered"/>
     </coding>
-  </reasonGiven>
+  </reasonCode>
+  <prescription>
+    <reference value="MedicationRequest/medrx0322"/>
+  </prescription>
   <dosage>
     <text value="KCl 20 mEq in 1 L 0.9%NS IV at 100 ml/hr" />
     <site>

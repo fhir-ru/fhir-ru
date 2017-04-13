@@ -1,6 +1,12 @@
 ﻿
 === Sheet Bindings =====================================
 
+ -- Row 1 -----------------------------------
+  Binding Name = AgeUnits
+  Binding = value set
+  Reference = valueset-age-units
+  Definition = Appropriate units for Age
+
 === Sheet Invariants =====================================
 
  -- Row 1 -----------------------------------
@@ -8,7 +14,7 @@
   Context = Age
   English = There SHALL be a code if there is a value and it SHALL be an expression of time.  If system is present, it SHALL be UCUM.  If value is present, it SHALL be positive.
   XPath = (f:code or not(f:value)) and (not(exists(f:system)) or f:system/@value=\'http://unitsofmeasure.org\') and not(contains(f:value/@value, \'-\'))
-  Expression = (code or value.empty()) and (system.empty() or system = %ucum) and (value.empty() or value.toString().contains(\'.\').not())
+  Expression = (code or value.empty()) and (system.empty() or system = %ucum) and (value.empty() or value > 0)
 
 === Sheet Data Elements =====================================
 
@@ -17,3 +23,7 @@
   Type = Quantity
   Short Name = A duration of time during which an organism (or a process) has existed
   RIM Mapping = PQ
+
+ -- Row 2 -----------------------------------
+  Element = !Age.code
+  Binding = AgeUnits

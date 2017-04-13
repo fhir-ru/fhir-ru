@@ -23,6 +23,13 @@
   Conformance = required
   v3 = http://hl7.org/fhir/ValueSet/v3-SeverityObservation
 
+ -- Row 4 -----------------------------------
+  Binding Name = DetectedIssueStatus
+  Binding = value set
+  Reference = http://hl7.org/fhir/ValueSet/observation-status
+  Definition = Indicates the status of the identified issue
+  Conformance = required
+
 === Sheet detectedissue-severity =====================================
 
  -- Row 1 -----------------------------------
@@ -56,23 +63,39 @@
   Type = DomainResource
   Short Name = Clinical issue with action
   Definition = Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, Ineffective treatment frequency, Procedure-condition conflict, etc.
+  Workflow Mapping = Event
   v2 Mapping = Partial mapping from messages containing the AL1 or IAM segment, such as the ADT^A01, ADT^A08, and ADT^A60.
   RIM Mapping = Observation[classCode=ALRT, moodCode=EVN)
   w5 = clinical.general
 
  -- Row 2 -----------------------------------
-  Element = DetectedIssue.patient
+  Element = DetectedIssue.identifier
   Card. = 0..1
   Summary = y
-  Type = Reference(Patient)
-  Short Name = Associated patient
-  Definition = Indicates the patient whose record the detected issue is associated with.
-  Requirements = While the subject could be inferred by tracing the subject of the implicated resources, it\'s useful to have a direct link for query purposes.
-  v2 Mapping = PID-3
-  RIM Mapping = .participation[typeCode=SBJ].role[classCode=PAT]
-  w5 = who.focus
+  Type = Identifier
+  Short Name = Unique id for the detected issue
+  Definition = Business identifier associated with the detected issue record
+  Requirements = Allows linking instances of the same detected issue found on different servers
+  Workflow Mapping = Event.identifier
+  v2 Mapping = IAM-7
+  RIM Mapping = .id
+  w5 = id
 
  -- Row 3 -----------------------------------
+  Element = DetectedIssue.status
+  Card. = 1..1
+  Aliases = status
+  Is Modifier = y
+  Summary = y
+  Type = code
+  Binding = DetectedIssueStatus
+  Short Name = registered | preliminary | final | amended +
+  Definition = Indicates the status of the detected issue
+  Comments = This element is labeled as a modifier because the status contains the codes cancelled and entered-in-error that mark the issue as not currently valid
+  Workflow Mapping = Event.status
+  w5 = status
+
+ -- Row 4 -----------------------------------
   Element = DetectedIssue.category
   Card. = 0..1
   Aliases = type
@@ -81,11 +104,12 @@
   Binding = DetectedIssueCategory
   Short Name = Issue Category, e.g. drug-drug, duplicate therapy, etc.
   Definition = Identifies the general type of issue identified.
+  Workflow Mapping = Event.code
   v2 Mapping = AL1-2 / IAM-9
   RIM Mapping = .code
   w5 = class
 
- -- Row 4 -----------------------------------
+ -- Row 5 -----------------------------------
   Element = DetectedIssue.severity
   Card. = 0..1
   Aliases = severity
@@ -98,26 +122,18 @@
   RIM Mapping = .inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=SEV].value
   w5 = grade
 
- -- Row 5 -----------------------------------
-  Element = DetectedIssue.implicated
-  Card. = 0..*
-  Aliases = cause
-  Summary = y
-  Type = Reference(Any)
-  Short Name = Problem resource
-  Definition = Indicates the resource representing the current activity or proposed activity that is potentially problematic
-  Comments = There\'s an implicit constraint on the number of implicated resources based on DetectedIssue.type; e.g. For drug-drug, there would be more than one.  For timing, there would typically only be one.
-  RIM Mapping = .outboundRelationship[typeCode=SUBJ].target[moodCode=EVN, INT]
-
  -- Row 6 -----------------------------------
-  Element = DetectedIssue.detail
+  Element = DetectedIssue.patient
   Card. = 0..1
-  Type = string
-  Short Name = Description and context
-  Definition = A textual explanation of the detected issue
-  Comments = Should focus on information not covered elsewhere as discrete data - no need to duplicate the narrative.
-  v2 Mapping = AL1-5 / IAM-8
-  RIM Mapping = .text
+  Summary = y
+  Type = Reference(Patient)
+  Short Name = Associated patient
+  Definition = Indicates the patient whose record the detected issue is associated with.
+  Requirements = While the subject could be inferred by tracing the subject of the implicated resources, it\'s useful to have a direct link for query purposes.
+  Workflow Mapping = Event.subject
+  v2 Mapping = PID-3
+  RIM Mapping = .participation[typeCode=SBJ].role[classCode=PAT]
+  w5 = who.focus
 
  -- Row 7 -----------------------------------
   Element = DetectedIssue.date
@@ -127,6 +143,7 @@
   Short Name = When identified
   Definition = The date or date-time when the detected issue was initially identified.
   Requirements = No-one can be responsible for mitigation prior to the issue being identified
+  Workflow Mapping = Event.occurrence
   v2 Mapping = ALI-6 / IAM-11
   RIM Mapping = .effectiveTime
   w5 = when.recorded
@@ -138,42 +155,51 @@
   Type = Reference(Practitioner|Device)
   Short Name = The provider or device that identified the issue
   Definition = Individual or device responsible for the issue being raised.  For example, a decision support application or a pharmacist conducting a medication review
+  Workflow Mapping = Event.performer.actor
   v2 Mapping = IAM-14 / IAM-16
   RIM Mapping = .participation[typeCode=AUT].role[classCode=ASSIGNED]
-  To Do = Is this 80%?
   w5 = who.author
 
  -- Row 9 -----------------------------------
-  Element = DetectedIssue.identifier
-  Card. = 0..1
+  Element = DetectedIssue.implicated
+  Card. = 0..*
+  Aliases = cause
   Summary = y
-  Type = Identifier
-  Short Name = Unique id for the detected issue
-  Definition = Business identifier associated with the detected issue record
-  Requirements = Allows linking instances of the same detected issue found on different servers
-  v2 Mapping = IAM-7
-  RIM Mapping = .id
-  w5 = id
+  Type = Reference(Any)
+  Short Name = Problem resource
+  Definition = Indicates the resource representing the current activity or proposed activity that is potentially problematic
+  Comments = There\'s an implicit constraint on the number of implicated resources based on DetectedIssue.type; e.g. For drug-drug, there would be more than one.  For timing, there would typically only be one.
+  Workflow Mapping = Event.reasonReference
+  RIM Mapping = .outboundRelationship[typeCode=SUBJ].target[moodCode=EVN, INT]
 
  -- Row 10 -----------------------------------
+  Element = DetectedIssue.detail
+  Card. = 0..1
+  Type = string
+  Short Name = Description and context
+  Definition = A textual explanation of the detected issue
+  Comments = Should focus on information not covered elsewhere as discrete data - no need to duplicate the narrative.
+  Workflow Mapping = Event.note
+  v2 Mapping = AL1-5 / IAM-8
+  RIM Mapping = .text
+
+ -- Row 11 -----------------------------------
   Element = DetectedIssue.reference
   Card. = 0..1
   Type = uri
   Short Name = Authority for issue
   Definition = The literature, knowledge-base or similar reference that describes the propensity for the detected issue identified
   RIM Mapping = .outboundRelationship[typeCode=INST].target[classCode=ALRT, moodCode=DEFN].text.uri
-  To Do = Is this in the 80%?
 
- -- Row 11 -----------------------------------
+ -- Row 12 -----------------------------------
   Element = DetectedIssue.mitigation
   Card. = 0..*
   UML = 350;0
   Short Name = Step taken to address
   Definition = Indicates an action that has been taken or is committed to to reduce or eliminate the likelihood of the risk identified by the detected issue from manifesting.  Can also reflect an observation of known mitigating factors that may reduce/eliminate the need for any action.
   RIM Mapping = .outboundRelationship[typeCode=MITG].target[classCode=ACT, moodCode=EVN]
-  To Do = How much, if any of this is in the 80%?
 
- -- Row 12 -----------------------------------
+ -- Row 13 -----------------------------------
   Element = DetectedIssue.mitigation.action
   Card. = 1..1
   Type = CodeableConcept
@@ -183,7 +209,7 @@
   Comments = The \"text\" component can be used for detail or when no appropriate code exists.
   RIM Mapping = .code
 
- -- Row 13 -----------------------------------
+ -- Row 14 -----------------------------------
   Element = DetectedIssue.mitigation.date
   Card. = 0..1
   Type = dateTime
@@ -192,7 +218,7 @@
   Comments = This may not be the same as when the mitigating step was actually taken
   RIM Mapping = .effectiveTime
 
- -- Row 14 -----------------------------------
+ -- Row 15 -----------------------------------
   Element = DetectedIssue.mitigation.author
   Card. = 0..1
   Type = Reference(Practitioner)

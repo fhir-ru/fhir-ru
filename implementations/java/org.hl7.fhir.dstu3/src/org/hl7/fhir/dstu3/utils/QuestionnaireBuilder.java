@@ -28,7 +28,6 @@ import org.hl7.fhir.dstu3.model.Quantity;
 import org.hl7.fhir.dstu3.model.Questionnaire;
 import org.hl7.fhir.dstu3.model.Questionnaire.QuestionnaireItemComponent;
 import org.hl7.fhir.dstu3.model.Questionnaire.QuestionnaireItemType;
-import org.hl7.fhir.dstu3.model.Questionnaire.QuestionnaireStatus;
 import org.hl7.fhir.dstu3.model.QuestionnaireResponse;
 import org.hl7.fhir.dstu3.model.QuestionnaireResponse.QuestionnaireResponseItemAnswerComponent;
 import org.hl7.fhir.dstu3.model.QuestionnaireResponse.QuestionnaireResponseStatus;
@@ -218,12 +217,12 @@ public class QuestionnaireBuilder {
     if (prebuiltQuestionnaire == null) {
       questionnaire.addIdentifier().setSystem("urn:ietf:rfc:3986").setValue(questionnaireId);
       questionnaire.setVersion(profile.getVersion());
-      questionnaire.setStatus(convertStatus(profile.getStatus()));
+      questionnaire.setStatus(profile.getStatus());
       questionnaire.setDate(profile.getDate());
       questionnaire.setPublisher(profile.getPublisher());
       Questionnaire.QuestionnaireItemComponent item = new Questionnaire.QuestionnaireItemComponent();
       questionnaire.addItem(item);
-      item.getConcept().addAll(profile.getKeyword());
+      item.getCode().addAll(profile.getKeyword());
       questionnaire.setId(nextId("qs"));
     }
 
@@ -239,16 +238,6 @@ public class QuestionnaireBuilder {
 
   }
 
-  private QuestionnaireStatus convertStatus(PublicationStatus status) {
-    switch (status) {
-		case ACTIVE: return QuestionnaireStatus.PUBLISHED;
-		case DRAFT: return QuestionnaireStatus.DRAFT;
-		case RETIRED : return QuestionnaireStatus.RETIRED;
-    default: 
-      return QuestionnaireStatus.NULL;
-    }
-  }
-
   private String nextId(String prefix) {
     lastid++;
     return prefix+Integer.toString(lastid);
@@ -258,10 +247,10 @@ public class QuestionnaireBuilder {
       List<ElementDefinition> parents, List<QuestionnaireResponse.QuestionnaireResponseItemComponent> answerGroups) throws FHIRException {
 	  group.setLinkId(element.getPath()); // todo: this will be wrong when we start slicing
 	  group.setText(element.getShort()); // todo - may need to prepend the name tail... 
-	  if (element.getComments() != null) {
+	  if (element.getComment() != null) {
 	  	Questionnaire.QuestionnaireItemComponent display = new Questionnaire.QuestionnaireItemComponent();
 	  	display.setType(QuestionnaireItemType.DISPLAY);
-	  	display.setText(element.getComments());
+	  	display.setText(element.getComment());
 	  	group.addItem(display);
 	  }
 	  group.setType(QuestionnaireItemType.GROUP);
@@ -308,7 +297,10 @@ public class QuestionnaireBuilder {
   }
 
   private boolean isInlineDataType(List<TypeRefComponent> type) {
-    return type.size() == 1 && (type.get(0).getCode().equals("ContactDetail") || type.get(0).getCode().equals("UsageContext"));
+    return type.size() == 1 && !Utilities.existsInList(type.get(0).getCode(), "code", "string", "id", "oid", "markdown", "uri", "boolean", "decimal", "dateTime", "date", "instant", "time", "CodeableConcept", "Period", "Ratio",
+        "HumanName", "Address", "ContactPoint", "Identifier", "integer", "positiveInt", "unsignedInt", "Coding", "Quantity",  "Count",  "Age",  "Duration", 
+        "Distance",  "Money", "Money", "Reference", "Duration", "base64Binary", "Attachment", "Age", "Range", "Timing", "Annotation", "SampledData", "Extension",
+        "SampledData", "Narrative", "Resource", "Meta");
   }
 
   private boolean isExempt(ElementDefinition element, ElementDefinition child) {
@@ -365,8 +357,8 @@ public class QuestionnaireBuilder {
         ag.setText(group.getText());
       }
 
-      if (!Utilities.noString(element.getComments())) 
-        ToolingExtensions.addFlyOver(group, element.getDefinition()+" "+element.getComments());
+      if (!Utilities.noString(element.getComment())) 
+        ToolingExtensions.addFlyOver(group, element.getDefinition()+" "+element.getComment());
       else
         ToolingExtensions.addFlyOver(group, element.getDefinition());
 
@@ -602,7 +594,6 @@ public class QuestionnaireBuilder {
     case INTEGER: if (value instanceof IntegerType) return (Type) value;
     case DATE: if (value instanceof DateType) return (Type) value;
     case DATETIME: if (value instanceof DateTimeType) return (Type) value;
-    case INSTANT: if (value instanceof InstantType) return (Type) value;
     case TIME: if (value instanceof TimeType) return (Type) value;
     case STRING:
       if (value instanceof StringType) 
@@ -749,7 +740,7 @@ public class QuestionnaireBuilder {
         addExtensionQuestions(profile, group, element, path, t.getProfile(), answerGroups);
     } else if (t.getCode().equals("SampledData"))
       addSampledDataQuestions(group, element, path, answerGroups);
-    else if (!t.getCode().equals("Narrative") && !t.getCode().equals("Resource") && !t.getCode().equals("ElementDefinition")&& !t.getCode().equals("Meta")&& !t.getCode().equals("Signature"))
+    else if (!t.getCode().equals("Narrative") && !t.getCode().equals("Resource") && !t.getCode().equals("Meta") && !t.getCode().equals("Signature"))
       throw new NotImplementedException("Unhandled Data Type: "+t.getCode()+" on element "+element.getPath());
   }
 
@@ -831,7 +822,7 @@ public class QuestionnaireBuilder {
 
   private void addInstantQuestions(QuestionnaireItemComponent group, ElementDefinition element, String path, List<QuestionnaireResponse.QuestionnaireResponseItemComponent> answerGroups) throws FHIRException {
     ToolingExtensions.addFhirType(group, "instant");
-    addQuestion(group, QuestionnaireItemType.INSTANT, path, "value", group.getText(), answerGroups);
+    addQuestion(group, QuestionnaireItemType.DATETIME, path, "value", group.getText(), answerGroups);
 	  group.setText(null);
     for (QuestionnaireResponse.QuestionnaireResponseItemComponent ag : answerGroups)
       ag.setText(null);

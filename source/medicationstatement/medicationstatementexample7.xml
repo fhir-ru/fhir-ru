@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This example where a patient reports is not taking now but will be taking in future  -->
 <MedicationStatement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationstatement.xsd"
- xmlns="http://hl7.org/fhir">
+  xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationstatement.xsd"
+  xmlns="http://hl7.org/fhir">
   <id value="example007"/>
   <contained>
     <Medication>
@@ -15,7 +15,6 @@
         </coding>
       </code>
       <isBrand value="false"/>
-      <product>
         <form>
           <coding>
             <system value="http://snomed.info/sct"/>
@@ -23,24 +22,24 @@
             <display value="Nasal Spray"/>
           </coding>
         </form>
-      </product>
+      
     </Medication>
   </contained>
   <status value="intended" />
   <medicationReference> <!-- Linked to a RESOURCE Medication -->
     <reference value="#med0315"/>
   </medicationReference>
-  <subject>
-    <reference value="Patient/pat1"/>
-    <display value="Donald Duck"/> 
-  </subject>
   <informationSource>
     <reference value="Patient/pat1"/>
     <display value="Donald Duck"/> 
   </informationSource>
-  <dateAsserted value="2015-02-22"/>
-  <notTaken value="y"/>
+  <subject>
+    <reference value="Patient/pat1"/>
+    <display value="Donald Duck"/> 
+  </subject>
+  <taken value="y"/>
   <note>
     <text value="patient plans to start using for seasonal allergies in the Spring when pollen is in the air"/>
   </note>
 </MedicationStatement>
+

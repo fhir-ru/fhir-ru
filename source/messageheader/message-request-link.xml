@@ -16,29 +16,26 @@
            
           </div>
         </text>
-        <timestamp value="2015-07-14T11:15:33+10:00"/>
         <event>
           <system value="http://hl7.org/fhir/message-events"/>
           <code value="patient-link"/>
-        </event>
+        </event>    
+        <timestamp value="2015-07-14T11:15:33+10:00"/>
         <source>
           <endpoint value="http://example.org/clients/ehr-lite"/>
         </source>
-        <destination>
-          <endpoint value="http://acme.com/ehr/fhir"/>
-        </destination>
         <responsible>
           <reference value="http://acme.com/ehr/fhir/Practitioner/2323-33-4"/>
         </responsible>
       <!--  this message is posted to http://acme.com/ehr/fhir, 
              with an event 'link' to link 2 patient records, and nominates
              2 patients on the server  -->
-        <data>
+        <focus>
           <reference value="http://acme.com/ehr/fhir/Patient/pat1"/>
-        </data>
-        <data>
+        </focus>
+        <focus>
           <reference value="http://acme.com/ehr/fhir/Patient/pat12"/>
-        </data>
+        </focus>
       </MessageHeader>
     </resource>
   </entry>
@@ -77,7 +74,7 @@
           <relationship>
             <coding>
               <system value="http://hl7.org/fhir/patient-contact-relationship"/>
-              <code value="owner"/>
+              <code value="E"/>
             </coding>
           </relationship>
           <organization>

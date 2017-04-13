@@ -4,17 +4,14 @@
   <id value="care-plan-activity-category"/>
   <meta>
     <lastUpdated value="2015-08-30T17:04:04.676-06:00"/>
-    <profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
+    <profile value="http://hl7.org/fhir/StructureDefinition/shareablevalueset"/>
   </meta>
   <url value="http://hl7.org/fhir/ValueSet/care-plan-activity-category"/>
-	<identifier>
-    <system value="urn:ietf:rfc:3986"/>
-		<value value="urn:oid:2.16.840.1.113883.4.642.2.63"/>
-	</identifier>
   <version value="1.0.0"/>
   <name value="CarePlanActivityCategory"/>
   <status value="draft"/>
   <experimental value="false"/>
+  <date value="2015-08-30T17:04:04-06:00"/>
   <publisher value="HL7 (FHIR Project)"/>
   <contact>
     <telecom>
@@ -26,7 +23,6 @@
       <value value="fhir@lists.hl7.org"/>
     </telecom>
   </contact>
-  <date value="2015-08-30T17:04:04-06:00"/>
   <description value="High-level categorization of the type of activity in a care plan."/>
   <compose>
     <include>

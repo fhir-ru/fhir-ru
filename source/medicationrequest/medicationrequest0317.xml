@@ -21,23 +21,24 @@
         <value value="12345689"/>
     </identifier>
     <status value="completed"/>
-    <stage>
-        <coding>
-            <code value="original-order"/>
-        </coding>
-    </stage>
+    <intent value="order"></intent>
     <medicationReference>
         <reference value="#med0303"/>
     </medicationReference>
-    <patient>
+    <subject>
         <!-- Linked to the resource patient who needs the medication -->
         <reference value="Patient/pat1"/>
         <display value="Donald Duck"/>
-    </patient>
-    <dateWritten value="2015-01-15"/>
+    </subject>
+    <authoredOn value="2015-01-15"/>
     <requester>
-        <reference value="Practitioner/f007"/>
-        <display value="Patrick Pump"/>
+        <agent>
+            <reference value="Practitioner/f007"/>
+            <display value="Patrick Pump"/>
+        </agent>
+        <onBehalfOf>
+            <reference value="Organization/f002"/>
+        </onBehalfOf>
     </requester>
     <reasonCode>
         <coding>
@@ -49,12 +50,12 @@
     <dosageInstruction>
         <sequence value="1"/>
         <text value="Rapid daily-dose escalation, until tolerated, from 3 mg/d, and then 10 mg/d, to the recommended maintenance dose of 30 mg IV over 120 min, 3 times per wk on alternate days for up to 12 wk"/>
-        <additionalInstructions>
+        <additionalInstruction>
             <text value="Rapidly increase dose until tolerated"></text>
-        </additionalInstructions>
-        <additionalInstructions>
+        </additionalInstruction>
+        <additionalInstruction>
             <text value="Administer on alternate days"/>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <duration value="12"/>
@@ -89,12 +90,12 @@
         <sequence value="2"/>
         <text
             value="Rapid daily-dose escalation, until tolerated, from 3 mg/d, and then 10 mg/d, to the recommended maintenance dose of 30 mg IV over 120 min, 3 times per wk on alternate days for up to 12 wk"/>
-        <additionalInstructions>
+        <additionalInstruction>
             <text value="Rapidly increase dose until tolerated"></text>
-        </additionalInstructions>
-        <additionalInstructions>
+        </additionalInstruction>
+        <additionalInstruction>
         <text value="Administer on alternate days"/>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <duration value="12"/>
@@ -129,12 +130,12 @@
         <sequence value="3"/>
         <text
             value="Rapid daily-dose escalation, until tolerated, from 3 mg/d, and then 10 mg/d, to the recommended maintenance dose of 30 mg IV over 120 min, 3 times per wk on alternate days for up to 12 wk"/>
-        <additionalInstructions>
+        <additionalInstruction>
             <text value="Rapidly increase dose until tolerated"></text>
-        </additionalInstructions>
-        <additionalInstructions>
+        </additionalInstruction>
+        <additionalInstruction>
         <text value="Administer on alternate days"/>
-        </additionalInstructions>
+        </additionalInstruction>
         <timing>
             <repeat>
                 <duration value="12"/>

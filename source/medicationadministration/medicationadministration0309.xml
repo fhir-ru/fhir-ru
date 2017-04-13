@@ -6,7 +6,6 @@
   <contained><Medication>
     <id value="med0318"/>
     <isBrand value="false"/>
-    <product>
       <form>
         <coding>
           <system value="http://snomed.info/sct"/>
@@ -41,11 +40,8 @@
           </coding>
         </itemCodeableConcept>
       </ingredient>
-      <batch>
-        <lotNumber value="123455"/>
-        <expirationDate value="2016-07-09"/>
-      </batch>
-    </product>
+      
+    
     <package>
       <container>
         <coding>
@@ -54,6 +50,10 @@
           <display value="Intravenous Fluid container, single-use"/>
         </coding>
       </container>
+      <batch>
+        <lotNumber value="123455"/>
+        <expirationDate value="2016-07-09"/>
+      </batch>
     </package>
   </Medication>
   </contained>
@@ -61,17 +61,19 @@
   <medicationReference>
     <reference value="#med0318"/>
   </medicationReference>
- <patient>
+ <subject>
    <reference value="Patient/pat1"/>
    <display value="Donald Duck"/> 
-  </patient>
+  </subject>
  <effectivePeriod>
   <start value="2015-01-15T22:03:00+01:00"/>
    <end value="2015-01-16T02:03:00+01:00"/>
 </effectivePeriod>
   <performer>
-    <reference value="Practitioner/f007"/>
-    <display value="Patrick Pump"/>
+    <actor>
+      <reference value="Practitioner/f007"/>
+      <display value="Patrick Pump"/>
+    </actor>
   </performer>
   <prescription>
     <reference value="MedicationRequest/medrx0323"/>

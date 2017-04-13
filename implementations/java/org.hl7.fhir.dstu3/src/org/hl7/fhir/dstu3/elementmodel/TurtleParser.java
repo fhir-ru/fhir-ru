@@ -11,8 +11,6 @@ import org.hl7.fhir.dstu3.context.IWorkerContext;
 import org.hl7.fhir.dstu3.elementmodel.Element.SpecialElement;
 import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
 import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
 import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.utils.formats.Turtle;
 import org.hl7.fhir.dstu3.utils.formats.Turtle.Complex;
@@ -27,13 +25,16 @@ import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueType;
 
 
 public class TurtleParser extends ParserBase {
 
   private String base;
-  
+
   public static String FHIR_URI_BASE = "http://hl7.org/fhir/";
+  public static String FHIR_VERSION_BASE = "http://build.fhir.org/";
 
   public TurtleParser(IWorkerContext context) {
     super(context);
@@ -268,26 +269,32 @@ public class TurtleParser extends ParserBase {
 		ttl.commit(stream, false);
   }
 
+
+
   public void compose(Element e, Turtle ttl, String base) throws Exception {
     ttl.prefix("fhir", FHIR_URI_BASE);
-		ttl.prefix("rdfs", "http://www.w3.org/2000/01/rdf-schema#");
-		ttl.prefix("owl", "http://www.w3.org/2002/07/owl#");
+    ttl.prefix("rdfs", "http://www.w3.org/2000/01/rdf-schema#");
+    ttl.prefix("owl", "http://www.w3.org/2002/07/owl#");
     ttl.prefix("xsd", "http://www.w3.org/2001/XMLSchema#");
-		
-		Section section = ttl.section("resource");
-		Subject subject;
-		String id = e.getChildValue("id");
-    if (base == null || id == null)
-		  subject = section.triple("", "a", "fhir:"+e.getType());
-    else if (base.endsWith("#"))
-      subject = section.triple("<" + base + e.getType() + "-" + id + ">", "a", "fhir:" + e.getType());
-    else
-      subject = section.triple("<" + Utilities.pathReverse(base, e.getType(), id) + ">", "a", "fhir:" + e.getType());
+
+
+    Section section = ttl.section("resource");
+    String subjId = genSubjectId(e);
+
+    String ontologyId = subjId.replace(">", ".ttl>");
+    Section ontology = ttl.section("ontology header");
+    ontology.triple(ontologyId, "a", "owl:Ontology");
+    ontology.triple(ontologyId, "owl:imports", "fhir:fhir.ttl");
+    if(ontologyId.startsWith("<" + FHIR_URI_BASE))
+      ontology.triple(ontologyId, "owl:versionIRI", ontologyId.replace(FHIR_URI_BASE, FHIR_VERSION_BASE));
+
+    Subject subject = section.triple(subjId, "a", "fhir:" + e.getType());
 		subject.linkedPredicate("fhir:nodeRole", "fhir:treeRoot", linkResolver == null ? null : linkResolver.resolvePage("rdf.html#tree-root"));
 
 		for (Element child : e.getChildren()) {
 			composeElement(section, subject, child, null);
 		}
+
   }
   
   protected String getURIType(String uri) {
@@ -312,7 +319,7 @@ public class TurtleParser extends ParserBase {
       t.linkedPredicate("fhir:link", refURI, linkResolver == null ? null : linkResolver.resolvePage("rdf.html#reference"));
   }
   
-	protected void decorateCoding(Complex t, Element coding) {
+	protected void decorateCoding(Complex t, Element coding, Section section) {
 		String system = coding.getChildValue("system");
 		String code = coding.getChildValue("code");
 		
@@ -320,12 +327,22 @@ public class TurtleParser extends ParserBase {
 			return;
 		if ("http://snomed.info/sct".equals(system)) {
 			t.prefix("sct", "http://snomed.info/id/");
-			t.linkedPredicate("fhir:concept", "sct:"+urlescape(code), linkResolver == null ? null : linkResolver.resolvePage("rdf.html#concept"));
-		} else if ("http://loinc.org".equals(system)) {
+			t.linkedPredicate("a", "sct:" + urlescape(code), null);
+    } else if ("http://loinc.org".equals(system)) {
 			t.prefix("loinc", "http://loinc.org/owl#");
-			t.linkedPredicate("fhir:concept", "loinc:"+urlescape(code), linkResolver == null ? null : linkResolver.resolvePage("rdf.html#concept"));
+			t.linkedPredicate("a", "loinc:"+urlescape(code).toUpperCase(), null);
 		}  
 	}
+
+  private String genSubjectId(Element e) {
+    String id = e.getChildValue("id");
+    if (base == null || id == null)
+      return "";
+    else if (base.endsWith("#"))
+      return "<" + base + e.getType() + "-" + id + ">";
+    else
+      return "<" + Utilities.pathReverse(base, e.getType(), id) + ">";
+  }
 
 	private String urlescape(String s) {
 	  StringBuilder b = new StringBuilder();
@@ -339,8 +356,9 @@ public class TurtleParser extends ParserBase {
   }
 
   private void composeElement(Section section, Complex ctxt, Element element, Element parent) {
-    String en = "Extension".equals(element.getType())?
-            (element.getProperty().getDefinition().getIsModifier()? "modifierExtension" : "extension") : getFormalName(element);
+//    "Extension".equals(element.getType())?
+//            (element.getProperty().getDefinition().getIsModifier()? "modifierExtension" : "extension") ; 
+    String en = getFormalName(element);
 
 	  Complex t;
 	  if (element.getSpecial() == SpecialElement.BUNDLE_ENTRY && parent != null && parent.getNamedChildValue("fullUrl") != null) {
@@ -354,11 +372,11 @@ public class TurtleParser extends ParserBase {
       t.linkedPredicate("a", "fhir:"+element.fhirType(), linkResolver == null ? null : linkResolver.resolveType(element.fhirType()));
 	  if (element.hasValue())
 	  	t.linkedPredicate("fhir:value", ttlLiteral(element.getValue(), element.getType()), linkResolver == null ? null : linkResolver.resolveType(element.getType()));
-	  if (element.getProperty().isList())
+	  if (element.getProperty().isList() && (!element.isResource() || element.getSpecial() == SpecialElement.CONTAINED))
 	  	t.linkedPredicate("fhir:index", Integer.toString(element.getIndex()), linkResolver == null ? null : linkResolver.resolvePage("rdf.html#index"));
 
 	  if ("Coding".equals(element.getType()))
-	  	decorateCoding(t, element);
+	  	decorateCoding(t, element, section);
     if ("Reference".equals(element.getType()))
       decorateReference(t, element);
 	  		
@@ -366,7 +384,7 @@ public class TurtleParser extends ParserBase {
       String refURI = getReferenceURI(element.getChildValue("reference"));
       if (refURI != null) {
         String uriType = getURIType(refURI);
-        if(uriType != null)
+        if(uriType != null && !section.hasSubject(refURI))
           section.triple(refURI, "a", "fhir:" + uriType);
       }
     }
@@ -394,19 +412,19 @@ public class TurtleParser extends ParserBase {
       en = element.getElementProperty().getDefinition().getPath();
     else // CONTAINED
       en = "DomainResource.contained";
-    
-    if (en == null) 
+
+    if (en == null)
       en = element.getProperty().getDefinition().getPath();
-		boolean doType = false;
-			if (en.endsWith("[x]")) {
-				en = en.substring(0, en.length()-3);
-				doType = true;				
-			}
-	   if (doType || (element.getProperty().getDefinition().getType().size() > 1 && !allReference(element.getProperty().getDefinition().getType())))
-	     en = en + Utilities.capitalize(element.getType());
+    boolean doType = false;
+      if (en.endsWith("[x]")) {
+        en = en.substring(0, en.length()-3);
+        doType = true;
+      }
+     if (doType || (element.getProperty().getDefinition().getType().size() > 1 && !allReference(element.getProperty().getDefinition().getType())))
+       en = en + Utilities.capitalize(element.getType());
     return en;
   }
-	
+
 	private boolean allReference(List<TypeRefComponent> types) {
 	  for (TypeRefComponent t : types) {
 	    if (!t.getCode().equals("Reference"))
@@ -420,7 +438,7 @@ public class TurtleParser extends ParserBase {
 	  if (type.equals("boolean"))
 	    xst = "^^xsd:boolean";
     else if (type.equals("integer"))
-      xst = "^^xsd:int";
+      xst = "^^xsd:integer";
     else if (type.equals("unsignedInt"))
       xst = "^^xsd:nonNegativeInteger";
     else if (type.equals("positiveInt"))

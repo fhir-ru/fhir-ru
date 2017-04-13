@@ -218,11 +218,11 @@
     </Goal>
   </contained>
   <status value="active"/>
+  <intent value="plan"/>
   <subject>
     <reference value="Patient/1"/>
     <display value="Eve Everywoman"/>
   </subject>
-  <modified value="2012-09-10"/>
   <addresses>
     <!-- The concern points to the contained Condition. Other options are to point to a 'real' Condition resource-->
     <reference value="#p1"/>

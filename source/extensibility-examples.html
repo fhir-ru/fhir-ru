@@ -15,10 +15,10 @@
 <%extheader examples%>
 
 <h2>Extensibility Examples</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="resource.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>
-In order to use an extension, there is a three step process:
+In order to use an extension, there is a three-step process:
 </p>
 <ol>
   <li>Define the extension</li>
@@ -33,23 +33,23 @@ This page contains examples of how this process executes.
 <h3>Patient Consent for Record Sharing</h3>
 
 <p>
-The basic patient resource contains no information relating to patient 
-consent, and/or the policy under which the patient consents to their registration 
-details. A social web provider of personal healthcare record (PHR) services 
-might be obliged to keep track of the particular policy under which 
+The basic patient resource contains no information relating to patient
+consent, and/or the policy under which the patient consents to their registration
+details. A social web provider of personal healthcare record (PHR) services
+might be obliged to keep track of the particular policy under which
 a patient has created their relationship with the PHR provider, and share
-this with their participants via their FHIR API. If they wish, they can 
+this with their participants via their FHIR API. If they wish, they can
 extend the patient resource to represent the patient's participation
 agreement. Note that other approaches to this problem are possible, but
 it suffices to demonstrate the extension process.
 </p>
 <p>
 For the purposes of this example, we assume that the patient agrees to
-a participation policy as part of their sign up, and that as the provider 
+a participation policy as part of their sign up, and that as the provider
 has to change their policy, they ask patients to agree to new participation
 details. Each participation agreement has a URI by which it is identified,
 and the patient resource will carry this URI for each policy agreement that
-the patient has agreed to. 
+the patient has agreed to.
 </p>
 <h4>Define the Extension</h4>
 <p>
@@ -61,7 +61,7 @@ extension</a>:
  <tr><td>Context</td><td>This extension is used in the patient resource</td></tr>
  <tr><td>Short Defn</td><td>Agreed agreement/policy</td></tr>
  <tr><td>Definition</td><td>A URI that identifies a participation agreement/policy to which the patient has agreed</td></tr>
- <tr><td>Comments</td><td>URI is a literal reference to agreement text (html)</td></tr>
+ <tr><td>Comment</td><td>URI is a literal reference to agreement text (html)</td></tr>
  <tr><td>Cardinality</td><td>1..* (patient cannot participate without at least one agreement)</td></tr>
  <tr><td>Type</td><td>uri</td></tr>
  <tr><td>XPaths</td><td>no Invariants</td></tr>
@@ -90,10 +90,10 @@ From this table, we can build a formal extension definition. In this case, it lo
     &lt;element>
       &lt;path value="Extension"/>
       &lt;short value="Agreed agreement/policy" /&gt;
-      &lt;definition value="A URI that identifies a participation agreement/policy 
+      &lt;definition value="A URI that identifies a participation agreement/policy
         to which the patient has agreed" /&gt;
-      &lt;comments value="URI is a literal reference to agreement text (html). 
-        Systems SHALL conform to the policies as indicated. 
+      &lt;comment value="URI is a literal reference to agreement text (html).
+        Systems SHALL conform to the policies as indicated.
         For further information, see the partnership agreement..." /&gt;
       &lt;mustSupport value="true" /&gt;
       &lt;isModifier value="false" /&gt;
@@ -112,24 +112,24 @@ From this table, we can build a formal extension definition. In this case, it lo
 &lt;/StructureDefinition>
 </pre>
 <p>
-Note that usually you would build the actual profile using some tool. This example was built by hand for this example.
+Note that usually one would build the actual profile using a tool. This example was built by hand for this example.
 </p>
 
 <h4>Register the Extension</h4>
 <p>
 This means the profile shown above that defines the extension is placed on the web somewhere.
-By preference, it will be hosted in a FHIR Profile endpoint, and the best location of all 
-is the HL7 Profile registry (yet to be implemented). 
+By preference, it will be hosted at a FHIR Profile endpoint, and the best location of all
+is the HL7 Profile registry (yet to be implemented).
 </p>
 <p>
-For this example, we assume that it has been uploaded to the PHR provider's own website at 
+For this example, we assume that it has been uploaded to the PHR provider's own website at
 http://example.org/phr/documents/fhir/extensions.
 </p>
 
 <h4>Use it in the instance</h4>
 <p>
 To use the extension in an instance, the extension is placed in the root of the resource.
-Note that the URL of the extension refers to the registered location, with the id of the extension as a 
+Note that the URL of the extension refers to the registered location, with the id of the extension as a
 fragment identifier.
 
 </p>
@@ -145,9 +145,9 @@ fragment identifier.
 <a name="sliceextensions"> </a>
 <h4>Using it in a Patient Profile</h4>
 <p>
-The profile definition above simply defines the extension "participation-agreement", and 
-says that it is used with patient. But the profile above doesn't say that the server 
-actually uses it. For the PHR provider to indicate that all the patients resources 
+The profile definition above simply defines the extension "participation-agreement", and
+says that it is used with patient. But the profile above doesn't say that the server
+actually uses it. For the PHR provider to indicate that all Patient resources
 will use this resource, a StructureDefinition on the patient resource is used:
 </p>
 
@@ -157,23 +157,26 @@ will use this resource, a StructureDefinition on the patient resource is used:
   &lt;!-- snip other metadata, narrative -->
   &lt;differential&gt;
 
-    &lt;!-- first, the patient root element 
-      - can be copy/paste from the base patient profile --&gt;    
+    &lt;!-- first, the patient root element
+      - can be copy/paste from the base patient profile --&gt;
     &lt;element&gt;
       &lt;path value=&quot;Patient&quot;/&gt;
       &lt;!-- snip definition --&gt;
     &lt;/element&gt;
-    
+
     &lt;!-- now, the general definition for extensions
-      - can be copy/paste from the base patient profile,
+      - can be copied/pasted from the base patient profile,
       with changes for slicing  --&gt;
     &lt;element&gt;
       &lt;path value=&quot;Patient.extension&quot;/&gt;
-      &lt;!-- we're going to slice the extension element, and 
+      &lt;!-- we're going to slice the extension element, and
         one of the extensions is one we have defined --&gt;
       &lt;slicing&gt;
         &lt;!-- extension is always sliced on url --&gt;
-        &lt;discriminator value=&quot;url&quot;/&gt; 
+        &lt;discriminator&gt;
+          &lt;type value=&quot;value&quot;/&gt;
+          &lt;path value=&quot;url&quot;/&gt;
+        &lt;/discriminator&gt;
         &lt;!-- we don't care what the order of any extensions is --&gt;
         &lt;ordered value=&quot;false&quot;/&gt;
         &lt;!-- Other extensions are allowed in addition to this one --&gt;
@@ -181,15 +184,15 @@ will use this resource, a StructureDefinition on the patient resource is used:
       &lt;/slicing&gt;
       &lt;!-- snip definition --&gt;
     &lt;/element&gt;
-    
-    &lt;!-- now, the slice that contains our extension --&gt;    
+
+    &lt;!-- now, the slice that contains our extension --&gt;
     &lt;element&gt;
       &lt;path value=&quot;Patient.extension&quot;/&gt;
       &lt;sliceName value=&quot;base-extension&quot;/&gt;
-      &lt;!-- clone information from the extension definition. 
-        duplicative, but this duplication makes it over all simpler --&gt;
+      &lt;!-- clone information from the extension definition.
+        duplicative, but this duplication makes it simpler overall --&gt;
       &lt;short value=&quot;Agreed agreement/policy&quot;/&gt;
-      &lt;definition value=&quot;A URI that identifies a participation agreement/policy 
+      &lt;definition value=&quot;A URI that identifies a participation agreement/policy
       to which the patient has agreed&quot;/&gt;
       &lt;!--  min has to be 1, since the extension itself has min = 1 --&gt;
       &lt;min value=&quot;1&quot;/&gt;
@@ -203,7 +206,7 @@ will use this resource, a StructureDefinition on the patient resource is used:
       &lt;/type&gt;
       &lt;isModifier value=&quot;false&quot;/&gt;
     &lt;/element&gt;
-    
+
   &lt;!-- snip the rest of the profile -->
 
   &lt;/differential&gt;
@@ -242,7 +245,7 @@ extension</a>:
  <tr><td>Context</td><td>This extension can be used anywhere a HumanName.part appears</td></tr>
  <tr><td>Short Defn</td><td>(one of the codes) LS | AC | NB | PR | HON | BR | AD | SP | MID | CL | IN</td></tr>
  <tr><td>Definition</td><td>A set of codes each of which specifies a certain subcategory of the name part in addition to the main name part type</td></tr>
- <tr><td>Comments</td><td>Used to indicate additional information about the name part and how it should be used</td></tr>
+ <tr><td>Comment</td><td>Used to indicate additional information about the name part and how it should be used</td></tr>
  <tr><td>Cardinality</td><td>0..* (this is always optional, but more than one can be used if required)</td></tr>
  <tr><td>Type</td><td>code</td></tr>
  <tr><td>XPaths</td><td>N/A</td></tr>
@@ -260,7 +263,7 @@ code. The type of "code" is only allowed if the profile itself defines the codes
 can be used. Here is a table of the codes (see the <a href="http://www.hl7.org/v3ballot/html/infrastructure/vocabulary/EntityNamePartQualifierR2.html">EntityNamePartQualifierR2</a> reference for the full definitions):
 </p>
 <table class="codes">
-<tr><td>LS</td><td>Legal status </td><td>For organizations a suffix...</td></tr>
+<tr><td>LS</td><td>Legal status </td><td>For organizations, a suffix...</td></tr>
 <tr><td>AC</td><td>Academic</td><td>Indicates that a prefix like "D...</td></tr>
 <tr><td>NB</td><td>Nobility</td><td>In Europe and Asia, there are s...</td></tr>
 <tr><td>PR</td><td>Professional</td><td>Primarily in the British Im...</td></tr>
@@ -269,12 +272,12 @@ can be used. Here is a table of the codes (see the <a href="http://www.hl7.org/v
 <tr><td>AD</td><td>Acquired</td><td>A name part a person acquired. ...</td></tr>
 <tr><td>SP</td><td>Spouse</td><td>The name assumed from the partner...</td></tr>
 <tr><td>MID</td><td>Middle Name</td><td>Indicates that the name par...</td></tr>
-<tr><td>CL</td><td>Call me</td><td>Callme is used to indicate which...</td></tr>
+<tr><td>CL</td><td>Call me</td><td>Call me is used to indicate which...</td></tr>
 <tr><td>IN</td><td>Initial</td><td>Indicates that a name part is ju...</td></tr>
 </table>
 
 <p>
-This is all then represented formally in a profile. Such profiles do not need to include constraint statements of resources; instead, they include just extension declarations
+This is all then represented formally in a profile. Such profiles do not need to include resource constraint statements; instead, they include just extension declarations
 and their associated bindings. In this case, the definition looks like this:
 </p>
 
@@ -299,7 +302,7 @@ and their associated bindings. In this case, the definition looks like this:
       &lt;short value="LS | AC | NB | PR | HON | BR | AD | SP | MID | CL | IN" /&gt;
       &lt;definition value="A set of codes each of which specifies a certain subcategory
           of the name part in addition to the main name part type" /&gt;
-      &lt;comments value="Used to indicate additional information about the
+      &lt;comment value="Used to indicate additional information about the
              name part and how it should be used" /&gt;
       &lt;mustSupport value="false" /&gt;
       &lt;isModifier value="false" /&gt;
@@ -330,7 +333,7 @@ and their associated bindings. In this case, the definition looks like this:
 
 </pre>
 <p>
-Note that usually you would build the actual profile using some tool. This example was built from a spreadsheet definition by the FHIR build tooling.
+Note that usually one would build the actual profile using a tool. This example was built from a spreadsheet definition by the FHIR build tooling.
 </p>
 <h4>Register the Extension</h4>
 <p>
@@ -340,7 +343,7 @@ This is the URL that will appear in the definition element when the extension is
 <h4>Use it in the instance</h4>
 <p>
 To use the extension in an instance, the extension is nested within the attribute that is extended.
-Note that the URL of the extension refers to the registered location, with the id of the extension as a 
+Note that the URL of the extension refers to the registered location, with the id of the extension as a
 fragment identifier.
 </p>
 <pre class="xml" fragment="HumanName">
@@ -354,14 +357,14 @@ fragment identifier.
 &lt;/name&gt;
 </pre>
 <p>
-This particular example is a Scandinavian mellannamn. See 
+This particular example is a Scandinavian mellannamn. See
 <a href="datatypes-examples.html">Datatypes examples for additional examples</a>.
 </p>
 
 <a name="complex"> </a>
 <h3>Complex Extension: Patient Clinical Trial</h3>
 <p>
-Defining complex extensions is a little different. They have the same meta data - context etc.,
+Defining complex extensions is a little different. They have the same metadata - context, etc. -
 but differ in the internal structure. As an example, consider enrolling a patient in a clinical
 trial. There are 3 data items to collect:
 </p>
@@ -369,19 +372,19 @@ trial. There are 3 data items to collect:
  <tr> <td><b>Code</b></td> <td><b>Name</b></td> <td><b>Cardinality</b></td> <td><b>Type</b></td>    <td><b>Content</b></td> </tr>
  <tr> <td>NCT</td>     <td>Clinical Trial number</td>   <td>1..1</td>           <td>string</td>         <td>The format for the US ClinicalTrials.gov registry number is "NCT" followed by an 8-digit number, e.g.: NCT00000419</td>            </tr>
  <tr> <td>period</td>      <td>trialPeriod</td>     <td>0..1</td>           <td>Period</td>         <td>The start and end times of the participation of this patient in the clinical trial</td>            </tr>
- <tr> <td>reason</td>      <td>reason enrolled</td> <td>0..1</td>           <td>CodableConcept</td> <td> indication or reason the patient is part of this trial</td>            </tr>
+ <tr> <td>reason</td>      <td>reason enrolled</td> <td>0..1</td>           <td>CodableConcept</td> <td> Indication or reason that the patient is part of this trial</td>            </tr>
 </table>
 
 <p>
-Like simple extensions, the first thing to do is to assign a URI to the 
+Like simple extensions, the first thing to do is to assign a URI to the
 extension. Since this one is part of the FHIR publication, it is assigned
 a URI where it will be published: http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial.
 </p>
 <p>
-Internally, in the extension, the cardinality of the value[x] element is set to 0, since it 
-will not (and cannot) be used. Then, the Extension.extension element is sliced by url, 
+Internally, in the extension, the cardinality of the value[x] element is set to 0 since it
+will not (and cannot) be used. The Extension.extension element is sliced by URL,
 and 3 slices are defined, each with a fixed relative URI which is the code from the table above.
-Here's the relevant parts of the definition of this extension:
+Tthe relevant parts of the definition of this extension are as follows:
 </p>
 <pre class="xml">
 &lt;StructureDefinition xmlns=&quot;http://hl7.org/fhir&quot;&gt;
@@ -399,12 +402,15 @@ Here's the relevant parts of the definition of this extension:
       &lt;path value=&quot;Extension&quot;/&gt;
       &lt;!-- etc.--&gt;
     &lt;/element&gt;
-    
+
     &lt;!-- set up the slicing --&gt;
     &lt;element&gt;
       &lt;path value=&quot;Extension.extension&quot;/&gt;
       &lt;slicing&gt;
-        &lt;discriminator value=&quot;url&quot;/&gt;
+        &lt;discriminator&gt;
+          &lt;type value=&quot;value&quot;/&gt;
+          &lt;path value=&quot;url&quot;/&gt;
+        &lt;/discriminator&gt;
         &lt;ordered value=&quot;true&quot;/&gt;
         &lt;rules value=&quot;openAtEnd&quot;/&gt;
       &lt;/slicing&gt;
@@ -542,23 +548,26 @@ This is the same as for a simple extension:
   &lt;!-- snip other metadata, narrative -->
   &lt;differential&gt;
 
-    &lt;!-- first, the patient root element 
-      - can be copy/paste from the base patient profile --&gt;    
+    &lt;!-- first, the patient root element
+      - can be copy/paste from the base patient profile --&gt;
     &lt;element&gt;
       &lt;path value=&quot;Patient&quot;/&gt;
       &lt;!-- snip definition --&gt;
     &lt;/element&gt;
-    
+
     &lt;!-- now, the general definition for extensions
       - can be copy/paste from the base patient profile,
       with changes for slicing  --&gt;
     &lt;element&gt;
       &lt;path value=&quot;Patient.extension&quot;/&gt;
-      &lt;!-- we're going to slice the extension element, and 
+      &lt;!-- we're going to slice the extension element, and
         one of the extensions is one we have defined --&gt;
       &lt;slicing&gt;
         &lt;!-- extension is always sliced on url --&gt;
-        &lt;discriminator value=&quot;url&quot;/&gt; 
+        &lt;discriminator&gt;
+          &lt;type value=&quot;value&quot;/&gt;
+          &lt;path value=&quot;url&quot;/&gt;
+        &lt;/discriminator&gt;
         &lt;!-- we don't care what the order of any extensions is --&gt;
         &lt;ordered value=&quot;false&quot;/&gt;
         &lt;!-- Other extensions are allowed in addition to this one --&gt;
@@ -566,8 +575,8 @@ This is the same as for a simple extension:
       &lt;/slicing&gt;
       &lt;!-- snip definition --&gt;
     &lt;/element&gt;
-    
-    &lt;!-- now, the slice that contains our extension --&gt;    
+
+    &lt;!-- now, the slice that contains our extension --&gt;
     &lt;element&gt;
       &lt;max value=&quot;1&quot;/&gt;
       &lt;type&gt;
@@ -578,7 +587,7 @@ This is the same as for a simple extension:
         &lt;profile value=&quot;http://hl7.org/fhir/StructureDefinition/patient-clinicalTrial&quot;/&gt;
       &lt;/type&gt;
     &lt;/element&gt;
-    
+
   &lt;!-- snip the rest of the profile -->
 
   &lt;/differential&gt;

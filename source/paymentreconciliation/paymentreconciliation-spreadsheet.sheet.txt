@@ -31,6 +31,7 @@
   Type = DomainResource
   Short Name = PaymentReconciliation resource
   Definition = This resource provides payment details and claim references supporting a bulk payment.
+  Workflow Mapping = Event
   w5 = financial.payment
 
  -- Row 2 -----------------------------------
@@ -42,6 +43,7 @@
   Type = Identifier
   Short Name = Business Identifier
   Definition = The Response business identifier
+  Workflow Mapping = Event.identifier
   w5 = id
 
  -- Row 4 -----------------------------------
@@ -72,7 +74,8 @@
   Binding = PaymentReconciliationStatus
   Short Name = active | cancelled | draft | entered-in-error
   Definition = The status of the resource instance.
-  To Do = The category of claim this is
+  Comments = This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid
+  Workflow Mapping = Event.status
   w5 = status
 
  -- Row 7 -----------------------------------
@@ -89,6 +92,7 @@
   Type = dateTime
   Short Name = Creation date
   Definition = The date when the enclosed suite of services were performed or completed
+  Workflow Mapping = Event.occurrence[x]
   w5 = when.recorded
 
  -- Row 9 -----------------------------------
@@ -97,6 +101,7 @@
   Type = Reference(Organization)
   Short Name = Insurer
   Definition = The Insurer who produced this adjudicated response.
+  Workflow Mapping = Event.performer.onBehalfOf
   w5 = who.source
 
  -- Row 10 -----------------------------------
@@ -122,6 +127,7 @@
   Type = string
   Short Name = Disposition Message
   Definition = A description of the status of the adjudication.
+  Workflow Mapping = Event.note
 
  -- Row 13 -----------------------------------
   Element = PaymentReconciliation.requestProvider
@@ -146,7 +152,7 @@
   Card. = 0..*
   UML = right
   Type = =Details
-  Short Name = Details
+  Short Name = List of settlements
   Definition = List of individual settlement amounts and the corresponding transaction.
 
  -- Row 17 -----------------------------------
@@ -175,14 +181,14 @@
   Element = PaymentReconciliation.detail.submitter
   Card. = 0..1
   Type = Reference(Organization)
-  Short Name = Submitter
-  Definition = The Organization which submitted the invoice or financial transaction.
+  Short Name = Organization which submitted the claim
+  Definition = The Organization which submitted the claim or financial transaction.
 
  -- Row 21 -----------------------------------
   Element = PaymentReconciliation.detail.payee
   Card. = 0..1
   Type = Reference(Organization)
-  Short Name = Payee
+  Short Name = Organization which is receiving the payment
   Definition = The organization which is receiving the payment.
   w5 = who.focus
 
@@ -197,7 +203,7 @@
   Element = PaymentReconciliation.detail.amount
   Card. = 0..1
   Type = Money
-  Short Name = Detail amount
+  Short Name = Amount being paid
   Definition = Amount paid for this detail.
 
  -- Row 24 -----------------------------------
@@ -231,15 +237,15 @@
   Element = !Notes
 
  -- Row 29 -----------------------------------
-  Element = PaymentReconciliation.note
+  Element = PaymentReconciliation.processNote
   Card. = 0..*
   UML = left
   Type = =Notes
-  Short Name = Note text
+  Short Name = Processing comments
   Definition = Suite of notes
 
  -- Row 30 -----------------------------------
-  Element = PaymentReconciliation.note.type
+  Element = PaymentReconciliation.processNote.type
   Card. = 0..1
   Type = CodeableConcept
   Binding = NoteType
@@ -247,10 +253,10 @@
   Definition = The note purpose: Print/Display.
 
  -- Row 31 -----------------------------------
-  Element = PaymentReconciliation.note.text
+  Element = PaymentReconciliation.processNote.text
   Card. = 0..1
   Type = string
-  Short Name = Notes text
+  Short Name = Comment on the processing
   Definition = The note text.
   CDAnet v4 Mapping = G32
 

@@ -75,7 +75,7 @@ Properties are defined using the following elements:
  <tr>
   <td>description</td>
   <td>optional <a href="datatypes.html#code">string</a></td>
-  <td>A description of the property- why it is defined, and how it's value might be used</td>
+  <td>A description of the property- why it is defined, and how its value might be used</td>
  </tr>
  <tr>
   <td>type</td>
@@ -110,7 +110,7 @@ as:
 There is wide variation in the life cycles supported by the different code systems, the words
 they use to describe the various status values they use, and some code systems have additional 
 status values. HL7 uses Active and Retired. In addition to these status codes, concepts may be 
-also be labelled as "Abstract' (not to be used in some circumstances), and have dates associated 
+also be labeled as "Abstract' (not to be used in some circumstances), and have dates associated 
 with their retirement or deprecation. All this information is represented as properties of 
 the concepts. In order to assist with consistency between code systems, the following 
 basic property URIs are defined:
@@ -126,8 +126,8 @@ basic property URIs are defined:
    </td></tr>
  <tr><td>http://hl7.org/fhir/concept-properties#retirementDate</td><td>Date Concept was retired</td></tr>
  <tr><td>http://hl7.org/fhir/concept-properties#deprecationDate</td><td>Date Concept was deprecated</td></tr>
- <tr><td>http://hl7.org/fhir/concept-properties#parent</td><td>An immediate parent of the concept in the heirarchy</td></tr>
- <tr><td>http://hl7.org/fhir/concept-properties#child</td><td>An immediate child of the concept in the heirarchy</td></tr>
+ <tr><td>http://hl7.org/fhir/concept-properties#parent</td><td>An immediate parent of the concept in the hierarchy</td></tr>
+ <tr><td>http://hl7.org/fhir/concept-properties#child</td><td>An immediate child of the concept in the hierarchy</td></tr>
  <tr><td>http://hl7.org/fhir/concept-properties#notSelectable</td><td>This concept is a grouping concept and not intended to be used in 
    the normal use of the code system (though my be used for filters etc). This is also known as 'Abstract'</td></tr>
 </table> 
@@ -143,10 +143,10 @@ then the <a href="extension-codesystem-subsumes.html">subsumes extension</a> mus
 <h3>Subsumption Testing</h3>
 <p>
 The words 'subsume', 'subsumes', 'subsumed' and 'subsumption' are defined in terms of the CodeSystem hierarchy (i.e. <a href="codesystem-definitions.html#CodeSystem.hierarchyMeaning">CodeSystem.hierarchyMeaning</a>). 
-Concept A is considered to be subsumed by Concept B if it comes under Concept B in the heirarchy, or if subsumption is declared explicitly using the <a href="extension-codesystem-subsumes.html">subsumes extension</a>). 
+Concept A is considered to be subsumed by Concept B if it comes under Concept B in the hierarchy, or if subsumption is declared explicitly using the <a href="extension-codesystem-subsumes.html">subsumes extension</a>). 
 </p>
 <p>
-Where a CodeSystem does not declare it's hierarchy meaning directly, then 
+Where a CodeSystem does not declare its hierarchy meaning directly, then 
 the code system documentation must be consulted manually to determinw how subsumption is determined. If there is no definition, none of the 
 subsumption based features can be used with the code system.
 </p>
@@ -200,9 +200,10 @@ code, display name and code system.  For example, a code system of drug informat
 which contains information about the content of the medication (e.g., RxNorm), or a set of  
 observation types, that contain methods, units, etc. (e.g., LOINC).  
 In FHIR, these are handled by splitting the concept into two distinct parts - the 
-<b>ValueSet</b> resource is used to manage the codes, display names and relationships.  
-A separate "detail" resource (e.g., <a href="medication.html">Medication</a> for 
-drugs, <a href="dataelement.html">DataElement</a> for observation types, 
+Terminology, (<b>Code System</b> &amp; <code>ValueSet</code> resources) is used to 
+manage the codes, display names and relationships.  A separate "detail" 
+resource (e.g., <a href="medication.html">Medication</a> for drugs, 
+<a href="dataelement.html">DataElement</a> for observation types, 
 <a href="location.html">Location</a> for location, etc.) is used to convey detailed 
 information (dose form &amp; strength, allowed data type or permitted values, address &amp;
 hours of operation, etc.).  One "detail" resource instance is created for each code.
@@ -222,7 +223,7 @@ resources, independent retrieval and update is possible.</li>
 similar information in circumstances where the code may be unknown, unavailable or 
 occasionally non-existent (e.g., custom compounds, non-registered locations).  Having 
 a distinct resource supports these capabilities, which would not be possible using 
-<b>ValueSet</b>.</li>
+<code>CodeSystem</code>/<code>ValueSet</code>.</li>
 </ul>
 <p>
 Note that this division in FHIR does not imply that a similar division is required in 
@@ -231,7 +232,7 @@ systems may choose to only expose or maintain one aspect of such information typ
 only the discrete resource instances or only the value set).
 </p>
 <p>
-The linkage between the "detail" resource and the <b>ValueSet</b> is accomplished via the 
+The linkage between the "detail" resource and the Terminology resources is accomplished via the 
 <code>code</code> element (or equivalent) on the detail resource.  As well, the "name" or 
 "title" on the detail resource generally corresponds with the display name on the matching 
 code.  Most detail resources will also have an "identifier" element.  This <i>can</i> be

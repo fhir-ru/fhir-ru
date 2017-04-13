@@ -9,12 +9,12 @@
     "output": "output",
     "qa": "qa",
     "txCache" : "txCache",
-    "specification": "http://build.fhir.org/"
+    "specification": "http://hl7.org/fhir/2017Jan"
   },
   "dependencyList": [{
     "name": "USCore",
-    "location": "hl7.org/fhir/us/core",
-    "source": "C:\\work\\org.hl7.fhir.us\\core\\output"
+    "location": "http://hl7.org/fhir/us/core/2017Jan",
+    "source": "us-core-output"
   }],
   "defaults": {
     "Any": {

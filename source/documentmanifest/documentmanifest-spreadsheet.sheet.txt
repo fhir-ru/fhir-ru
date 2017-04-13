@@ -15,8 +15,8 @@
  -- Row 1 -----------------------------------
   Element = DocumentManifest
   Type = DomainResource
-  Short Name = A manifest that defines a set of documents
-  Definition = A manifest that defines a set of documents.
+  Short Name = A list that defines a set of documents
+  Definition = A collection of documents compiled for a purpose together with metadata that applies to the collection.
   RIM Mapping = Act[classCode=FOLDER, moodCode=EVN]
   w5 = infrastructure.documents
 
@@ -42,27 +42,19 @@
   w5 = id
 
  -- Row 4 -----------------------------------
-  Element = DocumentManifest.subject
-  Card. = 0..1
-  Type = Reference(Patient|Practitioner|Group|Device)
-  Short Name = The subject of the set of documents
-  Definition = Who or what the set of documents is about. The documents can be about a person, (patient or healthcare practitioner), a device (i.e. machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure). If the documents cross more than one subject, then more than one subject is allowed here (unusual use case)
-  RIM Mapping = .participation[typeCode=SBJ].role
-  XDS Mapping = SubmissionSet.patientId
-  w5 = who.focus
+  Element = DocumentManifest.status
+  Card. = 1..1
+  Is Modifier = Y
+  Type = code
+  Binding = DocumentReferenceStatus
+  Short Name = current | superseded | entered-in-error
+  Definition = The status of this document manifest
+  Comments = This element is labeled as a modifier because the status contains the codes that mark the manifest as not currently valid
+  RIM Mapping = .statusCode
+  XDS Mapping = SubmissionSet status
+  w5 = status
 
  -- Row 5 -----------------------------------
-  Element = DocumentManifest.recipient
-  Card. = 0..*
-  Type = Reference(Patient|Practitioner|RelatedPerson|Organization)
-  Short Name = Intended to get notified about this set of documents
-  Definition = A patient, practitioner, or organization for which this set of documents is intended
-  Comments = How the recipient receives the document set or is notified of it is up to the implementation. This element is just a statement of intent. If the recipient is a person, and it is not known whether the person is a patient or a practitioner, RelatedPerson would be the default choice
-  RIM Mapping = .participation[typeCode=IRCP].role
-  XDS Mapping = SubmissionSet.intendedRecipient
-  w5 = who.cause
-
- -- Row 6 -----------------------------------
   Element = DocumentManifest.type
   Card. = 0..1
   Type = CodeableConcept
@@ -73,18 +65,17 @@
   XDS Mapping = SubmissionSet.contentTypeCode
   w5 = class
 
- -- Row 7 -----------------------------------
-  Element = DocumentManifest.author
-  Card. = 0..*
-  Type = Reference(Practitioner|Organization|Device|Patient|RelatedPerson)
-  Short Name = Who and/or what authored the manifest
-  Definition = Identifies who is responsible for creating the manifest, and adding  documents to it
-  Comments = Not necessarily who did the actual data entry (i.e. typist) or who was the source (informant)
-  RIM Mapping = .participation[typeCode=AUT].role
-  XDS Mapping = SubmissionSet.author
-  w5 = who.author
+ -- Row 6 -----------------------------------
+  Element = DocumentManifest.subject
+  Card. = 0..1
+  Type = Reference(Patient|Practitioner|Group|Device)
+  Short Name = The subject of the set of documents
+  Definition = Who or what the set of documents is about. The documents can be about a person, (patient or healthcare practitioner), a device (i.e. machine) or even a group of subjects (such as a document about a herd of farm animals, or a set of patients that share a common exposure). If the documents cross more than one subject, then more than one subject is allowed here (unusual use case)
+  RIM Mapping = .participation[typeCode=SBJ].role
+  XDS Mapping = SubmissionSet.patientId
+  w5 = who.focus
 
- -- Row 8 -----------------------------------
+ -- Row 7 -----------------------------------
   Element = DocumentManifest.created
   Card. = 0..1
   Type = dateTime
@@ -95,7 +86,29 @@
   XDS Mapping = SubmissionSet.submissionTime
   w5 = when.done
 
+ -- Row 8 -----------------------------------
+  Element = DocumentManifest.author
+  Card. = 0..*
+  Type = Reference(Practitioner|Organization|Device|Patient|RelatedPerson)
+  Short Name = Who and/or what authored the manifest
+  Definition = Identifies who is responsible for creating the manifest, and adding  documents to it
+  Comments = Not necessarily who did the actual data entry (i.e. typist) or who was the source (informant)
+  RIM Mapping = .participation[typeCode=AUT].role
+  XDS Mapping = SubmissionSet.author
+  w5 = who.author
+
  -- Row 9 -----------------------------------
+  Element = DocumentManifest.recipient
+  Card. = 0..*
+  Type = Reference(Patient|Practitioner|RelatedPerson|Organization)
+  Short Name = Intended to get notified about this set of documents
+  Definition = A patient, practitioner, or organization for which this set of documents is intended
+  Comments = How the recipient receives the document set or is notified of it is up to the implementation. This element is just a statement of intent. If the recipient is a person, and it is not known whether the person is a patient or a practitioner, RelatedPerson would be the default choice
+  RIM Mapping = .participation[typeCode=IRCP].role
+  XDS Mapping = SubmissionSet.intendedRecipient
+  w5 = who.cause
+
+ -- Row 10 -----------------------------------
   Element = DocumentManifest.source
   Card. = 0..1
   Type = uri
@@ -103,18 +116,6 @@
   Definition = Identifies the source system, application, or software that produced the document manifest
   RIM Mapping = .participation[typeCode=PFM].time
   XDS Mapping = SubmissionSet.sourceId
-
- -- Row 10 -----------------------------------
-  Element = DocumentManifest.status
-  Card. = 1..1
-  Is Modifier = Y
-  Type = code
-  Binding = DocumentReferenceStatus
-  Short Name = current | superseded | entered-in-error
-  Definition = The status of this document manifest
-  RIM Mapping = .statusCode
-  XDS Mapping = SubmissionSet status
-  w5 = status
 
  -- Row 11 -----------------------------------
   Element = !DocumentManifest.supersedes
@@ -189,7 +190,7 @@
   Card. = 0..1
   Type = Reference(Any)
   Short Name = Related Resource
-  Definition = Related Resource to this DocumentManifest. For example, Order, DiagnosticRequest,  Procedure, EligibilityRequest, etc.
+  Definition = Related Resource to this DocumentManifest. For example, Order, ProcedureRequest,  Procedure, EligibilityRequest, etc.
   Comments = If both identifier and ref elements are present they shall refer to the same thing.
 
 === Sheet Search =====================================
@@ -269,5 +270,11 @@
   Identity = 654789
   Description = Financial Supporting Documentation
   Filename = documentmanifest-fm-attachment.xml
+
+ -- Row 2 -----------------------------------
+  Name = XDS-Example
+  Identity = example
+  Description = XDS SubmissionSet example
+  Filename = documentmanifest-example.xml
 
 === Sheet Examples =====================================

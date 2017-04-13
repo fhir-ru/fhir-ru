@@ -19,8 +19,6 @@ import org.hl7.fhir.dstu2.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.dstu2.model.Enumerations.BindingStrength;
 import org.hl7.fhir.dstu2.model.Enumerations.ConformanceResourceStatus;
 import org.hl7.fhir.dstu2.model.IntegerType;
-import org.hl7.fhir.dstu2.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.dstu2.model.OperationOutcome.IssueType;
 import org.hl7.fhir.dstu2.model.PrimitiveType;
 import org.hl7.fhir.dstu2.model.Reference;
 import org.hl7.fhir.dstu2.model.StringType;
@@ -32,8 +30,10 @@ import org.hl7.fhir.dstu2.model.ValueSet.ConceptReferenceComponent;
 import org.hl7.fhir.dstu2.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.dstu2.model.ValueSet.ValueSetExpansionContainsComponent;
 import org.hl7.fhir.dstu2.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
-import org.hl7.fhir.dstu2.validation.ValidationMessage;
-import org.hl7.fhir.dstu2.validation.ValidationMessage.Source;
+import org.hl7.fhir.utilities.validation.ValidationMessage;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueType;
+import org.hl7.fhir.utilities.validation.ValidationMessage.Source;
 import org.hl7.fhir.exceptions.DefinitionException;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.Utilities;
@@ -828,7 +828,7 @@ public class ProfileComparer {
   private StructureDefinition resolveProfile(ElementDefinition ed, ProfileComparison outcome, String path, String url, String name) {
     StructureDefinition res = context.fetchResource(StructureDefinition.class, url);
     if (res == null) {
-      outcome.messages.add(new ValidationMessage(Source.ProfileComparer, IssueType.INFORMATIONAL, path, "Unable to resolve profile "+url+" in profile "+name, IssueSeverity.INFORMATION));
+      outcome.messages.add(new ValidationMessage(Source.ProfileComparer, IssueType.INFORMATIONAL, path, "Unable to resolve profile "+url+" in profile "+name, IssueSeverity.WARNING));
       status(ed, ProfileUtilities.STATUS_HINT);
     }
     return res;
@@ -985,7 +985,7 @@ public class ProfileComparer {
         if (Utilities.equals(r.getId(), l.getId()) || (Utilities.equals(r.getXpath(), l.getXpath()) && r.getSeverity() == l.getSeverity()))
           found = true;
       if (!found) {
-        outcome.messages.add(new ValidationMessage(Source.ProfileComparer, IssueType.STRUCTURE, path, "StructureDefinition "+outcome.leftName()+" has a constraint that is not found in "+outcome.rightName()+" and it is uncertain whether they are compatible ("+l.getXpath()+")", IssueSeverity.WARNING));
+        outcome.messages.add(new ValidationMessage(Source.ProfileComparer, IssueType.STRUCTURE, path, "StructureDefinition "+outcome.leftName()+" has a constraint that is not found in "+outcome.rightName()+" and it is uncertain whether they are compatible ("+l.getXpath()+")", IssueSeverity.INFORMATION));
         status(ed, ProfileUtilities.STATUS_WARNING);
       }
       result.add(l);
@@ -996,7 +996,7 @@ public class ProfileComparer {
         if (Utilities.equals(r.getId(), l.getId()) || (Utilities.equals(r.getXpath(), l.getXpath()) && r.getSeverity() == l.getSeverity()))
           found = true;
       if (!found) {
-        outcome.messages.add(new ValidationMessage(Source.ProfileComparer, IssueType.STRUCTURE, path, "StructureDefinition "+outcome.rightName()+" has a constraint that is not found in "+outcome.leftName()+" and it is uncertain whether they are compatible ("+r.getXpath()+")", IssueSeverity.WARNING));
+        outcome.messages.add(new ValidationMessage(Source.ProfileComparer, IssueType.STRUCTURE, path, "StructureDefinition "+outcome.rightName()+" has a constraint that is not found in "+outcome.leftName()+" and it is uncertain whether they are compatible ("+r.getXpath()+")", IssueSeverity.INFORMATION));
         status(ed, ProfileUtilities.STATUS_WARNING);
         result.add(r);
       }

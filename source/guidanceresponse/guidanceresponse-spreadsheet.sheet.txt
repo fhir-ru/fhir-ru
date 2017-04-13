@@ -40,6 +40,12 @@
   Display = Failure
   Definition = The request was not processed successfully
 
+ -- Row 6 -----------------------------------
+  Id = 6
+  Code = entered-in-error
+  Display = Entered In Error
+  Definition = The response was entered in error
+
 === Sheet Invariants =====================================
 
 === Sheet Data Elements =====================================
@@ -54,6 +60,7 @@
  -- Row 2 -----------------------------------
   Element = GuidanceResponse.requestId
   Card. = 0..1
+  Summary = Y
   Type = id
   Short Name = The id of the request associated with this response, if any
   Definition = The id of the request associated with this response. If an id was given as part of the request, it will be reproduced here to enable the requester to more easily identify the response in a multi-request scenario
@@ -70,7 +77,6 @@
  -- Row 4 -----------------------------------
   Element = GuidanceResponse.module
   Card. = 1..1
-  Is Modifier = Y
   Summary = Y
   Type = Reference(ServiceDefinition)
   Short Name = A reference to a knowledge module
@@ -83,8 +89,9 @@
   Summary = Y
   Type = code
   Binding = GuidanceResponseStatus
-  Short Name = success | data-requested | data-required | in-progress | failure
+  Short Name = success | data-requested | data-required | in-progress | failure | entered-in-error
   Definition = The status of the response. If the evaluation is completed successfully, the status will indicate success. However, in order to complete the evaluation, the engine may require more information. In this case, the status will be data-required, and the response will contain a description of the additional required information. If the evaluation completed successfully, but the engine determines that a potentially more accurate response could be provided if more data was available, the status will be data-requested, and the response will contain a description of the additional requested information
+  Comments = This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid
   w5 = status
 
  -- Row 6 -----------------------------------
@@ -176,6 +183,18 @@
   Type = reference
   Description = The subject that the guidance response is about
   Path = GuidanceResponse.subject
+
+ -- Row 3 -----------------------------------
+  Name = request
+  Type = token
+  Description = The identifier of the request associated with the response
+  Path = GuidanceResponse.requestId
+
+ -- Row 4 -----------------------------------
+  Name = identifier
+  Type = token
+  Description = The identifier of the guidance response
+  Path = GuidanceResponse.identifier
 
 === Sheet Profiles =====================================
 

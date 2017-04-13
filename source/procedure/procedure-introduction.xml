@@ -3,6 +3,8 @@
 <div>
 <a name="scope"> </a>
 <h2>Scope and Usage</h2>
+<p>Procedure is one of the <a href="workflow.html#event">event</a> resources in the FHIR <a href="workflow.html">workflow</a> specification.</p>
+
 <p>
 This resource is used to record the details of procedures performed on a patient. A procedure is an activity 
 that is performed with or on a patient as part of the provision of care. Examples include surgical 
@@ -24,8 +26,8 @@ real-time procedure information awaits the identification of a specific implemen
 <p>
 The Procedure resource should not be used to capture an event if a more specific resource already exists - i.e. 
 <a href="immunization.html">immunizations</a>, <a href="medicationadministration.html">drug administrations</a>
-and <a href="communication.html">communications</a>. The boundary between determining whether an action is
-considered to be training or counseling (and thus a procedure) as opposed to a Communication is based on whether
+and <a href="communication.html">communications</a>. The boundary between determining whether an action is a Procedure 
+(training or counseling) as opposed to a Communication is based on whether
 there's a specific intent to change the mind-set of the patient.  Mere disclosure of information would be considered
 a Communication.  A process that involves verification of the patient's comprehension or to change the patient's
 mental state would be a Procedure.
@@ -37,17 +39,10 @@ such an observation does not require an explicit representation of the procedure
 observation, but where there are details of interest about how the diagnostic procedure was performed, 
 the procedure resource is used to describe the activity.
 </p>
-<p> Some diagnostic procedures may not have a Procedure record.  The Procedure record is only necessary when 
+<p> Some diagnostic procedures may not have a Procedure record. The Procedure record is only necessary when 
 there is a need to capture information about the physical intervention that was performed to capture the diagnostic 
 information (e.g. anesthetic, incision, scope size, etc.)</p>
-<p>
-<b>PLANNED CHANGE:</b>
-</p>
-<p>
-<b>Procedure</b> is one of the <a href="workflow.html#event">Event</a> resources in the FHIR <a href="workflow.html">Workflow</a> specification.  As such, it
-is expected to be adjusted to align with the <a href="event.html">Event</a> workflow pattern which will involve adding a number of additional data elements and potentially
-renaming a few elements.  Any concerns about performing such alignment are welcome as ballot comments and/or tracker items.
-</p>
+
 </div>
 
 </div>

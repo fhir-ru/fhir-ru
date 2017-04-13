@@ -5,104 +5,97 @@
   Binding Name = ActivityParticipantType
   Binding = value set
   Reference = http://hl7.org/fhir/ValueSet/action-participant-type
-  Definition = The type of participant for an action in the orderset
+  Definition = The type of participant in the activity
   Conformance = required
 
  -- Row 2 -----------------------------------
   Binding Name = ActivityDefinitionCategory
   Binding = code list
   Reference = #activity-definition-category
-  Definition = High-level categorization of the type of activity in a protocol.
-  Conformance = required
+  Definition = High-level categorization of the type of activity
+  Conformance = example
 
  -- Row 3 -----------------------------------
-  Binding Name = ActivityDefinitionType
-  Binding = unbound
-  Definition = Detailed type of planned activity; e.g. CBC
+  Binding Name = ActivityDefinitionKind
+  Binding = value set
+  Reference = http://hl7.org/fhir/ValueSet/resource-types
+  Definition = The kind of activity the definition is describing
+  Conformance = required
 
  -- Row 4 -----------------------------------
-  Binding Name = ActivityTiming
-  Binding = unbound
-  Definition = Code describing the timing of an activity; e.g. BID, QD
+  Binding Name = ActivityDefinitionType
+  Binding = value set
+  Reference = http://hl7.org/fhir/ValueSet/procedure-code
+  Definition = Detailed type of the activity; e.g. CBC
+  Conformance = example
 
  -- Row 5 -----------------------------------
   Binding Name = ActivityProduct
-  Binding = unbound
+  Binding = value set
+  Reference = http://hl7.org/fhir/ValueSet/medication-codes
   Definition = Code describing the type of substance or medication
+  Conformance = example
 
  -- Row 6 -----------------------------------
   Binding Name = BodySite
   Binding = value set
   Reference = http://hl7.org/fhir/ValueSet/body-site
-  Definition = A code that identifies the anatomical location.
+  Definition = A code that identifies the anatomical location
+  Conformance = example
+
+ -- Row 7 -----------------------------------
+  Binding Name = DefinitionTopic
+  Binding = code list
+  Reference = #definition-topic
+  Definition = High-level categorization of the definition, used for searching, sorting, and filtering
+  Conformance = example
+
+ -- Row 8 -----------------------------------
+  Binding Name = ActivityParticipantRole
+  Binding = value set
+  Reference = valueset-action-participant-role
+  Definition = Defines roles played by participants for the action
   Conformance = example
 
 === Sheet activity-definition-category =====================================
 
  -- Row 1 -----------------------------------
   Id = 1
-  Code = communication
-  Definition = To communicate with a participant in some way
+  Code = treatment
+  Display = Treatment
+  Definition = The activity is intended to provide or is related to treatment of the patient
 
  -- Row 2 -----------------------------------
   Id = 2
-  Code = device
-  Definition = To use a specific device
+  Code = education
+  Display = Education
+  Definition = The activity is intended to provide or is related to education of the patient
 
  -- Row 3 -----------------------------------
   Id = 3
-  Code = diagnostic
-  Definition = To perform a particular diagnostic
+  Code = assessment
+  Display = Assessment
+  Definition = The activity is intended to perform or is related to assessment of the patient
 
- -- Row 4 -----------------------------------
-  Id = 4
-  Code = diet
-  Definition = To consume food of a specified nature
+=== Sheet definition-topic =====================================
 
- -- Row 5 -----------------------------------
-  Id = 5
-  Code = drug
-  Definition = To consume/receive a drug or other product
+ -- Row 1 -----------------------------------
+  Id = 1
+  Code = treatment
+  Display = Treatment
+  Definition = The definition is related to treatment of the patient
 
- -- Row 6 -----------------------------------
-  Id = 6
-  Code = encounter
-  Definition = To meet with the patient (in-patient, out-patient, etc.)
+ -- Row 2 -----------------------------------
+  Id = 2
+  Code = education
+  Display = Education
+  Definition = The definition is related to education of the patient
 
- -- Row 7 -----------------------------------
-  Id = 7
-  Code = immunization
-  Definition = To administer a particular immunization
-
- -- Row 8 -----------------------------------
-  Id = 8
-  Code = observation
-  Definition = To capture information about a patient (vitals, labs, etc.)
-
- -- Row 9 -----------------------------------
-  Id = 9
-  Code = procedure
-  Definition = To modify the patient in some way (surgery, physiotherapy, education, counseling, etc.)
-
- -- Row 10 -----------------------------------
-  Id = 10
-  Code = referral
-  Definition = To refer the patient to receive some service
-
- -- Row 11 -----------------------------------
-  Id = 11
-  Code = supply
-  Definition = To provide something to the patient (medication, medical supply, etc.)
-
- -- Row 12 -----------------------------------
-  Id = 12
-  Code = vision
-  Definition = To receive a particular vision correction device
-
- -- Row 13 -----------------------------------
-  Id = 13
-  Code = other
-  Definition = Some other form of action
+ -- Row 3 -----------------------------------
+  Id = 3
+  Code = assessment
+  Display = Assessment
+  Definition = The definition is related to assessment of the patient
 
 === Sheet Invariants =====================================
 
@@ -113,98 +106,138 @@
   Type = MetadataResource
   Short Name = The definition of a specific activity to be taken, independent of any particular patient or context
   Definition = This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context
+  Workflow Mapping = Definition
+  RIM Mapping = Act[classCode=ACT; moodCode=DEFN]
   w5 = clinical.general
 
  -- Row 2 -----------------------------------
   Element = ActivityDefinition.url
+  Workflow Mapping = Definition.url
+  RIM Mapping = .identifier[scope=BUSN;reliability=ISS]
 
  -- Row 3 -----------------------------------
   Element = ActivityDefinition.identifier
   Card. = 0..*
-  To Do = Add constraint to require identifier for non-experimental active assets
+  Workflow Mapping = Definition.identifier
+  RIM Mapping = .identifier
 
  -- Row 4 -----------------------------------
   Element = ActivityDefinition.version
   Definition = & To provide a version consistent with the Decision Support Service specification, use the format Major.Minor.Revision (e.g. 1.0.0). For more information on versioning knowledge assets, refer to the Decision Support Service specification. Note that a version is required for non-experimental active assets
-  To Do = Add constraint to require version for non-experimental active assets
+  Workflow Mapping = Definition.version
+  RIM Mapping = N/A (to add?)
 
  -- Row 5 -----------------------------------
   Element = ActivityDefinition.name
+  RIM Mapping = N/A
 
  -- Row 6 -----------------------------------
   Element = ActivityDefinition.title
+  Workflow Mapping = Definition.title
+  RIM Mapping = .title
 
  -- Row 7 -----------------------------------
   Element = ActivityDefinition.status
+  Workflow Mapping = Definitition.status (different ValueSet)
+  RIM Mapping = .status
 
  -- Row 8 -----------------------------------
   Element = ActivityDefinition.experimental
+  Workflow Mapping = Definition.experimental
+  RIM Mapping = N/A (to add?)
 
  -- Row 9 -----------------------------------
   Element = ActivityDefinition.date
+  Workflow Mapping = Definition.date
+  RIM Mapping = .participation[typeCode=AUT].time
 
  -- Row 10 -----------------------------------
-  Element = ActivityDefinition.description
+  Element = ActivityDefinition.publisher
+  Workflow Mapping = Definition.publisher (as string instead of CodeableConcept)
+  RIM Mapping = .participation[typeCode=AUT].role
 
  -- Row 11 -----------------------------------
-  Element = ActivityDefinition.purpose
+  Element = ActivityDefinition.description
+  Summary = Y
+  Workflow Mapping = Definition.description
+  RIM Mapping = .text
 
  -- Row 12 -----------------------------------
+  Element = ActivityDefinition.purpose
+  Workflow Mapping = Definition.purpose
+  RIM Mapping = .reasonCode.text
+
+ -- Row 13 -----------------------------------
   Element = ActivityDefinition.usage
   Card. = 0..1
   Type = string
   Short Name = Describes the clinical usage of the asset
   Definition = A detailed description of how the asset is used from a clinical perspective
-
- -- Row 13 -----------------------------------
-  Element = ActivityDefinition.approvalDate
+  RIM Mapping = N/A (to add?)
 
  -- Row 14 -----------------------------------
-  Element = ActivityDefinition.lastReviewDate
+  Element = ActivityDefinition.approvalDate
+  Workflow Mapping = Definition.approvalDate
+  RIM Mapping = .outboundRelationship[typeCode=\"SUBJ\"].act[classCode=CACT;moodCode=EVN;code=\"approval\"].effectiveTime
 
  -- Row 15 -----------------------------------
-  Element = ActivityDefinition.effectivePeriod
+  Element = ActivityDefinition.lastReviewDate
+  Workflow Mapping = Definition.lastReviewDate
+  RIM Mapping = .outboundRelationship[typeCode=\"SUBJ\"; subsetCode=\"RECENT\"].act[classCode=CACT;moodCode=EVN;code=\"review\"].effectiveTime
 
  -- Row 16 -----------------------------------
-  Element = ActivityDefinition.useContext
+  Element = ActivityDefinition.effectivePeriod
+  Workflow Mapping = Definition.effectivePeriod
+  RIM Mapping = N/A (to add?)
 
  -- Row 17 -----------------------------------
-  Element = ActivityDefinition.jurisdiction
+  Element = ActivityDefinition.useContext
+  Workflow Mapping = Definition.useContext
+  RIM Mapping = N/A (to add?)
 
  -- Row 18 -----------------------------------
+  Element = ActivityDefinition.jurisdiction
+  Workflow Mapping = Definition.jurisdiction
+  RIM Mapping = N/A (to add?)
+
+ -- Row 19 -----------------------------------
   Element = ActivityDefinition.topic
   Card. = 0..*
   Type = CodeableConcept
-  Short Name = Descriptional topics for the asset
-  Definition = Clinical topics related to the content of the asset
+  Binding = DefinitionTopic
+  Short Name = E.g. Education, Treatment, Assessment, etc
+  Definition = Descriptive topics related to the content of the activity. Topics provide a high-level categorization of the activity that can be useful for filtering and searching
   Requirements = Repositories must be able to determine how to categorize the asset  so that it can be found by topical searches
+  RIM Mapping = N/A (to add?)
 
- -- Row 19 -----------------------------------
+ -- Row 20 -----------------------------------
   Element = ActivityDefinition.contributor
   Card. = 0..*
   Type = Contributor
   Short Name = A content contributor
   Definition = A contributor to the content of the asset, including authors, editors, reviewers, and endorsers
   Requirements = Consumers of the content must be able to quickly determine who contributed to the content of the knowledge asset
-
- -- Row 20 -----------------------------------
-  Element = ActivityDefinition.publisher
-  To Do = Add constraint to require publisher on non-experimental active assets
+  RIM Mapping = .participation[typeCode=AUT,VRF] {No support yet for editor nor clear whether VRF best corresponds to reviewer or endorser}
 
  -- Row 21 -----------------------------------
   Element = ActivityDefinition.contact
+  Workflow Mapping = Definition.contact
+  RIM Mapping = .participation[typeCode=CALLBCK].role
 
  -- Row 22 -----------------------------------
   Element = ActivityDefinition.copyright
+  Workflow Mapping = Definition.copyright
+  RIM Mapping = N/A (to add?)
 
  -- Row 23 -----------------------------------
   Element = ActivityDefinition.relatedArtifact
   Card. = 0..*
   Type = RelatedArtifact
-  Short Name = Related artifacts for the asset
+  Short Name = Additional documentation, citations, etc
   Definition = Related artifacts such as additional documentation, justification, or bibliographic references
   Requirements = Assets must be able to provide enough information for consumers of the content (and/or interventions or results produced by the content) to be able to determine and understand the justification for and evidence in support of the content
   Comments = Each related artifact is either an attachment, or a reference to another resource, but not both
+  RIM Mapping = .outboundRelationship[typeCode=DOC,RSON,PREV, DRIV, USE, COMP] {successor would be PREV w/ inversionInd=true; No support for citation}
 
  -- Row 24 -----------------------------------
   Element = ActivityDefinition.library
@@ -212,15 +245,17 @@
   Type = Reference(Library)
   Short Name = Logic used by the asset
   Definition = A reference to a Library resource containing any formal logic used by the asset
+  RIM Mapping = .outboundRelationship[typeCode=USE].target[classCode=GROUPER,moodCode=EVN]
 
  -- Row 25 -----------------------------------
-  Element = ActivityDefinition.category
+  Element = ActivityDefinition.kind
   Card. = 0..1
   Type = code
-  Binding = ActivityDefinitionCategory
-  Short Name = communication | device | diagnostic | diet | drug | encounter | immunization | observation | procedure | referral | supply | vision | other
-  Definition = High-level categorization of the type of activity.
-  Requirements = May determine what types of extensions are permitted
+  Binding = ActivityDefinitionKind
+  Short Name = Kind of resource
+  Definition = A description of the kind of resource the activity definition is representing. For example, a MedicationRequest, a ProcedureRequest, or a CommunicationRequest. Typically, but not always, this is a Request resource
+  Comments = May determine what types of extensions are permitted
+  RIM Mapping = .classCode
 
  -- Row 26 -----------------------------------
   Element = ActivityDefinition.code
@@ -231,15 +266,17 @@
   Definition = Detailed description of the type of activity; e.g. What lab test, what procedure, what kind of encounter.
   Requirements = Allows matching performed to planned as well as validation against protocols
   Comments = Tends to be less relevant for activities involving particular products.
+  Workflow Mapping = Definition.subjectCodeableConcept
+  RIM Mapping = .code
 
  -- Row 27 -----------------------------------
   Element = ActivityDefinition.timing[x]
   Card. = 0..1
-  Type = CodeableConcept | Timing
-  Binding = ActivityTiming
+  Type = Timing | dateTime | Period |Range
   Short Name = When activity is to occur
   Definition = The period, timing or frequency upon which the described activity is to occur.
   Requirements = Allows prompting for activities and detection of missed planned activities.
+  RIM Mapping = .effectiveTime
 
  -- Row 28 -----------------------------------
   Element = ActivityDefinition.location
@@ -250,40 +287,61 @@
   Definition = Identifies the facility where the activity will occur; e.g. home, hospital, specific clinic, etc.
   Requirements = Helps in planning of activity
   Comments = May reference a specific clinical location or may just identify a type of location.
+  RIM Mapping = .participation[typeCode=LOC].role
 
  -- Row 29 -----------------------------------
-  Element = ActivityDefinition.participantType
+  Element = ActivityDefinition.participant
   Card. = 0..*
+  Short Name = Who should participate in the action
+  Definition = Indicates who should participate in performing the action described
+  RIM Mapping = .participation[typeCode=PFM]
+
+ -- Row 30 -----------------------------------
+  Element = ActivityDefinition.participant.type
+  Card. = 1..1
   Type = code
   Binding = ActivityParticipantType
   Short Name = patient | practitioner | related-person
   Definition = The type of participant in the action
+  RIM Mapping = .role.classCode
 
- -- Row 30 -----------------------------------
+ -- Row 31 -----------------------------------
+  Element = ActivityDefinition.participant.role
+  Card. = 0..1
+  Type = CodeableConcept
+  Binding = ActivityParticipantRole
+  Short Name = E.g. Nurse, Surgeon, Parent, etc
+  Definition = The role the participant should play in performing the described action
+  RIM Mapping = .role.code
+
+ -- Row 32 -----------------------------------
   Element = ActivityDefinition.product[x]
   Card. = 0..1
   Type = Reference(Medication|Substance)|CodeableConcept
   Binding = ActivityProduct
   Short Name = What\'s administered/supplied
   Definition = Identifies the food, drug or other product being consumed or supplied in the activity.
+  RIM Mapping = .participation[typeCode=CSM].role
 
- -- Row 31 -----------------------------------
+ -- Row 33 -----------------------------------
   Element = ActivityDefinition.quantity
   Card. = 0..1
   Aliases = dose
   Type = SimpleQuantity
   Short Name = How much is administered/consumed/supplied
   Definition = Identifies the quantity expected to be consumed at once (per dose, per meal, etc.)
+  RIM Mapping = .quantity {for classCode=SPLY]
 
- -- Row 32 -----------------------------------
-  Element = ActivityDefinition.dosageInstruction
+ -- Row 34 -----------------------------------
+  Element = ActivityDefinition.dosage
   Card. = 0..*
-  Type = DosageInstruction
+  Type = Dosage
   Short Name = Detailed dosage instructions
   Definition = Provides detailed dosage instructions in the same way that they are described for MedicationRequest resources
   Comments = If a dosage instruction is used, the definition should not specify timing or quantity
+  RIM Mapping = .outboundRelationship[typeCode=COMP].target[classCode=SBADM; moodCode=DEFN]
 
- -- Row 33 -----------------------------------
+ -- Row 35 -----------------------------------
   Element = ActivityDefinition.bodySite
   Card. = 0..*
   Type = CodeableConcept
@@ -292,56 +350,64 @@
   Definition = Indicates the sites on the subject\'s body where the procedure should be performed (I.e. the target sites).
   Requirements = Knowing where the procedure is made is important for tracking if multiple sites are possible.
   Comments = Only used if not implicit in the code found in ProcedureRequest.type
-  RIM Mapping = targetSiteCode
+  Workflow Mapping = Procedure.targetBodySite
+  RIM Mapping = .targetSiteCode {for classCode=PROC, SBADM}
 
- -- Row 34 -----------------------------------
+ -- Row 36 -----------------------------------
   Element = !ActivityDefinition.description
   Card. = 0..1
   Type = string
   Short Name = Extra info on activity occurrence
   Definition = This provides a textual description of constraints on the activity occurrence, including relation to other activities.  It may also include objectives, pre-conditions and end-conditions.  Finally, it may convey specifics about the activity such as body site, method, route, etc.
+  RIM Mapping = .text
 
- -- Row 35 -----------------------------------
+ -- Row 37 -----------------------------------
   Element = ActivityDefinition.transform
   Card. = 0..1
   Type = Reference(StructureMap)
   Short Name = Transform to apply the template
   Definition = A reference to a StructureMap resource that defines a transform that can be executed to produce the intent resource using the ActivityDefinition instance as the input
+  RIM Mapping = N/A
 
- -- Row 36 -----------------------------------
+ -- Row 38 -----------------------------------
   Element = ActivityDefinition.dynamicValue
   Card. = 0..*
   Short Name = Dynamic aspects of the definition
   Definition = Dynamic values that will be evaluated to produce values for elements of the resulting resource. For example, if the dosage of a medication must be computed based on the patient\'s weight, a dynamic value would be used to specify an expression that calculated the weight, and the path on the intent resource that would contain the result
+  RIM Mapping = N/A
 
- -- Row 37 -----------------------------------
+ -- Row 39 -----------------------------------
   Element = ActivityDefinition.dynamicValue.description
   Card. = 0..1
   Type = string
   Short Name = Natural language description of the dynamic value
   Definition = A brief, natural language description of the intended semantics of the dynamic value
+  RIM Mapping = N/A
 
- -- Row 38 -----------------------------------
+ -- Row 40 -----------------------------------
   Element = ActivityDefinition.dynamicValue.path
   Card. = 0..1
   Type = string
   Short Name = The path to the element to be set dynamically
   Definition = The path to the element to be customized. This is the path on the resource that will hold the result of the calculation defined by the expression
+  RIM Mapping = N/A
 
- -- Row 39 -----------------------------------
+ -- Row 41 -----------------------------------
   Element = ActivityDefinition.dynamicValue.language
   Card. = 0..1
   Type = string
   Short Name = Language of the expression
   Definition = The media type of the language for the expression
+  RIM Mapping = N/A
 
- -- Row 40 -----------------------------------
+ -- Row 42 -----------------------------------
   Element = ActivityDefinition.dynamicValue.expression
   Card. = 0..1
   Type = string
   Short Name = An expression that provides the dynamic value for the customization
   Definition = An expression specifying the value of the customized element
   Comments = The expression may be inlined, or may be a reference to a named expression within a logic library referenced by the library element
+  RIM Mapping = N/A
 
 === Sheet Search =====================================
 
@@ -357,9 +423,98 @@
   Description = The minimum relevance score of any match that will be returned
   Path = Bundle/entry/search/score
 
+ -- Row 3 -----------------------------------
+  Name = depends-on
+  Type = reference
+  Path = ActivityDefinition.relatedArtifact.resource | ActivityDefinition.library
+  Expression = ActivityDefinition.relatedArtifact.where(type=\'depends-on\').resource | ActivityDefinition.library
+  XPath = f:ActivityDefinition/f:relatedArtifact[f:type/@value=\'depends-on\']/f:resource | f:ActivityDefinition/f:library
+
+ -- Row 4 -----------------------------------
+  Name = derived-from
+  Type = reference
+  Path = ActivityDefinition.relatedArtifact.resource
+  Expression = ActivityDefinition.relatedArtifact.where(type=\'derived-from\').resource
+  XPath = f:ActivityDefinition/f:relatedArtifact[f:type/@value=\'derived-from\']/f:resource
+
+ -- Row 5 -----------------------------------
+  Name = successor
+  Type = reference
+  Path = ActivityDefinition.relatedArtifact.resource
+  Expression = ActivityDefinition.relatedArtifact.where(type=\'successor\').resource
+  XPath = f:ActivityDefinition/f:relatedArtifact[f:type/@value=\'successor\']/f:resource
+
+ -- Row 6 -----------------------------------
+  Name = predecessor
+  Type = reference
+  Path = ActivityDefinition.relatedArtifact.resource
+  Expression = ActivityDefinition.relatedArtifact.where(type=\'predecessor\').resource
+  XPath = f:ActivityDefinition/f:relatedArtifact[f:type/@value=\'predecessor\']/f:resource
+
+ -- Row 7 -----------------------------------
+  Name = composed-of
+  Type = reference
+  Path = ActivityDefinition.relatedArtifact.resource
+  Expression = ActivityDefinition.relatedArtifact.where(type=\'composed-of\').resource
+  XPath = f:ActivityDefinition/f:relatedArtifact[f:type/@value=\'composed-of\']/f:resource
+
 === Sheet Profiles =====================================
 
 === Sheet Examples =====================================
+
+ -- Row 1 -----------------------------------
+  Name = Referral Example
+  Identity = referralPrimaryCareMentalHealth
+  Description = Activity definition to refer a patient to a mental health integrated care program
+  Filename = activitydefinition-example.xml
+
+ -- Row 2 -----------------------------------
+  Name = Citalopram Prescription Example
+  Identity = citalopramPrescription
+  Description = Activity definition to prescribe citalopram to a patient
+  Filename = activitydefinition-medicationorder-example.xml
+
+ -- Row 3 -----------------------------------
+  Name = Administer Zika Virus Exposure Assessment
+  Identity = administer-zika-virus-exposure-assessment
+  Description = Definition for administering a Zika Virus Exposure assessment
+  Filename = activitydefinition-administer-zika-virus-exposure-assessment.xml
+
+ -- Row 4 -----------------------------------
+  Name = Order Serum Zika and Dengue Virus IgM
+  Identity = serum-zika-dengue-virus-igm
+  Description = Definition for ordering a Serum Zika and Dengue Virus IgM Antibody Diagnostic
+  Filename = activitydefinition-order-serum-zika-dengue-virus-igm.xml
+
+ -- Row 5 -----------------------------------
+  Name = Provide Mosquito Prevention Advice
+  Identity = provide-mosquito-prevention-advice
+  Description = Definition for providing mosquito prevention advice
+  Filename = activitydefinition-provide-mosquito-prevention-advice.xml
+
+ -- Row 6 -----------------------------------
+  Name = Heart Valve Replacement
+  Identity = heart-valve-replacement
+  Description = Definition for heart valve replacement procedure request
+  Filename = activitydefinition-procedurerequest-example.xml
+
+ -- Row 7 -----------------------------------
+  Name = Blood Tubes Supply
+  Identity = blood-tubes-supply
+  Description = Definition for blood collection tubes supply
+  Filename = activitydefinition-supplyrequest-example.xml
+
+ -- Row 8 -----------------------------------
+  Name = Predecessor
+  Identity = referralPrimaryCareMentalHealth-initial
+  Description = Example of a predecessor/successor relationship
+  Filename = activitydefinition-predecessor-example.xml
+
+ -- Row 9 -----------------------------------
+  Name = Order Serum Dengue Virus IgM
+  Identity = serum-dengue-virus-igm
+  Description = Definition for ordering a Serum Dengue Virus IgM Antibody Diagnostic
+  Filename = activitydefinition-order-serum-dengue-virus-igm.xml
 
 === Sheet Examples =====================================
 
@@ -368,7 +523,10 @@
   Use = Instance
   Documentation = The apply operation realizes a definition in a specific context
   Type = operation
+  Example.Request = $apply-request.txt
+  Example.Response = $apply-response.txt
   Title = Apply
+  Footer = The result of invoking this operation is a resource of the type specified by the activity definition, with all the definitions resolved as appropriate for the type of resource. Any dynamicValue elements will be evaluated and the resulting value used for the values of the appropriate elements of the returned resource.  If the ActivityDefinition includes library references, those libraries will be available to the evaluated expressions. If those libraries have parameters, those parameters will be bound by name to the parameters given to the operation
 
  -- Row 2 -----------------------------------
   Name = apply.patient
@@ -465,15 +623,16 @@
   Use = Instance
   Documentation = The data-requirements operation aggregates and returns the parameters and data requirements for the activity definition and all its dependencies as a single module definition library
   Type = operation
+  Example.Request = $data-requirements-request.txt
+  Example.Response = $data-requirements-response.txt
   Title = Data Requirements
   Footer = The effect of invoking this operation is to determine the aggregate set of data requirements and dependencies for the activity definition. The result is a Library resource with a type of module-definition that contains all the parameter definitions and data requirements of the activity definition and any libraries referenced by it. Implementations SHOULD aggregate data requirements intelligently (i.e. by collapsing overlapping data requirements)
 
  -- Row 13 -----------------------------------
   Name = data-requirements.return
   Use = out
-  Documentation = The result of the requirements gathering
+  Documentation = The result of the requirements gathering represented as a module-definition Library that describes the aggregate parameters, data requirements, and dependencies of the activity definition
   Type = Library
   Title = Return
-  Footer = A module-definition Library that describes the aggregate parameters, data requirements, and dependencies of the target
   Min = 1
   Max = 1

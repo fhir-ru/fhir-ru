@@ -6,7 +6,7 @@
   <verificationStatus value="unconfirmed"/>
 
   <category value="medication"/>
-  
+     
   <criticality value="high"/> 
 
   <!-- subtance, coded from RxNorm -->

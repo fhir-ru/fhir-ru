@@ -25,121 +25,25 @@ notes:
 <body>
 [%file newnavbar%]
 
-<div class="col-9">
-
-<p>See <a href="#history">below</a> for version history details.</p>
-
-<a name="versioning"> </a>
-<h2>Version History</h2>
-
-<p>
-This is the developmental version of FHIR. The only changes tracked here are
-the changes made after the publication of the first DSTU release. For earlier changes,
-see the <a href="http://hl7.org/fhir/history.html">DSTU #1 Version History</a>.
-Note that a full archive history of everything is available
-<a href="http://wiki.hl7.org/index.php?title=FHIR">through the HL7 gForge SVN archives</a>.
-</p>
-
-<a name="rules"> </a>
-<h3>How FHIR Versioning works</h3>
-
-<p>
-The FHIR version policy is based on <a href="http://semver.org/">Semantic versioning</a>, but with
-some differences due to the fact that FHIR is a specification, not a software API.
-</p>
-<p>
-There is a single development version of FHIR. This undergoes cycles of development as
-managed by HL7. Each major cycle of development is concluded by a formal ballot, and then
-a new specification is published. In version control terms, each published specification is a
-branch off the development trunk, which may then itself undergo further change as
-HL7 maintains the published specification (though such changes are usually extremely
-minimal).
-</p>
-<p>
-The following kinds of changes may be made to the specification:
-</p>
-<ul>
- <li>Non-substantive changes do not cause changes in any conformant application. For example, section renumbering,
-   broken links, style corrections, typos, and clarifications that do not change the meaning. Some corrections may
-   be judged not to create any expectation of change to a conformant application.</li>
- <li>Substantive changes that are not breaking. These introduce new functionality - changes to the specification that create new capabilities - but would not render existing applications non-conformant if they do not change.</li>
- <li>Breaking changes would mean that previously conformant applications are no longer conformant</li>
-</ul>
-<p>
-Note that the following are, by definition, considered non-breaking changes, even though some implementations (including the reference implementations) may not be able to handle some consequences of these changes without error:</p>
-<ul>
- <li>creation of new resources</li>
- <li>adding new optional elements in an existing resource</li>
- <li>defining new data types</li>
- <li>Adding new API operations</li>
-</ul>
-<p>
-Also, the examples are never substantive. Every effort is made to ensure that FHIR examples are correct, but changes to the examples in the specification are not considered substantive.
-</p>
-
-<p>
-Each FHIR version is identified by a string composed from 4 parts: publication.major.minor.revision.
-</p>
-<table class="lines">
-  <tr>
-   <td valign="top">publication</td>
-   <td>
-     <ul>
-       <li>Incremented when HL7 publishes FHIR as an updated specification, e.g. a STU or normative version of FHIR</li>
-       <li>HL7 plans to do this every 1 to 2 years</li>
-       <li>The first STU was version 0</li>
-     </ul>
-   </td>
-  </tr>
-  <tr>
-   <td valign="top">major</td>
-   <td>
-     <ul>
-       <li>Increments every time a breaking change is made</li>
-       <li>When a new publication is made, this is reset to 0 in the publication, and 1 in the development branch</li>
-       <li>Since HL7 does not make breaking changes as technical corrections to a published specification, these versions of FHIR always have a version number X.0.n.r</li>
-       <li>Because the development version is the subject of ongoing analysis, debate, ballot and repeated alterations, breaking changes are to be expected</li>
-     </ul>
-   </td>
-  </tr>
-  <tr>
-   <td valign="top">minor</td>
-   <td>
-     <ul>
-       <li>Increments every time a substantive change is made</li>
-       <li>Resets to 0 any time the major version changes</li>
-     </ul>
-   </td>
-  </tr>
-  <tr>
-   <td valign="top">revision</td>
-   <td>
-     <ul>
-       <li>Incremented any time a change is made to the specification</li>
-       <li>At present, this is the SVN version number (this allows anyone to reconstruct the source from which the version was built)</li>
-     </ul>
-   </td>
-  </tr>
-</table>
-
-<p>
-Additional notes:
-</p>
-<ul>
- <li>Changes to a formally published specification (except for minor publishing corrections, such as correcting broken links) are only made via announced technical corrections</li>
- <li>The reference implementations have 2 versions - the version of the specification that they implement, and their own version. Consult the reference implementation documentation for policy regarding this version number</li>
- <li>The specification published by the continuous integration service (<a href="http://hl7-fhir.github.io/">http://hl7-fhir.github.io/</a>) build may not conform to this version policy,
-   but the versions published on the HL7 web site will (see <a href="http://hl7.org/fhir/directory.html">Directory of published versions</a>)</li>
- <li>The first DSTU was published prior to these rules being agreed as v0.80-2286. This has been updated to 0.0.81.2382 as a technical correction to align with this policy on 9-May 2014</li>
-</ul>
+<div class="col-12">
 
 <a name="history"> </a>
 <h3>Version History since DSTU #1</h3>
+
+<p>
+For background to this version history, see <a href="versions.html">FHIR Version Management Policy</a>.
+</p>
+
 <a name="pubs"> </a>
 <p>
 Major Milestones:
 </p>
 <table class="grid">
+  <tr>
+    <td><a href="http://hl7.org/fhir/DSTU2/index.html">Feb 21, 2017</a></td>
+    <td>3.0.0</td>
+    <td>Release 3 (STU - Standard for Trial Use)</td>
+  </tr>
   <tr>
     <td><a href="http://hl7.org/fhir/DSTU2/index.html">Oct 24, 2015</a></td>
     <td>1.0.2</td>
@@ -154,6 +58,13 @@ Major Milestones:
 
 <p>
 This table lists substantive changes only.
+</p>
+<p>
+This is the developmental version of FHIR. The only changes tracked here are
+the changes made after the publication of the first DSTU release. For earlier changes,
+see the <a href="http://hl7.org/fhir/history.html">DSTU #1 Version History</a>.
+Note that a full archive history of everything is available
+<a href="http://wiki.hl7.org/index.php?title=FHIR">through the HL7 gForge SVN archives</a>.
 </p>
 
 <table class="grid">
@@ -176,6 +87,46 @@ notes: do not list revision in the version
 -->
 
 	<tr>
+		<td>3.0.0<a name="v3.0.0"> </a></td>
+		<td>
+      <p><b>Release 3</b>: Mar 21, 2017. STU3</p>
+      <p>
+        This is the full FHIR Release 3 (R3). R3 is a complete overhaul of the specification from R2, with over 2400 change proposals 
+        process, and applied in R3. Of those changes, 380+ are labelled as a breaking change. Given this level of change, there is no 
+        useful way to present a single change list. Users can use the <a href="diff.html">R2/R3 difference comparison</a>, the <a href="r2maps.html">R2 &lt;-&gt; R3 transforms</a>, 
+        or the "Compare to R2" link at the foot of every page to help visualise the differences between R2 and R3. 
+      </p>
+      <p>
+        Many of the changes made in this release (since 1.8.0) are in response to Quality Assurance processes in HL7, 
+        with a goal of readying the specification for Normative processes in R4:
+      </p>
+      <ul>
+        <li>Reorder many resources and improve their definitions and bindings (Quality Assurance work)</li>
+        <li>Add draft resources <a href="adverseevent.html">AdverseEvent</a> and <a href="graphdefinition.html">GraphDefinition</a></li>
+        <li>Change to the <a href="profiling.html#discriminator">way discriminators work</a> in profiles (for profile/tooling authors)</li>
+        <li>Finalization of the <a href="rdf.html">Turtle (RDF) format, along with JSON-LD</a></li>
+        <li>Consolidation of Vresion management issues into a single <a href="versions.html">Version Policy</a> page, and update to current policy</li>
+        <li>Add <a href="search.html#missing">rules about how missing data</a> in search</li>
+      </ul>
+      <p>
+        Roll up: Of all the many changes (thousands) between R2 and R3, these are the most significant:
+      </p>
+      <ul>
+        <li>Change the <a href="http.html#mime-type">FHIR mime type</a> to application/fhir+xml|json instead of application/xml|json+fhir (<b>breaking change</b>, for conformance to W3C+IETF rules)</li>
+        <li>Rename the "Conformance" resource to "<a href="capabilitystatement.html">CapabilityStatement</a>" and Deprecate use of the OPTIONS command to retrieve the CapabilityStatement</li>
+        <li><a href="search.html">Search</a> Changes around <a href="search.html#errors">errors in search parameters</a>, <a href="search.html#missing">missing data</a>, <a href="search.html#sort">sorting</a></li>
+        <li>Change <a href="datatypes.html#HumanName">HumanName</a>.family from 0..* to 0..1</li>
+        <li><a href="codesystem.html">CodeSystem</a> now separated out from <a href="valueset.html">ValueSet</a></li>
+      </ul>
+    </td>
+	</tr>
+	<tr>
+		<td>1.9.0</td>
+		<td>
+      <p><b>FHIR Rolling Build, 2016 Dec onwards</b><a name="v1.9.0"> </a></p>
+    </td>
+	</tr>
+	<tr>
 		<td>1.8.0</td>
 		<td>
       <p><b>FHIR QA Release, Dec 6, 2016</b><a name="v1.8.0"> </a></p>
@@ -184,8 +135,8 @@ notes: do not list revision in the version
       </p>
       <p><b>Breaking Changes Summary:</b></p>
       <ul>
-        <li>Change <a href="datatypes.html#HumanName">HumanName</a>.family from 0..* to 0..1</li> 
-        <li>Rename MedicationOrder and DiagnosticOrder to  <a href="medicationrequest.html">MedicationRequest</a> and <a href="diagnosticrequest.html">DiagnosticRequest</a>, and make a series of changes to align with the <a href="request.html">Request Pattern</a></li>
+        <li>Change <a href="datatypes.html#HumanName">HumanName</a>.family from 0..* to 0..1</li>
+        <li>Rename MedicationOrder and DiagnosticOrder to  <a href="medicationrequest.html">MedicationRequest</a> and DiagnosticRequest and make a series of changes to align with the <a href="request.html">Request Pattern</a></li>
         <li>Add cross resource search + rework composite parameter expressions</li>
         <li>Harmonise resource metadata across the Terminology, Conformance, and Knowledge resources</li>
         <li>Change the way <a href="references.html#canonical">versioned references to canonical URLs</a> are handled</li>
@@ -194,7 +145,8 @@ notes: do not list revision in the version
       </ul>
       <p>
         These are only the more significant changes, there were many 100s of changes made in response to ballot comments and ongoing implementation experience.
-        These include breaking changes to may resources. Structural changes are <a href="diff.html">summarised here</a>.
+        These include breaking changes to may resources. Structural changes are <a href="diff.html">summarised here</a>, and <a href="r2maps.html">Transforms between DSTU 2 and STU 3</a>
+        are provided for many resources.
       </p>
     </td>
 	</tr>
@@ -208,9 +160,9 @@ notes: do not list revision in the version
       <p><b>Publication Changes:</b></p>
       <ul>
        <li>Move the US Realm implementation guides out of the specification (see <a href="http://www.fhir.org/guides/registry">http://www.fhir.org/guides/registry</a>)</li>
-       <li>Rework the home page, and introduce modules as a way to navigate the specification + add significant new implementer advice (e.g. "<a href="modules.html">Getting Started</a>")</li>  
+       <li>Rework the home page, and introduce modules as a way to navigate the specification + add significant new implementer advice (e.g. "<a href="modules.html">Getting Started</a>")</li>
        <li>Change the Navigation menu to focus on indexes to the content in the specification</li>
-       <li>Move FluentPath expression language to it's <a href="http://hl7.org/fluentpath">long term home</a></li>
+       <li>Move FHIRPath expression language to its <a href="http://hl7.org/fluentpath">long term home</a></li>
       </ul>
       <p><b>Technical Changes:</b></p>
       <ul>
@@ -224,7 +176,8 @@ notes: do not list revision in the version
           </ul>
         </li>
         <li>Formats: No change to XML + JSON formats. Add <a href="rdf.html">Turtle Format</a>, and related validation tools</li>
-        <li>For Data Types and Resources, there is <a href="diff.html">formal difference</a> analysis from DSTU2 (also found throughout the specification)</li>
+        <li>For Data Types and Resources, there is <a href="diff.html">formal difference</a> analysis from DSTU2 (also found throughout the specification), and <a href="r2maps.html">transforms between DSTU 2 and STU 3</a>
+        are provided for many resources</li>
       </ul>
     </td>
 	</tr>
@@ -249,11 +202,11 @@ notes: do not list revision in the version
       </p>
       <ul>
        <li>
-       FHIR API and Wire Format Enhancment
+       FHIR API and Serialization Format Enhancement
         <ul>
          <li>The <a href="search.html#sort">_sort parameter</a> has been reworked</li>
          <li>New or extended search parameters for read, search or history: _type, _at, _summary, _elements</li>
-         <li>Change <a href="rdf.html">RDF representation</a> - now ready for trial</li>
+         <li>Change <a href="rdf.html">Turtle representation</a> - now ready for trial</li>
         </ul>
         <p>
         </p>
@@ -262,7 +215,7 @@ notes: do not list revision in the version
        Conformance resources with significant breaking changes and behavior:
         <ul>
          <li><a href="structuredefinition.html">StructureDefinition</a> - Type Handling: Changes to how the structure definition types work: <b>baseType</b> <i>replaces</i> <b>constrainedType</b> &amp; <b>baseDefinition</b> <i>replaces</i> <b>base</b></li>
-         <li><a href="codesystem.html">CodeSystem</a> now separated out from <a href="valueset.html">ValueSet</a>: CodeSystem is now a first class resource type in order to support use throughout the FHIR eco-system, such as to support value set expansion and validation. It is intended to be used for distributing the smaller ad-hoc code systems that are ubiqutiously encountered through out the healthcare process.</li>
+         <li><a href="codesystem.html">CodeSystem</a> now separated out from <a href="valueset.html">ValueSet</a>: CodeSystem is now a first class resource type in order to support use throughout the FHIR eco-system, such as to support value set expansion and validation. It is intended to be used for distributing the smaller ad-hoc code systems that are ubiquitously encountered through out the healthcare process.</li>
         </ul>
        </li>
        <li>
@@ -278,7 +231,7 @@ notes: do not list revision in the version
          <li><a href="capabilitystatement.html">Conformance</a> (now CapabilityStatement)</li>
          <li><a href="contract.html">Contract</a></li>
          <li><a href="device.html">Device</a></li>
-         <li><a href="diagnosticrequest.html">DiagnosticRequest</a></li>
+         <li>DiagnosticRequest</li>
          <li><a href="eligibilityrequest.html">EligibilityRequest</a></li>
          <li><a href="eligibilityresponse.html">EligibilityResponse</a></li>
          <li><a href="explanationofbenefit.html">ExplanationOfBenefit</a></li>
@@ -393,9 +346,9 @@ notes: do not list revision in the version
 		<td>
       <p><b>DSTU 2 QA Preview, Aug 31 2015</b></p>
       <p>This version had extensive change as a result of the May 2015 DSTU ballot, ongoing testing, and the open change proposals (1317 gForge tasks). The extent of the changes is best illustrated by the number of the
-        <a href="http://wiki.hl7.org/index.php?title=FHIR_Breaking_changes_between_DSTU_2_ballot_and_final">list of changes labelled 'breaking change'</a> - 158 changes of 1317 total tasks. Below is a list of the most important changes:</p>
+        <a href="http://wiki.hl7.org/index.php?title=FHIR_Breaking_changes_between_DSTU_2_ballot_and_final">list of changes labeled 'breaking change'</a> - 158 changes of 1317 total tasks. Below is a list of the most important changes:</p>
       <ul>
-        <li>General: introduced the <a href="resource.html#maturity">maturity framework</a></li>
+        <li>General: introduced the <a href="versions.html#maturity">maturity framework</a></li>
         <li><a href="http.html">RESTful API</a>: add batch, several clarifications around versioning &amp; transactional integrity, changed Bundle URL resolution rules</li>
         <li><a href="search.html">Search</a>: changed the way &lt;&gt; etc.works, added _list parameter, changed rules around contained and included resources</li>
         <li>Formats: added a <a href="xml.html">note about whitespace in XML</a>, added <a href="xml.html#schema-gen">code generation schemas</a></li>
@@ -491,8 +444,8 @@ notes: do not list revision in the version
         <li><a href="dataelement.html">DataElement</a> - total rewrite to use ElementDefinition</li>
         <li><a href="device.html">Device</a> - add status, manufactureDate</li>
         <li><a href="devicemetric.html">DeviceMetric</a> - rename operationalState to operationalStatus, add measurementMode, rename calibrationInfo to calibration, change color to an enumerations</li>
-        <li><a href="deviceuserequest.html">DeviceUseRequest</a>/<a href="deviceusestatement.html">DeviceUseStatement</a> - change to bodySite = code or Reference(BodySite)</li>
-        <li><a href="diagnosticrequest.html">DiagnosticRequest</a> - change to bodySite = code or Reference(BodySite)</li>
+        <li><a href="devicerequest.html">DeviceRequest</a>/<a href="deviceusestatement.html">DeviceUseStatement</a> - change to bodySite = code or Reference(BodySite)</li>
+        <li>DiagnosticRequest- change to bodySite = code or Reference(BodySite)</li>
         <li><a href="diagnosticreport.html">DiagnosticReport</a> - add encounter</li>
         <li><a href="documentmanifest.html">DocumentManifest</a> - add options for how content is referred to </li>
         <li><a href="documentreference.html">DocumentReference</a> - add format, remove policyManager, make content : Attachment, and remove several related attributes, remove service reference and add context.practiceSetting, sourcePatientInfo, and related</li>
@@ -514,7 +467,7 @@ notes: do not list revision in the version
         <li><a href="medicationrequest.html">MedicationRequest</a> - add note, change quantity to allow range, </li>
         <li><a href="medicationstatement.html">MedicationStatement</a> - add informationSource, status, dateAsserted, replace whenGiven with effective[x], remove device, add dosage.text</li>
         <li><a href="namingsystem.html">NamingSystem</a> - add date, publisher, </li>
-        <li><a href="nutritionrequest.html">NutritionRequest</a> - extensive rewrite</li>
+        <li><a href="nutritionorder.html">NutritionOrder</a> - extensive rewrite</li>
         <li><a href="observation.html">Observation</a> - change name to code, allow more types of value[x], change type of dataAbsentReason, change to bodySite = code or Reference(BodySite), allow identifier to repeat, add device, </li>
         <li><a href="operationdefinition.html">OperationDefinition</a> - change identifier to url, add useContext, change telecom to contact, change name to title, add reuqirements, idempotent, </li>
         <li><a href="operationoutcome.html">OperationOutcome</a> - change type of .issue.type</li>
@@ -593,7 +546,7 @@ notes: do not list revision in the version
         <li><a href="dataelement.html">DataElement</a></li>
         <li><a href="devicecomponent.html">DeviceComponent</a></li>
         <li><a href="devicemetric.html">DeviceMetric</a></li>
-        <li><a href="deviceuserequest.html">DeviceUseRequest</a> </li>
+        <li><a href="devicerequest.html">DeviceRequest</a> </li>
         <li><a href="deviceusestatement.html">DeviceUseStatement</a></li>
         <li><a href="eligibilityrequest.html">EligibilityRequest</a></li>
         <li><a href="eligibilityresponse.html">EligibilityResponse</a></li>
@@ -607,7 +560,7 @@ notes: do not list revision in the version
         <li><code>ImagingObjectSelection</code></li>
         <li><a href="claim.html">InstitutionalClaim</a></li>
         <li><a href="namingsystem.html">NamingSystem</a></li>
-        <li><a href="nutritionrequest.html">NutritionRequest</a></li>
+        <li><a href="nutritionorder.html">NutritionOrder</a></li>
         <li><a href="operationdefinition.html">OperationDefinition</a></li>
         <li><a href="claim.html">OralHealthClaim</a></li>
         <li><a href="paymentnotice.html">PaymentNotice</a></li>
@@ -655,7 +608,7 @@ notes: do not list revision in the version
        <li>Significant rework for <a href="conceptmap.html">ConceptMap</a> so it can be used to map between structures as well as value sets</li>
        <li>Add <a href="detectedissue.html">Contraindication</a> and <a href="riskassessment.html">Risk Assessment</a> and added examples to other resources in support of these</li>
        <li>Add <a href="referralrequest.html">Referral Request</a></li>
-       <li>Add supportingInformation to <a href="diagnosticrequest.html">DiagnosticRequest</a></li>
+       <li>Add supportingInformation to DiagnosticRequest</li>
        <li>Add fulfills to <a href="encounter.html">Encounter</a></li>
        <li>Add date and age[x] to <a href="familymemberhistory.html">FamilyHistory</a></li>
        <li>Change cardinality of <a href="location.html">Location</a>.identifier to 0..*</li>

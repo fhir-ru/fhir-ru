@@ -65,7 +65,7 @@
  -- Row 9 -----------------------------------
   Binding Name = AdditionalInstructions
   Binding = value set
-  Reference = http://hl7.org/fhir/ValueSet/additional-instructions-codes
+  Reference = http://hl7.org/fhir/ValueSet/additional-instruction-codes
   Definition = A coded concept identifying additional instructions such as \"take with water\" or \"avoid operating heavy machinery\"
   Conformance = example
 
@@ -86,42 +86,75 @@
   Binding = unbound
   Definition = A coded concept describing the reason for an action taken on a medication dispense.
 
+ -- Row 13 -----------------------------------
+  Binding Name = MedicationDispenseCategory
+  Binding = code list
+  Reference = #medication-dispense-category
+  Definition = A code describing where the dispensed medication is expected to be consumed or administered
+  Conformance = preferred
+
 === Sheet medication-dispense-status =====================================
 
  -- Row 1 -----------------------------------
   Id = 1
+  Code = preparation
+  Display = Preparation
+  Definition = The core event has not started yet, but some staging activities have begun (e.g. initial compounding or packaging of medication). Preparation stages may be tracked for billing purposes.
+
+ -- Row 2 -----------------------------------
+  Id = 2
   Code = in-progress
   Display = In Progress
   Definition = The dispense has started but has not yet completed.
   v3 = ActStatus.active
 
- -- Row 2 -----------------------------------
-  Id = 2
+ -- Row 3 -----------------------------------
+  Id = 3
   Code = on-hold
   Display = On Hold
   Definition = Actions implied by the administration have been temporarily halted, but are expected to continue later. May also be called \"suspended\"
   v3 = ActStatus.suspended
 
- -- Row 3 -----------------------------------
-  Id = 3
+ -- Row 4 -----------------------------------
+  Id = 4
   Code = completed
   Display = Completed
   Definition = All actions that are implied by the dispense have occurred.
   v3 = ActStatus.completed
 
- -- Row 4 -----------------------------------
-  Id = 4
+ -- Row 5 -----------------------------------
+  Id = 5
   Code = entered-in-error
   Display = Entered in-Error
   Definition = The dispense was entered in error and therefore nullified.
   v3 = ActStatus.nullified
 
- -- Row 5 -----------------------------------
-  Id = 5
+ -- Row 6 -----------------------------------
+  Id = 6
   Code = stopped
   Display = Stopped
   Definition = Actions implied by the dispense have been permanently halted, before all of them occurred.
   v3 = ActStatus.aborted
+
+=== Sheet medication-dispense-category =====================================
+
+ -- Row 1 -----------------------------------
+  Id = 1
+  Code = inpatient
+  Display = Inpatient
+  Definition = Includes dispenses for medications to be administered or consumed in an inpatient or acute care setting
+
+ -- Row 2 -----------------------------------
+  Id = 2
+  Code = outpatient
+  Display = Outpatient
+  Definition = Includes dispenses for medications to be administered or consumed in an outpatient setting (for example, Emergency Department, Outpatient Clinic, Outpatient Surgery, Doctor\'s office)
+
+ -- Row 3 -----------------------------------
+  Id = 3
+  Code = community
+  Display = Community
+  Definition = Includes dispenses for medications to be administered or consumed by the patient in their home (this would include long term care or nursing homes, hospices, etc)
 
 === Sheet Invariants =====================================
 
@@ -140,33 +173,55 @@
   Short Name = Dispensing a medication to a named patient
   Definition = Indicates that a medication product is to be or has been dispensed for a named person/patient.  This includes a description of the medication product (supply) provided and the instructions for administering the medication.  The medication dispense is the result of a pharmacy system responding to a medication order.
   Comments = The WG will be updating the MedicationDispense resource  to adjust each affected resource to align with the workflow pattern (see workflow.html).
+  Workflow Mapping = ..Event
   RIM Mapping = Supply[moodCode=EVN]
   Committee Notes = Need to add confidentiality
   w5 = clinical.medication
 
  -- Row 2 -----------------------------------
   Element = MedicationDispense.identifier
-  Card. = 0..1
+  Card. = 0..*
   Type = Identifier
   Short Name = External identifier
   Definition = Identifier assigned by the dispensing facility - this is an identifier assigned outside FHIR.
+  Workflow Mapping = …identifier
   RIM Mapping = .id
   w5 = id
 
  -- Row 3 -----------------------------------
+  Element = MedicationDispense.partOf
+  Card. = 0..*
+  Type = Reference(Procedure)
+  Short Name = Event that dispense is part of
+  Definition = The procedure that the dispense is done because of
+  Workflow Mapping = …part of
+  RIM Mapping = .outboundRelationship[typeCode=COMP]/target[classCode=PROC,moodCode=EVN]
+
+ -- Row 4 -----------------------------------
   Element = MedicationDispense.status
   Card. = 0..1
   Is Modifier = Y
   Summary = y
   Type = code
   Binding = MedicationDispenseStatus
-  Short Name = in-progress | on-hold | completed | entered-in-error | stopped
+  Short Name = preparation | in-progress | on-hold | completed | entered-in-error | stopped
   Definition = A code specifying the state of the set of dispense events.
-  RIM Mapping = .status
+  Comments = This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid
+  Workflow Mapping = …status
+  RIM Mapping = .statusCode
   Committee Notes = Active - processed but not pickup Completed - process and pickup Aborted - process and put back in stock  This is not related to partialFill whioch is really a partialFulfillment of the order
   w5 = status
 
- -- Row 4 -----------------------------------
+ -- Row 5 -----------------------------------
+  Element = MedicationDispense.category
+  Card. = 0..1
+  Type = CodeableConcept
+  Binding = MedicationDispenseCategory
+  Short Name = Type of medication dispense
+  Definition = Indicates type of medication dispense and where the medication is expected to be consumed or administered.
+  RIM Mapping = .inboundRelationship[typeCode=COMP].source[classCode=OBS, moodCode=EVN, code=\"type of medication dispense\"].value
+
+ -- Row 6 -----------------------------------
   Element = MedicationDispense.medication[x]
   Card. = 1..1
   Summary = y
@@ -174,60 +229,82 @@
   Binding = MedicationCode
   Short Name = What medication was supplied
   Definition = Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.
-  Comments = If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the dispensed medication. When the only available information is a text description of the medication, Medication.code.text should be used
+  Comments = If only a code is specified, then it needs to be a code for a specific product. If more information is required, then the use of the medication resource is recommended.  For example if you require form or lot number, then you must reference the Medication resource. 
+  Workflow Mapping = …code
   v2 Mapping = RXD-2-Dispense/Give Code
   RIM Mapping = .participation[typeCode=PRD].role
   w5 = what
 
- -- Row 5 -----------------------------------
-  Element = MedicationDispense.patient
+ -- Row 7 -----------------------------------
+  Element = MedicationDispense.subject
   Card. = 0..1
   Summary = y
-  Type = Reference(Patient)
+  Type = Reference(Patient | Group)
   Short Name = Who the dispense is for
-  Definition = A link to a resource representing the person to whom the medication will be given.
+  Definition = A link to a resource representing the person or the group to whom the medication will be given.
   Comments = SubstanceAdministration->subject->Patient
+  Workflow Mapping = …subject
   v2 Mapping = PID-3-Patient ID List
   RIM Mapping = .participation[typeCode=SBJ].role[classCode=PAT]
   w5 = who.focus
 
- -- Row 6 -----------------------------------
+ -- Row 8 -----------------------------------
+  Element = MedicationDispense.context
+  Card. = 0..1
+  Type = Reference (Encounter | EpisodeOfCare)
+  Short Name = Encounter / Episode associated with event
+  Definition = The encounter or episode of care that establishes the context for this event.
+  Workflow Mapping = …context
+  RIM Mapping = .inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN, code=\"type of encounter or episode\"]
+
+ -- Row 9 -----------------------------------
   Element = MedicationDispense.supportingInformation
   Card. = 0..*
   Type = Reference(Any)
   Short Name = Information that supports the dispensing of the medication
   Definition = Additional information that supports the medication being dispensed.
+  RIM Mapping = .outboundRelationship[typeCode=PERT].target[A_SupportingClinicalStatement CMET minimal with many different choices of classCodes(ORG, ENC, PROC, SPLY, SBADM, OBS) and each of the act class codes draws from one or more of the following moodCodes (EVN, DEF, INT PRMS, RQO, PRP, APT, ARQ, GOL)]
   w5 = context
 
- -- Row 7 -----------------------------------
-  Element = MedicationDispense.dispenser
-  Card. = 0..1
-  Type = Reference(Practitioner)
-  Short Name = Practitioner responsible for dispensing medication
-  Definition = The individual responsible for dispensing the medication
-  v2 Mapping = RXD-10-Dispensing Provider / PRT-5-Participation Person: PRT-4-Participation=\'DP\' (RXD-10 is deprecated)
-  RIM Mapping = .participation[typeCode=PFM].role[classCode=ASSIGN]
-  w5 = who.actor
+ -- Row 10 -----------------------------------
+  Element = MedicationDispense.performer
+  Card. = 0..*
+  Short Name = Who performed event
+  Definition = Indicates who or what performed the event.  It should be assumed that the performer is the dispenser of the medication
+  Comments = The performer will be reviewed as part of STU4
+  Workflow Mapping = …performer
+  RIM Mapping = .participation[typeCode=PRF]
 
- -- Row 8 -----------------------------------
-  Element = MedicationDispense.dispensingOrganization
+ -- Row 11 -----------------------------------
+  Element = MedicationDispense.performer.actor
+  Card. = 1..1
+  Type = Reference(Practitioner | Organization | Patient | Device | RelatedPerson)
+  Short Name = Individual who was performing
+  Definition = The device, practitioner, etc. who performed the action.  It should be assumed that the actor is the dispenser of the medication.
+  Workflow Mapping = ….actor
+  RIM Mapping = .role
+
+ -- Row 12 -----------------------------------
+  Element = MedicationDispense.performer.onBehalfOf
   Card. = 0..1
   Type = Reference(Organization)
-  Short Name = Organization responsible for the dispense of the medication
-  Definition = The organizaation responsible for the dispense of the medication.
-  RIM Mapping = .participation[typeCode=RESP].role[classCode=ASSIGNED]
-  w5 = who.actor
+  Short Name = Organization organization was acting for
+  Definition = The organization the device or practitioner was acting on behalf of.
+  Workflow Mapping = ….onBehalfOf
+  RIM Mapping = .role.scopingOrganization
 
- -- Row 9 -----------------------------------
+ -- Row 13 -----------------------------------
   Element = MedicationDispense.authorizingPrescription
   Card. = 0..*
   Type = Reference(MedicationRequest)
   Short Name = Medication order that authorizes the dispense
   Definition = Indicates the medication order that is being dispensed against.
+  Comments = Maps to basedOn in Event logical model
+  Workflow Mapping = …basedOn
   v2 Mapping = ORC-2 Placer Order Number
   RIM Mapping = .outboundRelationship[typeCode=FLFS].target[moodCode=RQO]
 
- -- Row 10 -----------------------------------
+ -- Row 14 -----------------------------------
   Element = MedicationDispense.type
   Card. = 0..1
   Type = CodeableConcept
@@ -237,7 +314,7 @@
   v2 Mapping = RXD-33-Dispense Type
   RIM Mapping = .code
 
- -- Row 11 -----------------------------------
+ -- Row 15 -----------------------------------
   Element = MedicationDispense.quantity
   Card. = 0..1
   Type = SimpleQuantity
@@ -246,15 +323,16 @@
   v2 Mapping = RXD-4-Actual Dispense Amount / RXD-5.1-Actual Dispense Units.code / RXD-5.3-Actual Dispense Units.name of coding system
   RIM Mapping = .quantity
 
- -- Row 12 -----------------------------------
+ -- Row 16 -----------------------------------
   Element = MedicationDispense.daysSupply
   Card. = 0..1
   Type = SimpleQuantity
   Short Name = Amount of medication expressed as a timing amount
   Definition = The amount of medication expressed as a timing amount.
+  v2 Mapping = TQ1.6 Timing/Quantity Segment Service Duration.\rPrior to v2.5, ORC.7.3 Common Order Segment / Quantity/Timing / Duration component.  This is a formatted string, first character for the time unit (e.g., D=days), followed by the value.  For example, “D14” represents “14 days supply”\rFrom v2.5 on, TQ1.6 Timing/Quantity Segment / Service Duration.  This is a CQ data type (<Quantity (NM)> ^ <Units (CWE)>), thus for days supply, assuming the unit of measure is “days”, the numeric value is TQ1.6.1 (…|14^\rFor backwards compatibility, ORC.7 was permitted through v2.6.  Both forms (field and segment) may be present in v2.5, v2.5.1, and v2.6
   RIM Mapping = effectiveUseTime
 
- -- Row 13 -----------------------------------
+ -- Row 17 -----------------------------------
   Element = MedicationDispense.whenPrepared
   Card. = 0..1
   Summary = y
@@ -265,17 +343,18 @@
   RIM Mapping = .effectiveTime[xmi:type=IVL_TS].low
   Committee Notes = This is time of dispense (preparation).  The time of supply to the patient is a separate attribute.
 
- -- Row 14 -----------------------------------
+ -- Row 18 -----------------------------------
   Element = MedicationDispense.whenHandedOver
   Card. = 0..1
   Type = dateTime
   Short Name = When product was given out
   Definition = The time the dispensed product was provided to the patient or their representative.
+  Workflow Mapping = …occurrenceDateTime
   v2 Mapping = RXD-3-Date/Time Dispensed
   RIM Mapping = .effectiveTime[xmi:type=IVL_TS].high
   Committee Notes = The time of supply to the patient (pickup/handover in community or supply in inpatient).
 
- -- Row 15 -----------------------------------
+ -- Row 19 -----------------------------------
   Element = MedicationDispense.destination
   Card. = 0..1
   Type = Reference(Location)
@@ -285,7 +364,7 @@
   RIM Mapping = .participation[typeCode=DST].role
   Committee Notes = for inpatient setting this is core, but this may not be core for community setting.  Also core for internet pharmacy.  Core for radioactive materials  Will service delivery location be defined by another group?
 
- -- Row 16 -----------------------------------
+ -- Row 20 -----------------------------------
   Element = MedicationDispense.receiver
   Card. = 0..*
   Type = Reference(Patient|Practitioner)
@@ -294,38 +373,47 @@
   RIM Mapping = .participation[typeCode=RCV].role
   Committee Notes = This is in the core because Controlled Drugs must be signed for and the recievers identiy must be recorded.
 
- -- Row 17 -----------------------------------
+ -- Row 21 -----------------------------------
   Element = MedicationDispense.note
   Card. = 0..*
   Type = Annotation
   Short Name = Information about the dispense
   Definition = Extra information about the dispense that could not be conveyed in the other attributes.
+  Workflow Mapping = …note
   v2 Mapping = RXD-9 Dispense Notes
   RIM Mapping = .inboundRelationship[typeCode=SUBJ]/source[classCode=ACT,moodCode=EVN]
 
- -- Row 18 -----------------------------------
+ -- Row 22 -----------------------------------
   Element = MedicationDispense.dosageInstruction
   Card. = 0..*
   UML = right
-  Type = DosageInstruction
-  Short Name = Medicine administration instructions to the patient/caregiver
-  Definition = Indicates how the medication is to be used by the patient.  The pharmacist reviews the medication order prior to dispense and updates the dosageInstruction based on the actual product being dispensed.
-  Comments = When the dose or rate is intended to change over the entire administration period (e.g. Tapering dose prescriptions), multiple instances of dosage instructions will need to be supplied to convey the different doses/rates.
+  Type = Dosage
+  Short Name = How the medication is to be used by the patient or administered by the caregiver
+  Definition = Indicates how the medication is to be used by the patient.
+  Comments = When the dose or rate is intended to change over the entire administration period (e.g. Tapering dose prescriptions), multiple instances of dosage instructions will need to be supplied to convey the different doses/rates.\rThe pharmacist reviews the medication order prior to dispense and updates the dosageInstruction based on the actual product being dispensed.
   RIM Mapping = .outboundRelationship[typeCode=COMP].target[classCode=SBADM, moodCode=INT]
   Committee Notes = The RMIM has priority code on the act relationship.  How do we handle this?
 
- -- Row 19 -----------------------------------
+ -- Row 23 -----------------------------------
   Element = MedicationDispense.substitution
   Card. = 0..1
   UML = right
-  Short Name = Deals with substitution of one medicine for another
-  Definition = Indicates whether or not substitution was made as part of the dispense.  In some cases substitution will be expected but does not happen, in other cases substitution is not expected but does happen.  This block explains what substitution did or did not happen and why.
+  Short Name = Whether a substitution was performed on the dispense
+  Definition = Indicates whether or not substitution was made as part of the dispense.  In some cases substitution will be expected but does not happen, in other cases substitution is not expected but does happen.  This block explains what substitution did or did not happen and why.  If nothing is specified, substitution was not done.
   RIM Mapping = .outboundRelationship[typeCode=COMP].target[classCode=SUBST, moodCode=EVN]
   Committee Notes = Significant discssion around this topic.  May not have it right yet. What about the attribution?
 
- -- Row 20 -----------------------------------
-  Element = MedicationDispense.substitution.type
+ -- Row 24 -----------------------------------
+  Element = MedicationDispense.substitution.wasSubstituted
   Card. = 1..1
+  Type = boolean
+  Short Name = Whether a substitution was or was not performed on the dispense
+  Definition = True if the dispenser dispensed a different drug or product from what was prescribed.
+  RIM Mapping = .actionNegationInd
+
+ -- Row 25 -----------------------------------
+  Element = MedicationDispense.substitution.type
+  Card. = 0..1
   Type = CodeableConcept
   Binding = MedicationIntendedSubstitutionType
   Short Name = Code signifying whether a different drug was dispensed from what was prescribed
@@ -334,7 +422,7 @@
   RIM Mapping = .code
   Committee Notes = No substitution made or expected Subtitution made but not expected Substitution expected but not made Substitution made and expected
 
- -- Row 21 -----------------------------------
+ -- Row 26 -----------------------------------
   Element = MedicationDispense.substitution.reason
   Card. = 0..*
   Type = CodeableConcept
@@ -343,22 +431,49 @@
   Definition = Indicates the reason for the substitution of (or lack of substitution) from what was prescribed.
   RIM Mapping = .reasonCode
 
- -- Row 22 -----------------------------------
+ -- Row 27 -----------------------------------
   Element = MedicationDispense.substitution.responsibleParty
   Card. = 0..*
   Type = Reference(Practitioner)
   Short Name = Who is responsible for the substitution
   Definition = The person or organization that has primary responsibility for the substitution
   RIM Mapping = .participation[typeCode=PFM].role[classCode=ASSIGN]
-  Committee Notes = Who is this handled?  Elsewhere attribution is handled by FHIR
 
- -- Row 23 -----------------------------------
+ -- Row 28 -----------------------------------
+  Element = MedicationDispense.detectedIssue
+  Card. = 0..*
+  Aliases = Contraindication; Drug Utilization Review (DUR); Alert
+  Type = Reference (DetectedIssue)
+  Short Name = Clinical issue with action
+  Definition = Indicates an actual or potential clinical issue with or between one or more active or proposed clinical actions for a patient; e.g. Drug-drug interaction, duplicate therapy, dosage alert etc.
+  RIM Mapping = .inboundRelationship[typeCode=SUBJ]/source[classCode=ALRT,moodCode=EVN].value
+
+ -- Row 29 -----------------------------------
+  Element = MedicationDispense.notDone
+  Card. = 0..1
+  Type = boolean
+  Short Name = Whether the dispense was or was not performed
+  Definition = True if the dispense was not performed for some reason
+  Workflow Mapping = …notDone
+  RIM Mapping = .actionNegationInd
+
+ -- Row 30 -----------------------------------
+  Element = MedicationDispense.notDoneReason[x]
+  Card. = 0..1
+  Type = CodeableConcept|Reference(DetectedIssue)
+  Short Name = Why a dispense was not performed
+  Definition = Indicates the reason why a dispense was not performed
+  Workflow Mapping = …notDoneReason
+  RIM Mapping = .outboundRelationship[typeCode=RSON]/target[classCode=OBS,moodCode=EVN, code=\"not done reason\"].value
+
+ -- Row 31 -----------------------------------
   Element = MedicationDispense.eventHistory
   Card. = 0..*
   Type = Reference(Provenance)
-  Short Name = A list of events of interest in the lifecycle
+  Short Name = A list of releveant lifecycle events
   Definition = A summary of the events of interest that have occurred, such as when the dispense was verified.
-  Comments = See usage notes in Request pattern in request history
+  Comments = This may not include provenances for all versions of the request – only those deemed “relevant” or important. This SHALL NOT include the Provenance associated with this current version of the resource. (If that provenance is deemed to be a “relevant” change, it will need to be added as part of a later update. Until then, it can be queried directly as the Provenance that points to this version using _revinclude All Provenances should have some historical version of this Request as their subject.)
+  RIM Mapping = .inboundRelationship(typeCode=SUBJ].source[classCode=CACT, moodCode=EVN]
 
 === Sheet Search =====================================
 
@@ -369,10 +484,10 @@
   Path = MedicationDispense.destination
 
  -- Row 2 -----------------------------------
-  Name = dispenser
+  Name = performer
   Type = reference
   Description = Return dispenses performed by a specific individual
-  Path = MedicationDispense.dispenser
+  Path = MedicationDispense.performer.actor
 
  -- Row 3 -----------------------------------
   Name = identifier
@@ -396,7 +511,8 @@
   Name = patient
   Type = reference
   Description = The identity of a patient to list dispenses  for
-  Path = MedicationDispense.patient
+  Path = MedicationDispense.subject
+  Target Types = Patient
 
  -- Row 7 -----------------------------------
   Name = prescription
@@ -440,6 +556,18 @@
   Description = The identity of a receiver to list dispenses for
   Path = MedicationDispense.receiver
 
+ -- Row 14 -----------------------------------
+  Name = subject
+  Type = reference
+  Description = The identity of a patient to list dispenses  for
+  Path = MedicationDispense.subject
+
+ -- Row 15 -----------------------------------
+  Name = context
+  Type = reference
+  Description = Returns dispenses with a specific context (episode or episode of care)
+  Path = MedicationDispense.context
+
 === Sheet Profiles =====================================
 
  -- Row 1 -----------------------------------
@@ -465,7 +593,7 @@
  -- Row 3 -----------------------------------
   Name = SC Injection
   Identity = meddisp0302
-  Description = Dispense for Subcutaneous injection with multiple dosage lines - Insulin - Novolog (NDC Code) - active - includes Destination, Receiver, note.  DosageInstruction includes additionalInstructions as text
+  Description = Dispense for Subcutaneous injection with multiple dosage lines - Insulin - Novolog (NDC Code) - active - includes Destination, Receiver, note.  Dosage includes additionalInstructions as text
   Filename = medicationdispense0302.xml
 
  -- Row 4 -----------------------------------
@@ -483,7 +611,7 @@
  -- Row 6 -----------------------------------
   Name = Tapering Dose
   Identity = meddisp0305
-  Description = Dispense for Prednisone (RxNorm code) Tapering Dose - entered-in-error with multiple DosageInstruction lines that include coded additionalInstructions and multiple EventHistory elements
+  Description = Dispense for Prednisone (RxNorm code) Tapering Dose - entered-in-error with multiple Dosage lines that include coded additionalInstructions and multiple EventHistory elements
   Filename = medicationdispense0305.xml
 
  -- Row 7 -----------------------------------

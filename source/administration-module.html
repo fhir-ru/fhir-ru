@@ -13,7 +13,7 @@ in order to support consistent definitions for schema and UML derived code.
     [%file newnavbar%]
 
     <div class="col-12">
-        <table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg pa%]">[%wgt pa%]</a> </td><td id="ballot"><a href="help.html#status">Ballot Status</a>: <a href="history.html#pubs">n/a</a></td></tr></table>
+        <table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg pa%]">[%wgt pa%]</a> </td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
 
         <a name="root"> </a>
         <h2>Administration Module</h2>
@@ -48,12 +48,16 @@ in order to support consistent definitions for schema and UML derived code.
                         <li><a href="location.html">Location</a></li>
                         <li><a href="healthcareservice.html">HealthcareService</a></li>
                         <li><a href="endpoint.html">Endpoint</a></li>
+                        <li><a href="schedule.html">Schedule</a></li>
+                        <li><a href="slot.html">Slot</a></li>
                     </ul>
                 </td>
                 <td>
                     <ul>
                         <li><a href="episodeofcare.html">EpisodeOfCare</a></li>
                         <li><a href="encounter.html">Encounter</a></li>
+                        <li><a href="appointment.html">Appointment</a></li>
+                        <li><a href="appointmentresponse.html">AppointmentResponse</a></li>
                         <li><a href="account.html">Account</a></li>
                         <li><a href="flag.html">Flag</a></li>
                     </ul>
@@ -92,16 +96,16 @@ in order to support consistent definitions for schema and UML derived code.
             </blockquote>
             <blockquote>
                 <em>Note:</em> The Person resource may be used as a centralized register of people that may
-                eventually be involved in healthcare, and could be used as the central coe demographics register.<br />
+                eventually be involved in healthcare, and could be used as the central core demographics register.<br />
                 However the fields/values in Person are duplicated in the other resources, and in many cases the
                 Person resource will be hosted on external systems.
             </blockquote>
         </p>
 
-        <a name="patient-reg"> </a>
+        <a name="clinical-reg"> </a>
         <h4>Clinical Categorization Resources</h4>
         <p>
-            Most clinical actitivies occur grouped in some way. Long term care is typically covered by an EpisodeOfCare, where short term care by encounters. Account associates the tracking of transactions back to a Patient (or other resource). Flag is just used to highlight a warning or other notification about a patient (or other resource)
+            Most clinical activities occur grouped in some way. Long term care is typically covered by an EpisodeOfCare, where short term care by encounters. Account associates the tracking of transactions back to a Patient (or other resource). Flag is just used to highlight a warning or other notification about a patient (or other resource)
         </p>
         <table class="bare">
             <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
@@ -120,7 +124,7 @@ in order to support consistent definitions for schema and UML derived code.
             </blockquote>
         </p>
 
-        <a name="patient-reg"> </a>
+        <a name="dir-reg"> </a>
         <h4>Service Provider Directory Resources</h4>
         <p>
             Service Directory resources are usually stored in the administration section of applications, and may even be synchronized from external systems.
@@ -137,15 +141,26 @@ in order to support consistent definitions for schema and UML derived code.
         <div>
             <img src="administration-module-prov-dir.png" alt="Image showing the provider directory resources" width="513px" />
         </div>
-        <p>
-            <blockquote>
-                <em>Note:</em> The PractitionerRole resource is new concept enabling the seperation of roles from core details.
-                It has been tested at several Provider Directory Connectathons, and will be re-verified at the January 2017 WGM.<br />
-                The Role component in Practitioner is likely be removed in the near future once other flow-on effects have been considered completely.
-            </blockquote>
-        </p>
+        <p></p>
 
-        <a name="patient-reg"> </a>
+        <a name="sched"> </a>
+        <h4>Scheduling and Appointments</h4>
+        <p>
+            The Scheduling/Appointments resources permit the planning of encounters to occur and follow on with other clinical activities.
+        </p>
+        <table class="bare">
+            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            [%res-item Schedule%]
+            [%res-item Slot%]
+            [%res-item Appointment%]
+            [%res-item AppointmentResponse%]
+        </table>
+        <div>
+            <img src="administration-module-scheduling.png" alt="Image showing the scheduling interactions" width="600px" />
+        </div>
+        <p></p>
+
+        <a name="dev-sub"> </a>
         <h4>Devices and Substances</h4>
         <p>
             Other assets are often registered in the administration system, and maintained as master files.
@@ -185,14 +200,42 @@ in order to support consistent definitions for schema and UML derived code.
         </p>
 
         <a name="uses"> </a>
-        <h3>Common use Cases</h3>
+        <h3>Common Use Cases</h3>
         <p>
-            All systems require access to administrative resources, such as for:
+            Administration Resources are cornerstone resources that are used by clinical and other domains of the FHIR Standard.
         </p>
         <ul>
-            <li>Maintaining master file lists of patients, practitioners, organizations, locations, etc.</li>
-            <li>Synchronizing/interrogating content from an external registry. Such as a Services Directory or centralized Person register</li>
-            <li></li>
+            <li>
+                <b>Managing a Master Record of a Patient and a Person</b> (e.g. MPI)<br/>
+                A <a href="patient.html">Patient</a> resource is used to describe patient demographic and visit information and any updates to it.
+                It can be used to communicate <a href="patient.html">Patient</a> information to other systems
+                (e.g. other registries, clinical, ancillary and financial systems).
+                Some systems distinguish the Patient Registry (or Client Registry) from the Person Registry.
+                A <a href="person.html">Person</a> resource is a base for the Person Registry system.
+                The Patient/Person Management use case includes creation, update, as well as merge/unmerge and link/unlink scenarios.
+            </li>
+            <li>
+                <b>Managing a Master Record of a Provider and Service Catalogue</b> (e.g. Provider Registry, Service Directory)<br />
+                A <a href="practitioner.html">Practitioner</a> resource is a base resource for enabling the registry of individuals, related to providing health care services.
+                Other resources, such as <a href="organization.html">Organization</a>, <a href="location.html">Location</a>, <a href="healthcareservice.html">HealthcareService</a>, are creating a complete picture of where, how and by whom
+                the care services are enabled to a patient. The resources can be used for managing the master record or as a reference in
+                clinical resources to inform about participants and places for various clinical resources.
+            </li>
+            <li>
+                <b>Managing Other Administrative Records</b><br />
+                The Administration domain of the FHIR standard includes creation and update of <a href="device.html">Device</a> and <a href="substance.html">Substance</a> records.
+                Resources can be used for managing a master record or communicating its information to other systems.
+            </li>
+            <li>
+                <b>Enabling Patient Profiles, Clinical Reporting and Connecting Clinical Records</b><br />
+                Administration Resources are referred by almost all clinical resources.
+                Querying systems, using the references to Administration Resources enables the creation of profiles and reports of various complexities.
+            </li>
+            <li>
+                <b>Enabling Clinical Grouping and Financial Reporting</b><br />
+                Other use cases are included in the roadmap of resources, developed by the Patient Administration group.
+                The roadmap section lists plans and updates of the current work.
+            </li>
         </ul>
 
         <a name="roadmap"> </a>
@@ -203,7 +246,7 @@ in order to support consistent definitions for schema and UML derived code.
         <ul>
             <li>Encounters and Scheduling <i>(enhance maturity of encounters and further develop in/outpatient scheduling)</i></li>
             <li>Service Provider Directory <i>(in co-ordination with the Argonaut Provider Directory group)</i></li>
-            <li>Financial Management interactions <i>(account/coverage, then billable item, which links administration to billing)</i></li>
+            <li>Financial Management interactions <i>(account/coverage, then charge item, which links administration to billing)</i></li>
         </ul>
         <p>
             Many of the administrative resources are part of the core resources that most systems

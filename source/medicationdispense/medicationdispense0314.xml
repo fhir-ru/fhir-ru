@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MedicationDispense xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://hl7.org/fhir ../schema/medicationdispense.xsd"
-    xmlns="http://hl7.org/fhir">
+ xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationdispense.xsd"
+ xmlns="http://hl7.org/fhir">
     <id value="meddisp0314"/>
     <contained>
         <Medication>
@@ -14,7 +14,6 @@
                 </coding>
             </code>
             <isBrand value="true"/>
-            <product>
                 <form>
                     <coding>
                         <system value="http://snomed.info/sct"/>
@@ -43,7 +42,7 @@
                         </denominator>
                     </amount>
                 </ingredient>
-            </product>
+            
         </Medication>
     </contained>
     <status value="completed"/>
@@ -51,20 +50,24 @@
         <!-- Linked to a RESOURCE Medication -->
         <reference value="#med0313"/>
     </medicationReference>
-    <patient>
+    <subject>
         <reference value="Patient/pat1"/>
         <display value="Donald Duck "/> 
-    </patient>
-    <dispenser>
-        <reference value="Practitioner/f006"/>
-        <display value="Rob van den Berk"/>
-    </dispenser>
+    </subject>
+    <performer>
+        <actor>
+            <reference value="Practitioner/f006"/>
+        </actor>
+        <onBehalfOf>
+            <reference value="Organization/2.16.840.1.113883.19.5"></reference>
+        </onBehalfOf>
+    </performer>
     <authorizingPrescription>
         <reference value="MedicationRequest/medrx0315"/>
     </authorizingPrescription>
     <type>
         <coding>
-            <system value="http://hl7.org/fhir/ValueSet/v3-ActPharmacySupplyType"/>
+            <system value="http://hl7.org/fhir/v3/ActCode"/>
             <code value="TF"/>
             <display value="Trial Fill"/>
         </coding>

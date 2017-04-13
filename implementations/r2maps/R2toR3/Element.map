@@ -1,13 +1,15 @@
 ﻿map "http://hl7.org/fhir/StructureMap/Element2to3" = "R2 to R3 Conversions for Period"
 
-uses "http://hl7.org/fhir/StructureDefinition/Period" as source
-uses "http://hl7.org/fhir/StructureDefinition/PeriodR2" as target
+uses "http://hl7.org/fhir/StructureDefinition/ElementR2" as source
+uses "http://hl7.org/fhir/StructureDefinition/Element" as target
 
+imports "http://hl7.org/fhir/StructureMap/*2to3"
 
-group Element 
+group for type+types  Element
   input src : ElementR2 as source
-  input tgt : Element as Target
+  input tgt : Element as target
 
-  "extensions" : for src.extension as vs make tgt.extension as vt then Extension(vs, vt)
+  "Element-id" : for src.id make tgt.id
+  "Element-extensions" : for src.extension make tgt.extension
+
 endgroup
-

@@ -4,7 +4,10 @@
  xsi:schemaLocation="http://hl7.org/fhir ../../schema/medicationstatement.xsd"
  xmlns="http://hl7.org/fhir">
   <id value="example004"/>
-  <status value="completed" />  
+  <partOf>
+    <reference value="Observation/blood-pressure"></reference>
+  </partOf>
+  <status value="completed" /> 
   <medicationCodeableConcept>
     <coding>
       <system value="http://snomed.info/sct"/>
@@ -12,24 +15,24 @@
       <display value="Amoxicillin (product)"/>
     </coding>
   </medicationCodeableConcept>
-  <subject>
-    <reference value="Patient/pat1"/>
-    <display value="Donald Duck"/> 
-  </subject>
   <effectiveDateTime value="2014-01-23"></effectiveDateTime>
+  <dateAsserted value="2015-02-22"/>
   <informationSource>
     <reference value="Patient/pat1"/>
     <display value="Donald Duck"/> 
   </informationSource>
-  <dateAsserted value="2015-02-22"/>
-  <notTaken value="n"/>
-  <reasonForUseCodeableConcept>
+  <subject>
+    <reference value="Patient/pat1"/>
+    <display value="Donald Duck"/> 
+  </subject>
+  <taken value="y"/>
+  <reasonCode>
     <coding>
       <system value="http://snomed.info/sct"/>
       <code value="65363002"/>
       <display value="Otitis Media"/>
     </coding>
-  </reasonForUseCodeableConcept>
+  </reasonCode>
   <note>
     <text value="Patient indicates they miss the occasional dose" />
   </note>

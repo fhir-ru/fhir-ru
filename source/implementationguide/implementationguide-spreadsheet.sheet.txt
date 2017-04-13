@@ -90,7 +90,7 @@
   UML = 250;0
   Type = MetadataResource
   Short Name = A set of rules about how FHIR is used
-  Definition = A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole, and to publish a computable definition of all the parts
+  Definition = A set of rules of how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole and to publish a computable definition of all the parts
   Requirements = An implementation guide is able to define default profiles that must apply to any use of a resource, so validation services may need to take one or more implementation guide resources when validating.
   RIM Mapping = n/a
   w5 = conformance.misc
@@ -115,13 +115,13 @@
   Element = ImplementationGuide.experimental
 
  -- Row 7 -----------------------------------
-  Element = ImplementationGuide.publisher
+  Element = ImplementationGuide.date
 
  -- Row 8 -----------------------------------
-  Element = ImplementationGuide.contact
+  Element = ImplementationGuide.publisher
 
  -- Row 9 -----------------------------------
-  Element = ImplementationGuide.date
+  Element = ImplementationGuide.contact
 
  -- Row 10 -----------------------------------
   Element = ImplementationGuide.description
@@ -197,7 +197,7 @@
   Element = ImplementationGuide.package.resource
   Card. = 1..*
   Summary = Y
-  UML = 490;220
+  UML = 550;220
   Short Name = Resource in the implementation guide
   Definition = A resource that is part of the implementation guide. Conformance resources (value set, structure definition, capability statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource
 
@@ -206,7 +206,7 @@
   Card. = 1..1
   Summary = Y
   Type = boolean
-  Short Name = If not an example, has it\'s normal meaning
+  Short Name = If not an example, has its normal meaning
   Definition = Whether a resource is included in the guide as part of the rules defined by the guide, or just as an example of a resource that conforms to the rules and/or help implementers understand the intent of the guide
   Comments = Typically, conformance resources and knowledge resources are directly part of the implementation guide, with their normal meaning, and patient linked resources are usually examples. However this is not always true
 
@@ -255,7 +255,7 @@
   Element = ImplementationGuide.global
   Card. = 0..*
   Summary = Y
-  UML = 250;260
+  UML = 250;300
   Short Name = Profiles that apply globally
   Definition = A set of profiles that all resources covered by this implementation guide must conform to
   Comments = See [Default Profiles](implementationguide.html#default) for a discussion of which resources are \'covered\' by an implementation guide

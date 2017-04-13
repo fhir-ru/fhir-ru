@@ -54,6 +54,12 @@
   v2 = <0202.Internet(for non-email kinds of addresses)
 
  -- Row 6 -----------------------------------
+  Id = 7
+  Code = sms
+  Display = SMS
+  Definition = A contact that can be used for sending an sms message (e.g. mobide phones, some landlines)
+
+ -- Row 7 -----------------------------------
   Id = 4
   Code = other
   Display = Other
@@ -126,7 +132,7 @@
   Inv. = 2
   Type = code
   Binding = ContactPointSystem
-  Short Name = phone | fax | email | pager | url | other
+  Short Name = phone | fax | email | pager | url | sms | other
   Definition = Telecommunications form for contact point - what communications system is required to make use of the contact
   v2 Mapping = XTN.3
   RIM Mapping = ./scheme
@@ -175,5 +181,5 @@
   Short Name = Time period when the contact point was/is in use
   Definition = Time period when the contact point was/is in use
   v2 Mapping = N/A
-  RIM Mapping = ./useablePeriod[type=\"IVL<TS>\"]
+  RIM Mapping = ./usablePeriod[type=\"IVL<TS>\"]
   ServD Mapping = ./StartDate and ./EndDate

@@ -31,7 +31,7 @@
   Id = 3
   Code = override
   Display = Override ValueSet Version
-  Definition = Use this version of the code system irrespective of which version is specified by a value set. Note that this has obvious safety issues, in that it may result in a value set expansion giving a different list of codes that is both wrong and unsafe, and implementers should only use this capability reluctantly. It primarily exists to deal with situations where specifications have fallen into decay as time passes
+  Definition = Use this version of the code system irrespective of which version is specified by a value set. Note that this has obvious safety issues, in that it may result in a value set expansion giving a different list of codes that is both wrong and unsafe, and implementers should only use this capability reluctantly. It primarily exists to deal with situations where specifications have fallen into decay as time passes. If a  version is override, the version used SHALL explicitly be represented in the expansion parameters
 
 === Sheet Invariants =====================================
 
@@ -61,9 +61,11 @@
  -- Row 1 -----------------------------------
   Element = ExpansionProfile
   Aliases = ValueSetExpansionProfile
+  UML = 0;0
   Type = MetadataResource
   Short Name = Defines behaviour and contraints on the ValueSet Expansion operation
   Definition = Resource to define constraints on the Expansion of a FHIR ValueSet.
+  RIM Mapping = N/A
   w5 = conformance.terminology
 
  -- Row 2 -----------------------------------
@@ -86,14 +88,13 @@
   Element = ExpansionProfile.experimental
 
  -- Row 8 -----------------------------------
-  Element = ExpansionProfile.publisher
+  Element = ExpansionProfile.date
 
  -- Row 9 -----------------------------------
-  Element = ExpansionProfile.contact
-  UML = up
+  Element = ExpansionProfile.publisher
 
  -- Row 10 -----------------------------------
-  Element = ExpansionProfile.date
+  Element = ExpansionProfile.contact
 
  -- Row 11 -----------------------------------
   Element = ExpansionProfile.description
@@ -108,7 +109,7 @@
   Element = ExpansionProfile.fixedVersion
   Card. = 0..*
   Summary = y
-  UML = left
+  UML = 300;0
   Short Name = Fix use of a code system to a particular version
   Definition = Fix use of a particular code system to a particular version
 
@@ -116,9 +117,8 @@
   Element = ExpansionProfile.fixedVersion.system
   Card. = 1..1
   Summary = y
-  UML = up
   Type = uri
-  Short Name = System to have it\'s version fixed
+  Short Name = System to have its version fixed
   Definition = The specific system for which to fix the version
   Comments = See \'\'Coding.system\'\' for further documentation
 
@@ -143,7 +143,7 @@
   Element = ExpansionProfile.excludedSystem
   Card. = 0..1
   Summary = y
-  UML = down
+  UML = 300;120
   Short Name = Systems/Versions to be exclude
   Definition = Code system, or a particular version of a code system to be excluded from value set expansions
   Comments = When a system is excluded, and this makes a material difference to the expansion, the exclusion SHALL  be noted in the expansion parameters using a parameter \'excluded\'
@@ -180,7 +180,7 @@
   Element = ExpansionProfile.designation
   Card. = 0..1
   Summary = y
-  UML = right
+  UML = 300;400
   Short Name = When the expansion profile imposes designation contraints
   Definition = A set of criteria that provide the constraints imposed on the value set expansion by including or excluding designations
 
@@ -188,7 +188,7 @@
   Element = ExpansionProfile.designation.include
   Card. = 0..1
   Summary = y
-  UML = up
+  UML = 300;300
   Type = =DesignationInclude
   Short Name = Designations to be included
   Definition = Designations to be included
@@ -197,7 +197,7 @@
   Element = ExpansionProfile.designation.include.designation
   Card. = 0..*
   Summary = y
-  UML = up
+  UML = 300;240
   Type = =DesignationIncludeDesignation
   Short Name = The designation to be included
   Definition = A data group for each designation to be included
@@ -219,15 +219,15 @@
   Summary = y
   Type = Coding
   Binding = ConceptDesignationUse
-  Short Name = Designation use
-  Definition = Designation uses for inclusion in the expansion
+  Short Name = What kind of Designation to include
+  Definition = Which kinds of designation to include in the expansion
   Comments = In the absence of a use, all designations are retained which match the designation.language parameter for this include.designation element
 
  -- Row 27 -----------------------------------
   Element = ExpansionProfile.designation.exclude
   Card. = 0..1
   Summary = y
-  UML = down
+  UML = 300;500
   Type = =DesignationExclude
   Short Name = Designations to be excluded
   Definition = Designations to be excluded
@@ -236,7 +236,7 @@
   Element = ExpansionProfile.designation.exclude.designation
   Card. = 0..*
   Summary = y
-  UML = down
+  UML = 300;600
   Type = =DesignationExcludeDesignation
   Short Name = The designation to be excluded
   Definition = A data group for each designation to be excluded
@@ -258,8 +258,8 @@
   Summary = y
   Type = Coding
   Binding = ConceptDesignationUse
-  Short Name = Designation use
-  Definition = Designation uses for exclusion in the expansion
+  Short Name = What kind of Designation to exclude
+  Definition = Which kinds of designation to exclude from the expansion
   Comments = In the absence of a use, all designations are retained which match the designation.language parameter for this exclude.designation element
 
  -- Row 31 -----------------------------------
@@ -290,7 +290,7 @@
   Short Name = Nested codes in the expansion or not
   Definition = Controls whether or not the value set expansion nests codes or not (i.e. ValueSet.expansion.contains.contains).
   Requirements = Heirahical contains are useful for UI use, but not when validating. Code Generation etc. may depend on context
-  Comments = Nested codes excluded if excludeNested is present and has a value of \"true\"
+  Comments = Nesting of codes is excluded if excludeNested is present and has a value of \"true\"
 
  -- Row 34 -----------------------------------
   Element = ExpansionProfile.excludeNotForUI

@@ -11,6 +11,7 @@
 	<name value="TestScript Example Search"/>
 	<status value="draft"/>
 	<experimental value="true"/>
+	<date value="2017-01-18"/>
 	<publisher value="HL7"/>
 	<contact>
 		<name value="Support"/>
@@ -20,7 +21,6 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<date value="2016-09-26"/>
 	<description value="TestScript example resource with simple Patient search test. The read tests will utilize user defined dynamic variables that will hold the Patient search parameter values."/>
 	<jurisdiction>
 		<coding>
@@ -33,11 +33,14 @@
 	<copyright value="© HL7.org 2011+"/>
 
 	<metadata>
+		<link>
+			<url value="http://hl7.org/fhir/patient.html"/>
+			<description value="Demographics and other administrative information about an individual or animal receiving care or other health-related services."/>
+		</link>
 		<capability>
 			<required value="true"/>
 			<description value="Patient Search Operation"/>
 			<link value="http://hl7.org/fhir/http.html#search"/>
-			<link value="http://hl7.org/fhir/patient.html"/>
 			<capabilities>
 				<reference value="CapabilityStatement/example" />
 			</capabilities>
@@ -70,6 +73,53 @@
 		<description value="Enter patient search criteria for a known given name on the target system"/>
 		<hint value="[Given name]"/>
 	</variable>
+	<variable>
+		<name value="PatientSearchBundleTotal"/>
+		<description value="Evaluate the returned Patient searchset Bundle.total value"/>
+		<expression value="Bundle.total.toInteger()"/>
+	</variable>
+
+	<setup>
+		<action>
+			<operation>
+				<type>
+					<system value="http://hl7.org/fhir/testscript-operation-codes"/>
+					<code value="search"/>
+				</type>
+				<resource value="Patient"/>
+				<description value="Test simple search to verify server support."/>
+				<accept value="xml"/>
+				<params value="?family=DONTEXPECTAMATCH&amp;given=DONTEXPECTAMATCH"/>
+			</operation>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the request url contains the family search parameter."/>
+				<direction value="request"/>
+				<operator value="contains"/>
+				<requestURL value="family"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)."/>
+				<direction value="response"/>
+				<responseCode value="200"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned resource type is Bundle."/>
+				<resource value="Bundle"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Bundle correctly defines the navigation links."/>
+				<navigationLinks value="true"/>
+			</assert>
+		</action>
+	</setup>
 
 	<test id="01-PatientCreateSearch">
 		<name value="Patient Create Search"/>
@@ -173,6 +223,12 @@
 				<operator value="equals"/>
 				<path value="fhir:Bundle/fhir:type/@value"/>
 				<value value="searchset"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the returned Bundle total is greater than or equal to the number of returned entries."/>
+				<expression value="Bundle.total.toInteger() &gt;= entry.count()"/>
 			</assert>
 		</action>
 	</test>

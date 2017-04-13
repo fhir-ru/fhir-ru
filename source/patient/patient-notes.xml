@@ -34,10 +34,10 @@ to support the following scenarios where multiple patient records exist:</p>
 <h3>Duplicate Patient records</h3>
 <p>Managing Patient registration is a well known difficult problem. Around 2% of registrations are in error, 
 mostly duplicate records. Sometimes the duplicate record is caught fairly quickly and retired before much 
-data is accumulated. In other cases, substantial amounts of data may accumulate. By using a link of type 'replace',
+data is accumulated. In other cases, substantial amounts of data may accumulate. By using a link of type 'replaced-by',
 the record containing such a link is marked as a duplicate and the link points forward to a record that should
 be used instead. Note that the record pointed to may in its turn have been identified as created in error and forward
-to yet another Patient resource. Records that replace another record, do not point back to the replaced record.
+to yet another Patient resource. Records that replace another record <i>may</i> use a link type of 'replaces' pointing to the old record.
 </p>
 
 <h3>Patient record in a Patient index</h3>
@@ -55,7 +55,7 @@ other patient records. It is not a requirement that such links are bilateral.
 </p>
 
 <a name="linking"> </a>
-<h2>Patient vs. Person vs. Patient.Link</h2>
+<h2>Patient vs. Person vs. Patient.Link vs. Linkage</h2>
 <p>
 The Person resource on the surface appears to be very similar to the Patient resource, and the usage for it is very similar
 to using the Patient.Link capability.<br/>
@@ -73,7 +73,16 @@ system is able to see that this data is changed and prompt the organization to f
 the person record if they want their details updated, or if they no longer need services and they should be cancelled, 
 as they've moved from the area.
 </p>
-  
+<p>
+The <a href="linkage.html">Linkage</a> resource and the Patient.link property conceptually perform similar functions in FHIR, 
+both provide an assertion of linkages between multiple resource instances that are referring to the same underlying individual.<br/>
+When a Patient resource is linked/merged then it needs to have an internal indication that there is another
+patient resource that should be considered when referencing other records, which is achieved using the patient.link property.<br/>
+Not detecting/checking for a potential linkage could mean that related clinical records are not discovered, potentially impacting patient safety.
+(which is why using the Linkage resource is not appropriate, as its use in this manner would force the use of either another
+query to potentially locate other patient resources to consider, or use _revInclude)
+</p>
+
 <a name="contact"> </a>
 <h2>Patient.contact vs. RelatedPerson</h2>
 <p>
@@ -179,7 +188,7 @@ does not mandate that FHIR servers migrate information between such records on f
  <li>Health information administrators may call the process "merging", but it is often implemented as "linking" at the record level</li>
  <li>Servers are allowed to implement merging/record migration even though it is not mandated. </li>
 </ul>
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu"> </a>
 <p>
 <b>STU Note:</b>   We are seeking input from the implementer community on what effect linking/merging/unlinking should have on 
@@ -188,32 +197,36 @@ How should an unlink behavior be done? (Assuming that no data was "re-allocated"
 These suggested updated behaviors could be the subject of a future connectathon.
 </p>
 <p>
-Feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+Feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">here</a>.
 </p>
 </blockquote>
 
 <a name="match"> </a>
 <h2>Patient Matching using an MPI</h2>
 <p>
-A Master Patient Index (<a href="http://en.wikipedia.org/wiki/Enterprise_master_patient_index">MPI</a>) is a service used to manage patient identification in a context
+A Master Patient Index (<a href="http://en.wikipedia.org/wiki/Enterprise_master_patient_index">MPI</a>)
+is a service used to manage patient identification in a context
 where multiple patient databases exist. Healthcare applications and middleware use the 
 MPI to match patients between the databases, and as new patient details are encountered.
 MPIs are highly specialized applications, often tailored extensively to the institution's 
 particular mix of patients. MPIs can also be run on a regional and national basis. 
 </p>
 <p>
-To ask an MPI to match a patient, clients use the "mpi" <a href="search.html#query">query</a>,
-which uses the normal search parameters defined for patient. However, rather than
-their normal use, they are interpreted as MPI inputs - e.g. instead of requiring 
-that the resources literally contain the search parameters, they are passed to an 
-MPI algorithm of some kind that uses them to determine the most appropriate matches 
-in the patient set. 
+To ask an MPI to match a patient, clients call the patient <a href="patient-operations.html#match">$match</a> operation,
+which processes a parameters resource containing a complete or fragment of a patient resource, along with some other control parameters.<br/>
+This provided patient resource does not need to pass full validation (mandatory fields, or invariants) as the resource will not be stored,
+it does however need to be a parsable instance.<br/> 
+The MPI can then use the properties of the resource as MPI inputs, and processed using an internal MPI algorithm of some kind to determine the most appropriate matches 
+in the patient set. It does not have to use all the properties provided, and may ignore others provided quietly.<br/>
+A specific profile (with the required fields/invariants) can be used to define what parameters the MPI algorithm requires.
 </p>
 <pre>
-  GET [base]/Patient?_query=mpi&amp;parameters...
+  POST [base]/Patient/$match
+  [some headers including content-type xml or json]
+  [parameters body with patient resource inside]
 </pre>
 <p>
-The response from an "mpi" query is a set of patient records, ordered from most
+The response from an "mpi" $match operation is a set of patient records, ordered from most
 likely to least likely. If there are not patient matches, the MPI SHALL return 
 an empty search set with no error, but may include an <a href="operationoutcome.html">operation outcome</a> with 
 further advice. All patient records SHALL have a score from 0 to 1, where
@@ -228,7 +241,7 @@ further advice. All patient records SHALL have a score from 0 to 1, where
       &lt;/Patient&gt;
     &lt;/resource&gt;
     &lt;search&gt;
-      &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/patient-mpi-match&quot;&gt;
+      &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/match-grade&quot;&gt;
         &lt;valueCode value=&quot;probable&quot;/&gt;
       &lt;/extension&gt;
       &lt;score value=&quot;0.80&quot;/&gt;
@@ -236,10 +249,17 @@ further advice. All patient records SHALL have a score from 0 to 1, where
   &lt;/entry&gt; 
 </pre>
 <p>
-The patient-mpi-match extension has one of the <a href="valueset-patient-mpi-match.html">following codes</a>:
+The match-grade extension has one of the <a href="valueset-match-grade.html">following codes</a>:
 </p>
-[%codelist-nh http://hl7.org/fhir/patient-mpi-match%]
+[%codelist-nh http://hl7.org/fhir/match-grade%]
 <p>
+  The purpose of using an MPI search versus a regular search is that the MPI search is really intended to target and 
+  find a specific single patient for recording information about reducing errors through incorrectly selecting the
+  wrong patient. Often MPIs won't return data if there is insuffience search parameter data, such as a partial surname.<br/>
+  This compares to a regular search which can be used for finding lists of patients, such as to locate a group of patients
+  that share a property in common, such as live in a specific location, or fit within an age range for performing population analysis.
+</p>
+<!--<p>
 One optional parameter to the MPI match operation is "userid", which is
 used to pass the user details from a trusted client to the MPI. This may 
 be used by the MPI to restrict the possible matches that are returned, based 
@@ -248,19 +268,9 @@ may well get a different result than a patient trying to find their own
 record. Note that this parameter is used where the user would not be 
 expected to log in to the MPI directly; whether this is appropriate or not is 
 a deployment choice.
-</p>
+</p>-->
 <p>
-A <a href="patient-mpi-search.html">formal definition</a> for the MPI query is published.
+A <a href="operation-patient-match.html">formal definition</a> for the MPI $match operation is published.
 </p>
-<blockquote class="dstu-note">
-<a name="dstu-2"> </a>
-<p>
-<b>STU Note:</b>  This is the first draft of this approach, as a result of 
-connectathon testing.
-</p>
-<p>
-Feedback is sought <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
-</p>
-</blockquote>
 
 </div>

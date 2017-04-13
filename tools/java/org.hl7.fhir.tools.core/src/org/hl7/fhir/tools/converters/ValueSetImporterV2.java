@@ -16,6 +16,8 @@ import java.util.Set;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.hl7.fhir.definitions.model.WorkGroup;
+import org.hl7.fhir.definitions.model.ResourceDefn.StandardsStatus;
 import org.hl7.fhir.dstu3.formats.FormatUtilities;
 import org.hl7.fhir.dstu3.model.CodeSystem;
 import org.hl7.fhir.dstu3.model.CodeSystem.CodeSystemContentMode;
@@ -34,7 +36,6 @@ import org.hl7.fhir.dstu3.model.ValueSet.ValueSetComposeComponent;
 import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
 import org.hl7.fhir.dstu3.terminologies.ValueSetUtilities;
 import org.hl7.fhir.dstu3.utils.ToolingExtensions;
-import org.hl7.fhir.dstu3.validation.ValidationMessage;
 import org.hl7.fhir.igtools.spreadsheets.CodeSystemConvertor;
 import org.hl7.fhir.tools.publisher.PageProcessor;
 import org.hl7.fhir.tools.publisher.SectionNumberer;
@@ -43,6 +44,7 @@ import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.validation.ValidationMessage;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 import org.hl7.fhir.utilities.xml.XMLUtil;
@@ -344,6 +346,7 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
 
   private ValueSet buildV2ValueSet(String id, Element e) throws Exception {
     ValueSet vs = new ValueSet();
+    ValueSetUtilities.markStatus(vs, null, StandardsStatus.EXTERNAL.toDisplay(), "0");
     ValueSetUtilities.makeShareable(vs);
     vs.setId("v2-"+FormatUtilities.makeId(id));
     vs.setUserData("filename", Utilities.path("v2", id, "index.html"));
@@ -353,8 +356,8 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
     vs.setVersion(MAX_VER);
     vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org"));
     vs.setStatus(PublicationStatus.ACTIVE);
-    vs.setExperimental(true);
-    vs.setDateElement(new DateTimeType(date)); 
+    vs.setExperimental(false);
+    vs.setDateElement(new DateTimeType(date));
     StringBuilder s = new StringBuilder();
     Set<String> sources = vsImports.get(id);
 
@@ -426,7 +429,7 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
         String comment = "";
         if (comments.containsKey(cd)) {
           comment = comments.get(cd);
-          ToolingExtensions.addComment(concept, comment);
+          ToolingExtensions.addVSComment(concept, comment);
         }
         // be display name, not
         // definition. Open for
@@ -480,6 +483,7 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
 
   private void buildV2CodeSystem(VSPack vp, String id, Element e) throws Exception {
     ValueSet vs = new ValueSet();
+    ValueSetUtilities.markStatus(vs, null, StandardsStatus.EXTERNAL.toDisplay(), "0");
     ValueSetUtilities.makeShareable(vs);
     vs.setId("v2-"+FormatUtilities.makeId(id));
     vs.setUserData("filename", Utilities.path("v2", id, "index.html"));
@@ -490,13 +494,14 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
     vs.setVersion(MAX_VER);
     vs.addContact().getTelecom().add(Factory.newContactPoint(ContactPointSystem.URL, "http://hl7.org"));
     vs.setStatus(PublicationStatus.ACTIVE);
-    vs.setExperimental(true);
+    vs.setExperimental(false);
     vs.setDateElement(new DateTimeType(date)); 
     
     
     StringBuilder s = new StringBuilder();
 
     CodeSystem cs = new CodeSystem();
+    CodeSystemUtilities.markStatus(cs, null, StandardsStatus.EXTERNAL.toDisplay(), "0");
     String desc = "";
     // we use the latest description of the table
     Element c = XMLUtil.getFirstChild(e);
@@ -559,7 +564,7 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
       if (comments.containsKey(cd)) {
         comment = comments.get(cd);
         commentVer = commentVersions.get(cd);
-        ToolingExtensions.addComment(concept, comment);
+        ToolingExtensions.addCSComment(concept, comment);
       }
       // be display name, not
       // definition. Open for
@@ -641,6 +646,7 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
 
     ValueSet vs = new ValueSet();
     ValueSetUtilities.makeShareable(vs);
+    ValueSetUtilities.markStatus(vs, null, StandardsStatus.EXTERNAL.toDisplay(), "0");
     vs.setId("v2-"+FormatUtilities.makeId(version)+"-"+id);
     vs.setUserData("filename", Utilities.path("v2", id, version, "index.html"));
     vs.setUserData("path", Utilities.path("v2", id, version, "index.html"));
@@ -656,6 +662,7 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
     CodeSystem cs = new CodeSystem();
     CodeSystemUtilities.makeShareable(cs);
     CodeSystemConvertor.populate(cs, vs);
+    CodeSystemUtilities.markStatus(cs, null, StandardsStatus.EXTERNAL.toDisplay(), "0");
     cs.setUserData("spec.vs.cs", vs);
     cs.setContent(CodeSystemContentMode.COMPLETE);
 
@@ -738,7 +745,7 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
       concept.setCode(cd);
       concept.setDisplay(codes.get(cd)); // we deem the v2 description to
       if (comments.containsKey(cd))
-        ToolingExtensions.addComment(concept, comments.get(cd));
+        ToolingExtensions.addCSComment(concept, comments.get(cd));
       
       
       // be display name, not
@@ -806,7 +813,7 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
           Utilities.clearDirectory(page.getFolders().dstDir + "v2" + File.separator + id);
           String src = TextFile.fileToString(page.getFolders().srcDir + "v2" + File.separator + "template-tbl.html");
           ValueSet vs = page.getValueSets().get("http://hl7.org/fhir/ValueSet/v2-"+id);
-          String sf = page.processPageIncludes(id + ".html", src, "v2Vocab", null, "v2" + File.separator + id + File.separator + "index.html", vs, null, "V2 Table", null);
+          String sf = page.processPageIncludes(id + ".html", src, "v2Vocab", null, "v2" + File.separator + id + File.separator + "index.html", vs, null, "V2 Table", null, null, wg());
           sf = sects.addSectionNumbers("v2" + File.separator + id + File.separator +  "index.html", "template-v2", sf, iid, 2, null, null);
           TextFile.stringToFile(sf, page.getFolders().dstDir + "v2" + File.separator + id + File.separator + "index.html");
           page.getHTMLChecker().registerExternal("v2" + File.separator + id + File.separator + "index.html");
@@ -821,7 +828,7 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
               Utilities.clearDirectory(page.getFolders().dstDir + "v2" + File.separator + id + File.separator + ver);
               String src = TextFile.fileToString(page.getFolders().srcDir + "v2" + File.separator + "template-tbl-ver.html");
               ValueSet vs = page.getValueSets().get("http://hl7.org/fhir/ValueSet/v2-"+FormatUtilities.makeId(ver)+"-"+id);
-              String sf = page.processPageIncludes(id + "|" + ver + ".html", src, "v2Vocab", null, "v2" + File.separator + id + File.separator + ver + File.separator + "index.html", vs, null, "V2 Table", null);
+              String sf = page.processPageIncludes(id + "|" + ver + ".html", src, "v2Vocab", null, "v2" + File.separator + id + File.separator + ver + File.separator + "index.html", vs, null, "V2 Table", null, null, wg());
               sf = sects.addSectionNumbers("v2" + File.separator + id + "/" + ver + File.separator +  "index.html", "template-v2", sf, iid + "." + Integer.toString(i), 3, null, null);
               TextFile.stringToFile(sf, page.getFolders().dstDir + "v2" + File.separator + id + File.separator + ver + File.separator + "index.html");
               page.getHTMLChecker().registerExternal("v2" + File.separator + id + File.separator + ver + File.separator + "index.html");
@@ -833,7 +840,7 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
         Utilities.clearDirectory(page.getFolders().dstDir + "v2" + File.separator + id);
         String src = TextFile.fileToString(page.getFolders().srcDir + "v2" + File.separator + "template-vs.html");
         ValueSet vs = page.getValueSets().get("http://hl7.org/fhir/ValueSet/v2-"+id);
-        String sf = page.processPageIncludes(id + ".html", src, "v2Vocab", null, "v2" + File.separator + id + File.separator + "index.html", vs, null, "V2 Table", null);
+        String sf = page.processPageIncludes(id + ".html", src, "v2Vocab", null, "v2" + File.separator + id + File.separator + "index.html", vs, null, "V2 Table", null, null, wg());
         sf = sects.addSectionNumbers("v2" + File.separator + id + File.separator +  "index.html", "template-v2", sf, iid, 2, null, null);
         TextFile.stringToFile(sf, page.getFolders().dstDir + "v2" + File.separator + id + File.separator + "index.html");
         page.getHTMLChecker().registerExternal("v2" + File.separator + id + File.separator + "index.html");        
@@ -842,6 +849,10 @@ public class ValueSetImporterV2 extends ValueSetImporterBase {
     }
 
     
+  }
+
+  private WorkGroup wg() {
+    return page.getDefinitions().getWorkgroups().get("vocab");
   }
 
 

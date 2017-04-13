@@ -46,7 +46,7 @@
   Short Name = Business Identifiers that are specific to a role/location
   Requirements = Often, specific identities are assigned for the agent
   v2 Mapping = PRD-7 (or XCN.1)
-  RIM Mapping = ./id
+  RIM Mapping = .id
   ServD Mapping = ./Identifiers
   Committee Notes = Under \"Comments\" it said: \"The identifier changes when a new/different person steps into the same role\". This depends on business rules, I would assume a new instance is created instead.  did keep the text here just in case.
   w5 = id
@@ -59,12 +59,27 @@
   Short Name = Whether this practitioner\'s record is in active use
   Definition = Whether this practitioner\'s record is in active use
   Requirements = Need to be able to mark a practitioner record as not to be used because it was created in error
-  Comments = Default is true. \n\nIf the practitioner is not in use by one organization, then it should mark the period on the PractitonerRole with an end date (even if they are active) as they may be active in another role.
-  RIM Mapping = ./statusCode
+  Comments = Default is true. \r\rIf the practitioner is not in use by one organization, then it should mark the period on the PractitonerRole with an end date (even if they are active) as they may be active in another role.
+  v2 Mapping = STF-7
+  RIM Mapping = .statusCode
   Default Value = True
   w5 = status
 
  -- Row 4 -----------------------------------
+  Element = PractitionerRole.period
+  Card. = 0..1
+  Summary = y
+  Type = Period
+  Short Name = The period during which the practitioner is authorized to perform in these role(s)
+  Definition = The period during which the person is authorized to act as a practitioner in these role(s) for the organization
+  Requirements = Even after the agencies is revoked, the fact that it existed must still be recorded
+  v2 Mapping = PRD-8/9 / PRA-5.4
+  RIM Mapping = .performance[@typeCode <= \'PPRF\'].ActDefinitionOrEvent.effectiveTime
+  ServD Mapping = (ServD maps Practitioners and Organizations via another entity, so this concept is not available)
+  Committee Notes = Is this separate from the period of validity of the qualification?
+  w5 = when.done
+
+ -- Row 5 -----------------------------------
   Element = PractitionerRole.practitioner
   Card. = 0..1
   Summary = y
@@ -72,16 +87,16 @@
   Short Name = Practitioner that is able to provide the defined services for the organation
   RIM Mapping = .player
 
- -- Row 5 -----------------------------------
+ -- Row 6 -----------------------------------
   Element = PractitionerRole.organization
   Card. = 0..1
   Summary = y
   Type = Reference(Organization)
   Short Name = Organization where the roles are available
   Definition = The organization where the Practitioner performs the roles associated
-  RIM Mapping = scopingOrganization
+  RIM Mapping = .scoper
 
- -- Row 6 -----------------------------------
+ -- Row 7 -----------------------------------
   Element = PractitionerRole.code
   Card. = 0..*
   Summary = y
@@ -92,10 +107,10 @@
   Requirements = Need to know what authority the practitioner has - what can they do?
   Comments = A person may have more than one role. At least one role is required.
   v2 Mapping = PRD-1 / STF-18  / PRA-3  / PRT-4  / ROL-3 / ORC-12 / OBR-16 / PV1-7 / PV1-8 / PV1-9 / PV1-17
-  RIM Mapping = ./code
+  RIM Mapping = .code
   ServD Mapping = (ServD maps Practitioners and Organizations via another entity, so this concept is not available)
 
- -- Row 7 -----------------------------------
+ -- Row 8 -----------------------------------
   Element = PractitionerRole.specialty
   Card. = 0..*
   Summary = y
@@ -104,28 +119,29 @@
   Short Name = Specific specialty of the practitioner
   Definition = Specific specialty of the practitioner
   v2 Mapping = PRA-5
-  RIM Mapping = indirectAuthority/QualifiedEntity[code < Speciality]/code
+  RIM Mapping = .player.HealthCareProvider[@classCode = \'PROV\'].code
   ServD Mapping = ./Specialty
 
- -- Row 8 -----------------------------------
+ -- Row 9 -----------------------------------
   Element = PractitionerRole.location
   Card. = 0..*
   Summary = y
   Type = Reference(Location)
   Short Name = The location(s) at which this practitioner provides care
   Definition = The location(s) at which this practitioner provides care
-  RIM Mapping = ./target[classCode=\"indirectAuthority].source[classCode=SDLOC]
+  RIM Mapping = .performance.ActDefinitionOrEvent.ServiceDeliveryLocation[@classCode = \'SDLOC\']
   ServD Mapping = (ServD maps Practitioners and Organizations via another entity, so this concept is not available)<br/> However these are accessed via the Site.ServiceSite.ServiceSiteProvider record. (The Site has the location)
   w5 = where
 
- -- Row 9 -----------------------------------
+ -- Row 10 -----------------------------------
   Element = PractitionerRole.healthcareService
   Card. = 0..*
   Type = Reference(HealthcareService)
   Short Name = The list of healthcare services that this worker provides for this role\'s Organization/Location(s)
-  RIM Mapping = ./target[classCode=\"indirectAuthority].id?
+  v2 Mapping = EDU-2 / AFF-3
+  RIM Mapping = .player.QualifiedEntity[@classCode = \'QUAL\'].code
 
- -- Row 10 -----------------------------------
+ -- Row 11 -----------------------------------
   Element = PractitionerRole.telecom
   Card. = 0..*
   Summary = y
@@ -134,20 +150,6 @@
   Requirements = Often practitioners have a dedicated line for each location (or service) that they work at, and need to be able to define separate contact details for each of these.
   RIM Mapping = .telecom
 
- -- Row 11 -----------------------------------
-  Element = PractitionerRole.period
-  Card. = 0..1
-  Summary = y
-  Type = Period
-  Short Name = The period during which the practitioner is authorized to perform in these role(s)
-  Definition = The period during which the person is authorized to act as a practitioner in these role(s) for the organization
-  Requirements = Even after the agencies is revoked, the fact that it existed must still be recorded
-  v2 Mapping = PRD-8/9 / PRA-5.4
-  RIM Mapping = ./effectiveTime
-  ServD Mapping = (ServD maps Practitioners and Organizations via another entity, so this concept is not available)
-  Committee Notes = Is this separate from the period of validity of the qualification?
-  w5 = when.done
-
  -- Row 12 -----------------------------------
   Element = PractitionerRole.availableTime
   Card. = 0..*
@@ -155,7 +157,7 @@
   Short Name = Times the Service Site is available
   Definition = A collection of times that the Service Site is available
   Comments = More detailed availability information may be provided in associated Schedule/Slot resources.
-  RIM Mapping = ./effectiveTime
+  RIM Mapping = .effectiveTime
 
  -- Row 13 -----------------------------------
   Element = PractitionerRole.availableTime.daysOfWeek
@@ -164,7 +166,7 @@
   Binding = DaysOfWeek
   Short Name = mon | tue | wed | thu | fri | sat | sun
   Definition = Indicates which days of the week are available between the start and end Times
-  RIM Mapping = ./effectiveTime
+  RIM Mapping = .effectiveTime
 
  -- Row 14 -----------------------------------
   Element = PractitionerRole.availableTime.allDay
@@ -172,7 +174,7 @@
   Type = boolean
   Short Name = Always available? e.g. 24 hour service
   Definition = Is this always available? (hence times are irrelevant) e.g. 24 hour service
-  RIM Mapping = ./effectiveTime
+  RIM Mapping = .effectiveTime
 
  -- Row 15 -----------------------------------
   Element = PractitionerRole.availableTime.availableStartTime
@@ -181,7 +183,7 @@
   Short Name = Opening time of day (ignored if allDay = true)
   Definition = The opening time of day. Note: If the AllDay flag is set, then this time is ignored
   Comments = The timezone is expected to be for where this HealthcareService is provided at.
-  RIM Mapping = ./effectiveTime
+  RIM Mapping = .effectiveTime
 
  -- Row 16 -----------------------------------
   Element = PractitionerRole.availableTime.availableEndTime
@@ -190,7 +192,7 @@
   Short Name = Closing time of day (ignored if allDay = true)
   Definition = The closing time of day. Note: If the AllDay flag is set, then this time is ignored
   Comments = The timezone is expected to be for where this HealthcareService is provided at.
-  RIM Mapping = ./effectiveTime
+  RIM Mapping = .effectiveTime
 
  -- Row 17 -----------------------------------
   Element = PractitionerRole.notAvailable
@@ -198,7 +200,7 @@
   UML = 390;150
   Short Name = Not available during this time due to provided reason
   Definition = The HealthcareService is not available during this period of time due to the provided reason
-  RIM Mapping = ./effectiveTime
+  RIM Mapping = .effectiveTime
 
  -- Row 18 -----------------------------------
   Element = PractitionerRole.notAvailable.description
@@ -214,7 +216,7 @@
   Type = Period
   Short Name = Service not availablefrom this date
   Definition = Service is not available (seasonally or for a public holiday) from this date
-  RIM Mapping = ./effectiveTime
+  RIM Mapping = .effectiveTime
 
  -- Row 20 -----------------------------------
   Element = PractitionerRole.availabilityExceptions
@@ -222,14 +224,14 @@
   Type = string
   Short Name = Description of availability exceptions
   Definition = A description of site availability exceptions, e.g. public holiday availability. Succinctly describing all possible exceptions to normal site availability as details in the available Times and not available Times
-  RIM Mapping = ./effectiveTime
+  RIM Mapping = .effectiveTime
 
  -- Row 21 -----------------------------------
   Element = PractitionerRole.endpoint
   Card. = 0..*
   Type = Reference(Endpoint)
   Short Name = Technical endpoints providing access to services operated for the practitioner with this role
-  Requirements = Organizations have multiple systems that provide various services and ,ay also be different for practitioners too.\n\nSo the endpoint satisfies the need to be able to define the technical connection details for how to connect to them, and for what purpose.
+  Requirements = Organizations have multiple systems that provide various services and ,ay also be different for practitioners too.\r\rSo the endpoint satisfies the need to be able to define the technical connection details for how to connect to them, and for what purpose.
   RIM Mapping = n/a
 
 === Sheet Search =====================================
@@ -256,12 +258,14 @@
   Type = token
   Description = A value in a phone contact
   Path = PractitionerRole.telecom(system=phone)
+  Expression = PractitionerRole.telecom.where(system=\'phone\')
 
  -- Row 5 -----------------------------------
   Name = email
   Type = token
   Description = A value in an email contact
   Path = PractitionerRole.telecom(system=email)
+  Expression = PractitionerRole.telecom.where(system=\'email\')
 
  -- Row 6 -----------------------------------
   Name = organization
@@ -292,7 +296,28 @@
   Type = reference
   Path = PractitionerRole.endpoint
 
+ -- Row 11 -----------------------------------
+  Name = active
+  Type = token
+  Path = PractitionerRole.active
+
+ -- Row 12 -----------------------------------
+  Name = date
+  Type = date
+  Path = PractitionerRole.period
+
+ -- Row 13 -----------------------------------
+  Name = service
+  Type = reference
+  Path = PractitionerRole.healthcareService
+
 === Sheet Profiles =====================================
+
+ -- Row 1 -----------------------------------
+  Name = PractitionerRole Extensions
+  IG Name = core
+  Filename = practitionerrole-extensions.xml
+  Type = spreadsheet
 
 === Sheet Examples =====================================
 
@@ -301,5 +326,11 @@
   Identity = example
   Description = Dr Adam Careful\'s role at the Acme Hospital
   Filename = practitionerrole-example.xml
+
+ -- Row 2 -----------------------------------
+  Name = HL7
+  Identity = 3ad0687e-f477-468c-afd5-fcc2bf897808
+  Description = HL7 Defined Practitioner Role examples
+  Filename = practitionerrole-examples-general.xml
 
 === Sheet Examples =====================================

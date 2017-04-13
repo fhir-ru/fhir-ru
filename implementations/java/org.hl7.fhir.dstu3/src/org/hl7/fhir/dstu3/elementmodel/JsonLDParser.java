@@ -11,7 +11,9 @@ import java.util.Set;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.hl7.fhir.dstu3.context.IWorkerContext;
+import org.hl7.fhir.dstu3.elementmodel.Element.SpecialElement;
 import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
+import org.hl7.fhir.dstu3.model.ElementDefinition.TypeRefComponent;
 import org.hl7.fhir.dstu3.formats.JsonCreator;
 import org.hl7.fhir.dstu3.formats.JsonCreatorCanonical;
 import org.hl7.fhir.dstu3.formats.JsonCreatorGson;
@@ -70,13 +72,15 @@ public class JsonLDParser extends ParserBase {
 			json = new JsonCreatorGson(osw);
 		json.setIndent(style == OutputStyle.PRETTY ? "  " : "");
 		json.beginObject();
-    prop("@context", jsonLDBase+e.getType()+".jsonld");
+    prop("@type", "fhir:"+e.getType());
+    prop("@context", jsonLDBase+"fhir.jsonld");
+    prop("role", "fhir:treeRoot");
     String id = e.getChildValue("id");
     if (base != null && id != null) {
        if (base.endsWith("#"))
-         prop("@context", base + e.getType() + "-" + id + ">");
+         prop("@id", base + e.getType() + "-" + id + ">");
       else
-        prop("@context", Utilities.pathReverse(base, e.getType(), id));
+        prop("@id", Utilities.pathReverse(base, e.getType(), id));
     }
 		Set<String> done = new HashSet<String>();
 		for (Element child : e.getChildren()) {
@@ -99,67 +103,84 @@ public class JsonLDParser extends ParserBase {
 
 	private void composeList(String path, List<Element> list) throws IOException {
 		// there will be at least one element
-    String en = null;
-    if (list.get(0).getProperty().getDefinition().hasBase())
-      list.get(0).getProperty().getDefinition().getBase().getPath();
-    if (en == null) 
-      en = list.get(0).getProperty().getDefinition().getPath();
-    boolean doType = false;
-    if (en.endsWith("[x]")) {
-      en = en.substring(0, en.length()-3);
-      doType = true;        
-    }
-    if (doType)
-      en = en + Utilities.capitalize(list.get(0).getType());
+    String en = getFormalName(list.get(0));
 
     openArray(en);
     for (Element item : list) { 
       open(null);
+      json.name("index");
+      json.value(item.getIndex());
       if (item.isPrimitive() || isPrimitive(item.getType())) {
         if (item.hasValue())
           primitiveValue(item);
+      }
+      if (item.getProperty().isResource()) {
+        prop("@type", "fhir:"+item.getType());
       }
       Set<String> done = new HashSet<String>();
       for (Element child : item.getChildren()) {
         compose(path+"."+item.getName(), item, done, child);
       }
+      if ("Coding".equals(item.getType()))
+        decorateCoding(item);
+      if ("CodeableConcept".equals(item.getType()))
+        decorateCodeableConcept(item);
+      if ("Reference".equals(item.getType()))
+        decorateReference(item);
+      
       close();
     }
     closeArray();
 	}
 
 	private void primitiveValue(Element item) throws IOException {
-		json.name(item.fhirType()+".value");
 	  String type = item.getType();
-	  if (Utilities.existsInList(type, "boolean"))
-	  	json.value(item.getValue().equals("true") ? new Boolean(true) : new Boolean(false));
-	  else if (Utilities.existsInList(type, "integer", "unsignedInt", "positiveInt"))
-	  	json.value(new Integer(item.getValue()));
-	  else if (Utilities.existsInList(type, "decimal"))
-	  	json.value(new BigDecimal(item.getValue()));
-	  else
-	  	json.value(item.getValue());	
+	  if (Utilities.existsInList(type, "date", "dateTime", "instant")) {
+      String v = item.getValue();
+      if (v.length() > 10) {
+        int i = v.substring(10).indexOf("-");
+        if (i == -1)
+          i = v.substring(10).indexOf("+");
+        v = i == -1 ? v : v.substring(0,  10+i);
+      }
+      if (v.length() > 10)
+        json.name("dateTime");
+      else if (v.length() == 10)
+        json.name("date");
+      else if (v.length() == 7)
+        json.name("gYearMonth");
+      else if (v.length() == 4)
+        json.name("gYear");
+      json.value(item.getValue());
+	  } else if (Utilities.existsInList(type, "boolean")) {
+      json.name("boolean");
+      json.value(item.getValue().equals("true") ? new Boolean(true) : new Boolean(false));
+	  } else if (Utilities.existsInList(type, "integer", "unsignedInt", "positiveInt")) {
+      json.name("integer");
+      json.value(new Integer(item.getValue()));
+    } else if (Utilities.existsInList(type, "decimal")) {
+      json.name("decimal");
+      json.value(item.getValue());
+    } else if (Utilities.existsInList(type, "base64Binary")) {
+      json.name("binary");
+      json.value(item.getValue());
+    } else {
+      json.name("value");
+      json.value(item.getValue());
+    }
 	}
 
 	private void compose(String path, Element element) throws IOException {
 	  Property p = element.hasElementProperty() ? element.getElementProperty() : element.getProperty();
-    String en = null;
-    if (p.getDefinition().hasBase())
-      en = p.getDefinition().getBase().getPath();
-    if (en == null) 
-      en = p.getDefinition().getPath();
-    boolean doType = false;
-    if (en.endsWith("[x]")) {
-      en = en.substring(0, en.length()-3);
-      doType = true;        
-    }
-    if (doType)
-      en = en + Utilities.capitalize(element.getType());
+    String en = getFormalName(element);
 
-    if (element.hasChildren() || element.hasComments() || element.hasValue()) {
+    if (element.fhirType().equals("xhtml")) {
+      json.name(en);
+      json.value(element.getValue());
+    } else if (element.hasChildren() || element.hasComments() || element.hasValue()) {
 			open(en);
       if (element.getProperty().isResource()) {
-	      prop("@context", jsonLDBase+element.getType()+".jsonld");
+	      prop("@type", "fhir:"+element.getType());
 //        element = element.getChildren().get(0);
       }
 	    if (element.isPrimitive() || isPrimitive(element.getType())) {
@@ -185,11 +206,11 @@ public class JsonLDParser extends ParserBase {
   private void decorateReference(Element element) throws IOException {
     String ref = element.getChildValue("reference");
     if (ref != null && (ref.startsWith("http://") || ref.startsWith("https://"))) {
-      json.name("Resource.reference");
+      json.name("link");
       json.value(ref);
     } else if (base != null && ref != null && ref.contains("/")) {
-      json.name("Resource.reference");
-      json.value(base+"/"+ref);
+      json.name("link");
+      json.value(Utilities.pathReverse(base, ref));
     }
   }
 
@@ -200,18 +221,51 @@ public class JsonLDParser extends ParserBase {
     if (system == null)
       return;
     if ("http://snomed.info/sct".equals(system)) {
-      json.name("Resource.concept");
-      json.value("http://snomed.info/sct#"+code);
+      json.name("concept");
+      json.value("http://snomed.info/id/"+code);
     } else if ("http://loinc.org".equals(system)) {
-      json.name("Resource.concept");
+      json.name("concept");
       json.value("http://loinc.org/owl#"+code);
     }  
   }
 
   private void decorateCodeableConcept(Element element) throws IOException {
-    for (Element c : element.getChildren("coding")) {
-      decorateCoding(c);
+    // nothing here; ITS committee decision
+  }
+
+  private String getFormalName(Element element) {
+    String en = null;
+    if (element.getSpecial() == null) {
+      if (element.getProperty().getDefinition().hasBase())
+        en = element.getProperty().getDefinition().getBase().getPath();
     }
+    else if (element.getSpecial() == SpecialElement.BUNDLE_ENTRY)
+      en = "Bundle.entry.resource";
+    else if (element.getSpecial() == SpecialElement.BUNDLE_OUTCOME)
+      en = "Bundle.entry.response.outcome";
+    else if (element.getSpecial() == SpecialElement.PARAMETER)
+      en = element.getElementProperty().getDefinition().getPath();
+    else // CONTAINED
+      en = "DomainResource.contained";
+    
+    if (en == null) 
+      en = element.getProperty().getDefinition().getPath();
+    boolean doType = false;
+      if (en.endsWith("[x]")) {
+        en = en.substring(0, en.length()-3);
+        doType = true;        
+      }
+     if (doType || (element.getProperty().getDefinition().getType().size() > 1 && !allReference(element.getProperty().getDefinition().getType())))
+       en = en + Utilities.capitalize(element.getType());
+    return en;
+  }
+
+  private boolean allReference(List<TypeRefComponent> types) {
+    for (TypeRefComponent t : types) {
+      if (!t.getCode().equals("Reference"))
+        return false;
+    }
+    return true;
   }
 
 }

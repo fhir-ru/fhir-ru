@@ -15,6 +15,7 @@ import java.util.Set;
 
 import org.apache.commons.codec.Charsets;
 import org.hl7.fhir.dstu3.formats.IParser.OutputStyle;
+import org.hl7.fhir.dstu3.context.IWorkerContext.ILoggingService.LogCategory;
 import org.hl7.fhir.dstu3.formats.JsonParser;
 import org.hl7.fhir.dstu3.model.BooleanType;
 import org.hl7.fhir.dstu3.model.Bundle;
@@ -26,16 +27,19 @@ import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionDesignationComponent
 import org.hl7.fhir.dstu3.model.CodeableConcept;
 import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.ConceptMap;
+import org.hl7.fhir.dstu3.model.DataElement;
 import org.hl7.fhir.dstu3.model.ExpansionProfile;
+import org.hl7.fhir.dstu3.model.OperationDefinition;
 import org.hl7.fhir.dstu3.model.OperationOutcome;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueSeverity;
-import org.hl7.fhir.dstu3.model.OperationOutcome.IssueType;
 import org.hl7.fhir.dstu3.model.Parameters;
 import org.hl7.fhir.dstu3.model.Parameters.ParametersParameterComponent;
 import org.hl7.fhir.dstu3.model.PrimitiveType;
+import org.hl7.fhir.dstu3.model.Questionnaire;
 import org.hl7.fhir.dstu3.model.Reference;
 import org.hl7.fhir.dstu3.model.Resource;
+import org.hl7.fhir.dstu3.model.SearchParameter;
 import org.hl7.fhir.dstu3.model.StringType;
+import org.hl7.fhir.dstu3.model.StructureDefinition;
 import org.hl7.fhir.dstu3.model.StructureMap;
 import org.hl7.fhir.dstu3.model.UriType;
 import org.hl7.fhir.dstu3.model.ValueSet;
@@ -49,6 +53,7 @@ import org.hl7.fhir.dstu3.terminologies.ValueSetExpander.TerminologyServiceError
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpander.ValueSetExpansionOutcome;
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpanderFactory;
 import org.hl7.fhir.dstu3.terminologies.ValueSetExpansionCache;
+import org.hl7.fhir.dstu3.utils.ToolingExtensions;
 import org.hl7.fhir.dstu3.utils.client.FHIRToolingClient;
 import org.hl7.fhir.exceptions.FHIRException;
 import org.hl7.fhir.exceptions.NoTerminologyServiceException;
@@ -56,6 +61,8 @@ import org.hl7.fhir.exceptions.TerminologyServiceException;
 import org.hl7.fhir.utilities.CommaSeparatedStringBuilder;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueSeverity;
+import org.hl7.fhir.utilities.validation.ValidationMessage.IssueType;
 
 import com.google.gson.JsonSyntaxException;
 
@@ -67,6 +74,12 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   protected Map<String, ValueSet> valueSets = new HashMap<String, ValueSet>();
   protected Map<String, ConceptMap> maps = new HashMap<String, ConceptMap>();
   protected Map<String, StructureMap> transforms = new HashMap<String, StructureMap>();
+  protected Map<String, DataElement> dataElements = new HashMap<String, DataElement>();
+  protected Map<String, StructureDefinition> profiles = new HashMap<String, StructureDefinition>();
+  protected Map<String, SearchParameter> searchParameters = new HashMap<String, SearchParameter>();
+  protected Map<String, StructureDefinition> extensionDefinitions = new HashMap<String, StructureDefinition>();
+  protected Map<String, Questionnaire> questionnaires = new HashMap<String, Questionnaire>();
+  protected Map<String, OperationDefinition> operations = new HashMap<String, OperationDefinition>();
   
   protected ValueSetExpanderFactory expansionCache = new ValueSetExpansionCache(this);
   protected boolean cacheValidation; // if true, do an expansion and cache the expansion
@@ -83,9 +96,80 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   private boolean canRunWithoutTerminology;
   protected boolean noTerminologyServer;
   protected String cache;
-  private int expandCodesLimit = 10000;
-  private ILoggingService logger;
+  private int expandCodesLimit = 1000;
+  protected ILoggingService logger;
   protected ExpansionProfile expProfile;
+
+  public Map<String, CodeSystem> getCodeSystems() {
+    return codeSystems;
+  }
+
+  public Map<String, DataElement> getDataElements() {
+    return dataElements;
+  }
+
+  public Map<String, ValueSet> getValueSets() {
+    return valueSets;
+  }
+
+  public Map<String, ConceptMap> getMaps() {
+    return maps;
+  }
+
+  public Map<String, StructureDefinition> getProfiles() {
+    return profiles;
+  }
+
+  public Map<String, StructureDefinition> getExtensionDefinitions() {
+    return extensionDefinitions;
+  }
+
+  public Map<String, Questionnaire> getQuestionnaires() {
+    return questionnaires;
+  }
+
+  public Map<String, OperationDefinition> getOperations() {
+    return operations;
+  }
+
+  public void seeExtensionDefinition(String url, StructureDefinition ed) throws Exception {
+    if (extensionDefinitions.get(ed.getUrl()) != null)
+      throw new Exception("duplicate extension definition: " + ed.getUrl());
+    extensionDefinitions.put(ed.getId(), ed);
+    extensionDefinitions.put(url, ed);
+    extensionDefinitions.put(ed.getUrl(), ed);
+  }
+
+  public void seeQuestionnaire(String url, Questionnaire theQuestionnaire) throws Exception {
+    if (questionnaires.get(theQuestionnaire.getId()) != null)
+      throw new Exception("duplicate extension definition: "+theQuestionnaire.getId());
+    questionnaires.put(theQuestionnaire.getId(), theQuestionnaire);
+    questionnaires.put(url, theQuestionnaire);
+  }
+
+  public void seeOperation(OperationDefinition opd) throws Exception {
+    if (operations.get(opd.getUrl()) != null)
+      throw new Exception("duplicate extension definition: "+opd.getUrl());
+    operations.put(opd.getUrl(), opd);
+    operations.put(opd.getId(), opd);
+  }
+
+  public void seeValueSet(String url, ValueSet vs) throws Exception {
+    if (valueSets.containsKey(vs.getUrl()))
+      throw new Exception("Duplicate value set "+vs.getUrl());
+    valueSets.put(vs.getId(), vs);
+    valueSets.put(url, vs);
+    valueSets.put(vs.getUrl(), vs);
+    throw new Error("this is not used");
+  }
+
+  public void seeProfile(String url, StructureDefinition p) throws Exception {
+    if (profiles.containsKey(p.getUrl()))
+      throw new Exception("Duplicate Profile "+p.getUrl());
+    profiles.put(p.getId(), p);
+    profiles.put(url, p);
+    profiles.put(p.getUrl(), p);
+  }
 
   @Override
   public CodeSystem fetchCodeSystem(String system) {
@@ -105,12 +189,12 @@ public abstract class BaseWorkerContext implements IWorkerContext {
         return false;
       if (bndCodeSystems == null) {
         try {
-          log("Terminology server: Check for supported code systems for "+system);
+          tlog("Terminology server: Check for supported code systems for "+system);
         bndCodeSystems = txServer.fetchFeed(txServer.getAddress()+"/CodeSystem?content=not-present&_summary=true&_count=1000");
         } catch (Exception e) {
           if (canRunWithoutTerminology) {
             noTerminologyServer = true;
-            System.out.println("==============!! Running without terminology server !!==============");
+            log("==============!! Running without terminology server !!==============");
             return false;
           } else
             throw new TerminologyServiceException(e);
@@ -134,6 +218,8 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   private void log(String message) {
     if (logger != null)
       logger.logMessage(message);
+    else
+      System.out.println(message);
   }
 
   @Override
@@ -184,7 +270,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     JsonParser parser = new JsonParser();
     Resource r = parser.parse(new FileInputStream(cacheFn));
     if (r instanceof OperationOutcome)
-      return new ValueSetExpansionOutcome(((OperationOutcome) r).getIssue().get(0).getDetails().getText(), TerminologyServiceErrorClass.NOSERVICE);
+      return new ValueSetExpansionOutcome(((OperationOutcome) r).getIssue().get(0).getDetails().getText(), TerminologyServiceErrorClass.UNKNOWN);
     else {
       vs.setExpansion(((ValueSet) r).getExpansion()); // because what is cached might be from a different value set
       return new ValueSetExpansionOutcome(vs);
@@ -250,12 +336,14 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   public ValueSetExpansionOutcome expandOnServer(ValueSet vs, String fn) throws Exception {
     if (noTerminologyServer)
       return new ValueSetExpansionOutcome("Error expanding ValueSet: running without terminology services", TerminologyServiceErrorClass.NOSERVICE);
+    if (expProfile == null)
+      throw new Exception("No ExpansionProfile provided");
       
     try {
       Map<String, String> params = new HashMap<String, String>();
       params.put("_limit", Integer.toString(expandCodesLimit ));
       params.put("_incomplete", "true");
-      log("Terminology Server: $expand on "+getVSSummary(vs));
+      tlog("Terminology Server: $expand on "+getVSSummary(vs));
       ValueSet result = txServer.expandValueset(vs, expProfile.setIncludeDefinition(false), params);
       return new ValueSetExpansionOutcome(result);  
     } catch (Exception e) {
@@ -369,7 +457,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     return b.toString();
   }
   
-  private ValidationResult verifyCodeExternal(ValueSet vs, Coding coding, boolean tryCache) throws IOException {
+  private ValidationResult verifyCodeExternal(ValueSet vs, Coding coding, boolean tryCache) throws Exception {
     ValidationResult res = vs == null ? null : handleByCache(vs, coding, tryCache);
     if (res != null)
       return res;
@@ -385,7 +473,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     return res;
   }
   
-  private ValidationResult verifyCodeExternal(ValueSet vs, CodeableConcept cc, boolean tryCache) throws IOException {
+  private ValidationResult verifyCodeExternal(ValueSet vs, CodeableConcept cc, boolean tryCache) throws Exception {
     ValidationResult res = handleByCache(vs, cc, tryCache);
     if (res != null)
       return res;
@@ -398,17 +486,19 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     return res;
   }
 
-  private ValidationResult serverValidateCode(Parameters pin, boolean doCache) throws IOException {
+  private ValidationResult serverValidateCode(Parameters pin, boolean doCache) throws Exception {
     if (noTerminologyServer)
       return new ValidationResult(null, null, TerminologyServiceErrorClass.NOSERVICE);
     String cacheName = doCache ? generateCacheName(pin) : null;
     ValidationResult res = loadFromCache(cacheName);
     if (res != null)
       return res;
-    log("Terminology Server: $validate-code "+describeValidationParameters(pin));
+    tlog("Terminology Server: $validate-code "+describeValidationParameters(pin));
     for (ParametersParameterComponent pp : pin.getParameter())
       if (pp.getName().equals("profile"))
         throw new Error("Can only specify profile in the context");
+    if (expProfile == null)
+      throw new Exception("No ExpansionProfile provided");
     pin.addParameter().setName("profile").setResource(expProfile);
 
     Parameters pout = txServer.operateType(ValueSet.class, "validate-code", pin);
@@ -439,11 +529,15 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     else if (display != null)
       res = new ValidationResult(new ConceptDefinitionComponent().setDisplay(display));
     else
-      res = new ValidationResult(null);
+      res = new ValidationResult(new ConceptDefinitionComponent());
     saveToCache(res, cacheName);
     return res;
   }
 
+
+  private void tlog(String msg) {
+//    log(msg);
+  }
 
   @SuppressWarnings("rawtypes")
   private String describeValidationParameters(Parameters pin) {
@@ -562,7 +656,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
         // ... could be a problem if the server doesn't have the code systems we have locally, so we try not to depend on the server
         try {
           ValueSetExpansionOutcome vse = expandVS(vs, true, false);
-          if (vse.getValueset() != null)
+          if (vse.getValueset() != null && !hasTooCostlyExpansion(vse.getValueset()))
             return verifyCodeInternal(vse.getValueset(), code);
         } catch (Exception e) {
           // failed? we'll just try the server
@@ -575,6 +669,10 @@ public abstract class BaseWorkerContext implements IWorkerContext {
   }
 
 
+  private boolean hasTooCostlyExpansion(ValueSet valueset) {
+    return valueset != null && valueset.hasExpansion() && ToolingExtensions.hasExtension(valueset.getExpansion(), "http://hl7.org/fhir/StructureDefinition/valueset-toocostly");
+  }
+
   @Override
   public ValidationResult validateCode(String system, String code, String display, ValueSet vs) {
     try {
@@ -585,7 +683,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
       else 
         return verifyCodeExternal(vs, new Coding().setSystem(system).setCode(code).setDisplay(display), true);
     } catch (Exception e) {
-      return new ValidationResult(IssueSeverity.FATAL, "Error validating code \""+code+"\" in system \""+system+"\": "+e.getMessage());
+      return new ValidationResult(IssueSeverity.FATAL, "Error validating code \""+code+"\" in system \""+system+"\": "+e.getMessage(), TerminologyServiceErrorClass.SERVER_ERROR);
     }
   }
 
@@ -625,7 +723,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     return res;
   }
 
-  private ValidationResult verifyCodeInternal(ValueSet vs, CodeableConcept code) throws FileNotFoundException, ETooCostly, IOException {
+  private ValidationResult verifyCodeInternal(ValueSet vs, CodeableConcept code) throws Exception {
     for (Coding c : code.getCoding()) {
       ValidationResult res = verifyCodeInternal(vs, c.getSystem(), c.getCode(), c.getDisplay());
       if (res.isOk())
@@ -637,7 +735,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
       return new ValidationResult(IssueSeverity.ERROR, "None of the codes are in the specified value set");
   }
 
-  private ValidationResult verifyCodeInternal(ValueSet vs, String system, String code, String display) throws FileNotFoundException, ETooCostly, IOException {
+  private ValidationResult verifyCodeInternal(ValueSet vs, String system, String code, String display) throws Exception {
     if (vs.hasExpansion())
       return verifyCodeInExpansion(vs, system, code, display);
     else {
@@ -649,7 +747,7 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     }
   }
 
-  private ValidationResult verifyCodeInternal(ValueSet vs, String code) throws FileNotFoundException, ETooCostly, IOException {
+  private ValidationResult verifyCodeInternal(ValueSet vs, String code) throws FileNotFoundException, ETooCostly, IOException, FHIRException {
     if (vs.hasExpansion())
       return verifyCodeInExpansion(vs, code);
     else {
@@ -661,16 +759,18 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     }
   }
 
-  private ValidationResult verifyCodeInCodeSystem(CodeSystem cs, String system, String code, String display) {
+  private ValidationResult verifyCodeInCodeSystem(CodeSystem cs, String system, String code, String display) throws Exception {
     ConceptDefinitionComponent cc = findCodeInConcept(cs.getConcept(), code);
     if (cc == null)
-	  if (cs.getContent().equals(CodeSystem.CodeSystemContentMode.COMPLETE))
-      return new ValidationResult(IssueSeverity.ERROR, "Unknown Code "+code+" in "+cs.getUrl());
-	  else if (!cs.getContent().equals(CodeSystem.CodeSystemContentMode.NOTPRESENT))
-	    return new ValidationResult(IssueSeverity.WARNING, "Unknown Code "+code+" in partial code list of "+cs.getUrl());
-	  else
-	    return new ValidationResult(IssueSeverity.WARNING, "Codes are not available for validation of content from system "+cs.getUrl());
-//      return new ValidationResult(IssueSeverity.ERROR, "Unknown Code "+code+" in "+cs.getUrl());
+      if (cs.getContent().equals(CodeSystem.CodeSystemContentMode.COMPLETE))
+        return new ValidationResult(IssueSeverity.ERROR, "Unknown Code "+code+" in "+cs.getUrl());
+      else if (!cs.getContent().equals(CodeSystem.CodeSystemContentMode.NOTPRESENT))
+        return new ValidationResult(IssueSeverity.WARNING, "Unknown Code "+code+" in partial code list of "+cs.getUrl());
+      else 
+        return verifyCodeExternal(null, new Coding().setSystem(system).setCode(code).setDisplay(display), false);
+//
+//        return new ValidationResult(IssueSeverity.WARNING, "A definition was found for "+cs.getUrl()+", but it has no codes in the definition");
+    //      return new ValidationResult(IssueSeverity.ERROR, "Unknown Code "+code+" in "+cs.getUrl());
     if (display == null)
       return new ValidationResult(cc);
     CommaSeparatedStringBuilder b = new CommaSeparatedStringBuilder();
@@ -702,11 +802,15 @@ public abstract class BaseWorkerContext implements IWorkerContext {
     return null;
   }
 
-  private ValidationResult verifyCodeInExpansion(ValueSet vs, String code) {
-    ValueSetExpansionContainsComponent cc = findCode(vs.getExpansion().getContains(), code);
-    if (cc == null)
-      return new ValidationResult(IssueSeverity.ERROR, "Unknown Code "+code+" in "+vs.getUrl());
-    return null;
+  private ValidationResult verifyCodeInExpansion(ValueSet vs, String code) throws FHIRException {
+    if (vs.getExpansion().hasExtension("http://hl7.org/fhir/StructureDefinition/valueset-toocostly")) {
+      throw new FHIRException("Unable to validate core - value set is too costly to expand"); 
+    } else {
+      ValueSetExpansionContainsComponent cc = findCode(vs.getExpansion().getContains(), code);
+      if (cc == null)
+        return new ValidationResult(IssueSeverity.ERROR, "Unknown Code "+code+" in "+vs.getUrl());
+      return null;
+    }
   }
 
   private ValueSetExpansionContainsComponent findCode(List<ValueSetExpansionContainsComponent> contains, String code) {

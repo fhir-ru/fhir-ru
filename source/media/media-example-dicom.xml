@@ -57,7 +57,7 @@
 
   <subtype>
     <coding>
-      <system value="http://nema.org/dicom/dicm"/>
+      <system value="http://dicom.nema.org/resources/ontology/DCM"/>
       <code value="US"/>
     </coding>
   </subtype>
@@ -75,7 +75,9 @@
   </subject>
  
   
-  <deviceName value="G.E. Medical Systems"/>
+  <device> 
+    <display value="G.E. Medical Systems"/>
+  </device>
   <height value="480"/>
   <width value="640"/>
   

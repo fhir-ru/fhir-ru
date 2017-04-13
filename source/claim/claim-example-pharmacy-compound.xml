@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Claim xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/coverage.xsd">
+	<id value="760152"/>
+
+	<text>
+		<status value="generated"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">A human-readable rendering of the Pharmacy Claim</div>
+	</text>
+
+	<identifier>
+		<system value="http://happypharma.com/claim"/>
+		<value value="7612345"/>
+	</identifier>
+
+	<status value = "active"/>
+
+	<type>
+		<coding>
+			<system value="http://hl7.org/fhir/ex-claimtype"/>
+			<code value="pharmacy"/>
+		</coding>	
+	</type>
+
+	<use value="complete"/>
+
+	<patient>
+		<reference value="Patient/1"/>
+	</patient>
+
+	<created value="2014-08-16"/>
+
+	<insurer>
+		<reference value="Organization/2"/>
+	</insurer>
+
+	<organization>
+		<reference value="Organization/1"/>
+	</organization>
+
+	<priority>
+		<coding>
+			<code value="stat"/>
+		</coding>
+	</priority>
+
+	<payee>
+		<type>
+			<coding>
+				<code value="provider"/>
+			</coding>
+		</type>
+	</payee>
+
+	<careTeam>
+		<sequence value="1"/>
+		<provider>
+			<reference value="Practitioner/example"/>
+		</provider>
+	</careTeam>
+
+	<information>
+		<sequence value="1"/>
+		<category>
+			<coding>
+				<code value="pharmacyrefill"/>
+			</coding>
+		</category>
+		<code>
+			<coding>
+				<system value="http://hl7.org/fhir/pharmacy-refill"/>
+				<code value="new"/>
+			</coding>
+		</code>	
+	</information>
+
+	<information>
+		<sequence value="2"/>
+		<category>
+			<coding>
+				<code value="pharmacyinformation"/>
+			</coding>
+		</category>
+		<code>
+			<coding>
+				<system value="http://hl7.org/fhir/pharmacy-information"/>
+				<code value="refillsremaining"/>
+			</coding>
+		</code>	
+		<valueQuantity>
+			<value value="0"/>
+		</valueQuantity>
+	</information>
+
+	<information>
+		<sequence value="3"/>
+		<category>
+			<coding>
+				<code value="pharmacyinformation"/>
+			</coding>
+		</category>
+		<code>
+			<coding>
+				<system value="http://hl7.org/fhir/pharmacy-information"/>
+				<code value="dayssupply"/>
+			</coding>
+		</code>	
+		<valueQuantity>
+			<value value="10"/>
+		</valueQuantity>
+	</information>
+
+	<information>
+		<sequence value="4"/>
+		<category>
+			<coding>
+				<code value="pharmacy"/>
+			</coding>
+		</category>
+		<code>
+			<coding>
+				<system value="http://hl7.org/fhir/pharmacy-form"/>
+				<code value="capsule"/>
+			</coding>
+		</code>	
+	</information>
+
+	<diagnosis>
+		<sequence value="1"/>
+		<diagnosisCodeableConcept>
+			<coding>
+				<code value="654456"/>
+			</coding>
+		</diagnosisCodeableConcept>
+	</diagnosis>
+
+	<insurance>
+		<sequence value="1"/>
+		<focal value="true"/>
+		<coverage>
+			<reference value="Coverage/9876B1"/>
+		</coverage>
+	</insurance>
+
+	<item>
+		<sequence value="1"/>
+		<careTeamLinkId value="1"/>
+		<informationLinkId value="1"/>
+		<informationLinkId value="2"/>
+		<informationLinkId value="3"/>
+		<informationLinkId value="4"/>
+		<!-- type=compoundmedication -->
+		<service>
+			<coding>
+				<system value="http://localdruglist.org"/>
+				<code value="compound"/> 
+				<display value="Custom compound"/>
+			</coding> 
+		</service>
+		<servicedDate value="2014-08-16"/>
+		<quantity>
+			<value value="30"/>
+			<unit value="TAB"/>
+			<system value="http://unitsofmeasure.org"/> <!-- UCUM -->
+			<code value="TAB"/>
+		</quantity>
+		<net>
+			<value value="155.00"/>
+			<system value="urn:iso:std:iso:4217"/>
+			<code value="USD"/> 
+		</net> 
+		<detail>
+			<sequence value="1"/>
+			<!-- type=packagemedication -->
+			<service>
+				<coding>
+					<system value="http://localdruglist.org"/>
+					<code value="44001"/> 
+					<display value="Acetaminophen 250mg"/>
+				</coding> 
+			</service>
+			<quantity>
+				<value value="250"/>
+				<unit value="mg"/>
+			</quantity>
+			<net>
+				<value value="20.00"/>
+				<system value="urn:iso:std:iso:4217"/>
+				<code value="USD"/> 
+			</net> 	
+			<subDetail>
+				<sequence value="1"/>
+				<!-- type=costitem -->
+				<service>
+					<coding>
+						<system value="http://hl7.org/fhir/ex-pharmaservice"/>
+						<code value="drugcost"/> 
+					</coding> 
+				</service>
+				<net>
+					<value value="20.00"/>
+					<system value="urn:iso:std:iso:4217"/>
+					<code value="USD"/> 
+				</net> 
+			</subDetail>
+		</detail>
+		<detail>
+			<sequence value="2"/>
+			<!-- type=packagemedication -->
+			<service>
+				<coding>
+					<system value="http://localdruglist.org"/>
+					<code value="44035"/> 
+					<display value="Phenacetin 50mg"/>
+				</coding> 
+			</service>
+			<quantity>
+				<value value="50"/>
+				<unit value="mg"/>
+			</quantity>
+			<net>
+				<value value="25.00"/>
+				<system value="urn:iso:std:iso:4217"/>
+				<code value="USD"/> 
+			</net> 	
+			<subDetail>
+				<sequence value="1"/>
+				<!-- type=costitem -->
+				<service>
+					<coding>
+						<system value="http://hl7.org/fhir/ex-pharmaservice"/>
+						<code value="drugcost"/> 
+					</coding> 
+				</service>
+				<net>
+					<value value="25.00"/>
+					<system value="urn:iso:std:iso:4217"/>
+					<code value="USD"/> 
+				</net> 
+			</subDetail>
+		</detail>
+		<detail>
+			<sequence value="3"/>
+			<!-- type=packagemedication -->
+			<service>
+				<coding>
+					<system value="http://localdruglist.org"/>
+					<code value="44057"/> 
+					<display value="Codeine 25mg"/>
+				</coding> 
+			</service>
+			<quantity>
+				<value value="25"/>
+				<unit value="mg"/>
+			</quantity>
+			<net>
+				<value value="28.00"/>
+				<system value="urn:iso:std:iso:4217"/>
+				<code value="USD"/> 
+			</net> 	
+			<subDetail>
+				<sequence value="1"/>
+				<!-- type=costitem -->
+				<service>
+					<coding>
+						<system value="http://hl7.org/fhir/ex-pharmaservice"/>
+						<code value="drugcost"/> 
+					</coding> 
+				</service>
+				<net>
+					<value value="28.00"/>
+					<system value="urn:iso:std:iso:4217"/>
+					<code value="USD"/> 
+				</net> 
+			</subDetail>
+		</detail>
+		<detail>
+			<sequence value="2"/>
+			<!-- type=costitem -->
+			<service>
+				<coding>
+					<system value="http://hl7.org/fhir/ex-pharmaservice"/>
+					<code value="markup"/> 
+				</coding> 
+			</service>
+			<net>
+				<value value="22.00"/>
+				<system value="urn:iso:std:iso:4217"/>
+				<code value="USD"/> 
+			</net> 
+		</detail>
+		<detail>
+			<sequence value="3"/>
+			<!-- type=costitem -->
+			<service>
+				<coding>
+					<system value="http://hl7.org/fhir/ex-pharmaservice"/>
+					<code value="compoundfee"/> 
+				</coding> 
+			</service>
+			<net>
+				<value value="60.00"/>
+				<system value="urn:iso:std:iso:4217"/>
+				<code value="USD"/> 
+			</net> 
+		</detail>
+	</item>
+	<total>
+		<value value="155.00"/>
+		<system value="urn:iso:std:iso:4217"/>
+		<code value="USD"/> 
+	</total>
+</Claim>
