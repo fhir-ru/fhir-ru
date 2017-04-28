@@ -5,7 +5,7 @@
     <!-- Use of Procedure properties -->
 </h3>
 <p>
-Многие элементы ресурса Procedure взаимосвязаны и фактически все могут передаваться в элементе Procedure.code или в элементе text свойства Procedure.code. Т. е. из этого элемента можно узнать категорию, анатомическое расположение и даже показание (к процедуре). Будут ли эти свойства заполняться по отдельности, зависит от реализации.
+Многие элементы ресурса Procedure взаимосвязаны и могут передаваться в элементе Procedure.code или в элементе text свойства Procedure.code. Т. е. из этого элемента можно узнать категорию, анатомическое расположение и даже показание (к процедуре). Будут ли эти свойства заполняться по отдельности, зависит от реализации.
 <!--     Many of the elements of Procedure have inherent relationships and may actually all be conveyed  by the Procedure.code or in the text element 
     of the Procedure.code property. I.e. You may be able to infer category, bodySite and even indication. 
     Whether these other properties will be populated may vary by implementation.  -->

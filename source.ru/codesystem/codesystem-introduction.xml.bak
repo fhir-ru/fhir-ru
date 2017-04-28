@@ -1,0 +1,168 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+<a name="scope"> </a>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<p>
+В основе терминологической спецификации FHIR лежат два ключевых понятия, первоначально введённые в <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">Основных принципах HL7 v3</a>:
+<!-- The FHIR terminology specification is based two key concepts, originally defined in <a href="http://www.hl7.org/documentcenter/public/standards/V3/core_principles/infrastructure/coreprinciples/v3modelcoreprinciples.html">HL7 v3 Core Principles</a>: -->
+</p>
+<ul>
+<li> <b>кодовая система</b> - определяет набор кодов и их значений (также известна как реестр, номенклатура, классификация и/или онтология)</li>
+<li> <b>набор значений</b> - выбирает и составляет набор кодов из одной или нескольких кодовых систем</li>
+<!-- <li> <b>code system</b> - defines a set of codes with meanings (also known as enumeration, terminology, classification, and/or ontology)</li>
+<li> <b>value set</b> - selects a set of codes from those defined by one or more code systems</li> -->
+</ul>
+<p>
+Кодовые системы задают. какие коды (символы и/или выражения) существуют и как их следует интерпретировать. Наборы значений выбирают набор кодов из одной или нескольких кодовых систем, чтобы устанавливать, какие коды могут быть использованы в конкретном контексте.
+<!-- Code systems define which codes (symbols and/or expressions) exist, and how they are understood. Value Sets 
+select a set of codes from one or more code systems to specify which codes can be used in a particular context. -->
+</p>
+<p>
+Ресурс CodeSystem применяется для объявления о существовании кодовой системы, и его ключевые свойства следующие:
+<!-- The CodeSystem resource is used to declare the existence of a code system, and it's key properties: -->
+</p>
+<ul>
+ <li>Идентифицирующий URL и версия</li>
+ <li>Описание, авторсокое право, дата публикации и другие метаданные</li>
+ <li>Некоторые ключевые свойства самой кодовой системы - чувствительна ли она регистру, есть ли у неё версионирование, задаёт ли она композиционную грамматику</li>
+ <li>Какие фильтры можно использовать в наборах значений, использующих эту кодовую систему в элементе ValueSet.compose</li> 
+ <li>Какие свойства понятий определяются кодовой системой</li>
+<!--  <li>Identifying URL and version</li>
+ <li>Description, Copyright, publication date, and other metadata</li>
+ <li>Some key properties of the code system itself - whether it's case sensitive, version safe, and whether it defines a compositional grammar</li>
+ <li>What filters can be used in value sets that use the code system in a ValueSet.compose element</li> 
+ <li>What properties the concepts defined by the code system</li> -->
+</ul>
+<p>
+Кроме того, ресурс CodeSystem может перечислять некоторые или все концепты из кодовой системы наряду с их базовыми свойствами (код, значение для отображения, определение), обозначениями и дополнительными свойствами.
+<!-- In addition, the CodeSystem resource may list some or all of the concepts in the code system, along with
+their basic properties (code, display, definition), designations, and additional properties. -->
+</p>
+<p>
+Ресурс CodeSystem не предназначен для поддержки процесса обслуживания кодовой системы. Вместо этого он направлен на публикацию свойств и, необязательно, содержимого кодовой системы для использования по всей экосистеме FHIR, например для поддержики развёртки и валидации набора значений. Обратите внимание, что все важные существующие (большие) кодовые системы (SNOMED CT, LOINC, RxNorm, семейство систем ICD и др.) имеют свои собственные форматы распространения, и нет намерения использовать ресурс CodeSystem для распространения этих видов справочников. Вместо этого он предназначен для распространения меньших узкоспециализированных кодовых систем, которые повсеместно встречаются на протяжении всего процесса здравоохранения.
+<!-- The CodeSystem resource is not intended to support the process of maintaining a 
+code system. Instead, the focus is on publishing the properties and optionally 
+the content of a code system for use throughout the FHIR eco-system, such as to support value set expansion and validation. Note that 
+the important existing (large) code systems (SNOMED CT, LOINC, RxNorm, ICD family, etc) 
+all have their own distribution formats, and there is no intent that the CodeSystem
+resource be used for distributing these kind of terminologies. Instead, it is 
+intended to be used for distributing the smaller ad-hoc code systems that are 
+ubiqutiously encountered through out the healthcare process. -->
+</p>
+</div>
+<div>
+<a name="relationships"> </a>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<ul>
+ <li>Кодовые системы используются в ресурсах <a href="valueset.html">ValueSet</a></li>
+ <li>Тип данных <a href="datatypes.html#Coding">Coding</a> ссылается на ресурсы CodeSystem по их каноническим URL</li>
+ <li>Ресурс CodeSystem спроектирован на основе функциональности, описанной в спецификации <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a>. Ресурсы CodeSystem можно конвертировать в кодовую систему CTS2.</li>
+<!--  <li>Code systems are used in <a href="valueset.html">ValueSet</a> resources</li>
+ <li>The <a href="datatypes.html#Coding">Coding</a> data type refers to CodeSystem resources by their canonical URL</li>
+ <li>The CodeSystem resource design is based on the functionality described in the <a href="http://www.omg.org/spec/CTS2/1.0/">OMG CTS 2</a> specification. CodeSystem resources can be converted to CTS2 
+ code system resources.</li> -->
+</ul>
+
+<p>
+The <code>CodeSystem</code> resource defines the content of a code system, and also it's preferred identifier.
+The <code>NamingSystem</code> resource identifies the existence of a code or identifier system, and its possible and preferred identifiers. 
+The key difference between the resources is who creates and manages them - <code>CodeSystem</code> resources are managed
+by the owner of the code system resource, who can properly define the features and content of the code system.
+<code>NamingSystem</code> resources, on the other hand, are frequently defined by 3rd parties that encounter the
+code system in use, and need to describe the use, but do not have the authority to define the features and content. 
+Additionally, there may be multiple authoritative <code>NamingSystem</code> resources for a code systemn, but there
+should only be one <code>CodeSystem</code> resource.
+</p>
+</div>
+
+<div>
+<a name="context"> </a>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
+
+<p>
+При использовании кодовых систем и наборов значений важно их должным образом различать. Это одна очень общая область, где на практике встречаются существенные риски клинической безопасности. Реализаторам следует ознакомиться с содержимым раздела <a href="terminologies.html">Применение кодов в ресурсах</a>.
+<!-- When using code systems and value sets, proper differentiation between a code system and a value set is important. 
+This is one very common area where significant clinical safety risks occur in practice. Implementers
+should be familiar with the content in <a href="terminologies.html">Using Codes in resources</a>. -->
+</p>
+<p>
+У каждой кодовой системы есть 2 различных URL, которые можно использовать для ссылок на неё - это её логический идентификатор и её адрес.
+<!-- Each code system has 2 different URLs that can be used to reference it - its logical identifier, and 
+its location. -->
+</p>
+<p>
+Адрес кодовой системы - это URL, по которому она может быть получена, обычно на FHIR-сервере, и может быть относительной ссылкой на кодовую систему на этом же сервере. Логический идентификатор хранится в самой кодовой системе в элементе <a href="codesystem-definitions.html#CodeSystem.url">CodeSystem.url</a>. Это логический идентификатор (который иногда называют каноническим URL), который ссылается на эту кодовую систему во всех системах. В идеале, этот URL должен также быть адресом мастер-версии кодовой системы, хотя это и не всегда возможно.
+<!-- The location of the code system is a URL by which it may be retrieved, usually from a FHIR 
+server, and may be a relative reference to a code system on the same server. 
+The logical identifier is in the code system itself, in 
+<a href="codesystem-definitions.html#CodeSystem.url">CodeSystem.url</a>. This 
+is the logical identity (sometimes called the canonical URL) that refers to this 
+code system across all systems. Ideally, the URL should also be the location of the 
+master version of the code system, though this is not always possible.  -->
+</p>
+<blockquote>
+<p>
+Например все кодовые системы, опубликованные в рамках FHIR, имеют логический URL, который является адресом, по которому к ним можно получить доступ в самой спецификации FHIR. Однако, пока готовится новая версия спецификации FHIR, кодовые системы, которые опубликованы в черновом варианте, не будут находиться в текущей спецификации FHIR.
+<!-- For example, the code systems published as part of FHIR all have a logical URL
+which is also a location by which they may be accessed in the FHIR specification
+itself. However, while a new version of the FHIR Specification is being prepared,
+code systems that are published in the drafts will not be found in the current FHIR
+specification.  -->
+</p>
+<p>
+Поскольку обычной практикой является копировать (сохранять в кэше) кодовые системы локально, большинство ссылок на кодовые системы будут либо логическим, либо буквальным URL.
+<!-- Because it is common practice to copy (cache) code systems locally, most 
+references to code systems can be either a logical or a literal URL.  -->
+</p>
+
+</blockquote>
+
+
+<h3>Идентификация ресурсов CodeSystem<!-- CodeSystem Identification --></h3>
+<p>
+У кодовой системы есть 3 вида идентификаторов:
+<!-- A code system has 3 identifiers: -->
+</p>
+<ul>
+ <li><code>CodeSystem.id</code>: <a href="resource.html#id">логический идентификатор</a> системы, которая содержит кодовую систему - меняется при перемещении с сервера на сервер (этот идентификатор, добавленный к адресу сервера, называется "буквальным идентификатором" ресурса)</li>
+ <li><code>CodeSystem.url</code>: каноничный URL, который никогда не меняется для кодовой системы - он одинаков для всех копий. В идеале, этот URL долежн также быть местонахождением мастер-версии кодовой системы, хотя это и не всегда возможно</li>
+ <li><code>CodeSystem.identifier</code>: пара система/значение, которая используется для идентификации кодовой системы в других контекстах (как, например, OID в спецификации <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>)</li>
+<!--  <li><code>CodeSystem.id</code>: the <a href="resource.html#id">logical id</a> on the system that holds the code system - this changes as it moves from server to server (this id, with the server address prepended, is called the 'literal identity' of the resource)</li>
+ <li><code>CodeSystem.url</code>: the canonical url that never changes for this code system - it is the same in every copy. Ideally, the URL should also be the location of the master version of the code system, though this is not always possible</li>
+ <li><code>CodeSystem.identifier</code>: A system/value pair that is used to identify the code system in other contexts (such as an OID in an <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> specification)</li> -->
+</ul>
+<p>
+Более подробную информацию относительно идентификации ресурсов см. в разделе <a href="resource.html#id">Идентификация ресурсов</a>.
+<!-- For further information regarding resource identification, see <a href="resource.html#id">Resource Identity</a>. -->
+</p>
+
+<p>
+This means that each code system has 2 different URLs that can be used to reference it - 
+its canonical <code>url</code>, and its local location from which it may be retrieved. 
+Because it is common practice to copy (cache) code systems locally, most references to 
+code systems use the canonical URL. 
+</p>
+<blockquote>
+<p>
+For example, the code systems published as part of FHIR all have a canonical URL
+which is also a location by which they may be accessed in the FHIR specification
+itself. Note, though, that while a new version of the FHIR Specification is being prepared,
+code systems that are published in the drafts will not be found in the published FHIR
+specification at their canonical URL. 
+</p>
+</blockquote>
+
+<p>
+Alternatively, the <code>identifier</code> and <code>version</code> elements may be used to reference this code system in a 
+design, a profile, a <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> template 
+or <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a> message (in the CD data 
+type codeSystem and codeSystemVersion properties). These different contexts may make additional restrictions on the 
+possible values of these elements.  The <code>identifier</code> is generally not needed when using code systems in
+a FHIR context, where the canonical URL is always the focus.
+</p>
+
+</div>
+
+</div>
+

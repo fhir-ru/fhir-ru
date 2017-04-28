@@ -13,7 +13,7 @@
 <%dtheader base%>
 
 <h1>Типы данных</h1>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: 3</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 4</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
 В спецификации FHIR приводится набор типов данных, которые используются в элементах ресурсов. 
@@ -23,7 +23,7 @@
   <li>Simple / primitive types, which are single elements with a primitive value (<a href="#primitive">below</a>)</li>
   <li>General purpose complex types, which are re-usable clusters of elements (<a href="#xomplex">below</a>)</li>
   <li><a href="metadatatypes.html">Complex data types for metadata</a></li>
-  <li>Special purpose data types: <a href="references.html#Reference">Reference</a>, <a href="narrative.html#Narrative">Narrative</a>, <a href="extensibility.html#Extension">Extension</a>, <a href="resource.html#Meta">Meta</a>, and <a href="dosageinstruction.html#DosageInstruction">DosageInstruction</a></li>
+  <li>Special purpose data types: <a href="references.html#Reference">Reference</a>, <a href="narrative.html#Narrative">Narrative</a>, <a href="extensibility.html#Extension">Extension</a>, <a href="resource.html#Meta">Meta</a>, и <a href="dosage.html#Dosage">Dosage</a></li>
 </ol>  
 <p>
 This page describes the general purpose data types. 
@@ -31,25 +31,23 @@ This page describes the general purpose data types.
 
 <p><b>Содержание документа</b></p>
 <table class="grid">
- <tr>
-  <td><b>Примитивные типы</b><br/>[%diagram datatypes/allprimitivetypes.diagram 1a%]</td>
-  <td><b>Комплексные типы</b><br/>[%diagram datatypes/alltypes.diagram 2a%]</td>
- </tr>
-</table>
+    <div class="col-6" style="width: auto"><b>Primitive Types</b><br />[%diagram datatypes/allprimitivetypes.diagram 1dt%]</div>
+    <div class="col-6" style="width: auto; padding-right: 0px; margin-right: -25px;"><b>Complex Types</b><br />[%diagram datatypes/alltypes.diagram 2dt%]</div>
+</div>
 
 <p>
-Белый = абстрактный тип. Голубой = конкретные типы. Розовый = профиль для типа.
+Пояснения: Белый = абстрактный тип. Голубой = конкретные типы. Розовый = профиль для типа.
 </p>
 
 <a name="primitive"> </a>
 <h2>Примитивные типы</h2>
 
 
-[%diagram datatypes/primitives.diagram 3a%]
+[%diagram datatypes/primitives.diagram 3dt%]
 
 <a name="imports"> </a>
 <p>
-В таблице ниже описываются используемые в данной спецификации примитивные типы. Примитивные типы - это типы, имеющие только value, без дополнительных элементов-потомков, хотя как и все типы, они могут иметь <a href="extensibility.html">расширения</a>. See also the <a href="datatypes-examples.html#primitives">Examples</a>.
+В таблице ниже описываются используемые в данной спецификации примитивные типы. Примитивные типы - это типы, имеющие только value, без дополнительных элементов-потомков, хотя как и все типы, они могут иметь <a href="extensibility.html">расширения</a>. См. также the <a href="datatypes-examples.html#primitives">Примеры</a>.
 </p>
 
 
@@ -75,6 +73,10 @@ This page describes the general purpose data types.
    <td>32-битное целое число со знаком (для больших значений используйте тип decimal)<!-- A signed 32-bit integer (for larger values, use decimal) --></td>
    <td>xs:int, except that <b>leading 0 digits are not allowed</b></td>
    <td>JSON number (with no decimal point)</td>
+ </tr>
+ <tr>
+   <td style="border-top: 0px silver solid"></td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: [0]|[-+]?[1-9][0-9]*</td>
  </tr>
  <tr>
    <td>string<a name="string"> </a></td>
@@ -181,7 +183,7 @@ This page describes the general purpose data types.
  </tr>
  <tr>
    <td>id<a name="id"> </a></td>
-   <td>Any combination of upper or lower case ASCII letters ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 characters.  (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.)</td>
+   <td>Any combination of upper or lower case ASCII letters ('A'..'Z', и 'a'..'z', numerals ('0'..'9'), '-' и '.', with a length limit of 64 characters.  (This might be an integer, an un-prefixed OID, UUID or any other identifier pattern that meets these constraints.)</td>
    <td>xs:string</td>
    <td>JSON string</td>
  </tr>
@@ -213,7 +215,7 @@ This page describes the general purpose data types.
  </tr>
  <tr>
    <td style="border-top: 0px silver solid"></td>
-   <td colspan="3" style="border-top: 0px silver solid">Regex: [1-9][0-9]*</td>
+   <td colspan="3" style="border-top: 0px silver solid">Regex: +?[1-9][0-9]*</td>
  </tr>
 </table>
 
@@ -225,14 +227,14 @@ This page describes the general purpose data types.
  <li>Для всех типов их XML-, JSON- и Turtle-представления совпадают, за исключением различий в экранировании символов в XML и JSON</li>
 <li>Boolean values can also be represented using coded values (such as <a href="v2/0136/index.html">HL7 v2 Table 0136</a>). See <a href="observation.html#valuex">Observation</a> for one such use</li>
  <li>Приведенные регулярные выражения могут пропускать более широкий набор значений, чем фактически допустимый (например високосные года), поэтому требуется дополнительная валидация 
-</li>
-
+ <li>The regexes should be qualified with start of string and end of string anchors based on the regex implementation used (e.g. caret '^' and dollar-sign '$' for JavaScript, POSIX, XML and XPath; '\A' и '\Z' for .NET, Java, Python and others; please verify these definitions with the regex implementation used).</li>
+ <li>The data types code, string, and uri can be <a href="terminologies.html#strings">bound to a value set</a></li>
  <li>Точность десятичных значений имеет значение: <a name="precision"> </a>
     <ul> 
       <li>например 0.010 рассматривается как отличное от 0.01</li>
       <li>Реализации ДОЛЖНЫ обрабатывать десятичные значения таким образом, чтобы сохранять и учитывать точность представленного значения в целях отображения</li> 
 	<li>Implementations are not required to perform calculations with these numbers differently, though they may choose to do so (i.e. preserve significance)</li>
-      <li>See implementation comments for <a href="xml.html#schema-gen">XML</a>, <a href="json.html#decimal">JSON</a> and <a href="rdf.html#decimal">RDF</a></li> 
+      <li>See implementation comments for <a href="xml.html#schema-gen">XML</a>, <a href="json.html#decimal">JSON</a> и <a href="rdf.html#decimal">RDF</a></li> 
       <li>В объектном коде, реализации, выполняющие это ограничение, являются GMP-реализациями или эквивалентами Java BigDecimal, которые реализуют произвольную точность, либо комбинацией значения с плавающей точкой (64 bit) с полем для указания точности
 	  <!-- In object code, implementations that might meet this constraint are GMP implementations or equivalents to Java BigDecimal that implement arbitrary precision, or a combination of a (64 bit) floating point value with a precision field --></li> 
       <li>Обратите внимание, что нет абсолютного лимита для размера значения, хотя большие и/или высокоточные значения чрезвычайно редки в медицине. Единственный элемент, где могут встретиться десятичные значения высокой точности - это координаты в <a href="location.html">Location</a>
@@ -257,13 +259,13 @@ This page describes the general purpose data types.
     </ul>
  </li>
 </ul>
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu"> </a>
 <p>
-<b>STU Note:</b>  <a href="http://commonmark.org/">CommonMark</a> is a new arrival but may gain sufficient impetus to be preferred in a future version. 
+<b>STU Note:</b> It is likely that FHIR will change to require/recommend <a href="http://commonmark.org/">CommonMark</a> in Release 4. 
 </p>
 <p>
-Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">here</a>.
 </p>
 </blockquote>
 
@@ -344,7 +346,7 @@ in xml, attributes are never present with a length of 0 (value=""), and properti
 В соответствии с XML-схемой пробелы в начале и в конце атрибута value игнорируются для типов boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid и uri. Обратите внимание, из этого следует, что библиотеки XML, следующие схеме, дают разные значения атрибутов по сравнению с библиотеками, не соответствующими схеме, во время чтения экземпляров XML. По этой причине атрибут value для этих типов НЕ ДОЛЖЕН иметь пробелы в начале и в конце. Строковые значения могут иметь пробелы в начале и в конце, если они являются частью содержимого их значения. В JSON и Turtle пробелы в строковых значениях всегда являются значимыми. Примитивные типы за исключением string НЕ ДОЛЖНЫ содержать пробелы в начале и в конце.
 <!-- According to XML schema, leading and trailing whitespace in the value attribute is ignored for the types 
 boolean, integer, decimal, base64Binary, instant, uri, date, dateTime, oid, and uri. Note that this means that the 
-schema aware XML libraries give different attribute values to non schema aware libraries when reading the 
+schema aware XML libraries give different attribute values to non-schema aware libraries when reading the 
 XML instances. For this reason, the value attribute for these types SHOULD not have leading and trailing spaces.
 String values should only have leading and trailing spaces if they are part of the content of the value. 
 In JSON and Turtle whitespace in string values is always significant. Primitive types other than string SHALL NOT have leading or trailing whitespace. -->
@@ -386,9 +388,9 @@ only the first <a href="datatypes-examples.html#Attachment">example</a> has an a
 
 <p><b>UML-диаграмма типов данных</b></p>
 
-[%diagram datatypes/types.diagram 4a%]
+[%diagram datatypes/types.diagram 4dt%]
 
-[%diagram datatypes/types2.diagram 5a%]
+[%diagram datatypes/types2.diagram 5dt%]
 
 <a name="Attachment"> </a>
 <a name="attachment"> </a>
@@ -396,7 +398,7 @@ only the first <a href="datatypes-examples.html#Attachment">example</a> has an a
 Вложение (Attachment)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Attachment">Примеры</a>, <a href="datatypes-definitions.html#Attachment">Подробное описание</a> и <a href="datatypes-mappings.html#Attachment">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Attachment">Примеры</a>, <a href="datatypes-definitions.html#Attachment">Подробное описание</a>, <a href="datatypes-mappings.html#Attachment">Мэппинг</a>, <a href="datatypes-extras.html#Attachment">Профили и расширения</a> и <a href="datatypes-version-maps.html#Attachment">R2 Conversions</a>.
 </p>
 
 <p>
@@ -413,12 +415,12 @@ If the URL is a relative reference, it is interpreted in the same way as a <a hr
 Само содержимое вложения (Attachment) может быть передано непосредственно с помощью элемента <code>data</code>, либо через указание ссылки в элементе <code>URL</code>.  Если приведено и то, и то, ссылка ДОЛЖНА вести на то же самое содержимое, что и в элементе <code>data</code>. Эта ссылка не может быть повторно использована для указания на какие-то другие данные (например относиться только к определенной версии). Ссылка в элементе <code>URL</code> ДОЛЖНА указывать на место, возвращающее сами данные; некоторые URIs, например cid:, отвечают этому требованию. Если в <code>URL</code> указана относительная ссылка, она интерпретируется таким же образом, как и  <a href="references.html#references">ссылка на ресурс</a>.
 </p>
 <p>
-The <code>contentType</code> element SHALL always be populated when an Attachment contains <code>data</code>, and 
+The <code>contentType</code> element SHALL always be populated when an Attachment contains <code>data</code>, и 
 MAY be populated when there is a <code>url</code>. It can include charset information 
 and other mime type extensions as appropriate. Если в элементе <code>contentType</code> не указана кодировка, тогда правильный курс действий не определен, хотя некоторые медиа-типы могут указывать кодировку по умолчанию и/или правильная кодировка может определяться проверкой содержимого. 
 </p>
 <p>
-Элемент <code>hash</code> позволяет приложениям проверить, что содержимое, возвращаемое по ссылке в <code>URL</code>, не изменилось. The <code>hash</code> and <code>size</code>
+Элемент <code>hash</code> позволяет приложениям проверить, что содержимое, возвращаемое по ссылке в <code>URL</code>, не изменилось. The <code>hash</code> и <code>size</code>
 relate to the data before it is represented in base64 form.
 </p>
 <p>
@@ -444,7 +446,7 @@ relate to the data before it is represented in base64 form.
 <a name="codesystem"> </a>
 <h2 style="margin-bottom: 1px">Coding</h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Coding">Примеры</a>, <a href="datatypes-definitions.html#Coding">Подробное описание</a> и <a href="datatypes-mappings.html#Coding">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Coding">Примеры</a>, <a href="datatypes-definitions.html#Coding">Подробное описание</a>, <a href="datatypes-mappings.html#Coding">Мэппинг</a>, <a href="datatypes-extras.html#Coding">Профили и расширения</a> и <a href="datatypes-version-maps.html#Coding">R2 Conversions</a>.
 </p>
 <p>
 Coding - это представление определенного концепта с помощью символа из определенной "кодовой системы" - см. 
@@ -457,8 +459,8 @@ Coding - это представление определенного конце
 Значение Coding определяется кодом. <code>System</code> указывает на источник определения кода наряду с необязательной ссылкой на версию. Элемент display содержит человекочитаемый  текст, определенный системой - он не добавляет другого значения. Ссылка на Value Set дает информацию о контексте выбора этого кода.
 The meaning of the Coding is defined by the code. The <code>system</code> provides
 the source of the definition of the code, along with an optional version reference.
-The display is a human display for the text defined by the system - it adds no other 
-value.
+The display is a human display for the text defined by the system - it is not intended
+for computation.
 </p>
 <p>
 Система <code>system</code> - это URI, ссылающийся на кодовую систему, определяющую этот код <code>code</code>. 
@@ -529,7 +531,7 @@ is no suitable code in the system in which to represent the code.
 </p>
 <p>
 Если два codings имеют одинаковые систему <code>system</code>, версию  <code>version</code> и код <code>code</code>, значит они имеют одинаковое значение. Если информация о версии отсутствует, или элементы система <code>system</code>, версия  <code>version</code>  или код <code>code</code> различаются, тогда как их коды связаны, может быть определено обращением к определениям этих систем(ы), и любые <a href="conceptmap.html">мэппинги</a> доступны. 
-If two codings have the same <code>system</code>, <code>version</code> and <code>code</code> then they have the same meaning.
+If two codings have the same <code>system</code>, <code>version</code> и <code>code</code> then they have the same meaning.
 If the version information is missing, or the <code>system</code>, <code>version</code> or the <code>code</code> elements differ, then 
 how the codes are related can only be determined by consulting the definitions of the system(s) and any <a href="conceptmap.html">mappings</a> available.
 </p>
@@ -572,7 +574,7 @@ Coding используется в следующих местах: [%dtusage Co
 CodeableConcept
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#CodeableConcept">Примеры</a>, <a href="datatypes-definitions.html#CodeableConcept">Подробное описание</a> и <a href="datatypes-mappings.html#CodeableConcept">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#CodeableConcept">Примеры</a>, <a href="datatypes-definitions.html#CodeableConcept">Подробное описание</a>, <a href="datatypes-mappings.html#CodeableConcept">Мэппинг</a>, <a href="datatypes-extras.html#CodeableConcept">Профили и расширения</a> и <a href="datatypes-version-maps.html#CodeableConcept">R2 Conversions</a>.
 </p>
 <p>
 CodeableConcept представляет собой значение, которое обычно сопровождается ссылкой на один или несколько справочников или онтологий, но может также определяться предоставлением текста. Это распространенный шаблон представления медицинских данных.
@@ -603,7 +605,9 @@ CodeableConcept используется в следующих местах: [%d
 Quantity (Количество)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Quantity">Примеры</a>, <a href="datatypes-definitions.html#Quantity">Подробное описание</a> и <a href="datatypes-mappings.html#Quantity">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Quantity">Примеры</a>, <a href="datatypes-definitions.html#Quantity">Подробное описание</a> and
+<a href="datatypes-mappings.html#Quantity">Мэппинг</a>, <a href="datatypes-extras.html#Quantity">Профили и расширения</a> and
+and <a href="datatypes-version-maps.html#Quantity">R2 Conversions</a>.
 </p>
 <p>
 Измеренная величина (или величина, которая потенциально может быть измерена).
@@ -619,7 +623,7 @@ Quantity (Количество)
 (см. <a href="#Coding">Coding</a> для получения дополнительной информации о том, как использовать элемент <code>system</code>). 
 </p>
 <p>
-Если единицы измерений можно закодировать с помощью системы UCUM (Unified Code for Units of Measure) и код присутствует, тогда это ДОЛЖЕН быть код UCUM. Если в <code>code</code> указана единица измерения из UCUM, то можно использовать каноническое значение для сравнения величин. Обратите внимание, что элемент <code>unit</code> будет часто содержать текст, являющийся фактически допустимой единицей измерения UCUM, но нельзя предполагать, что элемент unit действительно содержит допустимую единицу измерения UCUM.
+Если единицы измерений можно закодировать с помощью системы UCUM (Unified Code for Units of Measure) и код присутствует, тогда это ДОЛЖЕН быть код UCUM. Если в <code>code</code> указана единица измерения из UCUM, то в целях сравнения величин можно использовать каноническое значение. Обратите внимание, что элемент <code>unit</code> будет часто содержать текст, являющийся допустимой единицей измерения UCUM, но нельзя предполагать, что элемент unit действительно содержит допустимую единицу измерения UCUM.
 </p>
 
 <div class="use">
@@ -732,7 +736,7 @@ just rules applied where the Quantity type is used.
 Range (Диапазон)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Range">Примеры</a>, <a href="datatypes-definitions.html#Range">Подробное описание</a> и <a href="datatypes-mappings.html#Range">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Range">Примеры</a>, <a href="datatypes-definitions.html#Range">Подробное описание</a>, <a href="datatypes-mappings.html#Range">Мэппинг</a>, <a href="datatypes-extras.html#Range">Профили и расширения</a> и <a href="datatypes-version-maps.html#Range">R2 Conversions</a>.
 </p>
 <p>
 Множество упорядоченных значений величины (Quantity), заданное указанием верхнего и нижнего пределов.
@@ -764,7 +768,7 @@ Range используется в следующих местах: [%dtusage Ran
 Ratio (Соотношение)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Ratio">Примеры</a>, <a href="datatypes-definitions.html#Ratio">Подробное описание</a> и <a href="datatypes-mappings.html#Ratio">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Ratio">Примеры</a>, <a href="datatypes-definitions.html#Ratio">Подробное описание</a>, <a href="datatypes-mappings.html#Ratio">Мэппинг</a>, <a href="datatypes-extras.html#Ratio">Профили и расширения</a> и <a href="datatypes-version-maps.html#Ratio">R2 Conversions</a>.
 </p>
 <p>
 Отношение между двумя значениями количества, выраженное в виде числителя и знаменателя.
@@ -796,7 +800,7 @@ Ratio используется в следующих местах: [%dtusage Rat
 Period (Период)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Period">Примеры</a>, <a href="datatypes-definitions.html#Period">Подробное описание</a> и <a href="datatypes-mappings.html#Period">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Period">Примеры</a>, <a href="datatypes-definitions.html#Period">Подробное описание</a>, <a href="datatypes-mappings.html#Period">Мэппинг</a>, <a href="datatypes-extras.html#Period">Профили и расширения</a> и <a href="datatypes-version-maps.html#Period">R2 Conversions</a>.
 </p>
 <p>
 Период времени, определенный датой/временем начала и окончания.
@@ -829,14 +833,18 @@ Period используется в следующих местах: [%dtusage Pe
 SampledData (Дискретные данные)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#SampledData">Примеры</a>, <a href="datatypes-definitions.html#SampledData">Подробное описание</a> и <a href="datatypes-mappings.html#SampledData">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#SampledData">Примеры</a>, <a href="datatypes-definitions.html#SampledData">Подробное описание</a>, <a href="datatypes-mappings.html#SampledData">Мэппинг</a>, <a href="datatypes-extras.html#SampledData">Профили и расширения</a> и <a href="datatypes-version-maps.html#SampledData">R2 Conversions</a>.
 </p>
 <p>
-Данные серии измерений с помощью изделий, имеющие верхний и нижний пределы. В данных может содержаться более одного измерения. 
+Данные серии измерений, снятые устройством, которые могут иметь верхний и нижний пределы. Этот тип данных также поддерживает несколько измерений. 
 </p>
 <p>
-SampledData представляет собой удобный способ управления данными, полученными на изделиях, которые измеряют определенное физическое состояние с высокой частотой. Типичное использование - вывод данных с электрокардиографа.
+SampledData обеспечивает удобный способ управления данными, полученными на изделиях, которые измеряют определенное физическое состояние с высокой частотой. Типичное использование - вывод данных с электрокардиографа. В этот тип данных входят серии необработанных десятичных значений (которые по большей части являются простыми целыми), наряду с другими настройками шкалы и коэффициента. Они интерпретируются таким образом, чтобы
 </p>
+<pre>
+первоначальное измеренное значение value[i] = SampledData.data[i] * SampledData.scaleFactor + SampledData.origin.value
+</pre>
+
 [%dt SampledData 8%]
 <p>
 Данные представляют собой множество десятичных значений, разделенных одиночным пробелом (символ Юникода u20). В дополнение к десятичным значениям используются значения "E" (ошибка), "L" (ниже предела обнаружения) и "U" (выше предела обнаружения). Если имеется более одного измерения, различные измерения чередуются - все точки данных для конкретного времени представлены вместе. Значением коэффициента <code>factor</code> по умолчанию является 1.
@@ -853,7 +861,7 @@ SampledData используется в следующих местах: [%dtusa
 Identifier (Идентификатор)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Identifier">Примеры</a>, <a href="datatypes-definitions.html#Identifier">Подробное описание</a> и <a href="datatypes-mappings.html#Identifier">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Identifier">Примеры</a>, <a href="datatypes-definitions.html#Identifier">Подробное описание</a>, <a href="datatypes-mappings.html#Identifier">Мэппинг</a>, <a href="datatypes-extras.html#Identifier">Профили и расширения</a> и <a href="datatypes-version-maps.html#Identifier">R2 Conversions</a>.
 </p>
 <p>
 Числовая или буквенно-числовая строка, ассоциированная с отдельным объектом или сущностью внутри данной системы. Обычно идентификаторы используются, чтобы связать содержимое ресурсов и внешнее содержимое, доступное в других фреймворках или протоколах. Идентификаторы ассоциируются с объектами и могут быть изменены или изъяты из обращения вследствие развития систем, из-за ошибок или с течением времени.
@@ -868,18 +876,25 @@ errors.  -->
 <p>
 Значение <code>value</code> должно быть уникальным в пределах заданной системы <code>system</code> и иметь согласованное значение, где бы оно ни появлялось. И <code>system</code>, и <code>value</code> всегда чувствительны к регистру.
 <!-- The <code>value</code> SHALL be unique within the defined <code>system</code>
-and have a consistent meaning wherever it appears. Both <code>system</code> and <code>value</code> are always case sensitive. -->
+and have a consistent meaning wherever it appears. Both <code>system</code> и <code>value</code> are always case sensitive. -->
 </p>
 <p>
-Система <code>system</code>, на которую ссылаются с помощью URI, устанавливает, каким образом определяется идентификатор (т. е. каким образом обеспечивается уникальность значения). Это может быть некоторое приложение или признанный стандарт/спецификация, определяющие доступное множество идентификаторов или способ обеспечения их уникальности. FHIR сразу задаёт <a href="identifier-registry.html">некоторые полезные или важные URI</a>.
-<!-- The <code>system</code> referred to by means of a URI defines how the identifier is defined (i.e. how the value is made unique). 
+Система <code>system</code> - это URI, определяющее множество идентификаторов (т. е. каким образом обеспечивается уникальность значения). Это может быть некоторое приложение или признанный стандарт/спецификация, определяющие доступное множество идентификаторов или способ обеспечения их уникальности. 
+FHIR сразу задаёт <a href="identifier-registry.html">URI некоторых полезных или важных систем</a>. Вот несколько примеров пространств имен идентификаторов:
+<!-- The <code>system</code> is a URI that defines a set of identifiers (i.e. how the <code>value</code> is made unique).
 It might be a specific application or a recognized standard/specification for a set or identifiers
-or a way of making identifiers unique. 
-FHIR defines <a href="identifier-registry.html">some useful or important URIs directly</a>. -->
+or a way of making identifiers unique.
+FHIR defines <a href="identifier-registry.html">some useful or important system URIs directly</a>. Here are some
+example identifier namespaces: -->
 </p>
+<ul>
+ <li><code>http://hl7.org/fhir/sid/us-ssn</code> for United States Social Security Number (SSN) values</li>
+ <li><code>http://ns.electronichealth.net.au/id/hi/ihi/1.0</code> for Australian Individual Healthcare Identifier (IHI) numbers</li>
+ <li><code>urn:ietf:rfc:3986</code> for when the value of the identifier is itself a globally unique URI</li>
+</ul>
 <p>
 If the system is a URL, it SHOULD resolve. Resolution might be to a web page that describes the identifier 
-system and/or supports look-up of identifiers.  Alternatively it could be to a NamingSystem resource 
+system and/or supports look-up of identifiers.  Alternatively, it could be to a <a href="namingsystem.html">NamingSystem</a> resource
 instance. Resolvable URLs are generally preferred by implementers over non-resolvable URNs, particularly 
 opaque URNs such as OIDs (urn:oid:) or UUIDs (urn:uuid:). If used, OIDs and UUIDs may be registered in 
 the <a href="http://hl7.org/oid">HL7 OID registry</a> and SHOULD be registered if the content is shared 
@@ -893,17 +908,18 @@ avoid collisions and to manage that space (and the resolvability of URLs) over t
 Note that the scope of a given identifier system may extend beyond identifiers that might be captured 
 by a single resource.  For example, some systems might draw all "order" identifiers from a single 
 namespace, though some might be used on <a href="medicationrequest.html">MedicationRequest</a> while 
-others would appear on <a href="procedurerequest.html">ProcedureRequest</a> or <a href="diagnosticrequest.html">DiagnosticRequest</a>.
+others would appear on <a href="procedurerequest.html">ProcedureRequest</a>.
 </p>
 <p>
-Если значение идентификатора само по себе является глобально уникальным URI (например OID, UUID или URI без локального окончания), тогда значением системы <code>system</code> ДОЛЖНО быть "urn:ietf:rfc:3986", а в  <code>value</code> должен быть указан сам URI (OIDs и UUIDs с помощью urn:oid: и urn:uuid: - см. <a href="datatypes-examples.html#Identifier">примеры</a>).
+Если значение идентификатора само по себе является глобально уникальным URI (например OID, UUID или URI без локального окончания), тогда значением системы <code>system</code> ДОЛЖНО быть "<code>urn:ietf:rfc:3986</code>"", а в  <code>value</code> должен быть указан сам URI (OIDs и UUIDs с помощью urn:oid: и urn:uuid: - см. <a href="datatypes-examples.html#Identifier">примеры</a>).
+<!-- If the identifier value itself is naturally a globally unique URI (e.g. an OID, a UUID, or a URI with no trailing local part), 
+then the <code>system</code> SHALL be "<code>urn:ietf:rfc:3986</code>", and the URI is in the <code>value</code> 
+(OIDs and UUIDs using urn:oid: and urn:uuid: - see <a href="datatypes-examples.html#Identifier">examples</a>). -->
 </p>
 <p>
 В некоторых случаях система может быть не известна - известно только значение (например простое устройство, сканирующее штрих-коды), или система понимается неявно (простой обмен в ограниченном контексте, зачастую обусловленный считывателями штрих-кодов). В этом случае невозможно выполнить полезное сопоставление значения, если только система не может быть с уверенностью выведена из контекста.
-Подобную практику следует по возможности избегать, так как со временем растет вероятность совместного использования информации в более широком контексте, а значения без системы по своей природе ограничены в использовании.
-<!-- If the identifier value itself is naturally a globally unique URI (e.g. an OID, a UUID, or a URI with no trailing local part), 
-then the <code>system</code> SHALL be "urn:ietf:rfc:3986", and the URI is in the <code>value</code> 
-(OIDs and UUIDs using urn:oid: and urn:uuid: - see <a href="datatypes-examples.html#Identifier">examples</a>).
+Приложения должны указывать <code>систему</code> везде, где это возможно, так как со временем растет вероятность совместного использования информации в более широком контексте, а значения без системы по своей природе ограничены в использовании.
+
 </p>
 <p>
 In some cases, the system may not be known - only the value is known (e.g. a simple device that scans a barcode), 
@@ -915,7 +931,7 @@ information sharing in a wider context is very likely to arise eventually, and v
 <p>
 In addition to the <code>system</code> (which provides a uniqueness scope) and the <code>value</code>, identifiers may also have a
 <code>type</code>, which may be useful when a system encounters identifiers with unknown system values. 
-Note, however, that the type of an identifier is not a well controlled vocabulary with wide variations
+Note, however, that the type of an identifier is not a well-controlled vocabulary with wide variations
 in practice. The <code>type</code> deals only with general categories of identifiers and SHOULD not be 
 used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple 
 categories due to variations in common usage.
@@ -935,7 +951,7 @@ Identifier используется в следующих местах: [%dtusag
 HumanName (Имя человека)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#HumanName">Примеры</a>, <a href="datatypes-definitions.html#HumanName">Подробное описание</a> и <a href="datatypes-mappings.html#HumanName">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#HumanName">Примеры</a>, <a href="datatypes-definitions.html#HumanName">Подробное описание</a>, <a href="datatypes-mappings.html#HumanName">Мэппинг</a>, <a href="datatypes-extras.html#HumanName">Профили и расширения</a> и <a href="datatypes-version-maps.html#HumanName">R2 Conversions</a>.
 </p>
 <p>
 Имя человека с указанием текстового представления, частей имени и информации об использовании.
@@ -975,16 +991,16 @@ Where a person has alternate names that may be used in place of each other (e.g.
 these are different instances of <code>HumanName</code>.
 </p>
 <p>
-Элемент <code>text</code> содержит полное имя в том виде, в котором оно должно показываться. Он может быть задан как в дополнение к частям имени, так и вместо них, и может быть составлен из этих частей, хотя правильный порядок сборки зависит от культуры: порядок частей в пределах типа составляющей имени "given" имеет значение и ДОЛЖЕН соблюдаться. Надлежащий порядок от фамилией и "given" именами зависит от культуры и контекста использования.
+Элемент <code>text</code> содержит полное имя в том виде, в котором оно должно показываться. Он может быть задан как в дополнение к частям имени, так и вместо них, и может быть составлен из этих частей, хотя правильный порядок сборки составляющих зависит от культуры: порядок частей в пределах типа составляющей имени "given" имеет значение и ДОЛЖЕН соблюдаться. Надлежащий порядок от фамилией и "given" именами зависит от культуры и контекста использования.
 <!-- The <code>text</code> element specifies the entire name as it should be represented. This
 may be provided instead of or as well as specific parts, and can be built from the parts, though
-the correct order of assembly is culture dependent: the order of the  parts within a given part type has 
+the correct order of assembly of the parts is culture dependent: the order of the  parts within a given part type has 
 significance and SHALL be observed. The appropriate order between family name and given names depends on culture and context of use. -->
 Note that there is an <a href="extension-humanname-assembly-order.html">extension</a> for the few times name 
 assembly order is not fixed by the culture.
 </p>
 <p>
-The given name parts may contain whitespace, though generally don't. Initials may be used in place of 
+The given name parts may contain whitespace, though generally they don't. Initials may be used in place of
 the full name if that is all that is recorded. Systems that operate across cultures should 
 generally rely on the text form for presentation, and use the parts for index/search functionality. 
 For this reasons, applications SHOULD populate the text element for future robustness.
@@ -1003,7 +1019,7 @@ and a decomposition of the name can be provided using the <code>family</code> ex
 </p>
 <p>
 For robust search, servers should search the parts of a family name independently.
-E.g. Searching either Carreno or Quinones should match a family name of "Carreño Quiñones".
+E.g. Searching either Carreno or Quinones should match a family name of "Carreno Quinones".
 HL7 affiliates may make more specific recommendations about how search should work 
 in their specific culture.
 </p>
@@ -1023,12 +1039,12 @@ HumanName используется в следующих местах: [%dtusage
 Address (Адрес)
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Address">Примеры</a>, <a href="datatypes-definitions.html#Address">Подробное описание</a> и <a href="datatypes-mappings.html#Address">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Address">Примеры</a>, <a href="datatypes-definitions.html#Address">Подробное описание</a>, <a href="datatypes-mappings.html#Address">Мэппинг</a>, <a href="datatypes-extras.html#Address">Профили и расширения</a> и <a href="datatypes-version-maps.html#Address">R2 Conversions</a>.
 </p>
 <p>
 An address expressed using postal conventions (as opposed to GPS or other location definition 
 formats).  This data type may be used to convey addresses for use in delivering mail as well 
-as for visiting locations and which might not be valid for mail delivery.  There are a variety 
+as for visiting locations which might not be valid for mail delivery.  There are a variety
 of postal address formats defined around the world.
 </p>
 
@@ -1054,7 +1070,7 @@ Address используется в следующих местах: [%dtusage A
 ContactPoint
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#ContactPoint">Примеры</a>, <a href="datatypes-definitions.html#ContactPoint">Подробное описание</a> и <a href="datatypes-mappings.html#ContactPoint">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#ContactPoint">Примеры</a>, <a href="datatypes-definitions.html#ContactPoint">Подробное описание</a>, <a href="datatypes-mappings.html#ContactPoint">Мэппинг</a>, <a href="datatypes-extras.html#ContactPoint">Профили и расширения</a> и <a href="datatypes-version-maps.html#ContactPoint">R2 Conversions</a>.
 </p>
 <p>
 <!-- Details for all kinds of technology-mediated contact points for a person or organization, including telephone, email, etc. -->
@@ -1066,8 +1082,8 @@ ContactPoint
 <a href="http://www.itu.int/rec/T-REC-E.123-200102-I/e">ITU-T E.123</a>. 
 Тем не менее это часто не представляется возможным из-за устаревших данных и/или способа записи. 
 However, this is frequently not possible due to legacy data and/or clerical practices when recording contact details.
-For this reason, phone, fax, page and email addresses are not handled as formal URLs. For other kinds 
-of contacts, the <code>system</code> is "other" and the <code>value</code> SHOULD be a URL so that its use can be determined automatically. Typical 
+For this reason, phone, fax, pager, and email addresses are not handled as formal URLs. For other kinds
+of contact points, the <code>system</code> is "other" and the <code>value</code> SHOULD be a URL so that its use can be determined automatically. Typical
 URL schemes used in the value are http(s): for web addresses, and URL schemes for various kinds of messaging systems.
 If the value is not a URL, then human interpretation will be required.
 </p>
@@ -1092,53 +1108,52 @@ ContactPoint используется в следующих местах: [%dtus
 Timing
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Timing">Примеры</a>, <a href="datatypes-definitions.html#Timing">Подробное описание</a> и <a href="datatypes-mappings.html#Timing">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Timing">Примеры</a>, <a href="datatypes-definitions.html#Timing">Подробное описание</a>, <a href="datatypes-mappings.html#Timing">Мэппинг</a>, <a href="datatypes-extras.html#Timing">Профили и расширения</a> и <a href="datatypes-version-maps.html#Timing">R2 Conversions</a>.
 </p>
 <p>
-Определяет событие, которое может произойти несколько раз. Расписания используются для записи не уже произошедших событий, а для ожидаемых или тех событий, на которые есть запрос. 
-Расписание может представлять собой список событий и/или критерии того, когда событие должно наступить, что может быть выражено в стркутурированной форме и/или в виде кода. 
-Когда указываются и событие, и спецификация его повторения, список событий следует понимать как интерпретацию информации в структуре "repeat".
-<!-- Specifies an event that may occur multiple times. Timing schedules are not used for recording when things did happen, but when they are expected or requested to occur.
-A Timing schedule can be a list of events and/or criteria for when the event is to happen, which can be expressed in a structured form and/or as a code. 
-When both event and a repeating specification are provided, the list of events should be understood as an interpretation of the information in the repeat structure. -->
+Specifies an event that may occur multiple times. Timing schedules are used for specifying when events are expected or requested to occur, and may
+also be used to represent a schedule that was followed for past events. A Timing schedule can be a list of events and/or criteria for when the event happens,
+which can be expressed in a structured form and/or as a code. When both event and a repeating specification are provided, the list of events should be
+understood as an interpretation of the information in the repeat structure.
 </p>
 [%dt Timing 13%]
 <p>
-Если график времени содержит критерии повтора, он может произойти заданное число раз в течение указанной продолжительности или относительно какого-то реального события. Если условие окончания не указано, график закончится по каким-то критериям, выраженным где-то ещё.
+Если график времени содержит критерии повтора, он может произойти заданное число раз в течение указанной продолжительности или относительно какого-то повторяющегося события реального мира. Если условие окончания не указано, график закончится по каким-то критериям, выраженным где-то ещё.
 <!-- If the timing schedule has repeating criteria, the repeat can occur a given number of times per 
-the specified duration or in relation to some real world event. If no end condition is specified, 
+the specified duration or in relation to some repeating real world event. If no end condition is specified, 
 the schedule will terminate on some criteria that are expressed elsewhere.  -->
 </p>
 <p>
 This table summarizes some common uses of the Timing Data Type criteria.
 </p>
 <table class="grid">
- <tr><td><b>description</b></td> <td><b>duration</b></td> <td><b>durationUnit</b></td> <td><b>frequency</b></td> <td><b>frequencyMax</b></td> <td><b>period</b></td> <td><b>periodUnit</b></td> <td><b>periodMax</b></td> <td><b>Day of Week</b></td> <td><b>Time Of Day</b></td> <td><b>when</b></td> <td><b>offset</b></td>  <td><b>bounds[x]</b></td></tr>
- <tr><td>Every 8 hours</td>      <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>8</td>             <td>h</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
- <tr><td>Every 7 days</td>       <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>7</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
- <tr><td>3 times a day</td>      <td></td>                <td></td>                     <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
- <tr><td>3-4 times a day</td>    <td></td>                <td></td>                     <td>3</td>                <td>4</td>                   <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
- <tr><td>Every 4-6 hours</td>    <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>4</td>             <td>h</td>                  <td>6</td>              <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
- <tr><td>Every 21 days for 1 hour</td> <td>1</td>         <td>hr</td>                   <td>1</td>                <td></td>                    <td>21</td>            <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
- <tr><td>Three times a week for ½ hour</td> <td>0.5</td>  <td>hr</td>                   <td>3</td>                <td></td>                    <td>1</td>             <td>wk</td>                 <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td></tr>
- <tr><td>With breakfast</td>     <td></td>                <td></td>                     <td></td>                 <td></td>                    <td></td>              <td></td>                   <td></td>               <td></td>                   <td></td>                   <td>CM</td>        <td></td>               <td></td></tr>
- <tr><td>For 5 minutes, 10 minutes before meals</td> <td>5</td>     <td>min</td>        <td></td>                 <td></td>                    <td></td>              <td></td>                   <td></td>               <td></td>                   <td></td>                   <td>AC</td>        <td>10</td>             <td></td></tr>
- <tr><td>1 tablet 3 times daily, 30 minutes before meals</td> <td></td>  <td></td>      <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td>AC</td>        <td>30</td>             <td></td></tr>
- <tr><td>BID, 30 mins before meal, for next 10 days</td> <td></td>  <td></td>            <td>2</td>               <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td>AC</td>        <td>30</td>             <td>Duration = 10 days</td></tr>
- <tr><td>TID, for 14 days</td>   <td></td>                <td></td>                     <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td>Duration = 14 days</td></tr>
- <tr><td>BID, start on 7/1/2015 at 1:00 PM</td> <td></td> <td></td>                     <td>2</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td>Period, low = 2015-07-01T13:00:00</td></tr>
- <tr><td>Mon, Wed, Fri Morning</td> <td></td>             <td></td>                     <td>2</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td>mon | wed | fri</td>    <td></td>                   <td>MORN</td>      <td></td>               <td>Period, low = 2015-07-01T13:00:00</td></tr>
- <tr><td>Every day at 10am</td>  <td></td>                <td></td>                     <td>2</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td>10:00</td>              <td></td>          <td></td>               <td>Period, low = 2015-07-01T13:00:00</td></tr>
+ <tr><td><b>description</b></td> <td><b>duration</b></td> <td><b>durationUnit</b></td> <td><b>frequency</b></td> <td><b>frequencyMax</b></td> <td><b>period</b></td> <td><b>periodUnit</b></td> <td><b>periodMax</b></td> <td><b>Day of Week</b></td> <td><b>Time Of Day</b></td> <td><b>when</b></td> <td><b>offset</b></td>  <td><b>bounds[x]</b></td>  <td><b>count</b></td></tr>
+ <tr><td>Every 8 hours</td>      <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>8</td>             <td>h</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td>               <td></td></tr>
+ <tr><td>Every 7 days</td>       <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>7</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td>               <td></td></tr>
+ <tr><td>3 times a day</td>      <td></td>                <td></td>                     <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td>               <td></td></tr>
+ <tr><td>3-4 times a day</td>    <td></td>                <td></td>                     <td>3</td>                <td>4</td>                   <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td>               <td></td></tr>
+ <tr><td>Every 4-6 hours</td>    <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>4</td>             <td>h</td>                  <td>6</td>              <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td>               <td></td></tr>
+ <tr><td>Every 21 days for 1 hour</td> <td>1</td>         <td>hr</td>                   <td>1</td>                <td></td>                    <td>21</td>            <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td>               <td></td></tr>
+ <tr><td>Three times a week for Â½ hour</td> <td>0.5</td>  <td>hr</td>                   <td>3</td>                <td></td>                    <td>1</td>             <td>wk</td>                 <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td>               <td></td></tr>
+ <tr><td>With breakfast</td>     <td></td>                <td></td>                     <td></td>                 <td></td>                    <td></td>              <td></td>                   <td></td>               <td></td>                   <td></td>                   <td>CM</td>        <td></td>               <td></td>               <td></td></tr>
+ <tr><td>For 5 minutes, 10 minutes before meals</td> <td>5</td>     <td>min</td>        <td></td>                 <td></td>                    <td></td>              <td></td>                   <td></td>               <td></td>                   <td></td>                   <td>AC</td>        <td>10</td>             <td></td>               <td></td></tr>
+ <tr><td>1 tablet 3 times daily, 30 minutes before meals</td> <td></td>  <td></td>      <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td>AC</td>        <td>30</td>             <td></td>               <td></td></tr>
+ <tr><td>BID, 30 mins before meal, for next 10 days</td> <td></td>  <td></td>            <td>2</td>               <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td>AC</td>        <td>30</td>             <td>Duration = 10 days</td>               <td></td></tr>
+ <tr><td>TID, for 14 days</td>   <td></td>                <td></td>                     <td>3</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td>Duration = 14 days</td>               <td></td></tr>
+ <tr><td>BID, start on 7/1/2015 at 1:00 PM</td> <td></td> <td></td>                     <td>2</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td>Period.start = 2015-07-01T13:00:00</td>               <td></td></tr>
+ <tr><td>Mon, Wed, Fri Morning</td> <td></td>             <td></td>                     <td>1</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td>mon | wed | fri</td>    <td></td>                   <td>MORN</td>      <td></td>               <td></td>               <td></td></tr>
+ <tr><td>Every day at 10am</td>  <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>               <td></td>                   <td>10:00</td>              <td></td>          <td></td>               <td></td>               <td></td></tr>
+ <tr><td>Take once, at any time</td>  <td></td>           <td></td>                     <td></td>                 <td></td>                    <td></td>              <td></td>                   <td></td>               <td></td>                   <td></td>                   <td></td>          <td></td>               <td></td>               <td>1</td></tr>
 </table>
 
 <p>
 Многие системы избегают сложности структуры Timing с помощью текстового поля для него (например "текст дозировки").
-Такие системы не используют тип данных Timing. Другие системы используют набор «общих» кодов - включая, но, как правило, не ограничиваясь такими широко распространенными сокращениями, как "BID". Если указан <code>code</code>, то этот код понимается как полное утрвеждение чего бы то ни было, утверждаемого в структурированных данных расписания, и либо код, либо данные необходимо использовать для интерпретации <code>Timing</code>. НЕОБХОДИМО везде, где это возможно, указывать структурированное описание расписания, если только это не BID, TID, QID, AM or PM, которые имеют повсеместное значение.
+Такие системы не используют тип данных Timing. Другие системы используют набор «общих» кодов - включая, но, как правило, не ограничиваясь такими широко распространенными сокращениями, как "BID". Если указан <code>code</code>, то этот код понимается как полное утрвеждение чего бы то ни было, утверждаемого в структурированных данных расписания (за исключением <code>Timing.repeat.bounds</code>, который применяется к коду), и либо код, либо данные необходимо использовать для интерпретации <code>Timing</code>. НЕОБХОДИМО везде, где это возможно, указывать структурированное описание расписания, если только это не BID, TID, QID, AM or PM, которые имеют повсеместное значение.
 <!-- Many systems avoid the complexity of the Timing structure by using a text field for these things (e.g. "Dosage Text"). 
 Those systems do not use the Timing data type. Other systems use a set of 'common' codes - including, but usually
 not limited to, widely understood acronyms such as "BID". If a <code>code</code> is 
 provided, the code is understood to be a complete statement of whatever is specified in the structured timing 
-data, and either the code or the data may be used to interpret the <code>Timing</code>. A structured timing specification SHOULD be provided whenever 
+data (except for <code>Timing.repeat.bounds</code>, which applies to the code), and either the code or the data may be used to interpret the <code>Timing</code>. A structured timing specification SHOULD be provided whenever 
 possible, unless the code is BID, TID, QID, AM or PM, which have a ubiquitous meaning. -->
 </p>
 <p>
@@ -1159,15 +1174,21 @@ part of the base specification</a>, and the structured data portions of the Timi
  <tr><td>PM</td>                 <td></td>                <td></td>                     <td>1</td>                <td></td>                    <td>1</td>             <td>d</td>                  <td></td>                 <td>AFT or EVE</td>  <td></td></tr>
 </table>
 <p>
-These codes SHALL be understood as having the formal meanings documented in this table. Note that BID etc are defined as 'at institutionally specified times'. 
+These codes SHALL be understood as having the formal meanings documented in this table. Note that BID, etc. are defined as 'at institutionally specified times'.
 For example, an institution may choose that BID is "always at 7am and 6pm".  If it is inappropriate for this choice to be made, the code BID 
-should not be used. Instead, a distinct organization-specific code should be used in place of the HL7-defined BID code and/or the a structured representation should be used (in this case, <code>timeOfDay</code>). 
+should not be used. Instead, a distinct organization-specific code should be used in place of the HL7-defined BID code and/or a structured
+representation should be used (in this case, <code>timeOfDay</code>).
 </p>
 
 <div class="use">
 <p><b>Constraints</b></p>
 [%dt.constraints Timing%]
 
+<p>
+Note that these constraints still allow for non-sensical timing specifications such as "Once per day at 2:00 and 4:00" or "every 3 days on Friday".
+Implementers must take care to ensure that their configuration and data collection designs do not lead to these non-interpretable timing specifications.
+The elements <code>dayOfWeek</code>, <code>timeOfDay</code>, и <code>when</code> are particularly likely to be at issue here.
+</p>
 </div>
 <p>
 Timing используется в следующих местах: [%dtusage Timing%]
@@ -1181,7 +1202,7 @@ Timing используется в следующих местах: [%dtusage Ti
 Signature
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-См. также <a href="datatypes-examples.html#Signature">Примеры</a>, <a href="datatypes-definitions.html#Signature">Подробное описание</a> и <a href="datatypes-mappings.html#Signature">Мэппинги</a>.
+См. также <a href="datatypes-examples.html#Signature">Примеры</a>, <a href="datatypes-definitions.html#Signature">Подробное описание</a>, <a href="datatypes-mappings.html#Signature">Мэппинг</a>, <a href="datatypes-extras.html#Signature">Профили и расширения</a> и <a href="datatypes-version-maps.html#Signature">R2 Conversions</a>.
 </p>
 <p>
 Signature содержит электронную цифровую подпись и вспомогательный контекст в доступной FHIR форме. Доказательство невозможности отказа от авторства указывается через XML-Signature BLOB (прим. пер. - binary large object; большой двоичный объект, "блоб").
@@ -1213,27 +1234,27 @@ When the signature is an XML Digital Signature (contentType = application/signat
  <li>The Signature.blob is base64 encoded XML-Signature</li>
  <li>The XML-Signature is a <a href="http://www.w3.org/TR/2002/REC-xmldsig-core-20020212/#def-SignatureDetached">Detached</a> Signature (where the content that is signed is separate from the signature itself)</li> 
  <li>The Signature SHOULD conform to XAdES-X-L for support of Long Term signatures. The XAdES-X-L specification adds the timestamp of the signing, inclusion of the signing certificate, and statement of revocation</li>
- <li>When FHIR Resources are signed, the signature is accross the <a href="xml.html#canonical">Canonical XML form</a> of the resource(s)</li>
+ <li>When FHIR Resources are signed, the signature is across the <a href="xml.html#canonical">Canonical XML form</a> of the resource(s)</li>
  <li>The Signature SHOULD use the hashing algorithm sha256. Signature validation policy will apply to the signature and determine acceptability</li>
- <li>The Signature SHALL include a "CommitmentTypeIndication" element for the Purpose(s) of Signature. The Purpose can be the action being attested to, or the role associated with the signature. The value shall come from ASTM E1762-95(2013). The Signature.type shall contain the same values as committmentTypeIndication</li>
+ <li>The Signature SHALL include a "CommitmentTypeIndication" element for the Purpose(s) of Signature. The Purpose can be the action being attested to, or the role associated with the signature. The value shall come from ASTM E1762-95(2013). The <code>Signature.type</code> shall contain the same values as the CommitmentTypeIndication element.</li>
 </ul>
 <p>
 Есть три уровня проверки подписи:
 <!-- There are three levels of signature verification:  -->
 <ol>
-   <li>проверка того, что сам блок Digital Signature имеет целостность, верификацией подписи через XML-подпись,
-   <!-- verifying that the Digital Signature block itself has integrity through verifying the signature across the XML-Signature,  --></li>
-   <li>подтверждение, что подписавшая сторона подлинна, не была отозвана, и соответствует назначению подписи,
-   <!-- confirming that the signer was authentic, not revoked, and appropriate to the signature purpose,  --></li>
-   <li>подтверждение, что интересуемое подписанное содержимое не изменялось, с помощью алгоритма хеширования.
-   <!-- confirming that the signed content of interest is unmodified using the hash algorithm. --></li>
+   <li>Проверка того, что сам блок Digital Signature имеет целостность, верификацией подписи через XML-подпись,
+   <!-- Verifying that the Digital Signature block itself has integrity through verifying the signature across the XML-Signature.  --></li>
+   <li>Подтверждение, что подписавшая сторона подлинна, не была отозвана, и соответствует назначению подписи,
+   <!-- Confirming that the signer was authentic, not revoked, and appropriate to the signature purpose,  --></li>
+   <li>Подтверждение, что интересуемое подписанное содержимое не изменялось, с помощью алгоритма хеширования.
+   <!-- Confirming that the signed content of interest is unmodified using the hash algorithm. --></li>
 </ol>
 </p>
 <p>
 Отклонения от этих принципов должны быть выражены в политике сайта, и будет перечислены в блоке XML-Signature.
 Например, некоторые среды могут выбрать другой профиль XAdES, алгоритм хэширования, идентификатор политики или справочник назначений подписи.
 <!-- Deviations from these guidelines would need to be expressed in site policy, and would be enumerated in the XML-Signature block. 
-For example some environments may choose a different XAdES profile, hashing algorithm, policy identifier, or signature purpose vocabulary.  -->
+For example, some environments may choose a different XAdES profile, hashing algorithm, policy identifier, or signature purpose vocabulary.  -->
 </p>
 
 <p>
@@ -1246,7 +1267,7 @@ Signature используется в следующих местах: [%dtusage
 Annotation
 </h2>
 <p style="background-color: gainsboro; padding: 4px; margin-top: 0px">
-See also <a href="datatypes-examples.html#Annotation">Examples</a>, <a href="datatypes-definitions.html#Annotation">Detailed Descriptions</a> and <a href="datatypes-mappings.html#Annotation">Mappings</a>.
+См. также <a href="datatypes-examples.html#Annotation">Примеры</a>, <a href="datatypes-definitions.html#Annotation">Подробное описание</a>, <a href="datatypes-mappings.html#Annotation">Мэппинг</a>, <a href="datatypes-extras.html#Annotation">Профили и расширения</a> и <a href="datatypes-version-maps.html#Annotation">R2 Conversions</a>.
 </p>
 <p>
 A  text note which also  contains information about who made the statement and when. 
@@ -1326,7 +1347,7 @@ Annotation is used in the following places: [%dtusage Annotation%]
 <p>
 Следующие типы входят в состав типов данных, но задокументированы в других местах спецификации:
 </p>
-[%diagram datatypes/types3.diagram 6a%]
+[%diagram datatypes/types3.diagram 6dt%]
 
 <ul>
  <li><b><a href="resource.html#metadata">Resource</a></b> - концептуальный базовый класс для всех ресурсов</li>

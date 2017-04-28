@@ -1,0 +1,19 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+
+<a name="scope"> </a>
+<h2>Область применения и использование</h2>
+<p>
+Ресурс Coverage предназначен для предоставления идентификаторов высокого уровня и, потенциально, дескрипторов страхового плана, которые могут использоваться для оплаты, частично или целиком, предоставления товаров и услуг здравоохранения. 
+<!-- The Coverage resource is intended to provide the high level identifiers and potentially descriptors of an insurance plan which may used to pay for,
+ in part or in whole, the provision of health care products and services. -->
+</p>
+<p>
+Этот ресурс также можно использовать для фиксирования случая 'SelfPay' - самооплата, где лицо или организация, отличные от страховой компании, берут на себя ответственность за оплату части затрат на здравоохранение.
+<!-- This resource may also be used to register 'SelfPay' where and individual or organization other than an insurer it taking responsibility for payment for a
+ portion of the health care costs. -->
+</p>
+</div>
+
+</div>

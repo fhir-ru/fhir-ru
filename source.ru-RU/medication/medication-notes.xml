@@ -1,0 +1,9 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<a name="bp"> </a>
+<h2>Рекомендации по использованию ресурса Medication<!-- Best practices for using 'Medication' --></h2>
+<p>
+Medication does not have a status. Pharmacy is evaluating formulary use cases. Feedback is encouraged to the Pharmacy working group committee. 
+</p>
+ 
+</div>

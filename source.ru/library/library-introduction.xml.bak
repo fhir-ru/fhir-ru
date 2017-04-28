@@ -1,0 +1,32 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+<a name="bnc"> </a>
+<h2>Область применения и использование</h2>
+
+<p>Ресурс Library - это контейнер общего назначения для клинических знаний. Эти знания можно описывать с помощью не-FHIR представления, например совместно используемая библиотека клинической логики написана на языке клинической логики (CQL), или XML-схема для информационной модели, или они могут описываться с помощью FHIR-ресурсов, например описание протокола с помощью ресурса PlanDefinition. В дополнение к представлению метаданных библиотеки, данный ресурс содержит элементы для отслеживания зависимостей, а также для представления параметров и требований к данным для любой функциональности выражений, предоставляемой библиотекой.
+<!-- The Library resource is a general purpose container for clinical knowledge that is defined using a non-FHIR representation. For example, a shareable library of clinical logic, written in Clinical Quality Language (CQL), or the XML Schema for an information model. In addition to representing the metadata of the library, the resource has elements for tracking dependencies, as well as for representing the parameters and data requirements for any expression functionality provided by the library. --></p>
+
+<p>Для не-FHIR ассетов, фактическое содержимое библиотеки представляется с помощью типа данных Attachment, на него можно ссылаться либо с помощью URL, либо это содержимое может быть встроено в виде строки в кодировке base-64. В любом случае, элемент <code>contentType</code> вложения используется для указания представления содержимого библиотеки.
+<!-- The actual content of the library is represented using the Attachment data type, and may either be referenced with a url, or the content may be embedded as a base-64 encoded string. Either way, the <code>contentType</code> element of the attachment is used to indicate the representation of the library content. --></p>
+
+<p>Обратите внимание, что поскольку содержимое библиотеки может быть как встроенным, так и извлекаться из внешнего репозитория через URL-вложения, существует возможность, что встроенное содержимое будет отличаться от содержимого в репозитории. При надлежащем версионировании и управлении этого не должно происходить, однако для минимизации потенциального влияния такой возможности реализаторам следует отдавать приоритет встроенному содержимому библиотеки, если оно присутствует.
+<!-- Note that because the library content may be embedded as well as be retrievable from an external repository via the attachment URL, the possibility exists for the embedded content to be different from the content on the repository. With proper versioning and governance, this should never occur, but to minimize the potential impact of this possibility, implementers SHALL give precedence to the embedded content of a library when it is present. --></p>
+
+</div>
+
+<div>
+<h2>Boundaries and Relationships</h2>
+<p>The Library resource is definitional in nature, meaning it is intended to represent shareable knowledge independent of any particular patient. This is in contrast to the <a href="documentreference.html">DocumentReference</a> resource, which captures non-FHIR content related to a specific patient, and the <a href="media.html">Media</a> and <a href="binary.html">Binary</a> resources which capture multimedia content and raw binary content, respectively.</p>
+</div>
+
+<!-- (optional):
+<div>
+<h2>Background and Context</h2>
+<p>
+Provides additional detail on exactly how the resource is to be used
+</p>
+</div>
+-->
+
+</div>

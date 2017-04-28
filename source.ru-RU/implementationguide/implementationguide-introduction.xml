@@ -1,0 +1,53 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+<a name="scope"> </a>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<p>
+"Руководство по реализации" задаёт определённую область использования для FHIR и устанавливаем ограниченный набор ожиданий, которому должны следовать реализации.
+<!-- An "implementation guide" defines a particular scope of usage for FHIR, and sets a bounded set of expectations 
+for implementations to comply to.  -->
+</p>
+<p>
+Существенное ожидание соответствия, вводимое ресурсом ImplementationGuide - это идея <a href="#default">профилей по умолчанию</a>. Реализации могут заявлять о соответствии сразу нескольким руководствам по реализации, однако это требует, чтобы эти руководства по реализации были совместимыми (см. <a href="#compatibility">ниже</a>).
+<!-- The significant conformance expectation introduced by the ImplementationGuide resource is the idea 
+of <a href="#default">Default Profiles</a>. Implementations may conform to multiple implementation guides
+at once, but this requires that the implementation guides are compatible (see <a href="#compatibility">below</a>). -->
+</p>
+</div>
+
+<div>
+<a name="bnr"> </a>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2>
+<p>
+Руководства по реализации содержат два различных типа ссылок на ресурсы:
+<!-- Implementation Guides contain two different types of resource references: -->
+</p>
+<ul>
+ <li>Содержимое: набор логических утверждений, которые должны выполняться реализациями. Это почти всегда ресурсы <a href="conformance-module.html">обеспечения соответствия</a></li>
+ <li>Примеры: примеры, иллюстрирующие назначение профилей, заданных в руководстве по реализации. Это могут быть любые виды ресурсов</li>
+<!--  <li>Contents: A set of logical statements which implementations must conformn to. These are almost always <a href="conformance-module.html">conformance resources</a></li>
+ <li>Examples: Examples that illustrate the intent of the profiles defined in the implementation guide. These can be any kind of resource</li> -->
+</ul>
+<p>
+<a href="capabilitystatement.html">Заявление о возможностях</a> может указывать на одно или несколько руководств по реализации, которым соответствует приложение.
+<!-- An applications <a href="capabilitystatement.html">Capability Statement</a> may identify one or more implementation guides that an application conforms to. -->
+</p>
+</div>
+
+<div>
+<a name="bnc"> </a>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
+<p>
+Ресурс ImplementationGuide создан по двум основным причинам:
+<!-- The ImplementationGuide resource is defined for two principle reasons: -->
+</p>
+<ul>
+ <li>Как логическое утверждение содержимого руководства по реализации для инструментов проверки соответствия.</li>
+ <li>Для инструментов проекта FHIR, для поддержки публикации руководств по реализации.</li>
+<!--  <li>As a logical statement of the implementation guide contents for conformance tools to use to evaluate conformance</li>
+ <li>For the FHIR project tools, to support publishing implementation guides</li> -->
+</ul>
+</div>
+
+</div>

@@ -11,7 +11,7 @@
 <div class="col-12">
 
 <h2>Путеводитель по ресурсам</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">Draft</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: N/A</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
 
 <p>
 В спецификации FHIR определён набор ресурсов и инфраструктура для работы с ними. Чтобы использовать FHIR при создании решений по интеграции, реализаторам необходимо найти соответствие между своими задачами и ресурсами и их содержимым.
@@ -75,11 +75,8 @@ understand their purpose and scope, and their supporting classifications. -->
   <tr><td colspan="3"><b>Проблемы, аллергии пациента и неблагоприятные события</b></td></tr> 
  <tr><td>Аллергия</td><td>Пищевые или лекарственные аллергии</td><td><a href="allergyintolerance.html">AllergyIntolerance</a> </td></tr>
  <tr><td>Клинический диагноз</td><td>Сахарный диабет, застойная сердечная недостаточность</td><td><a href="condition.html">Condition</a> </td></tr>
- <tr><td>Adverse Event / Reaction</td><td>Отрицательная побочная реакция на вещество, падения, нежелательные побочные проявления после операции, внутрибольничные инфекции</td><td>(ещё не сделано)</td></tr> 
-<!--  <tr><td colspan="3"><b>Patient Problems, Allergies and Adverse Events</b></td></tr> 
- <tr><td>Allergy</td><td>Food or drug allergies</td><td><a href="allergyintolerance.html">AllergyIntolerance</a> </td></tr>
- <tr><td>Clinical Diagnosis</td><td>Diabetes, Congestive Heart Failure</td><td><a href="condition.html">Condition</a> </td></tr>
- <tr><td>Adverse Event / Reaction</td><td>Adverse reaction to an agent, falls, adverse surgical events, hospital infections</td><td>(not done yet)</td></tr> -->
+ <tr><td>Adverse Event / Reaction</td><td>Отрицательная побочная реакция на вещество, падения, нежелательные побочные проявления после операции, внутрибольничные инфекции</td><td><a href="adverseevent.html">AdverseEvent</a></td></tr> 
+
 
  <tr><td colspan="3"><b>История болезни</b></td></tr>
  <tr><td>Основная жалоба больного</td><td>Кашель, боль, жар, утомление</td><td><a href="condition.html">Condition</a> </td></tr>
@@ -101,19 +98,12 @@ understand their purpose and scope, and their supporting classifications. -->
  <tr><td>Signs &amp; Symptoms</td><td>from a review of systems- Pain, Fever</td><td><a href="condition.html">Condition</a> </td></tr> -->
 
   <tr><td colspan="3"><b>Suggested Physician Orders </b></td></tr>
- <tr><td>Предложение лабораторного анализа</td><td>Анализ крови, анализ кала</td><td><a href="diagnosticrequest.html">DiagnosticRequest</a> </td></tr>
- <tr><td>Предложение радиологической диагностики</td><td>КТ, МРТ, рентген</td><td><a href="diagnosticrequest.html">DiagnosticRequest</a> </td></tr>
- <tr><td>Предложенный заказ питания</td><td>Заказ орального питания</td><td><a href="nutritionrequest.html">NutritionRequest</a> </td></tr>
+ <tr><td>Предложение лабораторного анализа</td><td>Анализ крови, анализ кала</td><td><a href="procedurerequest.html">ProcedureRequest</a> </td></tr>
+ <tr><td>Предложение радиологической диагностики</td><td>КТ, МРТ, рентген</td><td><a href="procedurerequest.html">ProcedureRequest</a> </td></tr>
+ <tr><td>Предложенный заказ питания</td><td>Заказ орального питания</td><td><a href="nutritionorder.html">NutritionOrder</a> </td></tr>
  <tr><td>Предложенный респираторный заказ</td><td>Подача кислорода</td><td>Пока нет</td></tr>
  <tr><td>Предложенные медикаменты</td><td>Аспирин, лизиноприл</td><td><a href="medicationrequest.html">MedicationRequest</a> </td></tr>
  <tr><td>Предложенное обеспечение</td><td>Инвалидное кресло, поднос для еды</td><td><a href="supplyrequest.html">SupplyRequest</a> </td></tr>
-<!--  <tr><td colspan="3"><b>Suggested Physician Orders </b></td></tr>
- <tr><td>Proposal for a laboratory test</td><td>A blood panel, a stool analysis</td><td><a href="diagnosticrequest.html">DiagnosticRequest</a> </td></tr>
- <tr><td>Proposal for an imaging procedure</td><td>CT Scan, MRI, X-Rays</td><td><a href="diagnosticrequest.html">DiagnosticRequest</a> </td></tr>
- <tr><td>Proposed Diet Order</td><td>An oral diet order</td><td><a href="nutritionrequest.html">NutritionRequest</a> </td></tr>
- <tr><td>Proposed respiratory order</td><td>Oxygen delivery</td><td>Not done yet</td></tr>
- <tr><td>Proposed Medications</td><td>Aspirin, Lisinopril</td><td><a href="medicationrequest.html">MedicationRequest</a> </td></tr>
- <tr><td>Proposed Supply</td><td>Wheel Chair, Food Tray</td><td><a href="supplyrequest.html">SupplyRequest</a> </td></tr> -->
  
   <tr><td colspan="3"><b>Междисциплинарное планирование ухода</b></td></tr>
  <tr><td>Цель пациента</td><td>Уменьшить риск падений, сбросить вес</td><td><a href="goal.html">Goal</a> (как часть <a href="careplan.html">CarePlan</a>)</td></tr>
@@ -273,10 +263,8 @@ of records, and a physical relocation of the patient, but neither of these
 are required. A <code>ProcedureRequest</code> records a request for a procedure to be carried out.  -->
 </p>
 <p>
-Ресурс <code>NutritionRequest</code> - это запрос на предоставление питания, искусственное вскармливание (энтеральное) или оральную пищевую добавку для пациента, а ресурс 
+Ресурс <code>NutritionOrder</code> - это запрос на предоставление питания, искусственное вскармливание (энтеральное) или оральную пищевую добавку для пациента, а ресурс 
 <code>VisionPrescription</code> содержит детали запроса на средства для коррекции зрения. 
-<!-- <code>NutritionRequest</code> is a request to supply a diet, formula feeding (enteral) or oral nutritional supplement to a patient
-and <code>VisionPrescription</code> contains the details of visual aids requested for a patient. -->
 </p>
 
 <table class="grid">
@@ -285,7 +273,7 @@ and <code>VisionPrescription</code> contains the details of visual aids requeste
 <tr><td><a href="goal.html">Goal</a></td><td><a href="#future">Future</a></td><td>Act</td><td><a href="lifecycle.html#clinical">Clinical Workflow</a></td></tr>
 <tr><td><a href="referralrequest.html">ReferralRequest</a></td><td><a href="#future">Future</a></td><td>Act</td><td><a href="lifecycle.html#clinical"><a href="lifecycle.html#clinical">Clinical Workflow</a></a></td></tr>
 <tr><td><a href="procedurerequest.html">ProcedureRequest</a></td><td><a href="#future">Future</a></td><td>Act</td><td><a href="lifecycle.html#clinical"><a href="lifecycle.html#clinical">Clinical Workflow</a></a></td></tr>
-<tr><td><a href="nutritionrequest.html">NutritionRequest</a></td><td><a href="#future">Future</a>/<a href="#ongoing">Ongoing</a></td><td>Act</td><td></td></tr>
+<tr><td><a href="nutritionorder.html">NutritionOrder</a></td><td><a href="#future">Future</a>/<a href="#ongoing">Ongoing</a></td><td>Act</td><td></td></tr>
 <tr><td><a href="visionprescription.html">VisionPrescription</a></td><td><a href="#future">Future</a></td><td>Act</td><td></td></tr>
 </table>
 
@@ -342,15 +330,10 @@ recording the following kinds of data: -->
 use Observation where <a href="condition.html">Condition</a> is more appropriate.  -->
 </p>
 <p>
-Ресурсы <code>DiagnosticRequest</code> и <code>DiagnosticReport</code> созданы для общего диагностического процесса.
+Ресурсы <code>ProcedureRequest</code> и <code>DiagnosticReport</code> созданы для общего диагностического процесса.
 DiagnosticReport связывает процесс "составления отчёта", сочетая идентификаторы процесса, визуальное представление отчёта и заключения/интерпретации с Observations. 
-DiagnosticRequests хранят запрос от авторизованного врача на инициализацию процесса диагностики. 
+ProcedureRequests хранят запрос от авторизованного врача на инициализацию процесса диагностики. 
 Ресурсы <code>Specimen</code> и <code>BodySite</code> используются для записи сведений о сборе проб для анализов, хотя BodySite может также использоваться и с другими ресурсами (например для указания места проведения операции в ресурсе Procedure).
-<!-- <code>DiagnosticOrder</code> and <code>DiagnosticReport</code> support the overall diagnostic process. 
-A DiagnosticReport connects the process of 'reporting', linking process identifiers, visual 
-presentations of a report, and conclusions/interpretations with the Observations. DiagnosticRequests capture the request from an authorized clinician to initiate the diagnostic process.
-<code>Specimen</code> and <code>BodySite</code> are used to record the details of specimen collection
-although BodySite can also be used with other resources (e.g. Operation location details on a Procedure). -->
 </p>
 <p>
 Ресурсы <code>ImagingManifest</code> и <code>ImagingStudy</code> созданы для связывания диагностических изображений, доступных в истории болезни, где непосредственно сами изображения предоставляются специализированными системами (ресурс <a href="media.html">Media</a> предназначен для совместного использования фактических изображений напрямую, что, как правило, не подходят для диагностических данных с высоким разрешением и большим объёмом).
@@ -366,7 +349,7 @@ diagnostic images). -->
 <tr><td><b>Ресурс</b></td><td><b>Категория</b></td><td><b>RIM</b></td><td><b>Жизненный цикл</b></td></tr>
 <tr><td><a href="observation.html">Observation</a></td><td><a href="#past">Past</a></td><td>Act</td><td></td></tr>
 <tr><td><a href="diagnosticreport.html">DiagnosticReport</a></td><td><a href="#past">Past</a></td><td>Act</td><td><a href="lifecycle.html#entity">Entity Availability Workflow</a></td></tr>
-<tr><td><a href="diagnosticrequest.html">DiagnosticRequest</a></td><td><a href="#future">Future</a></td><td>Act</td><td><a href="lifecycle.html#order">Request/Order</a></td></tr>
+<tr><td><a href="procedurerequest.html">ProcedureRequest</a></td><td><a href="#future">Future</a></td><td>Act</td><td><a href="lifecycle.html#order">Request/Order</a></td></tr>
 <tr><td><a href="specimen.html">Specimen</a></td><td><a href="#unrelated">Unrelated</a></td><td>Role</td><td><a href="lifecycle.html#entity">Entity Availability Workflow</a></td></tr>
 <tr><td><a href="bodysite.html">BodySite</a></td><td><a href="#unrelated">Unrelated</a></td><td>Role</td><td></td></tr>
 <tr><td><a href="imagingmanifest.html">ImagingManifest</a></td><td><a href="#past">Past</a></td><td>Act</td><td></td></tr>
@@ -519,10 +502,7 @@ clinical details (though these usual link to it). Aliases for this include
 when the patient goes to physiotherapy as part of a hospital admission. -->
 </p>
 <p>
-Ресурс <code>EpisodeofCare</code> (эпизода оказания медицинской помощи) описывает связь между пациентом и поставщиком медицинских услуг, которая может длиться на протяжении нескольких визитов. Назначение ресурса EpisodeOfCare - отслеживать поставщика (персону или организацию), заинтересованного в продолжающемся уходе за пациентом.
-<!-- An <code>EpisodeofCare</code> is an association between a patient and a care provider
-that may last over several encounters. The purpose of EpisodeOfCare is track a provider
-(person or organization) that has an interest in the ongoing care of the patient. -->
+Ресурс <code>EpisodeOfCare</code> (эпизода оказания медицинской помощи) описывает связь между пациентом и поставщиком медицинских услуг, которая может длиться на протяжении нескольких визитов. Назначение ресурса EpisodeOfCare - отслеживать поставщика (персону или организацию), заинтересованного в продолжающемся уходе за пациентом.
 </p>
 <p>
 Ресурс <code>Communication</code> - это запись о формальном коммуникационном общении с пациентом или другой стороной, заинтересованной в медицинском лечении - письмо, электронное письмо, телефонный звонок и т. п.
@@ -582,7 +562,7 @@ Todo: все эти ресурсы находятся на стадии прое
 <tr><td><b>Ресурс</b></td><td><b>Категория</b></td><td><b>RIM</b></td><td><b>Lifecycle</b></td></tr>
 <tr><td><a href="task.html">Task</a></td><td><a href="#present">Present</a></td><td>Act</td><td></td></tr>
 <tr><td><a href="communicationrequest.html">CommunicationRequest</a></td><td><a href="#future">Future</a></td><td>Act</td><td><a href="lifecycle.html#order">Request/Order</a></td></tr>
-<tr><td><a href="deviceuserequest.html">DeviceUseRequest</a></td><td><a href="#present">Present</a></td><td>Act</td><td><a href="lifecycle.html#order">Request/Order</a></td></tr>
+<tr><td><a href="devicerequest.html">DeviceRequest</a></td><td><a href="#present">Present</a></td><td>Act</td><td><a href="lifecycle.html#order">Request/Order</a></td></tr>
 <tr><td><a href="deviceusestatement.html">DeviceUseStatement</a></td><td><a href="#past">Past</a></td><td>Act</td><td></td></tr>
 <tr><td><a href="processrequest.html">ProcessRequest</a></td><td><a href="#present">Present</a></td><td>Act</td><td><a href="lifecycle.html#order">Request/Order</a></td></tr>
 <tr><td><a href="processresponse.html">ProcessResponse</a></td><td><a href="#present">Present</a></td><td>Act</td><td></td></tr>

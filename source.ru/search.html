@@ -12,7 +12,7 @@
 
 <a name="base"> </a>
 <h2>Поиск</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
 Поиск ресурсов является основополагающим в механике FHIR.
@@ -233,7 +233,7 @@ no system for the _id parameter.
 on the last time they were changed: -->
 </p>
 <pre>
- GET [base]/Observation?_lastUpdated=>2010-10-01
+ GET [base]/Observation?_lastUpdated=gt2010-10-01
 </pre>
 <p>
 В этом примере поиска ищутся все Observations, измененные после 1-Окт 2010. При использовании этого параметра поиска приложениям следует принимать во внимание подходы к синхронизации (<a href="http.html#history">RESTful история</a>
@@ -763,7 +763,7 @@ though only a few servers are expected to offer this facility. -->
 When a string search parameter refers to the types <a href="datatypes.html#HumanName">HumanName</a> and <a href="datatypes.html#Address">Address</a>,
 the search covers the elements of type string, and does not cover elements such as <code>use</code> and <code>period</code>.
 For robust search, servers should search the parts of a family name independently.
-E.g. Searching either Carreno or Quinones should match a family name of "Carreño Quiñones".
+E.g. Searching either Carreno or Quinones should match a family name of "Carreno Quinones".
 HL7 affiliates may make more specific recommendations about how search should work 
 in their specific culture.
 </p>
@@ -910,7 +910,7 @@ http://hl7.org/fhir/special-values, though there is usually no reason to use thi
 <table class="lines">
  <tr> <td><b>Модификатор</b></td> <td><b>Применение</b></td> </tr>
  <tr> <td><code>:text</code></td> <td>Этот параметр поиска обрабатывается как строка поиска по тексту, ассоциированному с кодом/значением - <i>CodeableConcept.text</i>, <i>Coding.display</i>, либо <i>Identifier.type.text</i>.</td> </tr>
- <tr> <td><code>:not</code></td> <td>Изменяет на противоположное совпадение по коду, описанное в параграфе выше. Note that this includes resources that have no value for the parameter - e.g. ?gender:not=male includes all patients that do have have gender = male, including patients that do not have a gender at all</td> </tr>
+ <tr> <td><code>:not</code></td> <td>Изменяет на противоположное совпадение по коду, описанное в параграфе выше. Note that this includes resources that have no value for the parameter - e.g. ?gender:not=male includes all patients that do not have gender = male, including patients that do not have a gender at all</td> </tr>
  <tr> <td><code>:above</code><a name="subsumption"> </a></td> <td>Параметром поиска является концепт с формой <code>[system]|[code]</code>, и он проверяет, включает ли (<a href="codesystem.html#subsumption">subsumes</a>) кодинг в ресурсе указанный в поиске код. Например поисковый концепт имеет связь "is-a" с кодингом в ресурсе, и сюда входит сам кодинг.</td> </tr>
  <tr> <td><code>:below</code></td> <td>Параметром поиска является концепт с формой <code>[system]|[code]</code>, и он проверяет, относится ли кодинг в ресурсе к указанному в поиске коду. Например кодинг в ресурсе имеет связь "is-a" с поисковым концептом, и сюда входит сам кодинг.</td> </tr>
  <tr> <td><code>:in</code></td> <td>Параметром поиска является URI (относительный или абсолютный), который идентифицирует набор значений, и поисковый параметр проверяет, входит ли кодинг в указанный <a href="valueset.html">набор значений</a>. Ссылка может быть буквальной (адрес, где находится этот набор значений) или логической (ссылка на ValueSet.identifier). Если сервер может обработать эту ссылку как буквальный URL, он это делает, иначе пытается найти соответствие в известных логических значениях ValueSet.url.</td> </tr>
@@ -1111,7 +1111,7 @@ using the syntax in the second example above. -->
 The _has parameter provides limited support for reverse chaining - that is, selecting 
 resources based on the properties of resources that refer to them (instead of chaining,
 above, where resources can be selected based on the properties of resources that they
-refer to). Here is an example of gthe _has parameter:
+refer to). Here is an example of the _has parameter:
 </p>
 <pre>
 GET [base]/Patient?_has:Observation:patient:code=1234-5
@@ -1122,31 +1122,19 @@ referred to by at least one Observation where the observation has a code of 1234
 where the Observation refers to the patient resource in the patient search parameter.
 </p>
 <p>
-Note the following limitations on the use of the <code>_has</code> parameter:
-</p>
-<ul>
- <li>There is no support for reverse chaining to more than one level</li>
- <li>Modifiers are not supported (e.g. GET [base]/Patient?_has:Observation:subject:code:in=http://loinc.org)</li>
- <li>Chaining is not supported (e.g. GET [base]/Patient?_has:Observation:subject:device.identifier=foo)</li>
-</ul>
-<p>
 "Or" searches are allowed (e.g. GET [base]/Patient?_has:Observation:subject:code=123,456), and multiple _has 
 parameters are allowed (e.g. GET [base]/Patient?_has:Observation:subject:code=123&amp;_has:Observation:subject:code=456).
 Note that each _has parameter is processed independently of other _has parameters.
 </p>
-
-<blockquote class="dstu-note">
-<a name="dstu"> </a>
 <p>
-<b>STU Note:</b> the _has search parameter is a new 
-addition that has generated significant discussion. if adopted, it may
-replace the <a href="#has">_list</a> parameter. Or not. 
+The _has parameter can be chained, like this:
 </p>
+<pre>
+GET [base]/Patient?_has:Observation:patient:_has:AuditEvent:entity:user=MyUserId
+</pre>
 <p>
-Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+Fetch all the patients that have an Observation where the observation has an audit event from a specific user.
 </p>
-</blockquote>
-
 
 <a name="composite"> </a>
 <a name="combining"> </a>
@@ -1218,6 +1206,48 @@ Other modifier is <code>:text</code> on token - use "~"? or ""?
  <tr><td><pre> GET [base]/Group?characteristic-value=gender$mixed</pre></td><td>Search for all groups that have a characteristic "gender" with a text value of "mixed"</td></tr> -->
 </table>
 
+<a name="missing"> </a>
+<h4>Handling Missing Data</h4>
+<p>
+Consider the case of searching for all AllergyIntolerance resources:
+</p>
+<pre>
+GET [base]/AllergyIntolerance?clinical-status=active
+</pre>
+<p>
+This search will only return resources that have a value for clinicalStatus:
+</p>
+<pre class="json" fragment="AllergyIntolerance">
+{
+  "resourceType" : "AllergyIntolerance",
+  "clinicalStatus" : "active"
+}
+</pre>
+<p>
+Resources missing a clinicalStatus will not be returned. This is probably unsafe - it would not usually
+be appropriate to ignore AllergyIntolerance warnings with an unknown clinical status, and
+only return resources with an explicit clinicalStatus. Instead, it might be desired to return
+AllergyIntolerance resources with either an explicit value for clinicalStatus, or none:
+</p>
+<pre>
+GET [base]/AllergyIntolerance?clinical-status=active
+GET [base]/AllergyIntolerance?clinical-status:exists=false
+</pre>
+<p>
+Note that this is 2 separate queries. They can be <a href="http.html#transaction">combined in a batch</a>,
+but not in a single operation. This query will always return an empty list, as no resource can satisfy both criteria at once:
+</p>
+<pre>
+GET [base]/AllergyIntolerance?clinical-status=active&amp;clinical-status:exists=false
+</pre>
+<p>
+There is no way to use the :exists modifier and mix with a value using the
+comma syntax documented above for for composite search parameters.
+</p>
+<p>
+An alternative approach is to use the <a href="#filter"><code>_filter</code></a> parameter,
+for servers that support this parameter.
+</p>
 
 <a name="escaping"> </a>
 <h4>Экранирование параметров поиска<!-- Escaping Search Parameters --></h4>
@@ -1292,7 +1322,7 @@ such as AND, OR etc. For example: -->
 "bone" or "liver" in the narrative. The server MAY choose to search
 for related words as well. -->
 </p>
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu2"> </a>
 <p>
 <b>Примечание к DSTU:</b>  проблемы, связанные со стандартизацией текстового поиска, решены не полностью. Во время периода пробного использования данной спецификации, мы рекомендуем системам использовать правила, описанные <a href="http://docs.oasis-open.org/odata/odata/v4.0/cs01/part1-protocol/odata-v4.0-cs01-part1-protocol.html#_The_$search_System">
@@ -1305,8 +1335,7 @@ Typical implementations would use Lucene, an sql-based full text search,
 or some indexing service.  -->
 </p>
 <p>
-Будем благодарны за ваши <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывы</a>.
-<!-- Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>. -->
+Будем благодарны за ваши <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">отзывы</a>.
 </p>
 </blockquote>
 
@@ -1350,18 +1379,6 @@ Note: Servers are not required to make these lists available to the clients as l
 but may choose to do so. -->
 </p>
 
-<blockquote class="dstu-note">
-<a name="dstu3"> </a>
-<p>
-<b>STU Note:</b> the <a href="#has">_has</a> search parameter documented above is a new 
-addition that has generated significant discussion. if adopted, it may
-replace the _list parameter. Or not. 
-</p>
-<p>
-Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
-</p>
-</blockquote>
-
 <a name="filter"> </a>
 <a name="_filter"> </a>
 <h4>Расширенные возможности фильтрации<!-- Advanced filtering --></h4>
@@ -1379,7 +1396,7 @@ parameter can be used. -->
 observations for patient with a name including <code>peter</code> that have a LOINC code <code>1234-5</code>": -->
 </p>
 <pre>
-GET [base]/Observation?name=http://loinc.org|1234-5&amp;subject.name=peter
+GET [base]/Observation?code=http://loinc.org|1234-5&amp;subject.name=peter
 </pre>
 <p>
 Используя параметр <code>_filter</code>, запрос может быть выражен так:
@@ -1433,6 +1450,10 @@ this are the base parameters that apply to all resources. In other contexts,
 searches on multiple types may allow resource specific search parameters, but 
 implementation experience will be required to determine the correct behaviour in 
 these cases. -->
+</p>
+<p>
+Technically, the <code>_type</code> parameter is a token parameter on the
+<a href="valueset-resource-types.html">Resource Types</a> Value Set.
 </p>
 
 <a name="return"> </a>
@@ -1598,12 +1619,9 @@ the provenance resources that refer to them.  -->
 parameters are repeated for each different include criteria. -->
 </p>
 <p>
-Для каждого возвращаемого ресурса сервер определяет ресурсы, которые соответствуют критериям поиска, выраженным в объединении, и добавляет к результатам с <a href="bundle-definitions.html#Bundle.entry.status">entry.status</a> установленным в значение "include" (в некоторых поисковых запросах не очевидно, какие ресурсы являются совпадениями, а какие - включениями-инклюдами).
-<!-- For each returned resource, the server identifies the resources that meet
-the criteria expressed in the join, and adds to the results,
-with the <a href="bundle-definitions.html#Bundle.entry.status">entry.status</a>
-set to "include" (in some searches, it is not obvious which resources are 
-matches, and which are includes).  -->
+Для каждого возвращаемого ресурса сервер определяет ресурсы, которые соответствуют критериям поиска, выраженным в объединении, и добавляет к результатам с <a href="bundle-definitions.html#Bundle.entry.search.mode">entry.search.mode</a> установленным в значение "include" (в некоторых поисковых запросах не очевидно, какие ресурсы являются совпадениями, а какие - включениями-инклюдами). If there is no reference, or no matching resource, the resource
+cannot be retrieved (e.g. on a different server), then the resource is omitted, and no
+error is returned.
 </p>
 <p>
 Процесс включения может быть рекурсивным, если используется модификатор <code>:recurse</code>. Например следующий поисковый запрос возвращает все ресурсы <a href="medicationrequest.html">Medication
@@ -1662,7 +1680,7 @@ alone as a coherent package. -->
 <h4>Вложенные ресурсы<!-- Contained Resources --></h4>
 
 <p>
-По умолчанию результаты поиска включают только те ресурсы, которые не являются вложенными в другие ресурсы. Цепочечное условие будет вычисляться внутри вложенных ресурсов. Для иллюстрации этого рассмотрим ресурс MedicationRequest, который содержит вложенный ресурс Medication, описывающий пользовательскую рецептуру, где есть ингредиент с <code>itemCodeableConcept</code> "abc" в "htp://acme.com./medications". В таком случае поисковый запрос:
+По умолчанию результаты поиска включают только те ресурсы, которые не являются вложенными в другие ресурсы. Цепочечное условие будет вычисляться внутри вложенных ресурсов. Для иллюстрации этого рассмотрим ресурс MedicationRequest, который содержит вложенный ресурс Medication, описывающий пользовательскую рецептуру, где есть ингредиент с <code>itemCodeableConcept</code> "abc" в "http://acme.com./medications". В таком случае поисковый запрос:
 <!-- By default, search results only include resources that are not contained in other resources. 
 A chained condition will be evaluated inside contained resources. To illustrate this, consider
 a MedicationRequest resource that has a contained Medication resource specifying 
@@ -1799,19 +1817,6 @@ path may point to an attachment which is by reference, like this: -->
 results for the convenience of the client. -->
 </p>
 
-<blockquote class="dstu-note">
-<a name="dstu4"> </a>
-<p>
-<b>Примечание к DSTU:</b>  Есть ли необходимость во введении дополнительных правил работы параметра <code>_include</code>?  
-<!-- <b>STU Note:</b>  Should additional rules about how <code>_include</code> works be made?   -->
-</p>
-<p>
-Будем благодарны за ваши <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывы</a>по опыту реализации.
-<!-- Feedback based on implementation experience is sought <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>. -->
-</p>
-</blockquote>
-
-
 <h4>Разбивка на страницы<!-- Paging --></h4>
 <p>
 При возвращении разбитых на страницы результатов поиска с включением ресурсов через <code>_include</code>, все включенные ресурсы, связанные с главными ресурсами, возвращёнными на странице, ДОЛЖНЫ тоже возвращаться в рамках этой же самой страницы, даже если некоторые из экземпляров этих ресурсов ранее были возвращены на предыдущих страницах. Такой подход позволяет как отправителю, так и получателю избежать кеширования результатов других страниц.
@@ -1838,15 +1843,10 @@ resource. It can contain one of the following values: -->
 </p>
 <table class="codes">
  <tr><td><a href="#summary-true">true</a></td><td>Вернуть только те элементы, которые помечены как "суммарные" в базовых определениях ресурсов (см. <a href="elementdefinition-definitions.html#ElementDefinition.isSummary">ElementDefinition.isSummary</a>)</td></tr>
- <tr><td><a href="#summary-text">text</a></td><td>Вернуть только элемент "text", элемент 'meta' и все обязательные элементы</td></tr>
+ <tr><td><a href="#summary-text">text</a></td><td>Вернуть только элемент "text", элемент 'id', 'meta' и только верхнеуровневые обязательные элементы</td></tr>
  <tr><td><a href="#summary-data">data</a></td><td>Убрать элемент "text"</td></tr>
  <tr><td><a href="#summary-count">count</a></td><td>Только поиск: вернуть только количество соответствующих ресурсов, не возвращая сами совпадения</td></tr>
  <tr><td><a href="#summary-false">false</a></td><td>Вернуть все части ресурсов</td></tr>
-<!--  <tr><td><a href="#summary-true">true</a></td><td>Return only those elements marked as "summary" in the base definition of the resource(s) (see <a href="elementdefinition-definitions.html#ElementDefinition.isSummary">ElementDefinition.isSummary</a>)</td></tr>
- <tr><td><a href="#summary-text">text</a></td><td>Return only the "text" element, the 'meta' element, and any mandatory elements</td></tr>
- <tr><td><a href="#summary-data">data</a></td><td>Remove the text element</td></tr>
- <tr><td><a href="#summary-count">count</a></td><td>Search only: just return a count of the matching resources, without returning the actual matches</td></tr>
- <tr><td><a href="#summary-false">false</a></td><td>Return all parts of the resource(s)</td></tr> -->
 </table>
 <p>
 Параметр <code>_summary</code> предназначен для уменьшения общей процессинговой загрузки сервера, клиента и ресурсов между ними, таких как сеть. Он наиболее полезен для больших ресурсов, в честности тех, что включают в себя изображения или элементы, которые могут повторяться много раз. Назначение суммарной формы в том, чтобы позволить клиенту быстро извлечь большой набор ресурсов и позволить пользователю выбрать подходящий. Свойство суммарности для элемента задаётся для того, чтобы позволить пользователю быстро сортировать и фильтровать ресурсы, как правило опуская важное содержимое на основании того, что весь ресурс целиком будет извлечён уже после того, как пользователь выберет ресурс.
@@ -2111,6 +2111,16 @@ auditing the search itself. -->
   <td><%xcm dateTime:reference%></td> <!-- reference -->
   <td><%xcm dateTime:quantity%></td> <!-- quantity -->
   <td><%xcm dateTime:number%></td> <!-- uri -->
+ </tr>
+ <tr>
+  <td><a href="datatypes.html#decimal">decimal</a></td>
+  <td><%xcm integer:number%></td> <!-- number -->
+  <td><%xcm integer:date%></td> <!-- date -->
+  <td><%xcm integer:string%></td> <!-- string -->
+  <td><%xcm integer:token%></td> <!-- token -->
+  <td><%xcm integer:reference%></td> <!-- reference -->
+  <td><%xcm integer:quantity%></td> <!-- quantity -->
+  <td><%xcm integer:uri%></td> <!-- uri -->
  </tr>
  <tr>
   <td><a href="datatypes.html#instant">instant</a></td>

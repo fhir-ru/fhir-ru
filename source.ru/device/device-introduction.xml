@@ -5,7 +5,7 @@
         <h2>Область применения и использование</h2>
 <p>
 Это административный ресурс для отслеживания отдельных типов устройств или экземпляров устройства, и их местонахождения. На него ссылается другой ресурс для записи, какое устройство выполнило действие, например процедуру или наблюдение. Также на него ссылаются при назначении и выдаче устройств в пользование пациентам или при заказе поставок. Он используется для записи и передачи <a href="device.html#5.11.3.2.2">уникального идентификатора устройства (UDI)</a>  и другой информации об устройстве, например об имплантате для пациента.
-<!-- This resource an administrative resource that tracks individual device types or instances of a device and their location. It is referenced by other resource for recording which device performed an action such as a procedure or an observation. It is also referenced when prescribing and dispensing devices for patient use or for ordering supplies.  It is used to record and transmit  <a href="device.html#5.11.3.2.2">Unique Device Identifer (UDI)</a> information about a device such as a patient's implant. -->
+<!-- This resource is an administrative resource that tracks individual device types or instances of a device and their location. It is referenced by other resource for recording which device performed an action such as a procedure or an observation. It is also referenced when prescribing and dispensing devices for patient use or for ordering supplies.  It is used to record and transmit  <a href="device.html#5.11.3.2.2">Unique Device Identifer (UDI)</a> information about a device such as a patient's implant. -->
 </p>
 
 </div>
@@ -41,4 +41,3 @@
 </div>
 
 </div>
-

@@ -14,7 +14,7 @@
 [%profilesheader base%]
 
 <h2>Профилирование FHIR</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 4</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
 Основная спецификация FHIR (данная спецификация) описывает набор базовых ресурсов, механизмов и интерфейсов, которые используются в различных контекстах в сфере здравоохранения. Однако имеются разногласия между юрисдикциями и экосистемой здравоохранения насчет методов, требований, норм, образования и того, какие действия являются выполнимыми и/или выгодными.
@@ -53,43 +53,24 @@ overlapping sets of adaptations - by healthcare domain, by country, by instituti
  <tr>
   <td><b>Артефакт</b></td>
   <td><b>Описание</b></td>
-  <td><b><a href="http://hl7.org/fhir/daf">DAF</a>-пример</b></td>
+  <td><b><a href="http://hl7.org/fhir/us/daf">DAF</a>-пример</b></td>
  </tr>
  <tr>
   <td>Руководство по реализации (IG)</td>
   <td>Согласованный и связанный набор адаптаций, которые опубликованы единым целым. Валидация происходит в контексте руководства по реализации</td>
-  <td><a href="http://hl7.org/fhir/daf">DAF IG</a></td>
+  <td><a href="http://hl7.org/fhir/us/daf">DAF IG</a></td>
  </tr>
  <tr>
   <td>Package (пакет)</td>
   <td>Группа связанных адаптаций, которые опубликованы в виде группы внутри руководства по реализации</td>
-  <td><a href="http://hl7.org/fhir/daf/daf-medicationusage.html">DAF Medication Usage</a></td>
+  <td><a href="http://hl7.org/fhir/us/daf/daf-medicationusage.html">DAF Medication Usage</a></td>
  </tr>
  <tr>
   <td>Conformance Resource</td>
   <td>Отдельный ресурс в пакете, который вводит правила о том, как работает реализация. Они описаны ниже</td>
-   <td><a href="http://hl7.org/fhir/daf/medicationorder-daf.html">DAF Prescription</a></td>
+   <td><a href="http://hl7.org/fhir/us/daf/medicationorder-daf.html">DAF Prescription</a></td>
  </tr>
-<!--  <tr>
-  <td><b>Artifact</b></td>
-  <td><b>Description</b></td>
-  <td><b><a href="http://hl7.org/fhir/daf">DAF</a> example</b></td>
- </tr>
- <tr>
-  <td>Implementation Guide (IG)</td>
-  <td>A coherent and bounded set of adaptations that are published as a single unit. Validation occurs within the context of the Implementation Guide</td>
-  <td><a href="http://hl7.org/fhir/daf">DAF IG</a></td>
- </tr>
- <tr>
-  <td>Package</td>
-  <td>A group of related adaptations that are published as a group within an Implementation Guide</td>
-  <td><a href="http://hl7.org/fhir/daf/daf-medicationusage.html">DAF Medication Usage</a></td>
- </tr>
- <tr>
-  <td>Conformance Resource</td>
-  <td>A single resource in a package that makes rules about how an implementation works. These are described below</td>
-   <td><a href="http://hl7.org/fhir/daf/medicationorder-daf.html">DAF Prescription</a></td>
- </tr> -->
+
 </table>
 <p>
 Термин "профиль" - это общий термин, который используется либо по отношению к "пакету" (package), либо к "пункту" (item).
@@ -173,7 +154,7 @@ data, but the same concept applies to systems that consume data. For instance: -
  <li>Экспертная система, проводящая анализ нескольких различных множеств данных, соответствующих определенному паттерну - проверяет x,y и z с конкретными кодами и единицами<!-- An expert service that provides analysis on several different sets of data conforming to a particular pattern - tests x,y and z with particular codes and units --></li>
 </ul>
 <p>
-Системам-производителям и системам-потребителям для успешного обмена данными на основе одного из таких поддерживаемых системой профилей не достаточно знать, что системам случается иметь системные профили, которые частично совпадают с интересующим сценарием использования; потребитель должен иметь возможность фильтровать общий набор ресурсов, доступных в системе-производителе, и иметь дело только с теми, которые относятся к данному сценарию использования.
+Для успешного обмена данными на основе одного из таких поддерживаемых системных профилей, системе-производителю и системе-потребителю не достаточно знать, что системам случается иметь системные профили, которые частично совпадают с интересующим сценарием использования; потребитель должен иметь возможность фильтровать общий набор ресурсов, доступных в системе-производителе, и иметь дело только с теми, которые относятся к данному сценарию использования.
 <!-- For producer and a consumer systems to exchange data successfully based on 
 one of these system supported profiles, it's not enough to know that the
 systems happen to have system profiles that overlap for the use case 
@@ -212,7 +193,7 @@ resources also SHALL, for any profile declared in Conformance.profile: -->
 to conform to the declared profiles SHOULD be published in this form. --> 
 </p>
 
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu"> </a>
 <p>
 <b>Примечание к STU:</b> имеется много неисследованных вопросов, связанных с таким использованием профилей. HL7 ведет активный поиск обратной связи от пользователей, которые экспериментируют в этой области, и пользователи должны быть готовы к изменениям свойств и обязательств в этой области в будущем.
@@ -221,7 +202,7 @@ HL7 is actively seeking feedback from users who experiment in this area, and use
 should be prepared for changes to features and obligations in this area in the future. -->
 </p>
 <p>
-Feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>.
+Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">here</a>.
 </p>
 </blockquote>
 
@@ -497,7 +478,7 @@ the name), and both have a value of type Quantity. This process
 is known as "slicing" and the Systolic and Diastolic elements are called "slices". -->
 </p>
 <p>
-Обратите внимание, что при обмене ресурсом, проводной формат обмена не изменяется constraining definition. Это означает, что имена элементов, определенные в structure definition (в этом примере "systolic")  никогда не меняются. Экземпляр ресурса выглядит следующим образом:
+Обратите внимание, что при обмене ресурсом, формат сериализации обмена не изменяется constraining definition. Это означает, что имена элементов, определенные в structure definition (в этом примере "systolic")  никогда не меняются. Экземпляр ресурса выглядит следующим образом:
 <!-- Note that when the resource is exchanged, the wire format that is exchanged is not 
 altered by the constraining definition. This means that the item profile names defined in the 
 structure definition ("systolic", etc. in this example) are never exchanged. A resource 
@@ -544,41 +525,40 @@ slices, a sliced element can designate a field or set of fields that act as a "d
 are used to tell the slices apart.  -->
 </p>
 <p>
-Когда есть дискриминатор, композиция значений элементов, обозначенных в этом дискриминаторе, является уникальной и различается для каждого возможного среза, и приложения могут легко определить, какому разрезу соответствует пункт в списке. Предполагается, что это можно будет делать в генерируемом коде. например с помощью оператора switch/case. При нарезке элементов с выбором типов, дискриминатором ДОЛЖЕН быть "@type". This is for a common usecase where 
-you want to profile an element that has a choice (like value[x]) of data types
-differently for the different types it may have.
-<!-- When a discriminator is provided, the composite of the values of 
-the elements designated in the discriminator is unique and distinct
-for each possible slice and applications can easily determine
-which slice an item in a list is. The intention is that 
-this can be done in generated code, e.g. using a switch/case 
-statement. When slicing elements with a choice of types, the 
-discriminator SHALL be "@type". This is for a common usecase where 
-you want to profile an element that has a choice (like value[x]) of data types
-differently for the different types it may have.-->
+Когда есть дискриминатор, композиция значений элементов, обозначенных в этом дискриминаторе, является уникальной и различается для каждого возможного среза, и приложения могут легко определить, какому разрезу соответствует пункт в списке. Предполагается, что это можно будет делать в генерируемом коде. например с помощью оператора switch/case.
 </p>
 <p>
-Когда в constraining structure указан один или несколько дискриминаторов, для каждого дискриминатора каждого среза ДОЛЖНО быть зафиксировано значение элемента (через <a href="elementdefinition-definitions.html#ElementDefinition.fixed_x_">ElementDefinition.fixed[x]</a>), либо, если элемент имеет терминологическую привязку, он ДОЛЖЕН быть связан обязательной привязкой с <a href="valueset.html#required">набором значений</a>, в котором перечислен список допустимых кодов.
-Структурное определение ДОЛЖНО гарантировать, что не произойдет частичного совпадения значений и/или кодов в наборах значений между срезами. Примечание: В настоящее время для нарезки следует использовать только фиксированное значение или обязательный набор значений; использование  в качестве основы для нарезки <a href="elementdefinition-definitions.html#ElementDefinition.pattern_x_">ElementDefinition.pattern[x]</a> не рекомендуется, пока проблемы, связанные с этим, исследуются во время периода пробного использования.
-<!-- When a constraining structure designates one or more discriminators, it SHALL
-fix the value of the element for each discriminator for each 
-slice (using <a href="elementdefinition-definitions.html#ElementDefinition.fixed_x_">ElementDefinition.fixed[x]</a>), 
-or if the element has a terminology binding, it SHALL be associated with a required binding with a 
-<a href="valueset.html#required">Value Set</a> that enumerates the list of possible codes in the value set.
-The structure definition SHALL ensure that there is no overlap between the 
-set of values and/or codes in the value sets between slices. Note: At present, 
-only a fixed value or a required value set should be used for slicing; using 
-<a href="elementdefinition-definitions.html#ElementDefinition.pattern_x_">ElementDefinition.pattern[x]</a>)
-is not recommended as a basis for slicing while issues related to this are investigated during the STU period.-->
+When a constraining structure designates one or more discriminators, it SHALL
+ensure that the possible values for each slice are different and non-overlapping,
+so that the slices can easily be distinguished.
+</p>
+<p>
+Each discriminator is a pair of values: a type that indicates how the field is
+processed when evaluating the discriminator, and a <a href="http://hl7.org/fhirpath">FHIRPath</a>
+expression that identifies the element in which the discriminator is found. There are
+five different processing types for discriminators:
+</p>
+<%linkcodelist http://hl7.org/fhir/discriminator-type%>
+<p>
+The FHIRPath statement that allows for the selection of the element on which the
+discriminator is based is a restricted FHIRPath statement that is allowed to include:
+</p>
+<ul>
+ <li>Element selections (e.g. FHIRPath statements without "()" such as <code>component.value</code>)</li>
+ <li>The function <code>extension(url)</code> to allow selection of a particular extension</li>
+ <li>The function <code>resolve()</code> to allow slicing to across resource boundaries</li>
+</ul>
+<p>
+Each slice must use the <a href="elementdefinition.html">element definition</a> for the
+element in the discriminator(s) to ensure that the slices are clearly differentiated (by
+assigning a fixed value, a specific type, or a profile, depending on the discriminator
+type. If the type is 'value', then the element definition must use either
+<a href="elementdefinition-definitions.html#ElementDefinition.fixed_x_">ElementDefinition.fixed[x]</a>
+or, if the element has a terminology binding, a required binding with a <a href="valueset.html#required">Value Set</a>
+that enumerates the list of possible codes in the value set ("extensional definition").
 </p>
 <p>
 Именно композитные (комбинированные) значения дискриминаторов являются уникальными, а не каждый дискриминатор по отдельности. Например срез списка элементов, которые являются ссылками на другие ресурсы, может указывать поля из различных ресурсов, где каждый ресурс имеет только один из указанных элементов до тех пор, пока они различаются между срезами.
-<!-- It is the composite (combined) values of the discriminators 
-that are unique, not each discriminator alone. For example,
-a slice on a list of items that are references to other 
-resources could designate fields from different resources, 
-where each resource only has one of the designated elements,
-as long as they are distinct across slices.  -->
 </p>
 <p>
 Вообще, в структурном определении не обязательно указывать дискриминатор для среза, однако такие структурные определения без дискриминатора описывают содержимое, которое очень трудно обрабатывать, поэтому это не поощряется.
@@ -636,41 +616,77 @@ These entries together form a "slice group" that is: -->
 		slice group whose path was <i>Observation.name</i>  --></li>
 </ol>
 <p>
-Значение элемента дискриминатор - это название пути, которое идентифицирует потомок элемента с помощью точечной нотации. Для ссылок этот путь плавно перемещается через ссылку и в потомков корневого элемента/объекта ресурса. Для расширений, расширение может уточняться URL-адресом расширений, на которые идет ссылка.
-Есть два специальных имени: @type и @profile. Вот несколько примеров дискриминаторов:
-<!-- The value of the discriminator element is a path name that identifies
-the descendant element using a dotted notation. For references, the path
-transitions smoothly across the reference and into the children of the 
-root element/object of the resource. For extensions, an extension can be
-qualified with the URL of the extensions being referred to.
-There are two special names: @type, and @profile. Here are some example discriminators: -->
+Some examples of descriminators:
 </p>
 <table class="grid">
- <tr>  <td><b>Контекст</b></td> <td><b>Дискриминатор</b></td> <td><b>Интерпретация</b></td> </tr>
- <tr>  <td>List.entry</td> <td>item.reference.name</td> <td>Записи различаются элементами name в целевом ресурсе - возможно observation, которое может быть определено по другой информации в профиле<!-- Entries are differentiated by the name element on the target resource - probably an observation, which could be determined by other information in the profile --></td> </tr>
- <tr>  <td>List.entry</td> <td>item.reference.@type</td> <td>Записи различаются по типу целевого элемента, на который указывает ссылка<!-- Entries are differentiated by the type of the target element that the reference points to --></td> </tr>
- <tr>  <td>List.entry</td> <td>item.reference.@profile</td> <td>Записи различаются по профильному тегу целевого объекта ссылки, как указано в structure definition (TODO: как это сделать?)<!-- Entries are differentiated by a profile tag on the target of the reference, as specified by a structure definition (todo: how to do that?) --></td> </tr>
- <tr>  <td>List.entry</td> <td>item.extension("http://acme.org/extensions/test").code</td> <td>Записи различаются по значению элемента code в расширении с указанным URL<!-- Entries are differentiated by the value of the code element in the extension with the designated URL --></td> </tr>
- <tr>  <td>List.entry.extension</td> <td>url</td> <td>Расширения различаются по значению их свойства url (обычно как разбиваются расширения)<!-- Extensions are differentiated by the value of their url property (usually how extensions are sliced) --></td> </tr>
- <tr>  <td>List.entry</td> <td>item.reference.@type, item.reference.code</td> <td>Расширения различаются сочетанием типа ссылаемого ресурса и, если есть, элементом code этого ресурса. Этот способ подходит тогда, когда List может состоять из Condition и набора наблюдейний, где каждое различается по своему имени - condition не имеет имени, так что считается null в этом наборе дискриминаторов<!-- Extensions are differentiated by the combination of type of the referenced resource, and, if it has one, the code element of that resource. This would be
-   appropriate for where a List might be composed of a Condition, and set of observations, each differentiated by its name - the condition has no name, so that is evaluated as a null in the discriminator set --></td> </tr>
- <tr>  <td>Observation.value[x]</td> <td>@type</td> <td>Различные ограничивающие условия (например "должен поддерживаться", примечания к использованию, словарные привязки и т. п.) утверждены для различных поддерживаемых типов для элемента с выбором типа Observation.value[x]<!-- Different constraints (e.g. "must support", usage notes, vocabulary bindings, etc.) are asserted for different supported types for the multi-typed element Observation.value[x] --></td> </tr>
+ <tr>  <td><b>Context</b></td> <td><b>Discriminator Type</b></td> <td><b>Discriminator Path</b></td> <td><b>Interpretation</b></td> </tr>
+ <tr>  <td>List.entry</td> <td>value</td> <td>item.reference.resolve().name</td> <td>Entries are differentiated by the name element on the target resource - probably an observation, which could be determined by other information in the profile</td> </tr>
+ <tr>  <td>List.entry</td> <td>type</td> <td>item.reference.resolve()</td> <td>Entries are differentiated by the type of the target element that the reference points to</td> </tr>
+ <tr>  <td>List.entry</td> <td>profile</td> <td>item.reference.resolve()</td> <td>Entries are differentiated by a profile tag on the target of the reference, as specified by a structure definition (todo: how to do that?)</td> </tr>
+ <tr>  <td>List.entry</td> <td>value</td> <td>item.extension("http://acme.org/extensions/test").code</td> <td>Entries are differentiated by the value of the code element in the extension with the designated URL</td> </tr>
+ <tr>  <td>List.entry.extension</td> <td>value</td> <td>url</td> <td>Extensions are differentiated by the value of their url property (usually how extensions are sliced)</td> </tr>
+ <tr>  <td>List.entry</td> <td>type, value</td> <td>item.reference.resolve(), item.reference.resolve().code</td> <td>Extensions are differentiated by the combination of the type of the referenced resource, and, if it has one, the code element of that resource. This would be
+   appropriate for where a List might be composed of a Condition, and set of observations, each differentiated by its name - the condition has no name, so that is evaluated as a null in the discriminator set</td> </tr>
+ <tr>  <td>Observation.value[x]</td> <td>type</td> <td>$this</td> <td>Different constraints (e.g. "must support", usage notes, vocabulary bindings, etc.) are asserted for different supported types for the multi-typed element Observation.value[x]</td> </tr>
 </table>
 <p>
-Note that @type and @profile can also be used where a repeating element contains a resource directly (e.g. 
+Note that discriminator types of type and profile can also be used where a repeating element contains a resource directly (e.g.
 <a href="domainresource-definitions.html#DomainResource.contained">DomainResource.contained</a>, <a href="bundle-definitions.html#Bundle.entry">Bundle.entry</a>, <a href="parameters-definitions.html#Parameters.parameter.resource">Parameters.parameter.resource</a>).
 </p>
 <p>
-<a href="profiling-examples.html">Примеры нарезок и дискриминаторов</a> показывают, как именно представлены в профилях этот и другие типичные случаи использования нарезки.
-<!-- The <a href="profiling-examples.html">examples of slicing and discriminators</a> show exactly how this and other typical uses of slicing are represented in profiles. -->
+The <a href="profiling-examples.html">examples of slicing and discriminators</a> show exactly how this and other typical uses of slicing are represented in profiles.
+</p>
+<p>
+Note that extensions are always sliced by the <code>url</code> element, though they may be resliced on additional elements where required.
+</p>
+
+<a name="default-slice"> </a>
+<h3>Default Slice</h3>
+<p>
+There is a special slice, called the default slice. This allows
+a profile to describe a set if specific slices, and then make a set of rules that apply to all the remaining
+content that is not in one of the defined slices. Some rules about the default slice:
+</p>
+<ul>
+ <li>It is identified because the name of the slice is <code>@default</code>. The sliceName '@default' is reserved and cannot be used in any other context</li>
+ <li>Default slices are only allowed when the slicing rule = closed</li>
+ <li>Default slices must not fix the value of the discriminator elements</li>
+ <li>Default slices can be re-sliced in dependent profiles</li>
+</ul>
+<p>
+One use of a default slice would be the case where the profile slices
+an identifier element to require a set of known identifiers, where
+the <code>type</code> element is prohibited (since they are known identifiers) but requires
+<code>type</code> on all other identifiers if any are present. In this case, the
+default slice makes no rules about the identiifer.system (which is the slicing discriminator),
+but fixes the cardinality of type to 1..1 in the @default slice.
 </p>
 
 <a name="reslicing"> </a>
-<h3>Re-slicing</h3>
+<h3>Re-profiling and Re-slicing</h3>
 <p>
-При создании профиля на основе другого профиля иногда возникает необходимость в нарезке данных, которые уже были один раз нарезаны в базовом профиле. Это называется "повторная нарезка" ("Re-slicing"). При повторной нарезке применяются следующие правила:
-<!-- When creating a profile based on another profile, it's sometimes necessary to slice data that has already been sliced in the base
-profile.  This is called "Re-slicing".  The rules for re-slicing are as follows: -->
+Profiles can be based on other profiles, and apply further constraints to those already
+specified. This is a useful technique, but implementers should be wary of over-use - humans
+have understanding the implications of deep stacks of constraining profiles.
+</p>
+<p>
+When a profile constrains another profile, it can make additional constrainta, including
+extending the discriminator, adding new slices (if the slices are not already closed), and
+slicing inside the existing slices.
+</p>
+<p>
+The rules for changing the slicing are as follows:
+</p>
+<ul>
+ <li>Rule = open can be changed to rule = closed, and unordered can be changed to ordered)</li>
+ <li>If a discriminator for an element is declared in a parent profile, child profiles referencing that element must either declare the same discriminator or must declare a new discriminator that includes the
+   parent discriminator content. I.e. additional discriminator paths may be added, but none of the existing paths can be removed.</li>
+</ul>
+
+<p>
+It's sometimes necessary to slice data that has already been sliced in the base
+profile - that is, create new slices within the existing slices.  This is called
+"Re-slicing".  The rules for re-slicing are as follows:
 </p>
 
 <p>
@@ -705,8 +721,7 @@ profile.  This is called "Re-slicing".  The rules for re-slicing are as follows:
 </p>
 <p>
 В дополнение к перечисленному выше, бывают случаи, когда профилю В потребуется ещё раз нарезать срез, определённый в профиле Б. В этом случае будет необходимо ссылаться на оба имени оригинального среза из профиля Б, а также задать имя для среза, определённого в профиле В. Это делается с помощью разделителя имён "/". Например если профиль Б задаёт срез "example", а профиль В задаёт срез "example/example1", тогда он считается срезом "example1" среза "example". Этот процесс может продолжаться неограниченно, отделяя каждый слой имён срезов с помощью символа "/".
-<!-- In addition to the above, there are times when Profile C will need to further slice a slice defined in B.  In this case, there's a need to reference both the name of the original
-slice from Profile B as well as to define a name for the slice defined within Profile C.  This is done by separating the names using "/".  For example, if Profile B defines the slice "example", and profile C defines the slice "example/example1", then this is deemed to be "example1" slice of the example slice.  This process can continue indefinitely by separating each layer of slicing names with the "/" character. -->
+This pattern applies to @default too: @default/@default.
 </p>
 
 <a name="extensions"> </a>
@@ -913,12 +928,7 @@ When this specification describes a profile, the profile is presented in 5 diffe
 <h3>Поддержка нескольких профилей<!-- Supporting Multiple Profiles --></h3>
 
 <p>
-Может возникнуть ситуация, когда приложению необходимо поддерживать больше одного профиля одновременно. Типичный пример такой ситуации - приложение системы ЭМК, которое должно поддерживать профиль совместного использования данных общего назначения (например <a href="http://hl7.org/fhir/daf">DAF</a>), а также поддерживать специфические профили для системы поддержки принятия решений, использующей тот же самый интерфейс.
-<!-- Applications may be required to support more than one profile at a time. 
-A typical example might be an EHR application that is required to support
-a general purpose data sharing profile (such as <a href="http://hl7.org/fhir/daf">DAF</a>),
-and also must support specific profiles for decision support using the same 
-interface.  -->
+Может возникнуть ситуация, когда приложению необходимо поддерживать больше одного профиля одновременно. Типичный пример такой ситуации - приложение системы ЭМК, которое должно поддерживать профиль совместного использования данных общего назначения (например <a href="http://hl7.org/fhir/us/daf">DAF</a>), а также поддерживать специфические профили для системы поддержки принятия решений, использующей тот же самый интерфейс.
 </p>
 <p>
 Эффект от поддержки двух наборов профилей зависит от того, создаются ли ресурсы или используются. Когда приложение создаёт некоторый контент, оно должно создать такой контект, который соответствует обоим наборам профилей - т. е. "пересечению" этих профилей (intersection). Когда приложение получает информацию в качестве потребителя, оно должно иметь возможность принимать контент,  который соответствует каждому набору профилей - т. е. "объединению" этих профилей (union).
@@ -954,12 +964,7 @@ Each profile can be thought of in terms of the set of instances that conform to 
  <li>identical sets: all resources that conform to A also conform to B and any resources that don't conform to B, don't conform to A</li> -->
 </ol>
 <p>
-Профили можно сравнивать для определения их совместимости. Одно такое сравнение можно найти (no - todo: bring this into the build) между <a href="http://hl7.org/fhir/daf">DAF</a> и <a href="http://hl7.org/fhir/qicore">QICore</a>. Обратите внимание, что это сравнение сгенерировано инструментарием, находящимся в разработке, и является полностью черновым содержимым для демонстрации концепции сравнения профилей.
-<!-- Profiles can be compared to determine their compatibility. 
-One such comparison can be found (no - todo: bring this into the build) 
-between <a href="http://hl7.org/fhir/daf">DAF</a> and <a href="http://hl7.org/fhir/qicore">QICore</a>. 
-Note that this comparison is generated by tooling under ongoing development, and is purely draft 
-content to demonstrate the idea of profile comparison. -->
+Профили можно сравнивать для определения их совместимости. Одно такое сравнение можно найти (no - todo: bring this into the build) между <a href="http://hl7.org/fhir/us/daf">DAF</a> и <a href="http://hl7.org/fhir/qicore">QICore</a>. Обратите внимание, что это сравнение сгенерировано инструментарием, находящимся в разработке, и является полностью черновым содержимым для демонстрации концепции сравнения профилей.
 </p>
 
 </div>

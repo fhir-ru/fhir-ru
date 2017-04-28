@@ -31,13 +31,7 @@ to support the following scenarios where multiple patient records exist: --></p>
 
 <h3>Дубликаты историй болезни<!-- Duplicate Patient records --></h3>
 <p>
-Управление регистрацией пациентов - хорошо известная трудная задача. Около 2% регистраций производятся по ошибке, в основном это записи-дубликаты. Иногда дубликат записи обнаруживается достаточно быстро и удаляется до того, как в нем накопятся данные. В противном случае могут накопиться существенные объемы данных. С помощью использования связи типа 'replace', запись, содержащая такую ссылку, помечается как дубликат, а эта ссылка ведет на запись, которую следует использовать взамен. Обратите внимание, что запись, на которую ведет указатель, может в свою очередь быть признанной введенной по ошибке и указывать в свою очередь на еще один ресурс Patient. Записи, замещающие другую запись, не указывают обратно на замещаемую запись. 
-<!-- Managing Patient registration is a well known difficult problem. Around 2% of registrations are in error, 
-mostly duplicate records. Sometimes the duplicate record is caught fairly quickly and retired before much 
-data is accumulated. In other cases, substantial amounts of data may accumulate. By using a link of type 'replace',
-the record containing such a link is marked as a duplicate and the link points forward to a record that should
-be used instead. Note that the record pointed to may in its turn have been identified as created in error and forward
-to yet another Patient resource. Records that replace another record, do not point back to the replaced record. -->
+Управление регистрацией пациентов - хорошо известная трудная задача. Около 2% регистраций производятся по ошибке, в основном это записи-дубликаты. Иногда дубликат записи обнаруживается достаточно быстро и удаляется до того, как в нем накопятся данные. В противном случае могут накопиться существенные объемы данных. С помощью использования связи типа 'replaced-by', запись, содержащая такую ссылку, помечается как дубликат, а эта ссылка ведет на запись, которую следует использовать взамен. Обратите внимание, что запись, на которую ведет указатель, может в свою очередь быть признанной введенной по ошибке и указывать в свою очередь на еще один ресурс Patient. Записи, замещающие другую запись, <i>могут</i> использовать тип ссылки 'replaces', указывая на старую запись.
 </p>
 
 <h3>Запись пациента в указателе пациентов<!-- Patient record in a Patient index --></h3>
@@ -57,7 +51,8 @@ being more complete or more authorative than another. In such cases, links of ty
 other patient records. It is not a requirement that such links are bilateral.  -->
 </p>
 
-<h2>Сравнение Patient, Person и Patient.Link<!-- Patient vs Person vs Patient.Link --></h2>
+<a name="linking"> </a>
+<h2>Сравнение Patient, Person, Patient.Link и Linkage</h2>
 <p>
 Ресурс Person поверхностно очень напоминает ресурс Patient, а использование его очень похоже на возможности применения Patient.Link.
 <!-- The Person resource on the surface appears to be very similar to the Patient resource, and the usage for it is very similar
@@ -83,6 +78,15 @@ system; e.g., when moving, a consumer updates his contact numbers and address in
 system is able to see that this data is changed and prompt the organization to follow up with the patient that was linked to
 the person record if they want their details updated, or if they no longer need services and they should be cancelled, 
 as they've moved from the area. -->
+</p>
+<p>
+The <a href="linkage.html">Linkage</a> resource and the Patient.link property conceptually perform similar functions in FHIR, 
+both provide an assertion of linkages between multiple resource instances that are referring to the same underlying individual.<br/>
+When a Patient resource is linked/merged then it needs to have an internal indication that there is another
+patient resource that should be considered when referencing other records, which is achieved using the patient.link property.<br/>
+Not detecting/checking for a potential linkage could mean that related clinical records are not discovered, potentially impacting patient safety.
+(which is why using the Linkage resource is not appropriate, as its use in this manner would force the use of either another
+query to potentially locate other patient resources to consider, or use _revInclude)
 </p>
   
 <a name="contact"> </a>
@@ -197,7 +201,7 @@ does not mandate that FHIR servers migrate information between such records on f
  <li>Серверы могут осуществлять слияние/миграцию записей, хоть это и не является обязательным.
  <!-- Servers are allowed to implement merging/record migration even though it is not mandated. --> </li>
 </ul>
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu"> </a>
 <p>
 <b>Примечание к STU:</b> Мы ожидаем от сообщества реализации данных о том, как связывание/слияние/разъединение записей должно влиять на другую функциональность, такую как операция GET (где результат - старая версия ресурса Patient), поиск, обратные включения и т. д.; например, следует ли возвращать все ресурсы Observation из связанных/объединённых записей пациентов в ответ на запрос одного из них?
@@ -210,8 +214,7 @@ How should an unlink behavior be done? (Assuming that no data was "re-allocated"
 These suggested updated behaviors could be the subject of a future connectathon. -->
 </p>
 <p>
-<a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">Обратная связь</a>.
-<!-- Feedback <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>. -->
+<a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">Обратная связь</a>.
 </p>
 </blockquote>
 
@@ -226,19 +229,18 @@ MPIs are highly specialized applications, often tailored extensively to the inst
 particular mix of patients. MPIs can also be run on a regional and national basis.  -->
 </p>
 <p>
-Чтобы запросить MPI-приложение установить соответствие для пациента, клиенты используют "mpi"-<a href="search.html#query">запрос</a> с обычными поисковыми параметрами, заданными для пациента. Однако вместо своего стандартного использования они инерпретируются как входные данные для MPI - например вместо запроса, какие ресурсы в буквальном смысле содержат эти поисковые параметры, они передаются некоторому алгоритму MPI, который использует их для определения наиболее подходящих соответствий среди набора пациентов.
-<!-- To ask an MPI to match a patient, clients use the "mpi" <a href="search.html#query">query</a>,
-which uses the normal search parameters defined for patient. However, rather than
-their normal use, they are interpreted as MPI inputs - e.g. instead of requiring 
-that the resources literally contain the search parameters, they are passed to an 
-MPI algorithm of some kind that uses them to determine the most appropriate matches 
-in the patient set.  -->
+Чтобы запросить MPI-приложение установить соответствие для пациента, клиенты вызывают операцию <a href="patient-operations.html#match">$match</a> ресурса Patient, которая обрабатывает ресурс Parameters, содержащий полный или фрагмент ресурса Patient наряду с несколькими другими конктрольными параметрами.<br/>
+Это избавляет ресурс Patient от необходимости проходить полную валидацию  (обязательные поля, инварианты), поскольку в противном случае ресурс не был бы сохранен, однако это должен быть доступный к разбору экземпляр.<br/>
+Тогда MPI сможет использовать свойства этого ресурса в качестве своих входных данных и обработать с помощью некоего внутреннего алгоритма MPI, чтобы найти наиболее подходящие совпадения среди множества пациентов. Он не обязательно будет использовать все указанные свойства, а другие может спокойно игнорировать.<br/>
+Можно использовать профиль (с необходимыми полями/инвариантами), чтобы задавать параметры, требуемые алгоритму MPI.
 </p>
 <pre>
-  GET [base]/Patient?_query=mpi&amp;parameters...
+  POST [base]/Patient/$match
+  [some headers including content-type xml or json]
+  [parameters body with patient resource inside]
 </pre>
 <p>
-Ответом на "mpi"-запрос будет набор записей пациентов, упорядоченный по релевантности. Если совпадений не найдено,  MPI-приложение должно вернуть пустой результат без ошибок, но который может содержать  <a href="operationoutcome.html">результат операции</a> с дальнейшими инструкциями. Все записи пациентов должны иметь оценку от 0 до 1, где 1 - это наиболее точное соответствие, наряду с <a href="extensibility.html">расширением</a>
+Ответом на "mpi"-команду $match будет набор записей пациентов, упорядоченный по релевантности. Если совпадений не найдено,  MPI-приложение должно вернуть пустой результат без ошибок, но который может содержать  <a href="operationoutcome.html">результат операции</a> с дальнейшими инструкциями. Все записи пациентов должны иметь оценку от 0 до 1, где 1 - это наиболее точное соответствие, наряду с <a href="extensibility.html">расширением</a>
 <a href="extension-match-grade.html">"match-grade"</a>, показывающим позицию MPI по степени совпадения:
 <!-- The response from an "mpi" query is a set of patient records, ordered from most
 likely to least likely. If there are not patient matches, the MPI SHALL return 
@@ -255,7 +257,7 @@ further advice. All patient records SHALL have a score from 0 to 1, where
       &lt;/Patient&gt;
     &lt;/resource&gt;
     &lt;search&gt;
-      &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/patient-mpi-match&quot;&gt;
+      &lt;extension url=&quot;http://hl7.org/fhir/StructureDefinition/match-grade&quot;&gt;
         &lt;valueCode value=&quot;probable&quot;/&gt;
       &lt;/extension&gt;
       &lt;score value=&quot;0.80&quot;/&gt;
@@ -263,38 +265,31 @@ further advice. All patient records SHALL have a score from 0 to 1, where
   &lt;/entry&gt; 
 </pre>
 <p>
-Расширение patient-mpi-match содержит один из <a href="valueset-patient-mpi-match.html">следующих кодов</a>:
-<!-- The patient-mpi-match extension has one of the <a href="valueset-patient-mpi-match.html">following codes</a>: -->
+Расширение match-grade содержит один из <a href="valueset-match-grade.html">следующих кодов</a>:
 </p>
-[%codelist-nh http://hl7.org/fhir/patient-mpi-match%]
+[%codelist-nh http://hl7.org/fhir/match-grade%]
 <p>
+  The purpose of using an MPI search versus a regular search is that the MPI search is really intended to target and 
+  find a specific single patient for recording information about reducing errors through incorrectly selecting the
+  wrong patient. Often MPIs won't return data if there is insuffience search parameter data, such as a partial surname.<br/>
+  This compares to a regular search which can be used for finding lists of patients, such as to locate a group of patients
+  that share a property in common, such as live in a specific location, or fit within an age range for performing population analysis.
+</p>
+<!--<p>
 У операции поиска совпадения MPI есть один дополнительный параметр "userid" (идентификатор пользователя), который используется для передачи информации о пользователе от доверенного клиента к MPI. MPI может использовать его, чтобы ограничить возвращаемые возможные совпадения на основе прав пользователя. Например сотрудник, подпадающий под политику безопасности и т. д., 
 вполне может получить другой результат, чем пациент, пытающийся найти
 запись о себе. Обратите внимание, что этот параметр используется, когда от пользователя не ожидается вход в MPI напрямую; считается ли это уместным или нет - зависит от реализации.
-<!-- One optional parameter to the MPI match operation is "userid", which is
+One optional parameter to the MPI match operation is "userid", which is
 used to pass the user details from a trusted client to the MPI. This may 
 be used by the MPI to restrict the possible matches that are returned, based 
 on the user's rights. For example, a staff member covered by policies, etc.,
 may well get a different result than a patient trying to find their own 
 record. Note that this parameter is used where the user would not be 
 expected to log in to the MPI directly; whether this is appropriate or not is 
-a deployment choice. -->
-</p>
+a deployment choice.
+</p>-->
 <p>
-Опубликовано <a href="patient-mpi-search.html">формальное определение</a> MPI-запроса.
-<!-- A <a href="patient-mpi-search.html">formal definition</a> for the MPI query is published. -->
+Опубликовано <a href="operation-patient-match.html">формальное определение</a> MPI-команды $match.
 </p>
-<blockquote class="dstu-note">
-<a name="dstu-2"> </a>
-<p>
-<b>Примечание к STU:</b> Это первый вариант использования такого подхода, выработанный во время тестирования на коннектатоне.
-<!-- <b>STU Note:</b>  This is the first draft of this approach, as a result of 
-connectathon testing. -->
-</p>
-<p>
-Ждём ваших <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывов</a>.
-<!-- Feedback is sought <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>. -->
-</p>
-</blockquote>
 
 </div>

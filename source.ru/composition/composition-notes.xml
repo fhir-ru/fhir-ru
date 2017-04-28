@@ -19,7 +19,7 @@
  </li>
 </ul>  
 
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu"> </a>
 <p>
 <b>Примечание к STU:<!-- DSTU Note: --></b> Приветствуются отзывы по двум вопросам, связанным с ресурсом Composition:<!-- Feedback is welcome on two issues related to Composition: -->
@@ -31,7 +31,7 @@
  <!-- A client can ask a server to generate a fully bundled document from a Composition resource using the $generate operation. This operation definition does not resolve the question how document signatures are created. This is an open issue during the period of trial use, and feedback is requested regarding this question. --></li>
 </ul>
 <p>
-<a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">Отзывы</a>.
+<a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">Отзывы</a>.
 </p>
 </blockquote>
 

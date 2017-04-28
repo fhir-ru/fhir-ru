@@ -3,8 +3,8 @@
 <h2>Политики<!-- Policies --></h2>
 
 <p>
-Данная спецификация определяет 2 магических значения для политики согласия:
-<!-- This speciifcation defines 2 magic values for consent policies: -->
+Данная спецификация определяет 2 магических значения для элемента policyRule:
+<!-- This specification defines 2 magic values for consent policyRule: -->
 </p>
 <table class="grid">
  <tr>
@@ -12,12 +12,12 @@
   <td><b>Описание</b></td>
  </tr>
  <tr>
-  <td>http://hl7.org/fhir/ConsentPolicy/opt-in</td>
-  <td>Базовая политика - не давать никаких полномочий. Никакие действия не санкционированы, если только они не указаны явным образом в исключениях<!-- The basic policy is to grant no authority. No actions are approved, unless they are explicitly detailed in the exceptions --></td>
+  <td>http://hl7.org/fhir/ConsentPolicy/opt-out</td>
+  <td>Базовая политика 'deny' - не давать никаких полномочий на доступ или использование данных. Никакие действия не санкционированы, если только они не указаны явным образом в исключениях<!-- The basic 'deny' policy is to grant no authority for data access or use. No actions are approved, unless they are explicitly detailed in the exceptions --></td>
  </tr>
  <tr>
-  <td>http://hl7.org/fhir/ConsentPolicy/opt-out</td>
-  <td>Базовая политика - давать все полномочия. Все действия санкционированы, если только они не указаны явным образом в исключениях<!-- The basic policy is to grant all authority. All actions are approved, unless they are explicitly detailed in the exceptions --></td>
+  <td>http://hl7.org/fhir/ConsentPolicy/opt-in</td>
+  <td>Базовая политика 'permit' - давать все общепринятые полномочия на доступ и использование данных. Все общепринятые действия санкционированы, если только они не указаны явным образом в исключениях<!-- The basic policy is to grant all authority. All actions are approved, unless they are explicitly detailed in the exceptions --></td>
  </tr>
 </table>
 <p>
@@ -25,11 +25,11 @@
 <!-- Other jurisdictions (e.g. HL7 Affiliates) may define their additional lists of consent policy URI values that represent consent policies established by law or regulation -->
 </p>
 <p>
-Ресурс Consent содержит ссылку на одну <code>политику</code>. Большинство организаций будут работать в таком контексте, когда применяется несколько различных правил и политик согласия.
-В таких случаях элемент policy ссылается на документ с той политикой, которая собирает и согласовывает несколько различных политик, и представляет собой единую политику, на которую необходимо получить согласие пациента. Если всё ещё остаётся необходимость в отслеживании, к какой из нижележащих политик относится исключение, можно использовать <a href="extension-consent-basis.html">расширение</a>.
-<!-- The Consent resource has a reference to a single <code>policy</code>. Many organizations will work in a context where multiple different consent regulations and policies apply. 
-In these cases, the single policy reference refers to a policy document that resolves and reconciles the various policies, and presents a single policy for patient
-consent. If it is still necessary to track which of the underlying policies an exception is make in regard to, an <a href="extension-consent-basis.html">extension</a> may be used. -->
+Ресурс Consent содержит ссылку на одну <code>policyRule</code>. Большинство организаций будут работать в таком контексте, когда применяется несколько различных правил и политик согласия.
+В таких случаях элемент policyRule ссылается на документ с той политикой, которая собирает и согласовывает несколько различных политик, и представляет собой единую политику, на которую необходимо получить согласие пациента. Если всё ещё остаётся необходимость в отслеживании, к какой из нижележащих политик относится исключение, можно использовать <code>policy</code>.
+<!-- The Consent resource has a reference to a single <code>policyRule</code>. Many organizations will work in a context where multiple different consent regulations and policies apply. 
+In these cases, the single policy rule reference refers to a policy document that resolves and reconciles the various policies, and presents a single policy for patient
+consent. If it is still necessary to track which of the underlying policies an exception is make in regard to, the <code>policy</code> may be used. -->
 </p>
 <h2>Общая модель<!-- General Model --></h2>
 <p>

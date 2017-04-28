@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+[%settitle Расширенные операции RESTful API%]
+<head>
+[%file newheader%]
+</head>
+<body>
+[%file newnavbar%]
+
+<div class="col-12">
+
+<a name="base"> </a>
+<h2>Расширенные операции RESTful API</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+
+<p>
+<a href="http.html">RESTful API</a> задает набор простых взаимодействий (read, update, search и др.), совершаемых над репозиторием типизированных ресурсов. Эти взаимодействия следуют парадигме RESTful об управлении состоянием с помощью действий <b>C</b>reate/<b>R</b>ead/<b>U</b>pdate/<b>D</b>elete над набором идентифицированных ресурсов. Хотя этот подход покрывает большинство случаев использования, имеется некоторая специфичная функциональность, которую можно ююю более эффективно с помощью RPC-подобной парадигмы, где именованные операции выполняются над входными и выходными данными (<b>E</b>xecute). Операции используются там, (a) где серверу требуется играть активную роль в формулировании контента ответа, а не просто возвращать существующую информацию, или (b) где требуется вызвать такие побочные явления, как модификация существующих ресурсов или создание новых ресурсов. Данная спецификация описывает простую структуру операций, которая легко расширяет RESTful API.
+</p>
+<p>
+Операции обладают следующими общими свойствами:
+</p>
+<ul>
+ <li>У каждой операции имеется имя</li>
+ <li>У каждой операции имеется перечень входных и выходных параметров</li>
+ <li>Параметрами являются либо ресурсы, либо типы данных, либо параметры поиска</li>
+ <li>Операции подлежат тем же требованиям и ограничениям безопасности, что и RESTful API</li>
+ <li>URI точек взаимодействия операций основываются на существующей схеме адресов RESTful API</li>
+ <li>Операции могут воспользоваться существующим репозиторием ресурсов в своих определениях</li>
+ <li>Операции выполняются над определенным ресурсом, типом ресурса, или для всей системы</li>
+</ul>
+
+<a name="executing"> </a>
+<h3>Executing an Operation</h3>
+
+<p>
+Operations are executed using a URL derived from the FHIR endpoint, where the name of the operations is prefixed by a "dollar sign" ('$') character. For example:
+</p>
+<pre>
+ POST http://fhir.someserver.org/fhir/Patient/1/$everything
+</pre>
+<p>
+When an operation is idempotent, and the parameters are all primitive data types with no extensions 
+(as is the case with the example above), it may be invoked using GET as well.
+</p>
+<p>
+Operations can be invoked on four types of FHIR endpoints:
+</p>
+<ul>
+ <li>The "base" FHIR service endpoint (e.g. http://fhir.someserver.org/fhir): These are operations that operate on the full scale of the server. For example, "return me all extensions known by this server"</li>
+ <li>A Resource type (e.g. http://fhir.someserver.org/fhir/Patient): These are operations that operate across all instances of a given resource type</li>
+ <li>A Resource instance (e.g. http://fhir.someserver.org/fhir/Patient/1): These are operations that involve only a single instance of a Resource, like the $everything operation above does</li>
+ <li>A specific version of a resource instance (http://fhir.someserver.org/fhir/Patient/1/_history/4): These operations involve only a specific version of a single instance of a FHIR Resource and exists only to allow manipulation of profile and tag metadata of past versions</li>
+</ul>
+<p>
+The body of the invocation contains a special infrastructure resource called <a href="parameters.html">Parameters</a>,
+which represents a collection of named parameters as &lt;key,value&gt; pairs, where the value may be any 
+primitive or complex datatype or even a full Resource. It may also include strings 
+formatted as search parameter types.
+</p>
+<p>
+Upon completion, the operation returns another <code>Parameters</code> resource, containing one or 
+more output parameters. This means that a FHIR operation can take a set of zero or more parameters <i>in</i> and return a set of zero or more 
+result parameters <i>out</i>. Both the body of the POST and the returned result are always a Resource. 
+</p>
+<p>
+Some Operations with primitive input types and a single Resource output parameter named '<code>return</code>' can be invoked using a GET directly, with parameters as HTTP URL parameters. 
+In this case, the response is simply the resource that is the return value, with no Parameters resource. These kinds of usage are discussed further below.
+</p>
+
+<a name="defined"> </a>
+<h3>Операции, определенные FHIR</h3>
+<p>
+See <a href="operationslist.html">the list of defined operations</a>.
+</p>
+
+<a name="extensibility"> </a>
+<h3>Implementation Defined Operations</h3>
+<p>
+Реализации имеют возможность определять свои собственные операции в дополнение к тем, что описаны здесь. Конфликты имен между операциями, определенными различными реализаторами, можно разрешать с помощью <a href="capabilitystatement.html">Capability Statement</a> сервера.
+</p>
+<p>
+Also, the definition of these or additional run time operations does not
+prevent the use of other kinds of operations that are not dependent on and/or not integrated 
+with the RESTful API, provided that their addressing scheme does not clash with the scheme
+defined here.
+</p>
+
+<a name="defining"> </a>
+<h3>Определение операции</h3>
+
+<p>
+Любая операция задается следующими данными:
+</p>
+<ul>
+ <li>Контекст операции - <i>система</i>, <i>тип ресурса</i> или <i>экземпляр ресурса</i></li>
+ <li>Имя операции</li>
+ <li>Перечень параметров с их определениями</li>
+</ul>
+
+<p>
+Для каждого параметра необходима следующая информация:
+</p>
+<ul> 
+ <li>Имя - имя параметра. Для удобства разработчиков имя должно быть допустимым токеном (см. ниже)</li>
+ <li>Использование - In | Out | Both</li>
+ <li>Тип - тип данных или тип ресурса</li>
+ <li>Search Type - for string search parameters, what kind of search parameter they are (&amp; and what kind of modifiers they have)</li>
+ <li>Profile - <a href="structuredefinition.html">StructureDefinition</a>, который применяет дополнительные ограничения к ресурсу</li>
+ <li>Документация - описание применения параметра</li>
+ <li>(Optional) Search Type - if the type is a string, and the parameter is being used like a search parameter, which kind of search type applies</li>
+</ul>
+<p>
+Параметры могут быть вложенными в составные параметры. Каждая часть содержит ту же самую информацию, что и сам параметр, кроме использования, которое берется из параметра, частью которого она является.
+</p>
+
+<p>
+Ресурс <a href="operationdefinition.html">Operation Definition</a> используется для предоставления вычислимого определения операции.
+</p>
+
+<a name="extending"> </a>
+<h3>Расширение операции</h3>
+<p>
+Реализации могут расширять операции определением новых именованных параметров. Реализации могут публиковать свои собственные расширенные определения с помощью ресурса <a href="operationdefinition.html">Operation Definition</a>, и этот вариант определения может использовать OperationDefinition.base для ссылки на лежащее в его основе определение.
+</p>
+<p>
+Обратите внимание, что спецификация FHIR никогда не будет давать параметрам имена, начинающиеся на "x-".
+<!-- Note that the FHIR specification will never define any parameter names starting with "x-". -->
+</p>
+
+
+<a name="executing"> </a>
+<a name="synchronous"> </a>
+
+<h3>Синхронное исполнение операции</h3>
+
+<p>
+Операции обычно выполняются синхронно: клиент отправляет серверу запрос, который содержит входные (<i>in</i>) параметры операции, и сервер отвечает выходными (<i>out</i>) параметрами операции.
+<!-- Most commonly, operations are executed synchronously - the client sends a request
+to the server with the operation in parameters, and the server replies with the 
+operation's <i>out</i> parameters.  -->
+</p>
+
+<p>
+URL-адрес точки взаимодействия операции зависит от ее контекста:
+</p>
+<ul>
+ <li>система: URL - [base]/$[name]</li>
+ <li>тип ресурса: URL - [base]/[type]/$[name]</li>
+ <li>экземпляр ресурса: URL - [base]/[type]/[id]/$[name]</li>
+</ul>
+
+<a name="request"> </a>
+<h4>Запрос на операцию</h4>
+
+<p>
+Как правило, операция вызывается выполнением HTTP POST-запроса к точке взаимодействия операции.
+Форматом отправляемого содержимого будет специальный формат <a href="parameters.html">Parameters</a> (входные, "in"-параметры) - это список именованных параметров. В качестве примера см. <a href="op-example-request.html">запрос на развертывание (expansion) набора значений</a>.
+<!-- An operation is generally invoked by performing an HTTP POST to the operation's end-point.
+The submitted content is the special <a href="parameters.html">Parameters</a> format (the "in" parameters) - a list of named parameters. 
+For an example, see <a href="op-example-request.html">the value set expansion request example</a>. -->
+Note that when parameters have a search type, the search modifiers are available, and are used on the parameter name in the Parameters resource (e.g. "code:in").
+</p>
+<p>
+Обратите внимание, что к <a href="http.html#mime-type">типам контента</a> применяются те же самые соглашения, что и к RESTful-интерфейсу.
+<!-- Note that the same arrangement as for the RESTful interface applies
+with respect to <a href="http.html#mime-type">content types</a>. -->
+</p>
+<p>
+Если все параметры операции являются <a href="datatypes.html#primitive">примитивными типами</a>, и эта операция является идемпотентной (см. <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">определение термина <i>идемпотентный</i> в спецификации HTTP</a>), операцию можно вызывать выполнением операции HTTP GET, где все значения параметров добавляются к URL-адресу в его поисковую часть (например после символа '?'). Серверы ДОЛЖНЫ поддерживать этот метод вызова.
+<!-- If all the parameters for the operation are <a href="datatypes.html#primitive">primitive types</a>, and the operation
+is <i>idempotent</i> (see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">HTTP specification 
+definition of idempotent</a>), the operation may be invoked by performing an HTTP GET operation where 
+all of the values of the parameters are appended to the URL in the search portion of the URL (e.g. after the '?' character).
+Servers SHALL support this method of invocation. E.g. -->
+</p>
+<pre>
+GET [base]/ValueSet/$expand?url=http://hl7.org/fhir/ValueSet/body-sit&amp;filter=abdo
+</pre>
+<p>
+If the only parameter to a specific invocation of the operation is a resource, then the operation
+can also be executed by a POST with that resource as the body of the request.
+</p>
+
+<p>
+Также серверы МОГУТ также поддерживать метод отправки параметров, представленный в формате <a href="https://www.ietf.org/rfc/rfc2388.txt">multi-part/form-data</a>, который может быть полезен при тестировании операции с помощью HTML-форм.
+<!-- Servers MAY choose to support submission of the parameters represented in <a href="https://www.ietf.org/rfc/rfc2388.txt">multi-part/form-data</a> format as well,
+which can be useful when testing an operation using HTML forms. -->
+</p>
+
+<a name="response"> </a>
+
+<h4>Ответ на операцию</h4>
+
+<p>
+Если операция выполняется успешно, возвращается HTTP статус код успешного выполнения. This will usually be a 2xx code, though it may also be a 303 See Other.
+Other kinds of 3xx codes should be understood to indicate that the 
+operation did not proceed, and the client will need to re-issue the 
+operation if it can perform the redirection (e.g. may get redirected
+to an authentication step). User agents should note that servers 
+may issue redirects, etc. to authenticate the client in response to 
+an operation request. HTTP статус-код вида 4xx или 5xx говорит об ошибке, при этом ДОЛЖЕН быть возвращен <a href="operationoutcome.html">OperationOutcome</a> с подробностями ошибки. 
+<!-- If an operation succeeds, an HTTP Status success code is returned. 
+This will usually be a 2xx code, though it may also be a 303 See Other.
+Other kinds of 3xx codes should be understood to indicate that the 
+operation did not proceed, and the client will need to re-issue the 
+operation if it can perform the redirection (e.g. may get redirected
+to an authentication step). User agents should note that servers 
+may issue redirects, etc. to authenticate the client in response to 
+an operation request. An HTTP status code of 4xx or 5xx indicates 
+an error, and an <a href="operationoutcome.html">OperationOutcome</a> 
+SHOULD be returned with details.  -->
+</p>
+
+<p>
+Как правило, ответ на операцию использует тот же самый формат <a href="parameters.html">Parameters</a>, будь там только один или несколько именованных (выходных) параметров.
+<!-- In general, an operation response uses the same
+<a href="parameters.html">Parameters</a> format whether there is only one or 
+there are multiple named <i>out</i> parameters.  -->
+</p>
+<p>
+Если выходной параметр только один, которым является ресурс с именем параметра "return", тогда parameter-формат не используется, а ответ представляет собой просто сам ресурс.
+<!-- If there is only one <i>out</i> parameter, which is a Resource with the parameter name
+"return" then the parameter format is
+not used, and the response is simply the resource itself. -->
+</p>
+<p>
+Ресурсы, возвращаемые в результате операции, могут быть сохранены и доступны в репозитории ресурсов на 
+сервере операции. В этом случае сервер будет обеспечивать идентичность ресурса в возвращаемых ресурсах. Когда в ответе возвращаются ресурсы, которые не сохранены, они не имеют свойства <code>id</code>.
+</p>
+
+<a name="asynchronous"> </a>
+
+<h3>Асинхронное выполнение операций<!-- Executing an Operation Asynchronously --></h3>
+
+<blockquote class="dstu-note">
+<a name="dstu"> </a>
+<p>
+<b>STU Note:</b> there is presently no mechanism to execute
+operations asynchronously in a RESTful manner. However, the <a href="messaging.html#operations">messaging page</a>
+describes a way to execute operations asynchronously using messages.
+</p>
+<p>
+Provide feedback/discussion <a href="http://wiki.hl7.org/index.php?title=FHIR_Asynchronous_Exchange">here</a>.
+</p>
+</blockquote>
+</div>
+
+[%file newfooter%]
+</body>
+</html>

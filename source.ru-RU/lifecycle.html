@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+
+
+      
+[%settitle Resource Life Cycle Page%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+[%file newheader%]
+</head>
+<body>
+[%file newnavbar%]
+
+
+<div class="col-12">
+
+<h2>FHIR Life Cycle Page</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: 3</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+
+<p>
+На этой странице приводится несколько вопросов, касающихся управления жизненным циклом ресурсов и их содержимого. В частности, данная страница описывает:
+<!-- This page describes several issues around lifecycle management for 
+the resources and the content they contain. Specifically, this page 
+describes: -->
+</p>
+<ul>
+ <li><a href="#status">Статус ресурса</a>: как работают коды статусов ресурсов</li>
+ <li><a href="#current">Текущий список</a>: вопросы, связанные с извлечением "текущего списка Х" ресурсов</li>
+ <li><a href="#error">Введено по ошибке</a>: информация о том, что делать с ошибочными записями ресурсов</li>
+<!--  <li><a href="#status">Resource Status</a>: how resource status codes work</li>
+ <li><a href="#current">Current List</a>: issues associated with retrieving "current X list" of resources</li>
+ <li><a href="#error">Entered in Error</a>: information about how erroneous entry is handled for the resources</li> -->
+</ul>
+
+<a name="status"> </a>
+<h3>Статус ресурса<!-- Resource Status --></h3>
+<p>
+У многих ресурсов FHIR есть элемент "status", который обозначает статус жизненного цикла ресурса или клинического процесса, представляемого ресурсом. Рабочие группы могут задавать значения статуса, соответствующие отдельному ресурсу. Хотя согласованность между ресурсами и не является основной целью, пользователям и разработчикам будет полезно иметь хорошо продуманные наборы значений, которые охватывают все возможные статусы (так как наборы значений, как правило, являются обязательными и не расширяются).
+<!-- Many FHIR resources have a status element that represents the lifecycle state of the resource or the clinical process represented by the resource. Work groups can specify status values appropriate to the individual resource. Although consistency between resources is not the primary objective, it is helpful to users and developers to have well-crafted value sets that cover all possible states (since the value sets are typically required and non-extensible). --></p>
+
+<p>Чтобы понять существующие элементы "status" и помочь создавать расширения и ресурсы, включающие в себя статусы ресурсов, отметим, что наборы значений для статусов соответствуют одному из следующих жизненных циклов:
+<!-- To understand existing status elements, and to help create extensions and resources involving resource states, we note that status value sets follow one of the following life cycles: --></p>
+<ul>
+	<li>Жизненный цикл клинического рабочего процесса Clinical workflow process life cycle</li>
+	<li>Жизненный цикл запроса/заявки Request/Order  life cycle</li>
+	<li>Жизненный цикл статуса пригодности объекта Entity status life cycle</li>
+	<li>Жизненный цикл клинического статуса Clinical status life cycle</li>
+</ul>
+
+<a name="clinical"> </a>
+<h3>Clinical Workflow Process Life Cycle</h3>
+
+<p>Описывает статусы жизненного цикла сложных мероприятий, распространенных в здравоохранении. Как правило, эти статусы следуют хронологическому жизненному циклу и идут по порядку от начала до завершения действия. Характерный набор статусов для шаблона клинического рабочего процесса включает в себя:
+<!-- Describes the lifecycle states of complex activities common in healthcare. Typically, these states follow a chronological life cycle that leads from initiation to the conclusion of the action. A characteristic set of states for the clinical workflow process pattern include: --></p>
+<ul>
+	<li>запланирован - ресурсы для этой деятельности были размещены, но сама деятельность ещё не началась<!-- planned – resources for the activity are being allocated but the activity has not begun --></li>
+	<li>отменен - планируемая деятельность не началась и не состоится<!-- cancelled - the planned activity did not start and will not take place --></li>
+	<li>действующий - деятельность началась<!-- in-progress – the activity has begun --></li>
+	<li>отложен (приостановлен) - деятельность была временно приостановлена<!-- on-hold (suspended) – the activity has been temporarily interrupted --></li>
+	<li>остановлен (прерван, сбой) - деятельность не была завершена, но на будущее никакое действие не запланировано<!-- stopped (aborted, failed) – the activity has not been completed but no future action is planned --></li>
+	<li>завершен (закончен) - деятельность была завершена<!-- completed (finished) – the activity has been completed --></li>
+</ul>
+<p>Примеры жизненного цикла клинического рабочего процесса:<!-- Examples of the clinical workflow life cycle: --></p>
+<ul>
+ <li>Communication.status: <%sclist Communication.status%></li>
+ <li>Encounter.status:  <%sclist Encounter.status%></li>
+ <li>Goal.status: <%sclist Goal.status%></li>
+ <li>MedicationAdministration.status: <%sclist MedicationAdministration.status%></li>
+ <li>MedicationDispense.status: <%sclist MedicationDispense.status%></li>
+ <li>Procedure.status: <%sclist Procedure.status%></li>
+</ul>
+
+<a name="order"> </a>
+
+<h3>Request/Order Life Cycle</h3>
+
+<p>Некоторые ресурсы в FHIR представляют собой заказы или запросы. Жизненный цикл запроса можно обобщить на основе четырех этапов: создание запроса, отправка запроса, получение отказа или подтверждения о приеме запроса, и исполнение запроса. Характерный (но не исчерпывающий) набор статусов для шаблона запроса/заявки включает в себя:
+<!-- Some resources in FHIR represent orders or requests. The request lifecycle can be generalized in terms of four stages: creating the request, sending the request, receiving acceptance or refusal of the request, and fulfillment of the request. A characteristic (but non-exhaustive) set of states for the request/order pattern include: --></p>
+
+<ul>
+<li>предложен: Исполнитель (например система поддержки клинических решений) предложил действие для запроса</li>
+<li>черновик: Запрос в предварительной форме, до того как он был затребован</li>
+<li>подан запрос: Запрос был сделан</li>
+<li>отклонен: Получатель отклонил запрос</li>
+<li>принят: Получатель принял запрос</li>
+<li>исполняется: Началась работа по выполнению запроса</li>
+<li>отложен (приостановлен): Работа по выполнению запроса была прервана</li>
+<li>остановлен (прерван): Деятельность не была завершена, но на будущее никакое действие не запланировано</li>
+<li>завершен: Работа по запрошенной задаче была завершена, и никаких дальнейших действий не требуется</li>
+<li>отменен: Запрос был снят</li>
+<!-- <li>proposed: An actor (e.g. a clinical decision support system) has proposed an action to be requested</li>
+<li>draft: The request is in preliminary form, prior to being requested</li>
+<li>requested: The request has been been made</li>
+<li>rejected: The request receiver has declined the request</li>
+<li>accepted: The request receiver has accepted the request</li>
+<li>in-progress: Work to fulfill the request has begun</li>
+<li>on-hold (suspended): Work on the request has been interrupted</li>
+<li>stopped (aborted):  The activity has not been completed but no future action is planned</li>
+<li>completed: Work on the requested task has been completed, and no further action is required</li>
+<li>cancelled: The request has been withdrawn</li> -->
+</ul>
+<p>Примеры жизненного цикла запроса/заявки<!-- Examples of the request/order life cycle: --></p>
+<ul>
+ <li>CommunicationRequest.status:  <%sclist CommunicationRequest.status%></li>
+ <li>DeviceUseRequest.status: <%sclist DeviceUseRequest.status%></li>
+ <li>DiagnosticRequest.status: <%sclist DiagnosticRequest.status%></li>
+ <li>MedicationRequest.status: <%sclist MedicationRequest.status%></li>
+ <li>ProcedureRequest.status: <%sclist ProcedureRequest.status%></li>
+ <li>ReferralRequest.status: <%sclist ReferralRequest.status%></li>
+</ul>
+
+<a name="entity"> </a>
+<h3>Жизненный цикл пригодности объекта<!-- Entity Availability Life Cycle --></h3>
+
+<p>Жизненный цикл пригодности объекта указывает, готов ли ресурс или объект, описываемый ресурсом, к использованию, или пока не готов к использованию, или был изъят из обращения. Характерный (но не исчерпывающий) набор статусов жизненного цикла пригодности объекта включает в себя:
+<!-- The entity availability life cycle indicates if the resource, or the entity described by the resource, is ready for use, not yet ready for use, or has been retired from use. A characteristic (but non-exhaustive) set of states for the entity availability life cycle include:  --></p>
+
+<ul>
+<li>черновик: Объект подготавливается, но еще не используется</li>
+<li>активный: Объект находится в использовании</li>
+<li>приостановленный: Объект не используется в настоящее время, но может вернуться в активное состояние</li>
+<li>исправленный: Объект подвергся пересмотру, но по-прежнему активен</li>
+<li>изъят из обращения (заменен): Объект больше не находится в использовании.</li>
+</ul>
+<p>Примеры жизненного цикла пригодности объекта<!-- Examples of the entity availability life cycle: --></p>
+<ul>
+ <li>DiagnosticReport.status: <%sclist DiagnosticReport.status%></li>
+ <li>MedicationStatement.status: <%sclist MedicationStatement.status%>. (note: in-progress and completed are states reflecting the administration of the medication)</li>
+ <li>DocumentManifest.status: <%sclist DocumentManifest.status%></li>
+ <li>CapabilityStatement.status: <%sclist CapabilityStatement.status%></li>
+ <li>StructureDefinition.status: <%sclist StructureDefinition.status%></li>
+ <li>DataElement: <%sclist DataElement.status%></li>
+ <li>Questionnaire.status: <%sclist Questionnaire.status%></li>
+ <li>DocumentReference.status:  <%sclist DocumentReference.status%></li>
+ <li>QuestionnaireResponse.status: <%sclist QuestionnaireResponse.status%></li>
+ <li>Flag.status: <%sclist Flag.status%></li>
+ <li>Location.status: <%sclist Location.status%></li>
+ <li>Organization.active: <%sclist Organization.active%></li>
+ <li>Patient.active: <%sclist Patient.active%></li>
+</ul>
+<p></p>
+
+<a name="cstatus"> </a>
+
+<h3>Жизненный цикл клинического статуса<!-- Clinical Status Life Cycle --></h3>
+<p>Клинический статус несколько отличается от предыдущих значений статусов, так как он не имеет отношения к рабочему процессу или жизненному циклу. Вместо этого он показывает, как данные влияют на клиническую интерпретацию. Вот два примера:
+<!-- Clinical status is somewhat different than the previous status values, since it does not deal with workflow or lifecycle. Instead, it indicates how evidence is affecting a clinical interpretation. Here are two examples: --></p>
+<ul>
+	<li>AllergyIntolerance.clinicalStatus: <%sclist AllergyIntolerance.clinicalStatus%></li>
+	<li>Condition.clinicalStatus: <%sclist Condition.clinicalStatus%></li>
+
+</ul>
+
+<hr/>
+
+<a name="current"> </a>
+<h3>Текущие списки ресурсов<!-- Current Resource Lists --></h3>
+
+<p>
+Многие клинические системы поддерживают для пациента текущие списки ресурсов некоторого вида. Вот некоторые из часто встречающихся списков:
+<!-- Many clinical systems maintain current lists of some kind of resources for a patient. Some of the commonly maintained lists include: -->
+</p>
+<ul>
+ <li>Список текущих проблем: список проблем, которые представляют интерес при уходе за пациентом</li>
+ <li>Список текущих медикаментов: список лекарств, которые пациент, как известно, принимает в текущий момент времени</li>
+<!--  <li>Current Problem List: a list of the problems that are of concern for care of the patient</li>
+ <li>Current Medication List: a list of the medications that a patient is known to be on at the current time</li> -->
+</ul>
+<p>
+Из-за способа, которым используются ресурсы, нет простого способа определения, из проверки ресурса, является ли он "текущим" или нет. Взять, к примеру, ресурс <a href="condition.html">Condition</a>. В обычной EHR ресурсы Condition могут публиковаться через RESTful интерфейс по следующим причинам:
+<!-- Because of the way that resources are used, there is no simple way to determine, from 
+examination of a resource, whether it is 'current' or not. Take, as an example, the 
+<a href="condition.html">Condition</a> resource. In a typical EHR, condition resources 
+might be published on the RESTful interface for the following reasons: -->
+</p>
+<ul>
+ <li>для отображения одного из пунктов списка текущих проблем пациента</li>
+ <li>для отображения жалобы или диагноза из записи о случае обслуживания</li>
+ <li>для отображения проблемы для исследования, выполненного системой диагностики в рамках пары<a href="diagnosticrequest.html">DiagnosticRequest</a>/<a href="diagnosticreport.html">DiagnosticReport</a></li>
+ <li>ресурсы были получены из другой системы как часть пакета направления, и считались текущими в той системе на момент их получения [в этой системе]</li>
+<!--  <li>to represent an item in a patient's curated problem list</li>
+ <li>to represent a complaint or a diagnosis from an encounter record</li>
+ <li>to represent a problem for investigation provided by a diagnostic system as part of a <a href="diagnosticrequest.html">DiagnosticRequest</a>/<a href="diagnosticreport.html">DiagnosticReport</a> pair</li>
+ <li>the resources were received from another system as part of a referral package, and were current for that system when they were received</li> -->
+</ul>
+<p>
+В ресурсе Condition нет элемента, который мог бы передавать разницу между этими использованиями. В частности, может не быть способа различать текущие и прошлые ресурсы, без необходимости ретроспективного изменения ресурсов, что было бы проблематично с точки зрения целостности и электронных цифровых подписей.
+<!-- There is no element on the Condition resource than can convey the difference between these usages. In particular, there can be 
+no way to differentiate between current and past resources without having to retrospectively alter resources, which is 
+problematic with regard to intergrity and digital signatures.  -->
+</p>
+<p>
+Одним из следствий этого является то, что поиск по ресурсам Condition для данного пациента будет возвращать больше, чем просто текущие проблемы пациента. Хотя это кажется несколько нелогичным для некоторых реализаторов, ограничение поиска по ресурсам Condition таким образом, чтобы получить список только текущих проблем пациента, исключает все остальные - важные - способы использования ресурса Condition.
+<!-- One consequnce of this is that searching the condition resource for a given patient will return more
+than just the patient's current problems. Though this is somewhat counter-intuitive to some implementers,
+restricting searches on Condition to only include the patient's current curated problem list excludes 
+all the other - important - uses of the Condition resource. -->
+</p>
+<p>
+Определение, является ли ресурс Condition записью из списка текущих проблем пациента, выполняется с помощью проверки, есть ли ссылка на этот ресурс Condition в корректном списке.
+<!-- Determining whether a Condition is an entry on a patient's current problem list is done by checking
+with the Condition resource is referenced from the correct list. -->
+</p>
+<p>
+<!-- On the RESTful API, this is done using the <a href="search.html#current">list search mechanism</a>: -->
+В RESTful API это выполняется с помощью <a href="search.html#current">механизма поиска списков</a>:
+</p>
+<pre>
+ GET [base]/AllergyIntolerance?patient=42&amp;_list=$current-allergies
+</pre>
+<p>
+Это запрос для извлечения всех аллергий из Списка текущих проблем пациента 42.
+Обратите внимание, что от сервера не требуется фактически делать представление ресурса текущего списка аллергий доступным, хотя это может помочь клиентам для задач аудита/целостности. Дополнительную информацию можно найти в разделе <a href="list-operations.html#find">List Operation "Find"</a>.
+<!-- This is a request to fetch all the allergies in the patient 42's "Currrent Problem List".
+Note that the server is not required to actually make a resource representation of the current allergy list 
+available, though doing so assists clients in their audit/integrity tasks. See 
+<a href="list-operations.html#find">List Operation "Find"</a> for further information. -->
+</p>
+<p>
+В документе текущие списки определяются кодом в разделе Composition.
+<!-- In a document, current lists are determined by the code on a Composition section.  -->
+</p>
+<a name="lists"> </a>
+<p>
+FHIR определяет следующие имена функциональных списков:
+<!-- FHIR defines the following names for functional lists: -->
+</p>
+<table class="grid">
+ <tr>
+  <td><b>List</b></td>
+  <td><b>ResourceType</b></td>
+  <td><b>Description</b></td>
+  <td><b>Possible LOINC codes in documents / sections</b></td>
+ </tr>
+ <tr>
+  <td>$current-problems</td>
+  <td><a href="condition.html">Condition</a></td>
+  <td>The "Currrent Problem List" - A list of current and active diagnoses as well as past diagnoses relevant to the current care of the patient</td>
+  <td>46105-3	(Problem conditions Set)</td>
+ </tr>
+ <tr>
+  <td>$current-medications</td>
+  <td><a href="medicationstatement.html">MedicationStatement</a>/ <a href="medicationrequest.html">MedicationRequest</a></td>
+  <td>A list of all medications that the patient is taking. The 'current medications list' 
+	  sometimes may include a mix of prescribed and over-the-counter medications - or only some of them. The list may 
+	  contain a mix of <a href="medicationrequest.html">prescriptions</a> and more general <a href="medicationstatement.html">statements</a>, or only one of the two. 
+		The list may also correspond to a formal reconciled medication administration schedule, but more often does not</td>
+  <td>57828-6	(Prescription list), 10160-0 (History of medication)</td>
+ </tr>
+ <tr>
+  <td>$current-allergies</td>
+  <td><a href="allergyintolerance.html">AllergyIntolerance</a></td>
+  <td>A list of known or suspected propensities to medications, foods, or environmental agents that is provided to help prevent reactions while care is occurring</td>
+  <td>18716-1	(Allergy studies (set)), 52472-8	(Allergies and Adverse Drug Reactions), and 48765-2 (Allergies and adverse reactions Document)</td>
+ </tr>
+ <tr>
+  <td>$current-drug-allergies</td>
+  <td><a href="allergyintolerance.html">AllergyIntolerance</a></td>
+  <td>A list of known or suspected propensities to medications that is provided to help prevent reactions while care is occurring. This list is a subset of the full allergies list</td>
+  <td>(same as above?)</td>
+ </tr>
+</table>
+
+<hr/>
+<a name="error"> </a>
+<h3>Статус "введен по ошибке" <!-- Entered In Error Summary --></h3>
+
+<p>
+Статус "введен по ошибке" говорит о том, что ресурс был создан случайно, и его следует игнорировать. Этот статус может применяться к ресурсам, созданным путем ручного ввода. Его, как правило, связывают не с жизненным циклом клинического рабочего процесса, а с жизненными циклами запроса/заказа и пригодности объекта.
+<!-- The entered-in-error state indicates the resource was created accidentally, and 
+should be ignored. This state can apply to resources created by manual 
+entry. It is usually not associated with the Clinical Workflow Process life cycle, 
+but can be associated with the Request/Order and the Entity Availability life cycles. -->
+</p>
+
+<p>
+Таблица ниже суммирует информацию о том, какие действия ожидаются для каждого ресурса, если впоследствии обнаружится, что он содержит ошибочные данные.
+<!-- This table summarizes what is expected to happen for each resource in the case 
+that the data it contains is subsequently found to be an erroneous entry. -->
+</p>
+
+[%enteredInErrorTable%]
+
+<p>
+Note: Resources that are not listed in this table do not have any explicit documentation with regard to being entered in error.
+</p>
+
+</div>
+
+[%file newfooter%]
+
+</body>
+
+</html>

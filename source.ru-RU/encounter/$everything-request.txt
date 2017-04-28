@@ -1,0 +1,4 @@
+// получить все ресурсы, связанные с отдельным пациентом
+
+GET /open/Encounter/example/$everything
+[some headers]

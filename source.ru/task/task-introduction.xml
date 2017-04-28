@@ -48,7 +48,7 @@
       enter a Failed state, indicating an abnormal termination of the task. A task in any
       non-terminal state may also be Cancelled, representing an abnormal termination of the task due
       to external forces, rather than an error condition. --></p>
-    <p>Задачи в не-конечном состоянии (Created, Reading, In Progress) могут быть приостановлены и возобновлены. Когда задача приостановлена, обычно она возобновляется в том же состоянии, в котором была изначально приостановлена. Приостановка задачи также приостанавливает и свои подзадачи. Возобновление задачи возобновляет и все её подзадачи.
+    <p>Задачи в не-конечном состоянии (Created, Ready, In Progress) могут быть приостановлены и возобновлены. Когда задача приостановлена, обычно она возобновляется в том же состоянии, в котором была изначально приостановлена. Приостановка задачи также приостанавливает и свои подзадачи. Возобновление задачи возобновляет и все её подзадачи.
     <!-- Tasks in any non-terminal state (Created, Reading, In Progress) can be suspended and resumed.
       When a task is suspended, it is typically resumed in the state it was in when it was
       originally suspended. Suspending a task suspends all of its children as well. Resuming a task

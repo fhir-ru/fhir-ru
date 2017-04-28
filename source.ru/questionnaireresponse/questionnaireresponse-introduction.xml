@@ -18,11 +18,7 @@ well as sufficient local information to allow rendering of the questionnaire may
 possible for a previously entered set of answers to be edited or updated. -->
 </p>
 <p>
-Ресурсы QuestionnaireResponse покрывают потребность в передаче данных, поступающих из форм, используемых во время медицинских осмотров, научно-исследовательских анкет и, иногда, полных клинических специализированных записей. В большинстве систем эти данные собираются с помощью пользовательских экранов и форм. Вопросники записывают особенности ввода данных - какие именно вопросы были заданы, в каком порядке, какие были варианты ответов и т. п. Каждый из этих вопросов является частью Questionnaire, а QuestionnaireResponse как таковой - это самостоятельно идентифицируемый ресурс, тогда как отдельные вопросы - нет.
-<!-- Questionnaires cover the need to communicate data originating from forms used in medical history examinations, research questionnaires and sometimes full
-clinical specialty records. In many systems this data is collected using user-defined screens and forms. Questionnaires record specifics about data capture -
-exactly what questions were asked, in what order, what choices for answers were, etc. Each of these questions is part of the Questionnaire, 
-and as such the Questionnaire is a separately identifiable Resource, whereas the individual questions are not. -->
+Ресурсы QuestionnaireResponse покрывают потребность в передаче данных, поступающих из форм, используемых во время медицинских осмотров, научно-исследовательских анкет и, иногда, полных клинических специализированных записей. В большинстве систем эти данные собираются с помощью пользовательских экранов и форм. Вопросники записывают особенности ввода данных - какие именно вопросы были заданы, в каком порядке, какие ответы были даны и т. п. Каждый из этих вопросов является частью Questionnaire, а QuestionnaireResponse как таковой - это самостоятельно идентифицируемый ресурс, тогда как отдельные вопросы - нет.
 </p>
 <p>
 Примеры вопросников включают в себя:
@@ -63,14 +59,6 @@ any types of data, including data that would typically map to other resources (<
 and organization of the questions.  All data must be explicitly captured as a question.  With <a href="observation.html">Observation</a>, the focus is
 only on the meaning of the answer, not what question was asked (assuming a question was even asked at all).  Additional information such as normal
 ranges, interpretation, date, etc. may also be captured. -->
-</p>
-<p>
-<b>PLANNED CHANGE:</b>
-</p>
-<p>
-<b>QuestionnaireResponse</b> is one of the <a href="workflow.html#event">Event</a> resources in the FHIR <a href="workflow.html">Workflow</a> specification.  As such, it
-is expected to be adjusted to align with the <a href="event.html">event</a> workflow pattern.  Any concerns about performing such alignment are welcome as ballot
-comments and/or tracker items.
 </p>
 </div>
 

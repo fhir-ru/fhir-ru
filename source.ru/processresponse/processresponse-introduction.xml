@@ -18,9 +18,7 @@ provides simple acknowledgement and status information of application level erro
 convey additional processing requirements in a text form. -->
 </p>
 <p>
-Это официальный ответ на ProcessRequest, который может использоваться в качестве ответа на уровне приложения на ресурсы PaymentNotice и SupportingDocumentation.
-<!-- This is the formal response to a ProcessRequest and may be used as a application level response to PaymentNotice 
-and SupportingDocumentation resources. -->
+Это официальный ответ на ProcessRequest, который может использоваться в качестве ответа на уровне приложения на ресурс PaymentNotice.
 </p>
 <p>
 <!-- Describes some of the situations/use cases intended to be managed with the resource. May include a child div for "Storyboards" and "Related Specifications". The purpose of this section is to help implementers understand why the resource is needed and how it might be used. -->

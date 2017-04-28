@@ -8,13 +8,9 @@
 <!-- The Media resource contains photos, videos, and audio recordings. It is used with media acquired or used as part of the healthcare process. Here are some typical usages: -->
 </p>
 <ul>
- <li>Фотографии пациентов и служебного персонала в целях идентификации.<!-- Photos of patients and staff for identification purposes --></li>
  <li>Фотографии и видео диагностических или процедур по предоставлению ухода в целях записи.<!-- Photos and videos of diagnostic or care provision procedures for recording purposes --> </li>
- <li>Сохранение сканов и факсов бумажных документов, когда для создания <a href="documentreference.html">DocumentReference</a> недостаточно метаданных.<!-- Storing scans and faxes of paper documents where not enough metadata exists to create a <a href="documentreference.html">DocumentReference</a> --></li>
- <li>Изображения диагностических отчетов.<!-- Images on diagnostic reports --></li> 
+ <li>Изображения, содержащиеся в диагностических отчетах.</li> 
 </ul>
-
-
 </div>
 
 <div>
@@ -22,19 +18,22 @@
 <h2>Boundaries and Relationships</h2>
 
 <p>
-Ресурс Media может содержать медицинские изображения в формате DICOM. Хотя для доступа к таким изображениям можно использовать ресурс  <a href="imagingstudy.html">ImagingStudy</a>, ресурс Media предоставляет "готовый для показа" доступ к конкретному изображению.
+This resource captures a specific type of Observation - an <a href="observation.html">Observation</a> whose value is audio, video or image data.  
+This resource is the preferred representation of such forms of information as it exposes the metadata relevant for 
+interpreting the information.  However, in some legacy environments, media information may occasionally appear in 
+Observation instead.  Systems should be aware of this possibility.
+</p>
+<p>
 The Media resource is able to contain medical images in a DICOM format. These images may also be made accessible 
 through an <a href="imagingstudy.html">ImagingStudy</a> resource, which provides a direct reference to the
 image to a <a href="ftp://medical.nema.org/medical/dicom/final/sup161_ft.pdf">WADO-RS server</a>.
 </p>
 <p>
-Такие изображения будут преимущественно доступными в экосистеме FHIR по Media.content.url, предоставляющим ссылку на сервис WADO-RS для доступа к изображению. Этот WADO-RS сервис может включать рендеринг изображения с аннотациями и параметрами отображения из ассоциированного состояния представления DICOM.
 For such images, the WADO-RS framework is a preferred method for representing the images - the WADO-RS
 service may include rendering the image with annotations and display parameters from an associated DICOM 
 presentation state, for instance. 
 </p>
 <p>
-Хотя ресурс Media может содержать изображения, собранные системой на основе DICOM, DICOM-изображения будут доступны в FHIR-экосистеме преимущественно путём предоставления ресурса со ссылкой на
 On the other hand, the media resource allows for a robust transfer of an image across boundaries where
 the WADO-RS service is not available. For this reason, medical images can also be represented in 
 a Media resource, but the Media.content.url should provide a reference to a source WADO-RS service 

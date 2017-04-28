@@ -12,9 +12,9 @@
 
 
     <p>
-	В данный ресурс записывается использование пациентом медицинского изделия. Эта запись является результатом сообщения об использовании пациентом или другим поставщиком мед. услуг. Ресурс можно использовать для записи о применении вспомогательных изделий, например инвалидная коляска или слуховой аппарат, контрацептивов, например внутриматочная спираль, или других имплантированных изделий, например кардиостимулятор.
+	В данный ресурс записывается использование пациентом медицинского изделия. Эта запись является результатом сообщения об использовании пациентом, другим поставщиком мед. услуг или родственником. Ресурс можно использовать для записи о применении вспомогательных изделий, например инвалидная коляска или слуховой аппарат, контрацептивов, например внутриматочная спираль, или других имплантированных изделий, например кардиостимулятор.
         <!-- This resource records the use of a healthcare-related device by a patient. The record is the 
-        result of a report of use by the patient or another provider. The resource can be used to note 
+        result of a report of use by the patient, another provider or a related person. The resource can be used to note 
         the use of an assistive device such as a wheelchair or hearing aid, a contraceptive such an 
         intra-uterine device, or other implanted devices such as a pacemaker. -->
     </p>
@@ -24,8 +24,8 @@
 <a name="bnr"> </a>
 <h2>Границы и связи</h2>
 <p>
-Данный ресурс отличается от DeviceUseRequest, который записывает запрос на использование изделия. Также он отличается от ресурса Procedure, который может описывать имплантацию или эксплантацию изделия.
-<!-- This resource is different from DeviceUseRequest which records a request to use the device. This also is distinct from the Procedure resource 
+Данный ресурс отличается от DeviceRequest, который записывает запрос на использование изделия. Также он отличается от ресурса Procedure, который может описывать имплантацию или эксплантацию изделия.
+<!-- This resource is different from DeviceRequest which records a request to use the device. This also is distinct from the Procedure resource 
 which may describe the implantation or explantation of a device. -->
 </p>
 </div>

@@ -1,0 +1,344 @@
+
+*** Parsing file bodysite/bodysite-spreadsheet.xml
+There is partial match
+Description of anatomical location.
+Description of anatomical location/Visual markings/orientation
+Описание анатомического расположения.
+----------------------------
+
+*** Parsing file bundle/bundle-spreadsheet.xml
+
+*** Parsing file careplan/careplan-spreadsheet.xml
+
+*** Parsing file careteam/careteam-spreadsheet.xml
+
+*** Parsing file claim/claim-spreadsheet.xml
+
+*** Parsing file claimresponse/claimresponse-spreadsheet.xml
+There is partial match
+Reason for Payment adjustment
+Reason for the payment adjustment.
+Причина корректировки платежа
+----------------------------
+
+*** Parsing file clinicalimpression/clinicalimpression-spreadsheet.xml
+
+*** Parsing file codesystem/codesystem-spreadsheet.xml
+
+*** Parsing file communication/communication-spreadsheet.xml
+
+*** Parsing file communicationrequest/communicationrequest-spreadsheet.xml
+There is partial match
+The status of the communication.
+The status of the communication request.
+Статус передачи сообщения.
+----------------------------
+
+*** Parsing file compartmentdefinition/compartmentdefinition-spreadsheet.xml
+There is partial match
+Additional doco about the resource and compartment
+Additional documentation about the resource and compartment
+Дополнительная документация по этому ресурсу и логическому модулю
+----------------------------
+
+*** Parsing file composition/composition-spreadsheet.xml
+
+*** Parsing file conceptmap/conceptmap-spreadsheet.xml
+
+*** Parsing file condition/condition-spreadsheet.xml
+
+*** Parsing file consent/consent-spreadsheet.xml
+
+*** Parsing file contract/contract-spreadsheet.xml
+
+*** Parsing file coverage/coverage-spreadsheet.xml
+
+*** Parsing file dataelement/dataelement-spreadsheet.xml
+
+*** Parsing file detectedissue/detectedissue-spreadsheet.xml
+
+*** Parsing file device/device-spreadsheet.xml
+
+*** Parsing file devicecomponent/devicecomponent-spreadsheet.xml
+
+*** Parsing file devicemetric/devicemetric-spreadsheet.xml
+
+*** Parsing file diagnosticreport/diagnosticreport-spreadsheet.xml
+
+*** Parsing file documentmanifest/documentmanifest-spreadsheet.xml
+
+*** Parsing file documentreference/documentreference-spreadsheet.xml
+
+*** Parsing file eligibilityrequest/eligibilityrequest-spreadsheet.xml
+
+*** Parsing file eligibilityresponse/eligibilityresponse-spreadsheet.xml
+
+*** Parsing file encounter/encounter-spreadsheet.xml
+There is partial match
+The patient present at the encounter
+The patient ro group present at the encounter
+Пациент, участвующий в случае обслуживания
+----------------------------
+
+*** Parsing file enrollmentrequest/enrollmentrequest-spreadsheet.xml
+
+*** Parsing file enrollmentresponse/enrollmentresponse-spreadsheet.xml
+
+*** Parsing file episodeofcare/episodeofcare-spreadsheet.xml
+There is partial match
+Patient for this episode of care
+This episode of care is planned to start at the date specified in the period.start. During this status, an organization may perform assessments to determine if the patient is eligible to receive services, or be organizing to make resources available to provide care services.
+Пациент этого эпизода лечения
+----------------------------
+
+*** Parsing file expansionprofile/expansionprofile-spreadsheet.xml
+
+*** Parsing file explanationofbenefit/explanationofbenefit-spreadsheet.xml
+There is partial match
+Required to maintain order of the diagnoses.
+Required to maintain order of the careteam members.
+Требуется для установления очерёдности диагнозов.
+----------------------------
+There is partial match
+Reason for Payment adjustment
+Reason for the payment adjustment.
+Причина корректировки платежа
+----------------------------
+There is partial match
+Payment identifier
+Identifier of the payment instrument 
+Идентификатор платежа
+----------------------------
+
+*** Parsing file familymemberhistory/familymemberhistory-spreadsheet.xml
+
+*** Parsing file flag/flag-spreadsheet.xml
+
+*** Parsing file goal/goal-spreadsheet.xml
+
+*** Parsing file group/group-spreadsheet.xml
+
+*** Parsing file guidanceresponse/guidanceresponse-spreadsheet.xml
+
+*** Parsing file healthcareservice/healthcareservice-spreadsheet.xml
+
+*** Parsing file imagingstudy/imagingstudy-spreadsheet.xml
+There is partial match
+Number of Series in Study
+Number of Series in the Study. This value given may be larger than the number of series elements this Resource contains due to resource availability, security, or other factors. This element should be present if any series elements are present
+Количество серий в исследовании
+----------------------------
+
+*** Parsing file immunization/immunization-spreadsheet.xml
+
+*** Parsing file immunizationrecommendation/immunizationrecommendation-spreadsheet.xml
+
+*** Parsing file implementationguide/implementationguide-spreadsheet.xml
+
+*** Parsing file library/library-spreadsheet.xml
+
+*** Parsing file linkage/linkage-spreadsheet.xml
+
+*** Parsing file list/list-spreadsheet.xml
+
+*** Parsing file location/location-spreadsheet.xml
+
+*** Parsing file media/media-spreadsheet.xml
+
+*** Parsing file medication/medication-spreadsheet.xml
+
+*** Parsing file medicationadministration/medicationadministration-spreadsheet.xml
+There is partial match
+The person or animal receiving the medication.
+The person or animal or group receiving the medication.
+Человек или животное, получившие медикамент.
+----------------------------
+There is partial match
+Encounter administered as part of
+Encounter or Episode of Care administered as part of
+Случай обслуживания, в рамках которого было введено лекарство
+----------------------------
+
+*** Parsing file medicationdispense/medicationdispense-spreadsheet.xml
+There is partial match
+A link to a resource representing the person to whom the medication will be given.
+A link to a resource representing the person or the group to whom the medication will be given.
+Ссылка на ресурс, представляющий человека, которому будет выдано лекарственное средство. 
+----------------------------
+
+*** Parsing file medicationstatement/medicationstatement-spreadsheet.xml
+There is partial match
+Details of how medication was taken
+Details of how medication is/was taken or should be taken
+Подробности о том, каким образом был принят медикамент
+----------------------------
+There is partial match
+Indicates how the medication is/was used by the patient
+Indicates how the medication is/was or should be taken by the patient
+Указывает, каким образом лекарственное средство было использовано пациентом
+----------------------------
+
+*** Parsing file messageheader/messageheader-spreadsheet.xml
+
+*** Parsing file namingsystem/namingsystem-spreadsheet.xml
+
+*** Parsing file observation/observation-spreadsheet.xml
+There is partial match
+Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is &quot;'value' + the type name&quot; with a capital on the first letter of the type).&#13;&#13;&#13;If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.  For boolean values use valueCodeableConcept and select codes from [HL7 Version 2 Table 0136](v2/0136/index.html). These &quot;yes/no&quot; concepts can be mapped to the display name &quot;true/false&quot; or other mutually exclusive terms that may be needed.   For further discussion and examples see the  [notes section](observation.html#4.20.4) below.&#13;
+Normally, an observation will have either a single value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueBoolean, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is &quot;'value' + the type name&quot; with a capital on the first letter of the type).&#13;&#13;&#13;If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.    For further discussion and examples see the  [notes section](observation.html#notes) below.&#13;
+Как правило, наблюдение содержит либо некоторое значение, либо ряд связанных наблюдений. Несколько видов наблюдений (например оценка по шкале Апгар) могут иметь и значение, и связанные наблюдения (для шкалы Апгар это наблюдения, по результатам которых подсчитывается оценка). Если значение присутствует, то тип данных для этого элемента должен определяться элементом Observation.code. Имя этого элемента меняется в зависимости от типа следующим образом: valueQuantity, valueCodeableConcept, valueString, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime или valuePeriod. (Формат имени &quot;'value' + название типа&quot; с заглавной первой буквы).&#13;&#13;&#13;Если элемент данных обычно кодируется или если тип, связанный с Observation.value, определяет закодированное значение, используйте CodeableConcept вместо типа данных string, даже если значением является незакодированный текст. У элемента ValueCodeableConcept есть привязка к набору значений. Для логических значений используйте valueCodeableConcept и выбирайте коды из [HL7 Version 2 Table 0136](v2/0136/index.html). Можно устанавливать соответствие между этими концептами "да/нет" и значениями для отображения "true/false" или другими взаимоисключающими понятиями, которые могут понадобиться. Более подробную информацию и примеры см. в [разделе примечаний](observation.html#4.20.4) ниже.&#13;
+----------------------------
+There is partial match
+Null or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  &quot;detected&quot;, &quot;not detected&quot;, &quot;inconclusive&quot;, or  &quot;specimen unsatisfactory&quot;.   The alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code &quot;error&quot; could be used when the measurement was not completed.  Because of these options, use-case agreements are required to interpret general observations for exceptional values.
+Null or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  &quot;detected&quot;, &quot;not detected&quot;, &quot;inconclusive&quot;, or  &quot;specimen unsatisfactory&quot;.   The alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code &quot;error&quot; could be used when the measurement was not completed. Note that an observation may only be reported if there are values to report. For example differential cell counts values may be reported only when &gt; 0.  Because of these options, use-case agreements are required to interpret general observations for null or exceptional values.
+Нулевые или исключительные значения в FHIR-ресурсе Observation могут быть представлены двумя способами . Один из способов - просто включать их в набор значений и представлять исключения в значении. Например измеренные значения для серологического анализа могут быть такими: &quot;обнаружено&quot;, &quot;не обнаружено&quot;, &quot;не дали окончательных результатов&quot; или  &quot;неудовлетворительный образец для анализа&quot;. Альтернативный способ заключается в использовании элемента value для фактических наблюдений и использовании элемента dataAbsentReason для записи исключительных значений. Например код dataAbsentReason &quot;error&quot; может быть использован, когда измерение не было завершено. Из-за таких вариантов для интерпретации общих наблюдений для исключительных значений необходимы соглашения по случаям использования.
+----------------------------
+There is partial match
+Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and a set of related observations or sometimes QuestionnaireResponse  from which the measure is derived.
+Normally, an observation will have either a single value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code. This element has a variable name depending on the type as follows: valueQuantity, valueCodeableConcept, valueString, valueBoolean, valueRange, valueRatio, valueSampledData, valueAttachment, valueTime, valueDateTime, or valuePeriod. (The name format is &quot;'value' + the type name&quot; with a capital on the first letter of the type).&#13;&#13;&#13;If the data element is usually coded or if the type associated with the Observation.value defines a coded value, use CodeableConcept instead of string datatype even if the value is uncoded text.  A value set is bound to the ValueCodeableConcept element.    For further discussion and examples see the  [notes section](observation.html#notes) below.&#13;
+Как правило, наблюдение содержит либо некоторое значение, либо ряд связанных наблюдений. Несколько видов наблюдений (например оценка по шкале Апгар) могут иметь и значение, и связанные наблюдения или, иногда, QuestionnaireResponse, из которого выводится показатель.
+----------------------------
+There is partial match
+Healthcare event related to the observation
+Healthcare event  (Episode-of-care or Encounter) related to the observation
+Событие здравоохранения, связанное с этим наблюдением
+----------------------------
+
+*** Parsing file operationdefinition/operationdefinition-spreadsheet.xml
+
+*** Parsing file operationoutcome/operationoutcome-spreadsheet.xml
+There is partial match
+The root of the FluentPath is the resource or bundle that generated OperationOutcome.  Each FluentPath SHALL resolve to a single node
+The root of the XPath is the resource or bundle that generated OperationOutcome.  Each XPath SHALL resolve to a single node.  The XPath syntax is used whether the referenced instance is expressed in XML or JSON. Note that expression is being trialed as an alternative to XPath
+Корень FluentPath - это ресурс или бандл, который сгенерировал OperationOutcome. Каждый FluentPath должен разрешаться в отдельный узел
+----------------------------
+
+*** Parsing file organization/organization-spreadsheet.xml
+
+*** Parsing file parameters/parameters-spreadsheet.xml
+
+*** Parsing file patient/patient-extensions-spreadsheet.xml
+
+*** Parsing file patient/patient-spreadsheet.xml
+
+*** Parsing file paymentnotice/paymentnotice-spreadsheet.xml
+
+*** Parsing file paymentreconciliation/paymentreconciliation-spreadsheet.xml
+
+*** Parsing file plandefinition/plandefinition-spreadsheet.xml
+
+*** Parsing file practitioner/practitioner-spreadsheet.xml
+
+*** Parsing file practitionerrole/practitionerrole-spreadsheet.xml
+
+*** Parsing file procedure/procedure-spreadsheet.xml
+
+*** Parsing file procedurerequest/procedurerequest-spreadsheet.xml
+There is partial match
+The status of the request
+The status is generally fully in the control of the requester - they determine whether the order is draft or active and, after it has been activated, competed, cancelled or suspended. States relating to the activities of the performer are reflected on either the corresponding event (see [Event Pattern](event.html) for general discussion) or using the [Task](task.html) resource.&#10;&#10;This element is labeled as a modifier because the status contains codes that mark the resource as not currently valid
+Статус запроса
+----------------------------
+
+*** Parsing file processrequest/processrequest-spreadsheet.xml
+There is partial match
+Request reference
+Reference to the Request resource
+Ссылка на запрос
+----------------------------
+
+*** Parsing file processresponse/processresponse-spreadsheet.xml
+
+*** Parsing file provenance/provenance-spreadsheet.xml
+
+*** Parsing file questionnaire/questionnaire-spreadsheet.xml
+
+*** Parsing file questionnaireresponse/questionnaireresponse-spreadsheet.xml
+There is partial match
+May be different from the update time of the resource itself, because that is the status of the collection and authoring.  This element is optional to allow for systems that may not know the value, however it SHOULD be populated if possible.
+May be different from the lastUpdateTime of the resource itself, because that reflects when the data was known to the server, not when the data was captured.&#10;&#10;This element is optional to allow for systems that may not know the value, however it SHOULD be populated if possible.
+Может отличаться от времени обновления самого ресурса, потому что это статус сбора и составления. Это необязательный элемент, чтобы учитывать системы, которые могут не знать это значение, однако, он ДОЛЖЕН быть заполнен, если это возможно.
+----------------------------
+
+*** Parsing file referralrequest/referralrequest-spreadsheet.xml
+
+*** Parsing file relatedperson/relatedperson-spreadsheet.xml
+There is partial match
+Gender of the person
+Gender of the related person
+Пол родственника
+----------------------------
+
+*** Parsing file resource/resource-spreadsheet.xml
+There is partial match
+Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible
+Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element. &#10;&#10;This element is labelled as a modifier because the implicit rules may provide additional knowledge about the resource that modifies it's meaning or interpretation
+Установка такого свода правил ограничивает понимание содержимого до лимитированного количества торговых партнеров. Это, по сути, ограничивает полезность данных в долгосрочном плане. Тем не менее, существующая экосистема здравоохранения сильно раздроблена и пока что не готова определять, собирать и обмениваться данными в полностью вычислительном контексте. Реализаторам и/или авторам спецификации следует избегать использования этого элемента, насколько это возможно
+----------------------------
+
+*** Parsing file riskassessment/riskassessment-spreadsheet.xml
+
+*** Parsing file schedule/schedule-spreadsheet.xml
+
+*** Parsing file searchparameter/searchparameter-spreadsheet.xml
+
+*** Parsing file sequence/sequence-spreadsheet.xml
+
+*** Parsing file slot/slot-spreadsheet.xml
+
+*** Parsing file specimen/specimen-spreadsheet.xml
+
+*** Parsing file structuredefinition/structuredefinition-spreadsheet.xml
+
+*** Parsing file structuremap/structuremap-spreadsheet.xml
+
+*** Parsing file subscription/subscription-spreadsheet.xml
+There is partial match
+Exactly what these mean depend on the channel type. The can convey additional information to the recipient and/or meet security requirements
+Exactly what these mean depend on the channel type. They can convey additional information to the recipient and/or meet security requirements; for example, support of multiple headers in the outgoing notifications for rest-hook type subscriptions.
+Точное значение этого элемента зависит от типа канала. Может передавать дополнительную информацию получателю и/или отвечать требованиям безопасности
+----------------------------
+
+*** Parsing file substance/substance-spreadsheet.xml
+
+*** Parsing file supplydelivery/supplydelivery-spreadsheet.xml
+There is partial match
+Delivery of Supply
+SupplyDelivery.partOf
+Доставка поставки
+----------------------------
+
+*** Parsing file supplyrequest/supplyrequest-spreadsheet.xml
+
+*** Parsing file task/task-spreadsheet.xml
+
+*** Parsing file testscript/testscript-spreadsheet.xml
+
+*** Parsing file valueset/valueset-spreadsheet.xml
+
+*** Parsing file visionprescription/visionprescription-spreadsheet.xml
+
+*** Parsing file datatypes/address.xml
+
+*** Parsing file datatypes/attachment.xml
+
+*** Parsing file datatypes/coding.xml
+
+*** Parsing file datatypes/contactpoint.xml
+
+*** Parsing file datatypes/elementdefinition.xml
+
+*** Parsing file datatypes/identifier.xml
+
+*** Parsing file datatypes/quantity.xml
+
+*** Parsing file datatypes/signature.xml
+
+*** Parsing file datatypes/timing.xml
+There is partial match
+Specifies an event that may occur multiple times. Timing schedules are used to record when things are expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds
+Specifies an event that may occur multiple times. Timing schedules are used to record when things are planned, expected or requested to occur. The most common usage is in dosage instructions for medications. They are also used when planning care of various kinds, and may be used for reporting the schedule to which past regular activities were carried out
+Определяет событие, которое может произойти несколько раз. Расписания используются для записи времени ожидаемого или запрошенного события. Наиболее распространенным будет использование расписаний в инструкции по дозировке для лекарств. Они также используются при планировании медицинского ухода различного вида
+----------------------------
+
+*** Parsing file terminologies/bindings.xml

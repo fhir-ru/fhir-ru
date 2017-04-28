@@ -1,0 +1,190 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<h3>Операции, определенные в рамках этой спецификации<!-- Operations defined as part of this Specification --></h3>
+
+<%operationslist%>
+
+<h3>Выполнение операций и именованных запросов<!-- Executing Operations and Named Queries --></h3>
+
+<p>
+Операции выполняются отправкой POST-запрос на URL, который <a href="operations.html">указан в определении этой операции</a>. 
+Именованные запросы выполняются совершением <a href="search.html">поиска</a> с параметром поиска "_query", значение которого соответствует имени запроса из его определения.
+<!-- Operations are executed by POSTing to a URL that is <a href="operations.html">defined by the operation definition</a>.
+Named Queries are executed by performing a <a href="search.html">search</a> with the value of the search parameter
+"_query" set to the name provided in the definition.  -->
+</p>
+<p>
+Если именованный запрос должен быть выполнен в RESTful API, все параметры должны быть простыми параметрами поиска, чтобы их можно было представить непосредственно в URL без сложных вопросов кодирования. Именованные запросы всегда возвращают бандл, содержащий набор ресурсов, поэтому все выходные параметры должны быть ресурсами, а не типами данных или чем-то ещё.
+<!-- If the named query is to be performed over the RESTful API, all the parameters must be simple search parameters,
+so that they can be represented directly in the URL without tricky encoding issues. Named queries always 
+return a bundle containing a set of resources, so all the out parameters must be 
+resources, not data types etc. -->
+</p>
+ 
+<h3>Передача ресурсов в операции<!-- Passing Resources to Operations --></h3> 
+
+<p>
+Есть два способа передачи ресурсов операциям: напрямую или по ссылке. Поскольку эти две формы имеют очень различное поведение и последствия, определение операции различается для них.
+<!-- There are two ways to pass resources to an operation - directly, or by reference.
+Since the two forms have very different behaviors and consequences, the definition of 
+an Operation distinguishes between these two.  -->
+</p>
+<p>
+В качестве примера возьмём операцию <a href="questionnaire-operations.html#populate">Questionnaire.$populate</a>. Эта операция принимает ресурс Вопросник в качестве прямого параметра. Типом этого параметра будет 'Questionnaire'. В ресурсе Parameters это будет выражено следующим образом:
+<!-- As an example, take the <a href="questionnaire-operations.html#populate">Questionnaire.$populate operation</a>.  
+This operation takes a questionnaire as a direct parameter. The type of the parameter is 
+defined as 'Questionnaire'. In a parameters resource, it would be represented like this: -->
+</p>
+<pre class="xml">
+  &lt;parameter&gt;
+    &lt;name value=&quot;questionnaire&quot;/&gt;
+    &lt;resource&gt;
+      &lt;Questionnaire&gt;
+        &lt;!-- Questionnaire contents --&gt;
+      &lt;/Questionnaire&gt;
+    &lt;/resource&gt;
+  &lt;/parameter&gt; 
+</pre>
+<p>
+или в JSON:
+<!-- or, in JSON: -->
+</p>
+<pre>
+ "parameter": [
+    {
+      "name": "questionnaire",
+      "resource": {
+        "resourceType": "Questionnaire",
+        // Questionnaire contents 
+      }
+    }
+  ]
+</pre>
+
+<p>
+Другие параметры передаются с помощью ссылок. Например операция populate принимает ссылки на другие ресурсы, которые следует использовать для предварительного заполнения вопросника. Они передаются с помощью ссылок, а типом этого параметра будет 'Reference(Any)' - ссылка на ресурс любого типа. В ресурсе Parameters это будет выражено следующим образом:
+<!-- Other parameters are passed by reference. For example, populate takes a 
+set of references to other resources that should be used to pre-populate the 
+questionnaire. These are passed by reference, and the type of the 
+parameter is 'Reference(Any)' - a reference to any kind of resource.
+In a parameters resource, it would be represented like this:  -->
+</p>
+<pre class="xml">
+  &lt;parameter&gt;
+    &lt;name value=&quot;content&quot;/&gt;
+    &lt;valueReference&gt;
+      &lt;reference value="Patient/123"&gt;
+      &lt;/Questionnaire&gt;
+    &lt;/valueReference&gt;
+  &lt;/parameter&gt; 
+</pre>
+<p>или в JSON:
+<!-- or, in JSON: -->
+</p>
+<pre>
+ "parameter": [
+    {
+      "name": "questionnaire",
+      "valueReference" : {
+        "reference" : "Patient/123"
+      }
+    }
+  ]
+</pre>
+
+<p>
+Некоторые операции могут принимать одну из форм; в этом случае необходимо задать два разных параметра, один непосредственно для ресурса, другой - для ссылки.
+<!-- Some operations can take either form; in that case, two different parameters
+must be defined, one for a resource directly, and one for a reference. -->
+</p>
+ 
+<h3>Переименовывание OperationDefinition.name<!-- Renaming OperationDefinition.name --></h3>
+
+<p>
+Вполне возможна ситуация, когда две разных организации создают разные определения операций с одинаковым именем (или, возможно более вероятно, определяют эквивалентные операции, имеющие одинаковое имя, но несовместимые списки параметров).
+<!-- It's possible for two different organizations to create different operation definitions that 
+have the same name (or, perhaps more likely, to define equivalent operations that have the 
+same name but incompatible approaches in their parameter lists).  -->
+</p>
+<p>
+Возможно также, хотя маловероятно, что от сервера потребуется поддержать обе эти операции. Если это произойдет, сервер может сделать это, дав одной из них новое имя, а затем ссылаться на нее с помощью определения в заявлении о возможностях. Для иллюстрации этого примера давайте предположим, что две разных организации (orgA и orgB) определяют операцию с именем "dothis", и их определения несовместимы.  OrgA публикует свое определение операции в http://orga.com/fhir/dothis.xml, а OrgB публикует свою операцию в 
+http://fhir.orgb.com/meta/OperationDefinition/dothis. Сервер может осуществить обе. В его заявлении о возможностях будет указано:
+<!-- It's also possible, though unlikely, that a server will be required to support both of 
+these operations. Should this be the case, the server is able to do this by giving one of them
+a new name, and then referring to it by definition in the capability statement. To illustrate
+this, let's assume that two different organizations (orgA and orgB) both define an operation 
+called "dothis", and the definitions are incompatible. OrgA publishes its operation
+definition at http://orga.com/fhir/dothis.xml, and OrgB publishes its operation at 
+http://fhir.orgb.com/meta/OperationDefinition/dothis. The server is able to implement
+both. Its capability statement will say: -->
+</p>
+<pre class="xml">
+&lt;CapabilityStatement xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+  &lt;!-- snip --&gt;
+  &lt;rest&gt;
+    &lt;!-- snip --&gt;
+    &lt;operation&gt;
+      &lt;name value=&quot;dothis&quot;/&gt;
+      &lt;definition&gt;
+        &lt;reference value=&quot;http://orga.com/fhir/dothis.xml&quot;/&gt;
+      &lt;/definition&gt;
+    &lt;/operation&gt;
+    &lt;operation&gt;
+      &lt;name value=&quot;dothis2&quot;/&gt;
+      &lt;definition&gt;
+        &lt;reference value=&quot;http://fhir.orgb.com/meta/OperationDefinition/dothis&quot;/&gt;
+      &lt;/definition&gt;
+    &lt;/operation&gt;
+    &lt;!-- snip --&gt;
+  &lt;/rest&gt;
+  &lt;!-- snip --&gt;
+&lt;/CapabilityStatement&gt;
+</pre>
+<p>
+Если клиент кросс-сервера общего назначения ищет реализацию операции http://fhir.orgb.com/meta/OperationDefinition/dothis и хочет устойчивости к ошибкам конфликта имен, вместо простого выполнения операции $dothis, он может посмотреть в заявлении о возможностях сервера требуемый URI определения и затем выполнить операцию с именем, указанным в заявлении о возможностях.
+<!-- If a general purpose cross server client is looking for the implementation of the 
+http://fhir.orgb.com/meta/OperationDefinition/dothis operation, and wants to be
+robust against this name clash problem, instead of simply executing the $dothis
+operation, it can look at the server's capability statement for the underlying
+definition URI, and then execute the name given in the capability statement. -->
+</p>
+
+<h3>Определение совместимости систем<!-- Determining System Compatibility --></h3>
+
+<p>
+Клиент может определить совместимость сервера, рассматривая его заявление о соответствии на предмет того, что какие-то из операций, поддержку которых он объявляет, и необходимых клиенту, имеют одинаковые определения, и поддерживаются ли сервером параметры, которые он использует. Клиент, выполняющий это, может выдать пользователю сообщение об ошибке, что будет полезней, чем допускать вводящие в заблуждение эксплуатационные ошибки.
+<!-- A client can determine the compatibility of the server by iterating its conformance
+statement and seeing whether any of the operations it declares to support source
+from the same definitions as those the client depends on, and whether the server supports the parameters it uses. A client that does this can report a useful error to the user rather than allowing mystifying operational errors to occur. -->
+</p>
+<p>
+Обратите, однако, внимание, что имеются принципиальные ограничения к этому подходу, так как имеется много аспектов этих операций, которые не (и не могут быть) определены формальным образом. (например ограничения смежности (co-occurrence constraints) среди параметров.)
+<!-- Note, however, that there are fundamental limitations to this approach because 
+there are many aspects of these operations that aren't (and can't be) defined 
+in a formal fashion.  (For example, co-occurrence constraints amongst parameters.) -->
+</p>
+<p>
+Заявление о возможностях сервера и определение клиентом приемлемого сервера также можно проверять инструментами третьей стороны и подтверждать, смогут ли эти две системы взаимодействовать.
+<!-- In the same sense, a 3rd party tool can examine the capability statements from 
+a server and a client definition of an acceptable server and confirm whether
+those two system are would be unable to interoperate. -->
+</p>
+
+<h3>Динамическая генерация форм<!-- Dynamically Generating Forms --></h3>
+
+<p>
+Наконец, можно генерировать формы пользовательского интерфейса из определений операций. Документация по определении формы и документация параметров должны быть достаточно удобными, чтобы позволить умеренно техническим пользователям предположить корректное содержимое формы. По этой причине высоко техническая документация должна идти в OperationDefinition.notes.
+<!-- Finally, it is possible to generate user interface forms automatically from 
+the operation definitions. The documentation in the form definition 
+and the parameter documentation should be sufficiently useful to allow
+moderately technical users to guess at the correct content of the form.
+For this reason, highly technical documentation should go in OperationDefinition.notes. -->
+</p>
+<p>
+Отметим также, что это средство не ожидается быть полезным для типичного медицинского конечного пользователя; такие пользователи, как правило, нуждаются в большей поддержке, чем та, что может быть предложена в сгенерированной форме.
+<!-- Note also this is not expected to be a tool of use to typical healthcare
+end-users; such users will usually need more support than can be offered
+in a generated form.  -->
+</p>
+
+</div>

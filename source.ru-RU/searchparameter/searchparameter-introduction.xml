@@ -1,0 +1,42 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+<a name="scope"> </a>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<p>
+A <code>SearchParameter</code> resource specifies a search parameter
+that may be used on the RESTful API to search or filter on a resource. 
+The SearchParameter resource declares:
+</p>
+<ul>
+ <li>how to refer to the search parameter from a client</li>
+ <li>how the search parameter is to be understood by the server</li>
+ <li>where in the source resource the parameter matches</li>
+</ul>
+</div> 
+
+<div> 
+<a name="bnr"> </a>
+<h2>Границы и связи<!-- Boundaries and Relationships --></h2> 
+<ul>
+ <li>Search Parameters are referred to by <a href="capabilitystatement.html">CapabilityStatement</a> resources via the canonical URL for a search 
+    parameter (<a href="capabilitystatement-definitions.html#CapabilityStatement.rest.resource.searchParam.definition">CapabilityStatement.rest.resource.searchParam.definition</a>)</li>
+ <li>Search Parameters can appear in an <a href="implementationguide.html">Implementation Guide</a> to specify how resources can be found</li>
+</ul>
+
+</div> 
+
+<div>
+<a name="bnc"> </a>
+<h2>Предпосылки и контекст<!-- Background and Context --></h2>
+<p>
+Implementers should be familiar with the 
+background and concepts described in <a href="search.html">Search</a> on the RESTful API before working with this resource.
+</p>
+<p>
+There is a <a href="searchparameter-registry.html">registry of all Search Parameters</a>.
+</p>
+</div>
+
+
+</div>

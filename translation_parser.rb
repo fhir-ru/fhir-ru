@@ -2,7 +2,7 @@
 # ruby translation_parser.rb files-to-parse.txt
 
 # -*- coding: utf-8 -*-
-require 'colorize' # использовалось для отладки
+# require 'colorize' # использовалось для отладки
 
 pattern = Regexp.new('\s+<Cell ss:StyleID="s\d+"><Data ss:Type="String">([а-яА-Я]+.+)<!--\s+(.+)\s+--><\/Data>')
 

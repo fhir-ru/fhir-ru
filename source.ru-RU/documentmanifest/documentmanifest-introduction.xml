@@ -1,0 +1,18 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<div>
+<a name="scope"> </a>
+<h2>Область применения и использование<!-- Scope and Usage --></h2>
+<p> 
+Манифест документов собирает набор ресурсов <a href="documentreference.html">DocumentReference</a> в единый пакет, который может быть субъектом таких рабочих процессов, как контроль доступа, аудит и адресная доставка.
+<!-- A document manifest gathers a set of <a href="documentreference.html">DocumentReference</a> resources 
+into a single package that may be the subject of workflow such as access control, auditing, and 
+targeted delivery.  -->
+</p>
+<p>
+Как правило, ресурсы DocumentManifest используются в системах индексирования документов, например IHE XDS.
+<!-- Typically, DocumentManifest resources are used in document indexing systems, such as <a href="http://wiki.ihe.net/index.php?title=Cross-Enterprise_Document_Sharing">IHE XDS</a>. -->
+</p>
+</div>
+
+</div>

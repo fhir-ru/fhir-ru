@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <name value="SpecimenCollectionPriority"/>
+  <status value="draft"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value=" This example value set defines a set of codes that can be used to indicate the priority of collection of a specimen."/>
+  <copyright value="TBD"/>
+  <compose>
+    <include>
+      <system value="http://example.com"/>
+      <concept>
+        <code value="1"/>
+        <display value="STAT"/>
+      </concept>
+      <concept>
+        <code value="2"/>
+        <display value="ASAP"/>
+      </concept>
+      <concept>
+        <code value="3"/>
+        <display value="ASAP-ED"/>
+      </concept>
+      <concept>
+        <code value="4"/>
+        <display value="AM"/>
+      </concept>
+      <concept>
+        <code value="5"/>
+        <display value="ROUTINE"/>
+      </concept>
+      <concept>
+        <code value="6"/>
+        <display value="NURSE COLLECT"/>
+      </concept>
+      <concept>
+        <code value="7"/>
+        <display value="CALL OR FAX"/>
+      </concept>
+    </include>
+  </compose>
+</ValueSet>

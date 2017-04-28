@@ -24,7 +24,7 @@ of acceptable servers for the rest-create/rest-update methods. -->
 <a name="errors"> </a>
 <h2>Управление подписками и ошибки<!-- Managing Subscriptions and Errors --></h2>
 <p>
-Подписка задается созданием ресурса subscription на сервере.
+Подписка задается созданием ресурса Subscription на сервере.
 Когда подписка создается клиентом, ее статус устанавливается в значение "requested". После отправления подписки командой POST клиент разбирает заголовок Location и сохраняет логический идентификатор нового ресурса Subscription для использования в последующих операциях.
 <!-- A subscription is defined by creating the subscription on the server.
 When the subscription is created by the client, it sets the status
@@ -74,14 +74,12 @@ deletes it at the specified time. -->
 <h3>REST Hook</h3>
 
 <p>
-В этом методе используется пустое сообщение POST для оповещения клиента о том, что доступны новые результаты - POST to [base]/Subscription:
-<!-- This uses an empty POST message to alert the client that new results 
-are available - POST to [base]/Subscription: -->
+В этом методе используется пустое сообщение POST для оповещения абонента-подписчика о том, что доступны новые результаты - POST to [base]/Subscription:
 </p>
 <pre class="json" fragment="Subscription">
 {
   "resourceType": "Subscription",
-  "criteria": "/Observation?name=http://loinc.org|1975-2&amp;_format=json",
+  "criteria": "Observation?name=http://loinc.org|1975-2&amp;_format=json",
   "channel": {
     "type": "rest-hook",
     "endpoint": "https://biliwatch.com/customers/mount-auburn-miu/on-result",
@@ -95,11 +93,7 @@ are available - POST to [base]/Subscription: -->
 sends a POST request with no body to the nominated URL. -->
 </p>
 <p>
-Когда клиент получает POST-сообщение по адресу https://biliwatch.com/customers/mount-auburn-miu/on-result, он перевыпускает критерии в виде запроса на сервер, добавляя &amp;_since=:last (где :last заменяется временем последней проверки клиентом). Таким образом он может получить все новые подходящие ресурсы <a href="observation.html">Observations</a>.
-<!-- When the client receives a POST to https://biliwatch.com/customers/mount-auburn-miu/on-result, 
-it re-issues the criteria as a query to the server, appending &amp;_since=:last (where :last is 
-replaced by the time at which the client last checked). In this way it can fetch all new 
-relevant <a href="observation.html">Observations</a>. -->
+Когда абонент-подписчик получает POST-сообщение по адресу <code>https://biliwatch.com/customers/mount-auburn-miu/on-result</code>, он перевыпускает критерии в виде запроса на сервер, добавляя <code>&amp;_since=:last</code> (где :last заменяется временем последней проверки клиентом). Таким образом он может получить все новые подходящие ресурсы <a href="observation.html">Observations</a>.
 </p>
 <p>
 Поскольку полезная нагрузка отсутствует, данные в ресурсах доступны только через REST API, который помогает объединить логику авторизации и аутентификации. Сервер должен добавить заголовки, если они заданы, к POST-запросу, который он создает для клиента.
@@ -144,12 +138,7 @@ the nominated server. -->
 <h3>WebSockets</h3>
 
 <p>
-Подписки создаются исключительно с помощью FHIR REST API. Однако оповещениям нет необходимости использовать REST. В самом деле, некоторые клиенты могут не иметь возможности открыть наружу HTTP-сервер для получения сработавших оповещений. Например чистое клиентское веб-приложение или мобильное приложение могут подписаться на ленту данных без опроса, с помощью операции /history. Это может быть достигнуто с помощью канала уведомлений websocket.
-<!-- Subscriptions are created exclusively via the FHIR REST API. But notifications need not 
-occur via REST. Indeed, some clients may be unable to expose an outward-facing HTTP 
-server to receive triggered notifications. For example, a pure client-side Web app or 
-mobile app may want to subscribe to a data feed without polling using the /history 
-operation. This can be accomplished using a websocket notification channel. -->
+Подписки создаются исключительно с помощью FHIR REST API. Однако оповещениям нет необходимости использовать REST. В самом деле, некоторые абоненты-подписчики могут не иметь возможности открыть наружу HTTP-сервер для получения сработавших оповещений. Например чистое клиентское веб-приложение или мобильное приложение могут подписаться на ленту данных без опроса, с помощью операции /history. Это может быть достигнуто с помощью канала уведомлений websocket.
 </p>
 
 <p>
@@ -166,7 +155,7 @@ operation. This can be accomplished using a websocket notification channel. -->
 </pre>
 
 <p>
-Затем клиент инициирует соединение веб-сокета к серверу по URL-адресу, объявленному в заявлении о возможностях FHIR-сервера (subscriptions/webSocketUrl (todo)). Для прослушивания уведомлений используется простой протокол:
+Затем абонент-подписчик инициирует соединение веб-сокета к серверу по URL-адресу, объявленному в заявлении о возможностях FHIR-сервера (subscriptions/webSocketUrl (todo)). Для прослушивания уведомлений используется простой протокол:
 <!-- The client would then initiate a Web Socket connection to the server, at a URL advertised 
 in the FHIR server's Capability statement (subscriptions/webSocketUrl (todo)). A simple 
 protocol is used to listen for notifications: -->
@@ -253,15 +242,14 @@ reasons.  -->
 nominated end-point. Most servers will require that the end-point
 is white-listed prior to allowing these kinds of subscriptions.  -->
 </p>
-<blockquote class="dstu-note">
+<blockquote class="stu-note">
 <a name="dstu"> </a>
 <p>
 <b>Примечание к STU:<!-- STU Note: --></b> Детали сообщения - в основном это код события - необходимо будет уточнить во время периода пробного использования. <!-- The details of the message - mainly the event code - are 
 still to be resolved during the trial use period. -->
 </p>
 <p>
-Ваши <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывы</a> приветствуются.
-<!-- Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>. -->
+Ваши <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(STU_3)">отзывы</a> приветствуются.
 </p>
 </blockquote>
 

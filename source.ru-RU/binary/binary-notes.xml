@@ -1,0 +1,69 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<a name="rest"> </a>
+<h3>Обслуживание ресурсов Binary с помощью RESTful API<!-- Serving Binary Resources using the RESTful API --></h3>
+
+<p>
+Ресурсы Binary ведут себя несколько иначе, чем всех остальные ресурсы в RESTful API. Особенно при получении запроса на чтение двоичного ресурса, в котором явно не указан FHIR-тип контента "application/fhir+xml" или "application/fhir+json", тогда содержимое следует вернуть, используя тип контента, указанный в ресурсе. Например если тип контента в ресурсе "application/pdf", то содержимое следует вернуть непосредственно в формате PDF.
+<!-- The Binary resources behave slightly differently to all other resources on the RESTful API.
+Specifically, when a read request is made for the binary resource that doesn't explicitly
+specify the FHIR content types "application/fhir+xml" or "application/fhir+json", then 
+the content should be returned using the content type stated in the resource. 
+e.g. if the content type in the resource is "application/pdf", then the content should
+be returned as a PDF directly.  -->
+</p>
+<p>
+Обратите внимание, что из-за способа работы веб-инфраструктуры не возможно ввести оющие правила об отношениях между полем "Accept" в запросе HTTP, и типом возвращаемого значения, вот почему по этому поводу нет никаких жестких правил. Однако замысел состоит в том, что если только на это нет специального запроса, то FHIR XML/JSON представление не возвращается.
+<!-- Note that due to the way the web infrastructure works, it is not possible to make blanket
+rules about the relationship between the "Accept" field in the HTTP request, and the 
+return type, which is why there is no hard rule about this. However the intent is that
+unless specifically requested, the FHIR XML/JSON representation is not returned.  -->
+</p>
+<p>
+Следует отметить, что в "родном" двоичном представлении обычные <a href="resource.html#meta">метаданные</a> ресурса недоступны напрямую, хотя некоторые из них дублируются в заголовках HTTP ответа.
+<!-- Note that in the native binary representation, the normal resource <a href="resource.html#meta">metadata</a> 
+is not available directly, though some of it is replicated in the HTTP response headers. --> Specifically, the
+following elements of the resource have matching HTTP Headers:
+</p>
+<ul>
+ <li><b>Binary.meta.lastUpdated</b>: <code>Last-Modified</code></li>
+ <li><b>Binary.meta.versionId</b>: <code>ETag header</code></li>
+ <li><b>Binary.contentType</b>: <code>Content-Type</code></li>
+ <li><b>Binary.securityContext</b>: <code>X-Security-Context</code> - this is a FHIR specific extension, primarily intended to allow a the security context for a Binary resource to be specified when it is posted in native form</li>
+</ul>
+<p>
+При записи двоичных данных на сервер (<a href="http.html#create">create</a>/<a href="http.html#update">update</a> - POST или PUT), данные принимаются "как есть" и обрабатываются как двоичное содержимое <code>Binary</code>, когда тип содержимого "application/fhir+xml" или "application/fhir+json", за исключением особого случая, когда содержимое фактически является ресурсом <code>Binary</code>.
+<!-- When a binary is written the server (<a href="http.html#create">create</a>/<a href="http.html#update">update</a> - POST or PUT),
+the data is accepted as is and treated as a the binary content of a <code>Binary</code>, including when the content type is "application/fhir+xml" or "application/fhir+json",
+except for the special case where the content is actually a <code>Binary</code> resource. -->
+</p>
+<p>
+Отметьте, что когда клиент запрашивает ресурс Binary, используя MIME-тип общего вида (application/xml, text/xml или application/json), сервер ДОЛЖЕН вернуть непосредственно содержимое, если формат content-type соответствует запрашиваемому MIME-типу (например если заголовок Accept содержит appplication/json, а <code>contentType</code> имеет значение vnd.xacml+json). Однако серверы могут не всегда корректно интерпретировать MIME-типы.
+<!-- Note that when client requests a binary resource using a generic mime type (application/xml, text/xml, or application/json),
+the server SHOULD return the content directly if the content-type format matches the 
+requested mime type (e.g. if the Accept header is appplication/json, and the <code>contentType</code>
+is vnd.xacml+json). However servers may not always be able to interpret mime types correctly,
+and clients SHOULD be prepared to receive either format. -->
+</p>
+<p>
+Note that the _summary parameter does not apply when the mime type is not one of the stanard FHIR content types.
+</p>
+<h3>Вопросы безопасности<!-- Security Considerations --></h3>
+<p>
+Двоичные ресурсы не ограничиваются условиями, и, следовательно, могут иметь любой тип содержимого и кодировку. Поэтому требуются дополнительные действия для проверки, что ресурс Binary не содержит вредоносного контента или имеет неправильный формат. Для получения дополнительной информации см. <a href="security.html#narrative">Безопасность нарративов</a>.
+<!-- Binary resources are not constrained, and therefore can be of any content type and encoding. 
+Therefore extra care needs to be taken to validate the content of the Binary resource against 
+malicious or malformed content. For more details see <a href="security.html#narrative">Security of Narrative</a>. -->
+</p>
+<p>
+Very often, the content of a binary resource is sensitive, and the server should apply 
+appropriate access control to the content. When the server itself generates the content, 
+it implicitly knows what access control to apply. When the client provides the binary to 
+the server itself, it uses the <code>securityContext</code> element (or the matching 
+<code>X-Security-Context</code> HTTP header) to inform the server that the Binary resource 
+should be treated as if it was the other resource. Typically, the other resource is a 
+DocumentReference or similar resource that refers directly to the Binary resource, but 
+that is not mandatory.
+</p>
+
+</div>

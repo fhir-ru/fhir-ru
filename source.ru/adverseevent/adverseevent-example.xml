@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AdverseEvent xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/allergyintolerance.xsd">
+  <id value="example"/>
+
+  <!-- an identifier used for this allergic propensity (adverse reaction risk) -->
+  <identifier>
+    <system value="http://acme.com/ids/patients/risks"/>
+    <value value="49476534"/>
+  </identifier>
+
+  <!-- this was an actual adverse event, not just a potential one -->
+  <category value="AE"/>
+  
+  <!-- more precise details of the event -->
+  <type>
+    <coding>
+      <!-- example uses SNOMED CT. Other likely possibilitues incluide MedDRA -->
+      <system value="http://snomed.info/sct"/>
+      <code value="304386008"/>
+      <display value="O/E - itchy rash"/>
+    </coding>
+  </type>
+  
+  <!-- the patient that actually had the adverse event -->
+  <subject>
+    <reference value="Patient/example"/>
+  </subject>
+  
+  <!-- when the event happened --> 
+  <date value="2017-01-29T12:34:56+00:00"/>
+  
+  <!-- In overall terms even if it was a severe rash it is a relatively mild event overall --> 
+  <seriousness>
+    <coding>
+      <system value="http://hl7.org/fhir/adverse-event-seriousness"></system>
+      <code value="Mild"/>
+      <display value="Mild"/>
+    </coding>
+  </seriousness>
+
+  <!-- who made the record / last updated it -->
+  <recorder>
+    <reference value="Practitioner/example"/>
+  </recorder>
+  
+  <description value="This was a mild rash on the left forearm"/>
+
+  <!-- may have been for cream to treat sunburn on that arm, reference to that medication -->
+  <suspectEntity>
+    <instance>
+      <reference value="Medication/example"/>
+    </instance>
+  </suspectEntity>
+
+</AdverseEvent>

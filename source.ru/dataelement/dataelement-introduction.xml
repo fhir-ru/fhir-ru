@@ -79,23 +79,13 @@ might either be implicit or may be explicit through an extension.  (For implemen
 <b>Note</b>: Extensions on <b>DataElement</b> that define the characteristics of a data element will typically also be applicable to <a href="profile.html">Profile</a>'s
 ElementDefinition and <a href="questionnaire.html">Questionnaire</a>'s Question data element as both are also used to define the characteristics of a data element. -->
 </p>
-<blockquote class="dstu-note">
-<a name="dstu"> </a>
 <p>
-<b>Примечание к STU<!-- DSTU Note -->:</b> Следует ли использовать общую структуру в <a href="structuredefinition.html">StructureDefinition</a>, <a href="questionnaire.html">Questionnaire</a> и <b>DataElement</b> для ввода ограничивающих условий на элементы данных или продолжать поддерживать для них раздельные, но аналогичные структуры?
-<!-- Should a shared structure be used in <a href="structuredefinition.html">StructureDefinition</a>, <a href="questionnaire.html">Questionnaire</a> and <b>DataElement</b>
-to capture constraints on data elements, or is it acceptable for them to continue to be maintained in a separate, but "similar" manner? -->
+<b>DataElement</b> differs from <a href="observation.html">Observation</a> in that it describes what kind of observations <b>can</b> occur, while
+<a href="observation.html">Observation</a> focuses on a specific observation of a specific subject at a particular time that <b>has</b> occurred.
 </p>
+
 <p>
-Будем благодарны за <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">отзывы</a>.
-<!-- Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specification_Feedback_(DSTU_2)">here</a>. -->
-</p>
-</blockquote>
-<p>
-<b>DataElement</b> отличается от  <a href="observation.html">Observation</a> тем, что он описывает, какой вид наблюдений <b>может</b> происходить, в то время как
-<a href="observation.html">Observation</a> фокусируется на конкретном наблюдении за конкретным субъектом в конкретное время, которое <b>уже</b> произошло.<!-- 
-<b>DataElement</b> differs from <a href="observation.html">Observation</a> in that it describes what kind of observations <b>can</b> occur, while 
-<a href="observation.html">Observation</a> focuses on a specific observation of a specific subject at a particular time that <b>has</b> occurred. -->
+<a href="activitydefinition.html">ActivityDefinition</a> defines actions that can occur.  DataElement defines individual pieces of data that can be captured.  An ActivityDefinition that is focused on capturing data might be linked to the DataElement that defines the data to be captured.
 </p>
 </div>
 

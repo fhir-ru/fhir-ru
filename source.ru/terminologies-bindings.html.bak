@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+
+
+      
+[%settitle Терминологические привязки%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+[%file newheader%]
+</head>
+<body>
+[%file newnavbar%]
+
+<div class="col-12">
+
+<h2>Терминологические привязки</h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+
+<p>
+Таблица ниже содержит список терминологических привязок, используемых в FHIR.
+</p>
+
+<%bindingtable%>
+
+
+
+</div>
+
+[%file newfooter%]
+    
+</body>
+</html>

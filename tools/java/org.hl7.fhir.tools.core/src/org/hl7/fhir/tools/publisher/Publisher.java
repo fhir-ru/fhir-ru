@@ -448,7 +448,7 @@ public class Publisher implements URIResolver, SectionNumberer {
         return Long.toString(revNumber);
     } catch (ClientException e) {
       System.out.println("Warning @ Unable to read the SVN version number: " + e.getMessage() );
-      return "10521";
+      return "11828";
     }
 
   }

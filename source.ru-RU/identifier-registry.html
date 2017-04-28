@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+
+
+[%settitle Defined Systems%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+[%file newheader%]
+</head>
+<body>
+[%file newnavbar%]
+
+<div class="col-12">
+
+<%txheader idsystems%>
+
+<h2>Известные системы идентификаторов<!-- Known Identifier Systems --></h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+
+<p>
+Следующие имена (URI) могут использоваться в качестве значения элемента <i>system</i> типа данных <a href="datatypes.html#Identifier">Identifier</a>.
+Если URI определен здесь, он ДОЛЖЕН быть использован в предпочтении к любому другому механизму идентификации. Если система идентификаторов здесь не перечислена, корректный URI можно определить одним из следующих способов в указанном порядке:
+<!-- The following names (URIs) may be used in the <i>system</i> element of the <a href="datatypes.html#Identifier">Identifier</a> data type.
+If a URI is defined here, it SHALL be used in preference to any other identifying mechanism. If an identifier system is not listed
+here, the correct URI may be determined by working through the following list, in order: -->
+</p>
+<ul>
+ <li>в реестре HL7 OID</li>
+ <li>в документации, связанной с этим идентификатором</li>
+ <li>с помощью консультации с владельцем идентификатора</li>
+ <li>задать вопрос в почтовой рассылке HL7, касающейся словарей</li>
+<!--  <li>the HL7 OID Registry</li>
+ <li>the documentation associated with the identifier</li>
+ <li>consulting the owner of the identifier</li>
+ <li>asking on the HL7 vocabulary mailing list</li> -->
+</ul>
+<p>
+См. также <a href="terminologies-systems.html">список кодовых систем</a>, которые можно использовать в элементе <i>system</i> типа данных <a href="datatypes.html#Coding">Coding</a>. Дополнительные системы идентификации можно регистрировать в реестре HL7 FHIR по адресу <a href="http://hl7.org/fhir/registry">http://hl7.org/fhir/registry</a>.
+<!-- See also the <a href="terminologies-systems.html">list of known coding systems</a> that can be used in the <i>system</i> element of the <a href="datatypes.html#Coding">Coding</a> data type.
+Additional identifier systems may be registered on the HL7 FHIR registry at <a href="http://hl7.org/fhir/registry">http://hl7.org/fhir/registry</a>. -->
+</p>
+<p>
+<b>Важное примечание:</b> данный список URI является неполным и может быть изменен.  
+Некоторые значения могут быть удалены, другие, вероятно, будут добавлены в ближайшие месяцы, так как HL7 учреждает формальные процессы вокруг URI в словарях.
+<!-- <b>Important Note:</b> This list of URIs is incomplete and subject to change.
+Some values may be dropped and others will likely be added in the coming months as HL7
+institutes formal processes around URIs in vocabulary. -->
+</p>
+
+<p>
+В колонке URI указано корректное значение доля использования в элементе <a href="datatypes.html#Identifier">Identifier</a>.<code>system</code>. OID приводится в целях совместимости с системами на основе <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>/<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a>.
+<!-- The URI column indicates the correct value to use in the <a href="datatypes.html#Identifier">Identifier</a>.<code>system</code>. 
+The OID is provided for compatibility with <a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=185">HL7 v2</a>/<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> based systems. -->
+Note that any URL in <code>http://example.org</code> is reserved for testing and documentation purposes.
+</p>
+
+<table class="grid">
+ <tr>
+    <th>Идентификатор</th>
+   <th>URI</th>
+   <th>OID (для не-FHIR-систем)</th>
+   <th>Тип</th>
+   <th>Комментарий</th>
+<!--    <th>identifier</th>
+   <th>URI</th>
+   <th>OID</th>
+   <th>Type</th>
+   <th>Comment</th> -->
+ </tr>
+
+ <tr style="border-bottom: 0px">
+  <td>URI (<a href="http://www.w3.org">W3C</a>): когда идентификатором является URI</td>
+   <td>urn:ietf:rfc:3986 <a name="rn:ietf:rfc:3986"> </a></td>
+   <td>2.16.840.1.113883.4.873</td>
+   <td></td>
+   <td>В соответствии с <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a> (с несколькими схемами, определёнными в нескольких RFCs). 
+   Для OID и UUID используйте URN-форму (<a href="http://www.ietf.org/rfc/rfc3001.txt">urn:oid:</a> (примечание: в нижнем регистре) и <a href="http://www.ietf.org/rfc/rfc4122.txt">urn:uuid:</a></td>
+   <!-- <td>As defined by <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a> (with many schemes defined in many RFCs). 
+   For OIDs and UUIDs, use the URN form (<a href="http://www.ietf.org/rfc/rfc3001.txt">urn:oid:</a> (note: lowercase) and <a href="http://www.ietf.org/rfc/rfc4122.txt">urn:uuid:</a></td> -->
+ </tr>
+ <%identifierlist%>
+
+</table>
+
+
+
+</div>
+
+	[%file newfooter%]
+    
+</body>
+</html>

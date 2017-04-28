@@ -19,14 +19,14 @@ Outstanding issues:
 <div class="col-12">
 
 <h1>FHIR-документы</h1>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: N/A</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 3</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
-FHIR-ресурсы могут быть использованы для построения документов, которые представляют композицию: набор согласованной информации, которая является утверждением информации о здравоохранении, в частности включая клинические обследования и службы. 
+FHIR-ресурсы могут быть использованы для построения документов, которые представляют композицию: набор согласованной информации, которая является утверждением информации о здравоохранении, включая клинические обследования и службы. 
 Документ - это иммутабельный набор ресурсов с фиксированным представлением, который создан и/или заверен людьми, организациями и устройствами. 
 </p>
 <p>
-Документами, построенными таким способом, можно обмениваться между системами и также сохранять в хранилище документов и системах управления, включая такие системы, как IHE XDS. 
+Документами, построенными таким способом, можно обмениваться между системами и сохранять в хранилище документов и системах управления, включая такие системы, как IHE XDS. 
 </p>
 <p>
 Приложения, заявляющие о соответствии этому фреймворку, заявляют о соответствии "FHIR-документам" (см. <a href="conformance-rules.html">Conformance</a>).
@@ -57,7 +57,7 @@ FHIR-документы - для документов, которые созда
 Ресурс Composition является основой клинического документа. Он:
 </p>
 <ul>
- <li>содержит именование и назначение, устанавливает контекст документа;</li>
+ <li>содержит именование и назначение и устанавливает контекст документа;</li>
  <li>несет ключевую информацию, такую как объект и автор, и кто утвердил документ;</li>
  <li>делит документ на серию разделов, каждый со своим текстовым описанием</li>
 </ul> 
@@ -76,7 +76,7 @@ FHIR-документы - для документов, которые созда
 У документа имеется два ключевых идентификатора:
 </p>
 <ul>
- <li>The document identifier (mandatory). This is found in <i>Bundle.identifier</i> and is globally unique for this instance of the document, and is never re-used anywhere, including for other documents derived from the same composition</li>
+ <li>The document identifier (mandatory). This is found in <i>Bundle.identifier</i> and is globally unique for this instance of the document, and is never re-used, including for other documents derived from the same composition</li>
  <li>Структурный идентификатор (необязательный). Он находится в <i>Composition.identifier</i>и является одинаковым для всех документов, содержащихся в композиции. </li> 
 </ul>
 
@@ -212,7 +212,7 @@ that it changes the clinical meaning of the content.
  <tr> <td>[baseurl]/Bundle</td> <td>Document Bundle</td> <td>Работает так же, как и обычная точка взаимодействия
  для управления типом ресурса, но только с целыми комплектами (bundles) документов - т. е. операция чтения возвращает bundle, 
 обновление получает bundle и поиск возвращает комплект комплектов (bundle of bundles). Note that if documents are POSTed 
-   using a <a href="http.html#create">create</a> interaction</td> the Bundle.id will change, but the Bundle.identifier will not</tr>
+   using a <a href="http.html#create">create</a> interaction the Bundle.id will change, but the Bundle.identifier will not</td></tr>
    
  <tr> <td>[baseurl]/Composition</td> <td>Composition Resource</td> <td>Обычная точка взаимодействия для
  управления ресурсами композиции. Она может использоваться во время комплектации документа, после разбиения документа на 

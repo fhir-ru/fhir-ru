@@ -20,7 +20,8 @@ in order to support consistent definitions for schema and UML derived code.
 
 <a name="root"> </a>
 <h2>XML-представление ресурсов</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg its%]">[%wgt its%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень зрелости</a>: 5</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg its%]">[%wgt its%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
 
 <p>
 XML-представление для ресурса описано с помощью следующего формата: 
@@ -97,9 +98,9 @@ their behavior with regard to unknown elements using <a href="capabilitystatemen
 
 <p>
 In addition to the validation schema, this specification provides a
-set of schema suitable for code generation. These schema describe
-the same XML syntax, but apply less validation in order to create a 
-schema that works with more code generation tooling. 
+set of schemas suitable for code generation. These schemas describe
+the same XML syntax, but apply less validation to create 
+schemas that work with more code generation tooling. 
 </p>
 <p>
 Specifically, these schemas are generated without any <code>xsd:choice</code> elements, 
@@ -113,11 +114,11 @@ Implementers making use of schema driven code generation tooling need
 to consider how to handle the <a href="datatypes.html#decimal">decimal</a>
 data type. The decimal data type is defined to be precision aware - that 
 is, that implementers need to preserve the difference between "2.0" and
-"2.00" - this is ubiquitiously considered important in handling observed
+"2.00" - this is ubiquitously considered important in handling observed
 data in healthcare. Both schemas map this data type to <code>xsd:decimal</code>, but
 the base <a href="http://www.w3.org/TR/xmlschema-2/#decimal">W3C schema decimal type</a> is specified not to be precision aware. Schema
-driven implementations vary as to how precision is handled, and implementers
-will need to determine how their generated code handles decimals, and 
+driven implementations vary as to how precision is handled. Implementers
+will need to determine how their generated code handles decimals and 
 consider changing the type for decimal in the schema from <code>xsd:decimal</code>
 to <code>xsd:string</code>. Specifically, implementers may wish to change 
 </p>
@@ -159,7 +160,7 @@ This specification defines the following method for canonicalizing FHIR resource
 xml:
 </p>
 <ul>
- <li>No whitespace other than single spaces in attribute values and in the xhtml in the <a href="narrative.html">Narrative</a></li>
+ <li>No whitespace other than single spaces in attribute values and in the XHTML in the <a href="narrative.html">Narrative</a></li>
  <li>Use default namespaces for the FHIR and XHTML namespaces</li>
  <li>Omit all elements that have a default value, if a default value is defined</li>
  <li>Omit all comments</li>
@@ -182,7 +183,7 @@ following additional canonicalization URLS are also defined:
  </tr>
  <tr>
   <td>http://hl7.org/fhir/canonicalization/xml#narrative</td>
-  <td>The method only covers the <code>Resource.id</code> and Narrative is retained</td>
+  <td>The method only retains the <code>Resource.id</code> and Narrative (<code>Resource.text</code></td>
  </tr>
  <tr>
   <td>http://hl7.org/fhir/canonicalization/xml#document</td>
@@ -190,7 +191,7 @@ following additional canonicalization URLS are also defined:
  </tr>
 </table>
 <p>
-These canonicalization methods allow system the flexibility to sign the various portions of 
+These canonicalization methods allow systems the flexibility to sign the various portions of 
 the resource that matter for the workflow the signature serves.
 </p>
 

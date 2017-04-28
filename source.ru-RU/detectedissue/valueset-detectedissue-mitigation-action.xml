@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <name value="Detected Issue Mitigation Action"/>
+  <status value="draft"/>
+  <publisher value="FHIR Project team"/>
+  <contact>
+    <telecom>
+      <system value="url"/>
+      <value value="http://hl7.org/fhir"/>
+    </telecom>
+  </contact>
+  <description value="Kinds of mitigating actions and observations that can be associated with a detected issue or contraindication, such as &#39;added concurrent therapy&#39;, &#39;prior therapy documented&#39;, etc."/>
+  <compose>
+    <include>
+      <system value="http://hl7.org/fhir/v3/ActCode"/>
+      <filter>
+        <property value="concept"/>
+        <op value="is-a"/>
+        <value value="_ActDetectedIssueManagementCode"/>
+      </filter>
+    </include>
+  </compose>
+</ValueSet>

@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+
+
+<!--
+These elements SHALL always appear in this order. These basic elements shared by all resources come first
+in order to support consistent definitions for schema and UML derived code. 
+-->
+      
+[%settitle RDF Representation%]
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+[%file newheader%]
+</head>
+<body>
+[%file newnavbar%]
+
+<div class="col-9">
+
+<%fmtheader rdf%>
+
+<a name="root"> </a>
+<h2>Resource Description Framework (RDF) Representation </h2>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень зрелости</a>: 0</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">Draft</a></td></tr></table>
+
+<div style="background-color: #E6FFFF; border:1px solid black; padding: 5px;">
+<table>
+<tr>
+ <td><img src="http://w3c-domains.com/img/w3c-96.png"/></td>
+ <td>
+<p>
+This page and the RDF forms are joinlty maintained by the HL7 FHIR project and the 
+<a href="https://www.w3.org/blog/hcls/">W3C Semantic Web Health Care and Life Sciences Interest Group</a>.
+</p>
+</td></tr></table>
+</div>
+
+<p>
+FHIR resources can be represented as an <a href="http://www.w3.org/RDF/">RDF graph</a> serialised in the 
+<a href="https://www.w3.org/TR/turtle/">Turtle format</a>, or as <a href="http://json-ld.org">JSON-LD</a>. 
+The RDF format is defined to assist the process of bridging between operational data exchange and formal 
+knowledge processing systems. While the RDF form offers a fully functional representation of FHIR 
+resources, it has different operational characteristics to the <a href="json.html">JSON</a> and 
+<a href="xml.html">XML</a> representations, and would be implemented for different reasons. 
+Systems focused on operational exchange of data would not generally use choose to use RDF.
+</p>
+<p>
+This page describes:
+</p>
+<ul>
+ <li><a href="#instance">Representing FHIR resources in Turtle</a></li>
+ <li><a href="#class">The FHIR definitions as Turtle</a></li>
+<!-- <li><a href="#profile">RDF representation of Profiles</a></li> -->
+ <li><a href="#api">How to exchange RDF using the RESTful API</a></li>
+</ul>
+
+<a name="instance"> </a>
+<h3>Turtle Format for Resources</h3>
+<p>
+A FHIR resource is represented by a series of RDF triples. The Turtle 
+representation for a resource is described using this format:
+</p>
+
+<pre class="spec">
+Turtle Template
+
+[ a fhir:Observation; fhir:nodeRole fhir:treeRoot;
+  # from Resource: id; meta; implicitRules; and language
+  # from DomainResource: text; contained; extension; and modifierExtension
+  fhir:Obervation.identifier [ <a href="#">Identifier</a> ]; # 0..* Unique Id for this particular observation
+  fhir:Obervation.status [ fhir:value "&lt;code&gt;" ]; # R!  registered | preliminary | final | amended +
+  fhir:Obervation.code [ <a href="#">CodeableConcept</a> ]; # 1..1 R!  Type of observation (code / type)
+  fhir:Obervation.subject [ fhir:reference [ <a href="#">Patient</a>|<a href="#">Group</a>|<a href="#">Device</a>|<a href="#">Location</a> ] ]; # 0..1 Who and/or what this is about
+  fhir:Obervation.encounter [ fhir:reference [ <a href="#">Encounter</a> ] ]; # 0..1 Healthcare event during which this observation is made
+  # effective[x]: 0..1 Clinically relevant time/time-period for observation. One of these 2:
+    fhir:Obervation.effectiveDateTime [ fhir:value "&lt;dateTime&gt;" ];
+    fhir:Obervation.effectivePeriod [ <a href="#">Period</a> ];
+]
+
+</pre>
+<p>
+<i>Note: this is a placeholder for when the proper format is defined</i>.
+</p>
+<p>
+Using this format:
+</p>
+<ul>
+ <li>To build a valid Turtle instance of a resource, replace the contents of the property values with valid content
+   as described by the type rules and content description found in the property value for each element</li>
+<!--
+ <li>In this example:
+   <ol>
+     <li><code>property1</code> has a primitive data type; the value of the property will be as described for the stated type</li>
+     <li><code>property2</code> has a complex data type; the value of the property is an object that has the content as described for the stated type</li>
+     <li><code>property3</code> is an object property that contains additional properties (e.g. propertyA; the allowable properties are listed (but also include extensions as appropriate)</li>
+     <li><code>property4</code> is an array property that contains items which are objects themselves. The items may have any of the types already encountered in points 1-3</li>
+     <li><code>propertyA</code> has a binding to a value set - the Short description is a link to the value set. In addition, the binding strength is shown </li>
+     <li><code>propertyB</code> is a reference to a particular kind of resource </li>
+   </ol>
+ </li> -->
+ <li>Relationship names are case-sensitive (though duplicates that differ only in case are never defined)</li>
+ <li>Relationships can appear in any order</li>
+ <li>Content within a resource is always represented with anonymous nodes - only resources can be identified</li>
+ <li>Nodes are never empty. If an element is present in the resource, it SHALL have properties as defined for its type, or 1 or more <a href="extensibility.html">extensions</a></li>
+ <li>The <span style="color: brown"><b>R!</b></span> denotes that a relationship is mandatory - it must be present (or in an array, at least one item must be present)</li>
+ <li>Note that this specification produces turtle that is nicely formatted and well laid out, but this is not required nor expected</li>
+ <li>The MIME-type for this format is <code>text/turtle</code>.</li>
+</ul>
+
+<a name="resource"> </a>
+
+<h4>Representing resources</h4>
+<p>
+Each resource is represented as a set of RDF triples represented using the Turtle syntax.
+When a resource has a persistent identity (e.g. it can be found at a particular URL - usually a FHIR RESTful server), 
+then that URL is it's identity. Resources with no persistent identity (e.g. bundles from search results) have the the identity of the root document -   "&lt;&gt;" in turtle syntax.
+</p>
+<p>
+Some resources can contain other resources. Given that the relationships can appear in any order, it
+cannot be assumed that the first encountered element represents the resource of interest that is being
+represented by the set of turtle statements. The focal resource - where to start when parsing - is the 
+resource with the relationship <code>fhir:nodeRole</code> to <code>fhir:treeRoot</code>. if there is 
+more than node in a set of turtle statements, it cannot be determined how to parse them as a single
+resource.
+</p>
+
+<h4>Representing Repeating Elements</h4>
+
+<p>
+Elements that can repeat are represented by a relationship 
+</p>
+<pre class="rdf">
+  fhir:index [n]
+</pre>
+<p>
+where [n] is a zero-based integer offset (ie.g the first element has an index of 0).
+Lists are never sparse; it is an error if there are missing items in the repeat sequence.
+</p>
+
+<a name="primitive"> </a>
+
+<h4>Representing Primitive Elements</h4>
+<p>
+Primitive elements - elements with a primitive type - are represented as regular nodes so that the 
+elements extensions can be represented. The actual value of the primitive type is represented
+using the fhir:value predicate:
+</p>
+<pre class="rdf">
+  fhir:value "[value]"^^xs:type
+</pre>
+<p>
+The value is always a literal string that contains the value, followed by a schema type as specified for the <a href="datatypes.html#primitive">primitive type</a>.
+The schema type is required, but may be omitted when the defalut value of xs:string is correct. 
+Note that the correct schema type for a date/dateTime must be determined by inspecting the value of the date for precision.
+</p>
+<p>
+The fhir:value property can never be empty. Either the relationship is absent, or it is present with at least one character of content. XHTML is represented as an escaped xs:string.
+</p>
+
+<a name="reference"> </a>
+<h4>Representing References</h4>
+<p>
+A <a href="references.html#Reference">Reference</a> element is representing using the same
+rules as above:
+</p>
+<pre class="rdf">
+ fhir:Observation.subjectReference [
+     fhir:Reference.reference [ fhir:value "Patient/example" ];
+     fhir:Reference.display [ fhir:value "Example Patient" ];
+  ];
+</pre>
+<p>
+This allows faithful round tripping of the resource between the Turtle
+format and the JSON and XML formats. But it's very useful for an RDF 
+processor to be able to link to the target of the reference directly. 
+This can be done using the fhir:link property:
+</p>
+<pre class="rdf">
+ fhir:Observation.subjectReference [
+     fhir:link &lt;http://hl7.org/fhir/Patient/example>;
+     fhir:Reference.reference [ fhir:value "Patient/example" ]
+  ];
+</pre>
+<p>
+The fhir:link relationship can be added automatically 
+as part of generating the resource representation, or it
+can be injected by a post-processor that knows how to 
+convert the raw references into RDF-suitable references. 
+</p>
+
+<a name="concept"> </a>
+<h4>Representing Concepts</h4>
+<p>
+The same logic applies to the <a href="datatypes.html#Coding">Coding</a> and 
+<a href="datatypes.html#CodeableConcept">CodeableConcept</a> data types.
+These are represented directly in turtle by serialising their properties
+as specified above:
+</p>
+<pre class="rdf">
+  fhir:Observation.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "29463-7" ];
+       fhir:Coding.display [ fhir:value "Body Weight" ]     
+    ];
+    fhir:CodeableConcept.coding [
+       fhir:index 1;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "27113001" ];
+       fhir:Coding.display [ fhir:value "Body weight" ]    
+    ]
+  ];
+</pre>
+<p>
+For reasoners using the RDF, it's very useful to make the implicit
+concept references in these Coding and CodeableConcept explicit
+using rdfs:type assertions:
+</p>
+<pre class="rdf">
+  fhir:Observation.code [
+     a loinc:29463-7;
+     a sct:27113001;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a loinc:29463-7;
+       fhir:Coding.system [ fhir:value "http://loinc.org" ];
+       fhir:Coding.code [ fhir:value "29463-7" ];
+       fhir:Coding.display [ fhir:value "Body Weight" ]     
+     ];
+     fhir:CodeableConcept.coding [
+       fhir:index 2;
+       a sct:27113001;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "27113001" ];
+       fhir:Coding.display [ fhir:value "Body weight" ]     
+    ]
+  ];
+</pre>
+<p>
+These type assertions can be make by any agent that 
+knows how to convert from the code system to the correct
+ontological representation of that. Note that a few 
+code systems have standard ontological representations,
+but many don't. Again, these assertions can be made by 
+the serialiser, or injected by a post-processor. 
+</p>
+
+<a name="schema"> </a>
+<h4>Schema</h4>
+
+<p>
+FHIR uses ShEx for representing the turtle schema.
+See <a href="fhir.shex">fhir.shex</a> for definitions. 
+</p>
+
+<a name="json-ld"> </a>
+<h4>JSON-LD</h4>
+<p>
+As a by-product of the RDF format, a JSON-LD format is defined
+to represent exactly the same information as the Turtle format, 
+but using the JSON-LD syntax. Some specific notes about the JSON-LD format:
+</p>
+<ul>
+ <li>There is an @context on every resource, since the resources are inherently polymorphic at the format level</li>
+ <li>There is a version problem with the definitions; the definitions are generated at the version specific end-point, but the context 
+     references are not version specific. Input on the issues associated with this is welcome</li>
+</ul>
+<a name="dstu0"> </a>
+<blockquote class="dstu-note">
+  <p>
+    <b>STU Note:</b>
+    The definition of the JSON-LD format means that the FHIR specification defines 
+    two different JSON formats. It seems unlikely that normal implementers
+    will prefer the JSON-LD format over the <a href="json.html">other JSON format</a>,
+    since that is more dense, but there are other implementers who will use
+    the JSON-LD format. On the other hand, defining two different JSON formats 
+    seems like a recipe for confusion. Feedback from implementers is welcome.
+  </p>
+</blockquote>
+
+<a name="class"> </a>
+<h3>RDF Representation of FHIR</h3>
+<p>
+In addition to the basic representation of FHIR resources in 
+turtle format, a Turtle representation of the FHIR infrastructure
+and definitions is also published, for the following purposes:
+</p>
+<ul>
+ <li>Providing the class definitions to support RDF based representation of resource instances</li>
+ <li>Supporting knowledge based analysis of the FHIR specification itself</li>
+ <li>Providing knowledge of use at run-time for converting between FHIR and other content models</li>
+ <li>Supporting reasoning across the information/terminology model boundary</li>
+</ul>
+<p>
+The RDF definitions are published as a series of turtle files: <a href="rim.ttl">RIM</a> and <a href="fhir.ttl">FHIR</a>. Note: these are out of sync with the serialization above; this will be fixed in the lead up to the Montreal connectathon.
+</p>
+
+<a name="api"> </a>
+<h3>Using RDF with the REST API</h3>
+<p>
+TODO
+</p>
+
+</div>
+
+[%file newfooter%]
+</body>
+</html>

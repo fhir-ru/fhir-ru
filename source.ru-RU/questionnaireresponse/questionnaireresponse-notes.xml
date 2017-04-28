@@ -1,0 +1,62 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/fhir-xhtml.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<a name="notes"> </a>
+<h2>
+Примечания
+</h2>
+<ul>
+<li>QuestionnaireResponses могут создаваться клиницистами, самим пациентом или родственниками пациента (или даже владельцем в случае с животными). Клиницисты могут создавать QuestionnaireResponse, где ответы предоставляются другими лицами от имени пациента. Кроме того, информация, собранная для пациента, может быть о его родственниках (например в семейном анамнезе). Таким образом, QuestionnaireResponse делает различие между автором, предметом/субъектом и источником информации.
+<!-- QuestionnaireResponses can be authored by clinicians, the patient or a patient's relatives (or even the owner in the case of animals). Clinicians
+may author questionnaire responses, where the answers are provided by others on behalf of the patient. Additionally, information gathered for the
+purpose of a patient may be about the patient's relatives (e.g. in family anamnesis). Therefore, QuestionnaireResponse makes a distinction between the author,
+the subject and the source of information. --></li>
+<li>QuestionnaireResponse может быть автономным или указывать на форму, которая определяет вопросы <a href="questionnaire.html">Questionnaire</a>. В этом втором случае связь между вопросами и группами в двух ресурсах устанавливается с помощью элемента <code>linkId</code>.
+<!-- A QuestionnaireResponse may be stand-alone or may point to the form that defines the questions in <a href="questionnaire.html">Questionnaire</a>.  In
+this second case, the linkage between the questions and groups in the two resources is established using the <code>linkId</code> element. --></li>
+<li>Из-за отсутствия явной поддержки вопросников в HL7v3, HL7 CDA документы часто использовали именованные разделы с Observations для моделирования вопросников. Сейчас вместо них в таких сценариях следует использовать ресурс QuestionnaireResponse.
+<!-- Because of the lack of explicit support for Questionnaires in <a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3</a>, 
+<a href="http://www.hl7.org/implement/standards/product_brief.cfm?product_id=7">CDA</a> Documents frequently used named sections with
+Observations to model questionnaires. Such use cases should now utilize the QuestionnaireResponse resource instead. --></li>
+<li>Элемент <i>encounter</i> ресурса QuestionnaireResponse может быть использован для связи с encounter, во время которого был сделан опрос по Questionnaire. Это может быть уместно, поскольку encounter дает контекст для ответов и может быть использован для связи информации в QuestionnaireResponse с заказами и наблюдениями, которые были сделаны в течение того же Encounter.
+<!-- The QuestionnaireResponse's <i>encounter</i> element can be used to link to the encounter when the questionnaire response was authored. This can be relevant since the
+encounter gives context to the answers and can be used to relate information in the QuestionnaireResponse to orders and observations that were done during the same Encounter. --></li>
+<li>Порядок вопросов в группах, групп внутри групп и групп в вопросах является актуальным и должен сохраняться при отображении и вводе.
+<!-- The order of questions within groups, groups within groups and groups within questions is relevant and must be retained for display and capture. --></li>
+<li>Обычно пункты <a href="questionnaire.html">вопросника</a> типа <i>display</i> не отражаются в ответах на вопросник QuestionnaireResponse, поскольку целью ресурса QuestionnaireResponse является отражение информации, введённой на форме, а не инструкций из вопросника, хотя вопросы и заголовки групп сохраняются, чтобы ответы можно было интерпретировать независимо от вопросника.
+<!-- Typically <a href="questionnaire.html">Questionnaire</a> items of type <i>display</i> are not mirrored in a QuestionnaireResponse as the purpose of a
+QuestionnaireResponse is to reflect the information entered into the form, not the instructions provided, though questions and group headings are retained to ensure
+that the meaning of answers can be interpreted independent of the Questionnaire. --></li>
+</ul>
+
+<p>
+По вопросам проектирования вопросников см. дополнительное руководство в ресурсе <a href="questionnaire.html">Questionnaire</a>.
+<!-- Refer to additional guidance provided in the <a href="questionnaire.html">Questionnaire</a> resource dealing with the design of questionnaires. -->
+</p>
+
+<a name="security"> </a>
+<h2>
+Безопасность<!-- Security -->
+</h2>
+<p>
+Ресурсы QuestionnaireResponse могут иметь ответы со значениями типа Attachment (вложение). Эти вложения, как правило, выбираются пользователем, отвечающим на вопросник, и этот выбор может быть сделан в неконтролируемой среде. Системы должны гарантировать, что вложение имеет нужный тип, и принимать меры предосторожности, прежде чем отобразить его или выполнить какой-либо вложенный контент.
+<!-- QuestionnaireResponse resources can have answers with values of type Attachment.  These attachments will typically be selected by the user answering the questionnaire and
+this selection may be done in an uncontrolled environment.  Systems should ensure that the attachment is of the desired type and should take precautions before
+rendering or executing any attached content. -->
+</p>
+
+<a name="access"> </a>
+<h2>
+Контроль доступа
+<!-- Access Control -->
+</h2>
+<p>
+Для большинства ресурсов тип информации, которая может быть передана в ресурсе, определяется ресурсом, и ключевые атрибуты, которые определяют уровень важности информации, также известны. Например лекарство, тип наблюдения, статус рандомизации клинического исследования и т. д. Однако для QuestionnaireResponse, чувствительность экземпляра зависит от того, с каким типом Questionnaire он связан. И элементы данных, которые определяют важность, могут быть ответами на любые вопросы. Это делает автоматическое соблюдение правил контроля доступа более сложным. Проектировщикам следует принять этот вызов во внимание и, возможно, потребуется разместить более строгий контроль доступа к QuestionnaireResponse для гарантии того, что доступ к информации не будет предоставлен ненадлежащим образом.
+<!-- For most resources, the type of information that can be conveyed in the resource is determined by the resource, and the key attributes that
+determine the sensitivity level of the information are also known; e.g., drug, observation type, clinical trial randomization status, etc.  However, for QuestionnaireResponse, the
+sensitivity of an instance is dependent on what type of Questionnaire it is associated with.  And the data elements that determine that
+sensitivity could be the answers to any of the questions.  This makes automatically enforcing access control rules more challenging.  Designers
+should take these challenges into account and may need to place stricter access controls around QuestionnaireResponse to ensure that access to
+information is not granted improperly. -->
+</p>
+
+</div>

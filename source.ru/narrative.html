@@ -18,7 +18,8 @@
 <a name="narrative"> </a>
 <a name="xhtml"> </a>
 <h2>Описательная часть</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="resource.html#maturity">Уровень готовности</a>: 3</td><td id="ballot"><a href="help.html#status">Статус голосования</a>: <a href="history.html#pubs">STU 3</a></td></tr></table>
+
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
 <p>
 Любой ресурс, являющийся доменным <a href="domainresource.html">DomainResource</a> (это почти все типы ресурсов) может содержать человекочитаемую описательную часть, которая содержит краткое изложение ресурса и может быть использована для представления содержимого ресурса человеку. 
 <!--
@@ -151,7 +152,7 @@ entered raw or narrated and encoded in formation is added later.
 by its <i>id</i>: -->
 </p>
 <div class="example">
-<pre class="xml">
+<pre class="xml" fragment="Patient">
 &lt;Patient xmlns=&quot;http://hl7.org/fhir&quot;&gt;
   &lt;text&gt;
     &lt;status value=&quot;generated&quot;/&gt;
@@ -160,8 +161,9 @@ by its <i>id</i>: -->
     &lt;/div&gt;
   &lt;/text&gt;
   &lt;contained&gt;
-    &lt;Binary id=&quot;pic1&quot; contentType=&quot;image/gif&quot;&gt;MEKH....SD/Z&lt;/Binary&gt;
+    &lt;Binary&gt;&lt;id value=&quot;pic1&quot;/&gt;&lt;contentType value=&quot;image/gif&quot;/&gt;&lt;content value=&quot;MEKH....SD/Z&quot;/&gt;&lt;/Binary&gt;
   &lt;/contained&gt;
+&lt;/Patient&gt;
 </pre>
 </div>
 <p>

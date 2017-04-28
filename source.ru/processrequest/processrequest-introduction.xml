@@ -38,7 +38,7 @@ whether the requestion action was accepted and scucessful. -->
 </p>
 
 <p>
-<b>Poll</b> предоставляет вспомогательную информацию о запросе на опрос. Ответом на него будет ранее не доставленный ответ или StatusResponse (или другой ресурс типа подтверждения приема, который может содержать ошибки).
+<b>Poll</b> предоставляет вспомогательную информацию о запросе на опрос. Ответом на него будет ранее недоставленный ответ или ProcessResponse, который может содержать ошибки.
 <!-- <b>Poll</b> provides supporting information for the poll request. The response to 
 this is a previously undelivered response or a StatusResponse (or other acknowledgement stype resource which may 
 contain errors).  -->
@@ -57,15 +57,9 @@ filtering elements, for example: -->
 <ul>
 <li>Получить любой ожидающий обработки ресурс - фильтры не указаны</li>
 <li>Получить отложенный ответ на иск - указать ссылку на ресурс Claim в "запросе"</li>
-<li>Получить всю вспомогательную документацию - указать 'SupportingDocumentation' в качестве включения 'include'</li>
+<li>Получить всю вспомогательную информацию - указать 'Communication' в качестве включения 'include'</li>
 <li>Получить объяснение по выплатам (Explanation of Benefit) - указать 'ExplanationOfBenefit' в качестве включения 'include'</li>
 <li>Получить сверку оплаты - указать период 'period', в которых входит требуемая дата создания  сверки, и указать 'PaymentReconciliation' в качестве включения 'include'</li> 
-<!-- <li>Get any pended resource - no filters specified</li>
-<li>Get deferred response to a Claim - specify the Claim in the 'request'</li>
-<li>Get all Supporting Documentation - specify 'SupportingDocumentation' as an 'include'</li>
-<li>Get an Explanation of Benefit - specify 'ExplanationOfBenefit' as an 'include'</li>
-<li>Get a payment reconciliation - specify a 'period' which contains the expected reconciliation 
-creation date, and specify 'PaymentReconciliation' as an 'include'</li>  -->
 </ul> 
 
 
