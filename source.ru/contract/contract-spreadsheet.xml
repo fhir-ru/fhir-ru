@@ -1477,7 +1477,7 @@
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:Hidden="1">
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Подтип договора<!-- Contract.subType --></Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Contract.subType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">0..*</Data><NamedCell
@@ -1752,7 +1752,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Hidden="1">
-    <Cell ss:StyleID="s104"><Data ss:Type="String">Роль агента договора<!-- Contract.agent.role --></Data><NamedCell
+    <Cell ss:StyleID="s104"><Data ss:Type="String">Contract.agent.role</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">0..*</Data><NamedCell
@@ -1821,7 +1821,7 @@
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Hidden="1">
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Тип стороны, подписавшей договор<!-- Contract.signer.type --></Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Contract.signer.type</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">1..1</Data><NamedCell
@@ -2264,7 +2264,7 @@
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Hidden="1">
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Идентификатор положения договора<!-- Contract.term.identifier --></Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Contract.term.identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">0..1</Data><NamedCell
@@ -2400,7 +2400,7 @@
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:Hidden="1">
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Подтип положения договора<!-- Contract.term.subType --></Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Contract.term.subType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">0..1</Data><NamedCell
@@ -2537,7 +2537,7 @@
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:Hidden="1">
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Обоснование действия положения договора<!-- Contract.term.actionReason --></Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Contract.term.actionReason</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">0..*</Data><NamedCell
@@ -2675,7 +2675,7 @@
     <Cell ss:StyleID="s93"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60" ss:Hidden="1">
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Роль агента условия договора<!-- Contract.term.agent.role --></Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Contract.term.agent.role</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">0..*</Data><NamedCell
@@ -5879,7 +5879,7 @@
     <Cell ss:StyleID="s138"><Data ss:Type="String">identifier</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s87"/>
-    <Cell ss:StyleID="s139"><Data ss:Type="String">Идентификатор договора<!-- Contract.identifier --></Data></Cell>
+    <Cell ss:StyleID="s139"><Data ss:Type="String">Contract.identifier</Data></Cell>
     <Cell ss:StyleID="s140"><Data ss:Type="String">Идентификатор договора<!-- The identity of the contract --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
