@@ -15,7 +15,7 @@
 <a name="bnr"> </a>
 <h2>Границы и связи</h2>
 <p>
-Ресурс BodySite не предназначен для замены предкоординации кодов. Если предкоординация кодов поддерживается реализацией, и элемент ресурса поддерживает выбор между codeableConcept и BodySite, то следует использовать codeableConcept. Данный ресурс предназначен для описания не типа анатомического расположения, а определенного участка тела конкретного пациента.
-<!-- The BodySite resource is not intended to substitute for precoordination of codes.  If precoordination of codes is  supported by an implementation and a resource element has a choice of codeableConcept or BodySite, the codeableConcept should be used.  This resource is not intended for describing the type of anatomical location but rather a specific body site on a specific patient. -->
+Ресурс BodySite не предназначен для замены предкоординации кодов. Если предкоординация кодов поддерживается реализацией, то следует использовать codeableConcept. Данный ресурс предназначен для описания не типа анатомического расположения, а определенного участка тела конкретного пациента.
+<!-- The BodySite resource is not intended to substitute for precoordination of codes.  If precoordination of codes is  supported by an implementation the codeableConcept should be used.  This resource is not intended for describing the type of anatomical location but rather a specific body site on a specific patient. -->
 </p>
 </div>

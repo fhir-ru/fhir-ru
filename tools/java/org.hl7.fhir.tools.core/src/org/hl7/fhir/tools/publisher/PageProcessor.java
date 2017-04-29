@@ -6460,7 +6460,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider, IReferen
           } else {
             XhtmlNode fn = x.getFirstElement().getName().equals("h2") ? x.getFirstElement() : x.getElementByIndex(1);
             String s = fn.allText();
-            if (! ((s.equals("Scope and Usage")) || (s.equals("Boundaries and Relationships")) || (s.equals("Background and Context")) ) ) {
+            if (! ((s.equals("Scope and Usage")) || (s.equals("Boundaries and Relationships")) || (s.equals("Background and Context")) || (s.equals("Область применения и использование")) || (s.equals("Границы и связи")) || (s.equals("Предпосылки и контекст")) ) ) {
               log("file \""+filename+"\": div/div["+Integer.toString(doc.getChildNodes().indexOf(x))+"]/h2 must be either 'Scope and Usage', 'Boundaries and Relationships', or 'Background and Context'", LogMessageType.Error);
               return;
             } else {
