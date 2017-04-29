@@ -1119,7 +1119,7 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s77"><Data ss:Type="String">Договор<!-- Contract --></Data><NamedCell
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Contract</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s78"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1154,7 +1154,7 @@
     <Cell ss:StyleID="s85"><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Hidden="1">
-    <Cell ss:StyleID="s86"><Data ss:Type="String">Идентификатор договора<!-- Contract.identifier --></Data><NamedCell
+    <Cell ss:StyleID="s86"><Data ss:Type="String">Contract.identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">0..1</Data><NamedCell
