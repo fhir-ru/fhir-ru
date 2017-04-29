@@ -51,7 +51,7 @@ destination = ARGV[1]
     s1 = key.downcase
     puts "Looking for " + s1
     words = s1.scan(/\w+/) # массив слов ключа
-    if (words.size < 2) and ((s1 == "identifier") || (s1 == "where") || (s1 == "patient") || (s1 == "period") || (s1 =~ /\w+\.identifier/)) # если ключ из 1 слова, то... надо проверить, что это не слово Identifier или что-то вроде этого - т.е. тип данных
+    if (words.size < 2) and ((s1 == "identifier") || (s1 == "where") || (s1 == "patient") || (s1 == "period") || (s1 =~ /\w+\.\w+/)) # если ключ из 1 слова, то... надо проверить, что это не слово Identifier или что-то вроде этого - т.е. тип данных
       
     else
       # если нашли точное соответствие, то замена    
