@@ -5239,7 +5239,7 @@
     <Cell ss:StyleID="s128"><Data ss:Type="String">Ссылка на иск<!-- The claim reference --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s126"><Data ss:Type="String">Страховая компания<!-- insurer --></Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">insurer</Data></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s127"><Data ss:Type="String">ClaimResponse.insurer</Data></Cell>

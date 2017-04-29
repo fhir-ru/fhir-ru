@@ -11392,7 +11392,7 @@
     <Cell ss:StyleID="s146"><Data ss:Type="String">The party responsible for the entry of the Claim</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s144"><Data ss:Type="String">Получатель платежа<!-- payee --></Data></Cell>
+    <Cell ss:StyleID="s144"><Data ss:Type="String">payee</Data></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s87"/>
     <Cell ss:StyleID="s145"><Data ss:Type="String">ExplanationOfBenefit.payee.party</Data></Cell>
