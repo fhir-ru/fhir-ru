@@ -44,9 +44,7 @@ For example, each of the following conditions could rise to the level of importa
 <h2>Границы и связи</h2>
 <p>
 Другие ресурсы могут ссылаться на ресурс condition в качестве "основания" для действия (например <a href="medicationrequest.html">MedicationRequest</a>,
-<a href="procedure.html">Procedure</a>, <a href="diagnosticrequest.html">DiagnosticRequest</a> и др.)
-<!-- The condition resource may be referenced by other resources as "reasons" for an action (e.g. <a href="medicationrequest.html">MedicationRequest</a>,
-<a href="procedure.html">Procedure</a>, <a href="procedurerequest.html">ProcedureRequest</a>, etc.) -->
+<a href="procedure.html">Procedure</a>, <a href="procedurerequest.html">ProcedureRequest</a> и др.)
 </p>
 <p>
 Этот ресурс не предназначен для записи объективной и субъективной информации о, которая может привести к записи Condition. Например признаки и симптомы, которые обычно вводятся с использованием ресурса <a href="observation.html">Observation</a>; несмотря на то, что в некоторых случаях постоянный симптом, например жар, головная боль могут вводиться как condition, пока клиницист не установит окончательный диагноз.

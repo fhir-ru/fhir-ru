@@ -17,7 +17,7 @@ It can also be used to capture "risk of" and "fear of" in addition to physical c
 <!-- When the Condition.code specifies additional properties of the condition, the other properties are not given 
 a value - instead, the value must be understood from the Condition.code.  -->
 </p>
-<h3>Применение элемента Condition.evidence<!-- Use of Condition.evidence --></h3>
+
 <h3>"No Known Problems" and Negated Conditions</h3>
 
   <p>

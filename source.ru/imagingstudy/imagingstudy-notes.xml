@@ -176,10 +176,6 @@ profile call using the url elements found in the <a href="imagingstudy.html">Ima
 <h4>Всеобъемлющий плановый рабочий процесс работы с радиологическими изображениями<!-- Comprehensive Imaging Scheduled Workflow --></h4>
 <p>
 Джо Энджене жалуется на одышку и нерегулярную боль в груди своему основному лечащему врачу доктору Пату Дауну в местной поликлинике, который заказал для него стресс-эхокардиограмму; этот заказ создаётся в виде FHIR-ресурса <a href="task.html">Task</a> для управления рабочим процессом, со ссылкой на ресурс <a href="procedurerequest.html">ProcedureRequest</a> с деталями запроса. Заказ запланирован, и его исполнение назначенено кардиологу доктору Арту Сканну, также работающему в этой поликлинике.
-<!-- Joe Angina complains of shortness of breath and occasional chest pain to his primary care physician, Dr. Pat Down at 
-Local MultiClinic, who orders a stress echocardiogram; the order is created as a FHIR <a href="task.html">Task</a> 
-resource to manage the workflow, with a link to a <a href="diagnosticrequest.html">DiagnosticRequest</a> resource with 
-the details of the request.   The order is scheduled and assigned to cardiologist Dr. Art Skann, also at Local MultiClinic. -->
 </p>
 <p>
 В назначенный по расписанию день обследования Джо прибывает в лабораторию ультразвуковой эхографии для встречи с доктором Сканном и выполнения исследования. Рабочая станция доктора Сканна показывает ежедневный список <a href="task.html">Task</a>, и он переходит по ссылке для открытия заказа на диагностическое исследование (<a href="procedurerequest.html">ProcedureRequest</a>). Он может перейти по ссылкам из ресурса <a href="patient.html">Patient</a> для доступа к электронной истории болезни Джо, но в данном случае нас это не интересует.
