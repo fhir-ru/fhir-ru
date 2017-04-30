@@ -44,7 +44,6 @@ the procedure resource is used to describe the activity. -->
 <!--  Some diagnostic procedures may not have a Procedure record.  The Procedure record is only necessary when 
 there is a need to capture information about the physical intervention that was performed to capture the diagnostic 
 information (e.g. anesthetic, incision, scope size, etc.) --></p>
-<p>
 </div>
 
 </div>

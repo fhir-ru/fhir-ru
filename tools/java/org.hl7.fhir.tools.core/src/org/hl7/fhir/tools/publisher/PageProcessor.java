@@ -6465,7 +6465,7 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider, IReferen
               return;
             } else {
               if (scope == null) {
-                if (s.equals("Scope and Usage")) {
+                if ( (s.equals("Scope and Usage")) || (s.equals("Область применения и использование")) ) {
                   scope = x;
                   if (r != null)
                     r.setRequirements(new XhtmlComposer().composePlainText(x));
