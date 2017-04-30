@@ -4,7 +4,7 @@
 These elements SHALL always appear in this order. These basic elements shared by all resources come first
 in order to support consistent definitions for schema and UML derived code.
 -->
-[%settitle Administration Module%]
+[%settitle Административный модуль%]
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     [%file newheader%]
@@ -13,24 +13,22 @@ in order to support consistent definitions for schema and UML derived code.
     [%file newnavbar%]
 
     <div class="col-12">
-        <table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg pa%]">[%wgt pa%]</a> </td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
+        <table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg pa%]">[%wgt pa%]</a> </td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
 
         <a name="root"> </a>
-        <h2>Administration Module</h2>
+        <h2>Административный модуль</h2>
         <a name="intro"> </a>
-        <h3>Introduction</h3>
+        <h3>Введение</h3>
         <p>
-            The Administrative module covers the base data that is then linked into
-            the other modules for clinical content, finance/billing, workflow, etc.<br />
-            This of course is built on the FHIR technology platform modules.
+            В административный модуль входят базовые данные, которые в свою очередь разделяются на более специализированные модули клинического содержимого, финансовый/выставление оплаты, рабочего процесса и др.<br />
+            Разумеется, строится это на модулях технологической платформы FHIR.
         </p>
         <p>
-            Before any clinical data can be recorded, the basic information on the patient
-            must be recorded, and then often the basis of the interaction (such as an encounter)
+            Перед записью любых клинических данных необходимо зарегистрировать базовую информацию о пациенте и, как правило, основание взаимедействия (например случай обслуживания).
         </p>
 
         <a name="index"> </a>
-        <h3>Index</h3>
+        <h3>Указатель</h3>
         <table width="100%" style="table-layout: fixed">
             <tr>
                 <td>
@@ -73,12 +71,12 @@ in order to support consistent definitions for schema and UML derived code.
             </tr>
         </table>
         <a name="patient-reg"> </a>
-        <h4>Patient Registers</h4>
+        <h4>Реестры пациентов</h4>
         <p>
-            Track people involved in receiving healthcare, the basics nearly everything else references back to
+            Отслеживание людей, вовлеченных в получение медицинских услуг - та основа, на которую ссылается почти всё остальное.
         </p>
         <table class="bare">
-            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            <tr><td><b>Имя</b></td><td><b>Альтернативные имена</b></td><td><b>Описание</b></td></tr>
             [%res-item Patient%]
             [%res-item RelatedPerson%]
             [%res-item Person%]
@@ -89,26 +87,22 @@ in order to support consistent definitions for schema and UML derived code.
         </div>
         <p>
             <blockquote>
-                <em>Note:</em> <a href="patient.html#links">Patient linking</a> should also be considered when evaluating
-                searches with references to other resources. e.g. Searching for conditions for a patient.<br />
-                At present the specification does not define if the links should be also followed to include
-                conditions that reference the linked patients too. We are currently seeking feedback on this.
+                <em>Примечание:</em> При выполнении поиска со ссылками на другие ресурсы необходимо также учитывать <a href="patient.html#links">связанные между собой ресурсы Patient</a>. Например при поиске диагнозов пациента.<br />
+                На данный момент в спецификации не определено, следует ли выводить ресурсы для связанных ресурсов Patient для включения в результаты поиска диагнозов, которые ссылаются на эти связанные ресурсы Patient. В настоящее время мы ждём ваших отзывов по этому поводу.
             </blockquote>
             <blockquote>
-                <em>Note:</em> The Person resource may be used as a centralized register of people that may
-                eventually be involved in healthcare, and could be used as the central core demographics register.<br />
-                However the fields/values in Person are duplicated in the other resources, and in many cases the
-                Person resource will be hosted on external systems.
+                <em>Примечание:</em> Ресурс Person можно использовать как централизованный реестр лиц, которые в итоге могут быть вовлечены в оказание медицинских услуг, а также мог бы использоваться как центральный регистр демографических данных.<br />
+                Однако поля/значения в ресурсе Person дублируются в других ресурсах и во многих случаях ресурс Person будет храниться во внешних системах.
             </blockquote>
         </p>
 
         <a name="clinical-reg"> </a>
-        <h4>Clinical Categorization Resources</h4>
+        <h4>Клиническая классификация ресурсов</h4>
         <p>
-            Most clinical activities occur grouped in some way. Long term care is typically covered by an EpisodeOfCare, where short term care by encounters. Account associates the tracking of transactions back to a Patient (or other resource). Flag is just used to highlight a warning or other notification about a patient (or other resource)
+            Большинство клинических видов деятельности происходят некоторыми группами. Долгосрочный уход обычно охватывается ресурсом EpisodeOfCare, а краткосрочный - ресурсом Encounter. Ресурс Account ассоциирует отслеживание транзакций между ресурсом Patient и другим ресурсом. Ресурс Flag используется для выделения предупреждения или уведомления о пациенте (или другом ресурсе).
         </p>
         <table class="bare">
-            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            <tr><td><b>Имя</b></td><td><b>Альтернативные имена</b></td><td><b>Описание</b></td></tr>
             [%res-item EpisodeOfCare%]
             [%res-item Encounter%]
             [%res-item Account%]
@@ -119,18 +113,18 @@ in order to support consistent definitions for schema and UML derived code.
         </div>
         <p>
             <blockquote>
-                <em>Note:</em> Resources shown with a dotted box are described in other sections of the specification:
-                <code>Coverage</code> and <code>Claim</code> are from the <a href="financial-module.html">section on Finance</a>.
+                <em>Примечание:</em> Ресурсы в прямоугольниках с пунктирными линиями описаны в других разделах спецификации:
+                <code>Coverage</code> и <code>Claim</code> описаны в <a href="financial-module.html">финансовом разделе</a>.
             </blockquote>
         </p>
 
         <a name="dir-reg"> </a>
-        <h4>Service Provider Directory Resources</h4>
+        <h4>Ресурсы, связанные с каталогами поставщиков услуг</h4>
         <p>
-            Service Directory resources are usually stored in the administration section of applications, and may even be synchronized from external systems.
+            Ресурсы, связанные с каталогами поставщиков услуг, обычно хранятся в административном разделе приложений и может быть даже синхронизируются с внешними системами.
         </p>
         <table class="bare">
-            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            <tr><td><b>Имя</b></td><td><b>Альтернативные имена</b></td><td><b>Описание</b></td></tr>
             [%res-item Organization%]
             [%res-item Location%]
             [%res-item Practitioner%]
@@ -144,12 +138,12 @@ in order to support consistent definitions for schema and UML derived code.
         <p></p>
 
         <a name="sched"> </a>
-        <h4>Scheduling and Appointments</h4>
+        <h4>Планирование и назначение встреч</h4>
         <p>
-            The Scheduling/Appointments resources permit the planning of encounters to occur and follow on with other clinical activities.
+            Ресурсы планирования и назначения встреч позволяют осуществлять запланированные случаи обслуживания и последующую клиническую деятельность.
         </p>
         <table class="bare">
-            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            <tr><td><b>Имя</b></td><td><b>Альтернативные имена</b></td><td><b>Описание</b></td></tr>
             [%res-item Schedule%]
             [%res-item Slot%]
             [%res-item Appointment%]
@@ -161,12 +155,12 @@ in order to support consistent definitions for schema and UML derived code.
         <p></p>
 
         <a name="dev-sub"> </a>
-        <h4>Devices and Substances</h4>
+        <h4>Устройства и вещества</h4>
         <p>
-            Other assets are often registered in the administration system, and maintained as master files.
+            Другие активы часто регистрируются в системе администрирования и поддерживаются в виде мастер-файлов.
         </p>
         <table class="bare">
-            <tr><td><b>Name</b></td><td><b>Aliases</b></td><td><b>Description</b></td></tr>
+            <tr><td><b>Имя</b></td><td><b>Альтернативные имена</b></td><td><b>Описание</b></td></tr>
             [%res-item Device%]
             [%res-item DeviceComponent%]
             [%res-item DeviceMetric%]
@@ -175,17 +169,16 @@ in order to support consistent definitions for schema and UML derived code.
 
 
         <a name="secpriv"> </a>
-        <h3>Security and Privacy</h3>
+        <h3>Безопасность и конфиденциальность</h3>
         <p>
-            Patient privacy is handled with security labels and tags in the Resource <a href="resource.html#Meta">Meta</a> property.
-            This is the standard way that the FHIR specification provides this supporting information
-            to a sub-system that implements it (which is not defined by FHIR).
+            Конфиденциальность пациентов обеспечивается метками и тегами уровней безопастности в свойстве <a href="resource.html#Meta">Meta</a> ресурса.
+			Это стандартный способ, когда спецификация FHIR предоставляет эту вспомогательную информацию некоторой подсистеме, которая ее реализует (что не входит в FHIR).
         </p>
         <p>
-            One of the more common use cases is for marking a patient as being a <a href="security-labels.html">celebrity</a>.
+            Один из распространенных случаев использования - пометить, что пациент является <a href="security-labels.html">знаменитостью</a>.
         </p>
         <p>
-            Note that privacy considerations apply to Person, Practitioner and RelatedPerson records in addition to Patient's.
+            Отметьте, что соображения конфиденциальности применяются наряду с ресурсом Patient также к ресурсам Person, Practitioner и RelatedPerson.
         </p>
         <p>
             While Organization, Location, Device and other non-person-identifying records are generally subject to less stringent

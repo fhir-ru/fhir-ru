@@ -12,7 +12,7 @@
 
 <a name="base"> </a>
 <h2>Расширенные операции RESTful API</h2>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: 5</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Пробное использование</a></td></tr></table>
 
 <p>
 <a href="http.html">RESTful API</a> задает набор простых взаимодействий (read, update, search и др.), совершаемых над репозиторием типизированных ресурсов. Эти взаимодействия следуют парадигме RESTful об управлении состоянием с помощью действий <b>C</b>reate/<b>R</b>ead/<b>U</b>pdate/<b>D</b>elete над набором идентифицированных ресурсов. Хотя этот подход покрывает большинство случаев использования, имеется некоторая специфичная функциональность, которую можно ююю более эффективно с помощью RPC-подобной парадигмы, где именованные операции выполняются над входными и выходными данными (<b>E</b>xecute). Операции используются там, (a) где серверу требуется играть активную роль в формулировании контента ответа, а не просто возвращать существующую информацию, или (b) где требуется вызвать такие побочные явления, как модификация существующих ресурсов или создание новых ресурсов. Данная спецификация описывает простую структуру операций, которая легко расширяет RESTful API.

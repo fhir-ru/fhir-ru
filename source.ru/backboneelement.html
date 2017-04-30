@@ -17,17 +17,15 @@
 
 <%elheader base%>
 <h1>BackboneElement</h1>
-<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Work Group</td><td id="fmm"><a href="versions.html#maturity">Maturity Level</a>: 5</td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Trial Use</a></td></tr></table>
+<table class="cols"><tr><td id="wg"><a _target="blank" href="[%wg fhir%]">[%wgt fhir%]</a> Рабочая группа</td><td id="fmm"><a href="versions.html#maturity">Уровень зрелости</a>: 5</td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Пробное использование</a></td></tr></table>
 
 <p>
-The base definition for elements defined as part of a resource definition. <a href="datatypes.html">Data Type</a> elements do not use this type.
-For instance, <a href="patient.html#resource">Patient.contact</a> is an element that is defined as part of the patient resource, so it automatically 
-has the type <code>BackboneElement</code>.
+Базовое определение для элементов, определяемых в рамках определения ресурса. <a href="datatypes.html">Data Type</a>-элементы не используют этот тип.
+Например, <a href="patient.html#resource">Patient.contact</a> - это элемент, определенный в рамках ресурса Patient, следовательно ему автоматически присваивается тип <code>BackboneElement</code>.
 </p>
 
 <p>
-Note that the descendent types of <code>BackboneElement</code> are all declared implicitly as 
-part of the definitions of the resources. 
+Отметьте, что все типы-потомки <code>BackboneElement</code> объявляются неявным образом как часть определений ресурсов.
 </p>
 
 <a name="definition"> </a>
@@ -38,11 +36,10 @@ Content
 [%dt BackboneElement 1%]
 
 <a name="summary"> </a>
-<h2>Specializations</h2>
+<h2>Специализации</h2>
 
 <p>
-This table lists all the specializations of <code>BackboneElement</code> that are defined, and the 
-path at which they are defined. 
+В таблице ниже перечислены все специализации  <code>BackboneElement</code> и пути к их определениям. 
 </p>
 
 <%backboneelementlist%>
