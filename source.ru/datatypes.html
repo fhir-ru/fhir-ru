@@ -226,7 +226,7 @@ This page describes the general purpose data types.
 <ul>
  <li>Для всех типов их XML-, JSON- и Turtle-представления совпадают, за исключением различий в экранировании символов в XML и JSON</li>
 <li>Boolean values can also be represented using coded values (such as <a href="v2/0136/index.html">HL7 v2 Table 0136</a>). See <a href="observation.html#valuex">Observation</a> for one such use</li>
- <li>Приведенные регулярные выражения могут пропускать более широкий набор значений, чем фактически допустимый (например високосные года), поэтому требуется дополнительная валидация 
+ <li>Приведенные регулярные выражения могут пропускать более широкий набор значений, чем фактически допустимый (например високосные года), поэтому требуется дополнительная валидация</li>
  <li>The regexes should be qualified with start of string and end of string anchors based on the regex implementation used (e.g. caret '^' and dollar-sign '$' for JavaScript, POSIX, XML and XPath; '\A' и '\Z' for .NET, Java, Python and others; please verify these definitions with the regex implementation used).</li>
  <li>The data types code, string, and uri can be <a href="terminologies.html#strings">bound to a value set</a></li>
  <li>Точность десятичных значений имеет значение: <a name="precision"> </a>
