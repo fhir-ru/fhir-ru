@@ -343,19 +343,19 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider, IReferen
   public final static String DEF_TS_SERVER = "http://fhir3.healthintersections.com.au/open";
 //  public final static String DEF_TS_SERVER = "http://local.healthintersections.com.au:960/open";
 
-  public final static String WEB_PUB_NAME = "FHIR Release 3 (STU)";
-  public final static String CI_PUB_NAME = "Current Build";
+  public final static String WEB_PUB_NAME = "Current Build";
+  public final static String CI_PUB_NAME = "FHIR Release 3 (STU)"; 
 
-  public final static String WEB_PUB_NOTICE =
+  public final static String CI_PUB_NOTICE =
       "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px; max-width: 790px;\">\r\n"+
        " Это текущая официальная версия FHIR 3.0.0 (<a href=\"timelines.html\">STU 3</a>). <br/>Список всех версий можно посмотреть в <a href=\"http://hl7.org/fhir/directory.html\">Указателе опубликованных версий</a>.\r\n"+
       "</p>\r\n";
 
-  public final static String CI_PUB_NOTICE =
+  public final static String WEB_PUB_NOTICE =
       "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px; max-width: 790px;\">\r\n"+
           "Это непрерывная интеграционная сборка FHIR (может быть некорректной время от времени). См. <a href=\"http://hl7.org/fhir/directory.html\">Указатель опубликованных версий</a>\r\n"+
-          "</p>\r\n";
-
+          "</p>\r\n";  
+		  
   public static final String CODE_LIMIT_EXPANSION = "1000";
   public static final String TOO_MANY_CODES_TEXT_NOT_EMPTY = "This value set has >1000 codes in it. In order to keep the publication size manageable, only a selection  (1000 codes) of the whole set of codes is shown";
   public static final String TOO_MANY_CODES_TEXT_EMPTY = "This value set cannot be expanded because of the way it is defined - it has an infinite number of members";
