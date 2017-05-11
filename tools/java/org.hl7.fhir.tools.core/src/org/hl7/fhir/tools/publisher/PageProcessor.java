@@ -347,12 +347,12 @@ public class PageProcessor implements Logger, ProfileKnowledgeProvider, IReferen
   public final static String CI_PUB_NAME = "FHIR Release 3 (STU)"; 
 
   public final static String CI_PUB_NOTICE =
-      "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px; max-width: 790px;\">\r\n"+
+      "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px;\">\r\n"+
        " Это текущая официальная версия FHIR 3.0.0 (<a href=\"timelines.html\">STU 3</a>). <br/>Список всех версий можно посмотреть в <a href=\"http://hl7.org/fhir/directory.html\">Указателе опубликованных версий</a>.\r\n"+
       "</p>\r\n";
 
   public final static String WEB_PUB_NOTICE =
-      "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px; max-width: 790px;\">\r\n"+
+      "<p style=\"background-color: gold; border:1px solid maroon; padding: 5px;\">\r\n"+
           "Это непрерывная интеграционная сборка FHIR (может быть некорректной время от времени). См. <a href=\"http://hl7.org/fhir/directory.html\">Указатель опубликованных версий</a>\r\n"+
           "</p>\r\n";  
 		  
