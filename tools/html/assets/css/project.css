@@ -52,13 +52,13 @@ body {
   position: relative;
 }
 #segment-header {
-  background-color: #f5f5f5;
+  background-color: #e6e6e6;
 }
 #segment-header > .container {
   background-color: #e6e6e6;
 }
 #segment-footer {
-  background-color: #707070;
+  background-color: #ad1f2f;
 }
 #segment-footer > .container {
   background-color: #ad1f2f;
@@ -149,7 +149,7 @@ body {
   left: 0;
   right: 0;
   top: 0;
-  height: 8px;
+  height: 0px;
   background: #999999;
 }
 #notes a {

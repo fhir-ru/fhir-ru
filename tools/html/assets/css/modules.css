@@ -1,4 +1,4 @@
-#diagram { margin-bottom: 2em; max-width: 790px; padding: 0.75em 0.25em 0.25em; background-color: #ffffe6; border-radius: 6px; border: 2px solid #668cff; }
+#diagram { margin-bottom: 2em; /* max-width: 790px; */ padding: 0.75em 0.25em 0.25em; background-color: #ffffe6; border-radius: 6px; border: 2px solid #668cff; }
 #diagram p { margin: 0; }
 #diagram .box { margin: 0 0.5em 0.75em; border: 1px solid grey; border-radius: 3px; background-color: #f7f7f7; }
 #diagram .box .head { height: 44px; padding: 6px; font-weight: bold; border-radius: inherit; background-color: white; }
