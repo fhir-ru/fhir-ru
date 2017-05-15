@@ -24,65 +24,55 @@ FHIR - это спецификация платформы, определяющ�
 <a href="overview-dev.html">для разработчиков</a>, <a href="overview-clinical.html">для мед. работников</a> и <a href="overview-arch.html">для архитекторов</a>), может вызвать затруднение вопрос, с чего начать внедрение решения на основе FHIR.
 </p>
 <p>
-This page provides some guidance to help get new implementers started on their path to successful
-implementation. Beyond reading the overviews (previous paragraph), where should an implementer
-start? Generally, an implementer needs to resolve:
+На этой странице есть несколько инструкций о том, с чего начать успешную реализацию. С чего ещё, кроме чтения введений (предыдущий параграф), следует начинать реализацию? Как правило, реализаторам нужно ответить на следующие вопросы:
 </p>
 <ul>
- <li>How will information be exchanged? (see <a href="foundation-module.html#uses">Foundation Module</a>)</li>
- <li>How are terminologies being used? (see <a href="terminology-module.html#uses">Terminology Module</a>)</li>
- <li>How will the information be secured? (see <a href="secpriv-module.html#uses">Security and Privacy Module</a>)</li>
- <li>What information is going to be exchanged?</li>
+ <li>Каким образом будет осуществляться обмен информацией? (см. <a href="foundation-module.html#uses">Foundation Module</a>)</li>
+ <li>Как будут использоваться справочники? (см. <a href="terminology-module.html#uses">Terminology Module</a>)</li>
+ <li>Каким образом будет обеспечиваться безопасность информации? (см. модуль <a href="secpriv-module.html#uses">Безопасность и конфиденциальность</a>)</li>
+ <li>Какую информацию надо будет передавать?</li>
 </ul>
 <p>
-The remaining sections provide guidance on specific areas (Foundation, Implementer Support, Security and Privacy, Conformance,
-Terminology, Linked Data, Administration, Clinical, Diagnostics, Medications, Workflow, Financial and Clinical Reasoning).
+В остальных разделах вы найдет инсотрукции по узкоспециализированным областям (Основы, Поддержка реализаторов, Безопасность и конфиденциальность, Обеспечение соответствия, Справочники, Linked Data, Administration, Клинический, Диагностика, Лекарственные средства, Рабочий процесс, Финансовый и Клиническое обоснование).
 </p>
 <a name="modules"> </a>
-<h3>Modules</h3>
+<h3>Модули</h3>
 <p>
-In order to help implementers find their way around the specification and answer these questions,
-it is organised into a set of "modules". Each module represents a different functional area of the
-specification, and contains:
+Чтобы помочь реализаторам со спецификацией и ответить на эти вопросы, она разбита на несколько модулей. Каждый модуль представляет собой отдельную функциональную область спецификации и содержит:
 </p>
 <ul>
- <li><b>Scope and Index</b>:A description of the content covered by the module, and an index of the important content</li>
- <li><b>Use cases</b>: guidance for common uses of the module, and how to approach them. This is a key resource for
-   implementers familiarizing themselves with the FHIR specification</li>
- <li><b>Security / Privacy</b>: information</li>
- <li><b>Roadmap</b>: Where the content covered by the module is in terms of overall progress (see also, for general information: <a href="versions.html">FHIR Timelines</a></li>
+ <li><b>Область действия и указатель</b>: описание модуля и указатель важного содержимого</li>
+ <li><b>Сценарии использования</b>: указания по распространенным сценариям использования модуля и подходам к ним. Это ключевой ресурс для реализаторов, желающих ознакомиться со спецификацией FHIR</li>
+ <li><b>Безопасность / конфиденциальность</b>: информации</li>
+ <li><b>План развития</b>: на каком уровне развития находится соедржимое модуля (см. также общую информацию в <a href="versions.html">Хронологии FHIR</a></li>
 </ul>
 
 <p>
-Broadly, the modules are organized into 3 groups:
+Модули разбиты на 3 группы:
 </p>
 <ul>
- <li>Infrastructure (bottom rung, and bottom row of boxes)</li>
- <li>Content (middle rung, and top row of boxes)</li>
- <li>Reasoning (top rung)</li>
+ <li>Инфраструктура (нижнее звено и нижний ряд модулей)</li>
+ <li>Содержимое (среднее звено и верхний ряд модулей)</li>
+ <li>Reasoning (верхнее звено)</li>
 </ul>
 
 [%file modules-fragment%]
 
 <p>
-Dependencies between the modules are mainly downwards, with some horizontal dependencies.
-Implementers should choose the content modules to engage with based on their
-requirements, and should only engage with the reasoning module if they need to do
-clinical decision support, and/or Quality Measures.
+Зависимости между модулями в основном идут сверху вниз, также есть несколько горизонтальных зависимостей.
+Реализаторам следует работать с модулями содержимого, руководствуясь своими требованиями, и обращаться к модулям Reasoning только при необходимости поддержки принятия клинических решений и\или мер качества (Quality Measures).
 </p>
 
 <p>
-In addition to the use case based assistance in the modules, these additional documentation pages
-may be useful:
+Кроме помощи на основе сценариев использования в модулях, могут пригодиться и дополнительные страницы документации:
 </p>
 <ul>
- <li><a href="usecases.html">Common Use Cases</a>: Personal Health Record, Document Sharing (XDS) and Decision Support</li>
- <li><a href="resourceguide.html">Resource Guide</a>: Further information about the resources and the relationship between them</li>
+ <li><a href="usecases.html">Распространенные сценарии использования</a>: Personal Health Record, Document Sharing (XDS) and Decision Support</li>
+ <li><a href="resourceguide.html">Гайд по ресурсам</a>: более подробная информация о ресурсах и связях между ними</li>
 </ul>
 
 <p>
-Finally, one important place to look is the <a href="http://www.fhir.org/guides/registry">registry of implementation guides</a>, to see
-whether similar (or identical) requirements have been met.
+И в заключение, еще одно важное место, куда следует заглянуть в поисках решений таких же или подобных задач - <a href="http://www.fhir.org/guides/registry">реестр руководств по реализации</a>.
 </p>
 
 </div>
