@@ -14,19 +14,19 @@ in order to support consistent definitions for schema and UML derived code.
 [%file newnavbar%]
 
 <div class="col-12">
-<table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg oo%]">[%wgt oo%]</a> &amp; <a _target="blank" href="[%wg cg%]">[%wgt cg%]</a> </td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
+<table class="cols"><tr><td id="wg">Рабочая группа <a _target="blank" href="[%wg oo%]">[%wgt oo%]</a> &amp; <a _target="blank" href="[%wg cg%]">[%wgt cg%]</a> </td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
 
 <a name="root"> </a>
 <h2>Diagnostic Medicine Module</h2>
 
 <a name="intro"> </a>
-<h3>Introduction</h3>
+<h3>Введение</h3>
 <p>
-The Diagnostics Module provides an overview and guide to the FHIR content that addresses ordering and reporting of clinical diagnostics including laboratory testing, imaging and genomics.</p>
+Модуль диагностики даёт обзор и руководство по содержимому FHIR, которое отвечает за заказывание и сообщение отчетов медицинской диагностики, включая лабораторные и радиологические исследования и геномику.</p>
 
 <a name="index"> </a>
-<h3>Index</h3>
-<p>The Diagnostics module covers the following resources:</p>
+<h3>Указатель</h3>
+<p>В модуль диагностики входят следующие ресурсы:</p>
 
 <table width="100%" style="table-layout: fixed">
  <tr>
@@ -53,13 +53,12 @@ The Diagnostics Module provides an overview and guide to the FHIR content that a
 </tr>
 </table>
 
-   <p>The diagnostic resources and their relationships are shown below.  The arrows represent the direction of the references between resources (for example, DiagnosticReport references ProcedureRequest). See the <a href="workflow-module.html">Workflow Module</a> for information about the coordination of activities such as ordering and fulfilling of diagnostics.</p>
+   <p>Ниже показаны диагностические ресурсы и их взаимосвязи. Стрелки показывают направления ссылок между ресурсами (например ресурс DiagnosticReport ссылается на ProcedureRequest). Информацию о координации таких активностей, как заказывание и выполнение диагностик, см. в <a href="workflow-module.html">Модуле рабочих процессов</a>.</p>
     <img src="diagnostic-module-resources.png" alt="Image showing the diagnostic resources" width="800px"/>
 
 <p>
 <blockquote>
-    <em>Note:</em> See the <a href="genomics.html">Genomics Implementation Guidance</a> for additional information about how to use the
-    Diagnostic resources for Clinical Genomic Reporting and Analysis.
+    <em>Примечание:</em> Дополнительную информацию об использовании диагностических ресурсов для медицинских геномных отчетов и анализа см. в <a href="genomics.html">Руководстве по реализации для геномики</a>.
 </blockquote>
 </p>
     <table class="bare">
@@ -75,39 +74,39 @@ The Diagnostics Module provides an overview and guide to the FHIR content that a
     </table>
 
 <a name="secpriv"> </a>
-<h3>Security and Privacy</h3>
+<h3>Безопасность и конфиденциальность</h3>
 <p>
-The diagnostic resources often represent patient-specific data, and as such are susceptible to data breaching.  Necessary privacy and security provisions must be in place when searching and fetching this information.  For more general considerations, see <a href="secpriv-module.html">the Security and Privacy module</a>.
+The diagnostic resources often represent patient-specific data, and as such are susceptible to data breaching.  Necessary privacy and security provisions must be in place when searching and fetching this information.  Более общие соображения см. в модуле <a href="secpriv-module.html">Безопасность и конфиденциальность</a>.
 </p>
 
 <a name="uses"> </a>
-<h3>Common Use Cases</h3>
+<h3>Распространенные случаи использования</h3>
 <p>
-Diagnostic resources are commonly used to plan, recommend, order and report clinical diagnostics:
+Диагностические ресурсы обычно используются для планирования, рекомедации, заказывания и сообщения результатов медицинской диагностики:
 </p>
 <ul>
-<li>Planning a diagnostic test such as in this <a href="careplan-example-f203-sepsis.html">Careplan-example</a></li>
-<li>Recommending diagnostics such as is done by Clinical Decision Support tools. See the <a href="clinicalreasoning-module.html">Clinical Reasoning module</a> for more information.</li>
-<li>Ordering a Laboratory Test such as a <a href="procedurerequest-example-lipid.html">lipid panel</a></li>
-<li>Reporting a Laboratory Test such as a <a href="diagnosticreport-example-lipids.html">lipid panel</a></li>
-<li>Ordering an imaging study such as a <a href="procedurerequest-example-di.html">CT study</a></li>
-<li>Reporting an imaging study such as a <a href="imagingstudy-example.html">CT study</a></li>
-<li>Ordering a genetic test such as a <a href="procedurerequest-genetics-example-1.html">gene mutation analysis </a></li>
-<li>Reporting a genetic test such as <a href="diagnosticreport-hla-genetics-results-example.html">HLA genotyping</a></li>
+<li>Планирование диагностического исследования, как в этом <a href="careplan-example-f203-sepsis.html">примере плана по уходу</a></li>
+<li>Рекомендация диагностики наподобие инструментов поддержки принятия клинических решений. Более подробную информацию см. в модуле <a href="clinicalreasoning-module.html">Клиническое обоснование</a>.</li>
+<li>Заказывание лабораторного исследования, например <a href="procedurerequest-example-lipid.html">липидной панели</a></li>
+<li>Сообщение результатов лабораторного исследования, например <a href="diagnosticreport-example-lipids.html">липидной панели</a></li>
+<li>Заказывание радиологического исследования, например <a href="procedurerequest-example-di.html">компьютерной томографии</a></li>
+<li>Сообщение результатов радиологического исследования, например <a href="imagingstudy-example.html">компьютерной томографии</a></li>
+<li>Заказывание генетического исследования, например <a href="procedurerequest-genetics-example-1.html">анализа на мутации генов</a></li>
+<li>Сообщение результатов генетического исследования, например <a href="diagnosticreport-hla-genetics-results-example.html">HLA-генотипирования</a></li>
 </ul>
 <p>
-There are many ways to use these resources independently as well.  The Observation resource in particular is central to capturing many measurements and events in healthcare and is often used outside the context of diagnostic orders and reports.
+Также есть много способов использования этих ресурсов независимо друг от друга. В частности, ресурс Observation является основным для хранения измерений и отражения многих событий в здравоохранении, и часто используется вне контекста заказывания диагностик и сообщения результатов.
 </p>
 <ul>
-<li>recording vital signs such as <a href="observation-example-f202-temperature.html">temperature</a></li>
-<li>recording other observations of a patient's social history such as tobacco use</li>
-<li>recording other characteristics of a patient such as pregnancy status (note: The Condition resource may be used to represent these as well)</li>
-<li>recording clinical assessment tool scores such as an <a href="observation-example-5minute-apgar-score.html">Apgar score</a>.</li>
-<li>identifying and describing a <a href="specimen-example-serum.html">specimen</a> or <a href="bodysite-example-tumor.html">body site</a></li>
+<li>запись основных показателей состояния организма, например <a href="observation-example-f202-temperature.html">температуры</a></li>
+<li>запись наблюдений из социального анамнеза пациента, например употребление табака </li>
+<li>запись характеристик пациента, например состояния беременности (примечание: также в этих целях можно использовать ресурс Condition)</li>
+<li>запись результатов клинической оценки по различным шкалам, например <a href="observation-example-5minute-apgar-score.html">шкале Апгар</a>.</li>
+<li>идентификация и описание <a href="specimen-example-serum.html">образца для анализа</a> или <a href="bodysite-example-tumor.html">места на теле</a></li>
 </ul>
 
 <a name="related"> </a>
-<h3>Related Resources and Modules</h3>
+<h3>Связанные ресурсы и модули</h3>
 <p> The resources that represent the basic information about a patient and a clinical encounter can be found in the <a href ="administration-module.html">Administration Module</a>. Other resources that represent core clinical information generated by healthcare providers during the course of a patient encounter are detailed in the <a href="clinicalsummary-module.html">Clinical Summary Module</a> and the <a href="medications-module.html">Medications Module</a>.</p>
 
 <a name="roadmap"> </a>
