@@ -14,7 +14,7 @@ in order to support consistent definitions for schema and UML derived code.
 [%file newnavbar%]
 
 <div class="col-12">
-<table class="cols"><tr><td id="wg">Work Group <a _target="blank" href="[%wg cds%]">[%wgt cds%]</a> &amp; <a _target="blank" href="[%wg cqi%]">[%wgt cqi%]</a> </td><td id="ballot"><a href="versions.html#levels">Ballot Status</a>: <a href="versions.html#std-process">Informative</a></td></tr></table>
+<table class="cols"><tr><td id="wg">Рабочая группа <a _target="blank" href="[%wg cds%]">[%wgt cds%]</a> &amp; <a _target="blank" href="[%wg cqi%]">[%wgt cqi%]</a> </td><td id="ballot"><a href="versions.html#levels">Статус голосования</a>: <a href="versions.html#std-process">Информативный</a></td></tr></table>
 
 <a name="root"> </a>
 <h2>Клиническое обоснование<!-- Clinical Reasoning --></h2>
@@ -24,18 +24,18 @@ in order to support consistent definitions for schema and UML derived code.
 <h3>Введение<!-- Introduction --></h3>
 <p>Модуль клинического обоснования предоставляет ресурсы и операции для представления, распространения и вычисления таких клинических артефактов знаний, как правила поддержки принятия клинических решений, мер качества, наборов заказов и протоколов. Кроме того, данный модуль описывает, какие языки выражений могут использоваться в спецификации для обеспечения динамических возможностей.<!-- The Clinical Reasoning module provides resources and operations to enable the representation, distribution, and evaluation of clinical knowledge artifacts such as clinical decision support rules, quality measures, order sets, and protocols. In addition, the module describes how expression languages can be used throughout the specification to provide dynamic capabilities. --></p>
 
-<p>Clinical Reasoning involves the ability to represent and encode clinical knowledge in a very broad sense so that it can be integrated into clinical systems. This encoding may be as simple as controlling whether or not a particular section of an order set appears based on the conditions that a patient has, or it may be as complex as representing the care pathway for a patient with multiple conditions.</p>
+<p>Клиническое обоснование включает в себя возможность представления и кодирования клинических знаний в очень широком смысле таким образом, чтобы их можно было интегрировать в медицинские системы. Такое кодирование может быть как простым, например управление тем, будет ли показана или нет определенная часть набора заказов на основе диагнозов пациента, так и сложным, например представлять собой описание ухода за пациентом с несколькими заболеваниями.</p>
 
 <a name="scope"> </a>
-<h4>Scope</h4>
-<p>The Clinical Reasoning module focuses on enabling two primary use cases:</p>
+<h4>Область действия</h4>
+<p>Модуль клинического обоснования направлен на реализацию двух основных случаев использования:</p>
 
 <ol>
-	<li><b>Sharing</b> - The ability to represent clinical knowledge artifacts such as decision support rules, order sets, protocols, and quality measures, and to do so in a way that enables those artifacts to be shared across organizations.</li>
-	<li><b>Evaluation</b> - The ability to evaluate clinical knowledge artifacts in the context of a specific patient or population, including the ability to request decision support guidance, impact clinical workflow, and retrospectively assess quality metrics.</li>
+	<li><b>Sharing</b> - возможность представления артефактов клинических знаний, таких как правила поддержки принятия решений, наборы заказов, протоколы, меры качества, и осуществлять это таким образом, чтобы различные организации могли совместно использовать эти артефакты.</li>
+	<li><b>Evaluation</b> - возможность оценки артефактов клинических знаний в контексте определенного пациента или популяции, включая возможность запроса указания от системы поддержки принятия решений, влияния на клинический рабочий процесс и ретроспективную оценку метрик качества.</li>
 </ol>
 
-<p><i>Note to implementers: The user-facing external clinical decision support use case supported by the ServiceDefinition/$evaluate operation of the Clinical Reasoning module has significant overlap with the functionality provided by the <a href="http://cds-hooks.org">CDS Hooks</a> specification. As part of FHIR Release 4, it is the intention to unify the CDS Hooks specification with the Clinical Reasoning module, ensuring that implementers have a single consistent mechanism to support this use case that meets the requirements of both the Clinical Quality Framework and CDS Hooks communities. Although the functionality in both specifications is conceptually aligned, this unification will likely result in changes to both specifications. The CQF and CDS Hooks project teams are committed to this unification and will work to ensure that the resulting changes have as little impact as possible on current and ongoing implementation efforts, while meeting the needs of both communities. The project team is planning on a workable implementation tested at the connectathon in May of 2017, with a trial ballot following in September 2017, targeting publication as part of the FHIR Release 4 specification.</i></p>
+<p><i>Примечание для реализаторов: случай использования внешней системы поддержки принятия клинических решений, ориентированный на пользователя, осуществляемый операцией ServiceDefinition/$evaluate модуля клинического обоснования, значительно совпадает с функциональностью, предоставляемой в спецификации <a href="http://cds-hooks.org">CDS Hooks</a>. В рамках FHIR выпуска 4, это намерение объединить спецификацию CDS Hooks и модуль клинического обоснования, обеспечив реализаторам единый непротиворечивый механизм поддержки данного случая использования, который соответствует требованиям сообществ как Фреймворка клинического качества, так и CDS Hooks. Несмотря на то, что фукнциональности в обеих спецификациях концептуально аналогичны, такое объединение, вероятно, приведет к изменениям в обеих спецификациях. Команды проектов CQF и CDS заинтересованы в этом объединении и будут работать над тем, чтобы итоговые изменения как можно меньше повлияли на текущие и происходящие в настоящее время усилия по реализации, при этом отвечая требованиям обоих сообществ. Команда проекта планирует работающую реализацию, протестированную на коннектатоне в Мае 2017 года, с последующим испытательным голосованием в сентябре 2017 г. с целью ее публикации в спецификации FHIR Выпуск 4.</i></p>
 
 <p><i>Specifically, the CDS Hooks/Clinical Reasoning work will impact the ServiceDefinition and GuidanceResponse resources. The ActivityDefinition, PlanDefinition, Library, RequestGroup, Measure, and MeasureReport resources are not expected to be impacted by this work.</i></p>
 
@@ -272,9 +272,9 @@ Feedback is welcome <a href="http://wiki.hl7.org/index.php?title=FHIR_Specificat
 <p>This material contains quality measure content developed by the National Committee for Quality Assurance (NCQA). The measure content is copyright (c) 2008-2017 National Committee for Quality Assurance and used in accordance with the NCQA license terms for non-commercial use.</p>
 
 <a name="acknowledgements"> </a>
-<h3>Acknowledgements</h3>
+<h3>Благодарности</h3>
 
-<p>The guidance in this module is the work of a joint project between the HL7 Clinical Quality Information and  Clinical Decision Support Work Groups with the co-sponsorship of the FHIR Infrastructure, Implementable Technology Specifications, and Service Oriented Architecture Work Groups.</p>
+<p>Руководство в этом модуле является результатом совместного проекта рабочих групп HL7 по Информации о клиническом качестве и по Поддержке принятия клинических решений с совместным спонсорством рабочих групп FHIR по Инфраструктуре, по Спецификациям технологий реализации и Сервис-ориентированной архитектуре.</p>
 
 </div>
 
