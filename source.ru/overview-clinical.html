@@ -68,10 +68,11 @@ of codes, etc.  FHIR repositories might be elecronic health record (EHR) systems
 hospital information systems (HISs), etc.  Some systems, such as clinical decision support engines, may
 expose FHIR interfaces even though they don't actually store any patient or administrative information themselves. -->
 </p>
+Каждый ресурс определяет небольшое количество узкоспециализированных данных. Одиночный ресурс мало о чем говорит, а вот набор вместе взятых ресурсов представляет собой клиническую запись, имеющую практическкую ценность. Инфрмационные системы связывают действия пользователя (поиск карты пациента, внесение записи в его историю и т.д.) с операциями над соответствующими ресурсами.
 <p>
-Each Resource defines a small amount of highly-focused data. A single resource doesn't say very much, but a collection of Resources 
+<!--Each Resource defines a small amount of highly-focused data. A single resource doesn't say very much, but a collection of Resources 
 taken together creates a useful clinical record. Information systems map the actions that a user takes (look up patient records, make a
-note in their history, etc.) to operations on the relevant resources.
+note in their history, etc.) to operations on the relevant resources.-->
 </p>
 
 <h3>Расширяемость и профилирование<!-- Extensibility and Profiling --></h3>
@@ -174,7 +175,7 @@ file folder.  To see the history of a resource, you simply have to flip through 
 REST - это простейший механизм обмена. Продолжая метафору "формы", RESTful-сервер можно рассматривать как комнату, заполненную шкафами для хранения документов. В комнате есть шкаф для каждого "типа" формы (или "ресурса"), которую он поддерживает. В шкафу находятся папки, каждая папка имеет уникальный номер и соответствует одной конкретной сущности реального мира: одному пациенту, одному визиту, одному лекарственному средству и т. д. Каждая папка (представляющая собой отдельный <i>экземпляр</i> ресурса) содержит несколько листов бумаги, где каждый лист бумаги представляет собой определенную "версию" этого экземпляра. Каждый раз, когда кто-то обновляет запись, новый лист бумаги добавляется сверху в папку-регистратор. Чтобы увидеть историю ресурса, вам нужно всего лишь пролистать страницы в папке.
 </p>
 <p>
-Нужно отметить, что медицинская карта обычно представляет сосбой папку со множеством вложенных папок, в которых хранится большой объем собранных вместе различных "форм" или "отчетов". Это удобно, если вы хотите просмотреть всю запись, но неудобно, если вы хотите внести изменения лишь в некоторые её части. Всегда присутствует конкуренция за доступ к записи, чтобы внести изменения в нужную часть. В компьютерных приложениях в целях оптимизации управления запись будет разбита на мельчайшие компоненты, и компьютер должен верно собрать нужные компоненты, следуя по заданным ссылкам от одного компонента к другому.
+Нужно отметить, что медицинская карта обычно представляет собой папку со множеством вложенных папок, в которых хранится большой объем собранных вместе различных "форм" или "отчетов". Это удобно, если вы хотите просмотреть всю запись, но неудобно, если вы хотите внести изменения лишь в некоторые её части. Всегда присутствует конкуренция за доступ к записи, чтобы внести изменения в нужную часть. В компьютерных приложениях в целях оптимизации управления запись будет разбита на мельчайшие компоненты, и компьютер должен верно собрать нужные компоненты, следуя по заданным ссылкам от одного компонента к другому.
 <!--Note that a typical medical record is generally a big "folder-of-folders" with many different
 types of 'forms' or 'reports' gathered together. This is convenient for someone who wants to review
 the whole record, but inconvenient for someone updating bits of it.  There's always contention for access
