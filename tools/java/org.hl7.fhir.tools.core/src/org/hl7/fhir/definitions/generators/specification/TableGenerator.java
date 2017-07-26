@@ -171,7 +171,7 @@ public class TableGenerator extends BaseGenerator {
       }
       
       cc.getPieces().add(gen.new Piece("br"));
-      cc.getPieces().add(gen.new Piece(null, "Elements defined in Ancestors: ", null));
+      cc.getPieces().add(gen.new Piece(null, "Элементы, определённые в прародителе: ", null));
       boolean first = true;
       for (ElementDefn fi : ancestors) { 
         for (ElementDefn fc : fi.getElements()) {
