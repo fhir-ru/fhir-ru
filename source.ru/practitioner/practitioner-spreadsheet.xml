@@ -999,13 +999,13 @@
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s79"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s78"><Data ss:Type="String">Лицо с официальными обязанностями в предоставлении медицинских или связанных со здравоохранением услуг<!-- A person with a  formal responsibility in the provisioning of healthcare or related services --></Data><NamedCell
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Человек, несущий формальную ответственность за предоставление медицинских или связанных со здравоохранением услуг<!-- A person with a  formal responsibility in the provisioning of healthcare or related services --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s80"><Data ss:Type="String">Лицо, прямо или косвенно участвующее в предоставлении услуг здравоохранения<!-- A person who is directly or indirectly involved in the provisioning of healthcare --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Необходимо отслеживать врачей, персонал, заместителей и т. д. как для медицинских работников, так и спонсоров и т. п.<!-- Need to track doctors, staff, locums etc. for both healthcare practitioners, funders, etc. --></Data><NamedCell
+    <Cell ss:StyleID="s81"><Data ss:Type="String">Нужно для отслеживания врачей, персонала, заместителей как для медицинских работников, так и спонсоров и т. п.<!-- Need to track doctors, staff, locums etc. for both healthcare practitioners, funders, etc. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Обратите внимание, что таксист уже не отвечает этим требованиям. Вы, наверное, были бы заинтересованы в организации, а не в отдельном человеке?<!-- Note that a cab driver no longer fits the bill. You probably would be interested in the organization rather than the individual? --></Data><NamedCell
+    <Cell ss:StyleID="s80"><Data ss:Type="String">Обратите внимание, что таксист уже не отвечает этим требованиям. В этом случае вам, наверное, больше подойдёт организация, а не  отдельный человек?<!-- Note that a cab driver no longer fits the bill. You probably would be interested in the organization rather than the individual? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s81"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s82"><Data ss:Type="String">Role</Data><NamedCell
@@ -1038,11 +1038,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор для этого лица в качестве агента (уполномоченного сотрудника)<!-- A identifier for the person as this agent --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Идентификатор для этого лица в качестве уполномоченного сотрудника<!-- A identifier for the person as this agent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Идентификатор, применяемый к данному лицу в данной роли<!-- An identifier that applies to this person in this role --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Часто агенту присваиваются определенные идентификаторы<!-- Often, specific identities are assigned for the agent --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Часто представителю присваиваются определённые идентификаторы<!-- Often, specific identities are assigned for the agent --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1084,7 +1084,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность пометить запись о враче как непригодную для использования, поскольку она была введена по ошибке<!-- Need to be able to mark a practitioner record as not to be used because it was created in error --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">По умолчанию значение true. &#10;&#10;Если врач на работает в организации, тогда следует отметить период в элементе PractitonerRole с указанием даты окончания (даже если они всё ещё действующие), так как они могут действовать в другой роли.<!-- Default is true. &#13;&#13;If the practitioner is not in use by one organization, then it should mark the period on the PractitonerRole with an end date (even if they are active) as they may be active in another role. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">По умолчанию значение true. &#10;&#10;Если врач на работает в организации, тогда следует отметить период в элементе PractitonerRole с указанием даты окончания (даже если он всё ещё действующий), так как он может действовать в другой роли.<!-- Default is true. &#13;&#13;If the practitioner is not in use by one organization, then it should mark the period on the PractitonerRole with an end date (even if they are active) as they may be active in another role. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./statusCode</Data><NamedCell
@@ -1118,9 +1118,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Имя врача<!-- The name(s) associated with the practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя, под которым известен медицинский специалист. Если их несколько, в элементе display следует указать то имя медицинского специалиста, используемое обыкновенно.<!-- The name(s) that a Practitioner is known by. Where there are multiple, the name that the practitioner is usually known as should be used in the display. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Имя медицинского специалиста. Если их несколько, в элементе display следует указать то имя медицинского специалиста, которое обычно используется.<!-- The name(s) that a Practitioner is known by. Where there are multiple, the name that the practitioner is usually known as should be used in the display. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Выбор свойства use должен гарантировать, что указано одно используемое обыкновенно имя (тип usual), а другие имена указаны с типами nickname (alias), old или другими значениями в зависимости от обстоятельств.&#10;&#10;В общем выбирайте значение для использования в ResourceReference.display на основе этого:&#10;&#10;1. Имеется больше 1 имени.&#10;2. Use = usual&#10;3. Период текущий относительно даты использования&#10;4. Use = official&#10;5. Остальные в порядке, определённом внутренними бизнес-правилами.<!-- The selection of the use property should ensure that there is a single usual name specified, and others use the nickname (alias), old, or other values as appropriate.&#13;&#13;In general select the value to be used in the ResourceReference.display based on this:&#13;&#13;1. There is more than 1 name&#13;2. Use = usual&#13;3. Period is current to the date of the usage&#13;4. Use = official&#13;5. Other order as decided by internal business rules. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Свойство "use" нужно задавать таким образом, чтобы было указано одно используемое обыкновенно имя (тип usual), а другие имена указаны с типами nickname (alias), old или другими значениями в зависимости от обстоятельств.&#10;&#10;Общее правило выбора значения свойства "use" в ResourceReference.display:&#10;&#10;1. Имеется больше одного имени.&#10;2. Use = usual&#10;3. Период является действующим на момент использования&#10;4. Use = official&#10;5. Остальные - в соответствии внутренним бизнес-правилам.<!-- The selection of the use property should ensure that there is a single usual name specified, and others use the nickname (alias), old, or other values as appropriate.&#13;&#13;In general select the value to be used in the ResourceReference.display based on this:&#13;&#13;1. There is more than 1 name&#13;2. Use = usual&#13;3. Period is current to the date of the usage&#13;4. Use = official&#13;5. Other order as decided by internal business rules. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./name</Data><NamedCell
@@ -1152,13 +1152,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактная информация этого медицинского специалиста (которая применима ко всем ролям)<!-- A contact detail for the practitioner (that apply to all roles) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Контактная информация медицинского специалиста (которая применима ко всем ролям)<!-- A contact detail for the practitioner (that apply to all roles) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактная информация этого медицинского специалиста, например телефонный номер или адрес электронной почты.<!-- A contact detail for the practitioner, e.g. a telephone number or an email address. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Контактная информация медицинского специалиста, например телефонный номер или адрес электронной почты.<!-- A contact detail for the practitioner, e.g. a telephone number or an email address. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужно знать, как связаться с медицинским специалистом независимо от той роли, которую он может иметь<!-- Need to know how to reach a practitioner independent to any roles the practitioner may have --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Чтобы знать, как связаться с медицинским специалистом независимо от той роли, которую он может иметь<!-- Need to know how to reach a practitioner independent to any roles the practitioner may have --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек может иметь несколько различных способов связи с ним разного вида использования или разными периодами применения. &#13;Может потребоваться возможность связаться с человеком срочно, а также для помощи в идентификации&#10;&#10;Как правило, здесь указываются домашний или мобильный номера, которые не зависят от роли.<!-- Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification&#13;&#13;These typically will have home numbers, or mobile numbers that are not role specific. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Человек может иметь несколько различных способов связи с ним разного типа использования или с разными периодами применения. &#13;Может потребоваться связаться с человеком срочно, а также для помощи в идентификации&#10;&#10;Как правило, здесь указываются домашний или мобильный номер, который не зависит от роли.<!-- Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification&#13;&#13;These typically will have home numbers, or mobile numbers that are not role specific. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./telecom</Data><NamedCell
@@ -1194,9 +1194,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Адрес медицинского специалиста, который не зависит от роли (как правило, домашний адрес). &#10;Рабочие адреса, как правило, не вводятся в этом атрибуте, поскольку они обычно зависят от роли.<!-- Address(es) of the practitioner that are not role specific (typically home address). &#13;Work addresses are not typically entered in this property as they are usually role dependent. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Домашний/почтовый адрес медицинского специалиста часто требуется для сотрудников в административных целях, а также для некоторых служб назначения дежурств, ге начальная точка (дом медицинского специалиста) может использоваться при расчётах.<!-- The home/mailing address of the practitioner is often required for employee administration purposes, and also for some rostering services where the start point (practitioners home) can be used in calculations. --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Домашний/почтовый адрес медицинского специалиста часто требуется для сотрудников в административных целях, а также для некоторых служб назначения дежурств, где начальная точка (дом медицинского специалиста) может использоваться при расчётах времени пути.<!-- The home/mailing address of the practitioner is often required for employee administration purposes, and also for some rostering services where the start point (practitioners home) can be used in calculations. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Элемент PractitionerRole не содержит значения адреса, поскольку ожидается, что для этого будет использовано свойство location (в котором есть поле для адреса)<!-- The PractitionerRole does not have an address value on it, as it is expected that the location property be used for this purpose (which has an address) --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Элемент PractitionerRole не содержит адреса, поскольку ожидается, что для этого будет использовано свойство location (в котором есть поле для адреса)<!-- The PractitionerRole does not have an address value on it, as it is expected that the location property be used for this purpose (which has an address) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><Data ss:Type="String">./addr</Data><NamedCell
@@ -1231,7 +1231,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">male | female | other | unknown</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes. </Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Административный пол - пол человека для административных целей и учёта.<!-- Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes. --> </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Нужен для корректного обращения к человеку<!-- Needed to address the person correctly --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1340,7 +1340,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Представляемая организация<!-- The represented organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, которую представляет practitioner<!-- The organization that the practitioner represents --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация, которую представляет медицинский специалист<!-- The organization that the practitioner represents --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><Data ss:Type="String">Нужна возможность отслеживать представляемые им организации отдельно, если таковые имеются<!-- Need to be able to track the represented organization separately, if any. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1443,11 +1443,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Роли, которые может выполнять этот practitioner<!-- Roles which this practitioner may perform --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Роли, которые может выполнять медицинский специалист<!-- Roles which this practitioner may perform --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Роли, которые уполномочен выполнять этот practitioner для организации<!-- Roles which this practitioner is authorized to perform for the organization --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Роли, которые уполномочен выполнять медицинский специалист для организации<!-- Roles which this practitioner is authorized to perform for the organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужно, чтобы знать, какие полномочия имеет practitioner - что он может делать?<!-- Need to know what authority the practitioner has - what can they do? --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Нужно, чтобы знать, какие полномочия имеет медицинский специалист - что он может делать?<!-- Need to know what authority the practitioner has - what can they do? --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Человек может иметь больше одной роли. Обязательна по крайней мере одна роль.<!-- A person may have more than one role. At least one role is required. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1482,9 +1482,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Конкретная специальность медицинского специалиста<!-- Specific specialty of the practitioner --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Специальность медицинского специалиста<!-- Specific specialty of the practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Конкретная специальность медицинского специалиста<!-- Specific specialty of the practitioner --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Специальность медицинского специалиста<!-- Specific specialty of the practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1587,11 +1587,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Период, в течение которого лицо уполномочено действовать в качестве специалиста в этой роли(-ях)<!-- The period during which the practitioner is authorized to perform in these role(s) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Период, в течение которого лицо уполномочено действовать в качестве специалиста в этой роли<!-- The period during which the practitioner is authorized to perform in these role(s) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Период, в течение которого лицо уполномочено действовать в качестве специалиста в этой роли(-ях) в этой организации<!-- The period during which the person is authorized to act as a practitioner in these role(s) for the organization --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Период, в течение которого лицо уполномочено действовать в качестве специалиста в этой роли в этой организации<!-- The period during which the person is authorized to act as a practitioner in these role(s) for the organization --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Даже после аннулирования деятельности факт ее существования все еще должен быть записан<!-- Even after the agencies is revoked, the fact that it existed must still be recorded --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Даже после прекращения деятельности факт её существования должен быть зафиксирован<!-- Even after the agencies is revoked, the fact that it existed must still be recorded --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1625,9 +1625,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Место(-а), в котором этот медицинский специалист предоставляет услуги<!-- The location(s) at which this practitioner provides care --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Местоположение, где медицинский специалист предоставляет услуги<!-- The location(s) at which this practitioner provides care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Место(-а), в котором этот медицинский специалист предоставляет услуги<!-- The location(s) at which this practitioner provides care --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Местоположение, где медицинский специалист предоставляет услуги<!-- The location(s) at which this practitioner provides care --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1659,7 +1659,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень услуг здравоохранения, оказываемых этим работником для Организации/Местоположения(-ий) данной роли <!-- The list of healthcare services that this worker provides for this role's Organization/Location(s) --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Перечень услуг здравоохранения, оказываемых этим работником для данной организации/местоположения в данной роли <!-- The list of healthcare services that this worker provides for this role's Organization/Location(s) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -4651,7 +4651,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.name</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A server defined search that may match any of the string fields in the HumanName, including family, give, prefix, suffix, suffix, and/or text</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Определённый сервером поиск, который может искать совпадения по всем текстовым полям компонента "HumanName", включая family, give, prefix, suffix, suffix, и/или text<!-- A server defined search that may match any of the string fields in the HumanName, including family, give, prefix, suffix, suffix, and/or text --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">family</Data></Cell>
@@ -4678,7 +4678,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.name</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">phonetic</Data></Cell>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A portion of either family or given name using some kind of phonetic matching algorithm</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Часть имени или фамилии с использованием какого-либо вида алгоритма поиска фонетического соответствия<!-- A portion of either family or given name using some kind of phonetic matching algorithm --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="28.05">
     <Cell ss:StyleID="s117"><Data ss:Type="String">telecom</Data></Cell>
@@ -4714,7 +4714,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.active</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">Whether the practitioner record is active</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Действующая ли это запись о медицинском специалисте<!-- Whether the practitioner record is active --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address</Data></Cell>
@@ -4723,7 +4723,7 @@
     <Cell ss:StyleID="s118"><Data ss:Type="String">Practitioner.address</Data></Cell>
     <Cell ss:StyleID="s118"/>
     <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"><Data ss:Type="String">A server defined search that may match any of the string fields in the Address, including line, city, state, country, postalCode, and/or text</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">Определённый сервером поиск, который может искать совпадения по всем текстовым полям компонента "Address", включая line, city, state, country, postalCode, и/или text<!-- A server defined search that may match any of the string fields in the Address, including line, city, state, country, postalCode, and/or text --></Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">address-city</Data></Cell>

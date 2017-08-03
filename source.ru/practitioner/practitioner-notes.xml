@@ -5,8 +5,9 @@
 <!-- Notes: -->
 </h2>
   <ul>    
-  <li>The practitioner's Qualifications are aquired by the practitioner independant of any organization or role, 
-  and do not imply that they are allowed/authorzied to perform roles relevant to the qualification at any specific Organization/Location.</li>
+  <li>Квалификацию (Practitioner.qualification) медицинский специалист получает независимо от организации и роли, и её наличие не подразумевает, что он уполномочен выполнять роли, соответствующие этой квалификации, в какой-либо организации (Organization) или месте (Location).
+  <!-- The practitioner's Qualifications are aquired by the practitioner independant of any organization or role, 
+  and do not imply that they are allowed/authorzied to perform roles relevant to the qualification at any specific Organization/Location. --></li>
   </ul>
 </div>
 
