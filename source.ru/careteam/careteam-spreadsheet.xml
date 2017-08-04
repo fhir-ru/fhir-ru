@@ -1000,7 +1000,7 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешние идентификаторы этой команды<!-- External Ids for this team --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Внешние идентификаторы этой команды по уходу<!-- External Ids for this team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><Data ss:Type="String">Здесь записываются идентификаторы, ассоциированные с этой командой по уходу, которые задаются бизнес-процессами и/или используются для ссылок, когда прямая URL-ссылка на сам ресурс не подходит.<!-- This records identifiers associated with this care team that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1068,13 +1068,13 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип команды<!-- Type of team --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип команды по уходу<!-- Type of team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет, какого типа эта команда. Это помогает различать одновременно существующие команды, такие как команда плана по уходу, команда по уходу для эпизода лечения, сквозная команда по уходу<!-- Identifies what kind of team.  This is to support differentiation between multiple co-existing teams, such as care plan team, episode of care team, longitudinal care team --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Определяет, какого типа эта команда по уходу. Это помогает различать одновременно существующие команды по уходу, такие как команда, назначенная в соответствии с планом по уходу, команда по уходу для эпизода лечения, сквозная команда по уходу<!-- Identifies what kind of team.  This is to support differentiation between multiple co-existing teams, such as care plan team, episode of care team, longitudinal care team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Используется для фильтрации команд при извлечении и отображении различным типам пользователей<!-- Used for filtering what teams(s) are retrieved and displayed to different types of users --></Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Используется для фильтрации команд по уходу при извлечении и отображении различным типам пользователей<!-- Used for filtering what teams(s) are retrieved and displayed to different types of users --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Может быть несколько типов классификации, и одна команда может служить нескольким целям.<!-- There may be multiple axis of categorization and one team may serve multiple purposes. --></Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Может быть несколько типов классификации, и одна команда по уходу может служить нескольким целям.<!-- There may be multiple axis of categorization and one team may serve multiple purposes. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1103,12 +1103,12 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Название команды, например команда по оценке кризиса<!-- Name of the team, such as crisis assessment team --></Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Название команды по уходу, например команда по оценке кризиса<!-- Name of the team, such as crisis assessment team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">A label for human use intended to distinguish like teams.  E.g. the &quot;red&quot; vs. &quot;green&quot; trauma teams</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Название для использования людьми для различения команд, например &quot;красной&quot; от &quot;зелёной&quot; бригады травматологов<!-- A label for human use intended to distinguish like teams.  E.g. the &quot;red&quot; vs. &quot;green&quot; trauma teams --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The meaning/purpose of the team is conveyed in CareTeam.category.  This element may also convey semantics of the team (e.g. &quot;Red trauma team&quot;), but its primary purpose is to distinguish between identical teams in a human-friendly way.  (&quot;Team 18735&quot; isn't as friendly . )</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Предназначение бригады передаётся в элементе CareTeam.category. Также в нём указывается семантика бригады (например &quot;Красная бригада травматологов&quot;), однако его основное назначение - удобное для человека различение одинаковых бригад.<!-- The meaning/purpose of the team is conveyed in CareTeam.category.  This element may also convey semantics of the team (e.g. &quot;Red trauma team&quot;), but its primary purpose is to distinguish between identical teams in a human-friendly way.  (&quot;Team 18735&quot; isn't as friendly . ) --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s90"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1171,9 +1171,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Encounter or episode associated with CareTeam</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Связанный случай обслуживания или эпизод лечения<!-- Encounter or episode associated with CareTeam --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The encounter or episode of care that establishes the context for this care team.</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Случай обслуживания или эпизод лечения, в контексте которого создаётся эта команда.<!-- The encounter or episode of care that establishes the context for this care team. --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1340,11 +1340,11 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Organization of the practitioner</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Организация медицинского специалиста<!-- Organization of the practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">The organization of the practitioner</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Организация медицинского специалиста<!-- The organization of the practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s89"><Data ss:Type="String">Practitioners can be associated with multiple organizations.  This element indicates which organization they were acting on behalf of</Data><NamedCell
+    <Cell ss:StyleID="s89"><Data ss:Type="String">Медицинские специалисты могут быть связаны с несколькими организациями. В данном элементе указывается та организация, от имени которой они действовали<!-- Practitioners can be associated with multiple organizations.  This element indicates which organization they were acting on behalf of --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1402,9 +1402,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Why the care team exists</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Для чего создаётся эта команда<!-- Why the care team exists --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Describes why the care team exists</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Описание, для чего создаётся эта команда<!-- Describes why the care team exists --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1434,9 +1434,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Why the care team exists</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Для чего создаётся эта команда<!-- Why the care team exists --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s88"><Data ss:Type="String">Condition(s) that this care team addresses</Data><NamedCell
+    <Cell ss:StyleID="s88"><Data ss:Type="String">Ресурсы Condition - диагнозы - которыми занимается эта команда<!-- Condition(s) that this care team addresses --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1471,7 +1471,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><Data ss:Type="String">Организация, ответственная за команду по уходу<!-- The organization responsible for the care team --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Allows for multiple organizations to collaboratively manage cross-organizational, longitudinal care plan</Data><NamedCell
+    <Cell><Data ss:Type="String">Позволяет указывать несколько организаций, которые могут совместно работать над межорганизационными долгосрочными планами по уходу<!-- Allows for multiple organizations to collaboratively manage cross-organizational, longitudinal care plan --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -1499,9 +1499,9 @@
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s87"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Comments made about the CareTeam</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Пояснения к команде по уходу<!-- Comments made about the CareTeam --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Comments made about the CareTeam</Data><NamedCell
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Пояснения к команде по уходу<!-- Comments made about the CareTeam --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s89"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s88"><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -3784,7 +3784,7 @@
     <Cell ss:StyleID="s83"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">CareTeam.participant</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s83"><Data ss:Type="String">CareTeam.participant.onBehalfOf can only be populated when CareTeam.participant.member is a Practitioner</Data><NamedCell
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Свойство CareTeam.participant.onBehalfOf заполняется только в случае, когда в CareTeam.participant.member указан ресурс Practitioner<!-- CareTeam.participant.onBehalfOf can only be populated when CareTeam.participant.member is a Practitioner --></Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s83"><Data ss:Type="String">onBehalfOf.exists() implies (member.resolve() is Practitioner)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -6272,7 +6272,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s87"><Data ss:Type="String">CareTeamParticipantRole</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Указывается конкретный вид ответственности лица из команды по уходу, например "главный врач", "координатор команды", "лицо, осуществляющее уход" и др.<!-- Indicates specific responsibility of an individual within the care team, such as &quot;Primary physician&quot;, &quot;Team coordinator&quot;, &quot;Caregiver&quot;, etc. --></Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Указывается конкретный вид ответственности лица из команды по уходу, например "главный врач", "координатор команды по уходу", "лицо, осуществляющее уход" и др.<!-- Indicates specific responsibility of an individual within the care team, such as &quot;Primary physician&quot;, &quot;Team coordinator&quot;, &quot;Caregiver&quot;, etc. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:Index="6" ss:StyleID="s118"><Data ss:Type="String">valueset-participant-role</Data></Cell>
@@ -6286,7 +6286,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">CareTeamStatus</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates the status of the care team.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Статус команды по уходу<!-- Indicates the status of the care team. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:StyleID="s118"/>
@@ -6302,7 +6302,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">CareTeamCategory</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates the type of care team.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Тип команды по уходу<!-- Indicates the type of care team. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:StyleID="s118"/>
@@ -6318,7 +6318,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s145"><Data ss:Type="String">CareTeamReason</Data></Cell>
-    <Cell ss:StyleID="s87"><Data ss:Type="String">Indicates the reason for the care team.</Data></Cell>
+    <Cell ss:StyleID="s87"><Data ss:Type="String">Предназначение команды по уходу<!-- Indicates the reason for the care team. --></Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s118"><Data ss:Type="String">example</Data></Cell>
     <Cell ss:Index="6" ss:StyleID="s146" ss:HRef="http://hl7.org/fhir/ValueSet/clinical-findings"><Data

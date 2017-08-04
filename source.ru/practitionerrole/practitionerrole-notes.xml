@@ -6,8 +6,8 @@
 </h2>
   <ul>
   <li>
-  У ресурса PractitionerRole нет адреса, поскольку место (location), задаваемое здесь, содержит адрес.<br/> 
-  Это предотвращает дублирование значений адреса в ресурсах.
+  У ресурса PractitionerRole нет компонента "адрес", а есть местоположение "location", которое содержит адрес.<br/> 
+  Это предотвращает дублирование адреса в ресурсах.
 <!--   There is no address on the PractitionerRole as the location that is defined here contains the address.<br/>
   This prevents having to duplicate the address values across multiple resources. -->
   </li>
