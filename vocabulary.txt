@@ -24,3 +24,5 @@ Medical scribe - Wikipedia
 
 trauma teams - бригада травматологов
 
+endpoint, end point - точка взаимодействия
+

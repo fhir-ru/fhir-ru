@@ -741,8 +741,9 @@ analysis and exchange. They have slightly different purposes: -->
  <li>DataElement описывает элементы данных более общего вида, которые представлены и передаются во многих форматах и/или контекстах<!-- DataElement describes more general data items that are represented and exchanged in many formats and/or contexts --></li>
 </ul>
 <p>
-<code>StructureMap</code> supports a general purpose mapping language that can be used to transfer data
-from one structure to another.
+<code>StructureMap</code> поддерживает язык мэппинга общего назначения, который можно использовать для перевода данных из одной структуры в другую.
+<!-- <code>StructureMap</code> supports a general purpose mapping language that can be used to transfer data
+from one structure to another. -->
 </p>
 
 <table class="grid">
@@ -764,9 +765,11 @@ for use as system discovery, or conformance expectations. -->
 <!-- An <code>OperationDefinition</code> describes an operation that can be 
 executed on a server, and a <code>SearchParameter</code> defines 
 a search parameter that can be used on a server.  -->
-<code>CompartmentDefinition</code>
+Ресурс <code>CompartmentDefinition</code> хранит информацию о том, каким образом ресурсы объединены между собой на сервере. <code>MessageDefintion</code> описывает поведение, ассоциируемое с получением определённого сообщения.
+
+<!-- <code>CompartmentDefinition</code>
 provides information about how resources are associated on a server.  <code>MessageDefintion</code>
-describes the behavior associated with receiving a particular message.
+describes the behavior associated with receiving a particular message. -->
 </p>
 
 <table class="grid">
@@ -796,10 +799,11 @@ systems, if the tests are carefully constructed and vetted. -->
 </p>
 
 <p>
-A <code>TestReport</code> contains the test execution results of a TestScript
+Ресурс <code>TestReport</code> содержит результаты выполнения тестирующего скрипта TestScript для ряда операций и их результатов, которым система должна удовлетворять. Ресурсы TestReport обеспечивают статическую запись результатов выполнения TestScript для последующего их извлечения и проверки.
+<!-- A <code>TestReport</code> contains the test execution results of a TestScript
 against a series of operations and outcomes that a system is expected to meet.
 TestReports provide a static recording of TestScript results for subsequent
-retrieval and review..
+retrieval and review.. -->
 </p>
 
 <table class="grid">
